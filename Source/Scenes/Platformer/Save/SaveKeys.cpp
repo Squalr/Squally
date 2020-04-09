@@ -16,6 +16,19 @@ const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND";
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
+const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
+
+const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
+
+const std::string SaveKeys::SaveKeySpellBookArcane = "SAVE_KEY_SPELLBOOK_ARCANE";
+const std::string SaveKeys::SaveKeySpellBookFire = "SAVE_KEY_SPELLBOOK_FIRE";
+const std::string SaveKeys::SaveKeySpellBookFrost = "SAVE_KEY_SPELLBOOK_FROST";
+const std::string SaveKeys::SaveKeySpellBookHoly = "SAVE_KEY_SPELLBOOK_HOLY";
+const std::string SaveKeys::SaveKeySpellBookLightning = "SAVE_KEY_SPELLBOOK_LIGHTNING";
+const std::string SaveKeys::SaveKeySpellBookNature = "SAVE_KEY_SPELLBOOK_NATURE";
+const std::string SaveKeys::SaveKeySpellBookShadow = "SAVE_KEY_SPELLBOOK_SHADOW";
+const std::string SaveKeys::SaveKeySpellBookWater = "SAVE_KEY_SPELLBOOK_WATER";
+const std::string SaveKeys::SaveKeySpellBookWind = "SAVE_KEY_SPELLBOOK_WIND";
 
 const std::string SaveKeys::SaveKeyCollectableAnimalBat = "SAVE_KEY_ANIMAL_BAT";
 const std::string SaveKeys::SaveKeyCollectableAnimalBear = "SAVE_KEY_ANIMAL_BEAR";

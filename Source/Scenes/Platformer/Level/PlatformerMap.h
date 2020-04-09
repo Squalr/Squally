@@ -2,13 +2,15 @@
 
 #include "Scenes/MapBase.h"
 
+class AlchemyMenu;
+class BlacksmithingMenu;
 class Cipher;
 class ClickableTextNode;
 class CollectablesMenu;
 class GameHud;
 class Hexus;
 class InventoryMenu;
-class MapMenu;
+class CardsMenu;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEnemy;
@@ -22,7 +24,7 @@ public:
 
 protected:
 	PlatformerMap(std::string transition = "");
-	~PlatformerMap();
+	virtual ~PlatformerMap();
 
 private:
 	typedef MapBase super;
@@ -31,17 +33,19 @@ private:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
-	void update(float dt) override;
-	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
+
+	bool awaitingConfirmationEnd;
 
 	GameHud* gameHud;
 	NotificationHud* notificationHud;
 	Cipher* cipher;
 	Hexus* hexus;
 	CollectablesMenu* collectablesMenu;
-	MapMenu* mapMenu;
+	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
+	AlchemyMenu* alchemyMenu;
+	BlacksmithingMenu* blacksmithingMenu;
 	cocos2d::Node* combatFadeInNode;
 
 	std::string transition;

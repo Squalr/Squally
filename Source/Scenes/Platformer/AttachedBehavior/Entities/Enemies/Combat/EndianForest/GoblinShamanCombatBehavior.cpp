@@ -5,14 +5,16 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/GoblinShaman/CastShadowBolt.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CastCurseOfTongues.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string GoblinShamanCombatBehavior::MapKeyAttachedBehavior = "goblin-shaman-combat";
+const std::string GoblinShamanCombatBehavior::MapKey = "goblin-shaman-combat";
 
 GoblinShamanCombatBehavior* GoblinShamanCombatBehavior::create(GameObject* owner)
 {
@@ -31,6 +33,8 @@ GoblinShamanCombatBehavior::GoblinShamanCombatBehavior(GameObject* owner) : supe
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.25f);
 }
 
 GoblinShamanCombatBehavior::~GoblinShamanCombatBehavior()
@@ -45,7 +49,9 @@ void GoblinShamanCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(CastCurseOfTongues::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(CastShadowBolt::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeedVerySlow, PlatformerAttack::Priority::Reasonable));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::IfNecessary));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -54,7 +60,7 @@ void GoblinShamanCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			// inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

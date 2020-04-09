@@ -11,7 +11,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Sound/Sound.h"
 #include "Events/NotificationEvents.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Objects/Platformer/Collectables/IOUDrop.h"
 
 #include "Resources/SoundResources.h"
 
@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string FirstIOUFound::MapKeyAttachedBehavior = "first-iou-found";
+const std::string FirstIOUFound::MapKey = "first-iou-found";
 
 FirstIOUFound* FirstIOUFound::create(GameObject* owner)
 {
@@ -32,7 +32,7 @@ FirstIOUFound* FirstIOUFound::create(GameObject* owner)
 
 FirstIOUFound::FirstIOUFound(GameObject* owner) : super(owner)
 {
-	this->iou = dynamic_cast<IOU*>(owner);
+	this->iou = dynamic_cast<IOUDrop*>(owner);
 
 	if (this->iou == nullptr)
 	{
@@ -54,4 +54,9 @@ void FirstIOUFound::onLoad()
 			SoundResources::Notifications_NotificationGood1
 		));
 	});
+}
+
+void FirstIOUFound::onDisable()
+{
+	super::onDisable();
 }

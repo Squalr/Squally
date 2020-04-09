@@ -1,10 +1,13 @@
 #include "LiquidTop.h"
 
-#ifdef _MSC_VER
+#if __GNUC__ || __clang__
+    // #include <execution>
+#else
     #include <execution>
 #endif
 
 #include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCConsole.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/renderer/CCCustomCommand.h"
 #include "cocos/renderer/CCGLProgramCache.h"
@@ -40,17 +43,18 @@ LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, 
     this->tension = tension;
     this->dampening = dampening;
     this->spread = spread;
-
-    int columnCount = int((this->surfaceSize.width / 128.0f) * float(LiquidTop::ColumnsPer128px));
+    this->columnCount = int((this->surfaceSize.width / 128.0f) * float(LiquidTop::ColumnsPer128px));
+    this->lastIndex = std::max(0, columnCount - 1);
 
     for (int index = 0; index < columnCount; index++)
     {
         ColumnData column = ColumnData(this->surfaceSize.height, this->surfaceSize.height, 0);
+        const uint16_t x = uint16_t((float(index) / float(this->lastIndex)) * this->surfaceSize.width);
 
         this->colorArray.push_back(surfaceColor);
         this->colorArray.push_back(bodyColor);
-        this->vertexArray.push_back(Vertex());
-        this->vertexArray.push_back(Vertex());
+        this->vertexArray.push_back(Vertex(x, uint16_t(this->surfaceSize.height)));
+        this->vertexArray.push_back(Vertex(x, 0));
         this->leftDeltas.push_back(0.0f);
         this->rightDeltas.push_back(0.0f);
         this->columns.push_back(column);
@@ -74,71 +78,40 @@ void LiquidTop::update(float dt)
 {
     super::update(dt);
 
-    #ifdef _MSC_VER
-        // Ignore the first and last columns as an optimization. Edges will always be at base water level.
-        std::for_each(
-            std::execution::par_unseq,
-            std::next(this->columns.begin(), 1),
-            std::prev(this->columns.end(), 1),
-            [=](LiquidTop::ColumnData& it)
-            {
-                it.update(this->dampening, this->tension);
-            }
-        );
+    if (this->lastIndex < 2)
+    {
+        return;
+    }
 
-        // See git commit history for unoptomized version.
-        std::for_each(
-            std::execution::par_unseq,
-            std::next(this->columnIndicies.begin(), 1),
-            std::prev(this->columnIndicies.end(), 1),
-            [=](int index)
-            {
-                // Intentional data races, no apparent visual impact.
-                const float delta = this->spread * (columns[index + 1].height - columns[index].height) + 
-                    this->spread * (columns[index - 1].height - columns[index].height);
-                columns[index].speed += delta;
-                columns[index].height += delta;
-            }
-        );
+    ColumnData* column = &columns[1];
 
-        std::for_each(
-            std::execution::par_unseq,
-            this->columnIndicies.begin(),
-            this->columnIndicies.end(),
-            [=](int index)
-            {
-                uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
-                uint16_t y = uint16_t(columns[index].height);
-                
-                this->vertexArray[2 * index] = Vertex(x, y);
-                this->vertexArray[2 * index + 1] = Vertex(x, 0);
-            }
-        );
-    #else
-        for (auto it = std::next(this->columns.begin(), 1); it != std::prev(this->columns.end(), 1); it++)
-        {
-            (*it).update(this->dampening, this->tension);
-        }
+    // First iteration is done out-of-loop
+    const float deltaHeight = column->targetHeight - column->height;
+    column->speed += this->tension * deltaHeight - column->speed * this->dampening;
+    column->height += column->speed;
 
-        for (auto it = std::next(this->columnIndicies.begin(), 1); it != std::prev(this->columnIndicies.end(), 1); it++)
-        {
-            int index = *it;
-            const float delta = this->spread * (columns[index + 1].height - columns[index].height) + 
-                this->spread * (columns[index - 1].height - columns[index].height);
-            columns[index].speed += delta;
-            columns[index].height += delta;
-        }
+    ColumnData* prevPrevColumn = &columns[0];
+    ColumnData* prevColumn = column;
 
-        for (auto it = std::next(this->columnIndicies.begin(), 1); it != std::prev(this->columnIndicies.end(), 1); it++)
-        {
-            int index = *it;
-            uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
-            uint16_t y = uint16_t(columns[index].height);
-            
-            this->vertexArray[2 * index] = Vertex(x, y);
-            this->vertexArray[2 * index + 1] = Vertex(x, 0);
-        }
-    #endif
+    // See git history for unoptimized version
+    for (int index = 2; index < this->lastIndex; index++)
+    {
+        column = &columns[index];
+
+        const float deltaHeight = column->targetHeight - column->height;
+        column->speed += this->tension * deltaHeight - column->speed * this->dampening;
+        column->height += column->speed;
+
+        const float delta = this->spread * (column->height - prevColumn->height) + 
+            this->spread * (prevPrevColumn->height - prevColumn->height);
+        prevColumn->speed += delta;
+        prevColumn->height += delta;
+
+        this->vertexArray[2 * index].y = uint16_t(column->height);
+
+        prevPrevColumn = prevColumn;
+        prevColumn = column;
+    }
 }
 
 void LiquidTop::splash(float x, float speed, float splashRadius, float decay)
@@ -147,9 +120,9 @@ void LiquidTop::splash(float x, float speed, float splashRadius, float decay)
     int minIndex = int(((x - splashRadius) / this->surfaceSize.width) * float(this->columns.size()));
     int maxIndex = int(((x + splashRadius) / this->surfaceSize.width) * float(this->columns.size()));
 
-    centralIndex = MathUtils::clamp(centralIndex, 0, this->columns.size() - 1);
-    minIndex = MathUtils::clamp(minIndex, 0, this->columns.size() - 1);
-    maxIndex = MathUtils::clamp(maxIndex, 0, this->columns.size() - 1);
+    centralIndex = MathUtils::clamp(centralIndex, 0, this->lastIndex);
+    minIndex = MathUtils::clamp(minIndex, 0, this->lastIndex);
+    maxIndex = MathUtils::clamp(maxIndex, 0, this->lastIndex);
 
     for (int index = minIndex; index <= maxIndex; index++)
     {

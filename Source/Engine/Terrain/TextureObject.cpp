@@ -28,24 +28,43 @@
 
 using namespace cocos2d;
 
-std::string TextureObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TextureObject::MapKeyTypeTexture = "texture";
+std::string TextureObject::PropertyKeyClearAnchor = "apply-anchor";
 
 TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : super(properties)
 {
 	this->terrainData = terrainData;
-	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TextureObject::MapKeyTypeIsHollow, Value(false)).asBool();
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
-
 	this->infillTexturesNode = Node::create();
 	this->boundsRect = Rect::ZERO;
 
 	this->addChild(this->infillTexturesNode);
 
 	// Build the terrain from the parsed points
-	this->setPoints(this->polylinePoints);
+	if (this->polylinePoints.empty())
+	{
+		Size size = Size(
+			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+		);
+
+		this->setPoints(std::vector<Vec2>({
+			Vec2(-size.width / 2.0f, -size.height / 2.0f),
+			Vec2(-size.width / 2.0f, size.height / 2.0f),
+			Vec2(size.width / 2.0f, size.height / 2.0f),
+			Vec2(size.width / 2.0f, -size.height / 2.0f)
+		}));
+
+		this->useClipping = false;
+	}
+	else
+	{
+		this->setPoints(this->polylinePoints);
+		this->useClipping = true;
+	}
+
 	this->buildTextures();
 }
 
@@ -69,17 +88,6 @@ void TextureObject::buildTextures()
 		return;
 	}
 
-	DrawNode* stencil = DrawNode::create();
-
-	for (auto it = this->textureTriangles.begin(); it != this->textureTriangles.end(); it++)
-	{
-		AlgoUtils::Triangle triangle = *it;
-
-		stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
-	}
-
-	ClippingNode* clip = ClippingNode::create(stencil);
-
 	// Create parameters to repeat the texture
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;
@@ -92,11 +100,32 @@ void TextureObject::buildTextures()
 
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
-	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
+	if (GameUtils::getKeyOrDefault(this->properties, TextureObject::PropertyKeyClearAnchor, Value(true)).asBool())
+	{
+		texture->setAnchorPoint(Vec2::ZERO);
+	}
+
 	texture->getTexture()->setTexParameters(params);
 	texture->setPosition(drawRect.origin);
-	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
-	clip->addChild(texture);
+	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width, drawRect.size.height));
 
-	this->infillTexturesNode->addChild(clip);
+	if (this->useClipping)
+	{
+		DrawNode* stencil = DrawNode::create();
+
+		for (auto triangle : this->textureTriangles)
+		{
+			stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
+		}
+
+		ClippingNode* clip = ClippingNode::create(stencil);
+
+		clip->addChild(texture);
+
+		this->infillTexturesNode->addChild(clip);
+	}
+	else
+	{
+		this->infillTexturesNode->addChild(texture);
+	}
 }

@@ -9,18 +9,18 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-class CodeEditor;
-class ConfirmationMenu;
+class CodeHud;
 class DeveloperHud;
-class IngameMenu;
+class GameMap;
 class Hud;
+class IngameMenu;
 class LayerDeserializer;
+class MatrixRain;
+class MusicOverlay;
 class OptionsMenu;
 class PauseMenu;
 class PlatformerDialogueBox;
 class RadialMenu;
-class GameMap;
-class MatrixRain;
 class HackerModeHud;
 
 class MapBase : public GlobalScene
@@ -30,16 +30,13 @@ public:
 
 protected:
 	MapBase(bool useIngameMenu, bool allowHackerMode);
-	~MapBase();
+	virtual ~MapBase();
 
 	void onEnter() override;
-	void onEnterTransitionDidFinish() override;
-	void resume() override;
-	void initializePositions() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
-	void onHackerModeEnable(int hackFlags) override;
+	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
@@ -49,6 +46,7 @@ protected:
 	Hud* hud;
 	Hud* hackerModeVisibleHud;
 	Hud* miniGameHud;
+	Hud* backMenuHud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
@@ -60,19 +58,18 @@ protected:
 	bool allowHackerMode;
 	std::vector<std::string> mapArgs;
 
+	cocos2d::Node* mapNode;
+
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode(void* userData);
 
 	Hud* hackerModeGlow;
-	Hud* sensingGlow;
 	MatrixRain* hackerModeRain;
-	CodeEditor* codeEditor;
+	CodeHud* codeHud;
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;
-	ConfirmationMenu* confirmationMenu;
+	MusicOverlay* musicOverlay;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
-
-	cocos2d::Node* mapNode;
 };

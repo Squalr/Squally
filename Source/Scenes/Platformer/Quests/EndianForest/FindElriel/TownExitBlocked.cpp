@@ -30,16 +30,16 @@ using namespace cocos2d;
 const std::string TownExitBlocked::MapKeyQuest = "town-exit-blocked";
 const std::string TownExitBlocked::TagBlockedExit = "blocked-exit";
 
-TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine)
 {
-	TownExitBlocked* instance = new TownExitBlocked(owner, questLine, questTag);
+	TownExitBlocked* instance = new TownExitBlocked(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownExitBlocked::MapKeyQuest, questTag, false)
+TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownExitBlocked::MapKeyQuest, false)
 {
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;
@@ -72,7 +72,7 @@ void TownExitBlocked::onLoad(QuestState questState)
 		ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 		{
 			this->squally = squally;
-		}, Squally::MapKeySqually);
+		}, Squally::MapKey);
 
 		ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
 		{
@@ -89,12 +89,11 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 		this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
 
 		this->chironCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 1.0f, 8.0f, 0.0f),
+			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 8.0f),
 			(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
-			false,
-			false
+			CollisionObject::Properties(false, false)
 		);
-		this->chironCollision->getPhysicsBody()->setPositionOffset(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
+		this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
 
 		this->chiron->addChild(this->chironCollision);
 
@@ -105,7 +104,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 				this->isEngagedInDialogue = true;
 
 				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown::create(),
+					Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Right,

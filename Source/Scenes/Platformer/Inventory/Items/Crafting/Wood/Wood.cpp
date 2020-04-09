@@ -1,15 +1,15 @@
 #include "Wood.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Wood::SaveKeyWood = "wood";
+const std::string Wood::SaveKey = "wood";
 
 Wood* Wood::create()
 {
@@ -20,7 +20,7 @@ Wood* Wood::create()
 	return instance;
 }
 
-Wood::Wood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Wood::Wood() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 4 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Wood::clone()
 
 std::string Wood::getItemName()
 {
-	return Wood::SaveKeyWood;
+	return Wood::SaveKey;
 }
 
 LocalizedString* Wood::getString()
@@ -45,10 +45,10 @@ LocalizedString* Wood::getString()
 
 std::string Wood::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Wood_Wood;
+	return ItemResources::Crafting_Smithing_Wood;
 }
 
 std::string Wood::getSerializationKey()
 {
-	return Wood::SaveKeyWood;
+	return Wood::SaveKey;
 }

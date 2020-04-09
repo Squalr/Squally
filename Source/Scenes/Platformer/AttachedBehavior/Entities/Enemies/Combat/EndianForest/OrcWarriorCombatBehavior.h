@@ -1,26 +1,21 @@
 #pragma once
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
 
-class PlatformerAttack;
-class PlatformerEntity;
-
-class OrcWarriorCombatBehavior : public AttachedBehavior
+class OrcWarriorCombatBehavior : public EntityCombatBehaviorBase
 {
 public:
 	static OrcWarriorCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	OrcWarriorCombatBehavior(GameObject* owner);
-	~OrcWarriorCombatBehavior();
+	virtual ~OrcWarriorCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
 
 private:
-	typedef AttachedBehavior super;
-
-	PlatformerEntity* entity;
+	typedef EntityCombatBehaviorBase super;
 };

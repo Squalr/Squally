@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorClippy.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -22,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string AddDoor::MapKeyAddDoor = "add-door";
+const std::string AddDoor::MapKey = "add-door";
 
 AddDoor* AddDoor::create(ValueMap& properties)
 {
@@ -35,22 +36,32 @@ AddDoor* AddDoor::create(ValueMap& properties)
 
 AddDoor::AddDoor(ValueMap& properties) : super(properties)
 {
+	this->clippy = AddDoorClippy::create();
+
+	this->registerClippy(this->clippy);
 }
 
 AddDoor::~AddDoor()
 {
 }
 
+void AddDoor::onEnter()
+{
+	super::onEnter();
+
+	this->enableAllClippy();
+}
+
 void AddDoor::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
-				AddDoor::MapKeyAddDoor,
+			HackableCode::HackableCodeInfo(
+				AddDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
 				UIResources::Menus_Icons_Heal,
 				AddDoorPreview::create(),
@@ -59,17 +70,18 @@ void AddDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				14.0f,
-				nullptr
+				0.0f,
+				this->clippy
 			)
 		},
 	};
 
 	auto incrementAnimationFunc = &AddDoor::AddDoorTransform;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -99,3 +111,4 @@ NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

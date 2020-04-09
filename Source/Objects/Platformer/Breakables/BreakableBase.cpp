@@ -4,7 +4,6 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsBody.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -14,7 +13,7 @@ using namespace cocos2d;
 
 BreakableBase::BreakableBase(ValueMap& properties, Size collisionSize, int requiredHits) : super(properties)
 {
-	this->breakableCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), (CollisionType)(PlatformerCollisionType::Breakable), false, false);
+	this->breakableCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)(PlatformerCollisionType::Breakable), CollisionObject::Properties(false, false));
 	
 	this->hasBroke = false;
 

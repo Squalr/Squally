@@ -16,7 +16,7 @@ class Catapult : public HackableObject
 public:
 	static Catapult* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCatapult;
+	static const std::string MapKey;
 
 	void launchCatapult();
 

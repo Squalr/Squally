@@ -14,7 +14,7 @@ class FloatingWoodenBeam : public DensityObject
 public:
 	static FloatingWoodenBeam* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyFloatingWoodenBeam;
+	static const std::string MapKey;
 
 protected:
 	FloatingWoodenBeam(cocos2d::ValueMap& properties);

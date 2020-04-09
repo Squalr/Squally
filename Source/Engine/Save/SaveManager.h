@@ -20,8 +20,8 @@ public:
 	static void batchSaveGlobalData(std::vector<std::tuple<std::string, cocos2d::Value>> newData);
 	static void saveGlobalData(std::string key, const cocos2d::Value& data);
 	static void batchSaveProfileData(std::vector<std::tuple<std::string, cocos2d::Value>> newData);
-	static void softSaveProfileData(std::string key, const cocos2d::Value& data);
-	static void saveProfileData(std::string key, const cocos2d::Value& data);
+	static void SoftSaveProfileData(std::string key, const cocos2d::Value& data);
+	static void SaveProfileData(std::string key, const cocos2d::Value& data);
 	static cocos2d::Value getGlobalDataOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	static cocos2d::Value getGlobalData(std::string key);
 	static cocos2d::Value getProfileDataOrDefault(std::string key, const cocos2d::Value& defaultValue);

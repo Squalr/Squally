@@ -214,58 +214,58 @@ VideoTab::VideoTab()
 	{
 		case ConfigManager::ResolutionSetting::R1080x768:
 		{
-			this->option1080x768->check();
+			this->option1080x768->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1152x864:
 		{
-			this->option1152x864->check();
+			this->option1152x864->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1280x720:
 		{
-			this->option1280x720->check();
+			this->option1280x720->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1280x960:
 		{
-			this->option1280x960->check();
+			this->option1280x960->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1280x1024:
 		{
-			this->option1280x1024->check();
+			this->option1280x1024->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1440x900:
 		{
-			this->option1440x900->check();
+			this->option1440x900->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1600x900:
 		{
-			this->option1600x900->check();
+			this->option1600x900->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1600x1024:
 		{
-			this->option1600x1024->check();
+			this->option1600x1024->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R1920x1080:
 		{
-			this->option1920x1080->check();
+			this->option1920x1080->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R2560x1440:
 		{
-			this->option2560x1440->check();
+			this->option2560x1440->check(false);
 			break;
 		}
 		case ConfigManager::ResolutionSetting::R3840x2160:
 		default:
 		{
-			this->option3840x2160->check();
+			this->option3840x2160->check(false);
 			break;
 		}
 	}
@@ -274,13 +274,13 @@ VideoTab::VideoTab()
 	{
 		case ConfigManager::GraphicsSetting::FastLowQuality:
 		{
-			this->optionLowQuality->check();
+			this->optionLowQuality->check(false);
 			break;
 		}
 		case ConfigManager::GraphicsSetting::SlowHighQuality:
 		default:
 		{
-			this->optionHighQuality->check();
+			this->optionHighQuality->check(false);
 			break;
 		}
 	}

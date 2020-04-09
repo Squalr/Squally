@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class EquipmentInventory;
 class PlatformerEntity;
 
 class EntityManaBehavior : public AttachedBehavior
@@ -16,9 +17,10 @@ public:
 
 protected:
 	EntityManaBehavior(GameObject* owner);
-	~EntityManaBehavior();
+	virtual ~EntityManaBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 	PlatformerEntity* entity;
 
@@ -26,4 +28,8 @@ private:
 	typedef AttachedBehavior super;
 
 	void onRevive();
+
+	int cachedMaxMana;
+	
+	EquipmentInventory* equipmentInventory;
 };

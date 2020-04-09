@@ -239,7 +239,7 @@ void CipherLock::onAnyStateChange(CipherState* cipherState)
 			this->cipherPins.clear();
 			this->cipherPinsNode->removeAllChildren();
 
-			for (auto it = cipherState->inputOutputMap.begin(); it != cipherState->inputOutputMap.end(); it++)
+			for (auto next : cipherState->inputOutputMap)
 			{
 				Sprite* pinhole = Sprite::create(CipherResources::Lock_Pinhole);
 				Sprite* pin = Sprite::create(CipherResources::Lock_Pin);

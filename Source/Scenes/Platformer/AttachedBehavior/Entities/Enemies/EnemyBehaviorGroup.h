@@ -14,11 +14,11 @@ class EnemyBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static EnemyBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EnemyBehaviorGroup(GameObject* owner);
-	~EnemyBehaviorGroup();
+	virtual ~EnemyBehaviorGroup();
 
 	void onLoad() override;
 

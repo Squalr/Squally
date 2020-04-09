@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalBaron::MapKeySkeletalBaron = "skeletal-baron";
+const std::string SkeletalBaron::MapKey = "skeletal-baron";
 HexusOpponentData* SkeletalBaron::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalBaron::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_BARON";
 
@@ -32,7 +31,7 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& properties)
 }
 
 SkeletalBaron::SkeletalBaron(ValueMap& properties) : super(properties,
-	SkeletalBaron::MapKeySkeletalBaron,
+	SkeletalBaron::MapKey,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
 	Size(112.0f, 368.0f),

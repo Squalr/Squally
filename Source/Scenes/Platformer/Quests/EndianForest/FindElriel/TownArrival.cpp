@@ -25,16 +25,16 @@ using namespace cocos2d;
 
 const std::string TownArrival::MapKeyQuest = "town-arrival";
 
-TownArrival* TownArrival::create(GameObject* owner, QuestLine* questLine, std::string questTag)
+TownArrival* TownArrival::create(GameObject* owner, QuestLine* questLine)
 {
-	TownArrival* instance = new TownArrival(owner, questLine, questTag);
+	TownArrival* instance = new TownArrival(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TownArrival::TownArrival(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownArrival::MapKeyQuest, questTag, true)
+TownArrival::TownArrival(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownArrival::MapKeyQuest, true)
 {
 	this->scrappy = nullptr;
 	this->squally = nullptr;
@@ -49,12 +49,12 @@ void TownArrival::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 }
 
 void TownArrival::onActivate(bool isActiveThroughSkippable)
@@ -85,7 +85,7 @@ void TownArrival::runCinematicSequence()
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Scrappy_A_LetsFindABoat::create()
-			->setStringReplacementVariables({ Strings::Platformer_MapNames_Zones_UnderflowRuins::create() }),
+			->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_UnderflowRuins::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

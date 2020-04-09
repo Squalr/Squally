@@ -21,6 +21,19 @@ public:
 	static const std::string SaveKeyHelperName;
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;
+	static const std::string SaveKeyHasGivenDefaultItems;
+
+	static const std::string SaveKeyLevelRubberband;
+	
+	static const std::string SaveKeySpellBookArcane;
+	static const std::string SaveKeySpellBookFire;
+	static const std::string SaveKeySpellBookFrost;
+	static const std::string SaveKeySpellBookHoly;
+	static const std::string SaveKeySpellBookLightning;
+	static const std::string SaveKeySpellBookNature;
+	static const std::string SaveKeySpellBookShadow;
+	static const std::string SaveKeySpellBookWater;
+	static const std::string SaveKeySpellBookWind;
 
 	static const std::string SaveKeyCollectableAnimalBat;
 	static const std::string SaveKeyCollectableAnimalBear;

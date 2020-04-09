@@ -14,11 +14,11 @@ class SquallyAbilityBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static SquallyAbilityBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyAbilityBehaviorGroup(GameObject* owner);
-	~SquallyAbilityBehaviorGroup();
+	virtual ~SquallyAbilityBehaviorGroup();
 
 	void onLoad() override;
 

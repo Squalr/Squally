@@ -52,7 +52,6 @@ public:
 class ObjectEvents
 {
 public:
-	static const std::string EventCollisonMapUpdated;
 	static const std::string EventQueryObject;
 	static const std::string EventQueryObjectByTagPrefix;
 	static const std::string EventBroadCastMapObjectStatePrefix;
@@ -67,8 +66,10 @@ public:
 
 	enum class SpawnMethod
 	{
+		LayerBelow,
 		Below,
 		Above,
+		TopMost,
 	};
 
 	enum class PositionMode
@@ -84,21 +85,23 @@ public:
 		cocos2d::Node* objectToSpawn;
 		SpawnMethod spawnMethod;
 		PositionMode positionMode;
+		std::function<void()> onSpawnSuccess;
+		std::function<void()> onSpawnFailed;
+		
+		bool handled;
 
-		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
+		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above), onSpawnSuccess(nullptr), onSpawnFailed(nullptr), handled(false) { }
+		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode, std::function<void()> onSpawnSuccess, std::function<void()> onSpawnFailed)
+			: spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode), onSpawnSuccess(onSpawnSuccess), onSpawnFailed(onSpawnFailed), handled(false) { }
 	};
 
 	struct RequestObjectSpawnDelegatorArgs
 	{
 		MapLayer* sourceLayer;
-		cocos2d::Node* spawner;
-		cocos2d::Node* objectToSpawn;
-		SpawnMethod spawnMethod;
-		PositionMode positionMode;
+		RequestObjectSpawnArgs* innerArgs;
 
-		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
+		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), innerArgs(nullptr) { }
+		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, RequestObjectSpawnArgs* innerArgs) : sourceLayer(sourceLayer), innerArgs(innerArgs) { }
 	};
 
 	struct RelocateObjectArgs
@@ -126,8 +129,7 @@ public:
 
 		StateWriteArgs(GameObject* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
 	};
-
-	static void TriggerCollisionMapUpdated();
+	
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerBindObjectToUI(RelocateObjectArgs args);
 	static void TriggerReparentBind(ReparentBindArgs args);
@@ -155,12 +157,12 @@ public:
 		}
 	}
 
-	static inline unsigned long long WatchId = 0;
+	static unsigned long long WatchId;
 
 	template <class T>
 	static void watchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::string tag = "")
 	{
-		unsigned long long watchId = WatchId++;
+		unsigned long long watchId = ObjectEvents::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
 
 		bool wasHandled = false;

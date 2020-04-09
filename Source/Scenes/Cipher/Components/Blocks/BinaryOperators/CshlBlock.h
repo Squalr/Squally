@@ -8,13 +8,13 @@ public:
 	static CshlBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	CshlBlock(BlockType blockType);
+	virtual ~CshlBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	CshlBlock(BlockType blockType);
-	~CshlBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

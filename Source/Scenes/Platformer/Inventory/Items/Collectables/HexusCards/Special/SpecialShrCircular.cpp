@@ -1,16 +1,16 @@
 #include "SpecialShrCircular.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialShrCircular::SaveKeySpecialShrCircular = "special-shr-circular";
+const std::string SpecialShrCircular::SaveKey = "special-shr-circular";
 
 SpecialShrCircular* SpecialShrCircular::create()
 {
@@ -21,7 +21,7 @@ SpecialShrCircular* SpecialShrCircular::create()
 	return instance;
 }
 
-SpecialShrCircular::SpecialShrCircular() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialShrCircular::SpecialShrCircular() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialShrCircular::clone()
 
 std::string SpecialShrCircular::getItemName()
 {
-	return SpecialShrCircular::SaveKeySpecialShrCircular;
+	return SpecialShrCircular::SaveKey;
 }
 
 LocalizedString* SpecialShrCircular::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialShrCircular::getString()
 
 std::string SpecialShrCircular::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialShrCircular::getSerializationKey()
 {
-	return SpecialShrCircular::SaveKeySpecialShrCircular;
+	return SpecialShrCircular::SaveKey;
 }
 
 std::string SpecialShrCircular::getCardKey()

@@ -26,9 +26,9 @@ Cutscene::Cutscene(std::function<void()> cutsceneCompleteCallback)
 
 Cutscene::~Cutscene()
 {
-	for (auto it = this->cutsceneClips.begin(); it != this->cutsceneClips.end(); it++)
+	for (auto next : this->cutsceneClips)
 	{
-		(*it)->release();
+		next->release();
 	}
 }
 

@@ -10,6 +10,9 @@ public:
 	static CipherStateLoadInitialState* create();
 
 protected:
+	CipherStateLoadInitialState();
+	virtual ~CipherStateLoadInitialState();
+	
 	void onBeforeStateEnter(CipherState* cipherState) override;
 	void onStateEnter(CipherState* cipherState) override;
 	void onStateReload(CipherState* cipherState) override;
@@ -17,8 +20,6 @@ protected:
 
 private:
 	typedef CipherStateBase super;
-	CipherStateLoadInitialState();
-	~CipherStateLoadInitialState();
 
 	void buildSpawnMap();
 	void spawnBlocks(CipherState* cipherState);

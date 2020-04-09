@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Bancroft::MapKeyBancroft = "bancroft";
+const std::string Bancroft::MapKey = "bancroft";
 HexusOpponentData* Bancroft::HexusOpponentDataInstance = nullptr;
 const std::string Bancroft::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BANCROFT";
 
@@ -32,7 +31,7 @@ Bancroft* Bancroft::deserialize(ValueMap& properties)
 }
 
 Bancroft::Bancroft(ValueMap& properties) : super(properties,
-	Bancroft::MapKeyBancroft,
+	Bancroft::MapKey,
 	EntityResources::Npcs_VoidStar_Bancroft_Animations,
 	EntityResources::Npcs_VoidStar_Bancroft_Emblem,
 	Size(112.0f, 160.0f),

@@ -8,16 +8,13 @@
         "libjpeg-turbo", 
         "libogg", 
         "libpng", 
-        "libvorbis", 
-        "libwebp", 
+        "libvorbis",
         "mpg123", 
         "rapidjson", 
         "tiff", 
         "tinyxml2", 
         "xxhash", 
-        "zlib", 
-        "sqlite3", 
-        "chipmunk"
+        "zlib"
     ], 
     "darwin": [], 
     "linux": [

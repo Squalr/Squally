@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DarkTiger::MapKeyDarkTiger = "dark-tiger";
+const std::string DarkTiger::MapKey = "dark-tiger";
 HexusOpponentData* DarkTiger::HexusOpponentDataInstance = nullptr;
 const std::string DarkTiger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DARK_TIGER";
 
@@ -32,7 +31,7 @@ DarkTiger* DarkTiger::deserialize(ValueMap& properties)
 }
 
 DarkTiger::DarkTiger(ValueMap& properties) : super(properties,
-	DarkTiger::MapKeyDarkTiger,
+	DarkTiger::MapKey,
 	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
 	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,
 	Size(256.0f, 248.0f),

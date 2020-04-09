@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Gramps::MapKeyGramps = "gramps";
+const std::string Gramps::MapKey = "gramps";
 HexusOpponentData* Gramps::HexusOpponentDataInstance = nullptr;
 const std::string Gramps::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRAMPS";
 
@@ -32,7 +31,7 @@ Gramps* Gramps::deserialize(ValueMap& properties)
 }
 
 Gramps::Gramps(ValueMap& properties) : super(properties,
-	Gramps::MapKeyGramps,
+	Gramps::MapKey,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,
 	Size(112.0f, 160.0f),

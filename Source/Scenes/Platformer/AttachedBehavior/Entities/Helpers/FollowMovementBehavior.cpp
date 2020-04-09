@@ -7,13 +7,15 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
-const std::string FollowMovementBehavior::MapKeyAttachedBehavior = "follow-movement";
+const std::string FollowMovementBehavior::MapKey = "follow-movement";
 const float FollowMovementBehavior::StopFollowRangeX = 128.0f;
 const float FollowMovementBehavior::TryJumpRangeY = 96.0f;
 const float FollowMovementBehavior::ResetRangeX = 2048.0f;
@@ -48,7 +50,19 @@ void FollowMovementBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
+	
+	this->entity->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
+	{
+		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
+	});
+	
+	this->scheduleUpdate();
+}
+
+void FollowMovementBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void FollowMovementBehavior::update(float dt)

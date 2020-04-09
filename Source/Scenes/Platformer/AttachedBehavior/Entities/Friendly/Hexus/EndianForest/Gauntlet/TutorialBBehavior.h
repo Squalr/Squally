@@ -14,7 +14,7 @@ public:
 
 protected:
 	TutorialBBehavior(GameObject* owner);
-	~TutorialBBehavior();
+	virtual ~TutorialBBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

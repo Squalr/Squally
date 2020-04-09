@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyCombatBehaviorGroup::MapKeyAttachedBehavior = "scrappy-combat";
+const std::string ScrappyCombatBehaviorGroup::MapKey = "scrappy-combat";
 
 ScrappyCombatBehaviorGroup* ScrappyCombatBehaviorGroup::create(GameObject* owner)
 {

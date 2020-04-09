@@ -124,9 +124,9 @@ void PauseMenu::onEnter()
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->quitToTitleButton, delay, duration);
 
-	for (auto it = this->addedButtons.begin(); it != this->addedButtons.end(); it++)
+	for (auto next : this->addedButtons)
 	{
-		GameUtils::fadeInObject(*it, delay, duration);
+		GameUtils::fadeInObject(next, delay, duration);
 	}
 }
 
@@ -182,7 +182,7 @@ void PauseMenu::initializeListeners()
 	{
 		this->close();
 	});
-	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

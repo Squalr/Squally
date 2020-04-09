@@ -19,9 +19,9 @@ public:
 	std::string getDropPool();
 	void setDropPool(std::string dropPool);
 
-	static const std::string MapKeyBattleMap;
-	static const std::string MapKeyBattleTag;
-	static const std::string MapKeyDropPool;
+	static const std::string PropertyBattleMap;
+	static const std::string PropertyBattleTag;
+	static const std::string PropertyDropPool;
 	static const std::string PlatformerEnemyTag;
 
 protected:

@@ -60,33 +60,33 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 {
 	CollisionMappingEvents::CollisionMapRequestArgs* args = (CollisionMappingEvents::CollisionMapRequestArgs*)(eventCustom->getUserData());
 
-	if (args == nullptr || args->collisionObject == nullptr)
+	if (args == nullptr || args->callback == nullptr)
 	{
 		return;
 	}
 
 	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
 	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Solid);
+		args->callback((int)PlatformerCollisionType::Solid);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePassThrough)
 	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::PassThrough);
+		args->callback((int)PlatformerCollisionType::PassThrough);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc)
 	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::SolidNpcOnly);
+		args->callback((int)PlatformerCollisionType::SolidNpcOnly);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeForce)
 	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Force);
+		args->callback((int)PlatformerCollisionType::Force);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeWater)
 	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Water);
+		args->callback((int)PlatformerCollisionType::Water);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeDamage)
 	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Damage);
+		args->callback((int)PlatformerCollisionType::Damage);
 	}
 }

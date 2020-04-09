@@ -1,29 +1,35 @@
 
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/SmartNode.h"
 
-class AttachedBehavior : public HackableObject
+class GameObject;
+
+class AttachedBehavior : public SmartNode
 {
 public:
 	bool isInvalidated();
+	bool isQueryable();
+
+	virtual void onDisable();
 
 protected:
 	AttachedBehavior(GameObject* owner);
 	virtual ~AttachedBehavior();
 
-	void initializeListeners() override;
 	void onEnterTransitionDidFinish() override;
 
 	virtual void onLoad() = 0;
 	void invalidate();
+	void toggleQueryable(bool queryable);
 
 private:
-	typedef HackableObject super;
+	typedef SmartNode super;
 	
 	void updateState();
 
 	GameObject* owner;
 	bool invalidated;
+	bool queryable;
 };
 

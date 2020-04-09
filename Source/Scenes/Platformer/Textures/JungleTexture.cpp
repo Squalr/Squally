@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string JungleTexture::MapKeyTextureType = "jungle";
+const std::string JungleTexture::MapKey = "jungle";
 
 JungleTexture* JungleTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ JungleTexture* JungleTexture::create(ValueMap& properties)
 JungleTexture::JungleTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		JungleTexture::MapKeyTextureType,
+		JungleTexture::MapKey,
 		TextureResources::JungleTexture,
 		Color4B(11, 30, 39, 255)))
 {

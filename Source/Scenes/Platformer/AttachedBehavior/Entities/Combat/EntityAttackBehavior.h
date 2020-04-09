@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class Consumable;
 class PlatformerAttack;
 class PlatformerEntity;
 
@@ -13,17 +14,21 @@ public:
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> getNoCostAttacks();
-	std::vector<PlatformerAttack*> getAvailableConsumables();
+	std::vector<Consumable*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const float DefaultRecoverSpeed;
+	static const float DefaultRecoverSpeedSlow;
+	static const float DefaultRecoverSpeedVerySlow;
+	static const std::string MapKey;
 
 protected:
 	EntityAttackBehavior(GameObject* owner);
-	~EntityAttackBehavior();
+	virtual ~EntityAttackBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
@@ -38,5 +43,5 @@ private:
 	bool consumablesStale;
 
 	std::vector<PlatformerAttack*> registeredAttacks;
-	std::vector<PlatformerAttack*> registeredConsumables;
+	std::vector<Consumable*> registeredConsumables;
 };

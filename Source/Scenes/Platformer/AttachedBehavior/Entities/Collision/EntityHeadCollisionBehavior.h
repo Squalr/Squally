@@ -14,20 +14,22 @@ public:
 	
 	CollisionObject* headCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityHeadCollisionBehavior(GameObject* owner);
-	~EntityHeadCollisionBehavior();
+	virtual ~EntityHeadCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
 
+	void buildHeadCollisionDetector();
+
 	PlatformerEntity* entity;
 
 	static const float HeadCollisionPadding;
-	static const float HeadCollisionOffset;
-	static const float HeadCollisionRadius;
+	static const float HeadCollisionSize;
 };

@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string ReanimatedPig::MapKeyReanimatedPig = "reanimated-pig";
+const std::string ReanimatedPig::MapKey = "reanimated-pig";
 HexusOpponentData* ReanimatedPig::HexusOpponentDataInstance = nullptr;
 const std::string ReanimatedPig::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_PIG";
 
@@ -32,7 +31,7 @@ ReanimatedPig* ReanimatedPig::deserialize(ValueMap& properties)
 }
 
 ReanimatedPig::ReanimatedPig(ValueMap& properties) : super(properties,
-	ReanimatedPig::MapKeyReanimatedPig,
+	ReanimatedPig::MapKey,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
 	Size(256.0f, 240.0f),

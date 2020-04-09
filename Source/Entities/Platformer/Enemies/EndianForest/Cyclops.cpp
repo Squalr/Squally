@@ -2,15 +2,13 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Cyclops::MapKeyCyclops = "cyclops";
+const std::string Cyclops::MapKey = "cyclops";
 
 Cyclops* Cyclops::deserialize(ValueMap& properties)
 {
@@ -22,7 +20,7 @@ Cyclops* Cyclops::deserialize(ValueMap& properties)
 }
 
 Cyclops::Cyclops(ValueMap& properties) : super(properties,
-	Cyclops::MapKeyCyclops,
+	Cyclops::MapKey,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
 	Size(296.0f, 256.0f),

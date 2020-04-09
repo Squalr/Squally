@@ -40,11 +40,9 @@ Clippy* PendulumBladeClippy::innerClone()
 	return PendulumBladeClippy::create();
 }
 
-void PendulumBladeClippy::onEnterTransitionDidFinish()
+void PendulumBladeClippy::startDialogue()
 {
-	super::onEnterTransitionDidFinish();
-
-	LocalizedString* localizedString = Strings::Menus_Hacking_ClippyHelp_PendulumBladeMov::create();
+	LocalizedString* localizedString = Strings::Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov::create();
 
 	if (sizeof(void*) == 8)
 	{
@@ -55,5 +53,5 @@ void PendulumBladeClippy::onEnterTransitionDidFinish()
 		localizedString->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create());
 	}
 
-	this->speechBubble->runDialogue(localizedString, SoundResources::Platformer_Entities_Droid_DroidChatter, SpeechBubble::InfiniteDuration);
+	this->runDialogue(localizedString, SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

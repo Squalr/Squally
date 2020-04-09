@@ -6,5 +6,5 @@ class CardShiftLeftCircular : public CardData
 {
 public:
 	CardShiftLeftCircular();
-	~CardShiftLeftCircular();
+	virtual ~CardShiftLeftCircular();
 };

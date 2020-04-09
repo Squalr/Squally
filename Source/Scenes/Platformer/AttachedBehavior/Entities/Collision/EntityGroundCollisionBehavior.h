@@ -12,26 +12,37 @@ public:
 
 	void onCollideWithGround();
 	bool isOnGround();
+	bool hasLeftCornerCollision();
+	bool hasRightCornerCollision();
 	bool isStandingOn(CollisionObject* collisonObject);
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
+	CollisionObject* leftCornerCollision;
+	CollisionObject* rightCornerCollision;
 	CollisionObject* groundCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityGroundCollisionBehavior(GameObject* owner);
-	~EntityGroundCollisionBehavior();
+	virtual ~EntityGroundCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
 
+	void buildGroundCollisionDetector();
+	void buildCornerCollisionDetectors();
+
 	PlatformerEntity* entity;
+
+	float detectorWidth;
 
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float GroundCollisionHeight;
 	static const float GroundCollisionRadius;
+	static const float CornerCollisionWidth;
 };

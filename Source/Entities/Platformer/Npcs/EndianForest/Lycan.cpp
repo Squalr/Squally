@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Lycan::MapKeyLycan = "lycan";
+const std::string Lycan::MapKey = "lycan";
 HexusOpponentData* Lycan::HexusOpponentDataInstance = nullptr;
 const std::string Lycan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LYCAN";
 
@@ -32,7 +31,7 @@ Lycan* Lycan::deserialize(ValueMap& properties)
 }
 
 Lycan::Lycan(ValueMap& properties) : super(properties,
-	Lycan::MapKeyLycan,
+	Lycan::MapKey,
 	EntityResources::Npcs_EndianForest_Lycan_Animations,
 	EntityResources::Npcs_EndianForest_Lycan_Emblem,
 	Size(112.0f, 160.0f),

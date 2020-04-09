@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/WoodTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string WoodTerrain::MapKeyTerrainType = "wood";
+const std::string WoodTerrain::MapKey = "wood";
 
 WoodTerrain* WoodTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ WoodTerrain* WoodTerrain::create(ValueMap& properties)
 WoodTerrain::WoodTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return WoodTexture::create(transformedProps);
+		},
 		0.5f,
-		WoodTerrain::MapKeyTerrainType,
+		WoodTerrain::MapKey,
 		TextureResources::WoodTexture,
 		TerrainResources::Wood_Top,
 		TerrainResources::Wood_TopLeft,

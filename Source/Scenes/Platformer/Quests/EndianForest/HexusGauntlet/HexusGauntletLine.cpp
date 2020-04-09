@@ -5,10 +5,9 @@
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialB.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialC.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialD.h"
-#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialE.h"
-#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialF.h"
-#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/ReturnToMarcel.h"
-#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/TalkToMarcel.h"
+#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/ReturnToSarude.h"
+#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/TalkToSarude.h"
+#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/WelcomeToMagesGuild.h"
 
 using namespace cocos2d;
 
@@ -24,18 +23,22 @@ HexusGauntletLine* HexusGauntletLine::create()
 }
 
 HexusGauntletLine::HexusGauntletLine() : super(HexusGauntletLine::MapKeyQuestLine, {
-	QuestData(TalkToMarcel::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToMarcel::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialA::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialA::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialB::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialB::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialC::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialC::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialD::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialD::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialE::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialE::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialF::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialF::create(owner, questLine, questTag); }),
-	QuestData(ReturnToMarcel::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return ReturnToMarcel::create(owner, questLine, questTag); }),
+	QuestData(WelcomeToMagesGuild::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return WelcomeToMagesGuild::create(owner, questLine); }),
+	QuestData(TalkToSarude::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return TalkToSarude::create(owner, questLine); }),
+	QuestData(BeatTutorialA::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialA::create(owner, questLine); }),
+	QuestData(BeatTutorialB::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialB::create(owner, questLine); }),
+	QuestData(BeatTutorialC::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialC::create(owner, questLine); }),
+	QuestData(BeatTutorialD::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialD::create(owner, questLine); }),
+	QuestData(ReturnToSarude::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return ReturnToSarude::create(owner, questLine); }),
 })
 {
 }
 
 HexusGauntletLine::~HexusGauntletLine()
 {
+}
+
+QuestLine* HexusGauntletLine::clone()
+{
+	return HexusGauntletLine::create();
 }

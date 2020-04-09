@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/Bow.h"
 
-class BoneBow : public Weapon
+class BoneBow : public Bow
 {
 public:
 	static BoneBow* create();
@@ -14,12 +14,12 @@ public:
 	std::string getSerializationKey() override;
 	cocos2d::Vec2 getDisplayOffset() override;
 
-	static const std::string SaveKeyBoneBow;
+	static const std::string SaveKey;
 
 protected:
 	BoneBow();
-	~BoneBow();
+	virtual ~BoneBow();
 
 private:
-	typedef Weapon super;
+	typedef Bow super;
 };

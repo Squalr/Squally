@@ -1,0 +1,58 @@
+
+	{{ClassName}}* {{ClassName}}::create()
+	{
+		{{ClassName}}* instance = new {{ClassName}}();
+
+		instance->autorelease();
+
+		return instance;
+	}
+	
+	LocalizedString* {{ClassName}}::clone()
+	{
+		LocalizedString* clonedString = {{ClassName}}::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
+	}
+
+	{{ClassName}}::{{ClassName}}() : LocalizedString() { }
+
+	std::string {{ClassName}}::getStringIdentifier() { return "{{ClassName}}"; }
+
+	std::string {{ClassName}}::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "{{ar}}"; }
+			case LanguageType::BULGARIAN:				{ return "{{bg}}"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "{{zh-CN}}"; }
+			case LanguageType::CHINESE_TRADITIONAL:		{ return "{{zh-TW}}"; }
+			case LanguageType::CZECH:					{ return "{{cs}}"; }
+			case LanguageType::DANISH:					{ return "{{da}}"; }
+			case LanguageType::DUTCH:					{ return "{{nl}}"; }
+			case LanguageType::FINNISH:					{ return "{{fi}}"; }
+			case LanguageType::FRENCH:					{ return "{{fr}}"; }
+			case LanguageType::GERMAN:					{ return "{{de}}"; }
+			case LanguageType::GREEK:					{ return "{{el}}"; }
+			case LanguageType::HUNGARIAN:				{ return "{{hu}}"; }
+			case LanguageType::ITALIAN:					{ return "{{it}}"; }
+			case LanguageType::JAPANESE:				{ return "{{ja}}"; }
+			case LanguageType::KOREAN:					{ return "{{ko}}"; }
+			case LanguageType::NORWEGIAN:				{ return "{{no}}"; }
+			case LanguageType::POLISH:					{ return "{{pl}}"; }
+			case LanguageType::PORTUGUESE:				{ return "{{pt}}"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "{{pt-BR}}"; }
+			case LanguageType::ROMANIAN:				{ return "{{ro}}"; }
+			case LanguageType::RUSSIAN:					{ return "{{ru}}"; }
+			case LanguageType::SPANISH:					{ return "{{es}}"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "{{es-419}}"; }
+			case LanguageType::SWEDISH:					{ return "{{sv}}"; }
+			case LanguageType::THAI:					{ return "{{th}}"; }
+			case LanguageType::TURKISH:					{ return "{{tr}}"; }
+			case LanguageType::UKRAINIAN:				{ return "{{uk}}"; }
+			case LanguageType::VIETNAMESE:				{ return "{{vi}}"; }
+			default: case LanguageType::ENGLISH:		{ return "{{en}}"; }
+		}
+	}

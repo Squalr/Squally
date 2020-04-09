@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedHippo::MapKeyCagedHippo = "caged-hippo";
+const std::string CagedHippo::MapKey = "caged-hippo";
 
 CagedHippo* CagedHippo::create(ValueMap& properties)
 {

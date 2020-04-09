@@ -1,16 +1,16 @@
 #include "SpecialSteal.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialSteal::SaveKeySpecialSteal = "special-steal";
+const std::string SpecialSteal::SaveKey = "special-steal";
 
 SpecialSteal* SpecialSteal::create()
 {
@@ -21,7 +21,7 @@ SpecialSteal* SpecialSteal::create()
 	return instance;
 }
 
-SpecialSteal::SpecialSteal() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialSteal::SpecialSteal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 23 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialSteal::clone()
 
 std::string SpecialSteal::getItemName()
 {
-	return SpecialSteal::SaveKeySpecialSteal;
+	return SpecialSteal::SaveKey;
 }
 
 LocalizedString* SpecialSteal::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialSteal::getString()
 
 std::string SpecialSteal::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialSteal::getSerializationKey()
 {
-	return SpecialSteal::SaveKeySpecialSteal;
+	return SpecialSteal::SaveKey;
 }
 
 std::string SpecialSteal::getCardKey()

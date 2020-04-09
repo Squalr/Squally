@@ -1,36 +1,44 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
+#include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
 class ProgressBar;
+class SmartParticles;
+class Sound;
 
-class FriendlyExpBarBehavior : public EntityCollisionBehaviorBase
+class FriendlyExpBarBehavior : public AttachedBehavior
 {
 public:
 	static FriendlyExpBarBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	void giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain);
+
+	static const std::string MapKey;
 
 protected:
 	FriendlyExpBarBehavior(GameObject* owner);
-	~FriendlyExpBarBehavior();
+	virtual ~FriendlyExpBarBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
-	typedef EntityCollisionBehaviorBase super;
+	typedef AttachedBehavior super;
 
-	void giveExp();
-	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete = nullptr);
+	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete = nullptr);
 	void runLevelUpEffect();
 
-	PlatformerEntity* owner;
+	PlatformerEntity* entity;
 	
-	int tickCounter;
+	int tickCounterA;
+	int tickCounterB;
 	ProgressBar* expProgressBar;
 	LocalizedString* deltaString;
 	LocalizedLabel* deltaLabel;
+	LocalizedLabel* levelUpLabel;
+	SmartParticles* levelUpFx;
+	Sound* levelUpSound;
 };

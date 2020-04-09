@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Hera::MapKeyHera = "hera";
+const std::string Hera::MapKey = "hera";
 HexusOpponentData* Hera::HexusOpponentDataInstance = nullptr;
 const std::string Hera::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HERA";
 
@@ -32,7 +31,7 @@ Hera* Hera::deserialize(ValueMap& properties)
 }
 
 Hera::Hera(ValueMap& properties) : super(properties,
-	Hera::MapKeyHera,
+	Hera::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hera_Emblem,
 	Size(112.0f, 160.0f),

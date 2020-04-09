@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string MetalSpikes::MapKeyMetalSpikes = "metal-spikes";
+const std::string MetalSpikes::MapKey = "metal-spikes";
 const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
 MetalSpikes* MetalSpikes::create(ValueMap& properties)
@@ -43,7 +43,7 @@ MetalSpikes::MetalSpikes(ValueMap& properties) : super(properties)
 
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 
-	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
@@ -82,16 +82,13 @@ Vec2 MetalSpikes::getButtonOffset()
 void MetalSpikes::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
-				MetalSpikes::MapKeyMetalSpikes,
+			HackableCode::HackableCodeInfo(
+				MetalSpikes::MapKey,
 				Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
 				MetalSpikesUpdateTimerPreview::create(),
@@ -99,17 +96,18 @@ void MetalSpikes::registerHackables()
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				int(HackFlags::None),
-				20.0f
+				20.0f,
+				0.0f
 			)
 		},
 	};
 
 	auto updateSpikesFunc = &MetalSpikes::updateSpikes;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -169,3 +167,4 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 		});
 	}
 }
+END_NO_OPTIMIZE

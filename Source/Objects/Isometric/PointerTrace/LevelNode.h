@@ -19,11 +19,11 @@ public:
 
 	std::string nodeMapFile;
 
-	static const std::string MapKeyLevelNode;
+	static const std::string MapKey;
 
 protected:
 	LevelNode(const cocos2d::ValueMap& properties);
-	~LevelNode();
+	virtual ~LevelNode();
 
 private:
 	typedef HackableObject super;
@@ -41,9 +41,9 @@ private:
 	ClickableNode* sprite;
 	LocalizedLabel* indexLabel;
 
-	static const std::string MapKeyMapFile;
-	static const std::string MapKeyGroupIndex;
-	static const std::string MapKeyGroupFinale;
-	static const std::string MapKeyLevelIndex;
+	static const std::string PropertyMapFile;
+	static const std::string PropertyGroupIndex;
+	static const std::string PropertyGroupFinale;
+	static const std::string PropertyLevelIndex;
 	static const std::string SaveKeyPrefix;
 };

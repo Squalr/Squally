@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/LavaTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string LavaTerrain::MapKeyTerrainType = "lava";
+const std::string LavaTerrain::MapKey = "lava";
 
 LavaTerrain* LavaTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ LavaTerrain* LavaTerrain::create(ValueMap& properties)
 LavaTerrain::LavaTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return LavaTexture::create(transformedProps);
+		},
 		0.5f,
-		LavaTerrain::MapKeyTerrainType,
+		LavaTerrain::MapKey,
 		TextureResources::LavaTexture,
 		TerrainResources::Lava_Top,
 		TerrainResources::Lava_TopLeft,

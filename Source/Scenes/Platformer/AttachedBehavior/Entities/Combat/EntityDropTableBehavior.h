@@ -4,7 +4,7 @@
 
 class DropPoolDeserializer;
 class PlatformerEntity;
-class MinMaxPool;
+class DropPool;
 
 class EntityDropTableBehavior : public AttachedBehavior
 {
@@ -12,20 +12,21 @@ public:
 	static EntityDropTableBehavior* create(GameObject* owner);
 
 	void setDropTable(std::string dropTable);
-	MinMaxPool* getDropPool();
+	DropPool* getDropPool();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityDropTableBehavior(GameObject* owner);
-	~EntityDropTableBehavior();
+	virtual ~EntityDropTableBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
 
 	PlatformerEntity* entity;
 	DropPoolDeserializer* dropPoolDeserializer;
-	MinMaxPool* dropPool;
+	DropPool* dropPool;
 };

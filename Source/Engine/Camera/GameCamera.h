@@ -44,23 +44,29 @@ public:
 	void popTarget();
 	void clearTargets();
 
-private:
-	typedef GlobalNode super;
+protected:
 	GameCamera();
 	virtual ~GameCamera();
+	
 	void onEnter() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef GlobalNode super;
+
+	void resetCamera();
 	float getIntendedCameraDistance();
-	cocos2d::Vec2 boundCameraByEllipses();
-	cocos2d::Vec2 boundCameraByRectangle();
+	cocos2d::Vec2 boundCameraByEllipses(cocos2d::Vec2 cameraPosition);
+	cocos2d::Vec2 boundCameraByRectangle(cocos2d::Vec2 cameraPosition);
+	cocos2d::Vec2 boundCameraByMapBounds(cocos2d::Vec2 cameraPosition);
 	void updateCameraDebugLabels();
 
 	std::stack<CameraTrackingData> targetStack;
-	cocos2d::Rect cameraBounds;
+	cocos2d::Rect mapBounds;
 	CameraTrackingData currentTrackingData;
 	float defaultDistance;
 

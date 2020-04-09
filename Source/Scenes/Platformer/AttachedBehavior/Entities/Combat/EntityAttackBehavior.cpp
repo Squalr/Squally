@@ -17,7 +17,10 @@
 
 using namespace cocos2d;
 
-const std::string EntityAttackBehavior::MapKeyAttachedBehavior = "entity-attacks";
+const std::string EntityAttackBehavior::MapKey = "entity-attacks";
+const float EntityAttackBehavior::DefaultRecoverSpeed = 1.0f;
+const float EntityAttackBehavior::DefaultRecoverSpeedSlow = 1.5f;
+const float EntityAttackBehavior::DefaultRecoverSpeedVerySlow = 2.0f;
 
 EntityAttackBehavior* EntityAttackBehavior::create(GameObject* owner)
 {
@@ -38,7 +41,7 @@ EntityAttackBehavior::EntityAttackBehavior(GameObject* owner) : super(owner)
 	}
 
 	this->registeredAttacks = std::vector<PlatformerAttack*>();
-	this->registeredConsumables = std::vector<PlatformerAttack*>();
+	this->registeredConsumables = std::vector<Consumable*>();
 	this->attacksNode = Node::create();
 	this->consumablessNode = Node::create();
 	this->consumablesStale = true;
@@ -60,13 +63,18 @@ void EntityAttackBehavior::onLoad()
 	this->buildEquipmentAttacks();
 }
 
+void EntityAttackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAttacks()
 {
 	std::vector<PlatformerAttack*> attacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = this->registeredAttacks.begin(); it != this->registeredAttacks.end(); it++)
+	for (auto attack : this->registeredAttacks)
 	{
-		attacks.push_back(*it);
+		attacks.push_back(attack);
 	}
 
 	return attacks;
@@ -74,14 +82,13 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAttacks()
 
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 {
-	std::vector<PlatformerAttack*> attacks = this->getAttacks();
 	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	for (auto attack : this->getAttacks())
 	{
-		if ((*it)->getSpecialCost() <= this->entity->getStateOrDefaultInt(StateKeys::Mana, 0))
+		if (attack->getSpecialCost() <= this->entity->getStateOrDefaultInt(StateKeys::Mana, 0))
 		{
-			availableAttacks.push_back(*it);
+			availableAttacks.push_back(attack);
 		}
 	}
 
@@ -90,21 +97,20 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 
 std::vector<PlatformerAttack*> EntityAttackBehavior::getNoCostAttacks()
 {
-	std::vector<PlatformerAttack*> attacks = this->getAttacks();
 	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	for (auto attack : this->getAttacks())
 	{
-		if ((*it)->getSpecialCost() <= 0)
+		if (attack->getSpecialCost() <= 0)
 		{
-			availableAttacks.push_back(*it);
+			availableAttacks.push_back(attack);
 		}
 	}
 
 	return availableAttacks;
 }
 
-std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableConsumables()
+std::vector<Consumable*> EntityAttackBehavior::getAvailableConsumables()
 {
 	if (this->consumablesStale)
 	{
@@ -120,6 +126,8 @@ void EntityAttackBehavior::registerAttack(PlatformerAttack* attack)
 	{
 		return;
 	}
+
+	attack->owner = this->entity;
 	
 	this->attacksNode->addChild(attack);
 	this->registeredAttacks.push_back(attack);
@@ -135,21 +143,17 @@ void EntityAttackBehavior::buildEquipmentAttacks()
 		{
 			return;
 		}
-
-		std::vector<Equipable*> equipment = equipmentInventory->getEquipment();
-
-		for (auto it = equipment.begin(); it != equipment.end(); it++)
+		
+		for (auto equipable : equipmentInventory->getEquipment())
 		{
-			if (*it == nullptr)
+			if (equipable == nullptr)
 			{
 				continue;
 			}
-			
-			std::vector<PlatformerAttack*> weaponAttacks = (*it)->cloneAssociatedAttacks();
 
-			for (auto it = weaponAttacks.begin(); it != weaponAttacks.end(); it++)
+			for (auto attack : equipable->cloneAssociatedAttacks())
 			{
-				this->registerAttack(*it);
+				this->registerAttack(attack);
 			}
 		}
 	});
@@ -159,7 +163,9 @@ void EntityAttackBehavior::rebuildConsumables()
 {
 	this->registeredConsumables.clear();
 	this->consumablessNode->removeAllChildren();
-	this->consumablesStale = false;
+
+	// Disabled due to refactor. Only reinstate if this causes perf issues.
+	// this->consumablesStale = false;
 
 	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
@@ -170,22 +176,6 @@ void EntityAttackBehavior::rebuildConsumables()
 			return;
 		}
 
-		std::vector<Consumable*> consumables = inventory->getItemsOfType<Consumable>();
-
-		for (auto it = consumables.begin(); it != consumables.end(); it++)
-		{
-			Consumable* item = *it;
-			PlatformerAttack* consumable = item->cloneAssociatedAttack();
-
-			consumable->registerAttackCompleteCallback([=]()
-			{
-				inventory->tryRemove(item);
-
-				this->consumablesStale = true;
-			});
-
-			this->consumablessNode->addChild(consumable);
-			this->registeredConsumables.push_back(consumable);
-		}
+		this->registeredConsumables = inventory->getItemsOfType<Consumable>();
 	});
 }

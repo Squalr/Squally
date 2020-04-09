@@ -165,6 +165,10 @@ float LocalizedLabel::getFontSize()
 		{
 			return LocalizedLabel::getFontSizeH3();
 		}
+		case FontSize::H4:
+		{
+			return LocalizedLabel::getFontSizeH4();
+		}
 		default:
 		case FontSize::P:
 		{
@@ -487,6 +491,26 @@ float LocalizedLabel::getFontSizeH3()
 		case FontStyle::Monospaced:
 		{
 			return 24.0f;
+		}
+	}
+}
+
+float LocalizedLabel::getFontSizeH4()
+{
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 22.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 24.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 22.0f;
 		}
 	}
 }

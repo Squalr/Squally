@@ -6,8 +6,8 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityDeveloperBehavior::MapKeyAttachedBehavior = "entity-debug";
+const std::string EntityDeveloperBehavior::MapKey = "entity-debug";
 
 EntityDeveloperBehavior* EntityDeveloperBehavior::create(GameObject* owner)
 {
@@ -30,6 +30,7 @@ EntityDeveloperBehavior::EntityDeveloperBehavior(GameObject* owner) : super(owne
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
+	this->halfHealthButton = ClickableNode::create(UIResources::Menus_Icons_BleedingLimb, UIResources::Menus_Icons_BleedingLimb);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 
 	if (this->entity == nullptr)
@@ -38,9 +39,11 @@ EntityDeveloperBehavior::EntityDeveloperBehavior(GameObject* owner) : super(owne
 	}
 	
 	this->resurrectButton->setVisible(false);
+	this->halfHealthButton->setVisible(false);
 	this->killButton->setVisible(false);
 
 	this->addChild(this->resurrectButton);
+	this->addChild(this->halfHealthButton);
 	this->addChild(this->killButton);
 }
 
@@ -52,8 +55,9 @@ void EntityDeveloperBehavior::initializePositions()
 {
 	super::initializePositions();
 	
-	this->killButton->setPosition(Vec2(-64.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
-	this->resurrectButton->setPosition(Vec2(64.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
+	this->killButton->setPosition(Vec2(-96.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
+	this->halfHealthButton->setPosition(Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
+	this->resurrectButton->setPosition(Vec2(96.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
 }
 
 void EntityDeveloperBehavior::onDeveloperModeEnable(int debugLevel)
@@ -61,6 +65,7 @@ void EntityDeveloperBehavior::onDeveloperModeEnable(int debugLevel)
 	super::onDeveloperModeEnable(debugLevel);
 
 	this->resurrectButton->setVisible(true);
+	this->halfHealthButton->setVisible(true);
 	this->killButton->setVisible(true);
 }
 
@@ -69,6 +74,7 @@ void EntityDeveloperBehavior::onDeveloperModeDisable()
 	super::onDeveloperModeDisable();
 
 	this->resurrectButton->setVisible(false);
+	this->halfHealthButton->setVisible(false);
 	this->killButton->setVisible(false);
 }
 
@@ -76,11 +82,34 @@ void EntityDeveloperBehavior::onLoad()
 {
 	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->entity->setState(StateKeys::IsAlive, Value(true));
+		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->revive();
+		});
+	});
+
+	this->halfHealthButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->setHealth((healthBehavior->getHealth() + 1) / 2);
+		});
 	});
 
 	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->entity->setState(StateKeys::IsAlive, Value(false));
+		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->kill();
+		});
 	});
+}
+
+void EntityDeveloperBehavior::onDisable()
+{
+	super::onDisable();
+	
+	this->resurrectButton->disableInteraction(0);
+	this->halfHealthButton->disableInteraction(0);
+	this->killButton->disableInteraction(0);
 }

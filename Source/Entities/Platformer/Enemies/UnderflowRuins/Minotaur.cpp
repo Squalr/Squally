@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Minotaur::MapKeyMinotaur = "minotaur";
+const std::string Minotaur::MapKey = "minotaur";
 HexusOpponentData* Minotaur::HexusOpponentDataInstance = nullptr;
 const std::string Minotaur::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MINOTAUR";
 
@@ -32,7 +31,7 @@ Minotaur* Minotaur::deserialize(ValueMap& properties)
 }
 
 Minotaur::Minotaur(ValueMap& properties) : super(properties,
-	Minotaur::MapKeyMinotaur,
+	Minotaur::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
 	Size(278.0f, 288.0f),

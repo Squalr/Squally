@@ -25,21 +25,18 @@ HelpTotem* HelpTotem::create(ValueMap& properties)
 	return instance;
 }
 
-HelpTotem::HelpTotem(ValueMap& properties) : super(properties)
+HelpTotem::HelpTotem(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, Size(248.0f, 248.0f), Vec2::ZERO)
 {
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
 	this->totemInactive = Sprite::create(ObjectResources::Interactive_Help_HelpTotemDeactivated);
-	this->hintCollision = CollisionObject::create(PhysicsBody::createBox(Size(248.0f, 248.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->speechBubble = SpeechBubble::create(true);
 	this->hint = nullptr;
-	this->canInteract = false;
 	this->isInactive = false;
 
 	this->totemInactive->setOpacity(0);
 
 	this->addChild(this->totem);
 	this->addChild(this->totemInactive);
-	this->addChild(this->hintCollision);
 	this->addChild(this->speechBubble);
 }
 
@@ -72,24 +69,16 @@ void HelpTotem::initializePositions()
 void HelpTotem::initializeListeners()
 {
 	super::initializeListeners();
+}
 
-	this->hintCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		this->canInteract = true;
+void HelpTotem::onInteract()
+{
+	this->tryDisplayHint();
+}
 
-		this->tryDisplayHint();
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->hintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		this->canInteract = false;
-
-		this->tryDisplayHint();
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+void HelpTotem::onEndCollision()
+{
+	this->tryDisplayHint();
 }
 
 void HelpTotem::deactivate()

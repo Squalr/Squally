@@ -10,16 +10,16 @@ public:
 	static UnlockButton* create();
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	UnlockButton();
-	~UnlockButton();
+	virtual ~UnlockButton();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	ClickableTextNode* unlockButton;
 	CipherState* activeCipherState;

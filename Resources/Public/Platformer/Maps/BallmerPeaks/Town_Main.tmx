@@ -34,24 +34,24 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="15" name="Mountains">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-5382.54" y="2757.32" width="13333.3" height="1140">
+  <object id="601" name="Snow/Background/Mountains3" type="decor" x="-5382.54" y="2757.32" width="13333.3" height="761">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="16" name="Trees">
   <properties>
-   <property name="depth" type="float" value="-720"/>
+   <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4403.17" y="2761.62" width="13257.6" height="1140">
+  <object id="602" name="Snow/Background/Forest1" type="decor" x="-4403.17" y="2761.62" width="13257.6" height="598">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="2.25"/>
@@ -123,7 +123,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="770" name="Generic/TownHomeEmpty4" type="decor" x="4311.84" y="1106.56" width="1268" height="1120"/>
-  <object id="881" name="Generic/TownHomeEmpty1" type="decor" x="3079.97" y="600.887" width="1135" height="1608"/>
+  <object id="881" name="Snow/TownHomeEmpty1" type="decor" x="3079.97" y="600.887" width="1135" height="1608"/>
  </objectgroup>
  <objectgroup id="79" name="bridge -11">
   <properties>
@@ -236,10 +236,10 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="750" name="Generic/TownHome3" type="decor" x="5557.69" y="3393.81" width="1317" height="1120"/>
-  <object id="762" name="Generic/TownHomeEmpty4" type="decor" x="2730.41" y="3399.49" width="1267" height="1120"/>
+  <object id="750" name="Snow/TownHome3" type="decor" x="5557.69" y="3393.81" width="1317" height="1120"/>
+  <object id="762" name="Snow/TownHomeEmpty4" type="decor" x="2730.41" y="3399.49" width="1267" height="1120"/>
   <object id="766" name="Generic/TownHomeEmpty2" type="decor" x="5266.08" y="1188.05" width="1203" height="1160"/>
-  <object id="882" name="Generic/TownHomeEmpty5" type="decor" x="4004.32" y="2892.66" width="1563" height="1623"/>
+  <object id="882" name="Snow/TownHomeEmpty5" type="decor" x="4004.32" y="2892.66" width="1563" height="1623"/>
  </objectgroup>
  <objectgroup id="67" name="bridge -5">
   <properties>
@@ -440,7 +440,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="681" name="ice" type="terrain" x="3861.72" y="6216.62">
+  <object id="681" name="frost" type="terrain" x="3861.72" y="6216.62">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -465,7 +465,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="ice" type="terrain" x="1.1054" y="4641.23">
+  <object id="658" name="frost" type="terrain" x="1.1054" y="4641.23">
    <polygon points="0,0 3452.4,-27.0701 3452.4,2273.88 8.35932,2300.96"/>
   </object>
   <object id="662" name="ice" type="terrain" x="675.156" y="2443.68">
@@ -482,14 +482,14 @@
   <object id="484" name="Forest/Flower10" type="decor" x="1227.44" y="4513.8" width="199" height="133"/>
   <object id="500" name="Forest/Flower10" type="decor" x="4504.63" y="6024.98" width="199" height="133"/>
   <object id="651" name="Generic/Shack1" type="decor" x="5561.75" y="5341.81" width="1241" height="792"/>
-  <object id="654" name="Generic/TownAlchemy" type="decor" x="1745.09" y="823.354" width="1725" height="1622"/>
-  <object id="655" name="Generic/TownEquipment" type="decor" x="3849.65" y="823.354" width="1727" height="1624"/>
-  <object id="876" name="Generic/TreeHome1" type="decor" x="7238.55" y="-482.335" width="1462" height="1268">
+  <object id="654" name="Snow/TownAlchemy" type="decor" x="1745.09" y="823.354" width="1725" height="1622"/>
+  <object id="655" name="Snow/TownEquipment" type="decor" x="3849.65" y="823.354" width="1727" height="1624"/>
+  <object id="876" name="Snow/TreeHome1" type="decor" x="7238.55" y="-482.335" width="1462" height="1268">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="880" name="Generic/TownHomeEmpty2" type="decor" x="4270.63" y="3442.65" width="1203" height="1160"/>
+  <object id="880" name="Snow/TownHomeEmpty2" type="decor" x="4270.63" y="3442.65" width="1203" height="1160"/>
  </objectgroup>
  <objectgroup id="87" name="decore midground 2">
   <properties>
@@ -722,13 +722,6 @@
   <object id="926" name="solid" type="collision" x="5647.58" y="5409.33">
    <polygon points="109.055,-69.1763 1004.17,-68.1492 1004.27,-4.12835 110.611,-1.23965"/>
   </object>
-  <object id="927" name="trigger" type="object" x="1311.85" y="2812.74" width="146" height="1829.06">
-   <properties>
-    <property name="quest" value="town-arrival"/>
-    <property name="quest-line" value="find-elriel"/>
-    <property name="send-event" value="town-arrival"/>
-   </properties>
-  </object>
   <object id="929" name="edge-lantern-gate" type="object" x="10006.7" y="3655.28" width="356" height="320">
    <properties>
     <property name="map" value="EndianForest/Zone_2_0"/>
@@ -747,7 +740,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="bard" type="entity" x="5482.59" y="4472.97" width="128" height="128">
+  <object id="883" name="aspen" type="entity" x="5482.59" y="4472.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>

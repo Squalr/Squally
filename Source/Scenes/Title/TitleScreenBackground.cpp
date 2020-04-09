@@ -5,19 +5,19 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
@@ -53,18 +53,23 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
-	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
+	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f));
 	this->mainhand = this->squally->getAnimationPart("mainhand");
-	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand);
-	this->mainhand->setOffset(Vec2(0.0f, -16.0f));
+
+	if (this->mainhand != nullptr)
+	{
+		this->mainhand->replaceSprite(ItemResources::Equipment_Weapons_Wands_WoodenWand);
+		this->mainhand->setOffset(Vec2(0.0f, -16.0f));
+	}
+
 	this->leftEyeController->setVisible(false);
 	this->rightEyeController->setVisible(false);
 
 	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
 	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
 
-	this->windParticles = ParticleSystemQuad::create(ParticleResources::Wind);
-	this->fireflyParticles = ParticleSystemQuad::create(ParticleResources::Fireflies2);
+	this->windParticles = SmartParticles::create(ParticleResources::Wind);
+	this->fireflyParticles = SmartParticles::create(ParticleResources::Fireflies2);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundTrees);
@@ -96,8 +101,8 @@ void TitleScreenBackground::onEnter()
 	super::onEnter();
 
 	// Initialize particles to an intermediate state
-	GameUtils::accelerateParticles(this->fireflyParticles, 2.0f);
-	GameUtils::accelerateParticles(this->windParticles, 5.0f);
+	this->fireflyParticles->accelerate(2.0f);
+	this->windParticles->accelerate(5.0f);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
@@ -118,7 +123,7 @@ void TitleScreenBackground::onEnter()
 
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
-		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle,  1.0f);
+		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
 	});
 	

@@ -9,11 +9,11 @@ public:
 
 	void setGridIndex(int gridIndex) override;
 
-	static const std::string MapKeyEdiInitializer;
+	static const std::string MapKey;
 
 protected:
 	EdiInitializer(cocos2d::ValueMap& properties);
-	~EdiInitializer();
+	virtual ~EdiInitializer();
 
 private:
 	typedef RegisterInitializer super;

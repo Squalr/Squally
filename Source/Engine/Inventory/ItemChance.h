@@ -11,23 +11,26 @@ class ItemChance : public SmartNode
 public:
 	enum class Probability
 	{
-		Guaranteed,
-		VeryCommon,
-		Common,
-		Uncommon,
-		Rare,
-		Epic,
-		Legendary,
+		Guaranteed,	// 100%
+		VeryCommon,	// 75%
+		Common,		// 50%
+		Reasonable,	// 25%
+		Uncommon,	// 15%
+		Rare,		// 8%
+		Epic,		// 4%
+		Legendary,	// 1%
 	};
 
 	static ItemChance* create(Item* item, Probability probability);
+	ItemChance* clone();
 
 	Item* getItem();
 	float calculateProbability(std::vector<Inventory*> inventories);
+	Probability getProbability();
 
 protected:
 	ItemChance(Item* item, Probability probability);
-	~ItemChance();
+	virtual ~ItemChance();
 
 private:
 	typedef SmartNode super;

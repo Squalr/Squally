@@ -1,15 +1,15 @@
 #include "SteelSword.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SteelSword::SaveKeySteelSword = "steel-sword";
+const std::string SteelSword::SaveKey = "steel-sword";
 
 SteelSword* SteelSword::create()
 {
@@ -20,7 +20,7 @@ SteelSword* SteelSword::create()
 	return instance;
 }
 
-SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 6 }}), 6, 8, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIdentifier
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* SteelSword::clone()
 
 std::string SteelSword::getItemName()
 {
-	return SteelSword::SaveKeySteelSword;
+	return SteelSword::SaveKey;
 }
 
 LocalizedString* SteelSword::getString()
@@ -56,10 +56,10 @@ LocalizedString* SteelSword::getString()
 
 std::string SteelSword::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Swords_SteelSword;
+	return ItemResources::Equipment_Weapons_Swords_SteelSword;
 }
 
 std::string SteelSword::getSerializationKey()
 {
-	return SteelSword::SaveKeySteelSword;
+	return SteelSword::SaveKey;
 }

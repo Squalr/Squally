@@ -1,16 +1,16 @@
 #include "SpecialFlip1.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialFlip1::SaveKeySpecialFlip1 = "special-flip1";
+const std::string SpecialFlip1::SaveKey = "special-flip1";
 
 SpecialFlip1* SpecialFlip1::create()
 {
@@ -21,7 +21,7 @@ SpecialFlip1* SpecialFlip1::create()
 	return instance;
 }
 
-SpecialFlip1::SpecialFlip1() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialFlip1::SpecialFlip1() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialFlip1::clone()
 
 std::string SpecialFlip1::getItemName()
 {
-	return SpecialFlip1::SaveKeySpecialFlip1;
+	return SpecialFlip1::SaveKey;
 }
 
 LocalizedString* SpecialFlip1::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialFlip1::getString()
 
 std::string SpecialFlip1::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialFlip1::getSerializationKey()
 {
-	return SpecialFlip1::SaveKeySpecialFlip1;
+	return SpecialFlip1::SaveKey;
 }
 
 std::string SpecialFlip1::getCardKey()

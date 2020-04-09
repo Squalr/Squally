@@ -17,7 +17,7 @@ class Water : public GameObject
 public:
 	static Water* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWater;
+	static const std::string MapKey;
 
 protected:
 	Water(cocos2d::ValueMap& properties);
@@ -25,7 +25,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void applyWaterForce(const std::vector<CollisionObject*>& targets, float dt);
+	void applyWaterForce(CollisionObject* target, float dt);
 
 private:
 	typedef GameObject super;
@@ -44,4 +44,6 @@ private:
 	static const float WaterCollisionOffset;
 	static const cocos2d::Color4B SurfaceColor;
 	static const cocos2d::Color4B BodyColor;
+
+	static const std::string PropertyDisablePhysics;
 };

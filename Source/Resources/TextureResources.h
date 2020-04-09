@@ -25,6 +25,7 @@ namespace TextureResources
 	extern const std::string MarbleTexture;
 	extern const std::string ShadeGrassTexture;
 	extern const std::string ShipAltTexture;
+	extern const std::string ShipDarkTexture;
 	extern const std::string ShipTexture;
 	extern const std::string TempleDarkTexture;
 	extern const std::string TempleGreenDarkTexture;

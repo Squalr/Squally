@@ -6,5 +6,5 @@ class CardSteal : public CardData
 {
 public:
 	CardSteal();
-	~CardSteal();
+	virtual ~CardSteal();
 };

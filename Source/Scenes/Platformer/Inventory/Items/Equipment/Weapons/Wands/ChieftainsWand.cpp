@@ -1,15 +1,15 @@
 #include "ChieftainsWand.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string ChieftainsWand::SaveKeyChieftainsWand = "chieftains-wand";
+const std::string ChieftainsWand::SaveKey = "chieftains-wand";
 
 ChieftainsWand* ChieftainsWand::create()
 {
@@ -20,7 +20,7 @@ ChieftainsWand* ChieftainsWand::create()
 	return instance;
 }
 
-ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 20, 24, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getId
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* ChieftainsWand::clone()
 
 std::string ChieftainsWand::getItemName()
 {
-	return ChieftainsWand::SaveKeyChieftainsWand;
+	return ChieftainsWand::SaveKey;
 }
 
 LocalizedString* ChieftainsWand::getString()
@@ -56,12 +56,12 @@ LocalizedString* ChieftainsWand::getString()
 
 std::string ChieftainsWand::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_ChieftainsWand;
+	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
 std::string ChieftainsWand::getSerializationKey()
 {
-	return ChieftainsWand::SaveKeyChieftainsWand;
+	return ChieftainsWand::SaveKey;
 }
 
 Vec2 ChieftainsWand::getDisplayOffset()

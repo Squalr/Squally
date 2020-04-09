@@ -5,14 +5,11 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
-#include "Engine/Camera/GameCamera.h"
-#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -29,20 +26,20 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
 #include "Events/HexusEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
+#include "Menus/Crafting/AlchemyMenu.h"
+#include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
-#include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
-#include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -66,7 +63,7 @@ PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transi
 
 PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
-	if (!PlatformerMap::initWithPhysics())
+	if (!PlatformerMap::init())
 	{
 		return;
 		// throw std::uncaught_exceptions();
@@ -79,10 +76,13 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->cipher = Cipher::create();
 	this->hexus = Hexus::create();
 	this->collectablesMenu = CollectablesMenu::create();
-	this->mapMenu = MapMenu::create();
+	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
+	this->alchemyMenu = AlchemyMenu::create();
+	this->blacksmithingMenu = BlacksmithingMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->canPause = true;
+	this->awaitingConfirmationEnd = false;
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create(
@@ -91,6 +91,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 				MusicDeserializer::create(),
 				PhysicsDeserializer::create(),
 				PlatformerBannerDeserializer::create(),
+				PlatformerRubberbandingDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
@@ -110,10 +111,12 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
-	this->topMenuHud->addChild(this->notificationHud);
-	this->topMenuHud->addChild(this->combatFadeInNode);
+	this->menuHud->addChild(this->combatFadeInNode);
+	this->menuHud->addChild(this->alchemyMenu);
+	this->menuHud->addChild(this->blacksmithingMenu);
+	this->menuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
-	this->topMenuHud->addChild(this->mapMenu);
+	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 }
@@ -127,11 +130,11 @@ void PlatformerMap::onEnter()
 	super::onEnter();
 
 	this->collectablesMenu->setVisible(false);
-	this->mapMenu->setVisible(false);
+	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
-
-	this->scheduleUpdate();
+	this->alchemyMenu->setVisible(false);
+	this->blacksmithingMenu->setVisible(false);
 }
 
 void PlatformerMap::onEnterTransitionDidFinish()
@@ -161,13 +164,57 @@ void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEnemyEngaged, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::EngageEnemyArgs* args = static_cast<PlatformerEvents::EngageEnemyArgs*>(eventCustom->getUserData());
+		PlatformerEvents::EnemyEngagedArgs* args = static_cast<PlatformerEvents::EnemyEngagedArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->enemy != nullptr && !args->enemy->getBattleMapResource().empty())
+		if (args != nullptr)
 		{
-			this->engageEnemy(args->enemy, args->firstStrike);
+			// In the future, we can pass parameters via EnemyEngagedArgs to dictate which fade-in animation to use
+			this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
+	{
+		this->awaitingConfirmationEnd = true;
+
+		GameUtils::focus(this->notificationHud);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmationEnd, [=](EventCustom* eventCustom)
+	{
+		if (this->awaitingConfirmationEnd)
+		{
+			GameUtils::focus(this);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenAlchemy, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->alchemyMenu->open(args->recipes);
+			this->alchemyMenu->setVisible(true);
+
+			GameUtils::focus(this->alchemyMenu);
+			GameUtils::resume(this->notificationHud);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenSmithing, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->blacksmithingMenu->open(args->recipes);
+			this->blacksmithingMenu->setVisible(true);
+
+			GameUtils::focus(this->blacksmithingMenu);
+			GameUtils::resume(this->notificationHud);
 		}
 	}));
 
@@ -178,6 +225,9 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->cipher->setVisible(true);
+			this->mapNode->setVisible(false);
+			this->notificationHud->setVisible(false);
+			
 			this->cipher->openCipher(args->cipherPuzzleData);
 			GameUtils::focus(this->cipher);
 		}
@@ -190,6 +240,8 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->cipher->setVisible(false);
+			this->mapNode->setVisible(true);
+			this->notificationHud->setVisible(true);
 
 			// Reinstate this if music is ever added to Cipher:
 			// MusicPlayer::popMusic();
@@ -205,6 +257,8 @@ void PlatformerMap::initializeListeners()
 		{
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
+			this->mapNode->setVisible(false);
+			this->notificationHud->setVisible(false);
 			
 			GameUtils::focus(this->hexus);
 		}
@@ -217,8 +271,9 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->hexus->setVisible(false);
-
-			MusicPlayer::popMusic();
+			this->mapNode->setVisible(true);
+			this->notificationHud->setVisible(true);
+			
 			GameUtils::focus(this);
 		}
 	}));
@@ -262,11 +317,12 @@ void PlatformerMap::initializeListeners()
 		GameUtils::focus(this->partyMenu);
 	});
 	
-	this->ingameMenu->setMapClickCallback([=]()
+	this->ingameMenu->setCardsClickCallback([=]()
 	{
 		this->ingameMenu->setVisible(false);
-		this->mapMenu->setVisible(true);
-		GameUtils::focus(this->mapMenu);
+		this->cardsMenu->setVisible(true);
+		this->cardsMenu->open();
+		GameUtils::focus(this->cardsMenu);
 	});
 	
 	this->ingameMenu->setCollectablesClickCallback([=]()
@@ -284,10 +340,10 @@ void PlatformerMap::initializeListeners()
 		GameUtils::focus(this->ingameMenu);
 	});
 
-	this->mapMenu->setReturnClickCallback([=]()
+	this->cardsMenu->setReturnClickCallback([=]()
 	{
 		this->ingameMenu->setVisible(true);
-		this->mapMenu->setVisible(false);
+		this->cardsMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
 
@@ -304,15 +360,18 @@ void PlatformerMap::initializeListeners()
 		this->inventoryMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
-}
 
-void PlatformerMap::update(float dt)
-{
-	super::update(dt);
+	this->alchemyMenu->setReturnClickCallback([=]()
+	{
+		this->alchemyMenu->setVisible(false);
+		GameUtils::focus(this);
+	});
 
-	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
-	// ZAC: Nevermind. This does not seem to be an issue, and auto-step seems to make the game run much smoother in debug/slow PCs.
-	// this->getPhysicsWorld()->step(1.0f / 60.0f);
+	this->blacksmithingMenu->setReturnClickCallback([=]()
+	{
+		this->blacksmithingMenu->setVisible(false);
+		GameUtils::focus(this);
+	});
 }
 
 bool PlatformerMap::loadMap(std::string mapResource)
@@ -365,52 +424,4 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
-}
-
-void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
-{
-	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
-	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
-
-	// Build player team
-	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior));
-	
-	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
-	{
-		playerCombatData.push_back(CombatMap::CombatData(helper->getEntityKey(), helper->getBattleBehavior()));
-	}), Squally::BattleTag);
-
-	// Build enemy team
-	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior(), enemy->getDropPool()));
-
-	if (!enemy->getBattleTag().empty())
-	{
-		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
-		{
-			if (enemyAlly != enemy)
-			{
-				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior(), enemyAlly->getDropPool()));
-			}
-		}), enemy->getBattleTag());
-	}
-
-	this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
-
-	this->runAction(Sequence::create(
-		DelayTime::create(CombatFadeInHud::AnimationTimeBudget + 0.25f),
-		CallFunc::create([=]()
-		{
-			// Start combat
-			CombatMap* combatMap = CombatMap::create(
-				enemy->getBattleMapResource(),
-				firstStrike,
-				enemy->getUniqueIdentifier(),
-				playerCombatData,
-				enemyCombatData
-			);
-
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
-		}),
-		nullptr
-	));
 }

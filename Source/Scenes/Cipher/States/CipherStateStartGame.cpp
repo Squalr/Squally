@@ -36,14 +36,14 @@ void CipherStateStartGame::onBeforeStateEnter(CipherState* cipherState)
 	cipherState->userBlocks.clear();
 	cipherState->userConnections.clear();
 
-	for (auto it = cipherState->inputBlocks.begin(); it != cipherState->inputBlocks.end(); it++)
+	for (auto next : cipherState->inputBlocks)
 	{
-		(*it)->removeConnections();
+		next->removeConnections();
 	}
 
-	for (auto it = cipherState->outputBlocks.begin(); it != cipherState->outputBlocks.end(); it++)
+	for (auto next : cipherState->outputBlocks)
 	{
-		(*it)->removeConnections();
+		next->removeConnections();
 	}
 }
 

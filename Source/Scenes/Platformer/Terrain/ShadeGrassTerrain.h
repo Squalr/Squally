@@ -7,11 +7,12 @@ class ShadeGrassTerrain : public TerrainObject
 public:
 	static ShadeGrassTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
+
+protected:
+	ShadeGrassTerrain(cocos2d::ValueMap& properties);
+	virtual ~ShadeGrassTerrain();
 
 private:
 	typedef TerrainObject super;
-	
-	ShadeGrassTerrain(cocos2d::ValueMap& properties);
-	~ShadeGrassTerrain();
 };

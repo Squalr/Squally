@@ -12,6 +12,12 @@ public:
 	static StateGameEnd* create();
 
 protected:
+	StateGameEnd();
+	virtual ~StateGameEnd();
+
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -19,12 +25,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateGameEnd();
-	~StateGameEnd();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 	void onBackClick(GameState* gameState);
 
 	ClickableTextNode* backButton;

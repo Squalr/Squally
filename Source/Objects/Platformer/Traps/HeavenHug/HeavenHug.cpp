@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -26,7 +25,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_TRAVEL_HEIGHT 1
 
-const std::string HeavenHug::MapKeyHeavenHug = "heaven-hug";
+const std::string HeavenHug::MapKey = "heaven-hug";
 const float HeavenHug::SpeedPer480Px = 2.0f;
 
 HeavenHug* HeavenHug::create(ValueMap& properties)
@@ -42,7 +41,7 @@ HeavenHug::HeavenHug(ValueMap& properties) : super(properties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
-	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->travelDistance = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
@@ -78,16 +77,13 @@ Vec2 HeavenHug::getButtonOffset()
 void HeavenHug::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
-			HackableCode::LateBindData(
-				HeavenHug::MapKeyHeavenHug,
+			HackableCode::HackableCodeInfo(
+				HeavenHug::MapKey,
 				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				HeavenHugSetSpeedPreview::create(),
@@ -95,18 +91,19 @@ void HeavenHug::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
 					{ HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_RegisterRbpWarning::create() }
 				},
-				int(HackFlags::Gravity),
-				20.0f
+				int(HackFlags::None),
+				20.0f,
+				0.0f
 			)
 		},
 	};
 
 	auto getHeightFunc = &HeavenHug::getTravelHeight;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -161,10 +158,9 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 
 	return retVal;
 }
+END_NO_OPTIMIZE
 
-PhysicsBody* HeavenHug::createSpikeCollision()
+std::vector<Vec2> HeavenHug::createSpikeCollision()
 {
-	PhysicsBody* physicsBody = PhysicsBody::createBox(Size(180.0f, 32.0f));
-
-	return physicsBody;
+	return std::vector<Vec2>();
 }

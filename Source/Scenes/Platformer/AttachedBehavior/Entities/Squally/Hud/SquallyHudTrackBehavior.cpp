@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyHudTrackBehavior::MapKeyAttachedBehavior = "squally-hud-track";
+const std::string SquallyHudTrackBehavior::MapKey = "squally-hud-track";
 
 SquallyHudTrackBehavior* SquallyHudTrackBehavior::create(GameObject* owner)
 {
@@ -36,4 +36,9 @@ void SquallyHudTrackBehavior::onLoad()
 {
 	// Request camera & hud track player
 	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this->squally));
+}
+
+void SquallyHudTrackBehavior::onDisable()
+{
+	super::onDisable();
 }

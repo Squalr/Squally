@@ -8,22 +8,25 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Particles/SmartParticles.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -31,8 +34,9 @@
 
 using namespace cocos2d;
 
-HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner)
+HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles, LocalizedString* dialogueChoiceOverride) : super(owner)
 {
+	this->showParticles = showParticles;
 	this->winCallbacks = std::vector<std::function<void()>>();
 	this->lossCallbacks = std::vector<std::function<void()>>();
 	this->drawCallbacks = std::vector<std::function<void()>>();
@@ -40,7 +44,13 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconNode = Node::create();
 	this->iconContainer = Node::create();
 	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
-	this->cardSprite = Sprite::create(ObjectResources::Collectables_Cards_CardSpecial);
+	this->cardSprite = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
+	this->hackParticles1 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
+	this->hackParticles2 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
+	this->hackParticles3 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
+	this->hackParticles4 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange4, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
+	this->hackParticles5 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange5, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
+
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
@@ -61,6 +71,15 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconNode->addChild(this->iconContainer);
 	this->addChild(this->dialogueStringNode);
 	this->addChild(this->iconNode);
+
+	if (this->showParticles)
+	{
+		this->addChild(this->hackParticles1);
+		this->addChild(this->hackParticles2);
+		this->addChild(this->hackParticles3);
+		this->addChild(this->hackParticles4);
+		this->addChild(this->hackParticles5);	
+	}
 }
 
 HexusBehaviorBase::~HexusBehaviorBase()
@@ -70,6 +89,18 @@ HexusBehaviorBase::~HexusBehaviorBase()
 void HexusBehaviorBase::onEnter()
 {
 	super::onEnter();
+
+	if (this->showParticles)
+	{
+		this->hackParticles1->start();
+		this->hackParticles2->start();
+		this->hackParticles3->start();
+		this->hackParticles4->start();
+		this->hackParticles5->start();
+
+		this->hackParticles2->accelerate(1.0f);
+		this->hackParticles4->accelerate(1.0f);
+	}
 
 	if (this->getWins() > 0)
 	{
@@ -91,6 +122,17 @@ void HexusBehaviorBase::initializePositions()
 {
 	super::initializePositions();
 
+	Vec2 entityCenter = this->entity->getEntityCenterPoint();
+
+	if (this->showParticles)
+	{
+		this->hackParticles1->setPosition(entityCenter);
+		this->hackParticles2->setPosition(entityCenter);
+		this->hackParticles3->setPosition(entityCenter);
+		this->hackParticles4->setPosition(entityCenter);
+		this->hackParticles5->setPosition(entityCenter);
+	}
+
 	if (this->entity != nullptr)
 	{
 		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 96.0f);
@@ -101,17 +143,17 @@ void HexusBehaviorBase::initializePositions()
 
 int HexusBehaviorBase::getWins()
 {
-	return this->entity->getObjectStateOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::getProfileDataOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 int HexusBehaviorBase::getLosses()
 {
-	return this->entity->getObjectStateOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::getProfileDataOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 int HexusBehaviorBase::getDraws()
 {
-	return this->entity->getObjectStateOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::getProfileDataOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 void HexusBehaviorBase::addWin()
@@ -123,17 +165,19 @@ void HexusBehaviorBase::addWin()
 		this->giveItems();
 	}
 
-	this->entity->saveObjectState("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(wins));
+	this->iconContainer->setVisible(false);
+
+	SaveManager::SaveProfileData("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(wins));
 }
 
 void HexusBehaviorBase::addLoss()
 {
-	this->entity->saveObjectState("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
+	SaveManager::SaveProfileData("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
 }
 
 void HexusBehaviorBase::addDraw()
 {
-	this->entity->saveObjectState("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
+	SaveManager::SaveProfileData("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
 }
 
 void HexusBehaviorBase::registerWinCallback(std::function<void()> winCallback)
@@ -203,6 +247,11 @@ void HexusBehaviorBase::onLoad()
 	});
 }
 
+void HexusBehaviorBase::onDisable()
+{
+	super::onDisable();
+}
+
 void HexusBehaviorBase::giveItems()
 {
 	if (this->rewardPool != nullptr)
@@ -243,9 +292,9 @@ void HexusBehaviorBase::onWin()
 
 	this->addWin();
 
-	for (auto it = this->winCallbacks.begin(); it != this->winCallbacks.end(); it++)
+	for (auto callback : this->winCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 
@@ -266,9 +315,9 @@ void HexusBehaviorBase::onLoss()
 
 	this->addLoss();
 
-	for (auto it = this->lossCallbacks.begin(); it != this->lossCallbacks.end(); it++)
+	for (auto callback : this->lossCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 
@@ -289,9 +338,9 @@ void HexusBehaviorBase::onDraw()
 
 	this->addDraw();
 
-	for (auto it = this->drawCallbacks.begin(); it != this->drawCallbacks.end(); it++)
+	for (auto callback : this->drawCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 

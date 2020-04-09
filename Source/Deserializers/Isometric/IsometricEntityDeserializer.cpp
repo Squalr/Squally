@@ -23,9 +23,9 @@ IsometricEntityDeserializer::IsometricEntityDeserializer() : super(IsometricEnti
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
-	this->deserializers[IsometricSqually::MapKeySqually] = [=](ValueMap properties) { return (GameObject*)IsometricSqually::deserialize(properties); };
-	this->deserializers[IsometricBall::MapKeyBall] = [=](ValueMap properties) { return (GameObject*)IsometricBall::deserialize(properties); };
-	this->deserializers[Shiftman::MapKeyShiftman] = [=](ValueMap properties) { return (GameObject*)Shiftman::deserialize(properties); };
+	this->deserializers[IsometricSqually::MapKey] = [=](ValueMap properties) { return (GameObject*)IsometricSqually::deserialize(properties); };
+	this->deserializers[IsometricBall::MapKey] = [=](ValueMap properties) { return (GameObject*)IsometricBall::deserialize(properties); };
+	this->deserializers[Shiftman::MapKey] = [=](ValueMap properties) { return (GameObject*)Shiftman::deserialize(properties); };
 }
 
 IsometricEntityDeserializer::~IsometricEntityDeserializer()

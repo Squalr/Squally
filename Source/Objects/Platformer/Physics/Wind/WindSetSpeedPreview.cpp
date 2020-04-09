@@ -1,13 +1,14 @@
 #include "WindSetSpeedPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/ParticleResources.h"
-#include "2d/CCParticleSystemQuad.h"
 
 using namespace cocos2d;
 
@@ -22,12 +23,13 @@ WindSetSpeedPreview* WindSetSpeedPreview::create()
 
 WindSetSpeedPreview::WindSetSpeedPreview()
 {
-	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
+	this->windParticles = SmartParticles::create(ParticleResources::Gust);
 
-	this->windParticles->setAnchorPoint(Vec2::ZERO);
-	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
-	this->windParticles->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
+	this->windParticles->setGrouped();
 	this->windParticles->setScale(0.4f);
+
+	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->getParticles()->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
 
 	this->eaxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("-1.0f"));
 	this->eaxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("1.0f"));

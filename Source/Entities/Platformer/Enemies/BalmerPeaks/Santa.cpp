@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Santa::MapKeySanta = "santa";
+const std::string Santa::MapKey = "santa";
 HexusOpponentData* Santa::HexusOpponentDataInstance = nullptr;
 const std::string Santa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SANTA";
 
@@ -32,7 +31,7 @@ Santa* Santa::deserialize(ValueMap& properties)
 }
 
 Santa::Santa(ValueMap& properties) : super(properties,
-	Santa::MapKeySanta,
+	Santa::MapKey,
 	EntityResources::Enemies_BalmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BalmerPeaks_Santa_Emblem,
 	Size(420.0f, 452.0f),

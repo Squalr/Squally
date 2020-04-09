@@ -1,15 +1,15 @@
 #include "SantaHat.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SantaHat::SaveKeySantaHat = "santa-hat";
+const std::string SantaHat::SaveKey = "santa-hat";
 
 SantaHat* SantaHat::create()
 {
@@ -20,7 +20,7 @@ SantaHat* SantaHat::create()
 	return instance;
 }
 
-SantaHat::SantaHat() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), ItemStats(
+SantaHat::SantaHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
 	0,
 	// Mana
@@ -46,7 +46,7 @@ Item* SantaHat::clone()
 
 std::string SantaHat::getItemName()
 {
-	return SantaHat::SaveKeySantaHat;
+	return SantaHat::SaveKey;
 }
 
 LocalizedString* SantaHat::getString()
@@ -56,12 +56,12 @@ LocalizedString* SantaHat::getString()
 
 std::string SantaHat::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Gear_Hats_SantaHat;
+	return ItemResources::Equipment_Gear_Hats_SantaHat;
 }
 
 std::string SantaHat::getSerializationKey()
 {
-	return SantaHat::SaveKeySantaHat;
+	return SantaHat::SaveKey;
 }
 
 Vec2 SantaHat::getDisplayOffset()

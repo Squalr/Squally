@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string WaterElemental::MapKeyWaterElemental = "water-elemental";
+const std::string WaterElemental::MapKey = "water-elemental";
 HexusOpponentData* WaterElemental::HexusOpponentDataInstance = nullptr;
 const std::string WaterElemental::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WATER_ELEMENTAL";
 
@@ -32,7 +31,7 @@ WaterElemental* WaterElemental::deserialize(ValueMap& properties)
 }
 
 WaterElemental::WaterElemental(ValueMap& properties) : super(properties,
-	WaterElemental::MapKeyWaterElemental,
+	WaterElemental::MapKey,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
 	Size(820.0f, 1480.0f),

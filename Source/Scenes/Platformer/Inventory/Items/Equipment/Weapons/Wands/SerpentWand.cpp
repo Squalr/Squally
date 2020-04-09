@@ -1,15 +1,15 @@
 #include "SerpentWand.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SerpentWand::SaveKeySerpentWand = "serpent-wand";
+const std::string SerpentWand::SaveKey = "serpent-wand";
 
 SerpentWand* SerpentWand::create()
 {
@@ -20,7 +20,7 @@ SerpentWand* SerpentWand::create()
 	return instance;
 }
 
-SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 10, 12, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIdentifi
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* SerpentWand::clone()
 
 std::string SerpentWand::getItemName()
 {
-	return SerpentWand::SaveKeySerpentWand;
+	return SerpentWand::SaveKey;
 }
 
 LocalizedString* SerpentWand::getString()
@@ -56,12 +56,12 @@ LocalizedString* SerpentWand::getString()
 
 std::string SerpentWand::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_SerpentWand;
+	return ItemResources::Equipment_Weapons_Special_SerpentWand;
 }
 
 std::string SerpentWand::getSerializationKey()
 {
-	return SerpentWand::SaveKeySerpentWand;
+	return SerpentWand::SaveKey;
 }
 
 Vec2 SerpentWand::getDisplayOffset()

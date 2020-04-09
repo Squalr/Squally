@@ -9,13 +9,14 @@ class EntityCinematicHijackBehavior : public AttachedBehavior
 public:
 	static EntityCinematicHijackBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityCinematicHijackBehavior(GameObject* owner);
-	~EntityCinematicHijackBehavior();
+	virtual ~EntityCinematicHijackBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

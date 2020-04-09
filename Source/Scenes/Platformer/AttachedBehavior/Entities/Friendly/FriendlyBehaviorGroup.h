@@ -7,11 +7,11 @@ class FriendlyBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static FriendlyBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyBehaviorGroup(GameObject* owner);
-	~FriendlyBehaviorGroup();
+	virtual ~FriendlyBehaviorGroup();
 
 	void onLoad() override;
 

@@ -8,6 +8,9 @@ public:
 	static StateAIDecideCard* create();
 
 protected:
+	StateAIDecideCard();
+	virtual ~StateAIDecideCard();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -15,8 +18,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateAIDecideCard();
-	~StateAIDecideCard();
 
 	void decideCardRandom(GameState* gameState);
 };

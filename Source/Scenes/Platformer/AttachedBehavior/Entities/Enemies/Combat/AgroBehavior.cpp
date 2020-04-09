@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string AgroBehavior::MapKeyAttachedBehavior = "agro";
+const std::string AgroBehavior::MapKey = "agro";
 const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
 const float AgroBehavior::EngageCooldownMax = 1.0f;
@@ -32,8 +32,12 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->exclamation = Sprite::create(UIResources::Platformer_Exclamation);
+	this->warnOnAgro = true;
 	this->isAgrod = false;
+	this->isEnabled = true;
 	this->engageCooldown = 0.f;
+	this->agroRangeX = AgroBehavior::AgroRangeX;
+	this->agroRangeY = AgroBehavior::AgroRangeY;
 
 	if (this->entity == nullptr)
 	{
@@ -68,20 +72,48 @@ void AgroBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
+	
+	this->scheduleUpdate();
+}
+
+void AgroBehavior::onDisable()
+{
+	super::onDisable();
+}
+
+void AgroBehavior::enable()
+{
+	this->isEnabled = true;
+}
+
+void AgroBehavior::disable()
+{
+	this->isEnabled = false;
+}
+
+void AgroBehavior::toggleWarnOnAgro(bool warnOnAgro)
+{
+	this->warnOnAgro = warnOnAgro;
+}
+
+void AgroBehavior::setAgroRangeX(float agroRange)
+{
+	this->agroRangeX = agroRange;
+}
+
+void AgroBehavior::setAgroRangeY(float agroRange)
+{
+	this->agroRangeY = agroRange;
 }
 
 void AgroBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->squally == nullptr || this->entity == nullptr)
+	if (!this->isEnabled || this->squally == nullptr || this->entity == nullptr || !this->entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
-		return;
-	}
-
-	if (!this->entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
-	{
+		this->exclamation->setVisible(false);
 		return;
 	}
 
@@ -90,12 +122,21 @@ void AgroBehavior::update(float dt)
 	
 	if (!this->isAgrod)
 	{
-		if (std::abs(squallyPosition.x - entityPosition.x) <= AgroBehavior::AgroRangeX &&
-			std::abs(squallyPosition.y - entityPosition.y) <= AgroBehavior::AgroRangeY)
+		if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
+			std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
 		{
 			this->isAgrod = true;
-			this->engageCooldown = AgroBehavior::EngageCooldownMax;
-			this->exclamation->setVisible(true);
+
+			if (this->warnOnAgro)
+			{
+				this->engageCooldown = AgroBehavior::EngageCooldownMax;
+				this->exclamation->setVisible(true);
+			}
+			else
+			{
+				this->engageCooldown = 0.0f;
+			}
+
 			this->entity->getAnimations()->setFlippedX(squallyPosition.x < entityPosition.x);
 		}
 	}
@@ -106,8 +147,8 @@ void AgroBehavior::update(float dt)
 		{
 			this->exclamation->setVisible(false);
 			
-			if (std::abs(squallyPosition.x - entityPosition.x) <= AgroBehavior::AgroRangeX &&
-				std::abs(squallyPosition.y - entityPosition.y) <= AgroBehavior::AgroRangeY)
+			if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
+				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
 			{
 				this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
 			}

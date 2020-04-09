@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Maces/Mace.h"
 
-class CrystalMace : public Weapon
+class CrystalMace : public Mace
 {
 public:
 	static CrystalMace* create();
@@ -14,12 +14,12 @@ public:
 	std::string getSerializationKey() override;
 	cocos2d::Vec2 getDisplayOffset() override;
 
-	static const std::string SaveKeyCrystalMace;
+	static const std::string SaveKey;
 
 protected:
 	CrystalMace();
-	~CrystalMace();
+	virtual ~CrystalMace();
 
 private:
-	typedef Weapon super;
+	typedef Mace super;
 };

@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/ShadeGrassTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string ShadeGrassTerrain::MapKeyTerrainType = "shade-grass";
+const std::string ShadeGrassTerrain::MapKey = "shade-grass";
 
 ShadeGrassTerrain* ShadeGrassTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ ShadeGrassTerrain* ShadeGrassTerrain::create(ValueMap& properties)
 ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return ShadeGrassTexture::create(transformedProps);
+		},
 		0.5f,
-		ShadeGrassTerrain::MapKeyTerrainType,
+		ShadeGrassTerrain::MapKey,
 		TextureResources::ShadeGrassTexture,
 		TerrainResources::ShadeGrass_Top,
 		TerrainResources::ShadeGrass_TopLeft,

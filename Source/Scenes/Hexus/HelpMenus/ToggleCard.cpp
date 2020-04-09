@@ -6,11 +6,12 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDown toggleModeUpDown)
+ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown)
 {
     ToggleCard* instance = new ToggleCard(toggleModeLeftRight, toggleModeUpDown);
 
@@ -19,7 +20,7 @@ ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight,  ToggleM
     return instance;
 }
 
-ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDown toggleModeUpDown)
+ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown)
 {
     this->autoCard = AutoCard::create();
 	this->upToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowUp, UIResources::Menus_Buttons_ArrowUpSelected);
@@ -29,6 +30,11 @@ ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDow
     this->toggleModeLeftRight = toggleModeLeftRight;
     this->toggleModeUpDown = toggleModeUpDown;
     this->onToggleAttackChange = nullptr;
+
+    this->upToggle->setClickSound(SoundResources::Menus_ButtonClick4);
+    this->downToggle->setClickSound(SoundResources::Menus_ButtonClick4);
+    this->leftToggle->setClickSound(SoundResources::Menus_ButtonClick4);
+    this->rightToggle->setClickSound(SoundResources::Menus_ButtonClick4);
 
     this->addChild(this->upToggle);
     this->addChild(this->downToggle);
@@ -354,4 +360,19 @@ void ToggleCard::togglePreviousDisplayType()
     {
         this->onToggleDisplayTypeChange();
     }
+}
+
+void ToggleCard::setAttack(int attack)
+{
+    this->autoCard->setAttack(attack);
+}
+
+int ToggleCard::getAttack()
+{
+    return this->autoCard->getAttack();
+}
+
+void ToggleCard::setCardScale(float cardScale)
+{
+    this->autoCard->setCardScale(cardScale);
 }

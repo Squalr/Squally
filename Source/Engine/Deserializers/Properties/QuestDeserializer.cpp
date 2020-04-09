@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Quests/QuestLine.h"
+#include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 
@@ -22,7 +23,7 @@ QuestLine* QuestDeserializer::deserialize(QuestDeserializer::QuestLineDeserializ
 	}
 	else
 	{
-		CCLOG("Unknown quest line encountered: %s", args.questLine.c_str());
+		LogUtils::logError("Unknown quest line encountered: " + args.questLine);
 	}
 
     return nullptr;
@@ -34,11 +35,11 @@ QuestTask* QuestDeserializer::deserialize(QuestDeserializer::QuestDeserializatio
 
 	if (questLine != nullptr && args.owner != nullptr)
 	{
-		return questLine->deserialize(args.owner, args.questTask, args.questTag);
+		return questLine->deserialize(args.owner, args.questTask);
 	}
 	else
 	{
-		CCLOG("Unknown quest line encountered: %s", args.questLine.c_str());
+		LogUtils::logError("Unknown quest line encountered: " + args.questLine);
 	}
 
 	return nullptr;

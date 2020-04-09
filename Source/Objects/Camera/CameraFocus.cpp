@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string CameraFocus::MapKeyCameraFocus = "camera-focus";
+const std::string CameraFocus::MapKey = "camera-focus";
 const std::string CameraFocus::MapKeyZoom = "zoom";
 const std::string CameraFocus::MapKeyScrollBoundsX = "scroll-bounds-x";
 const std::string CameraFocus::MapKeyScrollBoundsY = "scroll-bounds-y";
@@ -51,22 +51,18 @@ void CameraFocus::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	CameraTrackingData::CameraScrollType scrollTypeValue = CameraTrackingData::CameraScrollType::Rectangle;
+	GameCamera::getInstance()->setTarget(this->getTrackingData());
+	GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+}
 
-	if (this->scrollType == "ellipse")
-	{
-		scrollTypeValue = CameraTrackingData::CameraScrollType::Ellipse;
-	}
-
-	CameraTrackingData trackingData = CameraTrackingData(
+CameraTrackingData CameraFocus::getTrackingData()
+{
+	return CameraTrackingData(
 		this,
 		Vec2::ZERO,
 		this->scrollBounds,
-		scrollTypeValue,
+		this->scrollType == "ellipse" ? CameraTrackingData::CameraScrollType::Ellipse : CameraTrackingData::CameraScrollType::Rectangle,
 		this->scrollSpeed,
 		this->zoom
 	);
-
-	GameCamera::getInstance()->setTarget(trackingData);
-	GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 }

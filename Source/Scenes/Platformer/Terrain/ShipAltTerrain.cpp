@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/ShipAltTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string ShipAltTerrain::MapKeyTerrainType = "ship-alt";
+const std::string ShipAltTerrain::MapKey = "ship-alt";
 
 ShipAltTerrain* ShipAltTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ ShipAltTerrain* ShipAltTerrain::create(ValueMap& properties)
 ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return ShipAltTexture::create(transformedProps);
+		},
 		0.5f,
-		ShipAltTerrain::MapKeyTerrainType,
+		ShipAltTerrain::MapKey,
 		TextureResources::ShipAltTexture,
 		TerrainResources::ShipAlt_Top,
 		TerrainResources::ShipAlt_TopLeft,

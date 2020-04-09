@@ -1,15 +1,15 @@
 #include "TaserRod.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string TaserRod::SaveKeyTaserRod = "taser-rod";
+const std::string TaserRod::SaveKey = "taser-rod";
 
 TaserRod* TaserRod::create()
 {
@@ -20,7 +20,7 @@ TaserRod* TaserRod::create()
 	return instance;
 }
 
-TaserRod::TaserRod() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+TaserRod::TaserRod() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 20, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ TaserRod::TaserRod() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* TaserRod::clone()
 
 std::string TaserRod::getItemName()
 {
-	return TaserRod::SaveKeyTaserRod;
+	return TaserRod::SaveKey;
 }
 
 LocalizedString* TaserRod::getString()
@@ -56,12 +56,12 @@ LocalizedString* TaserRod::getString()
 
 std::string TaserRod::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_TaserRod;
+	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
 std::string TaserRod::getSerializationKey()
 {
-	return TaserRod::SaveKeyTaserRod;
+	return TaserRod::SaveKey;
 }
 
 Vec2 TaserRod::getDisplayOffset()

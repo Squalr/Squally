@@ -29,20 +29,25 @@ public:
 	void removeCardsWhere(std::function<bool(Card*)> predicate);
 	Card* removeCard(Card* card);
 	Card* drawCard();
+	void setCardScale(float scale, float scaleSpeed);
 	bool hasCards();
 	void shuffle();
 	void insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void clear();
+	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
+	
 	std::vector<Card*> deckCards;
 	Card::CardStyle style;
 
-private:
-	typedef SmartNode super;
+protected:
 	Deck(bool isPlayerOwnedDeck);
 	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck);
-	~Deck();
+	virtual ~Deck();
+
+private:
+	typedef SmartNode super;
 
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);

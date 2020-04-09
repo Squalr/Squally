@@ -17,13 +17,14 @@ public:
 	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityInventoryBehavior(GameObject* owner);
-	~EntityInventoryBehavior();
+	virtual ~EntityInventoryBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

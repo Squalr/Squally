@@ -6,5 +6,5 @@ class CardReturnToHand : public CardData
 {
 public:
 	CardReturnToHand();
-	~CardReturnToHand();
+	virtual ~CardReturnToHand();
 };

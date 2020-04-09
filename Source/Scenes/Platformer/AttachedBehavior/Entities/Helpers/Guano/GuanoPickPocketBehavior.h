@@ -11,19 +11,23 @@ class GuanoPickPocketBehavior : public AttachedBehavior
 public:
 	static GuanoPickPocketBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	GuanoPickPocketBehavior(GameObject* owner);
-	~GuanoPickPocketBehavior();
+	virtual ~GuanoPickPocketBehavior();
 
 	void onLoad() override;
+	void update(float dt) override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
 
 	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::string pickPocketSaveKey);
+	void endPickPocket();
 
 	PlatformerEntity* entity;
+	PlatformerEntity* target;
 	bool isPickPocketing;
 };

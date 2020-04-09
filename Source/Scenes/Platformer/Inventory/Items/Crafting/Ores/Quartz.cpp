@@ -1,15 +1,15 @@
 #include "Quartz.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Quartz::SaveKeyQuartz = "quartz";
+const std::string Quartz::SaveKey = "quartz";
 
 Quartz* Quartz::create()
 {
@@ -20,7 +20,7 @@ Quartz* Quartz::create()
 	return instance;
 }
 
-Quartz::Quartz() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Quartz::Quartz() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Quartz::clone()
 
 std::string Quartz::getItemName()
 {
-	return Quartz::SaveKeyQuartz;
+	return Quartz::SaveKey;
 }
 
 LocalizedString* Quartz::getString()
@@ -45,10 +45,10 @@ LocalizedString* Quartz::getString()
 
 std::string Quartz::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Quartz;
+	return ItemResources::Crafting_Smithing_Quartz;
 }
 
 std::string Quartz::getSerializationKey()
 {
-	return Quartz::SaveKeyQuartz;
+	return Quartz::SaveKey;
 }

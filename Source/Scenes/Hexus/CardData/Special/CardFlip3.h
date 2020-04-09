@@ -6,5 +6,5 @@ class CardFlip3 : public CardData
 {
 public:
 	CardFlip3();
-	~CardFlip3();
+	virtual ~CardFlip3();
 };

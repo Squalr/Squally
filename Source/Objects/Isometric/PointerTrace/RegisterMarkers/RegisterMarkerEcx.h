@@ -9,7 +9,7 @@ public:
 
 protected:
 	RegisterMarkerEcx();
-	~RegisterMarkerEcx();
+	virtual ~RegisterMarkerEcx();
 
 	int getRegisterIndex() override;
 

@@ -1,16 +1,16 @@
 #include "SpecialGreed.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialGreed::SaveKeySpecialGreed = "special-greed";
+const std::string SpecialGreed::SaveKey = "special-greed";
 
 SpecialGreed* SpecialGreed::create()
 {
@@ -21,7 +21,7 @@ SpecialGreed* SpecialGreed::create()
 	return instance;
 }
 
-SpecialGreed::SpecialGreed() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialGreed::SpecialGreed() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialGreed::clone()
 
 std::string SpecialGreed::getItemName()
 {
-	return SpecialGreed::SaveKeySpecialGreed;
+	return SpecialGreed::SaveKey;
 }
 
 LocalizedString* SpecialGreed::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialGreed::getString()
 
 std::string SpecialGreed::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialGreed::getSerializationKey()
 {
-	return SpecialGreed::SaveKeySpecialGreed;
+	return SpecialGreed::SaveKey;
 }
 
 std::string SpecialGreed::getCardKey()

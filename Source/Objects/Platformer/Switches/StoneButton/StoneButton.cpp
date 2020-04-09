@@ -9,7 +9,6 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -24,7 +23,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string StoneButton::MapKeyStoneButton = "stone-button";
+const std::string StoneButton::MapKey = "stone-button";
+const std::string StoneButton::PropertySwitch = "switch";
 const float StoneButton::ButtonPressureSpeed = 32.0f;
 const float StoneButton::ButtonPressureOffsetMin = 8.0f;
 
@@ -41,9 +41,10 @@ StoneButton::StoneButton(ValueMap& properties) : super(properties)
 {
 	this->button = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonTop);
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
-	this->buttonCollision = CollisionObject::create(PhysicsBody::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
-
+	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->isSwitch = GameUtils::getKeyOrDefault(this->properties, StoneButton::PropertySwitch, Value(false)).asBool();
 	this->maxDefaultButtonPosition = 48.0f;
+	this->hasCollided = false;
 
 	this->buttonCollision->addChild(this->button);
 	this->addChild(this->buttonCollision);
@@ -72,8 +73,10 @@ void StoneButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->buttonCollision->whenCollidesWith({(int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
+	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData data)
 	{
+		this->hasCollided = true;
+		
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 }
@@ -84,13 +87,13 @@ void StoneButton::update(float dt)
 
 	float currentPositionY = this->buttonCollision->getPositionY();
 
-	if (this->buttonCollision->getCurrentCollisions().empty())
+	if (!this->buttonCollision->getCurrentCollisions().empty() || (this->isSwitch && this->hasCollided))
 	{
-		currentPositionY += StoneButton::ButtonPressureSpeed * dt;
+		currentPositionY -= StoneButton::ButtonPressureSpeed * dt;
 	}
 	else
 	{
-		currentPositionY -= StoneButton::ButtonPressureSpeed * dt;
+		currentPositionY += StoneButton::ButtonPressureSpeed * dt;
 	}
 
 	currentPositionY = MathUtils::clamp(currentPositionY, StoneButton::ButtonPressureOffsetMin, this->maxDefaultButtonPosition);
@@ -107,7 +110,7 @@ void StoneButton::update(float dt)
 			{ SwitchEvents::SwitchArgProgress, Value(progress) },
 		};
 
-		ObjectEvents::TriggerBroadCastMapObjectState(this->sendEvent, args);
+		this->broadcastMapEvent(this->getSendEvent(), args);
 	}
 }
 

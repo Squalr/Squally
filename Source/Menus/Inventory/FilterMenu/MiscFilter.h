@@ -19,5 +19,5 @@ protected:
 private:
 	typedef FilterEntry super;
 	MiscFilter();
-	~MiscFilter();
+	virtual ~MiscFilter();
 };

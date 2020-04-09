@@ -15,12 +15,12 @@ class PlatformerEntity : public HackableObject
 public:
 	enum class ControlState
 	{
+		None,
 		Normal,
 		Swimming,
 	};
 
 	std::string getEntityKey();
-	virtual float getFloatHeight();
 
 	float getScale();
 	std::string getAnimationResource();
@@ -31,21 +31,26 @@ public:
 	cocos2d::Size getMovementSize();
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
+	cocos2d::Vec2 getEntityBottomPoint();
 	float getHoverHeight();
-	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;
-	virtual void performSwimAnimation();
-	virtual void performJumpAnimation();
+	virtual std::string getSwimAnimation();
+	virtual std::string getJumpAnimation();
+	virtual std::string getJumpSound();
+	virtual std::vector<std::string> getSwimSounds();
+	virtual std::vector<std::string> getWalkSounds();
+	PlatformerEntity::ControlState getControlState();
 	bool isFlippedX();
 	bool isFlippedY();
-	PlatformerEntity* softClone();
+	PlatformerEntity* uiClone();
 	std::string getBattleBehavior();
 
 	ControlState controlState;
+	ControlState controlStateOverride;
 
 	static const std::string PlatformerEntityTag;
-	static const std::string MapKeyBattleAttachedBehavior;
+	static const std::string PropertyBattleBehavior;
 
 protected:
 	PlatformerEntity(
@@ -61,6 +66,7 @@ protected:
 	
 	void onEnter() override;
 	void update(float dt) override;
+	cocos2d::Vec2 getRainOffset() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 
@@ -72,7 +78,7 @@ protected:
 
 	HexusOpponentData* hexusOpponentData;
 
-	static const std::string MapKeyPropertyState;
+	static const std::string PropertyState;
 
 private:
 	typedef HackableObject super;

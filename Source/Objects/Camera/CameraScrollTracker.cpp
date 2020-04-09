@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string CameraScrollTracker::MapKeyCameraScrollTracker = "camera-scroll-tracker";
+const std::string CameraScrollTracker::MapKey = "camera-scroll-tracker";
 const std::string CameraScrollTracker::MapKeyZoom = "zoom";
 const std::string CameraScrollTracker::MapKeyScrollSpeed = "scroll-speed";
 const float CameraScrollTracker::ScrollSpeed = -64.0f;

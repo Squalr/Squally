@@ -82,9 +82,9 @@ void AssemblyHelpText::initializeListeners()
 			bool noDice = false;
 
 			// Ignore mousing over hand cards
-			for (auto it = this->gameState->playerHand->rowCards.begin(); it != this->gameState->playerHand->rowCards.end(); it++)
+			for (auto next : this->gameState->playerHand->rowCards)
 			{
-				if (args->card == *it)
+				if (args->card == next)
 				{
 					noDice = true;
 					break;

@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string Laser::MapKeyLaser = "laser";
+const std::string Laser::MapKey = "laser";
 
 Laser* Laser::create(ValueMap& properties)
 {
@@ -43,7 +43,7 @@ Laser::Laser(ValueMap& properties) : super(properties)
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
 	this->laserAnimation = LaserAnimation::create(height);
-	this->laserCollision = CollisionObject::create(PhysicsBody::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->laserCollision = CollisionObject::create(CollisionObject::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->addChild(this->laserCollision);
 	this->addChild(this->laserAnimation);
@@ -82,16 +82,13 @@ Vec2 Laser::getButtonOffset()
 void Laser::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
-				Laser::MapKeyLaser,
+			HackableCode::HackableCodeInfo(
+				Laser::MapKey,
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LaserCountDownPreview::create(),
@@ -99,17 +96,18 @@ void Laser::registerHackables()
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
 				int(HackFlags::Fire),
-				20.0f
+				20.0f,
+				0.0f
 			)
 		},
 	};
 
 	auto updateLaserFunc = &Laser::updateLaser;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateLaserFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateLaserFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -166,3 +164,4 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 		});
 	}
 }
+END_NO_OPTIMIZE

@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string FriendlyBehaviorGroup::MapKeyAttachedBehavior = "friendly";
+const std::string FriendlyBehaviorGroup::MapKey = "friendly";
 
 FriendlyBehaviorGroup* FriendlyBehaviorGroup::create(GameObject* owner)
 {

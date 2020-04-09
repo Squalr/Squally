@@ -86,16 +86,16 @@ public:
 	cocos2d::Vec2 position;
 
 	static const float cardScale;
-	static const cocos2d::Color4B binaryColor;
-	static const cocos2d::Color4B decimalColor;
-	static const cocos2d::Color4B hexColor;
-	static const cocos2d::Color4B specialColor;
-	static const cocos2d::Color4B debuffColor;
-	static const cocos2d::Color4B buffColor;
+	static const cocos2d::Color4B BinaryColor;
+	static const cocos2d::Color4B DecimalColor;
+	static const cocos2d::Color4B HexColor;
+	static const cocos2d::Color4B SpecialColor;
+	static const cocos2d::Color4B DebuffColor;
+	static const cocos2d::Color4B BuffColor;
 
 protected:
 	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
-	~Card();
+	virtual ~Card();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

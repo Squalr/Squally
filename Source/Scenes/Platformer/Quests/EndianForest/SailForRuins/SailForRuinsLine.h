@@ -7,11 +7,13 @@ class SailForRuinsLine : public QuestLine
 public:
 	static SailForRuinsLine* create();
 
+	QuestLine* clone() override;
+
 	static const std::string MapKeyQuestLine;
 
 protected:
 	SailForRuinsLine();
-	~SailForRuinsLine();
+	virtual ~SailForRuinsLine();
 
 private:
 	typedef QuestLine super;

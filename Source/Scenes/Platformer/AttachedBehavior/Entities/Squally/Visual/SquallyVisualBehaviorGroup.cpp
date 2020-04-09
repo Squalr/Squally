@@ -1,12 +1,16 @@
 #include "SquallyVisualBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyAnimationBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyDeadVisualBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyEquipmentVisualBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyEyeBlinkBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyItemDiscoveryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyMouthBehavior.h"
 
 using namespace cocos2d;
 
-const std::string SquallyVisualBehaviorGroup::MapKeyAttachedBehavior = "squally-visual-group";
+const std::string SquallyVisualBehaviorGroup::MapKey = "squally-visual-group";
 
 SquallyVisualBehaviorGroup* SquallyVisualBehaviorGroup::create(GameObject* owner)
 {
@@ -18,8 +22,12 @@ SquallyVisualBehaviorGroup* SquallyVisualBehaviorGroup::create(GameObject* owner
 }
 
 SquallyVisualBehaviorGroup::SquallyVisualBehaviorGroup(GameObject* owner) : super(owner, {
+	SquallyAnimationBehavior::create(owner),
+	SquallyDeadVisualBehavior::create(owner),
 	SquallyEquipmentVisualBehavior::create(owner),
 	SquallyEyeBlinkBehavior::create(owner),
+	SquallyItemDiscoveryBehavior::create(owner),
+	SquallyMouthBehavior::create(owner),
 	})
 {
 }
@@ -30,4 +38,9 @@ SquallyVisualBehaviorGroup::~SquallyVisualBehaviorGroup()
 
 void SquallyVisualBehaviorGroup::onLoad()
 {
+}
+
+void SquallyVisualBehaviorGroup::onDisable()
+{
+	super::onDisable();
 }

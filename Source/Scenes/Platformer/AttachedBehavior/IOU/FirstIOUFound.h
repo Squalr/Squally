@@ -2,23 +2,24 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class IOU;
+class IOUDrop;
 
 class FirstIOUFound : public AttachedBehavior
 {
 public:
 	static FirstIOUFound* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FirstIOUFound(GameObject* owner);
-	~FirstIOUFound();
+	virtual ~FirstIOUFound();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
 
-	IOU* iou;
+	IOUDrop* iou;
 };

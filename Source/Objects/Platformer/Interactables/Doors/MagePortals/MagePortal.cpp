@@ -16,6 +16,8 @@
 
 using namespace cocos2d;
 
+const std::string MagePortal::TagMagePortal = "mage-portal";
+
 MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalBaseColor) : super(properties, Size(128.0f, 256.0f))
 {
 	this->contentNode = Node::create();
@@ -23,7 +25,9 @@ MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalB
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
 	this->edge = DrawNode::create();
-	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Doors_Portals_Portal);
+	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
+
+	this->addTag(MagePortal::TagMagePortal);
 
 	this->background->drawSolidCircle(Vec2::ZERO, portalRadius, 0.0f, 32, Color4F(portalBaseColor));
 	

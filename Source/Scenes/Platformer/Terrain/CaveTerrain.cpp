@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/CaveTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string CaveTerrain::MapKeyTerrainType = "cave";
+const std::string CaveTerrain::MapKey = "cave";
 
 CaveTerrain* CaveTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ CaveTerrain* CaveTerrain::create(ValueMap& properties)
 CaveTerrain::CaveTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return CaveTexture::create(transformedProps);
+		},
 		0.5f,
-		CaveTerrain::MapKeyTerrainType,
+		CaveTerrain::MapKey,
 		TextureResources::CaveTexture,
 		TerrainResources::Cave_Top,
 		TerrainResources::Cave_TopLeft,

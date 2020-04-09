@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string KingZul::MapKeyKingZul = "king-zul";
+const std::string KingZul::MapKey = "king-zul";
 HexusOpponentData* KingZul::HexusOpponentDataInstance = nullptr;
 const std::string KingZul::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_ZUL";
 
@@ -32,7 +31,7 @@ KingZul* KingZul::deserialize(ValueMap& properties)
 }
 
 KingZul::KingZul(ValueMap& properties) : super(properties,
-	KingZul::MapKeyKingZul,
+	KingZul::MapKey,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
 	Size(196.0f, 320.0f),

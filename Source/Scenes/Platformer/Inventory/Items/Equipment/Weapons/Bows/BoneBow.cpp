@@ -1,15 +1,15 @@
 #include "BoneBow.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string BoneBow::SaveKeyBoneBow = "bone-bow";
+const std::string BoneBow::SaveKey = "bone-bow";
 
 BoneBow* BoneBow::create()
 {
@@ -20,7 +20,7 @@ BoneBow* BoneBow::create()
 	return instance;
 }
 
-BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.25f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* BoneBow::clone()
 
 std::string BoneBow::getItemName()
 {
-	return BoneBow::SaveKeyBoneBow;
+	return BoneBow::SaveKey;
 }
 
 LocalizedString* BoneBow::getString()
@@ -56,12 +56,12 @@ LocalizedString* BoneBow::getString()
 
 std::string BoneBow::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Bows_BoneBow;
+	return ItemResources::Equipment_Weapons_Bows_BoneBow;
 }
 
 std::string BoneBow::getSerializationKey()
 {
-	return BoneBow::SaveKeyBoneBow;
+	return BoneBow::SaveKey;
 }
 
 Vec2 BoneBow::getDisplayOffset()

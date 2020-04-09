@@ -1,16 +1,16 @@
 #include "SpecialPeek.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialPeek::SaveKeySpecialPeek = "special-peek";
+const std::string SpecialPeek::SaveKey = "special-peek";
 
 SpecialPeek* SpecialPeek::create()
 {
@@ -21,7 +21,7 @@ SpecialPeek* SpecialPeek::create()
 	return instance;
 }
 
-SpecialPeek::SpecialPeek() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialPeek::SpecialPeek() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialPeek::clone()
 
 std::string SpecialPeek::getItemName()
 {
-	return SpecialPeek::SaveKeySpecialPeek;
+	return SpecialPeek::SaveKey;
 }
 
 LocalizedString* SpecialPeek::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialPeek::getString()
 
 std::string SpecialPeek::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialPeek::getSerializationKey()
 {
-	return SpecialPeek::SaveKeySpecialPeek;
+	return SpecialPeek::SaveKey;
 }
 
 std::string SpecialPeek::getCardKey()

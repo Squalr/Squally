@@ -2,7 +2,6 @@
 
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -41,10 +40,11 @@ void PhysicsInitializer::onEnter()
 {
 	super::onEnter();
 	
+	/*
 	PhysicsWorld* physicsWorld = Director::getInstance()->getRunningScene()->getPhysicsWorld();
 
 	if (physicsWorld != nullptr)
 	{
 		physicsWorld->setGravity(Vec2(0.0f, this->gravity));
-	}
+	}*/
 }

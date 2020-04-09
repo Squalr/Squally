@@ -8,13 +8,13 @@ public:
 	static XorBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	XorBlock(BlockType blockType);
+	virtual ~XorBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	XorBlock(BlockType blockType);
-	~XorBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

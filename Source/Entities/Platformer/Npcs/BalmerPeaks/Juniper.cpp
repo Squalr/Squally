@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Juniper::MapKeyJuniper = "juniper";
+const std::string Juniper::MapKey = "juniper";
 HexusOpponentData* Juniper::HexusOpponentDataInstance = nullptr;
 const std::string Juniper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JUNIPER";
 
@@ -32,7 +31,7 @@ Juniper* Juniper::deserialize(ValueMap& properties)
 }
 
 Juniper::Juniper(ValueMap& properties) : super(properties,
-	Juniper::MapKeyJuniper,
+	Juniper::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,
 	Size(112.0f, 160.0f),

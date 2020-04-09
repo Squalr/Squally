@@ -10,13 +10,14 @@ class WeakMindedBehavior : public AttachedBehavior
 public:
 	static WeakMindedBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	WeakMindedBehavior(GameObject* owner);
-	~WeakMindedBehavior();
+	virtual ~WeakMindedBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

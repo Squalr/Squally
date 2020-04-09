@@ -9,34 +9,39 @@
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChooseTargetMenu.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-TargetSelectionMenu* TargetSelectionMenu::create()
+TargetSelectionMenu* TargetSelectionMenu::create(Timeline* timelineRef)
 {
-	TargetSelectionMenu* instance = new TargetSelectionMenu();
+	TargetSelectionMenu* instance = new TargetSelectionMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TargetSelectionMenu::TargetSelectionMenu()
+TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 {
-	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
+	this->timelineRef = timelineRef;
+	this->selectedEntity = nullptr;
+	this->allowedSelection = AllowedSelection::None;
+	this->chooseTargetMenu = ChooseTargetMenu::create();
 
-	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
-
-	this->addChild(this->lightRay);
+	this->addChild(this->chooseTargetMenu);
 }
 
 void TargetSelectionMenu::onEnter()
@@ -65,50 +70,52 @@ void TargetSelectionMenu::initializeListeners()
 		{
 			switch (combatArgs->currentMenu)
 			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
+				{
+					// For now, there is no defend select menu. Just wait for this state to pass.
+					break;
+				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
+				{
+					this->allowedSelection = AllowedSelection::None;
+					this->clearEntityClickCallbacks();
+					this->selectEntity(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
+
+					this->setVisible(true);
+
+					break;
+				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				{
-					this->selectEntity(nullptr);
-
-					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity, bool* isHandled)
-					{
-						if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-						{
-							this->selectEntity(entity);
-
-							*isHandled = true;
-						}
-					}), PlatformerEnemy::PlatformerEnemyTag);
-
 					this->allowedSelection = AllowedSelection::Enemy;
-					this->setEntityClickCallbacks();
 					this->isActive = true;
+
+					this->setEntityClickCallbacks();
+					this->selectEntity(nullptr);
+					this->selectNext(false);
+
 					this->setVisible(true);
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				{
-					this->selectEntity(nullptr);
-
-					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity, bool* isHandled)
-					{
-						if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-						{
-							this->selectEntity(entity);
-
-							*isHandled = true;
-						}
-					}), PlatformerFriendly::PlatformerFriendlyTag);
-
 					this->allowedSelection = AllowedSelection::Player;
-					this->setEntityClickCallbacks();
 					this->isActive = true;
+
+					this->setEntityClickCallbacks();
+					this->selectEntity(nullptr);
+					this->selectNext(false);
+					
 					this->setVisible(true);
 					break;
 				}
 				default:
 				{
+					this->selectEntity(nullptr);
+					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
-					this->setVisible(false);
 					break;
 				}
 			}
@@ -131,6 +138,11 @@ void TargetSelectionMenu::initializeListeners()
 	});
 }
 
+void TargetSelectionMenu::update(float dt)
+{
+	super::update(dt);
+}
+
 void TargetSelectionMenu::chooseCurrentTarget()
 {
 	if (!this->isActive || this->selectedEntity == nullptr)
@@ -144,80 +156,57 @@ void TargetSelectionMenu::chooseCurrentTarget()
 
 void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 {
-	const Vec2 LightOffset = Vec2(128.0f, -128.0f);
-
-	if (entity != nullptr)
-	{
-		this->lightRay->setPosition(GameUtils::getScreenBounds(entity).origin + LightOffset);
-		this->lightRay->setVisible(true);
-	}
-	else
-	{
-		this->lightRay->setVisible(false);
-	}
-
 	this->selectedEntity = entity;
+	
+	CombatEvents::TriggerSelectionChanged(CombatEvents::SelectionArgs(this->selectedEntity));
 }
 
 void TargetSelectionMenu::selectNext(bool directionIsLeft)
 {
-	if (!this->isActive)
+	if (!this->isActive || this->allowedSelection == AllowedSelection::None)
 	{
 		return;
 	}
 
 	std::vector<PlatformerEntity*> targetEntityGroup = std::vector<PlatformerEntity*>();
 
-	switch (this->allowedSelection)
+	for (auto next : timelineRef->getEntries())
 	{
-		case AllowedSelection::Player:
-		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
-			{
-				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					targetEntityGroup.push_back(entity);
-				}
-			}), PlatformerFriendly::PlatformerFriendlyTag);
+		PlatformerEntity* entity = next->getEntity();
 
-			break;
-		}
-		case AllowedSelection::Either:
+		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEntity* entity)
+			if (this->allowedSelection == AllowedSelection::Either
+				|| (next->isPlayerEntry() && this->allowedSelection == AllowedSelection::Player)
+				|| (!next->isPlayerEntry() && this->allowedSelection == AllowedSelection::Enemy))
 			{
-				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					targetEntityGroup.push_back(entity);
-				}
-			}), PlatformerEnemy::PlatformerEnemyTag);
+				targetEntityGroup.push_back(entity);
+			}
+		}
+	}
 
-			break;
-		}
-		case AllowedSelection::Enemy:
-		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
-			{
-				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					targetEntityGroup.push_back(entity);
-				}
-			}), PlatformerEnemy::PlatformerEnemyTag);
-
-			break;
-		}
-		default:
-		{
-			break;
-		}
+	if (targetEntityGroup.empty())
+	{
+		return;
 	}
 
 	auto entityPosition = std::find(targetEntityGroup.begin(), targetEntityGroup.end(), this->selectedEntity);
 
-	if (entityPosition != std::end(targetEntityGroup))
+	if (this->selectedEntity == nullptr)
+	{
+		this->selectEntity(targetEntityGroup.front());
+	}
+	else if (entityPosition != std::end(targetEntityGroup))
 	{
 		if (directionIsLeft)
 		{
+			// Looping disabled -- just go back if cycled through all entities
+			if (*entityPosition == targetEntityGroup.front())
+			{
+				CombatEvents::TriggerMenuGoBack();
+				return;
+			}
+
 			PlatformerEntity* nextEntity = (*entityPosition == targetEntityGroup.front()) ? targetEntityGroup.back() : *std::prev(entityPosition);
 
 			this->selectEntity(nextEntity);
@@ -225,6 +214,16 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		else
 		{
 			auto next = std::next(entityPosition);
+
+			// Looping disabled -- just go back if cycled through all entities
+			// Edit: Nvm, looping actually feels more natural when scrolling right, whereas going back is more natural when scrolling left
+			/*
+			if (next == std::end(targetEntityGroup))
+			{
+				CombatEvents::TriggerMenuGoBack();
+				return;
+			}
+			*/
 
 			PlatformerEntity* nextEntity = (next != std::end(targetEntityGroup)) ? *next : targetEntityGroup.front();
 
@@ -239,10 +238,10 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 
 void TargetSelectionMenu::setEntityClickCallbacks()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
+	for (auto next : timelineRef->getEntries())
 	{
-		this->setEntityClickCallbacks(entity);
-	}), PlatformerEntity::PlatformerEntityTag);
+		this->setEntityClickCallbacks(next->getEntity());
+	}
 }
 
 void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
@@ -272,13 +271,13 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 
 void TargetSelectionMenu::clearEntityClickCallbacks()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
+	for (auto next : timelineRef->getEntries())
 	{
-		EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
+		EntitySelectionBehavior* selection = next->getEntity()->getAttachedBehavior<EntitySelectionBehavior>();
 		
 		if (selection != nullptr)
 		{
 			selection->clearEntityClickCallbacks();
 		}
-	}), PlatformerEntity::PlatformerEntityTag);
+	}
 }

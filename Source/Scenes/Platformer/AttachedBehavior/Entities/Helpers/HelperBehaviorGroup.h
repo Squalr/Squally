@@ -7,13 +7,14 @@ class HelperBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static HelperBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	HelperBehaviorGroup(GameObject* owner);
-	~HelperBehaviorGroup();
+	virtual ~HelperBehaviorGroup();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehaviorGroup super;

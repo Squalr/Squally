@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Shaman::MapKeyShaman = "shaman";
+const std::string Shaman::MapKey = "shaman";
 HexusOpponentData* Shaman::HexusOpponentDataInstance = nullptr;
 const std::string Shaman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHAMAN";
 
@@ -32,7 +31,7 @@ Shaman* Shaman::deserialize(ValueMap& properties)
 }
 
 Shaman::Shaman(ValueMap& properties) : super(properties,
-	Shaman::MapKeyShaman,
+	Shaman::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,
 	Size(256.0f, 288.0f),

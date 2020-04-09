@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyGrim;
+	static const std::string MapKey;
+	
+protected:
+	Grim(cocos2d::ValueMap& properties);
+	virtual ~Grim();
 
 private:
 	typedef PlatformerFriendly super;
-	Grim(cocos2d::ValueMap& properties);
-	~Grim();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

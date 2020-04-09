@@ -1,15 +1,15 @@
 #include "LightWood.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string LightWood::SaveKeyLightWood = "light-wood";
+const std::string LightWood::SaveKey = "light-wood";
 
 LightWood* LightWood::create()
 {
@@ -20,7 +20,7 @@ LightWood* LightWood::create()
 	return instance;
 }
 
-LightWood::LightWood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+LightWood::LightWood() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* LightWood::clone()
 
 std::string LightWood::getItemName()
 {
-	return LightWood::SaveKeyLightWood;
+	return LightWood::SaveKey;
 }
 
 LocalizedString* LightWood::getString()
@@ -45,10 +45,10 @@ LocalizedString* LightWood::getString()
 
 std::string LightWood::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Wood_LightWood;
+	return ItemResources::Crafting_Smithing_WoodLight;
 }
 
 std::string LightWood::getSerializationKey()
 {
-	return LightWood::SaveKeyLightWood;
+	return LightWood::SaveKey;
 }

@@ -3,12 +3,11 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -28,7 +27,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string MechanicalFlail::MapKeyMechanicalFlail = "mechanical-flail";
+const std::string MechanicalFlail::MapKey = "mechanical-flail";
 
 const float MechanicalFlail::DefaultAngle = 90.0f;
 const float MechanicalFlail::SwingsPerSecondAt480Length = 1.5f;
@@ -46,14 +45,13 @@ MechanicalFlail* MechanicalFlail::create(ValueMap& properties)
 
 MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 {
+	this->mechanicalFlailClippy = MechanicalFlailClippy::create();
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
-	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
-	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->smokeParticles = SmartParticles::create(ParticleResources::Objects_Smoke, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->flailCollision = CollisionObject::create(CollisionObject::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
-
-	this->smokeParticles->setVisible(false);
 
 	this->targetAngle = MechanicalFlail::DefaultAngle;
 	this->flailHeight = height;
@@ -63,6 +61,7 @@ MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 
 	this->buildChain();
 
+	this->registerClippy(this->mechanicalFlailClippy);
 	this->flailChain->addChild(this->flailCollision);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);
@@ -105,12 +104,12 @@ Vec2 MechanicalFlail::getButtonOffset()
 
 void MechanicalFlail::registerHackables()
 {
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_SWING,
-			HackableCode::LateBindData(
-				MechanicalFlail::MapKeyMechanicalFlail,
+			HackableCode::HackableCodeInfo(
+				MechanicalFlail::MapKey,
 				Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				MechanicalFlailSetAnglePreview::create(),
@@ -120,17 +119,18 @@ void MechanicalFlail::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				this->showClippy ? MechanicalFlailClippy::create() : nullptr
+				0.0f,
+				mechanicalFlailClippy
 			)
 		},
 	};
 
 	auto swingFunc = &MechanicalFlail::swingToAngle;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -203,7 +203,6 @@ NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 	{
 		if (!this->smokeParticles->isActive())
 		{
-			this->smokeParticles->setVisible(true);
 			this->smokeParticles->start();
 		}
 	}
@@ -211,13 +210,13 @@ NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 	{
 		if (this->smokeParticles->isActive())
 		{
-			this->smokeParticles->setVisible(false);
-			this->smokeParticles->stopSystem();
+			this->smokeParticles->stop();
 		}
 	}
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE
 
 void MechanicalFlail::buildChain()
 {

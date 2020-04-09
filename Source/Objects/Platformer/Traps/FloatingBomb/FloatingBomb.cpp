@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -22,7 +21,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string FloatingBomb::MapKeyFloatingBomb = "floating-bomb";
+const std::string FloatingBomb::MapKey = "floating-bomb";
 
 FloatingBomb* FloatingBomb::create(ValueMap& properties)
 {
@@ -36,7 +35,7 @@ FloatingBomb* FloatingBomb::create(ValueMap& properties)
 FloatingBomb::FloatingBomb(ValueMap& properties) : super(properties)
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_FloatingBomb_FloatingBomb);
-	this->bombCollision = CollisionObject::create(PhysicsBody::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Damage, true, true);
+	this->bombCollision = CollisionObject::create(CollisionObject::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(true, true));
 
 	this->bombCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
 	{

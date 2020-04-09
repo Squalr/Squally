@@ -8,11 +8,11 @@ public:
 	static NotEqualsBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	NotEqualsBlock(BlockType blockType);
+	virtual ~NotEqualsBlock();
 	unsigned char compute() override;
 	bool compare(unsigned char inputA, unsigned char inputB) override;
 
 private:
 	typedef ComparisonBlockBase super;
-	NotEqualsBlock(BlockType blockType);
-	~NotEqualsBlock();
 };

@@ -1,13 +1,11 @@
 #include "ChironHexusBehavior.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/EFHexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -16,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string ChironHexusBehavior::MapKey = "chiron-hexus";
 
 ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
 {
@@ -42,7 +40,7 @@ MinMaxPool* ChironHexusBehavior::generateReward()
 
 std::string ChironHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return ChironHexusBehavior::MapKey;
 }
 
 std::string ChironHexusBehavior::getBackgroundResource()
@@ -52,11 +50,16 @@ std::string ChironHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> ChironHexusBehavior::generateDeck()
 {
-	return HexusOpponentData::generateDeck(25, 0.08f,
+	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
+
+	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
+		
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::Mov],
 	});
 }
 

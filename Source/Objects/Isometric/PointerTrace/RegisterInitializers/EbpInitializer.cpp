@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EbpInitializer::MapKeyEbpInitializer = "ebp";
+const std::string EbpInitializer::MapKey = "ebp";
 
 EbpInitializer* EbpInitializer::create(ValueMap& properties)
 {

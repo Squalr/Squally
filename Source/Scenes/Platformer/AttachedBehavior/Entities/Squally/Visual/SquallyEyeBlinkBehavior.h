@@ -10,13 +10,14 @@ class SquallyEyeBlinkBehavior : public AttachedBehavior
 public:
 	static SquallyEyeBlinkBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyEyeBlinkBehavior(GameObject* owner);
-	~SquallyEyeBlinkBehavior();
+	virtual ~SquallyEyeBlinkBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

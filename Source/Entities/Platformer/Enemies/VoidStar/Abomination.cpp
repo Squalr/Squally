@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Abomination::MapKeyAbomination = "abomination";
+const std::string Abomination::MapKey = "abomination";
 HexusOpponentData* Abomination::HexusOpponentDataInstance = nullptr;
 const std::string Abomination::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ABOMINATION";
 
@@ -32,7 +31,7 @@ Abomination* Abomination::deserialize(ValueMap& properties)
 }
 
 Abomination::Abomination(ValueMap& properties) : super(properties,
-	Abomination::MapKeyAbomination,
+	Abomination::MapKey,
 	EntityResources::Enemies_VoidStar_Abomination_Animations,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,
 	Size(296.0f, 356.0f),

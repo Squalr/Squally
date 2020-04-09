@@ -10,13 +10,14 @@ class FollowMovementBehavior : public AttachedBehavior
 public:
 	static FollowMovementBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FollowMovementBehavior(GameObject* owner);
-	~FollowMovementBehavior();
+	virtual ~FollowMovementBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string LionMan::MapKeyLionMan = "lion-man";
+const std::string LionMan::MapKey = "lion-man";
 HexusOpponentData* LionMan::HexusOpponentDataInstance = nullptr;
 const std::string LionMan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LION_MAN";
 
@@ -32,7 +31,7 @@ LionMan* LionMan::deserialize(ValueMap& properties)
 }
 
 LionMan::LionMan(ValueMap& properties) : super(properties,
-	LionMan::MapKeyLionMan,
+	LionMan::MapKey,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	Size(256.0f, 326.0f),

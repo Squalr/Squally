@@ -6,5 +6,5 @@ class CardBinary7 : public CardData
 {
 public:
 	CardBinary7();
-	~CardBinary7();
+	virtual ~CardBinary7();
 };

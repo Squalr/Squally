@@ -18,7 +18,7 @@ public:
 
 protected:
 	FilterEntry(LocalizedString* text, std::string spriteResource);
-	~FilterEntry();
+	virtual ~FilterEntry();
 
 private:
 	typedef MenuEntry super;

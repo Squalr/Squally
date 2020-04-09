@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolToben::MapKeyShopPoolToben = "shop-pool-toben";
+const std::string ShopPoolToben::MapKey = "shop-pool-toben";
 const std::string ShopPoolToben::PoolName = "shop-pool-toben";
 
 ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
@@ -26,11 +26,12 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 }
 
 ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName,
-	{ CardPoolTier1::create(SampleMethod::Guarantee, 3, 3) })
+	{ CardPoolTier1::create(SampleMethod::Guarantee, 2, 2) })
 {
-	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(SpeedRune::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolToben::~ShopPoolToben()

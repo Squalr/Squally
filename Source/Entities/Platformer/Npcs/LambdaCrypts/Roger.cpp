@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Roger::MapKeyRoger = "roger";
+const std::string Roger::MapKey = "roger";
 HexusOpponentData* Roger::HexusOpponentDataInstance = nullptr;
 const std::string Roger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROGER";
 
@@ -32,7 +31,7 @@ Roger* Roger::deserialize(ValueMap& properties)
 }
 
 Roger::Roger(ValueMap& properties) : super(properties,
-	Roger::MapKeyRoger,
+	Roger::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Roger_Animations,
 	EntityResources::Npcs_LambdaCrypts_Roger_Emblem,
 	Size(112.0f, 160.0f),

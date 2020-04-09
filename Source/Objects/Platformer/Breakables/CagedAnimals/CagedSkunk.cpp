@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedSkunk::MapKeyCagedSkunk = "caged-skunk";
+const std::string CagedSkunk::MapKey = "caged-skunk";
 
 CagedSkunk* CagedSkunk::create(ValueMap& properties)
 {

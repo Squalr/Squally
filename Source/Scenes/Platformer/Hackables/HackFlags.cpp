@@ -1,39 +1,42 @@
 #include "HackFlags.h"
 
-#include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/Item.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "cocos/base/CCValue.h"
+
+#include "Engine/Save/SaveManager.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
+
+using namespace cocos2d;
 
 std::map<std::string, int> HackFlagUtils::EssenceFlagMap = std::map<std::string, int>();
 
-int HackFlagUtils::GetCurrentHackFlags(Inventory* inventory)
+int HackFlagUtils::GetCurrentHackFlags()
 {
     static bool init = false;
 
     if (!init)
     {
-        HackFlagUtils::EssenceFlagMap[EssenceOfFire::SaveKeyEssenceOfFire] = int(HackFlags::Fire);
-        HackFlagUtils::EssenceFlagMap[EssenceOfFrost::SaveKeyEssenceOfFrost] = int(HackFlags::Frost);
-        HackFlagUtils::EssenceFlagMap[EssenceOfLight::SaveKeyEssenceOfLight] = int(HackFlags::Light);
-        HackFlagUtils::EssenceFlagMap[EssenceOfLightning::SaveKeyEssenceOfLightning] = int(HackFlags::Lightning);
-        HackFlagUtils::EssenceFlagMap[EssenceOfNature::SaveKeyEssenceOfNature] = int(HackFlags::Nature);
-        HackFlagUtils::EssenceFlagMap[EssenceOfShadow::SaveKeyEssenceOfShadow] = int(HackFlags::Shadow);
-        HackFlagUtils::EssenceFlagMap[EssenceOfUndeath::SaveKeyEssenceOfUndeath] = int(HackFlags::Undeath);
-        HackFlagUtils::EssenceFlagMap[EssenceOfWind::SaveKeyEssenceOfWind] = int(HackFlags::Wind);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookArcane] = int(HackFlags::Arcane);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookFire] = int(HackFlags::Fire);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookFrost] = int(HackFlags::Frost);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookHoly] = int(HackFlags::Light);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookLightning] = int(HackFlags::Lightning);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookNature] = int(HackFlags::Nature);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookShadow] = int(HackFlags::Shadow);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookWater] = int(HackFlags::Water);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookWind] = int(HackFlags::Wind);
 
         init = true;
     }
 
 	int flags = 0;
-	std::vector<Item*> items = inventory->getItems();
 
-	for (auto it = items.begin(); it != items.end(); it++)
-	{
-		if ((*it) != nullptr && HackFlagUtils::EssenceFlagMap.find((*it)->getItemName()) != HackFlagUtils::EssenceFlagMap.end())
-		{
-			flags |= HackFlagUtils::EssenceFlagMap[(*it)->getItemName()];
-		}
-	}
+    for (auto next : HackFlagUtils::EssenceFlagMap)
+    {
+        if (SaveManager::getProfileDataOrDefault(next.first, Value(false)).asBool())
+        {
+            flags |= next.second;
+        }
+    }
 
 	return flags;
 }

@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -36,15 +37,22 @@ ItemsMenu* ItemsMenu::create()
 
 ItemsMenu::ItemsMenu() : super(ItemsMenu::Radius)
 {
+	this->hasItemsInList = false;
 }
 
 ItemsMenu::~ItemsMenu()
 {
 }
 
-void ItemsMenu::buildAttackList(TimelineEntry* entry)
+bool ItemsMenu::hasItems()
+{
+	return this->hasItemsInList;
+}
+
+void ItemsMenu::buildItemList(TimelineEntry* entry)
 {
 	this->clearItems();
+	this->hasItemsInList = false;
 
 	if (entry == nullptr)
 	{
@@ -62,32 +70,61 @@ void ItemsMenu::buildAttackList(TimelineEntry* entry)
 	{
 		int index = 0;
 
+		std::map<std::string, std::tuple<int, PlatformerAttack*>> consumablesMap = std::map<std::string, std::tuple<int, PlatformerAttack*>>();
+		
 		for (auto consumable : attackBehavior->getAvailableConsumables())
 		{
-			this->scrollTo(index);
+			const std::string identifier = consumable->getItemName();
 
-			this->addEntry(consumable->getString(), Sprite::create(consumable->getIconResource()), UIResources::Combat_ItemsCircle, [=]()
+			if (consumablesMap.find(identifier) == consumablesMap.end())
 			{
-				entry->stageCast(consumable);
+				consumablesMap[identifier] = std::make_tuple<int, PlatformerAttack*>(1, consumable->getAssociatedAttack(entity));
+			}
+			else
+			{
+				std::get<0>(consumablesMap[identifier])++;
+			}
+		}
 
-				switch (consumable->getAttackType())
+		for (auto next : consumablesMap)
+		{
+			this->hasItemsInList = true;
+
+			int count = std::get<0>(next.second);
+			PlatformerAttack* attack = std::get<1>(next.second);
+			
+			LocalizedString* countString = Strings::Common_Brackets::create()
+				->setStringReplacementVariables(Strings::Common_TimesConstant::create()
+				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
+			LocalizedString* menuString = Strings::Common_Count::create()->setStringReplacementVariables({ attack->getString(), countString });
+
+			this->addEntry(menuString, nullptr, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
+			{
+				this->scrollTo(index);
+
+				entry->stageCast(attack->clone());
+
+				switch (attack->getAttackType())
 				{
 					case PlatformerAttack::AttackType::Healing:
 					case PlatformerAttack::AttackType::Buff:
 					case PlatformerAttack::AttackType::Resurrection:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
 						break;
 					}
 					case PlatformerAttack::AttackType::Damage:
 					case PlatformerAttack::AttackType::Debuff:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
 						break;
 					}
 					default:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
 						break;
 					}
 				}

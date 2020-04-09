@@ -13,11 +13,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyMagesGuildPrisonKey;
+	static const std::string SaveKey;
 
 protected:
 	MagesGuildPrisonKey();
-	~MagesGuildPrisonKey();
+	virtual ~MagesGuildPrisonKey();
 
 private:
 	typedef Misc super;

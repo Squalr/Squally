@@ -15,7 +15,7 @@ class RadioButton : public SmartNode
 public:
 	static RadioButton* create(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier);
 
-	void check();
+	void check(bool invokeCallback = true);
 	void uncheck();
 	void setCheckCallback(std::function<void(RadioButton*)> callback);
 	void enableInteraction();

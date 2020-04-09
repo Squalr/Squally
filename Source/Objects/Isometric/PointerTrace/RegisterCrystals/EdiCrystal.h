@@ -12,11 +12,11 @@ class EdiCrystal : public RegisterCrystal
 public:
 	static EdiCrystal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEdiCrystal;
+	static const std::string MapKey;
 
 protected:
 	EdiCrystal(cocos2d::ValueMap& properties);
-	~EdiCrystal();
+	virtual ~EdiCrystal();
 
 	void onEnter() override;
 	void initializePositions() override;

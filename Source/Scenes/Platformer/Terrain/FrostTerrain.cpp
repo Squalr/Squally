@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/FrostTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string FrostTerrain::MapKeyTerrainType = "frost";
+const std::string FrostTerrain::MapKey = "frost";
 
 FrostTerrain* FrostTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ FrostTerrain* FrostTerrain::create(ValueMap& properties)
 FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return FrostTexture::create(transformedProps);
+		},
 		0.5f,
-		FrostTerrain::MapKeyTerrainType,
+		FrostTerrain::MapKey,
 		TextureResources::FrostTexture,
 		TerrainResources::Frost_Top,
 		TerrainResources::Frost_TopLeft,

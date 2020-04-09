@@ -16,7 +16,7 @@ public:
 protected:
 
 	DialogueOption(LocalizedString* dialogueOption, std::function<void()> onDialogueChosen, bool showIfUnique);
-	~DialogueOption();
+	virtual ~DialogueOption();
 
 private:
 	typedef SmartNode super;

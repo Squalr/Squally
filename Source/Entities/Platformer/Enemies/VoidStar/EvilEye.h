@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyEvilEye;
+	static const std::string MapKey;
+	
+protected:
+	EvilEye(cocos2d::ValueMap& properties);
+	virtual ~EvilEye();
 
 private:
 	typedef PlatformerEnemy super;
-	EvilEye(cocos2d::ValueMap& properties);
-	~EvilEye();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

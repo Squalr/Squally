@@ -5,6 +5,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 
 #include "Resources/FXResources.h"
 
@@ -41,8 +42,8 @@ void Defend::onEnter()
 void Defend::initializePositions()
 {
 	super::initializePositions();
-
-	this->defendEffect->setPosition(this->caster->getEntityCenterPoint());
+	
+	this->defendEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 
 	this->defendEffect->runAction(RepeatForever::create(Sequence::create(
 		ScaleTo::create(0.5f, 0.95f),
@@ -51,12 +52,13 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
+void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
-	super::onBeforeDamageTaken(damageOrHealing, blocked, handleCallback);
+	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	
+	*damageOrHealing = int(std::round(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
 
-	*blocked = true;
-	*damageOrHealing = int(std::floor(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
+	CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->caster));
 
 	this->onDamageTakenOrCycle(true);
 }

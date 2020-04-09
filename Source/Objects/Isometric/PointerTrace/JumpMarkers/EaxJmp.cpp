@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string EaxJmp::MapKeyEaxJmp = "eax-jmp";
+const std::string EaxJmp::MapKey = "eax-jmp";
 
 EaxJmp* EaxJmp::create(ValueMap& properties)
 {

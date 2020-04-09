@@ -7,30 +7,32 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/HealthPotion.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-ThrowHealthPotion* ThrowHealthPotion::create()
+ThrowHealthPotion* ThrowHealthPotion::create(Priority priority, float healPercentage, std::string iconResource)
 {
-	ThrowHealthPotion* instance = new ThrowHealthPotion();
+	ThrowHealthPotion* instance = new ThrowHealthPotion(priority, healPercentage, iconResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Healing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource) : super(AttackType::Healing, iconResource, priority, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
+	this->healPercentage = healPercentage;
 
 	this->addChild(this->throwSound);
 }
@@ -41,7 +43,7 @@ ThrowHealthPotion::~ThrowHealthPotion()
 
 PlatformerAttack* ThrowHealthPotion::cloneInternal()
 {
-	return ThrowHealthPotion::create();
+	return ThrowHealthPotion::create(this->priority, this->healPercentage, this->getIconResource());
 }
 
 LocalizedString* ThrowHealthPotion::getString()
@@ -61,41 +63,44 @@ void ThrowHealthPotion::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
-	
-	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
-	
-	potion->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	super::performAttack(owner, targets);
+
+	for (auto next : targets)
 	{
-		potion->getCollision()->setPhysicsEnabled(false);
+		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), Size(64.0f, 64.0f));
 		
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
+		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * HealthPotion::HealPercentage);
+			potion->disable(true);
+			
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
-		}
+			if (entity != nullptr)
+			{
+				int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
+			}
 
-	this->replaceOffhandWithProjectile(owner, potion);
+			return CollisionObject::CollisionResult::DoNothing;
+		});
 
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
-	{
-		if (owner == target)
+		this->replaceOffhandWithProjectile(owner, potion);
+
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
-		}
-		else
-		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
-		}
-	});
+			if (owner == next)
+			{
+				potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			}
+			else
+			{
+				potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			}
+		});
+	}
 }
 
 void ThrowHealthPotion::onCleanup()

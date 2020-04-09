@@ -33,7 +33,7 @@ CardPreview::CardPreview()
 {
 	this->cardPad = Sprite::create(HexusResources::CardPad);
 	this->previewPanel = Node::create();
-	this->currentPreviewData = PreviewData(nullptr, nullptr);
+	this->currentPreviewData = PreviewData();
 	this->previewCache = std::map<std::string, PreviewData>();
 
 	LocalizedLabel* helpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Help::create());
@@ -72,7 +72,7 @@ void CardPreview::initializePositions()
 	this->helpButton->setPosition(Vec2(0.0f, -212.0f));
 }
 
-void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpClick)
+void CardPreview::setHelpClickCallback(std::function<void(CardData*)> onHelpClick)
 {
 	this->onHelpClick = onHelpClick;
 
@@ -80,7 +80,7 @@ void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpCli
 	{
 		if (this->onHelpClick != nullptr)
 		{
-			this->onHelpClick(this->currentPreviewData.previewCard);
+			this->onHelpClick(this->currentPreviewData.cardData);
 		}
 	});
 }
@@ -104,20 +104,30 @@ void CardPreview::previewCard(Card* card)
 		return;
 	}
 
-	if (this->previewCache.find(card->cardData->getCardKey()) != this->previewCache.end())
+	this->previewCardData(card->cardData, card);
+}
+
+void CardPreview::previewCardData(CardData* cardData, Card* card)
+{
+	if (this->currentPreviewData.previewNode != nullptr)
 	{
-		this->currentPreviewData = this->previewCache[card->cardData->getCardKey()];
+		this->currentPreviewData.previewNode->setVisible(false);
+	}
+
+	if (this->previewCache.find(cardData->getCardKey()) != this->previewCache.end())
+	{
+		this->currentPreviewData = this->previewCache[cardData->getCardKey()];
 	}
 	else
 	{
-		this->currentPreviewData = this->constructPreview(card);
-
+		this->currentPreviewData = this->constructPreview(cardData, card);
+		this->previewCache[cardData->getCardKey()] = this->currentPreviewData;
 		this->previewPanel->addChild(this->currentPreviewData.previewNode);
 	}
 
 	this->currentPreviewData.previewNode->setVisible(true);
 	
-	switch (card->cardData->getCardType())
+	switch (cardData->getCardType())
 	{
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Binary:
@@ -143,63 +153,64 @@ void CardPreview::previewCard(Card* card)
 		}
 		default:
 		{
+			this->helpButton->setVisible(false);
 			break;
 		}
 	}
 }
 
-CardPreview::PreviewData CardPreview::constructPreview(Card* card)
+CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card* card)
 {
-	if (card == nullptr)
+	if (cardData == nullptr)
 	{
-		return PreviewData(nullptr, nullptr);
+		return PreviewData();
 	}
 
 	Node* preview = Node::create();
-	Sprite* previewSprite = Sprite::create(card->cardData->getCardResourceFile());
+	Sprite* previewSprite = Sprite::create(cardData->getCardResourceFile());
 
 	preview->addChild(previewSprite);
 
-	switch (card->cardData->getCardType())
+	switch (cardData->getCardType())
 	{
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Binary:
 		case CardData::CardType::Hexidecimal:
 		{
-			int attack = card->getAttack();
+			int attack = card == nullptr ? cardData->getAttack() : card->getAttack();
 
 			// Show special effects
-			if (card->cardData->getCardKey() == CardKeys::Binary0 
-			|| card->cardData->getCardKey() == CardKeys::Decimal0 
-			|| card->cardData->getCardKey() == CardKeys::Hex0
-			|| card->cardData->getCardKey() == CardKeys::Decimal1
-			|| card->cardData->getCardKey() == CardKeys::Hex1)
+			if (cardData->getCardKey() == CardKeys::Binary0 
+				|| cardData->getCardKey() == CardKeys::Decimal0 
+				|| cardData->getCardKey() == CardKeys::Hex0
+				|| cardData->getCardKey() == CardKeys::Decimal1
+				|| cardData->getCardKey() == CardKeys::Hex1)
 			{
 				LocalizedLabel* specialLabel = nullptr;
 				
-				if (card->cardData->getCardKey() == CardKeys::Binary0)
+				if (cardData->getCardKey() == CardKeys::Binary0)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_NoDestroyEffect::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Decimal0)
+				else if (cardData->getCardKey() == CardKeys::Decimal0)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_DrawEffect::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Hex0)
+				else if (cardData->getCardKey() == CardKeys::Hex0)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_TurnGainsEffect::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Decimal1)
+				else if (cardData->getCardKey() == CardKeys::Decimal1)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_ReturnAfterRound::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Hex1)
+				else if (cardData->getCardKey() == CardKeys::Hex1)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_Horde::create());
 				}
 				
 				specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
-				specialLabel->setTextColor(Card::specialColor);
+				specialLabel->setTextColor(Card::SpecialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
 				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, 160.0f));
 				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
@@ -223,9 +234,9 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 			decimalLabel->setAnchorPoint(Vec2::ZERO);
 			hexLabel->setAnchorPoint(Vec2::ZERO);
 
-			binaryLabel->setTextColor(Card::binaryColor);
-			decimalLabel->setTextColor(Card::decimalColor);
-			hexLabel->setTextColor(Card::hexColor);
+			binaryLabel->setTextColor(Card::BinaryColor);
+			decimalLabel->setTextColor(Card::DecimalColor);
+			hexLabel->setTextColor(Card::HexColor);
 
 			binaryLabel->enableOutline(Color4B::BLACK, 3);
 			decimalLabel->enableOutline(Color4B::BLACK, 3);
@@ -248,12 +259,12 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 			LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 
 			specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
-			specialLabel->setTextColor(Card::specialColor);
+			specialLabel->setTextColor(Card::SpecialColor);
 			specialLabel->enableOutline(Color4B::BLACK, 2);
 			specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
 			specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
 
-			switch (card->cardData->getCardType())
+			switch (cardData->getCardType())
 			{
 				case CardData::CardType::Special_MOV:
 				{
@@ -381,5 +392,5 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 		}
 	}
 
-	return PreviewData(card, preview);
+	return PreviewData(card, cardData, preview);
 }

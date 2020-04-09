@@ -12,6 +12,7 @@ AttachedBehavior::AttachedBehavior(GameObject* owner) : super()
 {
 	this->owner = owner;
 	this->invalidated = false;
+	this->queryable = true;
 
 	if (this->owner == nullptr)
 	{
@@ -33,9 +34,12 @@ void AttachedBehavior::onEnterTransitionDidFinish()
 	}
 }
 
-void AttachedBehavior::initializeListeners()
+void AttachedBehavior::onDisable()
 {
-	super::initializeListeners();
+	this->invalidated = true;
+
+	this->unscheduleUpdate();
+	this->removeAllListeners();
 }
 
 void AttachedBehavior::invalidate()
@@ -46,4 +50,14 @@ void AttachedBehavior::invalidate()
 bool AttachedBehavior::isInvalidated()
 {
 	return this->invalidated;
+}
+
+void AttachedBehavior::toggleQueryable(bool queryable)
+{
+	this->queryable = queryable;
+}
+
+bool AttachedBehavior::isQueryable()
+{
+	return (this->queryable && !this->invalidated);
 }

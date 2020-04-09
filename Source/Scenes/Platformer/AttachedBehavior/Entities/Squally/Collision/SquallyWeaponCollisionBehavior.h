@@ -15,13 +15,14 @@ class SquallyWeaponCollisionBehavior : public AttachedBehavior
 public:
 	static SquallyWeaponCollisionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyWeaponCollisionBehavior(GameObject* owner);
-	~SquallyWeaponCollisionBehavior();
+	virtual ~SquallyWeaponCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

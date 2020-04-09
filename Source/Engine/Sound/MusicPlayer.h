@@ -3,26 +3,39 @@
 #include "Engine/GlobalNode.h"
 
 class Music;
+class Track;
 
 class MusicPlayer : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
 
-	static void popMusic();
-	static void play(Music* music, bool repeat = true, float startDelay = 0.0f);
-	static void purgueQueue();
 	static void registerMusic(Music* music);
-	static void destroyMusic(Music* music);
 
-private:
-	typedef GlobalNode super;
+protected:
+	friend class Track;
+
 	MusicPlayer();
 	virtual ~MusicPlayer();
+
+	static Music* getCurrentSong();
+	static void play(Music* music, bool repeat = true, float startDelay = 0.0f, bool purgeQueue = false);
+	static void pushMusic(Music* music);
+	static void popMusic(bool unpauseNext = true);
+	static void purgueQueue();
+	static void stopAndFadeOutMusic(Music* music);
+	static void destroyMusic(Music* music);
+	static void orphanMusic(Music* music);
 
 	static MusicPlayer* getInstance();
 
 	static MusicPlayer* instance;
 
-	std::queue<Music*> songQueue;
+private:
+	typedef GlobalNode super;
+
+	static void performHandoff(Music* music);
+	static bool isParentGlobal(Track* track);
+
+	static std::vector<Music*> SongQueue;
 };

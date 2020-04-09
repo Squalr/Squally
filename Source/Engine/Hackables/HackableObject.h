@@ -7,37 +7,54 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Renderer;
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
+	class Sprite;
 }
 
 class ClickableNode;
+class Clippy;
 class HackableAttribute;
 class HackableCode;
-class HackableData;
 class HackActivatedAbility;
 class HackablePreview;
 class HackButton;
 class ProgressBar;
+class SmartParticles;
 
 class HackableObject : public GameObject
 {
 public:
 	void onHackableClick();
 	virtual HackablePreview* createDefaultPreview();
+
+	static int GetHackFlags();
+	static void SetHackFlags(int hackFlags);
 	
 	void toggleHackable(bool isHackable);
-	void registerData(HackableData* hackableData);
-	void unregisterData(HackableData* hackableData);
+	void toggleAllowFx(bool allowFx);
 	void registerCode(HackableCode* hackableCode);
 	void unregisterCode(HackableCode* hackableCode);
 	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
+	void registerClippy(Clippy* clippy);
+	void enableAllClippy();
+	cocos2d::Node* getHackParticlesNode();
+
+	template <class T>
+	T* getClippy()
+	{
+		for (auto next : clippyList)
+		{
+			if (dynamic_cast<T*>(next) != nullptr)
+			{
+				return dynamic_cast<T*>(next);
+			}
+		}
+
+		return nullptr;
+	}
 
 	std::vector<HackableAttribute*> hackableList;
-	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
 	std::vector<HackActivatedAbility*> hackAbilityList;
 
@@ -46,38 +63,47 @@ protected:
 	HackableObject();
 	virtual ~HackableObject();
 
-	bool showClippy;
-
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
+	void onExit() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	void onHackerModeEnable(int hackFlags) override;
+	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
-	virtual void onSensingEnable(int hackFlags);
-	virtual void onSensingDisable();
 	virtual void registerHackables();
+	virtual cocos2d::Vec2 getRainOffset();
 	virtual cocos2d::Vec2 getButtonOffset();
 
 private:
 	typedef GameObject super;
-
+	
 	bool hasRelocatedUI;
+	bool allowFx;
 	bool isHackable;
 
-	cocos2d::ParticleSystem* getSensingParticles();
+	void refreshParticleFx();
+	void createSensingParticles();
+	void createHackCircle();
+	void unregisterAllHackables();
 
-	cocos2d::Node* sensingParticlesNode;
-	cocos2d::ParticleSystem* sensingParticles;
+	cocos2d::Node* hackParticlesNode;
+	SmartParticles* hackParticles1;
+	SmartParticles* hackParticles2;
+	SmartParticles* hackParticles3;
+	SmartParticles* hackParticles4;
+	SmartParticles* hackParticles5;
+	cocos2d::Sprite* hackCircle;
 	cocos2d::Node* uiElements;
+	cocos2d::Node* uiElementsRain;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
 	cocos2d::Node* hackablesNode;
 
+	std::vector<Clippy*> clippyList;
 	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 
-	static const std::string MapKeyShowClippy;
+	static int HackFlags;
 };

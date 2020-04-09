@@ -16,7 +16,7 @@ public:
 	
 protected:
 	CardList();
-	~CardList();
+	virtual ~CardList();
 
 private:
 

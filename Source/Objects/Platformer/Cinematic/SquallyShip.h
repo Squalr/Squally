@@ -11,6 +11,7 @@ class CollisionObject;
 class HackableData;
 class KSequence;
 class SmartAnimationSequenceNode;
+class Sound;
 class WorldSound;
 
 class SquallyShip : public HackableObject
@@ -18,11 +19,11 @@ class SquallyShip : public HackableObject
 public:
 	static SquallyShip* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeySquallyShip;
+	static const std::string MapKey;
 
 protected:
 	SquallyShip(cocos2d::ValueMap& properties);
-	~SquallyShip();
+	virtual ~SquallyShip();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -54,9 +55,9 @@ private:
 	SmartAnimationSequenceNode* groundFireSmallAnimation;
 	KSequence* skipSequence;
 
-	WorldSound* lightningSound;
-	WorldSound* thrusterSound;
-	WorldSound* enterAtmosphereSound;
-	WorldSound* crashSound;
+	Sound* lightningSound;
+	Sound* thrusterSound;
+	Sound* enterAtmosphereSound;
+	Sound* crashSound;
 	WorldSound* fireSound;
 };

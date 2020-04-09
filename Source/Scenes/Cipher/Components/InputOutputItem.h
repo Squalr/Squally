@@ -24,7 +24,8 @@ public:
 
 protected:
 	InputOutputItem(unsigned char input, unsigned char output, std::function<void(InputOutputItem*)> selectCallback);
-	~InputOutputItem();
+	virtual ~InputOutputItem();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

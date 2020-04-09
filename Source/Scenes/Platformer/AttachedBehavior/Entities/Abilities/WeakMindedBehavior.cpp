@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string WeakMindedBehavior::MapKeyAttachedBehavior = "weak-minded";
+const std::string WeakMindedBehavior::MapKey = "weak-minded";
 
 WeakMindedBehavior* WeakMindedBehavior::create(GameObject* owner)
 {
@@ -68,6 +68,11 @@ void WeakMindedBehavior::onLoad()
 		nullptr,
 		nullptr
 	));
+}
+
+void WeakMindedBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void WeakMindedBehavior::onActivate()

@@ -2,18 +2,24 @@
 
 #include "Engine/SmartNode.h"
 
-class ClickableTextNode;
-class EntryContainer;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class RadialEntry;
 class LocalizedString;
+class Sound;
 
 class RadialScrollMenu : public SmartNode
 {
 public:
 	static RadialScrollMenu* create(float radius);
 
+	int getIndex();
 	void clearItems();
-	ClickableTextNode* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
-	void disableAll(bool retainOpacity, bool disableInteraction = true);
+	RadialEntry* addEntry(LocalizedString* labelStr, LocalizedString* lowerLabelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback);
+	void toggleAll(bool disableInteraction = true, bool fadeOpacity = false, bool hideText = true);
 	void enableAll();
 	void focus();
 	void unfocus();
@@ -26,6 +32,7 @@ protected:
 	RadialScrollMenu(float radius);
 	virtual ~RadialScrollMenu();
 	
+	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
@@ -33,11 +40,16 @@ private:
 	void positionButtons();
 	void goBack();
 
-	std::vector<EntryContainer*> buttons;
+	std::vector<RadialEntry*> buttons;
+	cocos2d::Sprite* arrow;
 	cocos2d::Node* buttonsNode;
+	Sound* indexChangeSound;
+	Sound* errorSound;
 	float radius;
 
 	int currentIndex;
 	bool focused;
+	bool isTimelineCinematicPaused;
+	
 	std::function<void()> backCallback;
 };

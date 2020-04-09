@@ -38,11 +38,11 @@ void ToggleGroup::addToggle(Checkbox* toggle)
 bool ToggleGroup::onToggleClick(Checkbox* toggle, bool willToggle)
 {
 	// Disable all other toggles
-	for (auto it = this->toggles.begin(); it != this->toggles.end(); it++)
+	for (auto next : this->toggles)
 	{
-		if (*it != toggle)
+		if (next != toggle)
 		{
-			(*it)->setToggled(false);
+			next->setToggled(false);
 		}
 	}
 

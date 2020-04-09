@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Inventory/DropPool.h"
 
-class DropPoolEFGeneric : public MinMaxPool
+class DropPoolEFGeneric : public DropPool
 {
 public:
 	static DropPoolEFGeneric* create(cocos2d::ValueMap& properties);
@@ -11,11 +11,8 @@ public:
 
 protected:
 	DropPoolEFGeneric(cocos2d::ValueMap& properties);
-	~DropPoolEFGeneric();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
+	virtual ~DropPoolEFGeneric();
 
 private:
-	typedef MinMaxPool super;
+	typedef DropPool super;
 };

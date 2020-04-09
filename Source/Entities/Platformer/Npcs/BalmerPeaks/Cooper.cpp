@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Cooper::MapKeyCooper = "cooper";
+const std::string Cooper::MapKey = "cooper";
 HexusOpponentData* Cooper::HexusOpponentDataInstance = nullptr;
 const std::string Cooper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOPER";
 
@@ -32,7 +31,7 @@ Cooper* Cooper::deserialize(ValueMap& properties)
 }
 
 Cooper::Cooper(ValueMap& properties) : super(properties,
-	Cooper::MapKeyCooper,
+	Cooper::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Emblem,
 	Size(112.0f, 160.0f),

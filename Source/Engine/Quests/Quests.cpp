@@ -31,7 +31,7 @@ void Quests::saveQuestLineProgress(std::string questLine, std::string currentQue
 
 	questData[questLine] = currentQuest;
 
-	SaveManager::saveProfileData(Quests::QuestsSaveKey, Value(questData));
+	SaveManager::SaveProfileData(Quests::QuestsSaveKey, Value(questData));
 }
 
 std::string Quests::getCurrentQuestTaskForLine(std::string questLine)
@@ -52,9 +52,9 @@ std::set<std::string> Quests::getStartedQuestLines()
 
 	ValueMap questData = Quests::getQuestData();
 
-	for (auto it = questData.begin(); it != questData.end(); it++)
+	for (auto next : questData)
 	{
-		questLines.insert((*it).first);
+		questLines.insert(next.first);
 	}
 
 	return questLines;

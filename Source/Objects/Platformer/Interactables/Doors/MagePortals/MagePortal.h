@@ -17,6 +17,8 @@ public:
 	virtual void closePortal(bool instant);
 	virtual void openPortal(bool instant);
 
+	static const std::string TagMagePortal;
+
 protected:
 	MagePortal(cocos2d::ValueMap& properties, float portalRadius, cocos2d::Color4B portalBaseColor);
 	virtual ~MagePortal();

@@ -6,16 +6,27 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Combat/Projectiles/Projectile.h"
+#include "Objects/Platformer/Projectiles/Projectile.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
 
-PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
+PlatformerAttack::PlatformerAttack(
+	AttackType attackType,
+	std::string iconResource,
+	Priority priority,
+	int baseDamageOrHealingMin,
+	int baseDamageOrHealingMax,
+	int specialCost,
+	float attackDuration,
+	float recoverDuration,
+	bool multiTarget)
 {
 	this->attackType = attackType;
 	this->iconResource = iconResource;
@@ -26,6 +37,12 @@ PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResour
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
 	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
+	this->owner = nullptr;
+	this->multiTarget = multiTarget;
+}
+
+PlatformerAttack::~PlatformerAttack()
+{
 }
 
 PlatformerAttack* PlatformerAttack::clone()
@@ -34,9 +51,9 @@ PlatformerAttack* PlatformerAttack::clone()
 
 	if (attack != nullptr)
 	{
-		for (auto it = this->attackCompleteCallbacks.begin(); it != attackCompleteCallbacks.end(); it++)
+		for (auto next : this->attackCompleteCallbacks)
 		{
-			attack->registerAttackCompleteCallback(*it);
+			attack->registerAttackCompleteCallback(next);
 		}
 	}
 
@@ -58,7 +75,12 @@ std::string PlatformerAttack::getIconResource()
 	return this->iconResource;
 }
 
-float PlatformerAttack::getPriority()
+bool PlatformerAttack::isMultiTarget()
+{
+	return this->multiTarget;
+}
+
+PlatformerAttack::Priority PlatformerAttack::getPriority()
 {
 	return this->priority;
 }
@@ -73,23 +95,29 @@ PlatformerAttack::AttackType PlatformerAttack::getAttackType()
 	return this->attackType;
 }
 
-void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onAttackComplete)
+void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete)
 {
 	this->onAttackTelegraphBegin();
 
-	int mana = std::max(0, owner->getStateOrDefaultInt(StateKeys::Mana, 0) - this->getSpecialCost());
-	owner->setState(StateKeys::Mana, Value(mana));
+	owner->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	{
+		manaBehavior->setMana(manaBehavior->getMana() - this->getSpecialCost());
+	});
 
 	this->runAction(Sequence::create(
 		DelayTime::create(this->getAttackDuration()),
 		CallFunc::create([=]()
 		{
-			this->performAttack(owner, target);
+			onCastComplete();
+			
+			// Damage/healing is applied at this stage. For projectiles, they are spawned here.
+			this->performAttack(owner, targets);
 		}),
+		// The recover duration gives the camera time to focus the entity that took damage, and for projectiles to run their course.
 		DelayTime::create(this->getRecoverDuration()),
 		CallFunc::create([=]()
 		{
-			onAttackComplete();
+			onRecoverComplete();
 
 			this->onAttackEnd();
 		}),
@@ -105,15 +133,57 @@ void PlatformerAttack::doDamageOrHealing(PlatformerEntity* owner, PlatformerEnti
 {
 }
 
-void PlatformerAttack::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void PlatformerAttack::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
+}
+
+bool PlatformerAttack::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	return true;
+}
+
+float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	// Generic utility function
+	switch(this->getAttackType())
+	{
+		case AttackType::Buff:
+		case AttackType::Debuff:
+		{
+			// Priority based on whether the entity is alive or not. For more nuanced behavior, this function must be overridden.
+			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+		}
+		case AttackType::Damage:
+		{
+			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+
+			return hp / (hpMax <= 0.0f ? 1.0f : hpMax);
+		}
+		case AttackType::Healing:
+		{
+			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+			
+			// Rank by lowest health first (except if dead)
+			return !target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
+		}
+		case AttackType::Resurrection:
+		{
+			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : 1.0f;
+		}
+		default:
+		{
+			return 0.0f;
+		}
+	}
 }
 
 void PlatformerAttack::onAttackEnd()
 {
-	for (auto it = this->attackCompleteCallbacks.begin(); it != this->attackCompleteCallbacks.end(); it++)
+	for (auto callback : this->attackCompleteCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 
@@ -168,15 +238,20 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 		owner,
 		projectile,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
 	));
 
 	Node* reference = weapon == nullptr ? (Node*)owner : (Node*)weapon;
+	float layerZ = GameUtils::getDepth(GameUtils::getFirstParentOfType<MapLayer>(reference));
 
-	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference));
-
-	// We dont actually want to set the Z to the world coord Z position, as this would end up re-applying any layer depth
-	projectile->setPositionZ(reference->getPositionZ());
+	// Set the position to the reference object's position. Offset it by any layer positioning.
+	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference) - Vec3(0.0f, 0.0f, layerZ));
 }
 
 int PlatformerAttack::getRandomDamage()

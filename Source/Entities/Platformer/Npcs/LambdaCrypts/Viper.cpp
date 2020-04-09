@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Viper::MapKeyViper = "viper";
+const std::string Viper::MapKey = "viper";
 HexusOpponentData* Viper::HexusOpponentDataInstance = nullptr;
 const std::string Viper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIPER";
 
@@ -32,7 +31,7 @@ Viper* Viper::deserialize(ValueMap& properties)
 }
 
 Viper::Viper(ValueMap& properties) : super(properties,
-	Viper::MapKeyViper,
+	Viper::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,
 	Size(112.0f, 160.0f),

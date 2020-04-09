@@ -78,7 +78,7 @@ void KSequence::processInput(EventKeyboard::KeyCode keycode)
 	{
 		this->currentIndex++;
 
-		if (this->currentIndex >= this->sequence.size())
+		if (this->currentIndex >= int(this->sequence.size()))
 		{
 			this->completed = true;
 

@@ -15,7 +15,7 @@ class Trigger : public HackableObject
 public:
 	static Trigger* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTrigger;
+	static const std::string MapKey;
 
 protected:
 	Trigger(cocos2d::ValueMap& properties);
@@ -33,4 +33,7 @@ private:
 
 	CollisionObject* triggerCollision;
 	bool wasActivated;
+	bool saveState;
+
+	static const std::string PropertySaveState;
 };

@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/JungleTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string JungleTerrain::MapKeyTerrainType = "jungle";
+const std::string JungleTerrain::MapKey = "jungle";
 
 JungleTerrain* JungleTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ JungleTerrain* JungleTerrain::create(ValueMap& properties)
 JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return JungleTexture::create(transformedProps);
+		},
 		0.5f,
-		JungleTerrain::MapKeyTerrainType,
+		JungleTerrain::MapKey,
 		TextureResources::JungleTexture,
 		TerrainResources::Jungle_Top,
 		TerrainResources::Jungle_TopLeft,

@@ -9,10 +9,12 @@ public:
 
 	void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) override;
 
+protected:
+	BackgroundDeserializer();
+	virtual ~BackgroundDeserializer();
+
 private:
 	typedef PropertyDeserializer super;
-	BackgroundDeserializer();
-	~BackgroundDeserializer();
 
 	static const std::string MapKeyBackground;
 };

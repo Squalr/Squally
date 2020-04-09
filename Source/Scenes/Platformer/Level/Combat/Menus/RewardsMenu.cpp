@@ -12,9 +12,10 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
-#include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Inventory/DropPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -22,6 +23,14 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -31,22 +40,22 @@
 
 using namespace cocos2d;
 
-RewardsMenu* RewardsMenu::create()
+RewardsMenu* RewardsMenu::create(Timeline* timelineRef)
 {
-	RewardsMenu* instance = new RewardsMenu();
+	RewardsMenu* instance = new RewardsMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RewardsMenu::RewardsMenu()
+RewardsMenu::RewardsMenu(Timeline* timelineRef)
 {
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
-	this->expSprite = Sprite::create(UIResources::Menus_Icons_Stars);
-	this->expValue = ConstantString::create(std::to_string(0));
-	this->expLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->expValue);
+	this->expNode = Node::create();
 	this->victorySound = Sound::create(SoundResources::Platformer_Combat_Victory);
+	this->emblemCount = 0;
+	this->timelineRef = timelineRef;
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());
 
@@ -58,15 +67,11 @@ RewardsMenu::RewardsMenu()
 
 	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelHover, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	this->expLabel->enableOutline(Color4B::BLACK, 2);
 	this->victoryLabel->enableOutline(Color4B::BLACK, 2);
 
-	this->expLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-
 	this->addChild(this->victoryMenu);
-	this->addChild(this->expSprite);
-	this->addChild(this->expLabel);
 	this->addChild(this->victoryLabel);
+	this->addChild(this->expNode);
 	this->addChild(this->returnButton);
 	this->addChild(this->victorySound);
 }
@@ -88,8 +93,6 @@ void RewardsMenu::initializePositions()
 
 	this->victoryLabel->setPosition(Vec2(0.0f, 176.0f));
 	this->victoryMenu->setPosition(Vec2(0.0f, 0.0f));
-	this->expSprite->setPosition(Vec2(-48.0f, 32.0f));
-	this->expLabel->setPosition(Vec2(16.0f, 32.0f));
 	this->returnButton->setPosition(Vec2(16.0f, -160.0f));
 }
 
@@ -97,12 +100,22 @@ void RewardsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* args)
+	{
+		this->giveExp();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* args)
 	{
 		this->loadRewards();
 	}));
 
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		CombatEvents::TriggerReturnToMap();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
@@ -114,24 +127,103 @@ void RewardsMenu::show()
 	this->victorySound->play();
 }
 
+void RewardsMenu::giveExp()
+{
+	this->clearEmblems();
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([&](PlatformerEntity* entity)
+	{
+		entity->getAttachedBehavior<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
+		{
+			entity->getAttachedBehavior<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
+			{
+				const int intendedLevel = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
+				const int currentLevel = eqBehavior->getEq();
+				const int levelDelta = intendedLevel - currentLevel;
+				int expGain = 0;
+				
+				for (auto next : timelineRef->getEntries())
+				{
+					if (!next->isPlayerEntry())
+					{
+						expGain += StatsTables::getKillExp(next->getEntity());
+					}
+				}
+
+				// This determines how drastic penalties and losses are for being outside of the intended level. Higher is more drastic.
+				static const float GainFactor = 1.25f;
+
+				// Apply rubber banding to keep the player near the intended level for the current map
+				const int adjustedGain = intendedLevel == currentLevel
+					? expGain
+					// Exponential by gain factor, to the power of intended level delta. Cap at 3x exp gain.
+					: std::min(expGain * 3, int(float(expGain) * std::pow(GainFactor, levelDelta)));
+
+				const float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+				const bool didLevelUp = eqBehavior->addEqExperience(adjustedGain);
+				const float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+
+				friendlyExpBarBehavior->giveExp(startProgress, endProgress, didLevelUp, adjustedGain);
+
+				if (didLevelUp)
+				{
+					entity->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+					{
+						healthBehavior->setHealth(healthBehavior->getMaxHealth());
+					});
+
+					entity->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+					{
+						manaBehavior->setMana(manaBehavior->getMaxMana());
+					});
+				}
+
+				this->addExpEmblem(entity->getEmblemResource(), adjustedGain);
+			});
+		});
+	}), PlatformerEntity::PlatformerEntityTag);
+}
+
 void RewardsMenu::loadRewards()
 {
-	int totalExpGain = 0;
-
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
-		totalExpGain += StatsTables::getKillExp(enemy);
-
 		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
-			MinMaxPool* dropPool = entityDropTableBehavior->getDropPool();
+			DropPool* dropPool = entityDropTableBehavior->getDropPool();
 
 			if (dropPool != nullptr)
 			{
-				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(dropPool));
+				PlatformerEvents::TriggerGiveCurrenciesFromPool(PlatformerEvents::GiveCurrenciesFromPoolArgs(dropPool->getCurrencyPool(), nullptr, true));
+				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(dropPool, nullptr, true));
 			}
 		});
 	}), PlatformerEnemy::PlatformerEnemyTag);
+}
 
-	this->expValue->setString(std::to_string(totalExpGain));
+void RewardsMenu::clearEmblems()
+{
+	this->expNode->removeAllChildren();
+	this->emblemCount = 0;
+}
+
+void RewardsMenu::addExpEmblem(std::string emblemResource, int gain)
+{
+	const float LeftShift = -16.0f;
+
+	Sprite* emblem = Sprite::create(emblemResource);
+	LocalizedString* expGainString = Strings::Platformer_Combat_ExpGain::create()->setStringReplacementVariables(ConstantString::create(std::to_string(gain)));
+	LocalizedLabel* expGainLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, expGainString);
+
+	const Vec2 offset = Vec2(-64.0f, 48.0f);
+
+	emblem->setPosition(Vec2(LeftShift, -64.0f * float(this->emblemCount)) + offset);
+	expGainLabel->setPosition(Vec2(LeftShift + 48.0f, -64.0f * float(this->emblemCount)) + offset);
+	expGainLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	expGainLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->expNode->addChild(emblem);
+	this->expNode->addChild(expGainLabel);
+
+	this->emblemCount++;
 }

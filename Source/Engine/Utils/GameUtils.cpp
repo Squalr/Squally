@@ -5,7 +5,6 @@
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCScene.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/UI/UIBoundObject.h"
@@ -20,17 +19,6 @@ void GameUtils::pause(Node *node)
 		return;
 	}
 
-	// If the node is a scene node, pause physics
-	if (dynamic_cast<const Scene*>(node) != nullptr)
-	{
-		const Scene* scene = dynamic_cast<const Scene*>(node);
-
-		if (scene->getPhysicsWorld() != nullptr)
-		{
-			scene->getPhysicsWorld()->setSpeed(0.0f);
-		}
-	}
-
 	node->pause();
 
 	for (const auto &child : node->getChildren())
@@ -41,17 +29,6 @@ void GameUtils::pause(Node *node)
 
 void GameUtils::resume(Node *node)
 {
-	// If the node is a scene node, resume physics
-	if (dynamic_cast<const Scene*>(node) != nullptr)
-	{
-		Scene* scene = (Scene*)node;
-
-		if (scene->getPhysicsWorld() != nullptr)
-		{
-			scene->getPhysicsWorld()->setSpeed(1.0f);
-		}
-	}
-
 	node->resume();
 
 	for (const auto &child : node->getChildren())
@@ -145,22 +122,20 @@ void GameUtils::flattenNode(Node* parent)
 
 	Vector<Node*> children = parent->getChildren();
 
-	for (auto it = children.begin(); it != children.end(); it++)
+	for (auto child : children)
 	{
 		// Depth first recursion
-		GameUtils::flattenNode(*it);
+		GameUtils::flattenNode(child);
 	}
 
 	children = parent->getChildren();
 
-	for (auto it = children.begin(); it != children.end(); it++)
+	for (auto child : children)
 	{
-		Vector<Node*> childChildren = (*it)->getChildren();
-
 		// Make the child's children siblings
-		for (auto childIt = childChildren.begin(); childIt != childChildren.end(); childIt++)
+		for (auto childChild : (child)->getChildren())
 		{
-			GameUtils::changeParent(*childIt, parent, true);
+			GameUtils::changeParent(childChild, parent, true);
 		}
 	}
 }
@@ -171,42 +146,25 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	{
 		return node;
 	}
-
-	Vec3 newPosition = Vec3::ZERO;
-	Node* previousParent = node->getParent();
+	
+	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
 	unsigned int refIncrement = 0;
 
 	// Remove child from current parent
-	if (previousParent != nullptr)
+	if (node->getParent() != nullptr)
 	{
-		if (retainPosition && newParent != nullptr)
-		{
-			Vec3 screenPosition = previousParent->convertToWorldSpace3(node->getPosition3D());
-			newPosition = newParent->convertToNodeSpace3(screenPosition);
-		}
-		
-		if (node->getParent() != nullptr)
-		{
-			node->retain();
-			node->getParent()->removeChildNoExit(node);
-			node->softRelease();
-		}
-	}
-	else if (retainPosition)
-	{
-		newPosition = node->getPosition3D();
+		node->retain();
+		node->getParent()->removeChildNoExit(node);
+		node->softRelease();
 	}
 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		node->setPosition3D(newPosition);
 		newParent->addChildInsert(node, index, true);
 	}
 	else if (newParent != nullptr)
 	{
-		node->setPosition3D(newPosition);
-
 		if (addAsReentry)
 		{
 			newParent->addChildAsReentry(node);
@@ -214,6 +172,21 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		else
 		{
 			newParent->addChild(node);
+		}
+	}
+
+	if (retainPosition && newParent != nullptr)
+	{
+		node->setPosition3D(Vec3::ZERO);
+
+		Vec3 newCoords = GameUtils::getWorldCoords3D(node);
+		Vec3 delta = worldCoords - newCoords;
+
+		node->setPosition3D(delta);
+
+		if (GameUtils::getWorldCoords3D(node).distance(worldCoords) > 1.0f)
+		{
+			int pissant = 420;
 		}
 	}
 
@@ -226,23 +199,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	return node;
 }
 
-void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float duration)
-{
-	if (particleSystem == nullptr)
-	{
-		return;
-	}
-
-	const float step = 1.0f / 60.0f;
-
-	particleSystem->start();
-
-	for (float currentDuration = 0.0f; currentDuration < duration; currentDuration += step)
-	{
-		particleSystem->update(step);
-	}
-}
-
 void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte opacity)
 {
 	if (node == nullptr)
@@ -251,8 +207,7 @@ void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte op
 	}
 
 	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeTo::create(duration, opacity), nullptr);
-
-	node->setCascadeOpacityEnabled(true);
+	
 	node->setOpacity(1); // Using 1 instead of 0 to avoid any GameUtils::isVisible check failures, while still being inperceptible
 	node->runAction(sequence);
 }
@@ -269,6 +224,20 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	}
 
 	return depth;
+}
+
+float GameUtils::getRotation(cocos2d::Node* node)
+{
+	float rotation = 0.0f;
+
+	while (node != nullptr)
+	{
+		rotation += node->getRotation();
+
+		node = node->getParent();
+	}
+
+	return rotation;
 }
 
 float GameUtils::getScale(cocos2d::Node* node)
@@ -330,11 +299,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
 	{
-		Vec3 relativeCoords = uiBoundObjectParent->convertToWorldSpace3(resultCoords);
-		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
-		Vec3 fixedCoords = realCoords + Vec3(relativeCoords.x, -resultRect.size.height / 2.0f, relativeCoords.z);
-
-		return fixedCoords;
+		uiBoundObjectParent->pushRealPosition();
 	}
 
 	if (parent != nullptr)
@@ -342,7 +307,26 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 		resultCoords = parent->convertToWorldSpace3(resultCoords);
 	}
 
+	// Special conditions for a ui-bound object
+	if (uiBoundObjectParent != nullptr)
+	{
+		uiBoundObjectParent->popRealPosition();
+	}
+
 	return resultCoords;
+}
+
+void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	Vec3 currentCoords = GameUtils::getWorldCoords3D(node);
+	Vec3 delta = worldCoords - currentCoords;
+
+	node->setPosition3D(node->getPosition3D() + delta);
 }
 
 Rect GameUtils::getScreenBounds(Node* node)

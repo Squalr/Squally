@@ -10,11 +10,11 @@ class ShopkeeperDialogueBehavior : public AttachedBehavior
 public:
 	static ShopkeeperDialogueBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ShopkeeperDialogueBehavior(GameObject* owner);
-	~ShopkeeperDialogueBehavior();
+	virtual ~ShopkeeperDialogueBehavior();
 
 	void onLoad() override;
 

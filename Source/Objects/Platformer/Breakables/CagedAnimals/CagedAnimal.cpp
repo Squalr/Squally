@@ -30,8 +30,6 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 
 	this->shineFx->setOpacity(0);
 
-	this->animalNode->setScale(0.75f);
-
 	this->animalNode->addChild(this->shineFx);
 	this->contentNode->addChild(this->animalNode);
 }
@@ -78,7 +76,7 @@ void CagedAnimal::onBreak()
 		return;
 	}
 
-	SaveManager::saveProfileData(this->saveKey, Value(true));
+	SaveManager::SaveProfileData(this->saveKey, Value(true));
 
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Menus_Notifications_AnimalRescued::create(),
@@ -87,7 +85,18 @@ void CagedAnimal::onBreak()
 		SoundResources::Notifications_NotificationGood1
 	));
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->animalNode));
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		this,
+		this->animalNode,
+		ObjectEvents::SpawnMethod::TopMost,
+		ObjectEvents::PositionMode::Retain,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
+	));
 
 	this->shineFx->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),

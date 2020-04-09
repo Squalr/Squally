@@ -9,6 +9,7 @@
 
 class Card;
 class CardRow;
+class CardPreviewComponent;
 class ClickableNode;
 class Deck;
 class HexusOpponentData;
@@ -144,15 +145,18 @@ public:
 	cocos2d::Node* passButtonPointer;
 	cocos2d::Node* lastStandButtonPointer;
 	cocos2d::Node* claimVictoryButtonPointer;
+	CardPreviewComponent* cardPreviewPointer;
 
-private:
-	typedef SmartNode super;
+protected:
 	GameState();
-	~GameState();
+	virtual ~GameState();
 
 	void initializePositions() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
+
+private:
+	typedef SmartNode super;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;

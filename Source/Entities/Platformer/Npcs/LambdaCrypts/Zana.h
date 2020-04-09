@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyZana;
+	static const std::string MapKey;
+
+protected:
+	Zana(cocos2d::ValueMap& properties);
+	virtual ~Zana();
 
 private:
 	typedef PlatformerFriendly super;
-	Zana(cocos2d::ValueMap& properties);
-	~Zana();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

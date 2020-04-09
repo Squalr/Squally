@@ -35,6 +35,7 @@ CipherConnectTutorial::CipherConnectTutorial() : super(CipherState::StateType::N
 	this->focusTakeOver = FocusTakeOver::create();
 	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_A_ChestsLocked::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
 	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_B_ThisOneIsEasy::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->unlockLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_C_Unlock::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
 
 	this->introLabel->enableOutline(Color4B::BLACK, 2);
 	this->connectLabel->enableOutline(Color4B::BLACK, 2);
@@ -54,12 +55,22 @@ CipherConnectTutorial::CipherConnectTutorial() : super(CipherState::StateType::N
 	connectNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->nextButtonConnect = ClickableTextNode::create(connectNextLabel, connectNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	
+	LocalizedLabel* unlockNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* unlockNextLabelSelected = unlockNextLabel->clone();
+
+	unlockNextLabel->enableOutline(Color4B::BLACK, 2);
+	unlockNextLabelSelected->enableOutline(Color4B::BLACK, 2);
+
+	this->nextButtonUnlock = ClickableTextNode::create(unlockNextLabel, unlockNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->addChild(this->focusTakeOver);
 	this->addChild(this->introLabel);
 	this->addChild(this->connectLabel);
+	this->addChild(this->unlockLabel);
 	this->addChild(this->nextButtonIntro);
 	this->addChild(this->nextButtonConnect);
+	this->addChild(this->nextButtonUnlock);
 }
 
 CipherConnectTutorial::~CipherConnectTutorial()
@@ -72,9 +83,11 @@ void CipherConnectTutorial::onEnter()
 
 	this->introLabel->setOpacity(0);
 	this->connectLabel->setOpacity(0);
+	this->unlockLabel->setOpacity(0);
 
 	this->nextButtonIntro->disableInteraction(0);
 	this->nextButtonConnect->disableInteraction(0);
+	this->nextButtonUnlock->disableInteraction(0);
 }
 
 void CipherConnectTutorial::initializePositions()
@@ -85,9 +98,11 @@ void CipherConnectTutorial::initializePositions()
 
 	this->introLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 64.0f);
 	this->connectLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 64.0f);
+	this->unlockLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 64.0f);
 	
 	this->nextButtonIntro->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 64.0f);
 	this->nextButtonConnect->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 64.0f);
+	this->nextButtonUnlock->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 64.0f);
 }
 
 void CipherConnectTutorial::initializeListeners()
@@ -122,7 +137,18 @@ void CipherConnectTutorial::initializeCallbacks(CipherState* cipherState)
 	});
 	this->nextButtonConnect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
+		this->runTutorialPartC(cipherState);
+	});
+	this->nextButtonUnlock->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
 		this->tryUnHijackState(cipherState);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->nextButtonIntro->interact();
+		this->nextButtonConnect->interact();
+		this->nextButtonUnlock->interact();
 	});
 }
 
@@ -150,6 +176,20 @@ void CipherConnectTutorial::runTutorialPartB(CipherState* cipherState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
+void CipherConnectTutorial::runTutorialPartC(CipherState* cipherState)
+{
+	this->nextButtonConnect->disableInteraction();
+	this->nextButtonConnect->runAction(FadeTo::create(0.25f, 0));
+	this->connectLabel->runAction(FadeTo::create(0.25f, 0));
+	this->nextButtonUnlock->enableInteraction(0);
+	this->nextButtonUnlock->runAction(FadeTo::create(0.25f, 255));
+	this->unlockLabel->runAction(FadeTo::create(0.25f, 255));
+
+	std::vector<Node*> focusTargets = std::vector<Node*>();
+	focusTargets.push_back(cipherState->unlockPointer);
+	this->focusTakeOver->focus(focusTargets);
+}
+
 void CipherConnectTutorial::unHijackState(CipherState* cipherState)
 {
 	this->nextButtonIntro->disableInteraction();
@@ -158,5 +198,8 @@ void CipherConnectTutorial::unHijackState(CipherState* cipherState)
 	this->nextButtonConnect->disableInteraction();
 	this->nextButtonConnect->runAction(FadeTo::create(0.25f, 0));
 	this->connectLabel->runAction(FadeTo::create(0.25f, 0));
+	this->nextButtonUnlock->disableInteraction();
+	this->nextButtonUnlock->runAction(FadeTo::create(0.25f, 0));
+	this->unlockLabel->runAction(FadeTo::create(0.25f, 0));
 	this->focusTakeOver->unfocus();
 }

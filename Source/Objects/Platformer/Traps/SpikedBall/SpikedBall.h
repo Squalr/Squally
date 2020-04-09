@@ -15,7 +15,7 @@ class SpikedBall : public HackableObject
 public:
 	static SpikedBall* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeySpikedBall;
+	static const std::string MapKey;
 
 protected:
 	SpikedBall(cocos2d::ValueMap& properties);

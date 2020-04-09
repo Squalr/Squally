@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string QueenElise::MapKeyQueenElise = "queen-elise";
+const std::string QueenElise::MapKey = "queen-elise";
 HexusOpponentData* QueenElise::HexusOpponentDataInstance = nullptr;
 const std::string QueenElise::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_QUEEN_ELISE";
 
@@ -32,7 +31,7 @@ QueenElise* QueenElise::deserialize(ValueMap& properties)
 }
 
 QueenElise::QueenElise(ValueMap& properties) : super(properties,
-	QueenElise::MapKeyQueenElise,
+	QueenElise::MapKey,
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,
 	Size(112.0f, 160.0f),

@@ -10,6 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -17,7 +18,8 @@
 
 using namespace cocos2d;
 
-const std::string SquallyMovementBehavior::MapKeyAttachedBehavior = "squally-movements";
+const std::string SquallyMovementBehavior::MapKey = "squally-movements";
+const float SquallyMovementBehavior::SquallyMovementAcceleration = 9600.0f;
 
 SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 {
@@ -107,6 +109,19 @@ void SquallyMovementBehavior::onLoad()
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSavePosition, [=](EventCustom* eventCustom)
+	{
+		const float SaveOffsetY = 32.0f;
+		Vec2 position = GameUtils::getWorldCoords(this->squally);
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
+	}));
+
+	this->squally->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
+	{
+		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
+	});
+
 	if (!this->isPositionSavingDisabled)
 	{
 		Vec2 position = GameUtils::getWorldCoords(this->squally);
@@ -123,6 +138,13 @@ void SquallyMovementBehavior::onLoad()
 	{
 		GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 	}
+	
+	this->scheduleUpdate();
+}
+
+void SquallyMovementBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void SquallyMovementBehavior::update(float dt)
@@ -136,8 +158,8 @@ void SquallyMovementBehavior::update(float dt)
 			const float SaveOffsetY = 32.0f;
 
 			Vec2 position = GameUtils::getWorldCoords(this->squally);
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
 		}
 	}
 }

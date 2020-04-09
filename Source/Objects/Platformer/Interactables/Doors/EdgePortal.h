@@ -14,7 +14,7 @@ class EdgePortal : public Portal
 public:
 	static EdgePortal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEdgePortal;
+	static const std::string MapKey;
 
 protected:
 	EdgePortal(cocos2d::ValueMap& properties);
@@ -26,8 +26,10 @@ protected:
 private:
 	typedef Portal super;
 
+	std::string direction;
 	std::vector<cocos2d::Sprite*> edgeArrows;
 	CollisionObject* arrowHintCollision;
 
 	static const int ArrowCount;
+	static const std::string PropertyDirection;
 };

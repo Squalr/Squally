@@ -1,16 +1,16 @@
 #include "Hex8.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Hex8::SaveKeyHex8 = "hex-8";
+const std::string Hex8::SaveKey = "hex-8";
 
 Hex8* Hex8::create()
 {
@@ -21,7 +21,7 @@ Hex8* Hex8::create()
 	return instance;
 }
 
-Hex8::Hex8() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Hex8::Hex8() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 10 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* Hex8::clone()
 
 std::string Hex8::getItemName()
 {
-	return Hex8::SaveKeyHex8;
+	return Hex8::SaveKey;
 }
 
 LocalizedString* Hex8::getString()
@@ -46,12 +46,12 @@ LocalizedString* Hex8::getString()
 
 std::string Hex8::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardHex;
+	return ItemResources::Collectables_Cards_CardHex;
 }
 
 std::string Hex8::getSerializationKey()
 {
-	return Hex8::SaveKeyHex8;
+	return Hex8::SaveKey;
 }
 
 std::string Hex8::getCardKey()

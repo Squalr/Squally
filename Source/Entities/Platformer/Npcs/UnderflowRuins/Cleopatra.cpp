@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Cleopatra::MapKeyCleopatra = "cleopatra";
+const std::string Cleopatra::MapKey = "cleopatra";
 HexusOpponentData* Cleopatra::HexusOpponentDataInstance = nullptr;
 const std::string Cleopatra::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CLEOPATRA";
 
@@ -32,7 +31,7 @@ Cleopatra* Cleopatra::deserialize(ValueMap& properties)
 }
 
 Cleopatra::Cleopatra(ValueMap& properties) : super(properties,
-	Cleopatra::MapKeyCleopatra,
+	Cleopatra::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,
 	Size(112.0f, 160.0f),

@@ -9,11 +9,11 @@ class EntityCollisionBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static EntityCollisionBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityCollisionBehaviorGroup(GameObject* owner);
-	~EntityCollisionBehaviorGroup();
+	virtual ~EntityCollisionBehaviorGroup();
 
 	void onLoad() override;
 

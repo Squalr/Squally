@@ -11,13 +11,13 @@ class Squally;
 class BeatTutorialC : public QuestTask
 {
 public:
-	static BeatTutorialC* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static BeatTutorialC* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	BeatTutorialC(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~BeatTutorialC();
+	BeatTutorialC(GameObject* owner, QuestLine* questLine);
+	virtual ~BeatTutorialC();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

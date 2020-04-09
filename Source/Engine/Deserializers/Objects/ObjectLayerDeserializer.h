@@ -11,11 +11,12 @@ public:
 
 	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args) override;
 
+protected:
+	ObjectLayerDeserializer(std::map<std::string, ObjectDeserializer*> objectDeserializers);
+	virtual~ObjectLayerDeserializer();
+
 private:
 	typedef LayerDeserializer super;
-
-	ObjectLayerDeserializer(std::map<std::string, ObjectDeserializer*> objectDeserializers);
-	~ObjectLayerDeserializer();
 
 	std::map<std::string, ObjectDeserializer*> objectDeserializers;
 

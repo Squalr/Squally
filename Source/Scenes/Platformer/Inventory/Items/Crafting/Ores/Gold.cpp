@@ -1,15 +1,15 @@
 #include "Gold.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Gold::SaveKeyGold = "gold";
+const std::string Gold::SaveKey = "gold";
 
 Gold* Gold::create()
 {
@@ -20,7 +20,7 @@ Gold* Gold::create()
 	return instance;
 }
 
-Gold::Gold() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Gold::Gold() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Gold::clone()
 
 std::string Gold::getItemName()
 {
-	return Gold::SaveKeyGold;
+	return Gold::SaveKey;
 }
 
 LocalizedString* Gold::getString()
@@ -45,10 +45,10 @@ LocalizedString* Gold::getString()
 
 std::string Gold::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Gold;
+	return ItemResources::Crafting_Smithing_Gold;
 }
 
 std::string Gold::getSerializationKey()
 {
-	return Gold::SaveKeyGold;
+	return Gold::SaveKey;
 }

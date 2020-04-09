@@ -10,14 +10,16 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Hud/SquallyHudTrackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyDefaultInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyReceiveItemBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Misc/SquallyStaticHelpBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyRespawnBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyVisualBehaviorGroup.h"
 
 using namespace cocos2d;
 
-const std::string SquallyBehaviorGroup::MapKeyAttachedBehavior = "squally";
+const std::string SquallyBehaviorGroup::MapKey = "squally";
 
 SquallyBehaviorGroup* SquallyBehaviorGroup::create(GameObject* owner)
 {
@@ -38,10 +40,12 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyReceiveItemBehavior::create(owner),
 	SquallyFloatBehavior::create(owner),
 	SquallyMovementBehavior::create(owner),
+	SquallyRespawnBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),
 	SquallyVisualBehaviorGroup::create(owner),
 	ScrappyManagerBehavior::create(owner),
 	HelperManagerBehavior::create(owner),
+	SquallyStaticHelpBehavior::create(owner)
 	})
 {
 }

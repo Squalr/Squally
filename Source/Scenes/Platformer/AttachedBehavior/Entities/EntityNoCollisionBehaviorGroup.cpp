@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityNoCollisionBehaviorGroup::MapKeyAttachedBehavior = "entity-no-collision";
+const std::string EntityNoCollisionBehaviorGroup::MapKey = "entity-no-collision";
 
 EntityNoCollisionBehaviorGroup* EntityNoCollisionBehaviorGroup::create(GameObject* owner)
 {

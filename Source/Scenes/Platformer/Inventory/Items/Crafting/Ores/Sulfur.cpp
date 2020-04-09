@@ -1,15 +1,15 @@
 #include "Sulfur.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Sulfur::SaveKeySulfur = "sulfur";
+const std::string Sulfur::SaveKey = "sulfur";
 
 Sulfur* Sulfur::create()
 {
@@ -20,7 +20,7 @@ Sulfur* Sulfur::create()
 	return instance;
 }
 
-Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 144 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Sulfur::clone()
 
 std::string Sulfur::getItemName()
 {
-	return Sulfur::SaveKeySulfur;
+	return Sulfur::SaveKey;
 }
 
 LocalizedString* Sulfur::getString()
@@ -45,10 +45,10 @@ LocalizedString* Sulfur::getString()
 
 std::string Sulfur::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Sulfur;
+	return ItemResources::Crafting_Smithing_Sulfur;
 }
 
 std::string Sulfur::getSerializationKey()
 {
-	return Sulfur::SaveKeySulfur;
+	return Sulfur::SaveKey;
 }

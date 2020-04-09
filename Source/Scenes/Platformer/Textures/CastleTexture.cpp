@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string CastleTexture::MapKeyTextureType = "castle";
+const std::string CastleTexture::MapKey = "castle";
 
 CastleTexture* CastleTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ CastleTexture* CastleTexture::create(ValueMap& properties)
 CastleTexture::CastleTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		CastleTexture::MapKeyTextureType,
+		CastleTexture::MapKey,
 		TextureResources::CastleTexture,
 		Color4B(11, 30, 39, 255)))
 {

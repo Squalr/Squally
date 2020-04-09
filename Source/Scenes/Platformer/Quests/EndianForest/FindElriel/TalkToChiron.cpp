@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string TalkToChiron::MapKeyQuest = "talk-to-chiron";
 
-TalkToChiron* TalkToChiron::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToChiron* TalkToChiron::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToChiron* instance = new TalkToChiron(owner, questLine, questTag);
+	TalkToChiron* instance = new TalkToChiron(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToChiron::TalkToChiron(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToChiron::MapKeyQuest, questTag, false)
+TalkToChiron::TalkToChiron(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToChiron::MapKeyQuest, false)
 {
 	this->chiron = nullptr;
 	this->squally = nullptr;
@@ -46,12 +46,12 @@ void TalkToChiron::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
 		this->chiron = chiron;
-	}, Chiron::MapKeyChiron);
+	}, Chiron::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void TalkToChiron::onActivate(bool isActiveThroughSkippable)
@@ -79,8 +79,8 @@ void TalkToChiron::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Queen_G_TempleDoor::create()
-				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create() }),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

@@ -5,7 +5,10 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 
 using namespace cocos2d;
@@ -21,7 +24,7 @@ PlatformerDecorDeserializer* PlatformerDecorDeserializer::create()
 	return instance;
 }
 
-PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor)
+PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 }
 
@@ -35,11 +38,12 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 	std::string name = properties.at(GameObject::MapKeyName).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* sprite = Sprite::create("Private/Platformer/Decor/" + name + ".png");
+	const std::string path = "Private/Platformer/Decor/" + name + ".png";
+	Sprite* sprite = Sprite::create(path);
 
 	if (sprite == nullptr)
 	{
-		CCLOG("Non-existant decor");
+		LogUtils::logError("Non-existant decor" + path);
 		return;
 	}
 
@@ -125,6 +129,8 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 	sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
 	newObject->setPosition(Vec2(x, y + height));
 
+	newObject->setPositionZ(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
+
 	if (GameUtils::keyExists(properties, GameObject::MapKeyRotation))
 	{
 		float rotation = properties.at(GameObject::MapKeyRotation).asFloat();
@@ -173,6 +179,8 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 		FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, -floatY)));
 		newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 	}
+
+	this->deserializeProperties(newObject, properties);
 
 	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(newObject));
 }

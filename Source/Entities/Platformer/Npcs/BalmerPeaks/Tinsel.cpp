@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Tinsel::MapKeyTinsel = "tinsel";
+const std::string Tinsel::MapKey = "tinsel";
 HexusOpponentData* Tinsel::HexusOpponentDataInstance = nullptr;
 const std::string Tinsel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TINSEL";
 
@@ -32,7 +31,7 @@ Tinsel* Tinsel::deserialize(ValueMap& properties)
 }
 
 Tinsel::Tinsel(ValueMap& properties) : super(properties,
-	Tinsel::MapKeyTinsel,
+	Tinsel::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,
 	Size(112.0f, 160.0f),

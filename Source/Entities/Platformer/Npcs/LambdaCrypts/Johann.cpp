@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Johann::MapKeyJohann = "johann";
+const std::string Johann::MapKey = "johann";
 HexusOpponentData* Johann::HexusOpponentDataInstance = nullptr;
 const std::string Johann::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JOHANN";
 
@@ -32,7 +31,7 @@ Johann* Johann::deserialize(ValueMap& properties)
 }
 
 Johann::Johann(ValueMap& properties) : super(properties,
-	Johann::MapKeyJohann,
+	Johann::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,
 	Size(112.0f, 160.0f),

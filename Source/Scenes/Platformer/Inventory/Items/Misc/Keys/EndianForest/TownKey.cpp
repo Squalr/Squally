@@ -1,15 +1,15 @@
 #include "TownKey.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string TownKey::SaveKeyTownKey = "town-key";
+const std::string TownKey::SaveKey = "town-key";
 
 TownKey* TownKey::create()
 {
@@ -20,7 +20,7 @@ TownKey* TownKey::create()
 	return instance;
 }
 
-TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
 {
 }
 
@@ -35,7 +35,7 @@ Item* TownKey::clone()
 
 std::string TownKey::getItemName()
 {
-	return TownKey::SaveKeyTownKey;
+	return TownKey::SaveKey;
 }
 
 LocalizedString* TownKey::getString()
@@ -45,11 +45,11 @@ LocalizedString* TownKey::getString()
 
 std::string TownKey::getIconResource()
 {
-	return ObjectResources::Items_Misc_KEY_1;
+	return ItemResources::Keys_KEY_1;
 }
 
 std::string TownKey::getSerializationKey()
 {
-	return TownKey::SaveKeyTownKey;
+	return TownKey::SaveKey;
 }
 

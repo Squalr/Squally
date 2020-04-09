@@ -16,7 +16,7 @@ class MetalSpikes : public HackableObject
 public:
 	static MetalSpikes* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyMetalSpikes;
+	static const std::string MapKey;
 
 protected:
 	MetalSpikes(cocos2d::ValueMap& properties);

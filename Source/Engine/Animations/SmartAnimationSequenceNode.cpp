@@ -17,18 +17,14 @@ using namespace cocos2d;
 
 std::map<std::string, std::vector<std::string>> SmartAnimationSequenceNode::AnimationFileCache = std::map<std::string, std::vector<std::string>>();
 
+SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
+{
+	return SmartAnimationSequenceNode::create(UIResources::EmptyImage);
+}
+
 SmartAnimationSequenceNode* SmartAnimationSequenceNode::create(std::string defaultSprite)
 {
 	SmartAnimationSequenceNode* instance = new SmartAnimationSequenceNode(defaultSprite);
-
-	instance->autorelease();
-
-	return instance;
-}
-
-SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
-{
-	SmartAnimationSequenceNode* instance = new SmartAnimationSequenceNode();
 
 	instance->autorelease();
 
@@ -42,19 +38,8 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
 	this->repeatIndex = 0;
-
+	
 	this->primeCache(this->defaultSprite);
-
-	this->addChild(this->sprite);
-}
-
-SmartAnimationSequenceNode::SmartAnimationSequenceNode()
-{
-	this->defaultSprite = "";
-	this->sprite = Sprite::create();
-	this->forwardsAnimation = nullptr;
-	this->backwardsAnimation = nullptr;
-	this->repeatIndex = 0;
 
 	this->addChild(this->sprite);
 }
@@ -63,19 +48,24 @@ SmartAnimationSequenceNode::~SmartAnimationSequenceNode()
 {
 }
 
+SmartAnimationSequenceNode* SmartAnimationSequenceNode::clone()
+{
+	return SmartAnimationSequenceNode::create(this->defaultSprite);
+}
+
 void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceFile)
 {
 	std::vector<std::string> images = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
 
-	for (auto it = images.begin(); it != images.end(); it++)
+	for (auto next : images)
 	{
-		Director::getInstance()->getTextureCache()->addImage(*it);
+		Director::getInstance()->getTextureCache()->addImage(next);
 	}
 }
 
 bool SmartAnimationSequenceNode::isPlayingAnimation()
 {
-	return this->getNumberOfRunningActions() != 0;
+	return this->sprite != nullptr && this->sprite->getNumberOfRunningActions() != 0;
 }
 
 void SmartAnimationSequenceNode::stopAnimation()
@@ -104,9 +94,9 @@ void SmartAnimationSequenceNode::playAnimation(std::vector<std::string> animatio
 {
 	Animation* animation = Animation::create();
 
-	for (auto it = animationFiles.begin(); it != animationFiles.end(); it++)
+	for (auto next : animationFiles)
 	{
-		animation->addSpriteFrameWithFile(*it);
+		animation->addSpriteFrameWithFile(next);
 	}
 
 	if (insertBlankFrame)
@@ -143,9 +133,9 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::vector<std::string> an
 {
 	Animation* animation = Animation::create();
 
-	for (auto it = animationFiles.begin(); it != animationFiles.end(); it++)
+	for (auto next : animationFiles)
 	{
-		animation->addSpriteFrameWithFile(*it);
+		animation->addSpriteFrameWithFile(next);
 	}
 
 	if (insertBlankFrame)
@@ -204,10 +194,10 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::vector<std::string
 		animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
 	}
 
-	for (auto it = animationFiles.begin(); it != animationFiles.end(); it++)
+	for (auto next : animationFiles)
 	{
-		animationIn->addSpriteFrameWithFile(*it);
-		animationOut->addSpriteFrameWithFile(*it);
+		animationIn->addSpriteFrameWithFile(next);
+		animationOut->addSpriteFrameWithFile(next);
 	}
 
 	if (insertBlankFrame)
@@ -254,10 +244,10 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::
 		animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
 	}
 
-	for (auto it = animationFiles.begin(); it != animationFiles.end(); it++)
+	for (auto next : animationFiles)
 	{
-		animationIn->addSpriteFrameWithFile(*it);
-		animationOut->addSpriteFrameWithFile(*it);
+		animationIn->addSpriteFrameWithFile(next);
+		animationOut->addSpriteFrameWithFile(next);
 	}
 
 	if (insertBlankFrame)
@@ -407,9 +397,9 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 	std::map<int, std::string> orderedAnimationFileMap = std::map<int, std::string>();
 	std::vector<std::string> files = FileUtils::getInstance()->listFiles(containingFolder);
 
-	for (auto it = files.begin(); it != files.end(); it++)
+	for (auto next : files)
 	{
-		std::string fileName = StrUtils::replaceAll(*it, "\\", "/");
+		std::string fileName = StrUtils::replaceAll(next, "\\", "/");
 
 		// Check if the file name matches the format of 
 		if (StrUtils::startsWith(fileName, animationNameBase, true) && StrUtils::endsWith(fileName, extension, true))
@@ -431,9 +421,9 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 
 	std::vector<std::string> foundAnimations = std::vector<std::string>();
 
-	for (auto it = orderedAnimationFileMap.begin(); it != orderedAnimationFileMap.end(); it++)
+	for (auto next : orderedAnimationFileMap)
 	{
-		std::string fileName = it->second;
+		std::string fileName = next.second;
 
 		foundAnimations.push_back(fileName);
 	}

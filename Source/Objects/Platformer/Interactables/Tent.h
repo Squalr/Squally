@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class PhysicsBody;
 	class Sprite;
 }
 
@@ -17,7 +16,7 @@ class Tent : public HackableObject
 public:
 	static Tent* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTent;
+	static const std::string MapKey;
 
 protected:
 	Tent(cocos2d::ValueMap& properties);
@@ -32,7 +31,7 @@ private:
 	typedef HackableObject super;
 
 	void runHealAnimation(bool reRun = false);
-	cocos2d::PhysicsBody* createTentTopCollision();
+	std::vector<cocos2d::Vec2> createTentTopCollision();
 
 	cocos2d::Sprite* tentBack;
 	SmartAnimationSequenceNode* healAnimation;

@@ -14,7 +14,8 @@
 
 using namespace cocos2d;
 
-const std::string Water::MapKeyWater = "water";
+const std::string Water::MapKey = "water";
+const std::string Water::PropertyDisablePhysics = "disable-physics";
 const float Water::SplashSpacing = 192.0f;
 const float Water::WaterGravity = 0.0f;
 const float Water::WaterCollisionOffset = 128.0f;
@@ -40,18 +41,10 @@ Water::Water(ValueMap& properties) : super(properties)
 	float effectiveOffset = this->waterSize.height - waterCollisionHeight;
 	Size collisionSize = Size(this->waterSize.width, waterCollisionHeight);
 
-	std::string customCollison = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
-
-	if (customCollison == "")
-	{
-		this->waterCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, false, false);
-	}
-	else
-	{
-		this->waterCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), customCollison, false, false);
-	}
+	this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, CollisionObject::Properties(false, false));
 
 	this->waterCollision->setPositionY(-effectiveOffset / 2.0f);
+	this->waterCollision->setPhysicsEnabled(GameUtils::getKeyOrDefault(this->properties, Water::PropertyDisablePhysics, Value(true)).asBool());
 	
 	this->addChild(this->water);
 	this->addChild(this->waterCollision);
@@ -77,11 +70,9 @@ void Water::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->waterCollision->setContactUpdateCallback(CC_CALLBACK_2(Water::applyWaterForce, this));
-
-	this->waterCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->waterCollision->whileCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		// Speed is applied in the update applyWaterForce
+		this->applyWaterForce(collisionData.other, collisionData.dt);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -109,10 +100,7 @@ void Water::runSplash(int index)
 	));
 }
 
-void Water::applyWaterForce(const std::vector<CollisionObject*>& targets, float dt)
+void Water::applyWaterForce(CollisionObject* target, float dt)
 {
-	for (auto it = targets.begin(); it != targets.end(); it++)
-	{
-		(*it)->setVelocity((*it)->getVelocity() + Vec2(0.0f, Water::WaterGravity * dt));
-	}
+	target->setVelocity(target->getVelocity() + Vec2(0.0f, Water::WaterGravity * dt));
 }

@@ -40,12 +40,7 @@ std::vector<Item*> CraftingFilter::filter(std::vector<Item*> itemList)
 	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
 		[=](Item* item)
 	{
-		if (dynamic_cast<Crafting*>(item) == nullptr)
-		{
-			return true;
-		}
-
-		return false; 
+		return dynamic_cast<Crafting*>(item) == nullptr;
 	}), itemList.end());
 
 	return itemList;

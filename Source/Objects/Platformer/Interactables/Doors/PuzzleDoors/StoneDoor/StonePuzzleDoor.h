@@ -19,6 +19,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getRainOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	virtual void runOperation(int puzzleIndex) override = 0;
 
@@ -30,5 +31,5 @@ private:
 	cocos2d::Sprite* front;
 
 	static const cocos2d::Vec2 Offset;
-	static const std::string MapPropertyColor;
+	static const std::string PropertyColor;
 };

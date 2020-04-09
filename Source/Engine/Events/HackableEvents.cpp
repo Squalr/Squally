@@ -5,12 +5,10 @@
 
 using namespace cocos2d;
 
-const std::string HackableEvents::EventForceHackerModeEnable = "EVENT_FORCE_HACKERMODE_ENABLE";
+const std::string HackableEvents::EventForceUseHackerMode = "EVENT_FORCE_USE_HACKERMODE";
 const std::string HackableEvents::EventHackerModeToggle = "EVENT_HACKERMODE_TOGGLE";
 const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENABLE";
 const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
-const std::string HackableEvents::EventSensingEnable = "EVENT_SENSING_ENABLE";
-const std::string HackableEvents::EventSensingDisable = "EVENT_SENSING_DISABLE";
 const std::string HackableEvents::EventAllowHackerMode = "EVENT_ALLOW_HACKER_MODE";
 const std::string HackableEvents::EventDisallowHackerMode = "EVENT_DISALLOW_HACKER_MODE";
 const std::string HackableEvents::EventQueryHackerModeAllowed = "EVENT_QUERY_HACKER_MODE";
@@ -19,14 +17,17 @@ const std::string HackableEvents::EventHackableObjectClose = "EVENT_CLOSE_HACKAB
 const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
 const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
+const std::string HackableEvents::EventHackFlagsChanged = "EVENT_HACK_FLAGS_CHANGED";
+const std::string HackableEvents::EventPauseHackTimers = "EVENT_PAUSE_HACK_TIMERS";
+const std::string HackableEvents::EventResumeHackTimers = "EVENT_RESUME_HACK_TIMERS";
 const std::string HackableEvents::EventOpenLexiconPage = "EVENT_OPEN_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseLeftLexiconPage = "EVENT_CLOSE_LEFT_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGHT_LEXICON_PAGE";
 
-void HackableEvents::TriggerForceHackerModeEnable()
+void HackableEvents::TriggerForceUseHackerMode()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventForceHackerModeEnable
+		HackableEvents::EventForceUseHackerMode
 	);
 }
 
@@ -50,21 +51,6 @@ void HackableEvents::TriggerHackerModeDisable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackerModeDisable
-	);
-}
-
-void HackableEvents::TriggerSensingEnable(SensingArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventSensingEnable,
-		&args
-	);
-}
-
-void HackableEvents::TriggerSensingDisable()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventSensingDisable
 	);
 }
 
@@ -125,6 +111,28 @@ void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackApplied,
 		&args
+	);
+}
+
+void HackableEvents::TriggerHackFlagsChanged(HackFlagsChangedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackFlagsChanged,
+		&args
+	);
+}
+
+void HackableEvents::TriggerPauseHackTimers()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventPauseHackTimers
+	);
+}
+
+void HackableEvents::TriggerResumeHackTimers()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventResumeHackTimers
 	);
 }
 

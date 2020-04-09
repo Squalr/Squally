@@ -12,18 +12,24 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Events/NotificationEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
-#include "Objects/Platformer/Collectables/IOU.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
-const std::string ShopItem::MapKeyShopItem = "shop-item";
-const std::string ShopItem::MapKeyPropertyShopPool = "pool";
+const std::string ShopItem::MapKey = "shop-item";
+const std::string ShopItem::PropertyShopPool = "pool";
 
 ShopItem* ShopItem::create(ValueMap& properties)
 {
@@ -37,11 +43,11 @@ ShopItem* ShopItem::create(ValueMap& properties)
 ShopItem::ShopItem(ValueMap& properties) : super(properties)
 {
 	this->item = nullptr;
-	this->itemPreview = ItemPreview::create(false, true);
+	this->itemPreview = ItemPreview::create(true, false);
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
-	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::MapKeyPropertyShopPool, Value("")).asString();
-	this->currencySprite = Sprite::create(IOU::getIconResource());
+	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::PropertyShopPool, Value("")).asString();
+	this->currencySprite = Sprite::create(IOU::getIOUIconResource());
 	this->itemCostString = ConstantString::create(std::to_string(0));
 	this->itemCostLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->itemCostString);
 	this->itemCost = -1;
@@ -77,13 +83,15 @@ void ShopItem::onEnterTransitionDidFinish()
 		{
 			this->setVisible(true);
 			this->itemNode->addChild(this->item);
-			this->itemPreview->preview(this->item);
+			this->itemPreview->preview(ItemPreview::EquipHintMode::None, this->item);
+
+			this->itemPreview->toggleShowItemName(dynamic_cast<HexusCard*>(this->item) == nullptr);
 
 			CurrencyInventory* cost = item->getCost();
 
 			if (cost != nullptr)
 			{
-				this->itemCost = cost->getCurrencyCount(IOU::getIdentifier());
+				this->itemCost = cost->getCurrencyCount(IOU::getIOUIdentifier());
 				this->itemCostString->setString(std::to_string(this->itemCost));
 			}
 		}
@@ -108,7 +116,22 @@ void ShopItem::initializeListeners()
 
 	this->itemClickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->sellItem();
+		if (this->item == nullptr)
+		{
+			return;
+		}
+
+		NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
+			Strings::Platformer_Dialogue_Shopkeepers_DoYouWantToBuy::create()
+				->setStringReplacementVariables(this->item->getString()),
+			[=]()
+			{
+				this->sellItem();
+			},
+			[=]()
+			{
+			}
+		));
 	});
 }
 
@@ -119,27 +142,34 @@ void ShopItem::sellItem()
 		return;
 	}
 
-	CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
-
-	if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
 
-		playerInventory->tryInsert(this->item->clone(),
-		[=](Item*)
-		{
-			this->available = false;
-			playerCurrencyInventory->removeCurrency(IOU::getIdentifier(), this->itemCost);
-			this->itemPreview->preview(nullptr);
-			this->currencySprite->setVisible(false);
-			this->itemCostLabel->setVisible(false);
-			this->itemClickHitbox->setMouseClickCallback(nullptr);
-			this->itemClickHitbox->disableInteraction(0);
-		},
-		[=](Item*)
-		{
-			// Failure!
+			int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIOUIdentifier());
+			
+			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
+			{
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+				playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
+
+				if (dynamic_cast<HexusCard*>(this->item) != nullptr)
+				{
+					this->removeShopItem();
+				}
+			}
 		});
-	}
+	}, Squally::MapKey);
+}
+
+void ShopItem::removeShopItem()
+{
+	this->available = false;
+	this->itemPreview->preview(ItemPreview::EquipHintMode::None, nullptr);
+	this->currencySprite->setVisible(false);
+	this->itemCostLabel->setVisible(false);
+	this->itemClickHitbox->setMouseClickCallback(nullptr);
+	this->itemClickHitbox->disableInteraction(0);
 }

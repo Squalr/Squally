@@ -7,16 +7,16 @@ class Shiftman : public IsometricEntity
 public:
 	static Shiftman* deserialize(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyShiftman;
+	static const std::string MapKey;
 
 protected:
+	Shiftman(cocos2d::ValueMap& properties);
+	virtual ~Shiftman();
+
+	void onEnter() override;
+	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
 	typedef IsometricEntity super;
-	Shiftman(cocos2d::ValueMap& properties);
-	~Shiftman();
-
-	void onEnter() override;
-	void update(float) override;
 };

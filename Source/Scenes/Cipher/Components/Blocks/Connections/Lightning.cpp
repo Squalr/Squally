@@ -30,6 +30,8 @@ Lightning::Lightning()
 	this->sound = Sound::create(SoundResources::Cipher_Lightning);
 	this->manualDelay = -1.0f;
 
+	this->sound->setCustomMultiplier(0.35f);
+
 	static bool runOnce = true;
 
 	if (runOnce)

@@ -3,16 +3,15 @@
 
 #include "cocos/math/CCGeometry.h"
 
+#include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
 	class EventListener;
 	class Value;
-	typedef std::map<std::string, Value> ValueMap;
+	typedef std::map<std::string, cocos2d::Value> ValueMap;
 }
-
-class AttachedBehavior;
 
 class GameObject : public SmartNode
 {
@@ -28,6 +27,7 @@ public:
 	int getStateOrDefaultInt(std::string key, int value);
 	float getStateOrDefaultFloat(std::string key, float value);
 	bool getStateOrDefaultBool(std::string key, bool value);
+	cocos2d::ValueMap& getStateVariables();
 	bool hasState(std::string key);
 	void clearState(std::string key);
 	void setZSorted(bool zSorted);
@@ -47,11 +47,11 @@ public:
 	template <class T>
 	T* getAttachedBehavior()
 	{
-		for (auto it = attachedBehavior.begin(); it != attachedBehavior.end(); it++)
+		for (auto next : attachedBehavior)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr && next->isQueryable())
 			{
-				return dynamic_cast<T*>(*it);
+				return dynamic_cast<T*>(next);
 			}
 		}
 
@@ -69,12 +69,12 @@ public:
 		}
 	}
 	
-	static inline unsigned long long WatchId = 0;
+	static unsigned long long WatchId;
 
 	template <class T>
 	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
 	{
-		unsigned long long watchId = WatchId++;
+		unsigned long long watchId = GameObject::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
 
 		// Do an immediate check for the object
@@ -112,6 +112,7 @@ public:
 	static const std::string MapKeyHeight;
 	static const std::string MapKeyXPosition;
 	static const std::string MapKeyYPosition;
+	static const std::string MapKeyDepth;
 	static const std::string MapKeyScale;
 	static const std::string MapKeyScaleX;
 	static const std::string MapKeyScaleY;
@@ -141,9 +142,9 @@ public:
 
 	static const std::vector<std::string> AttributeKeys;
 
-	static const std::string MapKeyPropertyName;
-	static const std::string MapKeyPropertyType;
-	static const std::string MapKeyPropertyValue;
+	static const std::string PropertyName;
+	static const std::string PropertyType;
+	static const std::string PropertyValue;
 
 	cocos2d::ValueMap properties;
 	
@@ -153,6 +154,7 @@ protected:
 	virtual ~GameObject();
 	
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	bool isMapObject();
 	void loadObjectState();

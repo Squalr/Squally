@@ -9,6 +9,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
@@ -17,6 +18,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/AttackMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ItemsMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -46,18 +48,19 @@ ChoicesMenu::ChoicesMenu()
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
 	this->attackMenu = AttackMenu::create();
 	this->itemsMenu = ItemsMenu::create();
+	this->trackTarget = nullptr;
 
-	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), Sprite::create(UIResources::Menus_Icons_Dice), UIResources::Combat_ItemsCircle, [=]()
+	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), nullptr, UIResources::Menus_Icons_Dice, UIResources::Combat_ItemsCircle, [=]()
 	{
 		this->onItemsClick();
 	});
 
-	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), Sprite::create(UIResources::Menus_Icons_Spear), UIResources::Combat_AttackCircle, [=]()
+	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), nullptr, UIResources::Menus_Icons_Spear, UIResources::Combat_AttackCircle, [=]()
 	{
 		this->onAttackClick();
 	});
 
-	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), Sprite::create(UIResources::Menus_Icons_ShieldBroken), UIResources::Combat_DefendCircle, [=]()
+	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), nullptr, UIResources::Menus_Icons_ShieldBroken, UIResources::Combat_DefendCircle, [=]()
 	{
 		this->onDefendClick();
 	});
@@ -76,6 +79,8 @@ void ChoicesMenu::onEnter()
 	super::onEnter();
 
 	this->setVisible(false);
+
+	this->scheduleUpdate();
 }
 
 void ChoicesMenu::initializePositions()
@@ -92,12 +97,12 @@ void ChoicesMenu::initializeListeners()
 		this->noDefend = true;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableDefend, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableItems, [=](EventCustom* eventCustom)
 	{
 		this->noItems = true;
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE }, [=](InputEvents::InputArgs* args)
 	{
 		switch (this->currentMenu)
 		{
@@ -116,6 +121,11 @@ void ChoicesMenu::initializeListeners()
 		}
 	});
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventMenuBack, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, this->selectedEntry));	
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
@@ -125,6 +135,8 @@ void ChoicesMenu::initializeListeners()
 			this->previousMenu = this->currentMenu;
 			this->currentMenu = combatArgs->currentMenu;
 
+			this->track(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
+
 			switch (this->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
@@ -133,20 +145,29 @@ void ChoicesMenu::initializeListeners()
 
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
+					this->choicesMenu->setVisible(true);
+					this->setVisible(true);
 
 					this->setSelectedEntry(combatArgs->entry);
-
-					this->setVisible(true);
 					this->choicesMenu->enableAll();
 
-					if (this->noItems)
+					if (this->noItems || !this->itemsMenu->hasItems())
 					{
 						this->itemsButton->disableInteraction(127);
+					}
+					else
+					{
+						this->itemsButton->enableInteraction();
 					}
 
 					if (this->noDefend)
 					{
 						this->defendButton->disableInteraction(127);
+					}
+
+					if (this->previousMenu == CombatEvents::MenuStateArgs::CurrentMenu::Closed)
+					{
+						this->choicesMenu->scrollTo(1);
 					}
 
 					this->choicesMenu->focus();
@@ -161,9 +182,10 @@ void ChoicesMenu::initializeListeners()
 
 					this->attackMenu->setVisible(true);
 					this->itemsMenu->setVisible(false);
+					this->choicesMenu->setVisible(true);
 
+					this->choicesMenu->toggleAll(false, true);
 					this->attackMenu->enableAll();
-					this->choicesMenu->disableAll(false, false);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->unfocus();
@@ -177,9 +199,10 @@ void ChoicesMenu::initializeListeners()
 
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(true);
+					this->choicesMenu->setVisible(true);
 
+					this->choicesMenu->toggleAll(false, true);
 					this->itemsMenu->enableAll();
-					this->choicesMenu->disableAll(false, false);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->focus();
@@ -189,17 +212,7 @@ void ChoicesMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
-					PlatformerEvents::TriggerDisallowPause();
-
-					this->attackMenu->setVisible(false);
-					this->itemsMenu->setVisible(false);
-
-					this->choicesMenu->disableAll(false, false);
-
-					this->choicesMenu->unfocus();
-					this->itemsMenu->unfocus();
-					this->attackMenu->unfocus();
-
+					// For now, there is no defend select menu. Just wait for this state to pass.
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
@@ -208,8 +221,9 @@ void ChoicesMenu::initializeListeners()
 				{
 					PlatformerEvents::TriggerDisallowPause();
 
-					this->attackMenu->disableAll(true);
-					this->itemsMenu->disableAll(true);
+					this->attackMenu->setVisible(false);
+					this->itemsMenu->setVisible(false);
+					this->choicesMenu->setVisible(false);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->unfocus();
@@ -223,6 +237,7 @@ void ChoicesMenu::initializeListeners()
 
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
+					this->choicesMenu->setVisible(false);
 					this->setVisible(false);
 
 					this->choicesMenu->unfocus();
@@ -246,55 +261,61 @@ void ChoicesMenu::initializeListeners()
 	});
 }
 
+void ChoicesMenu::update(float dt)
+{
+	super::update(dt);
+
+	static const Vec2 Offset = Vec2(-64.0f, 0.0f);
+
+	if (this->trackTarget != nullptr)
+	{
+		this->setPosition(GameUtils::getScreenBounds(this->trackTarget).origin + this->trackTarget->getEntityCenterPoint() + Offset);
+	}
+}
+
 void ChoicesMenu::onItemsClick()
 {
-	switch (this->currentMenu)
+	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 0)
 	{
-		case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
-			break;
-		}
-		default:
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
-			break;
-		}
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
 	}
+	else
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
+	}
+
+	this->choicesMenu->scrollTo(0);
 }
 
 void ChoicesMenu::onAttackClick()
 {
-	switch (this->currentMenu)
+	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 1)
 	{
-		case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
-			break;
-		}
-		default:
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
-			break;
-		}
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
 	}
+	else
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
+	}
+	
+	this->choicesMenu->scrollTo(1);
 }
 
 void ChoicesMenu::onDefendClick()
 {
-	switch (this->currentMenu)
+	/*
+	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 2)
 	{
-		case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
-			break;
-		}
-		default:
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
-			break;
-		}
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
 	}
+	else
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
+	}*/
+	
+	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
+	
+	this->choicesMenu->scrollTo(2);
 }
 
 void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
@@ -302,5 +323,10 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 	this->selectedEntry = selectedEntry;
 
 	this->attackMenu->buildAttackList(selectedEntry);
-	this->itemsMenu->buildAttackList(selectedEntry);
+	this->itemsMenu->buildItemList(selectedEntry);
+}
+
+void ChoicesMenu::track(PlatformerEntity* trackTarget)
+{
+	this->trackTarget = trackTarget;
 }

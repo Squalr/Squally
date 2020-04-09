@@ -14,21 +14,23 @@ public:
 	
 	CollisionObject* jumpCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityJumpCollisionBehavior(GameObject* owner);
-	~EntityJumpCollisionBehavior();
+	virtual ~EntityJumpCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
 
+	void buildJumpCollisionDetector();
+
 	PlatformerEntity* entity;
 
-	static const float JumpCollisionPadding;
+	static const float JumpCollisionMargin;
 	static const float JumpCollisionOffset;
 	static const float JumpCollisionHeight;
-	static const float JumpCollisionRadius;
 };

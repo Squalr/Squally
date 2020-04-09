@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -27,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_GET_DENSITY 1
 
-const std::string FloatingAsteroid::MapKeyFloatingAsteroid = "floating-asteroid";
+const std::string FloatingAsteroid::MapKey = "floating-asteroid";
 
 FloatingAsteroid* FloatingAsteroid::create(ValueMap& properties)
 {
@@ -41,7 +40,7 @@ FloatingAsteroid* FloatingAsteroid::create(ValueMap& properties)
 FloatingAsteroid::FloatingAsteroid(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_Asteroid_Asteroid);
-	this->collision = CollisionObject::create(PhysicsBody::createCircle(96.0f), (CollisionType)PlatformerCollisionType::Physics, false, true);
+	this->collision = CollisionObject::create(CollisionObject::createCircle(96.0f), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
 
 	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -82,12 +81,12 @@ void FloatingAsteroid::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_GET_DENSITY,
-			HackableCode::LateBindData(
-				FloatingAsteroid::MapKeyFloatingAsteroid,
+			HackableCode::HackableCodeInfo(
+				FloatingAsteroid::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
 				FloatingAsteroidGetDensityPreview::create(),
@@ -97,17 +96,18 @@ void FloatingAsteroid::registerHackables()
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
 				int(HackFlags::None),
-				8.0f
+				8.0f,
+				0.0f
 			)
 		},
 	};
 
 	auto densityFunc = &FloatingAsteroid::getDensityNonVirtual;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)densityFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)densityFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -155,6 +155,7 @@ NO_OPTIMIZE float FloatingAsteroid::getDensityNonVirtual()
 
 	return MathUtils::clamp(densityRet, 0.0f, 1.0f);
 }
+END_NO_OPTIMIZE
 
 float FloatingAsteroid::getObjectHeight()
 {

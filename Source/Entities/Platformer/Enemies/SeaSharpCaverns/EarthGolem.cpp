@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EarthGolem::MapKeyEarthGolem = "earth-golem";
+const std::string EarthGolem::MapKey = "earth-golem";
 HexusOpponentData* EarthGolem::HexusOpponentDataInstance = nullptr;
 const std::string EarthGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EARTH_GOLEM";
 
@@ -32,7 +31,7 @@ EarthGolem* EarthGolem::deserialize(ValueMap& properties)
 }
 
 EarthGolem::EarthGolem(ValueMap& properties) : super(properties,
-	EarthGolem::MapKeyEarthGolem,
+	EarthGolem::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	Size(256.0f, 224.0f),

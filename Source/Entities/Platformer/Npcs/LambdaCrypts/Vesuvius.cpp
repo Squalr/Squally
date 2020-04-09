@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Vesuvius::MapKeyVesuvius = "vesuvius";
+const std::string Vesuvius::MapKey = "vesuvius";
 HexusOpponentData* Vesuvius::HexusOpponentDataInstance = nullptr;
 const std::string Vesuvius::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VESUVIUS";
 
@@ -32,7 +31,7 @@ Vesuvius* Vesuvius::deserialize(ValueMap& properties)
 }
 
 Vesuvius::Vesuvius(ValueMap& properties) : super(properties,
-	Vesuvius::MapKeyVesuvius,
+	Vesuvius::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Animations,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Emblem,
 	Size(112.0f, 160.0f),

@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/MarbleTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string MarbleTerrain::MapKeyTerrainType = "marble";
+const std::string MarbleTerrain::MapKey = "marble";
 
 MarbleTerrain* MarbleTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ MarbleTerrain* MarbleTerrain::create(ValueMap& properties)
 MarbleTerrain::MarbleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return MarbleTexture::create(transformedProps);
+		},
 		0.5f,
-		MarbleTerrain::MapKeyTerrainType,
+		MarbleTerrain::MapKey,
 		TextureResources::MarbleTexture,
 		TerrainResources::Marble_Top,
 		TerrainResources::Marble_TopLeft,

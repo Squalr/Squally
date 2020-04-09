@@ -1,16 +1,16 @@
 #include "SpecialAdd.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialAdd::SaveKeySpecialAdd = "special-add";
+const std::string SpecialAdd::SaveKey = "special-add";
 
 SpecialAdd* SpecialAdd::create()
 {
@@ -21,7 +21,7 @@ SpecialAdd* SpecialAdd::create()
 	return instance;
 }
 
-SpecialAdd::SpecialAdd() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialAdd::SpecialAdd() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialAdd::clone()
 
 std::string SpecialAdd::getItemName()
 {
-	return SpecialAdd::SaveKeySpecialAdd;
+	return SpecialAdd::SaveKey;
 }
 
 LocalizedString* SpecialAdd::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialAdd::getString()
 
 std::string SpecialAdd::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialAdd::getSerializationKey()
 {
-	return SpecialAdd::SaveKeySpecialAdd;
+	return SpecialAdd::SaveKey;
 }
 
 std::string SpecialAdd::getCardKey()

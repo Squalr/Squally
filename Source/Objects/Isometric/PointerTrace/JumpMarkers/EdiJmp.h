@@ -12,11 +12,11 @@ class EdiJmp : public JmpMarker
 public:
 	static EdiJmp* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEdiJmp;
+	static const std::string MapKey;
 
 protected:
 	EdiJmp(cocos2d::ValueMap& properties);
-	~EdiJmp();
+	virtual ~EdiJmp();
 
 	void onEnter() override;
 	void initializePositions() override;

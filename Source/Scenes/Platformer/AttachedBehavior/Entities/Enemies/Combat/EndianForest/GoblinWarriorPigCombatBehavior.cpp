@@ -5,14 +5,15 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Reflect/CastReflect.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string GoblinWarriorPigCombatBehavior::MapKeyAttachedBehavior = "goblin-warrior-pig-combat";
+const std::string GoblinWarriorPigCombatBehavior::MapKey = "goblin-warrior-pig-combat";
 
 GoblinWarriorPigCombatBehavior* GoblinWarriorPigCombatBehavior::create(GameObject* owner)
 {
@@ -31,6 +32,8 @@ GoblinWarriorPigCombatBehavior::GoblinWarriorPigCombatBehavior(GameObject* owner
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 GoblinWarriorPigCombatBehavior::~GoblinWarriorPigCombatBehavior()
@@ -45,7 +48,8 @@ void GoblinWarriorPigCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(CastReflect::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -54,7 +58,7 @@ void GoblinWarriorPigCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

@@ -25,7 +25,7 @@
 using namespace cocos2d;
 
 const Vec2 StonePuzzleDoor::Offset = Vec2(0.0f, -160.0f);
-const std::string StonePuzzleDoor::MapPropertyColor = "color";
+const std::string StonePuzzleDoor::PropertyColor = "color";
 
 StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 	Size(256.0f, 512.0f),
@@ -38,7 +38,7 @@ StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 	136.0f,
 	292.0f)
 {
-	std::string color = GameUtils::getKeyOrDefault(this->properties, StonePuzzleDoor::MapPropertyColor, Value("yellow")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, StonePuzzleDoor::PropertyColor, Value("yellow")).asString();
 	
 	if (color == "green")
 	{
@@ -53,12 +53,11 @@ StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 		this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Front);
 	}
 
-	this->doorOpenSound = WorldSound::create();
+	this->doorOpenSound->setSoundResource(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
 	this->backNode->addChild(this->back);
 	this->doorNode->addChild(this->door);
 	this->frontNode->addChild(this->front);
-	this->addChild(this->doorOpenSound);
 }
 
 StonePuzzleDoor::~StonePuzzleDoor()
@@ -86,6 +85,11 @@ void StonePuzzleDoor::initializeListeners()
 }
 
 Vec2 StonePuzzleDoor::getButtonOffset()
+{
+	return Vec2(-286.0f, -128.0f);
+}
+
+Vec2 StonePuzzleDoor::getRainOffset()
 {
 	return Vec2(-286.0f, -128.0f);
 }

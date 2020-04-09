@@ -12,10 +12,9 @@
 
 using namespace cocos2d;
 
-const std::string EntityHeadCollisionBehavior::MapKeyAttachedBehavior = "entity-head-collisions";
+const std::string EntityHeadCollisionBehavior::MapKey = "entity-head-collisions";
 const float EntityHeadCollisionBehavior::HeadCollisionPadding = 16.0f;
-const float EntityHeadCollisionBehavior::HeadCollisionOffset = 16.0f;
-const float EntityHeadCollisionBehavior::HeadCollisionRadius = 8.0f;
+const float EntityHeadCollisionBehavior::HeadCollisionSize = 48.0f;
 
 EntityHeadCollisionBehavior* EntityHeadCollisionBehavior::create(GameObject* owner)
 {
@@ -29,41 +28,14 @@ EntityHeadCollisionBehavior* EntityHeadCollisionBehavior::create(GameObject* own
 EntityHeadCollisionBehavior::EntityHeadCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->headCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->headCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), (this->entity->getEntitySize()).height / 2.0f),
-				1.0f,
-				EntityHeadCollisionBehavior::HeadCollisionRadius,
-				0.0f
-			),
-			(int)PlatformerCollisionType::HeadDetector,
-			false,
-			false
-		);
 
-		Vec2 entityCenter = this->entity->getEntityCenterPoint();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->headCollision->inverseGravity();
-			this->headCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-		else
-		{
-			Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->headCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-		
-		this->addChild(this->headCollision);
-	}
+	this->toggleQueryable(false);
 }
 
 EntityHeadCollisionBehavior::~EntityHeadCollisionBehavior()
@@ -72,10 +44,21 @@ EntityHeadCollisionBehavior::~EntityHeadCollisionBehavior()
 
 void EntityHeadCollisionBehavior::onLoad()
 {
-	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, }, [=](CollisionObject::CollisionData collisionData)
+	this->defer([=]()
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		this->buildHeadCollisionDetector();
+		this->toggleQueryable(true);
 	});
+}
+
+void EntityHeadCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->headCollision != nullptr)
+	{
+		this->headCollision->setPhysicsEnabled(false);
+	}
 }
 
 bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collisonObject)
@@ -92,6 +75,7 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 		switch(next->getCollisionType())
 		{
 			case (int)PlatformerCollisionType::PassThrough:
+			case (int)PlatformerCollisionType::SolidRoof:
 			{
 				return true;
 			}
@@ -103,4 +87,33 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 	}
 
 	return false;
+}
+
+void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
+{
+	if (this->headCollision != nullptr)
+	{
+		return;
+	}
+	
+	this->headCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(
+			Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), EntityHeadCollisionBehavior::HeadCollisionSize)
+		),
+		(int)PlatformerCollisionType::HeadDetector,
+		CollisionObject::Properties(false, false),
+		Color4F::YELLOW
+	);
+
+	Vec2 entityCenter = this->entity->getEntityCenterPoint();
+	Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+
+	this->headCollision->setPosition(offset);
+	
+	this->addChild(this->headCollision);
+
+	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }

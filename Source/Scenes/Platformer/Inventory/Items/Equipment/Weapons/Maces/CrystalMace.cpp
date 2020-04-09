@@ -1,15 +1,15 @@
 #include "CrystalMace.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string CrystalMace::SaveKeyCrystalMace = "crystal-mace";
+const std::string CrystalMace::SaveKey = "crystal-mace";
 
 CrystalMace* CrystalMace::create()
 {
@@ -20,7 +20,7 @@ CrystalMace* CrystalMace::create()
 	return instance;
 }
 
-CrystalMace::CrystalMace() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+CrystalMace::CrystalMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 56, 64, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -46,7 +46,7 @@ Item* CrystalMace::clone()
 
 std::string CrystalMace::getItemName()
 {
-	return CrystalMace::SaveKeyCrystalMace;
+	return CrystalMace::SaveKey;
 }
 
 LocalizedString* CrystalMace::getString()
@@ -56,12 +56,12 @@ LocalizedString* CrystalMace::getString()
 
 std::string CrystalMace::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Maces_CrystalMace;
+	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
 std::string CrystalMace::getSerializationKey()
 {
-	return CrystalMace::SaveKeyCrystalMace;
+	return CrystalMace::SaveKey;
 }
 
 Vec2 CrystalMace::getDisplayOffset()

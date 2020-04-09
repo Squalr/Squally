@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string KillTheTroll::MapKeyQuest = "kill-the-troll";
 
-KillTheTroll* KillTheTroll::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+KillTheTroll* KillTheTroll::create(GameObject* owner, QuestLine* questLine)
 {
-	KillTheTroll* instance = new KillTheTroll(owner, questLine, questTag);
+	KillTheTroll* instance = new KillTheTroll(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-KillTheTroll::KillTheTroll(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, KillTheTroll::MapKeyQuest, questTag, false)
+KillTheTroll::KillTheTroll(GameObject* owner, QuestLine* questLine) : super(owner, questLine, KillTheTroll::MapKeyQuest, false)
 {
 	this->troll = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
@@ -46,7 +46,7 @@ void KillTheTroll::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void KillTheTroll::onActivate(bool isActiveThroughSkippable)

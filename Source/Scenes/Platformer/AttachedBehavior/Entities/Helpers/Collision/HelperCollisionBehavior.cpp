@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string HelperCollisionBehavior::MapKeyAttachedBehavior = "helper-collisions";
+const std::string HelperCollisionBehavior::MapKey = "helper-collisions";
 
 HelperCollisionBehavior* HelperCollisionBehavior::create(GameObject* owner)
 {
@@ -21,4 +21,13 @@ HelperCollisionBehavior::HelperCollisionBehavior(GameObject* owner) : super(owne
 
 HelperCollisionBehavior::~HelperCollisionBehavior()
 {
+}
+
+void HelperCollisionBehavior::onEntityCollisionCreated()
+{
+}
+
+void HelperCollisionBehavior::onDisable()
+{
+	super::onDisable();
 }

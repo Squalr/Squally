@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyBancroft;
+	static const std::string MapKey;
+
+protected:
+	Bancroft(cocos2d::ValueMap& properties);
+	virtual ~Bancroft();
 
 private:
 	typedef PlatformerFriendly super;
-	Bancroft(cocos2d::ValueMap& properties);
-	~Bancroft();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

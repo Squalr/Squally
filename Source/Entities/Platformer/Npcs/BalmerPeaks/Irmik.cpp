@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Irmik::MapKeyIrmik = "irmik";
+const std::string Irmik::MapKey = "irmik";
 HexusOpponentData* Irmik::HexusOpponentDataInstance = nullptr;
 const std::string Irmik::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IRMIK";
 
@@ -32,7 +31,7 @@ Irmik* Irmik::deserialize(ValueMap& properties)
 }
 
 Irmik::Irmik(ValueMap& properties) : super(properties,
-	Irmik::MapKeyIrmik,
+	Irmik::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Emblem,
 	Size(112.0f, 160.0f),

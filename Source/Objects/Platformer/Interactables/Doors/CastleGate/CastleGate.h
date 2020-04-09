@@ -16,7 +16,7 @@ class CastleGate : public HackableObject
 public:
 	static CastleGate* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCastleGate;
+	static const std::string MapKey;
 
 protected:
 	CastleGate(cocos2d::ValueMap& properties);

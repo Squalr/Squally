@@ -1,15 +1,15 @@
 #include "Iron.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Iron::SaveKeyIron = "iron";
+const std::string Iron::SaveKey = "iron";
 
 Iron* Iron::create()
 {
@@ -20,7 +20,7 @@ Iron* Iron::create()
 	return instance;
 }
 
-Iron::Iron() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Iron::Iron() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 18 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Iron::clone()
 
 std::string Iron::getItemName()
 {
-	return Iron::SaveKeyIron;
+	return Iron::SaveKey;
 }
 
 LocalizedString* Iron::getString()
@@ -45,10 +45,10 @@ LocalizedString* Iron::getString()
 
 std::string Iron::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Iron;
+	return ItemResources::Crafting_Smithing_Iron;
 }
 
 std::string Iron::getSerializationKey()
 {
-	return Iron::SaveKeyIron;
+	return Iron::SaveKey;
 }

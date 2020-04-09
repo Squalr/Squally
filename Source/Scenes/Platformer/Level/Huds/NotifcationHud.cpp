@@ -14,12 +14,17 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NotificationEvents.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
-const int NotificationHud::SlotCount = 3;
+const int NotificationHud::SlotCount = 12;
+const float NotificationHud::FadeInDuration = 0.35f;
+const float NotificationHud::SustainDuration = 4.0f;
+const float NotificationHud::FadeOutDuration = 0.5f;
+const float NotificationHud::Cooldown = NotificationHud::FadeInDuration + NotificationHud::SustainDuration + NotificationHud::FadeOutDuration;
 
 using namespace cocos2d;
 
@@ -41,6 +46,7 @@ NotificationHud::NotificationHud()
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->confirmationMenu = ConfirmationMenu::create();
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
@@ -59,7 +65,7 @@ NotificationHud::NotificationHud()
 
 	for (int index = 0; index < NotificationHud::SlotCount; index++)
 	{
-		this->slotCooldowns.push_back(0.0f);
+		this->slotCooldowns.push_back(NotificationHud::Cooldown);
 	}
 
 	this->takeoverNode->addChild(this->backdrop);
@@ -69,6 +75,7 @@ NotificationHud::NotificationHud()
 	this->takeoverNode->addChild(this->okButton);
 	this->addChild(this->takeoverNode);
 	this->addChild(this->notificationsNode);
+	this->addChild(this->confirmationMenu);
 	this->addChild(this->notificationSound);
 }
 
@@ -88,7 +95,7 @@ void NotificationHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	static const Size visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
 	this->menuBack->setPosition(Vec2(0.0f, 0.0f));
@@ -96,7 +103,6 @@ void NotificationHud::initializePositions()
 	this->title->setPosition(Vec2(0.0f, 204.0f));
 	this->description->setPosition(Vec2(0.0f, 32.0f));
 	this->takeoverNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->notificationsNode->setPosition(Vec2(visibleSize.width - 256.0f, 128.0f));
 }
 
 void NotificationHud::initializeListeners()
@@ -119,7 +125,17 @@ void NotificationHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource);
+			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource, args->keepOpen);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
+	{
+		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->confirmationMenu->showMessage(args->confirmationMessage, args->confirmCallback, args->cancelCallback);
 		}
 	}));
 
@@ -144,13 +160,6 @@ void NotificationHud::initializeListeners()
 void NotificationHud::update(float dt)
 {
 	super::update(dt);
-	
-	const int SlotCount = 4;
-	const float OnsetDuration = 0.5f;
-	const float FadeInDuration = 0.35f;
-	const float SustainDuration = 2.0f;
-	const float FadeOutDuration = 0.5f;
-	const float Cooldown = FadeInDuration + SustainDuration + FadeOutDuration;
 
 	for (int index = 0; index < int(this->slotCooldowns.size()); index++)
 	{
@@ -163,14 +172,34 @@ void NotificationHud::update(float dt)
 				Node* notification = this->toProcess.front();
 				this->toProcess.pop();
 
-				notification->setPosition(Vec2(0.0f, float(index) * 256.0f));
+				static const Size visibleSize = Director::getInstance()->getVisibleSize();
+				static const Vec2 LeftPositionBase = Vec2(256.0f, 128.0f);
+				static const Vec2 RightPositionBase = Vec2(visibleSize.width - 256.0f, 128.0f);
+				int halfCount = int(this->slotCooldowns.size() / 2);
+				Vec2 basePosition = index < halfCount ? RightPositionBase : LeftPositionBase;
+
+				notification->setPosition(basePosition + Vec2(0.0f, float(index % halfCount) * 160.0f));
 				
-				notification->runAction(Sequence::create(
-					FadeTo::create(FadeInDuration, 255),
-					DelayTime::create(SustainDuration),
-					FadeTo::create(FadeOutDuration, 0),
-					nullptr
-				));
+				if (bool(notification->getTag()))
+				{
+					// Slight hack. If the keep open flag is set on the object, just never hide the notification.
+					// This is used in situations like combat, where we do not expect to exhaust the full # of possible notifications shown,
+					// So keeping them always visible is fine. This HUD will get disposed when they leave combat anyhow.
+					notification->runAction(Sequence::create(
+						FadeTo::create(FadeInDuration, 255),
+						DelayTime::create(SustainDuration),
+						nullptr
+					));
+				}
+				else
+				{
+					notification->runAction(Sequence::create(
+						FadeTo::create(FadeInDuration, 255),
+						DelayTime::create(SustainDuration),
+						FadeTo::create(FadeOutDuration, 0),
+						nullptr
+					));
+				}
 
 				this->slotCooldowns[index] = 0.0f;
 			}
@@ -187,13 +216,17 @@ void NotificationHud::showNotificationTakeover(LocalizedString* title, Localized
 	
 	this->previousFocus = GameUtils::getFocusedNode();
 	GameUtils::focus(this);
-	this->notificationSound->play();
+
+	if (!this->notificationSound->isPlaying())
+	{
+		this->notificationSound->play();
+	}
 }
 
-void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
+void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen)
 {
 	Node* notification = Node::create();
-	Sprite* itemFrame = Sprite::create(UIResources::Combat_ItemFrame);
+	Sprite* itemFrame = Sprite::create(UIResources::Menus_NotificationMenu_NotificationFrame);
 	Sprite* notificationIcon = Sprite::create(iconResource);
 	LocalizedLabel* titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, title);
 	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, Size(192.0f, 0.0f));
@@ -203,10 +236,9 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	titleLabel->enableOutline(Color4B::BLACK, 2);
 	descriptionLabel->enableOutline(Color4B::BLACK, 2);
 
-	notificationIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
-	notificationIcon->setPosition(Vec2(-160.0f, 0.0f));
+	notificationIcon->setPosition(Vec2(-144.0f, 0.0f));
 	descriptionLabel->setPosition(Vec2(32.0f, 0.0f));
-	titleLabel->setPosition(Vec2(0.0f, 96.0f));
+	titleLabel->setPosition(Vec2(0.0f, 72.0f));
 
 	notification->setOpacity(0);
 
@@ -215,7 +247,13 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	notification->addChild(descriptionLabel);
 	notification->addChild(titleLabel);
 	this->notificationsNode->addChild(notification);
-	this->notificationSound->play();
+
+	if (!this->notificationSound->isPlaying())
+	{
+		this->notificationSound->play();
+	}
+
+	notification->setTag(int(keepOpen));
 
 	this->toProcess.push(notification);
 }

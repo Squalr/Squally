@@ -1,16 +1,16 @@
 #include "Decimal1.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Decimal1::SaveKeyDecimal1 = "decimal-1";
+const std::string Decimal1::SaveKey = "decimal-1";
 
 Decimal1* Decimal1::create()
 {
@@ -21,7 +21,7 @@ Decimal1* Decimal1::create()
 	return instance;
 }
 
-Decimal1::Decimal1() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Decimal1::Decimal1() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* Decimal1::clone()
 
 std::string Decimal1::getItemName()
 {
-	return Decimal1::SaveKeyDecimal1;
+	return Decimal1::SaveKey;
 }
 
 LocalizedString* Decimal1::getString()
@@ -46,12 +46,12 @@ LocalizedString* Decimal1::getString()
 
 std::string Decimal1::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardDecimal;
+	return ItemResources::Collectables_Cards_CardDecimal;
 }
 
 std::string Decimal1::getSerializationKey()
 {
-	return Decimal1::SaveKeyDecimal1;
+	return Decimal1::SaveKey;
 }
 
 std::string Decimal1::getCardKey()

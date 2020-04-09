@@ -18,13 +18,14 @@ public:
 
 	CollisionObject* weaponCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityWeaponCollisionBehavior(GameObject* owner);
-	~EntityWeaponCollisionBehavior();
+	virtual ~EntityWeaponCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

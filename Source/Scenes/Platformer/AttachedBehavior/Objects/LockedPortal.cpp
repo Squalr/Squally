@@ -9,17 +9,20 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/InventoryEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
-const std::string LockedPortal::MapKeyAttachedBehavior = "locked-portal";
-const std::string LockedPortal::MapKeyPropertyItemRequired = "item-required";
+const std::string LockedPortal::MapKey = "locked-portal";
+const std::string LockedPortal::PropertyItemRequired = "item-required";
 
 LockedPortal* LockedPortal::create(GameObject* owner)
 {
@@ -32,16 +35,14 @@ LockedPortal* LockedPortal::create(GameObject* owner)
 
 LockedPortal::LockedPortal(GameObject* owner) : super(owner)
 {
+	this->playerInventory = nullptr;
 	this->portal = dynamic_cast<Portal*>(owner);
 	this->requiredItemName = "";
-	this->playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 
 	if (this->portal == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->addChild(this->playerInventory);
 }
 
 LockedPortal::~LockedPortal()
@@ -50,28 +51,45 @@ LockedPortal::~LockedPortal()
 
 void LockedPortal::onLoad()
 {
-	this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::MapKeyPropertyItemRequired, Value("")).asString();
-
-	if (!this->requiredItemName.empty())
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		this->playerInventory->onInventoryChanged([=]()
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
+			this->playerInventory = entityInventoryBehavior->getInventory();
+			this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::PropertyItemRequired, Value("")).asString();
+
+			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->playerInventory->getSaveKey(), [=](EventCustom* eventCustom)
+			{
+				this->checkForRequiredItem();
+			}));
+
 			this->checkForRequiredItem();
 		});
+	}, Squally::MapKey);
+}
 
-		this->checkForRequiredItem();
+void LockedPortal::onDisable()
+{
+	super::onDisable();
+	
+	if (this->portal != nullptr)
+	{
+		this->portal->unlock();
 	}
 }
 
 void LockedPortal::checkForRequiredItem()
 {
-	std::vector<Item*> items = this->playerInventory->getItems();
-
 	this->portal->lock();
 
-	for (auto it = items.begin(); it != items.end(); it++)
+	if (this->playerInventory == nullptr)
 	{
-		if (*it != nullptr && this->requiredItemName == (*it)->getItemName())
+		return;
+	}
+
+	for (auto item : this->playerInventory->getItems())
+	{
+		if (item != nullptr && this->requiredItemName == item->getItemName())
 		{
 			this->portal->unlock();
 		}

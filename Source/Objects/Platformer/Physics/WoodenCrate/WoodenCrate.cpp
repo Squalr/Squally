@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -20,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenCrate::MapKeyWoodenCrate = "wooden-crate";
+const std::string WoodenCrate::MapKey = "wooden-crate";
 
 WoodenCrate* WoodenCrate::create(ValueMap& properties)
 {
@@ -34,7 +33,7 @@ WoodenCrate* WoodenCrate::create(ValueMap& properties)
 WoodenCrate::WoodenCrate(ValueMap& properties) : super(properties)
 {
 	this->box = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
-	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 154.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->boxCollision = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 154.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 
 	this->boxCollision->addChild(this->box);
 	this->addChild(this->boxCollision);
@@ -48,7 +47,7 @@ void WoodenCrate::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->boxCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->boxCollision->whileCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});

@@ -14,9 +14,13 @@
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Events/HexusEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Music/Tracks/Medieval.h"
+#include "Music/Tracks/Medieval2.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
@@ -25,8 +29,9 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
-#include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Hexus/States/States.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -50,7 +55,7 @@ Hexus* Hexus::create()
 Hexus::Hexus()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
+	
 	this->gameBackground = Sprite::create(HexusResources::Gameboard);
 	this->gameState = GameState::create();
 	this->avatars = Avatars::create();
@@ -108,10 +113,10 @@ Hexus::Hexus()
 	this->debugDisplay = DebugDisplay::create();
 	this->tutorialLayer = Node::create();
 	this->relocateLayer = Node::create();
-	this->helpMenuComponent = HelpMenuComponent::create();
+	this->helpMenu = HelpMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->musicA = Music::createAndAddGlobally(MusicResources::Hexus1, this);
-	this->musicB = Music::createAndAddGlobally(MusicResources::Hexus2, this);
+	this->musicA = Medieval::create();
+	this->musicB = Medieval2::create();
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;
@@ -130,6 +135,7 @@ Hexus::Hexus()
 	this->gameState->passButtonPointer = this->statePass->passButton;
 	this->gameState->lastStandButtonPointer = this->statePass->lastStandButton;
 	this->gameState->claimVictoryButtonPointer = this->statePass->claimVictoryButton;
+	this->gameState->cardPreviewPointer = this->cardPreviewComponent;
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->boardSelection);
@@ -189,7 +195,9 @@ Hexus::Hexus()
 	this->addChild(this->defeatBanner);
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
-	this->addChild(this->helpMenuComponent);
+	this->addChild(this->helpMenu);
+	this->addChild(this->musicA);
+	this->addChild(this->musicB);
 }
 
 Hexus::~Hexus()
@@ -217,19 +225,30 @@ void Hexus::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cardPreviewComponent->setHelpClickCallback([=](Card* card)
+	this->cardPreviewComponent->setHelpClickCallback([=](CardData* cardData)
 	{
 		this->menuBackDrop->setOpacity(196);
-		this->helpMenuComponent->openMenu(card);
-		GameUtils::focus(this->helpMenuComponent);
+		this->helpMenu->openMenu(cardData);
+		GameUtils::focus(this->helpMenu);
 	});
 
-	this->helpMenuComponent->setExitCallback([=]()
+	this->helpMenu->setExitCallback([=]()
 	{
 		this->menuBackDrop->setOpacity(0);
-		this->helpMenuComponent->setVisible(false);
+		this->helpMenu->setVisible(false);
 		GameUtils::focus(this);
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->musicA->pop();
+			this->musicB->pop();
+		}
+	}));
 }
 
 void Hexus::open(HexusOpponentData* opponentData)
@@ -251,9 +270,9 @@ void Hexus::open(HexusOpponentData* opponentData)
 	this->relocateLayer->removeAllChildren();
 	this->tutorialLayer->removeAllChildren();
 
-	for (auto it = opponentData->tutorials.begin(); it != opponentData->tutorials.end(); it++)
+	for (auto next : opponentData->tutorials)
 	{
-		this->tutorialLayer->addChild(*it);
+		this->tutorialLayer->addChild(next);
 	}
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
@@ -287,11 +306,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
 	{
-		MusicPlayer::play(this->musicA, true);
+		this->musicA->push();
 	}
 	else
 	{
-		MusicPlayer::play(this->musicB, true);
+		this->musicB->push();
 	}
 }
 
@@ -301,33 +320,39 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 	this->gameState->enemyDeck->style = opponentData->cardStyle;
 
-	for (auto it = enemyCards.begin(); it != enemyCards.end(); it++)
+	for (auto card : enemyCards)
 	{
-		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, (*it), false), false, 0.0f, false);
+		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, card, false), false, 0.0f, false);
 	}
 }
 
 void Hexus::buildPlayerDeck()
 {
-	EquipmentInventory* equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
-	std::vector<CardData*> cardData = std::vector<CardData*>();
-	std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
-	std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
-
-	for (auto it = cards.begin(); it != cards.end(); it++)
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		std::string key = (*it)->getCardKey();
-
-		if (cardList.find(key) != cardList.end())
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			cardData.push_back(cardList[key]);
-		}
-	}
+			EquipmentInventory* equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+			std::vector<CardData*> cardData = std::vector<CardData*>();
+			std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
+			std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
 
-	this->gameState->playerDeck->style = Card::CardStyle::Earth;
+			for (auto card : cards)
+			{
+				std::string key = card->getCardKey();
 
-	for (auto it = cardData.begin(); it != cardData.end(); it++)
-	{
-		this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
-	}
+				if (cardList.find(key) != cardList.end())
+				{
+					cardData.push_back(cardList[key]);
+				}
+			}
+
+			this->gameState->playerDeck->style = Card::CardStyle::Earth;
+
+			for (auto next : cardData)
+			{
+				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f, false);
+			}
+		});
+	}, Squally::MapKey);
 }

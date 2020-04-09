@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Garrick::MapKeyGarrick = "garrick";
+const std::string Garrick::MapKey = "garrick";
 HexusOpponentData* Garrick::HexusOpponentDataInstance = nullptr;
 const std::string Garrick::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARRICK";
 
@@ -32,7 +31,7 @@ Garrick* Garrick::deserialize(ValueMap& properties)
 }
 
 Garrick::Garrick(ValueMap& properties) : super(properties,
-	Garrick::MapKeyGarrick,
+	Garrick::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,
 	Size(112.0f, 160.0f),

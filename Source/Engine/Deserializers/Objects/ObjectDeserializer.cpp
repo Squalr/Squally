@@ -4,6 +4,7 @@
 
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 #include "Engine/Maps/GameObject.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -13,11 +14,11 @@ ObjectDeserializer::ObjectDeserializer(std::string objectType, std::vector<Prope
 	this->objectType = objectType;
 	this->propertyDeserializers = propertyDeserializers;
 
-	for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
+	for (auto next : this->propertyDeserializers)
 	{
-		if (*it != nullptr)
+		if (next != nullptr)
 		{
-			this->addChild(*it);
+			this->addChild(next);
 		}
 	}
 }
@@ -40,20 +41,25 @@ void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRe
 	{
 		GameObject* object = this->deserializers[name](properties);
 
-		for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
-		{
-			std::string key = GameUtils::getKeyOrDefault(properties, (*it)->getPropertyDeserializerKey(), Value("")).asString();
-
-			if (!key.empty())
-			{
-				(*it)->deserializeProperties(object, properties);
-			}
-		}
+		this->deserializeProperties(object, properties);
 
 		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));
 	}
 	else
 	{
-		CCLOG("Unknown entity encountered: %s", name.c_str());
+		LogUtils::logError("Unknown entity encountered: " + name);
+	}
+}
+
+void ObjectDeserializer::deserializeProperties(GameObject* object, const ValueMap& properties)
+{
+	for (auto next : this->propertyDeserializers)
+	{
+		std::string key = GameUtils::getKeyOrDefault(properties, next->getPropertyDeserializerKey(), Value("")).asString();
+
+		if (!key.empty())
+		{
+			next->deserializeProperties(object, properties);
+		}
 	}
 }

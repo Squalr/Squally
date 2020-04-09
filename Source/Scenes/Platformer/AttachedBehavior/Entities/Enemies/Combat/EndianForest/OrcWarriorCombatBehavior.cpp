@@ -5,14 +5,15 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/Flurry.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string OrcWarriorCombatBehavior::MapKeyAttachedBehavior = "orc-warrior-combat";
+const std::string OrcWarriorCombatBehavior::MapKey = "orc-warrior-combat";
 
 OrcWarriorCombatBehavior* OrcWarriorCombatBehavior::create(GameObject* owner)
 {
@@ -31,6 +32,8 @@ OrcWarriorCombatBehavior::OrcWarriorCombatBehavior(GameObject* owner) : super(ow
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 OrcWarriorCombatBehavior::~OrcWarriorCombatBehavior()
@@ -45,7 +48,8 @@ void OrcWarriorCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		// attackBehavior->registerAttack(Flurry::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -54,7 +58,7 @@ void OrcWarriorCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

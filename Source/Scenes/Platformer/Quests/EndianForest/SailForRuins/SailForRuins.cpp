@@ -9,14 +9,16 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Entities/Platformer/Npcs/EndianForest/Blackbeard.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 
 #include "Resources/SoundResources.h"
 
@@ -25,17 +27,18 @@
 using namespace cocos2d;
 
 const std::string SailForRuins::MapKeyQuest = "sail-for-ruins";
+const std::string SailForRuins::QuestTagShipPortal = "ship-portal";
 
-SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine)
 {
-	SailForRuins* instance = new SailForRuins(owner, questLine, questTag);
+	SailForRuins* instance = new SailForRuins(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SailForRuins::SailForRuins(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SailForRuins::MapKeyQuest, questTag, false)
+SailForRuins::SailForRuins(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SailForRuins::MapKeyQuest, false)
 {
 	this->blackbeard = nullptr;
 	this->squally = nullptr;
@@ -50,7 +53,23 @@ void SailForRuins::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
+
+	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->portal = portal;
+
+		if (questState != QuestState::None)
+		{
+			this->portal->getAttachedBehavior<DisabledPortal>([=](DisabledPortal* disabledPortal)
+			{
+				disabledPortal->enablePortal();
+			});
+
+			this->complete();
+		}
+
+	}, SailForRuins::QuestTagShipPortal);
 
 	ObjectEvents::watchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
 	{
@@ -81,7 +100,7 @@ void SailForRuins::onLoad(QuestState questState)
 				0.5f
 			);
 		});
-	}, Blackbeard::MapKeyBlackbeard);
+	}, Blackbeard::MapKey);
 }
 
 void SailForRuins::onActivate(bool isActiveThroughSkippable)

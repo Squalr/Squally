@@ -16,15 +16,15 @@ public:
 	static DeckCardCountDisplay* create();
 
 protected:
+	DeckCardCountDisplay();
+	virtual ~DeckCardCountDisplay();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	DeckCardCountDisplay();
-	~DeckCardCountDisplay();
-
-	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 
 	cocos2d::LayerColor* playerDeckCardCountFrame;

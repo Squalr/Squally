@@ -1,5 +1,7 @@
 #include "Deck.h"
 
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Input/ClickableNode.h"
@@ -47,9 +49,9 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPl
 
 	this->addChild(this->pad);
 
-	for (auto it = cardData.begin(); it != cardData.end(); it++)
+	for (auto next : cardData)
 	{
-		this->insertCardBottom(Card::create(this->style, *it, isPlayerOwnedDeck), false, 0.0f, false);
+		this->insertCardBottom(Card::create(this->style, next, isPlayerOwnedDeck), false, 0.0f, false);
 	}
 
 	this->addChild(this->cardsNode);
@@ -67,9 +69,9 @@ void Deck::copyTo(Deck* otherDeck)
 		otherDeck->clear();
 		otherDeck->style = this->style;
 
-		for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+		for (auto next : this->deckCards)
 		{
-			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData, this->isPlayerOwnedDeck), false, 0.0f, false);
+			otherDeck->insertCardRandom(Card::create(this->style, next->cardData, this->isPlayerOwnedDeck), false, 0.0f, false);
 		}
 	}
 }
@@ -91,6 +93,23 @@ Card* Deck::drawCard()
 
 	// Note: We let the caller remove the child because it allows for control over positioning
 	return card;
+}
+
+void Deck::setCardScale(float scale, float scaleSpeed)
+{
+	for (auto card : this->deckCards)
+	{
+		if (scaleSpeed > 0.0f)
+		{
+			card->stopAllActions();
+			card->runAction(ScaleTo::create(scaleSpeed, scale));
+		}
+		else
+		{
+			card->setPosition(card->position);
+			card->setScale(scale);
+		}
+	}
 }
 
 bool Deck::hasCards()
@@ -210,9 +229,9 @@ void Deck::doInsertAnimation(Card* card, bool faceUp, float insertDelay)
 
 void Deck::clear()
 {
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+	for (auto card : this->deckCards)
 	{
-		this->cardsNode->removeChild(*it);
+		this->cardsNode->removeChild(card);
 	}
 
 	this->deckCards.clear();
@@ -227,9 +246,9 @@ void Deck::setCardOrder()
 
 	// Fix the Z order of all cards.
 	// Note: Normally we prefer to keep nodes added in the correct order, but removing/re-adding nodes here can inturrupt animations.
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+	for (auto next : this->deckCards)
 	{
-		(*it)->setLocalZOrder(zIndex++);
+		next->setLocalZOrder(zIndex++);
 	}
 }
 
@@ -286,9 +305,37 @@ void Deck::enableTopCardInteraction(std::function<void(Card*)> mouseOverCallback
 
 void Deck::disableInteraction()
 {
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+	for (auto card : this->deckCards)
 	{
-		(*it)->disableInteraction();
-		(*it)->setMouseOverCallback(nullptr);
+		card->disableInteraction();
+		card->setMouseOverCallback(nullptr);
+	}
+}
+
+void Deck::setCardPositions(float cardRepositionDelay, float indexDelay)
+{
+	int index = 0;
+
+	for (auto card : this->deckCards)
+	{
+		card->setLocalZOrder(index);
+		card->position = Vec2::ZERO;
+
+		if (cardRepositionDelay > 0.0f)
+		{
+			card->stopAllActions();
+			card->runAction(Sequence::create(
+					DelayTime::create(index * indexDelay),
+					EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)),
+					nullptr
+			));
+		}
+		else
+		{
+			card->stopAllActions();
+			card->setPosition(card->position);
+		}
+
+		index++;
 	}
 }

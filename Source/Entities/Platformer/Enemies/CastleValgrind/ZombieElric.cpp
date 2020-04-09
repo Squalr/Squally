@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string ZombieElric::MapKeyZombieElric = "zombie-elric";
+const std::string ZombieElric::MapKey = "zombie-elric";
 HexusOpponentData* ZombieElric::HexusOpponentDataInstance = nullptr;
 const std::string ZombieElric::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZOMBIE_ELRIC";
 
@@ -32,7 +31,7 @@ ZombieElric* ZombieElric::deserialize(ValueMap& properties)
 }
 
 ZombieElric::ZombieElric(ValueMap& properties) : super(properties,
-	ZombieElric::MapKeyZombieElric,
+	ZombieElric::MapKey,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
 	Size(114.0f, 208.0f),

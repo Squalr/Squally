@@ -1,10 +1,10 @@
 #include "CardReplaceBanner.h"
 
 #include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
@@ -27,7 +27,7 @@ CardReplaceBanner* CardReplaceBanner::create()
 CardReplaceBanner::CardReplaceBanner()
 {
 	this->penaltyIcon = Sprite::create(HexusResources::CardReplaceIconLarge);
-	this->penaltyIconParticles = ParticleSystemQuad::create(ParticleResources::Hexus_PurpleAuraLarge);
+	this->penaltyIconParticles = SmartParticles::create(ParticleResources::Hexus_PurpleAuraLarge);
 
 	this->addBannerChild(this->penaltyIconParticles);
 	this->addBannerChild(this->penaltyIcon);

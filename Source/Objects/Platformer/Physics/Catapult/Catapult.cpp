@@ -12,7 +12,6 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -31,7 +30,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_APPLY_POWER 1
 
-const std::string Catapult::MapKeyCatapult = "catapult";
+const std::string Catapult::MapKey = "catapult";
 const float Catapult::InteractCooldown = 3.0f;
 const float Catapult::LaunchPowerDefault = 0.90f;
 const Vec2 Catapult::LaunchVelocityBase = Vec2(1200.0f, 1200.0f);
@@ -47,8 +46,8 @@ Catapult* Catapult::create(ValueMap& properties)
 
 Catapult::Catapult(ValueMap& properties) : super(properties)
 {
-	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Catapult_Animations);
-	this->catapultCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, false, false);
+	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::Traps_Catapult_Animations);
+	this->catapultCollision = CollisionObject::create(CollisionObject::createBox(Size(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, false));
 	this->ballAnimationPart = this->catapultAnimations->getAnimationPart("BALL");
 	this->launchPower = Catapult::LaunchPowerDefault;
 	this->interactionEnabled = false;
@@ -132,12 +131,12 @@ void Catapult::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_APPLY_POWER,
-			HackableCode::LateBindData(
-				Catapult::MapKeyCatapult,
+			HackableCode::HackableCodeInfo(
+				Catapult::MapKey,
 				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 				UIResources::Menus_Icons_Meteor,
 				CatapultApplyPowerPreview::create(),
@@ -146,18 +145,19 @@ void Catapult::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
 				},
-				int(HackFlags::Gravity),
-				20.0f
+				int(HackFlags::None),
+				20.0f,
+				0.0f
 			)
 		},
 	};
 
 	auto applyLaunchFunc = &Catapult::applyLaunchPower;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)applyLaunchFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)applyLaunchFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -188,15 +188,21 @@ void Catapult::launchBall()
 
 	this->ballAnimationPart->replaceWithObject(catapultBall, 0.0f, 0.0f);
 	catapultBall->setScale(this->catapultAnimations->getScale());
+	catapultBall->setRotation(0.0f);
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::SetToOwner
+		ObjectEvents::PositionMode::SetToOwner,
+		[&]()
+		{
+		},
+		[&]()
+		{
+			catapultBall = nullptr;
+		}
 	));
-
-	catapultBall->setRotation(0.0f);
 }
 
 NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
@@ -232,3 +238,4 @@ NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 
 	return Vec2(baseSpeed.x, MathUtils::clamp(resultSpeedY, -Catapult::LaunchVelocityBase.y, Catapult::LaunchVelocityBase.y));
 }
+END_NO_OPTIMIZE

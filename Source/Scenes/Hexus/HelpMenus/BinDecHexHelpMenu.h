@@ -7,8 +7,8 @@ namespace cocos2d
 	class Node;
 }
 
-class AutoCard;
-class Card;
+class ToggleCard;
+class CardData;
 class LocalizedLabel;
 
 class BinDecHexHelpMenu : public SmartNode
@@ -16,21 +16,23 @@ class BinDecHexHelpMenu : public SmartNode
 public:
 	static BinDecHexHelpMenu* create();
 
-	void open(Card* card);
+	void open(CardData* cardData);
 
-private:
-	typedef SmartNode super;
+protected:
 	BinDecHexHelpMenu();
-	~BinDecHexHelpMenu();
+	virtual ~BinDecHexHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
+private:
+	typedef SmartNode super;
+
 	LocalizedLabel* description;
-	AutoCard* binCard;
-	AutoCard* decCard;
-	AutoCard* hexCard;
+	ToggleCard* binCard;
+	ToggleCard* decCard;
+	ToggleCard* hexCard;
 	LocalizedLabel* equalsLabelLeft;
 	LocalizedLabel* equalsLabelRight;
 	LocalizedLabel* binHeader;

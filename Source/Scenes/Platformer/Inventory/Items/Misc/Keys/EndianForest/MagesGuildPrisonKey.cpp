@@ -1,15 +1,15 @@
 #include "MagesGuildPrisonKey.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey = "mages-guild-prison-key";
+const std::string MagesGuildPrisonKey::SaveKey = "mages-guild-prison-key";
 
 MagesGuildPrisonKey* MagesGuildPrisonKey::create()
 {
@@ -20,7 +20,7 @@ MagesGuildPrisonKey* MagesGuildPrisonKey::create()
 	return instance;
 }
 
-MagesGuildPrisonKey::MagesGuildPrisonKey() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+MagesGuildPrisonKey::MagesGuildPrisonKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
 {
 }
 
@@ -35,7 +35,7 @@ Item* MagesGuildPrisonKey::clone()
 
 std::string MagesGuildPrisonKey::getItemName()
 {
-	return MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey;
+	return MagesGuildPrisonKey::SaveKey;
 }
 
 LocalizedString* MagesGuildPrisonKey::getString()
@@ -45,11 +45,11 @@ LocalizedString* MagesGuildPrisonKey::getString()
 
 std::string MagesGuildPrisonKey::getIconResource()
 {
-	return ObjectResources::Items_Misc_KEY_2;
+	return ItemResources::Keys_KEY_2;
 }
 
 std::string MagesGuildPrisonKey::getSerializationKey()
 {
-	return MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey;
+	return MagesGuildPrisonKey::SaveKey;
 }
 

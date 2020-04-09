@@ -12,11 +12,11 @@ class EaxPtrJmp : public JmpMarker
 public:
 	static EaxPtrJmp* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEaxPtrJmp;
+	static const std::string MapKey;
 
 protected:
 	EaxPtrJmp(cocos2d::ValueMap& properties);
-	~EaxPtrJmp();
+	virtual ~EaxPtrJmp();
 
 	void onEnter() override;
 	void initializePositions() override;

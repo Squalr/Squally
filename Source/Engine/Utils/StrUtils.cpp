@@ -3,8 +3,10 @@
 #include <algorithm> 
 #include <cctype>
 #include <locale>
-#include<regex>
+#include <regex>
 #include <sstream>
+
+#include "cocos/base/ccUTF8.h"
 
 #ifndef WIN32
 extern "C" {
@@ -12,13 +14,18 @@ extern "C" {
 }
 #endif
 
+using namespace cocos2d;
+
 int StrUtils::unicodeStrLen(std::string str)
 {
 	int len = 0;
 
 	for (auto it = str.begin(); it != str.end(); it++)
 	{
-		len += (*it & 0xc0) != 0x80;
+		if (!StringUtils::isUnicodeCombine(*it))
+		{
+			len += (*it & 0xc0) != 0x80;
+		}
 	}
 
 	return len;
@@ -56,7 +63,7 @@ std::string StrUtils::toStringZeroPad(int value, int zeroCount)
 {
 	std::string result = std::to_string(value);
 
-	while (result.length() < zeroCount)
+	while (int(result.length()) < zeroCount)
 	{
 		result = "0" + result;
 	}
@@ -99,10 +106,10 @@ std::vector<std::string> StrUtils::tokenize(std::string str, std::string delimit
 	// Find first non-delimiter
 	std::string::size_type pos = str.find_first_of(delimiters, lastPos);
 
-	// Insert leading delimiter token
-	if (pos != std::string::npos && lastPos != std::string::npos && lastPos > 0)
+	// Insert leading delimiters
+	if (lastPos != std::string::npos && lastPos > 0)
 	{
-		tokens.push_back(str.substr(lastPos, pos - lastPos));
+		tokens.push_back(str.substr(0, lastPos));
 	}
 
 	while (pos != std::string::npos || pos != lastPos)

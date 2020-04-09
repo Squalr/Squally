@@ -14,7 +14,7 @@ class JmpMarker : public GridObject
 {
 protected:
 	JmpMarker(cocos2d::ValueMap& properties);
-	~JmpMarker();
+	virtual ~JmpMarker();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -28,7 +28,7 @@ protected:
 	cocos2d::Node* markerNode;
 	LocalizedString* assemblyString;
 
-	static const std::string MapKeyOffset;
+	static const std::string PropertyOffset;
 
 private:
 	typedef GridObject super;

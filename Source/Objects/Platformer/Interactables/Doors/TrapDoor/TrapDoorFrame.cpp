@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TrapDoorFrame::MapKeyTrapDoorFrame = "trap-door-frame";
+const std::string TrapDoorFrame::MapKey = "trap-door-frame";
 
 TrapDoorFrame* TrapDoorFrame::create(ValueMap& properties)
 {

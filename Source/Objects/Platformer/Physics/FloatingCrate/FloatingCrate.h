@@ -14,7 +14,7 @@ class FloatingCrate : public DensityObject
 public:
 	static FloatingCrate* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyFloatingCrate;
+	static const std::string MapKey;
 
 protected:
 	FloatingCrate(cocos2d::ValueMap& properties);

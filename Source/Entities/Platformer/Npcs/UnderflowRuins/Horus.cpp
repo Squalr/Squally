@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Horus::MapKeyHorus = "horus";
+const std::string Horus::MapKey = "horus";
 HexusOpponentData* Horus::HexusOpponentDataInstance = nullptr;
 const std::string Horus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HORUS";
 
@@ -32,7 +31,7 @@ Horus* Horus::deserialize(ValueMap& properties)
 }
 
 Horus::Horus(ValueMap& properties) : super(properties,
-	Horus::MapKeyHorus,
+	Horus::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,
 	Size(112.0f, 160.0f),

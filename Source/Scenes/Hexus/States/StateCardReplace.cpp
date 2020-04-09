@@ -98,19 +98,18 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 		this->doneButton->enableInteraction(0);
 		this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
 
-		gameState->playerHand->enableRowCardInteraction();
-
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		this->focusTakeOver->focus({
-			gameState->playerHand
+			gameState->playerHand,
+			gameState->enemyHand,
 		});
 
 		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 192.0f)));
 		gameState->playerHand->setCardScale(0.6f, 0.25f);
 		gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
 		gameState->playerHand->enableRowCardInteraction();
-
+		
 		gameState = gameState;
 		this->initializeCallbacks(gameState);
 	}
@@ -203,9 +202,9 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 		});
 
 		// Insert removed cards at the bottom of the deck
-		for (auto it = this->removedCards.begin(); it != this->removedCards.end(); it++)
+		for (auto card : this->removedCards)
 		{
-			gameState->playerDeck->insertCardBottom(*it, false, 0.5f);
+			gameState->playerDeck->insertCardBottom(card, false, 0.5f);
 		}
 
 		// Get Our Replacement Card

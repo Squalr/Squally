@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityDisarmedBehavior::MapKeyAttachedBehavior = "disarmed";
+const std::string EntityDisarmedBehavior::MapKey = "disarmed";
 
 EntityDisarmedBehavior* EntityDisarmedBehavior::create(GameObject* owner)
 {
@@ -45,4 +45,9 @@ void EntityDisarmedBehavior::onLoad()
 	{
 		mainhand->replaceSprite(UIResources::EmptyImage);
 	}
+}
+
+void EntityDisarmedBehavior::onDisable()
+{
+	super::onDisable();
 }

@@ -7,17 +7,17 @@ class Sound;
 class Punch : public PlatformerAttack
 {
 public:
-	static Punch* create(float attackDuration, float recoverDuration);
+	static Punch* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	Punch(float attackDuration, float recoverDuration);
-	~Punch() = default;
+	Punch(float attackDuration, float recoverDuration, Priority priority);
+	virtual ~Punch();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:

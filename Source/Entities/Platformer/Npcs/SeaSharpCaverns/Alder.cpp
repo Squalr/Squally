@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Alder::MapKeyAlder = "alder";
+const std::string Alder::MapKey = "alder";
 HexusOpponentData* Alder::HexusOpponentDataInstance = nullptr;
 const std::string Alder::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ALDER";
 
@@ -32,7 +31,7 @@ Alder* Alder::deserialize(ValueMap& properties)
 }
 
 Alder::Alder(ValueMap& properties) : super(properties,
-	Alder::MapKeyAlder,
+	Alder::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	Size(112.0f, 160.0f),

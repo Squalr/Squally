@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string IceGolem::MapKeyIceGolem = "ice-golem";
+const std::string IceGolem::MapKey = "ice-golem";
 HexusOpponentData* IceGolem::HexusOpponentDataInstance = nullptr;
 const std::string IceGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ICE_GOLEM";
 
@@ -32,10 +31,10 @@ IceGolem* IceGolem::deserialize(ValueMap& properties)
 }
 
 IceGolem::IceGolem(ValueMap& properties) : super(properties,
-	IceGolem::MapKeyIceGolem,
+	IceGolem::MapKey,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
-	Size(1680.0f, 996.0f),
+	Size(256.0f, 224.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -32,17 +32,22 @@ public:
 	void setDisplayType(AutoCard::DisplayType displayType, bool triggerCallback = true);
 	void toggleNextDisplayType();
 	void togglePreviousDisplayType();
+	void setAttack(int attack);
+	int getAttack();
+	void setCardScale(float cardScale);
 
 	AutoCard* autoCard;
 
-private:
-	typedef SmartNode super;
+protected:
 	ToggleCard(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown);
-	~ToggleCard();
+	virtual ~ToggleCard();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
 
 	void updateUpDownDisplays();
 

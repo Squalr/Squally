@@ -1,6 +1,6 @@
 #include "HexusCard.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 using namespace cocos2d;
 

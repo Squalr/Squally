@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EdiInitializer::MapKeyEdiInitializer = "edi";
+const std::string EdiInitializer::MapKey = "edi";
 
 EdiInitializer* EdiInitializer::create(ValueMap& properties)
 {

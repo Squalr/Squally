@@ -121,7 +121,14 @@ void MatrixLetter::despawn()
 
 void MatrixLetter::randomizeLetter()
 {
-	Size spriteSheetSize = this->getTexture()->getContentSize();
+	Texture2D* texture = this->getTexture();
+
+	if (texture == nullptr)
+	{
+		return;
+	}
+
+	Size spriteSheetSize = texture->getContentSize();
 
 	float x = float(RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::LetterSize) - 1) *  MatrixLetter::LetterSize);
 	float y = float(RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::LetterSize) - 1) *  MatrixLetter::LetterSize);

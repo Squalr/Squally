@@ -14,7 +14,7 @@ class CipherStateBase : public SmartNode
 {
 protected:
 	CipherStateBase(CipherState::StateType stateType);
-	~CipherStateBase();
+	virtual ~CipherStateBase();
 
 	void initializeListeners() override;
 	virtual void onAnyStateChange(CipherState* cipherState);

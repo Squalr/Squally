@@ -10,6 +10,9 @@ public:
 	static StateSourceCardStaged* create();
 
 protected:
+	StateSourceCardStaged();
+	virtual ~StateSourceCardStaged();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -17,8 +20,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateSourceCardStaged();
-	~StateSourceCardStaged();
 
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);

@@ -1103,7 +1103,7 @@ void MPE_PolyFill(MPEPolyContext* PolyContext, MPEPolyNode* Node)
 {
   MPEPolyTriangle* Triangle = MPE_PushTriangle(PolyContext, Node->Prev->Point, Node->Point, Node->Next->Point);
 
-  // TODO: should copy the ConstrainedEdge Value from neighbor Triangles
+  // should copy the ConstrainedEdge Value from neighbor Triangles
   //       for now ConstrainedEdge values are copied during the legalize
   // static int count;
   // printf("POLY %i\n", count++);

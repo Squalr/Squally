@@ -1,17 +1,17 @@
 #include "HealthPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ThrowHealthPotion.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string HealthPotion::SaveKeyHealthPotion = "health-potion";
-const float HealthPotion::HealPercentage = 0.4f;
+const std::string HealthPotion::SaveKey = "health-potion";
+const float HealthPotion::HealPercentage = 0.75f;
 
 HealthPotion* HealthPotion::create()
 {
@@ -22,7 +22,7 @@ HealthPotion* HealthPotion::create()
 	return instance;
 }
 
-HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 0.15f))
+HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
 {
 }
 
@@ -37,7 +37,7 @@ Item* HealthPotion::clone()
 
 std::string HealthPotion::getItemName()
 {
-	return HealthPotion::SaveKeyHealthPotion;
+	return HealthPotion::SaveKey;
 }
 
 LocalizedString* HealthPotion::getString()
@@ -47,15 +47,15 @@ LocalizedString* HealthPotion::getString()
 
 std::string HealthPotion::getIconResource()
 {
-	return ObjectResources::Items_Consumables_Potions_HEALTH_2;
+	return ItemResources::Consumables_Potions_HealthPotion;
 }
 
 std::string HealthPotion::getSerializationKey()
 {
-	return HealthPotion::SaveKeyHealthPotion;
+	return HealthPotion::SaveKey;
 }
 
 PlatformerAttack* HealthPotion::createAssociatedAttack()
 {
-	return ThrowHealthPotion::create();
+	return ThrowHealthPotion::create(PlatformerAttack::Priority::Common, HealthPotion::HealPercentage, this->getIconResource());
 }

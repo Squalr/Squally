@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Cypress::MapKeyCypress = "cypress";
+const std::string Cypress::MapKey = "cypress";
 HexusOpponentData* Cypress::HexusOpponentDataInstance = nullptr;
 const std::string Cypress::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYPRESS";
 
@@ -32,7 +31,7 @@ Cypress* Cypress::deserialize(ValueMap& properties)
 }
 
 Cypress::Cypress(ValueMap& properties) : super(properties,
-	Cypress::MapKeyCypress,
+	Cypress::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,
 	Size(112.0f, 160.0f),

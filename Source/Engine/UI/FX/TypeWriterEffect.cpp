@@ -27,16 +27,24 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 	}
 
 	int max = label->getStringLength();
+	int maxRealIndex = 0;
 
 	// We have to add events the old way -- LocalizedLabels inherit from a cocos label, not a SmartNode
 	label->getEventDispatcher()->addCustomEventListener(LocalizationEvents::BeforeLocaleChangeEvent, [=](EventCustom* args)
 	{
-		for (int i = 0; i < max; i++)
+		if (label == nullptr)
 		{
-			if (label->getLetter(i) != nullptr)
+			return;
+		}
+
+		for (int index = 0; index < max; index++)
+		{
+			Sprite* letter = label->getLetter(index);
+
+			if (letter != nullptr)
 			{
-				label->getLetter(i)->stopAllActions();
-				label->getLetter(i)->setTextureAtlas(nullptr);
+				letter->stopAllActions();
+				letter->setTextureAtlas(nullptr);
 			}
 		}
 
@@ -44,19 +52,29 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 		label->_letters.clear();
 	});
 
+	// ZAC: Unicode string length fucks up with Zalgo text. Not working as intended.
+	/*
 	int strLen = StrUtils::unicodeStrLen(label->localizedString->getString());
-	int strLenEn = StrUtils::unicodeStrLen(label->localizedString->getStringEn());
+	int strLenEn = StrUtils::unicodeStrLen(label->localizedString->getStringByLanguage(LanguageType::ENGLISH));
 
 	// I don't know how fast characters should appear in other locales -- just normalize them to the speed of english
+	// This has the added benefit that if anybody ever speed runs this, they can do it in any language.
 	delayPerLetter = (strLen <= 0) ? delayPerLetter : (delayPerLetter * ((float)strLenEn / (float)strLen));
+	*/
 
-	for (int i = 0; i < max; i++)
+	for (int index = 0; index < max; index++)
 	{
-		if (label->getLetter(i) != nullptr)
+		Sprite* letter = label->getLetter(index);
+
+		if (letter != nullptr)
 		{
-			label->getLetter(i)->setOpacity(0);
-			label->getLetter(i)->runAction(Sequence::create(
-				DelayTime::create((float)i * delayPerLetter),
+			int realIndex = letter->getTag();
+
+			maxRealIndex = std::max(maxRealIndex, realIndex);
+
+			letter->setOpacity(0);
+			letter->runAction(Sequence::create(
+				DelayTime::create((float)realIndex * delayPerLetter),
 				FadeTo::create(0.1f, 255),
 				nullptr
 			));
@@ -66,7 +84,7 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 	if (onEffectFinishedCallback != nullptr)
 	{
 		label->runAction(Sequence::create(
-			DelayTime::create((float)max * delayPerLetter),
+			DelayTime::create((float)maxRealIndex * delayPerLetter),
 			CallFunc::create([=]()
 			{
 				onEffectFinishedCallback();
@@ -85,11 +103,15 @@ void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
 
 	int max = label->getStringLength();
 
-	for (int i = 0; i < max; i++)
+	for (int index = 0; index < max; index++)
 	{
-		if (label->getLetter(i) != nullptr)
+		Sprite* letter = label->getLetter(index);
+
+		if (letter != nullptr)
 		{
-			label->getLetter(i)->stopAllActions();
+			letter->stopAllActions();
 		}
 	}
+	
+	label->removeLetters();
 }

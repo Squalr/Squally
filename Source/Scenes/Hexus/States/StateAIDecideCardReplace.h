@@ -11,6 +11,9 @@ public:
 	static StateAIDecideCardReplace* create();
 
 protected:
+	StateAIDecideCardReplace();
+	virtual ~StateAIDecideCardReplace();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -18,8 +21,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateAIDecideCardReplace();
-	~StateAIDecideCardReplace();
 
 	void replaceCard(Card* card, GameState* gameState);
 

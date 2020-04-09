@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopkeeperBehaviorGroup::MapKeyAttachedBehavior = "shopkeeper";
+const std::string ShopkeeperBehaviorGroup::MapKey = "shopkeeper";
 
 ShopkeeperBehaviorGroup* ShopkeeperBehaviorGroup::create(GameObject* owner)
 {

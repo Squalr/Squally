@@ -4,14 +4,15 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 
 #include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
-const std::string LookAtSquallyBehavior::MapKeyAttachedBehavior = "face-squally";
+const std::string LookAtSquallyBehavior::MapKey = "face-squally";
+const std::string LookAtSquallyBehavior::MapKeyAlias = "look-at-squally";
 
 LookAtSquallyBehavior* LookAtSquallyBehavior::create(GameObject* owner)
 {
@@ -24,9 +25,9 @@ LookAtSquallyBehavior* LookAtSquallyBehavior::create(GameObject* owner)
 
 LookAtSquallyBehavior::LookAtSquallyBehavior(GameObject* owner) : super(owner)
 {
-	this->npc = dynamic_cast<PlatformerFriendly*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
-	if (this->npc == nullptr)
+	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
@@ -43,7 +44,9 @@ void LookAtSquallyBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
+
+	this->scheduleUpdate();
 }
 
 void LookAtSquallyBehavior::update(float dt)
@@ -55,12 +58,12 @@ void LookAtSquallyBehavior::update(float dt)
 		return;
 	}
 
-	if (this->npc->getPositionX() > GameUtils::getWorldCoords(this->squally).x)
+	if (this->entity->getPositionX() > GameUtils::getWorldCoords(this->squally).x)
 	{
-		this->npc->getAnimations()->setFlippedX(true);
+		this->entity->getAnimations()->setFlippedX(true);
 	}
 	else
 	{
-		this->npc->getAnimations()->setFlippedX(false);
+		this->entity->getAnimations()->setFlippedX(false);
 	}
 }

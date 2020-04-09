@@ -2,15 +2,13 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string GoblinGruntBoar::MapKeyGoblinGruntBoar = "goblin-grunt-boar";
+const std::string GoblinGruntBoar::MapKey = "goblin-grunt-boar";
 
 GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 {
@@ -22,7 +20,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 }
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : super(properties,
-	GoblinGruntBoar::MapKeyGoblinGruntBoar,
+	GoblinGruntBoar::MapKey,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	Size(128.0f, 296.0f),
@@ -37,7 +35,7 @@ GoblinGruntBoar::~GoblinGruntBoar()
 
 Vec2 GoblinGruntBoar::getDialogueOffset()
 {
-	return Vec2(-32.0f, -128.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* GoblinGruntBoar::getEntityName()

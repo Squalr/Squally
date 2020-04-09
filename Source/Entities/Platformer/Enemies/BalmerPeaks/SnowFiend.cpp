@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SnowFiend::MapKeySnowFiend = "snow-fiend";
+const std::string SnowFiend::MapKey = "snow-fiend";
 HexusOpponentData* SnowFiend::HexusOpponentDataInstance = nullptr;
 const std::string SnowFiend::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SNOW_FIEND";
 
@@ -32,7 +31,7 @@ SnowFiend* SnowFiend::deserialize(ValueMap& properties)
 }
 
 SnowFiend::SnowFiend(ValueMap& properties) : super(properties,
-	SnowFiend::MapKeySnowFiend,
+	SnowFiend::MapKey,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
 	Size(420.0f, 420.0f),

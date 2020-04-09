@@ -87,12 +87,12 @@ Node* HexusEvents::BuildPreviewNode(PlatformerEntity* entity)
 	}
 
 	Node* wrapper = Node::create();
-	PlatformerEntity* softClone = entity->softClone();
+	PlatformerEntity* uiClone = entity->uiClone();
 
-	if (softClone != nullptr)
+	if (uiClone != nullptr)
 	{
-		wrapper->addChild(softClone);
-		softClone->setPosition(Vec2(0.0f, -(softClone->getEntitySize() * softClone->getScale()).height / 2.0f));
+		wrapper->addChild(uiClone);
+		uiClone->setPosition(Vec2(0.0f, -(uiClone->getEntitySize() * uiClone->getScale()).height / 2.0f));
 	}
 
 	return wrapper;

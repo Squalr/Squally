@@ -17,14 +17,16 @@ class VictoryMenu : public SmartNode
 public:
 	static VictoryMenu* create();
 
-private:
-	typedef SmartNode super;
+protected:
 	VictoryMenu();
-	virtual ~VictoryMenu() = default;
+	virtual ~VictoryMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	cocos2d::Sprite* segfaultMenu;
 	LocalizedLabel* titleLabel;

@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string FireElemental::MapKeyFireElemental = "fire-elemental";
+const std::string FireElemental::MapKey = "fire-elemental";
 HexusOpponentData* FireElemental::HexusOpponentDataInstance = nullptr;
 const std::string FireElemental::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FIRE_ELEMENTAL";
 
@@ -32,7 +31,7 @@ FireElemental* FireElemental::deserialize(ValueMap& properties)
 }
 
 FireElemental::FireElemental(ValueMap& properties) : super(properties,
-	FireElemental::MapKeyFireElemental,
+	FireElemental::MapKey,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
 	Size(820.0f, 1480.0f),

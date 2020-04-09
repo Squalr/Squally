@@ -2,6 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+class PlatformerDialogueBox;
 class TimelineEntry;
 class StatsBars;
 
@@ -12,17 +13,20 @@ public:
 
 	void bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::vector<TimelineEntry*> enemyEntries);
 
-private:
-	typedef Hud super;
+protected:
 	CombatHud();
 	virtual ~CombatHud();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef Hud super;
 	
 	cocos2d::Node* playerPartyStatsNode;
 	cocos2d::Node* enemyPartyStatsNode;
+	PlatformerDialogueBox* dialogueBox;
 
 	std::vector<StatsBars*> playerPartyStatsBars;
 	std::vector<StatsBars*> enemyPartyStatsBars;

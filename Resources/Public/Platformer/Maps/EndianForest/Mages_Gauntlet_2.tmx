@@ -5,7 +5,7 @@
    <property name="background" value="DarkForestSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
    <property name="type" value="meta"/>
   </properties>
@@ -447,8 +447,9 @@
   </properties>
   <object id="755" name="aster" type="entity" x="1364.05" y="938.031" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="beat-tutorial-B"/>
     <property name="quest-line" value="hexus-gauntlet"/>
    </properties>

@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityPickPocketBehavior::MapKeyAttachedBehavior = "pick-pocket";
+const std::string EntityPickPocketBehavior::MapKey = "pick-pocket";
 const std::string EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed = "WAS_PICKPOCKETED";
 const std::string EntityPickPocketBehavior::MapKeyPocketPool = "pocket-pool";
 
@@ -74,7 +74,7 @@ void EntityPickPocketBehavior::onLoad()
 			},
 			[=]()
 			{
-				if (this->currentHelperName == Guano::MapKeyGuano && !this->wasPickPocketed())
+				if (this->currentHelperName == Guano::MapKey && !this->wasPickPocketed())
 				{
 					CursorSets::setActiveCursorSet(CursorSets::PickPocket);
 				}
@@ -96,7 +96,7 @@ void EntityPickPocketBehavior::onLoad()
 		{
 			this->currentHelperName = value.asString();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ValueMap valueMap = ValueMap();
 
@@ -115,10 +115,14 @@ void EntityPickPocketBehavior::onLoad()
 	this->pocketPoolDeserializer->deserialize(&deserializeArgs);
 }
 
+void EntityPickPocketBehavior::onDisable()
+{
+	super::onDisable();
+}
 
 void EntityPickPocketBehavior::attemptPickPocket()
 {
-	if (this->currentHelperName == Guano::MapKeyGuano && !this->wasPickPocketed())
+	if (this->currentHelperName == Guano::MapKey && !this->wasPickPocketed())
 	{
 		HelperEvents::TriggerRequestPickPocket(HelperEvents::RequestPickPocketArgs(
 			this->entity,

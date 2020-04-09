@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string FriendlyCollisionBehavior::MapKeyAttachedBehavior = "friendly-collisions";
+const std::string FriendlyCollisionBehavior::MapKey = "friendly-collisions";
 
 FriendlyCollisionBehavior* FriendlyCollisionBehavior::create(GameObject* owner)
 {
@@ -47,4 +47,13 @@ void FriendlyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
 	});
+}
+
+void FriendlyCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
+void FriendlyCollisionBehavior::onEntityCollisionCreated()
+{
 }

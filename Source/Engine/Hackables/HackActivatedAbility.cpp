@@ -6,16 +6,16 @@
 
 using namespace cocos2d;
 
-HackActivatedAbility* HackActivatedAbility::create(std::function<void()> onActivate, std::function<void()> onDeactivate, int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
+HackActivatedAbility* HackActivatedAbility::create(std::function<void()> onActivate, std::function<void()> onDeactivate, int hackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
 {
-	HackActivatedAbility* instance = new HackActivatedAbility(onActivate, onDeactivate, requiredEq, duration, iconResource, name, hackablePreview, clippy);
+	HackActivatedAbility* instance = new HackActivatedAbility(onActivate, onDeactivate, hackFlags, duration, iconResource, name, hackablePreview, clippy);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackActivatedAbility::HackActivatedAbility(std::function<void()> onActivate, std::function<void()> onDeactivate, int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy) : HackableAttribute(requiredEq, duration, iconResource, name, hackablePreview)
+HackActivatedAbility::HackActivatedAbility(std::function<void()> onActivate, std::function<void()> onDeactivate, int hackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy) : HackableAttribute(hackFlags, duration, 0.0f, iconResource, name, hackablePreview)
 {
 	this->onActivate = onActivate;
 	this->onDeactivate = onDeactivate;

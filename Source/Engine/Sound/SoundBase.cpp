@@ -3,9 +3,12 @@
 #include "cocos/audio/include/AudioEngine.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -16,23 +19,22 @@ using namespace cocos_experimental;
 const int SoundBase::INVALID_ID = -1;
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
-SoundBase::SoundBase(std::string soundResource) : super()
+SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
 {
 	this->activeTrackId = SoundBase::INVALID_ID;
 	this->soundResource = soundResource;
 	this->enableCameraDistanceFade = false;
 	this->isFading = false;
+	this->hasVolumeOverride = false;
 	this->fadeMultiplier = 1.0f;
 	this->distanceMultiplier = 1.0f;
 	this->customMultiplier = 1.0f;
-	this->fadeOutTick = 0;
 	this->onFadeOutCallback = nullptr;
-	this->cachedCoords = Vec2::ZERO;
+	this->destroyOnFadeOut = false;
 }
 
 SoundBase::~SoundBase()
 {
-	this->stop();
 }
 
 void SoundBase::onEnter()
@@ -44,9 +46,7 @@ void SoundBase::onEnter()
 
 void SoundBase::update(float dt)
 {
-	// super::update(dt);
-
-	this->updateDistanceFade();
+	super::update(dt);
 
 	if (this->isFading)
 	{
@@ -64,13 +64,13 @@ void SoundBase::update(float dt)
 			}
 			case AudioEngine::AudioState::PLAYING:
 			{
-				const float fadeDuration = 2.0f;
+				const float fadeDuration = 1.0f;
 				
 				this->fadeMultiplier = MathUtils::clamp(this->fadeMultiplier - (dt / fadeDuration), 0.0f, 1.0f);
 
 				if (this->fadeMultiplier == 0.0f)
 				{
-					AudioEngine::pause(this->activeTrackId);
+					this->stop();
 
 					if (this->onFadeOutCallback != nullptr)
 					{
@@ -92,7 +92,7 @@ void SoundBase::update(float dt)
 
 void SoundBase::play(bool repeat, float startDelay)
 {
-	if (this->soundResource.empty() || AudioEngine::getState(this->activeTrackId) == AudioEngine::AudioState::PLAYING)
+	if (this->soundResource.empty())
 	{
 		return;
 	}
@@ -122,69 +122,47 @@ void SoundBase::play(bool repeat, float startDelay)
 void SoundBase::unpause()
 {
 	this->fadeMultiplier = 1.0f;
+
 	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 	AudioEngine::resume(this->activeTrackId);
 }
 
-void SoundBase::stop()
+bool SoundBase::isPlaying()
+{
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PLAYING:
+		{
+			return true;
+		}
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::PAUSED:
+		default:
+		{
+			return false;
+		}
+	}
+}
+
+void SoundBase::freeze()
 {
 	AudioEngine::pause(this->activeTrackId);
 }
 
-void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
+void SoundBase::stop()
 {
-	this->isFading = true;
-	this->onFadeOutCallback = onFadeOutCallback;
+	AudioEngine::stop(this->activeTrackId);
 }
 
-void SoundBase::setCustomMultiplier(float customMultiplier)
+void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool hasPriority)
 {
-	this->customMultiplier = customMultiplier;
-}
-
-void SoundBase::toggleCameraDistanceFade(bool enableCameraDistanceFade)
-{
-	this->enableCameraDistanceFade = enableCameraDistanceFade;
-
-	// Reset distance multiplier on disable
-	if (!this->enableCameraDistanceFade)
-	{
-		this->distanceMultiplier = 1.0f;
-	}
-}
-
-void SoundBase::setSoundResource(std::string soundResource)
-{
-	this->soundResource = soundResource;
-}
-
-void SoundBase::updateVolume()
-{
-	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
-}
-
-float SoundBase::getVolume()
-{
-	float configVolume = this->getConfigVolume();
-
-	return MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume);
-}
-
-void SoundBase::updateDistanceFade()
-{
-	if (!this->enableCameraDistanceFade)
+	if (this->isFading && !hasPriority)
 	{
 		return;
 	}
-	
-	Vec2 thisCoords = GameUtils::getWorldCoords(this);
-
-	if (thisCoords == this->cachedCoords)
-	{
-		return;
-	}
-
-	this->cachedCoords = thisCoords;
 
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
@@ -196,30 +174,63 @@ void SoundBase::updateDistanceFade()
 		case AudioEngine::AudioState::PAUSED:
 		{
 			// Not playing, do nothing
+			if (this->onFadeOutCallback != nullptr)
+			{
+				this->onFadeOutCallback();
+			}
+			
 			break;
 		}
 		case AudioEngine::AudioState::PLAYING:
 		{
-			Vec2 thisCoords = GameUtils::getWorldCoords(this);
-			Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
-			Size dropOffDistance = Director::getInstance()->getVisibleSize() + Size(480.0f, 480.0f);
-
-			// The object is visible on the screen! No sound dropoff.
-			if (((thisCoords.x - cameraPosition.x) * (thisCoords.x - cameraPosition.x)) / (dropOffDistance.width / 2.0f * dropOffDistance.width / 2.0f) +
-				((thisCoords.y - cameraPosition.y) * (thisCoords.y - cameraPosition.y)) / (dropOffDistance.height / 2.0f * dropOffDistance.height / 2.0f) <= 1.0f)
-			{
-				this->distanceMultiplier = 1.0f;
-				this->updateVolume();
-				return;
-			}
-
-			Vec2 soundFadeOffOrigin = AlgoUtils::pointOnEllipse(thisCoords, dropOffDistance.width / 2.0f, dropOffDistance.height / 2.0f, cameraPosition);
-			float distance = soundFadeOffOrigin.distance(cameraPosition);
-			
-			this->distanceMultiplier = MathUtils::clamp(1.0f / (1.0f + 0.0025f * std::pow(distance, 1.25f)), 0.0f, 1.0f);
-			this->updateVolume();
-
+			this->isFading = true;
+			this->onFadeOutCallback = onFadeOutCallback;
 			break;
 		}
 	}
+}
+
+void SoundBase::setCustomMultiplier(float customMultiplier)
+{
+	this->customMultiplier = customMultiplier;
+}
+
+void SoundBase::setSoundResource(std::string soundResource)
+{
+	this->soundResource = soundResource;
+}
+
+std::string SoundBase::getSoundResource()
+{
+	return this->soundResource;
+}
+
+void SoundBase::updateVolume()
+{
+	if (this->hasVolumeOverride)
+	{
+		return;
+	}
+
+	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+}
+
+void SoundBase::setVolumeOverride(float volume)
+{
+	this->hasVolumeOverride = true;
+
+	AudioEngine::setVolume(this->activeTrackId, volume);
+}
+
+void SoundBase::clearVolumeOverride()
+{
+	this->hasVolumeOverride = false;
+	this->updateVolume();
+}
+
+float SoundBase::getVolume()
+{
+	float configVolume = this->getConfigVolume();
+
+	return MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume);
 }

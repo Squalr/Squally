@@ -30,7 +30,7 @@ Collectable* Collectable::create(ValueMap& properties)
 Collectable::Collectable(ValueMap& properties) : super(properties)
 {
 	this->collectableNode = Node::create();
-	this->collectableCollision = CollisionObject::create(PhysicsBody::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, true, false);
+	this->collectableCollision = CollisionObject::create(CollisionObject::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, CollisionObject::Properties(true, false));
 	this->collectionEvents = std::vector<std::function<void()>>();
 	this->isCollected = false;
 
@@ -56,7 +56,7 @@ void Collectable::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionObject::CollisionData data)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
@@ -67,9 +67,9 @@ void Collectable::initializeListeners()
 		{
 			this->disableCollection();
 
-			for (auto it = this->collectionEvents.begin(); it != this->collectionEvents.end(); it++)
+			for (auto callback : this->collectionEvents)
 			{
-				(*it)();
+				callback();
 			}
 
 			this->saveObjectState(Collectable::SaveKeyIsCollected, Value(true));

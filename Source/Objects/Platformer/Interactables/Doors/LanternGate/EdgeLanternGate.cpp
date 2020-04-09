@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string EdgeLanternGate::MapKeyEdgeLanternGate = "edge-lantern-gate";
+const std::string EdgeLanternGate::MapKey = "edge-lantern-gate";
 
 EdgeLanternGate* EdgeLanternGate::create(ValueMap& properties)
 {

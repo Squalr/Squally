@@ -29,16 +29,15 @@ public:
 		{
 		}
 	};
-
-	static std::string MapKeyTypeIsHollow;
+	
 	static std::string MapKeyTypeTexture;
+	static std::string PropertyKeyClearAnchor;
 
 protected:
 	TextureObject(cocos2d::ValueMap& properties, TextureData terrainData);
-	~TextureObject();
+	virtual ~TextureObject();
 
 	TextureData terrainData;
-	bool isHollow;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;
@@ -50,6 +49,8 @@ private:
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void buildTextures();
+
+	bool useClipping;
 
 	cocos2d::Node* infillTexturesNode;
 };

@@ -20,6 +20,7 @@ public:
 	virtual void removeEventListener(cocos2d::EventListener* listener);
 	virtual void removeEventListenerByTag(std::string tag);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
+	void addGlobalEventListener(cocos2d::EventListener* listener);
 	cocos2d::EventListener* whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
@@ -39,7 +40,7 @@ protected:
 	void onReenter() override; // Called on parent change
 	virtual void onDeveloperModeEnable(int debugLevel);
 	virtual void onDeveloperModeDisable();
-	virtual void onHackerModeEnable(int hackFlags);
+	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
 	bool isDeveloperModeEnabled();
 	virtual void initializePositions();
@@ -47,11 +48,14 @@ protected:
 	virtual void removeAllListeners();
 	virtual void removeNonGlobalListeners();
 	void defer(std::function<void()> task);
+	void scheduleEvery(std::function<void()> task, float seconds);
 
 	bool hackermodeEnabled;
 	
 private:
 	typedef cocos2d::Node super;
+
+	static unsigned long long TaskId;
 
 	bool optimizationHasGlobalListener;
 	bool optimizationHasListener;

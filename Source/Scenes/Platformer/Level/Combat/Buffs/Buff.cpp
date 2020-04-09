@@ -9,6 +9,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Events/CombatEvents.h"
 
 using namespace cocos2d;
@@ -19,7 +20,8 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData
 	this->target = target;
 	this->buffData = buffData;
 	this->hackables = std::vector<HackableCode*>();
-	this->showClippy = false;
+	this->elapsedTime = 0.0f;
+	this->wasRemoved = false;
 }
 
 Buff::~Buff()
@@ -31,6 +33,13 @@ void Buff::onEnter()
 	super::onEnter();
 
 	this->registerHackables();
+}
+
+void Buff::onExit()
+{
+	super::onExit();
+	
+	this->unregisterHackables();
 }
 
 void Buff::initializeListeners()
@@ -47,23 +56,63 @@ void Buff::initializeListeners()
 		this->removeBuff();
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventBuffTimeElapsed, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BeforeDamageOrHealingDeltArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingDeltArgs*>(eventCustom->getUserData());
+		CombatEvents::BuffTimeElapsedArgs* args = static_cast<CombatEvents::BuffTimeElapsedArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		if (args != nullptr)
 		{
-			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); });
+			this->elapse(args->dt);
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyTimelineSpeed, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BeforeDamageOrHealingTakenArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingTakenArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, args->blocked, [=](){ args->handle(); });
+			this->onModifyTimelineSpeed(args->speed, [=](){ args->handle(); });
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		{
+			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageTaken, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->target && !args->isHandled())
+		{
+			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		{
+			this->onBeforeHealingDelt(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingTaken, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->target && !args->isHandled())
+		{
+			this->onBeforeHealingTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
 		}
 	}));
 
@@ -78,17 +127,37 @@ void Buff::initializeListeners()
 	}));
 }
 
-void Buff::enableClippy()
-{
-	this->showClippy = true;
-}
-
-void Buff::disableClippy()
-{
-	this->showClippy = false;
-}
-
 void Buff::registerHackables()
+{
+}
+
+void Buff::registerClippy(Clippy* clippy)
+{
+	if (this->target != nullptr)
+	{
+		this->target->registerClippy(clippy);
+	}
+}
+
+void Buff::elapse(float dt)
+{
+	if (this->buffData.duration > 0.0f)
+	{
+		this->elapsedTime += dt;
+
+		if (this->elapsedTime >= this->buffData.duration)
+		{
+			this->removeBuff();
+		}
+	}
+}
+
+float Buff::getRemainingDuration()
+{
+	return MathUtils::clamp(this->buffData.duration - this->elapsedTime, 0.0f, this->buffData.duration);
+}
+
+void Buff::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
 }
 
@@ -96,11 +165,19 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
+void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 
-void Buff::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+{
+}
+
+void Buff::onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+{
+}
+
+void Buff::onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 
@@ -111,9 +188,9 @@ void Buff::unregisterHackables()
 		return;
 	}
 
-	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
+	for (auto next : this->hackables)
 	{
-		this->target->unregisterCode(*it);
+		this->target->unregisterCode(next);
 	}
 }
 
@@ -129,6 +206,15 @@ void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
 
 void Buff::removeBuff()
 {
+	if (this->wasRemoved)
+	{
+		return;
+	}
+	
+	this->wasRemoved = true;
+	
+	CombatEvents::TriggerBuffRemoved(CombatEvents::BuffRemovedArgs(this->target, this));
+
 	if (this->removeBuffCallback != nullptr)
 	{
 		this->removeBuffCallback();

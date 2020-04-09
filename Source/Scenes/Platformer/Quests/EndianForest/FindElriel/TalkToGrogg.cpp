@@ -11,12 +11,15 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Enemies/EndianForest/KingGrogg.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -26,16 +29,16 @@ using namespace cocos2d;
 
 const std::string TalkToGrogg::MapKeyQuest = "talk-to-grogg";
 
-TalkToGrogg* TalkToGrogg::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToGrogg* TalkToGrogg::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToGrogg* instance = new TalkToGrogg(owner, questLine, questTag);
+	TalkToGrogg* instance = new TalkToGrogg(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToGrogg::TalkToGrogg(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToGrogg::MapKeyQuest, questTag, false)
+TalkToGrogg::TalkToGrogg(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToGrogg::MapKeyQuest, false)
 {
 	this->guano = nullptr;
 	this->kingGrogg = nullptr;
@@ -49,32 +52,40 @@ TalkToGrogg::~TalkToGrogg()
 
 void TalkToGrogg::onLoad(QuestState questState)
 {
+	// Ret-con to allow players to hack water stuff TODO: Delete after 4/x/2020
+	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
+
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
-	}, Guano::MapKeyGuano);
+	}, Guano::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<KingGrogg>(this, [=](KingGrogg* kingGrogg)
 	{
 		this->kingGrogg = kingGrogg;
-	}, KingGrogg::MapKeyKingGrogg);
+		
+		this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
+		{
+			agroBehavior->disable();
+		});
+	}, KingGrogg::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void TalkToGrogg::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequence();
+		this->runCinematicSequencePart1();
 	});
 }
 
@@ -87,46 +98,84 @@ void TalkToGrogg::onSkipped()
 	this->removeAllListeners();
 }
 
-void TalkToGrogg::runCinematicSequence()
+void TalkToGrogg::runCinematicSequencePart1()
 {
-	if (this->kingGrogg == nullptr)
-	{
-		return;
-	}
-	
-	this->kingGrogg->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		// Pre-text chain
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Queen_A_HowDoWeGetToTheRuins::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->kingGrogg, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
-			false
-		));
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_A_WhoDares::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart2();
+		},
+		SoundResources::Platformer_Entities_Orc_GruntDeep1,
+		false
+	));
+}
 
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards::create()
-				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create() }),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->kingGrogg, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
+void TalkToGrogg::runCinematicSequencePart2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_B_RescueElf::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart3();
+		},
+		SoundResources::Platformer_Entities_Orc_GruntDeep2,
+		false
+	));
+}
+
+void TalkToGrogg::runCinematicSequencePart3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_C_SpreadForcesThin::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart4();
+		},
+		SoundResources::Platformer_Entities_Orc_Grunt1,
+		false
+	));
+}
+
+void TalkToGrogg::runCinematicSequencePart4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_D_MarchesTowards::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
 			{
-				this->complete();
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
-			true
-		));
-	});
+				agroBehavior->enable();
+				agroBehavior->toggleWarnOnAgro(false);
+				agroBehavior->setAgroRangeX(65535.0f);
+				agroBehavior->setAgroRangeY(65535.0f);
+			});
+		},
+		SoundResources::Platformer_Entities_Orc_OrcLaugh1,
+		true
+	));
 }

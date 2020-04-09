@@ -83,6 +83,15 @@ def main():
 		'.tif',
 	), "Platformer/Objects")
 
+	# ItemResources
+	createResourceFile("ItemResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Platformer/Items")
+
 	# FXResources
 	createResourceFile("FXResources", (
 		'.scml',

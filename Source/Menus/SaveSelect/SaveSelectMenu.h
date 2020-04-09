@@ -4,13 +4,15 @@
 
 namespace cocos2d
 {
-	class LayerColor;
 	class Sprite;
 }
 
 class ClickableNode;
 class ClickableTextNode;
 class ConfirmationMenu;
+class LocalizedLabel;
+class PlatformerEntity;
+class PlatformerEntityDeserializer;
 
 class SaveSelectMenu : public GlobalScene
 {
@@ -30,6 +32,9 @@ private:
 	void buildSaveButtons();
 	ClickableTextNode* buildSaveButton(int profileId);
 	ClickableNode* buildDeleteButton(int profileId);
+	cocos2d::Node* buildSaveGameContent(int profileId);
+	cocos2d::Node* buildEntityFrame(PlatformerEntity* entity, cocos2d::Vec2 offsetAdjustment, int eq);
+	std::string getBackgroundResourceForCurrentSaveProfile();
 	void loadSave();
 	void goBack();
 
@@ -41,8 +46,9 @@ private:
 	ClickableTextNode* saveGameButton2;
 	ClickableNode* closeButton;
 	ClickableTextNode* returnButton;
-	cocos2d::LayerColor* backdrop;
+	LocalizedLabel* titleLabel;
 	ConfirmationMenu* confirmationMenu;
+	PlatformerEntityDeserializer* platformerEntityDeserializer;
 
 	static SaveSelectMenu* instance;
 };

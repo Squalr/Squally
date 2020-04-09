@@ -41,7 +41,6 @@ RadialMenu* RadialMenu::create()
 RadialMenu::RadialMenu()
 {
 	this->activeHackableObject = nullptr;
-	this->hackFlags = 0;
 
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
@@ -74,16 +73,6 @@ void RadialMenu::initializePositions()
 void RadialMenu::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->hackFlags = args->hackFlags;
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
 	{
@@ -150,30 +139,38 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->radialMenuItems->removeAllChildren();
 
 	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
+	std::vector<HackableAttribute*> filteredAttributes = std::vector<HackableAttribute*>();
 
+	for (auto attribute : this->activeHackableObject->hackableList)
+	{
+		if ((attribute->getRequiredHackFlag() & HackableObject::GetHackFlags()) == attribute->getRequiredHackFlag())
+		{
+			filteredAttributes.push_back(attribute);
+		}
+	}
+	
 	if (preview != nullptr)
 	{
 		this->previewNode->addChild(preview);
 	}
 
 	// +1 from the exit node, which is always present
-	float angleStep = (float(M_PI) * 2.0f) / ((float)(this->activeHackableObject->hackableList.size() + 1));
+	float angleStep = (float(M_PI) * 2.0f) / ((float)(filteredAttributes.size() + 1));
 	float currentAngle = 3.0f * float(M_PI) / 2.0f;
 
 	// Create return button
-	Vec2 nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
+	Vec2 nextDataIconPosition = Vec2(-std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 	Node* returnRadialNode = this->createRadialNode(UIResources::Menus_Icons_Cross, -1, nextDataIconPosition, currentAngle, Strings::Menus_Exit::create(), [=]() { this->close(); });
 	currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * float(M_PI));
 
 	this->radialMenuItems->addChild(returnRadialNode);
 
-	// Draw data icons
-	for (auto it = this->activeHackableObject->hackableList.begin(); it != this->activeHackableObject->hackableList.end(); it++)
+	// Draw icons
+	for (auto hackable : filteredAttributes)
 	{
-		HackableAttribute* hackable = *it;
 		LocalizedString* name = hackable->getName();
 
-		nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
+		nextDataIconPosition = Vec2(-std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 
 		ClickableNode* menuNode = this->createRadialNode(
 			hackable->getIconResource(),
@@ -195,7 +192,6 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 	const Size padding = Size(4.0f, 0.0f);
 
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
-	//Sprite* radialNodeIcon = Sprite::create(this->hackFlags >= requiredLevel ? iconResource : (StrUtils::rtrim(iconResource, ".png", true) + "_gray.png"));
 	ClickableNode* clickableNode = ClickableNode::create(Node::create(), Node::create());
 	Node* labelNode = Node::create();
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);

@@ -7,11 +7,12 @@ class IceTexture : public TextureObject
 public:
 	static IceTexture* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTextureType;
+	static const std::string MapKey;
+
+protected:
+	IceTexture(cocos2d::ValueMap& properties);
+	virtual ~IceTexture();
 
 private:
 	typedef TextureObject super;
-
-	IceTexture(cocos2d::ValueMap& properties);
-	~IceTexture();
 };

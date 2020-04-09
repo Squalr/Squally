@@ -1,15 +1,15 @@
 #include "CandySword.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string CandySword::SaveKeyCandySword = "candy-sword";
+const std::string CandySword::SaveKey = "candy-sword";
 
 CandySword* CandySword::create()
 {
@@ -20,7 +20,7 @@ CandySword* CandySword::create()
 	return instance;
 }
 
-CandySword::CandySword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+CandySword::CandySword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 32, 40, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ CandySword::CandySword() : super(CurrencyInventory::create({{ IOU::getIdentifier
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* CandySword::clone()
 
 std::string CandySword::getItemName()
 {
-	return CandySword::SaveKeyCandySword;
+	return CandySword::SaveKey;
 }
 
 LocalizedString* CandySword::getString()
@@ -56,10 +56,10 @@ LocalizedString* CandySword::getString()
 
 std::string CandySword::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Swords_CandySword;
+	return ItemResources::Equipment_Weapons_Special_CandySword;
 }
 
 std::string CandySword::getSerializationKey()
 {
-	return CandySword::SaveKeyCandySword;
+	return CandySword::SaveKey;
 }

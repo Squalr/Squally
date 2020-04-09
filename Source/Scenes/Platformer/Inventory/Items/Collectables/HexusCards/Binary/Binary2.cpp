@@ -1,16 +1,16 @@
 #include "Binary2.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Binary2::SaveKeyBinary2 = "binary-2";
+const std::string Binary2::SaveKey = "binary-2";
 
 Binary2* Binary2::create()
 {
@@ -21,7 +21,7 @@ Binary2* Binary2::create()
 	return instance;
 }
 
-Binary2::Binary2() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Binary2::Binary2() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* Binary2::clone()
 
 std::string Binary2::getItemName()
 {
-	return Binary2::SaveKeyBinary2;
+	return Binary2::SaveKey;
 }
 
 LocalizedString* Binary2::getString()
@@ -46,12 +46,12 @@ LocalizedString* Binary2::getString()
 
 std::string Binary2::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardBinary;
+	return ItemResources::Collectables_Cards_CardBinary;
 }
 
 std::string Binary2::getSerializationKey()
 {
-	return Binary2::SaveKeyBinary2;
+	return Binary2::SaveKey;
 }
 
 std::string Binary2::getCardKey()

@@ -18,12 +18,13 @@ class ShopItem : public GameObject
 public:
 	static ShopItem* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyShopItem;
-	static const std::string MapKeyPropertyShopPool;
+	static const std::string MapKey;
+	static const std::string PropertyShopPool;
 
 protected:
 	ShopItem(cocos2d::ValueMap& properties);
-	~ShopItem();
+	virtual ~ShopItem();
+	
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -32,6 +33,7 @@ private:
 	typedef GameObject super;
 
 	void sellItem();
+	void removeShopItem();
 
 	ItemPreview* itemPreview;
 	Item* item;

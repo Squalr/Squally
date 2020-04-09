@@ -8,7 +8,6 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -26,7 +25,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string SpikeLog::MapKeySpikeLog = "spiked-log";
+const std::string SpikeLog::MapKey = "spiked-log";
 
 SpikeLog* SpikeLog::create(ValueMap& properties)
 {
@@ -41,8 +40,8 @@ SpikeLog::SpikeLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_00);
-	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->logCollision = CollisionObject::create(CollisionObject::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
@@ -83,30 +82,31 @@ void SpikeLog::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
-				SpikeLog::MapKeySpikeLog,
+			HackableCode::HackableCodeInfo(
+				SpikeLog::MapKey,
 				Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
-				UIResources::Menus_Icons_BleedingLimb,
+				UIResources::Menus_Icons_Banner,
 				SpikeLogSetRotationPreview::create(),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
-				16.0f
+				16.0f,
+				0.0f
 			)
 		},
 	};
 
 	auto incrementAnimationFunc = &SpikeLog::incrementSpikeLogAnimation;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -175,3 +175,4 @@ NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 
 	return count;
 }
+END_NO_OPTIMIZE

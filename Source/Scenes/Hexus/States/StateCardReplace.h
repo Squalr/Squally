@@ -13,6 +13,11 @@ public:
 	static StateCardReplace* create();
 
 protected:
+	StateCardReplace();
+	virtual ~StateCardReplace();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -20,11 +25,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateCardReplace();
-	~StateCardReplace();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void onEndReplaceCards(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* cardToReplace, GameState* gameState);

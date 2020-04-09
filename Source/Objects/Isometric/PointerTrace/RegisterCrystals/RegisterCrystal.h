@@ -15,7 +15,7 @@ class RegisterCrystal : public GridObject
 {
 protected:
 	RegisterCrystal(cocos2d::ValueMap& properties);
-	~RegisterCrystal();
+	virtual ~RegisterCrystal();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -29,10 +29,10 @@ protected:
 	int getValue();
 	int getOffset();
 
-	static const std::string MapKeyRegisterInstruction;
-	static const std::string MapKeyRegisterIsPointer;
-	static const std::string MapKeyRegisterOffset;
-	static const std::string MapKeyRegisterValue;
+	static const std::string PropertyRegisterInstruction;
+	static const std::string PropertyRegisterIsPointer;
+	static const std::string PropertyRegisterOffset;
+	static const std::string PropertyRegisterValue;
 
 	cocos2d::Node* crystalContainerNode;
 	cocos2d::Node* crystalNode;

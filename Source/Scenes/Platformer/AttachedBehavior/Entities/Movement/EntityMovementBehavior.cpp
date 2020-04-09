@@ -2,12 +2,16 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityJumpCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -15,10 +19,11 @@
 
 using namespace cocos2d;
 
-const std::string EntityMovementBehavior::MapKeyAttachedBehavior = "entity-movement";
-const float EntityMovementBehavior::MoveAcceleration = 5800.0f;
-const Vec2 EntityMovementBehavior::SwimAcceleration = Vec2(8000.0f, 420.0f);
-const float EntityMovementBehavior::JumpVelocity = 7680.0f;
+const std::string EntityMovementBehavior::MapKey = "entity-movement";
+const float EntityMovementBehavior::DefaultWalkAcceleration = 4800.0f;
+const float EntityMovementBehavior::DefaultRunAcceleration = 5600.0f;
+const Vec2 EntityMovementBehavior::DefaultSwimAcceleration = Vec2(8000.0f, 420.0f);
+const float EntityMovementBehavior::DefaultJumpVelocity = 7680.0f;
 
 EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner)
 {
@@ -32,10 +37,49 @@ EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner)
 EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->moveAcceleration = EntityMovementBehavior::DefaultRunAcceleration;
+	this->swimAcceleration = EntityMovementBehavior::DefaultSwimAcceleration;
+	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
+	this->jumpSound = nullptr;
+	this->swimSounds = std::vector<WorldSound*>();
+	this->walkSounds = std::vector<WorldSound*>();
+	this->swimSoundIndex = 0;
+	this->walkSoundIndex = 0;
+	this->movementCollision = nullptr;
+	this->groundCollision = nullptr;
+	this->jumpBehavior = nullptr;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->jumpSound = WorldSound::create(this->entity->getJumpSound());
+
+		for (auto next : this->entity->getSwimSounds())
+		{
+			WorldSound* swimSound = WorldSound::create(next);
+
+			swimSound->setCustomMultiplier(0.25f);
+			
+			this->swimSounds.push_back(swimSound);
+
+			this->addChild(swimSound);
+		}
+
+		for (auto next : this->entity->getWalkSounds())
+		{
+			WorldSound* walkSound = WorldSound::create(next);
+
+			walkSound->setCustomMultiplier(0.25f);
+			
+			this->walkSounds.push_back(walkSound);
+
+			this->addChild(walkSound);
+		}
+
+		this->addChild(this->jumpSound);
 	}
 
 	this->preCinematicPosition = Vec2::ZERO;
@@ -48,8 +92,6 @@ EntityMovementBehavior::~EntityMovementBehavior()
 
 void EntityMovementBehavior::onLoad()
 {
-	this->scheduleUpdate();
-
 	this->entity->listenForStateWrite(StateKeys::CinematicDestinationX, [=](Value value)
 	{
 		this->preCinematicPosition = this->entity->getPosition();
@@ -59,16 +101,35 @@ void EntityMovementBehavior::onLoad()
 	{
 		this->prePatrolPosition = this->entity->getPosition();
 	});
+	
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* movementCollision)
+	{
+		this->movementCollision = movementCollision;
+	});
+
+	this->entity->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* groundCollision)
+	{
+		this->groundCollision = groundCollision;
+	});
+
+	this->entity->watchForAttachedBehavior<EntityJumpCollisionBehavior>([=](EntityJumpCollisionBehavior* jumpBehavior)
+	{
+		this->jumpBehavior = jumpBehavior;
+	});
+
+	this->scheduleUpdate();
+}
+
+void EntityMovementBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	EntityMovementCollisionBehavior* movementCollision = this->entity->getAttachedBehavior<EntityMovementCollisionBehavior>();
-	EntityJumpCollisionBehavior* jumpBehavior = this->entity->getAttachedBehavior<EntityJumpCollisionBehavior>();
-
-	if (movementCollision == nullptr)
+	if (this->movementCollision == nullptr || this->groundCollision == nullptr || this->jumpBehavior == nullptr)
 	{
 		return;
 	}
@@ -95,38 +156,75 @@ void EntityMovementBehavior::update(float dt)
 		this->applyCinematicMovement(&movement);
 	}
 
-	Vec2 velocity = movementCollision->getVelocity();
+	Vec2 velocity = this->movementCollision->getVelocity();
 
-	bool canJump = jumpBehavior == nullptr ? false : jumpBehavior->canJump();
+	bool canJump = this->jumpBehavior == nullptr ? false : this->jumpBehavior->canJump();
+	PlatformerEntity::ControlState controlState = this->entity->getControlState();
 
-	switch (this->entity->controlState)
+	switch (controlState)
 	{
 		default:
 		case PlatformerEntity::ControlState::Normal:
 		{
-			bool hasLeftCollision = movementCollision->hasLeftWallCollision();
-			bool hasRightCollision = movementCollision->hasRightWallCollision();
+			this->movementCollision->enableNormalPhysics();
+			bool hasLeftCollision = this->movementCollision->hasLeftWallCollision();
+			bool hasRightCollision = this->movementCollision->hasRightWallCollision();
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
-			// Move in the x direction unless hitting a wall while not standing on anything (this->entity prevents wall jumps)
+			// Only apply movement velocity if not running into a wall. Prevents visual jitter.
 			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
 			{
-				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
+				velocity.x += movement.x * this->moveAcceleration * dt;
 			}
 
 			if (movement.y > 0.0f && canJump)
 			{
-				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
+				velocity.y = movement.y * this->jumpVelocity;
 
-				this->entity->performJumpAnimation();
+				if (!this->jumpSound->isPlaying())
+				{
+					this->jumpSound->play();
+				}
+
+				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(0.85f));
+			}
+
+			if (std::abs(movement.y) < 0.15f)
+			{
+				if (std::abs(movement.x) > 0.15f)
+				{
+					this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.65f));
+
+					if (this->groundCollision->isOnGround()
+						&& !this->walkSounds.empty()
+						&& !std::any_of(this->walkSounds.begin(), this->walkSounds.end(), [=](WorldSound* walkSound)
+						{
+							return walkSound->isPlaying();
+						}))
+					{
+						this->walkSoundIndex = MathUtils::wrappingNormalize(this->walkSoundIndex + 1, 0, this->walkSounds.size() - 1);
+						this->walkSounds[this->walkSoundIndex]->play();
+					}
+				}
+				else
+				{
+					if (this->entity->getAnimations()->getCurrentAnimation() == "Walk")
+					{
+						this->entity->getAnimations()->clearAnimationPriority();
+					}
+					
+					this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(0.5f));
+				}
 			}
 
 			break;
 		}
 		case PlatformerEntity::ControlState::Swimming:
 		{
-			const float minSpeed = EntityMovementBehavior::SwimAcceleration.y;
+			this->movementCollision->enableWaterPhysics();
+
+			const float minSpeed = this->swimAcceleration.y;
 
 			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
 			if (velocity.y < minSpeed && movement.y > 0.0f)
@@ -138,32 +236,34 @@ void EntityMovementBehavior::update(float dt)
 				velocity.y = -minSpeed;
 			}
 
-			velocity.x += movement.x * EntityMovementBehavior::SwimAcceleration.x * dt;
-			velocity.y += movement.y * EntityMovementBehavior::SwimAcceleration.y * dt;
+			velocity.x += movement.x * this->swimAcceleration.x * dt;
+			velocity.y += movement.y * this->swimAcceleration.y * dt;
 
 			if (movement != Vec2::ZERO)
 			{
-				this->entity->performSwimAnimation();
+				if (!this->swimSounds.empty() && !std::any_of(this->swimSounds.begin(), this->swimSounds.end(), [=](WorldSound* swimSound)
+					{
+						return swimSound->isPlaying();
+					}))
+				{
+					this->swimSoundIndex = MathUtils::wrappingNormalize(this->swimSoundIndex + 1, 0, this->swimSounds.size() - 1);
+					this->swimSounds[this->swimSoundIndex]->play();
+				}
+
+				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat,SmartAnimationNode::AnimParams(0.75f));
+			}
+			else if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getSwimAnimation())
+			{
+				this->entity->getAnimations()->clearAnimationPriority();
+				this->entity->getAnimations()->playAnimation();
 			}
 
 			break;
 		}
 	}
-
-	if (std::abs(movement.y) < 0.15f)
-	{
-		if (std::abs(movement.x) > 0.15f)
-		{
-			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
-		}
-		else
-		{
-			this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
-		}
-	}
 	
 	// Save velocity
-	movementCollision->setVelocity(velocity);
+	this->movementCollision->setVelocity(velocity);
 
 	this->entity->setState(StateKeys::VelocityX, Value(velocity.x), false);
 	this->entity->setState(StateKeys::VelocityY, Value(velocity.y), false);
@@ -173,11 +273,11 @@ void EntityMovementBehavior::update(float dt)
 	{
 		if (movement.x < 0.0f)
 		{
-			this->entity->getAnimations()->setFlippedX(true ^ this->entity->isFlippedY());
+			this->entity->getAnimations()->setFlippedX(true);
 		}
 		else if (movement.x > 0.0f)
 		{
-			this->entity->getAnimations()->setFlippedX(false ^ this->entity->isFlippedY());
+			this->entity->getAnimations()->setFlippedX(false);
 		}
 	}
 
@@ -202,6 +302,29 @@ void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 		{
 			movement->x = 1.0f;
 		}
+	}
+}
+
+void EntityMovementBehavior::setMoveAcceleration(float moveAcceleration)
+{
+	this->moveAcceleration = moveAcceleration;
+}
+
+void EntityMovementBehavior::setSwimAcceleration(cocos2d::Vec2 swimAcceleration)
+{
+	this->swimAcceleration = swimAcceleration;
+}
+
+void EntityMovementBehavior::setJumpVelocity(float jumpVelocity)
+{
+	this->jumpVelocity = jumpVelocity;
+}
+
+void EntityMovementBehavior::cancelWaterSfx()
+{
+	for (auto next : this->swimSounds)
+	{
+		next->stop();
 	}
 }
 

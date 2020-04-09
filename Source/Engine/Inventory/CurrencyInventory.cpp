@@ -29,9 +29,9 @@ CurrencyInventory::CurrencyInventory(std::map<std::string, int> currency, std::s
 	this->currencyMap = ValueMap();
 	this->load();
 
-	for (auto it = currency.begin(); it != currency.end(); it++)
+	for (auto next : currency)
 	{
-		this->currencyMap[(*it).first] = Value((*it).second);
+		this->currencyMap[next.first] = Value(next.second);
 	}
 }
 
@@ -101,7 +101,7 @@ void CurrencyInventory::save()
 {
 	if (!this->saveKey.empty())
 	{
-		SaveManager::saveProfileData(this->saveKey, Value(this->currencyMap));
+		SaveManager::SaveProfileData(this->saveKey, Value(this->currencyMap));
 		
 		InventoryEvents::TriggerCurrencyInventoryInstanceChanged(InventoryEvents::CurrencyInventoryInstanceChangedArgs(this, this->saveKey));
 	}

@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -33,8 +32,8 @@ CatapultBall* CatapultBall::create(const ValueMap& properties, Vec2 velocity)
 
 CatapultBall::CatapultBall(const ValueMap& properties, Vec2 velocity) : super(properties)
 {
-	this->ball = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
-	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(48.0f), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->ball = Sprite::create(ObjectResources::Traps_Catapult_BALL);
+	this->ballCollision = CollisionObject::create(CollisionObject::createCircle(48.0f), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 	this->velocity = velocity;
 	this->isAccelerating = true;
 

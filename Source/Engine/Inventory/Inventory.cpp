@@ -32,7 +32,6 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->capacity = capacity;
 	this->items = std::vector<Item*>();
 	this->itemsNode = Node::create();
-	this->onChangedEvent = nullptr;
 
 	this->load();
 
@@ -59,11 +58,6 @@ void Inventory::initializeListeners()
 		if (args != nullptr && args->instance != this)
 		{
 			this->load();
-
-			if (this->onChangedEvent != nullptr)
-			{
-				this->onChangedEvent();
-			}
 		}
 	}));
 }
@@ -73,9 +67,9 @@ ValueMap Inventory::serialize()
 	ValueMap saveData = ValueMap();
 	ValueVector itemData = ValueVector();
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		itemData.push_back(Value((*it)->getSerializationKey()));
+		itemData.push_back(Value(next->getSerializationKey()));
 	}
 
 	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
@@ -91,9 +85,9 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
 	ValueVector itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueVector())).asValueVector();
 
-	for (auto it = itemData.begin(); it != itemData.end(); it++)
+	for (auto next : itemData)
 	{
-		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs((*it).asString(), [=](Item* item)
+		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(next.asString(), [=](Item* item)
 		{
 			this->forceInsert(item, false);
 		}));
@@ -110,10 +104,15 @@ void Inventory::save()
 {
 	if (!this->saveKey.empty())
 	{
-		SaveManager::saveProfileData(this->saveKey, Value(this->serialize()));
+		SaveManager::SaveProfileData(this->saveKey, Value(this->serialize()));
 		
 		InventoryEvents::TriggerInventoryInstanceChanged(InventoryEvents::InventoryInstanceChangedArgs(this, this->saveKey));
 	}
+}
+
+std::string Inventory::getSaveKey()
+{
+	return this->saveKey;
 }
 
 void Inventory::load()
@@ -122,11 +121,6 @@ void Inventory::load()
 	{
 		this->deserialize(SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
 	}
-}
-
-void Inventory::onInventoryChanged(std::function<void()> onChangedEvent)
-{
-	this->onChangedEvent = onChangedEvent;
 }
 
 std::vector<Item*> Inventory::getItems()
@@ -246,7 +240,7 @@ void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::
 
 	if (otherItem != nullptr)
 	{
-		if (std::find(other->items.begin(), other->items.end(), otherItem) == this->items.end())
+		if (std::find(other->items.begin(), other->items.end(), otherItem) == other->items.end())
 		{
 			failTransaction();
 			return;

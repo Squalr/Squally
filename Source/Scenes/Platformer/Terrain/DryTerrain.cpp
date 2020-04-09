@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/DryTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string DryTerrain::MapKeyTerrainType = "dry";
+const std::string DryTerrain::MapKey = "dry";
 
 DryTerrain* DryTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ DryTerrain* DryTerrain::create(ValueMap& properties)
 DryTerrain::DryTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return DryTexture::create(transformedProps);
+		},
 		0.5f,
-		DryTerrain::MapKeyTerrainType,
+		DryTerrain::MapKey,
 		TextureResources::DryTexture,
 		TerrainResources::Dry_Top,
 		TerrainResources::Dry_TopLeft,

@@ -65,7 +65,7 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->debugHitbox = DrawNode::create();
 
 	this->clickSound = Sound::create();
-	this->mouseOverSound = Sound::create(SoundResources::ButtonRollover1);
+	this->mouseOverSound = Sound::create(SoundResources::Menus_ButtonRollover1);
 
 	this->content = content;
 	this->contentSelected = contentSelected;
@@ -147,14 +147,14 @@ void ClickableNode::setDebugDrawPosition()
 	this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
 }
 
+bool ClickableNode::canInteract()
+{
+	return this->mouseClickEvent != nullptr && (this->interactionEnabled && (this->allowCollisionWhenInvisible || GameUtils::isVisible(this)));
+}
+
 void ClickableNode::interact()
 {
-	if (!this->interactionEnabled || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
-	{
-		return;
-	}
-
-	if (this->mouseClickEvent != nullptr)
+	if (this->canInteract())
 	{
 		this->mouseClickEvent(nullptr);
 	}
@@ -325,7 +325,9 @@ void ClickableNode::clearState()
 
 void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
-	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
+	if (!this->interactionEnabled ||
+		(this->modifier != EventKeyboard::KeyCode::KEY_NONE && this->modifier != Input::getActiveModifiers()) ||
+		(!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
 	}

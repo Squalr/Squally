@@ -12,7 +12,7 @@ public:
 
 protected:
 	LanguageTab();
-	~LanguageTab();
+	virtual ~LanguageTab();
 
 private:
 	typedef SmartNode super;

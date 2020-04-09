@@ -10,6 +10,7 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
+class ConfirmationMenu;
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
@@ -21,19 +22,19 @@ public:
 	static NotificationHud* create();
 
 protected:
-	void update(float dt) override;
-
-private:
-	typedef Hud super;
 	NotificationHud();
-	~NotificationHud();
+	virtual ~NotificationHud();
 
 	void onEnter() override;
+	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
+private:
+	typedef Hud super;
+
 	void showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource);
-	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource);
+	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen);
 	void closeNotificationMenu();
 
 	cocos2d::Node* previousFocus;
@@ -45,11 +46,15 @@ private:
 	LocalizedLabel* description;
 	cocos2d::Node* takeoverNode;
 	cocos2d::Node* notificationsNode;
+	ConfirmationMenu* confirmationMenu;
 	Sound* notificationSound;
 
 	std::queue<cocos2d::Node*> toProcess;
 	std::vector<float> slotCooldowns;
 
 	static const int SlotCount;
-	static const int SfxCooldown;
+	static const float FadeInDuration;
+	static const float SustainDuration;
+	static const float FadeOutDuration;
+	static const float Cooldown;
 };

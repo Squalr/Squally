@@ -20,15 +20,17 @@ public:
 
 	void setStatsTarget(PlatformerEntity* target);
 
-private:
-	typedef SmartNode super;
+protected:
 	EqDisplay();
-	~EqDisplay();
+	virtual ~EqDisplay();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 
 	EntityEqBehavior* eqBehavior;
 	PlatformerEntity* target;

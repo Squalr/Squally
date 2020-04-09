@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyExterminator;
+	static const std::string MapKey;
+	
+protected:
+	Exterminator(cocos2d::ValueMap& properties);
+	virtual ~Exterminator();
 
 private:
 	typedef PlatformerEnemy super;
-	Exterminator(cocos2d::ValueMap& properties);
-	~Exterminator();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

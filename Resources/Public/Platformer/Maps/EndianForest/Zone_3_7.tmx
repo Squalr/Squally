@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="778">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="74" name="rocks">
+  <properties>
+   <property name="depth" type="float" value="-3200"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="777" name="Forest/Background/GreenForestRocks1" type="decor" x="-4781.69" y="397.3" width="13333.3" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="15" name="trees-far1">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="776" name="Forest/Background/GreenForestGround2" type="decor" x="-4789.69" y="-938.7" width="13333.3" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="69" name="decor -14">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="745" name="Generic/TreeHome1" type="decor" x="1849.97" y="-172.258" width="1824" height="1969">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="729" name="dark-grass" type="terrain" x="2466.64" y="4518.79">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="decor -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="730" name="Generic/TownFencePost" type="decor" x="2361.28" y="1277.83" width="263" height="1118">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="731" name="Generic/TownFencePost" type="decor" x="2771" y="1276.53" width="263" height="1118">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7912" name="bridge -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="798" name="wood" type="terrain" x="2514.25" y="1793.81">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7911" name="bridge -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="798" name="wood" type="terrain" x="2514.25" y="1812.81">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="791" name="bridge -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="798" name="wood" type="terrain" x="2514.25" y="1836.81">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="trees-mid">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="774" name="Forest/Background/GreenForestGround3" type="decor" x="-5505.81" y="609.6" width="14985.6" height="1116">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="1.75"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="781" name="bridge -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="797" name="wood" type="terrain" x="2513.25" y="1859.5">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="771" name="bridge -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="796" name="wood" type="terrain" x="2513.25" y="1882.82">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="761" name="bridge -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="795" name="wood" type="terrain" x="2513.25" y="1906.51">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="751" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="794" name="wood" type="terrain" x="2515.25" y="1930.9">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="73" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="732" name="Generic/TownFencePost" type="decor" x="2361.28" y="1277.83" width="263" height="1118">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="733" name="Generic/TownFencePost" type="decor" x="2771" y="1276.53" width="263" height="1118">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="798" name="wood" type="terrain" x="2514.25" y="1950.81">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="797" name="wood" type="terrain" x="2515.25" y="1970.5">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="796" name="wood" type="terrain" x="2515.25" y="1993.82">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="795" name="wood" type="terrain" x="2515.25" y="2018.51">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="794" name="wood" type="terrain" x="2515.25" y="2044.57">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="collision" value="none"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="67" name="water bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="68" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="722" name="Generic/TownFencePost" type="decor" x="2357.28" y="1275.83" width="263" height="1118">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="723" name="Generic/TownFencePost" type="decor" x="2773" y="1274.53" width="263" height="1118">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="744" name="dark-grass" type="terrain" x="-239.7" y="2051.1" width="3967.4" height="1209.81"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="500" name="Forest/Flower10" type="decor" x="3296.08" y="1942.57" width="199" height="133"/>
+  <object id="741" name="Forest/Flower11" type="decor" x="753.667" y="1951.33" width="92" height="116"/>
+  <object id="750" name="Forest/Flower10" type="decor" x="294.888" y="1941.5" width="199" height="133"/>
+  <object id="751" name="Generic/Sword2" type="decor" x="541.498" y="1955.1" width="115" height="113"/>
+  <object id="752" name="Generic/Skull1" type="decor" x="1070" y="2025.6" width="66" height="44">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="753" name="Generic/Arrow3" type="decor" x="1796.67" y="2014.77" width="58" height="51"/>
+  <object id="754" name="Generic/Arrow1" type="decor" x="1701.33" y="2013.1" width="54" height="53"/>
+  <object id="755" name="Generic/Arrow1" type="decor" x="963.998" y="2011.76" width="54" height="53"/>
+  <object id="756" name="Generic/Arrow1" type="decor" x="891.998" y="2014.44" width="54" height="53"/>
+  <object id="757" name="Generic/Arrow1" type="decor" x="666.665" y="2015.77" width="54" height="53"/>
+  <object id="758" name="Generic/Arrow1" type="decor" x="121.332" y="2010.43" width="54" height="53"/>
+  <object id="759" name="Forest/Flower11" type="decor" x="1455.27" y="1949.52" width="92" height="116"/>
+  <object id="760" name="Generic/Sword1" type="decor" x="2101.58" y="1919.17" width="92" height="149"/>
+  <object id="761" name="Generic/Wheel1" type="decor" x="1185.41" y="1985.5" width="135" height="79"/>
+  <object id="762" name="Generic/Shield1" type="decor" x="3146.91" y="1988.17" width="140" height="76"/>
+  <object id="763" name="Generic/Helmet1" type="decor" x="2317.58" y="1992" width="125" height="69"/>
+  <object id="765" name="Generic/Arrow3" type="decor" x="2443.41" y="2011" width="58" height="51"/>
+  <object id="766" name="Generic/Arrow3" type="decor" x="2901.91" y="2015.16" width="58" height="51"/>
+  <object id="767" name="Generic/Arrow1" type="decor" x="3017.41" y="2016.83" width="54" height="53"/>
+  <object id="768" name="Generic/Arrow1" type="decor" x="2822.75" y="2014.17" width="54" height="53"/>
+  <object id="769" name="Generic/Arrow3" type="decor" x="2257.41" y="2007.17" width="58" height="51"/>
+  <object id="770" name="Generic/Arrow3" type="decor" x="1949.41" y="2013.83" width="58" height="51"/>
+  <object id="771" name="Generic/Arrow3" type="decor" x="1528" y="2012.5" width="58" height="51"/>
+  <object id="772" name="Generic/Arrow1" type="decor" x="1432.66" y="2010.83" width="54" height="53"/>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="707" name="edge-portal" type="object" x="-2" y="1398.57" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="EndianForest/Zone_3_4"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="736" name="portal" type="object" x="2569.63" y="1797.33" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+    <property name="map" value="EndianForest/Home_Ara"/>
+    <property name="transition" value="home"/>
+   </properties>
+  </object>
+  <object id="748" name="magic-wall" type="object" x="2360.09" y="1267.68" width="679.102" height="781">
+   <properties>
+    <property name="attached-behavior" value="dispel-illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="692" name="goblin-shaman" type="entity" x="1857.82" y="1920.34" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="693" name="orc-warrior" type="entity" x="1859.4" y="1675.91" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="705.253" y="1924.29" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="716" name="spawn" type="object" x="416.667" y="1922.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="749" name="spawn-wood-door" type="object" x="2637.97" y="1928.85" width="128" height="128">
+   <properties>
+    <property name="transition" value="home"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="66" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256" visible="0">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="998.39" y="1962.93" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2427.03" y="1962.5" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="5163.62" y="1911.9" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="-4074.43" y="1890.1" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="3056.81" y="1935" width="270" height="748"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="64.81" y="1856.6" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1850.38" y="1937.9" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2644.23" y="2033.92" width="242" height="738"/>
+ </objectgroup>
+</map>

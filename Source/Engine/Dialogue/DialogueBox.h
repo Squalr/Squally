@@ -21,9 +21,16 @@ public:
 
 	enum class DialogueAlignment
 	{
+		// Left positioning and alignment
 		Left,
+		
+		// Center positioning and alignment
 		Center,
+
+		// Right positioning, but left alignment. Cleaner for large amounts of text.
 		Right,
+
+		// Right positioning and alignment. Better for one-liner text.
 		HardRight,
 	};
 
@@ -32,7 +39,7 @@ public:
 protected:
 
 	DialogueBox(float textWidth, float speakerOffset, float speakerWidth);
-	~DialogueBox();
+	virtual ~DialogueBox();
 
 	void initializePositions() override;
 	void initializeListeners() override;

@@ -20,19 +20,21 @@ public:
 	bool isElevateTarget();
 
 	static const std::string MapKeyType;
-	static const std::string MapKeyPropertyName;
-	static const std::string MapKeyPropertyValue;
-	static const std::string MapKeyPropertyDepth;
-	static const std::string MapKeyPropertyIsHackable;
-	static const std::string MapKeyPropertyIsElevateTarget;
+	static const std::string PropertyName;
+	static const std::string PropertyValue;
+	static const std::string PropertyDepth;
+	static const std::string PropertyIsHackable;
+	static const std::string PropertyIsElevateTarget;
+	static const std::string PropertyZSort;
 
 protected:
 	MapLayer(const cocos2d::ValueMap& properties, std::string name, std::string type);
 	MapLayer(const cocos2d::ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects);
 	MapLayer();
-	~MapLayer();
+	virtual ~MapLayer();
 
 	void initializeListeners() override;
+	void update(float dt) override;
 
 	std::string layerName;
 	std::string layerType;
@@ -40,4 +42,6 @@ protected:
 
 private:
 	typedef GameObject super;
+
+	bool autoZSort;
 };

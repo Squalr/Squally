@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string PenguinWarrior::MapKeyPenguinWarrior = "penguin-warrior";
+const std::string PenguinWarrior::MapKey = "penguin-warrior";
 HexusOpponentData* PenguinWarrior::HexusOpponentDataInstance = nullptr;
 const std::string PenguinWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PENGUIN_WARRIOR";
 
@@ -32,7 +31,7 @@ PenguinWarrior* PenguinWarrior::deserialize(ValueMap& properties)
 }
 
 PenguinWarrior::PenguinWarrior(ValueMap& properties) : super(properties,
-	PenguinWarrior::MapKeyPenguinWarrior,
+	PenguinWarrior::MapKey,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,
 	Size(212.0f, 296.0f),

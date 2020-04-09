@@ -12,14 +12,15 @@ public:
 
 	void disable();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyHackableCueBehavior(GameObject* owner);
-	~ScrappyHackableCueBehavior();
+	virtual ~ScrappyHackableCueBehavior();
 
 	void update(float dt) override;
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

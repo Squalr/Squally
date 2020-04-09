@@ -10,13 +10,14 @@ class SquallyFloatBehavior : public AttachedBehavior
 public:
 	static SquallyFloatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyFloatBehavior(GameObject* owner);
-	~SquallyFloatBehavior();
+	virtual ~SquallyFloatBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

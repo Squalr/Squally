@@ -91,6 +91,7 @@ Cipher::Cipher()
 	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
+	this->cipherState->unlockPointer = this->unlockButton;
 	this->cipherState->displayModeTogglesPointer = this->displayModeToggles;
 	this->buildTutorialMap();
 
@@ -179,7 +180,7 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 
 void Cipher::onMenuExit()
 {
-	MusicPlayer::popMusic();
+	// this->music->pop();
 	CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(false));
 }
 

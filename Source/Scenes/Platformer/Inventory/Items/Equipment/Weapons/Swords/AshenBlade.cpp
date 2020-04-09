@@ -1,15 +1,15 @@
 #include "AshenBlade.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string AshenBlade::SaveKeyAshenBlade = "ashen-blade";
+const std::string AshenBlade::SaveKey = "ashen-blade";
 
 AshenBlade* AshenBlade::create()
 {
@@ -20,7 +20,7 @@ AshenBlade* AshenBlade::create()
 	return instance;
 }
 
-AshenBlade::AshenBlade() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+AshenBlade::AshenBlade() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ AshenBlade::AshenBlade() : super(CurrencyInventory::create({{ IOU::getIdentifier
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* AshenBlade::clone()
 
 std::string AshenBlade::getItemName()
 {
-	return AshenBlade::SaveKeyAshenBlade;
+	return AshenBlade::SaveKey;
 }
 
 LocalizedString* AshenBlade::getString()
@@ -56,10 +56,10 @@ LocalizedString* AshenBlade::getString()
 
 std::string AshenBlade::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Swords_AshenBlade;
+	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
 std::string AshenBlade::getSerializationKey()
 {
-	return AshenBlade::SaveKeyAshenBlade;
+	return AshenBlade::SaveKey;
 }

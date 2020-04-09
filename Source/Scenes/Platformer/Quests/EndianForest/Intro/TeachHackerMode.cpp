@@ -29,16 +29,16 @@ using namespace cocos2d;
 const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
 const std::string TeachHackerMode::TagHelpTotemHacking = "help-totem-hacking";
 
-TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine)
 {
-	TeachHackerMode* instance = new TeachHackerMode(owner, questLine, questTag);
+	TeachHackerMode* instance = new TeachHackerMode(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
+TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TeachHackerMode::MapKeyQuest, false)
 {
 	this->helpTotem = nullptr;
 	this->squally = nullptr;
@@ -59,12 +59,12 @@ void TeachHackerMode::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)

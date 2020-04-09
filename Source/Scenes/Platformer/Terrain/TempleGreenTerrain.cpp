@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/TempleGreenTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string TempleGreenTerrain::MapKeyTerrainType = "temple-green";
+const std::string TempleGreenTerrain::MapKey = "temple-green";
 
 TempleGreenTerrain* TempleGreenTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ TempleGreenTerrain* TempleGreenTerrain::create(ValueMap& properties)
 TempleGreenTerrain::TempleGreenTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return TempleGreenTexture::create(transformedProps);
+		},
 		0.5f,
-		TempleGreenTerrain::MapKeyTerrainType,
+		TempleGreenTerrain::MapKey,
 		TextureResources::TempleGreenTexture,
 		TerrainResources::TempleGreen_Top,
 		TerrainResources::TempleGreen_TopLeft,

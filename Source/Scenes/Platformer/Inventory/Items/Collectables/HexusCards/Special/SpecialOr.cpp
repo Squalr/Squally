@@ -1,16 +1,16 @@
 #include "SpecialOr.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialOr::SaveKeySpecialOr = "special-or";
+const std::string SpecialOr::SaveKey = "special-or";
 
 SpecialOr* SpecialOr::create()
 {
@@ -21,7 +21,7 @@ SpecialOr* SpecialOr::create()
 	return instance;
 }
 
-SpecialOr::SpecialOr() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialOr::SpecialOr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialOr::clone()
 
 std::string SpecialOr::getItemName()
 {
-	return SpecialOr::SaveKeySpecialOr;
+	return SpecialOr::SaveKey;
 }
 
 LocalizedString* SpecialOr::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialOr::getString()
 
 std::string SpecialOr::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialOr::getSerializationKey()
 {
-	return SpecialOr::SaveKeySpecialOr;
+	return SpecialOr::SaveKey;
 }
 
 std::string SpecialOr::getCardKey()

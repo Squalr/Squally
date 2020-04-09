@@ -16,14 +16,17 @@ class PointerTraceHud : public Hud
 public:
 	static PointerTraceHud* create();
 
-private:
-	typedef Hud super;
+protected:
 	PointerTraceHud();
 	virtual ~PointerTraceHud();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef Hud super;
+	
 	void updateRegisters();
 
 	cocos2d::LayerColor* backdrop;

@@ -2,7 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class PlatformerFriendly;
+class PlatformerEntity;
 class Squally;
 
 class LookAtSquallyBehavior : public AttachedBehavior
@@ -10,11 +10,12 @@ class LookAtSquallyBehavior : public AttachedBehavior
 public:
 	static LookAtSquallyBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
+	static const std::string MapKeyAlias;
 
 protected:
 	LookAtSquallyBehavior(GameObject* owner);
-	~LookAtSquallyBehavior();
+	virtual ~LookAtSquallyBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;
@@ -22,6 +23,6 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	PlatformerFriendly* npc;
+	PlatformerEntity* entity;
 	Squally* squally;
 };

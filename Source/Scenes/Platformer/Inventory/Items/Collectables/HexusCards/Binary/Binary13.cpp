@@ -1,16 +1,16 @@
 #include "Binary13.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Binary13::SaveKeyBinary13 = "binary-13";
+const std::string Binary13::SaveKey = "binary-13";
 
 Binary13* Binary13::create()
 {
@@ -21,7 +21,7 @@ Binary13* Binary13::create()
 	return instance;
 }
 
-Binary13::Binary13() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Binary13::Binary13() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 16 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* Binary13::clone()
 
 std::string Binary13::getItemName()
 {
-	return Binary13::SaveKeyBinary13;
+	return Binary13::SaveKey;
 }
 
 LocalizedString* Binary13::getString()
@@ -46,12 +46,12 @@ LocalizedString* Binary13::getString()
 
 std::string Binary13::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardBinary;
+	return ItemResources::Collectables_Cards_CardBinary;
 }
 
 std::string Binary13::getSerializationKey()
 {
-	return Binary13::SaveKeyBinary13;
+	return Binary13::SaveKey;
 }
 
 std::string Binary13::getCardKey()

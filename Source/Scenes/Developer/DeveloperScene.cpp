@@ -13,6 +13,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
+#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -47,16 +48,42 @@ DeveloperScene::DeveloperScene()
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
 
+	this->chapterList.push_back(this->buildDebugButton("DBG Notifications", MapResources::Dev_Items));
+	this->chapterList.push_back(this->buildDebugButton("DBG Collision", MapResources::Dev_Collision));
+	this->chapterList.push_back(this->buildDebugButton("DBG Positions", MapResources::Dev_PositionBug));
+	this->chapterList.push_back(this->buildDebugButton("DBG Bounds", MapResources::Dev_Bounds));
+	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
-	this->chapterList.push_back(this->buildDebugButton("Town", MapResources::EndianForest_Town_Main));
-	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
+	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));
+	this->chapterList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
+	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
+	this->chapterList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
+	this->chapterList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
+	this->chapterList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
+	this->chapterList.push_back(this->buildDebugButton("Liana Back (EF)", MapResources::EndianForest_Town_Liana_Back));
+	this->chapterList.push_back(this->buildDebugButton("Liana (EF)", MapResources::EndianForest_Town_Liana));
+	this->chapterList.push_back(this->buildDebugButton("Ara (EF)", MapResources::EndianForest_Home_Ara));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_7 (EF)", MapResources::EndianForest_Zone_3_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_6 (EF)", MapResources::EndianForest_Zone_3_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_5 (EF)", MapResources::EndianForest_Zone_3_5));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_4 (EF)", MapResources::EndianForest_Zone_3_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_Dev (EF)", MapResources::EndianForest_Zone_3_Dev));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_3 (EF)", MapResources::EndianForest_Zone_3_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_2 (EF)", MapResources::EndianForest_Zone_3_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_1 (EF)", MapResources::EndianForest_Zone_3_1));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_5 Inner Sanctum (EF)", MapResources::EndianForest_Zone_2_5));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_4 (EF)", MapResources::EndianForest_Zone_2_4));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_3 Temple (EF)", MapResources::EndianForest_Zone_2_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_0 (EF)", MapResources::EndianForest_Zone_3_0));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_8 Temple (EF)", MapResources::EndianForest_Zone_2_8));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_7 Inner Sanctum Temple (EF)", MapResources::EndianForest_Zone_2_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_6 Temple (EF)", MapResources::EndianForest_Zone_2_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_5 Temple (EF)", MapResources::EndianForest_Zone_2_5));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_4_a Temple (EF)", MapResources::EndianForest_Zone_2_4_a));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_4 Temple (EF)", MapResources::EndianForest_Zone_2_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_3 (EF)", MapResources::EndianForest_Zone_2_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_2 (EF)", MapResources::EndianForest_Zone_2_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_1 (EF)", MapResources::EndianForest_Zone_2_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_0 (EF)", MapResources::EndianForest_Zone_2_0));
+	this->chapterList.push_back(this->buildDebugButton("Zone 1_3 (EF)", MapResources::EndianForest_Zone_1_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone 1_2 (EF)", MapResources::EndianForest_Zone_1_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone 1_1 (EF)", MapResources::EndianForest_Zone_1_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone 1_0 (EF)", MapResources::EndianForest_Zone_1_0));
@@ -67,17 +94,12 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #2", MapResources::EndianForest_Mages_Gauntlet_2));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::EndianForest_Mages_Gauntlet_3));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
-	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #5", MapResources::EndianForest_Mages_Gauntlet_5));
-	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #6", MapResources::EndianForest_Mages_Gauntlet_6));
-	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
-	this->chapterList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
-	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
 	this->chapterList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
 	this->chapterList.push_back(this->buildDebugButton("DBG Quests", MapResources::Dev_Quests));
 
-	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
+	for (auto next : this->chapterList)
 	{
-		this->scrollPane->addChild(*it);
+		this->scrollPane->addChild(next);
 	}
 
 	this->addChild(this->scrollPane);
@@ -102,9 +124,9 @@ void DeveloperScene::initializePositions()
 
 	this->scrollPane->setPosition(Vec2(visibleSize / 2.0f));
 
-	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++, index++)
+	for (auto next : this->chapterList)
 	{
-		(*it)->setPosition(Vec2(0.0f, -128.0f - float(index) * 180.0f));
+		next->setPosition(Vec2(0.0f, -128.0f - float(index++) * 180.0f));
 	}
 }
 
@@ -121,7 +143,7 @@ void DeveloperScene::initializeListeners()
 		}
 		args->handle();
 		
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
 }
 
@@ -137,15 +159,22 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 	clickableTextNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		const int UNUSED_SAVE_PROFILE = 3;
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
-		PlatformerMap* map = PlatformerMap::create(mapResource);
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
+			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+			PlatformerMap* map = PlatformerMap::create(mapResource);
 
-		NavigationEvents::LoadScene(map);
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+
+			return map;
+		}));
 	});
 
 	return clickableTextNode;

@@ -18,15 +18,17 @@ public:
 
 	void setCurrencyInventory(CurrencyInventory* inventory);
 
-private:
-	typedef SmartNode super;
+protected:
 	CurrencyDisplay();
-	~CurrencyDisplay();
+	virtual ~CurrencyDisplay();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 
 	CurrencyInventory* inventory;
 	cocos2d::Sprite* emblem;

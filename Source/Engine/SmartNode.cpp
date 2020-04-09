@@ -14,6 +14,8 @@
 
 using namespace cocos2d;
 
+unsigned long long SmartNode::TaskId = 0;
+
 SmartNode* SmartNode::create()
 {
 	SmartNode* instance = new SmartNode();
@@ -34,9 +36,9 @@ SmartNode::SmartNode()
 
 SmartNode::~SmartNode()
 {
-	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	for (auto next : this->disposeCallbacks)
 	{
-		(*it)();
+		next();
 	}
 }
 
@@ -54,7 +56,7 @@ void SmartNode::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
+		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
 	}
 	else
 	{
@@ -111,7 +113,7 @@ void SmartNode::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->hackFlags);
+			this->onHackerModeEnable();
 		}
 	}));
 
@@ -129,7 +131,7 @@ void SmartNode::onDeveloperModeDisable()
 {
 }
 
-void SmartNode::onHackerModeEnable(int hackFlags)
+void SmartNode::onHackerModeEnable()
 {
 	this->hackermodeEnabled = true;
 }
@@ -141,7 +143,7 @@ void SmartNode::onHackerModeDisable()
 
 bool SmartNode::isDeveloperModeEnabled()
 {
-	return DeveloperModeController::getInstance()->isDeveloperModeEnabled();
+	return DeveloperModeController::isDeveloperModeEnabled();
 }
 
 void SmartNode::removeAllListeners()
@@ -210,7 +212,7 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 
 	EventListenerCustom* wrapper = EventListenerCustom::create(listener->getListenerId(), [=](EventCustom* eventCustom)
 	{
-		if (GameUtils::isInRunningScene(this))
+		if (listener->isGlobal() || GameUtils::isInRunningScene(this))
 		{
 			listener->invoke(eventCustom);
 		}
@@ -227,19 +229,41 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	this->addEventListener(listener);
 }
 
-static inline unsigned long long TaskId = 0;
+void SmartNode::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	this->addEventListenerIgnorePause(listener);
+}
 
 void SmartNode::defer(std::function<void()> task)
 {
-		unsigned long long taskId = TaskId++;
-		std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
+	unsigned long long taskId = SmartNode::TaskId++;
+	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
 
-		// Schedule the task for the next update loop
-		this->schedule([=](float dt)
-		{
-			task();
-			this->unschedule(eventKey);
-		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+	// Schedule the task for the next update loop
+	this->schedule([=](float dt)
+	{
+		task();
+		this->unschedule(eventKey);
+	}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+}
+
+void SmartNode::scheduleEvery(std::function<void()> task, float seconds)
+{
+	unsigned long long taskId = SmartNode::TaskId++;
+	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
+
+	// Schedule the task for the next update loop
+	this->schedule([=](float dt)
+	{
+		task();
+	}, seconds, CC_REPEAT_FOREVER, 0.0f, eventKey);
 }
 
 EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)

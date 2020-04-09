@@ -15,6 +15,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -24,7 +25,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
+const std::string SquallyCollisionBehavior::MapKey = "squally-collisions";
 const float SquallyCollisionBehavior::DefaultNoCombatDuration = 2.0f;
 
 SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner)
@@ -51,18 +52,10 @@ SquallyCollisionBehavior::~SquallyCollisionBehavior()
 {
 }
 
-void SquallyCollisionBehavior::update(float dt)
-{
-	super::update(dt);
-
-	if (this->noCombatDuration > 0.0f)
-	{
-		this->noCombatDuration -= dt;
-	}
-}
-
 void SquallyCollisionBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
@@ -89,15 +82,35 @@ void SquallyCollisionBehavior::onLoad()
 
 		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
-				this->squally->setState(StateKeys::IsAlive, Value(false));
-			}
+				healthBehavior->kill();
+			});
 
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
 	});
 
+	this->scheduleUpdate();
+}
+
+void SquallyCollisionBehavior::update(float dt)
+{
+	super::update(dt);
+
+	if (this->noCombatDuration > 0.0f)
+	{
+		this->noCombatDuration -= dt;
+	}
+}
+
+void SquallyCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
+void SquallyCollisionBehavior::onEntityCollisionCreated()
+{
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
@@ -120,44 +133,20 @@ void SquallyCollisionBehavior::onLoad()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
-			this->squally->setState(StateKeys::IsAlive, Value(false));
-		}
+			healthBehavior->kill();
+		});
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
-			this->squally->setState(StateKeys::IsAlive, Value(false));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-	
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
-			
-			mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
-
-			mouth->replaceSprite(EntityResources::Squally_MOUTH);
-		}
+			healthBehavior->kill();
+		});
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -166,6 +155,4 @@ void SquallyCollisionBehavior::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-
-	this->scheduleUpdate();
 }

@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyLightningGolem;
+	static const std::string MapKey;
+	
+protected:
+	LightningGolem(cocos2d::ValueMap& properties);
+	virtual ~LightningGolem();
 
 private:
 	typedef PlatformerEnemy super;
-	LightningGolem(cocos2d::ValueMap& properties);
-	~LightningGolem();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

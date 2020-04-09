@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Elriel::MapKeyElriel = "elriel";
+const std::string Elriel::MapKey = "elriel";
 HexusOpponentData* Elriel::HexusOpponentDataInstance = nullptr;
 const std::string Elriel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIEL";
 
@@ -32,7 +31,7 @@ Elriel* Elriel::deserialize(ValueMap& properties)
 }
 
 Elriel::Elriel(ValueMap& properties) : super(properties,
-	Elriel::MapKeyElriel,
+	Elriel::MapKey,
 	EntityResources::Npcs_EndianForest_Elriel_Animations,
 	EntityResources::Npcs_EndianForest_Elriel_Emblem,
 	Size(112.0f, 160.0f),

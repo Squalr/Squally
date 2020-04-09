@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string MummyPriest::MapKeyMummyPriest = "mummy-priest";
+const std::string MummyPriest::MapKey = "mummy-priest";
 HexusOpponentData* MummyPriest::HexusOpponentDataInstance = nullptr;
 const std::string MummyPriest::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_PRIEST";
 
@@ -32,7 +31,7 @@ MummyPriest* MummyPriest::deserialize(ValueMap& properties)
 }
 
 MummyPriest::MummyPriest(ValueMap& properties) : super(properties,
-	MummyPriest::MapKeyMummyPriest,
+	MummyPriest::MapKey,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
 	Size(128.0f, 256.0f),

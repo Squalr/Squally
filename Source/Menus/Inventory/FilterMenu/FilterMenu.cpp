@@ -11,7 +11,6 @@
 #include "Menus/Inventory/FilterMenu/ConsumablesFilter.h"
 #include "Menus/Inventory/FilterMenu/CraftingFilter.h"
 #include "Menus/Inventory/FilterMenu/EquipmentFilter.h"
-#include "Menus/Inventory/FilterMenu/HexusFilter.h"
 #include "Menus/Inventory/FilterMenu/MiscFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
@@ -46,11 +45,10 @@ FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 	this->filters.push_back(CraftingFilter::create());
 	this->filters.push_back(ConsumablesFilter::create());
 	this->filters.push_back(MiscFilter::create());
-	this->filters.push_back(HexusFilter::create());
 
-	for (auto it = this->filters.begin(); it != this->filters.end(); it++)
+	for (auto next : this->filters)
 	{
-		this->filterNodeContent->addChild(*it);
+		this->filterNodeContent->addChild(next);
 	}
 
 	this->addChild(this->selectedFilterRowActive);
@@ -156,13 +154,12 @@ void FilterMenu::positionFilterText()
 	this->filterNodeContent->setPositionY(offset);
 
 	const float offsetY = FilterMenu::LabelSpacing * float(this->filters.size() / 2);
-	int index = 0;
 
-	for (auto it = this->filters.begin(); it != this->filters.end(); it++, index++)
+	for (int index = 0; index < int(this->filters.size()); index++)
 	{
-		(*it)->setPositionX(0.0f);
-		(*it)->setPositionY(float(index) * -FilterMenu::LabelSpacing + offsetY);
-		(*it)->setPositionZ(0.0f);
+		this->filters[index]->setPositionX(0.0f);
+		this->filters[index]->setPositionY(float(index) * -FilterMenu::LabelSpacing + offsetY);
+		this->filters[index]->setPositionZ(0.0f);
 	}
 
 	const float XOffset = 64.0f;

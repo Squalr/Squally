@@ -2,7 +2,6 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
@@ -11,6 +10,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Menus/Interact/InteractMenu.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -20,7 +20,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityDialogueBehavior::MapKeyAttachedBehavior = "entity-dialogue";
+const std::string EntityDialogueBehavior::MapKey = "entity-dialogue";
 
 EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 {
@@ -34,13 +34,21 @@ EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->scrappy = nullptr;
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->canInteract = false;
 	this->dialogueCollision = nullptr;
+	this->scrappy = nullptr;
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
-	this->mainDialogueSet = DialogueSet::create();
+
+	// This is just a default. Can be overriden for specific needs
+	this->mainDialogueSet = DialogueSet::create(DialogueEvents::DialogueVisualArgs(
+		DialogueBox::DialogueDock::Bottom,
+		DialogueBox::DialogueAlignment::Left,
+		DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+		DialogueEvents::BuildPreviewNode(&this->entity, true)
+	));
+
 	this->speechBubble = SpeechBubble::create();
 	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
 	this->dialogueSets = std::vector<DialogueSet*>();
@@ -56,27 +64,18 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	else
 	{
 		this->dialogueCollision = CollisionObject::create(
-			PhysicsBody::createBox(this->entity->getEntitySize()),
+			CollisionObject::createBox(this->entity->getEntitySize()),
 			(CollisionType)PlatformerCollisionType::Trigger,
-			false,
-			false
+			CollisionObject::Properties(false, false),
+			Color4F::ORANGE
 		);
 
 		this->interactMenu->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
 
 		Vec2 collisionOffset = this->entity->getCollisionOffset();
+		Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->dialogueCollision->inverseGravity();
-			this->dialogueCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->dialogueCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
+		this->dialogueCollision->setPosition(offset);
 
 		this->addChild(this->dialogueCollision);
 	}
@@ -110,7 +109,7 @@ void EntityDialogueBehavior::onLoad()
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
@@ -125,8 +124,9 @@ void EntityDialogueBehavior::onLoad()
 		if (this->hasDialogueOptions() || !this->pretextQueue.empty())
 		{
 			this->canInteract = true;
-			this->interactMenu->show();
 		}
+
+		this->updateInteractVisibility();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -134,7 +134,8 @@ void EntityDialogueBehavior::onLoad()
 	this->dialogueCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = false;
-		this->interactMenu->hide();
+
+		this->updateInteractVisibility();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -187,6 +188,11 @@ void EntityDialogueBehavior::onLoad()
 	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
 }
 
+void EntityDialogueBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 SpeechBubble* EntityDialogueBehavior::getSpeechBubble()
 {
 	return this->speechBubble;
@@ -214,6 +220,12 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 	}
 }
 
+void EntityDialogueBehavior::clearPretext()
+{
+	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
+	this->pretextNode->removeAllChildren();
+}
+
 void EntityDialogueBehavior::onInteract()
 {
 	if (this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
@@ -228,6 +240,8 @@ void EntityDialogueBehavior::progressDialogue()
 {
 	if (this->pretextQueue.empty())
 	{
+		this->updateInteractVisibility();
+
 		if (this->hasDialogueOptions())
 		{
 			this->setActiveDialogueSet(this->getMainDialogueSet());
@@ -291,7 +305,7 @@ void EntityDialogueBehavior::showOptions()
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
 
-	if (dialogueOptions.empty() || (this->scrappy != nullptr && this->scrappy->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
+	if (dialogueOptions.empty())
 	{
 		return;
 	}
@@ -318,18 +332,14 @@ void EntityDialogueBehavior::showOptions()
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		options,
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->entity, false),
-			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-		),
+		this->activeDialogueSet->getArgs(),
 		[=]()
 		{
 			this->optionsVisible = false;
 		},
 		"",
-		true
+		true,
+		false
 	));
 }
 
@@ -348,6 +358,23 @@ bool EntityDialogueBehavior::hasDialogueOptions()
 	}
 
 	return std::get<0>(dialogueOptions[0])->isShownIfUnique();
+}
+
+void EntityDialogueBehavior::updateInteractVisibility()
+{
+	if (!(this->hasDialogueOptions() || !this->pretextQueue.empty()))
+	{
+		this->canInteract = false;
+	}
+	
+	if (this->canInteract)
+	{
+		this->interactMenu->show();
+	}
+	else
+	{
+		this->interactMenu->hide();
+	}
 }
 
 LocalizedString* EntityDialogueBehavior::getOptionString(int index, LocalizedString* optionText)

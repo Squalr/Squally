@@ -5,7 +5,6 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsBody.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -17,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string BreakableBarrel::MapKeyBreakableBarrel = "breakable-barrel";
+const std::string BreakableBarrel::MapKey = "breakable-barrel";
 
 BreakableBarrel* BreakableBarrel::create(ValueMap& properties)
 {

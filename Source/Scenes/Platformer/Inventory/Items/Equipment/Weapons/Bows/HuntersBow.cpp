@@ -1,15 +1,15 @@
 #include "HuntersBow.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string HuntersBow::SaveKeyHuntersBow = "hunters-bow";
+const std::string HuntersBow::SaveKey = "hunters-bow";
 
 HuntersBow* HuntersBow::create()
 {
@@ -20,17 +20,17 @@ HuntersBow* HuntersBow::create()
 	return instance;
 }
 
-HuntersBow::HuntersBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+HuntersBow::HuntersBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 9, ItemStats(
 	// Health
 	0,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.25f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* HuntersBow::clone()
 
 std::string HuntersBow::getItemName()
 {
-	return HuntersBow::SaveKeyHuntersBow;
+	return HuntersBow::SaveKey;
 }
 
 LocalizedString* HuntersBow::getString()
@@ -56,15 +56,15 @@ LocalizedString* HuntersBow::getString()
 
 std::string HuntersBow::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Bows_HuntersBow;
+	return ItemResources::Equipment_Weapons_Bows_HuntersBow;
 }
 
 std::string HuntersBow::getSerializationKey()
 {
-	return HuntersBow::SaveKeyHuntersBow;
+	return HuntersBow::SaveKey;
 }
 
 Vec2 HuntersBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-20.0f, -72.0f);
 }

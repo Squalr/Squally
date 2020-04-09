@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string MarbleDarkTexture::MapKeyTextureType = "marble-dark";
+const std::string MarbleDarkTexture::MapKey = "marble-dark";
 
 MarbleDarkTexture* MarbleDarkTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ MarbleDarkTexture* MarbleDarkTexture::create(ValueMap& properties)
 MarbleDarkTexture::MarbleDarkTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		MarbleDarkTexture::MapKeyTextureType,
+		MarbleDarkTexture::MapKey,
 		TextureResources::MarbleDarkTexture,
 		Color4B(11, 30, 39, 255)))
 {

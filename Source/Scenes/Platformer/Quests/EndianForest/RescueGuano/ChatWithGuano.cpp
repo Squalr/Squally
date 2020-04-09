@@ -28,16 +28,16 @@ using namespace cocos2d;
 const std::string ChatWithGuano::MapKeyQuest = "chat-with-guano";
 const std::string ChatWithGuano::EventExplainDoor = "explain-door";
 
-ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine)
 {
-	ChatWithGuano* instance = new ChatWithGuano(owner, questLine, questTag);
+	ChatWithGuano* instance = new ChatWithGuano(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, ChatWithGuano::MapKeyQuest, questTag, false)
+ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ChatWithGuano::MapKeyQuest, false)
 {
 	this->guano = nullptr;
 	this->scrappy = nullptr;
@@ -54,22 +54,22 @@ void ChatWithGuano::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
-	}, Guano::MapKeyGuano);
+	}, Guano::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
 	{
 		this->mulDoor = mulDoor;
-	}, MulDoor::MapKeyMulDoor);
+	}, MulDoor::MapKey);
 }
 
 void ChatWithGuano::onActivate(bool isActiveThroughSkippable)

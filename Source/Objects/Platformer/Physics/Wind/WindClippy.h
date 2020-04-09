@@ -10,16 +10,16 @@ class WindClippy : public Clippy
 public:
 	static WindClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	WindClippy();
-	~WindClippy();
+	virtual ~WindClippy();
 
 	Clippy* innerClone() override;
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

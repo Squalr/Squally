@@ -13,11 +13,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyTownKey;
+	static const std::string SaveKey;
 
 protected:
 	TownKey();
-	~TownKey();
+	virtual ~TownKey();
 
 private:
 	typedef Misc super;

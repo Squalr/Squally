@@ -20,16 +20,16 @@ public:
 	void initializeEnemyAvatar(HexusOpponentData* opponentData);
 
 protected:
+	Avatars();
+	virtual ~Avatars();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	Avatars();
-	~Avatars();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void setAvatars(GameState* gameState);
 
 	SmartClippingNode* clipPlayer;

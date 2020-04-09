@@ -76,7 +76,7 @@ void RadioButton::onUncheckClick()
 	// No actions required
 }
 
-void RadioButton::check()
+void RadioButton::check(bool invokeCallback)
 {
 	if (!this->isChecked)
 	{
@@ -85,7 +85,7 @@ void RadioButton::check()
 		this->checked->setVisible(true);
 		this->unchecked->setVisible(false);
 
-		if (this->onCheckCallback != nullptr)
+		if (invokeCallback && this->onCheckCallback != nullptr)
 		{
 			this->onCheckCallback(this);
 		}

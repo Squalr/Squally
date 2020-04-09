@@ -16,7 +16,7 @@ class BreakableCage : public BreakableBase
 public:
 	static BreakableCage* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyBreakableCage;
+	static const std::string MapKey;
 
 protected:
 	BreakableCage(cocos2d::ValueMap& properties, int requiredHits = 1);

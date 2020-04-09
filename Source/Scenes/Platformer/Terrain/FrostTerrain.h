@@ -7,11 +7,12 @@ class FrostTerrain : public TerrainObject
 public:
 	static FrostTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
+
+protected:
+	FrostTerrain(cocos2d::ValueMap& properties);
+	virtual ~FrostTerrain();
 
 private:
 	typedef TerrainObject super;
-	
-	FrostTerrain(cocos2d::ValueMap& properties);
-	~FrostTerrain();
 };

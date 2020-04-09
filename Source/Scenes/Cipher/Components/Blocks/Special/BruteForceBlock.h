@@ -8,13 +8,13 @@ public:
 	static BruteForceBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	BruteForceBlock(BlockType blockType);
+	virtual ~BruteForceBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	BruteForceBlock(BlockType blockType);
-	~BruteForceBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

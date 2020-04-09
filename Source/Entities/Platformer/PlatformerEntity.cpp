@@ -6,7 +6,6 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Engine/Animations/AnimationPart.h"
@@ -24,12 +23,13 @@
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
 #include "Resources/UIResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
-const std::string PlatformerEntity::MapKeyPropertyState = "state";
 const std::string PlatformerEntity::PlatformerEntityTag = "platformer-entity";
-const std::string PlatformerEntity::MapKeyBattleAttachedBehavior = "battle-behavior";
+const std::string PlatformerEntity::PropertyBattleBehavior = "battle-behavior";
+const std::string PlatformerEntity::PropertyState = "state";
 
 PlatformerEntity::PlatformerEntity(
 	ValueMap& properties, 
@@ -49,8 +49,8 @@ PlatformerEntity::PlatformerEntity(
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->entityName = entityName;
-	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
-	this->battleBehavior = entityName + "-combat," + GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyBattleAttachedBehavior, Value("")).asString();
+	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::PropertyState, Value("")).asString();
+	this->battleBehavior = entityName + "-combat," + GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::PropertyBattleBehavior, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * this->entityScale;
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
@@ -62,6 +62,7 @@ PlatformerEntity::PlatformerEntity(
 	this->hexusOpponentData = nullptr;
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
+	this->controlStateOverride = ControlState::None;
 	this->movementSize = this->entitySize + Size(0.0f, this->hoverHeight);
 
 	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
@@ -73,9 +74,9 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	this->animationNode->setFlippedX(this->isFlippedX());
+	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 
-	if (this->isFlippedY())
+	if (GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool())
 	{
 		this->setRotation(180.0f);
 	}
@@ -104,6 +105,11 @@ void PlatformerEntity::update(float dt)
 	this->optimizationHideOffscreenEntity();
 }
 
+Vec2 PlatformerEntity::getRainOffset()
+{
+	return this->getEntityCenterPoint();
+}
+
 Vec2 PlatformerEntity::getButtonOffset()
 {
 	return this->hackButtonOffset;
@@ -119,19 +125,34 @@ std::string PlatformerEntity::getEntityKey()
 	return this->entityName;
 }
 
-float PlatformerEntity::getFloatHeight()
+std::string PlatformerEntity::getSwimAnimation()
 {
-	return 0.0f;
+	return "Swim";
 }
 
-void PlatformerEntity::performSwimAnimation()
+std::string PlatformerEntity::getJumpAnimation()
 {
-	this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+	return "Jump";
 }
 
-void PlatformerEntity::performJumpAnimation()
+std::string PlatformerEntity::getJumpSound()
 {
-	this->animationNode->playAnimation("Jump", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
+	return SoundResources::Platformer_Entities_Generic_Movement_Jump3;
+}
+
+std::vector<std::string> PlatformerEntity::getSwimSounds()
+{
+	return { SoundResources::Platformer_Environment_Swim1, SoundResources::Platformer_Environment_Swim2, SoundResources::Platformer_Environment_Swim3 };
+}
+
+std::vector<std::string> PlatformerEntity::getWalkSounds()
+{
+	return { SoundResources::Platformer_Entities_Generic_Movement_Steps1, SoundResources::Platformer_Entities_Generic_Movement_Steps2, SoundResources::Platformer_Entities_Generic_Movement_Steps3 };
+}
+
+PlatformerEntity::ControlState PlatformerEntity::getControlState()
+{
+	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;;
 }
 
 std::string PlatformerEntity::getBattleBehavior()
@@ -180,14 +201,25 @@ Vec2 PlatformerEntity::getEntityCenterPoint()
 	return offset;
 }
 
+Vec2 PlatformerEntity::getEntityBottomPoint()
+{
+	Vec2 offset = this->getEntityCenterPoint();
+
+	if (this->isFlippedY())
+	{
+		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f + this->getHoverHeight());
+	}
+	else
+	{
+		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f - this->getHoverHeight());
+	}
+
+	return offset;
+}
+
 float PlatformerEntity::getHoverHeight()
 {
 	return this->hoverHeight;
-}
-
-HexusOpponentData* PlatformerEntity::getHexusOpponentData()
-{
-	return this->hexusOpponentData;
 }
 
 float PlatformerEntity::getScale()
@@ -207,15 +239,17 @@ std::string PlatformerEntity::getEmblemResource()
 
 bool PlatformerEntity::isFlippedX()
 {
-	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool();
+	return this->getAnimations()->getFlippedX();
 }
 
 bool PlatformerEntity::isFlippedY()
 {
+	// Flipped Y actually involves in rotating the entire entity. This is to properly position collision boxes (flipping the anims wouldnt do this)
+	// As of now, this value doesn't change at run-time, so just read it from properties.
 	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }
 
-PlatformerEntity* PlatformerEntity::softClone()
+PlatformerEntity* PlatformerEntity::uiClone()
 {
 	PlatformerEntity* softClone = nullptr;
 	ValueMap properties = ValueMap();
@@ -241,7 +275,6 @@ PlatformerEntity* PlatformerEntity::softClone()
 
 void PlatformerEntity::optimizationHideOffscreenEntity()
 {
-	// Admissible heuristic -- technically this warrants using a bunch of projection math. Zoom is good enough.
 	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
 	static const Size Padding = Size(384.0f, 384.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;

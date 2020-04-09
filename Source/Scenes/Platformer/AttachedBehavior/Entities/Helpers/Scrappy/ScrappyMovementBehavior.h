@@ -10,13 +10,14 @@ class ScrappyMovementBehavior : public AttachedBehavior
 public:
 	static ScrappyMovementBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyMovementBehavior(GameObject* owner);
-	~ScrappyMovementBehavior();
+	virtual ~ScrappyMovementBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:
@@ -26,8 +27,6 @@ private:
 	Squally* squally;
 
 	float elapsed;
-	float timeNearDestX;
-	float timeNearDestY;
 
 	static const float FloatOffsetRadius;
 	static const float FloatOffsetAngle;

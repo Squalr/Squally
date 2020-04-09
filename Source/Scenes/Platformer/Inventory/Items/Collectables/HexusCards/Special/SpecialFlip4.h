@@ -16,7 +16,7 @@ public:
 	std::string getSerializationKey() override;
 	std::string getCardKey() override;
 
-	static const std::string SaveKeySpecialFlip4;
+	static const std::string SaveKey;
 
 protected:
 	SpecialFlip4();

@@ -1,15 +1,15 @@
 #include "DarkWood.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string DarkWood::SaveKeyDarkWood = "dark-wood";
+const std::string DarkWood::SaveKey = "dark-wood";
 
 DarkWood* DarkWood::create()
 {
@@ -20,7 +20,7 @@ DarkWood* DarkWood::create()
 	return instance;
 }
 
-DarkWood::DarkWood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+DarkWood::DarkWood() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 40 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* DarkWood::clone()
 
 std::string DarkWood::getItemName()
 {
-	return DarkWood::SaveKeyDarkWood;
+	return DarkWood::SaveKey;
 }
 
 LocalizedString* DarkWood::getString()
@@ -45,10 +45,10 @@ LocalizedString* DarkWood::getString()
 
 std::string DarkWood::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Wood_DarkWood;
+	return ItemResources::Crafting_Smithing_WoodDark;
 }
 
 std::string DarkWood::getSerializationKey()
 {
-	return DarkWood::SaveKeyDarkWood;
+	return DarkWood::SaveKey;
 }

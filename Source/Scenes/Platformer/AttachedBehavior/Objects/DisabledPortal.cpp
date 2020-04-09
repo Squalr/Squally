@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string DisabledPortal::MapKeyAttachedBehavior = "disabled-portal";
+const std::string DisabledPortal::MapKey = "disabled-portal";
 
 DisabledPortal* DisabledPortal::create(GameObject* owner)
 {
@@ -39,4 +39,19 @@ DisabledPortal::~DisabledPortal()
 void DisabledPortal::onLoad()
 {
 	this->portal->disable();
+}
+
+void DisabledPortal::enablePortal()
+{
+	this->portal->enable();
+}
+
+void DisabledPortal::onDisable()
+{
+	super::onDisable();
+	
+	if (this->portal != nullptr)
+	{
+		this->portal->enable();
+	}
 }

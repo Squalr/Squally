@@ -16,7 +16,7 @@ public:
 
 protected:
 	OptionsScene();
-	~OptionsScene();
+	virtual ~OptionsScene();
 
 private:
 	typedef GlobalScene super;

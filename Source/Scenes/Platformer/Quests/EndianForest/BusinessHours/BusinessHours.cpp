@@ -8,7 +8,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
@@ -16,6 +15,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 
 #include "Resources/SoundResources.h"
 
@@ -25,16 +25,16 @@ using namespace cocos2d;
 
 const std::string BusinessHours::MapKeyQuest = "business-hours";
 
-BusinessHours* BusinessHours::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+BusinessHours* BusinessHours::create(GameObject* owner, QuestLine* questLine)
 {
-	BusinessHours* instance = new BusinessHours(owner, questLine, questTag);
+	BusinessHours* instance = new BusinessHours(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BusinessHours::BusinessHours(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BusinessHours::MapKeyQuest, questTag, false)
+BusinessHours::BusinessHours(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BusinessHours::MapKeyQuest, false)
 {
 	this->portal = static_cast<Portal*>(owner);
 	this->squally = nullptr;
@@ -49,7 +49,7 @@ void BusinessHours::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	if (this->portal != nullptr)
 	{

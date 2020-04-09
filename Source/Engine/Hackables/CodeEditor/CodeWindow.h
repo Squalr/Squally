@@ -18,9 +18,11 @@ namespace cocos2d
 	}
 }
 
+class ClickableNode;
 class InputText;
 class LocalizedLabel;
 class LocalizedString;
+class ScriptEntry;
 class ScrollPane;
 
 class CodeWindow : public SmartNode
@@ -39,50 +41,52 @@ public:
 		}
 	};
 
-	void setWindowTitle(std::string windowTitle);
-	void insertText(LocalizedString* text, cocos2d::Color3B color);
-	void toggleHeader(bool isVisible);
-	void toggleBackground(bool isVisible);
-	void enableWrapByChar();
-	void enableWrapByWord();
-	void insertNewline();
-	void clearText();
-	void setTokenizationCallback(std::function<void(std::string text, std::vector<CodeWindow::token>&)> newTokenizationCallback);
-	void setOnEditCallback(std::function<void(std::string text)> newOnEditCallback);
+	void openScript(ScriptEntry* script);
+	bool hasChanges();
+	void clearHasChanges();
 	std::string getText();
-	std::string getTitle();
-	void setText(std::string text);
 	void focus();
 	void unfocus();
 
-private:
-	typedef SmartNode super;
+protected:
 	CodeWindow(cocos2d::Size windowSize);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float) override;
+
+private:
+	typedef SmartNode super;
+
+	void setWindowTitle(std::string windowTitle);
+	void insertText(LocalizedString* text, cocos2d::Color3B color);
+	void insertNewline();
+	void clearText();
+	void setText(std::string text);
 	void constructTokenizedText(std::string currentText);
-	void rebuildText();
 
 	cocos2d::LayerColor* background;
 	cocos2d::LayerColor* titleBar;
 	InputText* windowTitle;
+	ClickableNode* deleteButton;
+	ClickableNode* copyButton;
 	ScrollPane* contentPane;
 	cocos2d::ui::RichText* displayedText;
 	InputText* editableText;
 	cocos2d::ui::RichText* lineNumbers;
+	cocos2d::LayerColor* deletePanel;
+	LocalizedLabel* deleteLabel;
+	cocos2d::LayerColor* copyPanel;
+	LocalizedLabel* copyLabel;
 
 	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textElements;
 	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
-	std::function<void(std::string text, std::vector<CodeWindow::token>&)> tokenizationCallback;
-	std::function<void(std::string text)> onEditCallback;
 
+	bool hasScriptChanges;
+	ScriptEntry* script;
 	int currentLineNumber;
 	cocos2d::Size windowSize;
-	std::string previousText;
 
 	static const std::string Delimiters;
 	static const std::set<std::string> Registers;

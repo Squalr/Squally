@@ -14,11 +14,11 @@ class EntityBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static EntityBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityBehaviorGroup(GameObject* owner);
-	~EntityBehaviorGroup();
+	virtual ~EntityBehaviorGroup();
 
 	void onLoad() override;
 

@@ -15,6 +15,7 @@
 #include "Engine/Utils/GameUtils.h"
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
+unsigned long long SmartScene::TaskId = 0;
 
 using namespace cocos2d;
 
@@ -46,9 +47,9 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
-	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	for (auto next : this->disposeCallbacks)
 	{
-		(*it)();
+		next();
 	}
 }
 
@@ -67,6 +68,7 @@ void SmartScene::onEnter()
 	}
 	else
 	{
+		this->fadeAction = nullptr;
 		this->layerColor->setOpacity(0);
 	}
 
@@ -75,7 +77,7 @@ void SmartScene::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
+		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
 	}
 	else
 	{
@@ -100,7 +102,7 @@ void SmartScene::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
+		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
@@ -114,7 +116,7 @@ void SmartScene::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->hackFlags);
+			this->onHackerModeEnable();
 		}
 	}));
 
@@ -132,7 +134,7 @@ void SmartScene::onDeveloperModeDisable()
 {
 }
 
-void SmartScene::onHackerModeEnable(int hackFlags)
+void SmartScene::onHackerModeEnable()
 {
 	this->hackermodeEnabled = true;
 }
@@ -144,7 +146,7 @@ void SmartScene::onHackerModeDisable()
 
 bool SmartScene::isDeveloperModeEnabled()
 {
-	return DeveloperModeController::getInstance()->isDeveloperModeEnabled();
+	return DeveloperModeController::isDeveloperModeEnabled();
 }
 
 void SmartScene::removeAllListeners()
@@ -204,6 +206,18 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 	this->addEventListener(listener);
 }
 
+void SmartScene::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	this->addEventListenerIgnorePause(listener);
+}
+
 void SmartScene::setFadeSpeed(float newFadeSpeed)
 {
 	this->fadeSpeed = newFadeSpeed;
@@ -226,11 +240,9 @@ void SmartScene::pause()
 	super::pause();
 }
 
-static inline unsigned long long TaskId = 0;
-
 void SmartScene::defer(std::function<void()> task)
 {
-		unsigned long long taskId = TaskId++;
+		unsigned long long taskId = SmartScene::TaskId++;
 		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
 
 		// Schedule the task for the next update loop

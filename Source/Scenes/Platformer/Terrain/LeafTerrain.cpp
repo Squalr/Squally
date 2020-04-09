@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/LeafTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string LeafTerrain::MapKeyTerrainType = "leaf";
+const std::string LeafTerrain::MapKey = "leaf";
 
 LeafTerrain* LeafTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ LeafTerrain* LeafTerrain::create(ValueMap& properties)
 LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return LeafTexture::create(transformedProps);
+		},
 		0.5f,
-		LeafTerrain::MapKeyTerrainType,
+		LeafTerrain::MapKey,
 		TextureResources::LeafTexture,
 		TerrainResources::Leaf_Top,
 		TerrainResources::Leaf_TopLeft,

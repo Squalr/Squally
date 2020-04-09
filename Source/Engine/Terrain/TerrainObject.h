@@ -12,11 +12,14 @@ namespace cocos2d
 	class Sprite;
 }
 
+class TextureObject;
+
 class TerrainObject : public HackableObject
 {
 public:
 	struct TerrainData
 	{
+		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory;
 		float friction;
 		std::string textureMapKeyValue;
 		std::string textureResource;
@@ -53,6 +56,7 @@ public:
 		cocos2d::Color4B infillColor;
 
 		TerrainData(
+			std::function<TextureObject*(cocos2d::ValueMap)> textureFactory,
 			float friction,
 			std::string textureMapKeyValue,
 			std::string textureResource,
@@ -87,6 +91,7 @@ public:
 			cocos2d::Vec2 topConnectorConvexDeepOffset,
 			cocos2d::Vec2 bottomConnectorOffset,
 			cocos2d::Color4B infillColor) :
+			textureFactory(textureFactory),
 			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
 			textureResource(textureResource),
@@ -132,10 +137,11 @@ public:
 	static std::string MapKeyTypeTerrain;
 	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTopOnly;
+	static unsigned int NextTerrainId;
 
 protected:
 	TerrainObject(cocos2d::ValueMap& properties, TerrainData terrainData);
-	~TerrainObject();
+	virtual ~TerrainObject();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -143,6 +149,9 @@ protected:
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
+	cocos2d::ValueMap transformPropertiesForTexture(cocos2d::ValueMap properties);
 
 private:
 	typedef HackableObject super;
@@ -157,6 +166,7 @@ private:
 	void initResources();
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain(TerrainData terrainData);
+	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(cocos2d::Color4B infillColor);
@@ -175,7 +185,7 @@ private:
 	bool isTopOnlyCollision;
 	bool isInactive;
 	bool isFlipped;
-	unsigned long long terrainObjectId;
+	unsigned int terrainObjectId;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;

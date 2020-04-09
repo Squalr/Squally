@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyManagerBehavior::MapKeyAttachedBehavior = "scrappy-manager";
+const std::string ScrappyManagerBehavior::MapKey = "scrappy-manager";
 
 ScrappyManagerBehavior* ScrappyManagerBehavior::create(GameObject* owner)
 {
@@ -58,14 +58,14 @@ void ScrappyManagerBehavior::onLoad()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
 	{
 		// Since Scrappy is found on the first map, this is a good way to ensure there are no sequence breaks
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 	}));
 
 	this->defer([=]()
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(HelperEvents::EventFindScrappy, [=](EventCustom* eventCustom)
 		{
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 			this->spawnScrappy();
 		}));
 
@@ -76,13 +76,18 @@ void ScrappyManagerBehavior::onLoad()
 	});
 }
 
+void ScrappyManagerBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void ScrappyManagerBehavior::spawnScrappy()
 {
 	ValueMap properties = ValueMap();
 
 	properties[GameObject::MapKeyType] = Value(PlatformerEntityDeserializer::MapKeyTypeEntity);
-	properties[GameObject::MapKeyName] = Value(Scrappy::MapKeyScrappy);
-	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKeyAttachedBehavior);
+	properties[GameObject::MapKeyName] = Value(Scrappy::MapKey);
+	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKey);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -93,10 +98,16 @@ void ScrappyManagerBehavior::spawnScrappy()
 				this->entity,
 				deserializeArgs.gameObject,
 				ObjectEvents::SpawnMethod::Below,
-				ObjectEvents::PositionMode::Discard
+				ObjectEvents::PositionMode::Discard,
+				[&]()
+				{
+				},
+				[&]()
+				{
+				}
 			));
 
-			deserializeArgs.gameObject->setPosition(this->entity->getPosition());
+			deserializeArgs.gameObject->setPosition3D(this->entity->getPosition3D());
 			this->helperRef = dynamic_cast<Scrappy*>(deserializeArgs.gameObject);
 		}
 	);

@@ -7,11 +7,13 @@ class BusinessHoursLine : public QuestLine
 public:
 	static BusinessHoursLine* create();
 
+	QuestLine* clone() override;
+
 	static const std::string MapKeyQuestLine;
 
 protected:
 	BusinessHoursLine();
-	~BusinessHoursLine();
+	virtual ~BusinessHoursLine();
 
 private:
 	typedef QuestLine super;

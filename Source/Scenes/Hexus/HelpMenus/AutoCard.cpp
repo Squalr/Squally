@@ -31,9 +31,9 @@ AutoCard::AutoCard(int defaultAttack)
     this->cardScale = Card::cardScale;
     this->displayType = DisplayType::Binary;
 
-    for (auto it = CardList::getInstance()->cardListByName.begin(); it != CardList::getInstance()->cardListByName.end(); it++)
+	for (auto next : CardList::getInstance()->cardListByName)
     {
-        CardData* cardData = (*it).second;
+        CardData* cardData = next.second;
         
         switch(cardData->getCardType())
         {

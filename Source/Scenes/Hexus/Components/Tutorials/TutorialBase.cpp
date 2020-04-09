@@ -1,5 +1,14 @@
 #include "TutorialBase.h"
 
+#include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/LocalizedLabel.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Strings.h"
+
+using namespace cocos2d;
+
 TutorialBase::TutorialBase(GameState::StateType stateToHijack) : super()
 {
 	this->stateToHijack = stateToHijack;
@@ -54,4 +63,15 @@ void TutorialBase::tryUnHijackState(GameState* gameState, bool updateState)
 			gameState->updateState(gameState, this->stateToHijack);
 		}
 	}
+}
+
+ClickableTextNode* TutorialBase::createNextButton()
+{
+	LocalizedLabel* nextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* nextLabelSelected = nextLabel->clone();
+
+	nextLabel->enableOutline(Color4B::BLACK, 2);
+	nextLabelSelected->enableOutline(Color4B::BLACK, 2);
+
+	return ClickableTextNode::create(nextLabel, nextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));;
 }

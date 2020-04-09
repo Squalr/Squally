@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 	
-const std::string EnemyBattleAllyBehavior::MapKeyAttachedBehavior = "ally";
+const std::string EnemyBattleAllyBehavior::MapKey = "ally";
 
 EnemyBattleAllyBehavior* EnemyBattleAllyBehavior::create(GameObject* owner)
 {
@@ -51,4 +51,9 @@ void EnemyBattleAllyBehavior::onLoad()
 	{
 		dynamic_cast<PlatformerEnemy*>(this->entity)->setDropPool("");
 	}
+}
+
+void EnemyBattleAllyBehavior::onDisable()
+{
+	super::onDisable();
 }

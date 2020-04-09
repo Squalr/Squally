@@ -6,5 +6,5 @@ class CardLogicalAnd : public CardData
 {
 public:
 	CardLogicalAnd();
-	~CardLogicalAnd();
+	virtual ~CardLogicalAnd();
 };

@@ -27,7 +27,7 @@ protected:
 	void rebuildNodes();
 	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
-	std::vector<cocos2d::Node*>* nodes;
+	std::vector<cocos2d::Node*> nodes;
 	float spriteWidth;
 	float spriteScale;
 	cocos2d::Vec2 spriteAnchor;

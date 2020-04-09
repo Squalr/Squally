@@ -14,16 +14,17 @@ public:
 	unsigned char getValue();
 	
 protected:
-	unsigned char compute() override;
-
-private:
-	typedef BlockBase super;
 	ImmediateBlock(BlockType blockType);
-	~ImmediateBlock();
+	virtual ~ImmediateBlock();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	unsigned char compute() override;
+
+private:
+	typedef BlockBase super;
+	
 	void loadDisplayValue();
 
 	unsigned char charValue;

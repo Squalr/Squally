@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Rhinoman::MapKeyRhinoman = "rhinoman";
+const std::string Rhinoman::MapKey = "rhinoman";
 HexusOpponentData* Rhinoman::HexusOpponentDataInstance = nullptr;
 const std::string Rhinoman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RHINOMAN";
 
@@ -32,7 +31,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap& properties)
 }
 
 Rhinoman::Rhinoman(ValueMap& properties) : super(properties,
-	Rhinoman::MapKeyRhinoman,
+	Rhinoman::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	Size(592.0f, 592.0f),

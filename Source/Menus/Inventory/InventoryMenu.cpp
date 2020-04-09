@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
@@ -11,14 +12,15 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/FilterMenu/FilterEntry.h"
 #include "Menus/Inventory/FilterMenu/FilterMenu.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
@@ -31,9 +33,6 @@
 
 using namespace cocos2d;
 
-const int InventoryMenu::MinHexusCards = 20;
-const int InventoryMenu::MaxHexusCards = 60;
-
 InventoryMenu* InventoryMenu::create()
 {
 	InventoryMenu* instance = new InventoryMenu();
@@ -45,9 +44,9 @@ InventoryMenu* InventoryMenu::create()
 
 InventoryMenu::InventoryMenu()
 {
-	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
-	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+	this->currencyInventory = nullptr;
+	this->equipmentInventory = nullptr;
+	this->inventory = nullptr;
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
@@ -76,9 +75,6 @@ InventoryMenu::InventoryMenu()
 	this->inventoryLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->inventoryLabel->enableGlow(Color4B::BLACK);
 	
-	this->addChild(this->currencyInventory);
-	this->addChild(this->equipmentInventory);
-	this->addChild(this->inventory);
 	this->addChild(this->inventoryWindow);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
@@ -102,6 +98,16 @@ void InventoryMenu::onEnter()
 	GameUtils::fadeInObject(this->inventoryLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->inventory = entityInventoryBehavior->getInventory();
+			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
+		});
+	}, Squally::MapKey);
 }
 
 void InventoryMenu::initializePositions()
@@ -131,7 +137,7 @@ void InventoryMenu::initializeListeners()
 	{
 		this->close();
 	});
-	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -166,30 +172,28 @@ void InventoryMenu::onFilterChange()
 void InventoryMenu::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
-	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory->getItems());
-	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory->getItems());
+	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory == nullptr ? std::vector<Item*>() : this->equipmentInventory->getItems());
+	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory == nullptr ? std::vector<Item*>() : this->inventory->getItems());
 	
-	for (auto it = equipment.begin(); it != equipment.end(); it++)
+	for (auto item : equipment)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
 			this->performEquipmentAction(item);
 		});
 
+		entry->setEquipHintMode(ItemPreview::EquipHintMode::Unequip);
 		entry->showIcon();
 	}
 	
-	for (auto it = items.begin(); it != items.end(); it++)
+	for (auto item : items)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
 			this->performInventoryAction(item);
 		});
 
+		entry->setEquipHintMode(ItemPreview::EquipHintMode::Equip);
 		entry->hideIcon();
 	}
 
@@ -209,11 +213,7 @@ void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCall
 
 void InventoryMenu::performEquipmentAction(Item* item)
 {
-	if (dynamic_cast<HexusCard*>(item) != nullptr)
-	{
-		this->unequipHexusCard(item);
-	}
-	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	if (dynamic_cast<Equipable*>(item) != nullptr)
 	{
 		this->unequipItem(item);
 	}
@@ -221,74 +221,19 @@ void InventoryMenu::performEquipmentAction(Item* item)
 
 void InventoryMenu::performInventoryAction(Item* item)
 {
-	if (dynamic_cast<HexusCard*>(item) != nullptr)
-	{
-		this->equipHexusCard(item);
-	}
-	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	if (dynamic_cast<Equipable*>(item) != nullptr)
 	{
 		this->equipItem(item);
 	}
 }
 
-void InventoryMenu::equipHexusCard(Item* card)
-{
-	if (this->equipmentInventory->getHexusCards().size() >= InventoryMenu::MaxHexusCards)
-	{
-		return;
-	}
-
-	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
-	{
-		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
-
-		this->populateItemList();
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error equipping card!");
-
-		if (item != nullptr)
-		{
-			LogUtils::logError(item->getName());
-		}
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
-}
-
-void InventoryMenu::unequipHexusCard(Item* card)
-{
-	if (this->equipmentInventory->getHexusCards().size() <= InventoryMenu::MinHexusCards)
-	{
-		return;
-	}
-
-	this->equipmentInventory->tryTransact(this->inventory, card, nullptr, [=](Item* item, Item* otherItem)
-	{
-		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
-		this->inventory->moveItem(item, 0);
-
-		this->populateItemList();
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error unequipping card!");
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
-}
-
 void InventoryMenu::equipItem(Item* item)
 {
+	if (this->inventory == nullptr || this->equipmentInventory == nullptr)
+	{
+		return;
+	}
+
 	Item* equippedItem = nullptr;
 
 	if (dynamic_cast<Hat*>(item))
@@ -334,6 +279,11 @@ void InventoryMenu::equipItem(Item* item)
 
 void InventoryMenu::unequipItem(Item* item)
 {
+	if (this->inventory == nullptr || this->equipmentInventory == nullptr)
+	{
+		return;
+	}
+	
 	this->equipmentInventory->tryTransact(this->inventory, item, nullptr, [=](Item* item, Item* otherItem)
 	{
 		// Success unequipping item -- visually best if this ends up in the 1st inventory slot

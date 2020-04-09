@@ -1,15 +1,15 @@
 #include "Ruby.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Ruby::SaveKeyRuby = "ruby";
+const std::string Ruby::SaveKey = "ruby";
 
 Ruby* Ruby::create()
 {
@@ -20,7 +20,7 @@ Ruby* Ruby::create()
 	return instance;
 }
 
-Ruby::Ruby() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Ruby::Ruby() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 133 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Ruby::clone()
 
 std::string Ruby::getItemName()
 {
-	return Ruby::SaveKeyRuby;
+	return Ruby::SaveKey;
 }
 
 LocalizedString* Ruby::getString()
@@ -45,10 +45,10 @@ LocalizedString* Ruby::getString()
 
 std::string Ruby::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Ruby;
+	return ItemResources::Crafting_Smithing_Ruby;
 }
 
 std::string Ruby::getSerializationKey()
 {
-	return Ruby::SaveKeyRuby;
+	return Ruby::SaveKey;
 }

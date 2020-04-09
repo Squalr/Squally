@@ -9,12 +9,12 @@ public:
 
 	void setGridIndex(int gridIndex) override;
 
-	static const std::string MapKeyValueInitializerBase;
-	static const std::string MapKeyMetaValue;
+	static const std::string MapKeyBase;
+	static const std::string MapKey;
 
 protected:
 	ValueInitializer(cocos2d::ValueMap& properties);
-	~ValueInitializer();
+	virtual ~ValueInitializer();
 
 private:
 	typedef GridObject super;

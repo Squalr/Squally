@@ -11,13 +11,13 @@ class Squally;
 class TalkToGrogg : public QuestTask
 {
 public:
-	static TalkToGrogg* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TalkToGrogg* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToGrogg(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~TalkToGrogg();
+	TalkToGrogg(GameObject* owner, QuestLine* questLine);
+	virtual ~TalkToGrogg();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -27,7 +27,10 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePart1();
+	void runCinematicSequencePart2();
+	void runCinematicSequencePart3();
+	void runCinematicSequencePart4();
 
 	Guano* guano;
 	KingGrogg* kingGrogg;

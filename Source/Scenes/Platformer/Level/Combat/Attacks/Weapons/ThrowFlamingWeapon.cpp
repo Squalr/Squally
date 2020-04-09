@@ -7,8 +7,9 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
@@ -17,16 +18,16 @@
 
 using namespace cocos2d;
 
-ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recoverDuration)
+ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recoverDuration, Priority priority)
 {
-	ThrowFlamingWeapon* instance = new ThrowFlamingWeapon(attackDuration, recoverDuration);
+	ThrowFlamingWeapon* instance = new ThrowFlamingWeapon(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -36,7 +37,7 @@ ThrowFlamingWeapon::~ThrowFlamingWeapon()
 
 PlatformerAttack* ThrowFlamingWeapon::cloneInternal()
 {
-	return ThrowFlamingWeapon::create(this->getAttackDuration(), this->getRecoverDuration());
+	return ThrowFlamingWeapon::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* ThrowFlamingWeapon::getString()
@@ -49,38 +50,41 @@ std::string ThrowFlamingWeapon::getAttackAnimation()
 	return "AttackThrow";
 }
 
-void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
-
-	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
-	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
-
-	weapon->addChild(fire);
-
-	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
-	fire->setPosition(Vec2(0.0f, 56.0f));
+	super::performAttack(owner, targets);
 	
-	weapon->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	for (auto next : targets)
 	{
-		weapon->getCollision()->setPhysicsEnabled(false);
+		ThrownObject* weapon = ThrownObject::create(owner, next, false, this->getMainhandResource(owner), Size(64.0f, 128.0f));
+		SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+		weapon->addChild(fire);
 
-		if (entity != nullptr)
+		fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
+		fire->setPosition(Vec2(0.0f, 56.0f));
+		
+		weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
-		}
+			weapon->disable(true);
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-	this->replaceMainhandWithProjectile(owner, weapon);
+			if (entity != nullptr)
+			{
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+			}
 
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
-	{
-		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
-	});
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		this->replaceMainhandWithProjectile(owner, weapon);
+
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+		{
+			weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		});
+	}
 }
 
 void ThrowFlamingWeapon::onCleanup()

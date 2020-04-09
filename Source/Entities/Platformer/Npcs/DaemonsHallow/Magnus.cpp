@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Magnus::MapKeyMagnus = "magnus";
+const std::string Magnus::MapKey = "magnus";
 HexusOpponentData* Magnus::HexusOpponentDataInstance = nullptr;
 const std::string Magnus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MAGNUS";
 
@@ -32,7 +31,7 @@ Magnus* Magnus::deserialize(ValueMap& properties)
 }
 
 Magnus::Magnus(ValueMap& properties) : super(properties,
-	Magnus::MapKeyMagnus,
+	Magnus::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Emblem,
 	Size(112.0f, 160.0f),

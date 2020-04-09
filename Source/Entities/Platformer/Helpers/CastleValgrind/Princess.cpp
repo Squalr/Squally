@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Princess::MapKeyPrincess = "princess";
+const std::string Princess::MapKey = "princess";
 HexusOpponentData* Princess::HexusOpponentDataInstance = nullptr;
 const std::string Princess::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS";
 
@@ -32,7 +31,7 @@ Princess* Princess::deserialize(ValueMap& properties)
 }
 
 Princess::Princess(ValueMap& properties) : super(properties,
-	Princess::MapKeyPrincess,
+	Princess::MapKey,
 	EntityResources::Helpers_CastleValgrind_Princess_Animations,
 	EntityResources::Helpers_CastleValgrind_Princess_Emblem,
 	Size(224.0f, 440.0f),

@@ -2,15 +2,13 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string OrcGrunt::MapKeyOrcGrunt = "orc-grunt";
+const std::string OrcGrunt::MapKey = "orc-grunt";
 
 OrcGrunt* OrcGrunt::deserialize(ValueMap& properties)
 {
@@ -22,7 +20,7 @@ OrcGrunt* OrcGrunt::deserialize(ValueMap& properties)
 }
 
 OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
-	OrcGrunt::MapKeyOrcGrunt,
+	OrcGrunt::MapKey,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	Size(256.0f, 218.0f),

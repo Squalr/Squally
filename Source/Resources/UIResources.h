@@ -6,17 +6,21 @@
 
 namespace UIResources
 {
+	extern const std::string Combat_Arrow;
 	extern const std::string Combat_AttackCircle;
 	extern const std::string Combat_DefeatMenu;
 	extern const std::string Combat_DefendCircle;
 	extern const std::string Combat_EnemyCircle;
+	extern const std::string Combat_EventCircle;
 	extern const std::string Combat_ItemFrame;
 	extern const std::string Combat_ItemsCircle;
 	extern const std::string Combat_ItemsMenu;
 	extern const std::string Combat_Line;
 	extern const std::string Combat_PlayerCircle;
+	extern const std::string Combat_RadialEye;
 	extern const std::string Combat_RewardsSlot;
 	extern const std::string Combat_SelectionLight;
+	extern const std::string Combat_Skull;
 	extern const std::string Combat_SwordFill;
 	extern const std::string Combat_SwordFillRed;
 	extern const std::string Combat_SwordTop;
@@ -107,17 +111,34 @@ namespace UIResources
 	extern const std::string Menus_Buttons_WoodButton;
 	extern const std::string Menus_Buttons_WoodButtonSelected;
 	extern const std::string Menus_ConfirmMenu_ConfirmMenu;
+	extern const std::string Menus_CraftingMenu_AllIcon;
+	extern const std::string Menus_CraftingMenu_Anvil;
+	extern const std::string Menus_CraftingMenu_AnvilIcon;
+	extern const std::string Menus_CraftingMenu_AxeIcon;
+	extern const std::string Menus_CraftingMenu_BowIcon;
+	extern const std::string Menus_CraftingMenu_CancelIcon;
+	extern const std::string Menus_CraftingMenu_CraftBarFill;
+	extern const std::string Menus_CraftingMenu_CraftButton;
+	extern const std::string Menus_CraftingMenu_CraftButtonDisabled;
+	extern const std::string Menus_CraftingMenu_CraftButtonSelected;
+	extern const std::string Menus_CraftingMenu_CraftFrame;
+	extern const std::string Menus_CraftingMenu_EnchantIcon;
+	extern const std::string Menus_CraftingMenu_MaceIcon;
+	extern const std::string Menus_CraftingMenu_PlantIcon;
+	extern const std::string Menus_CraftingMenu_PotionIcon;
+	extern const std::string Menus_CraftingMenu_SpearIcon;
+	extern const std::string Menus_CraftingMenu_SwordIcon;
+	extern const std::string Menus_CraftingMenu_Table;
+	extern const std::string Menus_CraftingMenu_TransmuteIcon;
 	extern const std::string Menus_CreditsMenu_Matt;
 	extern const std::string Menus_CreditsMenu_Nathan;
 	extern const std::string Menus_CreditsMenu_Twitter;
 	extern const std::string Menus_CreditsMenu_Zac;
-	extern const std::string Menus_DialogueMenu_AI;
-	extern const std::string Menus_DialogueMenu_DialogueBox;
-	extern const std::string Menus_DialogueMenu_DialogueFrameLeft;
-	extern const std::string Menus_DialogueMenu_DialogueFrameRight;
-	extern const std::string Menus_DialogueMenu_JungleBackground;
-	extern const std::string Menus_DialogueMenu_ShipBackground;
 	extern const std::string Menus_Generic_LargeMenu;
+	extern const std::string Menus_HackerModeMenu_Copy;
+	extern const std::string Menus_HackerModeMenu_CopySelected;
+	extern const std::string Menus_HackerModeMenu_DiscordButton;
+	extern const std::string Menus_HackerModeMenu_DiscordButtonSelected;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntry;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntrySelected;
 	extern const std::string Menus_HackerModeMenu_Plus;
@@ -213,6 +234,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_Question;
 	extern const std::string Menus_Icons_RainCloud;
 	extern const std::string Menus_Icons_Ring;
+	extern const std::string Menus_Icons_Ruby;
 	extern const std::string Menus_Icons_Safe;
 	extern const std::string Menus_Icons_Satchel;
 	extern const std::string Menus_Icons_Scale;
@@ -244,6 +266,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_Wand;
 	extern const std::string Menus_Icons_WheelBurrow;
 	extern const std::string Menus_Icons_YinYang;
+	extern const std::string Menus_IngameMenu_CardsButton;
+	extern const std::string Menus_IngameMenu_CardsButtonSelected;
 	extern const std::string Menus_IngameMenu_CloseButton;
 	extern const std::string Menus_IngameMenu_CloseButtonSelected;
 	extern const std::string Menus_IngameMenu_CollectablesButton;
@@ -370,6 +394,8 @@ namespace UIResources
 	extern const std::string Menus_MinigamesMenu_Banner;
 	extern const std::string Menus_MinigamesMenu_BannerGray;
 	extern const std::string Menus_MinigamesMenu_BannerHover;
+	extern const std::string Menus_MusicOverlay_Note;
+	extern const std::string Menus_NotificationMenu_NotificationFrame;
 	extern const std::string Menus_OptionsMenu_CheckboxEmpty;
 	extern const std::string Menus_OptionsMenu_CheckboxHover;
 	extern const std::string Menus_OptionsMenu_CheckboxSelected;
@@ -399,6 +425,8 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_ToggleButtonOn;
 	extern const std::string Menus_OptionsMenu_ToggleButtonOnHover;
 	extern const std::string Menus_PauseMenu_PauseMenu;
+	extern const std::string Menus_SaveSelectMenu_AvatarFrame;
+	extern const std::string Menus_SaveSelectMenu_CollectablesIcon;
 	extern const std::string Menus_SaveSelectMenu_Row;
 	extern const std::string Menus_SaveSelectMenu_RowSelected;
 	extern const std::string Menus_TitleScreen_Slime_Slime_0000;
@@ -444,7 +472,6 @@ namespace UIResources
 	extern const std::string Menus_TitleScreen_TitleButton;
 	extern const std::string Menus_TitleScreen_TitleButtonClick;
 	extern const std::string Menus_TitleScreen_TitleButtonHover;
-	extern const std::string Menus_TranslateMenu_TranslateMenu;
 	extern const std::string Menus_TutorialMenu_Gem;
 	extern const std::string Menus_TutorialMenu_ObjectBox1;
 	extern const std::string Menus_TutorialMenu_ObjectBox2;

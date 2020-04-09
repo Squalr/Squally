@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string ToySoldierGoblin::MapKeyToySoldierGoblin = "toy-soldier-goblin";
+const std::string ToySoldierGoblin::MapKey = "toy-soldier-goblin";
 HexusOpponentData* ToySoldierGoblin::HexusOpponentDataInstance = nullptr;
 const std::string ToySoldierGoblin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TOY_SOLDIER_GOBLIN";
 
@@ -32,7 +31,7 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& properties)
 }
 
 ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : super(properties,
-	ToySoldierGoblin::MapKeyToySoldierGoblin,
+	ToySoldierGoblin::MapKey,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,
 	Size(112.0f, 288.0f),

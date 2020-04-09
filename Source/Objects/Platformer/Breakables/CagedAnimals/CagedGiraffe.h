@@ -12,11 +12,11 @@ class CagedGiraffe : public CagedAnimal
 public:
 	static CagedGiraffe* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCagedGiraffe;
+	static const std::string MapKey;
 
 protected:
 	CagedGiraffe(cocos2d::ValueMap& properties);
-	~CagedGiraffe();
+	virtual ~CagedGiraffe();
 
 	void initializePositions() override;
 

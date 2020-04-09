@@ -18,16 +18,16 @@ public:
 	static DrawCountDisplay* create();
 
 protected:
+	DrawCountDisplay();
+	virtual ~DrawCountDisplay();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	DrawCountDisplay();
-	~DrawCountDisplay();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void onDrawCountDisplayMouseOver();
 	void onDrawCountDisplayMouseOut();
 	void enableDrawCountDisplayInteraction();

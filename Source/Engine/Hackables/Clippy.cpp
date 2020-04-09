@@ -8,8 +8,10 @@ Clippy::Clippy()
 {
 	this->animationNode = Node::create();
 	this->speechBubble = SpeechBubble::create(false);
+	this->cloneRef = nullptr;
 
-	this->isEnabled = true;
+	this->isEnabled = false;
+	this->setVisible(false);
 
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
@@ -31,8 +33,26 @@ Clippy* Clippy::clone()
 	Clippy* clippy = this->innerClone();
 
 	clippy->setIsEnabled(this->getIsEnabled());
+	clippy->cloneRef = this;
 
 	return clippy;
+}
+
+Clippy* Clippy::refClone()
+{
+	Clippy* clippy = this->clone();
+	
+	clippy->cloneRef = this;
+
+	return clippy;
+}
+
+void Clippy::runDialogue(LocalizedString* localizedString, std::string soundResource)
+{
+	if (this->isEnabled)
+	{
+		this->speechBubble->runDialogue(localizedString, soundResource, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::ExpandLeft);
+	}
 }
 
 void Clippy::setIsEnabled(bool isEnabled)
@@ -42,5 +62,10 @@ void Clippy::setIsEnabled(bool isEnabled)
 
 bool Clippy::getIsEnabled()
 {
+	if (this->cloneRef != nullptr)
+	{
+		return this->cloneRef->getIsEnabled();
+	}
+
 	return this->isEnabled;
 }

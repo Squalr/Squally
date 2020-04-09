@@ -62,7 +62,7 @@ protected:
 		std::vector<CardData*> enemyDecimalCards,
 		std::vector<CardData*> enemyHexCards
 	);
-	~StateOverride();
+	virtual ~StateOverride();
 
 private:
 	typedef SmartNode super;

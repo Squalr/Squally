@@ -5,7 +5,6 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/physics/CCPhysicsBody.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/Deserializers/LayerDeserializer.h"
@@ -38,9 +37,9 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto next : this->mapLayers)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
 	if (this->orientation == MapOrientation::Isometric)
@@ -154,10 +153,10 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 
 		const float EdgeThickness = 256.0f;
 
-		CollisionObject* topCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
-		CollisionObject* bottomCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, false, false);
-		CollisionObject* leftCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
-		CollisionObject* rightCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, CollisionObject::Properties(false, false));
+		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
 
 		edgeCollisionLayer->addChild(topCollision);
 		edgeCollisionLayer->addChild(leftCollision);
@@ -173,14 +172,14 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
-	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
+	for (auto next : mapRaw->getObjectGroups())
 	{
-		std::string layerType = GameUtils::getKeyOrDefault((*it)->getProperties(), MapLayer::MapKeyType, Value("")).asString();
+		std::string layerType = GameUtils::getKeyOrDefault(next->getProperties(), MapLayer::MapKeyType, Value("")).asString();
 
 		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
-			(*it)->getProperties(),
-			(*it)->getObjects(),
-			(*it)->layerIndex,
+			next->getProperties(),
+			next->getObjects(),
+			next->layerIndex,
 			mapFileName,
 			mapSize,
 			isIsometric,
@@ -202,9 +201,9 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Pull out tile layers
-	for (auto it = mapRaw->getChildren().begin(); it != mapRaw->getChildren().end(); it++)
+	for (auto next : mapRaw->getChildren())
 	{
-		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(*it);
+		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(next);
 
 		if (tileLayer != nullptr)
 		{
@@ -213,19 +212,19 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
-	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
+	for (auto next : tileLayers)
 	{
-		deserializedLayerMap[(*it)->layerIndex] = TileLayer::deserialize((*it));
+		deserializedLayerMap[next->layerIndex] = TileLayer::deserialize(next);
 	}
 
 	// Convert from map to ordered vector
-	for (auto it = deserializedLayerMap.begin(); it != deserializedLayerMap.end(); it++)
+	for (auto next : deserializedLayerMap)
 	{
-		deserializedLayers.push_back(it->second);
+		deserializedLayers.push_back(next.second);
 	}
 
 	// Create a special hud_target layer for top-level display items
-	deserializedLayers.push_back(MapLayer::create({ { MapLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target"));
+	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
 
 	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
@@ -241,22 +240,29 @@ std::string GameMap::getMapFileName()
 
 void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 {
-	if (this->mapLayers.empty() || args->objectToSpawn == nullptr)
+	if (args == nullptr)
 	{
 		return;
 	}
 
-	bool isReentry = (args->objectToSpawn->getParent() != nullptr);
-	bool retainPosition = (args->positionMode != ObjectEvents::PositionMode::Discard);
+	ObjectEvents::RequestObjectSpawnArgs* innerArgs = args->innerArgs;
 
-	if (args->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	if (this->mapLayers.empty() || innerArgs->objectToSpawn == nullptr)
 	{
-		args->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(args->spawner));
+		return;
 	}
 
-	switch (args->spawnMethod)
+	bool isReentry = (innerArgs->objectToSpawn->getParent() != nullptr);
+	bool retainPosition = (innerArgs->positionMode != ObjectEvents::PositionMode::Discard);
+
+	if (innerArgs->positionMode == ObjectEvents::PositionMode::SetToOwner)
 	{
-		case ObjectEvents::SpawnMethod::Below:
+		innerArgs->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(innerArgs->spawner));
+	}
+
+	switch (innerArgs->spawnMethod)
+	{
+		case ObjectEvents::SpawnMethod::LayerBelow:
 		{
 			std::vector<MapLayer*>::iterator prevIt = this->mapLayers.end();
 
@@ -266,11 +272,17 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 				{
 					if (prevIt != this->mapLayers.end())
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*prevIt), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*prevIt), retainPosition, isReentry);
+						innerArgs->handled = true;
+
+						return;
 					}
 					else
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*it), retainPosition, isReentry);
+						innerArgs->handled = true;
+
+						return;
 					}
 				}
 
@@ -279,14 +291,36 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 
 			break;
 		}
+		case ObjectEvents::SpawnMethod::TopMost:
+		{
+			if (!this->mapLayers.empty())
+			{
+				GameUtils::changeParent(innerArgs->objectToSpawn, this->mapLayers.back(), retainPosition, isReentry);
+				innerArgs->handled = true;
+			}
+			
+			break;
+		}
+		case ObjectEvents::SpawnMethod::Below:
+		{
+			for (auto layer : this->mapLayers)
+			{
+				if (layer == args->sourceLayer)
+				{
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry, 0);
+					innerArgs->handled = true;
+				}
+			}
+		}
 		default:
 		case ObjectEvents::SpawnMethod::Above:
 		{
-			for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+			for (auto layer : this->mapLayers)
 			{
-				if (*it == args->sourceLayer)
+				if (layer == args->sourceLayer)
 				{
-					GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry);
+					innerArgs->handled = true;
 				}
 			}
 			
@@ -312,50 +346,50 @@ void GameMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
 		return;
 	}
 
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		if ((*it)->isElevateTarget())
+		if (layer->isElevateTarget())
 		{
-			GameUtils::changeParent(args->relocatedObject, *it, true);
+			GameUtils::changeParent(args->relocatedObject, layer, true);
 		}
 	}
 }
 
 void GameMap::hackerModeEnable()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		if (!(*it)->isHackable())
+		if (!layer->isHackable())
 		{
-			(*it)->setVisible(false);
+			layer->setVisible(false);
 		}
 	}
 }
 
 void GameMap::hackerModeDisable()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		(*it)->setVisible(true);
+		layer->setVisible(true);
 	}
 }
 
 void GameMap::hackerModeLayerFade()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		if ((*it)->isHackable())
+		if (layer->isHackable())
 		{
-			(*it)->setOpacity(128);
+			layer->setOpacity(128);
 		}
 	}
 }
 
 void GameMap::hackerModeLayerUnfade()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		(*it)->setOpacity(255);
+		layer->setOpacity(255);
 	}
 }
 
@@ -395,9 +429,9 @@ void GameMap::appendLayer(MapLayer* mapLayer)
 
 void GameMap::setCollisionLayersVisible(bool isVisible)
 {
-	for (auto it = this->collisionLayers.begin(); it != this->collisionLayers.end(); it++)
+	for (auto layer : this->collisionLayers)
 	{
-		(*it)->setVisible(isVisible);
+		layer->setVisible(isVisible);
 	}
 }
 
@@ -413,11 +447,11 @@ void GameMap::isometricZSort()
 		return;
 	}
 
-	for (auto it = this->layersToSort.begin(); it != this->layersToSort.end(); it++)
+	for (auto layer : this->layersToSort)
 	{
-		for (auto childIt = (*it)->getChildren().begin(); childIt != (*it)->getChildren().end(); childIt++)
+		for (auto child : layer->getChildren())
 		{
-			GameObject* object = dynamic_cast<GameObject*>(*childIt);
+			GameObject* object = dynamic_cast<GameObject*>(child);
 
 			// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
 			if (object != nullptr && object->isZSorted())
@@ -442,7 +476,7 @@ void GameMap::isometricMapPreparation()
 	{
 		return;
 	}
-
+	
 	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
 	{
 		// Tile layers:

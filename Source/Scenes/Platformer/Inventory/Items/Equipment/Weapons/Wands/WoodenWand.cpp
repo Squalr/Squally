@@ -1,15 +1,15 @@
 #include "WoodenWand.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string WoodenWand::SaveKeyWoodenWand = "wooden-wand";
+const std::string WoodenWand::SaveKey = "wooden-wand";
 
 WoodenWand* WoodenWand::create()
 {
@@ -20,17 +20,18 @@ WoodenWand* WoodenWand::create()
 	return instance;
 }
 
-WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 1, 2, ItemStats(
+// TODO: revert to 3-4 damage once weapon skills are added.
+WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 5, 7, ItemStats(
 	// Health
 	0,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +47,7 @@ Item* WoodenWand::clone()
 
 std::string WoodenWand::getItemName()
 {
-	return WoodenWand::SaveKeyWoodenWand;
+	return WoodenWand::SaveKey;
 }
 
 LocalizedString* WoodenWand::getString()
@@ -56,12 +57,12 @@ LocalizedString* WoodenWand::getString()
 
 std::string WoodenWand::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand;
+	return ItemResources::Equipment_Weapons_Wands_WoodenWand;
 }
 
 std::string WoodenWand::getSerializationKey()
 {
-	return WoodenWand::SaveKeyWoodenWand;
+	return WoodenWand::SaveKey;
 }
 
 Vec2 WoodenWand::getDisplayOffset()

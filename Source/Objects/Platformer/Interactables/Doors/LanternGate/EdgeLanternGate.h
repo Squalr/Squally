@@ -17,7 +17,7 @@ public:
 	void lock(bool animate = true) override;
 	void unlock(bool animate = true) override;
 
-	static const std::string MapKeyEdgeLanternGate;
+	static const std::string MapKey;
 
 protected:
 	EdgeLanternGate(cocos2d::ValueMap& properties);

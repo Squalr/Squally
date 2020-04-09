@@ -14,14 +14,15 @@ public:
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
 	void clearEntityClickCallbacks();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntitySelectionBehavior(GameObject* owner);
-	~EntitySelectionBehavior();
+	virtual ~EntitySelectionBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

@@ -13,15 +13,15 @@ public:
 	static OpponentRoundWinBanner* create();
 
 protected:
+	OpponentRoundWinBanner();
+	virtual ~OpponentRoundWinBanner();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef BannerBase super;
-	OpponentRoundWinBanner();
-	~OpponentRoundWinBanner();
-
-	void initializePositions() override;
 
 	cocos2d::Sprite* playerPassBanner1;
 	cocos2d::Sprite* playerPassBanner2;

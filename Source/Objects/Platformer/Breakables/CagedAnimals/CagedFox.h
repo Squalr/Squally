@@ -12,11 +12,11 @@ class CagedFox : public CagedAnimal
 public:
 	static CagedFox* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCagedFox;
+	static const std::string MapKey;
 
 protected:
 	CagedFox(cocos2d::ValueMap& properties);
-	~CagedFox();
+	virtual ~CagedFox();
 
 	void initializePositions() override;
 

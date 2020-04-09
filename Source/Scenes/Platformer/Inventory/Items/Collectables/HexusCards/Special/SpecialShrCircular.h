@@ -16,7 +16,7 @@ public:
 	std::string getSerializationKey() override;
 	std::string getCardKey() override;
 
-	static const std::string SaveKeySpecialShrCircular;
+	static const std::string SaveKey;
 
 protected:
 	SpecialShrCircular();

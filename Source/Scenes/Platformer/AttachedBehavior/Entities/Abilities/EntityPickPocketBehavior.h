@@ -12,13 +12,14 @@ class EntityPickPocketBehavior : public AttachedBehavior
 public:
 	static EntityPickPocketBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityPickPocketBehavior(GameObject* owner);
-	~EntityPickPocketBehavior();
+	virtual ~EntityPickPocketBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

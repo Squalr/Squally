@@ -1,16 +1,16 @@
 #include "SpecialShr.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialShr::SaveKeySpecialShr = "special-shr";
+const std::string SpecialShr::SaveKey = "special-shr";
 
 SpecialShr* SpecialShr::create()
 {
@@ -21,7 +21,7 @@ SpecialShr* SpecialShr::create()
 	return instance;
 }
 
-SpecialShr::SpecialShr() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialShr::SpecialShr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialShr::clone()
 
 std::string SpecialShr::getItemName()
 {
-	return SpecialShr::SaveKeySpecialShr;
+	return SpecialShr::SaveKey;
 }
 
 LocalizedString* SpecialShr::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialShr::getString()
 
 std::string SpecialShr::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialShr::getSerializationKey()
 {
-	return SpecialShr::SaveKeySpecialShr;
+	return SpecialShr::SaveKey;
 }
 
 std::string SpecialShr::getCardKey()

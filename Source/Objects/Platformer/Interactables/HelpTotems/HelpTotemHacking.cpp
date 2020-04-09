@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string HelpTotemHacking::MapKeyHelpTotemHacking = "help-totem-hacking";
+const std::string HelpTotemHacking::MapKey = "help-totem-hacking";
 
 HelpTotemHacking* HelpTotemHacking::create(ValueMap& properties)
 {
@@ -28,13 +28,10 @@ HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 {
 	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemHacking::create();
 	LocalizedString* bracketString1 = Strings::Common_Brackets::create();
-	LocalizedString* bracketString2 = Strings::Common_Brackets::create();
-	LocalizedString* shiftString = Strings::Input_Shift::create();
 	LocalizedString* tabString = Strings::Input_Tab::create();
 
-	bracketString1->setStringReplacementVariables(shiftString);
-	bracketString2->setStringReplacementVariables(tabString);
-	hintString->setStringReplacementVariables({ bracketString1, bracketString2 });
+	bracketString1->setStringReplacementVariables(tabString);
+	hintString->setStringReplacementVariables({ bracketString1 });
 	
 	this->setHint(hintString);
 }

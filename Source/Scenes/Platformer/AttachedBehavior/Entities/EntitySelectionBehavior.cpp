@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string EntitySelectionBehavior::MapKeyAttachedBehavior = "entity-selection";
+const std::string EntitySelectionBehavior::MapKey = "entity-selection";
 
 EntitySelectionBehavior* EntitySelectionBehavior::create(GameObject* owner)
 {
@@ -51,6 +51,11 @@ void EntitySelectionBehavior::initializePositions()
 
 void EntitySelectionBehavior::onLoad()
 {
+}
+
+void EntitySelectionBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void EntitySelectionBehavior::setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver, std::function<void()> onMouseOut)

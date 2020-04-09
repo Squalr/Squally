@@ -19,20 +19,22 @@ public:
 	static EntityDialogueBehavior* create(GameObject* owner);
 
 	void enqueuePretext(DialogueEvents::DialogueOpenArgs pretext);
+	void clearPretext();
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);
 	DialogueSet* getMainDialogueSet();
 	SpeechBubble* getSpeechBubble();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityDialogueBehavior(GameObject* owner);
-	~EntityDialogueBehavior();
+	virtual ~EntityDialogueBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;
@@ -42,6 +44,7 @@ private:
 	void chooseOption(int option);
 	void showOptions();
 	bool hasDialogueOptions();
+	void updateInteractVisibility();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 
 	PlatformerEntity* entity;

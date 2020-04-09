@@ -1,11 +1,11 @@
 #include "MenuBackground.h"
 
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
@@ -52,8 +52,8 @@ MenuBackground::MenuBackground()
 	this->foregroundGrassTop = FloatingSprite::create(UIResources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(UIResources::Menus_Backgrounds_Light);
 
-	this->windParticles = ParticleSystemQuad::create(ParticleResources::Wind);
-	this->fireflyParticles = ParticleSystemQuad::create(ParticleResources::Fireflies2);
+	this->windParticles = SmartParticles::create(ParticleResources::Wind);
+	this->fireflyParticles = SmartParticles::create(ParticleResources::Fireflies2);
 
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
@@ -80,7 +80,10 @@ void MenuBackground::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	const Size visibleSize = Director::getInstance()->getVisibleSize();
+	
+	this->fireflyParticles->accelerate(2.0f);
+	this->windParticles->accelerate(5.0f);
 
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 320.0f));

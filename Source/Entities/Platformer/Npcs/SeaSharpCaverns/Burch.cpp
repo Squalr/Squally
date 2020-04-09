@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Burch::MapKeyBurch = "burch";
+const std::string Burch::MapKey = "burch";
 HexusOpponentData* Burch::HexusOpponentDataInstance = nullptr;
 const std::string Burch::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BURCH";
 
@@ -32,7 +31,7 @@ Burch* Burch::deserialize(ValueMap& properties)
 }
 
 Burch::Burch(ValueMap& properties) : super(properties,
-	Burch::MapKeyBurch,
+	Burch::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,
 	Size(112.0f, 160.0f),

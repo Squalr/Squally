@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Shade::MapKeyShade = "shade";
+const std::string Shade::MapKey = "shade";
 HexusOpponentData* Shade::HexusOpponentDataInstance = nullptr;
 const std::string Shade::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHADE";
 
@@ -32,7 +31,7 @@ Shade* Shade::deserialize(ValueMap& properties)
 }
 
 Shade::Shade(ValueMap& properties) : super(properties,
-	Shade::MapKeyShade,
+	Shade::MapKey,
 	EntityResources::Enemies_VoidStar_Shade_Animations,
 	EntityResources::Enemies_VoidStar_Shade_Emblem,
 	Size(284.0f, 256.0f),

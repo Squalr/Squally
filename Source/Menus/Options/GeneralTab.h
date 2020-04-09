@@ -18,7 +18,7 @@ public:
 
 protected:
 	GeneralTab();
-	~GeneralTab();
+	virtual ~GeneralTab();
 
 private:
 	typedef SmartNode super;

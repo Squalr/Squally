@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Medusa::MapKeyMedusa = "medusa";
+const std::string Medusa::MapKey = "medusa";
 HexusOpponentData* Medusa::HexusOpponentDataInstance = nullptr;
 const std::string Medusa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MEDUSA";
 
@@ -32,7 +31,7 @@ Medusa* Medusa::deserialize(ValueMap& properties)
 }
 
 Medusa::Medusa(ValueMap& properties) : super(properties,
-	Medusa::MapKeyMedusa,
+	Medusa::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	Size(224.0f, 304.0f),

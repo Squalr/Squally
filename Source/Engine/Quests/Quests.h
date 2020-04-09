@@ -23,7 +23,7 @@ public:
 
 protected:
 	Quests();
-	~Quests();
+	virtual ~Quests();
 
 private:
 	typedef SmartNode super;

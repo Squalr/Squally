@@ -21,6 +21,7 @@ const std::string GameObject::MapKeyWidth = "width";
 const std::string GameObject::MapKeyHeight = "height";
 const std::string GameObject::MapKeyXPosition = "x";
 const std::string GameObject::MapKeyYPosition = "y";
+const std::string GameObject::MapKeyDepth = "depth";
 const std::string GameObject::MapKeyScale = "scale";
 const std::string GameObject::MapKeyScaleX = "scale-x";
 const std::string GameObject::MapKeyScaleY = "scale-y";
@@ -62,9 +63,10 @@ const std::vector<std::string> GameObject::AttributeKeys =
 	GameObject::MapKeyRotation,
 };
 
-const std::string GameObject::MapKeyPropertyName = "name";
-const std::string GameObject::MapKeyPropertyType = "type";
-const std::string GameObject::MapKeyPropertyValue = "value";
+const std::string GameObject::PropertyName = "name";
+const std::string GameObject::PropertyType = "type";
+const std::string GameObject::PropertyValue = "value";
+unsigned long long GameObject::WatchId = 0;
 
 GameObject::GameObject() : GameObject(ValueMap())
 {
@@ -82,15 +84,14 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
-	this->setPosition(Vec2::ZERO);
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 
 	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
-	for (auto it = tags.begin(); it != tags.end(); it++)
+	for (auto tag : tags)
 	{
-		this->addTag(*it);
+		this->addTag(tag);
 	}
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
@@ -134,9 +135,9 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyPoints, Value(ValueVector())).asValueVector();
 		}
 		
-		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
+		for (auto next : polygonPointsRaw)
 		{
-			ValueMap point = it->asValueMap();
+			ValueMap point = next.asValueMap();
 
 			Vec2 delta = Vec2(
 				point.at(GameObject::MapKeyXPosition).asFloat(),
@@ -179,9 +180,9 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyPoints, Value(ValueVector())).asValueVector();
 		}
 
-		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
+		for (auto next : polygonPointsRaw)
 		{
-			ValueMap point = it->asValueMap();
+			ValueMap point = next.asValueMap();
 
 			Vec2 delta = Vec2(
 				point.at(GameObject::MapKeyXPosition).asFloat(),
@@ -197,6 +198,8 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			this->polylinePoints.push_back(convertedDelta);
 		}
 	}
+
+	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
 }
 
 GameObject::~GameObject()
@@ -208,6 +211,11 @@ void GameObject::onEnter()
 	super::onEnter();
 
 	this->loadObjectState();
+}
+
+void GameObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
 }
 
 void GameObject::initializeListeners()
@@ -224,9 +232,9 @@ void GameObject::initializeListeners()
 		}
 	}));
 
-	for (auto it = this->tags.begin(); it != this->tags.end(); it++)
+	for (auto tag : this->tags)
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + tag, [=](EventCustom* eventCustom)
 		{
 			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
 
@@ -264,7 +272,9 @@ void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
 	if (std::find(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior) != this->attachedBehavior.end())
 	{
 		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
-		this->removeChild(attachedBehavior);
+
+		// Note: Removing children at runtime is unsafe. The best we can do is disable it.
+		attachedBehavior->onDisable();
 	}
 }
 
@@ -316,6 +326,11 @@ bool GameObject::getStateOrDefaultBool(std::string key, bool value)
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asBool();
 }
 
+ValueMap& GameObject::getStateVariables()
+{
+	return this->stateVariables;
+}
+
 bool GameObject::hasState(std::string key)
 {
 	return GameUtils::keyExists(this->stateVariables, key);
@@ -347,7 +362,7 @@ void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, 
 
 	saveData[key] = value;
 
-	SaveManager::saveProfileData(uniqueIdentifier, Value(saveData));
+	SaveManager::SaveProfileData(uniqueIdentifier, Value(saveData));
 }
 
 void GameObject::saveObjectState(std::string key, cocos2d::Value value)
@@ -356,7 +371,7 @@ void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 	{
 		this->saveProperties[key] = value;
 
-		SaveManager::saveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
+		SaveManager::SaveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
 	}
 }
 
@@ -419,9 +434,9 @@ void GameObject::onObjectStateLoaded()
 
 bool GameObject::containsAttributes()
 {
-	for (auto it = GameObject::AttributeKeys.begin(); it != GameObject::AttributeKeys.end(); it++)
+	for (auto next : GameObject::AttributeKeys)
 	{
-		if (GameUtils::keyExists(this->properties, *it))
+		if (GameUtils::keyExists(this->properties, next))
 		{
 			return true;
 		}
@@ -432,9 +447,9 @@ bool GameObject::containsAttributes()
 
 bool GameObject::containsProperties()
 {
-	for (auto it = this->properties.begin(); it != this->properties.end(); it++)
+	for (auto next : this->properties)
 	{
-		if (!GameObject::isAttributeOrHiddenProperty(it->first))
+		if (!GameObject::isAttributeOrHiddenProperty(next.first))
 		{
 			return true;
 		}
@@ -520,7 +535,9 @@ std::string GameObject::getSendEvent()
 
 void GameObject::despawn()
 {
-	for (auto behavior : this->attachedBehavior)
+	std::vector<AttachedBehavior*> behaviorClone = this->attachedBehavior;
+
+	for (auto behavior : behaviorClone)
 	{
 		this->detachBehavior(behavior);
 	}

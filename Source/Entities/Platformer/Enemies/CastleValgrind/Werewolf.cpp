@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Werewolf::MapKeyWerewolf = "werewolf";
+const std::string Werewolf::MapKey = "werewolf";
 HexusOpponentData* Werewolf::HexusOpponentDataInstance = nullptr;
 const std::string Werewolf::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WEREWOLF";
 
@@ -32,7 +31,7 @@ Werewolf* Werewolf::deserialize(ValueMap& properties)
 }
 
 Werewolf::Werewolf(ValueMap& properties) : super(properties,
-	Werewolf::MapKeyWerewolf,
+	Werewolf::MapKey,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Emblem,
 	Size(196.0f, 512.0f),

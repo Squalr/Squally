@@ -11,13 +11,13 @@ class Squally;
 class ChatWithGuano : public QuestTask
 {
 public:
-	static ChatWithGuano* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static ChatWithGuano* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	ChatWithGuano(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~ChatWithGuano();
+	ChatWithGuano(GameObject* owner, QuestLine* questLine);
+	virtual ~ChatWithGuano();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

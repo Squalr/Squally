@@ -61,6 +61,6 @@ void OptionsScene::initializeListeners()
 
 	this->menu->setBackClickCallback([]()
 	{
-		NavigationEvents::LoadScene(TitleScreen::getInstance());
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
 }

@@ -16,7 +16,7 @@ public:
 	SpawnType getSpawnType();
 	int getSpawnOrder();
 
-	static const std::string MapKeyCombatSpawn;
+	static const std::string MapKey;
 
 private:
 	typedef GameObject super;
@@ -28,11 +28,12 @@ private:
 
 	SpawnType spawnType;
 	int spawnOrder;
+	float spawnObjectHeight;
 	float zoom;
 
 	static const std::string MapKeySpawnType;
 	static const std::string MapKeySpawnOrder;
 	static const std::string MapKeyPlayerSpawn;
 	static const std::string MapKeyEnemySpawn;
-	static const std::string MapKeyPropertyZoom;
+	static const std::string PropertyZoom;
 };

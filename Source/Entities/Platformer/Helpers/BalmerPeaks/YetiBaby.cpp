@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
+const std::string YetiBaby::MapKey = "yeti-baby";
 HexusOpponentData* YetiBaby::HexusOpponentDataInstance = nullptr;
 const std::string YetiBaby::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI_BABY";
 
@@ -32,7 +31,7 @@ YetiBaby* YetiBaby::deserialize(ValueMap& properties)
 }
 
 YetiBaby::YetiBaby(ValueMap& properties) : super(properties,
-	YetiBaby::MapKeyYetiBaby,
+	YetiBaby::MapKey,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
 	Size(224.0f, 440.0f),

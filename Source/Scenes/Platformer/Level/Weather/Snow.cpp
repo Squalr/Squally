@@ -1,9 +1,10 @@
 #include "Snow.h"
 
-#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 
@@ -22,8 +23,8 @@ Snow* Snow::create(ValueMap& properties, std::string name)
 
 Snow::Snow(ValueMap& properties, std::string name) : super(properties, name, "weather")
 {
-	this->snow = ParticleSystemQuad::create(ParticleResources::Rain);
-	this->snow->setPositionType(ParticleSystem::PositionType::GROUPED);
+	this->snow = SmartParticles::create(ParticleResources::Rain);
+	this->snow->setGrouped();
 
 	this->snow->start();
 
@@ -48,5 +49,5 @@ void Snow::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->snow->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
+	this->snow->getParticles()->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
 }

@@ -6,5 +6,5 @@ class CardShiftRight : public CardData
 {
 public:
 	CardShiftRight();
-	~CardShiftRight();
+	virtual ~CardShiftRight();
 };

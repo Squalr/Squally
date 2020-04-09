@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyVampiress;
+	static const std::string MapKey;
+	
+protected:
+	Vampiress(cocos2d::ValueMap& properties);
+	virtual ~Vampiress();
 
 private:
 	typedef PlatformerEnemy super;
-	Vampiress(cocos2d::ValueMap& properties);
-	~Vampiress();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

@@ -16,13 +16,14 @@ public:
 
 protected:
 	PointerTraceLevelSelect();
-	~PointerTraceLevelSelect();
-
-private:
-	typedef MapBase super;
+	virtual ~PointerTraceLevelSelect();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef MapBase super;
 
 	static PointerTraceLevelSelect* instance;
 };

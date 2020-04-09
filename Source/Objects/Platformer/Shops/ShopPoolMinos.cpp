@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolMinos::MapKeyShopPoolMinos = "shop-pool-minos";
+const std::string ShopPoolMinos::MapKey = "shop-pool-minos";
 const std::string ShopPoolMinos::PoolName = "shop-pool-minos";
 
 ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
@@ -26,11 +26,12 @@ ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
 
 ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName, { })
 {
-	this->addItemToPool(ItemChance::create(IronSword::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
+	// this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
+	// this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolMinos::~ShopPoolMinos()

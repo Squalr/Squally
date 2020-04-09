@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string ShipAltTexture::MapKeyTextureType = "ship-alt";
+const std::string ShipAltTexture::MapKey = "ship-alt";
 
 ShipAltTexture* ShipAltTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ ShipAltTexture* ShipAltTexture::create(ValueMap& properties)
 ShipAltTexture::ShipAltTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		ShipAltTexture::MapKeyTextureType,
+		ShipAltTexture::MapKey,
 		TextureResources::ShipAltTexture,
 		Color4B(11, 30, 39, 255)))
 {

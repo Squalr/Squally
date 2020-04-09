@@ -1,15 +1,15 @@
 #include "Obsidian.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Obsidian::SaveKeyObsidian = "obsidian";
+const std::string Obsidian::SaveKey = "obsidian";
 
 Obsidian* Obsidian::create()
 {
@@ -20,7 +20,7 @@ Obsidian* Obsidian::create()
 	return instance;
 }
 
-Obsidian::Obsidian() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Obsidian::Obsidian() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 94 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Obsidian::clone()
 
 std::string Obsidian::getItemName()
 {
-	return Obsidian::SaveKeyObsidian;
+	return Obsidian::SaveKey;
 }
 
 LocalizedString* Obsidian::getString()
@@ -45,10 +45,10 @@ LocalizedString* Obsidian::getString()
 
 std::string Obsidian::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Obsidian;
+	return ItemResources::Crafting_Smithing_Obsidian;
 }
 
 std::string Obsidian::getSerializationKey()
 {
-	return Obsidian::SaveKeyObsidian;
+	return Obsidian::SaveKey;
 }

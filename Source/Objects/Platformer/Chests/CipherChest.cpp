@@ -14,9 +14,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Events/CipherEvents.h"
-#include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
-#include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
@@ -24,18 +22,16 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Strings.h"
-
 using namespace cocos2d;
 
-const std::string CipherChest::MapKeyCipherChest = "cipher-chest";
-const std::string CipherChest::MapKeyPropertyInputs = "inputs";
-const std::string CipherChest::MapKeyPropertyRule = "rule";
-const std::string CipherChest::MapKeyPropertyDataType = "data-type";
-const std::string CipherChest::MapKeyPropertyTokens = "tokens";
-const std::string CipherChest::MapKeyPropertyTutorial = "tutorial";
+const std::string CipherChest::MapKey = "cipher-chest";
+const std::string CipherChest::PropertyInputs = "inputs";
+const std::string CipherChest::PropertyRule = "rule";
+const std::string CipherChest::PropertyDataType = "data-type";
+const std::string CipherChest::PropertyTokens = "tokens";
+const std::string CipherChest::PropertyTutorial = "tutorial";
 
-CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
+CipherChest* CipherChest::create(ValueMap& properties)
 {
 	CipherChest* instance = new CipherChest(properties);
 
@@ -44,10 +40,14 @@ CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-CipherChest::CipherChest(cocos2d::ValueMap& properties) : super(properties)
+CipherChest::CipherChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
 {
+	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestOpened);
+	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestClosed);
 	this->cipherPuzzleData = this->buildPuzzleData();
 
+	this->chestOpen->addChild(chestOpenFrontSprite);
+	this->chestClosed->addChild(chestClosedSprite);
 	this->addChild(this->cipherPuzzleData);
 }
 
@@ -74,6 +74,8 @@ void CipherChest::initializeListeners()
 
 void CipherChest::onInteract()
 {
+	// Intentionally do not call super here. Overriding default behavior of giving items.
+
 	CipherEvents::TriggerOpenCipher(CipherEvents::CipherOpenArgs(this->cipherPuzzleData));
 }
 
@@ -125,21 +127,21 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		return (unsigned char)(MathUtils::resolveBinaryMathExpression(expression));
 	};
 
-	std::string rule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRule, Value("")).asString();
-	std::string dataType = StrUtils::toLower(GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyDataType, Value("ascii")).asString());
+	std::string rule = GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyRule, Value("")).asString();
+	std::string dataType = StrUtils::toLower(GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyDataType, Value("ascii")).asString());
 	std::vector<std::string> inputs = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputs, Value("")).asString(), ", ", false
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyInputs, Value("")).asString(), ", ", false
 	);
 	std::vector<std::string> tokens = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokens, Value("")).asString(), ", ", false
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyTokens, Value("")).asString(), ", ", false
 	);
 
-	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTutorial, Value("")).asString();
+	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyTutorial, Value("")).asString();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap = std::vector<std::tuple<unsigned char, unsigned char>>();
 
-	for (auto it = inputs.begin(); it != inputs.end(); it++)
+	for (auto next : inputs)
 	{
-		unsigned char input = getChar(*it, dataType);
+		unsigned char input = getChar(next, dataType);
 		unsigned char output = applyRule(input, rule);
 
 		inputOutputMap.push_back(std::tuple<unsigned char, unsigned char>(input, output));
@@ -147,20 +149,6 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 
 	return CipherPuzzleData::create(inputOutputMap, tokens, dataType, tutorial, [=](CipherPuzzleData* puzzleData)
 	{
-		this->onUnlock(puzzleData);
+		this->performUnlockAndGiveItems();
 	});
-}
-
-void CipherChest::onUnlock(CipherPuzzleData* puzzleData)
-{
-	this->unlock();
-	this->open();
-
-	if (this->chestPool == nullptr)
-	{
-		this->chestPool = ErrorPool::create();
-		this->addChild(this->chestPool);
-	}
-
-	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool, Strings::Platformer_Notifications_ItemFound::create()));
 }

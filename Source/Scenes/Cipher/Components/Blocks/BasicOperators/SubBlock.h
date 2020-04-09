@@ -8,13 +8,13 @@ public:
 	static SubBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	SubBlock(BlockType blockType);
+	virtual ~SubBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	SubBlock(BlockType blockType);
-	~SubBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

@@ -1,16 +1,16 @@
 #include "Hex11.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Hex11::SaveKeyHex11 = "hex-11";
+const std::string Hex11::SaveKey = "hex-11";
 
 Hex11* Hex11::create()
 {
@@ -21,7 +21,7 @@ Hex11* Hex11::create()
 	return instance;
 }
 
-Hex11::Hex11() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Hex11::Hex11() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 13 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* Hex11::clone()
 
 std::string Hex11::getItemName()
 {
-	return Hex11::SaveKeyHex11;
+	return Hex11::SaveKey;
 }
 
 LocalizedString* Hex11::getString()
@@ -46,12 +46,12 @@ LocalizedString* Hex11::getString()
 
 std::string Hex11::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardHex;
+	return ItemResources::Collectables_Cards_CardHex;
 }
 
 std::string Hex11::getSerializationKey()
 {
-	return Hex11::SaveKeyHex11;
+	return Hex11::SaveKey;
 }
 
 std::string Hex11::getCardKey()

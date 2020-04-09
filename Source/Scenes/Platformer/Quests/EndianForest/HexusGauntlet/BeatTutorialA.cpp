@@ -25,16 +25,16 @@ const std::string BeatTutorialA::MapKeyQuest = "beat-tutorial-A";
 const std::string BeatTutorialA::WinLossTrackIdentifier = "Tutorial-A";
 const std::string BeatTutorialA::QuestPortalTag = "quest-portal";
 
-BeatTutorialA* BeatTutorialA::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+BeatTutorialA* BeatTutorialA::create(GameObject* owner, QuestLine* questLine)
 {
-	BeatTutorialA* instance = new BeatTutorialA(owner, questLine, questTag);
+	BeatTutorialA* instance = new BeatTutorialA(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BeatTutorialA::BeatTutorialA(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialA::MapKeyQuest, questTag, false)
+BeatTutorialA::BeatTutorialA(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BeatTutorialA::MapKeyQuest, false)
 {
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
@@ -62,7 +62,7 @@ void BeatTutorialA::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{

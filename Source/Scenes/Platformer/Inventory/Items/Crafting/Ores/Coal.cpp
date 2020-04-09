@@ -1,15 +1,15 @@
 #include "Coal.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Coal::SaveKeyCoal = "coal";
+const std::string Coal::SaveKey = "coal";
 
 Coal* Coal::create()
 {
@@ -20,7 +20,7 @@ Coal* Coal::create()
 	return instance;
 }
 
-Coal::Coal() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Coal::Coal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 6 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Coal::clone()
 
 std::string Coal::getItemName()
 {
-	return Coal::SaveKeyCoal;
+	return Coal::SaveKey;
 }
 
 LocalizedString* Coal::getString()
@@ -45,10 +45,10 @@ LocalizedString* Coal::getString()
 
 std::string Coal::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Coal;
+	return ItemResources::Crafting_Smithing_Coal;
 }
 
 std::string Coal::getSerializationKey()
 {
-	return Coal::SaveKeyCoal;
+	return Coal::SaveKey;
 }

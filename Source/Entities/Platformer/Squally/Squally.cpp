@@ -27,13 +27,14 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
 const float Squally::SquallyScale = 0.92f;
-const std::string Squally::MapKeySqually = "squally";
+const std::string Squally::MapKey = "squally";
 const std::string Squally::BattleTag = "squally-team";
 
 Squally* Squally::create()
@@ -56,7 +57,7 @@ Squally* Squally::deserialize(ValueMap& properties)
 }
 
 Squally::Squally(ValueMap& properties) : super(properties,
-	Squally::MapKeySqually,
+	Squally::MapKey,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
 	Size(128.0f, 128.0f),
@@ -64,7 +65,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 24.0f),
 	96.0f)
 {
-	this->registerHackables();
 }
 
 Squally::~Squally()
@@ -106,11 +106,6 @@ Vec2 Squally::getButtonOffset()
 	return Vec2(0, 72.0f);
 }
 
-float Squally::getFloatHeight()
-{
-	return 64.0f;
-}
-
 cocos2d::Vec2 Squally::getDialogueOffset()
 {
 	return Vec2(0.0f, -16.0f);
@@ -121,22 +116,31 @@ LocalizedString* Squally::getEntityName()
 	return Strings::Platformer_Entities_Names_Squally::create();
 }
 
-void Squally::performSwimAnimation()
+std::string Squally::getSwimAnimation()
 {
-	this->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	std::string swimAnimation = super::getSwimAnimation();
+
+	this->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		if (entityInventoryBehavior->getEquipmentInventory()->getWeapon() != nullptr)
 		{
-			this->animationNode->playAnimation("SwimWithWeapon", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+			swimAnimation = "SwimWithWeapon";
 		}
 		else
 		{
-			this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+			swimAnimation = "Swim";
 		}
 	});
+
+	return swimAnimation;
 }
 
-void Squally::onHackerModeEnable(int hackFlags)
+std::string Squally::getJumpSound()
 {
-	super::onHackerModeEnable(hackFlags);
+	return SoundResources::Platformer_Entities_Generic_Movement_Jump3;
+}
+
+std::vector<std::string> Squally::getWalkSounds()
+{
+	return { };
 }

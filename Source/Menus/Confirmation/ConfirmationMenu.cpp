@@ -1,5 +1,6 @@
 #include "ConfirmationMenu.h"
 
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
@@ -8,6 +9,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Events/NotificationEvents.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -27,13 +29,16 @@ ConfirmationMenu* ConfirmationMenu::create()
 
 ConfirmationMenu::ConfirmationMenu()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
+
 	this->onConfirmCallback = nullptr;
 	this->onCancelCallback = nullptr;
 
 	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 	
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
@@ -50,6 +55,7 @@ ConfirmationMenu::ConfirmationMenu()
 		cancelLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
+	this->cancelButton->setClickSound(SoundResources::Menus_ClickBack1);
 
 	LocalizedLabel*	confirmLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Accept::create());
 	LocalizedLabel*	confirmLabelHover = confirmLabel->clone();
@@ -68,9 +74,11 @@ ConfirmationMenu::ConfirmationMenu()
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->confirmationLabel->enableOutline(Color4B::BLACK, 2);
+	this->confirmationLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 
 	this->setVisible(false);
 
+	this->addChild(this->backdrop);
 	this->addChild(this->confirmWindow);
 	this->addChild(this->confirmationLabel);
 	this->addChild(this->closeButton);
@@ -110,7 +118,7 @@ void ConfirmationMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this))
+		if (!GameUtils::isVisible(this))
 		{
 			return;
 		}
@@ -119,6 +127,23 @@ void ConfirmationMenu::initializeListeners()
 
 		this->close();
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+
+		args->handle();
+
+		this->confirm();
+	});
+}
+
+void ConfirmationMenu::disableBackdrop()
+{
+	this->backdrop->setVisible(false);
 }
 
 void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
@@ -136,6 +161,8 @@ void ConfirmationMenu::confirm()
 	{
 		this->onConfirmCallback();
 	}
+
+	NotificationEvents::TriggerConfirmationEnd();
 	
 	this->setVisible(false);
 }
@@ -146,6 +173,8 @@ void ConfirmationMenu::close()
 	{
 		this->onCancelCallback();
 	}
+	
+	NotificationEvents::TriggerConfirmationEnd();
 
 	this->setVisible(false);
 }

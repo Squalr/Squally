@@ -10,12 +10,14 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
-const std::string SquallyEyeBlinkBehavior::MapKeyAttachedBehavior = "squally-equipment-visuals";
+const std::string SquallyEyeBlinkBehavior::MapKey = "squally-eye-blink";
 
 SquallyEyeBlinkBehavior* SquallyEyeBlinkBehavior::create(GameObject* owner)
 {
@@ -54,6 +56,11 @@ void SquallyEyeBlinkBehavior::onLoad()
 	this->runEyeBlinkLoop();
 }
 
+void SquallyEyeBlinkBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 {
 	const float BlinkSpeed = 0.0075f;
@@ -68,7 +75,10 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (leftEye != nullptr)
 		{
-			leftEye->replaceSprite(spriteResource);
+			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				leftEye->replaceSprite(spriteResource);
+			}
 		}
 	};
 	this->leftEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
@@ -77,7 +87,10 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (leftEye != nullptr)
 		{
-			leftEye->replaceSprite(spriteResource);
+			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				leftEye->replaceSprite(spriteResource);
+			}
 		}
 	};
 	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
@@ -87,7 +100,10 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (rightEye != nullptr)
 		{
-			rightEye->replaceSprite(spriteResource);
+			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				rightEye->replaceSprite(spriteResource);
+			}
 		}
 	};
 	this->rightEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
@@ -96,7 +112,10 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (rightEye != nullptr)
 		{
-			rightEye->replaceSprite(spriteResource);
+			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				rightEye->replaceSprite(spriteResource);
+			}
 		}
 	};
 }

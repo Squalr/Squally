@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ursula::MapKeyUrsula = "ursula";
+const std::string Ursula::MapKey = "ursula";
 HexusOpponentData* Ursula::HexusOpponentDataInstance = nullptr;
 const std::string Ursula::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_URSULA";
 
@@ -32,7 +31,7 @@ Ursula* Ursula::deserialize(ValueMap& properties)
 }
 
 Ursula::Ursula(ValueMap& properties) : super(properties,
-	Ursula::MapKeyUrsula,
+	Ursula::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,
 	Size(112.0f, 160.0f),

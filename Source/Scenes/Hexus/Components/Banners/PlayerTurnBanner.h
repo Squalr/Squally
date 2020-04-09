@@ -12,15 +12,15 @@ public:
 	static PlayerTurnBanner* create();
 
 protected:
+	PlayerTurnBanner();
+	virtual ~PlayerTurnBanner();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef BannerBase super;
-	PlayerTurnBanner();
-	~PlayerTurnBanner();
-
-	void initializePositions() override;
 
 	cocos2d::Sprite* playerBanner1;
 	cocos2d::Sprite* playerBanner2;

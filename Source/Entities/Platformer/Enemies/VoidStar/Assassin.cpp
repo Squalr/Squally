@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Assassin::MapKeyAssassin = "assassin";
+const std::string Assassin::MapKey = "assassin";
 HexusOpponentData* Assassin::HexusOpponentDataInstance = nullptr;
 const std::string Assassin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASSASSIN";
 
@@ -32,7 +31,7 @@ Assassin* Assassin::deserialize(ValueMap& properties)
 }
 
 Assassin::Assassin(ValueMap& properties) : super(properties,
-	Assassin::MapKeyAssassin,
+	Assassin::MapKey,
 	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
 	Size(278.0f, 288.0f),

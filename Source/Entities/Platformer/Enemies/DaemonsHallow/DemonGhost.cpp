@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonGhost::MapKeyDemonGhost = "demon-ghost";
+const std::string DemonGhost::MapKey = "demon-ghost";
 HexusOpponentData* DemonGhost::HexusOpponentDataInstance = nullptr;
 const std::string DemonGhost::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_GHOST";
 
@@ -32,7 +31,7 @@ DemonGhost* DemonGhost::deserialize(ValueMap& properties)
 }
 
 DemonGhost::DemonGhost(ValueMap& properties) : super(properties,
-	DemonGhost::MapKeyDemonGhost,
+	DemonGhost::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Emblem,
 	Size(256.0f, 320.0f),

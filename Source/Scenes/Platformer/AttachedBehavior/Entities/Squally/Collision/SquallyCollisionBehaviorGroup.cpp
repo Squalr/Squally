@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyCollisionBehaviorGroup::MapKeyAttachedBehavior = "squally-collision-group";
+const std::string SquallyCollisionBehaviorGroup::MapKey = "squally-collision-group";
 
 SquallyCollisionBehaviorGroup* SquallyCollisionBehaviorGroup::create(GameObject* owner)
 {

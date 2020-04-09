@@ -10,16 +10,16 @@ public:
 	static QuitButton* create();
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	QuitButton();
-	~QuitButton();
+	virtual ~QuitButton();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	ClickableTextNode* quitButton;
 };

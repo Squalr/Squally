@@ -10,6 +10,9 @@ public:
 	static StateNeutral* create();
 
 protected:
+	StateNeutral();
+	virtual ~StateNeutral();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -17,8 +20,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateNeutral();
-	~StateNeutral();
 
 	void initializeCallbacks(GameState* gameState);
 	void selectCard(Card* card);

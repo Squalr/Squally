@@ -9,13 +9,14 @@ class FriendlyPlayerCollisionBehavior : public AttachedBehavior
 public:
 	static FriendlyPlayerCollisionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyPlayerCollisionBehavior(GameObject* owner);
-	~FriendlyPlayerCollisionBehavior();
+	virtual ~FriendlyPlayerCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

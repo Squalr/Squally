@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string KingRedsong::MapKeyKingRedsong = "king-redsong";
+const std::string KingRedsong::MapKey = "king-redsong";
 HexusOpponentData* KingRedsong::HexusOpponentDataInstance = nullptr;
 const std::string KingRedsong::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_REDSONG";
 
@@ -32,7 +31,7 @@ KingRedsong* KingRedsong::deserialize(ValueMap& properties)
 }
 
 KingRedsong::KingRedsong(ValueMap& properties) : super(properties,
-	KingRedsong::MapKeyKingRedsong,
+	KingRedsong::MapKey,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,
 	Size(160.0f, 192.0f),

@@ -40,15 +40,18 @@ void ItemPool::initializeListeners()
 {
 	super::initializeListeners();
 	
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ItemEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
+	if (!this->poolName.empty())
 	{
-		ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ItemEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
 		{
-			args->callback(this->getItemFromPool(true, args->inventories));
-		}
-	}));
+			ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				args->callback(this->getItemFromPool(true, args->inventories));
+			}
+		}));
+	}
 }
 
 int ItemPool::getPoolSize()
@@ -92,6 +95,8 @@ std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, std::vector<I
 
 Item* ItemPool::getItemFromPool(bool removeSampledItem, std::vector<Inventory*> inventories)
 {
+	this->shuffleItems();
+
 	for (auto itemChance : this->itemPool)
 	{
 		float probability = itemChance->calculateProbability(inventories);
@@ -135,11 +140,24 @@ Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem, std::vector<In
 	float sample = RandomHelper::random_real(0.0f, this->probabilitySum);
 	float currentSum = 0.0f;
 
+	this->shuffleItems();
+	
+	// Prioritize items already marked as guaranteed (both the pool and the item can be guaranteed -- in the case both are marked, prio the guaranteed items)
+	std::partition(this->probabilityCache.begin(), this->probabilityCache.end(), [](ProbabilityData data) -> bool
+	{
+		if (data.itemChance->getProbability() == ItemChance::Probability::Guaranteed)
+		{
+			return true;
+		}
+
+		return false;
+	});
+
 	for (auto probabilityData : this->probabilityCache)
 	{
 		currentSum += probabilityData.probability;
 
-		if (sample <= currentSum && probabilityData.probability > 0.0f)
+		if (probabilityData.itemChance->getProbability() == ItemChance::Probability::Guaranteed || (sample <= currentSum && probabilityData.probability > 0.0f))
 		{
 			Item* retItem = probabilityData.itemChance->getItem() == nullptr ? nullptr : probabilityData.itemChance->getItem()->clone();
 
@@ -178,4 +196,17 @@ void ItemPool::removeItemFromPool(ItemChance* itemChance)
 
 		return false;
 	}), this->itemPool.end());
+}
+
+void ItemPool::shuffleItems()
+{
+	std::random_device rd1;
+	std::mt19937 g1(rd1());
+
+	std::shuffle(this->probabilityCache.begin(), this->probabilityCache.end(), g1);
+
+	std::random_device rd2;
+	std::mt19937 g2(rd2());
+
+	std::shuffle(this->itemPool.begin(), this->itemPool.end(), g2);
 }

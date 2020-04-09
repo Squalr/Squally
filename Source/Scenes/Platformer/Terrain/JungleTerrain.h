@@ -7,11 +7,12 @@ class JungleTerrain : public TerrainObject
 public:
 	static JungleTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
+
+protected:
+	JungleTerrain(cocos2d::ValueMap& properties);
+	virtual ~JungleTerrain();
 
 private:
 	typedef TerrainObject super;
-	
-	JungleTerrain(cocos2d::ValueMap& properties);
-	~JungleTerrain();
 };

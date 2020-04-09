@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalNecromancer::MapKeySkeletalNecromancer = "skeletal-necromancer";
+const std::string SkeletalNecromancer::MapKey = "skeletal-necromancer";
 HexusOpponentData* SkeletalNecromancer::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalNecromancer::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_NECROMANCER";
 
@@ -32,7 +31,7 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& properties)
 }
 
 SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : super(properties,
-	SkeletalNecromancer::MapKeySkeletalNecromancer,
+	SkeletalNecromancer::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
 	Size(128.0f, 228.0f),

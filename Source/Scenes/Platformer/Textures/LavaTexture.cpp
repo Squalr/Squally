@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string LavaTexture::MapKeyTextureType = "lava";
+const std::string LavaTexture::MapKey = "lava";
 
 LavaTexture* LavaTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ LavaTexture* LavaTexture::create(ValueMap& properties)
 LavaTexture::LavaTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		LavaTexture::MapKeyTextureType,
+		LavaTexture::MapKey,
 		TextureResources::LavaTexture,
 		Color4B(11, 30, 39, 255)))
 {

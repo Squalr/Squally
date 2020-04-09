@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -27,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string PendulumBlade::MapKeyPendulumBlade = "pendulum-blade";
+const std::string PendulumBlade::MapKey = "pendulum-blade";
 
 const float PendulumBlade::DefaultAngle = 270.0f;
 const float PendulumBlade::SwingsPerSecondAt480Length = 1.5f;
@@ -45,9 +44,10 @@ PendulumBlade* PendulumBlade::create(ValueMap& properties)
 
 PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 {
+	this->pendulumBladeClippy = PendulumBladeClippy::create();
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
-	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
@@ -59,6 +59,7 @@ PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 
 	this->buildChain();
 
+	this->registerClippy(this->pendulumBladeClippy);
 	this->bladeChain->addChild(this->bladeCollision);
 	this->addChild(this->neck);
 	this->addChild(this->bladeChain);
@@ -103,15 +104,12 @@ void PendulumBlade::registerHackables()
 {
 	super::registerHackables();
 
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_SWING,
-			HackableCode::LateBindData(
-				PendulumBlade::MapKeyPendulumBlade,
+			HackableCode::HackableCodeInfo(
+				PendulumBlade::MapKey,
 				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				PendulumBladeSetAnglePreview::create(),
@@ -121,17 +119,18 @@ void PendulumBlade::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				this->showClippy ? PendulumBladeClippy::create() : nullptr
+				0.0f,
+				this->pendulumBladeClippy
 			)
 		},
 	};
 
 	auto swingFunc = &PendulumBlade::swingToAngle;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -201,6 +200,7 @@ NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE
 
 void PendulumBlade::buildChain()
 {
@@ -230,29 +230,21 @@ void PendulumBlade::buildChain()
 	this->bladeChain->addChild(blade);
 }
 
-PhysicsBody* PendulumBlade::createBladeCollision()
+std::vector<Vec2> PendulumBlade::createBladeCollision()
 {
-	// Polygons can't be concave, so we get around this by building the left and right sides of the blade separately
+	std::vector<Vec2> points = std::vector<Vec2>();
 
-	std::vector<Vec2> leftPoints = std::vector<Vec2>();
+	points.push_back(Vec2(0.0f, 8.0f));
+	points.push_back(Vec2(-212.0f, 64.0f));
+	points.push_back(Vec2(-160.0f, -32.0f));
+	points.push_back(Vec2(-96.0f, -64.0f));
+	points.push_back(Vec2(0.0f, -80.0f));
 
-	leftPoints.push_back(Vec2(0.0f, 8.0f));
-	leftPoints.push_back(Vec2(-212.0f, 64.0f));
-	leftPoints.push_back(Vec2(-160.0f, -32.0f));
-	leftPoints.push_back(Vec2(-96.0f, -64.0f));
-	leftPoints.push_back(Vec2(0.0f, -80.0f));
+	points.push_back(Vec2(0.0f, 8.0f));
+	points.push_back(Vec2(212.0f, 64.0f));
+	points.push_back(Vec2(160.0f, -32.0f));
+	points.push_back(Vec2(96.0f, -64.0f));
+	points.push_back(Vec2(0.0f, -80.0f));
 
-	std::vector<Vec2> rightPoints = std::vector<Vec2>();
-
-	rightPoints.push_back(Vec2(0.0f, 8.0f));
-	rightPoints.push_back(Vec2(212.0f, 64.0f));
-	rightPoints.push_back(Vec2(160.0f, -32.0f));
-	rightPoints.push_back(Vec2(96.0f, -64.0f));
-	rightPoints.push_back(Vec2(0.0f, -80.0f));
-
-	PhysicsBody* physicsBody = PhysicsBody::createPolygon(leftPoints.data(), leftPoints.size());
-
-	physicsBody->addShape(PhysicsShapePolygon::create(rightPoints.data(), rightPoints.size()));
-
-	return physicsBody;
+	return points;
 }

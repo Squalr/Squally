@@ -3,19 +3,20 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Blackbeard;
+class Portal;
 class QuestLine;
 class Squally;
 
 class SailForRuins : public QuestTask
 {
 public:
-	static SailForRuins* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static SailForRuins* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	SailForRuins(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~SailForRuins();
+	SailForRuins(GameObject* owner, QuestLine* questLine);
+	virtual ~SailForRuins();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -30,4 +31,7 @@ private:
 
 	Blackbeard* blackbeard;
 	Squally* squally;
+	Portal* portal;
+
+	static const std::string QuestTagShipPortal;
 };

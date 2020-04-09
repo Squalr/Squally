@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalCleaver::MapKeySkeletalCleaver = "skeletal-cleaver";
+const std::string SkeletalCleaver::MapKey = "skeletal-cleaver";
 HexusOpponentData* SkeletalCleaver::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalCleaver::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_CLEAVER";
 
@@ -32,7 +31,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& properties)
 }
 
 SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : super(properties,
-	SkeletalCleaver::MapKeySkeletalCleaver,
+	SkeletalCleaver::MapKey,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	Size(128.0f, 312.0f),

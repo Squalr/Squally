@@ -10,7 +10,6 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
@@ -19,9 +18,9 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
-const std::string PlatformerEnemy::MapKeyBattleTag = "battle-tag";
-const std::string PlatformerEnemy::MapKeyDropPool = "drop-pool";
+const std::string PlatformerEnemy::PropertyBattleMap = "battle-map";
+const std::string PlatformerEnemy::PropertyBattleTag = "battle-tag";
+const std::string PlatformerEnemy::PropertyDropPool = "drop-pool";
 const std::string PlatformerEnemy::PlatformerEnemyTag = "platformer-enemy";
 
 PlatformerEnemy::PlatformerEnemy(
@@ -43,9 +42,9 @@ PlatformerEnemy::PlatformerEnemy(
 		collisionOffset,
 		hoverHeight)
 {
-	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::Combat_Intro)).asString();
-	this->battleMapTag = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleTag, Value("")).asString();
-	this->dropPool = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyDropPool, Value("error")).asString();
+	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::PropertyBattleMap, Value(MapResources::EndianForest_Combat_Intro)).asString();
+	this->battleMapTag = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::PropertyBattleTag, Value("")).asString();
+	this->dropPool = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::PropertyDropPool, Value("error")).asString();
 
 	// Tag all entities by class and by their name to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEnemy::PlatformerEnemyTag);

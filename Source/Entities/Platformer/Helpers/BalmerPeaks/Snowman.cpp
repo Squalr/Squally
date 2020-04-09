@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Snowman::MapKeySnowman = "snowman";
+const std::string Snowman::MapKey = "snowman";
 HexusOpponentData* Snowman::HexusOpponentDataInstance = nullptr;
 const std::string Snowman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SNOWMAN";
 
@@ -32,7 +31,7 @@ Snowman* Snowman::deserialize(ValueMap& properties)
 }
 
 Snowman::Snowman(ValueMap& properties) : super(properties,
-	Snowman::MapKeySnowman,
+	Snowman::MapKey,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,
 	Size(224.0f, 440.0f),

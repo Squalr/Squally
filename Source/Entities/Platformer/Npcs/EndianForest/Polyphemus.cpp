@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Polyphemus::MapKeyPolyphemus = "polyphemus";
+const std::string Polyphemus::MapKey = "polyphemus";
 HexusOpponentData* Polyphemus::HexusOpponentDataInstance = nullptr;
 const std::string Polyphemus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_POLYPHEMUS";
 
@@ -32,7 +31,7 @@ Polyphemus* Polyphemus::deserialize(ValueMap& properties)
 }
 
 Polyphemus::Polyphemus(ValueMap& properties) : super(properties,
-	Polyphemus::MapKeyPolyphemus,
+	Polyphemus::MapKey,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,
 	Size(112.0f, 160.0f),

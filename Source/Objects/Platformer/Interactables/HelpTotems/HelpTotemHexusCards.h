@@ -7,11 +7,11 @@ class HelpTotemHexusCards : public HelpTotem
 public:
 	static HelpTotemHexusCards* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyHelpTotemHexusCards;
+	static const std::string MapKey;
 
 protected:
 	HelpTotemHexusCards(cocos2d::ValueMap& properties);
-	~HelpTotemHexusCards();
+	virtual ~HelpTotemHexusCards();
 
 private:
 	typedef HelpTotem super;

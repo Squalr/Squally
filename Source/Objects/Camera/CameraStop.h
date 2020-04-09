@@ -12,20 +12,23 @@ class CameraStop : public GameObject
 public:
 	static CameraStop* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCameraStop;
-	static const std::string MapKeyPropertySoft;
-	static const std::string MapKeyPropertyNoX;
-	static const std::string MapKeyPropertyNoY;
+	static const std::string MapKey;
+	static const std::string PropertySoft;
+	static const std::string PropertyNoX;
+	static const std::string PropertyNoY;
 
-private:
-	typedef GameObject super;
+protected:
 	CameraStop(cocos2d::ValueMap& properties);
 	virtual ~CameraStop();
 
 	void onEnter() override;
 	void update(float dt) override;
+	void pause() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
+
+private:
+	typedef GameObject super;
 
 	bool soft;
 	bool noX;

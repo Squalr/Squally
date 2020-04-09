@@ -12,7 +12,7 @@ class TrapDoorFrame : public GameObject
 public:
 	static TrapDoorFrame* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTrapDoorFrame;
+	static const std::string MapKey;
 
 protected:
 	TrapDoorFrame(cocos2d::ValueMap& properties);

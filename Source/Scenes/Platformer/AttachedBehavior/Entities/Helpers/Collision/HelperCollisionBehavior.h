@@ -12,11 +12,14 @@ public:
 
 	CollisionObject* entityCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	HelperCollisionBehavior(GameObject* owner);
-	~HelperCollisionBehavior();
+	virtual ~HelperCollisionBehavior();
+	
+	void onEntityCollisionCreated() override;
+	void onDisable() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;

@@ -2,15 +2,13 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Centaur::MapKeyCentaur = "centaur";
+const std::string Centaur::MapKey = "centaur";
 
 Centaur* Centaur::deserialize(ValueMap& properties)
 {
@@ -22,7 +20,7 @@ Centaur* Centaur::deserialize(ValueMap& properties)
 }
 
 Centaur::Centaur(ValueMap& properties) : super(properties,
-	Centaur::MapKeyCentaur,
+	Centaur::MapKey,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	Size(296.0f, 256.0f),

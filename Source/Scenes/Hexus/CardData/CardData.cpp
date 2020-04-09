@@ -37,7 +37,6 @@ unsigned int CardData::getAttack()
 	return this->attack;
 }
 
-
 LocalizedString* CardData::getCardTypeString()
 {
 	switch (this->cardType)

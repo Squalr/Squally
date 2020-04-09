@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -10,19 +11,22 @@
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
-#include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
@@ -35,18 +39,18 @@
 #include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/RewardsMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/TargetSelectionMenu.h"
-#include "Scenes/Platformer/Level/Combat/TextOverlays.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Level/Huds/HackerModeWarningHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
-const std::string CombatMap::MapPropertyPlayerFirstStrike = "player-first-strike";
-const std::string CombatMap::MapPropertyEnemyFirstStrike = "enemy-first-strike";
+const std::string CombatMap::PropertyPlayerFirstStrike = "player-first-strike";
+const std::string CombatMap::PropertyEnemyFirstStrike = "enemy-first-strike";
 
 CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
@@ -61,38 +65,47 @@ CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std:
 CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
 {
-	if (!super::initWithPhysics())
+	if (!super::init())
 	{
 		// throw std::uncaught_exceptions();
 		return;
 	}
 
 	this->collectablesMenu = CollectablesMenu::create();
-	this->mapMenu = MapMenu::create();
+	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
-	this->targetSelectionMenu = TargetSelectionMenu::create();
-	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
-	this->rewardsMenu = RewardsMenu::create();
+	this->rewardsMenu = RewardsMenu::create(this->timeline);
 	this->enemyAIHelper = CombatAIHelper::create();
+	this->hackerModeWarningHud = HackerModeWarningHud::create();
 	this->notificationHud = NotificationHud::create();
+	this->entityFocusTakeOver = FocusTakeOver::create();
+	this->focusTakeOver = FocusTakeOver::create();
+	this->combatEndBackdrop = Hud::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
+	this->scrappy = nullptr;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
+
+	this->focusTakeOver->setTakeOverOpacity(127);
+	this->entityFocusTakeOver->setTakeOverOpacity(0);
+	this->ingameMenu->disableInventory();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
 				BackgroundDeserializer::create(),
 				MusicDeserializer::create(),
 				PhysicsDeserializer::create(),
+				PlatformerRubberbandingDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
@@ -106,19 +119,26 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 		}
 	);
 
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->combatEndBackdrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
+
 	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
-	this->hackerModeVisibleHud->addChild(this->textOverlays);
-	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
+	this->hud->addChild(this->focusTakeOver);
 	this->hud->addChild(this->choicesMenu);
-	this->menuHud->addChild(this->firstStrikeMenu);
-	this->menuHud->addChild(this->defeatMenu);
-	this->menuHud->addChild(this->rewardsMenu);
-	this->topMenuHud->addChild(this->notificationHud);
+	this->hackerModeVisibleHud->addChild(this->combatHud);
+	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
+	this->backMenuHud->addChild(this->hackerModeWarningHud);
+	this->backMenuHud->addChild(this->firstStrikeMenu);
+	this->backMenuHud->addChild(this->combatEndBackdrop);
+	this->backMenuHud->addChild(this->defeatMenu);
+	this->backMenuHud->addChild(this->rewardsMenu);
+	this->backMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
-	this->topMenuHud->addChild(this->mapMenu);
+	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 
@@ -134,9 +154,15 @@ void CombatMap::onEnter()
 	super::onEnter();
 
 	this->collectablesMenu->setVisible(false);
-	this->mapMenu->setVisible(false);
+	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
+	this->combatEndBackdrop->setOpacity(0);
+	
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKey);
 
 	this->defer([=]()
 	{
@@ -182,7 +208,7 @@ void CombatMap::initializeListeners()
 				CombatEvents::TriggerGiveExp();
 
 				this->runAction(Sequence::create(
-					DelayTime::create(3.5f),
+					DelayTime::create(1.5f),
 					CallFunc::create([=]()
 					{
 						CombatEvents::TriggerGiveRewards();
@@ -192,7 +218,7 @@ void CombatMap::initializeListeners()
 			}
 			else
 			{
-				this->menuBackDrop->setOpacity(196);
+				this->combatEndBackdrop->setOpacity(196);
 				this->defeatMenu->show();
 			}
 		}
@@ -200,36 +226,132 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* eventCustom)
 	{
-		this->menuBackDrop->setOpacity(196);
+		this->combatEndBackdrop->setOpacity(196);
 		this->rewardsMenu->show();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)
 	{
-		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-		PlatformerMap* map = PlatformerMap::create(mapResource, { });
+			PlatformerMap* map = PlatformerMap::create(mapResource, { });
 
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
+			return map;
+		}));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
-		if (combatArgs != nullptr && combatArgs->entry != nullptr)
+		if (combatArgs != nullptr)
 		{
 			switch (combatArgs->currentMenu)
 			{
-				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
-					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
+					// For now, there is no defend select menu. Just wait for this state to pass.
+					break;
+				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
+				{
+					this->entityFocusTakeOver->unfocus();
+					this->focusTakeOver->unfocus();
+					
+					PlatformerEntity* entity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+					std::vector<Node*> focusTargets = std::vector<Node*>();
 
+					focusTargets.push_back(entity);
+					focusTargets.push_back(this->scrappy);
+
+					for (auto next : this->timeline->getEntries())
+					{
+						if (next->getEntity() != entity)
+						{
+							focusTargets.push_back(next->getEntity()->getHackParticlesNode());
+						}
+					}
+
+					this->entityFocusTakeOver->positionFreezeFocus(focusTargets);
+					
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry });
+
+					for (auto entity : this->timeline->getEntries())
+					{
+						entity->getEntity()->getAnimations()->setOpacity(127);
+					}
+
+					if (entity != nullptr)
+					{
+						entity->getAnimations()->setOpacity(255);
+					}
+
+					break;
+				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+				{
+					this->entityFocusTakeOver->unfocus();
+					this->focusTakeOver->unfocus();
+
+					std::vector<Node*> focusTargets = std::vector<Node*>();
+
+					for (auto entry : this->timeline->getEntries())
+					{
+						PlatformerEntity* entity = entry == nullptr ? nullptr : entry->getEntity();
+
+						if (entity == nullptr)
+						{
+							continue;
+						}
+
+						entity->getAnimations()->setOpacity(127);
+
+						if (combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget
+							|| (!entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget)
+							|| (entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
+						{
+							entity->getAnimations()->setOpacity(255);
+							focusTargets.push_back(entity);
+						}
+						else
+						{
+							focusTargets.push_back(entity->getHackParticlesNode());
+						}
+					}
+
+					std::sort(focusTargets.begin(), focusTargets.end(), [](Node* a, Node* b)
+					{ 
+						return a->getPositionZ() < b->getPositionZ();
+					});
+
+					this->entityFocusTakeOver->positionFreezeFocus({ focusTargets });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
 				{
-					this->choicesMenu->setVisible(false);
+					this->entityFocusTakeOver->unfocus();
+					this->focusTakeOver->unfocus();
+
+					this->targetSelectionMenu->selectEntity(nullptr);
+
+					for (auto entry : this->timeline->getEntries())
+					{
+						PlatformerEntity* entity = entry == nullptr ? nullptr : entry->getEntity();
+
+						if (entity == nullptr)
+						{
+							continue;
+						}
+
+						entity->getAnimations()->setOpacity(255);
+					}
 
 					break;
 				}
@@ -256,11 +378,12 @@ void CombatMap::initializeListeners()
 		GameUtils::focus(this->partyMenu);
 	});
 	
-	this->ingameMenu->setMapClickCallback([=]()
+	this->ingameMenu->setCardsClickCallback([=]()
 	{
 		this->ingameMenu->setVisible(false);
-		this->mapMenu->setVisible(true);
-		GameUtils::focus(this->mapMenu);
+		this->cardsMenu->setVisible(true);
+		this->cardsMenu->open();
+		GameUtils::focus(this->cardsMenu);
 	});
 	
 	this->ingameMenu->setCollectablesClickCallback([=]()
@@ -278,10 +401,10 @@ void CombatMap::initializeListeners()
 		GameUtils::focus(this->ingameMenu);
 	});
 
-	this->mapMenu->setReturnClickCallback([=]()
+	this->cardsMenu->setReturnClickCallback([=]()
 	{
 		this->ingameMenu->setVisible(true);
-		this->mapMenu->setVisible(false);
+		this->cardsMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
 
@@ -356,12 +479,12 @@ void CombatMap::spawnEntities()
 
 			std::vector<std::string> behavior = StrUtils::splitOn(this->enemyData[index].battleBehavior, ", ", false);
 
-			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyEnemyFirstStrike) != behavior.end())
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::PropertyEnemyFirstStrike) != behavior.end())
 			{
 				this->playerFirstStrike = false;
 			}
 
-			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyPlayerFirstStrike) != behavior.end())
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::PropertyPlayerFirstStrike) != behavior.end())
 			{
 				this->playerFirstStrike = true;
 			}
@@ -390,8 +513,10 @@ void CombatMap::spawnEntities()
 		}
 	}
 
-	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(this->playerFirstStrike, friendlyEntities);
-	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(this->playerFirstStrike, enemyEntities);
+	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(friendlyEntities);
+	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(enemyEntities);
+
+	this->timeline->initializeStartingProgress(this->playerFirstStrike);
 
 	this->firstStrikeMenu->show(this->playerFirstStrike);
 	this->enemyAIHelper->initializeEntities(friendlyEntities, enemyEntities);

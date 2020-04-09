@@ -6,5 +6,5 @@ class CardMov : public CardData
 {
 public:
 	CardMov();
-	~CardMov();
+	virtual ~CardMov();
 };

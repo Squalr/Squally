@@ -13,10 +13,12 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 
-	static const std::string MapKeyCyclops;
+	static const std::string MapKey;
+	
+protected:
+	Cyclops(cocos2d::ValueMap& properties);
+	virtual ~Cyclops();
 
 private:
 	typedef PlatformerEnemy super;
-	Cyclops(cocos2d::ValueMap& properties);
-	~Cyclops();
 };

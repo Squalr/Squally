@@ -1,15 +1,15 @@
 #include "WoodenShield.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string WoodenShield::SaveKeyWoodenShield = "wooden-shield";
+const std::string WoodenShield::SaveKey = "wooden-shield";
 
 WoodenShield* WoodenShield::create()
 {
@@ -20,7 +20,7 @@ WoodenShield* WoodenShield::create()
 	return instance;
 }
 
-WoodenShield::WoodenShield() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+WoodenShield::WoodenShield() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -46,7 +46,7 @@ Item* WoodenShield::clone()
 
 std::string WoodenShield::getItemName()
 {
-	return WoodenShield::SaveKeyWoodenShield;
+	return WoodenShield::SaveKey;
 }
 
 LocalizedString* WoodenShield::getString()
@@ -56,10 +56,10 @@ LocalizedString* WoodenShield::getString()
 
 std::string WoodenShield::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Axes_Rend;
+	return ItemResources::Equipment_Gear_Hats_WoodenPikeHelm;
 }
 
 std::string WoodenShield::getSerializationKey()
 {
-	return WoodenShield::SaveKeyWoodenShield;
+	return WoodenShield::SaveKey;
 }

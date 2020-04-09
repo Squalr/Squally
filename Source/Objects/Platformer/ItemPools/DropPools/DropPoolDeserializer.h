@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTypeDropPool;
 
+protected:
+	DropPoolDeserializer();
+	virtual ~DropPoolDeserializer();
+	
 private:
 	typedef ObjectDeserializer super;
-
-	DropPoolDeserializer();
-	~DropPoolDeserializer();
 };

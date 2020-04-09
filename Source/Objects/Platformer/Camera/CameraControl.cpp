@@ -14,8 +14,8 @@
 
 using namespace cocos2d;
 
-const std::string CameraControl::MapKeyCameraControl = "camera-control";
-const std::string CameraControl::MapPropertyTarget = "target";
+const std::string CameraControl::MapKey = "camera-control";
+const std::string CameraControl::PropertyTarget = "target";
 
 CameraControl* CameraControl::create(ValueMap& properties)
 {
@@ -29,8 +29,8 @@ CameraControl* CameraControl::create(ValueMap& properties)
 CameraControl::CameraControl(ValueMap& properties) : super(properties)
 {
 	Size controlSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
-	this->targetTag = GameUtils::getKeyOrDefault(this->properties, CameraControl::MapPropertyTarget, Value("")).asString();
-	this->controlCollision = CollisionObject::create(PhysicsBody::createBox(controlSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->targetTag = GameUtils::getKeyOrDefault(this->properties, CameraControl::PropertyTarget, Value("")).asString();
+	this->controlCollision = CollisionObject::create(CollisionObject::createBox(controlSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->cameraTarget = nullptr;
 
 	this->addChild(this->controlCollision);
@@ -71,7 +71,9 @@ void CameraControl::beginTrack()
 		return;
 	}
 
-	if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->cameraTarget)
+	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
+
+	if (trackingData == nullptr || trackingData->target == this->cameraTarget)
 	{
 		return;
 	}
@@ -86,7 +88,9 @@ void CameraControl::endTrack()
 		return;
 	}
 
-	if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->cameraTarget)
+	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
+
+	if (trackingData == nullptr || trackingData->target == this->cameraTarget)
 	{
 		GameCamera::getInstance()->popTarget();
 	}

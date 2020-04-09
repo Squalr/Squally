@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityStatsBehaviorGroup::MapKeyAttachedBehavior = "entity-stats";
+const std::string EntityStatsBehaviorGroup::MapKey = "entity-stats";
 
 EntityStatsBehaviorGroup* EntityStatsBehaviorGroup::create(GameObject* owner)
 {

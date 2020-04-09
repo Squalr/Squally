@@ -37,9 +37,9 @@ void MetaLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializationR
 
 	MapLayer* layer = MapLayer::create(properties, name, type, { });
 
-	for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
+	for (auto next : this->propertyDeserializers)
 	{
-		(*it)->deserializeProperties(layer, properties);
+		next->deserializeProperties(layer, properties);
 	}
 
 	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(layer, args->layerIndex));

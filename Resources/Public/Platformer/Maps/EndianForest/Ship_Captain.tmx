@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="719">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="bg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="ship-dark" type="texture" x="-336" y="-282" width="3056" height="2424"/>
+ </objectgroup>
+ <objectgroup id="74" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="713" name="ship-alt" type="terrain" x="-60" y="180" width="820" height="1500">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="714" name="ship-alt" type="terrain" x="-79.697" y="1400.06" width="2472" height="556"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="484" name="Generic/WoodDoor" type="decor" x="203.888" y="1072.9" width="238.499" height="312.248"/>
+  <object id="696" name="Generic/Sack" type="decor" x="-2.42" y="1257.59" width="162" height="145"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="202.69" y="1068.95" width="237.527" height="326.962">
+   <properties>
+    <property name="map" value="EndianForest/Ship_Main"/>
+    <property name="transition" value="captain"/>
+   </properties>
+  </object>
+  <object id="705" name="breakable-cage" type="object" x="938.88" y="1292.38" width="196" height="112"/>
+  <object id="706" name="spawn-wood-door" type="object" x="262.134" y="1267.48" width="128" height="128">
+   <properties>
+    <property name="transition" value="captain"/>
+   </properties>
+  </object>
+  <object id="716" name="help-totem-end-of-demo" type="object" x="1274" y="1148" width="256" height="256"/>
+  <object id="717" name="portal" type="object" x="2781.54" y="1128.52" width="237.527" height="233.023">
+   <properties>
+    <property name="map" value="EndianForest/Town_Docks"/>
+    <property name="tag" value="back-portal"/>
+    <property name="transition" value="ship"/>
+   </properties>
+  </object>
+  <object id="718" name="portal" type="object" x="3138.51" y="1135.43" width="237.527" height="233.023">
+   <properties>
+    <property name="map" value="UnderflowRuins/Town_Docks"/>
+    <property name="tag" value="leave-portal"/>
+    <property name="transition" value="ship"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="715" name="blackbeard" type="entity" x="1982" y="1276" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,ef-ur-transportation"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="637.133" y="1272.28" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

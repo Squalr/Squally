@@ -4,6 +4,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameObject.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Level/Weather/Fireflies.h"
 #include "Scenes/Platformer/Level/Weather/Rain.h"
@@ -40,7 +41,7 @@ void WeatherDeserializer::deserialize(LayerDeserializer::LayerDeserializationReq
 
 	if (!GameUtils::keyExists(properties, WeatherDeserializer::MapKeyWeather))
 	{
-		CCLOG("No weather property on weather layer");
+		LogUtils::logError("No weather property on weather layer");
 		return;
 	}
 
@@ -60,7 +61,7 @@ void WeatherDeserializer::deserialize(LayerDeserializer::LayerDeserializationReq
 	}
 	else
 	{
-		CCLOG("Invalid weather property on weather layer");
+		LogUtils::logError("Invalid weather property on weather layer");
 		return;
 	}
 }

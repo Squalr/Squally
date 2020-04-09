@@ -4,12 +4,11 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/ui/UIRichText.h"
-#include "cocos/ui/UIScrollView.h"
-#include "cocos/ui/UITextField.h"
 
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Hackables/CodeEditor/ScriptEntry.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/InputText.h"
 #include "Engine/Localization/ConstantString.h"
@@ -84,10 +83,9 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 {
 	this->windowSize = windowSize;
 	this->currentLineNumber = 1;
-	this->tokenizationCallback = nullptr;
-	this->onEditCallback = nullptr;
 	this->lineNumberElements = std::vector<RichElement*>();
 	this->textElements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
+	this->hasScriptChanges = false;
 
 	this->lineNumbers = RichText::create();
 	this->editableText = InputText::create(
@@ -110,6 +108,12 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::H3
 	);
+	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
+	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
+	this->copyPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
+	this->copyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CopyScript::create());
+	this->deletePanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
+	this->deleteLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_DeleteScript::create());
 
 	this->windowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -133,6 +137,12 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
 	this->addChild(this->contentPane);
+	this->addChild(this->deleteButton);
+	this->addChild(this->copyButton);
+	this->addChild(this->deletePanel);
+	this->addChild(this->deleteLabel);
+	this->addChild(this->copyPanel);
+	this->addChild(this->copyLabel);
 }
 
 CodeWindow::~CodeWindow()
@@ -144,6 +154,11 @@ void CodeWindow::onEnter()
 {
 	super::onEnter();
 	this->scheduleUpdate();
+
+	this->deletePanel->setOpacity(0);
+	this->deleteLabel->setOpacity(0);
+	this->copyPanel->setOpacity(0);
+	this->copyLabel->setOpacity(0);
 
 	this->editableText->scheduleUpdate();
 }
@@ -157,6 +172,8 @@ void CodeWindow::initializePositions()
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->deleteButton->setPosition(windowSize.width / 2.0f - 32.0f - 40.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->copyButton->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
 	this->displayedText->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
 	this->lineNumbers->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
@@ -164,19 +181,16 @@ void CodeWindow::initializePositions()
 	this->lineNumbers->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + 20.0f, 0.0f));
 	this->displayedText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
 	this->editableText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
-	//this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
-	//this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
-	//this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
+	
+	this->copyPanel->setPosition(this->copyButton->getPosition() + Vec2(0.0f, 48.0f) - Vec2(this->copyPanel->getContentSize() / 2.0f));
+	this->copyLabel->setPosition(this->copyButton->getPosition() + Vec2(0.0f, 48.0f));
+	this->deletePanel->setPosition(this->deleteButton->getPosition() + Vec2(0.0f, 48.0f) - Vec2(this->deletePanel->getContentSize() / 2.0f));
+	this->deleteLabel->setPosition(this->deleteButton->getPosition() + Vec2(0.0f, 48.0f));
 }
 
 void CodeWindow::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-	{
-		this->rebuildText();
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEdit, [=](EventCustom* args)
 	{
@@ -192,34 +206,99 @@ void CodeWindow::initializeListeners()
 	{
 		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(false);
 	}));
-}
 
-void CodeWindow::update(float dt)
-{
-	std::string currentText = this->editableText->getString();
-
-	if (this->previousText != currentText)
+	this->editableText->setStringChangeCallback([=](std::string newText)
 	{
-		this->previousText = currentText;
-		this->constructTokenizedText(currentText);
-
-		if (this->onEditCallback != nullptr)
+		if (this->script != nullptr)
 		{
-			this->onEditCallback(currentText);
+			this->script->setScript(newText);
 		}
 
+		this->constructTokenizedText(newText);
+
 		this->contentPane->updateScrollBounds();
+	});
+
+	this->windowTitle->setStringChangeCallback([=](std::string newTitle)
+	{
+		if (this->script != nullptr && !this->script->isReadOnly)
+		{
+			this->script->setName(newTitle);
+		}
+	});
+
+	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->script != nullptr)
+		{
+			this->script->copyScript();
+		}
+	});
+
+	this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->script != nullptr)
+		{
+			this->script->deleteScript();
+		}
+	});
+
+	this->deleteButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->deletePanel->setOpacity(196);
+		this->deleteLabel->setOpacity(255);
+	});
+	this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->deletePanel->setOpacity(0);
+		this->deleteLabel->setOpacity(0);
+	});
+
+	this->copyButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->copyPanel->setOpacity(196);
+		this->copyLabel->setOpacity(255);
+	});
+	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->copyPanel->setOpacity(0);
+		this->copyLabel->setOpacity(0);
+	});
+}
+
+void CodeWindow::openScript(ScriptEntry* script)
+{
+	this->script = script;
+	this->clearText();
+	this->editableText->setString("");
+	this->deleteButton->setVisible(false);
+
+	if (this->script == nullptr)
+	{
+		return;
 	}
-}
 
-void CodeWindow::setTokenizationCallback(std::function<void(std::string text, std::vector<CodeWindow::token>&)> newTokenizationCallback)
-{
-	this->tokenizationCallback = newTokenizationCallback;
-}
+	if (script->isReadOnly)
+	{
+		this->windowTitle->getHitbox()->disableInteraction();
+		this->editableText->getHitbox()->disableInteraction();
+		this->unfocus();
+	}
+	else
+	{
+		this->deleteButton->setVisible(true);
+		this->windowTitle->getHitbox()->enableInteraction();
+		this->editableText->getHitbox()->enableInteraction();
+		this->focus();
+	}
 
-void CodeWindow::setOnEditCallback(std::function<void(std::string text)> newOnEditCallback)
-{
-	this->onEditCallback = newOnEditCallback;
+	std::string scriptText = script->getScript();
+	LocalizedString* name = script->getName();
+
+	this->setText(scriptText);
+	this->constructTokenizedText(scriptText);
+	this->setWindowTitle(name == nullptr ? "" : name->getString());
+	this->contentPane->updateScrollBounds();
 }
 
 std::string CodeWindow::getText()
@@ -227,18 +306,32 @@ std::string CodeWindow::getText()
 	return this->editableText->getString();
 }
 
-std::string CodeWindow::getTitle()
-{
-	return this->windowTitle->getString();
-}
-
 void CodeWindow::setText(std::string text)
 {
+	this->hasScriptChanges = true;
 	this->editableText->setString(text);
+}
+
+bool CodeWindow::hasChanges()
+{
+	return this->hasScriptChanges;
+}
+
+void CodeWindow::clearHasChanges()
+{
+	this->hasScriptChanges = false;
 }
 
 void CodeWindow::focus()
 {
+	// Focusing readonly scripts is not allowed
+	if (this->script != nullptr && this->script->isReadOnly)
+	{
+		this->unfocus();
+
+		return;
+	}
+
 	this->editableText->focus();
 }
 
@@ -270,16 +363,16 @@ void CodeWindow::clearText()
 {
 	this->currentLineNumber = 1;
 
-	for (auto iterator = this->lineNumberElements.begin(); iterator != this->lineNumberElements.end(); iterator++)
+	for (auto element : this->lineNumberElements)
 	{
-		this->lineNumbers->removeElement(*iterator);
+		this->lineNumbers->removeElement(element);
 	}
 
 	this->lineNumberElements.clear();
 
-	for (auto it = this->textElements.begin(); it != this->textElements.end(); it++)
+	for (auto element : this->textElements)
 	{
-		std::get<0>(*it)->release();
+		std::get<0>(element)->release();
 	}
 
 	this->textElements.clear();
@@ -288,11 +381,6 @@ void CodeWindow::clearText()
 
 void CodeWindow::constructTokenizedText(std::string currentText)
 {
-	if (this->tokenizationCallback == nullptr)
-	{
-		return;
-	}
-
 	std::vector<CodeWindow::token> tokens = std::vector<CodeWindow::token>();
 
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
@@ -302,10 +390,8 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	std::string currentString = "";
 	bool isJoiningComment = false;
 
-	for (auto splitTextIterator = splitText.begin(); splitTextIterator != splitText.end(); splitTextIterator++)
+	for (auto next : splitText)
 	{
-		std::string next = *splitTextIterator;
-
 		// Newlines end comments
 		if (next == "\n")
 		{
@@ -319,7 +405,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 			isJoiningComment = false;
 			currentString = "";
 		}
-		else if (next == ";" || isJoiningComment)
+		else if (next == ";" || next == "//" || isJoiningComment)
 		{
 			isJoiningComment = true;
 			currentString += next;
@@ -336,25 +422,24 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 		textJoined.push_back(currentString);
 	}
 
-	for (auto joinedTextIterator = textJoined.begin(); joinedTextIterator != textJoined.end(); joinedTextIterator++)
+	for (auto text : textJoined)
 	{
 		std::vector<std::string> tokenStrings;
 
 		// Tokenize the string if it isn't a comment -- otherwise treat it as one token
-		if (!StrUtils::startsWith(*joinedTextIterator, ";", false))
+		if (!StrUtils::startsWith(text, ";", false) && !StrUtils::startsWith(text, "//", false))
 		{
-			tokenStrings = StrUtils::tokenize(*joinedTextIterator, CodeWindow::Delimiters);
+			tokenStrings = StrUtils::tokenize(text, CodeWindow::Delimiters);
 		}
 		else
 		{
 			tokenStrings = std::vector<std::string>();
-			tokenStrings.push_back(*joinedTextIterator);
+			tokenStrings.push_back(text);
 		}
 
 		// Iterate tokens
-		for (auto tokenIterator = tokenStrings.begin(); tokenIterator != tokenStrings.end(); tokenIterator++)
+		for (auto token : tokenStrings)
 		{
-			std::string token = *tokenIterator;
 			Color3B color = CodeWindow::DefaultColor;
 
 			if (CodeWindow::Registers.find(token) != CodeWindow::Registers.end())
@@ -365,7 +450,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 			{
 				color = CodeWindow::NumberColor;
 			}
-			else if (StrUtils::startsWith(token, ";", false))
+			else if (StrUtils::startsWith(token, ";", false) || StrUtils::startsWith(token, "//", false))
 			{
 				color = CodeWindow::CommentColor;
 			}
@@ -378,10 +463,8 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	this->clearText();
 	this->insertNewline();
 
-	for (auto tokenIterator = tokens.begin(); tokenIterator != tokens.end(); tokenIterator++)
+	for (auto token : tokens)
 	{
-		CodeWindow::token token = *tokenIterator;
-
 		if (token.tokenStr->getString() == "\n")
 		{
 			this->insertNewline();
@@ -391,6 +474,8 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 			this->insertText(token.tokenStr, token.color);
 		}
 	}
+
+	this->hasScriptChanges = true;
 }
 
 void CodeWindow::setWindowTitle(std::string windowTitle)
@@ -405,49 +490,4 @@ void CodeWindow::insertText(LocalizedString* text, Color3B color)
 	text->retain();
 	this->textElements.push_back(std::make_tuple(text, color));
 	this->displayedText->pushBackElement(element);
-}
-
-void CodeWindow::toggleHeader(bool isVisible)
-{
-	this->titleBar->setVisible(isVisible);
-	this->windowTitle->setVisible(isVisible);
-}
-
-void CodeWindow::toggleBackground(bool isVisible)
-{
-	this->background->setVisible(isVisible);
-}
-
-void CodeWindow::enableWrapByChar()
-{
-	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
-}
-
-void CodeWindow::enableWrapByWord()
-{
-	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_WORD);
-}
-
-void CodeWindow::rebuildText()
-{
-	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> elements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
-
-	for (auto it = this->textElements.begin(); it != this->textElements.end(); it++)
-	{
-		elements.push_back(std::make_tuple(std::get<0>(*it)->clone(), std::get<1>(*it)));
-	}
-
-	this->clearText();
-
-	for (auto it = elements.begin(); it != elements.end(); it++)
-	{
-		if (std::get<0>(*it)->getString() == "\n")
-		{
-			this->insertNewline();
-		}
-		else
-		{
-			this->insertText(std::get<0>(*it), std::get<1>(*it));
-		}
-	}
 }

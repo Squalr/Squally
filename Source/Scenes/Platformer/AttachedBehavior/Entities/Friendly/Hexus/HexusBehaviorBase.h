@@ -13,6 +13,7 @@ class HexusOpponentData;
 class MinMaxPool;
 class LocalizedString;
 class PlatformerEntity;
+class SmartParticles;
 class StateOverride;
 class TutorialBase;
 
@@ -32,8 +33,10 @@ public:
 	void removeFromDialogue();
 
 protected:
-	HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
-	~HexusBehaviorBase();
+	HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles = false, LocalizedString* dialogueChoiceOverride = nullptr);
+	virtual ~HexusBehaviorBase();
+	
+	void onDisable() override;
 
 	virtual MinMaxPool* generateReward() = 0;
 	virtual std::string getWinLossSaveKey() = 0;
@@ -67,9 +70,16 @@ private:
 	cocos2d::Sprite* cardGlow;
 	cocos2d::Sprite* cardSprite;
 
+	SmartParticles* hackParticles1;
+	SmartParticles* hackParticles2;
+	SmartParticles* hackParticles3;
+	SmartParticles* hackParticles4;
+	SmartParticles* hackParticles5;
+
 	std::vector<std::function<void()>> winCallbacks;
 	std::vector<std::function<void()>> lossCallbacks;
 	std::vector<std::function<void()>> drawCallbacks;
 
 	std::string voiceResource;
+	bool showParticles;
 };

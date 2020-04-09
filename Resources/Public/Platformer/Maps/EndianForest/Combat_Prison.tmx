@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="966">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="Laboratory"/>
+   <property name="music" value="trick-or-treat"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="106" name="bg -4">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="941" name="frost" type="terrain" x="190.18" y="209.135" width="1297.64" height="1599.73"/>
+  <object id="942" name="castle" type="terrain" x="1495.18" y="204.135" width="1151.64" height="1599.73"/>
+  <object id="943" name="shade-grass" type="terrain" x="2692.18" y="210.135" width="1151.64" height="1599.73"/>
+ </objectgroup>
+ <objectgroup id="117" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="938" name="frost" type="terrain" x="224.818" y="1422.05" width="1195.64" height="725.73"/>
+  <object id="939" name="castle" type="terrain" x="1428.03" y="1421.91" width="1195.64" height="725.73"/>
+  <object id="940" name="shade-grass" type="terrain" x="2634.09" y="1421.91" width="1195.64" height="725.73"/>
+ </objectgroup>
+ <objectgroup id="121" name="npc collision walls -3">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="894" name="solid-npc" type="collision" x="-74.85" y="600.408" width="537.03" height="993"/>
+  <object id="895" name="solid-npc" type="collision" x="1136.24" y="602.619" width="503.697" height="993"/>
+  <object id="896" name="solid-npc" type="collision" x="2417.53" y="618.932" width="532.244" height="993"/>
+  <object id="897" name="solid-npc" type="collision" x="3697.41" y="590.384" width="537.03" height="993"/>
+ </objectgroup>
+ <objectgroup id="116" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="832" name="ice-golem" type="entity" x="972.62" y="1301.44" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="843" name="skeletal-baron" type="entity" x="3470.4" y="1273.19" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+   </properties>
+  </object>
+  <object id="849" name="lightning-golem" type="entity" x="2190.01" y="1297.41" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="127" name="columns -2">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="958" name="wood" type="terrain" x="4125.82" y="320" width="101.823" height="1408.06"/>
+  <object id="959" name="wood" type="terrain" x="3673.09" y="320" width="101.823" height="1408.06"/>
+  <object id="960" name="wood" type="terrain" x="2865.09" y="320" width="101.823" height="1408.06"/>
+  <object id="961" name="wood" type="terrain" x="2367.27" y="320" width="101.823" height="1408.06"/>
+  <object id="962" name="wood" type="terrain" x="1549.09" y="320" width="101.823" height="1408.06"/>
+  <object id="963" name="wood" type="terrain" x="1133.94" y="320" width="101.823" height="1408.06"/>
+  <object id="964" name="wood" type="terrain" x="361.21" y="320" width="101.823" height="1408.06"/>
+  <object id="965" name="wood" type="terrain" x="-81.2145" y="320" width="101.823" height="1408.06"/>
+ </objectgroup>
+ <objectgroup id="111" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="935" name="frost" type="terrain" x="220.18" y="1573.64" width="1195.64" height="725.73"/>
+  <object id="936" name="castle" type="terrain" x="1423.39" y="1573.5" width="1195.64" height="725.73"/>
+  <object id="937" name="shade-grass" type="terrain" x="2629.45" y="1573.5" width="1195.64" height="725.73"/>
+ </objectgroup>
+ <objectgroup id="120" name="npc collision walls -1">
+  <properties>
+   <property name="depth" type="float" value="-288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="885" name="solid-npc" type="collision" x="-74.85" y="600.408" width="537.03" height="993"/>
+  <object id="888" name="solid-npc" type="collision" x="1136.24" y="602.619" width="473.394" height="993"/>
+  <object id="889" name="solid-npc" type="collision" x="2408.44" y="597.72" width="535.275" height="993"/>
+  <object id="890" name="solid-npc" type="collision" x="3697.41" y="590.384" width="537.03" height="993"/>
+ </objectgroup>
+ <objectgroup id="113" name="entites -1">
+  <properties>
+   <property name="depth" type="float" value="-288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="826" name="snow-fiend" type="entity" x="568.83" y="1437.81" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+   </properties>
+  </object>
+  <object id="844" name="skeletal-priestess" type="entity" x="3067.03" y="1412.05" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="850" name="earth-golem" type="entity" x="1844.11" y="1423.81" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="jail">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="822" name="Generic/Background/Jail" type="decor" x="411.678" y="634" width="749.102" height="993">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="repeat-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="838" name="Generic/Background/Jail" type="decor" x="2949.06" y="634" width="749.102" height="993">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="repeat-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="925" name="Generic/Background/Jail" type="decor" x="1641.45" y="634" width="749.102" height="993">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="repeat-y" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="119" name="walls">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="873" name="magic-wall" type="object" x="1667.92" y="604.721" width="749.102" height="993"/>
+  <object id="874" name="magic-wall" type="object" x="2928.68" y="646.829" width="749.102" height="993"/>
+  <object id="922" name="magic-wall" type="object" x="1673.69" y="602.409" width="749.102" height="993"/>
+  <object id="924" name="magic-wall" type="object" x="422.176" y="632.712" width="749.102" height="993"/>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="944" name="marble" type="terrain" x="-2.39576" y="331.771" width="440.064" height="1420.94"/>
+  <object id="945" name="marble" type="terrain" x="1190.8" y="342.136" width="440.064" height="1420.94"/>
+  <object id="946" name="marble" type="terrain" x="2425.9" y="335.348" width="482.731" height="1420.94"/>
+  <object id="947" name="marble" type="terrain" x="3731.48" y="316.803" width="440.064" height="1420.94"/>
+ </objectgroup>
+ <objectgroup id="126" name="columns 0">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="950" name="wood" type="terrain" x="4125.82" y="320" width="101.823" height="1408.06"/>
+  <object id="951" name="wood" type="terrain" x="3673.09" y="320" width="101.823" height="1408.06"/>
+  <object id="952" name="wood" type="terrain" x="2865.09" y="320" width="101.823" height="1408.06"/>
+  <object id="953" name="wood" type="terrain" x="2367.27" y="320" width="101.823" height="1408.06"/>
+  <object id="954" name="wood" type="terrain" x="1549.09" y="320" width="101.823" height="1408.06"/>
+  <object id="955" name="wood" type="terrain" x="1133.94" y="320" width="101.823" height="1408.06"/>
+  <object id="956" name="wood" type="terrain" x="361.21" y="320" width="101.823" height="1408.06"/>
+  <object id="957" name="wood" type="terrain" x="-81.2145" y="320" width="101.823" height="1408.06"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="931" name="marble" type="terrain" x="-85.82" y="1631.64" width="4311.64" height="540.73">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" value="0"/>
+   </properties>
+  </object>
+  <object id="934" name="marble" type="terrain" x="-263.82" y="425.635" width="4751.64" height="240.73"/>
+ </objectgroup>
+ <objectgroup id="122" name="==========="/>
+ <objectgroup id="124" name="all entities and terrain (same layer for z sorting)">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
+  </properties>
+  <object id="912" name="combat-spawn" type="object" x="2353.01" y="1721.52" width="64" height="64">
+   <properties>
+    <property name="depth" value="0"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="913" name="combat-spawn" type="object" x="1370.73" y="1720.08" width="64" height="64">
+   <properties>
+    <property name="depth" value="0"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="914" name="combat-spawn" type="object" x="1016.94" y="1722.14" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="0"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="915" name="combat-spawn" type="object" x="2792.28" y="1722.15" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="0"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="932" name="marble" type="terrain" x="156.18" y="1785.64" width="3563.64" height="1000.73">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="125" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="917" name="camera-focus" type="object" x="1869.7" y="1345.03" width="128" height="128">
+   <properties>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="918" name="camera-target" type="object" x="1392.73" y="1434.91" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-1"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="919" name="camera-target" type="object" x="2348.12" y="1440.91" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-1"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="920" name="camera-target" type="object" x="1578.12" y="1436.91" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-0"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="921" name="camera-target" type="object" x="2136.12" y="1438.91" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-0"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="123" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="910" name="Generic/Chandilier1" type="decor" x="1761.74" y="601.852" width="372.519" height="492.296"/>
+ </objectgroup>
+</map>

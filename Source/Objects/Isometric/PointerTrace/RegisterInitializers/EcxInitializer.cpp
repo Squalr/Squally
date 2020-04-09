@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EcxInitializer::MapKeyEcxInitializer = "ecx";
+const std::string EcxInitializer::MapKey = "ecx";
 
 EcxInitializer* EcxInitializer::create(ValueMap& properties)
 {

@@ -11,13 +11,13 @@ class QuestLine;
 class TownExitBlocked : public QuestTask
 {
 public:
-	static TownExitBlocked* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TownExitBlocked* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~TownExitBlocked();
+	TownExitBlocked(GameObject* owner, QuestLine* questLine);
+	virtual ~TownExitBlocked();
 	
 	void onEnter() override;
 	void onLoad(QuestState questState) override;

@@ -1,15 +1,15 @@
 #include "CrystalWand.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string CrystalWand::SaveKeyCrystalWand = "crystal-wand";
+const std::string CrystalWand::SaveKey = "crystal-wand";
 
 CrystalWand* CrystalWand::create()
 {
@@ -20,7 +20,7 @@ CrystalWand* CrystalWand::create()
 	return instance;
 }
 
-CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 26, 32, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIdentifi
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* CrystalWand::clone()
 
 std::string CrystalWand::getItemName()
 {
-	return CrystalWand::SaveKeyCrystalWand;
+	return CrystalWand::SaveKey;
 }
 
 LocalizedString* CrystalWand::getString()
@@ -56,12 +56,12 @@ LocalizedString* CrystalWand::getString()
 
 std::string CrystalWand::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_CrystalWand;
+	return ItemResources::Equipment_Weapons_Wands_CrystalWand;
 }
 
 std::string CrystalWand::getSerializationKey()
 {
-	return CrystalWand::SaveKeyCrystalWand;
+	return CrystalWand::SaveKey;
 }
 
 Vec2 CrystalWand::getDisplayOffset()

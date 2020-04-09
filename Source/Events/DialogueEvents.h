@@ -34,6 +34,10 @@ public:
 		std::function<cocos2d::Node*()> rightContentNode;
 		bool bigFont;
 
+		DialogueVisualArgs()
+		: dialogueDock(DialogueBox::DialogueDock::Bottom), dialogueAlignment(DialogueBox::DialogueAlignment::Center), leftContentNode(nullptr), rightContentNode(nullptr), bigFont(false)
+		{
+		}
 		DialogueVisualArgs(DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<cocos2d::Node*()> leftContentNode = nullptr, std::function<cocos2d::Node*()> rightContentNode = nullptr, bool bigFont = false)
 		: dialogueDock(dialogueDock), dialogueAlignment(dialogueAlignment), leftContentNode(leftContentNode), rightContentNode(rightContentNode), bigFont(bigFont)
 		{

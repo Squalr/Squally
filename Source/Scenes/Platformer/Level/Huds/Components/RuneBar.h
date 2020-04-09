@@ -22,15 +22,17 @@ public:
 
 	void setStatsTarget(PlatformerEntity* target);
 
-private:
-	typedef SmartNode super;
+protected:
 	RuneBar(bool isFrameOnLeft = true);
-	~RuneBar();
+	virtual ~RuneBar();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 
 	EntityRuneBehavior* runeBehavior;
 	PlatformerEntity* target;

@@ -1,7 +1,6 @@
 #include "ShopkeeperDialogueBehavior.h"
 
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/GameObject.h"
 #include "Events/DialogueEvents.h"
@@ -9,6 +8,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 
 #include "Resources/SoundResources.h"
 
@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopkeeperDialogueBehavior::MapKeyAttachedBehavior = "shopkeeper";
+const std::string ShopkeeperDialogueBehavior::MapKey = "shopkeeper";
 
 ShopkeeperDialogueBehavior* ShopkeeperDialogueBehavior::create(GameObject* owner)
 {
@@ -47,7 +47,7 @@ void ShopkeeperDialogueBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{

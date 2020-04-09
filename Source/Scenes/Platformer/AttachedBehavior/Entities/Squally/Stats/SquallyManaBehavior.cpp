@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyManaBehavior::MapKeyAttachedBehavior = "squally-mana";
+const std::string SquallyManaBehavior::MapKey = "squally-mana";
 
 SquallyManaBehavior* SquallyManaBehavior::create(GameObject* owner)
 {
@@ -51,39 +51,25 @@ void SquallyManaBehavior::onLoad()
 		this->saveState();
 	}));
 	
-	this->defer([=]()
+	this->squally->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		this->squally->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* entityManaBehavior)
-		{
-			this->recalculateMaxMana([=]()
-			{
-				int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(777)).asInt();
+		int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(manaBehavior->getMaxMana())).asInt();
 
-				this->squally->setState(StateKeys::Mana, Value(mana));
-			});
-		});
+		manaBehavior->setMana(mana);
 	});
+
+	this->squally->listenForStateWrite(StateKeys::Mana, [=](Value value)
+	{
+		this->saveState();
+	});
+}
+
+void SquallyManaBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void SquallyManaBehavior::saveState()
 {
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
 }
-
-void SquallyManaBehavior::recalculateMaxMana(std::function<void()> onCalculated)
-{
-	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		int maxMana = StatsTables::getBaseMana(this->squally);
-
-		for (auto item : entityInventoryBehavior->getEquipmentInventory()->getEquipment())
-		{
-			maxMana += item->getItemStats().manaBonus;
-		}
-
-		this->squally->setState(StateKeys::MaxMana, Value(maxMana));
-
-		onCalculated();
-	});
-}
-

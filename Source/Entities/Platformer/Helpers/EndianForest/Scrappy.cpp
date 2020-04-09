@@ -21,7 +21,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/FXResources.h"
@@ -32,7 +31,7 @@
 
 using namespace cocos2d;
 
-const std::string Scrappy::MapKeyScrappy = "scrappy";
+const std::string Scrappy::MapKey = "scrappy";
 HexusOpponentData* Scrappy::HexusOpponentDataInstance = nullptr;
 
 const std::string Scrappy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCRAPPY";
@@ -47,7 +46,7 @@ Scrappy* Scrappy::deserialize(ValueMap& properties)
 }
 
 Scrappy::Scrappy(ValueMap& properties) : super(properties,
-	Scrappy::MapKeyScrappy,
+	Scrappy::MapKey,
 	EntityResources::Helpers_EndianForest_Scrappy_Animations,
 	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
 	Size(112.0f, 160.0f),
@@ -85,11 +84,6 @@ void Scrappy::initializePositions()
 void Scrappy::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-float Scrappy::getFloatHeight()
-{
-	return 64.0f;
 }
 
 Vec2 Scrappy::getDialogueOffset()

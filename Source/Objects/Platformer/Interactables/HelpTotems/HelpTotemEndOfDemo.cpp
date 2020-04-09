@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string HelpTotemEndOfDemo::MapKeyHelpTotemEndOfDemo = "help-totem-end-of-demo";
+const std::string HelpTotemEndOfDemo::MapKey = "help-totem-end-of-demo";
 
 HelpTotemEndOfDemo* HelpTotemEndOfDemo::create(ValueMap& properties)
 {

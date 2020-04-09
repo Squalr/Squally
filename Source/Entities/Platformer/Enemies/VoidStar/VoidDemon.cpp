@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidDemon::MapKeyVoidDemon = "void-demon";
+const std::string VoidDemon::MapKey = "void-demon";
 HexusOpponentData* VoidDemon::HexusOpponentDataInstance = nullptr;
 const std::string VoidDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_DEMON";
 
@@ -32,7 +31,7 @@ VoidDemon* VoidDemon::deserialize(ValueMap& properties)
 }
 
 VoidDemon::VoidDemon(ValueMap& properties) : super(properties,
-	VoidDemon::MapKeyVoidDemon,
+	VoidDemon::MapKey,
 	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
 	Size(338.0f, 342.0f),

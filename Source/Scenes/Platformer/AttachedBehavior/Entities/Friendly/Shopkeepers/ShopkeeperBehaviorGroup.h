@@ -7,11 +7,11 @@ class ShopkeeperBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static ShopkeeperBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ShopkeeperBehaviorGroup(GameObject* owner);
-	~ShopkeeperBehaviorGroup();
+	virtual ~ShopkeeperBehaviorGroup();
 
 	void onLoad() override;
 

@@ -5,15 +5,15 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/ThrowWeapon.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string OrcSwordsmanCombatBehavior::MapKeyAttachedBehavior = "orc-swordsman-combat";
+const std::string OrcSwordsmanCombatBehavior::MapKey = "orc-swordsman-combat";
 
 OrcSwordsmanCombatBehavior* OrcSwordsmanCombatBehavior::create(GameObject* owner)
 {
@@ -32,6 +32,8 @@ OrcSwordsmanCombatBehavior::OrcSwordsmanCombatBehavior(GameObject* owner) : supe
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 OrcSwordsmanCombatBehavior::~OrcSwordsmanCombatBehavior()
@@ -46,8 +48,8 @@ void OrcSwordsmanCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
-		attackBehavior->registerAttack(ThrowWeapon::create(0.55f, 0.2f));
+		attackBehavior->registerAttack(ThrowWeapon::create(0.55f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Rare));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -56,7 +58,7 @@ void OrcSwordsmanCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

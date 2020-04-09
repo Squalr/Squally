@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Rupert::MapKeyRupert = "rupert";
+const std::string Rupert::MapKey = "rupert";
 HexusOpponentData* Rupert::HexusOpponentDataInstance = nullptr;
 const std::string Rupert::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUPERT";
 
@@ -32,7 +31,7 @@ Rupert* Rupert::deserialize(ValueMap& properties)
 }
 
 Rupert::Rupert(ValueMap& properties) : super(properties,
-	Rupert::MapKeyRupert,
+	Rupert::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,
 	Size(112.0f, 160.0f),

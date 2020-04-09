@@ -1,15 +1,15 @@
 #include "Diamond.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Diamond::SaveKeyDiamond = "diamond";
+const std::string Diamond::SaveKey = "diamond";
 
 Diamond* Diamond::create()
 {
@@ -20,7 +20,7 @@ Diamond* Diamond::create()
 	return instance;
 }
 
-Diamond::Diamond() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Diamond::Diamond() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 91 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Diamond::clone()
 
 std::string Diamond::getItemName()
 {
-	return Diamond::SaveKeyDiamond;
+	return Diamond::SaveKey;
 }
 
 LocalizedString* Diamond::getString()
@@ -45,10 +45,10 @@ LocalizedString* Diamond::getString()
 
 std::string Diamond::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Diamond;
+	return ItemResources::Crafting_Smithing_Diamond;
 }
 
 std::string Diamond::getSerializationKey()
 {
-	return Diamond::SaveKeyDiamond;
+	return Diamond::SaveKey;
 }

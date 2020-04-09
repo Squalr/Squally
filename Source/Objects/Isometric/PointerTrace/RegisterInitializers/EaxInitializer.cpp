@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EaxInitializer::MapKeyEaxInitializer = "eax";
+const std::string EaxInitializer::MapKey = "eax";
 
 EaxInitializer* EaxInitializer::create(ValueMap& properties)
 {

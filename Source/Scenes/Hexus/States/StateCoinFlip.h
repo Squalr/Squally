@@ -16,6 +16,11 @@ public:
 	static StateCoinFlip* create();
 
 protected:
+	StateCoinFlip();
+	virtual ~StateCoinFlip();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -23,11 +28,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateCoinFlip();
-	~StateCoinFlip();
-
-	void onEnter() override;
-	void initializePositions() override;
 
 	SmartAnimationSequenceNode* coinAnimation;
 };

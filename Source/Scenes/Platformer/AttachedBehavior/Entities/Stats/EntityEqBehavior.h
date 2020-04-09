@@ -26,9 +26,10 @@ public:
 
 protected:
 	EntityEqBehavior(GameObject* owner);
-	~EntityEqBehavior();
+	virtual ~EntityEqBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 	PlatformerEntity* entity;
 

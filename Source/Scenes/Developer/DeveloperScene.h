@@ -12,7 +12,7 @@ public:
 
 protected:
 	DeveloperScene();
-	~DeveloperScene();
+	virtual ~DeveloperScene();
 
 private:
 	typedef GlobalScene super;

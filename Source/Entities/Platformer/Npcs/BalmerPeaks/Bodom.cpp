@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Bodom::MapKeyBodom = "bodom";
+const std::string Bodom::MapKey = "bodom";
 HexusOpponentData* Bodom::HexusOpponentDataInstance = nullptr;
 const std::string Bodom::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BODOM";
 
@@ -32,7 +31,7 @@ Bodom* Bodom::deserialize(ValueMap& properties)
 }
 
 Bodom::Bodom(ValueMap& properties) : super(properties,
-	Bodom::MapKeyBodom,
+	Bodom::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,
 	Size(112.0f, 160.0f),

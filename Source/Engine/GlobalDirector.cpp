@@ -36,13 +36,14 @@ GlobalDirector::~GlobalDirector()
 {
 }
 
-void GlobalDirector::loadScene(Scene* scene)
+void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 {
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
 
-	// Different scenes may have different physics collision flags, clean up before scene changes
-	CollisionObject::ClearInverseMap();
+	CollisionObject::ClearCollisionObjects();
+
+	SmartScene* scene = sceneCreator();
 
 	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{
@@ -61,6 +62,8 @@ void GlobalDirector::loadScene(Scene* scene)
 	SaveManager::save();
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
+
+	SceneEvents::TriggerAfterSceneChange();
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)

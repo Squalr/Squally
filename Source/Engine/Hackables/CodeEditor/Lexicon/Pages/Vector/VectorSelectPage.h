@@ -18,13 +18,14 @@ public:
 	static const std::string Identifier;
 
 protected:
+	VectorSelectPage();
+	virtual ~VectorSelectPage();
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 	
 private:
 	typedef LexiconPage super;
-	VectorSelectPage();
-	~VectorSelectPage();
 
 	cocos2d::Sprite* decorLine;
 	LocalizedLabel* operationSelectLabel;

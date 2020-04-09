@@ -21,8 +21,7 @@ public:
 	std::string getTutorial();
 	std::function<void(CipherPuzzleData*)> onUnlock;
 
-private:
-	typedef SmartNode super;
+protected:
 	CipherPuzzleData(std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
 		std::vector<std::string> tokens,
 		std::string defaultDataType,
@@ -31,6 +30,9 @@ private:
 	virtual ~CipherPuzzleData();
 
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap;
 	std::string defaultDataType;

@@ -10,12 +10,10 @@ class HackableObject;
 class HackableEvents
 {
 public:
-	static const std::string EventForceHackerModeEnable;
+	static const std::string EventForceUseHackerMode;
 	static const std::string EventHackerModeToggle;
 	static const std::string EventHackerModeEnable;
 	static const std::string EventHackerModeDisable;
-	static const std::string EventSensingEnable;
-	static const std::string EventSensingDisable;
 	static const std::string EventAllowHackerMode;
 	static const std::string EventDisallowHackerMode;
 	static const std::string EventQueryHackerModeAllowed;
@@ -24,6 +22,9 @@ public:
 	static const std::string EventHackableAttributeEdit;
 	static const std::string EventHackableAttributeEditDone;
 	static const std::string EventHackApplied;
+	static const std::string EventHackFlagsChanged;
+	static const std::string EventPauseHackTimers;
+	static const std::string EventResumeHackTimers;
 	static const std::string EventOpenLexiconPage;
 	static const std::string EventCloseLeftLexiconPage;
 	static const std::string EventCloseRightLexiconPage;
@@ -31,8 +32,9 @@ public:
 	struct HackableObjectOpenArgs
 	{
 		HackableObject* hackableObject;
+		int hackFlags;
 
-		HackableObjectOpenArgs(HackableObject* hackableObject) : hackableObject(hackableObject) { }
+		HackableObjectOpenArgs(HackableObject* hackableObject, int hackFlags) : hackableObject(hackableObject), hackFlags(hackFlags) { }
 	};
 
 	struct HackableObjectEditArgs
@@ -53,20 +55,16 @@ public:
 
 	struct HackToggleArgs
 	{
-		int hackFlags;
-
-		HackToggleArgs(int hackFlags) : hackFlags(hackFlags)
+		HackToggleArgs()
 		{
 		}
 	};
 
-	struct SensingArgs
+	struct HackFlagsChangedArgs
 	{
 		int hackFlags;
 
-		SensingArgs(int hackFlags) : hackFlags(hackFlags)
-		{
-		}
+		HackFlagsChangedArgs(int hackFlags) : hackFlags(hackFlags) { }
 	};
 
 	struct HackerModeQueryArgs
@@ -87,12 +85,10 @@ public:
 		}
 	};
 
-	static void TriggerForceHackerModeEnable();
+	static void TriggerForceUseHackerMode();
 	static void TriggerHackerModeToggle(HackToggleArgs args);
 	static void TriggerHackerModeEnable(HackToggleArgs args);
 	static void TriggerHackerModeDisable();
-	static void TriggerSensingEnable(SensingArgs args);
-	static void TriggerSensingDisable();
 	static void TriggerAllowHackerMode();
 	static void TriggerDisallowHackerMode();
 	static void TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args);
@@ -101,6 +97,9 @@ public:
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerOnHackApplied(HackAppliedArgs args);
+	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);
+	static void TriggerPauseHackTimers();
+	static void TriggerResumeHackTimers();
 	static void TriggerOpenLexiconPage(OpenLexiconPageArgs args);
 	static void TriggerCloseLeftLexiconPage();
 	static void TriggerCloseRightLexiconPage();

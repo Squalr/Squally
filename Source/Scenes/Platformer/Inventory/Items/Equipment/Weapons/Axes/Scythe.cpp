@@ -1,15 +1,15 @@
 #include "Scythe.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Scythe::SaveKeyScythe = "scythe";
+const std::string Scythe::SaveKey = "scythe";
 
 Scythe* Scythe::create()
 {
@@ -20,7 +20,7 @@ Scythe* Scythe::create()
 	return instance;
 }
 
-Scythe::Scythe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+Scythe::Scythe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ Scythe::Scythe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.10f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* Scythe::clone()
 
 std::string Scythe::getItemName()
 {
-	return Scythe::SaveKeyScythe;
+	return Scythe::SaveKey;
 }
 
 LocalizedString* Scythe::getString()
@@ -56,12 +56,12 @@ LocalizedString* Scythe::getString()
 
 std::string Scythe::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Axes_Scythe;
+	return ItemResources::Equipment_Weapons_Special_Scythe;
 }
 
 std::string Scythe::getSerializationKey()
 {
-	return Scythe::SaveKeyScythe;
+	return Scythe::SaveKey;
 }
 
 Size Scythe::getWeaponCollisionSize()
@@ -74,4 +74,9 @@ Vec2 Scythe::getWeaponOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
+}
+
+Vec2 Scythe::getDisplayOffset()
+{
+	return Vec2(28.0f, -4.0f);
 }

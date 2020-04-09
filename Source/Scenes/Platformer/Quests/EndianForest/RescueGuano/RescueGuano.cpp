@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HelperEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -29,16 +30,16 @@ const std::string RescueGuano::MapKeyQuest = "rescue-guano";
 const std::string RescueGuano::EventMulDoorUnlocked = "mul-door-unlocked";
 const std::string RescueGuano::TagPrisonDoor = "prison-door";
 
-RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine)
 {
-	RescueGuano* instance = new RescueGuano(owner, questLine, questTag);
+	RescueGuano* instance = new RescueGuano(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, RescueGuano::MapKeyQuest, questTag, false)
+RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine) : super(owner, questLine, RescueGuano::MapKeyQuest, false)
 {
 	this->guano = nullptr;
 	this->squally = nullptr;
@@ -61,12 +62,12 @@ void RescueGuano::onLoad(QuestState questState)
 				this->guano->despawn();
 			});
 		}
-	}, Guano::MapKeyGuano);
+	}, Guano::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void RescueGuano::onActivate(bool isActiveThroughSkippable)
@@ -148,8 +149,23 @@ void RescueGuano::runRescueSequencePt3()
 				}),
 				nullptr
 			));
-			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
+			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKey));
+
 			this->complete();
+
+			LocalizedString* hintString = Strings::Platformer_Help_HelpTotemPickPocket::create();
+			LocalizedString* helperNameString = Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create();
+			LocalizedString* bracketString1 = Strings::Common_Brackets::create();
+			LocalizedString* shiftString = Strings::Input_Shift::create();
+
+			bracketString1->setStringReplacementVariables(shiftString);
+			hintString->setStringReplacementVariables({ helperNameString, bracketString1 });
+			
+			NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+				Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()),
+				hintString,
+				SoundResources::Notifications_NotificationGood1
+			));
 		},
 		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 		true

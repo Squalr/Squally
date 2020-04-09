@@ -6,5 +6,5 @@ class CardLogicalXor : public CardData
 {
 public:
 	CardLogicalXor();
-	~CardLogicalXor();
+	virtual ~CardLogicalXor();
 };

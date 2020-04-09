@@ -30,7 +30,7 @@ public:
 
 protected:
 	InventoryMenu();
-	~InventoryMenu();
+	virtual ~InventoryMenu();
 
 private:
 	typedef SmartNode super;
@@ -42,8 +42,6 @@ private:
 	void populateItemList();
 	void performEquipmentAction(Item* item);
 	void performInventoryAction(Item* item);
-	void equipHexusCard(Item* card);
-	void unequipHexusCard(Item* card);
 	void equipItem(Item* item);
 	void unequipItem(Item* item);
 	void close();

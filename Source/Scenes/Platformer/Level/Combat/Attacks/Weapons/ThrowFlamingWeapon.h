@@ -5,16 +5,16 @@
 class ThrowFlamingWeapon : public PlatformerAttack
 {
 public:
-	static ThrowFlamingWeapon* create(float attackDuration, float recoverDuration);
+	static ThrowFlamingWeapon* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	ThrowFlamingWeapon(float attackDuration, float recoverDuration);
-	~ThrowFlamingWeapon();
+	ThrowFlamingWeapon(float attackDuration, float recoverDuration, Priority priority);
+	virtual ~ThrowFlamingWeapon();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void onCleanup() override;
 
 private:

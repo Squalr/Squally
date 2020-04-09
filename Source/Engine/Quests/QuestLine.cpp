@@ -12,11 +12,12 @@ using namespace cocos2d;
 
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE_";
 
-QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq)
+QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq, std::string prereqTask)
 {
 	this->questLine = questLine;
 	this->quests = quests;
 	this->prereq = prereq;
+	this->prereqTask = prereqTask;
 
 	if (this->prereq != nullptr)
 	{
@@ -28,13 +29,13 @@ QuestLine::~QuestLine()
 {
 }
 
-QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
+QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask)
 {
-	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
+	for (auto next : this->quests)
 	{
-		if ((*it).questTask == questTask)
+		if (next.questTask == questTask)
 		{
-			return (*it).deserializer(owner, this, questTag);
+			return next.deserializer(owner, this);
 		}
 	}
 	
@@ -47,7 +48,7 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 	std::string currentQuestTask = Quests::getCurrentQuestTaskForLine(this->questLine);
 	bool hasEncounteredActive = false;
 	bool activeThroughSkippable = false;
-	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isComplete();
+	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isCompleteUpTo(this->prereqTask);
 
 	if (currentQuestTask.empty() && !this->quests.empty())
 	{
@@ -76,14 +77,14 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 			}
 		}
 	}
-
-	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
+	
+	for (auto next : this->quests)
 	{
-		bool isActive = prereqComplete && (activeThroughSkippable || (*it).questTask == currentQuestTask);
+		bool isActive = prereqComplete && (activeThroughSkippable || next.questTask == currentQuestTask);
 		bool isComplete = prereqComplete && !isActive && !hasEncounteredActive;
-		bool isSkippable = (*it).isSkippable;
+		bool isSkippable = next.isSkippable;
 
-		questData.push_back(QuestMeta((*it).questTask, isActive, isSkippable, isComplete));
+		questData.push_back(QuestMeta(next.questTask, isActive, isSkippable, isComplete));
 
 		activeThroughSkippable = (activeThroughSkippable || isActive) && isSkippable;
 		hasEncounteredActive |= isActive;
@@ -119,6 +120,26 @@ bool QuestLine::isComplete()
 	return questMeta.back().isComplete;
 }
 
+bool QuestLine::isCompleteUpTo(std::string questTask)
+{
+	if (questTask.empty())
+	{
+		return this->isComplete();
+	}
+
+	const std::vector<QuestMeta> questMeta = this->getQuests();
+
+	for (auto next : questMeta)
+	{
+		if (next.isComplete && next.questTask == questTask)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 {
 	if (currentQuest == nullptr)
@@ -150,4 +171,17 @@ void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 	}
 	
 	QuestEvents::TriggerQuestTaskComplete(QuestEvents::QuestTaskCompleteArgs(this->questLine, currentQuest));
+}
+
+void QuestLine::waiveQuestPrereq()
+{
+	if (this->prereq != nullptr)
+	{
+		std::vector<QuestLine::QuestMeta> quests = this->prereq->getQuests();
+
+		if (!quests.empty() && !quests.back().isComplete)
+		{
+			Quests::saveQuestLineProgress(this->prereq->getQuestLine(), QuestLine::QuestLineSaveKeyComplete + quests.back().questTask);
+		}
+	}
 }

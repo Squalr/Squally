@@ -1,9 +1,10 @@
 #include "Rain.h"
 
-#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 
@@ -22,8 +23,8 @@ Rain* Rain::create(ValueMap& properties, std::string name)
 
 Rain::Rain(ValueMap& properties, std::string name) : super(properties, name, "weather")
 {
-	this->rain = ParticleSystemQuad::create(ParticleResources::Rain);
-	this->rain->setPositionType(ParticleSystem::PositionType::GROUPED);
+	this->rain = SmartParticles::create(ParticleResources::Rain);
+	this->rain->setGrouped();
 
 	this->rain->start();
 
@@ -48,5 +49,5 @@ void Rain::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->rain->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
+	this->rain->getParticles()->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
 }

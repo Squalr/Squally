@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Brock::MapKeyBrock = "brock";
+const std::string Brock::MapKey = "brock";
 HexusOpponentData* Brock::HexusOpponentDataInstance = nullptr;
 const std::string Brock::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BROCK";
 
@@ -32,7 +31,7 @@ Brock* Brock::deserialize(ValueMap& properties)
 }
 
 Brock::Brock(ValueMap& properties) : super(properties,
-	Brock::MapKeyBrock,
+	Brock::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,
 	Size(112.0f, 160.0f),

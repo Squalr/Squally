@@ -6,5 +6,5 @@ class CardLogicalOr : public CardData
 {
 public:
 	CardLogicalOr();
-	~CardLogicalOr();
+	virtual ~CardLogicalOr();
 };

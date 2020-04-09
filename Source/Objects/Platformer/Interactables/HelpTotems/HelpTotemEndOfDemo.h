@@ -7,11 +7,11 @@ class HelpTotemEndOfDemo : public HelpTotem
 public:
 	static HelpTotemEndOfDemo* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyHelpTotemEndOfDemo;
+	static const std::string MapKey;
 
 protected:
 	HelpTotemEndOfDemo(cocos2d::ValueMap& properties);
-	~HelpTotemEndOfDemo();
+	virtual ~HelpTotemEndOfDemo();
 
 private:
 	typedef HelpTotem super;

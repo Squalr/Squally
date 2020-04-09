@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/TrailTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string TrailTerrain::MapKeyTerrainType = "trail";
+const std::string TrailTerrain::MapKey = "trail";
 
 TrailTerrain* TrailTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ TrailTerrain* TrailTerrain::create(ValueMap& properties)
 TrailTerrain::TrailTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return TrailTexture::create(transformedProps);
+		},
 		0.5f,
-		TrailTerrain::MapKeyTerrainType,
+		TrailTerrain::MapKey,
 		TextureResources::TrailTexture,
 		TerrainResources::Trail_Top,
 		TerrainResources::Trail_TopLeft,

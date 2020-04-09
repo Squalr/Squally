@@ -1,16 +1,16 @@
 #include "SpecialAbsorb.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialAbsorb::SaveKeySpecialAbsorb = "special-absorb";
+const std::string SpecialAbsorb::SaveKey = "special-absorb";
 
 SpecialAbsorb* SpecialAbsorb::create()
 {
@@ -21,7 +21,7 @@ SpecialAbsorb* SpecialAbsorb::create()
 	return instance;
 }
 
-SpecialAbsorb::SpecialAbsorb() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialAbsorb::SpecialAbsorb() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialAbsorb::clone()
 
 std::string SpecialAbsorb::getItemName()
 {
-	return SpecialAbsorb::SaveKeySpecialAbsorb;
+	return SpecialAbsorb::SaveKey;
 }
 
 LocalizedString* SpecialAbsorb::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialAbsorb::getString()
 
 std::string SpecialAbsorb::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialAbsorb::getSerializationKey()
 {
-	return SpecialAbsorb::SaveKeySpecialAbsorb;
+	return SpecialAbsorb::SaveKey;
 }
 
 std::string SpecialAbsorb::getCardKey()

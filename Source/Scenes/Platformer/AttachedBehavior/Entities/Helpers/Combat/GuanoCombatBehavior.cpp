@@ -5,14 +5,14 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string GuanoCombatBehavior::MapKeyAttachedBehavior = "guano-combat";
+const std::string GuanoCombatBehavior::MapKey = "guano-combat";
 
 GuanoCombatBehavior* GuanoCombatBehavior::create(GameObject* owner)
 {
@@ -45,7 +45,7 @@ void GuanoCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -54,7 +54,12 @@ void GuanoCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
+}
+
+void GuanoCombatBehavior::onDisable()
+{
+	super::onDisable();
 }

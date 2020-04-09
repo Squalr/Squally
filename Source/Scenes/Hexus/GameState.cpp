@@ -66,6 +66,23 @@ GameState::GameState()
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
 
+	this->lossesDisplayPointer = nullptr;
+	this->playerBinaryRowTotalPointer = nullptr;
+	this->playerDecimalRowTotalPointer = nullptr;
+	this->playerHexRowTotalPointer = nullptr;
+	this->enemyBinaryRowTotalPointer = nullptr;
+	this->enemyDecimalRowTotalPointer = nullptr;
+	this->enemyHexRowTotalPointer = nullptr;
+	this->scoreTotalPointer = nullptr;
+	this->deckCardCountDisplayPointer = nullptr;
+	this->handCardCountDisplayPointer = nullptr;
+	this->remainingCardDisplayPointer = nullptr;
+	this->drawCountDisplayPointer = nullptr;
+	this->passButtonPointer = nullptr;
+	this->lastStandButtonPointer = nullptr;
+	this->claimVictoryButtonPointer = nullptr;
+	this->cardPreviewPointer = nullptr;
+
 	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
 	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
 
@@ -122,18 +139,22 @@ void GameState::onDeveloperModeEnable(int debugLevel)
 {
 	super::onDeveloperModeEnable(debugLevel);
 
+	/*
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY);
+	*/
 }
 
 void GameState::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
+	/*
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f);
+	*/
 }
 
 void GameState::updateState(GameState* gameState, StateType newState)
@@ -141,6 +162,14 @@ void GameState::updateState(GameState* gameState, StateType newState)
 	gameState->previousStateType = gameState->stateType;
 	gameState->stateType = newState;
 	gameState->clearInteraction();
+
+	// This seems to fix a bug where the game camera is zoomed out when the hexus match starts, causing these to have invalid positions:	
+	gameState->enemyHand->setCardScale(Card::cardScale, 0.0f);
+	gameState->enemyDeck->setCardScale(Card::cardScale, 0.25f);
+	gameState->playerDeck->setCardScale(Card::cardScale, 0.25f);
+	gameState->enemyHand->setCardPositions(0.01f);
+	gameState->enemyDeck->setCardPositions(0.01f);
+	gameState->playerDeck->setCardPositions(0.01f);
 
 	switch (newState)
 	{
@@ -196,10 +225,8 @@ void GameState::clearInteraction()
 
 	std::vector<CardRow*> rows = this->getAllRows();
 
-	for (auto it = rows.begin(); it != rows.end(); it++)
+	for (auto row : rows)
 	{
-		CardRow* row = *it;
-
 		row->disableRowSelection();
 		row->disableRowCardSelection();
 		row->disableRowCardInteraction();
@@ -214,9 +241,9 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 	std::vector<Card*> enemyRemovedCards = std::vector<Card*>();
 	bool isGameOver = this->playerLosses >= 2 || this->enemyLosses >= 2;
 
-	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
+	for (auto row : playerRows)
 	{
-		(*it)->removeCardsWhere([&](Card* card)
+		row->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
 			if (!isGameOver && card->cardData->getCardKey() == CardKeys::Binary0)
@@ -229,9 +256,9 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		});
 	}
 
-	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
+	for (auto row : enemyRows)
 	{
-		(*it)->removeCardsWhere([&](Card* card)
+		row->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
 			if (!isGameOver && card->cardData->getCardKey() == CardKeys::Binary0)
@@ -244,56 +271,56 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		});
 	}
 
-	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
+	for (auto card : playerRemovedCards)
 	{
 		// Special effect for Dec1 cards
-		if (!isGameOver && (*it)->cardData->getCardKey() == CardKeys::Decimal1)
+		if (!isGameOver && card->cardData->getCardKey() == CardKeys::Decimal1)
 		{
-			if ((*it)->getIsPlayerOwnedCard())
+			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerHand->insertCard(*it, Config::insertDelay);
+				this->playerHand->insertCard(card, Config::insertDelay);
 			}
 			else
 			{
-				this->enemyHand->insertCard(*it, Config::insertDelay);
+				this->enemyHand->insertCard(card, Config::insertDelay);
 			}
 		}
 		else
 		{
-			if ((*it)->getIsPlayerOwnedCard())
+			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+				this->playerGraveyard->insertCardTop(card, true, Config::insertDelay);
 			}
 			else
 			{
-				this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+				this->enemyGraveyard->insertCardTop(card, true, Config::insertDelay);
 			}
 		}
 	}
 
-	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
+	for (auto card : enemyRemovedCards)
 	{
 		// Special effect for Dec1 cards
-		if (!isGameOver && (*it)->cardData->getCardKey() == CardKeys::Decimal1)
+		if (!isGameOver && card->cardData->getCardKey() == CardKeys::Decimal1)
 		{
-			if ((*it)->getIsPlayerOwnedCard())
+			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerHand->insertCard(*it, Config::insertDelay);
+				this->playerHand->insertCard(card, Config::insertDelay);
 			}
 			else
 			{
-				this->enemyHand->insertCard(*it, Config::insertDelay);
+				this->enemyHand->insertCard(card, Config::insertDelay);
 			}
 		}
 		else
 		{
-			if ((*it)->getIsPlayerOwnedCard())
+			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+				this->playerGraveyard->insertCardTop(card, true, Config::insertDelay);
 			}
 			else
 			{
-				this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+				this->enemyGraveyard->insertCardTop(card, true, Config::insertDelay);
 			}
 		}
 	}
@@ -301,17 +328,13 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 
 CardRow* GameState::getRowForCard(Card* card)
 {
-	std::vector<CardRow*> rows = this->getAllRows();
-
-	for (auto it = rows.begin(); it != rows.end(); it++)
+	for (auto row : this->getAllRows())
 	{
-		CardRow* row = *it;
-
-		for (auto cardIt = row->rowCards.begin(); cardIt != row->rowCards.end(); cardIt++)
+		for (auto rowCard : row->rowCards)
 		{
-			if ((*cardIt) == card)
+			if (rowCard == card)
 			{
-				return *it;
+				return row;
 			}
 		}
 	}
@@ -321,17 +344,13 @@ CardRow* GameState::getRowForCard(Card* card)
 
 std::vector<Card*> GameState::getAllCards() 
 {
-	std::vector<CardRow*> rows = this->getAllRows();
 	std::vector<Card*> cards;
 
-	for (auto it = rows.begin(); it != rows.end(); it++)
+	for (auto row : this->getAllRows())
 	{
-		CardRow* row = *it;
-
-		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
+		for (auto rowCard : row->rowCards)
 		{
-			Card* card = *it;
-			cards.push_back(card);
+			cards.push_back(rowCard);
 		}
 	}
 
@@ -340,17 +359,13 @@ std::vector<Card*> GameState::getAllCards()
 
 std::vector<Card*> GameState::getEnemyCards() 
 {
-	std::vector<CardRow*> rows = this->getEnemyRows();
 	std::vector<Card*> cards;
 
-	for (auto it = rows.begin(); it != rows.end(); it++)
+	for (auto row : this->getEnemyRows())
 	{
-		CardRow* row = *it;
-
-		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
+		for (auto rowCard : row->rowCards)
 		{
-			Card* card = *it;
-			cards.push_back(card);
+			cards.push_back(rowCard);
 		}
 	}
 
@@ -362,14 +377,11 @@ std::vector<Card*> GameState::getPlayerCards()
 	std::vector<CardRow*> rows = this->getPlayerRows();
 	std::vector<Card*> cards;
 
-	for (auto it = rows.begin(); it != rows.end(); it++)
+	for (auto row : this->getPlayerRows())
 	{
-		CardRow* row = *it;
-
-		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
+		for (auto rowCard : row->rowCards)
 		{
-			Card* card = *it;
-			cards.push_back(card);
+			cards.push_back(rowCard);
 		}
 	}
 
@@ -378,14 +390,13 @@ std::vector<Card*> GameState::getPlayerCards()
 
 std::vector<Card*> GameState::getAbsorbCards()
 {
-	std::vector<Card*> allCards = this->getAllCards();
 	std::vector<Card*> absorbCards = std::vector<Card*>();
 
-	for (auto it = allCards.begin(); it != allCards.end(); it++)
+	for (auto card : this->getAllCards())
 	{
-		if ((*it)->cardData->getCardType() == CardData::CardType::Special_ABSORB)
+		if (card->cardData->getCardType() == CardData::CardType::Special_ABSORB)
 		{
-			absorbCards.push_back(*it);
+			absorbCards.push_back(card);
 		}
 	}
 

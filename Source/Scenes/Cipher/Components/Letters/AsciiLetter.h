@@ -14,8 +14,10 @@ public:
 	static const int GridWidth;
 	static const int GridHeight;
 
+protected:
+	AsciiLetter(unsigned char letter);
+	virtual ~AsciiLetter();
+
 private:
 	typedef cocos2d::Sprite super;
-	AsciiLetter(unsigned char letter);
-	~AsciiLetter();
 };

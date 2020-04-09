@@ -11,13 +11,14 @@ class ScrappyCombatManagerBehavior : public AttachedBehavior
 public:
 	static ScrappyCombatManagerBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyCombatManagerBehavior(GameObject* owner);
-	~ScrappyCombatManagerBehavior();
+	virtual ~ScrappyCombatManagerBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

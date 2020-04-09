@@ -1,13 +1,11 @@
 #include "PuzzleDBehavior.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -16,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleDBehavior::MapKeyAttachedBehavior = "puzzle-D";
+const std::string PuzzleDBehavior::MapKey = "puzzle-D";
 
 PuzzleDBehavior* PuzzleDBehavior::create(GameObject* owner)
 {
@@ -42,7 +40,7 @@ MinMaxPool* PuzzleDBehavior::generateReward()
 
 std::string PuzzleDBehavior::getWinLossSaveKey()
 {
-	return PuzzleDBehavior::MapKeyAttachedBehavior;
+	return PuzzleDBehavior::MapKey;
 }
 
 std::string PuzzleDBehavior::getBackgroundResource()

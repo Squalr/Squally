@@ -17,7 +17,7 @@ class Laser : public HackableObject
 public:
 	static Laser* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyLaser;
+	static const std::string MapKey;
 
 protected:
 	Laser(cocos2d::ValueMap& properties);

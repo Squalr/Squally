@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Robot::MapKeyRobot = "robot";
+const std::string Robot::MapKey = "robot";
 HexusOpponentData* Robot::HexusOpponentDataInstance = nullptr;
 const std::string Robot::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROBOT";
 
@@ -32,7 +31,7 @@ Robot* Robot::deserialize(ValueMap& properties)
 }
 
 Robot::Robot(ValueMap& properties) : super(properties,
-	Robot::MapKeyRobot,
+	Robot::MapKey,
 	EntityResources::Helpers_VoidStar_Robot_Animations,
 	EntityResources::Helpers_VoidStar_Robot_Emblem,
 	Size(224.0f, 440.0f),

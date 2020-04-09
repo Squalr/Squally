@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Maps/GameObject.h"
 
 class CameraFocus : public GameObject
@@ -7,7 +8,9 @@ class CameraFocus : public GameObject
 public:
 	static CameraFocus* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCameraFocus;
+	CameraTrackingData getTrackingData();
+
+	static const std::string MapKey;
 	static const std::string MapKeyZoom;
 	static const std::string MapKeyScrollBoundsX;
 	static const std::string MapKeyScrollBoundsY;

@@ -21,14 +21,16 @@ public:
 
 	void open();
 
-private:
-	typedef SmartNode super;
+protected:
 	Flip3HelpMenu();
-	~Flip3HelpMenu();
+	virtual ~Flip3HelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 	void resetAnimation();
 	void runAnimationLoop();
 

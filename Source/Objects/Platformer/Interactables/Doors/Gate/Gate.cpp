@@ -25,7 +25,7 @@
 
 using namespace cocos2d;
 
-const std::string Gate::MapKeyGate = "gate";
+const std::string Gate::MapKey = "gate";
 const Vec2 Gate::GateLeftClosedOffset = Vec2(-128.0f, 16.0f);
 const Vec2 Gate::GateRightClosedOffset = Vec2(128.0f, 16.0f);
 const Vec2 Gate::GateLeftOpenedOffset = Vec2(-356.0f, 16.0f);

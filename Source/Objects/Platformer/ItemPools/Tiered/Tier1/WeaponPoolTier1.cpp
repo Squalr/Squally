@@ -18,10 +18,15 @@ WeaponPoolTier1* WeaponPoolTier1::create(SampleMethod sampleMethod, int min, int
 
 WeaponPoolTier1::WeaponPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "weapon-pool-t1", sampleMethod, min, max)
 {
-	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(WoodenSword::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(WoodenAxe::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(WoodenClub::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Uncommon));
+	
+	this->addItemToPool(ItemChance::create(CopperSword::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(CopperAxe::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(CopperMallet::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(QuartzWand::create(), ItemChance::Probability::Epic));
 }
 
 WeaponPoolTier1::~WeaponPoolTier1()

@@ -9,8 +9,8 @@
 
 using namespace cocos2d;
 
-const std::string CameraTarget::MapKeyCameraTarget = "camera-target";
-const std::string CameraTarget::MapPropertyZoom = "zoom";
+const std::string CameraTarget::MapKey = "camera-target";
+const std::string CameraTarget::PropertyZoom = "zoom";
 
 CameraTarget* CameraTarget::create(ValueMap& properties)
 {
@@ -23,14 +23,14 @@ CameraTarget* CameraTarget::create(ValueMap& properties)
 
 CameraTarget::CameraTarget(ValueMap& properties) : super(properties)
 {
-	this->zoom = GameUtils::getKeyOrDefault(this->properties, CameraTarget::MapPropertyZoom, Value(1.0f)).asFloat();
+	this->zoom = GameUtils::getKeyOrDefault(this->properties, CameraTarget::PropertyZoom, Value(1.0f)).asFloat();
 	this->debugDraw = DrawNode::create();
 	Size size = Size(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);
 
-	this->debugDraw->drawSolidRect(-Vec2(size / 2.0f), Vec2(size / 2.0f), Color4F::GREEN);
+	this->debugDraw->drawRect(-Vec2(size / 2.0f), Vec2(size / 2.0f), Color4F::BLUE);
 
 	this->addChild(this->debugDraw);
 }

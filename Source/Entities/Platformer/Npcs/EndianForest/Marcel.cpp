@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Marcel::MapKeyMarcel = "marcel";
+const std::string Marcel::MapKey = "marcel";
 HexusOpponentData* Marcel::HexusOpponentDataInstance = nullptr;
 const std::string Marcel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MARCEL";
 
@@ -32,7 +31,7 @@ Marcel* Marcel::deserialize(ValueMap& properties)
 }
 
 Marcel::Marcel(ValueMap& properties) : super(properties,
-	Marcel::MapKeyMarcel,
+	Marcel::MapKey,
 	EntityResources::Npcs_EndianForest_Marcel_Animations,
 	EntityResources::Npcs_EndianForest_Marcel_Emblem,
 	Size(112.0f, 160.0f),

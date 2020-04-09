@@ -83,6 +83,11 @@ void DefeatMenu::initializeListeners()
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		CombatEvents::TriggerReturnToMap();
+	});
 }
 
 void DefeatMenu::show()

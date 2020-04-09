@@ -72,11 +72,9 @@ void InputsOutputsPanel::initializePositions()
 	this->outputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + 80.0f, visibleSize.height / 2.0f - 16.0f));
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f -  232.0f));
 
-	int index = 0;
-
-	for (auto it = this->ioItems.begin(); it != ioItems.end(); it++, index++)
+	for (int index = 0; index < int(this->ioItems.size()); index++)
 	{
-		(*it)->setPosition(Vec2(16.0f, float(index) * -(56.0f + 8.0f) - 32.0f));
+		this->ioItems[index]->setPosition(Vec2(16.0f, float(index) * -(56.0f + 8.0f) - 32.0f));
 	}
 }
 
@@ -137,10 +135,10 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 		}
 		case CipherState::StateType::TransitionUnlocking:
 		{
-			for (auto it = this->ioItems.begin(); it != this->ioItems.end(); it++)
+			for (auto next : this->ioItems)
 			{
-				(*it)->disableInteraction();
-				(*it)->clearStatus();
+				next->disableInteraction();
+				next->clearStatus();
 			}
 
 			this->selectInputOutputPairAtIndex(0);
@@ -151,9 +149,9 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 		}
 		case CipherState::StateType::Neutral:
 		{
-			for (auto it = this->ioItems.begin(); it != this->ioItems.end(); it++)
+			for (auto next : this->ioItems)
 			{
-				(*it)->enableInteraction();
+				next->enableInteraction();
 			}
 
 			this->scrollPane->enableInteraction();
@@ -169,12 +167,13 @@ void InputsOutputsPanel::loadPuzzleData()
 {
 	this->ioItems.clear();
 	this->ioItemsNode->removeAllChildren();
-
-	int index = 0;
-
-	for (auto it = this->currentCipherState->inputOutputMap.begin(); it != this->currentCipherState->inputOutputMap.end(); it++, index++)
+	
+	for (int index = 0; index < int(this->currentCipherState->inputOutputMap.size()); index++)
 	{
-		InputOutputItem* ioItem = InputOutputItem::create(std::get<0>(*it), std::get<1>(*it), [=](InputOutputItem*)
+		InputOutputItem* ioItem = InputOutputItem::create(
+			std::get<0>(this->currentCipherState->inputOutputMap[index]),
+			std::get<1>(this->currentCipherState->inputOutputMap[index]),
+			[=](InputOutputItem*)
 		{
 			this->selectInputOutputPairAtIndex(index);
 		});

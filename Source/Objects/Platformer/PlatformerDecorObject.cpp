@@ -18,3 +18,17 @@ PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(prope
 PlatformerDecorObject::~PlatformerDecorObject()
 {
 }
+
+void PlatformerDecorObject::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	this->setVisible(false);
+}
+
+void PlatformerDecorObject::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	this->setVisible(true);
+}

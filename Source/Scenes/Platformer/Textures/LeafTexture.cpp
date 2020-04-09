@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string LeafTexture::MapKeyTextureType = "leaf";
+const std::string LeafTexture::MapKey = "leaf";
 
 LeafTexture* LeafTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ LeafTexture* LeafTexture::create(ValueMap& properties)
 LeafTexture::LeafTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		LeafTexture::MapKeyTextureType,
+		LeafTexture::MapKey,
 		TextureResources::LeafTexture,
 		Color4B(11, 30, 39, 255)))
 {

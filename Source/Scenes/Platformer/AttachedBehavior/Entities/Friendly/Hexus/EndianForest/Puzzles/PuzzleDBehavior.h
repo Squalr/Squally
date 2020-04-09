@@ -12,11 +12,11 @@ class PuzzleDBehavior : public HexusPuzzleBehaviorBase
 public:
 	static PuzzleDBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	PuzzleDBehavior(GameObject* owner);
-	~PuzzleDBehavior();
+	virtual ~PuzzleDBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

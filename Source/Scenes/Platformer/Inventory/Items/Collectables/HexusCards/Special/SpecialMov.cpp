@@ -1,16 +1,16 @@
 #include "SpecialMov.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialMov::SaveKeySpecialMov = "special-mov";
+const std::string SpecialMov::SaveKey = "special-mov";
 
 SpecialMov* SpecialMov::create()
 {
@@ -21,7 +21,7 @@ SpecialMov* SpecialMov::create()
 	return instance;
 }
 
-SpecialMov::SpecialMov() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialMov::SpecialMov() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialMov::clone()
 
 std::string SpecialMov::getItemName()
 {
-	return SpecialMov::SaveKeySpecialMov;
+	return SpecialMov::SaveKey;
 }
 
 LocalizedString* SpecialMov::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialMov::getString()
 
 std::string SpecialMov::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialMov::getSerializationKey()
 {
-	return SpecialMov::SaveKeySpecialMov;
+	return SpecialMov::SaveKey;
 }
 
 std::string SpecialMov::getCardKey()

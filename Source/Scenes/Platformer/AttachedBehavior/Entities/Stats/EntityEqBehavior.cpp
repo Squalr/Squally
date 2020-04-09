@@ -45,6 +45,11 @@ void EntityEqBehavior::onLoad()
 {
 }
 
+void EntityEqBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityEqBehavior::load(std::string saveKeyEq, std::string saveKeyExp)
 {
 	this->saveKeyEq = saveKeyEq;
@@ -108,6 +113,6 @@ void EntityEqBehavior::save()
 		return;
 	}
 
-	SaveManager::softSaveProfileData(this->saveKeyEq, Value(this->getEq()));
-	SaveManager::softSaveProfileData(this->saveKeyExp, Value(this->getEqExperience()));
+	SaveManager::SoftSaveProfileData(this->saveKeyEq, Value(this->getEq()));
+	SaveManager::SoftSaveProfileData(this->saveKeyExp, Value(this->getEqExperience()));
 }

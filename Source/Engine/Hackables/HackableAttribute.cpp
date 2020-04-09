@@ -1,18 +1,28 @@
 #include "HackableAttribute.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
 
-HackableAttribute::HackableAttribute(int requiredHackFlag, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
+using namespace cocos2d;
+
+HackableAttribute::HackableAttribute(int requiredHackFlag, float duration, float cooldown, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
 {
 	this->requiredHackFlag = requiredHackFlag;
 	this->duration = duration;
+	this->cooldown = cooldown;
 	this->iconResource = iconResource;
 	this->name = name;
 	this->hackablePreview = hackablePreview;
 	this->elapsedDuration = this->duration;
-	this->clippy = clippy;
+	this->elapsedCooldown = this->cooldown;
+	this->clippy = clippy == nullptr ? nullptr : clippy->refClone();
+	this->isTimerPaused = false;
 
 	if (this->hackablePreview != nullptr)
 	{
@@ -47,12 +57,32 @@ void HackableAttribute::onEnter()
 {
 	super::onEnter();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->restoreState();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
+	{
+		this->isTimerPaused = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventResumeHackTimers, [=](EventCustom* eventCustom)
+	{
+		this->isTimerPaused = false;
+	}));
+
 	this->scheduleUpdate();
 }
 
 void HackableAttribute::update(float dt)
 {
 	super::update(dt);
+
+	if (this->isTimerPaused)
+	{
+		return;
+	}
 
 	if (this->elapsedDuration < this->duration)
 	{
@@ -63,11 +93,17 @@ void HackableAttribute::update(float dt)
 			this->restoreState();
 		}
 	}
+
+	if (this->elapsedCooldown < this->cooldown)
+	{
+		this->elapsedCooldown += dt;
+	}
 }
 
 void HackableAttribute::resetTimer()
 {
 	this->elapsedDuration = 0.0f;
+	this->elapsedCooldown = 0.0f;
 }
 
 void HackableAttribute::restoreState()
@@ -92,6 +128,21 @@ float HackableAttribute::getElapsedDuration()
 float HackableAttribute::getDuration()
 {
 	return this->duration;
+}
+
+bool HackableAttribute::isCooldownComplete()
+{
+	return this->elapsedCooldown >= this->cooldown;
+}
+
+float HackableAttribute::getElapsedCooldown()
+{
+	return this->elapsedCooldown;
+}
+
+float HackableAttribute::getCooldown()
+{
+	return this->cooldown;
 }
 
 std::string HackableAttribute::getIconResource()

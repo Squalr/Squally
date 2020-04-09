@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyReanimatedPig;
+	static const std::string MapKey;
+	
+protected:
+	ReanimatedPig(cocos2d::ValueMap& properties);
+	virtual ~ReanimatedPig();
 
 private:
 	typedef PlatformerEnemy super;
-	ReanimatedPig(cocos2d::ValueMap& properties);
-	~ReanimatedPig();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

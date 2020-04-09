@@ -30,12 +30,12 @@ public:
 	bool isObjectified();
 
 	static const std::string MapKeyTilemapType;
-	static const std::string MapKeyPropertyWidth;
-	static const std::string MapKeyPropertyHeight;
-	static const std::string MapKeyPropertyType;
-	static const std::string MapKeyPropertyObjectify;
-	static const std::string MapKeyPropertyEncoding;
-	static const std::string MapKeyPropertyEncodingValue;
+	static const std::string PropertyWidth;
+	static const std::string PropertyHeight;
+	static const std::string PropertyType;
+	static const std::string PropertyObjectify;
+	static const std::string PropertyEncoding;
+	static const std::string PropertyEncodingValue;
 
 protected:
 	TileLayer(cocos2d::cocos_experimental::TMXLayer* initTileLayer);

@@ -45,12 +45,12 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 
 	if (this->inputType == ConnectionType::Single)
 	{
-		this->inputBoltLeft = InputBolt::create(this);
+		this->inputBoltLeft = InputBolt::create(this, 0);
 	}
 	else if (this->inputType == ConnectionType::Double)
 	{
-		this->inputBoltLeft = InputBolt::create(this);
-		this->inputBoltRight = InputBolt::create(this);
+		this->inputBoltLeft = InputBolt::create(this, 0);
+		this->inputBoltRight = InputBolt::create(this, 1);
 	}
 
 	if (this->outputType == ConnectionType::Single)
@@ -220,9 +220,9 @@ void BlockBase::setSpawnPosition(cocos2d::Vec2 spawnPosition)
 	this->spawnPosition = spawnPosition;
 }
 
-void BlockBase::pushInput(unsigned char input)
+void BlockBase::setInput(unsigned char input, int inputIndex)
 {
-	switch(this->receivedInputs++)
+	switch(inputIndex)
 	{
 		default:
 		case 0:
@@ -236,6 +236,8 @@ void BlockBase::pushInput(unsigned char input)
 			break;
 		}
 	}
+
+	this->receivedInputs++;
 }
 
 void BlockBase::execute(std::function<void()> onExecuteComplete)

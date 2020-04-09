@@ -5,14 +5,15 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/KingGrogg/DragonBreath.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string KingGroggCombatBehavior::MapKeyAttachedBehavior = "king-grogg-combat";
+const std::string KingGroggCombatBehavior::MapKey = "king-grogg-combat";
 
 KingGroggCombatBehavior* KingGroggCombatBehavior::create(GameObject* owner)
 {
@@ -31,6 +32,8 @@ KingGroggCombatBehavior::KingGroggCombatBehavior(GameObject* owner) : super(owne
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.35f);
 }
 
 KingGroggCombatBehavior::~KingGroggCombatBehavior()
@@ -45,7 +48,8 @@ void KingGroggCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(DragonBreath::create(0.5f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Rare));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -54,7 +58,7 @@ void KingGroggCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

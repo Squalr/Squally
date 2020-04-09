@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/Sword.h"
 
-class SteelSword : public Weapon
+class SteelSword : public Sword
 {
 public:
 	static SteelSword* create();
@@ -13,12 +13,12 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeySteelSword;
+	static const std::string SaveKey;
 
 protected:
 	SteelSword();
-	~SteelSword();
+	virtual ~SteelSword();
 
 private:
-	typedef Weapon super;
+	typedef Sword super;
 };

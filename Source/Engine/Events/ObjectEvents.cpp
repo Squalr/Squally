@@ -8,7 +8,6 @@
 
 using namespace cocos2d;
 
-const std::string ObjectEvents::EventCollisonMapUpdated = "EVENT_COLLISION_MAP_UPDATED";
 const std::string ObjectEvents::EventQueryObject = "EVENT_QUERY_OBJECT";
 const std::string ObjectEvents::EventQueryObjectByTagPrefix = "EVENT_QUERY_OBJECT_BY_TAG_";
 const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROADCAST_MAP_OBJECT_STATE_";
@@ -21,12 +20,7 @@ const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
 const std::string ObjectEvents::EventSpawnObjectDelegator = "EVENT_SPAWN_OBJECT_DELEGATOR";
 const std::string ObjectEvents::EventWriteStatePrefix = "EVENT_WRITE_OBJECT_STATE_";
 
-void ObjectEvents::TriggerCollisionMapUpdated()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventCollisonMapUpdated
-	);
-}
+unsigned long long ObjectEvents::WatchId = 0;
 
 void ObjectEvents::TriggerBroadCastMapObjectState(std::string eventName, ValueMap args)
 {
@@ -45,6 +39,15 @@ void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 		ObjectEvents::EventSpawnObject,
 		&args
 	);
+
+	if (args.handled && args.onSpawnSuccess != nullptr)
+	{
+		args.onSpawnSuccess();
+	}
+	else if (args.onSpawnFailed != nullptr)
+	{
+		args.onSpawnFailed();
+	}
 }
 
 void ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs args)

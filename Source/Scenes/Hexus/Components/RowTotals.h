@@ -24,16 +24,16 @@ public:
 	cocos2d::Sprite* playerHexTotalSocket;
 
 protected:
+	RowTotals();
+	virtual ~RowTotals();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	RowTotals();
-	~RowTotals();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);
 	void runDeltaAnimation(LocalizedLabel* label, ConstantString* str, float startPositionY, int delta);

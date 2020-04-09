@@ -16,15 +16,16 @@ public:
 
 	cocos2d::Node* getTarget();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityProjectileTargetBehavior(GameObject* owner);
-	~EntityProjectileTargetBehavior();
+	virtual ~EntityProjectileTargetBehavior();
 
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onLoad() override;
+	void onDisable() override;
 	void initializePositions() override;
 
 private:

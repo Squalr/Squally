@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/Axe.h"
 
-class MithrilAxe : public Weapon
+class MithrilAxe : public Axe
 {
 public:
 	static MithrilAxe* create();
@@ -14,13 +14,14 @@ public:
 	std::string getSerializationKey() override;
 	cocos2d::Size getWeaponCollisionSize() override;
 	cocos2d::Vec2 getWeaponOffset() override;
+	cocos2d::Vec2 getDisplayOffset() override;
 
-	static const std::string SaveKeyMithrilAxe;
+	static const std::string SaveKey;
 
 protected:
 	MithrilAxe();
-	~MithrilAxe();
+	virtual ~MithrilAxe();
 
 private:
-	typedef Weapon super;
+	typedef Axe super;
 };

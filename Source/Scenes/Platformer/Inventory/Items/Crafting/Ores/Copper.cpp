@@ -1,15 +1,15 @@
 #include "Copper.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Copper::SaveKeyCopper = "copper";
+const std::string Copper::SaveKey = "copper";
 
 Copper* Copper::create()
 {
@@ -20,7 +20,7 @@ Copper* Copper::create()
 	return instance;
 }
 
-Copper::Copper() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Copper::Copper() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Copper::clone()
 
 std::string Copper::getItemName()
 {
-	return Copper::SaveKeyCopper;
+	return Copper::SaveKey;
 }
 
 LocalizedString* Copper::getString()
@@ -45,10 +45,10 @@ LocalizedString* Copper::getString()
 
 std::string Copper::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Copper;
+	return ItemResources::Crafting_Smithing_Copper;
 }
 
 std::string Copper::getSerializationKey()
 {
-	return Copper::SaveKeyCopper;
+	return Copper::SaveKey;
 }

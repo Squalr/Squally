@@ -13,15 +13,15 @@ public:
 	static DefeatBanner* create();
 
 protected:
+	DefeatBanner();
+	virtual ~DefeatBanner();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef BannerBase super;
-	DefeatBanner();
-	~DefeatBanner();
-
-	void initializePositions() override;
 
 	cocos2d::Sprite* defeatBanner1;
 	cocos2d::Sprite* defeatBanner2;

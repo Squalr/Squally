@@ -21,15 +21,17 @@ public:
 
 	void setStatsTarget(PlatformerEntity* target);
 
-private:
-	typedef SmartNode super;
+protected:
 	StatsBars(bool isFrameOnLeft = true);
-	~StatsBars();
+	virtual ~StatsBars();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 
 	PlatformerEntity* target;
 

@@ -1,15 +1,15 @@
 #include "MithrilAxe.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string MithrilAxe::SaveKeyMithrilAxe = "mithril-axe";
+const std::string MithrilAxe::SaveKey = "mithril-axe";
 
 MithrilAxe* MithrilAxe::create()
 {
@@ -20,7 +20,7 @@ MithrilAxe* MithrilAxe::create()
 	return instance;
 }
 
-MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.10f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* MithrilAxe::clone()
 
 std::string MithrilAxe::getItemName()
 {
-	return MithrilAxe::SaveKeyMithrilAxe;
+	return MithrilAxe::SaveKey;
 }
 
 LocalizedString* MithrilAxe::getString()
@@ -56,12 +56,12 @@ LocalizedString* MithrilAxe::getString()
 
 std::string MithrilAxe::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Axes_MithrilAxe;
+	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
 std::string MithrilAxe::getSerializationKey()
 {
-	return MithrilAxe::SaveKeyMithrilAxe;
+	return MithrilAxe::SaveKey;
 }
 
 Size MithrilAxe::getWeaponCollisionSize()
@@ -74,4 +74,9 @@ Vec2 MithrilAxe::getWeaponOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
+}
+
+Vec2 MithrilAxe::getDisplayOffset()
+{
+	return Vec2(28.0f, -4.0f);
 }

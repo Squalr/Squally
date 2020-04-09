@@ -15,6 +15,9 @@
 #define QUOTE(str) #str
 #define EXPAND_AND_QUOTE(str) QUOTE(str)
 
+#define COMMENT(str) Strings::Common_ConstantNewline::create()->setStringReplacementVariables( \
+	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
+
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
 	#define ZAX rax
 	#define ZBX rbx
@@ -24,6 +27,7 @@
 	#define ZDI rdi
 	#define ZBP rbp
 	#define ZSP rsp
+	#define DIV_CONVERT cqo
 #else
 	#define ZAX eax
 	#define ZBX ebx
@@ -33,12 +37,15 @@
 	#define ZDI edi
 	#define ZBP ebp
 	#define ZSP esp
+	#define DIV_CONVERT cdq
 #endif
 
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
-	#define NO_OPTIMIZE
-		#pragma optimize("", off)
+	#define NO_OPTIMIZE \
+		__pragma(optimize("", off))
+	#define END_NO_OPTIMIZE \
+		__pragma(optimize("", on))
 	#define ASM1(asm_literal) \
 		__asm asm_literal
 	#define ASM2(asm_literal1, asm_literal2) \
@@ -54,9 +61,16 @@
 
 #elif __GNUC__ || __clang__
 	#ifdef __clang__
-		#define NO_OPTIMIZE __attribute__((optnone))
+		#define NO_OPTIMIZE \
+			__attribute__((optnone))
+		#define END_NO_OPTIMIZE
 	#elif __GNUC__
-		#define NO_OPTIMIZE [[gnu::optimize(0)]]
+		#define NO_OPTIMIZE \
+			_Pragma("GCC push_options") \
+			_Pragma("GCC optimize (\"O0\")") \
+			 __attribute__((optimize("O0")))
+		#define END_NO_OPTIMIZE \
+			_Pragma("GCC pop_options")
 	#endif
 
 	#define ASM1(asm_literal) \
@@ -108,7 +122,6 @@
 	ASM(mov edx, 0x0D15EA5E) \
 	ASM(pop ZDX) \
 	ASM(pop ZDX)
-	#pragma optimize("", on) // This is just for MSVC to re-enable optimizations at the end of the function, harmless on Clang/GCC
 
 #define ASM_NOP1() ASM(nop)
 #define ASM_NOP2() ASM_NOP1() ASM_NOP1()
@@ -142,7 +155,17 @@ public:
 		xmm0, xmm1, xmm2, xmm3, xmm4, xmm5, xmm6, xmm7,
 	};
 
-	struct LateBindData
+	struct ReadOnlyScript
+	{
+		LocalizedString* title;
+		std::string scriptx86;
+		std::string scriptx64;
+
+		ReadOnlyScript() : title(nullptr), scriptx86(""), scriptx64("") { }
+		ReadOnlyScript(LocalizedString* title, std::string scriptx86, std::string scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
+	};
+
+	struct HackableCodeInfo
 	{
 		std::string hackableObjectIdentifier;
 		LocalizedString* functionName;
@@ -151,22 +174,32 @@ public:
 		std::map<Register, LocalizedString*> registerHints;
 		int hackFlags;
 		float duration;
+		float cooldown;
 		Clippy* clippy;
-		std::string asmOverride;
+		std::vector<ReadOnlyScript> readOnlyScripts;
+		bool excludeDefaultScript;
 
-		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), hackFlags(0), clippy(nullptr) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(nullptr), asmOverride("") { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), asmOverride("") { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy, std::string asmOverride) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), asmOverride(asmOverride) { }
+		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	
 	};
 
-	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
+	struct HackableCodeMarkers
+	{
+		void* start;
+		void* end;
 
-	HackableCode* clone();
+		HackableCodeMarkers() : start(nullptr), end(nullptr) { }
+		HackableCodeMarkers(void* start, void* end) : start(start), end(end) { }
+	};
+
+	typedef std::map<unsigned char, HackableCodeInfo> CodeInfoMap;
+
+	static std::vector<HackableCode*> create(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
+
+	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
+	std::vector<ReadOnlyScript> getReadOnlyScripts();
 	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
@@ -177,25 +210,35 @@ public:
 
 	std::map<Register, LocalizedString*> registerHints;
 
-	static std::map<void*, std::vector<HackableCode*>> HackableCodeCache;
-	static const int StartTagFuncIdIndex;
-	static const unsigned char StartTagSignature[];
-	static const unsigned char EndTagSignature[];
-	static const unsigned char StopSearchTagSignature[];
+protected:
+	static HackableCode* create(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
+
+	HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
+	virtual ~HackableCode();
 
 private:
 	typedef HackableAttribute super;
-	static HackableCode* create(void* codeStart, void* codeEnd, LateBindData lateBindData);
 
-	HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData);
-	~HackableCode();
+	typedef std::map<unsigned char, HackableCode::HackableCodeMarkers> MarkerMap;
+	typedef std::map<void*, MarkerMap> CodeMap;
+
+	static std::vector<HackableCode*> parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
+	static MarkerMap& parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 
 	std::string hackableCodeIdentifier;
 	std::string assemblyString;
 	std::string originalAssemblyString;
 	void* codePointer;
 	void* codeEndPointer;
-	LateBindData lateBindData;
+	HackableCodeInfo hackableCodeInfo;
 	std::vector<unsigned char> originalCodeCopy;
 	int originalCodeLength;
+	std::vector<ReadOnlyScript> readOnlyScripts;
+
+	static CodeMap HackableCodeCache;
+	static const int StartTagFuncIdIndex;
+	static const unsigned char StartTagSignature[];
+	static const unsigned char EndTagSignature[];
+	static const unsigned char StopSearchTagSignature[];
+	static std::map<std::string, std::vector<unsigned char>> OriginalCodeCache;
 };

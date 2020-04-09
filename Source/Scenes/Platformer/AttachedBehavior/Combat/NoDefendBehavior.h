@@ -9,13 +9,14 @@ class NoDefendBehavior : public AttachedBehavior
 public:
 	static NoDefendBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	NoDefendBehavior(GameObject* owner);
-	~NoDefendBehavior();
+	virtual ~NoDefendBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

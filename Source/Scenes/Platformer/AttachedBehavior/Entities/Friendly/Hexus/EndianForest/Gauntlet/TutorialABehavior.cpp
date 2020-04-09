@@ -27,7 +27,7 @@ TutorialABehavior* TutorialABehavior::create(GameObject* owner)
 	return instance;
 }
 
-TutorialABehavior::TutorialABehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
+TutorialABehavior::TutorialABehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, false, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
 {
 }
 

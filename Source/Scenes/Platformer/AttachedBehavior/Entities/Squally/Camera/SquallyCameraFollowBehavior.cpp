@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyCameraFollowBehavior::MapKeyAttachedBehavior = "squally-camera-follow";
+const std::string SquallyCameraFollowBehavior::MapKey = "squally-camera-follow";
 
 SquallyCameraFollowBehavior* SquallyCameraFollowBehavior::create(GameObject* owner)
 {
@@ -53,4 +53,9 @@ void SquallyCameraFollowBehavior::onLoad()
 	);
 	
 	GameCamera::getInstance()->setTarget(trackingData, true);
+}
+
+void SquallyCameraFollowBehavior::onDisable()
+{
+	super::onDisable();
 }

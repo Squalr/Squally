@@ -18,8 +18,9 @@ protected:
 
 private:
 	typedef DialogueBox super;
+	
 	PlatformerDialogueBox();
-	~PlatformerDialogueBox();
+	virtual ~PlatformerDialogueBox();
 
 	void initializePositions() override;
 	void initializeListeners() override;

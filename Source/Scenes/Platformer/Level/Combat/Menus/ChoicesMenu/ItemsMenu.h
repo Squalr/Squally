@@ -9,12 +9,17 @@ class ItemsMenu : public RadialScrollMenu
 public:
 	static ItemsMenu* create();
 
-	void buildAttackList(TimelineEntry* entry);
+	bool hasItems();
+	void buildItemList(TimelineEntry* entry);
+
+protected:
+	ItemsMenu();
+	virtual ~ItemsMenu();
 
 private:
 	typedef RadialScrollMenu super;
-	ItemsMenu();
-	virtual ~ItemsMenu();
+
+	bool hasItemsInList;
 
 	static const float Radius;
 };

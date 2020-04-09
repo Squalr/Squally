@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string NoItemsBehavior::MapKeyAttachedBehavior = "no-items";
+const std::string NoItemsBehavior::MapKey = "no-items";
 
 NoItemsBehavior* NoItemsBehavior::create(GameObject* owner)
 {
@@ -41,4 +41,9 @@ NoItemsBehavior::~NoItemsBehavior()
 void NoItemsBehavior::onLoad()
 {
 	CombatEvents::TriggerDisableItems();
+}
+
+void NoItemsBehavior::onDisable()
+{
+	super::onDisable();
 }

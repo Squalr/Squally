@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedMonkey::MapKeyCagedMonkey = "caged-monkey";
+const std::string CagedMonkey::MapKey = "caged-monkey";
 
 CagedMonkey* CagedMonkey::create(ValueMap& properties)
 {

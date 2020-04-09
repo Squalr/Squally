@@ -22,11 +22,11 @@ public:
 	{
 		std::vector<T*> foundItems;
 
-		for (auto it = this->items.begin(); it != this->items.end(); it++)
+		for (auto next : this->items)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr)
 			{
-				foundItems.push_back(dynamic_cast<T*>(*it));
+				foundItems.push_back(dynamic_cast<T*>(next));
 			}
 		}
 
@@ -36,11 +36,11 @@ public:
 	template<class T>
 	T* getItemOfType()
 	{
-		for (auto it = this->items.begin(); it != this->items.end(); it++)
+		for (auto next : this->items)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr)
 			{
-				return dynamic_cast<T*>(*it);
+				return dynamic_cast<T*>(next);
 			}
 		}
 
@@ -54,8 +54,8 @@ public:
 	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr, bool doSave = true);
 	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr, bool doSave = true);
 	void save();
-	void onInventoryChanged(std::function<void()> onChangedEvent);
-
+	std::string getSaveKey();
+	
 protected:
 	Inventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
 	virtual ~Inventory();
@@ -76,7 +76,6 @@ private:
 	typedef SmartNode super;
 
 	cocos2d::Node* itemsNode;
-	std::function<void()> onChangedEvent;
 
 	std::string saveKey;
 

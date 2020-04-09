@@ -9,6 +9,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -16,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyHealthBehavior::MapKeyAttachedBehavior = "enemy-health";
+const std::string EnemyHealthBehavior::MapKey = "enemy-health";
 const std::string EnemyHealthBehavior::SaveKeyIsDead = "is-dead";
 
 EnemyHealthBehavior* EnemyHealthBehavior::create(GameObject* owner)
@@ -50,10 +51,7 @@ void EnemyHealthBehavior::onLoad()
 		{
 			if (!value.asBool())
 			{
-				if (!this->entity->getSendEvent().empty())
-				{
-					ObjectEvents::TriggerBroadCastMapObjectState(this->entity->getSendEvent(), ValueMap());
-				}
+				this->entity->broadcastMapEvent(this->entity->getSendEvent(), ValueMap());
 			}
 
 			this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));
@@ -61,8 +59,15 @@ void EnemyHealthBehavior::onLoad()
 
 		if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
 		{
-			this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
-			this->entity->setState(StateKeys::IsAlive, Value(false));
+			this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->kill(false);
+			});
 		}
 	}
+}
+
+void EnemyHealthBehavior::onDisable()
+{
+	super::onDisable();
 }

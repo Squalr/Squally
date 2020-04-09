@@ -10,13 +10,14 @@ class HelperManagerBehavior : public AttachedBehavior
 public:
 	static HelperManagerBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	HelperManagerBehavior(GameObject* owner);
-	~HelperManagerBehavior();
+	virtual ~HelperManagerBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

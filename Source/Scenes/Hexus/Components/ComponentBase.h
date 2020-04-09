@@ -8,7 +8,7 @@ class ComponentBase : public SmartNode
 {
 protected:
 	ComponentBase();
-	~ComponentBase();
+	virtual ~ComponentBase();
 
 	void initializeListeners() override;
 	virtual void onBeforeStateChange(GameState* gameState);

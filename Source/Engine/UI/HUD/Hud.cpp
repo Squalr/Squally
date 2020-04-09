@@ -20,25 +20,40 @@ Hud* Hud::create()
 
 Hud::Hud()
 {
+	this->noHudParent = GameUtils::getFirstParentOfType<Hud>(this) == nullptr;
+	this->noCameraParent = GameUtils::getFirstParentOfType<GameCamera>(this) == nullptr;
 }
 
 Hud::~Hud()
 {
 }
 
+void Hud::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void Hud::update(float dt)
+{
+	super::update(dt);
+}
+
 void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
 	if (GameUtils::getFirstParentOfType<Hud>(this) == nullptr)
 	{
-		Size visibleSize = Director::getInstance()->getVisibleSize();
+		static Size visibleSize = Director::getInstance()->getVisibleSize();
 		Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
-		float cameraHeight = Camera::getDefaultCamera()->getPositionZ();
-		float initialCameraHeight = Director::getInstance()->getZEye();
 
 		this->setPosition(cameraPosition - visibleSize / 2.0f);
 
 		if (GameUtils::getFirstParentOfType<GameCamera>(this) == nullptr)
 		{
+			float cameraHeight = Camera::getDefaultCamera()->getPositionZ();
+			static float initialCameraHeight = Director::getInstance()->getZEye();
+
 			this->setPositionZ(cameraHeight - initialCameraHeight);
 		}
 	}

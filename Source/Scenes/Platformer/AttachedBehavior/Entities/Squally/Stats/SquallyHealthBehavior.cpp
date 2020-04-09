@@ -24,7 +24,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyHealthBehavior::MapKeyAttachedBehavior = "squally-health";
+const std::string SquallyHealthBehavior::MapKey = "squally-health";
 
 SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner)
 {
@@ -38,7 +38,6 @@ SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner)
 SquallyHealthBehavior::SquallyHealthBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
-	this->spawnCoords = Vec2::ZERO;
 
 	if (this->squally == nullptr)
 	{
@@ -52,75 +51,30 @@ SquallyHealthBehavior::~SquallyHealthBehavior()
 
 void SquallyHealthBehavior::onLoad()
 {
-	this->spawnCoords = GameUtils::getWorldCoords(this->squally);
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
 	{
 		this->saveState();
 	}));
 	
-	this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* entityHealthBehavior)
+	this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		this->recalculateMaxHealth([=]()
-		{
-			int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(777)).asInt();
+		int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
-			this->squally->setState(StateKeys::Health, Value(health));
-
-			if (health <= 0)
-			{
-				this->respawn(0.1f);
-			}
-		});
+		healthBehavior->setHealth(health);
 	});
 
-	if (this->squally != nullptr)
+	this->squally->listenForStateWrite(StateKeys::Health, [=](Value value)
 	{
-		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-		{
-			if (!value.asBool())
-			{
-				this->respawn(1.5f);
-			}
-		});
-	}
+		this->saveState();
+	});
+}
+
+void SquallyHealthBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void SquallyHealthBehavior::saveState()
 {
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
-}
-
-void SquallyHealthBehavior::respawn(float duration)
-{
-	this->runAction(Sequence::create(
-		DelayTime::create(duration),
-		CallFunc::create([=]()
-		{
-			if (this->spawnCoords != Vec2::ZERO)
-			{
-				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords));
-			}
-			
-			this->squally->setState(StateKeys::IsAlive, Value(true));
-		}),
-		nullptr
-	));
-}
-
-void SquallyHealthBehavior::recalculateMaxHealth(std::function<void()> onCalculated)
-{
-	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		int maxHealth = StatsTables::getBaseHealth(this->squally);
-
-		for (auto item : entityInventoryBehavior->getEquipmentInventory()->getEquipment())
-		{
-			maxHealth += item->getItemStats().healthBonus;
-		}
-
-		this->squally->setState(StateKeys::MaxHealth, Value(maxHealth));
-
-		onCalculated();
-	});
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
 }

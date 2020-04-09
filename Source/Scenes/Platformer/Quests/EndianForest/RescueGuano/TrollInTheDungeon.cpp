@@ -29,16 +29,16 @@ const std::string TrollInTheDungeon::MapKeyQuest = "troll-in-the-dungeon";
 const std::string TrollInTheDungeon::TagDialoguePause = "dialogue-pause";
 const std::string TrollInTheDungeon::TagExit = "exit";
 
-TrollInTheDungeon* TrollInTheDungeon::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TrollInTheDungeon* TrollInTheDungeon::create(GameObject* owner, QuestLine* questLine)
 {
-	TrollInTheDungeon* instance = new TrollInTheDungeon(owner, questLine, questTag);
+	TrollInTheDungeon* instance = new TrollInTheDungeon(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TrollInTheDungeon::TrollInTheDungeon(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TrollInTheDungeon::MapKeyQuest, questTag, false)
+TrollInTheDungeon::TrollInTheDungeon(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TrollInTheDungeon::MapKeyQuest, false)
 {
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
@@ -53,7 +53,7 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 	
 	if (questState == QuestState::Complete)
 	{

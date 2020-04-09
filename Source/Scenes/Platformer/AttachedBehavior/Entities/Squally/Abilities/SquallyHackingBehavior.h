@@ -9,13 +9,14 @@ class SquallyHackingBehavior : public AttachedBehavior
 public:
 	static SquallyHackingBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyHackingBehavior(GameObject* owner);
-	~SquallyHackingBehavior();
+	virtual ~SquallyHackingBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

@@ -46,6 +46,7 @@ namespace
             CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
             handler->client.RequestDumpForException(exception_type, exception_code,
                     exception_subcode, thread_name);
+            return true;
         }
 
     public:

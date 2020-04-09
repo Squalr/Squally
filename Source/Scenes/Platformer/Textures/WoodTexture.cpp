@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodTexture::MapKeyTextureType = "wood";
+const std::string WoodTexture::MapKey = "wood";
 
 WoodTexture* WoodTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ WoodTexture* WoodTexture::create(ValueMap& properties)
 WoodTexture::WoodTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		WoodTexture::MapKeyTextureType,
+		WoodTexture::MapKey,
 		TextureResources::WoodTexture,
 		Color4B(11, 30, 39, 255)))
 {

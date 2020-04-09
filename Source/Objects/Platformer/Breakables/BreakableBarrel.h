@@ -16,7 +16,7 @@ class BreakableBarrel : public BreakableBase
 public:
 	static BreakableBarrel* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyBreakableBarrel;
+	static const std::string MapKey;
 
 protected:
 	BreakableBarrel(cocos2d::ValueMap& properties);

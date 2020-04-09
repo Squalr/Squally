@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Tyracius::MapKeyTyracius = "tyracius";
+const std::string Tyracius::MapKey = "tyracius";
 HexusOpponentData* Tyracius::HexusOpponentDataInstance = nullptr;
 const std::string Tyracius::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TYRACIUS";
 
@@ -32,7 +31,7 @@ Tyracius* Tyracius::deserialize(ValueMap& properties)
 }
 
 Tyracius::Tyracius(ValueMap& properties) : super(properties,
-	Tyracius::MapKeyTyracius,
+	Tyracius::MapKey,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,
 	Size(112.0f, 160.0f),

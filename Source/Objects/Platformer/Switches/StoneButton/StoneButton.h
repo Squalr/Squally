@@ -15,7 +15,8 @@ class StoneButton : public HackableObject
 public:
 	static StoneButton* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyStoneButton;
+	static const std::string MapKey;
+	static const std::string PropertySwitch;
 
 protected:
 	StoneButton(cocos2d::ValueMap& properties);
@@ -35,6 +36,9 @@ private:
 	cocos2d::Sprite* buttonBase;
 	cocos2d::Sprite* button;
 	CollisionObject* buttonCollision;
+
+	bool isSwitch;
+	bool hasCollided;
 
 	static const float ButtonPressureSpeed;
 	static const float ButtonPressureOffsetMin;

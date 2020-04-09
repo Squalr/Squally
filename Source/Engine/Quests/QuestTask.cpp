@@ -7,16 +7,16 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Quests/Quests.h"
+#include "Engine/Save/SaveManager.h"
 
 using namespace cocos2d;
 
-QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable) : super()
+QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, bool skippable) : super()
 {
 	this->questState = QuestState::None;
 	this->owner = owner;
 	this->questLine = questLine;
 	this->questTask = questTask;
-	this->questTag = questTag;
 	this->isSkippable = skippable;
 	this->hasLoaded = false;
 	this->completeCalled = false;
@@ -55,38 +55,50 @@ std::string QuestTask::getQuestTaskName()
 	return this->questTask;
 }
 
-void QuestTask::updateState()
+QuestTask::QuestState QuestTask::getQuestState()
 {
-	const std::vector<QuestLine::QuestMeta> quests = this->questLine->getQuests();
+	return this->questState;
+}
+
+QuestTask::QuestState QuestTask::getQuestStateForTask(QuestLine* questLine, std::string questTask)
+{
+	const std::vector<QuestLine::QuestMeta> quests = questLine->getQuests();
 	
 	bool isPreviousSkippable = false;
 	bool isPreviousComplete = false;
-	QuestState previousState = this->questState;
-	this->questState = QuestState::None;
+	QuestState questState = QuestState::None;
 
-	for (auto it = quests.begin(); it != quests.end(); it++)
+	for (auto next : quests)
 	{
-		if ((*it).questTask == this->questTask)
+		if (next.questTask == questTask)
 		{
-			if ((*it).isComplete)
+			if (next.isComplete)
 			{
-				this->questState = QuestState::Complete;
+				questState = QuestState::Complete;
 			}
-			else if ((*it).isActive && (isPreviousSkippable && !isPreviousComplete))
+			else if (next.isActive && (isPreviousSkippable && !isPreviousComplete))
 			{
-				this->questState = QuestState::ActiveThroughSkippable;
+				questState = QuestState::ActiveThroughSkippable;
 			}
-			else if ((*it).isActive)
+			else if (next.isActive)
 			{
-				this->questState = QuestState::Active;
+				questState = QuestState::Active;
 			}
 			
 			break;
 		}
 
-		isPreviousSkippable = (*it).isSkippable;
-		isPreviousComplete = (*it).isComplete;
+		isPreviousSkippable = next.isSkippable;
+		isPreviousComplete = next.isComplete;
 	}
+
+	return questState;
+}
+
+void QuestTask::updateState()
+{
+	QuestState previousState = this->questState;
+	this->questState = QuestTask::getQuestStateForTask(this->questLine, this->questTask);
 
 	if (!this->hasLoaded)
 	{
@@ -113,6 +125,14 @@ void QuestTask::updateState()
 	}
 }
 
+void QuestTask::waiveQuestPrereq()
+{
+	if (this->questLine != nullptr)
+	{
+		this->questLine->waiveQuestPrereq();
+	}
+}
+
 bool QuestTask::isActive()
 {
 	return this->questState == QuestState::Active || this->questState == QuestState::ActiveThroughSkippable;
@@ -133,4 +153,21 @@ void QuestTask::complete()
 	this->onComplete();
 
 	this->questLine->advanceNextQuest(this);
+
+	// Mostly for debugging purposes / a fail safe for patches. If the user completes a quest before its prereq, complete the prereq too.
+	this->waiveQuestPrereq();
+}
+
+void QuestTask::saveQuestSaveState(std::string key, cocos2d::Value value)
+{
+	std::string combinedKey = this->questLine->getQuestLine() + "_" + this->getQuestTaskName() + "_" + key;
+
+	SaveManager::SaveProfileData(combinedKey, value);
+}
+
+cocos2d::Value QuestTask::getQuestSaveStateOrDefault(std::string key, cocos2d::Value value)
+{
+	std::string combinedKey = this->questLine->getQuestLine() + "_" + this->getQuestTaskName() + "_" + key;
+
+	return SaveManager::getProfileDataOrDefault(combinedKey, value);
 }

@@ -13,7 +13,7 @@ class CipherComponentBase : public SmartNode
 {
 protected:
 	CipherComponentBase();
-	~CipherComponentBase();
+	virtual ~CipherComponentBase();
 
 	void initializeListeners() override;
 	virtual void onBeforeStateChange(CipherState* gameState);

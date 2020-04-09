@@ -41,7 +41,6 @@ public:
 		StateOverride* stateOverride = nullptr,
 		std::vector<TutorialBase*> tutorials = { }
 	);
-
 	HexusOpponentData(
 		cocos2d::Node* entityPreviewNode,
 		std::string backgroundResourceFile,
@@ -54,7 +53,7 @@ public:
 		StateOverride* stateOverride = nullptr,
 		std::vector<TutorialBase*> tutorials = { }
 	);
-	~HexusOpponentData();
+	virtual ~HexusOpponentData();
 
 	std::vector<CardData*> getDeck();
 	CardData* getStrongestCard();

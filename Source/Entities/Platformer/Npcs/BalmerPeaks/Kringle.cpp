@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Kringle::MapKeyKringle = "kringle";
+const std::string Kringle::MapKey = "kringle";
 HexusOpponentData* Kringle::HexusOpponentDataInstance = nullptr;
 const std::string Kringle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRINGLE";
 
@@ -32,7 +31,7 @@ Kringle* Kringle::deserialize(ValueMap& properties)
 }
 
 Kringle::Kringle(ValueMap& properties) : super(properties,
-	Kringle::MapKeyKringle,
+	Kringle::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Emblem,
 	Size(112.0f, 160.0f),

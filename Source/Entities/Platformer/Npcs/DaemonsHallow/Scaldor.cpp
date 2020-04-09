@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Scaldor::MapKeyScaldor = "scaldor";
+const std::string Scaldor::MapKey = "scaldor";
 HexusOpponentData* Scaldor::HexusOpponentDataInstance = nullptr;
 const std::string Scaldor::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCALDOR";
 
@@ -32,7 +31,7 @@ Scaldor* Scaldor::deserialize(ValueMap& properties)
 }
 
 Scaldor::Scaldor(ValueMap& properties) : super(properties,
-	Scaldor::MapKeyScaldor,
+	Scaldor::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,
 	Size(112.0f, 160.0f),

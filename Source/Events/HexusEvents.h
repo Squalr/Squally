@@ -4,6 +4,11 @@
 
 #include "cocos/math/CCGeometry.h"
 
+namespace cocos2d
+{
+	class Node;
+}
+
 class Card;
 class GameState;
 class HexusOpponentData;

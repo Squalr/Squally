@@ -29,13 +29,8 @@ public:
 		GameObject* owner;
 		std::string questLine;
 		std::string questTask;
-		std::string questTag;
 
-		QuestDeserializationRequestArgs(GameObject* owner,
-			std::string questLine,
-			std::string questTask,
-			std::string questTag):
-			owner(owner), questLine(questLine), questTask(questTask), questTag(questTag)
+		QuestDeserializationRequestArgs(GameObject* owner, std::string questLine, std::string questTask) : owner(owner), questLine(questLine), questTask(questTask)
 		{
 		}
 	};
@@ -45,7 +40,7 @@ public:
 
 protected:
 	QuestDeserializer();
-	~QuestDeserializer();
+	virtual ~QuestDeserializer();
 
 	std::map<std::string, std::function<QuestLine*()>> lineDeserializers;
 

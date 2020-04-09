@@ -2,12 +2,14 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/MarbleDarkTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
 using namespace cocos2d;
 
-const std::string MarbleDarkTerrain::MapKeyTerrainType = "marble-dark";
+const std::string MarbleDarkTerrain::MapKey = "marble-dark";
 
 MarbleDarkTerrain* MarbleDarkTerrain::create(ValueMap& properties)
 {
@@ -21,8 +23,14 @@ MarbleDarkTerrain* MarbleDarkTerrain::create(ValueMap& properties)
 MarbleDarkTerrain::MarbleDarkTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return MarbleDarkTexture::create(transformedProps);
+		},
 		0.5f,
-		MarbleDarkTerrain::MapKeyTerrainType,
+		MarbleDarkTerrain::MapKey,
 		TextureResources::MarbleDarkTexture,
 		TerrainResources::MarbleDark_Top,
 		TerrainResources::MarbleDark_TopLeft,

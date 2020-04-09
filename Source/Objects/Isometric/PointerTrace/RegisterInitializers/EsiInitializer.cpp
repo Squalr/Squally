@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EsiInitializer::MapKeyEsiInitializer = "esi";
+const std::string EsiInitializer::MapKey = "esi";
 
 EsiInitializer* EsiInitializer::create(ValueMap& properties)
 {

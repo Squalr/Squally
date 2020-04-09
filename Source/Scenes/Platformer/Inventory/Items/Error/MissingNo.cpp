@@ -1,17 +1,16 @@
 #include "MissingNo.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ThrowRestorePotion.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string MissingNo::SaveKeyMissingNo = "missing-no";
+const std::string MissingNo::SaveKey = "missing-no";
 
 MissingNo* MissingNo::create()
 {
@@ -22,7 +21,7 @@ MissingNo* MissingNo::create()
 	return instance;
 }
 
-MissingNo::MissingNo() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+MissingNo::MissingNo() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
 {
 }
 
@@ -37,7 +36,7 @@ Item* MissingNo::clone()
 
 std::string MissingNo::getItemName()
 {
-	return MissingNo::SaveKeyMissingNo;
+	return MissingNo::SaveKey;
 }
 
 LocalizedString* MissingNo::getString()
@@ -47,12 +46,12 @@ LocalizedString* MissingNo::getString()
 
 std::string MissingNo::getIconResource()
 {
-	return ObjectResources::Items_Error_MissingNo;
+	return ItemResources::Error_MissingNo;
 }
 
 std::string MissingNo::getSerializationKey()
 {
-	return MissingNo::SaveKeyMissingNo;
+	return MissingNo::SaveKey;
 }
 
 PlatformerAttack* MissingNo::createAssociatedAttack()

@@ -6,5 +6,5 @@ class CardKill : public CardData
 {
 public:
 	CardKill();
-	~CardKill();
+	virtual ~CardKill();
 };

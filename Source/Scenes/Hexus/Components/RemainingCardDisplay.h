@@ -5,7 +5,6 @@
 namespace cocos2d
 {
 	class LayerColor;
-	class ParticleSystemQuad;
 	class Sprite;
 }
 
@@ -13,6 +12,7 @@ class ClickableNode;
 class ConstantString;
 class LocalizedLabel;
 class LocalizedString;
+class SmartParticles;
 
 class RemainingCardDisplay : public ComponentBase
 {
@@ -20,22 +20,22 @@ public:
 	static RemainingCardDisplay * create();
 
 protected:
+	RemainingCardDisplay();
+	virtual ~RemainingCardDisplay();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	RemainingCardDisplay();
-	~RemainingCardDisplay();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void onRemaningCardDisplayMouseOver();
 	void onRemaningCardDisplayMouseOut();
 	void enableCardDisplayInteraction();
 	void disableCardDisplayInteraction();
 
-	cocos2d::ParticleSystemQuad* particles;
+	SmartParticles* particles;
 
 	ClickableNode* remainingCardSprite;
 	ConstantString* remainingCardStr;

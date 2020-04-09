@@ -224,15 +224,62 @@ bool AlgoUtils::isPointInTriangle(const AlgoUtils::Triangle& triangle, Vec2 poin
 	return true;
 }
 
-bool AlgoUtils::isPointInColinearSegment(const Vec2& point, const std::tuple<Vec2, Vec2>& segment)
+bool AlgoUtils::isPointInPolygon(const std::vector<Vec2>& points, Vec2 point)
+{
+	int size = int(points.size());
+	bool c = false;
+	int i = 0;
+	int j = 0;
+
+	for (i = 0, j = size - 1; i < size; j = i++)
+	{
+		if (((points[i].y > point.y) != (points[j].y > point.y)) && (point.x < (points[j].x - points[i].x) * (point.y - points[i].y) / (points[j].y - points[i].y) + points[i].x))
+		{
+			c = !c;
+		}
+	}
+
+	return c;
+}
+
+Vec2 AlgoUtils::getClosestPointOnLine(std::tuple<Vec2, Vec2> segment, Vec2 point)
+{
+	Vec2 A = std::get<0>(segment);
+	Vec2 B = std::get<1>(segment);
+
+	Vec2 ap = Vec2(point.x - A.x, point.y - A.y);
+	Vec2 ab = Vec2(B.x - A.x, B.y - A.y);
+
+	float magnitude = ab.x * ab.x + ab.y * ab.y;
+	float dotProd = ap.x * ab.x + ap.y * ab.y;
+
+	if (magnitude == 0.0f)
+	{
+		return Vec2::ZERO;
+	}
+
+	float t = dotProd / magnitude;
+
+	return Vec2(A.x + ab.x * t, A.y + ab.y * t);
+}
+
+float AlgoUtils::getDistanceFromSegment(std::tuple<Vec2, Vec2> segment, Vec2 point)
 {
 	Vec2 p1 = std::get<0>(segment);
 	Vec2 p2 = std::get<1>(segment);
 
-	return (point.x >= std::min(p1.x, p2.x) &&
-		point.x <= std::max(p1.x, p2.x) &&
-		point.y >= std::min(p1.y, p2.y) &&
-		point.y <= std::max(p1.y, p2.y));
+	float a = p1.y - p2.y;
+	float b = p2.x - p1.x;
+	float c = p1.x * p2.y - p2.x * p1.y;
+
+	float denom = a * a + b * b;
+
+	if (denom == 0.0f)
+	{
+		return 0.0f;
+	}
+	
+    return std::abs(a * point.x + b * point.y + c) / std::sqrt(denom);
 }
 
 Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB) 
@@ -264,21 +311,130 @@ Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::t
     }
 
     return Vec2(xnom / denom, ynom / denom);
-} 
+}
 
 bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB)
 {
-	Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(segmentA, segmentB);
+	auto onSegment = [](Vec2 p, Vec2 q, Vec2 r) 
+	{ 
+		if (q.x <= std::max(p.x, r.x) && q.x >= std::min(p.x, r.x) && 
+			q.y <= std::max(p.y, r.y) && q.y >= std::min(p.y, r.y))
+		{
+			return true; 	
+		}
 
-	// (0, 0) is our magic nubmer for "parallel non-intersecting". Trashy, but it works for our use cases.
-	if (intersectionPoint != Vec2::ZERO && 
-		AlgoUtils::isPointInColinearSegment(intersectionPoint, segmentA) &&
-		AlgoUtils::isPointInColinearSegment(intersectionPoint, segmentB))
+		return false; 
+	};
+	
+	auto orientation = [](Vec2 p, Vec2 q, Vec2 r) 
+	{ 
+		float val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y); 
+	
+		if (val == 0.0f)
+		{
+			return 0;
+		}
+	
+		return (val > 0.0f) ? 1 : 2;
+	};
+
+	Vec2 p1 = std::get<0>(segmentA);
+	Vec2 q1 = std::get<1>(segmentA);
+	Vec2 p2 = std::get<0>(segmentB);
+	Vec2 q2 = std::get<1>(segmentB);
+
+	auto det = [=](float a, float b, float c, float d)
+	{
+		return a * d - b * c;
+	};
+
+    float x1mx2 = p1.x - q1.x;
+    float x3mx4 = p2.x - q2.x;
+    float y1my2 = p1.y - q1.y;
+    float y3my4 = p2.y - q2.y;
+
+    float denom = det(x1mx2, y1my2, x3mx4, y3my4);
+
+    if(denom == 0.0)
+    {
+        return false;
+    }
+
+    // Find the four orientations needed for general and special cases 
+    int o1 = orientation(p1, q1, p2); 
+    int o2 = orientation(p1, q1, q2); 
+    int o3 = orientation(p2, q2, p1); 
+    int o4 = orientation(p2, q2, q1); 
+  
+    // General case 
+    if (o1 != o2 && o3 != o4)
+	{
+        return true; 
+	}
+  
+    // Special Cases 
+    // p1, q1 and p2 are colinear and p2 lies on segment p1q1 
+    if (o1 == 0 && onSegment(p1, p2, q1))
 	{
 		return true;
 	}
+  
+    // p1, q1 and q2 are colinear and q2 lies on segment p1q1 
+    if (o2 == 0 && onSegment(p1, q2, q1))
+	{
+		return true;
+	}
+  
+    // p2, q2 and p1 are colinear and p1 lies on segment p2q2 
+    if (o3 == 0 && onSegment(p2, p1, q2))
+	{
+		return true;
+	}
+  
+     // p2, q2 and q1 are colinear and q1 lies on segment p2q2 
+    if (o4 == 0 && onSegment(p2, q1, q2))
+	{
+		return true;
+	}
+  
+    return false;
+}
 
-	return false;
+std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> AlgoUtils::shrinkSegments(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments)
+{
+	const float factor = 8.0f;
+
+	std::vector<std::tuple<Vec2, Vec2>> newSegments = std::vector<std::tuple<Vec2, Vec2>>();
+
+	for (auto segment : segments)
+	{
+		const Vec2& first = std::get<0>(segment);
+		const Vec2& second = std::get<1>(segment);
+		const Vec2& left = first.x <= second.x ? first : second;
+		const Vec2& right = first.x <= second.x ? second : first;
+		const Vec2& lower = first.y <= second.y ? first : second;
+		const Vec2& upper = first.y <= second.y ? second : first;
+
+		if (left.x == right.x)
+		{
+			newSegments.push_back({ Vec2(lower.x, lower.y + factor), Vec2(upper.x, upper.y - factor) });
+		}
+		else
+		{
+			const float rise = std::abs(left.y - right.y);
+			const float run = std::abs(left.x - right.x);
+			const float angle = std::atan2(rise, run);
+			const float factorX = std::cos(angle) * factor;
+			const float factorY = std::sin(angle) * factor;
+
+			newSegments.push_back({
+				Vec2(left.x + factorX, left.y + (rise >= 0.0f ? factorY : -factorY)),
+				Vec2(right.x - factorX, right.y + (rise <= 0.0f ? factorY : -factorY))
+			});
+		}
+	}
+
+	return newSegments;
 }
 
 std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std::vector<Vec2>& points)
@@ -366,6 +522,15 @@ float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, const std::vect
 	}
 
 	return angle;
+}
+
+Vec2 AlgoUtils::getSegmentNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment)
+{
+	Vec2 delta = std::get<0>(segment) - std::get<1>(segment);
+
+	delta.normalize();
+
+	return Vec2(std::abs(delta.y), std::abs(delta.x));
 }
 
 float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,

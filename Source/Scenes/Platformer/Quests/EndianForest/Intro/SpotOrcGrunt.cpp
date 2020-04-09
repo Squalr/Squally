@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string SpotOrcGrunt::MapKeyQuest = "spot-orc-grunt";
 
-SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std::string questTag)
+SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine)
 {
-	SpotOrcGrunt* instance = new SpotOrcGrunt(owner, questLine, questTag);
+	SpotOrcGrunt* instance = new SpotOrcGrunt(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
+SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, true)
 {
 	this->scrappy = nullptr;
 }
@@ -47,7 +47,7 @@ void SpotOrcGrunt::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
@@ -78,7 +78,7 @@ void SpotOrcGrunt::runCinematicSequence()
 			{
 				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 					{
 						interactionBehavior->getSpeechBubble()->hideDialogue();
 					});

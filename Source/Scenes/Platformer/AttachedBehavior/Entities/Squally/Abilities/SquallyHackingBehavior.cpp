@@ -41,7 +41,7 @@ void SquallyHackingBehavior::onLoad()
 {
 	this->squally->watchForAttachedBehavior<EntityRuneBehavior>([=](EntityRuneBehavior* runeBehavior)
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceUseHackerMode, [=](EventCustom*)
 		{
 			runeBehavior->tryUseRune();
 		}));
@@ -61,7 +61,7 @@ void SquallyHackingBehavior::onLoad()
 		});
 	});
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceUseHackerMode, [=](EventCustom*)
 	{
 		this->toggleHackerMode();
 	}));
@@ -72,12 +72,16 @@ void SquallyHackingBehavior::onLoad()
 
 		this->toggleHackerMode();
 	});
+
+	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
+}
+
+void SquallyHackingBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void SquallyHackingBehavior::toggleHackerMode()
 {
-	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(HackFlagUtils::GetCurrentHackFlags(entityInventoryBehavior->getInventory())));
-	});
+	HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs());
 }

@@ -11,16 +11,17 @@ public:
 	static SourceBlock* create(int cipherIndex);
 	
 protected:
-	unsigned char compute() override;
-
-private:
-	typedef BlockBase super;
 	SourceBlock(int cipherIndex);
-	~SourceBlock();
+	virtual ~SourceBlock();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	unsigned char compute() override;
+
+private:
+	typedef BlockBase super;
+	
 	void loadDisplayValue();
 
 	int cipherIndex;

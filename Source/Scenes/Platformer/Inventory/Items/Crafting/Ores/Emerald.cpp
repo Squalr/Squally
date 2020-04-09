@@ -1,15 +1,15 @@
 #include "Emerald.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string Emerald::SaveKeyEmerald = "emerald";
+const std::string Emerald::SaveKey = "emerald";
 
 Emerald* Emerald::create()
 {
@@ -20,7 +20,7 @@ Emerald* Emerald::create()
 	return instance;
 }
 
-Emerald::Emerald() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Emerald::Emerald() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 48 }}), ItemMeta(20000))
 {
 }
 
@@ -35,7 +35,7 @@ Item* Emerald::clone()
 
 std::string Emerald::getItemName()
 {
-	return Emerald::SaveKeyEmerald;
+	return Emerald::SaveKey;
 }
 
 LocalizedString* Emerald::getString()
@@ -45,10 +45,10 @@ LocalizedString* Emerald::getString()
 
 std::string Emerald::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Emerald;
+	return ItemResources::Crafting_Smithing_Emerald;
 }
 
 std::string Emerald::getSerializationKey()
 {
-	return Emerald::SaveKeyEmerald;
+	return Emerald::SaveKey;
 }

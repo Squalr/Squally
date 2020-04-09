@@ -64,32 +64,32 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 		this->emptyRunes.push_back(Sprite::create(UIResources::HUD_EyeSlot));
 		this->filledRunes.push_back(Sprite::create(UIResources::HUD_Eye));
 		this->smokeFx.push_back(SmartAnimationSequenceNode::create());
-		this->smokeSound.push_back(Sound::create(SoundResources::Platformer_Abilities_HackerMode_Enable));
+		this->smokeSound.push_back(Sound::create(SoundResources::Platformer_Entities_Squally_HackerMode_Enable));
 	}
 
-	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)
+	for (auto next : this->emptyRunes)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
-	for (auto it = this->cooldownClips.begin(); it != this->cooldownClips.end(); it++)
+	for (auto next : this->cooldownClips)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
-	for (auto it = this->filledRunes.begin(); it != this->filledRunes.end(); it++)
+	for (auto next : this->filledRunes)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
-	for (auto it = this->smokeFx.begin(); it != this->smokeFx.end(); it++)
+	for (auto next : this->smokeFx)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
-	for (auto it = this->smokeSound.begin(); it != this->smokeSound.end(); it++)
+	for (auto next : this->smokeSound)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 }
 

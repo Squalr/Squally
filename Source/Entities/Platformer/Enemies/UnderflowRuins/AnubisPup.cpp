@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string AnubisPup::MapKeyAnubisPup = "anubis-pup";
+const std::string AnubisPup::MapKey = "anubis-pup";
 HexusOpponentData* AnubisPup::HexusOpponentDataInstance = nullptr;
 const std::string AnubisPup::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ANUBIS_PUP";
 
@@ -32,7 +31,7 @@ AnubisPup* AnubisPup::deserialize(ValueMap& properties)
 }
 
 AnubisPup::AnubisPup(ValueMap& properties) : super(properties,
-	AnubisPup::MapKeyAnubisPup,
+	AnubisPup::MapKey,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,
 	Size(128.0f, 186.0f),

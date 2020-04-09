@@ -27,7 +27,7 @@
 
 using namespace cocos2d;
 
-const std::string HelperManagerBehavior::MapKeyAttachedBehavior = "entity-helper-manager";
+const std::string HelperManagerBehavior::MapKey = "entity-helper-manager";
 
 HelperManagerBehavior* HelperManagerBehavior::create(GameObject* owner)
 {
@@ -77,7 +77,7 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 {
 	ValueMap properties = ValueMap();
 
-	SaveManager::saveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
 
 	std::string helperBehavior = this->getHelperAttachedBehavior(helperName);
 
@@ -115,7 +115,13 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 					this->entity,
 					deserializeArgs.gameObject,
 					ObjectEvents::SpawnMethod::Below,
-					ObjectEvents::PositionMode::Discard
+					ObjectEvents::PositionMode::Discard,
+					[&]()
+					{
+					},
+					[&]()
+					{
+					}
 				));
 
 				deserializeArgs.gameObject->setPosition(this->entity->getPosition());
@@ -124,6 +130,11 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	);
 
 	this->platformerEntityDeserializer->deserialize(&args);
+}
+
+void HelperManagerBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperName)
@@ -138,5 +149,6 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
-	this->attachedBehaviorMap[Guano::MapKeyGuano] = GuanoBehaviorGroup::MapKeyAttachedBehavior;
+	this->attachedBehaviorMap[Guano::MapKey] = GuanoBehaviorGroup::MapKey;
+	this->attachedBehaviorMap[Snowman::MapKey] = GuanoBehaviorGroup::MapKey;
 }

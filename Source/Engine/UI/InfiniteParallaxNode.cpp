@@ -20,7 +20,7 @@ InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
 {
 	this->spriteScale = this->getScale();
 	this->spriteAnchor = Vec2(0.5f, 0.5f);
-	this->nodes = new std::vector<Node*>();
+	this->nodes = std::vector<Node*>();
 	this->resourcePath = spriteResourcePath;
 
 	this->rebuildNodes();
@@ -28,7 +28,6 @@ InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
 
 InfiniteParallaxNode::~InfiniteParallaxNode()
 {
-	delete(this->nodes);
 }
 
 void InfiniteParallaxNode::setScale(float scale)
@@ -41,20 +40,20 @@ void InfiniteParallaxNode::setAnchorPoint(const Vec2& anchor)
 {
 	this->spriteAnchor = anchor;
 
-	for (auto it = this->nodes->begin(); it != this->nodes->end(); it++)
+	for (auto next : this->nodes)
 	{
-		(*it)->setAnchorPoint(this->spriteAnchor);
+		next->setAnchorPoint(this->spriteAnchor);
 	}
 }
 
 void InfiniteParallaxNode::rebuildNodes()
 {
-	for (auto it = this->nodes->begin(); it != this->nodes->end(); it++)
+	for (auto next : this->nodes)
 	{
-		this->removeChild((*it), true);
+		this->removeChild(next, true);
 	}
 
-	this->nodes->clear();
+	this->nodes.clear();
 
 	const int overlap = 0;
 
@@ -71,7 +70,7 @@ void InfiniteParallaxNode::rebuildNodes()
 		{
 			nextSprite->setPosition(nextPosition);
 
-			this->nodes->push_back(nextSprite);
+			this->nodes.push_back(nextSprite);
 			this->addChild(nextSprite, 0, Vec2(1.0f, 1.0f), nextPosition);
 
 			remainingSize -= this->spriteWidth;

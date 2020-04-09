@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyForestGolem;
+	static const std::string MapKey;
+	
+protected:
+	ForestGolem(cocos2d::ValueMap& properties);
+	virtual ~ForestGolem();
 
 private:
 	typedef PlatformerEnemy super;
-	ForestGolem(cocos2d::ValueMap& properties);
-	~ForestGolem();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

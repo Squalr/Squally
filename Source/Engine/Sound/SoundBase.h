@@ -1,46 +1,49 @@
 #pragma once
 
-#include "Engine/GlobalNode.h"
+#include "Engine/Maps/GameObject.h"
 
-class SoundBase : public GlobalNode
+class SoundBase : public GameObject
 {
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	virtual void unpause();
+	bool isPlaying();
+	virtual void freeze();
 	virtual void stop();
-	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr);
+	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
 
 	void setCustomMultiplier(float customMultiplier);
-	void toggleCameraDistanceFade(bool enableCameraDistanceFade);
 	void setSoundResource(std::string soundResource);
+	std::string getSoundResource();
 
 protected:
-	SoundBase(std::string soundResource);
+	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
 	virtual ~SoundBase();
 
 	void onEnter() override;
 	void update(float dt) override;
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
+	void setVolumeOverride(float volume);
+	void clearVolumeOverride();
 	float getVolume();
 
 	int activeTrackId;
-
-private:
-	typedef GlobalNode super;
-
-	void updateDistanceFade();
 
 	std::string soundResource;
 	float fadeMultiplier;
 	float distanceMultiplier;
 	float customMultiplier;
-	int fadeOutTick;
 	bool enableCameraDistanceFade;
+	bool hasVolumeOverride;
 	bool isFading;
+	bool destroyOnFadeOut;
 	std::function<void()> onFadeOutCallback;
-	cocos2d::Vec2 cachedCoords;
+	
+	static const int INVALID_ID;
+
+private:
+	typedef GameObject super;
 
 	static const std::string KeyScheduleFadeOutAudio;
-	static const int INVALID_ID;
 };

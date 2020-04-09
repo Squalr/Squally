@@ -20,14 +20,16 @@ public:
 	void close();
 	void setCloseCallBack(std::function<void()> closeCallback);
 
-private:
-	typedef Hud super;
+protected:
 	Lexicon();
-	~Lexicon();
+	virtual ~Lexicon();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef Hud super;
 	
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* banner;

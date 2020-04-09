@@ -26,14 +26,16 @@ public:
 	void setFontSize(LocalizedLabel::FontSize fontSize);
 	void loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType, bool colorize, Contrast contrast = Contrast());
 
-private:
-	typedef SmartNode super;
+protected:
 	SmartAsciiLabel();
-	~SmartAsciiLabel();
+	virtual ~SmartAsciiLabel();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	
+private:
+	typedef SmartNode super;
 
 	AsciiLetter* asciiLetterLabel;
 	ConstantString* displayValue;

@@ -1,15 +1,15 @@
 #include "CrystalSword.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string CrystalSword::SaveKeyCrystalSword = "crystal-sword";
+const std::string CrystalSword::SaveKey = "crystal-sword";
 
 CrystalSword* CrystalSword::create()
 {
@@ -20,7 +20,7 @@ CrystalSword* CrystalSword::create()
 	return instance;
 }
 
-CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 56, 64, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIdenti
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* CrystalSword::clone()
 
 std::string CrystalSword::getItemName()
 {
-	return CrystalSword::SaveKeyCrystalSword;
+	return CrystalSword::SaveKey;
 }
 
 LocalizedString* CrystalSword::getString()
@@ -56,10 +56,10 @@ LocalizedString* CrystalSword::getString()
 
 std::string CrystalSword::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Swords_CrystalSword;
+	return ItemResources::Equipment_Weapons_Swords_CrystalSword;
 }
 
 std::string CrystalSword::getSerializationKey()
 {
-	return CrystalSword::SaveKeyCrystalSword;
+	return CrystalSword::SaveKey;
 }

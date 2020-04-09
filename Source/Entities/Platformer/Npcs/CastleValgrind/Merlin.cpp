@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Merlin::MapKeyMerlin = "merlin";
+const std::string Merlin::MapKey = "merlin";
 HexusOpponentData* Merlin::HexusOpponentDataInstance = nullptr;
 const std::string Merlin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERLIN";
 
@@ -32,7 +31,7 @@ Merlin* Merlin::deserialize(ValueMap& properties)
 }
 
 Merlin::Merlin(ValueMap& properties) : super(properties,
-	Merlin::MapKeyMerlin,
+	Merlin::MapKey,
 	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
 	Size(112.0f, 160.0f),

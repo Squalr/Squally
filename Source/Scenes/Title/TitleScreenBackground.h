@@ -5,7 +5,6 @@
 namespace cocos2d
 {
 	class Sprite;
-	class ParticleSystem;
 }
 
 class AnimationPart;
@@ -14,20 +13,24 @@ class FloatingSprite;
 class InfiniteParallaxNode;
 class SmartAnimationNode;
 class SmartAnimationSequenceNode;
+class SmartParticles;
 
 class TitleScreenBackground : public SmartNode
 {
 public:
 	static TitleScreenBackground* create();
 
-private:
-	typedef SmartNode super;
+protected:
 	TitleScreenBackground();
-	~TitleScreenBackground();
+	virtual ~TitleScreenBackground();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
+	
 	void runEyeBlinkLoop();
 
 	SmartAnimationNode* squally;
@@ -49,6 +52,6 @@ private:
 	FloatingSprite* foregroundGrassTop;
 	cocos2d::Sprite* foregroundLight;
 
-	cocos2d::ParticleSystem* windParticles;
-	cocos2d::ParticleSystem* fireflyParticles;
+	SmartParticles* windParticles;
+	SmartParticles* fireflyParticles;
 };

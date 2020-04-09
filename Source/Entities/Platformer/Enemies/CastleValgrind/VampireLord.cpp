@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string VampireLord::MapKeyVampireLord = "vampire-lord";
+const std::string VampireLord::MapKey = "vampire-lord";
 HexusOpponentData* VampireLord::HexusOpponentDataInstance = nullptr;
 const std::string VampireLord::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VAMPIRE_LORD";
 
@@ -32,7 +31,7 @@ VampireLord* VampireLord::deserialize(ValueMap& properties)
 }
 
 VampireLord::VampireLord(ValueMap& properties) : super(properties,
-	VampireLord::MapKeyVampireLord,
+	VampireLord::MapKey,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
 	Size(240.0f, 312.0f),

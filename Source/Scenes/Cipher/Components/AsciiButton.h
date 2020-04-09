@@ -10,16 +10,16 @@ public:
 	static AsciiButton* create();
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	AsciiButton();
-	~AsciiButton();
+	virtual ~AsciiButton();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	ClickableTextNode* asciiButton;
 };

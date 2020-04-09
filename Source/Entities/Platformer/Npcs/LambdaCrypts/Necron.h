@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyNecron;
+	static const std::string MapKey;
+
+protected:
+	Necron(cocos2d::ValueMap& properties);
+	virtual ~Necron();
 
 private:
 	typedef PlatformerFriendly super;
-	Necron(cocos2d::ValueMap& properties);
-	~Necron();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

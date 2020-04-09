@@ -8,6 +8,8 @@
 
 using namespace cocos2d;
 
+unsigned long long UIBoundObject::TaskId = 0;
+
 UIBoundObject* UIBoundObject::create(cocos2d::Node* referencedObject)
 {
     UIBoundObject* instance = new UIBoundObject(referencedObject);
@@ -65,8 +67,6 @@ void UIBoundObject::initializeListeners()
     }));
 }
 
-static inline unsigned long long TaskId = 0;
-
 void UIBoundObject::scheduleUpdateTask()
 {
     if (this->scheduleTarget != nullptr && !this->eventKey.empty())
@@ -74,7 +74,7 @@ void UIBoundObject::scheduleUpdateTask()
         this->scheduleTarget->unschedule(eventKey);
     }
 
-    unsigned long long taskId = TaskId++;
+    unsigned long long taskId = UIBoundObject::TaskId++;
     this->eventKey = "EVENT_UIBOUND_UPDATE_TASK_" + std::to_string(taskId);
 
    this->scheduleTarget = this->originalParent;
@@ -140,6 +140,21 @@ cocos2d::Node* UIBoundObject::getOriginalParent()
     return this->originalParent;
 }
 
+void UIBoundObject::pushRealPosition()
+{
+    this->originalCoords = this->referencedObject->getPosition3D();
+    this->originalScale = this->referencedObject->getScale();
+    
+    this->referencedObject->setPosition3D(this->realCoords);
+    this->referencedObject->setScale(this->realScale);
+}
+
+void UIBoundObject::popRealPosition()
+{
+    this->referencedObject->setPosition3D(this->originalCoords);
+    this->referencedObject->setScale(this->originalScale);
+}
+
 void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
     if (this->referencedObject == nullptr)
@@ -147,14 +162,9 @@ void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint3
         return;
     }
 
-    this->originalCoords = this->referencedObject->getPosition3D();
-    this->originalScale = this->referencedObject->getScale();
-    
-    this->referencedObject->setPosition3D(this->realCoords);
-    this->referencedObject->setScale(this->realScale);
+    this->pushRealPosition();
 
 	super::visit(renderer, parentTransform, parentFlags);
 
-    this->referencedObject->setPosition3D(this->originalCoords);
-    this->referencedObject->setScale(this->originalScale);
+    this->popRealPosition();
 }

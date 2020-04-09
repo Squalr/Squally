@@ -6,13 +6,13 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventMouse.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
-#include "Engine/Hackables/CodeEditor/CodeEditor.h"
+#include "Engine/Events/SceneEvents.h"
+#include "Engine/Hackables/CodeEditor/CodeHud.h"
 #include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Utils/GameUtils.h"
@@ -20,6 +20,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
+#include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
@@ -33,42 +34,35 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 {
 	this->allowHackerMode = allowHackerMode;
 	this->layerDeserializers = std::vector<LayerDeserializer*>();
+	this->canPause = false;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
+	this->musicOverlay = MusicOverlay::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
-	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
+	this->codeHud = allowHackerMode ? CodeHud::create() : nullptr;
 	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
 	this->pauseMenu = useIngameMenu ? (PauseMenu*)this->ingameMenu : PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
-	this->confirmationMenu = ConfirmationMenu::create();
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
 	this->hackerModeVisibleHud = Hud::create();
 	this->miniGameHud = Hud::create();
+	this->backMenuHud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
-
 	this->hackerModeGlow = Hud::create();
-	this->sensingGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
 	
 	Sprite* glowFx = Sprite::create(BackgroundResources::Hacking_HackerModeBackground);
 	glowFx->setAnchorPoint(Vec2::ZERO);
-	
-	Sprite* senseFx = Sprite::create(BackgroundResources::Hacking_SensingBackground);
-	senseFx->setAnchorPoint(Vec2::ZERO);
 
 	this->hackerModeGlow->addChild(glowFx);
 	this->hackerModeGlow->setAnchorPoint(Vec2::ZERO);
 
-	this->sensingGlow->addChild(senseFx);
-	this->sensingGlow->setAnchorPoint(Vec2::ZERO);
-
-	this->sensingGlow->setVisible(false);
 	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
 
@@ -77,20 +71,20 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	if (allowHackerMode)
 	{
 		this->menuHud->addChild(this->radialMenu);
-		this->menuHud->addChild(this->codeEditor);
+		this->menuHud->addChild(this->codeHud);
 	}
 	
 	this->topMenuHud->addChild(this->pauseMenu);
 	this->topMenuHud->addChild(this->optionsMenu);
-	this->topMenuHud->addChild(this->confirmationMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
 	this->addChild(this->hudNode);
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeVisibleHud);
-	this->addChild(this->sensingGlow);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->miniGameHud);
+	this->addChild(this->musicOverlay);
+	this->addChild(this->backMenuHud);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
@@ -107,7 +101,6 @@ void MapBase::onEnter()
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
 	this->optionsMenu->setVisible(false);
-	this->confirmationMenu->setVisible(false);
 
 	if (this->map != nullptr)
 	{
@@ -115,26 +108,19 @@ void MapBase::onEnter()
 	}
 }
 
-void MapBase::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-}
-
-void MapBase::resume(void)
-{
-	super::resume();
-}
-
-void MapBase::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->canPause = false;
+	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventAfterSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->canPause = true;
+	}));
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventAllowPause, [=](EventCustom* eventCustom)
 	{
@@ -152,9 +138,9 @@ void MapBase::initializeListeners()
 
 		if (args != nullptr && args->argRef != nullptr)
 		{
-			for (auto it = this->mapArgs.begin(); it != this->mapArgs.end(); it++)
+			for (auto next : this->mapArgs)
 			{
-				args->argRef->push_back(*it);
+				args->argRef->push_back(next);
 			}
 		}
 	}));
@@ -162,16 +148,6 @@ void MapBase::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom* eventCustom)
 	{
 		this->toggleHackerMode(eventCustom->getUserData());
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingEnable, [=](EventCustom*)
-	{
-		this->sensingGlow->setVisible(true);
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingDisable, [=](EventCustom*)
-	{
-		this->sensingGlow->setVisible(false);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventAllowHackerMode, [=](EventCustom*)
@@ -223,7 +199,8 @@ void MapBase::initializeListeners()
 	{
 		this->menuBackDrop->setOpacity(0);
 		this->pauseMenu->setVisible(false);
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+		
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
 }
 
@@ -235,10 +212,10 @@ void MapBase::addLayerDeserializer(LayerDeserializer* layerDeserializer)
 
 void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers)
 {
-	for (auto it = layerDeserializers.begin(); it != layerDeserializers.end(); it++)
+	for (auto next : layerDeserializers)
 	{
-		this->addChild(*it);
-		this->layerDeserializers.push_back(*it);
+		this->addChild(next);
+		this->layerDeserializers.push_back(next);
 	}
 }
 
@@ -268,11 +245,6 @@ void MapBase::onDeveloperModeEnable(int debugLevel)
 	{
 		this->map->setCollisionLayersVisible(true);
 	}
-
-	if (this->getPhysicsWorld() != nullptr)
-	{
-		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	}
 }
 
 void MapBase::onDeveloperModeDisable()
@@ -281,16 +253,11 @@ void MapBase::onDeveloperModeDisable()
 	{
 		this->map->setCollisionLayersVisible(false);
 	}
-	
-	if (this->getPhysicsWorld() != nullptr)
-	{
-		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
-	}
 }
 
-void MapBase::onHackerModeEnable(int hackFlags)
+void MapBase::onHackerModeEnable()
 {
-	super::onHackerModeEnable(hackFlags);
+	super::onHackerModeEnable();
 
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);

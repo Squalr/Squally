@@ -17,7 +17,7 @@ public:
 	void lock(bool animate = true) override;
 	void unlock(bool animate = true) override;
 
-	static const std::string MapKeyGate;
+	static const std::string MapKey;
 
 protected:
 	Gate(cocos2d::ValueMap& properties);

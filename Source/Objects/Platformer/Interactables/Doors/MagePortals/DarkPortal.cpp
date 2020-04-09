@@ -1,14 +1,15 @@
 #include "DarkPortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
+
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string DarkPortal::MapKeyDarkPortal = "dark-portal";
+const std::string DarkPortal::MapKey = "dark-portal";
 
 DarkPortal* DarkPortal::create(ValueMap& properties)
 {
@@ -21,7 +22,9 @@ DarkPortal* DarkPortal::create(ValueMap& properties)
 
 DarkPortal::DarkPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLACK)
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalSand);
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalSand, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	
+	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->portalParticles);
 }
@@ -43,4 +46,20 @@ void DarkPortal::initializePositions()
 void DarkPortal::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void DarkPortal::closePortal(bool instant)
+{
+	super::closePortal(instant);
+
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
+}
+
+void DarkPortal::openPortal(bool instant)
+{
+	super::openPortal(instant);
+
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }

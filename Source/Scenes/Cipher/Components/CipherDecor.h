@@ -13,15 +13,15 @@ public:
 	static CipherDecor* create();
 
 protected:
+	CipherDecor();
+	virtual ~CipherDecor();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onAnyStateChange(CipherState* cipherState) override;
 
 private:
 	typedef CipherComponentBase super;
-	CipherDecor();
-	~CipherDecor();
-
-	void onEnter() override;
-	void initializePositions() override;
 
 	cocos2d::Sprite* furnace;
 	cocos2d::Sprite* logo;

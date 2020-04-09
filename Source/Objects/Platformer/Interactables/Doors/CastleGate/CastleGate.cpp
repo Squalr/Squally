@@ -9,7 +9,6 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
@@ -25,7 +24,7 @@ using namespace cocos2d;
 
 const float CastleGate::DoorOpenDelta = 320.0f;
 
-const std::string CastleGate::MapKeyCastleGate = "castle-gate";
+const std::string CastleGate::MapKey = "castle-gate";
 
 CastleGate* CastleGate::create(ValueMap& properties)
 {
@@ -42,7 +41,7 @@ CastleGate::CastleGate(ValueMap& properties) : super(properties)
 	this->bridge1 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_1);
 	this->bridge2 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_2);
 	this->door = Sprite::create(ObjectResources::Doors_CastleGate_STELL_FENCE);
-	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(96.0f, 420.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->doorCollision = CollisionObject::create(CollisionObject::createBox(Size(96.0f, 420.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->doorClip = SmartClippingNode::create(this->doorCollision, Rect(Vec2(-64.0f, -224.0f), Size(160.0f, 416.0f)));
 	this->castleDoorFront = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_FRONT);
 	this->castleDoorFront2 = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_FRONT);

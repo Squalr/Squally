@@ -13,10 +13,12 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 
-	static const std::string MapKeyGoblinShaman;
+	static const std::string MapKey;
+	
+protected:
+	GoblinShaman(cocos2d::ValueMap& properties);
+	virtual ~GoblinShaman();
 
 private:
 	typedef PlatformerEnemy super;
-	GoblinShaman(cocos2d::ValueMap& properties);
-	~GoblinShaman();
 };

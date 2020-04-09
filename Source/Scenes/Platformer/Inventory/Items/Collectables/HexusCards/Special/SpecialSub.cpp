@@ -1,16 +1,16 @@
 #include "SpecialSub.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SpecialSub::SaveKeySpecialSub = "special-sub";
+const std::string SpecialSub::SaveKey = "special-sub";
 
 SpecialSub* SpecialSub::create()
 {
@@ -21,7 +21,7 @@ SpecialSub* SpecialSub::create()
 	return instance;
 }
 
-SpecialSub::SpecialSub() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialSub::SpecialSub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemMeta(3, 3))
 {
 }
 
@@ -36,7 +36,7 @@ Item* SpecialSub::clone()
 
 std::string SpecialSub::getItemName()
 {
-	return SpecialSub::SaveKeySpecialSub;
+	return SpecialSub::SaveKey;
 }
 
 LocalizedString* SpecialSub::getString()
@@ -46,12 +46,12 @@ LocalizedString* SpecialSub::getString()
 
 std::string SpecialSub::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialSub::getSerializationKey()
 {
-	return SpecialSub::SaveKeySpecialSub;
+	return SpecialSub::SaveKey;
 }
 
 std::string SpecialSub::getCardKey()

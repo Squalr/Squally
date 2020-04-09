@@ -8,12 +8,13 @@ namespace BackgroundResources
 {
 	extern const std::string Bliss;
 	extern const std::string BlueSky;
+	extern const std::string Caverns;
 	extern const std::string Crypt1;
 	extern const std::string Crypt2;
+	extern const std::string Crypt3;
 	extern const std::string DarkForestSky;
 	extern const std::string Dawn;
 	extern const std::string Hacking_HackerModeBackground;
-	extern const std::string Hacking_SensingBackground;
 	extern const std::string IndoorHouse;
 	extern const std::string Laboratory;
 	extern const std::string LakeSideSky;
@@ -32,5 +33,6 @@ namespace BackgroundResources
 	extern const std::string SkySunset;
 	extern const std::string SkyYellow;
 	extern const std::string Sun;
+	extern const std::string Waterfall;
 	extern const std::string WaterfallSky;
 };

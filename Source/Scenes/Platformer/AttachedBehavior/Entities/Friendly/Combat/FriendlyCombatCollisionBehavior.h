@@ -9,13 +9,15 @@ class FriendlyCombatCollisionBehavior : public EntityCollisionBehaviorBase
 public:
 	static FriendlyCombatCollisionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyCombatCollisionBehavior(GameObject* owner);
-	~FriendlyCombatCollisionBehavior();
+	virtual ~FriendlyCombatCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
+	void onEntityCollisionCreated() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;

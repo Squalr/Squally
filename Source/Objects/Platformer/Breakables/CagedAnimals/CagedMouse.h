@@ -12,11 +12,11 @@ class CagedMouse : public CagedAnimal
 public:
 	static CagedMouse* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCagedMouse;
+	static const std::string MapKey;
 
 protected:
 	CagedMouse(cocos2d::ValueMap& properties);
-	~CagedMouse();
+	virtual ~CagedMouse();
 
 	void initializePositions() override;
 

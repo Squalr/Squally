@@ -44,6 +44,7 @@ void MenuEntry::onEnter()
 	super::onEnter();
 
 	this->showIcon();
+	this->sizeFont();
 }
 
 void MenuEntry::initializePositions()
@@ -78,4 +79,27 @@ void MenuEntry::showIcon()
 
 	this->label->setPositionX(-MenuEntry::LabelSize.width / 2.0f + 40.0f);
 	this->icon->setVisible(true);
+}
+
+void MenuEntry::sizeFont()
+{
+	float labelWidth = this->label->getContentSize().width;
+	float overdraw = labelWidth - MenuEntry::LabelSize.width;
+
+	if (overdraw <= 0.0f)
+	{
+		this->label->setFontSize(LocalizedLabel::FontSize::H3);
+	}
+	else if (overdraw < 32.0f)
+	{
+		this->label->setFontSize(LocalizedLabel::FontSize::H4);
+	}
+	else if (overdraw < 48.0f)
+	{
+		this->label->setFontSize(LocalizedLabel::FontSize::P);
+	}
+	else
+	{
+		this->label->setFontSize(LocalizedLabel::FontSize::Small);
+	}
 }

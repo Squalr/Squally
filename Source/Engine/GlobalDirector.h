@@ -16,7 +16,7 @@ class GlobalDirector : public GlobalNode
 public:
 	static GlobalDirector* getInstance();
 
-	static void loadScene(cocos2d::Scene* scene);
+	static void loadScene(std::function<SmartScene*()> sceneCreator);
 	static void registerGlobalNode(GlobalNode* node);
 	static void registerGlobalNode(GlobalHud* node);
 	static void registerGlobalScene(GlobalScene* node);
@@ -25,7 +25,7 @@ protected:
 	GlobalDirector();
 	virtual ~GlobalDirector();
 
-	cocos2d::Scene* activeScene;
+	SmartScene* activeScene;
 	std::vector<SmartNode*> globalNodes;
 	std::vector<GlobalScene*> globalScenes;
 

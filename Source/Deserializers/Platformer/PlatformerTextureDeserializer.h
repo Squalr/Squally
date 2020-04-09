@@ -17,5 +17,5 @@ private:
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 
-	std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> deserializers;
+	static std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> Deserializers;
 };

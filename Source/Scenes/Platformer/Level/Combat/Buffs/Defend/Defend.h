@@ -17,11 +17,11 @@ public:
 
 protected:
 	Defend(PlatformerEntity* caster);
-	~Defend();
+	virtual ~Defend();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback) override;
+	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
 	void onTimelineReset(bool wasInterrupt) override;
 
 private:

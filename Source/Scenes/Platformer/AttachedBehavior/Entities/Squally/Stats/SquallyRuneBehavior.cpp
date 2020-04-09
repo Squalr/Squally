@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyRuneBehavior::MapKeyAttachedBehavior = "squally-rune";
+const std::string SquallyRuneBehavior::MapKey = "squally-rune";
 
 SquallyRuneBehavior* SquallyRuneBehavior::create(GameObject* owner)
 {
@@ -62,6 +62,11 @@ void SquallyRuneBehavior::onLoad()
 	}
 }
 
+void SquallyRuneBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyRuneBehavior::saveState()
 {
 	if (this->entityRuneBehavior != nullptr)
@@ -73,6 +78,6 @@ void SquallyRuneBehavior::saveState()
 			cooldowns.push_back(Value(this->entityRuneBehavior->getRuneCooldown(index)));
 		}
 
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
 	}
 }

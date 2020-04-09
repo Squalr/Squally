@@ -6,8 +6,9 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/UIResources.h"
 
@@ -15,16 +16,16 @@
 
 using namespace cocos2d;
 
-ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration)
+ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, Priority priority)
 {
-	ThrowWeapon* instance = new ThrowWeapon(attackDuration, recoverDuration);
+	ThrowWeapon* instance = new ThrowWeapon(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -34,7 +35,7 @@ ThrowWeapon::~ThrowWeapon()
 
 PlatformerAttack* ThrowWeapon::cloneInternal()
 {
-	return ThrowWeapon::create(this->getAttackDuration(), this->getRecoverDuration());
+	return ThrowWeapon::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* ThrowWeapon::getString()
@@ -47,32 +48,37 @@ std::string ThrowWeapon::getAttackAnimation()
 	return "AttackThrow";
 }
 
-void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
-
-	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
+	super::performAttack(owner, targets);
 	
-	weapon->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	for (auto next : targets)
 	{
-		weapon->getCollision()->setPhysicsEnabled(false);
-		
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
+		ThrownObject* weapon = ThrownObject::create(owner, next, false, this->getMainhandResource(owner), Size(64.0f, 128.0f));
+	
+		weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
-		}
+			weapon->disable(true);
+			
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+			if (entity != nullptr)
+			{
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+			}
 
-	this->replaceMainhandWithProjectile(owner, weapon);
+			return CollisionObject::CollisionResult::DoNothing;
+		});
 
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
-	{
-		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
-	});
+		this->replaceMainhandWithProjectile(owner, weapon);
+
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+		{
+			weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		});
+
+		CombatEvents::TriggerProjectileSpawned(CombatEvents::ProjectileSpawnedArgs(owner, next, weapon));
+	}
 }
 
 void ThrowWeapon::onCleanup()

@@ -24,12 +24,23 @@ public:
 	{
 		ReturnToIdle,
 		Repeat,
-		PauseOnAnimationComplete
+		PauseOnAnimationComplete,
+		Callback,
 	};
 
-	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
-	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
-	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	struct AnimParams
+	{
+		float priority;
+		float blendTime;
+		bool cancelAnim;
+		
+		AnimParams(float priority = 0.5f, float blendTime = 0.5f, bool cancelAnim = false) : priority(priority), blendTime(blendTime), cancelAnim(cancelAnim) { }
+	};
+
+	SmartAnimationNode* clone();
+	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
+	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
+	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
 	void clearAnimationPriority();
 	AnimationPart* getAnimationPart(std::string partName);
 	void restoreAnimationPart(std::string partName);
@@ -46,17 +57,19 @@ public:
 	static const std::string DefaultAnimationName;
 
 protected:
+	SmartAnimationNode(std::string animationResource, std::string entityName);
+	virtual ~SmartAnimationNode();
+
 	Spriter2dX::AnimationNode* animationNode;
 	SpriterEngine::EntityInstance* entity;
 
 private:
 	typedef SmartNode super;
-	SmartAnimationNode(std::string animationResource, std::string entityName);
-	virtual ~SmartAnimationNode();
 
 	bool initialized;
 	float currentAnimationPriority;
 	std::map<std::string, AnimationPart*> animationParts;
 	std::string currentAnimation;
 	std::string animationResource;
+	std::string entityName;
 };

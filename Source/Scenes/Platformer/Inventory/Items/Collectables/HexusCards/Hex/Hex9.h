@@ -16,7 +16,7 @@ public:
 	std::string getSerializationKey() override;
 	std::string getCardKey() override;
 
-	static const std::string SaveKeyHex9;
+	static const std::string SaveKey;
 
 protected:
 	Hex9();

@@ -7,11 +7,12 @@ class HelpTotemPickPocket : public HelpTotem
 public:
 	static HelpTotemPickPocket* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyHelpTotemPickPocket;
+	static const std::string MapKey;
 
 protected:
 	HelpTotemPickPocket(cocos2d::ValueMap& properties);
-	~HelpTotemPickPocket();
+	virtual ~HelpTotemPickPocket();
+	
 	void onEnter() override;
 
 private:

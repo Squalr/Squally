@@ -15,12 +15,12 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyHealthPotion;
+	static const std::string SaveKey;
 	static const float HealPercentage;
 
 protected:
 	HealthPotion();
-	~HealthPotion();
+	virtual ~HealthPotion();
 
 	PlatformerAttack* createAssociatedAttack() override;
 

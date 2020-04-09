@@ -38,7 +38,7 @@ public:
 
 protected:
 	LexiconPage(std::string pageIdentifier, PageType pageType);
-	~LexiconPage();
+	virtual ~LexiconPage();
 	
 	void onEnter() override;
 	void initializePositions() override;

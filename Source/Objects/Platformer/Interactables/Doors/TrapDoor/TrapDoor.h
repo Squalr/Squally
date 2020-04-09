@@ -16,7 +16,7 @@ class TrapDoor : public HackableObject
 public:
 	static TrapDoor* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTrapDoor;
+	static const std::string MapKey;
 
 protected:
 	TrapDoor(cocos2d::ValueMap& properties);
@@ -35,10 +35,12 @@ private:
 	void onDoorEventTriggered(cocos2d::ValueMap args);
 
 	bool isFlipped;
+	float destinationProgress;
 	float doorClosedPosition;
 	cocos2d::ClippingNode* doorClip;
 	cocos2d::Sprite* door;
 	CollisionObject* doorCollision;
 
 	static const float DoorOpenDelta;
+	static const float DoorOpenSpeed;
 };

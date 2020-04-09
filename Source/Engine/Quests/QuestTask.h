@@ -16,10 +16,13 @@ public:
 	};
 
 	std::string getQuestTaskName();
+	QuestState getQuestState();
+
+	static QuestState getQuestStateForTask(QuestLine* questLine, std::string questTask);
 
 protected:
-	QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable = false);
-	~QuestTask();
+	QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, bool skippable = false);
+	virtual ~QuestTask();
 
 	void initializeListeners() override;
 	void onEnterTransitionDidFinish() override;
@@ -28,10 +31,14 @@ protected:
 	virtual void onActivate(bool isActiveThroughSkippable) = 0;
 	virtual void onComplete() = 0;
 	virtual void onSkipped() = 0;
+	void waiveQuestPrereq();
 	bool isActive();
 	void complete();
+
+	void saveQuestSaveState(std::string key, cocos2d::Value value);
+	cocos2d::Value getQuestSaveStateOrDefault(std::string key, cocos2d::Value value);
 	
-	std::string questTag;
+	QuestLine* questLine;
 
 private:
 	typedef GameObject super;
@@ -39,7 +46,6 @@ private:
 	void updateState();
 
 	GameObject* owner;
-	QuestLine* questLine;
 	std::string questTask;
 	QuestState questState;
 	bool isSkippable;

@@ -9,7 +9,7 @@ public:
 
 protected:
 	RegisterMarkerEax();
-	~RegisterMarkerEax();
+	virtual ~RegisterMarkerEax();
 
 	int getRegisterIndex() override;
 

@@ -2,6 +2,7 @@
 #include <string>
 
 #include "cocos/2d/CCLabel.h"
+#include "cocos/platform/CCCommon.h"
 
 class LocalizedString;
 class ClickableNode;
@@ -28,6 +29,7 @@ public:
 		H1,
 		H2,
 		H3,
+		H4,
 		P,
 		Small,
 	};
@@ -49,10 +51,7 @@ public:
 	float getFontSize();
 	std::string getFont();
 
-private:
-	typedef cocos2d::Label super;
-	friend class TypeWriterEffect; // I dont care if this is bad practice
-
+protected:
 	LocalizedLabel(
 		FontStyle fontStyle,
 		FontSize fontSize,
@@ -60,7 +59,11 @@ private:
 		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
-	~LocalizedLabel();
+	virtual ~LocalizedLabel();
+
+private:
+	typedef cocos2d::Label super;
+	friend class TypeWriterEffect; // I dont care if this is bad practice
 
 	// Hide methods that we do not want available
 	using super::setString;
@@ -77,6 +80,7 @@ private:
 	float getFontSizeH1();
 	float getFontSizeH2();
 	float getFontSizeH3();
+	float getFontSizeH4();
 	float getFontSizeP();
 	float getFontSizeSmall();
 

@@ -12,15 +12,16 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Konami/KSequence.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -33,7 +34,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyShip::MapKeySquallyShip = "squally-ship";
+const std::string SquallyShip::MapKey = "squally-ship";
 
 SquallyShip* SquallyShip::create(ValueMap& properties)
 {
@@ -49,7 +50,7 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->lightningStrike = SmartAnimationSequenceNode::create();
 	this->shipContainer = Node::create();
 	this->ship = Sprite::create(ObjectResources::Cinematic_SpaceShipSqually);
-	this->shipCollision = CollisionObject::create(PhysicsBody::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->shipCollision = CollisionObject::create(CollisionObject::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 	this->shipFireAnimation = SmartAnimationSequenceNode::create();
 	this->smokeAnimation = SmartAnimationSequenceNode::create();
 	this->fireAnimation = SmartAnimationSequenceNode::create();
@@ -58,11 +59,11 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->fireRingAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
-	this->lightningSound = WorldSound::create(SoundResources::Hexus_Attacks_Energy);
-	this->thrusterSound = WorldSound::create(SoundResources::Platformer_Objects_LowFlame);
-	this->enterAtmosphereSound = WorldSound::create(SoundResources::Platformer_Objects_WooshRough);
-	this->crashSound = WorldSound::create(SoundResources::Platformer_Objects_Crash);
-	this->fireSound = WorldSound::create(SoundResources::Platformer_Environment_Fire);
+	this->lightningSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
+	this->thrusterSound = Sound::create(SoundResources::Platformer_FX_Fire_LowFlame1);
+	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_FX_Woosh_WooshRough1);
+	this->crashSound = Sound::create(SoundResources::Platformer_FX_Explosions_Crash1);
+	this->fireSound = WorldSound::create(SoundResources::Platformer_FX_Fire_Fire1);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 
@@ -190,7 +191,7 @@ void SquallyShip::runShipSequence()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			this->shipCollision->setVelocity(Vec2(-2048.0f, -2048.0f));
+			this->shipCollision->setVelocity(Vec2(-2048.0f, -512.0f));
 			this->shipContainer->runAction(EaseSineIn::create(RotateTo::create(2.0f, -45.0f)));
 			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
 			this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
@@ -233,12 +234,23 @@ void SquallyShip::onCrash()
 		this->ship,
 		squally,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+			squally->setPosition(crashCoords);
+			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
+
+			squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->setHealth(1);
+			});
+		},
+		[&]()
+		{
+			squally = nullptr;
+		}
 	));
 
-	squally->setPosition(crashCoords);
-	squally->attachBehavior(SquallyBehaviorGroup::create(squally));
-	squally->setState(StateKeys::Health, Value(1));
 	GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 	this->shipCollision->setPhysicsEnabled(false);

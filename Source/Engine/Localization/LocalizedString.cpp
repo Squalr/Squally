@@ -15,6 +15,7 @@ LocalizedString::LocalizedString()
 	this->onStringUpdate = nullptr;
 	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
+	this->runOnce = false;
 }
 
 LocalizedString::~LocalizedString()
@@ -29,180 +30,38 @@ void LocalizedString::onEnter()
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
-		this->onStringUpdate(this);
-	}
-
-	// This needs to be done here since we side-step SmartNode functions
-	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-	{
 		if (this->onStringUpdate != nullptr)
 		{
 			this->onStringUpdate(this);
 		}
-	}));
+	}
+
+	if (!this->runOnce)
+	{
+		this->runOnce = true;
+
+		// This needs to be done here since we side-step SmartNode functions
+		this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+		{
+			if (this->onStringUpdate != nullptr)
+			{
+				this->onStringUpdate(this);
+			}
+		}));
+	}
 }
 
 std::string LocalizedString::getString()
 {
-	std::string localizedString;
-
-	switch (this->overrideLanguage != LanguageType::NONE ? this->overrideLanguage : Localization::getLanguage())
-	{
-		case LanguageType::ARABIC:
-		{
-			localizedString = this->getStringAr();
-			break;
-		}
-		case LanguageType::BULGARIAN:
-		{
-			localizedString = this->getStringBg();
-			break;
-		}
-		case LanguageType::CHINESE_SIMPLIFIED:
-		{
-			localizedString = this->getStringZhCn();
-			break;
-		}
-		case LanguageType::CHINESE_TRADITIONAL:
-		{
-			localizedString = this->getStringZhTw();
-			break;
-		}
-		case LanguageType::CZECH:
-		{
-			localizedString = this->getStringCs();
-			break;
-		}
-		case LanguageType::DANISH:
-		{
-			localizedString = this->getStringDa();
-			break;
-		}
-		case LanguageType::DUTCH:
-		{
-			localizedString = this->getStringNl();
-			break;
-		}
-		case LanguageType::FINNISH:
-		{
-			localizedString = this->getStringFi();
-			break;
-		}
-		case LanguageType::FRENCH:
-		{
-			localizedString = this->getStringFr();
-			break;
-		}
-		case LanguageType::GERMAN:
-		{
-			localizedString = this->getStringDe();
-			break;
-		}
-		case LanguageType::GREEK:
-		{
-			localizedString = this->getStringEl();
-			break;
-		}
-		case LanguageType::HUNGARIAN:
-		{
-			localizedString = this->getStringHu();
-			break;
-		}
-		case LanguageType::ITALIAN:
-		{
-			localizedString = this->getStringIt();
-			break;
-		}
-		case LanguageType::JAPANESE:
-		{
-			localizedString = this->getStringJa();
-			break;
-		}
-		case LanguageType::KOREAN:
-		{
-			localizedString = this->getStringKo();
-			break;
-		}
-		case LanguageType::NORWEGIAN:
-		{
-			localizedString = this->getStringNo();
-			break;
-		}
-		case LanguageType::POLISH:
-		{
-			localizedString = this->getStringPl();
-			break;
-		}
-		case LanguageType::PORTUGUESE:
-		{
-			localizedString = this->getStringPt();
-			break;
-		}
-		case LanguageType::PORTUGUESE_BRAZIL:
-		{
-			localizedString = this->getStringPtBr();
-			break;
-		}
-		case LanguageType::ROMANIAN:
-		{
-			localizedString = this->getStringRo();
-			break;
-		}
-		case LanguageType::RUSSIAN:
-		{
-			localizedString = this->getStringRu();
-			break;
-		}
-		case LanguageType::SPANISH:
-		{
-			localizedString = this->getStringEs();
-			break;
-		}
-		case LanguageType::SPANISH_LATIN_AMERICAN:
-		{
-			localizedString = this->getStringEs419();
-			break;
-		}
-		case LanguageType::SWEDISH:
-		{
-			localizedString = this->getStringSv();
-			break;
-		}
-		case LanguageType::THAI:
-		{
-			localizedString = this->getStringTh();
-			break;
-		}
-		case LanguageType::TURKISH:
-		{
-			localizedString = this->getStringTr();
-			break;
-		}
-		case LanguageType::UKRAINIAN:
-		{
-			localizedString = this->getStringUk();
-			break;
-		}
-		case LanguageType::VIETNAMESE:
-		{
-			localizedString = this->getStringVi();
-			break;
-		}
-		case LanguageType::ENGLISH:
-		default:
-		{
-			localizedString = this->getStringEn();
-			break;
-		}
-	}
+	std::string localizedString = this->getStringByLanguage(this->overrideLanguage != LanguageType::NONE ? this->overrideLanguage : Localization::getLanguage());
 
 	int index = 1;
 
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		if (*it != nullptr)
+		if (next != nullptr)
 		{
-			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), (*it)->getString());
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), next->getString());
 		}
 		else
 		{
@@ -231,9 +90,9 @@ LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString*
 LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		if (*it == nullptr)
+		if (next == nullptr)
 		{
 			continue;
 		}
@@ -242,7 +101,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 
 		for (auto compareIt = stringReplacementVariables.begin(); compareIt != stringReplacementVariables.end(); compareIt++)
 		{
-			if (*it == *compareIt)
+			if (next == *compareIt)
 			{
 				isReentry = true;
 			}
@@ -251,27 +110,27 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 		if (isReentry)
 		{
 			// Remove the child and retain it
-			GameUtils::changeParent(*it, nullptr, true, false);
+			GameUtils::changeParent(next, nullptr, true, false);
 		}
 		else
 		{
 			// Remove the child and release it
-			this->removeChild(*it);
+			this->removeChild(next);
 		}
 	}
 
 	this->stringReplacementVariables = stringReplacementVariables;
 
 	// Retain new replacement variables
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		if (*it == nullptr)
+		if (next == nullptr)
 		{
 			continue;
 		}
 
 		// Update this string if any of the replacement variables get updated
-		(*it)->setOnStringUpdateCallback([=](LocalizedString*)
+		next->setOnStringUpdateCallback([=](LocalizedString*)
 		{
 			if (this->onStringUpdate != nullptr)
 			{
@@ -279,7 +138,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 			}
 		});
 		
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
 	if (this->onStringUpdate != nullptr)
@@ -301,9 +160,9 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 
 	std::vector<LocalizedString*> stringReplacementVariables = std::vector<LocalizedString*>();
 
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		stringReplacementVariables.push_back(*it == nullptr ? nullptr : (*it)->clone());
+		stringReplacementVariables.push_back(next == nullptr ? nullptr : next->clone());
 	}
 
 	localizedString->setStringReplacementVariables(stringReplacementVariables);

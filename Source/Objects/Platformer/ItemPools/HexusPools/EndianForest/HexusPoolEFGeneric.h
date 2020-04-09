@@ -9,7 +9,7 @@ public:
 
 protected:
 	HexusPoolEFGeneric();
-	~HexusPoolEFGeneric();
+	virtual ~HexusPoolEFGeneric();
 
 private:
 	typedef MinMaxPool super;

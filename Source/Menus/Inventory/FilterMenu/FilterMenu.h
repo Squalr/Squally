@@ -29,7 +29,7 @@ protected:
 private:
 	typedef SmartNode super;
 	FilterMenu(std::function<void()> onFilterChange);
-	~FilterMenu();
+	virtual ~FilterMenu();
 
 	void scrollFilterUp();
 	void scrollFilterDown();

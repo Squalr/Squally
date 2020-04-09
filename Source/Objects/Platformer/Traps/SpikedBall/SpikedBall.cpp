@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -22,7 +21,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string SpikedBall::MapKeySpikedBall = "spiked-ball";
+const std::string SpikedBall::MapKey = "spiked-ball";
 
 SpikedBall* SpikedBall::create(ValueMap& properties)
 {
@@ -36,7 +35,7 @@ SpikedBall* SpikedBall::create(ValueMap& properties)
 SpikedBall::SpikedBall(ValueMap& properties) : super(properties)
 {
 	this->ball = Sprite::create(ObjectResources::Traps_SpikeBall_SpikeBall);
-	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->ballCollision = CollisionObject::create(CollisionObject::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{

@@ -13,13 +13,13 @@ class WorldSound;
 class TeachHackerMode : public QuestTask
 {
 public:
-	static TeachHackerMode* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TeachHackerMode* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~TeachHackerMode();
+	TeachHackerMode(GameObject* owner, QuestLine* questLine);
+	virtual ~TeachHackerMode();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

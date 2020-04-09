@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityWeaponCollisionBehavior::MapKeyAttachedBehavior = "entity-weapon-collisions";
+const std::string EntityWeaponCollisionBehavior::MapKey = "entity-weapon-collisions";
 const Size EntityWeaponCollisionBehavior::DefaultWeaponSize = Size(64.0f, 128.0f);
 
 EntityWeaponCollisionBehavior* EntityWeaponCollisionBehavior::create(GameObject* owner)
@@ -41,10 +41,8 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->rebuildWeaponCollision();
-	}
+
+	this->toggleQueryable(false);
 }
 
 EntityWeaponCollisionBehavior::~EntityWeaponCollisionBehavior()
@@ -57,15 +55,41 @@ void EntityWeaponCollisionBehavior::onLoad()
 	{
 		this->rebuildWeaponCollision();
 	}));
+
+	this->defer([=]()
+	{
+		this->rebuildWeaponCollision();
+		this->toggleQueryable(true);
+	});
+}
+
+void EntityWeaponCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->weaponCollision != nullptr)
+	{
+		this->weaponCollision->setPhysicsEnabled(false);
+	}
 }
 
 void EntityWeaponCollisionBehavior::enable()
 {
+	if (this->weaponCollision == nullptr)
+	{
+		return;
+	}
+
 	this->weaponCollision->setPhysicsEnabled(true);
 }
 
 void EntityWeaponCollisionBehavior::disable()
 {
+	if (this->weaponCollision == nullptr)
+	{
+		return;
+	}
+	
 	this->weaponCollision->setPhysicsEnabled(false);
 }
 
@@ -81,6 +105,11 @@ void EntityWeaponCollisionBehavior::setWeaponOffset(Vec2 weaponOffset)
 
 void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 {
+	if (this->isInvalidated())
+	{
+		return;
+	}
+	
 	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
 
 	if (mainhand == nullptr)
@@ -107,10 +136,9 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 	}
 
 	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->weaponSize, 1.0f, 8.0f, 0.0f),
+		CollisionObject::createCapsulePolygon(this->weaponSize, 8.0f),
 		(int)weaponType,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 
 	this->weaponCollision->setPosition(this->weaponOffset);

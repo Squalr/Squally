@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyWeaponCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
+const std::string SquallyWeaponCollisionBehavior::MapKey = "squally-collisions";
 
 SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObject* owner)
 {
@@ -64,6 +64,11 @@ void SquallyWeaponCollisionBehavior::onLoad()
 	});
 }
 
+void SquallyWeaponCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyWeaponCollisionBehavior::onWeaponChange()
 {
 	this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
@@ -89,22 +94,25 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 
 		weaponBehavior->rebuildWeaponCollision();
 
-		weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+		if (weaponBehavior->weaponCollision != nullptr)
 		{
-			if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 			{
+				if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+				{
+					return CollisionObject::CollisionResult::DoNothing;
+				}
+
+				PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+				if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+				{
+					// Encountered enemy w/ first-strike
+					PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
+				}
+
 				return CollisionObject::CollisionResult::DoNothing;
-			}
-
-			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
-
-			if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				// Encountered enemy w/ first-strike
-				PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
-			}
-
-			return CollisionObject::CollisionResult::DoNothing;
-		});
+			});
+		}
 	});
 }

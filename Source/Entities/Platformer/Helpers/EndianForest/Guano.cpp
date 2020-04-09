@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Guano::MapKeyGuano = "guano";
+const std::string Guano::MapKey = "guano";
 HexusOpponentData* Guano::HexusOpponentDataInstance = nullptr;
 const std::string Guano::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GUANO";
 
@@ -32,7 +31,7 @@ Guano* Guano::deserialize(ValueMap& properties)
 }
 
 Guano::Guano(ValueMap& properties) : super(properties,
-	Guano::MapKeyGuano,
+	Guano::MapKey,
 	EntityResources::Helpers_EndianForest_Guano_Animations,
 	EntityResources::Helpers_EndianForest_Guano_Emblem,
 	Size(224.0f, 440.0f),

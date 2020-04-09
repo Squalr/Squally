@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string IsometricSqually::MapKeySqually = "squally";
+const std::string IsometricSqually::MapKey = "squally";
 
 IsometricSqually* IsometricSqually::deserialize(ValueMap& properties)
 {

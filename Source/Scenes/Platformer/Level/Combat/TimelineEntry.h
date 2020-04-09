@@ -7,33 +7,44 @@ namespace cocos2d
 	class Sprite;
 }
 
+class EntityCombatBehaviorBase;
 class PlatformerAttack;
 class PlatformerEntity;
 
 class TimelineEntry : public SmartNode
 {
 public:
-	static TimelineEntry* create(PlatformerEntity* entity);
+	static TimelineEntry* create(PlatformerEntity* entity, int spawnIndex);
 
 	PlatformerEntity* getEntity();
-	void applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing);
-	void stageTarget(PlatformerEntity* target);
+	void applyDamage(PlatformerEntity* caster, int damage);
+	void applyHealing(PlatformerEntity* caster, int healing);
+	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);
-	PlatformerEntity* getStagedTarget();
+	std::vector<PlatformerEntity*> getStagedTargets();
 	PlatformerAttack* getStagedCast();
 	void defend();
 	float getProgress();
 	void setProgress(float progress);
+	void tryPerformActions();
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
 	bool isPlayerEntry();
 
 	static const float CastPercentage;
+	static const float BaseSpeedMultiplier;
+
+protected:
+	TimelineEntry(PlatformerEntity* entity, int spawnIndex);
+	virtual ~TimelineEntry();
+	
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
+	void update(float dt) override;
 
 private:
 	typedef SmartNode super;
-	TimelineEntry(PlatformerEntity* entity);
-	virtual ~TimelineEntry();
 
 	struct DamageArgs
 	{
@@ -42,26 +53,25 @@ private:
 		DamageArgs(int damageDelta) : damageDelta(damageDelta) { }
 	};
 
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-	void update(float dt) override;
 	void performCast();
-	void tryInterrupt(bool blocked);
+	void tryInterrupt();
 	void resetTimeline();
+	void cameraFocusEntry();
 
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
-	TimelineEntry* target;
+	EntityCombatBehaviorBase* combatBehavior;
+	std::vector<PlatformerEntity*> targets;
+	std::vector<TimelineEntry*> targetsAsEntries;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;
+	cocos2d::Sprite* skull;
 	cocos2d::Node* orphanedAttackCache;
 
-	float speed;
+	int spawnIndex;
 	float interruptBonus;
 	float progress;
 	bool isCasting;
-
-	static const float BaseSpeedMultiplier;
+	bool isBlocking;
 };

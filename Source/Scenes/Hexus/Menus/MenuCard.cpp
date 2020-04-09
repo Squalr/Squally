@@ -42,8 +42,8 @@ void MenuCard::removeDisplayItem(Node* node)
 
 void MenuCard::clearDisplayItems()
 {
-	for (auto it = displayItems.begin(); it != displayItems.end(); it++)
+	for (auto next : displayItems)
 	{
-		this->removeChild(*it);
+		this->removeChild(next);
 	}
 }

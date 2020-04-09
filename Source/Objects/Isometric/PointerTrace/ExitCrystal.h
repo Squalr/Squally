@@ -17,11 +17,11 @@ public:
 	int getValue();
 	int getOffset();
 
-	static const std::string MapKeyExitCrystal;
+	static const std::string MapKey;
 
 protected:
 	ExitCrystal(cocos2d::ValueMap& properties);
-	~ExitCrystal();
+	virtual ~ExitCrystal();
 
 	void onEnter() override;
 	void initializePositions() override;

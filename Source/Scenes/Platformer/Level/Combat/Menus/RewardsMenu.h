@@ -13,30 +13,37 @@ class LocalizedLabel;
 class PlatformerEntity;
 class ScrollPane;
 class Sound;
+class Timeline;
 
 class RewardsMenu : public SmartNode
 {
 public:
-	static RewardsMenu* create();
+	static RewardsMenu* create(Timeline* timelineRef);
 
 	void show();
 
-private:
-	typedef SmartNode super;
-	RewardsMenu();
-	~RewardsMenu();
+protected:
+	RewardsMenu(Timeline* timelineRef);
+	virtual ~RewardsMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
+	void giveExp();
 	void loadRewards();
+	void clearEmblems();
+	void addExpEmblem(std::string emblemResource, int gain);
+
+	Timeline* timelineRef;
 
 	cocos2d::Sprite* victoryMenu;
-	cocos2d::Sprite* expSprite;
-	ConstantString* expValue;
-	LocalizedLabel* expLabel;
+	cocos2d::Node* expNode;
 	LocalizedLabel* victoryLabel;
 	LocalizedLabel* itemsFoundLabel;
 	ClickableTextNode* returnButton;
 	Sound* victorySound;
+	int emblemCount;
 };

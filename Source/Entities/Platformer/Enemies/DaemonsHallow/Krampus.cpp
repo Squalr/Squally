@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Krampus::MapKeyKrampus = "krampus";
+const std::string Krampus::MapKey = "krampus";
 HexusOpponentData* Krampus::HexusOpponentDataInstance = nullptr;
 const std::string Krampus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRAMPUS";
 
@@ -32,9 +31,9 @@ Krampus* Krampus::deserialize(ValueMap& properties)
 }
 
 Krampus::Krampus(ValueMap& properties) : super(properties,
-	Krampus::MapKeyKrampus,
-	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
-	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,
+	Krampus::MapKey,
+	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
 	Size(396.0f, 412.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

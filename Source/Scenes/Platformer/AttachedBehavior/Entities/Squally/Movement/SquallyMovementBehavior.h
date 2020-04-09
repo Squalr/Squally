@@ -11,13 +11,15 @@ public:
 
 	void disablePositionSaving();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
+	static const float SquallyMovementAcceleration;
 
 protected:
 	SquallyMovementBehavior(GameObject* owner);
-	~SquallyMovementBehavior();
+	virtual ~SquallyMovementBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

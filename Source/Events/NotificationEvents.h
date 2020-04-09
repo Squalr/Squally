@@ -12,6 +12,8 @@ class NotificationEvents
 public:
 	static const std::string EventNotificationTakeover;
 	static const std::string EventNotification;
+	static const std::string EventConfirmation;
+	static const std::string EventConfirmationEnd;
 
 	struct NotificationTakeoverArgs
 	{
@@ -31,13 +33,28 @@ public:
 		LocalizedString* description;
 		std::string iconResource;
 		std::string soundResource;
+		bool keepOpen;
 
-		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
-			: title(title), description(description), iconResource(iconResource), soundResource(soundResource)
+		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen = false)
+			: title(title), description(description), iconResource(iconResource), soundResource(soundResource), keepOpen(keepOpen)
+		{
+		}
+	};
+
+	struct ConfirmationArgs
+	{
+		LocalizedString* confirmationMessage;
+		std::function<void()> confirmCallback;
+		std::function<void()> cancelCallback;
+
+		ConfirmationArgs(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback = nullptr)
+			: confirmationMessage(confirmationMessage), confirmCallback(confirmCallback), cancelCallback(cancelCallback)
 		{
 		}
 	};
 
 	static void TriggerNotificationTakeover(NotificationTakeoverArgs args);
 	static void TriggerNotification(NotificationArgs args);
+	static void TriggerConfirmation(ConfirmationArgs args);
+	static void TriggerConfirmationEnd();
 };

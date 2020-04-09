@@ -6,29 +6,23 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Particles/SmartParticles.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
-#include "Events/CombatEvents.h"
-#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
+#include "Resources/ParticleResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string FriendlyExpBarBehavior::MapKeyAttachedBehavior = "friendly-exp-bars";
+const std::string FriendlyExpBarBehavior::MapKey = "friendly-exp-bars";
 
 FriendlyExpBarBehavior* FriendlyExpBarBehavior::create(GameObject* owner)
 {
@@ -39,25 +33,33 @@ FriendlyExpBarBehavior* FriendlyExpBarBehavior::create(GameObject* owner)
 	return instance;
 }
 
-FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner, (CollisionType)CombatCollisionType::EntityFriendly)
+FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = Strings::Common_PlusConstant::create();
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
+	this->levelUpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_LevelUp::create());
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
-	this->tickCounter = 0;
+	this->levelUpFx = SmartParticles::create(ParticleResources::Platformer_Combat_LevelUp);
+	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp2);
+	this->tickCounterA = 0;
+	this->tickCounterB = 0;
 
-	// Gain text
 	this->deltaLabel->setTextColor(Color4B::YELLOW);
 	this->deltaLabel->enableOutline(Color4B::BLACK, 2);
+	this->levelUpLabel->setTextColor(Color4B::YELLOW);
+	this->levelUpLabel->enableOutline(Color4B::BLACK, 2);
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
 
+	this->addChild(this->levelUpFx);
 	this->addChild(this->expProgressBar);
 	this->addChild(this->deltaLabel);
+	this->addChild(this->levelUpLabel);
+	this->addChild(this->levelUpSound);
 }
 
 FriendlyExpBarBehavior::~FriendlyExpBarBehavior()
@@ -66,65 +68,77 @@ FriendlyExpBarBehavior::~FriendlyExpBarBehavior()
 
 void FriendlyExpBarBehavior::onLoad()
 {
-    super::onLoad();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
-	{
-		this->giveExp();
-	}));
-
 	this->expProgressBar->setOpacity(0);
 	this->deltaLabel->setOpacity(0);
+	this->levelUpLabel->setOpacity(0);
 
 	const Vec2 entityCenter = this->entity->getEntityCenterPoint();
 	const float offetY =  this->entity->getEntitySize().height / 2.0f + 32.0f;
 
 	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
+	this->levelUpLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
 	this->expProgressBar->setPosition(entityCenter + Vec2(0.0f, offetY));
+	this->levelUpFx->setPosition(entityCenter + Vec2(0.0f, offetY - 16.0f));
 }
 
-void FriendlyExpBarBehavior::giveExp()
+void FriendlyExpBarBehavior::onDisable()
 {
-	int expGain = 0;
+	super::onDisable();
+}
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
-	{
-		expGain += StatsTables::getKillExp(entity);
-	}), PlatformerEnemy::PlatformerEnemyTag);
+void FriendlyExpBarBehavior::giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain)
+{
+	this->expProgressBar->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(5.0f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
 
-	this->expProgressBar->runAction(FadeTo::create(0.25f, 255));
-	this->deltaLabel->runAction(FadeTo::create(0.25f, 255));
+	this->deltaLabel->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(1.0f),
+		FadeTo::create(0.25f, 0),
+		CallFunc::create([=]()
+		{
+			if (didLevelUp)
+			{
+				this->levelUpLabel->runAction(Sequence::create(
+					FadeTo::create(0.25f, 255),
+					DelayTime::create(2.0f),
+					FadeTo::create(0.25f, 0),
+					nullptr
+				));
+			}
+		}),
+		nullptr
+	));
 	this->deltaString->setStringReplacementVariables(ConstantString::create(std::to_string(expGain)));
-
+	
 	this->entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
 	{
-		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
-		bool didLevelUp = eqBehavior->addEqExperience(expGain);
-		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
-		
 		const float StartDelay = 0.5f;
-		const float FillDuration = 1.0f;
+		const float TimePerPercent = 0.85f;
+		const float RestartDelay = 0.0f;
+		const float Phase1Duration = (1.0f - startProgress) * TimePerPercent;
+		const float Phase2Duration = endProgress * TimePerPercent;
 		
 		if (didLevelUp)
 		{
-			const float RestartDelay = 1.0f;
-			const float Phase1Duration = (1.0f - startProgress) * FillDuration;
-			const float Phase2Duration = FillDuration - Phase1Duration;
-
-			this->fillBar(startProgress, 1.0f, Phase1Duration, StartDelay, [=]()
+			this->fillBar(startProgress, 1.0f, Phase1Duration, StartDelay, &this->tickCounterA, [=]()
 			{
 				this->runLevelUpEffect();
-				this->fillBar(0.0f, endProgress, Phase2Duration, RestartDelay);
+				this->fillBar(0.0f, endProgress, Phase2Duration, RestartDelay, &this->tickCounterB);
 			});
 		}
 		else
 		{
-			this->fillBar(startProgress, endProgress, FillDuration, StartDelay);
+			this->fillBar(startProgress, endProgress, Phase1Duration, StartDelay, &this->tickCounterA);
 		}
 	});
 }
 
-void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete)
+void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete)
 {
 	static int UniqueId = 0;
 	UniqueId++;
@@ -133,23 +147,28 @@ void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, flo
 	const float Interval = fillDuration / float(UpdatesPerSecond);
 	const int Ticks = int(fillDuration * float(UpdatesPerSecond));
 	const float Increment = (endProgress - startProgress) / float(Ticks);
-	this->tickCounter = 0;
+	*tickCounter = 0;
 
 	expProgressBar->setProgress(startProgress);
 
 	expProgressBar->schedule([=](float dt)
 	{
-		expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
-
-		if (onComplete != nullptr && ++this->tickCounter == Ticks)
+		if (onComplete != nullptr && *tickCounter == Ticks)
 		{
 			onComplete();
 		}
+		else if (*tickCounter < Ticks)
+		{
+			expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
+		}
+
+		++*tickCounter;
 
 	}, Interval, Ticks, startDelay, "EVENT_EXP_BAR_UPDATE_" + std::to_string(UniqueId));
 }
 
 void FriendlyExpBarBehavior::runLevelUpEffect()
 {
-	// TODO :)
+	this->levelUpSound->play();
+	this->levelUpFx->start();
 }

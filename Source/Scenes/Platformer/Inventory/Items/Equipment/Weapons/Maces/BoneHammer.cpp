@@ -1,15 +1,15 @@
 #include "BoneHammer.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string BoneHammer::SaveKeyBoneHammer = "bone-hammer";
+const std::string BoneHammer::SaveKey = "bone-hammer";
 
 BoneHammer* BoneHammer::create()
 {
@@ -20,7 +20,7 @@ BoneHammer* BoneHammer::create()
 	return instance;
 }
 
-BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -46,7 +46,7 @@ Item* BoneHammer::clone()
 
 std::string BoneHammer::getItemName()
 {
-	return BoneHammer::SaveKeyBoneHammer;
+	return BoneHammer::SaveKey;
 }
 
 LocalizedString* BoneHammer::getString()
@@ -56,12 +56,12 @@ LocalizedString* BoneHammer::getString()
 
 std::string BoneHammer::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Maces_BoneHammer;
+	return ItemResources::Equipment_Weapons_Maces_BoneHammer;
 }
 
 std::string BoneHammer::getSerializationKey()
 {
-	return BoneHammer::SaveKeyBoneHammer;
+	return BoneHammer::SaveKey;
 }
 
 Vec2 BoneHammer::getDisplayOffset()

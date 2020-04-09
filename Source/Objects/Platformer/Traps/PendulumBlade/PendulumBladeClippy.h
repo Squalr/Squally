@@ -11,16 +11,16 @@ class PendulumBladeClippy : public Clippy
 public:
 	static PendulumBladeClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	PendulumBladeClippy();
-	~PendulumBladeClippy();
+	virtual ~PendulumBladeClippy();
 
 	Clippy* innerClone() override;
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

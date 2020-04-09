@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedYeti::MapKeyCagedYeti = "caged-yeti";
+const std::string CagedYeti::MapKey = "caged-yeti";
 
 CagedYeti* CagedYeti::create(ValueMap& properties)
 {

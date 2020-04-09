@@ -10,8 +10,6 @@ public:
 	GlobalScene();
 	virtual ~GlobalScene();
 
-	virtual void addGlobalEventListener(cocos2d::EventListener* listener);
-
 private:
     typedef SmartScene super;
 };

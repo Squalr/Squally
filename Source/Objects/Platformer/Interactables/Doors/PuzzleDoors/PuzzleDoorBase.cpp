@@ -58,7 +58,10 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->indexString);
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
-	this->doorOpenSound = nullptr;
+	this->doorOpenSound = WorldSound::create();
+	this->sliderSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy1);
+	this->sliderResetSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy3);
+	this->electricitySound = WorldSound::create(SoundResources::Cipher_Lightning);
 	this->isUnlocked = false;
 	this->doorClipSize = doorClipSize;
 	this->doorClipOffset = doorClipOffset;
@@ -69,8 +72,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->runeBasePosition = runeBasePosition;
 	this->runeSpacing = runeSpacing;
 	this->doorOpenDelta = doorOpenDelta;
-
-	this->setRequiresInteraction(true);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
@@ -126,7 +127,15 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		this->addChild(this->runesPassed[index]);
 	}
 
+	this->sliderSound->setCustomMultiplier(0.25f);
+	this->sliderResetSound->setCustomMultiplier(0.25f);
+	this->electricitySound->setCustomMultiplier(0.75f);
+
 	this->addChild(this->marker);
+	this->addChild(this->electricitySound);
+	this->addChild(this->sliderSound);
+	this->addChild(this->sliderResetSound);
+	this->addChild(this->doorOpenSound);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -153,6 +162,15 @@ void PuzzleDoorBase::onEnter()
 						this->puzzleIndex = MathUtils::wrappingNormalize(this->puzzleIndex + 1, 0, 3);
 						this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
 						this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
+
+						if (this->puzzleIndex == 0)
+						{
+							this->sliderResetSound->play();
+						}
+						else
+						{
+							this->sliderSound->play();
+						}
 					}
 
 					this->indexString->setString(std::to_string(this->puzzleIndex));
@@ -170,6 +188,7 @@ void PuzzleDoorBase::onEnter()
 				// Run light effect
 				if (!this->isUnlocked)
 				{
+					this->electricitySound->play();
 					this->lightLeft->setPosition(Vec2(-4.0f, 296.0f));
 					this->lightRight->setPosition(Vec2(-8.0f, 296.0f));
 
@@ -307,17 +326,14 @@ void PuzzleDoorBase::lock(bool animate)
 		this->runes[index]->runAction(FadeTo::create(0.25f, 255));
 	}
 
-	float currentProgress = 1.0f - this->doorNode->getPositionY() / this->doorOpenDelta;
+	float currentProgress = this->doorNode->getPositionY() / this->doorOpenDelta;
 
 	if (animate)
 	{
 		this->doorNode->stopAllActions();
 		this->doorNode->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
 
-		if (this->doorOpenSound != nullptr)
-		{
-			this->doorOpenSound->play();
-		}
+		this->doorOpenSound->play();
 	}
 	else
 	{
@@ -350,10 +366,7 @@ void PuzzleDoorBase::unlock(bool animate)
 		this->doorNode->stopAllActions();
 		this->doorNode->runAction(MoveTo::create(5.0f * currentProgress, Vec2(0.0f, this->doorOpenDelta)));
 		
-		if (this->doorOpenSound != nullptr)
-		{
-			this->doorOpenSound->play();
-		}
+		this->doorOpenSound->play();
 	}
 	else
 	{

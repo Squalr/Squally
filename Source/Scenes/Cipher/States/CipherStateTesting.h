@@ -10,6 +10,9 @@ public:
 	static CipherStateTesting* create();
 
 protected:
+	CipherStateTesting();
+	virtual ~CipherStateTesting();
+	
 	void onBeforeStateEnter(CipherState* cipherState) override;
 	void onStateEnter(CipherState* cipherState) override;
 	void onStateReload(CipherState* cipherState) override;
@@ -17,8 +20,6 @@ protected:
 
 private:
 	typedef CipherStateBase super;
-	CipherStateTesting();
-	~CipherStateTesting();
 
 	void performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index = 0);
 };

@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonSwordsman::MapKeyDemonSwordsman = "demon-swordsman";
+const std::string DemonSwordsman::MapKey = "demon-swordsman";
 HexusOpponentData* DemonSwordsman::HexusOpponentDataInstance = nullptr;
 const std::string DemonSwordsman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_SWORDSMAN";
 
@@ -32,7 +31,7 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap& properties)
 }
 
 DemonSwordsman::DemonSwordsman(ValueMap& properties) : super(properties,
-	DemonSwordsman::MapKeyDemonSwordsman,
+	DemonSwordsman::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
 	Size(212.0f, 268.0f),

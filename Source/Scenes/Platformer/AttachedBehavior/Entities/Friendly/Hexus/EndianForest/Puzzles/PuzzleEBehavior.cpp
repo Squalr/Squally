@@ -1,13 +1,11 @@
 #include "PuzzleEBehavior.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -16,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleEBehavior::MapKeyAttachedBehavior = "puzzle-E";
+const std::string PuzzleEBehavior::MapKey = "puzzle-E";
 
 PuzzleEBehavior* PuzzleEBehavior::create(GameObject* owner)
 {
@@ -42,7 +40,7 @@ MinMaxPool* PuzzleEBehavior::generateReward()
 
 std::string PuzzleEBehavior::getWinLossSaveKey()
 {
-	return PuzzleEBehavior::MapKeyAttachedBehavior;
+	return PuzzleEBehavior::MapKey;
 }
 
 std::string PuzzleEBehavior::getBackgroundResource()
@@ -128,5 +126,5 @@ StateOverride* PuzzleEBehavior::getStateOverride()
 
 std::vector<TutorialBase*> PuzzleEBehavior::getTutorials()
 {
-	return { TutorialPuzzleD::create() };
+	return { };
 }

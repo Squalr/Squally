@@ -13,12 +13,15 @@ public:
 	void playAnimations(bool repeat = true);
 	void setManualDelay(float manualDelay);
 
-private:
-	typedef SmartNode super;
+protected:
 	Lightning();
-	~Lightning();
+	virtual ~Lightning();
 
 	void onEnter() override;
+
+private:
+	typedef SmartNode super;
+	
 	void playAnimationsInternal(bool repeat, bool isFirstRun = false);
 
 	SmartAnimationSequenceNode* animations;

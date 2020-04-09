@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 
@@ -22,7 +23,7 @@ AttachedBehavior* AttachedBehaviorDeserializer::deserialize(AttachedBehaviorDese
 	}
 	else
 	{
-		CCLOG("Unknown attached behavior encountered: %s", args.attachedBehavior.c_str());
+		LogUtils::logError("Unknown attached behavior encountered: " + args.attachedBehavior);
 	}
 
     return nullptr;

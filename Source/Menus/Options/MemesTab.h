@@ -18,7 +18,7 @@ public:
 
 protected:
 	MemesTab();
-	~MemesTab();
+	virtual ~MemesTab();
 
 private:
 	typedef SmartNode super;

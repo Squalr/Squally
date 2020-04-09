@@ -16,12 +16,20 @@ const std::string PlatformerEvents::EventQueryMapArgs = "EVENT_QUERY_MAP_ARGS";
 const std::string PlatformerEvents::EventRuneConsumed = "EVENT_RUNE_CONSUMED";
 const std::string PlatformerEvents::EventEquippedItemsChanged = "EVENT_EQUIPPED_ITEMS_CHANGED";
 const std::string PlatformerEvents::EventEngageEnemy = "EVENT_ENGAGE_ENEMY";
+const std::string PlatformerEvents::EventEnemyEngaged = "EVENT_ENEMY_ENGAGED";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
+const std::string PlatformerEvents::EventOpenAlchemy = "EVENT_OPEN_ALCHEMY";
+const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
+const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
+const std::string PlatformerEvents::EventGiveCurrency = "EVENT_GIVE_CURRENCY";
+const std::string PlatformerEvents::EventGiveCurrenciesFromPool = "EVENT_GIVE_CURRENCIES_FROM_POOL";
 const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
 const std::string PlatformerEvents::EventDisallowPause = "EVENT_DISALLOW_PAUSE";
+const std::string PlatformerEvents::EventDispelIllusion = "EVENT_DISPEL_ILLUSION";
+const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
@@ -93,6 +101,14 @@ void PlatformerEvents::TriggerEngageEnemy(EngageEnemyArgs args)
 	);
 }
 
+void PlatformerEvents::TriggerEnemyEngaged(EnemyEngagedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventEnemyEngaged,
+		&args
+	);
+}
+
 void PlatformerEvents::TriggerHudTrackEntity(HudTrackEntityArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -105,6 +121,22 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventHudUntrackEntity,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenAlchemy(CraftingOpenArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventOpenAlchemy,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenSmithing(CraftingOpenArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventOpenSmithing,
 		&args
 	);
 }
@@ -125,6 +157,30 @@ void PlatformerEvents::TriggerGiveItem(GiveItemArgs args)
 	);
 }
 
+void PlatformerEvents::TriggerDiscoverItem(ItemDiscoveryArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventDiscoverItem,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveCurrenciesFromPool,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerGiveCurrency(GiveCurrencyArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveCurrency,
+		&args
+	);
+}
+
 void PlatformerEvents::TriggerAllowPause()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -139,3 +195,17 @@ void PlatformerEvents::TriggerDisallowPause()
 	);
 }
 
+void PlatformerEvents::TriggerDispelIllusion(DispelIllusionArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventDispelIllusion,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerSavePosition()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventSavePosition
+	);
+}

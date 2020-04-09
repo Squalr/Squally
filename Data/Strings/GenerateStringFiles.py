@@ -32,10 +32,10 @@ def generateStringFiles():
 
 	files.sort()
 	
-	templateOutputHeaderPrefix = abspath(join(join(realpath(__file__), ".."), "Strings.h_prefix.template"))
-	templateOutputClassPrefix = abspath(join(join(realpath(__file__), ".."), "Strings.cpp_prefix.template"))
-	templateOutputHeader = abspath(join(join(realpath(__file__), ".."), "Strings.h.template"))
-	templateOutputClass = abspath(join(join(realpath(__file__), ".."), "Strings.cpp.template"))
+	templateOutputHeaderStrings = abspath(join(join(realpath(__file__), ".."), "Strings.h.template"))
+	templateOutputClassStrings = abspath(join(join(realpath(__file__), ".."), "Strings.cpp.template"))
+	templateOutputHeader = abspath(join(join(realpath(__file__), ".."), "String.h.template"))
+	templateOutputClass = abspath(join(join(realpath(__file__), ".."), "String.cpp.template"))
 	hOutputFile = join(outputPath, "Strings.h")
 	cppOutputFile = join(outputPath, "Strings.cpp")
 	outputDir = dirname(hOutputFile)
@@ -47,18 +47,16 @@ def generateStringFiles():
 		if not os.path.exists(outputDir):
 			os.makedirs(outputDir)
 	
-	with open(templateOutputHeaderPrefix,'r') as hPrefixTemplate, open(templateOutputClassPrefix,'r') as cppPrefixTemplate, open(templateOutputHeader,'r') as hTemplate, open(templateOutputClass,'r') as cppTemplate:
-		hPrefixTemplateContent = hPrefixTemplate.read();
-		cppPrefixTemplateContent = cppPrefixTemplate.read();
-		hTemplateContent = hTemplate.read();
-		cppTemplateContent = cppTemplate.read();
+	hContentsConcat = ""
+	cppContentsConcat = ""
+	
+	with open(templateOutputHeaderStrings,'r') as hStringsTemplate, open(templateOutputClassStrings,'r') as cppStringsTemplate, open(templateOutputHeader,'r') as hTemplate, open(templateOutputClass,'r') as cppTemplate:
+		hStringsTemplateContent = hStringsTemplate.read()
+		cppStringsTemplateContent = cppStringsTemplate.read()
+		hTemplateContent = hTemplate.read()
+		cppTemplateContent = cppTemplate.read()
 		
 		with open(hOutputFile, 'w+', encoding="utf-8") as hWriter, open(cppOutputFile, 'w+', encoding="utf-8") as cppWriter:
-			
-			# Writer header
-			hWriter.write(hPrefixTemplateContent)
-			cppWriter.write(cppPrefixTemplateContent)
-
 			for stringFile in files:
 				print(stringFile)
 				fileRelative = relpath(stringFile, searchPath).replace("\\", "/")
@@ -76,8 +74,14 @@ def generateStringFiles():
 					hContent = hContent.encode("utf-8")
 					cppContent = cppContent.encode("utf-8")
 
-					hWriter.write(hContent.decode("utf-8"))
-					cppWriter.write(cppContent.decode("utf-8"))
+					hContentsConcat += hContent.decode("utf-8")
+					cppContentsConcat += cppContent.decode("utf-8")
+		
+			hStringsTemplateContent = hStringsTemplateContent.replace("{{ContentsH}}", hContentsConcat)
+			cppStringsTemplateContent = cppStringsTemplateContent.replace("{{ContentsCpp}}", cppContentsConcat)
+			
+			hWriter.write(hStringsTemplateContent)
+			cppWriter.write(cppStringsTemplateContent)
 		
 if __name__ == '__main__':
     main()

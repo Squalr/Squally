@@ -10,6 +10,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -27,8 +28,12 @@ CombatAIHelper* CombatAIHelper::create()
 
 CombatAIHelper::CombatAIHelper()
 {
-	this->selectedTarget = nullptr;
+	this->selectedTargets = std::vector<PlatformerEntity*>();
 	this->selectedAttack = nullptr;
+}
+
+CombatAIHelper::~CombatAIHelper()
+{
 }
 
 void CombatAIHelper::onEnter()
@@ -68,195 +73,53 @@ void CombatAIHelper::initializeListeners()
 	}));
 }
 
-void CombatAIHelper::update(float dt)
-{
-	super::update(dt);
-}
-
 void CombatAIHelper::initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities)
 {
 	this->playerEntities = playerEntities;
 	this->enemyEntities = enemyEntities;
 }
 
-void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntity)
-{
-	if (attackingEntity == nullptr)
-	{
-		return;
-	}
-
-	this->selectedTarget = attackingEntity->getStagedTarget();
-	this->selectedAttack = attackingEntity->getStagedCast();
-
-	if (this->selectedTarget == nullptr || this->selectedAttack == nullptr)
-	{
-		return;
-	}
-
-	if (this->selectedTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool() &&
-		this->selectedAttack->getAttackType() != PlatformerAttack::AttackType::Resurrection)
-	{
-		return;
-	}
-	
-	// Use AI to auto-choose attack and entity. Start by just trying to re-target.
-	this->selectTarget(attackingEntity);
-
-	if (this->selectedTarget != nullptr)
-	{
-		return;
-	}
-	
-	// Retarget failed. We'll just have to pick an attack/target at random then.
-	this->selectAttack(attackingEntity);
-	this->selectTarget(attackingEntity);
-}
-
-void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
-{
-	this->selectedTarget = nullptr;
-	this->selectedAttack = nullptr;
-
-	this->selectAttack(attackingEntry);
-	this->selectTarget(attackingEntry);
-
-	// Error!
-	if (attackingEntry == nullptr || this->selectedTarget == nullptr || this->selectedAttack == nullptr)
-	{
-		CombatEvents::TriggerResumeTimeline();
-
-		return;
-	}
-
-	attackingEntry->stageCast(this->selectedAttack);
-	attackingEntry->stageTarget(this->selectedTarget);
-
-	// Choices made, resume timeline
-	CombatEvents::TriggerResumeTimeline();
-}
-
-void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
+void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntry)
 {
 	if (attackingEntry == nullptr)
 	{
 		return;
 	}
 
-	PlatformerEntity* attackingEntity = attackingEntry->getEntity();
+	this->selectedTargets = attackingEntry->getStagedTargets();
+	this->selectedAttack = attackingEntry->getStagedCast();
 
-	if (attackingEntity == nullptr)
+	if (this->selectedTargets.empty() || this->selectedTargets.size() > 1 || this->selectedAttack == nullptr)
 	{
+		// Abort if multi-target or if no attack is selected (error state)
 		return;
 	}
 
-	// PHASE 1: Check if available heal target / heal spell
-	EntityAttackBehavior* attackBehavior = attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
+	PlatformerEntity* singleTarget = this->selectedTargets[0];
 
-	if (attackBehavior == nullptr)
+	// Clear target entity if invalid
+	if (singleTarget != nullptr)
 	{
-		return;
-	}
-
-	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
-	std::vector<PlatformerAttack*> consumablesList = attackingEntry->isPlayerEntry()
-		? std::vector<PlatformerAttack*>()
-		: attackBehavior->getAvailableConsumables();
-	bool hasWeakAlly = false;
-	bool hasDeadAlly = false;
-	float selectedAttackPriority = -1.0f;
-	const float WeakPercentage = 0.5f;
-
-	for (auto it = consumablesList.begin(); it != consumablesList.end(); it++)
-	{
-		attackList.push_back(*it);
-	}
-
-	for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
-	{
-		int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-		bool isAlive = (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
-
-		if (!isAlive)
+		switch(this->selectedAttack->getAttackType())
 		{
-			hasDeadAlly = true;
-		}
-
-		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
-		{
-			hasWeakAlly = true;
-		}
-	}
-	
-	// Prioritize resurrection
-	if (!attackingEntry->isPlayerEntry() && hasDeadAlly)
-	{
-		for (auto it = attackList.begin(); it != attackList.end(); it++)
-		{
-			switch((*it)->getAttackType())
+			case PlatformerAttack::AttackType::Resurrection:
 			{
-				case PlatformerAttack::AttackType::Resurrection:
+				if (singleTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 				{
-					if ((*it)->getPriority() > selectedAttackPriority)
-					{
-						this->selectedAttack = *it;
-					}
+					singleTarget = nullptr;
 				}
-				default:
-				{
-					break;
-				}
+				break;
 			}
-		}
-	}
-
-	if (this->selectedAttack != nullptr)
-	{
-		return;
-	}
-
-	// Prioritize heals next
-	if (!attackingEntry->isPlayerEntry() && hasWeakAlly)
-	{
-		for (auto it = attackList.begin(); it != attackList.end(); it++)
-		{
-			switch((*it)->getAttackType())
-			{
-				case PlatformerAttack::AttackType::Healing:
-				{
-					if ((*it)->getPriority() > selectedAttackPriority)
-					{
-						this->selectedAttack = *it;
-					}
-				}
-				default:
-				{
-					break;
-				}
-			}
-		}
-	}
-
-	if (this->selectedAttack != nullptr)
-	{
-		return;
-	}
-
-	// PHASE 2: Just pick the highest priority available attack
-	for (auto it = attackList.begin(); it != attackList.end(); it++)
-	{
-		switch((*it)->getAttackType())
-		{
 			case PlatformerAttack::AttackType::Damage:
 			case PlatformerAttack::AttackType::Debuff:
+			case PlatformerAttack::AttackType::Buff:
+			case PlatformerAttack::AttackType::Healing:
 			{
-				if ((*it)->getPriority() > selectedAttackPriority)
+				if (!singleTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 				{
-					this->selectedAttack = *it;
+					singleTarget = nullptr;
 				}
+				break;
 			}
 			default:
 			{
@@ -264,9 +127,63 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 			}
 		}
 	}
+
+	if (singleTarget != nullptr)
+	{
+		// No retarget needed, all is good.
+		return;
+	}
+
+	// Clear existing targets, as they are invalid if we have gotten this far
+	this->selectedTargets.clear();
+	
+	// Use AI to auto-choose attack and entity. Start by just trying to re-target.
+	this->selectTargets(attackingEntry);
+	
+	if (!this->selectedTargets.empty())
+	{
+		// Retarget successful
+		attackingEntry->stageTargets(this->selectedTargets);
+		return;
+	}
+	
+	// Retarget failed. We'll just have to pick an attack/target at random then.
+	this->selectAttack(attackingEntry);
+	this->selectTargets(attackingEntry);
+
+	attackingEntry->stageCast(this->selectedAttack);
+	attackingEntry->stageTargets(this->selectedTargets);
 }
 
-void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
+void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
+{
+	this->selectedTargets.clear();
+	this->selectedAttack = nullptr;
+
+	this->shuffleEntities();
+
+	attackingEntry->stageCast(nullptr);
+	attackingEntry->stageTargets({ });
+
+	this->selectAttack(attackingEntry);
+	this->selectTargets(attackingEntry);
+
+	// Error!
+	if (attackingEntry == nullptr || this->selectedTargets.empty() || this->selectedAttack == nullptr)
+	{
+		CombatEvents::TriggerResumeTimeline();
+
+		return;
+	}
+
+	attackingEntry->stageCast(this->selectedAttack);
+	attackingEntry->stageTargets(this->selectedTargets);
+
+	// Choices made, resume timeline
+	CombatEvents::TriggerResumeTimeline();
+}
+
+void CombatAIHelper::selectTargets(TimelineEntry* attackingEntry)
 {
 	if (attackingEntry == nullptr || this->selectedAttack == nullptr)
 	{
@@ -275,64 +192,74 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 
 	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-
+	PlatformerEntity* caster = attackingEntry->getEntity();
 	PlatformerEntity* target = nullptr;
-	
-	switch(this->selectedAttack->getAttackType())
+
+	// Multi target skills do not rely on utility. Just target everything possible.
+	if (this->selectedAttack->isMultiTarget())
+	{
+		switch (this->selectedAttack->getAttackType())
+		{
+			case PlatformerAttack::AttackType::Buff:
+			case PlatformerAttack::AttackType::Healing:
+			case PlatformerAttack::AttackType::Resurrection:
+			{
+				for (auto next : sameTeam)
+				{
+					this->selectedTargets.push_back(next);
+				}
+
+				break;
+			}
+			default:
+			case PlatformerAttack::AttackType::Damage:
+			case PlatformerAttack::AttackType::Debuff:
+			{
+				for (auto next : otherTeam)
+				{
+					this->selectedTargets.push_back(next);
+				}
+
+				break;
+			}
+		}
+
+		return;
+	}
+
+	float bestUtility = std::numeric_limits<float>().lowest();
+
+	switch (this->selectedAttack->getAttackType())
 	{
 		case PlatformerAttack::AttackType::Buff:
-		{
-			target = attackingEntry->getEntity();
-
-			break;
-		}
 		case PlatformerAttack::AttackType::Healing:
-		{
-			// Currently just picking the highest health target. This is a user-friendly AI strategy.
-			for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
-			{
-				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
-				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-				int targetHealth = target == nullptr ? health : target->getStateOrDefaultInt(StateKeys::Health, 0);
-				
-				if (isAlive && health <= targetHealth)
-				{
-					target = *it;
-				}
-			}
-
-			break;
-		}
 		case PlatformerAttack::AttackType::Resurrection:
 		{
-			for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
+			for (auto next : sameTeam)
 			{
-				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
-				
-				if (!isAlive)
+				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
+
+				if (utility > bestUtility)
 				{
-					target = *it;
+					target = next;
+					bestUtility = utility;
 				}
 			}
 
 			break;
 		}
+		default:
+		case PlatformerAttack::AttackType::Damage:
 		case PlatformerAttack::AttackType::Debuff:
 		{
-			break;
-		}
-		case PlatformerAttack::AttackType::Damage:
-		default:
-		{
-			// Currently just picking the highest health target. This is a user-friendly AI strategy.
-			for (auto it = otherTeam.begin(); it != otherTeam.end(); it++)
+			for (auto next : otherTeam)
 			{
-				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
-				
-				if (health >= targetHealth)
+				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
+
+				if (utility > bestUtility)
 				{
-					target = *it;
+					target = next;
+					bestUtility = utility;
 				}
 			}
 
@@ -340,5 +267,158 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 		}
 	}
 
-	this->selectedTarget = target;
+	if (target != nullptr)
+	{
+		this->selectedTargets.push_back(target);
+	}
+}
+
+void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
+{
+	PlatformerEntity* attackingEntity = attackingEntry == nullptr ? nullptr : attackingEntry->getEntity();
+	EntityAttackBehavior* attackBehavior = attackingEntity == nullptr ? nullptr : attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
+
+	if (attackingEntry == nullptr || attackingEntity == nullptr || attackBehavior == nullptr)
+	{
+		return;
+	}
+
+	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
+	std::vector<Consumable*> consumablesList = attackingEntry->isPlayerEntry() ? std::vector<Consumable*>() : attackBehavior->getAvailableConsumables();
+	
+	for (auto next : consumablesList)
+	{
+		attackList.push_back(next->getAssociatedAttack(attackingEntity));
+	}
+
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+
+	// Filter usable attacks
+	attackList.erase(std::remove_if(attackList.begin(), attackList.end(),
+		[=](PlatformerAttack* next)
+	{
+		return !next->isWorthUsing(attackingEntity, sameTeam, otherTeam);
+	}), attackList.end());
+
+	// Prioritize resurrection > healing > damage
+	this->trySelectResurrectionSkill(attackingEntry, attackList);
+	this->trySelectHealingSkill(attackingEntry, attackList);
+	this->trySelectDamageSkill(attackingEntry, attackList);
+}
+
+void CombatAIHelper::shuffleEntities()
+{
+	std::random_device rd1;
+	std::mt19937 g1(rd1());
+
+	std::shuffle(this->playerEntities.begin(), this->playerEntities.end(), g1);
+
+	std::random_device rd2;
+	std::mt19937 g2(rd2());
+
+	std::shuffle(this->enemyEntities.begin(), this->enemyEntities.end(), g2);
+}
+
+void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Resurrection;
+	});
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
+void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Healing;
+	});
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
+void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Damage
+			|| attack->getAttackType() == PlatformerAttack::AttackType::Debuff
+			|| attack->getAttackType() == PlatformerAttack::AttackType::Buff;
+	});
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
+CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(const std::vector<PlatformerAttack*>& attackList, std::function<bool(PlatformerAttack*)> predicate)
+{
+	std::vector<AttackProbability> probabilities = std::vector<AttackProbability>();
+	float cumulativeProbability = 0.0f;
+
+	for (auto attack : attackList)
+	{
+		// Only build an attack probability map for attacks that match the given predicate
+		if (predicate(attack))
+		{
+			switch(attack->getPriority())
+			{
+				case PlatformerAttack::Priority::Guaranteed:
+				{
+					cumulativeProbability += 1.0f;
+					break;
+				}
+				case PlatformerAttack::Priority::VeryCommon:
+				{
+					cumulativeProbability += 0.75f;
+					break;
+				}
+				case PlatformerAttack::Priority::Common:
+				{
+					cumulativeProbability += 0.5f;
+					break;
+				}
+				case PlatformerAttack::Priority::Reasonable:
+				{
+					cumulativeProbability += 0.25f;
+					break;
+				}
+				case PlatformerAttack::Priority::Uncommon:
+				{
+					cumulativeProbability += 0.15f;
+					break;
+				}
+				case PlatformerAttack::Priority::Rare:
+				{
+					cumulativeProbability += 0.08f;
+					break;
+				}
+				case PlatformerAttack::Priority::IfNecessary:
+				{
+					cumulativeProbability += 0.0f;
+					break;
+				}
+			}
+
+			probabilities.push_back(AttackProbability(attack, cumulativeProbability));
+		}
+	}
+
+	return ProbabilityMap(probabilities, cumulativeProbability);
 }

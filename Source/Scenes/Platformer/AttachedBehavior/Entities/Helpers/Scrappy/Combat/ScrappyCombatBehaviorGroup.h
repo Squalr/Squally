@@ -7,11 +7,11 @@ class ScrappyCombatBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static ScrappyCombatBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyCombatBehaviorGroup(GameObject* owner);
-	~ScrappyCombatBehaviorGroup();
+	virtual ~ScrappyCombatBehaviorGroup();
 
 	void onLoad() override;
 

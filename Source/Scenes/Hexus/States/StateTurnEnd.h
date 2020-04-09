@@ -10,6 +10,9 @@ public:
 	static StateTurnEnd* create();
 
 protected:
+	StateTurnEnd();
+	virtual ~StateTurnEnd();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -17,8 +20,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateTurnEnd();
-	~StateTurnEnd();
 
 	void runIncrementHex0Effect(GameState* gameState);
 

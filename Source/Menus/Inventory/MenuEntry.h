@@ -21,15 +21,18 @@ public:
 
 protected:
 	MenuEntry(LocalizedString* text, std::string iconResource);
-	~MenuEntry();
+	virtual ~MenuEntry();
+	
 	void onEnter() override;
 	void initializePositions() override;
+
+	cocos2d::Sprite* icon;
+	LocalizedLabel* label;
 
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* icon;
-	LocalizedLabel* label;
+	void sizeFont();
 
 	static const cocos2d::Size LabelSize;
 };

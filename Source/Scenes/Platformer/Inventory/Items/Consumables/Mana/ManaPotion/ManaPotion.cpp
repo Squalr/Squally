@@ -1,17 +1,18 @@
 #include "ManaPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ThrowRestorePotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ThrowManaPotion.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string ManaPotion::SaveKeyManaPotion = "mana-potion";
+const std::string ManaPotion::SaveKey = "mana-potion";
+const float ManaPotion::RestorePercentage = 0.4f;
 
 ManaPotion* ManaPotion::create()
 {
@@ -22,7 +23,7 @@ ManaPotion* ManaPotion::create()
 	return instance;
 }
 
-ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 0.15f))
+ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 17 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
 {
 }
 
@@ -37,7 +38,7 @@ Item* ManaPotion::clone()
 
 std::string ManaPotion::getItemName()
 {
-	return ManaPotion::SaveKeyManaPotion;
+	return ManaPotion::SaveKey;
 }
 
 LocalizedString* ManaPotion::getString()
@@ -47,15 +48,15 @@ LocalizedString* ManaPotion::getString()
 
 std::string ManaPotion::getIconResource()
 {
-	return ObjectResources::Items_Consumables_Potions_MANA_5;
+	return ItemResources::Consumables_Potions_ManaPotion;
 }
 
 std::string ManaPotion::getSerializationKey()
 {
-	return ManaPotion::SaveKeyManaPotion;
+	return ManaPotion::SaveKey;
 }
 
 PlatformerAttack* ManaPotion::createAssociatedAttack()
 {
-	return ThrowRestorePotion::create();
+	return ThrowManaPotion::create(PlatformerAttack::Priority::Common);
 }

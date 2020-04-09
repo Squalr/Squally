@@ -57,9 +57,9 @@ StackBlock::StackBlock()
     this->addChild(this->stackBlock);
     this->addChild(this->stackTitleLabel);
 
-    for (auto it = this->labels.begin(); it != this->labels.end(); it++)
-    {
-        this->addChild(*it);
+	for (auto next : this->labels)
+	{
+        this->addChild(next);
     }
 
     this->addChild(this->stackSelector);

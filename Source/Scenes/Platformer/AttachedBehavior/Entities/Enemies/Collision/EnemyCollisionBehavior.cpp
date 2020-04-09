@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyCollisionBehavior::MapKeyAttachedBehavior = "enemy-collisions";
+const std::string EnemyCollisionBehavior::MapKey = "enemy-collisions";
 
 EnemyCollisionBehavior* EnemyCollisionBehavior::create(GameObject* owner)
 {
@@ -47,4 +47,13 @@ void EnemyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
 	});
+}
+
+void EnemyCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
+void EnemyCollisionBehavior::onEntityCollisionCreated()
+{
 }

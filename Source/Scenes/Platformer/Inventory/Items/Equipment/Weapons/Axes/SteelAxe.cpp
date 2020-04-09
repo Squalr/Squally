@@ -1,15 +1,15 @@
 #include "SteelAxe.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string SteelAxe::SaveKeySteelAxe = "steel-axe";
+const std::string SteelAxe::SaveKey = "steel-axe";
 
 SteelAxe* SteelAxe::create()
 {
@@ -20,7 +20,7 @@ SteelAxe* SteelAxe::create()
 	return instance;
 }
 
-SteelAxe::SteelAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+SteelAxe::SteelAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ SteelAxe::SteelAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.10f
 ))
 {
 }
@@ -46,7 +46,7 @@ Item* SteelAxe::clone()
 
 std::string SteelAxe::getItemName()
 {
-	return SteelAxe::SaveKeySteelAxe;
+	return SteelAxe::SaveKey;
 }
 
 LocalizedString* SteelAxe::getString()
@@ -56,12 +56,12 @@ LocalizedString* SteelAxe::getString()
 
 std::string SteelAxe::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Axes_SteelAxe;
+	return ItemResources::Equipment_Weapons_Axes_SteelAxe;
 }
 
 std::string SteelAxe::getSerializationKey()
 {
-	return SteelAxe::SaveKeySteelAxe;
+	return SteelAxe::SaveKey;
 }
 
 Size SteelAxe::getWeaponCollisionSize()
@@ -74,4 +74,9 @@ Vec2 SteelAxe::getWeaponOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
+}
+
+Vec2 SteelAxe::getDisplayOffset()
+{
+	return Vec2(28.0f, -4.0f);
 }

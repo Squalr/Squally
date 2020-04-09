@@ -1,14 +1,15 @@
 #include "SquallyAbilityBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyIsAliveHackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsAlive/SquallyIsAliveHackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/SquallySwimHackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyDisableHackFxBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyHackingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyOutOfCombatAttackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallySensingBehavior.h"
 
 using namespace cocos2d;
 
-const std::string SquallyAbilityBehaviorGroup::MapKeyAttachedBehavior = "squally-ability-group";
+const std::string SquallyAbilityBehaviorGroup::MapKey = "squally-ability-group";
 
 SquallyAbilityBehaviorGroup* SquallyAbilityBehaviorGroup::create(GameObject* owner)
 {
@@ -20,10 +21,11 @@ SquallyAbilityBehaviorGroup* SquallyAbilityBehaviorGroup::create(GameObject* own
 }
 
 SquallyAbilityBehaviorGroup::SquallyAbilityBehaviorGroup(GameObject* owner) : super(owner, {
+	SquallyDisableHackFxBehavior::create(owner),
 	SquallyIsAliveHackBehavior::create(owner),
 	SquallyHackingBehavior::create(owner),
 	SquallyOutOfCombatAttackBehavior::create(owner),
-	SquallySensingBehavior::create(owner),
+	SquallySwimHackBehavior::create(owner),
 	})
 {
 }

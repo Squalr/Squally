@@ -16,7 +16,7 @@ class WoodenSpikes : public HackableObject
 public:
 	static WoodenSpikes* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWoodenSpikes;
+	static const std::string MapKey;
 
 protected:
 	WoodenSpikes(cocos2d::ValueMap& properties);
@@ -38,6 +38,8 @@ private:
 	float currentElapsedTimeForSpikeTrigger;
 	float totalTimeUntilSpikesTrigger;
 	bool isRunningAnimation;
+	bool isFlippedY;
 
+	static const cocos2d::Vec2 SpikesUpPosition;
 	static const cocos2d::Vec2 SpikesDownPosition;
 };

@@ -5,13 +5,13 @@
 
 using namespace cocos2d;
 
-const std::vector<std::string> EaxPtrInitializer::MapKeyEaxPtrInitializerBases = {
+const std::vector<std::string> EaxPtrInitializer::MapKeyBases = {
 	"[eax+%d]",
 	"[eax + %d]",
 	"[eax +%d]",
 	"[eax+ %d]",
 };
-const std::string EaxPtrInitializer::MapKeyEaxPtrInitializer = "[eax]";
+const std::string EaxPtrInitializer::MapKey = "[eax]";
 
 EaxPtrInitializer* EaxPtrInitializer::create(ValueMap& properties)
 {

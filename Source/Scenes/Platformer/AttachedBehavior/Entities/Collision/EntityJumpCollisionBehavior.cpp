@@ -12,11 +12,10 @@
 
 using namespace cocos2d;
 
-const std::string EntityJumpCollisionBehavior::MapKeyAttachedBehavior = "entity-jump-collisions";
-const float EntityJumpCollisionBehavior::JumpCollisionPadding = 28.0f;
+const std::string EntityJumpCollisionBehavior::MapKey = "entity-jump-collisions";
+const float EntityJumpCollisionBehavior::JumpCollisionMargin = 24.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionOffset = -4.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionHeight = 64.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionRadius = 8.0f;
+const float EntityJumpCollisionBehavior::JumpCollisionHeight = 48.0f;
 
 EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* owner)
 {
@@ -30,41 +29,14 @@ EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* own
 EntityJumpCollisionBehavior::EntityJumpCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-
+	this->jumpCollision = nullptr;
+	
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->jumpCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionPadding * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight),
-				1.0f,
-				EntityJumpCollisionBehavior::JumpCollisionRadius,
-				0.0f
-			),
-			(int)PlatformerCollisionType::GroundDetector,
-			false,
-			false
-		);
 
-		Vec2 collisionOffset = this->entity->getCollisionOffset();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityJumpCollisionBehavior::JumpCollisionOffset);
-			this->jumpCollision->inverseGravity();
-			this->jumpCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
-			this->jumpCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-		
-		this->addChild(this->jumpCollision);
-	}
+	this->toggleQueryable(false);
 }
 
 EntityJumpCollisionBehavior::~EntityJumpCollisionBehavior()
@@ -73,6 +45,61 @@ EntityJumpCollisionBehavior::~EntityJumpCollisionBehavior()
 
 void EntityJumpCollisionBehavior::onLoad()
 {
+	this->defer([=]()
+	{
+		this->buildJumpCollisionDetector();
+		this->toggleQueryable(true);
+	});
+}
+
+void EntityJumpCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->jumpCollision != nullptr)
+	{
+		this->jumpCollision->setPhysicsEnabled(false);
+	}
+}
+
+bool EntityJumpCollisionBehavior::canJump()
+{
+	for (auto collision : this->jumpCollision->getCurrentCollisions())
+	{
+		if (collision->getCollisionType() == (int)PlatformerCollisionType::Solid
+			|| collision->getCollisionType() == (int)PlatformerCollisionType::Physics
+			|| collision->getCollisionType() == (int)PlatformerCollisionType::PassThrough)
+		{
+			return true;	
+		}
+	}
+
+	return false;
+}
+
+void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
+{
+	if (this->jumpCollision != nullptr)
+	{
+		return;
+	}
+	
+	this->jumpCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(
+			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		CollisionObject::Properties(false, false),
+		Color4F::YELLOW
+	);
+
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
+
+	this->jumpCollision->setPosition(offset);
+	
+	this->addChild(this->jumpCollision);
+
 	this->jumpCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
@@ -87,9 +114,4 @@ void EntityJumpCollisionBehavior::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-}
-
-bool EntityJumpCollisionBehavior::canJump()
-{
-	return !this->jumpCollision->getCurrentCollisions().empty();
 }

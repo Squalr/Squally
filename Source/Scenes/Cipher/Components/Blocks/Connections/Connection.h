@@ -24,7 +24,7 @@ public:
 
 protected:
 	Connection();
-	~Connection();
+	virtual ~Connection();
 
 	void onEnter() override;
 	void update(float dt) override;

@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -18,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Reaper::MapKeyReaper = "reaper";
+const std::string Reaper::MapKey = "reaper";
 HexusOpponentData* Reaper::HexusOpponentDataInstance = nullptr;
 const std::string Reaper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REAPER";
 
@@ -32,7 +31,7 @@ Reaper* Reaper::deserialize(ValueMap& properties)
 }
 
 Reaper::Reaper(ValueMap& properties) : super(properties,
-	Reaper::MapKeyReaper,
+	Reaper::MapKey,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
 	Size(196.0f, 512.0f),

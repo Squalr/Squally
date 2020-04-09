@@ -168,9 +168,9 @@ CardList::CardList()
 	this->cardListByName[CardKeys::Steal] = new CardSteal();
 	this->cardListByName[CardKeys::SuddenDeath] = new CardSuddenDeath();
 
-	for (auto it = this->cardListByName.begin(); it != this->cardListByName.end(); it++)
+	for (auto next : this->cardListByName)
 	{
-		this->sortedCardList.push_back((*it).second);
+		this->sortedCardList.push_back(next.second);
 	}
 
 	// Sort cards
@@ -203,8 +203,8 @@ CardList::CardList()
 
 CardList::~CardList()
 {
-	for (auto it = this->cardListByName.begin(); it != this->cardListByName.end(); it++)
+	for (auto next : this->cardListByName)
 	{
-		delete(it->second);
+		delete(next.second);
 	}
 }

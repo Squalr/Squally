@@ -14,36 +14,15 @@ using namespace cocos2d;
 EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int collisionType) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->collisionType = collisionType;
+	this->entityCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->entityCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f, 0.0f),
-			(CollisionType)collisionType,
-			false,
-			false
-		);
 
-		Vec2 collisionOffset = this->entity->getCollisionOffset();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-			this->entityCollision->inverseGravity();
-			this->entityCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-			this->entityCollision->getPhysicsBody()->setPositionOffset(offset);
-		}
-
-		this->addChild(this->entityCollision);
-	}
+	this->toggleQueryable(false);
 }
 
 EntityCollisionBehaviorBase::~EntityCollisionBehaviorBase()
@@ -52,4 +31,42 @@ EntityCollisionBehaviorBase::~EntityCollisionBehaviorBase()
 
 void EntityCollisionBehaviorBase::onLoad()
 {
+	this->defer([=]()
+	{
+		this->buildEntityCollision();
+		this->toggleQueryable(true);
+	});
+}
+
+void EntityCollisionBehaviorBase::onDisable()
+{
+	super::onDisable();
+	
+	if (this->entityCollision != nullptr)
+	{
+		this->entityCollision->setPhysicsEnabled(false);
+	}
+}
+
+void EntityCollisionBehaviorBase::buildEntityCollision()
+{
+	if (this->isInvalidated())
+	{
+		return;
+	}
+
+	this->entityCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(this->entity->getEntitySize() * 0.9f, 8.0f),
+		(CollisionType)this->collisionType,
+		CollisionObject::Properties(false, false)
+	);
+
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
+
+	this->entityCollision->setPosition(offset);
+
+	this->addChild(this->entityCollision);
+
+	this->onEntityCollisionCreated();
 }

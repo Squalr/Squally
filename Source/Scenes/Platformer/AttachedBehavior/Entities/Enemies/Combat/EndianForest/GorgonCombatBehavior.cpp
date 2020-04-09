@@ -5,14 +5,15 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/MultiCast/CastStoneSkinHaste.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/Gorgon/DoubleSlash.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 	
-const std::string GorgonCombatBehavior::MapKeyAttachedBehavior = "gorgon-combat";
+const std::string GorgonCombatBehavior::MapKey = "gorgon-combat";
 
 GorgonCombatBehavior* GorgonCombatBehavior::create(GameObject* owner)
 {
@@ -31,6 +32,8 @@ GorgonCombatBehavior::GorgonCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.20f);
 }
 
 GorgonCombatBehavior::~GorgonCombatBehavior()
@@ -45,7 +48,8 @@ void GorgonCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(CastStoneSkinHaste::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(DoubleSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::VeryCommon));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -54,7 +58,7 @@ void GorgonCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(RestorePotion::create());
+			// inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

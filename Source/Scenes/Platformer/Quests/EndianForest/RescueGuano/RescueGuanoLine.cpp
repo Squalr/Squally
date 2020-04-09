@@ -20,14 +20,19 @@ RescueGuanoLine* RescueGuanoLine::create()
 }
 
 RescueGuanoLine::RescueGuanoLine() : super(RescueGuanoLine::MapKeyQuestLine, {
-	QuestData(TrollInTheDungeon::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return TrollInTheDungeon::create(owner, questLine, questTag); }),
-	QuestData(KillTheTroll::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return KillTheTroll::create(owner, questLine, questTag); }),
-	QuestData(ChatWithGuano::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return ChatWithGuano::create(owner, questLine, questTag); }),
-	QuestData(RescueGuano::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return RescueGuano::create(owner, questLine, questTag); }),
+	QuestData(TrollInTheDungeon::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return TrollInTheDungeon::create(owner, questLine); }),
+	QuestData(KillTheTroll::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return KillTheTroll::create(owner, questLine); }),
+	QuestData(ChatWithGuano::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return ChatWithGuano::create(owner, questLine); }),
+	QuestData(RescueGuano::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return RescueGuano::create(owner, questLine); }),
 })
 {
 }
 
 RescueGuanoLine::~RescueGuanoLine()
 {
+}
+
+QuestLine* RescueGuanoLine::clone()
+{
+	return RescueGuanoLine::create();
 }
