@@ -2,12 +2,12 @@
 #include <set>
 
 #include "Engine/Particles/SmartParticles.h"
-#include "Engine/Maps/GameObject.h"
+#include "Engine/Hackables/HackableObject.h"
 
 class HackableData;
 class SmartParticles;
 
-class MagicWall : public GameObject
+class MagicWall : public HackableObject
 {
 public:
 	static MagicWall* create(cocos2d::ValueMap& properties);
@@ -21,7 +21,7 @@ protected:
 	void onEnter() override;
 
 private:
-	typedef GameObject super;
+	typedef HackableObject super;
 
 	SmartParticles* wallParticles;
 	cocos2d::Size wallSize;

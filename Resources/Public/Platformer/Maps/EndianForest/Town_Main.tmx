@@ -574,7 +574,7 @@
     <property name="transition" value="liana"/>
    </properties>
   </object>
-  <object id="707" name="edge-portal" type="object" x="10299.4" y="5421.35" width="199.918" height="488.002">
+  <object id="707" name="edge-portal" type="object" x="10164.7" y="5418.68" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Town_Docks"/>

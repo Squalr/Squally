@@ -182,7 +182,7 @@ LanguageType Steam::getLanguage()
 	{
 		return LanguageType::JAPANESE;
 	}
-	else if (language == "koreana") // typo in the api
+	else if (language == "korean" || language == "koreana") // typo in the api. Include correct spelling if they ever fix it.
 	{
 		return LanguageType::KOREAN;
 	}

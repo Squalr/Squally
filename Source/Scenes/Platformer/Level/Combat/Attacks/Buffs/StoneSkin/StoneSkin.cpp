@@ -52,12 +52,14 @@ StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
-
+	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -70,6 +72,12 @@ void StoneSkin::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
+
+	this->bubble->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		nullptr
+	));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
