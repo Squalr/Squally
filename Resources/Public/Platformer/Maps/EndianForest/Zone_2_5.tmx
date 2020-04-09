@@ -206,7 +206,7 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="914" name="goblin-warrior-pig" type="entity" x="1481.58" y="1783.39" width="128" height="128">
+  <object id="914" name="goblin-shaman" type="entity" x="1481.58" y="1783.39" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value="reflect-tutorial"/>
@@ -215,7 +215,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="915" name="ogre" type="entity" x="1488" y="1528" width="128" height="128">
+  <object id="915" name="goblin-shaman" type="entity" x="1488" y="1528" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

@@ -25,7 +25,7 @@ HuntersArrow* HuntersArrow::create()
 	return instance;
 }
 
-HuntersArrow::HuntersArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 16.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
+HuntersArrow::HuntersArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 32.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->sprite = Sprite::create(ItemResources::Equipment_Weapons_Bows_HuntersArrow);
 

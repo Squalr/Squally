@@ -32,6 +32,8 @@ OrcWarriorCombatBehavior::OrcWarriorCombatBehavior(GameObject* owner) : super(ow
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 OrcWarriorCombatBehavior::~OrcWarriorCombatBehavior()

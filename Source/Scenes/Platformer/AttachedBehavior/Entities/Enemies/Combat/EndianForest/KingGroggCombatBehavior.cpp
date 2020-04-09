@@ -32,6 +32,8 @@ KingGroggCombatBehavior::KingGroggCombatBehavior(GameObject* owner) : super(owne
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.35f);
 }
 
 KingGroggCombatBehavior::~KingGroggCombatBehavior()

@@ -32,6 +32,8 @@ TrollCombatBehavior::TrollCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 TrollCombatBehavior::~TrollCombatBehavior()
@@ -49,8 +51,6 @@ void TrollCombatBehavior::onLoad()
 		attackBehavior->registerAttack(CastFortitude::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
 		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
-
-	this->setTimelineSpeed(1.15f);
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{

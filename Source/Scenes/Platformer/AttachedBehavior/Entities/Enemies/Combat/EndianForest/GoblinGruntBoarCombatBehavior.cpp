@@ -31,6 +31,8 @@ GoblinGruntBoarCombatBehavior::GoblinGruntBoarCombatBehavior(GameObject* owner) 
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 GoblinGruntBoarCombatBehavior::~GoblinGruntBoarCombatBehavior()

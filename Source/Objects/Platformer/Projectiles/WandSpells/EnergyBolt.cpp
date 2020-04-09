@@ -28,7 +28,7 @@ EnergyBolt* EnergyBolt::create()
 	return instance;
 }
 
-EnergyBolt::EnergyBolt() : super(nullptr, CollisionObject::createBox(Size(32.0f, 32.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
+EnergyBolt::EnergyBolt() : super(nullptr, CollisionObject::createBox(Size(48.0f, 48.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->energyBolt = SmartAnimationSequenceNode::create(FXResources::ElectricOrb_ElectricOrb_0000);
 	this->energySfx = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_ElectricZap1);

@@ -31,6 +31,8 @@ OrthrusCombatBehavior::OrthrusCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.35f);
 }
 
 OrthrusCombatBehavior::~OrthrusCombatBehavior()

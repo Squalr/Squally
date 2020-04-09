@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="728">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="732">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -62,10 +62,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="630" name="dark-grass" type="terrain" x="8557.9" y="1096.87">
-   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -2278.74,1800.77 -2840.24,1301.25 -3633.47,1071.09 -4205.76,838.41 -5077.75,678.483 -5714.51,640.093 -5709.6,321.92 -5570.03,341.611 -4909.92,334.261 -3647.9,311.43 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1694.8,87.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
+   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -1974.38,1667.56 -2587.48,1893.01 -2725.05,2243.54 -2920.74,2254.77 -2923.12,1717.12 -3050.24,1263.25 -3633.47,1071.09 -4205.76,838.41 -5077.75,678.483 -5714.51,640.093 -5709.6,321.92 -5570.03,341.611 -4909.92,334.261 -3647.9,311.43 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1694.8,87.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
   </object>
   <object id="667" name="dark-grass" type="terrain" x="6727.16" y="5282.75">
-   <polygon points="-2172.51,-2466.57 -1471.65,-2083.26 -1475.38,-1313.25 -319.177,-1314.27 80.8231,-1553.22 3576.95,-1551.21 3578.05,-200.696 -6846.03,-194.69 -6810.77,-2714.44 -5455.05,-2721.6 -3415.15,-2638.44 -2835.26,-2593.27"/>
+   <polygon points="-2172.51,-2466.57 -1471.65,-2083.26 -1475.38,-1313.25 -91.177,-1316.27 308.823,-1555.22 3576.95,-1551.21 3578.05,-200.696 -6846.03,-194.69 -6810.77,-2714.44 -5455.05,-2721.6 -3415.15,-2638.44 -2835.26,-2593.27"/>
   </object>
   <object id="670" name="wind" type="object" x="7457.22" y="3243.16" width="1101.21" height="480">
    <properties>
@@ -91,17 +91,36 @@
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
+  <object id="728" name="wind" type="object" x="5252" y="3488" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="729" name="wind" type="object" x="5255.45" y="3011.52" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="730" name="wind" type="object" x="5255.45" y="2535.76" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="484" name="Forest/Flower10" type="decor" x="8643.44" y="3612.5" width="199" height="133"/>
-  <object id="718" name="Forest/Flower11" type="decor" x="6996.42" y="3623.82" width="92" height="116"/>
+  <object id="718" name="Forest/Flower11" type="decor" x="7162.42" y="3623.82" width="92" height="116"/>
   <object id="719" name="Forest/Flower11" type="decor" x="7102.48" y="1111.7" width="92" height="116"/>
   <object id="720" name="Forest/Flower9" type="decor" x="7906.56" y="1109.26" width="199" height="133"/>
   <object id="721" name="Forest/Flower9" type="decor" x="6067.17" y="3857.74" width="199" height="133"/>
   <object id="722" name="Forest/Flower9" type="decor" x="2942.92" y="2518.35" width="199" height="133"/>
+  <object id="731" name="Forest/Flower11" type="decor" x="9138.85" y="1108.67" width="92" height="116"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -209,7 +228,7 @@
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
-  <object id="716" name="ogre" type="entity" x="5562" y="3840" width="128" height="128">
+  <object id="716" name="ogre" type="entity" x="6140" y="3840" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,puzzle-F"/>
     <property name="scale" type="float" value="0.75"/>
@@ -241,7 +260,7 @@
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="717" name="spawn" type="object" x="9576" y="1040" width="128" height="128">
+  <object id="717" name="spawn" type="object" x="9591.15" y="1076.36" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>

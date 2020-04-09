@@ -30,6 +30,8 @@ CentaurCombatBehavior::CentaurCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.25f);
 }
 
 CentaurCombatBehavior::~CentaurCombatBehavior()

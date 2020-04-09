@@ -32,6 +32,8 @@ GoblinWarriorPigCombatBehavior::GoblinWarriorPigCombatBehavior(GameObject* owner
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 GoblinWarriorPigCombatBehavior::~GoblinWarriorPigCombatBehavior()

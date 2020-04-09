@@ -20,7 +20,8 @@ WoodenWand* WoodenWand::create()
 	return instance;
 }
 
-WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 3, 4, ItemStats(
+// TODO: revert to 3-4 damage once weapon skills are added.
+WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 5, 7, ItemStats(
 	// Health
 	0,
 	// Mana

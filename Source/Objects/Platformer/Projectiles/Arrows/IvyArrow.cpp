@@ -25,7 +25,7 @@ IvyArrow* IvyArrow::create()
 	return instance;
 }
 
-IvyArrow::IvyArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 16.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
+IvyArrow::IvyArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 32.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->sprite = Sprite::create(ItemResources::Equipment_Weapons_Bows_IvyArrow);
 

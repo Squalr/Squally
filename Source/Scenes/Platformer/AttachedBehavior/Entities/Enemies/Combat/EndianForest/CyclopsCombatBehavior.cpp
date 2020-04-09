@@ -32,6 +32,8 @@ CyclopsCombatBehavior::CyclopsCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 CyclopsCombatBehavior::~CyclopsCombatBehavior()
@@ -49,8 +51,6 @@ void CyclopsCombatBehavior::onLoad()
 		attackBehavior->registerAttack(CastStoneSkin::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
 		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
-
-	this->setTimelineSpeed(1.15f);
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{

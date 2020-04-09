@@ -32,6 +32,8 @@ OrcSwordsmanCombatBehavior::OrcSwordsmanCombatBehavior(GameObject* owner) : supe
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.15f);
 }
 
 OrcSwordsmanCombatBehavior::~OrcSwordsmanCombatBehavior()

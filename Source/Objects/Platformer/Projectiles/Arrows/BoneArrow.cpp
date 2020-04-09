@@ -25,7 +25,7 @@ BoneArrow* BoneArrow::create()
 	return instance;
 }
 
-BoneArrow::BoneArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 16.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
+BoneArrow::BoneArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 32.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->sprite = Sprite::create(ItemResources::Equipment_Weapons_Bows_BoneArrow);
 

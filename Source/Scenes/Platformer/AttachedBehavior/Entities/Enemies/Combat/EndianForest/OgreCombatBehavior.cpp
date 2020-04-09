@@ -31,6 +31,8 @@ OgreCombatBehavior::OgreCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.25f);
 }
 
 OgreCombatBehavior::~OgreCombatBehavior()

@@ -20,6 +20,7 @@ QuartzWand* QuartzWand::create()
 	return instance;
 }
 
+// TODO: revert to lower damage once weapon skills are added.
 QuartzWand::QuartzWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 8, ItemStats(
 	// Health
 	0,

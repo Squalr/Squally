@@ -124,14 +124,14 @@
     <property name="send-event" value="grogg-dead"/>
    </properties>
   </object>
-  <object id="971" name="troll" type="entity" x="2682" y="1138" width="128" height="128">
+  <object id="971" name="goblin-shaman" type="entity" x="2682" y="1138" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
-  <object id="972" name="ogre" type="entity" x="2508" y="1140" width="128" height="128">
+  <object id="972" name="goblin-shaman" type="entity" x="2508" y="1140" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

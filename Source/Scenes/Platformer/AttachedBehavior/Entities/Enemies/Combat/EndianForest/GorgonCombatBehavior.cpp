@@ -32,6 +32,8 @@ GorgonCombatBehavior::GorgonCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.20f);
 }
 
 GorgonCombatBehavior::~GorgonCombatBehavior()
@@ -44,8 +46,6 @@ void GorgonCombatBehavior::initializePositions()
 
 void GorgonCombatBehavior::onLoad()
 {
-	this->setTimelineSpeed(1.20f);
-
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(CastStoneSkinHaste::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));

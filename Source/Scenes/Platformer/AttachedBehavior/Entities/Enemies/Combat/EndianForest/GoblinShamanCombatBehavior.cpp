@@ -33,6 +33,8 @@ GoblinShamanCombatBehavior::GoblinShamanCombatBehavior(GameObject* owner) : supe
 	{
 		this->invalidate();
 	}
+	
+	this->setTimelineSpeed(1.25f);
 }
 
 GoblinShamanCombatBehavior::~GoblinShamanCombatBehavior()
