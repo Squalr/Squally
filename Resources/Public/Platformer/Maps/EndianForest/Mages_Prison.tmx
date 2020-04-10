@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="953">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="954">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -320,9 +320,11 @@
   </object>
   <object id="796" name="mul-door" type="object" x="3832.09" y="274.351" width="696" height="775">
    <properties>
+    <property name="map" value="EndianForest/Home_Guano"/>
     <property name="quest" value="rescue-guano"/>
     <property name="quest-line" value="rescue-guano"/>
     <property name="send-event" value="mul-door-unlocked"/>
+    <property name="transition" value="cell"/>
    </properties>
   </object>
   <object id="810" name="trigger" type="object" x="3836.81" y="-16.9566" width="139.488" height="1073.13">
@@ -353,6 +355,11 @@
     <property name="rule" value="{i}"/>
     <property name="tokens" value=""/>
     <property name="tutorial" value="connect"/>
+   </properties>
+  </object>
+  <object id="953" name="spawn" type="object" x="4110.67" y="926" width="128" height="128">
+   <properties>
+    <property name="transition" value="cell"/>
    </properties>
   </object>
  </objectgroup>

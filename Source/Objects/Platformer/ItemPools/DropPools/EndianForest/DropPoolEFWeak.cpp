@@ -27,7 +27,7 @@ DropPoolEFWeak* DropPoolEFWeak::create(ValueMap& properties)
 
 DropPoolEFWeak::DropPoolEFWeak(ValueMap& properties) : super(properties, DropPoolEFWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolEFGeneric::create(properties),
 	{
-		AlchemyPoolT1::create(SampleMethod::Random, 1, 2),
+		AlchemyPoolT1::create(SampleMethod::Guarantee, 1, 1),
 	})
 {
 }

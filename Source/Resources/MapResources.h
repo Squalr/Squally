@@ -26,6 +26,7 @@ namespace MapResources
 	extern const std::string EndianForest_Combat_Temple;
 	extern const std::string EndianForest_Combat_TempleBoss;
 	extern const std::string EndianForest_Home_Ara;
+	extern const std::string EndianForest_Home_Guano;
 	extern const std::string EndianForest_Home_Hut;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;

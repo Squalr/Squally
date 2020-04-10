@@ -25,6 +25,7 @@ const std::string MapResources::EndianForest_Combat_Prison = "Public/Platformer/
 const std::string MapResources::EndianForest_Combat_Temple = "Public/Platformer/Maps/EndianForest/Combat_Temple.tmx";
 const std::string MapResources::EndianForest_Combat_TempleBoss = "Public/Platformer/Maps/EndianForest/Combat_TempleBoss.tmx";
 const std::string MapResources::EndianForest_Home_Ara = "Public/Platformer/Maps/EndianForest/Home_Ara.tmx";
+const std::string MapResources::EndianForest_Home_Guano = "Public/Platformer/Maps/EndianForest/Home_Guano.tmx";
 const std::string MapResources::EndianForest_Home_Hut = "Public/Platformer/Maps/EndianForest/Home_Hut.tmx";
 const std::string MapResources::EndianForest_Mages_Gauntlet_1 = "Public/Platformer/Maps/EndianForest/Mages_Gauntlet_1.tmx";
 const std::string MapResources::EndianForest_Mages_Gauntlet_2 = "Public/Platformer/Maps/EndianForest/Mages_Gauntlet_2.tmx";

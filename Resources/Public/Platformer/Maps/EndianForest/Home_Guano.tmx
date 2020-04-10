@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="90" nextobjectid="747">
+ <objectgroup id="1" name="meta" visible="0">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="bg -8" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="marble" type="texture" x="-848" y="-802" width="3792" height="2688"/>
+ </objectgroup>
+ <objectgroup id="89" name="terrain bg -4" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="746" name="marble" type="terrain" x="-394.788" y="1056.36" width="2832" height="341.818"/>
+ </objectgroup>
+ <objectgroup id="88" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="744" name="warlock" type="entity" x="966.303" y="923.879" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="87" name="npc collision walls -4" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="742" name="solid-npc" type="collision" x="159.9" y="65.0405" width="503.697" height="993"/>
+  <object id="743" name="solid-npc" type="collision" x="1441.19" y="81.3535" width="532.244" height="993"/>
+ </objectgroup>
+ <objectgroup id="83" name="terrain bg -3">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="737" name="marble" type="terrain" x="-391.758" y="1159.39" width="2832" height="341.818"/>
+ </objectgroup>
+ <objectgroup id="86" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="741" name="exterminator" type="entity" x="948.121" y="1029.94" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="85" name="npc collision walls -3">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="739" name="solid-npc" type="collision" x="162.93" y="189.283" width="503.697" height="993"/>
+  <object id="740" name="solid-npc" type="collision" x="1435.13" y="196.505" width="532.244" height="993"/>
+ </objectgroup>
+ <objectgroup id="84" name="walls bg -3">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="735" name="marble" type="texture" x="-382.758" y="-159.093" width="1010.97" height="1360.61"/>
+  <object id="736" name="marble" type="texture" x="1443" y="-140.911" width="1010.97" height="1360.61"/>
+ </objectgroup>
+ <objectgroup id="80" name="jail bg -2" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="730" name="Generic/Background/Jail" type="decor" x="655.955" y="251.985" width="779" height="993"/>
+ </objectgroup>
+ <objectgroup id="81" name="columns bg -2" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="731" name="wood" type="terrain" x="574.268" y="-212.879" width="101.823" height="1536.31">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="732" name="wood" type="terrain" x="1408.94" y="-209.061" width="101.823" height="1534.97">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="74" name="terrain hall -1" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-32"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="729" name="marble" type="terrain" x="-394.909" y="1235.52" width="2832" height="341.818"/>
+ </objectgroup>
+ <objectgroup id="77" name="walls" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="725" name="marble" type="texture" x="-85.455" y="-44.305" width="704.91" height="1360.61"/>
+  <object id="726" name="marble" type="texture" x="1479.76" y="-28.7898" width="682.91" height="1360.61"/>
+ </objectgroup>
+ <objectgroup id="75" name="jail" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="733" name="Generic/JailGateSmall" type="decor" x="657.591" y="285.621" width="779" height="993"/>
+ </objectgroup>
+ <objectgroup id="78" name="columns" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="723" name="wood" type="terrain" x="575.149" y="-187.365" width="101.823" height="1536.31">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="724" name="wood" type="terrain" x="1417.82" y="-185.547" width="101.823" height="1534.97">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="717" name="marble" type="terrain" x="-202.303" y="1278.91" width="2424" height="341.818"/>
+ </objectgroup>
+ <objectgroup id="79" name="terrain top" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="728" name="marble" type="terrain" x="-200.911" y="-33.4566" width="2430.55" height="358.792"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="695" name="Generic/Bed" type="decor" x="1698.66" y="1148.24" width="339.213" height="127.347"/>
+  <object id="696" name="Generic/Sack" type="decor" x="1542.79" y="1133.23" width="162" height="145">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="720" name="spawn" type="object" x="972.485" y="1149.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="cell"/>
+   </properties>
+  </object>
+  <object id="721" name="mul-door" type="object" x="699.333" y="486.5" width="696" height="775">
+   <properties>
+    <property name="map" value="EndianForest/Mages_Prison"/>
+    <property name="transition" value="cell"/>
+    <property name="unlocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="722" name="caged-cat" type="object" x="243.515" y="1166.73" width="196" height="112"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="650.588" y="1148.64" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

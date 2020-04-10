@@ -311,7 +311,8 @@ void HackableObject::refreshParticleFx()
 
 Vec2 HackableObject::getRainOffset()
 {
-	return Vec2::ZERO;
+	// By default just put this where the button is. Inheriting objects can override if needed.
+	return this->getButtonOffset();
 }
 
 Vec2 HackableObject::getButtonOffset()

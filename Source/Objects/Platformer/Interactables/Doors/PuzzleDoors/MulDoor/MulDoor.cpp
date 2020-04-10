@@ -21,7 +21,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
+#define LOCAL_FUNC_ID_RUN_OPERATION 1
 
 const std::string MulDoor::MapKey = "mul-door";
 
@@ -50,6 +50,11 @@ void MulDoor::onEnter()
 	super::onEnter();
 
 	this->enableAllClippy();
+
+	if (this->getIsUnlocked())
+	{
+		this->toggleHackable(false);
+	}
 }
 
 void MulDoor::registerHackables()
@@ -59,7 +64,7 @@ void MulDoor::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
+			LOCAL_FUNC_ID_RUN_OPERATION,
 			HackableCode::HackableCodeInfo(
 				MulDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
@@ -104,7 +109,7 @@ NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 	ASM(push ZCX)
 	ASM_MOV_REG_VAR(ZCX, transform);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RUN_OPERATION);
 	ASM(imul ZCX, 1)
 	ASM_NOP6();
 	HACKABLE_CODE_END();

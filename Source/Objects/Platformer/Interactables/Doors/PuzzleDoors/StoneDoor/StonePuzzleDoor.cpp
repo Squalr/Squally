@@ -89,11 +89,6 @@ Vec2 StonePuzzleDoor::getButtonOffset()
 	return Vec2(-286.0f, -128.0f);
 }
 
-Vec2 StonePuzzleDoor::getRainOffset()
-{
-	return Vec2(-286.0f, -128.0f);
-}
-
 HackablePreview* StonePuzzleDoor::createDefaultPreview()
 {
 	return StonePuzzleDoorGenericPreview::create();
