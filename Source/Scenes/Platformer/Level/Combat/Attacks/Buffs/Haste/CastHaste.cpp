@@ -25,7 +25,8 @@ CastHaste* CastHaste::create(float attackDuration, float recoverDuration, Priori
 	return instance;
 }
 
-CastHaste::CastHaste(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_HourGlass, priority, 0, 0, 8, attackDuration, recoverDuration)
+CastHaste::CastHaste(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Buff, UIResources::Menus_Icons_HourGlass, priority, 0, 0, 8, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 

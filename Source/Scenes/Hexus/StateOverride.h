@@ -24,7 +24,8 @@ public:
 		std::vector<CardData*> playerHexCards,
 		std::vector<CardData*> enemyBinaryCards,
 		std::vector<CardData*> enemyDecimalCards,
-		std::vector<CardData*> enemyHexCards
+		std::vector<CardData*> enemyHexCards,
+		bool showChallengeBanner = true
 	);
 
 	int playerLosses;
@@ -42,6 +43,7 @@ public:
 	std::vector<CardData*> enemyBinaryCards;
 	std::vector<CardData*> enemyDecimalCards;
 	std::vector<CardData*> enemyHexCards;
+	bool showChallengeBanner;
 
 protected:
 	StateOverride();
@@ -60,7 +62,8 @@ protected:
 		std::vector<CardData*> playerHexCards,
 		std::vector<CardData*> enemyBinaryCards,
 		std::vector<CardData*> enemyDecimalCards,
-		std::vector<CardData*> enemyHexCards
+		std::vector<CardData*> enemyHexCards,
+		bool showChallengeBanner
 	);
 	virtual ~StateOverride();
 

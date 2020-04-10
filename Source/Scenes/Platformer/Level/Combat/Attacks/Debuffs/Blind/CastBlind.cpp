@@ -25,7 +25,8 @@ CastBlind* CastBlind::create(float attackDuration, float recoverDuration, Priori
 	return instance;
 }
 
-CastBlind::CastBlind(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Debuff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastBlind::CastBlind(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Eye, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 	

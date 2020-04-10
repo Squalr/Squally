@@ -53,7 +53,8 @@ Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Blind::Duration, Blind::BlindIdentifier))
+Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Eye, BuffData(Blind::Duration, Blind::BlindIdentifier))
 {
 	this->clippy = BlindClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
@@ -119,7 +120,7 @@ void Blind::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Blind::BlindIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Blind_Blind::create(),
-				UIResources::Menus_Icons_Clock,
+				UIResources::Menus_Icons_Eye,
 				BlindGenericPreview::create(),
 				{
 					{

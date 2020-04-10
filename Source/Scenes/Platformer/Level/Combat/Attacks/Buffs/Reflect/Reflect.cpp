@@ -51,7 +51,8 @@ Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
+Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
 {
 	this->clippy = ReflectClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
@@ -122,7 +123,7 @@ void Reflect::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Reflect::ReflectIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Reflect_Reflect::create(),
-				UIResources::Menus_Icons_Shield,
+				UIResources::Menus_Icons_ShieldMagic,
 				ReflectGenericPreview::create(),
 				{
 					{

@@ -25,7 +25,8 @@ CastFortitude* CastFortitude::create(float attackDuration, float recoverDuration
 	return instance;
 }
 
-CastFortitude::CastFortitude(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Shield, priority, 0, 0, 4, attackDuration, recoverDuration)
+CastFortitude::CastFortitude(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Buff, UIResources::Menus_Icons_Shield, priority, 0, 0, 4, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 	

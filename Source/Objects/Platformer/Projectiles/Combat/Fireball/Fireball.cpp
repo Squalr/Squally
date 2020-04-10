@@ -111,7 +111,7 @@ void Fireball::registerHackables()
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterXmm1::create() }
 				},
 				int(HackFlags::None),
-				5.0f,
+				3.0f,
 				0.0f,
 				this->reverseClippy,
 				{

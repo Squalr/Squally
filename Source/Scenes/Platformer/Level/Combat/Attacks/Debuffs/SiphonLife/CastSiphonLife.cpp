@@ -25,7 +25,8 @@ CastSiphonLife* CastSiphonLife::create(float attackDuration, float recoverDurati
 	return instance;
 }
 
-CastSiphonLife::CastSiphonLife(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Debuff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastSiphonLife::CastSiphonLife(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Fangs, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 

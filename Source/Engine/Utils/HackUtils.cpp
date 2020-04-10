@@ -64,7 +64,7 @@ std::string HackUtils::preProcessAssembly(std::string assembly)
         }
     };
 
-    std::regex reg("[-]?[0-9]*\\.[0-9]+");
+    std::regex reg("[-]?[0-9]*\\.[0-9]+f");
     std::sregex_token_iterator begin(assembly.begin(), assembly.end(), reg, {-1, 0}), end;
     std::for_each(begin, end, floatParser);
 

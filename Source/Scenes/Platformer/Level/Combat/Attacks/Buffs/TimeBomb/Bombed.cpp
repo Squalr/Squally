@@ -13,7 +13,8 @@ Bombed* Bombed::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Bombed::Bombed(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(-1.0f, Bombed::BombedIdentifier))
+Bombed::Bombed(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, "", BuffData(-1.0f, Bombed::BombedIdentifier))
 {
 }
 

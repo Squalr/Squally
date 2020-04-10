@@ -187,7 +187,7 @@
   <object id="677" name="mechanical-flail" type="object" x="4318.07" y="4629.91" width="42.4242" height="187.636"/>
   <object id="678" name="mechanical-flail" type="object" x="4566.98" y="4611.87" width="42.4242" height="205.576"/>
   <object id="687" name="pendulum-blade" type="object" x="4428.65" y="4410.44" width="42.4242" height="220.97"/>
-  <object id="778" name="cipher-chest" type="object" x="3740.73" y="2066.06" width="128" height="128">
+  <object id="778" name="chest" type="object" x="3740.73" y="2066.06" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="event" value="open-cipher"/>
@@ -248,7 +248,7 @@
     <property name="transition" value="left_alt"/>
    </properties>
   </object>
-  <object id="822" name="cipher-chest" type="object" x="1624" y="1912" width="128" height="128">
+  <object id="822" name="chest" type="object" x="1624" y="1912" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="l,o,c,k"/>

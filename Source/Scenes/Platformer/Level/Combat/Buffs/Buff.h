@@ -27,6 +27,8 @@ public:
 		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
 	};
 
+	void setBuffIndex(int index, int maxIndex);
+	bool hasBuffIcon();
 	void elapse(float dt);
 	float getRemainingDuration();
 	BuffData getBuffData();
@@ -35,11 +37,12 @@ public:
 
 protected:
 
-	Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData);
+	Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, BuffData buffData);
 	virtual ~Buff();
 
 	void onEnter() override;
 	void onExit() override;
+	void initializePositions() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
 	void registerClippy(Clippy* clippy);
@@ -59,7 +62,11 @@ private:
 	typedef SmartNode super;
 
 	std::function<void()> removeBuffCallback;
+	cocos2d::Node* iconContainer;
+	cocos2d::Sprite* buffGlow;
+	cocos2d::Sprite* buffIcon;
 	
+	bool isBuffIconPresent;
 	bool wasRemoved;
 	float elapsedTime;
 	void unregisterHackables();

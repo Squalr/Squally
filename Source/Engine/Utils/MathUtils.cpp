@@ -10,7 +10,6 @@ bool MathUtils::fuzzyEquals(float a, float b, float var)
 	return a - var <= b && a + var >= b;
 }
 
-
 float MathUtils::clamp(float n, float lower, float upper)
 {
 	if (std::isnan(n) || !std::isfinite(n))

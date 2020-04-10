@@ -201,6 +201,22 @@ Vec2 PlatformerEntity::getEntityCenterPoint()
 	return offset;
 }
 
+Vec2 PlatformerEntity::getEntityTopPoint()
+{
+	Vec2 offset = this->getEntityCenterPoint();
+
+	if (this->isFlippedY())
+	{
+		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f);
+	}
+	else
+	{
+		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f);
+	}
+
+	return offset;
+}
+
 Vec2 PlatformerEntity::getEntityBottomPoint()
 {
 	Vec2 offset = this->getEntityCenterPoint();

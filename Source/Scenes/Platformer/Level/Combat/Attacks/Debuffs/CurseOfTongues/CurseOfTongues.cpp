@@ -41,6 +41,7 @@ const std::string CurseOfTongues::CurseOfTonguesIdentifier = "curse-of-tongues";
 // Note: UI sets precision on these to 1 digit
 const float CurseOfTongues::MinSpeed = -1.25f;
 const float CurseOfTongues::DefaultSpeed = -1.25f;
+const float CurseOfTongues::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
 const float CurseOfTongues::MaxSpeed = 1.0f;
 const float CurseOfTongues::Duration = 6.0f;
 
@@ -53,7 +54,8 @@ CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntit
 	return instance;
 }
 
-CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
+CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
 {
 	this->clippy = CurseOfTonguesClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
@@ -139,11 +141,27 @@ void CurseOfTongues::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()) + 
-						"mov dword ptr [esi], -0.5",
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
+						"mov dword ptr [esi], -0.5f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
 						// x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()) + 
-						"mov dword ptr [rsi], -0.5"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
+						"mov dword ptr [rsi], -0.5f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 					)
 				}
 			)

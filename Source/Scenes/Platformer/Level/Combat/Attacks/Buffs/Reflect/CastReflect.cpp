@@ -25,7 +25,8 @@ CastReflect* CastReflect::create(float attackDuration, float recoverDuration, Pr
 	return instance;
 }
 
-CastReflect::CastReflect(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Shield, priority, 0, 0, 8, attackDuration, recoverDuration)
+CastReflect::CastReflect(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldMagic, priority, 0, 0, 8, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 

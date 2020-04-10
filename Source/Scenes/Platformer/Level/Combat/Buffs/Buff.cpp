@@ -1,27 +1,36 @@
 #include "Buff.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/CombatEvents.h"
 
+#include "Resources/UIResources.h"
+
 using namespace cocos2d;
 
-Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData)
+Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, BuffData buffData)
 {
 	this->caster = caster;
 	this->target = target;
 	this->buffData = buffData;
+	this->iconContainer = Node::create();
+	this->buffGlow = Sprite::create(UIResources::HUD_EmblemGlow);
+	this->buffIcon = Sprite::create(buffIconResource);
 	this->hackables = std::vector<HackableCode*>();
 	this->elapsedTime = 0.0f;
 	this->wasRemoved = false;
+	this->isBuffIconPresent = !buffIconResource.empty();
+
+	this->iconContainer->addChild(this->buffGlow);
+	this->iconContainer->addChild(this->buffIcon);
+	this->addChild(this->iconContainer);
 }
 
 Buff::~Buff()
@@ -40,6 +49,13 @@ void Buff::onExit()
 	super::onExit();
 	
 	this->unregisterHackables();
+}
+
+void Buff::initializePositions()
+{
+	super::initializePositions();
+	
+	this->iconContainer->setPositionY(this->target->getEntitySize().height / 2.0f + 32.0f);
 }
 
 void Buff::initializeListeners()
@@ -137,6 +153,18 @@ void Buff::registerClippy(Clippy* clippy)
 	{
 		this->target->registerClippy(clippy);
 	}
+}
+
+bool Buff::hasBuffIcon()
+{
+	return this->isBuffIconPresent;
+}
+
+void Buff::setBuffIndex(int index, int maxIndex)
+{
+	const float BuffSpacing = 64.0f;
+
+	this->iconContainer->setPositionX(-float(maxIndex) * BuffSpacing / 2.0f + float(index) * BuffSpacing);
 }
 
 void Buff::elapse(float dt)

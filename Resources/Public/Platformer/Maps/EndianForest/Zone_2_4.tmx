@@ -587,7 +587,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="1236" name="orc-grunt" type="entity" x="1589.76" y="4491.78" width="128" height="128">
+  <object id="1236" name="troll" type="entity" x="1589.76" y="4491.78" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

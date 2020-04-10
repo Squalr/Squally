@@ -128,7 +128,9 @@ StateOverride* TutorialDBehavior::getStateOverride()
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-		}
+		},
+		// Disable solve challenge banner
+		false
 	);
 }
 

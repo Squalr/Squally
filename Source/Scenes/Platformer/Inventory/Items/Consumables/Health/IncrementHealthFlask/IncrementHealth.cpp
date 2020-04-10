@@ -48,7 +48,8 @@ IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEnt
 	return instance;
 }
 
-IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData())
+IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+	: super(caster, target, UIResources::Menus_Icons_ArrowUp, BuffData())
 {
 	this->clippy = IncrementHealthClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);

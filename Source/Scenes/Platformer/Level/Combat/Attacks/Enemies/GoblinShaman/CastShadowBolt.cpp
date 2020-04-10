@@ -31,7 +31,8 @@ CastShadowBolt* CastShadowBolt::create(float attackDuration, float recoverDurati
 	return instance;
 }
 
-CastShadowBolt::CastShadowBolt(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 6, 8, 9, attackDuration, recoverDuration)
+CastShadowBolt::CastShadowBolt(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SpellCast, priority, 4, 6, 9, attackDuration, recoverDuration)
 {
 }
 

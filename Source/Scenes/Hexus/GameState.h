@@ -97,6 +97,7 @@ public:
 	int enemyCardsDrawnNextRound;
 	int playableCardsThisTurn;
 	int gameDurationInSeconds;
+	bool showChallengeBanner;
 	Card* selectedSourceCard;
 	Card* selectedDestinationCard;
 	Card* selectedHandCard;

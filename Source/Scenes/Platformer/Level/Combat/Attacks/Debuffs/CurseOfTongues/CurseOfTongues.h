@@ -45,6 +45,7 @@ private:
 
 	static const float MinSpeed;
 	static const float DefaultSpeed;
+	static const float DefaultHackSpeed;
 	static const float MaxSpeed;
 	static const float Duration;
 };

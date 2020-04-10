@@ -55,7 +55,8 @@ Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
+Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Clock, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
 {
 	this->clippy = EnrageClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);

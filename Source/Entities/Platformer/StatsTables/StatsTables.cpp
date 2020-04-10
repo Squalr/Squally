@@ -248,15 +248,15 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Centaur::MapKey] = Stats(300, 200, 24);
 	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 22);
 	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 20);
-	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(30, 37, 24);
-	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 20);
-	StatsTables::StatsTable[Ogre::MapKey] = Stats(24, 9, 18);
+	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(15, 37, 24);
+	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(14, 8, 20);
+	StatsTables::StatsTable[Ogre::MapKey] = Stats(20, 9, 18);
 	StatsTables::StatsTable[OrcBomber::MapKey] = Stats(21, 22, 26);
 	StatsTables::StatsTable[OrcGrunt::MapKey] = Stats(11, 8, 16);
 	StatsTables::StatsTable[OrcSwordsman::MapKey] = Stats(21, 8, 24);
 	StatsTables::StatsTable[OrcWarrior::MapKey] = Stats(23, 5, 24);
-	StatsTables::StatsTable[Troll::MapKey] = Stats(46, 12, 20);
-	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 36, 64);
+	StatsTables::StatsTable[Troll::MapKey] = Stats(38, 12, 20);
+	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 60, 64);
 	StatsTables::StatsTable[Gorgon::MapKey] = Stats(220, 48, 88);
 	StatsTables::StatsTable[Orthrus::MapKey] = Stats(175, 48, 88);
 

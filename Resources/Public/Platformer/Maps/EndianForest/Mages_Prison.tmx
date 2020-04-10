@@ -347,7 +347,7 @@
     <property name="tag" value="prison-door"/>
    </properties>
   </object>
-  <object id="910" name="cipher-chest" type="object" x="6060" y="926" width="128" height="128">
+  <object id="910" name="chest" type="object" x="6060" y="926" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="m,a,g,e"/>

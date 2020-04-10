@@ -710,7 +710,7 @@
   <object id="922" name="solid" type="collision" x="4870.67" y="3992.67">
    <polygon points="0,0 0,-30.6667 526.667,240 528,272"/>
   </object>
-  <object id="924" name="cipher-chest" type="object" x="140" y="220" width="128" height="128">
+  <object id="924" name="chest" type="object" x="140" y="220" width="128" height="128">
    <properties>
     <property name="event" value="open-cipher"/>
     <property name="inputs-easy" value="s,w,a,g"/>

@@ -51,7 +51,8 @@ Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
+Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Shield, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
 {
 	this->clippy = FortitudeClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
@@ -142,7 +143,7 @@ void Fortitude::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
@@ -150,7 +151,7 @@ void Fortitude::registerHackables()
 						"sub ebx, 3\n",
 						// x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 

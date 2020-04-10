@@ -48,7 +48,8 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 	return instance;
 }
 
-TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(TrainingHeal::TrainingHealIdentifier))
+TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+	: super(caster, target, UIResources::Menus_Icons_Heal, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
 	this->clippy = TrainingHealClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);

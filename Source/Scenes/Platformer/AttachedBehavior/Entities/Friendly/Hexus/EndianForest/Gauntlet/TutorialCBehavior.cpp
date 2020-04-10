@@ -118,7 +118,9 @@ StateOverride* TutorialCBehavior::getStateOverride()
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-		}
+		},
+		// Disable solve challenge banner
+		false
 	);
 }
 

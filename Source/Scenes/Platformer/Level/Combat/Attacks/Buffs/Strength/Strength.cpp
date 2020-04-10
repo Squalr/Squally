@@ -40,6 +40,7 @@ const std::string Strength::StrengthIdentifier = "strength";
 
 const int Strength::MinMultiplier = -1;
 const int Strength::MaxMultiplier = 2;
+const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
 
 Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -51,7 +52,8 @@ Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Strength::Duration, Strength::StrengthIdentifier))
+Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Strength, BuffData(Strength::Duration, Strength::StrengthIdentifier))
 {
 	this->clippy = StrengthClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
@@ -89,8 +91,6 @@ void Strength::onEnter()
 void Strength::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
 void Strength::enableClippy()
@@ -135,7 +135,25 @@ void Strength::registerHackables()
 				0.0f,
 				this->clippy,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
+						"add ecx, 3\n",
+						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
+						"add rcx, 3\n"
+					),
+				},
+				true
 			)
 		},
 	};

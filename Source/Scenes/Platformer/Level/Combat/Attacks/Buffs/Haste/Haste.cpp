@@ -53,7 +53,8 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Haste::Duration, Haste::HasteIdentifier))
+Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_HourGlass, BuffData(Haste::Duration, Haste::HasteIdentifier))
 {
 	this->clippy = HasteClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
@@ -139,9 +140,9 @@ void Haste::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
-						"mov dword ptr [esi], 0.0",
+						"mov dword ptr [esi], 0.0f",
 						// x64
-						"mov dword ptr [rsi], 0.0"
+						"mov dword ptr [rsi], 0.0f"
 					)
 				}
 			)

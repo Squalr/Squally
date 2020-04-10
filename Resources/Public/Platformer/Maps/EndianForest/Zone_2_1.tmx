@@ -169,7 +169,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="778" name="cipher-chest" type="object" x="4393.34" y="1474.91" width="128" height="128">
+  <object id="778" name="chest" type="object" x="4393.34" y="1474.91" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="255,252,253,0"/>
@@ -281,7 +281,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="810" name="troll" type="entity" x="6476.37" y="603" width="128" height="128">
+  <object id="810" name="orc-grunt-disabled" type="entity" x="6476.37" y="603" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

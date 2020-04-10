@@ -349,7 +349,7 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1014" name="cipher-chest" type="object" x="7372" y="4976" width="128" height="128">
+  <object id="1014" name="chest" type="object" x="7372" y="4976" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="3,1,2,9,4"/>

@@ -53,7 +53,8 @@ SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* targe
 	return instance;
 }
 
-SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(SiphonLife::Duration, SiphonLife::SiphonLifeIdentifier))
+SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Fangs, BuffData(SiphonLife::Duration, SiphonLife::SiphonLifeIdentifier))
 {
 	this->clippy = SiphonLifeClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
@@ -91,8 +92,6 @@ void SiphonLife::onEnter()
 void SiphonLife::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
 void SiphonLife::enableClippy()
@@ -121,7 +120,7 @@ void SiphonLife::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SiphonLife::SiphonLifeIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife::create(),
-				UIResources::Menus_Icons_Clock,
+				UIResources::Menus_Icons_Fangs,
 				SiphonLifeGenericPreview::create(),
 				{
 					{

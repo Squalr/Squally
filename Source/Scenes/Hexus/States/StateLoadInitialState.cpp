@@ -64,56 +64,58 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	gameState->playerLosses = stateOverride->playerLosses;
 	gameState->enemyLosses = stateOverride->enemyLosses;
 
+	gameState->showChallengeBanner = stateOverride->showChallengeBanner;
+
 	// Load player cards
-	for (auto it = stateOverride->playerHand.begin(); it != stateOverride->playerHand.end(); it++)
+	for (auto next : stateOverride->playerHand)
 	{
-		gameState->playerHand->insertCard(Card::create(Card::CardStyle::Earth, *it, true), 0.0f, false);
+		gameState->playerHand->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
 	}
 
-	for (auto it = stateOverride->playerDeck.begin(); it != stateOverride->playerDeck.end(); it++)
+	for (auto next : stateOverride->playerDeck)
 	{
-		gameState->playerDeck->insertCardBottom(Card::create(Card::CardStyle::Earth, *it, true), false, 0.0f, false);
+		gameState->playerDeck->insertCardBottom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f, false);
 	}
 
-	for (auto it = stateOverride->playerBinaryCards.begin(); it != stateOverride->playerBinaryCards.end(); it++)
+	for (auto next : stateOverride->playerBinaryCards)
 	{
-		gameState->playerBinaryCards->insertCard(Card::create(Card::CardStyle::Earth, *it, true), 0.0f, false);
+		gameState->playerBinaryCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
 	}
 
-	for (auto it = stateOverride->playerDecimalCards.begin(); it != stateOverride->playerDecimalCards.end(); it++)
+	for (auto next : stateOverride->playerDecimalCards)
 	{
-		gameState->playerDecimalCards->insertCard(Card::create(Card::CardStyle::Earth, *it, true), 0.0f, false);
+		gameState->playerDecimalCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
 	}
 
-	for (auto it = stateOverride->playerHexCards.begin(); it != stateOverride->playerHexCards.end(); it++)
+	for (auto next : stateOverride->playerHexCards)
 	{
-		gameState->playerHexCards->insertCard(Card::create(Card::CardStyle::Earth, *it, true), 0.0f, false);
+		gameState->playerHexCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
 	}
 
 	// Load enemy cards
-	for (auto it = stateOverride->enemyHand.begin(); it != stateOverride->enemyHand.end(); it++)
+	for (auto next : stateOverride->enemyHand)
 	{
-		gameState->enemyHand->insertCard(Card::create(Card::CardStyle::Shadow, *it, false), 0.0f, false);
+		gameState->enemyHand->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
 	}
 
-	for (auto it = stateOverride->enemyDeck.begin(); it != stateOverride->enemyDeck.end(); it++)
+	for (auto next : stateOverride->enemyDeck)
 	{
-		gameState->enemyDeck->insertCardBottom(Card::create(Card::CardStyle::Shadow, *it, false), false, 0.0f, false);
+		gameState->enemyDeck->insertCardBottom(Card::create(Card::CardStyle::Shadow, next, false), false, 0.0f, false);
 	}
 
-	for (auto it = stateOverride->enemyBinaryCards.begin(); it != stateOverride->enemyBinaryCards.end(); it++)
+	for (auto next : stateOverride->enemyBinaryCards)
 	{
-		gameState->enemyBinaryCards->insertCard(Card::create(Card::CardStyle::Shadow, *it, false), 0.0f, false);
+		gameState->enemyBinaryCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
 	}
 
-	for (auto it = stateOverride->enemyDecimalCards.begin(); it != stateOverride->enemyDecimalCards.end(); it++)
+	for (auto next : stateOverride->enemyDecimalCards)
 	{
-		gameState->enemyDecimalCards->insertCard(Card::create(Card::CardStyle::Shadow, *it, false), 0.0f, false);
+		gameState->enemyDecimalCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
 	}
 
-	for (auto it = stateOverride->enemyHexCards.begin(); it != stateOverride->enemyHexCards.end(); it++)
+	for (auto next : stateOverride->enemyHexCards)
 	{
-		gameState->enemyHexCards->insertCard(Card::create(Card::CardStyle::Shadow, *it, false), 0.0f, false);
+		gameState->enemyHexCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
 	}
 
 	if (stateOverride->playersTurn)

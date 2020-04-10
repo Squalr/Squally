@@ -319,7 +319,7 @@
     <property name="transition" value="hut"/>
    </properties>
   </object>
-  <object id="739" name="cipher-chest" type="object" x="2576" y="3488" width="128" height="128">
+  <object id="739" name="chest" type="object" x="2576" y="3488" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="255,252,253,0"/>
