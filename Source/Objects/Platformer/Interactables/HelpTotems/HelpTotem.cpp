@@ -81,11 +81,20 @@ void HelpTotem::onEndCollision()
 	this->tryDisplayHint();
 }
 
-void HelpTotem::deactivate()
+void HelpTotem::deactivate(bool instant)
 {
 	this->isInactive = true;
-	this->totem->runAction(FadeTo::create(1.0f, 0));
-	this->totemInactive->runAction(FadeTo::create(1.0f, 255));
+
+	if (instant)
+	{
+		this->totem->setOpacity(0);
+		this->totemInactive->setOpacity(255);
+	}
+	else
+	{
+		this->totem->runAction(FadeTo::create(1.0f, 0));
+		this->totemInactive->runAction(FadeTo::create(0.25f, 255));
+	}
 
 	this->tryDisplayHint();
 }
@@ -93,7 +102,7 @@ void HelpTotem::deactivate()
 void HelpTotem::activate()
 {
 	this->isInactive = false;
-	this->totem->runAction(FadeTo::create(1.0f, 255));
+	this->totem->runAction(FadeTo::create(0.25f, 255));
 	this->totemInactive->runAction(FadeTo::create(1.0f, 0));
 
 	this->tryDisplayHint();

@@ -22479,6 +22479,21 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemPickPocket() = default;
 	};
 
+	class Platformer_Help_HelpTotemSwimHack : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemSwimHack* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemSwimHack();
+		virtual ~Platformer_Help_HelpTotemSwimHack() = default;
+	};
+
 	class Platformer_MapNames_EndianForest_Elbridge : public LocalizedString
 	{
 	public:

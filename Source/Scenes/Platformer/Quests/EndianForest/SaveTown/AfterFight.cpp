@@ -61,22 +61,22 @@ AfterFight::~AfterFight()
 
 void AfterFight::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 	
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
 	}, Sarude::MapKey);
 
-	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* magePortal)
+	ObjectEvents::WatchForObject<MagePortal>(this, [=](MagePortal* magePortal)
 	{
 		this->magePortal = magePortal;
 
@@ -140,7 +140,7 @@ void AfterFight::runCinematicSequencePart2()
 
 		Vec2 destCoords = GameUtils::getWorldCoords(this->magePortal);
 		
-		ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
+		ObjectEvents::WatchForObject<Igneus>(this, [=](Igneus* igneus)
 		{
 			igneus->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
@@ -150,7 +150,7 @@ void AfterFight::runCinematicSequencePart2()
 			});
 		}, Igneus::MapKey);
 
-		ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
+		ObjectEvents::WatchForObject<Alder>(this, [=](Alder* alder)
 		{
 			alder->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
@@ -160,7 +160,7 @@ void AfterFight::runCinematicSequencePart2()
 			});
 		}, Alder::MapKey);
 
-		ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+		ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 		{
 			sarude->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
@@ -175,7 +175,7 @@ void AfterFight::runCinematicSequencePart2()
 			});
 		}, Sarude::MapKey);
 
-		ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
+		ObjectEvents::WatchForObject<Aster>(this, [=](Aster* aster)
 		{
 			aster->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
@@ -185,7 +185,7 @@ void AfterFight::runCinematicSequencePart2()
 			});
 		}, Aster::MapKey);
 
-		ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
+		ObjectEvents::WatchForObject<Merlin>(this, [=](Merlin* merlin)
 		{
 			merlin->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
@@ -199,17 +199,17 @@ void AfterFight::runCinematicSequencePart2()
 
 void AfterFight::despawnMages()
 {
-	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
+	ObjectEvents::WatchForObject<Igneus>(this, [=](Igneus* igneus)
 	{
 		igneus->setOpacity(0);
 	}, Igneus::MapKey);
 
-	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
+	ObjectEvents::WatchForObject<Alder>(this, [=](Alder* alder)
 	{
 		alder->setOpacity(0);
 	}, Alder::MapKey);
 
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		sarude->setOpacity(0);
 
@@ -219,12 +219,12 @@ void AfterFight::despawnMages()
 		});
 	}, Sarude::MapKey);
 
-	ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
+	ObjectEvents::WatchForObject<Aster>(this, [=](Aster* aster)
 	{
 		aster->setOpacity(0);
 	}, Aster::MapKey);
 
-	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
+	ObjectEvents::WatchForObject<Merlin>(this, [=](Merlin* merlin)
 	{
 		merlin->setOpacity(0);
 	}, Merlin::MapKey);

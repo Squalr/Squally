@@ -116,7 +116,7 @@ void CraftingMenuBase::onEnter()
 	this->cancelIcon->setVisible(false);
 	this->craftProgress->setVisible(false);
 	
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{

@@ -50,7 +50,7 @@ TrollInTheDungeon::~TrollInTheDungeon()
 
 void TrollInTheDungeon::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
@@ -87,7 +87,7 @@ void TrollInTheDungeon::onSkipped()
 
 void TrollInTheDungeon::runChatSequence()
 {
-	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 		PlatformerEvents::TriggerCinematicHijack();
@@ -120,7 +120,7 @@ void TrollInTheDungeon::runChatSequence()
 
 void TrollInTheDungeon::runChatSequencePt2()
 {
-	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 		

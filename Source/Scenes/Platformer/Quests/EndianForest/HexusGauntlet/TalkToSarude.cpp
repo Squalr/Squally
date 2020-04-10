@@ -50,17 +50,17 @@ TalkToSarude::~TalkToSarude()
 
 void TalkToSarude::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
 	}, Sarude::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
+	ObjectEvents::WatchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{
 		this->portal = portal;
 

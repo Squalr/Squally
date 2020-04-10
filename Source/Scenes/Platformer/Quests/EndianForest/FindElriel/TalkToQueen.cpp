@@ -47,22 +47,22 @@ TalkToQueen::~TalkToQueen()
 
 void TalkToQueen::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
+	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
 	}, Guano::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
+	ObjectEvents::WatchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
 		this->queenLiana = queenLiana;
 	}, QueenLiana::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

@@ -66,7 +66,7 @@ RepairRam::~RepairRam()
 
 void RepairRam::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 
@@ -76,12 +76,12 @@ void RepairRam::onLoad(QuestState questState)
 		});
 	}, Squally::MapKey);
 	
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
+	ObjectEvents::WatchForObject<Ram>(this, [=](Ram* ram)
 	{
 		this->ram = ram;
 

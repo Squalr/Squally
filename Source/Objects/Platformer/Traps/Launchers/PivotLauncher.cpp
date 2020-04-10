@@ -77,7 +77,7 @@ void PivotLauncher::onEnter()
 		this->shoot();
 	});
 
-	ObjectEvents::watchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
+	ObjectEvents::WatchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
 	{
 		this->target = platformerEntity;
 	}, this->targetQueryKey);

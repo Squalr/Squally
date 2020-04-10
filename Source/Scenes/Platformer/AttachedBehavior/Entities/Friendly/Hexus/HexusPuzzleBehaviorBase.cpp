@@ -24,7 +24,7 @@ void HexusPuzzleBehaviorBase::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

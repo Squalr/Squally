@@ -83,7 +83,7 @@ void FireballTutorialBehavior::onLoad()
 		}
 	}));
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 
@@ -93,7 +93,7 @@ void FireballTutorialBehavior::onLoad()
 		});
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

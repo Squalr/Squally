@@ -330,7 +330,7 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 void Hexus::buildPlayerDeck()
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{

@@ -133,6 +133,8 @@ END_NO_OPTIMIZE
 
 void SquallySwimHackBehavior::enableAllClippy()
 {
+	this->clippy->setIsEnabled(true);
+	
 	for (auto next : this->hackables)
 	{
 		if (next->getClippy() != nullptr)

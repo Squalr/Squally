@@ -46,7 +46,7 @@ void IOUDrop::initializeListeners()
 
 	this->onCollected([=]()
 	{
-		ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
 			squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 			{

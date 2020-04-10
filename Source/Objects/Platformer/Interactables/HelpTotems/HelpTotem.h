@@ -17,7 +17,7 @@ class HelpTotem : public InteractObject
 public:
 	static HelpTotem* create(cocos2d::ValueMap& properties);
 
-	void deactivate();
+	void deactivate(bool instant = false);
 	void activate();
 
 protected:

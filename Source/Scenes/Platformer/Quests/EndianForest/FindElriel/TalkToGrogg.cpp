@@ -55,17 +55,17 @@ void TalkToGrogg::onLoad(QuestState questState)
 	// Ret-con to allow players to hack water stuff TODO: Delete after 4/x/2020
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 
-	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
+	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
 	}, Guano::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<KingGrogg>(this, [=](KingGrogg* kingGrogg)
+	ObjectEvents::WatchForObject<KingGrogg>(this, [=](KingGrogg* kingGrogg)
 	{
 		this->kingGrogg = kingGrogg;
 		
@@ -75,7 +75,7 @@ void TalkToGrogg::onLoad(QuestState questState)
 		});
 	}, KingGrogg::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

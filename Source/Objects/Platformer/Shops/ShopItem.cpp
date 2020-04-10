@@ -75,7 +75,7 @@ void ShopItem::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 	
-	ObjectEvents::watchForObject<ShopPool>(this, [=](ShopPool* shopPool)
+	ObjectEvents::WatchForObject<ShopPool>(this, [=](ShopPool* shopPool)
 	{
 		this->item = shopPool->getNextItem();
 
@@ -142,7 +142,7 @@ void ShopItem::sellItem()
 		return;
 	}
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{

@@ -44,7 +44,7 @@ void CameraControl::initializeListeners()
 {
 	super::initializeListeners();
 
-	ObjectEvents::watchForObject<CameraTarget>(this, [=](CameraTarget* cameraTarget)
+	ObjectEvents::WatchForObject<CameraTarget>(this, [=](CameraTarget* cameraTarget)
 	{
 		this->cameraTarget = cameraTarget;
 	}, this->targetTag);

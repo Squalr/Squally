@@ -51,17 +51,17 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<HelpTotem>(this, [=](HelpTotem* helpTotem)
+	ObjectEvents::WatchForObject<HelpTotem>(this, [=](HelpTotem* helpTotem)
 	{
 		this->helpTotem = helpTotem;
 	}, TeachHackerMode::TagHelpTotemHacking);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);

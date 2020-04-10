@@ -159,7 +159,7 @@ void CombatMap::onEnter()
 	this->inventoryMenu->setVisible(false);
 	this->combatEndBackdrop->setOpacity(0);
 	
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);

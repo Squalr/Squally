@@ -49,22 +49,22 @@ EFURTransportationBehavior::~EFURTransportationBehavior()
 
 void EFURTransportationBehavior::onLoad()
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{
 		this->backPortal = portal;
 	}, EFURTransportationBehavior::QuestTagBackPortal);
 
-	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{
 		this->leavePortal = portal;
 	}, EFURTransportationBehavior::QuestTagLeavePortal);

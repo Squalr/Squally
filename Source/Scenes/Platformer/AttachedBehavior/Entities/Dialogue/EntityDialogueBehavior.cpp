@@ -106,7 +106,7 @@ void EntityDialogueBehavior::initializePositions()
 
 void EntityDialogueBehavior::onLoad()
 {
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);

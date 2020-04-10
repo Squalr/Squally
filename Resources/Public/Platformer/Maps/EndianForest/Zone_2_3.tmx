@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="837">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="839">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Waterfall"/>
@@ -110,6 +110,7 @@
    </properties>
   </object>
   <object id="836" name="solid" type="collision" x="-102.303" y="1192.3" width="2265.39" height="168.242"/>
+  <object id="838" name="help-totem-swim-hack" type="object" x="392.364" y="945.091" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

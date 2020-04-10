@@ -46,6 +46,7 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHacking.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHexusCards.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemPickPocket.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSwimHack.h"
 #include "Objects/Platformer/Interactables/LifeStone.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/Tent.h"

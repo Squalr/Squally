@@ -54,17 +54,17 @@ TalkToMages::~TalkToMages()
 
 void TalkToMages::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 	
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
 		this->setPostText();

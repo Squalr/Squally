@@ -16,6 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSwimHack.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/SquallySwimHackBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
@@ -52,7 +53,7 @@ WaterSpellbook::~WaterSpellbook()
 
 void WaterSpellbook::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 		this->squally->toggleAllowFx(true);
@@ -87,6 +88,11 @@ void WaterSpellbook::onComplete()
 		ItemResources::Spellbooks_SpellBookWater,
 		SoundResources::Notifications_NotificationGood1
 	));
+	
+	ObjectEvents::WatchForObject<HelpTotemSwimHack>(this, [=](HelpTotemSwimHack* helpTotem)
+	{
+		helpTotem->activate();
+	}, HelpTotemSwimHack::MapKey);
 }
 
 void WaterSpellbook::onSkipped()

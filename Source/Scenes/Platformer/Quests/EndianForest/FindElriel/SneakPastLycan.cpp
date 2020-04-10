@@ -45,7 +45,7 @@ SneakPastLycan::~SneakPastLycan()
 
 void SneakPastLycan::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Lycan>(this, [=](Lycan* lycan)
+	ObjectEvents::WatchForObject<Lycan>(this, [=](Lycan* lycan)
 	{
 		this->lycan = lycan;
 
@@ -59,7 +59,7 @@ void SneakPastLycan::onLoad(QuestState questState)
 		}
 	}, Lycan::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

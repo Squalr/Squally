@@ -51,7 +51,7 @@ RescueGuano::~RescueGuano()
 
 void RescueGuano::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
+	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
 
@@ -64,7 +64,7 @@ void RescueGuano::onLoad(QuestState questState)
 		}
 	}, Guano::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
@@ -89,7 +89,7 @@ void RescueGuano::onSkipped()
 
 void RescueGuano::runRescueSequence()
 {	
-	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_RescueGuano_E_Freedom::create(),
