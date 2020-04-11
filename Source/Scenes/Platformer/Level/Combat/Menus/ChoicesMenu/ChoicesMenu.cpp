@@ -60,7 +60,7 @@ ChoicesMenu::ChoicesMenu()
 		this->onAttackClick();
 	});
 
-	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), nullptr, UIResources::Menus_Icons_Shield, UIResources::Combat_DefendCircle, [=]()
+	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), nullptr, UIResources::Menus_Icons_ShieldBroken, UIResources::Combat_DefendCircle, [=]()
 	{
 		this->onDefendClick();
 	});

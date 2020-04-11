@@ -87,6 +87,10 @@
   <object id="730" name="Generic/Background/Jail" type="decor" x="655.955" y="251.985" width="779" height="993"/>
  </objectgroup>
  <objectgroup id="90" name="magic wall bg -2">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="747" name="magic-wall" type="object" x="679.994" y="255.015" width="749.102" height="993"/>
  </objectgroup>
  <objectgroup id="81" name="columns bg -2" visible="0">
