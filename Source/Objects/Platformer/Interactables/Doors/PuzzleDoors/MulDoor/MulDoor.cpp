@@ -75,7 +75,7 @@ void MulDoor::registerHackables()
 				nullptr,
 				{
 					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
-					HackableCode::ReadOnlyScript(nullptr,
+					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
 						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
