@@ -176,7 +176,9 @@ void TrainingHeal::runTrainingHeal()
 
 NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 {
-	int incrementAmount = 0;
+	static volatile int incrementAmount;
+
+	incrementAmount = 0;
 
 	ASM(push ZDI);
 	ASM(mov ZDI, 0)
