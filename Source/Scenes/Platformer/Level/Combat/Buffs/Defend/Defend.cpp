@@ -52,7 +52,7 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Defend::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 	

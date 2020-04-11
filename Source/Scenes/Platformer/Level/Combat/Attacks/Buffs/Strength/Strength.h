@@ -30,13 +30,14 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
 
 private:
 	typedef Buff super;
 
 	void applyStrength();
 	
+	volatile int originalDamageDelt;
 	volatile int currentDamageDelt;
 	
 	StrengthClippy* clippy;

@@ -173,7 +173,7 @@ void Fortitude::registerHackables()
 	}
 }
 
-void Fortitude::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Fortitude::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 

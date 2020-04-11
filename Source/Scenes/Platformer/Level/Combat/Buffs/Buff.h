@@ -48,10 +48,10 @@ protected:
 	void registerClippy(Clippy* clippy);
 	virtual void onTimelineReset(bool wasInterrupt);
 	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
-	virtual void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeHealingTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeHealingDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
 
 	BuffData buffData;
 	PlatformerEntity* caster;

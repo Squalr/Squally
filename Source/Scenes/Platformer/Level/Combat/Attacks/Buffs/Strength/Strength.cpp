@@ -38,7 +38,7 @@ using namespace cocos2d;
 
 const std::string Strength::StrengthIdentifier = "strength";
 
-const int Strength::MinMultiplier = -1;
+const int Strength::MinMultiplier = -1; // Keep in sync w/ math clamp
 const int Strength::MaxMultiplier = 2;
 const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
@@ -58,6 +58,8 @@ Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
 	this->clippy = StrengthClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->currentDamageDelt = 0;
+	this->originalDamageDelt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -167,36 +169,36 @@ void Strength::registerHackables()
 	}
 }
 
-void Strength::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+NO_OPTIMIZE void Strength::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
 
-	this->currentDamageDelt = *damageOrHealing;
+	this->originalDamageDelt = *damageOrHealing;
 
 	this->applyStrength();
-
+	
+	// Bound multiplier in either direction. Note: Not using static constants due to strange OSX release bug
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, std::abs(this->originalDamageDelt) * -1, std::abs(this->originalDamageDelt) * 2);
+	
 	*damageOrHealing = this->currentDamageDelt;
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
-	volatile int originalDamage = this->currentDamageDelt;
-	volatile int damageDelt = this->currentDamageDelt;
+	this->currentDamageDelt = this->originalDamageDelt;
 
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ZCX, damageDelt);
+	ASM_MOV_REG_VAR(ZCX, this->currentDamageDelt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
 	ASM(add ZCX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDelt, ZCX);
+	ASM_MOV_VAR_REG(this->currentDamageDelt, ZCX);
 
 	ASM(pop ZCX);
-
-	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(damageDelt, std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
 
 	HACKABLES_STOP_SEARCH();
 }
