@@ -169,7 +169,9 @@ void IncrementHealth::runIncrementHealth()
 
 NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 {
-	int incrementAmount = 0;
+	static volatile int incrementAmount;
+
+	incrementAmount = 0;
 
 	ASM(push ZDI);
 	ASM(mov ZDI, 0)
