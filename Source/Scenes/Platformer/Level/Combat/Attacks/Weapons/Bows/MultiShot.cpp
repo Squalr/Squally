@@ -1,4 +1,4 @@
-#include "BowShoot.h"
+#include "MultiShot.h"
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
@@ -11,17 +11,17 @@
 
 using namespace cocos2d;
 
-BowShoot* BowShoot::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+MultiShot* MultiShot::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
-	BowShoot* instance = new BowShoot(damageMin, damageMax, attackDuration, recoverDuration, priority);
+	MultiShot* instance = new MultiShot(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BowShoot::BowShoot(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_Arrow, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
+MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_ArcheryTarget, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow1);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
@@ -30,26 +30,26 @@ BowShoot::BowShoot(int damageMin, int damageMax, float attackDuration, float rec
 	this->addChild(this->hitSound);
 }
 
-BowShoot::~BowShoot()
+MultiShot::~MultiShot()
 {
 }
 
-PlatformerAttack* BowShoot::cloneInternal()
+PlatformerAttack* MultiShot::cloneInternal()
 {
-	return BowShoot::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
+	return MultiShot::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
-LocalizedString* BowShoot::getString()
+LocalizedString* MultiShot::getString()
 {
 	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
 }
 
-std::string BowShoot::getAttackAnimation()
+std::string MultiShot::getAttackAnimation()
 {
 	return "AttackShoot";
 }
 
-void BowShoot::onAttackTelegraphBegin()
+void MultiShot::onAttackTelegraphBegin()
 {
 	super::onAttackTelegraphBegin();
 	
@@ -57,7 +57,7 @@ void BowShoot::onAttackTelegraphBegin()
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void BowShoot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
+void MultiShot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
 	
@@ -67,7 +67,7 @@ void BowShoot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 	}
 }
 
-void BowShoot::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
+void MultiShot::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));

@@ -39,7 +39,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Generic/WoodDoor" type="decor" x="182.555" y="835.563" width="238.499" height="312.248"/>
+  <object id="484" name="Generic/WoodDoor" type="decor" x="182.555" y="825.563" width="238.499" height="312.248"/>
   <object id="695" name="Generic/Bed" type="decor" x="2716.72" y="1539.03" width="339.213" height="127.347"/>
   <object id="696" name="Generic/Sack" type="decor" x="2560.85" y="1524.02" width="162" height="145">
    <properties>

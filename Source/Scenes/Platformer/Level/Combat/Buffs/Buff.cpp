@@ -28,6 +28,8 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffI
 	this->wasRemoved = false;
 	this->isBuffIconPresent = !buffIconResource.empty();
 
+	this->iconContainer->setVisible(this->isBuffIconPresent);
+
 	this->iconContainer->addChild(this->buffGlow);
 	this->iconContainer->addChild(this->buffIcon);
 	this->addChild(this->iconContainer);

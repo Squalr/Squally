@@ -133,7 +133,7 @@ void Wind::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Wind::MapKey,
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
-				UIResources::Menus_Icons_Spell,
+				UIResources::Menus_Icons_SpellWind,
 				WindSetSpeedPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },

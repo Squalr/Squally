@@ -28,7 +28,7 @@ using namespace cocos2d;
 EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
+	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Sword);
 	this->weaponSound = WorldSound::create();
 	this->isPerformingOutOfCombatAttack = false;
 	this->cachedProjectile = nullptr;
