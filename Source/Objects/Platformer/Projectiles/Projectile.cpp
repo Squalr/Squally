@@ -321,9 +321,13 @@ NO_OPTIMIZE Vec3 Projectile::getLaunchVelocity()
 {
 	Vec3 velocityCopy = this->launchVelocity;
 	static const volatile int* freeMemory = new int[128];
-	const volatile float* velocityPtrX = &velocityCopy.x;
-	const volatile float* velocityPtrY = &velocityCopy.y;
-	const volatile float* velocityPtrZ = &velocityCopy.z;
+	static const volatile float* velocityPtrX;
+	static const volatile float* velocityPtrY;
+	static const volatile float* velocityPtrZ;
+
+	velocityPtrX = &velocityCopy.x;
+	velocityPtrY = &velocityCopy.y;
+	velocityPtrZ = &velocityCopy.z;
 
 	// Push velocity variables onto FPU stack
 	ASM(push ZAX)
@@ -362,10 +366,14 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE Vec3 Projectile::getLaunchAcceleration()
 {
 	Vec3 accelerationCopy = this->launchAcceleration;
-	const volatile float* accelerationPtrX = &accelerationCopy.x;
-	const volatile float* accelerationPtrY = &accelerationCopy.y;
-	const volatile float* accelerationPtrZ = &accelerationCopy.z;
 	static const volatile int* freeMemory = new int[128];
+	const volatile float* accelerationPtrX;
+	const volatile float* accelerationPtrY;
+	const volatile float* accelerationPtrZ;
+
+	accelerationPtrX = &accelerationCopy.x;
+	accelerationPtrY = &accelerationCopy.y;
+	accelerationPtrZ = &accelerationCopy.z;
 
 	// Push acceleration variables onto FPU stack
 	ASM(push ZAX)

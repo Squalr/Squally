@@ -216,9 +216,12 @@ NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
 
 		this->projectilePool->getNextProjectile();
 	}
+	
+	static volatile float* timePtr;
+	static volatile float* dtPtr = &dt;
 
-	volatile float* timePtr = &this->launchTimer;
-	volatile float* dtPtr = &dt;
+	timePtr = &this->launchTimer;
+	dtPtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);
