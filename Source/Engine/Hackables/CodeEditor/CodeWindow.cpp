@@ -66,7 +66,7 @@ const Color3B CodeWindow::CommentColor = Color3B(87, 166, 74);
 const Color3B CodeWindow::LineNumberColor = Color3B(166, 166, 166);
 const Size CodeWindow::Padding = Size(8.0f, 4.0f);
 const float CodeWindow::MarginSize = 48.0f;
-const float CodeWindow::TitleBarHeight = 48.0f;
+const float CodeWindow::TitleBarHeight = 64.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
 

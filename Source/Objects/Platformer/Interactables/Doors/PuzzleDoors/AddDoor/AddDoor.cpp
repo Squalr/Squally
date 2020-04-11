@@ -9,7 +9,6 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorClippy.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -36,9 +35,6 @@ AddDoor* AddDoor::create(ValueMap& properties)
 
 AddDoor::AddDoor(ValueMap& properties) : super(properties)
 {
-	this->clippy = AddDoorClippy::create();
-
-	this->registerClippy(this->clippy);
 }
 
 AddDoor::~AddDoor()
@@ -76,7 +72,20 @@ void AddDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				0.0f,
-				this->clippy
+				nullptr,
+				{
+					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
+					HackableCode::ReadOnlyScript(nullptr,
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					"add ecx, 2",
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					"add rcx, 2"),
+				},
+				true
 			)
 		},
 	};

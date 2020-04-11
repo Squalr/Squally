@@ -8964,36 +8964,6 @@ namespace Strings
 		virtual ~Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add();
-		virtual ~Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add() = default;
-	};
-
-	class Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul();
-		virtual ~Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul() = default;
-	};
-
 	class Menus_Hacking_ClippyHelp_Objects_Wind_WindNop : public LocalizedString
 	{
 	public:
@@ -16104,6 +16074,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_Addition() = default;
 	};
 
+	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber() = default;
+	};
+
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx : public LocalizedString
 	{
 	public:
@@ -16147,6 +16147,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx();
 		virtual ~Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber() = default;
 	};
 
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply : public LocalizedString
@@ -16267,6 +16297,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx();
 		virtual ~Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify();
+		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify() = default;
+	};
+
+	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown();
+		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown() = default;
 	};
 
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax : public LocalizedString

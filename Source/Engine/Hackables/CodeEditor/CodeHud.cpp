@@ -66,7 +66,7 @@ CodeHud::CodeHud()
 	this->clippyNode = Node::create();
 
 	this->functionWindow = CodeWindow::create(CodeHud::FunctionSize);
-	this->statusWindow = LabelStack::create(CodeHud::StatusSize, 8.0f);
+	this->statusWindow = LabelStack::create(CodeHud::StatusSize, 4.0f);
 	this->registerWindow = LabelStack::create(CodeHud::StatusSize, 8.0f);
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->scriptList = ScriptList::create(this->confirmationMenu, [=](ScriptEntry* scriptEntry) { this->functionWindow->openScript(scriptEntry); });

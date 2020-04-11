@@ -145,8 +145,12 @@ void Wind::registerHackables()
 				this->windClippy,
 				{
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown::create(),
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify::create()) + 
 						"mov dword ptr [eax], 0.0f\n"
 						"mov dword ptr [ebx], -1.0f\n",
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify::create()) + 
 						"mov dword ptr [rax], 0.0f\n"
 						"mov dword ptr [rbx], -1.0f\n"
 					),

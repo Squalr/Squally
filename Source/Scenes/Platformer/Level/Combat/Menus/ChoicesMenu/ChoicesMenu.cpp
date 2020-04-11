@@ -55,12 +55,12 @@ ChoicesMenu::ChoicesMenu()
 		this->onItemsClick();
 	});
 
-	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), nullptr, UIResources::Menus_Icons_Spear, UIResources::Combat_AttackCircle, [=]()
+	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), nullptr, UIResources::Menus_Icons_SpearTip, UIResources::Combat_AttackCircle, [=]()
 	{
 		this->onAttackClick();
 	});
 
-	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), nullptr, UIResources::Menus_Icons_ShieldBroken, UIResources::Combat_DefendCircle, [=]()
+	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), nullptr, UIResources::Menus_Icons_Shield, UIResources::Combat_DefendCircle, [=]()
 	{
 		this->onDefendClick();
 	});

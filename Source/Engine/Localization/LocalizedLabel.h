@@ -13,8 +13,8 @@ public:
 	enum class FontStyle
 	{
 		Main,
-		Coding,
 		Monospaced,
+		Coding,
 	};
 
 	enum class FontSize
@@ -84,7 +84,6 @@ private:
 	float getFontSizeP();
 	float getFontSizeSmall();
 
-	std::string getPixelFont();
 	std::string getMainFont();
 	std::string getMonospacedFont();
 	std::string getCodingFont();

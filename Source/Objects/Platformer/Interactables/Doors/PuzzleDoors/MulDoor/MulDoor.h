@@ -2,8 +2,6 @@
 
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/GatePuzzleDoor.h"
 
-class MulDoorClippy;
-
 class MulDoor : public GatePuzzleDoor
 {
 public:
@@ -24,6 +22,4 @@ private:
 
 	void showActiveHackableCrystal();
 	void mulDoorTransform(int puzzleIndex);
-
-	MulDoorClippy* clippy;
 };

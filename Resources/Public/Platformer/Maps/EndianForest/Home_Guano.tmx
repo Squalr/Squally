@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="90" nextobjectid="747">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="748">
  <objectgroup id="1" name="meta" visible="0">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -79,12 +79,15 @@
   <object id="735" name="marble" type="texture" x="-382.758" y="-159.093" width="1010.97" height="1360.61"/>
   <object id="736" name="marble" type="texture" x="1443" y="-140.911" width="1010.97" height="1360.61"/>
  </objectgroup>
- <objectgroup id="80" name="jail bg -2" visible="0">
+ <objectgroup id="80" name="jail bg -2">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="730" name="Generic/Background/Jail" type="decor" x="655.955" y="251.985" width="779" height="993"/>
+ </objectgroup>
+ <objectgroup id="90" name="magic wall bg -2">
+  <object id="747" name="magic-wall" type="object" x="679.994" y="255.015" width="749.102" height="993"/>
  </objectgroup>
  <objectgroup id="81" name="columns bg -2" visible="0">
   <properties>
@@ -160,7 +163,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -170,7 +173,7 @@
     <property name="transition" value="cell"/>
    </properties>
   </object>
-  <object id="721" name="mul-door" type="object" x="699.333" y="486.5" width="696" height="775">
+  <object id="721" name="mul-door" type="object" x="696.666" y="493.167" width="696" height="775">
    <properties>
     <property name="map" value="EndianForest/Mages_Prison"/>
     <property name="transition" value="cell"/>
