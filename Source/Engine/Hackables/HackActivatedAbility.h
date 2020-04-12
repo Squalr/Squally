@@ -11,10 +11,12 @@ class HackActivatedAbility : public HackableAttribute
 {
 public:
 	static HackActivatedAbility* create(
+		std::string hackableIdentifier,
 		std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
 		int hackFlags,
 		float duration,
+		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
 		HackablePreview* hackablePreview,
@@ -23,10 +25,13 @@ public:
 	void activate();
 
 protected:
-	HackActivatedAbility(std::function<void()> onActivate,
+	HackActivatedAbility(
+		std::string hackableIdentifier,
+		std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
 		int hackFlags, 
 		float duration,
+		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
 		HackablePreview* hackablePreview,

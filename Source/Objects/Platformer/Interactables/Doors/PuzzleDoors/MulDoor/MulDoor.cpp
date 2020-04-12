@@ -64,6 +64,7 @@ void MulDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				MulDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_Pearls,
 				MulDoorPreview::create(),
 				{

@@ -90,6 +90,7 @@ void MetalSpikes::registerHackables()
 			HackableCode::HackableCodeInfo(
 				MetalSpikes::MapKey,
 				Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
 				MetalSpikesUpdateTimerPreview::create(),
 				{

@@ -120,6 +120,7 @@ void Blind::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Blind::BlindIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Blind_Blind::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_Eye,
 				BlindGenericPreview::create(),
 				{

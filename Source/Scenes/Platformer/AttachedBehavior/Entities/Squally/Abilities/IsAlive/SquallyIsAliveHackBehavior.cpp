@@ -87,7 +87,7 @@ void SquallyIsAliveHackBehavior::onLoad()
 	{
 		for (auto next : this->codeList)
 		{
-			if (next->getHackableCodeIdentifier() == SquallyIsAliveHackBehavior::IdentifierIsAlive)
+			if (next->getHackableIdentifier() == SquallyIsAliveHackBehavior::IdentifierIsAlive)
 			{
 				next->getClippy()->setIsEnabled(true);
 			}
@@ -113,6 +113,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SquallyIsAliveHackBehavior::IdentifierIsAlive,
 				Strings::Menus_Hacking_Abilities_Squally_IsAlive::create(),
+				HackableAttribute::HackBarColor::Red,
 				UIResources::Menus_Icons_Heart,
 				EntityPreview::create(this->squally),
 				{

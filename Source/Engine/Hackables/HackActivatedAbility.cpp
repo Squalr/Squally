@@ -6,16 +6,45 @@
 
 using namespace cocos2d;
 
-HackActivatedAbility* HackActivatedAbility::create(std::function<void()> onActivate, std::function<void()> onDeactivate, int hackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
+HackActivatedAbility* HackActivatedAbility::create(
+	std::string hackableIdentifier,
+	std::function<void()> onActivate,
+	std::function<void()> onDeactivate,
+	int hackFlags,
+	float duration,
+	HackBarColor hackBarColor,
+	std::string iconResource,
+	LocalizedString* name,
+	HackablePreview* hackablePreview,
+	Clippy* clippy)
 {
-	HackActivatedAbility* instance = new HackActivatedAbility(onActivate, onDeactivate, hackFlags, duration, iconResource, name, hackablePreview, clippy);
+	HackActivatedAbility* instance = new HackActivatedAbility(hackableIdentifier, onActivate, onDeactivate, hackFlags, duration, hackBarColor, iconResource, name, hackablePreview, clippy);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackActivatedAbility::HackActivatedAbility(std::function<void()> onActivate, std::function<void()> onDeactivate, int hackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy) : HackableAttribute(hackFlags, duration, 0.0f, iconResource, name, hackablePreview)
+HackActivatedAbility::HackActivatedAbility(
+	std::string hackableIdentifier,
+	std::function<void()> onActivate,
+	std::function<void()> onDeactivate,
+	int hackFlags,
+	float duration,
+	HackBarColor hackBarColor,
+	std::string iconResource,
+	LocalizedString* name,
+	HackablePreview* hackablePreview,
+	Clippy* clippy)
+	: HackableAttribute(
+		hackableIdentifier,
+		hackFlags,
+		duration,
+		0.0f,
+		hackBarColor,
+		iconResource,
+		name,
+		hackablePreview)
 {
 	this->onActivate = onActivate;
 	this->onDeactivate = onDeactivate;
@@ -38,6 +67,8 @@ void HackActivatedAbility::activate()
 
 void HackActivatedAbility::restoreState()
 {
+	super::restoreState();
+	
 	if (this->onDeactivate != nullptr)
 	{
 		this->onDeactivate();

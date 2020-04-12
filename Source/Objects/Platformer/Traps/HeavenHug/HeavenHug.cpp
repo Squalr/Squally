@@ -85,6 +85,7 @@ void HeavenHug::registerHackables()
 			HackableCode::HackableCodeInfo(
 				HeavenHug::MapKey,
 				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_BleedingLimb,
 				HeavenHugSetSpeedPreview::create(),
 				{

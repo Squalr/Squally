@@ -122,6 +122,7 @@ void PivotLauncher::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"pivot-launch-timer",
 				Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				this->getTimerPreview(),
 				{

@@ -223,7 +223,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
-	ValueVector savedScripts = SaveManager::getProfileDataOrDefault(hackableCode->getHackableCodeIdentifier(), Value(ValueVector())).asValueVector();
+	ValueVector savedScripts = SaveManager::getProfileDataOrDefault(hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
 
 	// Add user scripts
 	for (auto savedScript : savedScripts)
@@ -284,7 +284,7 @@ void ScriptList::saveScripts()
 		scriptsToSave.push_back(Value(attributes));
 	}
 
-	SaveManager::SaveProfileData(this->hackableCode->getHackableCodeIdentifier(), Value(scriptsToSave));
+	SaveManager::SaveProfileData(this->hackableCode->getHackableIdentifier(), Value(scriptsToSave));
 }
 
 ScriptEntry* ScriptList::getActiveScript()

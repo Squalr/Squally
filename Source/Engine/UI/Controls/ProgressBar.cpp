@@ -27,7 +27,7 @@ ProgressBar::ProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizo
 {
 	this->isHorizontal = isHorizontal;
 	this->frame = frame;
-	this->progressBar = fill;
+	this->fill = fill;
 
 	this->clipStencil = DrawNode::create();
 	this->progressClip = ClippingNode::create(clipStencil);
@@ -37,7 +37,7 @@ ProgressBar::ProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizo
 
 	this->setContentSize(this->frame->getContentSize());
 
-	this->progressClip->addChild(this->progressBar);
+	this->progressClip->addChild(this->fill);
 	this->addChild(this->frame);
 	this->addChild(this->progressClip);
 
@@ -71,18 +71,23 @@ void ProgressBar::setProgress(float newProgress)
 		if (this->isHorizontal)
 		{
 			this->clipStencil->drawSolidRect(
-				-Vec2(this->progressBar->getContentSize() / 2.0f),
-				Size(this->progressBar->getContentSize().width * this->progress, this->progressBar->getContentSize().height) - this->progressBar->getContentSize() / 2.0f,
+				-Vec2(this->fill->getContentSize() / 2.0f),
+				Size(this->fill->getContentSize().width * this->progress, this->fill->getContentSize().height) - this->fill->getContentSize() / 2.0f,
 				Color4F::GREEN
 			);
 		}
 		else
 		{
 			this->clipStencil->drawSolidRect(
-				-Vec2(this->progressBar->getContentSize() / 2.0f),
-				Size(this->progressBar->getContentSize().width, this->progressBar->getContentSize().height * this->progress) - this->progressBar->getContentSize() / 2.0f,
+				-Vec2(this->fill->getContentSize() / 2.0f),
+				Size(this->fill->getContentSize().width, this->fill->getContentSize().height * this->progress) - this->fill->getContentSize() / 2.0f,
 				Color4F::GREEN
 			);
 		}
 	}
+}
+
+Sprite* ProgressBar::getFillSprite()
+{
+	return static_cast<Sprite*>(this->fill);
 }

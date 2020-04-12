@@ -164,8 +164,9 @@ void Projectile::registerHackables()
 		{
 			LOCAL_FUNC_ID_VELOCITY,
 			HackableCode::HackableCodeInfo(
-				"proximity-object",
+				"projectile-velocity",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_AxeSlash,
 				this->createVelocityPreview(),
 				{
@@ -182,8 +183,9 @@ void Projectile::registerHackables()
 		{
 			LOCAL_FUNC_ID_ACCELERATION,
 			HackableCode::HackableCodeInfo(
-				"proximity-object",
+				"projectile-acceleration",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
+				HackableAttribute::HackBarColor::Gray,
 				UIResources::Menus_Icons_Scale,
 				this->createAccelerationPreview(),
 				{

@@ -109,6 +109,7 @@ void StoneSkin::registerHackables()
 			HackableCode::HackableCodeInfo(
 				StoneSkin::StoneSkinIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create(),
+				HackableAttribute::HackBarColor::Gray,
 				UIResources::Menus_Icons_ShieldBroken,
 				StoneSkinGenericPreview::create(),
 				{

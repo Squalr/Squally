@@ -10,6 +10,20 @@ class LocalizedString;
 class HackableAttribute : public SmartNode
 {
 public:
+	enum class HackBarColor
+	{
+		Blue,
+		Gray,
+		Green,
+		Orange,
+		Pink,
+		Purple,
+		Red,
+		Teal,
+		Yellow
+	};
+
+	std::string getHackableIdentifier();
 	int getRequiredHackFlag();
 	float getElapsedDuration();
 	float getDuration();
@@ -17,32 +31,65 @@ public:
 	bool isCooldownComplete();
 	float getElapsedCooldown();
 	float getCooldown();
+	std::string getHackBarResource();
+	HackBarColor getHackBarColor();
 	std::string getIconResource();
 	LocalizedString* getName();
 	HackablePreview* getHackablePreview();
 	virtual void* getPointer();
 	Clippy* getClippy();
+	virtual void restoreState();
+	void restoreStateIfUnique();
 
 protected:
-	HackableAttribute(int requiredHackFlags, float duration, float cooldown, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy = nullptr);
+	friend class SmartScene;
+
+	HackableAttribute(
+		std::string hackableIdentifier,
+		int requiredHackFlags,
+		float duration,
+		float cooldown,
+		HackBarColor hackBarColor,
+		std::string iconResource,
+		LocalizedString* name,
+		HackablePreview* hackablePreview,
+		Clippy* clippy = nullptr
+	);
 	virtual ~HackableAttribute();
 
 	void onEnter() override;
-	void update(float dt) override;
+	void initializeListeners() override;
 	void resetTimer();
-	virtual void restoreState();
+	static void UpdateSharedState(float dt);
+	static void CleanUpGlobalState();
+
+	static bool HackTimersPaused;
 
 private:
 	typedef SmartNode super;
 
+	struct SharedState
+	{
+		float duration;
+		float cooldown;
+		float elapsedDuration;
+		float elapsedCooldown;
+
+		SharedState() : duration(0.0f), cooldown(0.0f), elapsedDuration(0.0f), elapsedCooldown(0.0f) { }
+		SharedState(float duration, float cooldown) : duration(duration), cooldown(cooldown), elapsedDuration(duration), elapsedCooldown(duration) { }
+	};
+
+	SharedState* getSharedState();
+
+	static void TryRegisterSharedState(HackableAttribute* attribute, SharedState sharedState);
+
+	std::string hackableIdentifier;
 	LocalizedString* name;
+	HackBarColor hackBarColor;
 	std::string iconResource;
 	HackablePreview* hackablePreview;
-	bool isTimerPaused;
 	int requiredHackFlag;
-	float duration;
-	float cooldown;
-	float elapsedDuration;
-	float elapsedCooldown;
 	Clippy* clippy;
+
+	static std::map<std::string, SharedState> SharedStateMap;
 };

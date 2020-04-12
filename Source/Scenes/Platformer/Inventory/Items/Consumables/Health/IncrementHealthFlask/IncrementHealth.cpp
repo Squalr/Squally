@@ -110,6 +110,7 @@ void IncrementHealth::registerHackables()
 			HackableCode::HackableCodeInfo(
 				IncrementHealth::IncrementHealthIdentifier,
 				Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth::create(),
+				HackableAttribute::HackBarColor::Green,
 				UIResources::Menus_Icons_ArrowUp,
 				IncrementHealthGenericPreview::create(),
 				{

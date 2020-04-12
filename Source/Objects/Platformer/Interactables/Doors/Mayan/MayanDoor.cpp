@@ -207,6 +207,7 @@ void MayanDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-red",
 				Strings::Menus_Hacking_Objects_MayanDoor_Combination1::create(),
+				HackableAttribute::HackBarColor::Red,
 				UIResources::Menus_Icons_Ruby,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
@@ -223,6 +224,7 @@ void MayanDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-blue",
 				Strings::Menus_Hacking_Objects_MayanDoor_Combination2::create(),
+				HackableAttribute::HackBarColor::Blue,
 				UIResources::Menus_Icons_Diamond,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
@@ -239,6 +241,7 @@ void MayanDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-purple",
 				Strings::Menus_Hacking_Objects_MayanDoor_Combination3::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrystalShard,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{

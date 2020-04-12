@@ -103,6 +103,7 @@ void Fireball::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"Fireball",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_FireBalls,
 				FireballSpeedPreview::create(),
 				{

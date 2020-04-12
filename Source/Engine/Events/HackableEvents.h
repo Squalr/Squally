@@ -21,7 +21,9 @@ public:
 	static const std::string EventHackableObjectClose;
 	static const std::string EventHackableAttributeEdit;
 	static const std::string EventHackableAttributeEditDone;
+	static const std::string EventQueryAttributeCountPrefix;
 	static const std::string EventHackApplied;
+	static const std::string EventHackRestoreStatePrefix;
 	static const std::string EventHackFlagsChanged;
 	static const std::string EventPauseHackTimers;
 	static const std::string EventResumeHackTimers;
@@ -53,6 +55,28 @@ public:
 		}
 	};
 
+	struct HackRestoreStateArgs
+	{
+		std::string hackableObjectIdentifier;
+
+		HackRestoreStateArgs(std::string hackableObjectIdentifier) : hackableObjectIdentifier(hackableObjectIdentifier), handled(false)
+		{
+		}
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
+	};
+
 	struct HackToggleArgs
 	{
 		HackToggleArgs()
@@ -72,6 +96,16 @@ public:
 		bool hackerModeAllowed;
 
 		HackerModeQueryArgs() : hackerModeAllowed(false)
+		{
+		}
+	};
+
+	struct HackableAttributeQueryArgs
+	{
+		std::string hackableIdentifier;
+		int count;
+
+		HackableAttributeQueryArgs(std::string hackableIdentifier) : hackableIdentifier(hackableIdentifier), count(0)
 		{
 		}
 	};
@@ -96,7 +130,9 @@ public:
 	static void TriggerCloseHackable();
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
 	static void TriggerEditHackableAttributeDone();
+	static void TriggerQueryAttributeCount(HackableAttributeQueryArgs* args);
 	static void TriggerOnHackApplied(HackAppliedArgs args);
+	static void TriggerHackRestoreState(HackRestoreStateArgs args);
 	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);
 	static void TriggerPauseHackTimers();
 	static void TriggerResumeHackTimers();

@@ -37,8 +37,8 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->frame = Sprite::create(UIResources::HUD_Frame);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->emblemNode = Node::create();
-	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
-	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
+	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed), fillOffset);
+	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillBlue), fillOffset);
 	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
 	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
 	this->healthSprite = Sprite::create(UIResources::HUD_Heart);

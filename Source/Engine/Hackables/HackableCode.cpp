@@ -37,9 +37,18 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, HackableCodeI
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo) : HackableAttribute(hackableCodeInfo.hackFlags, hackableCodeInfo.duration, hackableCodeInfo.cooldown, hackableCodeInfo.iconResource, hackableCodeInfo.functionName, hackableCodeInfo.hackablePreview, hackableCodeInfo.clippy)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo)
+	: HackableAttribute(
+		hackableCodeInfo.hackableIdentifier + "_" + (hackableCodeInfo.functionName == nullptr ? "" : hackableCodeInfo.functionName->getStringIdentifier()),
+		hackableCodeInfo.hackFlags,
+		hackableCodeInfo.duration,
+		hackableCodeInfo.cooldown,
+		hackableCodeInfo.hackBarColor,
+		hackableCodeInfo.iconResource,
+		hackableCodeInfo.functionName,
+		hackableCodeInfo.hackablePreview,
+		hackableCodeInfo.clippy)
 {
-	this->hackableCodeIdentifier = hackableCodeInfo.hackableObjectIdentifier + "_" + (hackableCodeInfo.functionName == nullptr ? "" : hackableCodeInfo.functionName->getStringIdentifier());
 	this->codePointer = (unsigned char*)codeStart;
 	this->codeEndPointer = (unsigned char*)codeEnd;
 	this->hackableCodeInfo = hackableCodeInfo;
@@ -57,17 +66,17 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 
 	if (codeStart != nullptr)
 	{
-		if (HackableCode::OriginalCodeCache.find(hackableCodeInfo.hackableObjectIdentifier) == HackableCode::OriginalCodeCache.end())
+		if (HackableCode::OriginalCodeCache.find(hackableCodeInfo.hackableIdentifier) == HackableCode::OriginalCodeCache.end())
 		{
-			HackableCode::OriginalCodeCache[hackableCodeInfo.hackableObjectIdentifier] = std::vector<unsigned char>();
+			HackableCode::OriginalCodeCache[hackableCodeInfo.hackableIdentifier] = std::vector<unsigned char>();
 
 			for (int index = 0; index < this->originalCodeLength; index++)
 			{
-				HackableCode::OriginalCodeCache[hackableCodeInfo.hackableObjectIdentifier].push_back(((unsigned char*)codeStart)[index]);
+				HackableCode::OriginalCodeCache[hackableCodeInfo.hackableIdentifier].push_back(((unsigned char*)codeStart)[index]);
 			}
 		}
 
-		this->originalCodeCopy = HackableCode::OriginalCodeCache[hackableCodeInfo.hackableObjectIdentifier];
+		this->originalCodeCopy = HackableCode::OriginalCodeCache[hackableCodeInfo.hackableIdentifier];
 	}
 
 	this->readOnlyScripts = std::vector<ReadOnlyScript>();
@@ -130,11 +139,6 @@ std::vector<HackableCode::ReadOnlyScript> HackableCode::getReadOnlyScripts()
 	return this->readOnlyScripts;
 }
 
-std::string HackableCode::getHackableCodeIdentifier()
-{
-	return this->hackableCodeIdentifier;
-}
-
 std::string HackableCode::getAssemblyString()
 {
 	return this->assemblyString;
@@ -192,6 +196,8 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 
 void HackableCode::restoreState()
 {
+	super::restoreState();
+	
 	if (this->codePointer == nullptr)
 	{
 		return;

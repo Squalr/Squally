@@ -88,6 +88,7 @@ void FloatingWoodenBeam::registerHackables()
 			HackableCode::HackableCodeInfo(
 				FloatingWoodenBeam::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_Anvil,
 				FloatingWoodenBeamGetDensityPreview::create(),
 				{

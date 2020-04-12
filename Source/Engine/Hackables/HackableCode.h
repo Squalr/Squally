@@ -167,8 +167,9 @@ public:
 
 	struct HackableCodeInfo
 	{
-		std::string hackableObjectIdentifier;
+		std::string hackableIdentifier;
 		LocalizedString* functionName;
+		HackBarColor hackBarColor;
 		std::string iconResource;
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
@@ -179,9 +180,9 @@ public:
 		std::vector<ReadOnlyScript> readOnlyScripts;
 		bool excludeDefaultScript;
 
-		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
+		HackableCodeInfo() : hackableIdentifier(""), functionName(nullptr), hackBarColor(HackBarColor::Purple), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	
 	};
 
@@ -200,7 +201,6 @@ public:
 
 	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
 	std::vector<ReadOnlyScript> getReadOnlyScripts();
-	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
 	void* getPointer() override;
@@ -225,7 +225,6 @@ private:
 	static std::vector<HackableCode*> parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 	static MarkerMap& parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 
-	std::string hackableCodeIdentifier;
 	std::string assemblyString;
 	std::string originalAssemblyString;
 	void* codePointer;

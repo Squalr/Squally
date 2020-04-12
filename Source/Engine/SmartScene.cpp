@@ -11,6 +11,8 @@
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/SceneEvents.h"
+#include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -83,6 +85,8 @@ void SmartScene::onEnter()
 	{
 		this->onDeveloperModeDisable();
 	}
+
+	this->scheduleUpdate();
 }
 
 void SmartScene::onExit()
@@ -124,6 +128,28 @@ void SmartScene::initializeListeners()
 	{
 		this->onHackerModeDisable();
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
+	{
+		HackableAttribute::HackTimersPaused = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventResumeHackTimers, [=](EventCustom* eventCustom)
+	{
+		HackableAttribute::HackTimersPaused = false;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventAfterSceneChange, [=](EventCustom* eventCustom)
+	{
+		HackableAttribute::CleanUpGlobalState();
+	}));
+}
+
+void SmartScene::update(float dt)
+{
+	super::update(dt);
+
+	HackableAttribute::UpdateSharedState(dt);
 }
 
 void SmartScene::onDeveloperModeEnable(int debugLevel)

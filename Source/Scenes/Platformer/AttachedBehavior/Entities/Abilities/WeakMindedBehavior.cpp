@@ -54,6 +54,7 @@ void WeakMindedBehavior::onLoad()
 		this->glowAnim->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
 	}
 	this->entity->registerHackAbility(HackActivatedAbility::create(
+		"weak-minded",
 		[=]()
 		{
 			this->onActivate();
@@ -63,6 +64,7 @@ void WeakMindedBehavior::onLoad()
 		},
 		1,
 		10.0f,
+		HackableAttribute::HackBarColor::Purple,
 		UIResources::Menus_Icons_Eye,
 		Strings::Menus_Hacking_Abilities_WeakMinded::create(),
 		nullptr,

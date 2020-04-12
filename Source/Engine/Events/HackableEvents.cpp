@@ -16,7 +16,9 @@ const std::string HackableEvents::EventHackableObjectOpen = "EVENT_OPEN_HACKABLE
 const std::string HackableEvents::EventHackableObjectClose = "EVENT_CLOSE_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
+const std::string HackableEvents::EventQueryAttributeCountPrefix = "EVENT_QUERY_ATTRIBUTE_COUNT_";
 const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
+const std::string HackableEvents::EventHackRestoreStatePrefix = "EVENT_HACK_RESTORE_STATE_";
 const std::string HackableEvents::EventHackFlagsChanged = "EVENT_HACK_FLAGS_CHANGED";
 const std::string HackableEvents::EventPauseHackTimers = "EVENT_PAUSE_HACK_TIMERS";
 const std::string HackableEvents::EventResumeHackTimers = "EVENT_RESUME_HACK_TIMERS";
@@ -105,11 +107,26 @@ void HackableEvents::TriggerEditHackableAttributeDone()
 		HackableEvents::EventHackableAttributeEditDone
 	);
 }
+void HackableEvents::TriggerQueryAttributeCount(HackableAttributeQueryArgs* args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventQueryAttributeCountPrefix + args->hackableIdentifier,
+		args
+	);
+}
 
 void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackApplied,
+		&args
+	);
+}
+
+void HackableEvents::TriggerHackRestoreState(HackRestoreStateArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackRestoreStatePrefix + args.hackableObjectIdentifier,
 		&args
 	);
 }

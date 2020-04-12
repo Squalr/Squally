@@ -88,6 +88,7 @@ void FloatingAsteroid::registerHackables()
 			HackableCode::HackableCodeInfo(
 				FloatingAsteroid::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
+				HackableAttribute::HackBarColor::Purple,
 				UIResources::Menus_Icons_Anvil,
 				FloatingAsteroidGetDensityPreview::create(),
 				{
