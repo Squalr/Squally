@@ -190,10 +190,15 @@ void CurseOfTongues::onModifyTimelineSpeed(float* timelineSpeed, std::function<v
 
 NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = CurseOfTongues::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = CurseOfTongues::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);

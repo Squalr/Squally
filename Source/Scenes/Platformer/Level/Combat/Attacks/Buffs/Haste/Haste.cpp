@@ -171,10 +171,15 @@ void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> ha
 
 NO_OPTIMIZE void Haste::applyHaste()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = Haste::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = Haste::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);
