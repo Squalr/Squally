@@ -49,8 +49,10 @@ std::string HackUtils::preProcessAssembly(std::string assembly)
 {
 	std::string processedAssembly = "";
 
-	auto floatParser = [&](std::string const& match) {
-        std::istringstream iss(match);
+	auto floatParser = [&](std::string const& match)
+	{
+		std::string matchTrimmed = StrUtils::rtrim(match, "f");
+        std::istringstream iss(matchTrimmed);
         float parsedFloat;
 
         if(iss >> parsedFloat)
