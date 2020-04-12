@@ -5,8 +5,8 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Hackables/Clippy.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/Clippy.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
 
 using namespace cocos2d;
@@ -128,6 +128,11 @@ float HackableAttribute::getElapsedDuration()
 float HackableAttribute::getDuration()
 {
 	return this->duration;
+}
+
+bool HackableAttribute::isComplete()
+{
+	return this->getElapsedDuration() >= this->getDuration();
 }
 
 bool HackableAttribute::isCooldownComplete()

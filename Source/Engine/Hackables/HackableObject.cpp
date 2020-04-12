@@ -9,10 +9,10 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/Clippy.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"
@@ -38,11 +38,13 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackAbilityList = std::vector<HackActivatedAbility*>();
 	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->clippyList = std::vector<Clippy*>();
-	this->uiElements = Node::create();
+	this->uiElementsButton = Node::create();
 	this->uiElementsRain = Node::create();
+	this->uiElementsProgressBars = Node::create();
 	this->hackButton = HackButton::create();
 	this->hackablesNode = Node::create();
-	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
+	this->timeRemainingIcons = std::vector<Sprite*>();
+	this->timeRemainingBars = std::vector<ProgressBar*>();
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
 	this->allowFx = true;
@@ -55,14 +57,13 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackCircle = nullptr;
 
 	this->hackButton->setVisible(false);
-	this->timeRemainingBar->setVisible(false);
 
-	this->uiElements->addChild(this->hackButton);
-	this->uiElements->addChild(this->timeRemainingBar);
+	this->uiElementsButton->addChild(this->hackButton);
 	this->uiElementsRain->addChild(this->hackParticlesNode);
 	this->addChild(this->hackablesNode);
 	this->addChild(this->uiElementsRain);
-	this->addChild(this->uiElements);
+	this->addChild(this->uiElementsButton);
+	this->addChild(this->uiElementsProgressBars);
 }
 
 HackableObject::~HackableObject()
@@ -132,8 +133,9 @@ void HackableObject::update(float dt)
 {
 	super::update(dt);
 
-	this->uiElements->setPosition(this->getButtonOffset());
+	this->uiElementsButton->setPosition(this->getButtonOffset());
 	this->uiElementsRain->setPosition(this->getRainOffset());
+	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
 
 	if (!this->hackableList.empty())
 	{	
@@ -141,53 +143,14 @@ void HackableObject::update(float dt)
 		if (!this->hasRelocatedUI)
 		{
 			// Move the UI elements to the top-most layer
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElements));
+			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsButton));
 			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
+			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsProgressBars));
 			this->hasRelocatedUI = true;
 		}
 	}
 
-	if (!this->trackedAttributes.empty())
-	{
-		// Remove attributes that have timed out and are available cooldown wise
-		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
-		{
-			return (attribute->getElapsedDuration() >= attribute->getDuration()) && attribute->isCooldownComplete();
-		}), this->trackedAttributes.end());
-
-		bool allComplete = std::all_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
-			{
-				return (attribute->getElapsedDuration() >= attribute->getDuration());
-			});
-
-		// Show/hide progress bar depending if durations are complete
-		if (allComplete && this->timeRemainingBar->isVisible())
-		{
-			this->timeRemainingBar->setVisible(false);
-			this->refreshParticleFx();
-		}
-		else if (!allComplete && !this->timeRemainingBar->isVisible())
-		{
-			this->timeRemainingBar->setVisible(true);
-			this->refreshParticleFx();
-		}
-
-		// All attributes removed! Refresh PFX
-		if (this->trackedAttributes.empty())
-		{
-			this->refreshParticleFx();
-		}
-
-		float highestRatio = 0.0f;
-
-		// If multiple hacks are enabled, just pick the highest ratio for now
-		for (auto next : this->trackedAttributes)
-		{
-			highestRatio = std::max(highestRatio, next->getElapsedDuration() / next->getDuration());
-		}
-
-		this->timeRemainingBar->setProgress(1.0f - highestRatio);
-	}
+	this->updateTimeRemainingBars();
 }
 
 int HackableObject::GetHackFlags()
@@ -255,12 +218,66 @@ void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
 {
 	this->defer([=]()
 	{
-		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElements, newParent));
+		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsRain, newParent));
+		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsButton, newParent));
+		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsProgressBars, newParent));
 	});
 }
 
 void HackableObject::registerHackables()
 {
+}
+
+void HackableObject::updateTimeRemainingBars()
+{
+	while (this->timeRemainingBars.size() < this->trackedAttributes.size())
+	{
+		ProgressBar* progressBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
+		Sprite* icon = Sprite::create();
+
+		this->timeRemainingBars.push_back(progressBar);
+		this->timeRemainingIcons.push_back(icon);
+
+		this->uiElementsProgressBars->addChild(progressBar);
+		this->uiElementsProgressBars->addChild(icon);
+	}
+
+	// Remove attributes that have timed out and are available cooldown wise
+	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
+	{
+		return attribute->isComplete() && attribute->isCooldownComplete();
+	}), this->trackedAttributes.end());
+
+	int attributeCount = int(this->trackedAttributes.size());
+
+	for (int index = 0; index < int(this->timeRemainingBars.size()); index++)
+	{
+		if (index < attributeCount)
+		{
+			auto next = this->trackedAttributes[index];
+
+			this->timeRemainingBars[index]->setVisible(true);
+			this->timeRemainingIcons[index]->setVisible(true);
+			
+			if (this->timeRemainingIcons[index]->getResourceName() != next->getIconResource())
+			{
+				this->timeRemainingIcons[index]->initWithFile(next->getIconResource());
+				this->timeRemainingIcons[index]->setScale(0.5f);
+			}
+
+			this->timeRemainingBars[index]->setPositionY(float(index) * -32.0f);
+			this->timeRemainingIcons[index]->setPosition(Vec2(-80.0f, float(index) * -32.0f));
+
+			this->timeRemainingBars[index]->setProgress(1.0f - next->getElapsedDuration() / next->getDuration());
+		}
+		else
+		{
+			this->timeRemainingBars[index]->setVisible(false);
+			this->timeRemainingIcons[index]->setVisible(false);
+		}
+	}
+
+	this->refreshParticleFx();
 }
 
 void HackableObject::refreshParticleFx()
@@ -275,11 +292,31 @@ void HackableObject::refreshParticleFx()
 		&& this->trackedAttributes.empty())
 	{
 		this->createSensingParticles();
-		this->hackParticles1->start();
-		this->hackParticles2->start();
-		this->hackParticles3->start();
-		this->hackParticles4->start();
-		this->hackParticles5->start();
+
+		if (!hackParticles1->isActive())
+		{
+			this->hackParticles1->start();
+		}
+
+		if (!hackParticles2->isActive())
+		{
+			this->hackParticles2->start();
+		}
+
+		if (!hackParticles3->isActive())
+		{
+			this->hackParticles3->start();
+		}
+
+		if (!hackParticles4->isActive())
+		{
+			this->hackParticles4->start();
+		}
+
+		if (!hackParticles5->isActive())
+		{
+			this->hackParticles5->start();
+		}
 
 		this->hackParticles2->accelerate(1.0f);
 		this->hackParticles4->accelerate(1.0f);
@@ -318,6 +355,12 @@ Vec2 HackableObject::getRainOffset()
 Vec2 HackableObject::getButtonOffset()
 {
 	return Vec2::ZERO;
+}
+
+cocos2d::Vec2 HackableObject::getProgressBarsOffset()
+{
+	// By default just put this where the button is. Inheriting objects can override if needed.
+	return this->getButtonOffset();
 }
 
 void HackableObject::onHackableClick()

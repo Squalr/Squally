@@ -7,7 +7,6 @@
 
 namespace cocos2d
 {
-	class Renderer;
 	class Sprite;
 }
 
@@ -75,6 +74,7 @@ protected:
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getRainOffset();
 	virtual cocos2d::Vec2 getButtonOffset();
+	virtual cocos2d::Vec2 getProgressBarsOffset();
 
 private:
 	typedef GameObject super;
@@ -83,6 +83,7 @@ private:
 	bool allowFx;
 	bool isHackable;
 
+	void updateTimeRemainingBars();
 	void refreshParticleFx();
 	void createSensingParticles();
 	void createHackCircle();
@@ -95,10 +96,12 @@ private:
 	SmartParticles* hackParticles4;
 	SmartParticles* hackParticles5;
 	cocos2d::Sprite* hackCircle;
-	cocos2d::Node* uiElements;
+	cocos2d::Node* uiElementsButton;
 	cocos2d::Node* uiElementsRain;
+	cocos2d::Node* uiElementsProgressBars;
 	HackButton* hackButton;
-	ProgressBar* timeRemainingBar;
+	std::vector<cocos2d::Sprite*> timeRemainingIcons;
+	std::vector<ProgressBar*> timeRemainingBars;
 	cocos2d::Node* hackablesNode;
 
 	std::vector<Clippy*> clippyList;

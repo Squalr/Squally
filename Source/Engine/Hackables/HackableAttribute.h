@@ -13,6 +13,7 @@ public:
 	int getRequiredHackFlag();
 	float getElapsedDuration();
 	float getDuration();
+	bool isComplete();
 	bool isCooldownComplete();
 	float getElapsedCooldown();
 	float getCooldown();

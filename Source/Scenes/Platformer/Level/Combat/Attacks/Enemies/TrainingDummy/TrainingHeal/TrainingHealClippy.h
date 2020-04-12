@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "Engine/Hackables/Clippy.h"
+#include "Engine/Hackables/Menus/Clippy.h"
 
 class SmartAnimationNode;
 class Sound;

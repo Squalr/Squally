@@ -9,7 +9,7 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Hackables/Clippy.h"
+#include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/Squally.h"
