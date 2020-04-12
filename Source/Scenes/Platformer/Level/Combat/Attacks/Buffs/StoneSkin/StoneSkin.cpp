@@ -55,6 +55,7 @@ StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->currentDamageTaken = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -192,7 +193,7 @@ void StoneSkin::registerHackables()
 void StoneSkin::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
-	
+
 	this->currentDamageTaken = *damageOrHealing;
 
 	this->applyStoneSkin();
@@ -202,8 +203,11 @@ void StoneSkin::onBeforeDamageTaken(volatile int* damageOrHealing, std::function
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 {
-	volatile int originalDamage = this->currentDamageTaken;
-	volatile int damageTaken = this->currentDamageTaken;
+	static volatile int originalDamage;
+	static volatile int damageTaken;
+
+	originalDamage = this->currentDamageTaken;
+	damageTaken = this->currentDamageTaken;
 
 	ASM(push ZAX);
 	ASM(push ZCX);

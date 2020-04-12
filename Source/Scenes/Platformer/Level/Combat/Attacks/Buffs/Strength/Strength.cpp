@@ -38,7 +38,7 @@ using namespace cocos2d;
 
 const std::string Strength::StrengthIdentifier = "strength";
 
-const int Strength::MinMultiplier = -1; // Keep in sync w/ math clamp
+const int Strength::MinMultiplier = -1;
 const int Strength::MaxMultiplier = 2;
 const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
@@ -59,7 +59,6 @@ Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->currentDamageDelt = 0;
-	this->originalDamageDelt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -173,12 +172,9 @@ NO_OPTIMIZE void Strength::onBeforeDamageDelt(volatile int* damageOrHealing, std
 {
 	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
 
-	this->originalDamageDelt = *damageOrHealing;
+	this->currentDamageDelt = *damageOrHealing;
 
 	this->applyStrength();
-	
-	// Bound multiplier in either direction. Note: Not using static constants due to strange OSX release bug
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, std::abs(this->originalDamageDelt) * -1, std::abs(this->originalDamageDelt) * 2);
 	
 	*damageOrHealing = this->currentDamageDelt;
 }
@@ -186,9 +182,10 @@ END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
+	static volatile int originalDamage;
 	static volatile int damageDelt;
 
-	this->currentDamageDelt = this->originalDamageDelt;
+	originalDamage = this->currentDamageDelt;
 	damageDelt = this->currentDamageDelt;
 
 	ASM(push ZCX);
@@ -203,7 +200,8 @@ NO_OPTIMIZE void Strength::applyStrength()
 
 	ASM(pop ZCX);
 
-	this->currentDamageDelt = damageDelt;
+	// Bound multiplier in either direction
+	this->currentDamageDelt = MathUtils::clamp(damageDelt, -std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
 
 	HACKABLES_STOP_SEARCH();
 }

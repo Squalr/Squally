@@ -37,7 +37,6 @@ private:
 
 	void applyStrength();
 	
-	volatile int originalDamageDelt;
 	volatile int currentDamageDelt;
 	
 	StrengthClippy* clippy;
