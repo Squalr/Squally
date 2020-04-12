@@ -217,7 +217,9 @@ void TimeBomb::explode()
 
 NO_OPTIMIZE void TimeBomb::tickTimeBomb()
 {
-	volatile int currentTick = this->bombTick;
+	static volatile int currentTick;
+
+	currentTick = this->bombTick;
 
 	ASM(push ZCX);
 	ASM_MOV_REG_VAR(ZCX, currentTick);

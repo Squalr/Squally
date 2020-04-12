@@ -153,10 +153,15 @@ HackablePreview* ShadowBolt::createDefaultPreview()
 NO_OPTIMIZE void ShadowBolt::setShadowBoltSpeed()
 {
 	volatile static float* freeMemoryForUser = new float[16];
-	volatile float speedMultiplier = 1.0f;
-	volatile float speedMultiplierTemp = 1.0f;
-	volatile float* speedMultiplierPtr = &speedMultiplier;
-	volatile float* speedMultiplierTempPtr = &speedMultiplierTemp;
+	static volatile float speedMultiplier;
+	static volatile float speedMultiplierTemp;
+	static volatile float* speedMultiplierPtr;
+	static volatile float* speedMultiplierTempPtr;
+
+	speedMultiplier = 1.0f;
+	speedMultiplierTemp = 1.0f;
+	speedMultiplierPtr = &speedMultiplier;
+	speedMultiplierTempPtr = &speedMultiplierTemp;
 
 	// Initialize xmm0 and xmm1
 	ASM(push ZAX);

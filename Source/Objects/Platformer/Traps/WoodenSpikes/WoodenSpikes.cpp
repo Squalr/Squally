@@ -125,8 +125,11 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 		return;
 	}
 
-	volatile float* elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
-	volatile float* deltaTimePtr = &dt;
+	static volatile float* elapsedPtr;
+	static volatile float* deltaTimePtr;
+
+	elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
+	deltaTimePtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);

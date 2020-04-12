@@ -123,8 +123,11 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 		return;
 	}
 
-	volatile float* countDownPtr = &this->currentLaserCountDown;
-	volatile float* deltaTimePtr = &dt;
+	static volatile float* countDownPtr;
+	static volatile float* deltaTimePtr;
+
+	countDownPtr = &this->currentLaserCountDown;
+	deltaTimePtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);

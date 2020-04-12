@@ -164,10 +164,15 @@ void SiphonLife::onModifyTimelineSpeed(float* timelineSpeed, std::function<void(
 
 NO_OPTIMIZE void SiphonLife::applySiphonLife()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = SiphonLife::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = SiphonLife::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);
