@@ -114,7 +114,7 @@ void SquallySwimHackBehavior::registerHackables()
 
 NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 {
-	static volatile int canSwim = false;
+	static volatile int canSwim = 0;
 
 	ASM(PUSH ZAX);
 

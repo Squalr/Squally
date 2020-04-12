@@ -148,8 +148,11 @@ void PendulumBlade::startSwing()
 NO_OPTIMIZE void PendulumBlade::setSwingAngle(float angle)
 {
 	this->previousAngle = this->targetAngle;
-	volatile int previousAngleInt = (int)previousAngle;
-	volatile int angleInt = (int)angle;
+	static volatile int previousAngleInt;
+	static volatile int angleInt;
+
+	previousAngleInt = (int)previousAngle;
+	angleInt = (int)angle;
 
 	ASM(push ZAX);
 	ASM(push ZBX);

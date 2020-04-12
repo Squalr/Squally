@@ -108,7 +108,9 @@ void AddDoor::runOperation(int puzzleIndex)
 
 NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 {
-	int transform = puzzleIndex;
+	static volatile int transform;
+
+	transform = puzzleIndex;
 
 	ASM(push ZCX)
 	ASM_MOV_REG_VAR(ZCX, transform);

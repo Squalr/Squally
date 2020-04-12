@@ -160,19 +160,23 @@ NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 
 	this->spikeCollision->setPositionX(offsetX);
 
+	static volatile int countLocal;
+
+	countLocal = count;
+
 	ASM(push ZCX)
-	ASM_MOV_REG_VAR(ZCX, count);
+	ASM_MOV_REG_VAR(ZCX, countLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
 	ASM(inc ZCX)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(count, ZCX);
+	ASM_MOV_VAR_REG(countLocal, ZCX);
 	ASM(pop ZCX);
 
 	HACKABLES_STOP_SEARCH();
 
-	return count;
+	return countLocal;
 }
 END_NO_OPTIMIZE

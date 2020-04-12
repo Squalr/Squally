@@ -186,8 +186,11 @@ void Fortitude::onBeforeDamageTaken(volatile int* damageOrHealing, std::function
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
-	volatile int originalDamage = this->currentDamageTaken;
-	volatile int damageTaken = this->currentDamageTaken;
+	static volatile int originalDamage;
+	static volatile int damageTaken;
+
+	originalDamage = this->currentDamageTaken;
+	damageTaken = this->currentDamageTaken;
 
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ZBX, damageTaken);
