@@ -33,9 +33,11 @@ protected:
 private:
 	typedef HackableObject super;
 	void startSwing();
-	void swingToAngle(float angle);
+	void setSwingAngle(float angle);
+	void doSwing();
 	void buildChain();
 
+	volatile float previousAngle;
 	volatile float targetAngle;
 	cocos2d::Sprite* joint;
 	cocos2d::Node* flailChain;

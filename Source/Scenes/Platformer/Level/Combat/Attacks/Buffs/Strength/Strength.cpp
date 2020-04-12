@@ -186,19 +186,24 @@ END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
+	static volatile int damageDelt;
+
 	this->currentDamageDelt = this->originalDamageDelt;
+	damageDelt = this->currentDamageDelt;
 
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ZCX, this->currentDamageDelt);
+	ASM_MOV_REG_VAR(ZCX, damageDelt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
 	ASM(add ZCX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(this->currentDamageDelt, ZCX);
+	ASM_MOV_VAR_REG(damageDelt, ZCX);
 
 	ASM(pop ZCX);
+
+	this->currentDamageDelt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }

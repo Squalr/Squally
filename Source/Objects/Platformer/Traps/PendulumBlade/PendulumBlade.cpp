@@ -125,7 +125,7 @@ void PendulumBlade::registerHackables()
 		},
 	};
 
-	auto swingFunc = &PendulumBlade::swingToAngle;
+	auto swingFunc = &PendulumBlade::setSwingAngle;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto next : hackables)
@@ -141,16 +141,13 @@ HackablePreview* PendulumBlade::createDefaultPreview()
 
 void PendulumBlade::startSwing()
 {
-	swingToAngle(PendulumBlade::MinAngle);
+	this->setSwingAngle(PendulumBlade::MinAngle);
+	this->doSwing();	
 }
 
-NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
+NO_OPTIMIZE void PendulumBlade::setSwingAngle(float angle)
 {
-	const float arc = (PendulumBlade::MaxAngle - PendulumBlade::MinAngle);
-	const float minDuration = 0.5f;
-	const float maxDuration = 5.0f;
-
-	volatile float previousAngle = this->targetAngle;
+	this->previousAngle = this->targetAngle;
 	volatile int previousAngleInt = (int)previousAngle;
 	volatile int angleInt = (int)angle;
 
@@ -171,9 +168,19 @@ NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
 
 	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
 
+	HACKABLES_STOP_SEARCH();
+}
+END_NO_OPTIMIZE
+
+void PendulumBlade::doSwing()
+{
+	const float arc = (PendulumBlade::MaxAngle - PendulumBlade::MinAngle);
+	const float minDuration = 0.5f;
+	const float maxDuration = 5.0f;
+
 	volatile float speedMultiplier = (this->chainHeight / 480.0f) * PendulumBlade::SwingsPerSecondAt480Length;
 
-	volatile float angleDelta = std::abs(previousAngle - this->targetAngle);
+	volatile float angleDelta = std::abs(this->previousAngle - this->targetAngle);
 	volatile float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / PendulumBlade::SwingsPerSecondAt480Length, minDuration, maxDuration);
 
 	// Adjust angle to cocos space (inverted Y)
@@ -185,22 +192,14 @@ NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
 			EaseSineInOut::create(RotateTo::create(duration, newAngleAdjusted)),
 			CallFunc::create([=]()
 			{
-				if (this->targetAngle > (PendulumBlade::MaxAngle + PendulumBlade::MinAngle) / 2.0f)
-				{
-					this->swingToAngle(PendulumBlade::MinAngle);
-				}
-				else
-				{
-					this->swingToAngle(PendulumBlade::MaxAngle);
-				}
+				this->setSwingAngle((this->targetAngle > (PendulumBlade::MaxAngle + PendulumBlade::MinAngle) / 2.0f) ? PendulumBlade::MinAngle : PendulumBlade::MaxAngle);
+				
+				this->doSwing();
 			}),
 			nullptr
 		)
 	);
-
-	HACKABLES_STOP_SEARCH();
 }
-END_NO_OPTIMIZE
 
 void PendulumBlade::buildChain()
 {

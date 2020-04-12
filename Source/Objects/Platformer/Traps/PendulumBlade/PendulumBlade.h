@@ -32,10 +32,12 @@ protected:
 private:
 	typedef HackableObject super;
 	void startSwing();
-	void swingToAngle(float angle);
+	void setSwingAngle(float angle);
+	void doSwing();
 	void buildChain();
 	std::vector<cocos2d::Vec2> createBladeCollision();
 
+	volatile float previousAngle;
 	volatile float targetAngle;
 	cocos2d::Sprite* neck;
 	cocos2d::Node* bladeChain;

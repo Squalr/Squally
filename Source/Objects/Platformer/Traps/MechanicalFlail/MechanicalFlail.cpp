@@ -125,7 +125,7 @@ void MechanicalFlail::registerHackables()
 		},
 	};
 
-	auto swingFunc = &MechanicalFlail::swingToAngle;
+	auto swingFunc = &MechanicalFlail::setSwingAngle;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto next : hackables)
@@ -141,18 +141,18 @@ HackablePreview* MechanicalFlail::createDefaultPreview()
 
 void MechanicalFlail::startSwing()
 {
-	swingToAngle(MechanicalFlail::MinAngle);
+	this->setSwingAngle(MechanicalFlail::MinAngle);
+	this->doSwing();
 }
 
-NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
+NO_OPTIMIZE void MechanicalFlail::setSwingAngle(float angle)
 {
-	const float arc = (MechanicalFlail::MaxAngle - MechanicalFlail::MinAngle);
-	const float minDuration = 0.5f;
-	const float maxDuration = 5.0f;
+	this->previousAngle = this->targetAngle;
+	static volatile int previousAngleInt;
+	static volatile int angleInt = (int)angle;
 
-	volatile float previousAngle = this->targetAngle;
-	volatile int previousAngleInt = (int)previousAngle;
-	volatile int angleInt = (int)angle;
+	previousAngleInt = (int)previousAngle;
+	angleInt = (int)angle;
 
 	ASM(push ZAX);
 	ASM(push ZBX);
@@ -171,9 +171,19 @@ NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 
 	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
 
+	HACKABLES_STOP_SEARCH();
+}
+END_NO_OPTIMIZE
+
+void MechanicalFlail::doSwing()
+{
+	const float arc = (MechanicalFlail::MaxAngle - MechanicalFlail::MinAngle);
+	const float minDuration = 0.5f;
+	const float maxDuration = 5.0f;
+
 	volatile float speedMultiplier = (this->flailHeight / 480.0f) * MechanicalFlail::SwingsPerSecondAt480Length;
 
-	float angleDelta = std::abs(previousAngle - this->targetAngle);
+	float angleDelta = std::abs(this->previousAngle - this->targetAngle);
 	volatile float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / MechanicalFlail::SwingsPerSecondAt480Length, minDuration, maxDuration);
 
 	// Adjust angle to cocos space (inverted Y)
@@ -185,14 +195,9 @@ NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 			EaseSineInOut::create(RotateTo::create(duration, newAngleAdjusted)),
 			CallFunc::create([=]()
 			{
-				if (this->targetAngle > (MechanicalFlail::MaxAngle + MechanicalFlail::MinAngle) / 2.0f)
-				{
-					this->swingToAngle(MechanicalFlail::MinAngle);
-				}
-				else
-				{
-					this->swingToAngle(MechanicalFlail::MaxAngle);
-				}
+				this->setSwingAngle((this->targetAngle > (MechanicalFlail::MaxAngle + MechanicalFlail::MinAngle) / 2.0f) ? MechanicalFlail::MinAngle : MechanicalFlail::MaxAngle);
+				
+				this->doSwing();
 			}),
 			nullptr
 		)
@@ -213,10 +218,7 @@ NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 			this->smokeParticles->stop();
 		}
 	}
-
-	HACKABLES_STOP_SEARCH();
 }
-END_NO_OPTIMIZE
 
 void MechanicalFlail::buildChain()
 {
