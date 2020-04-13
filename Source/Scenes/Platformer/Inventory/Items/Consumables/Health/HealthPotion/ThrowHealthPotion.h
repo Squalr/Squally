@@ -28,4 +28,5 @@ private:
 	PlatformerAttack* cloneInternal() override;
 
 	WorldSound* throwSound;
+	WorldSound* healSound;
 };

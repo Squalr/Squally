@@ -9,6 +9,7 @@ namespace MapResources
 	extern const std::string BallmerPeaks_Town_Main;
 	extern const std::string CastleValgrind_Castle;
 	extern const std::string DaemonsHallow_Volcano;
+	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
 	extern const std::string Dev_Collision;

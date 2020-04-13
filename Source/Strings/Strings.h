@@ -18789,6 +18789,21 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_ADraw() = default;
 	};
 
+	class Platformer_Dialogue_Hexus_ADrawZalgo : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Hexus_ADrawZalgo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Hexus_ADrawZalgo();
+		virtual ~Platformer_Dialogue_Hexus_ADrawZalgo() = default;
+	};
+
 	class Platformer_Dialogue_Hexus_BetterLuckNextTime : public LocalizedString
 	{
 	public:
@@ -18804,6 +18819,21 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_BetterLuckNextTime() = default;
 	};
 
+	class Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo();
+		virtual ~Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo() = default;
+	};
+
 	class Platformer_Dialogue_Hexus_GoodGame : public LocalizedString
 	{
 	public:
@@ -18817,6 +18847,21 @@ namespace Strings
 	private:
 		Platformer_Dialogue_Hexus_GoodGame();
 		virtual ~Platformer_Dialogue_Hexus_GoodGame() = default;
+	};
+
+	class Platformer_Dialogue_Hexus_GoodGameZalgo : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Hexus_GoodGameZalgo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Hexus_GoodGameZalgo();
+		virtual ~Platformer_Dialogue_Hexus_GoodGameZalgo() = default;
 	};
 
 	class Platformer_Dialogue_Hexus_HowAboutARematch : public LocalizedString

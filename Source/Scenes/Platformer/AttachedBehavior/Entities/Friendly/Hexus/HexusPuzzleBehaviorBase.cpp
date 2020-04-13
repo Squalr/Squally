@@ -47,3 +47,18 @@ void HexusPuzzleBehaviorBase::onEnter()
 		));
 	});
 }
+
+LocalizedString* HexusPuzzleBehaviorBase::getCustomWinDialogue()
+{
+	return Strings::Platformer_Dialogue_Hexus_GoodGameZalgo::create();
+}
+
+LocalizedString* HexusPuzzleBehaviorBase::getCustomDrawDialogue()
+{
+	return Strings::Platformer_Dialogue_Hexus_ADrawZalgo::create();
+}
+
+LocalizedString* HexusPuzzleBehaviorBase::getCustomLossDialogue()
+{
+	return Strings::Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo::create();
+}

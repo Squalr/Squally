@@ -52,6 +52,7 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Collision", MapResources::Dev_Collision));
 	this->chapterList.push_back(this->buildDebugButton("DBG Positions", MapResources::Dev_PositionBug));
 	this->chapterList.push_back(this->buildDebugButton("DBG Bounds", MapResources::Dev_Bounds));
+	this->chapterList.push_back(this->buildDebugButton("DBG Animation Sequences", MapResources::Dev_AnimSeq));
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
 	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));

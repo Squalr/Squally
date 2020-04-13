@@ -594,6 +594,8 @@ namespace DecorResources
 	extern const std::string Generic_Spear1;
 	extern const std::string Generic_Sword1;
 	extern const std::string Generic_Sword2;
+	extern const std::string Generic_ThroneBronze;
+	extern const std::string Generic_ThroneMetal;
 	extern const std::string Generic_TownAlchemist;
 	extern const std::string Generic_TownFence;
 	extern const std::string Generic_TownFencePost;

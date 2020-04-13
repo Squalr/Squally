@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="973">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="974">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -52,7 +52,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="949" name="temple" type="terrain" x="-197.543" y="2128.94">
-   <polygon points="5411.42,38.2482 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3013.84,-466.266 3013.57,-338.775 3143.87,-339.715 3142.44,-208.567 3269.61,-207.94 3269,-83.8781 3399.01,-82.1483 3397.46,46.3778"/>
+   <polygon points="5417.36,35.2179 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3507.78,-469.296 3507.51,-341.805 3637.81,-342.745 3636.38,-211.597 3763.55,-210.97 3762.94,-86.9084 3892.95,-85.1786 3891.4,43.3475"/>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -66,7 +66,7 @@
     <property name="transition" value="entrance-E"/>
    </properties>
   </object>
-  <object id="944" name="temple-door" type="object" x="3990.07" y="1642.06" width="432" height="528">
+  <object id="944" name="temple-door" type="object" x="4205.22" y="1642.06" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
     <property name="listen-event" value="grogg-dead"/>
@@ -74,7 +74,7 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="947" name="spawn" type="object" x="4151.16" y="2039.03" width="128" height="128">
+  <object id="947" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
    </properties>
@@ -98,8 +98,9 @@
   </properties>
   <object id="955" name="torch" type="object" x="876.091" y="1758.03" width="42" height="130"/>
   <object id="956" name="torch" type="object" x="175.97" y="1753.18" width="42" height="130"/>
-  <object id="958" name="torch" type="object" x="4531.61" y="1798.39" width="42" height="130"/>
-  <object id="959" name="torch" type="object" x="3831.48" y="1795.54" width="42" height="130"/>
+  <object id="958" name="torch" type="object" x="4746.76" y="1798.39" width="42" height="130"/>
+  <object id="959" name="torch" type="object" x="4046.63" y="1795.54" width="42" height="130"/>
+  <object id="973" name="Generic/ThroneBronze" type="decor" x="2465.28" y="1124.97" width="354" height="533"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -111,7 +112,7 @@
     <property name="send-event" value="talk-to-grogg"/>
    </properties>
   </object>
-  <object id="966" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
+  <object id="966" name="king-grogg" type="entity" x="2756.06" y="1529.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro,run"/>
     <property name="battle-behavior" value="fireball-tutorial"/>
@@ -124,14 +125,14 @@
     <property name="send-event" value="grogg-dead"/>
    </properties>
   </object>
-  <object id="971" name="goblin-shaman" type="entity" x="2682" y="1138" width="128" height="128">
+  <object id="971" name="goblin-shaman" type="entity" x="2827.45" y="1134.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
-  <object id="972" name="goblin-shaman" type="entity" x="2508" y="1140" width="128" height="128">
+  <object id="972" name="goblin-shaman" type="entity" x="2653.45" y="1136.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

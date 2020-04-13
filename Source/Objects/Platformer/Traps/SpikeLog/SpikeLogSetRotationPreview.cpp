@@ -7,6 +7,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/MathUtils.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -49,9 +50,11 @@ void SpikeLogSetRotationPreview::onEnter()
 
 	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max)
 	{
+		count = MathUtils::wrappingNormalize(count + 1, 0, max);
+
 		this->countString->setString(std::to_string(count));
 
-		return ++count;
+		return count;
 	};
 }
 
