@@ -42,6 +42,7 @@ NotificationHud::NotificationHud()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->previousFocus = nullptr;
+	this->contentNode = Node::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 192), visibleSize.width, visibleSize.height);
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
@@ -73,10 +74,11 @@ NotificationHud::NotificationHud()
 	this->takeoverNode->addChild(this->title);
 	this->takeoverNode->addChild(this->description);
 	this->takeoverNode->addChild(this->okButton);
-	this->addChild(this->takeoverNode);
-	this->addChild(this->notificationsNode);
-	this->addChild(this->confirmationMenu);
-	this->addChild(this->notificationSound);
+	this->contentNode->addChild(this->takeoverNode);
+	this->contentNode->addChild(this->notificationsNode);
+	this->contentNode->addChild(this->confirmationMenu);
+	this->contentNode->addChild(this->notificationSound);
+	this->addChild(this->contentNode);
 }
 
 NotificationHud::~NotificationHud()
@@ -205,6 +207,20 @@ void NotificationHud::update(float dt)
 			}
 		}
 	}
+}
+
+void NotificationHud::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	this->contentNode->setVisible(false);
+}
+
+void NotificationHud::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	this->contentNode->setVisible(true);
 }
 
 void NotificationHud::showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource)

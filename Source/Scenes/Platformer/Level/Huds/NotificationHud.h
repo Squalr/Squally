@@ -29,6 +29,8 @@ protected:
 	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 
 private:
 	typedef Hud super;
@@ -39,6 +41,7 @@ private:
 
 	cocos2d::Node* previousFocus;
 
+	cocos2d::Node* contentNode;
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* menuBack;
 	ClickableTextNode* okButton;
