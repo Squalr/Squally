@@ -22914,6 +22914,36 @@ namespace Strings
 		virtual ~Platformer_Objects_Doors_Locked() = default;
 	};
 
+	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks() = default;
+	};
+
+	class Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen() = default;
+	};
+
 	class Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown : public LocalizedString
 	{
 	public:

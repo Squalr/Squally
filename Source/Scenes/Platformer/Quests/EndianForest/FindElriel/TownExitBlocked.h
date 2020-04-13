@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class Bard;
 class CollisionObject;
 class Chiron;
 class Portal;
@@ -29,6 +30,10 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void attachChironBehavior();
+	void attachBardBehavior();
+
+	Bard* bard;
 	Chiron* chiron;
 	Squally* squally;
 	CollisionObject* chironCollision;

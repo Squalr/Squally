@@ -8,16 +8,19 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Entities/Platformer/Npcs/EndianForest/Bard.h"
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/EntityResources.h"
@@ -44,6 +47,7 @@ TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : supe
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;
 	this->chiron = static_cast<Chiron*>(owner);
+	this->bard = nullptr;
 	this->squally = nullptr;
 }
 
@@ -69,10 +73,23 @@ void TownExitBlocked::onLoad(QuestState questState)
 	}
 	else
 	{
+		this->defer([=]()
+		{
+			this->attachChironBehavior();
+		});
+
 		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
 			this->squally = squally;
 		}, Squally::MapKey);
+
+		ObjectEvents::WatchForObject<Bard>(this, [=](Bard* bard)
+		{
+			this->bard = bard;
+
+			this->attachBardBehavior();
+
+		}, Bard::MapKey);
 
 		ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 		{
@@ -84,44 +101,77 @@ void TownExitBlocked::onLoad(QuestState questState)
 
 void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 {
-	this->defer([=]()
+}
+
+void TownExitBlocked::attachChironBehavior()
+{
+	this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
+
+	this->chironCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 8.0f),
+		(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
+		CollisionObject::Properties(false, false)
+	);
+	this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
+
+	this->chiron->addChild(this->chironCollision);
+
+	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
-
-		this->chironCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 8.0f),
-			(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
-			CollisionObject::Properties(false, false)
-		);
-		this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
-
-		this->chiron->addChild(this->chironCollision);
-
-		this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData collisionData)
+		if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
 		{
-			if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
-			{
-				this->isEngagedInDialogue = true;
+			this->isEngagedInDialogue = true;
 
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->chiron, true)
+				),
+				[=]()
+				{
+					this->isEngagedInDialogue = false;
+					this->dialogueCooldown = 6.0f;
+				},
+				SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1
+			));
+		}
+		
+		return CollisionObject::CollisionResult::CollideWithPhysics;
+	});
+}
+
+void TownExitBlocked::attachBardBehavior()
+{
+	if (bard == nullptr)
+	{
+		return;
+	}
+
+	this->bard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			Strings::Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks::create(),
+			[=]()
+			{
 				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown::create(),
+					Strings::Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Right,
 						DialogueEvents::BuildPreviewNode(&this->squally, false),
-						DialogueEvents::BuildPreviewNode(&this->chiron, true)
+						DialogueEvents::BuildPreviewNode(&this->bard, true)
 					),
 					[=]()
 					{
-						this->isEngagedInDialogue = false;
-						this->dialogueCooldown = 6.0f;
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1
+					SoundResources::Platformer_Entities_Generic_ChatterMedium2
 				));
-			}
-			
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		});
+			}),
+			1.0f
+		);
 	});
 }
 
