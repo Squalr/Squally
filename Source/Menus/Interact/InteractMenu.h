@@ -35,6 +35,7 @@ private:
 	void initializeListeners() override;
 
 	bool hasRelocated;
+	bool isShown;
 
 	cocos2d::Node* uiElements;
 	cocos2d::LayerColor* backdrop;

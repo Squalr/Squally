@@ -35,6 +35,7 @@ protected:
 	void initializePositions() override;
 	void onLoad() override;
 	void onDisable() override;
+	void update(float dt) override;
 
 private:
 	typedef AttachedBehavior super;
@@ -52,6 +53,7 @@ private:
 	SpeechBubble* speechBubble;
 
 	bool canInteract;
+	bool hasCollision;
 	bool optionsVisible;
 	
 	CollisionObject* dialogueCollision;
