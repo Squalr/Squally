@@ -19,7 +19,9 @@ class StatsBars : public SmartNode
 public:
 	static StatsBars* create(bool isFrameOnLeft = true);
 
+	void setSelected(bool isSelected);
 	void setStatsTarget(PlatformerEntity* target);
+	PlatformerEntity* getStatsTarget();
 
 protected:
 	StatsBars(bool isFrameOnLeft = true);
@@ -42,6 +44,7 @@ private:
 
 	bool isFrameOnLeft;
 	cocos2d::Sprite* frame;
+	cocos2d::Sprite* frameSelected;
 	cocos2d::Sprite* emblemGlow;
 	cocos2d::Node* emblemNode;
 	cocos2d::Sprite* emblem;

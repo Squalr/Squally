@@ -283,7 +283,7 @@
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="map" value="EndianForest/Zone_1_2"/>
-    <property name="transition" value="right"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

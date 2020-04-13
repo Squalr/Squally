@@ -11,12 +11,14 @@ namespace UIResources
 	extern const std::string Combat_DefeatMenu;
 	extern const std::string Combat_DefendCircle;
 	extern const std::string Combat_EnemyCircle;
+	extern const std::string Combat_EnemyCircleSelected;
 	extern const std::string Combat_EventCircle;
 	extern const std::string Combat_ItemFrame;
 	extern const std::string Combat_ItemsCircle;
 	extern const std::string Combat_ItemsMenu;
 	extern const std::string Combat_Line;
 	extern const std::string Combat_PlayerCircle;
+	extern const std::string Combat_PlayerCircleSelected;
 	extern const std::string Combat_RadialEye;
 	extern const std::string Combat_RewardsSlot;
 	extern const std::string Combat_SelectionLight;
@@ -55,6 +57,7 @@ namespace UIResources
 	extern const std::string HUD_FillTeal;
 	extern const std::string HUD_FillYellow;
 	extern const std::string HUD_Frame;
+	extern const std::string HUD_FrameSelected;
 	extern const std::string HUD_Heart;
 	extern const std::string HUD_LevelFrame;
 	extern const std::string HUD_Pendant;

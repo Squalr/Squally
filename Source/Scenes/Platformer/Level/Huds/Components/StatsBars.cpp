@@ -35,6 +35,7 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->target = nullptr;
 	this->frame = Sprite::create(UIResources::HUD_Frame);
+	this->frameSelected = Sprite::create(UIResources::HUD_FrameSelected);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->emblemNode = Node::create();
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed), fillOffset);
@@ -62,10 +63,12 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 
 	this->runeBar->setVisible(false);
 	this->eqDisplay->setVisible(false);
+	this->frameSelected->setVisible(false);
 
 	this->healthBar->addChild(this->healthLabel);
 	this->manaBar->addChild(this->manaLabel);
 	this->addChild(this->frame);
+	this->addChild(this->frameSelected);
 	this->addChild(this->emblemGlow);
 	this->addChild(this->emblemNode);
 	this->addChild(this->healthBar);
@@ -102,6 +105,7 @@ void StatsBars::initializePositions()
 	float eqOffset = this->isFrameOnLeft ? 64.0f : 112.0f;
 
 	this->frame->setPosition(Vec2(frameOffset, 0.0f));
+	this->frameSelected->setPosition(Vec2(frameOffset, 0.0f));
 	this->emblemGlow->setPosition(Vec2(emblemOffset, 16.0f));
 	this->emblemNode->setPosition(Vec2(emblemOffset, 16.0f));
 	this->healthBar->setPosition(Vec2(barInset + this->healthBar->getContentSize().width / 2.0f, barY));
@@ -156,6 +160,12 @@ void StatsBars::update(float dt)
 	}
 }
 
+void StatsBars::setSelected(bool isSelected)
+{
+	this->frame->setVisible(!isSelected);
+	this->frameSelected->setVisible(isSelected);
+}
+
 void StatsBars::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
@@ -175,4 +185,9 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 
 		emblem->setFlippedX(!this->isFrameOnLeft);
 	}
+}
+
+PlatformerEntity* StatsBars::getStatsTarget()
+{
+	return this->target;
 }
