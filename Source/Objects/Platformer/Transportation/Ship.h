@@ -2,10 +2,7 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
+class SmartAnimationNode;
 
 class Ship : public HackableObject
 {
@@ -18,13 +15,8 @@ protected:
 	Ship(cocos2d::ValueMap& properties);
 	virtual ~Ship();
 
-	void onEnter() override;
-	void onEnterTransitionDidFinish() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-
 private:
 	typedef HackableObject super;
 
-	cocos2d::Sprite* hull;
+	SmartAnimationNode* ship;
 };

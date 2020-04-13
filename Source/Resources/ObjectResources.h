@@ -300,7 +300,18 @@ namespace ObjectResources
 	extern const std::string Transportation_Airship2_rope;
 	extern const std::string Transportation_Airship2_sand_bag;
 	extern const std::string Transportation_Airship2_upper_deck;
+	extern const std::string Transportation_Ship_Animations;
 	extern const std::string Transportation_Ship_Hull;
+	extern const std::string Transportation_Ship_Mast1;
+	extern const std::string Transportation_Ship_Mast2;
+	extern const std::string Transportation_Ship_Rope1;
+	extern const std::string Transportation_Ship_Rope2;
+	extern const std::string Transportation_Ship_Rope3;
+	extern const std::string Transportation_Ship_Sail1;
+	extern const std::string Transportation_Ship_Sail2;
+	extern const std::string Transportation_Ship_Sail3;
+	extern const std::string Transportation_Ship_Sail4;
+	extern const std::string Transportation_Ship_Sail5;
 	extern const std::string Traps_BARRICADE;
 	extern const std::string Traps_Ballista_ARROW_1;
 	extern const std::string Traps_Ballista_BODY;

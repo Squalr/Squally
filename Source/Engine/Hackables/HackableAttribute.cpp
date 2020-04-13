@@ -91,7 +91,7 @@ void HackableAttribute::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventQueryAttributeCountPrefix + this->getHackableIdentifier(), [=](EventCustom* eventCustom)
 	{
 		HackableEvents::HackableAttributeQueryArgs* args = static_cast<HackableEvents::HackableAttributeQueryArgs*>(eventCustom->getUserData());
-		
+
 		if (args != nullptr)
 		{
 			args->count++;
@@ -108,7 +108,7 @@ void HackableAttribute::UpdateSharedState(float dt)
 
 	for (auto next : HackableAttribute::SharedStateMap)
 	{
-		std::string key = next.first;
+		const std::string& key = next.first;
 
 		if (HackableAttribute::SharedStateMap[key].elapsedDuration < HackableAttribute::SharedStateMap[key].duration)
 		{
