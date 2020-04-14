@@ -15,6 +15,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
@@ -96,6 +97,8 @@ void LifeStone::onInteract()
 	super::onInteract();
 
 	this->runHealAnimation();
+
+	PlatformerEvents::TriggerSaveRespawn(PlatformerEvents::SaveRespawnArgs(this->getUniqueIdentifier()));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{

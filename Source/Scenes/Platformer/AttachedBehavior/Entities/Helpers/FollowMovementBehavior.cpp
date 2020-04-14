@@ -93,7 +93,7 @@ void FollowMovementBehavior::update(float dt)
 	if (std::abs(squallyPosition.x - entityPosition.x) >= FollowMovementBehavior::ResetRangeX ||
 		std::abs(squallyPosition.y - entityPosition.y) >= FollowMovementBehavior::ResetRangeY)
 	{
-		PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->entity, squallyPosition));
+		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, squallyPosition));
 		return;
 	}
 

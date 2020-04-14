@@ -23,6 +23,9 @@ public:
 	static const std::string SaveKeyHelperMana;
 	static const std::string SaveKeyHasGivenDefaultItems;
 
+	static const std::string SaveKeyRespawnMap;
+	static const std::string SaveKeyRespawnObjectId;
+
 	static const std::string SaveKeyLevelRubberband;
 	
 	static const std::string SaveKeySpellBookArcane;

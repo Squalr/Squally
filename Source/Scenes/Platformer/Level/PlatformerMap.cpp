@@ -10,6 +10,7 @@
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -216,6 +217,39 @@ void PlatformerMap::initializeListeners()
 			GameUtils::focus(this->blacksmithingMenu);
 			GameUtils::resume(this->notificationHud);
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSaveRespawn, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::SaveRespawnArgs* args = static_cast<PlatformerEvents::SaveRespawnArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			SaveManager::SaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(this->mapResource));
+			SaveManager::SaveProfileData(SaveKeys::SaveKeyRespawnObjectId, Value(args->objectIdentifier));
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+		std::string savedObjectId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value("error-no-object-id")).asString();
+
+		if (savedMap != this->mapResource)
+		{
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+			{
+				PlatformerEvents::TriggerBeforePlatformerMapChange();
+				PlatformerMap* map = PlatformerMap::create(savedMap, this->transition);
+
+				return map;
+			}));
+		}
+
+		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+		{
+			PlatformerEvents::WarpObjectToObjectIdArgs(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
+		}, Squally::MapKey);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)

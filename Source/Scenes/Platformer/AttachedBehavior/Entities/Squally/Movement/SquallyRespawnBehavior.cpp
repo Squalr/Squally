@@ -93,17 +93,20 @@ void SquallyRespawnBehavior::respawn(float duration)
 		DelayTime::create(duration),
 		CallFunc::create([=]()
 		{
-			if (this->spawnCoords != Vec2::ZERO)
-			{
-				const Vec2 SpawnOffset = Vec2(0.0f, 64.0f);
-
-				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords + SpawnOffset));
-			}
-			
 			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->revive();
 			});
+
+			PlatformerEvents::TriggerLoadRespawn();
+			
+			/*
+			if (this->spawnCoords != Vec2::ZERO)
+			{
+				const Vec2 SpawnOffset = Vec2(0.0f, 64.0f);
+
+				PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->squally, this->spawnCoords + SpawnOffset));
+			}*/
 
 			this->isRespawning = false;
 		}),

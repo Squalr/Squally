@@ -225,9 +225,10 @@ bool MapBase::loadMap(std::string mapResource)
 	{
 		this->mapNode->removeChild(this->map);
 	}
-	
-	this->map = GameMap::deserialize(mapResource, this->layerDeserializers);
 
+	this->mapResource = mapResource;
+	this->map = GameMap::deserialize(this->mapResource, this->layerDeserializers);
+	
 	if (this->map != nullptr)
 	{
 		this->mapNode->addChild(this->map);
