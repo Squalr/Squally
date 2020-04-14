@@ -144,13 +144,12 @@ void PlatformerMap::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
+	PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
+
 	if (this->transition == PlatformerMap::TransitionRespawn)
 	{
+		// Override transition spawn location if respawning
 		this->warpSquallyToRespawn();
-	}
-	else
-	{
-		PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
 	}
 }
 

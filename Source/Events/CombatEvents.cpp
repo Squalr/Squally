@@ -31,8 +31,9 @@ const std::string CombatEvents::EventCastInterrupt = "EVENT_COMBAT_CAST_INTERRUP
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_COMBAT_FINISHED";
 const std::string CombatEvents::EventGiveExp = "EVENT_COMBAT_GIVE_EXP";
 const std::string CombatEvents::EventGiveRewards = "EVENT_COMBAT_GIVE_REWARDS";
+const std::string CombatEvents::EventBeforeReturnToMap = "EVENT_COMBAT_BEFORE_RETURN_TO_MAP";
 const std::string CombatEvents::EventReturnToMap = "EVENT_COMBAT_RETURN_TO_MAP";
-const std::string CombatEvents::EventReturnToRespawn = "EVENT_COMBAT_RETURN_TO_MAP_RESPAWN";
+const std::string CombatEvents::EventReturnToMapRespawn = "EVENT_COMBAT_RETURN_TO_MAP_RESPAWN";
 const std::string CombatEvents::EventHackableCombatCue = "EVENT_COMBAT_HACKABLE_COMBAT_CUE";
 const std::string CombatEvents::EventDamageDelt = "EVENT_COMBAT_DAMAGE_DELT";
 const std::string CombatEvents::EventDamage = "EVENT_COMBAT_DAMAGE";
@@ -246,6 +247,14 @@ void CombatEvents::TriggerGiveRewards()
 	);
 }
 
+void CombatEvents::TriggerBeforeReturnToMap(BeforeReturnToMapArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventBeforeReturnToMap,
+		&args
+	);
+}
+
 void CombatEvents::TriggerReturnToMap()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -253,10 +262,10 @@ void CombatEvents::TriggerReturnToMap()
 	);
 }
 
-void CombatEvents::TriggerReturnToRespawn()
+void CombatEvents::TriggerReturnToMapRespawn()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventReturnToRespawn
+		CombatEvents::EventReturnToMapRespawn
 	);
 }
 

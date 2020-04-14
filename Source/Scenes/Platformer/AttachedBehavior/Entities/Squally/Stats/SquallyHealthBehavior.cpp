@@ -12,6 +12,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
@@ -54,6 +55,14 @@ void SquallyHealthBehavior::onLoad()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
 	{
 		this->saveState();
+	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMapRespawn, [=](EventCustom* eventCustom)
+	{
+		this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->setHealth(healthBehavior->getMaxHealth());
+		});
 	}));
 	
 	this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)

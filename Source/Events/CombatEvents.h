@@ -46,8 +46,9 @@ public:
 	static const std::string EventCombatTutorialUnfocus;
 	static const std::string EventGiveExp;
 	static const std::string EventGiveRewards;
+	static const std::string EventBeforeReturnToMap;
 	static const std::string EventReturnToMap;
-	static const std::string EventReturnToRespawn;
+	static const std::string EventReturnToMapRespawn;
 	static const std::string EventHackableCombatCue;
 	static const std::string EventDamageDelt;
 	static const std::string EventHealingDelt;
@@ -307,6 +308,13 @@ public:
 		RegisterTimelineEventGroupArgs(TimelineEventGroup* eventGroup) : eventGroup(eventGroup) { }
 	};
 
+	struct BeforeReturnToMapArgs
+	{
+		bool defeat;
+
+		BeforeReturnToMapArgs(bool defeat) : defeat(defeat) { }
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args);
 	static void TriggerMenuGoBack();
@@ -333,8 +341,9 @@ public:
 	static void TriggerCombatFinished(CombatFinishedArgs args);
 	static void TriggerGiveExp();
 	static void TriggerGiveRewards();
+	static void TriggerBeforeReturnToMap(BeforeReturnToMapArgs args);
 	static void TriggerReturnToMap();
-	static void TriggerReturnToRespawn();
+	static void TriggerReturnToMapRespawn();
 	static void TriggerHackableCombatCue();
 	static void TriggerDamageDelt(DamageOrHealingArgs args);
 	static void TriggerHealingDelt(DamageOrHealingArgs args);

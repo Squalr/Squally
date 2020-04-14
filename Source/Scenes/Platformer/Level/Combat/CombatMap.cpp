@@ -245,7 +245,7 @@ void CombatMap::initializeListeners()
 		}));
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToRespawn, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMapRespawn, [=](EventCustom* eventCustom)
 	{
 		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
 

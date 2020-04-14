@@ -102,7 +102,7 @@ void EntityMovementCollisionBehavior::onLoad()
 	{
 		PlatformerEvents::WarpObjectToObjectIdArgs* args = static_cast<PlatformerEvents::WarpObjectToObjectIdArgs*>(eventCustom->getUserData());
 		
-		if (args != nullptr)
+		if (args != nullptr && !args->objectId.empty())
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
 			{

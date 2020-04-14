@@ -38,7 +38,6 @@ SquallyRespawnBehavior* SquallyRespawnBehavior::create(GameObject* owner)
 SquallyRespawnBehavior::SquallyRespawnBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
-	this->spawnCoords = Vec2::ZERO;
 	this->isRespawning = false;
 
 	if (this->squally == nullptr)
@@ -53,8 +52,6 @@ SquallyRespawnBehavior::~SquallyRespawnBehavior()
 
 void SquallyRespawnBehavior::onLoad()
 {
-	this->spawnCoords = GameUtils::getWorldCoords(this->squally);
-
 	if (this->squally != nullptr)
 	{
 		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
@@ -99,14 +96,6 @@ void SquallyRespawnBehavior::respawn(float duration)
 			});
 
 			PlatformerEvents::TriggerLoadRespawn();
-			
-			/*
-			if (this->spawnCoords != Vec2::ZERO)
-			{
-				const Vec2 SpawnOffset = Vec2(0.0f, 64.0f);
-
-				PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->squally, this->spawnCoords + SpawnOffset));
-			}*/
 
 			this->isRespawning = false;
 		}),

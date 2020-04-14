@@ -81,12 +81,14 @@ void DefeatMenu::initializeListeners()
 
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		CombatEvents::TriggerReturnToRespawn();
+		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(true));
+		CombatEvents::TriggerReturnToMapRespawn();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		CombatEvents::TriggerReturnToRespawn();
+		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(true));
+		CombatEvents::TriggerReturnToMapRespawn();
 	});
 }
 

@@ -4,16 +4,16 @@
 
 class Squally;
 
-class SquallyRespawnBehavior : public AttachedBehavior
+class SquallyCombatRespawnBehavior : public AttachedBehavior
 {
 public:
-	static SquallyRespawnBehavior* create(GameObject* owner);
+	static SquallyCombatRespawnBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	SquallyRespawnBehavior(GameObject* owner);
-	virtual ~SquallyRespawnBehavior();
+	SquallyCombatRespawnBehavior(GameObject* owner);
+	virtual ~SquallyCombatRespawnBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
@@ -21,9 +21,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 	
-	void respawn(float delay);
-
-	bool isRespawning;
+	void respawn();
 
 	Squally* squally;
 };
