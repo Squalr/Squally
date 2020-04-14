@@ -93,6 +93,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	{
 		playerCombatData.push_back(CombatMap::CombatData(
 			squally->getEntityKey(),
+			squally->getUniqueIdentifier(),
 			squally->getBattleBehavior(),
 			CombatMap::StatsOverrides(
 				squally->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
@@ -105,6 +106,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	{
 		playerCombatData.push_back(CombatMap::CombatData(
 			helper->getEntityKey(),
+			helper->getUniqueIdentifier(),
 			helper->getBattleBehavior(),
 			CombatMap::StatsOverrides(
 				helper->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
@@ -116,6 +118,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	// Build enemy team
 	enemyCombatData.push_back(CombatMap::CombatData(
 		this->enemy->getEntityKey(),
+		this->enemy->getUniqueIdentifier(),
 		this->enemy->getBattleBehavior(),
 		CombatMap::StatsOverrides(
 			this->enemy->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
@@ -132,6 +135,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 			{
 				enemyCombatData.push_back(CombatMap::CombatData(
 					enemyAlly->getEntityKey(),
+					enemyAlly->getUniqueIdentifier(),
 					enemyAlly->getBattleBehavior(),
 					CombatMap::StatsOverrides(
 						enemyAlly->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
@@ -160,7 +164,6 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 				CombatMap* combatMap = CombatMap::create(
 					this->enemy->getBattleMapResource(),
 					firstStrike,
-					this->enemy->getUniqueIdentifier(),
 					playerCombatData,
 					enemyCombatData
 				);

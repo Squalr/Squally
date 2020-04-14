@@ -37,20 +37,19 @@ public:
 	struct CombatData
 	{
 		std::string entityType;
+		std::string identifier;
 		std::string battleBehavior;
 		std::string dropPool;
 		StatsOverrides statsOverrides;
 
-		CombatData(std::string entityType, std::string battleBehavior, StatsOverrides statsOverrides = StatsOverrides(), std::string dropPool = "")
-			: entityType(entityType), battleBehavior(battleBehavior), statsOverrides(statsOverrides), dropPool(dropPool) { }
+		CombatData(std::string entityType, std::string identifier, std::string battleBehavior, StatsOverrides statsOverrides = StatsOverrides(), std::string dropPool = "")
+			: entityType(entityType), identifier(identifier), battleBehavior(battleBehavior), statsOverrides(statsOverrides), dropPool(dropPool) { }
 	};
 
-	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
+	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 
 protected:
-	CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
+	CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 	virtual ~CombatMap();
 
 	void onEnter() override;
@@ -89,7 +88,6 @@ private:
 	bool playerFirstStrike;
 	std::vector<CombatData> playerData;
 	std::vector<CombatData> enemyData;
-	std::string enemyIdentifier;
 
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 

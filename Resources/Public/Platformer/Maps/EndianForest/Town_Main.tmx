@@ -765,7 +765,7 @@
     <property name="transition" value="liana-back"/>
    </properties>
   </object>
-  <object id="961" name="pass-through" type="collision" x="4514.67" y="4792" width="792.667" height="89.3333"/>
+  <object id="961" name="pass-through" type="collision" x="4514.67" y="4782.67" width="792.667" height="89.3333"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

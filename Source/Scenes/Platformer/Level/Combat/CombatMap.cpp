@@ -57,18 +57,16 @@ using namespace cocos2d;
 const std::string CombatMap::PropertyPlayerFirstStrike = "player-first-strike";
 const std::string CombatMap::PropertyEnemyFirstStrike = "enemy-first-strike";
 
-CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
+CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
 {
-	CombatMap* instance = new CombatMap(levelFile, playerFirstStrike, enemyIdentifier, playerData, enemyData);
+	CombatMap* instance = new CombatMap(levelFile, playerFirstStrike, playerData, enemyData);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-	std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
+CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
 {
 	if (!super::init())
 	{
@@ -80,7 +78,6 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
-	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
 	this->timeline = Timeline::create();
@@ -208,7 +205,10 @@ void CombatMap::initializeListeners()
 		{
 			if (args->playerVictory)
 			{
-				GameObject::saveObjectState(this->enemyIdentifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
+				for (auto next : enemyData)
+				{
+					GameObject::saveObjectState(next.identifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
+				}
 
 				CombatEvents::TriggerGiveExp();
 

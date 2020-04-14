@@ -1,4 +1,4 @@
-#include "EnemyBattleAllyBehavior.h"
+#include "EnemyAllyDropBehavior.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -13,18 +13,18 @@
 
 using namespace cocos2d;
 	
-const std::string EnemyBattleAllyBehavior::MapKey = "ally";
+const std::string EnemyAllyDropBehavior::MapKey = "ally-drop";
 
-EnemyBattleAllyBehavior* EnemyBattleAllyBehavior::create(GameObject* owner)
+EnemyAllyDropBehavior* EnemyAllyDropBehavior::create(GameObject* owner)
 {
-	EnemyBattleAllyBehavior* instance = new EnemyBattleAllyBehavior(owner);
+	EnemyAllyDropBehavior* instance = new EnemyAllyDropBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EnemyBattleAllyBehavior::EnemyBattleAllyBehavior(GameObject* owner) : super(owner)
+EnemyAllyDropBehavior::EnemyAllyDropBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -34,26 +34,24 @@ EnemyBattleAllyBehavior::EnemyBattleAllyBehavior(GameObject* owner) : super(owne
 	}
 }
 
-EnemyBattleAllyBehavior::~EnemyBattleAllyBehavior()
+EnemyAllyDropBehavior::~EnemyAllyDropBehavior()
 {
 }
 
-void EnemyBattleAllyBehavior::initializePositions()
+void EnemyAllyDropBehavior::initializePositions()
 {
 }
 
-void EnemyBattleAllyBehavior::onLoad()
+void EnemyAllyDropBehavior::onLoad()
 {
-	this->entity->setVisible(false);
-
-	// Allies should not have a drop pool
+	// Allies should not have a drop pool // ZAC : Why are drop pools on the entity and not a separate behavior?
 	if (dynamic_cast<PlatformerEnemy*>(this->entity) != nullptr)
 	{
 		dynamic_cast<PlatformerEnemy*>(this->entity)->setDropPool("");
 	}
 }
 
-void EnemyBattleAllyBehavior::onDisable()
+void EnemyAllyDropBehavior::onDisable()
 {
 	super::onDisable();
 }

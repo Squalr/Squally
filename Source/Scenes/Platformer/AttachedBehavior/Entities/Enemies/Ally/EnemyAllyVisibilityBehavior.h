@@ -4,16 +4,16 @@
 
 class PlatformerEntity;
 
-class EnemyBattleAllyBehavior : public AttachedBehavior
+class EnemyAllyVisibilityBehavior : public AttachedBehavior
 {
 public:
-	static EnemyBattleAllyBehavior* create(GameObject* owner);
+	static EnemyAllyVisibilityBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	EnemyBattleAllyBehavior(GameObject* owner);
-	virtual ~EnemyBattleAllyBehavior();
+	EnemyAllyVisibilityBehavior(GameObject* owner);
+	virtual ~EnemyAllyVisibilityBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
