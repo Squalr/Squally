@@ -24,13 +24,25 @@ class Timeline;
 class CombatMap : public MapBase
 {
 public:
+	struct StatsOverrides
+	{
+		int health;
+		int mana;
+		bool useOverrides;
+
+		StatsOverrides() : health(0), mana(0), useOverrides(false) { }
+		StatsOverrides(int health, int mana) : health(health), mana(mana), useOverrides(true) { }
+	};
+
 	struct CombatData
 	{
 		std::string entityType;
 		std::string battleBehavior;
 		std::string dropPool;
+		StatsOverrides statsOverrides;
 
-		CombatData(std::string entityType, std::string battleBehavior, std::string dropPool = "") : entityType(entityType), battleBehavior(battleBehavior), dropPool(dropPool) { }
+		CombatData(std::string entityType, std::string battleBehavior, StatsOverrides statsOverrides = StatsOverrides(), std::string dropPool = "")
+			: entityType(entityType), battleBehavior(battleBehavior), statsOverrides(statsOverrides), dropPool(dropPool) { }
 	};
 
 	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,

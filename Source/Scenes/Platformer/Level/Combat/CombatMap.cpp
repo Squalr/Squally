@@ -34,6 +34,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/DefeatMenu.h"
@@ -470,6 +472,19 @@ void CombatMap::spawnEntities()
 						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
 						friendlyEntities.push_back(entity);
 					}));
+
+					if (this->playerData[index].statsOverrides.useOverrides)
+					{
+						entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+						{
+							healthBehavior->setHealth(this->playerData[index].statsOverrides.health);
+						});
+
+						entity->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+						{
+							manaBehavior->setMana(this->playerData[index].statsOverrides.mana);
+						});
+					}
 				}
 			);
 
