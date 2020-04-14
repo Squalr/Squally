@@ -131,6 +131,7 @@ private:
 	cocos2d::Vec2 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec2 position);
 	Shape determineShape();
+	void computeWorldCoords(bool force = false);
 	void propagateRotation();
 
 	static void ClearCollisionObjects();
@@ -172,6 +173,8 @@ private:
 
 	// Cache
 	float cachedRotation;
+	cocos2d::Vec2 cachedWorldCoords;
+	unsigned int cachedTick;
 
 	// Debug
 	cocos2d::Color4F debugColor;

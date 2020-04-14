@@ -309,6 +309,7 @@ void HackableObject::refreshParticleFx()
 		if (!hackParticles2->isActive())
 		{
 			this->hackParticles2->start();
+			this->hackParticles2->accelerate(1.0f);
 		}
 
 		if (!hackParticles3->isActive())
@@ -319,15 +320,13 @@ void HackableObject::refreshParticleFx()
 		if (!hackParticles4->isActive())
 		{
 			this->hackParticles4->start();
+			this->hackParticles4->accelerate(1.0f);
 		}
 
 		if (!hackParticles5->isActive())
 		{
 			this->hackParticles5->start();
 		}
-
-		this->hackParticles2->accelerate(1.0f);
-		this->hackParticles4->accelerate(1.0f);
 	}
 	else if (this->hackParticles1 != nullptr)
 	{

@@ -18,6 +18,7 @@
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
 unsigned long long SmartScene::TaskId = 0;
+unsigned int SmartScene::GlobalTick = 0;
 
 using namespace cocos2d;
 
@@ -150,6 +151,8 @@ void SmartScene::update(float dt)
 	super::update(dt);
 
 	HackableAttribute::UpdateSharedState(dt);
+
+	SmartScene::GlobalTick++;
 }
 
 void SmartScene::onDeveloperModeEnable(int debugLevel)

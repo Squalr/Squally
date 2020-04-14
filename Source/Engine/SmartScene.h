@@ -34,6 +34,8 @@ public:
 	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	void onDispose(std::function<void()> task);
 
+	static unsigned int GlobalTick;
+
 protected:
 	SmartScene();
 	virtual ~SmartScene();

@@ -254,7 +254,7 @@ float GameUtils::getScale(cocos2d::Node* node)
 	return scale;
 }
 
-Vec2 GameUtils::getWorldCoords(Node* node)
+Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 {
 	if (node == nullptr)
 	{
@@ -264,7 +264,7 @@ Vec2 GameUtils::getWorldCoords(Node* node)
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f);
 	Node* parent = node->getParent();
-	UIBoundObject* uiBoundObjectParent = GameUtils::getFirstParentOfType<UIBoundObject>(parent);
+	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
 
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
@@ -284,7 +284,7 @@ Vec2 GameUtils::getWorldCoords(Node* node)
 	return resultCoords;
 }
 
-Vec3 GameUtils::getWorldCoords3D(Node* node)
+Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 {
 	if (node == nullptr)
 	{
@@ -294,7 +294,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 	Rect resultRect = node->getBoundingBox();
 	Vec3 resultCoords = Vec3(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f, node->getPositionZ());
 	Node* parent = node->getParent();
-	UIBoundObject* uiBoundObjectParent = GameUtils::getFirstParentOfType<UIBoundObject>(parent);
+	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
 
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)

@@ -22,8 +22,11 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		return;
 	}
 
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	objectA->computeWorldCoords();
+	objectB->computeWorldCoords();
+
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 	
 	Rect rectA = objectA->boundsRect;
 	Rect rectB = objectB->boundsRect;
@@ -76,18 +79,13 @@ bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, Co
 	const float thisDepth = GameUtils::getDepth(collisionObjectA);
 	const float otherDepth = GameUtils::getDepth(collisionObjectB);
 
-	if (std::abs(thisDepth - otherDepth) >= CollisionObject::CollisionZThreshold)
-	{
-		return false;
-	}
-
-	return true;
+	return std::abs(thisDepth - otherDepth) < CollisionObject::CollisionZThreshold;
 }
 
 void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
 {
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 	
 	Rect rectA = objectA->boundsRect;
 	Rect rectB = objectB->boundsRect;
@@ -224,8 +222,8 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 
 void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
 {
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 	
 	Rect rectA = objectA->boundsRect;
 	Rect rectB = objectB->boundsRect;
@@ -309,8 +307,8 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 		CollisionResolver::applyCorrection(innerObject, outerObject, closestPoint - innerPoint, normal);
 	};
 
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 	bool hasRunEvents = false;
 	CollisionObject::CollisionResult result = CollisionObject::CollisionResult::DoNothing;
 
@@ -354,8 +352,8 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 
 void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
 {
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 	CollisionObject::CollisionResult result = CollisionObject::CollisionResult::DoNothing;
 
 	// Collision check by determining if any points from either polygon is contained by the other polygon
@@ -446,8 +444,8 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 
 void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
 {
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segmentsRotated[0]), coordsB + std::get<1>(objectB->segmentsRotated[0]));
 	bool hadCollision = false;
 
@@ -521,8 +519,8 @@ void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject*
 
 void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
 {
-	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
-	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	Vec2 coordsA = objectA->cachedWorldCoords;
+	Vec2 coordsB = objectB->cachedWorldCoords;
 
 	std::tuple<Vec2, Vec2> objectASegment = std::make_tuple(coordsA + std::get<0>(objectA->segmentsRotated[0]), coordsA + std::get<1>(objectA->segmentsRotated[0]));
 	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segmentsRotated[0]), coordsB + std::get<1>(objectB->segmentsRotated[0]));

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="960">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="962">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -678,9 +678,6 @@
    </properties>
   </object>
   <object id="913" name="life-stone" type="object" x="2315" y="5501.83" width="146" height="423"/>
-  <object id="917" name="pass-through" type="collision" x="4449.23" y="5328.98">
-   <polygon points="62.5619,-541.333 857.836,-543.706 857.999,-503.37 63.4665,-508.069"/>
-  </object>
   <object id="926" name="solid" type="collision" x="5647.58" y="6689.33">
    <polygon points="109.055,-69.1763 1004.17,-68.1492 1004.27,-4.12835 110.611,-1.23965"/>
   </object>
@@ -768,6 +765,7 @@
     <property name="transition" value="liana-back"/>
    </properties>
   </object>
+  <object id="961" name="pass-through" type="collision" x="4514.67" y="4792" width="792.667" height="89.3333"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
