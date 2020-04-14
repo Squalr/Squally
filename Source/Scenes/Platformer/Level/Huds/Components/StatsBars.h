@@ -13,6 +13,7 @@ class LocalizedLabel;
 class RuneBar;
 class PlatformerEntity;
 class ProgressBar;
+class TimelineEntry;
 
 class StatsBars : public SmartNode
 {
@@ -20,6 +21,8 @@ public:
 	static StatsBars* create(bool isFrameOnLeft = true);
 
 	void setSelected(bool isSelected);
+	void setStatsTargetAsTimelineEntry(TimelineEntry* targetAsTimelineEntry);
+	TimelineEntry* getStatsTargetAsTimelineEntry();
 	void setStatsTarget(PlatformerEntity* target);
 	PlatformerEntity* getStatsTarget();
 
@@ -36,6 +39,7 @@ private:
 	typedef SmartNode super;
 
 	PlatformerEntity* target;
+	TimelineEntry* targetAsTimelineEntry;
 
 	int cachedMana;
 	int cachedMaxMana;

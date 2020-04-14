@@ -72,11 +72,13 @@ void CombatHud::initializeListeners()
 			for (auto next : this->playerPartyStatsBars)
 			{
 				next->setSelected(next->getStatsTarget() == args->target);
+				next->getStatsTargetAsTimelineEntry()->setSelected(next->getStatsTarget() == args->target);
 			}
 
 			for (auto next : this->enemyPartyStatsBars)
 			{
 				next->setSelected(next->getStatsTarget() == args->target);
+				next->getStatsTargetAsTimelineEntry()->setSelected(next->getStatsTarget() == args->target);
 			}
 		}
 	}));
@@ -86,11 +88,13 @@ void CombatHud::initializeListeners()
 		for (auto next : this->playerPartyStatsBars)
 		{
 			next->setSelected(false);
+			next->getStatsTargetAsTimelineEntry()->setSelected(false);
 		}
 
 		for (auto next : this->enemyPartyStatsBars)
 		{
 			next->setSelected(false);
+			next->getStatsTargetAsTimelineEntry()->setSelected(false);
 		}
 	}));
 }
@@ -106,7 +110,7 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 	{
 		StatsBars* statsBars = StatsBars::create();
 		
-		statsBars->setStatsTarget(next->getEntity());
+		statsBars->setStatsTargetAsTimelineEntry(next);
 		
 		this->playerPartyStatsBars.push_back(statsBars);
 		this->playerPartyStatsNode->addChild(statsBars);
@@ -116,7 +120,7 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 	{
 		StatsBars* statsBars = StatsBars::create();
 		
-		statsBars->setStatsTarget(next->getEntity());
+		statsBars->setStatsTargetAsTimelineEntry(next);
 		
 		this->enemyPartyStatsBars.push_back(statsBars);
 		this->enemyPartyStatsNode->addChild(statsBars);

@@ -9,6 +9,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/Components/EqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -34,6 +35,7 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->target = nullptr;
+	this->targetAsTimelineEntry = nullptr;
 	this->frame = Sprite::create(UIResources::HUD_Frame);
 	this->frameSelected = Sprite::create(UIResources::HUD_FrameSelected);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
@@ -164,6 +166,18 @@ void StatsBars::setSelected(bool isSelected)
 {
 	this->frame->setVisible(!isSelected);
 	this->frameSelected->setVisible(isSelected);
+}
+
+void StatsBars::setStatsTargetAsTimelineEntry(TimelineEntry* targetAsTimelineEntry)
+{
+	this->targetAsTimelineEntry = targetAsTimelineEntry;
+
+	this->setStatsTarget(this->targetAsTimelineEntry == nullptr ? nullptr : this->targetAsTimelineEntry->getEntity());
+}
+
+TimelineEntry* StatsBars::getStatsTargetAsTimelineEntry()
+{
+	return this->targetAsTimelineEntry;
 }
 
 void StatsBars::setStatsTarget(PlatformerEntity* target)
