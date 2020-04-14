@@ -278,7 +278,7 @@ void CombatMap::initializeListeners()
 
 					this->entityFocusTakeOver->positionFreezeFocus(focusTargets);
 					
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, this->timeline });
 
 					for (auto entity : this->timeline->getEntries())
 					{
@@ -331,7 +331,7 @@ void CombatMap::initializeListeners()
 					});
 
 					this->entityFocusTakeOver->positionFreezeFocus({ focusTargets });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, this->timeline, this->scrappy });
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
