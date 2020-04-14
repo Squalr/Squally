@@ -361,6 +361,11 @@ bool EntityDialogueBehavior::hasDialogueOptions()
 
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
 
+	if (dialogueOptions.empty())
+	{
+		return false;
+	}
+
 	if (dialogueOptions.size() > 1)
 	{
 		return true;

@@ -102,6 +102,19 @@ void ChoicesMenu::initializeListeners()
 		this->noItems = true;
 	}));
 
+	// Handle the (very rare) case of getting interrupted while menuing -- can happen if a projectile hits the user after the timeline resumes.
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getUserData());
+
+		PlatformerEntity* entity = this->selectedEntry == nullptr ? nullptr : this->selectedEntry->getEntity();
+
+		if (args != nullptr && args->target == entity)
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, this->selectedEntry));
+		}
+	}));
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE }, [=](InputEvents::InputArgs* args)
 	{
 		switch (this->currentMenu)

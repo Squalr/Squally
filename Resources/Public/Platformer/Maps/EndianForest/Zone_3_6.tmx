@@ -192,7 +192,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="goblin-shaman" type="entity" x="756.06" y="1983.37" width="128" height="128">
+  <object id="692" name="cyclops" type="entity" x="756.06" y="1983.37" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -201,7 +201,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="cyclops" type="entity" x="757.64" y="1738.94" width="128" height="128">
+  <object id="693" name="orc-bomber" type="entity" x="757.64" y="1738.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

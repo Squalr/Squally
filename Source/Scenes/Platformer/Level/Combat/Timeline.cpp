@@ -240,12 +240,14 @@ void Timeline::checkCombatComplete()
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+		CombatEvents::TriggerPauseTimelineCinematic();
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
 	}
 	else if (!anyPlayerAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+		CombatEvents::TriggerPauseTimelineCinematic();
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(false));
 	}
 }
