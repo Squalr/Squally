@@ -19,7 +19,7 @@ EnemyBattleAllyBehaviorGroup* EnemyBattleAllyBehaviorGroup::create(GameObject* o
 
 EnemyBattleAllyBehaviorGroup::EnemyBattleAllyBehaviorGroup(GameObject* owner) : super(owner, {
 	EnemyAllyDropBehavior::create(owner),
-	// EnemyAllyVisibilityBehavior::create(owner),
+	EnemyAllyVisibilityBehavior::create(owner),
 	})
 {
 }
