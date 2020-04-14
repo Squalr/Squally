@@ -47,6 +47,7 @@ public:
 	static const std::string EventGiveExp;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
+	static const std::string EventReturnToRespawn;
 	static const std::string EventHackableCombatCue;
 	static const std::string EventDamageDelt;
 	static const std::string EventHealingDelt;
@@ -333,6 +334,7 @@ public:
 	static void TriggerGiveExp();
 	static void TriggerGiveRewards();
 	static void TriggerReturnToMap();
+	static void TriggerReturnToRespawn();
 	static void TriggerHackableCombatCue();
 	static void TriggerDamageDelt(DamageOrHealingArgs args);
 	static void TriggerHealingDelt(DamageOrHealingArgs args);

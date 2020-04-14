@@ -32,6 +32,7 @@ const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_COMBAT_FINIS
 const std::string CombatEvents::EventGiveExp = "EVENT_COMBAT_GIVE_EXP";
 const std::string CombatEvents::EventGiveRewards = "EVENT_COMBAT_GIVE_REWARDS";
 const std::string CombatEvents::EventReturnToMap = "EVENT_COMBAT_RETURN_TO_MAP";
+const std::string CombatEvents::EventReturnToRespawn = "EVENT_COMBAT_RETURN_TO_MAP_RESPAWN";
 const std::string CombatEvents::EventHackableCombatCue = "EVENT_COMBAT_HACKABLE_COMBAT_CUE";
 const std::string CombatEvents::EventDamageDelt = "EVENT_COMBAT_DAMAGE_DELT";
 const std::string CombatEvents::EventDamage = "EVENT_COMBAT_DAMAGE";
@@ -249,6 +250,13 @@ void CombatEvents::TriggerReturnToMap()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventReturnToMap
+	);
+}
+
+void CombatEvents::TriggerReturnToRespawn()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventReturnToRespawn
 	);
 }
 

@@ -107,7 +107,6 @@ void EntityMovementCollisionBehavior::onLoad()
 			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
 			{
 				this->warpToPosition(GameUtils::getWorldCoords(object));
-
 			}), args->objectId);
 		}
 	}));

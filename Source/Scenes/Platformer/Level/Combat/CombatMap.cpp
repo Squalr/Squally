@@ -23,6 +23,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
@@ -46,6 +47,8 @@
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+
+#include "Resources/MapResources.h"
 
 using namespace cocos2d;
 
@@ -237,6 +240,19 @@ void CombatMap::initializeListeners()
 			std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
 			PlatformerMap* map = PlatformerMap::create(mapResource, { });
+
+			return map;
+		}));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToRespawn, [=](EventCustom* eventCustom)
+	{
+		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			PlatformerEvents::TriggerBeforePlatformerMapChange();
+			PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
 
 			return map;
 		}));

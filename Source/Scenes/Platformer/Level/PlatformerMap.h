@@ -21,6 +21,8 @@ public:
 	static PlatformerMap* create(std::string mapResource, std::string transition = "");
 
 	bool loadMap(std::string mapResource) override;
+	
+	static const std::string TransitionRespawn;
 
 protected:
 	PlatformerMap(std::string transition = "");
@@ -33,6 +35,8 @@ private:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
+
+	void warpSquallyToRespawn();
 
 	bool awaitingConfirmationEnd;
 

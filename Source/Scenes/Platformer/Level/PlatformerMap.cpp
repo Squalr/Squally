@@ -51,6 +51,8 @@
 
 using namespace cocos2d;
 
+const std::string PlatformerMap::TransitionRespawn = "transition-special-respawn";
+
 PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transition)
 {
 	PlatformerMap* instance = new PlatformerMap(transition);
@@ -142,7 +144,14 @@ void PlatformerMap::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
+	if (this->transition == PlatformerMap::TransitionRespawn)
+	{
+		this->warpSquallyToRespawn();
+	}
+	else
+	{
+		PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
+	}
 }
 
 void PlatformerMap::onExit()
@@ -233,23 +242,21 @@ void PlatformerMap::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
 	{
 		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
-		std::string savedObjectId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value("error-no-object-id")).asString();
 
 		if (savedMap != this->mapResource)
 		{
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 			{
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
-				PlatformerMap* map = PlatformerMap::create(savedMap, this->transition);
+				PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
 
 				return map;
 			}));
 		}
-
-		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+		else
 		{
-			PlatformerEvents::WarpObjectToObjectIdArgs(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
-		}, Squally::MapKey);
+			this->warpSquallyToRespawn();
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
@@ -458,4 +465,14 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
+}
+
+void PlatformerMap::warpSquallyToRespawn()
+{
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		std::string savedObjectId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnObjectId, Value("error-no-object-id")).asString();
+
+		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
+	}, Squally::MapKey);
 }
