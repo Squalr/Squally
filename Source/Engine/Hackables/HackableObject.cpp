@@ -89,13 +89,6 @@ void HackableObject::onEnterTransitionDidFinish()
 	this->registerHackables();
 }
 
-void HackableObject::onExit()
-{
-	super::onExit();
-
-	this->unregisterAllHackables();
-}
-
 void HackableObject::initializeListeners()
 {
 	super::initializeListeners();
@@ -380,23 +373,6 @@ HackablePreview* HackableObject::createDefaultPreview()
 	return nullptr;
 }
 
-void HackableObject::unregisterAllHackables()
-{
-	std::vector<HackableCode*> codeList = this->codeList;
-
-	for (auto next : codeList)
-	{
-		this->unregisterCode(next);
-	}
-
-	std::vector<HackActivatedAbility*> hackAbilityList = this->hackAbilityList;
-
-	for (auto next : hackAbilityList)
-	{
-		this->unregisterHackAbility(next);
-	}
-}
-
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
 	if (hackableCode == nullptr)
@@ -419,7 +395,7 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 	this->refreshParticleFx();
 }
 
-void HackableObject::unregisterCode(HackableCode* hackableCode)
+void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestoreState)
 {
 	bool hasHackableCode = false;
 
@@ -440,7 +416,14 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 
 	if (hasHackableCode)
 	{
-		hackableCode->restoreStateIfUnique();
+		if (forceRestoreState)
+		{
+			hackableCode->restoreState();
+		}
+		else
+		{
+			hackableCode->restoreStateIfUnique();
+		}
 		
 		// Removed all tracked attributes with the same ID as the code being removed
 		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)

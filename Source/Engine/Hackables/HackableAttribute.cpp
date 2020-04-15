@@ -97,6 +97,11 @@ void HackableAttribute::initializeListeners()
 			args->count++;
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->restoreState();
+	}));
 }
 
 void HackableAttribute::UpdateSharedState(float dt)

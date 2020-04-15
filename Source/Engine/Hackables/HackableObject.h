@@ -32,7 +32,7 @@ public:
 	void toggleHackable(bool isHackable);
 	void toggleAllowFx(bool allowFx);
 	void registerCode(HackableCode* hackableCode);
-	void unregisterCode(HackableCode* hackableCode);
+	void unregisterCode(HackableCode* hackableCode, bool forceRestoreState = false);
 	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void registerClippy(Clippy* clippy);
@@ -64,7 +64,6 @@ protected:
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
-	void onExit() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
@@ -87,7 +86,6 @@ private:
 	void refreshParticleFx();
 	void createSensingParticles();
 	void createHackCircle();
-	void unregisterAllHackables();
 
 	cocos2d::Node* hackParticlesNode;
 	SmartParticles* hackParticles1;
