@@ -93,6 +93,7 @@ void AfterFight::onLoad(QuestState questState)
 	if (questState == QuestState::Complete)
 	{
 		this->despawnMages();
+		this->magePortal->openPortal(true);
 	}
 }
 

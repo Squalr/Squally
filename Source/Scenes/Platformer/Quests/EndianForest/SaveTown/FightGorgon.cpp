@@ -145,10 +145,10 @@ void FightGorgon::onLoad(QuestState questState)
 		else
 		{
 			// Gorgon dead! Complete quest.
-			if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+			this->defer([=]()
 			{
 				this->complete();
-			}
+			});
 		}
 
 	}, Gorgon::MapKey);

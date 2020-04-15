@@ -251,8 +251,11 @@ namespace ObjectResources
 	extern const std::string Interactive_Chests_CipherChestOpened;
 	extern const std::string Interactive_Chests_MetalChestClosed;
 	extern const std::string Interactive_Chests_MetalChestOpen;
+	extern const std::string Interactive_Help_ChatBubble;
+	extern const std::string Interactive_Help_Exclamation;
 	extern const std::string Interactive_Help_HelpTotem;
 	extern const std::string Interactive_Help_HelpTotemDeactivated;
+	extern const std::string Interactive_Help_Question;
 	extern const std::string Interactive_Help_QuestionMark;
 	extern const std::string Interactive_Help_TotemGlow;
 	extern const std::string Interactive_LifeStone;

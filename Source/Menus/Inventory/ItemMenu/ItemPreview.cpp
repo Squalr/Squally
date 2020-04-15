@@ -191,15 +191,7 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 		item = dynamic_cast<Recipe*>(item)->getCraftedItemRef();
 	}
 
-	if (dynamic_cast<Hat*>(item) != nullptr)
-	{
-		this->setHatStatline(dynamic_cast<Hat*>(item));
-	}
-	else if (dynamic_cast<Offhand*>(item) != nullptr)
-	{
-		this->setOffhandStatline(dynamic_cast<Offhand*>(item));
-	}
-	else if (dynamic_cast<Weapon*>(item) != nullptr)
+	if (dynamic_cast<Weapon*>(item) != nullptr)
 	{
 		this->setWeaponStatline(dynamic_cast<Weapon*>(item));
 	}
@@ -207,22 +199,15 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 	{
 		this->setHexusInfo(dynamic_cast<HexusCard*>(item));
 	}
+	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	{
+		this->setGenericStatline(dynamic_cast<Equipable*>(item));
+	}
 }
 
-void ItemPreview::setHatStatline(Hat* hat)
+void ItemPreview::setGenericStatline(Equipable* equipable)
 {
-	Equipable::ItemStats itemStats = hat->getItemStats();
-
-	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Armor::create(); }, itemStats.armorBonus);
-	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Attack::create(); }, itemStats.attackBonus);
-	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Health::create(); }, itemStats.healthBonus);
-	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Mana::create(); }, itemStats.manaBonus);
-	this->bindStatlineToNonZeroFloat([](){ return Strings::Menus_ItemPreview_Speed::create(); }, itemStats.speedBonus);
-}
-
-void ItemPreview::setOffhandStatline(Offhand* offhand)
-{
-	Equipable::ItemStats itemStats = offhand->getItemStats();
+	Equipable::ItemStats itemStats = equipable->getItemStats();
 
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Armor::create(); }, itemStats.armorBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Attack::create(); }, itemStats.attackBonus);

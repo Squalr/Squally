@@ -10,7 +10,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -31,7 +31,7 @@ AgroBehavior* AgroBehavior::create(GameObject* owner)
 AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->exclamation = Sprite::create(UIResources::Platformer_Exclamation);
+	this->exclamation = Sprite::create(ObjectResources::Interactive_Help_Exclamation);
 	this->warnOnAgro = true;
 	this->isAgrod = false;
 	this->isEnabled = true;

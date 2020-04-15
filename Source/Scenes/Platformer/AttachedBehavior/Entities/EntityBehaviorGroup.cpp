@@ -8,6 +8,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 
 using namespace cocos2d;
 
@@ -30,6 +31,7 @@ EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityInventoryBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
 	EntityMovementBehavior::create(owner),
+	EntityQuestVisualBehavior::create(owner),
 	})
 {
 }
