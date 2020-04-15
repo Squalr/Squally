@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="572">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="39" nextobjectid="576">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -11,72 +11,41 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="3" name="decor -4096">
+ <objectgroup id="37" name="rocks">
   <properties>
-   <property name="depth" type="float" value="-2048"/>
+   <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="460" name="Generic/Background/Moon" type="decor" x="908.7" y="-127.061" width="812" height="812"/>
+  <object id="573" name="Forest/Background/GreenForestRocks1" type="decor" x="-4781.69" y="397.3" width="13333.3" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="5" name="decor -3072">
-  <properties>
-   <property name="depth" type="float" value="-3072"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="462" name="Generic/Background/Cloud12" type="decor" x="45" y="341.61" width="1062" height="409"/>
- </objectgroup>
- <objectgroup id="35" name="decor -2560">
+ <objectgroup id="36" name="trees-far-1">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="489" name="Forest/Background/Forest3" type="decor" x="-3406.09" y="1958.01" width="10000" height="1265">
+  <object id="572" name="Forest/Background/GreenForestGround2" type="decor" x="-4797.69" y="-770.7" width="13333.3" height="1140">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="568" name="Generic/Background/Cloud10" type="decor" x="131.712" y="881.409" width="800.212" height="297.788"/>
- </objectgroup>
- <objectgroup id="8" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="490" name="Forest/Background/Forest2" type="decor" x="-3386.24" y="2137.39" width="10000" height="1240">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="569" name="Generic/Background/Cloud11" type="decor" x="1708.85" y="695.348" width="773.212" height="260.818"/>
- </objectgroup>
- <objectgroup id="9" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="491" name="Forest/Background/Forest1" type="decor" x="-3383.03" y="2319.8" width="10000" height="1272">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="10" name="background mist">
+ <objectgroup id="38" name="trees-mid">
   <properties>
-   <property name="background" value="Mist"/>
-   <property name="type" value="background"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -2">
-  <properties>
-   <property name="depth" type="float" value="-256"/>
+   <property name="depth" type="float" value="-612"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="575" name="Forest/Background/GreenForestGround3" type="decor" x="-5409.81" y="825.6" width="14985.6" height="1116">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="1.75"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>
