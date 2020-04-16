@@ -155,9 +155,9 @@ void CollisionObject::onDeveloperModeDisable()
 	}
 }
 
-void CollisionObject::despawn()
+void CollisionObject::onDespawn()
 {
-	super::despawn();
+	super::onDespawn();
 
 	CollisionObject::UnregisterCollisionObject(this);
 }

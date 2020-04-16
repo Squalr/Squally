@@ -69,6 +69,7 @@ protected:
 	void update(float dt) override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
+	void onDespawn() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getRainOffset();
@@ -82,6 +83,7 @@ private:
 	bool allowFx;
 	bool isHackable;
 
+	void unregisterAllHackables(bool forceRestoreState = false);
 	void updateTimeRemainingBars();
 	void refreshParticleFx();
 	void createSensingParticles();

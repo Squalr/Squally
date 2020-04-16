@@ -77,6 +77,8 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
 			}
 
+			fireball->despawn(1.0f);
+
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 

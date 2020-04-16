@@ -41,7 +41,7 @@ public:
 	void listenForMapEventOnce(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	std::string getListenEvent();
 	std::string getSendEvent();
-	virtual void despawn();
+	void despawn(float despawnDelay = 0.0f);
 	bool isDespawned();
 
 	template <class T>
@@ -156,6 +156,7 @@ protected:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
+	virtual void onDespawn();
 	bool isMapObject();
 	void loadObjectState();
 	virtual void onObjectStateLoaded();

@@ -68,7 +68,6 @@ public:
 		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
 	};
 
-	void despawn() override;
 	void warpTo(cocos2d::Vec2 location);
 	void bindTo(GameObject* bindTarget);
 	void unbind();
@@ -119,6 +118,7 @@ protected:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void update(float dt) override;
+	void onDespawn() override;
 
 private:
 	typedef GameObject super;

@@ -1,5 +1,7 @@
 #include "GameObject.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -535,7 +537,26 @@ std::string GameObject::getSendEvent()
 	return this->sendEvent;
 }
 
-void GameObject::despawn()
+void GameObject::despawn(float despawnDelay)
+{
+	if (despawnDelay <= 0.0f)
+	{
+		this->onDespawn();
+	}
+	else
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(despawnDelay),
+			CallFunc::create([=]()
+			{
+				this->onDespawn();
+			}),
+			nullptr
+		));
+	}
+}
+
+void GameObject::onDespawn()
 {
 	std::vector<AttachedBehavior*> behaviorClone = this->attachedBehavior;
 

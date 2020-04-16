@@ -395,6 +395,22 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 	this->refreshParticleFx();
 }
 
+void HackableObject::unregisterAllHackables(bool forceRestoreState)
+{
+	auto codeListClone = this->codeList;
+	auto hackAbilityListClone = this->hackAbilityList;
+
+	for (auto next : codeListClone)
+	{
+		this->unregisterCode(next, forceRestoreState);
+	}
+
+	for (auto next : hackAbilityListClone)
+	{
+		this->unregisterHackAbility(next);
+	}
+}
+
 void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestoreState)
 {
 	bool hasHackableCode = false;
@@ -523,4 +539,11 @@ void HackableObject::createHackCircle()
 Node* HackableObject::getHackParticlesNode()
 {
 	return this->hackParticlesNode;
+}
+
+void HackableObject::onDespawn()
+{
+	super::onDespawn();
+
+	this->unregisterAllHackables();
 }
