@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="589">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="590">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -131,30 +131,30 @@
    </properties>
    <polygon points="0,0 1057.05,-2.14915 1043.56,444.874 1043.9,1142.16 580.252,1194.93 26.9885,984.311 30.533,498.711"/>
   </object>
-  <object id="573" name="combat-spawn" type="object" x="1687" y="1585" width="64" height="64">
+  <object id="573" name="combat-spawn" type="object" x="1731" y="1579.67" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="574" name="combat-spawn" type="object" x="1935.33" y="1581" width="64" height="64">
+  <object id="574" name="combat-spawn" type="object" x="1704.66" y="1346.33" width="64" height="64">
    <properties>
-    <property name="depth" type="float" value="-64"/>
+    <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="2"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="575" name="combat-spawn" type="object" x="2074.67" y="1584" width="64" height="64">
+  <object id="575" name="combat-spawn" type="object" x="1938.67" y="1345.33" width="64" height="64">
    <properties>
-    <property name="depth" type="float" value="-64"/>
+    <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="3"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="576" name="combat-spawn" type="object" x="1568.33" y="1583.67" width="64" height="64">
+  <object id="576" name="combat-spawn" type="object" x="1611" y="1346.34" width="64" height="64">
    <properties>
-    <property name="depth" type="float" value="-64"/>
+    <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="4"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
@@ -173,14 +173,14 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="579" name="combat-spawn" type="object" x="1748" y="1584" width="64" height="64">
+  <object id="579" name="combat-spawn" type="object" x="1832" y="1346.67" width="64" height="64">
    <properties>
-    <property name="depth" type="float" value="-64"/>
+    <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="7"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="580" name="combat-spawn" type="object" x="1866.67" y="1581.33" width="64" height="64">
+  <object id="580" name="combat-spawn" type="object" x="1917.34" y="1577.33" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="8"/>
@@ -194,8 +194,15 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
+  <object id="589" name="caverns" type="terrain" x="1485.33" y="1410.67">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="6.66667,32 93.333,-0.183511 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711 0.171407,111.849"/>
+  </object>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

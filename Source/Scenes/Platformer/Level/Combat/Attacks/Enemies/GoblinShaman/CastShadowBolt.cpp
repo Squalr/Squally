@@ -13,6 +13,7 @@
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -68,10 +69,15 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 
 		shadowBolt->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+			
+			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
+
 			shadowBolt->disable(false);
 			shadowBolt->runImpactFX();
-
-			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 			if (entity != nullptr)
 			{

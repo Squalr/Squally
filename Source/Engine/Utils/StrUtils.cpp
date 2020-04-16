@@ -202,6 +202,8 @@ bool StrUtils::isInteger(std::string  str)
 
 bool StrUtils::isFloat(std::string str)
 {
+	str = StrUtils::rtrim(str, "f");
+
 	std::istringstream iss(str);
 	float f;
 
@@ -247,7 +249,7 @@ bool StrUtils::startsWith(std::string str, std::string prefix, bool ignoreCase)
 		if (ignoreCase)
 		{
 			#ifdef _WIN32
-				if (stricmp(stringStart.c_str(), prefix.c_str()) == 0)
+				if (_stricmp(stringStart.c_str(), prefix.c_str()) == 0)
 				{
 					return true;
 				}
@@ -277,7 +279,7 @@ bool StrUtils::endsWith(std::string str, std::string suffix, bool ignoreCase)
 		if (ignoreCase)
 		{
 			#ifdef _WIN32
-				if (stricmp(stringEnd.c_str(), suffix.c_str()) == 0)
+				if (_stricmp(stringEnd.c_str(), suffix.c_str()) == 0)
 				{
 					return true;
 				}

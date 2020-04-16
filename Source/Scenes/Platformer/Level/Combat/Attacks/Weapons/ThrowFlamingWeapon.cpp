@@ -10,6 +10,7 @@
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
@@ -66,9 +67,14 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 		
 		weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			weapon->disable(true);
-
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
+
+			weapon->disable(true);
 
 			if (entity != nullptr)
 			{

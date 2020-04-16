@@ -201,7 +201,7 @@
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="786" name="orc-bomber" type="entity" x="6812" y="2404" width="128" height="128">
+  <object id="786" name="orc-grunt" type="entity" x="6812" y="2404" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
