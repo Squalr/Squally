@@ -19,6 +19,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Overworld/EndianForest/KingGrogg/GroggOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -85,7 +86,7 @@ void TalkToGrogg::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequencePart1();
+		this->runCinematicSequencePart4();
 	});
 }
 
@@ -167,6 +168,11 @@ void TalkToGrogg::runCinematicSequencePart4()
 		),
 		[=]()
 		{
+			this->kingGrogg->watchForAttachedBehavior<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
+			{
+				combatBehavior->attack();
+			});
+			
 			this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
 			{
 				agroBehavior->enable();
