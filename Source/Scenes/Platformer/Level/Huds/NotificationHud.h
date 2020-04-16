@@ -10,7 +10,6 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
-class ConfirmationMenu;
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
@@ -49,7 +48,6 @@ private:
 	LocalizedLabel* description;
 	cocos2d::Node* takeoverNode;
 	cocos2d::Node* notificationsNode;
-	ConfirmationMenu* confirmationMenu;
 	Sound* notificationSound;
 
 	std::queue<cocos2d::Node*> toProcess;

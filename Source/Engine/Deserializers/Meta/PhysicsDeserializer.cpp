@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string PhysicsDeserializer::MapKeyPhysics = "physics";
+const std::string PhysicsDeserializer::MapKey = "physics";
 
 PhysicsDeserializer* PhysicsDeserializer::create()
 {

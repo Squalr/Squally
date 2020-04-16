@@ -146,7 +146,7 @@ void ConfirmationMenu::disableBackdrop()
 	this->backdrop->setVisible(false);
 }
 
-void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
+void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::function<bool()> confirmCallback, std::function<bool()> cancelCallback)
 {
 	this->confirmationLabel->setLocalizedString(confirmationMessage);
 	this->onConfirmCallback = confirmCallback;
@@ -159,7 +159,10 @@ void ConfirmationMenu::confirm()
 {
 	if (this->onConfirmCallback != nullptr)
 	{
-		this->onConfirmCallback();
+		if (this->onConfirmCallback())
+		{
+			return;
+		}
 	}
 
 	NotificationEvents::TriggerConfirmationEnd();
@@ -171,7 +174,10 @@ void ConfirmationMenu::close()
 {
 	if (this->onCancelCallback != nullptr)
 	{
-		this->onCancelCallback();
+		if (this->onCancelCallback())
+		{
+			return;
+		}
 	}
 	
 	NotificationEvents::TriggerConfirmationEnd();

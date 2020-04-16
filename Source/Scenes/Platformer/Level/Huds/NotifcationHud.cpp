@@ -14,19 +14,18 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NotificationEvents.h"
-#include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
+
+using namespace cocos2d;
 
 const int NotificationHud::SlotCount = 12;
 const float NotificationHud::FadeInDuration = 0.35f;
 const float NotificationHud::SustainDuration = 4.0f;
 const float NotificationHud::FadeOutDuration = 0.5f;
 const float NotificationHud::Cooldown = NotificationHud::FadeInDuration + NotificationHud::SustainDuration + NotificationHud::FadeOutDuration;
-
-using namespace cocos2d;
 
 NotificationHud* NotificationHud::create()
 {
@@ -47,7 +46,6 @@ NotificationHud::NotificationHud()
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
-	this->confirmationMenu = ConfirmationMenu::create();
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
@@ -76,7 +74,6 @@ NotificationHud::NotificationHud()
 	this->takeoverNode->addChild(this->okButton);
 	this->contentNode->addChild(this->takeoverNode);
 	this->contentNode->addChild(this->notificationsNode);
-	this->contentNode->addChild(this->confirmationMenu);
 	this->contentNode->addChild(this->notificationSound);
 	this->addChild(this->contentNode);
 }
@@ -128,16 +125,6 @@ void NotificationHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource, args->keepOpen);
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
-	{
-		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
-		{
-			this->confirmationMenu->showMessage(args->confirmationMessage, args->confirmCallback, args->cancelCallback);
 		}
 	}));
 

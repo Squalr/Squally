@@ -44,10 +44,10 @@ public:
 	struct ConfirmationArgs
 	{
 		LocalizedString* confirmationMessage;
-		std::function<void()> confirmCallback;
-		std::function<void()> cancelCallback;
+		std::function<bool()> confirmCallback;
+		std::function<bool()> cancelCallback;
 
-		ConfirmationArgs(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback = nullptr)
+		ConfirmationArgs(LocalizedString* confirmationMessage, std::function<bool()> confirmCallback, std::function<bool()> cancelCallback = nullptr)
 			: confirmationMessage(confirmationMessage), confirmCallback(confirmCallback), cancelCallback(cancelCallback)
 		{
 		}

@@ -33,6 +33,7 @@ const std::string PlatformerEvents::EventDispelIllusion = "EVENT_DISPEL_ILLUSION
 const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
 const std::string PlatformerEvents::EventSaveRespawn = "EVENT_SAVE_RESPAWN";
 const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
+const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
@@ -235,5 +236,12 @@ void PlatformerEvents::TriggerLoadRespawn()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventLoadRespawn
+	);
+}
+
+void PlatformerEvents::TriggerUnstuck()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventUnstuck
 	);
 }

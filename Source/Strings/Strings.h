@@ -18024,6 +18024,36 @@ namespace Strings
 		virtual ~Menus_Party_Party() = default;
 	};
 
+	class Menus_Party_Stuck : public LocalizedString
+	{
+	public:
+		static Menus_Party_Stuck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Party_Stuck();
+		virtual ~Menus_Party_Stuck() = default;
+	};
+
+	class Menus_Party_StuckConfirm : public LocalizedString
+	{
+	public:
+		static Menus_Party_StuckConfirm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Party_StuckConfirm();
+		virtual ~Menus_Party_StuckConfirm() = default;
+	};
+
 	class Menus_Pause_Cards : public LocalizedString
 	{
 	public:

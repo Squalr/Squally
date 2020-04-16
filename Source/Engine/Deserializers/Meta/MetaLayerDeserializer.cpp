@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MetaLayerDeserializer::MapKeyMetaLayer = "meta";
+const std::string MetaLayerDeserializer::MapKey = "meta";
 
 MetaLayerDeserializer* MetaLayerDeserializer::create(std::vector<PropertyDeserializer*> propertyDeserializers)
 {
@@ -20,7 +20,7 @@ MetaLayerDeserializer* MetaLayerDeserializer::create(std::vector<PropertyDeseria
 	return instance;
 }
 
-MetaLayerDeserializer::MetaLayerDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers) : super(MetaLayerDeserializer::MapKeyMetaLayer)
+MetaLayerDeserializer::MetaLayerDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers) : super(MetaLayerDeserializer::MapKey)
 {
 	this->propertyDeserializers = propertyDeserializers;
 }

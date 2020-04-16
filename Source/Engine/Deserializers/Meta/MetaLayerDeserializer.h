@@ -20,5 +20,5 @@ private:
 
 	std::vector<PropertyDeserializer*> propertyDeserializers;
 
-	static const std::string MapKeyMetaLayer;
+	static const std::string MapKey;
 };

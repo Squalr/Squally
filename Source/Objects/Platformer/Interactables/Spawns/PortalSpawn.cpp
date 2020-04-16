@@ -93,7 +93,7 @@ void PortalSpawn::tryShowBanner()
 
 	ValueMap properties = ValueMap();
 
-	properties[BannerDeserializer::MapKeyBanner] = this->bannerName ;
+	properties[BannerDeserializer::MapKey] = this->bannerName;
 
 	MapTitleBanner* banner = deserializer->deserializeProperties(properties);
 

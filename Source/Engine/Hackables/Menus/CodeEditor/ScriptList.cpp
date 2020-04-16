@@ -176,10 +176,14 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 		}
 
 		GameUtils::focus(this->getParent());
+
+		return false;
 	},
 	[=]()
 	{
 		GameUtils::focus(this->getParent());
+
+		return false;
 	});
 }
 

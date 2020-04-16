@@ -127,9 +127,12 @@ void ShopItem::initializeListeners()
 			[=]()
 			{
 				this->sellItem();
+				
+				return false;
 			},
 			[=]()
 			{
+				return false;
 			}
 		));
 	});

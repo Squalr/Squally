@@ -7,6 +7,7 @@ class ChoicesMenu;
 class CollectablesMenu;
 class CombatAIHelper;
 class CombatHud;
+class ConfirmationHud;
 class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
@@ -77,6 +78,7 @@ private:
 	CombatAIHelper* enemyAIHelper;
 	HackerModeWarningHud* hackerModeWarningHud;
 	NotificationHud* notificationHud;
+	ConfirmationHud* confirmationHud;
 
 	Hud* combatEndBackdrop;
 

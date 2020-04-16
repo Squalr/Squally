@@ -45,6 +45,7 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Level/Huds/ConfirmationHud.h"
 #include "Scenes/Platformer/Level/Huds/HackerModeWarningHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
@@ -88,6 +89,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->enemyAIHelper = CombatAIHelper::create();
 	this->hackerModeWarningHud = HackerModeWarningHud::create();
 	this->notificationHud = NotificationHud::create();
+	this->confirmationHud = ConfirmationHud::create();
 	this->entityFocusTakeOver = FocusTakeOver::create();
 	this->focusTakeOver = FocusTakeOver::create();
 	this->combatEndBackdrop = Hud::create();
@@ -101,6 +103,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->focusTakeOver->setTakeOverOpacity(127);
 	this->entityFocusTakeOver->setTakeOverOpacity(0);
 	this->ingameMenu->disableInventory();
+	this->partyMenu->disableUnstuck();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -143,6 +146,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->confirmationHud);
 
 	this->loadMap(levelFile);
 }
@@ -393,6 +397,7 @@ void CombatMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(false);
 		this->partyMenu->setVisible(true);
+		this->partyMenu->open();
 		GameUtils::focus(this->partyMenu);
 	});
 	

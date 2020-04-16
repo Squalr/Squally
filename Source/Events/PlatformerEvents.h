@@ -43,6 +43,7 @@ public:
 	static const std::string EventSavePosition;
 	static const std::string EventSaveRespawn;
 	static const std::string EventLoadRespawn;
+	static const std::string EventUnstuck;
 
 	struct TransitionArgs
 	{
@@ -211,4 +212,5 @@ public:
 	static void TriggerSavePosition();
 	static void TriggerSaveRespawn(SaveRespawnArgs args);
 	static void TriggerLoadRespawn();
+	static void TriggerUnstuck();
 };

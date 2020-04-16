@@ -8,6 +8,7 @@
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="1"/>
    <property name="type" value="meta"/>
+   <property name="unstuck-map" value=""/>
   </properties>
  </objectgroup>
  <objectgroup id="8" name="decor -2304">

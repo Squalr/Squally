@@ -305,9 +305,13 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 			this->buildSaveButtons();
 
 			GameUtils::focus(this);
+
+			return false;
 		}, [=]()
 		{
 			GameUtils::focus(this);
+
+			return false;
 		});
 		
 		GameUtils::focus(this->confirmationMenu);

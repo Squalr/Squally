@@ -42,6 +42,7 @@
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
+#include "Scenes/Platformer/Level/Huds/ConfirmationHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -74,6 +75,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 
 	this->transition = transition;
 	this->gameHud = GameHud::create();
+	this->confirmationHud = ConfirmationHud::create();
 	this->notificationHud = NotificationHud::create();
 	this->combatFadeInNode = Node::create();
 	this->cipher = Cipher::create();
@@ -122,6 +124,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->confirmationHud);
 }
 
 PlatformerMap::~PlatformerMap()
@@ -184,11 +187,20 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnstuck, [=](EventCustom* eventCustom)
+	{
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			PlatformerEvents::TriggerBeforePlatformerMapChange();
+			PlatformerMap* map = PlatformerMap::create(this->mapResource, this->transition);
+
+			return map;
+		}));
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
 	{
 		this->awaitingConfirmationEnd = true;
-
-		GameUtils::focus(this->notificationHud);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmationEnd, [=](EventCustom* eventCustom)
@@ -210,6 +222,7 @@ void PlatformerMap::initializeListeners()
 
 			GameUtils::focus(this->alchemyMenu);
 			GameUtils::resume(this->notificationHud);
+			GameUtils::resume(this->confirmationHud);
 		}
 	}));
 
@@ -224,6 +237,7 @@ void PlatformerMap::initializeListeners()
 
 			GameUtils::focus(this->blacksmithingMenu);
 			GameUtils::resume(this->notificationHud);
+			GameUtils::resume(this->confirmationHud);
 		}
 	}));
 
@@ -354,6 +368,7 @@ void PlatformerMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(false);
 		this->partyMenu->setVisible(true);
+		this->partyMenu->open();
 		GameUtils::focus(this->partyMenu);
 	});
 	

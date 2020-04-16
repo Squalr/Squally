@@ -19,7 +19,8 @@ class ConfirmationMenu : public Hud
 public:
 	static ConfirmationMenu* create();
 
-	void showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback = nullptr);
+	// Lambdas should return false if scene is unchanged. If the scene is disposed, return true
+	void showMessage(LocalizedString* confirmationMessage, std::function<bool()> confirmCallback, std::function<bool()> cancelCallback = nullptr);
 
 	void disableBackdrop();
 
@@ -42,8 +43,8 @@ private:
 	ClickableTextNode* confirmButton;
 	ClickableTextNode* cancelButton;
 	cocos2d::LayerColor* backdrop;
-
-	std::function<void()> onConfirmCallback;
-	std::function<void()> onCancelCallback;
+	
+	std::function<bool()> onConfirmCallback;
+	std::function<bool()> onCancelCallback;
 };
 

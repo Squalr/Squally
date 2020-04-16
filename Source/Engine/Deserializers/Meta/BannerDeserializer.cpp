@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string BannerDeserializer::MapKeyBanner = "map-banner";
+const std::string BannerDeserializer::MapKey = "map-banner";
 
 BannerDeserializer* BannerDeserializer::create()
 {
@@ -32,7 +32,7 @@ BannerDeserializer::~BannerDeserializer()
 
 MapTitleBanner* BannerDeserializer::deserializeProperties(cocos2d::ValueMap properties)
 {
-	std::string bannerName = GameUtils::getKeyOrDefault(properties, BannerDeserializer::MapKeyBanner, Value("")).asString();
+	std::string bannerName = GameUtils::getKeyOrDefault(properties, BannerDeserializer::MapKey, Value("")).asString();
 
 	if (this->deserializers.find(bannerName) != deserializers.end())
 	{
