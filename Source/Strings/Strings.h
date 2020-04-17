@@ -15909,10 +15909,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle() = default;
 	};
 
-	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0 : public LocalizedString
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0* create();
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15920,8 +15920,68 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0();
-		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0() = default;
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2() = default;
 	};
 
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer : public LocalizedString
@@ -16417,6 +16477,66 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown();
 		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87() = default;
 	};
 
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0 : public LocalizedString

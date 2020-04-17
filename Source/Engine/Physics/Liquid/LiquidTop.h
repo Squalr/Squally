@@ -36,7 +36,7 @@ private:
     static LiquidTop* create(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
 
     LiquidTop(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
-    ~LiquidTop();
+    virtual ~LiquidTop();
     
     void onEnter() override;
     void update(float dt) override;

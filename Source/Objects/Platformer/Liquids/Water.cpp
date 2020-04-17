@@ -33,9 +33,13 @@ Water* Water::create(ValueMap& properties)
 
 Water::Water(ValueMap& properties) : super(properties)
 {
-	this->waterSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	this->waterSize = Size(
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	);
 	this->water = LiquidNode::create(this->waterSize, 192.0f, Water::SurfaceColor, Water::BodyColor);
 	this->splashes = int(std::round(this->waterSize.width / Water::SplashSpacing));
+	this->noSplashDelay = 1.0f;
 
 	float waterCollisionHeight = MathUtils::clamp(this->waterSize.height - Water::WaterCollisionOffset, 0.0f, this->waterSize.height);
 	float effectiveOffset = this->waterSize.height - waterCollisionHeight;
@@ -43,8 +47,12 @@ Water::Water(ValueMap& properties) : super(properties)
 
 	this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, CollisionObject::Properties(false, false));
 
+	if (GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone)
+	{
+		this->waterCollision->setPhysicsEnabled(false);
+	}
+
 	this->waterCollision->setPositionY(-effectiveOffset / 2.0f);
-	this->waterCollision->setPhysicsEnabled(GameUtils::getKeyOrDefault(this->properties, Water::PropertyDisablePhysics, Value(true)).asBool());
 	
 	this->addChild(this->water);
 	this->addChild(this->waterCollision);
@@ -57,8 +65,10 @@ Water::~Water()
 void Water::onEnter()
 {
 	super::onEnter();
-
+	
 	this->runSplashes();
+
+	this->scheduleUpdate();
 }
 
 void Water::initializePositions()
@@ -70,12 +80,51 @@ void Water::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->waterCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->runObjectSplash(collisionData.other, false);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->waterCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->runObjectSplash(collisionData.other, true);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
 	this->waterCollision->whileCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->applyWaterForce(collisionData.other, collisionData.dt);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+}
+
+void Water::update(float dt)
+{
+	super::update(dt);
+
+	if (this->noSplashDelay > 0.0f)
+	{
+		this->noSplashDelay -= dt;
+	}
+}
+
+void Water::runObjectSplash(CollisionObject* other, bool isExit)
+{
+	if (this->noSplashDelay > 0.0f)
+	{
+		return;
+	}
+
+	float objectX = GameUtils::getWorldCoords(other).x;
+	float waterX = GameUtils::getWorldCoords(this->water).x - this->waterSize.width / 2.0f;
+	float speed = isExit ? 1.5f : 2.0f;
+	float radius = isExit ? 192.0f : 128.0f;
+
+	this->water->splash(objectX - waterX, speed, radius);
 }
 
 void Water::runSplashes()

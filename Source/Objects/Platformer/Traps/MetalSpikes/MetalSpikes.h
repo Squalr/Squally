@@ -38,6 +38,8 @@ private:
 	float currentElapsedTimeForSpikeTrigger;
 	float totalTimeUntilSpikesTrigger;
 	bool isRunningAnimation;
+	bool isFlippedY;
 
+	static const cocos2d::Vec2 SpikesUpPosition;
 	static const cocos2d::Vec2 SpikesDownPosition;
 };

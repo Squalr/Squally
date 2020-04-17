@@ -27,6 +27,10 @@ WoodenSpikesGenericPreview::WoodenSpikesGenericPreview()
 	this->previewNode->addChild(this->previewSpikes);
 }
 
+WoodenSpikesGenericPreview::~WoodenSpikesGenericPreview()
+{
+}
+
 HackablePreview* WoodenSpikesGenericPreview::clone()
 {
 	return WoodenSpikesGenericPreview::create();

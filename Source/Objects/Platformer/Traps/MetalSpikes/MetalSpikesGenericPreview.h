@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	MetalSpikesGenericPreview();
-	virtual ~MetalSpikesGenericPreview() = default;
+	virtual ~MetalSpikesGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	SmartAnimationSequenceNode* previewSpikes;
 };

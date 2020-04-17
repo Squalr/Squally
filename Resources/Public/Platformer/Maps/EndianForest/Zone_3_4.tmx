@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="70" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="877">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="70" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="882">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -71,10 +71,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="744" name="dark-grass" type="terrain" x="1618.3" y="3068.27">
-   <polygon points="-1618.41,-858.315 -1623.12,-418.438 -547.133,-353.445 404.223,-387.161 1037.07,13.9376 1098.28,15.8913 1108.27,-699.182 107.632,-883.086"/>
+   <polygon points="-1618.41,-858.315 -1623.12,-418.438 -547.133,-353.445 298.162,-268.979 852.222,16.9679 913.432,18.9216 923.422,-696.152 107.632,-883.086"/>
   </object>
   <object id="775" name="dark-grass" type="terrain" x="4060" y="2508">
-   <polygon points="-930.415,-1594.32 -931.119,409.562 -617.133,486.555 1511.19,493.406 1514.27,-1591.18"/>
+   <polygon points="-1133.45,-1582.2 -1137.18,488.35 1511.19,493.406 1514.27,-1591.18"/>
   </object>
   <object id="833" name="dark-grass" type="terrain" x="-60" y="3588" width="7032" height="968"/>
   <object id="834" name="dark-grass" type="terrain" x="7476" y="3576" width="1660" height="988"/>
@@ -129,13 +129,13 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="773" name="wind" type="object" x="2732.3" y="2771.27" width="380" height="480">
+  <object id="773" name="wind" type="object" x="2538.36" y="2759.15" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="774" name="wind" type="object" x="2735.7" y="2292.72" width="380" height="480">
+  <object id="774" name="wind" type="object" x="2541.76" y="2280.6" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
@@ -151,7 +151,7 @@
   <object id="784" name="wooden-spikes" type="object" x="3449.17" y="3510" width="256" height="84"/>
   <object id="785" name="wooden-spikes" type="object" x="3709.33" y="3510" width="256" height="84"/>
   <object id="804" name="wooden-spikes" type="object" x="3969.92" y="3510" width="256" height="84"/>
-  <object id="805" name="wooden-spikes" type="object" x="4230.08" y="3510" width="256" height="84"/>
+  <object id="805" name="metal-spikes" type="object" x="4230.08" y="3510" width="256" height="84"/>
   <object id="806" name="wooden-spikes" type="object" x="3485.55" y="3002" width="256" height="84">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
@@ -167,35 +167,35 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="809" name="wooden-spikes" type="object" x="4266.45" y="3002" width="256" height="84">
+  <object id="809" name="metal-spikes" type="object" x="4266.45" y="3002" width="256" height="84">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="810" name="wooden-spikes" type="object" x="4527.55" y="3002" width="256" height="84">
+  <object id="810" name="metal-spikes" type="object" x="4527.55" y="3002" width="256" height="84">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="811" name="wooden-spikes" type="object" x="4787.7" y="3002" width="256" height="84">
+  <object id="811" name="metal-spikes" type="object" x="4787.7" y="3002" width="256" height="84">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="812" name="wooden-spikes" type="object" x="5048.3" y="3002" width="256" height="84">
+  <object id="812" name="metal-spikes" type="object" x="5048.3" y="3002" width="256" height="84">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="813" name="wooden-spikes" type="object" x="5308.45" y="3002" width="256" height="84">
+  <object id="813" name="metal-spikes" type="object" x="5308.45" y="3002" width="256" height="84">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="814" name="wooden-spikes" type="object" x="4489.55" y="3510" width="256" height="84"/>
-  <object id="815" name="wooden-spikes" type="object" x="4749.7" y="3510" width="256" height="84"/>
-  <object id="816" name="wooden-spikes" type="object" x="5010.3" y="3510" width="256" height="84"/>
-  <object id="817" name="wooden-spikes" type="object" x="5270.45" y="3510" width="256" height="84"/>
+  <object id="814" name="metal-spikes" type="object" x="4489.55" y="3510" width="256" height="84"/>
+  <object id="815" name="metal-spikes" type="object" x="4749.7" y="3510" width="256" height="84"/>
+  <object id="816" name="metal-spikes" type="object" x="5010.3" y="3510" width="256" height="84"/>
+  <object id="817" name="metal-spikes" type="object" x="5270.45" y="3510" width="256" height="84"/>
   <object id="818" name="wind" type="object" x="5574" y="2634" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
@@ -243,6 +243,18 @@
   <object id="832" name="spawn" type="object" x="6569.29" y="1812.45" width="128" height="128">
    <properties>
     <property name="transition" value="down-right"/>
+   </properties>
+  </object>
+  <object id="878" name="wooden-spikes" type="object" x="3196.23" y="3512" width="256" height="84"/>
+  <object id="879" name="wooden-spikes" type="object" x="3232.61" y="3004" width="256" height="84">
+   <properties>
+    <property name="flip-y" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="880" name="wooden-spikes" type="object" x="2941.81" y="3508" width="256" height="84"/>
+  <object id="881" name="wooden-spikes" type="object" x="2978.19" y="3000" width="256" height="84">
+   <properties>
+    <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

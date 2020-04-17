@@ -24,6 +24,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
 const std::string MetalSpikes::MapKey = "metal-spikes";
+const Vec2 MetalSpikes::SpikesUpPosition = Vec2(0.0f, 32.0f);
 const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
 MetalSpikes* MetalSpikes::create(ValueMap& properties)
@@ -37,13 +38,14 @@ MetalSpikes* MetalSpikes::create(ValueMap& properties)
 
 MetalSpikes::MetalSpikes(ValueMap& properties) : super(properties)
 {
+	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;
+	this->isFlippedY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
-	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
-
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikes->setFlippedY(this->isFlippedY);
 
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
@@ -82,7 +84,7 @@ Vec2 MetalSpikes::getButtonOffset()
 void MetalSpikes::registerHackables()
 {
 	super::registerHackables();
-	
+
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -94,11 +96,34 @@ void MetalSpikes::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				MetalSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
 				},
 				int(HackFlags::None),
 				20.0f,
-				0.0f
+				0.0f,
+				nullptr,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()) + 
+						"fadd dword ptr [ebx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+						// x64
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()) + 
+						"fadd dword ptr [rbx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+					)
+				},
+				true
 			)
 		},
 	};
@@ -151,21 +176,29 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 
 	if (this->currentElapsedTimeForSpikeTrigger > this->totalTimeUntilSpikesTrigger)
 	{
-		const float stayUpDuration = 1.5f;
+		const float StayUpDuration = 1.5f;
 
 		this->isRunningAnimation = true;
 		this->currentElapsedTimeForSpikeTrigger = 0.0f;
 
 		// Move collision box
 		this->spikeCollision->runAction(Sequence::create(
-			MoveTo::create(0.425f, Vec2::ZERO),
-			DelayTime::create(stayUpDuration),
-			MoveTo::create(0.425f, MetalSpikes::SpikesDownPosition),
+			CallFunc::create([=]()
+			{
+				this->spikeCollision->setPhysicsEnabled(true);
+			}),
+			MoveTo::create(0.425f, this->isFlippedY ? -MetalSpikes::SpikesUpPosition : MetalSpikes::SpikesUpPosition),
+			DelayTime::create(StayUpDuration),
+			MoveTo::create(0.425f, this->isFlippedY ? -MetalSpikes::SpikesDownPosition : MetalSpikes::SpikesDownPosition),
+			CallFunc::create([=]()
+			{
+				this->spikeCollision->setPhysicsEnabled(false);
+			}),
 			nullptr
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, stayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});
