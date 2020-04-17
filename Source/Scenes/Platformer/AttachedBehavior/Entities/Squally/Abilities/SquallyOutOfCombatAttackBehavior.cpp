@@ -153,50 +153,57 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 		return nullptr;
 	}
 
+	Projectile* projectile = nullptr;
+
 	// Bows
 	if (dynamic_cast<BoneBow*>(weapon) != nullptr)
 	{
-		return BoneArrow::create();
+		projectile = BoneArrow::create();
 	}
 	else if (dynamic_cast<CrystalBow*>(weapon) != nullptr)
 	{
-		return CrystalArrow::create();
+		projectile = CrystalArrow::create();
 	}
 	else if (dynamic_cast<DemonicBow*>(weapon) != nullptr)
 	{
-		return DemonicArrow::create();
+		projectile = DemonicArrow::create();
 	}
 	else if (dynamic_cast<GoldenBow*>(weapon) != nullptr)
 	{
-		return GoldenArrow::create();
+		projectile = GoldenArrow::create();
 	}
 	else if (dynamic_cast<HuntersBow*>(weapon) != nullptr)
 	{
-		return HuntersArrow::create();
+		projectile = HuntersArrow::create();
 	}
 	else if (dynamic_cast<IvyBow*>(weapon) != nullptr)
 	{
-		return IvyArrow::create();
+		projectile = IvyArrow::create();
 	}
 	else if (dynamic_cast<SteelBow*>(weapon) != nullptr)
 	{
-		return SteelArrow::create();
+		projectile = SteelArrow::create();
 	}
 	else if (dynamic_cast<VoidBow*>(weapon) != nullptr)
 	{
-		return VoidArrow::create();
+		projectile = VoidArrow::create();
 	}
 	else if (dynamic_cast<WoodenBow*>(weapon) != nullptr)
 	{
-		return WoodenArrow::create();
+		projectile = WoodenArrow::create();
 	}
 	// Wands
 	else if (dynamic_cast<Wand*>(weapon) != nullptr)
 	{
-		return EnergyBolt::create();
+		projectile = EnergyBolt::create();
 	}
 
-	return nullptr;
+	if (projectile != nullptr)
+	{
+		projectile->setProjectileRotation(this->squally->isFlippedX() ? 180.0f : 0.0f);
+	}
+
+	return projectile;
 }
 
 void SquallyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)

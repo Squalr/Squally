@@ -12,6 +12,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -58,9 +59,18 @@ void EntityHealthBehavior::onLoad()
 		return;
 	}
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom* eventCustom)
+	{
+		// Refresh max mana
+		this->getMaxHealth();
+	}));
+
 	this->entity->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+		
+		// Refresh max mana
+		this->getMaxHealth();
 	});
 }
 
