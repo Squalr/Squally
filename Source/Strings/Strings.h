@@ -15264,6 +15264,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed() = default;
 	};
 
+	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed() = default;
+	};
+
+	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading() = default;
+	};
+
 	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy : public LocalizedString
 	{
 	public:
@@ -16269,10 +16299,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
-	class Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16280,14 +16310,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame();
-		virtual ~Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame() = default;
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame() = default;
 	};
 
-	class Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx* create();
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16295,8 +16325,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx();
-		virtual ~Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx() = default;
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify : public LocalizedString

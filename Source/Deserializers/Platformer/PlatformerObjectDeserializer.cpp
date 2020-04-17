@@ -142,7 +142,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[ShopPoolToben::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolToben::create(properties); };
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };
-	this->deserializers[SpikeLog::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikeLog::create(properties); };
+	this->deserializers[SpikedLog::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedLog::create(properties); };
 	this->deserializers[SquallyShip::MapKey] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };
 	this->deserializers[StoneButton::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
 	this->deserializers[TempleDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDoor::create(properties); };

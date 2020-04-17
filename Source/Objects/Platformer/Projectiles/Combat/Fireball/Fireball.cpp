@@ -119,10 +119,18 @@ void Fireball::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create(),
 						// x86
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading::create()->
+							setStringReplacementVariables(Strings::Common_Brackets::create()->
+							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
 						"mov dword ptr [eax], 0.0f\n"
 						"movss xmm1, dword ptr [eax]\n\n"
 						"mulps xmm0, xmm1",
 						// x64
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading::create()->
+							setStringReplacementVariables(Strings::Common_Brackets::create()->
+							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
 						"mov dword ptr [rax], 0.0f\n"
 						"movss xmm1, dword ptr [rax]\n\n"
 						"mulps xmm0, xmm1"

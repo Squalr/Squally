@@ -91,5 +91,7 @@ Projectile* GroggOutOfCombatAttackBehavior::createProjectile()
 	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 	fireBreath->setFlippedX(this->kingGrogg->isFlippedX());
 
+	projectile->setProjectileRotation(this->kingGrogg->isFlippedX() ? 180.0f : 0.0f);
+
 	return projectile;
 }
