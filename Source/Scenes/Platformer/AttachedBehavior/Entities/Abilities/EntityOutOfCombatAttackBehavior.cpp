@@ -8,9 +8,11 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
@@ -21,6 +23,7 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -29,7 +32,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Sword);
-	this->weaponSound = WorldSound::create();
+	this->attackSound = WorldSound::create();
 	this->isPerformingOutOfCombatAttack = false;
 	this->cachedProjectile = nullptr;
 
@@ -39,7 +42,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 	}
 	
 	this->addChild(this->outOfCombatAttackDebug);
-	this->addChild(this->weaponSound);
+	this->addChild(this->attackSound);
 }
 
 EntityOutOfCombatAttackBehavior::~EntityOutOfCombatAttackBehavior()
@@ -79,12 +82,18 @@ void EntityOutOfCombatAttackBehavior::onDisable()
 	super::onDisable();
 }
 
-void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, std::string soundResource, float onset, float sustain)
+void EntityOutOfCombatAttackBehavior::attack()
 {
 	if (this->isPerformingOutOfCombatAttack || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
 		return;
 	}
+
+	std::string attackAnimation = this->getOutOfCombatAttackAnimation();
+	std::string soundResource = this->getOutOfCombatAttackSound();
+	float onset = this->getOutOfCombatAttackOnset();
+	float sustain = this->getOutOfCombatAttackSustain();
+	float cooldown = this->getOutOfCombatAttackCooldown();
 
 	this->isPerformingOutOfCombatAttack = true;
 
@@ -101,24 +110,117 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 					this->outOfCombatAttackDebug->setVisible(true);
 				}
 
-				this->weaponSound->setSoundResource(soundResource);
-				this->weaponSound->play();
+				this->attackSound->setSoundResource(soundResource);
+				this->attackSound->play();
 
 				this->tryPerformShootProjectile();
 
 				weaponBehavior->enable();
 			}),
+			// TODO: Possible improvement: No sustain/collision behavior if a projectile was thrown
 			DelayTime::create(sustain),
 			CallFunc::create([=]()
 			{
 				weaponBehavior->disable();
-				this->isPerformingOutOfCombatAttack = false;
 				this->outOfCombatAttackDebug->setVisible(false);
+			}),
+			DelayTime::create(cooldown),
+			CallFunc::create([=]()
+			{
+				this->isPerformingOutOfCombatAttack = false;
 			}),
 			nullptr
 		));
 	});
 }
+
+std::string EntityOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
+{
+	return "Attack";
+}
+
+std::string EntityOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
+{
+	return SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
+}
+
+float EntityOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
+{
+	return 0.2f;
+}
+
+float EntityOutOfCombatAttackBehavior::getOutOfCombatAttackSustain()
+{
+	return 0.15f;
+}
+
+float EntityOutOfCombatAttackBehavior::getOutOfCombatAttackCooldown()
+{
+	return 0.0f;
+}
+
+std::string EntityOutOfCombatAttackBehavior::getMainhandResource()
+{
+	AnimationPart* weapon = this->entity->getAnimations()->getAnimationPart("mainhand");
+
+	if (weapon != nullptr)
+	{
+		return weapon->getSpriteResource();
+	}
+
+	return "";
+}
+
+std::string EntityOutOfCombatAttackBehavior::getOffhandResource()
+{
+	AnimationPart* weapon = this->entity->getAnimations()->getAnimationPart("offhand");
+
+	if (weapon != nullptr)
+	{
+		return weapon->getSpriteResource();
+	}
+
+	return "";
+}
+
+void EntityOutOfCombatAttackBehavior::replaceMainhandWithProjectile(Projectile* projectile)
+{
+	this->replaceAnimationPartWithProjectile("mainhand", projectile);
+}
+
+void EntityOutOfCombatAttackBehavior::replaceOffhandWithProjectile(Projectile* projectile)
+{
+	this->replaceAnimationPartWithProjectile("offhand", projectile);
+}
+
+void EntityOutOfCombatAttackBehavior::replaceAnimationPartWithProjectile(std::string animationPart, Projectile* projectile)
+{
+	AnimationPart* weapon = this->entity->getAnimations()->getAnimationPart(animationPart);
+
+	if (weapon != nullptr)
+	{
+		weapon->replaceWithObject(projectile, 2.0f);
+	}
+
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		this->entity,
+		projectile,
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
+	));
+
+	Node* reference = weapon == nullptr ? (Node*)this->entity : (Node*)weapon;
+	float layerZ = GameUtils::getDepth(GameUtils::getFirstParentOfType<MapLayer>(reference));
+
+	// Set the position to the reference object's position. Offset it by any layer positioning.
+	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference) - Vec3(0.0f, 0.0f, layerZ));
+};
 
 void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 {

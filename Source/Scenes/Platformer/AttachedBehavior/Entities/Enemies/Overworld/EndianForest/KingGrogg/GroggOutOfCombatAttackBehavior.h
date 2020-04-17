@@ -12,8 +12,6 @@ class GroggOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
 public:
 	static GroggOutOfCombatAttackBehavior* create(GameObject* owner);
 
-	void attack();
-
 	static const std::string MapKey;
 
 protected:

@@ -83,7 +83,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 
 			return CollisionObject::CollisionResult::DoNothing;
 		});
-
+		
 		this->replaceMainhandWithProjectile(owner, weapon);
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)

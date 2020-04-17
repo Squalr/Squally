@@ -12,6 +12,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Ally/EnemyBattleAllyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Overworld/EndianForest/KingGrogg/KingGroggBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Overworld/EndianForest/OrcBomber/OrcBomberBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/EnemyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/EnemyCombatBehaviors.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/EntityPickPocketBehavior.h"

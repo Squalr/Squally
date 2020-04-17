@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class Projectile;
 class Squally;
 
 class AgroBehavior : public AttachedBehavior
@@ -17,7 +18,10 @@ public:
 
 	void enable();
 	void disable();
+	bool hasAgro();
+	PlatformerEntity* getAgroTarget();
 	void toggleWarnOnAgro(bool warnOnAgro);
+	void toggleChaseOnAgro(bool chaseOnAgro);
 	void setAgroRangeX(float agroRange);
 	void setAgroRangeY(float agroRange);
 
@@ -41,6 +45,7 @@ private:
 
 	bool isEnabled;
 	bool isAgrod;
+	bool chaseOnAgro;
 	bool warnOnAgro;
 	float agroRangeX;
 	float agroRangeY;

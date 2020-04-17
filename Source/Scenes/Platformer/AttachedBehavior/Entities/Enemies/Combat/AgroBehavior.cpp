@@ -2,12 +2,14 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -32,6 +34,7 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->exclamation = Sprite::create(ObjectResources::Interactive_Help_Exclamation);
+	this->chaseOnAgro = true;
 	this->warnOnAgro = true;
 	this->isAgrod = false;
 	this->isEnabled = true;
@@ -92,6 +95,21 @@ void AgroBehavior::disable()
 	this->isEnabled = false;
 }
 
+bool AgroBehavior::hasAgro()
+{
+	return this->isAgrod;
+}
+
+PlatformerEntity* AgroBehavior::getAgroTarget()
+{
+	return this->squally;
+}
+
+void AgroBehavior::toggleChaseOnAgro(bool chaseOnAgro)
+{
+	this->chaseOnAgro = chaseOnAgro;
+}
+
 void AgroBehavior::toggleWarnOnAgro(bool warnOnAgro)
 {
 	this->warnOnAgro = warnOnAgro;
@@ -150,7 +168,10 @@ void AgroBehavior::update(float dt)
 			if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
 				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
 			{
-				this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
+				if (this->chaseOnAgro)
+				{
+					this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
+				}
 			}
 			else
 			{

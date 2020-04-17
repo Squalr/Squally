@@ -2,36 +2,39 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
 
+class AgroBehavior;
 class Projectile;
-class Squally;
+class OrcBomber;
+class SmartAnimationSequenceNode;
 class Weapon;
 
-class SquallyOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
+class OrcBomberOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
 {
 public:
-	static SquallyOutOfCombatAttackBehavior* create(GameObject* owner);
+	static OrcBomberOutOfCombatAttackBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	SquallyOutOfCombatAttackBehavior(GameObject* owner);
-	virtual ~SquallyOutOfCombatAttackBehavior();
+	OrcBomberOutOfCombatAttackBehavior(GameObject* owner);
+	virtual ~OrcBomberOutOfCombatAttackBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
-	Projectile* createProjectile() override;
+	void update(float dt) override;
 	std::string getOutOfCombatAttackAnimation() override;
 	std::string getOutOfCombatAttackSound() override;
 	float getOutOfCombatAttackOnset() override;
 	float getOutOfCombatAttackSustain() override;
+	float getOutOfCombatAttackCooldown() override;
+	Projectile* createProjectile() override;
 
 private:
 	typedef EntityOutOfCombatAttackBehavior super;
 	
-	Weapon* getWeapon();
-	Projectile* createProjectile(std::function<Projectile*()> createFunc);
-
+	AgroBehavior* agroBehavior;
 	Projectile* projectile;
+	SmartAnimationSequenceNode* fireBreath;
 
-	Squally* squally;
+	OrcBomber* orcBomber;
 };

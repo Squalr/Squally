@@ -59,11 +59,6 @@ void GroggOutOfCombatAttackBehavior::onDisable()
 	super::onDisable();
 }
 
-void GroggOutOfCombatAttackBehavior::attack()
-{
-	this->doOutOfCombatAttack(this->getOutOfCombatAttackAnimation(), this->getOutOfCombatAttackSound(), this->getOutOfCombatAttackOnset(), this->getOutOfCombatAttackSustain());
-}
-
 std::string GroggOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 {
 	return "AttackDragon";

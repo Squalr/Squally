@@ -342,7 +342,7 @@
   </properties>
   <object id="692" name="orc-bomber" type="entity" x="2533.82" y="1892.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="attached-behavior" value="orc-bomber,enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
