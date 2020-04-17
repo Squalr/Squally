@@ -40,6 +40,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 	);
 	this->rotationNode = Node::create();
 	this->contentNode = Node::create();
+	this->decorNode = Node::create();
 	this->postFXNode = Node::create();
 	this->ownerCollisionRef = nullptr;
 	this->enabled = true;
@@ -48,6 +49,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 
 	this->addTag(Projectile::ProjectileTag);
 
+	this->contentNode->addChild(this->decorNode);
 	this->collisionObject->addChild(this->contentNode);
 	this->collisionObject->addChild(this->postFXNode);
 	this->rotationNode->addChild(this->collisionObject);
@@ -308,6 +310,16 @@ void Projectile::enableUpdate()
 void Projectile::disableUpdate()
 {
 	this->canUpdate = false;
+}
+
+void Projectile::addDecor(Node* decor)
+{
+	this->decorNode->addChild(decor);
+}
+
+void Projectile::clearDecor()
+{
+	this->decorNode->removeAllChildren();
 }
 
 void Projectile::runSpawnFX()

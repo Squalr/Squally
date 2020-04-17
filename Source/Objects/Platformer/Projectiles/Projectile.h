@@ -22,6 +22,8 @@ public:
 	bool isEnabled();
 	void enable(bool setVisible);
 	void disable(bool setVisible);
+	void addDecor(cocos2d::Node* decor);
+	void clearDecor();
 	virtual void runSpawnFX();
 	virtual void runImpactFX();
 
@@ -48,6 +50,7 @@ protected:
 
 	CollisionObject* collisionObject;
 	cocos2d::Node* contentNode;
+	cocos2d::Node* decorNode;
 	cocos2d::Node* postFXNode;
 
 private:

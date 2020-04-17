@@ -27,6 +27,7 @@ protected:
 	float getOutOfCombatAttackOnset() override;
 	float getOutOfCombatAttackSustain() override;
 	float getOutOfCombatAttackCooldown() override;
+	float getProjectileLifetime() override;
 	Projectile* createProjectile() override;
 
 private:

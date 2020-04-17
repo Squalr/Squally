@@ -86,7 +86,7 @@ void TalkToGrogg::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequencePart4();
+		this->runCinematicSequencePart1();
 	});
 }
 

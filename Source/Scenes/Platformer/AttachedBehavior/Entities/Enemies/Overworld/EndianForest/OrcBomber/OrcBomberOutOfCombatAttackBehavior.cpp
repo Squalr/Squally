@@ -102,9 +102,14 @@ float OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackCooldown()
 	return 3.5f;
 }
 
+float OrcBomberOutOfCombatAttackBehavior::getProjectileLifetime()
+{
+	return 3.0f;
+}
+
 Projectile* OrcBomberOutOfCombatAttackBehavior::createProjectile()
 {
-	if (this->orcBomber == nullptr || this->agroBehavior == nullptr)
+	if (this->orcBomber == nullptr || this->agroBehavior == nullptr || this->agroBehavior->getAgroTarget() == nullptr)
 	{
 		return nullptr;
 	}
@@ -112,14 +117,17 @@ Projectile* OrcBomberOutOfCombatAttackBehavior::createProjectile()
 	ThrownObject* projectile = ThrownObject::create(this->orcBomber, this->agroBehavior->getAgroTarget(), false, this->getMainhandResource(), Size(64.0f, 128.0f));
 	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
-	projectile->addChild(fire);
+	projectile->addDecor(fire);
 
 	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
 	fire->setPosition(Vec2(0.0f, 56.0f));
 
 	this->replaceAnimationPartWithProjectile("mainhand", projectile);
 
-	projectile->launchTowardsTarget(this->agroBehavior->getAgroTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+	this->agroBehavior->getAgroTarget()->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+	{
+		projectile->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+	});
 
 	return projectile;
 }
