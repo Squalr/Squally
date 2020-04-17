@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Overworld/EnemyOutOfCombatAttackBehavior.h"
 
 class Projectile;
 class KingGrogg;
 class SmartAnimationSequenceNode;
 class Weapon;
 
-class GroggOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
+class GroggOutOfCombatAttackBehavior : public EnemyOutOfCombatAttackBehavior
 {
 public:
 	static GroggOutOfCombatAttackBehavior* create(GameObject* owner);
@@ -23,14 +23,13 @@ protected:
 	Projectile* createProjectile() override;
 
 private:
-	typedef EntityOutOfCombatAttackBehavior super;
+	typedef EnemyOutOfCombatAttackBehavior super;
 	
 	std::string getOutOfCombatAttackAnimation();
 	std::string getOutOfCombatAttackSound();
 	float getOutOfCombatAttackOnset();
 	float getOutOfCombatAttackSustain();
-
-	Projectile* projectile;
+	
 	SmartAnimationSequenceNode* fireBreath;
 
 	KingGrogg* kingGrogg;

@@ -34,7 +34,6 @@ GroggOutOfCombatAttackBehavior* GroggOutOfCombatAttackBehavior::create(GameObjec
 GroggOutOfCombatAttackBehavior::GroggOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->kingGrogg = dynamic_cast<KingGrogg*>(owner);
-	this->projectile = nullptr;
 	this->fireBreath = SmartAnimationSequenceNode::create();
 
 	if (this->kingGrogg == nullptr)
@@ -91,26 +90,6 @@ Projectile* GroggOutOfCombatAttackBehavior::createProjectile()
 	fireBreath->setPosition3D(Vec3((this->kingGrogg->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
 	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 	fireBreath->setFlippedX(this->kingGrogg->isFlippedX());
-
-	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (!this->kingGrogg->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		Squally* squally = GameUtils::getFirstParentOfType<Squally>(collisionData.other);
-
-		if (squally != nullptr && squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			// Encountered enemy w/ first-strike
-			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->kingGrogg, false));
-		}
-
-		projectile->runImpactFX();
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
 
 	return projectile;
 }

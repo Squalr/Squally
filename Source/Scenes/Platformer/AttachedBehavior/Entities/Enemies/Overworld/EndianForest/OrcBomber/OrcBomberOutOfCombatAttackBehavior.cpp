@@ -2,23 +2,16 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Animations/AnimationPart.h"
-#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Enemies/EndianForest/OrcBomber.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
-#include "Objects/Platformer/Projectiles/Enemy/OverworldFireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
-#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FxResources.h"
@@ -40,7 +33,6 @@ OrcBomberOutOfCombatAttackBehavior* OrcBomberOutOfCombatAttackBehavior::create(G
 OrcBomberOutOfCombatAttackBehavior::OrcBomberOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->orcBomber = dynamic_cast<OrcBomber*>(owner);
-	this->projectile = nullptr;
 	this->fireBreath = SmartAnimationSequenceNode::create();
 	this->agroBehavior = nullptr;
 
@@ -92,7 +84,7 @@ std::string OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 std::string OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow2;
+	return SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow5;
 }
 
 float OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
@@ -117,36 +109,17 @@ Projectile* OrcBomberOutOfCombatAttackBehavior::createProjectile()
 		return nullptr;
 	}
 	
-	ThrownObject* weapon = ThrownObject::create(this->orcBomber, this->agroBehavior->getAgroTarget(), false, this->getMainhandResource(), Size(64.0f, 128.0f));
+	ThrownObject* projectile = ThrownObject::create(this->orcBomber, this->agroBehavior->getAgroTarget(), false, this->getMainhandResource(), Size(64.0f, 128.0f));
 	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
-	weapon->addChild(fire);
+	projectile->addChild(fire);
 
 	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
 	fire->setPosition(Vec2(0.0f, 56.0f));
-	
-	weapon->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
-	{
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-		if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
+	this->replaceAnimationPartWithProjectile("mainhand", projectile);
 
-		weapon->disable(true);
-
-		if (entity != nullptr)
-		{
-			// Engage
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->replaceAnimationPartWithProjectile("mainhand", weapon);
-
-	weapon->launchTowardsTarget(this->agroBehavior->getAgroTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+	projectile->launchTowardsTarget(this->agroBehavior->getAgroTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 
 	return projectile;
 }

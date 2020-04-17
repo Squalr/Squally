@@ -233,6 +233,8 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 
 	if (projectile != this->cachedProjectile)
 	{
+		this->decorateProjectile(projectile);
+
 		if (this->cachedProjectile != nullptr && this->cachedProjectile->getParent() != nullptr)
 		{
 			this->cachedProjectile->getParent()->removeChild(this->cachedProjectile);
@@ -280,6 +282,10 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 Projectile* EntityOutOfCombatAttackBehavior::createProjectile()
 {
 	return nullptr;
+}
+
+void EntityOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
+{
 }
 
 Vec2 EntityOutOfCombatAttackBehavior::getProjectileSpawnOffset()

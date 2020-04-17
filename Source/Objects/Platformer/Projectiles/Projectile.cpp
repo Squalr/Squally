@@ -314,6 +314,10 @@ void Projectile::runSpawnFX()
 {
 }
 
+void Projectile::runImpactFX()
+{
+}
+
 CollisionObject* Projectile::getCollision()
 {
 	return this->collisionObject;

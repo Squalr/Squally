@@ -23,6 +23,7 @@ public:
 	void enable(bool setVisible);
 	void disable(bool setVisible);
 	virtual void runSpawnFX();
+	virtual void runImpactFX();
 
 	static const std::string ProjectileTag;
 	

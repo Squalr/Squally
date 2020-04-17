@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Overworld/EnemyOutOfCombatAttackBehavior.h"
 
 class AgroBehavior;
 class Projectile;
@@ -8,7 +8,7 @@ class OrcBomber;
 class SmartAnimationSequenceNode;
 class Weapon;
 
-class OrcBomberOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
+class OrcBomberOutOfCombatAttackBehavior : public EnemyOutOfCombatAttackBehavior
 {
 public:
 	static OrcBomberOutOfCombatAttackBehavior* create(GameObject* owner);
@@ -30,10 +30,9 @@ protected:
 	Projectile* createProjectile() override;
 
 private:
-	typedef EntityOutOfCombatAttackBehavior super;
+	typedef EnemyOutOfCombatAttackBehavior super;
 	
 	AgroBehavior* agroBehavior;
-	Projectile* projectile;
 	SmartAnimationSequenceNode* fireBreath;
 
 	OrcBomber* orcBomber;

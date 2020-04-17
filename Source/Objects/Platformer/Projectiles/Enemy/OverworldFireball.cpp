@@ -65,6 +65,8 @@ void OverworldFireball::runSpawnFX()
 
 void OverworldFireball::runImpactFX()
 {
+	super::runImpactFX();
+
 	this->setLaunchVelocity(Vec3::ZERO);
 	this->fireball->setVisible(false);
 	this->explosion->setVisible(true);

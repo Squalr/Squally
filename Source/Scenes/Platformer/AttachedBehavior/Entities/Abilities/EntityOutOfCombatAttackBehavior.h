@@ -27,6 +27,7 @@ protected:
 	void onLoad() override;
 	void onDisable() override;
 	virtual Projectile* createProjectile();
+	virtual void decorateProjectile(Projectile* projectile);
 	virtual cocos2d::Vec2 getProjectileSpawnOffset();
 	virtual float getProjectileLifetime();
 

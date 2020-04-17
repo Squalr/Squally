@@ -11,7 +11,7 @@ public:
 	static OverworldFireball* create();
 
 	void runSpawnFX() override;
-	void runImpactFX();
+	void runImpactFX() override;
 
 protected:
 	OverworldFireball();
