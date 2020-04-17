@@ -46,6 +46,7 @@ private:
 	SmartAnimationSequenceNode* explosionAnim;
 	WorldSound* spawnSound;
 	WorldSound* tickSound;
+	WorldSound* tickSoundPositive;
 	WorldSound* explodeSound;
 	std::function<void()> onExplode;
 

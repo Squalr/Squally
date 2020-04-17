@@ -61,6 +61,7 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->spawnSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_Spawn1);
 	this->tickSound = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick1);
+	this->tickSoundPositive = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick3);
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->clippy = TimeBombClippy::create();
 	this->onExplode = onExplode;
@@ -71,6 +72,7 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->registerClippy(this->clippy);
 	this->postFXNode->addChild(this->spawnSound);
 	this->postFXNode->addChild(this->tickSound);
+	this->postFXNode->addChild(this->tickSoundPositive);
 	this->postFXNode->addChild(this->explodeSound);
 	this->postFXNode->addChild(this->explosionAnim);
 	this->object->addChild(this->bomb);
@@ -116,9 +118,14 @@ void TimeBomb::update(float dt)
 
 		this->tickTimeBomb();
 
-		if (previousTick != this->bombTick)
+		if (this->bombTick < previousTick)
 		{
 			this->tickSound->play();
+			this->updateTimerText();
+		}
+		else if (this->bombTick > previousTick)
+		{
+			this->tickSoundPositive->play();
 			this->updateTimerText();
 		}
 
