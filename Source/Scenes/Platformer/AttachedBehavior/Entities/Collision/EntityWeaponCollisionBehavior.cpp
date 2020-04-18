@@ -75,7 +75,7 @@ void EntityWeaponCollisionBehavior::onDisable()
 
 void EntityWeaponCollisionBehavior::enable()
 {
-	if (this->weaponCollision == nullptr)
+	if (this->weaponCollision == nullptr || this->isInvalidated())
 	{
 		return;
 	}
@@ -85,7 +85,7 @@ void EntityWeaponCollisionBehavior::enable()
 
 void EntityWeaponCollisionBehavior::disable()
 {
-	if (this->weaponCollision == nullptr)
+	if (this->weaponCollision == nullptr || this->isInvalidated())
 	{
 		return;
 	}

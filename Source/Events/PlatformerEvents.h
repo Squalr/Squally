@@ -42,6 +42,7 @@ public:
 	static const std::string EventDispelIllusion;
 	static const std::string EventSavePosition;
 	static const std::string EventSaveRespawn;
+	static const std::string EventBeforeLoadRespawn;
 	static const std::string EventLoadRespawn;
 	static const std::string EventUnstuck;
 
@@ -211,6 +212,7 @@ public:
 	static void TriggerDispelIllusion(DispelIllusionArgs args);
 	static void TriggerSavePosition();
 	static void TriggerSaveRespawn(SaveRespawnArgs args);
+	static void TriggerBeforeLoadRespawn();
 	static void TriggerLoadRespawn();
 	static void TriggerUnstuck();
 };

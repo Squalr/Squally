@@ -85,6 +85,8 @@ void SquallyRespawnBehavior::respawn(float duration)
 	}
 
 	this->isRespawning = true;
+
+	PlatformerEvents::TriggerBeforeLoadRespawn();
 	
 	this->runAction(Sequence::create(
 		DelayTime::create(duration),

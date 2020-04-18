@@ -63,6 +63,11 @@ void SquallyCollisionBehavior::onLoad()
 		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
+	}));
+
 	this->squally->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* collisionBehavior)
 	{
 		collisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)

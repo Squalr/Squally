@@ -175,7 +175,7 @@ void AgroBehavior::update(float dt)
 				else
 				{
 					// Look at target if not able to chase
-					this->entity->getAnimations()->setFlippedX(entityPosition.x < squallyPosition.x);
+					this->entity->getAnimations()->setFlippedX(squallyPosition.x < entityPosition.x);
 				}
 			}
 			else

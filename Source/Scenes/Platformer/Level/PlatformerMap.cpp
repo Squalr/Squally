@@ -187,6 +187,24 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforeLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		// Using combat transitions for respawn transition, for now.
+		this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		this->combatFadeInNode->runAction(Sequence::create(
+			FadeTo::create(1.0f, 0),
+			CallFunc::create([=]()
+			{
+				this->combatFadeInNode->removeAllChildren();
+			}),
+			nullptr
+		));
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnstuck, [=](EventCustom* eventCustom)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()

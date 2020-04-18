@@ -37,6 +37,7 @@ SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObjec
 SquallyWeaponCollisionBehavior::SquallyWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
+	this->canEngage = true;
 
 	if (this->squally == nullptr)
 	{
@@ -96,9 +97,9 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 
 		if (weaponBehavior->weaponCollision != nullptr)
 		{
-			weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+			weaponBehavior->weaponCollision->whileCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 			{
-				if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+				if (!this->canEngage || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 				{
 					return CollisionObject::CollisionResult::DoNothing;
 				}
@@ -109,6 +110,8 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 				{
 					// Encountered enemy w/ first-strike
 					PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
+
+					this->canEngage = false;
 				}
 
 				return CollisionObject::CollisionResult::DoNothing;

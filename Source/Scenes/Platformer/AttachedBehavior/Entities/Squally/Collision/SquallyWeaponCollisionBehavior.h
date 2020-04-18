@@ -29,5 +29,7 @@ private:
 
 	void onWeaponChange();
 
+	bool canEngage;
+	
 	Squally* squally;
 };
