@@ -15969,6 +15969,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2() = default;
 	};
 
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3() = default;
+	};
+
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2 : public LocalizedString
 	{
 	public:
@@ -15982,6 +15997,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2();
 		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4() = default;
 	};
 
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer : public LocalizedString
@@ -16359,6 +16389,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions() = default;
+	};
+
 	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
 	{
 	public:
@@ -16494,10 +16539,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry() = default;
 	};
 
-	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions : public LocalizedString
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions* create();
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16505,8 +16550,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions();
-		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructions() = default;
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2() = default;
 	};
 
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd : public LocalizedString
@@ -16524,10 +16584,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd() = default;
 	};
 
-	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87 : public LocalizedString
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87* create();
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16535,8 +16595,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87();
-		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_Commentx87() = default;
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0 : public LocalizedString
@@ -18997,21 +19057,6 @@ namespace Strings
 	private:
 		Platformer_Dialogue_Hexus_BetterLuckNextTime();
 		virtual ~Platformer_Dialogue_Hexus_BetterLuckNextTime() = default;
-	};
-
-	class Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo : public LocalizedString
-	{
-	public:
-		static Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo();
-		virtual ~Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo() = default;
 	};
 
 	class Platformer_Dialogue_Hexus_GoodGame : public LocalizedString

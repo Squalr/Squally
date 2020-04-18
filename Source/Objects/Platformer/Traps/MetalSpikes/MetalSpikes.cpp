@@ -97,6 +97,7 @@ void MetalSpikes::registerHackables()
 				MetalSpikesUpdateTimerPreview::create(),
 				{
 					{ HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
+					{ HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
 				},
 				int(HackFlags::None),
 				20.0f,
@@ -108,18 +109,20 @@ void MetalSpikes::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()) + 
-						"fadd dword ptr [ebx]\n\n" +
+						"addss xmm2, xmm4\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
 						// x64
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()) + 
-						"fadd dword ptr [rbx]\n\n" +
+						"addss xmm2, xmm4\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 					)
 				},
@@ -154,20 +157,21 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 
 	elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
 	deltaTimePtr = &dt;
-
+	
 	ASM(push ZAX);
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ZAX, elapsedPtr);
 	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
 
-	ASM(fld dword ptr [ZAX]);
+	ASM(movss xmm2, [ZAX])
+	ASM(movss xmm4, [ZBX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(fadd dword ptr [ZBX]);
+	ASM(addss xmm2, xmm4)
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(fstp dword ptr [ZAX])
+	ASM(movss [ZAX], xmm2)
 
 	ASM(pop ZAX);
 	ASM(pop ZBX);

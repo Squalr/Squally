@@ -60,7 +60,7 @@ void WoodenSpikesUpdateTimerPreview::initializePositions()
 
 	const float offset = 24.0f;
 	
-	this->ebxTimer->setPosition(Vec2(-80.0f, -32.0f));
+	this->ebxTimer->setPosition(Vec2(0.0f, -80.0f));
 }
 
 void WoodenSpikesUpdateTimerPreview::update(float dt)

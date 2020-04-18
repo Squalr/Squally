@@ -25,7 +25,7 @@ MetalSpikesUpdateTimerPreview* MetalSpikesUpdateTimerPreview::create()
 MetalSpikesUpdateTimerPreview::MetalSpikesUpdateTimerPreview()
 {
 	this->launchCountDown = 0.0f;
-	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
+	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 	this->xmm2TimerStr = ConstantString::create(std::to_string(this->launchCountDown));
 	this->xmm2Timer = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm2, false, this->xmm2TimerStr);
 	this->isLaunching = false;
@@ -60,7 +60,7 @@ void MetalSpikesUpdateTimerPreview::initializePositions()
 
 	const float offset = 24.0f;
 	
-	this->xmm2Timer->setPosition(Vec2(-80.0f, -32.0f));
+	this->xmm2Timer->setPosition(Vec2(0.0f, -80.0f));
 }
 
 void MetalSpikesUpdateTimerPreview::update(float dt)
@@ -79,7 +79,7 @@ void MetalSpikesUpdateTimerPreview::update(float dt)
 	{
 		this->isLaunching = true;
 
-		this->previewSpikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f);
+		this->previewSpikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f);
 
 		this->runAction(Sequence::create(
 			DelayTime::create(2.5f),

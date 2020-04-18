@@ -60,5 +60,6 @@ LocalizedString* HexusPuzzleBehaviorBase::getCustomDrawDialogue()
 
 LocalizedString* HexusPuzzleBehaviorBase::getCustomLossDialogue()
 {
-	return Strings::Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo::create();
+	// TODO: Reinstate zalgo text when microsoft fixes their shit
+	return Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create();
 }

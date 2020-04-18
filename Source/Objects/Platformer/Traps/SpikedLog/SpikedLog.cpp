@@ -97,7 +97,20 @@ void SpikedLog::registerHackables()
 				},
 				int(HackFlags::None),
 				16.0f,
-				0.0f
+				0.0f,
+				nullptr,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()) + 
+						"inc ecx\n",
+						// x64
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()) + 
+						"inc rcx\n"
+					)
+				},
+				true
 			)
 		},
 	};
