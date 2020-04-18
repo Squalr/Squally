@@ -18,17 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityWeaponCollisionBehavior::MapKey = "entity-weapon-collisions";
 const Size EntityWeaponCollisionBehavior::DefaultWeaponSize = Size(64.0f, 128.0f);
-
-EntityWeaponCollisionBehavior* EntityWeaponCollisionBehavior::create(GameObject* owner)
-{
-	EntityWeaponCollisionBehavior* instance = new EntityWeaponCollisionBehavior(owner);
-
-	instance->autorelease();
-
-	return instance;
-}
 
 EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
@@ -41,8 +31,6 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	{
 		this->invalidate();
 	}
-
-	this->toggleQueryable(false);
 }
 
 EntityWeaponCollisionBehavior::~EntityWeaponCollisionBehavior()
@@ -51,16 +39,6 @@ EntityWeaponCollisionBehavior::~EntityWeaponCollisionBehavior()
 
 void EntityWeaponCollisionBehavior::onLoad()
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
-	{
-		this->rebuildWeaponCollision();
-	}));
-
-	this->defer([=]()
-	{
-		this->rebuildWeaponCollision();
-		this->toggleQueryable(true);
-	});
 }
 
 void EntityWeaponCollisionBehavior::onDisable()
@@ -103,7 +81,7 @@ void EntityWeaponCollisionBehavior::setWeaponOffset(Vec2 weaponOffset)
 	this->weaponOffset = weaponOffset;
 }
 
-void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
+void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 {
 	if (this->isInvalidated())
 	{
@@ -116,19 +94,6 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 	{
 		return;
 	}
-
-	PlatformerCollisionType weaponType = PlatformerCollisionType::EnemyWeapon;
-	Squally* squally = dynamic_cast<Squally*>(this->entity);
-	PlatformerFriendly* npc = dynamic_cast<PlatformerFriendly*>(this->entity);
-
-	if (squally != nullptr)
-	{
-		weaponType = PlatformerCollisionType::PlayerWeapon;
-	}
-	else if (npc != nullptr)
-	{
-		weaponType = PlatformerCollisionType::NpcWeapon;
-	}
 	
 	if (this->weaponCollision != nullptr)
 	{
@@ -137,7 +102,7 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 
 	this->weaponCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(this->weaponSize, 8.0f),
-		(int)weaponType,
+		(CollisionType)collisionType,
 		CollisionObject::Properties(false, false)
 	);
 

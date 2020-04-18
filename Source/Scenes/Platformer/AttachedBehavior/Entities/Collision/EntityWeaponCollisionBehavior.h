@@ -8,24 +8,20 @@ class PlatformerEntity;
 class EntityWeaponCollisionBehavior : public AttachedBehavior
 {
 public:
-	static EntityWeaponCollisionBehavior* create(GameObject* owner);
-
 	void enable();
 	void disable();
-	void setWeaponSize(cocos2d::Size weaponSize);
-	void setWeaponOffset(cocos2d::Vec2 weaponOffset);
-	void rebuildWeaponCollision();
-
-	CollisionObject* weaponCollision;
-
-	static const std::string MapKey;
-
+	
 protected:
 	EntityWeaponCollisionBehavior(GameObject* owner);
 	virtual ~EntityWeaponCollisionBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
+	void setWeaponSize(cocos2d::Size weaponSize);
+	void setWeaponOffset(cocos2d::Vec2 weaponOffset);
+	void rebuildWeaponCollision(int collisionType);
+
+	CollisionObject* weaponCollision;
 
 private:
 	typedef AttachedBehavior super;
