@@ -5,11 +5,13 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -46,6 +48,8 @@ EntityAttackBehavior::EntityAttackBehavior(GameObject* owner) : super(owner)
 	this->consumablessNode = Node::create();
 	this->consumablesStale = true;
 
+	this->toggleQueryable(false);
+
 	this->addChild(this->attacksNode);
 	this->addChild(this->consumablessNode);
 }
@@ -60,7 +64,15 @@ void EntityAttackBehavior::initializePositions()
 
 void EntityAttackBehavior::onLoad()
 {
-	this->buildEquipmentAttacks();
+	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		this->inventory = entityInventoryBehavior->getInventory();
+		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+		
+		this->buildEquipmentAttacks();
+
+		this->toggleQueryable(true);
+	});
 }
 
 void EntityAttackBehavior::onDisable()
@@ -135,28 +147,23 @@ void EntityAttackBehavior::registerAttack(PlatformerAttack* attack)
 
 void EntityAttackBehavior::buildEquipmentAttacks()
 {
-	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	if (this->equipmentInventory == nullptr)
 	{
-		EquipmentInventory* equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+		return;
+	}
 
-		if (equipmentInventory == nullptr)
+	for (auto equipable : this->equipmentInventory->getEquipment())
+	{
+		if (equipable == nullptr)
 		{
-			return;
+			continue;
 		}
-		
-		for (auto equipable : equipmentInventory->getEquipment())
-		{
-			if (equipable == nullptr)
-			{
-				continue;
-			}
 
-			for (auto attack : equipable->cloneAssociatedAttacks())
-			{
-				this->registerAttack(attack);
-			}
+		for (auto attack : equipable->cloneAssociatedAttacks())
+		{
+			this->registerAttack(attack);
 		}
-	});
+	}
 }
 
 void EntityAttackBehavior::rebuildConsumables()
@@ -167,15 +174,28 @@ void EntityAttackBehavior::rebuildConsumables()
 	// Disabled due to refactor. Only reinstate if this causes perf issues.
 	// this->consumablesStale = false;
 
-	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	if (this->inventory != nullptr)
 	{
-		Inventory* inventory = entityInventoryBehavior->getInventory();
-		
-		if (inventory == nullptr)
-		{
-			return;
-		}
-
 		this->registeredConsumables = inventory->getItemsOfType<Consumable>();
-	});
+	}
+}
+
+std::tuple<int, int> EntityAttackBehavior::computeAttackRange()
+{
+	const int DefaultMinAttack = 3;
+	const int DefaultMaxAttack = 5;
+
+	int bonusAttack = StatsTables::getBonusAttack(this->entity);
+	int minAttack = DefaultMinAttack;
+	int maxAttack = DefaultMaxAttack;
+
+	if (this->equipmentInventory != nullptr)
+	{
+		Weapon* weapon = this->equipmentInventory->getWeapon();
+
+		minAttack = weapon == nullptr ? minAttack : weapon->getMinAttack();
+		maxAttack = weapon == nullptr ? maxAttack : weapon->getMaxAttack();
+	}
+
+	return std::make_tuple(minAttack + bonusAttack, maxAttack + bonusAttack);
 }

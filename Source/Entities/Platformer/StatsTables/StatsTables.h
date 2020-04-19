@@ -14,6 +14,7 @@ public:
 	static int getKillExp(PlatformerEntity* platformerEntity);
 	static int getBaseMana(PlatformerEntity* platformerEntity);
 	static int getBaseHealth(PlatformerEntity* platformerEntity);
+	static int getBonusAttack(PlatformerEntity* platformerEntity);
 
 protected:
 	StatsTables();
@@ -26,12 +27,13 @@ private:
 	{
 		int health;
 		int mana;
+		int attack;
 		int exp;
-		std::vector<std::tuple<int, int, int>> increments;
+		std::vector<std::tuple<int, int, int, int>> increments;
 
 		Stats() : health(665), mana(68), exp(419), increments({ }) { }
 		Stats(int health, int mana, int exp) : health(health), mana(mana), exp(exp), increments({ }) { }
-		Stats(int health, int mana, int exp, std::vector<std::tuple<int, int, int>> increments) : health(health), mana(mana), exp(exp), increments(increments) { }
+		Stats(int health, int mana, int exp, std::vector<std::tuple<int, int, int, int>> increments) : health(health), mana(mana), exp(exp), increments(increments) { }
 	};
 
 	static StatsTables* getInstance();

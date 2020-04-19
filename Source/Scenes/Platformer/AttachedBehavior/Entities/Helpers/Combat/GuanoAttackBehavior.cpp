@@ -45,7 +45,11 @@ void GuanoAttackBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		std::tuple<int, int> attackRange = attackBehavior->computeAttackRange();
+		int minAttack = std::get<0>(attackRange);
+		int maxAttack = std::get<1>(attackRange);
+
+		attackBehavior->registerAttack(BasicSlash::create(minAttack, maxAttack, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
