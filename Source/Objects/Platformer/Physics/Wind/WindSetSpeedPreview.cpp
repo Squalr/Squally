@@ -51,6 +51,8 @@ HackablePreview* WindSetSpeedPreview::clone()
 void WindSetSpeedPreview::onEnter()
 {
 	super::onEnter();
+	
+	this->windParticles->start();
 }
 
 void WindSetSpeedPreview::initializePositions()
