@@ -285,22 +285,31 @@ void CombatMap::initializeListeners()
 					this->focusTakeOver->unfocus();
 					
 					PlatformerEntity* entity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+					std::vector<Node*> entityFocusTargets = std::vector<Node*>();
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
-					focusTargets.push_back(entity);
-					focusTargets.push_back(this->scrappy);
+					entityFocusTargets.push_back(entity);
+					entityFocusTargets.push_back(this->scrappy);
 
 					for (auto next : this->timeline->getEntries())
 					{
 						if (next->getEntity() != entity)
 						{
-							focusTargets.push_back(next->getEntity()->getHackParticlesNode());
+							entityFocusTargets.push_back(next->getEntity()->getHackParticlesNode());
 						}
 					}
 
-					this->entityFocusTakeOver->positionFreezeFocus(focusTargets);
+					for (auto next : this->timeline->getEntries())
+					{
+						focusTargets.push_back(next);
+					}
+
+					focusTargets.push_back(this->targetSelectionMenu);
+					focusTargets.push_back(this->choicesMenu);
+
+					this->entityFocusTakeOver->positionFreezeFocus(entityFocusTargets);
 					
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, this->timeline });
+					this->focusTakeOver->focus(focusTargets);
 
 					for (auto entity : this->timeline->getEntries())
 					{
@@ -321,6 +330,7 @@ void CombatMap::initializeListeners()
 					this->entityFocusTakeOver->unfocus();
 					this->focusTakeOver->unfocus();
 
+					std::vector<Node*> entityFocusTargets = std::vector<Node*>();
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
 					for (auto entry : this->timeline->getEntries())
@@ -339,21 +349,30 @@ void CombatMap::initializeListeners()
 							|| (entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
 						{
 							entity->getAnimations()->setOpacity(255);
-							focusTargets.push_back(entity);
+							entityFocusTargets.push_back(entity);
 						}
 						else
 						{
-							focusTargets.push_back(entity->getHackParticlesNode());
+							entityFocusTargets.push_back(entity->getHackParticlesNode());
 						}
 					}
 
-					std::sort(focusTargets.begin(), focusTargets.end(), [](Node* a, Node* b)
+					std::sort(entityFocusTargets.begin(), entityFocusTargets.end(), [](Node* a, Node* b)
 					{ 
 						return a->getPositionZ() < b->getPositionZ();
 					});
 
-					this->entityFocusTakeOver->positionFreezeFocus({ focusTargets });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, this->timeline, this->scrappy });
+					for (auto next : this->timeline->getEntries())
+					{
+						focusTargets.push_back(next);
+					}
+
+					focusTargets.push_back(this->targetSelectionMenu);
+					focusTargets.push_back(this->choicesMenu);
+					focusTargets.push_back(this->scrappy);
+
+					this->entityFocusTakeOver->positionFreezeFocus({ entityFocusTargets });
+					this->focusTakeOver->focus(focusTargets);
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:

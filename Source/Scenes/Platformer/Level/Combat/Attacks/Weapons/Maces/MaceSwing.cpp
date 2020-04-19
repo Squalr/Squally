@@ -23,7 +23,7 @@ MaceSwing* MaceSwing::create(int damageMin, int damageMax, float attackDuration,
 MaceSwing::MaceSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(
 		AttackType::Damage,
-		UIResources::Menus_Icons_Hammer,
+		UIResources::Menus_Icons_Mace,
 		priority,
 		damageMin,
 		damageMax,

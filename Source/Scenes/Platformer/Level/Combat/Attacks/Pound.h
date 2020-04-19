@@ -2,20 +2,20 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class WorldSound;
+class Sound;
 
-class MultiShot : public PlatformerAttack
+class Pound : public PlatformerAttack
 {
 public:
-	static MultiShot* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
+	static Pound* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	MultiShot(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
-	virtual ~MultiShot();
+	Pound(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
+	virtual ~Pound();
 
 	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
@@ -25,8 +25,7 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* slashSound;
-	WorldSound* hitSound;
+	Sound* punchSound;
 
 	static const float DamageMultiplier;
 };

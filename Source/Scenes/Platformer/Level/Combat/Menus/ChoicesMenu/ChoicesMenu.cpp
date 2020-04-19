@@ -289,6 +289,8 @@ void ChoicesMenu::update(float dt)
 
 void ChoicesMenu::onItemsClick()
 {
+	this->itemsMenu->scrollTo(1);
+
 	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 0)
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
@@ -303,6 +305,8 @@ void ChoicesMenu::onItemsClick()
 
 void ChoicesMenu::onAttackClick()
 {
+	this->attackMenu->scrollTo(1);
+
 	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 1)
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
@@ -311,7 +315,7 @@ void ChoicesMenu::onAttackClick()
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
 	}
-	
+
 	this->choicesMenu->scrollTo(1);
 }
 

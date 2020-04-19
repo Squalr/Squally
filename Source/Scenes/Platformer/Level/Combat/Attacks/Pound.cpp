@@ -1,4 +1,4 @@
-#include "Punch.h"
+#include "Pound.h"
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
@@ -11,19 +11,21 @@
 
 using namespace cocos2d;
 
-Punch* Punch::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+const float Pound::DamageMultiplier = 1.5f;
+
+Pound* Pound::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
-	Punch* instance = new Punch(damageMin, damageMax, attackDuration, recoverDuration, priority);
+	Pound* instance = new Pound(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Punch::Punch(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+Pound::Pound(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(
 		AttackType::Damage,
-		UIResources::Menus_Icons_Punch,
+		UIResources::Menus_Icons_PunchStrong,
 		priority,
 		damageMin,
 		damageMax,
@@ -34,36 +36,38 @@ Punch::Punch(int damageMin, int damageMax, float attackDuration, float recoverDu
 {
 	this->punchSound = Sound::create(SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch7);
 
+	this->setDamageMultiplier(Pound::DamageMultiplier);
+
 	this->addChild(this->punchSound);
 }
 
-Punch::~Punch()
+Pound::~Pound()
 {
 }
 
-PlatformerAttack* Punch::cloneInternal()
+PlatformerAttack* Pound::cloneInternal()
 {
-	return Punch::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
+	return Pound::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
-LocalizedString* Punch::getString()
+LocalizedString* Pound::getString()
 {
 	return Strings::Platformer_Combat_Attacks_Punch::create();
 }
 
-std::string Punch::getAttackAnimation()
+std::string Pound::getAttackAnimation()
 {
 	return "AttackPunch";
 }
 
-void Punch::onAttackTelegraphBegin()
+void Pound::onAttackTelegraphBegin()
 {
 	super::onAttackTelegraphBegin();
 
 	this->punchSound->play(false, this->attackDuration / 2.0f);
 }
 
-void Punch::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
+void Pound::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
 	
@@ -73,7 +77,7 @@ void Punch::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*
 	}
 }
 
-void Punch::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
+void Pound::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
 

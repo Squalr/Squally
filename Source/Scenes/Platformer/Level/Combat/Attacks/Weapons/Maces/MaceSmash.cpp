@@ -1,4 +1,4 @@
-#include "SwordExecute.h"
+#include "MaceSmash.h"
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
@@ -11,21 +11,21 @@
 
 using namespace cocos2d;
 
-const float SwordExecute::DamageMultiplier = 1.65f;
+const float MaceSmash::DamageMultiplier = 1.4f;
 
-SwordExecute* SwordExecute::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+MaceSmash* MaceSmash::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
-	SwordExecute* instance = new SwordExecute(damageMin, damageMax, attackDuration, recoverDuration, priority);
+	MaceSmash* instance = new MaceSmash(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+MaceSmash::MaceSmash(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(
 		AttackType::Damage,
-		UIResources::Menus_Icons_BleedingLimb, priority,
+		UIResources::Menus_Icons_MaceStrike, priority,
 		damageMin,
 		damageMax,
 		6,
@@ -36,39 +36,39 @@ SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, f
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade2);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
 
-	this->setDamageMultiplier(SwordExecute::DamageMultiplier);
+	this->setDamageMultiplier(MaceSmash::DamageMultiplier);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);
 }
 
-SwordExecute::~SwordExecute()
+MaceSmash::~MaceSmash()
 {
 }
 
-PlatformerAttack* SwordExecute::cloneInternal()
+PlatformerAttack* MaceSmash::cloneInternal()
 {
-	return SwordExecute::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
+	return MaceSmash::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
-LocalizedString* SwordExecute::getString()
+LocalizedString* MaceSmash::getString()
 {
 	return Strings::Platformer_Combat_Attacks_Execute::create();
 }
 
-std::string SwordExecute::getAttackAnimation()
+std::string MaceSmash::getAttackAnimation()
 {
 	return "AttackSlash";
 }
 
-void SwordExecute::onAttackTelegraphBegin()
+void MaceSmash::onAttackTelegraphBegin()
 {
 	super::onAttackTelegraphBegin();
 	
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void SwordExecute::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
+void MaceSmash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
 	
@@ -78,7 +78,7 @@ void SwordExecute::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	}
 }
 
-void SwordExecute::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
+void MaceSmash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));

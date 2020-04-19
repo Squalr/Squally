@@ -28,5 +28,5 @@ private:
 	WorldSound* slashSound;
 	WorldSound* hitSound;
 
-	static const float SwordExecuteBonus;
+	static const float DamageMultiplier;
 };

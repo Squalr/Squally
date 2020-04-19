@@ -209,11 +209,9 @@ namespace UIResources
 	extern const std::string Menus_Icons_FlamingScroll;
 	extern const std::string Menus_Icons_Food;
 	extern const std::string Menus_Icons_Gauntlet;
-	extern const std::string Menus_Icons_Gavel;
 	extern const std::string Menus_Icons_Gift;
 	extern const std::string Menus_Icons_Goblet;
 	extern const std::string Menus_Icons_GoldBar;
-	extern const std::string Menus_Icons_Hammer;
 	extern const std::string Menus_Icons_Heal;
 	extern const std::string Menus_Icons_Health;
 	extern const std::string Menus_Icons_Heart;
@@ -223,6 +221,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_Lightning;
 	extern const std::string Menus_Icons_Lock;
 	extern const std::string Menus_Icons_LockUnlocked;
+	extern const std::string Menus_Icons_Mace;
+	extern const std::string Menus_Icons_MaceStrike;
 	extern const std::string Menus_Icons_Magnet;
 	extern const std::string Menus_Icons_MagnifyingGlass;
 	extern const std::string Menus_Icons_Mallet;
@@ -235,6 +235,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_Poisoned;
 	extern const std::string Menus_Icons_Pouch;
 	extern const std::string Menus_Icons_Punch;
+	extern const std::string Menus_Icons_PunchStrong;
 	extern const std::string Menus_Icons_Question;
 	extern const std::string Menus_Icons_Quiver;
 	extern const std::string Menus_Icons_RainCloud;

@@ -27,4 +27,6 @@ private:
 
 	WorldSound* slashSound;
 	WorldSound* hitSound;
+
+	static const float DamageMultiplier;
 };

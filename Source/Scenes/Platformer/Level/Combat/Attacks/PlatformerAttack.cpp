@@ -33,6 +33,7 @@ PlatformerAttack::PlatformerAttack(
 	this->priority = priority;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
+	this->damageMultiplier = 1.0f;
 	this->specialCost = specialCost;
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
@@ -256,7 +257,7 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 
 int PlatformerAttack::getRandomDamage()
 {
-	return -RandomHelper::random_int(this->getBaseDamageMin(), this->getBaseDamageMax());
+	return -int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
 }
 
 int PlatformerAttack::getBaseDamageMin()
@@ -269,9 +270,14 @@ int PlatformerAttack::getBaseDamageMax()
 	return this->baseDamageOrHealingMax;
 }
 
+void PlatformerAttack::setDamageMultiplier(float damageMultiplier)
+{
+	this->damageMultiplier = damageMultiplier;
+}
+
 int PlatformerAttack::getRandomHealing()
 {
-	return RandomHelper::random_int(this->getBaseDamageMin(), this->getBaseDamageMax());
+	return int(RandomHelper::random_real(float(this->getBaseHealingMin()), float(this->getBaseHealingMax())) * this->damageMultiplier);
 }
 
 int PlatformerAttack::getBaseHealingMin()
