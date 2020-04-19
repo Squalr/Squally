@@ -6,6 +6,9 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoEqBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoManaBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoPickPocketBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/FollowMovementBehavior.h"
 
@@ -24,6 +27,9 @@ GuanoBehaviorGroup* GuanoBehaviorGroup::create(GameObject* owner)
 
 GuanoBehaviorGroup::GuanoBehaviorGroup(GameObject* owner) : super(owner, {
 	HelperBehaviorGroup::create(owner),
+	GuanoEqBehavior::create(owner),
+	GuanoHealthBehavior::create(owner),
+	GuanoManaBehavior::create(owner),
 	GuanoPickPocketBehavior::create(owner),
 	FollowMovementBehavior::create(owner),
 	})

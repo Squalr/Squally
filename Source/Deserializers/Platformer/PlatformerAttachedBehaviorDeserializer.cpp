@@ -111,7 +111,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	*********************/
 
 	// Helpers
-	this->attachedBehaviorDeserializers[GuanoCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GuanoCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[GuanoCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GuanoCombatBehaviorGroup::create(owner); };
 	
 	// EF
 	this->attachedBehaviorDeserializers[TrainingDummyCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingDummyCombatBehavior::create(owner); };

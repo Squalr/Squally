@@ -1,4 +1,4 @@
-#include "GuanoCombatBehavior.h"
+#include "GuanoAttackBehavior.h"
 
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
@@ -12,18 +12,18 @@
 
 using namespace cocos2d;
 	
-const std::string GuanoCombatBehavior::MapKey = "guano-combat";
+const std::string GuanoAttackBehavior::MapKey = "guano-attack";
 
-GuanoCombatBehavior* GuanoCombatBehavior::create(GameObject* owner)
+GuanoAttackBehavior* GuanoAttackBehavior::create(GameObject* owner)
 {
-	GuanoCombatBehavior* instance = new GuanoCombatBehavior(owner);
+	GuanoAttackBehavior* instance = new GuanoAttackBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GuanoCombatBehavior::GuanoCombatBehavior(GameObject* owner) : super(owner)
+GuanoAttackBehavior::GuanoAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -33,15 +33,15 @@ GuanoCombatBehavior::GuanoCombatBehavior(GameObject* owner) : super(owner)
 	}
 }
 
-GuanoCombatBehavior::~GuanoCombatBehavior()
+GuanoAttackBehavior::~GuanoAttackBehavior()
 {
 }
 
-void GuanoCombatBehavior::initializePositions()
+void GuanoAttackBehavior::initializePositions()
 {
 }
 
-void GuanoCombatBehavior::onLoad()
+void GuanoAttackBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
@@ -59,7 +59,7 @@ void GuanoCombatBehavior::onLoad()
 	});
 }
 
-void GuanoCombatBehavior::onDisable()
+void GuanoAttackBehavior::onDisable()
 {
 	super::onDisable();
 }

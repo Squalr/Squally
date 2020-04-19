@@ -5,16 +5,16 @@
 class PlatformerAttack;
 class PlatformerEntity;
 
-class GuanoCombatBehavior : public AttachedBehavior
+class GuanoAttackBehavior : public AttachedBehavior
 {
 public:
-	static GuanoCombatBehavior* create(GameObject* owner);
+	static GuanoAttackBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	GuanoCombatBehavior(GameObject* owner);
-	virtual ~GuanoCombatBehavior();
+	GuanoAttackBehavior(GameObject* owner);
+	virtual ~GuanoAttackBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
