@@ -50,7 +50,7 @@ PlatformerAttack* MaceSwing::cloneInternal()
 
 LocalizedString* MaceSwing::getString()
 {
-	return Strings::Platformer_Combat_Attacks_ThrowWeapon::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attack::create();
 }
 
 std::string MaceSwing::getAttackAnimation()

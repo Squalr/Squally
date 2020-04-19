@@ -53,7 +53,7 @@ PlatformerAttack* MaceSmash::cloneInternal()
 
 LocalizedString* MaceSmash::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Execute::create();
+	return Strings::Platformer_Combat_Attacks_Smash::create();
 }
 
 std::string MaceSmash::getAttackAnimation()

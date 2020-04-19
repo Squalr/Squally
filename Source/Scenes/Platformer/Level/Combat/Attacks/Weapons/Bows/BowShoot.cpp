@@ -50,7 +50,7 @@ PlatformerAttack* BowShoot::cloneInternal()
 
 LocalizedString* BowShoot::getString()
 {
-	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attacks_Shoot::create();
 }
 
 std::string BowShoot::getAttackAnimation()

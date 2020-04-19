@@ -50,7 +50,7 @@ PlatformerAttack* AxeSwing::cloneInternal()
 
 LocalizedString* AxeSwing::getString()
 {
-	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attack::create();
 }
 
 std::string AxeSwing::getAttackAnimation()

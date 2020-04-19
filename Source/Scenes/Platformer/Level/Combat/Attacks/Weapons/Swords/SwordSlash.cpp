@@ -41,7 +41,7 @@ PlatformerAttack* SwordSlash::cloneInternal()
 
 LocalizedString* SwordSlash::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Slash::create();
+	return Strings::Platformer_Combat_Attack::create();
 }
 
 std::string SwordSlash::getAttackAnimation()

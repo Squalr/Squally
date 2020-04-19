@@ -54,7 +54,7 @@ PlatformerAttack* WandEnergyBolt::cloneInternal()
 
 LocalizedString* WandEnergyBolt::getString()
 {
-	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attacks_EnergyBolt::create();
 }
 
 std::string WandEnergyBolt::getAttackAnimation()

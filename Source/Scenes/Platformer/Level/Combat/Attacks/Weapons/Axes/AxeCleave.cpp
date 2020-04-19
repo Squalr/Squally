@@ -55,7 +55,7 @@ PlatformerAttack* AxeCleave::cloneInternal()
 
 LocalizedString* AxeCleave::getString()
 {
-	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attacks_Cleave::create();
 }
 
 std::string AxeCleave::getAttackAnimation()
