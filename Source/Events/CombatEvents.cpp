@@ -102,7 +102,7 @@ void CombatEvents::TriggerSelectionChanged(SelectionArgs args)
 	);
 }
 
-void CombatEvents::TriggerSelectCastTarget(CastTargetArgs args)
+void CombatEvents::TriggerSelectCastTarget(CastTargetsArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventSelectCastTarget,

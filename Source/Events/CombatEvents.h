@@ -133,11 +133,11 @@ public:
 		}
 	};
 
-	struct CastTargetArgs
+	struct CastTargetsArgs
 	{
-		PlatformerEntity* target;
+		std::vector<PlatformerEntity*> targets;
 
-		CastTargetArgs(PlatformerEntity* target) : target(target)
+		CastTargetsArgs(std::vector<PlatformerEntity*> targets) : targets(targets)
 		{
 		}
 	};
@@ -322,7 +322,7 @@ public:
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();
 	static void TriggerSelectionChanged(SelectionArgs args);
-	static void TriggerSelectCastTarget(CastTargetArgs args);
+	static void TriggerSelectCastTarget(CastTargetsArgs args);
 	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();

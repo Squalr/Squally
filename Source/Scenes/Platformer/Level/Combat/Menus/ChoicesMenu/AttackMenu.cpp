@@ -16,6 +16,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
@@ -26,17 +27,18 @@ using namespace cocos2d;
 
 const float AttackMenu::Radius = 384.0f;
 
-AttackMenu* AttackMenu::create()
+AttackMenu* AttackMenu::create(Timeline* timelineRef)
 {
-	AttackMenu* instance = new AttackMenu();
+	AttackMenu* instance = new AttackMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AttackMenu::AttackMenu() : super(AttackMenu::Radius)
+AttackMenu::AttackMenu(Timeline* timelineRef) : super(AttackMenu::Radius)
 {
+	this->timelineRef = timelineRef;
 }
 
 AttackMenu::~AttackMenu()
@@ -92,14 +94,14 @@ void AttackMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, in
 			case PlatformerAttack::AttackType::Healing:
 			case PlatformerAttack::AttackType::Resurrection:
 			{
-				// TODO: Auto select same team
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getFriendlyEntities()));
 				break;
 			}
 			default:
 			case PlatformerAttack::AttackType::Damage:
 			case PlatformerAttack::AttackType::Debuff:
 			{
-				// TODO: Auto select other team
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getEnemyEntities()));
 				break;
 			}
 		}

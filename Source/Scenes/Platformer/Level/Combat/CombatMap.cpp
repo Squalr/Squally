@@ -80,8 +80,8 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->combatHud = CombatHud::create();
-	this->choicesMenu = ChoicesMenu::create();
 	this->timeline = Timeline::create();
+	this->choicesMenu = ChoicesMenu::create(this->timeline);
 	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();

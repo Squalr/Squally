@@ -6,6 +6,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Maces/MaceSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Bows/BowShoot.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Bows/MultiShot.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Wands/WandSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Swords/SwordExecute.h"

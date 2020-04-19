@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ItemsMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
@@ -30,23 +31,23 @@ using namespace cocos2d;
 
 const float ChoicesMenu::Radius = 240.0f;
 
-ChoicesMenu* ChoicesMenu::create()
+ChoicesMenu* ChoicesMenu::create(Timeline* timelineRef)
 {
-	ChoicesMenu* instance = new ChoicesMenu();
+	ChoicesMenu* instance = new ChoicesMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChoicesMenu::ChoicesMenu()
+ChoicesMenu::ChoicesMenu(Timeline* timelineRef)
 {
 	this->noItems = false;
 	this->noDefend = false;
 	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
-	this->attackMenu = AttackMenu::create();
+	this->attackMenu = AttackMenu::create(timelineRef);
 	this->itemsMenu = ItemsMenu::create();
 	this->trackTarget = nullptr;
 

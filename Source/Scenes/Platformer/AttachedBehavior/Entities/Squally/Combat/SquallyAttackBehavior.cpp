@@ -117,6 +117,7 @@ void SquallyAttackBehavior::loadBowAttacks(EntityAttackBehavior* attackBehavior,
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(BowShoot::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+	attackBehavior->registerAttack(MultiShot::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 }
 
 void SquallyAttackBehavior::loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* mace)

@@ -11,6 +11,8 @@
 
 using namespace cocos2d;
 
+const float MultiShot::DamageReduction = 0.75f;
+
 MultiShot* MultiShot::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	MultiShot* instance = new MultiShot(damageMin, damageMax, attackDuration, recoverDuration, priority);
@@ -21,7 +23,17 @@ MultiShot* MultiShot::create(int damageMin, int damageMax, float attackDuration,
 }
 
 MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_ArcheryTarget, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_ArcheryTarget,
+		priority,
+		int(float(damageMin) * MultiShot::DamageReduction),
+		int(float(damageMax) * MultiShot::DamageReduction),
+		8,
+		attackDuration,
+		recoverDuration,
+		true
+	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow1);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);

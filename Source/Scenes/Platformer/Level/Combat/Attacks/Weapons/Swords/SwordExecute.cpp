@@ -23,7 +23,15 @@ SwordExecute* SwordExecute::create(int damageMin, int damageMax, float attackDur
 }
 
 SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_BleedingLimb, priority, int(float(damageMin) * SwordExecute::SwordExecuteBonus), int(float(damageMax) * SwordExecute::SwordExecuteBonus), 4, attackDuration, recoverDuration)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_BleedingLimb, priority,
+		int(float(damageMin) * SwordExecute::SwordExecuteBonus),
+		int(float(damageMax) * SwordExecute::SwordExecuteBonus),
+		6,
+		attackDuration,
+		recoverDuration
+	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade2);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
