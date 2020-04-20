@@ -125,7 +125,7 @@
   </properties>
   <object id="616" name="scrappy" type="entity" x="5416.93" y="5309.35" width="78.7879" height="88">
    <properties>
-    <property name="attached-behavior" value="friendly-no-collision"/>
+    <property name="attached-behavior" value="friendly,no-gravity"/>
     <property name="quest" value="meet-scrappy"/>
     <property name="quest-line" value="intro"/>
    </properties>

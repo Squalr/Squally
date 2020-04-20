@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

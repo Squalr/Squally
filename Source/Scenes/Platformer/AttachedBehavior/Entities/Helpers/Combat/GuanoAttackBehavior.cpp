@@ -3,7 +3,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"

@@ -23,7 +23,7 @@ EntityInventoryBehavior* EntityInventoryBehavior::create(GameObject* owner)
 	return instance;
 }
 
-EntityInventoryBehavior::EntityInventoryBehavior(GameObject* owner) : super(owner)
+EntityInventoryBehavior::EntityInventoryBehavior(GameObject* owner, std::string inventorySaveKey, std::string equipmentSaveKey, std::string currencySaveKey) : super(owner)
 {
 	this->platformerEntity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -33,18 +33,6 @@ EntityInventoryBehavior::EntityInventoryBehavior(GameObject* owner) : super(owne
 	}
 	else
 	{
-		std::string inventorySaveKey = "";
-		std::string equipmentSaveKey = "";
-		std::string currencySaveKey = "";
-
-		// A little bit of bad practice, but this is the only exception, so who gives a shit
-		if (dynamic_cast<Squally*>(this->platformerEntity) != nullptr)
-		{
-			inventorySaveKey = SaveKeys::SaveKeySquallyInventory;
-			equipmentSaveKey = SaveKeys::SaveKeySquallyEquipment;
-			currencySaveKey = SaveKeys::SaveKeySquallyCurrencyInventory;
-		}
-
 		this->inventory = Inventory::create(inventorySaveKey);
 		this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
 		this->currencyInventory = CurrencyInventory::create(currencySaveKey);
@@ -86,4 +74,10 @@ EquipmentInventory* EntityInventoryBehavior::getEquipmentInventory()
 CurrencyInventory* EntityInventoryBehavior::getCurrencyInventory()
 {
 	return this->currencyInventory;
+}
+
+void EntityInventoryBehavior::redirectInventoryTo(Inventory* inventory)
+{
+	// This is devil magic to allow helpers in combat to share an inventory. Their inventories are simply redirected to point to the players.
+	this->inventory = inventory;
 }

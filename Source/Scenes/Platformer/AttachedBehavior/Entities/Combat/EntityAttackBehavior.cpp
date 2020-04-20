@@ -7,7 +7,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"

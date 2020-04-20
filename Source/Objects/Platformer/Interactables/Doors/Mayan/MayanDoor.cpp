@@ -20,7 +20,7 @@
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemPurple.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemRed.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"

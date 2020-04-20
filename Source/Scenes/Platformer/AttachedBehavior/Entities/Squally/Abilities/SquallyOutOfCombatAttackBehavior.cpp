@@ -18,7 +18,7 @@
 #include "Objects/Platformer/Projectiles/Arrows/VoidArrow.h"
 #include "Objects/Platformer/Projectiles/Arrows/WoodenArrow.h"
 #include "Objects/Platformer/Projectiles/WandSpells/EnergyBolt.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"

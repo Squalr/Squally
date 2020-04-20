@@ -11,7 +11,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/Sword.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttacks.h"
 
 #include "Resources/UIResources.h"

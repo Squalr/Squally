@@ -16,7 +16,7 @@
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;

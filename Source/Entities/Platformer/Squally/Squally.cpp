@@ -21,7 +21,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"

@@ -10,7 +10,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

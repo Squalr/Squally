@@ -5,6 +5,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoEqBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoManaBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Inventory/HelperInventoryRedirectBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 
 using namespace cocos2d;
 
@@ -20,6 +22,8 @@ GuanoCombatBehaviorGroup* GuanoCombatBehaviorGroup::create(GameObject* owner)
 }
 
 GuanoCombatBehaviorGroup::GuanoCombatBehaviorGroup(GameObject* owner) : super(owner, {
+	EntityInventoryBehavior::create(owner),
+	HelperInventoryRedirectBehavior::create(owner),
 	GuanoAttackBehavior::create(owner),
 	GuanoEqBehavior::create(owner),
 	GuanoHealthBehavior::create(owner),

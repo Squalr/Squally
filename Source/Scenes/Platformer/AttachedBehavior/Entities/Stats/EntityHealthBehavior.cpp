@@ -13,7 +13,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/State/StateKeys.h"

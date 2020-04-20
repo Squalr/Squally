@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 
 using namespace cocos2d;
 
@@ -19,6 +20,7 @@ EnemyCombatBehaviorGroup* EnemyCombatBehaviorGroup::create(GameObject* owner)
 
 EnemyCombatBehaviorGroup::EnemyCombatBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityCombatBehaviorGroup::create(owner),
+	EntityInventoryBehavior::create(owner),
 	EnemyCombatCollisionBehavior::create(owner),
 	})
 {

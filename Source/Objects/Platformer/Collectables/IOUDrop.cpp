@@ -6,7 +6,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ItemResources.h"

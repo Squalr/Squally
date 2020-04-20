@@ -17,10 +17,12 @@ public:
 	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();
 
+	void redirectInventoryTo(Inventory* inventory);
+
 	static const std::string MapKey;
 
 protected:
-	EntityInventoryBehavior(GameObject* owner);
+	EntityInventoryBehavior(GameObject* owner, std::string inventorySaveKey = "", std::string equipmentSaveKey = "", std::string currencySaveKey = "");
 	virtual ~EntityInventoryBehavior();
 
 	void onLoad() override;

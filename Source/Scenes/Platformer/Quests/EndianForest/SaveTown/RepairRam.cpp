@@ -20,7 +20,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ObjectResources.h"

@@ -22,7 +22,7 @@
 #include "Menus/Crafting/CraftingPreview.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"

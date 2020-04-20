@@ -13,7 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
