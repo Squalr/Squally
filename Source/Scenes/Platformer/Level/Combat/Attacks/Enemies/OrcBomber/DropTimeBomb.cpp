@@ -53,7 +53,7 @@ LocalizedString* DropTimeBomb::getString()
 
 std::string DropTimeBomb::getAttackAnimation()
 {
-	return "DropTimeBomb";
+	return "AttackDropTimeBomb";
 }
 
 void DropTimeBomb::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
