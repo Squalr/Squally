@@ -388,7 +388,6 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 		}
 	}
 
-	this->hackablesNode->addChild(hackableCode);
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
 
@@ -449,8 +448,6 @@ void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestor
 
 		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
 		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
-
-		this->hackablesNode->removeChild(hackableCode);
 
 		this->refreshParticleFx();
 	}

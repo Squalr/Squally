@@ -218,6 +218,7 @@ protected:
 
 private:
 	typedef HackableBase super;
+	friend class GlobalHackAttributeContainer;
 
 	typedef std::map<unsigned char, HackableCode::HackableCodeMarkers> MarkerMap;
 	typedef std::map<void*, MarkerMap> CodeMap;

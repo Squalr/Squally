@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -30,9 +31,15 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, CodeInfoMap
 
 HackableCode* HackableCode::create(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo)
 {
-	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, hackableCodeInfo);
+	HackableCode* hackableCode = GlobalHackAttributeContainer::GetHackableCode(codeStart);
 
-	hackableCode->autorelease();
+	if (hackableCode == nullptr)
+	{
+		hackableCode = new HackableCode(codeStart, codeEnd, hackableCodeInfo);
+		hackableCode->autorelease();
+
+		GlobalHackAttributeContainer::RegisterHackableCode(hackableCode);
+	}
 
 	return hackableCode;
 }
