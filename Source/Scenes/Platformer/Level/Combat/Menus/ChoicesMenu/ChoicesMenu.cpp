@@ -46,6 +46,7 @@ ChoicesMenu::ChoicesMenu(Timeline* timelineRef)
 	this->noDefend = false;
 	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
+	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
 	this->attackMenu = AttackMenu::create(timelineRef);
 	this->itemsMenu = ItemsMenu::create();

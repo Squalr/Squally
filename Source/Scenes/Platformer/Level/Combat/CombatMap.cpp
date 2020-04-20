@@ -37,6 +37,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/CancelMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
@@ -81,6 +82,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->inventoryMenu = InventoryMenu::create();
 	this->combatHud = CombatHud::create();
 	this->timeline = Timeline::create();
+	this->cancelMenu = CancelMenu::create();
 	this->choicesMenu = ChoicesMenu::create(this->timeline);
 	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
@@ -134,6 +136,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->focusTakeOver);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->cancelMenu);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
 	this->backMenuHud->addChild(this->hackerModeWarningHud);
@@ -194,6 +197,7 @@ void CombatMap::initializePositions()
 	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->cancelMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
 }
 
@@ -306,6 +310,7 @@ void CombatMap::initializeListeners()
 
 					focusTargets.push_back(this->targetSelectionMenu);
 					focusTargets.push_back(this->choicesMenu);
+					focusTargets.push_back(this->cancelMenu);
 
 					this->entityFocusTakeOver->positionFreezeFocus(entityFocusTargets);
 					
@@ -369,6 +374,7 @@ void CombatMap::initializeListeners()
 
 					focusTargets.push_back(this->targetSelectionMenu);
 					focusTargets.push_back(this->choicesMenu);
+					focusTargets.push_back(this->cancelMenu);
 					focusTargets.push_back(this->scrappy);
 
 					this->entityFocusTakeOver->positionFreezeFocus({ entityFocusTargets });

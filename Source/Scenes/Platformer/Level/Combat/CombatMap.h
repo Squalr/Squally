@@ -3,6 +3,7 @@
 #include "Scenes/MapBase.h"
 
 class CardsMenu;
+class CancelMenu;
 class ChoicesMenu;
 class CollectablesMenu;
 class CombatAIHelper;
@@ -70,6 +71,7 @@ private:
 
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
+	CancelMenu* cancelMenu;
 	CombatHud* combatHud;
 	FirstStrikeMenu* firstStrikeMenu;
 	DefeatMenu* defeatMenu;
