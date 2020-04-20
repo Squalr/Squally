@@ -11,7 +11,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
-#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableBase.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Localization/ConstantString.h"
@@ -89,7 +89,7 @@ void RadialMenu::initializeListeners()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEditDone, [=](EventCustom* EventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEditDone, [=](EventCustom* EventCustom)
 	{
 		GameUtils::focus(this);
 
@@ -110,16 +110,16 @@ void RadialMenu::initializeListeners()
 	});
 }
 
-void RadialMenu::onHackableAttributeEdit(HackableAttribute* attribute)
+void RadialMenu::onHackableBaseEdit(HackableBase* attribute)
 {
 	if (dynamic_cast<HackActivatedAbility*>(attribute) != nullptr)
 	{
 		dynamic_cast<HackActivatedAbility*>(attribute)->activate();
-		HackableEvents::TriggerEditHackableAttributeDone();
+		HackableEvents::TriggerEditHackableBaseDone();
 	}
 	else
 	{
-		HackableEvents::TriggerEditHackableAttribute(HackableEvents::HackableObjectEditArgs(attribute));
+		HackableEvents::TriggerEditHackableBase(HackableEvents::HackableObjectEditArgs(attribute));
 
 		this->setVisible(false);
 	}
@@ -139,7 +139,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->radialMenuItems->removeAllChildren();
 
 	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
-	std::vector<HackableAttribute*> filteredAttributes = std::vector<HackableAttribute*>();
+	std::vector<HackableBase*> filteredAttributes = std::vector<HackableBase*>();
 
 	for (auto attribute : this->activeHackableObject->hackableList)
 	{
@@ -178,7 +178,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 			nextDataIconPosition,
 			currentAngle,
 			name == nullptr ? nullptr : name->clone(), 
-			[=]() { this->onHackableAttributeEdit(hackable); }
+			[=]() { this->onHackableBaseEdit(hackable); }
 		);
 
 		this->radialMenuItems->addChild(menuNode);

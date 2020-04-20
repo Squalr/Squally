@@ -90,7 +90,7 @@ void SquallySwimHackBehavior::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SquallySwimHackBehavior::MapKey,
 				Strings::Menus_Hacking_Abilities_Squally_IsSwimming::create(),
-				HackableAttribute::HackBarColor::Teal,
+				HackableBase::HackBarColor::Teal,
 				UIResources::Menus_Icons_Bubbles,
 				EntityPreview::create(this->squally),
 				{

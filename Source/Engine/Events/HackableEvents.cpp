@@ -14,8 +14,8 @@ const std::string HackableEvents::EventDisallowHackerMode = "EVENT_DISALLOW_HACK
 const std::string HackableEvents::EventQueryHackerModeAllowed = "EVENT_QUERY_HACKER_MODE";
 const std::string HackableEvents::EventHackableObjectOpen = "EVENT_OPEN_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableObjectClose = "EVENT_CLOSE_HACKABLE_OBJECT";
-const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKABLE_OBJECT";
-const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
+const std::string HackableEvents::EventHackableBaseEdit = "EVENT_EDIT_HACKABLE_OBJECT";
+const std::string HackableEvents::EventHackableBaseEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
 const std::string HackableEvents::EventQueryAttributeCountPrefix = "EVENT_QUERY_ATTRIBUTE_COUNT_";
 const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
 const std::string HackableEvents::EventHackRestoreStatePrefix = "EVENT_HACK_RESTORE_STATE_";
@@ -93,21 +93,21 @@ void HackableEvents::TriggerCloseHackable()
 	);
 }
 
-void HackableEvents::TriggerEditHackableAttribute(HackableObjectEditArgs args)
+void HackableEvents::TriggerEditHackableBase(HackableObjectEditArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventHackableAttributeEdit,
+		HackableEvents::EventHackableBaseEdit,
 		&args
 	);
 }
 
-void HackableEvents::TriggerEditHackableAttributeDone()
+void HackableEvents::TriggerEditHackableBaseDone()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventHackableAttributeEditDone
+		HackableEvents::EventHackableBaseEditDone
 	);
 }
-void HackableEvents::TriggerQueryAttributeCount(HackableAttributeQueryArgs* args)
+void HackableEvents::TriggerQueryAttributeCount(HackableBaseQueryArgs* args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventQueryAttributeCountPrefix + args->hackableIdentifier,

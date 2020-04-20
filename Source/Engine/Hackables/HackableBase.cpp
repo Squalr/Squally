@@ -1,4 +1,4 @@
-#include "HackableAttribute.h"
+#include "HackableBase.h"
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -13,10 +13,10 @@
 
 using namespace cocos2d;
 
-bool HackableAttribute::HackTimersPaused = false;
-std::map<std::string, HackableAttribute::SharedState> HackableAttribute::SharedStateMap = std::map<std::string, HackableAttribute::SharedState>();
+bool HackableBase::HackTimersPaused = false;
+std::map<std::string, HackableBase::SharedState> HackableBase::SharedStateMap = std::map<std::string, HackableBase::SharedState>();
 
-HackableAttribute::HackableAttribute(
+HackableBase::HackableBase(
 	std::string hackableIdentifier,
 	int requiredHackFlag,
 	float duration,
@@ -35,7 +35,7 @@ HackableAttribute::HackableAttribute(
 	this->hackablePreview = hackablePreview;
 	this->clippy = clippy == nullptr ? nullptr : clippy->refClone();
 
-	HackableAttribute::TryRegisterSharedState(this, SharedState(duration, cooldown));
+	HackableBase::TryRegisterSharedState(this, SharedState(duration, cooldown));
 
 	if (this->hackablePreview != nullptr)
 	{
@@ -53,7 +53,7 @@ HackableAttribute::HackableAttribute(
 	}
 }
 
-HackableAttribute::~HackableAttribute()
+HackableBase::~HackableBase()
 {
 	if (this->hackablePreview != nullptr)
 	{
@@ -66,12 +66,12 @@ HackableAttribute::~HackableAttribute()
 	}
 }
 
-void HackableAttribute::onEnter()
+void HackableBase::onEnter()
 {
 	super::onEnter();
 }
 
-void HackableAttribute::initializeListeners()
+void HackableBase::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -90,7 +90,7 @@ void HackableAttribute::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventQueryAttributeCountPrefix + this->getHackableIdentifier(), [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackableAttributeQueryArgs* args = static_cast<HackableEvents::HackableAttributeQueryArgs*>(eventCustom->getUserData());
+		HackableEvents::HackableBaseQueryArgs* args = static_cast<HackableEvents::HackableBaseQueryArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -104,179 +104,179 @@ void HackableAttribute::initializeListeners()
 	}));
 }
 
-void HackableAttribute::UpdateSharedState(float dt)
+void HackableBase::UpdateSharedState(float dt)
 {
-	if (HackableAttribute::HackTimersPaused)
+	if (HackableBase::HackTimersPaused)
 	{
 		return;
 	}
 
-	for (auto next : HackableAttribute::SharedStateMap)
+	for (auto next : HackableBase::SharedStateMap)
 	{
 		const std::string& key = next.first;
 
-		if (HackableAttribute::SharedStateMap[key].elapsedDuration < HackableAttribute::SharedStateMap[key].duration)
+		if (HackableBase::SharedStateMap[key].elapsedDuration < HackableBase::SharedStateMap[key].duration)
 		{
-			HackableAttribute::SharedStateMap[key].elapsedDuration += dt;
+			HackableBase::SharedStateMap[key].elapsedDuration += dt;
 
-			if (HackableAttribute::SharedStateMap[key].elapsedDuration >= HackableAttribute::SharedStateMap[key].duration)
+			if (HackableBase::SharedStateMap[key].elapsedDuration >= HackableBase::SharedStateMap[key].duration)
 			{
 				HackableEvents::TriggerHackRestoreState(HackableEvents::HackRestoreStateArgs(key));
 			}
 		}
 
-		if (HackableAttribute::SharedStateMap[key].elapsedCooldown < HackableAttribute::SharedStateMap[key].cooldown)
+		if (HackableBase::SharedStateMap[key].elapsedCooldown < HackableBase::SharedStateMap[key].cooldown)
 		{
-			HackableAttribute::SharedStateMap[key].elapsedCooldown += dt;
+			HackableBase::SharedStateMap[key].elapsedCooldown += dt;
 		}
 	}
 }
 
-std::string HackableAttribute::getHackableIdentifier()
+std::string HackableBase::getHackableIdentifier()
 {
 	return this->hackableIdentifier;
 }
 
-void HackableAttribute::CleanUpGlobalState()
+void HackableBase::CleanUpGlobalState()
 {
-	HackableAttribute::HackTimersPaused = false;
+	HackableBase::HackTimersPaused = false;
 
-	for (auto next : HackableAttribute::SharedStateMap)
+	for (auto next : HackableBase::SharedStateMap)
 	{
 		// next.first->restoreState();
 	}
 
-	HackableAttribute::SharedStateMap.clear();
+	HackableBase::SharedStateMap.clear();
 }
 
-void* HackableAttribute::getPointer()
+void* HackableBase::getPointer()
 {
 	return nullptr;
 }
 
-int HackableAttribute::getRequiredHackFlag()
+int HackableBase::getRequiredHackFlag()
 {
 	return this->requiredHackFlag;
 }
 
-float HackableAttribute::getElapsedDuration()
+float HackableBase::getElapsedDuration()
 {
 	SharedState* state = this->getSharedState();
 
 	return state == nullptr ? 0.0f : state->elapsedDuration;
 }
 
-float HackableAttribute::getDuration()
+float HackableBase::getDuration()
 {
 	SharedState* state = this->getSharedState();
 
 	return state == nullptr ? 0.0f : state->duration;
 }
 
-bool HackableAttribute::isComplete()
+bool HackableBase::isComplete()
 {
 	return this->getElapsedDuration() >= this->getDuration();
 }
 
-bool HackableAttribute::isCooldownComplete()
+bool HackableBase::isCooldownComplete()
 {
 	return this->getElapsedCooldown() >= this->getCooldown();
 }
 
-float HackableAttribute::getElapsedCooldown()
+float HackableBase::getElapsedCooldown()
 {
 	SharedState* state = this->getSharedState();
 
 	return state == nullptr ? 0.0f : state->elapsedCooldown;
 }
 
-float HackableAttribute::getCooldown()
+float HackableBase::getCooldown()
 {
 	SharedState* state = this->getSharedState();
 
 	return state == nullptr ? 0.0f : state->cooldown;
 }
 
-std::string HackableAttribute::getHackBarResource()
+std::string HackableBase::getHackBarResource()
 {
 	switch(this->getHackBarColor())
 	{
-		case HackableAttribute::HackBarColor::Blue:
+		case HackableBase::HackBarColor::Blue:
 		{
 			return UIResources::HUD_FillBlue;
 		}
-		case HackableAttribute::HackBarColor::Gray:
+		case HackableBase::HackBarColor::Gray:
 		{
 			return UIResources::HUD_FillGray;
 		}
-		case HackableAttribute::HackBarColor::Green:
+		case HackableBase::HackBarColor::Green:
 		{
 			return UIResources::HUD_FillGreen;
 		}
-		case HackableAttribute::HackBarColor::Orange:
+		case HackableBase::HackBarColor::Orange:
 		{
 			return UIResources::HUD_FillOrange;
 		}
-		case HackableAttribute::HackBarColor::Pink:
+		case HackableBase::HackBarColor::Pink:
 		{
 			return UIResources::HUD_FillPink;
 		}
-		case HackableAttribute::HackBarColor::Red:
+		case HackableBase::HackBarColor::Red:
 		{
 			return UIResources::HUD_FillRed;
 		}
-		case HackableAttribute::HackBarColor::Teal:
+		case HackableBase::HackBarColor::Teal:
 		{
 			return UIResources::HUD_FillTeal;
 		}
-		case HackableAttribute::HackBarColor::Yellow:
+		case HackableBase::HackBarColor::Yellow:
 		{
 			return UIResources::HUD_FillYellow;
 		}
 		default:
-		case HackableAttribute::HackBarColor::Purple:
+		case HackableBase::HackBarColor::Purple:
 		{
 			return UIResources::HUD_FillPurple;
 		}
 	}
 }
 
-HackableAttribute::HackBarColor HackableAttribute::getHackBarColor()
+HackableBase::HackBarColor HackableBase::getHackBarColor()
 {
 	return this->hackBarColor;
 }
 
-std::string HackableAttribute::getIconResource()
+std::string HackableBase::getIconResource()
 {
 	return this->iconResource;
 }
 
-LocalizedString* HackableAttribute::getName()
+LocalizedString* HackableBase::getName()
 {
 	return this->name;
 }
 
-HackablePreview* HackableAttribute::getHackablePreview()
+HackablePreview* HackableBase::getHackablePreview()
 {
 	return this->hackablePreview;
 }
 
-Clippy* HackableAttribute::getClippy()
+Clippy* HackableBase::getClippy()
 {
 	return this->clippy;
 }
 
-void HackableAttribute::restoreState()
+void HackableBase::restoreState()
 {
 }
 
-void HackableAttribute::restoreStateIfUnique()
+void HackableBase::restoreStateIfUnique()
 {
 	// Some example scenarios of why this is needed:
 	// 1) A buff with a hackable is removed, and this was the only hackable (ie only 1 buff, 1 hackable code). Restore the state.
 	// 2) A buff with a hackable is removed, but another mob has the same buff, thus we should be waiting on the duration before restoring the state.
 
-	HackableEvents::HackableAttributeQueryArgs queryArgs = HackableEvents::HackableAttributeQueryArgs(this->getHackableIdentifier());
+	HackableEvents::HackableBaseQueryArgs queryArgs = HackableEvents::HackableBaseQueryArgs(this->getHackableIdentifier());
 
 	HackableEvents::TriggerQueryAttributeCount(&queryArgs);
 	
@@ -286,25 +286,25 @@ void HackableAttribute::restoreStateIfUnique()
 	}
 }
 
-void HackableAttribute::resetTimer()
+void HackableBase::resetTimer()
 {
-	HackableAttribute::SharedStateMap[this->getHackableIdentifier()].elapsedDuration = 0.0f;
-	HackableAttribute::SharedStateMap[this->getHackableIdentifier()].elapsedCooldown = 0.0f;
+	HackableBase::SharedStateMap[this->getHackableIdentifier()].elapsedDuration = 0.0f;
+	HackableBase::SharedStateMap[this->getHackableIdentifier()].elapsedCooldown = 0.0f;
 }
 
-void HackableAttribute::TryRegisterSharedState(HackableAttribute* attribute, SharedState sharedState)
+void HackableBase::TryRegisterSharedState(HackableBase* attribute, SharedState sharedState)
 {
-	if (HackableAttribute::SharedStateMap.find(attribute->getHackableIdentifier()) == HackableAttribute::SharedStateMap.end())
+	if (HackableBase::SharedStateMap.find(attribute->getHackableIdentifier()) == HackableBase::SharedStateMap.end())
 	{
-		HackableAttribute::SharedStateMap[attribute->getHackableIdentifier()] = sharedState;
+		HackableBase::SharedStateMap[attribute->getHackableIdentifier()] = sharedState;
 	}
 }
 
-HackableAttribute::SharedState* HackableAttribute::getSharedState()
+HackableBase::SharedState* HackableBase::getSharedState()
 {
-	if (HackableAttribute::SharedStateMap.find(this->getHackableIdentifier()) != HackableAttribute::SharedStateMap.end())
+	if (HackableBase::SharedStateMap.find(this->getHackableIdentifier()) != HackableBase::SharedStateMap.end())
 	{
-		return &HackableAttribute::SharedStateMap[this->getHackableIdentifier()];
+		return &HackableBase::SharedStateMap[this->getHackableIdentifier()];
 	}
 
 	return nullptr;

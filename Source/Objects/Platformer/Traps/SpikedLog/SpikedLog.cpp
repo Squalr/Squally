@@ -89,7 +89,7 @@ void SpikedLog::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SpikedLog::MapKey,
 				Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Banner,
 				SpikedLogSetRotationPreview::create(),
 				{

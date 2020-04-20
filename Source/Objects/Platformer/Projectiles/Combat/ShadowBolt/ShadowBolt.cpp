@@ -106,7 +106,7 @@ void ShadowBolt::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"ShadowBolt",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_ApplySpeed::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				ShadowBoltSpeedPreview::create(),
 				{

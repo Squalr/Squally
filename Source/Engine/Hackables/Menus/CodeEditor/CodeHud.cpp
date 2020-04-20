@@ -237,7 +237,7 @@ void CodeHud::initializeListeners()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEdit, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEdit, [=](EventCustom* eventCustom)
 	{
 		HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());
 		
@@ -700,7 +700,7 @@ void CodeHud::onAccept()
 	this->setVisible(false);
 	this->getParent()->setOpacity(0xFF);
 
-	HackableEvents::TriggerEditHackableAttributeDone();
+	HackableEvents::TriggerEditHackableBaseDone();
 }
 
 void CodeHud::onCancel()
@@ -715,7 +715,7 @@ void CodeHud::onCancel()
 
 	this->setVisible(false);
 
-	HackableEvents::TriggerEditHackableAttributeDone();
+	HackableEvents::TriggerEditHackableBaseDone();
 }
 
 Lexicon* CodeHud::getLexicon()

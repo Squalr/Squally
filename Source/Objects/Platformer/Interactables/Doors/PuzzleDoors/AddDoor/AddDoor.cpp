@@ -64,7 +64,7 @@ void AddDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				AddDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Heal,
 				AddDoorPreview::create(),
 				{

@@ -120,7 +120,7 @@ void Strength::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Strength::StrengthIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
-				HackableAttribute::HackBarColor::Yellow,
+				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_Strength,
 				StrengthGenericPreview::create(),
 				{

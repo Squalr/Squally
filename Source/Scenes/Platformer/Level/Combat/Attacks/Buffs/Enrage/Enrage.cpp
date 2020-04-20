@@ -122,7 +122,7 @@ void Enrage::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Enrage::EnrageIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Enrage_Enrage::create(),
-				HackableAttribute::HackBarColor::Orange,
+				HackableBase::HackBarColor::Orange,
 				UIResources::Menus_Icons_Clock,
 				EnrageGenericPreview::create(),
 				{

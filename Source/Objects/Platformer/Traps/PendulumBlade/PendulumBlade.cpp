@@ -111,7 +111,7 @@ void PendulumBlade::registerHackables()
 			HackableCode::HackableCodeInfo(
 				PendulumBlade::MapKey,
 				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				PendulumBladeSetAnglePreview::create(),
 				{

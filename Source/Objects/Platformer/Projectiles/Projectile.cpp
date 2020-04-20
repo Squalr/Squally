@@ -168,7 +168,7 @@ void Projectile::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"projectile-velocity",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_AxeSlash,
 				this->createVelocityPreview(),
 				{
@@ -187,7 +187,7 @@ void Projectile::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"projectile-acceleration",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
-				HackableAttribute::HackBarColor::Gray,
+				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_Scale,
 				this->createAccelerationPreview(),
 				{

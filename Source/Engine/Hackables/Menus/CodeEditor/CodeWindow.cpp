@@ -192,12 +192,12 @@ void CodeWindow::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEdit, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEdit, [=](EventCustom* args)
 	{
 		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(true);
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEditDone, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEditDone, [=](EventCustom* args)
 	{
 		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(false);
 	}));

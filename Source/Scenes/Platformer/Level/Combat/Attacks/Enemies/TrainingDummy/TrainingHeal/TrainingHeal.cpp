@@ -119,7 +119,7 @@ void TrainingHeal::registerHackables()
 			HackableCode::HackableCodeInfo(
 				TrainingHeal::TrainingHealIdentifier,
 				Strings::Menus_Hacking_Abilities_TrainingDummy_AddHealth::create(),
-				HackableAttribute::HackBarColor::Green,
+				HackableBase::HackBarColor::Green,
 				UIResources::Menus_Icons_Heal,
 				TrainingHealGenericPreview::create(),
 				{

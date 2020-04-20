@@ -38,7 +38,7 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, HackableCodeI
 }
 
 HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo)
-	: HackableAttribute(
+	: HackableBase(
 		hackableCodeInfo.hackableIdentifier + "_" + (hackableCodeInfo.functionName == nullptr ? "" : hackableCodeInfo.functionName->getStringIdentifier()),
 		hackableCodeInfo.hackFlags,
 		hackableCodeInfo.duration,

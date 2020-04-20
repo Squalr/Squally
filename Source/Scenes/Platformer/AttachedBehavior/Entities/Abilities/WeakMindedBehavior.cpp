@@ -64,7 +64,7 @@ void WeakMindedBehavior::onLoad()
 		},
 		1,
 		10.0f,
-		HackableAttribute::HackBarColor::Purple,
+		HackableBase::HackBarColor::Purple,
 		UIResources::Menus_Icons_Eye,
 		Strings::Menus_Hacking_Abilities_WeakMinded::create(),
 		nullptr,

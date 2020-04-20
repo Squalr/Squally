@@ -35,15 +35,15 @@ public:
 	void highlightEspPtr(bool isDest, int offset);
 	void highlightEipPtr(bool isDest, int offset);
 
-	void initEax(long long eax, std::vector<int> values = { });
-	void initEbx(long long ebx, std::vector<int> values = { });
-	void initEcx(long long ecx, std::vector<int> values = { });
-	void initEdx(long long edx, std::vector<int> values = { });
-	void initEdi(long long edi, std::vector<int> values = { });
-	void initEsi(long long esi, std::vector<int> values = { });
-	void initEbp(long long ebp, std::vector<int> values = { });
-	void initEsp(long long esp, std::vector<int> values = { });
-	void initEip(long long eip, std::vector<int> values = { });
+	void initEax(long long eax, std::vector<long long> values = { });
+	void initEbx(long long ebx, std::vector<long long> values = { });
+	void initEcx(long long ecx, std::vector<long long> values = { });
+	void initEdx(long long edx, std::vector<long long> values = { });
+	void initEdi(long long edi, std::vector<long long> values = { });
+	void initEsi(long long esi, std::vector<long long> values = { });
+	void initEbp(long long ebp, std::vector<long long> values = { });
+	void initEsp(long long esp, std::vector<long long> values = { });
+	void initEip(long long eip, std::vector<long long> values = { });
 
 	void setEax(long long eax);
 	void setEbx(long long ebx);
@@ -104,15 +104,15 @@ private:
 		bool initialized;
 		long long currentValue;
 		long long initialValue;
-		std::vector<int> initialValues;
-		std::vector<int> currentValues;
+		std::vector<long long> initialValues;
+		std::vector<long long> currentValues;
 
 		Register() : initialized(false), currentValue(0), initialValue(0), initialValues({}), currentValues({}) { }
-		Register(long long currentValue, long long initialValue, std::vector<int> initialValues, std::vector<int> currentValues) :
+		Register(long long currentValue, long long initialValue, std::vector<long long> initialValues, std::vector<long long> currentValues) :
 			initialized(true), currentValue(currentValue), initialValue(initialValue), initialValues(initialValues), currentValues(currentValues) {}
 	};
 
-	void addToData(int value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels);
+	void addToData(long long value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels);
 
 	cocos2d::Sprite* registerBlock;
 	LocalizedLabel* titleLabel;

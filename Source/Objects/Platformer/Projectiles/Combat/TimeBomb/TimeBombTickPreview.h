@@ -37,5 +37,5 @@ private:
 	LocalizedLabel* tick;
 	SmartAnimationSequenceNode* explosionAnim;
 
-	static const float MaxTick;
+	static const int MaxTick;
 };

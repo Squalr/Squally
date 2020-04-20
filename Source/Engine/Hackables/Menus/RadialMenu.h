@@ -14,7 +14,7 @@ namespace cocos2d
 
 class ClickableNode;
 class CodeEditor;
-class HackableAttribute;
+class HackableBase;
 class HackableCode;
 class HackableData;
 class HackableObject;
@@ -35,7 +35,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void onHackableAttributeEdit(HackableAttribute* attribute);
+	void onHackableBaseEdit(HackableBase* attribute);
 	void close();
 	void buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args);
 	ClickableNode* createRadialNode(std::string iconResource, int requiredLevel, cocos2d::Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback);

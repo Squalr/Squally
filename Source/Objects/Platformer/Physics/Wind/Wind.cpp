@@ -133,7 +133,7 @@ void Wind::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Wind::MapKey,
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_SpellWind,
 				WindSetSpeedPreview::create(),
 				{

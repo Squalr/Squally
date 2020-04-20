@@ -111,7 +111,7 @@ void MechanicalFlail::registerHackables()
 			HackableCode::HackableCodeInfo(
 				MechanicalFlail::MapKey,
 				Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				MechanicalFlailSetAnglePreview::create(),
 				{

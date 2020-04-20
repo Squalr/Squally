@@ -4,7 +4,7 @@
 #include "cocos/math/Vec2.h"
 
 class Clippy;
-class HackableAttribute;
+class HackableBase;
 class HackableObject;
 
 class HackableEvents
@@ -19,8 +19,8 @@ public:
 	static const std::string EventQueryHackerModeAllowed;
 	static const std::string EventHackableObjectOpen;
 	static const std::string EventHackableObjectClose;
-	static const std::string EventHackableAttributeEdit;
-	static const std::string EventHackableAttributeEditDone;
+	static const std::string EventHackableBaseEdit;
+	static const std::string EventHackableBaseEditDone;
 	static const std::string EventQueryAttributeCountPrefix;
 	static const std::string EventHackApplied;
 	static const std::string EventHackRestoreStatePrefix;
@@ -41,16 +41,16 @@ public:
 
 	struct HackableObjectEditArgs
 	{
-		HackableAttribute* hackableAttribute;
+		HackableBase* hackableAttribute;
 
-		HackableObjectEditArgs(HackableAttribute* hackableAttribute) :hackableAttribute(hackableAttribute) { }
+		HackableObjectEditArgs(HackableBase* hackableAttribute) :hackableAttribute(hackableAttribute) { }
 	};
 
 	struct HackAppliedArgs
 	{
-		HackableAttribute* activeAttribute;
+		HackableBase* activeAttribute;
 
-		HackAppliedArgs(HackableAttribute* activeAttribute) : activeAttribute(activeAttribute)
+		HackAppliedArgs(HackableBase* activeAttribute) : activeAttribute(activeAttribute)
 		{
 		}
 	};
@@ -100,12 +100,12 @@ public:
 		}
 	};
 
-	struct HackableAttributeQueryArgs
+	struct HackableBaseQueryArgs
 	{
 		std::string hackableIdentifier;
 		int count;
 
-		HackableAttributeQueryArgs(std::string hackableIdentifier) : hackableIdentifier(hackableIdentifier), count(0)
+		HackableBaseQueryArgs(std::string hackableIdentifier) : hackableIdentifier(hackableIdentifier), count(0)
 		{
 		}
 	};
@@ -128,9 +128,9 @@ public:
 	static void TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args);
 	static void TriggerOpenHackable(HackableObjectOpenArgs args);
 	static void TriggerCloseHackable();
-	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
-	static void TriggerEditHackableAttributeDone();
-	static void TriggerQueryAttributeCount(HackableAttributeQueryArgs* args);
+	static void TriggerEditHackableBase(HackableObjectEditArgs args);
+	static void TriggerEditHackableBaseDone();
+	static void TriggerQueryAttributeCount(HackableBaseQueryArgs* args);
 	static void TriggerOnHackApplied(HackAppliedArgs args);
 	static void TriggerHackRestoreState(HackRestoreStateArgs args);
 	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);

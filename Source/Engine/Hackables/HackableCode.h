@@ -2,7 +2,7 @@
 #include <map>
 #include <string>
 
-#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableBase.h"
 
 #ifndef _WIN32
 	#include <sys/mman.h>
@@ -144,7 +144,7 @@ class Clippy;
 class HackablePreview;
 class LocalizedString;
 
-class HackableCode : public HackableAttribute
+class HackableCode : public HackableBase
 {
 public:
 	enum Register
@@ -217,7 +217,7 @@ protected:
 	virtual ~HackableCode();
 
 private:
-	typedef HackableAttribute super;
+	typedef HackableBase super;
 
 	typedef std::map<unsigned char, HackableCode::HackableCodeMarkers> MarkerMap;
 	typedef std::map<void*, MarkerMap> CodeMap;

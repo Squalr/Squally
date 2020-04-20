@@ -123,7 +123,7 @@ void Reflect::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Reflect::ReflectIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Reflect_Reflect::create(),
-				HackableAttribute::HackBarColor::Blue,
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_ShieldMagic,
 				ReflectGenericPreview::create(),
 				{

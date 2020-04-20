@@ -92,7 +92,7 @@ void WoodenSpikes::registerHackables()
 			HackableCode::HackableCodeInfo(
 				WoodenSpikes::MapKey,
 				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
 				WoodenSpikesUpdateTimerPreview::create(),
 				{

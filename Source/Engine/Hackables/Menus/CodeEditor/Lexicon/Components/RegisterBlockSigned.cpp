@@ -450,7 +450,7 @@ void RegisterBlockSigned::highlightEipPtr(bool isDest, int offset)
     }
 }
 
-void RegisterBlockSigned::initEax(long long eax, std::vector<int> values)
+void RegisterBlockSigned::initEax(long long eax, std::vector<long long> values)
 {
     if (!this->eax.initialized)
     {
@@ -470,7 +470,7 @@ void RegisterBlockSigned::initEax(long long eax, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEbx(long long ebx, std::vector<int> values)
+void RegisterBlockSigned::initEbx(long long ebx, std::vector<long long> values)
 {
     if (!this->ebx.initialized)
     {
@@ -490,7 +490,7 @@ void RegisterBlockSigned::initEbx(long long ebx, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEcx(long long ecx, std::vector<int> values)
+void RegisterBlockSigned::initEcx(long long ecx, std::vector<long long> values)
 {
     if (!this->ecx.initialized)
     {
@@ -510,7 +510,7 @@ void RegisterBlockSigned::initEcx(long long ecx, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEdx(long long edx, std::vector<int> values)
+void RegisterBlockSigned::initEdx(long long edx, std::vector<long long> values)
 {
     if (!this->edx.initialized)
     {
@@ -530,7 +530,7 @@ void RegisterBlockSigned::initEdx(long long edx, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEdi(long long edi, std::vector<int> values)
+void RegisterBlockSigned::initEdi(long long edi, std::vector<long long> values)
 {
     if (!this->edi.initialized)
     {
@@ -550,7 +550,7 @@ void RegisterBlockSigned::initEdi(long long edi, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEsi(long long esi, std::vector<int> values)
+void RegisterBlockSigned::initEsi(long long esi, std::vector<long long> values)
 {
     if (!this->esi.initialized)
     {
@@ -570,7 +570,7 @@ void RegisterBlockSigned::initEsi(long long esi, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEbp(long long ebp, std::vector<int> values)
+void RegisterBlockSigned::initEbp(long long ebp, std::vector<long long> values)
 {
     if (!this->ebp.initialized)
     {
@@ -590,7 +590,7 @@ void RegisterBlockSigned::initEbp(long long ebp, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEsp(long long esp, std::vector<int> values)
+void RegisterBlockSigned::initEsp(long long esp, std::vector<long long> values)
 {
     if (!this->esp.initialized)
     {
@@ -610,7 +610,7 @@ void RegisterBlockSigned::initEsp(long long esp, std::vector<int> values)
     }
 }
 
-void RegisterBlockSigned::initEip(long long eip, std::vector<int> values)
+void RegisterBlockSigned::initEip(long long eip, std::vector<long long> values)
 {
     if (!this->eip.initialized)
     {
@@ -846,7 +846,7 @@ long long RegisterBlockSigned::getEipPtr(int offset)
     return this->eip.currentValues[offset];
 }
 
-void RegisterBlockSigned::addToData(int value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
+void RegisterBlockSigned::addToData(long long value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
 {
     ConstantString* str = ConstantString::create(std::to_string(value));
     LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, str);

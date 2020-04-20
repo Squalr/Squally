@@ -113,7 +113,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SquallyIsAliveHackBehavior::IdentifierIsAlive,
 				Strings::Menus_Hacking_Abilities_Squally_IsAlive::create(),
-				HackableAttribute::HackBarColor::Red,
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Heart,
 				EntityPreview::create(this->squally),
 				{

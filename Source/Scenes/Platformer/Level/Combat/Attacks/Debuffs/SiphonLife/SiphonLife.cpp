@@ -120,7 +120,7 @@ void SiphonLife::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SiphonLife::SiphonLifeIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Fangs,
 				SiphonLifeGenericPreview::create(),
 				{

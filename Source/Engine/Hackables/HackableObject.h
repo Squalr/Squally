@@ -12,7 +12,7 @@ namespace cocos2d
 
 class ClickableNode;
 class Clippy;
-class HackableAttribute;
+class HackableBase;
 class HackableCode;
 class HackActivatedAbility;
 class HackablePreview;
@@ -53,7 +53,7 @@ public:
 		return nullptr;
 	}
 
-	std::vector<HackableAttribute*> hackableList;
+	std::vector<HackableBase*> hackableList;
 	std::vector<HackableCode*> codeList;
 	std::vector<HackActivatedAbility*> hackAbilityList;
 
@@ -105,7 +105,7 @@ private:
 	cocos2d::Node* hackablesNode;
 
 	std::vector<Clippy*> clippyList;
-	std::vector<HackableAttribute*> trackedAttributes;
+	std::vector<HackableBase*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 
 	static int HackFlags;

@@ -7,7 +7,7 @@ class Clippy;
 class HackablePreview;
 class LocalizedString;
 
-class HackableAttribute : public SmartNode
+class HackableBase : public SmartNode
 {
 public:
 	enum class HackBarColor
@@ -44,7 +44,7 @@ public:
 protected:
 	friend class SmartScene;
 
-	HackableAttribute(
+	HackableBase(
 		std::string hackableIdentifier,
 		int requiredHackFlags,
 		float duration,
@@ -55,7 +55,7 @@ protected:
 		HackablePreview* hackablePreview,
 		Clippy* clippy = nullptr
 	);
-	virtual ~HackableAttribute();
+	virtual ~HackableBase();
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -81,7 +81,7 @@ private:
 
 	SharedState* getSharedState();
 
-	static void TryRegisterSharedState(HackableAttribute* attribute, SharedState sharedState);
+	static void TryRegisterSharedState(HackableBase* attribute, SharedState sharedState);
 
 	std::string hackableIdentifier;
 	LocalizedString* name;

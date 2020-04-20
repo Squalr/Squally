@@ -169,7 +169,7 @@ void TimeBomb::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"TimeBomb",
 				Strings::Menus_Hacking_Objects_Combat_TimeBomb_TimeBombTick::create(),
-				HackableAttribute::HackBarColor::Red,
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Clock,
 				TimeBombTickPreview::create(),
 				{

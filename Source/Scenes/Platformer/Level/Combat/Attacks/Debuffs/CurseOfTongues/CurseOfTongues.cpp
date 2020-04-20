@@ -121,7 +121,7 @@ void CurseOfTongues::registerHackables()
 			HackableCode::HackableCodeInfo(
 				CurseOfTongues::CurseOfTonguesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Voodoo,
 				CurseOfTonguesGenericPreview::create(),
 				{

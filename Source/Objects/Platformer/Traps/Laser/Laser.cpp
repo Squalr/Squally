@@ -90,7 +90,7 @@ void Laser::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Laser::MapKey,
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
-				HackableAttribute::HackBarColor::Red,
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LaserCountDownPreview::create(),
 				{

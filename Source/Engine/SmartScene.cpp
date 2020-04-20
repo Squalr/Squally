@@ -12,7 +12,7 @@
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableBase.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -132,17 +132,17 @@ void SmartScene::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
 	{
-		HackableAttribute::HackTimersPaused = true;
+		HackableBase::HackTimersPaused = true;
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventResumeHackTimers, [=](EventCustom* eventCustom)
 	{
-		HackableAttribute::HackTimersPaused = false;
+		HackableBase::HackTimersPaused = false;
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventAfterSceneChange, [=](EventCustom* eventCustom)
 	{
-		HackableAttribute::CleanUpGlobalState();
+		HackableBase::CleanUpGlobalState();
 	}));
 }
 
@@ -150,7 +150,7 @@ void SmartScene::update(float dt)
 {
 	super::update(dt);
 
-	HackableAttribute::UpdateSharedState(dt);
+	HackableBase::UpdateSharedState(dt);
 
 	SmartScene::GlobalTick++;
 }

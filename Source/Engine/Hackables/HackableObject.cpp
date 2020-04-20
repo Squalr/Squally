@@ -33,10 +33,10 @@ HackableObject::HackableObject() : HackableObject(ValueMap())
 
 HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 {
-	this->hackableList = std::vector<HackableAttribute*>();
+	this->hackableList = std::vector<HackableBase*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackAbilityList = std::vector<HackActivatedAbility*>();
-	this->trackedAttributes = std::vector<HackableAttribute*>();
+	this->trackedAttributes = std::vector<HackableBase*>();
 	this->clippyList = std::vector<Clippy*>();
 	this->uiElementsButton = Node::create();
 	this->uiElementsRain = Node::create();
@@ -100,11 +100,11 @@ void HackableObject::initializeListeners()
 		if (args != nullptr)
 		{
 			// Track this attribute if 1) We have a hackable with the same ID and 2) We are not already tracking this ID
-			if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
+			if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
 				{
 					return attribute->getHackableIdentifier() == args->activeAttribute->getHackableIdentifier();
 				})
-				&& !std::any_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
+				&& !std::any_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
 				{
 					return attribute->getHackableIdentifier() == args->activeAttribute->getHackableIdentifier();
 				}))
@@ -185,7 +185,7 @@ void HackableObject::onHackerModeEnable()
 	}
 
 	// Abort if all hackables off cooldown
-	if (std::all_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
+	if (std::all_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
 		{
 			return (!attribute->isCooldownComplete());
 		}))
@@ -194,7 +194,7 @@ void HackableObject::onHackerModeEnable()
 	}
 
 	// Enable if any hackable is off cooldown and unlocked (right hack flags are set)
-	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
 		{
 			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
 		}))
@@ -239,7 +239,7 @@ void HackableObject::updateTimeRemainingBars()
 	}
 
 	// Remove attributes that have timed out and are available cooldown wise
-	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
+	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableBase* attribute)
 	{
 		return attribute->isComplete() && attribute->isCooldownComplete();
 	}), this->trackedAttributes.end());
@@ -283,7 +283,7 @@ void HackableObject::updateTimeRemainingBars()
 
 void HackableObject::refreshParticleFx()
 {
-	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
 		{
 			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
 		})
@@ -330,7 +330,7 @@ void HackableObject::refreshParticleFx()
 		this->hackParticles5->stop(1.5f);
 	}
 
-	if (std::any_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
+	if (std::any_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
 		{
 			return (!attribute->isCooldownComplete());
 		}))
@@ -442,7 +442,7 @@ void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestor
 		}
 		
 		// Removed all tracked attributes with the same ID as the code being removed
-		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
+		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
 		{
 			return attribute->getHackableIdentifier() == hackableCode->getHackableIdentifier();
 		}), this->trackedAttributes.end());
@@ -480,7 +480,7 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 	this->hackablesNode->removeChild(hackActivatedAbility);
 
 	// Removed all tracked attributes with the same ID as the ability being removed
-	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
+	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
 	{
 		return attribute->getHackableIdentifier() == hackActivatedAbility->getHackableIdentifier();
 	}), this->trackedAttributes.end());

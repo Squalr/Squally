@@ -124,7 +124,7 @@ void Fortitude::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Fortitude::FortitudeIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
-				HackableAttribute::HackBarColor::Purple,
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Shield,
 				FortitudeGenericPreview::create(),
 				{

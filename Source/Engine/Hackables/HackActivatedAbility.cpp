@@ -36,7 +36,7 @@ HackActivatedAbility::HackActivatedAbility(
 	LocalizedString* name,
 	HackablePreview* hackablePreview,
 	Clippy* clippy)
-	: HackableAttribute(
+	: HackableBase(
 		hackableIdentifier,
 		hackFlags,
 		duration,

@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
 
-#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableBase.h"
 #include "Engine/Utils/HackUtils.h"
 
 class HackableCode;
 class LocalizedString;
 
-class HackActivatedAbility : public HackableAttribute
+class HackActivatedAbility : public HackableBase
 {
 public:
 	static HackActivatedAbility* create(
@@ -41,7 +41,7 @@ protected:
 	void restoreState() override;
 
 private:
-	typedef HackableAttribute super;
+	typedef HackableBase super;
 
 	std::function<void()> onActivate;
 	std::function<void()> onDeactivate;

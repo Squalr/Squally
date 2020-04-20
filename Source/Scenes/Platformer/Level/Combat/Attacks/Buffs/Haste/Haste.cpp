@@ -120,7 +120,7 @@ void Haste::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create(),
-				HackableAttribute::HackBarColor::Yellow,
+				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_HourGlass,
 				HasteGenericPreview::create(),
 				{
