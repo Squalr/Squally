@@ -61,7 +61,7 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->spawnSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_Spawn1);
 	this->tickSound = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick1);
-	this->tickSoundPositive = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick3);
+	this->tickSoundPositive = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick2);
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->clippy = TimeBombClippy::create();
 	this->onExplode = onExplode;

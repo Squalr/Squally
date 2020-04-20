@@ -11,6 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -114,7 +115,11 @@ void StoneSkin::registerHackables()
 				StoneSkinGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()->setStringReplacementVariables(
+							{
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-StoneSkin::MaxMultiplier))),
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(StoneSkin::MaxMultiplier))),
+							})
 					},
 					{
 						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx::create()
@@ -135,7 +140,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
 						"cdq\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"mov ecx, 4\n" +
+						"mov ecx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
 						"idiv ecx\n",
@@ -144,7 +149,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						"cqo\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"mov rcx, 4\n" +
+						"mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
 						"idiv rcx\n"
@@ -156,7 +161,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
 						"; cdq\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"; mov ecx, 4\n" +
+						"; mov ecx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
 						"; idiv ecx\n\n" +
@@ -168,7 +173,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						"; cqo\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"; mov rcx, 4\n" +
+						"; mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
 						"; idiv rcx\n\n" +
@@ -217,7 +222,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
 	ASM(DIV_CONVERT);
-	ASM(mov ZCX, 4)
+	ASM(mov ZCX, 3)
 	ASM(idiv ZCX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
