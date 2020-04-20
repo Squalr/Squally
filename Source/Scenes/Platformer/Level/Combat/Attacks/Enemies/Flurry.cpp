@@ -95,8 +95,7 @@ void Flurry::registerHackables()
 				},
 				int(HackFlags::None),
 				8.0f,
-				0.0f,
-				nullptr
+				0.0f
 			)
 		},
 	};

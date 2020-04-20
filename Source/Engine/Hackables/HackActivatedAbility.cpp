@@ -1,6 +1,7 @@
 #include "HackActivatedAbility.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Localization/LocalizedString.h"
 
@@ -18,9 +19,15 @@ HackActivatedAbility* HackActivatedAbility::create(
 	HackablePreview* hackablePreview,
 	Clippy* clippy)
 {
-	HackActivatedAbility* instance = new HackActivatedAbility(hackableIdentifier, onActivate, onDeactivate, hackFlags, duration, hackBarColor, iconResource, name, hackablePreview, clippy);
+	HackActivatedAbility* instance = GlobalHackAttributeContainer::GetHackActivatedAbility(hackableIdentifier);
 
-	instance->autorelease();
+	if (instance == nullptr)
+	{
+		instance = new HackActivatedAbility(hackableIdentifier, onActivate, onDeactivate, hackFlags, duration, hackBarColor, iconResource, name, hackablePreview, clippy);
+		instance->autorelease();
+
+		GlobalHackAttributeContainer::RegisterHackActivatedAbility(instance);
+	}
 
 	return instance;
 }
@@ -62,7 +69,7 @@ void HackActivatedAbility::activate()
 	}
 
 	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
-	this->resetTimer();
+	this->startTimer();
 }
 
 void HackActivatedAbility::restoreState()

@@ -114,7 +114,6 @@ void Fireball::registerHackables()
 				int(HackFlags::None),
 				3.0f,
 				0.0f,
-				this->reverseClippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create(),

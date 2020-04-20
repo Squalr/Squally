@@ -131,7 +131,6 @@ void StoneSkin::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				nullptr,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),

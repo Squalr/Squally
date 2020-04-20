@@ -73,7 +73,6 @@ void AddDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				0.0f,
-				nullptr,
 				{
 					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),

@@ -127,8 +127,7 @@ void TrainingHeal::registerHackables()
 				},
 				int(HackFlags::None),
 				(float(TrainingHeal::HackTicks) * TrainingHeal::TimeBetweenTicks) + 0.1f,
-				0.0f,
-				this->clippy
+				0.0f
 			)
 		},
 	};

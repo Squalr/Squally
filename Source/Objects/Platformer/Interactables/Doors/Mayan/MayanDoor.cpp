@@ -215,8 +215,7 @@ void MayanDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				15.0f,
-				0.0f,
-				nullptr // this->pendulumBladeClippy
+				0.0f
 			)
 		},
 		{
@@ -232,8 +231,7 @@ void MayanDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				15.0f,
-				0.0f,
-				nullptr // this->pendulumBladeClippy
+				0.0f
 			)
 		},
 		{
@@ -249,8 +247,7 @@ void MayanDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				15.0f,
-				0.0f,
-				nullptr // this->pendulumBladeClippy
+				0.0f
 			)
 		},
 	};

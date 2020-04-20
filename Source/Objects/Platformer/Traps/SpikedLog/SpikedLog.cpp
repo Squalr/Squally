@@ -98,7 +98,6 @@ void SpikedLog::registerHackables()
 				int(HackFlags::None),
 				16.0f,
 				0.0f,
-				nullptr,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),

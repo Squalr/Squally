@@ -15,7 +15,6 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombClippy.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombGenericPreview.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombTickPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -63,13 +62,11 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->tickSound = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick1);
 	this->tickSoundPositive = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick2);
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
-	this->clippy = TimeBombClippy::create();
 	this->onExplode = onExplode;
 	this->bombTick = TimeBomb::TimerInitial;
 	this->hasExploded = false;
 	this->elapsed = 0.0f;
 
-	this->registerClippy(this->clippy);
 	this->postFXNode->addChild(this->spawnSound);
 	this->postFXNode->addChild(this->tickSound);
 	this->postFXNode->addChild(this->tickSoundPositive);
@@ -136,11 +133,6 @@ void TimeBomb::update(float dt)
 	}
 }
 
-void TimeBomb::enableClippy()
-{
-	this->clippy->setIsEnabled(true);
-}
-
 void TimeBomb::runSpawnFX()
 {
 	this->spawnSound->play();
@@ -177,10 +169,7 @@ void TimeBomb::registerHackables()
 				},
 				int(HackFlags::None),
 				TimeBomb::HackDuration,
-				0.0f,
-				this->clippy,
-				{
-				}
+				0.0f
 			)
 		},
 	};

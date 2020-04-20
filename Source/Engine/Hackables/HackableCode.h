@@ -176,14 +176,12 @@ public:
 		int hackFlags;
 		float duration;
 		float cooldown;
-		Clippy* clippy;
 		std::vector<ReadOnlyScript> readOnlyScripts;
 		bool excludeDefaultScript;
 
-		HackableCodeInfo() : hackableIdentifier(""), functionName(nullptr), hackBarColor(HackBarColor::Purple), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
-				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
-	
+		HackableCodeInfo() : hackableIdentifier(""), functionName(nullptr), hackBarColor(HackBarColor::Purple), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	};
 
 	struct HackableCodeMarkers

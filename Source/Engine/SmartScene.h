@@ -39,6 +39,7 @@ public:
 protected:
 	SmartScene();
 	virtual ~SmartScene();
+	
 	void pause() override;
 	void onEnter() override;
 	void onExit() override;

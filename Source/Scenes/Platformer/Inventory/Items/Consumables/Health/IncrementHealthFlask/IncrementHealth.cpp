@@ -118,8 +118,7 @@ void IncrementHealth::registerHackables()
 				},
 				int(HackFlags::None),
 				(float(IncrementHealth::HackTicks) * IncrementHealth::TimeBetweenTicks) + 0.1f,
-				0.0f,
-				this->clippy
+				0.0f
 			)
 		},
 	};

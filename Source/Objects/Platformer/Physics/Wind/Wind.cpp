@@ -143,7 +143,6 @@ void Wind::registerHackables()
 				int(HackFlags::Wind),
 				12.0f,
 				0.0f,
-				this->windClippy,
 				{
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown::create(),
 						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown::create()) + 

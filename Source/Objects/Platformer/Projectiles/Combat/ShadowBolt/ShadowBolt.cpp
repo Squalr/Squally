@@ -117,7 +117,6 @@ void ShadowBolt::registerHackables()
 				int(HackFlags::Shadow),
 				5.0f,
 				0.0f,
-				this->reverseClippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_StopShadowBolt::create(),

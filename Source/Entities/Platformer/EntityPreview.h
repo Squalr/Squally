@@ -25,7 +25,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	PlatformerEntity* entityRef;
+	PlatformerEntity* entityClone;
 	std::string animationResource;
 	float scale;
 	cocos2d::Vec2 offset;

@@ -136,7 +136,6 @@ void Blind::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind::create(),

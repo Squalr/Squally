@@ -141,7 +141,6 @@ void Reflect::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 				}
 			)

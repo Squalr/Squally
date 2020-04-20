@@ -120,8 +120,7 @@ void PendulumBlade::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				0.0f,
-				this->pendulumBladeClippy
+				0.0f
 			)
 		},
 	};

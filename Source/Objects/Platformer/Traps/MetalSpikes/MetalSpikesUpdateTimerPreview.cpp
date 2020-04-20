@@ -67,7 +67,7 @@ void MetalSpikesUpdateTimerPreview::update(float dt)
 {
 	super::update(dt);
 
-	this->launchCountDown = MathUtils::clamp(this->launchCountDown - dt, 0.0f, 4.0f);
+	this->launchCountDown = MathUtils::clamp(this->launchCountDown + dt, 0.0f, 4.0f);
 
 	std::stringstream stream;
 	stream << std::fixed << std::setprecision(2) << this->launchCountDown;
@@ -75,7 +75,7 @@ void MetalSpikesUpdateTimerPreview::update(float dt)
 
 	this->xmm2TimerStr->setString(stream.str());
 	
-	if (!this->isLaunching && this->launchCountDown <= 0)
+	if (!this->isLaunching && this->launchCountDown >= 4.0f)
 	{
 		this->isLaunching = true;
 
@@ -85,7 +85,7 @@ void MetalSpikesUpdateTimerPreview::update(float dt)
 			DelayTime::create(2.5f),
 			CallFunc::create([=]()
 			{
-				this->launchCountDown = RandomHelper::random_real(3.0f, 4.0f);
+				this->launchCountDown = 0.0f;
 				this->isLaunching = false;
 			}),
 			nullptr

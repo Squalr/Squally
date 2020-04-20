@@ -12,7 +12,6 @@
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Hackables/HackableBase.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -129,28 +128,11 @@ void SmartScene::initializeListeners()
 	{
 		this->onHackerModeDisable();
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
-	{
-		HackableBase::HackTimersPaused = true;
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventResumeHackTimers, [=](EventCustom* eventCustom)
-	{
-		HackableBase::HackTimersPaused = false;
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventAfterSceneChange, [=](EventCustom* eventCustom)
-	{
-		HackableBase::CleanUpGlobalState();
-	}));
 }
 
 void SmartScene::update(float dt)
 {
 	super::update(dt);
-
-	HackableBase::UpdateSharedState(dt);
 
 	SmartScene::GlobalTick++;
 }

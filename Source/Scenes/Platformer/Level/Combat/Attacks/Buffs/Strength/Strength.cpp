@@ -135,7 +135,6 @@ void Strength::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),

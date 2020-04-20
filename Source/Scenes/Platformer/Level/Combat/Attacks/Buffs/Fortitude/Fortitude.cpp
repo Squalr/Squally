@@ -139,7 +139,6 @@ void Fortitude::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				nullptr, // this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),

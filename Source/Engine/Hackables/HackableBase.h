@@ -37,13 +37,10 @@ public:
 	LocalizedString* getName();
 	HackablePreview* getHackablePreview();
 	virtual void* getPointer();
-	Clippy* getClippy();
 	virtual void restoreState();
 	void restoreStateIfUnique();
 
 protected:
-	friend class SmartScene;
-
 	HackableBase(
 		std::string hackableIdentifier,
 		int requiredHackFlags,
@@ -52,36 +49,25 @@ protected:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview,
-		Clippy* clippy = nullptr
+		HackablePreview* hackablePreview
 	);
 	virtual ~HackableBase();
 
 	void onEnter() override;
 	void initializeListeners() override;
+	void update(float dt);
+	void startTimer();
 	void resetTimer();
-	static void UpdateSharedState(float dt);
-	static void CleanUpGlobalState();
 
 	static bool HackTimersPaused;
 
 private:
 	typedef SmartNode super;
 
-	struct SharedState
-	{
-		float duration;
-		float cooldown;
-		float elapsedDuration;
-		float elapsedCooldown;
-
-		SharedState() : duration(0.0f), cooldown(0.0f), elapsedDuration(0.0f), elapsedCooldown(0.0f) { }
-		SharedState(float duration, float cooldown) : duration(duration), cooldown(cooldown), elapsedDuration(duration), elapsedCooldown(duration) { }
-	};
-
-	SharedState* getSharedState();
-
-	static void TryRegisterSharedState(HackableBase* attribute, SharedState sharedState);
+	float duration;
+	float cooldown;
+	float elapsedDuration;
+	float elapsedCooldown;
 
 	std::string hackableIdentifier;
 	LocalizedString* name;
@@ -90,6 +76,4 @@ private:
 	HackablePreview* hackablePreview;
 	int requiredHackFlag;
 	Clippy* clippy;
-
-	static std::map<std::string, SharedState> SharedStateMap;
 };

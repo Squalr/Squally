@@ -14,7 +14,6 @@
 using namespace cocos2d;
 
 bool HackableBase::HackTimersPaused = false;
-std::map<std::string, HackableBase::SharedState> HackableBase::SharedStateMap = std::map<std::string, HackableBase::SharedState>();
 
 HackableBase::HackableBase(
 	std::string hackableIdentifier,
@@ -24,8 +23,7 @@ HackableBase::HackableBase(
 	HackBarColor hackBarColor,
 	std::string iconResource,
 	LocalizedString* name,
-	HackablePreview* hackablePreview,
-	Clippy* clippy)
+	HackablePreview* hackablePreview)
 {
 	this->hackableIdentifier = hackableIdentifier;
 	this->requiredHackFlag = requiredHackFlag;
@@ -33,18 +31,14 @@ HackableBase::HackableBase(
 	this->iconResource = iconResource;
 	this->name = name;
 	this->hackablePreview = hackablePreview;
-	this->clippy = clippy == nullptr ? nullptr : clippy->refClone();
-
-	HackableBase::TryRegisterSharedState(this, SharedState(duration, cooldown));
+	this->duration = duration;
+	this->cooldown = cooldown;
+	this->elapsedDuration = duration;
+	this->elapsedCooldown = cooldown;
 
 	if (this->hackablePreview != nullptr)
 	{
 		this->hackablePreview->retain();
-	}
-
-	if (this->clippy != nullptr)
-	{
-		this->clippy->retain();
 	}
 
 	if (this->name != nullptr)
@@ -59,16 +53,13 @@ HackableBase::~HackableBase()
 	{
 		this->hackablePreview->release();
 	}
-
-	if (this->clippy != nullptr)
-	{
-		this->clippy->release();
-	}
 }
 
 void HackableBase::onEnter()
 {
 	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void HackableBase::initializeListeners()
@@ -101,52 +92,38 @@ void HackableBase::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		this->restoreState();
+		this->resetTimer();
 	}));
 }
 
-void HackableBase::UpdateSharedState(float dt)
+void HackableBase::update(float dt)
 {
+	super::update(dt);
+
 	if (HackableBase::HackTimersPaused)
 	{
 		return;
 	}
 
-	for (auto next : HackableBase::SharedStateMap)
+	if (this->elapsedDuration < this->duration)
 	{
-		const std::string& key = next.first;
+		this->elapsedDuration += dt;
 
-		if (HackableBase::SharedStateMap[key].elapsedDuration < HackableBase::SharedStateMap[key].duration)
+		if (this->elapsedDuration >= this->duration)
 		{
-			HackableBase::SharedStateMap[key].elapsedDuration += dt;
-
-			if (HackableBase::SharedStateMap[key].elapsedDuration >= HackableBase::SharedStateMap[key].duration)
-			{
-				HackableEvents::TriggerHackRestoreState(HackableEvents::HackRestoreStateArgs(key));
-			}
+			this->restoreState();
 		}
+	}
 
-		if (HackableBase::SharedStateMap[key].elapsedCooldown < HackableBase::SharedStateMap[key].cooldown)
-		{
-			HackableBase::SharedStateMap[key].elapsedCooldown += dt;
-		}
+	if (this->elapsedCooldown < this->cooldown)
+	{
+		this->elapsedCooldown += dt;
 	}
 }
 
 std::string HackableBase::getHackableIdentifier()
 {
 	return this->hackableIdentifier;
-}
-
-void HackableBase::CleanUpGlobalState()
-{
-	HackableBase::HackTimersPaused = false;
-
-	for (auto next : HackableBase::SharedStateMap)
-	{
-		// next.first->restoreState();
-	}
-
-	HackableBase::SharedStateMap.clear();
 }
 
 void* HackableBase::getPointer()
@@ -161,16 +138,12 @@ int HackableBase::getRequiredHackFlag()
 
 float HackableBase::getElapsedDuration()
 {
-	SharedState* state = this->getSharedState();
-
-	return state == nullptr ? 0.0f : state->elapsedDuration;
+	return this->elapsedDuration;
 }
 
 float HackableBase::getDuration()
 {
-	SharedState* state = this->getSharedState();
-
-	return state == nullptr ? 0.0f : state->duration;
+	return this->duration;
 }
 
 bool HackableBase::isComplete()
@@ -185,16 +158,12 @@ bool HackableBase::isCooldownComplete()
 
 float HackableBase::getElapsedCooldown()
 {
-	SharedState* state = this->getSharedState();
-
-	return state == nullptr ? 0.0f : state->elapsedCooldown;
+	return this->elapsedCooldown;
 }
 
 float HackableBase::getCooldown()
 {
-	SharedState* state = this->getSharedState();
-
-	return state == nullptr ? 0.0f : state->cooldown;
+	return this->cooldown;
 }
 
 std::string HackableBase::getHackBarResource()
@@ -261,11 +230,6 @@ HackablePreview* HackableBase::getHackablePreview()
 	return this->hackablePreview;
 }
 
-Clippy* HackableBase::getClippy()
-{
-	return this->clippy;
-}
-
 void HackableBase::restoreState()
 {
 }
@@ -286,26 +250,14 @@ void HackableBase::restoreStateIfUnique()
 	}
 }
 
+void HackableBase::startTimer()
+{
+	this->elapsedDuration = 0.0f;
+	this->elapsedCooldown = 0.0f;
+}
+
 void HackableBase::resetTimer()
 {
-	HackableBase::SharedStateMap[this->getHackableIdentifier()].elapsedDuration = 0.0f;
-	HackableBase::SharedStateMap[this->getHackableIdentifier()].elapsedCooldown = 0.0f;
-}
-
-void HackableBase::TryRegisterSharedState(HackableBase* attribute, SharedState sharedState)
-{
-	if (HackableBase::SharedStateMap.find(attribute->getHackableIdentifier()) == HackableBase::SharedStateMap.end())
-	{
-		HackableBase::SharedStateMap[attribute->getHackableIdentifier()] = sharedState;
-	}
-}
-
-HackableBase::SharedState* HackableBase::getSharedState()
-{
-	if (HackableBase::SharedStateMap.find(this->getHackableIdentifier()) != HackableBase::SharedStateMap.end())
-	{
-		return &HackableBase::SharedStateMap[this->getHackableIdentifier()];
-	}
-
-	return nullptr;
+	this->elapsedDuration = this->duration;
+	this->elapsedCooldown = this->cooldown;
 }

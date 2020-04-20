@@ -2,7 +2,6 @@
 
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 
-class Clippy;
 class ConstantString;
 class LocalizedLabel;
 class PlatformerAttack;
@@ -16,7 +15,6 @@ class TimeBomb : public ThrownObject
 public:
 	static TimeBomb* create(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode);
 	
-	void enableClippy();
 	void runSpawnFX() override;
 	void runImpactFX();
 
@@ -42,7 +40,6 @@ private:
 	int bombTick;
 	float elapsed;
 
-	Clippy* clippy;
 	SmartAnimationSequenceNode* explosionAnim;
 	WorldSound* spawnSound;
 	WorldSound* tickSound;

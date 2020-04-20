@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -102,7 +103,6 @@ void MetalSpikes::registerHackables()
 				int(HackFlags::None),
 				20.0f,
 				0.0f,
-				nullptr,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
@@ -177,8 +177,10 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 	ASM(pop ZBX);
 
 	HACKABLES_STOP_SEARCH();
+	
+	this->currentElapsedTimeForSpikeTrigger = MathUtils::clamp(this->currentElapsedTimeForSpikeTrigger, 0.0f, this->totalTimeUntilSpikesTrigger);
 
-	if (this->currentElapsedTimeForSpikeTrigger > this->totalTimeUntilSpikesTrigger)
+	if (this->currentElapsedTimeForSpikeTrigger >= this->totalTimeUntilSpikesTrigger)
 	{
 		const float StayUpDuration = 1.5f;
 

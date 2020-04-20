@@ -31,17 +31,17 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, CodeInfoMap
 
 HackableCode* HackableCode::create(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo)
 {
-	HackableCode* hackableCode = GlobalHackAttributeContainer::GetHackableCode(codeStart);
+	HackableCode* instance = GlobalHackAttributeContainer::GetHackableCode(codeStart);
 
-	if (hackableCode == nullptr)
+	if (instance == nullptr)
 	{
-		hackableCode = new HackableCode(codeStart, codeEnd, hackableCodeInfo);
-		hackableCode->autorelease();
+		instance = new HackableCode(codeStart, codeEnd, hackableCodeInfo);
+		instance->autorelease();
 
-		GlobalHackAttributeContainer::RegisterHackableCode(hackableCode);
+		GlobalHackAttributeContainer::RegisterHackableCode(instance);
 	}
 
-	return hackableCode;
+	return instance;
 }
 
 HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo)
@@ -53,8 +53,7 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 		hackableCodeInfo.hackBarColor,
 		hackableCodeInfo.iconResource,
 		hackableCodeInfo.functionName,
-		hackableCodeInfo.hackablePreview,
-		hackableCodeInfo.clippy)
+		hackableCodeInfo.hackablePreview)
 {
 	this->codePointer = (unsigned char*)codeStart;
 	this->codeEndPointer = (unsigned char*)codeEnd;
@@ -196,7 +195,7 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.compiledBytes.size());
 
 	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
-	this->resetTimer();
+	this->startTimer();
 
 	return true;
 }

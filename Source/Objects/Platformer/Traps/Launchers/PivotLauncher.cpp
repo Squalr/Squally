@@ -132,8 +132,7 @@ void PivotLauncher::registerHackables()
 				},
 				int(HackFlags::None),
 				12.0f,
-				0.0f,
-				this->getTimerClippy()
+				0.0f
 			)
 		},
 	};

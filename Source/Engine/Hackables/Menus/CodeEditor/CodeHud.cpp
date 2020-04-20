@@ -280,16 +280,6 @@ void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
 			this->previewNode->addChild(preview);
 		}
 
-		if (hackableCode->getClippy() != nullptr && hackableCode->getClippy()->getIsEnabled())
-		{
-			Clippy* clippy = hackableCode->getClippy()->clone();
-
-			clippy->setVisible(true);
-			clippy->startDialogue();
-
-			this->clippyNode->addChild(clippy);
-		}
-
 		this->functionWindow->openScript(this->scriptList->getActiveScript());
 
 		LocalizedString* functionName = hackableCode->getName();

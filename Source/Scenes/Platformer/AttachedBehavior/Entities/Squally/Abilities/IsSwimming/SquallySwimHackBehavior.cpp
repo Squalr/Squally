@@ -98,8 +98,7 @@ void SquallySwimHackBehavior::registerHackables()
 				},
 				int(HackFlags::Water),
 				1.0f,
-				3.0f,
-				this->clippy
+				3.0f
 			)
 		},
 	};
@@ -135,12 +134,4 @@ END_NO_OPTIMIZE
 void SquallySwimHackBehavior::enableAllClippy()
 {
 	this->clippy->setIsEnabled(true);
-	
-	for (auto next : this->hackables)
-	{
-		if (next->getClippy() != nullptr)
-		{
-			next->getClippy()->setIsEnabled(true);
-		}
-	}
 }

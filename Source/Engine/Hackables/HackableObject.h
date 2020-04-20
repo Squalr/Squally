@@ -102,7 +102,6 @@ private:
 	HackButton* hackButton;
 	std::vector<cocos2d::Sprite*> timeRemainingIcons;
 	std::vector<ProgressBar*> timeRemainingBars;
-	cocos2d::Node* hackablesNode;
 
 	std::vector<Clippy*> clippyList;
 	std::vector<HackableBase*> trackedAttributes;
