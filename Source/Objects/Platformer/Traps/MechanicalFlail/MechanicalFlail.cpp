@@ -11,7 +11,6 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailClippy.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -45,7 +44,6 @@ MechanicalFlail* MechanicalFlail::create(ValueMap& properties)
 
 MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 {
-	this->mechanicalFlailClippy = MechanicalFlailClippy::create();
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
 	this->smokeParticles = SmartParticles::create(ParticleResources::Objects_Smoke, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
@@ -60,8 +58,7 @@ MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 	this->flailChain->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->buildChain();
-
-	this->registerClippy(this->mechanicalFlailClippy);
+	
 	this->flailChain->addChild(this->flailCollision);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);

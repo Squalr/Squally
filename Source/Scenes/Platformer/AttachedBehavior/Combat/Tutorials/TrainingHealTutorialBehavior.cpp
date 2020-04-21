@@ -60,7 +60,6 @@ void TrainingHealTutorialBehavior::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<TrainingHeal*>(args->buff) != nullptr)
 		{
-			dynamic_cast<TrainingHeal*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));

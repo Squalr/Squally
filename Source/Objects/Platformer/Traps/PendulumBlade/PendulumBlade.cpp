@@ -11,7 +11,6 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeClippy.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -44,7 +43,6 @@ PendulumBlade* PendulumBlade::create(ValueMap& properties)
 
 PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 {
-	this->pendulumBladeClippy = PendulumBladeClippy::create();
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
@@ -58,8 +56,7 @@ PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 	this->bladeChain->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->buildChain();
-
-	this->registerClippy(this->pendulumBladeClippy);
+	
 	this->bladeChain->addChild(this->bladeCollision);
 	this->addChild(this->neck);
 	this->addChild(this->bladeChain);

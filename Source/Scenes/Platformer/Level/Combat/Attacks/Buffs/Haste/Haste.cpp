@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/HasteClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/HasteGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -56,14 +55,11 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_HourGlass, BuffData(Haste::Duration, Haste::HasteIdentifier))
 {
-	this->clippy = HasteClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -94,14 +90,6 @@ void Haste::initializePositions()
 	super::initializePositions();
 }
 
-void Haste::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Haste::registerHackables()
 {
 	super::registerHackables();
@@ -110,8 +98,6 @@ void Haste::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

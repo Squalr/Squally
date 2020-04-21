@@ -69,7 +69,6 @@ void FireballTutorialBehavior::onLoad()
 		{
 			if (!this->hasRunTutorial)
 			{
-				dynamic_cast<Fireball*>(args->projectile)->enableClippy();
 				this->runTutorial();
 			}
 		}

@@ -9,11 +9,9 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/IsSwimmingClippy.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -39,16 +37,11 @@ SquallySwimHackBehavior* SquallySwimHackBehavior::create(GameObject* owner)
 
 SquallySwimHackBehavior::SquallySwimHackBehavior(GameObject* owner) : super(owner)
 {
-	this->clippy = IsSwimmingClippy::create();
 	this->squally = dynamic_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
-	}
-	else
-	{
-		this->squally->registerClippy(this->clippy);
 	}
 }
 
@@ -130,8 +123,3 @@ NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 	return canSwim;
 }
 END_NO_OPTIMIZE
-
-void SquallySwimHackBehavior::enableAllClippy()
-{
-	this->clippy->setIsEnabled(true);
-}

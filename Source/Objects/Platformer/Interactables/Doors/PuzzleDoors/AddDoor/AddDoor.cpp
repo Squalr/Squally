@@ -45,8 +45,6 @@ void AddDoor::onEnter()
 {
 	super::onEnter();
 
-	this->enableAllClippy();
-
 	if (this->getIsUnlocked())
 	{
 		this->toggleHackable(false);

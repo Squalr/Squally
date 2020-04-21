@@ -9,11 +9,9 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsAlive/IsAliveClippy.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -42,17 +40,12 @@ SquallyIsAliveHackBehavior* SquallyIsAliveHackBehavior::create(GameObject* owner
 
 SquallyIsAliveHackBehavior::SquallyIsAliveHackBehavior(GameObject* owner) : super(owner)
 {
-	this->clippy = IsAliveClippy::create();
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->cooldown = 0.0f;
 
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
-	}
-	else
-	{
-		this->squally->registerClippy(this->clippy);
 	}
 }
 
@@ -82,19 +75,6 @@ void SquallyIsAliveHackBehavior::update(float dt)
 
 void SquallyIsAliveHackBehavior::onLoad()
 {
-	/*
-	this->squally->listenForMapEvent(SquallyIsAliveHackBehavior::EventSquallyTrapped, [=](ValueMap args)
-	{
-		for (auto next : this->codeList)
-		{
-			if (next->getHackableIdentifier() == SquallyIsAliveHackBehavior::IdentifierIsAlive)
-			{
-				next->getClippy()->setIsEnabled(true);
-			}
-		}
-	});
-	*/
-
 	this->registerHackables();
 	this->scheduleUpdate();
 }

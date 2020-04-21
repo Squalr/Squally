@@ -60,7 +60,6 @@ void StrengthTutorial::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<Strength*>(args->buff) != nullptr)
 		{
-			dynamic_cast<Strength*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));

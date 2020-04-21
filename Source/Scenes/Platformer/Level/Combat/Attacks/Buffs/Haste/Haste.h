@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class HasteClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Haste : public Buff
 {
 public:
 	static Haste* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string HasteIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile float currentSpeed;
 	
-	HasteClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 

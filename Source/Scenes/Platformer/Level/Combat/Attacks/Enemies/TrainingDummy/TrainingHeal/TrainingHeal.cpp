@@ -16,7 +16,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHealClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHealGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -51,15 +50,12 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 	: super(caster, target, UIResources::Menus_Icons_Heal, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
-	this->clippy = TrainingHealClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->healSound);
@@ -93,14 +89,6 @@ void TrainingHeal::initializePositions()
 	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
 }
 
-void TrainingHeal::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void TrainingHeal::registerHackables()
 {
 	super::registerHackables();
@@ -109,8 +97,6 @@ void TrainingHeal::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

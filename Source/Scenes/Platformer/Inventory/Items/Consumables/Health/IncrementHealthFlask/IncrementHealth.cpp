@@ -56,8 +56,6 @@ IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* tar
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);

@@ -29,6 +29,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_LAUNCH_TIMER 1
 
+const std::string PivotLauncher::HackIdentifierLaunchTimer = "pivot-launch-timer";
 const std::string PivotLauncher::PivotBone = "pivot_bone";
 const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
 const std::string PivotLauncher::PropertyPivotTarget = "pivot-target";
@@ -120,7 +121,7 @@ void PivotLauncher::registerHackables()
 		{
 			LOCAL_FUNC_ID_LAUNCH_TIMER,
 			HackableCode::HackableCodeInfo(
-				"pivot-launch-timer",
+				PivotLauncher::HackIdentifierLaunchTimer,
 				Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
@@ -144,11 +145,6 @@ void PivotLauncher::registerHackables()
 	{
 		this->registerCode(next);
 	}
-}
-
-Clippy* PivotLauncher::getTimerClippy()
-{
-	return nullptr;
 }
 
 HackablePreview* PivotLauncher::getTimerPreview()

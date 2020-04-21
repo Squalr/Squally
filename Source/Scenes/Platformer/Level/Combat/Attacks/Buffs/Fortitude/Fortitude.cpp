@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/FortitudeClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/FortitudeGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -54,7 +53,6 @@ Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Shield, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
 {
-	this->clippy = FortitudeClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -63,8 +61,6 @@ Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target)
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->bubble);
@@ -98,14 +94,6 @@ void Fortitude::initializePositions()
 	super::initializePositions();
 }
 
-void Fortitude::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Fortitude::registerHackables()
 {
 	super::registerHackables();
@@ -114,8 +102,6 @@ void Fortitude::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

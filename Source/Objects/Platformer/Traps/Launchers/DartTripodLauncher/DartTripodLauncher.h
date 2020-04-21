@@ -3,7 +3,6 @@
 #include "Objects/Platformer/Traps/Launchers/PivotLauncher.h"
 
 class AnimationPart;
-class DartNopClippy;
 class HackableData;
 class SmartAnimationNode;
 
@@ -20,12 +19,9 @@ protected:
 
 	void initializePositions() override;
 	HackablePreview* createDefaultPreview() override;
-	Clippy* getTimerClippy() override;
 	HackablePreview* getTimerPreview() override;
 	Projectile* createProjectile() override;
 
 private:
 	typedef PivotLauncher super;
-
-	DartNopClippy* dartNopClippy;
 };

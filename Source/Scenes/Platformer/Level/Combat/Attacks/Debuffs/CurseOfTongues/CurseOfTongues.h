@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class CurseOfTonguesClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class CurseOfTongues : public Buff
 {
 public:
 	static CurseOfTongues* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string CurseOfTonguesIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile float currentSpeed;
 	
-	CurseOfTonguesClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 

@@ -60,7 +60,6 @@ void FortitudeTutorial::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<Fortitude*>(args->buff) != nullptr)
 		{
-			dynamic_cast<Fortitude*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));

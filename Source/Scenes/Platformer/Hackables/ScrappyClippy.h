@@ -3,18 +3,20 @@
 
 #include "Engine/Hackables/Menus/Clippy.h"
 
+class LocalizedString;
 class SmartAnimationNode;
+class Sound;
 
-class DartNopClippy : public Clippy
+class ScrappyClippy : public Clippy
 {
 public:
-	static DartNopClippy* create();
+	static ScrappyClippy* create(LocalizedString* helpText);
 
 	void startDialogue() override;
 
 protected:
-	DartNopClippy();
-	virtual ~DartNopClippy();
+	ScrappyClippy(LocalizedString* helpText);
+	virtual ~ScrappyClippy();
 
 	Clippy* innerClone() override;
 
@@ -22,4 +24,5 @@ private:
 	typedef Clippy super;
 
 	SmartAnimationNode* clippyAnimations;
+	LocalizedString* helpText;
 };

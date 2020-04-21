@@ -5,7 +5,6 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
 

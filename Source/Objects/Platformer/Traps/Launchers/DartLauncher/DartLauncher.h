@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class AnimationPart;
-class DartNopClippy;
 class DartPool;
 class HackableData;
 class SmartAnimationNode;
@@ -27,12 +26,9 @@ protected:
 	void initializePositions() override;
 	HackablePreview* createDefaultPreview() override;
 	cocos2d::Vec2 getButtonOffset() override;
-	Clippy* getTimerClippy() override;
 	HackablePreview* getTimerPreview() override;
 	Projectile* createProjectile() override;
 
 private:
 	typedef PivotLauncher super;
-
-	DartNopClippy* dartNopClippy;
 };

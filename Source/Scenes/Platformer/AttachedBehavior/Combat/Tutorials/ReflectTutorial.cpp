@@ -60,7 +60,6 @@ void ReflectTutorial::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<Reflect*>(args->buff) != nullptr)
 		{
-			dynamic_cast<Reflect*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));

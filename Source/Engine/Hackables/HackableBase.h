@@ -75,5 +75,4 @@ private:
 	std::string iconResource;
 	HackablePreview* hackablePreview;
 	int requiredHackFlag;
-	Clippy* clippy;
 };

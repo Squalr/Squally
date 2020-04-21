@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class StrengthClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Strength : public Buff
 {
 public:
 	static Strength* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string StrengthIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile int currentDamageDelt;
 	
-	StrengthClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 	

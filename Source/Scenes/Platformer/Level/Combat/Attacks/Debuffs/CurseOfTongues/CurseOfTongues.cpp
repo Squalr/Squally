@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTonguesClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTonguesGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -57,14 +56,11 @@ CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntit
 CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Voodoo, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
 {
-	this->clippy = CurseOfTonguesClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
 
 	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -95,14 +91,6 @@ void CurseOfTongues::initializePositions()
 	super::initializePositions();
 }
 
-void CurseOfTongues::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void CurseOfTongues::registerHackables()
 {
 	super::registerHackables();
@@ -111,8 +99,6 @@ void CurseOfTongues::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

@@ -3,15 +3,12 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class HackableCode;
-class IsSwimmingClippy;
 class Squally;
 
 class SquallySwimHackBehavior : public AttachedBehavior
 {
 public:
 	static SquallySwimHackBehavior* create(GameObject* owner);
-
-	void enableAllClippy();
 
 	static const std::string MapKey;
 
@@ -31,6 +28,5 @@ private:
 
 	std::vector<HackableCode*> hackables;
 
-	IsSwimmingClippy* clippy;
 	Squally* squally;
 };

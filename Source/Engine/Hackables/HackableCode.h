@@ -140,7 +140,6 @@
 #define ASM_NOP15() ASM_NOP14() ASM_NOP1()
 #define ASM_NOP16() ASM_NOP15() ASM_NOP1()
 
-class Clippy;
 class HackablePreview;
 class LocalizedString;
 

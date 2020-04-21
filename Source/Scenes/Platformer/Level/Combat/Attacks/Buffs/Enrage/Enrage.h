@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class EnrageClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Enrage : public Buff
 {
 public:
 	static Enrage* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string EnrageIdentifier;
@@ -43,7 +40,6 @@ private:
 	
 	volatile float currentSpeed;
 	
-	EnrageClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 

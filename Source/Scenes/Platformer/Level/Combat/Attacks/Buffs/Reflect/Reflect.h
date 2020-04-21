@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class ReflectClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Reflect : public Buff
 {
 public:
 	static Reflect* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string ReflectIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile int damageReflected;
 	
-	ReflectClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;
 	cocos2d::Sprite* spellAura;

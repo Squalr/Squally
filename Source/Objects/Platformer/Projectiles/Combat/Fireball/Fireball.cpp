@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/Combat/Fireball/FireballClippy.h"
 #include "Objects/Platformer/Projectiles/Combat/Fireball/FireballGenericPreview.h"
 #include "Objects/Platformer/Projectiles/Combat/Fireball/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -43,11 +42,9 @@ Fireball::Fireball(PlatformerEntity* owner, PlatformerEntity* target)
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
-	this->reverseClippy = FireballClippy::create();
 
 	this->fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 
-	this->registerClippy(this->reverseClippy);
 	this->postFXNode->addChild(this->breathSound);
 	this->postFXNode->addChild(this->impactSound);
 	this->postFXNode->addChild(this->explosionAnim);
@@ -68,11 +65,6 @@ void Fireball::update(float dt)
 	}
 
 	this->setFireballSpeed();
-}
-
-void Fireball::enableClippy()
-{
-	this->reverseClippy->setIsEnabled(true);
 }
 
 void Fireball::runSpawnFX()

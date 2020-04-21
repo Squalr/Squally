@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class FortitudeClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Fortitude : public Buff
 {
 public:
 	static Fortitude* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string FortitudeIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile int currentDamageTaken;
 	
-	FortitudeClippy* clippy;
 	cocos2d::Sprite* bubble;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;

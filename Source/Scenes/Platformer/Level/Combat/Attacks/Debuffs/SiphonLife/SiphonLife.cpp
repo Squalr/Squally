@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLifeClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLifeGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -56,14 +55,11 @@ SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* targe
 SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Fangs, BuffData(SiphonLife::Duration, SiphonLife::SiphonLifeIdentifier))
 {
-	this->clippy = SiphonLifeClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -94,14 +90,6 @@ void SiphonLife::initializePositions()
 	super::initializePositions();
 }
 
-void SiphonLife::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void SiphonLife::registerHackables()
 {
 	super::registerHackables();
@@ -110,8 +98,6 @@ void SiphonLife::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

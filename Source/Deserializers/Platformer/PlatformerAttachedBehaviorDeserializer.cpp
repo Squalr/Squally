@@ -24,7 +24,6 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 
 	this->attachedBehaviorDeserializers[AgroBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AgroBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[DisabledPortal::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DisabledPortal::create(owner); };
-	this->attachedBehaviorDeserializers[EnableAllClippyBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EnableAllClippyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[EnemyBattleAllyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBattleAllyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[EnemyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[EntityBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EntityBehaviorGroup::create(owner); };
@@ -47,6 +46,11 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[SquallyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyCombatBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyNoSavePositionBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyNoSavePositionBehavior::create(owner); };
+	
+	/*********************
+	    Clippy
+	*********************/
+	this->attachedBehaviorDeserializers[DartLauncherClippyNopBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DartLauncherClippyNopBehavior::create(owner); };
 	
 	/*********************
 	    Combat

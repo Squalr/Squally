@@ -9,7 +9,6 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
-class PendulumBladeClippy;
 
 class PendulumBlade : public HackableObject
 {
@@ -44,8 +43,6 @@ private:
 	float chainHeight;
 	HackableData* hackableDataTargetAngle;
 	CollisionObject* bladeCollision;
-
-	PendulumBladeClippy* pendulumBladeClippy;
 	
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;

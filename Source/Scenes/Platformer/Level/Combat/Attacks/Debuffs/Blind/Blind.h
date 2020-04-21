@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class BlindClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Blind : public Buff
 {
 public:
 	static Blind* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string BlindIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile float currentSpeed;
 	
-	BlindClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 

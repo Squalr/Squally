@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Reflect/ReflectClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Reflect/ReflectGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -54,7 +53,6 @@ Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
 {
-	this->clippy = ReflectClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -62,8 +60,6 @@ Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::BLUE);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->bubble);
@@ -97,14 +93,6 @@ void Reflect::initializePositions()
 	super::initializePositions();
 }
 
-void Reflect::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Reflect::registerHackables()
 {
 	super::registerHackables();
@@ -113,8 +101,6 @@ void Reflect::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

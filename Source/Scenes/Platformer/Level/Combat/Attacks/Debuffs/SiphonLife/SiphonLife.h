@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class SiphonLifeClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class SiphonLife : public Buff
 {
 public:
 	static SiphonLife* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string SiphonLifeIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile float currentSpeed;
 	
-	SiphonLifeClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 

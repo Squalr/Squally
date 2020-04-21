@@ -11,7 +11,6 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class Clippy;
 class HackableBase;
 class HackableCode;
 class HackActivatedAbility;
@@ -35,23 +34,7 @@ public:
 	void unregisterCode(HackableCode* hackableCode, bool forceRestoreState = false);
 	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
-	void registerClippy(Clippy* clippy);
-	void enableAllClippy();
 	cocos2d::Node* getHackParticlesNode();
-
-	template <class T>
-	T* getClippy()
-	{
-		for (auto next : clippyList)
-		{
-			if (dynamic_cast<T*>(next) != nullptr)
-			{
-				return dynamic_cast<T*>(next);
-			}
-		}
-
-		return nullptr;
-	}
 
 	std::vector<HackableBase*> hackableList;
 	std::vector<HackableCode*> codeList;
@@ -103,9 +86,9 @@ private:
 	std::vector<cocos2d::Sprite*> timeRemainingIcons;
 	std::vector<ProgressBar*> timeRemainingBars;
 
-	std::vector<Clippy*> clippyList;
 	std::vector<HackableBase*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 
 	static int HackFlags;
+	static unsigned long long WatchId;
 };

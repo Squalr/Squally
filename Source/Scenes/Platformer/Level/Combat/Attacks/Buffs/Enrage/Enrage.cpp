@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Enrage/EnrageClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Enrage/EnrageGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -58,14 +57,11 @@ Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Clock, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
 {
-	this->clippy = EnrageClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::RED);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -96,14 +92,6 @@ void Enrage::initializePositions()
 	super::initializePositions();
 }
 
-void Enrage::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Enrage::registerHackables()
 {
 	super::registerHackables();
@@ -112,8 +100,6 @@ void Enrage::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

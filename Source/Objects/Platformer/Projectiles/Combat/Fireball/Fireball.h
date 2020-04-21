@@ -2,7 +2,6 @@
 
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 
-class Clippy;
 class ThrownObject;
 class PlatformerAttack;
 class PlatformerEntity;
@@ -14,7 +13,6 @@ class Fireball : public ThrownObject
 public:
 	static Fireball* create(PlatformerEntity* owner, PlatformerEntity* target);
 	
-	void enableClippy();
 	void runSpawnFX() override;
 	void runImpactFX();
 
@@ -30,7 +28,6 @@ protected:
 private:
 	typedef ThrownObject super;
 
-	Clippy* reverseClippy;
 	SmartAnimationSequenceNode* fireballAnim;
 	SmartAnimationSequenceNode* explosionAnim;
 	WorldSound* breathSound;

@@ -149,14 +149,6 @@ void Buff::registerHackables()
 {
 }
 
-void Buff::registerClippy(Clippy* clippy)
-{
-	if (this->target != nullptr)
-	{
-		this->target->registerClippy(clippy);
-	}
-}
-
 bool Buff::hasBuffIcon()
 {
 	return this->isBuffIconPresent;

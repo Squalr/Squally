@@ -45,7 +45,6 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
-	void registerClippy(Clippy* clippy);
 	virtual void onTimelineReset(bool wasInterrupt);
 	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
 	virtual void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);

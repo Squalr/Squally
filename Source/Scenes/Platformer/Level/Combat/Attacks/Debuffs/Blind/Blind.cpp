@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Blind/BlindClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Blind/BlindGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -56,14 +55,11 @@ Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Eye, BuffData(Blind::Duration, Blind::BlindIdentifier))
 {
-	this->clippy = BlindClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -94,14 +90,6 @@ void Blind::initializePositions()
 	super::initializePositions();
 }
 
-void Blind::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Blind::registerHackables()
 {
 	super::registerHackables();
@@ -110,8 +98,6 @@ void Blind::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

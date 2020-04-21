@@ -60,7 +60,6 @@ void HasteTutorial::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<Haste*>(args->buff) != nullptr)
 		{
-			dynamic_cast<Haste*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));
