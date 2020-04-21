@@ -16,8 +16,6 @@ protected:
 	ShadowBoltClippy();
 	virtual ~ShadowBoltClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

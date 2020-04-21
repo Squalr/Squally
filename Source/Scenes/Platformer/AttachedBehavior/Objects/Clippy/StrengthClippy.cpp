@@ -34,11 +34,6 @@ StrengthClippy::~StrengthClippy()
 {
 }
 
-Clippy* StrengthClippy::innerClone()
-{
-	return StrengthClippy::create();
-}
-
 void StrengthClippy::startDialogue()
 {
 	this->runDialogue(

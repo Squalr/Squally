@@ -36,15 +36,10 @@ DartLauncherClippyNopBehavior::~DartLauncherClippyNopBehavior()
 
 void DartLauncherClippyNopBehavior::onLoad()
 {
-	/*
-	this->object->watchForHackable(DartLauncher::HackIdentifierLaunchTimer, [=](HackableBase* hackable)
+	this->object->registerClippyOnto(DartLauncher::HackIdentifierLaunchTimer, [=]
 	{
-		hackable->setClippyFunc([=]
-		{
-			return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop::create());
-		});
+		return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop::create());
 	});
-	*/
 }
 
 void DartLauncherClippyNopBehavior::onDisable()

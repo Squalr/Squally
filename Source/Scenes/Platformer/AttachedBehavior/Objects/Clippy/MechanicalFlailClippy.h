@@ -17,8 +17,6 @@ protected:
 	MechanicalFlailClippy();
 	virtual ~MechanicalFlailClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

@@ -93,7 +93,7 @@ void RadialMenu::initializeListeners()
 	{
 		GameUtils::focus(this);
 
-		// Just close out of this when finished editing an attribute
+		// Just close out of this when finished editing an hackable
 		this->close();
 	}));
 
@@ -110,16 +110,16 @@ void RadialMenu::initializeListeners()
 	});
 }
 
-void RadialMenu::onHackableBaseEdit(HackableBase* attribute)
+void RadialMenu::onHackableEdit(HackableBase* hackable)
 {
-	if (dynamic_cast<HackActivatedAbility*>(attribute) != nullptr)
+	if (dynamic_cast<HackActivatedAbility*>(hackable) != nullptr)
 	{
-		dynamic_cast<HackActivatedAbility*>(attribute)->activate();
+		dynamic_cast<HackActivatedAbility*>(hackable)->activate();
 		HackableEvents::TriggerEditHackableBaseDone();
 	}
 	else
 	{
-		HackableEvents::TriggerEditHackableBase(HackableEvents::HackableObjectEditArgs(attribute));
+		HackableEvents::TriggerEditHackableBase(HackableEvents::HackableObjectEditArgs(this->activeHackableObject, hackable));
 
 		this->setVisible(false);
 	}
@@ -141,11 +141,11 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
 	std::vector<HackableBase*> filteredAttributes = std::vector<HackableBase*>();
 
-	for (auto attribute : this->activeHackableObject->hackableList)
+	for (auto hackable : this->activeHackableObject->hackableList)
 	{
-		if ((attribute->getRequiredHackFlag() & HackableObject::GetHackFlags()) == attribute->getRequiredHackFlag())
+		if ((hackable->getRequiredHackFlag() & HackableObject::GetHackFlags()) == hackable->getRequiredHackFlag())
 		{
-			filteredAttributes.push_back(attribute);
+			filteredAttributes.push_back(hackable);
 		}
 	}
 	
@@ -178,7 +178,10 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 			nextDataIconPosition,
 			currentAngle,
 			name == nullptr ? nullptr : name->clone(), 
-			[=]() { this->onHackableBaseEdit(hackable); }
+			[=]()
+			{
+				this->onHackableEdit(hackable);
+			}
 		);
 
 		this->radialMenuItems->addChild(menuNode);

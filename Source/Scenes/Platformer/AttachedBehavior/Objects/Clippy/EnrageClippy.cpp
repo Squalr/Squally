@@ -34,10 +34,6 @@ EnrageClippy::~EnrageClippy()
 {
 }
 
-Clippy* EnrageClippy::innerClone()
-{
-	return EnrageClippy::create();
-}
 
 void EnrageClippy::startDialogue()
 {

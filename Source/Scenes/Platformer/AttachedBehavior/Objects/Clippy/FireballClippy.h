@@ -16,8 +16,6 @@ protected:
 	FireballClippy();
 	virtual ~FireballClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

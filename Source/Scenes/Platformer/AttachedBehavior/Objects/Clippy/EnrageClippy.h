@@ -17,8 +17,6 @@ protected:
 	EnrageClippy();
 	virtual ~EnrageClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

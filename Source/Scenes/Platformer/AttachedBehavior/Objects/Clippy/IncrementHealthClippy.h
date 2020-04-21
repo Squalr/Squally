@@ -17,8 +17,6 @@ protected:
 	IncrementHealthClippy();
 	virtual ~IncrementHealthClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

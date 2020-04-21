@@ -34,11 +34,6 @@ BlindClippy::~BlindClippy()
 {
 }
 
-Clippy* BlindClippy::innerClone()
-{
-	return BlindClippy::create();
-}
-
 void BlindClippy::startDialogue()
 {
 	this->runDialogue(

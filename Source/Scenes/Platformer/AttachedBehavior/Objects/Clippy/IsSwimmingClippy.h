@@ -16,8 +16,6 @@ protected:
 	IsSwimmingClippy();
 	virtual ~IsSwimmingClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

@@ -34,11 +34,6 @@ HasteClippy::~HasteClippy()
 {
 }
 
-Clippy* HasteClippy::innerClone()
-{
-	return HasteClippy::create();
-}
-
 void HasteClippy::startDialogue()
 {
 	this->runDialogue(

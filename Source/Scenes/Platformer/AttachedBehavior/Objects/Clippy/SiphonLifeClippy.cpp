@@ -34,11 +34,6 @@ SiphonLifeClippy::~SiphonLifeClippy()
 {
 }
 
-Clippy* SiphonLifeClippy::innerClone()
-{
-	return SiphonLifeClippy::create();
-}
-
 void SiphonLifeClippy::startDialogue()
 {
 	this->runDialogue(

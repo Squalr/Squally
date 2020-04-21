@@ -17,8 +17,6 @@ protected:
 	TrainingHealClippy();
 	virtual ~TrainingHealClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

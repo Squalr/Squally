@@ -16,8 +16,6 @@ protected:
 	IsAliveClippy();
 	virtual ~IsAliveClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

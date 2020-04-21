@@ -36,11 +36,6 @@ MechanicalFlailClippy::~MechanicalFlailClippy()
 {
 }
 
-Clippy* MechanicalFlailClippy::innerClone()
-{
-	return MechanicalFlailClippy::create();
-}
-
 void MechanicalFlailClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);

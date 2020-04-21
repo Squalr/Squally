@@ -34,11 +34,6 @@ FortitudeClippy::~FortitudeClippy()
 {
 }
 
-Clippy* FortitudeClippy::innerClone()
-{
-	return FortitudeClippy::create();
-}
-
 void FortitudeClippy::startDialogue()
 {
 	this->runDialogue(

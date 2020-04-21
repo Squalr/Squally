@@ -43,6 +43,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackButton = HackButton::create();
 	this->timeRemainingIcons = std::vector<Sprite*>();
 	this->timeRemainingBars = std::vector<ProgressBar*>();
+	this->clippyMap = std::map<std::string, std::function<Clippy*()>>();
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
 	this->allowFx = true;
@@ -471,6 +472,11 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
 	
 	this->refreshParticleFx();
+}
+
+void HackableObject::registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc)
+{
+	this->clippyMap[identifier] = clippyFunc;
 }
 
 void HackableObject::createSensingParticles()

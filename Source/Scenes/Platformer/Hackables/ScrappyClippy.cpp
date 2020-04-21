@@ -40,8 +40,3 @@ void ScrappyClippy::startDialogue()
 {
 	this->runDialogue(this->helpText == nullptr ? nullptr : this->helpText->clone(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }
-
-Clippy* ScrappyClippy::innerClone()
-{
-	return ScrappyClippy::create(this->helpText == nullptr ? nullptr : this->helpText->clone());
-}

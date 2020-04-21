@@ -17,8 +17,6 @@ protected:
 	ReflectClippy();
 	virtual ~ReflectClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

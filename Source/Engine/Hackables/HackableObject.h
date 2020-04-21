@@ -11,6 +11,7 @@ namespace cocos2d
 }
 
 class ClickableNode;
+class Clippy;
 class HackableBase;
 class HackableCode;
 class HackActivatedAbility;
@@ -34,6 +35,7 @@ public:
 	void unregisterCode(HackableCode* hackableCode, bool forceRestoreState = false);
 	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
+	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 	cocos2d::Node* getHackParticlesNode();
 
 	std::vector<HackableBase*> hackableList;
@@ -61,6 +63,7 @@ protected:
 
 private:
 	typedef GameObject super;
+	friend class CodeHud;
 	
 	bool hasRelocatedUI;
 	bool allowFx;
@@ -85,6 +88,7 @@ private:
 	HackButton* hackButton;
 	std::vector<cocos2d::Sprite*> timeRemainingIcons;
 	std::vector<ProgressBar*> timeRemainingBars;
+	std::map<std::string, std::function<Clippy*()>> clippyMap;
 
 	std::vector<HackableBase*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;

@@ -17,8 +17,6 @@ protected:
 	CurseOfTonguesClippy();
 	virtual ~CurseOfTonguesClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

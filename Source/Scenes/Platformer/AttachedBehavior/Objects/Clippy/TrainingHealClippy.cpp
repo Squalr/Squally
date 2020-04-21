@@ -34,11 +34,6 @@ TrainingHealClippy::~TrainingHealClippy()
 {
 }
 
-Clippy* TrainingHealClippy::innerClone()
-{
-	return TrainingHealClippy::create();
-}
-
 void TrainingHealClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);

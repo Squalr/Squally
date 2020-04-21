@@ -34,11 +34,6 @@ ReflectClippy::~ReflectClippy()
 {
 }
 
-Clippy* ReflectClippy::innerClone()
-{
-	return ReflectClippy::create();
-}
-
 void ReflectClippy::startDialogue()
 {
 	this->runDialogue(

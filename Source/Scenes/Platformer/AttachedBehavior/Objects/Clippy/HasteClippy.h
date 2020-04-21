@@ -17,8 +17,6 @@ protected:
 	HasteClippy();
 	virtual ~HasteClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

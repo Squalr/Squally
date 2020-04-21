@@ -34,11 +34,6 @@ WindClippy::~WindClippy()
 {
 }
 
-Clippy* WindClippy::innerClone()
-{
-	return WindClippy::create();
-}
-
 void WindClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Objects_Wind_WindNop::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);

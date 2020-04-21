@@ -34,11 +34,6 @@ CurseOfTonguesClippy::~CurseOfTonguesClippy()
 {
 }
 
-Clippy* CurseOfTonguesClippy::innerClone()
-{
-	return CurseOfTonguesClippy::create();
-}
-
 void CurseOfTonguesClippy::startDialogue()
 {
 	this->runDialogue(

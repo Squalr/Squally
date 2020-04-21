@@ -18,8 +18,6 @@ protected:
 	ScrappyClippy(LocalizedString* helpText);
 	virtual ~ScrappyClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

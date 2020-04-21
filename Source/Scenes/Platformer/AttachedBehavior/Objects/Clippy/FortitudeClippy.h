@@ -17,8 +17,6 @@ protected:
 	FortitudeClippy();
 	virtual ~FortitudeClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

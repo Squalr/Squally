@@ -34,11 +34,6 @@ ShadowBoltClippy::~ShadowBoltClippy()
 {
 }
 
-Clippy* ShadowBoltClippy::innerClone()
-{
-	return ShadowBoltClippy::create();
-}
-
 void ShadowBoltClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_ShadowBoltClippy::create()

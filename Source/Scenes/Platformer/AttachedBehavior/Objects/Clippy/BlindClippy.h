@@ -17,8 +17,6 @@ protected:
 	BlindClippy();
 	virtual ~BlindClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

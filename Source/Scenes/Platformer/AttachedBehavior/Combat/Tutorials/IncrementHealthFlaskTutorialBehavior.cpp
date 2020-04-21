@@ -50,7 +50,6 @@ void IncrementHealthFlaskTutorialBehavior::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<IncrementHealth*>(args->buff) != nullptr)
 		{
-			dynamic_cast<IncrementHealth*>(args->buff)->enableClippy();
 		}
 	}));
 }

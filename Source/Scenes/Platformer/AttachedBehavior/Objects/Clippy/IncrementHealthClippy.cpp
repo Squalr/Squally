@@ -34,11 +34,6 @@ IncrementHealthClippy::~IncrementHealthClippy()
 {
 }
 
-Clippy* IncrementHealthClippy::innerClone()
-{
-	return IncrementHealthClippy::create();
-}
-
 void IncrementHealthClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);

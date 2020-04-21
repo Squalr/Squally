@@ -35,11 +35,6 @@ IsSwimmingClippy::~IsSwimmingClippy()
 {
 }
 
-Clippy* IsSwimmingClippy::innerClone()
-{
-	return IsSwimmingClippy::create();
-}
-
 void IsSwimmingClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);

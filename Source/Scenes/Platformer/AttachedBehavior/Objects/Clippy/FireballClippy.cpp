@@ -34,11 +34,6 @@ FireballClippy::~FireballClippy()
 {
 }
 
-Clippy* FireballClippy::innerClone()
-{
-	return FireballClippy::create();
-}
-
 void FireballClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy::create()

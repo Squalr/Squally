@@ -35,7 +35,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void onHackableBaseEdit(HackableBase* attribute);
+	void onHackableEdit(HackableBase* hackable);
 	void close();
 	void buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args);
 	ClickableNode* createRadialNode(std::string iconResource, int requiredLevel, cocos2d::Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback);

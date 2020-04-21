@@ -16,7 +16,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthClippy.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -51,7 +50,6 @@ IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEnt
 IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 	: super(caster, target, UIResources::Menus_Icons_ArrowUp, BuffData())
 {
-	this->clippy = IncrementHealthClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
@@ -82,14 +80,6 @@ void IncrementHealth::initializePositions()
 	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
 }
 
-void IncrementHealth::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void IncrementHealth::registerHackables()
 {
 	super::registerHackables();
@@ -98,8 +88,6 @@ void IncrementHealth::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{

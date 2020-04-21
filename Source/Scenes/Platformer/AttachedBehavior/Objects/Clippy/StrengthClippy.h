@@ -17,8 +17,6 @@ protected:
 	StrengthClippy();
 	virtual ~StrengthClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

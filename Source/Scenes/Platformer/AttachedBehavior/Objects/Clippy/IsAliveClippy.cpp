@@ -35,11 +35,6 @@ IsAliveClippy::~IsAliveClippy()
 {
 }
 
-Clippy* IsAliveClippy::innerClone()
-{
-	return IsAliveClippy::create();
-}
-
 void IsAliveClippy::startDialogue()
 {
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);

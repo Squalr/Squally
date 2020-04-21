@@ -15,9 +15,7 @@ public:
 protected:
 	WindClippy();
 	virtual ~WindClippy();
-
-	Clippy* innerClone() override;
-
+	
 private:
 	typedef Clippy super;
 

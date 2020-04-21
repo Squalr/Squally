@@ -17,8 +17,6 @@ protected:
 	PendulumBladeClippy();
 	virtual ~PendulumBladeClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 

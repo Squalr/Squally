@@ -41,9 +41,10 @@ public:
 
 	struct HackableObjectEditArgs
 	{
+		HackableObject* hackableObject;
 		HackableBase* hackableAttribute;
 
-		HackableObjectEditArgs(HackableBase* hackableAttribute) :hackableAttribute(hackableAttribute) { }
+		HackableObjectEditArgs(HackableObject* hackableObject, HackableBase* hackableAttribute) : hackableObject(hackableObject), hackableAttribute(hackableAttribute) { }
 	};
 
 	struct HackAppliedArgs

@@ -17,8 +17,6 @@ protected:
 	SiphonLifeClippy();
 	virtual ~SiphonLifeClippy();
 
-	Clippy* innerClone() override;
-
 private:
 	typedef Clippy super;
 
