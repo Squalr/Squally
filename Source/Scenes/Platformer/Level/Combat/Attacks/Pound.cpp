@@ -29,7 +29,7 @@ Pound::Pound(int damageMin, int damageMax, float attackDuration, float recoverDu
 		priority,
 		damageMin,
 		damageMax,
-		0,
+		5,
 		attackDuration,
 		recoverDuration
 	)
@@ -52,7 +52,7 @@ PlatformerAttack* Pound::cloneInternal()
 
 LocalizedString* Pound::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Punch::create();
+	return Strings::Platformer_Combat_Attacks_Pound::create();
 }
 
 std::string Pound::getAttackAnimation()

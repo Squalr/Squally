@@ -63,7 +63,7 @@ void GlobalHackAttributeContainer::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventAfterSceneChange, [=](EventCustom* eventCustom)
 	{
-		// HackableBase::CleanUpGlobalState();
+		HackableBase::HackTimersPaused = false;
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)

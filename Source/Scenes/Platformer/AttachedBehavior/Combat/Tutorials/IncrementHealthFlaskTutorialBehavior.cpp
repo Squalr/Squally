@@ -9,6 +9,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Hackables/ScrappyClippy.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealth.h"
 
 #include "Resources/SoundResources.h"
@@ -50,6 +51,10 @@ void IncrementHealthFlaskTutorialBehavior::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<IncrementHealth*>(args->buff) != nullptr)
 		{
+			args->buff->registerClippyOnto(IncrementHealth::IncrementHealthIdentifier, [=]
+			{
+				return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc::create());
+			});
 		}
 	}));
 }

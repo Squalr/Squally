@@ -35,6 +35,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityDisarmedBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/DartLauncherClippyNopBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/MechanicalFlailClippyAngle.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/PendulumBladeClippyAngle.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/IllusionBehavior.h"
