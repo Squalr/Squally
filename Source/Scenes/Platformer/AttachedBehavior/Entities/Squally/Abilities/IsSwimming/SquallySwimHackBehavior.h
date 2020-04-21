@@ -11,6 +11,7 @@ public:
 	static SquallySwimHackBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
+	static const std::string HackIdentifierIsSwimming;
 
 protected:
 	SquallySwimHackBehavior(GameObject* owner);

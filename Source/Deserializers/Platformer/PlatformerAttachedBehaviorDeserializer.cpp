@@ -51,8 +51,9 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	    Clippy
 	*********************/
 	this->attachedBehaviorDeserializers[DartLauncherClippyNopBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DartLauncherClippyNopBehavior::create(owner); };
-	this->attachedBehaviorDeserializers[MechanicalFlailClippyAngle::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MechanicalFlailClippyAngle::create(owner); };
-	this->attachedBehaviorDeserializers[PendulumBladeClippyAngle::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PendulumBladeClippyAngle::create(owner); };
+	this->attachedBehaviorDeserializers[IsSwimmingClippyBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)IsSwimmingClippyBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[MechanicalFlailClippyAngleBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MechanicalFlailClippyAngleBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PendulumBladeClippyAngleBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PendulumBladeClippyAngleBehavior::create(owner); };
 	
 	/*********************
 	    Combat

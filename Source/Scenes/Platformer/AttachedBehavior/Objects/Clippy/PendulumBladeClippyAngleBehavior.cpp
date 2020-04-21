@@ -1,4 +1,4 @@
-#include "PendulumBladeClippyAngle.h"
+#include "PendulumBladeClippyAngleBehavior.h"
 
 #include "Engine/Hackables/HackableBase.h"
 #include "Engine/Hackables/HackableObject.h"
@@ -9,18 +9,18 @@
 
 using namespace cocos2d;
 
-const std::string PendulumBladeClippyAngle::MapKey = "pendulum-blade-clippy-angle";
+const std::string PendulumBladeClippyAngleBehavior::MapKey = "pendulum-blade-clippy-angle";
 
-PendulumBladeClippyAngle* PendulumBladeClippyAngle::create(GameObject* owner)
+PendulumBladeClippyAngleBehavior* PendulumBladeClippyAngleBehavior::create(GameObject* owner)
 {
-	PendulumBladeClippyAngle* instance = new PendulumBladeClippyAngle(owner);
+	PendulumBladeClippyAngleBehavior* instance = new PendulumBladeClippyAngleBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PendulumBladeClippyAngle::PendulumBladeClippyAngle(GameObject* owner) : super(owner)
+PendulumBladeClippyAngleBehavior::PendulumBladeClippyAngleBehavior(GameObject* owner) : super(owner)
 {
 	this->object = dynamic_cast<HackableObject*>(owner);
 
@@ -30,11 +30,11 @@ PendulumBladeClippyAngle::PendulumBladeClippyAngle(GameObject* owner) : super(ow
 	}
 }
 
-PendulumBladeClippyAngle::~PendulumBladeClippyAngle()
+PendulumBladeClippyAngleBehavior::~PendulumBladeClippyAngleBehavior()
 {
 }
 
-void PendulumBladeClippyAngle::onLoad()
+void PendulumBladeClippyAngleBehavior::onLoad()
 {
 	this->object->registerClippyOnto(PendulumBlade::HackIdentifierTargetAngle, [=]
 	{
@@ -53,7 +53,7 @@ void PendulumBladeClippyAngle::onLoad()
 	});
 }
 
-void PendulumBladeClippyAngle::onDisable()
+void PendulumBladeClippyAngleBehavior::onDisable()
 {
 	super::onDisable();
 }

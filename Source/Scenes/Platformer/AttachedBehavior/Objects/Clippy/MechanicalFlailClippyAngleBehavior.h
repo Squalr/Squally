@@ -5,16 +5,16 @@
 
 class HackableObject;
 
-class PendulumBladeClippyAngle : public AttachedBehavior
+class MechanicalFlailClippyAngleBehavior : public AttachedBehavior
 {
 public:
-	static PendulumBladeClippyAngle* create(GameObject* owner);
+	static MechanicalFlailClippyAngleBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 	
 protected:
-	PendulumBladeClippyAngle(GameObject* owner);
-	virtual ~PendulumBladeClippyAngle();
+	MechanicalFlailClippyAngleBehavior(GameObject* owner);
+	virtual ~MechanicalFlailClippyAngleBehavior();
 
 	void onLoad() override;
 	void onDisable() override;

@@ -105,36 +105,36 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="565" name="camera-focus" type="object" x="1171.28" y="1220.51" width="128" height="128">
+  <object id="565" name="camera-focus" type="object" x="1183.28" y="1406.51" width="128" height="128">
    <properties>
     <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
-  <object id="566" name="camera-target" type="object" x="880.303" y="1318.39" width="128" height="128">
+  <object id="566" name="camera-target" type="object" x="892.303" y="1504.39" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-1"/>
     <property name="zoom" type="float" value="1.05"/>
    </properties>
   </object>
-  <object id="568" name="camera-target" type="object" x="671.697" y="1394.39" width="128" height="128">
+  <object id="568" name="camera-target" type="object" x="683.697" y="1580.39" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-0"/>
     <property name="zoom" type="float" value="1.125"/>
    </properties>
   </object>
-  <object id="578" name="camera-target" type="object" x="1575" y="1469" width="128" height="128">
+  <object id="578" name="camera-target" type="object" x="1587" y="1655" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-1"/>
     <property name="zoom" type="float" value="1.05"/>
    </properties>
   </object>
-  <object id="579" name="camera-target" type="object" x="1573" y="1341" width="128" height="128">
+  <object id="579" name="camera-target" type="object" x="1585" y="1527" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
-  <object id="580" name="camera-target" type="object" x="1687" y="1377" width="128" height="128">
+  <object id="580" name="camera-target" type="object" x="1699" y="1563" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-2"/>
     <property name="zoom" type="float" value="1.1"/>

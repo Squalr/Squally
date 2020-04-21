@@ -1,4 +1,4 @@
-#include "MechanicalFlailClippyAngle.h"
+#include "MechanicalFlailClippyAngleBehavior.h"
 
 #include "Engine/Hackables/HackableBase.h"
 #include "Engine/Hackables/HackableObject.h"
@@ -9,18 +9,18 @@
 
 using namespace cocos2d;
 
-const std::string MechanicalFlailClippyAngle::MapKey = "mechanical-flail-clippy-angle";
+const std::string MechanicalFlailClippyAngleBehavior::MapKey = "mechanical-flail-clippy-angle";
 
-MechanicalFlailClippyAngle* MechanicalFlailClippyAngle::create(GameObject* owner)
+MechanicalFlailClippyAngleBehavior* MechanicalFlailClippyAngleBehavior::create(GameObject* owner)
 {
-	MechanicalFlailClippyAngle* instance = new MechanicalFlailClippyAngle(owner);
+	MechanicalFlailClippyAngleBehavior* instance = new MechanicalFlailClippyAngleBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MechanicalFlailClippyAngle::MechanicalFlailClippyAngle(GameObject* owner) : super(owner)
+MechanicalFlailClippyAngleBehavior::MechanicalFlailClippyAngleBehavior(GameObject* owner) : super(owner)
 {
 	this->object = dynamic_cast<HackableObject*>(owner);
 
@@ -30,11 +30,11 @@ MechanicalFlailClippyAngle::MechanicalFlailClippyAngle(GameObject* owner) : supe
 	}
 }
 
-MechanicalFlailClippyAngle::~MechanicalFlailClippyAngle()
+MechanicalFlailClippyAngleBehavior::~MechanicalFlailClippyAngleBehavior()
 {
 }
 
-void MechanicalFlailClippyAngle::onLoad()
+void MechanicalFlailClippyAngleBehavior::onLoad()
 {
 	this->object->registerClippyOnto(MechanicalFlail::HackIdentifierTargetAngle, [=]
 	{
@@ -53,7 +53,7 @@ void MechanicalFlailClippyAngle::onLoad()
 	});
 }
 
-void MechanicalFlailClippyAngle::onDisable()
+void MechanicalFlailClippyAngleBehavior::onDisable()
 {
 	super::onDisable();
 }

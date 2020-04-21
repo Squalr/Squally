@@ -57,12 +57,6 @@ void WaterSpellbook::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 		this->squally->toggleAllowFx(true);
-
-		this->squally->getAttachedBehavior<SquallySwimHackBehavior>([=](SquallySwimHackBehavior* squallySwimHackBehavior)
-		{
-			// ATTACH BEHAVIOR HERE :^)
-			// squallySwimHackBehavior->enableAllClippy();
-		});
 		
 	}, Squally::MapKey);
 

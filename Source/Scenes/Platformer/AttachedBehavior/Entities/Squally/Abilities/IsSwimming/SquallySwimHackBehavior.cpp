@@ -24,7 +24,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CAN_SWIM 1
 
-const std::string SquallySwimHackBehavior::MapKey = "squally-can-swim-hack";
+const std::string SquallySwimHackBehavior::MapKey = "squally-is-swimming";
+const std::string SquallySwimHackBehavior::HackIdentifierIsSwimming = "squally-is-swimming";
 
 SquallySwimHackBehavior* SquallySwimHackBehavior::create(GameObject* owner)
 {
@@ -81,7 +82,7 @@ void SquallySwimHackBehavior::registerHackables()
 		{
 			LOCAL_FUNC_ID_CAN_SWIM,
 			HackableCode::HackableCodeInfo(
-				SquallySwimHackBehavior::MapKey,
+				SquallySwimHackBehavior::HackIdentifierIsSwimming,
 				Strings::Menus_Hacking_Abilities_Squally_IsSwimming::create(),
 				HackableBase::HackBarColor::Teal,
 				UIResources::Menus_Icons_Bubbles,
