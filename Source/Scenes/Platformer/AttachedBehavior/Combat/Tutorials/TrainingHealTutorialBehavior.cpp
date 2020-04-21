@@ -15,6 +15,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/DialogueEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
+#include "Scenes/Platformer/Hackables/ScrappyClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHeal.h"
 
 #include "Resources/SoundResources.h"
@@ -60,6 +61,11 @@ void TrainingHealTutorialBehavior::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<TrainingHeal*>(args->buff) != nullptr)
 		{
+			args->buff->registerClippyOnto(TrainingHeal::TrainingHealIdentifier, [=]
+			{
+				return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd::create());
+			});
+
 			this->runTutorial();
 		}
 	}));

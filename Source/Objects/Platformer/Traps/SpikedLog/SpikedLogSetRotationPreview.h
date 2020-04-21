@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
@@ -17,13 +18,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	SpikedLogSetRotationPreview();
-	virtual ~SpikedLogSetRotationPreview() = default;
+	virtual ~SpikedLogSetRotationPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	SmartAnimationSequenceNode* previewSpikedLog;
 	LocalizedLabel* ecxAnimationCount;

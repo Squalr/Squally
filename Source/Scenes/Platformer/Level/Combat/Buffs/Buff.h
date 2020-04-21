@@ -34,6 +34,7 @@ public:
 	BuffData getBuffData();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
 	void removeBuff();
+	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 
 protected:
 

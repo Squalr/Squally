@@ -30,7 +30,7 @@ void HackablePreview::setAssemblyTextVisible(bool isVisible)
 	this->assemblyTextNode->setVisible(isVisible);
 }
 
-LocalizedLabel* HackablePreview::createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, ConstantString* value)
+LocalizedLabel* HackablePreview::createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, LocalizedString* value)
 {
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_XEqualsY::create());
 

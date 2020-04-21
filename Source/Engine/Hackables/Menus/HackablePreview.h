@@ -3,7 +3,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Hackables/HackableCode.h"
 
-class ConstantString;
+class LocalizedString;
 class LocalizedLabel;
 
 class HackablePreview : public SmartNode
@@ -17,7 +17,7 @@ protected:
 	HackablePreview();
 	virtual ~HackablePreview();
 
-	LocalizedLabel* createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, ConstantString* value);
+	LocalizedLabel* createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, LocalizedString* value);
 	LocalizedString* getRegisterString(HackableCode::Register reg);
 
 	cocos2d::Node* assemblyTextNode;

@@ -242,3 +242,13 @@ void Buff::removeBuff()
 		this->removeBuffCallback();
 	}
 }
+
+void Buff::registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc)
+{
+	if (this->target == nullptr)
+	{
+		return;
+	}
+	
+	this->target->registerClippyOnto(identifier, clippyFunc);
+}

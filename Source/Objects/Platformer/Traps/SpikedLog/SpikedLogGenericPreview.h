@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	SpikedLogGenericPreview();
-	virtual ~SpikedLogGenericPreview() = default;
+	virtual ~SpikedLogGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	SmartAnimationSequenceNode* previewSpikedLog;
 };

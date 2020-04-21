@@ -36,6 +36,10 @@ SpikedLogSetRotationPreview::SpikedLogSetRotationPreview()
 	this->assemblyTextNode->addChild(this->ecxAnimationCount);
 }
 
+SpikedLogSetRotationPreview::~SpikedLogSetRotationPreview()
+{
+}
+
 HackablePreview* SpikedLogSetRotationPreview::clone()
 {
 	return SpikedLogSetRotationPreview::create();

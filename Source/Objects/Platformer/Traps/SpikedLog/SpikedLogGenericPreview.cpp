@@ -28,6 +28,10 @@ SpikedLogGenericPreview::SpikedLogGenericPreview()
 	this->previewNode->addChild(this->previewSpikedLog);
 }
 
+SpikedLogGenericPreview::~SpikedLogGenericPreview()
+{
+}
+
 HackablePreview* SpikedLogGenericPreview::clone()
 {
 	return SpikedLogGenericPreview::create();
