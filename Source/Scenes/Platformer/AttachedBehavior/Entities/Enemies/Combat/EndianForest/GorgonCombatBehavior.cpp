@@ -6,7 +6,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/MultiCast/CastStoneSkinHaste.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/Gorgon/DoubleSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/DoubleSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
@@ -49,7 +49,7 @@ void GorgonCombatBehavior::onLoad()
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(CastStoneSkinHaste::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
-		attackBehavior->registerAttack(DoubleSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::VeryCommon));
+		attackBehavior->registerAttack(DoubleSlash::create(4, 6, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::VeryCommon));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

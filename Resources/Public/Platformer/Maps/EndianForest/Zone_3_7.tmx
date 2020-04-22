@@ -399,14 +399,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="cyclops" type="entity" x="1757.4" y="1678.91" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="778" name="cyclops" type="entity" x="1978" y="1674" width="128" height="128">
+  <object id="693" name="cyclops" type="entity" x="1857.4" y="1675.91" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

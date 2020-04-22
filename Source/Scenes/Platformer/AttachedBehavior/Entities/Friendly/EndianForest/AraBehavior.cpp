@@ -88,7 +88,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterShort1,
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -117,7 +117,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -131,7 +131,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 			false
 		));
 	});

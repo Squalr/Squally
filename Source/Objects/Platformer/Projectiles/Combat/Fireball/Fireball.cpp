@@ -25,6 +25,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_FIREBALL_SPEED 11
 
+const std::string Fireball::HackIdentifierFireballSpeed = "fireball-speed";
+
 Fireball* Fireball::create(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	Fireball* instance = new Fireball(owner, target);
@@ -93,7 +95,7 @@ void Fireball::registerHackables()
 		{
 			LOCAL_FUNC_ID_FIREBALL_SPEED,
 			HackableCode::HackableCodeInfo(
-				"Fireball",
+				Fireball::HackIdentifierFireballSpeed,
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_FireBalls,

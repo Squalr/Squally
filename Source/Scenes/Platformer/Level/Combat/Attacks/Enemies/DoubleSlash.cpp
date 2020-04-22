@@ -15,19 +15,31 @@
 
 using namespace cocos2d;
 
-DoubleSlash* DoubleSlash::create(float attackDuration, float recoverDuration, Priority priority)
+DoubleSlash* DoubleSlash::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority, float weaveDelay)
 {
-	DoubleSlash* instance = new DoubleSlash(attackDuration, recoverDuration, priority);
+	DoubleSlash* instance = new DoubleSlash(damageMin, damageMax, attackDuration, recoverDuration, priority, weaveDelay);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DoubleSlash::DoubleSlash(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 3, 5, 0, attackDuration, recoverDuration, true)
+DoubleSlash::DoubleSlash(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority, float weaveDelay)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_SwordSlash,
+		priority,
+		damageMin,
+		damageMax,
+		0,
+		attackDuration,
+		recoverDuration,
+		true
+	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade1);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->weaveDelay = weaveDelay;
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);
@@ -39,7 +51,7 @@ DoubleSlash::~DoubleSlash()
 
 PlatformerAttack* DoubleSlash::cloneInternal()
 {
-	return DoubleSlash::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
+	return DoubleSlash::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* DoubleSlash::getString()
@@ -66,7 +78,7 @@ void DoubleSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 	for (int index = 0; index < int(targets.size()); index++)
 	{
 		this->runAction(Sequence::create(
-			DelayTime::create(float(index) * 0.25f),
+			DelayTime::create(float(index) * this->weaveDelay),
 			CallFunc::create([=]()
 			{
 				this->doDamageOrHealing(owner, targets[index]);

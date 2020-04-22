@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
+#include "Scenes/Platformer/Hackables/ScrappyClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHeal.h"
 
 #include "Resources/SoundResources.h"
@@ -69,6 +70,12 @@ void FireballTutorialBehavior::onLoad()
 		{
 			if (!this->hasRunTutorial)
 			{
+				args->projectile->registerClippyOnto(Fireball::HackIdentifierFireballSpeed, [=]
+				{
+					return ScrappyClippy::create(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create()));
+				});
+
 				this->runTutorial();
 			}
 		}

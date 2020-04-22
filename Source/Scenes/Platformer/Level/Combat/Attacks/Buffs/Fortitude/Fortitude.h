@@ -19,6 +19,7 @@ public:
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string FortitudeIdentifier;
+	static const std::string HackIdentifierFortitude;
 
 protected:
 	Fortitude(PlatformerEntity* caster, PlatformerEntity* target);

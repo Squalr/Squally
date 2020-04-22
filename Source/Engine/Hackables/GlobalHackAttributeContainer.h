@@ -29,7 +29,8 @@ private:
 
 	std::map<void*, HackableCode*> codeMap;
 	std::map<std::string, HackActivatedAbility*> abilityMap;
-	cocos2d::Node* hackablesContainer;
+	cocos2d::Node* hackableCodeContainer;
+	cocos2d::Node* hackableAbilityContainer;
 
 	static GlobalHackAttributeContainer* instance;
 };

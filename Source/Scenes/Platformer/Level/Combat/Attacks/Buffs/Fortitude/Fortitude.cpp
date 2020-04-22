@@ -36,6 +36,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_FORTITUDE 1
 
 const std::string Fortitude::FortitudeIdentifier = "fortitude";
+const std::string Fortitude::HackIdentifierFortitude = "fortitude";
 
 const int Fortitude::MaxMultiplier = 4;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
@@ -108,7 +109,7 @@ void Fortitude::registerHackables()
 		{
 			LOCAL_FUNC_ID_FORTITUDE,
 			HackableCode::HackableCodeInfo(
-				Fortitude::FortitudeIdentifier,
+				Fortitude::HackIdentifierFortitude,
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Shield,

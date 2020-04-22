@@ -103,7 +103,7 @@ void LifeStone::onInteract()
 	{
 		entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
-			healthBehavior->setHealth(healthBehavior->getMaxHealth());
+			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});
 	}), PlatformerFriendly::PlatformerFriendlyTag);
 }

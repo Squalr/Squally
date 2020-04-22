@@ -48,9 +48,11 @@ GlobalHackAttributeContainer::GlobalHackAttributeContainer() : super()
 {
 	this->codeMap = std::map<void*, HackableCode*>();
 	this->abilityMap = std::map<std::string, HackActivatedAbility*>();
-	this->hackablesContainer = Node::create();
+	this->hackableCodeContainer = Node::create();
+	this->hackableAbilityContainer = Node::create();
 
-	this->addChild(this->hackablesContainer);
+	this->addChild(this->hackableCodeContainer);
+	this->addChild(this->hackableAbilityContainer);
 }
 
 GlobalHackAttributeContainer::~GlobalHackAttributeContainer()
@@ -64,6 +66,10 @@ void GlobalHackAttributeContainer::initializeListeners()
 	this->addGlobalEventListener(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		HackableBase::HackTimersPaused = false;
+
+		// Hack abilities, unlike code, have lambdas that interact with the objects on the map. Bad things happen if we cache between scenes.
+		this->hackableAbilityContainer->removeAllChildren();
+		this->abilityMap.clear();
 	}));
 
 	this->addGlobalEventListener(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
@@ -97,7 +103,7 @@ void GlobalHackAttributeContainer::RegisterHackableCode(HackableCode* hackableCo
 	if (GlobalHackAttributeContainer::instance->codeMap.find(hackableCode->codePointer) == GlobalHackAttributeContainer::instance->codeMap.end())
 	{
 		GlobalHackAttributeContainer::instance->codeMap[hackableCode->codePointer] = hackableCode;
-		GlobalHackAttributeContainer::instance->hackablesContainer->addChild(hackableCode);
+		GlobalHackAttributeContainer::instance->hackableCodeContainer->addChild(hackableCode);
 	}
 }
 
@@ -123,6 +129,6 @@ void GlobalHackAttributeContainer::RegisterHackActivatedAbility(HackActivatedAbi
 	if (GlobalHackAttributeContainer::instance->abilityMap.find(identifier) == GlobalHackAttributeContainer::instance->abilityMap.end())
 	{
 		GlobalHackAttributeContainer::instance->abilityMap[identifier] = hackActivatedAbility;
-		GlobalHackAttributeContainer::instance->hackablesContainer->addChild(hackActivatedAbility);
+		GlobalHackAttributeContainer::instance->hackableAbilityContainer->addChild(hackActivatedAbility);
 	}
 }

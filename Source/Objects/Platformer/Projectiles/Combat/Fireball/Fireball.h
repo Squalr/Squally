@@ -16,6 +16,8 @@ public:
 	void runSpawnFX() override;
 	void runImpactFX();
 
+	static const std::string HackIdentifierFireballSpeed;
+
 protected:
 	Fireball(PlatformerEntity* owner, PlatformerEntity* target);
 	virtual ~Fireball();

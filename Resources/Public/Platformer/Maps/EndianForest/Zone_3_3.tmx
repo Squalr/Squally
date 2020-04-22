@@ -93,7 +93,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="1255.94" y="3196.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="6511.94" y="1086.19" width="146" height="423"/>
   <object id="707" name="edge-portal" type="object" x="-4" y="2956.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>

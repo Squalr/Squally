@@ -189,11 +189,11 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="864" name="dark-grass" type="terrain" x="-114.254" y="907.73">
+  <object id="864" name="dark-grass" type="terrain" x="-818.254" y="907.73">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-26.3307 2272.65,-27.1469 2272.65,1873.14 4.96209,1900.28"/>
+   <polygon points="0,-26.3307 2976.65,-27.1469 2976.65,1873.14 6.4992,1900.28"/>
   </object>
  </objectgroup>
  <objectgroup id="70" name="terrain -6">
@@ -207,7 +207,7 @@
    </properties>
    <polygon points="0,0 7987.78,-11.408 7987.78,787.153 -1.3689,797.228"/>
   </object>
-  <object id="947" name="dark-grass" type="terrain" x="-253.88" y="2720.19" width="2072.18" height="432.355">
+  <object id="947" name="dark-grass" type="terrain" x="-829.88" y="2720.19" width="2648.18" height="432.355">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -437,7 +437,7 @@
    <polygon points="0,0 1863.05,-13.8647 1864.82,354.271 0,365.991"/>
   </object>
   <object id="764" name="blue-grass" type="terrain" x="6015.74" y="1199.58">
-   <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 4214.23,1608.4 4206.35,83.0295 3824.33,84.1033 3819.57,1221.15 431.5,1226.14"/>
+   <polygon points="500.144,-47.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 4214.23,1608.4 4206.35,83.0295 3824.33,84.1033 3819.57,1221.15 431.5,1226.14 420.364,-24.5453"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
