@@ -20,7 +20,7 @@
 using namespace cocos2d;
 
 const std::string SquallyDefaultInventoryBehavior::MapKey = "squally-default-inventory-behavior";
-bool SquallyDefaultInventoryBehavior::GiveDeveloperItems = false;
+bool SquallyDefaultInventoryBehavior::GiveDeveloperItems = true;
 
 SquallyDefaultInventoryBehavior* SquallyDefaultInventoryBehavior::create(GameObject* owner)
 {
@@ -83,6 +83,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getEquipmentInventory()->forceInsert(WoodenSword::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);
 
 			for (int index = 0; index < 3; index++)
 			{

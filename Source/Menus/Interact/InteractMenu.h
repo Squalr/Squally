@@ -18,13 +18,13 @@ class LocalizedString;
 class InteractMenu : public SmartNode
 {
 public:
-	static InteractMenu* create(LocalizedString* displayString);
+	static InteractMenu* create(LocalizedString* displayString, float menuWidth = 128.0f);
 
 	void show();
 	void hide();
 
 protected:
-	InteractMenu(LocalizedString* displayString);
+	InteractMenu(LocalizedString* displayString, float menuWidth);
 	virtual ~InteractMenu();
 
 private:
@@ -34,6 +34,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	cocos2d::Size menuSize;
 	bool hasRelocated;
 	bool isShown;
 

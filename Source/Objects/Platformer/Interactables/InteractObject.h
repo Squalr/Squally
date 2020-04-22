@@ -24,13 +24,14 @@ public:
 	void disable();
 	void setInteractType(InteractType interactType);
 	void setOpenCallback(std::function<bool()> openCallback);
+	void setUnlockable(bool isUnlockable, std::function<bool()> unlockCallback = nullptr);
 	virtual void lock(bool animate = true);
 	virtual void unlock(bool animate = true);
 
 protected:
-
 	InteractObject(cocos2d::ValueMap& properties, InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
 	virtual ~InteractObject();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -45,6 +46,7 @@ protected:
 	CollisionObject* interactCollision;
 
 	bool isLocked;
+	bool isUnlockable;
 	bool disabled;
 	bool canInteract;
 	bool wasTripped;
@@ -56,9 +58,11 @@ private:
 
 	InteractMenu* interactMenu;
 	InteractMenu* lockedMenu;
+	InteractMenu* unlockMenu;
 
 	ClickableNode* lockButton;
 	ClickableNode* unlockButton;
 	
 	std::function<bool()> interactCallback;
+	std::function<bool()> unlockCallback;
 };

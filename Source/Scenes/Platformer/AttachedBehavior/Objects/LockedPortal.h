@@ -12,6 +12,7 @@ public:
 
 	static const std::string MapKey;
 	static const std::string PropertyItemRequired;
+	static const std::string SaveKeyItemPresented;
 
 protected:
 	LockedPortal(GameObject* owner);

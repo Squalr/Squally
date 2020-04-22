@@ -21,24 +21,27 @@
 
 using namespace cocos2d;
 
-InteractMenu* InteractMenu::create(LocalizedString* displayString)
+InteractMenu* InteractMenu::create(LocalizedString* displayString, float menuWidth)
 {
-	InteractMenu* instance = new InteractMenu(displayString);
+	InteractMenu* instance = new InteractMenu(displayString, menuWidth);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractMenu::InteractMenu(LocalizedString* displayString)
+InteractMenu::InteractMenu(LocalizedString* displayString, float menuWidth)
 {
 	this->uiElements = Node::create();
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
-	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 128, 48);
+	this->menuSize = Size(menuWidth, 48.0f);
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), this->menuSize.width, this->menuSize.height);
 	this->hasRelocated = false;
 	this->isShown = false;
 
+	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->uiElements->setOpacity(0);
 
 	this->uiElements->addChild(this->backdrop);
@@ -68,7 +71,7 @@ void InteractMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backdrop->setPosition(Vec2(-128.0f / 2.0f, -48.0f / 2.0f));
+	this->backdrop->setPosition(Vec2(-this->menuSize.width / 2.0f, -this->menuSize.height / 2.0f));
 	this->uiElements->setPosition(Vec2(0.0f, 144.0f));
 }
 

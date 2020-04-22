@@ -8019,21 +8019,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy();
-		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax : public LocalizedString
 	{
 	public:
@@ -8407,21 +8392,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Strength_Strength();
 		virtual ~Menus_Hacking_Abilities_Buffs_Strength_Strength() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Strength_StrengthClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_StrengthClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Strength_StrengthClippy();
-		virtual ~Menus_Hacking_Abilities_Buffs_Strength_StrengthClippy() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Blind_Blind : public LocalizedString
@@ -23227,6 +23197,21 @@ namespace Strings
 	private:
 		Platformer_Objects_Doors_Locked();
 		virtual ~Platformer_Objects_Doors_Locked() = default;
+	};
+
+	class Platformer_Objects_Doors_Unlock : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Unlock* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Unlock();
+		virtual ~Platformer_Objects_Doors_Unlock() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString

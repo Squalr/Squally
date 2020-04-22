@@ -40,19 +40,26 @@ InteractObject::InteractObject(ValueMap& properties, InteractType interactType, 
 	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
+	this->unlockMenu = InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(
+		{ ConstantString::create("[V]"), Strings::Platformer_Objects_Doors_Unlock::create() }
+	), 256.0f);
 	this->isLocked = !this->listenEvent.empty();
+	this->isUnlockable = false;
 	this->wasTripped = false;
 	this->canInteract = false;
 	this->disabled = false;
 	this->interactCallback = nullptr;
+	this->unlockCallback = nullptr;
 
 	this->interactCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
 	this->lockedMenu->setPosition(offset);
+	this->unlockMenu->setPosition(offset);
 
 	this->addChild(this->interactCollision);
 	this->addChild(this->interactMenu);
 	this->addChild(this->lockedMenu);
+	this->addChild(this->unlockMenu);
 	this->addChild(this->lockButton);
 	this->addChild(this->unlockButton);
 }
@@ -209,13 +216,29 @@ void InteractObject::setOpenCallback(std::function<bool()> interactCallback)
 	this->interactCallback = interactCallback;
 }
 
+void InteractObject::setUnlockable(bool isUnlockable, std::function<bool()> unlockCallback)
+{
+	this->isUnlockable = isUnlockable;
+	this->unlockCallback = unlockCallback;
+}
+
 void InteractObject::tryInteractObject()
 {
-	if (!this->isLocked && this->canInteract && !this->disabled)
+	if (this->canInteract && !this->disabled)
 	{
-		if (this->interactCallback == nullptr || this->interactCallback())
+		if (!this->isLocked)
 		{
-			this->onInteract();
+			if (this->interactCallback == nullptr || this->interactCallback())
+			{
+				this->onInteract();
+			}
+		}
+		else if (this->isUnlockable)
+		{
+			if (this->unlockCallback == nullptr || this->unlockCallback())
+			{
+				this->unlock();
+			}
 		}
 	}
 }
@@ -234,16 +257,25 @@ void InteractObject::updateInteractMenuVisibility()
 	{
 		this->interactMenu->hide();
 		this->lockedMenu->hide();
+		this->unlockMenu->hide();
 		return;
 	}
 
 	if (this->isLocked && this->canInteract)
 	{
-		this->lockedMenu->show();
+		if (this->isUnlockable)
+		{
+			this->unlockMenu->show();
+		}
+		else
+		{
+			this->lockedMenu->show();
+		}
 	}
 	else
 	{
 		this->lockedMenu->hide();
+		this->unlockMenu->hide();
 	}
 
 	if (!this->isLocked && this->canInteract)
