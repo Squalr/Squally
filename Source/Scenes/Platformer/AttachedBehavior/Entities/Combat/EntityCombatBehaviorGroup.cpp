@@ -12,7 +12,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 
 using namespace cocos2d;
@@ -38,7 +38,6 @@ EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(
 	EntityDialogueBehavior::create(owner),
 	EntityDeveloperBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
-	EntityInventoryBehavior::create(owner),
 	EntitySelectionOverlayBehavior::create(owner),
 	EntityTextOverlayBehavior::create(owner),
 	})

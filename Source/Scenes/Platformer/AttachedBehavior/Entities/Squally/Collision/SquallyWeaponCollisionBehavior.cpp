@@ -13,7 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyWeaponCollisionBehavior::MapKey = "squally-collisions";
+const std::string SquallyWeaponCollisionBehavior::MapKey = "squally-weapon-collision";
 
 SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObject* owner)
 {
@@ -37,6 +37,7 @@ SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObjec
 SquallyWeaponCollisionBehavior::SquallyWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
+	this->canEngage = true;
 
 	if (this->squally == nullptr)
 	{
@@ -50,6 +51,11 @@ SquallyWeaponCollisionBehavior::~SquallyWeaponCollisionBehavior()
 
 void SquallyWeaponCollisionBehavior::onLoad()
 {
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
+	{
+		this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon);
+	}));
+
 	this->defer([=]()
 	{
 		this->squally->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
@@ -71,48 +77,47 @@ void SquallyWeaponCollisionBehavior::onDisable()
 
 void SquallyWeaponCollisionBehavior::onWeaponChange()
 {
-	this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
+	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+		Weapon* weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
+
+		if (weapon != nullptr)
 		{
-			Weapon* weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
-
-			if (weapon != nullptr)
-			{
-				weaponBehavior->setWeaponSize(weapon->getWeaponCollisionSize());
-				weaponBehavior->setWeaponOffset(weapon->getWeaponOffset());
-			}
-			else
-			{
-				const Size NoWeaponSize = Size(64.0f, 64.0f);
-				const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
-
-				weaponBehavior->setWeaponSize(NoWeaponSize);
-				weaponBehavior->setWeaponOffset(NoWeaponOffset);
-			}
-		});
-
-		weaponBehavior->rebuildWeaponCollision();
-
-		if (weaponBehavior->weaponCollision != nullptr)
+			this->setWeaponSize(weapon->getWeaponCollisionSize());
+			this->setWeaponOffset(weapon->getWeaponOffset());
+		}
+		else
 		{
-			weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
-			{
-				if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					return CollisionObject::CollisionResult::DoNothing;
-				}
+			const Size NoWeaponSize = Size(64.0f, 64.0f);
+			const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
 
-				PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
-
-				if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					// Encountered enemy w/ first-strike
-					PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
-				}
-
-				return CollisionObject::CollisionResult::DoNothing;
-			});
+			this->setWeaponSize(NoWeaponSize);
+			this->setWeaponOffset(NoWeaponOffset);
 		}
 	});
+
+	this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon);
+
+	if (this->weaponCollision != nullptr)
+	{
+		this->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+		{
+			if (!this->canEngage || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
+
+			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+			if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				// Encountered enemy w/ first-strike
+				PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
+
+				this->canEngage = false;
+			}
+
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+	}
 }

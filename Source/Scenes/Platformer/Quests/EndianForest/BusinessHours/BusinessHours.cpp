@@ -46,7 +46,7 @@ BusinessHours::~BusinessHours()
 
 void BusinessHours::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

@@ -17,6 +17,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/SmartClippingNode.h"
+#include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
@@ -248,7 +249,12 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 		
 		properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 		properties[GameObject::MapKeyName] = Value(helperName);
-		// properties[GameObject::MapKeyFlipX] = Value(true);
+		int helperEq = 0;
+
+		if (helperName == Guano::MapKey)
+		{
+			helperEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)).asInt();
+		}
 
 		ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 			properties,
@@ -258,7 +264,7 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 
 				if (helper != nullptr)
 				{
-					Node* helperAvatar = this->buildEntityFrame(helper, Vec2::ZERO, 0);
+					Node* helperAvatar = this->buildEntityFrame(helper, Vec2::ZERO, helperEq);
 
 					helperAvatar->setPosition(Vec2(-356.0f + 160.0f, 0.0f));
 
@@ -305,9 +311,13 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 			this->buildSaveButtons();
 
 			GameUtils::focus(this);
+
+			return false;
 		}, [=]()
 		{
 			GameUtils::focus(this);
+
+			return false;
 		});
 		
 		GameUtils::focus(this->confirmationMenu);
@@ -358,18 +368,15 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	content->addChild(entityClip);
 	content->addChild(entityFrame);
 	
-	if (eq > 0)
-	{
-		Sprite* eqFrame = Sprite::create(UIResources::HUD_LevelFrame);
-		LocalizedLabel* eqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(std::to_string(eq)));
-		
-		eqFrame->setPosition(Vec2(0.0f, -64.0f));
-		eqLabel->setPosition(Vec2(0.0f, -64.0f));
-		eqLabel->enableOutline(Color4B::BLACK, 2);
+	Sprite* eqFrame = Sprite::create(UIResources::HUD_LevelFrame);
+	LocalizedLabel* eqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(std::to_string(eq)));
+	
+	eqFrame->setPosition(Vec2(0.0f, -64.0f));
+	eqLabel->setPosition(Vec2(0.0f, -64.0f));
+	eqLabel->enableOutline(Color4B::BLACK, 2);
 
-		content->addChild(eqFrame);
-		content->addChild(eqLabel);
-	}
+	content->addChild(eqFrame);
+	content->addChild(eqLabel);
 
 	return content;
 }

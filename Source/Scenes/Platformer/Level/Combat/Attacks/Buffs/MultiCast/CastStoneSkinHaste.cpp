@@ -26,7 +26,8 @@ CastStoneSkinHaste* CastStoneSkinHaste::create(float attackDuration, float recov
 	return instance;
 }
 
-CastStoneSkinHaste::CastStoneSkinHaste(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 12, attackDuration, recoverDuration)
+CastStoneSkinHaste::CastStoneSkinHaste(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 12, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 

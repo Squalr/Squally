@@ -18,6 +18,7 @@ public:
 
 	PlatformerEntity* getEntity();
 	void applyDamage(PlatformerEntity* caster, int damage);
+	void applyManaRestore(PlatformerEntity* caster, int manaGain);
 	void applyHealing(PlatformerEntity* caster, int healing);
 	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);
@@ -30,6 +31,7 @@ public:
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
 	bool isPlayerEntry();
+	void setSelected(bool isSelected);
 
 	static const float CastPercentage;
 	static const float BaseSpeedMultiplier;
@@ -65,6 +67,7 @@ private:
 	std::vector<TimelineEntry*> targetsAsEntries;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
+	cocos2d::Sprite* circleSelected;
 	cocos2d::Sprite* emblem;
 	cocos2d::Sprite* skull;
 	cocos2d::Node* orphanedAttackCache;

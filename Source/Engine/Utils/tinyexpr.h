@@ -71,9 +71,6 @@ te_expr *te_compile(const char *expression, const te_variable *variables, int va
 /* Evaluates the expression. */
 unsigned char te_eval(const te_expr *n);
 
-/* Prints debugging information on the syntax tree. */
-void te_print(const te_expr *n);
-
 /* Frees the expression. */
 /* This is safe to call on NULL pointers. */
 void te_free(te_expr *n);

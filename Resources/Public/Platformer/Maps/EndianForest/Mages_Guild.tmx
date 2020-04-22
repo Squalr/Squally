@@ -168,7 +168,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="892" name="cypress" type="entity" x="4530.19" y="383.339" width="128" height="128">
+  <object id="892" name="fraya" type="entity" x="4530.19" y="383.339" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
@@ -785,7 +785,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="842" name="merlin" type="entity" x="4110.41" y="153.778" width="128" height="128">
+  <object id="842" name="cypress" type="entity" x="4110.41" y="153.778" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
     <property name="flip-y" type="bool" value="true"/>

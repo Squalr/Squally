@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class PlatformerEnemy;
 class Squally;
 
-class SquallyWeaponCollisionBehavior : public AttachedBehavior
+class SquallyWeaponCollisionBehavior : public EntityWeaponCollisionBehavior
 {
 public:
 	static SquallyWeaponCollisionBehavior* create(GameObject* owner);
@@ -25,9 +25,11 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef AttachedBehavior super;
+	typedef EntityWeaponCollisionBehavior super;
 
 	void onWeaponChange();
 
+	bool canEngage;
+	
 	Squally* squally;
 };

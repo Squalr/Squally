@@ -5,7 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
-#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -28,7 +28,7 @@ DartLauncherUpdateTimerPreview::DartLauncherUpdateTimerPreview()
 	this->launchCountDown = 0.0f;
 	this->dartLauncher = Sprite::create(ObjectResources::Traps_DartLauncher_CANON);
 	this->dart = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
-	this->eaxTimerStr = ConstantString::create(std::to_string(this->launchCountDown));
+	this->eaxTimerStr = ConstantFloat::create(this->launchCountDown);
 	this->eaxTimer = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, this->eaxTimerStr);
 	this->isLaunching = false;
 
@@ -73,13 +73,9 @@ void DartLauncherUpdateTimerPreview::update(float dt)
 
 	this->launchCountDown = MathUtils::clamp(this->launchCountDown - dt, 0.0f, 4.0f);
 
-	std::stringstream stream;
-	stream << std::fixed << std::setprecision(2) << this->launchCountDown;
-	std::string s = stream.str();
-
-	this->eaxTimerStr->setString(stream.str());
+	this->eaxTimerStr->setValue(this->launchCountDown);
 	
-	if (!this->isLaunching && this->launchCountDown <= 0)
+	if (!this->isLaunching && this->launchCountDown <= 0.0f)
 	{
 		this->isLaunching = true;
 

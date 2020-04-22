@@ -90,6 +90,7 @@ void Laser::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Laser::MapKey,
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LaserCountDownPreview::create(),
 				{
@@ -123,8 +124,11 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 		return;
 	}
 
-	volatile float* countDownPtr = &this->currentLaserCountDown;
-	volatile float* deltaTimePtr = &dt;
+	static volatile float* countDownPtr;
+	static volatile float* deltaTimePtr;
+
+	countDownPtr = &this->currentLaserCountDown;
+	deltaTimePtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);

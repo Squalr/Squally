@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class StrengthClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Strength : public Buff
 {
 public:
 	static Strength* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string StrengthIdentifier;
@@ -30,7 +27,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
 
 private:
 	typedef Buff super;
@@ -39,11 +36,11 @@ private:
 	
 	volatile int currentDamageDelt;
 	
-	StrengthClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 	
 	static const int MinMultiplier;
 	static const int MaxMultiplier;
+	static const int DamageIncrease;
 	static const float Duration;
 };

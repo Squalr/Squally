@@ -20,7 +20,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ObjectResources.h"
@@ -66,7 +66,7 @@ RepairRam::~RepairRam()
 
 void RepairRam::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 
@@ -76,12 +76,12 @@ void RepairRam::onLoad(QuestState questState)
 		});
 	}, Squally::MapKey);
 	
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
+	ObjectEvents::WatchForObject<Ram>(this, [=](Ram* ram)
 	{
 		this->ram = ram;
 

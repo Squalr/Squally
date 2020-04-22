@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class AnimationPart;
-class Clippy;
 class HackableData;
 class PlatformerEntity;
 class Projectile;
@@ -20,6 +19,8 @@ class PivotLauncher : public HackableObject
 public:
 	void setAutoLaunch(bool isAutoLaunch);
 
+	static const std::string HackIdentifierLaunchTimer;
+
 protected:
 	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource, int projectilePoolCapacity);
 	virtual ~PivotLauncher();
@@ -30,7 +31,6 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	virtual Projectile* createProjectile() = 0;
-	virtual Clippy* getTimerClippy();
 	virtual HackablePreview* getTimerPreview();
 
 	ProjectilePool* projectilePool;

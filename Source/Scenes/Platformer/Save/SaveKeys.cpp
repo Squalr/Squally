@@ -2,9 +2,9 @@
 
 const std::string SaveKeys::SaveKeyMap = "SAVE_KEY_MAP";
 const std::string SaveKeys::SaveKeyEventTriggeredPrefix = "SAVE_KEY_EVENT_TRIGGERED_";
+const std::string SaveKeys::SaveKeySquallyRuneCooldowns = "SAVE_KEY_SQUALLY_RUNE_COOLDOWNS";
 const std::string SaveKeys::SaveKeySquallyHealth = "SAVE_KEY_SQUALLY_HEALTH";
 const std::string SaveKeys::SaveKeySquallyMana = "SAVE_KEY_SQUALLY_MANA";
-const std::string SaveKeys::SaveKeySquallyRuneCooldowns = "SAVE_KEY_SQUALLY_RUNE_COOLDOWNS";
 const std::string SaveKeys::SaveKeySquallyEq = "SAVE_KEY_SQUALLY_EQ";
 const std::string SaveKeys::SaveKeySquallyEqExperience = "SAVE_KEY_SQUALLY_EQ_EXPERIENCE";
 const std::string SaveKeys::SaveKeySquallyInventory = "SAVE_KEY_SQUALLY_INVENTORY";
@@ -17,6 +17,14 @@ const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
 const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
+
+const std::string SaveKeys::SaveKeyGuanoHealth = "SAVE_KEY_GUANO_HEALTH";
+const std::string SaveKeys::SaveKeyGuanoMana = "SAVE_KEY_GUANO_MANA";
+const std::string SaveKeys::SaveKeyGuanoEq = "SAVE_KEY_GUANO_EQ";
+const std::string SaveKeys::SaveKeyGuanoEqExperience = "SAVE_KEY_GUANO_EQ_EXPERIENCE";
+
+const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
+const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
 

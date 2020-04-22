@@ -9,6 +9,7 @@ using namespace cocos2d;
 
 const std::string PlatformerEvents::EventSpawnToTransitionLocation = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
 const std::string PlatformerEvents::EventWarpToLocationPrefix = "EVENT_WARP_TO_LOCATION_";
+const std::string PlatformerEvents::EventWarpToObjectIdPrefix = "EVENT_WARP_TO_OBJECT_ID_";
 const std::string PlatformerEvents::EventBeforePlatformerMapChange = "EVENT_BEFORE_PLATFORMER_MAP_CHANGE";
 const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJACK";
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
@@ -30,6 +31,10 @@ const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
 const std::string PlatformerEvents::EventDisallowPause = "EVENT_DISALLOW_PAUSE";
 const std::string PlatformerEvents::EventDispelIllusion = "EVENT_DISPEL_ILLUSION";
 const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
+const std::string PlatformerEvents::EventSaveRespawn = "EVENT_SAVE_RESPAWN";
+const std::string PlatformerEvents::EventBeforeLoadRespawn = "EVENT_BEFORE_LOAD_RESPAWN";
+const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
+const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
@@ -39,12 +44,22 @@ void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 	);
 }
 
-void PlatformerEvents::TriggerWarpToLocation(WarpArgs args)
+void PlatformerEvents::TriggerWarpObjectToLocation(WarpObjectToLocationArgs args)
 {
-	const std::string identifier = std::to_string((unsigned long long)(args.target));
+	const std::string identifier = args.object->getUniqueIdentifier();
 
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventWarpToLocationPrefix + identifier,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args)
+{
+	const std::string identifier = args.object->getUniqueIdentifier();
+
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventWarpToObjectIdPrefix + identifier,
 		&args
 	);
 }
@@ -207,5 +222,34 @@ void PlatformerEvents::TriggerSavePosition()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventSavePosition
+	);
+}
+
+void PlatformerEvents::TriggerSaveRespawn(SaveRespawnArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventSaveRespawn,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerBeforeLoadRespawn()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventBeforeLoadRespawn
+	);
+}
+
+void PlatformerEvents::TriggerLoadRespawn()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventLoadRespawn
+	);
+}
+
+void PlatformerEvents::TriggerUnstuck()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventUnstuck
 	);
 }

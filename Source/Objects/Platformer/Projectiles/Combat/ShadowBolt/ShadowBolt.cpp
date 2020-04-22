@@ -9,7 +9,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/Combat/ShadowBolt/ShadowBoltClippy.h"
 #include "Objects/Platformer/Projectiles/Combat/ShadowBolt/ShadowBoltGenericPreview.h"
 #include "Objects/Platformer/Projectiles/Combat/ShadowBolt/ShadowBoltSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -44,11 +43,9 @@ ShadowBolt::ShadowBolt(PlatformerEntity* owner, PlatformerEntity* target)
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->launchSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
-	this->reverseClippy = ShadowBoltClippy::create();
 
 	this->shadowBoltAnim->playAnimationRepeat(FXResources::ShadowBolt_ShadowBolt_0000, 0.05f);
 
-	this->registerClippy(this->reverseClippy);
 	this->postFXNode->addChild(this->launchSound);
 	this->postFXNode->addChild(this->impactSound);
 	this->postFXNode->addChild(this->explosionAnim);
@@ -71,11 +68,6 @@ void ShadowBolt::update(float dt)
 	this->setShadowBoltSpeed();
 
 	this->shadowBoltAnim->setFlippedX(this->getLaunchVelocity().x < 0.0f);
-}
-
-void ShadowBolt::enableClippy()
-{
-	this->reverseClippy->setIsEnabled(true);
 }
 
 void ShadowBolt::runSpawnFX()
@@ -106,6 +98,7 @@ void ShadowBolt::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"ShadowBolt",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_ApplySpeed::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				ShadowBoltSpeedPreview::create(),
 				{
@@ -116,7 +109,6 @@ void ShadowBolt::registerHackables()
 				int(HackFlags::Shadow),
 				5.0f,
 				0.0f,
-				this->reverseClippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_StopShadowBolt::create(),
@@ -153,10 +145,15 @@ HackablePreview* ShadowBolt::createDefaultPreview()
 NO_OPTIMIZE void ShadowBolt::setShadowBoltSpeed()
 {
 	volatile static float* freeMemoryForUser = new float[16];
-	volatile float speedMultiplier = 1.0f;
-	volatile float speedMultiplierTemp = 1.0f;
-	volatile float* speedMultiplierPtr = &speedMultiplier;
-	volatile float* speedMultiplierTempPtr = &speedMultiplierTemp;
+	static volatile float speedMultiplier;
+	static volatile float speedMultiplierTemp;
+	static volatile float* speedMultiplierPtr;
+	static volatile float* speedMultiplierTempPtr;
+
+	speedMultiplier = 1.0f;
+	speedMultiplierTemp = 1.0f;
+	speedMultiplierPtr = &speedMultiplier;
+	speedMultiplierTempPtr = &speedMultiplierTemp;
 
 	// Initialize xmm0 and xmm1
 	ASM(push ZAX);

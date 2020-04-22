@@ -17,6 +17,7 @@ class MechanicalFlail : public HackableObject
 public:
 	static MechanicalFlail* create(cocos2d::ValueMap& properties);
 
+	static const std::string HackIdentifierTargetAngle;
 	static const std::string MapKey;
 
 protected:
@@ -33,9 +34,11 @@ protected:
 private:
 	typedef HackableObject super;
 	void startSwing();
-	void swingToAngle(float angle);
+	void setSwingAngle(float angle);
+	void doSwing();
 	void buildChain();
 
+	volatile float previousAngle;
 	volatile float targetAngle;
 	cocos2d::Sprite* joint;
 	cocos2d::Node* flailChain;

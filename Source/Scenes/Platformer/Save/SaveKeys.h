@@ -7,9 +7,9 @@ class SaveKeys
 public:
 	static const std::string SaveKeyMap;
 	static const std::string SaveKeyEventTriggeredPrefix;
+	static const std::string SaveKeySquallyRuneCooldowns;
 	static const std::string SaveKeySquallyHealth;
 	static const std::string SaveKeySquallyMana;
-	static const std::string SaveKeySquallyRuneCooldowns;
 	static const std::string SaveKeySquallyEq;
 	static const std::string SaveKeySquallyEqExperience;
 	static const std::string SaveKeySquallyPositionX;
@@ -22,6 +22,14 @@ public:
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;
 	static const std::string SaveKeyHasGivenDefaultItems;
+
+	static const std::string SaveKeyGuanoHealth;
+	static const std::string SaveKeyGuanoMana;
+	static const std::string SaveKeyGuanoEq;
+	static const std::string SaveKeyGuanoEqExperience;
+
+	static const std::string SaveKeyRespawnMap;
+	static const std::string SaveKeyRespawnObjectId;
 
 	static const std::string SaveKeyLevelRubberband;
 	

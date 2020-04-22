@@ -14,9 +14,8 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -100,13 +99,13 @@ void Tent::initializeListeners()
 	{
 		this->runHealAnimation();
 
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
 		{
-			squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->setHealth(healthBehavior->getMaxHealth());
 			});
-		}), Squally::MapKey);
+		}), PlatformerFriendly::PlatformerFriendlyTag);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

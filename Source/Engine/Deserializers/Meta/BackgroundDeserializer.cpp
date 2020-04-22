@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string BackgroundDeserializer::MapKeyBackground = "background";
+const std::string BackgroundDeserializer::MapKey = "background";
 
 BackgroundDeserializer* BackgroundDeserializer::create()
 {
@@ -32,7 +32,7 @@ BackgroundDeserializer::~BackgroundDeserializer()
 
 void BackgroundDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	std::string background = GameUtils::getKeyOrDefault(properties, BackgroundDeserializer::MapKeyBackground, Value("")).asString();
+	std::string background = GameUtils::getKeyOrDefault(properties, BackgroundDeserializer::MapKey, Value("")).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* sprite = Sprite::create("Private/Platformer/Backgrounds/" + background + ".png");

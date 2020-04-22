@@ -39,7 +39,7 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 	this->deltaString = Strings::Common_PlusConstant::create();
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 	this->levelUpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_LevelUp::create());
-	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
+	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillYellow));
 	this->levelUpFx = SmartParticles::create(ParticleResources::Platformer_Combat_LevelUp);
 	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp2);
 	this->tickCounterA = 0;

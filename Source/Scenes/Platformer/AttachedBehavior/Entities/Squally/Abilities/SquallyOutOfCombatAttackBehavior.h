@@ -20,16 +20,16 @@ protected:
 	void onLoad() override;
 	void onDisable() override;
 	Projectile* createProjectile() override;
+	void decorateProjectile(Projectile* projectile) override;
+	std::string getOutOfCombatAttackAnimation() override;
+	std::string getOutOfCombatAttackSound() override;
+	float getOutOfCombatAttackOnset() override;
+	float getOutOfCombatAttackSustain() override;
 
 private:
 	typedef EntityOutOfCombatAttackBehavior super;
 	
-	std::string getOutOfCombatAttackAnimation();
-	std::string getOutOfCombatAttackSound();
-	float getOutOfCombatAttackOnset();
-	float getOutOfCombatAttackSustain();
 	Weapon* getWeapon();
-	Projectile* createProjectile(std::function<Projectile*()> createFunc);
 
 	Projectile* projectile;
 

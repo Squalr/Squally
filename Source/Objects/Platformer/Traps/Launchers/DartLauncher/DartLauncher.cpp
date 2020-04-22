@@ -12,7 +12,6 @@
 #include "Objects/Platformer/Projectiles/Dart/Dart.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncherGenericPreview.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncherUpdateTimerPreview.h"
-#include "Objects/Platformer/Traps/Launchers/DartLauncher/DartNopClippy.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -37,9 +36,6 @@ DartLauncher* DartLauncher::create(ValueMap& properties)
 
 DartLauncher::DartLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_DartLauncher_Animations, 2)
 {
-	this->dartNopClippy = DartNopClippy::create();
-	
-	this->registerClippy(this->dartNopClippy);
 }
 
 DartLauncher::~DartLauncher()
@@ -54,11 +50,6 @@ void DartLauncher::initializePositions()
 HackablePreview* DartLauncher::createDefaultPreview()
 {
 	return DartLauncherGenericPreview::create();
-}
-
-Clippy* DartLauncher::getTimerClippy()
-{
-	return this->dartNopClippy;
 }
 
 HackablePreview* DartLauncher::getTimerPreview()

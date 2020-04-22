@@ -2,7 +2,7 @@
 #include <map>
 #include <string>
 
-#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableBase.h"
 
 #ifndef _WIN32
 	#include <sys/mman.h>
@@ -140,11 +140,10 @@
 #define ASM_NOP15() ASM_NOP14() ASM_NOP1()
 #define ASM_NOP16() ASM_NOP15() ASM_NOP1()
 
-class Clippy;
 class HackablePreview;
 class LocalizedString;
 
-class HackableCode : public HackableAttribute
+class HackableCode : public HackableBase
 {
 public:
 	enum Register
@@ -167,22 +166,21 @@ public:
 
 	struct HackableCodeInfo
 	{
-		std::string hackableObjectIdentifier;
+		std::string hackableIdentifier;
 		LocalizedString* functionName;
+		HackBarColor hackBarColor;
 		std::string iconResource;
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
 		int hackFlags;
 		float duration;
 		float cooldown;
-		Clippy* clippy;
 		std::vector<ReadOnlyScript> readOnlyScripts;
 		bool excludeDefaultScript;
 
-		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
-	
+		HackableCodeInfo() : hackableIdentifier(""), functionName(nullptr), hackBarColor(HackBarColor::Purple), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	};
 
 	struct HackableCodeMarkers
@@ -200,7 +198,6 @@ public:
 
 	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
 	std::vector<ReadOnlyScript> getReadOnlyScripts();
-	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
 	void* getPointer() override;
@@ -217,7 +214,8 @@ protected:
 	virtual ~HackableCode();
 
 private:
-	typedef HackableAttribute super;
+	typedef HackableBase super;
+	friend class GlobalHackAttributeContainer;
 
 	typedef std::map<unsigned char, HackableCode::HackableCodeMarkers> MarkerMap;
 	typedef std::map<void*, MarkerMap> CodeMap;
@@ -225,7 +223,6 @@ private:
 	static std::vector<HackableCode*> parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 	static MarkerMap& parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 
-	std::string hackableCodeIdentifier;
 	std::string assemblyString;
 	std::string originalAssemblyString;
 	void* codePointer;

@@ -53,6 +53,7 @@ public:
 	void setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible);
 	virtual void disableInteraction(uint8_t newOpacity = 255);
 	virtual void enableInteraction(uint8_t newOpacity = 255);
+	void toggleAllowInteractionEdits(bool allowInteractionEdits);
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
 	cocos2d::Node* getContent();
 	cocos2d::Node* getContentSelected();
@@ -67,4 +68,5 @@ private:
 
 	ClickableTextNode* entry;
 	std::string iconResource;
+	bool allowInteractionEdits;
 };

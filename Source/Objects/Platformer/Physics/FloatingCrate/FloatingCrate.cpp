@@ -88,6 +88,7 @@ void FloatingCrate::registerHackables()
 			HackableCode::HackableCodeInfo(
 				FloatingCrate::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Anvil,
 				FloatingCrateGetDensityPreview::create(),
 				{

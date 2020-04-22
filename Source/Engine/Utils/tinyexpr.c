@@ -41,25 +41,15 @@ For log = natural log uncomment the next line. */
 #include <stdio.h>
 #include <limits.h>
 
-#ifndef NAN
-#define NAN (0.0/0.0)
-#endif
-
-#ifndef INFINITY
-#define INFINITY (1.0/0.0)
-#endif
-
-
 typedef unsigned char (*te_fun2)(int, int);
 
-enum {
+enum
+{
     TOK_NULL = TE_CLOSURE7+1, TOK_ERROR, TOK_END, TOK_SEP,
     TOK_OPEN, TOK_CLOSE, TOK_NUMBER, TOK_VARIABLE, TOK_INFIX
 };
 
-
 enum {TE_CONSTANT = 1};
-
 
 typedef struct state {
     const char *start;
@@ -81,23 +71,33 @@ typedef struct state {
 #define ARITY(TYPE) ( ((TYPE) & (TE_FUNCTION0 | TE_CLOSURE0)) ? ((TYPE) & 0x00000007) : 0 )
 #define NEW_EXPR(type, ...) new_expr((type), (const te_expr*[]){__VA_ARGS__})
 
-static te_expr *new_expr(const unsigned char type, const te_expr *parameters[]) {
+static te_expr *new_expr(const unsigned char type, const te_expr *parameters[])
+{
     const unsigned char arity = ARITY(type);
     const unsigned char psize = sizeof(void*) * arity;
     const unsigned char size = (sizeof(te_expr) - sizeof(void*)) + psize + (IS_CLOSURE(type) ? sizeof(void*) : 0);
     te_expr *ret = malloc(size);
     memset(ret, 0, size);
-    if (arity && parameters) {
+
+    if (arity && parameters)
+    {
         memcpy(ret->parameters, parameters, psize);
     }
+
     ret->type = type;
     ret->bound = 0;
+
     return ret;
 }
 
 
-void te_free_parameters(te_expr *n) {
-    if (!n) return;
+void te_free_parameters(te_expr *n)
+{
+    if (!n)
+    {
+        return;
+    }
+
     switch (TYPE_MASK(n->type)) {
         case TE_FUNCTION7: case TE_CLOSURE7: te_free(n->parameters[6]);     /* Falls through. */
         case TE_FUNCTION6: case TE_CLOSURE6: te_free(n->parameters[5]);     /* Falls through. */
@@ -109,30 +109,25 @@ void te_free_parameters(te_expr *n) {
     }
 }
 
-
-void te_free(te_expr *n) {
+void te_free(te_expr *n)
+{
     if (!n) return;
     te_free_parameters(n);
     free(n);
 }
 
-
-static unsigned char fac(unsigned char a) {/* simplest version of fac */
-    if (a < 0.0)
-        return NAN;
-    if (a > UINT_MAX)
-        return INFINITY;
+static unsigned char fac(unsigned char a)
+{
     unsigned char ua = (unsigned char )(a);
     unsigned long int result = 1, i;
     for (i = 1; i <= ua; i++) {
-        if (i > ULONG_MAX / result)
-            return INFINITY;
         result *= i;
     }
     return (int)result;
 }
 
-static const te_variable *find_lookup(const state *s, const char *name, unsigned char len) {
+static const te_variable *find_lookup(const state *s, const char *name, unsigned char len)
+{
     unsigned char iters;
     const te_variable *var;
     if (!s->lookup) return 0;
@@ -217,21 +212,26 @@ static unsigned char comma(unsigned char a, unsigned char b)
 }
 
 
-void next_token(state *s) {
+void next_token(state *s)
+{
     s->type = TOK_NULL;
 
-    do {
-
-        if (!*s->next){
+    do
+    {
+        if (!*s->next)
+        {
             s->type = TOK_END;
             return;
         }
 
         /* Try reading a number. */
-        if ((s->next[0] >= '0' && s->next[0] <= '9') || s->next[0] == '.') {
-            s->value = strtod(s->next, (char**)&s->next);
+        if ((s->next[0] >= '0' && s->next[0] <= '9') || s->next[0] == '.')
+        {
+            s->value = (unsigned char)(strtod(s->next, (char**)&s->next));
             s->type = TOK_NUMBER;
-        } else {
+        }
+        else
+        {
             /* Look for a variable or builtin function call. */
             if (s->next[0] >= 'a' && s->next[0] <= 'z') {
                 const char *start;
@@ -240,9 +240,12 @@ void next_token(state *s) {
 
                 const te_variable *var = find_lookup(s, start, s->next - start);
 
-                if (!var) {
+                if (!var)
+                {
                     s->type = TOK_ERROR;
-                } else {
+                }
+                else
+                {
                     switch(TYPE_MASK(var->type))
                     {
                         case TE_VARIABLE:
@@ -261,8 +264,9 @@ void next_token(state *s) {
                             break;
                     }
                 }
-
-            } else {
+            }
+            else
+            {
                 /* Look for an operator or special character. */
                 switch (s->next++[0]) {
                     case '+': s->type = TOK_INFIX; s->function = add; break;
@@ -293,12 +297,14 @@ static te_expr *list(state *s);
 static te_expr *expr(state *s);
 static te_expr *power(state *s);
 
-static te_expr *base(state *s) {
+static te_expr *base(state *s)
+{
     /* <base>      =    <constant> | <variable> | <function-0> {"(" ")"} | <function-1> <power> | <function-X> "(" <expr> {"," <expr>} ")" | "(" <list> ")" */
     te_expr *ret;
     unsigned char arity;
 
-    switch (TYPE_MASK(s->type)) {
+    switch (TYPE_MASK(s->type))
+    {
         case TOK_NUMBER:
             ret = new_expr(TE_CONSTANT, 0);
             ret->value = s->value;
@@ -317,11 +323,16 @@ static te_expr *base(state *s) {
             ret->function = s->function;
             if (IS_CLOSURE(s->type)) ret->parameters[0] = s->context;
             next_token(s);
-            if (s->type == TOK_OPEN) {
+
+            if (s->type == TOK_OPEN)
+            {
                 next_token(s);
-                if (s->type != TOK_CLOSE) {
+                if (s->type != TOK_CLOSE)
+                {
                     s->type = TOK_ERROR;
-                } else {
+                }
+                else
+                {
                     next_token(s);
                 }
             }
@@ -347,20 +358,28 @@ static te_expr *base(state *s) {
             if (IS_CLOSURE(s->type)) ret->parameters[arity] = s->context;
             next_token(s);
 
-            if (s->type != TOK_OPEN) {
+            if (s->type != TOK_OPEN)
+            {
                 s->type = TOK_ERROR;
-            } else {
+            }
+            else
+            {
                 unsigned char i;
-                for(i = 0; i < arity; i++) {
+                for(i = 0; i < arity; i++)
+                {
                     next_token(s);
                     ret->parameters[i] = expr(s);
-                    if(s->type != TOK_SEP) {
+                    if(s->type != TOK_SEP)
+                    {
                         break;
                     }
                 }
-                if(s->type != TOK_CLOSE || i != arity - 1) {
+                if(s->type != TOK_CLOSE || i != arity - 1)
+                {
                     s->type = TOK_ERROR;
-                } else {
+                }
+                else
+                {
                     next_token(s);
                 }
             }
@@ -370,9 +389,12 @@ static te_expr *base(state *s) {
         case TOK_OPEN:
             next_token(s);
             ret = list(s);
-            if (s->type != TOK_CLOSE) {
+            if (s->type != TOK_CLOSE)
+            {
                 s->type = TOK_ERROR;
-            } else {
+            }
+            else
+            {
                 next_token(s);
             }
             break;
@@ -380,7 +402,7 @@ static te_expr *base(state *s) {
         default:
             ret = new_expr(0, 0);
             s->type = TOK_ERROR;
-            ret->value = NAN;
+            ret->value = 0;
             break;
     }
 
@@ -473,7 +495,7 @@ static te_expr *list(state *s) {
 
 
 unsigned char te_eval(const te_expr *n) {
-    if (!n) return NAN;
+    if (!n) return 0;
 
     switch(TYPE_MASK(n->type)) {
         case TE_CONSTANT: return n->value;
@@ -490,7 +512,7 @@ unsigned char te_eval(const te_expr *n) {
                 case 5: return TE_FUN(int, int, int, int, int)(M(0), M(1), M(2), M(3), M(4));
                 case 6: return TE_FUN(int, int, int, int, int, int)(M(0), M(1), M(2), M(3), M(4), M(5));
                 case 7: return TE_FUN(int, int, int, int, int, int, int)(M(0), M(1), M(2), M(3), M(4), M(5), M(6));
-                default: return NAN;
+                default: return 0;
             }
 
         case TE_CLOSURE0: case TE_CLOSURE1: case TE_CLOSURE2: case TE_CLOSURE3:
@@ -504,10 +526,10 @@ unsigned char te_eval(const te_expr *n) {
                 case 5: return TE_FUN(void*, int, int, int, int, int)(n->parameters[5], M(0), M(1), M(2), M(3), M(4));
                 case 6: return TE_FUN(void*, int, int, int, int, int, int)(n->parameters[6], M(0), M(1), M(2), M(3), M(4), M(5));
                 case 7: return TE_FUN(void*, int, int, int, int, int, int, int)(n->parameters[7], M(0), M(1), M(2), M(3), M(4), M(5), M(6));
-                default: return NAN;
+                default: return 0;
             }
 
-        default: return NAN;
+        default: return 0;
     }
 
 }
@@ -565,44 +587,19 @@ te_expr *te_compile(const char *expression, const te_variable *variables, int va
 }
 
 
-unsigned char te_interp(const char *expression, int* error) {
+unsigned char te_interp(const char *expression, int* error)
+{
     te_expr *n = te_compile(expression, 0, 0, error);
     unsigned char ret;
-    if (n) {
+
+    if (n)
+    {
         ret = te_eval(n);
         te_free(n);
-    } else {
-        ret = NAN;
+    }
+    else
+    {
+        ret = 0;
     }
     return ret;
-}
-
-static void pn (const te_expr *n, unsigned char depth) {
-    unsigned char i, arity;
-    printf("%*s", depth, "");
-
-    switch(TYPE_MASK(n->type)) {
-    case TE_CONSTANT: printf("%f\n", n->value); break;
-    case TE_VARIABLE: printf("bound %p\n", n->bound); break;
-
-    case TE_FUNCTION0: case TE_FUNCTION1: case TE_FUNCTION2: case TE_FUNCTION3:
-    case TE_FUNCTION4: case TE_FUNCTION5: case TE_FUNCTION6: case TE_FUNCTION7:
-    case TE_CLOSURE0: case TE_CLOSURE1: case TE_CLOSURE2: case TE_CLOSURE3:
-    case TE_CLOSURE4: case TE_CLOSURE5: case TE_CLOSURE6: case TE_CLOSURE7:
-         arity = ARITY(n->type);
-         printf("f%d", arity);
-         for(i = 0; i < arity; i++) {
-             printf(" %p", n->parameters[i]);
-         }
-         printf("\n");
-         for(i = 0; i < arity; i++) {
-             pn(n->parameters[i], depth + 1);
-         }
-         break;
-    }
-}
-
-
-void te_print(const te_expr *n) {
-    pn(n, 0);
 }

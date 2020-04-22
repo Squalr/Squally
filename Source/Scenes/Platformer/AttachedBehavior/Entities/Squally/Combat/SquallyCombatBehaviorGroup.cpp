@@ -5,7 +5,9 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyCombatManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyHackingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyAttackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyReceiveItemBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatRespawnBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Inventory/SquallyInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Inventory/SquallyReceiveItemBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyVisualBehaviorGroup.h"
@@ -25,11 +27,13 @@ SquallyCombatBehaviorGroup* SquallyCombatBehaviorGroup::create(GameObject* owner
 
 SquallyCombatBehaviorGroup::SquallyCombatBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityCombatBehaviorGroup::create(owner),
+	SquallyInventoryBehavior::create(owner),
 	ScrappyCombatManagerBehavior::create(owner),
 	SquallyHackingBehavior::create(owner),
 	SquallyAttackBehavior::create(owner),
 	SquallyFloatBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),
+	SquallyCombatRespawnBehavior::create(owner),
 	SquallyVisualBehaviorGroup::create(owner),
 	SquallyReceiveItemBehavior::create(owner),
 	})

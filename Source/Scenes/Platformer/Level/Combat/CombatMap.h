@@ -3,10 +3,12 @@
 #include "Scenes/MapBase.h"
 
 class CardsMenu;
+class CancelMenu;
 class ChoicesMenu;
 class CollectablesMenu;
 class CombatAIHelper;
 class CombatHud;
+class ConfirmationHud;
 class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
@@ -24,21 +26,32 @@ class Timeline;
 class CombatMap : public MapBase
 {
 public:
+	struct StatsOverrides
+	{
+		int health;
+		int mana;
+		bool useOverrides;
+
+		StatsOverrides() : health(0), mana(0), useOverrides(false) { }
+		StatsOverrides(int health, int mana) : health(health), mana(mana), useOverrides(true) { }
+	};
+
 	struct CombatData
 	{
 		std::string entityType;
+		std::string identifier;
 		std::string battleBehavior;
 		std::string dropPool;
+		StatsOverrides statsOverrides;
 
-		CombatData(std::string entityType, std::string battleBehavior, std::string dropPool = "") : entityType(entityType), battleBehavior(battleBehavior), dropPool(dropPool) { }
+		CombatData(std::string entityType, std::string identifier, std::string battleBehavior, StatsOverrides statsOverrides = StatsOverrides(), std::string dropPool = "")
+			: entityType(entityType), identifier(identifier), battleBehavior(battleBehavior), statsOverrides(statsOverrides), dropPool(dropPool) { }
 	};
 
-	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
+	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 
 protected:
-	CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
+	CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 	virtual ~CombatMap();
 
 	void onEnter() override;
@@ -58,6 +71,7 @@ private:
 
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
+	CancelMenu* cancelMenu;
 	CombatHud* combatHud;
 	FirstStrikeMenu* firstStrikeMenu;
 	DefeatMenu* defeatMenu;
@@ -66,6 +80,7 @@ private:
 	CombatAIHelper* enemyAIHelper;
 	HackerModeWarningHud* hackerModeWarningHud;
 	NotificationHud* notificationHud;
+	ConfirmationHud* confirmationHud;
 
 	Hud* combatEndBackdrop;
 
@@ -77,7 +92,6 @@ private:
 	bool playerFirstStrike;
 	std::vector<CombatData> playerData;
 	std::vector<CombatData> enemyData;
-	std::string enemyIdentifier;
 
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 

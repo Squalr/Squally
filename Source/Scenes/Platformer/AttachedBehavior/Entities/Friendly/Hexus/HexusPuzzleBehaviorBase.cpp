@@ -24,7 +24,7 @@ void HexusPuzzleBehaviorBase::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
@@ -46,4 +46,20 @@ void HexusPuzzleBehaviorBase::onEnter()
 			false
 		));
 	});
+}
+
+LocalizedString* HexusPuzzleBehaviorBase::getCustomWinDialogue()
+{
+	return Strings::Platformer_Dialogue_Hexus_GoodGameZalgo::create();
+}
+
+LocalizedString* HexusPuzzleBehaviorBase::getCustomDrawDialogue()
+{
+	return Strings::Platformer_Dialogue_Hexus_ADrawZalgo::create();
+}
+
+LocalizedString* HexusPuzzleBehaviorBase::getCustomLossDialogue()
+{
+	// TODO: Reinstate zalgo text when microsoft fixes their shit
+	return Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create();
 }

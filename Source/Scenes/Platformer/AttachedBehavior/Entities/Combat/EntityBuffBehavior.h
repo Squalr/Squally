@@ -52,6 +52,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void repositionBuffIcons();
+
 	cocos2d::Node* buffNode;
 	
 	PlatformerEntity* entity;

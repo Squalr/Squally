@@ -18,7 +18,7 @@
 #include "Objects/Platformer/Projectiles/Arrows/VoidArrow.h"
 #include "Objects/Platformer/Projectiles/Arrows/WoodenArrow.h"
 #include "Objects/Platformer/Projectiles/WandSpells/EnergyBolt.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
@@ -59,11 +59,11 @@ SquallyOutOfCombatAttackBehavior::~SquallyOutOfCombatAttackBehavior()
 
 void SquallyOutOfCombatAttackBehavior::onLoad()
 {
-	this->scheduleUpdate();
+	super::onLoad();
 
 	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		this->doOutOfCombatAttack(this->getOutOfCombatAttackAnimation(), this->getOutOfCombatAttackSound(), this->getOutOfCombatAttackOnset(), this->getOutOfCombatAttackSustain());
+		this->attack();
 	});
 }
 
@@ -153,55 +153,67 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 		return nullptr;
 	}
 
+	Projectile* projectile = nullptr;
+
 	// Bows
 	if (dynamic_cast<BoneBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<BoneArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return BoneArrow::create(); });
+		projectile = BoneArrow::create();
 	}
 	else if (dynamic_cast<CrystalBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<CrystalArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return CrystalArrow::create(); });
+		projectile = CrystalArrow::create();
 	}
 	else if (dynamic_cast<DemonicBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<DemonicArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return DemonicArrow::create(); });
+		projectile = DemonicArrow::create();
 	}
 	else if (dynamic_cast<GoldenBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<GoldenArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return GoldenArrow::create(); });
+		projectile = GoldenArrow::create();
 	}
 	else if (dynamic_cast<HuntersBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<HuntersArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return HuntersArrow::create(); });
+		projectile = HuntersArrow::create();
 	}
 	else if (dynamic_cast<IvyBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<IvyArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return IvyArrow::create(); });
+		projectile = IvyArrow::create();
 	}
 	else if (dynamic_cast<SteelBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<SteelArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return SteelArrow::create(); });
+		projectile = SteelArrow::create();
 	}
 	else if (dynamic_cast<VoidBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<VoidArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return VoidArrow::create(); });
+		projectile = VoidArrow::create();
 	}
 	else if (dynamic_cast<WoodenBow*>(weapon) != nullptr)
 	{
-		return dynamic_cast<WoodenArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return WoodenArrow::create(); });
+		projectile = WoodenArrow::create();
 	}
 	// Wands
 	else if (dynamic_cast<Wand*>(weapon) != nullptr)
 	{
-		return dynamic_cast<Wand*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return EnergyBolt::create(); });
+		projectile = EnergyBolt::create();
 	}
 
-	return nullptr;
+	if (projectile != nullptr)
+	{
+		projectile->setProjectileRotation(this->squally->isFlippedX() ? 180.0f : 0.0f);
+	}
+
+	return projectile;
 }
 
-Projectile* SquallyOutOfCombatAttackBehavior::createProjectile(std::function<Projectile*()> createFunc)
+void SquallyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 {
-	Projectile* projectile = createFunc();
+	super::decorateProjectile(projectile);
+
+	if (projectile == nullptr)
+	{
+		return;
+	}
 
 	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -220,6 +232,4 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile(std::function<Pro
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-
-	return projectile;
 }

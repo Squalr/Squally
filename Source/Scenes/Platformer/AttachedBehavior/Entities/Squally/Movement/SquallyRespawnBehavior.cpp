@@ -13,7 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -38,7 +38,6 @@ SquallyRespawnBehavior* SquallyRespawnBehavior::create(GameObject* owner)
 SquallyRespawnBehavior::SquallyRespawnBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
-	this->spawnCoords = Vec2::ZERO;
 	this->isRespawning = false;
 
 	if (this->squally == nullptr)
@@ -53,8 +52,6 @@ SquallyRespawnBehavior::~SquallyRespawnBehavior()
 
 void SquallyRespawnBehavior::onLoad()
 {
-	this->spawnCoords = GameUtils::getWorldCoords(this->squally);
-
 	if (this->squally != nullptr)
 	{
 		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
@@ -88,22 +85,19 @@ void SquallyRespawnBehavior::respawn(float duration)
 	}
 
 	this->isRespawning = true;
+
+	PlatformerEvents::TriggerBeforeLoadRespawn();
 	
 	this->runAction(Sequence::create(
 		DelayTime::create(duration),
 		CallFunc::create([=]()
 		{
-			if (this->spawnCoords != Vec2::ZERO)
-			{
-				const Vec2 SpawnOffset = Vec2(0.0f, 64.0f);
-
-				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords + SpawnOffset));
-			}
-			
 			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->revive();
 			});
+
+			PlatformerEvents::TriggerLoadRespawn();
 
 			this->isRespawning = false;
 		}),

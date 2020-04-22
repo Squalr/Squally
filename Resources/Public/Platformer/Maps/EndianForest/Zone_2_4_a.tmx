@@ -142,7 +142,7 @@
     <property name="transition" value="treasure-room"/>
    </properties>
   </object>
-  <object id="972" name="cipher-chest" type="object" x="369.333" y="1542.06" width="128" height="128">
+  <object id="972" name="chest" type="object" x="369.333" y="1542.06" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="8,9,3,0"/>

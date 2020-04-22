@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTongues.h"
@@ -81,6 +82,12 @@ void CastCurseOfTongues::onCleanup()
 
 bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
+	// This spell is horrible in a 1v2+ situation
+	if (CombatUtils::GetLivingCount(sameTeam) <= 1 && CombatUtils::GetLivingCount(otherTeam) <= 2)
+	{
+		return false;
+	}
+
 	int debuffCount = 0;
 
 	for (auto next : otherTeam)

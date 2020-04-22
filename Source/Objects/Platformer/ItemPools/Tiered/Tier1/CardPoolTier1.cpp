@@ -16,28 +16,25 @@ CardPoolTier1* CardPoolTier1::create(SampleMethod sampleMethod, int min, int max
 	return instance;
 }
 
-CardPoolTier1::CardPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "card-pool-t1-low", sampleMethod, min, max)
+CardPoolTier1::CardPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "card-pool-t1", sampleMethod, min, max)
 {
 	this->addItemToPool(ItemChance::create(Binary0::create(), ItemChance::Probability::Rare));
 	this->addItemToPool(ItemChance::create(Binary1::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Binary2::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Binary3::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Binary4::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Binary5::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Binary2::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Binary3::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Binary4::create(), ItemChance::Probability::Artifact));
 	
 	this->addItemToPool(ItemChance::create(Decimal0::create(), ItemChance::Probability::Rare));
 	this->addItemToPool(ItemChance::create(Decimal1::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Decimal2::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Decimal3::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Decimal4::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Decimal5::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Decimal2::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Decimal3::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Decimal4::create(), ItemChance::Probability::Artifact));
 	
 	this->addItemToPool(ItemChance::create(Hex0::create(), ItemChance::Probability::Rare));
 	this->addItemToPool(ItemChance::create(Hex1::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Hex2::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Hex3::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Hex4::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Hex5::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Hex2::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Hex3::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Hex4::create(), ItemChance::Probability::Artifact));
 }
 
 CardPoolTier1::~CardPoolTier1()

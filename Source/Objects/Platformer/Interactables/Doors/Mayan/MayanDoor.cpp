@@ -20,7 +20,7 @@
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemPurple.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemRed.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -100,7 +100,7 @@ void MayanDoor::onEnter()
 {
 	super::onEnter();
 	
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
@@ -207,6 +207,7 @@ void MayanDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-red",
 				Strings::Menus_Hacking_Objects_MayanDoor_Combination1::create(),
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Ruby,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
@@ -214,8 +215,7 @@ void MayanDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				15.0f,
-				0.0f,
-				nullptr // this->pendulumBladeClippy
+				0.0f
 			)
 		},
 		{
@@ -223,6 +223,7 @@ void MayanDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-blue",
 				Strings::Menus_Hacking_Objects_MayanDoor_Combination2::create(),
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_Diamond,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
@@ -230,8 +231,7 @@ void MayanDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				15.0f,
-				0.0f,
-				nullptr // this->pendulumBladeClippy
+				0.0f
 			)
 		},
 		{
@@ -239,6 +239,7 @@ void MayanDoor::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-purple",
 				Strings::Menus_Hacking_Objects_MayanDoor_Combination3::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrystalShard,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
@@ -246,8 +247,7 @@ void MayanDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				15.0f,
-				0.0f,
-				nullptr // this->pendulumBladeClippy
+				0.0f
 			)
 		},
 	};

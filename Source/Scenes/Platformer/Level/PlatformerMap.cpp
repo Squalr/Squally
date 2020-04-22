@@ -10,6 +10,7 @@
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -41,6 +42,7 @@
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
+#include "Scenes/Platformer/Level/Huds/ConfirmationHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -49,6 +51,8 @@
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
+
+const std::string PlatformerMap::TransitionRespawn = "transition-special-respawn";
 
 PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transition)
 {
@@ -71,6 +75,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 
 	this->transition = transition;
 	this->gameHud = GameHud::create();
+	this->confirmationHud = ConfirmationHud::create();
 	this->notificationHud = NotificationHud::create();
 	this->combatFadeInNode = Node::create();
 	this->cipher = Cipher::create();
@@ -119,6 +124,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->confirmationHud);
 }
 
 PlatformerMap::~PlatformerMap()
@@ -142,6 +148,12 @@ void PlatformerMap::onEnterTransitionDidFinish()
 	super::onEnterTransitionDidFinish();
 
 	PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
+
+	if (this->transition == PlatformerMap::TransitionRespawn)
+	{
+		// Override transition spawn location if respawning
+		this->warpSquallyToRespawn();
+	}
 }
 
 void PlatformerMap::onExit()
@@ -175,11 +187,38 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforeLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		// Using combat transitions for respawn transition, for now.
+		this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		this->combatFadeInNode->runAction(Sequence::create(
+			FadeTo::create(1.0f, 0),
+			CallFunc::create([=]()
+			{
+				this->combatFadeInNode->removeAllChildren();
+			}),
+			nullptr
+		));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnstuck, [=](EventCustom* eventCustom)
+	{
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			PlatformerEvents::TriggerBeforePlatformerMapChange();
+			PlatformerMap* map = PlatformerMap::create(this->mapResource, this->transition);
+
+			return map;
+		}));
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
 	{
 		this->awaitingConfirmationEnd = true;
-
-		GameUtils::focus(this->notificationHud);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmationEnd, [=](EventCustom* eventCustom)
@@ -201,6 +240,7 @@ void PlatformerMap::initializeListeners()
 
 			GameUtils::focus(this->alchemyMenu);
 			GameUtils::resume(this->notificationHud);
+			GameUtils::resume(this->confirmationHud);
 		}
 	}));
 
@@ -215,6 +255,38 @@ void PlatformerMap::initializeListeners()
 
 			GameUtils::focus(this->blacksmithingMenu);
 			GameUtils::resume(this->notificationHud);
+			GameUtils::resume(this->confirmationHud);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSaveRespawn, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::SaveRespawnArgs* args = static_cast<PlatformerEvents::SaveRespawnArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			SaveManager::SaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(this->mapResource));
+			SaveManager::SaveProfileData(SaveKeys::SaveKeyRespawnObjectId, Value(args->objectIdentifier));
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
+	{
+		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+
+		if (savedMap != this->mapResource)
+		{
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+			{
+				PlatformerEvents::TriggerBeforePlatformerMapChange();
+				PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
+
+				return map;
+			}));
+		}
+		else
+		{
+			this->warpSquallyToRespawn();
 		}
 	}));
 
@@ -314,6 +386,7 @@ void PlatformerMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(false);
 		this->partyMenu->setVisible(true);
+		this->partyMenu->open();
 		GameUtils::focus(this->partyMenu);
 	});
 	
@@ -424,4 +497,14 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
+}
+
+void PlatformerMap::warpSquallyToRespawn()
+{
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		std::string savedObjectId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnObjectId, Value("error-no-object-id")).asString();
+
+		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
+	}, Squally::MapKey);
 }

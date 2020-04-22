@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTonguesClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTonguesGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -41,6 +40,7 @@ const std::string CurseOfTongues::CurseOfTonguesIdentifier = "curse-of-tongues";
 // Note: UI sets precision on these to 1 digit
 const float CurseOfTongues::MinSpeed = -1.25f;
 const float CurseOfTongues::DefaultSpeed = -1.25f;
+const float CurseOfTongues::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
 const float CurseOfTongues::MaxSpeed = 1.0f;
 const float CurseOfTongues::Duration = 6.0f;
 
@@ -53,16 +53,14 @@ CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntit
 	return instance;
 }
 
-CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
+CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
 {
-	this->clippy = CurseOfTonguesClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
 
 	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -93,14 +91,6 @@ void CurseOfTongues::initializePositions()
 	super::initializePositions();
 }
 
-void CurseOfTongues::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void CurseOfTongues::registerHackables()
 {
 	super::registerHackables();
@@ -110,8 +100,6 @@ void CurseOfTongues::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -119,6 +107,7 @@ void CurseOfTongues::registerHackables()
 			HackableCode::HackableCodeInfo(
 				CurseOfTongues::CurseOfTonguesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Voodoo,
 				CurseOfTonguesGenericPreview::create(),
 				{
@@ -134,16 +123,31 @@ void CurseOfTongues::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()) + 
-						"mov dword ptr [esi], -0.5",
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
+						"mov dword ptr [esi], -0.5f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
 						// x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()) + 
-						"mov dword ptr [rsi], -0.5"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
+						"mov dword ptr [rsi], -0.5f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 					)
 				}
 			)
@@ -172,10 +176,15 @@ void CurseOfTongues::onModifyTimelineSpeed(float* timelineSpeed, std::function<v
 
 NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = CurseOfTongues::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = CurseOfTongues::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);

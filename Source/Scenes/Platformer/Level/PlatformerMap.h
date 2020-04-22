@@ -7,6 +7,7 @@ class BlacksmithingMenu;
 class Cipher;
 class ClickableTextNode;
 class CollectablesMenu;
+class ConfirmationHud;
 class GameHud;
 class Hexus;
 class InventoryMenu;
@@ -21,6 +22,8 @@ public:
 	static PlatformerMap* create(std::string mapResource, std::string transition = "");
 
 	bool loadMap(std::string mapResource) override;
+	
+	static const std::string TransitionRespawn;
 
 protected:
 	PlatformerMap(std::string transition = "");
@@ -34,9 +37,12 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 
+	void warpSquallyToRespawn();
+
 	bool awaitingConfirmationEnd;
 
 	GameHud* gameHud;
+	ConfirmationHud* confirmationHud;
 	NotificationHud* notificationHud;
 	Cipher* cipher;
 	Hexus* hexus;

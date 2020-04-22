@@ -17,6 +17,7 @@
 #include "Objects/Camera/CameraFocus.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -44,6 +45,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
+	this->circleSelected = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircleSelected) : Sprite::create(UIResources::Combat_EnemyCircleSelected);
 	this->emblem = Sprite::create(entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource());
 	this->skull = Sprite::create(UIResources::Combat_Skull);
 	this->orphanedAttackCache = Node::create();
@@ -54,9 +56,11 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 
 	this->interruptBonus = 0.0f;
 	this->progress = 0.0f;
+	this->circleSelected->setVisible(false);
 
 	this->addChild(this->line);
 	this->addChild(this->circle);
+	this->addChild(this->circleSelected);
 	this->addChild(this->emblem);
 	this->addChild(this->skull);
 	this->addChild(this->orphanedAttackCache);
@@ -143,6 +147,19 @@ void TimelineEntry::initializeListeners()
 			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				this->applyHealing(args->caster, args->damageOrHealing);
+			}
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestore, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
+		{
+			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->applyManaRestore(args->caster, args->damageOrHealing);
 			}
 		}
 	}));
@@ -248,6 +265,18 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 	});
 
 	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
+}
+
+void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain)
+{
+	int mana = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
+
+	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	{
+		manaBehavior->setMana(mana + manaGain);
+	});
+
+	CombatEvents::TriggerManaRestoreDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), manaGain));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
@@ -464,4 +493,10 @@ void TimelineEntry::resetTimeline()
 bool TimelineEntry::isPlayerEntry()
 {
 	return (dynamic_cast<PlatformerEnemy*>(this->entity) == nullptr);
+}
+
+void TimelineEntry::setSelected(bool isSelected)
+{
+	this->circle->setVisible(!isSelected);
+	this->circleSelected->setVisible(isSelected);
 }

@@ -150,8 +150,7 @@ void TargetSelectionMenu::chooseCurrentTarget()
 		return;
 	}
 
-	CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(this->selectedEntity));
-	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+	CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs({ this->selectedEntity }));
 }
 
 void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
@@ -259,8 +258,7 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 
 		selection->setEntityClickCallbacks([=]()
 		{
-			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entityRef));
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs({ entityRef }));
 		},
 		[=]()
 		{

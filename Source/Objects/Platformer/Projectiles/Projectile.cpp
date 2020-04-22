@@ -40,6 +40,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 	);
 	this->rotationNode = Node::create();
 	this->contentNode = Node::create();
+	this->decorNode = Node::create();
 	this->postFXNode = Node::create();
 	this->ownerCollisionRef = nullptr;
 	this->enabled = true;
@@ -48,6 +49,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 
 	this->addTag(Projectile::ProjectileTag);
 
+	this->contentNode->addChild(this->decorNode);
 	this->collisionObject->addChild(this->contentNode);
 	this->collisionObject->addChild(this->postFXNode);
 	this->rotationNode->addChild(this->collisionObject);
@@ -164,8 +166,9 @@ void Projectile::registerHackables()
 		{
 			LOCAL_FUNC_ID_VELOCITY,
 			HackableCode::HackableCodeInfo(
-				"proximity-object",
+				"projectile-velocity",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_AxeSlash,
 				this->createVelocityPreview(),
 				{
@@ -182,8 +185,9 @@ void Projectile::registerHackables()
 		{
 			LOCAL_FUNC_ID_ACCELERATION,
 			HackableCode::HackableCodeInfo(
-				"proximity-object",
+				"projectile-acceleration",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
+				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_Scale,
 				this->createAccelerationPreview(),
 				{
@@ -308,7 +312,21 @@ void Projectile::disableUpdate()
 	this->canUpdate = false;
 }
 
+void Projectile::addDecor(Node* decor)
+{
+	this->decorNode->addChild(decor);
+}
+
+void Projectile::clearDecor()
+{
+	this->decorNode->removeAllChildren();
+}
+
 void Projectile::runSpawnFX()
+{
+}
+
+void Projectile::runImpactFX()
 {
 }
 
@@ -321,9 +339,13 @@ NO_OPTIMIZE Vec3 Projectile::getLaunchVelocity()
 {
 	Vec3 velocityCopy = this->launchVelocity;
 	static const volatile int* freeMemory = new int[128];
-	const volatile float* velocityPtrX = &velocityCopy.x;
-	const volatile float* velocityPtrY = &velocityCopy.y;
-	const volatile float* velocityPtrZ = &velocityCopy.z;
+	static const volatile float* velocityPtrX;
+	static const volatile float* velocityPtrY;
+	static const volatile float* velocityPtrZ;
+
+	velocityPtrX = &velocityCopy.x;
+	velocityPtrY = &velocityCopy.y;
+	velocityPtrZ = &velocityCopy.z;
 
 	// Push velocity variables onto FPU stack
 	ASM(push ZAX)
@@ -362,10 +384,14 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE Vec3 Projectile::getLaunchAcceleration()
 {
 	Vec3 accelerationCopy = this->launchAcceleration;
-	const volatile float* accelerationPtrX = &accelerationCopy.x;
-	const volatile float* accelerationPtrY = &accelerationCopy.y;
-	const volatile float* accelerationPtrZ = &accelerationCopy.z;
 	static const volatile int* freeMemory = new int[128];
+	const volatile float* accelerationPtrX;
+	const volatile float* accelerationPtrY;
+	const volatile float* accelerationPtrZ;
+
+	accelerationPtrX = &accelerationCopy.x;
+	accelerationPtrY = &accelerationCopy.y;
+	accelerationPtrZ = &accelerationCopy.z;
 
 	// Push acceleration variables onto FPU stack
 	ASM(push ZAX)

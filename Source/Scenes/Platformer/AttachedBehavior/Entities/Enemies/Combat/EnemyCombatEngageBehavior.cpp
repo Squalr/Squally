@@ -88,17 +88,44 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 
 	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
 	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
-
-	// Build player team
-	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKey, SquallyCombatBehaviorGroup::MapKey));
+	
+	ObjectEvents::QueryObjects<Squally>(QueryObjectsArgs<Squally>([&](Squally* squally)
+	{
+		playerCombatData.push_back(CombatMap::CombatData(
+			squally->getEntityKey(),
+			squally->getUniqueIdentifier(),
+			squally->getBattleBehavior(),
+			CombatMap::StatsOverrides(
+				squally->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+				squally->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+			)
+		));
+	}), Squally::MapKey);
 	
 	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
 	{
-		playerCombatData.push_back(CombatMap::CombatData(helper->getEntityKey(), helper->getBattleBehavior()));
+		playerCombatData.push_back(CombatMap::CombatData(
+			helper->getEntityKey(),
+			helper->getUniqueIdentifier(),
+			helper->getBattleBehavior(),
+			CombatMap::StatsOverrides(
+				helper->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+				helper->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+			)
+		));
 	}), Squally::BattleTag);
 
 	// Build enemy team
-	enemyCombatData.push_back(CombatMap::CombatData(this->enemy->getEntityKey(), this->enemy->getBattleBehavior(), this->enemy->getDropPool()));
+	enemyCombatData.push_back(CombatMap::CombatData(
+		this->enemy->getEntityKey(),
+		this->enemy->getUniqueIdentifier(),
+		this->enemy->getBattleBehavior(),
+		CombatMap::StatsOverrides(
+			this->enemy->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+			this->enemy->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+		),
+		this->enemy->getDropPool()
+	));
 
 	if (!this->enemy->getBattleTag().empty())
 	{
@@ -106,7 +133,16 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 		{
 			if (enemyAlly != this->enemy && enemyAlly->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior(), enemyAlly->getDropPool()));
+				enemyCombatData.push_back(CombatMap::CombatData(
+					enemyAlly->getEntityKey(),
+					enemyAlly->getUniqueIdentifier(),
+					enemyAlly->getBattleBehavior(),
+					CombatMap::StatsOverrides(
+						enemyAlly->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+						enemyAlly->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+					),
+					enemyAlly->getDropPool()
+				));
 			}
 		}), this->enemy->getBattleTag());
 	}
@@ -128,7 +164,6 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 				CombatMap* combatMap = CombatMap::create(
 					this->enemy->getBattleMapResource(),
 					firstStrike,
-					this->enemy->getUniqueIdentifier(),
 					playerCombatData,
 					enemyCombatData
 				);

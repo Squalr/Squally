@@ -13,6 +13,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Physics/CollisionResolver.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -81,6 +82,8 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
 	this->cachedRotation = 0.0f;
+	this->cachedWorldCoords = Vec2::ZERO;
+	this->cachedTick = 0;
 }
 
 CollisionObject::~CollisionObject()
@@ -152,9 +155,9 @@ void CollisionObject::onDeveloperModeDisable()
 	}
 }
 
-void CollisionObject::despawn()
+void CollisionObject::onDespawn()
 {
-	super::despawn();
+	super::onDespawn();
 
 	CollisionObject::UnregisterCollisionObject(this);
 }
@@ -468,6 +471,8 @@ void CollisionObject::setThisOrBindPosition(cocos2d::Vec2 position)
 	{
 		this->bindTarget->setPosition(position);
 	}
+
+	this->computeWorldCoords(true);
 }
 
 CollisionObject::Shape CollisionObject::determineShape()
@@ -492,6 +497,15 @@ CollisionObject::Shape CollisionObject::determineShape()
 	}
 
 	return Shape::Polygon;
+}
+
+void CollisionObject::computeWorldCoords(bool force)
+{
+	if (this->cachedTick != SmartScene::GlobalTick || force)
+	{
+		this->cachedTick = SmartScene::GlobalTick;
+		this->cachedWorldCoords = GameUtils::getWorldCoords(this, false);
+	}
 }
 
 void CollisionObject::propagateRotation()

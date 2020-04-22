@@ -22,9 +22,11 @@ public:
 protected:
 	Water(cocos2d::ValueMap& properties);
 	virtual ~Water();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	void applyWaterForce(CollisionObject* target, float dt);
 
 private:
@@ -33,11 +35,13 @@ private:
 	CollisionObject* waterCollision;
 	LiquidNode* water;
 
+	void runObjectSplash(CollisionObject* other, bool isExit);
 	void runSplashes();
 	void runSplash(int index);
 
 	cocos2d::Size waterSize;
 	int splashes;
+	float noSplashDelay;
 
 	static const float SplashSpacing;
 	static const float WaterGravity;

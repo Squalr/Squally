@@ -32,212 +32,56 @@ StatsTables* StatsTables::getInstance()
 
 StatsTables::StatsTables()
 {
-	// SQUALLY
-	StatsTables::StatsTable[Squally::MapKey] = Stats(16, 8, 48, 
-	{
+	// These are the standard stat increment gains from leveling up
+	// HP | MP | ATK | EXP REQUIRED
+	std::vector<std::tuple<int, int, int, int>> increments = {
 		// 2x
-		{ 2, 1, 64 },
-		{ 2, 1, 128 },
-		{ 2, 1, 256 },
-		{ 2, 1, 512 },
-		{ 2, 1, 1024 },
-		{ 2, 1, 2048 },
+		std::make_tuple(2, 1, 1, 64),
+		std::make_tuple(2, 1, 1, 128),
+		std::make_tuple(2, 1, 1, 256),
+		std::make_tuple(2, 1, 1, 512),
+		std::make_tuple(2, 1, 1, 1024),
+		std::make_tuple(2, 1, 1, 2048),
 		// 1.25x
-		{ 3, 2, 2560 },
-		{ 3, 2, 3200 },
-		{ 3, 2, 4000 },
-		{ 3, 2, 5000 },
-		{ 3, 2, 6250 },
+		std::make_tuple(3, 2, 1, 2560),
+		std::make_tuple(3, 2, 1, 3200),
+		std::make_tuple(3, 2, 1, 4000),
+		std::make_tuple(3, 2, 1, 5000),
+		std::make_tuple(3, 2, 1, 6250),
 		// 1.1x
-		{ 4, 3, 6875 },
-		{ 4, 3, 7562 },
-		{ 4, 3, 8318 },
-		{ 4, 3, 9150 },
-		{ 5, 4, 10065 },
-		{ 5, 4, 11072 },
-		{ 5, 4, 12179 },
-		{ 5, 4, 13397 },
-		{ 5, 4, 14737 },
-		{ 5, 4, 16210 },
-		{ 5, 4, 17831 },
+		std::make_tuple(4, 3, 1, 6875),
+		std::make_tuple(4, 3, 1, 7562),
+		std::make_tuple(4, 3, 1, 8318),
+		std::make_tuple(4, 3, 1, 9150),
+		std::make_tuple(4, 3, 1, 10065),
+		std::make_tuple(4, 3, 1, 11072),
+		std::make_tuple(4, 3, 1, 12179),
+		std::make_tuple(4, 3, 1, 13397),
+		std::make_tuple(4, 3, 1, 14737),
+		std::make_tuple(4, 3, 1, 16210),
+		std::make_tuple(4, 3, 1, 17831),
 		// 1.1x, no stat gain
-		{ 0, 0, 19615 },
-		{ 0, 0, 21576 },
-		{ 0, 0, 23734 },
-		{ 0, 0, 26107 },
-		{ 0, 0, 28718 },
-		{ 0, 0, 31590 },
-		{ 0, 0, 34749 },
-		{ 0, 0, 38224 },
-		{ 0, 0, 42046 },
-		{ 0, 0, 46251 },
-		{ 0, 0, 50876 },
-	});
+		std::make_tuple(0, 0, 0, 19615),
+		std::make_tuple(0, 0, 0, 21576),
+		std::make_tuple(0, 0, 0, 23734),
+		std::make_tuple(0, 0, 0, 26107),
+		std::make_tuple(0, 0, 0, 28718),
+		std::make_tuple(0, 0, 0, 31590),
+		std::make_tuple(0, 0, 0, 34749),
+		std::make_tuple(0, 0, 0, 38224),
+		std::make_tuple(0, 0, 0, 42046),
+		std::make_tuple(0, 0, 0, 46251),
+		std::make_tuple(0, 0, 0, 50876),
+	};
+	
+	// SQUALLY
+	StatsTables::StatsTable[Squally::MapKey] = Stats(16, 8, 48, increments);
 
 	// HELPERS
-	StatsTables::StatsTable[Guano::MapKey] = Stats(14, 4, 48, 
-	{
-		// 2x
-		{ 2, 1, 64 },
-		{ 2, 1, 128 },
-		{ 2, 1, 256 },
-		{ 2, 1, 512 },
-		{ 2, 1, 1024 },
-		{ 2, 1, 2048 },
-		// 1.25x
-		{ 3, 2, 2560 },
-		{ 3, 2, 3200 },
-		{ 3, 2, 4000 },
-		{ 3, 2, 5000 },
-		{ 3, 2, 6250 },
-		// 1.1x
-		{ 4, 3, 6875 },
-		{ 4, 3, 7562 },
-		{ 4, 3, 8318 },
-		{ 4, 3, 9150 },
-		{ 5, 4, 10065 },
-		{ 5, 4, 11072 },
-		{ 5, 4, 12179 },
-		{ 5, 4, 13397 },
-		{ 5, 4, 14737 },
-		{ 5, 4, 16210 },
-		{ 5, 4, 17831 },
-		// 1.1x, no stat gain
-		{ 0, 0, 19615 },
-		{ 0, 0, 21576 },
-		{ 0, 0, 23734 },
-		{ 0, 0, 26107 },
-		{ 0, 0, 28718 },
-		{ 0, 0, 31590 },
-		{ 0, 0, 34749 },
-		{ 0, 0, 38224 },
-		{ 0, 0, 42046 },
-		{ 0, 0, 46251 },
-		{ 0, 0, 50876 },
-	});
-
-	StatsTables::StatsTable[Turtle::MapKey] = Stats(16, 8, 32, 
-	{
-		// 2x
-		{ 2, 1, 64 },
-		{ 2, 1, 128 },
-		{ 2, 1, 256 },
-		{ 2, 1, 512 },
-		{ 2, 1, 1024 },
-		{ 2, 1, 2048 },
-		// 1.25x
-		{ 3, 2, 2560 },
-		{ 3, 2, 3200 },
-		{ 3, 2, 4000 },
-		{ 3, 2, 5000 },
-		{ 3, 2, 6250 },
-		// 1.1x
-		{ 4, 3, 6875 },
-		{ 4, 3, 7562 },
-		{ 4, 3, 8318 },
-		{ 4, 3, 9150 },
-		{ 5, 4, 10065 },
-		{ 5, 4, 11072 },
-		{ 5, 4, 12179 },
-		{ 5, 4, 13397 },
-		{ 5, 4, 14737 },
-		{ 5, 4, 16210 },
-		{ 5, 4, 17831 },
-		// 1.1x, no stat gain
-		{ 0, 0, 19615 },
-		{ 0, 0, 21576 },
-		{ 0, 0, 23734 },
-		{ 0, 0, 26107 },
-		{ 0, 0, 28718 },
-		{ 0, 0, 31590 },
-		{ 0, 0, 34749 },
-		{ 0, 0, 38224 },
-		{ 0, 0, 42046 },
-		{ 0, 0, 46251 },
-		{ 0, 0, 50876 },
-	});
-
-	StatsTables::StatsTable[Snowman::MapKey] = Stats(16, 8, 48, 
-	{
-		// 2x
-		{ 2, 1, 64 },
-		{ 2, 1, 128 },
-		{ 2, 1, 256 },
-		{ 2, 1, 512 },
-		{ 2, 1, 1024 },
-		{ 2, 1, 2048 },
-		// 1.25x
-		{ 3, 2, 2560 },
-		{ 3, 2, 3200 },
-		{ 3, 2, 4000 },
-		{ 3, 2, 5000 },
-		{ 3, 2, 6250 },
-		// 1.1x
-		{ 4, 3, 6875 },
-		{ 4, 3, 7562 },
-		{ 4, 3, 8318 },
-		{ 4, 3, 9150 },
-		{ 5, 4, 10065 },
-		{ 5, 4, 11072 },
-		{ 5, 4, 12179 },
-		{ 5, 4, 13397 },
-		{ 5, 4, 14737 },
-		{ 5, 4, 16210 },
-		{ 5, 4, 17831 },
-		// 1.1x, no stat gain
-		{ 0, 0, 19615 },
-		{ 0, 0, 21576 },
-		{ 0, 0, 23734 },
-		{ 0, 0, 26107 },
-		{ 0, 0, 28718 },
-		{ 0, 0, 31590 },
-		{ 0, 0, 34749 },
-		{ 0, 0, 38224 },
-		{ 0, 0, 42046 },
-		{ 0, 0, 46251 },
-		{ 0, 0, 50876 },
-	});
-
-	StatsTables::StatsTable[YetiBaby::MapKey] = Stats(16, 8, 48, 
-	{
-		// 2x
-		{ 2, 1, 64 },
-		{ 2, 1, 128 },
-		{ 2, 1, 256 },
-		{ 2, 1, 512 },
-		{ 2, 1, 1024 },
-		{ 2, 1, 2048 },
-		// 1.25x
-		{ 3, 2, 2560 },
-		{ 3, 2, 3200 },
-		{ 3, 2, 4000 },
-		{ 3, 2, 5000 },
-		{ 3, 2, 6250 },
-		// 1.1x
-		{ 4, 3, 6875 },
-		{ 4, 3, 7562 },
-		{ 4, 3, 8318 },
-		{ 4, 3, 9150 },
-		{ 5, 4, 10065 },
-		{ 5, 4, 11072 },
-		{ 5, 4, 12179 },
-		{ 5, 4, 13397 },
-		{ 5, 4, 14737 },
-		{ 5, 4, 16210 },
-		{ 5, 4, 17831 },
-		// 1.1x, no stat gain
-		{ 0, 0, 19615 },
-		{ 0, 0, 21576 },
-		{ 0, 0, 23734 },
-		{ 0, 0, 26107 },
-		{ 0, 0, 28718 },
-		{ 0, 0, 31590 },
-		{ 0, 0, 34749 },
-		{ 0, 0, 38224 },
-		{ 0, 0, 42046 },
-		{ 0, 0, 46251 },
-		{ 0, 0, 50876 },
-	});
+	StatsTables::StatsTable[Guano::MapKey] = Stats(14, 4, 48, increments);
+	StatsTables::StatsTable[Turtle::MapKey] = Stats(16, 8, 48, increments);
+	StatsTables::StatsTable[Snowman::MapKey] = Stats(16, 8, 48, increments);
+	StatsTables::StatsTable[YetiBaby::MapKey] = Stats(16, 8, 48, increments);
 	
 	StatsTables::StatsTable[Scrappy::MapKey] = Stats(420, 666, 32);
 
@@ -248,15 +92,15 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Centaur::MapKey] = Stats(300, 200, 24);
 	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 22);
 	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 20);
-	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(30, 37, 24);
-	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 20);
-	StatsTables::StatsTable[Ogre::MapKey] = Stats(24, 9, 18);
+	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(17, 37, 24);
+	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(17, 8, 20);
+	StatsTables::StatsTable[Ogre::MapKey] = Stats(20, 9, 18);
 	StatsTables::StatsTable[OrcBomber::MapKey] = Stats(21, 22, 26);
 	StatsTables::StatsTable[OrcGrunt::MapKey] = Stats(11, 8, 16);
-	StatsTables::StatsTable[OrcSwordsman::MapKey] = Stats(21, 8, 24);
+	StatsTables::StatsTable[OrcSwordsman::MapKey] = Stats(18, 8, 24);
 	StatsTables::StatsTable[OrcWarrior::MapKey] = Stats(23, 5, 24);
-	StatsTables::StatsTable[Troll::MapKey] = Stats(34, 12, 20);
-	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 36, 64);
+	StatsTables::StatsTable[Troll::MapKey] = Stats(38, 12, 20);
+	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 60, 64);
 	StatsTables::StatsTable[Gorgon::MapKey] = Stats(220, 48, 88);
 	StatsTables::StatsTable[Orthrus::MapKey] = Stats(175, 48, 88);
 
@@ -521,7 +365,7 @@ int StatsTables::getExpRequiredAtLevel(PlatformerEntity* platformerEntity)
 
 		for (int index = 0; index < levelIndex; index++)
 		{
-			exp += std::get<2>(stats.increments[index]);	
+			exp += std::get<3>(stats.increments[index]);	
 		}
 
 		return exp;
@@ -576,4 +420,23 @@ int StatsTables::getBaseHealth(PlatformerEntity* platformerEntity)
 	}
 
 	return StatsTables::FallbackHealth;
+}
+
+int StatsTables::getBonusAttack(PlatformerEntity* platformerEntity)
+{
+	int bonusAttack = 0;
+
+	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	{
+		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
+
+		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+
+		for (int index = 0; index < levelIndex; index++)
+		{
+			bonusAttack += std::get<2>(stats.increments[index]);	
+		}
+	}
+
+	return bonusAttack;
 }

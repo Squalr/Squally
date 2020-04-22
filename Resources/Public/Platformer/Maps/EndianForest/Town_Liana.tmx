@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="777">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="778">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -240,6 +240,7 @@
    </properties>
   </object>
   <object id="721" name="Generic/DiningTable1" type="decor" x="2868.19" y="891.805" width="610" height="301"/>
+  <object id="777" name="fireplace-fire" type="object" x="4157.67" y="1005.5" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

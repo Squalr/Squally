@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="76" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="778">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="779">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
+   <property name="disable-unstuck" type="bool" value="true"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
@@ -34,24 +35,24 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks" visible="0">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-6505.69" y="77.3" width="23473.7" height="866">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-6505.69" y="845.3" width="23473.7" height="866">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-6477.81" y="69.98" width="23373.6" height="922">
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-6477.81" y="837.98" width="23373.6" height="922">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="2.25"/>
@@ -88,14 +89,14 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="725" name="blue-grass" type="terrain" x="-761.41" y="1999.69">
-   <polygon points="736.172,-622.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 6714.45,-728.14 7225.42,-730.645 7149.5,-28.9488 7121.23,879.126 10583.9,916.29 10580.5,1885.9 6534.26,1889.26 5476.28,1035.39 735.81,1039.18"/>
+  <object id="725" name="blue-grass" type="terrain" x="-761.41" y="2767.69">
+   <polygon points="736.172,-622.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 6444.75,-728.14 6730.4,-1001.9 7064.29,-1204.78 7438.88,-1209.96 7698.15,-1209.43 7688.75,-875.928 7567.68,-272.828 7579.41,163.247 11087.9,188.29 11044.5,1885.9 6534.26,1889.26 5476.28,1035.39 735.81,1039.18"/>
   </object>
-  <object id="766" name="blue-grass" type="terrain" x="574.44" y="466.57">
-   <polygon points="161.562,-606.63 4891.39,-588.296 4865.18,-158.44 4827.39,213.54 4518.19,463.04 3179.6,432.95 664.241,443.347 206.805,66.9616"/>
+  <object id="766" name="blue-grass" type="terrain" x="574.44" y="1234.57">
+   <polygon points="201.562,-1326.63 4931.39,-1308.3 4937.18,-550.44 4827.39,213.54 4518.19,463.04 3179.6,432.95 664.241,443.347 206.805,66.9616 59.9852,-682.549"/>
   </object>
-  <object id="772" name="blue-grass" type="terrain" x="6146.13" y="-1229.34">
-   <polygon points="867.44,2633.78 588.109,1975.51 470.934,1161.51 2814.7,1169.11 2599.3,2128.2 2220.53,2438.21 1478.26,2654.57"/>
+  <object id="772" name="blue-grass" type="terrain" x="6882.24" y="-357.34">
+   <polygon points="926.178,2633.78 627.932,1975.51 502.823,1161.51 510.208,251.141 3025.71,222.921 3005.29,1169.11 2775.31,2128.2 2370.89,2438.21 1578.36,2654.57"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -107,84 +108,84 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="729" name="Forest/Flower10" type="decor" x="1841.38" y="1294.61" width="199" height="133"/>
-  <object id="730" name="Forest/Flower10" type="decor" x="6909.83" y="2766.3" width="199" height="133"/>
-  <object id="773" name="Forest/Flower11" type="decor" x="748.667" y="1292.67" width="92" height="116"/>
+  <object id="729" name="Forest/Flower10" type="decor" x="1841.38" y="2062.61" width="199" height="133"/>
+  <object id="730" name="Forest/Flower10" type="decor" x="6901.83" y="2806.3" width="199" height="133"/>
+  <object id="773" name="Forest/Flower11" type="decor" x="748.667" y="2060.67" width="92" height="116"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="673" name="pendulum-blade" type="object" x="3018.64" y="901.36" width="42.4242" height="277.636">
+  <object id="673" name="pendulum-blade" type="object" x="3018.64" y="1669.36" width="42.4242" height="277.636">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
-  <object id="674" name="pendulum-blade" type="object" x="2246.98" y="908.47" width="42.4242" height="219.569">
+  <object id="674" name="pendulum-blade" type="object" x="2246.98" y="1676.47" width="42.4242" height="219.569">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
-  <object id="675" name="pendulum-blade" type="object" x="2547.83" y="904.79" width="42.4242" height="304.97">
+  <object id="675" name="pendulum-blade" type="object" x="2547.83" y="1672.79" width="42.4242" height="304.97">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
-  <object id="676" name="pendulum-blade" type="object" x="3251.16" y="900.19" width="42.4242" height="364.97">
+  <object id="676" name="pendulum-blade" type="object" x="3251.16" y="1668.19" width="42.4242" height="364.97">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
-  <object id="677" name="mechanical-flail" type="object" x="3358.07" y="1100.58" width="42.4242" height="198.303">
+  <object id="677" name="mechanical-flail" type="object" x="3358.07" y="1868.58" width="42.4242" height="198.303">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
-  <object id="678" name="mechanical-flail" type="object" x="3648.31" y="1004.54" width="42.4242" height="264.303">
+  <object id="678" name="mechanical-flail" type="object" x="3648.31" y="1772.54" width="42.4242" height="264.303">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
-  <object id="679" name="mechanical-flail" type="object" x="3914.93" y="1107.59" width="42.4242" height="166.303">
+  <object id="679" name="mechanical-flail" type="object" x="3914.93" y="1875.59" width="42.4242" height="166.303">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
-  <object id="687" name="pendulum-blade" type="object" x="2798.41" y="891.05" width="42.4242" height="420.97">
+  <object id="687" name="pendulum-blade" type="object" x="2798.41" y="1659.05" width="42.4242" height="420.97">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
-  <object id="688" name="mechanical-flail" type="object" x="4104.72" y="940.14" width="42.4242" height="337.056">
+  <object id="688" name="mechanical-flail" type="object" x="4104.72" y="1708.14" width="42.4242" height="337.056">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
-  <object id="746" name="camera-stop" type="object" x="671.01" y="1640.04" width="6744" height="2848">
+  <object id="746" name="camera-stop" type="object" x="671.01" y="2408.04" width="5352" height="2848">
    <properties>
     <property name="no-x" type="bool" value="true"/>
     <property name="no-y" type="bool" value="false"/>
     <property name="soft" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="764" name="iou" type="object" x="1624.5" y="1308.5" width="87" height="87"/>
-  <object id="769" name="warp" type="object" x="1532" y="1148" width="256" height="256">
+  <object id="764" name="iou" type="object" x="1624.5" y="2076.5" width="87" height="87"/>
+  <object id="769" name="warp" type="object" x="1532" y="1916" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>
   </object>
-  <object id="770" name="warp" type="object" x="5216" y="1020" width="256" height="256">
+  <object id="770" name="warp" type="object" x="5216" y="1788" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>
   </object>
-  <object id="771" name="life-stone" type="object" x="5791" y="848.5" width="146" height="423"/>
-  <object id="777" name="trigger" type="object" x="7010.42" y="1410.24" width="195.164" height="1493.51">
+  <object id="771" name="life-stone" type="object" x="6535" y="1136.5" width="146" height="423"/>
+  <object id="777" name="trigger" type="object" x="7619.51" y="2141.88" width="195.164" height="877.51">
    <properties>
     <property name="quest" value="spot-orc-grunt"/>
     <property name="quest-line" value="intro"/>
@@ -202,26 +203,26 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="619" name="edge-lantern-gate" type="object" x="9376.73" y="2594.81" width="356" height="320">
+  <object id="619" name="edge-lantern-gate" type="object" x="9880.73" y="2634.81" width="356" height="320">
    <properties>
     <property name="listen-event" value="event-door-open"/>
     <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="690" name="edge-portal" type="object" x="-18.2391" y="646.15" width="199.918" height="734.959">
+  <object id="690" name="edge-portal" type="object" x="-18.2391" y="1414.15" width="199.918" height="734.959">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="EndianForest/Zone_1_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="774" name="orc-grunt" type="entity" x="8176.79" y="2775.09" width="128" height="128">
+  <object id="774" name="orc-grunt" type="entity" x="8680.79" y="2815.09" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing,agro"/>
     <property name="battle-behavior" value="increment-health-tutorial,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="ef-weak"/>
     <property name="send-event" value="event-door-open"/>
    </properties>
   </object>
@@ -231,7 +232,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="430.383" y="1259.94" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="430.383" y="2027.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
@@ -277,26 +278,31 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="6848.99" y="2978.9" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="8819.03" y="2662.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="3727.11" y="1171.37" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1783.44" y="1317.7" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="932.204" y="1229.06" width="270" height="748"/>
-  <object id="691" name="spawn" type="object" x="375.89" y="1260.47" width="128" height="128">
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="6840.99" y="3018.9" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="8811.03" y="2702.5" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="3727.11" y="1939.37" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1783.44" y="2085.7" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="932.204" y="1997.06" width="270" height="748"/>
+  <object id="691" name="spawn" type="object" x="375.89" y="2028.47" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="6128.21" y="2887.24" width="242" height="738"/>
-  <object id="760" name="Forest/Foreground/ForegroundTree2" type="decor" x="6969" y="2970" width="270" height="748"/>
+  <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="6120.21" y="2927.24" width="242" height="738"/>
+  <object id="760" name="Forest/Foreground/ForegroundTree2" type="decor" x="6961" y="3010" width="270" height="748"/>
+  <object id="778" name="spawn" type="object" x="9666" y="2820.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="4502.2" y="1145.16" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="8491.96" y="2705.06" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2918.31" y="1248.14" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="4502.2" y="1913.16" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="8483.96" y="2745.06" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2918.31" y="2016.14" width="242" height="738"/>
  </objectgroup>
 </map>

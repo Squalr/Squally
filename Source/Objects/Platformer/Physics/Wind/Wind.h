@@ -6,7 +6,6 @@
 class CollisionObject;
 class HackableData;
 class SmartParticles;
-class WindClippy;
 
 class Wind : public HackableObject
 {
@@ -41,8 +40,6 @@ private:
 	cocos2d::Size windSize;
 	cocos2d::Vec2 windSpeedDefault;
 	cocos2d::Vec2 windSpeed;
-
-	WindClippy* windClippy;
 
 	bool isUniform;
 

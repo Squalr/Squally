@@ -1,6 +1,7 @@
 #include "Scenes/Hexus/Components/AssemblyHelpText.h"
 #include "Scenes/Hexus/Components/Avatars.h"
 #include "Scenes/Hexus/Components/Banners/CardReplaceBanner.h"
+#include "Scenes/Hexus/Components/Banners/ChallengeBanner.h"
 #include "Scenes/Hexus/Components/Banners/DefeatBanner.h"
 #include "Scenes/Hexus/Components/Banners/DrawBanner.h"
 #include "Scenes/Hexus/Components/Banners/OpponentFirstBanner.h"

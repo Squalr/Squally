@@ -1134,6 +1134,21 @@ namespace Strings
 		virtual ~Hexus_AssemblyHelpText() = default;
 	};
 
+	class Hexus_Banners_Challenge : public LocalizedString
+	{
+	public:
+		static Hexus_Banners_Challenge* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_Banners_Challenge();
+		virtual ~Hexus_Banners_Challenge() = default;
+	};
+
 	class Hexus_Banners_Defeat : public LocalizedString
 	{
 	public:
@@ -7929,6 +7944,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude : public LocalizedString
 	{
 	public:
@@ -8259,6 +8334,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease();
+		virtual ~Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Strength_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Strength_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Strength_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_Strength_CommentRegister() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx : public LocalizedString
 	{
 	public:
@@ -8377,6 +8497,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed : public LocalizedString
@@ -8542,6 +8677,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_DispelIllusion();
 		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_CommentBreak : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_CommentBreak* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_CommentBreak();
+		virtual ~Menus_Hacking_Abilities_Generic_CommentBreak() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_CommentFloatPt1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_CommentFloatPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_CommentFloatPt1();
+		virtual ~Menus_Hacking_Abilities_Generic_CommentFloatPt1() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_CommentFloatPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_CommentFloatPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_CommentFloatPt2();
+		virtual ~Menus_Hacking_Abilities_Generic_CommentFloatPt2() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_CommentFloatPt3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_CommentFloatPt3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_CommentFloatPt3();
+		virtual ~Menus_Hacking_Abilities_Generic_CommentFloatPt3() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_CommentFloatPt4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_CommentFloatPt4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_CommentFloatPt4();
+		virtual ~Menus_Hacking_Abilities_Generic_CommentFloatPt4() = default;
 	};
 
 	class Menus_Hacking_Abilities_Squally_IsAlive : public LocalizedString
@@ -8752,36 +8962,6 @@ namespace Strings
 	private:
 		Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov();
 		virtual ~Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov() = default;
-	};
-
-	class Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add();
-		virtual ~Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add() = default;
-	};
-
-	class Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul();
-		virtual ~Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul() = default;
 	};
 
 	class Menus_Hacking_ClippyHelp_Objects_Wind_WindNop : public LocalizedString
@@ -15084,6 +15264,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed() = default;
 	};
 
+	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed() = default;
+	};
+
+	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading() = default;
+	};
+
 	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy : public LocalizedString
 	{
 	public:
@@ -15699,10 +15909,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle() = default;
 	};
 
-	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0 : public LocalizedString
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0* create();
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15710,8 +15920,98 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0();
-		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0() = default;
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2() = default;
+	};
+
+	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4();
+		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4() = default;
 	};
 
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer : public LocalizedString
@@ -15894,6 +16194,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_Addition() = default;
 	};
 
+	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber() = default;
+	};
+
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx : public LocalizedString
 	{
 	public:
@@ -15937,6 +16267,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx();
 		virtual ~Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber() = default;
 	};
 
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply : public LocalizedString
@@ -16029,10 +16389,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
-	class Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16040,14 +16400,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame();
-		virtual ~Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame() = default;
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions() = default;
 	};
 
-	class Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx* create();
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16055,8 +16415,53 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx();
-		virtual ~Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx() = default;
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify();
+		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify() = default;
+	};
+
+	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown();
+		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown() = default;
 	};
 
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax : public LocalizedString
@@ -16117,6 +16522,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown();
 		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd() = default;
+	};
+
+	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0 : public LocalizedString
@@ -17754,6 +18234,36 @@ namespace Strings
 		virtual ~Menus_Party_Party() = default;
 	};
 
+	class Menus_Party_Stuck : public LocalizedString
+	{
+	public:
+		static Menus_Party_Stuck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Party_Stuck();
+		virtual ~Menus_Party_Stuck() = default;
+	};
+
+	class Menus_Party_StuckConfirm : public LocalizedString
+	{
+	public:
+		static Menus_Party_StuckConfirm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Party_StuckConfirm();
+		virtual ~Menus_Party_StuckConfirm() = default;
+	};
+
 	class Menus_Pause_Cards : public LocalizedString
 	{
 	public:
@@ -18099,6 +18609,36 @@ namespace Strings
 		virtual ~Platformer_Combat_Attack() = default;
 	};
 
+	class Platformer_Combat_Attacks_Cleave : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Cleave* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Cleave();
+		virtual ~Platformer_Combat_Attacks_Cleave() = default;
+	};
+
+	class Platformer_Combat_Attacks_EnergyBolt : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_EnergyBolt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_EnergyBolt();
+		virtual ~Platformer_Combat_Attacks_EnergyBolt() = default;
+	};
+
 	class Platformer_Combat_Attacks_Execute : public LocalizedString
 	{
 	public:
@@ -18112,6 +18652,36 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Execute();
 		virtual ~Platformer_Combat_Attacks_Execute() = default;
+	};
+
+	class Platformer_Combat_Attacks_MultiShot : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_MultiShot* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_MultiShot();
+		virtual ~Platformer_Combat_Attacks_MultiShot() = default;
+	};
+
+	class Platformer_Combat_Attacks_Pound : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Pound* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Pound();
+		virtual ~Platformer_Combat_Attacks_Pound() = default;
 	};
 
 	class Platformer_Combat_Attacks_Punch : public LocalizedString
@@ -18129,6 +18699,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_Punch() = default;
 	};
 
+	class Platformer_Combat_Attacks_Shoot : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Shoot* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Shoot();
+		virtual ~Platformer_Combat_Attacks_Shoot() = default;
+	};
+
 	class Platformer_Combat_Attacks_Slash : public LocalizedString
 	{
 	public:
@@ -18142,6 +18727,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Slash();
 		virtual ~Platformer_Combat_Attacks_Slash() = default;
+	};
+
+	class Platformer_Combat_Attacks_Smash : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Smash* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Smash();
+		virtual ~Platformer_Combat_Attacks_Smash() = default;
 	};
 
 	class Platformer_Combat_Attacks_ThrowFlamingWeapon : public LocalizedString
@@ -18519,6 +19119,21 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_ADraw() = default;
 	};
 
+	class Platformer_Dialogue_Hexus_ADrawZalgo : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Hexus_ADrawZalgo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Hexus_ADrawZalgo();
+		virtual ~Platformer_Dialogue_Hexus_ADrawZalgo() = default;
+	};
+
 	class Platformer_Dialogue_Hexus_BetterLuckNextTime : public LocalizedString
 	{
 	public:
@@ -18547,6 +19162,21 @@ namespace Strings
 	private:
 		Platformer_Dialogue_Hexus_GoodGame();
 		virtual ~Platformer_Dialogue_Hexus_GoodGame() = default;
+	};
+
+	class Platformer_Dialogue_Hexus_GoodGameZalgo : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Hexus_GoodGameZalgo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Hexus_GoodGameZalgo();
+		virtual ~Platformer_Dialogue_Hexus_GoodGameZalgo() = default;
 	};
 
 	class Platformer_Dialogue_Hexus_HowAboutARematch : public LocalizedString
@@ -22269,6 +22899,21 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemPickPocket() = default;
 	};
 
+	class Platformer_Help_HelpTotemSwimHack : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemSwimHack* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemSwimHack();
+		virtual ~Platformer_Help_HelpTotemSwimHack() = default;
+	};
+
 	class Platformer_MapNames_EndianForest_Elbridge : public LocalizedString
 	{
 	public:
@@ -22582,6 +23227,36 @@ namespace Strings
 	private:
 		Platformer_Objects_Doors_Locked();
 		virtual ~Platformer_Objects_Doors_Locked() = default;
+	};
+
+	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks() = default;
+	};
+
+	class Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown : public LocalizedString

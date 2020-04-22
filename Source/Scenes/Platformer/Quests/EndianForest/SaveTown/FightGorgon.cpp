@@ -86,7 +86,7 @@ FightGorgon::~FightGorgon()
 
 void FightGorgon::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
 	}, Sarude::MapKey);
@@ -96,12 +96,12 @@ void FightGorgon::onLoad(QuestState questState)
 		this->runMageAnims();
 	}
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<GameObject>(this, [=](GameObject* forceField)
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* forceField)
 	{
 		this->forceField = forceField;
 
@@ -111,7 +111,7 @@ void FightGorgon::onLoad(QuestState questState)
 		}
 	}, FightGorgon::ForceFieldTag);
 
-	ObjectEvents::watchForObject<Gorgon>(this, [=](Gorgon* gorgon)
+	ObjectEvents::WatchForObject<Gorgon>(this, [=](Gorgon* gorgon)
 	{
 		this->gorgon = gorgon;
 
@@ -145,15 +145,15 @@ void FightGorgon::onLoad(QuestState questState)
 		else
 		{
 			// Gorgon dead! Complete quest.
-			if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+			this->defer([=]()
 			{
 				this->complete();
-			}
+			});
 		}
 
 	}, Gorgon::MapKey);
 
-	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
+	ObjectEvents::WatchForObject<Ram>(this, [=](Ram* ram)
 	{
 		this->ram = ram;
 		this->ram->setVisible(questState == QuestState::Active);
@@ -181,7 +181,7 @@ void FightGorgon::runCinematicSequencePart1()
 		DelayTime::create(0.25f),
 		CallFunc::create([=]()
 		{
-			ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 			{
 				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 			}, "walk-to");
@@ -256,7 +256,7 @@ void FightGorgon::flickerOutForceField()
 
 void FightGorgon::runMageAnims()
 {
-	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
+	ObjectEvents::WatchForObject<Igneus>(this, [=](Igneus* igneus)
 	{
 		this->defer([=]()
 		{
@@ -264,7 +264,7 @@ void FightGorgon::runMageAnims()
 		});
 	}, Igneus::MapKey);
 
-	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
+	ObjectEvents::WatchForObject<Alder>(this, [=](Alder* alder)
 	{
 		this->defer([=]()
 		{
@@ -272,7 +272,7 @@ void FightGorgon::runMageAnims()
 		});
 	}, Alder::MapKey);
 
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->defer([=]()
 		{
@@ -280,7 +280,7 @@ void FightGorgon::runMageAnims()
 		});
 	}, Sarude::MapKey);
 
-	ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
+	ObjectEvents::WatchForObject<Aster>(this, [=](Aster* aster)
 	{
 		this->defer([=]()
 		{
@@ -288,7 +288,7 @@ void FightGorgon::runMageAnims()
 		});
 	}, Aster::MapKey);
 
-	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
+	ObjectEvents::WatchForObject<Merlin>(this, [=](Merlin* merlin)
 	{
 		this->defer([=]()
 		{

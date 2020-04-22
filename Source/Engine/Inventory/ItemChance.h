@@ -18,7 +18,8 @@ public:
 		Uncommon,	// 15%
 		Rare,		// 8%
 		Epic,		// 4%
-		Legendary,	// 1%
+		Legendary,	// 2%
+		Artifact,	// 1%
 	};
 
 	static ItemChance* create(Item* item, Probability probability);

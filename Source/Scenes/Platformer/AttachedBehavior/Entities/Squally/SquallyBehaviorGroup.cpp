@@ -8,8 +8,9 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Camera/SquallyCameraFollowBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Collision/SquallyCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Hud/SquallyHudTrackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyDefaultInventoryBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyReceiveItemBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Inventory/SquallyDefaultInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Inventory/SquallyInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Inventory/SquallyReceiveItemBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Misc/SquallyStaticHelpBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
@@ -35,6 +36,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyAbilityBehaviorGroup::create(owner),
 	SquallyCameraFollowBehavior::create(owner),
 	SquallyCollisionBehaviorGroup::create(owner),
+	SquallyInventoryBehavior::create(owner),
 	SquallyDefaultInventoryBehavior::create(owner),
 	SquallyHudTrackBehavior::create(owner),
 	SquallyReceiveItemBehavior::create(owner),

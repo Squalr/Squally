@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string MusicDeserializer::MapKeyMusicProperty = "music";
+const std::string MusicDeserializer::MapKey = "music";
 const std::string MusicDeserializer::MapKeyDelayProperty = "music-delay";
 
 MusicDeserializer* MusicDeserializer::create()
@@ -34,7 +34,7 @@ MusicDeserializer::~MusicDeserializer()
 
 void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	std::string trackSerializationKey = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString();
+	std::string trackSerializationKey = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKey, Value("")).asString();
 
 	SoundEvents::TriggerRequestTrackDeserialization(SoundEvents::RequestTrackDeserializationArgs(trackSerializationKey, [=](Track* track)
 	{

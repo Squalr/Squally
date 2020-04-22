@@ -16,5 +16,5 @@ protected:
 private:
 	typedef PropertyDeserializer super;
 
-	static const std::string MapKeyPhysics;
+	static const std::string MapKey;
 };

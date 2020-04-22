@@ -43,6 +43,8 @@ HackablePreview* WindGenericPreview::clone()
 void WindGenericPreview::onEnter()
 {
 	super::onEnter();
+	
+	this->windParticles->start();
 }
 
 void WindGenericPreview::initializePositions()

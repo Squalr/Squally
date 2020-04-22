@@ -138,6 +138,7 @@ void Catapult::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Catapult::MapKey,
 				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Meteor,
 				CatapultApplyPowerPreview::create(),
 				{

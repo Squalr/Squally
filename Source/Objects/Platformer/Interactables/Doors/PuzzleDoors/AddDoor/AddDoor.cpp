@@ -9,7 +9,6 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorClippy.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -21,7 +20,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
+#define LOCAL_FUNC_ID_RUN_OPERATION 1
 
 const std::string AddDoor::MapKey = "add-door";
 
@@ -36,9 +35,6 @@ AddDoor* AddDoor::create(ValueMap& properties)
 
 AddDoor::AddDoor(ValueMap& properties) : super(properties)
 {
-	this->clippy = AddDoorClippy::create();
-
-	this->registerClippy(this->clippy);
 }
 
 AddDoor::~AddDoor()
@@ -49,7 +45,10 @@ void AddDoor::onEnter()
 {
 	super::onEnter();
 
-	this->enableAllClippy();
+	if (this->getIsUnlocked())
+	{
+		this->toggleHackable(false);
+	}
 }
 
 void AddDoor::registerHackables()
@@ -59,11 +58,12 @@ void AddDoor::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
+			LOCAL_FUNC_ID_RUN_OPERATION,
 			HackableCode::HackableCodeInfo(
 				AddDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
-				UIResources::Menus_Icons_Heal,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_Health,
 				AddDoorPreview::create(),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx::create() },
@@ -71,7 +71,19 @@ void AddDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				0.0f,
-				this->clippy
+				{
+					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
+					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					"add ecx, 2",
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					"add rcx, 2"),
+				},
+				true
 			)
 		},
 	};
@@ -94,12 +106,14 @@ void AddDoor::runOperation(int puzzleIndex)
 
 NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 {
-	int transform = puzzleIndex;
+	static volatile int transform;
+
+	transform = puzzleIndex;
 
 	ASM(push ZCX)
 	ASM_MOV_REG_VAR(ZCX, transform);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RUN_OPERATION);
 	ASM(add ZCX, 2)
 	ASM_NOP6();
 	HACKABLE_CODE_END();

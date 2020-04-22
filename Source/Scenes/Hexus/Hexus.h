@@ -46,6 +46,7 @@ class PlayerLastStandBanner;
 class PlayerPassBanner;
 class PlayerRoundWinBanner;
 class PlayerTurnBanner;
+class ChallengeBanner;
 class RoundBanner;
 class RoundTieBanner;
 class VictoryBanner;
@@ -134,6 +135,7 @@ private:
 	PlayerPassBanner* playerPassBanner;
 	PlayerRoundWinBanner* playerRoundWinBanner;
 	PlayerTurnBanner* playerTurnBanner;
+	ChallengeBanner* challengeBanner;
 	RoundBanner* roundBanner;
 	RoundTieBanner* roundTieBanner;
 	VictoryBanner* victoryBanner;

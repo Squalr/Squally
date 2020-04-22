@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 
 namespace cocos2d
 {
@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	MetalSpikesGenericPreview();
-	virtual ~MetalSpikesGenericPreview() = default;
+	virtual ~MetalSpikesGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	SmartAnimationSequenceNode* previewSpikes;
 };

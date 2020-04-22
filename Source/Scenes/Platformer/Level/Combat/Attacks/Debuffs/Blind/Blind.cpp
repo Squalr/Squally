@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Blind/BlindClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Blind/BlindGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -53,16 +52,14 @@ Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Blind::Duration, Blind::BlindIdentifier))
+Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Eye, BuffData(Blind::Duration, Blind::BlindIdentifier))
 {
-	this->clippy = BlindClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -93,14 +90,6 @@ void Blind::initializePositions()
 	super::initializePositions();
 }
 
-void Blind::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Blind::registerHackables()
 {
 	super::registerHackables();
@@ -110,8 +99,6 @@ void Blind::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -119,7 +106,8 @@ void Blind::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Blind::BlindIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Blind_Blind::create(),
-				UIResources::Menus_Icons_Clock,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_Eye,
 				BlindGenericPreview::create(),
 				{
 					{
@@ -134,7 +122,6 @@ void Blind::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind::create(),
@@ -170,10 +157,15 @@ void Blind::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> ha
 
 NO_OPTIMIZE void Blind::applyBlind()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = Blind::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = Blind::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);

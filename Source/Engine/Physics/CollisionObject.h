@@ -68,7 +68,6 @@ public:
 		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
 	};
 
-	void despawn() override;
 	void warpTo(cocos2d::Vec2 location);
 	void bindTo(GameObject* bindTarget);
 	void unbind();
@@ -119,6 +118,7 @@ protected:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void update(float dt) override;
+	void onDespawn() override;
 
 private:
 	typedef GameObject super;
@@ -131,6 +131,7 @@ private:
 	cocos2d::Vec2 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec2 position);
 	Shape determineShape();
+	void computeWorldCoords(bool force = false);
 	void propagateRotation();
 
 	static void ClearCollisionObjects();
@@ -172,6 +173,8 @@ private:
 
 	// Cache
 	float cachedRotation;
+	cocos2d::Vec2 cachedWorldCoords;
+	unsigned int cachedTick;
 
 	// Debug
 	cocos2d::Color4F debugColor;

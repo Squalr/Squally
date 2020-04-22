@@ -16,7 +16,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
@@ -90,7 +90,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
 		// Enable to debug weapon/hat visual offsets:
-		this->debugHud->setVisible(true);
+		// this->debugHud->setVisible(true);
 
 		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_J }, [=](InputEvents::InputArgs* args)
 		{

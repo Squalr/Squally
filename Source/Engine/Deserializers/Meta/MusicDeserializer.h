@@ -16,6 +16,6 @@ protected:
 private:
 	typedef PropertyDeserializer super;
 
-	static const std::string MapKeyMusicProperty;
+	static const std::string MapKey;
 	static const std::string MapKeyDelayProperty;
 };

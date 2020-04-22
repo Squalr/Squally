@@ -31,7 +31,7 @@
 #include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Hexus/States/States.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -73,6 +73,7 @@ Hexus::Hexus()
 	this->roundBanner = RoundBanner::create();
 	this->roundTieBanner = RoundTieBanner::create();
 	this->victoryBanner = VictoryBanner::create();
+	this->challengeBanner = ChallengeBanner::create();
 	this->defeatBanner = DefeatBanner::create();
 	this->drawBanner = DrawBanner::create();
 	this->cardPreviewComponent = CardPreviewComponent::create();
@@ -189,6 +190,7 @@ Hexus::Hexus()
 	this->addChild(this->playerPassBanner);
 	this->addChild(this->playerRoundWinBanner);
 	this->addChild(this->playerTurnBanner);
+	this->addChild(this->challengeBanner);
 	this->addChild(this->roundBanner);
 	this->addChild(this->roundTieBanner);
 	this->addChild(this->victoryBanner);
@@ -328,7 +330,7 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 void Hexus::buildPlayerDeck()
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{

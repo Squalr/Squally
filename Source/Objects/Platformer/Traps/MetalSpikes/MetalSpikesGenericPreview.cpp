@@ -27,6 +27,10 @@ MetalSpikesGenericPreview::MetalSpikesGenericPreview()
 	this->previewNode->addChild(this->previewSpikes);
 }
 
+MetalSpikesGenericPreview::~MetalSpikesGenericPreview()
+{
+}
+
 HackablePreview* MetalSpikesGenericPreview::clone()
 {
 	return MetalSpikesGenericPreview::create();

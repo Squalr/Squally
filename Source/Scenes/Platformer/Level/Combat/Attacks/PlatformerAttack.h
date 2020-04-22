@@ -71,6 +71,7 @@ protected:
 	int getBaseHealingMax();
 	float getAttackDuration();
 	float getRecoverDuration();
+	void setDamageMultiplier(float damageMultiplier);
 	std::string getMainhandResource(PlatformerEntity* owner);
 	std::string getOffhandResource(PlatformerEntity* owner);
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
@@ -93,6 +94,7 @@ private:
 	std::string iconResource;
 	int baseDamageOrHealingMin;
 	int baseDamageOrHealingMax;
+	float damageMultiplier;
 	int specialCost;
 	bool multiTarget;
 

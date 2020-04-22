@@ -63,7 +63,7 @@ void Warp::initializeListeners()
 	{
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
-			PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, this->getPosition()));
+			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, this->getPosition()));
 		}), Squally::MapKey);
 	});
 }

@@ -9,6 +9,7 @@ namespace MapResources
 	extern const std::string BallmerPeaks_Town_Main;
 	extern const std::string CastleValgrind_Castle;
 	extern const std::string DaemonsHallow_Volcano;
+	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
 	extern const std::string Dev_Collision;
@@ -26,6 +27,7 @@ namespace MapResources
 	extern const std::string EndianForest_Combat_Temple;
 	extern const std::string EndianForest_Combat_TempleBoss;
 	extern const std::string EndianForest_Home_Ara;
+	extern const std::string EndianForest_Home_Guano;
 	extern const std::string EndianForest_Home_Hut;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;

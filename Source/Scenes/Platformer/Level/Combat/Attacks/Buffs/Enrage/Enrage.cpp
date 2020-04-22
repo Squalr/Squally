@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Enrage/EnrageClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Enrage/EnrageGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -55,16 +54,14 @@ Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
+Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Clock, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
 {
-	this->clippy = EnrageClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::RED);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -95,14 +92,6 @@ void Enrage::initializePositions()
 	super::initializePositions();
 }
 
-void Enrage::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Enrage::registerHackables()
 {
 	super::registerHackables();
@@ -112,8 +101,6 @@ void Enrage::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -121,6 +108,7 @@ void Enrage::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Enrage::EnrageIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Enrage_Enrage::create(),
+				HackableBase::HackBarColor::Orange,
 				UIResources::Menus_Icons_Clock,
 				EnrageGenericPreview::create(),
 				{
@@ -136,7 +124,6 @@ void Enrage::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create(),
@@ -168,12 +155,12 @@ void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> h
 	*timelineSpeed = this->currentSpeed;
 }
 
-void Enrage::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Enrage::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 }
 
-void Enrage::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Enrage::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
 }

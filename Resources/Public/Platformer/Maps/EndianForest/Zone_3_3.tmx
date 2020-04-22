@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="809">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="810">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -93,7 +93,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="1255.94" y="3196.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="6511.94" y="1086.19" width="146" height="423"/>
   <object id="707" name="edge-portal" type="object" x="-4" y="2956.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
@@ -163,6 +163,13 @@
     <property name="quest-line" value="save-town"/>
    </properties>
   </object>
+  <object id="809" name="frost-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="tag" value="quest-portal"/>
+    <property name="transition" value="mage-portal"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -194,7 +201,7 @@
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="786" name="orc-bomber" type="entity" x="6812" y="2404" width="128" height="128">
+  <object id="786" name="orc-grunt" type="entity" x="6812" y="2404" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -306,23 +313,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="decor front">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="779" name="Generic/ForceFieldDome" type="decor" x="4632" y="1907.27" width="1234" height="669">
-   <properties>
-    <property name="tag" value="force-field"/>
-   </properties>
-  </object>
-  <object id="801" name="frost-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
-   <properties>
-    <property name="map" value="EndianForest/Town_Main"/>
-    <property name="tag" value="quest-portal"/>
-    <property name="transition" value="mage-portal"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
@@ -339,6 +329,16 @@
    </properties>
   </object>
   <object id="770" name="Forest/Flower9" type="decor" x="6782.8" y="1391.56" width="199" height="133"/>
+ </objectgroup>
+ <objectgroup id="42" name="decor front">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="779" name="Generic/ForceFieldDome" type="decor" x="4632" y="1907.27" width="1234" height="669">
+   <properties>
+    <property name="tag" value="force-field"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="66" name="water">
   <properties>

@@ -2,8 +2,6 @@
 
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/StoneDoor/StonePuzzleDoor.h"
 
-class AddDoorClippy;
-
 class AddDoor : public StonePuzzleDoor
 {
 public:
@@ -24,6 +22,4 @@ private:
 
 	void showActiveHackableCrystal();
 	void AddDoorTransform(int puzzleIndex);
-
-	AddDoorClippy* clippy;
 };

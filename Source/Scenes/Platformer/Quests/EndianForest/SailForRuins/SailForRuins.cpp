@@ -50,12 +50,12 @@ SailForRuins::~SailForRuins()
 
 void SailForRuins::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{
 		this->portal = portal;
 
@@ -71,7 +71,7 @@ void SailForRuins::onLoad(QuestState questState)
 
 	}, SailForRuins::QuestTagShipPortal);
 
-	ObjectEvents::watchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
+	ObjectEvents::WatchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
 	{
 		this->blackbeard = blackbeard;
 

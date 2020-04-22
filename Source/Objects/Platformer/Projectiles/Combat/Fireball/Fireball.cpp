@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/Combat/Fireball/FireballClippy.h"
 #include "Objects/Platformer/Projectiles/Combat/Fireball/FireballGenericPreview.h"
 #include "Objects/Platformer/Projectiles/Combat/Fireball/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -25,6 +24,8 @@
 using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_FIREBALL_SPEED 11
+
+const std::string Fireball::HackIdentifierFireballSpeed = "fireball-speed";
 
 Fireball* Fireball::create(PlatformerEntity* owner, PlatformerEntity* target)
 {
@@ -43,11 +44,9 @@ Fireball::Fireball(PlatformerEntity* owner, PlatformerEntity* target)
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
-	this->reverseClippy = FireballClippy::create();
 
 	this->fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 
-	this->registerClippy(this->reverseClippy);
 	this->postFXNode->addChild(this->breathSound);
 	this->postFXNode->addChild(this->impactSound);
 	this->postFXNode->addChild(this->explosionAnim);
@@ -68,11 +67,6 @@ void Fireball::update(float dt)
 	}
 
 	this->setFireballSpeed();
-}
-
-void Fireball::enableClippy()
-{
-	this->reverseClippy->setIsEnabled(true);
 }
 
 void Fireball::runSpawnFX()
@@ -101,8 +95,9 @@ void Fireball::registerHackables()
 		{
 			LOCAL_FUNC_ID_FIREBALL_SPEED,
 			HackableCode::HackableCodeInfo(
-				"Fireball",
+				Fireball::HackIdentifierFireballSpeed,
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_FireBalls,
 				FireballSpeedPreview::create(),
 				{
@@ -111,18 +106,25 @@ void Fireball::registerHackables()
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterXmm1::create() }
 				},
 				int(HackFlags::None),
-				5.0f,
+				3.0f,
 				0.0f,
-				this->reverseClippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create(),
 						// x86
-						"mov dword ptr [eax], 0.0\n"
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading::create()->
+							setStringReplacementVariables(Strings::Common_Brackets::create()->
+							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
+						"mov dword ptr [eax], 0.0f\n"
 						"movss xmm1, dword ptr [eax]\n\n"
 						"mulps xmm0, xmm1",
 						// x64
-						"mov dword ptr [rax], 0.0\n"
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading::create()->
+							setStringReplacementVariables(Strings::Common_Brackets::create()->
+							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
+						"mov dword ptr [rax], 0.0f\n"
 						"movss xmm1, dword ptr [rax]\n\n"
 						"mulps xmm0, xmm1"
 					)
@@ -147,11 +149,16 @@ HackablePreview* Fireball::createDefaultPreview()
 
 NO_OPTIMIZE void Fireball::setFireballSpeed()
 {
-	volatile static float* freeMemoryForUser = new float[16];
-	volatile float speedMultiplier = 1.0f;
-	volatile float speedMultiplierTemp = 1.0f;
-	volatile float* speedMultiplierPtr = &speedMultiplier;
-	volatile float* speedMultiplierTempPtr = &speedMultiplierTemp;
+	static volatile float* freeMemoryForUser = new float[16];
+	static volatile float speedMultiplier;
+	static volatile float speedMultiplierTemp;
+	static volatile float* speedMultiplierPtr;
+	static volatile float* speedMultiplierTempPtr;
+
+	speedMultiplier = 1.0f;
+	speedMultiplierTemp = 1.0f;
+	speedMultiplierPtr = &speedMultiplier;
+	speedMultiplierTempPtr = &speedMultiplierTemp;
 
 	// Initialize xmm0 and xmm1
 	ASM(push ZAX);

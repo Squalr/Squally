@@ -43,12 +43,12 @@ TalkToChiron::~TalkToChiron()
 
 void TalkToChiron::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
+	ObjectEvents::WatchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
 		this->chiron = chiron;
 	}, Chiron::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

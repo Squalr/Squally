@@ -87,6 +87,7 @@ void Flurry::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"Flurry",
 				Strings::Menus_Hacking_Abilities_TrainingDummy_AddHealth::create(),
+				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_SwordSlash,
 				nullptr,
 				{
@@ -94,8 +95,7 @@ void Flurry::registerHackables()
 				},
 				int(HackFlags::None),
 				8.0f,
-				0.0f,
-				nullptr
+				0.0f
 			)
 		},
 	};

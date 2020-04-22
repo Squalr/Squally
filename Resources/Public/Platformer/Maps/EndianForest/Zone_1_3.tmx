@@ -8,6 +8,7 @@
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="1"/>
    <property name="type" value="meta"/>
+   <property name="unstuck-map" value=""/>
   </properties>
  </objectgroup>
  <objectgroup id="8" name="decor -2304">
@@ -283,7 +284,7 @@
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="map" value="EndianForest/Zone_1_2"/>
-    <property name="transition" value="right"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

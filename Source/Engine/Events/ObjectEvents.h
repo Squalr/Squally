@@ -160,7 +160,7 @@ public:
 	static unsigned long long WatchId;
 
 	template <class T>
-	static void watchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::string tag = "")
+	static void WatchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::string tag = "")
 	{
 		unsigned long long watchId = ObjectEvents::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);

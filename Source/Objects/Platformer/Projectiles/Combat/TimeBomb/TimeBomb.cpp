@@ -1,6 +1,8 @@
 #include "TimeBomb.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -13,7 +15,6 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombClippy.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombGenericPreview.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombTickPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -59,16 +60,16 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->spawnSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_Spawn1);
 	this->tickSound = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick1);
+	this->tickSoundPositive = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick2);
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
-	this->clippy = TimeBombClippy::create();
 	this->onExplode = onExplode;
 	this->bombTick = TimeBomb::TimerInitial;
 	this->hasExploded = false;
 	this->elapsed = 0.0f;
 
-	this->registerClippy(this->clippy);
 	this->postFXNode->addChild(this->spawnSound);
 	this->postFXNode->addChild(this->tickSound);
+	this->postFXNode->addChild(this->tickSoundPositive);
 	this->postFXNode->addChild(this->explodeSound);
 	this->postFXNode->addChild(this->explosionAnim);
 	this->object->addChild(this->bomb);
@@ -114,9 +115,14 @@ void TimeBomb::update(float dt)
 
 		this->tickTimeBomb();
 
-		if (previousTick != this->bombTick)
+		if (this->bombTick < previousTick)
 		{
 			this->tickSound->play();
+			this->updateTimerText();
+		}
+		else if (this->bombTick > previousTick)
+		{
+			this->tickSoundPositive->play();
 			this->updateTimerText();
 		}
 
@@ -125,11 +131,6 @@ void TimeBomb::update(float dt)
 			this->explode();
 		}
 	}
-}
-
-void TimeBomb::enableClippy()
-{
-	this->clippy->setIsEnabled(true);
 }
 
 void TimeBomb::runSpawnFX()
@@ -160,6 +161,7 @@ void TimeBomb::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"TimeBomb",
 				Strings::Menus_Hacking_Objects_Combat_TimeBomb_TimeBombTick::create(),
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Clock,
 				TimeBombTickPreview::create(),
 				{
@@ -167,10 +169,7 @@ void TimeBomb::registerHackables()
 				},
 				int(HackFlags::None),
 				TimeBomb::HackDuration,
-				0.0f,
-				this->clippy,
-				{
-				}
+				0.0f
 			)
 		},
 	};
@@ -217,7 +216,9 @@ void TimeBomb::explode()
 
 NO_OPTIMIZE void TimeBomb::tickTimeBomb()
 {
-	volatile int currentTick = this->bombTick;
+	static volatile int currentTick;
+
+	currentTick = this->bombTick;
 
 	ASM(push ZCX);
 	ASM_MOV_REG_VAR(ZCX, currentTick);

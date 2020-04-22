@@ -190,13 +190,13 @@ std::string LocalizedLabel::getFont()
 		{
 			return LocalizedLabel::getMainFont();
 		}
-		case FontStyle::Coding:
-		{
-			return LocalizedLabel::getCodingFont();
-		}
 		case FontStyle::Monospaced:
 		{
 			return LocalizedLabel::getMonospacedFont();
+		}
+		case FontStyle::Coding:
+		{
+			return LocalizedLabel::getCodingFont();
 		}
 	}
 }
@@ -280,277 +280,128 @@ std::string LocalizedLabel::getMonospacedFont()
 	{
 		case LanguageType::CHINESE_SIMPLIFIED:
 		{
-			return FontResources::Main_ChineseSimplified_NotoSansMonoCJKsc_Regular;
+			return FontResources::Mono_ChineseSimplified_NotoSansMonoCJKsc_Regular;
 		}
 		case LanguageType::CHINESE_TRADITIONAL:
 		{
-			return FontResources::Main_ChineseTraditional_NotoSansMonoCJKtc_Regular;
+			return FontResources::Mono_ChineseTraditional_NotoSansMonoCJKtc_Regular;
 		}
 		case LanguageType::JAPANESE:
 		{
-			return FontResources::Main_Japanese_NotoSansMonoCJKjp_Regular;
+			return FontResources::Mono_Japanese_NotoSansMonoCJKjp_Regular;
 		}
 		case LanguageType::KOREAN:
 		{
-			return FontResources::Main_Korean_NotoSansMonoCJKkr_Regular;
+			return FontResources::Mono_Korean_NotoSansMonoCJKkr_Regular;
 		}
 		case LanguageType::ARABIC:
 		{
-			return FontResources::Main_Arabic_NotoSansArabic_Bold;
+			return FontResources::Mono_Arabic_NotoSansArabic_Regular;
 		}
 		case LanguageType::THAI:
 		{
-			return FontResources::Main_Thai_NotoSansThai_Bold;
+			return FontResources::Mono_Thai_NotoSansThai_Medium;
 		}
 		default:
 		{
 			// This covers almost all languages with a standard alphabet (cyrillic, greek, latin based)
-			return FontResources::Main_Standard_NotoMono_Regular;
+			return FontResources::Mono_Standard_NotoMono_Regular;
 		}
 	}
 }
 
 std::string LocalizedLabel::getCodingFont()
 {
-	return FontResources::Coding_UbuntuMono_Bold;
+	switch (this->getCurrentLanguage())
+	{
+		case LanguageType::CHINESE_SIMPLIFIED:
+		{
+			return FontResources::Coding_ChineseSimplified_NotoSansMonoCJKsc_Bold;
+		}
+		case LanguageType::CHINESE_TRADITIONAL:
+		{
+			return FontResources::Coding_ChineseTraditional_NotoSansMonoCJKtc_Bold;
+		}
+		case LanguageType::JAPANESE:
+		{
+			return FontResources::Coding_Japanese_NotoSansMonoCJKjp_Bold;
+		}
+		case LanguageType::KOREAN:
+		{
+			return FontResources::Coding_Korean_NotoSansMonoCJKkr_Bold;
+		}
+		case LanguageType::ARABIC:
+		{
+			return FontResources::Coding_Arabic_Ubuntu_Arabic_Bold;
+		}
+		case LanguageType::THAI:
+		{
+			return FontResources::Coding_Thai_NotoSansThai_Bold;
+		}
+		default:
+		{
+			// This covers almost all languages with a standard alphabet (cyrillic, greek, latin based)
+			return FontResources::Coding_Standard_UbuntuMono_Bold;
+		}
+	}
 }
 
 float LocalizedLabel::getFontSizeS1()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 128.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 140.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 128.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 140.0f : 128.0f;
 }
 
 float LocalizedLabel::getFontSizeS2()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 112.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 120.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 112.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 120.0f : 112.0f;
 }
 
 float LocalizedLabel::getFontSizeS3()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 96.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 104.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 96.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 104.0f : 96.0f;
 }
 
 float LocalizedLabel::getFontSizeM1()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 80.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 88.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 80.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 88.0f : 80.0f;
 }
 
 float LocalizedLabel::getFontSizeM2()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 64.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 72.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 64.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 72.0f : 64.0f;
 }
 
 float LocalizedLabel::getFontSizeM3()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 48.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 54.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 48.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 54.0f : 48.0f;
 }
 
 float LocalizedLabel::getFontSizeH1()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 32.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 36.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 32.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 36.0f : 32.0f;
 }
 
 float LocalizedLabel::getFontSizeH2()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 28.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 32.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 28.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 32.0f : 28.0f;
 }
 
 float LocalizedLabel::getFontSizeH3()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 24.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 28.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 24.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 28.0f : 24.0f;
 }
 
 float LocalizedLabel::getFontSizeH4()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 22.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 24.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 22.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 24.0f : 22.0f;
 }
 
 float LocalizedLabel::getFontSizeP()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 20.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 24.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 20.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 24.0f : 20.0f;
 }
 
 float LocalizedLabel::getFontSizeSmall()
 {
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			return 16.0f;
-		}
-		case FontStyle::Coding:
-		{
-			return 20.0f;
-		}
-		case FontStyle::Monospaced:
-		{
-			return 16.0f;
-		}
-	}
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 20.0f : 16.0f;
 }

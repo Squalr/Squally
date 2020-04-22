@@ -20,6 +20,9 @@ AlchemyPoolEF* AlchemyPoolEF::create(ValueMap& properties)
 
 AlchemyPoolEF::AlchemyPoolEF(ValueMap& properties) : super(properties, AlchemyPoolEF::PoolName, SampleMethod::Unbounded, 1, 1)
 {
+	// Allows for stability in item ordering
+	this->toggleDisableShuffle(true);
+
 	// Potions
 	this->addItemToPool(ItemChance::create(IncrementHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(HealthPotionRecipe::create(), ItemChance::Probability::Guaranteed));

@@ -50,6 +50,6 @@ void HelpTotemPickPocket::onEnter()
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKey)
 	{
-		this->deactivate();
+		this->deactivate(true);
 	}
 }

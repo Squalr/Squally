@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class IncrementHealthClippy;
 class SmartAnimationSequenceNode;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class IncrementHealth : public Buff
 {
 public:
 	static IncrementHealth* create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
-
-	void enableClippy();
 
 	static const std::string PropertyIncrementHealthTutorial;
 	static const std::string IncrementHealthIdentifier;
@@ -41,7 +38,6 @@ private:
 
 	void incrementHeal();
 	
-	IncrementHealthClippy* clippy;
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
 	WorldSound* impactSound;

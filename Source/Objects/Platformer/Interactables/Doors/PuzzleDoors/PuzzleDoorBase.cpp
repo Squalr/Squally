@@ -28,6 +28,7 @@ const int PuzzleDoorBase::RuneCount = 4;
 const Color4B PuzzleDoorBase::PassColor = Color4B(70, 144, 75, 255);
 const Color4B PuzzleDoorBase::FailColor = Color4B(144, 70, 70, 255);
 const std::string PuzzleDoorBase::UnlockedSaveKey = "PUZZLE_DOOR_UNLOCKED";
+const std::string PuzzleDoorBase::PropertyUnlockedByDefault = "unlocked";
 
 PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		Size doorClipSize,
@@ -72,6 +73,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->runeBasePosition = runeBasePosition;
 	this->runeSpacing = runeSpacing;
 	this->doorOpenDelta = doorOpenDelta;
+	this->unlockedByDefault = GameUtils::getKeyOrDefault(this->properties, PuzzleDoorBase::PropertyUnlockedByDefault, Value(false)).asBool();
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
@@ -285,7 +287,7 @@ void PuzzleDoorBase::onObjectStateLoaded()
 {
 	super::onObjectStateLoaded();
 
-	if (this->getObjectStateOrDefault(PuzzleDoorBase::UnlockedSaveKey, Value(false)).asBool())
+	if (this->getObjectStateOrDefault(PuzzleDoorBase::UnlockedSaveKey, Value(this->unlockedByDefault)).asBool())
 	{
 		this->unlock(false);
 	}
@@ -372,4 +374,9 @@ void PuzzleDoorBase::unlock(bool animate)
 	{
 		this->doorNode->setPosition(Vec2(0.0f, this->doorOpenDelta));
 	}
+}
+
+bool PuzzleDoorBase::getIsUnlocked()
+{
+	return this->isUnlocked;
 }

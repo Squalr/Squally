@@ -25,7 +25,6 @@ EntityCollisionBehaviorGroup::EntityCollisionBehaviorGroup(GameObject* owner) : 
 	EntityHeadCollisionBehavior::create(owner),
 	EntityJumpCollisionBehavior::create(owner),
 	EntityMovementCollisionBehavior::create(owner),
-	EntityWeaponCollisionBehavior::create(owner),
 	})
 {
 }

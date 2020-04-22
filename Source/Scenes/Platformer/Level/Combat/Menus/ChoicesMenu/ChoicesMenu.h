@@ -9,15 +9,16 @@ class PlatformerAttack;
 class PlatformerEntity;
 class RadialEntry;
 class RadialScrollMenu;
+class Timeline;
 class TimelineEntry;
 
 class ChoicesMenu : public SmartNode
 {
 public:
-	static ChoicesMenu* create();
+	static ChoicesMenu* create(Timeline* timelineRef);
 
 protected:
-	ChoicesMenu();
+	ChoicesMenu(Timeline* timelineRef);
 	virtual ~ChoicesMenu();
 
 	void onEnter() override;

@@ -63,6 +63,7 @@ void DispelIllusionBehavior::onDisable()
 void DispelIllusionBehavior::registerHackables()
 {
 	this->object->registerHackAbility(HackActivatedAbility::create(
+		"dispel-illusion",
 		[=]()
 		{
 			this->onDispelActivated();
@@ -72,6 +73,7 @@ void DispelIllusionBehavior::registerHackables()
 		},
 		int(HackFlags::None),
 		0.0f,
+		HackableBase::HackBarColor::Purple,
 		UIResources::Menus_Icons_Eye,
 		Strings::Menus_Hacking_Abilities_DispelIllusion::create(),
 		nullptr

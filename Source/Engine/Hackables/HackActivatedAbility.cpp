@@ -1,21 +1,57 @@
 #include "HackActivatedAbility.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Localization/LocalizedString.h"
 
 using namespace cocos2d;
 
-HackActivatedAbility* HackActivatedAbility::create(std::function<void()> onActivate, std::function<void()> onDeactivate, int hackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
+HackActivatedAbility* HackActivatedAbility::create(
+	std::string hackableIdentifier,
+	std::function<void()> onActivate,
+	std::function<void()> onDeactivate,
+	int hackFlags,
+	float duration,
+	HackBarColor hackBarColor,
+	std::string iconResource,
+	LocalizedString* name,
+	HackablePreview* hackablePreview,
+	Clippy* clippy)
 {
-	HackActivatedAbility* instance = new HackActivatedAbility(onActivate, onDeactivate, hackFlags, duration, iconResource, name, hackablePreview, clippy);
+	HackActivatedAbility* instance = GlobalHackAttributeContainer::GetHackActivatedAbility(hackableIdentifier);
 
-	instance->autorelease();
+	if (instance == nullptr)
+	{
+		instance = new HackActivatedAbility(hackableIdentifier, onActivate, onDeactivate, hackFlags, duration, hackBarColor, iconResource, name, hackablePreview, clippy);
+		instance->autorelease();
+
+		GlobalHackAttributeContainer::RegisterHackActivatedAbility(instance);
+	}
 
 	return instance;
 }
 
-HackActivatedAbility::HackActivatedAbility(std::function<void()> onActivate, std::function<void()> onDeactivate, int hackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy) : HackableAttribute(hackFlags, duration, 0.0f, iconResource, name, hackablePreview)
+HackActivatedAbility::HackActivatedAbility(
+	std::string hackableIdentifier,
+	std::function<void()> onActivate,
+	std::function<void()> onDeactivate,
+	int hackFlags,
+	float duration,
+	HackBarColor hackBarColor,
+	std::string iconResource,
+	LocalizedString* name,
+	HackablePreview* hackablePreview,
+	Clippy* clippy)
+	: HackableBase(
+		hackableIdentifier,
+		hackFlags,
+		duration,
+		0.0f,
+		hackBarColor,
+		iconResource,
+		name,
+		hackablePreview)
 {
 	this->onActivate = onActivate;
 	this->onDeactivate = onDeactivate;
@@ -33,11 +69,13 @@ void HackActivatedAbility::activate()
 	}
 
 	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
-	this->resetTimer();
+	this->startTimer();
 }
 
 void HackActivatedAbility::restoreState()
 {
+	super::restoreState();
+	
 	if (this->onDeactivate != nullptr)
 	{
 		this->onDeactivate();

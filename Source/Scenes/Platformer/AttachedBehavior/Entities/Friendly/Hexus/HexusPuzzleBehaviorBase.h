@@ -13,6 +13,9 @@ protected:
 	virtual ~HexusPuzzleBehaviorBase();
 
 	void onEnter() override;
+	LocalizedString* getCustomWinDialogue() override;
+	LocalizedString* getCustomDrawDialogue() override;
+	LocalizedString* getCustomLossDialogue() override;
 
 private:
 	typedef HexusBehaviorBase super;

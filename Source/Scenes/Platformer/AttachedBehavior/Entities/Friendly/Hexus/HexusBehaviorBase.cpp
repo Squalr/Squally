@@ -275,18 +275,27 @@ void HexusBehaviorBase::onWin()
 
 	this->iconNode->setVisible(false);
 
-	switch (DialogueIndex++ % DialogueOptionCount)
+	LocalizedString* dialogue = this->getCustomWinDialogue();
+
+	if (dialogue != nullptr)
 	{
-		default:
-		case 0:
+		this->runPostMatchDialogue(dialogue);
+	}
+	else
+	{
+		switch (DialogueIndex++ % DialogueOptionCount)
 		{
-			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_WellPlayed::create());
-			break;
-		}
-		case 1:
-		{
-			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_GoodGame::create());
-			break;
+			default:
+			case 0:
+			{
+				this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_WellPlayed::create());
+				break;
+			}
+			case 1:
+			{
+				this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_GoodGame::create());
+				break;
+			}
 		}
 	}
 
@@ -303,13 +312,22 @@ void HexusBehaviorBase::onLoss()
 	static int DialogueOptionCount = 1;
 	static int DialogueIndex = RandomHelper::random_int(0, DialogueOptionCount);
 
-	switch (DialogueIndex++ % DialogueOptionCount)
+	LocalizedString* dialogue = this->getCustomLossDialogue();
+
+	if (dialogue != nullptr)
 	{
-		default:
-		case 0:
+		this->runPostMatchDialogue(dialogue);
+	}
+	else
+	{
+		switch (DialogueIndex++ % DialogueOptionCount)
 		{
-			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create());
-			break;
+			default:
+			case 0:
+			{
+				this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create());
+				break;
+			}
 		}
 	}
 
@@ -326,13 +344,22 @@ void HexusBehaviorBase::onDraw()
 	static int DialogueOptionCount = 1;
 	static int DialogueIndex = RandomHelper::random_int(0, DialogueOptionCount);
 
-	switch (DialogueIndex++ % DialogueOptionCount)
+	LocalizedString* dialogue = this->getCustomDrawDialogue();
+
+	if (dialogue != nullptr)
 	{
-		default:
-		case 0:
+		this->runPostMatchDialogue(dialogue);
+	}
+	else
+	{
+		switch (DialogueIndex++ % DialogueOptionCount)
 		{
-			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_ADraw::create());
-			break;
+			default:
+			case 0:
+			{
+				this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_ADraw::create());
+				break;
+			}
 		}
 	}
 
@@ -342,6 +369,21 @@ void HexusBehaviorBase::onDraw()
 	{
 		callback();
 	}
+}
+
+LocalizedString* HexusBehaviorBase::getCustomWinDialogue()
+{
+	return nullptr;
+}
+
+LocalizedString* HexusBehaviorBase::getCustomDrawDialogue()
+{
+	return nullptr;
+}
+
+LocalizedString* HexusBehaviorBase::getCustomLossDialogue()
+{
+	return nullptr;
 }
 
 void HexusBehaviorBase::runPostMatchDialogue(LocalizedString* dialogue)

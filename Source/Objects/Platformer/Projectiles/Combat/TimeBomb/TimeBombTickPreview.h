@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 
 namespace cocos2d
 {
@@ -37,5 +37,5 @@ private:
 	LocalizedLabel* tick;
 	SmartAnimationSequenceNode* explosionAnim;
 
-	static const float MaxTick;
+	static const int MaxTick;
 };

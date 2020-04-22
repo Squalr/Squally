@@ -2,6 +2,8 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
@@ -19,33 +21,11 @@ Ship* Ship::create(ValueMap& properties)
 
 Ship::Ship(ValueMap& properties) : super(properties)
 {
-	this->hull = Sprite::create(ObjectResources::Transportation_Ship_Hull);
+	this->ship = SmartAnimationNode::create(ObjectResources::Transportation_Ship_Animations);
 	
-	this->addChild(this->hull);
+	this->addChild(this->ship);
 }
 
 Ship::~Ship()
 {
-}
-
-void Ship::onEnter()
-{
-	super::onEnter();
-
-	this->scheduleUpdate();
-}
-
-void Ship::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-}
-
-void Ship::initializePositions()
-{
-	super::initializePositions();
-}
-
-void Ship::initializeListeners()
-{
-	super::initializeListeners();
 }

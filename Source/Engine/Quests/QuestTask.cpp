@@ -151,11 +151,11 @@ void QuestTask::complete()
 	this->questState = QuestState::Complete;
 
 	this->onComplete();
-
-	this->questLine->advanceNextQuest(this);
-
+	
 	// Mostly for debugging purposes / a fail safe for patches. If the user completes a quest before its prereq, complete the prereq too.
 	this->waiveQuestPrereq();
+
+	this->questLine->advanceNextQuest(this);
 }
 
 void QuestTask::saveQuestSaveState(std::string key, cocos2d::Value value)

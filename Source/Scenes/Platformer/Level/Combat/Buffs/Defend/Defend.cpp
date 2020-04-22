@@ -8,6 +8,7 @@
 #include "Events/CombatEvents.h"
 
 #include "Resources/FXResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -22,7 +23,8 @@ Defend* Defend::create(PlatformerEntity* caster)
 	return instance;
 }
 
-Defend::Defend(PlatformerEntity* caster) : super(caster, caster, BuffData("defend-skill"))
+Defend::Defend(PlatformerEntity* caster)
+	: super(caster, caster, UIResources::Menus_Icons_Shield, BuffData("defend-skill"))
 {
 	this->defendEffect = Sprite::create(FXResources::Auras_DefendAura);
 	this->resetCount = 0;
@@ -42,8 +44,6 @@ void Defend::onEnter()
 void Defend::initializePositions()
 {
 	super::initializePositions();
-	
-	this->defendEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 
 	this->defendEffect->runAction(RepeatForever::create(Sequence::create(
 		ScaleTo::create(0.5f, 0.95f),
@@ -52,7 +52,7 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Defend::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 	

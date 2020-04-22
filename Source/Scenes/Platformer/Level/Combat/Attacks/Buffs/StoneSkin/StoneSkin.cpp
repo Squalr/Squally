@@ -8,9 +8,10 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -49,12 +50,15 @@ StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
+StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_ShieldBroken, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->currentDamageTaken = 0;
 
+	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
@@ -73,11 +77,7 @@ void StoneSkin::onEnter()
 
 	this->spellEffect->start();
 
-	this->bubble->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		nullptr
-	));
+	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -110,11 +110,16 @@ void StoneSkin::registerHackables()
 			HackableCode::HackableCodeInfo(
 				StoneSkin::StoneSkinIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create(),
+				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_ShieldBroken,
 				StoneSkinGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()->setStringReplacementVariables(
+							{
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-StoneSkin::MaxMultiplier))),
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(StoneSkin::MaxMultiplier))),
+							})
 					},
 					{
 						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx::create()
@@ -126,7 +131,6 @@ void StoneSkin::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				nullptr,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
@@ -135,7 +139,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
 						"cdq\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"mov ecx, 4\n" +
+						"mov ecx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
 						"idiv ecx\n",
@@ -144,7 +148,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						"cqo\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"mov rcx, 4\n" +
+						"mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
 						"idiv rcx\n"
@@ -156,7 +160,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
 						"; cdq\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"; mov ecx, 4\n" +
+						"; mov ecx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
 						"; idiv ecx\n\n" +
@@ -168,7 +172,7 @@ void StoneSkin::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						"; cqo\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
-						"; mov rcx, 4\n" +
+						"; mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
 						"; idiv rcx\n\n" +
@@ -191,10 +195,10 @@ void StoneSkin::registerHackables()
 	}
 }
 
-void StoneSkin::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void StoneSkin::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
-	
+
 	this->currentDamageTaken = *damageOrHealing;
 
 	this->applyStoneSkin();
@@ -204,8 +208,11 @@ void StoneSkin::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> 
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 {
-	volatile int originalDamage = this->currentDamageTaken;
-	volatile int damageTaken = this->currentDamageTaken;
+	static volatile int originalDamage;
+	static volatile int damageTaken;
+
+	originalDamage = this->currentDamageTaken;
+	damageTaken = this->currentDamageTaken;
 
 	ASM(push ZAX);
 	ASM(push ZCX);
@@ -214,7 +221,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
 	ASM(DIV_CONVERT);
-	ASM(mov ZCX, 4)
+	ASM(mov ZCX, 3)
 	ASM(idiv ZCX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

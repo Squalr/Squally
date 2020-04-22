@@ -4,6 +4,7 @@
 
 class CardPreview;
 class ConstantString;
+class Equipable;
 class Hat;
 class HexusCard;
 class Item;
@@ -39,8 +40,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void setHatStatline(Hat* hat);
-	void setOffhandStatline(Offhand* offhand);
+	void setGenericStatline(Equipable* equipable);
 	void setWeaponStatline(Weapon* weapon);
 	void setHexusInfo(HexusCard* hexusCard);
 	

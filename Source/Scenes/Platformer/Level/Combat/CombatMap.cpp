@@ -23,6 +23,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
@@ -33,7 +34,10 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/CancelMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
@@ -42,28 +46,29 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Level/Huds/ConfirmationHud.h"
 #include "Scenes/Platformer/Level/Huds/HackerModeWarningHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+
+#include "Resources/MapResources.h"
 
 using namespace cocos2d;
 
 const std::string CombatMap::PropertyPlayerFirstStrike = "player-first-strike";
 const std::string CombatMap::PropertyEnemyFirstStrike = "enemy-first-strike";
 
-CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
+CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
 {
-	CombatMap* instance = new CombatMap(levelFile, playerFirstStrike, enemyIdentifier, playerData, enemyData);
+	CombatMap* instance = new CombatMap(levelFile, playerFirstStrike, playerData, enemyData);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
-	std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
+CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
 {
 	if (!super::init())
 	{
@@ -75,10 +80,10 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
-	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
-	this->choicesMenu = ChoicesMenu::create();
 	this->timeline = Timeline::create();
+	this->cancelMenu = CancelMenu::create();
+	this->choicesMenu = ChoicesMenu::create(this->timeline);
 	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
@@ -86,6 +91,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->enemyAIHelper = CombatAIHelper::create();
 	this->hackerModeWarningHud = HackerModeWarningHud::create();
 	this->notificationHud = NotificationHud::create();
+	this->confirmationHud = ConfirmationHud::create();
 	this->entityFocusTakeOver = FocusTakeOver::create();
 	this->focusTakeOver = FocusTakeOver::create();
 	this->combatEndBackdrop = Hud::create();
@@ -99,6 +105,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->focusTakeOver->setTakeOverOpacity(127);
 	this->entityFocusTakeOver->setTakeOverOpacity(0);
 	this->ingameMenu->disableInventory();
+	this->partyMenu->disableUnstuck();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -129,6 +136,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->focusTakeOver);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->cancelMenu);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
 	this->backMenuHud->addChild(this->hackerModeWarningHud);
@@ -141,6 +149,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->confirmationHud);
 
 	this->loadMap(levelFile);
 }
@@ -159,7 +168,7 @@ void CombatMap::onEnter()
 	this->inventoryMenu->setVisible(false);
 	this->combatEndBackdrop->setOpacity(0);
 	
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
@@ -188,6 +197,7 @@ void CombatMap::initializePositions()
 	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->cancelMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
 }
 
@@ -203,12 +213,15 @@ void CombatMap::initializeListeners()
 		{
 			if (args->playerVictory)
 			{
-				GameObject::saveObjectState(this->enemyIdentifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
+				for (auto next : enemyData)
+				{
+					GameObject::saveObjectState(next.identifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
+				}
 
 				CombatEvents::TriggerGiveExp();
 
 				this->runAction(Sequence::create(
-					DelayTime::create(1.5f),
+					DelayTime::create(2.25f),
 					CallFunc::create([=]()
 					{
 						CombatEvents::TriggerGiveRewards();
@@ -242,6 +255,19 @@ void CombatMap::initializeListeners()
 		}));
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMapRespawn, [=](EventCustom* eventCustom)
+	{
+		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			PlatformerEvents::TriggerBeforePlatformerMapChange();
+			PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
+
+			return map;
+		}));
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
@@ -263,22 +289,32 @@ void CombatMap::initializeListeners()
 					this->focusTakeOver->unfocus();
 					
 					PlatformerEntity* entity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+					std::vector<Node*> entityFocusTargets = std::vector<Node*>();
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
-					focusTargets.push_back(entity);
-					focusTargets.push_back(this->scrappy);
+					entityFocusTargets.push_back(entity);
+					entityFocusTargets.push_back(this->scrappy);
 
 					for (auto next : this->timeline->getEntries())
 					{
 						if (next->getEntity() != entity)
 						{
-							focusTargets.push_back(next->getEntity()->getHackParticlesNode());
+							entityFocusTargets.push_back(next->getEntity()->getHackParticlesNode());
 						}
 					}
 
-					this->entityFocusTakeOver->positionFreezeFocus(focusTargets);
+					for (auto next : this->timeline->getEntries())
+					{
+						focusTargets.push_back(next);
+					}
+
+					focusTargets.push_back(this->targetSelectionMenu);
+					focusTargets.push_back(this->choicesMenu);
+					focusTargets.push_back(this->cancelMenu);
+
+					this->entityFocusTakeOver->positionFreezeFocus(entityFocusTargets);
 					
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry });
+					this->focusTakeOver->focus(focusTargets);
 
 					for (auto entity : this->timeline->getEntries())
 					{
@@ -299,6 +335,7 @@ void CombatMap::initializeListeners()
 					this->entityFocusTakeOver->unfocus();
 					this->focusTakeOver->unfocus();
 
+					std::vector<Node*> entityFocusTargets = std::vector<Node*>();
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
 					for (auto entry : this->timeline->getEntries())
@@ -317,21 +354,31 @@ void CombatMap::initializeListeners()
 							|| (entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
 						{
 							entity->getAnimations()->setOpacity(255);
-							focusTargets.push_back(entity);
+							entityFocusTargets.push_back(entity);
 						}
 						else
 						{
-							focusTargets.push_back(entity->getHackParticlesNode());
+							entityFocusTargets.push_back(entity->getHackParticlesNode());
 						}
 					}
 
-					std::sort(focusTargets.begin(), focusTargets.end(), [](Node* a, Node* b)
+					std::sort(entityFocusTargets.begin(), entityFocusTargets.end(), [](Node* a, Node* b)
 					{ 
 						return a->getPositionZ() < b->getPositionZ();
 					});
 
-					this->entityFocusTakeOver->positionFreezeFocus({ focusTargets });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
+					for (auto next : this->timeline->getEntries())
+					{
+						focusTargets.push_back(next);
+					}
+
+					focusTargets.push_back(this->targetSelectionMenu);
+					focusTargets.push_back(this->choicesMenu);
+					focusTargets.push_back(this->cancelMenu);
+					focusTargets.push_back(this->scrappy);
+
+					this->entityFocusTakeOver->positionFreezeFocus({ entityFocusTargets });
+					this->focusTakeOver->focus(focusTargets);
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
@@ -375,6 +422,7 @@ void CombatMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(false);
 		this->partyMenu->setVisible(true);
+		this->partyMenu->open();
 		GameUtils::focus(this->partyMenu);
 	});
 	
@@ -454,6 +502,19 @@ void CombatMap::spawnEntities()
 						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
 						friendlyEntities.push_back(entity);
 					}));
+
+					if (this->playerData[index].statsOverrides.useOverrides)
+					{
+						entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+						{
+							healthBehavior->setHealth(this->playerData[index].statsOverrides.health);
+						});
+
+						entity->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+						{
+							manaBehavior->setMana(this->playerData[index].statsOverrides.mana);
+						});
+					}
 				}
 			);
 

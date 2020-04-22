@@ -11,11 +11,13 @@
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
 unsigned long long SmartScene::TaskId = 0;
+unsigned int SmartScene::GlobalTick = 0;
 
 using namespace cocos2d;
 
@@ -83,6 +85,8 @@ void SmartScene::onEnter()
 	{
 		this->onDeveloperModeDisable();
 	}
+
+	this->scheduleUpdate();
 }
 
 void SmartScene::onExit()
@@ -124,6 +128,13 @@ void SmartScene::initializeListeners()
 	{
 		this->onHackerModeDisable();
 	}));
+}
+
+void SmartScene::update(float dt)
+{
+	super::update(dt);
+
+	SmartScene::GlobalTick++;
 }
 
 void SmartScene::onDeveloperModeEnable(int debugLevel)

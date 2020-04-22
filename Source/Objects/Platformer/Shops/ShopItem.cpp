@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -75,7 +75,7 @@ void ShopItem::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 	
-	ObjectEvents::watchForObject<ShopPool>(this, [=](ShopPool* shopPool)
+	ObjectEvents::WatchForObject<ShopPool>(this, [=](ShopPool* shopPool)
 	{
 		this->item = shopPool->getNextItem();
 
@@ -127,9 +127,12 @@ void ShopItem::initializeListeners()
 			[=]()
 			{
 				this->sellItem();
+				
+				return false;
 			},
 			[=]()
 			{
+				return false;
 			}
 		));
 	});
@@ -142,7 +145,7 @@ void ShopItem::sellItem()
 		return;
 	}
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{

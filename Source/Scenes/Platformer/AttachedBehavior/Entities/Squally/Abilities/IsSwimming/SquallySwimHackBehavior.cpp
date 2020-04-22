@@ -9,11 +9,9 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/IsSwimmingClippy.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -26,7 +24,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CAN_SWIM 1
 
-const std::string SquallySwimHackBehavior::MapKey = "squally-can-swim-hack";
+const std::string SquallySwimHackBehavior::MapKey = "squally-is-swimming";
+const std::string SquallySwimHackBehavior::HackIdentifierIsSwimming = "squally-is-swimming";
 
 SquallySwimHackBehavior* SquallySwimHackBehavior::create(GameObject* owner)
 {
@@ -39,16 +38,11 @@ SquallySwimHackBehavior* SquallySwimHackBehavior::create(GameObject* owner)
 
 SquallySwimHackBehavior::SquallySwimHackBehavior(GameObject* owner) : super(owner)
 {
-	this->clippy = IsSwimmingClippy::create();
 	this->squally = dynamic_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
-	}
-	else
-	{
-		this->squally->registerClippy(this->clippy);
 	}
 }
 
@@ -88,8 +82,9 @@ void SquallySwimHackBehavior::registerHackables()
 		{
 			LOCAL_FUNC_ID_CAN_SWIM,
 			HackableCode::HackableCodeInfo(
-				SquallySwimHackBehavior::MapKey,
+				SquallySwimHackBehavior::HackIdentifierIsSwimming,
 				Strings::Menus_Hacking_Abilities_Squally_IsSwimming::create(),
+				HackableBase::HackBarColor::Teal,
 				UIResources::Menus_Icons_Bubbles,
 				EntityPreview::create(this->squally),
 				{
@@ -97,8 +92,7 @@ void SquallySwimHackBehavior::registerHackables()
 				},
 				int(HackFlags::Water),
 				1.0f,
-				3.0f,
-				this->clippy
+				3.0f
 			)
 		},
 	};
@@ -114,7 +108,7 @@ void SquallySwimHackBehavior::registerHackables()
 
 NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 {
-	static volatile int canSwim = false;
+	static volatile int canSwim = 0;
 
 	ASM(PUSH ZAX);
 
@@ -130,14 +124,3 @@ NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 	return canSwim;
 }
 END_NO_OPTIMIZE
-
-void SquallySwimHackBehavior::enableAllClippy()
-{
-	for (auto next : this->hackables)
-	{
-		if (next->getClippy() != nullptr)
-		{
-			next->getClippy()->setIsEnabled(true);
-		}
-	}
-}

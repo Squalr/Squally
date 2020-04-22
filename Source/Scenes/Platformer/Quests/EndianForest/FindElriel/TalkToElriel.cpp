@@ -50,7 +50,7 @@ TalkToElriel::~TalkToElriel()
 
 void TalkToElriel::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Elriel>(this, [=](Elriel* elriel)
+	ObjectEvents::WatchForObject<Elriel>(this, [=](Elriel* elriel)
 	{
 		this->elriel = elriel;
 
@@ -60,12 +60,12 @@ void TalkToElriel::onLoad(QuestState questState)
 		}
 	}, Elriel::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
@@ -170,7 +170,7 @@ void TalkToElriel::runCinematicSequencePart4()
 
 	this->complete();
 
-	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{
 		this->elriel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 	}, TalkToElriel::TagElrielExit);

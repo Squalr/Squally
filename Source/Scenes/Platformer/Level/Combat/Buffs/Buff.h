@@ -27,28 +27,31 @@ public:
 		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
 	};
 
+	void setBuffIndex(int index, int maxIndex);
+	bool hasBuffIcon();
 	void elapse(float dt);
 	float getRemainingDuration();
 	BuffData getBuffData();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
 	void removeBuff();
+	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 
 protected:
 
-	Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData);
+	Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, BuffData buffData);
 	virtual ~Buff();
 
 	void onEnter() override;
 	void onExit() override;
+	void initializePositions() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
-	void registerClippy(Clippy* clippy);
 	virtual void onTimelineReset(bool wasInterrupt);
 	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
-	virtual void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeHealingTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onBeforeHealingDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
 
 	BuffData buffData;
 	PlatformerEntity* caster;
@@ -59,7 +62,11 @@ private:
 	typedef SmartNode super;
 
 	std::function<void()> removeBuffCallback;
+	cocos2d::Node* iconContainer;
+	cocos2d::Sprite* buffGlow;
+	cocos2d::Sprite* buffIcon;
 	
+	bool isBuffIconPresent;
 	bool wasRemoved;
 	float elapsedTime;
 	void unregisterHackables();

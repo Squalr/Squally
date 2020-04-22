@@ -52,6 +52,9 @@ protected:
 	void onWin();
 	void onLoss();
 	void onDraw();
+	virtual LocalizedString* getCustomWinDialogue();
+	virtual LocalizedString* getCustomDrawDialogue();
+	virtual LocalizedString* getCustomLossDialogue();
 	void runPostMatchDialogue(LocalizedString* dialogue);
 
 	PlatformerEntity* entity;

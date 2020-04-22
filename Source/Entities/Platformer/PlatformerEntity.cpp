@@ -12,7 +12,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Dialogue/SpeechBubble.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -196,6 +196,22 @@ Vec2 PlatformerEntity::getEntityCenterPoint()
 	else
 	{
 		offset = offset + Vec2(0.0f, this->getMovementSize().height / 2.0f);
+	}
+
+	return offset;
+}
+
+Vec2 PlatformerEntity::getEntityTopPoint()
+{
+	Vec2 offset = this->getEntityCenterPoint();
+
+	if (this->isFlippedY())
+	{
+		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f);
+	}
+	else
+	{
+		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f);
 	}
 
 	return offset;

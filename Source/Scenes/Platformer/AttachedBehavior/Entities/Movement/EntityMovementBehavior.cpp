@@ -62,6 +62,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 			WorldSound* swimSound = WorldSound::create(next);
 
 			swimSound->setCustomMultiplier(0.25f);
+			swimSound->enableZDepth();
 			
 			this->swimSounds.push_back(swimSound);
 
@@ -73,6 +74,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 			WorldSound* walkSound = WorldSound::create(next);
 
 			walkSound->setCustomMultiplier(0.25f);
+			walkSound->enableZDepth();
 			
 			this->walkSounds.push_back(walkSound);
 

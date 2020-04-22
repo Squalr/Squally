@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/HasteClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/HasteGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -53,16 +52,14 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Haste::Duration, Haste::HasteIdentifier))
+Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_HourGlass, BuffData(Haste::Duration, Haste::HasteIdentifier))
 {
-	this->clippy = HasteClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -93,14 +90,6 @@ void Haste::initializePositions()
 	super::initializePositions();
 }
 
-void Haste::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void Haste::registerHackables()
 {
 	super::registerHackables();
@@ -110,8 +99,6 @@ void Haste::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -119,6 +106,7 @@ void Haste::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create(),
+				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_HourGlass,
 				HasteGenericPreview::create(),
 				{
@@ -134,14 +122,13 @@ void Haste::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
-						"mov dword ptr [esi], 0.0",
+						"mov dword ptr [esi], 0.0f",
 						// x64
-						"mov dword ptr [rsi], 0.0"
+						"mov dword ptr [rsi], 0.0f"
 					)
 				}
 			)
@@ -170,10 +157,15 @@ void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> ha
 
 NO_OPTIMIZE void Haste::applyHaste()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = Haste::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = Haste::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);

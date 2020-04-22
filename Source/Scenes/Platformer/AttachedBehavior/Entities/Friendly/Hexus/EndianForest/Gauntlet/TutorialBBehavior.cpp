@@ -117,7 +117,9 @@ StateOverride* TutorialBBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-		}
+		},
+		// Disable solve challenge banner
+		false
 	);
 }
 

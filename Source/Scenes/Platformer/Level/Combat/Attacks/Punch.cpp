@@ -11,16 +11,26 @@
 
 using namespace cocos2d;
 
-Punch* Punch::create(float attackDuration, float recoverDuration, Priority priority)
+Punch* Punch::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
-	Punch* instance = new Punch(attackDuration, recoverDuration, priority);
+	Punch* instance = new Punch(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Punch::Punch(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_Punch, priority, -3, -5, 0, attackDuration, recoverDuration)
+Punch::Punch(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_Punch,
+		priority,
+		damageMin,
+		damageMax,
+		0,
+		attackDuration,
+		recoverDuration
+	)
 {
 	this->punchSound = Sound::create(SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch7);
 
@@ -33,7 +43,7 @@ Punch::~Punch()
 
 PlatformerAttack* Punch::cloneInternal()
 {
-	return Punch::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
+	return Punch::create(this->getBaseDamageMin(), this->getBaseDamageMax(), this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* Punch::getString()

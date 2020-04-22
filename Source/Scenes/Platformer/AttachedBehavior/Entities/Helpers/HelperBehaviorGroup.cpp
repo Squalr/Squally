@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Collision/HelperCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Inventory/HelperInventoryRedirectBehavior.h"
 
 using namespace cocos2d;
 
@@ -19,6 +20,7 @@ HelperBehaviorGroup* HelperBehaviorGroup::create(GameObject* owner)
 
 HelperBehaviorGroup::HelperBehaviorGroup(GameObject* owner) : super(owner, {
 	HelperCollisionBehavior::create(owner),
+	HelperInventoryRedirectBehavior::create(owner),
 	EntityBehaviorGroup::create(owner),
 	})
 {

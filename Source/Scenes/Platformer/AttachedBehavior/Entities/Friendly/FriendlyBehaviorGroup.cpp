@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Collision/FriendlyCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Collision/FriendlyPlayerCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 
 using namespace cocos2d;
 
@@ -19,9 +20,10 @@ FriendlyBehaviorGroup* FriendlyBehaviorGroup::create(GameObject* owner)
 }
 
 FriendlyBehaviorGroup::FriendlyBehaviorGroup(GameObject* owner) : super(owner, {
+	EntityBehaviorGroup::create(owner),
+	EntityInventoryBehavior::create(owner),
 	FriendlyCollisionBehavior::create(owner),
 	FriendlyPlayerCollisionBehavior::create(owner),
-	EntityBehaviorGroup::create(owner),
 	})
 {
 }

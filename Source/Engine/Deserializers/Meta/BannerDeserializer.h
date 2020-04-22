@@ -13,7 +13,7 @@ public:
 	MapTitleBanner* deserializeProperties(cocos2d::ValueMap properties);
 	void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) override;
 
-	static const std::string MapKeyBanner;
+	static const std::string MapKey;
 
 protected:
 	BannerDeserializer();

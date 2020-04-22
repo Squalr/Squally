@@ -1,5 +1,7 @@
 #include "GameObject.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -89,14 +91,16 @@ GameObject::GameObject(const ValueMap& properties) : super()
 
 	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
-	for (auto tag : tags)
-	{
-		this->addTag(tag);
-	}
-
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
 		this->uniqueIdentifier = (this->properties.at(GameObject::MapKeyMetaMapIdentifier).asString()) + "_" + (this->properties.at(GameObject::MapKeyId).asString());
+		
+		tags.push_back(this->uniqueIdentifier);
+	}
+
+	for (auto tag : tags)
+	{
+		this->addTag(tag);
 	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
@@ -533,7 +537,26 @@ std::string GameObject::getSendEvent()
 	return this->sendEvent;
 }
 
-void GameObject::despawn()
+void GameObject::despawn(float despawnDelay)
+{
+	if (despawnDelay <= 0.0f)
+	{
+		this->onDespawn();
+	}
+	else
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(despawnDelay),
+			CallFunc::create([=]()
+			{
+				this->onDespawn();
+			}),
+			nullptr
+		));
+	}
+}
+
+void GameObject::onDespawn()
 {
 	std::vector<AttachedBehavior*> behaviorClone = this->attachedBehavior;
 

@@ -43,6 +43,8 @@ GameState::GameState()
 	enemyCardsDrawnNextRound(0),
 	roundNumber(0),
 	opponentData(nullptr),
+	gameDurationInSeconds(0),
+	showChallengeBanner(false),
 	selectedHandCard(nullptr),
 	selectedRow(nullptr),
 	cardPreviewComponentCallback(nullptr),

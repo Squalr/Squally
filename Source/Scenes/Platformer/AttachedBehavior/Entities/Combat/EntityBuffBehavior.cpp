@@ -79,6 +79,8 @@ void EntityBuffBehavior::applyBuff(Buff* buff)
 	this->buffs.push_back(buff);
 	this->buffNode->addChild(buff);
 
+	this->repositionBuffIcons();
+
 	CombatEvents::TriggerBuffApplied(CombatEvents::BuffAppliedArgs(this->entity, buff));
 }
 
@@ -94,6 +96,8 @@ void EntityBuffBehavior::removeBuff(Buff* buff)
 		this->buffs.erase(std::remove(this->buffs.begin(), this->buffs.end(), buff), this->buffs.end());
 		this->buffNode->removeChild(buff);
 	}
+
+	this->repositionBuffIcons();
 }
 
 void EntityBuffBehavior::removeBuffsById(std::string buffId)
@@ -126,4 +130,25 @@ void EntityBuffBehavior::removeAllBuffs()
 	// Shouldnt be needed, added as safety
 	this->buffs.clear();
 	this->buffNode->removeAllChildren();
+}
+
+void EntityBuffBehavior::repositionBuffIcons()
+{
+	int maxIndex = -1;
+	
+	for (auto next : this->buffs)
+	{
+		if (next->hasBuffIcon())
+		{
+			maxIndex++;
+		}
+	}
+
+	for (int index = 0; index < int(this->buffs.size()); index++)
+	{
+		if (this->buffs[index]->hasBuffIcon())
+		{
+			this->buffs[index]->setBuffIndex(index, maxIndex);
+		}
+	}
 }

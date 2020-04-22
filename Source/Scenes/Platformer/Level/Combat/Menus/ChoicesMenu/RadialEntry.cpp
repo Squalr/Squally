@@ -49,6 +49,7 @@ RadialEntry::RadialEntry(ClickableTextNode* entry) : super()
 {
 	this->entry = entry;
 	this->iconResource = "";
+	this->allowInteractionEdits = true;
 
 	this->addChild(this->entry);
 }
@@ -161,12 +162,23 @@ void RadialEntry::setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisibl
 
 void RadialEntry::disableInteraction(uint8_t newOpacity)
 {
-	this->entry->disableInteraction(newOpacity);
+	if (this->allowInteractionEdits)
+	{
+		this->entry->disableInteraction(newOpacity);
+	}
 }
 
 void RadialEntry::enableInteraction(uint8_t newOpacity)
 {
-	this->entry->enableInteraction(newOpacity);
+	if (this->allowInteractionEdits)
+	{
+		this->entry->enableInteraction(newOpacity);
+	}
+}
+
+void RadialEntry::toggleAllowInteractionEdits(bool allowInteractionEdits)
+{
+	this->allowInteractionEdits = allowInteractionEdits;
 }
 
 void RadialEntry::setClickModifier(cocos2d::EventKeyboard::KeyCode modifier)

@@ -68,11 +68,19 @@ void StateGameEnd::onEnter()
 void StateGameEnd::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+
+		this->backButton->interact();
+	});
 }
 
 void StateGameEnd::initializePositions()
 {
 	super::initializePositions();
+	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 196.0f);

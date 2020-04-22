@@ -9,7 +9,6 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoorClippy.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -21,7 +20,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
+#define LOCAL_FUNC_ID_RUN_OPERATION 1
 
 const std::string MulDoor::MapKey = "mul-door";
 
@@ -36,9 +35,6 @@ MulDoor* MulDoor::create(ValueMap& properties)
 
 MulDoor::MulDoor(ValueMap& properties) : super(properties)
 {
-	this->clippy = MulDoorClippy::create();
-
-	this->registerClippy(this->clippy);
 }
 
 MulDoor::~MulDoor()
@@ -49,7 +45,10 @@ void MulDoor::onEnter()
 {
 	super::onEnter();
 
-	this->enableAllClippy();
+	if (this->getIsUnlocked())
+	{
+		this->toggleHackable(false);
+	}
 }
 
 void MulDoor::registerHackables()
@@ -59,10 +58,11 @@ void MulDoor::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
+			LOCAL_FUNC_ID_RUN_OPERATION,
 			HackableCode::HackableCodeInfo(
 				MulDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Pearls,
 				MulDoorPreview::create(),
 				{
@@ -71,10 +71,17 @@ void MulDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				0.0f,
-				this->clippy,
 				{
-					// The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs, so we override that
-					HackableCode::ReadOnlyScript(nullptr, "imul ecx, 1", "imul rcx, 1"),
+					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
+					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					"imul ecx, 1",
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					"imul rcx, 1"),
 				},
 				true
 			)
@@ -99,12 +106,14 @@ void MulDoor::runOperation(int puzzleIndex)
 
 NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 {
-	int transform = puzzleIndex;
+	static volatile int transform;
+
+	transform = puzzleIndex;
 
 	ASM(push ZCX)
 	ASM_MOV_REG_VAR(ZCX, transform);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RUN_OPERATION);
 	ASM(imul ZCX, 1)
 	ASM_NOP6();
 	HACKABLE_CODE_END();

@@ -26,7 +26,8 @@ CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDu
 	return instance;
 }
 
-CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Healing, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
+CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Healing, UIResources::Menus_Icons_Heal, priority, 0, 0, 1, attackDuration, recoverDuration)
 {
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
 	

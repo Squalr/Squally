@@ -16,7 +16,10 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -26,17 +29,18 @@ using namespace cocos2d;
 
 const float AttackMenu::Radius = 384.0f;
 
-AttackMenu* AttackMenu::create()
+AttackMenu* AttackMenu::create(Timeline* timelineRef)
 {
-	AttackMenu* instance = new AttackMenu();
+	AttackMenu* instance = new AttackMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AttackMenu::AttackMenu() : super(AttackMenu::Radius)
+AttackMenu::AttackMenu(Timeline* timelineRef) : super(AttackMenu::Radius)
 {
+	this->timelineRef = timelineRef;
 }
 
 AttackMenu::~AttackMenu()
@@ -62,16 +66,23 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 	entity->getAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		int index = 0;
+		int mana = entity->getStateOrDefaultInt(StateKeys::Mana, 0);
 
-		for (auto attack : attackBehavior->getAvailableAttacks())
+		for (auto attack : attackBehavior->getAttacks())
 		{
 			int cost = attack->getSpecialCost();
 			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));
 
-			this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
+			RadialEntry* newEntry = this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
 				this->selectAttack(entry, attack, index);
 			});
+
+			if (cost > mana)
+			{
+				newEntry->disableInteraction(127);
+				newEntry->toggleAllowInteractionEdits(false);
+			}
 			
 			index++;
 		}
@@ -92,14 +103,14 @@ void AttackMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, in
 			case PlatformerAttack::AttackType::Healing:
 			case PlatformerAttack::AttackType::Resurrection:
 			{
-				// TODO: Auto select same team
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getFriendlyEntities()));
 				break;
 			}
 			default:
 			case PlatformerAttack::AttackType::Damage:
 			case PlatformerAttack::AttackType::Debuff:
 			{
-				// TODO: Auto select other team
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getEnemyEntities()));
 				break;
 			}
 		}

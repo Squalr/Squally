@@ -12,8 +12,8 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Hackables/CodeEditor/CodeHud.h"
-#include "Engine/Hackables/RadialMenu.h"
+#include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
+#include "Engine/Hackables/Menus/RadialMenu.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -225,9 +225,10 @@ bool MapBase::loadMap(std::string mapResource)
 	{
 		this->mapNode->removeChild(this->map);
 	}
-	
-	this->map = GameMap::deserialize(mapResource, this->layerDeserializers);
 
+	this->mapResource = mapResource;
+	this->map = GameMap::deserialize(this->mapResource, this->layerDeserializers);
+	
 	if (this->map != nullptr)
 	{
 		this->mapNode->addChild(this->map);

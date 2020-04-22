@@ -1,20 +1,22 @@
 #pragma once
 #include <string>
 
-#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableBase.h"
 #include "Engine/Utils/HackUtils.h"
 
 class HackableCode;
 class LocalizedString;
 
-class HackActivatedAbility : public HackableAttribute
+class HackActivatedAbility : public HackableBase
 {
 public:
 	static HackActivatedAbility* create(
+		std::string hackableIdentifier,
 		std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
 		int hackFlags,
 		float duration,
+		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
 		HackablePreview* hackablePreview,
@@ -23,10 +25,13 @@ public:
 	void activate();
 
 protected:
-	HackActivatedAbility(std::function<void()> onActivate,
+	HackActivatedAbility(
+		std::string hackableIdentifier,
+		std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
 		int hackFlags, 
 		float duration,
+		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
 		HackablePreview* hackablePreview,
@@ -36,7 +41,8 @@ protected:
 	void restoreState() override;
 
 private:
-	typedef HackableAttribute super;
+	typedef HackableBase super;
+	friend class GlobalHackAttributeContainer;
 
 	std::function<void()> onActivate;
 	std::function<void()> onDeactivate;

@@ -10,7 +10,6 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
-class ConfirmationMenu;
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
@@ -29,6 +28,8 @@ protected:
 	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 
 private:
 	typedef Hud super;
@@ -39,6 +40,7 @@ private:
 
 	cocos2d::Node* previousFocus;
 
+	cocos2d::Node* contentNode;
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* menuBack;
 	ClickableTextNode* okButton;
@@ -46,7 +48,6 @@ private:
 	LocalizedLabel* description;
 	cocos2d::Node* takeoverNode;
 	cocos2d::Node* notificationsNode;
-	ConfirmationMenu* confirmationMenu;
 	Sound* notificationSound;
 
 	std::queue<cocos2d::Node*> toProcess;

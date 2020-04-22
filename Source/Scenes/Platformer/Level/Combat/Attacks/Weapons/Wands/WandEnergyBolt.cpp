@@ -11,6 +11,8 @@
 
 using namespace cocos2d;
 
+const float WandEnergyBolt::DamageMultiplier = 1.75f;
+
 WandEnergyBolt* WandEnergyBolt::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	WandEnergyBolt* instance = new WandEnergyBolt(damageMin, damageMax, attackDuration, recoverDuration, priority);
@@ -21,10 +23,21 @@ WandEnergyBolt* WandEnergyBolt::create(int damageMin, int damageMax, float attac
 }
 
 WandEnergyBolt::WandEnergyBolt(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_Wand, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_ThunderBoltBlue,
+		priority,
+		damageMin,
+		damageMax,
+		6,
+		attackDuration,
+		recoverDuration
+	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid2);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+
+	this->setDamageMultiplier(WandEnergyBolt::DamageMultiplier);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);
@@ -41,7 +54,7 @@ PlatformerAttack* WandEnergyBolt::cloneInternal()
 
 LocalizedString* WandEnergyBolt::getString()
 {
-	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attacks_EnergyBolt::create();
 }
 
 std::string WandEnergyBolt::getAttackAnimation()

@@ -107,13 +107,14 @@ void Timeline::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastTargetArgs* args = static_cast<CombatEvents::CastTargetArgs*>(eventCustom->getUserData());
+		CombatEvents::CastTargetsArgs* args = static_cast<CombatEvents::CastTargetsArgs*>(eventCustom->getUserData());
 
 		if (this->timelineEntryAwaitingUserAction != nullptr)
 		{
-			this->timelineEntryAwaitingUserAction->stageTargets({ args->target });
+			this->timelineEntryAwaitingUserAction->stageTargets(args->targets);
 		}
 
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 		CombatEvents::TriggerResumeTimeline();
 	}));
 
@@ -240,12 +241,14 @@ void Timeline::checkCombatComplete()
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+		CombatEvents::TriggerPauseTimelineCinematic();
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
 	}
 	else if (!anyPlayerAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+		CombatEvents::TriggerPauseTimelineCinematic();
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(false));
 	}
 }
@@ -315,6 +318,48 @@ void Timeline::resumeTimeline()
 std::vector<TimelineEntry*> Timeline::getEntries()
 {
 	return this->timelineEntries;
+}
+
+std::vector<PlatformerEntity*> Timeline::getEntities()
+{
+	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
+
+	for (auto next : this->timelineEntries)
+	{
+		entities.push_back(next->getEntity());
+	}
+
+	return entities;
+}
+
+std::vector<PlatformerEntity*> Timeline::getFriendlyEntities()
+{
+	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
+
+	for (auto next : this->timelineEntries)
+	{
+		if (next->isPlayerEntry())
+		{
+			entities.push_back(next->getEntity());
+		}
+	}
+
+	return entities;
+}
+
+std::vector<PlatformerEntity*> Timeline::getEnemyEntities()
+{
+	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
+
+	for (auto next : this->timelineEntries)
+	{
+		if (!next->isPlayerEntry())
+		{
+			entities.push_back(next->getEntity());
+		}
+	}
+
+	return entities;
 }
 
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vector<PlatformerEntity*>& friendlyEntities)

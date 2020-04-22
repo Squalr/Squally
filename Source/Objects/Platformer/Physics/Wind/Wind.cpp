@@ -9,7 +9,6 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Physics/Wind/WindClippy.h"
 #include "Objects/Platformer/Physics/Wind/WindGenericPreview.h"
 #include "Objects/Platformer/Physics/Wind/WindSetSpeedPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -41,7 +40,6 @@ Wind* Wind::create(ValueMap& properties)
 
 Wind::Wind(ValueMap& properties) : super(properties)
 {
-	this->windClippy = WindClippy::create();
 	this->isUniform = GameUtils::getKeyOrDefault(this->properties, Wind::PropertyUniform, Value(false)).asBool();
 	float speedX = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedX, Value(0.0f)).asFloat();
 	float speedY = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedY, Value(0.0f)).asFloat();
@@ -54,8 +52,7 @@ Wind::Wind(ValueMap& properties) : super(properties)
 
 	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
 	this->windParticles->setGrouped();
-
-	this->registerClippy(this->windClippy);
+	
 	this->addChild(this->windForce);
 	this->addChild(this->windParticles);
 }
@@ -133,7 +130,8 @@ void Wind::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Wind::MapKey,
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
-				UIResources::Menus_Icons_Spell,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_SpellWind,
 				WindSetSpeedPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
@@ -142,13 +140,16 @@ void Wind::registerHackables()
 				int(HackFlags::Wind),
 				12.0f,
 				0.0f,
-				this->windClippy,
 				{
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown::create(),
-						"mov dword ptr [eax], 0.0\n"
-						"mov dword ptr [ebx], -1.0\n",
-						"mov dword ptr [rax], 0.0\n"
-						"mov dword ptr [rbx], -1.0\n"
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify::create()) + 
+						"mov dword ptr [eax], 0.0f\n"
+						"mov dword ptr [ebx], -1.0f\n",
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify::create()) + 
+						"mov dword ptr [rax], 0.0f\n"
+						"mov dword ptr [rbx], -1.0f\n"
 					),
 				}
 			)

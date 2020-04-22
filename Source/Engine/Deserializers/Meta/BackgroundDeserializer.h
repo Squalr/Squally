@@ -16,5 +16,5 @@ protected:
 private:
 	typedef PropertyDeserializer super;
 
-	static const std::string MapKeyBackground;
+	static const std::string MapKey;
 };

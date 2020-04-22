@@ -43,12 +43,12 @@ AraBehavior::~AraBehavior()
 
 void AraBehavior::onLoad()
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
@@ -88,7 +88,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterShort1,
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -117,7 +117,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -131,7 +131,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 			false
 		));
 	});

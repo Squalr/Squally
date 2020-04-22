@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const float TimeBombTickPreview::MaxTick = 3;
+const int TimeBombTickPreview::MaxTick = 3;
 
 TimeBombTickPreview* TimeBombTickPreview::create()
 {

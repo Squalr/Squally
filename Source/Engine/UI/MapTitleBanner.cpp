@@ -38,6 +38,7 @@ MapTitleBanner::MapTitleBanner(LocalizedString* bannerString) : super()
 	this->bannerBarBottom->drawSolidRect(-Vec2(visibleSize.width / 2.0f, MapTitleBanner::BannerBarHeight / 2.0f), Vec2(visibleSize.width / 2.0f, MapTitleBanner::BannerBarHeight / 2.0f), Color4F::WHITE);
 
 	this->bannerLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->bannerLabel->enableShadow(Color4B::BLACK, Size(4.0f, -4.0f), 0);
 
 	this->contentNode->addChild(this->bannerBarTop);
 	this->contentNode->addChild(this->bannerBarBottom);

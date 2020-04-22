@@ -31,7 +31,7 @@ HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 	LocalizedString* tabString = Strings::Input_Tab::create();
 
 	bracketString1->setStringReplacementVariables(tabString);
-	hintString->setStringReplacementVariables({ bracketString1 });
+	hintString->setStringReplacementVariables(bracketString1);
 	
 	this->setHint(hintString);
 }

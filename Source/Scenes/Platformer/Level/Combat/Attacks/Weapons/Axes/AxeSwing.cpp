@@ -21,7 +21,16 @@ AxeSwing* AxeSwing::create(int damageMin, int damageMax, float attackDuration, f
 }
 
 AxeSwing::AxeSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_Axe, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_Axe,
+		priority,
+		damageMin,
+		damageMax,
+		0,
+		attackDuration,
+		recoverDuration
+	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid3);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
@@ -41,7 +50,7 @@ PlatformerAttack* AxeSwing::cloneInternal()
 
 LocalizedString* AxeSwing::getString()
 {
-	return Strings::Platformer_Combat_Attack::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attack::create();
 }
 
 std::string AxeSwing::getAttackAnimation()

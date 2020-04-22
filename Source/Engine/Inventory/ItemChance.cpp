@@ -126,6 +126,12 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
         }
         case Probability::Legendary:
         {
+            // 2%
+            chance = 0.02f;
+            break;
+        }
+        case Probability::Artifact:
+        {
             // 1%
             chance = 0.01f;
             break;

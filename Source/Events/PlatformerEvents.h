@@ -19,6 +19,7 @@ class PlatformerEvents
 public:
 	static const std::string EventSpawnToTransitionLocation;
 	static const std::string EventWarpToLocationPrefix;
+	static const std::string EventWarpToObjectIdPrefix;
 	static const std::string EventBeforePlatformerMapChange;
 	static const std::string EventCinematicHijack;
 	static const std::string EventCinematicRestore;
@@ -40,6 +41,10 @@ public:
 	static const std::string EventDisallowPause;
 	static const std::string EventDispelIllusion;
 	static const std::string EventSavePosition;
+	static const std::string EventSaveRespawn;
+	static const std::string EventBeforeLoadRespawn;
+	static const std::string EventLoadRespawn;
+	static const std::string EventUnstuck;
 
 	struct TransitionArgs
 	{
@@ -50,12 +55,22 @@ public:
 		}
 	};
 
-	struct WarpArgs
+	struct WarpObjectToLocationArgs
 	{
-		GameObject* target;
+		GameObject* object;
 		cocos2d::Vec2 position;
 
-		WarpArgs(GameObject* target, cocos2d::Vec2 position) : target(target), position(position)
+		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec2 position) : object(object), position(position)
+		{
+		}
+	};
+
+	struct WarpObjectToObjectIdArgs
+	{
+		GameObject* object;
+		std::string objectId;
+
+		WarpObjectToObjectIdArgs(GameObject* object, std::string objectId) : object(object), objectId(objectId)
 		{
 		}
 	};
@@ -165,8 +180,16 @@ public:
 		DispelIllusionArgs(std::string group) : group(group) { }
 	};
 
+	struct SaveRespawnArgs
+	{
+		std::string objectIdentifier;
+
+		SaveRespawnArgs(std::string objectIdentifier) : objectIdentifier(objectIdentifier) { }
+	};
+
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
-	static void TriggerWarpToLocation(WarpArgs args);
+	static void TriggerWarpObjectToLocation(WarpObjectToLocationArgs args);
+	static void TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args);
 	static void TriggerBeforePlatformerMapChange();
 	static void TriggerCinematicHijack();
 	static void TriggerCinematicRestore();
@@ -188,4 +211,8 @@ public:
 	static void TriggerDisallowPause();
 	static void TriggerDispelIllusion(DispelIllusionArgs args);
 	static void TriggerSavePosition();
+	static void TriggerSaveRespawn(SaveRespawnArgs args);
+	static void TriggerBeforeLoadRespawn();
+	static void TriggerLoadRespawn();
+	static void TriggerUnstuck();
 };

@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -92,14 +93,38 @@ void WoodenSpikes::registerHackables()
 			HackableCode::HackableCodeInfo(
 				WoodenSpikes::MapKey,
 				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
 				WoodenSpikesUpdateTimerPreview::create(),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::st0, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				int(HackFlags::None),
 				20.0f,
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry::create()) + 
+						"fadd dword ptr [ebx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+						// x64
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry::create()) + 
+						"fadd dword ptr [rbx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+					)
+				},
+				true
 			)
 		},
 	};
@@ -125,8 +150,11 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 		return;
 	}
 
-	volatile float* elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
-	volatile float* deltaTimePtr = &dt;
+	static volatile float* elapsedPtr;
+	static volatile float* deltaTimePtr;
+
+	elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
+	deltaTimePtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);
@@ -147,7 +175,9 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 
 	HACKABLES_STOP_SEARCH();
 
-	if (this->currentElapsedTimeForSpikeTrigger > this->totalTimeUntilSpikesTrigger)
+	this->currentElapsedTimeForSpikeTrigger = MathUtils::clamp(this->currentElapsedTimeForSpikeTrigger, 0.0f, this->totalTimeUntilSpikesTrigger);
+
+	if (this->currentElapsedTimeForSpikeTrigger >= this->totalTimeUntilSpikesTrigger)
 	{
 		const float StayUpDuration = 1.5f;
 

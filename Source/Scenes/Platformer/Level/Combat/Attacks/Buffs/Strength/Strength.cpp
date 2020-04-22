@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/StrengthClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/StrengthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -40,6 +39,7 @@ const std::string Strength::StrengthIdentifier = "strength";
 
 const int Strength::MinMultiplier = -1;
 const int Strength::MaxMultiplier = 2;
+const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
 
 Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -51,16 +51,15 @@ Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Strength::Duration, Strength::StrengthIdentifier))
+Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Strength, BuffData(Strength::Duration, Strength::StrengthIdentifier))
 {
-	this->clippy = StrengthClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->currentDamageDelt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -89,16 +88,6 @@ void Strength::onEnter()
 void Strength::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
-}
-
-void Strength::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
 }
 
 void Strength::registerHackables()
@@ -110,8 +99,6 @@ void Strength::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -119,6 +106,7 @@ void Strength::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Strength::StrengthIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
+				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_Strength,
 				StrengthGenericPreview::create(),
 				{
@@ -133,9 +121,26 @@ void Strength::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
+						"add ecx, 3\n",
+						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
+						"add rcx, 3\n"
+					),
+				},
+				true
 			)
 		},
 	};
@@ -149,21 +154,25 @@ void Strength::registerHackables()
 	}
 }
 
-void Strength::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+NO_OPTIMIZE void Strength::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
 
 	this->currentDamageDelt = *damageOrHealing;
 
 	this->applyStrength();
-
+	
 	*damageOrHealing = this->currentDamageDelt;
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
-	volatile int originalDamage = this->currentDamageDelt;
-	volatile int damageDelt = this->currentDamageDelt;
+	static volatile int originalDamage;
+	static volatile int damageDelt;
+
+	originalDamage = this->currentDamageDelt;
+	damageDelt = this->currentDamageDelt;
 
 	ASM(push ZCX);
 	ASM_MOV_REG_VAR(ZCX, damageDelt);
@@ -178,7 +187,7 @@ NO_OPTIMIZE void Strength::applyStrength()
 	ASM(pop ZCX);
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(damageDelt, std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
+	this->currentDamageDelt = MathUtils::clamp(damageDelt, -std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
 
 	HACKABLES_STOP_SEARCH();
 }

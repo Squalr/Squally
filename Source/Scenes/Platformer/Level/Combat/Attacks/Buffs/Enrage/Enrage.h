@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class EnrageClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class Enrage : public Buff
 {
 public:
 	static Enrage* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string EnrageIdentifier;
@@ -31,8 +28,8 @@ protected:
 	void initializePositions() override;
 	void registerHackables() override;
 	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
-	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
-	void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
 
 private:
 	typedef Buff super;
@@ -43,7 +40,6 @@ private:
 	
 	volatile float currentSpeed;
 	
-	EnrageClippy* clippy;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 

@@ -14,19 +14,18 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NotificationEvents.h"
-#include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
+
+using namespace cocos2d;
 
 const int NotificationHud::SlotCount = 12;
 const float NotificationHud::FadeInDuration = 0.35f;
 const float NotificationHud::SustainDuration = 4.0f;
 const float NotificationHud::FadeOutDuration = 0.5f;
 const float NotificationHud::Cooldown = NotificationHud::FadeInDuration + NotificationHud::SustainDuration + NotificationHud::FadeOutDuration;
-
-using namespace cocos2d;
 
 NotificationHud* NotificationHud::create()
 {
@@ -42,11 +41,11 @@ NotificationHud::NotificationHud()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->previousFocus = nullptr;
+	this->contentNode = Node::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 192), visibleSize.width, visibleSize.height);
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
-	this->confirmationMenu = ConfirmationMenu::create();
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
@@ -73,10 +72,10 @@ NotificationHud::NotificationHud()
 	this->takeoverNode->addChild(this->title);
 	this->takeoverNode->addChild(this->description);
 	this->takeoverNode->addChild(this->okButton);
-	this->addChild(this->takeoverNode);
-	this->addChild(this->notificationsNode);
-	this->addChild(this->confirmationMenu);
-	this->addChild(this->notificationSound);
+	this->contentNode->addChild(this->takeoverNode);
+	this->contentNode->addChild(this->notificationsNode);
+	this->contentNode->addChild(this->notificationSound);
+	this->addChild(this->contentNode);
 }
 
 NotificationHud::~NotificationHud()
@@ -126,16 +125,6 @@ void NotificationHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource, args->keepOpen);
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
-	{
-		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
-		{
-			this->confirmationMenu->showMessage(args->confirmationMessage, args->confirmCallback, args->cancelCallback);
 		}
 	}));
 
@@ -205,6 +194,20 @@ void NotificationHud::update(float dt)
 			}
 		}
 	}
+}
+
+void NotificationHud::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	this->contentNode->setVisible(false);
+}
+
+void NotificationHud::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	this->contentNode->setVisible(true);
 }
 
 void NotificationHud::showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource)

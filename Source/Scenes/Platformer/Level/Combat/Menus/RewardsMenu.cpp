@@ -112,11 +112,13 @@ void RewardsMenu::initializeListeners()
 
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
+		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(false));
 		CombatEvents::TriggerReturnToMap();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
+		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(false));
 		CombatEvents::TriggerReturnToMap();
 	});
 }

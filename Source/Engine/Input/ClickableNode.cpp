@@ -110,36 +110,30 @@ void ClickableNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
-	});
+	}));
 
-	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(InputEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom, true);
-	});
+	}));
 
-	EventListenerCustom* mouseDownListener = EventListenerCustom::create(InputEvents::EventMouseDown, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseDown, [=](EventCustom* eventCustom)
 	{
 		this->mouseDown(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
-	});
+	}));
 
-	EventListenerCustom* mouseUpListener = EventListenerCustom::create(InputEvents::EventMouseUp, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseUp, [=](EventCustom* eventCustom)
 	{
 		this->mouseUp(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
-	});
+	}));
 
-	EventListenerCustom* mouseScrollListener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
 		this->mouseScroll(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
-	});
-
-	this->addEventListener(mouseMoveListener);
-	this->addEventListener(mouseRefreshListener);
-	this->addEventListener(mouseDownListener);
-	this->addEventListener(mouseUpListener);
-	this->addEventListener(mouseScrollListener);
+	}));
 }
 
 void ClickableNode::setDebugDrawPosition()

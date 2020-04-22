@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
+class ConstantFloat;
 class LocalizedLabel;
 
 class DartLauncherUpdateTimerPreview : public HackablePreview
@@ -30,6 +31,6 @@ private:
 
 	cocos2d::Sprite* dartLauncher;
 	cocos2d::Sprite* dart;
-	ConstantString* eaxTimerStr;
+	ConstantFloat* eaxTimerStr;
 	LocalizedLabel* eaxTimer;
 };

@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
+#include "Scenes/Platformer/Hackables/ScrappyClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHeal.h"
 
 #include "Resources/SoundResources.h"
@@ -69,7 +70,12 @@ void FireballTutorialBehavior::onLoad()
 		{
 			if (!this->hasRunTutorial)
 			{
-				dynamic_cast<Fireball*>(args->projectile)->enableClippy();
+				args->projectile->registerClippyOnto(Fireball::HackIdentifierFireballSpeed, [=]
+				{
+					return ScrappyClippy::create(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create()));
+				});
+
 				this->runTutorial();
 			}
 		}
@@ -83,7 +89,7 @@ void FireballTutorialBehavior::onLoad()
 		}
 	}));
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 
@@ -93,7 +99,7 @@ void FireballTutorialBehavior::onLoad()
 		});
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

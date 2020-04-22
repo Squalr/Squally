@@ -2,15 +2,17 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -31,7 +33,8 @@ AgroBehavior* AgroBehavior::create(GameObject* owner)
 AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->exclamation = Sprite::create(UIResources::Platformer_Exclamation);
+	this->exclamation = Sprite::create(ObjectResources::Interactive_Help_Exclamation);
+	this->chaseOnAgro = true;
 	this->warnOnAgro = true;
 	this->isAgrod = false;
 	this->isEnabled = true;
@@ -69,7 +72,7 @@ void AgroBehavior::initializePositions()
 
 void AgroBehavior::onLoad()
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
@@ -90,6 +93,21 @@ void AgroBehavior::enable()
 void AgroBehavior::disable()
 {
 	this->isEnabled = false;
+}
+
+bool AgroBehavior::hasAgro()
+{
+	return this->isAgrod;
+}
+
+PlatformerEntity* AgroBehavior::getAgroTarget()
+{
+	return this->squally;
+}
+
+void AgroBehavior::toggleChaseOnAgro(bool chaseOnAgro)
+{
+	this->chaseOnAgro = chaseOnAgro;
 }
 
 void AgroBehavior::toggleWarnOnAgro(bool warnOnAgro)
@@ -150,7 +168,15 @@ void AgroBehavior::update(float dt)
 			if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
 				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
 			{
-				this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
+				if (this->chaseOnAgro)
+				{
+					this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
+				}
+				else
+				{
+					// Look at target if not able to chase
+					this->entity->getAnimations()->setFlippedX(squallyPosition.x < entityPosition.x);
+				}
 			}
 			else
 			{

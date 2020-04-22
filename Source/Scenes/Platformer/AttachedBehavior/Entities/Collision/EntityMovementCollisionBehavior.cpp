@@ -10,6 +10,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -85,30 +86,28 @@ void EntityMovementCollisionBehavior::onLoad()
 		this->movementBehavior = movementBehavior;
 	});
 	
-	const std::string identifier = std::to_string((unsigned long long)(this->entity));
+	const std::string identifier = this->entity->getUniqueIdentifier();
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + identifier, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
+		PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getUserData());
 		
 		if (args != nullptr)
 		{
-			Vec2 position = args->position;
+			this->warpToPosition(args->position);
+		}
+	}));
 
-			// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
-			this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToObjectIdPrefix + identifier, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::WarpObjectToObjectIdArgs* args = static_cast<PlatformerEvents::WarpObjectToObjectIdArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr && !args->objectId.empty())
+		{
+			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
 			{
-				if (this->movementCollision != nullptr)
-				{
-					this->tryBind();
-					this->movementCollision->warpTo(position);
-
-					if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
-					{
-						GameCamera::getInstance()->setCameraPositionToTrackedTarget();
-					}
-				}
-			});
+				this->warpToPosition(GameUtils::getWorldCoords(object));
+			}), args->objectId);
 		}
 	}));
 
@@ -123,6 +122,24 @@ void EntityMovementCollisionBehavior::onLoad()
 	});
 
 	this->scheduleUpdate();
+}
+
+void EntityMovementCollisionBehavior::warpToPosition(Vec2 position)
+{
+	// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
+	{
+		if (this->movementCollision != nullptr)
+		{
+			this->tryBind();
+			this->movementCollision->warpTo(position);
+
+			if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
+			{
+				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+			}
+		}
+	});
 }
 
 void EntityMovementCollisionBehavior::onDisable()

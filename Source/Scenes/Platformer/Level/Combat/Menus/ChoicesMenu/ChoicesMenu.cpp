@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ItemsMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
@@ -30,23 +31,24 @@ using namespace cocos2d;
 
 const float ChoicesMenu::Radius = 240.0f;
 
-ChoicesMenu* ChoicesMenu::create()
+ChoicesMenu* ChoicesMenu::create(Timeline* timelineRef)
 {
-	ChoicesMenu* instance = new ChoicesMenu();
+	ChoicesMenu* instance = new ChoicesMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChoicesMenu::ChoicesMenu()
+ChoicesMenu::ChoicesMenu(Timeline* timelineRef)
 {
 	this->noItems = false;
 	this->noDefend = false;
 	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
+	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
-	this->attackMenu = AttackMenu::create();
+	this->attackMenu = AttackMenu::create(timelineRef);
 	this->itemsMenu = ItemsMenu::create();
 	this->trackTarget = nullptr;
 
@@ -55,7 +57,7 @@ ChoicesMenu::ChoicesMenu()
 		this->onItemsClick();
 	});
 
-	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), nullptr, UIResources::Menus_Icons_Spear, UIResources::Combat_AttackCircle, [=]()
+	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), nullptr, UIResources::Menus_Icons_SpearTip, UIResources::Combat_AttackCircle, [=]()
 	{
 		this->onAttackClick();
 	});
@@ -100,6 +102,23 @@ void ChoicesMenu::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableItems, [=](EventCustom* eventCustom)
 	{
 		this->noItems = true;
+	}));
+
+	// Handle the (very rare) case of getting interrupted while menuing -- can happen if a projectile hits the user after the timeline resumes.
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getUserData());
+
+		PlatformerEntity* entity = this->selectedEntry == nullptr ? nullptr : this->selectedEntry->getEntity();
+
+		if (args != nullptr && args->target == entity)
+		{
+			if (this->currentMenu != CombatEvents::MenuStateArgs::CurrentMenu::Closed)
+			{
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, this->selectedEntry));
+				CombatEvents::TriggerResumeTimeline();
+			}
+		}
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE }, [=](InputEvents::InputArgs* args)
@@ -275,6 +294,8 @@ void ChoicesMenu::update(float dt)
 
 void ChoicesMenu::onItemsClick()
 {
+	this->itemsMenu->scrollTo(1);
+
 	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 0)
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
@@ -289,6 +310,8 @@ void ChoicesMenu::onItemsClick()
 
 void ChoicesMenu::onAttackClick()
 {
+	this->attackMenu->scrollTo(1);
+
 	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 1)
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
@@ -297,7 +320,7 @@ void ChoicesMenu::onAttackClick()
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
 	}
-	
+
 	this->choicesMenu->scrollTo(1);
 }
 

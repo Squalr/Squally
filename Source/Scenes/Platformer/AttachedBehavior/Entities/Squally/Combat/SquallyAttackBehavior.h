@@ -32,14 +32,12 @@ private:
 	typedef AttachedBehavior super;
 
 	void loadWeaponAttacks(EntityAttackBehavior* attackBehavior);
-	void loadUnarmedAttacks(EntityAttackBehavior* attackBehavior);
-	void loadAxeAttacks(EntityAttackBehavior* attackBehavior, Axe* sword);
-	void loadBowAttacks(EntityAttackBehavior* attackBehavior, Bow* sword);
-	void loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* sword);
-	void loadSwordAttacks(EntityAttackBehavior* attackBehavior, Sword* sword);
-	void loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* sword);
-
-	std::tuple<int, int> computeWeaponDamageRange(Weapon* weapon);
+	void loadUnarmedAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
+	void loadAxeAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
+	void loadBowAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
+	void loadMaceAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
+	void loadSwordAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
+	void loadWandAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
 
 	Squally* squally;
 };

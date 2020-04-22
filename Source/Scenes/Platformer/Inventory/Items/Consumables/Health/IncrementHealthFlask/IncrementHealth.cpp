@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -16,7 +16,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthClippy.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -48,15 +47,13 @@ IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEnt
 	return instance;
 }
 
-IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData())
+IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+	: super(caster, target, UIResources::Menus_Icons_ArrowUp, BuffData())
 {
-	this->clippy = IncrementHealthClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
@@ -83,14 +80,6 @@ void IncrementHealth::initializePositions()
 	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
 }
 
-void IncrementHealth::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void IncrementHealth::registerHackables()
 {
 	super::registerHackables();
@@ -100,8 +89,6 @@ void IncrementHealth::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -109,6 +96,7 @@ void IncrementHealth::registerHackables()
 			HackableCode::HackableCodeInfo(
 				IncrementHealth::IncrementHealthIdentifier,
 				Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth::create(),
+				HackableBase::HackBarColor::Green,
 				UIResources::Menus_Icons_ArrowUp,
 				IncrementHealthGenericPreview::create(),
 				{
@@ -116,8 +104,7 @@ void IncrementHealth::registerHackables()
 				},
 				int(HackFlags::None),
 				(float(IncrementHealth::HackTicks) * IncrementHealth::TimeBetweenTicks) + 0.1f,
-				0.0f,
-				this->clippy
+				0.0f
 			)
 		},
 	};
@@ -168,7 +155,9 @@ void IncrementHealth::runIncrementHealth()
 
 NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 {
-	int incrementAmount = 0;
+	static volatile int incrementAmount;
+
+	incrementAmount = 0;
 
 	ASM(push ZDI);
 	ASM(mov ZDI, 0)

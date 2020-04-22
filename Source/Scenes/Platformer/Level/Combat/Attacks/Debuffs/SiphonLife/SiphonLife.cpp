@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLifeClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLifeGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -53,16 +52,14 @@ SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* targe
 	return instance;
 }
 
-SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(SiphonLife::Duration, SiphonLife::SiphonLifeIdentifier))
+SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, UIResources::Menus_Icons_Fangs, BuffData(SiphonLife::Duration, SiphonLife::SiphonLifeIdentifier))
 {
-	this->clippy = SiphonLifeClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
-
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
@@ -91,16 +88,6 @@ void SiphonLife::onEnter()
 void SiphonLife::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
-}
-
-void SiphonLife::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
 }
 
 void SiphonLife::registerHackables()
@@ -112,8 +99,6 @@ void SiphonLife::registerHackables()
 		return;
 	}
 
-	this->clippy->setIsEnabled(false);
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -121,7 +106,8 @@ void SiphonLife::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SiphonLife::SiphonLifeIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife::create(),
-				UIResources::Menus_Icons_Clock,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_Fangs,
 				SiphonLifeGenericPreview::create(),
 				{
 					{
@@ -136,7 +122,6 @@ void SiphonLife::registerHackables()
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
 				{
 				}
 			)
@@ -165,10 +150,15 @@ void SiphonLife::onModifyTimelineSpeed(float* timelineSpeed, std::function<void(
 
 NO_OPTIMIZE void SiphonLife::applySiphonLife()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = SiphonLife::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	static volatile float speedBonus;
+	static volatile float increment;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
+
+	speedBonus = 0.0f;
+	increment = SiphonLife::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
 	ASM(push ZSI);
 	ASM(push ZBX);

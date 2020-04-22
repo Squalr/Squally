@@ -9,13 +9,13 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
-class PendulumBladeClippy;
 
 class PendulumBlade : public HackableObject
 {
 public:
 	static PendulumBlade* create(cocos2d::ValueMap& properties);
 
+	static const std::string HackIdentifierTargetAngle;
 	static const std::string MapKey;
 
 protected:
@@ -32,18 +32,18 @@ protected:
 private:
 	typedef HackableObject super;
 	void startSwing();
-	void swingToAngle(float angle);
+	void setSwingAngle(float angle);
+	void doSwing();
 	void buildChain();
 	std::vector<cocos2d::Vec2> createBladeCollision();
 
+	volatile float previousAngle;
 	volatile float targetAngle;
 	cocos2d::Sprite* neck;
 	cocos2d::Node* bladeChain;
 	float chainHeight;
 	HackableData* hackableDataTargetAngle;
 	CollisionObject* bladeCollision;
-
-	PendulumBladeClippy* pendulumBladeClippy;
 	
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;

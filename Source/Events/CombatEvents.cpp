@@ -31,12 +31,16 @@ const std::string CombatEvents::EventCastInterrupt = "EVENT_COMBAT_CAST_INTERRUP
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_COMBAT_FINISHED";
 const std::string CombatEvents::EventGiveExp = "EVENT_COMBAT_GIVE_EXP";
 const std::string CombatEvents::EventGiveRewards = "EVENT_COMBAT_GIVE_REWARDS";
+const std::string CombatEvents::EventBeforeReturnToMap = "EVENT_COMBAT_BEFORE_RETURN_TO_MAP";
 const std::string CombatEvents::EventReturnToMap = "EVENT_COMBAT_RETURN_TO_MAP";
+const std::string CombatEvents::EventReturnToMapRespawn = "EVENT_COMBAT_RETURN_TO_MAP_RESPAWN";
 const std::string CombatEvents::EventHackableCombatCue = "EVENT_COMBAT_HACKABLE_COMBAT_CUE";
 const std::string CombatEvents::EventDamageDelt = "EVENT_COMBAT_DAMAGE_DELT";
 const std::string CombatEvents::EventDamage = "EVENT_COMBAT_DAMAGE";
 const std::string CombatEvents::EventHealingDelt = "EVENT_COMBAT_HEALING_DELT";
 const std::string CombatEvents::EventHealing = "EVENT_COMBAT_HEALING";
+const std::string CombatEvents::EventManaRestore = "EVENT_COMBAT_MANA_RESTORE";
+const std::string CombatEvents::EventManaRestoreDelt = "EVENT_COMBAT_MANA_RESTORE_DELT";
 const std::string CombatEvents::EventEntityBuffsModifyTimelineSpeed = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_TIMELINE_SPEED";
 const std::string CombatEvents::EventEntityBuffsModifyDamageTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_TAKEN";
 const std::string CombatEvents::EventEntityBuffsModifyDamageDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_DELT";
@@ -100,7 +104,7 @@ void CombatEvents::TriggerSelectionChanged(SelectionArgs args)
 	);
 }
 
-void CombatEvents::TriggerSelectCastTarget(CastTargetArgs args)
+void CombatEvents::TriggerSelectCastTarget(CastTargetsArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventSelectCastTarget,
@@ -245,10 +249,25 @@ void CombatEvents::TriggerGiveRewards()
 	);
 }
 
+void CombatEvents::TriggerBeforeReturnToMap(BeforeReturnToMapArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventBeforeReturnToMap,
+		&args
+	);
+}
+
 void CombatEvents::TriggerReturnToMap()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventReturnToMap
+	);
+}
+
+void CombatEvents::TriggerReturnToMapRespawn()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventReturnToMapRespawn
 	);
 }
 
@@ -287,6 +306,22 @@ void CombatEvents::TriggerHealing(DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventHealing,
+		&args
+	);
+}
+
+void CombatEvents::TriggerManaRestoreDelt(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventManaRestoreDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerManaRestore(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventManaRestore,
 		&args
 	);
 }

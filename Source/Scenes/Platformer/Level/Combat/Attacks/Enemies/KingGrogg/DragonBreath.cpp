@@ -13,6 +13,7 @@
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -67,15 +68,22 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 		fireball->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+			
+			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
+
 			fireball->disable(false);
 			fireball->runImpactFX();
-
-			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 			if (entity != nullptr)
 			{
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
 			}
+
+			fireball->despawn(1.0f);
 
 			return CollisionObject::CollisionResult::DoNothing;
 		});

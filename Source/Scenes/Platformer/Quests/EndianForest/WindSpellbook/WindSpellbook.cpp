@@ -51,12 +51,12 @@ WindSpellbook::~WindSpellbook()
 
 void WindSpellbook::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::watchForObject<Marcel>(this, [=](Marcel* marcel)
+	ObjectEvents::WatchForObject<Marcel>(this, [=](Marcel* marcel)
 	{
 		this->marcel = marcel;
 

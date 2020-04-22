@@ -60,7 +60,6 @@ void ReflectTutorial::onLoad()
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<Reflect*>(args->buff) != nullptr)
 		{
-			dynamic_cast<Reflect*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));
@@ -73,7 +72,7 @@ void ReflectTutorial::onLoad()
 		}
 	}));
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 
@@ -83,7 +82,7 @@ void ReflectTutorial::onLoad()
 		});
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);

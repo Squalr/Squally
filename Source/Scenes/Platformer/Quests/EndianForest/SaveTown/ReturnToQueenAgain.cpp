@@ -16,6 +16,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 
@@ -55,22 +56,30 @@ ReturnToQueenAgain::~ReturnToQueenAgain()
 
 void ReturnToQueenAgain::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
+	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
 	}, Guano::MapKey);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::watchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
+	ObjectEvents::WatchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
 		this->queenLiana = queenLiana;
+		
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableTurnIn();
+			});
+		}
 	}, QueenLiana::MapKey);
 
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
@@ -79,11 +88,21 @@ void ReturnToQueenAgain::onLoad(QuestState questState)
 void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
 {
 	this->runCinematicSequence();
+
+	this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->enableTurnIn();
+	});
 }
 
 void ReturnToQueenAgain::onComplete()
 {
 	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
+
+	this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->disableTurnIn();
+	});
 }
 
 void ReturnToQueenAgain::onSkipped()

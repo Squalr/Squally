@@ -29,6 +29,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_LAUNCH_TIMER 1
 
+const std::string PivotLauncher::HackIdentifierLaunchTimer = "pivot-launch-timer";
 const std::string PivotLauncher::PivotBone = "pivot_bone";
 const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
 const std::string PivotLauncher::PropertyPivotTarget = "pivot-target";
@@ -77,7 +78,7 @@ void PivotLauncher::onEnter()
 		this->shoot();
 	});
 
-	ObjectEvents::watchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
+	ObjectEvents::WatchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
 	{
 		this->target = platformerEntity;
 	}, this->targetQueryKey);
@@ -120,8 +121,9 @@ void PivotLauncher::registerHackables()
 		{
 			LOCAL_FUNC_ID_LAUNCH_TIMER,
 			HackableCode::HackableCodeInfo(
-				"pivot-launch-timer",
+				PivotLauncher::HackIdentifierLaunchTimer,
 				Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
+				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				this->getTimerPreview(),
 				{
@@ -131,8 +133,7 @@ void PivotLauncher::registerHackables()
 				},
 				int(HackFlags::None),
 				12.0f,
-				0.0f,
-				this->getTimerClippy()
+				0.0f
 			)
 		},
 	};
@@ -144,11 +145,6 @@ void PivotLauncher::registerHackables()
 	{
 		this->registerCode(next);
 	}
-}
-
-Clippy* PivotLauncher::getTimerClippy()
-{
-	return nullptr;
 }
 
 HackablePreview* PivotLauncher::getTimerPreview()
@@ -216,9 +212,12 @@ NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
 
 		this->projectilePool->getNextProjectile();
 	}
+	
+	static volatile float* timePtr;
+	static volatile float* dtPtr = &dt;
 
-	volatile float* timePtr = &this->launchTimer;
-	volatile float* dtPtr = &dt;
+	timePtr = &this->launchTimer;
+	dtPtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);

@@ -3,6 +3,8 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class Consumable;
+class EquipmentInventory;
+class Inventory;
 class PlatformerAttack;
 class PlatformerEntity;
 
@@ -16,6 +18,7 @@ public:
 	std::vector<PlatformerAttack*> getNoCostAttacks();
 	std::vector<Consumable*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
+	std::tuple<int, int> computeAttackRange();
 
 	static const float DefaultRecoverSpeed;
 	static const float DefaultRecoverSpeedSlow;
@@ -35,6 +38,9 @@ private:
 
 	void buildEquipmentAttacks();
 	void rebuildConsumables();
+
+	EquipmentInventory* equipmentInventory;
+	Inventory* inventory;
 
 	PlatformerEntity* entity;
 	cocos2d::Node* attacksNode;

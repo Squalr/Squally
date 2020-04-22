@@ -22,6 +22,10 @@ public:
 	void lock(bool animate = true) override;
 	void unlock(bool animate = true) override;
 
+	bool getIsUnlocked();
+
+	static const std::string PropertyUnlockedByDefault;
+
 protected:
 	PuzzleDoorBase(cocos2d::ValueMap& properties,
 		cocos2d::Size doorClipSize,
@@ -89,6 +93,7 @@ private:
 		Failed
 	};
 
+	bool unlockedByDefault;
 	bool firstRun;
 	bool isUnlocked;
 	RuneState runeStates[4];

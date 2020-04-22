@@ -21,7 +21,16 @@ MaceSwing* MaceSwing::create(int damageMin, int damageMax, float attackDuration,
 }
 
 MaceSwing::MaceSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_Hammer, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
+	: super(
+		AttackType::Damage,
+		UIResources::Menus_Icons_Mace,
+		priority,
+		damageMin,
+		damageMax,
+		0,
+		attackDuration,
+		recoverDuration
+	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakBlunt2);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
@@ -41,7 +50,7 @@ PlatformerAttack* MaceSwing::cloneInternal()
 
 LocalizedString* MaceSwing::getString()
 {
-	return Strings::Platformer_Combat_Attacks_ThrowWeapon::create(); // No string yet! (choose an arbitrary placeholder)
+	return Strings::Platformer_Combat_Attack::create();
 }
 
 std::string MaceSwing::getAttackAnimation()

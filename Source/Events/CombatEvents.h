@@ -46,12 +46,16 @@ public:
 	static const std::string EventCombatTutorialUnfocus;
 	static const std::string EventGiveExp;
 	static const std::string EventGiveRewards;
+	static const std::string EventBeforeReturnToMap;
 	static const std::string EventReturnToMap;
+	static const std::string EventReturnToMapRespawn;
 	static const std::string EventHackableCombatCue;
 	static const std::string EventDamageDelt;
 	static const std::string EventHealingDelt;
 	static const std::string EventDamage;
 	static const std::string EventHealing;
+	static const std::string EventManaRestore;
+	static const std::string EventManaRestoreDelt;
 	static const std::string EventEntityBuffsModifyTimelineSpeed;
 	static const std::string EventEntityBuffsModifyDamageTaken;
 	static const std::string EventEntityBuffsModifyDamageDelt;
@@ -131,11 +135,11 @@ public:
 		}
 	};
 
-	struct CastTargetArgs
+	struct CastTargetsArgs
 	{
-		PlatformerEntity* target;
+		std::vector<PlatformerEntity*> targets;
 
-		CastTargetArgs(PlatformerEntity* target) : target(target)
+		CastTargetsArgs(std::vector<PlatformerEntity*> targets) : targets(targets)
 		{
 		}
 	};
@@ -306,6 +310,13 @@ public:
 		RegisterTimelineEventGroupArgs(TimelineEventGroup* eventGroup) : eventGroup(eventGroup) { }
 	};
 
+	struct BeforeReturnToMapArgs
+	{
+		bool defeat;
+
+		BeforeReturnToMapArgs(bool defeat) : defeat(defeat) { }
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args);
 	static void TriggerMenuGoBack();
@@ -313,7 +324,7 @@ public:
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();
 	static void TriggerSelectionChanged(SelectionArgs args);
-	static void TriggerSelectCastTarget(CastTargetArgs args);
+	static void TriggerSelectCastTarget(CastTargetsArgs args);
 	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();
@@ -332,12 +343,16 @@ public:
 	static void TriggerCombatFinished(CombatFinishedArgs args);
 	static void TriggerGiveExp();
 	static void TriggerGiveRewards();
+	static void TriggerBeforeReturnToMap(BeforeReturnToMapArgs args);
 	static void TriggerReturnToMap();
+	static void TriggerReturnToMapRespawn();
 	static void TriggerHackableCombatCue();
 	static void TriggerDamageDelt(DamageOrHealingArgs args);
 	static void TriggerHealingDelt(DamageOrHealingArgs args);
 	static void TriggerDamage(DamageOrHealingArgs args);
 	static void TriggerHealing(DamageOrHealingArgs args);
+	static void TriggerManaRestoreDelt(DamageOrHealingArgs args);
+	static void TriggerManaRestore(DamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
 	static void TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
