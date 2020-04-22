@@ -1,5 +1,7 @@
 #include "SquallyAttackBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -13,6 +15,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttacks.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -102,7 +105,11 @@ void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavi
 void SquallyAttackBehavior::loadUnarmedAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack)
 {
 	// Note: ordering here is intentional. Powerful attack first, no-cost attack second. This makes for better UI placement.
-	attackBehavior->registerAttack(Pound::create(minAttack, maxAttack, 0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+	if (this->squally->getStateOrDefault(StateKeys::Eq, Value(0)).asInt() >= 2)
+	{
+		attackBehavior->registerAttack(Pound::create(minAttack, maxAttack, 0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+	}
+
 	attackBehavior->registerAttack(Punch::create(minAttack, maxAttack, 0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 }
 
