@@ -113,7 +113,11 @@ void ChoicesMenu::initializeListeners()
 
 		if (args != nullptr && args->target == entity)
 		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, this->selectedEntry));
+			if (this->currentMenu != CombatEvents::MenuStateArgs::CurrentMenu::Closed)
+			{
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, this->selectedEntry));
+				CombatEvents::TriggerResumeTimeline();
+			}
 		}
 	}));
 
