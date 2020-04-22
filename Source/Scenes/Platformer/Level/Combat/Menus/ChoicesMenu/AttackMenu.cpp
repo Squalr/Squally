@@ -16,8 +16,10 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -64,16 +66,23 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 	entity->getAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		int index = 0;
+		int mana = entity->getStateOrDefaultInt(StateKeys::Mana, 0);
 
-		for (auto attack : attackBehavior->getAvailableAttacks())
+		for (auto attack : attackBehavior->getAttacks())
 		{
 			int cost = attack->getSpecialCost();
 			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));
 
-			this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
+			RadialEntry* newEntry = this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
 				this->selectAttack(entry, attack, index);
 			});
+
+			if (cost > mana)
+			{
+				newEntry->disableInteraction(127);
+				newEntry->toggleAllowInteractionEdits(false);
+			}
 			
 			index++;
 		}
