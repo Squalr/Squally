@@ -27,6 +27,7 @@ ItemPool::ItemPool(const ValueMap& properties, std::string poolName) : super(pro
 	this->itemsNode = Node::create();
 	this->probabilityCache = std::vector<ProbabilityData>();
 	this->probabilitySum = 0.0f;
+	this->disableShuffle = false;
 	this->cacheDirty = true;
 
 	this->addChild(this->itemsNode);
@@ -198,8 +199,18 @@ void ItemPool::removeItemFromPool(ItemChance* itemChance)
 	}), this->itemPool.end());
 }
 
+void ItemPool::toggleDisableShuffle(bool disableShuffle)
+{
+	this->disableShuffle = disableShuffle;
+}
+
 void ItemPool::shuffleItems()
 {
+	if (this->disableShuffle)
+	{
+		return;
+	}
+
 	std::random_device rd1;
 	std::mt19937 g1(rd1());
 

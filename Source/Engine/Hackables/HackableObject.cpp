@@ -318,21 +318,6 @@ void HackableObject::refreshParticleFx()
 		this->hackParticles4->stop(1.5f);
 		this->hackParticles5->stop(1.5f);
 	}
-
-	if (std::any_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
-		{
-			return (!attribute->isCooldownComplete());
-		}))
-	{
-		this->createHackCircle();
-		this->hackCircle->stopAllActions();
-		this->hackCircle->runAction(RepeatForever::create(RotateBy::create(5.0f, 360.0f)));
-		this->hackCircle->runAction(FadeTo::create(0.75f, 255));
-	}
-	else if (this->hackCircle != nullptr)
-	{
-		this->hackCircle->runAction(FadeTo::create(0.75f, 0));
-	}
 }
 
 Vec2 HackableObject::getRainOffset()

@@ -27,6 +27,7 @@ protected:
 	virtual std::vector<Item*> getItemsFromPoolGuaranteed(int count, std::vector<Inventory*> inventories, bool removeSampledItems);
 	void addItemToPool(ItemChance* itemChance);
 	void removeItemFromPool(ItemChance* itemChance);
+	void toggleDisableShuffle(bool disableShuffle);
 	
 	std::vector<ItemChance*> itemPool;
 	std::string poolName;
@@ -48,5 +49,6 @@ private:
 
 	std::vector<ProbabilityData> probabilityCache;
 	float probabilitySum;
+	bool disableShuffle;
 	bool cacheDirty;
 };
