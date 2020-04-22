@@ -9,6 +9,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/Components/EqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
@@ -184,10 +185,11 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
 
+	bool isSqually = dynamic_cast<Squally*>(target) != nullptr;
 	bool isFriendly = dynamic_cast<PlatformerFriendly*>(target) != nullptr;
 
-	this->eqDisplay->setStatsTarget(isFriendly ? dynamic_cast<PlatformerFriendly*>(target) : nullptr);
-	this->runeBar->setStatsTarget(isFriendly ? dynamic_cast<PlatformerFriendly*>(target) : nullptr);
+	this->eqDisplay->setStatsTarget(isFriendly ? target : nullptr);
+	this->runeBar->setStatsTarget(isSqually ? target : nullptr);
 
 	this->emblemNode->removeAllChildren();
 
