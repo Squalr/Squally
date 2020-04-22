@@ -25,10 +25,10 @@ protected:
 private:
 	typedef EnemyOutOfCombatAttackBehavior super;
 	
-	std::string getOutOfCombatAttackAnimation();
-	std::string getOutOfCombatAttackSound();
-	float getOutOfCombatAttackOnset();
-	float getOutOfCombatAttackSustain();
+	std::string getOutOfCombatAttackAnimation() override;
+	std::string getOutOfCombatAttackSound() override;
+	float getOutOfCombatAttackOnset() override;
+	float getOutOfCombatAttackSustain() override;
 	
 	SmartAnimationSequenceNode* fireBreath;
 
