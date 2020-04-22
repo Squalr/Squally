@@ -184,6 +184,11 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 			}
 		);
 
+		if (!hackable->isCooldownComplete())
+		{
+			menuNode->disableInteraction(127);
+		}
+
 		this->radialMenuItems->addChild(menuNode);
 
 		currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * float(M_PI));

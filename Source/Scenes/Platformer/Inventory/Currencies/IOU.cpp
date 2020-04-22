@@ -28,6 +28,11 @@ LocalizedString* IOU::getString()
 	return IOU::getIOUString();
 }
 
+LocalizedString* IOU::getStringPlural()
+{
+	return IOU::getIOUStringPlural();
+}
+
 std::string IOU::getIconResource()
 {
 	return IOU::getIOUIconResource();
@@ -49,6 +54,11 @@ std::string IOU::getIOUIconResource()
 }
 
 LocalizedString* IOU::getIOUString()
+{
+	return Strings::Items_Currency_IOU::create();
+}
+
+LocalizedString* IOU::getIOUStringPlural()
 {
 	return Strings::Items_Currency_IOUs::create();
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="732">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="734">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -161,7 +161,7 @@
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="707" name="edge-portal" type="object" x="10060" y="556.574" width="199.918" height="640.851">
+  <object id="707" name="edge-portal" type="object" x="8308" y="576.574" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_3_2"/>
@@ -195,6 +195,12 @@
    <properties>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="733" name="camera-stop" type="object" x="8512" y="48" width="424" height="920">
+   <properties>
+    <property name="no-y" type="bool" value="true"/>
+    <property name="soft" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -260,7 +266,7 @@
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="717" name="spawn" type="object" x="9591.15" y="1076.36" width="128" height="128">
+  <object id="717" name="spawn" type="object" x="7839.15" y="1096.36" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>

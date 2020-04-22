@@ -5244,6 +5244,21 @@ namespace Strings
 		virtual ~Items_Currency_Gold() = default;
 	};
 
+	class Items_Currency_IOU : public LocalizedString
+	{
+	public:
+		static Items_Currency_IOU* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Currency_IOU();
+		virtual ~Items_Currency_IOU() = default;
+	};
+
 	class Items_Currency_IOUs : public LocalizedString
 	{
 	public:
