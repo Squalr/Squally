@@ -15,7 +15,7 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/FxResources.h"
+#include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
 
 using namespace cocos2d;
