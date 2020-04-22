@@ -63,6 +63,7 @@ protected:
 
 private:
 	typedef SmartNode super;
+	friend class GlobalHackAttributeContainer;
 
 	float duration;
 	float cooldown;
