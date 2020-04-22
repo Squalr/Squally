@@ -16,6 +16,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/IOUDrop.h"
+#include "Objects/Platformer/Decor/FireplaceFire.h"
 #include "Objects/Platformer/Decor/MagicWall.h"
 #include "Objects/Platformer/Decor/Torch.h"
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"

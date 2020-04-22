@@ -28,8 +28,8 @@ Torch* Torch::create(ValueMap& properties)
 
 Torch::Torch(ValueMap& properties) : super(properties)
 {
-	this->torch = Sprite::create(ObjectResources::Decor_Torch);
-	this->glow = Sprite::create(ObjectResources::Decor_TorchGlow);
+	this->torch = Sprite::create(ObjectResources::Decor_Torch_Torch);
+	this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlow);
 	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 	this->isOn = false;
 	this->isCulled = false;

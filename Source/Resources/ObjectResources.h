@@ -126,8 +126,9 @@ namespace ObjectResources
 	extern const std::string Collectables_Animals_Yeti_Locked;
 	extern const std::string Collectables_Animals_Zebra;
 	extern const std::string Collectables_Animals_Zebra_Locked;
-	extern const std::string Decor_Torch;
-	extern const std::string Decor_TorchGlow;
+	extern const std::string Decor_Fireplace_FireplaceGlow;
+	extern const std::string Decor_Torch_Torch;
+	extern const std::string Decor_Torch_TorchGlow;
 	extern const std::string Doors_BugDoor_3;
 	extern const std::string Doors_BugDoor_MAIN_BASE;
 	extern const std::string Doors_BugDoor_STONES_S1;
