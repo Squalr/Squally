@@ -8,6 +8,7 @@ Clippy::Clippy()
 {
 	this->animationNode = Node::create();
 	this->speechBubble = SpeechBubble::create(false);
+	this->isEnabled = true;
 
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
