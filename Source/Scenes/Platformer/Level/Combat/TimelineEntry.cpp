@@ -17,6 +17,7 @@
 #include "Objects/Camera/CameraFocus.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -150,6 +151,19 @@ void TimelineEntry::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestore, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
+		{
+			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->applyManaRestore(args->caster, args->damageOrHealing);
+			}
+		}
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGetAssociatedTimelineEntry, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getUserData());
@@ -251,6 +265,18 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 	});
 
 	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
+}
+
+void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain)
+{
+	int mana = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
+
+	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	{
+		manaBehavior->setMana(mana + manaGain);
+	});
+
+	CombatEvents::TriggerManaRestoreDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), manaGain));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)

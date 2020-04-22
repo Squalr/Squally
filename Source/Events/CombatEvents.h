@@ -54,6 +54,8 @@ public:
 	static const std::string EventHealingDelt;
 	static const std::string EventDamage;
 	static const std::string EventHealing;
+	static const std::string EventManaRestore;
+	static const std::string EventManaRestoreDelt;
 	static const std::string EventEntityBuffsModifyTimelineSpeed;
 	static const std::string EventEntityBuffsModifyDamageTaken;
 	static const std::string EventEntityBuffsModifyDamageDelt;
@@ -349,6 +351,8 @@ public:
 	static void TriggerHealingDelt(DamageOrHealingArgs args);
 	static void TriggerDamage(DamageOrHealingArgs args);
 	static void TriggerHealing(DamageOrHealingArgs args);
+	static void TriggerManaRestoreDelt(DamageOrHealingArgs args);
+	static void TriggerManaRestore(DamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
 	static void TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args);

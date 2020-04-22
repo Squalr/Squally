@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> WoodenBowPlans::getReagentsInternal()
 	return
 	{
 		{ Wood::create(), 6 },
-		{ Feather::create(), 10 },
+		{ Feather::create(), 8 },
 	};
 }
 

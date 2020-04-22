@@ -23,7 +23,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void runDelta(int delta, bool zeroAsGreen);
+	void runHealthDelta(int delta, bool zeroAsGreen);
+	void runManaDelta(int delta);
 	void runLabelOverEntity(LocalizedLabel* label);
 
 	PlatformerEntity* entity;

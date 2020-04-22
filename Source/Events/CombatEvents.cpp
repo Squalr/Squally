@@ -308,6 +308,22 @@ void CombatEvents::TriggerHealing(DamageOrHealingArgs args)
 	);
 }
 
+void CombatEvents::TriggerManaRestoreDelt(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventManaRestoreDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerManaRestore(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventManaRestore,
+		&args
+	);
+}
+
 void CombatEvents::TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(

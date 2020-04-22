@@ -18,6 +18,7 @@ public:
 
 	PlatformerEntity* getEntity();
 	void applyDamage(PlatformerEntity* caster, int damage);
+	void applyManaRestore(PlatformerEntity* caster, int manaGain);
 	void applyHealing(PlatformerEntity* caster, int healing);
 	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);

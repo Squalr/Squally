@@ -95,7 +95,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runDelta(args->damageOrHealing, false);
+			this->runHealthDelta(args->damageOrHealing, false);
 		}
 	}));
 
@@ -105,7 +105,17 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runDelta(args->damageOrHealing, true);
+			this->runHealthDelta(args->damageOrHealing, true);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestoreDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->entity)
+		{
+			this->runManaDelta(args->damageOrHealing);
 		}
 	}));
 }
@@ -115,7 +125,7 @@ void EntityTextOverlayBehavior::onDisable()
 	super::onDisable();
 }
 
-void EntityTextOverlayBehavior::runDelta(int delta, bool zeroAsGreen)
+void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen)
 {
 	bool isGreen = (delta > 0 || (delta == 0 && zeroAsGreen));
 
@@ -124,6 +134,17 @@ void EntityTextOverlayBehavior::runDelta(int delta, bool zeroAsGreen)
 	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
 	deltaLabel->setTextColor(isGreen ? Color4B::GREEN : Color4B::RED);
+
+	this->runLabelOverEntity(deltaLabel);
+}
+
+void EntityTextOverlayBehavior::runManaDelta(int delta)
+{
+	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
+	LocalizedString* deltaString = Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount);
+	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
+
+	deltaLabel->setTextColor(Color4B::BLUE);
 
 	this->runLabelOverEntity(deltaLabel);
 }
