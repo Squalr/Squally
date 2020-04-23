@@ -58,7 +58,7 @@ void GuanoPickPocketBehavior::onLoad()
 
 		if (args != nullptr && !this->isPickPocketing)
 		{
-			this->tryPickPocket(args->target, args->pocketPool, args->saveKeyPickPocketed);
+			this->tryPickPocket(args->target, args->pocketPool, args->onPickPocket, args->saveKeyPickPocketed);
 		}
 	}));
 
@@ -75,7 +75,7 @@ void GuanoPickPocketBehavior::update(float dt)
 	}
 }
 
-void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::string pickPocketSaveKey)
+void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string pickPocketSaveKey)
 {
 	if (pocketPool == nullptr)
 	{
@@ -103,6 +103,11 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 			PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(pocketPool));
 
 			target->saveObjectState(pickPocketSaveKey, Value(true));
+
+			if (onPickPocket != nullptr)
+			{
+				onPickPocket();
+			}
 		}
 	});
 

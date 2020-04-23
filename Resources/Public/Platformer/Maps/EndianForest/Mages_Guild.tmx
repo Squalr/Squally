@@ -781,6 +781,7 @@
  </objectgroup>
  <objectgroup id="125" name="entities -1">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="842" name="cypress" type="entity" x="4110.41" y="153.778" width="128" height="128">

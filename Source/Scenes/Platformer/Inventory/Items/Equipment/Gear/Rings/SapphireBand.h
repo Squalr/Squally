@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/Necklace.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Rings/Ring.h"
 
-class SapphireBand : public Necklace
+class SapphireBand : public Ring
 {
 public:
 	static SapphireBand* create();
@@ -20,5 +20,5 @@ protected:
 	virtual ~SapphireBand();
 
 private:
-	typedef Necklace super;
+	typedef Ring super;
 };

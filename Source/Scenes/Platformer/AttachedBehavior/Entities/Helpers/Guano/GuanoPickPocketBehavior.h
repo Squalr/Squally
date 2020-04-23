@@ -24,7 +24,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::string pickPocketSaveKey);
+	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string pickPocketSaveKey);
 	void endPickPocket();
 
 	PlatformerEntity* entity;
