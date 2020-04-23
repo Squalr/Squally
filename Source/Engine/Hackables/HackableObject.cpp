@@ -405,15 +405,6 @@ void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestor
 
 	if (hasHackableCode)
 	{
-		if (forceRestoreState)
-		{
-			hackableCode->restoreState();
-		}
-		else
-		{
-			hackableCode->restoreStateIfUnique();
-		}
-		
 		// Removed all tracked attributes with the same ID as the code being removed
 		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
 		{

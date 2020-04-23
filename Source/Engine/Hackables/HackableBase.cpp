@@ -65,29 +65,6 @@ void HackableBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackRestoreStatePrefix + this->getHackableIdentifier(), [=](EventCustom* eventCustom)
-	{
-		HackableEvents::HackRestoreStateArgs* args = static_cast<HackableEvents::HackRestoreStateArgs*>(eventCustom->getUserData());
-
-		// Only allow one hackable attribute to restore the state to prevent duplicate wasted work.
-		if (args != nullptr && !args->isHandled())
-		{
-			args->handle();
-
-			this->restoreState();
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventQueryAttributeCountPrefix + this->getHackableIdentifier(), [=](EventCustom* eventCustom)
-	{
-		HackableEvents::HackableBaseQueryArgs* args = static_cast<HackableEvents::HackableBaseQueryArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			args->count++;
-		}
-	}));
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		this->restoreState();
@@ -231,22 +208,6 @@ HackablePreview* HackableBase::getHackablePreview()
 
 void HackableBase::restoreState()
 {
-}
-
-void HackableBase::restoreStateIfUnique()
-{
-	// Some example scenarios of why this is needed:
-	// 1) A buff with a hackable is removed, and this was the only hackable (ie only 1 buff, 1 hackable code). Restore the state.
-	// 2) A buff with a hackable is removed, but another mob has the same buff, thus we should be waiting on the duration before restoring the state.
-
-	HackableEvents::HackableBaseQueryArgs queryArgs = HackableEvents::HackableBaseQueryArgs(this->getHackableIdentifier());
-
-	HackableEvents::TriggerQueryAttributeCount(&queryArgs);
-	
-	if (queryArgs.count <= 1)
-	{
-		this->restoreState();
-	}
 }
 
 void HackableBase::startTimer()

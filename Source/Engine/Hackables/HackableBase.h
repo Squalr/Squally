@@ -38,7 +38,6 @@ public:
 	HackablePreview* getHackablePreview();
 	virtual void* getPointer();
 	virtual void restoreState();
-	void restoreStateIfUnique();
 
 protected:
 	HackableBase(
