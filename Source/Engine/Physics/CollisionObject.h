@@ -85,6 +85,7 @@ public:
 	void setVelocityX(float velocityX);
 	void setVelocityY(float velocityY);
 	void setGravity(cocos2d::Vec2 acceleration);
+	cocos2d::Vec2 getGravity();
 	void setAcceleration(cocos2d::Vec2 acceleration);
 	void setAccelerationX(float accelerationX);
 	void setAccelerationY(float accelerationY);

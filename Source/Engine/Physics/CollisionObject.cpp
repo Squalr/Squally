@@ -287,6 +287,11 @@ void CollisionObject::setGravity(cocos2d::Vec2 gravity)
 	this->gravity = gravity;
 }
 
+Vec2 CollisionObject::getGravity()
+{
+	return this->gravity;
+}
+
 void CollisionObject::setAcceleration(Vec2 acceleration)
 {
 	this->acceleration = acceleration;

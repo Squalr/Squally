@@ -204,6 +204,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	}
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
+	this->loadObjectState();
 }
 
 GameObject::~GameObject()
@@ -213,8 +214,6 @@ GameObject::~GameObject()
 void GameObject::onEnter()
 {
 	super::onEnter();
-
-	this->loadObjectState();
 }
 
 void GameObject::onEnterTransitionDidFinish()
@@ -357,7 +356,7 @@ bool GameObject::isZSorted()
 
 bool GameObject::isMapObject()
 {
-	return this->uniqueIdentifier != "";
+	return !this->uniqueIdentifier.empty();
 }
 
 void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
@@ -389,7 +388,6 @@ void GameObject::loadObjectState()
 	if (this->isMapObject())
 	{
 		this->saveProperties = SaveManager::getProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
-		this->onObjectStateLoaded();
 	}
 }
 
@@ -430,10 +428,6 @@ void GameObject::listenForStateWriteOnce(std::string key, std::function<void(coc
 	listener->setTag(uniqueKey);
 
 	this->addEventListenerIgnorePause(listener);
-}
-
-void GameObject::onObjectStateLoaded()
-{
 }
 
 bool GameObject::containsAttributes()

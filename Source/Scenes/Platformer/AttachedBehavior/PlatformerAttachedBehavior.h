@@ -16,6 +16,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/EndianForest/AraBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/EndianForest/CypressBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityNoGravityBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityPacingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityRunBehavior.h"

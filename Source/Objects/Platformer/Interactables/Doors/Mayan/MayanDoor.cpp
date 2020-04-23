@@ -107,6 +107,8 @@ void MayanDoor::onEnter()
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
 	}, Squally::MapKey);
+
+	this->loadGems();
 }
 
 void MayanDoor::initializePositions()
@@ -143,10 +145,8 @@ void MayanDoor::initializeListeners()
 	});
 }
 
-void MayanDoor::onObjectStateLoaded()
+void MayanDoor::loadGems()
 {
-	super::onObjectStateLoaded();
-
 	int redDefault = 0;
 	int blueDefault = 0;
 	int purpleDefault = 0;

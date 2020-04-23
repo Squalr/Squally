@@ -159,7 +159,6 @@ protected:
 	virtual void onDespawn();
 	bool isMapObject();
 	void loadObjectState();
-	virtual void onObjectStateLoaded();
 
 	std::string listenEvent;
 	std::string sendEvent;

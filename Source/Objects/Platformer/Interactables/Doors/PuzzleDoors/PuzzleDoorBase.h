@@ -42,7 +42,6 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onObjectStateLoaded() override;
 	virtual void runOperation(int puzzleIndex) = 0;
 	void setRealValue(int value);
 	void setHackValue(int value);

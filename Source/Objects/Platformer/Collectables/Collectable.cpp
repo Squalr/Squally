@@ -45,6 +45,11 @@ Collectable::~Collectable()
 void Collectable::onEnter()
 {
 	super::onEnter();
+
+	if (this->getObjectStateOrDefault(Collectable::SaveKeyIsCollected, Value(false)).asBool())
+	{
+		this->disableCollection();
+	}
 }
 
 void Collectable::initializePositions()
@@ -77,16 +82,6 @@ void Collectable::initializeListeners()
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-}
-
-void Collectable::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
-
-	if (this->getObjectStateOrDefault(Collectable::SaveKeyIsCollected, Value(false)).asBool())
-	{
-		this->disableCollection();
-	}
 }
 
 void Collectable::onCollected(std::function<void()> onCollectedEvent)

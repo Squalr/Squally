@@ -86,8 +86,3 @@ void PlatformerEnemy::setDropPool(std::string dropPool)
 {
 	this->dropPool = dropPool;
 }
-
-void PlatformerEnemy::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
-}

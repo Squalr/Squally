@@ -771,7 +771,6 @@
  </objectgroup>
  <objectgroup id="57" name="terrain -1">
   <properties>
-   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="907" name="marble" type="terrain" x="3494.27" y="-98.697" width="1317.52" height="245.879">
@@ -782,12 +781,11 @@
  </objectgroup>
  <objectgroup id="125" name="entities -1">
   <properties>
-   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="842" name="cypress" type="entity" x="4110.41" y="153.778" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="attached-behavior" value="cypress,friendly"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>

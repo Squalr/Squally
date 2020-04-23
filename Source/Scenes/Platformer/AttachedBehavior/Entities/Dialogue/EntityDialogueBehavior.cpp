@@ -376,13 +376,13 @@ bool EntityDialogueBehavior::hasDialogueOptions()
 
 void EntityDialogueBehavior::updateInteractVisibility()
 {
-	if (!(this->hasDialogueOptions() || !this->pretextQueue.empty()))
+	if (this->hasDialogueOptions() || !this->pretextQueue.empty())
 	{
-		this->canInteract = false;
+		this->canInteract = true;
 	}
 	else
 	{
-		this->canInteract = true;
+		this->canInteract = false;
 	}
 	
 	if (this->canInteract && this->hasCollision)

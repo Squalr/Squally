@@ -84,6 +84,20 @@ TempleDoor::~TempleDoor()
 {
 }
 
+void TempleDoor::onEnter()
+{
+	super::onEnter();
+	
+	if (this->getObjectStateOrDefault(TempleDoor::UnlockedSaveKey, Value(true)).asBool())
+	{
+		this->unlock(false);
+	}
+	else
+	{
+		this->lock(false);
+	}
+}
+
 void TempleDoor::initializePositions()
 {
 	super::initializePositions();
@@ -95,20 +109,6 @@ void TempleDoor::initializePositions()
 
 	this->topCollision->setPosition(Vec2(0.0f, 238.0f));
 	this->doorClip->setPosition(Vec2(0.0f, -66.0f));
-}
-
-void TempleDoor::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
-
-	if (this->getObjectStateOrDefault(TempleDoor::UnlockedSaveKey, Value(true)).asBool())
-	{
-		this->unlock(false);
-	}
-	else
-	{
-		this->lock(false);
-	}
 }
 
 void TempleDoor::lock(bool animate)
