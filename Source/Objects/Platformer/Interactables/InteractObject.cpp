@@ -5,15 +5,18 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -50,6 +53,7 @@ InteractObject::InteractObject(ValueMap& properties, InteractType interactType, 
 	this->disabled = false;
 	this->interactCallback = nullptr;
 	this->unlockCallback = nullptr;
+	this->squally = nullptr;
 
 	this->interactCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
@@ -71,6 +75,11 @@ InteractObject::~InteractObject()
 void InteractObject::onEnter()
 {
 	super::onEnter();
+
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKey);
 }
 
 void InteractObject::initializePositions()
@@ -128,6 +137,13 @@ void InteractObject::initializeListeners()
 		{
 			case InteractType::Input:
 			{
+				// Technically this is bad design in the sense that this object should not need to concern itself with the interacting entity,
+				// However in this game only Squally interacts with things via input as of now, so this check is fine.
+				if (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+				{
+					return;
+				}
+
 				this->tryInteractObject();
 				break;
 			}

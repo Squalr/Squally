@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="748">
- <objectgroup id="1" name="meta" visible="0">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
    <property name="gravity" value="-768"/>
@@ -10,19 +10,19 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="20" name="bg -8" visible="0">
+ <objectgroup id="20" name="bg -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="712" name="marble" type="texture" x="-848" y="-802" width="3792" height="2688"/>
  </objectgroup>
- <objectgroup id="89" name="terrain bg -4" visible="0">
+ <objectgroup id="89" name="terrain bg -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="marble" type="terrain" x="-394.788" y="1056.36" width="2832" height="341.818"/>
+  <object id="746" name="castle" type="terrain" x="-394.788" y="1056.36" width="2832" height="341.818"/>
  </objectgroup>
  <objectgroup id="88" name="entities -4">
   <properties>
@@ -36,7 +36,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="87" name="npc collision walls -4" visible="0">
+ <objectgroup id="87" name="npc collision walls -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -49,7 +49,7 @@
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="737" name="marble" type="terrain" x="-391.758" y="1159.39" width="2832" height="341.818"/>
+  <object id="737" name="castle" type="terrain" x="-391.758" y="1159.39" width="2832" height="341.818"/>
  </objectgroup>
  <objectgroup id="86" name="entities -3">
   <properties>
@@ -93,7 +93,7 @@
   </properties>
   <object id="747" name="magic-wall" type="object" x="679.994" y="255.015" width="749.102" height="993"/>
  </objectgroup>
- <objectgroup id="81" name="columns bg -2" visible="0">
+ <objectgroup id="81" name="columns bg -2">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -109,27 +109,27 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="terrain hall -1" visible="0">
+ <objectgroup id="74" name="terrain hall -1">
   <properties>
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="729" name="marble" type="terrain" x="-394.909" y="1235.52" width="2832" height="341.818"/>
  </objectgroup>
- <objectgroup id="77" name="walls" visible="0">
+ <objectgroup id="77" name="walls">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="725" name="marble" type="texture" x="-85.455" y="-44.305" width="704.91" height="1360.61"/>
   <object id="726" name="marble" type="texture" x="1479.76" y="-28.7898" width="682.91" height="1360.61"/>
  </objectgroup>
- <objectgroup id="75" name="jail" visible="0">
+ <objectgroup id="75" name="jail">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="733" name="Generic/JailGateSmall" type="decor" x="657.591" y="285.621" width="779" height="993"/>
  </objectgroup>
- <objectgroup id="78" name="columns" visible="0">
+ <objectgroup id="78" name="columns">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -144,19 +144,19 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="717" name="marble" type="terrain" x="-202.303" y="1278.91" width="2424" height="341.818"/>
  </objectgroup>
- <objectgroup id="79" name="terrain top" visible="0">
+ <objectgroup id="79" name="terrain top">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="728" name="marble" type="terrain" x="-200.911" y="-33.4566" width="2430.55" height="358.792"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -186,13 +186,13 @@
   </object>
   <object id="722" name="caged-cat" type="object" x="243.515" y="1166.73" width="196" height="112"/>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

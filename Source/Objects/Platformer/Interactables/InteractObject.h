@@ -7,6 +7,7 @@ class ClickableNode;
 class CollisionObject;
 class HackableData;
 class InteractMenu;
+class Squally;
 
 class InteractObject : public HackableObject
 {
@@ -44,6 +45,7 @@ protected:
 
 	InteractType interactType;
 	CollisionObject* interactCollision;
+	Squally* squally;
 
 	bool isLocked;
 	bool isUnlockable;
