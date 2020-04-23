@@ -229,7 +229,8 @@ void ReturnToSarude::runDialogueOutro()
 	[=]()
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters::create(),
+		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_CompleteYourTraining::create()
+			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
@@ -238,9 +239,23 @@ void ReturnToSarude::runDialogueOutro()
 		),
 		[=]()
 		{
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_LearnMoreOfTheseMonsters::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->sarude, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			true
+			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterLong1,
-		true
+		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		false
 		));
 	},
 	SoundResources::Platformer_Entities_Generic_ChatterMedium2,
