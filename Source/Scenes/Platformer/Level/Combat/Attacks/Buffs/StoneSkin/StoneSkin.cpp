@@ -135,46 +135,38 @@ void StoneSkin::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
-						"cdq\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"mov ecx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()) +
 						"idiv ecx\n",
 						// x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"cqo\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()) +
 						"idiv rcx\n"
 					),
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
-						"; cdq\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"; mov ecx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()) +
 						"; idiv ecx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
 						"imul eax, 0\n",
 						// x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"; cqo\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"; mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()) +
 						"; idiv rcx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
@@ -219,8 +211,8 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM(push ZDX);
 	ASM_MOV_REG_VAR(ZAX, damageTaken);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
 	ASM(DIV_CONVERT);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
 	ASM(mov ZCX, 3)
 	ASM(idiv ZCX);
 	ASM_NOP16();

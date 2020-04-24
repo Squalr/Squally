@@ -8184,21 +8184,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep();
-		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide : public LocalizedString
 	{
 	public:
@@ -8212,6 +8197,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide();
 		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor : public LocalizedString
