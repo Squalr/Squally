@@ -12,6 +12,7 @@ class ClickableNode;
 class ClickableTextNode;
 class LocalizedLabel;
 class LocalizedString;
+class PlatformerEntity;
 class StatsBars;
 
 class PartyMenu : public SmartNode
@@ -29,12 +30,14 @@ protected:
 	PartyMenu();
 	virtual ~PartyMenu();
 
-private:
-	typedef SmartNode super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	cocos2d::Node* buildMenuLabel(LocalizedString* text, cocos2d::Sprite* icon = nullptr);
+
+private:
+	typedef SmartNode super;
+
+	void buildStats(PlatformerEntity* entity);
 
 	cocos2d::Sprite* partyWindow;
 	LocalizedLabel* partyLabel;

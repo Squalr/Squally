@@ -18,7 +18,7 @@ class TimelineEntry;
 class StatsBars : public SmartNode
 {
 public:
-	static StatsBars* create(bool isFrameOnLeft = true);
+	static StatsBars* create(bool isFrameOnLeft = true, bool showExp = false);
 
 	void setSelected(bool isSelected);
 	void setStatsTargetAsTimelineEntry(TimelineEntry* targetAsTimelineEntry);
@@ -27,7 +27,7 @@ public:
 	PlatformerEntity* getStatsTarget();
 
 protected:
-	StatsBars(bool isFrameOnLeft = true);
+	StatsBars(bool isFrameOnLeft, bool showExp);
 	virtual ~StatsBars();
 
 	void onEnter() override;
@@ -41,6 +41,9 @@ private:
 	PlatformerEntity* target;
 	TimelineEntry* targetAsTimelineEntry;
 
+	bool showExp;
+	int cachedExp;
+	int cachedMaxExp;
 	int cachedMana;
 	int cachedMaxMana;
 	int cachedHealth;
@@ -54,14 +57,19 @@ private:
 	cocos2d::Sprite* emblem;
 	ProgressBar* healthBar;
 	ProgressBar* manaBar;
+	ProgressBar* expBar;
 	cocos2d::Sprite* healthSprite;
 	cocos2d::Sprite* manaSprite;
+	cocos2d::Sprite* expSprite;
 	LocalizedLabel* healthLabel;
 	ConstantString* healthNumerator;
 	ConstantString* healthDenominator;
 	LocalizedLabel* manaLabel;
 	ConstantString* manaNumerator;
 	ConstantString* manaDenominator;
+	LocalizedLabel* expLabel;
+	ConstantString* expNumerator;
+	ConstantString* expDenominator;
 
 	EqDisplay* eqDisplay;
 	RuneBar* runeBar;

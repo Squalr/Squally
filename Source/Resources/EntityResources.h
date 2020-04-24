@@ -1900,6 +1900,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Exterminator_R_LEG_1;
 	extern const std::string Enemies_VoidStar_Exterminator_R_LEG_2;
 	extern const std::string Enemies_VoidStar_Exterminator_TORSO;
+	extern const std::string Enemies_VoidStar_Exterminator_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_VoidStar_Gargoyle_Animations;
 	extern const std::string Enemies_VoidStar_Gargoyle_BELT;
 	extern const std::string Enemies_VoidStar_Gargoyle_Emblem;
@@ -2007,6 +2008,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Warlock_R_ARM_4;
 	extern const std::string Enemies_VoidStar_Warlock_TORSO;
 	extern const std::string Enemies_VoidStar_Warlock_WEAPON;
+	extern const std::string Enemies_VoidStar_Warlock_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Helpers_BalmerPeaks_Snowman_Animations;
 	extern const std::string Helpers_BalmerPeaks_Snowman_Body;
 	extern const std::string Helpers_BalmerPeaks_Snowman_Emblem;

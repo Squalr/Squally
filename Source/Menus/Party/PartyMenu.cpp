@@ -112,7 +112,7 @@ void PartyMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->partyWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->statsBarsNode->setPosition(Vec2(visibleSize.width / 2.0f - 460.0f, visibleSize.height / 2.0f + 160.0f));
+	this->statsBarsNode->setPosition(Vec2(visibleSize.width / 2.0f - 460.0f, visibleSize.height / 2.0f + 128.0f));
 	this->partyLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->stuckButton->setPosition(Vec2(visibleSize.width / 2.0f + 384.0f, visibleSize.height / 2.0f - 288.0f));
@@ -185,28 +185,28 @@ void PartyMenu::open()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* entity)
 	{
-		StatsBars* statsBars = StatsBars::create();
-
-		statsBars->setStatsTarget(entity);
-
-		this->statsBarsNode->addChild(statsBars);
-		this->partyStatsBars.push_back(statsBars);
+		this->buildStats(entity);
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* entity)
 	{
-		StatsBars* statsBars = StatsBars::create();
+		this->buildStats(entity);
+	}));
+
+	for (int index = 0; index < int(this->partyStatsBars.size()); index++)
+	{
+		this->partyStatsBars[index]->setPositionY((float)index * -224.0f);
+	}
+}
+
+void PartyMenu::buildStats(PlatformerEntity* entity)
+{
+		StatsBars* statsBars = StatsBars::create(true, true);
 
 		statsBars->setStatsTarget(entity);
 
 		this->statsBarsNode->addChild(statsBars);
 		this->partyStatsBars.push_back(statsBars);
-	}));
-
-	for (int index = 0; index < int(this->partyStatsBars.size()); index++)
-	{
-		this->partyStatsBars[index]->setPositionY((float)index * -160.0f);
-	}
 }
 
 void PartyMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
