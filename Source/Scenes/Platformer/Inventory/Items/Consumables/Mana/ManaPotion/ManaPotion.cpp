@@ -1,8 +1,9 @@
 #include "ManaPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ThrowManaPotion.h"
 
 #include "Resources/ItemResources.h"
@@ -31,8 +32,12 @@ ManaPotion::~ManaPotion()
 {
 }
 
-void ManaPotion::useOutOfCombat(PlatformerEntity* entity)
+void ManaPotion::useOutOfCombat(PlatformerEntity* target)
 {
+	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+	});
 }
 
 Item* ManaPotion::clone()

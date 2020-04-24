@@ -78,5 +78,5 @@ Vec2 CopperAxe::getWeaponOffset()
 
 Vec2 CopperAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(20.0f, -4.0f);
 }

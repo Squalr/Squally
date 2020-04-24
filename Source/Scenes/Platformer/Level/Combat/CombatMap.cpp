@@ -79,7 +79,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->collectablesMenu = CollectablesMenu::create();
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
-	this->inventoryMenu = InventoryMenu::create();
+	this->inventoryMenu = InventoryMenu::create(this->partyMenu);
 	this->combatHud = CombatHud::create();
 	this->timeline = Timeline::create();
 	this->cancelMenu = CancelMenu::create();
@@ -147,8 +147,8 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->backMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
-	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->confirmationHud);
 
 	this->loadMap(levelFile);

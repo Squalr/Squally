@@ -9,7 +9,7 @@ class IncrementHealthFlask : public Consumable
 public:
 	static IncrementHealthFlask* create();
 	
-	void useOutOfCombat(PlatformerEntity* entity) override;
+	void useOutOfCombat(PlatformerEntity* target) override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

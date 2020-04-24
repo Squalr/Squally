@@ -1,6 +1,8 @@
 #include "IncrementHealthFlask.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/ThrowIncrementHealthFlask.h"
 
@@ -30,8 +32,12 @@ IncrementHealthFlask::~IncrementHealthFlask()
 {
 }
 
-void IncrementHealthFlask::useOutOfCombat(PlatformerEntity* entity)
+void IncrementHealthFlask::useOutOfCombat(PlatformerEntity* target)
 {
+	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+	});
 }
 
 Item* IncrementHealthFlask::clone()

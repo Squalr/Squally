@@ -37,7 +37,7 @@ PlatformerAttack* Consumable::getAssociatedAttack(PlatformerEntity* entity)
 	return attack;
 }
 
-void Consumable::useOutOfCombat(PlatformerEntity* entity)
+void Consumable::useOutOfCombat(PlatformerEntity* target)
 {
 }
 

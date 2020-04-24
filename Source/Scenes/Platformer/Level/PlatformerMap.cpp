@@ -85,7 +85,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->partyMenu = PartyMenu::create();
 	this->alchemyMenu = AlchemyMenu::create();
 	this->blacksmithingMenu = BlacksmithingMenu::create();
-	this->inventoryMenu = InventoryMenu::create();
+	this->inventoryMenu = InventoryMenu::create(this->partyMenu);
 	this->canPause = true;
 	this->awaitingConfirmationEnd = false;
 
@@ -122,8 +122,8 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->menuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
-	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->confirmationHud);
 }
 

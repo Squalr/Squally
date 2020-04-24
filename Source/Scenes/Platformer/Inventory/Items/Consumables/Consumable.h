@@ -12,7 +12,7 @@ public:
 	PlatformerAttack* cloneAssociatedAttack(PlatformerEntity* entity);
 	PlatformerAttack* getAssociatedAttack(PlatformerEntity* entity);
 
-	virtual void useOutOfCombat(PlatformerEntity* entity);
+	virtual void useOutOfCombat(PlatformerEntity* target);
 	bool canUseOutOfCombat();
 
 protected:

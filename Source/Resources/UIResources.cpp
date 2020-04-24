@@ -57,6 +57,7 @@ const std::string UIResources::HUD_FillTeal = "Private/UI/HUD/FillTeal.png";
 const std::string UIResources::HUD_FillYellow = "Private/UI/HUD/FillYellow.png";
 const std::string UIResources::HUD_Frame = "Private/UI/HUD/Frame.png";
 const std::string UIResources::HUD_FrameExtended = "Private/UI/HUD/FrameExtended.png";
+const std::string UIResources::HUD_FrameExtendedSelected = "Private/UI/HUD/FrameExtendedSelected.png";
 const std::string UIResources::HUD_FrameSelected = "Private/UI/HUD/FrameSelected.png";
 const std::string UIResources::HUD_Heart = "Private/UI/HUD/Heart.png";
 const std::string UIResources::HUD_LevelFrame = "Private/UI/HUD/LevelFrame.png";

@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
 class ConstantString;
 class EqDisplay;
 class LocalizedLabel;
@@ -25,6 +26,9 @@ public:
 	TimelineEntry* getStatsTargetAsTimelineEntry();
 	void setStatsTarget(PlatformerEntity* target);
 	PlatformerEntity* getStatsTarget();
+	void enableInteraction();
+	void disableInteraction();
+	void setClickCallback(std::function<void(PlatformerEntity*)> onClickCallback);
 
 protected:
 	StatsBars(bool isFrameOnLeft, bool showExp);
@@ -50,7 +54,7 @@ private:
 	int cachedMaxHealth;
 
 	bool isFrameOnLeft;
-	cocos2d::Sprite* frame;
+	ClickableNode* frame;
 	cocos2d::Sprite* frameSelected;
 	cocos2d::Sprite* emblemGlow;
 	cocos2d::Node* emblemNode;

@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ProgressBar.h"
@@ -39,7 +40,7 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->showExp = showExp;
 	this->target = nullptr;
 	this->targetAsTimelineEntry = nullptr;
-	this->frame = Sprite::create(this->showExp ? UIResources::HUD_FrameExtended : UIResources::HUD_Frame);
+	this->frame = ClickableNode::create(this->showExp ? UIResources::HUD_FrameExtended : UIResources::HUD_Frame, this->showExp ? UIResources::HUD_FrameExtendedSelected : UIResources::HUD_FrameSelected);
 	this->frameSelected = Sprite::create(UIResources::HUD_FrameSelected);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->emblemNode = Node::create();
@@ -244,4 +245,29 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 PlatformerEntity* StatsBars::getStatsTarget()
 {
 	return this->target;
+}
+
+void StatsBars::enableInteraction()
+{
+	this->frame->enableInteraction();
+}
+
+void StatsBars::disableInteraction()
+{
+	this->frame->disableInteraction();
+}
+
+void StatsBars::setClickCallback(std::function<void(PlatformerEntity*)> onClickCallback)
+{
+	if (onClickCallback == nullptr)
+	{
+		this->frame->setMouseClickCallback(nullptr);
+	}
+	else
+	{
+		this->frame->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		{
+			onClickCallback(this->target);
+		});
+	}
 }

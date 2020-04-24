@@ -1,6 +1,8 @@
 #include "HealthPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ThrowHealthPotion.h"
 
@@ -30,8 +32,12 @@ HealthPotion::~HealthPotion()
 {
 }
 
-void HealthPotion::useOutOfCombat(PlatformerEntity* entity)
+void HealthPotion::useOutOfCombat(PlatformerEntity* target)
 {
+	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+	});
 }
 
 Item* HealthPotion::clone()

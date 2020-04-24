@@ -58,6 +58,7 @@ namespace UIResources
 	extern const std::string HUD_FillYellow;
 	extern const std::string HUD_Frame;
 	extern const std::string HUD_FrameExtended;
+	extern const std::string HUD_FrameExtendedSelected;
 	extern const std::string HUD_FrameSelected;
 	extern const std::string HUD_Heart;
 	extern const std::string HUD_LevelFrame;

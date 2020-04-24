@@ -1,5 +1,7 @@
 #include "PartyMenu.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
@@ -42,6 +44,13 @@ PartyMenu::PartyMenu()
 	this->statsBarsNode = Node::create();
 	this->returnClickCallback = nullptr;
 	this->partyStatsBars = std::vector<StatsBars*>();
+	this->onSelect = nullptr;
+	this->onExit = nullptr;
+	this->chooseTargetNode = Node::create();
+	this->chooseTargetFrame = Sprite::create(UIResources::Combat_ItemFrame);
+	this->chooseTargetItemFrame = Sprite::create(UIResources::Combat_ItemsCircle);
+	this->chooseTargetItemIcon = Sprite::create();
+	this->chooseTargetLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Platformer_Combat_ChooseATarget::create());
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();
@@ -57,6 +66,23 @@ PartyMenu::PartyMenu()
 	this->returnButton = ClickableTextNode::create(
 		returnLabel,
 		returnLabelSelected,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
+
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelSelected = cancelLabel->clone();
+
+	cancelLabel->enableOutline(Color4B::BLACK, 2);
+	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableGlow(Color4B::BLACK);
+	cancelLabelSelected->enableOutline(Color4B::BLACK, 2);
+	cancelLabelSelected->setTextColor(Color4B::YELLOW);
+	cancelLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelSelected->enableGlow(Color4B::ORANGE);
+
+	this->cancelButton = ClickableTextNode::create(
+		cancelLabel,
+		cancelLabelSelected,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
@@ -79,13 +105,21 @@ PartyMenu::PartyMenu()
 
 	this->partyLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->partyLabel->enableGlow(Color4B::BLACK);
+	this->chooseTargetLabel->enableOutline(Color4B::BLACK, 2);
+	this->chooseTargetLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
+	this->chooseTargetNode->addChild(this->chooseTargetFrame);
+	this->chooseTargetNode->addChild(this->chooseTargetItemFrame);
+	this->chooseTargetNode->addChild(this->chooseTargetItemIcon);
+	this->chooseTargetNode->addChild(this->chooseTargetLabel);
 	this->addChild(this->partyWindow);
 	this->addChild(this->partyLabel);
 	this->addChild(this->statsBarsNode);
 	this->addChild(this->closeButton);
 	this->addChild(this->stuckButton);
+	this->addChild(this->cancelButton);
 	this->addChild(this->returnButton);
+	this->addChild(this->chooseTargetNode);
 }
 
 PartyMenu::~PartyMenu()
@@ -102,6 +136,7 @@ void PartyMenu::onEnter()
 	GameUtils::fadeInObject(this->partyWindow, delay, duration);
 	GameUtils::fadeInObject(this->partyLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->cancelButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
 }
 
@@ -116,7 +151,13 @@ void PartyMenu::initializePositions()
 	this->partyLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->stuckButton->setPosition(Vec2(visibleSize.width / 2.0f + 384.0f, visibleSize.height / 2.0f - 288.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
+	this->chooseTargetNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 368.0f));
+
+	this->chooseTargetItemFrame->setPosition(Vec2(-136.0f, 0.0f));
+	this->chooseTargetItemIcon->setPosition(Vec2(-136.0f, 0.0f));
+	this->chooseTargetLabel->setPosition(Vec2(-64.0f, 0.0f));
 }
 
 void PartyMenu::initializeListeners()
@@ -140,20 +181,20 @@ void PartyMenu::initializeListeners()
 		));
 	});
 
+	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->onCancelClick();
+	});
+
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->onReturnClick();
 	});
 
 	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->onCancelClick();
+		this->onReturnClick();
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
@@ -166,10 +207,8 @@ void PartyMenu::initializeListeners()
 		
 		args->handle();
 
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->onCancelClick();
+		this->onReturnClick();
 	});
 }
 
@@ -179,6 +218,72 @@ void PartyMenu::disableUnstuck()
 }
 
 void PartyMenu::open()
+{
+	this->buildAllStats();
+
+	for (auto next : this->partyStatsBars)
+	{
+		next->disableInteraction();
+		next->setClickCallback(nullptr);
+	}
+
+	// State for a normal open
+	this->onSelect = nullptr;
+	this->onExit = nullptr;
+	this->cancelButton->setVisible(false);
+	this->returnButton->setVisible(true);
+	this->stuckButton->setVisible(true);
+	this->chooseTargetNode->setVisible(false);
+}
+
+void PartyMenu::openForSelection(std::string iconResource, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit)
+{
+	this->buildAllStats();
+
+	this->chooseTargetItemIcon->initWithFile(iconResource);
+
+	for (auto next : this->partyStatsBars)
+	{
+		next->enableInteraction();
+
+		next->setClickCallback([=](PlatformerEntity* entity)
+		{
+			for (auto next : this->partyStatsBars)
+			{
+				next->disableInteraction();
+			}
+
+			this->runAction(Sequence::create(
+				CallFunc::create([=]()
+				{
+					if (onSelect != nullptr)
+					{
+						onSelect(entity);
+					}
+				}),
+				DelayTime::create(1.25f),
+				CallFunc::create([=]()
+				{
+					if (onExit != nullptr)
+					{
+						onExit();
+					}
+				}),
+				nullptr
+			));
+		});
+	}
+
+	// State for a selection based open
+	this->onSelect = onSelect;
+	this->onExit = onExit;
+	this->cancelButton->setVisible(true);
+	this->returnButton->setVisible(false);
+	this->stuckButton->setVisible(false);
+	this->chooseTargetNode->setVisible(true);
+}
+
+void PartyMenu::buildAllStats()
 {
 	this->partyStatsBars.clear();
 	this->statsBarsNode->removeAllChildren();
@@ -207,6 +312,22 @@ void PartyMenu::buildStats(PlatformerEntity* entity)
 
 		this->statsBarsNode->addChild(statsBars);
 		this->partyStatsBars.push_back(statsBars);
+}
+
+void PartyMenu::onCancelClick()
+{
+	if (this->onExit != nullptr && this->cancelButton->isVisible())
+	{
+		this->onExit();
+	}
+}
+
+void PartyMenu::onReturnClick()
+{
+	if (this->returnClickCallback != nullptr && this->returnButton->isVisible())
+	{
+		this->returnClickCallback();
+	}
 }
 
 void PartyMenu::setReturnClickCallback(std::function<void()> returnClickCallback)

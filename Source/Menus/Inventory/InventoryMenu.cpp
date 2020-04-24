@@ -18,9 +18,11 @@
 #include "Menus/Inventory/FilterMenu/FilterMenu.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
+#include "Menus/Party/PartyMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
@@ -33,16 +35,16 @@
 
 using namespace cocos2d;
 
-InventoryMenu* InventoryMenu::create()
+InventoryMenu* InventoryMenu::create(PartyMenu* partyMenu)
 {
-	InventoryMenu* instance = new InventoryMenu();
+	InventoryMenu* instance = new InventoryMenu(partyMenu);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InventoryMenu::InventoryMenu()
+InventoryMenu::InventoryMenu(PartyMenu* partyMenu)
 {
 	this->currencyInventory = nullptr;
 	this->equipmentInventory = nullptr;
@@ -54,6 +56,7 @@ InventoryMenu::InventoryMenu()
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
 	this->equipmentChanged = false;
+	this->partyMenu = partyMenu;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -225,6 +228,11 @@ void InventoryMenu::performInventoryAction(Item* item)
 	{
 		this->equipItem(item);
 	}
+
+	if (dynamic_cast<Consumable*>(item) != nullptr && dynamic_cast<Consumable*>(item)->canUseOutOfCombat())
+	{
+		this->consumeItem(dynamic_cast<Consumable*>(item));
+	}
 }
 
 void InventoryMenu::equipItem(Item* item)
@@ -301,6 +309,42 @@ void InventoryMenu::unequipItem(Item* item)
 		{
 			LogUtils::logError(otherItem->getName());
 		}
+	});
+}
+
+void InventoryMenu::consumeItem(Consumable* item)
+{
+	if (item == nullptr)
+	{
+		return;
+	}
+
+	this->partyMenu->setVisible(true);
+	GameUtils::focus(this->partyMenu);
+
+	this->partyMenu->openForSelection(item->getIconResource(), [=](PlatformerEntity* target)
+	{
+		item->useOutOfCombat(target);
+
+		this->inventory->tryRemove(item, [=](Item* removedItem)
+		{
+			this->populateItemList();
+		},
+		[=](Item* removedItem)
+		{
+			// Failure
+			LogUtils::logError("Error consuming item!");
+
+			if (removedItem != nullptr)
+			{
+				LogUtils::logError(item->getName());
+			}
+		});
+	},
+	[=]()
+	{
+		this->partyMenu->setVisible(false);
+		GameUtils::focus(this);
 	});
 }
 
