@@ -330,6 +330,12 @@ void VideoTab::onEnter()
 	GameUtils::fadeInObject(this->option1920x1080, delay, duration);
 	GameUtils::fadeInObject(this->option2560x1440, delay, duration);
 	GameUtils::fadeInObject(this->option3840x2160, delay, duration);
+	
+	this->graphicEffectsLabel->setVisible(false);
+	this->lowQualityLabel->setVisible(false);
+	this->highQualityLabel->setVisible(false);
+	this->optionHighQuality->setVisible(false);
+	this->optionLowQuality->setVisible(false);
 }
 
 void VideoTab::initializeListeners()
