@@ -21,7 +21,7 @@ public:
 	static PartyMenu* create();
 
 	void open();
-	void openForSelection(std::string iconResource, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit);
+	void openForSelection(std::string iconResource, std::function<bool(PlatformerEntity*)> canSelect, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit);
 	void disableUnstuck();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 

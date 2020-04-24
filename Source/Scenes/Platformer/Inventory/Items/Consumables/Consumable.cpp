@@ -41,6 +41,11 @@ void Consumable::useOutOfCombat(PlatformerEntity* target)
 {
 }
 
+bool Consumable::canUseOnTarget(PlatformerEntity* target)
+{
+	return true;
+}
+
 bool Consumable::canUseOutOfCombat()
 {
 	return this->outOfCombatUseAllowed;

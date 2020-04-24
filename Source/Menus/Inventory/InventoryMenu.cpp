@@ -322,7 +322,11 @@ void InventoryMenu::consumeItem(Consumable* item)
 	this->partyMenu->setVisible(true);
 	GameUtils::focus(this->partyMenu);
 
-	this->partyMenu->openForSelection(item->getIconResource(), [=](PlatformerEntity* target)
+	this->partyMenu->openForSelection(item->getIconResource(),[=](PlatformerEntity* target)
+	{
+		return item->canUseOnTarget(target);
+	},
+	[=](PlatformerEntity* target)
 	{
 		item->useOutOfCombat(target);
 

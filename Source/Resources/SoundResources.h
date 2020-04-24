@@ -261,6 +261,8 @@ namespace SoundResources
 	extern const std::string Platformer_FX_Fire_FireSizzle1;
 	extern const std::string Platformer_FX_Fire_LowFlame1;
 	extern const std::string Platformer_FX_Fire_Thrusters1;
+	extern const std::string Platformer_FX_Potions_PotionDrink1;
+	extern const std::string Platformer_FX_Potions_PotionDrink2;
 	extern const std::string Platformer_FX_Woosh_Woosh1;
 	extern const std::string Platformer_FX_Woosh_WooshRough1;
 	extern const std::string Platformer_Objects_Doors_Ancient_Stone_Mechanism_Movement_01;

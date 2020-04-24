@@ -1,12 +1,15 @@
 #include "HealthPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ThrowHealthPotion.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -26,6 +29,9 @@ HealthPotion* HealthPotion::create()
 
 HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
+	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
+
+	this->addChild(this->outOfCombatSound);
 }
 
 HealthPotion::~HealthPotion()
@@ -36,8 +42,30 @@ void HealthPotion::useOutOfCombat(PlatformerEntity* target)
 {
 	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+		healthBehavior->setHealth(int(healthBehavior->getHealth() + float(healthBehavior->getMaxHealth()) * HealthPotion::HealPercentage));
 	});
+
+	this->outOfCombatSound->play();
+}
+
+bool HealthPotion::canUseOnTarget(PlatformerEntity* target)
+{
+	if (!target->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	{
+		return false;
+	}
+	
+	bool canUse = true;
+
+	target->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+	{
+		if (healthBehavior->getHealth() == healthBehavior->getMaxHealth())
+		{
+			canUse = false;
+		}
+	});
+	
+	return canUse;
 }
 
 Item* HealthPotion::clone()

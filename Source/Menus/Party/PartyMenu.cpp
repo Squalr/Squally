@@ -153,7 +153,7 @@ void PartyMenu::initializePositions()
 	this->stuckButton->setPosition(Vec2(visibleSize.width / 2.0f + 384.0f, visibleSize.height / 2.0f - 288.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
-	this->chooseTargetNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 368.0f));
+	this->chooseTargetNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 416.0f));
 
 	this->chooseTargetItemFrame->setPosition(Vec2(-136.0f, 0.0f));
 	this->chooseTargetItemIcon->setPosition(Vec2(-136.0f, 0.0f));
@@ -236,7 +236,7 @@ void PartyMenu::open()
 	this->chooseTargetNode->setVisible(false);
 }
 
-void PartyMenu::openForSelection(std::string iconResource, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit)
+void PartyMenu::openForSelection(std::string iconResource, std::function<bool(PlatformerEntity*)> canSelect, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit)
 {
 	this->buildAllStats();
 
@@ -244,13 +244,20 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<void(Pl
 
 	for (auto next : this->partyStatsBars)
 	{
+		if (canSelect != nullptr && !canSelect(next->getStatsTarget()))
+		{
+			next->disableInteraction(127);
+
+			continue;
+		}
+
 		next->enableInteraction();
 
 		next->setClickCallback([=](PlatformerEntity* entity)
 		{
 			for (auto next : this->partyStatsBars)
 			{
-				next->disableInteraction();
+				next->disableInteraction(next->getFrameOpaicty());
 			}
 
 			this->runAction(Sequence::create(
@@ -261,7 +268,7 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<void(Pl
 						onSelect(entity);
 					}
 				}),
-				DelayTime::create(1.25f),
+				DelayTime::create(0.75f),
 				CallFunc::create([=]()
 				{
 					if (onExit != nullptr)
@@ -316,6 +323,8 @@ void PartyMenu::buildStats(PlatformerEntity* entity)
 
 void PartyMenu::onCancelClick()
 {
+	this->stopAllActions();
+
 	if (this->onExit != nullptr && this->cancelButton->isVisible())
 	{
 		this->onExit();
@@ -324,6 +333,8 @@ void PartyMenu::onCancelClick()
 
 void PartyMenu::onReturnClick()
 {
+	this->stopAllActions();
+	
 	if (this->returnClickCallback != nullptr && this->returnButton->isVisible())
 	{
 		this->returnClickCallback();

@@ -1,12 +1,15 @@
 #include "ManaPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ThrowManaPotion.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -26,6 +29,9 @@ ManaPotion* ManaPotion::create()
 
 ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 17 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
+	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
+
+	this->addChild(this->outOfCombatSound);
 }
 
 ManaPotion::~ManaPotion()
@@ -34,10 +40,32 @@ ManaPotion::~ManaPotion()
 
 void ManaPotion::useOutOfCombat(PlatformerEntity* target)
 {
-	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+		manaBehavior->setMana(int(manaBehavior->getMana() + float(manaBehavior->getMaxMana()) * ManaPotion::RestorePercentage));
 	});
+
+	this->outOfCombatSound->play();
+}
+
+bool ManaPotion::canUseOnTarget(PlatformerEntity* target)
+{
+	if (!target->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	{
+		return false;
+	}
+	
+	bool canUse = true;
+
+	target->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+	{
+		if (manaBehavior->getMana() == manaBehavior->getMaxMana())
+		{
+			canUse = false;
+		}
+	});
+	
+	return canUse;
 }
 
 Item* ManaPotion::clone()

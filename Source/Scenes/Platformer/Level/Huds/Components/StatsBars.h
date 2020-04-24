@@ -27,7 +27,8 @@ public:
 	void setStatsTarget(PlatformerEntity* target);
 	PlatformerEntity* getStatsTarget();
 	void enableInteraction();
-	void disableInteraction();
+	void disableInteraction(int opacity = 255);
+	int getFrameOpaicty();
 	void setClickCallback(std::function<void(PlatformerEntity*)> onClickCallback);
 
 protected:

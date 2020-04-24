@@ -249,12 +249,19 @@ PlatformerEntity* StatsBars::getStatsTarget()
 
 void StatsBars::enableInteraction()
 {
+	this->emblemNode->setOpacity(255);
 	this->frame->enableInteraction();
 }
 
-void StatsBars::disableInteraction()
+void StatsBars::disableInteraction(int opacity)
 {
-	this->frame->disableInteraction();
+	this->emblemNode->setOpacity(opacity);
+	this->frame->disableInteraction(opacity);
+}
+
+int StatsBars::getFrameOpaicty()
+{
+	return this->frame->getOpacity();
 }
 
 void StatsBars::setClickCallback(std::function<void(PlatformerEntity*)> onClickCallback)

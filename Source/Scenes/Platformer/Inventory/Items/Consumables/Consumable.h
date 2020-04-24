@@ -13,6 +13,7 @@ public:
 	PlatformerAttack* getAssociatedAttack(PlatformerEntity* entity);
 
 	virtual void useOutOfCombat(PlatformerEntity* target);
+	virtual bool canUseOnTarget(PlatformerEntity* target);
 	bool canUseOutOfCombat();
 
 protected:
