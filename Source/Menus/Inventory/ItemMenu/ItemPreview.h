@@ -54,6 +54,7 @@ private:
 	std::vector<LocalizedLabel*> statlines;
 	ConstantString* cardString;
 	LocalizedLabel* cardLabel;
+	LocalizedLabel* useHint;
 	LocalizedLabel* equipHint;
 	LocalizedLabel* unequipHint;
 	LocalizedLabel* itemName;

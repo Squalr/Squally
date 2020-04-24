@@ -22,11 +22,15 @@ IncrementHealthFlask* IncrementHealthFlask::create()
 	return instance;
 }
 
-IncrementHealthFlask::IncrementHealthFlask() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
+IncrementHealthFlask::IncrementHealthFlask() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
 }
 
 IncrementHealthFlask::~IncrementHealthFlask()
+{
+}
+
+void IncrementHealthFlask::useOutOfCombat(PlatformerEntity* entity)
 {
 }
 

@@ -8,6 +8,8 @@ class GreaterHealthPotion : public Consumable
 {
 public:
 	static GreaterHealthPotion* create();
+	
+	void useOutOfCombat(PlatformerEntity* entity) override;
 
 	Item* clone() override;
 	std::string getItemName() override;

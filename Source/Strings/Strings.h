@@ -17514,6 +17514,21 @@ namespace Strings
 		virtual ~Menus_ItemPreview_Unequip() = default;
 	};
 
+	class Menus_ItemPreview_Use : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Use* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Use();
+		virtual ~Menus_ItemPreview_Use() = default;
+	};
+
 	class Menus_Leave : public LocalizedString
 	{
 	public:

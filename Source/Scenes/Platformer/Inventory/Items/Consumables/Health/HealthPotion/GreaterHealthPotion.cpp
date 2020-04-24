@@ -23,11 +23,15 @@ GreaterHealthPotion* GreaterHealthPotion::create()
 }
 
 // Note: No rubber-banding, as these are to be considered a rare item
-GreaterHealthPotion::GreaterHealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 27 }}), ItemMeta(20))
+GreaterHealthPotion::GreaterHealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 27 }}), ItemMeta(20), true)
 {
 }
 
 GreaterHealthPotion::~GreaterHealthPotion()
+{
+}
+
+void GreaterHealthPotion::useOutOfCombat(PlatformerEntity* entity)
 {
 }
 

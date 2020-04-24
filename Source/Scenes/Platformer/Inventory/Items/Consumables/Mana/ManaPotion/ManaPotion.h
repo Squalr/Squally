@@ -9,6 +9,7 @@ class ManaPotion : public Consumable
 public:
 	static ManaPotion* create();
 
+	void useOutOfCombat(PlatformerEntity* entity) override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

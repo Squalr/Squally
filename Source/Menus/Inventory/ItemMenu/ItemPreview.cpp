@@ -14,11 +14,12 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardPreview.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
-#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 
 #include "Strings/Strings.h"
@@ -61,6 +62,16 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	dashStr2->setStringReplacementVariables({ bracketStr2, unequipStr });
 
 	this->unequipHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr2);
+
+	LocalizedString* dashStr3 = Strings::Common_Dash::create();
+	LocalizedString* bracketStr3 = Strings::Common_Brackets::create();
+	LocalizedString* spacebarStr3 = Strings::Menus_ItemPreview_Spacebar::create();
+	LocalizedString* useStr = Strings::Menus_ItemPreview_Use::create();
+
+	bracketStr3->setStringReplacementVariables(spacebarStr3);
+	dashStr3->setStringReplacementVariables({ bracketStr3, useStr });
+
+	this->useHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr3);
 	
 	this->itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardString = ConstantString::create("--");
@@ -77,6 +88,8 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->unequipHint->enableOutline(Color4B::BLACK, 2);
 	this->unequipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->useHint->enableOutline(Color4B::BLACK, 2);
+	this->useHint->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	for (int index = 0; index < ItemPreview::MaxStatlines; index++)
 	{
@@ -92,6 +105,7 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->addChild(this->previewNode);
 	this->addChild(this->equipHint);
 	this->addChild(this->unequipHint);
+	this->addChild(this->useHint);
 	this->addChild(this->itemName);
 
 	for (auto statline : this->statlines)
@@ -120,6 +134,7 @@ void ItemPreview::initializePositions()
 
 	this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
 	this->unequipHint->setPosition(Vec2(-172.0f, 160.0f));
+	this->useHint->setPosition(Vec2(-172.0f, 160.0f));
 
 	this->cardPreview->setPosition(Vec2(0.0f, -72.0f));
 	this->itemName->setPosition(Vec2(0.0f, -72.0f));
@@ -164,12 +179,14 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 
 	this->equipHint->setVisible(false);
 	this->unequipHint->setVisible(false);
+	this->useHint->setVisible(false);
 
 	switch(equipHintMode)
 	{
 		case EquipHintMode::Equip:
 		{
 			this->equipHint->setVisible(dynamic_cast<Equipable*>(item) != nullptr || dynamic_cast<HexusCard*>(item) != nullptr);
+			this->useHint->setVisible(dynamic_cast<Consumable*>(item) != nullptr && dynamic_cast<Consumable*>(item)->canUseOutOfCombat());
 			break;
 		}
 		case EquipHintMode::Unequip:
