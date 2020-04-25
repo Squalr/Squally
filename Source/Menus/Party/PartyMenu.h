@@ -10,6 +10,7 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
+class ConstantString;
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
@@ -21,9 +22,11 @@ public:
 	static PartyMenu* create();
 
 	void open();
-	void openForSelection(std::string iconResource, std::function<bool(PlatformerEntity*)> canSelect, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit);
+	void openForSelection(std::string iconResource, int count, std::function<bool(PlatformerEntity*)> canSelect, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit);
 	void disableUnstuck();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
+	int getSelectionIndex();
+	void setSelectionIndex(int index);
 
 	static std::string UnstuckMap;
 
@@ -60,8 +63,12 @@ private:
 	cocos2d::Sprite* chooseTargetItemFrame;
 	cocos2d::Sprite* chooseTargetItemIcon;
 	LocalizedLabel* chooseTargetLabel;
+	ConstantString* countString;
+	LocalizedLabel* countLabel;
 
 	std::vector<StatsBars*> partyStatsBars;
+
+	int selectionIndex;
 
 	std::function<void(PlatformerEntity*)> onSelect;
 	std::function<void()> onExit;

@@ -322,17 +322,44 @@ void InventoryMenu::consumeItem(Consumable* item)
 	this->partyMenu->setVisible(true);
 	GameUtils::focus(this->partyMenu);
 
-	this->partyMenu->openForSelection(item->getIconResource(),[=](PlatformerEntity* target)
+	int count = 0;
+	
+	for (auto next : this->inventory->getItems())
+	{
+		if (next->getItemName() == item->getItemName())
+		{
+			count++;
+		}
+	}
+
+	this->partyMenu->openForSelection(item->getIconResource(), count, [=](PlatformerEntity* target)
 	{
 		return item->canUseOnTarget(target);
 	},
 	[=](PlatformerEntity* target)
 	{
+		int currentSelectionIndex = this->partyMenu->getSelectionIndex();
+		
+		this->partyMenu->setVisible(false);
+		GameUtils::focus(this);
+
 		item->useOutOfCombat(target);
 
 		this->inventory->tryRemove(item, [=](Item* removedItem)
 		{
 			this->populateItemList();
+
+			// Chain consumable usage
+			for (auto next : this->inventory->getItems())
+			{
+				if (next->getItemName() == removedItem->getItemName())
+				{
+					this->consumeItem(dynamic_cast<Consumable*>(next));
+
+					this->partyMenu->setSelectionIndex(currentSelectionIndex);
+					return;
+				}
+			}
 		},
 		[=](Item* removedItem)
 		{

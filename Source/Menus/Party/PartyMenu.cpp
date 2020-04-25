@@ -9,6 +9,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/GameUtils.h"
@@ -50,7 +51,10 @@ PartyMenu::PartyMenu()
 	this->chooseTargetFrame = Sprite::create(UIResources::Combat_ItemFrame);
 	this->chooseTargetItemFrame = Sprite::create(UIResources::Combat_ItemsCircle);
 	this->chooseTargetItemIcon = Sprite::create();
-	this->chooseTargetLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Platformer_Combat_ChooseATarget::create());
+	this->chooseTargetLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_ChooseATarget::create());
+	this->countString = ConstantString::create(std::to_string(0));
+	this->countLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_TimesConstant::create()->setStringReplacementVariables(this->countString));
+	this->selectionIndex = 0;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();
@@ -69,7 +73,7 @@ PartyMenu::PartyMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Back::create());
 	LocalizedLabel*	cancelLabelSelected = cancelLabel->clone();
 
 	cancelLabel->enableOutline(Color4B::BLACK, 2);
@@ -106,11 +110,14 @@ PartyMenu::PartyMenu()
 	this->partyLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->partyLabel->enableGlow(Color4B::BLACK);
 	this->chooseTargetLabel->enableOutline(Color4B::BLACK, 2);
+	this->countLabel->enableOutline(Color4B::BLACK, 2);
+	this->countLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->chooseTargetLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->chooseTargetNode->addChild(this->chooseTargetFrame);
 	this->chooseTargetNode->addChild(this->chooseTargetItemFrame);
 	this->chooseTargetNode->addChild(this->chooseTargetItemIcon);
+	this->chooseTargetNode->addChild(this->countLabel);
 	this->chooseTargetNode->addChild(this->chooseTargetLabel);
 	this->addChild(this->partyWindow);
 	this->addChild(this->partyLabel);
@@ -157,6 +164,7 @@ void PartyMenu::initializePositions()
 
 	this->chooseTargetItemFrame->setPosition(Vec2(-136.0f, 0.0f));
 	this->chooseTargetItemIcon->setPosition(Vec2(-136.0f, 0.0f));
+	this->countLabel->setPosition(Vec2(-136.0f + 24.0f, -24.0f));
 	this->chooseTargetLabel->setPosition(Vec2(-64.0f, 0.0f));
 }
 
@@ -271,10 +279,11 @@ void PartyMenu::open()
 	this->chooseTargetNode->setVisible(false);
 }
 
-void PartyMenu::openForSelection(std::string iconResource, std::function<bool(PlatformerEntity*)> canSelect, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit)
+void PartyMenu::openForSelection(std::string iconResource, int count, std::function<bool(PlatformerEntity*)> canSelect, std::function<void(PlatformerEntity*)> onSelect, std::function<void()> onExit)
 {
 	this->buildAllStats();
 
+	this->countString->setString(std::to_string(count));
 	this->chooseTargetItemIcon->initWithFile(iconResource);
 
 	for (auto next : this->partyStatsBars)
@@ -300,24 +309,10 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<bool(Pl
 				next->disableInteraction(next->getFrameOpaicty());
 			}
 
-			this->runAction(Sequence::create(
-				CallFunc::create([=]()
-				{
-					if (onSelect != nullptr)
-					{
-						onSelect(statsBars->getStatsTarget());
-					}
-				}),
-				DelayTime::create(0.75f),
-				CallFunc::create([=]()
-				{
-					if (onExit != nullptr)
-					{
-						onExit();
-					}
-				}),
-				nullptr
-			));
+			if (onSelect != nullptr)
+			{
+				onSelect(statsBars->getStatsTarget());
+			}
 		});
 	}
 
@@ -334,12 +329,22 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<bool(Pl
 
 void PartyMenu::select(StatsBars* statsBars)
 {
+	int seekIndex = 0;
+
 	for (auto next : this->partyStatsBars)
 	{
-		next->setSelected(false);
-	}
+		if (next != statsBars)
+		{
+			next->setSelected(false);
+		}
+		else
+		{
+			statsBars->setSelected(true);
+			this->selectionIndex = seekIndex;
+		}
 
-	statsBars->setSelected(true);
+		seekIndex++;
+	}
 }
 
 void PartyMenu::buildAllStats()
@@ -372,6 +377,19 @@ void PartyMenu::buildStats(PlatformerEntity* entity)
 
 		this->statsBarsNode->addChild(statsBars);
 		this->partyStatsBars.push_back(statsBars);
+}
+
+int PartyMenu::getSelectionIndex()
+{
+	return this->selectionIndex;
+}
+
+void PartyMenu::setSelectionIndex(int index)
+{
+	if (index < int(this->partyStatsBars.size()) && this->partyStatsBars[index]->canSelect())
+	{
+		this->select(this->partyStatsBars[index]);
+	}
 }
 
 void PartyMenu::trySelectNext()
