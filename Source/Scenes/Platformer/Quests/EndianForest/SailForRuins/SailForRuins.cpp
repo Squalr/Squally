@@ -19,6 +19,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -127,6 +128,7 @@ void SailForRuins::runNoSequence()
 		),
 		[=]()
 		{
+			Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
 		},
 		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
 		true

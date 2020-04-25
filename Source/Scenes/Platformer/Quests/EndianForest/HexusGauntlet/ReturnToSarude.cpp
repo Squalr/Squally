@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -84,6 +85,7 @@ void ReturnToSarude::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToSarude::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFExplorePrison);
 }
 
 void ReturnToSarude::onSkipped()

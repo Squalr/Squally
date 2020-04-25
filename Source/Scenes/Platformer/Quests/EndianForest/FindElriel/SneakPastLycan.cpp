@@ -15,6 +15,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -101,6 +102,7 @@ void SneakPastLycan::runCinematicSequence()
 					),
 					[=]()
 					{
+						Objectives::SetCurrentObjective(ObjectiveKeys::EFExploreMagesGuild);
 					},
 					SoundResources::Platformer_Entities_Generic_ChatterShort2,
 					true

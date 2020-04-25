@@ -18,6 +18,7 @@
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolLiana.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -112,6 +113,8 @@ void ReturnToQueen::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToQueen::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitMarcel);
+	
 	this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->disableTurnIn();

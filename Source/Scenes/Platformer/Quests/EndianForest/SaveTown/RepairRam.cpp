@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -117,6 +118,7 @@ void RepairRam::onActivate(bool isActiveThroughSkippable)
 
 void RepairRam::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFConfrontCommander);
 }
 
 void RepairRam::onSkipped()
@@ -193,6 +195,10 @@ void RepairRam::onRamInteract()
 		this->wasActivated = true;
 
 		this->complete();
+	}
+	else
+	{
+		Objectives::SetCurrentObjective(ObjectiveKeys::EFRepairRam);
 	}
 }
 

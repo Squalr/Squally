@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/SquallySwimHackBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ItemResources.h"
@@ -76,6 +77,7 @@ void WaterSpellbook::onComplete()
 {
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFSearchTemple);
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),

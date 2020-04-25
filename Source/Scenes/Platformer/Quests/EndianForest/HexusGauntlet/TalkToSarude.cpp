@@ -18,6 +18,7 @@
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -83,6 +84,8 @@ void TalkToSarude::onComplete()
 	{
 		this->portal->openPortal(true);
 	}
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFBeatGauntlet);
 }
 
 void TalkToSarude::onSkipped()

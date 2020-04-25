@@ -19,5 +19,14 @@ public:
 private:
 	static void InitMap();
 
-	static std::map<std::string, std::function<LocalizedString*()>> ObjectiveMap;
+	struct Objective
+	{
+		std::function<LocalizedString*()> createFunc;
+		int priority;
+
+		Objective() : createFunc(nullptr), priority(-1) { }
+		Objective(std::function<LocalizedString*()> createFunc, int priority) : createFunc(createFunc), priority(priority) { }
+	};
+
+	static std::map<std::string, Objective> ObjectiveMap;
 };

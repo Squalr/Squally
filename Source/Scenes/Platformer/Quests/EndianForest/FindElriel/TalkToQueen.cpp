@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -81,6 +82,7 @@ void TalkToQueen::onActivate(bool isActiveThroughSkippable)
 
 void TalkToQueen::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFFindElriel);
 }
 
 void TalkToQueen::onSkipped()

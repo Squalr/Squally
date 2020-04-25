@@ -19,6 +19,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ItemResources.h"
@@ -75,6 +76,7 @@ void WindSpellbook::onComplete()
 {
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFHeadNorth);
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),

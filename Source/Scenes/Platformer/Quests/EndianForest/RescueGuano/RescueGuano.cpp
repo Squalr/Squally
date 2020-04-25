@@ -19,6 +19,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -80,6 +81,7 @@ void RescueGuano::onActivate(bool isActiveThroughSkippable)
 
 void RescueGuano::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFSneakIntoTown);
 }
 
 void RescueGuano::onSkipped()

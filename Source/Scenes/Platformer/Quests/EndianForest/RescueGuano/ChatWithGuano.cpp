@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -87,6 +88,7 @@ void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 
 void ChatWithGuano::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFRescueGuano);
 }
 
 void ChatWithGuano::onSkipped()

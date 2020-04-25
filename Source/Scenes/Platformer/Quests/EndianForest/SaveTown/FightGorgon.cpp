@@ -33,6 +33,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -167,6 +168,8 @@ void FightGorgon::onActivate(bool isActiveThroughSkippable)
 
 void FightGorgon::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueenAgain);
+
 	// Might not be set yet due to potential timing race
 	this->forceField->setVisible(false);
 }

@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/FightGorgon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -81,6 +82,8 @@ void TalkToMages::onActivate(bool isActiveThroughSkippable)
 
 void TalkToMages::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFAmbush);
+	
 	this->setPostText();
 }
 

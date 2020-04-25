@@ -18,6 +18,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 
 #include "Resources/SoundResources.h"
@@ -98,6 +99,7 @@ void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
 void ReturnToQueenAgain::onComplete()
 {
 	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFSailForUR);
 
 	this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{

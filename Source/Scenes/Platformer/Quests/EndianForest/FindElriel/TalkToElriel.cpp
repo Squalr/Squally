@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -81,6 +82,7 @@ void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 
 void TalkToElriel::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueen);
 }
 
 void TalkToElriel::onSkipped()

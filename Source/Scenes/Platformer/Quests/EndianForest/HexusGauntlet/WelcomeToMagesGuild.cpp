@@ -11,6 +11,7 @@
 #include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -64,6 +65,7 @@ void WelcomeToMagesGuild::onActivate(bool isActiveThroughSkippable)
 
 void WelcomeToMagesGuild::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFTalkToSarude);
 }
 
 void WelcomeToMagesGuild::onSkipped()
