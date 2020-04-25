@@ -20,6 +20,7 @@
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -111,6 +112,25 @@ void ItemMenu::initializeListeners()
 		if (entry->getToggleCallback() != nullptr)
 		{
 			entry->getToggleCallback()();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D, }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->isFocused || this->visibleItems.empty())
+		{
+			return;
+		}
+
+		ItemEntry* entry = this->visibleItems[this->selectedItemIndex];
+
+		// Special case for consumables only -- continuing to the right makes sense for selecting these, but not other items
+		if (dynamic_cast<Consumable*>(entry->getAssociatedItem()) != nullptr)
+		{
+			if (entry->getToggleCallback() != nullptr)
+			{
+				entry->getToggleCallback()();
+			}
 		}
 	});
 

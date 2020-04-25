@@ -198,6 +198,41 @@ void PartyMenu::initializeListeners()
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+		
+		this->trySelectPrevious();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+		
+		this->trySelectPrevious();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+		
+		this->trySelectNext();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+
+		this->trySelectNext();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+
+		this->performSelectionActions();
+	});
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -253,7 +288,12 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<bool(Pl
 
 		next->enableInteraction();
 
-		next->setClickCallback([=](PlatformerEntity* entity)
+		next->setMouseOverCallback([=](StatsBars* statsBars)
+		{
+			this->select(statsBars);
+		});
+
+		next->setClickCallback([=](StatsBars* statsBars)
 		{
 			for (auto next : this->partyStatsBars)
 			{
@@ -265,7 +305,7 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<bool(Pl
 				{
 					if (onSelect != nullptr)
 					{
-						onSelect(entity);
+						onSelect(statsBars->getStatsTarget());
 					}
 				}),
 				DelayTime::create(0.75f),
@@ -281,6 +321,8 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<bool(Pl
 		});
 	}
 
+	this->trySelectNext();
+
 	// State for a selection based open
 	this->onSelect = onSelect;
 	this->onExit = onExit;
@@ -288,6 +330,16 @@ void PartyMenu::openForSelection(std::string iconResource, std::function<bool(Pl
 	this->returnButton->setVisible(false);
 	this->stuckButton->setVisible(false);
 	this->chooseTargetNode->setVisible(true);
+}
+
+void PartyMenu::select(StatsBars* statsBars)
+{
+	for (auto next : this->partyStatsBars)
+	{
+		next->setSelected(false);
+	}
+
+	statsBars->setSelected(true);
 }
 
 void PartyMenu::buildAllStats()
@@ -316,9 +368,124 @@ void PartyMenu::buildStats(PlatformerEntity* entity)
 		StatsBars* statsBars = StatsBars::create(true, true);
 
 		statsBars->setStatsTarget(entity);
+		statsBars->toggleSelectionArrowVisibility(true);
 
 		this->statsBarsNode->addChild(statsBars);
 		this->partyStatsBars.push_back(statsBars);
+}
+
+void PartyMenu::trySelectNext()
+{
+	StatsBars* currentSelection = nullptr;
+
+	for (auto it : this->partyStatsBars)
+	{
+		if (it->isSelected())
+		{
+			currentSelection = it;
+			break;
+		}
+	}
+
+	if (currentSelection == nullptr)
+	{
+		for (auto it : this->partyStatsBars)
+		{
+			if (it->canSelect())
+			{
+				this->select(it);
+				return;
+			}
+		}
+	}
+
+	auto selectionIt = std::find(this->partyStatsBars.begin(), this->partyStatsBars.end(), currentSelection);
+
+	if (selectionIt == this->partyStatsBars.end())
+	{
+		return;
+	}
+
+	for (auto it = selectionIt + 1; it != this->partyStatsBars.end(); it++)
+	{
+		if ((*it)->canSelect())
+		{
+			this->select((*it));
+			return;
+		}
+	}
+
+	for (auto it = this->partyStatsBars.begin(); it != selectionIt; it++)
+	{
+		if ((*it)->canSelect())
+		{
+			this->select((*it));
+			return;
+		}
+	}
+}
+
+void PartyMenu::trySelectPrevious()
+{
+	StatsBars* currentSelection = nullptr;
+
+	for (auto it : this->partyStatsBars)
+	{
+		if (it->isSelected())
+		{
+			currentSelection = it;
+			break;
+		}
+	}
+
+	if (currentSelection == nullptr)
+	{
+		for (auto it : this->partyStatsBars)
+		{
+			if (it->canSelect())
+			{
+				this->select(it);
+				return;
+			}
+		}
+	}
+
+	auto selectionIt = std::find(this->partyStatsBars.begin(), this->partyStatsBars.end(), currentSelection);
+
+	if (selectionIt == this->partyStatsBars.end())
+	{
+		return;
+	}
+
+	for (auto it = this->partyStatsBars.begin(); it != selectionIt; it++)
+	{
+		if ((*it)->canSelect())
+		{
+			this->select((*it));
+			return;
+		}
+	}
+
+	for (auto it = selectionIt + 1; it != this->partyStatsBars.end(); it++)
+	{
+		if ((*it)->canSelect())
+		{
+			this->select((*it));
+			return;
+		}
+	}
+}
+
+void PartyMenu::performSelectionActions()
+{
+	for (auto it : this->partyStatsBars)
+	{
+		if (it->isSelected())
+		{
+			it->tryInteract();
+			break;
+		}
+	}
 }
 
 void PartyMenu::onCancelClick()

@@ -41,7 +41,6 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->target = nullptr;
 	this->targetAsTimelineEntry = nullptr;
 	this->frame = ClickableNode::create(this->showExp ? UIResources::HUD_FrameExtended : UIResources::HUD_Frame, this->showExp ? UIResources::HUD_FrameExtendedSelected : UIResources::HUD_FrameSelected);
-	this->frameSelected = Sprite::create(UIResources::HUD_FrameSelected);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->emblemNode = Node::create();
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed), fillOffset);
@@ -61,6 +60,7 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->expDenominator = ConstantString::create("-");
 	this->eqDisplay = EqDisplay::create();
 	this->runeBar = RuneBar::create();
+	this->arrowSprite = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->cachedExp = -1;
 	this->cachedMaxExp = -1;
 	this->cachedMana = -1;
@@ -76,17 +76,18 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->manaLabel->enableOutline(Color4B::BLACK, 2);
 	this->expLabel->enableOutline(Color4B::BLACK, 2);
 
+	this->frame->toggleAllowMouseOutDeselection(false);
 	this->expBar->setVisible(this->showExp);
 	this->expSprite->setVisible(this->showExp);
 	this->runeBar->setVisible(false);
 	this->eqDisplay->setVisible(false);
-	this->frameSelected->setVisible(false);
+	this->arrowSprite->setVisible(false);
 
+	this->frame->getContentSelected()->addChild(this->arrowSprite);
 	this->healthBar->addChild(this->healthLabel);
 	this->manaBar->addChild(this->manaLabel);
 	this->expBar->addChild(this->expLabel);
 	this->addChild(this->frame);
-	this->addChild(this->frameSelected);
 	this->addChild(this->emblemGlow);
 	this->addChild(this->emblemNode);
 	this->addChild(this->healthBar);
@@ -127,7 +128,6 @@ void StatsBars::initializePositions()
 	const float EqOffset = this->isFrameOnLeft ? 64.0f : 112.0f;
 
 	this->frame->setPosition(Vec2(FrameOffset, 0.0f));
-	this->frameSelected->setPosition(Vec2(FrameOffset, 0.0f));
 	this->emblemGlow->setPosition(Vec2(EmblemOffset, 16.0f));
 	this->emblemNode->setPosition(Vec2(EmblemOffset, 16.0f));
 	this->healthBar->setPosition(Vec2(BarInset + this->healthBar->getContentSize().width / 2.0f, BarY));
@@ -141,6 +141,7 @@ void StatsBars::initializePositions()
 	this->expLabel->setPosition(Vec2(0.0f, TextOffset));
 	this->runeBar->setPosition(306.0f, 36.0f);
 	this->eqDisplay->setPosition(EqOffset, -32.0f);
+	this->arrowSprite->setPosition(Vec2(4.0f, this->frame->getContentSelected()->getContentSize().height / 2.0f));
 }
 
 void StatsBars::initializeListeners()
@@ -202,10 +203,41 @@ void StatsBars::update(float dt)
 	}
 }
 
+void StatsBars::toggleSelectionArrowVisibility(bool isVisible)
+{
+	this->arrowSprite->setVisible(isVisible);
+}
+
+bool StatsBars::canSelect()
+{
+	return this->frame->canInteract();
+}
+
+bool StatsBars::isSelected()
+{
+	return this->frame->isSelected();
+}
+
+void StatsBars::tryInteract()
+{
+	this->frame->interact();
+}
+
 void StatsBars::setSelected(bool isSelected)
 {
-	this->frame->setVisible(!isSelected);
-	this->frameSelected->setVisible(isSelected);
+	if (!this->canSelect())
+	{
+		return;
+	}
+
+	if (isSelected)
+	{
+		this->frame->select();
+	}
+	else
+	{
+		this->frame->deselect();
+	}
 }
 
 void StatsBars::setStatsTargetAsTimelineEntry(TimelineEntry* targetAsTimelineEntry)
@@ -264,7 +296,22 @@ int StatsBars::getFrameOpaicty()
 	return this->frame->getOpacity();
 }
 
-void StatsBars::setClickCallback(std::function<void(PlatformerEntity*)> onClickCallback)
+void StatsBars::setMouseOverCallback(std::function<void(StatsBars*)> onMouseOverCallback)
+{
+	if (onMouseOverCallback == nullptr)
+	{
+		this->frame->setMouseOverCallback(nullptr);
+	}
+	else
+	{
+		this->frame->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+		{
+			onMouseOverCallback(this);
+		});
+	}
+}
+
+void StatsBars::setClickCallback(std::function<void(StatsBars*)> onClickCallback)
 {
 	if (onClickCallback == nullptr)
 	{
@@ -274,7 +321,7 @@ void StatsBars::setClickCallback(std::function<void(PlatformerEntity*)> onClickC
 	{
 		this->frame->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
-			onClickCallback(this->target);
+			onClickCallback(this);
 		});
 	}
 }

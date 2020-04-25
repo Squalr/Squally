@@ -51,16 +51,6 @@ void GuanoAttackBehavior::onLoad()
 
 		attackBehavior->registerAttack(BasicSlash::create(minAttack, maxAttack, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
-	
-	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		Inventory* inventory = entityInventoryBehavior->getInventory();
-
-		if (inventory != nullptr)
-		{
-			inventory->forceInsert(IncrementHealthFlask::create());
-		}
-	});
 }
 
 void GuanoAttackBehavior::onDisable()

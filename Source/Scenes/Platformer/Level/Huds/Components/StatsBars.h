@@ -21,6 +21,10 @@ class StatsBars : public SmartNode
 public:
 	static StatsBars* create(bool isFrameOnLeft = true, bool showExp = false);
 
+	void toggleSelectionArrowVisibility(bool isVisible);
+	bool canSelect();
+	bool isSelected();
+	void tryInteract();
 	void setSelected(bool isSelected);
 	void setStatsTargetAsTimelineEntry(TimelineEntry* targetAsTimelineEntry);
 	TimelineEntry* getStatsTargetAsTimelineEntry();
@@ -29,7 +33,8 @@ public:
 	void enableInteraction();
 	void disableInteraction(int opacity = 255);
 	int getFrameOpaicty();
-	void setClickCallback(std::function<void(PlatformerEntity*)> onClickCallback);
+	void setMouseOverCallback(std::function<void(StatsBars*)> onMouseOverCallback);
+	void setClickCallback(std::function<void(StatsBars*)> onClickCallback);
 
 protected:
 	StatsBars(bool isFrameOnLeft, bool showExp);
@@ -56,7 +61,6 @@ private:
 
 	bool isFrameOnLeft;
 	ClickableNode* frame;
-	cocos2d::Sprite* frameSelected;
 	cocos2d::Sprite* emblemGlow;
 	cocos2d::Node* emblemNode;
 	cocos2d::Sprite* emblem;
@@ -78,4 +82,5 @@ private:
 
 	EqDisplay* eqDisplay;
 	RuneBar* runeBar;
+	cocos2d::Sprite* arrowSprite;
 };

@@ -38,8 +38,12 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void select(StatsBars* statsBars);
 	void buildAllStats();
 	void buildStats(PlatformerEntity* entity);
+	void trySelectNext();
+	void trySelectPrevious();
+	void performSelectionActions();
 	void onCancelClick();
 	void onReturnClick();
 

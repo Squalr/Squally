@@ -58,6 +58,7 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->interactionEnabled = true;
 	this->wasAnywhereClicked = false;
 	this->wasClickedDirectly = false;
+	this->allowMouseOutDeselection = true;
 	this->isMousedOver = false;
 	this->modifierReleasedListener = nullptr;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
@@ -494,7 +495,30 @@ void ClickableNode::mouseOut(InputEvents::MouseEventArgs* args, bool force)
 
 	this->isMousedOver = false;
 
+	if (this->allowMouseOutDeselection)
+	{
+		this->showContent(this->content);
+	}
+}
+
+void ClickableNode::toggleAllowMouseOutDeselection(bool allowMouseOutDeselection)
+{
+	this->allowMouseOutDeselection = allowMouseOutDeselection;
+}
+
+void ClickableNode::select()
+{
+	this->showContent(this->contentSelected);
+}
+
+void ClickableNode::deselect()
+{
 	this->showContent(this->content);
+}
+
+bool ClickableNode::isSelected()
+{
+	return this->currentSprite == this->contentSelected;
 }
 
 cocos2d::Node* ClickableNode::getContent()
