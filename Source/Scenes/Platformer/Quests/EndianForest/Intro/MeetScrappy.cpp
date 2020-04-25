@@ -20,6 +20,7 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/EntityResources.h"
@@ -87,6 +88,7 @@ void MeetScrappy::onActivate(bool isActiveThroughSkippable)
 
 void MeetScrappy::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFHeadToTown);
 }
 
 void MeetScrappy::onSkipped()

@@ -4,6 +4,7 @@
 
 class CinematicIndicator;
 class CurrencyDisplay;
+class ObjectiveDisplay;
 class PlatformerDialogueBox;
 class StatsBars;
 
@@ -25,6 +26,7 @@ private:
 	typedef Hud super;
 
 	CurrencyDisplay* currencyDisplay;
+	ObjectiveDisplay* objectiveDisplay;
 	StatsBars* statsBars;
 	CinematicIndicator* cinematicIndicator;
 	PlatformerDialogueBox* dialogueBox;

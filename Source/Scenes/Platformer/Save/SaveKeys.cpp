@@ -1,6 +1,7 @@
 #include "SaveKeys.h"
 
 const std::string SaveKeys::SaveKeyMap = "SAVE_KEY_MAP";
+const std::string SaveKeys::SaveKeyCurrentObjective = "SAVE_KEY_CURRENT_OBJECTIVE";
 const std::string SaveKeys::SaveKeyEventTriggeredPrefix = "SAVE_KEY_EVENT_TRIGGERED_";
 const std::string SaveKeys::SaveKeySquallyRuneCooldowns = "SAVE_KEY_SQUALLY_RUNE_COOLDOWNS";
 const std::string SaveKeys::SaveKeySquallyHealth = "SAVE_KEY_SQUALLY_HEALTH";

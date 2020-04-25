@@ -44,6 +44,7 @@ public:
 	static const std::string EventSaveRespawn;
 	static const std::string EventBeforeLoadRespawn;
 	static const std::string EventLoadRespawn;
+	static const std::string EventObjectiveChanged;
 	static const std::string EventUnstuck;
 
 	struct TransitionArgs
@@ -214,5 +215,6 @@ public:
 	static void TriggerSaveRespawn(SaveRespawnArgs args);
 	static void TriggerBeforeLoadRespawn();
 	static void TriggerLoadRespawn();
+	static void TriggerObjectiveChanged();
 	static void TriggerUnstuck();
 };

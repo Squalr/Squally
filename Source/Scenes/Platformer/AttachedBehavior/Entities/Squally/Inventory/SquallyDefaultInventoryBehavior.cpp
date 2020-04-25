@@ -85,7 +85,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);
 
-			for (int index = 0; index < 3; index++)
+			for (int index = 0; index < 7; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(HealthPotion::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(ManaPotion::create(), false);
