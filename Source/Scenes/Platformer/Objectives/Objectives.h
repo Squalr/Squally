@@ -13,6 +13,7 @@ class Objectives
 public:
 	static LocalizedString* GetObjectiveString();
 	static std::string GetCurrentObjective();
+	static void ClearObjective();
 	static void SetCurrentObjective(std::string objectiveKey);
 
 private:

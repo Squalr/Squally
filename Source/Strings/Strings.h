@@ -23199,6 +23199,321 @@ namespace Strings
 		virtual ~Platformer_Notifications_Party_HelperJoinedParty() = default;
 	};
 
+	class Platformer_Objectives_EndianForest_EF_Ambush : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_Ambush* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_Ambush();
+		virtual ~Platformer_Objectives_EndianForest_EF_Ambush() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_BeatGauntlet : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_BeatGauntlet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_BeatGauntlet();
+		virtual ~Platformer_Objectives_EndianForest_EF_BeatGauntlet() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_BeatSarude : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_BeatSarude* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_BeatSarude();
+		virtual ~Platformer_Objectives_EndianForest_EF_BeatSarude() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_ConfrontCommander : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_ConfrontCommander* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_ConfrontCommander();
+		virtual ~Platformer_Objectives_EndianForest_EF_ConfrontCommander() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_ExploreMagesGuild : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_ExploreMagesGuild* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_ExploreMagesGuild();
+		virtual ~Platformer_Objectives_EndianForest_EF_ExploreMagesGuild() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_ExplorePrison : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_ExplorePrison* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_ExplorePrison();
+		virtual ~Platformer_Objectives_EndianForest_EF_ExplorePrison() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_FindAShip : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_FindAShip* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_FindAShip();
+		virtual ~Platformer_Objectives_EndianForest_EF_FindAShip() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_FindElriel : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_FindElriel* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_FindElriel();
+		virtual ~Platformer_Objectives_EndianForest_EF_FindElriel() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_HeadNorth : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_HeadNorth* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_HeadNorth();
+		virtual ~Platformer_Objectives_EndianForest_EF_HeadNorth() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_HeadToTown : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_HeadToTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_HeadToTown();
+		virtual ~Platformer_Objectives_EndianForest_EF_HeadToTown() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_RepairRam : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_RepairRam* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_RepairRam();
+		virtual ~Platformer_Objectives_EndianForest_EF_RepairRam() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_RescueGuano : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_RescueGuano* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_RescueGuano();
+		virtual ~Platformer_Objectives_EndianForest_EF_RescueGuano() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_ReturnToQueen : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_ReturnToQueen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_ReturnToQueen();
+		virtual ~Platformer_Objectives_EndianForest_EF_ReturnToQueen() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain();
+		virtual ~Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_SailForUR : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_SailForUR* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_SailForUR();
+		virtual ~Platformer_Objectives_EndianForest_EF_SailForUR() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_SearchTemple : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_SearchTemple* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_SearchTemple();
+		virtual ~Platformer_Objectives_EndianForest_EF_SearchTemple() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_SneakIntoTown : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_SneakIntoTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_SneakIntoTown();
+		virtual ~Platformer_Objectives_EndianForest_EF_SneakIntoTown() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_TalkToSarude : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_TalkToSarude* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_TalkToSarude();
+		virtual ~Platformer_Objectives_EndianForest_EF_TalkToSarude() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_VisitMarcel : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_VisitMarcel* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_VisitMarcel();
+		virtual ~Platformer_Objectives_EndianForest_EF_VisitMarcel() = default;
+	};
+
+	class Platformer_Objectives_EndianForest_EF_VisitQueen : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_EndianForest_EF_VisitQueen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_EndianForest_EF_VisitQueen();
+		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
+	};
+
+	class Platformer_Objectives_Objective : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_Objective* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_Objective();
+		virtual ~Platformer_Objectives_Objective() = default;
+	};
+
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString
 	{
 	public:

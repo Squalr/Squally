@@ -7,6 +7,8 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 ObjectiveDisplay* ObjectiveDisplay::create()
@@ -20,7 +22,7 @@ ObjectiveDisplay* ObjectiveDisplay::create()
 
 ObjectiveDisplay::ObjectiveDisplay()
 {
-	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, nullptr);
+	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Platformer_Objectives_Objective::create());
 
 	this->label->setHorizontalAlignment(TextHAlignment::RIGHT);
 	this->label->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -52,5 +54,5 @@ void ObjectiveDisplay::initializeListeners()
 	
 void ObjectiveDisplay::loadObjective()
 {
-	this->label->setLocalizedString(Objectives::GetObjectiveString());
+	this->label->setStringReplacementVariables(Objectives::GetObjectiveString());
 }
