@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -14,9 +14,9 @@ const float TypeWriterEffect::DefaultDelayPerLetter = 0.025f;
 
 using namespace cocos2d;
 
-void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<void()> onEffectFinishedCallback, float delayPerLetter)
+void TypeWriterEffect::runTypeWriterEffect(SmartNode* host, LocalizedLabel* label, std::function<void()> onEffectFinishedCallback, float delayPerLetter)
 {
-	if (label == nullptr || label->localizedString == nullptr)
+	if (host == nullptr || label == nullptr || label->localizedString == nullptr)
 	{
 		if (onEffectFinishedCallback != nullptr)
 		{
@@ -29,8 +29,8 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 	int max = label->getStringLength();
 	int maxRealIndex = 0;
 
-	// We have to add events the old way -- LocalizedLabels inherit from a cocos label, not a SmartNode
-	label->getEventDispatcher()->addCustomEventListener(LocalizationEvents::BeforeLocaleChangeEvent, [=](EventCustom* args)
+	// LocalizedStrings inherit from cocos labels, thus are not SmartNodes. For this reason, events are registered on a given host.
+	host->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::BeforeLocaleChangeEvent, [=](EventCustom* args)
 	{
 		if (label == nullptr)
 		{
@@ -50,7 +50,7 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 
 		label->_contentDirty = true;
 		label->_letters.clear();
-	});
+	}));
 
 	// ZAC: Unicode string length fucks up with Zalgo text. Not working as intended.
 	/*

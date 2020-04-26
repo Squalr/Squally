@@ -131,7 +131,7 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 	}
 
 	TypeWriterEffect::cancelEffect(this->text);
-	TypeWriterEffect::runTypeWriterEffect(this->text, [=]() { this->onTypeWriterEffectComplete(); });
+	TypeWriterEffect::runTypeWriterEffect(this, this->text, [=]() { this->onTypeWriterEffectComplete(); });
 }
 
 void DialogueBox::hideDialogue()
