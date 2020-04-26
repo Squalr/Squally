@@ -42,7 +42,7 @@ void ManaPotion::useOutOfCombat(PlatformerEntity* target)
 {
 	target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		manaBehavior->setMana(int(manaBehavior->getMana() + float(manaBehavior->getMaxMana()) * ManaPotion::RestorePercentage));
+		manaBehavior->setMana(manaBehavior->getMana() + int(float(manaBehavior->getMaxMana()) * ManaPotion::RestorePercentage));
 	});
 
 	this->outOfCombatSound->play();

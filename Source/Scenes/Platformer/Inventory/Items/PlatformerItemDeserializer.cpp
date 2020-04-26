@@ -286,6 +286,12 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Necklaces
 	this->deserializers[GlowingPendant::SaveKey] = [=]() { return (Item*)GlowingPendant::create(); };
 
+	// Rings
+	this->deserializers[SapphireBand::SaveKey] = [=]() { return (Item*)SapphireBand::create(); };
+
+	// Earrings
+	this->deserializers[SapphireEarrings::SaveKey] = [=]() { return (Item*)SapphireEarrings::create(); };
+
 	// Keys
 	this->deserializers[MagesGuildPrisonKey::SaveKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
 	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };

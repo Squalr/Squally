@@ -54,5 +54,8 @@ void ObjectiveDisplay::initializeListeners()
 	
 void ObjectiveDisplay::loadObjective()
 {
-	this->label->setStringReplacementVariables(Objectives::GetObjectiveString());
+	LocalizedString* str = Objectives::GetObjectiveString();
+
+	this->label->setStringReplacementVariables(str);
+	this->label->setVisible(str != nullptr);
 }

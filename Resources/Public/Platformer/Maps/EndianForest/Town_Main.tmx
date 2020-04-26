@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="962">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="963">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -433,11 +433,8 @@
    </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
-  <object id="724" name="blue-grass" type="terrain" x="3845.72" y="2817.07">
-   <polygon points="0,0 1863.05,-13.8647 1864.82,354.271 0,365.991"/>
-  </object>
   <object id="764" name="blue-grass" type="terrain" x="6015.74" y="1199.58">
-   <polygon points="500.144,-47.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 4214.23,1608.4 4206.35,83.0295 3824.33,84.1033 3819.57,1221.15 431.5,1226.14 420.364,-24.5453"/>
+   <polygon points="500.144,-47.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 -130,1973.97 -132.217,1604.05 4214.23,1608.4 4206.35,83.0295 3824.33,84.1033 3819.57,1221.15 431.5,1226.14 420.364,-24.5453"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
@@ -454,6 +451,7 @@
   </properties>
   <object id="945" name="blue-grass" type="terrain" x="-143.094" y="5919.58" width="3633.82" height="2289.81"/>
   <object id="946" name="blue-grass" type="terrain" x="-100.91" y="2819.1" width="3557.82" height="377.81"/>
+  <object id="962" name="blue-grass" type="terrain" x="3851.39" y="2811.09" width="1694.18" height="377.81"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -678,8 +676,8 @@
    </properties>
   </object>
   <object id="913" name="life-stone" type="object" x="2315" y="5501.83" width="146" height="423"/>
-  <object id="926" name="solid" type="collision" x="5647.58" y="6689.33">
-   <polygon points="109.055,-69.1763 1004.17,-68.1492 1004.27,-4.12835 110.611,-1.23965"/>
+  <object id="926" name="pass-through" type="collision" x="5647.58" y="6714.83">
+   <polygon points="109.055,-78.6799 1004.17,-77.5117 1004.27,-4.69551 110.611,-1.40996"/>
   </object>
   <object id="927" name="trigger" type="object" x="1311.85" y="4092.74" width="146" height="1829.06">
    <properties>
@@ -712,7 +710,7 @@
     <property name="transition" value="gate"/>
    </properties>
   </object>
-  <object id="944" name="spawn" type="object" x="5235.76" y="2681.09" width="128" height="128">
+  <object id="944" name="spawn" type="object" x="5071.76" y="2681.09" width="128" height="128">
    <properties>
     <property name="transition" value="mage-portal"/>
    </properties>

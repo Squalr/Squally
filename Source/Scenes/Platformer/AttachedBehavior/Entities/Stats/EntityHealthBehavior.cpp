@@ -112,7 +112,7 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 		this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()), true);
 
 		// Cancel death anim
-		if (this->entity->getAnimations()->getCurrentAnimation() == "Death" || this->entity->getAnimations()->getCurrentAnimation() == "Dead")
+		if (this->isAlive() && (this->entity->getAnimations()->getCurrentAnimation() == "Death" || this->entity->getAnimations()->getCurrentAnimation() == "Dead"))
 		{
 			this->entity->getAnimations()->clearAnimationPriority();
 			this->entity->getAnimations()->playAnimation();

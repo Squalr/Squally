@@ -76,23 +76,23 @@ void Objectives::InitMap()
 	// EF
 	Objectives::ObjectiveMap[ObjectiveKeys::EFHeadToTown] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_HeadToTown::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFExploreMagesGuild] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ExploreMagesGuild::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFTalkToSarude] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_TalkToSarude::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFBeatGauntlet] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_BeatGauntlet::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFBeatSarude] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_BeatSarude::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFTalkToSarude] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_TalkToSarude::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFBeatGauntlet] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_BeatGauntlet::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude::create(), Strings::Hexus_Hexus::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFBeatSarude] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_BeatSarude::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude::create(), Strings::Hexus_Hexus::create() }); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFExplorePrison] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ExplorePrison::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFRescueGuano] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_RescueGuano::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFRescueGuano] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_RescueGuano::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFSneakIntoTown] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SneakIntoTown::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFFindAShip] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_FindAShip::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFVisitQueen] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_VisitQueen::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFFindElriel] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_FindElriel::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFSearchTemple] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SearchTemple::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFReturnToQueen] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ReturnToQueen::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFVisitMarcel] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_VisitMarcel::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFVisitQueen] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_VisitQueen::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFFindElriel] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_FindElriel::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFSearchTemple] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SearchTemple::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFReturnToQueen] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ReturnToQueen::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFVisitMarcel] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_VisitMarcel::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create(), Strings::Platformer_MapNames_EndianForest_Elbridge::create() }); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFHeadNorth] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_HeadNorth::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFAmbush] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_Ambush::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFRepairRam] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_RepairRam::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFConfrontCommander] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ConfrontCommander::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFReturnToQueenAgain] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFReturnToQueenAgain] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFSailForUR] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SailForUR::create(); }, priority++);
 
 	priority = 100;

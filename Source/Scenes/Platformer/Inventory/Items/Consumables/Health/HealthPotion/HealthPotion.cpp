@@ -42,7 +42,7 @@ void HealthPotion::useOutOfCombat(PlatformerEntity* target)
 {
 	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		healthBehavior->setHealth(int(healthBehavior->getHealth() + float(healthBehavior->getMaxHealth()) * HealthPotion::HealPercentage));
+		healthBehavior->setHealth(healthBehavior->getHealth() + int(float(healthBehavior->getMaxHealth()) * HealthPotion::HealPercentage));
 	});
 
 	this->outOfCombatSound->play();
