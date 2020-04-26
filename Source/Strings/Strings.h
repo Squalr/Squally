@@ -16194,6 +16194,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd() = default;
 	};
 
+	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration() = default;
+	};
+
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber : public LocalizedString
 	{
 	public:
@@ -16252,6 +16267,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx();
 		virtual ~Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration();
+		virtual ~Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration() = default;
 	};
 
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul : public LocalizedString

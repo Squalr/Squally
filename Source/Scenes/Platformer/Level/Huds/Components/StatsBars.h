@@ -23,6 +23,7 @@ public:
 
 	void toggleSelectionArrowVisibility(bool isVisible);
 	bool canSelect();
+	void setSelectable(bool selectable);
 	bool isSelected();
 	void tryInteract();
 	void setSelected(bool isSelected);
@@ -50,6 +51,8 @@ private:
 
 	PlatformerEntity* target;
 	TimelineEntry* targetAsTimelineEntry;
+
+	bool selectable;
 
 	bool showExp;
 	int cachedExp;

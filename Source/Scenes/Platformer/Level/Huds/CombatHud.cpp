@@ -111,6 +111,7 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 		StatsBars* statsBars = StatsBars::create();
 		
 		statsBars->setStatsTargetAsTimelineEntry(next);
+		statsBars->setSelectable(true);
 		
 		this->playerPartyStatsBars.push_back(statsBars);
 		this->playerPartyStatsNode->addChild(statsBars);
@@ -121,6 +122,7 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 		StatsBars* statsBars = StatsBars::create();
 		
 		statsBars->setStatsTargetAsTimelineEntry(next);
+		statsBars->setSelectable(true);
 		
 		this->enemyPartyStatsBars.push_back(statsBars);
 		this->enemyPartyStatsNode->addChild(statsBars);

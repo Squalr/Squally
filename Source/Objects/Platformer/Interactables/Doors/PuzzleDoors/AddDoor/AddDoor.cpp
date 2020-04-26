@@ -77,10 +77,12 @@ void AddDoor::registerHackables()
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
 						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
 					"add ecx, 2",
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
 						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
 					"add rcx, 2"),
 				},
 				true
@@ -99,7 +101,7 @@ void AddDoor::registerHackables()
 
 void AddDoor::runOperation(int puzzleIndex)
 {
-	this->setRealValue(puzzleIndex + 3);
+	this->setRealValue(puzzleIndex + 5);
 
 	this->AddDoorTransform(puzzleIndex);
 }

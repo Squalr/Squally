@@ -232,7 +232,7 @@
     <property name="reward-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="797" name="caged-bear" type="object" x="168" y="954" width="196" height="112"/>
+  <object id="797" name="caged-dog" type="object" x="168" y="954" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

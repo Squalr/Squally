@@ -77,10 +77,12 @@ void MulDoor::registerHackables()
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
 						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()) + 
 					"imul ecx, 1",
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
 						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()) + 
 					"imul rcx, 1"),
 				},
 				true

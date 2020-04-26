@@ -67,6 +67,7 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->cachedMaxMana = -1;
 	this->cachedHealth = -1;
 	this->cachedMaxHealth = -1;
+	this->selectable = false;
 
 	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
 	this->manaLabel->setStringReplacementVariables({ this->manaNumerator, this->manaDenominator });
@@ -210,7 +211,12 @@ void StatsBars::toggleSelectionArrowVisibility(bool isVisible)
 
 bool StatsBars::canSelect()
 {
-	return this->frame->canInteract();
+	return this->frame->canInteract() || this->selectable;
+}
+
+void StatsBars::setSelectable(bool selectable)
+{
+	this->selectable = selectable;
 }
 
 bool StatsBars::isSelected()

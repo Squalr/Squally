@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="773">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="779">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -15,26 +15,26 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="caverns" type="texture" x="3372.84" y="2692.56">
-   <polygon points="-3949.04,-3335.96 5884.42,-3328.61 5873.06,1938.32 -3931.8,1916.87"/>
+  <object id="712" name="caverns" type="texture" x="3788.86" y="2692.56">
+   <polygon points="-4357.06,-3335.96 6492.4,-3328.61 6479.87,1938.32 -4338.04,1916.87"/>
   </object>
  </objectgroup>
  <objectgroup id="59" name="terrain2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="757" name="caverns" type="terrain" x="7256" y="236">
+  <object id="757" name="caverns" type="terrain" x="8280" y="236">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="-842.39,-1516.1 1246.16,-1519.41 1276.6,1062.19 -854.641,1050.44"/>
   </object>
-  <object id="771" name="caverns" type="terrain" x="-110.365" y="975.495" width="2116.73" height="2617.01">
+  <object id="771" name="caverns" type="terrain" x="-70.365" y="983.495" width="1658.43" height="2609.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="772" name="caverns" type="terrain" x="6405.64" y="-1260.51" width="2116.73" height="2617.01">
+  <object id="772" name="caverns" type="terrain" x="7429.64" y="-1260.51" width="2116.73" height="2617.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -44,13 +44,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="674" name="caverns" type="terrain" x="3871.47" y="3680.45">
-   <polygon points="-3959.98,-756.685 2513.35,-762.815 2494.31,-2700.09 4799.3,-2709.26 4812.13,453.605 -3951.84,472.586"/>
+  <object id="674" name="caverns" type="terrain" x="4895.47" y="3680.45">
+   <polygon points="-5159.98,-738.503 -3878.89,-743.321 -3069.01,-1241.76 -2297.4,-1240.68 -1864.69,-1549.73 -843.118,-1570.62 -838.642,-763.562 2513.35,-762.815 2494.31,-2700.09 4799.3,-2709.26 4812.13,453.605 -5151.84,490.768"/>
   </object>
-  <object id="680" name="caverns" type="terrain" x="4496" y="1548">
+  <object id="680" name="caverns" type="terrain" x="5520" y="1548">
    <polygon points="-52,348 -64,968 -660,964 -668,484 -604,-540 862.086,-562.945 1468,-552 1464,628 1464.42,965.568 561.773,972.638 562.156,663.161 1215.19,668.423 1226.34,451.653 1203.06,193.581 1151.99,-84.9764 1046.19,-310.104 617.542,-381.392 235.344,-247.44 -2.1093,-46.8202"/>
   </object>
-  <object id="713" name="caverns" type="terrain" x="3201.24" y="1609.98">
+  <object id="713" name="caverns" type="terrain" x="4225.24" y="1609.98">
    <polygon points="-161.224,-1706.66 3431.02,-1713.92 3426.95,-1029 3230.76,-1028.87 3230.76,-1488.77 252.12,-1497.98 239.774,983.629 -160.52,980.657"/>
   </object>
  </objectgroup>
@@ -70,225 +70,242 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="681" name="stone-button" type="object" x="5306.82" y="2129.14" width="258.367" height="85.7283">
+  <object id="681" name="stone-button" type="object" x="6330.82" y="2129.14" width="258.367" height="85.7283">
    <properties>
     <property name="send-event" value="door-open"/>
    </properties>
   </object>
-  <object id="717" name="Generic/WoodCaveDoor1" type="decor" x="7571.33" y="591.955" width="388" height="403"/>
-  <object id="718" name="portal" type="object" x="7641.33" y="719.455" width="256" height="256">
+  <object id="717" name="Generic/WoodCaveDoor1" type="decor" x="8595.33" y="591.955" width="388" height="403"/>
+  <object id="718" name="portal" type="object" x="8665.33" y="719.455" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="719" name="spawn" type="object" x="7701.33" y="851.455" width="128" height="128">
+  <object id="719" name="spawn" type="object" x="8725.33" y="851.455" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="246" y="2538.5" width="388" height="403"/>
-  <object id="721" name="portal" type="object" x="316" y="2666" width="256" height="256">
+  <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="94" y="2558.5" width="388" height="403"/>
+  <object id="721" name="portal" type="object" x="164" y="2686" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="722" name="spawn" type="object" x="376" y="2798" width="128" height="128">
+  <object id="722" name="spawn" type="object" x="224" y="2818" width="128" height="128">
    <properties>
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="723" name="camera-control" type="object" x="4314" y="1155.97" width="1516" height="1160.06">
+  <object id="723" name="camera-control" type="object" x="5338" y="1155.97" width="1516" height="1160.06">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
   </object>
-  <object id="725" name="wind" type="object" x="3441.8" y="2517.7" width="395.152" height="392">
+  <object id="725" name="wind" type="object" x="4465.8" y="2517.7" width="395.152" height="392">
    <properties>
     <property name="speed-x" type="float" value="0.5"/>
     <property name="speed-y" type="float" value="-0.5"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="726" name="wind" type="object" x="3843.15" y="2524.44" width="422" height="392">
+  <object id="726" name="wind" type="object" x="4867.15" y="2524.44" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="1"/>
     <property name="speed-y" type="float" value="0.1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="730" name="wind" type="object" x="5966.1" y="2521.15" width="390" height="392">
+  <object id="730" name="wind" type="object" x="6990.1" y="2521.15" width="390" height="392">
    <properties>
     <property name="speed-x" type="float" value="1"/>
     <property name="speed-y" type="float" value="0.5"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="731" name="wind" type="object" x="4572" y="2136" width="420" height="392">
+  <object id="731" name="wind" type="object" x="5596" y="2136" width="420" height="392">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
-  <object id="732" name="wind" type="object" x="3440" y="984" width="392" height="512">
+  <object id="732" name="wind" type="object" x="4464" y="984" width="392" height="512">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="733" name="wind" type="object" x="3429.85" y="591.28" width="413.333" height="392">
+  <object id="733" name="wind" type="object" x="4453.85" y="591.28" width="413.333" height="392">
    <properties>
     <property name="speed-x" type="float" value="-0.5"/>
     <property name="speed-y" type="float" value="-0.5"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="739" name="wind" type="object" x="3440" y="1500" width="392" height="512">
+  <object id="739" name="wind" type="object" x="4464" y="1500" width="392" height="512">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="740" name="wind" type="object" x="3440" y="2004" width="392" height="512">
+  <object id="740" name="wind" type="object" x="4464" y="2004" width="392" height="512">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="741" name="wind" type="object" x="5962" y="992" width="392" height="512">
+  <object id="741" name="wind" type="object" x="6986" y="992" width="392" height="512">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="742" name="wind" type="object" x="5966" y="1504" width="392" height="512">
+  <object id="742" name="wind" type="object" x="6990" y="1504" width="392" height="512">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="743" name="wind" type="object" x="5966" y="2008" width="392" height="512">
+  <object id="743" name="wind" type="object" x="6990" y="2008" width="392" height="512">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="744" name="wind" type="object" x="4576" y="1748" width="420" height="392">
+  <object id="744" name="wind" type="object" x="5600" y="1748" width="420" height="392">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
-  <object id="748" name="wooden-crate" type="object" x="4241.7" y="2761.94" width="160" height="160"/>
-  <object id="749" name="wooden-crate" type="object" x="5476.85" y="2758.06" width="160" height="160"/>
-  <object id="750" name="wooden-crate" type="object" x="4012.36" y="846.545" width="160" height="160"/>
-  <object id="751" name="wooden-crate" type="object" x="5483.64" y="821.576" width="160" height="160"/>
-  <object id="752" name="wooden-crate" type="object" x="6068.48" y="1336.73" width="160" height="160"/>
-  <object id="753" name="wooden-crate" type="object" x="3568.48" y="2157.94" width="160" height="160"/>
-  <object id="754" name="camera-control" type="object" x="2610" y="2295.97" width="776" height="692.06">
+  <object id="748" name="wooden-crate" type="object" x="5265.7" y="2761.94" width="160" height="160"/>
+  <object id="749" name="wooden-crate" type="object" x="6500.85" y="2758.06" width="160" height="160"/>
+  <object id="750" name="wooden-crate" type="object" x="5036.36" y="846.545" width="160" height="160"/>
+  <object id="751" name="wooden-crate" type="object" x="6507.64" y="821.576" width="160" height="160"/>
+  <object id="752" name="wooden-crate" type="object" x="7092.48" y="1336.73" width="160" height="160"/>
+  <object id="753" name="wooden-crate" type="object" x="4592.48" y="2157.94" width="160" height="160"/>
+  <object id="754" name="camera-control" type="object" x="3634" y="2295.97" width="776" height="692.06">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
   </object>
-  <object id="755" name="camera-target" type="object" x="5084" y="1624" width="128" height="128">
+  <object id="755" name="camera-target" type="object" x="6108" y="1624" width="128" height="128">
    <properties>
     <property name="tag" value="target-A"/>
     <property name="zoom" type="float" value="2.4"/>
    </properties>
   </object>
-  <object id="756" name="wooden-gate" type="object" x="6453.58" y="584" width="160" height="400">
+  <object id="756" name="wooden-gate" type="object" x="7477.58" y="584" width="160" height="400">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="listen-event" value="door-open"/>
    </properties>
   </object>
-  <object id="758" name="wind" type="object" x="4268.24" y="2527.97" width="422" height="392">
+  <object id="758" name="wind" type="object" x="5292.24" y="2527.97" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="1"/>
     <property name="speed-y" type="float" value="0.1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="759" name="wind" type="object" x="4696.21" y="2529.48" width="422" height="392">
+  <object id="759" name="wind" type="object" x="5720.21" y="2529.48" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="1"/>
     <property name="speed-y" type="float" value="0.1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="760" name="wind" type="object" x="5121.3" y="2533" width="422" height="392">
+  <object id="760" name="wind" type="object" x="6145.3" y="2533" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="1"/>
     <property name="speed-y" type="float" value="0.1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="761" name="wind" type="object" x="5545.87" y="2526.21" width="422" height="392">
+  <object id="761" name="wind" type="object" x="6569.87" y="2526.21" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="1"/>
     <property name="speed-y" type="float" value="0.1"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="763" name="wind" type="object" x="3819.46" y="611.841" width="422" height="392">
+  <object id="763" name="wind" type="object" x="4843.46" y="611.841" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="764" name="wind" type="object" x="4244.55" y="615.371" width="422" height="392">
+  <object id="764" name="wind" type="object" x="5268.55" y="615.371" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="765" name="wind" type="object" x="4672.52" y="616.881" width="422" height="392">
+  <object id="765" name="wind" type="object" x="5696.52" y="616.881" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="766" name="wind" type="object" x="5097.61" y="620.401" width="422" height="392">
+  <object id="766" name="wind" type="object" x="6121.61" y="620.401" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="767" name="wind" type="object" x="5522.18" y="613.611" width="422" height="392">
+  <object id="767" name="wind" type="object" x="6546.18" y="613.611" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="768" name="wind" type="object" x="5949.61" y="604" width="422" height="392">
+  <object id="768" name="wind" type="object" x="6973.61" y="604" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-0.5"/>
     <property name="speed-y" type="float" value="0.5"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="769" name="wind" type="object" x="4576" y="1358" width="420" height="392">
+  <object id="769" name="wind" type="object" x="5600" y="1358" width="420" height="392">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
-  <object id="770" name="wind" type="object" x="4996" y="1254" width="420" height="392">
+  <object id="770" name="wind" type="object" x="6020" y="1254" width="420" height="392">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="773" name="Generic/WoodCaveDoor1" type="decor" x="3434.06" y="1728.32" width="388" height="403"/>
+  <object id="774" name="portal" type="object" x="3504.06" y="1855.82" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Zone_3_0"/>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
+  <object id="775" name="spawn" type="object" x="3564.06" y="1987.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
+  <object id="776" name="camera-stop" type="object" x="4028" y="457.97" width="536" height="3132.06">
+   <properties>
+    <property name="no-y" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -302,7 +319,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="710" name="cyclops" type="entity" x="1895.21" y="2778.22" width="128" height="128">
+  <object id="710" name="cyclops" type="entity" x="8097.15" y="846.099" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -311,11 +328,17 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="711" name="troll" type="entity" x="1896.79" y="2469.78" width="128" height="128">
+  <object id="711" name="troll" type="entity" x="8098.73" y="537.659" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="778" name="ogre" type="entity" x="2154.67" y="2310.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,puzzle-G"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>
@@ -324,7 +347,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="883.9" y="2799.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="823.9" y="2807.62" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
