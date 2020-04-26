@@ -36,6 +36,8 @@ void TypeWriterEffect::runTypeWriterEffect(SmartNode* host, LocalizedLabel* labe
 		{
 			return;
 		}
+		
+		label->removeLetters();
 
 		for (int index = 0; index < max; index++)
 		{
@@ -112,6 +114,4 @@ void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
 			letter->stopAllActions();
 		}
 	}
-	
-	label->removeLetters();
 }
