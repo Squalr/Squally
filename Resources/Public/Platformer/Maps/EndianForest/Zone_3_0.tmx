@@ -209,7 +209,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="690" name="orc-warrior" type="entity" x="2569.21" y="2492.22" width="128" height="128">
+  <object id="690" name="orc-swordsman" type="entity" x="2569.21" y="2492.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -227,7 +227,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="orc-swordsman" type="entity" x="6019.4" y="671.911" width="128" height="128">
+  <object id="693" name="orc-warrior" type="entity" x="6019.4" y="671.911" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

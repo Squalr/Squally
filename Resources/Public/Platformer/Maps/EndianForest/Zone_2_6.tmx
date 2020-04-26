@@ -430,7 +430,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="947" name="orc-swordsman" type="entity" x="5024.73" y="5295.78" width="128" height="128">
+  <object id="947" name="orc-warrior" type="entity" x="5024.73" y="5295.78" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

@@ -17,6 +17,7 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -64,12 +65,21 @@ void WindSpellbook::onLoad(QuestState questState)
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
 			this->runCinematicSequence();
+
+			this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableTurnIn();
+			});
 		}
 	}, Marcel::MapKey);
 }
 
 void WindSpellbook::onActivate(bool isActiveThroughSkippable)
 {
+	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->enableTurnIn();
+	});
 }
 
 void WindSpellbook::onComplete()
@@ -84,6 +94,11 @@ void WindSpellbook::onComplete()
 		ItemResources::Spellbooks_SpellBookWind,
 		SoundResources::Notifications_NotificationGood1
 	));
+
+	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->disableTurnIn();
+	});
 }
 
 void WindSpellbook::onSkipped()

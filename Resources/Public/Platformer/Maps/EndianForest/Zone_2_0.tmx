@@ -294,7 +294,7 @@
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
-  <object id="813" name="orc-swordsman" type="entity" x="8812.66" y="1878.22" width="128" height="128">
+  <object id="813" name="orc-warrior" type="entity" x="8812.66" y="1878.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>

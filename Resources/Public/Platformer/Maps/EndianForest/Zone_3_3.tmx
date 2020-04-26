@@ -261,7 +261,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="792" name="orc-swordsman" type="entity" x="6912" y="2408" width="128" height="128">
+  <object id="792" name="orc-warrior" type="entity" x="6912" y="2408" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -271,7 +271,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="793" name="orc-warrior" type="entity" x="6744" y="2406" width="128" height="128">
+  <object id="793" name="orc-swordsman" type="entity" x="6744" y="2406" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
