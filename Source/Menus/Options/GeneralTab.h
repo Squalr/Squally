@@ -20,12 +20,13 @@ protected:
 	GeneralTab();
 	virtual ~GeneralTab();
 
-private:
-	typedef SmartNode super;
-
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
+	
 	void onSoundVolumeUpdate(float soundVolume);
 	void onMusicVolumeUpdate(float musicVolume);
 

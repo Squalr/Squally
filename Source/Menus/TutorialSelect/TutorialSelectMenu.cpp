@@ -17,6 +17,7 @@
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Menus/MenuBackground.h"
+#include "Menus/TutorialSelect/HomeTab.h"
 #include "Menus/TutorialSelect/MemoryEditingTab.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -53,12 +54,13 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->background = Node::create();
 	this->window = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_HackingTutorials::create());
-	this->disclaimer = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_HackingTutorials_Disclaimer::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Options_GeneralOptions::create());
-	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconLightbulb, Strings::Menus_Options_GeneralOptions::create());
+	this->homeTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Options_GeneralOptions::create());
+	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Options_GeneralOptions::create());
+	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconKey, Strings::Menus_Options_GeneralOptions::create());
 	this->pointersTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconShield, Strings::Menus_Options_GeneralOptions::create());
 	this->assemblyEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconTrophy, Strings::Menus_Options_GeneralOptions::create());
+	this->homeTab = HomeTab::create();
 	this->memoryEditingTab = MemoryEditingTab::create();
 	this->hexEditingTab = MemoryEditingTab::create();
 	this->pointersTab = MemoryEditingTab::create();
@@ -100,12 +102,13 @@ TutorialSelectMenu::TutorialSelectMenu()
 
 	this->title->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->title->enableGlow(Color4B::BLACK);
-	this->disclaimer->enableGlow(Color4B::BLACK);
 
+	this->leftPanel->addChild(this->homeTabButton);
 	this->leftPanel->addChild(this->memoryEditingTabButton);
 	this->leftPanel->addChild(this->hexEditingTabButton);
 	this->leftPanel->addChild(this->pointersTabButton);
 	this->leftPanel->addChild(this->assemblyEditingTabButton);
+	this->rightPanel->addChild(this->homeTab);
 	this->rightPanel->addChild(this->memoryEditingTab);
 	this->rightPanel->addChild(this->hexEditingTab);
 	this->rightPanel->addChild(this->pointersTab);
@@ -115,7 +118,6 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->addChild(this->leftPanel);
 	this->addChild(this->rightPanel);
 	this->addChild(this->title);
-	this->addChild(this->disclaimer);
 	this->addChild(this->closeButton);
 	this->addChild(this->cancelButton);
 	this->addChild(this->returnButton);
@@ -130,6 +132,7 @@ void TutorialSelectMenu::onEnter()
 	super::onEnter();
 
 	this->background->addChild(MenuBackground::claimInstance());
+	this->setActiveTab(Tab::Home);
 }
 
 void TutorialSelectMenu::initializePositions()
@@ -140,7 +143,6 @@ void TutorialSelectMenu::initializePositions()
 
 	this->window->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
-	this->disclaimer->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 480.0f - 56.0f));
 	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f + 192.0f));
 	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 192.0f, visibleSize.height / 2.0f + 0.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -149,10 +151,11 @@ void TutorialSelectMenu::initializePositions()
 	
 	const float spacing = -66.0f;
 
-	this->memoryEditingTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
-	this->hexEditingTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
-	this->pointersTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
-	this->assemblyEditingTabButton->setPosition(Vec2(0.0f, spacing * 3.0f));
+	this->homeTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
+	this->memoryEditingTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
+	this->hexEditingTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
+	this->pointersTabButton->setPosition(Vec2(0.0f, spacing * 3.0f));
+	this->assemblyEditingTabButton->setPosition(Vec2(0.0f, spacing * 4.0f));
 }
 
 void TutorialSelectMenu::initializeListeners()
@@ -170,6 +173,47 @@ void TutorialSelectMenu::initializeListeners()
 		
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
+}
+
+void TutorialSelectMenu::setActiveTab(Tab tab)
+{
+	this->activeTab = tab;
+
+	this->homeTab->setVisible(false);
+	this->memoryEditingTab->setVisible(false);
+	this->hexEditingTab->setVisible(false);
+	this->pointersTab->setVisible(false);
+	this->assemblyEditingTab->setVisible(false);
+
+	switch(this->activeTab)
+	{
+		default:
+		case Tab::Home:
+		{
+			this->homeTab->setVisible(true);
+			break;
+		}
+		case Tab::MemoryEditing:
+		{
+			this->memoryEditingTab->setVisible(true);
+			break;
+		}
+		case Tab::HexEditing:
+		{
+			this->hexEditingTab->setVisible(true);
+			break;
+		}
+		case Tab::Pointers:
+		{
+			this->pointersTab->setVisible(true);
+			break;
+		}
+		case Tab::AssemblyEditing:
+		{
+			this->assemblyEditingTab->setVisible(true);
+			break;
+		}
+	}
 }
 
 ClickableTextNode* TutorialSelectMenu::buildTabButton(std::string iconResource, LocalizedString* localizedString)

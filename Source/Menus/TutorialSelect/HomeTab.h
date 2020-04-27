@@ -11,14 +11,14 @@ class ClickableTextNode;
 class LocalizedLabel;
 class ScrollPane;
 
-class MemoryEditingTab : public SmartNode
+class HomeTab : public SmartNode
 {
 public:
-	static MemoryEditingTab* create();
+	static HomeTab* create();
 
 protected:
-	MemoryEditingTab();
-	virtual ~MemoryEditingTab();
+	HomeTab();
+	virtual ~HomeTab();
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -26,4 +26,6 @@ protected:
 
 private:
 	typedef SmartNode super;
+	
+	LocalizedLabel* disclaimer;
 };

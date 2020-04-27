@@ -13,13 +13,14 @@ public:
 protected:
 	LanguageTab();
 	virtual ~LanguageTab();
+	
+	void onEnter() override;
+	void initializeListeners() override;
+	void initializePositions() override;
 
 private:
 	typedef SmartNode super;
 
-	void onEnter() override;
-	void initializeListeners() override;
-	void initializePositions() override;
 	ClickableTextNode* constructLanguageButton(LocalizedString* string);
 
 	std::vector<ClickableTextNode*> languageButtons;

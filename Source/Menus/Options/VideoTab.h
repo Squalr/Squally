@@ -20,6 +20,10 @@ public:
 protected:
 	VideoTab();
 	virtual ~VideoTab();
+	
+	void onEnter() override;
+	void initializeListeners() override;
+	void initializePositions() override;
 
 private:
 	typedef SmartNode super;
@@ -30,9 +34,6 @@ private:
 		Video,
 	};
 
-	void onEnter() override;
-	void initializeListeners() override;
-	void initializePositions() override;
 	bool onFullScreenChanged(Checkbox* checkbox, bool isFullScreen);
 	void onResolutionChanged(RadioButton* radioButton);
 	void onGraphicsChanged(RadioButton* radioButton);

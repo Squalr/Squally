@@ -20,12 +20,12 @@ protected:
 	MemesTab();
 	virtual ~MemesTab();
 
-private:
-	typedef SmartNode super;
-
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
 
 	ScrollPane* contentScrollPane;
 	LocalizedLabel* developersTitle;

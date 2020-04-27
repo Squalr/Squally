@@ -29,7 +29,8 @@ public:
 
 protected:
 	PauseMenu(bool ownerInitialized = false);
-	~PauseMenu();
+	virtual ~PauseMenu();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
