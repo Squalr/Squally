@@ -1,5 +1,6 @@
 #include "TutorialSelectMenu.h"
 
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -15,6 +16,8 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Menus/MenuBackground.h"
+#include "Menus/TutorialSelect/MemoryEditingTab.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -47,28 +50,75 @@ TutorialSelectMenu* TutorialSelectMenu::getInstance()
 
 TutorialSelectMenu::TutorialSelectMenu()
 {
+	this->background = Node::create();
+	this->window = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_HackingTutorials::create());
 	this->disclaimer = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_HackingTutorials_Disclaimer::create());
-	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->chapterList = std::vector<ClickableTextNode*>();
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Options_GeneralOptions::create());
+	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconLightbulb, Strings::Menus_Options_GeneralOptions::create());
+	this->pointersTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconShield, Strings::Menus_Options_GeneralOptions::create());
+	this->assemblyEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconTrophy, Strings::Menus_Options_GeneralOptions::create());
+	this->memoryEditingTab = MemoryEditingTab::create();
+	this->hexEditingTab = MemoryEditingTab::create();
+	this->pointersTab = MemoryEditingTab::create();
+	this->assemblyEditingTab = MemoryEditingTab::create();
+	this->leftPanel = Node::create();
+	this->rightPanel = Node::create();
+
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
+
+	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableGlow(Color4B::BLACK);
+
+	cancelLabelHover->setColor(Color3B::YELLOW);
+	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->cancelButton = ClickableTextNode::create(
+		cancelLabel,
+		cancelLabelHover,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
+
+	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel*	returnLabelHover = returnLabel->clone();
+
+	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableGlow(Color4B::BLACK);
+
+	returnLabelHover->setColor(Color3B::YELLOW);
+	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->returnButton = ClickableTextNode::create(
+		returnLabel,
+		returnLabelHover,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->title->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->title->enableGlow(Color4B::BLACK);
 	this->disclaimer->enableGlow(Color4B::BLACK);
 
-	this->chapterList.push_back(this->buildTutorialButton("Tutorial I - Hex Editing", MapResources::Tutorials_UnknownValue1));
-	this->chapterList.push_back(this->buildTutorialButton("Tutorial II - Exact value Scans", MapResources::Tutorials_UnknownValue1));
-	this->chapterList.push_back(this->buildTutorialButton("Tutorial III - Unknown Value Scans Int32", MapResources::Tutorials_UnknownValue1));
-	this->chapterList.push_back(this->buildTutorialButton("Tutorial IV - Unknown Value Scans Float", MapResources::Tutorials_UnknownValue2));
-
-	for (auto next : this->chapterList)
-	{
-		this->scrollPane->addChild(next);
-	}
-
-	this->addChild(this->scrollPane);
+	this->leftPanel->addChild(this->memoryEditingTabButton);
+	this->leftPanel->addChild(this->hexEditingTabButton);
+	this->leftPanel->addChild(this->pointersTabButton);
+	this->leftPanel->addChild(this->assemblyEditingTabButton);
+	this->rightPanel->addChild(this->memoryEditingTab);
+	this->rightPanel->addChild(this->hexEditingTab);
+	this->rightPanel->addChild(this->pointersTab);
+	this->rightPanel->addChild(this->assemblyEditingTab);
+	this->addChild(this->background);
+	this->addChild(this->window);
+	this->addChild(this->leftPanel);
+	this->addChild(this->rightPanel);
 	this->addChild(this->title);
 	this->addChild(this->disclaimer);
+	this->addChild(this->closeButton);
+	this->addChild(this->cancelButton);
+	this->addChild(this->returnButton);
 }
 
 TutorialSelectMenu::~TutorialSelectMenu()
@@ -78,6 +128,8 @@ TutorialSelectMenu::~TutorialSelectMenu()
 void TutorialSelectMenu::onEnter()
 {
 	super::onEnter();
+
+	this->background->addChild(MenuBackground::claimInstance());
 }
 
 void TutorialSelectMenu::initializePositions()
@@ -86,15 +138,21 @@ void TutorialSelectMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->scrollPane->setPosition(Vec2(visibleSize / 2.0f));
-
-	for (int index = 0; index < int(this->chapterList.size()); index++)
-	{
-		this->chapterList[index]->setPosition(Vec2(0.0f, -128.0f - float(index) * 180.0f));
-	}
-
-	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 480.0f));
+	this->window->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
 	this->disclaimer->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 480.0f - 56.0f));
+	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f + 192.0f));
+	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 192.0f, visibleSize.height / 2.0f + 0.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 420.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 420.0f));
+	
+	const float spacing = -66.0f;
+
+	this->memoryEditingTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
+	this->hexEditingTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
+	this->pointersTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
+	this->assemblyEditingTabButton->setPosition(Vec2(0.0f, spacing * 3.0f));
 }
 
 void TutorialSelectMenu::initializeListeners()
@@ -114,34 +172,18 @@ void TutorialSelectMenu::initializeListeners()
 	});
 }
 
-ClickableTextNode* TutorialSelectMenu::buildTutorialButton(std::string displayName, std::string mapResource)
+ClickableTextNode* TutorialSelectMenu::buildTabButton(std::string iconResource, LocalizedString* localizedString)
 {
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, ConstantString::create(displayName));
-	LocalizedLabel* labelSelected = label->clone();
+	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedString);
+	LocalizedLabel*	labelHover = label->clone();
 
-	label->enableOutline(Color4B::BLACK, 2);
-	labelSelected->enableOutline(Color4B::BLACK, 2);
-	
-	ClickableTextNode* clickableTextNode = ClickableTextNode::create(label, labelSelected, UIResources::Menus_MinigamesMenu_Banner, UIResources::Menus_MinigamesMenu_BannerHover);
+	ClickableTextNode* button = ClickableTextNode::create(label, labelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	button->setTextOffset(Vec2(32.0f, 0.0f));
 
-	clickableTextNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
-	{
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
-		{
-			const int UNUSED_SAVE_PROFILE = 99;
+	Sprite* icon = Sprite::create(iconResource);
+	icon->setPosition(Vec2(-122.0f, 0.0f));
 
-			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
-			PlatformerMap* map = PlatformerMap::create(mapResource);
+	button->addChild(icon);
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
-
-			return map;
-		}));
-	});
-
-	return clickableTextNode;
+	return button;
 }
