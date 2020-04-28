@@ -41,13 +41,13 @@ private:
 	};
 	
 	void setActiveTab(Tab tab);
+	void onReturnClick();
 	ClickableTextNode* buildTabButton(std::string iconResource, LocalizedString* localizedString);
 
 	cocos2d::Node* background;
 	cocos2d::Sprite* window;
 	LocalizedLabel* title;
 	ClickableNode* closeButton;
-	ClickableTextNode* cancelButton;
 	ClickableTextNode* returnButton;
 	cocos2d::Node* leftPanel;
 	cocos2d::Node* rightPanel;

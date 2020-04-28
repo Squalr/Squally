@@ -143,6 +143,7 @@ void DeveloperScene::initializeListeners()
 		{
 			return;
 		}
+		
 		args->handle();
 		
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));

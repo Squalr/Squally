@@ -164,12 +164,12 @@ void OptionsMenu::initializePositions()
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 420.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 420.0f));
 
-	const float spacing = -66.0f;
+	const float Spacing = -66.0f;
 
-	this->generalTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
-	this->videoTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
-	this->languageTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
-	this->memesTabButton->setPosition(Vec2(0.0f, spacing * 3.0f));
+	this->generalTabButton->setPosition(Vec2(0.0f, Spacing * 0.0f));
+	this->videoTabButton->setPosition(Vec2(0.0f, Spacing * 1.0f));
+	this->languageTabButton->setPosition(Vec2(0.0f, Spacing * 2.0f));
+	this->memesTabButton->setPosition(Vec2(0.0f, Spacing * 3.0f));
 }
 
 void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)

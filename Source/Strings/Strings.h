@@ -7869,21 +7869,6 @@ namespace Strings
 		virtual ~Menus_HackingTutorials() = default;
 	};
 
-	class Menus_HackingTutorials_Disclaimer : public LocalizedString
-	{
-	public:
-		static Menus_HackingTutorials_Disclaimer* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_HackingTutorials_Disclaimer();
-		virtual ~Menus_HackingTutorials_Disclaimer() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_Enrage_Enrage : public LocalizedString
 	{
 	public:
@@ -18622,6 +18607,96 @@ namespace Strings
 	private:
 		Menus_Tutorials();
 		virtual ~Menus_Tutorials() = default;
+	};
+
+	class Menus_Tutorials_AssemblyEditing_AssemblyEditing : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_AssemblyEditing_AssemblyEditing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_AssemblyEditing_AssemblyEditing();
+		virtual ~Menus_Tutorials_AssemblyEditing_AssemblyEditing() = default;
+	};
+
+	class Menus_Tutorials_HexEditing_HexEditing : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_HexEditing_HexEditing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_HexEditing_HexEditing();
+		virtual ~Menus_Tutorials_HexEditing_HexEditing() = default;
+	};
+
+	class Menus_Tutorials_Home_Disclaimer : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_Home_Disclaimer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_Home_Disclaimer();
+		virtual ~Menus_Tutorials_Home_Disclaimer() = default;
+	};
+
+	class Menus_Tutorials_Home_Home : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_Home_Home* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_Home_Home();
+		virtual ~Menus_Tutorials_Home_Home() = default;
+	};
+
+	class Menus_Tutorials_MemoryEditing_MemoryEditing : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_MemoryEditing_MemoryEditing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_MemoryEditing_MemoryEditing();
+		virtual ~Menus_Tutorials_MemoryEditing_MemoryEditing() = default;
+	};
+
+	class Menus_Tutorials_Pointers_Pointers : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_Pointers_Pointers* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_Pointers_Pointers();
+		virtual ~Menus_Tutorials_Pointers_Pointers() = default;
 	};
 
 	class Platformer_Combat_Attack : public LocalizedString

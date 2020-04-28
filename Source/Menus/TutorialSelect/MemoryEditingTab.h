@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Menus/TutorialSelect/TutorialTabBase.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ class ClickableTextNode;
 class LocalizedLabel;
 class ScrollPane;
 
-class MemoryEditingTab : public SmartNode
+class MemoryEditingTab : public TutorialTabBase
 {
 public:
 	static MemoryEditingTab* create();
@@ -25,5 +25,5 @@ protected:
 	void initializePositions() override;
 
 private:
-	typedef SmartNode super;
+	typedef TutorialTabBase super;
 };

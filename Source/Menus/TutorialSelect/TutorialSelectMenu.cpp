@@ -53,13 +53,13 @@ TutorialSelectMenu::TutorialSelectMenu()
 {
 	this->background = Node::create();
 	this->window = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_HackingTutorials::create());
+	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_HackingTutorials::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->homeTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Options_GeneralOptions::create());
-	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Options_GeneralOptions::create());
-	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconKey, Strings::Menus_Options_GeneralOptions::create());
-	this->pointersTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconShield, Strings::Menus_Options_GeneralOptions::create());
-	this->assemblyEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconTrophy, Strings::Menus_Options_GeneralOptions::create());
+	this->homeTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Tutorials_Home_Home::create());
+	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Tutorials_MemoryEditing_MemoryEditing::create());
+	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconKey, Strings::Menus_Tutorials_HexEditing_HexEditing::create());
+	this->pointersTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconShield, Strings::Menus_Tutorials_Pointers_Pointers::create());
+	this->assemblyEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconTrophy, Strings::Menus_Tutorials_AssemblyEditing_AssemblyEditing::create());
 	this->homeTab = HomeTab::create();
 	this->memoryEditingTab = MemoryEditingTab::create();
 	this->hexEditingTab = MemoryEditingTab::create();
@@ -67,22 +67,6 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->assemblyEditingTab = MemoryEditingTab::create();
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
-
-	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
-	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
-
-	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
-	cancelLabel->enableGlow(Color4B::BLACK);
-
-	cancelLabelHover->setColor(Color3B::YELLOW);
-	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
-	cancelLabelHover->enableGlow(Color4B::ORANGE);
-
-	this->cancelButton = ClickableTextNode::create(
-		cancelLabel,
-		cancelLabelHover,
-		UIResources::Menus_Buttons_WoodButton,
-		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -119,7 +103,6 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->addChild(this->rightPanel);
 	this->addChild(this->title);
 	this->addChild(this->closeButton);
-	this->addChild(this->cancelButton);
 	this->addChild(this->returnButton);
 }
 
@@ -146,22 +129,27 @@ void TutorialSelectMenu::initializePositions()
 	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f + 192.0f));
 	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 192.0f, visibleSize.height / 2.0f + 0.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 420.0f));
-	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 420.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
 	
-	const float spacing = -66.0f;
+	const float Spacing = -66.0f;
 
-	this->homeTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
-	this->memoryEditingTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
-	this->hexEditingTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
-	this->pointersTabButton->setPosition(Vec2(0.0f, spacing * 3.0f));
-	this->assemblyEditingTabButton->setPosition(Vec2(0.0f, spacing * 4.0f));
+	this->homeTabButton->setPosition(Vec2(0.0f, Spacing * 0.0f));
+	this->memoryEditingTabButton->setPosition(Vec2(0.0f, Spacing * 1.0f));
+	this->hexEditingTabButton->setPosition(Vec2(0.0f, Spacing * 2.0f));
+	this->pointersTabButton->setPosition(Vec2(0.0f, Spacing * 3.0f));
+	this->assemblyEditingTabButton->setPosition(Vec2(0.0f, Spacing * 4.0f));
 }
 
 void TutorialSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onReturnClick();  });
+	this->homeTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Home); });
+	this->memoryEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::MemoryEditing); });
+	this->hexEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::HexEditing); });
+	this->pointersTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Pointers); });
+	this->assemblyEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::AssemblyEditing); });
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -169,6 +157,7 @@ void TutorialSelectMenu::initializeListeners()
 		{
 			return;
 		}
+
 		args->handle();
 		
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
@@ -214,6 +203,11 @@ void TutorialSelectMenu::setActiveTab(Tab tab)
 			break;
 		}
 	}
+}
+
+void TutorialSelectMenu::onReturnClick()
+{
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 }
 
 ClickableTextNode* TutorialSelectMenu::buildTabButton(std::string iconResource, LocalizedString* localizedString)

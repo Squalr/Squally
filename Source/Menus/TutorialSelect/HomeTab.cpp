@@ -25,7 +25,7 @@ HomeTab* HomeTab::create()
 
 HomeTab::HomeTab()
 {
-	this->disclaimer = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_HackingTutorials_Disclaimer::create(), Size(768.0f, 0.0f));
+	this->disclaimer = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Tutorials_Home_Disclaimer::create(), Size(640.0f, 0.0f));
 
 	this->disclaimer->enableOutline(Color4B::BLACK, 2);
 
