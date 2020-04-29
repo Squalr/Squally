@@ -47,7 +47,14 @@ void TutorialEntry::onEnter()
 {
 	super::onEnter();
 
-	this->lockIcon->setVisible(this->prereq != nullptr && !this->prereq->isComplete());
+	bool unlocked = this->prereq == nullptr || this->prereq->isComplete();
+
+	if (!unlocked)
+	{
+		this->frame->disableInteraction(255);
+	}
+	
+	this->lockIcon->setVisible(!unlocked);
 	this->completeIcon->setVisible(this->isComplete());
 }
 
@@ -60,7 +67,7 @@ void TutorialEntry::initializePositions()
 {
 	super::initializePositions();
 
-	this->back->setPosition(Vec2(8.0f, -4.0f));
+	this->back->setPosition(Vec2(6.0f, -4.0f));
 }
 
 bool TutorialEntry::isComplete()

@@ -28,6 +28,11 @@ protected:
 private:
 	typedef TutorialTabBase super;
 
+	void loadKnownValueIntTutorial();
+	void loadKnownValueFloatTutorial();
+	void loadUnknownValueIntTutorial();
+	void loadUnknownValueFloatTutorial();
+
 	TutorialEntry* knownValueInt;
 	TutorialEntry* knownValueFloat;
 	TutorialEntry* unknownValueInt;

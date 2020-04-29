@@ -75,9 +75,11 @@ namespace MapResources
 	extern const std::string SeaSharpCaverns_Caverns;
 	extern const std::string SeaSharpCaverns_Zone_x_y;
 	extern const std::string TileMap;
-	extern const std::string Tutorials_Terrain;
-	extern const std::string Tutorials_UnknownValue1;
-	extern const std::string Tutorials_UnknownValue2;
+	extern const std::string Tutorials_KnownValueDouble;
+	extern const std::string Tutorials_KnownValueFloat;
+	extern const std::string Tutorials_KnownValueInt32;
+	extern const std::string Tutorials_UnknownValueFloat;
+	extern const std::string Tutorials_UnknownValueInt32;
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string VoidStar_VoidStar;
 };

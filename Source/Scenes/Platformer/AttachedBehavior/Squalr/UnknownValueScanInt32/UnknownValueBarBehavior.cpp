@@ -83,6 +83,8 @@ void UnknownValueBarBehavior::onLoad()
 	this->spellAura->setPosition(entityCenter + Vec2(0.0f, 32.0f));
 	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
 	this->healthBar->setPosition(entityCenter + Vec2(0.0f, offetY));
+
+	this->scheduleUpdate();
 }
 
 void UnknownValueBarBehavior::onDisable()

@@ -4,16 +4,16 @@
 
 class Projectile;
 
-class FireLauncherSqualr : public PivotLauncher
+class DartTripodLauncherSqualr : public PivotLauncher
 {
 public:
-	static FireLauncherSqualr* create(cocos2d::ValueMap& properties);
+	static DartTripodLauncherSqualr* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
 
 protected:
-	FireLauncherSqualr(cocos2d::ValueMap& properties);
-	virtual ~FireLauncherSqualr();
+	DartTripodLauncherSqualr(cocos2d::ValueMap& properties);
+	virtual ~DartTripodLauncherSqualr();
 
 	void initializePositions() override;
 	Projectile* createProjectile() override;

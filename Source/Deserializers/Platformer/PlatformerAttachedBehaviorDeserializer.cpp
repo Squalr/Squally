@@ -141,6 +141,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 		Squalr
 	*********************/
 
+	this->attachedBehaviorDeserializers[KnownValueBarBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)KnownValueBarBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[UnknownValueBarBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)UnknownValueBarBehavior::create(owner); };
 }
 

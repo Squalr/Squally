@@ -174,6 +174,11 @@ bool PivotLauncher::rangeCheck()
 
 void PivotLauncher::shoot()
 {
+	if (this->target == nullptr)
+	{
+		return;
+	}
+	
 	Projectile* projectile = this->projectilePool->getNextProjectile();
 
 	projectile->launchTowardsTarget(this->target, this->target->getEntityCenterPoint(), 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));

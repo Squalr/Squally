@@ -168,15 +168,13 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
-			PlatformerMap* map = PlatformerMap::create(mapResource);
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
-			return map;
+			return PlatformerMap::create(mapResource);
 		}));
 	});
 

@@ -1,4 +1,4 @@
-#include "FireLauncherSqualr.h"
+#include "DartTripodLauncherSqualr.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -15,9 +15,8 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/SqualrEvents.h"
-#include "Objects/Platformer/Projectiles/Enemy/OverworldFireball.h"
+#include "Objects/Platformer/Projectiles/Dart/Dart.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
-#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -27,47 +26,47 @@
 
 using namespace cocos2d;
 
-const std::string FireLauncherSqualr::MapKey = "fire-launcher-squalr";
+const std::string DartTripodLauncherSqualr::MapKey = "dart-tripod-launcher-squalr";
 
-FireLauncherSqualr* FireLauncherSqualr::create(ValueMap& properties)
+DartTripodLauncherSqualr* DartTripodLauncherSqualr::create(ValueMap& properties)
 {
-	FireLauncherSqualr* instance = new FireLauncherSqualr(properties);
+	DartTripodLauncherSqualr* instance = new DartTripodLauncherSqualr(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FireLauncherSqualr::FireLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations, 4)
+DartTripodLauncherSqualr::DartTripodLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, 4)
 {
 	this->setAutoLaunch(false);
 	this->toggleHackable(false);
 }
 
-FireLauncherSqualr::~FireLauncherSqualr()
+DartTripodLauncherSqualr::~DartTripodLauncherSqualr()
 {
 }
 
-void FireLauncherSqualr::initializePositions()
+void DartTripodLauncherSqualr::initializePositions()
 {
 	super::initializePositions();
 
 	this->projectilePool->setPosition(Vec2(0.0f, 112.0f));
 }
 
-Projectile* FireLauncherSqualr::createProjectile()
+Projectile* DartTripodLauncherSqualr::createProjectile()
 {
-	OverworldFireball* fireball = OverworldFireball::create();
+	Dart* dart = Dart::create(this->currentAngle, this->launchSpeed);
 	
-	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	dart->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{
-		fireball->disable(false);
-		fireball->runImpactFX();
+		dart->disable(false);
+		dart->runImpactFX();
 
-		SqualrEvents::TriggerFireballCollided();
+		SqualrEvents::TriggerDartCollided();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	return fireball;
+	return dart;
 }

@@ -102,6 +102,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[DarkPortal::MapKey] = [=](ValueMap properties) { return (GameObject*)DarkPortal::create(properties); };
 	this->deserializers[DartLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)DartLauncher::create(properties); };
 	this->deserializers[DartTripodLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncher::create(properties); };
+	this->deserializers[DartTripodLauncherSqualr::MapKey] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncherSqualr::create(properties); };
 	this->deserializers[EdgePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)EdgePortal::create(properties); };
 	this->deserializers[FireplaceFire::MapKey] = [=](ValueMap properties) { return (GameObject*)FireplaceFire::create(properties); };
 	this->deserializers[FirePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)FirePortal::create(properties); };

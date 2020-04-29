@@ -76,6 +76,7 @@
 #include "Objects/Platformer/Traps/Laser/Laser.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncher.h"
 #include "Objects/Platformer/Traps/Launchers/DartTripodLauncher/DartTripodLauncher.h"
+#include "Objects/Platformer/Traps/Launchers/DartTripodLauncher/DartTripodLauncherSqualr.h"
 #include "Objects/Platformer/Traps/Launchers/FireLauncher/FireLauncher.h"
 #include "Objects/Platformer/Traps/Launchers/FireLauncher/FireLauncherSqualr.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h"
