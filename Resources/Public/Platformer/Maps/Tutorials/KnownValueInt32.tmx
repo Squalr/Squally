@@ -26,7 +26,7 @@
   </properties>
   <object id="894" name="king-zul" type="entity" x="1231.64" y="920" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,face-squally,squalr-unknown-int"/>
+    <property name="attached-behavior" value="enemy,face-squally,squalr-known-int"/>
    </properties>
   </object>
  </objectgroup>
@@ -43,7 +43,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="dart-pivot-lancher-squalr" type="object" x="302.424" y="1188.97" width="128" height="128">
+  <object id="896" name="dart-tripod-launcher-squalr" type="object" x="302.424" y="1188.97" width="128" height="128">
    <properties>
     <property name="listen-event" value="launch"/>
     <property name="pivot-target" value="king-zul"/>

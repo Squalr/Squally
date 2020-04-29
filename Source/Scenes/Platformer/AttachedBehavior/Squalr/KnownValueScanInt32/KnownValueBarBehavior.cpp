@@ -24,7 +24,7 @@
 using namespace cocos2d;
 
 int KnownValueBarBehavior::Health = 0;
-const int KnownValueBarBehavior::MaxHealth = 58;
+const int KnownValueBarBehavior::MaxHealth = 100;
 
 const std::string KnownValueBarBehavior::MapKey = "squalr-known-int";
 
@@ -41,12 +41,16 @@ KnownValueBarBehavior::KnownValueBarBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
-	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
-	this->healthString = ConstantString::create("+0");
-	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
+	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->deltaString);
+	this->healthString = ConstantString::create("-");
+	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_XOverY::create()
+		->setStringReplacementVariables({ this->healthString, ConstantString::create(std::to_string(KnownValueBarBehavior::MaxHealth)) }));
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
+
+	this->healthLabel->setTextColor(Color4B::WHITE);
+	this->healthLabel->enableOutline(Color4B::BLACK, 3);
 
 	// Gain text
 	this->deltaLabel->setTextColor(Color4B::RED);
@@ -73,19 +77,19 @@ KnownValueBarBehavior::~KnownValueBarBehavior()
 
 void KnownValueBarBehavior::onLoad()
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventFireballCollided, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventDartCollided, [=](EventCustom* eventCustom)
 	{
-		this->addHealth(-RandomHelper::random_int(6, 9));
+		this->addHealth(-RandomHelper::random_int(13, 17));
 	}));
 
 	this->deltaLabel->setOpacity(0);
 
 	const Vec2 entityCenter = this->entity->getEntityCenterPoint();
-	const float offetY =  this->entity->getEntitySize().height / 2.0f + 96.0f;
+	const float offetY =  this->entity->getEntitySize().height / 2.0f + 24.0f;
 
 	this->spellAura->setPosition(entityCenter + Vec2(0.0f, 32.0f));
 	this->healthLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
-	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
+	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f + 24.0f));
 	this->healthBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 
 	this->scheduleUpdate();
@@ -101,6 +105,7 @@ void KnownValueBarBehavior::update(float dt)
 	super::update(dt);
 
 	this->healthBar->setProgress(float(KnownValueBarBehavior::Health) / float(KnownValueBarBehavior::MaxHealth));
+	this->healthString->setString(std::to_string(KnownValueBarBehavior::Health));
 
 	if (KnownValueBarBehavior::Health <= 0)
 	{
