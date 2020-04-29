@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
 class ClickableTextNode;
 class LocalizedLabel;
 class ScrollPane;
@@ -14,10 +15,13 @@ class ScrollPane;
 class TutorialEntry : public SmartNode
 {
 public:
-	static TutorialEntry* create();
+	static TutorialEntry* create(std::string saveKey, TutorialEntry* prereq = nullptr);
+
+	bool isComplete();
+	void setClickCallback(std::function<void()> clickCallback);
 
 protected:
-	TutorialEntry();
+	TutorialEntry(std::string saveKey, TutorialEntry* prereq);
 	virtual ~TutorialEntry();
 
 	void onEnter() override;
@@ -28,7 +32,10 @@ private:
 	typedef SmartNode super;
 
 	cocos2d::Sprite* back;
-	cocos2d::Sprite* frame;
+	ClickableNode* frame;
 	cocos2d::Sprite* lockIcon;
 	cocos2d::Sprite* completeIcon;
+	
+	TutorialEntry* prereq;
+	std::string saveKey;
 };

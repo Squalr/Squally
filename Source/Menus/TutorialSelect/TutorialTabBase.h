@@ -23,7 +23,7 @@ protected:
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	TutorialEntry* createEntry();
+	TutorialEntry* createEntry(std::string saveKey, TutorialEntry* prereq = nullptr);
 
 private:
 	typedef SmartNode super;

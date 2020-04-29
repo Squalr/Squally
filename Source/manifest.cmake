@@ -1858,6 +1858,7 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/PointerTrace/RegisterState.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Title/TitleScreen.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Title/TitleScreenBackground.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Scenes/Tutorials/Save/TutorialSaveKeys.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Strings.cpp"
 )
 
@@ -3774,6 +3775,7 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/PointerTrace/RegisterState.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Title/TitleScreen.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Title/TitleScreenBackground.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Scenes/Tutorials/Save/TutorialSaveKeys.h"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Strings.h"
 )
 

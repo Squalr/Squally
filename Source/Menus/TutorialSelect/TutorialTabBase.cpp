@@ -18,12 +18,10 @@ using namespace cocos2d;
 
 TutorialTabBase::TutorialTabBase()
 {
-	this->description = Strings::Common_Constant::create();
+	this->description = Strings::Common_Empty::create();
 	this->descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->description, Size(640.0f, 0.0f));
 	this->entryNode = Node::create();
 	this->entries = std::vector<TutorialEntry*>();
-
-	this->createEntry();
 
 	this->descriptionLabel->enableOutline(Color4B::BLACK, 2);
 
@@ -50,11 +48,24 @@ void TutorialTabBase::initializePositions()
 	super::initializePositions();
 
 	this->descriptionLabel->setPosition(Vec2(0.0f, 144.0f));
+	this->entryNode->setPosition(Vec2(0.0f, -48.0f + 0.0f));
+
+	const float SpacingX = 256.0f;
+	const float SpacingY = 212.0f;
+	
+	for (int index = 0; index < int(this->entries.size()); index++)
+	{
+		TutorialEntry* next = this->entries[index];
+		int xIndex = index % 3;
+		int yIndex = index / 3;
+
+		next->setPosition(Vec2(float(xIndex - 1) * SpacingX, -float(yIndex - 1) * SpacingY));
+	}
 }
 
-TutorialEntry* TutorialTabBase::createEntry()
+TutorialEntry* TutorialTabBase::createEntry(std::string saveKey, TutorialEntry* prereq)
 {
-	TutorialEntry* entry = TutorialEntry::create();
+	TutorialEntry* entry = TutorialEntry::create(saveKey, prereq);
 
 	this->entryNode->addChild(entry);
 	this->entries.push_back(entry);

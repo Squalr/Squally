@@ -10,6 +10,7 @@ namespace cocos2d
 class ClickableTextNode;
 class LocalizedLabel;
 class ScrollPane;
+class TutorialEntry;
 
 class MemoryEditingTab : public TutorialTabBase
 {
@@ -26,4 +27,10 @@ protected:
 
 private:
 	typedef TutorialTabBase super;
+
+	TutorialEntry* knownValueInt;
+	TutorialEntry* knownValueFloat;
+	TutorialEntry* unknownValueInt;
+	TutorialEntry* unknownValueFloat;
+	TutorialEntry* knownValueDouble;
 };
