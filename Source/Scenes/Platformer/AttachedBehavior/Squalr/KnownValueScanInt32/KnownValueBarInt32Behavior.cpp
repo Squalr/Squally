@@ -81,7 +81,7 @@ KnownValueBarInt32Behavior::~KnownValueBarInt32Behavior()
 
 void KnownValueBarInt32Behavior::onLoad()
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventDartCollided, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventProjectileCollided, [=](EventCustom* eventCustom)
 	{
 		this->addHealth(-RandomHelper::random_int(13, 17));
 	}));

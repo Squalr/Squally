@@ -74,7 +74,7 @@ UnknownValueBarInt32Behavior::~UnknownValueBarInt32Behavior()
 
 void UnknownValueBarInt32Behavior::onLoad()
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventFireballCollided, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventProjectileCollided, [=](EventCustom* eventCustom)
 	{
 		this->addHealth(-RandomHelper::random_int(6, 9));
 	}));

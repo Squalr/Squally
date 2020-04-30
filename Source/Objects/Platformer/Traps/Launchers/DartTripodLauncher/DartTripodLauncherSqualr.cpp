@@ -63,7 +63,7 @@ Projectile* DartTripodLauncherSqualr::createProjectile()
 		dart->disable(true);
 		dart->runImpactFX();
 
-		SqualrEvents::TriggerDartCollided();
+		SqualrEvents::TriggerProjectileCollided();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

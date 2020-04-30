@@ -64,7 +64,7 @@ Projectile* FireLauncherSqualr::createProjectile()
 		fireball->disable(true);
 		fireball->runImpactFX();
 
-		SqualrEvents::TriggerFireballCollided();
+		SqualrEvents::TriggerProjectileCollided();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

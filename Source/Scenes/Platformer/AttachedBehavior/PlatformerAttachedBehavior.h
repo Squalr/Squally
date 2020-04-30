@@ -43,4 +43,5 @@
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanFloat/KnownValueBarFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanInt32/KnownValueBarInt32Behavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Squalr/UnknownValueScanFloat/UnknownValueBarFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/UnknownValueScanInt32/UnknownValueBarInt32Behavior.h"

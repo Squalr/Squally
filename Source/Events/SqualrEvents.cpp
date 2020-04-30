@@ -5,19 +5,11 @@
 
 using namespace cocos2d;
 
-const std::string SqualrEvents::EventDartCollided = "EVENT_SQUALR_DART_COLLIDED";
-const std::string SqualrEvents::EventFireballCollided = "EVENT_SQUALR_FIREBALL_COLLIDED";
+const std::string SqualrEvents::EventProjectileCollided = "EVENT_SQUALR_PROJECTILE_COLLIDED";
 
-void SqualrEvents::TriggerDartCollided()
+void SqualrEvents::TriggerProjectileCollided()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SqualrEvents::EventDartCollided
-	);
-}
-
-void SqualrEvents::TriggerFireballCollided()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SqualrEvents::EventFireballCollided
+		SqualrEvents::EventProjectileCollided
 	);
 }

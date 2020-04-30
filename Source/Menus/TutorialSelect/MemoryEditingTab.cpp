@@ -53,7 +53,7 @@ MemoryEditingTab::MemoryEditingTab()
 	this->lazarus = this->unknownValueInt->addEntity(Lazarus::deserialize(ValueMap()), Vec2(-8.0f, -24.0f));
 	this->asmodeus = this->unknownValueFloat->addEntity(Asmodeus::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
 	this->cryogen = this->knownValueDouble->addEntity(Cryogen::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
-	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
+	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(ValueMap()), Vec2(-56.0f, 16.0f));
 }
 
 MemoryEditingTab::~MemoryEditingTab()
