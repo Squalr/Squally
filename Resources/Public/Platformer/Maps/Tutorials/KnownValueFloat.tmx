@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="59" nextobjectid="899">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="903">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="WaterfallSky"/>
+   <property name="background" value="Crypt3"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="bg">
+ <objectgroup id="57" name="terrain bg">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="898" name="lava" type="texture" x="-496" y="-592">
-   <polygon points="-174.956,173.934 4122.4,179.332 4118.18,4314.77 -178.711,4322.57"/>
+  <object id="895" name="castle" type="terrain" x="-231.722" y="999.21">
+   <polygon points="-111.012,48.1572 2615.72,49.6516 2613.04,1194.63 -113.395,1196.79"/>
   </object>
  </objectgroup>
- <objectgroup id="57" name="terrain bg">
+ <objectgroup id="24" name="entities bg">
   <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="lava" type="terrain" x="2432.27" y="368">
+  <object id="894" name="agnes" type="entity" x="1231.64" y="920" width="128" height="128">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="attached-behavior" value="enemy,face-squally,squalr-known-float"/>
    </properties>
-   <polygon points="-35.0275,110.878 825.336,114.319 824.491,2750.54 -35.7792,2755.51"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="891" name="lava" type="terrain" x="-56.3218" y="2437.32">
-   <polygon points="-145.669,30.0453 3432.32,30.9777 3428.8,745.33 -148.795,746.678"/>
-  </object>
-  <object id="894" name="lava" type="terrain" x="2294.72" y="-148.764">
-   <polygon points="-11.2722,144.922 265.601,149.419 265.329,3595.05 -11.5141,3601.55"/>
+  <object id="891" name="castle" type="terrain" x="-37.3395" y="1267.21">
+   <polygon points="-93.765,48.1572 2209.34,49.6516 2207.07,1194.63 -95.7775,1196.79"/>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -45,25 +43,30 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="Generic/WoodCaveDoor1" type="decor" x="2626" y="2066.5" width="388" height="403">
+  <object id="896" name="dart-tripod-launcher-squalr" type="object" x="302.424" y="1188.97" width="128" height="128">
    <properties>
-    <property name="map" value="EndianForest/Zone_2_6"/>
-    <property name="transition" value="entrance-D"/>
+    <property name="listen-event" value="launch"/>
+    <property name="pivot-target" value="agnes"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="24" name="entities">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
+  <object id="897" name="camera-stop" type="object" x="-572" y="1488" width="3168" height="1008">
+   <properties>
+    <property name="no-x" type="bool" value="true"/>
+    <property name="soft" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="899" name="lever" type="object" x="630.909" y="1112.55" width="177" height="205">
+   <properties>
+    <property name="send-event" value="launch"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="881.14" y="2340.19" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="951.322" y="1185.16" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

@@ -1,4 +1,4 @@
-#include "KnownValueBarBehavior.h"
+#include "KnownValueBarInt32Behavior.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -9,11 +9,15 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Events/SqualrEvents.h"
+#include "Menus/TutorialSelect/TutorialSelectMenu.h"
+#include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -23,28 +27,28 @@
 
 using namespace cocos2d;
 
-int KnownValueBarBehavior::Health = 0;
-const int KnownValueBarBehavior::MaxHealth = 100;
+int KnownValueBarInt32Behavior::Health = 0;
+const int KnownValueBarInt32Behavior::MaxHealth = 100;
 
-const std::string KnownValueBarBehavior::MapKey = "squalr-known-int";
+const std::string KnownValueBarInt32Behavior::MapKey = "squalr-known-int";
 
-KnownValueBarBehavior* KnownValueBarBehavior::create(GameObject* owner)
+KnownValueBarInt32Behavior* KnownValueBarInt32Behavior::create(GameObject* owner)
 {
-	KnownValueBarBehavior* instance = new KnownValueBarBehavior(owner);
+	KnownValueBarInt32Behavior* instance = new KnownValueBarInt32Behavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-KnownValueBarBehavior::KnownValueBarBehavior(GameObject* owner) : super(owner)
+KnownValueBarInt32Behavior::KnownValueBarInt32Behavior(GameObject* owner) : super(owner)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->deltaString);
 	this->healthString = ConstantString::create("-");
-	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_XOverY::create()
-		->setStringReplacementVariables({ this->healthString, ConstantString::create(std::to_string(KnownValueBarBehavior::MaxHealth)) }));
+	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_XOverY::create()
+		->setStringReplacementVariables({ this->healthString, ConstantString::create(std::to_string(KnownValueBarInt32Behavior::MaxHealth)) }));
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
@@ -57,7 +61,7 @@ KnownValueBarBehavior::KnownValueBarBehavior(GameObject* owner) : super(owner)
 	this->deltaLabel->enableOutline(Color4B::BLACK, 3);
 	this->spellAura->setOpacity(0);
 
-	this->setHealth(KnownValueBarBehavior::MaxHealth);
+	this->setHealth(KnownValueBarInt32Behavior::MaxHealth);
 
 	if (this->entity == nullptr)
 	{
@@ -71,11 +75,11 @@ KnownValueBarBehavior::KnownValueBarBehavior(GameObject* owner) : super(owner)
 	this->addChild(this->healSound);
 }
 
-KnownValueBarBehavior::~KnownValueBarBehavior()
+KnownValueBarInt32Behavior::~KnownValueBarInt32Behavior()
 {
 }
 
-void KnownValueBarBehavior::onLoad()
+void KnownValueBarInt32Behavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventDartCollided, [=](EventCustom* eventCustom)
 	{
@@ -88,34 +92,34 @@ void KnownValueBarBehavior::onLoad()
 	const float offetY =  this->entity->getEntitySize().height / 2.0f + 24.0f;
 
 	this->spellAura->setPosition(entityCenter + Vec2(0.0f, 32.0f));
-	this->healthLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
+	this->healthLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 24.0f));
 	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f + 24.0f));
 	this->healthBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 
 	this->scheduleUpdate();
 }
 
-void KnownValueBarBehavior::onDisable()
+void KnownValueBarInt32Behavior::onDisable()
 {
 	super::onDisable();
 }
 
-void KnownValueBarBehavior::update(float dt)
+void KnownValueBarInt32Behavior::update(float dt)
 {
 	super::update(dt);
 
-	this->healthBar->setProgress(float(KnownValueBarBehavior::Health) / float(KnownValueBarBehavior::MaxHealth));
-	this->healthString->setString(std::to_string(KnownValueBarBehavior::Health));
+	this->healthBar->setProgress(float(KnownValueBarInt32Behavior::Health) / float(KnownValueBarInt32Behavior::MaxHealth));
+	this->healthString->setString(std::to_string(KnownValueBarInt32Behavior::Health));
 
-	if (KnownValueBarBehavior::Health <= 0)
+	if (KnownValueBarInt32Behavior::Health <= 0)
 	{
 		this->onDeath();
 	}
 }
 
-void KnownValueBarBehavior::addHealth(int delta)
+void KnownValueBarInt32Behavior::addHealth(int delta)
 {
-	if (KnownValueBarBehavior::Health <= 0)
+	if (KnownValueBarInt32Behavior::Health <= 0)
 	{
 		return;
 	}
@@ -129,16 +133,16 @@ void KnownValueBarBehavior::addHealth(int delta)
 		nullptr
 	));
 
-	this->setHealth(KnownValueBarBehavior::Health + delta);
+	this->setHealth(KnownValueBarInt32Behavior::Health + delta);
 }
 
-void KnownValueBarBehavior::setHealth(int newHealth)
+void KnownValueBarInt32Behavior::setHealth(int newHealth)
 {
-	if (newHealth <= KnownValueBarBehavior::MaxHealth / 2)
+	if (newHealth <= KnownValueBarInt32Behavior::MaxHealth / 2)
 	{
 		this->entity->getAnimations()->playAnimation("AttackCast1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		
-		this->addHealth(KnownValueBarBehavior::MaxHealth - KnownValueBarBehavior::Health);
+		this->addHealth(KnownValueBarInt32Behavior::MaxHealth - KnownValueBarInt32Behavior::Health);
 		this->spellAura->runAction(Sequence::create(
 			FadeTo::create(0.25f, 255),
 			DelayTime::create(1.0f),
@@ -150,11 +154,25 @@ void KnownValueBarBehavior::setHealth(int newHealth)
 	}
 	else
 	{
-		KnownValueBarBehavior::Health = newHealth;
+		KnownValueBarInt32Behavior::Health = newHealth;
 	}
 }
 
-void KnownValueBarBehavior::onDeath()
+void KnownValueBarInt32Behavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
+
+	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyKnownValueInt, Value(true));
+
+	this->runAction(Sequence::create(
+		DelayTime::create(1.5f),
+		CallFunc::create([=]()
+		{
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+			{
+				return TutorialSelectMenu::getInstance();
+			}));
+		}),
+		nullptr
+	));
 }

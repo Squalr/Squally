@@ -32,6 +32,7 @@ private:
 	void loadKnownValueFloatTutorial();
 	void loadUnknownValueIntTutorial();
 	void loadUnknownValueFloatTutorial();
+	void loadKnownValueDoubleTutorial();
 
 	TutorialEntry* knownValueInt;
 	TutorialEntry* knownValueFloat;

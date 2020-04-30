@@ -1,4 +1,4 @@
-#include "UnknownValueBarBehavior.h"
+#include "UnknownValueBarInt32Behavior.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -23,21 +23,21 @@
 
 using namespace cocos2d;
 
-int UnknownValueBarBehavior::Health = 0;
-const int UnknownValueBarBehavior::MaxHealth = 58;
+int UnknownValueBarInt32Behavior::Health = 0;
+const int UnknownValueBarInt32Behavior::MaxHealth = 58;
 
-const std::string UnknownValueBarBehavior::MapKey = "squalr-unknown-int";
+const std::string UnknownValueBarInt32Behavior::MapKey = "squalr-unknown-int";
 
-UnknownValueBarBehavior* UnknownValueBarBehavior::create(GameObject* owner)
+UnknownValueBarInt32Behavior* UnknownValueBarInt32Behavior::create(GameObject* owner)
 {
-	UnknownValueBarBehavior* instance = new UnknownValueBarBehavior(owner);
+	UnknownValueBarInt32Behavior* instance = new UnknownValueBarInt32Behavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-UnknownValueBarBehavior::UnknownValueBarBehavior(GameObject* owner) : super(owner)
+UnknownValueBarInt32Behavior::UnknownValueBarInt32Behavior(GameObject* owner) : super(owner)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
@@ -51,7 +51,7 @@ UnknownValueBarBehavior::UnknownValueBarBehavior(GameObject* owner) : super(owne
 	this->deltaLabel->enableOutline(Color4B::BLACK, 3);
 	this->spellAura->setOpacity(0);
 
-	this->setHealth(UnknownValueBarBehavior::MaxHealth);
+	this->setHealth(UnknownValueBarInt32Behavior::MaxHealth);
 
 	if (this->entity == nullptr)
 	{
@@ -64,11 +64,11 @@ UnknownValueBarBehavior::UnknownValueBarBehavior(GameObject* owner) : super(owne
 	this->addChild(this->healSound);
 }
 
-UnknownValueBarBehavior::~UnknownValueBarBehavior()
+UnknownValueBarInt32Behavior::~UnknownValueBarInt32Behavior()
 {
 }
 
-void UnknownValueBarBehavior::onLoad()
+void UnknownValueBarInt32Behavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventFireballCollided, [=](EventCustom* eventCustom)
 	{
@@ -87,26 +87,26 @@ void UnknownValueBarBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
-void UnknownValueBarBehavior::onDisable()
+void UnknownValueBarInt32Behavior::onDisable()
 {
 	super::onDisable();
 }
 
-void UnknownValueBarBehavior::update(float dt)
+void UnknownValueBarInt32Behavior::update(float dt)
 {
 	super::update(dt);
 
-	this->healthBar->setProgress(float(UnknownValueBarBehavior::Health) / float(UnknownValueBarBehavior::MaxHealth));
+	this->healthBar->setProgress(float(UnknownValueBarInt32Behavior::Health) / float(UnknownValueBarInt32Behavior::MaxHealth));
 
-	if (UnknownValueBarBehavior::Health <= 0)
+	if (UnknownValueBarInt32Behavior::Health <= 0)
 	{
 		this->onDeath();
 	}
 }
 
-void UnknownValueBarBehavior::addHealth(int delta)
+void UnknownValueBarInt32Behavior::addHealth(int delta)
 {
-	if (UnknownValueBarBehavior::Health <= 0)
+	if (UnknownValueBarInt32Behavior::Health <= 0)
 	{
 		return;
 	}
@@ -120,16 +120,16 @@ void UnknownValueBarBehavior::addHealth(int delta)
 		nullptr
 	));
 
-	this->setHealth(UnknownValueBarBehavior::Health + delta);
+	this->setHealth(UnknownValueBarInt32Behavior::Health + delta);
 }
 
-void UnknownValueBarBehavior::setHealth(int newHealth)
+void UnknownValueBarInt32Behavior::setHealth(int newHealth)
 {
-	if (newHealth <= UnknownValueBarBehavior::MaxHealth / 2)
+	if (newHealth <= UnknownValueBarInt32Behavior::MaxHealth / 2)
 	{
 		this->entity->getAnimations()->playAnimation("AttackCastSpell1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		
-		this->addHealth(UnknownValueBarBehavior::MaxHealth - UnknownValueBarBehavior::Health);
+		this->addHealth(UnknownValueBarInt32Behavior::MaxHealth - UnknownValueBarInt32Behavior::Health);
 		this->spellAura->runAction(Sequence::create(
 			FadeTo::create(0.25f, 255),
 			DelayTime::create(1.0f),
@@ -141,11 +141,11 @@ void UnknownValueBarBehavior::setHealth(int newHealth)
 	}
 	else
 	{
-		UnknownValueBarBehavior::Health = newHealth;
+		UnknownValueBarInt32Behavior::Health = newHealth;
 	}
 }
 
-void UnknownValueBarBehavior::onDeath()
+void UnknownValueBarInt32Behavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
 }

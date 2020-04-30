@@ -34,8 +34,8 @@ KingZul::KingZul(ValueMap& properties) : super(properties,
 	KingZul::MapKey,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
-	Size(196.0f, 320.0f),
-	0.9f,
+	Size(196.0f, 288.0f),
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = KingZul::getHexusOpponentData();

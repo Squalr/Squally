@@ -13,16 +13,16 @@ class PlatformerEntity;
 class ProgressBar;
 class WorldSound;
 
-class UnknownValueBarBehavior : public AttachedBehavior
+class KnownValueBarFloatBehavior : public AttachedBehavior
 {
 public:
-	static UnknownValueBarBehavior* create(GameObject* owner);
+	static KnownValueBarFloatBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	UnknownValueBarBehavior(GameObject* owner);
-	virtual ~UnknownValueBarBehavior();
+	KnownValueBarFloatBehavior(GameObject* owner);
+	virtual ~KnownValueBarFloatBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
@@ -31,18 +31,20 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void addHealth(int newHealth);
-	void setHealth(int newHealth);
+	void addHealth(float newHealth);
+	void setHealth(float newHealth);
 	void onDeath();
 
 	PlatformerEntity* entity;
 	cocos2d::Sprite* spellAura;
-
+	
 	ProgressBar* healthBar;
 	ConstantString* deltaString;
 	LocalizedLabel* deltaLabel;
+	ConstantString* healthString;
+	LocalizedLabel* healthLabel;
 	WorldSound* healSound;
 
-	static int Health;
-	static const int MaxHealth;
+	static float Health;
+	static const float MaxHealth;
 };

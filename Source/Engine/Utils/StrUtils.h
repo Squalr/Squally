@@ -12,10 +12,11 @@ public:
 	static std::string quote(std::string value);
 	static std::string toLower(std::string str);
 	static std::string toUpper(std::string str);
+	static std::string floatToString(float value, int precision);
 	static bool isInteger(std::string str);
 	static bool isFloat(std::string str);
 	static bool isHexNumber(std::string str);
-	static int HexToInt(std::string str);
+	static int hexToInt(std::string str);
 	static bool isRegexMatch(const std::string str, const std::string regex);
 	static bool isRegexSubMatch(const std::string str, const std::string regex);
 	static std::string ltrim(std::string str, std::string toRemove, bool ignoreCase = false);

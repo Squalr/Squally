@@ -483,7 +483,7 @@ std::string HackUtils::preProcess(std::string instructions)
 
 		if (StrUtils::isHexNumber(next))
 		{
-			result += std::to_string(StrUtils::HexToInt(next));
+			result += std::to_string(StrUtils::hexToInt(next));
 		}
 		else
 		{

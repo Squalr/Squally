@@ -102,7 +102,7 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		{
 			if (StrUtils::isHexNumber(input))
 			{
-				return (unsigned char)StrUtils::HexToInt(input);
+				return (unsigned char)StrUtils::hexToInt(input);
 			}
 		}
 
