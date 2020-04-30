@@ -44,4 +44,20 @@ Dart::~Dart()
 void Dart::onEnter()
 {
 	super::onEnter();
+	
+	this->sprite->setVisible(false);
+}
+
+void Dart::runSpawnFX()
+{
+	super::runSpawnFX();
+
+	this->sprite->setVisible(true);
+}
+
+void Dart::runImpactFX()
+{
+	super::runImpactFX();
+
+	this->sprite->setVisible(false);
 }

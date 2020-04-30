@@ -76,6 +76,7 @@ const std::string MapResources::SeaSharpCaverns_Zone_x_y = "Public/Platformer/Ma
 const std::string MapResources::TileMap = "Public/Platformer/Maps/TileMap.png";
 const std::string MapResources::Tutorials_KnownValueDouble = "Public/Platformer/Maps/Tutorials/KnownValueDouble.tmx";
 const std::string MapResources::Tutorials_KnownValueFloat = "Public/Platformer/Maps/Tutorials/KnownValueFloat.tmx";
+const std::string MapResources::Tutorials_KnownValueFloatAdvanced = "Public/Platformer/Maps/Tutorials/KnownValueFloatAdvanced.tmx";
 const std::string MapResources::Tutorials_KnownValueInt32 = "Public/Platformer/Maps/Tutorials/KnownValueInt32.tmx";
 const std::string MapResources::Tutorials_UnknownValueFloat = "Public/Platformer/Maps/Tutorials/UnknownValueFloat.tmx";
 const std::string MapResources::Tutorials_UnknownValueInt32 = "Public/Platformer/Maps/Tutorials/UnknownValueInt32.tmx";

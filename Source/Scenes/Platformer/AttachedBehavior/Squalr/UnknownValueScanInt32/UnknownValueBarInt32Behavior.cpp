@@ -7,13 +7,17 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/SqualrEvents.h"
+#include "Menus/TutorialSelect/TutorialSelectMenu.h"
+#include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -127,7 +131,7 @@ void UnknownValueBarInt32Behavior::setHealth(int newHealth)
 {
 	if (newHealth <= UnknownValueBarInt32Behavior::MaxHealth / 2)
 	{
-		this->entity->getAnimations()->playAnimation("AttackCastSpell1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
+		this->entity->getAnimations()->playAnimation("AttackCast1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		
 		this->addHealth(UnknownValueBarInt32Behavior::MaxHealth - UnknownValueBarInt32Behavior::Health);
 		this->spellAura->runAction(Sequence::create(
@@ -148,4 +152,18 @@ void UnknownValueBarInt32Behavior::setHealth(int newHealth)
 void UnknownValueBarInt32Behavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
+	
+	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyUnknownValueInt, Value(true));
+
+	this->runAction(Sequence::create(
+		DelayTime::create(1.5f),
+		CallFunc::create([=]()
+		{
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+			{
+				return TutorialSelectMenu::getInstance();
+			}));
+		}),
+		nullptr
+	));
 }

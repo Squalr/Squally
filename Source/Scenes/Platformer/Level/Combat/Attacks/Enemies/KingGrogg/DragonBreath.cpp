@@ -75,7 +75,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 				return CollisionObject::CollisionResult::DoNothing;
 			}
 
-			fireball->disable(false);
+			fireball->disable(true);
 			fireball->runImpactFX();
 
 			if (entity != nullptr)

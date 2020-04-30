@@ -9,6 +9,12 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Cryogen.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Menus/TutorialSelect/TutorialEntry.h"
@@ -40,6 +46,14 @@ MemoryEditingTab::MemoryEditingTab()
 	this->unknownValueInt = this->createEntry(TutorialSaveKeys::SaveKeyUnknownValueInt, this->knownValueFloat);
 	this->unknownValueFloat = this->createEntry(TutorialSaveKeys::SaveKeyUnknownValueFloat, this->unknownValueInt);
 	this->knownValueDouble = this->createEntry(TutorialSaveKeys::SaveKeyKnownValueDouble, this->unknownValueFloat);
+	this->unknownValueFloatAdvanced = this->createEntry(TutorialSaveKeys::SaveKeyKnownValueFloatAdvanced, this->knownValueDouble);
+
+	this->kingZul = this->knownValueInt->addEntity(KingZul::deserialize(ValueMap()), Vec2(-16.0f, 48.0f));
+	this->agnes = this->knownValueFloat->addEntity(Agnes::deserialize(ValueMap()), Vec2(-32.0f, 64.0f));
+	this->lazarus = this->unknownValueInt->addEntity(Lazarus::deserialize(ValueMap()), Vec2(-8.0f, -24.0f));
+	this->asmodeus = this->unknownValueFloat->addEntity(Asmodeus::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
+	this->cryogen = this->knownValueDouble->addEntity(Cryogen::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
+	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
 }
 
 MemoryEditingTab::~MemoryEditingTab()
@@ -78,6 +92,11 @@ void MemoryEditingTab::initializeListeners()
 	this->knownValueDouble->setClickCallback([=]()
 	{
 		this->loadKnownValueDoubleTutorial();
+	});
+
+	this->unknownValueFloatAdvanced->setClickCallback([=]()
+	{
+		this->loadUnknownValueFloatTutorialAdvanced();
 	});
 }
 
@@ -176,6 +195,25 @@ void MemoryEditingTab::loadKnownValueDoubleTutorial()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		
 		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueDouble);
+
+		return map;
+	}));
+}
+
+void MemoryEditingTab::loadUnknownValueFloatTutorialAdvanced()
+{
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+	{
+		const int UNUSED_SAVE_PROFILE = 99;
+
+		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+		
+		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueFloatAdvanced);
 
 		return map;
 	}));

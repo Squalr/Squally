@@ -6,6 +6,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -53,7 +54,7 @@ void LookAtSquallyBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->squally == nullptr)
+	if (this->squally == nullptr || !this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return;
 	}

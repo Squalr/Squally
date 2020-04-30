@@ -10,13 +10,17 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class LocalizedLabel;
+class PlatformerEntity;
 class ScrollPane;
+class SmartClippingNode;
 
 class TutorialEntry : public SmartNode
 {
 public:
 	static TutorialEntry* create(std::string saveKey, TutorialEntry* prereq = nullptr);
 
+	PlatformerEntity* addEntity(PlatformerEntity* entity, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
+	cocos2d::Node* addContent(cocos2d::Node* content, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
 	bool isComplete();
 	void setClickCallback(std::function<void()> clickCallback);
 
@@ -32,6 +36,8 @@ private:
 	typedef SmartNode super;
 
 	cocos2d::Sprite* back;
+	SmartClippingNode* contentClip;
+	cocos2d::Node* content;
 	ClickableNode* frame;
 	cocos2d::Sprite* lockIcon;
 	cocos2d::Sprite* completeIcon;

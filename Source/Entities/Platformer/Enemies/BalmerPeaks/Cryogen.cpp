@@ -47,7 +47,7 @@ Cryogen::~Cryogen()
 
 Vec2 Cryogen::getDialogueOffset()
 {
-	return Vec2(-48.0f, -232.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Cryogen::getEntityName()

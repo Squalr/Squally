@@ -30,8 +30,8 @@ OverworldFireball* OverworldFireball::create()
 
 OverworldFireball::OverworldFireball() : super(nullptr, CollisionObject::createCapsulePolygon(Size(48.0f, 48.0f)), (int)PlatformerCollisionType::EnemyWeapon, false)
 {
-	this->fireball = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
-	this->explosion = SmartAnimationSequenceNode::create(FXResources::Explosion_Explosion_0000);
+	this->fireball = SmartAnimationSequenceNode::create();
+	this->explosion = SmartAnimationSequenceNode::create();
 	this->fireballSfx = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSfx = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
 
@@ -50,16 +50,13 @@ void OverworldFireball::onEnter()
 	super::onEnter();
 
 	this->setLaunchVelocity(Vec3(2048.0f, 0.0f, 0.0f));
-
-	this->fireball->setVisible(true);
-	this->explosion->setVisible(false);
-	this->fireball->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 }
 
 void OverworldFireball::runSpawnFX()
 {
 	super::runSpawnFX();
-
+	
+	this->fireball->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 	this->fireballSfx->play();
 }
 
@@ -68,8 +65,8 @@ void OverworldFireball::runImpactFX()
 	super::runImpactFX();
 
 	this->setLaunchVelocity(Vec3::ZERO);
-	this->fireball->setVisible(false);
-	this->explosion->setVisible(true);
-	this->explosion->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f);
+	
+	this->fireball->stopAnimation();
+	this->explosion->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
 	this->impactSfx->play();
 }

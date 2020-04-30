@@ -10,4 +10,5 @@ public:
 	static const std::string SaveKeyUnknownValueInt;
 	static const std::string SaveKeyUnknownValueFloat;
 	static const std::string SaveKeyKnownValueDouble;
+	static const std::string SaveKeyKnownValueFloatAdvanced;
 };

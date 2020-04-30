@@ -8,6 +8,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/SmartClippingNode.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 
 #include "Resources/UIResources.h"
 
@@ -29,11 +31,14 @@ TutorialEntry::TutorialEntry(std::string saveKey, TutorialEntry* prereq)
 	this->saveKey = saveKey;
 	this->prereq = prereq;
 	this->back = Sprite::create(UIResources::Menus_TutorialsMenu_TutorialEntryBack);
+	this->content = Node::create();
+	this->contentClip = SmartClippingNode::create(this->content, 64.0f);
 	this->frame = ClickableNode::create(UIResources::Menus_TutorialsMenu_TutorialEntry, UIResources::Menus_TutorialsMenu_TutorialEntrySelected);
 	this->lockIcon = Sprite::create(UIResources::Menus_TutorialsMenu_Lock);
-	this->completeIcon = Sprite::create(UIResources::Menus_TutorialsMenu_Diamond);
+	this->completeIcon = Sprite::create(UIResources::Menus_TutorialsMenu_CheckMark);
 
 	this->addChild(this->back);
+	this->addChild(this->contentClip);
 	this->addChild(this->frame);
 	this->addChild(this->lockIcon);
 	this->addChild(this->completeIcon);
@@ -68,6 +73,26 @@ void TutorialEntry::initializePositions()
 	super::initializePositions();
 
 	this->back->setPosition(Vec2(6.0f, -4.0f));
+	this->completeIcon->setPosition(Vec2(0.0f, -64.0f));
+}
+
+PlatformerEntity* TutorialEntry::addEntity(PlatformerEntity* entity, Vec2 offset)
+{
+	this->addContent(entity, offset);
+
+	entity->setScale(0.75f);
+	entity->setPosition(entity->getPosition() + Vec2(0.0f, -192.0f) + entity->getDialogueOffset());
+
+	return entity;
+}
+
+Node* TutorialEntry::addContent(Node* content, Vec2 offset)
+{
+	this->content->addChild(content);
+
+	this->content->setPosition(offset);
+
+	return content;
 }
 
 bool TutorialEntry::isComplete()

@@ -76,7 +76,7 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 				return CollisionObject::CollisionResult::DoNothing;
 			}
 
-			shadowBolt->disable(false);
+			shadowBolt->disable(true);
 			shadowBolt->runImpactFX();
 
 			if (entity != nullptr)

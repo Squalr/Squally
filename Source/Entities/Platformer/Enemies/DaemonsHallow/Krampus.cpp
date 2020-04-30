@@ -47,7 +47,7 @@ Krampus::~Krampus()
 
 Vec2 Krampus::getDialogueOffset()
 {
-	return Vec2(-48.0f, -232.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Krampus::getEntityName()

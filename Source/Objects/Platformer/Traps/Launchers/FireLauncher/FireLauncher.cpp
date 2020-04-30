@@ -58,7 +58,7 @@ Projectile* FireLauncher::createProjectile()
 	
 	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{
-		fireball->disable(false);
+		fireball->disable(true);
 		fireball->runImpactFX();
 
 		return CollisionObject::CollisionResult::DoNothing;

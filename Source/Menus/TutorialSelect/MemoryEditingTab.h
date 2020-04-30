@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ClickableTextNode;
 class LocalizedLabel;
+class PlatformerEntity;
 class ScrollPane;
 class TutorialEntry;
 
@@ -33,10 +34,19 @@ private:
 	void loadUnknownValueIntTutorial();
 	void loadUnknownValueFloatTutorial();
 	void loadKnownValueDoubleTutorial();
+	void loadUnknownValueFloatTutorialAdvanced();
 
 	TutorialEntry* knownValueInt;
 	TutorialEntry* knownValueFloat;
 	TutorialEntry* unknownValueInt;
 	TutorialEntry* unknownValueFloat;
 	TutorialEntry* knownValueDouble;
+	TutorialEntry* unknownValueFloatAdvanced;
+	
+	PlatformerEntity* kingZul;
+	PlatformerEntity* agnes;
+	PlatformerEntity* lazarus;
+	PlatformerEntity* asmodeus;
+	PlatformerEntity* cryogen;
+	PlatformerEntity* krampus;
 };

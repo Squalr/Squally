@@ -77,6 +77,7 @@ namespace MapResources
 	extern const std::string TileMap;
 	extern const std::string Tutorials_KnownValueDouble;
 	extern const std::string Tutorials_KnownValueFloat;
+	extern const std::string Tutorials_KnownValueFloatAdvanced;
 	extern const std::string Tutorials_KnownValueInt32;
 	extern const std::string Tutorials_UnknownValueFloat;
 	extern const std::string Tutorials_UnknownValueInt32;

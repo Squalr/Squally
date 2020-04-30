@@ -44,8 +44,6 @@ ShadowBolt::ShadowBolt(PlatformerEntity* owner, PlatformerEntity* target)
 	this->launchSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
 
-	this->shadowBoltAnim->playAnimationRepeat(FXResources::ShadowBolt_ShadowBolt_0000, 0.05f);
-
 	this->postFXNode->addChild(this->launchSound);
 	this->postFXNode->addChild(this->impactSound);
 	this->postFXNode->addChild(this->explosionAnim);
@@ -73,11 +71,14 @@ void ShadowBolt::update(float dt)
 void ShadowBolt::runSpawnFX()
 {
 	this->launchSound->play();
+
+	this->shadowBoltAnim->playAnimationRepeat(FXResources::ShadowBolt_ShadowBolt_0000, 0.05f);
 }
 
 void ShadowBolt::runImpactFX()
 {
 	this->explosionAnim->playAnimation(FXResources::ShadowImpact_ShadowImpact_0000, 0.05f, true);
+	this->shadowBoltAnim->stopAnimation();
 
 	this->impactSound->play();
 }
