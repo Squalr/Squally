@@ -17,8 +17,8 @@
 #include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
-#include "Menus/TutorialSelect/TutorialEntry.h"
-#include "Menus/TutorialSelect/TutorialSelectMenu.h"
+#include "Menus/Tutorials/TutorialEntry.h"
+#include "Menus/Tutorials/TutorialSelectMenu.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
@@ -51,9 +51,9 @@ MemoryEditingTab::MemoryEditingTab()
 	this->kingZul = this->knownValueInt->addEntity(KingZul::deserialize(ValueMap()), Vec2(-16.0f, 48.0f));
 	this->agnes = this->knownValueFloat->addEntity(Agnes::deserialize(ValueMap()), Vec2(-32.0f, 64.0f));
 	this->lazarus = this->unknownValueInt->addEntity(Lazarus::deserialize(ValueMap()), Vec2(-8.0f, -24.0f));
-	this->asmodeus = this->unknownValueFloat->addEntity(Asmodeus::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
+	this->asmodeus = this->unknownValueFloat->addEntity(Asmodeus::deserialize(ValueMap()), Vec2(-32.0f, 24.0f));
 	this->cryogen = this->knownValueDouble->addEntity(Cryogen::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
-	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(ValueMap()), Vec2(-56.0f, 16.0f));
+	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(ValueMap()), Vec2(-24.0f, 16.0f));
 }
 
 MemoryEditingTab::~MemoryEditingTab()

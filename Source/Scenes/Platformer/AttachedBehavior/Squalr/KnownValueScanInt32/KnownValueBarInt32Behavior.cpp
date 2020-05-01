@@ -16,7 +16,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Events/SqualrEvents.h"
-#include "Menus/TutorialSelect/TutorialSelectMenu.h"
+#include "Menus/Tutorials/TutorialSelectMenu.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/FXResources.h"

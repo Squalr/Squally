@@ -17,8 +17,9 @@
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Menus/MenuBackground.h"
-#include "Menus/TutorialSelect/HomeTab.h"
-#include "Menus/TutorialSelect/MemoryEditingTab.h"
+#include "Menus/Tutorials/HexEditingTab.h"
+#include "Menus/Tutorials/HomeTab.h"
+#include "Menus/Tutorials/MemoryEditingTab.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -62,7 +63,7 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->assemblyEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconTrophy, Strings::Menus_Tutorials_AssemblyEditing_AssemblyEditing::create());
 	this->homeTab = HomeTab::create();
 	this->memoryEditingTab = MemoryEditingTab::create();
-	this->hexEditingTab = MemoryEditingTab::create();
+	this->hexEditingTab = HexEditingTab::create();
 	this->pointersTab = MemoryEditingTab::create();
 	this->assemblyEditingTab = MemoryEditingTab::create();
 	this->leftPanel = Node::create();

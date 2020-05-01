@@ -17,7 +17,7 @@
 #include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
-#include "Menus/TutorialSelect/TutorialSelectMenu.h"
+#include "Menus/Tutorials/TutorialSelectMenu.h"
 #include "Music/Tracks/WeWillGetThereTogether.h"
 #include "Scenes/Title/TitleScreenBackground.h"
 #include "Scenes/Developer/DeveloperScene.h"

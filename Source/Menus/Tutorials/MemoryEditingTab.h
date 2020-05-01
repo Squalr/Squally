@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Menus/TutorialSelect/TutorialTabBase.h"
+#include "Menus/Tutorials/TutorialTabBase.h"
 
 namespace cocos2d
 {

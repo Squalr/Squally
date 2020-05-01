@@ -1,5 +1,6 @@
 #include "TutorialEntry.h"
 
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
@@ -31,12 +32,18 @@ TutorialEntry::TutorialEntry(std::string saveKey, TutorialEntry* prereq)
 	this->saveKey = saveKey;
 	this->prereq = prereq;
 	this->back = Sprite::create(UIResources::Menus_TutorialsMenu_TutorialEntryBack);
+	this->lockedLayer = LayerColor::create(Color4B(0, 0, 0, 127), 144, 144);
 	this->content = Node::create();
-	this->contentClip = SmartClippingNode::create(this->content, 64.0f);
+	this->contentHost = Node::create();
+	this->contentClip = SmartClippingNode::create(this->contentHost, 64.0f);
 	this->frame = ClickableNode::create(UIResources::Menus_TutorialsMenu_TutorialEntry, UIResources::Menus_TutorialsMenu_TutorialEntrySelected);
 	this->lockIcon = Sprite::create(UIResources::Menus_TutorialsMenu_Lock);
 	this->completeIcon = Sprite::create(UIResources::Menus_TutorialsMenu_CheckMark);
 
+	this->lockedLayer->setPosition(Vec2(-72.0f, -72.0f));
+	
+	this->contentHost->addChild(this->content);
+	this->contentHost->addChild(this->lockedLayer);
 	this->addChild(this->back);
 	this->addChild(this->contentClip);
 	this->addChild(this->frame);
@@ -59,6 +66,7 @@ void TutorialEntry::onEnter()
 		this->frame->disableInteraction(255);
 	}
 	
+	this->lockedLayer->setVisible(!unlocked);
 	this->lockIcon->setVisible(!unlocked);
 	this->completeIcon->setVisible(this->isComplete());
 }

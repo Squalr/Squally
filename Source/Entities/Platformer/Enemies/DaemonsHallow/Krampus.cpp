@@ -35,7 +35,7 @@ Krampus::Krampus(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
 	Size(396.0f, 412.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Krampus::getHexusOpponentData();

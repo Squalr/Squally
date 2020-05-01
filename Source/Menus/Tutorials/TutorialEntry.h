@@ -4,6 +4,7 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
@@ -37,7 +38,9 @@ private:
 
 	cocos2d::Sprite* back;
 	SmartClippingNode* contentClip;
+	cocos2d::Node* contentHost;
 	cocos2d::Node* content;
+	cocos2d::LayerColor* lockedLayer;
 	ClickableNode* frame;
 	cocos2d::Sprite* lockIcon;
 	cocos2d::Sprite* completeIcon;

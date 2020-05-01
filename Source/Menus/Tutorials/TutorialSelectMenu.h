@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
+class HexEditingTab;
 class HomeTab;
 class LocalizedLabel;
 class LocalizedString;
@@ -60,7 +61,7 @@ private:
 
 	HomeTab* homeTab;
 	MemoryEditingTab* memoryEditingTab;
-	MemoryEditingTab* hexEditingTab;
+	HexEditingTab* hexEditingTab;
 	MemoryEditingTab* pointersTab;
 	MemoryEditingTab* assemblyEditingTab;
 

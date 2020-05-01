@@ -8,7 +8,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Menus/TutorialSelect/TutorialEntry.h"
+#include "Menus/Tutorials/TutorialEntry.h"
 
 #include "Resources/UIResources.h"
 

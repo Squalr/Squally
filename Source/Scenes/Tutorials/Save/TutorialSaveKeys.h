@@ -11,4 +11,6 @@ public:
 	static const std::string SaveKeyUnknownValueFloat;
 	static const std::string SaveKeyKnownValueDouble;
 	static const std::string SaveKeyKnownValueFloatAdvanced;
+
+	static const std::string SaveKeyHexEditGold;
 };
