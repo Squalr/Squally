@@ -18,6 +18,8 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Special/Shopkeeper.h"
@@ -27,12 +29,16 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
+
+const std::string HexusStoreMenu::SaveKeyGold = "SAVE_KEY_GOLD";
+const int HexusStoreMenu::DefaultGold = 1000;
 
 using namespace cocos2d;
 
@@ -56,6 +62,8 @@ HexusStoreMenu* HexusStoreMenu::getInstance()
 HexusStoreMenu::HexusStoreMenu()
 {
 	this->dustParticles = SmartParticles::create(ParticleResources::Dust);
+	this->purchaseSound = Sound::create(SoundResources::Menus_TransactGold1);
+	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 
 	this->goldPanel = Sprite::create(UIResources::Menus_TutorialsMenu_Store_GoldPanel);
 	this->goldIcon = Sprite::create(UIResources::Menus_Icons_Currency_GOLD_2);
@@ -75,35 +83,69 @@ HexusStoreMenu::HexusStoreMenu()
 	this->storeMenu = Sprite::create(UIResources::Menus_TutorialsMenu_Store_StoreBoard);
 
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
-	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
+	LocalizedLabel* backButtonLabelSelected = backButtonLabel->clone();
 	
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
-	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
-		backButtonLabelHover,
+		backButtonLabelSelected,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected
 	);
 
-	this->chosenCardsNode = Node::create();
+	LocalizedLabel* resetButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Reset::create());
+	LocalizedLabel* resetButtonLabelSelected = resetButtonLabel->clone();
+	
+	resetButtonLabel->enableOutline(Color4B::BLACK, 2);
+	resetButtonLabelSelected->enableOutline(Color4B::BLACK, 2);
+
+	this->resetButton = ClickableTextNode::create(
+		resetButtonLabel,
+		resetButtonLabelSelected,
+		UIResources::Menus_Buttons_DarkWoodButton,
+		UIResources::Menus_Buttons_DarkWoodButtonSelected
+	);
+
+	this->xorCard = this->constructCard(CardList::getInstance()->cardListByName[CardKeys::LogicalXor], 420, [=](CardData* cardData, int price)
+	{
+		this->onCardClick(cardData, price);
+	});
+
+	this->andCard = this->constructCard(CardList::getInstance()->cardListByName[CardKeys::LogicalAnd], 542, [=](CardData* cardData, int price)
+	{
+		this->onCardClick(cardData, price);
+	});
+
+	this->inverseCard = this->constructCard(CardList::getInstance()->cardListByName[CardKeys::Inverse], 2000, [=](CardData* cardData, int price)
+	{
+		this->onCardClick(cardData, price);
+		this->onChallengeComplete();
+	});
+
+	this->resetButton->setClickSound(SoundResources::Menus_ButtonClick5);
 
 	this->shopKeeper->attachBehavior(EntityDialogueBehavior::create(this->shopKeeper));
 	this->storeBack->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->storeFront->setAnchorPoint(Vec2(0.0f, 0.5f));
 
-	this->addChild(this->dustParticles);
-	this->addChild(this->storeBack);
-	this->addChild(this->shopKeeper);
-	this->addChild(this->storeFront);
-	this->addChild(storeNode);
 	this->storeNode->addChild(this->storeMenu);
 	this->storeNode->addChild(this->goldPanel);
 	this->storeNode->addChild(this->goldIcon);
 	this->storeNode->addChild(this->goldLabel);
+	this->storeNode->addChild(this->xorCard);
+	this->storeNode->addChild(this->andCard);
+	this->storeNode->addChild(this->inverseCard);
+	this->addChild(this->dustParticles);
+	this->addChild(this->storeBack);
+	this->addChild(this->shopKeeper);
+	this->addChild(this->storeFront);
+	this->addChild(this->storeNode);
 	this->addChild(this->backButton);
-	this->addChild(this->chosenCardsNode);
+	this->addChild(this->resetButton);
+	this->addChild(this->purchaseSound);
+	this->addChild(this->errorSound);
 }
 
 HexusStoreMenu::~HexusStoreMenu()
@@ -118,6 +160,7 @@ void HexusStoreMenu::onEnter()
 	const float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->backButton, delay, duration);
+	GameUtils::fadeInObject(this->resetButton, delay, duration);
 
 	this->dustParticles->accelerate(5.0f);
 
@@ -125,7 +168,7 @@ void HexusStoreMenu::onEnter()
 	
 	this->shopKeeper->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 	{
-		dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Common_Constant::create(), SoundResources::Platformer_Entities_Generic_ChatterMedium1);
+		dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_Tutorials_HexEditing_TutorialStringSearch::create(), SoundResources::Platformer_Entities_Generic_ChatterMedium1, SpeechBubble::InfiniteDuration);
 	});
 }
 
@@ -148,6 +191,11 @@ void HexusStoreMenu::initializeListeners()
 	{
 		this->onBackClick();
 	});
+
+	this->resetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->onResetClick();
+	});
 }
 
 void HexusStoreMenu::initializePositions()
@@ -156,29 +204,32 @@ void HexusStoreMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	const float storeOffsetY = -128.0f;
-	const Vec2 storeMenuOffset = Vec2(336.0f, 0.0f);
-	const Vec2 storeContentOffset = Vec2(0.0f, -64.0f);
-	const Vec2 goldPanelOffset = Vec2(412.0f, 464.0f);
+	const float StoreOffsetY = -128.0f;
 
 	this->dustParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
-	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY + 144.0f));
-	this->shopKeeper->setPosition(Vec2(visibleSize.width / 2.0f - 680.0f, visibleSize.height / 2.0f + storeOffsetY - 192.0f));
-	this->storeFront->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY - 176.0f));
-	this->storeMenu->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y - 48.0f));
+	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + StoreOffsetY + 144.0f));
+	this->shopKeeper->setPosition(Vec2(visibleSize.width / 2.0f - 680.0f, visibleSize.height / 2.0f + StoreOffsetY - 192.0f));
+	this->storeFront->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + StoreOffsetY - 176.0f));
 
-	this->goldPanel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
-	this->goldIcon->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x - 80.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
-	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x - 8.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
+	const Vec2 StoreMenuOffset = Vec2(336.0f, -48.0f);
+	const Vec2 GoldPanelOffset = Vec2(412.0f, 464.0f + 48.0f);
+
+	this->storeNode->setPosition(Vec2(visibleSize.width / 2.0f + StoreMenuOffset.x, visibleSize.height / 2.0f + StoreMenuOffset.y));
+	this->goldPanel->setPosition(GoldPanelOffset);
+	this->goldIcon->setPosition(Vec2(GoldPanelOffset.x - 80.0f, GoldPanelOffset.y));
+	this->goldLabel->setPosition(Vec2(GoldPanelOffset.x - 8.0f, GoldPanelOffset.y));
 
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
+	this->resetButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height - 64.0f));
+
+	this->xorCard->setPositionX(-320.0f);
+	this->inverseCard->setPositionX(320.0f);
 }
 
-std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* cardData)
+ClickableNode* HexusStoreMenu::constructCard(CardData* cardData, int price, std::function<void(CardData*, int)> clickCallback)
 {
 	ClickableNode* cardContainer =  ClickableNode::create(UIResources::Menus_TutorialsMenu_Store_CardPanel, UIResources::Menus_TutorialsMenu_Store_CardPanelSelected);
 	MenuCard* menuCard = MenuCard::create(Card::CardStyle::Earth, cardData);
-	int price = 444;
 
 	ConstantString* countString = ConstantString::create();
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
@@ -195,34 +246,54 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 
 	cardContainer->addChild(menuCard);
 
+	cardContainer->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (clickCallback != nullptr)
+		{
+			clickCallback(cardData, price);
+		}
+	});
+
 	menuCard->reveal();
 	menuCard->disableInteraction();
 	menuCard->setPosition(Vec2(0.0f, 16.0f));
 	menuCard->setScale(0.8f);
 
-	cardContainer->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, countString));
-
 	cardContainer->addChild(goldIcon);
 	cardContainer->addChild(priceLabel);
 
-	return std::tuple<ClickableNode*, MenuCard*, int>(cardContainer, menuCard, price);
+	return cardContainer;
 }
 
-void HexusStoreMenu::onCardClick(CardData* cardData, int price, ConstantString* countString)
+void HexusStoreMenu::onCardClick(CardData* cardData, int price)
 {
-	int gold = 42424; //CardStorage::getGold();
+	int gold = SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt();
 
 	if (gold < price)
 	{
-		// SoundManager::playSoundResource(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
+		this->errorSound->play();
 		return;
 	}
 
 	gold -= price;
-	// SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
+	this->purchaseSound->play();
 
-	// CardStorage::saveGold(gold);
+	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(gold));
 	this->updateGoldText();
+}
+
+void HexusStoreMenu::onChallengeComplete()
+{
+	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyHexEditGold, Value(true));
+
+	this->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TutorialSelectMenu::getInstance(); }));
+		}),
+		nullptr
+	));
 }
 
 void HexusStoreMenu::onBackClick()
@@ -230,7 +301,14 @@ void HexusStoreMenu::onBackClick()
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TutorialSelectMenu::getInstance(); }));
 }
 
+void HexusStoreMenu::onResetClick()
+{
+	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold));
+
+	this->updateGoldText();
+}
+
 void HexusStoreMenu::updateGoldText()
 {
-	this->goldString->setString(std::to_string(11111));
+	this->goldString->setString(std::to_string(SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt()));
 }

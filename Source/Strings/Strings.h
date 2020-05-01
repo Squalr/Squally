@@ -18414,6 +18414,21 @@ namespace Strings
 		virtual ~Menus_Pause_Resume() = default;
 	};
 
+	class Menus_Reset : public LocalizedString
+	{
+	public:
+		static Menus_Reset* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Reset();
+		virtual ~Menus_Reset() = default;
+	};
+
 	class Menus_Retry : public LocalizedString
 	{
 	public:
@@ -18637,6 +18652,21 @@ namespace Strings
 	private:
 		Menus_Tutorials_HexEditing_HexEditing();
 		virtual ~Menus_Tutorials_HexEditing_HexEditing() = default;
+	};
+
+	class Menus_Tutorials_HexEditing_TutorialStringSearch : public LocalizedString
+	{
+	public:
+		static Menus_Tutorials_HexEditing_TutorialStringSearch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Tutorials_HexEditing_TutorialStringSearch();
+		virtual ~Menus_Tutorials_HexEditing_TutorialStringSearch() = default;
 	};
 
 	class Menus_Tutorials_Home_Disclaimer : public LocalizedString

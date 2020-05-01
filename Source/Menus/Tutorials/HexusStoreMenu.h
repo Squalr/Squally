@@ -23,6 +23,7 @@ class ScrollPane;
 class Shopkeeper;
 class SmartAnimationNode;
 class SmartParticles;
+class Sound;
 
 class HexusStoreMenu : public GlobalScene
 {
@@ -40,9 +41,11 @@ protected:
 private:
 	typedef GlobalScene super;
 
-	std::tuple<ClickableNode*, MenuCard*, int> constructCard(CardData* cardData);
+	ClickableNode* constructCard(CardData* cardData, int price, std::function<void(CardData*, int)> clickCallback);
 	void updateGoldText();
-	void onCardClick(CardData* cardData, int price, ConstantString* countString);
+	void onCardClick(CardData* cardData, int price);
+	void onChallengeComplete();
+	void onResetClick();
 	void onBackClick();
 
 	SmartParticles* dustParticles;
@@ -51,12 +54,19 @@ private:
 	cocos2d::Sprite* storeFront;
 	cocos2d::Node* storeNode;
 	cocos2d::Sprite* storeMenu;
+	ClickableNode* xorCard;
+	ClickableNode* andCard;
+	ClickableNode* inverseCard;
 	cocos2d::Sprite* goldPanel;
 	cocos2d::Sprite* goldIcon;
 	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
 	ClickableTextNode* backButton;
-	cocos2d::Node* chosenCardsNode;
+	ClickableTextNode* resetButton;
+	Sound* purchaseSound;
+	Sound* errorSound;
 
+	static const std::string SaveKeyGold;
+	static const int DefaultGold;
 	static HexusStoreMenu* instance;
 };
