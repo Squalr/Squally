@@ -7,12 +7,14 @@ namespace cocos2d
 	class Sprite;
 }
 
+class AssemblyEditingTab;
 class ClickableNode;
 class ClickableTextNode;
 class HexEditingTab;
 class HomeTab;
 class LocalizedLabel;
 class LocalizedString;
+class PointersTab;
 class MemoryEditingTab;
 class ScrollPane;
 
@@ -62,8 +64,8 @@ private:
 	HomeTab* homeTab;
 	MemoryEditingTab* memoryEditingTab;
 	HexEditingTab* hexEditingTab;
-	MemoryEditingTab* pointersTab;
-	MemoryEditingTab* assemblyEditingTab;
+	PointersTab* pointersTab;
+	AssemblyEditingTab* assemblyEditingTab;
 
 	Tab activeTab;
 

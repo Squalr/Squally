@@ -1,4 +1,4 @@
-#include "HexEditingTab.h"
+#include "PointersTab.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
@@ -11,8 +11,6 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
-#include "Entities/Platformer/Special/Shopkeeper.h"
-#include "Menus/Tutorials/HexusStoreMenu.h"
 #include "Menus/Tutorials/TutorialEntry.h"
 #include "Menus/Tutorials/TutorialSelectMenu.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
@@ -26,49 +24,34 @@
 
 using namespace cocos2d;
 
-HexEditingTab* HexEditingTab::create()
+PointersTab* PointersTab::create()
 {
-	HexEditingTab* instance = new HexEditingTab();
+	PointersTab* instance = new PointersTab();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexEditingTab::HexEditingTab()
-{
-	this->hexEditingGold = this->createEntry(TutorialSaveKeys::SaveKeyHexEditGold);
-
-	this->shopkeeper = this->hexEditingGold->addEntity(Shopkeeper::deserialize(ValueMap()), Vec2(-24.0f, 32.0f));
-
-	this->shopkeeper->setScale(0.65f);
-}
-
-HexEditingTab::~HexEditingTab()
+PointersTab::PointersTab()
 {
 }
 
-void HexEditingTab::onEnter()
+PointersTab::~PointersTab()
+{
+}
+
+void PointersTab::onEnter()
 {
 	super::onEnter();
 }
 
-void HexEditingTab::initializeListeners()
+void PointersTab::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->hexEditingGold->setClickCallback([=]()
-	{
-		this->loadHexEditingGoldTutorial();
-	});
 }
 
-void HexEditingTab::initializePositions()
+void PointersTab::initializePositions()
 {
 	super::initializePositions();
-}
-
-void HexEditingTab::loadHexEditingGoldTutorial()
-{
-	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return HexusStoreMenu::getInstance(); }));
 }

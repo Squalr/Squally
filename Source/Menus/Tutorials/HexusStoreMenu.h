@@ -27,7 +27,7 @@ class SmartParticles;
 class HexusStoreMenu : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static HexusStoreMenu* getInstance();
 
 protected:
 	HexusStoreMenu();
@@ -41,18 +41,9 @@ private:
 	typedef GlobalScene super;
 
 	std::tuple<ClickableNode*, MenuCard*, int> constructCard(CardData* cardData);
-	void onBinaryTabClick();
-	void onDecimalTabClick();
-	void onHexTabClick();
-	void onSpecialTabClick();
-	void updateAllCardLimits();
-	void updateCardLimitText(LocalizedLabel* label, ConstantString* countString, ConstantString* limitString, CardData* cardData);
 	void updateGoldText();
-	void hideMenus();
-	void onCardClick(CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
+	void onCardClick(CardData* cardData, int price, ConstantString* countString);
 	void onBackClick();
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);
 
 	SmartParticles* dustParticles;
 	cocos2d::Sprite* storeBack;
@@ -64,22 +55,8 @@ private:
 	cocos2d::Sprite* goldIcon;
 	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
-	ScrollPane* binaryCardsScrollPane;
-	ScrollPane* decimalCardsScrollPane;
-	ScrollPane* hexCardsScrollPane;
-	ScrollPane* specialCardsScrollPane;
-	ClickableNode* binaryButton;
-	ClickableNode* decimalButton;
-	ClickableNode* hexButton;
-	ClickableNode* specialButton;
 	ClickableTextNode* backButton;
 	cocos2d::Node* chosenCardsNode;
-	
-	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> binaryCards;
-	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> decimalCards;
-	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> hexCards;
-	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> specialCards;
-	std::map<MenuCard*, std::tuple<ConstantString*, ConstantString*, LocalizedLabel*>> limitLabels;
 
 	static HexusStoreMenu* instance;
 };
