@@ -43,7 +43,7 @@ private:
 
 	ClickableNode* constructCard(CardData* cardData, int price, std::function<void(CardData*, int)> clickCallback);
 	void updateGoldText();
-	void onCardClick(CardData* cardData, int price);
+	bool purchaseCard(CardData* cardData, int price);
 	void onChallengeComplete();
 	void onResetClick();
 	void onBackClick();

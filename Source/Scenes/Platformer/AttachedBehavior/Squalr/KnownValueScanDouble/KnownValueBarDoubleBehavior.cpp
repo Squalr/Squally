@@ -1,4 +1,4 @@
-#include "UnknownValueBarFloatBehavior.h"
+#include "KnownValueBarDoubleBehavior.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -28,35 +28,41 @@
 
 using namespace cocos2d;
 
-float UnknownValueBarFloatBehavior::Health = 0;
-const float UnknownValueBarFloatBehavior::MaxHealth = 72;
+double KnownValueBarDoubleBehavior::Health = 0;
+const double KnownValueBarDoubleBehavior::MaxHealth = 100;
 
-const std::string UnknownValueBarFloatBehavior::MapKey = "squalr-unknown-float";
+const std::string KnownValueBarDoubleBehavior::MapKey = "squalr-known-double";
 
-UnknownValueBarFloatBehavior* UnknownValueBarFloatBehavior::create(GameObject* owner)
+KnownValueBarDoubleBehavior* KnownValueBarDoubleBehavior::create(GameObject* owner)
 {
-	UnknownValueBarFloatBehavior* instance = new UnknownValueBarFloatBehavior(owner);
+	KnownValueBarDoubleBehavior* instance = new KnownValueBarDoubleBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-UnknownValueBarFloatBehavior::UnknownValueBarFloatBehavior(GameObject* owner) : super(owner)
+KnownValueBarDoubleBehavior::KnownValueBarDoubleBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->deltaString);
+	this->healthString = ConstantString::create("-");
+	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_XOverY::create()
+		->setStringReplacementVariables({ this->healthString, ConstantString::create(StrUtils::doubleToString(KnownValueBarDoubleBehavior::MaxHealth, 1)) }));
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
+
+	this->healthLabel->setTextColor(Color4B::WHITE);
+	this->healthLabel->enableOutline(Color4B::BLACK, 3);
 
 	// Gain text
 	this->deltaLabel->setTextColor(Color4B::RED);
 	this->deltaLabel->enableOutline(Color4B::BLACK, 3);
 	this->spellAura->setOpacity(0);
 
-	this->setHealth(UnknownValueBarFloatBehavior::MaxHealth);
+	this->setHealth(KnownValueBarDoubleBehavior::MaxHealth);
 
 	if (this->entity == nullptr)
 	{
@@ -65,19 +71,20 @@ UnknownValueBarFloatBehavior::UnknownValueBarFloatBehavior(GameObject* owner) : 
 
 	this->addChild(this->spellAura);
 	this->addChild(this->healthBar);
+	this->addChild(this->healthLabel);
 	this->addChild(this->deltaLabel);
 	this->addChild(this->healSound);
 }
 
-UnknownValueBarFloatBehavior::~UnknownValueBarFloatBehavior()
+KnownValueBarDoubleBehavior::~KnownValueBarDoubleBehavior()
 {
 }
 
-void UnknownValueBarFloatBehavior::onLoad()
+void KnownValueBarDoubleBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SqualrEvents::EventProjectileCollided, [=](EventCustom* eventCustom)
 	{
-		this->addHealth(-float(RandomHelper::random_real(8.0, 13.0)));
+		this->addHealth(-double(RandomHelper::random_real(13.0, 17.0)));
 	}));
 
 	this->deltaLabel->setOpacity(0);
@@ -86,40 +93,42 @@ void UnknownValueBarFloatBehavior::onLoad()
 	const float offetY =  this->entity->getEntitySize().height / 2.0f + 24.0f;
 
 	this->spellAura->setPosition(entityCenter + Vec2(0.0f, 32.0f));
+	this->healthLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 24.0f));
 	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f + 24.0f));
 	this->healthBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 
 	this->scheduleUpdate();
 }
 
-void UnknownValueBarFloatBehavior::onDisable()
+void KnownValueBarDoubleBehavior::onDisable()
 {
 	super::onDisable();
 }
 
-void UnknownValueBarFloatBehavior::update(float dt)
+void KnownValueBarDoubleBehavior::update(float dt)
 {
 	super::update(dt);
 
-	this->healthBar->setProgress(float(UnknownValueBarFloatBehavior::Health) / float(UnknownValueBarFloatBehavior::MaxHealth));
+	this->healthBar->setProgress(float(KnownValueBarDoubleBehavior::Health / KnownValueBarDoubleBehavior::MaxHealth));
+	this->healthString->setString(StrUtils::doubleToString(KnownValueBarDoubleBehavior::Health, 1));
 
-	if (UnknownValueBarFloatBehavior::Health <= 0)
+	if (KnownValueBarDoubleBehavior::Health <= 0)
 	{
 		this->onDeath();
 	}
 }
 
-void UnknownValueBarFloatBehavior::addHealth(float delta)
+void KnownValueBarDoubleBehavior::addHealth(double delta)
 {
-	if (UnknownValueBarFloatBehavior::Health <= 0)
+	if (KnownValueBarDoubleBehavior::Health <= 0)
 	{
 		return;
 	}
 
 	// Round to 1 digit
-	delta = float(int(delta * 10.0f + 0.5f) / 10.0f);
+	delta = double(int(delta * 10.0 + 0.5) / 10.0);
 
-	std::string deltaStr = StrUtils::floatToString(delta, 1);
+	std::string deltaStr = StrUtils::doubleToString(delta, 1);
 	
 	this->deltaLabel->setTextColor(delta < 0 ? Color4B::RED : Color4B::GREEN);
 	this->deltaString->setString(delta < 0 ? deltaStr : ("+" + deltaStr));
@@ -130,19 +139,19 @@ void UnknownValueBarFloatBehavior::addHealth(float delta)
 		nullptr
 	));
 
-	this->setHealth(UnknownValueBarFloatBehavior::Health + delta);
+	this->setHealth(KnownValueBarDoubleBehavior::Health + delta);
 }
 
-void UnknownValueBarFloatBehavior::setHealth(float newHealth)
+void KnownValueBarDoubleBehavior::setHealth(double newHealth)
 {
 	// Round to 1 digit
-	newHealth = float(int(newHealth * 10.0f + 0.5f) / 10.0f);
+	newHealth = double(int(newHealth * 10.0 + 0.5) / 10.0);
 
-	if (newHealth <= UnknownValueBarFloatBehavior::MaxHealth / 2)
+	if (newHealth <= KnownValueBarDoubleBehavior::MaxHealth / 2)
 	{
 		this->entity->getAnimations()->playAnimation("AttackCast1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		
-		this->addHealth(UnknownValueBarFloatBehavior::MaxHealth - UnknownValueBarFloatBehavior::Health);
+		this->addHealth(KnownValueBarDoubleBehavior::MaxHealth - KnownValueBarDoubleBehavior::Health);
 		this->spellAura->runAction(Sequence::create(
 			FadeTo::create(0.25f, 255),
 			DelayTime::create(1.0f),
@@ -154,15 +163,15 @@ void UnknownValueBarFloatBehavior::setHealth(float newHealth)
 	}
 	else
 	{
-		UnknownValueBarFloatBehavior::Health = newHealth;
+		KnownValueBarDoubleBehavior::Health = newHealth;
 	}
 }
 
-void UnknownValueBarFloatBehavior::onDeath()
+void KnownValueBarDoubleBehavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
 
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyUnknownValueFloat, Value(true));
+	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyKnownValueDouble, Value(true));
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.5f),

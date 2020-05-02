@@ -97,6 +97,15 @@ std::string StrUtils::toUpper(std::string str)
 	return str;
 }
 
+std::string StrUtils::doubleToString(double value, int precision)
+{
+	std::stringstream stream = std::stringstream();
+
+	stream << std::fixed << std::setprecision(precision) << value;
+
+	return stream.str();
+}
+
 std::string StrUtils::floatToString(float value, int precision)
 {
 	std::stringstream stream = std::stringstream();

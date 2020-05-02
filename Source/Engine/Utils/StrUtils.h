@@ -12,6 +12,7 @@ public:
 	static std::string quote(std::string value);
 	static std::string toLower(std::string str);
 	static std::string toUpper(std::string str);
+	static std::string doubleToString(double value, int precision);
 	static std::string floatToString(float value, int precision);
 	static bool isInteger(std::string str);
 	static bool isFloat(std::string str);

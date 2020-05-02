@@ -110,18 +110,20 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->xorCard = this->constructCard(CardList::getInstance()->cardListByName[CardKeys::LogicalXor], 420, [=](CardData* cardData, int price)
 	{
-		this->onCardClick(cardData, price);
+		this->purchaseCard(cardData, price);
 	});
 
 	this->andCard = this->constructCard(CardList::getInstance()->cardListByName[CardKeys::LogicalAnd], 542, [=](CardData* cardData, int price)
 	{
-		this->onCardClick(cardData, price);
+		this->purchaseCard(cardData, price);
 	});
 
 	this->inverseCard = this->constructCard(CardList::getInstance()->cardListByName[CardKeys::Inverse], 2000, [=](CardData* cardData, int price)
 	{
-		this->onCardClick(cardData, price);
-		this->onChallengeComplete();
+		if (this->purchaseCard(cardData, price))
+		{
+			this->onChallengeComplete();
+		}
 	});
 
 	this->resetButton->setClickSound(SoundResources::Menus_ButtonClick5);
@@ -265,14 +267,14 @@ ClickableNode* HexusStoreMenu::constructCard(CardData* cardData, int price, std:
 	return cardContainer;
 }
 
-void HexusStoreMenu::onCardClick(CardData* cardData, int price)
+bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 {
 	int gold = SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt();
 
 	if (gold < price)
 	{
 		this->errorSound->play();
-		return;
+		return false;
 	}
 
 	gold -= price;
@@ -280,6 +282,8 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price)
 
 	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(gold));
 	this->updateGoldText();
+
+	return true;
 }
 
 void HexusStoreMenu::onChallengeComplete()

@@ -13,16 +13,16 @@ class PlatformerEntity;
 class ProgressBar;
 class WorldSound;
 
-class UnknownValueBarFloatBehavior : public AttachedBehavior
+class KnownValueBarDoubleBehavior : public AttachedBehavior
 {
 public:
-	static UnknownValueBarFloatBehavior* create(GameObject* owner);
+	static KnownValueBarDoubleBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	UnknownValueBarFloatBehavior(GameObject* owner);
-	virtual ~UnknownValueBarFloatBehavior();
+	KnownValueBarDoubleBehavior(GameObject* owner);
+	virtual ~KnownValueBarDoubleBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
@@ -31,8 +31,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void addHealth(float newHealth);
-	void setHealth(float newHealth);
+	void addHealth(double newHealth);
+	void setHealth(double newHealth);
 	void onDeath();
 
 	PlatformerEntity* entity;
@@ -41,8 +41,10 @@ private:
 	ProgressBar* healthBar;
 	ConstantString* deltaString;
 	LocalizedLabel* deltaLabel;
+	ConstantString* healthString;
+	LocalizedLabel* healthLabel;
 	WorldSound* healSound;
 
-	static float Health;
-	static const float MaxHealth;
+	static double Health;
+	static const double MaxHealth;
 };

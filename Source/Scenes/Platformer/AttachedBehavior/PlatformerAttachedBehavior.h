@@ -41,6 +41,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/IllusionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/LockedPortal.h"
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
+#include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanDouble/KnownValueBarDoubleBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanFloat/KnownValueBarFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanInt32/KnownValueBarInt32Behavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/UnknownValueScanFloat/UnknownValueBarFloatBehavior.h"
