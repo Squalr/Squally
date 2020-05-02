@@ -85,3 +85,4 @@
 #include "Objects/Platformer/Traps/SpikedBall/SpikedBall.h"
 #include "Objects/Platformer/Traps/SpikedLog/SpikedLog.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikes.h"
+#include "Objects/Platformer/Interactables/Tutorials/FloatTutorialPortal.h"

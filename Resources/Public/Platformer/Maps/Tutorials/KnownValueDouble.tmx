@@ -26,7 +26,7 @@
   </properties>
   <object id="894" name="cryogen" type="entity" x="1231.64" y="920" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,face-squally,squalr-known-float"/>
+    <property name="attached-behavior" value="enemy,face-squally,squalr-known-double"/>
    </properties>
   </object>
  </objectgroup>

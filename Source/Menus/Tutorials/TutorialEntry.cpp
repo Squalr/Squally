@@ -65,6 +65,10 @@ void TutorialEntry::onEnter()
 	{
 		this->frame->disableInteraction(255);
 	}
+	else
+	{
+		this->frame->enableInteraction(255);
+	}
 	
 	this->lockedLayer->setVisible(!unlocked);
 	this->lockIcon->setVisible(!unlocked);

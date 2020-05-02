@@ -112,6 +112,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[FloatingBomb::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatingBomb::create(properties); };
 	this->deserializers[FloatingCrate::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatingCrate::create(properties); };
 	this->deserializers[FloatingRock::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatingRock::create(properties); };
+	this->deserializers[FloatTutorialPortal::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatTutorialPortal::create(properties); };
 	this->deserializers[FloatingWoodenBeam::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatingWoodenBeam::create(properties); };
 	this->deserializers[FrostPortal::MapKey] = [=](ValueMap properties) { return (GameObject*)FrostPortal::create(properties); };
 	this->deserializers[Gate::MapKey] = [=](ValueMap properties) { return (GameObject*)Gate::create(properties); };

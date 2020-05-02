@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="59" nextobjectid="900">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="902">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -36,32 +36,28 @@
   <object id="891" name="lava" type="terrain" x="-56.3218" y="2437.32">
    <polygon points="-145.669,30.0453 3432.32,30.9777 3428.8,745.33 -148.795,746.678"/>
   </object>
-  <object id="894" name="lava" type="terrain" x="2294.72" y="-148.764">
-   <polygon points="-11.2722,144.922 265.601,149.419 265.329,3595.05 -11.5141,3601.55"/>
+  <object id="894" name="lava" type="terrain" x="2294.72" y="-144.752">
+   <polygon points="-11.2722,140.91 265.601,145.282 265.329,3495.52 -11.5141,3501.84"/>
   </object>
+ </objectgroup>
+ <objectgroup id="59" name="decor">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="900" name="Generic/WoodCaveDoor1" type="decor" x="2626" y="2066.5" width="388" height="403"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="Generic/WoodCaveDoor1" type="decor" x="2626" y="2066.5" width="388" height="403">
-   <properties>
-    <property name="map" value="EndianForest/Zone_2_6"/>
-    <property name="transition" value="entrance-D"/>
-   </properties>
-  </object>
+  <object id="901" name="float-tutorial-portal" type="object" x="2702" y="2212.5" width="256" height="256"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="899" name="krampus" type="entity" x="1536.67" y="2340.67" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,face-squally,squalr-unknown-int"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
