@@ -194,9 +194,10 @@ void CollisionObject::runPhysics(float dt)
 		const float cosTheta = std::cos(rotationInRad);
 		const float sinTheta = std::sin(rotationInRad);
 
-		const Vec2 positionUpdates = Vec2(
+		const Vec3 positionUpdates = Vec3(
 			(this->velocity.x * cosTheta - this->velocity.y * sinTheta) * dt,
-			(this->velocity.x * sinTheta + this->velocity.y * cosTheta) * dt
+			(this->velocity.x * sinTheta + this->velocity.y * cosTheta) * dt,
+			0.0f
 		);
 
 		this->setThisOrBindPosition(this->getThisOrBindPosition() + positionUpdates);
@@ -352,7 +353,7 @@ bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
 	return std::find(this->currentCollisions->begin(), this->currentCollisions->end(), collisionObject) != this->currentCollisions->end();
 }
 
-void CollisionObject::warpTo(cocos2d::Vec2 location)
+void CollisionObject::warpTo(cocos2d::Vec3 location)
 {
 	this->setThisOrBindPosition(location);
 }
@@ -454,27 +455,27 @@ std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float capsule
 	return points; // PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
-cocos2d::Vec2 CollisionObject::getThisOrBindPosition()
+cocos2d::Vec3 CollisionObject::getThisOrBindPosition()
 {
 	if (this->bindTarget == nullptr)
 	{
-		return this->getPosition();
+		return this->getPosition3D();
 	}
 	else
 	{
-		return this->bindTarget->getPosition();
+		return this->bindTarget->getPosition3D();
 	}
 }
 
-void CollisionObject::setThisOrBindPosition(cocos2d::Vec2 position)
+void CollisionObject::setThisOrBindPosition(cocos2d::Vec3 position)
 {
 	if (this->bindTarget == nullptr)
 	{
-		this->setPosition(position);
+		this->setPosition3D(position);
 	}
 	else
 	{
-		this->bindTarget->setPosition(position);
+		this->bindTarget->setPosition3D(position);
 	}
 
 	this->computeWorldCoords(true);

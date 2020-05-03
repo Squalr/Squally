@@ -20,8 +20,9 @@
 using namespace cocos2d;
 
 const std::string Warp::MapKey = "warp";
-const std::string Warp::MapKeyWarpFrom = "from";
-const std::string Warp::MapKeyWarpTo = "to";
+const std::string Warp::PropertyWarpFrom = "from";
+const std::string Warp::PropertyWarpTo = "to";
+const std::string Warp::PropertyRelayer = "relayer";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
 
 Warp* Warp::create(ValueMap& properties)
@@ -35,8 +36,9 @@ Warp* Warp::create(ValueMap& properties)
 
 Warp::Warp(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
-	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpFrom, Value("")).asString();
-	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpTo, Value("")).asString();
+	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpFrom, Value("")).asString();
+	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
+	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
 
 	this->setInteractType(InteractType::Input);
 }
@@ -63,7 +65,12 @@ void Warp::initializeListeners()
 	{
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
-			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, this->getPosition()));
+			if (this->relayer)
+			{
+				// TODO: Relayer target object to the same layer as this warp
+			}
+
+			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
 		}), Squally::MapKey);
 	});
 }

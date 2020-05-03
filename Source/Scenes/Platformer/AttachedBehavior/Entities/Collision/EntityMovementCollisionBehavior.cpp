@@ -106,7 +106,7 @@ void EntityMovementCollisionBehavior::onLoad()
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
 			{
-				this->warpToPosition(GameUtils::getWorldCoords(object));
+				this->warpToPosition(GameUtils::getWorldCoords3D(object));
 			}), args->objectId);
 		}
 	}));
@@ -124,7 +124,7 @@ void EntityMovementCollisionBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
-void EntityMovementCollisionBehavior::warpToPosition(Vec2 position)
+void EntityMovementCollisionBehavior::warpToPosition(Vec3 position)
 {
 	// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)

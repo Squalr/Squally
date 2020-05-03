@@ -39,7 +39,8 @@ HexEditingTab::HexEditingTab()
 {
 	this->hexEditingGold = this->createEntry(TutorialSaveKeys::SaveKeyHexEditGold);
 
-	this->shopkeeper = this->hexEditingGold->addEntity(Shopkeeper::deserialize(ValueMap()), Vec2(-24.0f, 32.0f));
+	ValueMap properties = ValueMap();
+	this->shopkeeper = this->hexEditingGold->addEntity(Shopkeeper::deserialize(properties), Vec2(-24.0f, 32.0f));
 
 	this->shopkeeper->setScale(0.65f);
 }

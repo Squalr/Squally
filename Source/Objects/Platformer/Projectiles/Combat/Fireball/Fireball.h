@@ -14,7 +14,7 @@ public:
 	static Fireball* create(PlatformerEntity* owner, PlatformerEntity* target);
 	
 	void runSpawnFX() override;
-	void runImpactFX();
+	void runImpactFX() override;
 
 	static const std::string HackIdentifierFireballSpeed;
 

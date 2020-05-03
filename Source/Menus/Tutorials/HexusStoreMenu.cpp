@@ -76,8 +76,9 @@ HexusStoreMenu::HexusStoreMenu()
 	this->goldLabel->setAlignment(TextHAlignment::LEFT);
 	this->goldLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
+	ValueMap properties = ValueMap();
 	this->storeBack = Sprite::create(UIResources::Menus_TutorialsMenu_Store_StoreBack);
-	this->shopKeeper = Shopkeeper::deserialize(ValueMap());
+	this->shopKeeper = Shopkeeper::deserialize(properties);
 	this->storeFront = Sprite::create(UIResources::Menus_TutorialsMenu_Store_Store);
 	this->storeNode = Node::create();
 	this->storeMenu = Sprite::create(UIResources::Menus_TutorialsMenu_Store_StoreBoard);

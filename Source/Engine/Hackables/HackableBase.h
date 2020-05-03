@@ -54,7 +54,7 @@ protected:
 
 	void onEnter() override;
 	void initializeListeners() override;
-	void update(float dt);
+	void update(float dt) override;
 	void startTimer();
 	void resetTimer();
 

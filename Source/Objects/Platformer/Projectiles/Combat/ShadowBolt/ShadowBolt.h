@@ -14,7 +14,7 @@ public:
 	static ShadowBolt* create(PlatformerEntity* owner, PlatformerEntity* target);
 	
 	void runSpawnFX() override;
-	void runImpactFX();
+	void runImpactFX() override;
 
 protected:
 	ShadowBolt(PlatformerEntity* owner, PlatformerEntity* target);

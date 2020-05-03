@@ -87,8 +87,8 @@ void FollowMovementBehavior::update(float dt)
 		return;
 	}
 
-	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
-	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
+	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
 
 	if (std::abs(squallyPosition.x - entityPosition.x) >= FollowMovementBehavior::ResetRangeX ||
 		std::abs(squallyPosition.y - entityPosition.y) >= FollowMovementBehavior::ResetRangeY)

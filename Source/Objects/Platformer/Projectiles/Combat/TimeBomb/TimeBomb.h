@@ -16,7 +16,7 @@ public:
 	static TimeBomb* create(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode);
 	
 	void runSpawnFX() override;
-	void runImpactFX();
+	void runImpactFX() override;
 
 protected:
 	TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode);

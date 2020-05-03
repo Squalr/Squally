@@ -59,9 +59,9 @@ public:
 	struct WarpObjectToLocationArgs
 	{
 		GameObject* object;
-		cocos2d::Vec2 position;
+		cocos2d::Vec3 position;
 
-		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec2 position) : object(object), position(position)
+		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec3 position) : object(object), position(position)
 		{
 		}
 	};

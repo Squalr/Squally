@@ -9,8 +9,9 @@ public:
 	static Warp* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
-	static const std::string MapKeyWarpFrom;
-	static const std::string MapKeyWarpTo;
+	static const std::string PropertyWarpFrom;
+	static const std::string PropertyWarpTo;
+	static const std::string PropertyRelayer;
 
 protected:
 	Warp(cocos2d::ValueMap& properties);
@@ -26,6 +27,7 @@ private:
 
 	std::string from;
 	std::string to;
+	bool relayer;
 
 	static const std::string EventWarpToPrefix;
 };

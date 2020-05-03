@@ -48,12 +48,13 @@ MemoryEditingTab::MemoryEditingTab()
 	this->knownValueDouble = this->createEntry(TutorialSaveKeys::SaveKeyKnownValueDouble, this->unknownValueFloat);
 	this->unknownValueFloatAdvanced = this->createEntry(TutorialSaveKeys::SaveKeyKnownValueFloatAdvanced, this->knownValueDouble);
 
-	this->kingZul = this->knownValueInt->addEntity(KingZul::deserialize(ValueMap()), Vec2(-16.0f, 48.0f));
-	this->agnes = this->knownValueFloat->addEntity(Agnes::deserialize(ValueMap()), Vec2(-32.0f, 64.0f));
-	this->lazarus = this->unknownValueInt->addEntity(Lazarus::deserialize(ValueMap()), Vec2(-8.0f, -24.0f));
-	this->asmodeus = this->unknownValueFloat->addEntity(Asmodeus::deserialize(ValueMap()), Vec2(-32.0f, 24.0f));
-	this->cryogen = this->knownValueDouble->addEntity(Cryogen::deserialize(ValueMap()), Vec2(-48.0f, 24.0f));
-	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(ValueMap()), Vec2(-24.0f, 16.0f));
+	ValueMap properties = ValueMap();
+	this->kingZul = this->knownValueInt->addEntity(KingZul::deserialize(properties), Vec2(-16.0f, 48.0f));
+	this->agnes = this->knownValueFloat->addEntity(Agnes::deserialize(properties), Vec2(-32.0f, 64.0f));
+	this->lazarus = this->unknownValueInt->addEntity(Lazarus::deserialize(properties), Vec2(-8.0f, -24.0f));
+	this->asmodeus = this->unknownValueFloat->addEntity(Asmodeus::deserialize(properties), Vec2(-32.0f, 24.0f));
+	this->cryogen = this->knownValueDouble->addEntity(Cryogen::deserialize(properties), Vec2(-48.0f, 24.0f));
+	this->krampus = this->unknownValueFloatAdvanced->addEntity(Krampus::deserialize(properties), Vec2(-24.0f, 16.0f));
 }
 
 MemoryEditingTab::~MemoryEditingTab()

@@ -71,7 +71,7 @@ void PortalSpawn::onPlayerSpawn()
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
-		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords(this)));
+		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
 		this->tryShowBanner();
 		
 		if (squally->getAnimations() != nullptr)

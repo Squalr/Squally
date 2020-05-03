@@ -55,8 +55,11 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Animation Sequences", MapResources::Dev_AnimSeq));
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
-	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("Zone_1_0 (UR)", MapResources::UnderflowRuins_Zone_1_0));
+	this->chapterList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("==========", ""));
 	this->chapterList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));
+	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
 	this->chapterList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 	this->chapterList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));

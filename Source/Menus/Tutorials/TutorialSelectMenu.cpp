@@ -147,6 +147,7 @@ void TutorialSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onReturnClick();  });
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onReturnClick();  });
 	this->homeTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Home); });
 	this->memoryEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::MemoryEditing); });

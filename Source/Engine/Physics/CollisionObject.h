@@ -68,7 +68,7 @@ public:
 		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
 	};
 
-	void warpTo(cocos2d::Vec2 location);
+	void warpTo(cocos2d::Vec3 location);
 	void bindTo(GameObject* bindTarget);
 	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
@@ -129,8 +129,8 @@ private:
 	void runPhysics(float dt);
 
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
-	cocos2d::Vec2 getThisOrBindPosition();
-	void setThisOrBindPosition(cocos2d::Vec2 position);
+	cocos2d::Vec3 getThisOrBindPosition();
+	void setThisOrBindPosition(cocos2d::Vec3 position);
 	Shape determineShape();
 	void computeWorldCoords(bool force = false);
 	void propagateRotation();

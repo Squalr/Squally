@@ -40,7 +40,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void warpToPosition(cocos2d::Vec2 position);
+	void warpToPosition(cocos2d::Vec3 position);
 	void buildMovementCollision();
 	void buildWallDetectors();
 	void tryBind();
