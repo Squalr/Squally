@@ -192,6 +192,18 @@ float GameCamera::getCameraDistance()
 	return Camera::getDefaultCamera()->getPositionZ();
 }
 
+float GameCamera::getTargetDepth()
+{
+	float depth = 0.0f;
+
+	if (this->getCurrentTrackingData() != nullptr && this->getCurrentTrackingData()->target != nullptr)
+	{
+		depth += GameUtils::getDepth(this->getCurrentTrackingData()->target);
+	}
+
+	return depth;
+}
+
 void GameCamera::setCameraDistance(float distance)
 {
 	if (Camera::getDefaultCamera() == nullptr)

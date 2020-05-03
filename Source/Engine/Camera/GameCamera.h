@@ -26,6 +26,7 @@ public:
 	static GameCamera* getInstance();
 
 	float getCameraDistance();
+	float getTargetDepth();
 	void setCameraDistance(float distance);
 	float getCameraZoomOnTarget(cocos2d::Node* target);
 	float getCameraZoom();
@@ -67,7 +68,6 @@ private:
 
 	std::stack<CameraTrackingData> targetStack;
 	cocos2d::Rect mapBounds;
-	CameraTrackingData currentTrackingData;
 	float defaultDistance;
 
 	Hud* hud;
