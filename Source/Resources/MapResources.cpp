@@ -17,6 +17,7 @@ const std::string MapResources::Dev_Items = "Public/Platformer/Maps/Dev/Items.tm
 const std::string MapResources::Dev_PositionBug = "Public/Platformer/Maps/Dev/PositionBug.tmx";
 const std::string MapResources::Dev_Quests = "Public/Platformer/Maps/Dev/Quests.tmx";
 const std::string MapResources::Dev_Terrain = "Public/Platformer/Maps/Dev/Terrain.tmx";
+const std::string MapResources::Dev_WarpDepth = "Public/Platformer/Maps/Dev/WarpDepth.tmx";
 const std::string MapResources::EndianForest_Combat_BlueGrass = "Public/Platformer/Maps/EndianForest/Combat_BlueGrass.tmx";
 const std::string MapResources::EndianForest_Combat_Caves = "Public/Platformer/Maps/EndianForest/Combat_Caves.tmx";
 const std::string MapResources::EndianForest_Combat_DarkGrass = "Public/Platformer/Maps/EndianForest/Combat_DarkGrass.tmx";

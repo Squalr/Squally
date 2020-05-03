@@ -66,6 +66,8 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 
 	this->entityCollision->setPosition(offset);
 
+	this->entityCollision->setName("Entity collision");
+
 	this->addChild(this->entityCollision);
 
 	this->onEntityCollisionCreated();

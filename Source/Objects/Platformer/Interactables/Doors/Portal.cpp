@@ -39,6 +39,8 @@ Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties,
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
 
+	this->setName("Portal: " + this->mapFile);
+
 	if (this->mapFile.empty())
 	{
 		this->setInteractType(InteractType::None);

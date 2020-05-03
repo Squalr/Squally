@@ -70,6 +70,13 @@ void SquallyCollisionBehavior::onLoad()
 
 	this->squally->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* collisionBehavior)
 	{
+		collisionBehavior->setName("Squally entity collision");
+		
+		if (collisionBehavior->groundCollision == nullptr)
+		{
+			return;
+		}
+
 		collisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
 			collisionBehavior->onCollideWithGround();
@@ -80,6 +87,11 @@ void SquallyCollisionBehavior::onLoad()
 
 	this->squally->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
+		if (collisionBehavior->movementCollision == nullptr)
+		{
+			return;
+		}
+
 		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;

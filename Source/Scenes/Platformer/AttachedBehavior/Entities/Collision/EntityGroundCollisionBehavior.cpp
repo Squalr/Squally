@@ -98,21 +98,26 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 
 bool EntityGroundCollisionBehavior::isOnGround()
 {
-	return !this->groundCollision->getCurrentCollisions().empty();
+	return this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty();
 }
 
 bool EntityGroundCollisionBehavior::hasLeftCornerCollision()
 {
-	return !this->leftCornerCollision->getCurrentCollisions().empty();
+	return this->leftCornerCollision == nullptr ? false : !this->leftCornerCollision->getCurrentCollisions().empty();
 }
 
 bool EntityGroundCollisionBehavior::hasRightCornerCollision()
 {
-	return !this->rightCornerCollision->getCurrentCollisions().empty();
+	return this->rightCornerCollision == nullptr ? false :!this->rightCornerCollision->getCurrentCollisions().empty();
 }
 
 bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
 {
+	if (this->groundCollision == nullptr)
+	{
+		return false;
+	}
+
 	Node* currentCollisionGroup = collisonObject->getParent();
 
 	// Special case for intersection points -- just return false
@@ -156,6 +161,11 @@ bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject
 
 bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
 {
+	if (this->groundCollision == nullptr)
+	{
+		return false;
+	}
+
 	Node* currentCollisionGroup = collisonObject->getParent();
 
 	// Special case when standing on an intersection -- The owner of the intersection point has collision priority, as it is the lower of the platforms.

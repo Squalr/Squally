@@ -11,6 +11,7 @@ public:
 	static const std::string MapKey;
 	static const std::string PropertyWarpFrom;
 	static const std::string PropertyWarpTo;
+	static const std::string PropertyNoWarpCamera;
 	static const std::string PropertyRelayer;
 
 protected:
@@ -27,6 +28,7 @@ private:
 
 	std::string from;
 	std::string to;
+	bool warpCamera;
 	bool relayer;
 
 	static const std::string EventWarpToPrefix;

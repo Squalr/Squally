@@ -18,6 +18,7 @@ namespace MapResources
 	extern const std::string Dev_PositionBug;
 	extern const std::string Dev_Quests;
 	extern const std::string Dev_Terrain;
+	extern const std::string Dev_WarpDepth;
 	extern const std::string EndianForest_Combat_BlueGrass;
 	extern const std::string EndianForest_Combat_Caves;
 	extern const std::string EndianForest_Combat_DarkGrass;

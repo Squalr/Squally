@@ -60,8 +60,9 @@ public:
 	{
 		GameObject* object;
 		cocos2d::Vec3 position;
+		bool warpCamera;
 
-		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec3 position) : object(object), position(position)
+		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec3 position, bool warpCamera = true) : object(object), position(position), warpCamera(warpCamera)
 		{
 		}
 	};
@@ -70,8 +71,9 @@ public:
 	{
 		GameObject* object;
 		std::string objectId;
+		bool warpCamera;
 
-		WarpObjectToObjectIdArgs(GameObject* object, std::string objectId) : object(object), objectId(objectId)
+		WarpObjectToObjectIdArgs(GameObject* object, std::string objectId, bool warpCamera = true) : object(object), objectId(objectId), warpCamera(warpCamera)
 		{
 		}
 	};

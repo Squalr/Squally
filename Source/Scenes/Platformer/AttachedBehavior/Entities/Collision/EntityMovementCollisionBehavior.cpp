@@ -94,7 +94,7 @@ void EntityMovementCollisionBehavior::onLoad()
 		
 		if (args != nullptr)
 		{
-			this->warpToPosition(args->position);
+			this->warpToPosition(args->position, args->warpCamera);
 		}
 	}));
 
@@ -106,7 +106,7 @@ void EntityMovementCollisionBehavior::onLoad()
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
 			{
-				this->warpToPosition(GameUtils::getWorldCoords3D(object));
+				this->warpToPosition(GameUtils::getWorldCoords3D(object), args->warpCamera);
 			}), args->objectId);
 		}
 	}));
@@ -124,7 +124,7 @@ void EntityMovementCollisionBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
-void EntityMovementCollisionBehavior::warpToPosition(Vec3 position)
+void EntityMovementCollisionBehavior::warpToPosition(Vec3 position, bool warpCamera)
 {
 	// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
@@ -134,7 +134,7 @@ void EntityMovementCollisionBehavior::warpToPosition(Vec3 position)
 			this->tryBind();
 			this->movementCollision->warpTo(position);
 
-			if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
+			if (warpCamera && GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
 			{
 				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 			}
@@ -248,6 +248,15 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		CollisionObject::Properties(true, false),
 		Color4F::BLUE
 	);
+	
+	if (dynamic_cast<Squally*>(this->entity) != nullptr)
+	{
+		this->movementCollision->setName("squally movement");
+	}
+	else
+	{
+		this->movementCollision->setName("entity movement");
+	}
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
@@ -366,6 +375,8 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 void EntityMovementCollisionBehavior::buildWallDetectors()
 {
+	return;
+
 	const Size wallDetectorSize = Size(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
 
 	this->leftCollision = CollisionObject::create(

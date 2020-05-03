@@ -163,6 +163,11 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 		edgeCollisionLayer->addChild(rightCollision);
 		edgeCollisionLayer->addChild(bottomCollision);
 
+		topCollision->setName("Top collision");
+		leftCollision->setName("Left collision");
+		rightCollision->setName("Right collision");
+		bottomCollision->setName("Bottom collision");
+
 		topCollision->setPosition(Vec2(mapSize.width / 2.0f, mapSize.height + EdgeThickness / 2.0f));
 		bottomCollision->setPosition(Vec2(mapSize.width / 2.0f, -EdgeThickness / 2.0f));
 		leftCollision->setPosition(Vec2(-EdgeThickness / 2.0f, mapSize.height / 2.0f));

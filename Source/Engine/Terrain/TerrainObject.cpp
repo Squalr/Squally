@@ -56,6 +56,8 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 
 	this->addTag(TerrainObject::MapKeyTypeTerrain);
 
+	this->setName("terrain - " + GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeTerrain, Value("")).asString());
+
 	this->rootNode = Node::create();
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();

@@ -459,11 +459,11 @@ cocos2d::Vec3 CollisionObject::getThisOrBindPosition()
 {
 	if (this->bindTarget == nullptr)
 	{
-		return this->getPosition3D();
+		return GameUtils::getWorldCoords3D(this);
 	}
 	else
 	{
-		return this->bindTarget->getPosition3D();
+		return GameUtils::getWorldCoords3D(this->bindTarget);
 	}
 }
 
@@ -471,11 +471,11 @@ void CollisionObject::setThisOrBindPosition(cocos2d::Vec3 position)
 {
 	if (this->bindTarget == nullptr)
 	{
-		this->setPosition3D(position);
+		GameUtils::setWorldCoords3D(this, position);
 	}
 	else
 	{
-		this->bindTarget->setPosition3D(position);
+		GameUtils::setWorldCoords3D(this->bindTarget, position);
 	}
 
 	this->computeWorldCoords(true);

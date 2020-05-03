@@ -100,6 +100,8 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 
 	if (this->weaponCollision != nullptr)
 	{
+		this->weaponCollision->setName("Squally weapon collision");
+		
 		this->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (!this->canEngage || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))

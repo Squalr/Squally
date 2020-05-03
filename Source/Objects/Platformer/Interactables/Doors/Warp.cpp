@@ -23,6 +23,7 @@ using namespace cocos2d;
 const std::string Warp::MapKey = "warp";
 const std::string Warp::PropertyWarpFrom = "from";
 const std::string Warp::PropertyWarpTo = "to";
+const std::string Warp::PropertyNoWarpCamera = "no-warp-camera";
 const std::string Warp::PropertyRelayer = "relayer";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
 
@@ -39,8 +40,10 @@ Warp::Warp(ValueMap& properties) : super(properties, Size(properties.at(GameObje
 {
 	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpFrom, Value("")).asString();
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
+	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
 	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
 
+	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);
 }
 
@@ -76,7 +79,7 @@ void Warp::initializeListeners()
 				}
 			}
 
-			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
+			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
 		}), Squally::MapKey);
 	});
 }

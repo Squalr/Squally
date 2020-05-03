@@ -55,6 +55,8 @@ InteractObject::InteractObject(ValueMap& properties, InteractType interactType, 
 	this->unlockCallback = nullptr;
 	this->squally = nullptr;
 
+	this->interactCollision->setName("Interact");
+
 	this->interactCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
 	this->lockedMenu->setPosition(offset);
