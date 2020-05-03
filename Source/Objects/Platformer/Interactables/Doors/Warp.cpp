@@ -6,6 +6,7 @@
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -67,7 +68,12 @@ void Warp::initializeListeners()
 		{
 			if (this->relayer)
 			{
-				// TODO: Relayer target object to the same layer as this warp
+				MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+
+				if (layer != nullptr)
+				{
+					GameUtils::changeParent(squally, layer, true);
+				}
 			}
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
