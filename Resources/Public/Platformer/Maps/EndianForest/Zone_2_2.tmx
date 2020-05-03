@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="781">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="782">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -140,6 +140,11 @@
   </object>
   <object id="778" name="solid-npc" type="collision" x="670.9" y="1890.17" width="121.03" height="777.836"/>
   <object id="779" name="solid-npc" type="collision" x="2211.49" y="1866.96" width="121.03" height="777.836"/>
+  <object id="781" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -252,11 +257,6 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="496.987" y="2802.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="2906.5" width="270" height="748"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="2879" width="270" height="748"/>
-  <object id="691" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
-   <properties>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

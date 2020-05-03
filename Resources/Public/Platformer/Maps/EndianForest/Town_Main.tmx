@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="963">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="971">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -232,23 +232,16 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="747" name="wood" type="terrain" x="5962.16" y="5795.64">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
-  </object>
   <object id="759" name="wood" type="terrain" x="440.218" y="2734.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
-  <object id="824" name="wood" type="terrain" x="5962.16" y="5795.64">
+  <object id="963" name="wood" type="terrain" x="5961.5" y="5795" width="347.5" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
  </objectgroup>
  <objectgroup id="66" name="bridge -4">
@@ -256,23 +249,16 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="wood" type="terrain" x="5961.43" y="5808.84">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
-  </object>
   <object id="758" name="wood" type="terrain" x="440.218" y="2747.75">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
-  <object id="823" name="wood" type="terrain" x="5961.43" y="5808.84">
+  <object id="966" name="wood" type="terrain" x="5961.25" y="5806.75" width="347.5" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
  </objectgroup>
  <objectgroup id="65" name="bridge -3">
@@ -280,23 +266,16 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="745" name="wood" type="terrain" x="5960.7" y="5822.05">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
-  </object>
   <object id="757" name="wood" type="terrain" x="439.008" y="2761">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
-  <object id="822" name="wood" type="terrain" x="5960.7" y="5822.05">
+  <object id="968" name="wood" type="terrain" x="5961.25" y="5819.25" width="347.5" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
  </objectgroup>
  <objectgroup id="64" name="bridge -2">
@@ -304,23 +283,16 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="744" name="wood" type="terrain" x="5961.43" y="5838.18">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
-  </object>
   <object id="756" name="wood" type="terrain" x="439.008" y="2771.85">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
-  <object id="821" name="wood" type="terrain" x="5961.43" y="5838.18">
+  <object id="969" name="wood" type="terrain" x="5962.25" y="5834.75" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
  </objectgroup>
  <objectgroup id="19" name="bridge -1">
@@ -328,17 +300,16 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="743" name="wood" type="terrain" x="5962.01" y="5855.03">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
-  </object>
   <object id="755" name="wood" type="terrain" x="439.548" y="2792">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+  <object id="970" name="wood" type="terrain" x="5962.25" y="5852.25" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="18" name="decor background">
