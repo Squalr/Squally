@@ -23,6 +23,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers = std::map<std::string, std::function<AttachedBehavior*(GameObject*)>>();
 
 	this->attachedBehaviorDeserializers[AgroBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AgroBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[BridgeBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)BridgeBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[DisabledPortal::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DisabledPortal::create(owner); };
 	this->attachedBehaviorDeserializers[EnemyBattleAllyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBattleAllyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[EnemyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBehaviorGroup::create(owner); };
@@ -83,6 +84,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[PuzzleDBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleDBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PuzzleEBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleEBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleFBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleGBehavior::create(owner); };
 
 	// EF
 	this->attachedBehaviorDeserializers[AraHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AraHexusBehavior::create(owner); };

@@ -96,12 +96,6 @@ void InteractObject::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
-	{
-		this->isLocked = false;
-		this->updateInteractMenuVisibility();
-	});
-
 	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->lock(false);

@@ -4,16 +4,16 @@
 
 class Portal;
 
-class IllusionBehavior : public AttachedBehavior
+class BridgeBehavior : public AttachedBehavior
 {
 public:
-	static IllusionBehavior* create(GameObject* owner);
+	static BridgeBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	IllusionBehavior(GameObject* owner);
-	virtual ~IllusionBehavior();
+	BridgeBehavior(GameObject* owner);
+	virtual ~BridgeBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
@@ -21,10 +21,12 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	Portal* portal;
 	GameObject* object;
 	std::string group;
+	cocos2d::Vec2 originalPosition;
+	int bridgeIndex;
 
 	static const std::string PropertyGroup;
-	static const std::string SaveKeyDispelled;
+	static const std::string PropertyBridgeIndex;
+	static const std::string SaveKeyRaised;
 };

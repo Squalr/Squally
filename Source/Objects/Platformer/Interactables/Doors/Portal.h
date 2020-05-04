@@ -31,4 +31,6 @@ private:
 
 	std::string transition;
 	std::string mapFile;
+	
+	static const std::string SaveKeyListenEventTriggered;
 };

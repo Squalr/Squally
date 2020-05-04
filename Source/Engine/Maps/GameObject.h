@@ -8,7 +8,6 @@
 
 namespace cocos2d
 {
-	class EventListener;
 	class Value;
 	typedef std::map<std::string, cocos2d::Value> ValueMap;
 }

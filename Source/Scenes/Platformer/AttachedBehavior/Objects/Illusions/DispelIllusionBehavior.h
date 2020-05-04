@@ -30,4 +30,5 @@ private:
 	std::string group;
 
 	static const std::string PropertyGroup;
+	static const std::string SaveKeyDispelled;
 };

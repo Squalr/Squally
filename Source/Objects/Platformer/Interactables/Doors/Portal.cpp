@@ -24,6 +24,7 @@ using namespace cocos2d;
 const std::string Portal::MapKey = "portal";
 const std::string Portal::MapKeyPortalTransition = "transition";
 const std::string Portal::MapKeyPortalMap = "map";
+const std::string Portal::SaveKeyListenEventTriggered = "SAVE_KEY_LISTEN_EVENT_TRIGGERED";
 
 Portal* Portal::create(ValueMap& properties)
 {
@@ -55,12 +56,13 @@ void Portal::onEnter()
 {
 	super::onEnter();
 
-	if (!this->getListenEvent().empty())
+	if (!this->getListenEvent().empty() && !this->getObjectStateOrDefault(Portal::SaveKeyListenEventTriggered, Value(false)).asBool())
 	{
 		this->lock(false);
 
 		this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
 		{
+			this->saveObjectState(Portal::SaveKeyListenEventTriggered, Value(true));
 			this->unlock(true);
 		});
 	}

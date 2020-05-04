@@ -32,6 +32,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyNoSavePositionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityDisarmedBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/Bridges/BridgeBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/DartLauncherClippyNopBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/IsSwimmingClippyBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/MechanicalFlailClippyAngleBehavior.h"

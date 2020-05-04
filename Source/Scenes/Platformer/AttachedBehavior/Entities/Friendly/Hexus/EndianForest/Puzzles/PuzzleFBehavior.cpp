@@ -81,8 +81,8 @@ StateOverride* PuzzleFBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -92,18 +92,17 @@ StateOverride* PuzzleFBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
@@ -113,16 +112,14 @@ StateOverride* PuzzleFBehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			
 		}
 	);
 }

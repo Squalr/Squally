@@ -249,12 +249,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="80" name="bridge -0.5">
+ <objectgroup id="80" name="bridge -1">
   <properties>
-   <property name="depth" type="float" value="-32"/>
+   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="926" name="wood" type="terrain" x="6892" y="2159.25" width="347" height="356.5">
+  <object id="926" name="wood" type="terrain" x="6892.5" y="2164.75" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>

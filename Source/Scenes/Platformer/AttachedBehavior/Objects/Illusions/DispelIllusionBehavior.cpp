@@ -21,6 +21,7 @@ using namespace cocos2d;
 
 const std::string DispelIllusionBehavior::MapKey = "dispel-illusion";
 const std::string DispelIllusionBehavior::PropertyGroup = "illusion-group";
+const std::string DispelIllusionBehavior::SaveKeyDispelled = "SAVE_KEY_DISPELLED";
 
 DispelIllusionBehavior* DispelIllusionBehavior::create(GameObject* owner)
 {
@@ -52,6 +53,12 @@ DispelIllusionBehavior::~DispelIllusionBehavior()
 
 void DispelIllusionBehavior::onLoad()
 {
+	if (this->object->getObjectStateOrDefault(DispelIllusionBehavior::SaveKeyDispelled, Value(false)).asBool())
+	{
+		this->object->setOpacity(0);
+		return;
+	}
+
 	this->registerHackables();
 }
 
@@ -83,6 +90,7 @@ void DispelIllusionBehavior::registerHackables()
 void DispelIllusionBehavior::onDispelActivated()
 {
 	this->object->toggleHackable(false);
+	this->object->saveObjectState(DispelIllusionBehavior::SaveKeyDispelled, Value(true));
 
 	PlatformerEvents::TriggerDispelIllusion(PlatformerEvents::DispelIllusionArgs(this->group));
 
