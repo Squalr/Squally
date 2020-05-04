@@ -249,8 +249,8 @@
   </properties>
   <object id="694" name="portal" type="object" x="433.163" y="731.189" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="EndianForest/Town_Main"/>
-    <property name="transition" value="liana"/>
+    <property name="map" value="EndianForest/Town_Liana_Entrance"/>
+    <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="706" name="spawn-wood-door" type="object" x="485.456" y="1067.26" width="128" height="128">

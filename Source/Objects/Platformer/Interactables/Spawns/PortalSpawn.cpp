@@ -8,6 +8,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/UI/MapTitleBanner.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -71,7 +72,16 @@ void PortalSpawn::onPlayerSpawn()
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
+		// Relayer to the spawn object layer
+		MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+
+		if (layer != nullptr)
+		{
+			GameUtils::changeParent(squally, layer, true);
+		}
+		
 		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
+		
 		this->tryShowBanner();
 		
 		if (squally->getAnimations() != nullptr)
