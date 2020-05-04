@@ -49,9 +49,11 @@ private:
 	bool warnOnAgro;
 	float agroRangeX;
 	float agroRangeY;
+	float agroRangeZ;
 	float engageCooldown;
 
 	static const float AgroRangeX;
 	static const float AgroRangeY;
+	static const float AgroRangeZ;
 	static const float EngageCooldownMax;
 };

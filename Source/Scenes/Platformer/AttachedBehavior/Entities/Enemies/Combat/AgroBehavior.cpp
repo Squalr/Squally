@@ -19,6 +19,7 @@ using namespace cocos2d;
 const std::string AgroBehavior::MapKey = "agro";
 const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
+const float AgroBehavior::AgroRangeZ = 24.0f;
 const float AgroBehavior::EngageCooldownMax = 1.0f;
 
 AgroBehavior* AgroBehavior::create(GameObject* owner)
@@ -41,6 +42,7 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 	this->engageCooldown = 0.f;
 	this->agroRangeX = AgroBehavior::AgroRangeX;
 	this->agroRangeY = AgroBehavior::AgroRangeY;
+	this->agroRangeZ = AgroBehavior::AgroRangeZ;
 
 	if (this->entity == nullptr)
 	{
@@ -135,13 +137,14 @@ void AgroBehavior::update(float dt)
 		return;
 	}
 
-	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
-	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
+	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
 	
 	if (!this->isAgrod)
 	{
 		if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
-			std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
+			std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY &&
+			std::abs(squallyPosition.z - entityPosition.z) <= this->agroRangeZ)
 		{
 			this->isAgrod = true;
 
@@ -166,7 +169,8 @@ void AgroBehavior::update(float dt)
 			this->exclamation->setVisible(false);
 			
 			if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
-				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
+				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY &&
+				std::abs(squallyPosition.z - entityPosition.z) <= this->agroRangeZ)
 			{
 				if (this->chaseOnAgro)
 				{
