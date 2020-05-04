@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="715">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="718">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -25,12 +25,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="wood" type="terrain" x="-69.9846" y="1066.21">
-   <polygon points="0,0 2055.67,-2.8322 2055.67,237.904 4.97741,240.737"/>
-  </object>
-  <object id="714" name="wood" type="terrain" x="-72.3012" y="317.267">
-   <polygon points="0,0 2055.67,-0.976837 2055.67,82.054 4.97741,83.0312"/>
-  </object>
+  <object id="715" name="wood" type="terrain" x="-160.302" y="1066.85" width="2290.3" height="234.06"/>
+  <object id="716" name="wood" type="terrain" x="-139.089" y="316.303" width="2238.78" height="82.5448"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -56,11 +52,6 @@
    </properties>
   </object>
   <object id="705" name="breakable-cage" type="object" x="1613.72" y="947.642" width="196" height="112"/>
-  <object id="706" name="spawn-wood-door" type="object" x="422.158" y="937.91" width="128" height="128">
-   <properties>
-    <property name="transition" value="griffin"/>
-   </properties>
-  </object>
   <object id="710" name="camera-focus" type="object" x="1100" y="768" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
@@ -83,6 +74,11 @@
   <object id="523" name="squally" type="entity" x="802.8" y="938.223" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="717" name="spawn-wood-door" type="object" x="422.158" y="937.91" width="128" height="128">
+   <properties>
+    <property name="transition" value="griffin"/>
    </properties>
   </object>
  </objectgroup>

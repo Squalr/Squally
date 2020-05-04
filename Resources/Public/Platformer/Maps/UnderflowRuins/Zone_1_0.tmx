@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="853">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="855">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -131,20 +131,9 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="816" name="spawn" type="object" x="7793.86" y="1898.96" width="128" height="128">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
   <object id="843" name="portal" type="object" x="945.321" y="2174.72" width="256.687" height="378.085">
    <properties>
     <property name="map" value="UnderflowRuins/Home_Geryon"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="844" name="spawn-wood-door" type="object" x="1018.88" y="2423.62" width="128" height="128">
-   <properties>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -214,6 +203,17 @@
     <property name="from" value="bridge-front-B"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+  <object id="853" name="spawn-wood-door" type="object" x="1018.88" y="2423.62" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="854" name="spawn" type="object" x="7793.86" y="1898.96" width="128" height="128">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

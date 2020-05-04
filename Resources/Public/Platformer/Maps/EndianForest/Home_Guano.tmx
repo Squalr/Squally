@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="748">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="749">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -172,11 +172,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="720" name="spawn" type="object" x="972.485" y="1149.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="cell"/>
-   </properties>
-  </object>
   <object id="721" name="mul-door" type="object" x="696.666" y="493.167" width="696" height="775">
    <properties>
     <property name="map" value="EndianForest/Mages_Prison"/>
@@ -200,6 +195,11 @@
   <object id="523" name="squally" type="entity" x="650.588" y="1148.64" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="748" name="spawn" type="object" x="972.485" y="1149.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="cell"/>
    </properties>
   </object>
  </objectgroup>

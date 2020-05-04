@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="779">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="782">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -82,20 +82,10 @@
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="719" name="spawn" type="object" x="8725.33" y="851.455" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit"/>
-   </properties>
-  </object>
   <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="94" y="2558.5" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="164" y="2686" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>
-    <property name="transition" value="entrance"/>
-   </properties>
-  </object>
-  <object id="722" name="spawn" type="object" x="224" y="2818" width="128" height="128">
-   <properties>
     <property name="transition" value="entrance"/>
    </properties>
   </object>
@@ -298,11 +288,6 @@
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="775" name="spawn" type="object" x="3564.06" y="1987.82" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit"/>
-   </properties>
-  </object>
   <object id="776" name="camera-stop" type="object" x="4028" y="457.97" width="536" height="3132.06">
    <properties>
     <property name="no-y" type="bool" value="true"/>
@@ -350,6 +335,21 @@
   <object id="523" name="squally" type="entity" x="823.9" y="2807.62" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn" type="object" x="224" y="2818" width="128" height="128">
+   <properties>
+    <property name="transition" value="entrance"/>
+   </properties>
+  </object>
+  <object id="780" name="spawn" type="object" x="3564.06" y="1987.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
+  <object id="781" name="spawn" type="object" x="8725.33" y="851.455" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit-old"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="38" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="892">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="895">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -92,19 +92,9 @@
     <property name="transition" value="griffin"/>
    </properties>
   </object>
-  <object id="886" name="spawn-wood-door" type="object" x="1405.07" y="1886.86" width="128" height="128">
-   <properties>
-    <property name="transition" value="griffin"/>
-   </properties>
-  </object>
   <object id="887" name="portal" type="object" x="3658.22" y="1637.96" width="256.687" height="378.085">
    <properties>
     <property name="map" value="UnderflowRuins/Home_Geryon"/>
-    <property name="transition" value="geryon"/>
-   </properties>
-  </object>
-  <object id="888" name="spawn-wood-door" type="object" x="3731.78" y="1886.86" width="128" height="128">
-   <properties>
     <property name="transition" value="geryon"/>
    </properties>
   </object>
@@ -125,15 +115,25 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="716" name="spawn" type="object" x="472.179" y="1891.31" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="771" name="edge-portal" type="object" x="1.76608" y="1389.76" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="EndianForest/Zone_3_3"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="892" name="spawn-wood-door" type="object" x="1405.07" y="1886.86" width="128" height="128">
+   <properties>
+    <property name="transition" value="griffin"/>
+   </properties>
+  </object>
+  <object id="893" name="spawn-wood-door" type="object" x="3731.78" y="1886.86" width="128" height="128">
+   <properties>
+    <property name="transition" value="geryon"/>
+   </properties>
+  </object>
+  <object id="894" name="spawn" type="object" x="472.179" y="1891.31" width="128" height="128">
+   <properties>
     <property name="transition" value="main"/>
    </properties>
   </object>

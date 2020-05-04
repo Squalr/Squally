@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="734">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="740">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -149,13 +149,13 @@
   </object>
   <object id="699" name="Generic/WoodCaveDoor1" type="decor" x="422" y="2154.5" width="388" height="403"/>
   <object id="701" name="Generic/WoodCaveDoor1" type="decor" x="2998" y="1027.23" width="388" height="403"/>
-  <object id="703" name="portal" type="object" x="520" y="-540" width="256" height="256">
+  <object id="703" name="portal" type="object" x="484" y="2304" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_1"/>
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="704" name="portal" type="object" x="3037.7" y="-528.967" width="256" height="256">
+  <object id="704" name="portal" type="object" x="3069.7" y="1175.03" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_1"/>
     <property name="transition" value="exit"/>
@@ -183,18 +183,6 @@
   <object id="713" name="camera-control" type="object" x="2618" y="715.97" width="840" height="904.06">
    <properties>
     <property name="target" value="target-A"/>
-   </properties>
-  </object>
-  <object id="726" name="warp" type="object" x="481.091" y="2305.33" width="256" height="256">
-   <properties>
-    <property name="from" value="start"/>
-    <property name="to" value="end"/>
-   </properties>
-  </object>
-  <object id="727" name="warp" type="object" x="3062.91" y="1175.03" width="256" height="256">
-   <properties>
-    <property name="from" value="end"/>
-    <property name="to" value="start"/>
    </properties>
   </object>
   <object id="733" name="camera-stop" type="object" x="8512" y="48" width="424" height="920">
@@ -251,22 +239,22 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="650" name="spawn" type="object" x="9508.02" y="3579.5" width="128" height="128">
+  <object id="736" name="spawn" type="object" x="9508.02" y="3579.5" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="705" name="spawn" type="object" x="544" y="2424" width="128" height="128">
+  <object id="737" name="spawn" type="object" x="544" y="2424" width="128" height="128">
    <properties>
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="706" name="spawn" type="object" x="3128" y="1308.73" width="128" height="128">
+  <object id="738" name="spawn" type="object" x="3128" y="1308.73" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="717" name="spawn" type="object" x="7839.15" y="1096.36" width="128" height="128">
+  <object id="739" name="spawn" type="object" x="7839.15" y="1096.36" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="982">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="983">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -131,11 +131,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="1346.36" y="1538.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="treasure-room"/>
-   </properties>
-  </object>
   <object id="969" name="portal" type="object" x="1279.39" y="1408.12" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_2_4"/>
@@ -188,6 +183,11 @@
   <object id="523" name="squally" type="entity" x="935.292" y="1541.83" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="982" name="spawn" type="object" x="1346.36" y="1538.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="treasure-room"/>
    </properties>
   </object>
  </objectgroup>

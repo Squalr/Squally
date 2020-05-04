@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="974">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="976">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -60,23 +60,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
-   <properties>
-    <property name="map-banner" value=""/>
-    <property name="transition" value="entrance-E"/>
-   </properties>
-  </object>
   <object id="944" name="temple-door" type="object" x="4205.22" y="1642.06" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
     <property name="listen-event" value="grogg-dead"/>
     <property name="map" value="EndianForest/Zone_2_8"/>
     <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="947" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit"/>
    </properties>
   </object>
   <object id="952" name="temple-door" type="object" x="332" y="1644" width="432" height="528">
@@ -148,6 +137,17 @@
   <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
+   <properties>
+    <property name="map-banner" value=""/>
+    <property name="transition" value="entrance-E"/>
+   </properties>
+  </object>
+  <object id="975" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
    </properties>
   </object>
  </objectgroup>

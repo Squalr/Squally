@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="782">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="784">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -127,11 +127,6 @@
     <property name="transition" value="down"/>
    </properties>
   </object>
-  <object id="772" name="spawn" type="object" x="5098.6" y="4632.15" width="128" height="128">
-   <properties>
-    <property name="transition" value="up"/>
-   </properties>
-  </object>
   <object id="777" name="camera-stop" type="object" x="-90.303" y="3304.73" width="2704" height="2696">
    <properties>
     <property name="no-x" type="bool" value="true"/>
@@ -140,11 +135,6 @@
   </object>
   <object id="778" name="solid-npc" type="collision" x="670.9" y="1890.17" width="121.03" height="777.836"/>
   <object id="779" name="solid-npc" type="collision" x="2211.49" y="1866.96" width="121.03" height="777.836"/>
-  <object id="781" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
-   <properties>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -194,6 +184,16 @@
   <object id="523" name="squally" type="entity" x="686.08" y="2964.03" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="782" name="spawn" type="object" x="5098.6" y="4632.15" width="128" height="128">
+   <properties>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="783" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="805">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="809">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -86,9 +86,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="802" name="brick-interior" type="texture" x="-27.2727" y="-30.303">
-   <polygon points="0,0 2230.3,3.0303 2239.39,1239.39 3.0303,1230.3"/>
-  </object>
+  <object id="808" name="brick-interior" type="texture" x="-58" y="-58" width="2284" height="1264"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
@@ -128,9 +126,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="wood" type="terrain" x="-65.4595" y="1066.21">
-   <polygon points="0,0 2289.83,-2.8322 2289.83,237.904 5.54441,240.737"/>
-  </object>
+  <object id="807" name="wood" type="terrain" x="-62.3621" y="1065.94" width="2290.3" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -146,11 +142,6 @@
    <properties>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="smith"/>
-   </properties>
-  </object>
-  <object id="706" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
@@ -209,6 +200,11 @@
   <object id="523" name="squally" type="entity" x="508.588" y="941.93" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="805" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
    </properties>
   </object>
  </objectgroup>

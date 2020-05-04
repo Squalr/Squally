@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="940">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="944">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -179,11 +179,6 @@
     <property name="transition" value="entrance-A"/>
    </properties>
   </object>
-  <object id="915" name="spawn" type="object" x="7815.88" y="1127.82" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit-A"/>
-   </properties>
-  </object>
   <object id="928" name="solid" type="collision" x="3710.18" y="-36.4848" width="107.515" height="2862.06"/>
   <object id="930" name="solid" type="collision" x="9022.24" y="-55.03" width="107.515" height="3150.06"/>
   <object id="931" name="iou" type="object" x="8260.5" y="2044.5" width="87" height="87"/>
@@ -295,11 +290,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="320.364" y="3644.97" width="128" height="128">
-   <properties>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
   <object id="816" name="edge-portal" type="object" x="-11.959" y="3247.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
@@ -326,21 +316,11 @@
     <property name="transition" value="left_alt"/>
    </properties>
   </object>
-  <object id="870" name="spawn" type="object" x="438.424" y="540.36" width="128" height="128">
-   <properties>
-    <property name="transition" value="right_alt"/>
-   </properties>
-  </object>
   <object id="883" name="edge-portal" type="object" x="9012.45" y="1454.58" width="199.918" height="734.959">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="884" name="spawn" type="object" x="8671.55" y="2065.87" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="910" name="spawn" type="object" x="2432" y="132" width="128" height="128">
@@ -386,6 +366,26 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="end"/>
+   </properties>
+  </object>
+  <object id="940" name="spawn" type="object" x="7815.88" y="1127.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit-A"/>
+   </properties>
+  </object>
+  <object id="941" name="spawn" type="object" x="320.364" y="3644.97" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="942" name="spawn" type="object" x="438.424" y="540.36" width="128" height="128">
+   <properties>
+    <property name="transition" value="right_alt"/>
+   </properties>
+  </object>
+  <object id="943" name="spawn" type="object" x="8671.55" y="2065.87" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

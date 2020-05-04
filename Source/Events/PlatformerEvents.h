@@ -20,6 +20,7 @@ public:
 	static const std::string EventSpawnToTransitionLocation;
 	static const std::string EventWarpToLocationPrefix;
 	static const std::string EventWarpToObjectIdPrefix;
+	static const std::string EventAfterWarpPrefix;
 	static const std::string EventBeforePlatformerMapChange;
 	static const std::string EventCinematicHijack;
 	static const std::string EventCinematicRestore;
@@ -63,6 +64,15 @@ public:
 		bool warpCamera;
 
 		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec3 position, bool warpCamera = true) : object(object), position(position), warpCamera(warpCamera)
+		{
+		}
+	};
+
+	struct AfterWarpArgs
+	{
+		GameObject* object;
+
+		AfterWarpArgs(GameObject* object) : object(object)
 		{
 		}
 	};
@@ -193,6 +203,7 @@ public:
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpObjectToLocation(WarpObjectToLocationArgs args);
 	static void TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args);
+	static void TriggerAfterWarp(AfterWarpArgs args);
 	static void TriggerBeforePlatformerMapChange();
 	static void TriggerCinematicHijack();
 	static void TriggerCinematicRestore();

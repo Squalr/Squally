@@ -175,8 +175,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			return PlatformerMap::create(mapResource);
 		}));

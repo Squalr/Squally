@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="916">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="920">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -150,30 +150,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="832" name="spawn" type="object" x="2130.66" y="1784.24" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit-C"/>
-   </properties>
-  </object>
-  <object id="873" name="spawn" type="object" x="755.39" y="1787.5" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit-B"/>
-   </properties>
-  </object>
-  <object id="874" name="warp" type="object" x="1063.57" y="1656.9" width="256" height="256">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="from" value="start"/>
-    <property name="to" value="end"/>
-   </properties>
-  </object>
-  <object id="875" name="warp" type="object" x="1280.43" y="575.09" width="256" height="256">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="from" value="end"/>
-    <property name="to" value="start"/>
-   </properties>
-  </object>
   <object id="886" name="chest" type="object" x="1516" y="684" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-generic"/>
@@ -228,6 +204,30 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="916" name="spawn" type="object" x="2130.66" y="1784.24" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit-C"/>
+   </properties>
+  </object>
+  <object id="917" name="spawn" type="object" x="755.39" y="1787.5" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit-B"/>
+   </properties>
+  </object>
+  <object id="918" name="warp" type="object" x="1063.57" y="1656.9" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="start"/>
+    <property name="to" value="end"/>
+   </properties>
+  </object>
+  <object id="919" name="warp" type="object" x="1280.43" y="575.09" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="end"/>
+    <property name="to" value="start"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>

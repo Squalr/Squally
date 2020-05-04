@@ -95,6 +95,8 @@ void EntityMovementCollisionBehavior::onLoad()
 		if (args != nullptr)
 		{
 			this->warpToPosition(args->position, args->warpCamera);
+
+			PlatformerEvents::TriggerAfterWarp(PlatformerEvents::AfterWarpArgs(this->entity));
 		}
 	}));
 
@@ -108,6 +110,8 @@ void EntityMovementCollisionBehavior::onLoad()
 			{
 				this->warpToPosition(GameUtils::getWorldCoords3D(object), args->warpCamera);
 			}), args->objectId);
+
+			PlatformerEvents::TriggerAfterWarp(PlatformerEvents::AfterWarpArgs(this->entity));
 		}
 	}));
 

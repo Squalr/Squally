@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="153" nextobjectid="938">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="153" nextobjectid="939">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -422,11 +422,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="706" name="spawn" type="object" x="605.579" y="936.631" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="931" name="frost-portal" type="object" x="1975.77" y="811.321" width="128" height="256">
    <properties>
     <property name="map" value="EndianForest/Mages_Gauntlet_3"/>
@@ -455,7 +450,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="squally">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -463,6 +458,11 @@
   <object id="523" name="squally" type="entity" x="803.04" y="939.149" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="938" name="spawn" type="object" x="605.579" y="936.631" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
    </properties>
   </object>
  </objectgroup>

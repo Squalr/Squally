@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="954">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="956">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -313,12 +313,6 @@
     <property name="transition" value="prison"/>
    </properties>
   </object>
-  <object id="706" name="spawn" type="object" x="211.051" y="941.2" width="128" height="128">
-   <properties>
-    <property name="map-banner" value="mages-prison"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="796" name="mul-door" type="object" x="3832.09" y="274.351" width="696" height="775">
    <properties>
     <property name="map" value="EndianForest/Home_Guano"/>
@@ -358,11 +352,6 @@
     <property name="tutorial" value="connect"/>
    </properties>
   </object>
-  <object id="953" name="spawn" type="object" x="4110.67" y="926" width="128" height="128">
-   <properties>
-    <property name="transition" value="cell"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -399,6 +388,17 @@
   <object id="523" name="squally" type="entity" x="533.668" y="938.223" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="954" name="spawn" type="object" x="211.051" y="941.2" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="mages-prison"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="955" name="spawn" type="object" x="4110.67" y="926" width="128" height="128">
+   <properties>
+    <property name="transition" value="cell"/>
    </properties>
   </object>
  </objectgroup>

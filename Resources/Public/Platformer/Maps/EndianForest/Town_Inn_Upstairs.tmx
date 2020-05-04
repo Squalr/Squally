@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="807">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="808">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -222,11 +222,6 @@
     <property name="transition" value="inn-upstairs"/>
    </properties>
   </object>
-  <object id="706" name="spawn" type="object" x="998.81" y="926.286" width="128" height="128">
-   <properties>
-    <property name="transition" value="inn"/>
-   </properties>
-  </object>
   <object id="794" name="chest" type="object" x="1804" y="936" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-generic"/>
@@ -253,6 +248,11 @@
   <object id="523" name="squally" type="entity" x="834.604" y="929.802" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="807" name="spawn" type="object" x="998.81" y="926.286" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
  </objectgroup>

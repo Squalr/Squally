@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="714">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="717">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -25,9 +25,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="wood" type="terrain" x="-69.9846" y="1066.21">
-   <polygon points="0,0 2055.67,-2.8322 2055.67,237.904 4.97741,240.737"/>
-  </object>
+  <object id="714" name="wood" type="terrain" x="-180.302" y="1064.36" width="2290.3" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -53,20 +51,10 @@
     <property name="transition" value="geryon"/>
    </properties>
   </object>
-  <object id="706" name="spawn-wood-door" type="object" x="256.63" y="938.029" width="128" height="128">
-   <properties>
-    <property name="transition" value="geryon"/>
-   </properties>
-  </object>
   <object id="710" name="camera-focus" type="object" x="1100" y="768" width="128" height="128"/>
   <object id="712" name="portal" type="object" x="1265.73" y="775.78" width="237.527" height="287.568">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_1_0"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="713" name="spawn-wood-door" type="object" x="1325.17" y="934.91" width="128" height="128">
-   <properties>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -91,6 +79,16 @@
   <object id="523" name="squally" type="entity" x="536.498" y="938.223" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="715" name="spawn-wood-door" type="object" x="256.63" y="938.029" width="128" height="128">
+   <properties>
+    <property name="transition" value="geryon"/>
+   </properties>
+  </object>
+  <object id="716" name="spawn-wood-door" type="object" x="1325.17" y="934.91" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
    </properties>
   </object>
  </objectgroup>

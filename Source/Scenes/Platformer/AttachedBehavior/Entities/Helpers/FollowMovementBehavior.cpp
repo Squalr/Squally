@@ -1,7 +1,11 @@
 #include "FollowMovementBehavior.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -50,6 +54,24 @@ void FollowMovementBehavior::onLoad()
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
+
+		// Listen for Squally warp
+		this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventAfterWarpPrefix + this->squally->getUniqueIdentifier(), [=](EventCustom* eventCustom)
+		{
+			PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+
+				if (layer != nullptr)
+				{
+					GameUtils::changeParent(this->entity, layer, true);
+
+					PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, GameUtils::getWorldCoords3D(this->squally)));
+				}
+			}
+		}));
 	}, Squally::MapKey);
 	
 	this->entity->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
