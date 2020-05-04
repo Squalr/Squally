@@ -13,6 +13,7 @@ public:
 	static const std::string PropertyWarpTo;
 	static const std::string PropertyNoWarpCamera;
 	static const std::string PropertyRelayer;
+	static const std::string PropertyZoom;
 
 protected:
 	Warp(cocos2d::ValueMap& properties);
@@ -26,10 +27,14 @@ protected:
 private:
 	typedef Portal super;
 
+	void doRelayer();
+	void applyZoomOverride();
+
 	std::string from;
 	std::string to;
 	bool warpCamera;
 	bool relayer;
+	float zoomOverride;
 
 	static const std::string EventWarpToPrefix;
 };

@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/MapLayer.h"
@@ -23,6 +24,7 @@ using namespace cocos2d;
 const std::string Warp::MapKey = "warp";
 const std::string Warp::PropertyWarpFrom = "from";
 const std::string Warp::PropertyWarpTo = "to";
+const std::string Warp::PropertyZoom = "zoom";
 const std::string Warp::PropertyNoWarpCamera = "no-warp-camera";
 const std::string Warp::PropertyRelayer = "relayer";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
@@ -42,6 +44,7 @@ Warp::Warp(ValueMap& properties) : super(properties, Size(properties.at(GameObje
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
 	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
 	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
+	this->zoomOverride = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyZoom, Value(0.0f)).asFloat();
 
 	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);
@@ -69,15 +72,8 @@ void Warp::initializeListeners()
 	{
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
-			if (this->relayer)
-			{
-				MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
-
-				if (layer != nullptr)
-				{
-					GameUtils::changeParent(squally, layer, true);
-				}
-			}
+			this->doRelayer();
+			this->applyZoomOverride();
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
 		}), Squally::MapKey);
@@ -87,4 +83,34 @@ void Warp::initializeListeners()
 void Warp::loadMap()
 {
 	this->broadcastMapEvent(Warp::EventWarpToPrefix + this->to, ValueMap());
+}
+
+void Warp::doRelayer()
+{
+	if (!this->relayer)
+	{
+		return;
+	}
+
+	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+
+	if (layer != nullptr)
+	{
+		GameUtils::changeParent(squally, layer, true);
+	}
+}
+
+void Warp::applyZoomOverride()
+{
+	if (this->zoomOverride == 0.0f)
+	{
+		return;
+	}
+
+	CameraTrackingData* data = GameCamera::getInstance()->getCurrentTrackingData();
+
+	if (data != nullptr)
+	{
+		data->zoom = this->zoomOverride;
+	}
 }

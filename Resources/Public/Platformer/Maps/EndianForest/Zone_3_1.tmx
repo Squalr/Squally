@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="782">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="783">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -35,6 +35,11 @@
    </properties>
   </object>
   <object id="772" name="caverns" type="terrain" x="7429.64" y="-1260.51" width="2116.73" height="2617.01">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="782" name="caverns" type="terrain" x="2926.79" y="167.495" width="1422.43" height="2609.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>

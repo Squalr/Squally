@@ -7,6 +7,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/UI/MapTitleBanner.h"
@@ -20,8 +21,9 @@
 using namespace cocos2d;
 
 const std::string PortalSpawn::MapKey = "spawn";
-const std::string PortalSpawn::MapKeyPortalSpawnTransition = "transition";
-const std::string PortalSpawn::MapKeyMapBanner = "map-banner";
+const std::string PortalSpawn::PropertyPortalSpawnTransition = "transition";
+const std::string PortalSpawn::PropertyMapBanner = "map-banner";
+const std::string PortalSpawn::PropertyZoom = "zoom";
 
 PortalSpawn* PortalSpawn::create(ValueMap& properties)
 {
@@ -34,9 +36,10 @@ PortalSpawn* PortalSpawn::create(ValueMap& properties)
 
 PortalSpawn::PortalSpawn(ValueMap& properties) : super(properties)
 {
-	this->transition = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyPortalSpawnTransition, Value("")).asString();
-	this->bannerName = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyMapBanner, Value("")).asString();
+	this->transition = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::PropertyPortalSpawnTransition, Value("")).asString();
+	this->bannerName = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::PropertyMapBanner, Value("")).asString();
 	this->flipX = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipX, Value(false)).asBool();
+	this->zoomOverride = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::PropertyZoom, Value(0.0f)).asFloat();
 }
 
 PortalSpawn::~PortalSpawn()
@@ -72,14 +75,9 @@ void PortalSpawn::onPlayerSpawn()
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
-		// Relayer to the spawn object layer
-		MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+		this->doRelayer(squally);
+		this->applyZoomOverride();
 
-		if (layer != nullptr)
-		{
-			GameUtils::changeParent(squally, layer, true);
-		}
-		
 		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
 		
 		this->tryShowBanner();
@@ -90,6 +88,32 @@ void PortalSpawn::onPlayerSpawn()
 		}
 
 	}), Squally::MapKey);
+}
+
+void PortalSpawn::doRelayer(Squally* squally)
+{
+	// Relayer to the spawn object layer
+	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+
+	if (layer != nullptr)
+	{
+		GameUtils::changeParent(squally, layer, true);
+	}
+}
+
+void PortalSpawn::applyZoomOverride()
+{
+	if (this->zoomOverride == 0.0f)
+	{
+		return;
+	}
+
+	CameraTrackingData* data = GameCamera::getInstance()->getCurrentTrackingData();
+
+	if (data != nullptr)
+	{
+		data->zoom = this->zoomOverride;
+	}
 }
 
 void PortalSpawn::tryShowBanner()

@@ -12,12 +12,15 @@ public:
 
 	static const std::string MapKey;
 
-private:
-	typedef GameObject super;
+protected:
 	CameraControl(cocos2d::ValueMap& properties);
 	virtual ~CameraControl();
 
 	void initializeListeners() override;
+
+private:
+	typedef GameObject super;
+
 	void beginTrack();
 	void endTrack();
 
