@@ -2,7 +2,7 @@
 <map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="855">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="WaterfallSky"/>
+   <property name="background" value="DesertSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>

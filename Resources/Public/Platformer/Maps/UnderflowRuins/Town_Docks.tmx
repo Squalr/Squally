@@ -2,7 +2,7 @@
 <map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="757">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="WaterfallSky"/>
+   <property name="background" value="DesertSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
@@ -291,7 +291,6 @@
   </properties>
   <object id="694" name="portal" type="object" x="2217.95" y="1435.93" width="256.687" height="235.919">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
     <property name="map" value="EndianForest/Ship_Main"/>
     <property name="tag" value="ship-portal"/>
     <property name="transition" value="ship"/>
@@ -319,8 +318,6 @@
   <object id="692" name="blackbeard" type="entity" x="2991.67" y="1538.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
-    <property name="quest" value="sail-for-ruins"/>
-    <property name="quest-line" value="sail-for-ruins"/>
    </properties>
   </object>
  </objectgroup>

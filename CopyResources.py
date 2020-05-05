@@ -28,11 +28,11 @@ def copyResources():
     destPathPrivate = join(binRoot, "Resources/Private/")
     
     doSync(sourcePathPublic, destPathPublic);
-    doSync(sourcePathPrivate, sourcePathPrivate);
+    doSync(sourcePathPrivate, destPathPrivate);
 
 def doSync(source, dest):
     print("SYNCING: " + source + " => " + dest)
-    sync(source, dest, 'sync', content=True)
+    sync(source, dest, 'sync', create=True, content=True)
     
 
 if __name__ == '__main__':
