@@ -36,7 +36,6 @@ private:
 
 	cocos2d::Size menuSize;
 	bool hasRelocated;
-	bool isShown;
 
 	cocos2d::Node* uiElements;
 	cocos2d::LayerColor* backdrop;

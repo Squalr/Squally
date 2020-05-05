@@ -38,7 +38,6 @@ InteractMenu::InteractMenu(LocalizedString* displayString, float menuWidth)
 	this->menuSize = Size(menuWidth, 48.0f);
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), this->menuSize.width, this->menuSize.height);
 	this->hasRelocated = false;
-	this->isShown = false;
 
 	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
@@ -92,11 +91,6 @@ void InteractMenu::initializeListeners()
 
 void InteractMenu::show()
 {
-	if (this->isShown)
-	{
-		return;
-	}
-
 	if (!this->hasRelocated)
 	{
 		// Move the UI elements to the top-most layer
@@ -105,8 +99,6 @@ void InteractMenu::show()
 		));
 		this->hasRelocated = true;
 	}
-
-	this->isShown = true;
 
 	if (this->uiElements->getOpacity() < 255)
 	{
@@ -117,13 +109,6 @@ void InteractMenu::show()
 
 void InteractMenu::hide()
 {
-	if (!this->isShown)
-	{
-		return;
-	}
-
-	this->isShown = false;
-	
 	if (this->uiElements->getOpacity() > 0)
 	{
 		this->uiElements->stopAllActions();
