@@ -48,5 +48,5 @@ Vec2 Weapon::getWeaponOffset()
 
 std::string Weapon::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid1;
+	return SoundResources::Platformer_Physical_Swings_SwingWeakHybrid1;
 }

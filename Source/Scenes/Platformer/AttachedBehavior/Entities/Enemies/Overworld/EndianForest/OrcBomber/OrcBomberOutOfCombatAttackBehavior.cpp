@@ -84,7 +84,7 @@ std::string OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 std::string OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow5;
+	return SoundResources::Platformer_Physical_Projectiles_WeaponThrow5;
 }
 
 float OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()

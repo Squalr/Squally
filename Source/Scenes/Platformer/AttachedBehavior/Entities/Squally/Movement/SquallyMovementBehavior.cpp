@@ -152,8 +152,8 @@ void SquallyMovementBehavior::update(float dt)
 	// Soft save the player's position
 	if (!this->isPositionSavingDisabled && !this->isDisposing)
 	{
-		if (this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
-			this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
+		if (this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
+			this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
 		{
 			const float SaveOffsetY = 32.0f;
 
@@ -166,7 +166,7 @@ void SquallyMovementBehavior::update(float dt)
 
 void SquallyMovementBehavior::onMovementChanged()
 {
-	bool isCinematicHijacked = this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+	bool isCinematicHijacked = this->squally->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false);
 
 	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
 	this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));

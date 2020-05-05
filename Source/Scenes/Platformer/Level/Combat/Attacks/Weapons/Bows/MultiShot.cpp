@@ -35,8 +35,8 @@ MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float r
 		true
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 
 	this->setDamageMultiplier(MultiShot::DamageMultiplier);
 

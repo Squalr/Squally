@@ -51,7 +51,7 @@ KnownValueBarInt32Behavior::KnownValueBarInt32Behavior(GameObject* owner) : supe
 		->setStringReplacementVariables({ this->healthString, ConstantString::create(std::to_string(KnownValueBarInt32Behavior::MaxHealth)) }));
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal1);
 
 	this->healthLabel->setTextColor(Color4B::WHITE);
 	this->healthLabel->enableOutline(Color4B::BLACK, 3);

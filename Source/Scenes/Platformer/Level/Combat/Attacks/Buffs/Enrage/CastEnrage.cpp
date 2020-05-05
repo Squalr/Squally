@@ -28,7 +28,7 @@ CastEnrage* CastEnrage::create(float attackDuration, float recoverDuration, Prio
 CastEnrage::CastEnrage(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
 	this->addChild(this->castSound);
 }

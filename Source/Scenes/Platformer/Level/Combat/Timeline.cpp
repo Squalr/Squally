@@ -229,11 +229,11 @@ void Timeline::checkCombatComplete()
 
 		if (dynamic_cast<PlatformerEnemy*>(entity) != nullptr)
 		{
-			anyEnemyAlive |= entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+			anyEnemyAlive |= entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
 		}
 		else if (dynamic_cast<PlatformerFriendly*>(entity) != nullptr)
 		{
-			anyPlayerAlive |= entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+			anyPlayerAlive |= entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
 		}
 	}
 
@@ -264,7 +264,7 @@ void Timeline::updateTimeline(float dt)
 		// Update all timeline entries
 		for (auto entry : this->timelineEntries)
 		{
-			if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				float currentTime = entry->getProgress();
 
@@ -300,7 +300,7 @@ void Timeline::refreshTimelinePositions()
 {
 	for (auto entry : this->timelineEntries)
 	{
-		if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
 		}

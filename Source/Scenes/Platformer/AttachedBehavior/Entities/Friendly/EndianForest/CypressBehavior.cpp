@@ -56,7 +56,7 @@ void CypressBehavior::onLoad()
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	if (!this->entity->getObjectStateOrDefault(CypressBehavior::SaveKeyItemGiven, Value(false)).asBool())
+	if (!this->entity->loadObjectStateOrDefault(CypressBehavior::SaveKeyItemGiven, Value(false)).asBool())
 	{
 		this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{

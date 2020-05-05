@@ -32,8 +32,8 @@ WandSwing::WandSwing(int damageMin, int damageMax, float attackDuration, float r
 		recoverDuration
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid2);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingWeakHybrid2);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);

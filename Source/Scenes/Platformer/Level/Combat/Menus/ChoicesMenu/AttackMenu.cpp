@@ -66,7 +66,7 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 	entity->getAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		int index = 0;
-		int mana = entity->getStateOrDefaultInt(StateKeys::Mana, 0);
+		int mana = entity->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
 		for (auto attack : attackBehavior->getAttacks())
 		{

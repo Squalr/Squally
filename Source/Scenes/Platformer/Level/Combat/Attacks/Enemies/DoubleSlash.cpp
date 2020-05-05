@@ -37,8 +37,8 @@ DoubleSlash::DoubleSlash(int damageMin, int damageMax, float attackDuration, flo
 		true
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 	this->weaveDelay = weaveDelay;
 
 	this->addChild(this->slashSound);

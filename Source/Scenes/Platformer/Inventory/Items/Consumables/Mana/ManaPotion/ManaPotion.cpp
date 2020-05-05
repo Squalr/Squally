@@ -50,7 +50,7 @@ void ManaPotion::useOutOfCombat(PlatformerEntity* target)
 
 bool ManaPotion::canUseOnTarget(PlatformerEntity* target)
 {
-	if (!target->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	if (!target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return false;
 	}

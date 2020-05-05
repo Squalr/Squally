@@ -52,7 +52,7 @@ TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, i
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 
 	this->spellAura->setOpacity(0);

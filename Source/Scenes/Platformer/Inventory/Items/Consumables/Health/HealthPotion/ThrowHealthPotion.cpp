@@ -31,8 +31,8 @@ ThrowHealthPotion* ThrowHealthPotion::create(Priority priority, float healPercen
 
 ThrowHealthPotion::ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource) : super(AttackType::Healing, iconResource, priority, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
+	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healPercentage = healPercentage;
 
 	this->addChild(this->throwSound);
@@ -81,7 +81,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 
 			if (entity != nullptr)
 			{
-				int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
+				int healing = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
 
 				this->healSound->play();
 				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));

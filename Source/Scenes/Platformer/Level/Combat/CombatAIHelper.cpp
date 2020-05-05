@@ -104,7 +104,7 @@ void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntry)
 		{
 			case PlatformerAttack::AttackType::Resurrection:
 			{
-				if (singleTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+				if (singleTarget->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 				{
 					singleTarget = nullptr;
 				}
@@ -115,7 +115,7 @@ void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntry)
 			case PlatformerAttack::AttackType::Buff:
 			case PlatformerAttack::AttackType::Healing:
 			{
-				if (!singleTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+				if (!singleTarget->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 				{
 					singleTarget = nullptr;
 				}

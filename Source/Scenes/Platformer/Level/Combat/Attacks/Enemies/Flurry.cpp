@@ -43,12 +43,12 @@ Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority) :
 	{
 		switch (index % 3)
 		{
-			default: case 0: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade1)); }
-			case 1: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade2)); }
-			case 2: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade3)); }
+			default: case 0: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1)); }
+			case 1: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade2)); }
+			case 2: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade3)); }
 		}
 		
-		this->hitSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1));
+		this->hitSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1));
 	}
 
 	for (auto next : this->slashSounds)

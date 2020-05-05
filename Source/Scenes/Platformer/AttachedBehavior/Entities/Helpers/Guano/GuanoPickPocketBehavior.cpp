@@ -82,7 +82,7 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 		return;
 	}
 
-	if (this->entity->getStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
+	if (this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
 	{
 		return;
 	}

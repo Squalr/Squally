@@ -309,22 +309,22 @@ Value GameObject::getPropertyOrDefault(std::string key, Value value)
 	return GameUtils::getKeyOrDefault(this->properties, key, value);
 }
 
-Value GameObject::getStateOrDefault(std::string key, Value value)
+Value GameObject::getRuntimeStateOrDefault(std::string key, Value value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, value);
 }
 
-int GameObject::getStateOrDefaultInt(std::string key, int value)
+int GameObject::getRuntimeStateOrDefaultInt(std::string key, int value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asInt();
 }
 
-float GameObject::getStateOrDefaultFloat(std::string key, float value)
+float GameObject::getRuntimeStateOrDefaultFloat(std::string key, float value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asFloat();
 }
 
-bool GameObject::getStateOrDefaultBool(std::string key, bool value)
+bool GameObject::getRuntimeStateOrDefaultBool(std::string key, bool value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asBool();
 }
@@ -378,7 +378,7 @@ void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 	}
 }
 
-const Value& GameObject::getObjectStateOrDefault(std::string key, const Value& defaultValue)
+const Value& GameObject::loadObjectStateOrDefault(std::string key, const Value& defaultValue)
 {
 	return GameUtils::getKeyOrDefault(this->saveProperties, key, defaultValue);
 }

@@ -46,6 +46,7 @@ namespace MapResources
 	extern const std::string EndianForest_Town_Inn_Upstairs;
 	extern const std::string EndianForest_Town_Liana;
 	extern const std::string EndianForest_Town_Liana_Back;
+	extern const std::string EndianForest_Town_Liana_Entrance;
 	extern const std::string EndianForest_Town_Main;
 	extern const std::string EndianForest_Town_Shack;
 	extern const std::string EndianForest_Town_Smith;

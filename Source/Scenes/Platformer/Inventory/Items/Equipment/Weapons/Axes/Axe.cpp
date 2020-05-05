@@ -14,5 +14,5 @@ Axe::~Axe()
 
 std::string Axe::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid3;
+	return SoundResources::Platformer_Physical_Swings_SwingWeakHybrid3;
 }

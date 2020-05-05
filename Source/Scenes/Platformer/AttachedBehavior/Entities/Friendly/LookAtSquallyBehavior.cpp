@@ -54,7 +54,7 @@ void LookAtSquallyBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->squally == nullptr || !this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	if (this->squally == nullptr || !this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return;
 	}

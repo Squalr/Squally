@@ -48,7 +48,7 @@ IllusionBehavior::~IllusionBehavior()
 
 void IllusionBehavior::onLoad()
 {
-	if (this->object->getObjectStateOrDefault(IllusionBehavior::SaveKeyDispelled, Value(false)).asBool())
+	if (this->object->loadObjectStateOrDefault(IllusionBehavior::SaveKeyDispelled, Value(false)).asBool())
 	{
 		return;
 	}

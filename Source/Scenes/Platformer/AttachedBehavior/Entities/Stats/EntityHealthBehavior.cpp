@@ -81,7 +81,7 @@ void EntityHealthBehavior::onDisable()
 
 int EntityHealthBehavior::getHealth()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::Health, 0);
+	return this->entity->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 }
 
 void EntityHealthBehavior::addHealth(int healthDelta)
@@ -182,5 +182,5 @@ bool EntityHealthBehavior::isAlive()
 
 bool EntityHealthBehavior::isDead()
 {
-	return this->entity->getStateOrDefault(StateKeys::Health, Value(0)).asInt() <= 0;
+	return this->entity->getRuntimeStateOrDefault(StateKeys::Health, Value(0)).asInt() <= 0;
 }

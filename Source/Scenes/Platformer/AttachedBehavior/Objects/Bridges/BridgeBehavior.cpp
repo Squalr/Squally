@@ -8,8 +8,11 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
+
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -32,6 +35,9 @@ BridgeBehavior::BridgeBehavior(GameObject* owner) : super(owner)
 	this->object = owner;
 	this->group = "";
 	this->bridgeIndex = 0;
+	this->raiseSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshPulse1);
+
+	this->raiseSound->disableZDepth();
 
 	if (this->object == nullptr)
 	{
@@ -42,6 +48,8 @@ BridgeBehavior::BridgeBehavior(GameObject* owner) : super(owner)
 		this->group = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertyGroup, Value("")).asString();
 		this->bridgeIndex = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertyBridgeIndex, Value(0)).asInt();
 	}
+
+	this->addChild(this->raiseSound);
 }
 
 BridgeBehavior::~BridgeBehavior()
@@ -50,7 +58,7 @@ BridgeBehavior::~BridgeBehavior()
 
 void BridgeBehavior::onLoad()
 {
-	if (this->object->getObjectStateOrDefault(BridgeBehavior::SaveKeyRaised, Value(false)).asBool())
+	if (this->object->loadObjectStateOrDefault(BridgeBehavior::SaveKeyRaised, Value(false)).asBool())
 	{
 		return;
 	}
@@ -62,6 +70,14 @@ void BridgeBehavior::onLoad()
 	{
 		this->object->saveObjectState(BridgeBehavior::SaveKeyRaised, Value(true));
 		this->object->runAction(MoveTo::create(0.25f * float(this->bridgeIndex + 1), originalPosition));
+		this->object->runAction(Sequence::create(
+			DelayTime::create(0.25f * float(this->bridgeIndex + 1) - 0.15f),
+			CallFunc::create([=]()
+			{
+				this->raiseSound->play();
+			}),
+			nullptr
+		));
 	});
 }
 

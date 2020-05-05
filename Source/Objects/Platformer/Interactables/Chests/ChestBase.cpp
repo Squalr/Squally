@@ -25,16 +25,11 @@ using namespace cocos2d;
 const std::string ChestBase::PropertyRewardPool = "reward-pool";
 const std::string ChestBase::SaveKeyIsOpen = "SAVE_KEY_IS_OPEN";
 
-ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties)
+ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties, InteractObject::InteractType::Input, interactSize, Vec2::ZERO)
 {
-	this->interactCollision = CollisionObject::create(CollisionObject::createBox(interactSize), (CollisionType)PlatformerCollisionType::Collectable, CollisionObject::Properties(false, false));
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
-	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->chestPool = nullptr;
-	this->isOpen = false;
-	this->isLocked = false;
-	this->isPlayerColliding = false;
 
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyArgs, Value("")).asString();
 
@@ -53,10 +48,8 @@ ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties
 
 	chestPoolDeserializer->deserialize(&deserializeArgs);
 
-	this->addChild(this->interactCollision);
 	this->addChild(this->chestClosed);
 	this->addChild(this->chestOpen);
-	this->addChild(this->interactMenu);
 }
 
 ChestBase::~ChestBase()
@@ -67,9 +60,9 @@ void ChestBase::onEnter()
 {
 	super::onEnter();
 
-	if (this->getObjectStateOrDefault(ChestBase::SaveKeyIsOpen, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(ChestBase::SaveKeyIsOpen, Value(false)).asBool())
 	{
-		this->open();
+		this->open(false);
 	}
 	else
 	{
@@ -86,76 +79,17 @@ void ChestBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->setOpenCallback([=]()
 	{
-		this->isPlayerColliding = true;
-		this->toggleInteractMenu();
+		this->unlockAndGiveItems();
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		this->isPlayerColliding = false;
-		this->toggleInteractMenu();
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
-	{
-		if (!this->isOpen && !this->isLocked && this->isPlayerColliding)
-		{
-			this->onInteract();
-		}
+		return true;
 	});
 }
 
-void ChestBase::open()
+void ChestBase::unlockAndGiveItems()
 {
-	this->isOpen = true;
-	this->chestClosed->setVisible(false);
-	this->chestOpen->setVisible(true);
-
-	this->saveObjectState(ChestBase::SaveKeyIsOpen, Value(true));
-
-	this->toggleInteractMenu();
-}
-
-void ChestBase::close()
-{
-	this->isOpen = false;
-	this->chestClosed->setVisible(true);
-	this->chestOpen->setVisible(false);
-
-	this->saveObjectState(ChestBase::SaveKeyIsOpen, Value(false));
-
-	this->toggleInteractMenu();
-}
-
-void ChestBase::onInteract()
-{
-	this->performUnlockAndGiveItems();
-}
-
-void ChestBase::lock()
-{
-	this->isLocked = true;
-
-	this->toggleInteractMenu();
-}
-
-void ChestBase::unlock()
-{
-	this->isLocked = false;
-
-	this->toggleInteractMenu();
-}
-
-void ChestBase::performUnlockAndGiveItems()
-{
-	this->unlock();
-	this->open();
+	this->open(true);
 
 	if (this->chestPool == nullptr)
 	{
@@ -166,14 +100,24 @@ void ChestBase::performUnlockAndGiveItems()
 	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool));
 }
 
-void ChestBase::toggleInteractMenu()
+void ChestBase::open(bool doSave)
 {
-	if (this->isOpen || this->isLocked || !this->isPlayerColliding)
+	this->chestOpen->setVisible(true);
+	this->chestClosed->setVisible(false);
+
+	if (doSave)
 	{
-		this->interactMenu->hide();
+		this->saveObjectState(ChestBase::SaveKeyIsOpen, Value(true));
 	}
-	else
-	{
-		this->interactMenu->show();
-	}
+
+	this->disable();
 }
+
+void ChestBase::close()
+{
+	this->chestOpen->setVisible(false);
+	this->chestClosed->setVisible(true);
+
+	this->enable();
+}
+

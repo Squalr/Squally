@@ -238,7 +238,7 @@ void EntityDialogueBehavior::clearPretext()
 
 void EntityDialogueBehavior::onInteract()
 {
-	if (this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+	if (this->entity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
 		return;
 	}

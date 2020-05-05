@@ -105,7 +105,7 @@ void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavi
 void SquallyAttackBehavior::loadUnarmedAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack)
 {
 	// Note: ordering here is intentional. Powerful attack first, no-cost attack second. This makes for better UI placement.
-	if (this->squally->getStateOrDefault(StateKeys::Eq, Value(0)).asInt() >= 2)
+	if (this->squally->getRuntimeStateOrDefault(StateKeys::Eq, Value(0)).asInt() >= 2)
 	{
 		attackBehavior->registerAttack(Pound::create(minAttack, maxAttack, 0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	}

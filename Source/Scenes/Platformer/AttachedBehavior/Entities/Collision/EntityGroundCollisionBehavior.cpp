@@ -85,7 +85,7 @@ void EntityGroundCollisionBehavior::onDisable()
 void EntityGroundCollisionBehavior::onCollideWithGround()
 {
 	// Clear current animation
-	if (this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true) && this->entity->getStateOrDefaultFloat(StateKeys::VelocityY, 0.0f) <= 0.0f)
+	if (this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && this->entity->getRuntimeStateOrDefaultFloat(StateKeys::VelocityY, 0.0f) <= 0.0f)
 	{
 		if (this->entity->getAnimations()->getCurrentAnimation() == "Jump")
 		{

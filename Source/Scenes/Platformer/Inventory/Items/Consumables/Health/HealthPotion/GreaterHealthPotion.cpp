@@ -51,7 +51,7 @@ void GreaterHealthPotion::useOutOfCombat(PlatformerEntity* target)
 
 bool GreaterHealthPotion::canUseOnTarget(PlatformerEntity* target)
 {
-	if (!target->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	if (!target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return false;
 	}

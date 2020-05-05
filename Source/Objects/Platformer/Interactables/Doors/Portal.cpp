@@ -56,7 +56,7 @@ void Portal::onEnter()
 {
 	super::onEnter();
 
-	if (!this->getListenEvent().empty() && !this->getObjectStateOrDefault(Portal::SaveKeyListenEventTriggered, Value(false)).asBool())
+	if (!this->getListenEvent().empty() && !this->loadObjectStateOrDefault(Portal::SaveKeyListenEventTriggered, Value(false)).asBool())
 	{
 		this->lock(false);
 

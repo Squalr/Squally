@@ -14,5 +14,5 @@ Sword::~Sword()
 
 std::string Sword::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakBlade5;
+	return SoundResources::Platformer_Physical_Swings_SwingWeakBlade5;
 }

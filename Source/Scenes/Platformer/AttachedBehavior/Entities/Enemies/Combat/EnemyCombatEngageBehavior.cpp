@@ -96,8 +96,8 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 			squally->getUniqueIdentifier(),
 			squally->getBattleBehavior(),
 			CombatMap::StatsOverrides(
-				squally->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
-				squally->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+				squally->getRuntimeStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+				squally->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 			)
 		));
 	}), Squally::MapKey);
@@ -109,8 +109,8 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 			helper->getUniqueIdentifier(),
 			helper->getBattleBehavior(),
 			CombatMap::StatsOverrides(
-				helper->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
-				helper->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+				helper->getRuntimeStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+				helper->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 			)
 		));
 	}), Squally::BattleTag);
@@ -121,8 +121,8 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 		this->enemy->getUniqueIdentifier(),
 		this->enemy->getBattleBehavior(),
 		CombatMap::StatsOverrides(
-			this->enemy->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
-			this->enemy->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+			this->enemy->getRuntimeStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+			this->enemy->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 		),
 		this->enemy->getDropPool()
 	));
@@ -131,15 +131,15 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	{
 		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
 		{
-			if (enemyAlly != this->enemy && enemyAlly->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (enemyAlly != this->enemy && enemyAlly->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				enemyCombatData.push_back(CombatMap::CombatData(
 					enemyAlly->getEntityKey(),
 					enemyAlly->getUniqueIdentifier(),
 					enemyAlly->getBattleBehavior(),
 					CombatMap::StatsOverrides(
-						enemyAlly->getStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
-						enemyAlly->getStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
+						enemyAlly->getRuntimeStateOrDefault(StateKeys::Health, Value(8888)).asInt(),
+						enemyAlly->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 					),
 					enemyAlly->getDropPool()
 				));

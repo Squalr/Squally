@@ -148,7 +148,7 @@ void PuzzleDoorBase::onEnter()
 {
 	super::onEnter();
 
-	if (this->getObjectStateOrDefault(PuzzleDoorBase::UnlockedSaveKey, Value(this->unlockedByDefault)).asBool())
+	if (this->loadObjectStateOrDefault(PuzzleDoorBase::UnlockedSaveKey, Value(this->unlockedByDefault)).asBool())
 	{
 		this->unlock(false);
 	}

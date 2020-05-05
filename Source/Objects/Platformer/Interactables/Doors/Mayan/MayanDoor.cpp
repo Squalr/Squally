@@ -159,9 +159,9 @@ void MayanDoor::loadGems()
 		purpleDefault = RandomHelper::random_int(0, 11);
 	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6);
 
-	this->redGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
-	this->blueGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
-	this->purpleGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
+	this->redGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
+	this->blueGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
+	this->purpleGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
 
 	this->redGem->loadAnswer(this->redGemAnswer);
 	this->blueGem->loadAnswer(this->blueGemAnswer);
@@ -171,7 +171,7 @@ void MayanDoor::loadGems()
 	this->saveObjectState(MayanDoor::SaveKeyBlueGemAnswer, Value(this->blueGemAnswer));
 	this->saveObjectState(MayanDoor::SaveKeyPurpleGemAnswer, Value(this->purpleGemAnswer));
 
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
 	{
 		this->unlock(false);
 	}
@@ -180,17 +180,17 @@ void MayanDoor::loadGems()
 		this->lock(false);
 	}
 	
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool())
 	{
 		this->redGem->enableGem();
 	}
 
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool())
 	{
 		this->blueGem->enableGem();
 	}
 
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
 	{
 		this->purpleGem->enableGem();
 	}

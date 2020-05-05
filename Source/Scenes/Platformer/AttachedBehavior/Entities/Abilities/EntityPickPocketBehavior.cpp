@@ -159,7 +159,7 @@ bool EntityPickPocketBehavior::canPickPocket()
 
 bool EntityPickPocketBehavior::wasPickPocketed()
 {
-	return this->entity->getObjectStateOrDefault(EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed, Value(false)).asBool();
+	return this->entity->loadObjectStateOrDefault(EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed, Value(false)).asBool();
 }
 
 void EntityPickPocketBehavior::onPickPocket()

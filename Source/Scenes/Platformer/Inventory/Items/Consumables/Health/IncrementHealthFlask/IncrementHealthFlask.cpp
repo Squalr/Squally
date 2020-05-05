@@ -50,7 +50,7 @@ void IncrementHealthFlask::useOutOfCombat(PlatformerEntity* target)
 
 bool IncrementHealthFlask::canUseOnTarget(PlatformerEntity* target)
 {
-	if (!target->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	if (!target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return false;
 	}

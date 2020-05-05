@@ -69,7 +69,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}

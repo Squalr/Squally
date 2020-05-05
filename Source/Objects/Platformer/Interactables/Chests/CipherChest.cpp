@@ -149,6 +149,6 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 
 	return CipherPuzzleData::create(inputOutputMap, tokens, dataType, tutorial, [=](CipherPuzzleData* puzzleData)
 	{
-		this->performUnlockAndGiveItems();
+		this->unlockAndGiveItems();
 	});
 }

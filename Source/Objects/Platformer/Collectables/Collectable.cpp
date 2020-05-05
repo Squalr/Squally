@@ -46,7 +46,7 @@ void Collectable::onEnter()
 {
 	super::onEnter();
 
-	if (this->getObjectStateOrDefault(Collectable::SaveKeyIsCollected, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(Collectable::SaveKeyIsCollected, Value(false)).asBool())
 	{
 		this->disableCollection();
 	}

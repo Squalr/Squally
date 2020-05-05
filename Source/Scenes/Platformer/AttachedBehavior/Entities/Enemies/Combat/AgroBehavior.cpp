@@ -131,7 +131,7 @@ void AgroBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->isEnabled || this->squally == nullptr || this->entity == nullptr || !this->entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	if (!this->isEnabled || this->squally == nullptr || this->entity == nullptr || !this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		this->exclamation->setVisible(false);
 		return;

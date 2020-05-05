@@ -65,7 +65,7 @@ void EntityBuffBehavior::applyBuff(Buff* buff)
 		return;
 	}
 
-	if (!this->entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	if (!this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		return;
 	}

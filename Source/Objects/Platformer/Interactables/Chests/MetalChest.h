@@ -1,11 +1,9 @@
 #pragma once
 
-#include "Objects/Platformer/Chests/ChestBase.h"
+#include "Objects/Platformer/Interactables/Chests/ChestBase.h"
 
 using namespace cocos2d;
 
-class CollisionObject;
-class InteractMenu;
 class MinMaxPool;
 
 class MetalChest : public ChestBase

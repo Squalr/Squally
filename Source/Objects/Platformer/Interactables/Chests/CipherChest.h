@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Objects/Platformer/Chests/ChestBase.h"
+#include "Objects/Platformer/Interactables/Chests/ChestBase.h"
 
 using namespace cocos2d;
 
 class CipherPuzzleData;
-class CollisionObject;
-class InteractMenu;
 
 class CipherChest : public ChestBase
 {

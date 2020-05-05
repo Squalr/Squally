@@ -173,7 +173,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 	{
 		PlatformerEntity* entity = next->getEntity();
 
-		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			if (this->allowedSelection == AllowedSelection::Either
 				|| (next->isPlayerEntry() && this->allowedSelection == AllowedSelection::Player)
@@ -247,7 +247,7 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 {
 	entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{
-		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true)
+		if (!entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
 			|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
 			|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
 		{

@@ -84,7 +84,7 @@ void EntityOutOfCombatAttackBehavior::onDisable()
 
 void EntityOutOfCombatAttackBehavior::attack()
 {
-	if (this->isPerformingOutOfCombatAttack || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+	if (this->isPerformingOutOfCombatAttack || this->entity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
 		return;
 	}
@@ -141,7 +141,7 @@ std::string EntityOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 std::string EntityOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
+	return SoundResources::Platformer_Physical_Punches_PunchWoosh1;
 }
 
 float EntityOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()

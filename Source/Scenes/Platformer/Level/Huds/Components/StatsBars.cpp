@@ -159,10 +159,10 @@ void StatsBars::update(float dt)
 		return;
 	}
 
-	int health = this->target->getStateOrDefaultInt(StateKeys::Health, 0);
-	int maxHealth = this->target->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-	int mana = this->target->getStateOrDefaultInt(StateKeys::Mana, 0);
-	int maxMana = this->target->getStateOrDefaultInt(StateKeys::MaxMana, 0);
+	int health = this->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	int maxHealth = this->target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0);
+	int mana = this->target->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
+	int maxMana = this->target->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0);
 
 	if (this->cachedHealth != health || this->cachedMaxHealth != maxHealth)
 	{
@@ -188,7 +188,7 @@ void StatsBars::update(float dt)
 
 	if (this->showExp)
 	{
-		int exp = this->target->getStateOrDefaultInt(StateKeys::EqExperience, 0);
+		int exp = this->target->getRuntimeStateOrDefaultInt(StateKeys::EqExperience, 0);
 		int maxExp = StatsTables::getExpRequiredAtLevel(this->target);
 
 		if (this->cachedExp != exp || this->cachedMaxExp != maxExp)

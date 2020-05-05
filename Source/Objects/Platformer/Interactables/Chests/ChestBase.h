@@ -1,14 +1,12 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 
 using namespace cocos2d;
 
-class CollisionObject;
-class InteractMenu;
 class MinMaxPool;
 
-class ChestBase : public GameObject
+class ChestBase : public InteractObject
 {
 public:
 
@@ -19,14 +17,8 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void toggleInteractMenu();
 
-	virtual void open();
-	virtual void close();
-	virtual void unlock();
-	virtual void lock();
-	virtual void onInteract();
-	virtual void performUnlockAndGiveItems();
+	virtual void unlockAndGiveItems();
 
 	cocos2d::Node* chestOpen;
 	cocos2d::Node* chestClosed;
@@ -34,13 +26,10 @@ protected:
 	MinMaxPool* chestPool;
 
 private:
-	typedef GameObject super;
+	typedef InteractObject super;
 
-	CollisionObject* interactCollision;
-	InteractMenu* interactMenu;
-	bool isOpen;
-	bool isLocked;
-	bool isPlayerColliding;
+	void open(bool doSave);
+	void close();
 
 	std::string chestOpenArgs;
 

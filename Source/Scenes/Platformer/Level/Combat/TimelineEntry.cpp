@@ -131,7 +131,7 @@ void TimelineEntry::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
-			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				this->applyDamage(args->caster, args->damageOrHealing);
 			}
@@ -144,7 +144,7 @@ void TimelineEntry::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
-			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				this->applyHealing(args->caster, args->damageOrHealing);
 			}
@@ -157,7 +157,7 @@ void TimelineEntry::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
-			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				this->applyManaRestore(args->caster, args->damageOrHealing);
 			}
@@ -184,7 +184,7 @@ void TimelineEntry::update(float dt)
 		return;
 	}
 
-	if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		this->emblem->setVisible(true);
 		this->skull->setVisible(false);
@@ -225,7 +225,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage)
 
 	this->tryInterrupt();
 
-	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
+	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
 	this->getEntity()->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
@@ -257,7 +257,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 
 	healing *= sign;
 
-	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
+	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
 	this->getEntity()->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
@@ -269,7 +269,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 
 void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain)
 {
-	int mana = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
+	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
 	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{

@@ -53,7 +53,7 @@ LockedPortal::~LockedPortal()
 
 void LockedPortal::onLoad()
 {
-	if (this->portal->getObjectStateOrDefault(LockedPortal::SaveKeyItemPresented, Value(false)).asBool())
+	if (this->portal->loadObjectStateOrDefault(LockedPortal::SaveKeyItemPresented, Value(false)).asBool())
 	{
 		this->portal->unlock();
 	}

@@ -13,7 +13,7 @@ int CombatUtils::GetLivingCount(const std::vector<PlatformerEntity*>& entities)
 
 	for (auto next : entities)
 	{
-		if (next->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		if (next->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			livingCount++;
 		}

@@ -45,6 +45,7 @@ const std::string MapResources::EndianForest_Town_Inn = "Public/Platformer/Maps/
 const std::string MapResources::EndianForest_Town_Inn_Upstairs = "Public/Platformer/Maps/EndianForest/Town_Inn_Upstairs.tmx";
 const std::string MapResources::EndianForest_Town_Liana = "Public/Platformer/Maps/EndianForest/Town_Liana.tmx";
 const std::string MapResources::EndianForest_Town_Liana_Back = "Public/Platformer/Maps/EndianForest/Town_Liana_Back.tmx";
+const std::string MapResources::EndianForest_Town_Liana_Entrance = "Public/Platformer/Maps/EndianForest/Town_Liana_Entrance.tmx";
 const std::string MapResources::EndianForest_Town_Main = "Public/Platformer/Maps/EndianForest/Town_Main.tmx";
 const std::string MapResources::EndianForest_Town_Shack = "Public/Platformer/Maps/EndianForest/Town_Shack.tmx";
 const std::string MapResources::EndianForest_Town_Smith = "Public/Platformer/Maps/EndianForest/Town_Smith.tmx";

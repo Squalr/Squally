@@ -88,7 +88,7 @@ void TempleDoor::onEnter()
 {
 	super::onEnter();
 	
-	if (this->getObjectStateOrDefault(TempleDoor::UnlockedSaveKey, Value(true)).asBool())
+	if (this->loadObjectStateOrDefault(TempleDoor::UnlockedSaveKey, Value(true)).asBool())
 	{
 		this->unlock(false);
 	}

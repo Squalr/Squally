@@ -135,7 +135,7 @@ void InteractObject::initializeListeners()
 			{
 				// Technically this is bad design in the sense that this object should not need to concern itself with the interacting entity,
 				// However in this game only Squally interacts with things via input as of now, so this check is fine.
-				if (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+				if (this->squally != nullptr && this->squally->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 				{
 					return;
 				}

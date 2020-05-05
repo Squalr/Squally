@@ -85,5 +85,5 @@ void GuanoHealthBehavior::onDisable()
 
 void GuanoHealthBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoHealth, this->guano->getStateOrDefault(StateKeys::Health, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoHealth, this->guano->getRuntimeStateOrDefault(StateKeys::Health, Value(0)));
 }

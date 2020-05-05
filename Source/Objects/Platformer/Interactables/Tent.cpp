@@ -45,7 +45,7 @@ Tent::Tent(ValueMap& properties) : super(properties)
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
 	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->healCollision = CollisionObject::create(CollisionObject::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal4);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal4);
 	this->isAnimating = false;
 	
 	this->addChild(this->healCollision);

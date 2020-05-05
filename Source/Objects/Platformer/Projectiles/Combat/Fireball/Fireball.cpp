@@ -42,8 +42,8 @@ Fireball::Fireball(PlatformerEntity* owner, PlatformerEntity* target)
 	this->fireballAnim = SmartAnimationSequenceNode::create();
 
 	this->explosionAnim = SmartAnimationSequenceNode::create();
-	this->breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
+	this->breathSound = WorldSound::create(SoundResources::Platformer_Spells_Fireball2);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
 
 	this->postFXNode->addChild(this->breathSound);
 	this->postFXNode->addChild(this->impactSound);

@@ -4,6 +4,7 @@
 
 class HackableObject;
 class Portal;
+class Sound;
 
 class DispelIllusionBehavior : public AttachedBehavior
 {
@@ -28,6 +29,7 @@ private:
 	Portal* portal;
 	HackableObject* object;
 	std::string group;
+	Sound* dispelSfx;
 
 	static const std::string PropertyGroup;
 	static const std::string SaveKeyDispelled;

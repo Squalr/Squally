@@ -34,7 +34,7 @@ Pound::Pound(int damageMin, int damageMax, float attackDuration, float recoverDu
 		recoverDuration
 	)
 {
-	this->punchSound = Sound::create(SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch7);
+	this->punchSound = Sound::create(SoundResources::Platformer_Physical_Punches_Punch7);
 
 	this->setDamageMultiplier(Pound::DamageMultiplier);
 

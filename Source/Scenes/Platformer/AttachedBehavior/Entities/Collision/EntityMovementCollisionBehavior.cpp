@@ -356,7 +356,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		}
 
 		// Animate jumping out of water
-		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
+		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
 		{
 			// Give a velocity boost for jumping out of water
 			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityMovementCollisionBehavior::WaterJumpVelocity));

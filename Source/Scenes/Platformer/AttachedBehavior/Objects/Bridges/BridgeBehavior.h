@@ -2,7 +2,8 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class Portal;
+class WorldSound;
+class Sound;
 
 class BridgeBehavior : public AttachedBehavior
 {
@@ -25,6 +26,7 @@ private:
 	std::string group;
 	cocos2d::Vec2 originalPosition;
 	int bridgeIndex;
+	WorldSound* raiseSound;
 
 	static const std::string PropertyGroup;
 	static const std::string PropertyBridgeIndex;

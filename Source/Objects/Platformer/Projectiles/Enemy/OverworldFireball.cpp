@@ -32,8 +32,8 @@ OverworldFireball::OverworldFireball() : super(nullptr, CollisionObject::createC
 {
 	this->fireball = SmartAnimationSequenceNode::create();
 	this->explosion = SmartAnimationSequenceNode::create();
-	this->fireballSfx = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
-	this->impactSfx = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
+	this->fireballSfx = WorldSound::create(SoundResources::Platformer_Spells_Fireball2);
+	this->impactSfx = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
 
 	this->contentNode->addChild(this->fireball);
 	this->contentNode->addChild(this->explosion);

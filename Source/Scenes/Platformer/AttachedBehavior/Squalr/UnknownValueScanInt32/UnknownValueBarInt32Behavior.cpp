@@ -48,7 +48,7 @@ UnknownValueBarInt32Behavior::UnknownValueBarInt32Behavior(GameObject* owner) : 
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal1);
 
 	// Gain text
 	this->deltaLabel->setTextColor(Color4B::RED);

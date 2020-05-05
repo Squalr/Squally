@@ -31,7 +31,7 @@ ThrowManaPotion* ThrowManaPotion::create(Priority priority)
 
 ThrowManaPotion::ThrowManaPotion(Priority priority) : super(AttackType::Healing, ItemResources::Consumables_Potions_ManaPotion, priority, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
+	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 
 	this->addChild(this->throwSound);
 }
@@ -78,7 +78,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 
 			if (entity != nullptr)
 			{
-				int restore = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
+				int restore = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
 				
 				CombatEvents::TriggerManaRestore(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
 			}

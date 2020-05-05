@@ -8,11 +8,13 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackActivatedAbility.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -36,6 +38,7 @@ DispelIllusionBehavior::DispelIllusionBehavior(GameObject* owner) : super(owner)
 {
 	this->object = dynamic_cast<HackableObject*>(owner);
 	this->group = "";
+	this->dispelSfx = Sound::create(SoundResources::Platformer_Spells_Dispel1);
 
 	if (this->object == nullptr)
 	{
@@ -45,6 +48,8 @@ DispelIllusionBehavior::DispelIllusionBehavior(GameObject* owner) : super(owner)
 	{
 		this->group = GameUtils::getKeyOrDefault(this->object->properties, DispelIllusionBehavior::PropertyGroup, Value("")).asString();
 	}
+
+	this->addChild(this->dispelSfx);
 }
 
 DispelIllusionBehavior::~DispelIllusionBehavior()
@@ -53,7 +58,7 @@ DispelIllusionBehavior::~DispelIllusionBehavior()
 
 void DispelIllusionBehavior::onLoad()
 {
-	if (this->object->getObjectStateOrDefault(DispelIllusionBehavior::SaveKeyDispelled, Value(false)).asBool())
+	if (this->object->loadObjectStateOrDefault(DispelIllusionBehavior::SaveKeyDispelled, Value(false)).asBool())
 	{
 		this->object->setOpacity(0);
 		return;
@@ -98,4 +103,6 @@ void DispelIllusionBehavior::onDispelActivated()
 	{
 		this->object->runAction(FadeTo::create(0.25f, 0));
 	}
+
+	this->dispelSfx->play();
 }

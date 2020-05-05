@@ -361,7 +361,7 @@ int StatsTables::getExpRequiredAtLevel(PlatformerEntity* platformerEntity)
 	{
 		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 		int exp = stats.exp;
-		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+		int levelIndex = std::min(platformerEntity->getRuntimeStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
 
 		for (int index = 0; index < levelIndex; index++)
 		{
@@ -390,7 +390,7 @@ int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 	{
 		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 		int mana = stats.mana;
-		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+		int levelIndex = std::min(platformerEntity->getRuntimeStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
 
 		for (int index = 0; index < levelIndex; index++)
 		{
@@ -409,7 +409,7 @@ int StatsTables::getBaseHealth(PlatformerEntity* platformerEntity)
 	{
 		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 		int health = stats.health;
-		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+		int levelIndex = std::min(platformerEntity->getRuntimeStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
 
 		for (int index = 0; index < levelIndex; index++)
 		{
@@ -430,7 +430,7 @@ int StatsTables::getBonusAttack(PlatformerEntity* platformerEntity)
 	{
 		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 
-		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+		int levelIndex = std::min(platformerEntity->getRuntimeStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
 
 		for (int index = 0; index < levelIndex; index++)
 		{

@@ -65,7 +65,7 @@ std::string GroggOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 std::string GroggOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
+	return SoundResources::Platformer_Physical_Punches_PunchWoosh1;
 }
 
 float GroggOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()

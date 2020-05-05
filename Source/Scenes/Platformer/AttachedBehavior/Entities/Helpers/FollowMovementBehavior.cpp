@@ -98,12 +98,12 @@ void FollowMovementBehavior::update(float dt)
 	
 	this->entity->setState(StateKeys::MovementY, Value(0.0f));
 
-	if (this->entity->getStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
+	if (this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
 	{
 		return;
 	}
 
-	if (this->entity->getStateOrDefault(StateKeys::CinematicHijacked, Value(false)).asBool()
+	if (this->entity->getRuntimeStateOrDefault(StateKeys::CinematicHijacked, Value(false)).asBool()
 		|| this->entity->hasState(StateKeys::CinematicDestinationX))
 	{
 		return;

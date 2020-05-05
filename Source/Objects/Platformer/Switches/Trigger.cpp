@@ -51,7 +51,7 @@ void Trigger::onEnter()
 {
 	super::onEnter();
 
-	this->wasActivated = this->getObjectStateOrDefault(Trigger::PropertySaveState, Value(false)).asBool();
+	this->wasActivated = this->loadObjectStateOrDefault(Trigger::PropertySaveState, Value(false)).asBool();
 
 	this->scheduleUpdate();
 }

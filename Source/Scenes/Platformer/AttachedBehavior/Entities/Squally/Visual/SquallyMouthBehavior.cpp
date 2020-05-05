@@ -55,7 +55,7 @@ void SquallyMouthBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	if (!this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return;
 	}
@@ -67,7 +67,7 @@ void SquallyMouthBehavior::update(float dt)
 		default:
 		case PlatformerEntity::ControlState::Normal:
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
 
@@ -81,7 +81,7 @@ void SquallyMouthBehavior::update(float dt)
 		}
 		case PlatformerEntity::ControlState::Swimming:
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
 				

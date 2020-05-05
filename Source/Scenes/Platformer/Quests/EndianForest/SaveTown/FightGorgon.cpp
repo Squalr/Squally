@@ -67,9 +67,9 @@ FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner,
 	this->knifeImpact = SmartAnimationSequenceNode::create();
 	this->backPeddleSound = WorldSound::create(SoundResources::Platformer_Entities_Generic_Movement_BackPeddleSlow1);
 	this->runSound = WorldSound::create(SoundResources::Platformer_Entities_Generic_Movement_RunBrief1);
-	this->reboundSoundShield = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound3);
-	this->reboundSoundSword = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound1);
-	this->reboundSoundShieldLite = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound2);
+	this->reboundSoundShield = WorldSound::create(SoundResources::Platformer_Defense_Rebound3);
+	this->reboundSoundSword = WorldSound::create(SoundResources::Platformer_Defense_Rebound1);
+	this->reboundSoundShieldLite = WorldSound::create(SoundResources::Platformer_Defense_Rebound2);
 
 	this->addChild(this->shieldImpact);
 	this->addChild(this->swordImpact);
@@ -116,7 +116,7 @@ void FightGorgon::onLoad(QuestState questState)
 	{
 		this->gorgon = gorgon;
 
-		if (this->gorgon->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		if (this->gorgon->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			if (questState == QuestState::Active)
 			{

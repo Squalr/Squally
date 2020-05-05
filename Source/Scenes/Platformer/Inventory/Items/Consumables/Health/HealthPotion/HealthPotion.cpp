@@ -50,7 +50,7 @@ void HealthPotion::useOutOfCombat(PlatformerEntity* target)
 
 bool HealthPotion::canUseOnTarget(PlatformerEntity* target)
 {
-	if (!target->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	if (!target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		return false;
 	}

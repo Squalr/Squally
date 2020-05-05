@@ -152,26 +152,26 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 		case AttackType::Debuff:
 		{
 			// Priority based on whether the entity is alive or not. For more nuanced behavior, this function must be overridden.
-			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+			return target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
 		}
 		case AttackType::Damage:
 		{
-			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
-			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+			float hp = float(target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0));
 
 			return hp / (hpMax <= 0.0f ? 1.0f : hpMax);
 		}
 		case AttackType::Healing:
 		{
-			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
-			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+			float hp = float(target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0));
 			
 			// Rank by lowest health first (except if dead)
-			return !target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
+			return !target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
 		}
 		case AttackType::Resurrection:
 		{
-			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : 1.0f;
+			return target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : 1.0f;
 		}
 		default:
 		{

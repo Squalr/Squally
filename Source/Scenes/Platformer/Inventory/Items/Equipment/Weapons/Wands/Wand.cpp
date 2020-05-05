@@ -14,5 +14,5 @@ Wand::~Wand()
 
 std::string Wand::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid2;
+	return SoundResources::Platformer_Physical_Swings_SwingWeakHybrid2;
 }

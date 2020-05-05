@@ -28,7 +28,7 @@ CastStoneSkin* CastStoneSkin::create(float attackDuration, float recoverDuration
 CastStoneSkin::CastStoneSkin(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldBroken, priority, 0, 0, 4, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
 	this->addChild(this->castSound);
 }

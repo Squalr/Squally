@@ -30,7 +30,7 @@ CastCurseOfTongues* CastCurseOfTongues::create(float attackDuration, float recov
 CastCurseOfTongues::CastCurseOfTongues(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Debuff, UIResources::Menus_Icons_Voodoo, priority, 0, 0, 6, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Curse1);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 
 	this->addChild(this->castSound);
 }

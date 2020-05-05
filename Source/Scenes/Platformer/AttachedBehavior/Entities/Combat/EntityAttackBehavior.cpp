@@ -98,7 +98,7 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 
 	for (auto attack : this->getAttacks())
 	{
-		if (attack->getSpecialCost() <= this->entity->getStateOrDefaultInt(StateKeys::Mana, 0))
+		if (attack->getSpecialCost() <= this->entity->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0))
 		{
 			availableAttacks.push_back(attack);
 		}
