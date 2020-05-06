@@ -1137,3 +1137,4 @@ const std::string UIResources::Cursors_MousePointPressed = "Public/UI/Cursors/Mo
 const std::string UIResources::EmptyImage = "Public/UI/EmptyImage.png";
 const std::string UIResources::Fonts_Texture_AlienText = "Public/UI/Fonts/Texture/AlienText.png";
 const std::string UIResources::Fonts_Texture_AsciiTable = "Public/UI/Fonts/Texture/AsciiTable.png";
+const std::string UIResources::WhitePixel = "Public/UI/WhitePixel.png";

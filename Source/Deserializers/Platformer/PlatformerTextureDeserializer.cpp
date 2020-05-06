@@ -29,6 +29,9 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 	{
 		hasInitialized = true;
 		
+		PlatformerTextureDeserializer::Deserializers[ArabicDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicDarkTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[ArabicStarTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicStarTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[ArabicTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[BlueGrassTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)BlueGrassTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[BrickInteriorTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)BrickInteriorTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[CastleTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)CastleTexture::create(properties); };

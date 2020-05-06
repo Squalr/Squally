@@ -14,10 +14,11 @@
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
-	
+
 const std::string EntityPacingBehavior::MapKey = "pacing";
-const float EntityPacingBehavior::TravelDistanceMax = 512.0f;
-const float EntityPacingBehavior::TravelDistanceMin = 96.0f;
+const std::string EntityPacingBehavior::PropertyTravelDistance = "travel-distance";
+const float EntityPacingBehavior::DefaultTravelDistanceMax = 512.0f;
+const float EntityPacingBehavior::DefaultTravelDistanceMin = 96.0f;
 
 EntityPacingBehavior* EntityPacingBehavior::create(GameObject* owner)
 {
@@ -31,10 +32,15 @@ EntityPacingBehavior* EntityPacingBehavior::create(GameObject* owner)
 EntityPacingBehavior::EntityPacingBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->travelDistance = EntityPacingBehavior::DefaultTravelDistanceMax;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->travelDistance = this->entity->getPropertyOrDefault(EntityPacingBehavior::PropertyTravelDistance, Value(EntityPacingBehavior::DefaultTravelDistanceMax)).asFloat();
 	}
 
 	this->anchorPosition = Vec2::ZERO;
@@ -71,7 +77,7 @@ void EntityPacingBehavior::onLoad()
 	});
 
 	this->runAction(Sequence::create(
-		DelayTime::create(RandomHelper::random_real(2.0f, 7.5f)),
+		DelayTime::create(RandomHelper::random_real(0.5f, 4.0f)),
 		CallFunc::create([=]()
 		{
 			this->assignDestination();
@@ -87,13 +93,20 @@ void EntityPacingBehavior::onDisable()
 
 void EntityPacingBehavior::assignDestination()
 {
+	const int LoopsMax = 32;
 	float newDelta = 0.0f;
+	int loopSafety = 0;
 
 	do
 	{
-		newDelta = RandomHelper::random_real(-EntityPacingBehavior::TravelDistanceMax, EntityPacingBehavior::TravelDistanceMax);
+		newDelta = RandomHelper::random_real(-this->travelDistance, this->travelDistance);
+
+		if (loopSafety++ > LoopsMax)
+		{
+			break;
+		}
 	}
-	while (std::abs(newDelta - this->destinationDelta) < EntityPacingBehavior::TravelDistanceMin);
+	while (std::abs(newDelta - this->destinationDelta) < EntityPacingBehavior::DefaultTravelDistanceMin);
 
 	this->destinationDelta = newDelta;
 

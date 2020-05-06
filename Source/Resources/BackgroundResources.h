@@ -14,6 +14,7 @@ namespace BackgroundResources
 	extern const std::string Crypt3;
 	extern const std::string DarkForestSky;
 	extern const std::string Dawn;
+	extern const std::string DesertSky;
 	extern const std::string Hacking_HackerModeBackground;
 	extern const std::string IndoorHouse;
 	extern const std::string Laboratory;

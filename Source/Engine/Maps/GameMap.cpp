@@ -147,34 +147,6 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	{
 		mapSize.width /= 2.0f;
 	}
-	else
-	{
-		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
-
-		const float EdgeThickness = 256.0f;
-
-		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, CollisionObject::Properties(false, false));
-		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-
-		edgeCollisionLayer->addChild(topCollision);
-		edgeCollisionLayer->addChild(leftCollision);
-		edgeCollisionLayer->addChild(rightCollision);
-		edgeCollisionLayer->addChild(bottomCollision);
-
-		topCollision->setName("Top collision");
-		leftCollision->setName("Left collision");
-		rightCollision->setName("Right collision");
-		bottomCollision->setName("Bottom collision");
-
-		topCollision->setPosition(Vec2(mapSize.width / 2.0f, mapSize.height + EdgeThickness / 2.0f));
-		bottomCollision->setPosition(Vec2(mapSize.width / 2.0f, -EdgeThickness / 2.0f));
-		leftCollision->setPosition(Vec2(-EdgeThickness / 2.0f, mapSize.height / 2.0f));
-		rightCollision->setPosition(Vec2(mapSize.width + EdgeThickness / 2.0f, mapSize.height / 2.0f));
-
-		deserializedLayers.push_back(edgeCollisionLayer);
-	}
 
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto next : mapRaw->getObjectGroups())
@@ -226,6 +198,40 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	for (auto next : deserializedLayerMap)
 	{
 		deserializedLayers.push_back(next.second);
+	}
+	
+	if (!isIsometric)
+	{
+		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
+
+		const float EdgeThickness = 256.0f;
+
+		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+
+		edgeCollisionLayer->addChild(topCollision);
+		edgeCollisionLayer->addChild(leftCollision);
+		edgeCollisionLayer->addChild(rightCollision);
+		edgeCollisionLayer->addChild(bottomCollision);
+
+		topCollision->setCollisionDepth(4096.0f);
+		leftCollision->setCollisionDepth(4096.0f);
+		rightCollision->setCollisionDepth(4096.0f);
+		bottomCollision->setCollisionDepth(4096.0f);
+
+		topCollision->setName("Top collision");
+		leftCollision->setName("Left collision");
+		rightCollision->setName("Right collision");
+		bottomCollision->setName("Bottom collision");
+
+		topCollision->setPosition(Vec2(mapSize.width / 2.0f, mapSize.height + EdgeThickness / 2.0f));
+		bottomCollision->setPosition(Vec2(mapSize.width / 2.0f, -EdgeThickness / 2.0f));
+		leftCollision->setPosition(Vec2(-EdgeThickness / 2.0f, mapSize.height / 2.0f));
+		rightCollision->setPosition(Vec2(mapSize.width + EdgeThickness / 2.0f, mapSize.height / 2.0f));
+
+		deserializedLayers.push_back(edgeCollisionLayer);
 	}
 
 	// Create a special hud_target layer for top-level display items

@@ -6,6 +6,38 @@
 
 namespace TerrainResources
 {
+	extern const std::string ArabicDark_Bottom;
+	extern const std::string ArabicDark_BottomConnector;
+	extern const std::string ArabicDark_BottomLeft;
+	extern const std::string ArabicDark_BottomRight;
+	extern const std::string ArabicDark_Left;
+	extern const std::string ArabicDark_LeftConnector;
+	extern const std::string ArabicDark_Right;
+	extern const std::string ArabicDark_RightConnector;
+	extern const std::string ArabicDark_Top;
+	extern const std::string ArabicDark_TopConnector;
+	extern const std::string ArabicDark_TopConnectorConcave;
+	extern const std::string ArabicDark_TopConnectorConcaveDeep;
+	extern const std::string ArabicDark_TopConnectorConvex;
+	extern const std::string ArabicDark_TopConnectorConvexDeep;
+	extern const std::string ArabicDark_TopLeft;
+	extern const std::string ArabicDark_TopRight;
+	extern const std::string Arabic_Bottom;
+	extern const std::string Arabic_BottomConnector;
+	extern const std::string Arabic_BottomLeft;
+	extern const std::string Arabic_BottomRight;
+	extern const std::string Arabic_Left;
+	extern const std::string Arabic_LeftConnector;
+	extern const std::string Arabic_Right;
+	extern const std::string Arabic_RightConnector;
+	extern const std::string Arabic_Top;
+	extern const std::string Arabic_TopConnector;
+	extern const std::string Arabic_TopConnectorConcave;
+	extern const std::string Arabic_TopConnectorConcaveDeep;
+	extern const std::string Arabic_TopConnectorConvex;
+	extern const std::string Arabic_TopConnectorConvexDeep;
+	extern const std::string Arabic_TopLeft;
+	extern const std::string Arabic_TopRight;
 	extern const std::string BlueGrass_Bottom;
 	extern const std::string BlueGrass_BottomConnector;
 	extern const std::string BlueGrass_BottomLeft;

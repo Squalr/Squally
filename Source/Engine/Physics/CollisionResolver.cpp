@@ -76,10 +76,18 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 
 bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, CollisionObject* collisionObjectB)
 {
-	const float thisDepth = GameUtils::getDepth(collisionObjectA);
-	const float otherDepth = GameUtils::getDepth(collisionObjectB);
+	const float thisDepthCenter = GameUtils::getDepth(collisionObjectA);
+	const float otherDepthCenter = GameUtils::getDepth(collisionObjectB);
 
-	return std::abs(thisDepth - otherDepth) < CollisionObject::CollisionZThreshold;
+	// Ensure a < b and c < d
+	const float a = thisDepthCenter - collisionObjectA->collisionDepth;
+	const float b = thisDepthCenter + collisionObjectA->collisionDepth;
+
+	const float c = otherDepthCenter - collisionObjectB->collisionDepth;
+	const float d = otherDepthCenter + collisionObjectB->collisionDepth;
+
+	// https://stackoverflow.com/questions/15726825/find-overlap-between-collinear-lines
+	return b - c >= 0 && d - a >= 0.0f;
 }
 
 void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)

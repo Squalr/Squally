@@ -1,3 +1,6 @@
+#include "Scenes/Platformer/Textures/ArabicDarkTexture.h"
+#include "Scenes/Platformer/Textures/ArabicStarTexture.h"
+#include "Scenes/Platformer/Textures/ArabicTexture.h"
 #include "Scenes/Platformer/Textures/BlueGrassTexture.h"
 #include "Scenes/Platformer/Textures/BrickInteriorTexture.h"
 #include "Scenes/Platformer/Textures/CastleTexture.h"

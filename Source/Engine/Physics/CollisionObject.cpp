@@ -75,6 +75,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->bindTarget = nullptr;
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
+	this->debugDrawNodeConnectors = nullptr;
 	this->debugInfoSpawned = false;
 	this->velocity = Vec2::ZERO;
 	this->acceleration = Vec2::ZERO;
@@ -83,7 +84,9 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
 	this->cachedRotation = 0.0f;
 	this->cachedWorldCoords = Vec2::ZERO;
+	this->cachedWorldCoords3D = Vec3::ZERO;
 	this->cachedTick = 0;
+	this->collisionDepth = CollisionObject::CollisionZThreshold;
 }
 
 CollisionObject::~CollisionObject()
@@ -118,31 +121,7 @@ void CollisionObject::onDeveloperModeEnable(int debugLevel)
 {
 	super::onDeveloperModeEnable(debugLevel);
 
-	if (this->debugDrawNode != nullptr)
-	{
-		this->debugDrawNode->setVisible(true);
-	}
-
-	if (!this->debugInfoSpawned && debugLevel > 0)
-	{
-		this->debugDrawNode = DrawNode::create();
-
-		if (!this->points.empty())
-		{
-			if (this->points.size() == 2)
-			{
-				this->debugDrawNode->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
-			}
-			else
-			{
-				this->debugDrawNode->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
-			}
-		}
-
-		this->addChild(this->debugDrawNode);
-
-		this->debugInfoSpawned = true;
-	}
+	this->drawDebugShapes();
 }
 
 void CollisionObject::onDeveloperModeDisable()
@@ -168,6 +147,8 @@ void CollisionObject::update(float dt)
 
 	this->propagateRotation();
 	this->runPhysics(1.0f / 60.0f);
+
+	this->drawDebugConnectors();
 }
 
 void CollisionObject::runPhysics(float dt)
@@ -255,6 +236,14 @@ void CollisionObject::runPhysics(float dt)
 			}
 		}
 	}
+}
+
+void CollisionObject::setCollisionDepth(float collisionDepth)
+{
+	this->collisionDepth = collisionDepth;
+
+	// Invalidate debug info
+	this->debugInfoSpawned = false;
 }
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
@@ -510,7 +499,9 @@ void CollisionObject::computeWorldCoords(bool force)
 	if (this->cachedTick != SmartScene::GlobalTick || force)
 	{
 		this->cachedTick = SmartScene::GlobalTick;
-		this->cachedWorldCoords = GameUtils::getWorldCoords(this, false);
+		this->cachedWorldCoords3D = GameUtils::getWorldCoords3D(this, false);
+		this->cachedWorldCoords.x = this->cachedWorldCoords3D.x;
+		this->cachedWorldCoords.y = this->cachedWorldCoords3D.y;
 	}
 }
 
@@ -536,6 +527,98 @@ void CollisionObject::propagateRotation()
 	}
 
 	this->segmentsRotated = AlgoUtils::buildSegmentsFromPoints(this->pointsRotated);
+}
+
+void CollisionObject::drawDebugShapes()
+{
+	if (this->debugDrawNode != nullptr)
+	{
+		this->debugDrawNode->setVisible(true);
+	}
+
+	if (this->debugInfoSpawned || DeveloperModeController::getDebugLevel() <= 0)
+	{
+		return;
+	}
+
+	if (this->debugDrawNode == nullptr)
+	{
+		this->debugDrawNode = Node::create();
+
+		this->addChild(this->debugDrawNode);
+	}
+
+	this->debugDrawNode->removeAllChildren();
+
+	DrawNode* collisionBack = DrawNode::create();
+	this->debugDrawNodeConnectors = DrawNode::create();
+	DrawNode* collisionFront = DrawNode::create();
+
+	if (!this->points.empty())
+	{
+		if (this->points.size() == 2)
+		{
+			collisionBack->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
+			collisionFront->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
+		}
+		else
+		{
+			collisionBack->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
+			collisionFront->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
+		}
+	}
+
+	collisionBack->setPositionZ(-this->collisionDepth);
+	collisionFront->setPositionZ(this->collisionDepth);
+
+	this->debugDrawNode->addChild(collisionBack);
+	this->debugDrawNode->addChild(this->debugDrawNodeConnectors);
+	this->debugDrawNode->addChild(collisionFront);
+
+	this->debugInfoSpawned = true;
+}
+
+void CollisionObject::drawDebugConnectors()
+{
+	if (this->debugDrawNodeConnectors == nullptr || DeveloperModeController::getDebugLevel() <= 0)
+	{
+		return;
+	}
+
+	this->debugDrawNodeConnectors->clear();
+
+	const Vec2 projectedCoords = GameUtils::getScreenBounds(this).origin;
+	static const Vec2 HalfScreenSize = Vec2(Director::getInstance()->getVisibleSize()) / 2.0f;
+	const Vec2 cameraPos = GameCamera::getInstance()->getCameraPosition();
+	const Vec2 offset = cameraPos - HalfScreenSize;
+
+	for (auto next : this->pointsRotated)
+	{
+		// Compute edge verticies in world coords
+		const Vec3 sourcePoint = this->cachedWorldCoords3D + Vec3(next.x, next.y, -this->collisionDepth);
+		const Vec3 destPoint = this->cachedWorldCoords3D + Vec3(next.x, next.y, this->collisionDepth);
+
+		// Project into screen coords
+		const Vec2 projectedSource = GameUtils::getScreenCoords(sourcePoint);
+		const Vec2 projectedDest = GameUtils::getScreenCoords(destPoint);
+		const Vec2 normalizedLine = projectedDest - projectedSource;
+
+		/*
+		// Convert into world coords
+		const Vec2 worldSource = projectedSource + offset;
+		const Vec2 worldDest = projectedDest + offset;
+
+		// Convert into local coords
+		const Vec2 localSource = worldSource - this->cachedWorldCoords;
+		const Vec2 localDest = worldDest - this->cachedWorldCoords;
+		*/
+
+		const Vec2 localSource = next - normalizedLine / 2.0f;
+		const Vec2 localDest = next + normalizedLine / 2.0f;
+
+		this->debugDrawNodeConnectors->drawSegment(localSource, localDest, 1.0f, this->debugColor);
+	}
+
 }
 
 void CollisionObject::ClearCollisionObjects()

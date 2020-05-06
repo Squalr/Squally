@@ -5,6 +5,38 @@
 #include "TerrainResources.h"
 #include <string>
 
+const std::string TerrainResources::ArabicDark_Bottom = "Private/Platformer/Terrain/ArabicDark/Bottom.png";
+const std::string TerrainResources::ArabicDark_BottomConnector = "Private/Platformer/Terrain/ArabicDark/BottomConnector.png";
+const std::string TerrainResources::ArabicDark_BottomLeft = "Private/Platformer/Terrain/ArabicDark/BottomLeft.png";
+const std::string TerrainResources::ArabicDark_BottomRight = "Private/Platformer/Terrain/ArabicDark/BottomRight.png";
+const std::string TerrainResources::ArabicDark_Left = "Private/Platformer/Terrain/ArabicDark/Left.png";
+const std::string TerrainResources::ArabicDark_LeftConnector = "Private/Platformer/Terrain/ArabicDark/LeftConnector.png";
+const std::string TerrainResources::ArabicDark_Right = "Private/Platformer/Terrain/ArabicDark/Right.png";
+const std::string TerrainResources::ArabicDark_RightConnector = "Private/Platformer/Terrain/ArabicDark/RightConnector.png";
+const std::string TerrainResources::ArabicDark_Top = "Private/Platformer/Terrain/ArabicDark/Top.png";
+const std::string TerrainResources::ArabicDark_TopConnector = "Private/Platformer/Terrain/ArabicDark/TopConnector.png";
+const std::string TerrainResources::ArabicDark_TopConnectorConcave = "Private/Platformer/Terrain/ArabicDark/TopConnectorConcave.png";
+const std::string TerrainResources::ArabicDark_TopConnectorConcaveDeep = "Private/Platformer/Terrain/ArabicDark/TopConnectorConcaveDeep.png";
+const std::string TerrainResources::ArabicDark_TopConnectorConvex = "Private/Platformer/Terrain/ArabicDark/TopConnectorConvex.png";
+const std::string TerrainResources::ArabicDark_TopConnectorConvexDeep = "Private/Platformer/Terrain/ArabicDark/TopConnectorConvexDeep.png";
+const std::string TerrainResources::ArabicDark_TopLeft = "Private/Platformer/Terrain/ArabicDark/TopLeft.png";
+const std::string TerrainResources::ArabicDark_TopRight = "Private/Platformer/Terrain/ArabicDark/TopRight.png";
+const std::string TerrainResources::Arabic_Bottom = "Private/Platformer/Terrain/Arabic/Bottom.png";
+const std::string TerrainResources::Arabic_BottomConnector = "Private/Platformer/Terrain/Arabic/BottomConnector.png";
+const std::string TerrainResources::Arabic_BottomLeft = "Private/Platformer/Terrain/Arabic/BottomLeft.png";
+const std::string TerrainResources::Arabic_BottomRight = "Private/Platformer/Terrain/Arabic/BottomRight.png";
+const std::string TerrainResources::Arabic_Left = "Private/Platformer/Terrain/Arabic/Left.png";
+const std::string TerrainResources::Arabic_LeftConnector = "Private/Platformer/Terrain/Arabic/LeftConnector.png";
+const std::string TerrainResources::Arabic_Right = "Private/Platformer/Terrain/Arabic/Right.png";
+const std::string TerrainResources::Arabic_RightConnector = "Private/Platformer/Terrain/Arabic/RightConnector.png";
+const std::string TerrainResources::Arabic_Top = "Private/Platformer/Terrain/Arabic/Top.png";
+const std::string TerrainResources::Arabic_TopConnector = "Private/Platformer/Terrain/Arabic/TopConnector.png";
+const std::string TerrainResources::Arabic_TopConnectorConcave = "Private/Platformer/Terrain/Arabic/TopConnectorConcave.png";
+const std::string TerrainResources::Arabic_TopConnectorConcaveDeep = "Private/Platformer/Terrain/Arabic/TopConnectorConcaveDeep.png";
+const std::string TerrainResources::Arabic_TopConnectorConvex = "Private/Platformer/Terrain/Arabic/TopConnectorConvex.png";
+const std::string TerrainResources::Arabic_TopConnectorConvexDeep = "Private/Platformer/Terrain/Arabic/TopConnectorConvexDeep.png";
+const std::string TerrainResources::Arabic_TopLeft = "Private/Platformer/Terrain/Arabic/TopLeft.png";
+const std::string TerrainResources::Arabic_TopRight = "Private/Platformer/Terrain/Arabic/TopRight.png";
 const std::string TerrainResources::BlueGrass_Bottom = "Private/Platformer/Terrain/BlueGrass/Bottom.png";
 const std::string TerrainResources::BlueGrass_BottomConnector = "Private/Platformer/Terrain/BlueGrass/BottomConnector.png";
 const std::string TerrainResources::BlueGrass_BottomLeft = "Private/Platformer/Terrain/BlueGrass/BottomLeft.png";

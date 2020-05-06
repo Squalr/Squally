@@ -26,6 +26,7 @@ public:
 	static GameCamera* getInstance();
 
 	float getCameraDistance();
+	float getCameraDepth();
 	float getTargetDepth();
 	void setCameraDistance(float distance);
 	float getCameraZoomOnTarget(cocos2d::Node* target);

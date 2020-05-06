@@ -14,6 +14,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HelperEvents.h"
 #include "Objects/Platformer/ItemPools/PocketPools/PocketPoolDeserializer.h"
+#include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Menus/CursorSets.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -129,6 +130,13 @@ void EntityPickPocketBehavior::onLoad()
 	});
 	
 	this->pocketPoolDeserializer->deserialize(&deserializeArgs);
+
+	if (this->pocketPool == nullptr)
+	{
+		this->pocketPool = ErrorPool::create();
+
+		this->addChild(this->pocketPool);
+	}
 }
 
 void EntityPickPocketBehavior::onDisable()

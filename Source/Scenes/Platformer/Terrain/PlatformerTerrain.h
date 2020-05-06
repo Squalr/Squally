@@ -1,3 +1,5 @@
+#include "Scenes/Platformer/Terrain/ArabicDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/ArabicTerrain.h"
 #include "Scenes/Platformer/Terrain/BlueGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/CastleTerrain.h"
 #include "Scenes/Platformer/Terrain/CavernsTerrain.h"

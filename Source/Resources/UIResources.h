@@ -1138,4 +1138,5 @@ namespace UIResources
 	extern const std::string EmptyImage;
 	extern const std::string Fonts_Texture_AlienText;
 	extern const std::string Fonts_Texture_AsciiTable;
+	extern const std::string WhitePixel;
 };

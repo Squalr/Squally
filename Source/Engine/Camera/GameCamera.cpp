@@ -192,6 +192,11 @@ float GameCamera::getCameraDistance()
 	return Camera::getDefaultCamera()->getPositionZ();
 }
 
+float GameCamera::getCameraDepth()
+{
+	return this->getCameraDistance() - this->getIntendedCameraDistance();
+}
+
 float GameCamera::getTargetDepth()
 {
 	float depth = 0.0f;

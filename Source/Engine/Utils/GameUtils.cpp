@@ -329,6 +329,11 @@ void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
 	node->setPosition3D(node->getPosition3D() + delta);
 }
 
+cocos2d::Vec2 GameUtils::getScreenCoords(cocos2d::Vec3 point)
+{
+	return Camera::getDefaultCamera()->projectGL(point);
+}
+
 Rect GameUtils::getScreenBounds(Node* node)
 {
 	if (node == nullptr || Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)

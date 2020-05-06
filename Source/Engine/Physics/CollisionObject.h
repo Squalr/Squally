@@ -93,6 +93,7 @@ public:
 	void setVerticalDampening(float verticalDampening);
 	const std::set<CollisionObject*>& getCurrentCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
+	void setCollisionDepth(float collisionDepth);
 	virtual void setPhysicsEnabled(bool enabled);
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
@@ -135,6 +136,9 @@ private:
 	void computeWorldCoords(bool force = false);
 	void propagateRotation();
 
+	void drawDebugShapes();
+	void drawDebugConnectors();
+
 	static void ClearCollisionObjects();
 	static void RegisterCollisionObject(CollisionObject* collisionObject);
 	static void UnregisterCollisionObject(CollisionObject* collisionObject);
@@ -148,6 +152,7 @@ private:
 	Properties collisionProperties;
 	float horizontalDampening;
 	float verticalDampening;
+	float collisionDepth;
 	bool physicsEnabled;
 	bool gravityEnabled;
 	
@@ -175,10 +180,12 @@ private:
 	// Cache
 	float cachedRotation;
 	cocos2d::Vec2 cachedWorldCoords;
+	cocos2d::Vec3 cachedWorldCoords3D;
 	unsigned int cachedTick;
 
 	// Debug
 	cocos2d::Color4F debugColor;
 	bool debugInfoSpawned;
-	cocos2d::DrawNode* debugDrawNode;
+	cocos2d::Node* debugDrawNode;
+	cocos2d::DrawNode* debugDrawNodeConnectors;
 };
