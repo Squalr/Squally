@@ -1,4 +1,4 @@
-#include "PocketPoolEFGeneric.h"
+#include "PocketPoolURGeneric.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -17,18 +17,18 @@
 
 using namespace cocos2d;
 
-const std::string PocketPoolEFGeneric::PoolName = "ef-generic";
+const std::string PocketPoolURGeneric::PoolName = "ur-generic";
 
-PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
+PocketPoolURGeneric* PocketPoolURGeneric::create(ValueMap& properties)
 {
-	PocketPoolEFGeneric* instance = new PocketPoolEFGeneric(properties);
+	PocketPoolURGeneric* instance = new PocketPoolURGeneric(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
+PocketPoolURGeneric::PocketPoolURGeneric(ValueMap& properties) : super(properties, PocketPoolURGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
 	{
 		CardPoolTier1::create(SampleMethod::Random, 1, 1),
 		MergePool::create(SampleMethod::Guarantee, 1, 2,
@@ -41,6 +41,6 @@ PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(propertie
 {
 }
 
-PocketPoolEFGeneric::~PocketPoolEFGeneric()
+PocketPoolURGeneric::~PocketPoolURGeneric()
 {
 }

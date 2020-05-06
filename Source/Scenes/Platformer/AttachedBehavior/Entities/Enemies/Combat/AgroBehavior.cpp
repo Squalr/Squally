@@ -185,6 +185,7 @@ void AgroBehavior::update(float dt)
 			else
 			{
 				this->isAgrod = false;
+				this->entity->clearState(StateKeys::PatrolDestinationX);
 			}
 		}
 		else

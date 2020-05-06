@@ -7,3 +7,6 @@
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolBlueGem.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolPurpleGem.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolRedGem.h"
+#include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolUREquipment.h"
+#include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURGeneric.h"
+#include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURRare.h"

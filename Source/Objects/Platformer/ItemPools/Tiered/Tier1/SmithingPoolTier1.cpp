@@ -1,4 +1,4 @@
-#include "SmithingPoolT1.h"
+#include "SmithingPoolTier1.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -7,16 +7,16 @@
 
 using namespace cocos2d;
 
-SmithingPoolT1* SmithingPoolT1::create(SampleMethod sampleMethod, int min, int max)
+SmithingPoolTier1* SmithingPoolTier1::create(SampleMethod sampleMethod, int min, int max)
 {
-	SmithingPoolT1* instance = new SmithingPoolT1(sampleMethod, min, max);
+	SmithingPoolTier1* instance = new SmithingPoolTier1(sampleMethod, min, max);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SmithingPoolT1::SmithingPoolT1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "smithing-pool-t1", sampleMethod, min, max)
+SmithingPoolTier1::SmithingPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "smithing-pool-t1", sampleMethod, min, max)
 {
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
@@ -24,6 +24,6 @@ SmithingPoolT1::SmithingPoolT1(SampleMethod sampleMethod, int min, int max) : su
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Epic));
 }
 
-SmithingPoolT1::~SmithingPoolT1()
+SmithingPoolTier1::~SmithingPoolTier1()
 {
 }

@@ -22,9 +22,12 @@ PocketPoolDeserializer::PocketPoolDeserializer() : super(PocketPoolDeserializer:
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
-	// Endian forest pocket pools
+	// EF
 	this->deserializers[PocketPoolEFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolEFGeneric::create(properties); };
 	this->deserializers[PocketPoolTownGuard::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolTownGuard::create(properties); };
+
+	// UR
+	this->deserializers[PocketPoolURGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolURGeneric::create(properties); };
 }
 
 PocketPoolDeserializer::~PocketPoolDeserializer()

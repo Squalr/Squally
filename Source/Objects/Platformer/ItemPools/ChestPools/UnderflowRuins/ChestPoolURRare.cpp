@@ -1,4 +1,4 @@
-#include "ChestPoolEFRare.h"
+#include "ChestPoolURRare.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -7,19 +7,19 @@
 
 using namespace cocos2d;
 
-const std::string ChestPoolEFRare::PoolName = "ef-rare";
+const std::string ChestPoolURRare::PoolName = "ur-rare";
 
-ChestPoolEFRare* ChestPoolEFRare::create(ValueMap& properties)
+ChestPoolURRare* ChestPoolURRare::create(ValueMap& properties)
 {
-	ChestPoolEFRare* instance = new ChestPoolEFRare(properties);
+	ChestPoolURRare* instance = new ChestPoolURRare(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChestPoolEFRare::ChestPoolEFRare(ValueMap& properties) : super(
-	properties, ChestPoolEFRare::PoolName, SampleMethod::Guarantee, 2, 3,
+ChestPoolURRare::ChestPoolURRare(ValueMap& properties) : super(
+	properties, ChestPoolURRare::PoolName, SampleMethod::Guarantee, 2, 3,
 	{
 	})
 {
@@ -28,6 +28,6 @@ ChestPoolEFRare::ChestPoolEFRare(ValueMap& properties) : super(
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 }
 
-ChestPoolEFRare::~ChestPoolEFRare()
+ChestPoolURRare::~ChestPoolURRare()
 {
 }

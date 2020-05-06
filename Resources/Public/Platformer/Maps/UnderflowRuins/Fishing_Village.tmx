@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="940">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="941">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -140,6 +140,7 @@
     <property name="transition" value="docks-back"/>
    </properties>
   </object>
+  <object id="940" name="solid" type="collision" x="1244.56" y="6.622" width="126.878" height="1890.76"/>
  </objectgroup>
  <objectgroup id="84" name="player_layer -4">
   <properties>

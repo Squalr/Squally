@@ -1,4 +1,4 @@
-#include "DropPoolEFGeneric.h"
+#include "DropPoolURGeneric.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -6,7 +6,7 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/CurrencyPools/EndianForest/CurrencyPoolEFGeneric.h"
+#include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURGeneric.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolTier1.h"
@@ -17,18 +17,18 @@
 
 using namespace cocos2d;
 
-const std::string DropPoolEFGeneric::PoolName = "ef-generic";
+const std::string DropPoolURGeneric::PoolName = "ur-generic";
 
-DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
+DropPoolURGeneric* DropPoolURGeneric::create(ValueMap& properties)
 {
-	DropPoolEFGeneric* instance = new DropPoolEFGeneric(properties);
+	DropPoolURGeneric* instance = new DropPoolURGeneric(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolEFGeneric::create(properties),
+DropPoolURGeneric::DropPoolURGeneric(ValueMap& properties) : super(properties, DropPoolURGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolURGeneric::create(properties),
 	{
 		CardPoolTier1::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier1::create(SampleMethod::Random, 1, 2),
@@ -38,6 +38,6 @@ DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, D
 {
 }
 
-DropPoolEFGeneric::~DropPoolEFGeneric()
+DropPoolURGeneric::~DropPoolURGeneric()
 {
 }

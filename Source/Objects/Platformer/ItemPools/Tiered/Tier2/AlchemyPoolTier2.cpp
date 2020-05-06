@@ -1,4 +1,4 @@
-#include "AlchemyPoolT1.h"
+#include "AlchemyPoolTier2.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -7,16 +7,16 @@
 
 using namespace cocos2d;
 
-AlchemyPoolT1* AlchemyPoolT1::create(SampleMethod sampleMethod, int min, int max)
+AlchemyPoolTier2* AlchemyPoolTier2::create(SampleMethod sampleMethod, int min, int max)
 {
-	AlchemyPoolT1* instance = new AlchemyPoolT1(sampleMethod, min, max);
+	AlchemyPoolTier2* instance = new AlchemyPoolTier2(sampleMethod, min, max);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AlchemyPoolT1::AlchemyPoolT1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "alchemy-pool-t1", sampleMethod, min, max)
+AlchemyPoolTier2::AlchemyPoolTier2(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "alchemy-pool-t2", sampleMethod, min, max)
 {
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Common));
@@ -24,6 +24,6 @@ AlchemyPoolT1::AlchemyPoolT1(SampleMethod sampleMethod, int min, int max) : supe
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Reasonable));
 }
 
-AlchemyPoolT1::~AlchemyPoolT1()
+AlchemyPoolTier2::~AlchemyPoolTier2()
 {
 }

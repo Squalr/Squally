@@ -187,7 +187,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="94" name="water" visible="0">
+ <objectgroup id="94" name="water">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -198,7 +198,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="93" name="water +1" visible="0">
+ <objectgroup id="93" name="water +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -209,7 +209,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="92" name="water +2" visible="0">
+ <objectgroup id="92" name="water +2">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -220,7 +220,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="91" name="water +3" visible="0">
+ <objectgroup id="91" name="water +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -231,7 +231,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="90" name="water +4" visible="0">
+ <objectgroup id="90" name="water +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
