@@ -465,7 +465,7 @@
   </properties>
   <object id="727" name="orc-grunt" type="entity" x="12099.2" y="2468.74" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,puzzle-A"/>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-A"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

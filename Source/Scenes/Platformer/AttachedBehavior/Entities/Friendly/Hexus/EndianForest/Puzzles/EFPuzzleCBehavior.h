@@ -7,16 +7,16 @@ class HexusOpponentData;
 class MinMaxPool;
 class PlatformerEntity;
 
-class PuzzleFBehavior : public HexusPuzzleBehaviorBase
+class EFPuzzleCBehavior : public HexusPuzzleBehaviorBase
 {
 public:
-	static PuzzleFBehavior* create(GameObject* owner);
+	static EFPuzzleCBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	PuzzleFBehavior(GameObject* owner);
-	virtual ~PuzzleFBehavior();
+	EFPuzzleCBehavior(GameObject* owner);
+	virtual ~EFPuzzleCBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

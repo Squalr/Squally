@@ -170,7 +170,7 @@
   </properties>
   <object id="970" name="goblin-warrior-pig" type="entity" x="754.182" y="1539.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,puzzle-C"/>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-C"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

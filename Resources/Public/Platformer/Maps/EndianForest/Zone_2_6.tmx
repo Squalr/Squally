@@ -429,7 +429,7 @@
   </object>
   <object id="1017" name="goblin-grunt-boar" type="entity" x="4613.33" y="2372" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,puzzle-E"/>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-E"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

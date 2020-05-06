@@ -7,7 +7,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURGeneric.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -27,7 +27,7 @@ DropPoolURWeak* DropPoolURWeak::create(ValueMap& properties)
 
 DropPoolURWeak::DropPoolURWeak(ValueMap& properties) : super(properties, DropPoolURWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolURGeneric::create(properties),
 	{
-		AlchemyPoolTier1::create(SampleMethod::Guarantee, 1, 1),
+		AlchemyPoolTier2::create(SampleMethod::Guarantee, 1, 1),
 	})
 {
 }

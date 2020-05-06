@@ -1,6 +1,6 @@
-#include "PuzzleFBehavior.h"
+#include "URPuzzleDBehavior.h"
 
-#include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
+#include "Objects/Platformer/ItemPools/HexusPools/UnderflowRuins/HexusPoolURGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -14,48 +14,48 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleFBehavior::MapKey = "puzzle-F";
+const std::string URPuzzleDBehavior::MapKey = "ur-puzzle-D";
 
-PuzzleFBehavior* PuzzleFBehavior::create(GameObject* owner)
+URPuzzleDBehavior* URPuzzleDBehavior::create(GameObject* owner)
 {
-	PuzzleFBehavior* instance = new PuzzleFBehavior(owner);
+	URPuzzleDBehavior* instance = new URPuzzleDBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PuzzleFBehavior::PuzzleFBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+URPuzzleDBehavior::URPuzzleDBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
 {
 }
 
-PuzzleFBehavior::~PuzzleFBehavior()
+URPuzzleDBehavior::~URPuzzleDBehavior()
 {
 }
 
-MinMaxPool* PuzzleFBehavior::generateReward()
+MinMaxPool* URPuzzleDBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	return HexusPoolURGeneric::create();
 }
 
-std::string PuzzleFBehavior::getWinLossSaveKey()
+std::string URPuzzleDBehavior::getWinLossSaveKey()
 {
-	return PuzzleFBehavior::MapKey;
+	return URPuzzleDBehavior::MapKey;
 }
 
-std::string PuzzleFBehavior::getBackgroundResource()
+std::string URPuzzleDBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> PuzzleFBehavior::generateDeck()
+std::vector<CardData*> URPuzzleDBehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(25, 1.0f,
 	{
 	});;
 }
 
-StateOverride* PuzzleFBehavior::getStateOverride()
+StateOverride* URPuzzleDBehavior::getStateOverride()
 {
 	return StateOverride::create(
 		// Player losses
@@ -82,7 +82,6 @@ StateOverride* PuzzleFBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -92,17 +91,17 @@ StateOverride* PuzzleFBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+			
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
@@ -112,19 +111,18 @@ StateOverride* PuzzleFBehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			
 		}
 	);
 }
 
-std::vector<TutorialBase*> PuzzleFBehavior::getTutorials()
+std::vector<TutorialBase*> URPuzzleDBehavior::getTutorials()
 {
-	return { };
+	return { TutorialPuzzleD::create() };
 }

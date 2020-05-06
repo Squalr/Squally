@@ -1,4 +1,4 @@
-#include "PuzzleEBehavior.h"
+#include "EFPuzzleDBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,48 +14,48 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleEBehavior::MapKey = "puzzle-E";
+const std::string EFPuzzleDBehavior::MapKey = "ef-puzzle-D";
 
-PuzzleEBehavior* PuzzleEBehavior::create(GameObject* owner)
+EFPuzzleDBehavior* EFPuzzleDBehavior::create(GameObject* owner)
 {
-	PuzzleEBehavior* instance = new PuzzleEBehavior(owner);
+	EFPuzzleDBehavior* instance = new EFPuzzleDBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PuzzleEBehavior::PuzzleEBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+EFPuzzleDBehavior::EFPuzzleDBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
 {
 }
 
-PuzzleEBehavior::~PuzzleEBehavior()
+EFPuzzleDBehavior::~EFPuzzleDBehavior()
 {
 }
 
-MinMaxPool* PuzzleEBehavior::generateReward()
+MinMaxPool* EFPuzzleDBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string PuzzleEBehavior::getWinLossSaveKey()
+std::string EFPuzzleDBehavior::getWinLossSaveKey()
 {
-	return PuzzleEBehavior::MapKey;
+	return EFPuzzleDBehavior::MapKey;
 }
 
-std::string PuzzleEBehavior::getBackgroundResource()
+std::string EFPuzzleDBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> PuzzleEBehavior::generateDeck()
+std::vector<CardData*> EFPuzzleDBehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(25, 1.0f,
 	{
 	});;
 }
 
-StateOverride* PuzzleEBehavior::getStateOverride()
+StateOverride* EFPuzzleDBehavior::getStateOverride()
 {
 	return StateOverride::create(
 		// Player losses
@@ -81,7 +81,6 @@ StateOverride* PuzzleEBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 		},
 		// Enemy hand
@@ -92,7 +91,6 @@ StateOverride* PuzzleEBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			
 		},
 		// Player decimal cards
 		std::vector<CardData*>
@@ -103,29 +101,28 @@ StateOverride* PuzzleEBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
+			
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+			
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 		}
 	);
 }
 
-std::vector<TutorialBase*> PuzzleEBehavior::getTutorials()
+std::vector<TutorialBase*> EFPuzzleDBehavior::getTutorials()
 {
-	return { };
+	return { TutorialPuzzleD::create() };
 }

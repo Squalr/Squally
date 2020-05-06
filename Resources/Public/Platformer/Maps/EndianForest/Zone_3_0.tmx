@@ -302,7 +302,7 @@
   </object>
   <object id="716" name="ogre" type="entity" x="6140" y="3840" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,puzzle-F"/>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-F"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

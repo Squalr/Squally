@@ -171,7 +171,7 @@
   </object>
   <object id="780" name="troll" type="entity" x="1096.61" y="2272.36" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,puzzle-B"/>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-B"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

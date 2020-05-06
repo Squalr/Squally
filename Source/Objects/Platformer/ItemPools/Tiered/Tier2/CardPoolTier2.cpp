@@ -35,6 +35,11 @@ CardPoolTier2::CardPoolTier2(SampleMethod sampleMethod, int min, int max) : supe
 	this->addItemToPool(ItemChance::create(Hex2::create(), ItemChance::Probability::Epic));
 	this->addItemToPool(ItemChance::create(Hex3::create(), ItemChance::Probability::Legendary));
 	this->addItemToPool(ItemChance::create(Hex4::create(), ItemChance::Probability::Artifact));
+
+	this->addItemToPool(ItemChance::create(SpecialMov::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(SpecialAdd::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(SpecialShl::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(SpecialShr::create(), ItemChance::Probability::Artifact));
 }
 
 CardPoolTier2::~CardPoolTier2()

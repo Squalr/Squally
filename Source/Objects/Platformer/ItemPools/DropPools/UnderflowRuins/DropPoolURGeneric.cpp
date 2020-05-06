@@ -7,10 +7,10 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURGeneric.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/SmithingPoolTier2.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/PotionPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -30,10 +30,10 @@ DropPoolURGeneric* DropPoolURGeneric::create(ValueMap& properties)
 
 DropPoolURGeneric::DropPoolURGeneric(ValueMap& properties) : super(properties, DropPoolURGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolURGeneric::create(properties),
 	{
-		CardPoolTier1::create(SampleMethod::Random, 0, 1),
-		AlchemyPoolTier1::create(SampleMethod::Random, 1, 2),
-		SmithingPoolTier1::create(SampleMethod::Random, 1, 2),
-		PotionPoolTier1::create(SampleMethod::Random, 0, 1)
+		CardPoolTier2::create(SampleMethod::Random, 0, 1),
+		AlchemyPoolTier2::create(SampleMethod::Random, 1, 2),
+		SmithingPoolTier2::create(SampleMethod::Random, 1, 2),
+		PotionPoolTier2::create(SampleMethod::Random, 0, 1)
 	})
 {
 }
