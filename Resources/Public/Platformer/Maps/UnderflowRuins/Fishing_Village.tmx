@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="937">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="940">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -133,11 +133,11 @@
    </properties>
   </object>
   <object id="914" name="life-stone" type="object" x="2405.67" y="1472.5" width="146" height="423"/>
-  <object id="932" name="edge-portal" type="object" x="231.193" y="12.0593" width="199.918" height="3049.94">
+  <object id="932" name="edge-portal" type="object" x="-4.80748" y="24.0593" width="199.918" height="3049.94">
    <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="PerilousSea/Zone_UR_1_0"/>
-    <property name="transition" value="main"/>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Town_Docks"/>
+    <property name="transition" value="docks-back"/>
    </properties>
   </object>
  </objectgroup>
@@ -160,7 +160,8 @@
   </object>
   <object id="935" name="spawn" type="object" x="632.97" y="2081.45" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="docks-back"/>
+    <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
  </objectgroup>
@@ -300,14 +301,21 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
+  <object id="938" name="edge-portal" type="object" x="4664.04" y="1891.03" width="199.918" height="1181.94">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_1_0"/>
+    <property name="transition" value="water"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -322,8 +330,13 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
+  <object id="939" name="spawn" type="object" x="4196" y="2324" width="128" height="128">
+   <properties>
+    <property name="transition" value="water"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="94" name="water" visible="0">
+ <objectgroup id="94" name="water">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -334,7 +347,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="93" name="water +1" visible="0">
+ <objectgroup id="93" name="water +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>

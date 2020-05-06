@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="940">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="950">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -108,39 +108,46 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="936" name="caverns" type="terrain" x="1401.09" y="1930" width="5045.81" height="1328"/>
+  <object id="936" name="caverns" type="terrain" x="-254.91" y="1930" width="6701.81" height="1328"/>
  </objectgroup>
  <objectgroup id="83" name="decor -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="940" name="Ruins/Building2" type="decor" x="-1636.89" y="-510.03" width="2619" height="2440"/>
  </objectgroup>
  <objectgroup id="85" name="objects -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="941" name="portal" type="object" x="358.081" y="1417.96" width="256.687" height="512">
+   <properties>
+    <property name="map" value="UnderflowRuins/Home_Griffin_Geryon"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="102" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="938" name="tiger-man" type="entity" x="3572.45" y="1794.75" width="128" height="128">
+  <object id="944" name="tigress" type="entity" x="3187.38" y="1801.5" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="939" name="lion-man" type="entity" x="3571.55" y="1525.26" width="128" height="128">
+  <object id="945" name="lioness" type="entity" x="3194.81" y="1466.86" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
+    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>
@@ -155,6 +162,16 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="942" name="spawn-wood-door" type="object" x="422.424" y="1800.24" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="943" name="squally" type="entity" x="854.129" y="1801.81" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -244,23 +261,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="caverns" type="terrain" x="-95.6633" y="2017.89" width="5053.81" height="968"/>
+  <object id="833" name="caverns" type="terrain" x="1848.34" y="2017.89" width="3109.81" height="968"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="929" name="Ruins/Building2" type="decor" x="-1636.89" y="-417.091" width="2619" height="2440"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="930" name="portal" type="object" x="358.081" y="1510.9" width="256.687" height="512">
+  <object id="948" name="edge-portal" type="object" x="-3.959" y="1633.03" width="199.918" height="1181.94">
    <properties>
-    <property name="map" value="UnderflowRuins/Home_Griffin_Geryon"/>
-    <property name="transition" value="main"/>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Fishing_Village"/>
+    <property name="transition" value="water"/>
    </properties>
   </object>
  </objectgroup>
@@ -269,20 +286,20 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="932" name="tigress" type="entity" x="3190.41" y="1892.41" width="128" height="128">
+  <object id="946" name="tiger-man" type="entity" x="3696.69" y="1888.69" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="933" name="lioness" type="entity" x="3197.84" y="1557.77" width="128" height="128">
+  <object id="947" name="lion-man" type="entity" x="3695.79" y="1619.2" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
    </properties>
   </object>
  </objectgroup>
@@ -291,22 +308,17 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="861.129" y="1884.75" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
-  <object id="931" name="spawn-wood-door" type="object" x="422.424" y="1893.18" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="935" name="warp" type="object" x="2304" y="1764" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="949" name="spawn" type="object" x="512" y="2308" width="128" height="128">
+   <properties>
+    <property name="transition" value="water"/>
    </properties>
   </object>
  </objectgroup>

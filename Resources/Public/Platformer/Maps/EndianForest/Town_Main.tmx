@@ -711,7 +711,7 @@
    </properties>
   </object>
   <object id="894" name="lantern-gate" type="object" x="5955.06" y="5563.87" width="356" height="320"/>
-  <object id="911" name="portal" type="object" x="125.333" y="5667.03" width="256" height="256">
+  <object id="911" name="portal" type="object" x="126.666" y="5624.36" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="town"/>

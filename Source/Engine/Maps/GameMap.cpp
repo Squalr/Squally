@@ -216,10 +216,10 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 		edgeCollisionLayer->addChild(rightCollision);
 		edgeCollisionLayer->addChild(bottomCollision);
 
-		topCollision->setCollisionDepth(4096.0f);
-		leftCollision->setCollisionDepth(4096.0f);
-		rightCollision->setCollisionDepth(4096.0f);
-		bottomCollision->setCollisionDepth(4096.0f);
+		topCollision->setCollisionDepth(2048.0f);
+		leftCollision->setCollisionDepth(2048.0f);
+		rightCollision->setCollisionDepth(2048.0f);
+		bottomCollision->setCollisionDepth(2048.0f);
 
 		topCollision->setName("Top collision");
 		leftCollision->setName("Left collision");
