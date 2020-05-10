@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="956">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="110" nextobjectid="965">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -81,13 +81,58 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="108" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="958" name="caverns" type="terrain" x="3153.09" y="1863.33" width="2381.81" height="2024"/>
+  <object id="964" name="caverns" type="terrain" x="115.095" y="1860" width="2381.81" height="2024"/>
+ </objectgroup>
+ <objectgroup id="109" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="962" name="tiger-man" type="entity" x="3852.45" y="1734.74" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="963" name="lion-man" type="entity" x="3851.55" y="1465.25" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="105" name="player_layer -6">
-  <object id="955" name="warp" type="object" x="2294.67" y="1598.67" width="256" height="256">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="955" name="warp" type="object" x="4180.73" y="1597.33" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="107" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="957" name="wood" type="terrain" x="4104.14" y="1862.5" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -99,6 +144,17 @@
   <object id="925" name="water" type="object" x="-1652.41" y="1961.81" width="8166.75" height="2645.35">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="956" name="wood" type="terrain" x="4104.14" y="1881.17" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -118,7 +174,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="954" name="wood" type="terrain" x="2216.75" y="1905.17" width="414.5" height="363">
+  <object id="954" name="wood" type="terrain" x="4102.81" y="1903.83" width="414.5" height="363">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -177,7 +233,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="937" name="warp" type="object" x="2297.33" y="1674.3" width="256" height="256">
+  <object id="937" name="warp" type="object" x="4183.39" y="1672.97" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -275,7 +331,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="caverns" type="terrain" x="1848.34" y="2017.89" width="3109.81" height="968"/>
+  <object id="959" name="caverns" type="terrain" x="-288" y="2056">
+   <polygon points="2142.56,105.527 2158.75,-204.963 2353.88,-210.357 2370.79,374.005 2801.27,376.086 2795.21,-220.847 2978.12,-220.262 2993.12,380.614 5070.01,376.359 5063.99,-280.116 5279.3,-280.763 5300,369.584 5825.24,374.812 6637.15,-683.375 6652.9,832.94 2134.37,829.768"/>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -310,22 +368,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="946" name="tiger-man" type="entity" x="3696.69" y="1888.69" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="drop-pool" value="ef-generic"/>
-   </properties>
-  </object>
-  <object id="947" name="lion-man" type="entity" x="3695.79" y="1619.2" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
