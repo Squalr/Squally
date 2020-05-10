@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerFriendly.h"
 
-class HexusOpponentData;
 class LocalizedString;
 
 class Bodom : public PlatformerFriendly
@@ -13,7 +12,6 @@ public:
 
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
-	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKey;
 
@@ -23,7 +21,4 @@ protected:
 
 private:
 	typedef PlatformerFriendly super;
-
-	static HexusOpponentData* HexusOpponentDataInstance;
-	static const std::string HexusSaveKey;
 };

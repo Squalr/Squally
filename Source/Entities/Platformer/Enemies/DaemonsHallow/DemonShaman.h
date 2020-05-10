@@ -21,7 +21,4 @@ protected:
 
 private:
 	typedef PlatformerEnemy super;
-
-	static HexusOpponentData* HexusOpponentDataInstance;
-	static const std::string HexusSaveKey;
 };

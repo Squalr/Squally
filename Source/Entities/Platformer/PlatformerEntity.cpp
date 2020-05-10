@@ -58,8 +58,7 @@ PlatformerEntity::PlatformerEntity(
 	// Tag all entities by class to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEntity::PlatformerEntityTag);
 	this->addTag(PlatformerEntity::entityName);
-
-	this->hexusOpponentData = nullptr;
+	
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->controlStateOverride = ControlState::None;

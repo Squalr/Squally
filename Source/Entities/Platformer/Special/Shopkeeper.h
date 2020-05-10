@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerFriendly.h"
 
-class HexusOpponentData;
 class LocalizedString;
 
 class Shopkeeper : public PlatformerFriendly

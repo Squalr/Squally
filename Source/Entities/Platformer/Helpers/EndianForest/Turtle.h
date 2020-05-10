@@ -13,7 +13,6 @@ public:
 
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
-	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKey;
 	
@@ -23,7 +22,4 @@ protected:
 
 private:
 	typedef PlatformerHelper super;
-
-	static HexusOpponentData* HexusOpponentDataInstance;
-	static const std::string HexusSaveKey;
 };

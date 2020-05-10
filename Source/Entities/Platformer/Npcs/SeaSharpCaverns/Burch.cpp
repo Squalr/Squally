@@ -2,15 +2,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Hexus/Card.h"
-#include "Scenes/Hexus/CardData/CardData.h"
-#include "Scenes/Hexus/CardData/CardKeys.h"
-#include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-#include "Scenes/Hexus/StateOverride.h"
-
 #include "Resources/EntityResources.h"
-#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -18,8 +10,6 @@
 using namespace cocos2d;
 
 const std::string Burch::MapKey = "burch";
-HexusOpponentData* Burch::HexusOpponentDataInstance = nullptr;
-const std::string Burch::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BURCH";
 
 Burch* Burch::deserialize(ValueMap& properties)
 {
@@ -38,7 +28,6 @@ Burch::Burch(ValueMap& properties) : super(properties,
 	1.05f,
 	Vec2(0.0f, 0.0f))
 {
-	this->hexusOpponentData = Burch::getHexusOpponentData();
 }
 
 Burch::~Burch()
@@ -53,36 +42,4 @@ Vec2 Burch::getDialogueOffset()
 LocalizedString* Burch::getEntityName()
 {
 	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Burch::create();
-}
-
-HexusOpponentData* Burch::getHexusOpponentData()
-{
-	if (Burch::HexusOpponentDataInstance == nullptr)
-	{
-		Burch::HexusOpponentDataInstance = new HexusOpponentData(
-			nullptr,
-			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			Vec2(-32.0f, -112.0f),
-			Burch::HexusSaveKey,
-			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Earth,
-			HexusOpponentData::generateDeck(32, 0.277f,
-			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-			}),
-			nullptr,
-			nullptr
-		);
-	}
-
-	return Burch::HexusOpponentDataInstance;
 }

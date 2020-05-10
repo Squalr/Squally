@@ -5,7 +5,6 @@
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
