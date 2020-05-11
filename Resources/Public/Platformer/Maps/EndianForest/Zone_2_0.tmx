@@ -238,17 +238,11 @@
   </properties>
   <object id="850" name="wood" type="terrain" x="1599.83" y="2023.08" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="3"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="862" name="wood" type="terrain" x="8050.83" y="1908.14" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="3"/>
     <property name="collision" value="none"/>
    </properties>
   </object>

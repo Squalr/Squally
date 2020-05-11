@@ -126,7 +126,7 @@ Projectile* OrcBomberOutOfCombatAttackBehavior::createProjectile()
 
 	this->agroBehavior->getAgroTarget()->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		projectile->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		projectile->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 	});
 
 	return projectile;

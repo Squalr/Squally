@@ -200,6 +200,7 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 
 	if (projectile != nullptr)
 	{
+		projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
 		projectile->setProjectileRotation(this->squally->isFlippedX() ? 180.0f : 0.0f);
 	}
 

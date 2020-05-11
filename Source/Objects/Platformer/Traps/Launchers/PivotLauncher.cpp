@@ -34,6 +34,7 @@ const std::string PivotLauncher::PivotBone = "pivot_bone";
 const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
 const std::string PivotLauncher::PropertyPivotTarget = "pivot-target";
 const std::string PivotLauncher::PropertyFixed = "fixed";
+const std::string PivotLauncher::PropertyDisable3d = "disable-3d";
 const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
@@ -47,6 +48,7 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
 	this->isFixed = GameUtils::keyExists(this->properties, PivotLauncher::PropertyFixed);
+	this->is3dDisabled = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyDisable3d, Value(false)).asBool();
 	this->fixedAngle = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyFixed, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
 	this->currentAngle = this->fixedAngle;
@@ -152,6 +154,11 @@ HackablePreview* PivotLauncher::getTimerPreview()
 	return nullptr;
 }
 
+Vec2 PivotLauncher::getProjectileSpawnPosition()
+{
+	return Vec2::ZERO;
+}
+
 void PivotLauncher::setAutoLaunch(bool isAutoLaunch)
 {
 	this->isAutoLaunch = isAutoLaunch;
@@ -181,7 +188,9 @@ void PivotLauncher::shoot()
 	
 	Projectile* projectile = this->projectilePool->getNextProjectile();
 
-	projectile->launchTowardsTarget(this->target, this->target->getEntityCenterPoint(), 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+	projectile->setPosition(projectile->getPosition() + this->getProjectileSpawnPosition());
+	projectile->setProjectileRotation(this->currentAngle);
+	projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
 }
 
 void PivotLauncher::faceTarget()
@@ -215,7 +224,7 @@ NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
 	{
 		this->launchTimer = RandomHelper::random_real(PivotLauncher::LaunchCooldownMin, PivotLauncher::LaunchCooldownMax);
 
-		this->projectilePool->getNextProjectile();
+		this->shoot();
 	}
 	
 	static volatile float* timePtr;

@@ -80,7 +80,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+			weapon->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 		});
 
 		CombatEvents::TriggerProjectileSpawned(CombatEvents::ProjectileSpawnedArgs(owner, next, weapon));

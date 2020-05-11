@@ -46,6 +46,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 	this->enabled = true;
 	this->canUpdate = true;
 	this->projectileRotation = 0.0f;
+	this->movementMode = MovementMode::Kinematic;
 
 	this->addTag(Projectile::ProjectileTag);
 
@@ -108,22 +109,41 @@ void Projectile::update(float dt)
 
 	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
 
-	Vec3 velocity = this->getLaunchVelocity() * dt;
+	Vec3 positionDelta = this->getLaunchVelocity() * dt;
 
-	velocity.x *= this->speedMultiplier.x;
-	velocity.y *= this->speedMultiplier.y;
-	velocity.z *= this->speedMultiplier.z;
+	positionDelta.x *= this->speedMultiplier.x;
+	positionDelta.y *= this->speedMultiplier.y;
+	positionDelta.z *= this->speedMultiplier.z;
 
-	// If rotation is set, switch from standard kinematics (x/y velocity) to vector + direction based velocity.
-	if (this->projectileRotation != 0.0f)
+	switch(this->movementMode)
 	{
-		const float rotationInRad = this->projectileRotation * float(M_PI) / 180.0f;
+		default:
+		case MovementMode::Kinematic:
+		{
+			this->setPosition3D(this->getPosition3D() + positionDelta);
+			break;
+		}
+		case MovementMode::RotationVelocity:
+		{
+			const float rotationInRad = this->projectileRotation * float(M_PI) / 180.0f;
 
-		velocity.y = velocity.x * std::sin(rotationInRad);
-		velocity.x *= std::cos(rotationInRad);
+			positionDelta.z = 0.0f;
+			positionDelta.y = positionDelta.x * std::sin(rotationInRad);
+			positionDelta.x *= std::cos(rotationInRad);
+			this->setPosition3D(this->getPosition3D() + positionDelta);
+			break;
+		}
 	}
+}
 
-	this->setPosition3D(this->getPosition3D() + velocity);
+Projectile::MovementMode Projectile::getMovementMode()
+{
+	return this->movementMode;
+}
+
+void Projectile::setMovementMode(MovementMode movementMode)
+{
+	this->movementMode = movementMode;
 }
 
 void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision)
@@ -235,7 +255,16 @@ HackablePreview* Projectile::createAccelerationPreview()
 	return nullptr;
 }
 
-void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed, Vec3 secondsPer256pxLinearDistance, Vec3 gravity)
+void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed, Vec2 secondsPer256pxLinearDistance, Vec2 gravity)
+{
+	this->launchTowardsTarget3D(target, offset, spinSpeed, Vec3(secondsPer256pxLinearDistance.x, secondsPer256pxLinearDistance.y, 0.0f), Vec3(gravity.x, gravity.y, 0.0f));
+
+	Vec3 velocity = this->getLaunchVelocity();
+
+	this->setLaunchVelocity(Vec3(velocity.x, velocity.y, 0.0f));
+}
+
+void Projectile::launchTowardsTarget3D(Node* target, Vec2 offset, float spinSpeed, Vec3 secondsPer256pxLinearDistance, Vec3 gravity)
 {
 	Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
 	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);

@@ -31,6 +31,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	virtual Projectile* createProjectile() = 0;
+	virtual cocos2d::Vec2 getProjectileSpawnPosition();
 	virtual HackablePreview* getTimerPreview();
 
 	ProjectilePool* projectilePool;
@@ -56,12 +57,14 @@ private:
 	
 	float fixedAngle;
 	bool isFixed;
+	bool is3dDisabled;
 	bool isAutoLaunch;
 
 	static const std::string PivotBone;
 	static const std::string PropertyLaunchSpeed;
 	static const std::string PropertyPivotTarget;
 	static const std::string PropertyFixed;
+	static const std::string PropertyDisable3d;
 	static const float DefaultLaunchSpeed;
 	static const float LaunchCooldownMin;
 	static const float LaunchCooldownMax;

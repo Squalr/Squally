@@ -56,15 +56,22 @@ void Portal::onEnter()
 {
 	super::onEnter();
 
-	if (!this->getListenEvent().empty() && !this->loadObjectStateOrDefault(Portal::SaveKeyListenEventTriggered, Value(false)).asBool())
+	if (!this->getListenEvent().empty())
 	{
-		this->lock(false);
-
-		this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
+		if (!this->loadObjectStateOrDefault(Portal::SaveKeyListenEventTriggered, Value(false)).asBool())
 		{
-			this->saveObjectState(Portal::SaveKeyListenEventTriggered, Value(true));
-			this->unlock(true);
-		});
+			this->lock(false);
+
+			this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
+			{
+				this->saveObjectState(Portal::SaveKeyListenEventTriggered, Value(true));
+				this->unlock(true);
+			});
+		}
+		else
+		{
+			this->unlock(false);
+		}
 	}
 }
 
