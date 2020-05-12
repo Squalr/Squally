@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="134" nextobjectid="1036">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="134" nextobjectid="1042">
  <objectgroup id="1" name="meta" visible="0">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -75,6 +75,7 @@
   <object id="985" name="caverns" type="terrain" x="1455.03" y="1714.97" width="1464.48" height="1072"/>
   <object id="986" name="caverns" type="terrain" x="3708.61" y="1720" width="2054.78" height="1072"/>
   <object id="1034" name="caverns" type="terrain" x="1247.18" y="1604.85" width="167.51" height="1072"/>
+  <object id="1039" name="caverns" type="terrain" x="1052.25" y="1486" width="167.51" height="1072"/>
  </objectgroup>
  <objectgroup id="126" name="objects -12">
   <properties>
@@ -84,11 +85,6 @@
   <object id="1003" name="solid" type="collision" x="1327.47" y="-101.499" width="126.878" height="1821.18"/>
   <object id="1004" name="solid" type="collision" x="2919.94" y="-105.499" width="126.878" height="1821.18"/>
   <object id="1005" name="solid" type="collision" x="3582.02" y="-101.499" width="126.878" height="1821.18"/>
-  <object id="1017" name="lever" type="object" x="1621.5" y="1511.5" width="177" height="205">
-   <properties>
-    <property name="send-event" value="bridge-group-A"/>
-   </properties>
-  </object>
   <object id="1024" name="edge-portal" type="object" x="4662.04" y="1232" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
@@ -113,6 +109,17 @@
     <property name="pivot-target" value="squally"/>
    </properties>
   </object>
+  <object id="1040" name="dart-tripod-launcher" type="object" x="1074" y="1358" width="128" height="128">
+   <properties>
+    <property name="disable-3d" type="bool" value="true"/>
+    <property name="pivot-target" value="squally"/>
+   </properties>
+  </object>
+  <object id="1041" name="chest" type="object" x="1648" y="1586" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="121" name="player_layer -12">
   <properties>
@@ -127,10 +134,9 @@
     <property name="to" value="bridge-12-B"/>
    </properties>
   </object>
-  <object id="1001" name="warp" type="object" x="3852" y="1464" width="256" height="256">
+  <object id="1001" name="warp" type="object" x="3848" y="1464" width="256" height="256">
    <properties>
     <property name="from" value="bridge-21-B"/>
-    <property name="listen-event" value="bridge-group-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-12-C"/>
@@ -142,16 +148,13 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1013" name="wood" type="terrain" x="2307.67" y="1728.08" width="347" height="356.5">
+  <object id="1013" name="wood" type="terrain" x="2358.17" y="1729.58" width="256" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1014" name="wood" type="terrain" x="3801" y="1731.25" width="347" height="356.5">
+  <object id="1014" name="wood" type="terrain" x="3847.33" y="1731.58" width="256" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -161,16 +164,13 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1012" name="wood" type="terrain" x="2307.83" y="1738.25" width="347" height="356.5">
+  <object id="1012" name="wood" type="terrain" x="2358.33" y="1739.75" width="256" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1015" name="wood" type="terrain" x="3801.67" y="1741.92" width="347" height="356.5">
+  <object id="1015" name="wood" type="terrain" x="3848" y="1742.25" width="256" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -180,16 +180,13 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1011" name="wood" type="terrain" x="2307" y="1750.58" width="347" height="356.5">
+  <object id="1011" name="wood" type="terrain" x="2357.5" y="1752.08" width="256" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1016" name="wood" type="terrain" x="3802" y="1753.92" width="347" height="356.5">
+  <object id="1016" name="wood" type="terrain" x="3848.33" y="1754.25" width="256" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -233,19 +230,9 @@
   <object id="1000" name="warp" type="object" x="3848" y="1518" width="256" height="256">
    <properties>
     <property name="from" value="bridge-12-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-21-B"/>
-   </properties>
-  </object>
-  <object id="1021" name="warp" type="object" x="3419" y="1515" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-9-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-6-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -254,16 +241,8 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1010" name="wood" type="terrain" x="1292.5" y="1785.08" width="347" height="356.5">
+  <object id="1010" name="wood" type="terrain" x="1323.83" y="1784.41" width="256" height="356.5">
    <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1018" name="wood" type="terrain" x="3377.06" y="1783.19" width="347" height="356.5">
-   <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="3"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -273,16 +252,8 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1009" name="wood" type="terrain" x="1291.83" y="1805.25" width="347" height="356.5">
+  <object id="1009" name="wood" type="terrain" x="1323.16" y="1804.58" width="256" height="356.5">
    <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1019" name="wood" type="terrain" x="3378.56" y="1804.69" width="347" height="356.5">
-   <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="4"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -292,16 +263,8 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1008" name="wood" type="terrain" x="1291.83" y="1829.75" width="347" height="356.5">
+  <object id="1008" name="wood" type="terrain" x="1323.16" y="1829.08" width="256" height="356.5">
    <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1020" name="wood" type="terrain" x="3377.56" y="1828.69" width="347" height="356.5">
-   <properties>
-    <property name="attached-behavior" value="bridge"/>
-    <property name="bridge-group" value="bridge-group-A"/>
-    <property name="bridge-index" type="int" value="5"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -372,15 +335,6 @@
     <property name="to" value="bridge-12-A"/>
    </properties>
   </object>
-  <object id="1022" name="warp" type="object" x="3423" y="1597" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-6-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-9-C"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="101" name="water -6" visible="0">
   <properties>
@@ -398,7 +352,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="957" name="wood" type="terrain" x="3918.81" y="1863.83" width="414.5" height="363">
+  <object id="957" name="wood" type="terrain" x="3998.81" y="1865.83" width="256" height="363">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -420,7 +374,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="956" name="wood" type="terrain" x="3918.81" y="1882.5" width="414.5" height="363">
+  <object id="956" name="wood" type="terrain" x="3998.81" y="1884.5" width="256" height="363">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -442,7 +396,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="954" name="wood" type="terrain" x="3917.48" y="1905.17" width="414.5" height="363">
+  <object id="954" name="wood" type="terrain" x="3997.48" y="1907.17" width="256" height="363">
    <properties>
     <property name="collision" value="none"/>
    </properties>

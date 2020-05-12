@@ -74,6 +74,7 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string EndianForest_Zone_3_Dev;
 	extern const std::string LambdaCrypts_Crypts;
+	extern const std::string PerilousSea_Zone_UR_1_0;
 	extern const std::string SeaSharpCaverns_Caverns;
 	extern const std::string SeaSharpCaverns_Zone_x_y;
 	extern const std::string TileMap;
@@ -87,6 +88,7 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Home_Griffin_Geryon;
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string UnderflowRuins_Zone_1_0;
-	extern const std::string UnderflowRuins_Zone_1_0_old;
+	extern const std::string UnderflowRuins_Zone_1_1;
+	extern const std::string UnderflowRuins_Zone_1_2;
 	extern const std::string VoidStar_VoidStar;
 };
