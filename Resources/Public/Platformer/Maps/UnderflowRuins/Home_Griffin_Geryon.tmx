@@ -71,16 +71,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="griffin" type="entity" x="1047.36" y="935.725" width="128" height="128">
+  <object id="692" name="aphrodite" type="entity" x="1047.36" y="935.725" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="griffin-hexus,friendly,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="720" name="geryon" type="entity" x="2248.12" y="939.03" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="geryon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="aphrodite-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

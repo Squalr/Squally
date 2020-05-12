@@ -158,6 +158,10 @@ namespace ObjectResources
 	extern const std::string Doors_Cave_MISC;
 	extern const std::string Doors_Crypt_CryptClosed;
 	extern const std::string Doors_Crypt_CryptOpened;
+	extern const std::string Doors_Dragon_DragonDoorBars;
+	extern const std::string Doors_Dragon_DragonDoorBase;
+	extern const std::string Doors_Dragon_DragonDoorTeeth;
+	extern const std::string Doors_Dragon_DragonDoorTop;
 	extern const std::string Doors_EdgePortal_EdgeArrow;
 	extern const std::string Doors_Gate_GateLeft;
 	extern const std::string Doors_Gate_GateRight;
@@ -391,6 +395,15 @@ namespace ObjectResources
 	extern const std::string Traps_DartTripodLauncher_LEG_R;
 	extern const std::string Traps_DartTripodLauncher_NECK;
 	extern const std::string Traps_DartTripodLauncher_SHADOW;
+	extern const std::string Traps_FireBird_FireBird_0000;
+	extern const std::string Traps_FireBird_FireBird_0001;
+	extern const std::string Traps_FireBird_FireBird_0002;
+	extern const std::string Traps_FireBird_FireBird_0003;
+	extern const std::string Traps_FireBird_FireBird_0004;
+	extern const std::string Traps_FireBird_FireBird_0005;
+	extern const std::string Traps_FireBird_FireBird_0006;
+	extern const std::string Traps_FireBird_FireBird_0007;
+	extern const std::string Traps_FireBird_FireBird_0008;
 	extern const std::string Traps_FireLauncher_Animations;
 	extern const std::string Traps_FireLauncher_BODY;
 	extern const std::string Traps_FireLauncher_FIRE;

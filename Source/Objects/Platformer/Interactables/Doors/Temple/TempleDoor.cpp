@@ -18,7 +18,7 @@
 using namespace cocos2d;
 
 const std::string TempleDoor::MapKey = "temple-door";
-const std::string TempleDoor::MapKeyColor = "color";
+const std::string TempleDoor::PropertyColor = "color";
 const float TempleDoor::DoorOpenDelta = 320.0f;
 const std::string TempleDoor::UnlockedSaveKey = "TEMPLE_DOOR_UNLOCKED";
 
@@ -38,7 +38,7 @@ TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 52
 	this->emblemOffset = Vec2::ZERO;
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
-	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::MapKeyColor, Value("")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::PropertyColor, Value("")).asString();
 
 	// if (color == "yellow" || color == "yellow-skull" || color == "yellow-up" || color == "yellow-down")
 	{

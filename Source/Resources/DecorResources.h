@@ -445,6 +445,7 @@ namespace DecorResources
 	extern const std::string Forest_RootBlue1;
 	extern const std::string Forest_Stump1;
 	extern const std::string Forest_StumpBlue1;
+	extern const std::string Forest_Totem;
 	extern const std::string Forest_Tree1;
 	extern const std::string Forest_Tree10;
 	extern const std::string Forest_Tree11;
@@ -645,6 +646,7 @@ namespace DecorResources
 	extern const std::string Ruins_BuildingEmpty2;
 	extern const std::string Ruins_BuildingEmpty3;
 	extern const std::string Ruins_BuildingEmpty4;
+	extern const std::string Ruins_Pyramid;
 	extern const std::string Ruins_Walls1;
 	extern const std::string Ruins_Walls10;
 	extern const std::string Ruins_Walls11;

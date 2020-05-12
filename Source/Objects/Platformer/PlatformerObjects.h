@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Interactables/Chests/CipherChest.h"
 #include "Objects/Platformer/Interactables/Chests/MetalChest.h"
 #include "Objects/Platformer/Interactables/Doors/CastleGate/CastleGate.h"
+#include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"
 #include "Objects/Platformer/Interactables/Doors/EdgePortal.h"
 #include "Objects/Platformer/Interactables/Doors/Gate/Gate.h"
 #include "Objects/Platformer/Interactables/Doors/LanternGate/EdgeLanternGate.h"

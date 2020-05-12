@@ -8,13 +8,12 @@ namespace cocos2d
 }
 
 class CollisionObject;
-class SmartClippingNode;
 class WorldSound;
 
-class TempleDoor : public Portal
+class DragonDoor : public Portal
 {
 public:
-	static TempleDoor* create(cocos2d::ValueMap& properties);
+	static DragonDoor* create(cocos2d::ValueMap& properties);
 
 	void lock(bool animate = true) override;
 	void unlock(bool animate = true) override;
@@ -22,8 +21,8 @@ public:
 	static const std::string MapKey;
 
 protected:
-	TempleDoor(cocos2d::ValueMap& properties);
-	virtual ~TempleDoor();
+	DragonDoor(cocos2d::ValueMap& properties);
+	virtual ~DragonDoor();
 	
 	void onEnter() override;
 	void initializePositions() override;
@@ -31,17 +30,15 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* back;
-	SmartClippingNode* doorClip;
-	cocos2d::Sprite* door;
-	cocos2d::Sprite* emblem;
-	CollisionObject* topCollision;
-
-	cocos2d::Vec2 emblemOffset;
+	cocos2d::Sprite* base;
+	cocos2d::Sprite* bars;
+	cocos2d::Sprite* top;
+	cocos2d::Sprite* teeth;
 
 	WorldSound* doorOpenSound;
 
-	static const std::string PropertyColor;
 	static const float DoorOpenDelta;
 	static const std::string UnlockedSaveKey;
+	static const cocos2d::Vec2 TeethPositionBottom;
+	static const cocos2d::Vec2 BarPositionBottom;
 };
