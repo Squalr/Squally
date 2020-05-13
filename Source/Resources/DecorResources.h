@@ -624,6 +624,7 @@ namespace DecorResources
 	extern const std::string Generic_WoodDoor1;
 	extern const std::string Generic_birds;
 	extern const std::string Ruins_ArchDoor1;
+	extern const std::string Ruins_ArchDoorGray1;
 	extern const std::string Ruins_Background_DesertLayer0;
 	extern const std::string Ruins_Background_DesertLayer1;
 	extern const std::string Ruins_Background_DesertLayer2;

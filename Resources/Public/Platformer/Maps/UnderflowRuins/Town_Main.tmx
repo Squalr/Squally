@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="42" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="970">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="42" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="998">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -58,39 +58,82 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="desert bg 0" visible="0">
+ <objectgroup id="110" name="texture -7">
   <properties>
-   <property name="depth" type="float" value="-640"/>
+   <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="873" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="886" width="14517.6" height="1088">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="1.75"/>
-   </properties>
-  </object>
+  <object id="964" name="ruins-gray-dark" type="texture" x="1429.09" y="-716" width="2797.81" height="3504"/>
  </objectgroup>
- <objectgroup id="110" name="texture -8">
+ <objectgroup id="111" name="decor -7">
   <properties>
-   <property name="depth" type="float" value="-512"/>
+   <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="964" name="ruins-gray" type="texture" x="1429.09" y="-1236" width="2797.81" height="4560"/>
- </objectgroup>
- <objectgroup id="111" name="decor -8">
   <object id="965" name="Ruins/ArchDoorGray1" type="decor" x="2560.74" y="567.879" width="235" height="452"/>
+ </objectgroup>
+ <objectgroup id="115" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="969" name="ruins-gray-thick" type="terrain" x="-275.997" y="1031.22" width="5915.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="121" name="decor -6.5">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="990" name="Ruins/Pillar" type="decor" x="382.167" y="75.1667" width="369" height="978"/>
+  <object id="991" name="Ruins/Pillar" type="decor" x="1934.83" y="78" width="369" height="978"/>
+  <object id="992" name="Ruins/Pillar" type="decor" x="3071.74" y="76.6061" width="369" height="978"/>
+  <object id="993" name="Ruins/Pillar" type="decor" x="4618.83" y="74" width="369" height="978"/>
+ </objectgroup>
+ <objectgroup id="114" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="968" name="ruins-gray-thick" type="terrain" x="-277.33" y="1055.89" width="5915.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="120" name="decor -5.5">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="986" name="Ruins/Pillar" type="decor" x="381.167" y="102.167" width="369" height="978"/>
+  <object id="987" name="Ruins/Pillar" type="decor" x="1933.83" y="105" width="369" height="978"/>
+  <object id="988" name="Ruins/Pillar" type="decor" x="3070.74" y="103.606" width="369" height="978"/>
+  <object id="989" name="Ruins/Pillar" type="decor" x="4617.83" y="101" width="369" height="978"/>
+ </objectgroup>
+ <objectgroup id="113" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="967" name="ruins-gray-thick" type="terrain" x="-278.663" y="1081.89" width="5915.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="119" name="decor -4.5">
+  <properties>
+   <property name="depth" type="float" value="-288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="982" name="Ruins/Pillar" type="decor" x="381.167" y="132.833" width="369" height="978"/>
+  <object id="983" name="Ruins/Pillar" type="decor" x="1933.83" y="135.667" width="369" height="978"/>
+  <object id="984" name="Ruins/Pillar" type="decor" x="3070.74" y="134.273" width="369" height="978"/>
+  <object id="985" name="Ruins/Pillar" type="decor" x="4617.83" y="131.667" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="107" name="texture -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="956" name="ruins-gray" type="terrain" x="-330.91" y="-708" width="2421.81" height="3592">
+  <object id="956" name="ruins-gray" type="terrain" x="-498.91" y="-708" width="2285.81" height="3592">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="961" name="ruins-gray" type="terrain" x="3405.09" y="-740" width="2093.81" height="3624">
+  <object id="961" name="ruins-gray" type="terrain" x="3585.09" y="-740" width="2193.81" height="3624">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -101,36 +144,25 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1161.89" y="696.061" width="235" height="452"/>
-  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="3974.5" y="692" width="235" height="452"/>
- </objectgroup>
- <objectgroup id="115" name="terrain -7">
-  <properties>
-   <property name="depth" type="float" value="-448"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="969" name="ruins-gray-thick" type="terrain" x="-275.997" y="1031.22" width="5915.05" height="968"/>
- </objectgroup>
- <objectgroup id="114" name="terrain -6">
-  <properties>
-   <property name="depth" type="float" value="-384"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="968" name="ruins-gray-thick" type="terrain" x="-277.33" y="1055.89" width="5915.05" height="968"/>
- </objectgroup>
- <objectgroup id="113" name="terrain -5">
-  <properties>
-   <property name="depth" type="float" value="-320"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="967" name="ruins-gray-thick" type="terrain" x="-278.663" y="1081.89" width="5915.05" height="968"/>
+  <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452"/>
+  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="3987.17" y="665.333" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="112" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="966" name="ruins-gray-thick" type="terrain" x="-277.663" y="1111.89" width="5915.05" height="968"/>
+  <object id="966" name="ruins-gray-thick" type="terrain" x="-280.33" y="1114.56" width="5915.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="118" name="decor -3.5">
+  <properties>
+   <property name="depth" type="float" value="-224"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="978" name="Ruins/Pillar" type="decor" x="382.5" y="164.167" width="369" height="978"/>
+  <object id="979" name="Ruins/Pillar" type="decor" x="1935.17" y="167" width="369" height="978"/>
+  <object id="980" name="Ruins/Pillar" type="decor" x="3072.08" y="165.606" width="369" height="978"/>
+  <object id="981" name="Ruins/Pillar" type="decor" x="4619.17" y="163" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="104" name="terrain -3">
   <properties>
@@ -139,12 +171,32 @@
   </properties>
   <object id="948" name="ruins-gray-thick" type="terrain" x="-274.997" y="1143.89" width="5915.05" height="968"/>
  </objectgroup>
+ <objectgroup id="117" name="decor -2.5">
+  <properties>
+   <property name="depth" type="float" value="-160"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="974" name="Ruins/Pillar" type="decor" x="382.5" y="197.5" width="369" height="978"/>
+  <object id="975" name="Ruins/Pillar" type="decor" x="1935.17" y="200.333" width="369" height="978"/>
+  <object id="976" name="Ruins/Pillar" type="decor" x="3072.08" y="198.939" width="369" height="978"/>
+  <object id="977" name="Ruins/Pillar" type="decor" x="4619.17" y="196.333" width="369" height="978"/>
+ </objectgroup>
  <objectgroup id="103" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="947" name="ruins-gray-thick" type="terrain" x="-205.663" y="1178.56" width="5777.75" height="968"/>
+ </objectgroup>
+ <objectgroup id="116" name="decor -1.5">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="970" name="Ruins/Pillar" type="decor" x="383.833" y="234.167" width="369" height="978"/>
+  <object id="971" name="Ruins/Pillar" type="decor" x="1936.5" y="237" width="369" height="978"/>
+  <object id="972" name="Ruins/Pillar" type="decor" x="3073.41" y="235.606" width="369" height="978"/>
+  <object id="973" name="Ruins/Pillar" type="decor" x="4620.5" y="233" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="102" name="terrain -1">
   <properties>
@@ -159,8 +211,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="953" name="Ruins/Pillar" type="decor" x="384.833" y="272.167" width="369" height="978"/>
-  <object id="954" name="Ruins/Pillar" type="decor" x="1795.5" y="275" width="369" height="978"/>
-  <object id="957" name="Ruins/Pillar" type="decor" x="3216.41" y="271.606" width="369" height="978"/>
+  <object id="954" name="Ruins/Pillar" type="decor" x="1937.5" y="275" width="369" height="978"/>
+  <object id="957" name="Ruins/Pillar" type="decor" x="3074.41" y="273.606" width="369" height="978"/>
   <object id="962" name="Ruins/Pillar" type="decor" x="4621.5" y="271" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -201,11 +253,23 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="942" name="edge-portal" type="object" x="4676.04" y="615.574" width="199.918" height="640.851">
+  <object id="942" name="edge-portal" type="object" x="5169.98" y="612.544" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_0"/>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="994" name="portal" type="object" x="1153.24" y="872.294" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Town_Smith"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="995" name="portal" type="object" x="3988.27" y="873.264" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Town_Alch"/>
+    <property name="transition" value="alch"/>
    </properties>
   </object>
  </objectgroup>
@@ -251,7 +315,7 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="939" name="spawn" type="object" x="4036" y="1132" width="128" height="128">
+  <object id="939" name="spawn" type="object" x="4911.76" y="1122.91" width="128" height="128">
    <properties>
     <property name="transition" value="water"/>
    </properties>
@@ -259,6 +323,16 @@
   <object id="941" name="spawn" type="object" x="2850.48" y="1143.39" width="128" height="128">
    <properties>
     <property name="transition" value="back"/>
+   </properties>
+  </object>
+  <object id="996" name="spawn" type="object" x="4045.33" y="1121.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="997" name="spawn" type="object" x="1208.79" y="1119.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
    </properties>
   </object>
  </objectgroup>

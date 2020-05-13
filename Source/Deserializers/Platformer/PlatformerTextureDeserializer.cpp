@@ -49,6 +49,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 		PlatformerTextureDeserializer::Deserializers[MarbleDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[MarbleGrassTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[MarbleTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[RuinsGrayDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsGrayTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ShadeGrassTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTexture::create(properties); };

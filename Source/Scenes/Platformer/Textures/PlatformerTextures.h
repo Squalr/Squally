@@ -18,6 +18,7 @@
 #include "Scenes/Platformer/Textures/MarbleDarkTexture.h"
 #include "Scenes/Platformer/Textures/MarbleGrassTexture.h"
 #include "Scenes/Platformer/Textures/MarbleTexture.h"
+#include "Scenes/Platformer/Textures/RuinsGrayDarkTexture.h"
 #include "Scenes/Platformer/Textures/RuinsGrayTexture.h"
 #include "Scenes/Platformer/Textures/RuinsTexture.h"
 #include "Scenes/Platformer/Textures/ShadeGrassTexture.h"
