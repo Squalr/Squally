@@ -35,6 +35,7 @@
 #include "Objects/Platformer/Interactables/Doors/MagePortals/WaterPortal.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/WindPortal.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
+#include "Objects/Platformer/Interactables/Doors/OptionWarp.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoor.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"

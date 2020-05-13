@@ -137,6 +137,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[MechanicalFlail::MapKey] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };
 	this->deserializers[MulDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)MulDoor::create(properties); };
 	this->deserializers[NaturePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)NaturePortal::create(properties); };
+	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)OptionWarp::create(properties); };
 	this->deserializers[Portal::MapKey] = [=](ValueMap properties) { return (GameObject*)Portal::create(properties); };
 	this->deserializers[PortalSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)PortalSpawn::create(properties); };
 	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };

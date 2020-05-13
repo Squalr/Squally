@@ -91,7 +91,7 @@
   </object>
   <object id="805" name="spawn" type="object" x="1085.65" y="935.2" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="hera"/>
    </properties>
   </object>
  </objectgroup>

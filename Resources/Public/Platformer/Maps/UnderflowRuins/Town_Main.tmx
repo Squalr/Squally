@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="129" nextobjectid="1009">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="131" nextobjectid="1012">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -78,6 +78,21 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="969" name="ruins-gray-thick" type="terrain" x="-275.997" y="1031.22" width="6083.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="130" name="objects -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1011" name="option-warp" type="object" x="1546.67" y="773.333" width="256" height="256">
+   <properties>
+    <property name="from" value="7-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="back"/>
+    <property name="to" value="1-A,4-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="127" name="entities -7">
   <properties>
@@ -186,6 +201,21 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="966" name="ruins-gray-thick" type="terrain" x="-280.33" y="1114.56" width="6015.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="129" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1010" name="option-warp" type="object" x="1549.33" y="857.333" width="256" height="256">
+   <properties>
+    <property name="from" value="4-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="middle"/>
+    <property name="to" value="1-A,7-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="123" name="entities -4">
   <properties>
@@ -325,6 +355,15 @@
    <properties>
     <property name="map" value="UnderflowRuins/Home_Hera"/>
     <property name="transition" value="hera"/>
+   </properties>
+  </object>
+  <object id="1009" name="option-warp" type="object" x="1548" y="994" width="256" height="256">
+   <properties>
+    <property name="from" value="1-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="front"/>
+    <property name="to" value="4-A,7-A"/>
    </properties>
   </object>
  </objectgroup>

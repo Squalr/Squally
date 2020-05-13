@@ -23694,6 +23694,66 @@ namespace Strings
 		virtual ~Platformer_Objects_Doors_Unlock() = default;
 	};
 
+	class Platformer_Objects_Warps_Back : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Warps_Back* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Warps_Back();
+		virtual ~Platformer_Objects_Warps_Back() = default;
+	};
+
+	class Platformer_Objects_Warps_Front : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Warps_Front* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Warps_Front();
+		virtual ~Platformer_Objects_Warps_Front() = default;
+	};
+
+	class Platformer_Objects_Warps_Middle : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Warps_Middle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Warps_Middle();
+		virtual ~Platformer_Objects_Warps_Middle() = default;
+	};
+
+	class Platformer_Objects_Warps_WhereTo : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Warps_WhereTo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Warps_WhereTo();
+		virtual ~Platformer_Objects_Warps_WhereTo() = default;
+	};
+
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
 	{
 	public:
