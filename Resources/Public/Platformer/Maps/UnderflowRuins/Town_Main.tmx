@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="42" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="998">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="129" nextobjectid="1009">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -63,7 +63,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="964" name="ruins-gray-dark" type="texture" x="1429.09" y="-716" width="2797.81" height="3504"/>
+  <object id="964" name="ruins-gray-dark" type="texture" x="1133.09" y="-716" width="3261.81" height="3504"/>
  </objectgroup>
  <objectgroup id="111" name="decor -7">
   <properties>
@@ -77,7 +77,20 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="969" name="ruins-gray-thick" type="terrain" x="-275.997" y="1031.22" width="5915.05" height="968"/>
+  <object id="969" name="ruins-gray-thick" type="terrain" x="-275.997" y="1031.22" width="6083.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="127" name="entities -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1008" name="athena" type="entity" x="2960" y="900" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="athena-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="121" name="decor -6.5">
   <properties>
@@ -87,14 +100,20 @@
   <object id="990" name="Ruins/Pillar" type="decor" x="382.167" y="75.1667" width="369" height="978"/>
   <object id="991" name="Ruins/Pillar" type="decor" x="1934.83" y="78" width="369" height="978"/>
   <object id="992" name="Ruins/Pillar" type="decor" x="3071.74" y="76.6061" width="369" height="978"/>
-  <object id="993" name="Ruins/Pillar" type="decor" x="4618.83" y="74" width="369" height="978"/>
+  <object id="993" name="Ruins/Pillar" type="decor" x="4744.83" y="72" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="114" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="968" name="ruins-gray-thick" type="terrain" x="-277.33" y="1055.89" width="5915.05" height="968"/>
+  <object id="968" name="ruins-gray-thick" type="terrain" x="-277.33" y="1055.89" width="6056.39" height="968"/>
+ </objectgroup>
+ <objectgroup id="128" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="120" name="decor -5.5">
   <properties>
@@ -104,14 +123,20 @@
   <object id="986" name="Ruins/Pillar" type="decor" x="381.167" y="102.167" width="369" height="978"/>
   <object id="987" name="Ruins/Pillar" type="decor" x="1933.83" y="105" width="369" height="978"/>
   <object id="988" name="Ruins/Pillar" type="decor" x="3070.74" y="103.606" width="369" height="978"/>
-  <object id="989" name="Ruins/Pillar" type="decor" x="4617.83" y="101" width="369" height="978"/>
+  <object id="989" name="Ruins/Pillar" type="decor" x="4743.83" y="99" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="113" name="terrain -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="967" name="ruins-gray-thick" type="terrain" x="-278.663" y="1081.89" width="5915.05" height="968"/>
+  <object id="967" name="ruins-gray-thick" type="terrain" x="-278.663" y="1081.89" width="6037.72" height="968"/>
+ </objectgroup>
+ <objectgroup id="126" name="entities -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="119" name="decor -4.5">
   <properties>
@@ -121,19 +146,27 @@
   <object id="982" name="Ruins/Pillar" type="decor" x="381.167" y="132.833" width="369" height="978"/>
   <object id="983" name="Ruins/Pillar" type="decor" x="1933.83" y="135.667" width="369" height="978"/>
   <object id="984" name="Ruins/Pillar" type="decor" x="3070.74" y="134.273" width="369" height="978"/>
-  <object id="985" name="Ruins/Pillar" type="decor" x="4617.83" y="131.667" width="369" height="978"/>
+  <object id="985" name="Ruins/Pillar" type="decor" x="4743.83" y="129.667" width="369" height="978"/>
+ </objectgroup>
+ <objectgroup id="122" name="decor -4 bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1000" name="Generic/SignSmith" type="decor" x="1395.83" y="503.333" width="523" height="265"/>
+  <object id="1001" name="Generic/SignAlch" type="decor" x="3582.59" y="506.833" width="523" height="265"/>
  </objectgroup>
  <objectgroup id="107" name="texture -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="956" name="ruins-gray" type="terrain" x="-498.91" y="-708" width="2285.81" height="3592">
+  <object id="956" name="ruins-gray" type="terrain" x="-498.91" y="-708" width="2031.81" height="3592">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="961" name="ruins-gray" type="terrain" x="3585.09" y="-740" width="2193.81" height="3624">
+  <object id="961" name="ruins-gray" type="terrain" x="3974.67" y="-740" width="1804.23" height="3624">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -145,14 +178,27 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452"/>
-  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="3987.17" y="665.333" width="235" height="452"/>
+  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="112" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="966" name="ruins-gray-thick" type="terrain" x="-280.33" y="1114.56" width="5915.05" height="968"/>
+  <object id="966" name="ruins-gray-thick" type="terrain" x="-280.33" y="1114.56" width="6015.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="123" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1006" name="aphrodite" type="entity" x="1862.67" y="988.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="118" name="decor -3.5">
   <properties>
@@ -162,14 +208,20 @@
   <object id="978" name="Ruins/Pillar" type="decor" x="382.5" y="164.167" width="369" height="978"/>
   <object id="979" name="Ruins/Pillar" type="decor" x="1935.17" y="167" width="369" height="978"/>
   <object id="980" name="Ruins/Pillar" type="decor" x="3072.08" y="165.606" width="369" height="978"/>
-  <object id="981" name="Ruins/Pillar" type="decor" x="4619.17" y="163" width="369" height="978"/>
+  <object id="981" name="Ruins/Pillar" type="decor" x="4745.17" y="161" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="104" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="948" name="ruins-gray-thick" type="terrain" x="-274.997" y="1143.89" width="5915.05" height="968"/>
+  <object id="948" name="ruins-gray-thick" type="terrain" x="-274.997" y="1143.89" width="5979.05" height="968"/>
+ </objectgroup>
+ <objectgroup id="124" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="117" name="decor -2.5">
   <properties>
@@ -179,14 +231,20 @@
   <object id="974" name="Ruins/Pillar" type="decor" x="382.5" y="197.5" width="369" height="978"/>
   <object id="975" name="Ruins/Pillar" type="decor" x="1935.17" y="200.333" width="369" height="978"/>
   <object id="976" name="Ruins/Pillar" type="decor" x="3072.08" y="198.939" width="369" height="978"/>
-  <object id="977" name="Ruins/Pillar" type="decor" x="4619.17" y="196.333" width="369" height="978"/>
+  <object id="977" name="Ruins/Pillar" type="decor" x="4745.17" y="194.333" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="103" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="947" name="ruins-gray-thick" type="terrain" x="-205.663" y="1178.56" width="5777.75" height="968"/>
+  <object id="947" name="ruins-gray-thick" type="terrain" x="-205.663" y="1178.56" width="5843.08" height="968"/>
+ </objectgroup>
+ <objectgroup id="125" name="entities -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="116" name="decor -1.5">
   <properties>
@@ -196,14 +254,14 @@
   <object id="970" name="Ruins/Pillar" type="decor" x="383.833" y="234.167" width="369" height="978"/>
   <object id="971" name="Ruins/Pillar" type="decor" x="1936.5" y="237" width="369" height="978"/>
   <object id="972" name="Ruins/Pillar" type="decor" x="3073.41" y="235.606" width="369" height="978"/>
-  <object id="973" name="Ruins/Pillar" type="decor" x="4620.5" y="233" width="369" height="978"/>
+  <object id="973" name="Ruins/Pillar" type="decor" x="4746.5" y="231" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="102" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="946" name="ruins-gray-thick" type="terrain" x="-142.997" y="1213.89" width="5648.48" height="968"/>
+  <object id="946" name="ruins-gray-thick" type="terrain" x="-142.997" y="1213.89" width="5721.81" height="968"/>
  </objectgroup>
  <objectgroup id="106" name="decor -0.5">
   <properties>
@@ -213,13 +271,13 @@
   <object id="953" name="Ruins/Pillar" type="decor" x="384.833" y="272.167" width="369" height="978"/>
   <object id="954" name="Ruins/Pillar" type="decor" x="1937.5" y="275" width="369" height="978"/>
   <object id="957" name="Ruins/Pillar" type="decor" x="3074.41" y="273.606" width="369" height="978"/>
-  <object id="962" name="Ruins/Pillar" type="decor" x="4621.5" y="271" width="369" height="978"/>
+  <object id="962" name="Ruins/Pillar" type="decor" x="4747.5" y="269" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="ruins-gray-thick" type="terrain" x="-95.6633" y="1249.89" width="5536.36" height="968"/>
+  <object id="833" name="ruins-gray-thick" type="terrain" x="-95.6633" y="1249.89" width="5612.36" height="968"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -237,15 +295,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="912" name="warp" type="object" x="2788.45" y="998.39" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-A"/>
-    <property name="zoom" type="float" value="1"/>
-   </properties>
-  </object>
   <object id="931" name="edge-portal" type="object" x="1.76608" y="621.76" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
@@ -253,7 +302,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="942" name="edge-portal" type="object" x="5169.98" y="612.544" width="199.918" height="640.851">
+  <object id="942" name="edge-portal" type="object" x="5294.22" y="609.514" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_0"/>
@@ -266,10 +315,16 @@
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="995" name="portal" type="object" x="3988.27" y="873.264" width="237.527" height="375.411">
+  <object id="995" name="portal" type="object" x="4112.27" y="873.264" width="237.527" height="375.411">
    <properties>
     <property name="map" value="UnderflowRuins/Town_Alch"/>
     <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="1005" name="portal" type="object" x="2573.54" y="875.204" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Home_Hera"/>
+    <property name="transition" value="hera"/>
    </properties>
   </object>
  </objectgroup>
@@ -281,20 +336,6 @@
   <object id="943" name="ajax" type="entity" x="2429.15" y="1121.21" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ajax-hexus,friendly,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="944" name="athena" type="entity" x="3796.85" y="1123.03" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="athena-hexus,friendly,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="945" name="hera" type="entity" x="3212.55" y="1123.52" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -320,12 +361,12 @@
     <property name="transition" value="water"/>
    </properties>
   </object>
-  <object id="941" name="spawn" type="object" x="2850.48" y="1143.39" width="128" height="128">
+  <object id="941" name="spawn" type="object" x="2629.15" y="1120.73" width="128" height="128">
    <properties>
-    <property name="transition" value="back"/>
+    <property name="transition" value="hera"/>
    </properties>
   </object>
-  <object id="996" name="spawn" type="object" x="4045.33" y="1121.33" width="128" height="128">
+  <object id="996" name="spawn" type="object" x="4169.33" y="1121.33" width="128" height="128">
    <properties>
     <property name="transition" value="alch"/>
    </properties>
