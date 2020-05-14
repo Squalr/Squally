@@ -342,6 +342,37 @@ bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
 	return std::find(this->currentCollisions->begin(), this->currentCollisions->end(), collisionObject) != this->currentCollisions->end();
 }
 
+bool CollisionObject::wasCollidingWith(CollisionObject* collisionObject)
+{
+	return std::find(this->previousCollisions->begin(), this->previousCollisions->end(), collisionObject) != this->previousCollisions->end();
+}
+
+bool CollisionObject::isCollidingWithType(int collisionType)
+{
+	for (auto next : *this->currentCollisions)
+	{
+		if (next->getCollisionType() == collisionType)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool CollisionObject::wasCollidingWithType(int collisionType)
+{
+	for (auto next : *this->previousCollisions)
+	{
+		if (next->getCollisionType() == collisionType)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void CollisionObject::warpTo(cocos2d::Vec3 location)
 {
 	this->setThisOrBindPosition(location);

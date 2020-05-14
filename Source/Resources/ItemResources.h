@@ -238,6 +238,7 @@ namespace ItemResources
 	extern const std::string Keys_KEY_4;
 	extern const std::string Keys_KEY_5;
 	extern const std::string Keys_KEY_6;
+	extern const std::string Keys_MedusaMirror;
 	extern const std::string Keys_PurpleGem;
 	extern const std::string Keys_RamWheel;
 	extern const std::string Keys_RedGem;

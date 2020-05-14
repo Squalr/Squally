@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1040">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1042">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -99,6 +99,8 @@
     <property name="transition" value="hera"/>
    </properties>
   </object>
+  <object id="1040" name="solid" type="collision" x="1378.99" y="-863.562" width="126.878" height="1890.76"/>
+  <object id="1041" name="solid" type="collision" x="4022.99" y="-849.744" width="126.878" height="1890.76"/>
  </objectgroup>
  <objectgroup id="127" name="entities -7">
   <properties>
@@ -429,7 +431,7 @@
   <object id="942" name="edge-portal" type="object" x="5294.22" y="609.514" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_2_0"/>
+    <property name="map" value="UnderflowRuins/Town_Well"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -490,7 +492,7 @@
   </object>
   <object id="939" name="spawn" type="object" x="4911.76" y="1122.91" width="128" height="128">
    <properties>
-    <property name="transition" value="water"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

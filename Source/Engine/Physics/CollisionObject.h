@@ -93,6 +93,9 @@ public:
 	void setVerticalDampening(float verticalDampening);
 	const std::set<CollisionObject*>& getCurrentCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
+	bool wasCollidingWith(CollisionObject* collisionObject);
+	bool isCollidingWithType(int collisionType);
+	bool wasCollidingWithType(int collisionType);
 	void setCollisionDepth(float collisionDepth);
 	virtual void setPhysicsEnabled(bool enabled);
 

@@ -21789,6 +21789,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Drak() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_DaemonsHallow_Hades : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DaemonsHallow_Hades* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DaemonsHallow_Hades();
+		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Hades() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus : public LocalizedString
 	{
 	public:
@@ -21877,21 +21892,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis();
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Rupert : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Rupert* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Rupert();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Rupert() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty : public LocalizedString
@@ -22674,21 +22674,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_UnderflowRuins_Griffin() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_UnderflowRuins_Hades : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Hades* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_UnderflowRuins_Hades();
-		virtual ~Platformer_Entities_Names_Npcs_UnderflowRuins_Hades() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Hera : public LocalizedString
 	{
 	public:
@@ -22732,6 +22717,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_UnderflowRuins_Poseidon();
 		virtual ~Platformer_Entities_Names_Npcs_UnderflowRuins_Poseidon() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_UnderflowRuins_Rupert : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_UnderflowRuins_Rupert* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_UnderflowRuins_Rupert();
+		virtual ~Platformer_Entities_Names_Npcs_UnderflowRuins_Rupert() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Thor : public LocalizedString

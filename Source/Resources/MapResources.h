@@ -86,6 +86,7 @@ namespace MapResources
 	extern const std::string Tutorials_UnknownValueInt32;
 	extern const std::string UnderflowRuins_Fishing_Village;
 	extern const std::string UnderflowRuins_Home_Griffin_Geryon;
+	extern const std::string UnderflowRuins_Home_Hera;
 	extern const std::string UnderflowRuins_Town_Alch;
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string UnderflowRuins_Town_Main;

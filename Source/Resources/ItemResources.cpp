@@ -237,6 +237,7 @@ const std::string ItemResources::Keys_KEY_3 = "Private/Platformer/Items/Keys/KEY
 const std::string ItemResources::Keys_KEY_4 = "Private/Platformer/Items/Keys/KEY 4.png";
 const std::string ItemResources::Keys_KEY_5 = "Private/Platformer/Items/Keys/KEY 5.png";
 const std::string ItemResources::Keys_KEY_6 = "Private/Platformer/Items/Keys/KEY 6.png";
+const std::string ItemResources::Keys_MedusaMirror = "Private/Platformer/Items/Keys/MedusaMirror.png";
 const std::string ItemResources::Keys_PurpleGem = "Private/Platformer/Items/Keys/PurpleGem.png";
 const std::string ItemResources::Keys_RamWheel = "Private/Platformer/Items/Keys/RamWheel.png";
 const std::string ItemResources::Keys_RedGem = "Private/Platformer/Items/Keys/RedGem.png";

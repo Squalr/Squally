@@ -323,7 +323,11 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->submergeSound->isPlaying())
+		if (this->groundCollision != nullptr
+			&& !this->groundCollision->isOnGround()
+			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
+			&& !this->submergeSound->isPlaying() &&
+			!this->movementCollision->wasCollidingWithType((int)PlatformerCollisionType::Water))
 		{
 			this->submergeSound->play();
 		}
@@ -345,7 +349,11 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
 
-		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->emergeSound->isPlaying())
+		if (this->groundCollision != nullptr
+			&& !this->groundCollision->isOnGround()
+			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
+			&& !this->emergeSound->isPlaying()
+			&& !this->movementCollision->isCollidingWithType((int)PlatformerCollisionType::Water))
 		{
 			this->emergeSound->play();
 		}
