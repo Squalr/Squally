@@ -34,7 +34,8 @@ private:
 	void resolveToStrKeys();
 	void openDialogue();
 	LocalizedString* getOptionString(int index, std::string strKey);
-	void chooseOption(int option);
+	bool cancelOptionChoice();
+	bool chooseOption(int option);
 	void doRelayer();
 	void applyZoomOverride();
 

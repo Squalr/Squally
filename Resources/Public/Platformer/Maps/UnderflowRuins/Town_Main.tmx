@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="131" nextobjectid="1012">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1040">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -70,7 +70,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="965" name="Ruins/ArchDoorGray1" type="decor" x="2560.74" y="567.879" width="235" height="452"/>
+  <object id="965" name="Ruins/ArchDoorGray1" type="decor" x="2562.07" y="578.546" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="115" name="terrain -7">
   <properties>
@@ -79,18 +79,24 @@
   </properties>
   <object id="969" name="ruins-gray-thick" type="terrain" x="-275.997" y="1031.22" width="6083.05" height="968"/>
  </objectgroup>
+ <objectgroup id="134" name="decor -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1016" name="Generic/BlueRug" type="decor" x="1562.83" y="1017.83" width="332" height="21"/>
+  <object id="1019" name="Generic/BlueRug" type="decor" x="3552.03" y="1016.82" width="332" height="21"/>
+  <object id="1039" name="Generic/RedRug" type="decor" x="2523" y="1017.5" width="332" height="21"/>
+ </objectgroup>
  <objectgroup id="130" name="objects -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1011" name="option-warp" type="object" x="1546.67" y="773.333" width="256" height="256">
+  <object id="1024" name="portal" type="object" x="2561.24" y="654.294" width="237.527" height="375.411">
    <properties>
-    <property name="from" value="7-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="string" value="back"/>
-    <property name="to" value="1-A,4-A"/>
+    <property name="map" value="UnderflowRuins/Home_Hera"/>
+    <property name="transition" value="hera"/>
    </properties>
   </object>
  </objectgroup>
@@ -104,6 +110,35 @@
     <property name="attached-behavior" value="athena-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="131" name="player_layer -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1012" name="option-warp" type="object" x="1593.67" y="773.166" width="256" height="256">
+   <properties>
+    <property name="from" value="7-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="back"/>
+    <property name="to" value="1-A,4-A"/>
+   </properties>
+  </object>
+  <object id="1018" name="option-warp" type="object" x="3584" y="772.5" width="256" height="256">
+   <properties>
+    <property name="from" value="7-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="back"/>
+    <property name="to" value="1-B,4-B"/>
+   </properties>
+  </object>
+  <object id="1025" name="spawn" type="object" x="2616" y="901" width="128" height="128">
+   <properties>
+    <property name="transition" value="hera"/>
    </properties>
   </object>
  </objectgroup>
@@ -202,18 +237,32 @@
   </properties>
   <object id="966" name="ruins-gray-thick" type="terrain" x="-280.33" y="1114.56" width="6015.05" height="968"/>
  </objectgroup>
+ <objectgroup id="133" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1015" name="Generic/BlueRug" type="decor" x="1561.5" y="1105.83" width="332" height="21"/>
+  <object id="1021" name="Generic/BlueRug" type="decor" x="3549.03" y="1104.32" width="332" height="21"/>
+  <object id="1033" name="Generic/BlueRug" type="decor" x="2522" y="1106.83" width="332" height="21"/>
+  <object id="1037" name="Generic/RedRug" type="decor" x="1105" y="1104.5" width="332" height="21"/>
+  <object id="1038" name="Generic/RedRug" type="decor" x="4072.67" y="1106.83" width="332" height="21"/>
+ </objectgroup>
  <objectgroup id="129" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1010" name="option-warp" type="object" x="1549.33" y="857.333" width="256" height="256">
+  <object id="1027" name="portal" type="object" x="1151.99" y="742.295" width="237.527" height="375.411">
    <properties>
-    <property name="from" value="4-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="string" value="middle"/>
-    <property name="to" value="1-A,7-A"/>
+    <property name="map" value="UnderflowRuins/Town_Smith"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="1030" name="portal" type="object" x="4110.27" y="740.264" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Town_Alch"/>
+    <property name="transition" value="alch"/>
    </properties>
   </object>
  </objectgroup>
@@ -227,6 +276,48 @@
     <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="132" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1013" name="option-warp" type="object" x="1596.33" y="857.166" width="256" height="256">
+   <properties>
+    <property name="from" value="4-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="middle"/>
+    <property name="to" value="1-A,7-A"/>
+   </properties>
+  </object>
+  <object id="1020" name="option-warp" type="object" x="3584.33" y="857.333" width="256" height="256">
+   <properties>
+    <property name="from" value="4-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="middle"/>
+    <property name="to" value="1-B,7-B"/>
+   </properties>
+  </object>
+  <object id="1028" name="spawn" type="object" x="1208" y="989" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="1031" name="spawn" type="object" x="4165.33" y="987.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="1035" name="warp" type="object" x="2558.67" y="859" width="256" height="256">
+   <properties>
+    <property name="from" value="4-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -313,6 +404,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1014" name="Generic/BlueRug" type="decor" x="1558.83" y="1240.5" width="332" height="21"/>
+  <object id="1023" name="Generic/BlueRug" type="decor" x="3547.03" y="1238.98" width="332" height="21"/>
+  <object id="1032" name="Generic/BlueRug" type="decor" x="2521.33" y="1238.17" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="105" name="terrain fg">
   <properties>
@@ -339,31 +433,30 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="994" name="portal" type="object" x="1153.24" y="872.294" width="237.527" height="375.411">
-   <properties>
-    <property name="map" value="UnderflowRuins/Town_Smith"/>
-    <property name="transition" value="smith"/>
-   </properties>
-  </object>
-  <object id="995" name="portal" type="object" x="4112.27" y="873.264" width="237.527" height="375.411">
-   <properties>
-    <property name="map" value="UnderflowRuins/Town_Alch"/>
-    <property name="transition" value="alch"/>
-   </properties>
-  </object>
-  <object id="1005" name="portal" type="object" x="2573.54" y="875.204" width="237.527" height="375.411">
-   <properties>
-    <property name="map" value="UnderflowRuins/Home_Hera"/>
-    <property name="transition" value="hera"/>
-   </properties>
-  </object>
-  <object id="1009" name="option-warp" type="object" x="1548" y="994" width="256" height="256">
+  <object id="1009" name="option-warp" type="object" x="1595" y="993.833" width="256" height="256">
    <properties>
     <property name="from" value="1-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="string" value="front"/>
     <property name="to" value="4-A,7-A"/>
+   </properties>
+  </object>
+  <object id="1022" name="option-warp" type="object" x="3584.33" y="993.333" width="256" height="256">
+   <properties>
+    <property name="from" value="1-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="front"/>
+    <property name="to" value="4-B,7-B"/>
+   </properties>
+  </object>
+  <object id="1034" name="warp" type="object" x="2558" y="992" width="256" height="256">
+   <properties>
+    <property name="from" value="1-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="4-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -398,21 +491,6 @@
   <object id="939" name="spawn" type="object" x="4911.76" y="1122.91" width="128" height="128">
    <properties>
     <property name="transition" value="water"/>
-   </properties>
-  </object>
-  <object id="941" name="spawn" type="object" x="2629.15" y="1120.73" width="128" height="128">
-   <properties>
-    <property name="transition" value="hera"/>
-   </properties>
-  </object>
-  <object id="996" name="spawn" type="object" x="4169.33" y="1121.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="alch"/>
-   </properties>
-  </object>
-  <object id="997" name="spawn" type="object" x="1208.79" y="1119.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="smith"/>
    </properties>
   </object>
  </objectgroup>

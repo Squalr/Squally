@@ -924,6 +924,21 @@ namespace Strings
 		virtual ~Common_Newline() = default;
 	};
 
+	class Common_NewlineNewline : public LocalizedString
+	{
+	public:
+		static Common_NewlineNewline* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_NewlineNewline();
+		virtual ~Common_NewlineNewline() = default;
+	};
+
 	class Common_PlusConstant : public LocalizedString
 	{
 	public:
