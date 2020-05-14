@@ -30,6 +30,14 @@ protected:
 private:
 	typedef GameObject super;
 
+	enum class TorchColor
+	{
+		Red,
+		Blue,
+		Green,
+		Purple
+	};
+
 	void updateLogicTorchVisibility();
 
 	cocos2d::Sprite* torch;
@@ -37,4 +45,8 @@ private:
 	SmartAnimationSequenceNode* fire;
 
 	bool isOn;
+	TorchColor color;
+
+	static const std::string PropertyColor;
+	static const std::string PropertyIsOn;
 };

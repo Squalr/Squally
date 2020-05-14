@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="881">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="884">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -54,7 +54,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="832" name="ruins-gray-dark" type="terrain" x="1740" y="-64" width="3521.82" height="2896">
+  <object id="832" name="ruins-gray-dark" type="terrain" x="1690.42" y="-72" width="4323.39" height="2896">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -85,12 +85,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="ruins-gray-thick" type="terrain" x="-223.63" y="1197.82" width="2069.93" height="1212.12"/>
-  <object id="872" name="ruins-gray-dark" type="terrain" x="1376" y="3576">
+  <object id="835" name="ruins-gray-thick" type="terrain" x="-223.63" y="1197.82" width="2545.93" height="1212.12"/>
+  <object id="872" name="ruins-gray-dark" type="terrain" x="2128" y="3568">
    <polygon points="-1610,-1152.18 1629.39,-1154.83 1629.4,-1782.12 1894.5,-1785.25 1897.27,-1152.91 2649.75,-1147.04 2652.73,-1786.49 4047.33,-1787.04 4047.88,-272.299 -1610.36,-272.545"/>
   </object>
-  <object id="873" name="ruins-gray-dark" type="terrain" x="3067.11" y="1615.53">
-   <polygon points="-896.175,-417.772 2253.98,-418.189 2253.17,-98.7336 713.318,-82.7752 710.488,556.762 440.469,554.912 438.409,-88.7865 -312.925,-92.8044 -317.487,558.022 -569.773,555.738 -572.803,-98.8154 -896.376,-98.8228"/>
+  <object id="873" name="ruins-gray-dark" type="terrain" x="3819.11" y="1607.53">
+   <polygon points="-1174.96,-414.742 2253.98,-418.189 2253.17,-98.7336 713.318,-82.7752 710.488,556.762 440.469,554.912 438.409,-88.7865 -312.925,-92.8044 -317.487,558.022 -569.773,555.738 -572.803,-98.8154 -1175.16,-95.7925"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -109,20 +109,69 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="852" name="logic-torch" type="object" x="2572.67" y="822.667" width="101" height="132"/>
-  <object id="856" name="logic-torch" type="object" x="3596.97" y="828.727" width="101" height="132"/>
-  <object id="857" name="logic-torch" type="object" x="3084.17" y="822.667" width="101" height="132"/>
-  <object id="860" name="logic-torch" type="object" x="2574.23" y="615.636" width="101" height="132"/>
-  <object id="861" name="logic-torch" type="object" x="3598.53" y="621.697" width="101" height="132"/>
-  <object id="862" name="logic-torch" type="object" x="3085.73" y="615.636" width="101" height="132"/>
-  <object id="863" name="logic-torch" type="object" x="4110.89" y="618.667" width="101" height="132"/>
-  <object id="874" name="ruins-gray" type="terrain" x="2537.52" y="1232.24" width="167.392" height="596.121"/>
-  <object id="875" name="ruins-gray" type="terrain" x="3560.18" y="1234.42" width="167.392" height="596.121"/>
-  <object id="876" name="ruins-gray" type="terrain" x="4077.03" y="1957.82" width="167.392" height="596.121"/>
-  <object id="877" name="ruins-gray" type="terrain" x="3051.7" y="1955.76" width="167.392" height="596.121"/>
-  <object id="880" name="lever" type="object" x="3307.5" y="993.5" width="177" height="205">
+  <object id="852" name="logic-torch" type="object" x="3324.67" y="814.667" width="101" height="111">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="is-on" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="856" name="logic-torch" type="object" x="4348.97" y="820.727" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="is-on" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="857" name="logic-torch" type="object" x="3836.17" y="814.667" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="is-on" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="860" name="logic-torch" type="object" x="3326.23" y="607.636" width="101" height="111">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="is-on" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="861" name="logic-torch" type="object" x="4350.53" y="613.697" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="is-on" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="862" name="logic-torch" type="object" x="3837.73" y="607.636" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="is-on" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="863" name="logic-torch" type="object" x="4862.89" y="610.667" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="is-on" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="874" name="ruins-gray" type="terrain" x="3289.52" y="1224.24" width="167.392" height="596.121"/>
+  <object id="875" name="ruins-gray" type="terrain" x="4312.18" y="1226.42" width="167.392" height="596.121"/>
+  <object id="876" name="ruins-gray" type="terrain" x="4829.03" y="1949.82" width="167.392" height="596.121"/>
+  <object id="877" name="ruins-gray" type="terrain" x="3803.7" y="1947.76" width="167.392" height="596.121"/>
+  <object id="880" name="lever" type="object" x="4059.5" y="985.5" width="177" height="205">
    <properties>
     <property name="send-event" value="bridge-group-A"/>
+   </properties>
+  </object>
+  <object id="881" name="edge-portal" type="object" x="5673.15" y="1309.82" width="200" height="640">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_2_3"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="882" name="glass-display-or" type="object" x="2855.2" y="861.53" width="169" height="331"/>
+  <object id="883" name="logic-torch" type="object" x="4861.33" y="817.697" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="is-on" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -164,42 +213,34 @@
     <property name="transition" value="back"/>
    </properties>
   </object>
-  <object id="850" name="edge-portal" type="object" x="4919.64" y="555.03" width="200" height="640">
+  <object id="850" name="edge-portal" type="object" x="5671.64" y="547.03" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_3"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="851" name="spawn" type="object" x="2848.67" y="1068.67" width="128" height="128">
+  <object id="851" name="spawn" type="object" x="3600.67" y="1060.67" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="859" name="logic-torch" type="object" x="4109.33" y="825.697" width="101" height="132"/>
-  <object id="865" name="spawn" type="object" x="4573.33" y="1066.67" width="128" height="128">
+  <object id="865" name="spawn" type="object" x="5325.33" y="1058.67" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="878" name="edge-portal" type="object" x="4919.15" y="1369.82" width="200" height="640">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_2_3"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="879" name="spawn" type="object" x="4551.15" y="1660.24" width="128" height="128">
+  <object id="879" name="spawn" type="object" x="5303.15" y="1652.24" width="128" height="128">
    <properties>
     <property name="transition" value="or-gate"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg" visible="0">
+ <objectgroup id="113" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="water" type="object" x="-169.98" y="1295.63" width="5632.32" height="1480.74"/>
+  <object id="833" name="water" type="object" x="-169.98" y="1295.63" width="6304.32" height="1400.74"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

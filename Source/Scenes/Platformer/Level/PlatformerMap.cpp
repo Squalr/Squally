@@ -38,6 +38,7 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
@@ -78,8 +79,9 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->confirmationHud = ConfirmationHud::create();
 	this->notificationHud = NotificationHud::create();
 	this->combatFadeInNode = Node::create();
-	this->cipher = Cipher::create();
-	this->hexus = Hexus::create();
+	this->cipher = nullptr; // Lazy initialized
+	this->hexus = nullptr; // Lazy initialized
+	this->cardHelpMenu = nullptr; // Lazy initialized
 	this->collectablesMenu = CollectablesMenu::create();
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
@@ -114,8 +116,6 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	// this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
-	this->miniGameHud->addChild(this->cipher);
-	this->miniGameHud->addChild(this->hexus);
 	this->menuHud->addChild(this->combatFadeInNode);
 	this->menuHud->addChild(this->alchemyMenu);
 	this->menuHud->addChild(this->blacksmithingMenu);
@@ -296,6 +296,8 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
+			this->buildCipher();
+
 			this->cipher->setVisible(true);
 			this->mapNode->setVisible(false);
 			this->notificationHud->setVisible(false);
@@ -311,6 +313,8 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
+			this->buildCipher();
+
 			this->cipher->setVisible(false);
 			this->mapNode->setVisible(true);
 			this->notificationHud->setVisible(true);
@@ -327,6 +331,8 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
+			this->buildHexus();
+
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
 			this->mapNode->setVisible(false);
@@ -342,6 +348,8 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
+			this->buildHexus();
+
 			this->hexus->setVisible(false);
 			this->mapNode->setVisible(true);
 			this->notificationHud->setVisible(true);
@@ -350,29 +358,20 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
-	this->cipher->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventShowHelpMenuOutsideOfGame, [=](EventCustom* eventCustom)
 	{
-		if (!this->canPause ||!GameUtils::isFocused(this->cipher))
+		HexusEvents::HelpMenuArgs* args = static_cast<HexusEvents::HelpMenuArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
 		{
-			return;
+			this->buildHexusCardHelp();
+			
+			this->cardHelpMenu->setVisible(true);
+			this->cardHelpMenu->openMenu(args->cardData, true);
+			
+			GameUtils::focus(this->cardHelpMenu);
 		}
-		
-		args->handle();
-
-		this->openPauseMenu(this->cipher);
-	});
-
-	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
-	{
-		if (!this->canPause || !GameUtils::isFocused(this->hexus))
-		{
-			return;
-		}
-		
-		args->handle();
-
-		this->openPauseMenu(this->hexus);
-	});
+	}));
 	
 	this->ingameMenu->setInventoryClickCallback([=]()
 	{
@@ -507,4 +506,85 @@ void PlatformerMap::warpSquallyToRespawn()
 
 		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
 	}, Squally::MapKey);
+}
+
+void PlatformerMap::buildHexus()
+{
+	if (this->hexus != nullptr)
+	{
+		return;
+	}
+
+	this->hexus = Hexus::create();
+
+	this->miniGameHud->addChild(this->hexus);
+
+	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->canPause || !GameUtils::isFocused(this->hexus))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu(this->hexus);
+	});
+}
+
+void PlatformerMap::buildHexusCardHelp()
+{
+	if (this->cardHelpMenu != nullptr)
+	{
+		return;
+	}
+
+	this->cardHelpMenu = HelpMenu::create();
+
+	this->cardHelpMenu->setExitCallback([=]()
+	{
+		this->cardHelpMenu->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+
+	this->miniGameHud->addChild(this->cardHelpMenu);
+
+	this->cardHelpMenu->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->canPause ||!GameUtils::isFocused(this->cardHelpMenu))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->cardHelpMenu->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+}
+
+void PlatformerMap::buildCipher()
+{
+	if (this->cipher != nullptr)
+	{
+		return;
+	}
+	
+	this->cipher = Cipher::create();
+
+	this->miniGameHud->addChild(this->cipher);
+
+	this->cipher->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->canPause ||!GameUtils::isFocused(this->cipher))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu(this->cipher);
+	});
 }

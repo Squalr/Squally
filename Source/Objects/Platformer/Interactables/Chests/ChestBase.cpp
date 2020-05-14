@@ -81,10 +81,15 @@ void ChestBase::initializeListeners()
 
 	this->setOpenCallback([=]()
 	{
-		this->unlockAndGiveItems();
-
-		return true;
+		return this->tryOpen();
 	});
+}
+		
+bool ChestBase::tryOpen()
+{
+	this->unlockAndGiveItems();
+
+	return true;
 }
 
 void ChestBase::unlockAndGiveItems()

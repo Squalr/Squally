@@ -16,6 +16,8 @@
 using namespace cocos2d;
 
 const std::string LogicTorch::MapKey = "logic-torch";
+const std::string LogicTorch::PropertyColor = "color";
+const std::string LogicTorch::PropertyIsOn = "is-on";
 
 LogicTorch* LogicTorch::create(ValueMap& properties)
 {
@@ -29,9 +31,34 @@ LogicTorch* LogicTorch::create(ValueMap& properties)
 LogicTorch::LogicTorch(ValueMap& properties) : super(properties)
 {
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);
-	this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlow);
-	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
-	this->isOn = false;
+	this->isOn = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyIsOn, Value(false)).asBool();
+
+	std::string colorStr = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyColor, Value("")).asString();
+
+	if (colorStr == "blue")
+	{
+		this->color = TorchColor::Blue;
+		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFireBlue_TorchFire_0000);
+		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlowBlue);
+	}
+	else if (colorStr == "green")
+	{
+		this->color = TorchColor::Green;
+		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFireGreen_TorchFire_0000);
+		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlowGreen);
+	}
+	else if (colorStr == "purple")
+	{
+		this->color = TorchColor::Purple;
+		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFirePurple_TorchFire_0000);
+		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlowPurple);
+	}
+	else
+	{
+		this->color = TorchColor::Red;
+		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
+		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlow);
+	}
 
 	this->fire->setScale(1.5f);
 
@@ -48,14 +75,14 @@ void LogicTorch::onEnter()
 {
 	super::onEnter();
 
-	this->torchOn();
+	this->updateLogicTorchVisibility();
 }
 
 void LogicTorch::initializePositions()
 {
 	super::initializePositions();
 
-	this->fire->setPosition(Vec2(0.0f, 0.0f));
+	this->fire->setPosition(Vec2(0.0f, 16.0f));
 	this->glow->setPosition(Vec2(0.0f, 0.0f));
 }
 
@@ -90,7 +117,30 @@ void LogicTorch::updateLogicTorchVisibility()
 
 	if (this->isOn)
 	{
-		this->fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
+		switch (this->color)
+		{
+			case TorchColor::Green:
+			{
+				this->fire->playAnimationRepeat(FXResources::TorchFireGreen_TorchFire_0000, 0.05f);
+				break;
+			}
+			case TorchColor::Blue:
+			{
+				this->fire->playAnimationRepeat(FXResources::TorchFireBlue_TorchFire_0000, 0.05f);
+				break;
+			}
+			case TorchColor::Purple:
+			{
+				this->fire->playAnimationRepeat(FXResources::TorchFirePurple_TorchFire_0000, 0.05f);
+				break;
+			}
+			default:
+			case TorchColor::Red:
+			{
+				this->fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
+				break;
+			}
+		}
 
 		this->glow->runAction(RepeatForever::create(Sequence::create(
 			FadeTo::create(1.0f, 0),

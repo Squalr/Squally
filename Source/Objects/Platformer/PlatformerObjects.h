@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"
 #include "Objects/Platformer/Interactables/Chests/Chest.h"
 #include "Objects/Platformer/Interactables/Chests/CipherChest.h"
+#include "Objects/Platformer/Interactables/Chests/GlassDisplays/GlassDisplayOr.h"
 #include "Objects/Platformer/Interactables/Chests/MetalChest.h"
 #include "Objects/Platformer/Interactables/Doors/CastleGate/CastleGate.h"
 #include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"

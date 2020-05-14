@@ -129,6 +129,9 @@ namespace ObjectResources
 	extern const std::string Decor_Fireplace_FireplaceGlow;
 	extern const std::string Decor_Torch_Torch;
 	extern const std::string Decor_Torch_TorchGlow;
+	extern const std::string Decor_Torch_TorchGlowBlue;
+	extern const std::string Decor_Torch_TorchGlowGreen;
+	extern const std::string Decor_Torch_TorchGlowPurple;
 	extern const std::string Doors_BugDoor_3;
 	extern const std::string Doors_BugDoor_MAIN_BASE;
 	extern const std::string Doors_BugDoor_STONES_S1;
@@ -254,6 +257,8 @@ namespace ObjectResources
 	extern const std::string Interactive_Chests_ChestOpen;
 	extern const std::string Interactive_Chests_CipherChestClosed;
 	extern const std::string Interactive_Chests_CipherChestOpened;
+	extern const std::string Interactive_Chests_GlassDisplay;
+	extern const std::string Interactive_Chests_GlassDisplayFront;
 	extern const std::string Interactive_Chests_MetalChestClosed;
 	extern const std::string Interactive_Chests_MetalChestOpen;
 	extern const std::string Interactive_Help_ChatBubble;

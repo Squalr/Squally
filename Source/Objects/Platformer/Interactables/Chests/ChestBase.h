@@ -18,6 +18,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	virtual bool tryOpen();
 	virtual void unlockAndGiveItems();
 
 	cocos2d::Node* chestOpen;

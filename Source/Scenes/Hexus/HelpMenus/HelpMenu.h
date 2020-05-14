@@ -32,7 +32,7 @@ class HelpMenu : public SmartNode
 public:
 	static HelpMenu* create();
 
-	void openMenu(CardData* cardData);
+	void openMenu(CardData* cardData, bool showBackdrop = false);
 	void setExitCallback(std::function<void()> onExit);
 
 protected:
@@ -45,6 +45,7 @@ protected:
 private:
 	typedef SmartNode super;
 
+	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* background;
 	cocos2d::LayerColor* textPanel;
 	ClickableNode* exitButton;
