@@ -651,6 +651,8 @@ namespace DecorResources
 	extern const std::string Ruins_BuildingEmpty2;
 	extern const std::string Ruins_BuildingEmpty3;
 	extern const std::string Ruins_BuildingEmpty4;
+	extern const std::string Ruins_Pillar1;
+	extern const std::string Ruins_Pillar2;
 	extern const std::string Ruins_Pyramid;
 	extern const std::string Ruins_Walls1;
 	extern const std::string Ruins_Walls10;
@@ -665,9 +667,9 @@ namespace DecorResources
 	extern const std::string Ruins_Walls7;
 	extern const std::string Ruins_Walls8;
 	extern const std::string Ruins_Walls9;
+	extern const std::string Ruins_Well;
 	extern const std::string Ruins_Window;
 	extern const std::string Ruins_WindowTransparent;
-	extern const std::string Ruins_pillar;
 	extern const std::string Snow_Background_Forest1;
 	extern const std::string Snow_Background_Forest2;
 	extern const std::string Snow_Background_Forest3;

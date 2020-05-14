@@ -269,6 +269,7 @@ const std::string ObjectResources::Physics_Asteroid_Asteroid = "Private/Platform
 const std::string ObjectResources::Physics_RollingStone_RollingStone = "Private/Platformer/Objects/Physics/RollingStone/RollingStone.png";
 const std::string ObjectResources::Physics_WoodenBeam_WoodenBeam = "Private/Platformer/Objects/Physics/WoodenBeam/WoodenBeam.png";
 const std::string ObjectResources::Physics_WoodenCrate_WoodenCrate = "Private/Platformer/Objects/Physics/WoodenCrate/WoodenCrate.png";
+const std::string ObjectResources::Puzzles_Torch_Torch = "Private/Platformer/Objects/Puzzles/Torch/Torch.png";
 const std::string ObjectResources::SLEEPING_BAG_FOR_PIG = "Private/Platformer/Objects/SLEEPING BAG FOR PIG.png";
 const std::string ObjectResources::Switches_Lever_Animations = "Private/Platformer/Objects/Switches/Lever/Animations.scml";
 const std::string ObjectResources::Switches_Lever_Base = "Private/Platformer/Objects/Switches/Lever/Base.png";

@@ -270,6 +270,7 @@ namespace ObjectResources
 	extern const std::string Physics_RollingStone_RollingStone;
 	extern const std::string Physics_WoodenBeam_WoodenBeam;
 	extern const std::string Physics_WoodenCrate_WoodenCrate;
+	extern const std::string Puzzles_Torch_Torch;
 	extern const std::string SLEEPING_BAG_FOR_PIG;
 	extern const std::string Switches_Lever_Animations;
 	extern const std::string Switches_Lever_Base;

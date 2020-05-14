@@ -91,10 +91,12 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string UnderflowRuins_Town_Main;
 	extern const std::string UnderflowRuins_Town_Smith;
+	extern const std::string UnderflowRuins_Town_Well;
 	extern const std::string UnderflowRuins_Zone_1_0;
 	extern const std::string UnderflowRuins_Zone_1_1;
 	extern const std::string UnderflowRuins_Zone_1_2;
-	extern const std::string UnderflowRuins_Zone_2_2;
+	extern const std::string UnderflowRuins_Zone_2_0;
+	extern const std::string UnderflowRuins_Zone_2_1;
 	extern const std::string UnderflowRuins_Zone_3_0;
 	extern const std::string UnderflowRuins_Zone_3_1;
 	extern const std::string VoidStar_VoidStar;

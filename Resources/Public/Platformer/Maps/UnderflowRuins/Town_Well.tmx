@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="817">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="823">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="IndoorHouse"/>
+   <property name="background" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
@@ -47,6 +47,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="822" name="Ruins/Well" type="decor" x="1333.95" y="870.061" width="312" height="224"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -60,7 +61,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="815" name="portal" type="object" x="1364.02" y="808.901" width="256" height="256">
+  <object id="821" name="portal" type="object" x="1364.02" y="808.901" width="256" height="256">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_2_0"/>
     <property name="transition" value="well"/>
@@ -77,6 +78,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="817" name="mermaid" type="entity" x="1121.13" y="937.684" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="818" name="mermaid" type="entity" x="1128.56" y="603.044" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
@@ -93,10 +110,9 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="814" name="Ruins/Well" type="decor" x="1333.95" y="870.061" width="312" height="224"/>
   <object id="816" name="spawn" type="object" x="1425.82" y="937.091" width="128" height="128">
    <properties>
-    <property name="transition" value="wells"/>
+    <property name="transition" value="well"/>
    </properties>
   </object>
  </objectgroup>

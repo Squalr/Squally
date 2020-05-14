@@ -56,6 +56,11 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Animation Sequences", MapResources::Dev_AnimSeq));
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
+	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	// this->chapterList.push_back(this->buildDebugButton("Zone_2_2 (UR)", MapResources::UnderflowRuins_Zone_2_2));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_1 (UR)", MapResources::UnderflowRuins_Zone_2_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_0 (UR)", MapResources::UnderflowRuins_Zone_2_0));
+	this->chapterList.push_back(this->buildDebugButton("Well (UR)", MapResources::UnderflowRuins_Town_Well));
 	this->chapterList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));
