@@ -104,7 +104,7 @@ void RepairRam::onLoad(QuestState questState)
 		}
 	}, Ram::MapKey);
 
-	this->repairInteract->setOpenCallback([=]()
+	this->repairInteract->setInteractCallback([=]()
 	{
 		this->onRamInteract();
 

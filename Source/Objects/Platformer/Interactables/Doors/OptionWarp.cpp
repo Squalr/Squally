@@ -93,86 +93,6 @@ void OptionWarp::initializeListeners()
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
 		}), Squally::MapKey);
 	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(1))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(2))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(3))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(4))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_5 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(5))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_6 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(6))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_7 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(7))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_8 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(8))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_9 }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->chooseOption(9))
-		{
-			args->handle();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
-	{
-		if (this->cancelOptionChoice())
-		{
-			args->handle();
-		}
-	});
 }
 
 void OptionWarp::loadMap()
@@ -205,26 +125,29 @@ void OptionWarp::openDialogue()
 
 	this->canChooseOption = true;
 	PlatformerEvents::TriggerDisallowPause();
-	
-	LocalizedString* options = Strings::Common_Triconcat::create();
-	LocalizedString* prelude = Strings::Common_Triconcat::create()
-		->setStringReplacementVariables({Strings::Platformer_Objects_Warps_WhereTo::create(), Strings::Common_Newline::create(), options });
-	LocalizedString* currentOption = options;
-	int index = 1;
 
-	for (auto it = toStrKeys.begin(); it != toStrKeys.end(); it++, index++)
+	std::vector<LocalizedString*> options = std::vector<LocalizedString*>();
+	std::vector<std::function<bool()>> callbacks = std::vector<std::function<bool()>>();
+
+	for (int index = 0; index < int(this->toStrKeys.size()); index++)
 	{
-		std::string next = *it;
-		bool lastIter = it == (--toStrKeys.end());
-		LocalizedString* option = this->getOptionString(index, next);
-		LocalizedString* nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
+		options.push_back(this->getOptionString(this->toStrKeys[index]));
 
-		currentOption->setStringReplacementVariables({option , Strings::Common_Newline::create(), nextOption });
-		currentOption = nextOption;
+		callbacks.push_back([=]()
+		{
+			DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
+			{
+				this->canChooseOption = false;
+				PlatformerEvents::TriggerAllowPause();
+				this->broadcastMapEvent(OptionWarp::EventWarpToPrefix + this->to[index], ValueMap());
+			}));
+
+			return true;
+		});
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		prelude,
+		DialogueEvents::BuildOptions(Strings::Platformer_Objects_Warps_WhereTo::create(), options),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -240,31 +163,22 @@ void OptionWarp::openDialogue()
 	));
 }
 
-LocalizedString* OptionWarp::getOptionString(int index, std::string strKey)
+LocalizedString* OptionWarp::getOptionString(std::string strKey)
 {
-	LocalizedString* optionText = nullptr;
-
 	if (strKey == "back")
 	{
-		optionText = Strings::Platformer_Objects_Warps_Back::create();
+		return Strings::Platformer_Objects_Warps_Back::create();
 	}
 	else if (strKey == "mid" || strKey == "middle")
 	{
-		optionText = Strings::Platformer_Objects_Warps_Middle::create();
+		return Strings::Platformer_Objects_Warps_Middle::create();
 	}
 	else if (strKey == "front")
 	{
-		optionText = Strings::Platformer_Objects_Warps_Front::create();
+		return Strings::Platformer_Objects_Warps_Front::create();
 	}
 
-	LocalizedString* dash = Strings::Common_Dash::create();
-	LocalizedString* brackets = Strings::Common_Brackets::create();
-
-	brackets->setStringReplacementVariables(ConstantString::create(std::to_string(index)));
-
-	dash->setStringReplacementVariables({ brackets, optionText });
-
-	return dash;
+	return nullptr;
 }
 
 bool OptionWarp::cancelOptionChoice()
@@ -278,23 +192,6 @@ bool OptionWarp::cancelOptionChoice()
 	{
 		this->canChooseOption = false;
 		PlatformerEvents::TriggerAllowPause();
-	}));
-
-	return true;
-}
-	
-bool OptionWarp::chooseOption(int option)
-{
-	if (!this->canChooseOption || --option < 0 || option >= int(this->to.size()))
-	{
-		return false;
-	}
-
-	DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
-	{
-		this->canChooseOption = false;
-		PlatformerEvents::TriggerAllowPause();
-		this->broadcastMapEvent(OptionWarp::EventWarpToPrefix + this->to[option], ValueMap());
 	}));
 
 	return true;

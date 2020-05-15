@@ -25,6 +25,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	bool chooseOption(int option);
+	bool cancelOptionChoice();
+
 	LocalizedLabel* spaceToContinueLabel;
 	SmartClippingNode* leftSpeakerClip;
 	SmartClippingNode* rightSpeakerClip;
@@ -33,6 +36,8 @@ private:
 	cocos2d::Node* leftSpeakerNode;
 	cocos2d::Node* rightSpeakerNode;
 
+	std::vector<std::function<bool()>> inputOptions;
+	std::function<bool()> inputCancel;
 	bool isDialogueFocused;
 	bool allowSpace;
 	bool unhijack;

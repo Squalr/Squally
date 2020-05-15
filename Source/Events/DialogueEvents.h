@@ -52,13 +52,16 @@ public:
 		std::string soundResource;
 		bool unhijack;
 		bool allowSpace;
+		std::vector<std::function<bool()>> inputOptions;
+		std::function<bool()> inputCancel;
 
-		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, std::string soundResource, bool unhijack = true, bool allowSpace = true)
-			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), soundResource(soundResource), unhijack(unhijack), allowSpace(allowSpace)
+		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, std::string soundResource, bool unhijack = true, bool allowSpace = true, std::vector<std::function<bool()>> inputOptions = { }, std::function<bool()> inputCancel = nullptr)
+			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), soundResource(soundResource), unhijack(unhijack), allowSpace(allowSpace), inputOptions(inputOptions), inputCancel(inputCancel)
 		{
 		}
 	};
-
+	
+	static LocalizedString* BuildOptions(LocalizedString* intro, std::vector<LocalizedString*> optionList);
 	static void TriggerOpenDialogue(DialogueOpenArgs args);
 	static void TriggerTryDialogueClose(DialogueCloseArgs args);
 	static std::function<cocos2d::Node*()> BuildPreviewNode(void* entity, bool isFlipped);

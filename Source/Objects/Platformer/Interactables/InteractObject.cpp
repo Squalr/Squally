@@ -11,6 +11,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
@@ -54,6 +55,7 @@ InteractObject::InteractObject(ValueMap& properties, InteractType interactType, 
 	this->interactCallback = nullptr;
 	this->unlockCallback = nullptr;
 	this->squally = nullptr;
+	this->scrappy = nullptr;
 
 	this->interactCollision->setName("Interact");
 
@@ -82,6 +84,11 @@ void InteractObject::onEnter()
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKey);
 }
 
 void InteractObject::initializePositions()
@@ -223,7 +230,7 @@ void InteractObject::setInteractType(InteractType interactType)
 	this->interactType = interactType;
 }
 
-void InteractObject::setOpenCallback(std::function<bool()> interactCallback)
+void InteractObject::setInteractCallback(std::function<bool()> interactCallback)
 {
 	this->interactCallback = interactCallback;
 }

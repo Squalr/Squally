@@ -53,7 +53,7 @@ void BusinessHours::onLoad(QuestState questState)
 
 	if (this->portal != nullptr)
 	{
-		this->portal->setOpenCallback([=]()
+		this->portal->setInteractCallback([=]()
 		{
 			switch(questState)
 			{

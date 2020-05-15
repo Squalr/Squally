@@ -28,7 +28,7 @@ void SneakIntoLianasHouse::onLoad(QuestState questState)
 {
 	if (this->portal != nullptr)
 	{
-		this->portal->setOpenCallback([=]()
+		this->portal->setInteractCallback([=]()
 		{
 			this->complete();
 

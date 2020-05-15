@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class HackableData;
 class SmartAnimationSequenceNode;
 
-class LogicTorch : public GameObject
+class LogicTorch : public InteractObject
 {
 public:
 	static LogicTorch* create(cocos2d::ValueMap& properties);
@@ -26,9 +26,10 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void onInteract() override;
 
 private:
-	typedef GameObject super;
+	typedef InteractObject super;
 
 	enum class TorchColor
 	{
@@ -46,7 +47,11 @@ private:
 
 	bool isOn;
 	TorchColor color;
+	std::string saveKey;
 
 	static const std::string PropertyColor;
 	static const std::string PropertyIsOn;
+	static const std::string PropertyIsInteractable;
+	static const std::string PropertySaveKey;
+	static const std::string EventTorchLogicSwitchPrefix;
 };

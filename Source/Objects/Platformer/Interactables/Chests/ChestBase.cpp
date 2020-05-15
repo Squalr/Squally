@@ -79,7 +79,7 @@ void ChestBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->setOpenCallback([=]()
+	this->setInteractCallback([=]()
 	{
 		return this->tryOpen();
 	});

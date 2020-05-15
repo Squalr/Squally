@@ -42,7 +42,6 @@ private:
 
 	void onInteract();
 	void progressDialogue();
-	void chooseOption(int option);
 	void showOptions();
 	bool hasDialogueOptions();
 	void updateInteractVisibility();

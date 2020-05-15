@@ -5,9 +5,12 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/FXResources.h"
@@ -18,6 +21,9 @@ using namespace cocos2d;
 const std::string LogicTorch::MapKey = "logic-torch";
 const std::string LogicTorch::PropertyColor = "color";
 const std::string LogicTorch::PropertyIsOn = "is-on";
+const std::string LogicTorch::PropertyIsInteractable = "interactable";
+const std::string LogicTorch::PropertySaveKey = "save-key";
+const std::string LogicTorch::EventTorchLogicSwitchPrefix = "EVENT_OBJECT_TORCH_LOGIC_SWITCH_CHANGED_";
 
 LogicTorch* LogicTorch::create(ValueMap& properties)
 {
@@ -28,37 +34,43 @@ LogicTorch* LogicTorch::create(ValueMap& properties)
 	return instance;
 }
 
-LogicTorch::LogicTorch(ValueMap& properties) : super(properties)
+LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::None, Size(101.0f, 111.0f))
 {
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);
+	this->fire = SmartAnimationSequenceNode::create();
 	this->isOn = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyIsOn, Value(false)).asBool();
+	this->saveKey = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertySaveKey, Value("")).asString();
 
 	std::string colorStr = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyColor, Value("")).asString();
+
+	if (GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyIsInteractable, Value(false)).asBool())
+	{
+		this->setInteractType(InteractType::Input);
+	}
 
 	if (colorStr == "blue")
 	{
 		this->color = TorchColor::Blue;
-		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFireBlue_TorchFire_0000);
 		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlowBlue);
 	}
 	else if (colorStr == "green")
 	{
 		this->color = TorchColor::Green;
-		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFireGreen_TorchFire_0000);
 		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlowGreen);
 	}
 	else if (colorStr == "purple")
 	{
 		this->color = TorchColor::Purple;
-		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFirePurple_TorchFire_0000);
 		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlowPurple);
 	}
 	else
 	{
+		colorStr = "red";
 		this->color = TorchColor::Red;
-		this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 		this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlow);
 	}
+
+	this->addTag(colorStr);
 
 	this->fire->setScale(1.5f);
 
@@ -75,6 +87,18 @@ void LogicTorch::onEnter()
 {
 	super::onEnter();
 
+	if (!this->saveKey.empty())
+	{
+		this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool();
+
+		this->listenForMapEvent(LogicTorch::EventTorchLogicSwitchPrefix + this->saveKey, [=](ValueMap)
+		{
+			this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool();
+			
+			this->updateLogicTorchVisibility();
+		});
+	}
+
 	this->updateLogicTorchVisibility();
 }
 
@@ -84,6 +108,25 @@ void LogicTorch::initializePositions()
 
 	this->fire->setPosition(Vec2(0.0f, 16.0f));
 	this->glow->setPosition(Vec2(0.0f, 0.0f));
+}
+
+void LogicTorch::onInteract()
+{
+	if (this->isOn)
+	{
+		this->torchOff();
+	}
+	else
+	{
+		this->torchOn();
+	}
+
+	if (!this->saveKey.empty())
+	{
+		SaveManager::SaveProfileData(this->saveKey, Value(this->isOn));
+
+		this->broadcastMapEvent(LogicTorch::EventTorchLogicSwitchPrefix + this->saveKey, ValueMap());
+	}
 }
 
 void LogicTorch::torchOn()
@@ -114,6 +157,9 @@ void LogicTorch::updateLogicTorchVisibility()
 {
 	this->glow->stopAllActions();
 	this->fire->stopAnimation();
+
+	this->glow->setVisible(this->isOn);
+	this->fire->setVisible(this->isOn);
 
 	if (this->isOn)
 	{

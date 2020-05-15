@@ -138,51 +138,6 @@ void EntityDialogueBehavior::onLoad()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(1);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(2);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(3);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(4);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_5 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(5);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_6 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(6);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_7 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(7);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_8 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(8);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_9 }, [=](InputEvents::InputArgs* args)
-	{
-		this->chooseOption(9);
-	});
-
 	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
 
 	this->scheduleUpdate();
@@ -291,25 +246,6 @@ DialogueSet* EntityDialogueBehavior::getMainDialogueSet()
 	return this->mainDialogueSet;
 }
 
-void EntityDialogueBehavior::chooseOption(int option)
-{
-	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
-
-	if (!this->optionsVisible || --option < 0 || option >= int(dialogueOptions.size()))
-	{
-		return;
-	}
-	
-	DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
-	{
-		if (std::get<0>(dialogueOptions[option])->onDialogueChosen != nullptr)
-		{
-			std::get<0>(dialogueOptions[option])->onDialogueChosen();
-		}
-	}));
-
-}
-
 void EntityDialogueBehavior::showOptions()
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
@@ -319,28 +255,29 @@ void EntityDialogueBehavior::showOptions()
 		return;
 	}
 
-	LocalizedString* options = Strings::Common_Triconcat::create();
-	LocalizedString* nextOption = options;
-	LocalizedString* currentOption = nextOption;
-	int index = 1;
-
-	this->optionsVisible = true;
-
-	for (auto it = dialogueOptions.begin(); it != dialogueOptions.end(); it++, index++)
+	std::vector<LocalizedString*> options = std::vector<LocalizedString*>();
+	std::vector<std::function<bool()>> callbacks = std::vector<std::function<bool()>>();
+	
+	for (auto next : dialogueOptions)
 	{
-		bool lastIter = it == (--dialogueOptions.end());
+		options.push_back(std::get<0>(next)->dialogueOption);
 
-		LocalizedString* optionRaw = std::get<0>(*it)->dialogueOption;
-		LocalizedString* newline = Strings::Common_Newline::create();
-		nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
-		LocalizedString* option = this->getOptionString(index, optionRaw == nullptr ? optionRaw : optionRaw->clone());
+		callbacks.push_back([=]()
+		{
+			DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
+			{
+				if (std::get<0>(next)->onDialogueChosen != nullptr)
+				{
+					std::get<0>(next)->onDialogueChosen();
+				}
+			}));
 
-		currentOption->setStringReplacementVariables({option , newline, nextOption });
-		currentOption = nextOption;
+			return true;
+		});
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		options,
+		DialogueEvents::BuildOptions(nullptr, options),
 		this->activeDialogueSet->getArgs(),
 		[=]()
 		{
@@ -348,7 +285,8 @@ void EntityDialogueBehavior::showOptions()
 		},
 		"",
 		true,
-		false
+		false,
+		callbacks
 	));
 }
 

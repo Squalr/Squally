@@ -149,8 +149,7 @@ void DeveloperScene::initializePositions()
 void DeveloperScene::initializeListeners()
 {
 	super::initializeListeners();
-
-
+	
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))

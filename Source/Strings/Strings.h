@@ -23709,6 +23709,51 @@ namespace Strings
 		virtual ~Platformer_Objects_Doors_Unlock() = default;
 	};
 
+	class Platformer_Objects_GlassCase_Clue : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_GlassCase_Clue* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_GlassCase_Clue();
+		virtual ~Platformer_Objects_GlassCase_Clue() = default;
+	};
+
+	class Platformer_Objects_GlassCase_GlassCaseLocked : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_GlassCase_GlassCaseLocked* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_GlassCase_GlassCaseLocked();
+		virtual ~Platformer_Objects_GlassCase_GlassCaseLocked() = default;
+	};
+
+	class Platformer_Objects_GlassCase_InspectItem : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_GlassCase_InspectItem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_GlassCase_InspectItem();
+		virtual ~Platformer_Objects_GlassCase_InspectItem() = default;
+	};
+
 	class Platformer_Objects_Warps_Back : public LocalizedString
 	{
 	public:

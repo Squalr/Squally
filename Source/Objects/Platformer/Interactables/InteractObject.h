@@ -7,6 +7,7 @@ class ClickableNode;
 class CollisionObject;
 class HackableData;
 class InteractMenu;
+class Scrappy;
 class Squally;
 
 class InteractObject : public HackableObject
@@ -24,7 +25,7 @@ public:
 	void enable();
 	void disable();
 	void setInteractType(InteractType interactType);
-	void setOpenCallback(std::function<bool()> openCallback);
+	void setInteractCallback(std::function<bool()> interactCallback);
 	void setUnlockable(bool isUnlockable, std::function<bool()> unlockCallback = nullptr);
 	virtual void lock(bool animate = true);
 	virtual void unlock(bool animate = true);
@@ -45,6 +46,7 @@ protected:
 
 	InteractType interactType;
 	CollisionObject* interactCollision;
+	Scrappy* scrappy;
 	Squally* squally;
 
 	bool isLocked;
