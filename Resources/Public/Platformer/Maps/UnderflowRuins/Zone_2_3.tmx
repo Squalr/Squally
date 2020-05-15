@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="889">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="904">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -10,46 +10,47 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="115" name="tiled bg -4">
+ <objectgroup id="115" name="tiled bg -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="ruins-gray-dark" type="texture" x="578.545" y="-406.545" width="1680" height="3380"/>
+  <object id="837" name="ruins-gray-dark" type="texture" x="1346.55" y="-406.545" width="1680" height="3380"/>
  </objectgroup>
  <objectgroup id="118" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="845" name="ruins-gray-thick" type="terrain" x="1559.7" y="965.153" width="880.599" height="704.121"/>
  </objectgroup>
  <objectgroup id="119" name="decor -2.5">
   <properties>
    <property name="depth" type="float" value="-160"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="Ruins/Pillar2" type="decor" x="1003.5" y="-65" width="369" height="1370"/>
  </objectgroup>
  <objectgroup id="117" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="842" name="ruins-gray-thick" type="terrain" x="1429.04" y="1037.15" width="880.599" height="704.121"/>
  </objectgroup>
  <objectgroup id="116" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="839" name="ruins-gray-thick" type="terrain" x="1315.7" y="1118.49" width="880.599" height="704.121"/>
  </objectgroup>
  <objectgroup id="16" name="tiled bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="terrain" x="-71.3333" y="-70" width="1240" height="2304">
+  <object id="808" name="ruins-gray-dark" type="terrain" x="-58.7272" y="-86" width="1979.39" height="2320">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="889" name="ruins-gray-dark" type="terrain" x="2540" y="-88" width="1344" height="2304">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -80,7 +81,17 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="ruins-gray-thick" type="terrain" x="-223.63" y="1197.82" width="2545.93" height="1212.12"/>
+  <object id="835" name="ruins-gray-thick" type="terrain" x="-52.2361" y="1651.82" width="1974.54" height="757.575"/>
+  <object id="897" name="ruins-gray-thick" type="terrain" x="1922.79" y="1830.73" width="306.413" height="135.88"/>
+  <object id="898" name="ruins-gray-thick" type="terrain" x="2561.03" y="1649.94" width="1317.93" height="764.726"/>
+  <object id="899" name="edge-portal" type="object" x="1920" y="2038.91" width="640" height="200">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="map" value="UnderflowRuins/Zone_2_2"/>
+    <property name="transition" value="down"/>
+   </properties>
+  </object>
+  <object id="900" name="ruins-gray-thick" type="terrain" x="2254.13" y="2278.73" width="306.413" height="135.88"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -92,12 +103,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="portal" type="object" x="1373.12" y="820.901" width="237.527" height="375.411">
-   <properties>
-    <property name="map" value="UnderflowRuins/Zone_2_3"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -115,34 +120,38 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="520.406" y="1064.29" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="1971.95" y="1702.17" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="383.589" y="1062.59" width="128" height="128">
+  <object id="849" name="spawn" type="object" x="2011.34" y="1700" width="128" height="128">
    <properties>
-    <property name="transition" value="right"/>
+    <property name="transition" value="up"/>
    </properties>
   </object>
-  <object id="818" name="edge-portal" type="object" x="1.01036" y="555.453" width="200" height="640">
+  <object id="901" name="logic-torch" type="object" x="290.47" y="1541.53" width="101" height="111">
    <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Zone_2_1"/>
-    <property name="transition" value="left"/>
+    <property name="color" value="green"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_OR_GREEN_1"/>
    </properties>
   </object>
-  <object id="849" name="spawn" type="object" x="1426.67" y="1066.67" width="128" height="128">
+  <object id="902" name="mesuda" type="entity" x="642.467" y="1525.32" width="128" height="128">
    <properties>
-    <property name="transition" value="back"/>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg" visible="0">
+ <objectgroup id="113" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="water" type="object" x="-169.98" y="1295.63" width="6304.32" height="1400.74"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

@@ -80,6 +80,7 @@
  <objectgroup id="126" name="objects -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1003" name="solid" type="collision" x="1327.47" y="-101.499" width="126.878" height="1821.18"/>
@@ -124,6 +125,7 @@
  <objectgroup id="121" name="player_layer -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="989" name="warp" type="object" x="2358.12" y="1457.52" width="256" height="256">
@@ -201,6 +203,7 @@
  <objectgroup id="114" name="objects -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="987" name="life-stone" type="object" x="1876.76" y="1354.08" width="146" height="423"/>
@@ -209,6 +212,7 @@
  <objectgroup id="120" name="player_layer -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="988" name="warp" type="object" x="2357.45" y="1514.18" width="256" height="256">
@@ -295,6 +299,7 @@
  <objectgroup id="109" name="entities -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="962" name="lioness" type="entity" x="1828.21" y="1734.74" width="128" height="128">
@@ -317,6 +322,7 @@
  <objectgroup id="105" name="player_layer -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="955" name="warp" type="object" x="3995.39" y="1598.67" width="256" height="256">
@@ -419,6 +425,7 @@
  <objectgroup id="85" name="objects -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="941" name="portal" type="object" x="358.081" y="1417.96" width="256.687" height="512">
@@ -443,6 +450,7 @@
  <objectgroup id="102" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="944" name="tigress" type="entity" x="3187.38" y="1801.5" width="128" height="128">
@@ -465,6 +473,7 @@
  <objectgroup id="84" name="player_layer -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="937" name="warp" type="object" x="3998.06" y="1674.3" width="256" height="256">

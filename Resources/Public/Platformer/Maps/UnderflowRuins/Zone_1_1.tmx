@@ -78,6 +78,7 @@
  <objectgroup id="126" name="objects -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1004" name="solid" type="collision" x="1468.42" y="-614.469" width="651.12" height="1899.97"/>
@@ -104,6 +105,7 @@
  <objectgroup id="121" name="player_layer -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1026" name="spawn" type="object" x="472" y="1146" width="128" height="128">
@@ -276,6 +278,7 @@
  <objectgroup id="85" name="objects -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1023" name="edge-portal" type="object" x="2.041" y="927.999" width="199.918" height="488.002">
@@ -290,6 +293,7 @@
  <objectgroup id="102" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="944" name="tigress" type="entity" x="3187.38" y="1289.5" width="128" height="128">
@@ -312,6 +316,7 @@
  <objectgroup id="84" name="player_layer -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="943" name="squally" type="entity" x="854.129" y="1289.81" width="128" height="128">

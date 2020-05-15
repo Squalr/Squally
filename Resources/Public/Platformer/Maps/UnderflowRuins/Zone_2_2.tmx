@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="889">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="939">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -15,41 +15,134 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="ruins-gray-dark" type="texture" x="578.545" y="-406.545" width="1680" height="3380"/>
+  <object id="837" name="ruins-gray-dark" type="texture" x="-293.455" y="-406.545" width="7184" height="3380"/>
  </objectgroup>
  <objectgroup id="118" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="845" name="ruins-gray-thick" type="terrain" x="1559.7" y="965.153" width="880.599" height="704.121"/>
+  <object id="845" name="ruins-gray-thick" type="terrain" x="-183.452" y="1104.55" width="5949.81" height="704.121"/>
+  <object id="901" name="ruins-gray-thick" type="terrain" x="2277.03" y="-132.06" width="2841.93" height="727.999"/>
+  <object id="927" name="ruins-gray-thick" type="terrain" x="5765.46" y="-207.94" width="1021.08" height="2467.88"/>
+  <object id="934" name="ruins-gray-thick" type="terrain" x="5456.13" y="572.727" width="306.413" height="135.88"/>
+  <object id="935" name="ruins-gray-thick" type="terrain" x="5120.13" y="130.727" width="306.413" height="135.88"/>
+ </objectgroup>
+ <objectgroup id="122" name="decor -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="909" name="Generic/BlueRug" type="decor" x="1493.37" y="1095.48" width="332" height="21"/>
+  <object id="923" name="Generic/BlueRug" type="decor" x="5254" y="1096.33" width="332" height="21"/>
+ </objectgroup>
+ <objectgroup id="123" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="913" name="edge-portal" type="object" x="2.66667" y="460" width="200" height="640">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_2_1"/>
+    <property name="transition" value="left-top"/>
+   </properties>
+  </object>
+  <object id="936" name="edge-portal" type="object" x="5120" y="-2.66667" width="640" height="200">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="UnderflowRuins/Zone_2_3"/>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="120" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="902" name="minotaur" type="entity" x="3310.59" y="977.623" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="903" name="minotaur" type="entity" x="3318.02" y="642.983" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="121" name="player_layer -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="912" name="warp" type="object" x="1533.33" y="849.333" width="256" height="256">
+   <properties>
+    <property name="from" value="3-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-A"/>
+    <property name="zoom" type="float" value="1.75"/>
+   </properties>
+  </object>
+  <object id="914" name="spawn" type="object" x="498.667" y="977.333" width="128" height="128">
+   <properties>
+    <property name="transition" value="right-top"/>
+    <property name="zoom" type="float" value="1.75"/>
+   </properties>
+  </object>
+  <object id="922" name="warp" type="object" x="5289.33" y="846.333" width="256" height="256">
+   <properties>
+    <property name="from" value="3-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-B"/>
+    <property name="zoom" type="float" value="1.75"/>
+   </properties>
+  </object>
+  <object id="937" name="spawn" type="object" x="5546.67" y="440" width="128" height="128">
+   <properties>
+    <property name="transition" value="down"/>
+    <property name="zoom" type="float" value="1.75"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="119" name="decor -2.5">
   <properties>
    <property name="depth" type="float" value="-160"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="Ruins/Pillar2" type="decor" x="1003.5" y="-65" width="369" height="1370"/>
+  <object id="847" name="Ruins/Pillar2" type="decor" x="875.5" y="-65" width="369" height="1370"/>
  </objectgroup>
  <objectgroup id="117" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="842" name="ruins-gray-thick" type="terrain" x="1429.04" y="1037.15" width="880.599" height="704.121"/>
+  <object id="842" name="ruins-gray-thick" type="terrain" x="-120.172" y="1135.15" width="2193.81" height="704.121"/>
+  <object id="919" name="ruins-gray-thick" type="terrain" x="5001.4" y="1133.27" width="2193.81" height="704.121"/>
  </objectgroup>
  <objectgroup id="116" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="839" name="ruins-gray-thick" type="terrain" x="1315.7" y="1118.49" width="880.599" height="704.121"/>
+  <object id="839" name="ruins-gray-thick" type="terrain" x="-57.6333" y="1166.49" width="2070.6" height="684.121"/>
+  <object id="918" name="ruins-gray-thick" type="terrain" x="5001.06" y="1166.42" width="2070.6" height="684.121"/>
  </objectgroup>
  <objectgroup id="16" name="tiled bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="terrain" x="-71.3333" y="-70" width="1240" height="2304">
+  <object id="896" name="ruins-gray-dark" type="terrain" x="-200" y="1470" width="1932" height="1184">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -80,24 +173,40 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="ruins-gray-thick" type="terrain" x="-223.63" y="1197.82" width="2545.93" height="1212.12"/>
+  <object id="835" name="ruins-gray-thick" type="terrain" x="-351.63" y="1197.82" width="2306.72" height="652.241"/>
+  <object id="891" name="ruins-gray-thick" type="terrain" x="-328.238" y="2248.61" width="7197.93" height="654.787"/>
+  <object id="894" name="ruins-gray-thick" type="terrain" x="2685.4" y="1198.06" width="1701.93" height="840.12"/>
+  <object id="926" name="ruins-gray-thick" type="terrain" x="6056" y="1616">
+   <polygon points="-1050.96,-414.742 215.057,-415.635 216.231,-525.967 389.343,-523.744 387.99,-612.229 848.9,-616.152 850.99,632.539 -1056.8,637.185"/>
+  </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="124" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1887.88"/>
+  <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="2255.88"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="908" name="Generic/BlueRug" type="decor" x="1494.03" y="1187.48" width="332" height="21"/>
+  <object id="920" name="Generic/BlueRug" type="decor" x="5254.76" y="1191.38" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="portal" type="object" x="1373.12" y="820.901" width="237.527" height="375.411">
+  <object id="925" name="edge-portal" type="object" x="6322.73" y="449.818" width="200" height="640">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_2_3"/>
-    <property name="transition" value="main"/>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_2_4"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="938" name="life-stone" type="object" x="1044.21" y="775.227" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -115,34 +224,64 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="520.406" y="1064.29" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="698.467" y="1073.38" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="383.589" y="1062.59" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="561.65" y="1071.68" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="818" name="edge-portal" type="object" x="1.01036" y="555.453" width="200" height="640">
+  <object id="818" name="edge-portal" type="object" x="3.31339" y="552.423" width="200" height="640">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="UnderflowRuins/Zone_2_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="849" name="spawn" type="object" x="1426.67" y="1066.67" width="128" height="128">
+  <object id="849" name="spawn" type="object" x="5886.55" y="1073.58" width="128" height="128">
    <properties>
-    <property name="transition" value="back"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="890" name="edge-portal" type="object" x="-6.78788" y="1731.52" width="200" height="640">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_2_1"/>
+    <property name="transition" value="left-bottom"/>
+   </properties>
+  </object>
+  <object id="892" name="spawn" type="object" x="553.455" y="2048.12" width="128" height="128">
+   <properties>
+    <property name="transition" value="right-bottom"/>
+   </properties>
+  </object>
+  <object id="910" name="warp" type="object" x="1532" y="941.159" width="256" height="256">
+   <properties>
+    <property name="from" value="1-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="3-A"/>
+    <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="921" name="warp" type="object" x="5290" y="945.333" width="256" height="256">
+   <properties>
+    <property name="from" value="1-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="3-B"/>
+    <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg" visible="0">
+ <objectgroup id="113" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="water" type="object" x="-169.98" y="1295.63" width="6304.32" height="1400.74"/>
+  <object id="897" name="water" type="object" x="-640.16" y="1315.63" width="7272.32" height="1400.74"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

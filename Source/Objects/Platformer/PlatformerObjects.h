@@ -64,6 +64,7 @@
 #include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeam.h"
 #include "Objects/Platformer/Physics/Wind/Wind.h"
 #include "Objects/Platformer/Physics/WoodenCrate/WoodenCrate.h"
+#include "Objects/Platformer/Puzzles/LogicGate.h"
 #include "Objects/Platformer/Puzzles/LogicTorch.h"
 #include "Objects/Platformer/Shops/ShopItem.h"
 #include "Objects/Platformer/Shops/ShopPoolMinos.h"
