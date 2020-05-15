@@ -59,7 +59,7 @@ CameraTrackingData CameraTarget::getTrackingData()
 	return CameraTrackingData(
 		this,
 		Vec2::ZERO,
-		CameraTrackingData::DefaultCameraOffset,
+		Vec2::ZERO,
 		CameraTrackingData::CameraScrollType::Rectangle,
 		cocos2d::Vec2(0.015f, 0.015f),
 		this->zoom

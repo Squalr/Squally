@@ -89,11 +89,11 @@ void LogicTorch::onEnter()
 
 	if (!this->saveKey.empty())
 	{
-		this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool();
+		this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
 
 		this->listenForMapEvent(LogicTorch::EventTorchLogicSwitchPrefix + this->saveKey, [=](ValueMap)
 		{
-			this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool();
+			this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
 			
 			this->updateLogicTorchVisibility();
 		});
