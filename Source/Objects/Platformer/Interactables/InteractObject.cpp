@@ -228,6 +228,8 @@ void InteractObject::unlock(bool animate)
 void InteractObject::setInteractType(InteractType interactType)
 {
 	this->interactType = interactType;
+
+	this->updateInteractMenuVisibility();
 }
 
 void InteractObject::setInteractCallback(std::function<bool()> interactCallback)

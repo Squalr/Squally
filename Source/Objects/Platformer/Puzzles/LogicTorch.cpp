@@ -24,7 +24,10 @@ const std::string LogicTorch::PropertyOperation = "operation";
 const std::string LogicTorch::PropertyIsOn = "is-on";
 const std::string LogicTorch::PropertyIsInteractable = "interactable";
 const std::string LogicTorch::PropertySaveKey = "save-key";
-const std::string LogicTorch::EventTorchLogicSwitchPrefix = "EVENT_OBJECT_TORCH_LOGIC_SWITCH_CHANGED_";
+const std::string LogicTorch::MapEventTorchLogicSwitchSavePrefix = "torch-logic-switched-by-save-";
+const std::string LogicTorch::MapEventTorchLogicSwitchPrefix = "torch-logic-switched";
+const std::string LogicTorch::MapEventSolveTorches = "solve-torches";
+const std::string LogicTorch::SaveKeyIsSolved = "SAVE_KEY_IS_SOLVED";
 
 LogicTorch* LogicTorch::create(ValueMap& properties)
 {
@@ -37,15 +40,14 @@ LogicTorch* LogicTorch::create(ValueMap& properties)
 
 LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::None, Size(101.0f, 111.0f))
 {
-	std::string colorName = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyColor, Value("")).asString();
-	std::string operationName = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyOperation, Value("")).asString();
-
+	this->colorName = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyColor, Value("")).asString();
+	this->operationName = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyOperation, Value("")).asString();
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);
 	this->fire = SmartAnimationSequenceNode::create();
 	this->isOn = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyIsOn, Value(false)).asBool();
 	this->saveKey = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertySaveKey, Value("")).asString();
-	this->color = LogicTorch::StrToColor(colorName);
-	this->operation = LogicTorch::StrToOperation(operationName);
+	this->color = LogicTorch::StrToColor(this->colorName);
+	this->operation = LogicTorch::StrToOperation(this->operationName);
 
 	switch (this->color)
 	{
@@ -72,12 +74,7 @@ LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::N
 		}
 	}
 
-	if (GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyIsInteractable, Value(false)).asBool())
-	{
-		this->setInteractType(InteractType::Input);
-	}
-
-	this->addTag(colorName);
+	this->addTag(this->operationName + "_" + this->colorName);
 
 	this->fire->setScale(1.5f);
 
@@ -93,17 +90,46 @@ LogicTorch::~LogicTorch()
 void LogicTorch::onEnter()
 {
 	super::onEnter();
+	
+	this->isOn |= this->isSolved();
 
-	if (!this->saveKey.empty())
+	// Listen for events if unsolved
+	if (!this->isSolved() && !this->saveKey.empty())
 	{
 		this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
 
-		this->listenForMapEvent(LogicTorch::EventTorchLogicSwitchPrefix + this->saveKey, [=](ValueMap)
+		this->listenForMapEvent(LogicTorch::MapEventTorchLogicSwitchSavePrefix + this->saveKey, [=](ValueMap)
 		{
 			this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
 			
 			this->updateLogicTorchVisibility();
 		});
+
+		// For torches with a save key, use a different mode to save! Allows cross map syncing.
+		this->listenForMapEvent(LogicTorch::MapEventSolveTorches, [=](ValueMap)
+		{
+			SaveManager::SoftSaveProfileData(this->saveKey + "_" + LogicTorch::SaveKeyIsSolved, Value(true));
+			this->setInteractType(InteractType::None);
+			this->torchOn();
+		});
+
+		SaveManager::SoftSaveProfileData(this->saveKey, Value(this->isOn));
+	}
+	else if (!this->isSolved() && this->saveKey.empty())
+	{
+		// For torches with no save key, save as object state
+		this->listenForMapEvent(LogicTorch::MapEventSolveTorches, [=](ValueMap)
+		{
+			this->saveObjectState(LogicTorch::SaveKeyIsSolved, Value(true));
+			this->setInteractType(InteractType::None);
+			this->torchOn();
+		});
+	}
+
+	// Set interactable if unsolved
+	if (!this->isSolved() && GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyIsInteractable, Value(false)).asBool())
+	{
+		this->setInteractType(InteractType::Input);
 	}
 
 	this->updateLogicTorchVisibility();
@@ -152,7 +178,7 @@ LogicTorch::Operation LogicTorch::StrToOperation(std::string operationName)
 		return Operation::Xor;
 	}
 
-	return Operation::Or;
+	return Operation::None;
 }
 
 void LogicTorch::onInteract()
@@ -168,10 +194,16 @@ void LogicTorch::onInteract()
 
 	if (!this->saveKey.empty())
 	{
-		SaveManager::SaveProfileData(this->saveKey, Value(this->isOn));
+		SaveManager::SoftSaveProfileData(this->saveKey, Value(this->isOn));
 
-		this->broadcastMapEvent(LogicTorch::EventTorchLogicSwitchPrefix + this->saveKey, ValueMap());
+		this->broadcastMapEvent(LogicTorch::MapEventTorchLogicSwitchSavePrefix + this->saveKey, ValueMap());
+		this->broadcastMapEvent(LogicTorch::MapEventTorchLogicSwitchPrefix + this->colorName, ValueMap());
 	}
+}
+
+bool LogicTorch::isTorchOn()
+{
+	return this->isOn;
 }
 
 void LogicTorch::torchOn()
@@ -196,6 +228,18 @@ void LogicTorch::torchOff()
 	this->isOn = false;
 
 	this->updateLogicTorchVisibility();
+}
+
+bool LogicTorch::isSolved()
+{
+	if (this->saveKey.empty())
+	{
+		return this->loadObjectStateOrDefault(LogicTorch::SaveKeyIsSolved, Value(false)).asBool();
+	}
+	else
+	{
+		return SaveManager::getProfileDataOrDefault(this->saveKey + "_" + LogicTorch::SaveKeyIsSolved, Value(false)).asBool();
+	}
 }
 
 void LogicTorch::updateLogicTorchVisibility()

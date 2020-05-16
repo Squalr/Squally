@@ -15,6 +15,8 @@ class LogicGate : public GameObject
 public:
 	static LogicGate* create(cocos2d::ValueMap& properties);
 
+	bool isSolved();
+
 	static const std::string MapKey;
 
 protected:
@@ -27,19 +29,25 @@ protected:
 private:
 	typedef GameObject super;
 
-	void runGateAnim();
+	void computeIsOpen(bool isInstant);
+	void checkComplete();
+	void runGateAnim(bool isInstant);
 
 	cocos2d::Sprite* gate;
 	CollisionObject* gateCollision;
 
 	LogicTorch::TorchColor torchColor;
 	LogicTorch::Operation operation;
+	std::string colorName;
+	std::string operationName;
 	std::string saveKey;
-	cocos2d::Vec2 spawnPosition;
+	bool answer;
+	bool firstRun;
 	bool isOpen;
 	float delta;
 
 	static const std::string PropertyGateColor;
 	static const std::string PropertyDelta;
-	static const std::string PropertySaveKey;
+	static const std::string PropertyAnswer;
+	static const std::string MapEventCheckComplete;
 };

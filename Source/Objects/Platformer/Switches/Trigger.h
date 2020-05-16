@@ -33,7 +33,9 @@ private:
 
 	CollisionObject* triggerCollision;
 	bool wasActivated;
+	bool multiTrip;
 	bool saveState;
 
 	static const std::string PropertySaveState;
+	static const std::string PropertyMultiTrip;
 };

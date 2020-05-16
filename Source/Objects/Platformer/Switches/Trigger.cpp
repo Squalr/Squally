@@ -23,6 +23,7 @@ using namespace cocos2d;
 
 const std::string Trigger::MapKey = "trigger";
 const std::string Trigger::PropertySaveState = "save-state";
+const std::string Trigger::PropertyMultiTrip = "multi";
 
 Trigger* Trigger::create(ValueMap& properties)
 {
@@ -38,6 +39,7 @@ Trigger::Trigger(ValueMap& properties) : super(properties)
 	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(CollisionObject::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->saveState = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertySaveState, Value(false)).asBool();
+	this->multiTrip = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertyMultiTrip, Value(false)).asBool();
 	this->wasActivated = false;
 
 	this->addChild(this->triggerCollision);
@@ -67,7 +69,7 @@ void Trigger::initializeListeners()
 
 	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		if (!this->wasActivated)
+		if (!this->wasActivated || this->multiTrip)
 		{
 			this->wasActivated = true;
 			this->saveObjectState(Trigger::PropertySaveState, Value(this->wasActivated));

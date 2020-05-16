@@ -23,6 +23,7 @@ public:
 
 	enum class Operation
 	{
+		None,
 		And,
 		Or,
 		Xor
@@ -33,13 +34,17 @@ public:
 	static TorchColor StrToColor(std::string colorName);
 	static Operation StrToOperation(std::string operationName);
 
+	bool isTorchOn();
 	void torchOn();
 	void torchOff();
 
 	static const std::string MapKey;
-	static const std::string EventTorchLogicSwitchPrefix;
+	static const std::string MapEventTorchLogicSwitchSavePrefix;
+	static const std::string MapEventTorchLogicSwitchPrefix;
+	static const std::string MapEventSolveTorches;
 	static const std::string PropertyColor;
 	static const std::string PropertyOperation;
+	static const std::string SaveKeyIsSolved;
 
 protected:
 	LogicTorch(cocos2d::ValueMap& properties);
@@ -52,6 +57,7 @@ protected:
 private:
 	typedef InteractObject super;
 
+	bool isSolved();
 	void updateLogicTorchVisibility();
 
 	cocos2d::Sprite* torch;
@@ -61,6 +67,8 @@ private:
 	bool isOn;
 	TorchColor color;
 	Operation operation;
+	std::string colorName;
+	std::string operationName;
 	std::string saveKey;
 
 	static const std::string PropertyIsOn;

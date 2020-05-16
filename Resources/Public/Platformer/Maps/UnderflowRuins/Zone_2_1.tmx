@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="898">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="900">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -77,7 +77,7 @@
   </properties>
   <object id="835" name="ruins-gray-thick" type="terrain" x="-111.63" y="2221.82" width="2689.93" height="1212.12"/>
   <object id="872" name="ruins-gray-thick" type="terrain" x="2384" y="4592">
-   <polygon points="-2492.91,-1148.3 1629.39,-1154.83 1629.4,-1782.12 1894.5,-1785.25 1897.27,-1152.91 2649.75,-1147.04 2652.73,-1786.49 4611.33,-1783.04 4611.88,-268.299 -2493.27,-268.666"/>
+   <polygon points="-2492.91,-1148.3 1629.39,-1154.83 1629.4,-1782.12 1894.5,-1785.25 1897.27,-1152.91 2649.75,-1147.04 2652.73,-1786.49 2982.66,-1785.91 2988.72,-1528.15 4614.36,-1528.49 4611.88,-268.299 -2493.27,-268.666"/>
   </object>
   <object id="873" name="ruins-gray-thick" type="terrain" x="4075.11" y="2631.53">
    <polygon points="-1050.96,-414.742 1324.9,-417.255 1326.89,-567.758 2217.09,-566.737 2216.9,-418.152 2835.8,-415.159 2834.99,-71.4609 713.318,-82.7752 710.488,556.762 440.469,554.912 438.409,-88.7865 -312.925,-92.8044 -317.487,558.022 -569.773,555.738 -572.803,-98.8154 -1051.16,-95.7925"/>
@@ -99,7 +99,7 @@
    <properties>
     <property name="color" value="red"/>
     <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
     <property name="operation" value="or"/>
     <property name="save-key" value="SAVE_KEY_OR_RED_1"/>
    </properties>
@@ -156,20 +156,25 @@
   </object>
   <object id="874" name="logic-gate" type="object" x="3491.52" y="2304" width="285" height="676">
    <properties>
+    <property name="answer" type="bool" value="false"/>
     <property name="color" value="red"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
     <property name="operation" value="or"/>
    </properties>
   </object>
-  <object id="881" name="edge-portal" type="object" x="6709.15" y="2357.82" width="200" height="640">
+  <object id="881" name="edge-portal" type="object" x="6709.15" y="2491.15" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_2"/>
     <property name="transition" value="right-bottom"/>
    </properties>
   </object>
-  <object id="882" name="glass-display-or" type="object" x="5757.2" y="1731.53" width="169" height="331"/>
+  <object id="882" name="glass-display-or" type="object" x="5757.2" y="1731.53" width="169" height="331">
+   <properties>
+    <property name="listen-event" value="solve-torches"/>
+   </properties>
+  </object>
   <object id="883" name="logic-torch" type="object" x="5117.33" y="1841.7" width="101" height="111">
    <properties>
     <property name="color" value="purple"/>
@@ -202,13 +207,14 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_BLUE_1"/>
    </properties>
   </object>
   <object id="895" name="logic-gate" type="object" x="4005.5" y="2304" width="285" height="676">
    <properties>
-    <property name="color" value="red"/>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="blue"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
     <property name="operation" value="or"/>
@@ -216,7 +222,8 @@
   </object>
   <object id="896" name="logic-gate" type="object" x="4513.5" y="2304" width="285" height="676">
    <properties>
-    <property name="color" value="red"/>
+    <property name="answer" type="bool" value="false"/>
+    <property name="color" value="green"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
     <property name="operation" value="or"/>
@@ -224,10 +231,17 @@
   </object>
   <object id="897" name="logic-gate" type="object" x="5045.5" y="2304" width="285" height="676">
    <properties>
-    <property name="color" value="red"/>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="purple"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
     <property name="operation" value="or"/>
+   </properties>
+  </object>
+  <object id="899" name="trigger" type="object" x="3489.5" y="1426" width="2365" height="872">
+   <properties>
+    <property name="multi" type="bool" value="true"/>
+    <property name="send-event" value="check-complete"/>
    </properties>
   </object>
  </objectgroup>
@@ -292,7 +306,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="879" name="spawn" type="object" x="6311.88" y="2682.06" width="128" height="128">
+  <object id="879" name="spawn" type="object" x="6269.45" y="2785.09" width="128" height="128">
    <properties>
     <property name="transition" value="left-bottom"/>
    </properties>
@@ -314,7 +328,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="water" type="object" x="86.02" y="2319.63" width="6936.32" height="1400.74"/>
+  <object id="833" name="water" type="object" x="-325.98" y="2319.63" width="7348.32" height="1400.74"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>
