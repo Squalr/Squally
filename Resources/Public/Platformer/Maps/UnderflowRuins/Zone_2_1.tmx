@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="902">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="904">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -172,6 +172,7 @@
   </object>
   <object id="882" name="glass-display-or" type="object" x="5757.2" y="1731.53" width="169" height="331">
    <properties>
+    <property name="delay" type="float" value="1"/>
     <property name="listen-event" value="solve-torches"/>
     <property name="reward-pool" value="display-or"/>
    </properties>
@@ -243,6 +244,22 @@
    <properties>
     <property name="multi" type="bool" value="true"/>
     <property name="send-event" value="check-complete"/>
+   </properties>
+  </object>
+  <object id="902" name="logic-torch" type="object" x="3181.5" y="-823.5" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_OR_PURPLE_1"/>
+   </properties>
+  </object>
+  <object id="903" name="logic-torch" type="object" x="3033.5" y="-825.5" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_OR_GREEN_1"/>
    </properties>
   </object>
  </objectgroup>

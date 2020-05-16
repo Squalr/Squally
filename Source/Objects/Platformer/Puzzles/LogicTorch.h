@@ -69,6 +69,7 @@ private:
 	WorldSound* burnSound;
 	WorldSound* onSound;
 	WorldSound* offSound;
+	WorldSound* interactSound;
 
 	float cooldown;
 	bool isOn;

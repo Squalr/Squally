@@ -2,8 +2,6 @@
 
 #include "Objects/Platformer/Interactables/Chests/GlassDisplays/GlassDisplayBase.h"
 
-using namespace cocos2d;
-
 class MinMaxPool;
 
 class GlassDisplayOr : public GlassDisplayBase

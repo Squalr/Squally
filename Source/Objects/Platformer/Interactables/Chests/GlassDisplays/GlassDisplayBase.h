@@ -2,14 +2,13 @@
 
 #include "Objects/Platformer/Interactables/Chests/ChestBase.h"
 
-using namespace cocos2d;
-
 namespace cocos2d
 {
 	class Sprite;
 };
 
 class MinMaxPool;
+class WorldSound;
 
 class GlassDisplayBase : public ChestBase
 {
@@ -30,6 +29,8 @@ protected:
 private:
 	typedef ChestBase super;
 
+	float openDelay;
+
 	cocos2d::Node* displayNormal;
 	cocos2d::Node* displayOpened;
 	cocos2d::Node* displayLooted;
@@ -38,5 +39,13 @@ private:
 	cocos2d::Sprite* glassDisplayFrontOpened;
 	cocos2d::Sprite* glassDisplayFrontLooted;
 
+	cocos2d::Sprite* normalGlow;
+	cocos2d::Sprite* openGlow;
+
+	WorldSound* openSound;
+	WorldSound* closeSound;
+	WorldSound* notifySound;
+
 	static const std::string SaveKeyIsDisplayOpened;
+	static const std::string PropertyDelay;
 };

@@ -28,10 +28,8 @@ GlassDisplayOr* GlassDisplayOr::create(cocos2d::ValueMap& properties)
 
 GlassDisplayOr::GlassDisplayOr(cocos2d::ValueMap& properties) : super(properties, Size(169.0f, 331.0f))
 {
-	Sprite* glow = Sprite::create(UIResources::HUD_EmblemGlow);
 	Sprite* specialCard = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
-
-	this->displayContentNode->addChild(glow);
+	
 	this->displayContentNode->addChild(specialCard);
 }
 

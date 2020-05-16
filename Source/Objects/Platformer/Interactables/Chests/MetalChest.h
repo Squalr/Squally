@@ -2,8 +2,6 @@
 
 #include "Objects/Platformer/Interactables/Chests/ChestBase.h"
 
-using namespace cocos2d;
-
 class MinMaxPool;
 
 class MetalChest : public ChestBase

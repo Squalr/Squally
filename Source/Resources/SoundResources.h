@@ -173,6 +173,8 @@ namespace SoundResources
 	extern const std::string Platformer_FX_Woosh_WooshBurning1;
 	extern const std::string Platformer_FX_Woosh_WooshBurning2;
 	extern const std::string Platformer_FX_Woosh_WooshDouble1;
+	extern const std::string Platformer_FX_Woosh_WooshFire1;
+	extern const std::string Platformer_FX_Woosh_WooshFire2;
 	extern const std::string Platformer_FX_Woosh_WooshLong1;
 	extern const std::string Platformer_FX_Woosh_WooshPulse1;
 	extern const std::string Platformer_FX_Woosh_WooshRough1;
@@ -197,6 +199,9 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_Doors_StoneWall2;
 	extern const std::string Platformer_Objects_Doors_StoneWall3;
 	extern const std::string Platformer_Objects_Doors_WoodDoorOpen1;
+	extern const std::string Platformer_Objects_Machines_GlassSlide1;
+	extern const std::string Platformer_Objects_Machines_GlassSlide2;
+	extern const std::string Platformer_Objects_Machines_LampClick;
 	extern const std::string Platformer_Objects_Machines_RollLoop1;
 	extern const std::string Platformer_Objects_Machines_StoneMechanism1;
 	extern const std::string Platformer_Objects_Machines_StoneSlideHeavy1;

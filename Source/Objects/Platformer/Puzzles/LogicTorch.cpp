@@ -52,9 +52,13 @@ LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::N
 	this->color = LogicTorch::StrToColor(this->colorName);
 	this->operation = LogicTorch::StrToOperation(this->operationName);
 	this->burnSound = WorldSound::create(SoundResources::Platformer_FX_Fire_FireSizzle1);
-	this->onSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshRough1);
-	this->offSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshRough1);
+	this->onSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshFire2);
+	this->offSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_Woosh1);
+	this->interactSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_LampClick);
 	this->cooldown = 0.0f;
+
+	this->onSound->setCustomMultiplier(0.25f);
+	this->offSound->setCustomMultiplier(0.25f);
 
 	switch (this->color)
 	{
@@ -91,6 +95,7 @@ LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::N
 	this->addChild(this->burnSound);
 	this->addChild(this->onSound);
 	this->addChild(this->offSound);
+	this->addChild(this->interactSound);
 }
 
 LogicTorch::~LogicTorch()
@@ -102,6 +107,10 @@ void LogicTorch::onEnter()
 	super::onEnter();
 	
 	this->isOn |= this->isSolved();
+
+	static float TorchDelay = 0.0f;
+
+	TorchDelay = 0.0f;
 
 	// Listen for events if unsolved
 	if (!this->isSolved() && !this->saveKey.empty())
@@ -120,7 +129,17 @@ void LogicTorch::onEnter()
 		{
 			SaveManager::SoftSaveProfileData(this->saveKey + "_" + LogicTorch::SaveKeyIsSolved, Value(true));
 			this->setInteractType(InteractType::None);
-			this->torchOn();
+
+			TorchDelay += 0.1f;
+
+			this->runAction(Sequence::create(
+				DelayTime::create(TorchDelay),
+				CallFunc::create([=]()
+				{
+					this->torchOn();
+				}),
+				nullptr
+			));
 		});
 
 		SaveManager::SoftSaveProfileData(this->saveKey, Value(this->isOn));
@@ -132,7 +151,17 @@ void LogicTorch::onEnter()
 		{
 			this->saveObjectState(LogicTorch::SaveKeyIsSolved, Value(true));
 			this->setInteractType(InteractType::None);
-			this->torchOn();
+
+			TorchDelay += 0.1f;
+
+			this->runAction(Sequence::create(
+				DelayTime::create(TorchDelay),
+				CallFunc::create([=]()
+				{
+					this->torchOn();
+				}),
+				nullptr
+			));
 		});
 	}
 
@@ -215,6 +244,8 @@ void LogicTorch::onInteract()
 	{
 		return;
 	}
+
+	this->interactSound->play();
 
 	if (this->isOn)
 	{

@@ -2,8 +2,6 @@
 
 #include "Objects/Platformer/Interactables/InteractObject.h"
 
-using namespace cocos2d;
-
 class MinMaxPool;
 
 class ChestBase : public InteractObject
