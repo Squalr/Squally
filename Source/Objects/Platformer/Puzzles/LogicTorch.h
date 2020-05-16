@@ -42,6 +42,7 @@ public:
 	static const std::string MapEventTorchLogicSwitchSavePrefix;
 	static const std::string MapEventTorchLogicSwitchPrefix;
 	static const std::string MapEventSolveTorches;
+	static const std::string MapEventCheckComplete;
 	static const std::string PropertyColor;
 	static const std::string PropertyOperation;
 	static const std::string SaveKeyIsSolved;

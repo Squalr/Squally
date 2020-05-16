@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HexusEvents.h"
 #include "Scenes/Hexus/CardData/CardList.h"

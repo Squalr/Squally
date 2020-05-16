@@ -24,7 +24,6 @@ const std::string LogicGate::MapKey = "logic-gate";
 const std::string LogicGate::PropertyGateColor = "gate-color";
 const std::string LogicGate::PropertyDelta = "delta";
 const std::string LogicGate::PropertyAnswer = "answer";
-const std::string LogicGate::MapEventCheckComplete = "check-complete";
 
 LogicGate* LogicGate::create(ValueMap& properties)
 {
@@ -84,7 +83,7 @@ void LogicGate::onEnter()
 		this->computeIsOpen(false);
 	});
 
-	this->listenForMapEvent(LogicGate::MapEventCheckComplete, [=](ValueMap)
+	this->listenForMapEvent(LogicTorch::MapEventCheckComplete, [=](ValueMap)
 	{
 		this->checkComplete();
 		this->computeIsOpen(false);

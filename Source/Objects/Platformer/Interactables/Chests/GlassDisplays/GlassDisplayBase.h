@@ -4,6 +4,11 @@
 
 using namespace cocos2d;
 
+namespace cocos2d
+{
+	class Sprite;
+};
+
 class MinMaxPool;
 
 class GlassDisplayBase : public ChestBase
@@ -14,8 +19,9 @@ protected:
 	virtual ~GlassDisplayBase();
 
 	void onEnter() override;
-	void closeDisplay();
-	void openDisplay();
+	void initializeListeners() override;
+	void closeDisplay(bool animate);
+	void openDisplay(bool animate);
 
 	cocos2d::Node* displayContentNode;
 
@@ -27,4 +33,10 @@ private:
 	cocos2d::Node* displayNormal;
 	cocos2d::Node* displayOpened;
 	cocos2d::Node* displayLooted;
+
+	cocos2d::Sprite* glassDisplayFrontNormal;
+	cocos2d::Sprite* glassDisplayFrontOpened;
+	cocos2d::Sprite* glassDisplayFrontLooted;
+
+	static const std::string SaveKeyIsDisplayOpened;
 };

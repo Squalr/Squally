@@ -49,5 +49,4 @@ private:
 	static const std::string PropertyGateColor;
 	static const std::string PropertyDelta;
 	static const std::string PropertyAnswer;
-	static const std::string MapEventCheckComplete;
 };

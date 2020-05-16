@@ -27,6 +27,7 @@ const std::string LogicTorch::PropertySaveKey = "save-key";
 const std::string LogicTorch::MapEventTorchLogicSwitchSavePrefix = "torch-logic-switched-by-save-";
 const std::string LogicTorch::MapEventTorchLogicSwitchPrefix = "torch-logic-switched";
 const std::string LogicTorch::MapEventSolveTorches = "solve-torches";
+const std::string LogicTorch::MapEventCheckComplete = "check-complete";
 const std::string LogicTorch::SaveKeyIsSolved = "SAVE_KEY_IS_SOLVED";
 
 LogicTorch* LogicTorch::create(ValueMap& properties)
@@ -199,6 +200,8 @@ void LogicTorch::onInteract()
 		this->broadcastMapEvent(LogicTorch::MapEventTorchLogicSwitchSavePrefix + this->saveKey, ValueMap());
 		this->broadcastMapEvent(LogicTorch::MapEventTorchLogicSwitchPrefix + this->colorName, ValueMap());
 	}
+
+	this->broadcastMapEvent(LogicTorch::MapEventCheckComplete, ValueMap());
 }
 
 bool LogicTorch::isTorchOn()

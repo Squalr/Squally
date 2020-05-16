@@ -9,6 +9,8 @@
 
 using namespace cocos2d;
 
+const std::string GlassDisplayBase::SaveKeyIsDisplayOpened = "SAVE_KEY_IS_DISPLAY_OPENED";
+
 GlassDisplayBase::GlassDisplayBase(ValueMap& properties, Size interactSize) : super(properties, interactSize)
 {
 	this->displayContentNode = Node::create();
@@ -16,20 +18,18 @@ GlassDisplayBase::GlassDisplayBase(ValueMap& properties, Size interactSize) : su
 	this->displayOpened = Node::create();
 	this->displayLooted = Node::create();
 	this->isDisplayOpened = false;
+	this->isLocked = false;		// Interact objects set isLocked based on the presence of a listen event -- we do not want that.
 	
-	Sprite* glassDisplayFrontNormal = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
-	Sprite* glassDisplayFrontOpened = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
-	Sprite* glassDisplayFrontLooted = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
-
-	glassDisplayFrontOpened->setPositionY(64.0f);
-	glassDisplayFrontLooted->setPositionY(64.0f);
+	this->glassDisplayFrontNormal = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
+	this->glassDisplayFrontOpened = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
+	this->glassDisplayFrontLooted = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
 
 	this->displayNormal->addChild(Sprite::create(ObjectResources::Interactive_Chests_GlassDisplay));
 	this->displayOpened->addChild(Sprite::create(ObjectResources::Interactive_Chests_GlassDisplay));
 	this->displayLooted->addChild(Sprite::create(ObjectResources::Interactive_Chests_GlassDisplay));
-	this->displayNormal->addChild(glassDisplayFrontNormal);
-	this->displayOpened->addChild(glassDisplayFrontOpened);
-	this->displayLooted->addChild(glassDisplayFrontLooted);
+	this->displayNormal->addChild(this->glassDisplayFrontNormal);
+	this->displayOpened->addChild(this->glassDisplayFrontOpened);
+	this->displayLooted->addChild(this->glassDisplayFrontLooted);
 	this->chestOpen->addChild(this->displayLooted);
 	this->chestClosed->addChild(this->displayContentNode);
 	this->chestClosed->addChild(this->displayNormal);
@@ -50,21 +50,68 @@ void GlassDisplayBase::onEnter()
 		nullptr
 	)));
 
-	this->closeDisplay();
+	if (this->loadObjectStateOrDefault(GlassDisplayBase::SaveKeyIsDisplayOpened, Value(false)).asBool())
+	{
+		this->openDisplay(false);
+	}
+	else
+	{
+		this->closeDisplay(false);
+	}
 }
 
-void GlassDisplayBase::closeDisplay()
+void GlassDisplayBase::initializeListeners()
 {
+	super::initializeListeners();
+
+	this->listenForMapEventOnce(this->getListenEvent(), [=](ValueMap)
+	{
+		this->openDisplay(true);
+	});
+}
+
+void GlassDisplayBase::closeDisplay(bool animate)
+{
+	this->saveObjectState(GlassDisplayBase::SaveKeyIsDisplayOpened, Value(false));
+
 	this->isDisplayOpened = false;
 
 	this->displayOpened->setVisible(false);
 	this->displayNormal->setVisible(true);
+
+	if (animate)
+	{
+		this->glassDisplayFrontNormal->runAction(MoveTo::create(1.0f, Vec2::ZERO));
+		this->glassDisplayFrontOpened->runAction(MoveTo::create(1.0f, Vec2::ZERO));
+		this->glassDisplayFrontLooted->runAction(MoveTo::create(1.0f, Vec2::ZERO));
+	}
+	else
+	{
+		this->glassDisplayFrontNormal->setPositionY(0.0f);
+		this->glassDisplayFrontOpened->setPositionY(0.0f);
+		this->glassDisplayFrontLooted->setPositionY(0.0f);
+	}
 }
 
-void GlassDisplayBase::openDisplay()
+void GlassDisplayBase::openDisplay(bool animate)
 {
+	this->saveObjectState(GlassDisplayBase::SaveKeyIsDisplayOpened, Value(true));
+	
 	this->isDisplayOpened = true;
 
 	this->displayOpened->setVisible(true);
 	this->displayNormal->setVisible(false);
+	
+	if (animate)
+	{
+		this->glassDisplayFrontNormal->runAction(MoveTo::create(1.0f, Vec2(0.0f, 192.0f)));
+		this->glassDisplayFrontOpened->runAction(MoveTo::create(1.0f, Vec2(0.0f, 192.0f)));
+		this->glassDisplayFrontLooted->runAction(MoveTo::create(1.0f, Vec2(0.0f, 192.0f)));
+	}
+	else
+	{
+		this->glassDisplayFrontNormal->setPositionY(192.0f);
+		this->glassDisplayFrontOpened->setPositionY(192.0f);
+		this->glassDisplayFrontLooted->setPositionY(192.0f);
+	}
 }

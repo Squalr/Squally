@@ -206,7 +206,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="938" name="life-stone" type="object" x="1044.21" y="775.227" width="146" height="423"/>
+  <object id="938" name="life-stone" type="object" x="1044.71" y="781.727" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
