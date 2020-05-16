@@ -11,10 +11,12 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -49,6 +51,10 @@ LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::N
 	this->saveKey = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertySaveKey, Value("")).asString();
 	this->color = LogicTorch::StrToColor(this->colorName);
 	this->operation = LogicTorch::StrToOperation(this->operationName);
+	this->burnSound = WorldSound::create(SoundResources::Platformer_FX_Fire_FireSizzle1);
+	this->onSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshRough1);
+	this->offSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshRough1);
+	this->cooldown = 0.0f;
 
 	switch (this->color)
 	{
@@ -82,6 +88,9 @@ LogicTorch::LogicTorch(ValueMap& properties) : super(properties, InteractType::N
 	this->addChild(this->glow);
 	this->addChild(this->fire);
 	this->addChild(this->torch);
+	this->addChild(this->burnSound);
+	this->addChild(this->onSound);
+	this->addChild(this->offSound);
 }
 
 LogicTorch::~LogicTorch()
@@ -133,7 +142,17 @@ void LogicTorch::onEnter()
 		this->setInteractType(InteractType::Input);
 	}
 
-	this->updateLogicTorchVisibility();
+	// We want to actually activate this via the setter to trigger SFX
+	if (this->isOn)
+	{
+		this->isOn = false;
+		this->torchOn(false);
+	}
+	else
+	{
+		this->isOn = true;
+		this->torchOff(false);
+	}
 }
 
 void LogicTorch::initializePositions()
@@ -142,6 +161,14 @@ void LogicTorch::initializePositions()
 
 	this->fire->setPosition(Vec2(0.0f, 16.0f));
 	this->glow->setPosition(Vec2(0.0f, 0.0f));
+}
+
+void LogicTorch::update(float dt)
+{
+	if (this->cooldown > 0.0f)
+	{
+		this->cooldown -= dt;
+	}
 }
 
 LogicTorch::TorchColor LogicTorch::StrToColor(std::string colorName)
@@ -184,6 +211,11 @@ LogicTorch::Operation LogicTorch::StrToOperation(std::string operationName)
 
 void LogicTorch::onInteract()
 {
+	if (this->cooldown > 0.0f)
+	{
+		return;
+	}
+
 	if (this->isOn)
 	{
 		this->torchOff();
@@ -192,6 +224,8 @@ void LogicTorch::onInteract()
 	{
 		this->torchOn();
 	}
+
+	this->cooldown = 1.0f;
 
 	if (!this->saveKey.empty())
 	{
@@ -209,24 +243,38 @@ bool LogicTorch::isTorchOn()
 	return this->isOn;
 }
 
-void LogicTorch::torchOn()
+void LogicTorch::torchOn(bool playSfx)
 {
 	if (this->isOn)
 	{
 		return;
 	}
 
+	if (playSfx)
+	{
+		this->onSound->play();
+	}
+
+	// this->burnSound->play(true);
+
 	this->isOn = true;
 
 	this->updateLogicTorchVisibility();
 }
 
-void LogicTorch::torchOff()
+void LogicTorch::torchOff(bool playSfx)
 {
 	if (!this->isOn)
 	{
 		return;
 	}
+
+	if (playSfx)
+	{
+		this->offSound->play();
+	}
+
+	this->burnSound->stop();
 
 	this->isOn = false;
 

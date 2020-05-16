@@ -11,11 +11,13 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -43,7 +45,9 @@ LogicGate::LogicGate(ValueMap& properties) : super(properties)
 	this->operation = LogicTorch::StrToOperation(this->operationName);
 	this->delta = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyDelta, Value(512.0f)).asFloat();
 	this->answer = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyAnswer, Value(false)).asBool();
+	this->openSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism1);
 	this->isOpen = false;
+	this->wasOpen = false;
 	this->firstRun = false;
 
 	std::string gateColor = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyGateColor, Value("")).asString();
@@ -59,6 +63,7 @@ LogicGate::LogicGate(ValueMap& properties) : super(properties)
 
 	this->gateCollision->addChild(this->gate);
 	this->addChild(this->gateCollision);
+	this->addChild(this->openSound);
 }
 
 LogicGate::~LogicGate()
@@ -178,6 +183,13 @@ void LogicGate::runGateAnim(bool isInstant)
 	}
 	else
 	{
-		this->gateCollision->runAction(MoveTo::create(relativeProgress * 1.0f, endPosition));
+		this->gateCollision->runAction(MoveTo::create(relativeProgress * 3.0f, endPosition));
+
+		if (this->wasOpen != this->isOpen)
+		{
+			this->openSound->play();
+		}
 	}
+
+	this->wasOpen = this->isOpen;
 }

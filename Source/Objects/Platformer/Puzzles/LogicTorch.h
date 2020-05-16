@@ -9,6 +9,7 @@ namespace cocos2d
 
 class HackableData;
 class SmartAnimationSequenceNode;
+class WorldSound;
 
 class LogicTorch : public InteractObject
 {
@@ -35,8 +36,8 @@ public:
 	static Operation StrToOperation(std::string operationName);
 
 	bool isTorchOn();
-	void torchOn();
-	void torchOff();
+	void torchOn(bool playSfx = true);
+	void torchOff(bool playSfx = true);
 
 	static const std::string MapKey;
 	static const std::string MapEventTorchLogicSwitchSavePrefix;
@@ -53,6 +54,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void update(float dt) override;
 	void onInteract() override;
 
 private:
@@ -64,7 +66,11 @@ private:
 	cocos2d::Sprite* torch;
 	cocos2d::Sprite* glow;
 	SmartAnimationSequenceNode* fire;
+	WorldSound* burnSound;
+	WorldSound* onSound;
+	WorldSound* offSound;
 
+	float cooldown;
 	bool isOn;
 	TorchColor color;
 	Operation operation;

@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class WorldSound;
 
 class LogicGate : public GameObject
 {
@@ -35,6 +36,7 @@ private:
 
 	cocos2d::Sprite* gate;
 	CollisionObject* gateCollision;
+	WorldSound* openSound;
 
 	LogicTorch::TorchColor torchColor;
 	LogicTorch::Operation operation;
@@ -44,6 +46,7 @@ private:
 	bool answer;
 	bool firstRun;
 	bool isOpen;
+	bool wasOpen;
 	float delta;
 
 	static const std::string PropertyGateColor;
