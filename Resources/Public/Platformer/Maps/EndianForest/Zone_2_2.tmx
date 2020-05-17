@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="784">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="785">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -83,11 +83,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="765" name="blue-grass" type="terrain" x="580" y="2393.55">
+  <object id="784" name="blue-grass" type="terrain" x="741" y="2393" width="1518" height="1610">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="176,8.45049 1672.29,-1.82258 1678.06,1918.07 1698.04,2669.85 181.703,2659.96 191.617,1547.59"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">

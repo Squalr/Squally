@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="977">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="989">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -10,72 +10,54 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -2">
+ <objectgroup id="18" name="bg -6">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-537.462" y="-416.789">
-   <polygon points="215.558,68.3375 6098.84,64.5907 6104.15,3593.28 216.675,3595.94"/>
-  </object>
+  <object id="988" name="temple-dark" type="texture" x="-281.815" y="-310" width="5691.63" height="3476"/>
  </objectgroup>
  <objectgroup id="72" name="decor -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="2429.06" y="1180.42" width="42" height="130"/>
-  <object id="968" name="torch" type="object" x="1388.93" y="1185.57" width="42" height="130"/>
-  <object id="969" name="torch" type="object" x="3539" y="1187" width="42" height="130"/>
+  <object id="961" name="Ruins/Window" type="decor" x="525.076" y="1415.32" width="313" height="381"/>
+  <object id="962" name="Ruins/Window" type="decor" x="4312.11" y="1405.02" width="313" height="381"/>
+  <object id="967" name="torch" type="object" x="3880.94" y="1563.94" width="42" height="130"/>
+  <object id="968" name="torch" type="object" x="154.506" y="1575.39" width="42" height="130"/>
+  <object id="969" name="torch" type="object" x="4963.61" y="1570.52" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="948" name="temple" type="terrain" x="3510.65" y="-249.089">
+  <object id="987" name="temple" type="terrain" x="2094.18" y="-502" width="1139.63" height="3676">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
-  </object>
-  <object id="950" name="temple" type="terrain" x="-648.87" y="-514.179">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="caverns" type="terrain" x="-65.815" y="2172" width="5331.63" height="1176"/>
+  <object id="976" name="ruins-thick" type="terrain" x="-65.815" y="2172" width="5331.63" height="1176"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="944" name="temple-door" type="object" x="4205.22" y="1642.06" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="listen-event" value="grogg-dead"/>
-    <property name="map" value="EndianForest/Zone_2_8"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="952" name="temple-door" type="object" x="332" y="1644" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow-skull"/>
-    <property name="map" value="UnderflowRuins/Zone_3_0"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="986" name="dragon-door" type="object" x="2254.91" y="1521.61" width="768" height="646">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_3_1"/>
+    <property name="transition" value="dragon"/>
    </properties>
   </object>
  </objectgroup>
@@ -83,28 +65,42 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="torch" type="object" x="876.091" y="1758.03" width="42" height="130"/>
-  <object id="956" name="torch" type="object" x="175.97" y="1753.18" width="42" height="130"/>
-  <object id="958" name="torch" type="object" x="4746.76" y="1798.39" width="42" height="130"/>
-  <object id="959" name="torch" type="object" x="4046.63" y="1795.54" width="42" height="130"/>
+  <object id="955" name="torch" type="object" x="3107.97" y="1670.82" width="42" height="130"/>
+  <object id="956" name="torch" type="object" x="2147.12" y="1663.97" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="982" name="mummy-priest" type="entity" x="951.14" y="2035.32" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="983" name="mummy-warrior" type="entity" x="958.58" y="1700.68" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2786.5" y="2044.68" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
+  <object id="974" name="spawn" type="object" x="2557.58" y="2047.18" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
     <property name="transition" value="main"/>
@@ -112,7 +108,7 @@
   </object>
   <object id="975" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
    <properties>
-    <property name="transition" value="exit"/>
+    <property name="transition" value="dragon"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="920">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="923">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -34,7 +34,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks" visible="0">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -72,33 +72,30 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="temple" type="terrain" x="935.192" y="-88.686">
+  <object id="920" name="temple" type="terrain" x="802.185" y="-42" width="1533.63" height="1150">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1404.41,50.53 1399.16,1193.56 -129.547,1193.42 -136.082,49.6197"/>
   </object>
  </objectgroup>
  <objectgroup id="55" name="terrain -3">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="821" name="temple" type="terrain" x="133.734" y="745.46">
+  <object id="921" name="temple" type="terrain" x="269.549" y="818.939" width="2545.75" height="1437.88">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="2682.88,71.1744 2675.67,1512.81 141.629,1515.27 132.676,72.6721"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain -2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="885" name="temple" type="terrain" x="-334.606" y="1875.26">
+  <object id="922" name="temple" type="terrain" x="-115.299" y="1914.42" width="3257.87" height="753.032">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="3486.71,37.0683 3474.85,787.888 232.94,789.172 218.218,37.8484"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">

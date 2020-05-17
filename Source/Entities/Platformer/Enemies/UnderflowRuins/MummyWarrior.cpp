@@ -25,7 +25,7 @@ MummyWarrior::MummyWarrior(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
 	Size(128.0f, 256.0f),
-	1.0f,
+	0.85f,
 	Vec2(0.0f, 0.0f))
 {
 }

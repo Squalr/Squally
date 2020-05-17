@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1241">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1253">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -45,8 +45,10 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1026" name="temple-dark" type="texture" x="4520" y="3544">
-   <polygon points="75.9738,57.7337 2149.54,54.5682 2157.44,2223.88 66.5318,2241.92"/>
+  <object id="1251" name="temple-dark" type="terrain" x="4593" y="3615" width="2102" height="2146">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="74" name="terrain -6">
@@ -54,14 +56,13 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="963" name="temple" type="terrain" x="4755.95" y="4841.33">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="1407.96,12.1333 1406.48,231.836 53.0434,232.616 40.8657,11.2904"/>
-  </object>
   <object id="971" name="temple" type="terrain" x="-811.223" y="4689.69">
    <polygon points="5619.29,3.37039 5615.58,571.409 133.038,601.426 130.495,311.191 957.68,317.967 957.946,262.029 1014.68,261.892 1014.75,205.617 1076.84,204.701 1076.53,149.221 1131.38,148.374 1131.22,92.5964 1188.56,92.6439 1191.22,32.6956"/>
+  </object>
+  <object id="1243" name="temple" type="terrain" x="4806.18" y="4852.67" width="1375.63" height="230.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="81" name="objects -6">
@@ -127,17 +128,16 @@
    <property name="depth" type="float" value="-312"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="964" name="temple" type="terrain" x="5270.3" y="4842.79">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="464.579,12.1333 464.092,231.836 17.5025,232.616 13.4843,11.2904"/>
-  </object>
   <object id="975" name="temple" type="terrain" x="1715.61" y="4722.41">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="464.579,20.9047 464.092,399.434 17.5025,400.778 13.4843,19.4524"/>
+  </object>
+  <object id="1249" name="temple" type="terrain" x="5290.85" y="4854" width="448.297" height="222.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="76" name="bridge -4">
@@ -145,17 +145,16 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="965" name="temple" type="terrain" x="5270.3" y="4861.45">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="464.579,12.1333 464.092,231.836 17.5025,232.616 13.4843,11.2904"/>
-  </object>
   <object id="976" name="temple" type="terrain" x="1717.61" y="4749.41">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="464.579,20.9047 464.092,399.434 17.5025,400.778 13.4843,19.4524"/>
+  </object>
+  <object id="1247" name="temple" type="terrain" x="5291.52" y="4874" width="447.63" height="222.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="77" name="bridge -3">
@@ -163,17 +162,16 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="966" name="temple" type="terrain" x="5270.3" y="4882.79">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="464.579,12.1333 464.092,231.836 17.5025,232.616 13.4843,11.2904"/>
-  </object>
   <object id="977" name="temple" type="terrain" x="1717.94" y="4775.21">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="464.579,21.124 464.092,403.624 17.5025,404.982 13.4843,19.6565"/>
+  </object>
+  <object id="1246" name="temple" type="terrain" x="5292.19" y="4895.33" width="447.63" height="222.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="78" name="bridge -2">
@@ -181,17 +179,16 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="967" name="temple" type="terrain" x="5271.64" y="4902.79">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="464.579,12.1333 464.092,231.836 17.5025,232.616 13.4843,11.2904"/>
-  </object>
   <object id="978" name="temple" type="terrain" x="1718.94" y="4811.36">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="464.579,20.9595 464.092,400.482 17.5025,401.829 13.4843,19.5034"/>
+  </object>
+  <object id="1245" name="temple" type="terrain" x="5292.52" y="4914" width="447.63" height="222.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="79" name="bridge -1">
@@ -199,11 +196,10 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="968" name="temple" type="terrain" x="5272.97" y="4922.79">
+  <object id="1244" name="temple" type="terrain" x="5292.18" y="4934.67" width="447.63" height="222.667">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="464.579,12.1333 464.092,231.836 17.5025,232.616 13.4843,11.2904"/>
   </object>
  </objectgroup>
  <objectgroup id="18" name="background">
@@ -217,11 +213,10 @@
    </properties>
    <polygon points="3944.68,1334.85 6692.29,1342.58 6701.53,5810.79 5296.57,5808.06 5297.81,7932.81 3930.62,7921.93"/>
   </object>
-  <object id="993" name="temple-dark" type="terrain" x="1728.8" y="-784">
+  <object id="1250" name="temple-dark" type="terrain" x="1777" y="-597" width="1054" height="6946">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="38.7556,188.91 1096.52,178.552 1100.55,7276.73 37.6378,7285.9"/>
   </object>
  </objectgroup>
  <objectgroup id="83" name="decor bg">
@@ -272,12 +267,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple" type="terrain" x="-252.849" y="4907.8">
-   <polygon points="6418.73,39.1782 6412,748.596 -66.181,755.116 -79.698,36.4566"/>
-  </object>
-  <object id="842" name="temple" type="terrain" x="2441.66" y="2886.77">
-   <polygon points="1275.64,16.3061 1272.75,233.805 42.4806,235.93 43.0234,11.4512 503.345,11.743 1015.35,14.9765"/>
-  </object>
   <object id="843" name="stone-button" type="object" x="3033.72" y="4863.01" width="258.367" height="85.7283">
    <properties>
     <property name="send-event" value="door-open"/>
@@ -287,16 +276,25 @@
   <object id="924" name="temple" type="terrain" x="4074.7" y="3016">
    <polygon points="1039.18,12.3061 1038.09,235.138 407.127,238.602 401.762,1208.63 1035.68,1211.65 1034.39,1487.15 29.7813,1484.41 30.1618,11.4512"/>
   </object>
+  <object id="1241" name="temple" type="terrain" x="2483.52" y="2899.33" width="1231.63" height="222.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1242" name="temple" type="terrain" x="-331.815" y="4952.67" width="6491.63" height="710.667">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="957" name="temple" type="terrain" x="-178.818" y="-131.32">
+  <object id="1252" name="temple" type="terrain" x="-107" y="-45" width="1380" height="1846">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
-   <polygon points="1445.7,90.4947 1441.81,1923.46 76.3183,1926.59 71.4938,92.399"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor">

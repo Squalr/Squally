@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="985">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="997">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -52,15 +52,26 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="18" name="terrain bg">
+ <objectgroup id="78" name="terrain bg 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="terrain" x="371.891" y="622.086">
+  <object id="987" name="temple-dark" type="terrain" x="380.982" y="-32.4595">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
    <polygon points="66.2054,35.6719 1873.17,33.7161 1874.8,1875.68 66.5485,1877.07"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="992" name="ruins-thick" type="terrain" x="-1148" y="1356">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="4350.36,46.3694 4358.95,1079.38 1472.84,1061.97 1465.32,-473.291 3676.84,-466.266 3676.59,-338.775 3799.19,-339.715 3797.84,-208.567 3917.5,-207.94 3916.93,-83.8781 4039.25,-82.1483 4037.79,46.3778"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -68,7 +79,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="949" name="ruins-thick" type="terrain" x="-1477.54" y="2122.44">
-   <polygon points="5414.33,50.3694 5414.95,799.376 132.839,801.973 126.995,39.3133 1230.28,43.3016 1356.95,42.8891 1357.78,-83.853 1486.57,-84.1869 1485.85,-211.382 1613.55,-211.105 1613.58,-339.495 1742.07,-340.157 1741.59,-468.321 3907.78,-466.266 3907.51,-338.775 4037.81,-339.715 4036.38,-208.567 4163.55,-207.94 4162.94,-83.8781 4292.95,-82.1483 4291.4,46.3778"/>
+   <polygon points="5414.33,50.3694 5414.95,799.376 132.839,801.973 126.995,39.3133 506.038,46.3319 632.708,45.9194 633.538,-80.8227 762.328,-81.1566 761.608,-208.352 889.308,-208.075 889.338,-336.465 1017.83,-337.127 1017.35,-465.291 3907.78,-466.266 3907.51,-338.775 4037.81,-339.715 4036.38,-208.567 4163.55,-207.94 4162.94,-83.8781 4292.95,-82.1483 4291.4,46.3778"/>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -76,13 +87,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="952" name="dragon-door" type="object" x="902" y="1006" width="768" height="646">
-   <properties>
-    <property name="color" value="yellow-skull"/>
-    <property name="map" value="UnderflowRuins/Zone_3_1"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="960" name="vase" type="object" x="1644.47" y="1492.91" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
@@ -103,6 +107,34 @@
   <object id="984" name="chest" type="object" x="3308.73" y="2040" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="985" name="temple-door" type="object" x="1123.94" y="1127.94" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="UnderflowRuins/Cleopatra_Home"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="989" name="dragon-door" type="object" x="964.303" y="241.97" width="768" height="646">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_3_2"/>
+    <property name="transition" value="dragon"/>
+   </properties>
+  </object>
+  <object id="993" name="vase" type="object" x="707.136" y="726.061" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+   </properties>
+  </object>
+  <object id="994" name="vase" type="object" x="1849.56" y="729.091" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+   </properties>
+  </object>
+  <object id="995" name="vase" type="object" x="3028.35" y="2010.91" width="113" height="160">
+   <properties>
+    <property name="color" value="yellow"/>
    </properties>
   </object>
  </objectgroup>
@@ -139,9 +171,14 @@
     <property name="transition" value="back"/>
    </properties>
   </object>
-  <object id="982" name="spawn" type="object" x="1224.67" y="1525.33" width="128" height="128">
+  <object id="982" name="spawn" type="object" x="1280.67" y="1527.33" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="996" name="spawn" type="object" x="1275.39" y="757.212" width="128" height="128">
+   <properties>
+    <property name="transition" value="dragon"/>
    </properties>
   </object>
  </objectgroup>

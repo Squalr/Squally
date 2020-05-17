@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="990">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="SkyYellow"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="4"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="bg -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="989" name="temple-dark" type="texture" x="-273.815" y="-250" width="3355.63" height="2780"/>
+ </objectgroup>
+ <objectgroup id="72" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="961" name="Ruins/Window" type="decor" x="1717.08" y="904.41" width="313" height="381"/>
+  <object id="967" name="torch" type="object" x="2413.91" y="1059.33" width="42" height="130"/>
+  <object id="968" name="torch" type="object" x="1346.51" y="1064.48" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="58" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="987" name="temple" type="terrain" x="-141.815" y="-148" width="1275.63" height="2636">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="976" name="ruins-thick" type="terrain" x="-65.815" y="1660" width="3051.63" height="728"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="952" name="temple-door" type="object" x="358" y="1128" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="UnderflowRuins/Zone_3_1"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="960" name="vase" type="object" x="1789.5" y="1496" width="113" height="160">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="decor">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="955" name="torch" type="object" x="930.758" y="1248.03" width="42" height="130"/>
+  <object id="956" name="torch" type="object" x="175.97" y="1241.18" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="984" name="cleopatra" type="entity" x="1571.22" y="1532" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="cleopatra-hexus,friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="737.292" y="1526.5" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="974" name="spawn" type="object" x="508.364" y="1529" width="128" height="128">
+   <properties>
+    <property name="map-banner" value=""/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
