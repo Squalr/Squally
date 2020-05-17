@@ -34,7 +34,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="77" name="desert bg 2" visible="0">
+ <objectgroup id="77" name="desert bg 2">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="15" name="desert bg 1" visible="0">
+ <objectgroup id="15" name="desert bg 1">
   <properties>
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
@@ -63,6 +63,9 @@
    <property name="depth" type="float" value="-1728"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1068" name="caverns" type="terrain" x="1778.29" y="1245.33">
+   <polygon points="-140.354,-1.09091 -38.8873,-0.984398 250.881,-8 1452.22,434.667 2442.79,752.705 3266.39,1444.2 -82.2105,1435.83 -83.7176,794.554"/>
+  </object>
  </objectgroup>
  <objectgroup id="137" name="pyramid -27">
   <properties>
@@ -75,30 +78,35 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1059" name="caverns" type="terrain" x="1692.18" y="1282" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="141" name="terrain -21">
   <properties>
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1060" name="caverns" type="terrain" x="1746.18" y="1307.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="142" name="terrain -18">
   <properties>
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1061" name="caverns" type="terrain" x="1786.18" y="1335.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="143" name="terrain -15">
   <properties>
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1062" name="caverns" type="terrain" x="1839.52" y="1361.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="144" name="terrain -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1063" name="caverns" type="terrain" x="1868.85" y="1393.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="136" name="desert bg 0">
   <properties>
@@ -117,47 +125,59 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1064" name="caverns" type="terrain" x="1859.52" y="1429.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="146" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1065" name="caverns" type="terrain" x="1828.19" y="1461.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="147" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1066" name="caverns" type="terrain" x="1809.52" y="1499.33" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="150" name="texture -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1074" name="ruins-gray" type="terrain" x="3075.25" y="328" width="1916.66" height="2172">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="148" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1067" name="caverns" type="terrain" x="1808.18" y="1538" width="323.63" height="948"/>
  </objectgroup>
  <objectgroup id="151" name="decor -0.5">
   <properties>
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1076" name="Ruins/Pillar" type="decor" x="2815.5" y="583" width="369" height="978"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1043" name="caverns" type="terrain" x="-101.815" y="1560" width="3279.63" height="1528"/>
+  <object id="1043" name="caverns" type="terrain" x="-101.815" y="1560" width="2879.63" height="1528"/>
  </objectgroup>
  <objectgroup id="149" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1073" name="ruins-gray-thick" type="terrain" x="2774" y="1559.52" width="625.572" height="968"/>
+  <object id="1075" name="ruins-gray-thick" type="terrain" x="2799.21" y="-76" width="2053.57" height="780"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -176,10 +196,16 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1071" name="edge-portal" type="object" x="2875.07" y="1073.33" width="199.918" height="488.002">
+  <object id="1069" name="portal" type="object" x="1840.99" y="1323.37" width="256.687" height="235.919">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_1_4"/>
+    <property name="transition" value="path"/>
+   </properties>
+  </object>
+  <object id="1071" name="edge-portal" type="object" x="2872.04" y="1040" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_1_3"/>
+    <property name="map" value="UnderflowRuins/Town_Main"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -219,6 +245,11 @@
   <object id="1047" name="squally" type="entity" x="676.667" y="1432.67" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="1070" name="spawn" type="object" x="1900.67" y="1431.27" width="128" height="128">
+   <properties>
+    <property name="transition" value="path"/>
    </properties>
   </object>
   <object id="1072" name="spawn" type="object" x="2572" y="1434" width="128" height="128">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="823">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="828">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -10,38 +10,25 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="16" name="tiled bg">
+ <objectgroup id="16" name="tiled bg -1">
   <properties>
+   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="2687.03" height="1264"/>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="3471.03" height="1264"/>
  </objectgroup>
- <objectgroup id="18" name="decor background 2">
+ <objectgroup id="102" name="decor -0.5">
   <properties>
+   <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="19" name="objects background">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="101" name="entities background">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="102" name="decor background">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
+  <object id="825" name="Generic/Rope1" type="decor" x="1035.58" y="-97.6364" width="11" height="1010"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="2693.33" height="234.06"/>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="3481.33" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -65,6 +52,19 @@
    <properties>
     <property name="map" value="UnderflowRuins/Zone_2_0"/>
     <property name="transition" value="well"/>
+   </properties>
+  </object>
+  <object id="826" name="portal" type="object" x="919.152" y="809.697" width="256" height="256">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="transition" value="rope"/>
+   </properties>
+  </object>
+  <object id="827" name="edge-portal" type="object" x="3129.86" y="426.241" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_3_0"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -113,6 +113,11 @@
   <object id="816" name="spawn" type="object" x="2073.82" y="937.091" width="128" height="128">
    <properties>
     <property name="transition" value="well"/>
+   </properties>
+  </object>
+  <object id="823" name="spawn" type="object" x="987.515" y="939.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="rope"/>
    </properties>
   </object>
  </objectgroup>

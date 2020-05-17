@@ -288,7 +288,7 @@ bool PlatformerDialogueBox::chooseOption(int index)
 {
 	index--;
 
-	if (index < 0 || index >= int(this->inputOptions.size()) || this->inputOptions[index] != nullptr)
+	if (index >= 0 && index < int(this->inputOptions.size()) && this->inputOptions[index] != nullptr)
 	{
 		auto callback = this->inputOptions[index];
 

@@ -137,10 +137,11 @@ void OptionWarp::openDialogue()
 		{
 			DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
 			{
-				this->canChooseOption = false;
-				PlatformerEvents::TriggerAllowPause();
-				this->broadcastMapEvent(OptionWarp::EventWarpToPrefix + this->to[index], ValueMap());
 			}));
+			
+			this->canChooseOption = false;
+			PlatformerEvents::TriggerAllowPause();
+			this->broadcastMapEvent(OptionWarp::EventWarpToPrefix + this->to[index], ValueMap());
 
 			return true;
 		});
@@ -159,7 +160,9 @@ void OptionWarp::openDialogue()
 		},
 		"",
 		true,
-		false
+		false,
+		callbacks,
+		[=](){ return true; }
 	));
 }
 

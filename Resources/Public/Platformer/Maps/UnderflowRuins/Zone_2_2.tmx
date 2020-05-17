@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="941">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="945">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -182,9 +182,9 @@
   </properties>
   <object id="835" name="ruins-gray-thick" type="terrain" x="-351.63" y="1197.82" width="2306.72" height="652.241"/>
   <object id="891" name="ruins-gray-thick" type="terrain" x="-328.238" y="2248.61" width="7197.93" height="654.787"/>
-  <object id="894" name="ruins-gray-thick" type="terrain" x="2685.4" y="1198.06" width="1701.93" height="840.12"/>
-  <object id="926" name="ruins-gray-thick" type="terrain" x="6056" y="1616">
-   <polygon points="-1050.96,-414.742 215.057,-415.635 216.231,-525.967 389.343,-523.744 387.99,-612.229 848.9,-616.152 850.99,632.539 -1056.8,637.185"/>
+  <object id="894" name="ruins-gray-thick" type="terrain" x="2685.4" y="1198.06" width="1701.93" height="1048.12"/>
+  <object id="926" name="ruins-gray-thick" type="terrain" x="6056" y="1580.35">
+   <polygon points="-1050.96,-390.747 215.057,-391.588 216.231,-495.537 389.343,-493.443 387.99,-576.808 848.9,-580.504 850.99,261.911 -1056.8,266.287"/>
   </object>
  </objectgroup>
  <objectgroup id="124" name="terrain fg">
@@ -192,7 +192,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1887.88"/>
-  <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="2255.88"/>
+  <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="1846.79"/>
  </objectgroup>
  <objectgroup id="22" name="decor">
   <properties>
@@ -214,7 +214,19 @@
    </properties>
   </object>
   <object id="938" name="life-stone" type="object" x="1044.71" y="781.727" width="146" height="423"/>
-  <object id="939" name="metal-chest" type="object" x="3588.06" y="1070.24" width="128" height="128">
+  <object id="939" name="metal-chest" type="object" x="3198.76" y="1070.91" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-gem-red"/>
+   </properties>
+  </object>
+  <object id="941" name="edge-portal" type="object" x="6371.88" y="1728.85" width="200" height="640">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_2_5"/>
+    <property name="transition" value="passage"/>
+   </properties>
+  </object>
+  <object id="944" name="metal-chest" type="object" x="3712.73" y="1068.12" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-rare"/>
    </properties>
@@ -230,6 +242,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="943" name="mermaid" type="entity" x="3456.12" y="1067.58" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-B"/>
+    <property name="scale" type="float" value="0.75"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
@@ -286,6 +304,11 @@
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="3-B"/>
     <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="942" name="spawn" type="object" x="5920.85" y="2023.88" width="128" height="128">
+   <properties>
+    <property name="transition" value="passage"/>
    </properties>
   </object>
  </objectgroup>

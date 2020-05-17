@@ -587,6 +587,7 @@ const std::string DecorResources::Generic_MoonDoor = "Private/Platformer/Decor/G
 const std::string DecorResources::Generic_Nightstand = "Private/Platformer/Decor/Generic/Nightstand.png";
 const std::string DecorResources::Generic_RedRug = "Private/Platformer/Decor/Generic/RedRug.png";
 const std::string DecorResources::Generic_Register = "Private/Platformer/Decor/Generic/Register.png";
+const std::string DecorResources::Generic_Rope1 = "Private/Platformer/Decor/Generic/Rope1.png";
 const std::string DecorResources::Generic_Sack = "Private/Platformer/Decor/Generic/Sack.png";
 const std::string DecorResources::Generic_Shack1 = "Private/Platformer/Decor/Generic/Shack1.png";
 const std::string DecorResources::Generic_Shelf1 = "Private/Platformer/Decor/Generic/Shelf1.png";

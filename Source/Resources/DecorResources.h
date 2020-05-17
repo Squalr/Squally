@@ -588,6 +588,7 @@ namespace DecorResources
 	extern const std::string Generic_Nightstand;
 	extern const std::string Generic_RedRug;
 	extern const std::string Generic_Register;
+	extern const std::string Generic_Rope1;
 	extern const std::string Generic_Sack;
 	extern const std::string Generic_Shack1;
 	extern const std::string Generic_Shelf1;
