@@ -115,9 +115,9 @@ void MayanDoor::initializePositions()
 {
 	super::initializePositions();
 
-	const float Radius = 336.0f;
-	const float RedGemAngle = 5.0f * float(M_PI) / 6.0f;
-	const float PurpleGemAngle = 1.0f * float(M_PI) / 6.0f;
+	const float Radius = 356.0f;
+	const float RedGemAngle = 4.0f * float(M_PI) / 6.0f;
+	const float PurpleGemAngle = 2.0f * float(M_PI) / 6.0f;
 
 	this->redGem->setPosition(Vec2(Radius * std::cos(RedGemAngle) - 64.0f, Radius * std::sin(RedGemAngle)));
 	this->blueGem->setPosition(Vec2(0.0f, Radius));
@@ -134,7 +134,10 @@ void MayanDoor::initializeListeners()
 
 	this->listenForMapEvent(MayanDoor::EventMayanDoorUnlock, [=](ValueMap args)
 	{
-		this->tryUnlock();
+		if (this->isLocked)
+		{
+			this->tryUnlock();
+		}
 	});
 
 	this->turninHitbox->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
@@ -150,6 +153,7 @@ void MayanDoor::loadGems()
 	int redDefault = 0;
 	int blueDefault = 0;
 	int purpleDefault = 0;
+	int failSafeCount = 2048;
 
 	// 4, 11, 6 is the default combo. The answer can be anything except this.
 	do
@@ -157,7 +161,7 @@ void MayanDoor::loadGems()
 		redDefault = RandomHelper::random_int(0, 11);
 		blueDefault = RandomHelper::random_int(0, 11);
 		purpleDefault = RandomHelper::random_int(0, 11);
-	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6);
+	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6 && failSafeCount-- > 0);
 
 	this->redGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
 	this->blueGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
@@ -257,7 +261,7 @@ void MayanDoor::registerHackables()
 
 	for (auto next : hackablesRed)
 	{
-		this->registerCode(next);
+		this->redGem->registerCode(next);
 	}
 
 	auto gemFuncBlue = &MayanDoor::runGemBlue;
@@ -265,7 +269,7 @@ void MayanDoor::registerHackables()
 
 	for (auto next : hackablesBlue)
 	{
-		this->registerCode(next);
+		this->blueGem->registerCode(next);
 	}
 
 	auto gemFuncPurple = &MayanDoor::runGemPurple;
@@ -273,7 +277,7 @@ void MayanDoor::registerHackables()
 
 	for (auto next : hackablesPurple)
 	{
-		this->registerCode(next);
+		this->purpleGem->registerCode(next);
 	}
 }
 

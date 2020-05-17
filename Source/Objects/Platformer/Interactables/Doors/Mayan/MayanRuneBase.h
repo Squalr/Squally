@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Engine/Hackables/HackableObject.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ class CollisionObject;
 class ConstantString;
 class LocalizedLabel;
 
-class MayanRuneBase : public GameObject
+class MayanRuneBase : public HackableObject
 {
 public:
 	void loadAnswer(int answer);
@@ -31,7 +31,7 @@ protected:
 	virtual cocos2d::Color4B getGemFontColor() = 0;
 
 private:
-	typedef GameObject super;
+	typedef HackableObject super;
 	
 	cocos2d::Sprite* emblemFrame;
 	cocos2d::Sprite* emblemFrameGlowing;

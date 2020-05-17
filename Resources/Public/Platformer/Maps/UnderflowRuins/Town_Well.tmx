@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="828">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="829">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -118,6 +118,11 @@
   <object id="823" name="spawn" type="object" x="987.515" y="939.03" width="128" height="128">
    <properties>
     <property name="transition" value="rope"/>
+   </properties>
+  </object>
+  <object id="828" name="spawn" type="object" x="2784.48" y="939.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

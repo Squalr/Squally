@@ -106,14 +106,6 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="1080" name="mayan-gem-red" type="object" x="2045" y="897" width="128" height="128"/>
-  <object id="1081" name="mayan-gem-red" type="object" x="2430" y="894" width="128" height="128"/>
-  <object id="1082" name="mayan-gem-red" type="object" x="2820" y="898" width="128" height="128"/>
-  <object id="1083" name="metal-chest" type="object" x="1250" y="1595" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ur-gem-red"/>
-   </properties>
-  </object>
   <object id="1084" name="metal-chest" type="object" x="1466" y="1637" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-gem-blue"/>

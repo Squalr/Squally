@@ -76,6 +76,7 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Crypts;
 	extern const std::string PerilousSea_Zone_UR_1_0;
 	extern const std::string SeaSharpCaverns_Caverns;
+	extern const std::string SeaSharpCaverns_Zone_1_0;
 	extern const std::string SeaSharpCaverns_Zone_x_y;
 	extern const std::string TileMap;
 	extern const std::string Tutorials_KnownValueDouble;
@@ -106,5 +107,6 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_2_6;
 	extern const std::string UnderflowRuins_Zone_3_0;
 	extern const std::string UnderflowRuins_Zone_3_1;
+	extern const std::string UnderflowRuins_Zone_3_2;
 	extern const std::string VoidStar_VoidStar;
 };

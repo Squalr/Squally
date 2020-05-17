@@ -1,81 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="977">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="985">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="DesertSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="4"/>
+   <property name="rubber-band" type="int" value="5"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -2">
+ <objectgroup id="74" name="desert bg 4">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-537.462" y="-416.789">
-   <polygon points="215.558,68.3375 6098.84,64.5907 6104.15,3593.28 216.675,3595.94"/>
+ </objectgroup>
+ <objectgroup id="75" name="desert bg 3">
+  <properties>
+   <property name="depth" type="float" value="-2432"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="desert bg 2">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="desert bg 1">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="980" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1076">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
   </object>
  </objectgroup>
- <objectgroup id="72" name="decor -2">
+ <objectgroup id="73" name="desert bg 0">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="2429.06" y="1180.42" width="42" height="130"/>
-  <object id="968" name="torch" type="object" x="1388.93" y="1185.57" width="42" height="130"/>
-  <object id="969" name="torch" type="object" x="3539" y="1187" width="42" height="130"/>
+  <object id="979" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="1654" width="14517.6" height="1088">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="1.75"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg">
+ <objectgroup id="18" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="948" name="temple" type="terrain" x="3510.65" y="-249.089">
+  <object id="897" name="temple-dark" type="terrain" x="371.891" y="622.086">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
-  </object>
-  <object id="950" name="temple" type="terrain" x="-648.87" y="-514.179">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
+   <polygon points="66.2054,35.6719 1873.17,33.7161 1874.8,1875.68 66.5485,1877.07"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="caverns" type="terrain" x="-65.815" y="2172" width="5331.63" height="1176"/>
+  <object id="949" name="ruins-thick" type="terrain" x="-1477.54" y="2122.44">
+   <polygon points="5414.33,50.3694 5414.95,799.376 132.839,801.973 126.995,39.3133 1230.28,43.3016 1356.95,42.8891 1357.78,-83.853 1486.57,-84.1869 1485.85,-211.382 1613.55,-211.105 1613.58,-339.495 1742.07,-340.157 1741.59,-468.321 3907.78,-466.266 3907.51,-338.775 4037.81,-339.715 4036.38,-208.567 4163.55,-207.94 4162.94,-83.8781 4292.95,-82.1483 4291.4,46.3778"/>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="944" name="temple-door" type="object" x="4205.22" y="1642.06" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="listen-event" value="grogg-dead"/>
-    <property name="map" value="EndianForest/Zone_2_8"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="952" name="temple-door" type="object" x="332" y="1644" width="432" height="528">
+  <object id="952" name="dragon-door" type="object" x="902" y="1006" width="768" height="646">
    <properties>
     <property name="color" value="yellow-skull"/>
-    <property name="map" value="UnderflowRuins/Zone_3_0"/>
+    <property name="map" value="UnderflowRuins/Zone_3_1"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
+  <object id="960" name="vase" type="object" x="1644.47" y="1492.91" width="113" height="160">
    <properties>
-    <property name="color" value="blue"/>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+  <object id="977" name="edge-portal" type="object" x="-3.959" y="1176" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_3_0"/>
+    <property name="transition" value="path"/>
+   </properties>
+  </object>
+  <object id="981" name="vase" type="object" x="757.5" y="1494" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="984" name="chest" type="object" x="3308.73" y="2040" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -83,10 +110,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="torch" type="object" x="876.091" y="1758.03" width="42" height="130"/>
-  <object id="956" name="torch" type="object" x="175.97" y="1753.18" width="42" height="130"/>
-  <object id="958" name="torch" type="object" x="4746.76" y="1798.39" width="42" height="130"/>
-  <object id="959" name="torch" type="object" x="4046.63" y="1795.54" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -99,20 +122,26 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="716.08" y="1527.47" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
+  <object id="974" name="spawn" type="object" x="465.818" y="1527.91" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="path"/>
    </properties>
   </object>
-  <object id="975" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
+  <object id="976" name="spawn" type="object" x="2050.18" y="1527.88" width="128" height="128">
    <properties>
-    <property name="transition" value="exit"/>
+    <property name="map-banner" value=""/>
+    <property name="transition" value="back"/>
+   </properties>
+  </object>
+  <object id="982" name="spawn" type="object" x="1224.67" y="1525.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
    </properties>
   </object>
  </objectgroup>

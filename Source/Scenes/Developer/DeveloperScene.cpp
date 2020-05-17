@@ -57,6 +57,9 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
 	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_2 (UR) Pyramid Interior", MapResources::UnderflowRuins_Zone_3_2));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_1 (UR) Pyramid Top", MapResources::UnderflowRuins_Zone_3_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_0 (UR) Pyramid", MapResources::UnderflowRuins_Zone_3_0));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_6 (UR) Sky", MapResources::UnderflowRuins_Zone_2_6));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_5 (UR) Exit", MapResources::UnderflowRuins_Zone_2_5));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_4 (UR) Mesusa", MapResources::UnderflowRuins_Zone_2_4));
