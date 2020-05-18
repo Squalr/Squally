@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="989">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="1036">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -15,47 +15,95 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple-dark" type="texture" x="-281.815" y="-310" width="5691.63" height="3476"/>
+  <object id="988" name="temple-dark" type="texture" x="-1337.82" y="-1558" width="7875.63" height="4308"/>
  </objectgroup>
- <objectgroup id="72" name="decor -2">
+ <objectgroup id="72" name="decor -6">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="525.076" y="1415.32" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="4312.11" y="1405.02" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="3880.94" y="1563.94" width="42" height="130"/>
-  <object id="968" name="torch" type="object" x="154.506" y="1575.39" width="42" height="130"/>
-  <object id="969" name="torch" type="object" x="4963.61" y="1570.52" width="42" height="130"/>
+  <object id="961" name="Ruins/Window" type="decor" x="525.076" y="647.318" width="313" height="381"/>
+  <object id="962" name="Ruins/Window" type="decor" x="4312.11" y="637.015" width="313" height="381"/>
+  <object id="967" name="torch" type="object" x="3880.94" y="795.935" width="42" height="130"/>
+  <object id="968" name="torch" type="object" x="154.506" y="807.388" width="42" height="130"/>
+  <object id="969" name="torch" type="object" x="4963.61" y="802.515" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="73" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="989" name="ruins-thick" type="terrain" x="-51.8756" y="1305.58" width="5331.63" height="1176"/>
+  <object id="1029" name="ruins-thick" type="terrain" x="1752.69" y="1336" width="1850.63" height="1176"/>
+ </objectgroup>
+ <objectgroup id="74" name="player_layer -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1034" name="warp" type="object" x="1800.73" y="1080.52" width="256" height="256">
+   <properties>
+    <property name="from" value="3-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-A"/>
+   </properties>
+  </object>
+  <object id="1035" name="warp" type="object" x="3295" y="1081" width="256" height="256">
+   <properties>
+    <property name="from" value="3-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-B"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="987" name="temple" type="terrain" x="2094.18" y="-502" width="1139.63" height="3676">
+  <object id="987" name="temple" type="terrain" x="2060.85" y="-1270" width="1172.96" height="3676">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1009" name="ruins-thick" type="terrain" x="1605.1" y="1440" width="96" height="340"/>
+  <object id="1010" name="ruins-thick" type="terrain" x="1485.24" y="1440" width="96" height="340"/>
+  <object id="1013" name="ruins-thick" type="terrain" x="1363.05" y="1440" width="96" height="340"/>
+  <object id="1014" name="ruins-thick" type="terrain" x="1240.86" y="1440" width="96" height="340"/>
+  <object id="1015" name="ruins-thick" type="terrain" x="1123.14" y="1440" width="96" height="340"/>
+  <object id="1016" name="ruins-thick" type="terrain" x="1001.62" y="1440" width="96" height="340"/>
+  <object id="1017" name="ruins-thick" type="terrain" x="883.05" y="1440" width="96" height="340"/>
+  <object id="1019" name="ruins-thick" type="terrain" x="4358.57" y="1440" width="96" height="340"/>
+  <object id="1020" name="ruins-thick" type="terrain" x="4240.05" y="1440" width="96" height="340"/>
+  <object id="1021" name="ruins-thick" type="terrain" x="4117.48" y="1440" width="96" height="340"/>
+  <object id="1022" name="ruins-thick" type="terrain" x="3997.62" y="1440" width="96" height="340"/>
+  <object id="1023" name="ruins-thick" type="terrain" x="3875.43" y="1440" width="96" height="340"/>
+  <object id="1024" name="ruins-thick" type="terrain" x="3753.24" y="1440" width="96" height="340"/>
+  <object id="1025" name="ruins-thick" type="terrain" x="3635.52" y="1440" width="96" height="340"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="-65.815" y="2172" width="5331.63" height="1176"/>
+  <object id="976" name="ruins-thick" type="terrain" x="1705.18" y="1404" width="1924.63" height="1176"/>
+  <object id="1008" name="ruins-thick" type="terrain" x="-73.82" y="1404" width="940.63" height="1176"/>
+  <object id="1028" name="ruins-thick" type="terrain" x="4455.18" y="1404" width="758.63" height="1176"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
+  <object id="960" name="vase" type="object" x="4749.5" y="1240" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object id="986" name="dragon-door" type="object" x="2254.91" y="1521.61" width="768" height="646">
+  <object id="986" name="dragon-door" type="object" x="2254.91" y="753.606" width="768" height="646">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="map" value="UnderflowRuins/Zone_3_1"/>
     <property name="transition" value="dragon"/>
    </properties>
@@ -65,15 +113,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="torch" type="object" x="3107.97" y="1670.82" width="42" height="130"/>
-  <object id="956" name="torch" type="object" x="2147.12" y="1663.97" width="42" height="130"/>
+  <object id="955" name="torch" type="object" x="3107.97" y="902.818" width="42" height="130">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="956" name="torch" type="object" x="2147.12" y="895.968" width="42" height="130">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="982" name="mummy-priest" type="entity" x="951.14" y="2035.32" width="128" height="128">
+  <object id="982" name="mummy-priest" type="entity" x="1507.14" y="1275.32" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -82,7 +138,7 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="983" name="mummy-warrior" type="entity" x="958.58" y="1700.68" width="128" height="128">
+  <object id="983" name="mummy-warrior" type="entity" x="1514.58" y="940.68" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
@@ -95,20 +151,36 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2786.5" y="2044.68" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2786.5" y="1276.68" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="974" name="spawn" type="object" x="2557.58" y="2047.18" width="128" height="128">
+  <object id="974" name="spawn" type="object" x="2557.58" y="1279.18" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="975" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
+  <object id="975" name="spawn" type="object" x="4366.31" y="1271.03" width="128" height="128">
    <properties>
     <property name="transition" value="dragon"/>
+   </properties>
+  </object>
+  <object id="1032" name="warp" type="object" x="1777.64" y="1144.97" width="256" height="256">
+   <properties>
+    <property name="from" value="1-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="3-A"/>
+   </properties>
+  </object>
+  <object id="1033" name="warp" type="object" x="3293.21" y="1147.76" width="256" height="256">
+   <properties>
+    <property name="from" value="1-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="3-B"/>
    </properties>
   </object>
  </objectgroup>

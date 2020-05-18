@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="990">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="993">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -22,9 +22,9 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="1717.08" y="904.41" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="2413.91" y="1059.33" width="42" height="130"/>
-  <object id="968" name="torch" type="object" x="1346.51" y="1064.48" width="42" height="130"/>
+  <object id="961" name="Ruins/Window" type="decor" x="1762.53" y="625.622" width="313" height="381"/>
+  <object id="967" name="torch" type="object" x="2441.18" y="707.815" width="42" height="130"/>
+  <object id="968" name="torch" type="object" x="1373.78" y="712.965" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>
@@ -40,7 +40,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="-65.815" y="1660" width="3051.63" height="728"/>
+  <object id="990" name="ruins-thick" type="terrain" x="-880" y="2400">
+   <polygon points="3956.83,171.255 746.84,159.973 740.25,-743.067 2179.27,-734.106 2177.31,-865.32 2321.27,-865.319 2317.27,-995.318 2462.77,-995.042 2462.78,-1121.86 3959.23,-1124.55"/>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -54,9 +56,19 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="960" name="vase" type="object" x="1789.5" y="1496" width="113" height="160">
+  <object id="960" name="vase" type="object" x="2305.5" y="1116" width="113" height="160">
    <properties>
-    <property name="color" value="blue"/>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="991" name="vase" type="object" x="2599.5" y="1118.67" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="992" name="vase" type="object" x="2455.5" y="1116" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
    </properties>
   </object>
  </objectgroup>
@@ -72,7 +84,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="984" name="cleopatra" type="entity" x="1571.22" y="1532" width="128" height="128">
+  <object id="984" name="cleopatra" type="entity" x="2087.22" y="1152" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="cleopatra-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>

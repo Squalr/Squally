@@ -38,6 +38,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/MechanicalFlailClippyAngleBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Clippy/PendulumBladeClippyAngleBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/Fade/ZFadeBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/IllusionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/LockedPortal.h"

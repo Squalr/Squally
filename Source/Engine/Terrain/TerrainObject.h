@@ -134,9 +134,8 @@ public:
 		}
 	};
 
-	static std::string MapKeyTypeTerrain;
-	static std::string MapKeyTypeIsHollow;
-	static std::string MapKeyTypeTopOnly;
+	static std::string MapKey;
+	static std::string PropertyTopOnly;
 	static unsigned int NextTerrainId;
 
 protected:

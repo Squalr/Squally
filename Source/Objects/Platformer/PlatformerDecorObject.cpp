@@ -22,8 +22,6 @@ PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& properties)
 
 PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(properties)
 {
-	this->cachedDepth = 0.0f;
-
 	std::string name = this->properties.at(GameObject::MapKeyName).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
@@ -140,8 +138,6 @@ void PlatformerDecorObject::onEnter()
 	super::onEnter();
 
 	this->runBounce();
-
-	this->cachedDepth = GameUtils::getDepth(this);
 }
 
 void PlatformerDecorObject::onHackerModeEnable()
@@ -156,27 +152,6 @@ void PlatformerDecorObject::onHackerModeDisable()
 	super::onHackerModeDisable();
 
 	this->setVisible(true);
-}
-
-void PlatformerDecorObject::update(float dt)
-{
-	super::update(dt);
-
-	const float Increment = 64.0f;
-	const float HalfIncrement = Increment / 2.0f;
-
-	if (this->cachedDepth >= (GameCamera::getInstance()->getTargetDepth() + Increment * 6 + HalfIncrement))
-	{
-		this->sprite->setOpacity(64);
-	}
-	else if (this->cachedDepth >= (GameCamera::getInstance()->getTargetDepth() + HalfIncrement))
-	{
-		this->sprite->setOpacity(127);
-	}
-	else
-	{
-		this->sprite->setOpacity(255);
-	}
 }
 
 void PlatformerDecorObject::runBounce()

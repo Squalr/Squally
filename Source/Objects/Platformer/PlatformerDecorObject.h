@@ -19,7 +19,6 @@ protected:
 	void onEnter() override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
-	void update(float dt) override;
 	
 private:
 	typedef HackableObject super;
@@ -27,5 +26,4 @@ private:
 	void runBounce();
 
 	cocos2d::Sprite* sprite;
-	float cachedDepth;
 };
