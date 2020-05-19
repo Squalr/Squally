@@ -86,6 +86,7 @@ namespace MapResources
 	extern const std::string Tutorials_UnknownValueFloat;
 	extern const std::string Tutorials_UnknownValueInt32;
 	extern const std::string UnderflowRuins_Fishing_Village;
+	extern const std::string UnderflowRuins_Home_Cleopatra;
 	extern const std::string UnderflowRuins_Home_Griffin_Geryon;
 	extern const std::string UnderflowRuins_Home_Hera;
 	extern const std::string UnderflowRuins_Town_Alch;
@@ -108,5 +109,8 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_3_0;
 	extern const std::string UnderflowRuins_Zone_3_1;
 	extern const std::string UnderflowRuins_Zone_3_2;
+	extern const std::string UnderflowRuins_Zone_3_3;
+	extern const std::string UnderflowRuins_Zone_3_4;
+	extern const std::string UnderflowRuins_Zone_3_5;
 	extern const std::string VoidStar_VoidStar;
 };

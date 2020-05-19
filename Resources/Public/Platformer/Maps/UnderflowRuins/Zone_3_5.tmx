@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1133">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1171">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -15,18 +15,18 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple-dark" type="texture" x="-1081.82" y="-1558" width="7875.63" height="5588"/>
+  <object id="988" name="temple-dark" type="texture" x="-569.82" y="-854" width="7875.63" height="4884"/>
  </objectgroup>
  <objectgroup id="72" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="781.076" y="647.318" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="4568.11" y="637.015" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="4136.94" y="795.935" width="42" height="130"/>
-  <object id="968" name="torch" type="object" x="410.506" y="807.388" width="42" height="130"/>
-  <object id="969" name="torch" type="object" x="5219.61" y="802.515" width="42" height="130"/>
+  <object id="961" name="Ruins/Window" type="decor" x="1293.08" y="647.318" width="313" height="381"/>
+  <object id="962" name="Ruins/Window" type="decor" x="5080.11" y="637.015" width="313" height="381"/>
+  <object id="967" name="torch" type="object" x="4648.94" y="795.935" width="42" height="130"/>
+  <object id="968" name="torch" type="object" x="922.506" y="807.388" width="42" height="130"/>
+  <object id="969" name="torch" type="object" x="5731.61" y="802.515" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -6">
   <properties>
@@ -47,11 +47,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1088" name="spawn" type="object" x="2808" y="1158" width="128" height="128">
-   <properties>
-    <property name="transition" value="center"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="93" name="terrain -5">
   <properties>
@@ -65,21 +60,21 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="99" name="terrain -3 bg">
+ <objectgroup id="99" name="terrain -3 bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1130" name="ruins-thick" type="terrain" x="2686.69" y="-91.2727" width="407.115" height="3434.18"/>
+  <object id="1130" name="ruins-thick" type="terrain" x="3198.69" y="-91.2727" width="407.115" height="3434.18"/>
  </objectgroup>
  <objectgroup id="73" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1029" name="ruins-thick" type="terrain" x="1892.69" y="1336" width="791.66" height="566.909"/>
-  <object id="1111" name="ruins-thick" type="terrain" x="-90.1635" y="2850.3" width="6118.63" height="576"/>
-  <object id="1127" name="ruins-thick" type="terrain" x="3094.69" y="1336" width="874.63" height="566.909"/>
+  <object id="1029" name="ruins-thick" type="terrain" x="2404.69" y="1336" width="791.66" height="566.909"/>
+  <object id="1111" name="ruins-thick" type="terrain" x="-710.163" y="2850.3" width="8298.63" height="912"/>
+  <object id="1127" name="ruins-thick" type="terrain" x="3606.69" y="1336" width="874.63" height="566.909"/>
  </objectgroup>
  <objectgroup id="98" name="objects -3">
   <properties>
@@ -87,21 +82,21 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1118" name="edge-portal" type="object" x="0.041" y="2360" width="199.918" height="488.002">
+  <object id="1118" name="edge-portal" type="object" x="0.041" y="2364" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="UnderflowRuins/Zone_3_4"/>
     <property name="transition" value="bottom-left"/>
    </properties>
   </object>
-  <object id="1119" name="edge-portal" type="object" x="5687.04" y="2364" width="199.918" height="488.002">
+  <object id="1119" name="edge-portal" type="object" x="6707.04" y="2364" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_3_6"/>
     <property name="transition" value="bottom-right"/>
    </properties>
   </object>
-  <object id="1131" name="logic-torch" type="object" x="2487.5" y="1224.5" width="101" height="111">
+  <object id="1131" name="logic-torch" type="object" x="2566.38" y="1223.83" width="101" height="111">
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
@@ -109,12 +104,45 @@
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
    </properties>
   </object>
-  <object id="1132" name="logic-torch" type="object" x="3183.5" y="1226.5" width="101" height="111">
+  <object id="1132" name="logic-torch" type="object" x="4246.56" y="1222.47" width="101" height="111">
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
+   </properties>
+  </object>
+  <object id="1133" name="lever" type="object" x="2383.38" y="2642.11" width="177" height="205">
+   <properties>
+    <property name="send-event" value="bridge-group-A"/>
+   </properties>
+  </object>
+  <object id="1134" name="lever" type="object" x="4338.77" y="2642.95" width="177" height="205">
+   <properties>
+    <property name="send-event" value="bridge-group-B"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="100" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1158" name="mummy-priest" type="entity" x="1759.99" y="2720.77" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1159" name="mummy-warrior" type="entity" x="1767.43" y="2386.13" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>
@@ -124,7 +152,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1049" name="warp" type="object" x="2068" y="1084" width="256" height="256">
+  <object id="1049" name="warp" type="object" x="2907" y="1079" width="256" height="256">
    <properties>
     <property name="from" value="6-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -132,7 +160,7 @@
     <property name="to" value="3-A"/>
    </properties>
   </object>
-  <object id="1050" name="warp" type="object" x="3548" y="1082" width="256" height="256">
+  <object id="1050" name="warp" type="object" x="3691.5" y="1082" width="256" height="256">
    <properties>
     <property name="from" value="6-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -140,12 +168,12 @@
     <property name="to" value="3-B"/>
    </properties>
   </object>
-  <object id="1120" name="spawn" type="object" x="5378.79" y="2721.33" width="128" height="128">
+  <object id="1120" name="spawn" type="object" x="6398.79" y="2721.33" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-left"/>
    </properties>
   </object>
-  <object id="1121" name="spawn" type="object" x="450.667" y="2721.94" width="128" height="128">
+  <object id="1121" name="spawn" type="object" x="450.667" y="2717.94" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-right"/>
    </properties>
@@ -156,12 +184,12 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1074" name="ruins-thick" type="terrain" x="3532.97" y="1352.85" width="288" height="340">
+  <object id="1074" name="ruins-thick" type="terrain" x="3676.47" y="1352.85" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1075" name="ruins-thick" type="terrain" x="2018" y="1354" width="288" height="340">
+  <object id="1075" name="ruins-thick" type="terrain" x="2892" y="1356" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -172,12 +200,12 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1072" name="ruins-thick" type="terrain" x="3532.97" y="1374.85" width="288" height="340">
+  <object id="1072" name="ruins-thick" type="terrain" x="3676.47" y="1374.85" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1073" name="ruins-thick" type="terrain" x="2017.33" y="1374" width="288" height="340">
+  <object id="1073" name="ruins-thick" type="terrain" x="2891.33" y="1376" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -187,23 +215,379 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1009" name="ruins-thick" type="terrain" x="1861.1" y="1440" width="96" height="340"/>
-  <object id="1010" name="ruins-thick" type="terrain" x="1741.24" y="1440" width="96" height="340"/>
-  <object id="1013" name="ruins-thick" type="terrain" x="1619.05" y="1440" width="96" height="340"/>
-  <object id="1014" name="ruins-thick" type="terrain" x="1496.86" y="1440" width="96" height="340"/>
-  <object id="1015" name="ruins-thick" type="terrain" x="1379.14" y="1440" width="96" height="340"/>
-  <object id="1016" name="ruins-thick" type="terrain" x="1257.62" y="1440" width="96" height="340"/>
-  <object id="1017" name="ruins-thick" type="terrain" x="1139.05" y="1440" width="96" height="340"/>
-  <object id="1019" name="ruins-thick" type="terrain" x="4614.57" y="1440" width="96" height="340"/>
-  <object id="1020" name="ruins-thick" type="terrain" x="4496.05" y="1440" width="96" height="340"/>
-  <object id="1021" name="ruins-thick" type="terrain" x="4373.48" y="1440" width="96" height="340"/>
-  <object id="1022" name="ruins-thick" type="terrain" x="4253.62" y="1440" width="96" height="340"/>
-  <object id="1023" name="ruins-thick" type="terrain" x="4131.43" y="1440" width="96" height="340"/>
-  <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340"/>
-  <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340"/>
-  <object id="1129" name="ruins-thick" type="terrain" x="2739.6" y="-105.091" width="298.145" height="3282.06">
+  <object id="1009" name="ruins-thick" type="terrain" x="2745.93" y="1440.17" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="17"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1010" name="ruins-thick" type="terrain" x="2253.24" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="13"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1013" name="ruins-thick" type="terrain" x="2131.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="12"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1014" name="ruins-thick" type="terrain" x="2008.86" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="11"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1015" name="ruins-thick" type="terrain" x="1891.14" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="10"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1016" name="ruins-thick" type="terrain" x="1769.62" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="9"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1017" name="ruins-thick" type="terrain" x="1651.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="8"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1019" name="ruins-thick" type="terrain" x="5126.57" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1020" name="ruins-thick" type="terrain" x="5008.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1021" name="ruins-thick" type="terrain" x="4885.48" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1022" name="ruins-thick" type="terrain" x="4765.62" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1023" name="ruins-thick" type="terrain" x="4643.43" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1024" name="ruins-thick" type="terrain" x="4521.24" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1025" name="ruins-thick" type="terrain" x="4403.52" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1129" name="ruins-thick" type="terrain" x="3251.6" y="-105.091" width="372.812" height="4026.06">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1135" name="ruins-thick" type="terrain" x="2623.52" y="1440.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="17"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1136" name="ruins-thick" type="terrain" x="2501.33" y="1440.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="15"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1137" name="ruins-thick" type="terrain" x="2379.14" y="1440.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="14"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1141" name="ruins-thick" type="terrain" x="4275.34" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1142" name="ruins-thick" type="terrain" x="4153.15" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1143" name="ruins-thick" type="terrain" x="4035.43" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1144" name="ruins-thick" type="terrain" x="1263.33" y="1438.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="5"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1145" name="ruins-thick" type="terrain" x="1141.14" y="1438.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="4"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1146" name="ruins-thick" type="terrain" x="1023.42" y="1438.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="3"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1147" name="ruins-thick" type="terrain" x="901.903" y="1438.67" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1148" name="ruins-thick" type="terrain" x="634" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1149" name="ruins-thick" type="terrain" x="1515.09" y="1438" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="7"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1150" name="ruins-thick" type="terrain" x="1392.9" y="1438" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="6"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1151" name="ruins-thick" type="terrain" x="5853.82" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1152" name="ruins-thick" type="terrain" x="5735.3" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1153" name="ruins-thick" type="terrain" x="5612.73" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1154" name="ruins-thick" type="terrain" x="5492.87" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1155" name="ruins-thick" type="terrain" x="5370.68" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1156" name="ruins-thick" type="terrain" x="5248.49" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1157" name="ruins-thick" type="terrain" x="6209" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1163" name="ruins-thick" type="terrain" x="766.5" y="1439.5" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="1"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1164" name="ruins-thick" type="terrain" x="5977.33" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1165" name="ruins-thick" type="terrain" x="6091" y="1440" width="96" height="340">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="pre"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
    </properties>
   </object>
  </objectgroup>
@@ -211,22 +595,33 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="1961.18" y="1404" width="776.024" height="1772.97">
+  <object id="976" name="ruins-thick" type="terrain" x="2845.18" y="1404" width="404.024" height="2421.45">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1008" name="ruins-thick" type="terrain" x="-589.82" y="1404" width="1712.63" height="1960">
+  <object id="1008" name="ruins-thick" type="terrain" x="-77.82" y="1404" width="721.478" height="1075.27">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1028" name="ruins-thick" type="terrain" x="4711.18" y="1404" width="1652.45" height="1872">
+  <object id="1028" name="ruins-thick" type="terrain" x="6257.24" y="1404" width="734.389" height="1872">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1125" name="ruins-thick" type="terrain" x="3043.3" y="1404" width="842.509" height="1772.97">
+  <object id="1125" name="ruins-thick" type="terrain" x="3627.3" y="1404" width="412.509" height="2409.33">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1160" name="ruins-thick" type="terrain" x="1.59409" y="2972.55" width="786.63" height="576"/>
+  <object id="1166" name="ruins-thick" type="terrain" x="1024.35" y="-210.605" width="901.478" height="1244.97">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1167" name="ruins-thick" type="terrain" x="4982.9" y="-226.485" width="897.478" height="1244.97">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
@@ -237,39 +632,110 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="960" name="vase" type="object" x="5202.53" y="1241.88" width="113" height="160">
+  <object id="960" name="vase" type="object" x="5714.53" y="1241.88" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object id="1083" name="edge-portal" type="object" x="-0.292333" y="915.332" width="199.918" height="488.002">
+  <object id="1083" name="edge-portal" type="object" x="-0.413545" y="915.332" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="UnderflowRuins/Zone_3_4"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1084" name="edge-portal" type="object" x="5687.04" y="915.999" width="199.918" height="488.002">
+  <object id="1084" name="edge-portal" type="object" x="6707.04" y="911.999" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_3_6"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1102" name="solid" type="collision" x="1123.5" y="1403.5">
-   <polygon points="-0.909091,0.0909091 111.568,36.3864 -0.636364,36.0909"/>
+  <object id="1102" name="solid" type="collision" x="644.5" y="1404.5">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="none"/>
+    <property name="bridge-delta" type="float" value="5000"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+   <polygon points="-0.909091,0.0909091 98.2347,35.7197 -0.636364,36.0909"/>
   </object>
-  <object id="1104" name="solid" type="collision" x="3887.5" y="1404.5">
+  <object id="1104" name="solid" type="collision" x="4037.15" y="1404.47">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="none"/>
+    <property name="bridge-delta" type="float" value="5000"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
    <polygon points="-1.36364,-0.363636 100.091,35.5 -1.45455,36"/>
   </object>
-  <object id="1105" name="solid" type="collision" x="1961.27" y="1404">
+  <object id="1105" name="solid" type="collision" x="2846.1" y="1404.17">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="none"/>
+    <property name="bridge-delta" type="float" value="5000"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
    <polygon points="0,0 0.363636,36 -99.7045,35.875"/>
   </object>
-  <object id="1106" name="solid" type="collision" x="4710.91" y="1404.06">
+  <object id="1106" name="solid" type="collision" x="6256.74" y="1404.56">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="none"/>
+    <property name="bridge-delta" type="float" value="5000"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
    <polygon points="0,0 0.363636,36 -95.4545,36.3636"/>
   </object>
-  <object id="1109" name="solid" type="collision" x="1119.23" y="1436.08" width="873.545" height="100.513"/>
-  <object id="1110" name="solid" type="collision" x="3865.23" y="1437.74" width="873.545" height="100.513"/>
+  <object id="1109" name="solid" type="collision" x="585.775" y="1436.08" width="2255" height="100.513">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="none"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1110" name="solid" type="collision" x="3940.87" y="1437.74" width="2358.91" height="100.513">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-audio-mode" value="none"/>
+    <property name="bridge-delta" type="float" value="-1536"/>
+    <property name="bridge-group" value="bridge-group-B"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-speed" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="1161" name="edge-portal" type="object" x="7.0713" y="2488.36" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_3_4"/>
+    <property name="transition" value="bottom-left-front"/>
+   </properties>
+  </object>
+  <object id="1169" name="edge-portal" type="object" x="792.041" y="3344" width="2060" height="200">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5_a"/>
+    <property name="transition" value="top"/>
+   </properties>
+  </object>
+  <object id="1170" name="edge-portal" type="object" x="4045.88" y="3380" width="2060" height="200">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5_b"/>
+    <property name="transition" value="top"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -281,40 +747,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="982" name="mummy-priest" type="entity" x="1366.17" y="1308.65" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="983" name="mummy-warrior" type="entity" x="1373.61" y="974.013" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="3042.5" y="1276.68" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
-  <object id="974" name="spawn" type="object" x="2813.58" y="1279.18" width="128" height="128">
-   <properties>
-    <property name="map-banner" value=""/>
-    <property name="transition" value="dragon"/>
-   </properties>
-  </object>
-  <object id="1032" name="warp" type="object" x="2033.64" y="1144.97" width="256" height="256">
+  <object id="1032" name="warp" type="object" x="2907.64" y="1146.97" width="256" height="256">
    <properties>
     <property name="from" value="3-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -322,7 +761,7 @@
     <property name="to" value="6-A"/>
    </properties>
   </object>
-  <object id="1033" name="warp" type="object" x="3549.21" y="1147.76" width="256" height="256">
+  <object id="1033" name="warp" type="object" x="3692.71" y="1147.76" width="256" height="256">
    <properties>
     <property name="from" value="3-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -330,14 +769,19 @@
     <property name="to" value="6-B"/>
    </properties>
   </object>
-  <object id="1086" name="spawn" type="object" x="365.212" y="1275.88" width="128" height="128">
+  <object id="1086" name="spawn" type="object" x="498.091" y="1275.88" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1087" name="spawn" type="object" x="5377.33" y="1277.33" width="128" height="128">
+  <object id="1087" name="spawn" type="object" x="6397.33" y="1273.33" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1162" name="spawn" type="object" x="452.727" y="2847.27" width="128" height="128">
+   <properties>
+    <property name="transition" value="bottom-right-front"/>
    </properties>
   </object>
  </objectgroup>
@@ -364,7 +808,7 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1039" name="ruins-thick" type="terrain" x="1961.68" y="1564" width="1920.63" height="321.455">
+  <object id="1039" name="ruins-thick" type="terrain" x="2473.68" y="1564" width="1920.63" height="321.455">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
@@ -375,21 +819,37 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1097" name="solid" type="collision" x="468.561" y="-186.59" width="126.878" height="1821.18"/>
-  <object id="1098" name="solid" type="collision" x="5256.56" y="-190.59" width="126.878" height="1821.18"/>
+  <object id="1097" name="solid" type="collision" x="2348.56" y="-162.59" width="126.878" height="1821.18"/>
+  <object id="1098" name="solid" type="collision" x="4398.56" y="-174.59" width="126.878" height="1821.18"/>
+  <object id="1168" name="portal" type="object" x="3333.66" y="1215.47" width="256.687" height="349.061">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_3_2"/>
+    <property name="transition" value="center"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="player_layer +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1138" name="squally" type="entity" x="3266.67" y="1436" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="1139" name="spawn" type="object" x="3393.33" y="1437.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="center"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="81" name="bridge +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1055" name="ruins-thick" type="terrain" x="2742.48" y="1615.7" width="288" height="276">
+  <object id="1055" name="ruins-thick" type="terrain" x="3313.15" y="1615.7" width="288" height="276">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -400,7 +860,7 @@
    <property name="depth" type="float" value="320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1056" name="ruins-thick" type="terrain" x="2743.48" y="1656.03" width="288" height="279.273">
+  <object id="1056" name="ruins-thick" type="terrain" x="3314.15" y="1656.03" width="288" height="279.273">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -411,7 +871,7 @@
    <property name="depth" type="float" value="384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1057" name="ruins-thick" type="terrain" x="2744.48" y="1698.03" width="288" height="278.03">
+  <object id="1057" name="ruins-thick" type="terrain" x="3315.15" y="1698.03" width="288" height="278.03">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -422,13 +882,13 @@
    <property name="depth" type="float" value="416"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1062" name="ruins-thick" type="terrain" x="2599.34" y="1670" width="98" height="1708.24">
+  <object id="1062" name="ruins-thick" type="terrain" x="3170.01" y="1670" width="98" height="2190.06">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1063" name="ruins-thick" type="terrain" x="3081.17" y="1676" width="98" height="1704.85">
+  <object id="1063" name="ruins-thick" type="terrain" x="3651.84" y="1676" width="98" height="2189.7">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
@@ -440,14 +900,14 @@
    <property name="depth" type="float" value="416"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1066" name="logic-torch" type="object" x="2597.5" y="1559.83" width="101" height="111">
+  <object id="1066" name="logic-torch" type="object" x="3168.17" y="1559.83" width="101" height="111">
    <properties>
     <property name="color" value="red"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1067" name="logic-torch" type="object" x="3079.5" y="1563.83" width="101" height="111">
+  <object id="1067" name="logic-torch" type="object" x="3650.17" y="1563.83" width="101" height="111">
    <properties>
     <property name="color" value="red"/>
     <property name="interactable" type="bool" value="false"/>

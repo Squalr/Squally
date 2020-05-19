@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1169">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1172">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -128,7 +128,7 @@
   <object id="1024" name="ruins-thick" type="terrain" x="2217.24" y="1440" width="96" height="340"/>
   <object id="1025" name="ruins-thick" type="terrain" x="2099.52" y="1440" width="96" height="340"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -159,11 +159,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="960" name="vase" type="object" x="3410.53" y="1241.88" width="113" height="160">
-   <properties>
-    <property name="color" value="blue"/>
-   </properties>
-  </object>
   <object id="1084" name="edge-portal" type="object" x="3895.04" y="915.999" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
@@ -182,7 +177,7 @@
   <object id="1167" name="edge-portal" type="object" x="3888.04" y="2216" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_3_7"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5"/>
     <property name="transition" value="bottom-right"/>
    </properties>
   </object>
@@ -269,7 +264,7 @@
     <property name="to" value="6-E"/>
    </properties>
   </object>
-  <object id="1168" name="spawn" type="object" x="3600" y="2584" width="128" height="128">
+  <object id="1168" name="spawn" type="object" x="3461.33" y="2580" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-left"/>
    </properties>
@@ -318,7 +313,6 @@
   </object>
   <object id="1162" name="ruins-thick" type="terrain" x="2240.71" y="2777.14" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -342,7 +336,6 @@
   </object>
   <object id="1161" name="ruins-thick" type="terrain" x="2240.05" y="2813.3" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -371,11 +364,17 @@
    </properties>
   </object>
   <object id="1140" name="solid" type="collision" x="648.561" y="1654.74" width="126.878" height="1293.18"/>
-  <object id="1145" name="solid" type="collision" x="2932.56" y="-30.59" width="126.878" height="2909.18"/>
   <object id="1147" name="portal" type="object" x="963.414" y="2489.71" width="256.687" height="349.061">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_3_3"/>
     <property name="transition" value="bottom-center"/>
+   </properties>
+  </object>
+  <object id="1171" name="edge-portal" type="object" x="3892.16" y="2356.73" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5"/>
+    <property name="transition" value="bottom-right-front"/>
    </properties>
   </object>
  </objectgroup>
@@ -405,7 +404,7 @@
     <property name="to" value="3-B"/>
    </properties>
   </object>
-  <object id="1133" name="ruins-thick" type="terrain" x="776.685" y="2840" width="2146.63" height="576"/>
+  <object id="1133" name="ruins-thick" type="terrain" x="776.685" y="2840" width="3326.63" height="576"/>
   <object id="1146" name="spawn" type="object" x="1026" y="2712" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-center"/>
@@ -417,6 +416,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="3-E"/>
+   </properties>
+  </object>
+  <object id="1170" name="spawn" type="object" x="3463.15" y="2708.61" width="128" height="128">
+   <properties>
+    <property name="transition" value="bottom-left-front"/>
    </properties>
   </object>
  </objectgroup>

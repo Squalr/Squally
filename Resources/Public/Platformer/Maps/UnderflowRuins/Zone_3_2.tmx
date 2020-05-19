@@ -45,7 +45,7 @@
   <object id="1101" name="temple-door" type="object" x="2659" y="758" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="UnderflowRuins/Zone_3_4"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5"/>
     <property name="transition" value="center"/>
    </properties>
   </object>
@@ -232,7 +232,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg">
+ <objectgroup id="58" name="terrain bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -277,7 +277,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
