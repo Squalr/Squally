@@ -553,7 +553,7 @@
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
+    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
    </properties>
   </object>
   <object id="1067" name="logic-torch" type="object" x="3079.5" y="1563.83" width="101" height="111">

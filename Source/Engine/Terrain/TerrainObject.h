@@ -186,6 +186,7 @@ private:
 	bool isFlipped;
 	unsigned int terrainObjectId;
 
+	cocos2d::Rect drawRect;
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> intersectionPoints;

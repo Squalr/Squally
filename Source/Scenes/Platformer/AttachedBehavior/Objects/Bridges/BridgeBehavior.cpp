@@ -90,6 +90,7 @@ void BridgeBehavior::onLoad()
 
 	this->object->listenForMapEventOnce(this->group, [=](ValueMap args)
 	{
+		float delayPrev = this->bridgeSpeed * float(this->bridgeIndex) - this->bridgeSpeed / 2.0f;
 		float delay = this->bridgeSpeed * float(this->bridgeIndex + 1) - this->bridgeSpeed / 2.0f;
 
 		this->object->saveObjectState(BridgeBehavior::SaveKeyRaised, Value(true));
@@ -99,7 +100,16 @@ void BridgeBehavior::onLoad()
 		{
 			case AudioMode::Pre:
 			{
-				this->raiseSound->play();
+				this->object->runAction(Sequence::create(
+					DelayTime::create(delayPrev <= 0.0f ? 0.0f : delayPrev),
+					CallFunc::create([=]()
+					{
+						this->raiseSound->play();
+					}),
+					nullptr
+				));
+
+				break;
 			}
 			case AudioMode::Post:
 			{
@@ -111,6 +121,8 @@ void BridgeBehavior::onLoad()
 					}),
 					nullptr
 				));
+				
+				break;
 			}
 			default:
 			case AudioMode::None:

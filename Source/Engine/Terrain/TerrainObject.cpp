@@ -71,6 +71,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topCornersNode = Node::create();
 	this->debugLabelsNode = Node::create();
 	this->debugDrawNode = DrawNode::create();
+	this->drawRect = Rect::ZERO;
 	this->boundsRect = Rect::ZERO;
 
 	this->debugLabelsNode->setVisible(false);
@@ -248,9 +249,7 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	this->collisionSegments = this->segments;
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 	this->infillTriangles = this->textureTriangles;
-
-	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
-
+	this->drawRect = AlgoUtils::getPolygonRect(this->points);
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 }
 
@@ -996,6 +995,7 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 	static const Size Padding = Size(1024.0f, 1024.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
+	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
 	if (cameraRect.intersectsRect(this->boundsRect))
 	{
