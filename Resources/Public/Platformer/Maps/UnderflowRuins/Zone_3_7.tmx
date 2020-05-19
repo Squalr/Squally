@@ -155,7 +155,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="73" name="terrain -3" visible="0">
+ <objectgroup id="73" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -185,7 +185,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="98" name="objects -3" visible="0">
+ <objectgroup id="98" name="objects -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="is-hackable" type="bool" value="true"/>
@@ -370,7 +370,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>

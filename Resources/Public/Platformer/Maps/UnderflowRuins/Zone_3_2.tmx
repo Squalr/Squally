@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1123">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1127">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -34,7 +34,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1036" name="ruins-thick" type="terrain" x="2194.12" y="1287.58" width="1355.63" height="672.97"/>
-  <object id="1114" name="ruins-thick" type="terrain" x="1153.29" y="2696.61" width="3570.63" height="576"/>
+  <object id="1114" name="ruins-thick" type="terrain" x="2526.02" y="2696.61" width="2082.75" height="576"/>
+  <object id="1124" name="solid" type="collision" x="2409.29" y="1371.23" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="94" name="objects -6">
   <properties>
@@ -49,13 +50,14 @@
     <property name="transition" value="center"/>
    </properties>
   </object>
-  <object id="1113" name="temple-door" type="object" x="2677.88" y="2156.25" width="432" height="528">
+  <object id="1113" name="temple-door" type="object" x="2678.88" y="2168.25" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="UnderflowRuins/Zone_3_5"/>
     <property name="transition" value="bottom-center"/>
    </properties>
   </object>
+  <object id="1123" name="solid" type="collision" x="4616.56" y="1481.41" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="95" name="player_layer -6">
   <properties>
@@ -84,7 +86,7 @@
     <property name="to" value="6-C"/>
    </properties>
   </object>
-  <object id="1122" name="spawn" type="object" x="2836" y="2554.18" width="128" height="128">
+  <object id="1122" name="spawn" type="object" x="2837" y="2566.18" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-center"/>
    </properties>
@@ -257,7 +259,7 @@
   <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340"/>
   <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340"/>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -469,6 +471,12 @@
   </properties>
   <object id="1097" name="solid" type="collision" x="468.561" y="-186.59" width="126.878" height="1821.18"/>
   <object id="1098" name="solid" type="collision" x="5256.56" y="-190.59" width="126.878" height="1821.18"/>
+  <object id="1125" name="portal" type="object" x="2754.32" y="1217.47" width="256.687" height="349.061">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_3_8"/>
+    <property name="transition" value="boss"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="player_layer +3">
   <properties>
@@ -489,6 +497,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="3-D"/>
+   </properties>
+  </object>
+  <object id="1126" name="spawn" type="object" x="2815" y="1438" width="128" height="128">
+   <properties>
+    <property name="transition" value="boss"/>
    </properties>
   </object>
  </objectgroup>

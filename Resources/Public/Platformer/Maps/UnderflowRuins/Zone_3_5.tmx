@@ -586,7 +586,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="2845.18" y="1404" width="422.691" height="1538.79">
+  <object id="976" name="ruins-thick" type="terrain" x="2845.18" y="1404" width="422.691" height="1786.79">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
