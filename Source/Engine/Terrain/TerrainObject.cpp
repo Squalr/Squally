@@ -993,7 +993,7 @@ ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
 	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(128.0f, 128.0f);
+	static const Size Padding = Size(1024.0f, 1024.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
 
