@@ -111,4 +111,7 @@ const std::string MapResources::UnderflowRuins_Zone_3_2 = "Public/Platformer/Map
 const std::string MapResources::UnderflowRuins_Zone_3_3 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_3.tmx";
 const std::string MapResources::UnderflowRuins_Zone_3_4 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_4.tmx";
 const std::string MapResources::UnderflowRuins_Zone_3_5 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_5.tmx";
+const std::string MapResources::UnderflowRuins_Zone_3_6 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_6.tmx";
+const std::string MapResources::UnderflowRuins_Zone_3_7 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_7.tmx";
+const std::string MapResources::UnderflowRuins_Zone_3_8 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_8.tmx";
 const std::string MapResources::VoidStar_VoidStar = "Public/Platformer/Maps/VoidStar/VoidStar.tmx";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="829">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="121" nextobjectid="842">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -15,7 +15,78 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="3471.03" height="1264"/>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-134" y="-58" width="4074.3" height="1264"/>
+ </objectgroup>
+ <objectgroup id="114" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="830" name="water" type="object" x="1781.11" y="1015.39" width="1066.02" height="365.35">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="116" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="832" name="ruins-gray-thick" type="terrain" x="1611.34" y="976.97" width="169.33" height="416.06"/>
+  <object id="833" name="ruins-gray-thick" type="terrain" x="2847.34" y="979.97" width="169.33" height="416.06"/>
+ </objectgroup>
+ <objectgroup id="113" name="decor -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="829" name="Ruins/LionDoor" type="decor" x="1918.62" y="506.728" width="788" height="597"/>
+ </objectgroup>
+ <objectgroup id="120" name="water -0.75">
+  <properties>
+   <property name="depth" type="float" value="-48"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="841" name="water" type="object" x="1781.11" y="1027.39" width="1066.02" height="365.35">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="119" name="decor -0.75">
+  <properties>
+   <property name="depth" type="float" value="-48"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="840" name="Ruins/LionDoorFront" type="decor" x="2148.66" y="512.167" width="435" height="639"/>
+ </objectgroup>
+ <objectgroup id="115" name="water -0.5 fg">
+  <properties>
+   <property name="depth" type="float" value="-32"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="831" name="water" type="object" x="1836.81" y="1040.72" width="950.205" height="365.35">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="117" name="terrain -0.5 fg">
+  <properties>
+   <property name="depth" type="float" value="-32"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="834" name="ruins-gray-thick" type="terrain" x="1667.34" y="1005.97" width="169.33" height="416.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="835" name="ruins-gray-thick" type="terrain" x="2789.34" y="1007.97" width="169.33" height="416.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="102" name="decor -0.5">
   <properties>
@@ -28,13 +99,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="3481.33" height="234.06"/>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="-132.362" y="1065.94" width="4072.54" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="Ruins/Well" type="decor" x="1981.95" y="870.061" width="312" height="224"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -48,7 +118,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="821" name="portal" type="object" x="2012.02" y="808.901" width="256" height="256">
+  <object id="821" name="portal" type="object" x="2134.69" y="642.901" width="424" height="424">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_2_0"/>
     <property name="transition" value="well"/>
@@ -60,7 +130,7 @@
     <property name="transition" value="rope"/>
    </properties>
   </object>
-  <object id="827" name="edge-portal" type="object" x="3129.86" y="426.241" width="199.918" height="640.851">
+  <object id="827" name="edge-portal" type="object" x="3635.98" y="426.241" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_3_0"/>
@@ -110,7 +180,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="816" name="spawn" type="object" x="2073.82" y="937.091" width="128" height="128">
+  <object id="816" name="spawn" type="object" x="2261.82" y="933.758" width="128" height="128">
    <properties>
     <property name="transition" value="well"/>
    </properties>

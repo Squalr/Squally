@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1125">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1135">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -22,8 +22,6 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="489.076" y="655.318" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="2208.11" y="685.015" width="313" height="381"/>
   <object id="967" name="torch" type="object" x="1900.94" y="867.935" width="42" height="130"/>
   <object id="968" name="torch" type="object" x="970.506" y="867.388" width="42" height="130"/>
  </objectgroup>
@@ -47,6 +45,8 @@
     <property name="transition" value="boss"/>
    </properties>
   </object>
+  <object id="1129" name="solid" type="collision" x="2145.65" y="-492.408" width="126.878" height="1821.18"/>
+  <object id="1130" name="solid" type="collision" x="654.743" y="-498.469" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="95" name="player_layer -6">
   <properties>
@@ -73,6 +73,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="6-C"/>
+   </properties>
+  </object>
+  <object id="1126" name="squally" type="entity" x="1646" y="1160" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -113,7 +118,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1029" name="ruins-thick" type="terrain" x="424.084" y="1336" width="2137.24" height="566.909"/>
+  <object id="1029" name="ruins-thick" type="terrain" x="375.599" y="1336" width="2243.3" height="566.909"/>
  </objectgroup>
  <objectgroup id="98" name="objects -3">
   <properties>
@@ -121,6 +126,8 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1127" name="solid" type="collision" x="2618.38" y="-362.105" width="126.878" height="1821.18"/>
+  <object id="1128" name="solid" type="collision" x="251.713" y="-295.438" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>
@@ -177,6 +184,13 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="99" name="terrain -1.5">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1134" name="ruins-thick" type="terrain" x="1273.68" y="1285.27" width="396.63" height="321.455"/>
+ </objectgroup>
  <objectgroup id="90" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
@@ -202,17 +216,16 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="295.604" y="1404" width="2400.39" height="708.97">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="976" name="ruins-thick" type="terrain" x="295.604" y="1404" width="2400.39" height="708.97"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1125" name="sarcophagus" type="object" x="1160" y="1154.67" width="624" height="250"/>
+  <object id="1131" name="solid" type="collision" x="168.561" y="-278.59" width="126.878" height="1821.18"/>
+  <object id="1132" name="solid" type="collision" x="2704.56" y="-266.59" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -230,11 +243,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1634.5" y="1276.68" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
   <object id="974" name="spawn" type="object" x="1405.58" y="1279.18" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
@@ -281,7 +289,6 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1039" name="ruins-thick" type="terrain" x="1276.35" y="1497.33" width="396.63" height="321.455"/>
  </objectgroup>
  <objectgroup id="96" name="objects +3">
   <properties>

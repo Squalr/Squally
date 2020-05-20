@@ -112,5 +112,8 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_3_3;
 	extern const std::string UnderflowRuins_Zone_3_4;
 	extern const std::string UnderflowRuins_Zone_3_5;
+	extern const std::string UnderflowRuins_Zone_3_6;
+	extern const std::string UnderflowRuins_Zone_3_7;
+	extern const std::string UnderflowRuins_Zone_3_8;
 	extern const std::string VoidStar_VoidStar;
 };

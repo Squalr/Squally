@@ -161,6 +161,8 @@ namespace ObjectResources
 	extern const std::string Doors_Cave_MISC;
 	extern const std::string Doors_Crypt_CryptClosed;
 	extern const std::string Doors_Crypt_CryptOpened;
+	extern const std::string Doors_Demon_DemonGateBack;
+	extern const std::string Doors_Demon_DemonGateFront;
 	extern const std::string Doors_Dragon_DragonDoorBars;
 	extern const std::string Doors_Dragon_DragonDoorBase;
 	extern const std::string Doors_Dragon_DragonDoorTeeth;
@@ -257,6 +259,8 @@ namespace ObjectResources
 	extern const std::string Interactive_Chests_ChestOpen;
 	extern const std::string Interactive_Chests_CipherChestClosed;
 	extern const std::string Interactive_Chests_CipherChestOpened;
+	extern const std::string Interactive_Chests_EgyptianChestClosed;
+	extern const std::string Interactive_Chests_EgyptianChestOpen;
 	extern const std::string Interactive_Chests_GlassDisplay;
 	extern const std::string Interactive_Chests_GlassDisplayFront;
 	extern const std::string Interactive_Chests_MetalChestClosed;
@@ -269,6 +273,8 @@ namespace ObjectResources
 	extern const std::string Interactive_Help_QuestionMark;
 	extern const std::string Interactive_Help_TotemGlow;
 	extern const std::string Interactive_LifeStone;
+	extern const std::string Interactive_Sarcophagus_SarcophagusBase;
+	extern const std::string Interactive_Sarcophagus_SarcophagusLid;
 	extern const std::string Interactive_TentBack;
 	extern const std::string Interactive_TentFront;
 	extern const std::string Physics_Asteroid_Asteroid;
