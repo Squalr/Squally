@@ -92,30 +92,30 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="102" name="terrain -4 bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="941" name="ruins-gray" type="terrain" x="3879.58" y="571.515" width="1283.81" height="1328">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="decor -4 bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="943" name="Ruins/ArchDoorGray1" type="decor" x="4220.5" y="1446" width="235" height="452"/>
+ </objectgroup>
  <objectgroup id="82" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="901" name="caverns" type="terrain" x="1377.09" y="1896" width="5045.81" height="1328"/>
- </objectgroup>
- <objectgroup id="102" name="terrain -4 bg">
-  <properties>
-   <property name="depth" type="float" value="-256"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="941" name="ruins-dark" type="terrain" x="3879.58" y="571.515" width="1283.81" height="1328">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="83" name="decor -4">
-  <properties>
-   <property name="depth" type="float" value="-256"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="943" name="Ruins/ArchDoorGray1" type="decor" x="4220.5" y="1446" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="85" name="objects -4">
   <properties>

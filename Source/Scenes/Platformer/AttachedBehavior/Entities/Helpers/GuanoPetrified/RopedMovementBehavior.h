@@ -2,6 +2,11 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+namespace cocos2d
+{
+	class Sprite;
+};
+
 class PlatformerEntity;
 class Scrappy;
 
@@ -25,4 +30,5 @@ private:
 
 	PlatformerEntity* entity;
 	Scrappy* scrappy;
+	cocos2d::Sprite* waistRope;
 };

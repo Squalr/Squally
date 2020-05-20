@@ -425,6 +425,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="959" name="caverns" type="terrain" x="-2528" y="1544">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
    <polygon points="2134.51,-211.024 2353.88,-210.357 2370.79,374.005 2801.27,376.086 2795.21,-220.847 2978.12,-220.262 2993.12,380.614 5070.01,376.359 5063.99,-280.116 5279.3,-280.763 5300,369.584 5825.24,374.812 5834.24,-200.609 6061.39,-198.527 6064.02,374.946 7656.88,395.828 7664.36,848.076 2134.37,829.768"/>
   </object>
  </objectgroup>
@@ -466,7 +469,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="94" name="water">
+ <objectgroup id="94" name="water" visible="0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -477,7 +480,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="93" name="water +1">
+ <objectgroup id="93" name="water +1" visible="0">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -488,7 +491,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="92" name="water +2">
+ <objectgroup id="92" name="water +2" visible="0">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -499,7 +502,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="91" name="water +3">
+ <objectgroup id="91" name="water +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -510,7 +513,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="90" name="water +4">
+ <objectgroup id="90" name="water +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>

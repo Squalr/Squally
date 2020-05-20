@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="732">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="735">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -14,7 +14,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="718" name="arabic-star" type="texture" x="-142.12" y="-135.212" width="3319.63" height="1521.94"/>
+  <object id="718" name="ruins-gray" type="texture" x="-142.12" y="-135.212" width="2251.63" height="1521.94"/>
  </objectgroup>
  <objectgroup id="18" name="decor background">
   <properties>
@@ -31,35 +31,28 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="arabic-dark" type="terrain" x="-160.302" y="1066.85" width="3458.3" height="234.06"/>
-  <object id="716" name="arabic-dark" type="terrain" x="-135.089" y="101.818" width="3414.78" height="306.03"/>
+  <object id="715" name="ruins-gray-thick" type="terrain" x="-160.302" y="1066.85" width="2350.3" height="234.06"/>
+  <object id="716" name="ruins-gray-thick" type="terrain" x="-135.089" y="101.818" width="2334.78" height="306.03"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="719" name="Ruins/ArchDoor1" type="decor" x="364.5" y="604" width="235" height="452"/>
-  <object id="721" name="Ruins/ArchDoor1" type="decor" x="1600.68" y="613.394" width="235" height="452"/>
-  <object id="731" name="Ruins/ArchDoor1" type="decor" x="2724.5" y="616" width="235" height="452"/>
+  <object id="719" name="Ruins/ArchDoorGray1" type="decor" x="250.5" y="605.333" width="235" height="452"/>
+  <object id="731" name="Ruins/ArchDoorGray1" type="decor" x="1528.5" y="604.667" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="362.718" y="778.78" width="237.527" height="287.568">
+  <object id="694" name="portal" type="object" x="248.718" y="780.113" width="237.527" height="287.568">
    <properties>
-    <property name="map" value="UnderflowRuins/Fishing_Village"/>
-    <property name="transition" value="griffin"/>
+    <property name="map" value="UnderflowRuins/Shoreline"/>
+    <property name="transition" value="home"/>
    </properties>
   </object>
-  <object id="722" name="portal" type="object" x="1599.48" y="779.428" width="237.527" height="287.568">
-   <properties>
-    <property name="map" value="UnderflowRuins/Fishing_Village"/>
-    <property name="transition" value="geryon"/>
-   </properties>
-  </object>
-  <object id="726" name="portal" type="object" x="2723.24" y="780.216" width="237.527" height="287.568">
+  <object id="726" name="portal" type="object" x="1527.24" y="778.883" width="237.527" height="287.568">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_1_0"/>
     <property name="transition" value="main"/>
@@ -84,24 +77,40 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1954.32" y="938.223" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="518.32" y="939.556" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="717" name="spawn-wood-door" type="object" x="422.158" y="937.91" width="128" height="128">
+  <object id="717" name="spawn-wood-door" type="object" x="307.491" y="947.243" width="128" height="128">
    <properties>
-    <property name="transition" value="griffin"/>
+    <property name="transition" value="home"/>
    </properties>
   </object>
-  <object id="727" name="spawn-wood-door" type="object" x="2780" y="940" width="128" height="128">
+  <object id="727" name="spawn-wood-door" type="object" x="1584" y="948" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="728" name="spawn-wood-door" type="object" x="1661.21" y="938.545" width="128" height="128">
+ </objectgroup>
+ <objectgroup id="76" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="732" name="Ruins/Pillar2" type="decor" x="-119.045" y="-100.879" width="369" height="1370">
    <properties>
-    <property name="transition" value="geryon"/>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="733" name="Ruins/Pillar2" type="decor" x="921.561" y="-98.0909" width="369" height="1370">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="734" name="Ruins/Pillar2" type="decor" x="1751.5" y="-69" width="369" height="1370">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -110,8 +119,5 @@
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="724" name="arabic" type="terrain" x="1286.61" y="-255.803" width="154.78" height="1667.85"/>
-  <object id="729" name="arabic" type="terrain" x="2478.61" y="-249.925" width="154.78" height="1667.85"/>
-  <object id="730" name="arabic" type="terrain" x="166.61" y="-201.925" width="154.78" height="1667.85"/>
  </objectgroup>
 </map>

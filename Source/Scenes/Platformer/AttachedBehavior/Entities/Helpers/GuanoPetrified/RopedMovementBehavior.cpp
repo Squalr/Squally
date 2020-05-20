@@ -1,5 +1,6 @@
 #include "RopedMovementBehavior.h"
 
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
@@ -10,7 +11,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperFollowMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyRopeCarryBehavior.h"
 
-#include "Resources/EntityResources.h"
+#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -29,11 +30,16 @@ RopedMovementBehavior::RopedMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->scrappy = nullptr;
+	this->waistRope = Sprite::create(ObjectResources::Cinematic_ScrappyRope_GuanoRope);
+
+	this->waistRope->setVisible(false);
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
+
+	this->addChild(this->waistRope);
 }
 
 RopedMovementBehavior::~RopedMovementBehavior()
@@ -56,6 +62,9 @@ void RopedMovementBehavior::onLoad()
 	{
 		followBehavior->disableFollow();
 	});
+
+	this->waistRope->setVisible(true);
+	this->waistRope->setPosition(Vec2(0.0f, 32.0f));
 
 	this->scheduleUpdate();
 }

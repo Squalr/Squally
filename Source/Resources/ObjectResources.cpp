@@ -20,6 +20,7 @@ const std::string ObjectResources::Breakables_VaseTan = "Private/Platformer/Obje
 const std::string ObjectResources::Breakables_VaseTanBroken = "Private/Platformer/Objects/Breakables/VaseTanBroken.png";
 const std::string ObjectResources::Breakables_VaseYellow = "Private/Platformer/Objects/Breakables/VaseYellow.png";
 const std::string ObjectResources::Breakables_VaseYellowBroken = "Private/Platformer/Objects/Breakables/VaseYellowBroken.png";
+const std::string ObjectResources::Cinematic_ScrappyRope_GuanoRope = "Private/Platformer/Objects/Cinematic/ScrappyRope/GuanoRope.png";
 const std::string ObjectResources::Cinematic_ScrappyRope_Rope = "Private/Platformer/Objects/Cinematic/ScrappyRope/Rope.png";
 const std::string ObjectResources::Cinematic_ScrappyRope_WaistRope = "Private/Platformer/Objects/Cinematic/ScrappyRope/WaistRope.png";
 const std::string ObjectResources::Cinematic_SpaceShipSqually = "Private/Platformer/Objects/Cinematic/SpaceShipSqually.png";

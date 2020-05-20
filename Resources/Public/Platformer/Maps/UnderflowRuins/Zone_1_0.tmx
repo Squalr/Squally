@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="134" nextobjectid="1042">
- <objectgroup id="1" name="meta" visible="0">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="136" nextobjectid="1046">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
    <property name="gravity" value="-768"/>
@@ -10,7 +10,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="80" name="desert bg 4" visible="0">
+ <objectgroup id="80" name="desert bg 4">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -22,7 +22,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="78" name="desert bg 3" visible="0">
+ <objectgroup id="78" name="desert bg 3">
   <properties>
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
@@ -34,7 +34,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="77" name="desert bg 2" visible="0">
+ <objectgroup id="77" name="desert bg 2">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="15" name="desert bg 1" visible="0">
+ <objectgroup id="15" name="desert bg 1">
   <properties>
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
@@ -273,7 +273,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="117" name="water -6 bg" visible="0">
+ <objectgroup id="117" name="water -6 bg">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -284,7 +284,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="108" name="terrain -6">
+ <objectgroup id="108" name="terrain -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -342,7 +342,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="101" name="water -6" visible="0">
+ <objectgroup id="101" name="water -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -364,7 +364,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="100" name="water -5" visible="0">
+ <objectgroup id="100" name="water -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -386,7 +386,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="98" name="water -4" visible="0">
+ <objectgroup id="98" name="water -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -408,6 +408,24 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="134" name="terrain -3 bg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1043" name="ruins-gray" type="terrain" x="-541.905" y="650.455" width="1283.81" height="1328">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="135" name="decor -3 bg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1044" name="Ruins/ArchDoorGray1" type="decor" x="371.833" y="1478" width="235" height="452"/>
+ </objectgroup>
  <objectgroup id="82" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -415,12 +433,11 @@
   </properties>
   <object id="936" name="caverns" type="terrain" x="-254.91" y="1930" width="5407.63" height="2024"/>
  </objectgroup>
- <objectgroup id="83" name="decor -3" visible="0">
+ <objectgroup id="83" name="decor -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="940" name="Ruins/Building2" type="decor" x="-1636.89" y="-510.03" width="2619" height="2440"/>
  </objectgroup>
  <objectgroup id="85" name="objects -3">
   <properties>
@@ -428,12 +445,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="941" name="portal" type="object" x="358.081" y="1417.96" width="256.687" height="512">
-   <properties>
-    <property name="map" value="UnderflowRuins/Home_Griffin_Geryon"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="1023" name="edge-portal" type="object" x="4664.04" y="1448" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
@@ -444,6 +455,12 @@
   <object id="1027" name="spawn" type="object" x="4376" y="1802.67" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1045" name="portal" type="object" x="373.236" y="1554.96" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Home_Aphrodite"/>
+    <property name="transition" value="main"/>
    </properties>
   </object>
  </objectgroup>
@@ -495,7 +512,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="97" name="water -3" visible="0">
+ <objectgroup id="97" name="water -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -506,13 +523,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="87" name="bridge -3" visible="0">
+ <objectgroup id="87" name="bridge -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="96" name="water -2" visible="0">
+ <objectgroup id="96" name="water -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -523,13 +540,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="88" name="bridge -2" visible="0">
+ <objectgroup id="88" name="bridge -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="95" name="water -1" visible="0">
+ <objectgroup id="95" name="water -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -546,7 +563,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="99" name="water bg" visible="0">
+ <objectgroup id="99" name="water bg">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -566,16 +583,16 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="caverns" type="terrain" x="-2186.58" y="3520">
-   <polygon points="2132.47,-34.622 5513.12,-70.643 5510.67,-692.072 6637.15,-683.375 6652.9,832.94 2134.37,829.768"/>
-  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="959" name="caverns" type="terrain" x="-288" y="2056">
-   <polygon points="2142.56,105.527 2158.75,-204.963 2353.88,-210.357 2370.79,374.005 2801.27,376.086 2795.21,-220.847 2978.12,-220.262 2993.12,380.614 5070.01,376.359 5063.99,-280.116 5279.3,-280.763 5300,369.584 5825.24,374.812 6637.15,-683.375 6652.9,832.94 2134.37,829.768"/>
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+   <polygon points="2142.56,105.527 2158.75,-204.963 2353.88,-210.357 2370.79,374.005 2801.27,376.086 2795.21,-220.847 2978.12,-220.262 2993.12,380.614 3459.98,379.658 3461.99,-286.646 3627.35,-288.398 3643.97,387.231 5070.01,376.359 5067.99,-1196.12 5283.3,-1196.76 5300,369.584 5825.24,374.812 6637.15,-683.375 6668.9,1368.94 314.37,1393.77 300.607,659.962 2143.17,654.534"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -583,7 +600,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -591,22 +608,18 @@
   <object id="948" name="edge-portal" type="object" x="-3.959" y="1633.03" width="199.918" height="1181.94">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Fishing_Village"/>
+    <property name="map" value="UnderflowRuins/Shorline"/>
     <property name="transition" value="water"/>
    </properties>
   </object>
-  <object id="951" name="chest" type="object" x="2947.15" y="3327.94" width="128" height="128">
+  <object id="951" name="chest" type="object" x="3194.15" y="1640.94" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="255,252,253,0"/>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="reward-pool" value="ur-generic"/>
-    <property name="rule" value="{i}+5"/>
-    <property name="tokens" value="+,1,4,+"/>
-    <property name="tutorial" value="overflow"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -623,7 +636,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="94" name="water" visible="0">
+ <objectgroup id="94" name="water">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -634,7 +647,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="93" name="water +1" visible="0">
+ <objectgroup id="93" name="water +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -645,7 +658,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="92" name="water +2" visible="0">
+ <objectgroup id="92" name="water +2">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -656,7 +669,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="91" name="water +3" visible="0">
+ <objectgroup id="91" name="water +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -667,7 +680,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="90" name="water +4" visible="0">
+ <objectgroup id="90" name="water +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -677,17 +690,5 @@
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="32" name="decor 256" visible="0">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512" visible="0">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
 </map>

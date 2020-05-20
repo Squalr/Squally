@@ -81,8 +81,8 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_0 (UR)", MapResources::UnderflowRuins_Zone_1_0));
-	this->chapterList.push_back(this->buildDebugButton("Griffin/Geyron (UR)", MapResources::UnderflowRuins_Home_Griffin_Geryon));
-	this->chapterList.push_back(this->buildDebugButton("Village (UR)", MapResources::UnderflowRuins_Fishing_Village));
+	this->chapterList.push_back(this->buildDebugButton("Aphrodite (UR)", MapResources::UnderflowRuins_Home_Aphrodite));
+	this->chapterList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 	this->chapterList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 	this->chapterList.push_back(this->buildDebugButton("==========", ""));
 	this->chapterList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));

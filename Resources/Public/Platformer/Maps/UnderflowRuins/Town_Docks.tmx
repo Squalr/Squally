@@ -259,7 +259,7 @@
   <object id="708" name="edge-portal" type="object" x="4406.04" y="1182.08" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Fishing_Village"/>
+    <property name="map" value="UnderflowRuins/Shoreline"/>
     <property name="transition" value="docks"/>
    </properties>
   </object>
