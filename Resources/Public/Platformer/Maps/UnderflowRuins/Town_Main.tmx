@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1042">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1044">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -10,55 +10,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="80" name="desert bg 4" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-505.181" width="14981.3" height="318">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="78" name="desert bg 3" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-2432"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-1258.85" width="14229.3" height="1478">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="77" name="desert bg 2" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="-240.788" width="14469.3" height="1512">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="15" name="desert bg 1" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-2176"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="231.091" width="14709.3" height="1076">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="110" name="texture -7" visible="0">
+ <objectgroup id="110" name="texture -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -265,7 +217,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="107" name="texture -4" visible="0">
+ <objectgroup id="107" name="texture -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -286,16 +238,8 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452"/>
+  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="112" name="terrain -4">
   <properties>
@@ -571,7 +515,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="105" name="terrain fg" visible="0">
+ <objectgroup id="105" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -594,24 +538,6 @@
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Town_Well"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="1009" name="option-warp" type="object" x="1595" y="993.833" width="256" height="256">
-   <properties>
-    <property name="from" value="1-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="string" value="front"/>
-    <property name="to" value="4-A,7-A"/>
-   </properties>
-  </object>
-  <object id="1022" name="option-warp" type="object" x="3584.33" y="993.333" width="256" height="256">
-   <properties>
-    <property name="from" value="1-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="string" value="front"/>
-    <property name="to" value="4-B,7-B"/>
    </properties>
   </object>
   <object id="1034" name="warp" type="object" x="2558" y="992" width="256" height="256">
@@ -655,6 +581,24 @@
   <object id="939" name="spawn" type="object" x="4911.76" y="1122.91" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1042" name="option-warp" type="object" x="1595" y="993.833" width="256" height="256">
+   <properties>
+    <property name="from" value="1-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="front"/>
+    <property name="to" value="4-A,7-A"/>
+   </properties>
+  </object>
+  <object id="1043" name="option-warp" type="object" x="3584.33" y="993.333" width="256" height="256">
+   <properties>
+    <property name="from" value="1-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="front"/>
+    <property name="to" value="4-B,7-B"/>
    </properties>
   </object>
  </objectgroup>

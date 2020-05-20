@@ -94,7 +94,7 @@ void EntityPetrificationBehavior::onLoad()
 		healthBehavior->kill();
 	});
 	
-	this->entity->setVisible(false);
+	this->entity->getAnimations()->setVisible(false);
 }
 
 void EntityPetrificationBehavior::onDisable()

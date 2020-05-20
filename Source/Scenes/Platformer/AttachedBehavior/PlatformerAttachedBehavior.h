@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/GuanoPetrifiedBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/HexusBehaviors.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/FriendlyBehaviorGroup.h"

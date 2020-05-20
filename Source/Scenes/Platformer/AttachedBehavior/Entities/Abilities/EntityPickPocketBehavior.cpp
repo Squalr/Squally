@@ -81,6 +81,11 @@ void EntityPickPocketBehavior::onLoad()
 			this->entity->attachBehavior(EntitySelectionBehavior::create(this->entity));
 		}
 
+		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+		{
+			this->updateIconVisibility();
+		});
+
 		this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 		{
 			selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
@@ -90,7 +95,7 @@ void EntityPickPocketBehavior::onLoad()
 			},
 			[=]()
 			{
-				if (this->currentHelperName == Guano::MapKey && !this->wasPickPocketed())
+				if (this->currentHelperName == Guano::MapKey && this->canPickPocket())
 				{
 					CursorSets::setActiveCursorSet(CursorSets::PickPocket);
 				}
@@ -153,7 +158,7 @@ void EntityPickPocketBehavior::attemptPickPocket()
 			this->pocketPool,
 			[=]()
 			{
-				this->onPickPocket();
+				this->updateIconVisibility();
 			},
 			EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed
 		));
@@ -162,7 +167,7 @@ void EntityPickPocketBehavior::attemptPickPocket()
 
 bool EntityPickPocketBehavior::canPickPocket()
 {
-	return this->currentHelperName == Guano::MapKey && !this->wasPickPocketed();
+	return this->entity != nullptr && this->currentHelperName == Guano::MapKey && this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && !this->wasPickPocketed();
 }
 
 bool EntityPickPocketBehavior::wasPickPocketed()
@@ -170,7 +175,7 @@ bool EntityPickPocketBehavior::wasPickPocketed()
 	return this->entity->loadObjectStateOrDefault(EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed, Value(false)).asBool();
 }
 
-void EntityPickPocketBehavior::onPickPocket()
+void EntityPickPocketBehavior::updateIconVisibility()
 {
-	this->pickPocketIcon->setVisible(false);
+	this->pickPocketIcon->setVisible(this->canPickPocket());
 }

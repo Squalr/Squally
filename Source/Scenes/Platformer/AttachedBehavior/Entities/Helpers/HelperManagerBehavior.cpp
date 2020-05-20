@@ -16,6 +16,7 @@
 #include "Events/HelperEvents.h"
 #include "Events/NotificationEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/GuanoPetrifiedBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -80,12 +81,6 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
 
 	std::string helperBehavior = this->getHelperAttachedBehavior(helperName);
-
-	if (helperBehavior.empty())
-	{
-		// Abort -- if no behavior found, not a valid helper
-		return;
-	}
 	
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(helperName);
@@ -150,5 +145,6 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
 	this->attachedBehaviorMap[Guano::MapKey] = GuanoBehaviorGroup::MapKey;
+	this->attachedBehaviorMap[GuanoPetrified::MapKey] = GuanoPetrifiedBehaviorGroup::MapKey;
 	this->attachedBehaviorMap[Snowman::MapKey] = GuanoBehaviorGroup::MapKey;
 }

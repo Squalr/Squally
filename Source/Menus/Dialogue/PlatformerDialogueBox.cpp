@@ -252,7 +252,7 @@ void PlatformerDialogueBox::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (this->cancelOptionChoice())
+		if (this->isDialogueFocused && this->cancelOptionChoice())
 		{
 			args->handle();
 		}

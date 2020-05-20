@@ -1,45 +1,47 @@
-#include "GuanoBehaviorGroup.h"
+#include "GuanoPetrifiedBehaviorGroup.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityDisableCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoEqBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoManaBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoPickPocketBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/RopedMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperFollowMovementBehavior.h"
 
 using namespace cocos2d;
 
-const std::string GuanoBehaviorGroup::MapKey = "guano";
+const std::string GuanoPetrifiedBehaviorGroup::MapKey = "guano-petrified";
 
-GuanoBehaviorGroup* GuanoBehaviorGroup::create(GameObject* owner)
+GuanoPetrifiedBehaviorGroup* GuanoPetrifiedBehaviorGroup::create(GameObject* owner)
 {
-	GuanoBehaviorGroup* instance = new GuanoBehaviorGroup(owner);
+	GuanoPetrifiedBehaviorGroup* instance = new GuanoPetrifiedBehaviorGroup(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GuanoBehaviorGroup::GuanoBehaviorGroup(GameObject* owner) : super(owner, {
+GuanoPetrifiedBehaviorGroup::GuanoPetrifiedBehaviorGroup(GameObject* owner) : super(owner, {
 	HelperBehaviorGroup::create(owner),
 	GuanoEqBehavior::create(owner),
 	GuanoHealthBehavior::create(owner),
 	GuanoManaBehavior::create(owner),
-	GuanoPickPocketBehavior::create(owner),
 	HelperFollowMovementBehavior::create(owner),
+	RopedMovementBehavior::create(owner),
+	EntityDisableCollisionBehavior::create(owner),
 	})
 {
 }
 
-GuanoBehaviorGroup::~GuanoBehaviorGroup()
+GuanoPetrifiedBehaviorGroup::~GuanoPetrifiedBehaviorGroup()
 {
 }
 
-void GuanoBehaviorGroup::onLoad()
+void GuanoPetrifiedBehaviorGroup::onLoad()
 {
 }

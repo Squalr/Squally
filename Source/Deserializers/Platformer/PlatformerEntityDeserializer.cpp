@@ -133,6 +133,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Orthrus::MapKey] = [=](ValueMap properties) { return (GameObject*)Orthrus::deserialize(properties); };
 	this->deserializers[Troll::MapKey] = [=](ValueMap properties) { return (GameObject*)Troll::deserialize(properties); };
 	this->deserializers[Guano::MapKey] = [=](ValueMap properties) { return (GameObject*)Guano::deserialize(properties); };
+	this->deserializers[GuanoPetrified::MapKey] = [=](ValueMap properties) { return (GameObject*)GuanoPetrified::deserialize(properties); };
 	this->deserializers[Turtle::MapKey] = [=](ValueMap properties) { return (GameObject*)Turtle::deserialize(properties); };
 	this->deserializers[Appolo::MapKey] = [=](ValueMap properties) { return (GameObject*)Appolo::deserialize(properties); };
 	this->deserializers[Ara::MapKey] = [=](ValueMap properties) { return (GameObject*)Ara::deserialize(properties); };

@@ -21,6 +21,8 @@ namespace ObjectResources
 	extern const std::string Breakables_VaseTanBroken;
 	extern const std::string Breakables_VaseYellow;
 	extern const std::string Breakables_VaseYellowBroken;
+	extern const std::string Cinematic_ScrappyRope_Rope;
+	extern const std::string Cinematic_ScrappyRope_WaistRope;
 	extern const std::string Cinematic_SpaceShipSqually;
 	extern const std::string Collectables_Animals_Bat;
 	extern const std::string Collectables_Animals_Bat_Locked;

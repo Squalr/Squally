@@ -181,6 +181,7 @@
 #include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
+#include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
 #include "Entities/Platformer/Helpers/UnderflowRuins/Mummy.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Angel.h"

@@ -1,7 +1,7 @@
 #include "SnowmanBehaviorGroup.h"
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/FollowMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperFollowMovementBehavior.h"
 
 using namespace cocos2d;
 
@@ -18,7 +18,7 @@ SnowmanBehaviorGroup* SnowmanBehaviorGroup::create(GameObject* owner)
 
 SnowmanBehaviorGroup::SnowmanBehaviorGroup(GameObject* owner) : super(owner, {
 	HelperBehaviorGroup::create(owner),
-	FollowMovementBehavior::create(owner),
+	HelperFollowMovementBehavior::create(owner),
 	})
 {
 }

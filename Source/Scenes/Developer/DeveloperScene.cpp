@@ -15,6 +15,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -57,6 +58,9 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
 	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_8 (UR) Pyramid Boss vv", MapResources::UnderflowRuins_Zone_3_8));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_7 (UR) Pyramid -->", MapResources::UnderflowRuins_Zone_3_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_6 (UR) Pyramid >>^^", MapResources::UnderflowRuins_Zone_3_6));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_5 (UR) Pyramid ^^^^", MapResources::UnderflowRuins_Zone_3_5));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_4 (UR) Pyramid <<^^", MapResources::UnderflowRuins_Zone_3_4));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_3 (UR) Pyramid <--", MapResources::UnderflowRuins_Zone_3_3));
@@ -196,7 +200,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			return PlatformerMap::create(mapResource);

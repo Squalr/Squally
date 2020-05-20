@@ -256,6 +256,8 @@ void CraftingMenuBase::open(std::vector<Item*> recipes)
 	this->recipes = recipes;
 	this->onFilterChange();
 
+	this->canCraft = false;
+
 	this->filterMenu->focus();
 	this->itemMenu->unfocus();
 }
@@ -267,11 +269,6 @@ void CraftingMenuBase::setReturnClickCallback(std::function<void()> returnClickC
 
 void CraftingMenuBase::onCraftPreview(Item* item)
 {
-	if (dynamic_cast<Recipe*>(item) == nullptr)
-	{
-		return;
-	}
-
 	this->canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
 	
 	if (this->canCraft)

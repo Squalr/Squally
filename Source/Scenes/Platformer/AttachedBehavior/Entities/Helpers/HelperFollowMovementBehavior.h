@@ -5,16 +5,19 @@
 class PlatformerEntity;
 class Squally;
 
-class FollowMovementBehavior : public AttachedBehavior
+class HelperFollowMovementBehavior : public AttachedBehavior
 {
 public:
-	static FollowMovementBehavior* create(GameObject* owner);
+	static HelperFollowMovementBehavior* create(GameObject* owner);
+
+	void enableFollow();
+	void disableFollow();
 
 	static const std::string MapKey;
 
 protected:
-	FollowMovementBehavior(GameObject* owner);
-	virtual ~FollowMovementBehavior();
+	HelperFollowMovementBehavior(GameObject* owner);
+	virtual ~HelperFollowMovementBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
@@ -25,6 +28,8 @@ private:
 
 	PlatformerEntity* entity;
 	Squally* squally;
+
+	bool followEnabled;
 
 	static const float StopFollowRangeX;
 	static const float TryJumpRangeY;

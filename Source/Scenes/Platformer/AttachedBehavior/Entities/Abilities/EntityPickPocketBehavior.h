@@ -33,7 +33,7 @@ private:
 	void attemptPickPocket();
 	bool canPickPocket();
 	bool wasPickPocketed();
-	void onPickPocket();
+	void updateIconVisibility();
 
 	PlatformerEntity* entity;
 	Squally* squally;
