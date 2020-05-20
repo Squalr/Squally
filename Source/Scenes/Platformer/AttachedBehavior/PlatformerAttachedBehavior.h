@@ -28,6 +28,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/FriendlyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Shopkeepers/ShopkeeperBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Transportation/EFURTransportationBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/EntityPetrificationBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyNoSavePositionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"

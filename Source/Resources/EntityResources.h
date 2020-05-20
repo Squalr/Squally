@@ -2127,6 +2127,7 @@ namespace EntityResources
 	extern const std::string Helpers_EndianForest_Guano_Right_Arm;
 	extern const std::string Helpers_EndianForest_Guano_Right_Foot;
 	extern const std::string Helpers_EndianForest_Guano_Right_Hand;
+	extern const std::string Helpers_EndianForest_Guano_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Helpers_EndianForest_Scrappy_Animations;
 	extern const std::string Helpers_EndianForest_Scrappy_Emblem;
 	extern const std::string Helpers_EndianForest_Scrappy_Flybot;
@@ -2214,6 +2215,18 @@ namespace EntityResources
 	extern const std::string Helpers_SeaSharpCaverns_Gecko_SlashFX;
 	extern const std::string Helpers_SeaSharpCaverns_Gecko_Tail___Back;
 	extern const std::string Helpers_SeaSharpCaverns_Gecko_Tail;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Animations;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Axe;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Body;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Emblem;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Head_01;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Left_Arm;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Left_Foot;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Left_Hand;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Right_Arm;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Right_Foot;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_Right_Hand;
+	extern const std::string Helpers_UnderflowRuins_GuanoPetrified_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Helpers_UnderflowRuins_Mummy_Animations;
 	extern const std::string Helpers_UnderflowRuins_Mummy_Body;
 	extern const std::string Helpers_UnderflowRuins_Mummy_Emblem;
@@ -4284,6 +4297,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Ajax_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Ajax_L_LEG_1;
 	extern const std::string Npcs_UnderflowRuins_Ajax_L_SHOE;
+	extern const std::string Npcs_UnderflowRuins_Ajax_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Ajax_R_ARM_CLOTH;
 	extern const std::string Npcs_UnderflowRuins_Ajax_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Ajax_R_HAND;
@@ -4325,6 +4339,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_L_LEG;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_PANTS;
+	extern const std::string Npcs_UnderflowRuins_Aphrodite_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_R_ARM_2;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_R_HAND_2;
@@ -4362,6 +4377,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Athena_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Athena_L_LEG;
 	extern const std::string Npcs_UnderflowRuins_Athena_PANTS;
+	extern const std::string Npcs_UnderflowRuins_Athena_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Athena_R_ARM_2;
 	extern const std::string Npcs_UnderflowRuins_Athena_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Athena_R_ARMOR;
@@ -4406,6 +4422,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Geryon_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Geryon_L_LEG;
 	extern const std::string Npcs_UnderflowRuins_Geryon_L_WING;
+	extern const std::string Npcs_UnderflowRuins_Geryon_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Geryon_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Geryon_R_HAND;
 	extern const std::string Npcs_UnderflowRuins_Geryon_R_LEG;
@@ -4429,6 +4446,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Griffin_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Griffin_L_LEG;
 	extern const std::string Npcs_UnderflowRuins_Griffin_L_WING;
+	extern const std::string Npcs_UnderflowRuins_Griffin_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Griffin_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Griffin_R_HAND;
 	extern const std::string Npcs_UnderflowRuins_Griffin_R_LEG;

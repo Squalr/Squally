@@ -260,7 +260,7 @@ void EntityDialogueBehavior::showOptions()
 	
 	for (auto next : dialogueOptions)
 	{
-		options.push_back(std::get<0>(next)->dialogueOption);
+		options.push_back(std::get<0>(next)->dialogueOption->clone());
 
 		callbacks.push_back([=]()
 		{

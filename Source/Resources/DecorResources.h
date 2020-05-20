@@ -644,7 +644,7 @@ namespace DecorResources
 	extern const std::string Ruins_Background_Island6;
 	extern const std::string Ruins_Background_PalmTree1;
 	extern const std::string Ruins_LionDoor;
-	extern const std::string Ruins_LionDoorOld;
+	extern const std::string Ruins_LionDoorFront;
 	extern const std::string Ruins_Pillar1;
 	extern const std::string Ruins_Pillar2;
 	extern const std::string Ruins_Walls1;

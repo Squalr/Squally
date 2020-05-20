@@ -111,7 +111,8 @@
   </properties>
   <object id="760" name="griffin" type="entity" x="1421.5" y="850.554" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="shopkeeper,hexus-toben"/>
+    <property name="attached-behavior" value="petrified,shopkeeper"/>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -127,7 +128,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="890" name="ruins-gray-thick" type="terrain" x="-96.9682" y="1066.18" width="2350.91" height="234.06"/>
-  <object id="891" name="wood" type="terrain" x="-42.1217" y="-253.394" width="2350.91" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -207,13 +207,6 @@
   <object id="887" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="889" name="warp" type="object" x="28" y="812" width="256" height="256">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="from" value="start"/>
-    <property name="to" value="end"/>
    </properties>
   </object>
  </objectgroup>

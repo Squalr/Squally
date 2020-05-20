@@ -43,6 +43,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[MageCastBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MageCastBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[NoDefendBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)NoDefendBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[NoItemsBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)NoItemsBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[EntityPetrificationBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EntityPetrificationBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[ShopkeeperBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ShopkeeperBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyCombatBehaviorGroup::create(owner); };

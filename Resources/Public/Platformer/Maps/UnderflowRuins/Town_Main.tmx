@@ -107,9 +107,10 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1008" name="athena" type="entity" x="2960" y="900" width="128" height="128">
+  <object id="1008" name="athena" type="entity" x="2905.03" y="902.303" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="athena-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="petrified,athena-hexus,friendly,pick-pocket,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -149,10 +150,26 @@
    <property name="depth" type="float" value="-352"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="990" name="Ruins/Pillar1" type="decor" x="382.167" y="75.1667" width="369" height="978"/>
-  <object id="991" name="Ruins/Pillar1" type="decor" x="1934.83" y="78" width="369" height="978"/>
-  <object id="992" name="Ruins/Pillar1" type="decor" x="3071.74" y="76.6061" width="369" height="978"/>
-  <object id="993" name="Ruins/Pillar1" type="decor" x="4744.83" y="72" width="369" height="978"/>
+  <object id="990" name="Ruins/Pillar1" type="decor" x="382.167" y="75.1667" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="991" name="Ruins/Pillar1" type="decor" x="1934.83" y="78" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="992" name="Ruins/Pillar1" type="decor" x="3071.74" y="76.6061" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="993" name="Ruins/Pillar1" type="decor" x="4744.83" y="72" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="114" name="terrain -6">
   <properties>
@@ -172,10 +189,26 @@
    <property name="depth" type="float" value="-352"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="986" name="Ruins/Pillar1" type="decor" x="381.167" y="102.167" width="369" height="978"/>
-  <object id="987" name="Ruins/Pillar1" type="decor" x="1933.83" y="105" width="369" height="978"/>
-  <object id="988" name="Ruins/Pillar1" type="decor" x="3070.74" y="103.606" width="369" height="978"/>
-  <object id="989" name="Ruins/Pillar1" type="decor" x="4743.83" y="99" width="369" height="978"/>
+  <object id="986" name="Ruins/Pillar1" type="decor" x="381.167" y="102.167" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="987" name="Ruins/Pillar1" type="decor" x="1933.83" y="105" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="988" name="Ruins/Pillar1" type="decor" x="3070.74" y="103.606" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="989" name="Ruins/Pillar1" type="decor" x="4743.83" y="99" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="113" name="terrain -5">
   <properties>
@@ -195,18 +228,42 @@
    <property name="depth" type="float" value="-288"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="982" name="Ruins/Pillar1" type="decor" x="381.167" y="132.833" width="369" height="978"/>
-  <object id="983" name="Ruins/Pillar1" type="decor" x="1933.83" y="135.667" width="369" height="978"/>
-  <object id="984" name="Ruins/Pillar1" type="decor" x="3070.74" y="134.273" width="369" height="978"/>
-  <object id="985" name="Ruins/Pillar1" type="decor" x="4743.83" y="129.667" width="369" height="978"/>
+  <object id="982" name="Ruins/Pillar1" type="decor" x="381.167" y="132.833" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="983" name="Ruins/Pillar1" type="decor" x="1933.83" y="135.667" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="984" name="Ruins/Pillar1" type="decor" x="3070.74" y="134.273" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="985" name="Ruins/Pillar1" type="decor" x="4743.83" y="129.667" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="122" name="decor -4 bg">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1000" name="Generic/SignSmith" type="decor" x="1395.83" y="503.333" width="523" height="265"/>
-  <object id="1001" name="Generic/SignAlch" type="decor" x="3582.59" y="506.833" width="523" height="265"/>
+  <object id="1000" name="Generic/SignSmith" type="decor" x="1395.83" y="503.333" width="523" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1001" name="Generic/SignAlch" type="decor" x="3582.59" y="506.833" width="523" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="107" name="texture -4" visible="0">
   <properties>
@@ -229,8 +286,16 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452"/>
-  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452"/>
+  <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="112" name="terrain -4">
   <properties>
@@ -244,11 +309,31 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1015" name="Generic/BlueRug" type="decor" x="1561.5" y="1105.83" width="332" height="21"/>
-  <object id="1021" name="Generic/BlueRug" type="decor" x="3549.03" y="1104.32" width="332" height="21"/>
-  <object id="1033" name="Generic/BlueRug" type="decor" x="2522" y="1106.83" width="332" height="21"/>
-  <object id="1037" name="Generic/RedRug" type="decor" x="1105" y="1104.5" width="332" height="21"/>
-  <object id="1038" name="Generic/RedRug" type="decor" x="4072.67" y="1106.83" width="332" height="21"/>
+  <object id="1015" name="Generic/BlueRug" type="decor" x="1561.5" y="1105.83" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1021" name="Generic/BlueRug" type="decor" x="3549.03" y="1104.32" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1033" name="Generic/BlueRug" type="decor" x="2522" y="1106.83" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1037" name="Generic/RedRug" type="decor" x="1105" y="1104.5" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1038" name="Generic/RedRug" type="decor" x="4072.67" y="1106.83" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="129" name="objects -4">
   <properties>
@@ -273,9 +358,9 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1006" name="aphrodite" type="entity" x="1862.67" y="988.67" width="128" height="128">
+  <object id="1006" name="aphrodite" type="entity" x="2337.94" y="988.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="petrified,hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -328,10 +413,26 @@
    <property name="depth" type="float" value="-224"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="Ruins/Pillar1" type="decor" x="382.5" y="164.167" width="369" height="978"/>
-  <object id="979" name="Ruins/Pillar1" type="decor" x="1935.17" y="167" width="369" height="978"/>
-  <object id="980" name="Ruins/Pillar1" type="decor" x="3072.08" y="165.606" width="369" height="978"/>
-  <object id="981" name="Ruins/Pillar1" type="decor" x="4745.17" y="161" width="369" height="978"/>
+  <object id="978" name="Ruins/Pillar1" type="decor" x="382.5" y="164.167" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="979" name="Ruins/Pillar1" type="decor" x="1935.17" y="167" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="980" name="Ruins/Pillar1" type="decor" x="3072.08" y="165.606" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="981" name="Ruins/Pillar1" type="decor" x="4745.17" y="161" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="104" name="terrain -3">
   <properties>
@@ -351,10 +452,26 @@
    <property name="depth" type="float" value="-160"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="974" name="Ruins/Pillar1" type="decor" x="382.5" y="197.5" width="369" height="978"/>
-  <object id="975" name="Ruins/Pillar1" type="decor" x="1935.17" y="200.333" width="369" height="978"/>
-  <object id="976" name="Ruins/Pillar1" type="decor" x="3072.08" y="198.939" width="369" height="978"/>
-  <object id="977" name="Ruins/Pillar1" type="decor" x="4745.17" y="194.333" width="369" height="978"/>
+  <object id="974" name="Ruins/Pillar1" type="decor" x="382.5" y="197.5" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="975" name="Ruins/Pillar1" type="decor" x="1935.17" y="200.333" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="976" name="Ruins/Pillar1" type="decor" x="3072.08" y="198.939" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="977" name="Ruins/Pillar1" type="decor" x="4745.17" y="194.333" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="103" name="terrain -2">
   <properties>
@@ -374,10 +491,26 @@
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="970" name="Ruins/Pillar1" type="decor" x="383.833" y="234.167" width="369" height="978"/>
-  <object id="971" name="Ruins/Pillar1" type="decor" x="1936.5" y="237" width="369" height="978"/>
-  <object id="972" name="Ruins/Pillar1" type="decor" x="3073.41" y="235.606" width="369" height="978"/>
-  <object id="973" name="Ruins/Pillar1" type="decor" x="4746.5" y="231" width="369" height="978"/>
+  <object id="970" name="Ruins/Pillar1" type="decor" x="383.833" y="234.167" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="971" name="Ruins/Pillar1" type="decor" x="1936.5" y="237" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="972" name="Ruins/Pillar1" type="decor" x="3073.41" y="235.606" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="973" name="Ruins/Pillar1" type="decor" x="4746.5" y="231" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="102" name="terrain -1">
   <properties>
@@ -391,10 +524,26 @@
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="Ruins/Pillar1" type="decor" x="384.833" y="272.167" width="369" height="978"/>
-  <object id="954" name="Ruins/Pillar1" type="decor" x="1937.5" y="275" width="369" height="978"/>
-  <object id="957" name="Ruins/Pillar1" type="decor" x="3074.41" y="273.606" width="369" height="978"/>
-  <object id="962" name="Ruins/Pillar1" type="decor" x="4747.5" y="269" width="369" height="978"/>
+  <object id="953" name="Ruins/Pillar1" type="decor" x="384.833" y="272.167" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="954" name="Ruins/Pillar1" type="decor" x="1937.5" y="275" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="957" name="Ruins/Pillar1" type="decor" x="3074.41" y="273.606" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="962" name="Ruins/Pillar1" type="decor" x="4747.5" y="269" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -406,11 +555,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1014" name="Generic/BlueRug" type="decor" x="1558.83" y="1240.5" width="332" height="21"/>
-  <object id="1023" name="Generic/BlueRug" type="decor" x="3547.03" y="1238.98" width="332" height="21"/>
-  <object id="1032" name="Generic/BlueRug" type="decor" x="2521.33" y="1238.17" width="332" height="21"/>
+  <object id="1014" name="Generic/BlueRug" type="decor" x="1558.83" y="1240.5" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1023" name="Generic/BlueRug" type="decor" x="3547.03" y="1238.98" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1032" name="Generic/BlueRug" type="decor" x="2521.33" y="1238.17" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="105" name="terrain fg">
+ <objectgroup id="105" name="terrain fg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -467,9 +628,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="943" name="ajax" type="entity" x="2429.15" y="1121.21" width="128" height="128">
+  <object id="943" name="ajax" type="entity" x="1167.57" y="1122.54" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ajax-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="petrified,ajax-hexus,friendly,pick-pocket,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
