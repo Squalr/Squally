@@ -596,6 +596,8 @@ namespace DecorResources
 	extern const std::string Generic_ShelfBar1;
 	extern const std::string Generic_Shield1;
 	extern const std::string Generic_SignAlch;
+	extern const std::string Generic_SignBar;
+	extern const std::string Generic_SignBarFlat;
 	extern const std::string Generic_SignSmith;
 	extern const std::string Generic_Skull1;
 	extern const std::string Generic_Spear1;

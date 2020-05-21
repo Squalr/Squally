@@ -28,10 +28,11 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
-	void setPostText();
 
 	Guano* guano;
 	Aphrodite* aphrodite;
 	Scrappy* scrappy;
 	Squally* squally;
+
+	static const std::string TagExitDoor;
 };

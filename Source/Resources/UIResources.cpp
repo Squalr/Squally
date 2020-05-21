@@ -12,6 +12,7 @@ const std::string UIResources::Combat_DefendCircle = "Private/UI/Combat/DefendCi
 const std::string UIResources::Combat_EnemyCircle = "Private/UI/Combat/EnemyCircle.png";
 const std::string UIResources::Combat_EnemyCircleSelected = "Private/UI/Combat/EnemyCircleSelected.png";
 const std::string UIResources::Combat_EventCircle = "Private/UI/Combat/EventCircle.png";
+const std::string UIResources::Combat_Exclamation = "Private/UI/Combat/Exclamation.png";
 const std::string UIResources::Combat_ItemFrame = "Private/UI/Combat/ItemFrame.png";
 const std::string UIResources::Combat_ItemsCircle = "Private/UI/Combat/ItemsCircle.png";
 const std::string UIResources::Combat_ItemsMenu = "Private/UI/Combat/ItemsMenu.png";

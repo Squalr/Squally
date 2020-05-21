@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1044">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1050">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -22,7 +22,13 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="965" name="Ruins/ArchDoorGray1" type="decor" x="2562.07" y="578.546" width="235" height="452"/>
+  <object id="965" name="Ruins/ArchDoorGray1" type="decor" x="2360.74" y="579.546" width="235" height="452"/>
+  <object id="1046" name="Ruins/ArchDoorGray1" type="decor" x="2777.5" y="569" width="235" height="452"/>
+  <object id="1048" name="Generic/SignBar" type="decor" x="2767.17" y="293.5" width="252" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="115" name="terrain -7">
   <properties>
@@ -38,14 +44,15 @@
   </properties>
   <object id="1016" name="Generic/BlueRug" type="decor" x="1562.83" y="1017.83" width="332" height="21"/>
   <object id="1019" name="Generic/BlueRug" type="decor" x="3552.03" y="1016.82" width="332" height="21"/>
-  <object id="1039" name="Generic/RedRug" type="decor" x="2523" y="1017.5" width="332" height="21"/>
+  <object id="1039" name="Generic/RedRug" type="decor" x="2309.67" y="1018.83" width="332" height="21"/>
+  <object id="1045" name="Generic/RedRug" type="decor" x="2732" y="1020.83" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="130" name="objects -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1024" name="portal" type="object" x="2561.24" y="654.294" width="237.527" height="375.411">
+  <object id="1024" name="portal" type="object" x="2359.91" y="655.294" width="237.527" height="375.411">
    <properties>
     <property name="map" value="UnderflowRuins/Home_Hera"/>
     <property name="transition" value="hera"/>
@@ -53,20 +60,18 @@
   </object>
   <object id="1040" name="solid" type="collision" x="1378.99" y="-863.562" width="126.878" height="1890.76"/>
   <object id="1041" name="solid" type="collision" x="4022.99" y="-849.744" width="126.878" height="1890.76"/>
+  <object id="1044" name="portal" type="object" x="2773.24" y="652.628" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Town_Inn"/>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="127" name="entities -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1008" name="athena" type="entity" x="2905.03" y="902.303" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="petrified,athena-hexus,friendly,pick-pocket,pacing"/>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="131" name="player_layer -7">
   <properties>
@@ -91,9 +96,14 @@
     <property name="to" value="1-B,4-B"/>
    </properties>
   </object>
-  <object id="1025" name="spawn" type="object" x="2616" y="901" width="128" height="128">
+  <object id="1025" name="spawn" type="object" x="2414.67" y="902" width="128" height="128">
    <properties>
     <property name="transition" value="hera"/>
+   </properties>
+  </object>
+  <object id="1047" name="spawn" type="object" x="2838" y="897" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
  </objectgroup>
@@ -302,15 +312,23 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1006" name="aphrodite" type="entity" x="2337.94" y="988.67" width="128" height="128">
+  <object id="1006" name="thor" type="entity" x="2337.94" y="988.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="petrified,hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="petrified,thor-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="1049" name="athena" type="entity" x="2904" y="988" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="petrified,athena-hexus,friendly,pick-pocket,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="132" name="player_layer -4">
+ <objectgroup id="132" name="player_layer -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>

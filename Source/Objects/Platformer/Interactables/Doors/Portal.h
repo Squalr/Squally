@@ -14,8 +14,9 @@ public:
 	virtual void loadMap();
 
 	static const std::string MapKey;
-	static const std::string MapKeyPortalMap;
-	static const std::string MapKeyPortalTransition;
+	static const std::string PropertyPortalMap;
+	static const std::string PropertyPortalTransition;
+	static const std::string PropertyIsLocked;
 
 protected:
 	Portal(cocos2d::ValueMap& properties, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);

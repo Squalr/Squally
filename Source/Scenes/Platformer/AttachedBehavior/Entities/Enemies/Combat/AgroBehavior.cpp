@@ -12,7 +12,7 @@
 #include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -34,7 +34,7 @@ AgroBehavior* AgroBehavior::create(GameObject* owner)
 AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->exclamation = Sprite::create(ObjectResources::Interactive_Help_Exclamation);
+	this->exclamation = Sprite::create(UIResources::Combat_Exclamation);
 	this->chaseOnAgro = true;
 	this->warnOnAgro = true;
 	this->isAgrod = false;

@@ -36,6 +36,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[WindSpellbookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindSpellbookLine::create(); };
 
 	// UNDERFLOW RUINS QUESTS
+	this->lineDeserializers[CureTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureTownLine::create(); };
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()

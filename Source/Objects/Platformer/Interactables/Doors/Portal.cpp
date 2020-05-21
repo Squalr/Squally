@@ -22,8 +22,9 @@
 using namespace cocos2d;
 
 const std::string Portal::MapKey = "portal";
-const std::string Portal::MapKeyPortalTransition = "transition";
-const std::string Portal::MapKeyPortalMap = "map";
+const std::string Portal::PropertyPortalTransition = "transition";
+const std::string Portal::PropertyPortalMap = "map";
+const std::string Portal::PropertyIsLocked = "is-locked";
 const std::string Portal::SaveKeyListenEventTriggered = "SAVE_KEY_LISTEN_EVENT_TRIGGERED";
 
 Portal* Portal::create(ValueMap& properties)
@@ -37,8 +38,9 @@ Portal* Portal::create(ValueMap& properties)
 
 Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties, InteractObject::InteractType::Input, size, offset)
 {
-	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
-	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
+	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalMap, Value("")).asString();
+	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalTransition, Value("")).asString();
+	this->isLocked = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyIsLocked, Value(this->isLocked)).asBool();
 
 	this->setName("Portal: " + this->mapFile);
 

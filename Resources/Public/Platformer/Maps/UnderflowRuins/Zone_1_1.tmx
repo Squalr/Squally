@@ -73,7 +73,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="985" name="caverns" type="terrain" x="-1036.97" y="1272.97" width="2505.93" height="1072"/>
-  <object id="986" name="caverns" type="terrain" x="2122.61" y="1272" width="1066.78" height="1072"/>
+  <object id="986" name="caverns" type="terrain" x="2122.61" y="1272" width="1551.63" height="1072"/>
  </objectgroup>
  <objectgroup id="126" name="objects -9">
   <properties>

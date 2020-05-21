@@ -54,7 +54,9 @@
   </object>
   <object id="726" name="portal" type="object" x="1527.24" y="778.883" width="237.527" height="287.568">
    <properties>
+    <property name="is-locked" type="bool" value="true"/>
     <property name="map" value="UnderflowRuins/Zone_1_0"/>
+    <property name="tag" value="exit-door"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -68,6 +70,8 @@
    <properties>
     <property name="attached-behavior" value="aphrodite-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="talk-to-aphrodite"/>
+    <property name="quest-line" value="cure-town"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

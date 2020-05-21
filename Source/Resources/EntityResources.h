@@ -4356,6 +4356,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Ares_L_ARM_3;
 	extern const std::string Npcs_UnderflowRuins_Ares_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Ares_L_LEG;
+	extern const std::string Npcs_UnderflowRuins_Ares_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Ares_R_ARM_1;
 	extern const std::string Npcs_UnderflowRuins_Ares_R_ARM_2;
 	extern const std::string Npcs_UnderflowRuins_Ares_R_ARM_3;
@@ -4527,6 +4528,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Thor_L_ARMOR;
 	extern const std::string Npcs_UnderflowRuins_Thor_L_HAND;
 	extern const std::string Npcs_UnderflowRuins_Thor_L_LEG;
+	extern const std::string Npcs_UnderflowRuins_Thor_Petrified;
 	extern const std::string Npcs_UnderflowRuins_Thor_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Thor_R_ARMOR;
 	extern const std::string Npcs_UnderflowRuins_Thor_R_HAND_2;

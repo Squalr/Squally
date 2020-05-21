@@ -1,7 +1,7 @@
 #include "CureTownLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-// #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/SneakPastLycan.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/TalkToAphrodite.h"
 
 using namespace cocos2d;
 
@@ -17,7 +17,7 @@ CureTownLine* CureTownLine::create()
 }
 
 CureTownLine::CureTownLine() : super(CureTownLine::MapKeyQuestLine, {
-	// QuestData(SneakPastLycan::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return SneakPastLycan::create(owner, questLine); }),
+	QuestData(TalkToAphrodite::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToAphrodite::create(owner, questLine); }),
 })
 {
 }

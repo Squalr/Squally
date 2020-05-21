@@ -13,8 +13,9 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
@@ -24,6 +25,7 @@
 using namespace cocos2d;
 
 const std::string TalkToAphrodite::MapKeyQuest = "talk-to-aphrodite";
+const std::string TalkToAphrodite::TagExitDoor = "exit-door";
 
 TalkToAphrodite* TalkToAphrodite::create(GameObject* owner, QuestLine* questLine)
 {
@@ -61,18 +63,27 @@ void TalkToAphrodite::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Aphrodite>(this, [=](Aphrodite* aphrodite)
 	{
 		this->aphrodite = aphrodite;
+		
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->aphrodite->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableNewQuest();
+			});
+		}
+		else if (questState == QuestState::Complete)
+		{
+			ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitDoor)
+			{
+				exitDoor->unlock();
+			}, TalkToAphrodite::TagExitDoor);
+		}
 	}, Aphrodite::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
-
-	if (questState == QuestState::Complete &&
-		QuestTask::getQuestStateForTask(this->questLine, TalkToElriel::MapKeyQuest) == QuestState::None)
-	{
-		this->setPostText();
-	}
 }
 
 void TalkToAphrodite::onActivate(bool isActiveThroughSkippable)
@@ -82,7 +93,17 @@ void TalkToAphrodite::onActivate(bool isActiveThroughSkippable)
 
 void TalkToAphrodite::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::EFFindElriel);
+	this->aphrodite->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->disableNewQuest();
+	});
+
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitDoor)
+	{
+		exitDoor->unlock();
+	}, TalkToAphrodite::TagExitDoor);
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
 }
 
 void TalkToAphrodite::onSkipped()
@@ -101,54 +122,23 @@ void TalkToAphrodite::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			SoundResources::Platformer_Entities_Generic_ChatterShort1,
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_B_WhichWayToTown::create()
+				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_Athens::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -163,13 +153,42 @@ void TalkToAphrodite::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_C_HeadThroughBack::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
 				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_D_OneFavor::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_E_Charity::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::HardRight,
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
+				DialogueEvents::BuildPreviewNode(&this->guano, true)
 			),
 			[=]()
 			{
@@ -179,8 +198,22 @@ void TalkToAphrodite::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_F_WhatDoYouAsk::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::HardRight,
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_G_TalkToAlch::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -189,37 +222,25 @@ void TalkToAphrodite::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->setPostText();
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::HardRight,
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Droid_DroidChatter,
 			true
 		));
-	});
-}
-
-void TalkToAphrodite::setPostText()
-{
-	this->defer([=]()
-	{
-		this->aphrodite->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards::create()
-					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-					DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-				),
-				[=]()
-				{
-					this->setPostText();
-				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
-				true
-			));
-		});
 	});
 }

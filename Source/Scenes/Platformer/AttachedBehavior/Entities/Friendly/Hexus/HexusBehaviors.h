@@ -27,6 +27,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/PolyphemusHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/RobinHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/TobenHexusBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/AphroditeHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/GriffinHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/Puzzles/URPuzzleABehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/Puzzles/URPuzzleBBehavior.h"

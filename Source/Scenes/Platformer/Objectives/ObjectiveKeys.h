@@ -25,4 +25,6 @@ public:
 	static const std::string EFConfrontCommander;
 	static const std::string EFReturnToQueenAgain;
 	static const std::string EFSailForUR;
+
+	static const std::string URHeadToTown;
 };

@@ -48,11 +48,6 @@ EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : su
 			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Ajax_Petrified);
 			this->displayOffset = Vec2(58.0f, 0.0f);
 		}
-		else if (this->entity->getEntityKey() == "aphrodite")
-		{
-			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Aphrodite_Petrified);
-			this->displayOffset = Vec2(2.0f, 0.0f);
-		}
 		else if (this->entity->getEntityKey() == "griffin")
 		{
 			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Griffin_Petrified);
@@ -66,11 +61,22 @@ EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : su
 		else if (this->entity->getEntityKey() == "athena")
 		{
 			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Athena_Petrified);
-			this->displayOffset = Vec2(30.0f, -6.0f);
+			this->displayOffset = Vec2(30.0f, -7.0f);
+		}
+		else if (this->entity->getEntityKey() == "thor")
+		{
+			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Thor_Petrified);
+			this->displayOffset = Vec2(34.0f, -6.0f);
+		}
+		else if (this->entity->getEntityKey() == "ares")
+		{
+			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Ares_Petrified);
+			this->displayOffset = Vec2(34.0f, 0.0f);
 		}
 		else
 		{
-			this->petrifiedSprite = Sprite::create();
+			this->petrifiedSprite = Sprite::create(EntityResources::Npcs_UnderflowRuins_Aphrodite_Petrified);
+			this->displayOffset = Vec2(2.0f, 0.0f);
 		}
 
 		this->petrifiedSprite->setAnchorPoint(Vec2(0.5f, 0.0f));
