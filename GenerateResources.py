@@ -9,8 +9,24 @@ from os import listdir
 from os import path
 from os.path import isfile, join, splitext, abspath, realpath, basename, relpath
 import os
+import sys
 
 def main():
+	continueStr = "n"
+
+	print("This will generate all resource paths and will result in a large build time. Continue (y/*)?")
+
+	if (sys.version_info > (3, 0)):
+		continueStr = input()
+	else:
+		continueStr = raw_input()
+	
+	if (continueStr != "y"):
+		print("Script canceled by user")
+		return
+
+	print("Generating resource paths...")
+	
 	# BackgroundResources
 	createResourceFile("BackgroundResources", (
 		'.scml',
