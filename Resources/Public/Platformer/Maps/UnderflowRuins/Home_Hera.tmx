@@ -76,6 +76,8 @@
    <properties>
     <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="talk-to-hera"/>
+    <property name="quest-line" value="cure-town"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

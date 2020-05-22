@@ -168,6 +168,7 @@
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MayanGemRedItem.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/RamWheel.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/TownKey.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/FountainRoomKey.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Potions/HealthPotionRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Potions/ManaPotionRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Potions/PotionRecipe.h"

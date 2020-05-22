@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Guano;
-class Aphrodite;
+class Hera;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -30,9 +30,7 @@ private:
 	void runCinematicSequence();
 
 	Guano* guano;
-	Aphrodite* aphrodite;
+	Hera* hera;
 	Scrappy* scrappy;
 	Squally* squally;
-
-	static const std::string TagExitDoor;
 };

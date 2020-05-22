@@ -106,7 +106,7 @@ void TalkToElriel::runCinematicSequencePart1()
 				Strings::Platformer_Ellipses::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Top,
-					DialogueBox::DialogueAlignment::HardRight,
+					DialogueBox::DialogueAlignment::Right,
 					DialogueEvents::BuildPreviewNode(&this->elriel, false),
 					DialogueEvents::BuildPreviewNode(&this->squally, true),
 					true
@@ -130,7 +130,7 @@ void TalkToElriel::runCinematicSequencePart2()
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::HardRight,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->elriel, false),
 			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),

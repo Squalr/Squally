@@ -141,7 +141,7 @@ void ArriveInAthens::runCinematicSequencePt3()
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Ajax_B_MoreStatues::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
+			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->guano, false),
 			[=]()
 			{
@@ -183,6 +183,26 @@ void ArriveInAthens::runCinematicSequencePt4()
 }
 
 void ArriveInAthens::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Ellipses::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true),
+			true
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt6();
+		},
+		"",
+		false
+	));
+}
+
+void ArriveInAthens::runCinematicSequencePt6()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues::create(),

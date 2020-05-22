@@ -116,14 +116,16 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 		}
 		case DialogueAlignment::Right:
 		{
-			this->text->setHorizontalAlignment(TextHAlignment::LEFT);
-			this->text->setAnchorPoint(Vec2(1.0f, 1.0f));
-			this->text->setPosition(Vec2(this->textWidth / 2.0f + distanceToMargin, DialogueBox::DialogueHeight / 2.0f - 96.0f));
-			break;
-		}
-		case DialogueAlignment::HardRight:
-		{
-			this->text->setHorizontalAlignment(TextHAlignment::RIGHT);
+			// Left align if multi-line. This ends up looking cleaner.
+			if (this->text->getContentSize().height > this->text->getLineHeight())
+			{
+				this->text->setHorizontalAlignment(TextHAlignment::LEFT);
+			}
+			else
+			{
+				this->text->setHorizontalAlignment(TextHAlignment::RIGHT);
+			}
+
 			this->text->setAnchorPoint(Vec2(1.0f, 1.0f));
 			this->text->setPosition(Vec2(this->textWidth / 2.0f + distanceToMargin, DialogueBox::DialogueHeight / 2.0f - 96.0f));
 			break;

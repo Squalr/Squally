@@ -59,7 +59,7 @@ void LookAtSquallyBehavior::update(float dt)
 		return;
 	}
 
-	if (this->entity->getPositionX() > GameUtils::getWorldCoords(this->squally).x)
+	if (GameUtils::getWorldCoords(this->entity).x > GameUtils::getWorldCoords(this->squally).x)
 	{
 		this->entity->getAnimations()->setFlippedX(true);
 	}

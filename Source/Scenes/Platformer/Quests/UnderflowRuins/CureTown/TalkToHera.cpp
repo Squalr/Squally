@@ -7,16 +7,21 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Quests/QuestLine.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/FountainRoomKey.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -25,7 +30,6 @@
 using namespace cocos2d;
 
 const std::string TalkToHera::MapKeyQuest = "talk-to-hera";
-const std::string TalkToHera::TagExitDoor = "exit-door";
 
 TalkToHera* TalkToHera::create(GameObject* owner, QuestLine* questLine)
 {
@@ -39,7 +43,7 @@ TalkToHera* TalkToHera::create(GameObject* owner, QuestLine* questLine)
 TalkToHera::TalkToHera(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToHera::MapKeyQuest, false)
 {
 	this->guano = nullptr;
-	this->aphrodite = nullptr;
+	this->hera = nullptr;
 	this->scrappy = nullptr;
 	this->squally = nullptr;
 }
@@ -60,25 +64,20 @@ void TalkToHera::onLoad(QuestState questState)
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::WatchForObject<Aphrodite>(this, [=](Aphrodite* aphrodite)
+	ObjectEvents::WatchForObject<Hera>(this, [=](Hera* hera)
 	{
-		this->aphrodite = aphrodite;
+		this->hera = hera;
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
-			this->aphrodite->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			this->hera->setState(StateKeys::PatrolHijacked, Value(true));
+			this->hera->getAnimations()->playAnimation("cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+			this->hera->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
-				questBehavior->enableNewQuest();
+				questBehavior->enableTurnIn();
 			});
 		}
-		else if (questState == QuestState::Complete)
-		{
-			ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitDoor)
-			{
-				exitDoor->unlock();
-			}, TalkToHera::TagExitDoor);
-		}
-	}, Aphrodite::MapKey);
+	}, Hera::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -93,15 +92,10 @@ void TalkToHera::onActivate(bool isActiveThroughSkippable)
 
 void TalkToHera::onComplete()
 {
-	this->aphrodite->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	this->hera->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		questBehavior->disableNewQuest();
+		questBehavior->disableTurnIn();
 	});
-
-	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitDoor)
-	{
-		exitDoor->unlock();
-	}, TalkToHera::TagExitDoor);
 
 	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
 }
@@ -113,37 +107,64 @@ void TalkToHera::onSkipped()
 
 void TalkToHera::runCinematicSequence()
 {
-	if (this->aphrodite == nullptr)
+	if (this->hera == nullptr)
 	{
 		return;
 	}
 	
-	this->aphrodite->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->hera->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_A_StayAway::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
 			),
 			[=]()
 			{
+				this->hera->setState(StateKeys::PatrolHijacked, Value(false));
+				this->hera->getAnimations()->clearAnimationPriority();
+				this->hera->getAnimations()->playAnimation();
+
+				if (GameUtils::getWorldCoords(this->hera).x > GameUtils::getWorldCoords(this->squally).x)
+				{
+					this->hera->getAnimations()->setFlippedX(true);
+				}
+				else
+				{
+					this->hera->getAnimations()->setFlippedX(false);
+				}
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterShort1,
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_B_WhichWayToTown::create()
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_B_Oh::create()
 				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_Athens::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_C_WhatHappened::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
 			),
 			[=]()
 			{
@@ -153,42 +174,12 @@ void TalkToHera::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_C_HeadThroughBack::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_D_Medusa::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_D_OneFavor::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_E_Charity::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
 			),
 			[=]()
 			{
@@ -198,12 +189,12 @@ void TalkToHera::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_F_WhatDoYouAsk::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_E_Slay::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
 			),
 			[=]()
 			{
@@ -213,33 +204,64 @@ void TalkToHera::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_G_TalkToAlch::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_F_NotAChance::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_G_Yes::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
 			),
 			[=]()
 			{
 			},
 			SoundResources::Platformer_Entities_Droid_DroidChatter,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_H_BetterOffInJail::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_I_TakeThisKey::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(SapphireBand::create()));
+				this->complete();
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
 			true
 		));
 	});

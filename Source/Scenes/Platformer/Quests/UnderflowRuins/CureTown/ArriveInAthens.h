@@ -31,6 +31,7 @@ private:
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
 	void runCinematicSequencePt5();
+	void runCinematicSequencePt6();
 
 	Guano* guano;
 	Scrappy* scrappy;

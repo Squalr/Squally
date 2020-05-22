@@ -129,7 +129,7 @@ void ChatWithGuano::runChatSequencePt2()
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::HardRight,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->guano, false),
 			DialogueEvents::BuildPreviewNode(&this->squally, true),
 			true

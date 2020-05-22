@@ -95,7 +95,7 @@ void AraBehavior::onLoad()
 			Strings::Platformer_Ellipses::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->entity, false),
 				DialogueEvents::BuildPreviewNode(&this->squally, true),
 				true

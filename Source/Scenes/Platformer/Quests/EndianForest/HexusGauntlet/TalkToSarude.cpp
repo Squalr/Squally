@@ -116,7 +116,7 @@ void TalkToSarude::registerDialogue()
 			Strings::Platformer_Ellipses::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->sarude, false),
 				DialogueEvents::BuildPreviewNode(&this->squally, true),
 				true
@@ -145,7 +145,7 @@ void TalkToSarude::registerDialogue()
 			Strings::Platformer_Ellipses::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->sarude, false),
 				DialogueEvents::BuildPreviewNode(&this->squally, true),
 				true
