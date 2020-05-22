@@ -22,3 +22,4 @@ const std::string ObjectiveKeys::EFReturnToQueenAgain = "EF_RETURN_TO_QUEEN_AGAI
 const std::string ObjectiveKeys::EFSailForUR = "EF_SAIL_FOR_UR";
 
 const std::string ObjectiveKeys::URHeadToTown = "UR_HEAD_TO_TOWN";
+const std::string ObjectiveKeys::URLookForSurvivors = "UR_LOOK_FOR_SURVIVORS";

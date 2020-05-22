@@ -40,6 +40,7 @@ ScrappyRopeCarryBehavior::ScrappyRopeCarryBehavior(GameObject* owner) : super(ow
 	this->ropeWaist = Sprite::create(ObjectResources::Cinematic_ScrappyRope_WaistRope);
 	this->ropeRotation = 270.0f;
 
+	this->ropeWaist->setVisible(false);
 	this->rope->setVisible(false);
 	this->rope->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -70,6 +71,7 @@ void ScrappyRopeCarryBehavior::setCarryTarget(GameObject* target)
 {
 	this->target = target;
 
+	this->ropeWaist->setVisible(this->target != nullptr);
 	this->rope->setVisible(this->target != nullptr);
 }
 

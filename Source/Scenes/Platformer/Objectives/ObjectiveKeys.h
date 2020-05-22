@@ -27,4 +27,5 @@ public:
 	static const std::string EFSailForUR;
 
 	static const std::string URHeadToTown;
+	static const std::string URLookForSurvivors;
 };

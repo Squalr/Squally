@@ -43,6 +43,7 @@ public:
 	CameraTrackingData* getCurrentTrackingData();
 	void setTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
 	void pushTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
+	void popTargetIfMultiple();
 	void popTarget();
 	void clearTargets();
 

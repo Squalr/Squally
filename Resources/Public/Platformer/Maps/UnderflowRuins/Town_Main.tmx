@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="135" nextobjectid="1050">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="138" nextobjectid="1060">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -474,12 +474,37 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="135" name="wall -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1052" name="ruins-gray-thick" type="terrain" x="4997.03" y="102.909" width="1641.81" height="1568"/>
+ </objectgroup>
  <objectgroup id="102" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="946" name="ruins-gray-thick" type="terrain" x="-142.997" y="1213.89" width="5721.81" height="968"/>
+ </objectgroup>
+ <objectgroup id="137" name="decor -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1055" name="Ruins/ArchDoorGray1" type="decor" x="5174.59" y="760.485" width="235" height="452"/>
+ </objectgroup>
+ <objectgroup id="136" name="terrain -0.5">
+  <properties>
+   <property name="depth" type="float" value="-32"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1053" name="ruins-gray-thick" type="terrain" x="5121.1" y="1225.67" width="353.81" height="280">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="106" name="decor -0.5">
   <properties>
@@ -532,12 +557,17 @@
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
+  <object id="1057" name="Generic/RedRug" type="decor" x="5131" y="1240.5" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="105" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="952" name="ruins-gray-thick" type="terrain" x="-54.905" y="-308" width="5485.81" height="656"/>
+  <object id="952" name="ruins-gray-thick" type="terrain" x="-54.905" y="-308" width="5797.81" height="656"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -551,19 +581,40 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="942" name="edge-portal" type="object" x="5294.22" y="609.514" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Town_Well"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
   <object id="1034" name="warp" type="object" x="2558" y="992" width="256" height="256">
    <properties>
     <property name="from" value="1-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="4-C"/>
+   </properties>
+  </object>
+  <object id="1050" name="trigger" type="object" x="899" y="-192.53" width="146" height="1445.06">
+   <properties>
+    <property name="quest" value="arrive-in-athens"/>
+    <property name="quest-line" value="cure-town"/>
+    <property name="send-event" value="arrive-in-athens"/>
+   </properties>
+  </object>
+  <object id="1051" name="camera-target" type="object" x="1820.85" y="890.545" width="128" height="128">
+   <properties>
+    <property name="tag" value="town-cinematic"/>
+    <property name="zoom" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="1054" name="edge-portal" type="object" x="6200.04" y="1671.57" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Town_Well"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1059" name="portal" type="object" x="5173.24" y="873.628" width="237.527" height="375.411">
+   <properties>
+    <property name="attached-behavior" value="locked-portal"/>
+    <property name="item-required" value="fountain-room-key"/>
+    <property name="map" value="UnderflowRuins/Town_Well"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>

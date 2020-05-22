@@ -45,7 +45,7 @@ LocalizedString* TownKey::getString()
 
 std::string TownKey::getIconResource()
 {
-	return ItemResources::Keys_KEY_1;
+	return ItemResources::Keys_KEY_6;
 }
 
 std::string TownKey::getSerializationKey()

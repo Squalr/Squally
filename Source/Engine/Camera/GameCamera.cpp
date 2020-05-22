@@ -519,6 +519,14 @@ CameraTrackingData* GameCamera::getCurrentTrackingData()
 	return nullptr;
 }
 
+void GameCamera::popTargetIfMultiple()
+{
+	if (this->targetStack.size() > 1)
+	{
+		this->targetStack.pop();
+	}
+}
+
 void GameCamera::popTarget()
 {
 	if (!this->targetStack.empty())

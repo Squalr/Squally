@@ -7389,6 +7389,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_BlueGem() = default;
 	};
 
+	class Items_Misc_Keys_FountainRoomKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_FountainRoomKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_FountainRoomKey();
+		virtual ~Items_Misc_Keys_FountainRoomKey() = default;
+	};
+
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString
 	{
 	public:
@@ -25209,10 +25224,10 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_C_DarkMagic() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_E_SearchForClues : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_E_SearchForClues* create();
+		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25220,8 +25235,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Ajax_E_SearchForClues();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_E_SearchForClues() = default;
+		Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings : public LocalizedString
