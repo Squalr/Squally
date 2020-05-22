@@ -113,7 +113,10 @@ void EntityPacingBehavior::assignDestination()
 	float destinationX = this->anchorPosition.x + this->destinationDelta;
 
 	// Leverage the cinematic movement code for enemy pacing, should work fine
-	this->entity->setState(StateKeys::PatrolDestinationX, Value(destinationX));
+	if (!this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
+	{
+		this->entity->setState(StateKeys::PatrolDestinationX, Value(destinationX));
+	}
 
 	this->runAction(Sequence::create(
 		DelayTime::create(RandomHelper::random_real(2.0f, 7.5f)),

@@ -93,7 +93,11 @@
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="Generic/Rope1" type="decor" x="1035.58" y="-97.6364" width="11" height="1010"/>
+  <object id="825" name="Generic/Rope1" type="decor" x="1035.58" y="-97.6364" width="11" height="1010">
+   <properties>
+    <property name="tag" value="rope"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -127,6 +131,9 @@
   <object id="826" name="portal" type="object" x="919.152" y="809.697" width="256" height="256">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="quest" value="lower-rope"/>
+    <property name="quest-line" value="cure-town"/>
+    <property name="tag" value="rope-portal"/>
     <property name="transition" value="rope"/>
    </properties>
   </object>

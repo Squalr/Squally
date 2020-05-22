@@ -70,8 +70,9 @@ void TalkToHera::onLoad(QuestState questState)
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
+			this->hera->clearState(StateKeys::PatrolDestinationX);
 			this->hera->setState(StateKeys::PatrolHijacked, Value(true));
-			this->hera->getAnimations()->playAnimation("cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+			this->hera->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 			this->hera->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
 				questBehavior->enableTurnIn();
@@ -258,7 +259,7 @@ void TalkToHera::runCinematicSequence()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(SapphireBand::create()));
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
 				this->complete();
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterMedium3,

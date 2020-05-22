@@ -45,7 +45,7 @@ LocalizedString* FountainRoomKey::getString()
 
 std::string FountainRoomKey::getIconResource()
 {
-	return ItemResources::Keys_KEY_6;
+	return ItemResources::Keys_KEY_1;
 }
 
 std::string FountainRoomKey::getSerializationKey()

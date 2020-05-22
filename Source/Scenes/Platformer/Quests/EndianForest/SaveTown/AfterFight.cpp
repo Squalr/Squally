@@ -53,6 +53,7 @@ AfterFight::AfterFight(GameObject* owner, QuestLine* questLine) : super(owner, q
 	this->squally = nullptr;
 	this->scrappy = nullptr;
 	this->sarude = nullptr;
+	this->magePortal = nullptr;
 }
 
 AfterFight::~AfterFight()
