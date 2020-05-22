@@ -20,7 +20,7 @@ public:
 		Collision,
 	};
 
-	static InteractObject* create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
+	static InteractObject* create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA);
 	
 	void enable();
 	void disable();
@@ -31,7 +31,7 @@ public:
 	virtual void unlock(bool animate = true);
 
 protected:
-	InteractObject(cocos2d::ValueMap& properties, InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
+	InteractObject(cocos2d::ValueMap& properties, InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA);
 	virtual ~InteractObject();
 
 	void onEnter() override;

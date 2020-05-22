@@ -34,9 +34,14 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	void tryRelocate();
+	bool isHidden();
+	bool isShowing();
+
 	cocos2d::Size menuSize;
 	bool hasRelocated;
-	bool isShown;
+	bool isFadingIn;
+	bool isFadingOut;
 
 	cocos2d::Node* uiElements;
 	cocos2d::LayerColor* backdrop;

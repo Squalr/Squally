@@ -298,6 +298,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
 	this->deserializers[MayanGemPurpleItem::SaveKey] = [=]() { return (Item*)MayanGemPurpleItem::create(); };
 	this->deserializers[MayanGemRedItem::SaveKey] = [=]() { return (Item*)MayanGemRedItem::create(); };
+	this->deserializers[MedusaMirror::SaveKey] = [=]() { return (Item*)MedusaMirror::create(); };
 	this->deserializers[RamWheel::SaveKey] = [=]() { return (Item*)RamWheel::create(); };
 	this->deserializers[TownKey::SaveKey] = [=]() { return (Item*)TownKey::create(); };
 }

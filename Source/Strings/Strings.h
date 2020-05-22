@@ -7419,6 +7419,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_MagesGuildPrisonKey() = default;
 	};
 
+	class Items_Misc_Keys_MedusasMirror : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_MedusasMirror* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_MedusasMirror();
+		virtual ~Items_Misc_Keys_MedusasMirror() = default;
+	};
+
 	class Items_Misc_Keys_PurpleGem : public LocalizedString
 	{
 	public:
@@ -25584,10 +25599,10 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_Travelers : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_Travelers* create();
+		static Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25595,23 +25610,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_Travelers();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_Travelers() = default;
-	};
-
-	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_Haha : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_Haha* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_Haha();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_Haha() = default;
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore() = default;
 	};
 
 	class Platformer_Spellbooks_SpellbookAcquired : public LocalizedString

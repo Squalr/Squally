@@ -25,23 +25,23 @@
 
 using namespace cocos2d;
 
-InteractObject* InteractObject::create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset)
+InteractObject* InteractObject::create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset, Color4F debugColor)
 {
 	ValueMap properties = ValueMap();
 
-	InteractObject* instance = new InteractObject(properties, interactType, size, offset);
+	InteractObject* instance = new InteractObject(properties, interactType, size, offset, debugColor);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset) : super(properties)
+InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset, Color4F debugColor) : super(properties)
 {
 	this->interactType = interactType;
 	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
 	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
-	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
+	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false), debugColor);
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
 	this->unlockMenu = InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(

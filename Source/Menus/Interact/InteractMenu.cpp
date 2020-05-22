@@ -38,7 +38,8 @@ InteractMenu::InteractMenu(LocalizedString* displayString, float menuWidth)
 	this->menuSize = Size(menuWidth, 48.0f);
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), this->menuSize.width, this->menuSize.height);
 	this->hasRelocated = false;
-	this->isShown = false;
+	this->isFadingIn = false;
+	this->isFadingOut = false;
 
 	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
@@ -92,13 +93,52 @@ void InteractMenu::initializeListeners()
 
 void InteractMenu::show()
 {
-	if (this->isShown)
+	if (this->isShowing() || this->isFadingIn)
 	{
 		return;
 	}
+	
+	this->tryRelocate();
 
-	this->isShown = true;
+	this->isFadingIn = true;
+	this->isFadingOut = false;
 
+	this->uiElements->runAction(Sequence::create(
+		FadeTo::create(0.15f, 255),
+		CallFunc::create([=]()
+		{
+			this->isFadingIn = false;
+		}),
+		nullptr
+	));
+
+	this->uiElements->runAction(FadeTo::create(0.15f, 255));
+}
+
+void InteractMenu::hide()
+{
+	if (this->isHidden() || this->isFadingOut)
+	{
+		return;
+	}
+	
+	this->tryRelocate();
+
+	this->isFadingOut = true;
+	this->isFadingIn = false;
+
+	this->uiElements->runAction(Sequence::create(
+		FadeTo::create(0.15f, 0),
+		CallFunc::create([=]()
+		{
+			this->isFadingOut = false;
+		}),
+		nullptr
+	));
+}
+
+void InteractMenu::tryRelocate()
+{
 	if (!this->hasRelocated)
 	{
 		// Move the UI elements to the top-most layer
@@ -107,24 +147,14 @@ void InteractMenu::show()
 		));
 		this->hasRelocated = true;
 	}
-
-	if (this->uiElements->getOpacity() < 255)
-	{
-		this->uiElements->runAction(FadeTo::create(0.15f, 255));
-	}
 }
 
-void InteractMenu::hide()
+bool InteractMenu::isHidden()
 {
-	if (!this->isShown)
-	{
-		return;
-	}
+	return this->uiElements->getOpacity() <= 0;
+}
 
-	this->isShown = false;
-	
-	if (this->uiElements->getOpacity() > 0)
-	{
-		this->uiElements->runAction(FadeTo::create(0.15f, 0));
-	}
+bool InteractMenu::isShowing()
+{
+	return this->uiElements->getOpacity() >= 255;
 }

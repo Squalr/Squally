@@ -7,7 +7,10 @@ namespace cocos2d
 	class Sprite;
 }
 
+class InteractObject;
+class Inventory;
 class PlatformerEntity;
+class SmartParticles;
 
 class EntityPetrificationBehavior : public AttachedBehavior
 {
@@ -28,8 +31,15 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	bool tryCure();
+
 	PlatformerEntity* entity;
+	InteractObject* cureInteraction;
 	cocos2d::Vec2 displayOffset;
+	Inventory* inventory;
+	SmartParticles* unpetrifyParticles;
 	
 	cocos2d::Sprite* petrifiedSprite;
+
+	static const std::string SaveKeyCured;
 };

@@ -13,7 +13,6 @@
 #include "Engine/Quests/QuestLine.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
@@ -145,7 +144,7 @@ void ArriveInAthens::runCinematicSequencePt3()
 			DialogueEvents::BuildPreviewNode(&this->guano, false),
 			[=]()
 			{
-				Sprite* ajax = Sprite::create(EntityResources::Npcs_UnderflowRuins_Ajax_Petrified);
+				Sprite* ajax = Sprite::create(EntityResources::Npcs_UnderflowRuins_Athena_Petrified);
 
 				ajax->setFlippedX(true);
 				ajax->setPosition(Vec2(-32.0f, 0.0f));

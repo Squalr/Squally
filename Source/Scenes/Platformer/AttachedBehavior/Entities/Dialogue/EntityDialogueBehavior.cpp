@@ -10,6 +10,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Menus/Interact/InteractMenu.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -34,10 +35,7 @@ EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
-	this->canInteract = false;
-	this->hasCollision = false;
-	this->dialogueCollision = nullptr;
+	this->dialogueInteraction = InteractObject::create(InteractObject::InteractType::Input, (this->entity == nullptr ? Size::ZERO : this->entity->getEntitySize()), Vec2::ZERO, Color4F::ORANGE);
 	this->scrappy = nullptr;
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
@@ -62,28 +60,10 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->dialogueCollision = CollisionObject::create(
-			CollisionObject::createBox(this->entity->getEntitySize()),
-			(CollisionType)PlatformerCollisionType::Trigger,
-			CollisionObject::Properties(false, false),
-			Color4F::ORANGE
-		);
-
-		this->interactMenu->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
-
-		Vec2 collisionOffset = this->entity->getCollisionOffset();
-		Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-
-		this->dialogueCollision->setPosition(offset);
-
-		this->addChild(this->dialogueCollision);
-	}
 
 	this->pretextNode->setVisible(false);
 	
-	this->addChild(this->interactMenu);
+	this->addChild(this->dialogueInteraction);
 	this->addChild(this->pretextNode);
 	this->addChild(this->dialogueSetNode);
 	this->addChild(this->speechBubble);
@@ -107,35 +87,18 @@ void EntityDialogueBehavior::initializePositions()
 
 void EntityDialogueBehavior::onLoad()
 {
+	this->dialogueInteraction->setPosition(this->entity->getEntityCenterPoint());
+
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	this->dialogueInteraction->setInteractCallback([=]()
 	{
-		if (this->canInteract && this->hasCollision)
-		{
-			this->onInteract();
-		}
-	});
+		this->onInteract();
 
-	this->dialogueCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		this->hasCollision = true;
-
-		this->updateInteractVisibility();
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-		 
-	this->dialogueCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		this->hasCollision = false;
-
-		this->updateInteractVisibility();
-
-		return CollisionObject::CollisionResult::DoNothing;
+		return true;
 	});
 
 	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
@@ -153,7 +116,7 @@ void EntityDialogueBehavior::update(float dt)
 	super::update(dt);
 
 	// Update on a loop -- this is to catch the case where dialogue options are added to a dialogue set, which isn't caught otherwise.
-	this->updateInteractVisibility();
+	this->updateInteractable();
 }
 
 SpeechBubble* EntityDialogueBehavior::getSpeechBubble()
@@ -182,7 +145,7 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 		this->pretextNode->addChild(pretext.dialogue);
 	}
 
-	this->updateInteractVisibility();
+	this->updateInteractable();
 }
 
 void EntityDialogueBehavior::clearPretext()
@@ -216,7 +179,7 @@ void EntityDialogueBehavior::progressDialogue()
 		this->pretextQueue.pop();
 	}
 	
-	this->updateInteractVisibility();
+	this->updateInteractable();
 }
 
 void EntityDialogueBehavior::setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue)
@@ -312,24 +275,15 @@ bool EntityDialogueBehavior::hasDialogueOptions()
 	return std::get<0>(dialogueOptions[0])->isShownIfUnique();
 }
 
-void EntityDialogueBehavior::updateInteractVisibility()
+void EntityDialogueBehavior::updateInteractable()
 {
-	if (this->hasDialogueOptions() || !this->pretextQueue.empty())
+	if ((this->hasDialogueOptions() || !this->pretextQueue.empty()) && this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
-		this->canInteract = true;
+		this->dialogueInteraction->enable();
 	}
 	else
 	{
-		this->canInteract = false;
-	}
-	
-	if (this->canInteract && this->hasCollision)
-	{
-		this->interactMenu->show();
-	}
-	else
-	{
-		this->interactMenu->hide();
+		this->dialogueInteraction->disable();
 	}
 }
 

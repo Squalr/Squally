@@ -209,6 +209,8 @@ def main():
 		'.json',
 	), "Strings")
 
+	print("Resource generation complete.")
+
 def createResourceFile(outputFileBase, extensions, searchPath):
 	projectRoot = abspath(join(realpath(__file__), ".."))
 

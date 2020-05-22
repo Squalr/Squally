@@ -481,19 +481,19 @@
   </properties>
   <object id="1052" name="ruins-gray-thick" type="terrain" x="4997.03" y="102.909" width="1641.81" height="1568"/>
  </objectgroup>
- <objectgroup id="102" name="terrain -1">
-  <properties>
-   <property name="depth" type="float" value="-64"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="946" name="ruins-gray-thick" type="terrain" x="-142.997" y="1213.89" width="5721.81" height="968"/>
- </objectgroup>
  <objectgroup id="137" name="decor -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1055" name="Ruins/ArchDoorGray1" type="decor" x="5174.59" y="760.485" width="235" height="452"/>
+ </objectgroup>
+ <objectgroup id="102" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="946" name="ruins-gray-thick" type="terrain" x="-142.997" y="1213.89" width="5721.81" height="968"/>
  </objectgroup>
  <objectgroup id="136" name="terrain -0.5">
   <properties>

@@ -62,8 +62,7 @@
   </object>
   <object id="853" name="trigger" type="object" x="1494" y="-4" width="178" height="1072">
    <properties>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="send-event" value="talk-to-zeus"/>
    </properties>
   </object>
  </objectgroup>
@@ -88,6 +87,8 @@
    <properties>
     <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="talk-to-zeus"/>
+    <property name="quest-line" value="cure-town"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
@@ -113,22 +114,55 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor +1" visible="0">
+ <objectgroup id="22" name="decor +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="823" name="Generic/Background/Cloud1" type="decor" x="1266.41" y="772.822" width="690" height="500"/>
-  <object id="824" name="Generic/Background/Cloud2" type="decor" x="1791.97" y="1022.12" width="570" height="271"/>
-  <object id="825" name="Generic/Background/Cloud3" type="decor" x="2279.97" y="1012.62" width="390" height="137"/>
-  <object id="826" name="Generic/Background/Cloud4" type="decor" x="2569.97" y="991.621" width="614" height="122"/>
-  <object id="827" name="Generic/Background/Cloud6" type="decor" x="961.97" y="927.121" width="1539" height="251"/>
-  <object id="828" name="Generic/Background/Cloud5" type="decor" x="2797.97" y="923.621" width="864" height="177"/>
-  <object id="829" name="Generic/Background/Cloud7" type="decor" x="2647.47" y="886.621" width="1159" height="372"/>
-  <object id="830" name="Generic/Background/Cloud8" type="decor" x="1691.47" y="880.121" width="761" height="387"/>
-  <object id="831" name="Generic/Background/Cloud9" type="decor" x="2306.47" y="848.621" width="637" height="481"/>
-  <object id="832" name="Generic/Background/Cloud10" type="decor" x="1817.5" y="-1168.5" width="423" height="151"/>
-  <object id="833" name="Generic/Background/Cloud11" type="decor" x="1740.5" y="-763.5" width="352" height="111"/>
-  <object id="834" name="Generic/Background/Cloud12" type="decor" x="1816" y="-471.5" width="542" height="197"/>
+  <object id="823" name="Generic/Background/Cloud1" type="decor" x="1266.41" y="772.822" width="690" height="500">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="824" name="Generic/Background/Cloud2" type="decor" x="1791.97" y="1022.12" width="570" height="271">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="825" name="Generic/Background/Cloud3" type="decor" x="2279.97" y="1012.62" width="390" height="137">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="826" name="Generic/Background/Cloud4" type="decor" x="2569.97" y="991.621" width="614" height="122">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="827" name="Generic/Background/Cloud6" type="decor" x="961.97" y="927.121" width="1539" height="251">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="828" name="Generic/Background/Cloud5" type="decor" x="2797.97" y="923.621" width="864" height="177">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="829" name="Generic/Background/Cloud7" type="decor" x="2647.47" y="886.621" width="1159" height="372">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="830" name="Generic/Background/Cloud8" type="decor" x="1691.47" y="880.121" width="761" height="387">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="831" name="Generic/Background/Cloud9" type="decor" x="2306.47" y="848.621" width="637" height="481">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
