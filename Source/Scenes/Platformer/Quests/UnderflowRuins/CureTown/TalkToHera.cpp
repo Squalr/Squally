@@ -95,7 +95,7 @@ void TalkToHera::onComplete()
 {
 	this->hera->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		questBehavior->disableTurnIn();
+		questBehavior->enableIncompleteQuest();
 	});
 
 	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);

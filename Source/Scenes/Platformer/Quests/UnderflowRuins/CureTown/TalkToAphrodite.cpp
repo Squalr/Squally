@@ -95,7 +95,7 @@ void TalkToAphrodite::onComplete()
 {
 	this->aphrodite->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		questBehavior->disableNewQuest();
+		questBehavior->disableAll();
 	});
 
 	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitDoor)

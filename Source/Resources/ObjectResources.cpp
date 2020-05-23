@@ -273,6 +273,7 @@ const std::string ObjectResources::Interactive_Help_HelpTotem = "Private/Platfor
 const std::string ObjectResources::Interactive_Help_HelpTotemDeactivated = "Private/Platformer/Objects/Interactive/Help/HelpTotemDeactivated.png";
 const std::string ObjectResources::Interactive_Help_Question = "Private/Platformer/Objects/Interactive/Help/Question.png";
 const std::string ObjectResources::Interactive_Help_QuestionMark = "Private/Platformer/Objects/Interactive/Help/QuestionMark.png";
+const std::string ObjectResources::Interactive_Help_QuestionMarkDisabled = "Private/Platformer/Objects/Interactive/Help/QuestionMarkDisabled.png";
 const std::string ObjectResources::Interactive_Help_TotemGlow = "Private/Platformer/Objects/Interactive/Help/TotemGlow.png";
 const std::string ObjectResources::Interactive_LifeStone = "Private/Platformer/Objects/Interactive/LifeStone.png";
 const std::string ObjectResources::Interactive_Sarcophagus_SarcophagusBase = "Private/Platformer/Objects/Interactive/Sarcophagus/SarcophagusBase.png";

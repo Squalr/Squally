@@ -33,6 +33,7 @@ EntityQuestVisualBehavior::EntityQuestVisualBehavior(GameObject* owner) : super(
 	this->contentNode = Node::create();
 	this->questToGive = Sprite::create(ObjectResources::Interactive_Help_Exclamation);
 	this->questTurnIn = Sprite::create(ObjectResources::Interactive_Help_QuestionMark);
+	this->questIncomplete = Sprite::create(ObjectResources::Interactive_Help_QuestionMarkDisabled);
 
 	if (this->entity == nullptr)
 	{
@@ -41,9 +42,11 @@ EntityQuestVisualBehavior::EntityQuestVisualBehavior(GameObject* owner) : super(
 
 	this->questToGive->setOpacity(0);
 	this->questTurnIn->setOpacity(0);
+	this->questIncomplete->setOpacity(0);
 
 	this->contentNode->addChild(this->questToGive);
 	this->contentNode->addChild(this->questTurnIn);
+	this->contentNode->addChild(this->questIncomplete);
 	this->addChild(this->contentNode);
 }
 
@@ -73,20 +76,31 @@ void EntityQuestVisualBehavior::onDisable()
 
 void EntityQuestVisualBehavior::enableTurnIn()
 {
+	this->disableAll();
+	this->questTurnIn->stopAllActions();
 	this->questTurnIn->runAction(FadeTo::create(0.5f, 255));
-}
-
-void EntityQuestVisualBehavior::disableTurnIn()
-{
-	this->questTurnIn->runAction(FadeTo::create(0.5f, 0));
 }
 
 void EntityQuestVisualBehavior::enableNewQuest()
 {
+	this->disableAll();
+	this->questToGive->stopAllActions();
 	this->questToGive->runAction(FadeTo::create(0.5f, 255));
 }
 
-void EntityQuestVisualBehavior::disableNewQuest()
+void EntityQuestVisualBehavior::enableIncompleteQuest()
 {
+	this->disableAll();
+	this->questIncomplete->stopAllActions();
+	this->questIncomplete->runAction(FadeTo::create(0.5f, 255));
+}
+
+void EntityQuestVisualBehavior::disableAll()
+{
+	this->questTurnIn->stopAllActions();
+	this->questToGive->stopAllActions();
+	this->questIncomplete->stopAllActions();
+	this->questTurnIn->runAction(FadeTo::create(0.5f, 0));
 	this->questToGive->runAction(FadeTo::create(0.5f, 0));
+	this->questIncomplete->runAction(FadeTo::create(0.5f, 0));
 }

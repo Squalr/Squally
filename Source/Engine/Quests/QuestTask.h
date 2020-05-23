@@ -18,6 +18,8 @@ public:
 	std::string getQuestTaskName();
 	QuestState getQuestState();
 
+	static void SaveQuestSaveState(std::string questLine, std::string questTask, std::string key, cocos2d::Value value);
+	static cocos2d::Value GetQuestSaveStateOrDefault(std::string questLine, std::string questTask, std::string key, cocos2d::Value value);
 	static QuestState getQuestStateForTask(QuestLine* questLine, std::string questTask);
 
 protected:

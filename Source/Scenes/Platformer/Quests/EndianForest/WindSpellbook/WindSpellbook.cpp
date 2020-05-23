@@ -97,7 +97,7 @@ void WindSpellbook::onComplete()
 
 	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		questBehavior->disableTurnIn();
+		questBehavior->disableAll();
 	});
 }
 

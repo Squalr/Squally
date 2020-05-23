@@ -103,7 +103,7 @@ void ReturnToQueenAgain::onComplete()
 
 	this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		questBehavior->disableTurnIn();
+		questBehavior->disableAll();
 	});
 }
 

@@ -24,6 +24,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -235,16 +237,16 @@ void EntityPetrificationBehavior::unpetrify()
 
 void EntityPetrificationBehavior::runDialogue()
 {
-	static int DialogueIndex = 0;
-
 	this->entity->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 	{
-		switch (DialogueIndex++ % 5)
+		int currentCureCount = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(0)).asInt();
+
+		switch (currentCureCount++ % 6)
 		{
 			default:
 			case 0:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), SoundResources::Platformer_Entities_Generic_ChatterShort2);
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), SoundResources::Platformer_Entities_Generic_ChatterShort2);
 				break;
 			}
 			case 1:
@@ -259,14 +261,21 @@ void EntityPetrificationBehavior::runDialogue()
 			}
 			case 3:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), "");
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), "");
 				break;
 			}
 			case 4:
+			{
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
+				break;
+			}
+			case 5:
 			{
 				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
 				break;
 			}
 		}
+
+		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(currentCureCount));
 	});
 }

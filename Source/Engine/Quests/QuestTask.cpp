@@ -158,16 +158,26 @@ void QuestTask::complete()
 	this->questLine->advanceNextQuest(this);
 }
 
-void QuestTask::saveQuestSaveState(std::string key, cocos2d::Value value)
+void QuestTask::SaveQuestSaveState(std::string questLine, std::string questTask, std::string key, Value value)
 {
-	std::string combinedKey = this->questLine->getQuestLine() + "_" + this->getQuestTaskName() + "_" + key;
+	std::string combinedKey = questLine + "_" + questTask + "_" + key;
 
 	SaveManager::SaveProfileData(combinedKey, value);
 }
 
-cocos2d::Value QuestTask::getQuestSaveStateOrDefault(std::string key, cocos2d::Value value)
+cocos2d::Value QuestTask::GetQuestSaveStateOrDefault(std::string questLine, std::string questTask, std::string key, cocos2d::Value value)
 {
-	std::string combinedKey = this->questLine->getQuestLine() + "_" + this->getQuestTaskName() + "_" + key;
+	std::string combinedKey = questLine + "_" + questTask + "_" + key;
 
 	return SaveManager::getProfileDataOrDefault(combinedKey, value);
+}
+
+void QuestTask::saveQuestSaveState(std::string key, Value value)
+{
+	QuestTask::SaveQuestSaveState(this->questLine->getQuestLine(), this->getQuestTaskName(), key, value);
+}
+
+cocos2d::Value QuestTask::getQuestSaveStateOrDefault(std::string key, cocos2d::Value value)
+{
+	return QuestTask::GetQuestSaveStateOrDefault(this->questLine->getQuestLine(), this->getQuestTaskName(), key, value);
 }

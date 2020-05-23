@@ -274,6 +274,7 @@ namespace ObjectResources
 	extern const std::string Interactive_Help_HelpTotemDeactivated;
 	extern const std::string Interactive_Help_Question;
 	extern const std::string Interactive_Help_QuestionMark;
+	extern const std::string Interactive_Help_QuestionMarkDisabled;
 	extern const std::string Interactive_Help_TotemGlow;
 	extern const std::string Interactive_LifeStone;
 	extern const std::string Interactive_Sarcophagus_SarcophagusBase;

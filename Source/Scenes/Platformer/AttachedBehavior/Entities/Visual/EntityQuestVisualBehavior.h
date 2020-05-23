@@ -15,9 +15,9 @@ public:
 	static EntityQuestVisualBehavior* create(GameObject* owner);
 
 	void enableTurnIn();
-	void disableTurnIn();
 	void enableNewQuest();
-	void disableNewQuest();
+	void enableIncompleteQuest();
+	void disableAll();
 
 	static const std::string MapKey;
 
@@ -36,4 +36,5 @@ private:
 	cocos2d::Node* contentNode;
 	cocos2d::Sprite* questToGive;
 	cocos2d::Sprite* questTurnIn;
+	cocos2d::Sprite* questIncomplete;
 };
