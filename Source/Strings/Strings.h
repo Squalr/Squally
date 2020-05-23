@@ -25584,6 +25584,81 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Mesuda_E_FindACure() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere : public LocalizedString
 	{
 	public:

@@ -211,6 +211,9 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_Machines_WoodMechanism1;
 	extern const std::string Platformer_Objects_Misc_BowlingStrike1;
 	extern const std::string Platformer_Objects_PotBreak_PotSmash1;
+	extern const std::string Platformer_Objects_Statue_RockBreak;
+	extern const std::string Platformer_Objects_Statue_Rumble;
+	extern const std::string Platformer_Objects_Statue_RumbleAndBreak;
 	extern const std::string Platformer_Objects_Traps_Tick1;
 	extern const std::string Platformer_Objects_Traps_Tick2;
 	extern const std::string Platformer_Objects_Traps_Tick3;

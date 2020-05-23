@@ -25,7 +25,7 @@ Thor::Thor(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_UnderflowRuins_Thor_Animations,
 	EntityResources::Npcs_UnderflowRuins_Thor_Emblem,
 	Size(112.0f, 160.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 }

@@ -9,15 +9,18 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
@@ -26,6 +29,9 @@
 #include "Resources/EntityResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -49,6 +55,8 @@ EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : su
 	this->inventory = nullptr;
 	this->cureInteraction = nullptr;
 	this->unpetrifyParticles = SmartParticles::create(ParticleResources::Objects_StatueBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
+	this->statueBreakSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_RumbleAndBreak);
+	this->rotationNode = Node::create();
 
 	if (this->entity == nullptr)
 	{
@@ -99,11 +107,13 @@ EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : su
 		this->petrifiedSprite->setVisible(false);
 		this->petrifiedSprite->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-		this->addChild(this->petrifiedSprite);
+		this->rotationNode->addChild(this->petrifiedSprite);
 		this->addChild(this->cureInteraction);
 	}
 
-	this->addChild(this->unpetrifyParticles);
+	this->rotationNode->addChild(this->unpetrifyParticles);
+	this->addChild(this->rotationNode);
+	this->addChild(this->statueBreakSound);
 }
 
 EntityPetrificationBehavior::~EntityPetrificationBehavior()
@@ -122,7 +132,7 @@ void EntityPetrificationBehavior::onLoad()
 		return this->tryCure();
 	});
 
-	this->unpetrifyParticles->setPosition(this->entity->getEntityCenterPoint());
+	this->unpetrifyParticles->setPosition(this->entity->getEntityCenterPoint() + Vec2(0.0f, 64.0f));
 	this->cureInteraction->setPosition(this->entity->getEntityCenterPoint());
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
@@ -170,10 +180,35 @@ bool EntityPetrificationBehavior::tryCure()
 	PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(mirror));
 
 	this->entity->saveObjectState(EntityPetrificationBehavior::SaveKeyCured, Value(true));
-	this->unpetrify();
 
 	this->cureInteraction->disable();
-	this->unpetrifyParticles->start();
+	this->statueBreakSound->play();
+
+	const float RotationAngle = 2.5f;
+	const float RotationSpeed = 0.05f;
+	const float HalfRotationSpeed = RotationSpeed / 2.0f;
+	const float RumbleTime = 0.55f;
+	const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed));
+
+	this->rotationNode->runAction(Sequence::create(
+		EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
+		Repeat::create(Sequence::create(
+			EaseSineInOut::create(RotateTo::create(RotationSpeed, -RotationAngle)),
+			EaseSineInOut::create(RotateTo::create(RotationSpeed, RotationAngle)),
+			nullptr
+		), Rumbles),
+		EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, 0.0f)),
+		CallFunc::create([=]()
+		{
+			this->unpetrify();
+		}),
+		DelayTime::create(0.75f),
+		CallFunc::create([=]()
+		{
+			this->runDialogue();
+		}),
+		nullptr
+	));
 
 	return true;
 }
@@ -194,4 +229,44 @@ void EntityPetrificationBehavior::unpetrify()
 			healthBehavior->revive();
 		});
 	}
+
+	this->unpetrifyParticles->start();
+}
+
+void EntityPetrificationBehavior::runDialogue()
+{
+	static int DialogueIndex = 0;
+
+	this->entity->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
+	{
+		switch (DialogueIndex++ % 5)
+		{
+			default:
+			case 0:
+			{
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), SoundResources::Platformer_Entities_Generic_ChatterShort2);
+				break;
+			}
+			case 1:
+			{
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
+				break;
+			}
+			case 2:
+			{
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree::create(), SoundResources::Platformer_Entities_Generic_ChatterShort2);
+				break;
+			}
+			case 3:
+			{
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), "");
+				break;
+			}
+			case 4:
+			{
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
+				break;
+			}
+		}
+	});
 }

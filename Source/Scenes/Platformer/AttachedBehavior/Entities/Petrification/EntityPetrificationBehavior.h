@@ -11,6 +11,7 @@ class InteractObject;
 class Inventory;
 class PlatformerEntity;
 class SmartParticles;
+class WorldSound;
 
 class EntityPetrificationBehavior : public AttachedBehavior
 {
@@ -18,6 +19,7 @@ public:
 	static EntityPetrificationBehavior* create(GameObject* owner);
 
 	void unpetrify();
+	void runDialogue();
 
 	static const std::string MapKey;
 
@@ -38,7 +40,9 @@ private:
 	cocos2d::Vec2 displayOffset;
 	Inventory* inventory;
 	SmartParticles* unpetrifyParticles;
+	WorldSound* statueBreakSound;
 	
+	cocos2d::Node* rotationNode;
 	cocos2d::Sprite* petrifiedSprite;
 
 	static const std::string SaveKeyCured;
