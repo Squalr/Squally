@@ -7,6 +7,7 @@
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="1"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
    <property name="unstuck-map" value=""/>
   </properties>

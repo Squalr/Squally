@@ -9,6 +9,7 @@
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
+#include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -95,6 +96,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 			MetaLayerDeserializer::create(
 			{
 				BackgroundDeserializer::create(),
+				PlatformerCrackDeserializer::create(),
 				MusicDeserializer::create(),
 				PhysicsDeserializer::create(),
 				PlatformerBannerDeserializer::create(),

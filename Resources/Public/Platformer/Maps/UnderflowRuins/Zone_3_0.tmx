@@ -7,6 +7,7 @@
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -91,7 +92,7 @@
   <object id="1085" name="Ruins/StoneGateLeft" type="decor" x="-476.589" y="-48.2121" width="1252" height="1426"/>
   <object id="1086" name="Ruins/StoneGateRight" type="decor" x="1856.58" y="-32.6515" width="1254" height="1426"/>
  </objectgroup>
- <objectgroup id="138" name="terrain -27" visible="0">
+ <objectgroup id="138" name="terrain -27">
   <properties>
    <property name="depth" type="float" value="-1728"/>
    <property name="type" value="objects"/>
@@ -127,7 +128,7 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1059" name="wood" type="terrain" x="996.18" y="1282" width="640" height="948"/>
+  <object id="1059" name="wood" type="terrain" x="996.18" y="1323" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="169" name="water -23">
   <properties>
@@ -145,7 +146,7 @@
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1060" name="wood" type="terrain" x="996.18" y="1303.99" width="640" height="948"/>
+  <object id="1060" name="wood" type="terrain" x="996.18" y="1349.99" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="168" name="water -21">
   <properties>
@@ -174,7 +175,7 @@
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1061" name="wood" type="terrain" x="996.847" y="1333.99" width="640" height="948"/>
+  <object id="1061" name="wood" type="terrain" x="996.847" y="1379.99" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="166" name="water -17">
   <properties>
@@ -192,7 +193,7 @@
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1062" name="wood" type="terrain" x="996.187" y="1361.33" width="640" height="948"/>
+  <object id="1062" name="wood" type="terrain" x="996.187" y="1405.33" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="165" name="water -15">
   <properties>
@@ -221,7 +222,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1063" name="wood" type="terrain" x="997.517" y="1392.66" width="640" height="948"/>
+  <object id="1063" name="wood" type="terrain" x="997.517" y="1433.66" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="163" name="water -11">
   <properties>
@@ -239,7 +240,7 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1064" name="wood" type="terrain" x="997.52" y="1424.66" width="640" height="948"/>
+  <object id="1064" name="wood" type="terrain" x="997.52" y="1460.66" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="162" name="water -9">
   <properties>
@@ -268,7 +269,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1065" name="wood" type="terrain" x="997.523" y="1455.33" width="640" height="948"/>
+  <object id="1065" name="wood" type="terrain" x="997.523" y="1485.33" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="160" name="water -5">
   <properties>
@@ -286,7 +287,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1066" name="wood" type="terrain" x="996.853" y="1485.99" width="640" height="948"/>
+  <object id="1066" name="wood" type="terrain" x="996.853" y="1507.99" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="150" name="texture -4">
   <properties>
@@ -310,7 +311,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1067" name="wood" type="terrain" x="997.513" y="1518.66" width="640" height="948"/>
+  <object id="1067" name="wood" type="terrain" x="997.513" y="1536.66" width="640" height="948"/>
  </objectgroup>
  <objectgroup id="151" name="decor -0.5">
   <properties>

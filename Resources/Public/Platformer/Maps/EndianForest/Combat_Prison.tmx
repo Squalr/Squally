@@ -4,6 +4,7 @@
   <properties>
    <property name="background" value="Laboratory"/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>

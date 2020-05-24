@@ -8,6 +8,7 @@
   <properties>
    <property name="background" value=""/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>

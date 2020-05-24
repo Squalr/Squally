@@ -39,15 +39,17 @@ public:
 
 	static const std::string KeyTypeCollision;
 
-private:
-	typedef SmartNode super;
+protected:
 	GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::Size unitSize,
 			cocos2d::Size tileSize, MapOrientation orientation);
-	~GameMap();
+	virtual ~GameMap();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 	void spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args);
 	void moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args);
 	void moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args);

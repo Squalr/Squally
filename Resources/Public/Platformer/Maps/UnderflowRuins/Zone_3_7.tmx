@@ -7,6 +7,7 @@
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
+   <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>

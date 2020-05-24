@@ -90,6 +90,7 @@ const std::string MapResources::UnderflowRuins_Home_Cleopatra = "Public/Platform
 const std::string MapResources::UnderflowRuins_Home_Hera = "Public/Platformer/Maps/UnderflowRuins/Home_Hera.tmx";
 const std::string MapResources::UnderflowRuins_Shoreline = "Public/Platformer/Maps/UnderflowRuins/Shoreline.tmx";
 const std::string MapResources::UnderflowRuins_Town_Alch = "Public/Platformer/Maps/UnderflowRuins/Town_Alch.tmx";
+const std::string MapResources::UnderflowRuins_Town_Bridge = "Public/Platformer/Maps/UnderflowRuins/Town_Bridge.tmx";
 const std::string MapResources::UnderflowRuins_Town_Docks = "Public/Platformer/Maps/UnderflowRuins/Town_Docks.tmx";
 const std::string MapResources::UnderflowRuins_Town_Inn = "Public/Platformer/Maps/UnderflowRuins/Town_Inn.tmx";
 const std::string MapResources::UnderflowRuins_Town_Inn_Upstairs = "Public/Platformer/Maps/UnderflowRuins/Town_Inn_Upstairs.tmx";

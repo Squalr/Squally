@@ -91,6 +91,7 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Home_Hera;
 	extern const std::string UnderflowRuins_Shoreline;
 	extern const std::string UnderflowRuins_Town_Alch;
+	extern const std::string UnderflowRuins_Town_Bridge;
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string UnderflowRuins_Town_Inn;
 	extern const std::string UnderflowRuins_Town_Inn_Upstairs;

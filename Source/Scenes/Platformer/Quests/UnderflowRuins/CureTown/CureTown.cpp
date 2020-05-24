@@ -9,6 +9,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
@@ -151,8 +152,11 @@ void CureTown::setPreText()
 	{
 		this->hera->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
+			int currentCureCount = this->getQuestSaveStateOrDefault(CureTown::SaveKeyCuredCount, Value(0)).asInt();
+
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_Q_PleaseCure::create(),
+				Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_Q_PleaseCure::create()
+					->setStringReplacementVariables(ConstantString::create(std::to_string(currentCureCount))),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Right,

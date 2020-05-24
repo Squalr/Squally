@@ -547,6 +547,7 @@ namespace DecorResources
 	extern const std::string Generic_Background_Fog4;
 	extern const std::string Generic_Background_Jail;
 	extern const std::string Generic_Background_Moon;
+	extern const std::string Generic_Background_SkyCrack;
 	extern const std::string Generic_Background_sun;
 	extern const std::string Generic_Bed;
 	extern const std::string Generic_BlueRug;
@@ -647,8 +648,14 @@ namespace DecorResources
 	extern const std::string Ruins_Background_PalmTree1;
 	extern const std::string Ruins_LionDoor;
 	extern const std::string Ruins_LionDoorFront;
+	extern const std::string Ruins_Obelisk;
 	extern const std::string Ruins_Pillar1;
 	extern const std::string Ruins_Pillar2;
+	extern const std::string Ruins_Pyramid;
+	extern const std::string Ruins_PyramidRamp;
+	extern const std::string Ruins_Sphynx;
+	extern const std::string Ruins_StoneGateLeft;
+	extern const std::string Ruins_StoneGateRight;
 	extern const std::string Ruins_Walls1;
 	extern const std::string Ruins_Walls10;
 	extern const std::string Ruins_Walls11;
