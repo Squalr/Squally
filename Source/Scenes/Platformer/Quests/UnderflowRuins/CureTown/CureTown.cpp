@@ -138,6 +138,8 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
 			},
 			Voices::GetNextVoiceShort(),
 			false

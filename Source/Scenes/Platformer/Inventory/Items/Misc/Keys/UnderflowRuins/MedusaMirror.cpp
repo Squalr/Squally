@@ -20,7 +20,7 @@ MedusaMirror* MedusaMirror::create()
 	return instance;
 }
 
-MedusaMirror::MedusaMirror() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
+MedusaMirror::MedusaMirror() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(1, 1))
 {
 }
 

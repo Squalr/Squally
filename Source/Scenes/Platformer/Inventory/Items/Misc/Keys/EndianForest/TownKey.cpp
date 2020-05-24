@@ -20,7 +20,7 @@ TownKey* TownKey::create()
 	return instance;
 }
 
-TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
+TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(1, 1))
 {
 }
 

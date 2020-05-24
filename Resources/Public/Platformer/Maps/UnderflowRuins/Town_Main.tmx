@@ -616,6 +616,7 @@
     <property name="attached-behavior" value="locked-portal"/>
     <property name="item-required" value="fountain-room-key"/>
     <property name="map" value="UnderflowRuins/Town_Well"/>
+    <property name="tag" value="fountain-room"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -632,7 +633,7 @@
   </properties>
   <object id="943" name="ajax" type="entity" x="1167.57" y="1122.54" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="petrified,friendly,pacing"/>
+    <property name="attached-behavior" value="petrified,friendly,pacing,run"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>

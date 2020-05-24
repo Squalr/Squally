@@ -20,7 +20,7 @@ RamWheel* RamWheel::create()
 	return instance;
 }
 
-RamWheel::RamWheel() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 0 }}))
+RamWheel::RamWheel() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 0 }}), ItemMeta(3))
 {
 }
 

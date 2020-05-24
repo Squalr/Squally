@@ -19434,6 +19434,21 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_WellPlayed() = default;
 	};
 
+	class Platformer_Dialogue_Rewards_DoYouWantThisReward : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Rewards_DoYouWantThisReward* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Rewards_DoYouWantThisReward();
+		virtual ~Platformer_Dialogue_Rewards_DoYouWantThisReward() = default;
+	};
+
 	class Platformer_Dialogue_Shopkeepers_DoYouWantToBuy : public LocalizedString
 	{
 	public:

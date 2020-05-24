@@ -20,7 +20,7 @@ FountainRoomKey* FountainRoomKey::create()
 	return instance;
 }
 
-FountainRoomKey::FountainRoomKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
+FountainRoomKey::FountainRoomKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(1, 1))
 {
 }
 

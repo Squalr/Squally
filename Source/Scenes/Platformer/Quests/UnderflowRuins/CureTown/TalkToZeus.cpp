@@ -160,7 +160,7 @@ void TalkToZeus::runCinematicSequencePt3()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->zeus, false),
-			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="812">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="823">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -22,6 +22,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="822" name="Generic/Shelf1" type="decor" x="956.712" y="74.2879" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -38,7 +39,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="Ruins/ArchDoorGray1" type="decor" x="1025.41" y="610.667" width="235" height="452"/>
+  <object id="809" name="Ruins/ArchDoorGray1" type="decor" x="632.41" y="611.167" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -50,17 +51,33 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="811" name="Generic/RedRug" type="decor" x="981.576" y="1055.5" width="332" height="21"/>
+  <object id="811" name="Generic/RedRug" type="decor" x="588.576" y="1056" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="1025.86" y="690.711" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="632.86" y="691.211" width="237.527" height="375.411">
    <properties>
     <property name="map" value="UnderflowRuins/Town_Main"/>
     <property name="transition" value="hera"/>
+   </properties>
+  </object>
+  <object id="818" name="reward-item" type="object" x="1211.13" y="391.432" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="819" name="reward-item" type="object" x="1504.46" y="391.432" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="820" name="reward-pool-hera" type="object" x="1512.5" y="155.841" width="64" height="64"/>
+  <object id="821" name="reward-item" type="object" x="1790.48" y="390.303" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
    </properties>
   </object>
  </objectgroup>
@@ -89,12 +106,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="748.588" y="941.93" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="355.588" y="942.43" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="1085.65" y="935.2" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="692.65" y="935.7" width="128" height="128">
    <properties>
     <property name="transition" value="hera"/>
    </properties>
