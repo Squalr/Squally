@@ -129,7 +129,7 @@ void CureTown::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::PointerTrace_Assembly_Jmp::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_R_ThankYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -140,7 +140,87 @@ void CureTown::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			Voices::GetNextVoiceShort(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_S_WhereAreYouHeaded::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+				this->complete();
+			},
+			Voices::GetNextVoiceShort(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_T_SkyCrack::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+				this->complete();
+			},
+			Voices::GetNextVoiceShort(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_T_SkyCrack::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+				this->complete();
+			},
+			Voices::GetNextVoiceShort(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_U_OnlyWay::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+				this->complete();
+			},
+			Voices::GetNextVoiceShort(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_V_Bridge::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+				this->complete();
+			},
+			Voices::GetNextVoiceShort(),
 			false
 		));
 	});
@@ -167,7 +247,7 @@ void CureTown::setPreText()
 				{
 					this->setPreText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

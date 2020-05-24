@@ -246,32 +246,32 @@ void EntityPetrificationBehavior::runDialogue()
 			default:
 			case 0:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), SoundResources::Platformer_Entities_Generic_ChatterShort2);
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), Voices::GetNextVoiceShort());
 				break;
 			}
 			case 1:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou::create(), Voices::GetNextVoiceShort());
 				break;
 			}
 			case 2:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree::create(), SoundResources::Platformer_Entities_Generic_ChatterShort2);
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree::create(), Voices::GetNextVoiceShort());
 				break;
 			}
 			case 3:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), "");
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), Voices::GetNextVoiceShort());
 				break;
 			}
 			case 4:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive::create(), Voices::GetNextVoiceShort());
 				break;
 			}
 			case 5:
 			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt::create(), SoundResources::Platformer_Entities_Generic_ChatterShort1);
+				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt::create(), Voices::GetNextVoiceShort());
 				break;
 			}
 		}

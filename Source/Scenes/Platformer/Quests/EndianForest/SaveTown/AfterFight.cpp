@@ -129,7 +129,7 @@ void AfterFight::runCinematicSequencePart1()
 			this->runCinematicSequencePart2();
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

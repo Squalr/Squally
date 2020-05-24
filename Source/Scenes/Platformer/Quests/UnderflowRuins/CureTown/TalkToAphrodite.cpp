@@ -132,7 +132,7 @@ void TalkToAphrodite::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -163,7 +163,7 @@ void TalkToAphrodite::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -178,7 +178,7 @@ void TalkToAphrodite::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -193,7 +193,7 @@ void TalkToAphrodite::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -208,7 +208,7 @@ void TalkToAphrodite::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -224,7 +224,7 @@ void TalkToAphrodite::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 

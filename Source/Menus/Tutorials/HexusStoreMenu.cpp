@@ -171,7 +171,7 @@ void HexusStoreMenu::onEnter()
 	
 	this->shopKeeper->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 	{
-		dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_Tutorials_HexEditing_TutorialStringSearch::create(), SoundResources::Platformer_Entities_Generic_ChatterMedium1, SpeechBubble::InfiniteDuration);
+		dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_Tutorials_HexEditing_TutorialStringSearch::create(), Voices::GetNextVoiceMedium(), SpeechBubble::InfiniteDuration);
 	});
 }
 

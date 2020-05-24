@@ -130,7 +130,7 @@ void SailForRuins::runNoSequence()
 		{
 			Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }
@@ -148,7 +148,7 @@ void SailForRuins::runYesSequence()
 		[=]()
 		{
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

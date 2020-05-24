@@ -112,7 +112,7 @@ void HelpTotem::tryDisplayHint()
 {
 	if (!this->isInactive && this->canInteract && this->hint != nullptr && this->isVisible())
 	{
-		this->speechBubble->runDialogue(this->hint->clone(), SoundResources::Platformer_Entities_TikiChatter, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::Centered);
+		this->speechBubble->runDialogue(this->hint->clone(), SoundResources::Platformer_Entities_Totem_TikiChatter, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::Centered);
 	}
 	else
 	{

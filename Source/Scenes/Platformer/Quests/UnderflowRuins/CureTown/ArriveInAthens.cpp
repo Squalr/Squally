@@ -112,7 +112,7 @@ void ArriveInAthens::runCinematicSequencePt1()
 		{
 			this->runCinematicSequencePt2();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -157,7 +157,7 @@ void ArriveInAthens::runCinematicSequencePt3()
 			GameCamera::getInstance()->popTargetIfMultiple();
 			this->runCinematicSequencePt4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }

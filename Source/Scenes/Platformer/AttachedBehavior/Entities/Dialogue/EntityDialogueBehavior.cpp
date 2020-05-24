@@ -109,6 +109,8 @@ void EntityDialogueBehavior::onLoad()
 void EntityDialogueBehavior::onDisable()
 {
 	super::onDisable();
+
+	this->dialogueInteraction->disable();
 }
 
 void EntityDialogueBehavior::update(float dt)
@@ -229,11 +231,12 @@ void EntityDialogueBehavior::showOptions()
 		{
 			DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
 			{
-				if (std::get<0>(next)->onDialogueChosen != nullptr)
-				{
-					std::get<0>(next)->onDialogueChosen();
-				}
 			}));
+			
+			if (std::get<0>(next)->onDialogueChosen != nullptr)
+			{
+				std::get<0>(next)->onDialogueChosen();
+			}
 
 			return true;
 		});

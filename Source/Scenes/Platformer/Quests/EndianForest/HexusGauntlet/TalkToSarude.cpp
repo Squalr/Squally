@@ -109,7 +109,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -138,7 +138,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -167,7 +167,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -181,7 +181,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -195,7 +195,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -209,7 +209,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -223,7 +223,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -238,7 +238,7 @@ void TalkToSarude::registerDialogue()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});

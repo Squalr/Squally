@@ -105,7 +105,7 @@ void TalkToMages::runCinematicSequencePart1()
 		{
 			this->runCinematicSequencePart2();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -143,7 +143,7 @@ void TalkToMages::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -162,7 +162,7 @@ void TalkToMages::runCinematicSequencePart4()
 		{
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }
@@ -195,7 +195,7 @@ void TalkToMages::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

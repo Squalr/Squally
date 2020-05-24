@@ -169,7 +169,7 @@ void TownExitBlocked::attachBardBehavior()
 					{
 						Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterMedium2
+					Voices::GetNextVoiceLong()
 				));
 			}),
 			1.0f

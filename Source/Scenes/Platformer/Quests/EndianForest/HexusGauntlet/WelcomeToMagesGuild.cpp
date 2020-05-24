@@ -93,7 +93,7 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -109,7 +109,7 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -126,7 +126,7 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});

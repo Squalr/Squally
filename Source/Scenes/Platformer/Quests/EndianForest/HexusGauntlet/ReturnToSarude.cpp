@@ -113,7 +113,8 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 					[=]()
 					{
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterShort1
+					Voices::GetNextVoiceShort(),
+					true
 				));
 			});
 		}
@@ -179,7 +180,7 @@ void ReturnToSarude::runDialogueIntroWin()
 		{
 			this->runDialogueOutro();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -213,7 +214,7 @@ void ReturnToSarude::runDialogueIntroLoss()
 		{
 			this->runDialogueOutro();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -252,15 +253,15 @@ void ReturnToSarude::runDialogueOutro()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			true
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		false
 		));
 	},
-	SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+	Voices::GetNextVoiceMedium(),
 	false
 	));
 }

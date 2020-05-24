@@ -71,7 +71,7 @@ void CypressBehavior::onLoad()
 				[=]()
 				{
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterShort1,
+				Voices::GetNextVoiceShort(),
 				false
 			));
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -87,7 +87,7 @@ void CypressBehavior::onLoad()
 					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(SapphireBand::create()));
 					this->entity->saveObjectState(CypressBehavior::SaveKeyItemGiven, Value(true));
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

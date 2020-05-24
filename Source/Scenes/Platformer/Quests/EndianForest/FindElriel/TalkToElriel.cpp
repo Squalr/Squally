@@ -119,7 +119,7 @@ void TalkToElriel::runCinematicSequencePart1()
 				false
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -158,7 +158,7 @@ void TalkToElriel::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

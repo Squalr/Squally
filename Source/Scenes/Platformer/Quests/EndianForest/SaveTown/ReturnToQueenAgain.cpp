@@ -149,7 +149,7 @@ void ReturnToQueenAgain::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			Voices::GetNextVoiceShort(),
 			true
 		));
 	});

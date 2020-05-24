@@ -126,7 +126,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -142,7 +142,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -174,7 +174,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -192,7 +192,7 @@ void TalkToQueen::runCinematicSequence()
 				this->setPostText();
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceLong(),
 			true
 		));
 	});
@@ -217,7 +217,7 @@ void TalkToQueen::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceLong(),
 				true
 			));
 		});

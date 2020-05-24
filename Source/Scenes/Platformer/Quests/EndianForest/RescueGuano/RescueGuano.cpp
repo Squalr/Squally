@@ -126,7 +126,7 @@ void RescueGuano::runRescueSequencePt2()
 		{
 			this->runRescueSequencePt3();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -169,7 +169,7 @@ void RescueGuano::runRescueSequencePt3()
 				SoundResources::Notifications_NotificationGood1
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

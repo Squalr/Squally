@@ -166,7 +166,7 @@ void ReturnToQueen::runCinematicSequence()
 
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -181,7 +181,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -211,7 +211,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -226,7 +226,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -241,7 +241,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -256,7 +256,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -271,7 +271,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -288,7 +288,7 @@ void ReturnToQueen::runCinematicSequence()
 			{
 				this->setPostText();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});
@@ -318,7 +318,7 @@ void ReturnToQueen::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

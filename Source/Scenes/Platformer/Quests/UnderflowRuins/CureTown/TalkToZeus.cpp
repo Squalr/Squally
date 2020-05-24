@@ -127,7 +127,7 @@ void TalkToZeus::runCinematicSequencePt1()
 		{
 			this->runCinematicSequencePt2();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -166,7 +166,7 @@ void TalkToZeus::runCinematicSequencePt3()
 		{
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

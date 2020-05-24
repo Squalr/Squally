@@ -104,7 +104,7 @@ void SneakPastLycan::runCinematicSequence()
 					{
 						Objectives::SetCurrentObjective(ObjectiveKeys::EFExploreMagesGuild);
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterShort2,
+					Voices::GetNextVoiceShort(),
 					true
 				));
 			}),

@@ -17,4 +17,5 @@ private:
 	typedef PropertyDeserializer super;
 
 	static const std::string MapKey;
+	static const std::string PropertyCrackColor;
 };
