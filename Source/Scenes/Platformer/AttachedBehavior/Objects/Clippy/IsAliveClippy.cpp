@@ -5,6 +5,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -37,5 +38,5 @@ IsAliveClippy::~IsAliveClippy()
 
 void IsAliveClippy::startDialogue()
 {
-	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid));
 }

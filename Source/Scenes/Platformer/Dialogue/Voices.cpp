@@ -65,23 +65,23 @@ std::string Voices::GetNextVoiceLong(VoiceType voiceType)
 		default:
 		case VoiceType::Human:
 		{
-			return Voices::GetNextVoiceHumanShort();
+			return Voices::GetNextVoiceHumanLong();
 		}
 		case VoiceType::Droid:
 		{
-			return Voices::GetNextVoiceDroidShort();
+			return Voices::GetNextVoiceDroidLong();
 		}
 		case VoiceType::Orc:
 		{
-			return Voices::GetNextVoiceOrcShort();
+			return Voices::GetNextVoiceOrcLong();
 		}
 		case VoiceType::Demon:
 		{
-			return Voices::GetNextVoiceDemonShort();
+			return Voices::GetNextVoiceDemonLong();
 		}
 		case VoiceType::Ghost:
 		{
-			return Voices::GetNextVoiceGhostShort();
+			return Voices::GetNextVoiceGhostLong();
 		}
 	}
 }
@@ -125,7 +125,7 @@ std::string Voices::GetNextVoiceLaugh(VoiceType voiceType)
 		}
 		case VoiceType::Droid:
 		{
-			return SoundResources::Platformer_Entities_Droid_DroidNoises1;
+			return SoundResources::Platformer_Entities_Droid_DroidLaugh1;
 		}
 		case VoiceType::Orc:
 		{
@@ -225,19 +225,27 @@ std::string Voices::GetNextVoiceHumanQuestion()
 std::string Voices::GetNextVoiceDroidShort()
 {
 	static unsigned int VoiceIncrement = 0;
-
+	
 	VoiceIncrement++;
 
-	switch(VoiceIncrement % 2)
+	switch(VoiceIncrement % 4)
 	{
 		default:
 		case 1:
 		{
-			return SoundResources::Platformer_Entities_Droid_DroidBrief;
+			return SoundResources::Platformer_Entities_Droid_DroidShort1;
+		}
+		case 2:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidShort2;
+		}
+		case 3:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidShort3;
 		}
 		case 0:
 		{
-			return SoundResources::Platformer_Entities_Droid_DroidBrief2;
+			return SoundResources::Platformer_Entities_Droid_DroidShort4;
 		}
 	}
 }
@@ -248,12 +256,20 @@ std::string Voices::GetNextVoiceDroidMedium()
 	
 	VoiceIncrement++;
 
-	switch(VoiceIncrement % 1)
+	switch(VoiceIncrement % 3)
 	{
 		default:
+		case 1:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidMedium1;
+		}
+		case 2:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidMedium2;
+		}
 		case 0:
 		{
-			return SoundResources::Platformer_Entities_Droid_DroidChatter;
+			return SoundResources::Platformer_Entities_Droid_DroidMedium3;
 		}
 	}
 }
@@ -264,12 +280,16 @@ std::string Voices::GetNextVoiceDroidLong()
 	
 	VoiceIncrement++;
 
-	switch(VoiceIncrement % 1)
+	switch(VoiceIncrement % 2)
 	{
 		default:
+		case 1:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidLong1;
+		}
 		case 0:
 		{
-			return SoundResources::Platformer_Entities_Droid_DroidChatter;
+			return SoundResources::Platformer_Entities_Droid_DroidLong2;
 		}
 	}
 }
@@ -280,12 +300,24 @@ std::string Voices::GetNextVoiceDroidQuestion()
 	
 	VoiceIncrement++;
 
-	switch(VoiceIncrement % 1)
+	switch(VoiceIncrement % 4)
 	{
 		default:
+		case 1:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidQuestion1;
+		}
+		case 2:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidQuestion2;
+		}
+		case 3:
+		{
+			return SoundResources::Platformer_Entities_Droid_DroidQuestion3;
+		}
 		case 0:
 		{
-			return SoundResources::Platformer_Entities_Droid_DroidChatter;
+			return SoundResources::Platformer_Entities_Droid_DroidQuestion4;
 		}
 	}
 }
@@ -333,7 +365,7 @@ std::string Voices::GetNextVoiceOrcLong()
 		default:
 		case 0:
 		{
-			return SoundResources::Platformer_Entities_Orc_OrcLaughCoughing1;
+			return SoundResources::Platformer_Entities_Orc_OrcLong1;
 		}
 	}
 }

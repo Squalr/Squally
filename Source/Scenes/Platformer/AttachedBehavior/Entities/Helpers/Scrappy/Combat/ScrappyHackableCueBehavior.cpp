@@ -55,7 +55,7 @@ void ScrappyHackableCueBehavior::onLoad()
 
 			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
-				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Dialogue_Combat_Help_UseYourAbilities::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Dialogue_Combat_Help_UseYourAbilities::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid));
 			});
 		}
 	}));

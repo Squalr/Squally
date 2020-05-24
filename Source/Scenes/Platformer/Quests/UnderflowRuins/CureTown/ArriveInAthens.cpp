@@ -176,7 +176,7 @@ void ArriveInAthens::runCinematicSequencePt4()
 		{
 			this->runCinematicSequencePt5();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidChatter,
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		false
 	));
 }
@@ -215,7 +215,7 @@ void ArriveInAthens::runCinematicSequencePt6()
 		{
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidChatter,
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		true
 	));
 }

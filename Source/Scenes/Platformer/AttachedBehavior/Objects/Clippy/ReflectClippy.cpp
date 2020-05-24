@@ -4,6 +4,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -38,6 +39,6 @@ void ReflectClippy::startDialogue()
 {
 	this->runDialogue(
 		Strings::Menus_Hacking_Abilities_Buffs_Reflect_ReflectClippy::create()->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEsi::create()),
-		SoundResources::Platformer_Entities_Droid_DroidChatter
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid)
 	);
 }

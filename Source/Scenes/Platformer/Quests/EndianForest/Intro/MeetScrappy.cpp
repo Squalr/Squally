@@ -46,7 +46,7 @@ MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine) : super(owner,
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
 	this->squally = nullptr;
-	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
+	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_Alarmed);
 
 	this->addChild(this->droidAlarmedSound);
 }
@@ -119,7 +119,7 @@ void MeetScrappy::runCinematicSequencePt1()
 			{
 				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 2.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), Voices::GetNextVoiceShort(Voices::VoiceType::Droid), 2.0f, [=]()
 					{
 						this->runCinematicSequencePt2();
 					});
@@ -144,7 +144,7 @@ void MeetScrappy::runCinematicSequencePt2()
 		{
 			this->runCinematicSequencePt3();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		false
 	));
 }
@@ -163,7 +163,7 @@ void MeetScrappy::runCinematicSequencePt3()
 		{
 			this->runCinematicSequencePt4();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		false
 	));
 }

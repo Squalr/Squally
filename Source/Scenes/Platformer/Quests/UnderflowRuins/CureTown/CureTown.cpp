@@ -77,7 +77,7 @@ void CureTown::onLoad(QuestState questState)
 			{
 				int currentCureCount = this->getQuestSaveStateOrDefault(CureTown::SaveKeyCuredCount, Value(0)).asInt();
 
-				if (currentCureCount > CureTown::MaxCuredCount)
+				if (currentCureCount >= CureTown::MaxCuredCount)
 				{
 					questBehavior->enableTurnIn();
 
@@ -138,7 +138,6 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
 			false
@@ -154,7 +153,6 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
 			false
@@ -170,9 +168,8 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 			false
 		));
 
@@ -186,7 +183,6 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
 			false
@@ -202,7 +198,6 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
 			false
@@ -232,11 +227,11 @@ void CureTown::setPreText()
 	{
 		this->hera->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			int currentCureCount = this->getQuestSaveStateOrDefault(CureTown::SaveKeyCuredCount, Value(0)).asInt();
+			int remaining = CureTown::MaxCuredCount - this->getQuestSaveStateOrDefault(CureTown::SaveKeyCuredCount, Value(0)).asInt();
 
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_Q_PleaseCure::create()
-					->setStringReplacementVariables(ConstantString::create(std::to_string(currentCureCount))),
+					->setStringReplacementVariables(ConstantString::create(std::to_string(remaining))),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Right,

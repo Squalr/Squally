@@ -138,7 +138,7 @@ void TalkToElriel::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		false
 	));
 }

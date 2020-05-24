@@ -7,6 +7,7 @@
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Strings/Strings.h"
 
@@ -38,5 +39,5 @@ ScrappyClippy::~ScrappyClippy()
 
 void ScrappyClippy::startDialogue()
 {
-	this->runDialogue(this->helpText == nullptr ? nullptr : this->helpText->clone(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(this->helpText == nullptr ? nullptr : this->helpText->clone(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid));
 }

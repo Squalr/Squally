@@ -146,7 +146,7 @@ void FireballTutorialBehavior::runTutorial()
 					CombatEvents::TriggerResumeTimelineCinematic();
 					HackableEvents::TriggerAllowHackerMode();
 				},
-				SoundResources::Platformer_Entities_Droid_DroidChatter
+				Voices::GetNextVoiceMedium(Voices::VoiceType::Droid)
 			));
 		}),
 		nullptr

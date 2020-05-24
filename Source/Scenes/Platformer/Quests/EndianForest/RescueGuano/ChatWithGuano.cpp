@@ -176,7 +176,7 @@ void ChatWithGuano::runChatSequencePt4()
 		{
 			this->runChatSequencePt5();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		true
 	));
 }

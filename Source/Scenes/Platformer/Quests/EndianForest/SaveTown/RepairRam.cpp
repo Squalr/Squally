@@ -138,7 +138,7 @@ void RepairRam::runDialogue()
 		[=]()
 		{
 		},
-		SoundResources::Platformer_Entities_Droid_DroidChatter,
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		true
 	));
 }
