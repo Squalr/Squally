@@ -154,7 +154,7 @@ void CureTown::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 
@@ -174,21 +174,6 @@ void CureTown::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_T_SkyCrack::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_U_OnlyWay::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
@@ -199,7 +184,7 @@ void CureTown::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -215,8 +200,8 @@ void CureTown::runCinematicSequence()
 			{
 				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
-			false
+			Voices::GetNextVoiceMedium(),
+			true
 		));
 	});
 }

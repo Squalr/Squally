@@ -34,6 +34,7 @@ private:
 	typedef AttachedBehavior super;
 
 	bool tryCure();
+	void ajaxRun();
 
 	PlatformerEntity* entity;
 	InteractObject* cureInteraction;
@@ -46,4 +47,5 @@ private:
 	cocos2d::Sprite* petrifiedSprite;
 
 	static const std::string SaveKeyCured;
+	static const std::string TagExit;
 };

@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -49,7 +49,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1092" name="temple" type="terrain" x="2811.52" y="5300.67" width="275.63" height="1328">
+  <object id="1092" name="temple" type="terrain" x="2811.52" y="5300.67" width="275.63" height="1398">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -60,12 +60,12 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1089" name="temple" type="terrain" x="2941.18" y="5424.34" width="275.63" height="1205.33">
+  <object id="1089" name="temple" type="terrain" x="2941.18" y="5424.34" width="275.63" height="1275.33">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1093" name="temple" type="terrain" x="2623.52" y="5226.67" width="275.63" height="1328">
+  <object id="1093" name="temple" type="terrain" x="2623.52" y="5226.67" width="275.63" height="1466">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -76,7 +76,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1088" name="temple" type="terrain" x="3083.52" y="5536.5" width="275.63" height="1093.33">
+  <object id="1088" name="temple" type="terrain" x="3083.52" y="5536.5" width="275.63" height="1159.33">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -98,7 +98,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1087" name="temple" type="terrain" x="3235.18" y="5649.17" width="275.63" height="980.333">
+  <object id="1087" name="temple" type="terrain" x="3235.18" y="5649.17" width="275.63" height="1050.33">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -109,7 +109,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1086" name="temple" type="terrain" x="3350.18" y="5770.17" width="275.63" height="859.666">
+  <object id="1086" name="temple" type="terrain" x="3350.18" y="5770.17" width="275.63" height="927.666">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -245,7 +245,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1094" name="temple" type="terrain" x="-81.815" y="6456" width="4235.63" height="760">
+  <object id="1094" name="temple" type="terrain" x="-85.815" y="6481.33" width="4235.63" height="760">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -329,11 +329,11 @@
   <object id="1024" name="sound" type="object" x="2309" y="6271.47" width="128" height="128">
    <properties>
     <property name="listen-event" value="cough-sfx"/>
-    <property name="resource" value="Platformer/Entities/Orc/LaughingCough"/>
+    <property name="resource" value="Platformer/Entities/Orc/OrcLaughCoughing1"/>
    </properties>
   </object>
   <object id="1025" name="Generic/Vent" type="decor" x="198.045" y="4766.62" width="305" height="307"/>
-  <object id="1052" name="vase" type="object" x="3739.5" y="6296" width="113" height="160">
+  <object id="1052" name="vase" type="object" x="3739.5" y="6320" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
    </properties>

@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/ArriveInAthens.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/LowerRope.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/RaiseBridge.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/TalkToAphrodite.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/TalkToHera.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/TalkToZeus.h"
@@ -28,6 +29,7 @@ CureTownLine::CureTownLine() : super(CureTownLine::MapKeyQuestLine, {
 	QuestData(LowerRope::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return LowerRope::create(owner, questLine); }),
 	QuestData(TalkToZeus::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToZeus::create(owner, questLine); }),
 	QuestData(CureTown::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return CureTown::create(owner, questLine); }),
+	QuestData(RaiseBridge::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return RaiseBridge::create(owner, questLine); }),
 })
 {
 }

@@ -121,22 +121,6 @@ def main():
                     resultDict["es-419"] = translation
                     
             print(json.dumps(resultDict, indent=4, ensure_ascii=False))
-        '''
-		translations = json.loads(inputStr)
-		
-		resultDict = {};
-		
-		for key in translations:
-			resultDict[key['locale']] = key['string']
-			
-			if (key['locale'] == "es"):
-				resultDict["es-419"] = key['string']
-			
-			if (key['locale'] == "pt"):
-				resultDict["pt-BR"] = key['string']
-		print
-		print(json.dumps(resultDict, indent=4, ensure_ascii=False))
-		print'''
 
 if __name__ == '__main__':
     main()

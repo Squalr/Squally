@@ -25254,6 +25254,21 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings : public LocalizedString
 	{
 	public:
@@ -25762,6 +25777,21 @@ namespace Strings
 	private:
 		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt();
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou : public LocalizedString

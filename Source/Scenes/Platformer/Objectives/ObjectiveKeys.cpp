@@ -23,3 +23,7 @@ const std::string ObjectiveKeys::EFSailForUR = "EF_SAIL_FOR_UR";
 
 const std::string ObjectiveKeys::URHeadToTown = "UR_HEAD_TO_TOWN";
 const std::string ObjectiveKeys::URLookForSurvivors = "UR_LOOK_FOR_SURVIVORS";
+const std::string ObjectiveKeys::URExploreFountain = "UR_EXPLORE_FOUNTAIN";
+const std::string ObjectiveKeys::URCureTownspeople = "UR_CURE_TOWNSPEOPLE";
+const std::string ObjectiveKeys::URCrossBridge = "UR_CROSS_BRIDGE";
+const std::string ObjectiveKeys::URFindTheCavernsEntrance = "UR_FIND_CAVERNS_ENTRANCE";

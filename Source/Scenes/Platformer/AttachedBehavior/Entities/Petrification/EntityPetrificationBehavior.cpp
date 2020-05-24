@@ -19,6 +19,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
@@ -39,6 +40,7 @@ using namespace cocos2d;
 
 const std::string EntityPetrificationBehavior::MapKey = "petrified";
 const std::string EntityPetrificationBehavior::SaveKeyCured = "SAVE_KEY_PETRIFICATION_CURED";
+const std::string EntityPetrificationBehavior::TagExit = "town-exit";
 
 EntityPetrificationBehavior* EntityPetrificationBehavior::create(GameObject* owner)
 {
@@ -126,6 +128,11 @@ void EntityPetrificationBehavior::onLoad()
 {
 	if (this->entity->loadObjectStateOrDefault(EntityPetrificationBehavior::SaveKeyCured, Value(false)).asBool())
 	{
+		if (this->entity->getEntityKey() == "ajax")
+		{
+			this->entity->despawn();
+		}
+
 		return;
 	}
 
@@ -239,43 +246,60 @@ void EntityPetrificationBehavior::runDialogue()
 {
 	this->entity->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 	{
-		int currentCureCount = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(0)).asInt();
-
-		switch (currentCureCount++ % 6)
+		if (this->entity->getEntityKey() == "ajax")
 		{
-			default:
-			case 0:
-			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), Voices::GetNextVoiceShort());
-				break;
-			}
-			case 1:
-			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou::create(), Voices::GetNextVoiceShort());
-				break;
-			}
-			case 2:
-			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree::create(), Voices::GetNextVoiceShort());
-				break;
-			}
-			case 3:
-			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), Voices::GetNextVoiceShort());
-				break;
-			}
-			case 4:
-			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive::create(), Voices::GetNextVoiceShort());
-				break;
-			}
-			case 5:
-			{
-				dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt::create(), Voices::GetNextVoiceShort());
-				break;
-			}
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou::create(), Voices::GetNextVoiceShort());
+
+			this->ajaxRun();
+		}
+		else if (this->entity->getEntityKey() == "griffin")
+		{
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt::create(), Voices::GetNextVoiceShort());
+		}
+		else if (this->entity->getEntityKey() == "geryon")
+		{
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments::create(), Voices::GetNextVoiceShort());
+		}
+		else if (this->entity->getEntityKey() == "athena")
+		{
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree::create(), Voices::GetNextVoiceShort());
+		}
+		else if (this->entity->getEntityKey() == "thor")
+		{
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive::create(), Voices::GetNextVoiceShort());
+		}
+		else if (this->entity->getEntityKey() == "ares")
+		{
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray::create(), Voices::GetNextVoiceShort());
+		}
+		else
+		{
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart::create(), Voices::GetNextVoiceShort());
 		}
 
-		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(currentCureCount));
+		int cureCount = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(0)).asInt() + 1;
+
+		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(cureCount));
 	});
+}
+
+void EntityPetrificationBehavior::ajaxRun()
+{
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
+	{
+		this->entity->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
+
+		this->entity->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+		{
+			this->entity->runAction(Sequence::create(
+				FadeTo::create(0.5f, 0),
+				CallFunc::create([=]()
+				{
+					this->entity->despawn();
+				}),
+				nullptr
+			));
+		});
+
+	}, EntityPetrificationBehavior::TagExit);
 }

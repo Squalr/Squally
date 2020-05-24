@@ -28,4 +28,8 @@ public:
 
 	static const std::string URHeadToTown;
 	static const std::string URLookForSurvivors;
+	static const std::string URExploreFountain;
+	static const std::string URCureTownspeople;
+	static const std::string URCrossBridge;
+	static const std::string URFindTheCavernsEntrance;
 };

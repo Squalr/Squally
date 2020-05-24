@@ -181,7 +181,7 @@ void TalkToGrogg::runCinematicSequencePart4()
 				agroBehavior->setAgroRangeY(65535.0f);
 			});
 		},
-		Voices::GetNextVoiceLaugh(Voices::VoiceType::Orc),
+		Voices::GetNextVoiceLong(Voices::VoiceType::Orc),
 		true
 	));
 }
