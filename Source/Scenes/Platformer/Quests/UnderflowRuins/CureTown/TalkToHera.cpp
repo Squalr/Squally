@@ -240,7 +240,7 @@ void TalkToHera::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 			),
 			[=]()
 			{

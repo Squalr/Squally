@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -172,11 +172,12 @@
     <property name="transition" value="right-bottom"/>
    </properties>
   </object>
-  <object id="882" name="glass-display-or" type="object" x="5757.2" y="1731.53" width="169" height="331">
+  <object id="882" name="glass-display-item" type="object" x="5757.2" y="1731.53" width="169" height="331">
    <properties>
     <property name="delay" type="float" value="1"/>
+    <property name="item-name" value="special-or"/>
     <property name="listen-event" value="solve-torches"/>
-    <property name="reward-pool" value="display-or"/>
+    <property name="tutorial" value="light-hint"/>
    </properties>
   </object>
   <object id="883" name="logic-torch" type="object" x="5117.33" y="1841.7" width="101" height="111">

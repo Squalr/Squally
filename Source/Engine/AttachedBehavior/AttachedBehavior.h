@@ -22,13 +22,14 @@ protected:
 	virtual void onLoad() = 0;
 	void invalidate();
 	void toggleQueryable(bool queryable);
+	
+	GameObject* owner;
 
 private:
 	typedef SmartNode super;
 	
 	void updateState();
 
-	GameObject* owner;
 	bool invalidated;
 	bool queryable;
 };

@@ -33,13 +33,14 @@ public:
 protected:
 	InventoryMenu(PartyMenu* partyMenu);
 	virtual ~InventoryMenu();
+	
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
 
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 	void onFilterChange();
 	void populateItemList();
 	void performEquipmentAction(Item* item);

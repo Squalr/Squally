@@ -254,6 +254,7 @@ void PlatformerDialogueBox::initializeListeners()
 	{
 		if (this->isDialogueFocused && this->cancelOptionChoice())
 		{
+			this->hideDialogue();
 			args->handle();
 		}
 	});

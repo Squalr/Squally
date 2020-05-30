@@ -26,12 +26,9 @@ RewardPoolHera* RewardPoolHera::create(ValueMap& properties)
 
 RewardPoolHera::RewardPoolHera(ValueMap& properties) : super(properties, RewardPoolHera::PoolName, { })
 {
-	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
-	// this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
-	// this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(ArchersHat::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(AcolytesCap::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CopperHelm::create(), ItemChance::Probability::Guaranteed));
 }
 
 RewardPoolHera::~RewardPoolHera()

@@ -83,6 +83,20 @@ void AlchemyLab::initializeListeners()
 	super::initializeListeners();
 }
 
+void AlchemyLab::activate()
+{
+	this->floatContainer->setVisible(true);
+
+	this->enable();
+}
+
+void AlchemyLab::deactivate()
+{
+	this->floatContainer->setVisible(false);
+
+	this->disable();
+}
+
 void AlchemyLab::onInteract()
 {
 	super::onInteract();

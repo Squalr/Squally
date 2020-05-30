@@ -1,0 +1,161 @@
+#include "GlassDisplayItem.h"
+
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCValue.h"
+
+#include "Engine/Events/InventoryEvents.h"
+#include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/DialogueEvents.h"
+#include "Events/HexusEvents.h"
+#include "Events/PlatformerEvents.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+
+#include "Resources/ItemResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Strings.h"
+
+using namespace cocos2d;
+
+const std::string GlassDisplayItem::MapKey = "glass-display-item";
+const std::string GlassDisplayItem::PropertyItemName = "item-name";
+const std::string GlassDisplayItem::PropertyTutorial = "tutorial";
+const std::string GlassDisplayItem::TutorialLightHint = "light-hint";
+
+GlassDisplayItem* GlassDisplayItem::create(cocos2d::ValueMap& properties)
+{
+	GlassDisplayItem* instance = new GlassDisplayItem(properties);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(properties, Size(169.0f, 331.0f))
+{
+	this->itemName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyItemName, Value("")).asString();
+	this->tutorialName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyTutorial, Value("")).asString();
+	this->item = nullptr;
+}
+
+GlassDisplayItem::~GlassDisplayItem()
+{
+}
+
+void GlassDisplayItem::onEnter()
+{
+	super::onEnter();
+
+	InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(this->itemName, [=](Item* item)
+	{
+		this->item = item;
+
+		Sprite* icon = Sprite::create(this->item->getIconResource());
+
+		this->addChild(this->item);
+		this->displayContentNode->addChild(icon);
+	}));
+}
+		
+bool GlassDisplayItem::tryOpen()
+{
+	if (this->isDisplayOpened)
+	{
+
+		this->unlockAndGiveItems();
+
+		return true;
+	}
+
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		DialogueEvents::BuildOptions(Strings::Platformer_Objects_GlassCase_GlassCaseLocked::create(),
+			{
+				Strings::Platformer_Objects_GlassCase_InspectItem::create(),
+				Strings::Menus_Cancel::create(),
+			}),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(nullptr, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+		},
+		"",
+		true,
+		false,
+		{
+			[=]()
+			{
+				return this->inspectItem();
+			},
+			[=]()
+			{
+				return true;
+			}
+		},
+		[=](){ return true; }
+	));
+
+	return false;
+}
+
+void GlassDisplayItem::unlockAndGiveItems()
+{
+	this->open(true);
+
+	if (this->item == nullptr)
+	{
+		return;
+	}
+
+	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+}
+
+void GlassDisplayItem::onDialogueClose()
+{
+	if (this->tutorialName == GlassDisplayItem::TutorialLightHint)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Objects_GlassCase_Clue::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			"",
+			true,
+			true
+		));
+	}
+}
+
+bool GlassDisplayItem::inspectItem()
+{
+	if (this->item == nullptr)
+	{
+		return false;
+	}
+
+	if (dynamic_cast<HexusCard*>(this->item) != nullptr)
+	{
+		HexusCard* hexusCard = dynamic_cast<HexusCard*>(this->item);
+
+		HexusEvents::TriggerShowHelpMenuOutsideOfGame(HexusEvents::HelpMenuArgs(CardList::getInstance()->cardListByName[hexusCard->getCardKey()]));
+	}
+	else
+	{
+		PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(this->item));
+	}
+
+	return true;
+}

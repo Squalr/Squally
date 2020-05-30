@@ -18,10 +18,13 @@ class EntityPetrificationBehavior : public AttachedBehavior
 public:
 	static EntityPetrificationBehavior* create(GameObject* owner);
 
+	bool isCured();
 	void unpetrify();
 	void runDialogue();
 
 	static const std::string MapKey;
+	static const std::string MapEventCured;
+	static const std::string MapEventKeyOwnerId;
 
 protected:
 	EntityPetrificationBehavior(GameObject* owner);

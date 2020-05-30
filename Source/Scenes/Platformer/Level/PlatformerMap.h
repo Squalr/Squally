@@ -12,6 +12,7 @@ class GameHud;
 class HelpMenu;
 class Hexus;
 class InventoryMenu;
+class ItemInfoMenu;
 class CardsMenu;
 class NotificationHud;
 class PartyMenu;
@@ -42,6 +43,7 @@ private:
 	void warpSquallyToRespawn();
 	void buildHexus();
 	void buildHexusCardHelp();
+	void buildItemInfoMenu();
 	void buildCipher();
 
 	bool awaitingConfirmationEnd;
@@ -53,6 +55,7 @@ private:
 	Hexus* hexus;
 	HelpMenu* cardHelpMenu;
 	CollectablesMenu* collectablesMenu;
+	ItemInfoMenu* itemInfoMenu;
 	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;

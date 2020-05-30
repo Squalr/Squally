@@ -44,6 +44,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/Illusions/IllusionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/LockedPortal.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/Petrification/PetrificationLinkBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanDouble/KnownValueBarDoubleBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squalr/KnownValueScanFloat/KnownValueBarFloatBehavior.h"

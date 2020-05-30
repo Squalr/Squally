@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -115,6 +115,7 @@
    <properties>
     <property name="attached-behavior" value="petrified,shopkeeper"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
  </objectgroup>
@@ -150,37 +151,51 @@
   </object>
   <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
   <object id="801" name="shop-pool-toben" type="object" x="404.409" y="310.893" width="64" height="64"/>
   <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
    <properties>
+    <property name="attached-behavior" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
     <property name="recipe-pool" value="alchemy-pool-ur"/>
    </properties>
   </object>

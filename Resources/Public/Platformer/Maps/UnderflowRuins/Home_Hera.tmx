@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="823">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="826">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -16,13 +16,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="2284" height="1264"/>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="2964" height="1264"/>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="Generic/Shelf1" type="decor" x="956.712" y="74.2879" width="1135" height="753"/>
+  <object id="822" name="Generic/Shelf1" type="decor" x="4828.71" y="74.2879" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -45,7 +45,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="2290.3" height="234.06"/>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="2962.3" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -64,20 +64,40 @@
     <property name="transition" value="hera"/>
    </properties>
   </object>
-  <object id="818" name="reward-item" type="object" x="1211.13" y="391.432" width="64" height="64">
+  <object id="818" name="reward-item" type="object" x="5083.13" y="391.432" width="64" height="64">
    <properties>
     <property name="pool" value="reward-pool-hera"/>
    </properties>
   </object>
-  <object id="819" name="reward-item" type="object" x="1504.46" y="391.432" width="64" height="64">
+  <object id="819" name="reward-item" type="object" x="5376.46" y="391.432" width="64" height="64">
    <properties>
     <property name="pool" value="reward-pool-hera"/>
    </properties>
   </object>
-  <object id="820" name="reward-pool-hera" type="object" x="1512.5" y="155.841" width="64" height="64"/>
-  <object id="821" name="reward-item" type="object" x="1790.48" y="390.303" width="64" height="64">
+  <object id="820" name="reward-pool-hera" type="object" x="5384.51" y="155.841" width="64" height="64"/>
+  <object id="821" name="reward-item" type="object" x="5662.48" y="390.303" width="64" height="64">
    <properties>
     <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="823" name="glass-display-item" type="object" x="2206.77" y="734.5" width="169" height="331">
+   <properties>
+    <property name="delay" type="float" value="1"/>
+    <property name="item-name" value="archers-hat"/>
+    <property name="listen-event" value="solve-torches"/>
+   </properties>
+  </object>
+  <object id="824" name="glass-display-item" type="object" x="2486.77" y="734.5" width="169" height="331">
+   <properties>
+    <property name="delay" type="float" value="1"/>
+    <property name="item-name" value="acolytes-cap"/>
+    <property name="listen-event" value="solve-torches"/>
+   </properties>
+  </object>
+  <object id="825" name="glass-display-item" type="object" x="1935.5" y="732.5" width="169" height="331">
+   <properties>
+    <property name="delay" type="float" value="1"/>
+    <property name="item-name" value="copper-helm"/>
    </properties>
   </object>
  </objectgroup>
@@ -91,7 +111,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="hera" type="entity" x="1662.67" y="937.333" width="128" height="128">
+  <object id="810" name="hera" type="entity" x="1486.91" y="937.333" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>

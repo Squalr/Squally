@@ -17424,6 +17424,21 @@ namespace Strings
 		virtual ~Menus_Inventory_Inventory() = default;
 	};
 
+	class Menus_Inventory_Item : public LocalizedString
+	{
+	public:
+		static Menus_Inventory_Item* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Inventory_Item();
+		virtual ~Menus_Inventory_Item() = default;
+	};
+
 	class Menus_Inventory_Misc : public LocalizedString
 	{
 	public:

@@ -41,6 +41,8 @@ using namespace cocos2d;
 const std::string EntityPetrificationBehavior::MapKey = "petrified";
 const std::string EntityPetrificationBehavior::SaveKeyCured = "SAVE_KEY_PETRIFICATION_CURED";
 const std::string EntityPetrificationBehavior::TagExit = "town-exit";
+const std::string EntityPetrificationBehavior::MapEventCured = "petrification-cured";
+const std::string EntityPetrificationBehavior::MapEventKeyOwnerId = "owner-id";
 
 EntityPetrificationBehavior* EntityPetrificationBehavior::create(GameObject* owner)
 {
@@ -115,6 +117,8 @@ EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : su
 		this->addChild(this->cureInteraction);
 	}
 
+	this->toggleQueryable(false);
+
 	this->rotationNode->addChild(this->unpetrifyParticles);
 	this->addChild(this->rotationNode);
 	this->addChild(this->statueBreakSound);
@@ -132,6 +136,8 @@ void EntityPetrificationBehavior::onLoad()
 		{
 			this->entity->despawn();
 		}
+		
+		this->toggleQueryable(true);
 
 		return;
 	}
@@ -168,6 +174,7 @@ void EntityPetrificationBehavior::onLoad()
 	});
 	
 	this->entity->getAnimations()->setVisible(false);
+	this->toggleQueryable(true);
 }
 
 void EntityPetrificationBehavior::onDisable()
@@ -175,6 +182,11 @@ void EntityPetrificationBehavior::onDisable()
 	super::onDisable();
 
 	this->unpetrify();
+}
+
+bool EntityPetrificationBehavior::isCured()
+{
+	return !this->petrifiedSprite->isVisible();
 }
 
 bool EntityPetrificationBehavior::tryCure()
@@ -209,7 +221,12 @@ bool EntityPetrificationBehavior::tryCure()
 		EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, 0.0f)),
 		CallFunc::create([=]()
 		{
+			ValueMap args = ValueMap();
+
+			args[EntityPetrificationBehavior::MapEventKeyOwnerId] = this->entity->getUniqueIdentifier();
+
 			this->unpetrify();
+			this->entity->broadcastMapEvent(EntityPetrificationBehavior::MapEventCured, args);
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()

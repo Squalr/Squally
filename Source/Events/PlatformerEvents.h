@@ -33,6 +33,7 @@ public:
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventOpenAlchemy;
 	static const std::string EventOpenSmithing;
+	static const std::string EventOpenItemInfo;
 	static const std::string EventDiscoverItem;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
@@ -136,6 +137,13 @@ public:
 		CraftingOpenArgs(std::vector<Item*> recipes) : recipes(recipes) { }
 	};
 
+	struct ItemInfoArgs
+	{
+		Item* item;
+
+		ItemInfoArgs(Item* item) : item(item) { }
+	};
+
 	struct GiveItemsFromPoolArgs
 	{
 		MinMaxPool* pool;
@@ -216,6 +224,7 @@ public:
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerOpenAlchemy(CraftingOpenArgs args);
 	static void TriggerOpenSmithing(CraftingOpenArgs args);
+	static void TriggerOpenItemInfo(ItemInfoArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);

@@ -48,6 +48,8 @@ RewardItem::RewardItem(ValueMap& properties) : super(properties)
 	this->itemClickHitbox = ClickableNode::create();
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, RewardItem::PropertyRewardPool, Value("")).asString();
 	this->available = true;
+	
+	this->itemClickHitbox->setContentSize(Size(224.0f, 224.0f));
 
 	this->setVisible(false);
 

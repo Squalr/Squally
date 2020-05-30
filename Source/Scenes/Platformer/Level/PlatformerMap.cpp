@@ -36,6 +36,7 @@
 #include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
+#include "Menus/Inventory/ItemInfoMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
@@ -83,6 +84,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->cipher = nullptr; // Lazy initialized
 	this->hexus = nullptr; // Lazy initialized
 	this->cardHelpMenu = nullptr; // Lazy initialized
+	this->itemInfoMenu = nullptr; // Lazy initialized
 	this->collectablesMenu = CollectablesMenu::create();
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
@@ -374,6 +376,21 @@ void PlatformerMap::initializeListeners()
 			GameUtils::focus(this->cardHelpMenu);
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenItemInfo, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::ItemInfoArgs* args = static_cast<PlatformerEvents::ItemInfoArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->buildItemInfoMenu();
+			
+			this->itemInfoMenu->setVisible(true);
+			this->itemInfoMenu->open(args->item);
+			
+			GameUtils::focus(this->itemInfoMenu);
+		}
+	}));
 	
 	this->ingameMenu->setInventoryClickCallback([=]()
 	{
@@ -562,6 +579,39 @@ void PlatformerMap::buildHexusCardHelp()
 		args->handle();
 
 		this->cardHelpMenu->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+}
+
+void PlatformerMap::buildItemInfoMenu()
+{
+	if (this->itemInfoMenu != nullptr)
+	{
+		return;
+	}
+
+	this->itemInfoMenu = ItemInfoMenu::create();
+
+	this->itemInfoMenu->setReturnClickCallback([=]()
+	{
+		this->itemInfoMenu->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+
+	this->miniGameHud->addChild(this->itemInfoMenu);
+
+	this->itemInfoMenu->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->canPause ||!GameUtils::isFocused(this->itemInfoMenu))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->itemInfoMenu->setVisible(false);
 
 		GameUtils::focus(this);
 	});

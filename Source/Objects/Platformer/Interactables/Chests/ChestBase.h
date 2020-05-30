@@ -18,6 +18,8 @@ protected:
 
 	virtual bool tryOpen();
 	virtual void unlockAndGiveItems();
+	void open(bool doSave);
+	void close();
 
 	cocos2d::Node* chestOpen;
 	cocos2d::Node* chestClosed;
@@ -26,9 +28,6 @@ protected:
 
 private:
 	typedef InteractObject super;
-
-	void open(bool doSave);
-	void close();
 
 	std::string chestOpenArgs;
 
