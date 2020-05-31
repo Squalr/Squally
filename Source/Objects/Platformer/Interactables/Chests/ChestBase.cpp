@@ -116,6 +116,7 @@ void ChestBase::open(bool doSave)
 	}
 
 	this->disable();
+	this->broadcastMapEvent(this->sendEvent, ValueMap());
 }
 
 void ChestBase::close()

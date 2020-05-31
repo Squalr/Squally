@@ -24,6 +24,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void update(float dt) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
@@ -32,6 +33,7 @@ protected:
 private:
 	typedef HackableObject super;
 
+	void toggleDisabled();
 	void updateElectricityBeam(float dt);
 
 	SmartAnimationSequenceNode* electricityAnimation;
@@ -43,6 +45,11 @@ private:
 	float maxElectricityBeamCountDown;
 	bool isRunningAnimation;
 	bool isVertical;
+	bool isDisabled;
+	bool disableSave;
 
 	static const std::string PropertyVertical;
+	static const std::string PropertyDisabled;
+	static const std::string PropertyDisableSave;
+	static const std::string SaveKeyDisabled;
 };

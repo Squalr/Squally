@@ -85,6 +85,7 @@ bool GlassDisplayItem::tryOpen()
 		),
 		[=]()
 		{
+			this->onDialogueClose();
 		},
 		"",
 		true,
@@ -132,7 +133,7 @@ void GlassDisplayItem::onDialogueClose()
 			[=]()
 			{
 			},
-			"",
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 			true,
 			true
 		));

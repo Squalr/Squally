@@ -31,6 +31,7 @@ RopedMovementBehavior::RopedMovementBehavior(GameObject* owner) : super(owner)
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->scrappy = nullptr;
 	this->waistRope = Sprite::create(ObjectResources::Cinematic_ScrappyRope_GuanoRope);
+	this->isDetached = false;
 
 	this->waistRope->setVisible(false);
 
@@ -78,5 +79,22 @@ void RopedMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	this->entity->getAnimations()->setFlippedX(this->scrappy->isFlippedX());
+	if (!this->isDetached && this->entity != nullptr && this->scrappy != nullptr)
+	{
+		this->entity->getAnimations()->setFlippedX(this->scrappy->isFlippedX());
+	}
+}
+
+void RopedMovementBehavior::detach()
+{
+	if (this->scrappy != nullptr)
+	{
+		this->scrappy->watchForAttachedBehavior<ScrappyRopeCarryBehavior>([=](ScrappyRopeCarryBehavior* ropeCarryBehavior)
+		{
+			ropeCarryBehavior->setCarryTarget(nullptr);
+		});
+	}
+
+	this->waistRope->setVisible(false);
+	this->isDetached = true;
 }

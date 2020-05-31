@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="862">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="876">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -17,31 +17,21 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="808" name="ruins-gray-dark" type="texture" x="-286" y="-290" width="6280" height="2776"/>
-  <object id="834" name="Generic/Rope1" type="decor" x="3657.43" y="-120.333" width="11" height="1422">
-   <properties>
-    <property name="tag" value="rope"/>
-   </properties>
-  </object>
-  <object id="835" name="portal" type="object" x="3541" y="1199" width="256" height="256">
-   <properties>
-    <property name="map" value="UnderflowRuins/Zone_2_6"/>
-    <property name="quest" value="lower-rope"/>
-    <property name="quest-line" value="cure-town"/>
-    <property name="tag" value="rope-portal"/>
-    <property name="transition" value="rope"/>
-   </properties>
-  </object>
-  <object id="836" name="spawn" type="object" x="3609.36" y="1328.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="rope"/>
-   </properties>
-  </object>
   <object id="839" name="Generic/Rope1" type="decor" x="457.288" y="-366.939" width="11" height="1010"/>
   <object id="840" name="portal" type="object" x="344.606" y="551.273" width="256" height="256">
    <properties>
     <property name="direction" value="up"/>
     <property name="map" value="UnderflowRuins/Town_Well"/>
     <property name="transition" value="well"/>
+   </properties>
+  </object>
+  <object id="870" name="portal" type="object" x="3518" y="1151" width="256" height="256">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="quest" value="lower-rope"/>
+    <property name="quest-line" value="cure-town"/>
+    <property name="tag" value="rope-portal"/>
+    <property name="transition" value="rope"/>
    </properties>
   </object>
  </objectgroup>
@@ -70,7 +60,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="ruins-gray-thick" type="terrain" x="3216.37" y="1453.82" width="2593.69" height="1177.09"/>
+  <object id="826" name="ruins-gray-thick" type="terrain" x="3216.37" y="1409.82" width="2593.69" height="1221.09"/>
+  <object id="875" name="ruins-gray-thick" type="terrain" x="3871.15" y="-254.545" width="509.69" height="1221.09"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -82,22 +73,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="life-stone" type="object" x="4012.91" y="1031.32" width="146" height="423"/>
-  <object id="830" name="edge-portal" type="object" x="5432" y="816" width="200" height="640">
+  <object id="828" name="life-stone" type="object" x="4036.57" y="994.652" width="146" height="423"/>
+  <object id="830" name="edge-portal" type="object" x="5420" y="768" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_1"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="842" name="lever" type="object" x="1044.83" y="606.833" width="177" height="205">
-   <properties>
-    <property name="send-event" value="disable-electricity"/>
-   </properties>
-  </object>
-  <object id="843" name="lever" type="object" x="4811.5" y="1249.02" width="177" height="205">
-   <properties>
-    <property name="send-event" value="enable-electricity"/>
    </properties>
   </object>
  </objectgroup>
@@ -111,7 +92,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="829" name="rupert" type="entity" x="4480.15" y="1324.97" width="128" height="128">
+  <object id="829" name="rupert" type="entity" x="4468.15" y="1276.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
@@ -134,9 +115,14 @@
     <property name="transition" value="well"/>
    </properties>
   </object>
-  <object id="831" name="spawn" type="object" x="5118.67" y="1325.33" width="128" height="128">
+  <object id="831" name="spawn" type="object" x="5106.67" y="1277.33" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="873" name="spawn" type="object" x="3580.36" y="1280.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="rope"/>
    </properties>
   </object>
  </objectgroup>
@@ -144,7 +130,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="water" type="object" x="1404" y="904.78" width="540" height="1226.08">
+  <object id="817" name="water" type="object" x="1404" y="904.78" width="540" height="1530.56">
    <properties>
     <property name="disable-splash" type="bool" value="true"/>
    </properties>
@@ -166,59 +152,111 @@
   </properties>
   <object id="847" name="electricity-beam" type="object" x="1408.32" y="926.576" width="511" height="394">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
    </properties>
   </object>
   <object id="848" name="electricity-beam" type="object" x="1409.65" y="749.242" width="511" height="394">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
    </properties>
   </object>
   <object id="849" name="electricity-beam" type="object" x="1407.65" y="1323.24" width="511" height="394">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="850" name="electricity-beam" type="object" x="1411.65" y="1149.24" width="511" height="394">
+  <object id="850" name="electricity-beam" type="object" x="1409.65" y="1142.24" width="511" height="394">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="852" name="electricity-beam" type="object" x="2199.83" y="2001.67" width="394" height="511">
+  <object id="852" name="electricity-beam" type="object" x="1860.44" y="1995.64" width="394" height="511">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="853" name="electricity-beam" type="object" x="1805" y="1996.5" width="394" height="511">
+  <object id="853" name="electricity-beam" type="object" x="2054.7" y="1996.98" width="394" height="511">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="854" name="electricity-beam" type="object" x="2451.67" y="1997.83" width="394" height="511">
+  <object id="854" name="electricity-beam" type="object" x="2449.15" y="1995.47" width="394" height="511">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="855" name="electricity-beam" type="object" x="1980.33" y="2001.17" width="394" height="511">
+  <object id="855" name="electricity-beam" type="object" x="2255" y="1996.14" width="394" height="511">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="860" name="electricity-beam" type="object" x="1410.5" y="1545" width="511" height="394">
+  <object id="860" name="electricity-beam" type="object" x="1409.5" y="1537" width="511" height="394">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
    </properties>
   </object>
   <object id="861" name="electricity-beam" type="object" x="1412.5" y="1715" width="511" height="394">
    <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="862" name="lever" type="object" x="1044.83" y="606.833" width="177" height="205">
+   <properties>
+    <property name="send-event" value="power-toggle"/>
+    <property name="time" type="float" value="8"/>
+   </properties>
+  </object>
+  <object id="863" name="electricity-beam" type="object" x="2826.07" y="1339.12" width="511" height="394">
+   <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="864" name="electricity-beam" type="object" x="2827.93" y="1552.88" width="511" height="394">
+   <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="865" name="electricity-beam" type="object" x="2830.93" y="1730.88" width="511" height="394">
+   <properties>
+    <property name="disable-save" type="bool" value="true"/>
+    <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="77" name="decor +1">
+ <objectgroup id="77" name="decor +0.5">
   <properties>
-   <property name="depth" type="float" value="64"/>
+   <property name="depth" type="float" value="32"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="874" name="Generic/Rope1" type="decor" x="3642.43" y="-168.332" width="11" height="1422">
+   <properties>
+    <property name="tag" value="rope"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

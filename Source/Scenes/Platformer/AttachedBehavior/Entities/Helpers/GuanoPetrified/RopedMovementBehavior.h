@@ -15,6 +15,8 @@ class RopedMovementBehavior : public AttachedBehavior
 public:
 	static RopedMovementBehavior* create(GameObject* owner);
 
+	void detach();
+
 	static const std::string MapKey;
 
 protected:
@@ -31,4 +33,6 @@ private:
 	PlatformerEntity* entity;
 	Scrappy* scrappy;
 	cocos2d::Sprite* waistRope;
+
+	bool isDetached;
 };

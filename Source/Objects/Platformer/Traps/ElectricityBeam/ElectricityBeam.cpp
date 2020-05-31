@@ -25,6 +25,9 @@ using namespace cocos2d;
 
 const std::string ElectricityBeam::MapKey = "electricity-beam";
 const std::string ElectricityBeam::PropertyVertical = "vertical";
+const std::string ElectricityBeam::PropertyDisabled = "disabled";
+const std::string ElectricityBeam::PropertyDisableSave = "disable-save";
+const std::string ElectricityBeam::SaveKeyDisabled = "SAVE_KEY_DISABLED";
 
 ElectricityBeam* ElectricityBeam::create(ValueMap& properties)
 {
@@ -41,6 +44,8 @@ ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 	this->maxElectricityBeamCountDown = 1.0f;
 	this->isRunningAnimation = false;
 	this->isVertical = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyVertical, Value(false)).asBool();
+	this->isDisabled = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisabled, Value(false)).asBool();
+	this->disableSave = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisableSave, Value(false)).asBool();
 
 	this->electricityAnimation = SmartAnimationSequenceNode::create();
 	this->electricityCollision = CollisionObject::create(CollisionObject::createBox(Size(this->isVertical ? 64.0f : 468.0f, this->isVertical ? 468.0f : 64.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
@@ -48,6 +53,7 @@ ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 	this->ballRight = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 
 	this->electricityAnimation->setRotation(this->isVertical ? 90.0f : 0.0f);
+	this->electricityCollision->setPhysicsEnabled(false);
 
 	this->addChild(this->electricityCollision);
 	this->addChild(this->electricityAnimation);
@@ -63,6 +69,11 @@ void ElectricityBeam::onEnter()
 {
 	super::onEnter();
 
+	if (!this->disableSave)
+	{
+		this->isDisabled = this->loadObjectStateOrDefault(ElectricityBeam::SaveKeyDisabled, Value(this->isDisabled)).asBool();
+	}
+
 	this->scheduleUpdate();
 }
 
@@ -75,12 +86,36 @@ void ElectricityBeam::initializePositions()
 	this->ballRight->setPosition(Vec2(this->isVertical ? 0.0f : 256.0f, this->isVertical ? 256.0f : 0.0f));
 }
 
+void ElectricityBeam::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
+	{
+		this->toggleDisabled();
+	});
+}
+
+void ElectricityBeam::toggleDisabled()
+{
+	this->isDisabled = !this->isDisabled;
+
+	if (!this->disableSave)
+	{
+		this->saveObjectState(ElectricityBeam::SaveKeyDisabled, Value(this->isDisabled));
+	}
+}
+
 void ElectricityBeam::update(float dt)
 {
 	super::update(dt);
 
+	if (this->isDisabled)
+	{
+		return;
+	}
+
 	this->updateElectricityBeam(dt);
-	
 
 	if (this->currentElectricityBeamCountDown <= 0.0f)
 	{
@@ -123,12 +158,12 @@ void ElectricityBeam::registerHackables()
 				ElectricityBeam::MapKey,
 				Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown::create(),
 				HackableBase::HackBarColor::Red,
-				UIResources::Menus_Icons_SpellImpactWhite,
+				UIResources::Menus_Icons_Lightning,
 				ElectricityBeamCountDownPreview::create(),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0::create() },
 				},
-				int(HackFlags::Fire),
+				int(HackFlags::Lightning),
 				20.0f,
 				0.0f
 			)

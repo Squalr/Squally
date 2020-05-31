@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -75,7 +75,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="959" name="medusa" type="entity" x="857.818" y="1621.33" width="128" height="128">
+  <object id="959" name="mermaid" type="entity" x="857.818" y="1621.33" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
@@ -94,15 +94,6 @@
    </properties>
   </object>
   <object id="962" name="mermaid" type="entity" x="2536" y="856" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="963" name="mermaid" type="entity" x="2396" y="1624" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
@@ -211,43 +202,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="909" name="medusa" type="entity" x="842.061" y="905.697" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="910" name="mermaid" type="entity" x="2590.55" y="1657.21" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="911" name="medusa" type="entity" x="2581.45" y="2460.24" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="912" name="mermaid" type="entity" x="2401.45" y="896.606" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="913" name="medusa" type="entity" x="2563.27" y="193.576" width="128" height="128">
+  <object id="909" name="mermaid" type="entity" x="842.061" y="905.697" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
@@ -266,15 +221,6 @@
    </properties>
   </object>
   <object id="916" name="minotaur" type="entity" x="2574.91" y="3413.58" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="923" name="mermaid" type="entity" x="1052" y="1672" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>

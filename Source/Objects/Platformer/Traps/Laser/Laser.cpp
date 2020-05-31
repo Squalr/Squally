@@ -45,6 +45,8 @@ Laser::Laser(ValueMap& properties) : super(properties)
 	this->laserAnimation = LaserAnimation::create(height);
 	this->laserCollision = CollisionObject::create(CollisionObject::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
+	this->laserCollision->setPhysicsEnabled(false);
+
 	this->addChild(this->laserCollision);
 	this->addChild(this->laserAnimation);
 }

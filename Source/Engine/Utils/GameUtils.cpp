@@ -316,6 +316,19 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	return resultCoords;
 }
 
+void GameUtils::setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	Vec2 currentCoords = GameUtils::getWorldCoords(node);
+	Vec2 delta = worldCoords - currentCoords;
+
+	node->setPosition(node->getPosition() + delta);
+}
+
 void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
 {
 	if (node == nullptr)

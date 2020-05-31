@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="946">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -218,7 +218,8 @@
   <object id="938" name="life-stone" type="object" x="1044.71" y="781.727" width="146" height="423"/>
   <object id="939" name="metal-chest" type="object" x="3198.76" y="1070.91" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ur-gem-red"/>
+    <property name="reward-pool" value="ur-mirror"/>
+    <property name="send-event" value="ur-mirror"/>
    </properties>
   </object>
   <object id="941" name="edge-portal" type="object" x="6371.88" y="1728.85" width="200" height="640">
@@ -231,6 +232,13 @@
   <object id="944" name="metal-chest" type="object" x="3712.73" y="1068.12" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-rare"/>
+   </properties>
+  </object>
+  <object id="945" name="cinematic-marker" type="object" x="3199.33" y="979.333" width="128" height="128">
+   <properties>
+    <property name="listen-event" value="ur-mirror"/>
+    <property name="quest" value="obtain-mirror"/>
+    <property name="quest-line" value="cure-town"/>
    </properties>
   </object>
  </objectgroup>

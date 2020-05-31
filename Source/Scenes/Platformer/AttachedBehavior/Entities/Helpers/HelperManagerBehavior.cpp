@@ -11,6 +11,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Events/HelperEvents.h"
@@ -69,13 +70,48 @@ void HelperManagerBehavior::onLoad()
 
 		this->entity->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{
-			this->spawnHelper(value.asString(), true);
+			this->spawnHelperFromState();
 		});
 	});
 }
 
+void HelperManagerBehavior::despawnCurrentHelper()
+{
+	if (this->helperRef != nullptr)
+	{
+		this->helperRef->despawn();
+	}
+}
+
+void HelperManagerBehavior::spawnHelperFromState()
+{
+	std::string helperName = this->entity->getRuntimeStateOrDefault(StateKeys::CurrentHelper, Value("")).asString();
+	bool notify = this->entity->getRuntimeStateOrDefault(StateKeys::NotifyNewHelper, Value(false)).asBool();
+	Vec2 spawnCoords = Vec2::ZERO;
+	bool warpToSpawn = false;
+
+	if (this->entity->hasState(StateKeys::NewHelperSpawnX) || this->entity->hasState(StateKeys::NewHelperSpawnY))
+	{
+		spawnCoords = Vec2(
+			this->entity->getRuntimeStateOrDefaultFloat(StateKeys::NewHelperSpawnX, 0.0f),
+			this->entity->getRuntimeStateOrDefaultFloat(StateKeys::NewHelperSpawnY, 0.0f)
+		);
+
+		warpToSpawn = true;
+	}
+	
+	this->spawnHelper(helperName, notify);
+
+	if (warpToSpawn)
+	{
+		GameUtils::setWorldCoords(this->helperRef, spawnCoords);
+	}
+}
+
 void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 {
+	this->despawnCurrentHelper();
+
 	ValueMap properties = ValueMap();
 
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
@@ -93,6 +129,8 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 		[=] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
 		{
 			PlatformerEntity* helper = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
+
+			this->helperRef = helper;
 
 			if (helper != nullptr)
 			{
@@ -125,6 +163,10 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	);
 
 	this->platformerEntityDeserializer->deserialize(&args);
+
+	this->entity->clearState(StateKeys::NotifyNewHelper);
+	this->entity->clearState(StateKeys::NewHelperSpawnX);
+	this->entity->clearState(StateKeys::NewHelperSpawnY);
 }
 
 void HelperManagerBehavior::onDisable()

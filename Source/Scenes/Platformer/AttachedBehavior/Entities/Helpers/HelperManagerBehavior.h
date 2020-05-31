@@ -22,6 +22,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void despawnCurrentHelper();
+	void spawnHelperFromState();
 	void spawnHelper(std::string helperName, bool notify);
 	std::string getHelperAttachedBehavior(std::string helperName);
 	void buildAttachedBehaviorMap();

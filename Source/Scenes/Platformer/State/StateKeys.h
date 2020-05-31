@@ -15,6 +15,9 @@ public:
 	static const std::string Mana;
 	static const std::string MaxMana;
 	static const std::string CurrentHelper;
+	static const std::string NotifyNewHelper;
+	static const std::string NewHelperSpawnX;
+	static const std::string NewHelperSpawnY;
 	static const std::string PatrolHijacked;
 	static const std::string PatrolDestinationX;
 	static const std::string PatrolDestinationReached;
