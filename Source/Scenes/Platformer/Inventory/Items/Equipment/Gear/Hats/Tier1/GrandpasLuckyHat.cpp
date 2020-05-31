@@ -20,15 +20,15 @@ GrandpasLuckyHat* GrandpasLuckyHat::create()
 	return instance;
 }
 
-GrandpasLuckyHat::GrandpasLuckyHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+GrandpasLuckyHat::GrandpasLuckyHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
-	0,
+	1,
 	// Attack
-	0,
+	1,
 	// Armor
-	0,
+	1,
 	// Speed
 	0.05f
 ))

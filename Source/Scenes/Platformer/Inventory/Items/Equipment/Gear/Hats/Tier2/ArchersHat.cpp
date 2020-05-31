@@ -20,7 +20,7 @@ ArchersHat* ArchersHat::create()
 	return instance;
 }
 
-ArchersHat::ArchersHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+ArchersHat::ArchersHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
 	0,
 	// Mana
@@ -28,7 +28,7 @@ ArchersHat::ArchersHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Attack
 	0,
 	// Armor
-	0,
+	2,
 	// Speed
 	0.05f
 ))

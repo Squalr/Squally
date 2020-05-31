@@ -20,7 +20,7 @@ CopperHelm* CopperHelm::create()
 	return instance;
 }
 
-CopperHelm::CopperHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+CopperHelm::CopperHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
 	0,
 	// Mana
@@ -28,7 +28,7 @@ CopperHelm::CopperHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Attack
 	0,
 	// Armor
-	0,
+	3,
 	// Speed
 	0.05f
 ))

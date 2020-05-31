@@ -65,6 +65,25 @@ void Laser::update(float dt)
 	super::update(dt);
 
 	this->updateLaser(dt);
+
+	if (this->currentLaserCountDown <= 0.0f)
+	{
+		const float stayActiveDuration = 1.5f;
+
+		this->isRunningAnimation = true;
+		this->currentLaserCountDown = this->maxLaserCountDown - RandomHelper::random_real(0.0f, 0.5f);
+
+		this->laserAnimation->runAnimation(
+		[=]()
+		{
+			this->laserCollision->setPhysicsEnabled(true);
+		},
+		[=]()
+		{
+			this->laserCollision->setPhysicsEnabled(false);
+			this->isRunningAnimation = false;
+		});
+	}
 }
 
 void Laser::initializePositions()
@@ -148,24 +167,5 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 	ASM(pop ZBX);
 
 	HACKABLES_STOP_SEARCH();
-
-	if (this->currentLaserCountDown <= 0.0f)
-	{
-		const float stayActiveDuration = 1.5f;
-
-		this->isRunningAnimation = true;
-		this->currentLaserCountDown = this->maxLaserCountDown - RandomHelper::random_real(0.0f, 0.5f);
-
-		this->laserAnimation->runAnimation(
-		[=]()
-		{
-			this->laserCollision->setPhysicsEnabled(true);
-		},
-		[=]()
-		{
-			this->laserCollision->setPhysicsEnabled(false);
-			this->isRunningAnimation = false;
-		});
-	}
 }
 END_NO_OPTIMIZE

@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	LaserGenericPreview();
-	virtual ~LaserGenericPreview() = default;
+	virtual ~LaserGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	LaserAnimation* previewLaser;
 };

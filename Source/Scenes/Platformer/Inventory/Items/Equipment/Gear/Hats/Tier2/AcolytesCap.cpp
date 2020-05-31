@@ -20,7 +20,7 @@ AcolytesCap* AcolytesCap::create()
 	return instance;
 }
 
-AcolytesCap::AcolytesCap() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+AcolytesCap::AcolytesCap() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
 	0,
 	// Mana
@@ -28,7 +28,7 @@ AcolytesCap::AcolytesCap() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Attack
 	0,
 	// Armor
-	0,
+	2,
 	// Speed
 	0.05f
 ))

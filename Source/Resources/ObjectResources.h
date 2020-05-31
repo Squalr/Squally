@@ -413,6 +413,15 @@ namespace ObjectResources
 	extern const std::string Traps_DartTripodLauncher_LEG_R;
 	extern const std::string Traps_DartTripodLauncher_NECK;
 	extern const std::string Traps_DartTripodLauncher_SHADOW;
+	extern const std::string Traps_ElectricBeam_Ball;
+	extern const std::string Traps_ElectricBeam_BeamFire_0000;
+	extern const std::string Traps_ElectricBeam_BeamFire_0001;
+	extern const std::string Traps_ElectricBeam_BeamFire_0002;
+	extern const std::string Traps_ElectricBeam_BeamFire_0003;
+	extern const std::string Traps_ElectricBeam_BeamFire_0004;
+	extern const std::string Traps_ElectricBeam_BeamFire_0005;
+	extern const std::string Traps_ElectricBeam_BeamFire_0006;
+	extern const std::string Traps_ElectricBeam_BeamFire_0007;
 	extern const std::string Traps_FireBird_FireBird_0000;
 	extern const std::string Traps_FireBird_FireBird_0001;
 	extern const std::string Traps_FireBird_FireBird_0002;

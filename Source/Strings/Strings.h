@@ -15669,6 +15669,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Combat_TimeBomb_TimeBombTick() = default;
 	};
 
+	class Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0();
+		virtual ~Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0() = default;
+	};
+
+	class Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown();
+		virtual ~Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown() = default;
+	};
+
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity : public LocalizedString
 	{
 	public:

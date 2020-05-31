@@ -20,7 +20,7 @@ OldShoe* OldShoe::create()
 	return instance;
 }
 
-OldShoe::OldShoe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+OldShoe::OldShoe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemStats(
 	// Health
 	0,
 	// Mana

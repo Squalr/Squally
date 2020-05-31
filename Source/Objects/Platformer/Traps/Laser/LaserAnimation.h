@@ -14,13 +14,15 @@ public:
 
 	void runAnimation(std::function<void()> onBeamActiveCallback = nullptr, std::function<void()> onBeamDeactiveCallback = nullptr);
 
-private:
-	typedef SmartNode super;
+protected:
 	LaserAnimation(float height);
 	virtual	~LaserAnimation();
 
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
 
 	cocos2d::Sprite* laserHeadTop;
 	cocos2d::Sprite* laserHeadBottom;

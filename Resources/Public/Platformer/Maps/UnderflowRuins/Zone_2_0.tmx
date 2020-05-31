@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="834">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="862">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -16,7 +16,34 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-86" y="-74" width="5056" height="2304"/>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-286" y="-290" width="6280" height="2776"/>
+  <object id="834" name="Generic/Rope1" type="decor" x="3657.43" y="-120.333" width="11" height="1422">
+   <properties>
+    <property name="tag" value="rope"/>
+   </properties>
+  </object>
+  <object id="835" name="portal" type="object" x="3541" y="1199" width="256" height="256">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="quest" value="lower-rope"/>
+    <property name="quest-line" value="cure-town"/>
+    <property name="tag" value="rope-portal"/>
+    <property name="transition" value="rope"/>
+   </properties>
+  </object>
+  <object id="836" name="spawn" type="object" x="3609.36" y="1328.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="rope"/>
+   </properties>
+  </object>
+  <object id="839" name="Generic/Rope1" type="decor" x="457.288" y="-366.939" width="11" height="1010"/>
+  <object id="840" name="portal" type="object" x="344.606" y="551.273" width="256" height="256">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="UnderflowRuins/Town_Well"/>
+    <property name="transition" value="well"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
   <properties>
@@ -43,7 +70,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="ruins-gray-thick" type="terrain" x="2192.37" y="1197.82" width="2593.69" height="880.121"/>
+  <object id="826" name="ruins-gray-thick" type="terrain" x="3216.37" y="1453.82" width="2593.69" height="1177.09"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -55,12 +82,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="life-stone" type="object" x="2907.09" y="793.5" width="146" height="423"/>
-  <object id="830" name="edge-portal" type="object" x="4408" y="560" width="200" height="640">
+  <object id="828" name="life-stone" type="object" x="4012.91" y="1031.32" width="146" height="423"/>
+  <object id="830" name="edge-portal" type="object" x="5432" y="816" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_1"/>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="842" name="lever" type="object" x="1044.83" y="606.833" width="177" height="205">
+   <properties>
+    <property name="send-event" value="disable-electricity"/>
+   </properties>
+  </object>
+  <object id="843" name="lever" type="object" x="4811.5" y="1249.02" width="177" height="205">
+   <properties>
+    <property name="send-event" value="enable-electricity"/>
    </properties>
   </object>
  </objectgroup>
@@ -74,7 +111,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="829" name="rupert" type="entity" x="3547.06" y="1072" width="128" height="128">
+  <object id="829" name="rupert" type="entity" x="4480.15" y="1324.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
@@ -87,24 +124,17 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="531.558" y="501.627" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="630.679" y="678.627" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="518.134" y="501.988" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="411.255" y="678.988" width="128" height="128">
    <properties>
     <property name="transition" value="well"/>
    </properties>
   </object>
-  <object id="818" name="edge-portal" type="object" x="233.374" y="13.9987" width="640" height="200">
-   <properties>
-    <property name="direction" value="up"/>
-    <property name="map" value="UnderflowRuins/Town_Well"/>
-    <property name="transition" value="well"/>
-   </properties>
-  </object>
-  <object id="831" name="spawn" type="object" x="4094.67" y="1069.33" width="128" height="128">
+  <object id="831" name="spawn" type="object" x="5118.67" y="1325.33" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
@@ -114,20 +144,76 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="water" type="object" x="380" y="-78.4932" width="540" height="1953.35">
+  <object id="817" name="water" type="object" x="1404" y="904.78" width="540" height="1226.08">
    <properties>
     <property name="disable-splash" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="820" name="water" type="object" x="920" y="1282.11" width="3915.96" height="896.744"/>
+  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="896.744"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="823" name="ruins-gray" type="terrain" x="771.941" y="-139.818" width="318.3" height="1674.06"/>
-  <object id="825" name="ruins-gray" type="terrain" x="-51.15" y="-149.03" width="438.3" height="2030.06"/>
-  <object id="827" name="ruins-gray-thick" type="terrain" x="-98.3621" y="1853.94" width="2290.3" height="234.06"/>
+  <object id="823" name="ruins-gray" type="terrain" x="1795.94" y="-71.818" width="1142.3" height="2190.06"/>
+  <object id="825" name="ruins-gray" type="terrain" x="0.122727" y="-91.5755" width="292.845" height="901.333"/>
+  <object id="827" name="ruins-gray-thick" type="terrain" x="-63.2106" y="2393.94" width="3275.15" height="234.06"/>
+  <object id="838" name="ruins-gray" type="terrain" x="0.547076" y="807.696" width="1520.12" height="1583.76"/>
+ </objectgroup>
+ <objectgroup id="115" name="objects fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="847" name="electricity-beam" type="object" x="1408.32" y="926.576" width="511" height="394">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="848" name="electricity-beam" type="object" x="1409.65" y="749.242" width="511" height="394">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="849" name="electricity-beam" type="object" x="1407.65" y="1323.24" width="511" height="394">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="850" name="electricity-beam" type="object" x="1411.65" y="1149.24" width="511" height="394">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="852" name="electricity-beam" type="object" x="2199.83" y="2001.67" width="394" height="511">
+   <properties>
+    <property name="vertical" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="853" name="electricity-beam" type="object" x="1805" y="1996.5" width="394" height="511">
+   <properties>
+    <property name="vertical" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="854" name="electricity-beam" type="object" x="2451.67" y="1997.83" width="394" height="511">
+   <properties>
+    <property name="vertical" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="855" name="electricity-beam" type="object" x="1980.33" y="2001.17" width="394" height="511">
+   <properties>
+    <property name="vertical" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="860" name="electricity-beam" type="object" x="1410.5" y="1545" width="511" height="394">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="861" name="electricity-beam" type="object" x="1412.5" y="1715" width="511" height="394">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="decor +1">
   <properties>

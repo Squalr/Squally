@@ -29,6 +29,10 @@ LaserCountDownPreview::LaserCountDownPreview()
 	this->previewNode->addChild(this->previewLaser);
 }
 
+LaserCountDownPreview::~LaserCountDownPreview()
+{
+}
+
 HackablePreview* LaserCountDownPreview::clone()
 {
 	return LaserCountDownPreview::create();

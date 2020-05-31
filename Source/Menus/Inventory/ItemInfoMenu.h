@@ -5,6 +5,7 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
@@ -35,6 +36,7 @@ private:
 
 	void close();
 
+	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* itemWindow;
 	LocalizedLabel* itemLabel;
 	ItemPreview* itemPreview;

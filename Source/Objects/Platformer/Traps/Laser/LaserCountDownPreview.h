@@ -18,13 +18,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	LaserCountDownPreview();
-	virtual ~LaserCountDownPreview() = default;
+	virtual ~LaserCountDownPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	LaserAnimation* previewLaser;
 };

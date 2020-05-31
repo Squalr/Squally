@@ -20,7 +20,7 @@ BucketHelm* BucketHelm::create()
 	return instance;
 }
 
-BucketHelm::BucketHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+BucketHelm::BucketHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemStats(
 	// Health
 	0,
 	// Mana

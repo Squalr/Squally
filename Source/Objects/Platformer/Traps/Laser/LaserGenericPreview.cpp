@@ -29,6 +29,10 @@ LaserGenericPreview::LaserGenericPreview()
 	this->previewNode->addChild(this->previewLaser);
 }
 
+LaserGenericPreview::~LaserGenericPreview()
+{
+}
+
 HackablePreview* LaserGenericPreview::clone()
 {
 	return LaserGenericPreview::create();

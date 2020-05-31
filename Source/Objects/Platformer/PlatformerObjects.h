@@ -80,6 +80,7 @@
 #include "Objects/Platformer/Transportation/Airship1.h"
 #include "Objects/Platformer/Transportation/Airship2.h"
 #include "Objects/Platformer/Transportation/Ship.h"
+#include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeam.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"
 #include "Objects/Platformer/Traps/Laser/Laser.h"

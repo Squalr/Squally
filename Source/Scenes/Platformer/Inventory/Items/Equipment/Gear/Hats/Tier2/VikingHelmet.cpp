@@ -20,7 +20,7 @@ VikingHelmet* VikingHelmet::create()
 	return instance;
 }
 
-VikingHelmet::VikingHelmet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+VikingHelmet::VikingHelmet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 17 }}), ItemStats(
 	// Health
 	0,
 	// Mana
@@ -28,7 +28,7 @@ VikingHelmet::VikingHelmet() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	// Attack
 	0,
 	// Armor
-	0,
+	3,
 	// Speed
 	0.05f
 ))
