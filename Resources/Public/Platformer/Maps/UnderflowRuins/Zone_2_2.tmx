@@ -216,12 +216,6 @@
    </properties>
   </object>
   <object id="938" name="life-stone" type="object" x="1044.71" y="781.727" width="146" height="423"/>
-  <object id="939" name="metal-chest" type="object" x="3198.76" y="1070.91" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ur-mirror"/>
-    <property name="send-event" value="ur-mirror"/>
-   </properties>
-  </object>
   <object id="941" name="edge-portal" type="object" x="6371.88" y="1728.85" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
@@ -232,13 +226,6 @@
   <object id="944" name="metal-chest" type="object" x="3712.73" y="1068.12" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-rare"/>
-   </properties>
-  </object>
-  <object id="945" name="cinematic-marker" type="object" x="3199.33" y="979.333" width="128" height="128">
-   <properties>
-    <property name="listen-event" value="ur-mirror"/>
-    <property name="quest" value="obtain-mirror"/>
-    <property name="quest-line" value="cure-town"/>
    </properties>
   </object>
  </objectgroup>

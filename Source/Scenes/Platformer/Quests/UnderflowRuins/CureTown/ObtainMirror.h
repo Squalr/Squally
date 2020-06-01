@@ -7,6 +7,7 @@ class GuanoPetrified;
 class Inventory;
 class Portal;
 class QuestLine;
+class Scrappy;
 class Squally;
 
 class ObtainMirror : public QuestTask
@@ -28,12 +29,17 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
-	void freeGuano();
+	void runCinematicSequencePt1();
+	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
+	void runCinematicSequencePt6();
 	void regainGuano();
 	void attachGuanoSpawnBehaviors();
 
 	GuanoPetrified* guanoPetrified;
+	Scrappy* scrappy;
 	Guano* guano;
 	Squally* squally;
 	Inventory* inventory;

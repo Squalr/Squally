@@ -11,13 +11,16 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
+#include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/RopedMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifiedBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -41,6 +44,7 @@ ObtainMirror::ObtainMirror(GameObject* owner, QuestLine* questLine) : super(owne
 {
 	this->guano = nullptr;
 	this->guanoPetrified = nullptr;
+	this->scrappy = nullptr;
 	this->squally = nullptr;
 	this->inventory = nullptr;
 	this->doBehaviorAttach = false;
@@ -67,6 +71,13 @@ void ObtainMirror::onLoad(QuestState questState)
 		this->guanoPetrified = guanoPetrified;
 	}, GuanoPetrified::MapKey);
 
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+
+		this->attachGuanoSpawnBehaviors();
+	}, Scrappy::MapKey);
+
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
@@ -79,7 +90,7 @@ void ObtainMirror::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEventOnce(this->owner->getListenEvent(), [=](ValueMap args)
 	{
-		this->runCinematicSequence();
+		this->runCinematicSequencePt1();
 	});
 }
 
@@ -91,7 +102,7 @@ void ObtainMirror::onSkipped()
 {
 }
 
-void ObtainMirror::runCinematicSequence()
+void ObtainMirror::runCinematicSequencePt1()
 {
 	// IMPORTANT: Add a redundant save now to prevent a timing issue where the user pauses and quits in the middle of this cinematic.
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
@@ -102,21 +113,17 @@ void ObtainMirror::runCinematicSequence()
 		return;
 	}
 
-	this->freeGuano();
+	this->defer([=]()
+	{
+		Item* mirror = this->inventory->getItemOfType<MedusaMirror>();
 
-	this->runAction(Sequence::create(
-		DelayTime::create(0.25f),
-		CallFunc::create([=]()
-		{
-			Item* mirror = this->inventory->getItemOfType<MedusaMirror>();
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(mirror, false));
 
-			PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(mirror));
-		}),
-		nullptr
-	));
+		this->runCinematicSequencePt2();
+	});
 }
 
-void ObtainMirror::freeGuano()
+void ObtainMirror::runCinematicSequencePt2()
 {
 	if (this->guanoPetrified == nullptr)
 	{
@@ -124,11 +131,17 @@ void ObtainMirror::freeGuano()
 	}
 
 	this->doBehaviorAttach = true;
-	
+
 	this->guanoPetrified->watchForAttachedBehavior<RopedMovementBehavior>([=](RopedMovementBehavior* ropedMovementBehavior)
 	{
 		ropedMovementBehavior->detach();
 	});
+
+	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guano);
+
+	this->guanoPetrified->attachBehavior(unpetrifySfxBehavior);
+
+	unpetrifySfxBehavior->unpetrify();
 
 	const float RotationAngle = 2.5f;
 	const float RotationSpeed = 0.05f;
@@ -148,7 +161,87 @@ void ObtainMirror::freeGuano()
 		{
 			this->regainGuano();
 		}),
+		DelayTime::create(0.25f),
+		CallFunc::create([=]()
+		{
+			this->runCinematicSequencePt3();
+		}),
 		nullptr
+	));
+}
+
+void ObtainMirror::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void ObtainMirror::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void ObtainMirror::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt6();
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		false
+	));
+}
+
+void ObtainMirror::runCinematicSequencePt6()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
+		),
+		[=]()
+		{
+		},
+		Voices::GetNextVoiceShort(),
+		true
 	));
 }
 
@@ -173,9 +266,9 @@ void ObtainMirror::attachGuanoSpawnBehaviors()
 		return;
 	}
 
-	GuanoUnpetrifiedBehavior* unpetrifyBehavior = GuanoUnpetrifiedBehavior::create(this->guano);
+	GuanoUnpetrifyParticleBehavior* unpetrifyParticleBehavior = GuanoUnpetrifyParticleBehavior::create(this->guano);
 
-	this->guano->attachBehavior(unpetrifyBehavior);
+	this->guano->attachBehavior(unpetrifyParticleBehavior);
 
-	unpetrifyBehavior->unpetrify();
+	unpetrifyParticleBehavior->unpetrify();
 }

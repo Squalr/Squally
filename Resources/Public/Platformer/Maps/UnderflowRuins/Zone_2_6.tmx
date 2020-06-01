@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="854">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="857">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BlueSky"/>
@@ -17,7 +17,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="113" name="decor -1">
+ <objectgroup id="113" name="decor -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -37,6 +37,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="807" name="ruins-gray-thick" type="terrain" x="645.638" y="1065.94" width="2915.33" height="234.06"/>
+  <object id="856" name="ruins-gray-thick" type="terrain" x="2312.34" y="956.97" width="331.33" height="343.06"/>
  </objectgroup>
  <objectgroup id="114" name="decor">
   <properties>
@@ -67,6 +68,19 @@
     <property name="send-event" value="talk-to-zeus"/>
    </properties>
   </object>
+  <object id="854" name="metal-chest" type="object" x="2413.72" y="830.122" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-mirror"/>
+    <property name="send-event" value="ur-mirror"/>
+   </properties>
+  </object>
+  <object id="855" name="cinematic-marker" type="object" x="2414.28" y="738.545" width="128" height="128">
+   <properties>
+    <property name="listen-event" value="ur-mirror"/>
+    <property name="quest" value="obtain-mirror"/>
+    <property name="quest-line" value="cure-town"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -78,7 +92,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="851" name="angel" type="entity" x="2279.33" y="938" width="128" height="128">
+  <object id="851" name="angel" type="entity" x="1940.33" y="938" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="angel-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
@@ -116,7 +130,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor +1">
+ <objectgroup id="22" name="decor +1" visible="0">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>

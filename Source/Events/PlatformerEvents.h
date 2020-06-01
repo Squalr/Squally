@@ -167,11 +167,10 @@ public:
 	struct ItemDiscoveryArgs
 	{
 		Item* item;
-		LocalizedString* messageOverride;
-		bool keepOpen;
+		bool cinematicHijack;
 
-		ItemDiscoveryArgs(Item* item, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
-			: item(item), messageOverride(messageOverride), keepOpen(keepOpen) { }
+		ItemDiscoveryArgs(Item* item, bool cinematicHijack = true)
+			: item(item), cinematicHijack(cinematicHijack) { }
 	};
 
 	struct GiveCurrenciesFromPoolArgs

@@ -25449,6 +25449,66 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_A_StayAway : public LocalizedString
 	{
 	public:

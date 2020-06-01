@@ -65,7 +65,7 @@ void SquallyItemDiscoveryBehavior::onLoad()
 
 		if (args != nullptr && args->item != nullptr)
 		{
-			this->discoverItem(args->item);
+			this->discoverItem(args->item, args->cinematicHijack);
 		}
 	}));
 }
@@ -75,9 +75,12 @@ void SquallyItemDiscoveryBehavior::onDisable()
 	super::onDisable();
 }
 
-void SquallyItemDiscoveryBehavior::discoverItem(Item* item)
+void SquallyItemDiscoveryBehavior::discoverItem(Item* item, bool cinematicHijack)
 {
-	PlatformerEvents::TriggerCinematicHijack();
+	if (cinematicHijack)
+	{
+		PlatformerEvents::TriggerCinematicHijack();
+	}
 
 	this->container->runAction(FadeTo::create(0.25f, 255));
 	this->glow->runAction(RotateBy::create(2.0f, 360.0f));
@@ -93,7 +96,10 @@ void SquallyItemDiscoveryBehavior::discoverItem(Item* item)
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			PlatformerEvents::TriggerCinematicRestore();
+			if (cinematicHijack)
+			{
+				PlatformerEvents::TriggerCinematicRestore();
+			}
 
 			this->squally->getAnimations()->clearAnimationPriority();
 			this->squally->getAnimations()->playAnimation();
