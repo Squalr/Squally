@@ -25,6 +25,9 @@ const std::string GlassDisplayItem::MapKey = "glass-display-item";
 const std::string GlassDisplayItem::PropertyItemName = "item-name";
 const std::string GlassDisplayItem::PropertyTutorial = "tutorial";
 const std::string GlassDisplayItem::TutorialLightHint = "light-hint";
+const std::string GlassDisplayItem::PropertyDisplayGroup = "display-group";
+const std::string GlassDisplayItem::MapEventDisableDisplayGroup = "disable-display-group";
+const std::string GlassDisplayItem::SaveKeyIsDisabled = "SAVE_KEY_GLASS_DISPLAY_DISABLED";
 
 GlassDisplayItem* GlassDisplayItem::create(cocos2d::ValueMap& properties)
 {
@@ -39,6 +42,7 @@ GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(proper
 {
 	this->itemName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyItemName, Value("")).asString();
 	this->tutorialName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyTutorial, Value("")).asString();
+	this->displayGroup = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyDisplayGroup, Value("")).asString();
 	this->item = nullptr;
 }
 
@@ -60,19 +64,33 @@ void GlassDisplayItem::onEnter()
 		this->displayContentNode->addChild(icon);
 	}));
 }
+
+void GlassDisplayItem::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->listenForMapEvent(GlassDisplayItem::MapEventDisableDisplayGroup, [=](ValueMap args)
+	{
+		if (GameUtils::getKeyOrDefault(args, GlassDisplayItem::MapEventDisableDisplayGroup, Value("")).asString() == this->displayGroup)
+		{
+			this->saveObjectState(GlassDisplayItem::SaveKeyIsDisabled, Value(true));
+		}
+	});
+}
 		
 bool GlassDisplayItem::tryOpen()
 {
 	if (this->isDisplayOpened)
 	{
-
 		this->unlockAndGiveItems();
 
 		return true;
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		DialogueEvents::BuildOptions(Strings::Platformer_Objects_GlassCase_GlassCaseLocked::create(),
+		DialogueEvents::BuildOptions(this->canTakeGroupedItem()
+				? (LocalizedString*)Strings::Platformer_Objects_GlassCase_GlassCaseGrouped::create()
+				: (LocalizedString*)Strings::Platformer_Objects_GlassCase_GlassCaseLocked::create(),
 			{
 				Strings::Platformer_Objects_GlassCase_InspectItem::create(),
 				Strings::Menus_Cancel::create(),
@@ -155,8 +173,43 @@ bool GlassDisplayItem::inspectItem()
 	}
 	else
 	{
-		PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(this->item));
+		if (this->canTakeGroupedItem())
+		{
+			PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(
+				this->item,
+				[=](){ this->takeGroupedItem(); }
+			));
+		}
+		else
+		{
+			PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(this->item));
+		}
 	}
 
 	return true;
+}
+
+void GlassDisplayItem::takeGroupedItem()
+{
+	this->unlockAndGiveItems();
+
+	this->saveObjectState(GlassDisplayItem::SaveKeyIsDisabled, Value(true));
+
+	ValueMap args = ValueMap();
+
+	args[MapEventDisableDisplayGroup] = this->displayGroup;
+
+	this->broadcastMapEvent(GlassDisplayItem::MapEventDisableDisplayGroup, args);
+}
+
+bool GlassDisplayItem::canTakeGroupedItem()
+{
+	// Glass display groups are special. The intent is that they allow the user to choose one item from the display group.
+	// The disabled flag is saved on all glass cases in the group once one case is looted.
+	if (!this->displayGroup.empty() && !this->loadObjectStateOrDefault(GlassDisplayItem::SaveKeyIsDisabled, Value(false)).asBool())
+	{
+		return true;
+	}
+
+	return false;
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="826">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="828">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -16,7 +16,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="2964" height="1264"/>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="3191.27" height="1264"/>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
   <properties>
@@ -45,7 +45,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="2962.3" height="234.06"/>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="3198.66" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -80,24 +80,36 @@
     <property name="pool" value="reward-pool-hera"/>
    </properties>
   </object>
-  <object id="823" name="glass-display-item" type="object" x="2206.77" y="734.5" width="169" height="331">
+  <object id="823" name="glass-display-item" type="object" x="2473.44" y="740.561" width="169" height="331">
    <properties>
-    <property name="delay" type="float" value="1"/>
+    <property name="display-group" value="display-group-A"/>
+    <property name="is-opened" type="bool" value="false"/>
     <property name="item-name" value="archers-hat"/>
-    <property name="listen-event" value="solve-torches"/>
    </properties>
   </object>
-  <object id="824" name="glass-display-item" type="object" x="2486.77" y="734.5" width="169" height="331">
+  <object id="824" name="glass-display-item" type="object" x="2753.44" y="740.561" width="169" height="331">
    <properties>
-    <property name="delay" type="float" value="1"/>
+    <property name="display-group" value="display-group-A"/>
+    <property name="is-opened" type="bool" value="false"/>
     <property name="item-name" value="acolytes-cap"/>
-    <property name="listen-event" value="solve-torches"/>
    </properties>
   </object>
-  <object id="825" name="glass-display-item" type="object" x="1935.5" y="732.5" width="169" height="331">
+  <object id="825" name="glass-display-item" type="object" x="2202.17" y="738.561" width="169" height="331">
    <properties>
-    <property name="delay" type="float" value="1"/>
+    <property name="display-group" value="display-group-A"/>
+    <property name="is-opened" type="bool" value="false"/>
     <property name="item-name" value="copper-helm"/>
+   </properties>
+  </object>
+  <object id="826" name="solidd" type="collision" x="1905.65" y="-214.471" width="126.878" height="1598.76">
+   <properties>
+    <property name="tag" value="quest-solid-wall"/>
+   </properties>
+  </object>
+  <object id="827" name="camera-stopd" type="object" x="1876.32" y="-75.1376" width="126.878" height="1366.76">
+   <properties>
+    <property name="no-y" type="bool" value="false"/>
+    <property name="tag" value="quest-camera-stop"/>
    </properties>
   </object>
  </objectgroup>

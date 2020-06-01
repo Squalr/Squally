@@ -36,6 +36,23 @@ ItemInfoMenu::ItemInfoMenu()
 	this->returnClickCallback = nullptr;
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 
+	LocalizedLabel*	takeItemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Inventory_Take::create());
+	LocalizedLabel*	takeItemLabelHover = takeItemLabel->clone();
+
+	takeItemLabel->enableOutline(Color4B::BLACK, 2);
+	takeItemLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	takeItemLabel->enableGlow(Color4B::BLACK);
+	takeItemLabelHover->enableOutline(Color4B::BLACK, 2);
+	takeItemLabelHover->setTextColor(Color4B::YELLOW);
+	takeItemLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	takeItemLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->takeItemButton = ClickableTextNode::create(
+		takeItemLabel,
+		takeItemLabelHover,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
+
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
@@ -61,6 +78,7 @@ ItemInfoMenu::ItemInfoMenu()
 	this->addChild(this->itemPreview);
 	this->addChild(this->itemLabel);
 	this->addChild(this->closeButton);
+	this->addChild(this->takeItemButton);
 	this->addChild(this->returnButton);
 }
 
@@ -78,6 +96,7 @@ void ItemInfoMenu::onEnter()
 	GameUtils::fadeInObject(this->itemWindow, delay, duration);
 	GameUtils::fadeInObject(this->itemLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->takeItemButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
 }
 
@@ -90,8 +109,9 @@ void ItemInfoMenu::initializePositions()
 	this->itemWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->itemPreview->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 192.0f));
 	this->itemLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 344.0f, visibleSize.height / 2.0f + 376.0f));
-	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 356.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 292.0f, visibleSize.height / 2.0f + 376.0f));
+	this->takeItemButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f + 128.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f));
 }
 
 void ItemInfoMenu::initializeListeners()
@@ -110,9 +130,24 @@ void ItemInfoMenu::initializeListeners()
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 }
 
-void ItemInfoMenu::open(Item* item)
+void ItemInfoMenu::open(Item* item, std::function<void()> takeItemCallback)
 {
 	this->itemPreview->preview(ItemPreview::EquipHintMode::None, item);
+
+	if (takeItemCallback != nullptr)
+	{
+		this->takeItemButton->setVisible(true);
+		this->takeItemButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		{
+			takeItemCallback();
+			this->close();
+		});
+	}
+	else
+	{
+		this->takeItemButton->setVisible(false);
+		this->takeItemButton->setMouseClickCallback(nullptr);
+	}
 }
 
 void ItemInfoMenu::setReturnClickCallback(std::function<void()> returnClickCallback)

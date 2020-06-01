@@ -20,7 +20,7 @@ class ItemInfoMenu : public SmartNode
 public:
 	static ItemInfoMenu* create();
 
-	void open(Item* item);
+	void open(Item* item, std::function<void()> takeItemCallback = nullptr);
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
@@ -40,6 +40,7 @@ private:
 	cocos2d::Sprite* itemWindow;
 	LocalizedLabel* itemLabel;
 	ItemPreview* itemPreview;
+	ClickableTextNode* takeItemButton;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
 

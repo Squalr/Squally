@@ -15,6 +15,7 @@
 using namespace cocos2d;
 
 const std::string GlassDisplayBase::SaveKeyIsDisplayOpened = "SAVE_KEY_IS_DISPLAY_OPENED";
+const std::string GlassDisplayBase::PropertyIsOpened = "is-opened";
 const std::string GlassDisplayBase::PropertyDelay = "delay";
 
 GlassDisplayBase::GlassDisplayBase(ValueMap& properties, Size interactSize) : super(properties, interactSize)
@@ -23,8 +24,8 @@ GlassDisplayBase::GlassDisplayBase(ValueMap& properties, Size interactSize) : su
 	this->displayNormal = Node::create();
 	this->displayOpened = Node::create();
 	this->displayLooted = Node::create();
-	this->isDisplayOpened = false;
-	this->isLocked = false;		// Interact objects set isLocked based on the presence of a listen event -- we do not want that.
+	this->isDisplayOpened = GameUtils::getKeyOrDefault(this->properties, GlassDisplayBase::PropertyIsOpened, Value(false)).asBool();
+	this->isLocked = false; // Interact objects set isLocked based on the presence of a listen event -- we do not want that. NOTE: LOCKED != OPENED.
 	this->glassDisplayFrontNormal = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
 	this->glassDisplayFrontOpened = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);
 	this->glassDisplayFrontLooted = Sprite::create(ObjectResources::Interactive_Chests_GlassDisplayFront);

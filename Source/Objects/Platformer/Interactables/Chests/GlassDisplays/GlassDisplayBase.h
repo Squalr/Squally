@@ -47,5 +47,6 @@ private:
 	WorldSound* notifySound;
 
 	static const std::string SaveKeyIsDisplayOpened;
+	static const std::string PropertyIsOpened;
 	static const std::string PropertyDelay;
 };

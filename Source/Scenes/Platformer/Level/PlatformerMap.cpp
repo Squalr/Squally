@@ -386,7 +386,7 @@ void PlatformerMap::initializeListeners()
 			this->buildItemInfoMenu();
 			
 			this->itemInfoMenu->setVisible(true);
-			this->itemInfoMenu->open(args->item);
+			this->itemInfoMenu->open(args->item, args->onTakeDisplayItem);
 			
 			GameUtils::focus(this->itemInfoMenu);
 		}

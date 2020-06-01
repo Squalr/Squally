@@ -17,6 +17,7 @@ protected:
 	virtual ~GlassDisplayItem();
 
 	void onEnter() override;
+	void initializeListeners() override;
 	bool tryOpen() override;
 	void unlockAndGiveItems() override;
 
@@ -25,12 +26,18 @@ private:
 
 	void onDialogueClose();
 	bool inspectItem();
+	void takeGroupedItem();
+	bool canTakeGroupedItem();
 
 	std::string itemName;
 	Item* item;
 	std::string tutorialName;
+	std::string displayGroup;
 
 	static const std::string PropertyItemName;
 	static const std::string PropertyTutorial;
+	static const std::string PropertyDisplayGroup;
+	static const std::string MapEventDisableDisplayGroup;
+	static const std::string SaveKeyIsDisabled;
 	static const std::string TutorialLightHint;
 };

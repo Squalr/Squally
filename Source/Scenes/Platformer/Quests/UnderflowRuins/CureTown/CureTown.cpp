@@ -10,6 +10,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
@@ -17,6 +18,7 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Camera/CameraStop.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
@@ -67,6 +69,19 @@ void CureTown::onLoad(QuestState questState)
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
+	if (questState == QuestState::Complete)
+	{
+		ObjectEvents::WatchForObject<CollisionObject>(this, [=](CollisionObject* collisionObject)
+		{
+			collisionObject->setPhysicsEnabled(false);
+		}, "quest-solid-wall");
+
+		ObjectEvents::WatchForObject<CameraStop>(this, [=](CameraStop* cameraStop)
+		{
+			cameraStop->disable();
+		}, "quest-camera-stop");
+	}
+
 	ObjectEvents::WatchForObject<Hera>(this, [=](Hera* hera)
 	{
 		this->hera = hera;
@@ -109,6 +124,16 @@ void CureTown::onComplete()
 	{
 		questBehavior->disableAll();
 	});
+
+	ObjectEvents::WatchForObject<CollisionObject>(this, [=](CollisionObject* collisionObject)
+	{
+		collisionObject->setPhysicsEnabled(false);
+	}, "quest-solid-wall");
+
+	ObjectEvents::WatchForObject<CameraStop>(this, [=](CameraStop* cameraStop)
+	{
+		cameraStop->disable();
+	}, "quest-camera-stop");
 
 	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
 }
@@ -192,6 +217,21 @@ void CureTown::runCinematicSequence()
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_V_Bridge::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->hera, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

@@ -12,6 +12,9 @@ class CameraStop : public GameObject
 public:
 	static CameraStop* create(cocos2d::ValueMap& properties);
 
+	void enable();
+	void disable();
+
 	static const std::string MapKey;
 	static const std::string PropertySoft;
 	static const std::string PropertyNoX;
@@ -33,6 +36,7 @@ private:
 	bool soft;
 	bool noX;
 	bool noY;
+	bool isDisabled;
 
 	cocos2d::DrawNode* debugDraw;
 	cocos2d::Size stopSize;

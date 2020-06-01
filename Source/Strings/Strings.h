@@ -17484,6 +17484,21 @@ namespace Strings
 		virtual ~Menus_Inventory_Misc() = default;
 	};
 
+	class Menus_Inventory_Take : public LocalizedString
+	{
+	public:
+		static Menus_Inventory_Take* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Inventory_Take();
+		virtual ~Menus_Inventory_Take() = default;
+	};
+
 	class Menus_ItemPreview_Armor : public LocalizedString
 	{
 	public:
@@ -23829,6 +23844,21 @@ namespace Strings
 		virtual ~Platformer_Objects_GlassCase_Clue() = default;
 	};
 
+	class Platformer_Objects_GlassCase_GlassCaseGrouped : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_GlassCase_GlassCaseGrouped* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_GlassCase_GlassCaseGrouped();
+		virtual ~Platformer_Objects_GlassCase_GlassCaseGrouped() = default;
+	};
+
 	class Platformer_Objects_GlassCase_GlassCaseLocked : public LocalizedString
 	{
 	public:
@@ -25732,6 +25762,21 @@ namespace Strings
 	private:
 		Platformer_Quests_UnderflowRuins_CureTown_Hera_V_Bridge();
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Hera_V_Bridge() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CureTown_Mesuda_A_Hiss : public LocalizedString
