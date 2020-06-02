@@ -115,7 +115,7 @@ void RaiseBridge::runCinematicSequence()
 				this->broadcastMapEvent("raise-bridge", ValueMap());
 			},
 			Voices::GetNextVoiceShort(),
-			false
+			true
 		));
 	});
 }

@@ -89,6 +89,8 @@ protected:
 private:
 	typedef SmartNode super;
 
+	bool canInsertItemIfUnique(Item* item);
+
 	cocos2d::Node* itemsNode;
 
 	std::string saveKey;

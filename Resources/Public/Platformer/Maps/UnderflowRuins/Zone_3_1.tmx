@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1006">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1008">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
@@ -117,14 +117,14 @@
   </object>
   <object id="985" name="temple-door" type="object" x="1093.64" y="358.242" width="432" height="528">
    <properties>
-    <property name="color" value="yellow"/>
-    <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
-    <property name="transition" value="main"/>
+    <property name="color" value="yellow-skull"/>
+    <property name="map" value="UnderflowRuins/Zone_3_2"/>
+    <property name="transition" value="dungeon"/>
    </properties>
   </object>
   <object id="989" name="dragon-door" type="object" x="766.97" y="1008.64" width="768" height="646">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_3_2"/>
+    <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
     <property name="transition" value="dragon"/>
    </properties>
   </object>
@@ -183,7 +183,7 @@
   </object>
   <object id="982" name="spawn" type="object" x="1250.37" y="757.633" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="dungeon"/>
    </properties>
   </object>
   <object id="996" name="spawn" type="object" x="1078.06" y="1523.88" width="128" height="128">

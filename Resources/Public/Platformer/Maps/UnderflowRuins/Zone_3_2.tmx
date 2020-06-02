@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1127">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1128">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -236,7 +236,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg" visible="0">
+ <objectgroup id="58" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -261,7 +261,7 @@
   <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340"/>
   <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -281,7 +281,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -289,13 +289,6 @@
   <object id="960" name="vase" type="object" x="5202.53" y="1241.88" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
-   </properties>
-  </object>
-  <object id="986" name="dragon-door" type="object" x="2510.91" y="753.606" width="768" height="646">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-    <property name="map" value="UnderflowRuins/Zone_3_1"/>
-    <property name="transition" value="dragon"/>
    </properties>
   </object>
   <object id="1083" name="edge-portal" type="object" x="-0.292333" y="915.332" width="199.918" height="488.002">
@@ -326,6 +319,14 @@
   </object>
   <object id="1109" name="solid" type="collision" x="1119.23" y="1436.08" width="873.545" height="100.513"/>
   <object id="1110" name="solid" type="collision" x="3865.23" y="1437.74" width="873.545" height="100.513"/>
+  <object id="1127" name="temple-door" type="object" x="2664" y="877.333" width="432" height="528">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="color" value="yellow-skull"/>
+    <property name="map" value="UnderflowRuins/Zone_3_1"/>
+    <property name="transition" value="dungeon"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -377,7 +378,7 @@
   <object id="974" name="spawn" type="object" x="2813.58" y="1279.18" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
-    <property name="transition" value="dragon"/>
+    <property name="transition" value="dungeon"/>
    </properties>
   </object>
   <object id="1032" name="warp" type="object" x="2033.64" y="1144.97" width="256" height="256">
@@ -466,7 +467,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="objects +3">
+ <objectgroup id="96" name="objects +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>

@@ -25944,21 +25944,6 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_MyShipments() = default;
-	};
-
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou : public LocalizedString
 	{
 	public:

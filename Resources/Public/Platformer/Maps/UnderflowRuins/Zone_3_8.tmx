@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1135">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1143">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -228,6 +228,13 @@
   <object id="1125" name="sarcophagus" type="object" x="1160" y="1154.67" width="624" height="250"/>
   <object id="1131" name="solid" type="collision" x="168.561" y="-278.59" width="126.878" height="1821.18"/>
   <object id="1132" name="solid" type="collision" x="2704.56" y="-266.59" width="126.878" height="1821.18"/>
+  <object id="1142" name="portal" type="object" x="1337.33" y="1148" width="256" height="256">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -245,12 +252,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="974" name="spawn" type="object" x="1405.58" y="1279.18" width="128" height="128">
-   <properties>
-    <property name="map-banner" value=""/>
-    <property name="transition" value="dragon"/>
-   </properties>
-  </object>
   <object id="1032" name="warp" type="object" x="506.973" y="1148.3" width="256" height="256">
    <properties>
     <property name="from" value="3-A"/>
@@ -267,30 +268,55 @@
     <property name="to" value="6-B"/>
    </properties>
   </object>
+  <object id="1137" name="spawn" type="object" x="1401.33" y="1278.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="78" name="bridge +0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1138" name="ruins-thick" type="terrain" x="1334" y="1442" width="288" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="79" name="bridge +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1139" name="ruins-thick" type="terrain" x="1334" y="1478" width="288" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="80" name="bridge +2">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1140" name="ruins-thick" type="terrain" x="1334" y="1522" width="288" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="76" name="terrain +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1141" name="ruins-thick" type="terrain" x="1142" y="1570" width="662" height="476">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="96" name="objects +3">
   <properties>

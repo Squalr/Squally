@@ -101,12 +101,12 @@
     <property name="item-name" value="copper-helm"/>
    </properties>
   </object>
-  <object id="826" name="solidd" type="collision" x="1905.65" y="-214.471" width="126.878" height="1598.76">
+  <object id="826" name="solid" type="collision" x="1905.65" y="-214.471" width="126.878" height="1598.76">
    <properties>
     <property name="tag" value="quest-solid-wall"/>
    </properties>
   </object>
-  <object id="827" name="camera-stopd" type="object" x="1876.32" y="-75.1376" width="126.878" height="1366.76">
+  <object id="827" name="camera-stop" type="object" x="1876.32" y="-75.1376" width="126.878" height="1366.76">
    <properties>
     <property name="no-y" type="bool" value="false"/>
     <property name="tag" value="quest-camera-stop"/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="993">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="1003">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -17,16 +17,16 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="989" name="temple-dark" type="texture" x="-273.815" y="-250" width="3355.63" height="2780"/>
+  <object id="989" name="temple-dark" type="texture" x="-273.815" y="-250" width="5050.42" height="2780"/>
  </objectgroup>
  <objectgroup id="72" name="decor -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="1762.53" y="625.622" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="2441.18" y="707.815" width="42" height="130"/>
-  <object id="968" name="torch" type="object" x="1373.78" y="712.965" width="42" height="130"/>
+  <object id="961" name="Ruins/Window" type="decor" x="2150.53" y="649.622" width="313" height="381"/>
+  <object id="967" name="torch" type="object" x="2829.18" y="731.815" width="42" height="130"/>
+  <object id="968" name="torch" type="object" x="1761.78" y="736.965" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>
@@ -37,40 +37,53 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="994" name="temple" type="terrain" x="3282.18" y="-234" width="1421.08" height="2636">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="990" name="ruins-thick" type="terrain" x="-880" y="2400">
-   <polygon points="3956.83,171.255 746.84,159.973 740.25,-743.067 2179.27,-734.106 2177.31,-865.32 2321.27,-865.319 2317.27,-995.318 2462.77,-995.042 2462.78,-1121.86 3959.23,-1124.55"/>
+  <object id="993" name="ruins-thick" type="terrain" x="542" y="1728">
+   <polygon points="2806.95,801.376 -555.161,785.973 -561.005,-68.6867 762.328,-69.1566 761.608,-208.352 889.308,-208.075 889.338,-336.465 1017.83,-337.127 1017.35,-465.291 2423.78,-470.266 2423.51,-342.775 2553.81,-343.715 2552.38,-212.567 2679.55,-211.94 2678.94,-87.8781 2800.95,-86.1483"/>
   </object>
+  <object id="1001" name="caverns" type="terrain" x="3347.09" y="1768.61" width="1260.73" height="815.758"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="952" name="temple-door" type="object" x="358" y="1128" width="432" height="528">
+  <object id="960" name="vase" type="object" x="2305.5" y="1098" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="991" name="vase" type="object" x="2599.5" y="1100.67" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="992" name="vase" type="object" x="2455.5" y="1098" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+   </properties>
+  </object>
+  <object id="997" name="Caverns/TigerDoor" type="decor" x="3644" y="1257.33" width="688" height="528"/>
+  <object id="1000" name="portal" type="object" x="3874.5" y="1512.5" width="256" height="256">
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="UnderflowRuins/Zone_3_1"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="960" name="vase" type="object" x="2305.5" y="1116" width="113" height="160">
+  <object id="1002" name="dragon-door" type="object" x="184" y="1013" width="768" height="646">
    <properties>
-    <property name="color" value="clay"/>
-   </properties>
-  </object>
-  <object id="991" name="vase" type="object" x="2599.5" y="1118.67" width="113" height="160">
-   <properties>
-    <property name="color" value="clay"/>
-   </properties>
-  </object>
-  <object id="992" name="vase" type="object" x="2455.5" y="1116" width="113" height="160">
-   <properties>
-    <property name="color" value="gray"/>
+    <property name="map" value="UnderflowRuins/Zone_1_1"/>
+    <property name="transition" value="dragon"/>
    </properties>
   </object>
  </objectgroup>
@@ -78,17 +91,25 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="torch" type="object" x="930.758" y="1248.03" width="42" height="130"/>
-  <object id="956" name="torch" type="object" x="175.97" y="1241.18" width="42" height="130"/>
+  <object id="955" name="torch" type="object" x="1018.76" y="1246.03" width="42" height="130"/>
+  <object id="956" name="torch" type="object" x="73.97" y="1241.18" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="984" name="cleopatra" type="entity" x="2087.22" y="1152" width="128" height="128">
+  <object id="984" name="cleopatra" type="entity" x="2087.22" y="1134" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="cleopatra-hexus,friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="998" name="horus" type="entity" x="1790" y="1132" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="horus-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
@@ -109,6 +130,12 @@
    <properties>
     <property name="map-banner" value=""/>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="999" name="spawn" type="object" x="3937.26" y="1640.86" width="128" height="128">
+   <properties>
+    <property name="map-banner" value=""/>
+    <property name="transition" value="tiger-door"/>
    </properties>
   </object>
  </objectgroup>

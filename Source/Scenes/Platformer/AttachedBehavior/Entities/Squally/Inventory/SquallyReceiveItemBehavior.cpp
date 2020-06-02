@@ -55,17 +55,22 @@ void SquallyReceiveItemBehavior::onLoad()
 
 		if (args != nullptr && args->item != nullptr)
 		{
-			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-				args->messageOverride,
-				args->item->getString(),
-				args->item->getIconResource(),
-				SoundResources::Notifications_NotificationGood3,
-				args->keepOpen
-			));
-
 			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 			{
-				entityInventoryBehavior->getInventory()->forceInsert(args->item, true);
+				entityInventoryBehavior->getInventory()->tryInsert(args->item, [=](Item* item)
+				{
+					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+						args->messageOverride,
+						args->item->getString(),
+						args->item->getIconResource(),
+						SoundResources::Notifications_NotificationGood3,
+						args->keepOpen
+					));
+				},
+				[=](Item* item)
+				{
+				},
+				true);
 			});
 		}
 	}));
@@ -87,15 +92,20 @@ void SquallyReceiveItemBehavior::onLoad()
 						continue;
 					}
 
-					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-						args->messageOverride,
-						item->getString(),
-						item->getIconResource(),
-						SoundResources::Notifications_NotificationGood3,
-						args->keepOpen
-					));
-
-					entityInventoryBehavior->getInventory()->forceInsert(item, true);
+					entityInventoryBehavior->getInventory()->tryInsert(item, [=](Item* item)
+					{
+						NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+							args->messageOverride,
+							item->getString(),
+							item->getIconResource(),
+							SoundResources::Notifications_NotificationGood3,
+							args->keepOpen
+						));
+					},
+					[=](Item* item)
+					{
+					},
+					true);
 				}
 			});
 		}

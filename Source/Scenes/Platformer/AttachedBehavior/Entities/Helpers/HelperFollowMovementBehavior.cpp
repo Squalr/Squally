@@ -105,7 +105,7 @@ void HelperFollowMovementBehavior::update(float dt)
 	}
 
 	if (this->entity->getRuntimeStateOrDefault(StateKeys::CinematicHijacked, Value(false)).asBool()
-		|| this->entity->hasState(StateKeys::CinematicDestinationX))
+		|| this->entity->hasRuntimeState(StateKeys::CinematicDestinationX))
 	{
 		return;
 	}

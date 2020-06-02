@@ -386,7 +386,7 @@
   <object id="1046" name="edge-portal" type="object" x="0.041" y="1074" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Zone_1_2"/>
+    <property name="map" value="UnderflowRuins/Town_Well"/>
     <property name="transition" value="left"/>
    </properties>
   </object>

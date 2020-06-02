@@ -289,7 +289,7 @@ void EntityMovementBehavior::update(float dt)
 
 void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 {
-	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
 
 	if (hasCinematicMovement)
 	{
@@ -332,9 +332,9 @@ void EntityMovementBehavior::cancelWaterSfx()
 
 void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
 {
-	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
 	bool isCinematicHijacked = this->entity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false);
-	bool hasPatrolMovement = this->entity->hasState(StateKeys::PatrolDestinationX);
+	bool hasPatrolMovement = this->entity->hasRuntimeState(StateKeys::PatrolDestinationX);
 
 	if (!hasCinematicMovement && !isCinematicHijacked && hasPatrolMovement)
 	{
@@ -354,7 +354,7 @@ void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
 
 void EntityMovementBehavior::checkCinematicMovementComplete()
 {
-	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
 	
 	if (hasCinematicMovement)
 	{
@@ -372,8 +372,8 @@ void EntityMovementBehavior::checkCinematicMovementComplete()
 
 void EntityMovementBehavior::checkPatrolMovementComplete()
 {
-	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
-	bool hasPatrolMovement = this->entity->hasState(StateKeys::PatrolDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
+	bool hasPatrolMovement = this->entity->hasRuntimeState(StateKeys::PatrolDestinationX);
 
 	// Exit if doing cinematic movement. That has priority.
 	if (hasCinematicMovement)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="121" nextobjectid="842">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="121" nextobjectid="845">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -132,6 +132,16 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="843" name="trigger" type="object" x="932.152" y="-101.697" width="178" height="1323.52">
+   <properties>
+    <property name="send-event" value="get-cursed"/>
+   </properties>
+  </object>
+  <object id="844" name="cinematic-marker" type="object" x="2276.97" y="953.455" width="96" height="96">
+   <properties>
+    <property name="tag" value="curse-exit"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -143,20 +153,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="mermaid" type="entity" x="1717.13" y="937.684" width="128" height="128">
+  <object id="817" name="medusa" type="entity" x="1487.13" y="937.684" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="818" name="mermaid" type="entity" x="1724.56" y="603.044" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="attached-behavior" value="friendly,look-at-squally"/>
+    <property name="quest" value="get-cursed"/>
+    <property name="quest-line" value="cure-town"/>
    </properties>
   </object>
  </objectgroup>
@@ -181,6 +182,11 @@
    </properties>
   </object>
   <object id="828" name="spawn" type="object" x="2784.48" y="939.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="842" name="spawn" type="object" x="3264" y="936" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>

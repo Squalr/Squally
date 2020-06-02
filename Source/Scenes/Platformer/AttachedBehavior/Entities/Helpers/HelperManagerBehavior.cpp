@@ -90,7 +90,7 @@ void HelperManagerBehavior::spawnHelperFromState()
 	Vec2 spawnCoords = Vec2::ZERO;
 	bool warpToSpawn = false;
 
-	if (this->entity->hasState(StateKeys::NewHelperSpawnX) || this->entity->hasState(StateKeys::NewHelperSpawnY))
+	if (this->entity->hasRuntimeState(StateKeys::NewHelperSpawnX) || this->entity->hasRuntimeState(StateKeys::NewHelperSpawnY))
 	{
 		spawnCoords = Vec2(
 			this->entity->getRuntimeStateOrDefaultFloat(StateKeys::NewHelperSpawnX, 0.0f),

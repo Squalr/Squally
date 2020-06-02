@@ -334,7 +334,7 @@ ValueMap& GameObject::getStateVariables()
 	return this->stateVariables;
 }
 
-bool GameObject::hasState(std::string key)
+bool GameObject::hasRuntimeState(std::string key)
 {
 	return GameUtils::keyExists(this->stateVariables, key);
 }
