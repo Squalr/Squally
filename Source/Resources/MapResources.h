@@ -85,6 +85,8 @@ namespace MapResources
 	extern const std::string Tutorials_KnownValueInt32;
 	extern const std::string Tutorials_UnknownValueFloat;
 	extern const std::string Tutorials_UnknownValueInt32;
+	extern const std::string UnderflowRuins_Combat_Desert;
+	extern const std::string UnderflowRuins_Combat_Pyramid;
 	extern const std::string UnderflowRuins_Fishing_Village;
 	extern const std::string UnderflowRuins_Home_Aphrodite;
 	extern const std::string UnderflowRuins_Home_Cleopatra;

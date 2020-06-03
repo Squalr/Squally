@@ -11,6 +11,7 @@
 #include "Objects/Platformer/Camera/CameraControl.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Objects/Platformer/Cinematic/Sarcophagus/Sarcophagus.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/IOUDrop.h"
 #include "Objects/Platformer/Decor/FireplaceFire.h"

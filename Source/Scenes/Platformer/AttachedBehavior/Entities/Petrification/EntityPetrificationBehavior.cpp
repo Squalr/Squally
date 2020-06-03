@@ -208,8 +208,8 @@ bool EntityPetrificationBehavior::tryCure()
 	const float RotationAngle = 2.5f;
 	const float RotationSpeed = 0.05f;
 	const float HalfRotationSpeed = RotationSpeed / 2.0f;
-	const float RumbleTime = 0.55f;
-	const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed));
+	const float RumbleTime = 1.1f;
+	const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
 
 	this->rotationNode->runAction(Sequence::create(
 		EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),

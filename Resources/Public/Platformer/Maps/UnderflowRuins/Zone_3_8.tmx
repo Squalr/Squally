@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1145">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1152">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -120,7 +120,11 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1029" name="ruins-thick" type="terrain" x="375.599" y="1336" width="2243.3" height="566.909"/>
+  <object id="1029" name="ruins-thick" type="terrain" x="375.599" y="1336" width="2243.3" height="566.909">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="98" name="objects -3">
   <properties>
@@ -191,7 +195,32 @@
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1134" name="ruins-thick" type="terrain" x="1273.68" y="1285.27" width="396.63" height="321.455"/>
+  <object id="1134" name="ruins-thick" type="terrain" x="1197.68" y="1285.27" width="556.63" height="321.455">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1149" name="ruins-thick" type="terrain" x="863.018" y="1308.61" width="232.63" height="296.122">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1150" name="ruins-thick" type="terrain" x="1841.02" y="1310.61" width="232.63" height="296.122">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="100" name="objects -1.5">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1148" name="sarcophagus" type="object" x="1241.33" y="1112.33" width="468" height="188">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="90" name="terrain -1">
   <properties>
@@ -208,6 +237,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="1151" name="ruins-thick" type="terrain" x="1334.67" y="1374" width="288" height="340">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>
@@ -218,21 +253,35 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="295.604" y="1404" width="2400.39" height="708.97"/>
+  <object id="976" name="ruins-thick" type="terrain" x="295.604" y="1404" width="2400.39" height="708.97">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1125" name="sarcophagus" type="object" x="1160" y="1154.67" width="624" height="250"/>
   <object id="1131" name="solid" type="collision" x="168.561" y="-278.59" width="126.878" height="1821.18"/>
   <object id="1132" name="solid" type="collision" x="2704.56" y="-266.59" width="126.878" height="1821.18"/>
   <object id="1142" name="portal" type="object" x="1337.33" y="1148" width="256" height="256">
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
+    <property name="tag" value="exit-portal"/>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="1146" name="trigger" type="object" x="979.545" y="80.24" width="96" height="1323.52">
+   <properties>
+    <property name="send-event" value="awaken-osiris"/>
+   </properties>
+  </object>
+  <object id="1147" name="trigger" type="object" x="1867.15" y="83.6945" width="96" height="1323.52">
+   <properties>
+    <property name="send-event" value="awaken-osiris"/>
    </properties>
   </object>
  </objectgroup>
@@ -253,6 +302,8 @@
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
+    <property name="quest" value="defeat-osiris"/>
+    <property name="quest-line" value="cleanse-pyramid"/>
    </properties>
   </object>
  </objectgroup>
@@ -290,6 +341,7 @@
   </properties>
   <object id="1138" name="ruins-thick" type="terrain" x="1334" y="1442" width="288" height="340">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -301,6 +353,7 @@
   </properties>
   <object id="1139" name="ruins-thick" type="terrain" x="1334" y="1478" width="288" height="340">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -312,6 +365,7 @@
   </properties>
   <object id="1140" name="ruins-thick" type="terrain" x="1334" y="1522" width="288" height="340">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -323,6 +377,7 @@
   </properties>
   <object id="1141" name="ruins-thick" type="terrain" x="1142" y="1570" width="662" height="476">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>

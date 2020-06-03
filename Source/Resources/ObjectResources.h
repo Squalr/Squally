@@ -21,6 +21,8 @@ namespace ObjectResources
 	extern const std::string Breakables_VaseTanBroken;
 	extern const std::string Breakables_VaseYellow;
 	extern const std::string Breakables_VaseYellowBroken;
+	extern const std::string Cinematic_Sarcophagus_SarcophagusBase;
+	extern const std::string Cinematic_Sarcophagus_SarcophagusLid;
 	extern const std::string Cinematic_ScrappyRope_GuanoRope;
 	extern const std::string Cinematic_ScrappyRope_Rope;
 	extern const std::string Cinematic_ScrappyRope_WaistRope;
@@ -277,8 +279,6 @@ namespace ObjectResources
 	extern const std::string Interactive_Help_QuestionMarkDisabled;
 	extern const std::string Interactive_Help_TotemGlow;
 	extern const std::string Interactive_LifeStone;
-	extern const std::string Interactive_Sarcophagus_SarcophagusBase;
-	extern const std::string Interactive_Sarcophagus_SarcophagusLid;
 	extern const std::string Interactive_TentBack;
 	extern const std::string Interactive_TentFront;
 	extern const std::string Physics_Asteroid_Asteroid;
