@@ -7,6 +7,7 @@ class QuestLine;
 class Scrappy;
 class Squally;
 class Medusa;
+class WorldSound;
 
 class GetCursed : public QuestTask
 {
@@ -29,12 +30,17 @@ private:
 
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
 	void petrifyGuano();
 
 	Guano* guano;
 	Scrappy* scrappy;
 	Squally* squally;
 	Medusa* medusa;
+
+	WorldSound* curseSfx;
 
 	static const std::string TagCinematicExit;
 	static const std::string SaveKeyDespawned;

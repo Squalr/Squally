@@ -25854,6 +25854,51 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Mesuda_E_FindACure() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_BehindOnShipments : public LocalizedString
 	{
 	public:

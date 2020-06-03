@@ -2,6 +2,11 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+namespace cocos2d
+{
+	class LayerColor;
+}
+
 class CinematicIndicator;
 class CurrencyDisplay;
 class ObjectiveDisplay;
@@ -25,6 +30,7 @@ protected:
 private:
 	typedef Hud super;
 
+	cocos2d::LayerColor* flashLayer;
 	CurrencyDisplay* currencyDisplay;
 	ObjectiveDisplay* objectiveDisplay;
 	StatsBars* statsBars;

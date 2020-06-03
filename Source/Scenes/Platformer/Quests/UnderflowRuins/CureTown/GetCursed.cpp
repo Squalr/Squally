@@ -123,14 +123,15 @@ void GetCursed::runCinematicSequencePt1()
 	this->medusa->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
+			PlatformerEvents::TriggerRunFlashFx(PlatformerEvents::FlashFxArgs(Color3B::PURPLE, 0.25f, 1));
 			this->medusa->getAnimations()->playAnimation("AttackCast", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		}),
-		DelayTime::create(0.75f),
+		DelayTime::create(0.15f),
 		CallFunc::create([=]()
 		{
 			this->petrifyGuano();
 		}),
-		DelayTime::create(0.75f),
+		DelayTime::create(1.35f),
 		CallFunc::create([=]()
 		{
 			this->runCinematicSequencePt2();
@@ -158,7 +159,80 @@ void GetCursed::runCinematicSequencePt2()
 		});
 	}, GetCursed::TagCinematicExit);
 
-	PlatformerEvents::TriggerCinematicRestore();
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed::create()
+			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt3();
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		true
+	));
+}
+
+void GetCursed::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Ellipses::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true),
+			true
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		"",
+		false
+	));
+}
+
+void GetCursed::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+		true
+	));
+}
+
+void GetCursed::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->complete();
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		true
+	));
 }
 
 void GetCursed::petrifyGuano()

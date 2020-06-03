@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 
+#include "cocos/base/ccTypes.h"
 #include "cocos/math/CCGeometry.h"
 
 class Currency;
@@ -29,6 +30,7 @@ public:
 	static const std::string EventEquippedItemsChanged;
 	static const std::string EventEngageEnemy;
 	static const std::string EventEnemyEngaged;
+	static const std::string EventRunFlashFx;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventOpenAlchemy;
@@ -130,6 +132,15 @@ public:
 		EnemyEngagedArgs() { }
 	};
 
+	struct FlashFxArgs
+	{
+		cocos2d::Color3B flashColor;
+		float duration;
+		int repeatCount;
+
+		FlashFxArgs(cocos2d::Color3B flashColor, float duration, int repeatCount) : flashColor(flashColor), duration(duration), repeatCount(repeatCount) { }
+	};
+
 	struct CraftingOpenArgs
 	{
 		std::vector<Item*> recipes;
@@ -220,6 +231,7 @@ public:
 	static void TriggerEquippedItemsChanged();
 	static void TriggerEngageEnemy(EngageEnemyArgs args);
 	static void TriggerEnemyEngaged(EnemyEngagedArgs args);
+	static void TriggerRunFlashFx(FlashFxArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerOpenAlchemy(CraftingOpenArgs args);

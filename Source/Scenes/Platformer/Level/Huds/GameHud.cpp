@@ -1,5 +1,8 @@
 #include "GameHud.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -29,6 +32,9 @@ GameHud* GameHud::create()
 
 GameHud::GameHud()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->flashLayer = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->currencyDisplay = CurrencyDisplay::create();
 	this->objectiveDisplay = ObjectiveDisplay::create();
 	this->statsBars = StatsBars::create();
@@ -39,6 +45,7 @@ GameHud::GameHud()
 	this->statsBars->setVisible(false);
 	this->currencyDisplay->setVisible(false);
 
+	this->addChild(this->flashLayer);
 	this->addChild(this->objectiveDisplay);
 	this->addChild(this->statsBars);
 	this->addChild(this->currencyDisplay);
@@ -105,6 +112,22 @@ void GameHud::initializeListeners()
 
 			this->statsBars->setVisible(false);
 			this->currencyDisplay->setVisible(false);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventRunFlashFx, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::FlashFxArgs* args = static_cast<PlatformerEvents::FlashFxArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->flashLayer->setColor(args->flashColor);
+
+			this->flashLayer->runAction(Repeat::create(Sequence::create(
+				FadeTo::create(args->duration, 255),
+				FadeTo::create(args->duration, 0),
+				nullptr
+			), (args->repeatCount <= 0) ? 1 : args->repeatCount));
 		}
 	}));
 }

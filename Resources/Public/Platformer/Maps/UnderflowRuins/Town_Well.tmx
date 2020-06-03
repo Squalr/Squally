@@ -156,6 +156,7 @@
   <object id="817" name="medusa" type="entity" x="1487.13" y="937.684" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,look-at-squally"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value="get-cursed"/>
     <property name="quest-line" value="cure-town"/>
    </properties>
