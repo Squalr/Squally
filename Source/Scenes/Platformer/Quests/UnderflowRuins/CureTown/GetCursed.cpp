@@ -13,6 +13,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
@@ -40,7 +41,6 @@ using namespace cocos2d;
 
 const std::string GetCursed::MapKeyQuest = "get-cursed";
 const std::string GetCursed::TagCinematicExit = "curse-exit";
-const std::string GetCursed::SaveKeyDespawned = "SAVE_KEY_DESPAWNED";
 
 GetCursed* GetCursed::create(GameObject* owner, QuestLine* questLine)
 {
@@ -57,6 +57,9 @@ GetCursed::GetCursed(GameObject* owner, QuestLine* questLine) : super(owner, que
 	this->scrappy = nullptr;
 	this->squally = nullptr;
 	this->medusa = nullptr;
+	this->curseSfx = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
+
+	this->addChild(this->curseSfx);
 }
 
 GetCursed::~GetCursed()
@@ -84,17 +87,16 @@ void GetCursed::onLoad(QuestState questState)
 	{
 		this->medusa = medusa;
 
-		if (this->loadObjectStateOrDefault(GetCursed::SaveKeyDespawned, Value(false)).asBool())
-		{
-			this->medusa->despawn();
-		}
-		else if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
 			this->listenForMapEventOnce(GetCursed::MapKeyQuest, [=](ValueMap)
 			{
-				this->saveObjectState(GetCursed::SaveKeyDespawned, Value(true));
 				this->runCinematicSequencePt1();
 			});
+		}
+		else
+		{
+			this->medusa->despawn();
 		}
 	});
 }
@@ -118,12 +120,16 @@ void GetCursed::runCinematicSequencePt1()
 	// IMPORTANT: Add a redundant save now to prevent possible bypasses.
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 
+	// To prevent re-running dialogue on save/quit, mark the quest as complete before dialogue. This is one of the few cases where we do this.
+	this->complete();
+
 	PlatformerEvents::TriggerCinematicHijack();
 
 	this->medusa->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
 			PlatformerEvents::TriggerRunFlashFx(PlatformerEvents::FlashFxArgs(Color3B::PURPLE, 0.25f, 1));
+			this->curseSfx->play();
 			this->medusa->getAnimations()->playAnimation("AttackCast", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		}),
 		DelayTime::create(0.15f),
@@ -173,7 +179,7 @@ void GetCursed::runCinematicSequencePt2()
 			this->runCinematicSequencePt3();
 		},
 		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
-		true
+		false
 	));
 }
 
@@ -212,7 +218,7 @@ void GetCursed::runCinematicSequencePt4()
 			this->runCinematicSequencePt5();
 		},
 		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
-		true
+		false
 	));
 }
 
@@ -228,7 +234,6 @@ void GetCursed::runCinematicSequencePt5()
 		),
 		[=]()
 		{
-			this->complete();
 		},
 		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		true

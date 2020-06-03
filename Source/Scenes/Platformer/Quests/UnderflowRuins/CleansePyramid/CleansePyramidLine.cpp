@@ -1,7 +1,7 @@
 #include "CleansePyramidLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-// #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/SneakPastLycan.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/UnlockTomb.h"
 
 using namespace cocos2d;
 
@@ -17,7 +17,7 @@ CleansePyramidLine* CleansePyramidLine::create()
 }
 
 CleansePyramidLine::CleansePyramidLine() : super(CleansePyramidLine::MapKeyQuestLine, {
-	// QuestData(SneakPastLycan::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return SneakPastLycan::create(owner, questLine); }),
+	QuestData(UnlockTomb::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnlockTomb::create(owner, questLine); }),
 })
 {
 }

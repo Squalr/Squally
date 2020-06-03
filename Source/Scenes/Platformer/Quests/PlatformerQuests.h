@@ -9,4 +9,5 @@
 #include "Scenes/Platformer/Quests/EndianForest/SneakIntoLianasHouse/SneakIntoLianasHouseLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WaterSpellbook/WaterSpellbookLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WindSpellbook/WindSpellbookLine.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/CleansePyramidLine.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"

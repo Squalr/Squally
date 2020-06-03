@@ -467,7 +467,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="objects +3" visible="0">
+ <objectgroup id="96" name="objects +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -477,6 +477,9 @@
   <object id="1125" name="portal" type="object" x="2754.32" y="1217.47" width="256.687" height="349.061">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_3_8"/>
+    <property name="quest" value="unlock-tomb"/>
+    <property name="quest-line" value="cleanse-pyramid"/>
+    <property name="tag" value="tomb-door"/>
     <property name="transition" value="boss"/>
    </properties>
   </object>
@@ -567,17 +570,19 @@
   <object id="1066" name="logic-torch" type="object" x="2597.5" y="1559.83" width="101" height="111">
    <properties>
     <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="false"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
+    <property name="tag" value="torch-left"/>
    </properties>
   </object>
   <object id="1067" name="logic-torch" type="object" x="3079.5" y="1563.83" width="101" height="111">
    <properties>
     <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="false"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
+    <property name="tag" value="torch-right"/>
    </properties>
   </object>
  </objectgroup>

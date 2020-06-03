@@ -112,9 +112,9 @@ void GlassDisplayBase::closeDisplay(bool animate)
 
 	if (animate)
 	{
-		this->glassDisplayFrontNormal->runAction(MoveTo::create(1.0f, Vec2::ZERO));
-		this->glassDisplayFrontOpened->runAction(MoveTo::create(1.0f, Vec2::ZERO));
-		this->glassDisplayFrontLooted->runAction(MoveTo::create(1.0f, Vec2::ZERO));
+		this->glassDisplayFrontNormal->runAction(MoveTo::create(1.5f, Vec2::ZERO));
+		this->glassDisplayFrontOpened->runAction(MoveTo::create(1.5f, Vec2::ZERO));
+		this->glassDisplayFrontLooted->runAction(MoveTo::create(1.5f, Vec2::ZERO));
 		this->closeSound->play();
 	}
 	else
@@ -138,9 +138,9 @@ void GlassDisplayBase::openDisplay(bool animate)
 	
 	if (animate)
 	{
-		this->glassDisplayFrontNormal->runAction(MoveTo::create(1.0f, Vec2(0.0f, 192.0f)));
-		this->glassDisplayFrontOpened->runAction(MoveTo::create(1.0f, Vec2(0.0f, 192.0f)));
-		this->glassDisplayFrontLooted->runAction(MoveTo::create(1.0f, Vec2(0.0f, 192.0f)));
+		this->glassDisplayFrontNormal->runAction(MoveTo::create(1.5f, Vec2(0.0f, 192.0f)));
+		this->glassDisplayFrontOpened->runAction(MoveTo::create(1.5f, Vec2(0.0f, 192.0f)));
+		this->glassDisplayFrontLooted->runAction(MoveTo::create(1.5f, Vec2(0.0f, 192.0f)));
 		this->openSound->play();
 		this->notifySound->play();
 	}

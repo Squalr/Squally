@@ -43,5 +43,4 @@ private:
 	WorldSound* curseSfx;
 
 	static const std::string TagCinematicExit;
-	static const std::string SaveKeyDespawned;
 };

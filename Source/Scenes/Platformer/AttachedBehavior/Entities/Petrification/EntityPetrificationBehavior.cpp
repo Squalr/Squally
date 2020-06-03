@@ -275,7 +275,7 @@ void EntityPetrificationBehavior::runDialogue()
 		}
 		else if (this->entity->getEntityKey() == "geryon")
 		{
-			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_BehindOnShipments::create(), Voices::GetNextVoiceShort());
+			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_UnderflowRuins_CureTown_Townspeople_BehindOnShipments::create(), Voices::GetNextVoiceMedium());
 		}
 		else if (this->entity->getEntityKey() == "athena")
 		{
