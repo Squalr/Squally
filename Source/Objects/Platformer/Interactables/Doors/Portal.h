@@ -19,7 +19,7 @@ public:
 	static const std::string PropertyIsLocked;
 
 protected:
-	Portal(cocos2d::ValueMap& properties, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
+	Portal(cocos2d::ValueMap& properties, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, cocos2d::Color3B color = cocos2d::Color3B::BLACK);
 	virtual ~Portal();
 	
 	void onEnter() override;

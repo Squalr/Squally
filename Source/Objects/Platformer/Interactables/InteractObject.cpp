@@ -25,28 +25,29 @@
 
 using namespace cocos2d;
 
-InteractObject* InteractObject::create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset, Color4F debugColor)
+InteractObject* InteractObject::create(InteractType interactType, Size size, Vec2 offset, Color3B interactColor, Color4F debugColor, bool disableLockDebug)
 {
 	ValueMap properties = ValueMap();
 
-	InteractObject* instance = new InteractObject(properties, interactType, size, offset, debugColor);
+	InteractObject* instance = new InteractObject(properties, interactType, size, offset, interactColor, debugColor, disableLockDebug);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset, Color4F debugColor) : super(properties)
+InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset, Color3B interactColor, Color4F debugColor, bool disableLockDebug)
+	: super(properties)
 {
 	this->interactType = interactType;
-	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
-	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
+	this->lockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
+	this->unlockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false), debugColor);
-	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
-	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
+	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"), interactColor);
+	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor);
 	this->unlockMenu = InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(
 		{ ConstantString::create("[V]"), Strings::Platformer_Objects_Doors_Unlock::create() }
-	), 256.0f);
+	), interactColor, 256.0f);
 	this->isLocked = !this->listenEvent.empty();
 	this->isUnlockable = false;
 	this->wasTripped = false;
@@ -68,8 +69,12 @@ InteractObject::InteractObject(ValueMap& properties, InteractType interactType, 
 	this->addChild(this->interactMenu);
 	this->addChild(this->lockedMenu);
 	this->addChild(this->unlockMenu);
-	this->addChild(this->lockButton);
-	this->addChild(this->unlockButton);
+
+	if (!disableLockDebug)
+	{
+		this->addChild(this->lockButton);
+		this->addChild(this->unlockButton);
+	}
 }
 
 InteractObject::~InteractObject()
@@ -95,26 +100,32 @@ void InteractObject::initializePositions()
 {
 	super::initializePositions();
 
-	this->lockButton->setPosition(Vec2(-64.0f, 212.0f));
-	this->unlockButton->setPosition(Vec2(64.0f, 212.0f));
+	if (this->lockButton != nullptr && this->unlockButton != nullptr)
+	{
+		this->lockButton->setPosition(Vec2(-64.0f, 212.0f));
+		this->unlockButton->setPosition(Vec2(64.0f, 212.0f));
+	}
 }
 
 void InteractObject::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	if (this->lockButton != nullptr && this->unlockButton != nullptr)
 	{
-		this->lock(false);
-		this->updateInteractMenuVisibility();
-	});
+		this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		{
+			this->lock(false);
+			this->updateInteractMenuVisibility();
+		});
 
-	this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->unlock(false);
-		this->enable();
-		this->updateInteractMenuVisibility();
-	});
+		this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		{
+			this->unlock(false);
+			this->enable();
+			this->updateInteractMenuVisibility();
+		});
+	}
 
 	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
@@ -164,16 +175,22 @@ void InteractObject::onDeveloperModeEnable(int debugLevel)
 {
 	super::onDeveloperModeEnable(debugLevel);
 	
-	this->lockButton->setVisible(true);
-	this->unlockButton->setVisible(true);
+	if (this->lockButton != nullptr && this->unlockButton != nullptr)
+	{
+		this->lockButton->setVisible(true);
+		this->unlockButton->setVisible(true);
+	}
 }
 
 void InteractObject::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
-	this->lockButton->setVisible(false);
-	this->unlockButton->setVisible(false);
+	if (this->lockButton != nullptr && this->unlockButton != nullptr)
+	{
+		this->lockButton->setVisible(false);
+		this->unlockButton->setVisible(false);
+	}
 }
 
 void InteractObject::onStateRefresh()

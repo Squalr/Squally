@@ -18,13 +18,13 @@ class LocalizedString;
 class InteractMenu : public SmartNode
 {
 public:
-	static InteractMenu* create(LocalizedString* displayString, float menuWidth = 128.0f);
+	static InteractMenu* create(LocalizedString* displayString, cocos2d::Color3B backColor = cocos2d::Color3B::BLACK, float menuWidth = 128.0f);
 
 	void show();
 	void hide();
 
 protected:
-	InteractMenu(LocalizedString* displayString, float menuWidth);
+	InteractMenu(LocalizedString* displayString, cocos2d::Color3B backColor, float menuWidth);
 	virtual ~InteractMenu();
 
 private:

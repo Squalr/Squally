@@ -44,7 +44,14 @@ OptionWarp* OptionWarp::create(ValueMap& properties)
 	return instance;
 }
 
-OptionWarp::OptionWarp(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+OptionWarp::OptionWarp(ValueMap& properties) : super(
+	properties,
+	Size(
+		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	),
+	Vec2::ZERO,
+	Color3B(16, 23, 57))
 {
 	std::string warpToList = GameUtils::getKeyOrDefault(this->properties, OptionWarp::PropertyWarpTo, Value("")).asString();
 

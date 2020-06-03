@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple-dark" type="texture" x="-1081.82" y="-1558" width="7875.63" height="5156"/>
+  <object id="988" name="temple-dark" type="texture" x="-601.82" y="-518" width="5787.63" height="4116"/>
  </objectgroup>
  <objectgroup id="72" name="decor -6">
   <properties>
@@ -25,7 +25,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="962" name="Ruins/Window" type="decor" x="1160.11" y="551.015" width="313" height="381"/>
-  <object id="967" name="torch" type="object" x="728.94" y="709.935" width="42" height="130"/>
+  <object id="967" name="torch" type="object" x="788.94" y="717.935" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="1811.61" y="716.515" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -6">
@@ -58,7 +58,7 @@
    </properties>
   </object>
   <object id="1141" name="solid" type="collision" x="3543.22" y="1280.32" width="126.878" height="1587.85"/>
-  <object id="1142" name="solid" type="collision" x="683.893" y="-136.587" width="126.878" height="2991.85"/>
+  <object id="1142" name="solid" type="collision" x="681.893" y="-94.587" width="126.878" height="2991.85"/>
   <object id="1145" name="logic-torch" type="object" x="2208.5" y="1176.5" width="101" height="111">
    <properties>
     <property name="color" value="green"/>
@@ -301,7 +301,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1123" name="ruins-thick" type="terrain" x="749.333" y="1299.33" width="288" height="340">
+  <object id="1123" name="ruins-thick" type="terrain" x="747.333" y="1341.33" width="288" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
@@ -325,7 +325,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1122" name="ruins-thick" type="terrain" x="748.333" y="1324.33" width="288" height="340">
+  <object id="1122" name="ruins-thick" type="terrain" x="746.333" y="1366.33" width="288" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
@@ -381,7 +381,7 @@
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1028" name="ruins-thick" type="terrain" x="-512.82" y="1356" width="1652.45" height="2128">
+  <object id="1028" name="ruins-thick" type="terrain" x="-514.82" y="1398" width="1652.45" height="2128">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
@@ -392,12 +392,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="960" name="vase" type="object" x="591.863" y="1196.55" width="113" height="160">
+  <object id="960" name="vase" type="object" x="589.863" y="1238.55" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object id="1084" name="edge-portal" type="object" x="-0.293333" y="867.999" width="199.918" height="488.002">
+  <object id="1084" name="edge-portal" type="object" x="-2.29333" y="909.999" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="UnderflowRuins/Zone_3_2"/>
@@ -445,7 +445,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="382.5" y="1226.68" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="380.5" y="1268.68" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
@@ -458,7 +458,7 @@
     <property name="to" value="6-B"/>
    </properties>
   </object>
-  <object id="1043" name="warp" type="object" x="761.573" y="1101.51" width="256" height="256">
+  <object id="1043" name="warp" type="object" x="759.573" y="1143.51" width="256" height="256">
    <properties>
     <property name="from" value="3-D"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -466,7 +466,7 @@
     <property name="to" value="1-D"/>
    </properties>
   </object>
-  <object id="1087" name="spawn" type="object" x="347.33" y="1228" width="128" height="128">
+  <object id="1087" name="spawn" type="object" x="345.33" y="1270" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>

@@ -21,22 +21,22 @@
 
 using namespace cocos2d;
 
-InteractMenu* InteractMenu::create(LocalizedString* displayString, float menuWidth)
+InteractMenu* InteractMenu::create(LocalizedString* displayString, Color3B backColor, float menuWidth)
 {
-	InteractMenu* instance = new InteractMenu(displayString, menuWidth);
+	InteractMenu* instance = new InteractMenu(displayString, backColor, menuWidth);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractMenu::InteractMenu(LocalizedString* displayString, float menuWidth)
+InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, float menuWidth)
 {
 	this->uiElements = Node::create();
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
 	this->menuSize = Size(menuWidth, 48.0f);
-	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), this->menuSize.width, this->menuSize.height);
+	this->backdrop = LayerColor::create(Color4B(backColor.r, backColor.g, backColor.b, 196), this->menuSize.width, this->menuSize.height);
 	this->hasRelocated = false;
 	this->isFadingIn = false;
 	this->isFadingOut = false;

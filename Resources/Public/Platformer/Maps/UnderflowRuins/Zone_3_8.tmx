@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1143">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1145">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -40,15 +40,15 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1101" name="temple-door" type="object" x="1251" y="758" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow-skull"/>
-    <property name="map" value="UnderflowRuins/Zone_3_2"/>
-    <property name="transition" value="boss"/>
-   </properties>
-  </object>
   <object id="1129" name="solid" type="collision" x="2145.65" y="-492.408" width="126.878" height="1821.18"/>
   <object id="1130" name="solid" type="collision" x="654.743" y="-498.469" width="126.878" height="1821.18"/>
+  <object id="1143" name="dragon-door" type="object" x="1085.7" y="637.606" width="768" height="646">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="map" value="UnderflowRuins/Zone_3_2"/>
+    <property name="transition" value="dragon"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="95" name="player_layer -6">
   <properties>
@@ -246,6 +246,15 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1144" name="osiris" type="entity" x="1398" y="1280" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

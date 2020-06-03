@@ -35,11 +35,10 @@ MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string typ
 {
 }
 
-MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects)
+MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects) : super(properties)
 {
 	this->layerName = name;
 	this->layerType = type;
-	this->properties = properties;
 	this->autoZSort = GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyZSort, Value(false)).asBool();
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyDepth, Value(0.0f)).asFloat());

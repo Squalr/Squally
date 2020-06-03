@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1008">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1009">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -58,37 +58,21 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1002" name="temple-dark" type="terrain" x="450.185" y="-6" width="1787.63" height="1836">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="18" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="992" name="ruins-thick" type="terrain" x="-1148" y="1356">
+  <object id="1008" name="temple-dark" type="terrain" x="250.185" y="204" width="2011.63" height="1708">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="4350.36,46.3694 4358.95,1079.38 1472.84,1061.97 1465.32,-473.291 3676.84,-466.266 3676.59,-338.775 3799.19,-339.715 3797.84,-208.567 3917.5,-207.94 3916.93,-83.8781 4039.25,-82.1483 4037.79,46.3778"/>
   </object>
  </objectgroup>
  <objectgroup id="79" name="terrain mid">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1004" name="ruins-thick" type="terrain" x="1600" y="1400.18" width="339.63" height="560">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1005" name="ruins-thick" type="terrain" x="1984.73" y="1183.64" width="339.63" height="560">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -115,17 +99,11 @@
     <property name="reward-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="985" name="temple-door" type="object" x="1093.64" y="358.242" width="432" height="528">
+  <object id="985" name="temple-door" type="object" x="929.64" y="1130.24" width="432" height="528">
    <properties>
-    <property name="color" value="yellow-skull"/>
-    <property name="map" value="UnderflowRuins/Zone_3_2"/>
+    <property name="color" value="yellow-down"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5"/>
     <property name="transition" value="dungeon"/>
-   </properties>
-  </object>
-  <object id="989" name="dragon-door" type="object" x="766.97" y="1008.64" width="768" height="646">
-   <properties>
-    <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
-    <property name="transition" value="dragon"/>
    </properties>
   </object>
  </objectgroup>
@@ -141,16 +119,6 @@
   <object id="998" name="vase" type="object" x="2099.92" y="1497.03" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
-   </properties>
-  </object>
-  <object id="999" name="vase" type="object" x="707.136" y="726.061" width="113" height="160">
-   <properties>
-    <property name="color" value="gray"/>
-   </properties>
-  </object>
-  <object id="1000" name="vase" type="object" x="1849.56" y="729.091" width="113" height="160">
-   <properties>
-    <property name="color" value="gray"/>
    </properties>
   </object>
   <object id="1001" name="vase" type="object" x="3028.35" y="2010.91" width="113" height="160">
@@ -181,14 +149,9 @@
     <property name="transition" value="path"/>
    </properties>
   </object>
-  <object id="982" name="spawn" type="object" x="1250.37" y="757.633" width="128" height="128">
-   <properties>
-    <property name="transition" value="dungeon"/>
-   </properties>
-  </object>
   <object id="996" name="spawn" type="object" x="1078.06" y="1523.88" width="128" height="128">
    <properties>
-    <property name="transition" value="dragon"/>
+    <property name="transition" value="dungeon"/>
    </properties>
   </object>
  </objectgroup>

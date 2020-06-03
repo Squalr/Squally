@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="83" nextobjectid="876">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="880">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -86,7 +86,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="863" name="Forest/Flower10" type="decor" x="2820.5" y="1786.83" width="199" height="133"/>
-  <object id="865" name="Forest/Flower9" type="decor" x="5256.5" y="1685.5" width="199" height="133"/>
+  <object id="865" name="Forest/Flower9" type="decor" x="5260.5" y="1693.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="80" name="objects -4">
   <properties>
@@ -105,25 +105,6 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
-    <property name="zoom" type="float" value="2"/>
-   </properties>
-  </object>
-  <object id="858" name="warp" type="object" x="4347.15" y="1644.97" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-B"/>
-    <property name="zoom" type="float" value="2"/>
-   </properties>
-  </object>
-  <object id="870" name="warp" type="object" x="8096" y="1538" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-C"/>
     <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
@@ -149,6 +130,30 @@
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="2"/>
+  </properties>
+  <object id="878" name="warp" type="object" x="4365.15" y="1647.97" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-B"/>
+   </properties>
+  </object>
+  <object id="879" name="warp" type="object" x="8096" y="1538" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-C"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -431,25 +436,6 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
-  <object id="871" name="warp" type="object" x="4364" y="1790" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-B"/>
-    <property name="zoom" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="872" name="warp" type="object" x="8095.94" y="1672.91" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-C"/>
-    <property name="zoom" type="float" value="1"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -509,6 +495,24 @@
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="left_alt"/>
+   </properties>
+  </object>
+  <object id="876" name="warp" type="object" x="4364" y="1790" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
+    <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="877" name="warp" type="object" x="8095.94" y="1672.91" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-C"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-C"/>
    </properties>
   </object>
  </objectgroup>

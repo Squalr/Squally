@@ -38,7 +38,6 @@ protected:
 
 	std::string layerName;
 	std::string layerType;
-	cocos2d::ValueMap properties;
 
 private:
 	typedef GameObject super;

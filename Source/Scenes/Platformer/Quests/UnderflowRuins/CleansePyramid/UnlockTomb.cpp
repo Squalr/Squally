@@ -1,7 +1,7 @@
 #include "UnlockTomb.h"
 
 #include "Engine/Events/ObjectEvents.h"
-#include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"
 #include "Objects/Platformer/Puzzles/LogicTorch.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -11,7 +11,7 @@
 using namespace cocos2d;
 
 const std::string UnlockTomb::MapKeyQuest = "unlock-tomb";
-const std::string UnlockTomb::TagTombDoor = "rope-portal";
+const std::string UnlockTomb::TagTombDoor = "tomb-door";
 const std::string UnlockTomb::TagTorchLeft = "torch-left";
 const std::string UnlockTomb::TagTorchRight = "torch-right";
 
@@ -36,7 +36,7 @@ void UnlockTomb::onLoad(QuestState questState)
 {
 	if (questState != QuestState::Complete)
 	{
-		ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
+		ObjectEvents::WatchForObject<DragonDoor>(this, [=](DragonDoor* portal)
 		{
 			ObjectEvents::WatchForObject<LogicTorch>(this, [=](LogicTorch* logicTorchLeft)
 			{
@@ -44,7 +44,11 @@ void UnlockTomb::onLoad(QuestState questState)
 				{
 					if (!logicTorchLeft->isTorchOn() || !logicTorchRight->isTorchOn())
 					{
-						portal->disable();
+						portal->lock(false);
+					}
+					else
+					{
+						portal->unlock(false);
 					}
 				}, UnlockTomb::TagTorchRight);
 			}, UnlockTomb::TagTorchLeft);

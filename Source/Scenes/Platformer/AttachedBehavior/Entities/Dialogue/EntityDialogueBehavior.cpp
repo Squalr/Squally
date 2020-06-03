@@ -35,7 +35,14 @@ EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->dialogueInteraction = InteractObject::create(InteractObject::InteractType::Input, (this->entity == nullptr ? Size::ZERO : this->entity->getEntitySize()), Vec2::ZERO, Color4F::ORANGE);
+	this->dialogueInteraction = InteractObject::create(
+		InteractObject::InteractType::Input,
+		(this->entity == nullptr ? Size::ZERO : this->entity->getEntitySize()),
+		Vec2::ZERO,
+		Color3B(28, 42, 46),
+		Color4F::ORANGE,
+		true
+	);
 	this->scrappy = nullptr;
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();

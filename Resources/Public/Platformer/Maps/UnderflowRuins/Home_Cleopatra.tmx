@@ -82,7 +82,7 @@
   </object>
   <object id="1002" name="dragon-door" type="object" x="184" y="1013" width="768" height="646">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_1_1"/>
+    <property name="map" value="UnderflowRuins/Zone_3_1"/>
     <property name="transition" value="dragon"/>
    </properties>
   </object>
