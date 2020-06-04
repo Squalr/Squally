@@ -165,6 +165,8 @@ protected:
 
 private:
 	typedef SmartNode super;
+	friend class MapLayer;
+	
 	bool isAttributeOrHiddenProperty(std::string propertyName);
 	bool containsAttributes();
 	bool containsProperties();

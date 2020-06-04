@@ -151,10 +151,15 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto next : mapRaw->getObjectGroups())
 	{
-		std::string layerType = GameUtils::getKeyOrDefault(next->getProperties(), MapLayer::MapKeyType, Value("")).asString();
+		ValueMap properties = next->getProperties();
+
+		properties[GameObject::MapKeyName] = next->getGroupName();
+		properties[GameObject::MapKeyId] = next->layerIndex;
+
+		std::string layerType = GameUtils::getKeyOrDefault(properties, MapLayer::MapKeyType, Value("")).asString();
 
 		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
-			next->getProperties(),
+			properties,
 			next->getObjects(),
 			next->layerIndex,
 			mapFileName,
@@ -163,11 +168,11 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 			onDeserializeCallback
 		);
 
-		for (auto deserializerIt = layerDeserializers.begin(); deserializerIt != layerDeserializers.end(); deserializerIt++)
+		for (auto deserializer : layerDeserializers)
 		{
-			if ((*deserializerIt)->getLayerType() == layerType)
+			if (deserializer->getLayerType() == layerType)
 			{
-				(*deserializerIt)->deserialize(&args);
+				deserializer->deserialize(&args);
 			}
 
 			if (args.isHandled())

@@ -16,6 +16,7 @@ public:
 	static const std::string SaveKeySquallyPositionX;
 	static const std::string SaveKeySquallyPositionY;
 	static const std::string SaveKeySquallyPositionZ;
+	static const std::string SaveKeySquallyLayerId;
 	static const std::string SaveKeySquallyInventory;
 	static const std::string SaveKeySquallyEquipment;
 	static const std::string SaveKeySquallyCurrencyInventory;

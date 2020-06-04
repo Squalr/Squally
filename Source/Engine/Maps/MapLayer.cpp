@@ -39,9 +39,14 @@ MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string typ
 {
 	this->layerName = name;
 	this->layerType = type;
+	this->uniqueIdentifier = this->layerName + "_" + this->layerType + "_" + GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyId, Value("")).asString();
+
 	this->autoZSort = GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyZSort, Value(false)).asBool();
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyDepth, Value(0.0f)).asFloat());
+	
+	// We need to re-add the ID tag, as in the GameObject parent class, ID will be empty and thus not tagged yet.
+	this->addTag(this->uniqueIdentifier);
 
 	for (auto object : objects)
 	{

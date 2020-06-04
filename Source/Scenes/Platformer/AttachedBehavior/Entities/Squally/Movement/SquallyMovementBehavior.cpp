@@ -5,7 +5,9 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -108,15 +110,12 @@ void SquallyMovementBehavior::onLoad()
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSavePosition, [=](EventCustom* eventCustom)
 	{
-		Vec3 position = GameUtils::getWorldCoords3D(this->squally);
-
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionZ, Value(position.z));
+		this->saveSquallyPosition();
 	}));
 
 	this->squally->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
@@ -126,13 +125,7 @@ void SquallyMovementBehavior::onLoad()
 
 	if (!this->isPositionSavingDisabled)
 	{
-		Vec3 position = GameUtils::getWorldCoords3D(this->squally);
-
-		float x = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
-		float y = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
-		float z = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
-
-		GameUtils::setWorldCoords3D(this->squally, Vec3(x, y, z));
+		this->loadSquallyPosition();
 	}
 	
 	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
@@ -159,11 +152,7 @@ void SquallyMovementBehavior::update(float dt)
 		if (this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
 			this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
 		{
-			Vec3 position = GameUtils::getWorldCoords3D(this->squally);
-
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionZ, Value(position.z));
+			this->saveSquallyPosition();
 		}
 	}
 }
@@ -184,4 +173,39 @@ void SquallyMovementBehavior::onMovementChanged()
 void SquallyMovementBehavior::disablePositionSaving()
 {
 	this->isPositionSavingDisabled = true;
+}
+
+void SquallyMovementBehavior::saveSquallyPosition()
+{
+	Vec3 position = GameUtils::getWorldCoords3D(this->squally);
+	MapLayer* mapLayer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+	std::string layerId = mapLayer == nullptr ? "" : mapLayer->getUniqueIdentifier();
+
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionZ, Value(position.z));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyLayerId, Value(layerId));
+}
+
+void SquallyMovementBehavior::loadSquallyPosition()
+{
+	Vec3 position = GameUtils::getWorldCoords3D(this->squally);
+
+	float x = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
+	float y = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
+	float z = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
+	std::string layerId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyLayerId, Value("")).asString();
+
+	GameUtils::setWorldCoords3D(this->squally, Vec3(x, y, z));
+
+	if (!layerId.empty())
+	{
+		this->defer([=]()
+		{
+			ObjectEvents::QueryObjects<MapLayer>(QueryObjectsArgs<MapLayer>([&](MapLayer* mapLayer)
+			{
+				GameUtils::changeParent(this->squally, mapLayer, true);
+			}), layerId);
+		});
+	}
 }

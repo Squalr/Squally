@@ -14,6 +14,7 @@ const std::string SaveKeys::SaveKeySquallyCurrencyInventory = "SAVE_KEY_SQUALLY_
 const std::string SaveKeys::SaveKeySquallyPositionX = "SAVE_KEY_SQUALLY_POSITION_X";
 const std::string SaveKeys::SaveKeySquallyPositionY = "SAVE_KEY_SQUALLY_POSITION_Y";
 const std::string SaveKeys::SaveKeySquallyPositionZ = "SAVE_KEY_SQUALLY_POSITION_Z";
+const std::string SaveKeys::SaveKeySquallyLayerId = "SAVE_KEY_SQUALLY_LAYER_ID";
 const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND";
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
