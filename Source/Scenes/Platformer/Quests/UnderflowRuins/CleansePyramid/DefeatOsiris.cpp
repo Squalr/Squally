@@ -43,7 +43,7 @@ DefeatOsiris::DefeatOsiris(GameObject* owner, QuestLine* questLine) : super(owne
 {
 	this->osiris = nullptr;
 	this->squally = nullptr;
-	this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_Rumble);
+	this->rumbleSound = WorldSound::create(SoundResources::Platformer_FX_Rumbles_StoneRumbleAndRumble1);
 
 	this->addChild(this->rumbleSound);
 }
@@ -144,7 +144,7 @@ void DefeatOsiris::runCinematicSequencePt1()
 		const float FloatTime = 2.0f;
 		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
 
-		this->rumbleSound->play(true);
+		this->rumbleSound->play();
 
 		this->sarcophagus->getLid()->runAction(Sequence::create(
 			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),

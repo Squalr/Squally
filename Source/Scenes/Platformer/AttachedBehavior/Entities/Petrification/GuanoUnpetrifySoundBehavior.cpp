@@ -23,7 +23,7 @@ GuanoUnpetrifySoundBehavior* GuanoUnpetrifySoundBehavior::create(GameObject* own
 GuanoUnpetrifySoundBehavior::GuanoUnpetrifySoundBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->statueBreakSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_RumbleAndBreak);
+	this->statueBreakSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_RumbleAndBreak1);
 
 	if (this->entity == nullptr)
 	{

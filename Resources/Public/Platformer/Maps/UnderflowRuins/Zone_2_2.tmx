@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="946">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="948">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -243,6 +243,13 @@
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-B"/>
     <property name="scale" type="float" value="0.75"/>
+   </properties>
+  </object>
+  <object id="947" name="poseidon" type="entity" x="4048" y="1070" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="poseidon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

@@ -81,8 +81,8 @@ StateOverride* URPuzzleCBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -92,13 +92,14 @@ StateOverride* URPuzzleCBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -108,21 +109,17 @@ StateOverride* URPuzzleCBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 		}
 	);
 }

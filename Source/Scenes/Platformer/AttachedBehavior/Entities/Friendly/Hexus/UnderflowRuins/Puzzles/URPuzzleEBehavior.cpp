@@ -81,8 +81,9 @@ StateOverride* URPuzzleEBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+			CardList::getInstance()->cardListByName.at(CardKeys::Kill),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -92,35 +93,38 @@ StateOverride* URPuzzleEBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
+			
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
 		}
 	);
 }

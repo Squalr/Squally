@@ -115,8 +115,19 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[URPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)URPuzzleFBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[URPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)URPuzzleGBehavior::create(owner); };
 
+	this->attachedBehaviorDeserializers[AjaxHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AjaxHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[AngelHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AngelHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[AphroditeHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AphroditeHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[AresHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AresHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[AthenaHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AthenaHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[CleopatraHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CleopatraHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[GeyronHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GeyronHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GriffinHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GriffinHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[HorusHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)HorusHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PoseidonHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PoseidonHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[RupertHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RupertHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ThorHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ThorHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ZeusHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ZeusHexusBehavior::create(owner); };
 
 	/*********************
 		ENTITIES / OVERWORLD

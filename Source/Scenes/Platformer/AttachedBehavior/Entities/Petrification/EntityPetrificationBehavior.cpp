@@ -62,7 +62,7 @@ EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : su
 	this->inventory = nullptr;
 	this->cureInteraction = nullptr;
 	this->unpetrifyParticles = SmartParticles::create(ParticleResources::Objects_StatueBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
-	this->statueBreakSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_RumbleAndBreak);
+	this->statueBreakSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_RumbleAndBreak1);
 	this->rotationNode = Node::create();
 
 	if (this->entity == nullptr)

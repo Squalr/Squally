@@ -23904,6 +23904,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_ExploreCistern() = default;
 	};
 
+	class Platformer_Objectives_UnderflowRuins_UR_ExploreFountain : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_ExploreFountain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_ExploreFountain();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_ExploreFountain() = default;
+	};
+
 	class Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance : public LocalizedString
 	{
 	public:
@@ -23947,6 +23962,21 @@ namespace Strings
 	private:
 		Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors();
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_ReturnToHera : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_ReturnToHera* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_ReturnToHera();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_ReturnToHera() = default;
 	};
 
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString
