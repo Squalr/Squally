@@ -111,6 +111,13 @@ void DefeatOsiris::onComplete()
 	{
 		portal->unlock(false);
 	}, DefeatOsiris::TagExitPortal);
+	
+	ObjectEvents::WatchForObject<Sarcophagus>(this, [=](Sarcophagus* sarcophagus)
+	{
+		this->sarcophagus = sarcophagus;
+		
+		this->sarcophagus->getLid()->setVisible(false);
+	}, Sarcophagus::MapKey);
 }
 
 void DefeatOsiris::onSkipped()

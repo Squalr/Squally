@@ -36,7 +36,7 @@ Cleopatra::~Cleopatra()
 
 Vec2 Cleopatra::getDialogueOffset()
 {
-	return Vec2(-32.0f, -144.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Cleopatra::getEntityName()

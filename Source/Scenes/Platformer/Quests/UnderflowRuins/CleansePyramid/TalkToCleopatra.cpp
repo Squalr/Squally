@@ -117,9 +117,9 @@ void TalkToCleopatra::runCinematicSequencePt1()
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->cleopatra, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->cleopatra, true)
 		),
 		[=]()
 		{
@@ -136,9 +136,9 @@ void TalkToCleopatra::runCinematicSequencePt2()
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->cleopatra, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true),
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->cleopatra, true),
 			true
 		),
 		[=]()
@@ -156,9 +156,9 @@ void TalkToCleopatra::runCinematicSequencePt3()
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->cleopatra, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->cleopatra, true)
 		),
 		[=]()
 		{
@@ -175,12 +175,13 @@ void TalkToCleopatra::runCinematicSequencePt3()
 void TalkToCleopatra::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines::create(),
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines::create()
+			->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_DataMines::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->cleopatra, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->cleopatra, true)
 		),
 		[=]()
 		{

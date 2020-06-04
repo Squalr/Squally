@@ -1,61 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="152" nextobjectid="1087">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="786">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="DesertSky"/>
-   <property name="gravity" value="-768"/>
+   <property name="background" value="WaterfallSky"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="80" name="desert bg 4">
+ <objectgroup id="58" name="background">
   <properties>
-   <property name="depth" type="float" value="-2560"/>
+   <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="712" name="caverns" type="texture" x="1549.58" y="2692.56">
+   <polygon points="-2117.78,-3335.96 3155.68,-3328.61 3149.59,1938.32 -2108.54,1916.87"/>
+  </object>
  </objectgroup>
- <objectgroup id="78" name="desert bg 3">
-  <properties>
-   <property name="depth" type="float" value="-2432"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="77" name="desert bg 2">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="desert bg 1">
-  <properties>
-   <property name="depth" type="float" value="-2176"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="148" name="terrain bg">
+ <objectgroup id="59" name="terrain2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1077" name="caverns" type="terrain" x="-107.815" y="-212" width="3287.63" height="2780"/>
+  <object id="771" name="caverns" type="terrain" x="-70.365" y="1279.49" width="1226.43" height="2313.01">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1078" name="caverns" type="terrain" x="32.2996" y="1560">
-   <polygon points="-128.654,-1.09091 993.603,-1.93939 1752.81,266.667 3049.46,268.705 3082.09,1560.2 -75.3572,1547.83 -76.7386,794.554"/>
+  <object id="674" name="caverns" type="terrain" x="4895.47" y="3680.45">
+   <polygon points="-5159.98,-738.503 -3878.89,-743.321 -3069.01,-1241.76 -2297.4,-1240.68 -1864.69,-1549.73 -843.118,-1570.62 -851.491,456.588 -5151.84,490.768"/>
   </object>
  </objectgroup>
- <objectgroup id="149" name="terrain fg">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="57" name="objects back">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -64,45 +55,64 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1086" name="portal" type="object" x="289.838" y="1298.55" width="256" height="256">
+  <object id="773" name="Generic/WoodCaveDoor1" type="decor" x="3434.06" y="1728.32" width="388" height="403"/>
+  <object id="774" name="portal" type="object" x="3504.06" y="1855.82" width="256" height="256">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_1_4"/>
-    <property name="transition" value="main"/>
+    <property name="map" value="EndianForest/Zone_3_0"/>
+    <property name="transition" value="exit"/>
    </properties>
   </object>
+  <object id="784" name="Caverns/TigerDoor" type="decor" x="52" y="2428" width="688" height="528"/>
+  <object id="785" name="portal" type="object" x="282.5" y="2683.17" width="256" height="256">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="UnderflowRuins/Zone_Home_Cleopatra"/>
+    <property name="transition" value="zone-transition"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="778" name="ogre" type="entity" x="2154.67" y="2310.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-G"/>
+    <property name="scale" type="float" value="0.75"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="949" name="spawn" type="object" x="353.152" y="1427.88" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="1047" name="squally" type="entity" x="666.485" y="1430.97" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="823.9" y="2807.62" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
+  <object id="779" name="spawn" type="object" x="344" y="2812" width="128" height="128">
+   <properties>
+    <property name="transition" value="zone-transition"/>
+   </properties>
+  </object>
+  <object id="780" name="spawn" type="object" x="3564.06" y="1987.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="28" name="fireflies">
   <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
 </map>

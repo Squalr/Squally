@@ -77,7 +77,7 @@
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="UnderflowRuins/Zone_3_1"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="zone-transition"/>
    </properties>
   </object>
   <object id="1002" name="dragon-door" type="object" x="184" y="1013" width="768" height="646">
@@ -134,7 +134,7 @@
   <object id="999" name="spawn" type="object" x="3937.26" y="1640.86" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
-    <property name="transition" value="tiger-door"/>
+    <property name="transition" value="zone-transition"/>
    </properties>
   </object>
  </objectgroup>
