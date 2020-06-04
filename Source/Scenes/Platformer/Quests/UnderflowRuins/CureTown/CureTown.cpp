@@ -135,7 +135,7 @@ void CureTown::onComplete()
 		cameraStop->disable();
 	}, "quest-camera-stop");
 
-	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
+	Objectives::SetCurrentObjective(ObjectiveKeys::URCrossBridge);
 }
 
 void CureTown::onSkipped()

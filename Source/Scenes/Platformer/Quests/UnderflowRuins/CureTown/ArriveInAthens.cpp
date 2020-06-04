@@ -82,7 +82,7 @@ void ArriveInAthens::onActivate(bool isActiveThroughSkippable)
 
 void ArriveInAthens::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
+	Objectives::SetCurrentObjective(ObjectiveKeys::URLookForSurvivors);
 }
 
 void ArriveInAthens::onSkipped()

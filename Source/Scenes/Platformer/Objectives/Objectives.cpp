@@ -71,6 +71,8 @@ void Objectives::InitMap()
 		return;
 	}
 
+	hasInit = true;
+
 	int priority = 0;
 
 	// EF
@@ -98,6 +100,15 @@ void Objectives::InitMap()
 	priority = 100;
 
 	// UR
+	Objectives::ObjectiveMap[ObjectiveKeys::URHeadToTown] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_HeadToTown::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URLookForSurvivors] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URExploreFountain] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ExploreFountain::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URExploreCistern] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ExploreCistern::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URCureTownspeople] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CureTownspeople::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URReturnToHera] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ReturnToHera::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URCrossBridge] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CrossBridge::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URFindMineEntrance] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::UREnterTheMines] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_EnterTheMines::create(); }, priority++);
 
-	hasInit = true;
+	priority = 200;
 }

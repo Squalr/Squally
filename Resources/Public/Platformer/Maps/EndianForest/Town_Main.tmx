@@ -840,6 +840,7 @@
   <object id="1028" name="spawn" type="object" x="9723.44" y="5736.98" width="128" height="128">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="docks"/>
    </properties>
   </object>

@@ -89,7 +89,7 @@ void RaiseBridge::onActivate(bool isActiveThroughSkippable)
 
 void RaiseBridge::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::URFindTheCavernsEntrance);
+	Objectives::SetCurrentObjective(ObjectiveKeys::URFindMineEntrance);
 }
 
 void RaiseBridge::onSkipped()

@@ -25,6 +25,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -295,6 +296,11 @@ void EntityPetrificationBehavior::runDialogue()
 		}
 
 		int cureCount = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(0)).asInt() + 1;
+
+		if (cureCount >= CureTown::MaxCuredCount)
+		{
+			Objectives::SetCurrentObjective(ObjectiveKeys::URReturnToHera);
+		}
 
 		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(cureCount));
 	});

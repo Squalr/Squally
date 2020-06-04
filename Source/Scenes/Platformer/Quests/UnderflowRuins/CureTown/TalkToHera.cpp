@@ -98,7 +98,7 @@ void TalkToHera::onComplete()
 		questBehavior->enableIncompleteQuest();
 	});
 
-	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
+	Objectives::SetCurrentObjective(ObjectiveKeys::URExploreFountain);
 }
 
 void TalkToHera::onSkipped()
@@ -170,7 +170,7 @@ void TalkToHera::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 			false
 		));
 
@@ -215,7 +215,7 @@ void TalkToHera::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -230,7 +230,7 @@ void TalkToHera::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 			false
 		));
 

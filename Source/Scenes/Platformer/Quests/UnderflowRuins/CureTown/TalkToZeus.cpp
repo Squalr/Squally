@@ -103,7 +103,6 @@ void TalkToZeus::onComplete()
 		ItemResources::Spellbooks_SpellBookLightning,
 		SoundResources::Notifications_NotificationGood1
 	));
-	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
 }
 
 void TalkToZeus::onSkipped()

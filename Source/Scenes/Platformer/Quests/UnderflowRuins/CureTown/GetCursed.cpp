@@ -107,7 +107,6 @@ void GetCursed::onActivate(bool isActiveThroughSkippable)
 
 void GetCursed::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
 }
 
 void GetCursed::onSkipped()

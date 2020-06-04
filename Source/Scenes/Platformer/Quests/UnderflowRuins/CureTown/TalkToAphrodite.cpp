@@ -156,9 +156,9 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_C_HeadThroughBack::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
@@ -171,9 +171,9 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_D_OneFavor::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
@@ -186,9 +186,9 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_E_Charity::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
@@ -201,9 +201,9 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_F_WhatDoYouAsk::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
@@ -216,15 +216,15 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_G_TalkToAlch::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
 				this->complete();
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -232,14 +232,14 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 			true
 		));
 	});

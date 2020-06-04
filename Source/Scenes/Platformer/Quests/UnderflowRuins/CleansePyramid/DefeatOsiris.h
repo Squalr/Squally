@@ -6,6 +6,7 @@ class QuestLine;
 class Osiris;
 class Sarcophagus;
 class Squally;
+class WorldSound;
 
 class DefeatOsiris : public QuestTask
 {
@@ -33,6 +34,8 @@ private:
 	Osiris* osiris;
 	Squally* squally;
 	Sarcophagus* sarcophagus;
+
+	WorldSound* rumbleSound;
 
 	static const std::string MapEventAwakenOsiris;
 	static const std::string TagExitPortal;

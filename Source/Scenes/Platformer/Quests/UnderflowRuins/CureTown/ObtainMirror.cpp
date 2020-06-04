@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -106,6 +107,8 @@ void ObtainMirror::runCinematicSequencePt1()
 {
 	// IMPORTANT: Add a redundant save now to prevent a timing issue where the user pauses and quits in the middle of this cinematic.
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::URCureTownspeople);
 	
 	if (this->inventory == nullptr)
 	{

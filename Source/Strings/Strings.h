@@ -23844,6 +23844,111 @@ namespace Strings
 		virtual ~Platformer_Objectives_Objective() = default;
 	};
 
+	class Platformer_Objectives_UnderflowRuins_UR_CrossBridge : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_CrossBridge* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_CrossBridge();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_CrossBridge() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_CureTownspeople : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_CureTownspeople* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_CureTownspeople();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_CureTownspeople() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_EnterTheMines : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_EnterTheMines* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_EnterTheMines();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_EnterTheMines() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_ExploreCistern : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_ExploreCistern* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_ExploreCistern();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_ExploreCistern() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_HeadToTown : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_HeadToTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_HeadToTown();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_HeadToTown() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors() = default;
+	};
+
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString
 	{
 	public:

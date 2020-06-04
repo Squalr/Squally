@@ -103,7 +103,8 @@ void TalkToCleopatra::onComplete()
 		ItemResources::Spellbooks_SpellBookHoly,
 		SoundResources::Notifications_NotificationGood1
 	));
-	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
+	
+	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void TalkToCleopatra::onSkipped()

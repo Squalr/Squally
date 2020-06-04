@@ -29,7 +29,10 @@ public:
 	static const std::string URHeadToTown;
 	static const std::string URLookForSurvivors;
 	static const std::string URExploreFountain;
+	static const std::string URExploreCistern;
 	static const std::string URCureTownspeople;
+	static const std::string URReturnToHera;
 	static const std::string URCrossBridge;
-	static const std::string URFindTheCavernsEntrance;
+	static const std::string URFindMineEntrance;
+	static const std::string UREnterTheMines;
 };

@@ -482,6 +482,7 @@
   </object>
   <object id="841" name="spawn" type="object" x="372.364" y="2428.97" width="128" height="128">
    <properties>
+    <property name="map-banner" value="sullen-forest"/>
     <property name="transition" value="right"/>
    </properties>
   </object>

@@ -12,6 +12,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
@@ -20,6 +21,8 @@
 #include "Objects/Platformer/Cinematic/Sarcophagus/Sarcophagus.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/State/StateKeys.h"
+
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -40,6 +43,9 @@ DefeatOsiris::DefeatOsiris(GameObject* owner, QuestLine* questLine) : super(owne
 {
 	this->osiris = nullptr;
 	this->squally = nullptr;
+	this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_Rumble);
+
+	this->addChild(this->rumbleSound);
 }
 
 DefeatOsiris::~DefeatOsiris()
@@ -137,6 +143,8 @@ void DefeatOsiris::runCinematicSequencePt1()
 		const float RumbleTime = 3.0f;
 		const float FloatTime = 2.0f;
 		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
+
+		this->rumbleSound->play(true);
 
 		this->sarcophagus->getLid()->runAction(Sequence::create(
 			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
