@@ -229,6 +229,7 @@ void SquallyShip::onCrash()
 	
 	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ship,

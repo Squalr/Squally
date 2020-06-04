@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -6" visible="0">
+ <objectgroup id="18" name="bg -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -297,7 +297,7 @@
   </properties>
   <object id="1144" name="osiris" type="entity" x="1398" y="1280" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="attached-behavior" value="enemy"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>

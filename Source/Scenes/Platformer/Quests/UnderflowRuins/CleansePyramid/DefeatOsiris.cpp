@@ -18,13 +18,14 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/Sarcophagus/Sarcophagus.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
 
 const std::string DefeatOsiris::MapKeyQuest = "defeat-osiris";
 const std::string DefeatOsiris::MapEventAwakenOsiris = "awaken-osiris";
-	
+const std::string DefeatOsiris::TagExitPortal = "exit-portal";
 
 DefeatOsiris* DefeatOsiris::create(GameObject* owner, QuestLine* questLine)
 {
@@ -47,22 +48,30 @@ DefeatOsiris::~DefeatOsiris()
 
 void DefeatOsiris::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<Osiris>(this, [=](Osiris* osiris)
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{
-		this->osiris = osiris;
-
 		if (questState != QuestState::Complete)
 		{
-			if (!this->osiris->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
-			{
-				this->complete();
-			}
-			else
-			{
-				this->osiris->setOpacity(0);
-			}
+			portal->lock(false);
 		}
-	}, Osiris::MapKey);
+
+		ObjectEvents::WatchForObject<Osiris>(this, [=](Osiris* osiris)
+		{
+			this->osiris = osiris;
+
+			if (questState != QuestState::Complete)
+			{
+				if (!this->osiris->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+				{
+					this->complete();
+				}
+				else
+				{
+					this->osiris->setOpacity(0);
+				}
+			}
+		}, Osiris::MapKey);
+	}, DefeatOsiris::TagExitPortal);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -98,6 +107,10 @@ void DefeatOsiris::onActivate(bool isActiveThroughSkippable)
 
 void DefeatOsiris::onComplete()
 {
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
+	{
+		portal->unlock(false);
+	}, DefeatOsiris::TagExitPortal);
 }
 
 void DefeatOsiris::onSkipped()

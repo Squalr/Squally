@@ -391,7 +391,7 @@ std::string SaveSelectMenu::getBackgroundResourceForCurrentSaveProfile()
 	}
 	else if (StrUtils::contains(currentMap, "seasharpcaverns", true))
 	{
-		return HexusResources::Menus_HexusFrameSeaSharpCaverns;
+		return HexusResources::Menus_HexusFrameDataMines;
 	}
 	else if (StrUtils::contains(currentMap, "castlevalgrind", true))
 	{

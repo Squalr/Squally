@@ -62,6 +62,7 @@ void SquallyCombatRespawnBehavior::onLoad()
 			{
 				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
 			}
 		
 			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)

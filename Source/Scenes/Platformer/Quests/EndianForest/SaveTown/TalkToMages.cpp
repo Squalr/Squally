@@ -13,7 +13,7 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"

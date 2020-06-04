@@ -481,7 +481,7 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}
-	else if (StrUtils::contains(mapResource, "SeaSharpCaverns", true))
+	else if (StrUtils::contains(mapResource, "DataMines", true))
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}

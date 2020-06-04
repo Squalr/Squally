@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="1003">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="1005">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -82,8 +82,13 @@
   </object>
   <object id="1002" name="dragon-door" type="object" x="184" y="1013" width="768" height="646">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_3_1"/>
-    <property name="transition" value="dragon"/>
+    <property name="map" value="UnderflowRuins/Zone_3_8"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="1004" name="trigger" type="object" x="1756.45" y="-55.6994" width="178" height="2590.19">
+   <properties>
+    <property name="send-event" value="talk-to-cleopatra"/>
    </properties>
   </object>
  </objectgroup>
@@ -104,14 +109,8 @@
     <property name="attached-behavior" value="cleopatra-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="998" name="horus" type="entity" x="1790" y="1132" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="horus-hexus,friendly,pick-pocket"/>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="talk-to-cleopatra"/>
+    <property name="quest-line" value="cleanse-pyramid"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

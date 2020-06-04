@@ -35,4 +35,5 @@ private:
 	Sarcophagus* sarcophagus;
 
 	static const std::string MapEventAwakenOsiris;
+	static const std::string TagExitPortal;
 };

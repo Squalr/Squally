@@ -115,7 +115,7 @@ void WelcomeToMagesGuild::runCinematicSequence()
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude::create()->setStringReplacementVariables(
-				Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude::create()),
+				Strings::Platformer_Entities_Names_Npcs_DataMines_Sarude::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

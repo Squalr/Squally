@@ -107,14 +107,16 @@ void SquallyMovementBehavior::onLoad()
 
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSavePosition, [=](EventCustom* eventCustom)
 	{
-		const float SaveOffsetY = 32.0f;
-		Vec2 position = GameUtils::getWorldCoords(this->squally);
+		Vec3 position = GameUtils::getWorldCoords3D(this->squally);
+
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionZ, Value(position.z));
 	}));
 
 	this->squally->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
@@ -124,11 +126,13 @@ void SquallyMovementBehavior::onLoad()
 
 	if (!this->isPositionSavingDisabled)
 	{
-		Vec2 position = GameUtils::getWorldCoords(this->squally);
+		Vec3 position = GameUtils::getWorldCoords3D(this->squally);
+
 		float x = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
 		float y = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
+		float z = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
 
-		this->squally->setPosition(Vec2(x, y));
+		GameUtils::setWorldCoords3D(this->squally, Vec3(x, y, z));
 	}
 	
 	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
@@ -155,11 +159,11 @@ void SquallyMovementBehavior::update(float dt)
 		if (this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
 			this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
 		{
-			const float SaveOffsetY = 32.0f;
+			Vec3 position = GameUtils::getWorldCoords3D(this->squally);
 
-			Vec2 position = GameUtils::getWorldCoords(this->squally);
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionZ, Value(position.z));
 		}
 	}
 }

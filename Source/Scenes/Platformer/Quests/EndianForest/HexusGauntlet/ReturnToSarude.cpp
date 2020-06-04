@@ -11,7 +11,7 @@
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"

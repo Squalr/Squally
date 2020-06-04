@@ -22,8 +22,8 @@ Krampus* Krampus::deserialize(ValueMap& properties)
 
 Krampus::Krampus(ValueMap& properties) : super(properties,
 	Krampus::MapKey,
-	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
-	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
+	EntityResources::Enemies_DataMines_Krampus_Animations,
+	EntityResources::Enemies_DataMines_Krampus_Emblem,
 	Size(396.0f, 412.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

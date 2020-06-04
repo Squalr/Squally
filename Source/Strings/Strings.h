@@ -20274,6 +20274,186 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_DataMines_Barbarian : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_Barbarian* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_Barbarian();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_Barbarian() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_EarthElemental : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_EarthElemental* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_EarthElemental();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_EarthElemental() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_EarthGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_EarthGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_EarthGolem();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_EarthGolem() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_ForestGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_ForestGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_ForestGolem();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_ForestGolem() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_Gorilla : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_Gorilla* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_Gorilla();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_Gorilla() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_LightningGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_LightningGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_LightningGolem();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_LightningGolem() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_Rhinoman : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_Rhinoman* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_Rhinoman();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_Rhinoman() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_Shaman : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_Shaman* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_Shaman();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_Shaman() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_SkeletalArcher : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_SkeletalArcher* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_SkeletalArcher();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalArcher() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_TikiGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_TikiGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_TikiGolem();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_TikiGolem() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_EndianForest_Centaur : public LocalizedString
 	{
 	public:
@@ -20677,186 +20857,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_Misc_TrainingDummy();
 		virtual ~Platformer_Entities_Names_Enemies_Misc_TrainingDummy() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_Barbarian : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_Barbarian* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_Barbarian();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_Barbarian() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthElemental : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthElemental* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthElemental();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthElemental() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthGolem();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthGolem() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_ForestGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_ForestGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_ForestGolem();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_ForestGolem() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_Gorilla : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_Gorilla* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_Gorilla();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_Gorilla() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_LightningGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_LightningGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_LightningGolem();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_LightningGolem() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_Rhinoman : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_Rhinoman* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_Rhinoman();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_Rhinoman() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_Shaman : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_Shaman* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_Shaman();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_Shaman() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalArcher : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalArcher* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalArcher();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalArcher() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalNecromancer : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalNecromancer* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalNecromancer();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalNecromancer() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalWarrior : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalWarrior* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalWarrior();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalWarrior() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_TikiGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_SeaSharpCaverns_TikiGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_SeaSharpCaverns_TikiGolem();
-		virtual ~Platformer_Entities_Names_Enemies_SeaSharpCaverns_TikiGolem() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisPup : public LocalizedString
@@ -21279,6 +21279,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon() = default;
 	};
 
+	class Platformer_Entities_Names_Helpers_DataMines_Gecko : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Helpers_DataMines_Gecko* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Helpers_DataMines_Gecko();
+		virtual ~Platformer_Entities_Names_Helpers_DataMines_Gecko() = default;
+	};
+
 	class Platformer_Entities_Names_Helpers_EndianForest_Guano : public LocalizedString
 	{
 	public:
@@ -21352,21 +21367,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Helpers_LambdaCrypts_Grim();
 		virtual ~Platformer_Entities_Names_Helpers_LambdaCrypts_Grim() = default;
-	};
-
-	class Platformer_Entities_Names_Helpers_SeaSharpCaverns_Gecko : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_SeaSharpCaverns_Gecko* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_SeaSharpCaverns_Gecko();
-		virtual ~Platformer_Entities_Names_Helpers_SeaSharpCaverns_Gecko() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy : public LocalizedString
@@ -22029,6 +22029,216 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Scaldor() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_DataMines_Alder : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Alder* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Alder();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Alder() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Bonnie : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Bonnie* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Bonnie();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Bonnie() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Brock : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Brock* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Brock();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Brock() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Burch : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Burch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Burch();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Burch() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Cypress : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Cypress* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Cypress();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Cypress() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Finch : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Finch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Finch();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Finch() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Fraya : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Fraya* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Fraya();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Fraya() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Jasper : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Jasper* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Jasper();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Jasper() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Mildred : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Mildred* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Mildred();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Mildred() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Olive : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Olive* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Olive();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Olive() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_PrincessDawn : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_PrincessDawn* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_PrincessDawn();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_PrincessDawn() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Raka : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Raka* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Raka();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Raka() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Sarude : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Sarude* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Sarude();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Sarude() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_DataMines_Shen : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DataMines_Shen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DataMines_Shen();
+		virtual ~Platformer_Entities_Names_Npcs_DataMines_Shen() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_EndianForest_Ara : public LocalizedString
 	{
 	public:
@@ -22447,216 +22657,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina();
 		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Alder : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Alder* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Alder();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Alder() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Bonnie : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Bonnie* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Bonnie();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Bonnie() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Brock : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Brock* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Brock();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Brock() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Burch : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Burch* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Burch();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Burch() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Cypress : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Cypress* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Cypress();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Cypress() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Finch : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Finch* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Finch();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Finch() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Fraya : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Fraya* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Fraya();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Fraya() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Jasper : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Jasper* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Jasper();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Jasper() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Mildred : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Mildred* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Mildred();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Mildred() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Olive : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Olive* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Olive();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Olive() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_PrincessDawn : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_PrincessDawn* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_PrincessDawn();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_PrincessDawn() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Raka : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Raka* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Raka();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Raka() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_SeaSharpCaverns_Shen : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_SeaSharpCaverns_Shen* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_SeaSharpCaverns_Shen();
-		virtual ~Platformer_Entities_Names_Npcs_SeaSharpCaverns_Shen() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Ajax : public LocalizedString
@@ -23319,6 +23319,21 @@ namespace Strings
 		virtual ~Platformer_MapNames_Zones_DaemonsHallow() = default;
 	};
 
+	class Platformer_MapNames_Zones_DataMines : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_Zones_DataMines* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_Zones_DataMines();
+		virtual ~Platformer_MapNames_Zones_DataMines() = default;
+	};
+
 	class Platformer_MapNames_Zones_EndianForest : public LocalizedString
 	{
 	public:
@@ -23347,21 +23362,6 @@ namespace Strings
 	private:
 		Platformer_MapNames_Zones_LambdaCrypts();
 		virtual ~Platformer_MapNames_Zones_LambdaCrypts() = default;
-	};
-
-	class Platformer_MapNames_Zones_SeaSharpCaverns : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_Zones_SeaSharpCaverns* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_Zones_SeaSharpCaverns();
-		virtual ~Platformer_MapNames_Zones_SeaSharpCaverns() = default;
 	};
 
 	class Platformer_MapNames_Zones_TrainingGrounds : public LocalizedString
@@ -25479,6 +25479,51 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead : public LocalizedString
 	{
 	public:
@@ -26064,10 +26109,10 @@ namespace Strings
 		virtual ~Platformer_Spellbooks_SpellbookFrost() = default;
 	};
 
-	class Platformer_Spellbooks_SpellbookLight : public LocalizedString
+	class Platformer_Spellbooks_SpellbookHoly : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookLight* create();
+		static Platformer_Spellbooks_SpellbookHoly* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26075,8 +26120,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Spellbooks_SpellbookLight();
-		virtual ~Platformer_Spellbooks_SpellbookLight() = default;
+		Platformer_Spellbooks_SpellbookHoly();
+		virtual ~Platformer_Spellbooks_SpellbookHoly() = default;
 	};
 
 	class Platformer_Spellbooks_SpellbookLightning : public LocalizedString
