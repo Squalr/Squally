@@ -79,7 +79,8 @@ void SailForRuins::onLoad(QuestState questState)
 		this->blackbeard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_UnderflowRuins::create()),
+				Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()
+					->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_UnderflowRuins::create()),
 				[=]()
 				{
 					switch(questState)

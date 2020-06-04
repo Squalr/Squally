@@ -19734,10 +19734,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Critters_Horse() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_Cryogen : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_Cryogen* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19745,14 +19745,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_Cryogen();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_Cryogen() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_FrostFiend : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_FrostFiend : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_FrostFiend* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_FrostFiend* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19760,14 +19760,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_FrostFiend();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_FrostFiend() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_FrostFiend();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_FrostFiend() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_GoblinElf : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_GoblinElf : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_GoblinElf* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_GoblinElf* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19775,14 +19775,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_GoblinElf();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_GoblinElf() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_GoblinElf();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_GoblinElf() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_IceGolem : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_IceGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_IceGolem* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_IceGolem* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19790,14 +19790,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_IceGolem();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_IceGolem() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_IceGolem();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_IceGolem() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinGrunt : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinGrunt : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinGrunt* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinGrunt* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19805,14 +19805,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinGrunt();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinGrunt() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinGrunt();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinGrunt() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinWarrior : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinWarrior* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinWarrior* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19820,14 +19820,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinWarrior();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinWarrior() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinWarrior();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinWarrior() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_Santa : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_Santa : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_Santa* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_Santa* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19835,14 +19835,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_Santa();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_Santa() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_Santa();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_Santa() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_SnowFiend : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_SnowFiend : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_SnowFiend* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_SnowFiend* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19850,14 +19850,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_SnowFiend();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_SnowFiend() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_SnowFiend();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_SnowFiend() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_ToySoldierGoblin : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_ToySoldierGoblin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_ToySoldierGoblin* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_ToySoldierGoblin* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19865,14 +19865,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_ToySoldierGoblin();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_ToySoldierGoblin() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_ToySoldierGoblin();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_ToySoldierGoblin() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_Viking : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_Viking : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_Viking* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_Viking* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19880,14 +19880,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_Viking();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_Viking() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_Viking();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_Viking() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_WaterElemental : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_WaterElemental : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_WaterElemental* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_WaterElemental* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19895,14 +19895,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_WaterElemental();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_WaterElemental() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_WaterElemental();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_WaterElemental() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_BalmerPeaks_Yeti : public LocalizedString
+	class Platformer_Entities_Names_Enemies_BallmerPeaks_Yeti : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BalmerPeaks_Yeti* create();
+		static Platformer_Entities_Names_Enemies_BallmerPeaks_Yeti* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19910,8 +19910,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_BalmerPeaks_Yeti();
-		virtual ~Platformer_Entities_Names_Enemies_BalmerPeaks_Yeti() = default;
+		Platformer_Entities_Names_Enemies_BallmerPeaks_Yeti();
+		virtual ~Platformer_Entities_Names_Enemies_BallmerPeaks_Yeti() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Agnes : public LocalizedString
@@ -21204,10 +21204,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_Warlock() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_BalmerPeaks_Snowman : public LocalizedString
+	class Platformer_Entities_Names_Helpers_BallmerPeaks_Snowman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_BalmerPeaks_Snowman* create();
+		static Platformer_Entities_Names_Helpers_BallmerPeaks_Snowman* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21215,14 +21215,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Helpers_BalmerPeaks_Snowman();
-		virtual ~Platformer_Entities_Names_Helpers_BalmerPeaks_Snowman() = default;
+		Platformer_Entities_Names_Helpers_BallmerPeaks_Snowman();
+		virtual ~Platformer_Entities_Names_Helpers_BallmerPeaks_Snowman() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_BalmerPeaks_YetiBaby : public LocalizedString
+	class Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_BalmerPeaks_YetiBaby* create();
+		static Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21230,8 +21230,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Helpers_BalmerPeaks_YetiBaby();
-		virtual ~Platformer_Entities_Names_Helpers_BalmerPeaks_YetiBaby() = default;
+		Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby();
+		virtual ~Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_CastleValgrind_Knight : public LocalizedString
@@ -21414,10 +21414,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_VoidStar_Robot() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Aspen : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Aspen* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21425,14 +21425,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Aspen();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Aspen() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Aster : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Aster : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Aster* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Aster* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21440,14 +21440,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Aster();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Aster() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Aster();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Aster() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Bodom : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Bodom : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Bodom* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Bodom* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21455,14 +21455,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Bodom();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Bodom() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Bodom();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Bodom() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Cookie : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Cookie : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Cookie* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Cookie* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21470,14 +21470,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Cookie();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Cookie() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Cookie();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Cookie() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Cooper : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Cooper* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21485,14 +21485,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Cooper();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Cooper() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Irmik : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Irmik* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21500,14 +21500,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Irmik();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Irmik() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Jingles : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Jingles* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21515,14 +21515,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Jingles();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Jingles() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Juniper : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Juniper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Juniper* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Juniper* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21530,14 +21530,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Juniper();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Juniper() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Juniper();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Juniper() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Kringle : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Kringle* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21545,14 +21545,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Kringle();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Kringle() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Nessie : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Nessie* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21560,14 +21560,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Nessie();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Nessie() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_PrincessPepper : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_PrincessPepper* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21575,14 +21575,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_PrincessPepper();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_PrincessPepper() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Thatcher : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Thatcher* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21590,14 +21590,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Thatcher();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Thatcher() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Theldar : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Theldar* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21605,14 +21605,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Theldar();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Theldar() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BalmerPeaks_Tinsel : public LocalizedString
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BalmerPeaks_Tinsel* create();
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21620,8 +21620,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_BalmerPeaks_Tinsel();
-		virtual ~Platformer_Entities_Names_Npcs_BalmerPeaks_Tinsel() = default;
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Elric : public LocalizedString
@@ -23169,6 +23169,66 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemSwimHack() = default;
 	};
 
+	class Platformer_MapNames_BallmerPeaks_BallmerPeaks : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_BallmerPeaks_BallmerPeaks* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_BallmerPeaks_BallmerPeaks();
+		virtual ~Platformer_MapNames_BallmerPeaks_BallmerPeaks() = default;
+	};
+
+	class Platformer_MapNames_CastleValgrind_CastleValgrind : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_CastleValgrind_CastleValgrind* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_CastleValgrind_CastleValgrind();
+		virtual ~Platformer_MapNames_CastleValgrind_CastleValgrind() = default;
+	};
+
+	class Platformer_MapNames_DaemonsHallow_DaemonsHallow : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_DaemonsHallow_DaemonsHallow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_DaemonsHallow_DaemonsHallow();
+		virtual ~Platformer_MapNames_DaemonsHallow_DaemonsHallow() = default;
+	};
+
+	class Platformer_MapNames_DataMines_DataMines : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_DataMines_DataMines* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_DataMines_DataMines();
+		virtual ~Platformer_MapNames_DataMines_DataMines() = default;
+	};
+
 	class Platformer_MapNames_EndianForest_Elbridge : public LocalizedString
 	{
 	public:
@@ -23182,6 +23242,36 @@ namespace Strings
 	private:
 		Platformer_MapNames_EndianForest_Elbridge();
 		virtual ~Platformer_MapNames_EndianForest_Elbridge() = default;
+	};
+
+	class Platformer_MapNames_EndianForest_EndianForest : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_EndianForest* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_EndianForest_EndianForest();
+		virtual ~Platformer_MapNames_EndianForest_EndianForest() = default;
+	};
+
+	class Platformer_MapNames_EndianForest_FieldsOfStrife : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_FieldsOfStrife* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_EndianForest_FieldsOfStrife();
+		virtual ~Platformer_MapNames_EndianForest_FieldsOfStrife() = default;
 	};
 
 	class Platformer_MapNames_EndianForest_LimestoneTemple : public LocalizedString
@@ -23244,10 +23334,10 @@ namespace Strings
 		virtual ~Platformer_MapNames_EndianForest_SullenForest() = default;
 	};
 
-	class Platformer_MapNames_EndianForest_ValleyOfAsh : public LocalizedString
+	class Platformer_MapNames_LambdaCrypts_LambdaCrypts : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_ValleyOfAsh* create();
+		static Platformer_MapNames_LambdaCrypts_LambdaCrypts* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23255,8 +23345,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_MapNames_EndianForest_ValleyOfAsh();
-		virtual ~Platformer_MapNames_EndianForest_ValleyOfAsh() = default;
+		Platformer_MapNames_LambdaCrypts_LambdaCrypts();
+		virtual ~Platformer_MapNames_LambdaCrypts_LambdaCrypts() = default;
+	};
+
+	class Platformer_MapNames_LambdaCrypts_ValleyOfAsh : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_LambdaCrypts_ValleyOfAsh* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_LambdaCrypts_ValleyOfAsh();
+		virtual ~Platformer_MapNames_LambdaCrypts_ValleyOfAsh() = default;
+	};
+
+	class Platformer_MapNames_PerilousSea_PerilousSea : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_PerilousSea_PerilousSea* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_PerilousSea_PerilousSea();
+		virtual ~Platformer_MapNames_PerilousSea_PerilousSea() = default;
 	};
 
 	class Platformer_MapNames_UnderflowRuins_Athens : public LocalizedString
@@ -23274,10 +23394,10 @@ namespace Strings
 		virtual ~Platformer_MapNames_UnderflowRuins_Athens() = default;
 	};
 
-	class Platformer_MapNames_Zones_BallmerPeaks : public LocalizedString
+	class Platformer_MapNames_UnderflowRuins_LionsCistern : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_Zones_BallmerPeaks* create();
+		static Platformer_MapNames_UnderflowRuins_LionsCistern* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23285,14 +23405,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_MapNames_Zones_BallmerPeaks();
-		virtual ~Platformer_MapNames_Zones_BallmerPeaks() = default;
+		Platformer_MapNames_UnderflowRuins_LionsCistern();
+		virtual ~Platformer_MapNames_UnderflowRuins_LionsCistern() = default;
 	};
 
-	class Platformer_MapNames_Zones_CastleValgrind : public LocalizedString
+	class Platformer_MapNames_UnderflowRuins_PyramidPass : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_Zones_CastleValgrind* create();
+		static Platformer_MapNames_UnderflowRuins_PyramidPass* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23300,14 +23420,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_MapNames_Zones_CastleValgrind();
-		virtual ~Platformer_MapNames_Zones_CastleValgrind() = default;
+		Platformer_MapNames_UnderflowRuins_PyramidPass();
+		virtual ~Platformer_MapNames_UnderflowRuins_PyramidPass() = default;
 	};
 
-	class Platformer_MapNames_Zones_DaemonsHallow : public LocalizedString
+	class Platformer_MapNames_UnderflowRuins_SkysReach : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_Zones_DaemonsHallow* create();
+		static Platformer_MapNames_UnderflowRuins_SkysReach* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23315,14 +23435,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_MapNames_Zones_DaemonsHallow();
-		virtual ~Platformer_MapNames_Zones_DaemonsHallow() = default;
+		Platformer_MapNames_UnderflowRuins_SkysReach();
+		virtual ~Platformer_MapNames_UnderflowRuins_SkysReach() = default;
 	};
 
-	class Platformer_MapNames_Zones_DataMines : public LocalizedString
+	class Platformer_MapNames_UnderflowRuins_UnderflowRuins : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_Zones_DataMines* create();
+		static Platformer_MapNames_UnderflowRuins_UnderflowRuins* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23330,14 +23450,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_MapNames_Zones_DataMines();
-		virtual ~Platformer_MapNames_Zones_DataMines() = default;
+		Platformer_MapNames_UnderflowRuins_UnderflowRuins();
+		virtual ~Platformer_MapNames_UnderflowRuins_UnderflowRuins() = default;
 	};
 
-	class Platformer_MapNames_Zones_EndianForest : public LocalizedString
+	class Platformer_MapNames_VoidStar_VoidStar : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_Zones_EndianForest* create();
+		static Platformer_MapNames_VoidStar_VoidStar* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23345,68 +23465,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_MapNames_Zones_EndianForest();
-		virtual ~Platformer_MapNames_Zones_EndianForest() = default;
-	};
-
-	class Platformer_MapNames_Zones_LambdaCrypts : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_Zones_LambdaCrypts* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_Zones_LambdaCrypts();
-		virtual ~Platformer_MapNames_Zones_LambdaCrypts() = default;
-	};
-
-	class Platformer_MapNames_Zones_TrainingGrounds : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_Zones_TrainingGrounds* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_Zones_TrainingGrounds();
-		virtual ~Platformer_MapNames_Zones_TrainingGrounds() = default;
-	};
-
-	class Platformer_MapNames_Zones_UnderflowRuins : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_Zones_UnderflowRuins* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_Zones_UnderflowRuins();
-		virtual ~Platformer_MapNames_Zones_UnderflowRuins() = default;
-	};
-
-	class Platformer_MapNames_Zones_VoidStar : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_Zones_VoidStar* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_Zones_VoidStar();
-		virtual ~Platformer_MapNames_Zones_VoidStar() = default;
+		Platformer_MapNames_VoidStar_VoidStar();
+		virtual ~Platformer_MapNames_VoidStar_VoidStar() = default;
 	};
 
 	class Platformer_Notifications_ItemCrafted : public LocalizedString

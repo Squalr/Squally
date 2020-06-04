@@ -131,5 +131,8 @@ void PortalSpawn::tryShowBanner()
 
 	MapTitleBanner* banner = deserializer->deserializeProperties(properties);
 
-	this->addChild(banner);
+	if (banner != nullptr)
+	{
+		this->addChild(banner);
+	}
 }

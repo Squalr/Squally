@@ -112,6 +112,7 @@
   </object>
   <object id="805" name="spawn" type="object" x="411.255" y="678.988" width="128" height="128">
    <properties>
+    <property name="map-banner" value="lions-cistern"/>
     <property name="transition" value="well"/>
    </properties>
   </object>
@@ -122,6 +123,7 @@
   </object>
   <object id="873" name="spawn" type="object" x="3580.36" y="1280.33" width="128" height="128">
    <properties>
+    <property name="map-banner" value="lions-cistern"/>
     <property name="transition" value="rope"/>
    </properties>
   </object>

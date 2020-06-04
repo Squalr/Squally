@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -54,7 +54,6 @@
    </properties>
   </object>
   <object id="705" name="breakable-cage" type="object" x="938.88" y="1292.38" width="196" height="112"/>
-  <object id="716" name="help-totem-end-of-demo" type="object" x="1274" y="1148" width="256" height="256"/>
   <object id="717" name="portal" type="object" x="2781.54" y="1128.52" width="237.527" height="233.023">
    <properties>
     <property name="map" value="EndianForest/Town_Docks"/>

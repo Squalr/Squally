@@ -9,7 +9,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Special/Shopkeeper.h"
 #include "Menus/Tutorials/HexusStoreMenu.h"

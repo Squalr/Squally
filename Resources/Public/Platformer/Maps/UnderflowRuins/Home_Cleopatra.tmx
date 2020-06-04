@@ -76,7 +76,7 @@
   <object id="1000" name="portal" type="object" x="3874.5" y="1512.5" width="256" height="256">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="UnderflowRuins/Zone_3_1"/>
+    <property name="map" value="DataMines/Zone_1_0"/>
     <property name="transition" value="zone-transition"/>
    </properties>
   </object>
@@ -133,7 +133,7 @@
   </object>
   <object id="999" name="spawn" type="object" x="3937.26" y="1640.86" width="128" height="128">
    <properties>
-    <property name="map-banner" value=""/>
+    <property name="map-banner" value="pyramid-pass"/>
     <property name="transition" value="zone-transition"/>
    </properties>
   </object>

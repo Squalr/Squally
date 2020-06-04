@@ -489,7 +489,7 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}
-	else if (StrUtils::contains(mapResource, "BalmerPeaks", true))
+	else if (StrUtils::contains(mapResource, "BallmerPeaks", true))
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}

@@ -399,7 +399,7 @@ std::string SaveSelectMenu::getBackgroundResourceForCurrentSaveProfile()
 	}
 	else if (StrUtils::contains(currentMap, "balmerPeaks", true))
 	{
-		return HexusResources::Menus_HexusFrameBalmerPeaks;
+		return HexusResources::Menus_HexusFrameBallmerPeaks;
 	}
 	else if (StrUtils::contains(currentMap, "daemonshallow", true))
 	{

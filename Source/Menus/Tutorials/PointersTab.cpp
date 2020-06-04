@@ -9,7 +9,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Menus/Tutorials/TutorialEntry.h"
 #include "Menus/Tutorials/TutorialSelectMenu.h"

@@ -167,7 +167,7 @@ void TalkToCleopatra::runCinematicSequencePt3()
 
 			this->runCinematicSequencePt4();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(),
 		true
 	));
 }
@@ -176,7 +176,7 @@ void TalkToCleopatra::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines::create()
-			->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_DataMines::create()),
+			->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_DataMines::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -186,7 +186,7 @@ void TalkToCleopatra::runCinematicSequencePt4()
 		[=]()
 		{
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(),
 		true
 	));
 }

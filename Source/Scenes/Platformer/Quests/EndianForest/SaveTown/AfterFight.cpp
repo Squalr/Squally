@@ -14,7 +14,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
+#include "Entities/Platformer/Npcs/BallmerPeaks/Aster.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
 #include "Entities/Platformer/Npcs/DataMines/Alder.h"

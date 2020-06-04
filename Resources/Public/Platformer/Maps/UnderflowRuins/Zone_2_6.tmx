@@ -121,11 +121,13 @@
   </object>
   <object id="816" name="spawn" type="object" x="3128.3" y="940.121" width="128" height="128">
    <properties>
+    <property name="map-banner" value="skys-reach"/>
     <property name="transition" value="up"/>
    </properties>
   </object>
   <object id="849" name="spawn" type="object" x="868.788" y="936.909" width="128" height="128">
    <properties>
+    <property name="map-banner" value="skys-reach"/>
     <property name="transition" value="rope"/>
    </properties>
   </object>

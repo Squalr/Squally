@@ -652,11 +652,13 @@
   </object>
   <object id="894" name="spawn" type="object" x="472.179" y="1123.31" width="128" height="128">
    <properties>
+    <property name="map-banner" value="athens"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="939" name="spawn" type="object" x="4911.76" y="1122.91" width="128" height="128">
    <properties>
+    <property name="map-banner" value="athens"/>
     <property name="transition" value="left"/>
    </properties>
   </object>

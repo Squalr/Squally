@@ -13,7 +13,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"

@@ -917,6 +917,7 @@
   </object>
   <object id="1139" name="spawn" type="object" x="3393.33" y="1437.33" width="128" height="128">
    <properties>
+    <property name="map-banner" value="pyramid-pass"/>
     <property name="transition" value="dungeon"/>
    </properties>
   </object>
