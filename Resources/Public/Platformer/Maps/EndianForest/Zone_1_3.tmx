@@ -83,14 +83,14 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="745" name="Generic/MagesGuild" type="decor" x="1581.62" y="-726.463" width="1607" height="2262"/>
+  <object id="745" name="Forest/MagesGuild" type="decor" x="1581.62" y="-726.463" width="1607" height="2262"/>
  </objectgroup>
  <objectgroup id="94" name="guild front">
   <properties>
    <property name="depth" type="float" value="-480"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="765" name="Generic/MagesGuildFront" type="decor" x="1819.59" y="389.68" width="1082" height="1171"/>
+  <object id="765" name="Forest/MagesGuildFront" type="decor" x="1819.59" y="389.68" width="1082" height="1171"/>
  </objectgroup>
  <objectgroup id="91" name="plank -7">
   <properties>

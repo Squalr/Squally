@@ -155,7 +155,7 @@
     <property name="quest-line" value="save-town"/>
    </properties>
   </object>
-  <object id="809" name="frost-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
+  <object id="809" name="mage-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
    <properties>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="tag" value="quest-portal"/>

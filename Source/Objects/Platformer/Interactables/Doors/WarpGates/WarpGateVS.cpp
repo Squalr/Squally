@@ -1,4 +1,4 @@
-#include "DarkPortal.h"
+#include "WarpGateVS.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,46 +9,46 @@
 
 using namespace cocos2d;
 
-const std::string DarkPortal::MapKey = "dark-portal";
+const std::string WarpGateVS::MapKey = "warp-gate-vs";
 
-DarkPortal* DarkPortal::create(ValueMap& properties)
+WarpGateVS* WarpGateVS::create(ValueMap& properties)
 {
-	DarkPortal* instance = new DarkPortal(properties);
+	WarpGateVS* instance = new WarpGateVS(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DarkPortal::DarkPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLACK)
+WarpGateVS::WarpGateVS(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalSand, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalVoid, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	
 	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-DarkPortal::~DarkPortal()
+WarpGateVS::~WarpGateVS()
 {
 }
 
-void DarkPortal::onEnter()
+void WarpGateVS::onEnter()
 {
 	super::onEnter();
 }
 
-void DarkPortal::initializePositions()
+void WarpGateVS::initializePositions()
 {
 	super::initializePositions();
 }
 
-void DarkPortal::initializeListeners()
+void WarpGateVS::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void DarkPortal::closePortal(bool instant)
+void WarpGateVS::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -56,7 +56,7 @@ void DarkPortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void DarkPortal::openPortal(bool instant)
+void WarpGateVS::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

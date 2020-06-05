@@ -1,4 +1,4 @@
-#include "VoidPortal.h"
+#include "WarpGateLC.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,46 +9,46 @@
 
 using namespace cocos2d;
 
-const std::string VoidPortal::MapKey = "void-portal";
+const std::string WarpGateLC::MapKey = "warp-gate-lc";
 
-VoidPortal* VoidPortal::create(ValueMap& properties)
+WarpGateLC* WarpGateLC::create(ValueMap& properties)
 {
-	VoidPortal* instance = new VoidPortal(properties);
+	WarpGateLC* instance = new WarpGateLC(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VoidPortal::VoidPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLACK)
+WarpGateLC::WarpGateLC(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalVoid, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalSand, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	
 	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-VoidPortal::~VoidPortal()
+WarpGateLC::~WarpGateLC()
 {
 }
 
-void VoidPortal::onEnter()
+void WarpGateLC::onEnter()
 {
 	super::onEnter();
 }
 
-void VoidPortal::initializePositions()
+void WarpGateLC::initializePositions()
 {
 	super::initializePositions();
 }
 
-void VoidPortal::initializeListeners()
+void WarpGateLC::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void VoidPortal::closePortal(bool instant)
+void WarpGateLC::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -56,7 +56,7 @@ void VoidPortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void VoidPortal::openPortal(bool instant)
+void WarpGateLC::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

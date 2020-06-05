@@ -1,4 +1,4 @@
-#include "NaturePortal.h"
+#include "WarpGateEF.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,18 +9,18 @@
 
 using namespace cocos2d;
 
-const std::string NaturePortal::MapKey = "nature-portal";
+const std::string WarpGateEF::MapKey = "warp-gate-ef";
 
-NaturePortal* NaturePortal::create(ValueMap& properties)
+WarpGateEF* WarpGateEF::create(ValueMap& properties)
 {
-	NaturePortal* instance = new NaturePortal(properties);
+	WarpGateEF* instance = new WarpGateEF(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Color4B(14, 82, 24, 255))
+WarpGateEF::WarpGateEF(ValueMap& properties) : super(properties)
 {
 	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalNature, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalNatureEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
@@ -32,26 +32,26 @@ NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Colo
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-NaturePortal::~NaturePortal()
+WarpGateEF::~WarpGateEF()
 {
 }
 
-void NaturePortal::onEnter()
+void WarpGateEF::onEnter()
 {
 	super::onEnter();
 }
 
-void NaturePortal::initializePositions()
+void WarpGateEF::initializePositions()
 {
 	super::initializePositions();
 }
 
-void NaturePortal::initializeListeners()
+void WarpGateEF::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void NaturePortal::closePortal(bool instant)
+void WarpGateEF::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -59,7 +59,7 @@ void NaturePortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void NaturePortal::openPortal(bool instant)
+void WarpGateEF::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

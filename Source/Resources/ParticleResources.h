@@ -80,7 +80,7 @@ namespace ParticleResources
 	extern const std::string Platformer_Hacking_HackerRainOrange4;
 	extern const std::string Platformer_Hacking_HackerRainOrange5;
 	extern const std::string Poison;
-	extern const std::string Portals_DarkPortal;
+	extern const std::string Portals_WarpGateLC;
 	extern const std::string Portals_PortalEdge;
 	extern const std::string Portals_PortalEdgeDark;
 	extern const std::string Portals_PortalEye;

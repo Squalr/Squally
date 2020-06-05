@@ -1,4 +1,4 @@
-#include "FirePortal.h"
+#include "WarpGateDM.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,20 +9,20 @@
 
 using namespace cocos2d;
 
-const std::string FirePortal::MapKey = "fire-portal";
+const std::string WarpGateDM::MapKey = "warp-gate-dm";
 
-FirePortal* FirePortal::create(ValueMap& properties)
+WarpGateDM* WarpGateDM::create(ValueMap& properties)
 {
-	FirePortal* instance = new FirePortal(properties);
+	WarpGateDM* instance = new WarpGateDM(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FirePortal::FirePortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+WarpGateDM::WarpGateDM(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFire, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalWind, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	
 	this->edgeParticles->start();
@@ -32,26 +32,26 @@ FirePortal::FirePortal(ValueMap& properties) : super(properties, 96.0f, Color4B:
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-FirePortal::~FirePortal()
+WarpGateDM::~WarpGateDM()
 {
 }
 
-void FirePortal::onEnter()
+void WarpGateDM::onEnter()
 {
 	super::onEnter();
 }
 
-void FirePortal::initializePositions()
+void WarpGateDM::initializePositions()
 {
 	super::initializePositions();
 }
 
-void FirePortal::initializeListeners()
+void WarpGateDM::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void FirePortal::closePortal(bool instant)
+void WarpGateDM::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -59,7 +59,7 @@ void FirePortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void FirePortal::openPortal(bool instant)
+void WarpGateDM::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

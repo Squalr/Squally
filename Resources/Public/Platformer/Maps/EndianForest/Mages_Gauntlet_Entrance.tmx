@@ -72,7 +72,7 @@
     <property name="transition" value="gauntlet"/>
    </properties>
   </object>
-  <object id="751" name="frost-portal" type="object" x="2203.44" y="806.705" width="128" height="256">
+  <object id="751" name="mage-portal" type="object" x="2203.44" y="806.705" width="128" height="256">
    <properties>
     <property name="map" value="EndianForest/Mages_Gauntlet_1"/>
     <property name="tag" value="quest-portal"/>

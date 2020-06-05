@@ -1,4 +1,4 @@
-#include "FrostPortal.h"
+#include "WarpGateDH.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,20 +9,20 @@
 
 using namespace cocos2d;
 
-const std::string FrostPortal::MapKey = "frost-portal";
+const std::string WarpGateDH::MapKey = "warp-gate-dh";
 
-FrostPortal* FrostPortal::create(ValueMap& properties)
+WarpGateDH* WarpGateDH::create(ValueMap& properties)
 {
-	FrostPortal* instance = new FrostPortal(properties);
+	WarpGateDH* instance = new WarpGateDH(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FrostPortal::FrostPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLUE)
+WarpGateDH::WarpGateDH(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFire, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	
 	this->edgeParticles->start();
@@ -32,26 +32,26 @@ FrostPortal::FrostPortal(ValueMap& properties) : super(properties, 96.0f, Color4
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-FrostPortal::~FrostPortal()
+WarpGateDH::~WarpGateDH()
 {
 }
 
-void FrostPortal::onEnter()
+void WarpGateDH::onEnter()
 {
 	super::onEnter();
 }
 
-void FrostPortal::initializePositions()
+void WarpGateDH::initializePositions()
 {
 	super::initializePositions();
 }
 
-void FrostPortal::initializeListeners()
+void WarpGateDH::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void FrostPortal::closePortal(bool instant)
+void WarpGateDH::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -59,7 +59,7 @@ void FrostPortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void FrostPortal::openPortal(bool instant)
+void WarpGateDH::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

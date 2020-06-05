@@ -1,18 +1,19 @@
 #pragma once
 #include <set>
 
-#include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
+#include "Objects/Platformer/Interactables/Doors/WarpGates/WarpGate.h"
 
 namespace cocos2d
 {
 	class DrawNode;
-	class ParticleSystem;
 }
 
-class WindPortal : public MagePortal
+class SmartParticles;
+
+class WarpGateEF : public WarpGate
 {
 public:
-	static WindPortal* create(cocos2d::ValueMap& properties);
+	static WarpGateEF* create(cocos2d::ValueMap& properties);
 
 	void closePortal(bool instant) override;
 	void openPortal(bool instant) override;
@@ -20,14 +21,14 @@ public:
 	static const std::string MapKey;
 
 protected:
-	WindPortal(cocos2d::ValueMap& properties);
-	virtual ~WindPortal();
+	WarpGateEF(cocos2d::ValueMap& properties);
+	virtual ~WarpGateEF();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
-	typedef MagePortal super;
+	typedef WarpGate super;
 
 	cocos2d::DrawNode* background;
 	SmartParticles* portalParticles;

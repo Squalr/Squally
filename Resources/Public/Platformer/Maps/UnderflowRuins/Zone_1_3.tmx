@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="155" nextobjectid="1085">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="166" nextobjectid="1098">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
@@ -60,6 +60,62 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="165" name="terrain -24">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1096" name="caverns" type="terrain" x="1197.15" y="1716.48" width="1163.63" height="1640"/>
+ </objectgroup>
+ <objectgroup id="155" name="decor -24">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1086" name="Ruins/WarpTower" type="decor" x="1327.5" y="-512.5" width="979" height="2249"/>
+ </objectgroup>
+ <objectgroup id="164" name="bridge -21">
+  <properties>
+   <property name="depth" type="float" value="-1344"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1095" name="caverns" type="terrain" x="1478.85" y="1701.33" width="635.63" height="1640"/>
+ </objectgroup>
+ <objectgroup id="163" name="bridge -18">
+  <properties>
+   <property name="depth" type="float" value="-1152"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1094" name="caverns" type="terrain" x="1477.52" y="1682.67" width="635.63" height="1640"/>
+ </objectgroup>
+ <objectgroup id="162" name="bridge -15">
+  <properties>
+   <property name="depth" type="float" value="-960"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1093" name="caverns" type="terrain" x="1477.52" y="1661.33" width="635.63" height="1640"/>
+ </objectgroup>
+ <objectgroup id="161" name="bridge -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1092" name="caverns" type="terrain" x="1477.52" y="1640" width="635.63" height="1640"/>
+ </objectgroup>
+ <objectgroup id="160" name="bridge -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1091" name="caverns" type="terrain" x="1478.85" y="1616" width="635.63" height="1640"/>
+ </objectgroup>
+ <objectgroup id="159" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1090" name="caverns" type="terrain" x="1478.18" y="1589.33" width="635.63" height="1640"/>
+ </objectgroup>
  <objectgroup id="153" name="texture -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -71,12 +127,30 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="158" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1089" name="caverns" type="terrain" x="1476.85" y="1567.33" width="635.63" height="1640"/>
+ </objectgroup>
  <objectgroup id="151" name="decor -0.5">
   <properties>
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1081" name="Ruins/Pillar" type="decor" x="3071.5" y="583" width="369" height="978"/>
+ </objectgroup>
+ <objectgroup id="156" name="bridge -0">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1087" name="caverns" type="terrain" x="1476.18" y="1544" width="635.63" height="1640">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -108,17 +182,17 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1069" name="portal" type="object" x="2096.99" y="1323.37" width="256.687" height="235.919">
-   <properties>
-    <property name="map" value="UnderflowRuins/Zone_1_4"/>
-    <property name="transition" value="path"/>
-   </properties>
-  </object>
   <object id="1071" name="edge-portal" type="object" x="3128.04" y="1040" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Town_Main"/>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1097" name="portal" type="object" x="1684.12" y="1305.82" width="256" height="256">
+   <properties>
+    <property name="map" value="UnderflowRuins/Mages_Warp"/>
+    <property name="transition" value="warp-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -127,22 +201,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1049" name="tiger-man" type="entity" x="1573.01" y="1432.9" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="1050" name="lion-man" type="entity" x="1580.44" y="1098.26" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
@@ -159,9 +217,9 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="1070" name="spawn" type="object" x="2156.67" y="1431.27" width="128" height="128">
+  <object id="1070" name="spawn" type="object" x="1742.67" y="1433.27" width="128" height="128">
    <properties>
-    <property name="transition" value="path"/>
+    <property name="transition" value="warp-room"/>
    </properties>
   </object>
   <object id="1072" name="spawn" type="object" x="2828" y="1434" width="128" height="128">
@@ -175,17 +233,11 @@
    <property name="depth" type="float" value="32"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1079" name="caverns" type="terrain" x="-795.636" y="1639.88">
-   <polygon points="323.777,1139.43 1280,302.807 2057.84,110.094 2799.94,-12.2183 3242.79,-11.295 3222.39,324.2 3233.28,1424.01 -274.21,1435.83"/>
-  </object>
  </objectgroup>
  <objectgroup id="154" name="terrain +1">
   <properties>
    <property name="depth" type="float" value="48"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1084" name="caverns" type="terrain" x="-151.636" y="1755.88">
-   <polygon points="551.171,67.4252 1069.58,69.716 2049.84,374.094 2671.94,615.782 3233.28,1424.01 562.081,1441.47 470.894,628.254"/>
-  </object>
  </objectgroup>
 </map>

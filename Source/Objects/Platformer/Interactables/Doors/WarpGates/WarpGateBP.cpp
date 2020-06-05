@@ -1,4 +1,4 @@
-#include "WaterPortal.h"
+#include "WarpGateBP.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,20 +9,20 @@
 
 using namespace cocos2d;
 
-const std::string WaterPortal::MapKey = "water-portal";
+const std::string WarpGateBP::MapKey = "warp-gate-bp";
 
-WaterPortal* WaterPortal::create(ValueMap& properties)
+WarpGateBP* WarpGateBP::create(ValueMap& properties)
 {
-	WaterPortal* instance = new WaterPortal(properties);
+	WarpGateBP* instance = new WarpGateBP(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WaterPortal::WaterPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLUE)
+WarpGateBP::WarpGateBP(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalWater, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	
 	this->edgeParticles->start();
@@ -32,26 +32,26 @@ WaterPortal::WaterPortal(ValueMap& properties) : super(properties, 96.0f, Color4
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-WaterPortal::~WaterPortal()
+WarpGateBP::~WarpGateBP()
 {
 }
 
-void WaterPortal::onEnter()
+void WarpGateBP::onEnter()
 {
 	super::onEnter();
 }
 
-void WaterPortal::initializePositions()
+void WarpGateBP::initializePositions()
 {
 	super::initializePositions();
 }
 
-void WaterPortal::initializeListeners()
+void WarpGateBP::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void WaterPortal::closePortal(bool instant)
+void WarpGateBP::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -59,7 +59,7 @@ void WaterPortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void WaterPortal::openPortal(bool instant)
+void WarpGateBP::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

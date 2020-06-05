@@ -1,4 +1,4 @@
-#include "WindPortal.h"
+#include "WarpGateUR.h"
 
 #include "cocos/2d/CCDrawNode.h"
 
@@ -9,20 +9,20 @@
 
 using namespace cocos2d;
 
-const std::string WindPortal::MapKey = "wind-portal";
+const std::string WarpGateUR::MapKey = "warp-gate-ur";
 
-WindPortal* WindPortal::create(ValueMap& properties)
+WarpGateUR* WarpGateUR::create(ValueMap& properties)
 {
-	WindPortal* instance = new WindPortal(properties);
+	WarpGateUR* instance = new WarpGateUR(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WindPortal::WindPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::GRAY)
+WarpGateUR::WarpGateUR(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalWind, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalWater, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	
 	this->edgeParticles->start();
@@ -32,26 +32,26 @@ WindPortal::WindPortal(ValueMap& properties) : super(properties, 96.0f, Color4B:
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-WindPortal::~WindPortal()
+WarpGateUR::~WarpGateUR()
 {
 }
 
-void WindPortal::onEnter()
+void WarpGateUR::onEnter()
 {
 	super::onEnter();
 }
 
-void WindPortal::initializePositions()
+void WarpGateUR::initializePositions()
 {
 	super::initializePositions();
 }
 
-void WindPortal::initializeListeners()
+void WarpGateUR::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void WindPortal::closePortal(bool instant)
+void WarpGateUR::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
@@ -59,7 +59,7 @@ void WindPortal::closePortal(bool instant)
 	this->portalParticles->stop();
 }
 
-void WindPortal::openPortal(bool instant)
+void WarpGateUR::openPortal(bool instant)
 {
 	super::openPortal(instant);
 

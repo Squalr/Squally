@@ -80,7 +80,7 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Smith (UR)", MapResources::UnderflowRuins_Town_Smith));
 	this->chapterList.push_back(this->buildDebugButton("Alch (UR)", MapResources::UnderflowRuins_Town_Alch));
 	this->chapterList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
-	this->chapterList.push_back(this->buildDebugButton("Zone_1_4 (UR)", MapResources::UnderflowRuins_Zone_1_4));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (UR)", MapResources::UnderflowRuins_Mages_Warp));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));

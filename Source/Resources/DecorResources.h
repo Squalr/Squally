@@ -37,6 +37,7 @@ namespace DecorResources
 	extern const std::string Castle_Table1;
 	extern const std::string Castle_Throne1;
 	extern const std::string Castle_Throne2;
+	extern const std::string Castle_WarpTower;
 	extern const std::string Castle_Window1;
 	extern const std::string Caverns_Background_CavernsBg1;
 	extern const std::string Caverns_Background_CavernsBg2;
@@ -84,6 +85,7 @@ namespace DecorResources
 	extern const std::string Caverns_Foreground_trees_foreground_1;
 	extern const std::string Caverns_Foreground_trees_foreground_2;
 	extern const std::string Caverns_TigerDoor;
+	extern const std::string Caverns_WarpTower;
 	extern const std::string Caverns_back_st_1;
 	extern const std::string Caverns_back_st_2;
 	extern const std::string Caverns_back_st_3;
@@ -262,6 +264,7 @@ namespace DecorResources
 	extern const std::string Crypts_Tree7;
 	extern const std::string Crypts_Tree8;
 	extern const std::string Crypts_Tree9;
+	extern const std::string Crypts_WarpTower;
 	extern const std::string Crypts_black_bud;
 	extern const std::string Crypts_black_flower;
 	extern const std::string Crypts_blue_bud;
@@ -439,6 +442,8 @@ namespace DecorResources
 	extern const std::string Forest_Light1;
 	extern const std::string Forest_Light2;
 	extern const std::string Forest_Light3;
+	extern const std::string Forest_MagesGuild;
+	extern const std::string Forest_MagesGuildFront;
 	extern const std::string Forest_Rock1;
 	extern const std::string Forest_Rock2;
 	extern const std::string Forest_Rock3;
@@ -584,8 +589,6 @@ namespace DecorResources
 	extern const std::string Generic_Lamp1;
 	extern const std::string Generic_Lamp2;
 	extern const std::string Generic_LesserMoonDoor;
-	extern const std::string Generic_MagesGuild;
-	extern const std::string Generic_MagesGuildFront;
 	extern const std::string Generic_MoonDoor;
 	extern const std::string Generic_Nightstand;
 	extern const std::string Generic_RedRug;
@@ -669,6 +672,7 @@ namespace DecorResources
 	extern const std::string Ruins_Walls7;
 	extern const std::string Ruins_Walls8;
 	extern const std::string Ruins_Walls9;
+	extern const std::string Ruins_WarpTower;
 	extern const std::string Ruins_Well;
 	extern const std::string Ruins_Window;
 	extern const std::string Ruins_WindowTransparent;
@@ -702,6 +706,7 @@ namespace DecorResources
 	extern const std::string Snow_Tree2;
 	extern const std::string Snow_Tree3;
 	extern const std::string Snow_Tree4;
+	extern const std::string Snow_WarpTower;
 	extern const std::string Snow_WoodDoor2;
 	extern const std::string Snow_WoodDoor3;
 	extern const std::string Snow_WoodDoor4;
@@ -736,6 +741,7 @@ namespace DecorResources
 	extern const std::string Void_Background_middleground_5;
 	extern const std::string Void_Background_middleground_6;
 	extern const std::string Void_Background_middleground_7;
+	extern const std::string Void_WarpTower;
 	extern const std::string Void_chain;
 	extern const std::string Void_gear;
 	extern const std::string Void_pillar;
@@ -743,6 +749,7 @@ namespace DecorResources
 	extern const std::string Volcano_Background_moutain_1;
 	extern const std::string Volcano_Background_moutain_2;
 	extern const std::string Volcano_Background_moutain_3;
+	extern const std::string Volcano_WarpTower;
 	extern const std::string Volcano_detail_4;
 	extern const std::string Volcano_detail_5;
 	extern const std::string Volcano_detail_7;

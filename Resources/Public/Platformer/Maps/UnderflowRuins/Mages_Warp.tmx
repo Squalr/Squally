@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="153" nextobjectid="962">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1065">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -209,92 +209,139 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="993" name="marble" type="terrain" x="13.76" y="-465.242" width="5612.48" height="2146.49">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="107" name="stairs L -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="935" name="marble" type="terrain" x="1467" y="581" width="1574" height="1142">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="108" name="objects -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="990" name="Generic/MoonDoor" type="decor" x="2213.67" y="-125.833" width="648" height="667"/>
  </objectgroup>
  <objectgroup id="106" name="stairs L -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="992" name="marble" type="terrain" x="2169" y="554.667" width="742" height="682.667"/>
  </objectgroup>
  <objectgroup id="105" name="stairs L -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="989" name="marble" type="terrain" x="2286.33" y="577" width="512" height="682.667"/>
  </objectgroup>
  <objectgroup id="104" name="stairs L -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="988" name="marble" type="terrain" x="2287" y="613" width="512" height="676"/>
  </objectgroup>
  <objectgroup id="103" name="stairs L -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="987" name="marble" type="terrain" x="2287" y="645.667" width="512" height="677.333"/>
  </objectgroup>
  <objectgroup id="102" name="stairs L -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="986" name="marble" type="terrain" x="2289" y="684.333" width="512" height="670.667"/>
  </objectgroup>
  <objectgroup id="115" name="stairs L -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="942" name="marble" type="terrain" x="404.591" y="740.394" width="1643.7" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="983" name="marble" type="terrain" x="2287" y="718.667" width="512" height="673.333"/>
+ </objectgroup>
+ <objectgroup id="156" name="terrain bg -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="982" name="marble" type="terrain" x="2287" y="752.667" width="512" height="635.333"/>
  </objectgroup>
  <objectgroup id="114" name="stairs L -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="941" name="marble" type="terrain" x="109" y="789.121" width="846.727" height="690.485">
+  <object id="941" name="marble" type="terrain" x="-247" y="789.121" width="6143.52" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="957" name="marble" type="terrain" x="1414.21" y="793.121" width="958.848" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+ </objectgroup>
+ <objectgroup id="153" name="objects -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="971" name="warp-gate-dm" type="object" x="978.985" y="110.818" width="483" height="678"/>
+  <object id="972" name="warp-gate-bp" type="object" x="2991.71" y="110.515" width="483" height="678"/>
+  <object id="976" name="warp-gate-ef" type="object" x="354.167" y="109.758" width="483" height="678"/>
+  <object id="977" name="warp-gate-cv" type="object" x="1624.11" y="111.485" width="483" height="678"/>
+  <object id="979" name="warp-gate-lc" type="object" x="4254.02" y="114.363" width="483" height="678"/>
+  <object id="980" name="warp-gate-dh" type="object" x="3635.2" y="113.969" width="483" height="678"/>
+  <object id="981" name="warp-gate-vs" type="object" x="4881.8" y="114.03" width="483" height="678"/>
  </objectgroup>
  <objectgroup id="113" name="stairs L -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="940" name="marble" type="terrain" x="-68.4052" y="833.758" width="846.727" height="690.485">
+  <object id="940" name="marble" type="terrain" x="1608.93" y="825.425" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="958" name="marble" type="terrain" x="1679.23" y="837.758" width="922.485" height="690.485">
+  <object id="1001" name="marble" type="terrain" x="2978" y="819.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1014" name="marble" type="terrain" x="967.564" y="827.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1018" name="marble" type="terrain" x="336.777" y="829.455" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1052" name="marble" type="terrain" x="2288.67" y="826.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1056" name="marble" type="terrain" x="3623.33" y="822.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1060" name="marble" type="terrain" x="4242" y="824.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1064" name="marble" type="terrain" x="4862" y="824.757" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -305,11 +352,6 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="939" name="marble" type="terrain" x="767.788" y="-146.091" width="901.273" height="1627.64">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="152" name="objects -3">
   <properties>
@@ -322,12 +364,42 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="938" name="marble" type="terrain" x="-151.363" y="882.757" width="846.727" height="690.485">
+  <object id="938" name="marble" type="terrain" x="1609.3" y="885.09" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="959" name="marble" type="terrain" x="1780.64" y="886.757" width="902.727" height="690.485">
+  <object id="1000" name="marble" type="terrain" x="2978.33" y="873.758" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1015" name="marble" type="terrain" x="967.94" y="885.09" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1019" name="marble" type="terrain" x="336.819" y="885.121" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1051" name="marble" type="terrain" x="2289" y="880.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1055" name="marble" type="terrain" x="3623.67" y="876.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1059" name="marble" type="terrain" x="4242.33" y="879.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1063" name="marble" type="terrain" x="4862.33" y="879.091" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -338,12 +410,42 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="937" name="marble" type="terrain" x="-40.7271" y="950.939" width="846.727" height="690.485">
+  <object id="937" name="marble" type="terrain" x="1609.61" y="939.272" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="960" name="marble" type="terrain" x="1687.27" y="954.939" width="910.727" height="690.485">
+  <object id="999" name="marble" type="terrain" x="2978.33" y="930.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1016" name="marble" type="terrain" x="968.576" y="941.606" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1020" name="marble" type="terrain" x="336.455" y="938.969" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1050" name="marble" type="terrain" x="2287.67" y="942.758" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1054" name="marble" type="terrain" x="3623.67" y="932.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1058" name="marble" type="terrain" x="4242.33" y="935.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1062" name="marble" type="terrain" x="4862.33" y="935.424" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -354,12 +456,42 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="936" name="marble" type="terrain" x="37.485" y="1009.97" width="846.727" height="690.485">
+  <object id="936" name="marble" type="terrain" x="1609.48" y="993.97" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="961" name="marble" type="terrain" x="1585.49" y="1013.97" width="926.727" height="690.485">
+  <object id="998" name="marble" type="terrain" x="2979" y="989.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1017" name="marble" type="terrain" x="968.455" y="993.637" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1021" name="marble" type="terrain" x="336" y="992.334" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1049" name="marble" type="terrain" x="2289" y="999.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1053" name="marble" type="terrain" x="3624.33" y="991.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1057" name="marble" type="terrain" x="4243" y="994.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1061" name="marble" type="terrain" x="4863" y="994.424" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -393,16 +525,16 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="154" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="934" name="marble" type="terrain" x="-103.667" y="1048.76" width="2505.39" height="222"/>
-  <object id="943" name="marble" type="terrain" x="-96.3939" y="-142.151" width="2494" height="222">
-   <properties>
-    <property name="flip-y" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="934" name="marble" type="terrain" x="-166.091" y="1048.76" width="5917.15" height="222"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -414,11 +546,52 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="mage-portal" type="object" x="1857.86" y="788" width="128" height="256">
+  <object id="963" name="portal" type="object" x="2425.3" y="793.879" width="256" height="256">
    <properties>
-    <property name="map" value="EndianForest/Mages_Gauntlet_3"/>
-    <property name="tag" value="quest-portal"/>
-    <property name="transition" value="main"/>
+    <property name="map" value="UnderflowRuins/Mages_Warp"/>
+    <property name="transition" value="warp-room"/>
+   </properties>
+  </object>
+  <object id="1022" name="portal" type="object" x="1736" y="794" width="256" height="256">
+   <properties>
+    <property name="map" value="CastleValgrind/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1023" name="portal" type="object" x="448.242" y="792.212" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1024" name="portal" type="object" x="1086" y="794" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1025" name="portal" type="object" x="3095.33" y="792" width="256" height="256">
+   <properties>
+    <property name="map" value="BallmerPeaks/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1026" name="portal" type="object" x="3742.67" y="792" width="256" height="256">
+   <properties>
+    <property name="map" value="DaemonsHallow/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
+   <properties>
+    <property name="map" value="LambdaCrypts/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1028" name="portal" type="object" x="4997.33" y="793.333" width="256" height="256">
+   <properties>
+    <property name="map" value="VoidStar/Mages_Warp"/>
+    <property name="transition" value="dm"/>
    </properties>
   </object>
  </objectgroup>
@@ -432,9 +605,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="aster" type="entity" x="1255.03" y="921.939" width="128" height="128">
+  <object id="955" name="aster" type="entity" x="2864.36" y="920.606" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="beat-tutorial-B"/>
@@ -447,14 +620,49 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="701.722" y="920.314" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2579.72" y="920.314" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="933" name="spawn" type="object" x="385.18" y="920.631" width="128" height="128">
+  <object id="933" name="spawn" type="object" x="2490.51" y="919.298" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="warp-room"/>
+   </properties>
+  </object>
+  <object id="1029" name="spawn" type="object" x="507.515" y="921.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="ef"/>
+   </properties>
+  </object>
+  <object id="1030" name="spawn" type="object" x="1145.33" y="921.333" width="128" height="128">
+   <properties>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1031" name="spawn" type="object" x="1800" y="922.667" width="128" height="128">
+   <properties>
+    <property name="transition" value="cv"/>
+   </properties>
+  </object>
+  <object id="1032" name="spawn" type="object" x="3155" y="920" width="128" height="128">
+   <properties>
+    <property name="transition" value="bp"/>
+   </properties>
+  </object>
+  <object id="1033" name="spawn" type="object" x="3806.67" y="920" width="128" height="128">
+   <properties>
+    <property name="transition" value="dh"/>
+   </properties>
+  </object>
+  <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
+   <properties>
+    <property name="transition" value="lc"/>
+   </properties>
+  </object>
+  <object id="1036" name="spawn" type="object" x="5062.67" y="921.333" width="128" height="128">
+   <properties>
+    <property name="transition" value="vs"/>
    </properties>
   </object>
  </objectgroup>

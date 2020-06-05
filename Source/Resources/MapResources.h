@@ -10,6 +10,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Castle;
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string DataMines_Zone_1_0;
+	extern const std::string DataMines_Zone_1_4;
 	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
@@ -89,6 +90,7 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Home_Aphrodite;
 	extern const std::string UnderflowRuins_Home_Cleopatra;
 	extern const std::string UnderflowRuins_Home_Hera;
+	extern const std::string UnderflowRuins_Mages_Warp;
 	extern const std::string UnderflowRuins_Shoreline;
 	extern const std::string UnderflowRuins_Town_Alch;
 	extern const std::string UnderflowRuins_Town_Docks;
@@ -101,7 +103,6 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_1_1;
 	extern const std::string UnderflowRuins_Zone_1_2;
 	extern const std::string UnderflowRuins_Zone_1_3;
-	extern const std::string UnderflowRuins_Zone_1_4;
 	extern const std::string UnderflowRuins_Zone_2_0;
 	extern const std::string UnderflowRuins_Zone_2_1;
 	extern const std::string UnderflowRuins_Zone_2_2;
