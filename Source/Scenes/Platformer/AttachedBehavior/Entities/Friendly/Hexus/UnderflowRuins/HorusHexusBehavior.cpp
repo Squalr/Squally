@@ -50,9 +50,9 @@ std::string HorusHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> HorusHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 1.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / URHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(25, LocalOrder * URHexusConfig::ZoneOrder,
+	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
@@ -61,11 +61,20 @@ std::vector<CardData*> HorusHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
+		// CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 

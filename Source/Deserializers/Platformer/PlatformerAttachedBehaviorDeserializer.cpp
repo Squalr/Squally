@@ -123,6 +123,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[CleopatraHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CleopatraHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GeyronHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GeyronHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GriffinHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GriffinHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[HeraHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)HeraHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[HorusHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)HorusHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PoseidonHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PoseidonHexusBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[RupertHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RupertHexusBehavior::create(owner); };

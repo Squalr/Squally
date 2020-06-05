@@ -38,6 +38,7 @@ protected:
 	
 	void onDisable() override;
 
+	float calculateStrength(float localOrder, float zoneOrder);
 	virtual MinMaxPool* generateReward() = 0;
 	virtual std::string getWinLossSaveKey() = 0;
 	virtual std::string getBackgroundResource() = 0;

@@ -52,7 +52,7 @@ std::vector<CardData*> RobinHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 4.0f / EFHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
+	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],

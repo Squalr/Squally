@@ -106,7 +106,7 @@
   </properties>
   <object id="984" name="cleopatra" type="entity" x="2087.22" y="1134" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="cleopatra-hexus,friendly,pick-pocket"/>
+    <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-cleopatra"/>

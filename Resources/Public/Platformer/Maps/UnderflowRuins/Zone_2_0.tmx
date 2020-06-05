@@ -94,7 +94,7 @@
   </properties>
   <object id="829" name="rupert" type="entity" x="4468.15" y="1276.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="rupert-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

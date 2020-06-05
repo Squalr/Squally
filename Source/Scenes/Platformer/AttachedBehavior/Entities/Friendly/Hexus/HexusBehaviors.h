@@ -44,6 +44,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/CleopatraHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/GeyronHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/GriffinHexusBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/HeraHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/HorusHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/PoseidonHexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/UnderflowRuins/RupertHexusBehavior.h"

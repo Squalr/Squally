@@ -52,7 +52,7 @@ std::vector<CardData*> CleopatraHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 1.0f / URHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(25, LocalOrder * URHexusConfig::ZoneOrder,
+	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
@@ -62,10 +62,19 @@ std::vector<CardData*> CleopatraHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 
