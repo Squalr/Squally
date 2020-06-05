@@ -238,6 +238,7 @@ const std::string ObjectResources::Doors_Tent_STONES_and_CRATES_S8 = "Private/Pl
 const std::string ObjectResources::Doors_Tent_STONES_and_CRATES_SWORD = "Private/Platformer/Objects/Doors/Tent/STONES and CRATES/SWORD.png";
 const std::string ObjectResources::Doors_TrapDoor_TrapDoor = "Private/Platformer/Objects/Doors/TrapDoor/TrapDoor.png";
 const std::string ObjectResources::Doors_TrapDoor_TrapDoorFrame = "Private/Platformer/Objects/Doors/TrapDoor/TrapDoorFrame.png";
+const std::string ObjectResources::Doors_WarpGate_WarpGateClosed = "Private/Platformer/Objects/Doors/WarpGate/WarpGateClosed.png";
 const std::string ObjectResources::Doors_WarpGate_WarpGateFrame = "Private/Platformer/Objects/Doors/WarpGate/WarpGateFrame.png";
 const std::string ObjectResources::Doors_WoodStronghold_ARROW = "Private/Platformer/Objects/Doors/WoodStronghold/ARROW.png";
 const std::string ObjectResources::Doors_WoodStronghold_BRIDGE1 = "Private/Platformer/Objects/Doors/WoodStronghold/BRIDGE1.png";

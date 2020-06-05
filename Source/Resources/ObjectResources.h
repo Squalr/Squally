@@ -239,6 +239,7 @@ namespace ObjectResources
 	extern const std::string Doors_Tent_STONES_and_CRATES_SWORD;
 	extern const std::string Doors_TrapDoor_TrapDoor;
 	extern const std::string Doors_TrapDoor_TrapDoorFrame;
+	extern const std::string Doors_WarpGate_WarpGateClosed;
 	extern const std::string Doors_WarpGate_WarpGateFrame;
 	extern const std::string Doors_WoodStronghold_ARROW;
 	extern const std::string Doors_WoodStronghold_BRIDGE1;

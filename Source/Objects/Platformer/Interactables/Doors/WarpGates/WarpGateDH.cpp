@@ -50,19 +50,3 @@ void WarpGateDH::initializeListeners()
 {
 	super::initializeListeners();
 }
-
-void WarpGateDH::closePortal(bool instant)
-{
-	super::closePortal(instant);
-
-	this->edgeParticles->stop();
-	this->portalParticles->stop();
-}
-
-void WarpGateDH::openPortal(bool instant)
-{
-	super::openPortal(instant);
-
-	this->edgeParticles->start();
-	this->portalParticles->start();
-}

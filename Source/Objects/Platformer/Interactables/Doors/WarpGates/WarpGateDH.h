@@ -15,9 +15,6 @@ class WarpGateDH : public WarpGate
 public:
 	static WarpGateDH* create(cocos2d::ValueMap& properties);
 
-	void closePortal(bool instant) override;
-	void openPortal(bool instant) override;
-
 	static const std::string MapKey;
 
 protected:

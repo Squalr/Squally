@@ -47,19 +47,3 @@ void WarpGateLC::initializeListeners()
 {
 	super::initializeListeners();
 }
-
-void WarpGateLC::closePortal(bool instant)
-{
-	super::closePortal(instant);
-
-	this->edgeParticles->stop();
-	this->portalParticles->stop();
-}
-
-void WarpGateLC::openPortal(bool instant)
-{
-	super::openPortal(instant);
-
-	this->edgeParticles->start();
-	this->portalParticles->start();
-}

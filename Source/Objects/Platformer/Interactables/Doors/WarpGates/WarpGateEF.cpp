@@ -50,19 +50,3 @@ void WarpGateEF::initializeListeners()
 {
 	super::initializeListeners();
 }
-
-void WarpGateEF::closePortal(bool instant)
-{
-	super::closePortal(instant);
-
-	this->edgeParticles->stop();
-	this->portalParticles->stop();
-}
-
-void WarpGateEF::openPortal(bool instant)
-{
-	super::openPortal(instant);
-
-	this->edgeParticles->start();
-	this->portalParticles->start();
-}

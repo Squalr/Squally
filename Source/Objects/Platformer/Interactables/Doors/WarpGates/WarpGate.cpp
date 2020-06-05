@@ -24,13 +24,16 @@ WarpGate::WarpGate(ValueMap& properties) : super(properties, Size(128.0f, 256.0f
 	this->contentNode = Node::create();
 	this->portalClip = SmartClippingNode::create(this->contentNode, Size(256.0f, 512.0f));
 	this->portalEffectNode = Node::create();
+	this->doorClosed = Sprite::create(ObjectResources::Doors_WarpGate_WarpGateClosed);
 	this->doorFrame = Sprite::create(ObjectResources::Doors_WarpGate_WarpGateFrame);
 	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
 
+	this->doorClosed->setVisible(false);
 	this->addTag(WarpGate::TagWarpGate);
 
 	this->contentNode->addChild(this->portalEffectNode);
 	this->addChild(this->portalClip);
+	this->addChild(this->doorClosed);
 	this->addChild(this->doorFrame);
 	this->addChild(this->portalOpenSound);
 }
@@ -47,7 +50,7 @@ void WarpGate::onEnter()
 void WarpGate::initializePositions()
 {
 	super::initializePositions();
-
+	
 	this->portalClip->setPosition(Vec2(0.0f, -78.0f));
 }
 
@@ -56,11 +59,12 @@ void WarpGate::initializeListeners()
 	super::initializeListeners();
 }
 
-void WarpGate::closePortal(bool instant)
+void WarpGate::lock(bool animate)
 {
-	this->disable();
+	this->doorFrame->setVisible(false);
+	this->doorClosed->setVisible(true);
 
-	if (instant)
+	if (animate)
 	{
 		this->contentNode->setOpacity(0);
 	}
@@ -70,9 +74,12 @@ void WarpGate::closePortal(bool instant)
 	}
 }
 
-void WarpGate::openPortal(bool instant)
+void WarpGate::unlock(bool animate)
 {
-	if (instant)
+	this->doorFrame->setVisible(true);
+	this->doorClosed->setVisible(false);
+
+	if (animate)
 	{
 		this->contentNode->setOpacity(255);
 	}
@@ -81,6 +88,4 @@ void WarpGate::openPortal(bool instant)
 		this->contentNode->runAction(FadeTo::create(0.5f, 255));
 		this->portalOpenSound->play();
 	}
-
-	this->enable();
 }

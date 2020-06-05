@@ -36,7 +36,7 @@ BusinessHours* BusinessHours::create(GameObject* owner, QuestLine* questLine)
 
 BusinessHours::BusinessHours(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BusinessHours::MapKeyQuest, false)
 {
-	this->portal = static_cast<Portal*>(owner);
+	this->portal = dynamic_cast<Portal*>(owner);
 	this->squally = nullptr;
 }
 

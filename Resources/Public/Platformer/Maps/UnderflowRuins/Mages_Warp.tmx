@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1065">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1066">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -293,13 +293,48 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="971" name="warp-gate-dm" type="object" x="978.985" y="110.818" width="483" height="678"/>
-  <object id="972" name="warp-gate-bp" type="object" x="2991.71" y="110.515" width="483" height="678"/>
-  <object id="976" name="warp-gate-ef" type="object" x="354.167" y="109.758" width="483" height="678"/>
-  <object id="977" name="warp-gate-cv" type="object" x="1624.11" y="111.485" width="483" height="678"/>
-  <object id="979" name="warp-gate-lc" type="object" x="4254.02" y="114.363" width="483" height="678"/>
-  <object id="980" name="warp-gate-dh" type="object" x="3635.2" y="113.969" width="483" height="678"/>
-  <object id="981" name="warp-gate-vs" type="object" x="4881.8" y="114.03" width="483" height="678"/>
+  <object id="971" name="warp-gate-dm" type="object" x="978.985" y="110.818" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="972" name="warp-gate-bp" type="object" x="3000.8" y="110.515" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-bp"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="976" name="warp-gate-ef" type="object" x="354.167" y="109.758" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="977" name="warp-gate-cv" type="object" x="1624.11" y="111.485" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-cv"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="979" name="warp-gate-lc" type="object" x="4254.02" y="114.363" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-lc"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="980" name="warp-gate-dh" type="object" x="3635.2" y="113.969" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="981" name="warp-gate-vs" type="object" x="4881.8" y="114.03" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-vs"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="113" name="stairs L -4">
   <properties>
@@ -555,42 +590,56 @@
   <object id="1022" name="portal" type="object" x="1736" y="794" width="256" height="256">
    <properties>
     <property name="map" value="CastleValgrind/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-cv"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1023" name="portal" type="object" x="448.242" y="792.212" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1024" name="portal" type="object" x="1086" y="794" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1025" name="portal" type="object" x="3095.33" y="792" width="256" height="256">
    <properties>
     <property name="map" value="BallmerPeaks/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-bp"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1026" name="portal" type="object" x="3742.67" y="792" width="256" height="256">
    <properties>
     <property name="map" value="DaemonsHallow/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-lc"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1028" name="portal" type="object" x="4997.33" y="793.333" width="256" height="256">
    <properties>
     <property name="map" value="VoidStar/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-vs"/>
+    <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
@@ -605,13 +654,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="aster" type="entity" x="2864.36" y="920.606" width="128" height="128">
+  <object id="955" name="alder" type="entity" x="2864.36" y="920.606" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ef-generic"/>
-    <property name="quest" value="beat-tutorial-B"/>
-    <property name="quest-line" value="hexus-gauntlet"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
  </objectgroup>

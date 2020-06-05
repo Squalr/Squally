@@ -47,7 +47,7 @@ TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : supe
 {
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;
-	this->chiron = static_cast<Chiron*>(owner);
+	this->chiron = dynamic_cast<Chiron*>(owner);
 	this->bard = nullptr;
 	this->squally = nullptr;
 }

@@ -1,0 +1,28 @@
+#pragma once
+
+#include "Engine/Quests/QuestTask.h"
+
+class Portal;
+class QuestLine;
+
+class PowerWarpGateUR : public QuestTask
+{
+public:
+	static PowerWarpGateUR* create(GameObject* owner, QuestLine* questLine);
+
+	static const std::string MapKeyQuest;
+
+protected:
+	PowerWarpGateUR(GameObject* owner, QuestLine* questLine);
+	virtual ~PowerWarpGateUR();
+
+	void onLoad(QuestState questState) override;
+	void onActivate(bool isActiveThroughSkippable) override;
+	void onComplete() override;
+	void onSkipped() override;
+
+private:
+	typedef QuestTask super;
+
+	Portal* portal;
+};

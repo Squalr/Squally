@@ -14,8 +14,8 @@ class WorldSound;
 class WarpGate : public Portal
 {
 public:
-	virtual void closePortal(bool instant);
-	virtual void openPortal(bool instant);
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
 
 	static const std::string TagWarpGate;
 
@@ -33,6 +33,7 @@ private:
 
 	SmartClippingNode* portalClip;
 	cocos2d::Node* contentNode;
+	cocos2d::Sprite* doorClosed;
 	cocos2d::Sprite* doorFrame;
 	WorldSound* portalOpenSound;
 };
