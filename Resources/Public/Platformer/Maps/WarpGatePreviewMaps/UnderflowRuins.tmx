@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="139" nextobjectid="1066">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="110" name="texture -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="964" name="ruins-gray-dark" type="texture" x="-594.91" y="-412" width="1741.81" height="1792"/>
+ </objectgroup>
+ <objectgroup id="111" name="decor -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="965" name="Ruins/ArchDoorGray1" type="decor" x="-71.26" y="195.546" width="235" height="452"/>
+  <object id="1046" name="Ruins/ArchDoorGray1" type="decor" x="345.5" y="185" width="235" height="452"/>
+  <object id="1048" name="Generic/SignBar" type="decor" x="335.17" y="-90.5" width="252" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="115" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="969" name="ruins-gray-thick" type="terrain" x="-907.997" y="647.22" width="2459.05" height="571.03"/>
+ </objectgroup>
+ <objectgroup id="134" name="decor -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1039" name="Generic/RedRug" type="decor" x="-122.33" y="634.83" width="332" height="21"/>
+  <object id="1045" name="Generic/RedRug" type="decor" x="300" y="636.83" width="332" height="21"/>
+ </objectgroup>
+ <objectgroup id="130" name="objects -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="127" name="entities -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="131" name="player_layer -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="121" name="decor -6.5">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="991" name="Ruins/Pillar1" type="decor" x="-497.17" y="-306" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="992" name="Ruins/Pillar1" type="decor" x="639.74" y="-307.394" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="114" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="968" name="ruins-gray-thick" type="terrain" x="-837.33" y="671.89" width="2312.39" height="552.848"/>
+ </objectgroup>
+ <objectgroup id="128" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="120" name="decor -5.5">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="987" name="Ruins/Pillar1" type="decor" x="-498.17" y="-279" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="988" name="Ruins/Pillar1" type="decor" x="638.74" y="-280.394" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="967" name="ruins-gray-thick" type="terrain" x="-758.663" y="697.89" width="2157.72" height="522.545"/>
+ </objectgroup>
+ <objectgroup id="138" name="objects -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1064" name="solid" type="collision" x="-211.924" y="-643.654" width="126.878" height="1711.55"/>
+  <object id="1065" name="solid" type="collision" x="606.258" y="-613.351" width="126.878" height="1711.55"/>
+ </objectgroup>
+ <objectgroup id="126" name="entities -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1061" name="athena" type="entity" x="283" y="572" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="64"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="119" name="decor -4.5">
+  <properties>
+   <property name="depth" type="float" value="-288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="983" name="Ruins/Pillar1" type="decor" x="-498.17" y="-248.333" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="984" name="Ruins/Pillar1" type="decor" x="638.74" y="-249.727" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="122" name="decor -4 bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="107" name="texture -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="108" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="112" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="966" name="ruins-gray-thick" type="terrain" x="-696.33" y="730.56" width="2023.05" height="495.273"/>
+ </objectgroup>
+ <objectgroup id="133" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1033" name="Generic/BlueRug" type="decor" x="90" y="722.83" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="129" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1062" name="solid" type="collision" x="-182.348" y="-621.016" width="126.878" height="1711.55"/>
+  <object id="1063" name="solid" type="collision" x="578.985" y="-583.048" width="126.878" height="1711.55"/>
+ </objectgroup>
+ <objectgroup id="123" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1006" name="thor" type="entity" x="119.94" y="602.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="64"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="132" name="player_layer -4" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1013" name="option-warp" type="object" x="-835.67" y="473.166" width="256" height="256">
+   <properties>
+    <property name="from" value="4-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="middle"/>
+    <property name="to" value="1-A,7-A"/>
+   </properties>
+  </object>
+  <object id="1020" name="option-warp" type="object" x="1152.33" y="473.333" width="256" height="256">
+   <properties>
+    <property name="from" value="4-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="string" value="middle"/>
+    <property name="to" value="1-B,7-B"/>
+   </properties>
+  </object>
+  <object id="1028" name="spawn" type="object" x="-1224" y="605" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="1031" name="spawn" type="object" x="1733.33" y="603.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="1035" name="warp" type="object" x="126.67" y="475" width="256" height="256">
+   <properties>
+    <property name="from" value="4-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-C"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="118" name="decor -3.5">
+  <properties>
+   <property name="depth" type="float" value="-224"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="979" name="Ruins/Pillar1" type="decor" x="-496.83" y="-217" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="980" name="Ruins/Pillar1" type="decor" x="640.08" y="-218.394" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="104" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="948" name="ruins-gray-thick" type="terrain" x="-634.997" y="759.89" width="1875.05" height="461.939"/>
+ </objectgroup>
+ <objectgroup id="124" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="117" name="decor -2.5">
+  <properties>
+   <property name="depth" type="float" value="-160"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="975" name="Ruins/Pillar1" type="decor" x="-496.83" y="-183.667" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="976" name="Ruins/Pillar1" type="decor" x="640.08" y="-185.061" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="103" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="947" name="ruins-gray-thick" type="terrain" x="-581.663" y="794.56" width="1739.08" height="428.606"/>
+ </objectgroup>
+ <objectgroup id="125" name="entities -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="116" name="decor -1.5">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="971" name="Ruins/Pillar1" type="decor" x="-495.5" y="-147" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="972" name="Ruins/Pillar1" type="decor" x="641.41" y="-148.394" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="135" name="wall -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="137" name="decor -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="946" name="ruins-gray-thick" type="terrain" x="-486.997" y="829.89" width="1569.81" height="392"/>
+ </objectgroup>
+ <objectgroup id="136" name="terrain -0.5">
+  <properties>
+   <property name="depth" type="float" value="-32"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="106" name="decor -0.5">
+  <properties>
+   <property name="depth" type="float" value="-32"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="954" name="Ruins/Pillar1" type="decor" x="-494.5" y="-109" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="957" name="Ruins/Pillar1" type="decor" x="642.41" y="-110.394" width="369" height="978">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="833" name="ruins-gray-thick" type="terrain" x="-407.663" y="865.89" width="1404.36" height="352"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1032" name="Generic/BlueRug" type="decor" x="89.33" y="854.17" width="332" height="21">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="105" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

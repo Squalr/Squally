@@ -17,6 +17,7 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		|| objectA == objectB
 		|| !objectA->physicsEnabled
 		|| !objectB->physicsEnabled
+		|| objectA->getUniverseId() != objectB->getUniverseId()
 		|| !CollisionResolver::isWithinZThreshold(objectA, objectB))
 	{
 		return;

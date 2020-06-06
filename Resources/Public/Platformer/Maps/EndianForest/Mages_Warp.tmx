@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1068">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1070">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -597,7 +597,7 @@
   </object>
   <object id="1023" name="portal" type="object" x="448.242" y="792.212" width="256" height="256">
    <properties>
-    <property name="map" value="EndianForest/Mages_Warp"/>
+    <property name="map" value="UnderflowRuins/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-ur"/>
     <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="ef"/>
@@ -645,7 +645,7 @@
   </object>
   <object id="1067" name="trigger" type="object" x="2146" y="534" width="814" height="516">
    <properties>
-    <property name="send-event" value="power-warp-gate-ur"/>
+    <property name="send-event" value="power-warp-gate-ef"/>
    </properties>
   </object>
  </objectgroup>
@@ -686,38 +686,51 @@
   </object>
   <object id="1029" name="spawn" type="object" x="507.515" y="921.03" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1030" name="spawn" type="object" x="1145.33" y="921.333" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1031" name="spawn" type="object" x="1800" y="922.667" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="cv"/>
    </properties>
   </object>
   <object id="1032" name="spawn" type="object" x="3155" y="920" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="bp"/>
    </properties>
   </object>
   <object id="1033" name="spawn" type="object" x="3806.67" y="920" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="lc"/>
    </properties>
   </object>
   <object id="1036" name="spawn" type="object" x="5062.67" y="921.333" width="128" height="128">
    <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="vs"/>
    </properties>
+  </object>
+  <object id="1068" x="1731.09" y="-1828.9">
+   <polygon points="0,0 23.3128,1253.06 821.776,1247.23 821.776,979.138 268.097,990.794 250.613,693.556 798.463,681.899 769.322,442.943 262.269,466.256 244.784,134.049 780.979,139.877 763.494,-64.1102"/>
+  </object>
+  <object id="1069" x="2773.88" y="-603.699">
+   <polygon points="0,0 -29.141,-1323 810.12,-1293.86 798.463,-1060.73 238.956,-1072.39 233.128,-798.463 670.243,-798.463 670.243,-547.851 256.441,-565.335 233.128,29.141"/>
   </object>
  </objectgroup>
  <objectgroup id="77" name="decor +1">

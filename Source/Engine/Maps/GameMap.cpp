@@ -26,102 +26,7 @@ const std::string GameMap::KeyTypeCollision = "collision";
 
 using namespace cocos2d;
 
-GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation)
-{
-	this->collisionLayers = std::vector<TileLayer*>();
-	this->mapLayers = mapLayers;
-	this->tileLayers = std::vector<TileLayer*>();
-	this->layersToSort = std::vector<TileLayer*>();
-	this->levelMapFileName = mapFileName;
-	this->mapUnitSize = unitSize;
-	this->mapTileSize = tileSize;
-	this->orientation = orientation;
-
-	for (auto next : this->mapLayers)
-	{
-		this->addChild(next);
-	}
-
-	if (this->orientation == MapOrientation::Isometric)
-	{
-		this->isometricMapPreparation();
-	}
-}
-
-GameMap::~GameMap()
-{
-}
-
-void GameMap::onEnter()
-{
-	super::onEnter();
-
-	this->scheduleUpdate();
-}
-
-void GameMap::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		this->hackerModeEnable();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
-	{
-		this->hackerModeDisable();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
-	{
-		this->hackerModeLayerFade();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectClose, [=](EventCustom* eventCustom)
-	{
-		this->hackerModeLayerUnfade();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventCustom)
-	{
-		ObjectEvents::RequestObjectSpawnDelegatorArgs* args = static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->spawnObject(args);
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventCustom)
-	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->moveObjectToTopLayer(args);
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventCustom)
-	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->moveObjectToElevateLayer(args);
-		}
-	}));
-}
-
-void GameMap::update(float dt)
-{
-	super::update(dt);
-
-	this->isometricZSort();
-}
-
-GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers)
+GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 
@@ -242,11 +147,112 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	// Create a special hud_target layer for top-level display items
 	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
 
-	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
+	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation(), disableEvents);
 
 	instance->autorelease();
 
 	return instance;
+}
+
+GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation, bool disableEvents)
+{
+	this->collisionLayers = std::vector<TileLayer*>();
+	this->mapLayers = mapLayers;
+	this->tileLayers = std::vector<TileLayer*>();
+	this->layersToSort = std::vector<TileLayer*>();
+	this->levelMapFileName = mapFileName;
+	this->mapUnitSize = unitSize;
+	this->mapTileSize = tileSize;
+	this->orientation = orientation;
+	this->disableEvents = disableEvents;
+
+	for (auto next : this->mapLayers)
+	{
+		this->addChild(next);
+	}
+
+	if (this->orientation == MapOrientation::Isometric)
+	{
+		this->isometricMapPreparation();
+	}
+}
+
+GameMap::~GameMap()
+{
+}
+
+void GameMap::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void GameMap::initializeListeners()
+{
+	super::initializeListeners();
+
+	if (disableEvents)
+	{
+		return;
+	}
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		this->hackerModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->hackerModeDisable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
+	{
+		this->hackerModeLayerFade();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectClose, [=](EventCustom* eventCustom)
+	{
+		this->hackerModeLayerUnfade();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventCustom)
+	{
+		ObjectEvents::RequestObjectSpawnDelegatorArgs* args = static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->spawnObject(args);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventCustom)
+	{
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->moveObjectToTopLayer(args);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventCustom)
+	{
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->moveObjectToElevateLayer(args);
+		}
+	}));
+}
+
+void GameMap::update(float dt)
+{
+	super::update(dt);
+
+	this->isometricZSort();
 }
 
 std::string GameMap::getMapFileName()

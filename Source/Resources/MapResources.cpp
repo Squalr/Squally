@@ -5,9 +5,13 @@
 #include "MapResources.h"
 #include <string>
 
+const std::string MapResources::BallmerPeaks_Mages_Warp = "Public/Platformer/Maps/BallmerPeaks/Mages_Warp.tmx";
 const std::string MapResources::BallmerPeaks_Town_Main = "Public/Platformer/Maps/BallmerPeaks/Town_Main.tmx";
 const std::string MapResources::CastleValgrind_Castle = "Public/Platformer/Maps/CastleValgrind/Castle.tmx";
+const std::string MapResources::CastleValgrind_Mages_Warp = "Public/Platformer/Maps/CastleValgrind/Mages_Warp.tmx";
+const std::string MapResources::DaemonsHallow_Mages_Warp = "Public/Platformer/Maps/DaemonsHallow/Mages_Warp.tmx";
 const std::string MapResources::DaemonsHallow_Volcano = "Public/Platformer/Maps/DaemonsHallow/Volcano.tmx";
+const std::string MapResources::DataMines_Mages_Warp = "Public/Platformer/Maps/DataMines/Mages_Warp.tmx";
 const std::string MapResources::DataMines_Zone_1_0 = "Public/Platformer/Maps/DataMines/Zone_1_0.tmx";
 const std::string MapResources::DataMines_Zone_1_4 = "Public/Platformer/Maps/DataMines/Zone_1_4.tmx";
 const std::string MapResources::Dev_AnimSeq = "Public/Platformer/Maps/Dev/AnimSeq.tmx";
@@ -38,6 +42,7 @@ const std::string MapResources::EndianForest_Mages_Gauntlet_4 = "Public/Platform
 const std::string MapResources::EndianForest_Mages_Gauntlet_Entrance = "Public/Platformer/Maps/EndianForest/Mages_Gauntlet_Entrance.tmx";
 const std::string MapResources::EndianForest_Mages_Guild = "Public/Platformer/Maps/EndianForest/Mages_Guild.tmx";
 const std::string MapResources::EndianForest_Mages_Prison = "Public/Platformer/Maps/EndianForest/Mages_Prison.tmx";
+const std::string MapResources::EndianForest_Mages_Warp = "Public/Platformer/Maps/EndianForest/Mages_Warp.tmx";
 const std::string MapResources::EndianForest_Ship_Captain = "Public/Platformer/Maps/EndianForest/Ship_Captain.tmx";
 const std::string MapResources::EndianForest_Ship_Hull = "Public/Platformer/Maps/EndianForest/Ship_Hull.tmx";
 const std::string MapResources::EndianForest_Ship_Main = "Public/Platformer/Maps/EndianForest/Ship_Main.tmx";
@@ -75,6 +80,7 @@ const std::string MapResources::EndianForest_Zone_3_6 = "Public/Platformer/Maps/
 const std::string MapResources::EndianForest_Zone_3_7 = "Public/Platformer/Maps/EndianForest/Zone_3_7.tmx";
 const std::string MapResources::EndianForest_Zone_3_Dev = "Public/Platformer/Maps/EndianForest/Zone_3_Dev.tmx";
 const std::string MapResources::LambdaCrypts_Crypts = "Public/Platformer/Maps/LambdaCrypts/Crypts.tmx";
+const std::string MapResources::LambdaCrypts_Mages_Warp = "Public/Platformer/Maps/LambdaCrypts/Mages_Warp.tmx";
 const std::string MapResources::PerilousSea_Zone_UR_1_0 = "Public/Platformer/Maps/PerilousSea/Zone_UR_1_0.tmx";
 const std::string MapResources::TileMap = "Public/Platformer/Maps/TileMap.png";
 const std::string MapResources::Tutorials_KnownValueDouble = "Public/Platformer/Maps/Tutorials/KnownValueDouble.tmx";
@@ -118,4 +124,6 @@ const std::string MapResources::UnderflowRuins_Zone_3_5 = "Public/Platformer/Map
 const std::string MapResources::UnderflowRuins_Zone_3_6 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_6.tmx";
 const std::string MapResources::UnderflowRuins_Zone_3_7 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_7.tmx";
 const std::string MapResources::UnderflowRuins_Zone_3_8 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_8.tmx";
+const std::string MapResources::VoidStar_Mages_Warp = "Public/Platformer/Maps/VoidStar/Mages_Warp.tmx";
 const std::string MapResources::VoidStar_VoidStar = "Public/Platformer/Maps/VoidStar/VoidStar.tmx";
+const std::string MapResources::WarpGatePreviewMaps_UnderflowRuins = "Public/Platformer/Maps/WarpGatePreviewMaps/UnderflowRuins.tmx";

@@ -126,7 +126,9 @@ void QuestTask::updateState()
 	}
 
 	// Check if this quest was skipped
-	if (!this->completeCalled && previousState == QuestState::ActiveThroughSkippable && (this->questState == QuestState::None || this->questState == QuestState::Complete))
+	if (!this->completeCalled
+		&& (previousState == QuestState::Active || previousState == QuestState::ActiveThroughSkippable)
+		&& (this->questState == QuestState::None || this->questState == QuestState::Complete))
 	{
 		this->onSkipped();
 	}

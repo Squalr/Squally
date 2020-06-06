@@ -98,6 +98,7 @@ public:
 	bool wasCollidingWithType(int collisionType);
 	void setCollisionDepth(float collisionDepth);
 	virtual void setPhysicsEnabled(bool enabled);
+	unsigned int getUniverseId();
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
 	static std::vector<cocos2d::Vec2> createBox(cocos2d::Size size);
@@ -113,6 +114,8 @@ public:
 	static const float DefaultHorizontalDampening;
 	static const float DefaultVerticalDampening;
 	static const float CollisionZThreshold;
+	static unsigned int UniverseId;
+	static unsigned int AlternateUniverseCounter;
 
 protected:
 	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, CollisionType collisionType, Properties collisionProperties, cocos2d::Color4F debugColor);
@@ -158,6 +161,7 @@ private:
 	float collisionDepth;
 	bool physicsEnabled;
 	bool gravityEnabled;
+	unsigned int universeId;
 	
 	// Shape
 	Shape shape;

@@ -24,10 +24,10 @@ PlatformerBannerDeserializer* PlatformerBannerDeserializer::create()
 PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 {
 	// Misc
-	this->deserializers["perilous-sea"] = [=]() { return Strings::Platformer_MapNames_EndianForest_Elbridge::create(); };
+	this->deserializers["perilous-sea"] = [=]() { return Strings::Platformer_MapNames_PerilousSea_PerilousSea::create(); };
 
 	// EF
-	this->deserializers["endian-forest"] = [=]() { return Strings::Platformer_MapNames_EndianForest_Elbridge::create(); };
+	this->deserializers["endian-forest"] = [=]() { return Strings::Platformer_MapNames_EndianForest_EndianForest::create(); };
 	this->deserializers["elbridge"] = [=]() { return Strings::Platformer_MapNames_EndianForest_Elbridge::create(); };
 	this->deserializers["mages-guild"] = [=]() { return Strings::Platformer_MapNames_EndianForest_MagesGuild::create(); };
 	this->deserializers["mages-prison"] = [=]() { return Strings::Platformer_MapNames_EndianForest_MagesPrison::create(); };
@@ -36,7 +36,7 @@ PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 	this->deserializers["fields-of-strife"] = [=]() { return Strings::Platformer_MapNames_EndianForest_FieldsOfStrife::create(); };
 
 	// UR
-	this->deserializers["underflow-ruins"] = [=]() { return Strings::Platformer_MapNames_UnderflowRuins_Athens::create(); };
+	this->deserializers["underflow-ruins"] = [=]() { return Strings::Platformer_MapNames_UnderflowRuins_UnderflowRuins::create(); };
 	this->deserializers["pyramid-pass"] = [=]() { return Strings::Platformer_MapNames_UnderflowRuins_PyramidPass::create(); };
 	this->deserializers["athens"] = [=]() { return Strings::Platformer_MapNames_UnderflowRuins_Athens::create(); };
 	this->deserializers["lions-cistern"] = [=]() { return Strings::Platformer_MapNames_UnderflowRuins_LionsCistern::create(); };

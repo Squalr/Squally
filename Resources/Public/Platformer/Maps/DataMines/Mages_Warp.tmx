@@ -214,15 +214,6 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1068" x="1608" y="-1888">
-   <polygon points="0,0 -16,1224 1000,1240 1040,-16 800,0 776,1008 216,1000 200,-40"/>
-  </object>
-  <object id="1069" x="2816" y="-654.102">
-   <polygon points="0,0 7.36749,-1348.25 751.484,-758.851 279.965,-523.092 751.484,22.1025 537.827,14.735 221.025,-331.537 213.657,-7.36749"/>
-  </object>
-  <object id="1070" x="2948.61" y="-1707.65">
-   <polygon points="0,0 14.735,309.435 324.17,243.127"/>
-  </object>
  </objectgroup>
  <objectgroup id="107" name="stairs L -12">
   <properties>
@@ -302,9 +293,9 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="971" name="warp-gate-dm" type="object" x="978.985" y="110.818" width="483" height="678">
+  <object id="971" name="warp-gate-ur" type="object" x="978.985" y="110.818" width="483" height="678">
    <properties>
-    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="quest" value="power-warp-gate-ur"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
@@ -592,7 +583,7 @@
   </properties>
   <object id="963" name="portal" type="object" x="2425.3" y="793.879" width="256" height="256">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_1_3"/>
+    <property name="map" value="DataMines/Zone_1_3"/>
     <property name="transition" value="warp-room"/>
    </properties>
   </object>
@@ -614,8 +605,8 @@
   </object>
   <object id="1024" name="portal" type="object" x="1086" y="794" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="map" value="UnderflowRuins/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-ur"/>
     <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="dm"/>
    </properties>
@@ -654,8 +645,17 @@
   </object>
   <object id="1067" name="trigger" type="object" x="2146" y="534" width="814" height="516">
    <properties>
-    <property name="send-event" value="power-warp-gate-ur"/>
+    <property name="send-event" value="power-warp-gate-dm"/>
    </properties>
+  </object>
+  <object id="1068" x="1648" y="-1984">
+   <polygon points="0,0 -8,1432 992,800"/>
+  </object>
+  <object id="1069" x="1776" y="-1608">
+   <polygon points="0,0 16,712 560,408"/>
+  </object>
+  <object id="1070" x="2648" y="-656">
+   <polygon points="0,0 224,0 408,-728 704,8 880,0 1104,-648 1304,-48 1504,-72 1192,-1080 984,-1096 784,-312 472,-1112 256,-1128"/>
   </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
@@ -668,12 +668,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="alder" type="entity" x="2864.36" y="920.606" width="128" height="128">
+  <object id="955" name="cypress" type="entity" x="2864.36" y="920.606" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="quest" value="power-warp-gate-ur"/>
+    <property name="pocket-pool" value="dm-generic"/>
+    <property name="quest" value="power-warp-gate-dm"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
@@ -695,43 +695,43 @@
   </object>
   <object id="1029" name="spawn" type="object" x="507.515" y="921.03" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
+    <property name="map-banner" value="data-mines"/>
     <property name="transition" value="ef"/>
    </properties>
   </object>
   <object id="1030" name="spawn" type="object" x="1145.33" y="921.333" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
-    <property name="transition" value="dm"/>
+    <property name="map-banner" value="data-mines"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1031" name="spawn" type="object" x="1800" y="922.667" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
+    <property name="map-banner" value="data-mines"/>
     <property name="transition" value="cv"/>
    </properties>
   </object>
   <object id="1032" name="spawn" type="object" x="3155" y="920" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
+    <property name="map-banner" value="data-mines"/>
     <property name="transition" value="bp"/>
    </properties>
   </object>
   <object id="1033" name="spawn" type="object" x="3806.67" y="920" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
+    <property name="map-banner" value="data-mines"/>
     <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
+    <property name="map-banner" value="data-mines"/>
     <property name="transition" value="lc"/>
    </properties>
   </object>
   <object id="1036" name="spawn" type="object" x="5062.67" y="921.333" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
+    <property name="map-banner" value="data-mines"/>
     <property name="transition" value="vs"/>
    </properties>
   </object>

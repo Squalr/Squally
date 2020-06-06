@@ -16,6 +16,7 @@
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/MusicPlayer.h"
@@ -467,6 +468,8 @@ void PlatformerMap::initializeListeners()
 
 bool PlatformerMap::loadMap(std::string mapResource)
 {
+	CollisionObject::UniverseId = 0;
+
 	if (super::loadMap(mapResource))
 	{
 		SaveManager::batchSaveProfileData({

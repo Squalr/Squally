@@ -27,12 +27,12 @@ protected:
 	void initializeListeners() override;
 
 	cocos2d::Node* portalEffectNode;
+	cocos2d::Node* contentNode;
 
 private:
 	typedef Portal super;
 
 	SmartClippingNode* portalClip;
-	cocos2d::Node* contentNode;
 	cocos2d::Sprite* doorClosed;
 	cocos2d::Sprite* doorFrame;
 	WorldSound* portalOpenSound;

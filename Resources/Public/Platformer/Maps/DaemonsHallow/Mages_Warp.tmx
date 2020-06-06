@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1068">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1079">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -293,27 +293,27 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="971" name="warp-gate-dm" type="object" x="978.985" y="110.818" width="483" height="678">
-   <properties>
-    <property name="quest" value="power-warp-gate-dm"/>
-    <property name="quest-line" value="restore-warp-gates"/>
-   </properties>
-  </object>
-  <object id="972" name="warp-gate-bp" type="object" x="3000.8" y="110.515" width="483" height="678">
-   <properties>
-    <property name="quest" value="power-warp-gate-bp"/>
-    <property name="quest-line" value="restore-warp-gates"/>
-   </properties>
-  </object>
-  <object id="976" name="warp-gate-ur" type="object" x="354.167" y="109.758" width="483" height="678">
+  <object id="971" name="warp-gate-ur" type="object" x="978.985" y="110.818" width="483" height="678">
    <properties>
     <property name="quest" value="power-warp-gate-ur"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
-  <object id="977" name="warp-gate-cv" type="object" x="1624.11" y="111.485" width="483" height="678">
+  <object id="972" name="warp-gate-cv" type="object" x="3000.8" y="110.515" width="483" height="678">
    <properties>
     <property name="quest" value="power-warp-gate-cv"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="976" name="warp-gate-ef" type="object" x="354.167" y="109.758" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="977" name="warp-gate-dm" type="object" x="1624.11" y="111.485" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-dm"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
@@ -323,9 +323,9 @@
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
-  <object id="980" name="warp-gate-dh" type="object" x="3635.2" y="113.969" width="483" height="678">
+  <object id="980" name="warp-gate-bp" type="object" x="3635.2" y="113.969" width="483" height="678">
    <properties>
-    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="quest" value="power-warp-gate-bp"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
@@ -583,48 +583,48 @@
   </properties>
   <object id="963" name="portal" type="object" x="2425.3" y="793.879" width="256" height="256">
    <properties>
-    <property name="map" value="EndianForest/Mages_Guild"/>
+    <property name="map" value="DaemonsHallow/Zone_1_3"/>
     <property name="transition" value="warp-room"/>
    </properties>
   </object>
   <object id="1022" name="portal" type="object" x="1736" y="794" width="256" height="256">
    <properties>
-    <property name="map" value="CastleValgrind/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-cv"/>
+    <property name="map" value="DataMines/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-dm"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1023" name="portal" type="object" x="448.242" y="792.212" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-ur"/>
+    <property name="quest" value="power-warp-gate-ef"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1024" name="portal" type="object" x="1086" y="794" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="map" value="UnderflowRuins/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-ur"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1025" name="portal" type="object" x="3095.33" y="792" width="256" height="256">
    <properties>
-    <property name="map" value="BallmerPeaks/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-bp"/>
+    <property name="map" value="CastleValgrind/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-cv"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1026" name="portal" type="object" x="3742.67" y="792" width="256" height="256">
    <properties>
-    <property name="map" value="DaemonsHallow/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="map" value="BallmerPeaks/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-bp"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
@@ -632,7 +632,7 @@
     <property name="map" value="LambdaCrypts/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-lc"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1028" name="portal" type="object" x="4997.33" y="793.333" width="256" height="256">
@@ -640,12 +640,12 @@
     <property name="map" value="VoidStar/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-vs"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="ef"/>
+    <property name="transition" value="dh"/>
    </properties>
   </object>
   <object id="1067" name="trigger" type="object" x="2146" y="534" width="814" height="516">
    <properties>
-    <property name="send-event" value="power-warp-gate-ur"/>
+    <property name="send-event" value="power-warp-gate-dh"/>
    </properties>
   </object>
  </objectgroup>
@@ -659,12 +659,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="fraya" type="entity" x="2864.36" y="920.606" width="128" height="128">
+  <object id="955" name="igneus" type="entity" x="2864.36" y="920.606" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ef-generic"/>
-    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="pocket-pool" value="dh-generic"/>
+    <property name="quest" value="power-warp-gate-dh"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
@@ -686,38 +686,54 @@
   </object>
   <object id="1029" name="spawn" type="object" x="507.515" y="921.03" width="128" height="128">
    <properties>
-    <property name="transition" value="ur"/>
+    <property name="map-banner" value="daemons-hallow"/>
+    <property name="transition" value="ef"/>
    </properties>
   </object>
   <object id="1030" name="spawn" type="object" x="1145.33" y="921.333" width="128" height="128">
    <properties>
-    <property name="transition" value="dm"/>
+    <property name="map-banner" value="daemons-hallow"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1031" name="spawn" type="object" x="1800" y="922.667" width="128" height="128">
    <properties>
-    <property name="transition" value="cv"/>
+    <property name="map-banner" value="daemons-hallow"/>
+    <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1032" name="spawn" type="object" x="3155" y="920" width="128" height="128">
    <properties>
-    <property name="transition" value="bp"/>
+    <property name="map-banner" value="daemons-hallow"/>
+    <property name="transition" value="cv"/>
    </properties>
   </object>
   <object id="1033" name="spawn" type="object" x="3806.67" y="920" width="128" height="128">
    <properties>
-    <property name="transition" value="dh"/>
+    <property name="map-banner" value="daemons-hallow"/>
+    <property name="transition" value="bp"/>
    </properties>
   </object>
   <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
    <properties>
+    <property name="map-banner" value="daemons-hallow"/>
     <property name="transition" value="lc"/>
    </properties>
   </object>
   <object id="1036" name="spawn" type="object" x="5062.67" y="921.333" width="128" height="128">
    <properties>
+    <property name="map-banner" value="daemons-hallow"/>
     <property name="transition" value="vs"/>
    </properties>
+  </object>
+  <object id="1075" x="1576" y="-2080">
+   <polygon points="0,0 -8,1432 992,800"/>
+  </object>
+  <object id="1076" x="1704" y="-1704">
+   <polygon points="0,0 16,712 560,408"/>
+  </object>
+  <object id="1078" x="2688" y="-2016.12">
+   <polygon points="0,-28.3922 22.4587,1384.12 262.018,1369.92 247.046,773.686 606.385,773.686 613.872,1369.92 816,1369.92 801.028,-63.8824 561.468,-49.6863 583.927,525.255 247.046,518.157 239.56,-35.4902"/>
   </object>
  </objectgroup>
  <objectgroup id="77" name="decor +1">

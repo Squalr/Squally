@@ -24,13 +24,13 @@ RestoreWarpGatesLine* RestoreWarpGatesLine::create()
 }
 
 RestoreWarpGatesLine::RestoreWarpGatesLine() : super(RestoreWarpGatesLine::MapKeyQuestLine, {
-	QuestData(PowerWarpGateBP::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateBP::create(owner, questLine); }),
-	QuestData(PowerWarpGateCV::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateCV::create(owner, questLine); }),
-	QuestData(PowerWarpGateDH::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateDH::create(owner, questLine); }),
-	QuestData(PowerWarpGateDM::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateDM::create(owner, questLine); }),
 	QuestData(PowerWarpGateEF::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateEF::create(owner, questLine); }),
-	QuestData(PowerWarpGateLC::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateLC::create(owner, questLine); }),
 	QuestData(PowerWarpGateUR::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateUR::create(owner, questLine); }),
+	QuestData(PowerWarpGateDM::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateDM::create(owner, questLine); }),
+	QuestData(PowerWarpGateCV::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateCV::create(owner, questLine); }),
+	QuestData(PowerWarpGateBP::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateBP::create(owner, questLine); }),
+	QuestData(PowerWarpGateDH::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateDH::create(owner, questLine); }),
+	QuestData(PowerWarpGateLC::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateLC::create(owner, questLine); }),
 	QuestData(PowerWarpGateVS::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateVS::create(owner, questLine); }),
 })
 {

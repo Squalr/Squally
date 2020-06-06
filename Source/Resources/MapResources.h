@@ -6,9 +6,13 @@
 
 namespace MapResources
 {
+	extern const std::string BallmerPeaks_Mages_Warp;
 	extern const std::string BallmerPeaks_Town_Main;
 	extern const std::string CastleValgrind_Castle;
+	extern const std::string CastleValgrind_Mages_Warp;
+	extern const std::string DaemonsHallow_Mages_Warp;
 	extern const std::string DaemonsHallow_Volcano;
+	extern const std::string DataMines_Mages_Warp;
 	extern const std::string DataMines_Zone_1_0;
 	extern const std::string DataMines_Zone_1_4;
 	extern const std::string Dev_AnimSeq;
@@ -39,6 +43,7 @@ namespace MapResources
 	extern const std::string EndianForest_Mages_Gauntlet_Entrance;
 	extern const std::string EndianForest_Mages_Guild;
 	extern const std::string EndianForest_Mages_Prison;
+	extern const std::string EndianForest_Mages_Warp;
 	extern const std::string EndianForest_Ship_Captain;
 	extern const std::string EndianForest_Ship_Hull;
 	extern const std::string EndianForest_Ship_Main;
@@ -76,6 +81,7 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string EndianForest_Zone_3_Dev;
 	extern const std::string LambdaCrypts_Crypts;
+	extern const std::string LambdaCrypts_Mages_Warp;
 	extern const std::string PerilousSea_Zone_UR_1_0;
 	extern const std::string TileMap;
 	extern const std::string Tutorials_KnownValueDouble;
@@ -119,5 +125,7 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_3_6;
 	extern const std::string UnderflowRuins_Zone_3_7;
 	extern const std::string UnderflowRuins_Zone_3_8;
+	extern const std::string VoidStar_Mages_Warp;
 	extern const std::string VoidStar_VoidStar;
+	extern const std::string WarpGatePreviewMaps_UnderflowRuins;
 };

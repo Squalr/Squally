@@ -34,6 +34,8 @@ const float CollisionObject::DefaultMaxFallSpeed = -840.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 const float CollisionObject::CollisionZThreshold = 20.0f;
+unsigned int CollisionObject::UniverseId = 0;
+unsigned int CollisionObject::AlternateUniverseCounter = 0;
 
 CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties, Color4F debugColor)
 {
@@ -87,6 +89,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->cachedWorldCoords3D = Vec3::ZERO;
 	this->cachedTick = 0;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
+	this->universeId = CollisionObject::UniverseId;
 }
 
 CollisionObject::~CollisionObject()
@@ -423,6 +426,11 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionEndEvents[collisionType].push_back(CollisionEvent(onCollisionEnd));
 	}
+}
+
+unsigned int CollisionObject::getUniverseId()
+{
+	return this->universeId;
 }
 
 std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
