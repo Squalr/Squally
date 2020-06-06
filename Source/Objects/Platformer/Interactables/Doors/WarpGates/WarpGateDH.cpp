@@ -39,14 +39,23 @@ WarpGateDH::~WarpGateDH()
 void WarpGateDH::onEnter()
 {
 	super::onEnter();
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }
 
-void WarpGateDH::initializePositions()
+void WarpGateDH::lock(bool animate)
 {
-	super::initializePositions();
+	super::lock(animate);
+	
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
 }
 
-void WarpGateDH::initializeListeners()
+void WarpGateDH::unlock(bool animate)
 {
-	super::initializeListeners();
+	super::unlock(animate);
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }

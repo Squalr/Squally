@@ -14,15 +14,17 @@ class WarpGateBP : public WarpGate
 {
 public:
 	static WarpGateBP* create(cocos2d::ValueMap& properties);
+	
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
 
 protected:
 	WarpGateBP(cocos2d::ValueMap& properties);
 	virtual ~WarpGateBP();
+
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef WarpGate super;

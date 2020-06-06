@@ -14,19 +14,20 @@ class WarpGateCV : public WarpGate
 {
 public:
 	static WarpGateCV* create(cocos2d::ValueMap& properties);
+	
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
 
 protected:
 	WarpGateCV(cocos2d::ValueMap& properties);
 	virtual ~WarpGateCV();
+
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef WarpGate super;
 
 	SmartParticles* portalParticles;
-	SmartParticles* edgeParticles;
 };

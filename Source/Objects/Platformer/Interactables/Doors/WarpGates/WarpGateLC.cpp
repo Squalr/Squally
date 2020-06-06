@@ -36,14 +36,20 @@ WarpGateLC::~WarpGateLC()
 void WarpGateLC::onEnter()
 {
 	super::onEnter();
+	
+	this->portalParticles->start();
 }
 
-void WarpGateLC::initializePositions()
+void WarpGateLC::lock(bool animate)
 {
-	super::initializePositions();
+	super::lock(animate);
+	
+	this->portalParticles->stop();
 }
 
-void WarpGateLC::initializeListeners()
+void WarpGateLC::unlock(bool animate)
 {
-	super::initializeListeners();
+	super::unlock(animate);
+	
+	this->portalParticles->start();
 }

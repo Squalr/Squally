@@ -15,14 +15,16 @@ class WarpGateEF : public WarpGate
 public:
 	static WarpGateEF* create(cocos2d::ValueMap& properties);
 
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
+
 	static const std::string MapKey;
 
 protected:
 	WarpGateEF(cocos2d::ValueMap& properties);
 	virtual ~WarpGateEF();
+	
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef WarpGate super;

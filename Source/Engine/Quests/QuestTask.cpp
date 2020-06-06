@@ -21,6 +21,13 @@ QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questT
 	this->hasLoaded = false;
 	this->completeCalled = false;
 
+	if (this->questLine != nullptr)
+	{
+		this->addTag(this->questLine->getQuestLine());
+	}
+
+	this->addTag(questTask);
+
 	this->addChild(this->questLine);
 }
 

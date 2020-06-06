@@ -50,7 +50,7 @@ void WarpGate::onEnter()
 void WarpGate::initializePositions()
 {
 	super::initializePositions();
-	
+
 	this->portalClip->setPosition(Vec2(0.0f, -78.0f));
 }
 
@@ -61,6 +61,8 @@ void WarpGate::initializeListeners()
 
 void WarpGate::lock(bool animate)
 {
+	super::lock(animate);
+
 	this->doorFrame->setVisible(false);
 	this->doorClosed->setVisible(true);
 
@@ -76,6 +78,8 @@ void WarpGate::lock(bool animate)
 
 void WarpGate::unlock(bool animate)
 {
+	super::unlock(animate);
+
 	this->doorFrame->setVisible(true);
 	this->doorClosed->setVisible(false);
 

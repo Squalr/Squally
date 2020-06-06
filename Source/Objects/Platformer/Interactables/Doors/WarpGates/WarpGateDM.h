@@ -13,15 +13,17 @@ class WarpGateDM : public WarpGate
 {
 public:
 	static WarpGateDM* create(cocos2d::ValueMap& properties);
+	
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
 
 protected:
 	WarpGateDM(cocos2d::ValueMap& properties);
 	virtual ~WarpGateDM();
+
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef WarpGate super;

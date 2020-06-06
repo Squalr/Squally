@@ -39,14 +39,23 @@ WarpGateUR::~WarpGateUR()
 void WarpGateUR::onEnter()
 {
 	super::onEnter();
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }
 
-void WarpGateUR::initializePositions()
+void WarpGateUR::lock(bool animate)
 {
-	super::initializePositions();
+	super::lock(animate);
+	
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
 }
 
-void WarpGateUR::initializeListeners()
+void WarpGateUR::unlock(bool animate)
 {
-	super::initializeListeners();
+	super::unlock(animate);
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }

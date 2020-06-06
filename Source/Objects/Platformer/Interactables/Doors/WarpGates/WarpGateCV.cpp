@@ -36,14 +36,20 @@ WarpGateCV::~WarpGateCV()
 void WarpGateCV::onEnter()
 {
 	super::onEnter();
+	
+	this->portalParticles->start();
 }
 
-void WarpGateCV::initializePositions()
+void WarpGateCV::lock(bool animate)
 {
-	super::initializePositions();
+	super::lock(animate);
+	
+	this->portalParticles->stop();
 }
 
-void WarpGateCV::initializeListeners()
+void WarpGateCV::unlock(bool animate)
 {
-	super::initializeListeners();
+	super::unlock(animate);
+	
+	this->portalParticles->start();
 }

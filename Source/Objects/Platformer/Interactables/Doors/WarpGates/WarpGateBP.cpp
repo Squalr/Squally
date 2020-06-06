@@ -39,14 +39,23 @@ WarpGateBP::~WarpGateBP()
 void WarpGateBP::onEnter()
 {
 	super::onEnter();
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }
 
-void WarpGateBP::initializePositions()
+void WarpGateBP::lock(bool animate)
 {
-	super::initializePositions();
+	super::lock(animate);
+	
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
 }
 
-void WarpGateBP::initializeListeners()
+void WarpGateBP::unlock(bool animate)
 {
-	super::initializeListeners();
+	super::unlock(animate);
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }

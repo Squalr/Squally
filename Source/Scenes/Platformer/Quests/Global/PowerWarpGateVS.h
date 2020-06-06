@@ -2,8 +2,10 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class PlatformerEntity;
 class Portal;
 class QuestLine;
+class Trigger;
 
 class PowerWarpGateVS : public QuestTask
 {
@@ -25,4 +27,6 @@ private:
 	typedef QuestTask super;
 
 	Portal* portal;
+	Trigger* trigger;
+	PlatformerEntity* mage;
 };
