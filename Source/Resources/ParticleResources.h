@@ -99,6 +99,9 @@ namespace ParticleResources
 	extern const std::string Sparks;
 	extern const std::string Static;
 	extern const std::string WarpGate;
+	extern const std::string WarpGates_PortalCenter;
+	extern const std::string WarpGates_PortalEdgeHorizontal;
+	extern const std::string WarpGates_PortalEdgeVertical;
 	extern const std::string WarpPoint;
 	extern const std::string Wind;
 };

@@ -1,10 +1,8 @@
 #include "WarpGateVS.h"
 
-#include "cocos/2d/CCDrawNode.h"
+#include "Scenes/Platformer/Level/PreviewMap.h"
 
-#include "Engine/Particles/SmartParticles.h"
-
-#include "Resources/ParticleResources.h"
+#include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -22,34 +20,8 @@ WarpGateVS* WarpGateVS::create(ValueMap& properties)
 
 WarpGateVS::WarpGateVS(ValueMap& properties) : super(properties)
 {
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalVoid, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
-	
-	this->portalParticles->start();
-
-	this->portalEffectNode->addChild(this->portalParticles);
 }
 
 WarpGateVS::~WarpGateVS()
 {
-}
-
-void WarpGateVS::onEnter()
-{
-	super::onEnter();
-	
-	this->portalParticles->start();
-}
-
-void WarpGateVS::lock(bool animate)
-{
-	super::lock(animate);
-	
-	this->portalParticles->stop();
-}
-
-void WarpGateVS::unlock(bool animate)
-{
-	super::unlock(animate);
-	
-	this->portalParticles->start();
 }

@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class SmartClippingNode;
+class SmartParticles;
 class WorldSound;
 
 class WarpGate : public Portal
@@ -22,18 +23,25 @@ public:
 protected:
 	WarpGate(cocos2d::ValueMap& properties);
 	virtual ~WarpGate();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* portalEffectNode;
 	cocos2d::Node* contentNode;
 
 private:
 	typedef Portal super;
 
+	cocos2d::Node* innerContentNode;
+
 	SmartClippingNode* portalClip;
 	cocos2d::Sprite* doorClosed;
 	cocos2d::Sprite* doorFrame;
+	SmartParticles* centerParticles;
+	SmartParticles* edgeParticlesLeft;
+	SmartParticles* edgeParticlesRight;
+	SmartParticles* edgeParticlesUp;
+	SmartParticles* edgeParticlesDown;
 	WorldSound* portalOpenSound;
 };

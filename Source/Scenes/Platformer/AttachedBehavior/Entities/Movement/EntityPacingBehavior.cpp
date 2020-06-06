@@ -19,6 +19,7 @@ const std::string EntityPacingBehavior::MapKey = "pacing";
 const std::string EntityPacingBehavior::PropertyTravelDistance = "travel-distance";
 const float EntityPacingBehavior::DefaultTravelDistanceMax = 512.0f;
 const float EntityPacingBehavior::DefaultTravelDistanceMin = 96.0f;
+const float EntityPacingBehavior::MinimumPaceDistance = 96.0f;
 
 EntityPacingBehavior* EntityPacingBehavior::create(GameObject* owner)
 {
@@ -32,7 +33,7 @@ EntityPacingBehavior* EntityPacingBehavior::create(GameObject* owner)
 EntityPacingBehavior::EntityPacingBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->travelDistance = EntityPacingBehavior::DefaultTravelDistanceMax;
+	this->maxTravelDistance = EntityPacingBehavior::DefaultTravelDistanceMax;
 
 	if (this->entity == nullptr)
 	{
@@ -40,11 +41,10 @@ EntityPacingBehavior::EntityPacingBehavior(GameObject* owner) : super(owner)
 	}
 	else
 	{
-		this->travelDistance = this->entity->getPropertyOrDefault(EntityPacingBehavior::PropertyTravelDistance, Value(EntityPacingBehavior::DefaultTravelDistanceMax)).asFloat();
+		this->maxTravelDistance = this->entity->getPropertyOrDefault(EntityPacingBehavior::PropertyTravelDistance, Value(EntityPacingBehavior::DefaultTravelDistanceMax)).asFloat();
 	}
 
-	this->anchorPosition = Vec2::ZERO;
-	this->destinationDelta = 0.0f;
+	this->spawnPosition = Vec2::ZERO;
 }
 
 EntityPacingBehavior::~EntityPacingBehavior()
@@ -57,7 +57,8 @@ void EntityPacingBehavior::initializePositions()
 
 void EntityPacingBehavior::onLoad()
 {
-	this->anchorPosition = GameUtils::getWorldCoords(this->entity);
+	// Note: Not using getWorldCoords(), as this fails for PreviewMaps.
+	this->spawnPosition = this->entity->getPosition(); // GameUtils::getWorldCoords(this->entity, false);
 
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
@@ -93,24 +94,23 @@ void EntityPacingBehavior::onDisable()
 
 void EntityPacingBehavior::assignDestination()
 {
-	const int LoopsMax = 32;
-	float newDelta = 0.0f;
+	float destinationX = 0.0f;
+	float currentX = this->entity->getPositionX();
+
+	const int LoopsMax = 2048;
 	int loopSafety = 0;
 
 	do
 	{
-		newDelta = RandomHelper::random_real(-this->travelDistance, this->travelDistance);
+		destinationX = this->spawnPosition.x + RandomHelper::random_real(-this->maxTravelDistance, this->maxTravelDistance);
 
 		if (loopSafety++ > LoopsMax)
 		{
-			break;
+			return;
 		}
 	}
-	while (std::abs(newDelta - this->destinationDelta) < EntityPacingBehavior::DefaultTravelDistanceMin);
+	while (std::abs(currentX - destinationX) < EntityPacingBehavior::MinimumPaceDistance);
 
-	this->destinationDelta = newDelta;
-
-	float destinationX = this->anchorPosition.x + this->destinationDelta;
 
 	// Leverage the cinematic movement code for enemy pacing, should work fine
 	if (!this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())

@@ -27,10 +27,10 @@ private:
 	void cancelPacing();
 
 	PlatformerEntity* entity;
-	cocos2d::Vec2 anchorPosition;
-	float destinationDelta;
-	float travelDistance;
+	cocos2d::Vec2 spawnPosition;
+	float maxTravelDistance;
 
 	static const float DefaultTravelDistanceMin;
 	static const float DefaultTravelDistanceMax;
+	static const float MinimumPaceDistance;
 };
