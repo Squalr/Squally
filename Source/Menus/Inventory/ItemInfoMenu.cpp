@@ -34,6 +34,7 @@ ItemInfoMenu::ItemInfoMenu()
 	this->itemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Item::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
+	this->onExitSecondary = nullptr;
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 
 	LocalizedLabel*	takeItemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Inventory_Take::create());
@@ -130,23 +131,28 @@ void ItemInfoMenu::initializeListeners()
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 }
 
-void ItemInfoMenu::open(Item* item, std::function<void()> takeItemCallback)
+void ItemInfoMenu::open(Item* item, std::function<void()> onExitSecondary, std::function<void()> takeItemCallback)
 {
 	this->itemPreview->preview(ItemPreview::EquipHintMode::None, item);
+	this->onExitSecondary = onExitSecondary;
 
-	if (takeItemCallback != nullptr)
+	if (takeItemCallback == nullptr)
+	{
+		this->takeItemButton->setVisible(false);
+		this->takeItemButton->setMouseClickCallback(nullptr);
+	}
+	else
 	{
 		this->takeItemButton->setVisible(true);
 		this->takeItemButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
-			takeItemCallback();
+			if (takeItemCallback == nullptr)
+			{
+				takeItemCallback();
+			}
+			
 			this->close();
 		});
-	}
-	else
-	{
-		this->takeItemButton->setVisible(false);
-		this->takeItemButton->setMouseClickCallback(nullptr);
 	}
 }
 
@@ -160,5 +166,10 @@ void ItemInfoMenu::close()
 	if (this->returnClickCallback != nullptr)
 	{
 		this->returnClickCallback();
+	}
+	
+	if (this->onExitSecondary == nullptr)
+	{
+		this->onExitSecondary();
 	}
 }

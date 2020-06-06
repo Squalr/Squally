@@ -32,7 +32,7 @@ class HelpMenu : public SmartNode
 public:
 	static HelpMenu* create();
 
-	void openMenu(CardData* cardData, bool showBackdrop = false);
+	void openMenu(CardData* cardData, bool showBackdrop = false, std::function<void()> onExitSecondary = nullptr);
 	void setExitCallback(std::function<void()> onExit);
 
 protected:
@@ -67,4 +67,5 @@ private:
 	XorHelpMenu* xorHelpMenu;
 
 	std::function<void()> onExit;
+	std::function<void()> onExitSecondary;
 };

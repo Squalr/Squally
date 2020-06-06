@@ -24,7 +24,7 @@ protected:
 private:
 	typedef GlassDisplayBase super;
 
-	void onDialogueClose();
+	void tryRunTutorials();
 	bool inspectItem();
 	void takeGroupedItem();
 	bool canTakeGroupedItem();

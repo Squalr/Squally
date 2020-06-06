@@ -52,8 +52,9 @@ public:
 	struct HelpMenuArgs
 	{
 		CardData* cardData;
+		std::function<void()> onExit;
 
-		HelpMenuArgs(CardData* cardData) : cardData(cardData)
+		HelpMenuArgs(CardData* cardData, std::function<void()> onExit) : cardData(cardData), onExit(onExit)
 		{
 		}
 	};

@@ -372,7 +372,7 @@ void PlatformerMap::initializeListeners()
 			this->buildHexusCardHelp();
 			
 			this->cardHelpMenu->setVisible(true);
-			this->cardHelpMenu->openMenu(args->cardData, true);
+			this->cardHelpMenu->openMenu(args->cardData, true, args->onExit);
 			
 			GameUtils::focus(this->cardHelpMenu);
 		}
@@ -387,7 +387,7 @@ void PlatformerMap::initializeListeners()
 			this->buildItemInfoMenu();
 			
 			this->itemInfoMenu->setVisible(true);
-			this->itemInfoMenu->open(args->item, args->onTakeDisplayItem);
+			this->itemInfoMenu->open(args->item, args->onTakeDisplayItem, args->onExit);
 			
 			GameUtils::focus(this->itemInfoMenu);
 		}

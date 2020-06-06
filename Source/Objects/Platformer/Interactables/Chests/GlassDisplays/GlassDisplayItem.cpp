@@ -103,7 +103,6 @@ bool GlassDisplayItem::tryOpen()
 		),
 		[=]()
 		{
-			this->onDialogueClose();
 		},
 		"",
 		true,
@@ -136,7 +135,7 @@ void GlassDisplayItem::unlockAndGiveItems()
 	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
 }
 
-void GlassDisplayItem::onDialogueClose()
+void GlassDisplayItem::tryRunTutorials()
 {
 	if (this->tutorialName == GlassDisplayItem::TutorialLightHint)
 	{
@@ -169,7 +168,10 @@ bool GlassDisplayItem::inspectItem()
 	{
 		HexusCard* hexusCard = dynamic_cast<HexusCard*>(this->item);
 
-		HexusEvents::TriggerShowHelpMenuOutsideOfGame(HexusEvents::HelpMenuArgs(CardList::getInstance()->cardListByName[hexusCard->getCardKey()]));
+		HexusEvents::TriggerShowHelpMenuOutsideOfGame(HexusEvents::HelpMenuArgs(
+			CardList::getInstance()->cardListByName[hexusCard->getCardKey()],
+			[=](){ this->tryRunTutorials(); }
+		));
 	}
 	else
 	{
@@ -177,12 +179,16 @@ bool GlassDisplayItem::inspectItem()
 		{
 			PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(
 				this->item,
+				[=](){ this->tryRunTutorials(); },
 				[=](){ this->takeGroupedItem(); }
 			));
 		}
 		else
 		{
-			PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(this->item));
+			PlatformerEvents::TriggerOpenItemInfo(PlatformerEvents::ItemInfoArgs(
+				this->item,
+				[=](){ this->tryRunTutorials(); }
+			));
 		}
 	}
 

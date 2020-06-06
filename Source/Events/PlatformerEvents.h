@@ -151,9 +151,10 @@ public:
 	struct ItemInfoArgs
 	{
 		Item* item;
+		std::function<void()> onExit;
 		std::function<void()> onTakeDisplayItem;
 
-		ItemInfoArgs(Item* item, std::function<void()> onTakeDisplayItem = nullptr) : item(item), onTakeDisplayItem(onTakeDisplayItem) { }
+		ItemInfoArgs(Item* item, std::function<void()> onExit = nullptr, std::function<void()> onTakeDisplayItem = nullptr) : item(item), onExit(onExit), onTakeDisplayItem(onTakeDisplayItem) { }
 	};
 
 	struct GiveItemsFromPoolArgs

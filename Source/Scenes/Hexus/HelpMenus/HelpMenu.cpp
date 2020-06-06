@@ -70,6 +70,7 @@ HelpMenu::HelpMenu()
     this->xorHelpMenu = XorHelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_WoodButton, UIResources::Menus_Buttons_WoodButtonSelected);
     this->onExit = nullptr;
+    this->onExitSecondary = nullptr;
 
     this->addChild(this->backdrop);
     this->addChild(this->background);
@@ -127,10 +128,15 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
         {
             this->onExit();
         }
+
+        if (this->onExitSecondary != nullptr)
+        {
+            this->onExitSecondary();
+        }
     });
 }
 
-void HelpMenu::openMenu(CardData* cardData, bool showBackdrop)
+void HelpMenu::openMenu(CardData* cardData, bool showBackdrop, std::function<void()> onExitSecondary)
 {
     this->setVisible(true);
     this->backdrop->setVisible(showBackdrop);
@@ -150,6 +156,7 @@ void HelpMenu::openMenu(CardData* cardData, bool showBackdrop)
     this->shrHelpMenu->setVisible(false);
     this->subHelpMenu->setVisible(false);
     this->xorHelpMenu->setVisible(false);
+    this->onExitSecondary = onExitSecondary;
 
     if (cardData == nullptr)
     {
