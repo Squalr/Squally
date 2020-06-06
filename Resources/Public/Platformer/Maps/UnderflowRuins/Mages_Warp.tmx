@@ -601,7 +601,7 @@
     <property name="map" value="CastleValgrind/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-cv"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1023" name="portal" type="object" x="448.242" y="792.212" width="256" height="256">
@@ -609,7 +609,7 @@
     <property name="map" value="EndianForest/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-ef"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1024" name="portal" type="object" x="1086" y="794" width="256" height="256">
@@ -617,7 +617,7 @@
     <property name="map" value="DataMines/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-dm"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1025" name="portal" type="object" x="3095.33" y="792" width="256" height="256">
@@ -625,7 +625,7 @@
     <property name="map" value="BallmerPeaks/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-bp"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1026" name="portal" type="object" x="3742.67" y="792" width="256" height="256">
@@ -633,7 +633,7 @@
     <property name="map" value="DaemonsHallow/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-dh"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
@@ -641,7 +641,7 @@
     <property name="map" value="LambdaCrypts/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-lc"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1028" name="portal" type="object" x="4997.33" y="793.333" width="256" height="256">
@@ -649,7 +649,7 @@
     <property name="map" value="VoidStar/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-vs"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="dm"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1067" name="trigger" type="object" x="2146" y="534" width="814" height="516">

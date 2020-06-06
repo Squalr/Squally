@@ -19,7 +19,7 @@ const std::string EntityPacingBehavior::MapKey = "pacing";
 const std::string EntityPacingBehavior::PropertyTravelDistance = "travel-distance";
 const float EntityPacingBehavior::DefaultTravelDistanceMax = 512.0f;
 const float EntityPacingBehavior::DefaultTravelDistanceMin = 96.0f;
-const float EntityPacingBehavior::MinimumPaceDistance = 96.0f;
+const float EntityPacingBehavior::MinimumPaceDistance = 56.0f;
 
 EntityPacingBehavior* EntityPacingBehavior::create(GameObject* owner)
 {

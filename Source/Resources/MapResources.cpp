@@ -126,4 +126,5 @@ const std::string MapResources::UnderflowRuins_Zone_3_7 = "Public/Platformer/Map
 const std::string MapResources::UnderflowRuins_Zone_3_8 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_8.tmx";
 const std::string MapResources::VoidStar_Mages_Warp = "Public/Platformer/Maps/VoidStar/Mages_Warp.tmx";
 const std::string MapResources::VoidStar_VoidStar = "Public/Platformer/Maps/VoidStar/VoidStar.tmx";
+const std::string MapResources::WarpGatePreviewMaps_EndianForest = "Public/Platformer/Maps/WarpGatePreviewMaps/EndianForest.tmx";
 const std::string MapResources::WarpGatePreviewMaps_UnderflowRuins = "Public/Platformer/Maps/WarpGatePreviewMaps/UnderflowRuins.tmx";
