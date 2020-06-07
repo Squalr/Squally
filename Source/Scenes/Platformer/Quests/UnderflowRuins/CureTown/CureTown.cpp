@@ -33,7 +33,8 @@
 using namespace cocos2d;
 
 const std::string CureTown::MapKeyQuest = "cure-town";
-const std::string CureTown::SaveKeyCuredCount = "cure-town";
+const std::string CureTown::SaveKeyCuredCount = "SAVE_KEY_CURED_COUNT";
+const std::string CureTown::SaveKeyAjaxCured = "SAVE_KEY_AJAX_CURED";
 const int CureTown::MaxCuredCount = 6;
 
 CureTown* CureTown::create(GameObject* owner, QuestLine* questLine)
@@ -164,7 +165,6 @@ void CureTown::runCinematicSequence()
 			[=]()
 			{
 				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
 			},
 			Voices::GetNextVoiceShort(),
 			false
@@ -201,7 +201,8 @@ void CureTown::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_U_OnlyWay::create(),
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_U_OnlyWay::create()
+				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_PyramidPass::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -267,6 +268,7 @@ void CureTown::setPreText()
 				),
 				[=]()
 				{
+					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
 					this->setPreText();
 				},
 				Voices::GetNextVoiceMedium(),

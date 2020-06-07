@@ -260,7 +260,6 @@ void TalkToHera::runCinematicSequence()
 			[=]()
 			{
 				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
 				this->complete();
 			},
 			Voices::GetNextVoiceMedium(),

@@ -241,7 +241,7 @@
   </properties>
   <object id="943" name="mermaid" type="entity" x="3456.12" y="1067.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-B"/>
+    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-C"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

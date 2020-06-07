@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="152" nextobjectid="1080">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="152" nextobjectid="1081">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -205,6 +205,12 @@
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="1080" name="lioness" type="entity" x="1854.18" y="1432.97" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-B"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>

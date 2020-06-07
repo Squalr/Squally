@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1050">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1051">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -135,6 +135,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1050" name="bard" type="entity" x="-142.667" y="601.333" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="64"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="88" name="player_layer -6">
   <properties>
@@ -272,12 +278,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1048" name="bard" type="entity" x="-109.818" y="694.848" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
-    <property name="travel-distance" type="float" value="64"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

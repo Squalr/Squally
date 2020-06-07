@@ -126,6 +126,8 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Generic_ChatterChuckle1;
 	extern const std::string Platformer_Entities_Generic_ChatterLong1;
 	extern const std::string Platformer_Entities_Generic_ChatterLong2;
+	extern const std::string Platformer_Entities_Generic_ChatterLong3;
+	extern const std::string Platformer_Entities_Generic_ChatterLong4;
 	extern const std::string Platformer_Entities_Generic_ChatterMedium1;
 	extern const std::string Platformer_Entities_Generic_ChatterMedium2;
 	extern const std::string Platformer_Entities_Generic_ChatterMedium3;

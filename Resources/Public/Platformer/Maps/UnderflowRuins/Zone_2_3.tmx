@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="907">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="908">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -128,6 +128,12 @@
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="907" name="minotaur" type="entity" x="3464" y="1524" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-D"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>

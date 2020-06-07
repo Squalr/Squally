@@ -203,6 +203,11 @@ bool EntityPetrificationBehavior::tryCure()
 
 	this->entity->saveObjectState(EntityPetrificationBehavior::SaveKeyCured, Value(true));
 
+	if (this->entity->getEntityKey() == "ajax")
+	{
+		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyAjaxCured, Value(true));
+	}
+
 	this->cureInteraction->disable();
 	this->statueBreakSound->play();
 

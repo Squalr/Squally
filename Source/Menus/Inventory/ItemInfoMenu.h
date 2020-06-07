@@ -20,7 +20,7 @@ class ItemInfoMenu : public SmartNode
 public:
 	static ItemInfoMenu* create();
 
-	void open(Item* item, std::function<void()> onExitSecondary = nullptr, std::function<void()> takeItemCallback = nullptr);
+	void open(Item* item, std::function<void()> takeItemCallback = nullptr, std::function<void()> onExitSecondary = nullptr);
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:

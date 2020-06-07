@@ -15,6 +15,7 @@ public:
 
 	static const std::string MapKeyQuest;
 	static const std::string SaveKeyCuredCount;
+	static const std::string SaveKeyAjaxCured;
 	static const int MaxCuredCount;
 
 protected:

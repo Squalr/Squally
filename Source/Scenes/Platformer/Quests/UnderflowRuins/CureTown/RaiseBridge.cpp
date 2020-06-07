@@ -20,6 +20,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -67,9 +69,20 @@ void RaiseBridge::onLoad(QuestState questState)
 	{
 		this->ajax = ajax;
 
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		bool ajaxCured = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyAjaxCured, Value(false)).asBool();
+		int curedCount = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyCuredCount, Value(0)).asInt();
+
+		if (questState == QuestState::Complete || questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
 			this->runCinematicSequence();
+		}
+		else if (ajaxCured && curedCount < CureTown::MaxCuredCount)
+		{
+			this->runCinematicSequenceCureIncomplete();
+		}
+		else if (ajaxCured && curedCount >= CureTown::MaxCuredCount)
+		{
+			this->runCinematicSequencePreviousQuestIncomplete();
 		}
 		else
 		{
@@ -113,6 +126,51 @@ void RaiseBridge::runCinematicSequence()
 			[=]()
 			{
 				this->broadcastMapEvent("raise-bridge", ValueMap());
+			},
+			Voices::GetNextVoiceShort(),
+			true
+		));
+	});
+}
+
+void RaiseBridge::runCinematicSequenceCureIncomplete()
+{
+	this->ajax->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		// Pre-text chain
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->ajax, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceShort(),
+			true
+		));
+	});
+}
+
+void RaiseBridge::runCinematicSequencePreviousQuestIncomplete()
+{
+	this->ajax->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		// Pre-text chain
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera::create()
+				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create() }),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->ajax, true)
+			),
+			[=]()
+			{
 			},
 			Voices::GetNextVoiceShort(),
 			true

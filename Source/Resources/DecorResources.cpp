@@ -583,6 +583,7 @@ const std::string DecorResources::Generic_InsanityPoster6 = "Private/Platformer/
 const std::string DecorResources::Generic_InsanityPoster7 = "Private/Platformer/Decor/Generic/InsanityPoster7.png";
 const std::string DecorResources::Generic_InsanityPoster8 = "Private/Platformer/Decor/Generic/InsanityPoster8.png";
 const std::string DecorResources::Generic_InsanityPoster9 = "Private/Platformer/Decor/Generic/InsanityPoster9.png";
+const std::string DecorResources::Generic_JailDoorHeavy = "Private/Platformer/Decor/Generic/JailDoorHeavy.png";
 const std::string DecorResources::Generic_JailGate = "Private/Platformer/Decor/Generic/JailGate.png";
 const std::string DecorResources::Generic_JailGateSmall = "Private/Platformer/Decor/Generic/JailGateSmall.png";
 const std::string DecorResources::Generic_Lamp1 = "Private/Platformer/Decor/Generic/Lamp1.png";

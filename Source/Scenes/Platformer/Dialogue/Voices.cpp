@@ -196,12 +196,24 @@ std::string Voices::GetNextVoiceHumanLong()
 	
 	VoiceIncrement++;
 
-	switch(VoiceIncrement % 1)
+	switch(VoiceIncrement % 4)
 	{
 		default:
-		case 0:
+		case 1:
 		{
 			return SoundResources::Platformer_Entities_Generic_ChatterLong1;
+		}
+		case 2:
+		{
+			return SoundResources::Platformer_Entities_Generic_ChatterLong2;
+		}
+		case 3:
+		{
+			return SoundResources::Platformer_Entities_Generic_ChatterLong3;
+		}
+		case 0:
+		{
+			return SoundResources::Platformer_Entities_Generic_ChatterLong4;
 		}
 	}
 }

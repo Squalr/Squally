@@ -25554,6 +25554,36 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings : public LocalizedString
 	{
 	public:

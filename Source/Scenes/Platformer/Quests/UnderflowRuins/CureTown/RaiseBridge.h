@@ -28,6 +28,8 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+	void runCinematicSequenceCureIncomplete();
+	void runCinematicSequencePreviousQuestIncomplete();
 
 	Ajax* ajax;
 	Guano* guano;

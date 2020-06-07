@@ -50,7 +50,7 @@ std::string LycanHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> LycanHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 0.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 3.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{

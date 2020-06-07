@@ -50,7 +50,7 @@ std::string BlackbeardHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> BlackbeardHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 0.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{

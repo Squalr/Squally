@@ -182,11 +182,6 @@
     <property name="transition" value="well"/>
    </properties>
   </object>
-  <object id="828" name="spawn" type="object" x="2784.48" y="939.03" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
   <object id="842" name="spawn" type="object" x="3264" y="936" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>

@@ -131,7 +131,7 @@ void ItemInfoMenu::initializeListeners()
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 }
 
-void ItemInfoMenu::open(Item* item, std::function<void()> onExitSecondary, std::function<void()> takeItemCallback)
+void ItemInfoMenu::open(Item* item, std::function<void()> takeItemCallback, std::function<void()> onExitSecondary)
 {
 	this->itemPreview->preview(ItemPreview::EquipHintMode::None, item);
 	this->onExitSecondary = onExitSecondary;
@@ -146,7 +146,7 @@ void ItemInfoMenu::open(Item* item, std::function<void()> onExitSecondary, std::
 		this->takeItemButton->setVisible(true);
 		this->takeItemButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
-			if (takeItemCallback == nullptr)
+			if (takeItemCallback != nullptr)
 			{
 				takeItemCallback();
 			}
