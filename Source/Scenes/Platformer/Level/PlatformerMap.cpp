@@ -337,7 +337,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->buildHexus();
-
+			
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
 			this->mapNode->setVisible(false);

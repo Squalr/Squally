@@ -303,7 +303,6 @@ void Hexus::open(HexusOpponentData* opponentData)
 		this->buildPlayerDeck();
 	}
 
-	GameState::updateState(this->gameState, GameState::StateType::GameStart);
 	this->setVisible(true);
 
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
@@ -314,6 +313,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 	{
 		this->musicB->push();
 	}
+	
+	this->defer([=]()
+	{
+		GameState::updateState(this->gameState, GameState::StateType::GameStart);
+	});
 }
 
 void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="956">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="957">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -125,7 +125,7 @@
  </objectgroup>
  <objectgroup id="111" name="terrain -1">
   <properties>
-   <property name="depth" type="float" value="-32"/>
+   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="802" name="marble" type="terrain" x="2358.03" y="1018.63">
@@ -137,7 +137,7 @@
  </objectgroup>
  <objectgroup id="120" name="npc collision walls -1">
   <properties>
-   <property name="depth" type="float" value="-32"/>
+   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="885" name="solid-npc" type="collision" x="2101.15" y="80.4078" width="537.03" height="993"/>
@@ -149,7 +149,7 @@
  </objectgroup>
  <objectgroup id="113" name="entites -1">
   <properties>
-   <property name="depth" type="float" value="-32"/>
+   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="805" name="guano" type="entity" x="4123.99" y="882.734" width="128" height="128">
@@ -290,7 +290,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="902" name="Generic/LesserMoonDoor" type="decor" x="100.836" y="566.28" width="310" height="492"/>
+  <object id="956" name="Generic/JailDoorHeavy" type="decor" x="137" y="661.5" width="274" height="399"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>

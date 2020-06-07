@@ -33,7 +33,7 @@ const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -840.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
-const float CollisionObject::CollisionZThreshold = 20.0f;
+const float CollisionObject::CollisionZThreshold = 12.0f;
 unsigned int CollisionObject::UniverseId = 0;
 unsigned int CollisionObject::AlternateUniverseCounter = 0;
 
