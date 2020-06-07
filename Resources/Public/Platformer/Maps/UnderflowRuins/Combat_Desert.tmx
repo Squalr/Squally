@@ -1,44 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="579">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="587">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
  </tileset>
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value=""/>
+   <property name="background" value="DesertSky"/>
    <property name="music" value="trick-or-treat"/>
-   <property name="show-cracks" type="bool" value="false"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="38" name="bg -512">
+ <objectgroup id="38" name="desert bg 4">
   <properties>
-   <property name="depth" type="float" value="-512"/>
+   <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="575" name="Caverns/Background/CavernsBg1" type="decor" x="-531.273" y="242.182" width="3397" height="1518.67"/>
+  <object id="586" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-249.181" width="14981.3" height="318">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="40" name="bg -420">
+ <objectgroup id="40" name="desert bg 3">
   <properties>
-   <property name="depth" type="float" value="-420"/>
+   <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="576" name="Caverns/Background/CavernsBg2" type="decor" x="135.545" y="1166.3" width="2262.48" height="837.939"/>
+  <object id="585" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-1002.85" width="14229.3" height="1478">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="41" name="bg -312">
+ <objectgroup id="41" name="desert bg 2">
   <properties>
-   <property name="depth" type="float" value="-312"/>
+   <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="577" name="Caverns/Background/CavernsBg3" type="decor" x="-525.091" y="1120.48" width="3386.73" height="909.515"/>
+  <object id="584" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="15.212" width="14469.3" height="1512">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="42" name="bg -256">
+ <objectgroup id="42" name="desert bg 1">
   <properties>
-   <property name="depth" type="float" value="-256"/>
+   <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="578" name="Caverns/Background/CavernsBg4" type="decor" x="-410.788" y="1560.36" width="3170" height="606"/>
+  <object id="583" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="487.091" width="14709.3" height="1076">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>
@@ -106,9 +126,28 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="573" name="Caverns/Foreground/PillarBrown1" type="decor" x="1942.23" y="524.424" width="579" height="1387">
+  <object id="579" name="water" type="object" x="-36.4985" y="1826.58" width="3103.3" height="904.42">
    <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="580" name="water" type="object" x="-218.68" y="1708.4" width="3439.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-96"/>
+   </properties>
+  </object>
+  <object id="581" name="water" type="object" x="-374.68" y="1626.58" width="3695.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-160"/>
+   </properties>
+  </object>
+  <object id="582" name="water" type="object" x="-499.65" y="1591.79" width="3967.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-288"/>
    </properties>
   </object>
  </objectgroup>
@@ -157,6 +196,5 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="571" name="Caverns/Foreground/PillarBrownDark1" type="decor" x="161.773" y="668.227" width="579" height="1387"/>
  </objectgroup>
 </map>

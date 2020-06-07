@@ -22,13 +22,17 @@
   </object>
  </objectgroup>
  <objectgroup id="36" name="bg objects">
-  <object id="582" name="torch" type="object" x="706.091" y="1318.64" width="42" height="130"/>
-  <object id="583" name="torch" type="object" x="1485.15" y="1307.7" width="42" height="130"/>
-  <object id="584" name="torch" type="object" x="2195.91" y="1328.55" width="42" height="130"/>
-  <object id="585" name="Ruins/Window" type="decor" x="145.864" y="974.409" width="313" height="381"/>
-  <object id="586" name="Ruins/Window" type="decor" x="977.803" y="972.773" width="313" height="381"/>
-  <object id="587" name="Ruins/Window" type="decor" x="1694.17" y="968.167" width="313" height="381"/>
-  <object id="588" name="Ruins/Window" type="decor" x="2401.08" y="976.167" width="313" height="381"/>
+  <properties>
+   <property name="depth" type="float" value="-356"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="582" name="torch" type="object" x="566.091" y="1294.64" width="42" height="130"/>
+  <object id="583" name="torch" type="object" x="1345.15" y="1283.7" width="42" height="130"/>
+  <object id="584" name="torch" type="object" x="2055.91" y="1304.55" width="42" height="130"/>
+  <object id="585" name="Ruins/Window" type="decor" x="5.864" y="950.409" width="313" height="381"/>
+  <object id="586" name="Ruins/Window" type="decor" x="837.803" y="948.773" width="313" height="381"/>
+  <object id="587" name="Ruins/Window" type="decor" x="1554.17" y="944.167" width="313" height="381"/>
+  <object id="588" name="Ruins/Window" type="decor" x="2261.08" y="952.167" width="313" height="381"/>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>

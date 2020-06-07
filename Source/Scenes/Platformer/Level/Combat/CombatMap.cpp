@@ -10,6 +10,7 @@
 
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
@@ -110,6 +111,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
 				BackgroundDeserializer::create(),
+				PlatformerCrackDeserializer::create(),
 				MusicDeserializer::create(),
 				PhysicsDeserializer::create(),
 				PlatformerRubberbandingDeserializer::create(),
