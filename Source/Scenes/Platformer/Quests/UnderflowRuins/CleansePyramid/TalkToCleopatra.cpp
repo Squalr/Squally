@@ -34,7 +34,6 @@
 using namespace cocos2d;
 
 const std::string TalkToCleopatra::MapKeyQuest = "talk-to-cleopatra";
-const std::string TalkToCleopatra::TagTownCinematic = "town-cinematic";
 
 TalkToCleopatra* TalkToCleopatra::create(GameObject* owner, QuestLine* questLine)
 {
@@ -115,7 +114,7 @@ void TalkToCleopatra::onSkipped()
 void TalkToCleopatra::runCinematicSequencePt1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed::create(),
+		Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -154,7 +153,7 @@ void TalkToCleopatra::runCinematicSequencePt2()
 void TalkToCleopatra::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis::create(),
+		Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -176,8 +175,26 @@ void TalkToCleopatra::runCinematicSequencePt3()
 void TalkToCleopatra::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines::create()
+		Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines::create()
 			->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_DataMines::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->cleopatra, true)
+		),
+		[=]()
+		{
+		},
+		Voices::GetNextVoiceLong(),
+		true
+	));
+}
+
+void TalkToCleopatra::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

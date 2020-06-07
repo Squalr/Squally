@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="788">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="790">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -45,6 +45,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="789" name="Caverns/ScreamingDoor" type="decor" x="19" y="545" width="800" height="1114"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -57,7 +58,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="784" name="Caverns/TigerDoor" type="decor" x="52" y="1148" width="688" height="528"/>
   <object id="785" name="portal" type="object" x="282.5" y="1403.17" width="256" height="256">
    <properties>
     <property name="color" value="yellow"/>

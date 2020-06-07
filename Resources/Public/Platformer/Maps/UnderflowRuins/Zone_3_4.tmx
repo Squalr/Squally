@@ -190,7 +190,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -200,14 +200,6 @@
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="1172" name="horus" type="entity" x="3111.76" y="1275.39" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="horus-hexus,friendly,pick-pocket"/>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

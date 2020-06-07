@@ -299,7 +299,7 @@
    <properties>
     <property name="attached-behavior" value="enemy"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
     <property name="quest" value="defeat-osiris"/>
@@ -328,7 +328,7 @@
     <property name="to" value="6-B"/>
    </properties>
   </object>
-  <object id="1137" name="spawn" type="object" x="1401.33" y="1278.67" width="128" height="128">
+  <object id="1137" name="spawn" type="object" x="1401.66" y="1280.67" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>

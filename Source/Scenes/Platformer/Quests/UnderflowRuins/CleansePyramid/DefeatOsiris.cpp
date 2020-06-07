@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/Sarcophagus/Sarcophagus.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -124,6 +125,8 @@ void DefeatOsiris::onComplete()
 		
 		this->sarcophagus->getLid()->setVisible(false);
 	}, Sarcophagus::MapKey);
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void DefeatOsiris::onSkipped()

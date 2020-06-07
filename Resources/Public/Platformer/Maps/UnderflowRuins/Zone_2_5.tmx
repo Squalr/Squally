@@ -79,7 +79,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -88,7 +88,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -97,7 +97,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -106,16 +106,16 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="966" name="mermaid" type="entity" x="896" y="2428" width="128" height="128">
+  <object id="966" name="mermaid" type="entity" x="896" y="2432" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -124,7 +124,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -206,7 +206,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -215,7 +215,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
@@ -224,7 +224,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>

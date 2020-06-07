@@ -31,11 +31,10 @@ private:
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
 
 	Guano* guano;
 	Scrappy* scrappy;
 	Squally* squally;
 	Cleopatra* cleopatra;
-
-	static const std::string TagTownCinematic;
 };

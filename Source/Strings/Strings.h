@@ -23949,6 +23949,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_HeadToTown() = default;
 	};
 
+	class Platformer_Objectives_UnderflowRuins_UR_LightTorches : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_LightTorches* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_LightTorches();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_LightTorches() = default;
+	};
+
 	class Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors : public LocalizedString
 	{
 	public:
@@ -25479,6 +25494,96 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1 : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2 : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_A_HeyCoolStatue : public LocalizedString
 	{
 	public:
@@ -25702,51 +25807,6 @@ namespace Strings
 	private:
 		Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo();
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo() = default;
-	};
-
-	class Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_A_YouHaveCleansed() = default;
-	};
-
-	class Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_B_TakeThis() = default;
-	};
-
-	class Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Cleopatra_C_BehindMeDataMines() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead : public LocalizedString

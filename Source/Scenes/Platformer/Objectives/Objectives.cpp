@@ -108,6 +108,7 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::URReturnToHera] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ReturnToHera::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URCrossBridge] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CrossBridge::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URFindMineEntrance] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URLightTorches] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_LightTorches::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::UREnterTheMines] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_EnterTheMines::create(); }, priority++);
 
 	priority = 200;

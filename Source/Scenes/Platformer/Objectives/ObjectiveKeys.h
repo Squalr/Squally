@@ -35,4 +35,5 @@ public:
 	static const std::string URCrossBridge;
 	static const std::string URFindMineEntrance;
 	static const std::string UREnterTheMines;
+	static const std::string URLightTorches;
 };

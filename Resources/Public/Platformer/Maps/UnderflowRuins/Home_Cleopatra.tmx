@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="1005">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="1005">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -37,7 +37,7 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="994" name="temple" type="terrain" x="3282.18" y="-234" width="1421.08" height="2636">
+  <object id="994" name="caverns" type="terrain" x="3282.18" y="-234" width="1421.08" height="2636">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -72,7 +72,7 @@
     <property name="color" value="gray"/>
    </properties>
   </object>
-  <object id="997" name="Caverns/TigerDoor" type="decor" x="3644" y="1257.33" width="688" height="528"/>
+  <object id="997" name="Caverns/ScreamingDoor" type="decor" x="3614" y="661.33" width="800" height="1114"/>
   <object id="1000" name="portal" type="object" x="3874.5" y="1512.5" width="256" height="256">
    <properties>
     <property name="color" value="yellow"/>

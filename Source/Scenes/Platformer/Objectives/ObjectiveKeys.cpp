@@ -29,4 +29,5 @@ const std::string ObjectiveKeys::URCureTownspeople = "UR_CURE_TOWNSPEOPLE";
 const std::string ObjectiveKeys::URReturnToHera = "UR_RETURN_TO_HERA";
 const std::string ObjectiveKeys::URCrossBridge = "UR_CROSS_BRIDGE";
 const std::string ObjectiveKeys::URFindMineEntrance = "UR_FIND_MINE_ENTRANCE";
+const std::string ObjectiveKeys::URLightTorches = "UR_LIGHT_TORCHES";
 const std::string ObjectiveKeys::UREnterTheMines = "UR_ENTER_THE_MINES";
