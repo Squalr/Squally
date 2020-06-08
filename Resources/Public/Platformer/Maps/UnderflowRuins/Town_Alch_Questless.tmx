@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="811">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="895">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -88,7 +88,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-42" y="-70" width="2284" height="1264"/>
+  <object id="892" name="ruins-gray-dark" type="texture" x="-42.9697" y="-54.7273" width="2264.73" height="1279.15"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
@@ -99,7 +99,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/Shelf1" type="decor" x="422.601" y="114.954" width="1135" height="753"/>
+  <object id="770" name="Generic/Shelf1" type="decor" x="806.601" y="114.954" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -111,9 +111,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="geryon" type="entity" x="1037.5" y="850.554" width="128" height="167">
+  <object id="760" name="griffin" type="entity" x="1421.5" y="850.554" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="petrified,shopkeeper"/>
+    <property name="attached-behavior" value="shopkeeper"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
@@ -122,80 +123,67 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="769" name="Generic/Counter" type="decor" x="444.109" y="897.555" width="1080" height="167"/>
-  <object id="809" name="Ruins/ArchDoorGray1" type="decor" x="1809.14" y="609.697" width="235" height="452"/>
+  <object id="769" name="Generic/Counter" type="decor" x="828.109" y="897.555" width="1080" height="167"/>
+  <object id="893" name="Ruins/ArchDoorGray1" type="decor" x="403.47" y="616.788" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="ruins-gray-thick" type="terrain" x="-49.0288" y="1064.61" width="2290.3" height="234.06"/>
+  <object id="890" name="ruins-gray-thick" type="terrain" x="-96.9682" y="1066.18" width="2350.91" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="Generic/RedRug" type="decor" x="1766.73" y="1050.53" width="332" height="21"/>
+  <object id="894" name="Generic/RedRug" type="decor" x="355.333" y="1057.5" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="1809.59" y="689.741" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="401.862" y="696.711" width="237.527" height="375.411">
    <properties>
     <property name="map" value="UnderflowRuins/Town_Main"/>
-    <property name="transition" value="smith"/>
+    <property name="transition" value="alch"/>
    </properties>
   </object>
-  <object id="795" name="shop-item" type="object" x="682.67" y="198" width="64" height="64">
+  <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
-    <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
-  <object id="796" name="shop-item" type="object" x="976" y="198" width="64" height="64">
+  <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
-    <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
-  <object id="797" name="shop-item" type="object" x="1258" y="198" width="64" height="64">
+  <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
-    <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
-  <object id="798" name="shop-item" type="object" x="683.53" y="482.246" width="64" height="64">
+  <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
-    <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
-  <object id="799" name="shop-item" type="object" x="976" y="482.246" width="64" height="64">
+  <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
-    <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
-  <object id="800" name="shop-item" type="object" x="1258" y="482.246" width="64" height="64">
+  <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
-    <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-toben"/>
    </properties>
   </object>
-  <object id="801" name="shop-pool-geryon" type="object" x="1847.68" y="226.045" width="64" height="64"/>
-  <object id="804" name="anvil" type="object" x="126.451" y="960.88" width="249" height="106">
+  <object id="801" name="shop-pool-griffin" type="object" x="404.409" y="310.893" width="64" height="64"/>
+  <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="recipe-pool" value="smithing-pool-ur"/>
+    <property name="recipe-pool" value="alchemy-pool-ur"/>
    </properties>
   </object>
  </objectgroup>
@@ -215,12 +203,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1916.32" y="934.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="521.133" y="939.96" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn-wood-door" type="object" x="1869.38" y="934.23" width="128" height="128">
+  <object id="887" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>

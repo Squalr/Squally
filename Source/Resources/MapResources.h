@@ -90,6 +90,7 @@ namespace MapResources
 	extern const std::string Tutorials_KnownValueInt32;
 	extern const std::string Tutorials_UnknownValueFloat;
 	extern const std::string Tutorials_UnknownValueInt32;
+	extern const std::string UnderflowRuins_Combat_Cistern;
 	extern const std::string UnderflowRuins_Combat_Desert;
 	extern const std::string UnderflowRuins_Combat_Pyramid;
 	extern const std::string UnderflowRuins_Fishing_Village;
@@ -99,11 +100,13 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Mages_Warp;
 	extern const std::string UnderflowRuins_Shoreline;
 	extern const std::string UnderflowRuins_Town_Alch;
+	extern const std::string UnderflowRuins_Town_Alch_Questless;
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string UnderflowRuins_Town_Inn;
 	extern const std::string UnderflowRuins_Town_Inn_Upstairs;
 	extern const std::string UnderflowRuins_Town_Main;
 	extern const std::string UnderflowRuins_Town_Smith;
+	extern const std::string UnderflowRuins_Town_Smith_Questless;
 	extern const std::string UnderflowRuins_Town_Well;
 	extern const std::string UnderflowRuins_Zone_1_0;
 	extern const std::string UnderflowRuins_Zone_1_1;

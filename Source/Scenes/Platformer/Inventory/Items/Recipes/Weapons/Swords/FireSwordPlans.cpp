@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> FireSwordPlans::getReagentsInternal()
 {
 	return
 	{
-		{ LightWood::create(), 4 },
+		{ Wood::create(), 4 },
 		{ Iron::create(), 4 },
 		{ Coal::create(), 4 },
 	};

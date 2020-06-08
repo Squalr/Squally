@@ -74,6 +74,8 @@
 #include "Objects/Platformer/Rewards/UnderflowRuins/RewardPoolHera.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolMinos.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolToben.h"
+#include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolGeryon.h"
+#include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolGriffin.h"
 #include "Objects/Platformer/Shops/ShopItem.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
 #include "Objects/Platformer/Spawns/CombatSpawn.h"

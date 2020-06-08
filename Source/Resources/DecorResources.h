@@ -84,6 +84,7 @@ namespace DecorResources
 	extern const std::string Caverns_Foreground_tree_branch_foreground_4;
 	extern const std::string Caverns_Foreground_trees_foreground_1;
 	extern const std::string Caverns_Foreground_trees_foreground_2;
+	extern const std::string Caverns_ScreamingDoor;
 	extern const std::string Caverns_TigerDoor;
 	extern const std::string Caverns_WarpTower;
 	extern const std::string Caverns_back_st_1;

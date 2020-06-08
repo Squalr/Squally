@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> CrystalBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ LightWood::create(), 8 },
+		{ Wood::create(), 8 },
 		{ Iron::create(), 2 },
 	};
 }

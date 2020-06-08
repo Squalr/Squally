@@ -141,6 +141,7 @@ const std::string UIResources::Menus_CraftingMenu_SpearIcon = "Private/UI/Menus/
 const std::string UIResources::Menus_CraftingMenu_SwordIcon = "Private/UI/Menus/CraftingMenu/SwordIcon.png";
 const std::string UIResources::Menus_CraftingMenu_Table = "Private/UI/Menus/CraftingMenu/Table.png";
 const std::string UIResources::Menus_CraftingMenu_TransmuteIcon = "Private/UI/Menus/CraftingMenu/TransmuteIcon.png";
+const std::string UIResources::Menus_CraftingMenu_WandIcon = "Private/UI/Menus/CraftingMenu/WandIcon.png";
 const std::string UIResources::Menus_CreditsMenu_Matt = "Private/UI/Menus/CreditsMenu/Matt.png";
 const std::string UIResources::Menus_CreditsMenu_Nathan = "Private/UI/Menus/CreditsMenu/Nathan.png";
 const std::string UIResources::Menus_CreditsMenu_Twitter = "Private/UI/Menus/CreditsMenu/Twitter.png";

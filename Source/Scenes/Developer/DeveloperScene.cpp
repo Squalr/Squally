@@ -87,7 +87,9 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Well (UR)", MapResources::UnderflowRuins_Town_Well));
 	this->chapterList.push_back(this->buildDebugButton("Hera (UR)", MapResources::UnderflowRuins_Home_Hera));
 	this->chapterList.push_back(this->buildDebugButton("Smith (UR)", MapResources::UnderflowRuins_Town_Smith));
+	this->chapterList.push_back(this->buildDebugButton("Smith (DEV) (EF)", MapResources::UnderflowRuins_Town_Smith_Questless));
 	this->chapterList.push_back(this->buildDebugButton("Alch (UR)", MapResources::UnderflowRuins_Town_Alch));
+	this->chapterList.push_back(this->buildDebugButton("Alch (DEV) (EF)", MapResources::UnderflowRuins_Town_Alch_Questless));
 	this->chapterList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));

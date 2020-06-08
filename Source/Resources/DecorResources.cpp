@@ -83,6 +83,7 @@ const std::string DecorResources::Caverns_Foreground_tree_branch_foreground_3 = 
 const std::string DecorResources::Caverns_Foreground_tree_branch_foreground_4 = "Private/Platformer/Decor/Caverns/Foreground/tree branch foreground 4.png";
 const std::string DecorResources::Caverns_Foreground_trees_foreground_1 = "Private/Platformer/Decor/Caverns/Foreground/trees foreground 1.png";
 const std::string DecorResources::Caverns_Foreground_trees_foreground_2 = "Private/Platformer/Decor/Caverns/Foreground/trees foreground 2.png";
+const std::string DecorResources::Caverns_ScreamingDoor = "Private/Platformer/Decor/Caverns/ScreamingDoor.png";
 const std::string DecorResources::Caverns_TigerDoor = "Private/Platformer/Decor/Caverns/TigerDoor.png";
 const std::string DecorResources::Caverns_WarpTower = "Private/Platformer/Decor/Caverns/WarpTower.png";
 const std::string DecorResources::Caverns_back_st_1 = "Private/Platformer/Decor/Caverns/back-st-1.png";
