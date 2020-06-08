@@ -35,7 +35,7 @@ PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(propertie
 		{
 			AlchemyPoolTier1::create(),
 			SmithingPoolTier1::create(),
-			PotionPoolTier1::create()
+			// PotionPoolTier1::create(),
 		})
 	})
 {

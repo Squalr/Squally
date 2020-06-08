@@ -7,10 +7,10 @@
 #include "Engine/Inventory/MergePool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/SmithingPoolTier2.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/PotionPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -30,12 +30,12 @@ PocketPoolURGeneric* PocketPoolURGeneric::create(ValueMap& properties)
 
 PocketPoolURGeneric::PocketPoolURGeneric(ValueMap& properties) : super(properties, PocketPoolURGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
 	{
-		CardPoolTier1::create(SampleMethod::Random, 1, 1),
+		CardPoolTier2::create(SampleMethod::Random, 1, 1),
 		MergePool::create(SampleMethod::Guarantee, 1, 2,
 		{
-			AlchemyPoolTier1::create(),
-			SmithingPoolTier1::create(),
-			PotionPoolTier1::create()
+			AlchemyPoolTier2::create(),
+			SmithingPoolTier2::create(),
+			PotionPoolTier2::create()
 		})
 	})
 {

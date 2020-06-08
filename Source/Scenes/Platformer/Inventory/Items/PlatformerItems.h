@@ -207,6 +207,7 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/DemonicMacePlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/GoldenMacePlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/MaceRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/MithrilMacePlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/SteelMacePlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/VoidMacePlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/WitchingMacePlans.h"

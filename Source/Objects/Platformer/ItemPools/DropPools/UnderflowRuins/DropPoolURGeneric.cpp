@@ -33,7 +33,7 @@ DropPoolURGeneric::DropPoolURGeneric(ValueMap& properties) : super(properties, D
 		CardPoolTier2::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier2::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier2::create(SampleMethod::Random, 1, 2),
-		PotionPoolTier2::create(SampleMethod::Random, 0, 1)
+		// PotionPoolTier2::create(SampleMethod::Random, 0, 1),
 	})
 {
 }
