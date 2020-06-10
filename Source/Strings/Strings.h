@@ -8769,6 +8769,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLifeClippy() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Weakness_Weakness : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Weakness_Weakness* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Weakness_Weakness();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_Weakness() = default;
+	};
+
 	class Menus_Hacking_Abilities_DispelIllusion : public LocalizedString
 	{
 	public:
