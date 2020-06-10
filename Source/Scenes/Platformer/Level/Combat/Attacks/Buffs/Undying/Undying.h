@@ -31,6 +31,7 @@ protected:
 
 private:
 	typedef Buff super;
+	friend class UndyingAutoCast;
 
 	void applyUndying();
 	

@@ -8154,6 +8154,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink();
+		virtual ~Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Reflect_Reflect : public LocalizedString
 	{
 	public:

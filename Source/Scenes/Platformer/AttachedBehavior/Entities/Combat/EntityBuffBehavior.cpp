@@ -135,7 +135,7 @@ void EntityBuffBehavior::removeAllBuffs()
 void EntityBuffBehavior::repositionBuffIcons()
 {
 	int maxIndex = -1;
-	
+
 	for (auto next : this->buffs)
 	{
 		if (next->hasBuffIcon())
@@ -144,11 +144,13 @@ void EntityBuffBehavior::repositionBuffIcons()
 		}
 	}
 
-	for (int index = 0; index < int(this->buffs.size()); index++)
+	int adjustedIndex = 0;
+
+	for (auto next : this->buffs)
 	{
-		if (this->buffs[index]->hasBuffIcon())
+		if (next->hasBuffIcon())
 		{
-			this->buffs[index]->setBuffIndex(index, maxIndex);
+			next->setBuffIndex(adjustedIndex++, maxIndex);
 		}
 	}
 }

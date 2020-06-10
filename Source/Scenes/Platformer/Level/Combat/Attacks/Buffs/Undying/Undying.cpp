@@ -37,9 +37,6 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_UNDYING 1
 
 const std::string Undying::UndyingIdentifier = "undying";
-
-const int Undying::MinUndying = 1;
-const int Undying::MaxMultiplier = 1;
 const float Undying::Duration = 120.0f;
 
 Undying* Undying::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -116,11 +113,7 @@ void Undying::registerHackables()
 				UndyingGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx::create()->setStringReplacementVariables(
-							{
-								ConstantString::create(std::to_string(Undying::MinUndying)),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Undying::MaxMultiplier)))
-							}),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx::create(),
 					},
 					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEdi::create(),
