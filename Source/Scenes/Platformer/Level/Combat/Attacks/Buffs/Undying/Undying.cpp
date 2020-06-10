@@ -108,8 +108,8 @@ void Undying::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Undying::UndyingIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Undying_Undying::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_ShieldMagic,
+				HackableBase::HackBarColor::Yellow,
+				UIResources::Menus_Icons_Skull,
 				UndyingGenericPreview::create(),
 				{
 					{

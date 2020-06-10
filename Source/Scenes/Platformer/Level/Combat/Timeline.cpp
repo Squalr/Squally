@@ -105,6 +105,16 @@ void Timeline::initializeListeners()
 		this->timelineEventGroups.clear();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventQueryTimeline, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::QueryTimelineArgs* args = static_cast<CombatEvents::QueryTimelineArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			args->callback(this);
+		}
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::CastTargetsArgs* args = static_cast<CombatEvents::CastTargetsArgs*>(eventCustom->getUserData());
@@ -360,6 +370,19 @@ std::vector<PlatformerEntity*> Timeline::getEnemyEntities()
 	}
 
 	return entities;
+}
+
+std::vector<PlatformerEntity*> Timeline::getSameTeamEntities(PlatformerEntity* entity)
+{
+	for (auto next : this->timelineEntries)
+	{
+		if (next->getEntity() == entity)
+		{
+			return next->isPlayerEntry() ? this->getFriendlyEntities() : this->getEnemyEntities();
+		}
+	}
+	
+	return std::vector<PlatformerEntity*>();
 }
 
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vector<PlatformerEntity*>& friendlyEntities)

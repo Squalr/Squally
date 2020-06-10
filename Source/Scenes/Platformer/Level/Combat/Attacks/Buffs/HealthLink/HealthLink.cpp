@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/HealthLink/HealthLinkGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -49,12 +50,12 @@ HealthLink* HealthLink::create(PlatformerEntity* caster, PlatformerEntity* targe
 }
 
 HealthLink::HealthLink(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Skull, BuffData(HealthLink::Duration, HealthLink::HealthLinkIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Clones, BuffData(HealthLink::Duration, HealthLink::HealthLinkIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->newHealthHealthLink = 0;
+	this->healthLinkDamage = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -83,8 +84,6 @@ void HealthLink::onEnter()
 		FadeTo::create(0.25f, 0),
 		nullptr
 	));
-
-	CombatEvents::TriggerHackableCombatCue();
 }
 
 void HealthLink::initializePositions()
@@ -108,8 +107,8 @@ void HealthLink::registerHackables()
 			HackableCode::HackableCodeInfo(
 				HealthLink::HealthLinkIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_ShieldMagic,
+				HackableBase::HackBarColor::Red,
+				UIResources::Menus_Icons_Clones,
 				HealthLinkGenericPreview::create(),
 				{
 					{
@@ -141,39 +140,50 @@ void HealthLink::onBeforeDamageTaken(volatile int* damageOrHealing, std::functio
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 
-	int originalHealth = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	int newHealth = originalHealth - *damageOrHealing;
-	this->newHealthHealthLink = newHealth;
+	this->healthLinkDamage = *damageOrHealing;
+
+	// Do not use the hackable code for the main target
+	*damageOrHealing /= 2;
 
 	this->applyHealthLink();
 
-	*damageOrHealing = (originalHealth - this->newHealthHealthLink);
+	// Damage all team mates
+	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
+	{
+		for (auto next : timeline->getSameTeamEntities(target))
+		{
+			if (next != target)
+			{
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(caster, next, -this->healthLinkDamage, true));
+			}
+		}
+	}));
 }
 
+void HealthLink::onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target)
+{
+	super::onAfterDamageTaken(damageOrHealing, caster, target);
+}
 
 NO_OPTIMIZE void HealthLink::applyHealthLink()
 {
 	static volatile int healthCopy = 0;
 
-	healthCopy = this->newHealthHealthLink;
+	healthCopy = this->healthLinkDamage;
 
-	ASM(push ZBX);
-	ASM(push ZSI);
-	ASM_MOV_REG_VAR(ZSI, healthCopy);
-	ASM(mov ZBX, 1);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, healthCopy);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
-	ASM(cmp ZSI, 0);
-	ASM(cmovle ZSI, ZBX);
+	ASM(shr ZAX, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(healthCopy, ZSI);
+	ASM_MOV_VAR_REG(healthCopy, ZAX);
 
-	ASM(pop ZSI);
-	ASM(pop ZBX);
+	ASM(pop ZAX);
 
-	this->newHealthHealthLink = healthCopy;
+	this->healthLinkDamage = healthCopy;
 
 	HACKABLES_STOP_SEARCH();
 }

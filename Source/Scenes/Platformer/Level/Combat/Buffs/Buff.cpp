@@ -104,6 +104,16 @@ void Buff::initializeListeners()
 		}
 	}));
 
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityModifyDamageDeltComplete, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->caster)
+		{
+			this->onAfterDamageDelt(args->damageOrHealing, args->caster, args->target);
+		}
+	}));
+
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageTaken, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
@@ -111,6 +121,16 @@ void Buff::initializeListeners()
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
 			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityModifyDamageTakenComplete, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->target)
+		{
+			this->onAfterDamageTaken(args->damageOrHealing, args->caster, args->target);
 		}
 	}));
 
@@ -192,6 +212,14 @@ void Buff::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void
 }
 
 void Buff::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+{
+}
+
+void Buff::onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target)
+{
+}
+
+void Buff::onAfterDamageDelt(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 

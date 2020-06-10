@@ -11,6 +11,7 @@ namespace cocos2d
 class Buff;
 class PlatformerEntity;
 class Projectile;
+class Timeline;
 class TimelineEntry;
 class TimelineEvent;
 class TimelineEventGroup;
@@ -19,6 +20,7 @@ class CombatEvents
 {
 public:
 	static const std::string EventSpawn;
+	static const std::string EventQueryTimeline;
 	static const std::string EventGetAssociatedTimelineEntry;
 	static const std::string EventMenuBack;
 	static const std::string EventChangeMenuState;
@@ -65,6 +67,8 @@ public:
 	static const std::string EventEntityStatsModifyDamageDelt;
 	static const std::string EventEntityStatsModifyHealingTaken;
 	static const std::string EventEntityStatsModifyHealingDelt;
+	static const std::string EventEntityModifyDamageDeltComplete;
+	static const std::string EventEntityModifyDamageTakenComplete;
 
 	struct SpawnArgs
 	{
@@ -74,6 +78,15 @@ public:
 		std::function<void()> onSpawnSuccess;
 
 		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex, std::function<void()> onSpawnSuccess) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex), onSpawnSuccess(onSpawnSuccess)
+		{
+		}
+	};
+
+	struct QueryTimelineArgs
+	{
+		std::function<void(Timeline*)> callback;
+
+		QueryTimelineArgs(std::function<void(Timeline*)> callback) : callback(callback)
 		{
 		}
 	};
@@ -217,8 +230,11 @@ public:
 		PlatformerEntity* target;
 		int damageOrHealing;
 
-		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing)
-			: caster(caster), target(target), damageOrHealing(damageOrHealing)
+		// If true, this flag will prevent buffs from modifying the damage/healing
+		bool disableBuffProcessing;
+
+		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing, bool disableBuffProcessing = false)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing), disableBuffProcessing(disableBuffProcessing)
 		{
 		}
 	};
@@ -316,8 +332,9 @@ public:
 
 		BeforeReturnToMapArgs(bool defeat) : defeat(defeat) { }
 	};
-
+	
 	static void TriggerSpawn(SpawnArgs args);
+	static void TriggerQueryTimeline(QueryTimelineArgs args);
 	static void TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args);
 	static void TriggerMenuGoBack();
 	static void TriggerMenuStateChange(MenuStateArgs args);
@@ -362,4 +379,6 @@ public:
 	static void TriggerEntityStatsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityDamageDeltModifyComplete(DamageOrHealingArgs args);
+	static void TriggerEntityDamageTakenModifyComplete(DamageOrHealingArgs args);
 };

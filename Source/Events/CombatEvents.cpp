@@ -6,6 +6,7 @@
 using namespace cocos2d;
 
 const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
+const std::string CombatEvents::EventQueryTimeline = "EVENT_COMBAT_QUERY_TIMELINE";
 const std::string CombatEvents::EventGetAssociatedTimelineEntry = "EVENT_COMBAT_GET_ASSOCIATED_TIMELINE_ENTRY";
 const std::string CombatEvents::EventMenuBack = "EVENT_COMBAT_CHANGE_MENU_BACK";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_COMBAT_CHANGE_MENU_STATE";
@@ -50,11 +51,21 @@ const std::string CombatEvents::EventEntityStatsModifyDamageTaken = "EVENT_COMBA
 const std::string CombatEvents::EventEntityStatsModifyDamageDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_DELT";
 const std::string CombatEvents::EventEntityStatsModifyHealingTaken = "EVENT_COMBAT_ENTITY_STATS_MODIFY_HEALING_TAKEN";
 const std::string CombatEvents::EventEntityStatsModifyHealingDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_HEALING_DELT";
+const std::string CombatEvents::EventEntityModifyDamageDeltComplete = "EVENT_COMBAT_ENTITY_MODIFY_DAMAGE_DELT_COMPLETE";
+const std::string CombatEvents::EventEntityModifyDamageTakenComplete = "EVENT_COMBAT_ENTITY_MODIFY_DAMAGE_TAKEN_COMPLETE";
 
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventSpawn,
+		&args
+	);
+}
+
+void CombatEvents::TriggerQueryTimeline(QueryTimelineArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventQueryTimeline,
 		&args
 	);
 }
@@ -394,6 +405,22 @@ void CombatEvents::TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealing
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventEntityStatsModifyHealingDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityDamageDeltModifyComplete(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityModifyDamageDeltComplete,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityDamageTakenModifyComplete(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityModifyDamageTakenComplete,
 		&args
 	);
 }

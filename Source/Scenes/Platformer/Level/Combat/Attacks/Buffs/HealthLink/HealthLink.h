@@ -28,6 +28,7 @@ protected:
 	void initializePositions() override;
 	void registerHackables() override;
 	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target) override;
 
 private:
 	typedef Buff super;
@@ -35,7 +36,7 @@ private:
 
 	void applyHealthLink();
 	
-	volatile int newHealthHealthLink;
+	volatile int healthLinkDamage;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;

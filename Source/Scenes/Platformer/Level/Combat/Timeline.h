@@ -22,6 +22,7 @@ public:
 	std::vector<PlatformerEntity*> getEntities();
 	std::vector<PlatformerEntity*> getFriendlyEntities();
 	std::vector<PlatformerEntity*> getEnemyEntities();
+	std::vector<PlatformerEntity*> getSameTeamEntities(PlatformerEntity* entity);
 	std::vector<TimelineEntry*> initializeTimelineFriendly(const std::vector<PlatformerEntity*>& friendlyEntities);
 	std::vector<TimelineEntry*> initializeTimelineEnemies(const std::vector<PlatformerEntity*>& enemyEntities);
 	void initializeStartingProgress(bool isPlayerFirstStrike);

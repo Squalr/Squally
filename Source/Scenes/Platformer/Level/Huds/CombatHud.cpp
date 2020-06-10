@@ -128,22 +128,35 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 		this->enemyPartyStatsNode->addChild(statsBars);
 	}
 
-	int index = 0;
+	static const std::vector<int> PascaleTriangleX = { 0, 1, 0, 2, 1, 0, 3, 2, 1, 0, 4, 3, 2, 1, 0 };
+	static const std::vector<int> PascaleTriangleY = { 0, 0, 1, 0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 4 };
+	const float SpacingX = 320.0f;
+	const float SpacingY = -160.0f;
+	int xIndex = 0;
+	int yIndex = 0;
 
-	for (auto next : this->playerPartyStatsBars)
+	for (int index = 0; index < int(this->playerPartyStatsBars.size()); index++)
 	{
-		next->setPositionY((float)index * -160.0f);
+		auto next = this->playerPartyStatsBars[index];
+		xIndex = index < int(PascaleTriangleX.size()) ? PascaleTriangleX[index] : 0;
+		yIndex = index < int(PascaleTriangleY.size()) ? PascaleTriangleY[index] : index;
 
-		index++;
+		next->setPosition(Vec2(
+			(float)xIndex * SpacingX,
+			(float)yIndex * SpacingY)
+		);
 	}
-	
-	index = 0;
 
-	for (auto next : this->enemyPartyStatsBars)
+	for (int index = 0; index < int(this->enemyPartyStatsBars.size()); index++)
 	{
-		next->setAnchorPoint(Vec2(1.0f, 0.5f));
-		next->setPositionY((float)index * -160.0f);
+		auto next = this->enemyPartyStatsBars[index];
+		xIndex = index < int(PascaleTriangleX.size()) ? PascaleTriangleX[index] : 0;
+		yIndex = index < int(PascaleTriangleY.size()) ? PascaleTriangleY[index] : index;
 
-		index++;
+		next->setAnchorPoint(Vec2(1.0f, 0.5f));
+		next->setPosition(Vec2(
+			(float)xIndex * -SpacingX,
+			(float)yIndex * SpacingY)
+		);
 	}
 }

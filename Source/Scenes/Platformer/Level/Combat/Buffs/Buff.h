@@ -50,6 +50,8 @@ protected:
 	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
 	virtual void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
 	virtual void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void onAfterDamageDelt(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target);
 	virtual void onBeforeHealingTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
 	virtual void onBeforeHealingDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
 

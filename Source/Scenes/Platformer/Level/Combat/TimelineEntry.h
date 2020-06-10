@@ -17,9 +17,9 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity, int spawnIndex);
 
 	PlatformerEntity* getEntity();
-	void applyDamage(PlatformerEntity* caster, int damage);
-	void applyManaRestore(PlatformerEntity* caster, int manaGain);
-	void applyHealing(PlatformerEntity* caster, int healing);
+	void applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing);
+	void applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing);
+	void applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing);
 	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);
 	std::vector<PlatformerEntity*> getStagedTargets();

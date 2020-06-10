@@ -152,7 +152,7 @@ void Reflect::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<v
 
 	this->applyReflect();
 
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(target, caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(target, caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()
