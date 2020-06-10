@@ -164,6 +164,9 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[OrthrusCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)OrthrusCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TrollCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrollCombatBehavior::create(owner); };
 
+	// UR
+	this->attachedBehaviorDeserializers[MummyWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MummyWarriorCombatBehavior::create(owner); };
+
 	// Misc
 	this->attachedBehaviorDeserializers[RamWeakenedCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RamWeakenedCombatBehavior::create(owner); };
 	

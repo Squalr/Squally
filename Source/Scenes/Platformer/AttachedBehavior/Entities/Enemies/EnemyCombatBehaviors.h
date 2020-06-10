@@ -14,5 +14,6 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/OrthrusCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/TrainingDummyCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/TrollCombatBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/MummyWarriorCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/Misc/RamWeakenedCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Combat/GuanoCombatBehaviorGroup.h"

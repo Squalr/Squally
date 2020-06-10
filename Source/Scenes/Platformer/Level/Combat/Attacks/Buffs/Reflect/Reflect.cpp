@@ -157,8 +157,11 @@ void Reflect::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<v
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
-	volatile int originalDamage = this->damageReflected;
-	volatile int damageTaken = this->damageReflected;
+	static volatile int originalDamage = 0;
+	static volatile int damageTaken = 0;
+
+	originalDamage = this->damageReflected;
+	damageTaken = this->damageReflected;
 
 	ASM(push ZSI);
 	ASM(push ZBX);
