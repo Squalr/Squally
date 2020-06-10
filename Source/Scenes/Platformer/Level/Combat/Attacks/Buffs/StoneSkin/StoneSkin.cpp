@@ -98,7 +98,7 @@ void StoneSkin::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -183,27 +183,28 @@ void StoneSkin::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void StoneSkin::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void StoneSkin::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = *damageOrHealing;
+	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
 
 	this->applyStoneSkin();
 
-	*damageOrHealing = this->currentDamageTaken;
+	// Bound multiplier in either direction
+	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * StoneSkin::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * StoneSkin::MaxMultiplier));
+
+	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
 }
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 {
-	static volatile int originalDamage;
-	static volatile int damageTaken;
+	static volatile int damageTaken = 0;
 
-	originalDamage = this->currentDamageTaken;
 	damageTaken = this->currentDamageTaken;
 
 	ASM(push ZAX);
@@ -224,8 +225,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM(pop ZCX);
 	ASM(pop ZAX);
 
-	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(damageTaken, -std::abs(originalDamage) * StoneSkin::MaxMultiplier, std::abs(originalDamage) * StoneSkin::MaxMultiplier);
+	this->currentDamageTaken = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -23,7 +23,7 @@ protected:
 	UndyingAutoCast(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~UndyingAutoCast();
 
-	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;

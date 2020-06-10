@@ -18,7 +18,7 @@ using namespace cocos2d;
 Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, BuffData buffData)
 {
 	this->caster = caster;
-	this->target = target;
+	this->owner = target;
 	this->buffData = buffData;
 	this->iconContainer = Node::create();
 	this->buffGlow = Sprite::create(UIResources::HUD_EmblemGlow);
@@ -57,7 +57,7 @@ void Buff::initializePositions()
 {
 	super::initializePositions();
 	
-	this->iconContainer->setPositionY(this->target->getEntitySize().height / 2.0f + 32.0f);
+	this->iconContainer->setPositionY(this->owner->getEntitySize().height / 2.0f + 32.0f);
 }
 
 void Buff::initializeListeners()
@@ -88,7 +88,7 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->target == this->target && !args->isHandled())
+		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
 			this->onModifyTimelineSpeed(args->speed, [=](){ args->handle(); });
 		}
@@ -98,9 +98,18 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		if (args != nullptr && args->caster == this->owner && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+			this->onBeforeDamageDelt(ModifyableDamageOrHealing(
+				args->damageOrHealing,
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				AbilityType::Physical,
+				args->caster,
+				args->target,
+				[=](){ args->handle(); }
+			));
 		}
 	}));
 
@@ -110,7 +119,14 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster)
 		{
-			this->onAfterDamageDelt(args->damageOrHealing, args->caster, args->target);
+			this->onAfterDamageDelt(DamageOrHealing(
+				args->damageOrHealing,
+				args->damageOrHealing,
+				args->damageOrHealing,
+				AbilityType::Physical,
+				args->caster,
+				args->target
+			));
 		}
 	}));
 
@@ -118,9 +134,18 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->target == this->target && !args->isHandled())
+		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+			this->onBeforeDamageTaken(ModifyableDamageOrHealing(
+				args->damageOrHealing,
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				AbilityType::Physical,
+				args->caster,
+				args->target,
+				[=](){ args->handle(); }
+			));
 		}
 	}));
 
@@ -128,9 +153,16 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->target == this->target)
+		if (args != nullptr && args->target == this->owner)
 		{
-			this->onAfterDamageTaken(args->damageOrHealing, args->caster, args->target);
+			this->onAfterDamageTaken(DamageOrHealing(
+				args->damageOrHealing,
+				args->damageOrHealing,
+				args->damageOrHealing,
+				AbilityType::Physical,
+				args->caster,
+				args->target
+			));
 		}
 	}));
 
@@ -140,7 +172,16 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeHealingDelt(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+			this->onBeforeHealingDelt(ModifyableDamageOrHealing(
+				args->damageOrHealing,
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				AbilityType::Physical,
+				args->caster,
+				args->target,
+				[=](){ args->handle(); }
+			));
 		}
 	}));
 
@@ -148,9 +189,18 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->target == this->target && !args->isHandled())
+		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onBeforeHealingTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
+			this->onBeforeHealingTaken(ModifyableDamageOrHealing(
+				args->damageOrHealing,
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				AbilityType::Physical,
+				args->caster,
+				args->target,
+				[=](){ args->handle(); }
+			));
 		}
 	}));
 
@@ -158,7 +208,7 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::TimelineResetArgs* args = static_cast<CombatEvents::TimelineResetArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->target == this->target)
+		if (args != nullptr && args->target == this->owner)
 		{
 			this->onTimelineReset(args->wasInterrupt);
 		}
@@ -207,40 +257,40 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Buff::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Buff::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target)
+void Buff::onAfterDamageTaken(DamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onAfterDamageDelt(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target)
+void Buff::onAfterDamageDelt(DamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onBeforeHealingTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Buff::onBeforeHealingTaken(ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onBeforeHealingDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Buff::onBeforeHealingDelt(ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
 void Buff::unregisterHackables()
 {
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
 
 	for (auto next : this->hackables)
 	{
-		this->target->unregisterCode(next);
+		this->owner->unregisterCode(next);
 	}
 }
 
@@ -263,7 +313,7 @@ void Buff::removeBuff()
 	
 	this->wasRemoved = true;
 	
-	CombatEvents::TriggerBuffRemoved(CombatEvents::BuffRemovedArgs(this->target, this));
+	CombatEvents::TriggerBuffRemoved(CombatEvents::BuffRemovedArgs(this->owner, this));
 
 	if (this->removeBuffCallback != nullptr)
 	{
@@ -273,10 +323,10 @@ void Buff::removeBuff()
 
 void Buff::registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc)
 {
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
 	
-	this->target->registerClippyOnto(identifier, clippyFunc);
+	this->owner->registerClippyOnto(identifier, clippyFunc);
 }

@@ -94,7 +94,7 @@ void Strength::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -150,28 +150,27 @@ void Strength::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-NO_OPTIMIZE void Strength::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Strength::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = *damageOrHealing;
+	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
 
 	this->applyStrength();
+
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * Strength::MinMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * Strength::MaxMultiplier));
 	
-	*damageOrHealing = this->currentDamageDelt;
+	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
 }
-END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
-	static volatile int originalDamage;
 	static volatile int damageDelt;
 
-	originalDamage = this->currentDamageDelt;
 	damageDelt = this->currentDamageDelt;
 
 	ASM(push ZCX);
@@ -187,7 +186,7 @@ NO_OPTIMIZE void Strength::applyStrength()
 	ASM(pop ZCX);
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(damageDelt, -std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
+	this->currentDamageDelt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -96,7 +96,7 @@ void Enrage::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -142,7 +142,7 @@ void Enrage::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
@@ -155,14 +155,14 @@ void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> h
 	*timelineSpeed = this->currentSpeed;
 }
 
-void Enrage::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Enrage::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 }
 
-void Enrage::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Enrage::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageDelt(damageOrHealing);
 }
 
 NO_OPTIMIZE void Enrage::applyEnrageSpeed()

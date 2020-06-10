@@ -95,7 +95,7 @@ void HealthLink::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -132,37 +132,32 @@ void HealthLink::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void HealthLink::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void HealthLink::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->healthLinkDamage = *damageOrHealing;
+	this->healthLinkDamage = damageOrHealing.originalDamageOrHealing;
 
 	// Do not use the hackable code for the main target
-	*damageOrHealing /= 2;
+	*damageOrHealing.damageOrHealing /= 2;
 
 	this->applyHealthLink();
 
 	// Damage all team mates
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
 	{
-		for (auto next : timeline->getSameTeamEntities(target))
+		for (auto next : timeline->getSameTeamEntities(damageOrHealing.target))
 		{
-			if (next != target)
+			if (next != damageOrHealing.target)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(caster, next, -this->healthLinkDamage, true));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.caster, next, -std::abs(this->healthLinkDamage), true));
 			}
 		}
 	}));
-}
-
-void HealthLink::onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target)
-{
-	super::onAfterDamageTaken(damageOrHealing, caster, target);
 }
 
 NO_OPTIMIZE void HealthLink::applyHealthLink()

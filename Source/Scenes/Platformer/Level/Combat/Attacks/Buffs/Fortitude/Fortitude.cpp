@@ -99,7 +99,7 @@ void Fortitude::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -157,27 +157,28 @@ void Fortitude::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Fortitude::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Fortitude::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = *damageOrHealing;
+	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
 
 	this->applyFortitude();
 
-	*damageOrHealing = this->currentDamageTaken;
+	// Bound multiplier in either direction
+	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * Fortitude::MaxMultiplier));
+	
+	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
-	static volatile int originalDamage;
 	static volatile int damageTaken;
 
-	originalDamage = this->currentDamageTaken;
 	damageTaken = this->currentDamageTaken;
 
 	ASM(push ZBX);
@@ -192,8 +193,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 
 	ASM(pop ZBX);
 
-	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(damageTaken, -std::abs(originalDamage) * Fortitude::MaxMultiplier, std::abs(originalDamage) * Fortitude::MaxMultiplier);
+	this->currentDamageTaken = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }

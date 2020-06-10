@@ -52,11 +52,11 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Defend::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 	
-	*damageOrHealing = int(std::round(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
+	*damageOrHealing.damageOrHealing = int(std::round(float(damageOrHealing.originalDamageOrHealing) * (1.0f - Defend::DamageReduction)));
 
 	CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->caster));
 

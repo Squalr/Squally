@@ -8,6 +8,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Weakness/Weakness.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -80,21 +81,39 @@ void CastWeakness::onCleanup()
 
 bool CastWeakness::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int uncastableCount = 0;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<Weakness>([&](Weakness* haste)
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			hasBuff = true;
-		});
-	});
+			uncastableCount++;
+			continue;
+		}
 
-	return !hasBuff;
+		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->getBuff<Weakness>([&](Weakness* debuff)
+			{
+				uncastableCount++;
+			});
+		});
+	}
+
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastWeakness::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	// Prioritize self-cast
-	return target == this->owner ? 1.0f : 0.0f;
+	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+
+	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<Weakness>([&](Weakness* debuff)
+		{
+			utility = 0.0f;
+		});
+	});
+	
+	return utility;
 }

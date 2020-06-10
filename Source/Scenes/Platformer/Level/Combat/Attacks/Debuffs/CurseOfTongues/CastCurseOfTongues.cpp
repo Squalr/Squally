@@ -9,6 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTongues.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -88,25 +89,31 @@ bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vecto
 		return false;
 	}
 
-	int debuffCount = 0;
+	int uncastableCount = 0;
 
 	for (auto next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+
 		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
 			{
-				debuffCount++;
+				uncastableCount++;
 			});
 		});
 	}
 
-	return debuffCount != int(otherTeam.size());
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastCurseOfTongues::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = 1.0f;
+	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

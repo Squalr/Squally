@@ -33,7 +33,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_STRENGTH 1
+#define LOCAL_FUNC_ID_WEAKNESS 1
 
 const std::string Weakness::WeaknessIdentifier = "weakness";
 
@@ -94,7 +94,7 @@ void Weakness::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -102,7 +102,7 @@ void Weakness::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_STRENGTH,
+			LOCAL_FUNC_ID_WEAKNESS,
 			HackableCode::HackableCodeInfo(
 				Weakness::WeaknessIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Weakness_Weakness::create(),
@@ -137,28 +137,27 @@ void Weakness::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-NO_OPTIMIZE void Weakness::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Weakness::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = *damageOrHealing;
+	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
 
 	this->applyWeakness();
+
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * Weakness::MinMultiplier), std::abs(damageOrHealing.originalDamageOrHealing) * Weakness::MaxMultiplier);
 	
-	*damageOrHealing = this->currentDamageDelt;
+	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
 }
-END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Weakness::applyWeakness()
 {
-	static volatile int originalDamage;
 	static volatile int damageDelt;
 
-	originalDamage = this->currentDamageDelt;
 	damageDelt = this->currentDamageDelt;
 
 	ASM(push ZCX);
@@ -166,7 +165,7 @@ NO_OPTIMIZE void Weakness::applyWeakness()
 	ASM_MOV_REG_VAR(ZCX, damageDelt);
 	ASM(mov ZDX, 4);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WEAKNESS);
 	ASM(cmp ZCX, ZDX);
 	ASM(cmovge ZCX, ZDX);
 	ASM_NOP16();
@@ -178,7 +177,7 @@ NO_OPTIMIZE void Weakness::applyWeakness()
 	ASM(pop ZCX);
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(damageDelt, -std::abs(originalDamage) * Weakness::MinMultiplier, std::abs(originalDamage) * Weakness::MaxMultiplier);
+	this->currentDamageDelt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }

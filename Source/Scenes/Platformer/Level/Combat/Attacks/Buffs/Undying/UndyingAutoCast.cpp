@@ -32,28 +32,28 @@ UndyingAutoCast::~UndyingAutoCast()
 {
 }
 
-void UndyingAutoCast::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void UndyingAutoCast::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
 	if (this->hasAutoCasted)
 	{
 		return;
 	}
 
-	int originalHealth = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	int newHealth = originalHealth - *damageOrHealing;
+	int originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	int projectedNewHealth = originalHealth - damageOrHealing.originalDamageOrHealing;
 
-	if (newHealth <= 0)
+	if (projectedNewHealth <= 0)
 	{
-		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		damageOrHealing.target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			this->hasAutoCasted = true;
 
-			entityBuffBehavior->applyBuff(Undying::create(target, target));
+			entityBuffBehavior->applyBuff(Undying::create(damageOrHealing.target, damageOrHealing.target));
 			entityBuffBehavior->getBuff<Undying>([&](Undying* undying)
 			{
-				undying->onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+				undying->onBeforeDamageTaken(damageOrHealing);
 			});
 		});
 	}

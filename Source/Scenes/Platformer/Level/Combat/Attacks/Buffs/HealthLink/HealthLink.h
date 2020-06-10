@@ -27,8 +27,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
-	void onAfterDamageTaken(int damageOrHealing, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;

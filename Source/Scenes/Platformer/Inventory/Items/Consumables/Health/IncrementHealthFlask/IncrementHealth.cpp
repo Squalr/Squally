@@ -77,14 +77,14 @@ void IncrementHealth::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
+	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
 }
 
 void IncrementHealth::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -114,7 +114,7 @@ void IncrementHealth::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
@@ -131,7 +131,7 @@ void IncrementHealth::runIncrementHealth()
 		icon->setScale(0.5f);
 
 		timelineEvents.push_back(TimelineEvent::create(
-				this->target,
+				this->owner,
 				icon,
 				IncrementHealth::TimeBetweenTicks * float(healIndex) + IncrementHealth::StartDelay, [=]()
 			{
@@ -146,7 +146,7 @@ void IncrementHealth::runIncrementHealth()
 	}
 
 	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, this, this->target, [=]()
+		TimelineEventGroup::create(timelineEvents, this, this->owner, [=]()
 		{
 			this->removeBuff();
 		})
@@ -173,7 +173,7 @@ NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
 
 	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, incrementAmount));
 
 	HACKABLES_STOP_SEARCH();
 }

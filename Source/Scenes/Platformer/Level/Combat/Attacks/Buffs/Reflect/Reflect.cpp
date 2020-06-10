@@ -97,7 +97,7 @@ void Reflect::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -138,29 +138,31 @@ void Reflect::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Reflect::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Reflect::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->damageReflected = *damageOrHealing;
+	this->damageReflected = damageOrHealing.originalDamageOrHealing;
 
-	*damageOrHealing = 0;
+	*damageOrHealing.damageOrHealing = 0;
 
 	this->applyReflect();
 
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(target, caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected, true));
+	// Bound multiplier in either direction
+	this->damageReflected = MathUtils::clamp(this->damageReflected, Reflect::MinReflect, std::abs(damageOrHealing.originalDamageOrHealing) * Reflect::MaxMultiplier);
+
+	// Reflect damage back to caster
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
-	static volatile int originalDamage = 0;
 	static volatile int damageTaken = 0;
 
-	originalDamage = this->damageReflected;
 	damageTaken = this->damageReflected;
 
 	ASM(push ZSI);
@@ -177,8 +179,7 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	// Bound multiplier in either direction
-	this->damageReflected = MathUtils::clamp(damageTaken, Reflect::MinReflect, std::abs(originalDamage) * Reflect::MaxMultiplier);
+	this->damageReflected = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }

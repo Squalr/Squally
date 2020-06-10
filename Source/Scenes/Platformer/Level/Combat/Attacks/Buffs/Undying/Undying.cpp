@@ -96,7 +96,7 @@ void Undying::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -133,21 +133,25 @@ void Undying::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Undying::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Undying::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	int originalHealth = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	int newHealth = originalHealth - *damageOrHealing;
-	this->newHealthUndying = newHealth;
+	static volatile int originalHealth = 0;
+	static volatile int newHealth = 0;
+
+	originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	newHealth = originalHealth - damageOrHealing.originalDamageOrHealing;
+
+	this->newHealthUndying = damageOrHealing.originalDamageOrHealing;
 
 	this->applyUndying();
 
-	*damageOrHealing = (originalHealth - this->newHealthUndying);
+	*damageOrHealing.damageOrHealing = (originalHealth - this->newHealthUndying);
 }
 
 

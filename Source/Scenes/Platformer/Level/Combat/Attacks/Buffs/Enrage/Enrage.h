@@ -28,8 +28,8 @@ protected:
 	void initializePositions() override;
 	void registerHackables() override;
 	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
-	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
-	void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;
