@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/Strength.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Weakness/Weakness.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -26,7 +26,7 @@ CastWeakness* CastWeakness::create(float attackDuration, float recoverDuration, 
 }
 
 CastWeakness::CastWeakness(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_SwordBroken, priority, 0, 0, 3, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_SwordBroken, priority, 0, 0, 6, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
@@ -49,7 +49,7 @@ PlatformerAttack* CastWeakness::cloneInternal()
 
 LocalizedString* CastWeakness::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create();
+	return Strings::Menus_Hacking_Abilities_Debuffs_Weakness_Weakness::create();
 }
 
 std::string CastWeakness::getAttackAnimation()
@@ -69,7 +69,7 @@ void CastWeakness::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	{
 		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
-			entityBuffBehavior->applyBuff(Strength::create(owner, next));
+			entityBuffBehavior->applyBuff(Weakness::create(owner, next));
 		});
 	}
 }
@@ -84,7 +84,7 @@ bool CastWeakness::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Strength>([&](Strength* haste)
+		entityBuffBehavior->getBuff<Weakness>([&](Weakness* haste)
 		{
 			hasBuff = true;
 		});
