@@ -8739,6 +8739,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi : public LocalizedString
 	{
 	public:
@@ -8754,21 +8769,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterXmm3 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterXmm3* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterXmm3() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife : public LocalizedString
 	{
 	public:
@@ -8782,21 +8782,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife();
 		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLifeClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLifeClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLifeClippy();
-		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLifeClippy() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx : public LocalizedString

@@ -9,8 +9,6 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
-#include "Engine/Particles/SmartParticles.h"
-#include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -24,8 +22,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
 #include "Resources/FXResources.h"
-#include "Resources/ObjectResources.h"
-#include "Resources/ParticleResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -33,15 +30,13 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_SIPHON_LIFE 1
 
-const std::string SiphonLife::SiphonLifeIdentifier = "haste";
-
-// Note: UI sets precision on these to 1 digit
-const float SiphonLife::MinSpeed = -1.0f;
-const float SiphonLife::DefaultSpeed = 2.0f;
-const float SiphonLife::MaxSpeed = 2.5f;
-const float SiphonLife::Duration = 6.0f;
+const std::string SiphonLife::SiphonLifeIdentifier = "siphon-life";
+const int SiphonLife::HealAmount = 7;
+const float SiphonLife::TimeBetweenTicks = 0.5f;
+const int SiphonLife::HackTicks = 5;
+const float SiphonLife::StartDelay = 0.25f;
 
 SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -53,16 +48,16 @@ SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* targe
 }
 
 SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Fangs, BuffData(SiphonLife::Duration, SiphonLife::SiphonLifeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_BloodGoblet, BuffData())
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healAmount = SiphonLife::HealAmount;
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
-	this->spellAura->setColor(Color3B::YELLOW);
-	this->spellAura->setOpacity(0);
-
-	this->addChild(this->spellEffect);
-	this->addChild(this->spellAura);
+	this->addChild(this->healEffect);
+	this->addChild(this->impactSound);
+	this->addChild(this->healSound);
 }
 
 SiphonLife::~SiphonLife()
@@ -73,14 +68,7 @@ void SiphonLife::onEnter()
 {
 	super::onEnter();
 
-	this->spellEffect->start();
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
+	this->runSiphonLife();
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -88,6 +76,8 @@ void SiphonLife::onEnter()
 void SiphonLife::initializePositions()
 {
 	super::initializePositions();
+
+	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
 }
 
 void SiphonLife::registerHackables()
@@ -102,21 +92,19 @@ void SiphonLife::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_SIPHON_LIFE,
 			HackableCode::HackableCodeInfo(
 				SiphonLife::SiphonLifeIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Fangs,
+				HackableBase::HackBarColor::Yellow,
+				UIResources::Menus_Icons_BloodGoblet,
 				SiphonLifeGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(SiphonLife::MinSpeed, 1), ConstantFloat::create(SiphonLife::MaxSpeed, 1) })
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi::create(),
 					},
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(SiphonLife::DefaultSpeed, 1))
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi::create(),
 					}
 				},
 				int(HackFlags::None),
@@ -128,8 +116,8 @@ void SiphonLife::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &SiphonLife::applySiphonLife;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto restoreFunc = &SiphonLife::runRestoreTick;
+	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
@@ -137,44 +125,72 @@ void SiphonLife::registerHackables()
 	}
 }
 
-void SiphonLife::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void SiphonLife::runSiphonLife()
 {
-	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
-	
-	this->currentSpeed = *timelineSpeed;
+	this->impactSound->play();
 
-	this->applySiphonLife();
+	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
-	*timelineSpeed = this->currentSpeed;
+	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
+	{
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
+
+		icon->setScale(0.5f);
+
+		timelineEvents.push_back(TimelineEvent::create(
+				this->owner,
+				icon,
+				SiphonLife::TimeBetweenTicks * float(healIndex) + SiphonLife::StartDelay, [=]()
+			{
+				if (!this->healEffect->isPlayingAnimation())
+				{
+					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				}
+				
+				this->runRestoreTick();
+			})
+		);
+	}
+
+	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
+		TimelineEventGroup::create(timelineEvents, this, this->owner, [=]()
+		{
+			this->removeBuff();
+		})
+	));
 }
 
-NO_OPTIMIZE void SiphonLife::applySiphonLife()
+NO_OPTIMIZE void SiphonLife::runRestoreTick()
 {
-	static volatile float speedBonus;
-	static volatile float increment;
-	static volatile float* speedBonusPtr;
-	static volatile float* incrementPtr;
+	static volatile int drainAmount = 0;
+	static volatile int gainAmount = 0;
 
-	speedBonus = 0.0f;
-	increment = SiphonLife::DefaultSpeed;
-	speedBonusPtr = &speedBonus;
-	incrementPtr = &increment;
+	drainAmount = 0;
+	gainAmount = 0;
 
+	ASM(push ZDI);
 	ASM(push ZSI);
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
-	ASM(movss xmm3, [ZBX]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
-	ASM(movss [ZSI], xmm3);
-	ASM_NOP16();
+	ASM(mov ZDI, 0);
+	ASM(mov ZSI, 0);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SIPHON_LIFE);
+	ASM(inc ZDI);
+	ASM(dec ZSI);
 	HACKABLE_CODE_END();
 
-	ASM(pop ZBX);
-	ASM(pop ZSI);
+	ASM_MOV_VAR_REG(drainAmount, ZDI);
+	ASM_MOV_VAR_REG(gainAmount, ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, SiphonLife::MinSpeed, SiphonLife::MaxSpeed);
+	ASM(pop ZSI);
+	ASM(pop ZDI);
+
+	drainAmount = MathUtils::clamp(drainAmount, -1, 1);
+	gainAmount = MathUtils::clamp(gainAmount, -1, 1);
+
+	this->healSound->play();
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->caster, drainAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, gainAmount));
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -17,6 +17,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/AnubisPupCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/AnubisWarriorCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/MinotaurCombatBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/MummyPriestCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/MummyWarriorCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/Misc/RamWeakenedCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Combat/GuanoCombatBehaviorGroup.h"
