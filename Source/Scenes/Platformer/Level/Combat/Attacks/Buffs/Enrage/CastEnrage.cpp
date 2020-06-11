@@ -84,7 +84,7 @@ bool CastEnrage::isWorthUsing(PlatformerEntity* caster, const std::vector<Platfo
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Enrage>([&](Enrage* haste)
+		entityBuffBehavior->getBuff<Enrage>([&](Enrage* buff)
 		{
 			hasBuff = true;
 		});

@@ -86,12 +86,12 @@ bool CastStoneSkinHaste::isWorthUsing(PlatformerEntity* caster, const std::vecto
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
+		entityBuffBehavior->getBuff<Haste>([&](Haste* buff)
 		{
 			hasBuff = true;
 		});
 
-		entityBuffBehavior->getBuff<StoneSkin>([&](StoneSkin* stoneSkin)
+		entityBuffBehavior->getBuff<StoneSkin>([&](StoneSkin* buff)
 		{
 			hasBuff = true;
 		});

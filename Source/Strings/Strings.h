@@ -8199,6 +8199,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Inversion_Inversion : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Inversion_Inversion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Inversion_Inversion();
+		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_Inversion() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Reflect_Reflect : public LocalizedString
 	{
 	public:

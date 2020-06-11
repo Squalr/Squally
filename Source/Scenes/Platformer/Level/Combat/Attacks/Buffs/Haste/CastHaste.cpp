@@ -84,7 +84,7 @@ bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<Platfor
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
+		entityBuffBehavior->getBuff<Haste>([&](Haste* buff)
 		{
 			hasBuff = true;
 		});
