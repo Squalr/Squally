@@ -80,7 +80,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 			{
 				int restore = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
 				
-				CombatEvents::TriggerManaRestore(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
+				CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(owner, entity, restore));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;

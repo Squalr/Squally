@@ -42,6 +42,8 @@ const std::string CombatEvents::EventHealingDelt = "EVENT_COMBAT_HEALING_DELT";
 const std::string CombatEvents::EventHealing = "EVENT_COMBAT_HEALING";
 const std::string CombatEvents::EventManaRestore = "EVENT_COMBAT_MANA_RESTORE";
 const std::string CombatEvents::EventManaRestoreDelt = "EVENT_COMBAT_MANA_RESTORE_DELT";
+const std::string CombatEvents::EventManaDrain = "EVENT_COMBAT_MANA_DRAIN";
+const std::string CombatEvents::EventManaDrainDelt = "EVENT_COMBAT_MANA_DRAIN_DELT";
 const std::string CombatEvents::EventEntityBuffsModifyTimelineSpeed = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_TIMELINE_SPEED";
 const std::string CombatEvents::EventEntityBuffsModifyDamageTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_TAKEN";
 const std::string CombatEvents::EventEntityBuffsModifyDamageDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_DELT";
@@ -321,7 +323,7 @@ void CombatEvents::TriggerHealing(DamageOrHealingArgs args)
 	);
 }
 
-void CombatEvents::TriggerManaRestoreDelt(DamageOrHealingArgs args)
+void CombatEvents::TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventManaRestoreDelt,
@@ -329,13 +331,30 @@ void CombatEvents::TriggerManaRestoreDelt(DamageOrHealingArgs args)
 	);
 }
 
-void CombatEvents::TriggerManaRestore(DamageOrHealingArgs args)
+void CombatEvents::TriggerManaRestore(ManaRestoreOrDrainArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventManaRestore,
 		&args
 	);
 }
+
+void CombatEvents::TriggerManaDrainDelt(ManaRestoreOrDrainArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventManaDrainDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerManaDrain(ManaRestoreOrDrainArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventManaDrain,
+		&args
+	);
+}
+
 
 void CombatEvents::TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args)
 {

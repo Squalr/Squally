@@ -8739,6 +8739,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi : public LocalizedString
 	{
 	public:

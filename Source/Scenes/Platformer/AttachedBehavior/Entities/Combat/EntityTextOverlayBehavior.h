@@ -24,7 +24,7 @@ private:
 	typedef AttachedBehavior super;
 
 	void runHealthDelta(int delta, bool zeroAsGreen);
-	void runManaDelta(int delta);
+	void runManaDelta(int delta, bool zeroAsBlue);
 	void runLabelOverEntity(LocalizedLabel* label);
 
 	PlatformerEntity* entity;

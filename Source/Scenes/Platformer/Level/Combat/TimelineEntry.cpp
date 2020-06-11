@@ -164,6 +164,19 @@ void TimelineEntry::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrain, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
+		{
+			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->applyManaDrain(args->caster, args->damageOrHealing, args->disableBuffProcessing);
+			}
+		}
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGetAssociatedTimelineEntry, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getUserData());
@@ -279,14 +292,26 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 
 void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing)
 {
-	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
 	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		manaBehavior->setMana(mana + manaGain);
 	});
 
-	CombatEvents::TriggerManaRestoreDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), manaGain));
+	CombatEvents::TriggerManaRestoreDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain));
+}
+
+void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing)
+{
+	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
+
+	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	{
+		manaBehavior->setMana(mana + manaGain);
+	});
+
+	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)

@@ -240,6 +240,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_Magnet;
 	extern const std::string Menus_Icons_MagnifyingGlass;
 	extern const std::string Menus_Icons_Mallet;
+	extern const std::string Menus_Icons_ManaSkull;
+	extern const std::string Menus_Icons_ManaSpear;
 	extern const std::string Menus_Icons_Medals;
 	extern const std::string Menus_Icons_Meteor;
 	extern const std::string Menus_Icons_ParchmentFeather;

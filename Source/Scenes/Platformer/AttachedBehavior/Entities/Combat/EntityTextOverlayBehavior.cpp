@@ -115,7 +115,17 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runManaDelta(args->damageOrHealing);
+			this->runManaDelta(args->damageOrHealing, true);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrainDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->entity)
+		{
+			this->runManaDelta(args->damageOrHealing, true);
 		}
 	}));
 }
@@ -138,13 +148,15 @@ void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen)
 	this->runLabelOverEntity(deltaLabel);
 }
 
-void EntityTextOverlayBehavior::runManaDelta(int delta)
+void EntityTextOverlayBehavior::runManaDelta(int delta, bool zeroAsBlue)
 {
+	bool isBlue = (delta > 0 || (delta == 0 && zeroAsBlue));
+
 	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
-	LocalizedString* deltaString = Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount);
+	LocalizedString* deltaString = isBlue ? Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount) : Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);
 	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
-	deltaLabel->setTextColor(Color4B::BLUE);
+	deltaLabel->setTextColor(isBlue ? Color4B::BLUE : Color4B::PURPLE);
 
 	this->runLabelOverEntity(deltaLabel);
 }

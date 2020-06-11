@@ -58,6 +58,8 @@ public:
 	static const std::string EventHealing;
 	static const std::string EventManaRestore;
 	static const std::string EventManaRestoreDelt;
+	static const std::string EventManaDrain;
+	static const std::string EventManaDrainDelt;
 	static const std::string EventEntityBuffsModifyTimelineSpeed;
 	static const std::string EventEntityBuffsModifyDamageTaken;
 	static const std::string EventEntityBuffsModifyDamageDelt;
@@ -239,6 +241,21 @@ public:
 		}
 	};
 
+	struct ManaRestoreOrDrainArgs
+	{
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		int manaRestoreOrDrain;
+
+		// If true, this flag will prevent buffs from modifying the drain/restore
+		bool disableBuffProcessing;
+
+		ManaRestoreOrDrainArgs(PlatformerEntity* caster, PlatformerEntity* target, int manaRestoreOrDrain, bool disableBuffProcessing = false)
+			: caster(caster), target(target), manaRestoreOrDrain(manaRestoreOrDrain), disableBuffProcessing(disableBuffProcessing)
+		{
+		}
+	};
+
 	struct ModifiableDamageOrHealingArgs
 	{
 		PlatformerEntity* caster;
@@ -364,12 +381,16 @@ public:
 	static void TriggerReturnToMap();
 	static void TriggerReturnToMapRespawn();
 	static void TriggerHackableCombatCue();
+	// Functionally, damage/healing are the same, but treat 0 differently. Damage will dislay -0, gain will display +0
 	static void TriggerDamageDelt(DamageOrHealingArgs args);
 	static void TriggerHealingDelt(DamageOrHealingArgs args);
 	static void TriggerDamage(DamageOrHealingArgs args);
 	static void TriggerHealing(DamageOrHealingArgs args);
-	static void TriggerManaRestoreDelt(DamageOrHealingArgs args);
-	static void TriggerManaRestore(DamageOrHealingArgs args);
+	// Functionally, restore/drain are the same, but treat 0 differently. Drain will dislay -0, restore will display +0
+	static void TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args);
+	static void TriggerManaRestore(ManaRestoreOrDrainArgs args);
+	static void TriggerManaDrainDelt(ManaRestoreOrDrainArgs args);
+	static void TriggerManaDrain(ManaRestoreOrDrainArgs args);
 	static void TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
 	static void TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
