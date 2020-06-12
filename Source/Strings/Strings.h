@@ -15549,6 +15549,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1() = default;
 	};
 
+	class Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam() = default;
+	};
+
+	class Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_RegisterEax();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_RegisterEax() = default;
+	};
+
 	class Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:

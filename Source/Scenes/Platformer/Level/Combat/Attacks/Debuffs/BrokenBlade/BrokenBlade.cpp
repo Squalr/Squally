@@ -158,6 +158,7 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 
 	damageDelt = this->currentDamageDelt;
 
+	ASM(pushfd);
 	ASM(push ZAX);
 	ASM(push ZBX);
 
@@ -174,6 +175,7 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
+	ASM(popfd);
 
 	this->currentDamageDelt = damageDelt;
 

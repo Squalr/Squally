@@ -19,7 +19,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
 #include "Scenes/Platformer/Hackables/ScrappyClippy.h"

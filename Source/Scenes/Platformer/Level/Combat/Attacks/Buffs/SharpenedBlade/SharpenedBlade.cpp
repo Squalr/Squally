@@ -158,6 +158,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 
 	damageTaken = this->currentDamageTaken;
 
+	ASM(pushfd);
 	ASM(push ZAX);
 	ASM(push ZBX);
 
@@ -174,6 +175,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
+	ASM(popfd);
 
 	this->currentDamageTaken = damageTaken;
 

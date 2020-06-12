@@ -160,7 +160,8 @@ NO_OPTIMIZE void Undying::applyUndying()
 	static volatile int healthCopy = 0;
 
 	healthCopy = this->newHealthUndying;
-
+	
+	ASM(pushfd);
 	ASM(push ZBX);
 	ASM(push ZSI);
 	ASM_MOV_REG_VAR(ZSI, healthCopy);
@@ -176,6 +177,7 @@ NO_OPTIMIZE void Undying::applyUndying()
 
 	ASM(pop ZSI);
 	ASM(pop ZBX);
+	ASM(popfd);
 
 	this->newHealthUndying = healthCopy;
 
