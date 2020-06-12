@@ -35,7 +35,6 @@ using namespace cocos2d;
 const std::string SiphonLife::SiphonLifeIdentifier = "siphon-life";
 const int SiphonLife::HealAmount = 7;
 const float SiphonLife::TimeBetweenTicks = 0.5f;
-const int SiphonLife::HackTicks = 5;
 const float SiphonLife::StartDelay = 0.25f;
 
 SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* target)

@@ -133,8 +133,8 @@ void Fireball::registerHackables()
 		},
 	};
 
-	auto fireballFunc = &Fireball::setFireballSpeed;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)fireballFunc, codeInfoMap);
+	auto func = &Fireball::setFireballSpeed;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : hackables)
 	{

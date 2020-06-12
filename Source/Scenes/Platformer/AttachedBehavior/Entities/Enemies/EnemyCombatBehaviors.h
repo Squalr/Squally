@@ -16,6 +16,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/TrollCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/AnubisPupCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/AnubisWarriorCombatBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/LionessCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/LionManCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/MermaidCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/MinotaurCombatBehavior.h"

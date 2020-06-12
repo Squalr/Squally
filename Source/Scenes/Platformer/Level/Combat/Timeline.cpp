@@ -385,6 +385,19 @@ std::vector<PlatformerEntity*> Timeline::getSameTeamEntities(PlatformerEntity* e
 	return std::vector<PlatformerEntity*>();
 }
 
+TimelineEntry* Timeline::getAssociatedEntry(PlatformerEntity* entity)
+{
+	for (auto next : this->timelineEntries)
+	{
+		if (next->getEntity() == entity)
+		{
+			return next;
+		}
+	}
+
+	return nullptr;
+}
+
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vector<PlatformerEntity*>& friendlyEntities)
 {
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();

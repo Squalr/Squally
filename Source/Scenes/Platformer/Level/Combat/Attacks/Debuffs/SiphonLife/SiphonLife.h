@@ -20,7 +20,6 @@ public:
 	static const std::string SiphonLifeIdentifier;
 	static const int HealAmount;
 	static const float TimeBetweenTicks;
-	static const int HackTicks;
 	static const float StartDelay;
 
 protected:
