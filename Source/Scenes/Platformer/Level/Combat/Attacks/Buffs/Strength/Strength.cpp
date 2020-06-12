@@ -145,8 +145,8 @@ void Strength::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Strength::applyStrength;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Strength::applyStrength;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{

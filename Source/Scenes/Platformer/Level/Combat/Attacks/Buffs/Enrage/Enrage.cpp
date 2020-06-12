@@ -137,8 +137,8 @@ void Enrage::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Enrage::applyEnrageSpeed;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Enrage::applyEnrageSpeed;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{

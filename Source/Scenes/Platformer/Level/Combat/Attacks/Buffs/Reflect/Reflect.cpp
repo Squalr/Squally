@@ -133,8 +133,8 @@ void Reflect::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Reflect::applyReflect;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Reflect::applyReflect;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{

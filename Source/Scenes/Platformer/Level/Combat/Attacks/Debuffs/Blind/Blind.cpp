@@ -135,8 +135,8 @@ void Blind::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Blind::applyBlind;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Blind::applyBlind;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{

@@ -167,10 +167,12 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	// UR
 	this->attachedBehaviorDeserializers[AnubisPupCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AnubisPupCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[AnubisWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AnubisWarriorCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[LionManCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LionManCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[MermaidCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MermaidCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[MinotaurCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MinotaurCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[MummyPriestCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MummyPriestCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[MummyWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MummyWarriorCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TigerManCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TigerManCombatBehavior::create(owner); };
 
 	// Misc
 	this->attachedBehaviorDeserializers[RamWeakenedCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RamWeakenedCombatBehavior::create(owner); };

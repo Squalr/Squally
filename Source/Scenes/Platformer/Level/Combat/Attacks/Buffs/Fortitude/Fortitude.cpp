@@ -152,8 +152,8 @@ void Fortitude::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Fortitude::applyFortitude;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Fortitude::applyFortitude;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
