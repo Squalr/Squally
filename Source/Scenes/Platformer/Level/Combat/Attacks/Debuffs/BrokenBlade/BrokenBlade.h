@@ -28,14 +28,14 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;
 
 	void applyBrokenBlade();
 	
-	volatile int currentDamageTaken;
+	volatile int currentDamageDelt;
 	
 	cocos2d::Sprite* bubble;
 	SmartParticles* spellEffect;

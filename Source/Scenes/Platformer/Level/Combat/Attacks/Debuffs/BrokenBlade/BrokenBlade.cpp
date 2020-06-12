@@ -57,7 +57,7 @@ BrokenBlade::BrokenBlade(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageTaken = 0;
+	this->currentDamageDelt = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -138,44 +138,44 @@ void BrokenBlade::registerHackables()
 	}
 }
 
-void BrokenBlade::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void BrokenBlade::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing);
+	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
 
 	this->applyBrokenBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * BrokenBlade::MaxMultiplier));
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * BrokenBlade::MaxMultiplier));
 	
-	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
+	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
 }
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 {
-	static volatile int damageTaken;
+	static volatile int damageDelt;
 
-	damageTaken = this->currentDamageTaken;
+	damageDelt = this->currentDamageDelt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(ZAX, damageTaken);
-	ASM_MOV_REG_VAR(ZBX, 7);
+	ASM_MOV_REG_VAR(ZAX, damageDelt);
+	ASM_MOV_REG_VAR(ZBX, 3);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(cmp ZAX, ZBX);
-	ASM(cmovle ZAX, ZBX);
+	ASM(cmovge ZAX, ZBX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZBX);
+	ASM_MOV_VAR_REG(damageDelt, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 
-	this->currentDamageTaken = damageTaken;
+	this->currentDamageDelt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }

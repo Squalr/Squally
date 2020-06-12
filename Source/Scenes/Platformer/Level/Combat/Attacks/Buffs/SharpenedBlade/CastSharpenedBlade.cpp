@@ -26,7 +26,7 @@ CastSharpenedBlade* CastSharpenedBlade::create(float attackDuration, float recov
 }
 
 CastSharpenedBlade::CastSharpenedBlade(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_SwordAlt, priority, 0, 0, 4, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_SwordAlt, priority, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
