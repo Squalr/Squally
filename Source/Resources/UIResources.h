@@ -232,7 +232,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_FangBlade;
 	extern const std::string Menus_Icons_Fangs;
 	extern const std::string Menus_Icons_Fire;
-	extern const std::string Menus_Icons_FireBalls;
+	extern const std::string Menus_Icons_FireBolts;
 	extern const std::string Menus_Icons_FireSphere;
 	extern const std::string Menus_Icons_FlamingScroll;
 	extern const std::string Menus_Icons_Food;

@@ -79,7 +79,7 @@ void ArrowRain::registerHackables()
 				ArrowRain::HackIdentifierArrowRainSpeed,
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_FireBalls,
+				UIResources::Menus_Icons_ArrowRain,
 				ArrowRainSpeedPreview::create(),
 				{
 					{

@@ -57,6 +57,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Jingles::MapKey] = [=](ValueMap properties) { return (GameObject*)Jingles::deserialize(properties); };
 	this->deserializers[Juniper::MapKey] = [=](ValueMap properties) { return (GameObject*)Juniper::deserialize(properties); };
 	this->deserializers[Kringle::MapKey] = [=](ValueMap properties) { return (GameObject*)Kringle::deserialize(properties); };
+	this->deserializers[Luna::MapKey] = [=](ValueMap properties) { return (GameObject*)Luna::deserialize(properties); };
 	this->deserializers[Nessie::MapKey] = [=](ValueMap properties) { return (GameObject*)Nessie::deserialize(properties); };
 	this->deserializers[PrincessPepper::MapKey] = [=](ValueMap properties) { return (GameObject*)PrincessPepper::deserialize(properties); };
 	this->deserializers[Thatcher::MapKey] = [=](ValueMap properties) { return (GameObject*)Thatcher::deserialize(properties); };

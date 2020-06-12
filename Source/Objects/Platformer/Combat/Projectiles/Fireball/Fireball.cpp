@@ -98,7 +98,7 @@ void Fireball::registerHackables()
 				Fireball::HackIdentifierFireballSpeed,
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_FireBalls,
+				UIResources::Menus_Icons_FireBolts,
 				FireballSpeedPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterEax::create() },

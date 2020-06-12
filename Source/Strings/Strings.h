@@ -21864,6 +21864,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_BallmerPeaks_Luna : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_BallmerPeaks_Luna* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_BallmerPeaks_Luna();
+		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Luna() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie : public LocalizedString
 	{
 	public:
@@ -21892,21 +21907,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper();
 		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher();
-		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Thatcher() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar : public LocalizedString
@@ -23347,6 +23347,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_VoidStar_Ralston();
 		virtual ~Platformer_Entities_Names_Npcs_VoidStar_Ralston() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_VoidStar_Thatcher : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_VoidStar_Thatcher* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_VoidStar_Thatcher();
+		virtual ~Platformer_Entities_Names_Npcs_VoidStar_Thatcher() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_VoidStar_Xenon : public LocalizedString
