@@ -137,10 +137,10 @@
   </properties>
   <object id="989" name="warp" type="object" x="3391.45" y="1463.58" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-12-B"/>
+    <property name="from" value="bridge-12-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-9-B"/>
+    <property name="to" value="bridge-9-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -182,7 +182,7 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="971" name="caverns" type="terrain" x="866.74" y="1772" width="4479.2" height="1072">
+  <object id="971" name="caverns" type="terrain" x="866.74" y="1772" width="4133.75" height="1072">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
@@ -196,7 +196,6 @@
   </properties>
   <object id="987" name="life-stone" type="object" x="2643.43" y="1351.05" width="146" height="423"/>
   <object id="1002" name="solid" type="collision" x="892.5" y="-37.9233" width="126.878" height="1821.18"/>
-  <object id="1070" name="solid" type="collision" x="4576.56" y="231.41" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="120" name="player_layer -9">
   <properties>
@@ -207,15 +206,15 @@
   </properties>
   <object id="988" name="warp" type="object" x="3390.78" y="1520.24" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-9-B"/>
+    <property name="from" value="bridge-9-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-12-B"/>
+    <property name="to" value="bridge-12-C"/>
    </properties>
   </object>
   <object id="999" name="warp" type="object" x="2122" y="1518.33" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-9-A"/>
+    <property name="from" value="bridge-9-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-6-B"/>
@@ -223,10 +222,10 @@
   </object>
   <object id="1064" name="warp" type="object" x="3968.91" y="1515.94" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-9-C"/>
+    <property name="from" value="bridge-9-D"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-6-C"/>
+    <property name="to" value="bridge-6-D"/>
    </properties>
   </object>
  </objectgroup>
@@ -246,7 +245,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="139" name="water -9">
+ <objectgroup id="139" name="water -9" visible="0">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
@@ -269,7 +268,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="138" name="water -8">
+ <objectgroup id="138" name="water -8" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -292,14 +291,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="137" name="water -7">
+ <objectgroup id="137" name="water -7" visible="0">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1051" name="water" type="object" x="-1848.23" y="1908.6" width="8486.75" height="1755.17"/>
  </objectgroup>
- <objectgroup id="117" name="water -6 bg">
+ <objectgroup id="117" name="water -6 bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -319,7 +318,7 @@
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
-   <polygon points="2187.08,-1544.3 2346.85,-1543.37 2347.94,-211.904 4301.17,-214.096 4304.78,877.061 1832.41,861.671 1828.8,63.0723 2186.7,64.008"/>
+   <polygon points="2187.08,-1544.3 2346.85,-1543.37 2347.94,-211.904 4389.04,-220.156 4392.66,871.001 1832.41,861.671 1828.8,63.0723 2186.7,64.008"/>
   </object>
   <object id="967" name="caverns" type="terrain" x="-3340.36" y="2089.82">
    <properties>
@@ -367,10 +366,10 @@
   </properties>
   <object id="955" name="warp" type="object" x="2960.39" y="1619.67" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-6-B"/>
+    <property name="from" value="bridge-6-E"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-3-B"/>
+    <property name="to" value="bridge-3-E"/>
    </properties>
   </object>
   <object id="998" name="warp" type="object" x="2122" y="1608.67" width="256" height="256">
@@ -378,7 +377,7 @@
     <property name="from" value="bridge-6-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-9-A"/>
+    <property name="to" value="bridge-9-B"/>
    </properties>
   </object>
   <object id="1058" name="warp" type="object" x="1326.18" y="1596.06" width="256" height="256">
@@ -391,14 +390,14 @@
   </object>
   <object id="1065" name="warp" type="object" x="3967.33" y="1600.67" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-6-C"/>
+    <property name="from" value="bridge-6-D"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-9-C"/>
+    <property name="to" value="bridge-9-D"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="101" name="water -6">
+ <objectgroup id="101" name="water -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -421,7 +420,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="100" name="water -5">
+ <objectgroup id="100" name="water -5" visible="0">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -448,7 +447,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="98" name="water -4">
+ <objectgroup id="98" name="water -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -583,10 +582,10 @@
   </properties>
   <object id="937" name="warp" type="object" x="2963.06" y="1695.3" width="256" height="256">
    <properties>
-    <property name="from" value="bridge-3-B"/>
+    <property name="from" value="bridge-3-E"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-6-B"/>
+    <property name="to" value="bridge-6-E"/>
    </properties>
   </object>
   <object id="942" name="spawn-wood-door" type="object" x="422.424" y="1800.24" width="128" height="128">
@@ -608,7 +607,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="97" name="water -3">
+ <objectgroup id="97" name="water -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -625,7 +624,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="96" name="water -2">
+ <objectgroup id="96" name="water -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -642,7 +641,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="95" name="water -1">
+ <objectgroup id="95" name="water -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -659,7 +658,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="99" name="water bg">
+ <objectgroup id="99" name="water bg" visible="0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -680,7 +679,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -732,7 +731,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="94" name="water">
+ <objectgroup id="94" name="water" visible="0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -743,7 +742,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="93" name="water +1">
+ <objectgroup id="93" name="water +1" visible="0">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -754,7 +753,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="92" name="water +2">
+ <objectgroup id="92" name="water +2" visible="0">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -765,7 +764,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="91" name="water +3">
+ <objectgroup id="91" name="water +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -776,7 +775,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="90" name="water +4">
+ <objectgroup id="90" name="water +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>

@@ -35,8 +35,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_FORTITUDE 1
 
-const std::string SharpenedBlade::SharpenedBladeIdentifier = "fortitude";
-const std::string SharpenedBlade::HackIdentifierSharpenedBlade = "fortitude";
+const std::string SharpenedBlade::SharpenedBladeIdentifier = "sharpened-blade";
+const std::string SharpenedBlade::HackIdentifierSharpenedBlade = "sharpened-blade";
 
 const int SharpenedBlade::MaxMultiplier = 4;
 const int SharpenedBlade::DamageReduction = 3; // Keep in sync with asm
@@ -171,7 +171,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZBX);
+	ASM_MOV_VAR_REG(damageTaken, ZAX);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);

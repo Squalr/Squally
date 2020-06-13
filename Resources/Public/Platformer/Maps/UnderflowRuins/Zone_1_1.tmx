@@ -82,6 +82,11 @@
   <object id="1073" name="solid" type="collision" x="3412.56" y="-298.59" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="141" name="entities -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="1069" name="tiger-man" type="entity" x="2295.92" y="1048.77" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
@@ -367,7 +372,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="944" name="tigress" type="entity" x="2647.14" y="1288.17" width="128" height="128">
+  <object id="944" name="lioness" type="entity" x="2647.14" y="1288.17" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -376,7 +381,7 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="945" name="lioness" type="entity" x="2654.57" y="953.527" width="128" height="128">
+  <object id="945" name="tigress" type="entity" x="2654.57" y="953.527" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

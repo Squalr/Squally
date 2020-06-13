@@ -450,8 +450,7 @@ Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 
 Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 {
-	const float CameraZoom = this->getCameraZoom();
-	const Size CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
+	static const Size CameraSize = Director::getInstance()->getVisibleSize();
 
 	const float MinX = this->mapBounds.getMinX() + CameraSize.width / 2.0f;
 	const float MaxX = this->mapBounds.getMaxX() - CameraSize.width / 2.0f;

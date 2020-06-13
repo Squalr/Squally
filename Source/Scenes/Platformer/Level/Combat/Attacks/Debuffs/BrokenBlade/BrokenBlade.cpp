@@ -35,8 +35,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_FORTITUDE 1
 
-const std::string BrokenBlade::BrokenBladeIdentifier = "fortitude";
-const std::string BrokenBlade::HackIdentifierBrokenBlade = "fortitude";
+const std::string BrokenBlade::BrokenBladeIdentifier = "broken-blade";
+const std::string BrokenBlade::HackIdentifierBrokenBlade = "broken-blade";
 
 const int BrokenBlade::MaxMultiplier = 4;
 const int BrokenBlade::DamageReduction = 3; // Keep in sync with asm
@@ -166,12 +166,12 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM_MOV_REG_VAR(ZBX, 3);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
-	ASM(cmp ZAX, ZBX);
+	ASM(cmp ZAX, 3);
 	ASM(cmovge ZAX, ZBX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDelt, ZBX);
+	ASM_MOV_VAR_REG(damageDelt, ZAX);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
