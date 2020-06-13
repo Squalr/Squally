@@ -27,6 +27,4 @@ private:
 
 	bool noHudParent;
 	bool noCameraParent;
-
-	cocos2d::Vec3 renderPosition;
 };

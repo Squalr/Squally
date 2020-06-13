@@ -148,6 +148,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		return node;
 	}
 	
+	Hud* hudParent = GameUtils::getFirstParentOfType<Hud>(node);
 	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
 	unsigned int refIncrement = 0;
 
@@ -182,6 +183,14 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 
 		Vec3 newCoords = GameUtils::getWorldCoords3D(node);
 		Vec3 delta = worldCoords - newCoords;
+
+		// HUDs behave differently than expected due to their render repositioning. Correct for this.
+		Hud* newHudParent = GameUtils::getFirstParentOfType<Hud>(node);
+
+		if (newHudParent != nullptr && newHudParent != hudParent)
+		{
+			delta += newHudParent->getPosition3D();
+		}
 
 		node->setPosition3D(delta);
 	}
@@ -356,16 +365,8 @@ Rect GameUtils::getScreenBounds(Node* node)
 		return Rect::ZERO;
 	}
 
-	Hud* hudParent = GameUtils::getFirstParentOfType<Hud>(node);
 	Rect worldRect = node->getBoundingBoxNoTransform();
 	Vec3 worldCoordsA = GameUtils::getWorldCoords3D(node);
-
-	// Special case for HUDs! These are moved to their parent relative origin (0, 0), but then relocated for drawing. We actually want their draw position.
-	if (hudParent != nullptr)
-	{
-		worldCoordsA += hudParent->getRenderPosition();
-	}
-
 	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f) * GameUtils::getScale(node);
 
 	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
