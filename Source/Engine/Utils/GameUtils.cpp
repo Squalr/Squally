@@ -148,15 +148,15 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		return node;
 	}
 	
-	Hud* hudParent = GameUtils::getFirstParentOfType<Hud>(node);
+	Node* originalParent = node->getParent();
 	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
 	unsigned int refIncrement = 0;
 
 	// Remove child from current parent
-	if (node->getParent() != nullptr)
+	if (originalParent != nullptr)
 	{
 		node->retain();
-		node->getParent()->removeChildNoExit(node);
+		originalParent->removeChildNoExit(node);
 		node->softRelease();
 	}
 
@@ -184,12 +184,15 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		Vec3 newCoords = GameUtils::getWorldCoords3D(node);
 		Vec3 delta = worldCoords - newCoords;
 
-		// HUDs behave differently than expected due to their render repositioning. Correct for this.
-		Hud* newHudParent = GameUtils::getFirstParentOfType<Hud>(node);
-
-		if (newHudParent != nullptr && newHudParent != hudParent)
+		// Correct a strange bug where changing from a null parent to a HUD causes wrong positioning.
+		if (originalParent == nullptr)
 		{
-			delta += newHudParent->getPosition3D();
+			Hud* newHudParent = GameUtils::getFirstParentOfType<Hud>(node);
+
+			if (newHudParent != nullptr)
+			{
+				delta += newHudParent->getPosition3D();
+			}
 		}
 
 		node->setPosition3D(delta);
