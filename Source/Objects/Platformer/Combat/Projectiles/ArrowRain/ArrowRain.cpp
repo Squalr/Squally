@@ -87,7 +87,7 @@ void ArrowRain::registerHackables()
 					},
 				},
 				int(HackFlags::None),
-				12.0f,
+				ArrowRain::StartDelay + ArrowRain::TimeBetweenTicks * float(ArrowRain::TickCount),
 				0.0f
 			)
 		},

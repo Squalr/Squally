@@ -191,23 +191,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1078" name="tiger-man" type="entity" x="1490.29" y="1435.32" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="1079" name="lion-man" type="entity" x="1497.72" y="1100.68" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="1080" name="lioness" type="entity" x="1854.18" y="1432.97" width="128" height="128">
+  <object id="1080" name="tigress" type="entity" x="1854.18" y="1432.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-B"/>
     <property name="scale" type="float" value="0.75"/>

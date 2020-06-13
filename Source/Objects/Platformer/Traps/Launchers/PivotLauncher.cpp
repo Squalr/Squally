@@ -186,6 +186,14 @@ void PivotLauncher::shoot()
 		return;
 	}
 	
+	float thisDepth = GameUtils::getDepth(this);
+	float targetDepth = GameUtils::getDepth(this->target);
+
+	if (std::abs(thisDepth - targetDepth) > 24.0f)
+	{
+		return;
+	}
+	
 	Projectile* projectile = this->projectilePool->getNextProjectile();
 
 	projectile->setPosition(projectile->getPosition() + this->getProjectileSpawnPosition());
@@ -201,6 +209,14 @@ void PivotLauncher::faceTarget()
 	}
 	else if (this->target != nullptr)
 	{
+		float thisDepth = GameUtils::getDepth(this);
+		float targetDepth = GameUtils::getDepth(this->target);
+
+		if (std::abs(thisDepth - targetDepth) > 24.0f)
+		{
+			return;
+		}
+
 		Vec2 thisCoords = GameUtils::getWorldCoords(this->launcherAnimations);
 		Vec2 targetCoords = GameUtils::getWorldCoords(this->target);
 

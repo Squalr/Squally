@@ -25,13 +25,16 @@ public:
 	static const std::string MapKeyCollisionTypeSolidNpc;
 	static const std::string MapKeyCollisionTypeWater;
 	static const std::string MapKeyCollisionTypeDamage;
+	static const std::string MapKeyCollisionTypeKill;
 
-private:
-	typedef GlobalNode super;
+protected:
 	PlatformerCollisionMapping();
-	~PlatformerCollisionMapping();
+	virtual ~PlatformerCollisionMapping();
 
 	void initializeListeners() override;
 
+private:
+	typedef GlobalNode super;
+	
 	static PlatformerCollisionMapping* instance;
 };
