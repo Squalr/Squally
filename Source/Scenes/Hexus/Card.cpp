@@ -184,9 +184,9 @@ void Card::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cardSelect->setMouseOverCallback(CC_CALLBACK_0(Card::onMouseOver, this));
-	this->cardSelect->setMouseOutCallback(CC_CALLBACK_0(Card::onMouseOut, this));
-	this->cardSelect->setMouseClickCallback(CC_CALLBACK_0(Card::onMouseClick, this));
+	this->cardSelect->setMouseOverCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseOver(); });
+	this->cardSelect->setMouseOutCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseOut(); });
+	this->cardSelect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseClick(); });
 }
 
 void Card::addOperation(Operation operation)

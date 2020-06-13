@@ -87,7 +87,7 @@
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
@@ -95,7 +95,7 @@
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
    </properties>
   </object>
  </objectgroup>
@@ -148,7 +148,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="119" name="terrain -9">
+ <objectgroup id="119" name="terrain -9" visible="0">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
@@ -376,7 +376,7 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="945" name="tigress" type="entity" x="2654.57" y="953.527" width="128" height="128">
+  <object id="945" name="lioness" type="entity" x="2654.57" y="953.527" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

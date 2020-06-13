@@ -7,6 +7,7 @@
 #include "cocos/2d/CCScene.h"
 #include "cocos/platform/CCFileUtils.h"
 
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/UIBoundObject.h"
 
 using namespace cocos2d;
@@ -183,11 +184,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		Vec3 delta = worldCoords - newCoords;
 
 		node->setPosition3D(delta);
-
-		if (GameUtils::getWorldCoords3D(node).distance(worldCoords) > 1.0f)
-		{
-			int pissant = 420;
-		}
 	}
 
 	while (node->getReferenceCount() > 1 && refIncrement > 0)
@@ -256,6 +252,10 @@ float GameUtils::getScale(cocos2d::Node* node)
 
 Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 {
+	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound);
+
+	return Vec2(worldCoords3d.x, worldCoords3d.y);
+	/*
 	if (node == nullptr)
 	{
 		return Vec2::ZERO;
@@ -265,6 +265,7 @@ Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f);
 	Node* parent = node->getParent();
 	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
+	// Hud* hudParent = checkForUIBound ? GameUtils::getFirstParentOfType<Hud>(parent) : nullptr;
 
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
@@ -282,6 +283,7 @@ Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 	}
 
 	return resultCoords;
+	*/
 }
 
 Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
@@ -296,7 +298,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	Node* parent = node->getParent();
 	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
 
-	// Special conditions for a ui-bound object
+	// Special conditions for objects that track the camera
 	if (uiBoundObjectParent != nullptr)
 	{
 		uiBoundObjectParent->pushRealPosition();
@@ -307,7 +309,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 		resultCoords = parent->convertToWorldSpace3(resultCoords);
 	}
 
-	// Special conditions for a ui-bound object
+	// Special conditions for objects that track the camera
 	if (uiBoundObjectParent != nullptr)
 	{
 		uiBoundObjectParent->popRealPosition();
@@ -354,8 +356,16 @@ Rect GameUtils::getScreenBounds(Node* node)
 		return Rect::ZERO;
 	}
 
+	Hud* hudParent = GameUtils::getFirstParentOfType<Hud>(node);
 	Rect worldRect = node->getBoundingBoxNoTransform();
 	Vec3 worldCoordsA = GameUtils::getWorldCoords3D(node);
+
+	// Special case for HUDs! These are moved to their parent relative origin (0, 0), but then relocated for drawing. We actually want their draw position.
+	if (hudParent != nullptr)
+	{
+		worldCoordsA += hudParent->getRenderPosition();
+	}
+
 	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f) * GameUtils::getScale(node);
 
 	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);

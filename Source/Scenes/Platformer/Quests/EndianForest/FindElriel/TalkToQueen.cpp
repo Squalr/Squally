@@ -111,7 +111,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 

@@ -36,7 +36,7 @@ TigerMan::~TigerMan()
 
 Vec2 TigerMan::getDialogueOffset()
 {
-	return Vec2(-16.0f, -212.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* TigerMan::getEntityName()

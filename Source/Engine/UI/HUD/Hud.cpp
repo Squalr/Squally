@@ -22,6 +22,7 @@ Hud::Hud()
 {
 	this->noHudParent = GameUtils::getFirstParentOfType<Hud>(this) == nullptr;
 	this->noCameraParent = GameUtils::getFirstParentOfType<GameCamera>(this) == nullptr;
+	this->renderPosition = Vec3::ZERO;
 }
 
 Hud::~Hud()
@@ -38,6 +39,11 @@ void Hud::onEnter()
 void Hud::update(float dt)
 {
 	super::update(dt);
+}
+
+Vec3 Hud::getRenderPosition()
+{
+	return this->renderPosition;
 }
 
 void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
@@ -58,5 +64,9 @@ void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parent
 		}
 	}
 
+	this->renderPosition = this->getPosition3D();
+
 	super::visit(renderer, parentTransform, parentFlags);
+
+	this->setPosition3D(Vec3::ZERO);
 }

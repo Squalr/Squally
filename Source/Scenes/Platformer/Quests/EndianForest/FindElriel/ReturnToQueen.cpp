@@ -147,7 +147,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 
@@ -196,7 +196,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 

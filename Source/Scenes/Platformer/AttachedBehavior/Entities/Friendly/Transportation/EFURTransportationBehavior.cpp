@@ -103,7 +103,6 @@ void EFURTransportationBehavior::onLoad()
 
 		interactionBehavior->addDialogueSet(innerChoices);
 
-		/*
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Dialogue_Transportation_AreWeThereYet::create(),
 			[=]()
@@ -120,12 +119,11 @@ void EFURTransportationBehavior::onLoad()
 					{
 						interactionBehavior->setActiveDialogueSet(innerChoices);
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterQuestion1
+					Voices::GetNextVoiceQuestion()
 				));
 			}),
 			1.0f
 		);
-		*/
 
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Dialogue_Transportation_IForgotSomething::create(),
@@ -146,7 +144,7 @@ void EFURTransportationBehavior::onLoad()
 							this->backPortal->loadMap();
 						}
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterQuestion1
+					Voices::GetNextVoiceQuestion()
 				));
 			}),
 			0.9f

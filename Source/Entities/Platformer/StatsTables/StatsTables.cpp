@@ -126,7 +126,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[AnubisPup::MapKey] = Stats(26, 12, 34);
 	StatsTables::StatsTable[AnubisWarrior::MapKey] = Stats(35, 8, 44);
 	StatsTables::StatsTable[LionMan::MapKey] = Stats(28, 7, 28);
-	StatsTables::StatsTable[Lioness::MapKey] = Stats(23, 9, 28);
+	StatsTables::StatsTable[Lioness::MapKey] = Stats(33, 9, 28);
 	StatsTables::StatsTable[Medusa::MapKey] = Stats(37, 8, 28);
 	StatsTables::StatsTable[Mermaid::MapKey] = Stats(26, 8, 28);
 	StatsTables::StatsTable[Minotaur::MapKey] = Stats(29, 8, 28);
