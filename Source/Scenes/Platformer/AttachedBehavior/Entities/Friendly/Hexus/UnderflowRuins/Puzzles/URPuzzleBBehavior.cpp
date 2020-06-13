@@ -134,5 +134,5 @@ StateOverride* URPuzzleBBehavior::getStateOverride()
 
 std::vector<TutorialBase*> URPuzzleBBehavior::getTutorials()
 {
-	return { TutorialPuzzleB::create() };
+	return { };
 }

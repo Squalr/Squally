@@ -35,7 +35,7 @@ PocketPoolURGeneric::PocketPoolURGeneric(ValueMap& properties) : super(propertie
 		{
 			AlchemyPoolTier2::create(),
 			SmithingPoolTier2::create(),
-			PotionPoolTier2::create()
+			// PotionPoolTier2::create()
 		})
 	})
 {

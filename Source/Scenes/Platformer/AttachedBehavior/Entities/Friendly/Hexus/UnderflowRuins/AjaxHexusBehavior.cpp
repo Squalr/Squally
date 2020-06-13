@@ -50,7 +50,7 @@ std::string AjaxHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> AjaxHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 7.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

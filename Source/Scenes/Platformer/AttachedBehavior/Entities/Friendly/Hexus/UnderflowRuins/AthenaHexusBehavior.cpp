@@ -50,7 +50,7 @@ std::string AthenaHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> AthenaHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 5.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 6.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

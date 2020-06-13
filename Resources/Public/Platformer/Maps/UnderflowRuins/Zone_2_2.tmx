@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="7"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -241,7 +241,7 @@
   </properties>
   <object id="943" name="mermaid" type="entity" x="3456.12" y="1067.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-C"/>
+    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-D"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

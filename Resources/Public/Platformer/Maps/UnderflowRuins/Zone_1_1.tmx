@@ -85,6 +85,7 @@
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="is-hackable" type="bool" value="true"/>
+   <property name="rubber-band" type="int" value="6"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1069" name="tiger-man" type="entity" x="2295.92" y="1048.77" width="128" height="128">

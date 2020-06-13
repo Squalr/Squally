@@ -36,7 +36,7 @@ Minotaur::~Minotaur()
 
 Vec2 Minotaur::getDialogueOffset()
 {
-	return Vec2(-48.0f, -196.0f);
+	return Vec2(-32.0f, 0.0f);
 }
 
 LocalizedString* Minotaur::getEntityName()

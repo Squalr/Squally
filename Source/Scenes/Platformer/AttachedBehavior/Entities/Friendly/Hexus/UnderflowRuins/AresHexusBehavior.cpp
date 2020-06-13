@@ -50,7 +50,7 @@ std::string AresHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> AresHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 1.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 0.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

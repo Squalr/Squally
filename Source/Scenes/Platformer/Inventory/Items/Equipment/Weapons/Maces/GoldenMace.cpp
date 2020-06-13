@@ -20,9 +20,9 @@ GoldenMace* GoldenMace::create()
 	return instance;
 }
 
-GoldenMace::GoldenMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 32, 40, ItemStats(
+GoldenMace::GoldenMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 12, 15, ItemStats(
 	// Health
-	0,
+	5,
 	// Mana
 	0,
 	// Attack

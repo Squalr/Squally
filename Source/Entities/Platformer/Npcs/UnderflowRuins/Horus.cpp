@@ -36,7 +36,7 @@ Horus::~Horus()
 
 Vec2 Horus::getDialogueOffset()
 {
-	return Vec2(-32.0f, -128.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Horus::getEntityName()

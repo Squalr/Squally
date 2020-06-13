@@ -21,7 +21,7 @@ HexusPoolURGeneric* HexusPoolURGeneric::create()
 }
 
 HexusPoolURGeneric::HexusPoolURGeneric() : super(ValueMap(), "hexus-pool-ur-generic", SampleMethod::Random, 1, 2,
-	{ CardPoolTier2::create(SampleMethod::Guarantee, 1, 1), AlchemyPoolTier2::create(SampleMethod::Random, 1, 1), SmithingPoolTier2::create(SampleMethod::Random, 1, 1) })
+	{ CardPoolTier2::create(SampleMethod::Guarantee, 1, 1), AlchemyPoolTier2::create(SampleMethod::Random, 1, 1), SmithingPoolTier2::create(SampleMethod::Random, 1, 2) })
 {
 }
 

@@ -57,7 +57,7 @@ SharpenedBlade::SharpenedBlade(PlatformerEntity* caster, PlatformerEntity* targe
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageTaken = 0;
+	this->currentDamageDelt = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -138,25 +138,25 @@ void SharpenedBlade::registerHackables()
 	}
 }
 
-void SharpenedBlade::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void SharpenedBlade::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing);
+	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
 
 	this->applySharpenedBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
 	
-	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
+	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
 }
 
 NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 {
 	static volatile int damageTaken;
 
-	damageTaken = this->currentDamageTaken;
+	damageTaken = this->currentDamageDelt;
 
 	ASM(pushfd);
 	ASM(push ZAX);
@@ -177,7 +177,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM(pop ZAX);
 	ASM(popfd);
 
-	this->currentDamageTaken = damageTaken;
+	this->currentDamageDelt = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }

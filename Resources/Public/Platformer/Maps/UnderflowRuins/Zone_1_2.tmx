@@ -189,6 +189,7 @@
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
+   <property name="rubber-band" type="int" value="6"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1080" name="tigress" type="entity" x="1854.18" y="1432.97" width="128" height="128">

@@ -36,7 +36,7 @@ Mermaid::~Mermaid()
 
 Vec2 Mermaid::getDialogueOffset()
 {
-	return Vec2(-32.0f, -180.0f);
+	return Vec2(-32.0f, 0.0f);
 }
 
 LocalizedString* Mermaid::getEntityName()

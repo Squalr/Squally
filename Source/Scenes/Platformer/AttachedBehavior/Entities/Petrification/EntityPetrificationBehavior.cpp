@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/HexusBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
@@ -173,6 +174,11 @@ void EntityPetrificationBehavior::onLoad()
 	{
 		healthBehavior->kill();
 	});
+
+	this->entity->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+	{
+		hexusBehavior->setVisible(false);
+	});
 	
 	this->entity->getAnimations()->setVisible(false);
 	this->toggleQueryable(true);
@@ -255,6 +261,11 @@ void EntityPetrificationBehavior::unpetrify()
 	if (this->entity != nullptr)
 	{
 		this->entity->getAnimations()->setVisible(true);
+
+		this->entity->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+		{
+			hexusBehavior->setVisible(true);
+		});
 
 		this->entity->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{

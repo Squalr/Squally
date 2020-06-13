@@ -50,7 +50,7 @@ std::string HeraHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> HeraHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 0.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 2.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

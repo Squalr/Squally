@@ -50,7 +50,7 @@ std::string AngelHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> AngelHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 4.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 5.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

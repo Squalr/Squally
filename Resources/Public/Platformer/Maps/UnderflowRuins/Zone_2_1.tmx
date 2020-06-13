@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="904">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="906">
+ <properties>
+  <property name="rubber-band" type="int" value="7"/>
+ </properties>
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -7,7 +10,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="7"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -285,7 +288,14 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="890" name="minotaur" type="entity" x="1637.53" y="1756.92" width="128" height="128">
+  <object id="890" name="minotaur" type="entity" x="1452.68" y="1714.5" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="904" name="minotaur" type="entity" x="1802.67" y="1717.82" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

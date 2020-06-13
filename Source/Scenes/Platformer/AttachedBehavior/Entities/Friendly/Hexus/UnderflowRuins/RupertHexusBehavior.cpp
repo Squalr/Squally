@@ -50,7 +50,7 @@ std::string RupertHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> RupertHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 3.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

@@ -50,7 +50,7 @@ std::string PoseidonHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> PoseidonHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 3.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{

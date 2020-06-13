@@ -18,9 +18,14 @@ SmithingPoolTier1* SmithingPoolTier1::create(SampleMethod sampleMethod, int min,
 
 SmithingPoolTier1::SmithingPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "smithing-pool-t1", sampleMethod, min, max)
 {
+	// Misc
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Common));
+
+	// Metals
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Rare));
+
+	// Gems
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Epic));
 }
 

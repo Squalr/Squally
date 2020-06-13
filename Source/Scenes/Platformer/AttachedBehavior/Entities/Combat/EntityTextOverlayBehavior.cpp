@@ -125,7 +125,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runManaDelta(args->damageOrHealing, true);
+			this->runManaDelta(args->damageOrHealing, false);
 		}
 	}));
 }

@@ -129,7 +129,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Lioness::MapKey] = Stats(33, 9, 28);
 	StatsTables::StatsTable[Medusa::MapKey] = Stats(37, 8, 28);
 	StatsTables::StatsTable[Mermaid::MapKey] = Stats(26, 8, 28);
-	StatsTables::StatsTable[Minotaur::MapKey] = Stats(29, 8, 28);
+	StatsTables::StatsTable[Minotaur::MapKey] = Stats(24, 8, 28);
 	StatsTables::StatsTable[MummyPriest::MapKey] = Stats(21, 30, 34);
 	StatsTables::StatsTable[MummyWarrior::MapKey] = Stats(14, 8, 36);
 	StatsTables::StatsTable[Osiris::MapKey] = Stats(133, 58, 92);

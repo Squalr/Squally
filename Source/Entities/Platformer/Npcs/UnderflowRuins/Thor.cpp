@@ -36,7 +36,7 @@ Thor::~Thor()
 
 Vec2 Thor::getDialogueOffset()
 {
-	return Vec2(-32.0f, -144.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Thor::getEntityName()
