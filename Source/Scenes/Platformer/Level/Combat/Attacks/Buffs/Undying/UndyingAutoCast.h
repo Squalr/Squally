@@ -23,7 +23,7 @@ protected:
 	UndyingAutoCast(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~UndyingAutoCast();
 
-	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;

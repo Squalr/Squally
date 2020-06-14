@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
+
 namespace cocos2d
 {
 	class Node;
@@ -226,6 +228,66 @@ public:
 		}
 	};
 
+	struct ModifyableDamageOrHealing
+	{
+		int* damageOrHealing;
+		int originalDamageOrHealing;
+		int originalDamageOrHealingBeforeBuffs;
+		int originalDamageOrHealingBeforeBuffsAndStats;
+		AbilityType abilityType;
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		std::function<void()> handleCallback;
+
+		ModifyableDamageOrHealing(
+			int* damageOrHealing,
+			int originalDamageOrHealing,
+			int originalDamageOrHealingBeforeBuffs,
+			int originalDamageOrHealingBeforeBuffsAndStats,
+			AbilityType abilityType, 
+			PlatformerEntity* caster,
+			PlatformerEntity* target,
+			std::function<void()> handleCallback
+		)
+			: damageOrHealing(damageOrHealing),
+				originalDamageOrHealing(originalDamageOrHealing),
+				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
+				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
+				abilityType(abilityType),
+				caster(caster),
+				target(target),
+				handleCallback(handleCallback)
+		{
+		}
+	};
+
+	struct DamageOrHealing
+	{
+		int damageOrHealing;
+		int originalDamageOrHealingBeforeBuffs;
+		int originalDamageOrHealingBeforeBuffsAndStats;
+		AbilityType abilityType;
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+
+		DamageOrHealing(
+			int damageOrHealing,
+			int originalDamageOrHealingBeforeBuffs,
+			int originalDamageOrHealingBeforeBuffsAndStats,
+			AbilityType abilityType, 
+			PlatformerEntity* caster,
+			PlatformerEntity* target
+		)
+			: damageOrHealing(damageOrHealing),
+				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
+				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
+				abilityType(abilityType),
+				caster(caster),
+				target(target)
+		{
+		}
+	};
+
 	struct DamageOrHealingArgs
 	{
 		PlatformerEntity* caster;
@@ -382,10 +444,10 @@ public:
 	static void TriggerReturnToMapRespawn();
 	static void TriggerHackableCombatCue();
 	// Functionally, damage/healing are the same, but treat 0 differently. Damage will dislay -0, gain will display +0
-	static void TriggerDamageDelt(DamageOrHealingArgs args);
-	static void TriggerHealingDelt(DamageOrHealingArgs args);
-	static void TriggerDamage(DamageOrHealingArgs args);
-	static void TriggerHealing(DamageOrHealingArgs args);
+	static void TriggerDamageDelt(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerHealingDelt(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerDamage(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerHealing(CombatEvents::DamageOrHealingArgs args);
 	// Functionally, restore/drain are the same, but treat 0 differently. Drain will dislay -0, restore will display +0
 	static void TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args);
 	static void TriggerManaRestore(ManaRestoreOrDrainArgs args);
@@ -400,6 +462,6 @@ public:
 	static void TriggerEntityStatsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityDamageDeltModifyComplete(DamageOrHealingArgs args);
-	static void TriggerEntityDamageTakenModifyComplete(DamageOrHealingArgs args);
+	static void TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs args);
 };

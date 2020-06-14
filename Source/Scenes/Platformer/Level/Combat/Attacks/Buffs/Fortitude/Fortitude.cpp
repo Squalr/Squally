@@ -161,7 +161,7 @@ void Fortitude::registerHackables()
 	}
 }
 
-void Fortitude::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Fortitude::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

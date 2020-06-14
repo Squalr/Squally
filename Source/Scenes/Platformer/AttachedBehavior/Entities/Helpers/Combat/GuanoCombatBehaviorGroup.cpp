@@ -38,6 +38,7 @@ GuanoCombatBehaviorGroup::~GuanoCombatBehaviorGroup()
 
 void GuanoCombatBehaviorGroup::onLoad()
 {
+	super::onLoad();
 }
 
 void GuanoCombatBehaviorGroup::onDisable()

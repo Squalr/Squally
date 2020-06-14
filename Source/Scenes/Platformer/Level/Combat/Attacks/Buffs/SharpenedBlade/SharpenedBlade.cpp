@@ -138,7 +138,7 @@ void SharpenedBlade::registerHackables()
 	}
 }
 
-void SharpenedBlade::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
+void SharpenedBlade::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 

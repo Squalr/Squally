@@ -291,7 +291,7 @@ void CombatEvents::TriggerHackableCombatCue()
 	);
 }
 
-void CombatEvents::TriggerDamageDelt(DamageOrHealingArgs args)
+void CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventDamageDelt,
@@ -299,7 +299,7 @@ void CombatEvents::TriggerDamageDelt(DamageOrHealingArgs args)
 	);
 }
 
-void CombatEvents::TriggerHealingDelt(DamageOrHealingArgs args)
+void CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventHealingDelt,
@@ -307,7 +307,7 @@ void CombatEvents::TriggerHealingDelt(DamageOrHealingArgs args)
 	);
 }
 
-void CombatEvents::TriggerDamage(DamageOrHealingArgs args)
+void CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventDamage,
@@ -315,7 +315,7 @@ void CombatEvents::TriggerDamage(DamageOrHealingArgs args)
 	);
 }
 
-void CombatEvents::TriggerHealing(DamageOrHealingArgs args)
+void CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventHealing,
@@ -428,7 +428,7 @@ void CombatEvents::TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealing
 	);
 }
 
-void CombatEvents::TriggerEntityDamageDeltModifyComplete(DamageOrHealingArgs args)
+void CombatEvents::TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventEntityModifyDamageDeltComplete,
@@ -436,7 +436,7 @@ void CombatEvents::TriggerEntityDamageDeltModifyComplete(DamageOrHealingArgs arg
 	);
 }
 
-void CombatEvents::TriggerEntityDamageTakenModifyComplete(DamageOrHealingArgs args)
+void CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventEntityModifyDamageTakenComplete,

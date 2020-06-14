@@ -138,7 +138,7 @@ void BrokenBlade::registerHackables()
 	}
 }
 
-void BrokenBlade::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
+void BrokenBlade::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 

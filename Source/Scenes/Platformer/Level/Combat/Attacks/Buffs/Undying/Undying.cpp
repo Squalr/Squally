@@ -137,7 +137,7 @@ void Undying::registerHackables()
 	}
 }
 
-void Undying::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Undying::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

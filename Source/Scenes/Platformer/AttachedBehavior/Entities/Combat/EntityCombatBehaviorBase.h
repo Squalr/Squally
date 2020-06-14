@@ -1,18 +1,20 @@
 #pragma once
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
+#include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
 class PlatformerAttack;
 class PlatformerEntity;
 
-class EntityCombatBehaviorBase : public AttachedBehavior
+class EntityCombatBehaviorBase : public AttachedBehaviorGroup
 {
 public:
 	void setTimelineSpeed(float timelineSpeed);
 	float getTimelineSpeed();
 
 protected:
-	EntityCombatBehaviorBase(GameObject* owner);
+	EntityCombatBehaviorBase(GameObject* owner, std::vector<AttachedBehavior*> attachedBehavior = { });
 	virtual ~EntityCombatBehaviorBase();
 	
 	void onLoad() override;
@@ -21,10 +23,10 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef AttachedBehavior super;
+	typedef AttachedBehaviorGroup super;
 	
-	virtual void onBeforeDamageTaken(int* damage, bool* blocked, std::function<void()> handleCallback);
-	virtual void onBeforeDamageDelt(int* damage, std::function<void()> handleCallback);
+	virtual void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
+	virtual void onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
 
 	int bonusArmor;
 	int bonusAttack;

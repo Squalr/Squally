@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class Squally;
 
-class SquallyCombatBehaviorGroup : public AttachedBehaviorGroup
+class SquallyCombatBehaviorGroup : public EntityCombatBehaviorBase
 {
 public:
 	static SquallyCombatBehaviorGroup* create(GameObject* owner);
@@ -24,5 +24,5 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef AttachedBehaviorGroup super;
+	typedef EntityCombatBehaviorBase super;
 };

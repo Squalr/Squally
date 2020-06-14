@@ -52,7 +52,7 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Defend::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 	

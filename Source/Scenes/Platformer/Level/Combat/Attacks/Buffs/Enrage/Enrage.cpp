@@ -155,12 +155,12 @@ void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> h
 	*timelineSpeed = this->currentSpeed;
 }
 
-void Enrage::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Enrage::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 }
 
-void Enrage::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
+void Enrage::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 }

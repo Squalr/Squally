@@ -32,7 +32,7 @@ UndyingAutoCast::~UndyingAutoCast()
 {
 }
 
-void UndyingAutoCast::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void UndyingAutoCast::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
+#include "Events/CombatEvents.h"
 
 namespace cocos2d
 {
@@ -27,79 +28,6 @@ public:
 		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
 	};
 
-	enum class AbilityType
-	{
-		Physical,
-		Holy,
-		Fire,
-		Frost,
-		Water,
-		Arcane,
-		Nature,
-		Shadow,
-		Lightning,
-	};
-
-	struct ModifyableDamageOrHealing
-	{
-		int* damageOrHealing;
-		int originalDamageOrHealing;
-		int originalDamageOrHealingBeforeBuffs;
-		int originalDamageOrHealingBeforeBuffsAndStats;
-		AbilityType abilityType;
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		std::function<void()> handleCallback;
-
-		ModifyableDamageOrHealing(
-			int* damageOrHealing,
-			int originalDamageOrHealing,
-			int originalDamageOrHealingBeforeBuffs,
-			int originalDamageOrHealingBeforeBuffsAndStats,
-			AbilityType abilityType, 
-			PlatformerEntity* caster,
-			PlatformerEntity* target,
-			std::function<void()> handleCallback
-		)
-			: damageOrHealing(damageOrHealing),
-				originalDamageOrHealing(originalDamageOrHealing),
-				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
-				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
-				abilityType(abilityType),
-				caster(caster),
-				target(target),
-				handleCallback(handleCallback)
-		{
-		}
-	};
-
-	struct DamageOrHealing
-	{
-		int damageOrHealing;
-		int originalDamageOrHealingBeforeBuffs;
-		int originalDamageOrHealingBeforeBuffsAndStats;
-		AbilityType abilityType;
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-
-		DamageOrHealing(
-			int damageOrHealing,
-			int originalDamageOrHealingBeforeBuffs,
-			int originalDamageOrHealingBeforeBuffsAndStats,
-			AbilityType abilityType, 
-			PlatformerEntity* caster,
-			PlatformerEntity* target
-		)
-			: damageOrHealing(damageOrHealing),
-				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
-				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
-				abilityType(abilityType),
-				caster(caster),
-				target(target)
-		{
-		}
-	};
-
 	void setBuffIndex(int index, int maxIndex);
 	bool hasBuffIcon();
 	void elapse(float dt);
@@ -121,12 +49,12 @@ protected:
 	virtual void registerHackables();
 	virtual void onTimelineReset(bool wasInterrupt);
 	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
-	virtual void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing);
-	virtual void onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing);
-	virtual void onAfterDamageTaken(DamageOrHealing damageOrHealing);
-	virtual void onAfterDamageDelt(DamageOrHealing damageOrHealing);
-	virtual void onBeforeHealingTaken(ModifyableDamageOrHealing damageOrHealing);
-	virtual void onBeforeHealingDelt(ModifyableDamageOrHealing damageOrHealing);
+	virtual void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
+	virtual void onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
+	virtual void onAfterDamageTaken(CombatEvents::DamageOrHealing damageOrHealing);
+	virtual void onAfterDamageDelt(CombatEvents::DamageOrHealing damageOrHealing);
+	virtual void onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
+	virtual void onBeforeHealingDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
 
 	BuffData buffData;
 	PlatformerEntity* caster;

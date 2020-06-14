@@ -142,7 +142,7 @@ void Reflect::registerHackables()
 	}
 }
 
-void Reflect::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Reflect::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

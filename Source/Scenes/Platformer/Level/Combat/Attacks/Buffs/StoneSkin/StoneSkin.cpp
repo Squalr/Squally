@@ -187,7 +187,7 @@ void StoneSkin::registerHackables()
 	}
 }
 
-void StoneSkin::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void StoneSkin::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

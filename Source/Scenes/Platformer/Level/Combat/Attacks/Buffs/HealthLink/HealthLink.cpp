@@ -136,7 +136,7 @@ void HealthLink::registerHackables()
 	}
 }
 
-void HealthLink::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

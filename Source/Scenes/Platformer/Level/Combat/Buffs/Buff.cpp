@@ -9,7 +9,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Events/CombatEvents.h"
 
 #include "Resources/UIResources.h"
 
@@ -100,7 +99,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->owner && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(ModifyableDamageOrHealing(
+			this->onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing(
 				args->damageOrHealing,
 				*(args->damageOrHealing),
 				*(args->damageOrHealing),
@@ -119,7 +118,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster)
 		{
-			this->onAfterDamageDelt(DamageOrHealing(
+			this->onAfterDamageDelt(CombatEvents::DamageOrHealing(
 				args->damageOrHealing,
 				args->damageOrHealing,
 				args->damageOrHealing,
@@ -136,7 +135,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(ModifyableDamageOrHealing(
+			this->onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing(
 				args->damageOrHealing,
 				*(args->damageOrHealing),
 				*(args->damageOrHealing),
@@ -155,7 +154,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner)
 		{
-			this->onAfterDamageTaken(DamageOrHealing(
+			this->onAfterDamageTaken(CombatEvents::DamageOrHealing(
 				args->damageOrHealing,
 				args->damageOrHealing,
 				args->damageOrHealing,
@@ -172,7 +171,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeHealingDelt(ModifyableDamageOrHealing(
+			this->onBeforeHealingDelt(CombatEvents::ModifyableDamageOrHealing(
 				args->damageOrHealing,
 				*(args->damageOrHealing),
 				*(args->damageOrHealing),
@@ -191,7 +190,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onBeforeHealingTaken(ModifyableDamageOrHealing(
+			this->onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing(
 				args->damageOrHealing,
 				*(args->damageOrHealing),
 				*(args->damageOrHealing),
@@ -257,27 +256,27 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Buff::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onBeforeDamageDelt(ModifyableDamageOrHealing damageOrHealing)
+void Buff::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onAfterDamageTaken(DamageOrHealing damageOrHealing)
+void Buff::onAfterDamageTaken(CombatEvents::DamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onAfterDamageDelt(DamageOrHealing damageOrHealing)
+void Buff::onAfterDamageDelt(CombatEvents::DamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onBeforeHealingTaken(ModifyableDamageOrHealing damageOrHealing)
+void Buff::onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 }
 
-void Buff::onBeforeHealingDelt(ModifyableDamageOrHealing damageOrHealing)
+void Buff::onBeforeHealingDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 }
 

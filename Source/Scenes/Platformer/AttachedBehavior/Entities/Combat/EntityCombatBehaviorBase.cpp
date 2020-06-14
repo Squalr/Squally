@@ -3,6 +3,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -18,7 +19,7 @@
 
 using namespace cocos2d;
 
-EntityCombatBehaviorBase::EntityCombatBehaviorBase(GameObject* owner) : super(owner)
+EntityCombatBehaviorBase::EntityCombatBehaviorBase(GameObject* owner, std::vector<AttachedBehavior*> attachedBehavior) : super(owner, attachedBehavior)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->timelineSpeed = 1.0f;
@@ -58,6 +59,44 @@ void EntityCombatBehaviorBase::onLoad()
 			this->bonusSpeed += next->getItemStats().speedBonus;
 		}
 	});
+	
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityStatsModifyDamageDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->entity && !args->isHandled())
+		{
+			this->onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing(
+				args->damageOrHealing,
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				AbilityType::Physical,
+				args->caster,
+				args->target,
+				[=](){ args->handle(); }
+			));
+		}
+	}));
+	
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityStatsModifyDamageTaken, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->entity && !args->isHandled())
+		{
+			this->onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing(
+				args->damageOrHealing,
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				*(args->damageOrHealing),
+				AbilityType::Physical,
+				args->caster,
+				args->target,
+				[=](){ args->handle(); }
+			));
+		}
+	}));
 }
 
 void EntityCombatBehaviorBase::onDisable()
@@ -65,17 +104,34 @@ void EntityCombatBehaviorBase::onDisable()
 	super::onDisable();
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageTaken(int* damage, bool* blocked, std::function<void()> handleCallback)
+void EntityCombatBehaviorBase::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
-	if (*damage >= 0)
+	if (damageOrHealing.originalDamageOrHealing <= 0)
 	{
 		return;
 	}
 
-	*damage -= this->bonusArmor;
+	*damageOrHealing.damageOrHealing = std::max(0, damageOrHealing.originalDamageOrHealing - this->bonusArmor);
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageDelt(int* damage, std::function<void()> handleCallback)
+void EntityCombatBehaviorBase::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
-	*damage += this->bonusAttack;
+	if (damageOrHealing.originalDamageOrHealing <= 0)
+	{
+		return;
+	}
+	
+	switch(damageOrHealing.abilityType)
+	{
+		case AbilityType::Physical:
+		{
+			*damageOrHealing.damageOrHealing += this->bonusAttack;
+			break;
+		}
+		default:
+		{
+			*damageOrHealing.damageOrHealing += this->bonusMagicAttack;
+			break;
+		}
+	}
 }

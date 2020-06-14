@@ -47,6 +47,8 @@ void OrcSwordsmanCombatBehavior::initializePositions()
 
 void OrcSwordsmanCombatBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(DoubleSlash::create(3, 5, 0.5f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed, 0.1f));

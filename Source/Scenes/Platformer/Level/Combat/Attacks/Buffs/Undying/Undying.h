@@ -27,7 +27,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;

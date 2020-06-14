@@ -134,7 +134,7 @@ void Inversion::registerHackables()
 	}
 }
 
-void Inversion::onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing)
+void Inversion::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 

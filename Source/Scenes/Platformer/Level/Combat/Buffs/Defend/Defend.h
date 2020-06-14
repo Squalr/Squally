@@ -21,7 +21,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeDamageTaken(ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
 	void onTimelineReset(bool wasInterrupt) override;
 
 private:

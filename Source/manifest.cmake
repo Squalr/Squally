@@ -3858,6 +3858,7 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixLetter.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixStrand.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Combat/Attacks/ArrowRain/CastArrowRain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Combat/Attacks/Buffs/Enrage/CastEnrage.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Platformer/Level/Combat/Attacks/Buffs/Enrage/Enrage.h"
