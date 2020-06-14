@@ -257,7 +257,7 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 
 int PlatformerAttack::getRandomDamage()
 {
-	return -int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
+	return int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
 }
 
 int PlatformerAttack::getBaseDamageMin()

@@ -24,6 +24,7 @@ protected:
 	virtual ~UndyingAutoCast();
 
 	void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
 
 private:
 	typedef Buff super;

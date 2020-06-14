@@ -137,7 +137,7 @@ void EntityTextOverlayBehavior::onDisable()
 
 void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen)
 {
-	bool isGreen = (delta > 0 || (delta == 0 && zeroAsGreen));
+	bool isGreen = (delta < 0 || (delta == 0 && zeroAsGreen));
 
 	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
 	LocalizedString* deltaString = isGreen ? Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount) : Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);

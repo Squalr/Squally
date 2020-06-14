@@ -221,11 +221,6 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		return;
 	}
 
-	// Store the sign. Buff modifiers assume positive numbers, however hacking can cause positive damage (healing)
-	int sign = damage < 0 ? -1 : 1;
-	
-	damage = std::abs(damage);
-
 	if (!disableBuffProcessing)
 	{
 		// Apply stats
@@ -241,15 +236,13 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
 	}
 
-	damage *= sign;
-
 	this->tryInterrupt();
 
 	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
 	this->getEntity()->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		healthBehavior->setHealth(health + damage);
+		healthBehavior->setHealth(health - damage);
 	});
 
 	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
@@ -262,11 +255,6 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		return;
 	}
 
-	// Store the sign. Buff modifiers assume positive numbers, however hacking can cause negative healing (damage)
-	int sign = healing < 0 ? -1 : 1;
-
-	healing = std::abs(healing);
-
 	if (!disableBuffProcessing)
 	{
 		// Modify outgoing healing
@@ -277,8 +265,6 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
 		CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
 	}
-
-	healing *= sign;
 
 	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 

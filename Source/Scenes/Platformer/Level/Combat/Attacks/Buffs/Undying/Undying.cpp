@@ -141,6 +141,11 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
+	if (damageOrHealing.originalDamageOrHealing < 0)
+	{
+		return;
+	}
+
 	static volatile int originalHealth = 0;
 	static volatile int newHealth = 0;
 
@@ -154,6 +159,27 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 	*damageOrHealing.damageOrHealing = (originalHealth - this->newHealthUndying);
 }
 
+void Undying::onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+{
+	super::onBeforeHealingTaken(damageOrHealing);
+
+	if (damageOrHealing.originalDamageOrHealing > 0)
+	{
+		return;
+	}
+
+	static volatile int originalHealth = 0;
+	static volatile int newHealth = 0;
+
+	originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	newHealth = originalHealth - damageOrHealing.originalDamageOrHealing;
+
+	this->newHealthUndying = originalHealth + damageOrHealing.originalDamageOrHealing;
+
+	this->applyUndying();
+
+	*damageOrHealing.damageOrHealing = (this->newHealthUndying - originalHealth);
+}
 
 NO_OPTIMIZE void Undying::applyUndying()
 {

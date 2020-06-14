@@ -58,3 +58,30 @@ void UndyingAutoCast::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealin
 		});
 	}
 }
+
+void UndyingAutoCast::onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+{
+	super::onBeforeHealingTaken(damageOrHealing);
+
+	if (this->hasAutoCasted)
+	{
+		return;
+	}
+
+	int originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	int projectedNewHealth = originalHealth + damageOrHealing.originalDamageOrHealing;
+
+	if (projectedNewHealth <= 0)
+	{
+		damageOrHealing.target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			this->hasAutoCasted = true;
+
+			entityBuffBehavior->applyBuff(Undying::create(damageOrHealing.target, damageOrHealing.target));
+			entityBuffBehavior->getBuff<Undying>([&](Undying* undying)
+			{
+				undying->onBeforeHealingTaken(damageOrHealing);
+			});
+		});
+	}
+}
