@@ -54,6 +54,7 @@ void EntityCombatBehaviorBase::onLoad()
 		{
 			this->bonusArmor += next->getItemStats().armorBonus;
 			this->bonusAttack += next->getItemStats().attackBonus;
+			this->bonusMagicAttack += next->getItemStats().magicAttackBonus;
 			this->bonusSpeed += next->getItemStats().speedBonus;
 		}
 	});

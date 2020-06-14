@@ -76,6 +76,14 @@ void TalkToHorus::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Horus>(this, [=](Horus* horus)
 	{
 		this->horus = horus;
+
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->horus->watchForAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableNewQuest();
+			});
+		}
 	});
 
 	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
@@ -91,6 +99,14 @@ void TalkToHorus::onActivate(bool isActiveThroughSkippable)
 void TalkToHorus::onComplete()
 {	
 	Objectives::SetCurrentObjective(ObjectiveKeys::URLightTorches);
+
+	if (this->horus != nullptr)
+	{
+		this->horus->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		{
+			questBehavior->disableAll();
+		});
+	}
 }
 
 void TalkToHorus::onSkipped()

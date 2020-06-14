@@ -112,6 +112,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Bone::SaveKey] = [=]() { return (Item*)Bone::create(); };
 	this->deserializers[Coal::SaveKey] = [=]() { return (Item*)Coal::create(); };
 	this->deserializers[Copper::SaveKey] = [=]() { return (Item*)Copper::create(); };
+	this->deserializers[Crystal::SaveKey] = [=]() { return (Item*)Crystal::create(); };
 	this->deserializers[Diamond::SaveKey] = [=]() { return (Item*)Diamond::create(); };
 	this->deserializers[Emerald::SaveKey] = [=]() { return (Item*)Emerald::create(); };
 	this->deserializers[Gold::SaveKey] = [=]() { return (Item*)Gold::create(); };
@@ -122,7 +123,6 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Ruby::SaveKey] = [=]() { return (Item*)Ruby::create(); };
 	this->deserializers[Sapphire::SaveKey] = [=]() { return (Item*)Sapphire::create(); };
 	this->deserializers[Sulfur::SaveKey] = [=]() { return (Item*)Sulfur::create(); };
-	this->deserializers[Tin::SaveKey] = [=]() { return (Item*)Tin::create(); };
 	this->deserializers[VoidCrystal::SaveKey] = [=]() { return (Item*)VoidCrystal::create(); };
 	
 	this->deserializers[DarkWood::SaveKey] = [=]() { return (Item*)DarkWood::create(); };

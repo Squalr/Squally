@@ -27,6 +27,8 @@ SapphireBand::SapphireBand() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	2,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

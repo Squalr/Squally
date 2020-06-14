@@ -38,10 +38,9 @@ std::vector<std::tuple<Item*, int>> GoldenAxePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Iron::create(), 8 },
+		{ Gold::create(), 5 },
+		{ Iron::create(), 4 },
 		{ Coal::create(), 5 },
-		{ Gold::create(), 3 },
-		{ Tin::create(), 2 },
 	};
 }
 

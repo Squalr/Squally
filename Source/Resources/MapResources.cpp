@@ -92,7 +92,6 @@ const std::string MapResources::Tutorials_UnknownValueInt32 = "Public/Platformer
 const std::string MapResources::UnderflowRuins_Combat_Cistern = "Public/Platformer/Maps/UnderflowRuins/Combat_Cistern.tmx";
 const std::string MapResources::UnderflowRuins_Combat_Desert = "Public/Platformer/Maps/UnderflowRuins/Combat_Desert.tmx";
 const std::string MapResources::UnderflowRuins_Combat_Pyramid = "Public/Platformer/Maps/UnderflowRuins/Combat_Pyramid.tmx";
-const std::string MapResources::UnderflowRuins_Fishing_Village = "Public/Platformer/Maps/UnderflowRuins/Fishing_Village.tmx";
 const std::string MapResources::UnderflowRuins_Home_Aphrodite = "Public/Platformer/Maps/UnderflowRuins/Home_Aphrodite.tmx";
 const std::string MapResources::UnderflowRuins_Home_Cleopatra = "Public/Platformer/Maps/UnderflowRuins/Home_Cleopatra.tmx";
 const std::string MapResources::UnderflowRuins_Home_Hera = "Public/Platformer/Maps/UnderflowRuins/Home_Hera.tmx";

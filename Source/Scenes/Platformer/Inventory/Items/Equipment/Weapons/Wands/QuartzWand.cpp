@@ -27,6 +27,8 @@ QuartzWand::QuartzWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	8,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

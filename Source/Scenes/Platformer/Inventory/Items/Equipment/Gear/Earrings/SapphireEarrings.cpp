@@ -27,6 +27,8 @@ SapphireEarrings::SapphireEarrings() : super(CurrencyInventory::create({{ IOU::g
 	2,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

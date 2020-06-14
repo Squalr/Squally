@@ -30,7 +30,6 @@ SmithingPoolTier2::SmithingPoolTier2(SampleMethod sampleMethod, int min, int max
 	 Metals
 	**************/
 	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Uncommon));
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Uncommon));

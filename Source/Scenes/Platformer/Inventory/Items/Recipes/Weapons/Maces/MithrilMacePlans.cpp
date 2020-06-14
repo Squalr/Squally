@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> MithrilMacePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 10 },
+		{ Iron::create(), 2 },
+		{ Mithril::create(), 6 },
 		{ Coal::create(), 4 },
 	};
 }

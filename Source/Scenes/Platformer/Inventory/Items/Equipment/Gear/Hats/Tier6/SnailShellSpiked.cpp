@@ -27,6 +27,8 @@ SnailShellSpiked::SnailShellSpiked() : super(CurrencyInventory::create({{ IOU::g
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

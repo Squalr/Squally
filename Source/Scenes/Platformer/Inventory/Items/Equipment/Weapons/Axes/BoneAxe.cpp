@@ -27,6 +27,8 @@ BoneAxe::BoneAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(),
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed
@@ -70,7 +72,7 @@ Size BoneAxe::getWeaponCollisionSize()
 	return Size(112.0f, 96.0f);
 }
 
-Vec2 BoneAxe::getWeaponOffset()
+Vec2 BoneAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);

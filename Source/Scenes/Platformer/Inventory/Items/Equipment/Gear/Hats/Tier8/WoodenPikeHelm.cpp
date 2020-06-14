@@ -27,6 +27,8 @@ WoodenPikeHelm::WoodenPikeHelm() : super(CurrencyInventory::create({{ IOU::getIO
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

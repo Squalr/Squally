@@ -4734,6 +4734,21 @@ namespace Strings
 		virtual ~Items_Crafting_Ore_Copper() = default;
 	};
 
+	class Items_Crafting_Ore_Crystal : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Ore_Crystal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Ore_Crystal();
+		virtual ~Items_Crafting_Ore_Crystal() = default;
+	};
+
 	class Items_Crafting_Ore_Diamond : public LocalizedString
 	{
 	public:
@@ -4882,21 +4897,6 @@ namespace Strings
 	private:
 		Items_Crafting_Ore_Sulfur();
 		virtual ~Items_Crafting_Ore_Sulfur() = default;
-	};
-
-	class Items_Crafting_Ore_Tin : public LocalizedString
-	{
-	public:
-		static Items_Crafting_Ore_Tin* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Crafting_Ore_Tin();
-		virtual ~Items_Crafting_Ore_Tin() = default;
 	};
 
 	class Items_Crafting_Ore_VoidCrystal : public LocalizedString

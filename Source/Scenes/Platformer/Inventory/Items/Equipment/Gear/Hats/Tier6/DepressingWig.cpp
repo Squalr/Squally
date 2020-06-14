@@ -27,6 +27,8 @@ DepressingWig::DepressingWig() : super(CurrencyInventory::create({{ IOU::getIOUI
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

@@ -126,6 +126,7 @@ void RaiseBridge::runCinematicSequence()
 			[=]()
 			{
 				this->broadcastMapEvent("raise-bridge", ValueMap());
+				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
 			true

@@ -94,7 +94,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			for (int index = 0; index < 20; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(Wood::create(), false);
-				entityInventoryBehavior->getInventory()->forceInsert(Tin::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Crystal::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Copper::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Iron::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Gold::create(), false);

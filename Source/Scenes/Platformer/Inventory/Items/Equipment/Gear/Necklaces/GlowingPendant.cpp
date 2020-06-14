@@ -27,6 +27,8 @@ GlowingPendant::GlowingPendant() : super(CurrencyInventory::create({{ IOU::getIO
 	2,
 	// Attack
 	1,
+	// Magic Attack
+	1,
 	// Armor
 	0,
 	// Speed

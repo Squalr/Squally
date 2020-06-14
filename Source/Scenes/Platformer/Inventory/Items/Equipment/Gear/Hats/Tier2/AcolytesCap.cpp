@@ -27,8 +27,10 @@ AcolytesCap::AcolytesCap() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
-	2,
+	1,
 	// Speed
 	0.05f
 ))

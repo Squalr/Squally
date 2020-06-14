@@ -23,8 +23,8 @@ const Size EntityWeaponCollisionBehavior::DefaultWeaponSize = Size(64.0f, 128.0f
 EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
-	this->weaponOffset = Vec2::ZERO;
+	this->weaponCollisionSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+	this->weaponCollisionOffset = Vec2::ZERO;
 	this->weaponCollision = nullptr;
 
 	if (this->entity == nullptr)
@@ -71,14 +71,14 @@ void EntityWeaponCollisionBehavior::disable()
 	this->weaponCollision->setPhysicsEnabled(false);
 }
 
-void EntityWeaponCollisionBehavior::setWeaponSize(Size weaponSize)
+void EntityWeaponCollisionBehavior::setWeaponCollisionSize(Size weaponCollisionSize)
 {
-	this->weaponSize = weaponSize;
+	this->weaponCollisionSize = weaponCollisionSize;
 }
 
-void EntityWeaponCollisionBehavior::setWeaponOffset(Vec2 weaponOffset)
+void EntityWeaponCollisionBehavior::setWeaponCollisionOffset(Vec2 weaponCollisionOffset)
 {
-	this->weaponOffset = weaponOffset;
+	this->weaponCollisionOffset = weaponCollisionOffset;
 }
 
 void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
@@ -101,12 +101,12 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 	}
 
 	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->weaponSize, 8.0f),
+		CollisionObject::createCapsulePolygon(this->weaponCollisionSize, 8.0f),
 		(CollisionType)collisionType,
 		CollisionObject::Properties(false, false)
 	);
 
-	this->weaponCollision->setPosition(this->weaponOffset);
+	this->weaponCollision->setPosition(this->weaponCollisionOffset);
 	this->weaponCollision->setPhysicsEnabled(false);
 	mainhand->addTrackingObject(this->weaponCollision);
 }

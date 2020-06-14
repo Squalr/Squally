@@ -27,6 +27,8 @@ WolfHat::WolfHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(),
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

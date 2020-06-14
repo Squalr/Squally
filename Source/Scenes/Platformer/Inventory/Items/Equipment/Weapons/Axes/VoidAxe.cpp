@@ -27,6 +27,8 @@ VoidAxe::VoidAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(),
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed
@@ -70,7 +72,7 @@ Size VoidAxe::getWeaponCollisionSize()
 	return Size(112.0f, 96.0f);
 }
 
-Vec2 VoidAxe::getWeaponOffset()
+Vec2 VoidAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);

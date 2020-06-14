@@ -41,7 +41,6 @@ std::vector<std::tuple<Item*, int>> AshenBladePlans::getReagentsInternal()
 		{ Copper::create(), 8 },
 		{ Coal::create(), 4 },
 		{ Gold::create(), 4 },
-		{ Tin::create(), 4 },
 		{ Sulfur::create(), 2 },
 		{ Diamond::create(), 2 },
 	};

@@ -38,7 +38,6 @@ std::vector<std::tuple<Item*, int>> TaserRodPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Tin::create(), 6 },
 		{ Sapphire::create(), 4 },
 		{ Sulfur::create(), 1 },
 	};

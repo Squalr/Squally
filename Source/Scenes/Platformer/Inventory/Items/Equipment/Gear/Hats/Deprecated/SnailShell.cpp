@@ -27,6 +27,8 @@ SnailShell::SnailShell() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

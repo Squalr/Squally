@@ -27,6 +27,8 @@ SteelAxe::SteelAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed
@@ -70,7 +72,7 @@ Size SteelAxe::getWeaponCollisionSize()
 	return Size(112.0f, 96.0f);
 }
 
-Vec2 SteelAxe::getWeaponOffset()
+Vec2 SteelAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
@@ -78,5 +80,5 @@ Vec2 SteelAxe::getWeaponOffset()
 
 Vec2 SteelAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(2.0f, -20.0f);
 }

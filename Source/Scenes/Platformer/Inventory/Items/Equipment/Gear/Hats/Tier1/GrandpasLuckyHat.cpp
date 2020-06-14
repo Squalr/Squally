@@ -27,6 +27,8 @@ GrandpasLuckyHat::GrandpasLuckyHat() : super(CurrencyInventory::create({{ IOU::g
 	1,
 	// Attack
 	1,
+	// Magic Attack
+	0,
 	// Armor
 	1,
 	// Speed

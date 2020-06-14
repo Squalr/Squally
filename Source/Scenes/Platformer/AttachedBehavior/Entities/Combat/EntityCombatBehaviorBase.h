@@ -28,6 +28,7 @@ private:
 
 	int bonusArmor;
 	int bonusAttack;
+	int bonusMagicAttack;
 	float bonusSpeed;
 
 	float timelineSpeed;

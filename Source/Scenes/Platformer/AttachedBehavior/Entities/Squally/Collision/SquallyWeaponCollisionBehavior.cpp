@@ -83,16 +83,16 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 
 		if (weapon != nullptr)
 		{
-			this->setWeaponSize(weapon->getWeaponCollisionSize());
-			this->setWeaponOffset(weapon->getWeaponOffset());
+			this->setWeaponCollisionSize(weapon->getWeaponCollisionSize());
+			this->setWeaponCollisionOffset(weapon->getWeaponCollisionOffset());
 		}
 		else
 		{
 			const Size NoWeaponSize = Size(64.0f, 64.0f);
 			const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
 
-			this->setWeaponSize(NoWeaponSize);
-			this->setWeaponOffset(NoWeaponOffset);
+			this->setWeaponCollisionSize(NoWeaponSize);
+			this->setWeaponCollisionOffset(NoWeaponOffset);
 		}
 	});
 

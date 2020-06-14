@@ -22,10 +22,12 @@ SteelSword* SteelSword::create()
 
 SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 6 }}), 6, 8, ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
 	0,
 	// Attack
+	0,
+	// Magic Attack
 	0,
 	// Armor
 	0,

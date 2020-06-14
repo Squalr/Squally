@@ -888,7 +888,7 @@
     <property name="transition" value="center-right"/>
    </properties>
   </object>
-  <object id="1203" name="logic-torch" type="object" x="2539.71" y="1448.21" width="101" height="111">
+  <object id="1203" name="logic-torch-disabled" type="object" x="2539.71" y="1448.21" width="101" height="111">
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
@@ -896,7 +896,7 @@
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
    </properties>
   </object>
-  <object id="1204" name="logic-torch" type="object" x="4219.89" y="1446.85" width="101" height="111">
+  <object id="1204" name="logic-torch-disabled" type="object" x="4219.89" y="1446.85" width="101" height="111">
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>

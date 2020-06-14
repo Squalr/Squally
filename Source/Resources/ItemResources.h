@@ -68,6 +68,7 @@ namespace ItemResources
 	extern const std::string Crafting_Smithing_Bone;
 	extern const std::string Crafting_Smithing_Coal;
 	extern const std::string Crafting_Smithing_Copper;
+	extern const std::string Crafting_Smithing_Crystal;
 	extern const std::string Crafting_Smithing_Diamond;
 	extern const std::string Crafting_Smithing_Emerald;
 	extern const std::string Crafting_Smithing_Gold;
@@ -78,7 +79,6 @@ namespace ItemResources
 	extern const std::string Crafting_Smithing_Ruby;
 	extern const std::string Crafting_Smithing_Sapphire;
 	extern const std::string Crafting_Smithing_Sulfur;
-	extern const std::string Crafting_Smithing_Tin;
 	extern const std::string Crafting_Smithing_VoidCrystal;
 	extern const std::string Crafting_Smithing_Wood;
 	extern const std::string Crafting_Smithing_WoodDark;

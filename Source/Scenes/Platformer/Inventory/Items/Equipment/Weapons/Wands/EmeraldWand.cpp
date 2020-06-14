@@ -27,6 +27,8 @@ EmeraldWand::EmeraldWand() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	10,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed

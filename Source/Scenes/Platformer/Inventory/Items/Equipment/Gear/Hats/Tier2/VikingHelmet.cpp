@@ -27,6 +27,8 @@ VikingHelmet::VikingHelmet() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	3,
 	// Speed
