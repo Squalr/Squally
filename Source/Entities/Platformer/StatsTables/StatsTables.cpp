@@ -123,18 +123,18 @@ StatsTables::StatsTables()
 		UR
 	************/
 
-	StatsTables::StatsTable[AnubisPup::MapKey] = Stats(26, 12, 34);
-	StatsTables::StatsTable[AnubisWarrior::MapKey] = Stats(35, 8, 44);
+	StatsTables::StatsTable[AnubisPup::MapKey] = Stats(26, 12, 43);
+	StatsTables::StatsTable[AnubisWarrior::MapKey] = Stats(35, 8, 47);
 	StatsTables::StatsTable[LionMan::MapKey] = Stats(28, 7, 28);
 	StatsTables::StatsTable[Lioness::MapKey] = Stats(33, 9, 28);
-	StatsTables::StatsTable[Medusa::MapKey] = Stats(37, 8, 28);
-	StatsTables::StatsTable[Mermaid::MapKey] = Stats(26, 8, 28);
-	StatsTables::StatsTable[Minotaur::MapKey] = Stats(24, 8, 28);
-	StatsTables::StatsTable[MummyPriest::MapKey] = Stats(21, 30, 34);
-	StatsTables::StatsTable[MummyWarrior::MapKey] = Stats(14, 8, 36);
+	StatsTables::StatsTable[Medusa::MapKey] = Stats(37, 8, 95);
+	StatsTables::StatsTable[Mermaid::MapKey] = Stats(26, 8, 35);
+	StatsTables::StatsTable[Minotaur::MapKey] = Stats(24, 8, 34);
+	StatsTables::StatsTable[MummyPriest::MapKey] = Stats(44, 30, 40);
+	StatsTables::StatsTable[MummyWarrior::MapKey] = Stats(43, 8, 42);
 	StatsTables::StatsTable[Osiris::MapKey] = Stats(133, 58, 92);
-	StatsTables::StatsTable[TigerMan::MapKey] = Stats(25, 7, 28);
-	StatsTables::StatsTable[Tigress::MapKey] = Stats(21, 11, 28);
+	StatsTables::StatsTable[TigerMan::MapKey] = Stats(25, 7, 32);
+	StatsTables::StatsTable[Tigress::MapKey] = Stats(21, 11, 32);
 	
 	StatsTables::StatsTable[Appolo::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Ajax::MapKey] = Stats(16, 8, 32);

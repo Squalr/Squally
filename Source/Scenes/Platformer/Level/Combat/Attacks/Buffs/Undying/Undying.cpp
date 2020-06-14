@@ -147,7 +147,7 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 	originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 	newHealth = originalHealth - damageOrHealing.originalDamageOrHealing;
 
-	this->newHealthUndying = damageOrHealing.originalDamageOrHealing;
+	this->newHealthUndying = originalHealth - damageOrHealing.originalDamageOrHealing;
 
 	this->applyUndying();
 
@@ -168,7 +168,7 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM(mov ZBX, 1);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
-	ASM(cmp ZSI, 0);
+	ASM(cmp ZSI, 1);
 	ASM(cmovle ZSI, ZBX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

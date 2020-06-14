@@ -107,7 +107,7 @@ void SiphonLife::registerHackables()
 					}
 				},
 				int(HackFlags::None),
-				this->getRemainingDuration(),
+				SiphonLife::StartDelay + SiphonLife::TimeBetweenTicks * float(SiphonLife::HealAmount),
 				0.0f,
 				{
 				}
