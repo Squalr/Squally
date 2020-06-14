@@ -34,6 +34,7 @@
 using namespace cocos2d;
 
 const std::string TalkToCleopatra::MapKeyQuest = "talk-to-cleopatra";
+const std::string TalkToCleopatra::TagExitPortal = "exit-portal";
 
 TalkToCleopatra* TalkToCleopatra::create(GameObject* owner, QuestLine* questLine)
 {
@@ -78,6 +79,14 @@ void TalkToCleopatra::onLoad(QuestState questState)
 		this->cleopatra = cleopatra;
 	});
 
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
+	{
+		if (questState != QuestState::Complete)
+		{
+			portal->lock(false);
+		}
+	}, TalkToCleopatra::TagExitPortal);
+
 	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 	{
 		this->listenForMapEventOnce(TalkToCleopatra::MapKeyQuest, [=](ValueMap)
@@ -104,6 +113,11 @@ void TalkToCleopatra::onComplete()
 	));
 	
 	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
+
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
+	{
+		portal->unlock(false);
+	}, TalkToCleopatra::TagExitPortal);
 }
 
 void TalkToCleopatra::onSkipped()

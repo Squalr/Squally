@@ -52,7 +52,7 @@ BrokenBlade* BrokenBlade::create(PlatformerEntity* caster, PlatformerEntity* tar
 }
 
 BrokenBlade::BrokenBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_SwordBrokenAlt, BuffData(BrokenBlade::Duration, BrokenBlade::BrokenBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordBrokenAlt, AbilityType::Physical, BuffData(BrokenBlade::Duration, BrokenBlade::BrokenBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);

@@ -33,7 +33,8 @@ Flurry* Flurry::create(float attackDuration, float recoverDuration, Priority pri
 	return instance;
 }
 
-Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 2, 3, 0, attackDuration, recoverDuration)
+Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, AbilityType::Physical, 2, 3, 0, attackDuration, recoverDuration)
 {
 	this->slashSounds = std::vector<WorldSound*>();
 	this->hitSounds = std::vector<WorldSound*>();
@@ -149,7 +150,7 @@ void Flurry::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity
 
 void Flurry::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

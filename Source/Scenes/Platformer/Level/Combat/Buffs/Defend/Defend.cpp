@@ -24,7 +24,7 @@ Defend* Defend::create(PlatformerEntity* caster)
 }
 
 Defend::Defend(PlatformerEntity* caster)
-	: super(caster, caster, UIResources::Menus_Icons_Shield, BuffData("defend-skill"))
+	: super(caster, caster, UIResources::Menus_Icons_Shield, AbilityType::Physical, BuffData("defend-skill"))
 {
 	this->defendEffect = Sprite::create(FXResources::Auras_DefendAura);
 	this->resetCount = 0;

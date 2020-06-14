@@ -52,7 +52,7 @@ Weakness* Weakness::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Weakness::Weakness(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_CrossbonesDiseased, BuffData(Weakness::Duration, Weakness::WeaknessIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_CrossbonesDiseased, AbilityType::Nature, BuffData(Weakness::Duration, Weakness::WeaknessIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);

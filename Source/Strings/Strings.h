@@ -26694,6 +26694,36 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore() = default;
 	};
 
+	class Platformer_Quests_WarpGates_WarpGateIntro : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_WarpGates_WarpGateIntro* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_WarpGates_WarpGateIntro();
+		virtual ~Platformer_Quests_WarpGates_WarpGateIntro() = default;
+	};
+
+	class Platformer_Quests_WarpGates_WhatIsThisPlace : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_WarpGates_WhatIsThisPlace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_WarpGates_WhatIsThisPlace();
+		virtual ~Platformer_Quests_WarpGates_WhatIsThisPlace() = default;
+	};
+
 	class Platformer_Spellbooks_SpellbookAcquired : public LocalizedString
 	{
 	public:

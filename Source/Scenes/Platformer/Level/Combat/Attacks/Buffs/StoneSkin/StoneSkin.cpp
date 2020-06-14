@@ -51,7 +51,7 @@ StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldBroken, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldBroken, AbilityType::Physical, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);

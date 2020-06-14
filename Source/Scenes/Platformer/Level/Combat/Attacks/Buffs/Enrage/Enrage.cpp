@@ -55,7 +55,7 @@ Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Clock, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Clock, AbilityType::Physical, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);

@@ -53,7 +53,7 @@ Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Eye, BuffData(Blind::Duration, Blind::BlindIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Eye, AbilityType::Nature, BuffData(Blind::Duration, Blind::BlindIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);

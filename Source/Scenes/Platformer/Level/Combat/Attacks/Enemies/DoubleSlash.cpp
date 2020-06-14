@@ -29,6 +29,7 @@ DoubleSlash::DoubleSlash(int damageMin, int damageMax, float attackDuration, flo
 		AttackType::Damage,
 		UIResources::Menus_Icons_SwordSlash,
 		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		0,
@@ -91,7 +92,7 @@ void DoubleSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 void DoubleSlash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

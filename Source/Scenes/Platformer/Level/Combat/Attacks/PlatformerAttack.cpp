@@ -21,6 +21,7 @@ PlatformerAttack::PlatformerAttack(
 	AttackType attackType,
 	std::string iconResource,
 	Priority priority,
+	AbilityType abilityType,
 	int baseDamageOrHealingMin,
 	int baseDamageOrHealingMax,
 	int specialCost,
@@ -31,6 +32,7 @@ PlatformerAttack::PlatformerAttack(
 	this->attackType = attackType;
 	this->iconResource = iconResource;
 	this->priority = priority;
+	this->abilityType = abilityType;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->damageMultiplier = 1.0f;

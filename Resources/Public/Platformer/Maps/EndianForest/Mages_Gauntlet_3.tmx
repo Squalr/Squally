@@ -467,7 +467,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="901" name="necron" type="entity" x="1780.47" y="93.455" width="128" height="128">
+  <object id="901" name="luna" type="entity" x="1780.47" y="93.455" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,pacing"/>
     <property name="flip-y" type="bool" value="true"/>

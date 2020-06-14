@@ -25,6 +25,7 @@ AxeSwing::AxeSwing(int damageMin, int damageMax, float attackDuration, float rec
 		AttackType::Damage,
 		UIResources::Menus_Icons_Axe,
 		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		0,
@@ -78,7 +79,7 @@ void AxeSwing::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 void AxeSwing::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

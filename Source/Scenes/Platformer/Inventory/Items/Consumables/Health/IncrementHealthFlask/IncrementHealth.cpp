@@ -48,7 +48,7 @@ IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEnt
 }
 
 IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
-	: super(caster, target, UIResources::Menus_Icons_ArrowUp, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_ArrowUp, AbilityType::Arcane, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
@@ -173,7 +173,7 @@ NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
 
 	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, incrementAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, incrementAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

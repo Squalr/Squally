@@ -48,7 +48,7 @@ ManaDrain* ManaDrain::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 ManaDrain::ManaDrain(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ManaSkull, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_ManaSkull, AbilityType::Shadow, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->drainAmount = ManaDrain::DrainAmount;
@@ -191,7 +191,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 	drainAmount = MathUtils::clamp(drainAmount, -256, 256);
 
 	this->healSound->play();
-	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount));
+	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

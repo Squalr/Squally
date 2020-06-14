@@ -37,4 +37,6 @@ private:
 	Scrappy* scrappy;
 	Squally* squally;
 	Cleopatra* cleopatra;
+
+	static const std::string TagExitPortal;
 };

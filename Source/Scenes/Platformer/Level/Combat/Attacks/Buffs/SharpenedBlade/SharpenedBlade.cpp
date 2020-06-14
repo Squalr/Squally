@@ -52,7 +52,7 @@ SharpenedBlade* SharpenedBlade::create(PlatformerEntity* caster, PlatformerEntit
 }
 
 SharpenedBlade::SharpenedBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_SwordAlt, BuffData(SharpenedBlade::Duration, SharpenedBlade::SharpenedBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordAlt, AbilityType::Physical, BuffData(SharpenedBlade::Duration, SharpenedBlade::SharpenedBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);

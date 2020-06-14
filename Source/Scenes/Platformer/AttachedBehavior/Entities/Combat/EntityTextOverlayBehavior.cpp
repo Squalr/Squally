@@ -95,7 +95,8 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runHealthDelta(args->damageOrHealing, false);
+			// Negate damage (convert into a raw health delta)
+			this->runHealthDelta(-args->damageOrHealing, false);
 		}
 	}));
 
@@ -115,7 +116,8 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runManaDelta(args->damageOrHealing, true);
+			// Negate restore (convert into a raw mana delta)
+			this->runManaDelta(-args->damageOrHealing, true);
 		}
 	}));
 
@@ -137,7 +139,7 @@ void EntityTextOverlayBehavior::onDisable()
 
 void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen)
 {
-	bool isGreen = (delta < 0 || (delta == 0 && zeroAsGreen));
+	bool isGreen = (delta > 0 || (delta == 0 && zeroAsGreen));
 
 	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
 	LocalizedString* deltaString = isGreen ? Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount) : Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);

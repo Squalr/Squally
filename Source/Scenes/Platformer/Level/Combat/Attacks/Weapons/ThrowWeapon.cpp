@@ -26,7 +26,8 @@ ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, Pr
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, 5, 7, 4, attackDuration, recoverDuration)
+ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, AbilityType::Physical, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -70,7 +71,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;

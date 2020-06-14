@@ -20,7 +20,7 @@
 using namespace cocos2d;
 
 const std::string SquallyDefaultInventoryBehavior::MapKey = "squally-default-inventory-behavior";
-bool SquallyDefaultInventoryBehavior::GiveDeveloperItems = true;
+bool SquallyDefaultInventoryBehavior::GiveDeveloperItems = false;
 
 SquallyDefaultInventoryBehavior* SquallyDefaultInventoryBehavior::create(GameObject* owner)
 {

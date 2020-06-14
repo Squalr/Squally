@@ -149,7 +149,7 @@ void ArrowRain::damageOtherTeam()
 
 			if (isCasterPlayerTeam != this->isOnPlayerTeam)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), -std::abs(ArrowRain::Damage), true));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowRain::Damage), AbilityType::Physical, true));
 			}
 		}
 	}));

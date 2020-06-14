@@ -25,7 +25,9 @@ SwordExecute* SwordExecute::create(int damageMin, int damageMax, float attackDur
 SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(
 		AttackType::Damage,
-		UIResources::Menus_Icons_BleedingLimb, priority,
+		UIResources::Menus_Icons_BleedingLimb,
+		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		6,
@@ -81,7 +83,7 @@ void SwordExecute::performAttack(PlatformerEntity* owner, std::vector<Platformer
 void SwordExecute::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

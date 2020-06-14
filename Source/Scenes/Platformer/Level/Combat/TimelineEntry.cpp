@@ -133,7 +133,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyDamage(args->caster, args->damageOrHealing, args->disableBuffProcessing);
+				this->applyDamage(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
 			}
 		}
 	}));
@@ -146,7 +146,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyHealing(args->caster, args->damageOrHealing, args->disableBuffProcessing);
+				this->applyHealing(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
 			}
 		}
 	}));
@@ -159,7 +159,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaRestore(args->caster, args->damageOrHealing, args->disableBuffProcessing);
+				this->applyManaRestore(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
 			}
 		}
 	}));
@@ -172,7 +172,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaDrain(args->caster, args->damageOrHealing, args->disableBuffProcessing);
+				this->applyManaDrain(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
 			}
 		}
 	}));
@@ -214,7 +214,7 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
-void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing)
+void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing, AbilityType abilityType)
 {
 	if (this->getEntity() == nullptr)
 	{
@@ -224,16 +224,16 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 	if (!disableBuffProcessing)
 	{
 		// Apply stats
-		CombatEvents::TriggerEntityStatsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
-		CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
+		CombatEvents::TriggerEntityStatsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, abilityType));
+		CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, abilityType));
 
 		// Modify outgoing damage
-		CombatEvents::TriggerEntityBuffsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
-		CombatEvents::TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
+		CombatEvents::TriggerEntityBuffsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, abilityType));
+		CombatEvents::TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
 
 		// Modify incoming damage
-		CombatEvents::TriggerEntityBuffsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
-		CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
+		CombatEvents::TriggerEntityBuffsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, abilityType));
+		CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
 	}
 
 	this->tryInterrupt();
@@ -245,10 +245,10 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		healthBehavior->setHealth(health - damage);
 	});
 
-	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
+	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
 }
 
-void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing)
+void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType)
 {
 	if (this->getEntity() == nullptr)
 	{
@@ -258,12 +258,12 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 	if (!disableBuffProcessing)
 	{
 		// Modify outgoing healing
-		CombatEvents::TriggerEntityStatsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
-		CombatEvents::TriggerEntityBuffsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
+		CombatEvents::TriggerEntityStatsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, abilityType));
+		CombatEvents::TriggerEntityBuffsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, abilityType));
 
 		// Modify incoming healing
-		CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
-		CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
+		CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, abilityType));
+		CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, abilityType));
 	}
 
 	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
@@ -273,10 +273,10 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		healthBehavior->setHealth(health + healing);
 	});
 
-	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
+	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing, abilityType));
 }
 
-void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing)
+void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
@@ -285,10 +285,10 @@ void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, boo
 		manaBehavior->setMana(mana + manaGain);
 	});
 
-	CombatEvents::TriggerManaRestoreDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain));
+	CombatEvents::TriggerManaRestoreDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain, abilityType));
 }
 
-void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing)
+void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
@@ -297,7 +297,7 @@ void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaGain, bool 
 		manaBehavior->setMana(mana + manaGain);
 	});
 
-	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain));
+	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain, abilityType));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)

@@ -25,6 +25,7 @@ BowShoot::BowShoot(int damageMin, int damageMax, float attackDuration, float rec
 		AttackType::Damage,
 		UIResources::Menus_Icons_Arrow,
 		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		0,
@@ -79,7 +80,7 @@ void BowShoot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 void BowShoot::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

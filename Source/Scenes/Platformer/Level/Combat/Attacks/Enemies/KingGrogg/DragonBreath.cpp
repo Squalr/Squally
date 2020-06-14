@@ -32,7 +32,8 @@ DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, 
 	return instance;
 }
 
-DragonBreath::DragonBreath(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBolts, priority, 7, 9, 12, attackDuration, recoverDuration)
+DragonBreath::DragonBreath(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_FireBolts, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration)
 {
 }
 
@@ -80,7 +81,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			fireball->despawn(1.0f);

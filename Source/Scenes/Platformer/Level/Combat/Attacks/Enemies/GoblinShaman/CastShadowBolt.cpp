@@ -33,7 +33,7 @@ CastShadowBolt* CastShadowBolt::create(float attackDuration, float recoverDurati
 }
 
 CastShadowBolt::CastShadowBolt(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_SpellCast, priority, 4, 6, 9, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SpellCast, priority, AbilityType::Shadow, 4, 6, 9, attackDuration, recoverDuration)
 {
 }
 
@@ -81,7 +81,7 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;

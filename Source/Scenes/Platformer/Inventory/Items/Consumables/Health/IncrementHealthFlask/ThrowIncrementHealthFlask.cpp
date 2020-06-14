@@ -30,7 +30,8 @@ ThrowIncrementHealthFlask* ThrowIncrementHealthFlask::create(Priority priority)
 	return instance;
 }
 
-ThrowIncrementHealthFlask::ThrowIncrementHealthFlask(Priority priority) : super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskIncrement, priority, 10, 15, 0, 0.2f, 1.5f)
+ThrowIncrementHealthFlask::ThrowIncrementHealthFlask(Priority priority)
+	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskIncrement, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 

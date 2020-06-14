@@ -26,7 +26,7 @@ CastInversion* CastInversion::create(float attackDuration, float recoverDuration
 }
 
 CastInversion::CastInversion(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_YinYang, priority, 0, 0, 8, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_YinYang, priority, AbilityType::Shadow, 0, 0, 8, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

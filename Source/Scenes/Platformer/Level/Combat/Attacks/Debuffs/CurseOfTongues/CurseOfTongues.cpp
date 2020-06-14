@@ -54,7 +54,7 @@ CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntit
 }
 
 CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Voodoo, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Shadow, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);

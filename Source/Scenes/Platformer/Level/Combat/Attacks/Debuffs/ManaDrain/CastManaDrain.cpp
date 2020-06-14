@@ -27,7 +27,7 @@ CastManaDrain* CastManaDrain::create(float attackDuration, float recoverDuration
 }
 
 CastManaDrain::CastManaDrain(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_ManaSkull, priority, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_ManaSkull, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

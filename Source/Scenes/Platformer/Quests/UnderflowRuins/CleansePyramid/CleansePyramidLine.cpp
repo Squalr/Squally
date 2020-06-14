@@ -23,7 +23,7 @@ CleansePyramidLine::CleansePyramidLine() : super(CleansePyramidLine::MapKeyQuest
 	QuestData(TalkToHorus::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToHorus::create(owner, questLine); }),
 	QuestData(DefeatOsiris::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatOsiris::create(owner, questLine); }),
 	QuestData(UnlockTomb::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnlockTomb::create(owner, questLine); }),
-	QuestData(TalkToHorus::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToCleopatra::create(owner, questLine); }),
+	QuestData(TalkToCleopatra::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToCleopatra::create(owner, questLine); }),
 })
 {
 }

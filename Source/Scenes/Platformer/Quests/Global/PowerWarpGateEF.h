@@ -5,6 +5,7 @@
 class PlatformerEntity;
 class Portal;
 class QuestLine;
+class Squally;
 class Trigger;
 
 class PowerWarpGateEF : public QuestTask
@@ -26,7 +27,10 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void runCinematicSequence();
+
 	Portal* portal;
 	Trigger* trigger;
+	Squally* squally;
 	PlatformerEntity* mage;
 };

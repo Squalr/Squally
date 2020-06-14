@@ -27,6 +27,7 @@ WandEnergyBolt::WandEnergyBolt(int damageMin, int damageMax, float attackDuratio
 		AttackType::Damage,
 		UIResources::Menus_Icons_ThunderBoltBlue,
 		priority,
+		AbilityType::Lightning,
 		damageMin,
 		damageMax,
 		6,
@@ -83,7 +84,7 @@ void WandEnergyBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 void WandEnergyBolt::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

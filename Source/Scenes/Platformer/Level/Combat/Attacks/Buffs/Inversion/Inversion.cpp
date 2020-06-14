@@ -51,7 +51,7 @@ Inversion* Inversion::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Inversion::Inversion(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_YinYang, BuffData(Inversion::Duration, Inversion::InversionIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_YinYang, AbilityType::Shadow, BuffData(Inversion::Duration, Inversion::InversionIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);

@@ -27,6 +27,7 @@ Pound::Pound(int damageMin, int damageMax, float attackDuration, float recoverDu
 		AttackType::Damage,
 		UIResources::Menus_Icons_PunchStrong,
 		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		5,
@@ -79,7 +80,7 @@ void Pound::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*
 
 void Pound::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

@@ -51,7 +51,7 @@ Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, AbilityType::Arcane, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -156,7 +156,7 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 	this->damageReflected = MathUtils::clamp(this->damageReflected, Reflect::MinReflect, std::abs(damageOrHealing.originalDamageOrHealing) * Reflect::MaxMultiplier);
 
 	// Reflect damage back to caster
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected, true));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected, damageOrHealing.abilityType, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()

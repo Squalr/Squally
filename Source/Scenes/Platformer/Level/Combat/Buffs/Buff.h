@@ -39,7 +39,7 @@ public:
 
 protected:
 
-	Buff(PlatformerEntity* caster, PlatformerEntity* owner, std::string buffIconResource, BuffData buffData);
+	Buff(PlatformerEntity* caster, PlatformerEntity* owner, std::string buffIconResource, AbilityType abilityType, BuffData buffData);
 	virtual ~Buff();
 
 	void onEnter() override;
@@ -60,6 +60,7 @@ protected:
 	PlatformerEntity* caster;
 	PlatformerEntity* owner;
 	std::vector<HackableCode*> hackables;
+	AbilityType abilityType;
 
 private:
 	typedef SmartNode super;

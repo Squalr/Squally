@@ -47,7 +47,7 @@ SiphonLife* SiphonLife::create(PlatformerEntity* caster, PlatformerEntity* targe
 }
 
 SiphonLife::SiphonLife(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_BloodGoblet, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_BloodGoblet, AbilityType::Shadow, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = SiphonLife::HealAmount;
@@ -188,8 +188,8 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 	gainAmount = MathUtils::clamp(gainAmount, -8, 8);
 
 	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->caster, drainAmount));
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, gainAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->caster, drainAmount, this->abilityType));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, gainAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

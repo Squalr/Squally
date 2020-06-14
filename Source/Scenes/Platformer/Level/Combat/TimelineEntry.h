@@ -2,6 +2,8 @@
 
 #include "Engine/SmartNode.h"
 
+#include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
+
 namespace cocos2d
 {
 	class Sprite;
@@ -17,10 +19,10 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity, int spawnIndex);
 
 	PlatformerEntity* getEntity();
-	void applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing);
-	void applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing);
-	void applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing);
-	void applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing);
+	void applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing, AbilityType abilityType);
+	void applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType);
+	void applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType);
+	void applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType);
 	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);
 	std::vector<PlatformerEntity*> getStagedTargets();

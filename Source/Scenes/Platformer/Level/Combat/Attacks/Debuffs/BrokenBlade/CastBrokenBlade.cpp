@@ -27,7 +27,7 @@ CastBrokenBlade* CastBrokenBlade::create(float attackDuration, float recoverDura
 }
 
 CastBrokenBlade::CastBrokenBlade(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_SwordBrokenAlt, priority, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_SwordBrokenAlt, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	

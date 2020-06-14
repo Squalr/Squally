@@ -14,11 +14,12 @@
 
 using namespace cocos2d;
 
-Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, BuffData buffData)
+Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, AbilityType abilityType, BuffData buffData)
 {
 	this->caster = caster;
 	this->owner = target;
 	this->buffData = buffData;
+	this->abilityType = abilityType;
 	this->iconContainer = Node::create();
 	this->buffGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->buffIcon = Sprite::create(buffIconResource);

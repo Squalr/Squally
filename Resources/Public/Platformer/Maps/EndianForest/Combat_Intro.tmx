@@ -85,7 +85,7 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1636.01" y="1579.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -147,7 +147,7 @@
     <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
-  <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
+  <object id="565" name="camera-target" type="object" x="1420" y="1358" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.1"/>

@@ -50,7 +50,7 @@ HealthLink* HealthLink::create(PlatformerEntity* caster, PlatformerEntity* targe
 }
 
 HealthLink::HealthLink(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Clones, BuffData(HealthLink::Duration, HealthLink::HealthLinkIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Clones, AbilityType::Physical, BuffData(HealthLink::Duration, HealthLink::HealthLinkIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -154,7 +154,7 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing dam
 		{
 			if (next != damageOrHealing.target)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.caster, next, -std::abs(this->healthLinkDamage), true));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.caster, next, std::abs(this->healthLinkDamage), damageOrHealing.abilityType, true));
 			}
 		}
 	}));

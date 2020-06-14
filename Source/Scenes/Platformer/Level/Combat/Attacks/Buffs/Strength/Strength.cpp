@@ -52,7 +52,7 @@ Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Strength, BuffData(Strength::Duration, Strength::StrengthIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Strength, AbilityType::Physical, BuffData(Strength::Duration, Strength::StrengthIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);

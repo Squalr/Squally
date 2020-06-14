@@ -293,12 +293,13 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int damageOrHealing;
+		AbilityType abilityType;
 
 		// If true, this flag will prevent buffs from modifying the damage/healing
 		bool disableBuffProcessing;
 
-		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing, bool disableBuffProcessing = false)
-			: caster(caster), target(target), damageOrHealing(damageOrHealing), disableBuffProcessing(disableBuffProcessing)
+		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing, AbilityType abilityType, bool disableBuffProcessing = false)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing), abilityType(abilityType), disableBuffProcessing(disableBuffProcessing)
 		{
 		}
 	};
@@ -308,12 +309,13 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int manaRestoreOrDrain;
+		AbilityType abilityType;
 
 		// If true, this flag will prevent buffs from modifying the drain/restore
 		bool disableBuffProcessing;
 
-		ManaRestoreOrDrainArgs(PlatformerEntity* caster, PlatformerEntity* target, int manaRestoreOrDrain, bool disableBuffProcessing = false)
-			: caster(caster), target(target), manaRestoreOrDrain(manaRestoreOrDrain), disableBuffProcessing(disableBuffProcessing)
+		ManaRestoreOrDrainArgs(PlatformerEntity* caster, PlatformerEntity* target, int manaRestoreOrDrain, AbilityType abilityType, bool disableBuffProcessing = false)
+			: caster(caster), target(target), manaRestoreOrDrain(manaRestoreOrDrain), abilityType(abilityType), disableBuffProcessing(disableBuffProcessing)
 		{
 		}
 	};
@@ -323,9 +325,10 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
+		AbilityType abilityType;
 
-		ModifiableDamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing)
-			: caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false)
+		ModifiableDamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing, AbilityType abilityType)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing), abilityType(abilityType), handled(false)
 		{
 		}
 

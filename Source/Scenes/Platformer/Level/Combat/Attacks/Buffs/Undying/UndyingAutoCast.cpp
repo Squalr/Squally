@@ -23,7 +23,7 @@ UndyingAutoCast* UndyingAutoCast::create(PlatformerEntity* caster, PlatformerEnt
 }
 
 UndyingAutoCast::UndyingAutoCast(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, "", BuffData(-1.0f, UndyingAutoCast::UndyingAutoCastIdentifier))
+	: super(caster, target, "", AbilityType::Shadow, BuffData(-1.0f, UndyingAutoCast::UndyingAutoCastIdentifier))
 {
 	this->hasAutoCasted = false;
 }

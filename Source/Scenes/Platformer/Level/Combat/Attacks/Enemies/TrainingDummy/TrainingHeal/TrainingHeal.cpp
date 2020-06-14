@@ -48,7 +48,7 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
-	: super(caster, target, UIResources::Menus_Icons_Heal, BuffData(TrainingHeal::TrainingHealIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Heal, AbilityType::Holy, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
@@ -180,7 +180,7 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
 
 	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

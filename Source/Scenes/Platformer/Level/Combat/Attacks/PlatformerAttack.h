@@ -2,6 +2,8 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
+#include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
+
 class LocalizedString;
 class PlatformerEntity;
 class Projectile;
@@ -61,7 +63,7 @@ public:
 protected:
 	friend class EntityAttackBehavior;
 	
-	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, bool multiTarget = false);
+	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, AbilityType abilityType, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, bool multiTarget = false);
 	virtual ~PlatformerAttack();
 
 	int getBaseDamageMin();
@@ -81,6 +83,7 @@ protected:
 	float attackDuration;
 	float recoverDuration;
 	Priority priority;
+	AbilityType abilityType;
 	
 	static const float DefaultCleanupDuration;
 

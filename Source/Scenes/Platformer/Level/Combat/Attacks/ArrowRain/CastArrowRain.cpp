@@ -28,7 +28,7 @@ CastArrowRain* CastArrowRain::create(float attackDuration, float recoverDuration
 }
 
 CastArrowRain::CastArrowRain(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_ArrowRain, priority, 0, 0, 4, attackDuration, recoverDuration, true)
+	: super(AttackType::Damage, UIResources::Menus_Icons_ArrowRain, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, true)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
