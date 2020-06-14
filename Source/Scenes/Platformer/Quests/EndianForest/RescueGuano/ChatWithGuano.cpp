@@ -107,15 +107,15 @@ void ChatWithGuano::runChatSequence()
 				Strings::Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->guano, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->guano, true)
 				),
 				[=]()
 				{
 					this->runChatSequencePt2();
 				},
-				Voices::GetNextVoiceMedium(),
+				Voices::GetNextVoiceLong(),
 				false
 			));
 		}),
@@ -129,9 +129,9 @@ void ChatWithGuano::runChatSequencePt2()
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true),
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true),
 			true
 		),
 		[=]()
@@ -149,15 +149,15 @@ void ChatWithGuano::runChatSequencePt3()
 		Strings::Platformer_Quests_EndianForest_RescueGuano_B_WhatGotMeInHere::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
 			this->runChatSequencePt4();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(),
 		false
 	));
 }
@@ -187,16 +187,16 @@ void ChatWithGuano::runChatSequencePt5()
 		Strings::Platformer_Quests_EndianForest_RescueGuano_D_DoorTech::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
 			this->mulDoor->toggleHackable(true);
 			this->complete();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(),
 		true
 	));
 }

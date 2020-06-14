@@ -70,6 +70,7 @@ private:
 
 	void onEnter() override;
 	void onStringUpdate(LocalizedString* localizedString);
+	void cleanupState();
 	cocos2d::LanguageType getCurrentLanguage();
 	float getFontSizeS1();
 	float getFontSizeS2();

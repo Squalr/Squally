@@ -118,7 +118,7 @@ void PowerWarpGateEF::runCinematicSequence()
 					Strings::Platformer_Quests_WarpGates_WarpGateIntro::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Left,
+						DialogueBox::DialogueAlignment::Right,
 						DialogueEvents::BuildPreviewNode(&this->squally, false),
 						DialogueEvents::BuildPreviewNode(&this->mage, true)
 					),

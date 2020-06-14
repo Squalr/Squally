@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="880">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="881">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -86,7 +86,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="863" name="Forest/Flower10" type="decor" x="2820.5" y="1786.83" width="199" height="133"/>
-  <object id="865" name="Forest/Flower9" type="decor" x="5260.5" y="1693.5" width="199" height="133"/>
+  <object id="865" name="Forest/Flower9" type="decor" x="5259.5" y="1718.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="80" name="objects -4">
   <properties>
@@ -273,7 +273,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="water" type="object" x="-123.65" y="2693.73" width="14743.3" height="2896.42">
+  <object id="828" name="water" type="object" x="-115.65" y="2581.73" width="14743.3" height="2896.42">
    <properties>
     <property name="colllision" value="none"/>
    </properties>
@@ -326,7 +326,7 @@
   <object id="826" name="blue-grass" type="terrain" x="3220" y="2972">
    <polygon points="-417.69,-343.98 -720.721,-597.871 -1264.93,-925.752 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -3295.44,-3114.95 -3301.53,319.88 -424.36,313.63"/>
   </object>
-  <object id="875" name="caverns" type="terrain" x="2702.19" y="4982" width="5267.63" height="684">
+  <object id="875" name="caverns" type="terrain" x="2710.19" y="4870" width="5267.63" height="684">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -376,8 +376,8 @@
   <object id="674" name="pendulum-blade" type="object" x="4040.98" y="4407.68" width="42.4242" height="237.751"/>
   <object id="675" name="pendulum-blade" type="object" x="4223.28" y="4411.34" width="42.4242" height="174.667"/>
   <object id="676" name="pendulum-blade" type="object" x="4919.83" y="4413.4" width="42.4242" height="243.758"/>
-  <object id="677" name="mechanical-flail" type="object" x="4318.07" y="4793.91" width="42.4242" height="187.636"/>
-  <object id="678" name="mechanical-flail" type="object" x="4566.98" y="4775.87" width="42.4242" height="205.576"/>
+  <object id="677" name="mechanical-flail" type="object" x="4326.07" y="4681.91" width="42.4242" height="187.636"/>
+  <object id="678" name="mechanical-flail" type="object" x="4574.98" y="4663.87" width="42.4242" height="205.576"/>
   <object id="687" name="pendulum-blade" type="object" x="4428.65" y="4410.44" width="42.4242" height="220.97"/>
   <object id="778" name="chest" type="object" x="3740.73" y="2066.06" width="128" height="128">
    <properties>
@@ -400,9 +400,9 @@
   </object>
   <object id="782" name="mechanical-flail" type="object" x="4347.36" y="4190.23" width="42.4242" height="215.515"/>
   <object id="783" name="mechanical-flail" type="object" x="4652.57" y="4096.37" width="42.4242" height="312.303"/>
-  <object id="784" name="mechanical-flail" type="object" x="4787.67" y="4788.54" width="42.4242" height="193.212"/>
-  <object id="785" name="mechanical-flail" type="object" x="5035.91" y="4785.83" width="42.4242" height="194.182"/>
-  <object id="786" name="mechanical-flail" type="object" x="5310.33" y="4777.2" width="42.4242" height="202.545"/>
+  <object id="784" name="mechanical-flail" type="object" x="4795.67" y="4676.54" width="42.4242" height="193.212"/>
+  <object id="785" name="mechanical-flail" type="object" x="5043.91" y="4673.83" width="42.4242" height="194.182"/>
+  <object id="786" name="mechanical-flail" type="object" x="5318.33" y="4665.2" width="42.4242" height="202.545"/>
   <object id="788" name="pendulum-blade" type="object" x="5162.79" y="4413.18" width="42.4242" height="244.303"/>
   <object id="790" name="mechanical-flail" type="object" x="4963.82" y="4092.12" width="42.4242" height="316.97"/>
   <object id="799" name="mechanical-flail" type="object" x="5217.7" y="4235.88" width="42.4242" height="168.97"/>
@@ -414,7 +414,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="817" name="iou" type="object" x="7271.17" y="4726.32" width="87" height="87"/>
+  <object id="817" name="iou" type="object" x="7259.17" y="4780.32" width="87" height="87"/>
   <object id="818" name="iou" type="object" x="12285.5" y="2508.5" width="87" height="87"/>
   <object id="819" name="edge-portal" type="object" x="14145.6" y="795.696" width="199.918" height="640.851">
    <properties>
@@ -436,6 +436,7 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
+  <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

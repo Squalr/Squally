@@ -40,7 +40,7 @@ const std::string Fortitude::HackIdentifierFortitude = "fortitude";
 
 const int Fortitude::MaxMultiplier = 4;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
-const float Fortitude::Duration = 12.0f;
+const float Fortitude::Duration = 16.0f;
 
 Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 {

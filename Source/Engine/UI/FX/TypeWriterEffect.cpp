@@ -29,31 +29,6 @@ void TypeWriterEffect::runTypeWriterEffect(SmartNode* host, LocalizedLabel* labe
 	int max = label->getStringLength();
 	int maxRealIndex = 0;
 
-	// LocalizedStrings inherit from cocos labels, thus are not SmartNodes. For this reason, events are registered on a given host.
-	host->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::BeforeLocaleChangeEvent, [=](EventCustom* args)
-	{
-		if (label == nullptr)
-		{
-			return;
-		}
-		
-		label->removeLetters();
-
-		for (int index = 0; index < max; index++)
-		{
-			Sprite* letter = label->getLetter(index);
-
-			if (letter != nullptr)
-			{
-				letter->stopAllActions();
-				letter->setTextureAtlas(nullptr);
-			}
-		}
-
-		label->_contentDirty = true;
-		label->_letters.clear();
-	}));
-
 	// ZAC: Unicode string length fucks up with Zalgo text. Not working as intended.
 	/*
 	int strLen = StrUtils::unicodeStrLen(label->localizedString->getString());

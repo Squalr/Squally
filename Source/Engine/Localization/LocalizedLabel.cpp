@@ -207,6 +207,8 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	int outlineSize = int(this->getOutlineSize());
 	Color4B outlineColor = Color4B(_effectColorF);
 
+	this->cleanupState();
+
 	this->initWithTTF(
 		localizedString->getString(),
 		this->getFont(),
@@ -221,6 +223,30 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	{
 		this->enableOutline(outlineColor, outlineSize);
 	}
+}
+
+void LocalizedLabel::cleanupState()
+{
+	if (_letters.size() > 0)
+	{
+		this->removeLetters();
+		int max = this->getStringLength();
+
+		for (int index = 0; index < max; index++)
+		{
+			Sprite* letter = this->getLetter(index);
+
+			if (letter != nullptr)
+			{
+				letter->stopAllActions();
+				letter->setTextureAtlas(nullptr);
+			}
+		}
+		
+		this->_letters.clear();
+	}
+
+	this->_contentDirty = true;
 }
 
 cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
