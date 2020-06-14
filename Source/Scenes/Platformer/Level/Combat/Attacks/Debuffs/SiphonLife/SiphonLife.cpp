@@ -184,8 +184,8 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 	ASM(pop ZSI);
 	ASM(pop ZDI);
 
-	drainAmount = MathUtils::clamp(drainAmount, -1, 1);
-	gainAmount = MathUtils::clamp(gainAmount, -1, 1);
+	drainAmount = MathUtils::clamp(drainAmount, -8, 8);
+	gainAmount = MathUtils::clamp(gainAmount, -8, 8);
 
 	this->healSound->play();
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->caster, drainAmount));

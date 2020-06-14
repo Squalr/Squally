@@ -36,7 +36,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INVERSION 1
 
-const std::string Inversion::InversionIdentifier = "stone-skin";
+const std::string Inversion::InversionIdentifier = "inversion";
 
 const int Inversion::MaxMultiplier = 4;
 const float Inversion::Duration = 16.0f;

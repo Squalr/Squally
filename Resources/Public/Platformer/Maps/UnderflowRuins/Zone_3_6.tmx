@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1174">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1176">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -345,6 +345,7 @@
    </properties>
   </object>
   <object id="1141" name="solid" type="collision" x="3999.59" y="-221.62" width="126.878" height="1821.18"/>
+  <object id="1175" name="ruins-thick" type="terrain" x="-83.315" y="2880" width="3326.63" height="576"/>
  </objectgroup>
  <objectgroup id="96" name="objects +3">
   <properties>
@@ -371,6 +372,7 @@
     <property name="transition" value="bottom-left-front"/>
    </properties>
   </object>
+  <object id="1174" name="life-stone" type="object" x="2203" y="2468.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="77" name="player_layer +3">
   <properties>
@@ -398,7 +400,6 @@
     <property name="to" value="3-B"/>
    </properties>
   </object>
-  <object id="1133" name="ruins-thick" type="terrain" x="-83.315" y="2880" width="3326.63" height="576"/>
   <object id="1146" name="spawn" type="object" x="2817" y="2754" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-center"/>

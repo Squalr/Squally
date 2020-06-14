@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1150">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1152">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -223,6 +223,7 @@
   </object>
   <object id="1132" name="solid" type="collision" x="3193.65" y="1354.02" width="126.878" height="1587.85"/>
   <object id="1137" name="solid" type="collision" x="4004.44" y="-459.075" width="126.878" height="1821.18"/>
+  <object id="1151" name="life-stone" type="object" x="2833" y="922.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>

@@ -40,7 +40,7 @@ const std::string Weakness::WeaknessIdentifier = "weakness";
 const int Weakness::MinMultiplier = -1;
 const int Weakness::MaxMultiplier = 2;
 const int Weakness::DamageIncrease = 3; // Keep in sync with asm
-const float Weakness::Duration = 12.0f;
+const float Weakness::Duration = 24.0f;
 
 Weakness* Weakness::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -52,7 +52,7 @@ Weakness* Weakness::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Weakness::Weakness(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_SwordBroken, BuffData(Weakness::Duration, Weakness::WeaknessIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_CrossbonesDiseased, BuffData(Weakness::Duration, Weakness::WeaknessIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -107,7 +107,7 @@ void Weakness::registerHackables()
 				Weakness::WeaknessIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Weakness_Weakness::create(),
 				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_SwordBroken,
+				UIResources::Menus_Icons_CrossbonesDiseased,
 				WeaknessGenericPreview::create(),
 				{
 					{
@@ -166,7 +166,7 @@ NO_OPTIMIZE void Weakness::applyWeakness()
 	ASM(mov ZDX, 4);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WEAKNESS);
-	ASM(cmp ZCX, ZDX);
+	ASM(cmp ZCX, 4);
 	ASM(cmovge ZCX, ZDX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

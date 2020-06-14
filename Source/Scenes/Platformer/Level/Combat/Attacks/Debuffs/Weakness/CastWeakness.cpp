@@ -27,7 +27,7 @@ CastWeakness* CastWeakness::create(float attackDuration, float recoverDuration, 
 }
 
 CastWeakness::CastWeakness(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_SwordBroken, priority, 0, 0, 6, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_CrossbonesDiseased, priority, 0, 0, 12, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
