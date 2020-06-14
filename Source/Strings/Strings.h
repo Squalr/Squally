@@ -23484,6 +23484,21 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemEndOfDemo() = default;
 	};
 
+	class Platformer_Help_HelpTotemEquipment : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemEquipment* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemEquipment();
+		virtual ~Platformer_Help_HelpTotemEquipment() = default;
+	};
+
 	class Platformer_Help_HelpTotemHacking : public LocalizedString
 	{
 	public:
@@ -23527,6 +23542,21 @@ namespace Strings
 	private:
 		Platformer_Help_HelpTotemPickPocket();
 		virtual ~Platformer_Help_HelpTotemPickPocket() = default;
+	};
+
+	class Platformer_Help_HelpTotemPotions : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemPotions* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemPotions();
+		virtual ~Platformer_Help_HelpTotemPotions() = default;
 	};
 
 	class Platformer_Help_HelpTotemSwimHack : public LocalizedString

@@ -20,7 +20,7 @@ Copper* Copper::create()
 	return instance;
 }
 
-Copper::Copper() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 18 }}), ItemMeta(20000))
+Copper::Copper() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(20000))
 {
 }
 

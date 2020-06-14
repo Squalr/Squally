@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1147">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1148">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -172,6 +172,7 @@
     <property name="transition" value="bottom-right"/>
    </properties>
   </object>
+  <object id="1147" name="help-totem-potions" type="object" x="2458.67" y="1090.67" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>

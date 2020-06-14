@@ -122,9 +122,11 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[IOUDrop::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEndOfDemo::create(properties); };
+	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEquipment::create(properties); };
 	this->deserializers[HelpTotemHacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemHacking::create(properties); };
 	this->deserializers[HelpTotemHexusCards::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemHexusCards::create(properties); };
 	this->deserializers[HelpTotemPickPocket::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemPickPocket::create(properties); };
+	this->deserializers[HelpTotemPotions::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemPotions::create(properties); };
 	this->deserializers[HelpTotemSwimHack::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemSwimHack::create(properties); };
 	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
