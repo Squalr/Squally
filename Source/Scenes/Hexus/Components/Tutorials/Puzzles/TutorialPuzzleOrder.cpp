@@ -1,4 +1,4 @@
-#include "TutorialPuzzleC.h"
+#include "TutorialPuzzleOrder.h"
 
 #include <vector>
 
@@ -21,19 +21,19 @@
 
 using namespace cocos2d;
 
-TutorialPuzzleC* TutorialPuzzleC::create()
+TutorialPuzzleOrder* TutorialPuzzleOrder::create()
 {
-	TutorialPuzzleC* instance = new TutorialPuzzleC();
+	TutorialPuzzleOrder* instance = new TutorialPuzzleOrder();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TutorialPuzzleC::TutorialPuzzleC() : super(GameState::StateType::Neutral)
+TutorialPuzzleOrder::TutorialPuzzleOrder() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleC_A_Overflow::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleD_A_Order::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->introNextButton = this->createNextButton();
 
 	this->introTutorialLabel->enableOutline(Color4B::BLACK, 2);
@@ -41,15 +41,14 @@ TutorialPuzzleC::TutorialPuzzleC() : super(GameState::StateType::Neutral)
 
 	this->addChild(this->focusTakeOver);
 	this->addChild(this->introTutorialLabel);
-
 	this->addChild(this->introNextButton);
 }
 
-TutorialPuzzleC::~TutorialPuzzleC()
+TutorialPuzzleOrder::~TutorialPuzzleOrder()
 {
 }
 
-void TutorialPuzzleC::onEnter()
+void TutorialPuzzleOrder::onEnter()
 {
 	super::onEnter();
 
@@ -58,7 +57,7 @@ void TutorialPuzzleC::onEnter()
 	this->introNextButton->disableInteraction(0);
 }
 
-void TutorialPuzzleC::initializePositions()
+void TutorialPuzzleOrder::initializePositions()
 {
 	super::initializePositions();
 
@@ -69,12 +68,12 @@ void TutorialPuzzleC::initializePositions()
 	this->introNextButton->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 32.0f);
 }
 
-void TutorialPuzzleC::initializeListeners()
+void TutorialPuzzleOrder::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-bool TutorialPuzzleC::tryHijackState(GameState* gameState)
+bool TutorialPuzzleOrder::tryHijackState(GameState* gameState)
 {
 	this->initializeCallbacks(gameState);
 	this->runTutorialIntro(gameState);
@@ -82,17 +81,17 @@ bool TutorialPuzzleC::tryHijackState(GameState* gameState)
 	return true;
 }
 
-void TutorialPuzzleC::onBeforeStateChange(GameState* gameState)
+void TutorialPuzzleOrder::onBeforeStateChange(GameState* gameState)
 {
 	super::onBeforeStateChange(gameState);
 }
 
-void TutorialPuzzleC::onAnyStateChange(GameState* gameState)
+void TutorialPuzzleOrder::onAnyStateChange(GameState* gameState)
 {
 	super::onAnyStateChange(gameState);
 }
 
-void TutorialPuzzleC::initializeCallbacks(GameState* gameState)
+void TutorialPuzzleOrder::initializeCallbacks(GameState* gameState)
 {
 	this->introNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
@@ -105,7 +104,7 @@ void TutorialPuzzleC::initializeCallbacks(GameState* gameState)
 	});
 }
 
-void TutorialPuzzleC::runTutorialIntro(GameState* gameState)
+void TutorialPuzzleOrder::runTutorialIntro(GameState* gameState)
 {
 	this->introNextButton->enableInteraction(0);
 	this->introNextButton->runAction(FadeTo::create(0.25f, 255));
@@ -114,7 +113,7 @@ void TutorialPuzzleC::runTutorialIntro(GameState* gameState)
 	this->focusTakeOver->focus({ });
 }
 
-void TutorialPuzzleC::unHijackState(GameState* gameState)
+void TutorialPuzzleOrder::unHijackState(GameState* gameState)
 {
 	this->introNextButton->disableInteraction();
 	this->introNextButton->runAction(FadeTo::create(0.25f, 0));

@@ -124,5 +124,5 @@ StateOverride* EFPuzzleDBehavior::getStateOverride()
 
 std::vector<TutorialBase*> EFPuzzleDBehavior::getTutorials()
 {
-	return { TutorialPuzzleD::create() };
+	return { TutorialPuzzleShlOverflow::create() };
 }

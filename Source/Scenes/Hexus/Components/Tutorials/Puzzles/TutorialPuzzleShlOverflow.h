@@ -7,15 +7,15 @@ class HelpArrow;
 class LocalizedLabel;
 class ClickableTextNode;
 
-class TutorialPuzzleB : public TutorialBase
+class TutorialPuzzleShlOverflow : public TutorialBase
 {
 public:
-	static TutorialPuzzleB* create();
+	static TutorialPuzzleShlOverflow* create();
 
 protected:
-	TutorialPuzzleB();
-	virtual ~TutorialPuzzleB();
-	
+	TutorialPuzzleShlOverflow();
+	virtual ~TutorialPuzzleShlOverflow();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -29,16 +29,8 @@ private:
 
 	void initializeCallbacks(GameState* gameState);
 	void runTutorialIntro(GameState* gameState);
-	void runTutorialDecimalCards(GameState* gameState);
-	void runTutorialHelp(GameState* gameState);
-
+\
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* introTutorialLabel;
-	LocalizedLabel* decimalCardsTutorialLabel;
-	LocalizedLabel* helpTutorialLabel;
 	ClickableTextNode* introNextButton;
-	ClickableTextNode* decimalCardsNextButton;
-	ClickableTextNode* helpNextButton;
-
-	HelpArrow* helpArrow;
 };

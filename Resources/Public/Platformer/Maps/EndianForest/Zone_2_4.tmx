@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1253">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1254">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value="limestone-temple"/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
@@ -269,12 +269,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="843" name="stone-button" type="object" x="3033.72" y="4863.01" width="258.367" height="85.7283">
-   <properties>
-    <property name="send-event" value="door-open"/>
-    <property name="switch" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="924" name="temple" type="terrain" x="4074.7" y="3016">
    <polygon points="1039.18,12.3061 1038.09,235.138 407.127,238.602 401.762,1208.63 1035.68,1211.65 1034.39,1487.15 29.7813,1484.41 30.1618,11.4512"/>
   </object>
@@ -388,6 +382,12 @@
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1253" name="stone-button" type="object" x="3018.82" y="4867.14" width="258.367" height="85.7283">
+   <properties>
+    <property name="send-event" value="door-open"/>
+    <property name="switch" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

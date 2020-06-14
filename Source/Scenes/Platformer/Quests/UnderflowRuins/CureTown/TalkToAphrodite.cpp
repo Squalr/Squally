@@ -126,8 +126,8 @@ void TalkToAphrodite::runCinematicSequence()
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{
@@ -141,9 +141,9 @@ void TalkToAphrodite::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_Athens::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->aphrodite, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 			),
 			[=]()
 			{

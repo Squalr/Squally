@@ -1,4 +1,4 @@
-#include "TutorialPuzzleB.h"
+#include "TutorialPuzzleOverflow.h"
 
 #include <vector>
 
@@ -23,16 +23,16 @@
 
 using namespace cocos2d;
 
-TutorialPuzzleB* TutorialPuzzleB::create()
+TutorialPuzzleOverflow* TutorialPuzzleOverflow::create()
 {
-	TutorialPuzzleB* instance = new TutorialPuzzleB();
+	TutorialPuzzleOverflow* instance = new TutorialPuzzleOverflow();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TutorialPuzzleB::TutorialPuzzleB() : super(GameState::StateType::Neutral)
+TutorialPuzzleOverflow::TutorialPuzzleOverflow() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_A_4Bits::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
@@ -63,11 +63,11 @@ TutorialPuzzleB::TutorialPuzzleB() : super(GameState::StateType::Neutral)
 	this->addChild(this->helpArrow);
 }
 
-TutorialPuzzleB::~TutorialPuzzleB()
+TutorialPuzzleOverflow::~TutorialPuzzleOverflow()
 {
 }
 
-void TutorialPuzzleB::onEnter()
+void TutorialPuzzleOverflow::onEnter()
 {
 	super::onEnter();
 
@@ -80,7 +80,7 @@ void TutorialPuzzleB::onEnter()
 	this->helpNextButton->disableInteraction(0);
 }
 
-void TutorialPuzzleB::initializePositions()
+void TutorialPuzzleOverflow::initializePositions()
 {
 	super::initializePositions();
 
@@ -97,12 +97,12 @@ void TutorialPuzzleB::initializePositions()
 	this->helpArrow->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - 224.0f, visibleSize.height / 2.0f - 188.0f);
 }
 
-void TutorialPuzzleB::initializeListeners()
+void TutorialPuzzleOverflow::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-bool TutorialPuzzleB::tryHijackState(GameState* gameState)
+bool TutorialPuzzleOverflow::tryHijackState(GameState* gameState)
 {
 	this->initializeCallbacks(gameState);
 	this->runTutorialIntro(gameState);
@@ -110,17 +110,17 @@ bool TutorialPuzzleB::tryHijackState(GameState* gameState)
 	return true;
 }
 
-void TutorialPuzzleB::onBeforeStateChange(GameState* gameState)
+void TutorialPuzzleOverflow::onBeforeStateChange(GameState* gameState)
 {
 	super::onBeforeStateChange(gameState);
 }
 
-void TutorialPuzzleB::onAnyStateChange(GameState* gameState)
+void TutorialPuzzleOverflow::onAnyStateChange(GameState* gameState)
 {
 	super::onAnyStateChange(gameState);
 }
 
-void TutorialPuzzleB::initializeCallbacks(GameState* gameState)
+void TutorialPuzzleOverflow::initializeCallbacks(GameState* gameState)
 {
 	this->introNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
@@ -143,7 +143,7 @@ void TutorialPuzzleB::initializeCallbacks(GameState* gameState)
 	});
 }
 
-void TutorialPuzzleB::runTutorialIntro(GameState* gameState)
+void TutorialPuzzleOverflow::runTutorialIntro(GameState* gameState)
 {
 	this->introNextButton->enableInteraction(0);
 	this->introNextButton->runAction(FadeTo::create(0.25f, 255));
@@ -152,7 +152,7 @@ void TutorialPuzzleB::runTutorialIntro(GameState* gameState)
 	this->focusTakeOver->focus({ });
 }
 
-void TutorialPuzzleB::runTutorialDecimalCards(GameState* gameState)
+void TutorialPuzzleOverflow::runTutorialDecimalCards(GameState* gameState)
 {
 	this->introNextButton->disableInteraction();
 	this->introNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -170,7 +170,7 @@ void TutorialPuzzleB::runTutorialDecimalCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialPuzzleB::runTutorialHelp(GameState* gameState)
+void TutorialPuzzleOverflow::runTutorialHelp(GameState* gameState)
 {
 	this->decimalCardsNextButton->disableInteraction();
 	this->decimalCardsNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -192,7 +192,7 @@ void TutorialPuzzleB::runTutorialHelp(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialPuzzleB::unHijackState(GameState* gameState)
+void TutorialPuzzleOverflow::unHijackState(GameState* gameState)
 {
 	this->helpNextButton->disableInteraction();
 	this->helpNextButton->runAction(FadeTo::create(0.25f, 0));

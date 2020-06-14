@@ -7,15 +7,15 @@ class HelpArrow;
 class LocalizedLabel;
 class ClickableTextNode;
 
-class TutorialPuzzleC : public TutorialBase
+class TutorialPuzzleOrder : public TutorialBase
 {
 public:
-	static TutorialPuzzleC* create();
+	static TutorialPuzzleOrder* create();
 
 protected:
-	TutorialPuzzleC();
-	virtual ~TutorialPuzzleC();
-
+	TutorialPuzzleOrder();
+	virtual ~TutorialPuzzleOrder();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
