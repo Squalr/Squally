@@ -34,6 +34,7 @@ private:
 
 	void applyReflect();
 	
+	volatile int damageTaken;
 	volatile int damageReflected;
 	
 	SmartParticles* spellEffect;

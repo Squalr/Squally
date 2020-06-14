@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
@@ -206,7 +206,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="917" name="orc-grunt-disabled" type="entity" x="6766.31" y="717.97" width="128" height="128">
+  <object id="917" name="goblin-warrior-pig" type="entity" x="6766.31" y="717.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

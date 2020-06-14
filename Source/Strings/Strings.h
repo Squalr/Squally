@@ -8874,6 +8874,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain();
+		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain();
+		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse();
+		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi : public LocalizedString
 	{
 	public:

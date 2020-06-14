@@ -35,11 +35,11 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_REFLECT 1
 
-const std::string Reflect::ReflectIdentifier = "fortitude";
+const std::string Reflect::ReflectIdentifier = "reflect";
 
 const int Reflect::MinReflect = 1;
 const int Reflect::MaxMultiplier = 1;
-const float Reflect::Duration = 12.0f;
+const float Reflect::Duration = 10.0f;
 
 Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -56,6 +56,8 @@ Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->damageTaken = 0;
+	this->damageReflected = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::BLUE);
@@ -148,38 +150,45 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 
 	this->damageReflected = damageOrHealing.originalDamageOrHealing;
 
-	*damageOrHealing.damageOrHealing = 0;
-
 	this->applyReflect();
 
 	// Bound multiplier in either direction
+	this->damageTaken = MathUtils::clamp(this->damageTaken, Reflect::MinReflect, std::abs(damageOrHealing.originalDamageOrHealing) * Reflect::MaxMultiplier);
 	this->damageReflected = MathUtils::clamp(this->damageReflected, Reflect::MinReflect, std::abs(damageOrHealing.originalDamageOrHealing) * Reflect::MaxMultiplier);
 
-	// Reflect damage back to caster
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected, damageOrHealing.abilityType, true));
+	*damageOrHealing.damageOrHealing = this->damageTaken;
+
+	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected, damageOrHealing.abilityType, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
-	static volatile int damageTaken = 0;
+	static volatile int damageReflectedLocal = 0;
+	static volatile int damageTakenLocal = 0;
 
-	damageTaken = this->damageReflected;
+	damageReflectedLocal = this->damageReflected;
+	damageTakenLocal = this->damageReflected;
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, damageTaken);
+	ASM_MOV_REG_VAR(ZSI, damageReflectedLocal);
+	ASM_MOV_REG_VAR(ZBX, damageTakenLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
+	ASM(shr ZSI, 1);
 	ASM(mov ZBX, ZSI);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZBX);
+	ASM_MOV_VAR_REG(damageReflectedLocal, ZSI);
+	ASM_MOV_VAR_REG(damageTakenLocal, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->damageReflected = damageTaken;
+	this->damageReflected = damageReflectedLocal;
+	this->damageTaken = damageTakenLocal;
 
 	HACKABLES_STOP_SEARCH();
 }
