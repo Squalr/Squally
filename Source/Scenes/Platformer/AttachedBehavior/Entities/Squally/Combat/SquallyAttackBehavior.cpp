@@ -4,6 +4,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -15,6 +16,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttacks.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -61,6 +63,54 @@ void SquallyAttackBehavior::onLoad()
 void SquallyAttackBehavior::onDisable()
 {
 	super::onDisable();
+}
+
+void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBehavior)
+{
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookLightning, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookHoly, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookFrost, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookFire, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
+	{
+		
+	}
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
+	{
+		
+	}
 }
 
 void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavior)

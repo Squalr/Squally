@@ -31,6 +31,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void loadSpellBookAttacks(EntityAttackBehavior* attackBehavior);
 	void loadWeaponAttacks(EntityAttackBehavior* attackBehavior);
 	void loadUnarmedAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
 	void loadAxeAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);

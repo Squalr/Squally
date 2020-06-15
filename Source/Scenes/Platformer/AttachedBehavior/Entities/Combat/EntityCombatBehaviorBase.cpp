@@ -3,6 +3,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
@@ -25,6 +26,7 @@ EntityCombatBehaviorBase::EntityCombatBehaviorBase(GameObject* owner, std::vecto
 	this->timelineSpeed = 1.0f;
 	this->bonusArmor = 0;
 	this->bonusAttack = 0;
+	this->bonusMagicAttack = 0;
 	this->bonusSpeed = 0.0f;
 
 	if (this->entity == nullptr)
@@ -59,6 +61,13 @@ void EntityCombatBehaviorBase::onLoad()
 			this->bonusSpeed += next->getItemStats().speedBonus;
 		}
 	});
+	
+	StatsTables::Stats bonusStats = StatsTables::getBonusStats(this->entity);
+
+	this->bonusArmor += next->getItemStats().armorBonus;
+	this->bonusAttack += next->getItemStats().attackBonus;
+	this->bonusMagicAttack += next->getItemStats().magicAttackBonus;
+	this->bonusSpeed += next->getItemStats().speedBonus;
 	
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityStatsModifyDamageDelt, [=](EventCustom* eventCustom)
 	{
