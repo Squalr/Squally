@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const Size MenuEntry::LabelSize = Size(288.0f, 32.0f);
+const Size MenuEntry::LabelSize = Size(272.0f, 32.0f);
 
 MenuEntry* MenuEntry::create(LocalizedString* text, std::string iconResource)
 {
@@ -83,31 +83,14 @@ void MenuEntry::showIcon()
 
 void MenuEntry::sizeFont()
 {
-	float labelWidth = this->label->getContentSize().width;
-	float overdraw = labelWidth - MenuEntry::LabelSize.width;
+	// Setting dimensions enables multi-line, wrapping on width
+	this->label->setDimensions(MenuEntry::LabelSize.width, MenuEntry::LabelSize.height);
 
-	if (overdraw <= 0.0f)
+	while (this->label->getContentSize().height > this->label->getLineHeight())
 	{
-		this->label->setFontSize(LocalizedLabel::FontSize::H3);
-	}
-	else if (overdraw < 16.0f)
-	{
-		this->label->setFontSize(LocalizedLabel::FontSize::H4);
-	}
-	else if (overdraw < 32.0f)
-	{
-		this->label->setFontSize(LocalizedLabel::FontSize::P);
-	}
-	else if (overdraw < 48.0f)
-	{
-		this->label->setFontSize(LocalizedLabel::FontSize::Small);
-	}
-	else if (overdraw < 64.0f)
-	{
-		this->label->setFontSize(LocalizedLabel::FontSize::Tiny);
-	}
-	else
-	{
-		this->label->setFontSize(LocalizedLabel::FontSize::Micro);
+		if (!this->label->decreaseFontSize())
+		{
+			break;
+		}
 	}
 }

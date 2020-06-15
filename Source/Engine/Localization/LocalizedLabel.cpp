@@ -125,6 +125,30 @@ void LocalizedLabel::setFontSize(FontSize fontSize)
 	this->onStringUpdate(this->localizedString);
 }
 
+bool LocalizedLabel::increaseFontSize()
+{
+	if (this->fontSize == FontSize::MAX)
+	{
+		return false;
+	}
+
+	this->setFontSize(FontSize(int(this->fontSize) - 1));
+
+	return true;
+}
+
+bool LocalizedLabel::decreaseFontSize()
+{
+	if (this->fontSize == FontSize::MIN)
+	{
+		return false;
+	}
+
+	this->setFontSize(FontSize(int(this->fontSize) + 1));
+
+	return true;
+}
+
 float LocalizedLabel::getFontSize()
 {
 	switch (this->fontSize)

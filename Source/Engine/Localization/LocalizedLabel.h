@@ -34,6 +34,9 @@ public:
 		Small,
 		Tiny,
 		Micro,
+		
+		MAX = S1,
+		MIN = Micro,
 	};
 
 	static LocalizedLabel* create(
@@ -50,6 +53,8 @@ public:
 	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	void setFontSize(FontSize fontSize);
+	bool increaseFontSize();
+	bool decreaseFontSize();
 	float getFontSize();
 	std::string getFont();
 

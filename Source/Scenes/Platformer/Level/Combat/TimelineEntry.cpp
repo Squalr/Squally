@@ -47,12 +47,16 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->circleSelected = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircleSelected) : Sprite::create(UIResources::Combat_EnemyCircleSelected);
 	this->emblem = Sprite::create(entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource());
+	this->target = Sprite::create(UIResources::Menus_Icons_CrossHair);
 	this->skull = Sprite::create(UIResources::Combat_Skull);
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
 	this->isBlocking = false;
 	this->spawnIndex = spawnIndex;
 	this->combatBehavior = nullptr;
+
+	this->target->setScale(0.5f);
+	this->target->setVisible(false);
 
 	this->interruptBonus = 0.0f;
 	this->progress = 0.0f;
@@ -62,6 +66,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->addChild(this->circle);
 	this->addChild(this->circleSelected);
 	this->addChild(this->emblem);
+	this->addChild(this->target);
 	this->addChild(this->skull);
 	this->addChild(this->orphanedAttackCache);
 }
@@ -520,4 +525,9 @@ void TimelineEntry::setSelected(bool isSelected)
 {
 	this->circle->setVisible(!isSelected);
 	this->circleSelected->setVisible(isSelected);
+}
+
+void TimelineEntry::setTargeted(bool isTargeted)
+{
+	this->target->setVisible(isTargeted);
 }
