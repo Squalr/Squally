@@ -64,10 +64,10 @@ void EntityCombatBehaviorBase::onLoad()
 	
 	StatsTables::Stats bonusStats = StatsTables::getBonusStats(this->entity);
 
-	this->bonusArmor += next->getItemStats().armorBonus;
-	this->bonusAttack += next->getItemStats().attackBonus;
-	this->bonusMagicAttack += next->getItemStats().magicAttackBonus;
-	this->bonusSpeed += next->getItemStats().speedBonus;
+	this->bonusArmor += bonusStats.armor;
+	this->bonusAttack += bonusStats.attack;
+	this->bonusMagicAttack += bonusStats.magicAttack;
+	this->bonusSpeed += bonusStats.speed;
 	
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityStatsModifyDamageDelt, [=](EventCustom* eventCustom)
 	{

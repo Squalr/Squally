@@ -17,13 +17,14 @@ public:
 	static const std::string Identifier;
 
 protected:
+	DivPage();
+	virtual ~DivPage();
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 	
 private:
 	typedef LexiconPage super;
-	DivPage();
-	~DivPage();
 
 	cocos2d::Sprite* decorSprite;
 	cocos2d::Sprite* chapterSprite;

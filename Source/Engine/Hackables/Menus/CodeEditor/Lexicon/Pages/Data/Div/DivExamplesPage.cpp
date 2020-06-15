@@ -32,18 +32,15 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_Lexicon_Examples::create());
 	this->registerBlock = RegisterBlock::create();
 	this->resetButton = this->buildResetButton();
-	this->divRegImmButton = this->buildExecuteButton();
-	this->divRegRegButton = this->buildExecuteButton();
-	this->divPtrImmButton = this->buildExecuteButton();
-	this->divPtrRegButton = this->buildExecuteButton();
-	this->divPtrOffsetImmButton = this->buildExecuteButton();
-	this->divPtrOffsetRegButton = this->buildExecuteButton();
-	this->remainderHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	this->divImmButton = this->buildExecuteButton();
+	this->divRegButton = this->buildExecuteButton();
+	this->divPtrButton = this->buildExecuteButton();
+	this->divPtrOffsetButton = this->buildExecuteButton();
+	this->divPtrOffset2Button = this->buildExecuteButton();
 	this->pointerHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	this->offsetHelp4Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	this->offsetHelp8Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	
-	this->textPanelRemainderHelp = TextPanel::create(Strings::Menus_Hacking_Lexicon_Pages_Data_Div_RemainderHelp::create());
 	LocalizedString* pointerHelpStr = Strings::Menus_Hacking_Lexicon_Pages_Data_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
 	this->textPanelOffsetHelp4 = TextPanel::create(Strings::Menus_Hacking_Lexicon_Pages_Data_OffsetHelp4::create());
@@ -51,72 +48,52 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 
 	if (sizeof(void*) == 4)
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create());
 		
-		this->divRegImmLabel = this->createInstructionLabelDouble(
+		this->divImmLabel = this->createInstructionLabelSingle(
 			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
-			ConstantString::create(std::to_string(2))
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()
 		);
-		this->divRegRegLabel = this->createInstructionLabelDouble(
+		this->divRegLabel = this->createInstructionLabelSingle(
 			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create(),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdx::create()
-		);
-		this->divPtrImmLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()),
-			ConstantString::create(std::to_string(10))
-		);
-		this->divPtrRegLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create()),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdi::create()
-		);
-		this->divPtrOffsetImmLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 1),
-			ConstantString::create(std::to_string(4))
-		);
-		this->divPtrOffsetRegLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 2),
 			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create()
+		);
+		this->divPtrLabel = this->createInstructionLabelSingle(
+			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())
+		);
+		this->divPtrOffsetLabel = this->createInstructionLabelSingle(
+			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 1)
+		);
+		this->divPtrOffsetLabel2 = this->createInstructionLabelSingle(
+			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 2)
 		);
 	}
 	else
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create());
 		
-		this->divRegImmLabel = this->createInstructionLabelDouble(
+		this->divImmLabel = this->createInstructionLabelSingle(
 			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
-			ConstantString::create(std::to_string(2))
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()
 		);
-		this->divRegRegLabel = this->createInstructionLabelDouble(
+		this->divRegLabel = this->createInstructionLabelSingle(
 			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create(),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdx::create()
-		);
-		this->divPtrImmLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()),
-			ConstantString::create(std::to_string(10))
-		);
-		this->divPtrRegLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create()),
-			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdi::create()
-		);
-		this->divPtrOffsetImmLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 1),
-			ConstantString::create(std::to_string(4))
-		);
-		this->divPtrOffsetRegLabel = this->createInstructionLabelDouble(
-			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
-			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 2),
 			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create()
+		);
+		this->divPtrLabel = this->createInstructionLabelSingle(
+			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())
+		);
+		this->divPtrOffsetLabel = this->createInstructionLabelSingle(
+			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 1)
+		);
+		this->divPtrOffsetLabel2 = this->createInstructionLabelSingle(
+			Strings::Menus_Hacking_Lexicon_Assembly_Div::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 2)
 		);
 	}
 
@@ -127,23 +104,19 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 	this->addChild(this->examplesLabel);
 	this->addChild(this->registerBlock);
 	this->addChild(this->resetButton);
-	this->addChild(this->divRegImmButton);
-	this->addChild(this->divRegRegButton);
-	this->addChild(this->divPtrImmButton);
-	this->addChild(this->divPtrRegButton);
-	this->addChild(this->divPtrOffsetImmButton);
-	this->addChild(this->divPtrOffsetRegButton);
-	this->addChild(this->divRegImmLabel);
-	this->addChild(this->divRegRegLabel);
-	this->addChild(this->divPtrImmLabel);
-	this->addChild(this->divPtrRegLabel);
-	this->addChild(this->divPtrOffsetImmLabel);
-	this->addChild(this->divPtrOffsetRegLabel);
-	this->addChild(this->remainderHelpButton);
+	this->addChild(this->divImmButton);
+	this->addChild(this->divRegButton);
+	this->addChild(this->divPtrButton);
+	this->addChild(this->divPtrOffsetButton);
+	this->addChild(this->divPtrOffset2Button);
+	this->addChild(this->divImmLabel);
+	this->addChild(this->divRegLabel);
+	this->addChild(this->divPtrLabel);
+	this->addChild(this->divPtrOffsetLabel);
+	this->addChild(this->divPtrOffsetLabel2);
 	this->addChild(this->pointerHelpButton);
 	this->addChild(this->offsetHelp4Button);
 	this->addChild(this->offsetHelp8Button);
-	this->addChild(this->textPanelRemainderHelp);
 	this->addChild(this->textPanelPointerHelp);
 	this->addChild(this->textPanelOffsetHelp4);
 	this->addChild(this->textPanelOffsetHelp8);
@@ -162,26 +135,22 @@ void DivExamplesPage::initializePositions()
 
 	this->registerBlock->setPosition(Vec2(-160.0f, 160.0f));
 	this->examplesLabel->setPosition(Vec2(0.0f, super::ChapterLocation.y - 16.0f));
-	this->divRegImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->divRegRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->divPtrImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->divPtrRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 3.0f));
-	this->divPtrOffsetImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 4.0f));
-	this->divPtrOffsetRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 5.0f));
-	this->divRegImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->divRegRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->divPtrImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->divPtrRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 3.0f));
-	this->divPtrOffsetImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 4.0f));
-	this->divPtrOffsetRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 5.0f));
+	this->divImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->divRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->divPtrButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->divPtrOffsetButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 3.0f));
+	this->divPtrOffset2Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 4.0f));
+	this->divImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->divRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->divPtrLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->divPtrOffsetLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 3.0f));
+	this->divPtrOffsetLabel2->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 4.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -336.0f));
 
-	this->remainderHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->offsetHelp4Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f));
-	this->offsetHelp8Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 5.0f));
-
-	this->textPanelRemainderHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 0.0f + 48.0f));
+	this->offsetHelp4Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 3.0f));
+	this->offsetHelp8Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f));
+	
 	this->textPanelPointerHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
 	this->textPanelOffsetHelp4->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f + 48.0f));
 	this->textPanelOffsetHelp8->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 5.0f + 48.0f));
@@ -190,16 +159,6 @@ void DivExamplesPage::initializePositions()
 void DivExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->remainderHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->textPanelRemainderHelp->show();
-	});
-
-	this->remainderHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->textPanelRemainderHelp->hide();
-	});
 
 	this->pointerHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
@@ -236,95 +195,87 @@ void DivExamplesPage::initializeListeners()
 		this->resetState();
 	});
 
-	this->divRegImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->divImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEbx(this->safeDiv(this->registerBlock->getEbx(), 2));
+		this->registerBlock->setEdx(this->safeMod(this->registerBlock->getEax(), this->registerBlock->getEcx()));
+		this->registerBlock->setEax(this->safeDiv(this->registerBlock->getEax(), this->registerBlock->getEcx()));
 	});
 
-	this->divRegImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->divImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->registerBlock->highlightEbx(true);
+		this->registerBlock->highlightEax(true);
+		this->registerBlock->highlightEcx(false);
 	});
 
-	this->divRegImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->divImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->divRegRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->divRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEcx(this->safeDiv(this->registerBlock->getEcx(), this->registerBlock->getEdx()));
+		this->registerBlock->setEdx(this->safeMod(this->registerBlock->getEax(), this->registerBlock->getEsi()));
+		this->registerBlock->setEax(this->safeDiv(this->registerBlock->getEax(), this->registerBlock->getEsi()));
 	});
 
-	this->divRegRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->divRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->registerBlock->highlightEcx(true);
-		this->registerBlock->highlightEdx(false);
-	});
-
-	this->divRegRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->clearHighlights();
-	});
-
-	this->divPtrImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->setEaxPtr(this->safeDiv(this->registerBlock->getEaxPtr(0), 10), 0);
-	});
-
-	this->divPtrImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->highlightEaxPtr(true, 0);
-	});
-
-	this->divPtrImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->clearHighlights();
-	});
-
-	this->divPtrRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->setEspPtr(this->safeDiv(this->registerBlock->getEspPtr(0), this->registerBlock->getEdi()), 0);
-	});
-
-	this->divPtrRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->highlightEspPtr(true, 0);
-		this->registerBlock->highlightEdi(false);
-	});
-
-	this->divPtrRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->clearHighlights();
-	});
-
-	this->divPtrOffsetImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->setEspPtr(this->safeDiv(this->registerBlock->getEspPtr(1), 4), 1);
-	});
-
-	this->divPtrOffsetImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->highlightEspPtr(true, 1);
-	});
-
-	this->divPtrOffsetImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->clearHighlights();
-	});
-
-	this->divPtrOffsetRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->setEspPtr(this->safeDiv(this->registerBlock->getEspPtr(2), this->registerBlock->getEsi()), 2);
-	});
-
-	this->divPtrOffsetRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->registerBlock->highlightEspPtr(true, 2);
+		this->registerBlock->highlightEax(true);
 		this->registerBlock->highlightEsi(false);
 	});
 
-	this->divPtrOffsetRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->divRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->divPtrButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEdx(this->safeMod(this->registerBlock->getEax(), this->registerBlock->getEbxPtr(0)));
+		this->registerBlock->setEax(this->safeDiv(this->registerBlock->getEax(), this->registerBlock->getEbxPtr(0)));
+	});
+
+	this->divPtrButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEax(true);
+		this->registerBlock->highlightEbxPtr(false, 0);
+	});
+
+	this->divPtrButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->divPtrOffsetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEdx(this->safeMod(this->registerBlock->getEax(), this->registerBlock->getEspPtr(1)));
+		this->registerBlock->setEax(this->safeDiv(this->registerBlock->getEax(), this->registerBlock->getEspPtr(1)));
+	});
+
+	this->divPtrOffsetButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEax(true);
+		this->registerBlock->highlightEspPtr(false, 1);
+	});
+
+	this->divPtrOffsetButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->divPtrOffset2Button->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEdx(this->safeMod(this->registerBlock->getEax(), this->registerBlock->getEspPtr(2)));
+		this->registerBlock->setEax(this->safeDiv(this->registerBlock->getEax(), this->registerBlock->getEspPtr(2)));
+	});
+
+	this->divPtrOffset2Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEax(true);
+		this->registerBlock->highlightEspPtr(false, 2);
+	});
+
+	this->divPtrOffset2Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
@@ -332,18 +283,23 @@ void DivExamplesPage::initializeListeners()
 
 void DivExamplesPage::resetState()
 {
-	this->registerBlock->initEax(0x04CF0000, { 1000000000 });
-	this->registerBlock->initEbx(33);
+	this->registerBlock->initEax(120);
+	this->registerBlock->initEbx(0x04CF0000, { 3 });
 	this->registerBlock->initEcx(12);
-	this->registerBlock->initEdx(3);
-	this->registerBlock->initEdi(2);
-	this->registerBlock->initEsi(3);
+	this->registerBlock->initEdx(0);
+	this->registerBlock->initEdi(1024);
+	this->registerBlock->initEsi(20);
 	this->registerBlock->initEbp(0x0920000);
-	this->registerBlock->initEsp(0x0920008, { 200, 400, 360 });
+	this->registerBlock->initEsp(0x0920008, { 512, 4, 40 });
 	this->registerBlock->initEip(0x2F7029C);
 }
 
 unsigned long long DivExamplesPage::safeDiv(unsigned long long num, unsigned long long denom)
 {
 	return denom == 0 ? 0 : (num / denom);
+}
+
+unsigned long long DivExamplesPage::safeMod(unsigned long long num, unsigned long long denom)
+{
+	return denom == 0 ? 0 : (num % denom);
 }

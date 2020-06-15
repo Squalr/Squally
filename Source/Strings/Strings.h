@@ -804,6 +804,21 @@ namespace Strings
 		virtual ~Common_ConstantNewline() = default;
 	};
 
+	class Common_ConstantNewlineNewline : public LocalizedString
+	{
+	public:
+		static Common_ConstantNewlineNewline* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_ConstantNewlineNewline();
+		virtual ~Common_ConstantNewlineNewline() = default;
+	};
+
 	class Common_ConstantTimes : public LocalizedString
 	{
 	public:
@@ -14484,10 +14499,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Pages_Data_Div_Intro() = default;
 	};
 
-	class Menus_Hacking_Lexicon_Pages_Data_Div_RemainderHelp : public LocalizedString
+	class Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Div_RemainderHelp* create();
+		static Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14495,8 +14510,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Lexicon_Pages_Data_Div_RemainderHelp();
-		virtual ~Menus_Hacking_Lexicon_Pages_Data_Div_RemainderHelp() = default;
+		Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2();
+		virtual ~Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3();
+		virtual ~Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Pages_Data_Inc_Intro : public LocalizedString

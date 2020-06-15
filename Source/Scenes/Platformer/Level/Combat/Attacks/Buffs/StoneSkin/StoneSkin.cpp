@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_STONE_SKIN 1
 
 const std::string StoneSkin::StoneSkinIdentifier = "stone-skin";
 
@@ -106,7 +106,7 @@ void StoneSkin::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_STONE_SKIN,
 			HackableCode::HackableCodeInfo(
 				StoneSkin::StoneSkinIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create(),
@@ -213,7 +213,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM_MOV_REG_VAR(ZAX, damageTaken);
 
 	ASM(DIV_CONVERT);
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STONE_SKIN);
 	ASM(mov ZCX, 3)
 	ASM(idiv ZCX);
 	ASM_NOP16();
