@@ -51,6 +51,7 @@ protected:
 private:
 	typedef SmartNode super;
 
+	int getCraftCount(Recipe* recipe, Inventory* inventory);
 	void onCraftPreview(Item* item);
 	void onCraftInteract();
 	void stopCraft(bool viaCancel);

@@ -105,7 +105,7 @@ ScriptEntry* ScriptList::addNewScript()
 		return nullptr;
 	}
 
-	LocalizedString* newScriptName = Strings::Common_Count::create();
+	LocalizedString* newScriptName = Strings::Common_ConcatSpaced::create();
 
 	newScriptName->setStringReplacementVariables(
 	{

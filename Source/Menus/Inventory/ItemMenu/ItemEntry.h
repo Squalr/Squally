@@ -21,6 +21,7 @@ public:
 	Item* getAssociatedItem();
 	int getStackSize();
 	void setStackSize(int stackSize);
+	void setCraftCount(int craftCount);
 	void setEquipHintMode(ItemPreview::EquipHintMode equipHintMode);
 	ItemPreview::EquipHintMode getEquipHintMode();
 
@@ -32,7 +33,9 @@ private:
 	typedef MenuEntry super;
 
 	ConstantString* stackString;
+	ConstantString* craftString;
 	Item* associatedItem;
+	int craftCount;
 	int stackSize;
 	ItemPreview::EquipHintMode equipHintMode;
 	

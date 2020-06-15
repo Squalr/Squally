@@ -32,6 +32,8 @@ public:
 		H4,
 		P,
 		Small,
+		Tiny,
+		Micro,
 	};
 
 	static LocalizedLabel* create(
@@ -84,6 +86,8 @@ private:
 	float getFontSizeH4();
 	float getFontSizeP();
 	float getFontSizeSmall();
+	float getFontSizeTiny();
+	float getFontSizeMicro();
 
 	std::string getMainFont();
 	std::string getMonospacedFont();

@@ -90,16 +90,24 @@ void MenuEntry::sizeFont()
 	{
 		this->label->setFontSize(LocalizedLabel::FontSize::H3);
 	}
-	else if (overdraw < 32.0f)
+	else if (overdraw < 16.0f)
 	{
 		this->label->setFontSize(LocalizedLabel::FontSize::H4);
 	}
-	else if (overdraw < 48.0f)
+	else if (overdraw < 32.0f)
 	{
 		this->label->setFontSize(LocalizedLabel::FontSize::P);
 	}
-	else
+	else if (overdraw < 48.0f)
 	{
 		this->label->setFontSize(LocalizedLabel::FontSize::Small);
+	}
+	else if (overdraw < 64.0f)
+	{
+		this->label->setFontSize(LocalizedLabel::FontSize::Tiny);
+	}
+	else
+	{
+		this->label->setFontSize(LocalizedLabel::FontSize::Micro);
 	}
 }

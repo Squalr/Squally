@@ -26,13 +26,13 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 
+	void sizeFont();
+
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
 
 private:
 	typedef SmartNode super;
-
-	void sizeFont();
 
 	static const cocos2d::Size LabelSize;
 };

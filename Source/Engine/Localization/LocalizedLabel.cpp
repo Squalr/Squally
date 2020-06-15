@@ -178,6 +178,14 @@ float LocalizedLabel::getFontSize()
 		{
 			return LocalizedLabel::getFontSizeSmall();
 		}
+		case FontSize::Tiny:
+		{
+			return LocalizedLabel::getFontSizeTiny();
+		}
+		case FontSize::Micro:
+		{
+			return LocalizedLabel::getFontSizeMicro();
+		}
 	}
 }
 
@@ -430,4 +438,14 @@ float LocalizedLabel::getFontSizeP()
 float LocalizedLabel::getFontSizeSmall()
 {
 	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 20.0f : 16.0f;
+}
+
+float LocalizedLabel::getFontSizeTiny()
+{
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 16.0f : 12.0f;
+}
+
+float LocalizedLabel::getFontSizeMicro()
+{
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 12.0f : 8.0f;
 }

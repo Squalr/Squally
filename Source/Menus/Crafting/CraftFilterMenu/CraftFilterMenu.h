@@ -23,14 +23,15 @@ public:
 	CraftFilterEntry* getActiveFilter();
 
 protected:
+	CraftFilterMenu(std::function<void()> onFilterChange);
+	virtual ~CraftFilterMenu();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
-	CraftFilterMenu(std::function<void()> onFilterChange);
-	virtual ~CraftFilterMenu();
 
 	void scrollFilterUp();
 	void scrollFilterDown();
@@ -48,4 +49,5 @@ private:
 	std::function<void()> onFilterChange;
 
 	static const float LabelSpacing;
+	static const cocos2d::Size ClipSize;
 };

@@ -774,6 +774,21 @@ namespace Strings
 		virtual ~Common_Concat() = default;
 	};
 
+	class Common_ConcatSpaced : public LocalizedString
+	{
+	public:
+		static Common_ConcatSpaced* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_ConcatSpaced();
+		virtual ~Common_ConcatSpaced() = default;
+	};
+
 	class Common_Constant : public LocalizedString
 	{
 	public:
@@ -832,21 +847,6 @@ namespace Strings
 	private:
 		Common_ConstantTimes();
 		virtual ~Common_ConstantTimes() = default;
-	};
-
-	class Common_Count : public LocalizedString
-	{
-	public:
-		static Common_Count* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Common_Count();
-		virtual ~Common_Count() = default;
 	};
 
 	class Common_Dash : public LocalizedString
@@ -1012,6 +1012,21 @@ namespace Strings
 	private:
 		Common_Triconcat();
 		virtual ~Common_Triconcat() = default;
+	};
+
+	class Common_TriconcatSpaced : public LocalizedString
+	{
+	public:
+		static Common_TriconcatSpaced* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_TriconcatSpaced();
+		virtual ~Common_TriconcatSpaced() = default;
 	};
 
 	class Common_XColonY : public LocalizedString
