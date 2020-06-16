@@ -44,6 +44,7 @@ private:
 
 	void checkCombatComplete();
 	void updateTimeline(float dt);
+	void updateTimelineTargetMarkers();
 	void refreshTimelinePositions();
 	void registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 	void unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup);

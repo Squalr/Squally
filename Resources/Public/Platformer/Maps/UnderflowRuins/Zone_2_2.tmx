@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="948">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="952">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -29,6 +29,12 @@
   <object id="927" name="ruins-gray-thick" type="terrain" x="5765.46" y="-207.94" width="1021.08" height="2467.88"/>
   <object id="934" name="ruins-gray-thick" type="terrain" x="5456.13" y="572.727" width="306.413" height="135.88"/>
   <object id="935" name="ruins-gray-thick" type="terrain" x="5120.13" y="130.727" width="306.413" height="135.88"/>
+ </objectgroup>
+ <objectgroup id="127" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="122" name="decor -3">
   <properties>
@@ -139,6 +145,14 @@
   <object id="842" name="ruins-gray-thick" type="terrain" x="-120.172" y="1135.15" width="2193.81" height="704.121"/>
   <object id="919" name="ruins-gray-thick" type="terrain" x="5001.4" y="1133.27" width="2193.81" height="704.121"/>
  </objectgroup>
+ <objectgroup id="126" name="water -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="950" name="water" type="object" x="-885.435" y="1239.63" width="7738.87" height="1400.74"/>
+  <object id="951" name="water" type="object" x="-973.435" y="1223.63" width="7946.87" height="1400.74"/>
+ </objectgroup>
  <objectgroup id="116" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
@@ -146,6 +160,13 @@
   </properties>
   <object id="839" name="ruins-gray-thick" type="terrain" x="-57.6333" y="1166.49" width="2070.6" height="684.121"/>
   <object id="918" name="ruins-gray-thick" type="terrain" x="5001.06" y="1166.42" width="2070.6" height="684.121"/>
+ </objectgroup>
+ <objectgroup id="125" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="949" name="water" type="object" x="-816.675" y="1274.66" width="7586.87" height="1400.74"/>
  </objectgroup>
  <objectgroup id="16" name="tiled bg">
   <properties>

@@ -47,16 +47,23 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->circleSelected = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircleSelected) : Sprite::create(UIResources::Combat_EnemyCircleSelected);
 	this->emblem = Sprite::create(entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource());
-	this->target = Sprite::create(UIResources::Menus_Icons_CrossHair);
+	this->overlayCircle = Sprite::create(UIResources::Combat_OverlayCircle);
 	this->skull = Sprite::create(UIResources::Combat_Skull);
+	this->targetIcons = std::vector<cocos2d::Sprite*>();
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
 	this->isBlocking = false;
 	this->spawnIndex = spawnIndex;
 	this->combatBehavior = nullptr;
+	
+	for (int index = 0; index < 5; index++)
+	{
+		Sprite* target = Sprite::create(UIResources::Menus_Icons_CrossHair);
 
-	this->target->setScale(0.5f);
-	this->target->setVisible(false);
+		target->setVisible(false);
+
+		this->targetIcons.push_back(target);
+	}
 
 	this->interruptBonus = 0.0f;
 	this->progress = 0.0f;
@@ -66,8 +73,14 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->addChild(this->circle);
 	this->addChild(this->circleSelected);
 	this->addChild(this->emblem);
-	this->addChild(this->target);
+	this->addChild(this->overlayCircle);
 	this->addChild(this->skull);
+
+	for (auto next : this->targetIcons)
+	{
+		this->addChild(next);
+	}
+
 	this->addChild(this->orphanedAttackCache);
 }
 
@@ -447,10 +460,6 @@ void TimelineEntry::performCast()
 				return;
 			}
 
-			this->isCasting = false;
-			this->entity->getAnimations()->clearAnimationPriority();
-			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
-
 			this->currentCast->execute(
 				this->entity,
 				this->targets,
@@ -465,6 +474,11 @@ void TimelineEntry::performCast()
 					CombatEvents::TriggerResumeTimeline();
 				}
 			);
+
+			this->entity->getAnimations()->clearAnimationPriority();
+			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+			this->stageCast(nullptr);
+			this->isCasting = false;
 		}),
 		nullptr
 	));
@@ -500,6 +514,7 @@ void TimelineEntry::tryInterrupt()
 		this->interruptBonus = 0.1f;
 	}
 	
+	this->stageCast(nullptr);
 	this->isCasting = false;
 	this->isBlocking = false;
 
@@ -527,7 +542,27 @@ void TimelineEntry::setSelected(bool isSelected)
 	this->circleSelected->setVisible(isSelected);
 }
 
-void TimelineEntry::setTargeted(bool isTargeted)
+void TimelineEntry::clearBuffTargets()
 {
-	this->target->setVisible(isTargeted);
+	this->overlayCircle->setOpacity(0);
+
+	for (auto next : this->targetIcons)
+	{
+		next->setVisible(false);
+	}
+}
+
+void TimelineEntry::addBuffTarget(std::string iconResource)
+{
+	this->overlayCircle->setOpacity(128);
+
+	for (auto next : this->targetIcons)
+	{
+		if (!next->isVisible())
+		{
+			next->initWithFile(iconResource);
+			next->setVisible(true);
+			return;
+		}
+	}
 }

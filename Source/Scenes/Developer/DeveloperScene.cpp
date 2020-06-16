@@ -79,7 +79,7 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_0 (UR) Pyramid", MapResources::UnderflowRuins_Zone_3_0));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_6 (UR) Sky", MapResources::UnderflowRuins_Zone_2_6));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_5 (UR) Exit", MapResources::UnderflowRuins_Zone_2_5));
-	this->chapterList.push_back(this->buildDebugButton("Zone_2_4 (UR) Mesusa", MapResources::UnderflowRuins_Zone_2_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_4 (UR) Medusa", MapResources::UnderflowRuins_Zone_2_4));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_3 (UR) Flame", MapResources::UnderflowRuins_Zone_2_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_2 (UR) Pass", MapResources::UnderflowRuins_Zone_2_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_1 (UR) Puzzle", MapResources::UnderflowRuins_Zone_2_1));

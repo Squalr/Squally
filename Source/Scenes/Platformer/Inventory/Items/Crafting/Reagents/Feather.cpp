@@ -20,7 +20,7 @@ Feather* Feather::create()
 	return instance;
 }
 
-Feather::Feather() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 4 }}), ItemMeta(20000))
+Feather::Feather() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(20000))
 {
 }
 

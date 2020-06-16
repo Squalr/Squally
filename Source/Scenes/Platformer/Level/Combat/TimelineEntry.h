@@ -35,7 +35,8 @@ public:
 	void addTime(float dt);
 	bool isPlayerEntry();
 	void setSelected(bool isSelected);
-	void setTargeted(bool isTargeted);
+	void clearBuffTargets();
+	void addBuffTarget(std::string iconResource = "");
 
 	static const float CastPercentage;
 	static const float BaseSpeedMultiplier;
@@ -73,7 +74,8 @@ private:
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* circleSelected;
 	cocos2d::Sprite* emblem;
-	cocos2d::Sprite* target;
+	cocos2d::Sprite* overlayCircle;
+	std::vector<cocos2d::Sprite*> targetIcons;
 	cocos2d::Sprite* skull;
 	cocos2d::Node* orphanedAttackCache;
 

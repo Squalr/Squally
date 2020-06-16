@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -217,6 +218,7 @@ void Timeline::update(float dt)
 	{
 		this->checkCombatComplete();
 		this->updateTimeline(dt);
+		this->updateTimelineTargetMarkers();
 	}
 }
 
@@ -302,6 +304,33 @@ void Timeline::updateTimeline(float dt)
 					}
 				}
 			}
+		}
+	}
+}
+
+void Timeline::updateTimelineTargetMarkers()
+{
+	for (auto next : this->timelineEntries)
+	{
+		next->clearBuffTargets();
+	}
+
+	for (auto next : this->timelineEntries)
+	{
+		PlatformerAttack* attack = next->getStagedCast();
+		
+		if (attack == nullptr)
+		{
+			continue;
+		}
+
+		std::vector<PlatformerEntity*> targets = next->getStagedTargets();
+
+		for (auto target : targets)
+		{
+			TimelineEntry* entry = this->getAssociatedEntry(target);
+
+			entry->addBuffTarget(attack->getIconResource());
 		}
 	}
 }

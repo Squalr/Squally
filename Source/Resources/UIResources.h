@@ -18,6 +18,7 @@ namespace UIResources
 	extern const std::string Combat_ItemsCircle;
 	extern const std::string Combat_ItemsMenu;
 	extern const std::string Combat_Line;
+	extern const std::string Combat_OverlayCircle;
 	extern const std::string Combat_PlayerCircle;
 	extern const std::string Combat_PlayerCircleSelected;
 	extern const std::string Combat_RadialEye;
