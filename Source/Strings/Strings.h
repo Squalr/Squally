@@ -15639,6 +15639,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1() = default;
 	};
 
+	class Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval();
+		virtual ~Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval() = default;
+	};
+
 	class Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam : public LocalizedString
 	{
 	public:

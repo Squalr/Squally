@@ -12,7 +12,7 @@ class WorldSound;
 class CastArrowRain : public PlatformerAttack
 {
 public:
-	static CastArrowRain* create(float attackDuration, float recoverDuration, Priority priority);
+	static CastArrowRain* create(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource);
 
 	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	float getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
@@ -20,7 +20,7 @@ public:
 	std::string getAttackAnimation() override;
 
 protected:
-	CastArrowRain(float attackDuration, float recoverDuration, Priority priority);
+	CastArrowRain(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource);
 	virtual ~CastArrowRain();
 
 	void initializePositions() override;
@@ -34,4 +34,5 @@ private:
 	PlatformerAttack* cloneInternal() override;
 	
 	WorldSound* castSound;
+	std::string arrowResource;
 };

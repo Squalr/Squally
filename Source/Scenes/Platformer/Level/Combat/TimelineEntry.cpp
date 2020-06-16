@@ -460,25 +460,28 @@ void TimelineEntry::performCast()
 				return;
 			}
 
+			this->entity->getAnimations()->clearAnimationPriority();
+			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+			this->isCasting = false;
+
 			this->currentCast->execute(
 				this->entity,
 				this->targets,
 				[=]()
 				{
 					// Attack complete -- camera focus target
-					this->targetsAsEntries[0]->cameraFocusEntry();
+					if (!this->targetsAsEntries.empty())
+					{
+						this->targetsAsEntries[0]->cameraFocusEntry();
+					}
 				},
 				[=]()
 				{
+					this->stageCast(nullptr);
 					this->resetTimeline();
 					CombatEvents::TriggerResumeTimeline();
 				}
 			);
-
-			this->entity->getAnimations()->clearAnimationPriority();
-			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
-			this->stageCast(nullptr);
-			this->isCasting = false;
 		}),
 		nullptr
 	));

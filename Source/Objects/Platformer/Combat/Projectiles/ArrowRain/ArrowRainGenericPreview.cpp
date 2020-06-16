@@ -9,20 +9,23 @@
 
 using namespace cocos2d;
 
-ArrowRainGenericPreview* ArrowRainGenericPreview::create()
+ArrowRainGenericPreview* ArrowRainGenericPreview::create(std::string arrowResource)
 {
-	ArrowRainGenericPreview* instance = new ArrowRainGenericPreview();
+	ArrowRainGenericPreview* instance = new ArrowRainGenericPreview(arrowResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ArrowRainGenericPreview::ArrowRainGenericPreview()
+ArrowRainGenericPreview::ArrowRainGenericPreview(std::string arrowResource)
 {
-	this->fireball = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
+	this->arrowResource = arrowResource;
+	this->arrow = Sprite::create(arrowResource);
 
-	this->previewNode->addChild(this->fireball);
+	this->arrow->setRotation(180.0f);
+
+	this->previewNode->addChild(this->arrow);
 }
 
 ArrowRainGenericPreview::~ArrowRainGenericPreview()
@@ -31,14 +34,12 @@ ArrowRainGenericPreview::~ArrowRainGenericPreview()
 
 HackablePreview* ArrowRainGenericPreview::clone()
 {
-	return ArrowRainGenericPreview::create();
+	return ArrowRainGenericPreview::create(this->arrowResource);
 }
 
 void ArrowRainGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->fireball->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.085f);
 }
 
 void ArrowRainGenericPreview::initializePositions()

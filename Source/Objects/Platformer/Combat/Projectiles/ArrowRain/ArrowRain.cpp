@@ -1,6 +1,9 @@
 #include "ArrowRain.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -11,7 +14,6 @@
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/ArrowRain/ArrowRainGenericPreview.h"
-#include "Objects/Platformer/Combat/Projectiles/ArrowRain/ArrowRainSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -36,19 +38,38 @@ const int ArrowRain::Damage = 2;
 const float ArrowRain::TimeBetweenTicks = 0.75f;
 const float ArrowRain::StartDelay = 0.25f;
 
-const std::string ArrowRain::HackIdentifierArrowRainSpeed = "arrow-rain-team";
+const std::string ArrowRain::HackIdentifierArrowRainTeamCompare = "arrow-rain-team";
 
-ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target)
+ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource)
 {
-	ArrowRain* instance = new ArrowRain(caster, target);
+	ArrowRain* instance = new ArrowRain(caster, target, arrowResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, true)
+ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
+	this->arrowPool = std::vector<Sprite*>();
+	this->arrowUsageState = std::vector<float>();
+	this->isTimelinePaused = false;
+	this->isOnPlayerTeam = false;
+	this->arrowResource = arrowResource;
+
+	for (int index = 0; index < 8; index++)
+	{
+		Sprite* arrow = Sprite::create(arrowResource);
+
+		// Arrows are assumed to point up
+		arrow->setRotation(180.0f);
+		arrow->setOpacity(0);
+
+		this->arrowPool.push_back(arrow);
+		this->arrowUsageState.push_back(float(index) * 0.4f);
+
+		this->addChild(arrow);
+	}
 }
 
 ArrowRain::~ArrowRain()
@@ -62,9 +83,36 @@ void ArrowRain::onEnter()
 	this->runArrowRain();
 }
 
+void ArrowRain::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* eventCustom)
+	{
+		this->isTimelinePaused = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
+	{
+		this->isTimelinePaused = false;
+	}));
+}
+
+void ArrowRain::update(float dt)
+{
+	super::update(dt);
+
+	if (this->isTimelinePaused)
+	{
+		return;
+	}
+
+	this->updateAnimation(dt);
+}
+
 Vec2 ArrowRain::getButtonOffset()
 {
-	return Vec2::ZERO;
+	return Vec2(0.0f, -768.0f);
 }
 
 void ArrowRain::registerHackables()
@@ -76,11 +124,11 @@ void ArrowRain::registerHackables()
 		{
 			LOCAL_FUNC_ID_COMPARE_TEAM,
 			HackableCode::HackableCodeInfo(
-				ArrowRain::HackIdentifierArrowRainSpeed,
+				ArrowRain::HackIdentifierArrowRainTeamCompare,
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_ArrowRain,
-				ArrowRainSpeedPreview::create(),
+				this->createDefaultPreview(),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_RegisterEax::create()
@@ -88,7 +136,21 @@ void ArrowRain::registerHackables()
 				},
 				int(HackFlags::None),
 				ArrowRain::StartDelay + ArrowRain::TimeBetweenTicks * float(ArrowRain::TickCount),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare::create()) +
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()) +
+						"cmp eax, 1\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare::create()) +
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()) + 
+						"cmp rax, 1\n"
+					),
+				},
+				true
 			)
 		},
 	};
@@ -104,7 +166,7 @@ void ArrowRain::registerHackables()
 
 HackablePreview* ArrowRain::createDefaultPreview()
 {
-	return ArrowRainGenericPreview::create();
+	return ArrowRainGenericPreview::create(this->arrowResource);
 }
 
 void ArrowRain::runArrowRain()
@@ -133,6 +195,35 @@ void ArrowRain::runArrowRain()
 			this->despawn();
 		})
 	));
+}
+
+void ArrowRain::updateAnimation(float dt)
+{
+	float totalDuration = ArrowRain::StartDelay + ArrowRain::TimeBetweenTicks * float(ArrowRain::TickCount);
+	const float VarianceX = 768.0f;
+	const float FallDistance = -1280.0f;
+	const float PixelsPerSecond = 768.0f;
+	const float Duration = std::abs(FallDistance) / PixelsPerSecond;
+
+	for (int index = 0; index < int(this->arrowUsageState.size()); index++)
+	{
+		this->arrowUsageState[index] -= dt;
+
+		if (this->arrowUsageState[index] <= 0.0f)
+		{
+			this->arrowPool[index]->setPosition(Vec2(RandomHelper::random_real(-VarianceX, VarianceX), 0.0f));
+			this->arrowPool[index]->runAction(MoveBy::create(Duration, Vec2(0.0f, FallDistance)));
+
+			this->arrowPool[index]->runAction(Sequence::create(
+				FadeTo::create(0.25f, 255),
+				DelayTime::create(Duration - 0.5f),
+				FadeTo::create(0.25f, 0),
+				nullptr
+			));
+
+			this->arrowUsageState[index] = Duration;
+		}
+	}
 }
 
 void ArrowRain::damageOtherTeam()
@@ -164,6 +255,7 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 	ASM(pushfd);
 	ASM(push ZAX);
 	ASM(push ZBX);
+
 	ASM_MOV_REG_VAR(ZAX, isOnPlayerTeamLocal);
 
 	ASM(mov ZBX, 1);

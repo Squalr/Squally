@@ -208,7 +208,7 @@ void TalkToAphrodite::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 			false
 		));
 

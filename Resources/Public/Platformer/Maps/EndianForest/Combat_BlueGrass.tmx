@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="572">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="575">
  <properties>
   <property name="show-cracks" type="bool" value="true"/>
  </properties>
@@ -153,6 +153,21 @@
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="572" name="cinematic-marker" type="object" x="1288" y="1208.25" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="573" name="cinematic-marker" type="object" x="1292.55" y="893.638" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="574" name="cinematic-marker" type="object" x="1283.21" y="1678.97" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">

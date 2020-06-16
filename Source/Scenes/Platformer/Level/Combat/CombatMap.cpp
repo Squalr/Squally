@@ -14,6 +14,7 @@
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
@@ -31,6 +32,7 @@
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Objects/Camera/CameraFocus.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
@@ -471,6 +473,16 @@ void CombatMap::initializeListeners()
 		this->inventoryMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
+}
+
+void CombatMap::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+	{
+		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
+	}), CameraFocus::MapKey);
 }
 
 void CombatMap::spawnEntities()

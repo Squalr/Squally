@@ -96,9 +96,6 @@ def main():
             request = requests.post(constructed_url, headers=headers, json=body)
             response = json.dumps(request.json(), sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': '))
             translations = json.loads(response)
-            
-            print(translations)
-            
             translations = translations[0]['translations']
 		
             resultDict = {};
@@ -106,6 +103,8 @@ def main():
             for key in translations:
                 language = key['to']
                 translation = key['text']
+                
+                translation = translation.replace('\"', '\\\"')
 
                 if (language == "zh-Hans"):
                     language = 'zh-CN'

@@ -140,8 +140,8 @@ void StoneSkin::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()) +
-						"idiv ecx\n",
-						// x64
+						"idiv ecx\n"
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()

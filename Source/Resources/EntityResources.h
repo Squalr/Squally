@@ -1526,6 +1526,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_LionMan_TAIL;
 	extern const std::string Enemies_UnderflowRuins_LionMan_TORSO;
 	extern const std::string Enemies_UnderflowRuins_LionMan_WEAPON;
+	extern const std::string Enemies_UnderflowRuins_Lioness_ARROW;
 	extern const std::string Enemies_UnderflowRuins_Lioness_Animations;
 	extern const std::string Enemies_UnderflowRuins_Lioness_BELT;
 	extern const std::string Enemies_UnderflowRuins_Lioness_COVER_2;
@@ -1553,7 +1554,6 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Lioness_TAIL;
 	extern const std::string Enemies_UnderflowRuins_Lioness_TORSO_CLOTH;
 	extern const std::string Enemies_UnderflowRuins_Lioness_TORSO;
-	extern const std::string Enemies_UnderflowRuins_Medusa_ARROW_2;
 	extern const std::string Enemies_UnderflowRuins_Medusa_ARROW_HOLDER;
 	extern const std::string Enemies_UnderflowRuins_Medusa_ARROW;
 	extern const std::string Enemies_UnderflowRuins_Medusa_Animations;

@@ -19,7 +19,7 @@ public:
 
 protected:
 	CinematicMarker(cocos2d::ValueMap& properties);
-	~CinematicMarker();
+	virtual ~CinematicMarker();
 
 	void onEnter() override;
 	void initializePositions() override;

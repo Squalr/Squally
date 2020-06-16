@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="952">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="953">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -35,6 +35,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="952" name="water" type="object" x="-969.435" y="1154.3" width="7946.87" height="1400.74"/>
  </objectgroup>
  <objectgroup id="122" name="decor -3">
   <properties>
@@ -150,8 +151,8 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="950" name="water" type="object" x="-885.435" y="1239.63" width="7738.87" height="1400.74"/>
-  <object id="951" name="water" type="object" x="-973.435" y="1223.63" width="7946.87" height="1400.74"/>
+  <object id="950" name="water" type="object" x="-872.102" y="1231.63" width="7738.87" height="1400.74"/>
+  <object id="951" name="water" type="object" x="-972.102" y="1192.96" width="7946.87" height="1400.74"/>
  </objectgroup>
  <objectgroup id="116" name="terrain -1">
   <properties>
@@ -166,7 +167,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="949" name="water" type="object" x="-816.675" y="1274.66" width="7586.87" height="1400.74"/>
+  <object id="949" name="water" type="object" x="-792.675" y="1270.66" width="7586.87" height="1400.74"/>
  </objectgroup>
  <objectgroup id="16" name="tiled bg">
   <properties>

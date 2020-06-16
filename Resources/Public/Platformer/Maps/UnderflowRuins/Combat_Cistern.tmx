@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="594">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="600">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -115,6 +115,21 @@
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-288"/>
+   </properties>
+  </object>
+  <object id="597" name="cinematic-marker" type="object" x="1262.73" y="1125.94" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="598" name="cinematic-marker" type="object" x="1267.28" y="811.335" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="599" name="cinematic-marker" type="object" x="1257.94" y="1596.66" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
    </properties>
   </object>
  </objectgroup>

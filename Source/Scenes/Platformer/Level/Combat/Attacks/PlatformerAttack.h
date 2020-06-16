@@ -86,6 +86,9 @@ protected:
 	AbilityType abilityType;
 	
 	static const float DefaultCleanupDuration;
+	static const std::string TagArenaTop;
+	static const std::string TagArenaCenter;
+	static const std::string TagArenaBottom;
 
 private:
 	typedef HackableObject super;

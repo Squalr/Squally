@@ -16,6 +16,9 @@
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
+const std::string PlatformerAttack::TagArenaTop = "arena-top";
+const std::string PlatformerAttack::TagArenaCenter = "arena-center";
+const std::string PlatformerAttack::TagArenaBottom = "arena-bottom";
 
 PlatformerAttack::PlatformerAttack(
 	AttackType attackType,

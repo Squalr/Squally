@@ -2,17 +2,20 @@
 
 #include "Engine/Hackables/Menus/HackablePreview.h"
 
-class SmartAnimationSequenceNode;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class ArrowRainGenericPreview : public HackablePreview
 {
 public:
-	static ArrowRainGenericPreview* create();
+	static ArrowRainGenericPreview* create(std::string arrowResource);
 
 	HackablePreview* clone() override;
 
 protected:
-	ArrowRainGenericPreview();
+	ArrowRainGenericPreview(std::string arrowResource);
 	virtual ~ArrowRainGenericPreview();
 	
 	void onEnter() override;
@@ -21,5 +24,6 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationSequenceNode* fireball;
+	cocos2d::Sprite* arrow;
+	std::string arrowResource;
 };

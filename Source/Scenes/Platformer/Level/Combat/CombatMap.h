@@ -58,6 +58,7 @@ protected:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onHackerModeEnable() override;
 
 private:
 	typedef MapBase super;
