@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/HealthLink/HealthLinkGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -53,17 +54,9 @@ HealthLink::HealthLink(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Clones, AbilityType::Physical, BuffData(HealthLink::Duration, HealthLink::HealthLinkIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->healthLinkDamage = 0;
 
-	this->bubble->setOpacity(0);
-	this->spellAura->setColor(Color3B::YELLOW);
-	this->spellAura->setOpacity(0);
-
 	this->addChild(this->spellEffect);
-	this->addChild(this->bubble);
-	this->addChild(this->spellAura);
 }
 
 HealthLink::~HealthLink()
@@ -75,15 +68,6 @@ void HealthLink::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
-
-	this->bubble->runAction(FadeTo::create(0.25f, 255));
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
 }
 
 void HealthLink::initializePositions()
@@ -112,17 +96,31 @@ void HealthLink::registerHackables()
 				HealthLinkGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEbx::create(),
-					},
-					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi::create(),
-					}
+					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
+						"shr edi, 1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
+						
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
+						"shr rdi, 1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
+					),
+				},
+				true
 			)
 		},
 	};
@@ -142,20 +140,32 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing dam
 
 	this->healthLinkDamage = damageOrHealing.originalDamageOrHealing;
 
-	// Do not use the hackable code for the main target
-	*damageOrHealing.damageOrHealing /= 2;
-
 	this->applyHealthLink();
 
 	// Damage all team mates
-	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
+	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
+		bool healthLinkTargetFound = false;
+
 		for (auto next : timeline->getSameTeamEntities(damageOrHealing.target))
 		{
 			if (next != damageOrHealing.target)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.caster, next, std::abs(this->healthLinkDamage), damageOrHealing.abilityType, true));
+				caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+				{
+					entityBuffBehavior->getBuff<HealthLink>([&](HealthLink* healthLink)
+					{
+						healthLinkTargetFound = true;
+						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.caster, next, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+					});
+				});
 			}
+		}
+
+		if (healthLinkTargetFound)
+		{
+			// Do not use the hackable code for the main target
+			*damageOrHealing.damageOrHealing /= 2;
 		}
 	}));
 }
@@ -166,17 +176,17 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 
 	healthCopy = this->healthLinkDamage;
 
-	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, healthCopy);
+	ASM(push ZDI);
+	ASM_MOV_REG_VAR(ZDI, healthCopy);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
-	ASM(shr ZAX, 1);
+	ASM(shr ZDI, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(healthCopy, ZAX);
+	ASM_MOV_VAR_REG(healthCopy, ZDI);
 
-	ASM(pop ZAX);
+	ASM(pop ZDI);
 
 	this->healthLinkDamage = healthCopy;
 

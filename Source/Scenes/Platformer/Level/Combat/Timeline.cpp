@@ -317,6 +317,11 @@ void Timeline::updateTimelineTargetMarkers()
 
 	for (auto next : this->timelineEntries)
 	{
+		if (!next->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			continue;
+		}
+
 		PlatformerAttack* attack = next->getStagedCast();
 		
 		if (attack == nullptr)

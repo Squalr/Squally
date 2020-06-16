@@ -3,6 +3,7 @@
 enum class AbilityType
 {
     Physical,
+    Passive,
     Holy,
     Fire,
     Frost,

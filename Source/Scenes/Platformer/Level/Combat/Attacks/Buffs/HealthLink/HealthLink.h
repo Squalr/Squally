@@ -38,8 +38,6 @@ private:
 	volatile int healthLinkDamage;
 	
 	SmartParticles* spellEffect;
-	cocos2d::Sprite* bubble;
-	cocos2d::Sprite* spellAura;
 	
 	static const int MinHealthLink;
 	static const int MaxMultiplier;

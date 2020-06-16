@@ -254,7 +254,10 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
 	}
 
-	this->tryInterrupt();
+	if (abilityType != AbilityType::Passive)
+	{
+		this->tryInterrupt();
+	}
 
 	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
