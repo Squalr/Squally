@@ -8319,6 +8319,141 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentC : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentC* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentC();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentC() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCmovle : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCmovle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCmovle();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCmovle() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentLe : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentLe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentLe();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentLe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMov();
+		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMov() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax : public LocalizedString
 	{
 	public:

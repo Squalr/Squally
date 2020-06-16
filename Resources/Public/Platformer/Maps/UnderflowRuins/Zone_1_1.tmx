@@ -154,16 +154,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="119" name="terrain -9" visible="0">
+ <objectgroup id="119" name="terrain -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="985" name="caverns" type="terrain" x="395.03" y="1272.97" width="1476.84" height="1072">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="985" name="caverns" type="terrain" x="395.03" y="1272.97" width="1476.84" height="1072"/>
   <object id="986" name="caverns" type="terrain" x="2952.79" y="1272" width="1730.42" height="1072">
    <properties>
     <property name="attached-behavior" value="z-fade"/>

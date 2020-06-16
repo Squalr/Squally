@@ -81,6 +81,8 @@ void ArrowRain::onEnter()
 	super::onEnter();
 
 	this->runArrowRain();
+	
+	CombatEvents::TriggerHackableCombatCue();
 }
 
 void ArrowRain::initializeListeners()
@@ -137,11 +139,13 @@ void ArrowRain::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()) +
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
 						"cmp eax, 1\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						"cmp rax, 1\n"
 					),
 				},

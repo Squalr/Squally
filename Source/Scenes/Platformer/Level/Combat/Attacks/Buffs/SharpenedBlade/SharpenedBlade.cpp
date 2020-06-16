@@ -39,7 +39,6 @@ const std::string SharpenedBlade::SharpenedBladeIdentifier = "sharpened-blade";
 const std::string SharpenedBlade::HackIdentifierSharpenedBlade = "sharpened-blade";
 
 const int SharpenedBlade::MaxMultiplier = 4;
-const int SharpenedBlade::DamageReduction = 3; // Keep in sync with asm
 const float SharpenedBlade::Duration = 12.0f;
 
 SharpenedBlade* SharpenedBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -55,16 +54,13 @@ SharpenedBlade::SharpenedBlade(PlatformerEntity* caster, PlatformerEntity* targe
 	: super(caster, target, UIResources::Menus_Icons_SwordAlt, AbilityType::Physical, BuffData(SharpenedBlade::Duration, SharpenedBlade::SharpenedBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->currentDamageDelt = 0;
 
-	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
-	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -77,8 +73,6 @@ void SharpenedBlade::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
-
-	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -124,7 +118,52 @@ void SharpenedBlade::registerHackables()
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create()) +
+						"mov ebx, 7\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare::create()) +
+						"cmp eax, ebx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create()) +
+						"cmovle eax, ebx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
+							->setStringReplacementVariables({
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
+							})) +
+						"\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create() }))
+						
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create()) +
+						"mov rbx, 7\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare::create()) +
+						"cmp rax, rbx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create()) +
+						"cmovle rax, rbx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
+							->setStringReplacementVariables({
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
+							})) +
+						"\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create() }))
+					),
+				},
+				true
 			)
 		},
 	};
@@ -163,9 +202,9 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM(push ZBX);
 
 	ASM_MOV_REG_VAR(ZAX, damageTaken);
-	ASM_MOV_REG_VAR(ZBX, 7);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
+	ASM(mov ZBX, 7);
 	ASM(cmp ZAX, ZBX);
 	ASM(cmovle ZAX, ZBX);
 	ASM_NOP16();
