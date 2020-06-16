@@ -55,7 +55,7 @@ LocalizedString* CastBrokenBlade::getString()
 
 std::string CastBrokenBlade::getAttackAnimation()
 {
-	return "AttackCast";
+	return "Attack";
 }
 
 void CastBrokenBlade::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
@@ -64,7 +64,7 @@ void CastBrokenBlade::performAttack(PlatformerEntity* owner, std::vector<Platfor
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation("Attack");
 
 	for (auto next : targets)
 	{

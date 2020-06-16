@@ -33,7 +33,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_FORTITUDE 1
+#define LOCAL_FUNC_ID_BROKEN_BLADE 1
 
 const std::string BrokenBlade::BrokenBladeIdentifier = "broken-blade";
 const std::string BrokenBlade::HackIdentifierBrokenBlade = "broken-blade";
@@ -55,17 +55,9 @@ BrokenBlade::BrokenBlade(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_SwordBrokenAlt, AbilityType::Physical, BuffData(BrokenBlade::Duration, BrokenBlade::BrokenBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->currentDamageDelt = 0;
 
-	this->bubble->setOpacity(0);
-	this->spellAura->setColor(Color3B::YELLOW);
-	this->spellAura->setOpacity(0);
-
 	this->addChild(this->spellEffect);
-	this->addChild(this->bubble);
-	this->addChild(this->spellAura);
 }
 
 BrokenBlade::~BrokenBlade()
@@ -77,15 +69,6 @@ void BrokenBlade::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
-
-	this->bubble->runAction(FadeTo::create(0.25f, 255));
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -107,7 +90,7 @@ void BrokenBlade::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_FORTITUDE,
+			LOCAL_FUNC_ID_BROKEN_BLADE,
 			HackableCode::HackableCodeInfo(
 				BrokenBlade::HackIdentifierBrokenBlade,
 				Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_BrokenBlade::create(),
@@ -116,7 +99,7 @@ void BrokenBlade::registerHackables()
 				BrokenBladeGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEax::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEax::create(),
 					},
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx::create(),
@@ -124,7 +107,52 @@ void BrokenBlade::registerHackables()
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentMaxDamage::create()) +
+						"mov ebx, 3\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentCompare::create()) +
+						"cmp eax, ebx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentConditionalMov::create()) +
+						"cmovge eax, ebx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentFinale::create()
+							->setStringReplacementVariables({
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
+							})) +
+						"\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create() }))
+						
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentMaxDamage::create()) +
+						"mov rbx, 3\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentCompare::create()) +
+						"cmp rax, rbx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentConditionalMov::create()) +
+						"cmovge rax, rbx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentFinale::create()
+							->setStringReplacementVariables({
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),
+								Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
+							})) +
+						"\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create() }))
+					),
+				},
+				true
 			)
 		},
 	};
@@ -163,10 +191,10 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM(push ZBX);
 
 	ASM_MOV_REG_VAR(ZAX, damageDelt);
-	ASM_MOV_REG_VAR(ZBX, 3);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
-	ASM(cmp ZAX, 3);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BROKEN_BLADE);
+	ASM_MOV_REG_VAR(ZBX, 3);
+	ASM(cmp ZAX, ZBX);
 	ASM(cmovge ZAX, ZBX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
