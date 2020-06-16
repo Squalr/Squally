@@ -130,7 +130,7 @@ StatsTables::StatsTables()
 
 	StatsTables::StatsTable[AnubisPup::MapKey] = StatsIncrements(Stats(56, 35, 87));
 	StatsTables::StatsTable[AnubisWarrior::MapKey] = StatsIncrements(Stats(121, 16, 94));
-	StatsTables::StatsTable[LionMan::MapKey] = StatsIncrements(Stats(28, 7, 67));
+	StatsTables::StatsTable[LionMan::MapKey] = StatsIncrements(Stats(42, 7, 67));
 	StatsTables::StatsTable[Lioness::MapKey] = StatsIncrements(Stats(33, 9, 64));
 	StatsTables::StatsTable[Medusa::MapKey] = StatsIncrements(Stats(37, 8, 95));
 	StatsTables::StatsTable[Mermaid::MapKey] = StatsIncrements(Stats(26, 8, 74));
@@ -138,7 +138,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[MummyPriest::MapKey] = StatsIncrements(Stats(44, 30, 80));
 	StatsTables::StatsTable[MummyWarrior::MapKey] = StatsIncrements(Stats(43, 8, 84));
 	StatsTables::StatsTable[Osiris::MapKey] = StatsIncrements(Stats(133, 58, 224));
-	StatsTables::StatsTable[TigerMan::MapKey] = StatsIncrements(Stats(25, 7, 62));
+	StatsTables::StatsTable[TigerMan::MapKey] = StatsIncrements(Stats(68, 7, 62));
 	StatsTables::StatsTable[Tigress::MapKey] = StatsIncrements(Stats(21, 11, 58));
 	
 	StatsTables::StatsTable[Appolo::MapKey] = StatsIncrements(Stats(16, 8, 32));

@@ -27129,6 +27129,21 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore() = default;
 	};
 
+	class Platformer_Quests_WarpGates_WarpGateDiscovered : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_WarpGates_WarpGateDiscovered* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_WarpGates_WarpGateDiscovered();
+		virtual ~Platformer_Quests_WarpGates_WarpGateDiscovered() = default;
+	};
+
 	class Platformer_Quests_WarpGates_WarpGateIntro : public LocalizedString
 	{
 	public:

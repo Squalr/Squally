@@ -53,7 +53,10 @@ void Trigger::onEnter()
 {
 	super::onEnter();
 
-	this->wasActivated = this->loadObjectStateOrDefault(Trigger::PropertySaveState, Value(false)).asBool();
+	if (this->saveState)
+	{
+		this->wasActivated = this->loadObjectStateOrDefault(Trigger::PropertySaveState, Value(false)).asBool();
+	}
 
 	this->scheduleUpdate();
 }
@@ -72,7 +75,11 @@ void Trigger::initializeListeners()
 		if (!this->wasActivated || this->multiTrip)
 		{
 			this->wasActivated = true;
-			this->saveObjectState(Trigger::PropertySaveState, Value(this->wasActivated));
+			
+			if (this->saveState)
+			{
+				this->saveObjectState(Trigger::PropertySaveState, Value(this->wasActivated));
+			}
 			
 			this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 		}

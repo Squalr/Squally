@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Quests/QuestLine.h"
@@ -92,6 +93,11 @@ void ArriveInAthens::onSkipped()
 
 void ArriveInAthens::runCinematicSequencePt1()
 {
+	if (this->guano != nullptr)
+	{
+		this->guano->getAnimations()->setFlippedX(false);
+	}
+
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Ajax_A_HeyCoolStatue::create(),
 		DialogueEvents::DialogueVisualArgs(
