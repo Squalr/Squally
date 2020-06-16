@@ -52,7 +52,7 @@ ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target,
 ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
 	this->arrowPool = std::vector<Sprite*>();
-	this->arrowUsageState = std::vector<float>();
+	this->arrowCooldowns = std::vector<float>();
 	this->isTimelinePaused = false;
 	this->isOnPlayerTeam = false;
 	this->arrowResource = arrowResource;
@@ -66,7 +66,7 @@ ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::st
 		arrow->setOpacity(0);
 
 		this->arrowPool.push_back(arrow);
-		this->arrowUsageState.push_back(float(index) * 0.4f);
+		this->arrowCooldowns.push_back(float(index) * 0.4f);
 
 		this->addChild(arrow);
 	}
@@ -101,11 +101,6 @@ void ArrowRain::initializeListeners()
 void ArrowRain::update(float dt)
 {
 	super::update(dt);
-
-	if (this->isTimelinePaused)
-	{
-		return;
-	}
 
 	this->updateAnimation(dt);
 }
@@ -205,23 +200,21 @@ void ArrowRain::updateAnimation(float dt)
 	const float PixelsPerSecond = 768.0f;
 	const float Duration = std::abs(FallDistance) / PixelsPerSecond;
 
-	for (int index = 0; index < int(this->arrowUsageState.size()); index++)
+	for (int index = 0; index < int(this->arrowCooldowns.size()); index++)
 	{
-		this->arrowUsageState[index] -= dt;
-
-		if (this->arrowUsageState[index] <= 0.0f)
+		if (!this->isTimelinePaused)
 		{
+			this->arrowCooldowns[index] -= dt;
+			this->arrowPool[index]->setPositionY(this->arrowPool[index]->getPositionY() - dt * PixelsPerSecond);
+		}
+
+		if (this->arrowCooldowns[index] <= 0.0f)
+		{
+			this->arrowPool[index]->setOpacity(0);
 			this->arrowPool[index]->setPosition(Vec2(RandomHelper::random_real(-VarianceX, VarianceX), 0.0f));
-			this->arrowPool[index]->runAction(MoveBy::create(Duration, Vec2(0.0f, FallDistance)));
+			this->arrowPool[index]->runAction(FadeTo::create(0.25f, 255));
 
-			this->arrowPool[index]->runAction(Sequence::create(
-				FadeTo::create(0.25f, 255),
-				DelayTime::create(Duration - 0.5f),
-				FadeTo::create(0.25f, 0),
-				nullptr
-			));
-
-			this->arrowUsageState[index] = Duration;
+			this->arrowCooldowns[index] = Duration;
 		}
 	}
 }

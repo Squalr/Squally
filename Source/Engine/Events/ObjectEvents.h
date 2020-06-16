@@ -194,7 +194,7 @@ public:
 	}
 
 	template <class T>
-	static void QueryObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::function<void()> onObjectNotFound, std::string tag = "")
+	static void QueryObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::function<void()> onObjectNotFound = nullptr, std::string tag = "")
 	{
 		unsigned long long watchId = ObjectEvents::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);

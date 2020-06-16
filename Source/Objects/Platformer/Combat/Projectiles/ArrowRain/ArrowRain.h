@@ -40,7 +40,7 @@ private:
 	void compareTeam(TimelineEntry* entry);
 
 	std::vector<cocos2d::Sprite*> arrowPool;
-	std::vector<float> arrowUsageState;
+	std::vector<float> arrowCooldowns;
 
 	std::string arrowResource;
 	volatile bool isOnPlayerTeam;

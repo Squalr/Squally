@@ -11,6 +11,8 @@
 #include "Objects/Platformer/Combat/Projectiles/ArrowRain/ArrowRain.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/Fortitude.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -118,7 +120,26 @@ void CastArrowRain::onCleanup()
 
 bool CastArrowRain::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	return true;
+	bool worthUsing = true;
+	
+	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
+	{
+		for (auto next : timeline->getEntries())
+		{
+			if (dynamic_cast<CastArrowRain*>(next->getStagedCast()) != nullptr)
+			{
+				worthUsing = false;
+				break;
+			}
+		}
+	}));
+
+	ObjectEvents::QueryObject<ArrowRain>(this, [&](ArrowRain*)
+	{
+		worthUsing = false;
+	});
+
+	return worthUsing;
 }
 
 float CastArrowRain::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
