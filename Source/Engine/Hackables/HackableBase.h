@@ -68,6 +68,7 @@ private:
 	float cooldown;
 	float elapsedDuration;
 	float elapsedCooldown;
+	bool isHackActive;
 
 	std::string hackableIdentifier;
 	LocalizedString* name;

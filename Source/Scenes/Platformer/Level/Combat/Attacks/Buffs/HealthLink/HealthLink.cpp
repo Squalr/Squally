@@ -91,7 +91,7 @@ void HealthLink::registerHackables()
 			HackableCode::HackableCodeInfo(
 				HealthLink::HealthLinkIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink::create(),
-				HackableBase::HackBarColor::Red,
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_Clones,
 				HealthLinkGenericPreview::create(),
 				{

@@ -90,7 +90,7 @@ private:
 	std::vector<ProgressBar*> timeRemainingBars;
 	std::map<std::string, std::function<Clippy*()>> clippyMap;
 
-	std::vector<HackableBase*> trackedAttributes;
+	std::vector<HackableBase*> trackedHackables;
 	cocos2d::Vec2 buttonOffset;
 
 	static int HackFlags;

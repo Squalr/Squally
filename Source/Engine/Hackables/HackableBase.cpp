@@ -34,6 +34,7 @@ HackableBase::HackableBase(
 	this->cooldown = cooldown;
 	this->elapsedDuration = duration;
 	this->elapsedCooldown = cooldown;
+	this->isHackActive = false;
 
 	if (this->hackablePreview != nullptr)
 	{
@@ -124,7 +125,8 @@ float HackableBase::getDuration()
 
 bool HackableBase::isComplete()
 {
-	return this->getElapsedDuration() >= this->getDuration();
+	// Special case for infinitely running hackables
+	return (this->duration <= 0.0f) ? !this->isHackActive : (this->getElapsedDuration() >= this->getDuration());
 }
 
 bool HackableBase::isCooldownComplete()
@@ -214,10 +216,12 @@ void HackableBase::startTimer()
 {
 	this->elapsedDuration = 0.0f;
 	this->elapsedCooldown = 0.0f;
+	this->isHackActive = true;
 }
 
 void HackableBase::resetTimer()
 {
 	this->elapsedDuration = this->duration;
 	this->elapsedCooldown = this->cooldown;
+	this->isHackActive = false;
 }
