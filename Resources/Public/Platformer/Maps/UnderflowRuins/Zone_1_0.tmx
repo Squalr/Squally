@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1078">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1079">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -686,7 +686,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -714,12 +714,13 @@
     <property name="transition" value="water"/>
    </properties>
   </object>
-  <object id="951" name="chest" type="object" x="2451.73" y="1989.42" width="128" height="128">
+  <object id="951" name="chest" type="object" x="2345.73" y="1989.42" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="reward-pool" value="ur-generic"/>
    </properties>
   </object>
+  <object id="1078" name="caged-hippo" type="object" x="2567" y="2000" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

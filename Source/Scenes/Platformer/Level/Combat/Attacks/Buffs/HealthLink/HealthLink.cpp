@@ -149,7 +149,7 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing dam
 
 		for (auto next : timeline->getSameTeamEntities(damageOrHealing.target))
 		{
-			if (next != damageOrHealing.target)
+			if (next != damageOrHealing.target && next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 				{

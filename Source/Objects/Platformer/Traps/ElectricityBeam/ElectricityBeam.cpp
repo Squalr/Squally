@@ -157,7 +157,7 @@ void ElectricityBeam::registerHackables()
 			HackableCode::HackableCodeInfo(
 				ElectricityBeam::MapKey,
 				Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown::create(),
-				HackableBase::HackBarColor::Red,
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_Lightning,
 				ElectricityBeamCountDownPreview::create(),
 				{

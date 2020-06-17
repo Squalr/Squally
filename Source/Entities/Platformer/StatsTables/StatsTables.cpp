@@ -84,7 +84,7 @@ StatsTables::StatsTables()
 
 	// HELPERS
 	StatsTables::StatsTable[Guano::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
-	StatsTables::StatsTable[GuanoPetrified::MapKey] = StatsIncrements(Stats(20, 0, 900000));
+	StatsTables::StatsTable[GuanoPetrified::MapKey] = StatsIncrements(Stats(20, 0, 10000));
 	StatsTables::StatsTable[Turtle::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[Snowman::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[YetiBaby::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
@@ -133,8 +133,8 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[AnubisWarrior::MapKey] = StatsIncrements(Stats(121, 16, 94));
 	StatsTables::StatsTable[LionMan::MapKey] = StatsIncrements(Stats(42, 7, 67));
 	StatsTables::StatsTable[Lioness::MapKey] = StatsIncrements(Stats(33, 9, 64));
-	StatsTables::StatsTable[Medusa::MapKey] = StatsIncrements(Stats(37, 8, 95));
-	StatsTables::StatsTable[Mermaid::MapKey] = StatsIncrements(Stats(26, 8, 74));
+	StatsTables::StatsTable[Medusa::MapKey] = StatsIncrements(Stats(51, 8, 95));
+	StatsTables::StatsTable[Mermaid::MapKey] = StatsIncrements(Stats(31, 8, 74));
 	StatsTables::StatsTable[Minotaur::MapKey] = StatsIncrements(Stats(42, 8, 68));
 	StatsTables::StatsTable[MummyPriest::MapKey] = StatsIncrements(Stats(44, 30, 80));
 	StatsTables::StatsTable[MummyWarrior::MapKey] = StatsIncrements(Stats(43, 8, 84));

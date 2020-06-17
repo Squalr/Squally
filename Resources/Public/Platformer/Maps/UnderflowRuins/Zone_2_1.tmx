@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="906">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="909">
  <properties>
   <property name="rubber-band" type="int" value="7"/>
  </properties>
@@ -87,8 +87,8 @@
   <object id="873" name="ruins-gray-thick" type="terrain" x="4075.11" y="2631.53">
    <polygon points="-1050.96,-414.742 1324.9,-417.255 1326.89,-567.758 2217.09,-566.737 2216.9,-418.152 2835.8,-415.159 2834.99,-71.4609 713.318,-82.7752 710.488,556.762 440.469,554.912 438.409,-88.7865 -312.925,-92.8044 -317.487,558.022 -569.773,555.738 -572.803,-98.8154 -1051.16,-95.7925"/>
   </object>
-  <object id="893" name="ruins-gray-thick" type="terrain" x="5121.03" y="761.94" width="1775.93" height="244.12"/>
-  <object id="894" name="ruins-gray-thick" type="terrain" x="5117.03" y="5.94" width="639.93" height="754.12"/>
+  <object id="893" name="ruins-gray-thick" type="terrain" x="5121.03" y="761.94" width="1881.99" height="244.12"/>
+  <object id="894" name="ruins-gray-thick" type="terrain" x="5117.03" y="-130.06" width="639.93" height="890.12"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -268,6 +268,12 @@
     <property name="save-key" value="SAVE_KEY_OR_GREEN_1"/>
    </properties>
   </object>
+  <object id="906" name="chest" type="object" x="6132" y="636" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="908" name="caged-snail" type="object" x="5869" y="649" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

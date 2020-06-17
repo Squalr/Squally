@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1175">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1177">
  <properties>
   <property name="rubber-band" type="int" value="8"/>
  </properties>
@@ -53,6 +53,7 @@
   </properties>
   <object id="1152" name="solid" type="collision" x="478.985" y="-61.2567" width="126.878" height="1405.18"/>
   <object id="1153" name="solid" type="collision" x="1636.56" y="-24.287" width="126.878" height="1365.18"/>
+  <object id="1176" name="caged-squirrel" type="object" x="1005" y="1224" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>

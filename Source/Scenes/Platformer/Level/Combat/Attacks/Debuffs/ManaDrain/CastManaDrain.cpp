@@ -105,7 +105,11 @@ bool CastManaDrain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 
 float CastManaDrain::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+	bool isAlive = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+	bool isPacifist = target->getRuntimeStateOrDefaultBool(StateKeys::IsPacifist, true);
+	float mana = float(target->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0));
+	float maxMana = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0));
+	float utility = (isAlive && !isPacifist) ? 1.0f : (mana / (maxMana <= 0.0f ? 1.0f : maxMana));
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

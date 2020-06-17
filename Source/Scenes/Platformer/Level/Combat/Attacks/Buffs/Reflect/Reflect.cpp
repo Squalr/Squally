@@ -130,7 +130,32 @@ void Reflect::registerHackables()
 				this->getRemainingDuration(),
 				0.0f,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()) +
+						"shr esi, 1\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) +
+						"mov ebx, esi\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
+						
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()) +
+						"shr rsi, 1\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) +
+						"mov rbx, rsi\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
+					),
+				},
+				true
 			)
 		},
 	};

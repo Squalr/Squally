@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="953">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="955">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -93,6 +93,13 @@
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
+  <object id="953" name="poseidon" type="entity" x="900" y="976" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="poseidon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="121" name="player_layer -3">
   <properties>
@@ -136,7 +143,7 @@
    <property name="depth" type="float" value="-160"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="Ruins/Pillar2" type="decor" x="875.5" y="-65" width="369" height="1370"/>
+  <object id="847" name="Ruins/Pillar2" type="decor" x="446.167" y="-50.3333" width="369" height="1370"/>
  </objectgroup>
  <objectgroup id="117" name="terrain -2">
   <properties>
@@ -173,11 +180,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="ruins-gray-dark" type="terrain" x="-200" y="1470" width="1932" height="1184">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
   <properties>
@@ -237,7 +239,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="938" name="life-stone" type="object" x="1044.71" y="781.727" width="146" height="423"/>
+  <object id="938" name="life-stone" type="object" x="1194.04" y="788.06" width="146" height="423"/>
   <object id="941" name="edge-portal" type="object" x="6371.88" y="1728.85" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
@@ -250,6 +252,7 @@
     <property name="reward-pool" value="ur-rare"/>
    </properties>
   </object>
+  <object id="954" name="caged-zebra" type="object" x="4002" y="1085.33" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -265,13 +268,6 @@
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-D"/>
     <property name="scale" type="float" value="0.75"/>
-   </properties>
-  </object>
-  <object id="947" name="poseidon" type="entity" x="4048" y="1070" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="poseidon-hexus,friendly,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="ur-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>
@@ -338,7 +334,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg">
+ <objectgroup id="113" name="water fg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

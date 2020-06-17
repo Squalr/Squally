@@ -43,6 +43,7 @@ private:
 
 	float currentElectricityBeamCountDown;
 	float maxElectricityBeamCountDown;
+	volatile bool compareResult;
 	bool isRunningAnimation;
 	bool isVertical;
 	bool isDisabled;

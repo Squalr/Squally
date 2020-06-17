@@ -81,8 +81,9 @@ StateOverride* URPuzzleCBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -92,34 +93,41 @@ StateOverride* URPuzzleCBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+			
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			
 		}
 	);
 }

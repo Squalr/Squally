@@ -7,7 +7,9 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LaserAnimation;
+class ConstantString;
+class LocalizedLabel;
+class SmartAnimationSequenceNode;
 
 class ElectricityBeamGenericPreview : public HackablePreview
 {
@@ -22,9 +24,15 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void update(float dt) override;
 
 private:
 	typedef HackablePreview super;
 
-	LaserAnimation* previewLaser;
+	bool isLaunching;
+	float launchCountDown;
+
+	cocos2d::Sprite* ballLeft;
+	cocos2d::Sprite* ballRight;
+	SmartAnimationSequenceNode* electricityAnimation;
 };

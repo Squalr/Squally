@@ -41,7 +41,6 @@ CardPoolTier1::CardPoolTier1(SampleMethod sampleMethod, int min, int max) : supe
 
 	this->addItemToPool(ItemChance::create(SpecialMov::create(), ItemChance::Probability::Legendary));
 	this->addItemToPool(ItemChance::create(SpecialAdd::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(SpecialShl::create(), ItemChance::Probability::Artifact));
 	this->addItemToPool(ItemChance::create(SpecialShr::create(), ItemChance::Probability::Artifact));
 }
 
