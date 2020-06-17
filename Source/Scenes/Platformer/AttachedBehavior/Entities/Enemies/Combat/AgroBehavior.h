@@ -51,6 +51,7 @@ private:
 	float agroRangeY;
 	float agroRangeZ;
 	float engageCooldown;
+	float initCooldown;
 
 	static const float AgroRangeX;
 	static const float AgroRangeY;

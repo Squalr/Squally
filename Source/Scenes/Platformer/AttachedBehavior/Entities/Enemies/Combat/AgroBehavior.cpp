@@ -39,7 +39,8 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 	this->warnOnAgro = true;
 	this->isAgrod = false;
 	this->isEnabled = true;
-	this->engageCooldown = 0.f;
+	this->engageCooldown = 0.0f;
+	this->initCooldown = 0.0f;
 	this->agroRangeX = AgroBehavior::AgroRangeX;
 	this->agroRangeY = AgroBehavior::AgroRangeY;
 	this->agroRangeZ = AgroBehavior::AgroRangeZ;
@@ -78,6 +79,9 @@ void AgroBehavior::onLoad()
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	// Prevent agro for a small amount of time. This gives time for entities to properly load/warp.
+	this->initCooldown = 0.25f;
 	
 	this->scheduleUpdate();
 }
@@ -134,6 +138,12 @@ void AgroBehavior::update(float dt)
 	if (!this->isEnabled || this->squally == nullptr || this->entity == nullptr || !this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		this->exclamation->setVisible(false);
+		return;
+	}
+
+	if (this->initCooldown > 0.0f)
+	{
+		this->initCooldown -= dt;
 		return;
 	}
 
