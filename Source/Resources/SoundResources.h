@@ -120,6 +120,7 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Droid_DroidShort3;
 	extern const std::string Platformer_Entities_Droid_DroidShort4;
 	extern const std::string Platformer_Entities_Generic_AgroBeep1;
+	extern const std::string Platformer_Entities_Generic_AgroBeep2;
 	extern const std::string Platformer_Entities_Generic_AlienChatter1;
 	extern const std::string Platformer_Entities_Generic_ChatterAnnoyed1;
 	extern const std::string Platformer_Entities_Generic_ChatterCheer1;

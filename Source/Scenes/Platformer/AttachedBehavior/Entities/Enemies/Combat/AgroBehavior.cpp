@@ -6,12 +6,14 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -44,6 +46,7 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 	this->agroRangeX = AgroBehavior::AgroRangeX;
 	this->agroRangeY = AgroBehavior::AgroRangeY;
 	this->agroRangeZ = AgroBehavior::AgroRangeZ;
+	this->agroBeep = WorldSound::create(SoundResources::Platformer_Entities_Generic_AgroBeep2);
 
 	if (this->entity == nullptr)
 	{
@@ -55,6 +58,7 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 	this->squally = nullptr;
 
 	this->addChild(this->exclamation);
+	this->addChild(this->agroBeep);
 }
 
 AgroBehavior::~AgroBehavior()
@@ -162,6 +166,7 @@ void AgroBehavior::update(float dt)
 			{
 				this->engageCooldown = AgroBehavior::EngageCooldownMax;
 				this->exclamation->setVisible(true);
+				this->agroBeep->play();
 			}
 			else
 			{

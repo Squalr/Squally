@@ -31,7 +31,7 @@ TempleDoor* TempleDoor::create(ValueMap& properties)
 	return instance;
 }
 
-TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 528.0f), Vec2(0.0f, 0.0f))
+TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(192.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
 	this->topCollision = CollisionObject::create(CollisionObject::createBox(Size(420.0f, 32.0f)), (CollisionType)PlatformerCollisionType::PassThrough, CollisionObject::Properties(false, false));
 	this->emblem = nullptr;

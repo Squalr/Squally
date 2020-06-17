@@ -119,6 +119,7 @@ const std::string SoundResources::Platformer_Entities_Droid_DroidShort2 = "Priva
 const std::string SoundResources::Platformer_Entities_Droid_DroidShort3 = "Private/Sounds/Platformer/Entities/Droid/DroidShort3.mp3";
 const std::string SoundResources::Platformer_Entities_Droid_DroidShort4 = "Private/Sounds/Platformer/Entities/Droid/DroidShort4.mp3";
 const std::string SoundResources::Platformer_Entities_Generic_AgroBeep1 = "Private/Sounds/Platformer/Entities/Generic/AgroBeep1.mp3";
+const std::string SoundResources::Platformer_Entities_Generic_AgroBeep2 = "Private/Sounds/Platformer/Entities/Generic/AgroBeep2.mp3";
 const std::string SoundResources::Platformer_Entities_Generic_AlienChatter1 = "Private/Sounds/Platformer/Entities/Generic/AlienChatter1.mp3";
 const std::string SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1 = "Private/Sounds/Platformer/Entities/Generic/ChatterAnnoyed1.mp3";
 const std::string SoundResources::Platformer_Entities_Generic_ChatterCheer1 = "Private/Sounds/Platformer/Entities/Generic/ChatterCheer1.mp3";
