@@ -9,7 +9,7 @@ class Track;
 class Music : public SoundBase
 {
 public:
-	void unpause() override;
+	void unfreeze() override;
 	
 	Track* getOwner();
 

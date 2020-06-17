@@ -6,9 +6,9 @@ class SoundBase : public GameObject
 {
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
-	virtual void unpause();
+	virtual void unfreeze(); // careful, unpause is a cocos function
 	bool isPlaying();
-	virtual void freeze();
+	virtual void freeze(); // careful, pause is a cocos function
 	virtual void stop();
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
 

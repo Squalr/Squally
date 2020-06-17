@@ -119,7 +119,7 @@ void SoundBase::play(bool repeat, float startDelay)
 	}
 }
 
-void SoundBase::unpause()
+void SoundBase::unfreeze()
 {
 	this->fadeMultiplier = 1.0f;
 

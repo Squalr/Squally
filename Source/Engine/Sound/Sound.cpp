@@ -77,9 +77,9 @@ void Sound::initializeListeners()
 	}
 }
 
-void Sound::pause()
+void Sound::freeze()
 {
-	super::pause();
+	super::freeze();
 
 	switch (AudioEngine::getState(this->activeTrackId))
 	{
@@ -100,9 +100,9 @@ void Sound::pause()
 	}
 }
 
-void Sound::resume()
+void Sound::unfreeze()
 {
-	super::resume();
+	super::unfreeze();
 
 	switch (AudioEngine::getState(this->activeTrackId))
 	{
