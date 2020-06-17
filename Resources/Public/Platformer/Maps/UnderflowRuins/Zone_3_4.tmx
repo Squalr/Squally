@@ -190,7 +190,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="982" name="mummy-priest" type="entity" x="1572.84" y="1271.07" width="128" height="128">
+  <object id="982" name="anubis-warrior" type="entity" x="1572.84" y="1271.07" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -199,7 +199,7 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="983" name="mummy-warrior" type="entity" x="1580.28" y="936.437" width="128" height="128">
+  <object id="983" name="anubis-pup" type="entity" x="1580.28" y="936.437" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

@@ -2,8 +2,6 @@
 
 #include "Engine/Hackables/Menus/HackablePreview.h"
 
-class SmartAnimationSequenceNode;
-
 class UndyingGenericPreview : public HackablePreview
 {
 public:
@@ -20,6 +18,4 @@ protected:
 
 private:
 	typedef HackablePreview super;
-
-	SmartAnimationSequenceNode* healEffect;
 };

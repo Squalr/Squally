@@ -34,14 +34,14 @@ private:
 
 	void applyReflect();
 	
-	volatile int damageTaken;
 	volatile int damageReflected;
+	volatile int damageDealt;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;
 	cocos2d::Sprite* spellAura;
 	
-	static const int MinReflect;
+	static const int MinMultiplier;
 	static const int MaxMultiplier;
 	static const float Duration;
 };

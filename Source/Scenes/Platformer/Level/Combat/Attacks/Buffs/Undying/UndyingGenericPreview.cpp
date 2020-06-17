@@ -20,9 +20,6 @@ UndyingGenericPreview* UndyingGenericPreview::create()
 
 UndyingGenericPreview::UndyingGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 UndyingGenericPreview::~UndyingGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* UndyingGenericPreview::clone()
 void UndyingGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void UndyingGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

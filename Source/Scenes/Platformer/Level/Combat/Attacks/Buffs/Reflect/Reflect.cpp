@@ -37,8 +37,8 @@ using namespace cocos2d;
 
 const std::string Reflect::ReflectIdentifier = "reflect";
 
-const int Reflect::MinReflect = 1;
-const int Reflect::MaxMultiplier = 1;
+const int Reflect::MinMultiplier = 2;
+const int Reflect::MaxMultiplier = 2;
 const float Reflect::Duration = 10.0f;
 
 Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -56,8 +56,8 @@ Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->damageTaken = 0;
 	this->damageReflected = 0;
+	this->damageDealt = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::BLUE);
@@ -118,12 +118,12 @@ void Reflect::registerHackables()
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx::create()->setStringReplacementVariables(
 							{
-								ConstantString::create(std::to_string(Reflect::MinReflect)),
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MinMultiplier))),
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MaxMultiplier)))
 							}),
 					},
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi::create(),
 					}
 				},
 				int(HackFlags::None),
@@ -173,15 +173,23 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->damageReflected = damageOrHealing.originalDamageOrHealing;
+	this->damageDealt = damageOrHealing.originalDamageOrHealing;
 
 	this->applyReflect();
 
 	// Bound multiplier in either direction
-	this->damageTaken = MathUtils::clamp(this->damageTaken, Reflect::MinReflect, std::abs(damageOrHealing.originalDamageOrHealing) * Reflect::MaxMultiplier);
-	this->damageReflected = MathUtils::clamp(this->damageReflected, Reflect::MinReflect, std::abs(damageOrHealing.originalDamageOrHealing) * Reflect::MaxMultiplier);
+	this->damageReflected = MathUtils::clamp(
+		this->damageReflected,
+		-std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MinMultiplier),
+		std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MaxMultiplier)
+	);
+	this->damageDealt = MathUtils::clamp(
+		this->damageDealt,
+		-std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MinMultiplier),
+		std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MaxMultiplier)
+	);
 
-	*damageOrHealing.damageOrHealing = this->damageTaken;
+	*damageOrHealing.damageOrHealing = this->damageDealt;
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected, damageOrHealing.abilityType, true));
@@ -189,16 +197,16 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
+	static volatile int damageDealtLocal = 0;
 	static volatile int damageReflectedLocal = 0;
-	static volatile int damageTakenLocal = 0;
 
-	damageReflectedLocal = this->damageReflected;
-	damageTakenLocal = this->damageReflected;
+	damageDealtLocal = this->damageDealt;
+	damageReflectedLocal = this->damageDealt;
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, damageReflectedLocal);
-	ASM_MOV_REG_VAR(ZBX, damageTakenLocal);
+	ASM_MOV_REG_VAR(ZSI, damageDealtLocal);
+	ASM_MOV_REG_VAR(ZBX, damageReflectedLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
 	ASM(shr ZSI, 1);
@@ -206,14 +214,14 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageReflectedLocal, ZSI);
-	ASM_MOV_VAR_REG(damageTakenLocal, ZBX);
+	ASM_MOV_VAR_REG(damageDealtLocal, ZSI);
+	ASM_MOV_VAR_REG(damageReflectedLocal, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
+	this->damageDealt = damageDealtLocal;
 	this->damageReflected = damageReflectedLocal;
-	this->damageTaken = damageTakenLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

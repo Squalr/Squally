@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1209">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1210">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -605,11 +605,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="ruins-thick" type="terrain" x="2845.18" y="1404" width="422.691" height="1786.79">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
   <object id="1008" name="ruins-thick" type="terrain" x="-77.82" y="1404" width="721.478" height="1075.27">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
@@ -638,6 +633,16 @@
   </object>
   <object id="1172" name="ruins-thick" type="terrain" x="806.685" y="3192" width="5474.63" height="576"/>
   <object id="1185" name="ruins-thick" type="terrain" x="6283.29" y="2972.55" width="2120.93" height="576"/>
+ </objectgroup>
+ <objectgroup id="102" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1209" name="ruins-thick" type="terrain" x="2845.18" y="1404" width="422.691" height="2374.67">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

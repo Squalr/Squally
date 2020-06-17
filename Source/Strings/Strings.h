@@ -8784,10 +8784,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Undying_RegisterEdi : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Undying_RegisterEdi* create();
+		static Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8795,8 +8795,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Undying_RegisterEdi();
-		virtual ~Menus_Hacking_Abilities_Buffs_Undying_RegisterEdi() = default;
+		Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Undying_Undying : public LocalizedString

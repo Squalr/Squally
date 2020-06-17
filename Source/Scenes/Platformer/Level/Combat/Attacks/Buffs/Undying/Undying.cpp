@@ -116,7 +116,7 @@ void Undying::registerHackables()
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx::create(),
 					},
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEdi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi::create(),
 					}
 				},
 				int(HackFlags::None),
