@@ -267,41 +267,45 @@ void Timeline::checkCombatComplete()
 
 void Timeline::updateTimeline(float dt)
 {
-	if (!(this->isTimelinePaused || this->isTimelineCinematicPaused) && !isCombatComplete)
+	if ((this->isTimelinePaused || this->isTimelineCinematicPaused) || this->isCombatComplete)
 	{
-		this->isTimelineInterrupted = false;
+		return;
+	}
 
-		CombatEvents::TriggerBuffTimeElapsed(CombatEvents::BuffTimeElapsedArgs(dt));
+	this->isTimelineInterrupted = false;
 
-		// Update all timeline entries
-		for (auto entry : this->timelineEntries)
+	CombatEvents::TriggerBuffTimeElapsed(CombatEvents::BuffTimeElapsedArgs(dt));
+
+	// Update all timeline entries
+	for (auto entry : this->timelineEntries)
+	{
+		if (!entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			if (entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+			continue;
+		}
+		
+		float currentTime = entry->getProgress();
+
+		if (!this->isTimelineInterrupted)
+		{
+			entry->addTimeWithoutActions(dt);
+			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
+
+			entry->tryPerformActions();
+		}
+		else
+		{
+			// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
+			entry->addTimeWithoutActions(dt);
+		}
+
+		for (auto eventGroup : this->timelineEventGroups)
+		{
+			if (eventGroup->getOwner() == entry->getEntity())
 			{
-				float currentTime = entry->getProgress();
-
-				if (!this->isTimelineInterrupted)
+				if (eventGroup->processEvents(currentTime, entry->getProgress()))
 				{
-					entry->addTimeWithoutActions(dt);
-					entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
-
-					entry->tryPerformActions();
-				}
-				else
-				{
-					// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
-					entry->addTimeWithoutActions(dt);
-				}
-
-				for (auto eventGroup : this->timelineEventGroups)
-				{
-					if (eventGroup->getOwner() == entry->getEntity())
-					{
-						if (eventGroup->processEvents(currentTime, entry->getProgress()))
-						{
-							this->unregisterTimelineEventGroup(eventGroup);
-						}
-					}
+					this->unregisterTimelineEventGroup(eventGroup);
 				}
 			}
 		}

@@ -150,6 +150,9 @@ bool PlatformerAttack::isWorthUsing(PlatformerEntity* caster, const std::vector<
 
 float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
+	bool isAlive = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+	bool pacifist = target->getRuntimeStateOrDefaultBool(StateKeys::IsPacifist, false);
+
 	// Generic utility function
 	switch(this->getAttackType())
 	{
@@ -157,14 +160,15 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 		case AttackType::Debuff:
 		{
 			// Priority based on whether the entity is alive or not. For more nuanced behavior, this function must be overridden.
-			return target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+			return (isAlive && !pacifist) ? 1.0f : 0.0f;
 		}
 		case AttackType::Damage:
 		{
+			const float PacifistPriority = RandomHelper::random_real(0.0f, 1.0f);
 			float hp = float(target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
 			float hpMax = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0));
 
-			return hp / (hpMax <= 0.0f ? 1.0f : hpMax);
+			return pacifist ? PacifistPriority : (hp / (hpMax <= 0.0f ? 1.0f : hpMax));
 		}
 		case AttackType::Healing:
 		{
@@ -172,11 +176,11 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 			float hpMax = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0));
 			
 			// Rank by lowest health first (except if dead)
-			return !target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
+			return (!isAlive || pacifist) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
 		}
 		case AttackType::Resurrection:
 		{
-			return target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : 1.0f;
+			return (isAlive || pacifist) ? 0.0f : 1.0f;
 		}
 		default:
 		{

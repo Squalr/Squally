@@ -53,6 +53,8 @@ protected:
 private:
 	typedef SmartNode super;
 
+	bool isPacifist();
+
 	struct DamageArgs
 	{
 		int damageDelta;

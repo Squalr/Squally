@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Pacifist/Pacifist.h"
 
 #include "Resources/UIResources.h"
 
@@ -402,7 +403,7 @@ void TimelineEntry::addTime(float dt)
 void TimelineEntry::tryPerformActions()
 {
 	// Cast started
-	if (this->progress >= TimelineEntry::CastPercentage && !this->isCasting)
+	if (this->progress >= TimelineEntry::CastPercentage && !this->isCasting && !this->isPacifist())
 	{
 		CombatEvents::TriggerInterruptTimeline();
 
@@ -427,6 +428,12 @@ void TimelineEntry::tryPerformActions()
 	// Progress complete, do the cast
 	else if (this->progress >= 1.0f)
 	{
+		if (this->isPacifist())
+		{
+			this->resetTimeline();
+			return;
+		}
+		
 		CombatEvents::TriggerInterruptTimeline();
 
 		if (this->entity != nullptr && this->currentCast != nullptr && !this->targets.empty())
@@ -571,4 +578,14 @@ void TimelineEntry::addBuffTarget(std::string iconResource)
 			return;
 		}
 	}
+}
+
+bool TimelineEntry::isPacifist()
+{
+	if (this->getEntity() != nullptr)
+	{
+		return this->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsPacifist, false);
+	}
+
+	return false;
 }

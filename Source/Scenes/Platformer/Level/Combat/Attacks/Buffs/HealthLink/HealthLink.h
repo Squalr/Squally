@@ -16,8 +16,7 @@ class HealthLink : public Buff
 {
 public:
 	static HealthLink* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string HealthLinkIdentifier;
 
 protected:
@@ -31,7 +30,6 @@ protected:
 
 private:
 	typedef Buff super;
-	friend class HealthLinkAutoCast;
 
 	void applyHealthLink();
 	

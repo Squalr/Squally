@@ -4,6 +4,7 @@ const std::string StateKeys::Eq = "STATE_KEY_EQ";
 const std::string StateKeys::EqExperience = "STATE_KEY_EQ_EXPERIENCE";
 const std::string StateKeys::RuneCooldowns = "STATE_KEY_RUNE_COOLDOWNS";
 const std::string StateKeys::IsAlive = "STATE_KEY_IS_ALIVE";
+const std::string StateKeys::IsPacifist = "STATE_KEY_IS_PACIFIST";
 const std::string StateKeys::Health = "STATE_KEY_HEALTH";
 const std::string StateKeys::BaseHealth = "STATE_KEY_BASE_HEALTH";
 const std::string StateKeys::MaxHealth = "STATE_KEY_MAX_HEALTH";
