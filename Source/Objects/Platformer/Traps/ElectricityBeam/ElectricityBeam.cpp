@@ -115,7 +115,8 @@ void ElectricityBeam::update(float dt)
 		return;
 	}
 
-	this->updateElectricityBeam(dt);
+	this->storedDt = dt;
+	this->updateElectricityBeam();
 
 	if (this->currentElectricityBeamCountDown <= 0.0f)
 	{
@@ -184,7 +185,7 @@ HackablePreview* ElectricityBeam::createDefaultPreview()
 	return ElectricityBeamGenericPreview::create();
 }
 
-NO_OPTIMIZE void ElectricityBeam::updateElectricityBeam(float dt)
+NO_OPTIMIZE void ElectricityBeam::updateElectricityBeam()
 {
 	if (this->isRunningAnimation)
 	{
@@ -195,10 +196,11 @@ NO_OPTIMIZE void ElectricityBeam::updateElectricityBeam(float dt)
 	static volatile float* deltaTimePtr;
 
 	countDownPtr = &this->currentElectricityBeamCountDown;
-	deltaTimePtr = &dt;
+	deltaTimePtr = &this->storedDt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);
+
 	ASM_MOV_REG_VAR(ZAX, countDownPtr);
 	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
 
@@ -211,8 +213,8 @@ NO_OPTIMIZE void ElectricityBeam::updateElectricityBeam(float dt)
 
 	ASM(fstp dword ptr [ZAX])
 
-	ASM(pop ZAX);
 	ASM(pop ZBX);
+	ASM(pop ZAX);
 
 	HACKABLES_STOP_SEARCH();
 }

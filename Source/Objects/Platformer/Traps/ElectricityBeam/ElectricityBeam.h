@@ -34,20 +34,21 @@ private:
 	typedef HackableObject super;
 
 	void toggleDisabled();
-	void updateElectricityBeam(float dt);
+	void updateElectricityBeam();
 
 	SmartAnimationSequenceNode* electricityAnimation;
 	CollisionObject* electricityCollision;
 	cocos2d::Sprite* ballLeft;
 	cocos2d::Sprite* ballRight;
 
-	float currentElectricityBeamCountDown;
-	float maxElectricityBeamCountDown;
+	volatile float currentElectricityBeamCountDown;
+	volatile float maxElectricityBeamCountDown;
+	volatile float storedDt;
 	volatile bool compareResult;
-	bool isRunningAnimation;
-	bool isVertical;
-	bool isDisabled;
-	bool disableSave;
+	volatile bool isRunningAnimation;
+	volatile bool isVertical;
+	volatile bool isDisabled;
+	volatile bool disableSave;
 
 	static const std::string PropertyVertical;
 	static const std::string PropertyDisabled;
