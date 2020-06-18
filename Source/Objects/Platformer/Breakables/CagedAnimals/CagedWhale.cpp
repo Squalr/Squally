@@ -36,7 +36,7 @@ void CagedWhale::initializePositions()
 {
 	super::initializePositions();
 
-	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
+	this->animalSprite->setPosition(Vec2(0.0f, 8.0f));
 }
 
 LocalizedString* CagedWhale::getAnimalName()
