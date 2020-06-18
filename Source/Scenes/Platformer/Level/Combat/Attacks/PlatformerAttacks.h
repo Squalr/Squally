@@ -1,6 +1,6 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/CastHaste.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/Strength.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/KingGrogg/DragonBreath.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/CastTrainingHeal.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Pound.h"

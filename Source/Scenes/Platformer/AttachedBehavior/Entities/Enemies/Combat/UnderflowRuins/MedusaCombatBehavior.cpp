@@ -6,7 +6,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/ArrowRain/CastArrowRain.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/DoubleSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/DoubleSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/EntityResources.h"

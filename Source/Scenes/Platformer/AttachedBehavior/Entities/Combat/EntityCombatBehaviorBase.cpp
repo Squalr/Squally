@@ -6,7 +6,6 @@
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"

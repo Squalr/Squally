@@ -7,7 +7,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Undying/UndyingAutoCast.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"

@@ -33,7 +33,7 @@ DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, 
 }
 
 DragonBreath::DragonBreath(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_FireBolts, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_FireSphere, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration)
 {
 }
 
