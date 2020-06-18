@@ -52,7 +52,7 @@ Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Strength, AbilityType::Physical, BuffData(Strength::Duration, Strength::StrengthIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Gauntlet, AbilityType::Physical, BuffData(Strength::Duration, Strength::StrengthIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -107,7 +107,7 @@ void Strength::registerHackables()
 				Strength::StrengthIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
 				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_Strength,
+				UIResources::Menus_Icons_Gauntlet,
 				StrengthGenericPreview::create(),
 				{
 					{
