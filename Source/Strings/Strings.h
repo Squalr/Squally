@@ -8829,6 +8829,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate();
+		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg();
+		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Inversion_Inversion : public LocalizedString
 	{
 	public:
@@ -9669,6 +9699,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain : public LocalizedString
 	{
 	public:
@@ -9712,6 +9802,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx();
 		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain : public LocalizedString

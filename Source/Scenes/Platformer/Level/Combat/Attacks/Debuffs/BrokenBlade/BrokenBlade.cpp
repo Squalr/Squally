@@ -149,7 +149,7 @@ void BrokenBlade::registerHackables()
 							})) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create() }))
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create() }))
 					),
 				},
 				true

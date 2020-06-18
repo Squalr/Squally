@@ -120,7 +120,21 @@ void Inversion::registerHackables()
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentNeg::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
+						"neg eax\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentNeg::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
+						"neg rax\n"
+					),
+				},
+				true
 			)
 		},
 	};

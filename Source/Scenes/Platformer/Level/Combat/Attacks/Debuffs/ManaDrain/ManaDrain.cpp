@@ -111,7 +111,37 @@ void ManaDrain::registerHackables()
 				this->getRemainingDuration(),
 				0.0f,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
+						"cmp ecx, 4\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()) +
+						"cmovge esi, edx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
+						"\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
+						"cmp rcx, 4\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()) +
+						"cmovge rsi, rdx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
+						"\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
+					),
+				},
+				true
 			)
 		},
 	};
@@ -165,30 +195,34 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 	static volatile int drainAmount = 0;
 	static volatile int currentMana = 0;
 
+	drainAmount = 0;
 	currentMana = this->owner->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
 	ASM(pushfd);
 	ASM(push ZCX);
 	ASM(push ZDX);
+	ASM(push ZSI);
 
 	ASM_MOV_REG_VAR(ZCX, currentMana);
+	ASM(mov ZSI, 0);
 	ASM(mov ZDX, -1);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MANA_DRAIN);
 	ASM(cmp ZCX, 4);
-	ASM(cmovge ZCX, ZDX);
+	ASM(cmovge ZSI, ZDX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(drainAmount, ZCX);
+	ASM_MOV_VAR_REG(drainAmount, ZSI);
 
+	ASM(pop ZSI);
 	ASM(pop ZDX);
 	ASM(pop ZCX);
 	ASM(popfd);
 
 	HACKABLES_STOP_SEARCH();
 
-	drainAmount = MathUtils::clamp(drainAmount, -256, 256);
+	drainAmount = MathUtils::clamp(drainAmount, -3, 3);
 
 	this->healSound->play();
 	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType));
