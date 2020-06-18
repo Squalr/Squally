@@ -19029,10 +19029,10 @@ namespace Strings
 		virtual ~Menus_Next() = default;
 	};
 
-	class Menus_Notifications_AnimalRescued : public LocalizedString
+	class Menus_Notifications_CreatureRescued : public LocalizedString
 	{
 	public:
-		static Menus_Notifications_AnimalRescued* create();
+		static Menus_Notifications_CreatureRescued* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19040,8 +19040,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Notifications_AnimalRescued();
-		virtual ~Menus_Notifications_AnimalRescued() = default;
+		Menus_Notifications_CreatureRescued();
+		virtual ~Menus_Notifications_CreatureRescued() = default;
 	};
 
 	class Menus_Okay : public LocalizedString

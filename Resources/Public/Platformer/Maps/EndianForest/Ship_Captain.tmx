@@ -54,29 +54,16 @@
    </properties>
   </object>
   <object id="705" name="breakable-cage" type="object" x="938.88" y="1292.38" width="196" height="112"/>
-  <object id="717" name="portal" type="object" x="2781.54" y="1128.52" width="237.527" height="233.023">
-   <properties>
-    <property name="map" value="EndianForest/Town_Docks"/>
-    <property name="tag" value="back-portal"/>
-    <property name="transition" value="ship"/>
-   </properties>
-  </object>
-  <object id="718" name="portal" type="object" x="3138.51" y="1135.43" width="237.527" height="233.023">
-   <properties>
-    <property name="map" value="UnderflowRuins/Town_Docks"/>
-    <property name="tag" value="leave-portal"/>
-    <property name="transition" value="ship"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="blackbeard" type="entity" x="1982" y="1276" width="128" height="128">
+  <object id="715" name="blackbeard" type="entity" x="1686" y="1274" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,ef-ur-transportation"/>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

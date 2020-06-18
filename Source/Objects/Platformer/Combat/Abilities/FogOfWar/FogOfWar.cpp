@@ -166,7 +166,7 @@ void FogOfWar::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* d
 	{
 		for (auto next : timeline->getSameTeamEntities(this->caster))
 		{
-			if (next == this->caster)
+			if (next == damageOrHealing->caster)
 			{
 				isOnCasterTeam = true;
 			}
