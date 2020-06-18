@@ -41,6 +41,9 @@ const std::string StoneSkin::StoneSkinIdentifier = "stone-skin";
 const int StoneSkin::MaxMultiplier = 4;
 const float StoneSkin::Duration = 16.0f;
 
+// Static to prevent GCC optimization issues
+volatile int StoneSkin::currentDamageTaken = 0;
+
 StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	StoneSkin* instance = new StoneSkin(caster, target);
@@ -160,7 +163,7 @@ void StoneSkin::registerHackables()
 						"; idiv ecx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
-						"imul ecx, 0\n"
+						"imul eax, 0\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"; mov rcx, 3\n" +
@@ -170,7 +173,7 @@ void StoneSkin::registerHackables()
 						"; idiv rcx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
-						"imul rcx, 0\n"
+						"imul rax, 0\n"
 					)
 				},
 				true
@@ -210,9 +213,10 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM(push ZAX);
 	ASM(push ZCX);
 	ASM(push ZDX);
-	ASM_MOV_REG_VAR(ZAX, damageTaken);
 
+	ASM_MOV_REG_VAR(ZAX, damageTaken);
 	ASM(DIV_CONVERT);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STONE_SKIN);
 	ASM(mov ZCX, 3)
 	ASM(idiv ZCX);
