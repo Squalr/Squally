@@ -36,7 +36,7 @@ private:
 
 	void applyUndying();
 	
-	volatile int newHealthUndying;
+	static volatile int newHealthUndying;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;

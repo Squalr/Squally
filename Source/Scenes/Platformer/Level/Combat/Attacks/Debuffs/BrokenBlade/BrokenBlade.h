@@ -35,7 +35,7 @@ private:
 
 	void applyBrokenBlade();
 	
-	volatile int currentDamageDelt;
+	static volatile int currentDamageDealt;
 	
 	SmartParticles* spellEffect;
 	

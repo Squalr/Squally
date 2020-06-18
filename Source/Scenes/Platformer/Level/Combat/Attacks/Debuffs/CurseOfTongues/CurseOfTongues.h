@@ -34,7 +34,7 @@ private:
 
 	void applyCurseOfTongues();
 	
-	volatile float currentSpeed;
+	static volatile float currentSpeed;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;

@@ -35,7 +35,7 @@ private:
 
 	void applyFortitude();
 	
-	volatile int currentDamageTaken;
+	static volatile int currentDamageTaken;
 	
 	cocos2d::Sprite* bubble;
 	SmartParticles* spellEffect;

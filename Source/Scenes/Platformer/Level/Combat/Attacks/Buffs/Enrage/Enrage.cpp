@@ -45,6 +45,9 @@ const float Enrage::DefaultSpeed = 2.0f;
 const float Enrage::MaxSpeed = 2.5f;
 const float Enrage::Duration = 6.0f;
 
+// Static to prevent GCC optimization issues
+volatile float Enrage::currentSpeed = 0.0f;
+
 Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Enrage* instance = new Enrage(caster, target);

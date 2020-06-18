@@ -33,7 +33,7 @@ private:
 
 	void applyHealthLink();
 	
-	volatile int healthLinkDamage;
+	static volatile int healthLinkDamage;
 	
 	SmartParticles* spellEffect;
 	

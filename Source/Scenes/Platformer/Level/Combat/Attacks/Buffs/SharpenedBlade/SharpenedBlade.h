@@ -35,7 +35,7 @@ private:
 
 	void applySharpenedBlade();
 	
-	volatile int currentDamageDelt;
+	static volatile int currentDamageDealt;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;

@@ -41,6 +41,9 @@ using namespace cocos2d;
 const std::string HealthLink::HealthLinkIdentifier = "health-link";
 const float HealthLink::Duration = -1.0f;
 
+// Static to prevent GCC optimization issues
+volatile int HealthLink::healthLinkDamage = 0;
+
 HealthLink* HealthLink::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	HealthLink* instance = new HealthLink(caster, target);

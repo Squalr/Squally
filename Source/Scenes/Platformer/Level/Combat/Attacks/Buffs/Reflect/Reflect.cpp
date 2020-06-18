@@ -41,6 +41,10 @@ const int Reflect::MinMultiplier = 2;
 const int Reflect::MaxMultiplier = 2;
 const float Reflect::Duration = 10.0f;
 
+// Static to prevent GCC optimization issues
+volatile int Reflect::damageReflected = 0;
+volatile int Reflect::damageDealt = 0;
+
 Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Reflect* instance = new Reflect(caster, target);

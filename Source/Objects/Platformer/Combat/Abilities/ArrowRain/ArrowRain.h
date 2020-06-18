@@ -42,5 +42,5 @@ private:
 	std::vector<float> arrowCooldowns;
 
 	std::string arrowResource;
-	volatile bool isOnPlayerTeam;
+	static volatile bool isOnPlayerTeam;
 };

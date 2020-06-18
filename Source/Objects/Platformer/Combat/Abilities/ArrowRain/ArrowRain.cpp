@@ -38,6 +38,9 @@ const int ArrowRain::Damage = 2;
 const float ArrowRain::TimeBetweenTicks = 0.75f;
 const float ArrowRain::StartDelay = 0.25f;
 
+// Static to prevent GCC optimization issues
+volatile bool ArrowRain::isOnPlayerTeam = false;
+
 const std::string ArrowRain::HackIdentifierArrowRainTeamCompare = "arrow-rain-team";
 
 ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource)

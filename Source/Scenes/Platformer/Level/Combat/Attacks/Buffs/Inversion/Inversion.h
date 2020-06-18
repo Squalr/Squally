@@ -34,7 +34,7 @@ private:
 
 	void applyInversion();
 	
-	volatile int currentDamageTaken;
+	static volatile int currentDamageTaken;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;

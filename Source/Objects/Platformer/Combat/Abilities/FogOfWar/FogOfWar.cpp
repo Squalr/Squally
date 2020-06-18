@@ -37,6 +37,9 @@ using namespace cocos2d;
 
 const std::string FogOfWar::HackIdentifierFogOfWarTeamCompare = "fog-of-war";
 
+// Static to prevent GCC optimization issues
+volatile int FogOfWar::damageDealt = 0;
+
 FogOfWar* FogOfWar::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	FogOfWar* instance = new FogOfWar(caster, target);

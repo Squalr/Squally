@@ -42,6 +42,9 @@ const int BrokenBlade::MaxMultiplier = 4;
 const int BrokenBlade::DamageReduction = 3; // Keep in sync with asm
 const float BrokenBlade::Duration = 12.0f;
 
+// Static to prevent GCC optimization issues
+volatile int BrokenBlade::currentDamageDealt = 0;
+
 BrokenBlade* BrokenBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	BrokenBlade* instance = new BrokenBlade(caster, target);
@@ -55,7 +58,7 @@ BrokenBlade::BrokenBlade(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_SwordBrokenAlt, AbilityType::Physical, BuffData(BrokenBlade::Duration, BrokenBlade::BrokenBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->currentDamageDelt = 0;
+	this->currentDamageDealt = 0;
 
 	this->addChild(this->spellEffect);
 }
@@ -170,21 +173,21 @@ void BrokenBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = damageOrHealing->originalDamageOrHealing;
+	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
 
 	this->applyBrokenBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier));
+	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier));
 	
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 {
 	static volatile int damageDelt;
 
-	damageDelt = this->currentDamageDelt;
+	damageDelt = this->currentDamageDealt;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
@@ -205,7 +208,7 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->currentDamageDelt = damageDelt;
+	this->currentDamageDealt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }

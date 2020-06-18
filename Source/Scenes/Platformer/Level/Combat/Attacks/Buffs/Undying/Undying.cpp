@@ -39,6 +39,9 @@ using namespace cocos2d;
 const std::string Undying::UndyingIdentifier = "undying";
 const float Undying::Duration = 120.0f;
 
+// Static to prevent GCC optimization issues
+volatile int Undying::newHealthUndying = 0;
+
 Undying* Undying::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Undying* instance = new Undying(caster, target);

@@ -42,6 +42,9 @@ const int Fortitude::MaxMultiplier = 4;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
 const float Fortitude::Duration = 16.0f;
 
+// Static to prevent GCC optimization issues
+volatile int Fortitude::currentDamageTaken = 0;
+
 Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Fortitude* instance = new Fortitude(caster, target);

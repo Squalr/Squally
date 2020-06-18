@@ -44,6 +44,9 @@ const float CurseOfTongues::DefaultHackSpeed = -0.5f; // Keep in sync with the a
 const float CurseOfTongues::MaxSpeed = 1.0f;
 const float CurseOfTongues::Duration = 6.0f;
 
+// Static to prevent GCC optimization issues
+volatile float CurseOfTongues::currentSpeed = 0.0f;
+
 CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	CurseOfTongues* instance = new CurseOfTongues(caster, target);

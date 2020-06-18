@@ -43,6 +43,9 @@ const float Haste::DefaultSpeed = 2.0f;
 const float Haste::MaxSpeed = 2.5f;
 const float Haste::Duration = 6.0f;
 
+// Static to prevent GCC optimization issues
+volatile float Haste::currentSpeed = 0.0f;
+
 Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Haste* instance = new Haste(caster, target);

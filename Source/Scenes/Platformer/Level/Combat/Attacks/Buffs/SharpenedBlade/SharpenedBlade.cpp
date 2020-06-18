@@ -41,6 +41,9 @@ const std::string SharpenedBlade::HackIdentifierSharpenedBlade = "sharpened-blad
 const int SharpenedBlade::MaxMultiplier = 4;
 const float SharpenedBlade::Duration = 12.0f;
 
+// Static to prevent GCC optimization issues
+volatile int SharpenedBlade::currentDamageDealt = 0;
+
 SharpenedBlade* SharpenedBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	SharpenedBlade* instance = new SharpenedBlade(caster, target);
@@ -55,7 +58,7 @@ SharpenedBlade::SharpenedBlade(PlatformerEntity* caster, PlatformerEntity* targe
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageDelt = 0;
+	this->currentDamageDealt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -181,21 +184,21 @@ void SharpenedBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingA
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = damageOrHealing->originalDamageOrHealing;
+	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
 
 	this->applySharpenedBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
+	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
 	
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }
 
 NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 {
 	static volatile int damageTaken;
 
-	damageTaken = this->currentDamageDelt;
+	damageTaken = this->currentDamageDealt;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
@@ -216,7 +219,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->currentDamageDelt = damageTaken;
+	this->currentDamageDealt = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }

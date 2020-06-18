@@ -34,8 +34,8 @@ private:
 
 	void applyReflect();
 	
-	volatile int damageReflected;
-	volatile int damageDealt;
+	static volatile int damageReflected;
+	static volatile int damageDealt;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;

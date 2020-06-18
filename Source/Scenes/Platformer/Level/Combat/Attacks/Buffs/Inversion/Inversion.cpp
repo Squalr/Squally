@@ -41,6 +41,9 @@ const std::string Inversion::InversionIdentifier = "inversion";
 const int Inversion::MaxMultiplier = 4;
 const float Inversion::Duration = 16.0f;
 
+// Static to prevent GCC optimization issues
+volatile int Inversion::currentDamageTaken = 0;
+
 Inversion* Inversion::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Inversion* instance = new Inversion(caster, target);

@@ -42,6 +42,9 @@ const int Strength::MaxMultiplier = 2;
 const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
 
+// Static to prevent GCC optimization issues
+volatile int Strength::currentDamageDealt = 0;
+
 Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Strength* instance = new Strength(caster, target);
@@ -56,7 +59,7 @@ Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageDelt = 0;
+	this->currentDamageDealt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -158,20 +161,20 @@ void Strength::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* d
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = damageOrHealing->originalDamageOrHealing;
+	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
 
 	this->applyStrength();
 
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing->originalDamageOrHealing * Strength::MinMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Strength::MaxMultiplier));
+	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->originalDamageOrHealing * Strength::MinMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Strength::MaxMultiplier));
 	
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
 	static volatile int damageDelt;
 
-	damageDelt = this->currentDamageDelt;
+	damageDelt = this->currentDamageDealt;
 
 	ASM(push ZCX);
 	ASM_MOV_REG_VAR(ZCX, damageDelt);
@@ -186,7 +189,7 @@ NO_OPTIMIZE void Strength::applyStrength()
 	ASM(pop ZCX);
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = damageDelt;
+	this->currentDamageDealt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }
