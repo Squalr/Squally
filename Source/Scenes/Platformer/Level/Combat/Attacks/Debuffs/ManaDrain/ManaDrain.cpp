@@ -198,7 +198,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 	drainAmount = 0;
 	currentMana = this->owner->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
-	ASM(pushfd);
+	ASM_PUSH_EFLAGS();
 	ASM(push ZCX);
 	ASM(push ZDX);
 	ASM(push ZSI);
@@ -218,7 +218,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 	ASM(pop ZSI);
 	ASM(pop ZDX);
 	ASM(pop ZCX);
-	ASM(popfd);
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 

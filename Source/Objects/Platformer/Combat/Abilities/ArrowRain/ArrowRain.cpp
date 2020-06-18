@@ -233,7 +233,7 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 
 	isOnPlayerTeamLocal = entry->isPlayerEntry();
 
-	ASM(pushfd);
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
@@ -253,7 +253,7 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
-	ASM(popfd);
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 

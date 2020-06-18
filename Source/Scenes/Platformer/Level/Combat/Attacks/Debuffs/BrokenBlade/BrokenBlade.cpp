@@ -186,14 +186,14 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 
 	damageDelt = this->currentDamageDelt;
 
-	ASM(pushfd);
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
 	ASM_MOV_REG_VAR(ZAX, damageDelt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BROKEN_BLADE);
-	ASM_MOV_REG_VAR(ZBX, 3);
+	ASM(mov ZBX, 3);
 	ASM(cmp ZAX, ZBX);
 	ASM(cmovge ZAX, ZBX);
 	ASM_NOP16();
@@ -203,7 +203,7 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
-	ASM(popfd);
+	ASM_POP_EFLAGS();
 
 	this->currentDamageDelt = damageDelt;
 

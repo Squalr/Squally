@@ -19,6 +19,10 @@
 	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
 
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
+	#define ASM_PUSH_EFLAGS() \
+		ASM(pushfq)
+	#define ASM_POP_EFLAGS() \
+		ASM(popfq)
 	#define ZAX rax
 	#define ZBX rbx
 	#define ZCX rcx
@@ -29,6 +33,10 @@
 	#define ZSP rsp
 	#define DIV_CONVERT cqo
 #else
+	#define ASM_PUSH_EFLAGS() \
+		ASM(pushfd)
+	#define ASM_POP_EFLAGS() \
+		ASM(popfd)
 	#define ZAX eax
 	#define ZBX ebx
 	#define ZCX ecx

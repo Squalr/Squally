@@ -197,7 +197,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 
 	damageTaken = this->currentDamageDelt;
 
-	ASM(pushfd);
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
@@ -214,7 +214,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
-	ASM(popfd);
+	ASM_POP_EFLAGS();
 
 	this->currentDamageDelt = damageTaken;
 
