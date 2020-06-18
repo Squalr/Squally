@@ -28,9 +28,9 @@ GodMode::~GodMode()
 {
 }
 
-void GodMode::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void GodMode::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	*damageOrHealing.damageOrHealing = 0;
+	(*damageOrHealing->damageOrHealing) = 0;
 }

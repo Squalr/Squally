@@ -166,18 +166,18 @@ void BrokenBlade::registerHackables()
 	}
 }
 
-void BrokenBlade::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void BrokenBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageDelt = damageOrHealing->originalDamageOrHealing;
 
 	this->applyBrokenBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * BrokenBlade::MaxMultiplier));
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier));
 	
-	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDelt;
 }
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()

@@ -5,7 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/DecorResources.h"
 
 using namespace cocos2d;
 
@@ -20,9 +20,9 @@ FogOfWarGenericPreview* FogOfWarGenericPreview::create()
 
 FogOfWarGenericPreview::FogOfWarGenericPreview()
 {
-	this->fog = Sprite::create(UIResources::Menus_Backgrounds_Fog);
+	this->fog = Sprite::create(DecorResources::Generic_Background_Fog4);
 
-	this->fog->setScale(0.2f);
+	this->fog->setScale(0.4f);
 
 	this->previewNode->addChild(this->fog);
 }

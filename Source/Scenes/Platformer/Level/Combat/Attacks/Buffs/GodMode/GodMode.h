@@ -23,7 +23,7 @@ protected:
 	GodMode(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~GodMode();
 
-	void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
+	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;

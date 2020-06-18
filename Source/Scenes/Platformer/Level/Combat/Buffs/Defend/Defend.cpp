@@ -52,20 +52,20 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Defend::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 	
-	*damageOrHealing.damageOrHealing = int(std::round(float(damageOrHealing.originalDamageOrHealing) * (1.0f - Defend::DamageReduction)));
+	(*damageOrHealing->damageOrHealing) = int(std::round(float(damageOrHealing->originalDamageOrHealing) * (1.0f - Defend::DamageReduction)));
 
 	CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->caster));
 
 	this->onDamageTakenOrCycle(true);
 }
 
-void Defend::onTimelineReset(bool wasInterrupt)
+void Defend::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
 {
-	super::onTimelineReset(wasInterrupt);
+	super::onTimelineReset(timelineReset);
 
 	this->resetCount++;
 	this->onDamageTakenOrCycle(false);

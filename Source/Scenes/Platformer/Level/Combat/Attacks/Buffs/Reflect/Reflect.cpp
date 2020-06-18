@@ -169,30 +169,30 @@ void Reflect::registerHackables()
 	}
 }
 
-void Reflect::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->damageDealt = damageOrHealing.originalDamageOrHealing;
+	this->damageDealt = damageOrHealing->originalDamageOrHealing;
 
 	this->applyReflect();
 
 	// Bound multiplier in either direction
 	this->damageReflected = MathUtils::clamp(
 		this->damageReflected,
-		-std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MinMultiplier),
-		std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MaxMultiplier)
+		-std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MinMultiplier),
+		std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MaxMultiplier)
 	);
 	this->damageDealt = MathUtils::clamp(
 		this->damageDealt,
-		-std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MinMultiplier),
-		std::abs(damageOrHealing.originalDamageOrHealing * Reflect::MaxMultiplier)
+		-std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MinMultiplier),
+		std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MaxMultiplier)
 	);
 
-	*damageOrHealing.damageOrHealing = this->damageDealt;
+	(*damageOrHealing->damageOrHealing) = this->damageDealt;
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.target, damageOrHealing.caster, this->damageReflected, damageOrHealing.abilityType, true));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, this->damageReflected, damageOrHealing->abilityType, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()

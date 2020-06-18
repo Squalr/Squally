@@ -161,18 +161,18 @@ void Fortitude::registerHackables()
 	}
 }
 
-void Fortitude::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageTaken = damageOrHealing->originalDamageOrHealing;
 
 	this->applyFortitude();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * Fortitude::MaxMultiplier));
+	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier));
 	
-	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()

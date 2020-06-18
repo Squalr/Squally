@@ -25,8 +25,8 @@ protected:
 private:
 	typedef AttachedBehaviorGroup super;
 	
-	virtual void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
-	virtual void onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
+	virtual void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
 
 	int bonusArmor;
 	int bonusAttack;

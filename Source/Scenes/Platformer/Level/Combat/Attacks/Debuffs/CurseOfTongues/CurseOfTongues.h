@@ -27,7 +27,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
+	void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed) override;
 
 private:
 	typedef Buff super;

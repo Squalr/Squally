@@ -21,8 +21,8 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing) override;
-	void onTimelineReset(bool wasInterrupt) override;
+	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	void onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset) override;
 
 private:
 	typedef Buff super;

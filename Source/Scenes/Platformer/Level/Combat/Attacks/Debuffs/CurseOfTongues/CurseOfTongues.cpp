@@ -163,15 +163,15 @@ void CurseOfTongues::registerHackables()
 	}
 }
 
-void CurseOfTongues::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void CurseOfTongues::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
+	super::onModifyTimelineSpeed(speed);
 	
-	this->currentSpeed = *timelineSpeed;
+	this->currentSpeed = *(speed->speed);
 
 	this->applyCurseOfTongues();
 
-	*timelineSpeed = this->currentSpeed;
+	*(speed->speed) = this->currentSpeed;
 }
 
 NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()

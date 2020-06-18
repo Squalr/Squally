@@ -91,7 +91,7 @@ void FogOfWar::update(float dt)
 
 Vec2 FogOfWar::getButtonOffset()
 {
-	return Vec2(0.0f, 512.0f);
+	return Vec2(0.0f, 256.0f);
 }
 
 void FogOfWar::registerHackables()
@@ -134,12 +134,35 @@ HackablePreview* FogOfWar::createDefaultPreview()
 	return FogOfWarGenericPreview::create();
 }
 
+void FogOfWar::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+{
+	super::onBeforeDamageDelt(damageOrHealing);
+
+	bool isOnCasterTeam = false;
+	
+	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
+	{
+		for (auto next : timeline->getSameTeamEntities(this->caster))
+		{
+			if (next == this->caster)
+			{
+				isOnCasterTeam = true;
+			}
+		}
+	}));
+
+	if (isOnCasterTeam)
+	{
+		this->increaseDamage();
+	}
+}
+
 void FogOfWar::updateAnimation(float dt)
 {
 	for (auto next : this->fog)
 	{
 		const float WidthOver2 = next.sprite->getContentSize().width / 2.0f;
-		const float ResetPosition = 2048.0f + WidthOver2;
+		const float ResetPosition = 1568.0f + WidthOver2;
 
 		next.sprite->setPositionX(next.sprite->getPositionX() + next.speed * dt);
 
@@ -157,8 +180,8 @@ void FogOfWar::updateAnimation(float dt)
 Vec3 FogOfWar::getRandomSpawnPosition()
 {
 	const float x = RandomHelper::random_real(-1024.0f, 1024.0f);
-	const float y = RandomHelper::random_real(0.0f, 256.0f);
-	const float z = -y * 2.0f;
+	const float y = RandomHelper::random_real(-64.0f, 192.0f);
+	const float z = RandomHelper::random_real(0.0f, -128.0f);
 
 	return Vec3(x, y, z);
 }
@@ -196,5 +219,7 @@ NO_OPTIMIZE void FogOfWar::increaseDamage()
 
 	this->isOnPlayerTeam = (isOnPlayerTeamLocal == 0) ? false : true;
 	*/
+
+	HACKABLES_STOP_SEARCH();
 }
 END_NO_OPTIMIZE

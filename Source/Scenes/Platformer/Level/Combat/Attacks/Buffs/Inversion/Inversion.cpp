@@ -134,18 +134,18 @@ void Inversion::registerHackables()
 	}
 }
 
-void Inversion::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Inversion::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageTaken = damageOrHealing->originalDamageOrHealing;
 
 	this->applyInversion();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * Inversion::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * Inversion::MaxMultiplier));
+	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing->originalDamageOrHealing * Inversion::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Inversion::MaxMultiplier));
 
-	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
 }
 
 NO_OPTIMIZE void Inversion::applyInversion()

@@ -137,11 +137,11 @@ void Undying::registerHackables()
 	}
 }
 
-void Undying::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	if (damageOrHealing.originalDamageOrHealing < 0)
+	if (damageOrHealing->originalDamageOrHealing < 0)
 	{
 		return;
 	}
@@ -149,21 +149,21 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damage
 	static volatile int originalHealth = 0;
 	static volatile int newHealth = 0;
 
-	originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	newHealth = originalHealth - damageOrHealing.originalDamageOrHealing;
+	originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	newHealth = originalHealth - damageOrHealing->originalDamageOrHealing;
 
-	this->newHealthUndying = originalHealth - damageOrHealing.originalDamageOrHealing;
+	this->newHealthUndying = originalHealth - damageOrHealing->originalDamageOrHealing;
 
 	this->applyUndying();
 
-	*damageOrHealing.damageOrHealing = (originalHealth - this->newHealthUndying);
+	(*damageOrHealing->damageOrHealing) = (originalHealth - this->newHealthUndying);
 }
 
-void Undying::onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeHealingTaken(damageOrHealing);
 
-	if (damageOrHealing.originalDamageOrHealing > 0)
+	if (damageOrHealing->originalDamageOrHealing > 0)
 	{
 		return;
 	}
@@ -171,14 +171,14 @@ void Undying::onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damag
 	static volatile int originalHealth = 0;
 	static volatile int newHealth = 0;
 
-	originalHealth = damageOrHealing.target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	newHealth = originalHealth - damageOrHealing.originalDamageOrHealing;
+	originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	newHealth = originalHealth - damageOrHealing->originalDamageOrHealing;
 
-	this->newHealthUndying = originalHealth + damageOrHealing.originalDamageOrHealing;
+	this->newHealthUndying = originalHealth + damageOrHealing->originalDamageOrHealing;
 
 	this->applyUndying();
 
-	*damageOrHealing.damageOrHealing = (this->newHealthUndying - originalHealth);
+	(*damageOrHealing->damageOrHealing) = (this->newHealthUndying - originalHealth);
 }
 
 NO_OPTIMIZE void Undying::applyUndying()

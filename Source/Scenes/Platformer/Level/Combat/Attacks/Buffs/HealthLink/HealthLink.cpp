@@ -134,11 +134,11 @@ void HealthLink::registerHackables()
 	}
 }
 
-void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->healthLinkDamage = damageOrHealing.originalDamageOrHealing;
+	this->healthLinkDamage = damageOrHealing->originalDamageOrHealing;
 
 	this->applyHealthLink();
 
@@ -147,16 +147,16 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing dam
 	{
 		bool healthLinkTargetFound = false;
 
-		for (auto next : timeline->getSameTeamEntities(damageOrHealing.target))
+		for (auto next : timeline->getSameTeamEntities(damageOrHealing->target))
 		{
-			if (next != damageOrHealing.target && next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (next != damageOrHealing->target && next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 				{
 					entityBuffBehavior->getBuff<HealthLink>([&](HealthLink* healthLink)
 					{
 						healthLinkTargetFound = true;
-						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing.caster, next, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, next, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
 					});
 				});
 			}
@@ -165,7 +165,7 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing dam
 		if (healthLinkTargetFound)
 		{
 			// Do not use the hackable code for the main target
-			*damageOrHealing.damageOrHealing /= 2;
+			(*damageOrHealing->damageOrHealing) /= 2;
 		}
 	}));
 }

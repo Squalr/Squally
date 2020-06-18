@@ -144,15 +144,15 @@ void Blind::registerHackables()
 	}
 }
 
-void Blind::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void Blind::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
+	super::onModifyTimelineSpeed(speed);
 	
-	this->currentSpeed = *timelineSpeed;
+	this->currentSpeed = *(speed->speed);
 
 	this->applyBlind();
 
-	*timelineSpeed = this->currentSpeed;
+	*(speed->speed) = this->currentSpeed;
 }
 
 NO_OPTIMIZE void Blind::applyBlind()

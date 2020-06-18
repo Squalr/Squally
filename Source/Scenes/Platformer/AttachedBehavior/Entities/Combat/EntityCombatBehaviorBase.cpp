@@ -75,16 +75,7 @@ void EntityCombatBehaviorBase::onLoad()
 
 		if (args != nullptr && args->caster == this->entity && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing(
-				args->damageOrHealing,
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				AbilityType::Physical,
-				args->caster,
-				args->target,
-				[=](){ args->handle(); }
-			));
+			this->onBeforeDamageDelt(args);
 		}
 	}));
 	
@@ -94,16 +85,7 @@ void EntityCombatBehaviorBase::onLoad()
 
 		if (args != nullptr && args->caster == this->entity && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing(
-				args->damageOrHealing,
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				AbilityType::Physical,
-				args->caster,
-				args->target,
-				[=](){ args->handle(); }
-			));
+			this->onBeforeDamageTaken(args);
 		}
 	}));
 }
@@ -113,33 +95,33 @@ void EntityCombatBehaviorBase::onDisable()
 	super::onDisable();
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void EntityCombatBehaviorBase::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	if (damageOrHealing.originalDamageOrHealing <= 0)
+	if (damageOrHealing->originalDamageOrHealing <= 0)
 	{
 		return;
 	}
 
-	*damageOrHealing.damageOrHealing = std::max(0, damageOrHealing.originalDamageOrHealing - this->bonusArmor);
+	*(damageOrHealing->damageOrHealing) = std::max(0, damageOrHealing->originalDamageOrHealing - this->bonusArmor);
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void EntityCombatBehaviorBase::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	if (damageOrHealing.originalDamageOrHealing <= 0)
+	if (damageOrHealing->originalDamageOrHealing <= 0)
 	{
 		return;
 	}
 	
-	switch(damageOrHealing.abilityType)
+	switch(damageOrHealing->abilityType)
 	{
 		case AbilityType::Physical:
 		{
-			*damageOrHealing.damageOrHealing += this->bonusAttack;
+			(*damageOrHealing->damageOrHealing) += this->bonusAttack;
 			break;
 		}
 		default:
 		{
-			*damageOrHealing.damageOrHealing += this->bonusMagicAttack;
+			(*damageOrHealing->damageOrHealing) += this->bonusMagicAttack;
 			break;
 		}
 	}

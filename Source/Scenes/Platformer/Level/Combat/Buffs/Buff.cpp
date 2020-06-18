@@ -90,7 +90,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onModifyTimelineSpeed(args->speed, [=](){ args->handle(); });
+			this->onModifyTimelineSpeed(args);
 		}
 	}));
 
@@ -100,16 +100,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->owner && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing(
-				args->damageOrHealing,
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				AbilityType::Physical,
-				args->caster,
-				args->target,
-				[=](){ args->handle(); }
-			));
+			this->onBeforeDamageDelt(args);
 		}
 	}));
 
@@ -119,14 +110,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster)
 		{
-			this->onAfterDamageDelt(CombatEvents::DamageOrHealing(
-				args->damageOrHealing,
-				args->damageOrHealing,
-				args->damageOrHealing,
-				AbilityType::Physical,
-				args->caster,
-				args->target
-			));
+			this->onAfterDamageDelt(args);
 		}
 	}));
 
@@ -136,16 +120,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing(
-				args->damageOrHealing,
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				AbilityType::Physical,
-				args->caster,
-				args->target,
-				[=](){ args->handle(); }
-			));
+			this->onBeforeDamageTaken(args);
 		}
 	}));
 
@@ -155,14 +130,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner)
 		{
-			this->onAfterDamageTaken(CombatEvents::DamageOrHealing(
-				args->damageOrHealing,
-				args->damageOrHealing,
-				args->damageOrHealing,
-				AbilityType::Physical,
-				args->caster,
-				args->target
-			));
+			this->onAfterDamageTaken(args);
 		}
 	}));
 
@@ -172,16 +140,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeHealingDelt(CombatEvents::ModifyableDamageOrHealing(
-				args->damageOrHealing,
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				AbilityType::Physical,
-				args->caster,
-				args->target,
-				[=](){ args->handle(); }
-			));
+			this->onBeforeHealingDelt(args);
 		}
 	}));
 
@@ -191,16 +150,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
-			this->onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing(
-				args->damageOrHealing,
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				*(args->damageOrHealing),
-				AbilityType::Physical,
-				args->caster,
-				args->target,
-				[=](){ args->handle(); }
-			));
+			this->onBeforeHealingTaken(args);
 		}
 	}));
 
@@ -210,7 +160,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->owner)
 		{
-			this->onTimelineReset(args->wasInterrupt);
+			this->onTimelineReset(args);
 		}
 	}));
 }
@@ -249,35 +199,35 @@ float Buff::getRemainingDuration()
 	return MathUtils::clamp(this->buffData.duration - this->elapsedTime, 0.0f, this->buffData.duration);
 }
 
-void Buff::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void Buff::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
 }
 
-void Buff::onTimelineReset(bool wasInterrupt)
+void Buff::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 }
 
-void Buff::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Buff::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 }
 
-void Buff::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Buff::onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
 }
 
-void Buff::onAfterDamageTaken(CombatEvents::DamageOrHealing damageOrHealing)
+void Buff::onAfterDamageDelt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
 }
 
-void Buff::onAfterDamageDelt(CombatEvents::DamageOrHealing damageOrHealing)
+void Buff::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 }
 
-void Buff::onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Buff::onBeforeHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 }
 
-void Buff::onBeforeHealingDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Buff::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
 {
 }
 

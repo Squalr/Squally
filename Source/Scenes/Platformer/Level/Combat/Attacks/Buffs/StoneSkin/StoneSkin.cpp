@@ -187,18 +187,18 @@ void StoneSkin::registerHackables()
 	}
 }
 
-void StoneSkin::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void StoneSkin::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageTaken = damageOrHealing->originalDamageOrHealing;
 
 	this->applyStoneSkin();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing.originalDamageOrHealing * StoneSkin::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * StoneSkin::MaxMultiplier));
+	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing->originalDamageOrHealing * StoneSkin::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * StoneSkin::MaxMultiplier));
 
-	*damageOrHealing.damageOrHealing = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
 }
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()

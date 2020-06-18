@@ -154,17 +154,17 @@ void Strength::registerHackables()
 	}
 }
 
-void Strength::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Strength::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageDelt = damageOrHealing->originalDamageOrHealing;
 
 	this->applyStrength();
 
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * Strength::MinMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * Strength::MaxMultiplier));
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing->originalDamageOrHealing * Strength::MinMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Strength::MaxMultiplier));
 	
-	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDelt;
 }
 
 NO_OPTIMIZE void Strength::applyStrength()

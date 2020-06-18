@@ -24,6 +24,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
+	void onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef CombatObject super;

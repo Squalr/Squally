@@ -228,78 +228,30 @@ public:
 		}
 	};
 
-	struct ModifyableDamageOrHealing
-	{
-		int* damageOrHealing;
-		int originalDamageOrHealing;
-		int originalDamageOrHealingBeforeBuffs;
-		int originalDamageOrHealingBeforeBuffsAndStats;
-		AbilityType abilityType;
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		std::function<void()> handleCallback;
-
-		ModifyableDamageOrHealing(
-			int* damageOrHealing,
-			int originalDamageOrHealing,
-			int originalDamageOrHealingBeforeBuffs,
-			int originalDamageOrHealingBeforeBuffsAndStats,
-			AbilityType abilityType, 
-			PlatformerEntity* caster,
-			PlatformerEntity* target,
-			std::function<void()> handleCallback
-		)
-			: damageOrHealing(damageOrHealing),
-				originalDamageOrHealing(originalDamageOrHealing),
-				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
-				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
-				abilityType(abilityType),
-				caster(caster),
-				target(target),
-				handleCallback(handleCallback)
-		{
-		}
-	};
-
-	struct DamageOrHealing
-	{
-		int damageOrHealing;
-		int originalDamageOrHealingBeforeBuffs;
-		int originalDamageOrHealingBeforeBuffsAndStats;
-		AbilityType abilityType;
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-
-		DamageOrHealing(
-			int damageOrHealing,
-			int originalDamageOrHealingBeforeBuffs,
-			int originalDamageOrHealingBeforeBuffsAndStats,
-			AbilityType abilityType, 
-			PlatformerEntity* caster,
-			PlatformerEntity* target
-		)
-			: damageOrHealing(damageOrHealing),
-				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
-				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
-				abilityType(abilityType),
-				caster(caster),
-				target(target)
-		{
-		}
-	};
-
 	struct DamageOrHealingArgs
 	{
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int damageOrHealing;
+		int originalDamageOrHealing;
+		int originalDamageOrHealingBeforeBuffs;
 		AbilityType abilityType;
 
 		// If true, this flag will prevent buffs from modifying the damage/healing
 		bool disableBuffProcessing;
 
-		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing, AbilityType abilityType, bool disableBuffProcessing = false)
-			: caster(caster), target(target), damageOrHealing(damageOrHealing), abilityType(abilityType), disableBuffProcessing(disableBuffProcessing)
+		DamageOrHealingArgs(
+			PlatformerEntity* caster,
+			PlatformerEntity* target,
+			int damageOrHealing,
+			AbilityType abilityType,
+			bool disableBuffProcessing = false
+		)
+			:	caster(caster),
+				target(target),
+				damageOrHealing(damageOrHealing),
+				abilityType(abilityType),
+				disableBuffProcessing(disableBuffProcessing)
 		{
 		}
 	};
@@ -325,10 +277,25 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
+		int originalDamageOrHealing;
+		int originalDamageOrHealingBeforeBuffs;
 		AbilityType abilityType;
 
-		ModifiableDamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing, AbilityType abilityType)
-			: caster(caster), target(target), damageOrHealing(damageOrHealing), abilityType(abilityType), handled(false)
+		ModifiableDamageOrHealingArgs(
+			PlatformerEntity* caster,
+			PlatformerEntity* target,
+			int* damageOrHealing,
+			int originalDamageOrHealing,
+			int originalDamageOrHealingBeforeBuffs,
+			AbilityType abilityType
+		)
+			:	caster(caster),
+				target(target),
+				damageOrHealing(damageOrHealing),
+				originalDamageOrHealing(originalDamageOrHealing),
+				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
+				abilityType(abilityType),
+				handled(false)
 		{
 		}
 

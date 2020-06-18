@@ -146,21 +146,21 @@ void Enrage::registerHackables()
 	}
 }
 
-void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void Enrage::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	this->currentSpeed = *timelineSpeed;
+	this->currentSpeed = *(speed->speed);
 
 	this->applyEnrageSpeed();
 
-	*timelineSpeed = this->currentSpeed;
+	*(speed->speed) = this->currentSpeed;
 }
 
-void Enrage::onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Enrage::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 }
 
-void Enrage::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void Enrage::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 }

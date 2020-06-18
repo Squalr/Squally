@@ -177,18 +177,18 @@ void SharpenedBlade::registerHackables()
 	}
 }
 
-void SharpenedBlade::onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing)
+void SharpenedBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageDelt(damageOrHealing);
 
-	this->currentDamageDelt = damageOrHealing.originalDamageOrHealing;
+	this->currentDamageDelt = damageOrHealing->originalDamageOrHealing;
 
 	this->applySharpenedBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing.originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing.originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
+	this->currentDamageDelt = MathUtils::clamp(this->currentDamageDelt, -std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
 	
-	*damageOrHealing.damageOrHealing = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDelt;
 }
 
 NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()

@@ -30,7 +30,6 @@ public:
 
 	void setBuffIndex(int index, int maxIndex);
 	bool hasBuffIcon();
-	void elapse(float dt);
 	float getRemainingDuration();
 	BuffData getBuffData();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
@@ -47,14 +46,15 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
-	virtual void onTimelineReset(bool wasInterrupt);
-	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
-	virtual void onBeforeDamageTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
-	virtual void onBeforeDamageDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
-	virtual void onAfterDamageTaken(CombatEvents::DamageOrHealing damageOrHealing);
-	virtual void onAfterDamageDelt(CombatEvents::DamageOrHealing damageOrHealing);
-	virtual void onBeforeHealingTaken(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
-	virtual void onBeforeHealingDelt(CombatEvents::ModifyableDamageOrHealing damageOrHealing);
+	virtual void elapse(float dt);
+	virtual void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed);
+	virtual void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing);
+	virtual void onAfterDamageDelt(CombatEvents::DamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset);
 
 	BuffData buffData;
 	PlatformerEntity* caster;
