@@ -342,7 +342,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_SwordGlowRed;
 	extern const std::string Menus_Icons_SwordGlowYellow;
 	extern const std::string Menus_Icons_SwordSlash;
-	extern const std::string Menus_Icons_SwordStrike;
+	extern const std::string Menus_Icons_SwordThrow;
 	extern const std::string Menus_Icons_SwordsCrossed;
 	extern const std::string Menus_Icons_SwordsLight;
 	extern const std::string Menus_Icons_ThrowingStar;
