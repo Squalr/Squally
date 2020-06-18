@@ -27,7 +27,7 @@ ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, Pr
 }
 
 ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, AbilityType::Physical, 5, 7, 4, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SwordThrow, priority, AbilityType::Physical, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 

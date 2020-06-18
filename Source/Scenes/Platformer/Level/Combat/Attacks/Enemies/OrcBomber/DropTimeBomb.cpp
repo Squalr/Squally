@@ -34,7 +34,7 @@ DropTimeBomb* DropTimeBomb::create(float attackDuration, float recoverDuration, 
 }
 
 DropTimeBomb::DropTimeBomb(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_Clock, priority, AbilityType::Fire, 450, 500, 12, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_Bomb, priority, AbilityType::Fire, 450, 500, 12, attackDuration, recoverDuration)
 {
 }
 
