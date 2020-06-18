@@ -140,7 +140,7 @@ void SharpenedBlade::registerHackables()
 							})) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create() }))
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create()) +
@@ -160,7 +160,7 @@ void SharpenedBlade::registerHackables()
 							})) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create() }))
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 					),
 				},
 				true

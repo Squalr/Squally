@@ -288,6 +288,7 @@ public:
 			int* damageOrHealing,
 			int originalDamageOrHealing,
 			int originalDamageOrHealingBeforeBuffs,
+			int originalDamageOrHealingBeforeBuffsAndStats,
 			AbilityType abilityType
 		)
 			:	caster(caster),

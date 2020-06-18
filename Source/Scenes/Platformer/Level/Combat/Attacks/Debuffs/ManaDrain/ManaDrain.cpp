@@ -125,7 +125,7 @@ void ManaDrain::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create()))
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
 						"cmp rcx, 4\n" +
@@ -138,7 +138,7 @@ void ManaDrain::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create()))
 					),
 				},
 				true

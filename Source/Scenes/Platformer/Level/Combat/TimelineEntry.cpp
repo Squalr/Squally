@@ -242,21 +242,21 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 
 	if (!disableBuffProcessing)
 	{
-		int originalDamage = damage;
-		int originalDamageBeforeBuffs = originalDamage;
+		int originalDamageBeforeBuffsAndStats = damage;
+		int originalDamageBeforeBuffs = originalDamageBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerEntityStatsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, originalDamage, originalDamageBeforeBuffs, abilityType));
-		CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, originalDamage, originalDamageBeforeBuffs, abilityType));
+		CombatEvents::TriggerEntityStatsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
 
 		originalDamageBeforeBuffs = damage;
 
 		// Modify outgoing damage
-		CombatEvents::TriggerEntityBuffsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, originalDamage, originalDamageBeforeBuffs, abilityType));
+		CombatEvents::TriggerEntityBuffsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
 		CombatEvents::TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
 
 		// Modify incoming damage
-		CombatEvents::TriggerEntityBuffsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, originalDamage, originalDamageBeforeBuffs, abilityType));
+		CombatEvents::TriggerEntityBuffsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
 		CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
 	}
 
@@ -284,18 +284,18 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 
 	if (!disableBuffProcessing)
 	{
-		int originalHealing = healing;
-		int originalHealingBeforeBuffs = originalHealing;
+		int originalHealingBeforeBuffsAndStats = healing;
+		int originalHealingBeforeBuffs = originalHealingBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerEntityStatsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, originalHealing, originalHealingBeforeBuffs, abilityType));
-		CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, originalHealing, originalHealingBeforeBuffs, abilityType));
+		CombatEvents::TriggerEntityStatsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
 		
 		// Modify outgoing healing
-		CombatEvents::TriggerEntityBuffsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, originalHealing, originalHealingBeforeBuffs, abilityType));
+		CombatEvents::TriggerEntityBuffsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
 
 		// Modify incoming healing
-		CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, originalHealing, originalHealingBeforeBuffs, abilityType));
+		CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
 	}
 
 	int health = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);

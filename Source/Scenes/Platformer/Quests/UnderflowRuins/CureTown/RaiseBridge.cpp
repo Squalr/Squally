@@ -163,7 +163,7 @@ void RaiseBridge::runCinematicSequencePreviousQuestIncomplete()
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera::create()
-				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create() }),
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
