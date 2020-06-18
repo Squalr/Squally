@@ -34,7 +34,6 @@ CastFogOfWar::CastFogOfWar(float attackDuration, float recoverDuration, Priority
 	: super(AttackType::Damage, UIResources::Menus_Icons_Fog, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, true)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
-	this->arrowResource = arrowResource;
 	
 	this->addChild(this->castSound);
 }
