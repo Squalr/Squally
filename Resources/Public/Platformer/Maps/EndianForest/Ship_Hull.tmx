@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -60,7 +60,7 @@
     <property name="transition" value="hull"/>
    </properties>
   </object>
-  <object id="705" name="breakable-cage" type="object" x="1535.85" y="1548.38" width="196" height="112"/>
+  <object id="705" name="caged-whale" type="object" x="1535.85" y="1548.38" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
