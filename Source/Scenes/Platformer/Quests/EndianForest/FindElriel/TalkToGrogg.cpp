@@ -168,6 +168,8 @@ void TalkToGrogg::runCinematicSequencePart4()
 		),
 		[=]()
 		{
+			this->complete();
+			
 			this->kingGrogg->watchForAttachedBehavior<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
 			{
 				combatBehavior->attack();
