@@ -126,8 +126,8 @@ void Blind::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind::create(),
 						// x86
-						"mov dword ptr [esi], 0.0",
-						// x64
+						"mov dword ptr [esi], 0.0"
+						, // x64
 						"mov dword ptr [rsi], 0.0"
 					)
 				}

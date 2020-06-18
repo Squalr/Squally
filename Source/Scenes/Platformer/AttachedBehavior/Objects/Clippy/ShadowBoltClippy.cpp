@@ -37,8 +37,8 @@ ShadowBoltClippy::~ShadowBoltClippy()
 
 void ShadowBoltClippy::startDialogue()
 {
-	this->runDialogue(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_ShadowBoltClippy::create()
-		->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_StopShadowBolt::create()),
+	this->runDialogue(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ShadowBoltClippy::create()
+		->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt::create()),
 		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid)
 	);
 }

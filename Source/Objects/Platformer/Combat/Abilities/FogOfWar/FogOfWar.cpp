@@ -13,6 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Combat/Abilities/FogOfWar/FogOfWarGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
@@ -104,18 +105,36 @@ void FogOfWar::registerHackables()
 			LOCAL_FUNC_ID_COMPARE_TEAM,
 			HackableCode::HackableCodeInfo(
 				FogOfWar::HackIdentifierFogOfWarTeamCompare,
-				Strings::Menus_SaveSelect_ConfirmDelete::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_FogOfWar::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Fog,
 				this->createDefaultPreview(),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_SaveSelect_ConfirmDelete::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx::create()
 					},
 				},
 				int(HackFlags::None),
 				-1.0f,
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()) +
+						"shl edx, 1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()) +
+						"shl rdx, 1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
+					),
+				},
+				true
 			)
 		},
 	};
@@ -151,10 +170,17 @@ void FogOfWar::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* d
 		}
 	}));
 
-	if (isOnCasterTeam)
+	if (!isOnCasterTeam)
 	{
-		this->increaseDamage();
+		return;
 	}
+
+	this->damageDealt = damageOrHealing->originalDamageOrHealing;
+
+	this->increaseDamage();
+
+	// Bound by 0.5x and 2x
+	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, damageOrHealing->originalDamageOrHealing / 2, damageOrHealing->originalDamageOrHealing * 2);
 }
 
 void FogOfWar::updateAnimation(float dt)
@@ -188,37 +214,24 @@ Vec3 FogOfWar::getRandomSpawnPosition()
 
 NO_OPTIMIZE void FogOfWar::increaseDamage()
 {
-	/*
-	static volatile int isOnPlayerTeamLocal;
+	static volatile int damageDealtLocal;
 
-	isOnPlayerTeamLocal = entry->isPlayerEntry();
+	damageDealtLocal = this->damageDealt;
 
-	ASM(pushfd);
-	ASM(push ZAX);
-	ASM(push ZBX);
+	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(ZAX, isOnPlayerTeamLocal);
-
-	ASM(mov ZBX, 1);
+	ASM_MOV_REG_VAR(ZDX, damageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
-	ASM(cmp ZAX, 1);
+	ASM(shl ZDX, 1);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	// If the compare is true, set zax to 1, else 0
-	ASM(mov ZAX, 0);
-	ASM(cmove ZAX, ZBX);
-	ASM_MOV_VAR_REG(isOnPlayerTeamLocal, ZAX);
+	ASM_MOV_VAR_REG(damageDealtLocal, ZDX);
 
-	ASM(pop ZBX);
-	ASM(pop ZAX);
-	ASM(popfd);
+	ASM(pop ZDX);
 
-	HACKABLES_STOP_SEARCH();
-
-	this->isOnPlayerTeam = (isOnPlayerTeamLocal == 0) ? false : true;
-	*/
+	this->damageDealt = damageDealtLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

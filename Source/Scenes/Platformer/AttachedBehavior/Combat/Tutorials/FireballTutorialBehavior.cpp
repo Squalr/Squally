@@ -72,8 +72,8 @@ void FireballTutorialBehavior::onLoad()
 			{
 				args->projectile->registerClippyOnto(Fireball::HackIdentifierFireballSpeed, [=]
 				{
-					return ScrappyClippy::create(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create()));
+					return ScrappyClippy::create(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_FireballClippy::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_StopFireball::create()));
 				});
 
 				this->runTutorial();

@@ -96,34 +96,34 @@ void Fireball::registerHackables()
 			LOCAL_FUNC_ID_FIREBALL_SPEED,
 			HackableCode::HackableCodeInfo(
 				Fireball::HackIdentifierFireballSpeed,
-				Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_FireBolts,
 				FireballSpeedPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterXmm1::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm1::create() }
 				},
 				int(HackFlags::None),
 				3.0f,
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create(),
+						Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_StopFireball::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading::create()->
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading::create()->
 							setStringReplacementVariables(Strings::Common_Brackets::create()->
 							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
 						"mov dword ptr [eax], 0.0f\n"
 						"movss xmm1, dword ptr [eax]\n\n"
-						"mulps xmm0, xmm1",
-						// x64
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentXmmLoading::create()->
+						"mulps xmm0, xmm1"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading::create()->
 							setStringReplacementVariables(Strings::Common_Brackets::create()->
 							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
 						"mov dword ptr [rax], 0.0f\n"
 						"movss xmm1, dword ptr [rax]\n\n"
 						"mulps xmm0, xmm1"

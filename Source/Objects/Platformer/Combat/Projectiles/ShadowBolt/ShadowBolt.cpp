@@ -98,28 +98,28 @@ void ShadowBolt::registerHackables()
 			LOCAL_FUNC_ID_FIREBALL_SPEED,
 			HackableCode::HackableCodeInfo(
 				"ShadowBolt",
-				Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_ApplySpeed::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
 				ShadowBoltSpeedPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_RegisterXmm1::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm1::create() }
 				},
 				int(HackFlags::Shadow),
 				5.0f,
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_StopShadowBolt::create(),
+						Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
 						"mov dword ptr [eax], 0.0\n"
 						"movss xmm1, dword ptr [eax]\n\n"
-						"mulps xmm0, xmm1",
-						// x64
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
+						"mulps xmm0, xmm1"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
 						"mov dword ptr [rax], 0.0\n"
 						"movss xmm1, dword ptr [rax]\n\n"
 						"mulps xmm0, xmm1"

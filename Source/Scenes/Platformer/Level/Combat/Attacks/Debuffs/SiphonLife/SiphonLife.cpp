@@ -117,8 +117,8 @@ void SiphonLife::registerHackables()
 						"inc edi\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()) +
 						"dec esi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create()),
-						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()) +
 						"inc rdi\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()) +

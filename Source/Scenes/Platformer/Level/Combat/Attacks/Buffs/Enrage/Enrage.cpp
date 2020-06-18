@@ -128,8 +128,8 @@ void Enrage::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create(),
 						// x86
-						"mov dword ptr [esi], 0.0",
-						// x64
+						"mov dword ptr [esi], 0.0"
+						, // x64
 						"mov dword ptr [rsi], 0.0"
 					)
 				}

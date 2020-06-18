@@ -103,8 +103,8 @@ void SpikedLog::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()) + 
-						"inc ecx\n",
-						// x64
+						"inc ecx\n"
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()) + 
 						"inc rcx\n"
 					)

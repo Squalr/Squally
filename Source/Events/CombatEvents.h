@@ -279,6 +279,7 @@ public:
 		int* damageOrHealing;
 		int originalDamageOrHealing;
 		int originalDamageOrHealingBeforeBuffs;
+		int originalDamageOrHealingBeforeBuffsAndStats;
 		AbilityType abilityType;
 
 		ModifiableDamageOrHealingArgs(
@@ -294,6 +295,7 @@ public:
 				damageOrHealing(damageOrHealing),
 				originalDamageOrHealing(originalDamageOrHealing),
 				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
+				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
 				abilityType(abilityType),
 				handled(false)
 		{

@@ -160,12 +160,12 @@ void TimeBomb::registerHackables()
 			LOCAL_FUNC_ID_TIME_BOMB_TICK,
 			HackableCode::HackableCodeInfo(
 				"TimeBomb",
-				Strings::Menus_Hacking_Objects_Combat_TimeBomb_TimeBombTick::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick::create(),
 				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Clock,
 				TimeBombTickPreview::create(),
 				{
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Combat_TimeBomb_RegisterEcx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
 				TimeBomb::HackDuration,

@@ -136,8 +136,8 @@ void Fortitude::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()) + 
-						"sub ebx, 3\n",
-						// x64
+						"sub ebx, 3\n"
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()

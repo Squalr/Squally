@@ -106,13 +106,13 @@ void ArrowRain::registerHackables()
 			LOCAL_FUNC_ID_COMPARE_TEAM,
 			HackableCode::HackableCodeInfo(
 				ArrowRain::HackIdentifierArrowRainTeamCompare,
-				Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CompareTeam::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_ArrowRain,
 				this->createDefaultPreview(),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
 					},
 				},
 				int(HackFlags::None),
@@ -122,13 +122,13 @@ void ArrowRain::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
 						"cmp eax, 1\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Objects_Combat_Projectiles_ArrowRain_CompareTeam_CommentEval::create()
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						"cmp rax, 1\n"
 					),

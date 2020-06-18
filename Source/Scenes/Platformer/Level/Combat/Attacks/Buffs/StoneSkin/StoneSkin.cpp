@@ -160,8 +160,8 @@ void StoneSkin::registerHackables()
 						"; idiv ecx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
-						"imul eax, 0\n",
-						// x64
+						"imul eax, 0\n"
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"; mov rcx, 3\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()

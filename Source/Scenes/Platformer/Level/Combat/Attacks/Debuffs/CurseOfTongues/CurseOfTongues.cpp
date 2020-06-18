@@ -136,8 +136,8 @@ void CurseOfTongues::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
-						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
 							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
