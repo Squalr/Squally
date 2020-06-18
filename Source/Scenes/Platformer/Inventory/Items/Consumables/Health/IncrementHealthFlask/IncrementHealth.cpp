@@ -170,7 +170,7 @@ NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 
 	ASM(pop ZDI);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
+	incrementAmount = MathUtils::clamp(incrementAmount, -2, 2);
 
 	this->healSound->play();
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, incrementAmount, this->abilityType));

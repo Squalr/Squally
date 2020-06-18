@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const float Defend::DamageReduction = 0.75f;
+const float Defend::DamageReduction = 0.5f;
 
 Defend* Defend::create(PlatformerEntity* caster)
 {

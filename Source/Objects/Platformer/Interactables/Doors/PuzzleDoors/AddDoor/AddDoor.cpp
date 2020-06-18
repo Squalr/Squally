@@ -81,7 +81,7 @@ void AddDoor::registerHackables()
 					"add ecx, 2",
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
 					"add rcx, 2"),
 				},

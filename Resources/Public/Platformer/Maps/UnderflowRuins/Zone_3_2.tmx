@@ -173,7 +173,6 @@
     <property name="transition" value="bottom-right"/>
    </properties>
   </object>
-  <object id="1147" name="help-totem-potions" type="object" x="2458.67" y="1090.67" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>

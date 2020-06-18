@@ -52,7 +52,7 @@ Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Shield, AbilityType::Physical, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -112,7 +112,7 @@ void Fortitude::registerHackables()
 				Fortitude::HackIdentifierFortitude,
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Shield,
+				UIResources::Menus_Icons_ShieldGlowBlue,
 				FortitudeGenericPreview::create(),
 				{
 					{

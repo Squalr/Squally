@@ -24,7 +24,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_FIREBALL_SPEED 11
+#define LOCAL_FUNC_ID_SHADOWBOLT_SPEED 11
 
 ShadowBolt* ShadowBolt::create(PlatformerEntity* owner, PlatformerEntity* target)
 {
@@ -95,12 +95,12 @@ void ShadowBolt::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_FIREBALL_SPEED,
+			LOCAL_FUNC_ID_SHADOWBOLT_SPEED,
 			HackableCode::HackableCodeInfo(
 				"ShadowBolt",
 				Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_CrossHair,
+				UIResources::Menus_Icons_SpellImpactPurple,
 				ShadowBoltSpeedPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax::create() },
@@ -166,7 +166,7 @@ NO_OPTIMIZE void ShadowBolt::setShadowBoltSpeed()
 
 	ASM(push ZAX);
 	ASM_MOV_REG_VAR(ZAX, freeMemoryForUser);
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FIREBALL_SPEED);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHADOWBOLT_SPEED);
 	ASM(mulps xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
