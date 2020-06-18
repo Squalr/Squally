@@ -1663,6 +1663,7 @@ const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_L_ARM_1 = 
 const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_L_ARM_2 = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/L ARM 2.png";
 const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_L_ARM_3 = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/L ARM 3.png";
 const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_L_FINGERS = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/L FINGERS.png";
+const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_L_LEG_2 = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/L LEG 2.png";
 const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_MummyHat1 = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/MummyHat1.png";
 const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_MummyHead1 = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/MummyHead1.png";
 const std::string EntityResources::Enemies_UnderflowRuins_MummyPriest_NECKLACE = "Private/Platformer/Entities/Enemies/UnderflowRuins/MummyPriest/NECKLACE.png";

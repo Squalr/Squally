@@ -29,6 +29,7 @@ ShopPoolGeryon::ShopPoolGeryon(ValueMap& properties) : super(properties, ShopPoo
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
 }

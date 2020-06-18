@@ -1664,6 +1664,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_L_ARM_2;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_L_ARM_3;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_L_FINGERS;
+	extern const std::string Enemies_UnderflowRuins_MummyPriest_L_LEG_2;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_MummyHat1;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_MummyHead1;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_NECKLACE;

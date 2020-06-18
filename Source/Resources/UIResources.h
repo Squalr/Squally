@@ -236,6 +236,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_FireBolts;
 	extern const std::string Menus_Icons_FireSphere;
 	extern const std::string Menus_Icons_FlamingScroll;
+	extern const std::string Menus_Icons_FlamingTorch;
 	extern const std::string Menus_Icons_Fog;
 	extern const std::string Menus_Icons_Food;
 	extern const std::string Menus_Icons_Gauntlet;
