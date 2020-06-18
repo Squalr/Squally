@@ -121,10 +121,10 @@ void BrokenBlade::registerHackables()
 						"cmp eax, ebx\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentConditionalMov::create()) +
 						"cmovge eax, ebx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentFinale::create()
 							->setStringReplacementVariables({
 								Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
@@ -141,10 +141,10 @@ void BrokenBlade::registerHackables()
 						"cmp rax, rbx\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentConditionalMov::create()) +
 						"cmovge rax, rbx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentFinale::create()
 							->setStringReplacementVariables({
 								Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),

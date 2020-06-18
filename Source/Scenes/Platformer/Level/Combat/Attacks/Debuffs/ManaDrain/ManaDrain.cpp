@@ -116,12 +116,13 @@ void ManaDrain::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
 						"cmp ecx, 4\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())) +
 						"cmovge esi, edx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
@@ -129,12 +130,13 @@ void ManaDrain::registerHackables()
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
 						"cmp rcx, 4\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())) +
 						"cmovge rsi, rdx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
