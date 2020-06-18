@@ -9,10 +9,10 @@ namespace cocos2d
 
 class WorldSound;
 
-class CastWeakness : public PlatformerAttack
+class CastFogOfWar : public PlatformerAttack
 {
 public:
-	static CastWeakness* create(float attackDuration, float recoverDuration, Priority priority);
+	static CastFogOfWar* create(float attackDuration, float recoverDuration, Priority priority);
 
 	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	float getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
@@ -20,8 +20,8 @@ public:
 	std::string getAttackAnimation() override;
 
 protected:
-	CastWeakness(float attackDuration, float recoverDuration, Priority priority);
-	virtual ~CastWeakness();
+	CastFogOfWar(float attackDuration, float recoverDuration, Priority priority);
+	virtual ~CastFogOfWar();
 
 	void initializePositions() override;
 
@@ -34,4 +34,5 @@ private:
 	PlatformerAttack* cloneInternal() override;
 	
 	WorldSound* castSound;
+	std::string arrowResource;
 };

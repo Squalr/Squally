@@ -13,7 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Combat/Projectiles/ArrowRain/ArrowRainGenericPreview.h"
+#include "Objects/Platformer/Combat/Abilities/ArrowRain/ArrowRainGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -53,7 +53,6 @@ ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::st
 {
 	this->arrowPool = std::vector<Sprite*>();
 	this->arrowCooldowns = std::vector<float>();
-	this->isTimelinePaused = false;
 	this->isOnPlayerTeam = false;
 	this->arrowResource = arrowResource;
 
@@ -83,21 +82,6 @@ void ArrowRain::onEnter()
 	this->runArrowRain();
 	
 	CombatEvents::TriggerHackableCombatCue();
-}
-
-void ArrowRain::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* eventCustom)
-	{
-		this->isTimelinePaused = true;
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
-	{
-		this->isTimelinePaused = false;
-	}));
 }
 
 void ArrowRain::update(float dt)
@@ -206,7 +190,7 @@ void ArrowRain::updateAnimation(float dt)
 
 	for (int index = 0; index < int(this->arrowCooldowns.size()); index++)
 	{
-		if (!this->isTimelinePaused)
+		if (!this->timelinePaused)
 		{
 			this->arrowCooldowns[index] -= dt;
 			this->arrowPool[index]->setPositionY(this->arrowPool[index]->getPositionY() - dt * PixelsPerSecond);

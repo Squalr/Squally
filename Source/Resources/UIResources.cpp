@@ -235,6 +235,7 @@ const std::string UIResources::Menus_Icons_Fire = "Private/UI/Menus/Icons/Fire.p
 const std::string UIResources::Menus_Icons_FireBolts = "Private/UI/Menus/Icons/FireBolts.png";
 const std::string UIResources::Menus_Icons_FireSphere = "Private/UI/Menus/Icons/FireSphere.png";
 const std::string UIResources::Menus_Icons_FlamingScroll = "Private/UI/Menus/Icons/FlamingScroll.png";
+const std::string UIResources::Menus_Icons_Fog = "Private/UI/Menus/Icons/Fog.png";
 const std::string UIResources::Menus_Icons_Food = "Private/UI/Menus/Icons/Food.png";
 const std::string UIResources::Menus_Icons_Gauntlet = "Private/UI/Menus/Icons/Gauntlet.png";
 const std::string UIResources::Menus_Icons_GearBroken = "Private/UI/Menus/Icons/GearBroken.png";

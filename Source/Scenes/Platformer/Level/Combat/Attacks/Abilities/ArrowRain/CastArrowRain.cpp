@@ -8,7 +8,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Objects/Platformer/Combat/Projectiles/ArrowRain/ArrowRain.h"
+#include "Objects/Platformer/Combat/Abilities/ArrowRain/ArrowRain.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/Fortitude.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"

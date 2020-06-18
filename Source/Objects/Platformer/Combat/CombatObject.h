@@ -19,13 +19,12 @@ protected:
 	PlatformerEntity* caster;
 	PlatformerEntity* target;
 	bool canUpdate;
+	bool onTimeline;
+	bool timelinePaused;
+	bool timelinePausedCinematic;
 
 private:
 	typedef HackableObject super;
 	
 	void updateObjectCanUpdate();
-
-	bool onTimeline;
-	bool timelinePaused;
-	bool timelinePausedCinematic;
 };

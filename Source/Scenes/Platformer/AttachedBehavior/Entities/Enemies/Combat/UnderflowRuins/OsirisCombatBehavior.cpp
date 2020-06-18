@@ -5,7 +5,9 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/ArrowRain/CastArrowRain.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/FogOfWar/CastFogOfWar.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Undying/UndyingAutoCast.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
@@ -33,7 +35,7 @@ OsirisCombatBehavior::OsirisCombatBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.15f);
+	this->setTimelineSpeed(1.25f);
 }
 
 OsirisCombatBehavior::~OsirisCombatBehavior()
@@ -50,8 +52,13 @@ void OsirisCombatBehavior::onLoad()
 	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		// attackBehavior->registerAttack(CastArrowRain::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
-		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(CastFogOfWar::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::IfNecessary));
+	});
+
+	this->entity->watchForAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->applyBuff(UndyingAutoCast::create(this->entity, this->entity));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

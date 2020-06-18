@@ -2,24 +2,27 @@
 
 #include "Engine/Hackables/Menus/HackablePreview.h"
 
-class SmartAnimationSequenceNode;
+namespace cocos2d
+{
+	class Sprite;
+}
 
-class WeaknessGenericPreview : public HackablePreview
+class FogOfWarGenericPreview : public HackablePreview
 {
 public:
-	static WeaknessGenericPreview* create();
+	static FogOfWarGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 protected:
-	WeaknessGenericPreview();
-	virtual ~WeaknessGenericPreview();
-
+	FogOfWarGenericPreview();
+	virtual ~FogOfWarGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationSequenceNode* healEffect;
+	cocos2d::Sprite* fog;
 };

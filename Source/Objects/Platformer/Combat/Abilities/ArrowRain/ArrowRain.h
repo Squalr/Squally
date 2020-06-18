@@ -26,7 +26,6 @@ protected:
 	virtual ~ArrowRain();
 
 	void onEnter() override;
-	void initializeListeners() override;
 	void update(float dt) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
@@ -44,5 +43,4 @@ private:
 
 	std::string arrowResource;
 	volatile bool isOnPlayerTeam;
-	bool isTimelinePaused;
 };
