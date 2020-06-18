@@ -160,7 +160,7 @@ void StoneSkin::registerHackables()
 						"; idiv ecx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
-						"imul eax, 0\n"
+						"imul ecx, 0\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
 						"; mov rcx, 3\n" +
@@ -170,7 +170,7 @@ void StoneSkin::registerHackables()
 						"; idiv rcx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()) +
-						"imul rax, 0\n"
+						"imul rcx, 0\n"
 					)
 				},
 				true
