@@ -80,7 +80,7 @@ void ItemEntry::setCraftCount(int craftCount)
 {
     this->craftCount = craftCount;
 
-    if (this->craftCount <= 1)
+    if (this->craftCount <= 0)
     {
         this->craftString->setString("");
     }
