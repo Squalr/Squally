@@ -190,7 +190,7 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
 	));
 	
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageOrHealing, Value(0)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageOrHealing, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageDealt, Value(0)).asInt();
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(), damageOrHealing->abilityType, true));
