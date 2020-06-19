@@ -176,9 +176,10 @@ END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Undying::applyUndying()
 {
-	static volatile int newHealthUndyingLocal = 0;
+	// Non-determinism gods prefer using static variable here
+	// static volatile int newHealthUndyingLocal = 0;
 
-	newHealthUndyingLocal = this->newHealthUndying;
+	// newHealthUndyingLocal = this->newHealthUndying;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZBX);
@@ -188,7 +189,7 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM(xor ZSI, ZSI);
 
 	ASM(mov ZBX, 1);
-	ASM_MOV_REG_VAR(ZSI, newHealthUndyingLocal);
+	ASM_MOV_REG_VAR(ZSI, newHealthUndying);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
 	ASM(cmp esi, ebx);
@@ -196,13 +197,13 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 		
-	ASM_MOV_VAR_REG(newHealthUndyingLocal, ZSI);
+	ASM_MOV_VAR_REG(newHealthUndying, ZSI);
 
 	ASM(pop ZSI);
 	ASM(pop ZBX);
 	ASM_POP_EFLAGS();
 
-	this->newHealthUndying = newHealthUndyingLocal;
+	// this->newHealthUndying = newHealthUndyingLocal;
 
 	HACKABLES_STOP_SEARCH();
 }
