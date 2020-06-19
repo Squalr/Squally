@@ -140,7 +140,7 @@ void Undying::registerHackables()
 	}
 }
 
-void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+NO_OPTIMIZE void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
@@ -148,21 +148,16 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 	{
 		return;
 	}
-
-	static volatile int originalHealth = 0;
-	static volatile int newHealth = 0;
-
-	originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	newHealth = originalHealth - damageOrHealing->originalDamageOrHealing;
-
-	this->newHealthUndying = originalHealth - damageOrHealing->originalDamageOrHealing;
+	
+	this->newHealthUndying = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - damageOrHealing->originalDamageOrHealing;
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) = (originalHealth - this->newHealthUndying);
+	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->newHealthUndying);
 }
+END_NO_OPTIMIZE
 
-void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+NO_OPTIMIZE void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeHealingTaken(damageOrHealing);
 
@@ -171,44 +166,37 @@ void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* 
 		return;
 	}
 
-	static volatile int originalHealth = 0;
-	static volatile int newHealth = 0;
-
-	originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	newHealth = originalHealth - damageOrHealing->originalDamageOrHealing;
-
-	this->newHealthUndying = originalHealth + damageOrHealing->originalDamageOrHealing;
+	this->newHealthUndying = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) + damageOrHealing->originalDamageOrHealing;
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) = (this->newHealthUndying - originalHealth);
+	(*damageOrHealing->damageOrHealing) = (this->newHealthUndying - damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Undying::applyUndying()
 {
-	static volatile int healthCopy = 0;
-
-	healthCopy = this->newHealthUndying;
-	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZBX);
 	ASM(push ZSI);
-	ASM_MOV_REG_VAR(ZSI, healthCopy);
+
+	ASM(xor ZBX, ZBX);
+	ASM(xor ZSI, ZSI);
+
 	ASM(mov ZBX, 1);
+	ASM_MOV_REG_VAR(ZSI, newHealthUndying);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
-	ASM(cmp ZSI, 1);
-	ASM(cmovle ZSI, ZBX);
+	ASM(cmp esi, ebx);
+	ASM(cmovle esi, ebx);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(healthCopy, ZSI);
+		
+	ASM_MOV_VAR_REG(newHealthUndying, ZSI);
 
 	ASM(pop ZSI);
 	ASM(pop ZBX);
 	ASM_POP_EFLAGS();
-
-	this->newHealthUndying = healthCopy;
 
 	HACKABLES_STOP_SEARCH();
 }

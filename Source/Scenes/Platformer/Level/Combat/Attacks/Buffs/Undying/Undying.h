@@ -36,11 +36,11 @@ private:
 
 	void applyUndying();
 	
-	static volatile int newHealthUndying;
-	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;
 	cocos2d::Sprite* spellAura;
+	
+	static volatile int newHealthUndying;
 	
 	static const int MinUndying;
 	static const int MaxMultiplier;
