@@ -175,17 +175,23 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 
 NO_OPTIMIZE void HealthLink::applyHealthLink()
 {
+	static volatile int healthLinkDamageLocal = 0;
+
+	healthLinkDamageLocal = this->healthLinkDamage;
+
 	ASM(push ZDI);
-	ASM_MOV_REG_VAR(ZDI, healthLinkDamage);
+	ASM_MOV_REG_VAR(ZDI, healthLinkDamageLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
 	ASM(shr ZDI, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(healthLinkDamage, ZDI);
+	ASM_MOV_VAR_REG(healthLinkDamageLocal, ZDI);
 
 	ASM(pop ZDI);
+
+	this->healthLinkDamage = healthLinkDamageLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

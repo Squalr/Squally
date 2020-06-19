@@ -173,7 +173,7 @@ void Reflect::registerHackables()
 	}
 }
 
-void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+NO_OPTIMIZE void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
@@ -198,13 +198,20 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, this->damageReflected, damageOrHealing->abilityType, true));
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
+	static volatile int damageDealtLocal = 0;
+	static volatile int damageReflectedLocal = 0;
+
+	damageDealtLocal = this->damageDealt;
+	damageReflectedLocal = this->damageReflected;
+
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, damageDealt);
-	ASM_MOV_REG_VAR(ZBX, damageReflected);
+	ASM_MOV_REG_VAR(ZSI, damageDealtLocal);
+	ASM_MOV_REG_VAR(ZBX, damageReflectedLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
 	ASM(shr ZSI, 1);
@@ -212,11 +219,14 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDealt, ZSI);
-	ASM_MOV_VAR_REG(damageReflected, ZBX);
+	ASM_MOV_VAR_REG(damageDealtLocal, ZSI);
+	ASM_MOV_VAR_REG(damageReflectedLocal, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+
+	this->damageDealt = damageDealtLocal;
+	this->damageReflected = damageReflectedLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

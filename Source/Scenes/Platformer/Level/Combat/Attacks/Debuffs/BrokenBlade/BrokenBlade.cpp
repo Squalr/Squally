@@ -185,6 +185,10 @@ void BrokenBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 {
+	static volatile int currentDamageDealtLocal = 0;
+
+	currentDamageDealtLocal = this->currentDamageDealt;
+
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
@@ -203,6 +207,8 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
+
+	this->currentDamageDealt = currentDamageDealtLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

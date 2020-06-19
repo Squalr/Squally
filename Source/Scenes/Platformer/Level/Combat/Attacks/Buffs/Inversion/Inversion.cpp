@@ -167,17 +167,23 @@ void Inversion::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 NO_OPTIMIZE void Inversion::applyInversion()
 {
+	static volatile int currentDamageTakenLocal = 0;
+
+	currentDamageTakenLocal = this->currentDamageTaken;
+
 	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, currentDamageTaken);
+	ASM_MOV_REG_VAR(ZAX, currentDamageTakenLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INVERSION);
 	ASM(neg ZAX)
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTaken, ZAX);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, ZAX);
 	
 	ASM(pop ZAX);
+
+	this->currentDamageTaken = currentDamageTakenLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

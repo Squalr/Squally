@@ -206,11 +206,15 @@ void StoneSkin::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 {
+	static volatile int currentDamageTakenLocal = 0;
+
+	currentDamageTakenLocal = this->currentDamageTaken;
+
 	ASM(push ZAX);
 	ASM(push ZCX);
 	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(ZAX, currentDamageTaken);
+	ASM_MOV_REG_VAR(ZAX, currentDamageTakenLocal);
 	ASM(DIV_CONVERT);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STONE_SKIN);
@@ -219,11 +223,13 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTaken, ZAX);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, ZAX);
 
 	ASM(pop ZDX);
 	ASM(pop ZCX);
 	ASM(pop ZAX);
+
+	this->currentDamageTaken = currentDamageTakenLocal;
 
 	HACKABLES_STOP_SEARCH();
 }
