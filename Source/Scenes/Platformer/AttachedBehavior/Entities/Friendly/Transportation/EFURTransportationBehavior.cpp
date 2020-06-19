@@ -36,6 +36,8 @@ EFURTransportationBehavior::EFURTransportationBehavior(GameObject* owner) : supe
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
 	this->innerChoices = nullptr;
+	this->backPortal = nullptr;
+	this->leavePortal = nullptr;
 
 	if (this->entity == nullptr)
 	{
