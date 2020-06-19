@@ -225,6 +225,11 @@ float GameCamera::getCameraZoomOnTarget(cocos2d::Node* target)
 	return ((this->getCameraDistance() - GameUtils::getDepth(target)) / this->getIntendedCameraDistance());
 }
 
+float GameCamera::getCameraZoomOnZero()
+{
+	return (this->getCameraDistance() / this->defaultDistance);
+}
+
 float GameCamera::getCameraZoom()
 {
 	return (this->getCameraDistance() / this->getIntendedCameraDistance());
@@ -450,7 +455,8 @@ Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 
 Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 {
-	static const Size CameraSize = Director::getInstance()->getVisibleSize();
+	const float CameraZoom = this->getCameraZoomOnZero();
+	const Size CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
 
 	const float MinX = this->mapBounds.getMinX() + CameraSize.width / 2.0f;
 	const float MaxX = this->mapBounds.getMaxX() - CameraSize.width / 2.0f;

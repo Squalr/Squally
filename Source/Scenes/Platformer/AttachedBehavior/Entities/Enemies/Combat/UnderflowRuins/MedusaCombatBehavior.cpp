@@ -52,7 +52,7 @@ void MedusaCombatBehavior::onLoad()
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(CastArrowRain::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed, EntityResources::Enemies_UnderflowRuins_Medusa_ARROW));
-		attackBehavior->registerAttack(DoubleSlash::create(4, 6, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(DoubleSlash::create(4, 6, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common, 1.0f));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

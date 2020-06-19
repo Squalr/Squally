@@ -30,6 +30,7 @@ public:
 	float getTargetDepth();
 	void setCameraDistance(float distance);
 	float getCameraZoomOnTarget(cocos2d::Node* target);
+	float getCameraZoomOnZero();
 	float getCameraZoom();
 	void setCameraZoom(float zoom);
 	cocos2d::Vec2 getCameraPosition();

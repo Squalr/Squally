@@ -27,7 +27,7 @@ DoubleSlash* DoubleSlash::create(int damageMin, int damageMax, float attackDurat
 DoubleSlash::DoubleSlash(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority, float weaveDelay)
 	: super(
 		AttackType::Damage,
-		UIResources::Menus_Icons_SwordSlash,
+		UIResources::Menus_Icons_SwordsCrossed,
 		priority,
 		AbilityType::Physical,
 		damageMin,

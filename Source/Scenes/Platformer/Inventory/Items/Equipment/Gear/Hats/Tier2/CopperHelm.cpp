@@ -22,11 +22,11 @@ CopperHelm* CopperHelm::create()
 
 CopperHelm::CopperHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
 	0,
 	// Attack
-	0,
+	2,
 	// Magic Attack
 	0,
 	// Armor

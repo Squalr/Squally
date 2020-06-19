@@ -132,6 +132,8 @@ void ObtainMirror::runCinematicSequencePt2()
 	{
 		return;
 	}
+	
+	PlatformerEvents::TriggerCinematicHijack();
 
 	this->doBehaviorAttach = true;
 

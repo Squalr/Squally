@@ -24,11 +24,11 @@ AcolytesCap::AcolytesCap() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Health
 	0,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack
-	0,
+	3,
 	// Armor
 	1,
 	// Speed
