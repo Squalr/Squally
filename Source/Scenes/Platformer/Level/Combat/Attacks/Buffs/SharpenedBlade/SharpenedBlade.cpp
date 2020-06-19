@@ -196,15 +196,11 @@ void SharpenedBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingA
 
 NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 {
-	static volatile int damageTaken;
-
-	damageTaken = this->currentDamageDealt;
-
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(ZAX, damageTaken);
+	ASM_MOV_REG_VAR(ZAX, currentDamageDealt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(mov ZBX, 7);
@@ -213,13 +209,11 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZAX);
+	ASM_MOV_VAR_REG(currentDamageDealt, ZAX);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
-
-	this->currentDamageDealt = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }
