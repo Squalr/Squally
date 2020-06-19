@@ -166,7 +166,7 @@ NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 	ASM(inc ZDI);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, ZDI);
+	ASM_MOV_VAR_REG(incrementAmount, edi);
 
 	ASM(pop ZDI);
 

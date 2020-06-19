@@ -204,7 +204,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(mov ZBX, 7);
@@ -213,7 +213,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ZAX);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);

@@ -117,7 +117,7 @@ NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(canSwim, ZAX);
+	ASM_MOV_VAR_REG(canSwim, eax);
 	ASM(POP ZAX);
 	HACKABLES_STOP_SEARCH();
 

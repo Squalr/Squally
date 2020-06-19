@@ -469,14 +469,14 @@ NO_OPTIMIZE int MayanDoor::runGemRed(int currentIndex)
 	volatile int newIndex = currentIndex;
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, newIndex);
+	ASM_MOV_REG_VAR(ebx, newIndex);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_RED);
 	ASM(mov ZBX, 4);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(newIndex, ZBX);
+	ASM_MOV_VAR_REG(newIndex, ebx);
 
 	ASM(pop ZBX);
 
@@ -491,14 +491,14 @@ NO_OPTIMIZE int MayanDoor::runGemBlue(int currentIndex)
 	volatile int newIndex = currentIndex;
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, newIndex);
+	ASM_MOV_REG_VAR(ebx, newIndex);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_BLUE);
 	ASM(add ZBX, 7);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(newIndex, ZBX);
+	ASM_MOV_VAR_REG(newIndex, ebx);
 
 	ASM(pop ZBX);
 
@@ -513,14 +513,14 @@ NO_OPTIMIZE int MayanDoor::runGemPurple(int currentIndex)
 	volatile int newIndex = currentIndex;
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, newIndex);
+	ASM_MOV_REG_VAR(ebx, newIndex);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_PURPLE);
 	ASM(sub ZBX, 5);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(newIndex, ZBX);
+	ASM_MOV_VAR_REG(newIndex, ebx);
 
 	ASM(pop ZBX);
 

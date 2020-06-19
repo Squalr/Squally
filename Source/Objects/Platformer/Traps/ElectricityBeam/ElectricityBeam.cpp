@@ -201,8 +201,8 @@ NO_OPTIMIZE void ElectricityBeam::updateElectricityBeam()
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(ZAX, countDownPtr);
-	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
+	ASM_MOV_REG_PTR(ZAX, countDownPtr);
+	ASM_MOV_REG_PTR(ZBX, deltaTimePtr);
 
 	ASM(fld dword ptr [ZAX]);
 

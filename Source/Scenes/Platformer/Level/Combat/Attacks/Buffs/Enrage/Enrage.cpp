@@ -177,8 +177,9 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
@@ -204,8 +205,9 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDelt()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
@@ -231,8 +233,9 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageTaken()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);

@@ -113,14 +113,14 @@ NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 	transform = puzzleIndex;
 
 	ASM(push ZCX)
-	ASM_MOV_REG_VAR(ZCX, transform);
+	ASM_MOV_REG_VAR(ecx, transform);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RUN_OPERATION);
 	ASM(imul ZCX, 1)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(transform, ZCX);
+	ASM_MOV_VAR_REG(transform, ecx);
 	ASM(pop ZCX);
 
 	this->setHackValue(transform);

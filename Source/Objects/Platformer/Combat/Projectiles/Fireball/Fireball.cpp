@@ -162,22 +162,18 @@ NO_OPTIMIZE void Fireball::setFireballSpeed()
 
 	// Initialize xmm0 and xmm1
 	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, speedMultiplierPtr);
+	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
 	ASM(movss xmm0, dword ptr [ZAX]);
-	ASM_MOV_REG_VAR(ZAX, speedMultiplierTempPtr);
+	ASM_MOV_REG_PTR(ZAX, speedMultiplierTempPtr);
 	ASM(movss xmm1, dword ptr [ZAX]);
-	ASM(pop ZAX);
+	ASM_MOV_REG_PTR(ZAX, freeMemoryForUser);
 
-	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, freeMemoryForUser);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FIREBALL_SPEED);
 	ASM(mulps xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-	ASM(pop ZAX);
 
-	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, speedMultiplierPtr);
+	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM(pop ZAX);
 

@@ -158,8 +158,8 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, elapsedPtr);
-	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
+	ASM_MOV_REG_VAR(eax, elapsedPtr);
+	ASM_MOV_REG_VAR(ebx, deltaTimePtr);
 
 	ASM(fld dword ptr [ZAX]);
 

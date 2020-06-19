@@ -124,7 +124,7 @@ NO_OPTIMIZE bool SquallyIsAliveHackBehavior::isSquallyAliveHack()
 
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(isAlive, ZAX);
+	ASM_MOV_VAR_REG(isAlive, eax);
 
 	HACKABLES_STOP_SEARCH();
 

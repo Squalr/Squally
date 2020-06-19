@@ -90,9 +90,15 @@
 	
 	#ifdef __x86_64__
 		#define ASM_MOV_REG_VAR(register, variable) \
-			__asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
+			__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
 
 		#define ASM_MOV_VAR_REG(variable, register) \
+			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
+
+		#define ASM_MOV_REG_PTR(register, variable) \
+			__asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
+
+		#define ASM_MOV_PTR_REG(variable, register) \
 			__asm__ __volatile__("movq %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
 	#else
 		#define ASM_MOV_REG_VAR(register, variable) \
@@ -100,6 +106,12 @@
 
 		#define ASM_MOV_VAR_REG(variable, register) \
 			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
+
+		#define ASM_MOV_REG_PTR(register, variable) \
+			ASM_MOV_REG_VAR(register, variable)
+
+		#define ASM_MOV_PTR_REG(variable, register) \
+			ASM_MOV_VAR_REG(register, variable)
 	#endif
 
 	#define ASM_GCC(asm_string) \

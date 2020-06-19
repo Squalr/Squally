@@ -164,35 +164,35 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->hackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->originalDamageOrHealing);
 
 	this->applyFortitude();
 
 	// Bound multiplier in either direction
-	this->hackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(this->hackStateStorage[Buff::StateKeyDamageTaken].asInt(), -std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier)));
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(this->HackStateStorage[Buff::StateKeyDamageTaken].asInt(), -std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier)));
 	
-	(*damageOrHealing->damageOrHealing) = this->hackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	(*damageOrHealing->damageOrHealing) = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
 	static volatile int currentDamageTakenLocal = 0;
 
-	currentDamageTakenLocal = this->hackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	currentDamageTakenLocal = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, currentDamageTakenLocal);
+	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(sub ZBX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, ZBX);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 
 	ASM(pop ZBX);
 
-	this->hackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

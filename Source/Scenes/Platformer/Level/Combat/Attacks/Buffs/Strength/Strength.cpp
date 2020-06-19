@@ -177,14 +177,14 @@ NO_OPTIMIZE void Strength::applyStrength()
 	currentDamageDealtLocal = this->currentDamageDealt;
 
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ZCX, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(ecx, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
 	ASM(add ZCX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ZCX);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, ecx);
 
 	ASM(pop ZCX);
 

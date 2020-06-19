@@ -194,8 +194,8 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 	ASM(dec ZSI);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(drainAmount, ZDI);
-	ASM_MOV_VAR_REG(gainAmount, ZSI);
+	ASM_MOV_VAR_REG(drainAmount, edi);
+	ASM_MOV_VAR_REG(gainAmount, esi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);

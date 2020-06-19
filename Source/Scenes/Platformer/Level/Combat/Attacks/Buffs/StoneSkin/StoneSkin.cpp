@@ -214,7 +214,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM(push ZCX);
 	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(ZAX, currentDamageTakenLocal);
+	ASM_MOV_REG_VAR(eax, currentDamageTakenLocal);
 	ASM(DIV_CONVERT);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STONE_SKIN);
@@ -223,7 +223,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, ZAX);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, eax);
 
 	ASM(pop ZDX);
 	ASM(pop ZCX);

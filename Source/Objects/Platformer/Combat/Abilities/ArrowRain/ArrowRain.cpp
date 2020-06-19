@@ -240,7 +240,7 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(ZAX, isOnPlayerTeamLocal);
+	ASM_MOV_REG_VAR(eax, isOnPlayerTeamLocal);
 
 	ASM(mov ZBX, 1);
 
@@ -252,7 +252,7 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 	// If the compare is true, set zax to 1, else 0
 	ASM(mov ZAX, 0);
 	ASM(cmove ZAX, ZBX);
-	ASM_MOV_VAR_REG(isOnPlayerTeamLocal, ZAX);
+	ASM_MOV_VAR_REG(isOnPlayerTeamLocal, eax);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);

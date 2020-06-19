@@ -223,14 +223,14 @@ NO_OPTIMIZE void FogOfWar::increaseDamage()
 
 	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(ZDX, damageDealtLocal);
+	ASM_MOV_REG_VAR(edx, damageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
 	ASM(shl ZDX, 1);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDealtLocal, ZDX);
+	ASM_MOV_VAR_REG(damageDealtLocal, edx);
 
 	ASM(pop ZDX);
 

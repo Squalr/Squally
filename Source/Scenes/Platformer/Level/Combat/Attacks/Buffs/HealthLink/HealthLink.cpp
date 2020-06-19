@@ -180,14 +180,14 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 	healthLinkDamageLocal = this->healthLinkDamage;
 
 	ASM(push ZDI);
-	ASM_MOV_REG_VAR(ZDI, healthLinkDamageLocal);
+	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
 	ASM(shr ZDI, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(healthLinkDamageLocal, ZDI);
+	ASM_MOV_VAR_REG(healthLinkDamageLocal, edi);
 
 	ASM(pop ZDI);
 

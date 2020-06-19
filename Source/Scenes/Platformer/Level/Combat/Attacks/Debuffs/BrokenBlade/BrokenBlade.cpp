@@ -193,7 +193,7 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(ZAX, currentDamageDealt);
+	ASM_MOV_REG_VAR(eax, currentDamageDealt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BROKEN_BLADE);
 	ASM(mov ZBX, 3);
@@ -202,7 +202,7 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealt, ZAX);
+	ASM_MOV_VAR_REG(currentDamageDealt, eax);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);

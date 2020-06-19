@@ -205,7 +205,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 	ASM(push ZDX);
 	ASM(push ZSI);
 
-	ASM_MOV_REG_VAR(ZCX, currentMana);
+	ASM_MOV_REG_VAR(ecx, currentMana);
 	ASM(mov ZSI, 0);
 	ASM(mov ZDX, -1);
 
@@ -215,7 +215,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(drainAmount, ZSI);
+	ASM_MOV_VAR_REG(drainAmount, esi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDX);

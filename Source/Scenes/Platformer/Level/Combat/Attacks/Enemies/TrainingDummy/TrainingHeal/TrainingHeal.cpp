@@ -173,7 +173,7 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	ASM(add ZDI, 256);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, ZDI);
+	ASM_MOV_VAR_REG(incrementAmount, edi);
 
 	ASM(pop ZDI);
 

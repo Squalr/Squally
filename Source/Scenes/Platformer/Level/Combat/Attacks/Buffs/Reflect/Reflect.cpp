@@ -173,27 +173,27 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->hackStateStorage[Reflect::StateKeyDamageReflected] = damageOrHealing->originalDamageOrHealing;
-	this->hackStateStorage[Reflect::StateKeyDamageDealt] = damageOrHealing->originalDamageOrHealing;
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageOrHealing->originalDamageOrHealing);
 
 	this->applyReflect();
 
 	// Bound multiplier in either direction
-	this->hackStateStorage[Reflect::StateKeyDamageReflected] = Value(MathUtils::clamp(
-		this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
-		-std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MinMultiplier),
-		std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MaxMultiplier)
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(MathUtils::clamp(
+		this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
+		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier),
+		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
 	));
-	this->hackStateStorage[Reflect::StateKeyDamageDealt] = Value(MathUtils::clamp(
-		this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
-		-std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MinMultiplier),
-		std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MaxMultiplier)
+	this->HackStateStorage[Reflect::StateKeyDamageDealt] = Value(MathUtils::clamp(
+		this->HackStateStorage[Reflect::StateKeyDamageDealt].asInt(),
+		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier),
+		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
 	));
-
-	(*damageOrHealing->damageOrHealing) = this->hackStateStorage[Reflect::StateKeyDamageDealt].asInt();
+	
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageOrHealing, Value(0)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageDealt, Value(0)).asInt();
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt(), damageOrHealing->abilityType, true));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(), damageOrHealing->abilityType, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()
@@ -201,13 +201,14 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	static volatile int damageDealtLocal = 0;
 	static volatile int damageReflectedLocal = 0;
 
-	damageDealtLocal = this->hackStateStorage[Reflect::StateKeyDamageDealt].asInt();
-	damageReflectedLocal = this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt();
-
+	damageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageDealt, Value(0)).asInt();
+	damageReflectedLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageDealt, Value(0)).asInt();
+	
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, damageDealtLocal);
-	ASM_MOV_REG_VAR(ZBX, damageReflectedLocal);
+
+	ASM_MOV_REG_VAR(esi, damageDealtLocal);
+	ASM_MOV_REG_VAR(ebx, damageReflectedLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
 	ASM(shr ZSI, 1);
@@ -215,14 +216,14 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDealtLocal, ZSI);
-	ASM_MOV_VAR_REG(damageReflectedLocal, ZBX);
+	ASM_MOV_VAR_REG(damageDealtLocal, esi);
+	ASM_MOV_VAR_REG(damageReflectedLocal, ebx);
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->hackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
-	this->hackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);
+	this->HackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

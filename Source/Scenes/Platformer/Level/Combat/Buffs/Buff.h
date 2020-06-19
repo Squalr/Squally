@@ -66,8 +66,10 @@ protected:
 	std::vector<HackableCode*> hackables;
 	AbilityType abilityType;
 
-	cocos2d::ValueMap hackStateStorage;
+	static cocos2d::ValueMap HackStateStorage;
 	
+	static const std::string StateKeyDamageOrHealing;
+	static const std::string StateKeyOriginalDamageOrHealing;
 	static const std::string StateKeyHealth;
 	static const std::string StateKeyDamageDealt;
 	static const std::string StateKeyDamageTaken;

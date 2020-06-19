@@ -146,11 +146,11 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 		return;
 	}
 	
-	this->hackStateStorage[Undying::StateKeyUndyingHealth] = Value(damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Undying::StateKeyUndyingHealth] = Value(damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - damageOrHealing->originalDamageOrHealing);
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->hackStateStorage[Undying::StateKeyUndyingHealth].asInt());
+	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->HackStateStorage[Undying::StateKeyUndyingHealth].asInt());
 }
 
 void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
@@ -162,18 +162,18 @@ void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* 
 		return;
 	}
 
-	this->hackStateStorage[Undying::StateKeyUndyingHealth] = Value(damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) + damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Undying::StateKeyUndyingHealth] = Value(damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) + damageOrHealing->originalDamageOrHealing);
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->hackStateStorage[Undying::StateKeyUndyingHealth].asInt());
+	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->HackStateStorage[Undying::StateKeyUndyingHealth].asInt());
 }
 
 NO_OPTIMIZE void Undying::applyUndying()
 {
 	static volatile int newHealthUndying = 0;
 
-	newHealthUndying = this->hackStateStorage[Undying::StateKeyUndyingHealth].asInt();
+	newHealthUndying = this->HackStateStorage[Undying::StateKeyUndyingHealth].asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZBX);
@@ -183,7 +183,7 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM(xor ZSI, ZSI);
 
 	ASM(mov ZBX, 1);
-	ASM_MOV_REG_VAR(ZSI, newHealthUndying);
+	ASM_MOV_REG_VAR(esi, newHealthUndying);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
 	ASM(cmp esi, ebx);
@@ -191,13 +191,13 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 		
-	ASM_MOV_VAR_REG(newHealthUndying, ZSI);
+	ASM_MOV_VAR_REG(newHealthUndying, esi);
 
 	ASM(pop ZSI);
 	ASM(pop ZBX);
 	ASM_POP_EFLAGS();
 
-	this->hackStateStorage[Undying::StateKeyUndyingHealth] = newHealthUndying;
+	this->HackStateStorage[Undying::StateKeyUndyingHealth] = newHealthUndying;
 
 	HACKABLES_STOP_SEARCH();
 }

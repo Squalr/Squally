@@ -221,11 +221,11 @@ NO_OPTIMIZE void TimeBomb::tickTimeBomb()
 	currentTick = this->bombTick;
 
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ZCX, currentTick);
+	ASM_MOV_REG_VAR(ecx, currentTick);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TIME_BOMB_TICK);
 	ASM(dec ZCX);
 	HACKABLE_CODE_END();
-	ASM_MOV_VAR_REG(currentTick, ZCX);
+	ASM_MOV_VAR_REG(currentTick, ecx);
 	ASM(pop ZCX);
 
 	this->bombTick = MathUtils::clamp(currentTick, 0, TimeBomb::TimerMax);

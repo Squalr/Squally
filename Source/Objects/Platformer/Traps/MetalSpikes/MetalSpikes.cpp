@@ -160,8 +160,9 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 	
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, elapsedPtr);
-	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
+
+	ASM_MOV_REG_PTR(ZAX, elapsedPtr);
+	ASM_MOV_REG_PTR(ZBX, deltaTimePtr);
 
 	ASM(movss xmm2, [ZAX])
 	ASM(movss xmm4, [ZBX])

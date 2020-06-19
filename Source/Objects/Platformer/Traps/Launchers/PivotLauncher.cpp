@@ -251,8 +251,9 @@ NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
 
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, timePtr);
-	ASM_MOV_REG_VAR(ZBX, dtPtr);
+
+	ASM_MOV_REG_PTR(ZAX, timePtr);
+	ASM_MOV_REG_PTR(ZBX, dtPtr);
 	ASM(movss xmm0, [ZAX])
 	ASM(movss xmm1, [ZBX])
 

@@ -162,12 +162,14 @@ NO_OPTIMIZE void Flurry::setRandomHits()
 
 	ASM(push ZSI);
 	ASM(push ZDI);
+	
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FLURRY);
 	ASM(mov ZSI, 2);
 	ASM(mov ZDI, 4);
 	HACKABLE_CODE_END();
-	ASM_MOV_VAR_REG(minHits, ZSI);
-	ASM_MOV_VAR_REG(maxHits, ZDI);
+
+	ASM_MOV_VAR_REG(minHits, esi);
+	ASM_MOV_VAR_REG(maxHits, edi);
 	ASM(pop ZDI);
 	ASM(pop ZSI);
 
