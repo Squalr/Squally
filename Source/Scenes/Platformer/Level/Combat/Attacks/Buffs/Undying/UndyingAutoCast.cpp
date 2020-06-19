@@ -2,6 +2,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Undying/Undying.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -23,7 +24,7 @@ UndyingAutoCast* UndyingAutoCast::create(PlatformerEntity* caster, PlatformerEnt
 }
 
 UndyingAutoCast::UndyingAutoCast(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, "", AbilityType::Shadow, BuffData(-1.0f, UndyingAutoCast::UndyingAutoCastIdentifier))
+	: super(caster, target, "", AbilityType::Shadow, BuffData(-1.0f, UndyingAutoCast::UndyingAutoCastIdentifier, 0.0f))
 {
 	this->hasAutoCasted = false;
 }
@@ -54,6 +55,11 @@ void UndyingAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealin
 			entityBuffBehavior->getBuff<Undying>([&](Undying* undying)
 			{
 				undying->onBeforeDamageTaken(damageOrHealing);
+
+				damageOrHealing->target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+				{
+					manaBehavior->setMana(0);
+				});
 			});
 		});
 	}
@@ -81,6 +87,11 @@ void UndyingAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHeali
 			entityBuffBehavior->getBuff<Undying>([&](Undying* undying)
 			{
 				undying->onBeforeHealingTaken(damageOrHealing);
+
+				damageOrHealing->target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+				{
+					manaBehavior->setMana(0);
+				});
 			});
 		});
 	}

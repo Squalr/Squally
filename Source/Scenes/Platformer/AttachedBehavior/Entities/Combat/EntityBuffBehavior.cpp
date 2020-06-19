@@ -58,6 +58,21 @@ void EntityBuffBehavior::onDisable()
 	super::onDisable();
 }
 
+void EntityBuffBehavior::sortBuffs()
+{
+	std::sort(this->buffs.begin(), this->buffs.end(), 
+		[](Buff* a, Buff* b)
+	{ 
+		return a->getBuffData().priority > b->getBuffData().priority; 
+	});
+}
+
+std::vector<Buff*> EntityBuffBehavior::getBuffs()
+{
+	// Clone is ideal, callers will often call functions that will result in this list changing
+	return std::vector<Buff*>(this->buffs);
+}
+
 void EntityBuffBehavior::applyBuff(Buff* buff)
 {
 	if (this->entity == nullptr || buff == nullptr)
@@ -79,6 +94,7 @@ void EntityBuffBehavior::applyBuff(Buff* buff)
 	this->buffs.push_back(buff);
 	this->buffNode->addChild(buff);
 
+	this->sortBuffs();
 	this->repositionBuffIcons();
 
 	CombatEvents::TriggerBuffApplied(CombatEvents::BuffAppliedArgs(this->entity, buff));
@@ -97,6 +113,7 @@ void EntityBuffBehavior::removeBuff(Buff* buff)
 		this->buffNode->removeChild(buff);
 	}
 
+	this->sortBuffs();
 	this->repositionBuffIcons();
 }
 

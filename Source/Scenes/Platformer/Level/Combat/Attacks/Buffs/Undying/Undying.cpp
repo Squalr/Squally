@@ -52,7 +52,7 @@ Undying* Undying::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Undying::Undying(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Skull, AbilityType::Shadow, BuffData(Undying::Duration, Undying::UndyingIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Skull, AbilityType::Shadow, BuffData(Undying::Duration, Undying::UndyingIdentifier, 0.0f))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);

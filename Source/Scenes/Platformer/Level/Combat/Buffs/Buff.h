@@ -18,14 +18,14 @@ public:
 	struct BuffData
 	{
 		float duration;
-		
-		// If set to non-empty string, the buff will be unique against this key.
-		std::string uniqueId;
+		std::string uniqueId; // If set to non-empty string, the buff will be unique against this key.
+		float priority;
 
-		BuffData() : duration(-1.0f), uniqueId("") { }
-		BuffData(float duration) : duration(duration), uniqueId("") { }
-		BuffData(std::string uniqueId) : duration(-1.0f), uniqueId(uniqueId) { }
-		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
+		BuffData() : duration(-1.0f), uniqueId(""), priority(0.5f) { }
+		BuffData(float duration) : duration(duration), uniqueId(""), priority(0.5f) { }
+		BuffData(std::string uniqueId) : duration(-1.0f), uniqueId(uniqueId), priority(0.5f) { }
+		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId), priority(0.5f) { }
+		BuffData(float duration, std::string uniqueId, float priority) : duration(duration), uniqueId(uniqueId), priority(priority) { }
 	};
 
 	void setBuffIndex(int index, int maxIndex);
@@ -37,7 +37,6 @@ public:
 	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 
 protected:
-
 	Buff(PlatformerEntity* caster, PlatformerEntity* owner, std::string buffIconResource, AbilityType abilityType, BuffData buffData);
 	virtual ~Buff();
 
@@ -64,6 +63,7 @@ protected:
 
 private:
 	typedef SmartNode super;
+	friend class TimelineEntry;
 
 	std::function<void()> removeBuffCallback;
 	cocos2d::Node* iconContainer;
