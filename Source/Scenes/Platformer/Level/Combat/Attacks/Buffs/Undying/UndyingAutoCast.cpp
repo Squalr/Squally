@@ -43,7 +43,7 @@ void UndyingAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealin
 	}
 
 	int originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	int projectedNewHealth = originalHealth - damageOrHealing->originalDamageOrHealing;
+	int projectedNewHealth = originalHealth - damageOrHealing->damageOrHealingValue;
 
 	if (projectedNewHealth <= 0)
 	{
@@ -75,7 +75,7 @@ void UndyingAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHeali
 	}
 
 	int originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
-	int projectedNewHealth = originalHealth + damageOrHealing->originalDamageOrHealing;
+	int projectedNewHealth = originalHealth + damageOrHealing->damageOrHealingValue;
 
 	if (projectedNewHealth <= 0)
 	{

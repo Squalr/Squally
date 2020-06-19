@@ -270,6 +270,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 			{
 				if (args.caster == next->owner)
 				{
+					args.damageOrHealingValue = damage;
 					next->onBeforeDamageDealt(&args);
 				}
 			}
@@ -280,6 +281,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 			{
 				if (args.caster == next->owner)
 				{
+					args.damageOrHealingValue = damage;
 					next->onAfterDamageDealt(&postArgs);
 				}
 			}
@@ -302,6 +304,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 			{
 				if (args.target == next->owner)
 				{
+					args.damageOrHealingValue = damage;
 					next->onBeforeDamageTaken(&args);
 				}
 			}
@@ -312,6 +315,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 			{
 				if (args.target == next->owner)
 				{
+					args.damageOrHealingValue = damage;
 					next->onAfterDamageTaken(&postArgs);
 				}
 			}

@@ -70,7 +70,7 @@ protected:
 
 	static cocos2d::ValueMap HackStateStorage;
 	
-	static const std::string StateKeyDamageOrHealing;
+	static const std::string StateKeyDamageOrHealingPtr;
 	static const std::string StateKeyOriginalDamageOrHealing;
 	static const std::string StateKeyHealth;
 	static const std::string StateKeyDamageDealt;

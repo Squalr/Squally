@@ -235,8 +235,6 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int damageOrHealing;
-		int originalDamageOrHealing;
-		int originalDamageOrHealingBeforeBuffs;
 		AbilityType abilityType;
 
 		// If true, this flag will prevent buffs from modifying the damage/healing
@@ -279,7 +277,7 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
-		int originalDamageOrHealing;
+		int damageOrHealingValue;
 		int originalDamageOrHealingBeforeBuffs;
 		int originalDamageOrHealingBeforeBuffsAndStats;
 		AbilityType abilityType;
@@ -288,7 +286,7 @@ public:
 			PlatformerEntity* caster,
 			PlatformerEntity* target,
 			int* damageOrHealing,
-			int originalDamageOrHealing,
+			int damageOrHealingValue,
 			int originalDamageOrHealingBeforeBuffs,
 			int originalDamageOrHealingBeforeBuffsAndStats,
 			AbilityType abilityType
@@ -296,7 +294,7 @@ public:
 			:	caster(caster),
 				target(target),
 				damageOrHealing(damageOrHealing),
-				originalDamageOrHealing(originalDamageOrHealing),
+				damageOrHealingValue(damageOrHealingValue),
 				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
 				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
 				abilityType(abilityType),

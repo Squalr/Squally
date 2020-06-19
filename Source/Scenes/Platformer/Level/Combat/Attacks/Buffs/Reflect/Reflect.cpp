@@ -173,8 +173,8 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageOrHealing->originalDamageOrHealing);
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageOrHealing->damageOrHealingValue);
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyReflect();
 
@@ -190,7 +190,7 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
 	));
 	
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealing, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(), damageOrHealing->abilityType, true));

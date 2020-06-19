@@ -161,11 +161,11 @@ void Strength::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
+	this->currentDamageDealt = damageOrHealing->damageOrHealingValue;
 
 	this->applyStrength();
 
-	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->originalDamageOrHealing * Strength::MinMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Strength::MaxMultiplier));
+	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier), std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier));
 	
 	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }

@@ -96,17 +96,17 @@ void EntityCombatBehaviorBase::onDisable()
 
 void EntityCombatBehaviorBase::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	if (damageOrHealing->originalDamageOrHealing <= 0)
+	if (damageOrHealing->damageOrHealingValue <= 0)
 	{
 		return;
 	}
 
-	*(damageOrHealing->damageOrHealing) = std::max(0, damageOrHealing->originalDamageOrHealing - this->bonusArmor);
+	*(damageOrHealing->damageOrHealing) = std::max(0, damageOrHealing->damageOrHealingValue - this->bonusArmor);
 }
 
 void EntityCombatBehaviorBase::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	if (damageOrHealing->originalDamageOrHealing <= 0)
+	if (damageOrHealing->damageOrHealingValue <= 0)
 	{
 		return;
 	}

@@ -155,12 +155,16 @@ void Inversion::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing->originalDamageOrHealing;
+	this->currentDamageTaken = damageOrHealing->damageOrHealingValue;
 
 	this->applyInversion();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing->originalDamageOrHealing * Inversion::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Inversion::MaxMultiplier));
+	this->currentDamageTaken = MathUtils::clamp(
+		this->currentDamageTaken,
+		-std::abs(damageOrHealing->damageOrHealingValue * Inversion::MaxMultiplier),
+		std::abs(damageOrHealing->damageOrHealingValue * Inversion::MaxMultiplier)
+	);
 
 	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
 }

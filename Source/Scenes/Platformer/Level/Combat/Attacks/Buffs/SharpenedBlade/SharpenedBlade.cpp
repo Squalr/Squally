@@ -39,10 +39,7 @@ const std::string SharpenedBlade::SharpenedBladeIdentifier = "sharpened-blade";
 const std::string SharpenedBlade::HackIdentifierSharpenedBlade = "sharpened-blade";
 
 const int SharpenedBlade::MaxMultiplier = 4;
-const float SharpenedBlade::Duration = 12.0f;
-
-// Static to prevent GCC optimization issues
-volatile int SharpenedBlade::currentDamageDealt = 0;
+const float SharpenedBlade::Duration = 20.0f;
 
 SharpenedBlade* SharpenedBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -58,7 +55,6 @@ SharpenedBlade::SharpenedBlade(PlatformerEntity* caster, PlatformerEntity* targe
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageDealt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -184,21 +180,25 @@ void SharpenedBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealing
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applySharpenedBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * SharpenedBlade::MaxMultiplier));
-	
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
+		this->HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
+		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * SharpenedBlade::MaxMultiplier),
+		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * SharpenedBlade::MaxMultiplier)
+	));
+
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
 
-	currentDamageDealtLocal = this->currentDamageDealt;
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
@@ -219,7 +219,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->currentDamageDealt = currentDamageDealtLocal;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

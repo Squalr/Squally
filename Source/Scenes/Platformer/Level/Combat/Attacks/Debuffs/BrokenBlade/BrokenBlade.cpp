@@ -168,7 +168,7 @@ void BrokenBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyBrokenBlade();
 
@@ -179,7 +179,7 @@ void BrokenBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier)
 	));
 
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealing, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()

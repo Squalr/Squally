@@ -178,12 +178,12 @@ void FogOfWar::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 		return;
 	}
 
-	this->damageDealt = damageOrHealing->originalDamageOrHealing;
+	this->damageDealt = damageOrHealing->damageOrHealingValue;
 
 	this->increaseDamage();
 
 	// Bound by 0.5x and 2x
-	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, damageOrHealing->originalDamageOrHealing / 2, damageOrHealing->originalDamageOrHealing * 2);
+	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, damageOrHealing->damageOrHealingValue / 2, damageOrHealing->damageOrHealingValue * 2);
 }
 
 void FogOfWar::updateAnimation(float dt)

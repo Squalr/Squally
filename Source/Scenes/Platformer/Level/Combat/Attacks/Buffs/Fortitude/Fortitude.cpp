@@ -164,12 +164,16 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->originalDamageOrHealing);
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyFortitude();
 
 	// Bound multiplier in either direction
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(this->HackStateStorage[Buff::StateKeyDamageTaken].asInt(), -std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier)));
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(
+		this->HackStateStorage[Buff::StateKeyDamageTaken].asInt(),
+		-std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier),
+		std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier))
+	);
 	
 	(*damageOrHealing->damageOrHealing) = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 }

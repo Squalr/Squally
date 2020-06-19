@@ -141,7 +141,7 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->healthLinkDamage = damageOrHealing->originalDamageOrHealing;
+	this->healthLinkDamage = damageOrHealing->damageOrHealingValue;
 
 	this->applyHealthLink();
 
