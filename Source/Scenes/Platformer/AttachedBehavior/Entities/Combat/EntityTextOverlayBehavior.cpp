@@ -89,7 +89,7 @@ void EntityTextOverlayBehavior::onLoad()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageDelt, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 
@@ -100,7 +100,7 @@ void EntityTextOverlayBehavior::onLoad()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealingDelt, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealingDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 

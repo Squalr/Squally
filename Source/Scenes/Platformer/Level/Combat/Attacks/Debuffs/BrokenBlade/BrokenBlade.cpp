@@ -39,11 +39,7 @@ const std::string BrokenBlade::BrokenBladeIdentifier = "broken-blade";
 const std::string BrokenBlade::HackIdentifierBrokenBlade = "broken-blade";
 
 const int BrokenBlade::MaxMultiplier = 4;
-const int BrokenBlade::DamageReduction = 3; // Keep in sync with asm
 const float BrokenBlade::Duration = 12.0f;
-
-// Static to prevent GCC optimization issues
-volatile int BrokenBlade::currentDamageDealt = 0;
 
 BrokenBlade* BrokenBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -58,7 +54,6 @@ BrokenBlade::BrokenBlade(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_SwordBrokenAlt, AbilityType::Physical, BuffData(BrokenBlade::Duration, BrokenBlade::BrokenBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->currentDamageDealt = 0;
 
 	this->addChild(this->spellEffect);
 }
@@ -169,31 +164,35 @@ void BrokenBlade::registerHackables()
 	}
 }
 
-void BrokenBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void BrokenBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing);
+	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->originalDamageOrHealing);
 
 	this->applyBrokenBlade();
 
 	// Bound multiplier in either direction
-	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * BrokenBlade::MaxMultiplier));
-	
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
+		this->HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
+		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier),
+		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier)
+	));
+
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealing, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
 
-	currentDamageDealtLocal = this->currentDamageDealt;
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(eax, currentDamageDealt);
+	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BROKEN_BLADE);
 	ASM(mov ZBX, 3);
@@ -202,13 +201,13 @@ NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealt, eax);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->currentDamageDealt = currentDamageDealtLocal;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -68,17 +68,17 @@ void EntityCombatBehaviorBase::onLoad()
 	this->bonusMagicAttack += bonusStats.magicAttack;
 	this->bonusSpeed += bonusStats.speed;
 	
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityStatsModifyDamageDelt, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventStatsModifyDamageDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->caster == this->entity && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(args);
+			this->onBeforeDamageDealt(args);
 		}
 	}));
 	
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityStatsModifyDamageTaken, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventStatsModifyDamageTaken, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
@@ -104,7 +104,7 @@ void EntityCombatBehaviorBase::onBeforeDamageTaken(CombatEvents::ModifiableDamag
 	*(damageOrHealing->damageOrHealing) = std::max(0, damageOrHealing->originalDamageOrHealing - this->bonusArmor);
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void EntityCombatBehaviorBase::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	if (damageOrHealing->originalDamageOrHealing <= 0)
 	{

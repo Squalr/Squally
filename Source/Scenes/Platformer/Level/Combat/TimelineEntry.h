@@ -57,9 +57,9 @@ private:
 
 	struct DamageArgs
 	{
-		int damageDelta;
+		int damageDealta;
 
-		DamageArgs(int damageDelta) : damageDelta(damageDelta) { }
+		DamageArgs(int damageDealta) : damageDealta(damageDealta) { }
 	};
 
 	void performCast();

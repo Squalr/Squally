@@ -180,9 +180,9 @@ void SharpenedBlade::registerHackables()
 	}
 }
 
-void SharpenedBlade::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void SharpenedBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing);
+	super::onBeforeDamageDealt(damageOrHealing);
 
 	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
 

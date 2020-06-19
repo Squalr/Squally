@@ -249,28 +249,53 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		int originalDamageBeforeBuffs = originalDamageBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerEntityStatsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
-		CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
 
 		originalDamageBeforeBuffs = damage;
 
 		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType);
 
-		// Modify outgoing damage
+		/******************
+		Modify outgoing damage
+		*******************/
+
+		// Fire event to let any arena objects process damage (ie FogOfWar)
+		CombatEvents::TriggerModifyDamageDealt(args);
+
+		// Iterate buffs sequentially, as they are ordered by priority
 		caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
-				if (args.caster == next->caster)
+				if (args.caster == next->owner)
 				{
-					next->onBeforeDamageDelt(&args);
+					next->onBeforeDamageDealt(&args);
+				}
+			}
+
+			CombatEvents::DamageOrHealingArgs postArgs = CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType);
+
+			for (auto next : entityBuffBehavior->getBuffs())
+			{
+				if (args.caster == next->owner)
+				{
+					next->onAfterDamageDealt(&postArgs);
 				}
 			}
 		});
 
-		CombatEvents::TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
-			
-		// Modify incoming damage
+		// Fire finish event for arena objects
+		CombatEvents::TriggerModifyDamageDealtComplete(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
+		
+		/******************
+		Modify incoming damage
+		*******************/
+
+		// Fire event to let any arena objects process damage
+		CombatEvents::TriggerModifyDamageTaken(args);
+
+		// Iterate buffs sequentially, as they are ordered by priority
 		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
@@ -280,9 +305,20 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 					next->onBeforeDamageTaken(&args);
 				}
 			}
-		});
 
-		CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
+			CombatEvents::DamageOrHealingArgs postArgs = CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType);
+
+			for (auto next : entityBuffBehavior->getBuffs())
+			{
+				if (args.target == next->owner)
+				{
+					next->onAfterDamageTaken(&postArgs);
+				}
+			}
+		});
+		
+		// Fire finish event for arena objects
+		CombatEvents::TriggerModifyDamageTakenComplete(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
 	}
 
 	if (abilityType != AbilityType::Passive)
@@ -297,7 +333,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		healthBehavior->setHealth(health - damage);
 	});
 
-	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
+	CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
 }
 
 void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType)
@@ -315,27 +351,51 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		int originalHealingBeforeBuffs = originalHealingBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerEntityStatsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
-		CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
 		
 		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType);
 
-		// Modify outgoing healing
+		/******************
+		Modify outgoing healing
+		*******************/
+
+		// Fire event to let any arena objects process damage
+		CombatEvents::TriggerModifyHealingDealt(args);
+
+		// Iterate buffs sequentially, as they are ordered by priority
 		caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
-				if (args.caster == next->caster)
+				if (args.caster == next->owner)
 				{
-					next->onBeforeHealingDelt(&args);
+					next->onBeforeHealingDealt(&args);
+				}
+			}
+
+			CombatEvents::DamageOrHealingArgs postArgs = CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType);
+
+			for (auto next : entityBuffBehavior->getBuffs())
+			{
+				if (args.caster == next->owner)
+				{
+					next->onAfterHealingDealt(&postArgs);
 				}
 			}
 		});
 
-		// Not implemented, event not needed (yet?)
-		// CombatEvents::TriggerEntityHealingDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
+		// Fire finish event for arena objects
+		CombatEvents::TriggerModifyHealingDealtComplete(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
+		
+		/******************
+		Modify incoming healing
+		*******************/
 
-		// Modify incoming healing
+		// Fire event to let any arena objects process healing
+		CombatEvents::TriggerModifyHealingTaken(args);
+
+		// Iterate buffs sequentially, as they are ordered by priority
 		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
@@ -345,10 +405,20 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 					next->onBeforeHealingTaken(&args);
 				}
 			}
+
+			CombatEvents::DamageOrHealingArgs postArgs = CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType);
+
+			for (auto next : entityBuffBehavior->getBuffs())
+			{
+				if (args.target == next->owner)
+				{
+					next->onAfterHealingTaken(&postArgs);
+				}
+			}
 		});
 
-		// Not implemented, event not needed (yet?)
-		// CombatEvents::TriggerEntityHealingTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
+		// Fire finish event for arena objects
+		CombatEvents::TriggerModifyHealingTakenComplete(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
 	}
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
@@ -358,7 +428,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		healthBehavior->setHealth(health + healing);
 	});
 
-	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
+	CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
 }
 
 void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)
@@ -452,7 +522,7 @@ void TimelineEntry::addTimeWithoutActions(float dt)
 {
 	float speed = this->combatBehavior == nullptr ? 1.0f : this->combatBehavior->getTimelineSpeed();
 	
-	CombatEvents::TriggerEntityBuffsModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs(this->getEntity(), &speed));
+	CombatEvents::TriggerModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs(this->getEntity(), &speed));
 
 	this->setProgress(this->progress + (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier));
 }

@@ -29,13 +29,13 @@ protected:
 	void registerHackables() override;
 	void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed) override;
 	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
-	void onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
 
 	void applyEnrageSpeed();
-	void applyEnrageIncreaseDamageDelt();
+	void applyEnrageIncreaseDamageDealt();
 	void applyEnrageIncreaseDamageTaken();
 	
 	static volatile float currentSpeed;

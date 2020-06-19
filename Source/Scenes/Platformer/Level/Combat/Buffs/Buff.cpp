@@ -93,73 +93,13 @@ void Buff::initializeListeners()
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyTimelineSpeed, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyTimelineSpeed, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
 			this->onModifyTimelineSpeed(args);
-		}
-	}));
-
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->caster == this->owner && !args->isHandled())
-		{
-			this->onBeforeDamageDelt(args);
-		}
-	}));
-
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityModifyDamageDeltComplete, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->caster == this->caster)
-		{
-			this->onAfterDamageDelt(args);
-		}
-	}));
-
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageTaken, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->target == this->owner && !args->isHandled())
-		{
-			this->onBeforeDamageTaken(args);
-		}
-	}));
-
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityModifyDamageTakenComplete, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->target == this->owner)
-		{
-			this->onAfterDamageTaken(args);
-		}
-	}));
-
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingDelt, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->caster == this->caster && !args->isHandled())
-		{
-			this->onBeforeHealingDelt(args);
-		}
-	}));
-
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingTaken, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->target == this->owner && !args->isHandled())
-		{
-			this->onBeforeHealingTaken(args);
 		}
 	}));
 
@@ -218,7 +158,7 @@ void Buff::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* dama
 	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
 }
 
-void Buff::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Buff::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	this->HackStateStorage[Buff::StateKeyDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
@@ -230,7 +170,7 @@ void Buff::onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing
 	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
 }
 
-void Buff::onAfterDamageDelt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
+void Buff::onAfterDamageDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
 	this->HackStateStorage[Buff::StateKeyDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
@@ -242,7 +182,19 @@ void Buff::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* dam
 	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
 }
 
-void Buff::onBeforeHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Buff::onBeforeHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+{
+	this->HackStateStorage[Buff::StateKeyDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
+}
+
+void Buff::onAfterHealingTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing)
+{
+	this->HackStateStorage[Buff::StateKeyDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);
+}
+
+void Buff::onAfterHealingDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
 	this->HackStateStorage[Buff::StateKeyDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->originalDamageOrHealing);

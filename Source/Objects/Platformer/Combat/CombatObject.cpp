@@ -64,7 +64,7 @@ void CombatObject::onEnter()
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyTimelineSpeed, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyTimelineSpeed, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
 
@@ -74,27 +74,27 @@ void CombatObject::onEnter()
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(args);
+			this->onBeforeDamageDealt(args);
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityModifyDamageDeltComplete, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageDealtComplete, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
-			this->onAfterDamageDelt(args);
+			this->onAfterDamageDealt(args);
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageTaken, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageTaken, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
@@ -104,7 +104,7 @@ void CombatObject::onEnter()
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityModifyDamageTakenComplete, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageTakenComplete, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 
@@ -114,17 +114,17 @@ void CombatObject::onEnter()
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingDelt, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyHealingDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled())
 		{
-			this->onBeforeHealingDelt(args);
+			this->onBeforeHealingDealt(args);
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingTaken, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyHealingTaken, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
@@ -167,7 +167,7 @@ void CombatObject::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingAr
 {
 }
 
-void CombatObject::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void CombatObject::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 }
 
@@ -175,7 +175,7 @@ void CombatObject::onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageO
 {
 }
 
-void CombatObject::onAfterDamageDelt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
+void CombatObject::onAfterDamageDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
 }
 
@@ -183,7 +183,7 @@ void CombatObject::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingA
 {
 }
 
-void CombatObject::onBeforeHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void CombatObject::onBeforeHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 }
 

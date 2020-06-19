@@ -54,25 +54,27 @@ public:
 	static const std::string EventReturnToMap;
 	static const std::string EventReturnToMapRespawn;
 	static const std::string EventHackableCombatCue;
-	static const std::string EventDamageDelt;
-	static const std::string EventHealingDelt;
+	static const std::string EventDamageDealt;
+	static const std::string EventHealingDealt;
 	static const std::string EventDamage;
 	static const std::string EventHealing;
 	static const std::string EventManaRestore;
 	static const std::string EventManaRestoreDelt;
 	static const std::string EventManaDrain;
 	static const std::string EventManaDrainDelt;
-	static const std::string EventEntityBuffsModifyTimelineSpeed;
-	static const std::string EventEntityBuffsModifyDamageTaken;
-	static const std::string EventEntityBuffsModifyDamageDelt;
-	static const std::string EventEntityBuffsModifyHealingTaken;
-	static const std::string EventEntityBuffsModifyHealingDelt;
-	static const std::string EventEntityStatsModifyDamageTaken;
-	static const std::string EventEntityStatsModifyDamageDelt;
-	static const std::string EventEntityStatsModifyHealingTaken;
-	static const std::string EventEntityStatsModifyHealingDelt;
-	static const std::string EventEntityModifyDamageDeltComplete;
-	static const std::string EventEntityModifyDamageTakenComplete;
+	static const std::string EventModifyTimelineSpeed;
+	static const std::string EventModifyDamageTaken;
+	static const std::string EventModifyDamageDealt;
+	static const std::string EventModifyHealingTaken;
+	static const std::string EventModifyHealingDealt;
+	static const std::string EventStatsModifyDamageTaken;
+	static const std::string EventStatsModifyDamageDealt;
+	static const std::string EventStatsModifyHealingTaken;
+	static const std::string EventStatsModifyHealingDealt;
+	static const std::string EventModifyDamageDealtComplete;
+	static const std::string EventModifyDamageTakenComplete;
+	static const std::string EventModifyHealingDealtComplete;
+	static const std::string EventModifyHealingTakenComplete;
 
 	struct SpawnArgs
 	{
@@ -417,8 +419,8 @@ public:
 	static void TriggerReturnToMapRespawn();
 	static void TriggerHackableCombatCue();
 	// Functionally, damage/healing are the same, but treat 0 differently. Damage will dislay -0, gain will display +0
-	static void TriggerDamageDelt(CombatEvents::DamageOrHealingArgs args);
-	static void TriggerHealingDelt(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerDamageDealt(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerHealingDealt(CombatEvents::DamageOrHealingArgs args);
 	static void TriggerDamage(CombatEvents::DamageOrHealingArgs args);
 	static void TriggerHealing(CombatEvents::DamageOrHealingArgs args);
 	// Functionally, restore/drain are the same, but treat 0 differently. Drain will dislay -0, restore will display +0
@@ -426,15 +428,17 @@ public:
 	static void TriggerManaRestore(ManaRestoreOrDrainArgs args);
 	static void TriggerManaDrainDelt(ManaRestoreOrDrainArgs args);
 	static void TriggerManaDrain(ManaRestoreOrDrainArgs args);
-	static void TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
-	static void TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityBuffsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityBuffsModifyHealingDelt(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityStatsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityStatsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealingArgs args);
-	static void TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs args);
-	static void TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
+	static void TriggerModifyDamageTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerModifyDamageDealt(ModifiableDamageOrHealingArgs args);
+	static void TriggerModifyHealingTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerModifyHealingDealt(ModifiableDamageOrHealingArgs args);
+	static void TriggerStatsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerStatsModifyDamageDealt(ModifiableDamageOrHealingArgs args);
+	static void TriggerStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerStatsModifyHealingDealt(ModifiableDamageOrHealingArgs args);
+	static void TriggerModifyDamageDealtComplete(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerModifyDamageTakenComplete(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerModifyHealingDealtComplete(CombatEvents::DamageOrHealingArgs args);
+	static void TriggerModifyHealingTakenComplete(CombatEvents::DamageOrHealingArgs args);
 };

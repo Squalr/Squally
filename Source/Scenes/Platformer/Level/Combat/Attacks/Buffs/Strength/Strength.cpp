@@ -157,9 +157,9 @@ void Strength::registerHackables()
 	}
 }
 
-void Strength::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Strength::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing);
+	super::onBeforeDamageDealt(damageOrHealing);
 
 	this->currentDamageDealt = damageOrHealing->originalDamageOrHealing;
 

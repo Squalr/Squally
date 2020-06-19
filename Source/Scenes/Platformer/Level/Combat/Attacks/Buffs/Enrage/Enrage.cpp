@@ -163,9 +163,9 @@ void Enrage::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* da
 	super::onBeforeDamageTaken(damageOrHealing);
 }
 
-void Enrage::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Enrage::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing);
+	super::onBeforeDamageDealt(damageOrHealing);
 }
 
 NO_OPTIMIZE void Enrage::applyEnrageSpeed()
@@ -196,7 +196,7 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 }
 END_NO_OPTIMIZE
 
-NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDelt()
+NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDealt()
 {
 	volatile float speedBonus = 0.0f;
 	volatile float increment = Enrage::DefaultSpeed;

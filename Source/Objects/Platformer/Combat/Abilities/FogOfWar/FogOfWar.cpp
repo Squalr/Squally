@@ -156,9 +156,9 @@ HackablePreview* FogOfWar::createDefaultPreview()
 	return FogOfWarGenericPreview::create();
 }
 
-void FogOfWar::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void FogOfWar::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing);
+	super::onBeforeDamageDealt(damageOrHealing);
 
 	bool isOnCasterTeam = false;
 	
