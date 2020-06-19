@@ -201,16 +201,10 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
-	static volatile int damageDealtLocal = 0;
-	static volatile int damageReflectedLocal = 0;
-
-	damageDealtLocal = this->damageDealt;
-	damageReflectedLocal = this->damageDealt;
-
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, damageDealtLocal);
-	ASM_MOV_REG_VAR(ZBX, damageReflectedLocal);
+	ASM_MOV_REG_VAR(ZSI, damageDealt);
+	ASM_MOV_REG_VAR(ZBX, damageReflected);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
 	ASM(shr ZSI, 1);
@@ -218,14 +212,11 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDealtLocal, ZSI);
-	ASM_MOV_VAR_REG(damageReflectedLocal, ZBX);
+	ASM_MOV_VAR_REG(damageDealt, ZSI);
+	ASM_MOV_VAR_REG(damageReflected, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
-
-	this->damageDealt = damageDealtLocal;
-	this->damageReflected = damageReflectedLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

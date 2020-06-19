@@ -172,24 +172,17 @@ void Strength::onBeforeDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs* d
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
-	static volatile int damageDelt;
-
-	damageDelt = this->currentDamageDealt;
-
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ZCX, damageDelt);
+	ASM_MOV_REG_VAR(ZCX, currentDamageDealt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
 	ASM(add ZCX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDelt, ZCX);
+	ASM_MOV_VAR_REG(currentDamageDealt, ZCX);
 
 	ASM(pop ZCX);
-
-	// Bound multiplier in either direction
-	this->currentDamageDealt = damageDelt;
 
 	HACKABLES_STOP_SEARCH();
 }

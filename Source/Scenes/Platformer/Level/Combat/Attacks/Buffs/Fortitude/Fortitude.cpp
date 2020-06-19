@@ -180,23 +180,17 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
-	static volatile int damageTaken;
-
-	damageTaken = this->currentDamageTaken;
-
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, damageTaken);
+	ASM_MOV_REG_VAR(ZBX, currentDamageTaken);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(sub ZBX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZBX);
+	ASM_MOV_VAR_REG(currentDamageTaken, ZBX);
 
 	ASM(pop ZBX);
-
-	this->currentDamageTaken = damageTaken;
 
 	HACKABLES_STOP_SEARCH();
 }
