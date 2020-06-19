@@ -40,8 +40,7 @@ private:
 	cocos2d::Sprite* bubble;
 	cocos2d::Sprite* spellAura;
 	
-	static volatile int newHealthUndying;
-	
+	static const std::string StateKeyUndyingHealth;
 	static const int MinUndying;
 	static const int MaxMultiplier;
 	static const float Duration;

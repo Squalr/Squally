@@ -1,11 +1,16 @@
 #pragma once
 
+#include <map>
+
 #include "Engine/SmartNode.h"
 #include "Events/CombatEvents.h"
 
 namespace cocos2d
 {
 	class Sprite;
+	class Value;
+
+	typedef std::map<std::string, Value> ValueMap;
 }
 
 class Clippy;
@@ -60,6 +65,13 @@ protected:
 	PlatformerEntity* owner;
 	std::vector<HackableCode*> hackables;
 	AbilityType abilityType;
+
+	cocos2d::ValueMap hackStateStorage;
+	
+	static const std::string StateKeyHealth;
+	static const std::string StateKeyDamageDealt;
+	static const std::string StateKeyDamageTaken;
+	static const std::string StateKeySpeed;
 
 private:
 	typedef SmartNode super;

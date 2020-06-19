@@ -34,13 +34,12 @@ private:
 
 	void applyReflect();
 	
-	static volatile int damageReflected;
-	static volatile int damageDealt;
-	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;
 	cocos2d::Sprite* spellAura;
 	
+	static const std::string StateKeyDamageReflected;
+
 	static const int MinMultiplier;
 	static const int MaxMultiplier;
 	static const float Duration;

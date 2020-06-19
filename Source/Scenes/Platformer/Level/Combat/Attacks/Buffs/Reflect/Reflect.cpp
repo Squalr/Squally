@@ -40,10 +40,8 @@ const std::string Reflect::ReflectIdentifier = "reflect";
 const int Reflect::MinMultiplier = 2;
 const int Reflect::MaxMultiplier = 2;
 const float Reflect::Duration = 10.0f;
-
-// Static to prevent GCC optimization issues
-volatile int Reflect::damageReflected = 0;
-volatile int Reflect::damageDealt = 0;
+	
+const std::string Reflect::StateKeyDamageReflected = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_REFLECTED";
 
 Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -60,8 +58,6 @@ Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->damageReflected = 0;
-	this->damageDealt = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::BLUE);
@@ -173,40 +169,40 @@ void Reflect::registerHackables()
 	}
 }
 
-NO_OPTIMIZE void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->damageDealt = damageOrHealing->originalDamageOrHealing;
+	this->hackStateStorage[Reflect::StateKeyDamageReflected] = damageOrHealing->originalDamageOrHealing;
+	this->hackStateStorage[Reflect::StateKeyDamageDealt] = damageOrHealing->originalDamageOrHealing;
 
 	this->applyReflect();
 
 	// Bound multiplier in either direction
-	this->damageReflected = MathUtils::clamp(
-		this->damageReflected,
+	this->hackStateStorage[Reflect::StateKeyDamageReflected] = Value(MathUtils::clamp(
+		this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
 		-std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MinMultiplier),
 		std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MaxMultiplier)
-	);
-	this->damageDealt = MathUtils::clamp(
-		this->damageDealt,
+	));
+	this->hackStateStorage[Reflect::StateKeyDamageDealt] = Value(MathUtils::clamp(
+		this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
 		-std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MinMultiplier),
 		std::abs(damageOrHealing->originalDamageOrHealing * Reflect::MaxMultiplier)
-	);
+	));
 
-	(*damageOrHealing->damageOrHealing) = this->damageDealt;
+	(*damageOrHealing->damageOrHealing) = this->hackStateStorage[Reflect::StateKeyDamageDealt].asInt();
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, this->damageReflected, damageOrHealing->abilityType, true));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt(), damageOrHealing->abilityType, true));
 }
-END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
 	static volatile int damageDealtLocal = 0;
 	static volatile int damageReflectedLocal = 0;
 
-	damageDealtLocal = this->damageDealt;
-	damageReflectedLocal = this->damageReflected;
+	damageDealtLocal = this->hackStateStorage[Reflect::StateKeyDamageDealt].asInt();
+	damageReflectedLocal = this->hackStateStorage[Reflect::StateKeyDamageReflected].asInt();
 
 	ASM(push ZSI);
 	ASM(push ZBX);
@@ -225,8 +221,8 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->damageDealt = damageDealtLocal;
-	this->damageReflected = damageReflectedLocal;
+	this->hackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
+	this->hackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

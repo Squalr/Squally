@@ -38,9 +38,7 @@ using namespace cocos2d;
 
 const std::string Undying::UndyingIdentifier = "undying";
 const float Undying::Duration = 120.0f;
-
-// Static to prevent GCC optimization issues
-volatile int Undying::newHealthUndying = 0;
+const std::string Undying::StateKeyUndyingHealth = "ANTI_OPTIMIZE_STATE_KEY_UNDYING_HEALTH";
 
 Undying* Undying::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -57,7 +55,6 @@ Undying::Undying(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->newHealthUndying = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -140,7 +137,7 @@ void Undying::registerHackables()
 	}
 }
 
-NO_OPTIMIZE void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
@@ -149,15 +146,14 @@ NO_OPTIMIZE void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHe
 		return;
 	}
 	
-	this->newHealthUndying = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - damageOrHealing->originalDamageOrHealing;
+	this->hackStateStorage[Undying::StateKeyUndyingHealth] = Value(damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - damageOrHealing->originalDamageOrHealing);
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->newHealthUndying);
+	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->hackStateStorage[Undying::StateKeyUndyingHealth].asInt());
 }
-END_NO_OPTIMIZE
 
-NO_OPTIMIZE void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeHealingTaken(damageOrHealing);
 
@@ -166,20 +162,18 @@ NO_OPTIMIZE void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrH
 		return;
 	}
 
-	this->newHealthUndying = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) + damageOrHealing->originalDamageOrHealing;
+	this->hackStateStorage[Undying::StateKeyUndyingHealth] = Value(damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) + damageOrHealing->originalDamageOrHealing);
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) = (this->newHealthUndying - damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
+	(*damageOrHealing->damageOrHealing) = (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->hackStateStorage[Undying::StateKeyUndyingHealth].asInt());
 }
-END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Undying::applyUndying()
 {
-	// Non-determinism gods prefer using static variable here
-	// static volatile int newHealthUndyingLocal = 0;
+	static volatile int newHealthUndying = 0;
 
-	// newHealthUndyingLocal = this->newHealthUndying;
+	newHealthUndying = this->hackStateStorage[Undying::StateKeyUndyingHealth].asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZBX);
@@ -203,7 +197,7 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM(pop ZBX);
 	ASM_POP_EFLAGS();
 
-	// this->newHealthUndying = newHealthUndyingLocal;
+	this->hackStateStorage[Undying::StateKeyUndyingHealth] = newHealthUndying;
 
 	HACKABLES_STOP_SEARCH();
 }

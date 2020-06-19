@@ -5,6 +5,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Engine/Events/SceneEvents.h"
@@ -13,6 +14,11 @@
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
+
+const std::string Buff::StateKeyHealth = "ANTI_OPTIMIZE_STATE_KEY_HEALTH";
+const std::string Buff::StateKeyDamageDealt = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_DEALT";
+const std::string Buff::StateKeyDamageTaken = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
+const std::string Buff::StateKeySpeed = "ANTI_OPTIMIZE_STATE_KEY_SPEED";
 
 Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, AbilityType abilityType, BuffData buffData)
 {
@@ -27,6 +33,7 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffI
 	this->elapsedTime = 0.0f;
 	this->wasRemoved = false;
 	this->isBuffIconPresent = !buffIconResource.empty();
+	this->hackStateStorage = ValueMap();
 
 	this->iconContainer->setVisible(this->isBuffIconPresent);
 

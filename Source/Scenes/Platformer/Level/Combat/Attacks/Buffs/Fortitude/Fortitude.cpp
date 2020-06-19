@@ -42,9 +42,6 @@ const int Fortitude::MaxMultiplier = 4;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
 const float Fortitude::Duration = 16.0f;
 
-// Static to prevent GCC optimization issues
-volatile int Fortitude::currentDamageTaken = 0;
-
 Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Fortitude* instance = new Fortitude(caster, target);
@@ -60,7 +57,6 @@ Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageTaken = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -168,21 +164,21 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = damageOrHealing->originalDamageOrHealing;
+	this->hackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->originalDamageOrHealing);
 
 	this->applyFortitude();
 
 	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(this->currentDamageTaken, -std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier));
+	this->hackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(this->hackStateStorage[Buff::StateKeyDamageTaken].asInt(), -std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier), std::abs(damageOrHealing->originalDamageOrHealing * Fortitude::MaxMultiplier)));
 	
-	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealing) = this->hackStateStorage[Buff::StateKeyDamageTaken].asInt();
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
 	static volatile int currentDamageTakenLocal = 0;
 
-	currentDamageTakenLocal = this->currentDamageTaken;
+	currentDamageTakenLocal = this->hackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ZBX, currentDamageTakenLocal);
@@ -196,7 +192,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 
 	ASM(pop ZBX);
 
-	this->currentDamageTaken = currentDamageTakenLocal;
+	this->hackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
