@@ -259,7 +259,10 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 			// Modify outgoing damage
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
-				next->onBeforeDamageDelt(&args);
+				if (args.caster == next->caster)
+				{
+					next->onBeforeDamageDelt(&args);
+				}
 			}
 			
 			CombatEvents::TriggerEntityDamageDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
@@ -267,7 +270,10 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 			// Modify incoming damage
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
-				next->onBeforeDamageTaken(&args);
+				if (args.target == next->owner)
+				{
+					next->onBeforeDamageTaken(&args);
+				}
 			}
 
 			CombatEvents::TriggerEntityDamageTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage, abilityType));
@@ -312,7 +318,10 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 			// Modify outgoing healing
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
-				next->onBeforeHealingDelt(&args);
+				if (args.caster == next->caster)
+				{
+					next->onBeforeHealingDelt(&args);
+				}
 			}
 			
 			// CombatEvents::TriggerEntityHealingDeltModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing, abilityType));
@@ -320,7 +329,10 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 			// Modify incoming healing
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
-				next->onBeforeHealingTaken(&args);
+				if (args.target == next->owner)
+				{
+					next->onBeforeHealingTaken(&args);
+				}
 			}
 
 			// CombatEvents::TriggerEntityHealingTakenModifyComplete(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing, abilityType));

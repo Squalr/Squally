@@ -67,6 +67,12 @@
 	#define ASM_MOV_VAR_REG(variable, register) \
 		ASM(mov variable, register)
 
+	#define ASM_MOV_REG_PTR(register, variable) \
+		ASM(mov register, variable)
+
+	#define ASM_MOV_PTR_REG(variable, register) \
+		ASM(mov variable, register)
+
 #elif __GNUC__ || __clang__
 	#ifdef __clang__
 		#define NO_OPTIMIZE \
