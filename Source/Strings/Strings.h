@@ -20544,21 +20544,6 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_HowAboutARoundOfHexus() = default;
 	};
 
-	class Platformer_Dialogue_Hexus_IAcceptYourChallenge : public LocalizedString
-	{
-	public:
-		static Platformer_Dialogue_Hexus_IAcceptYourChallenge* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Dialogue_Hexus_IAcceptYourChallenge();
-		virtual ~Platformer_Dialogue_Hexus_IAcceptYourChallenge() = default;
-	};
-
 	class Platformer_Dialogue_Hexus_PuzzleForYou : public LocalizedString
 	{
 	public:
@@ -20572,6 +20557,21 @@ namespace Strings
 	private:
 		Platformer_Dialogue_Hexus_PuzzleForYou();
 		virtual ~Platformer_Dialogue_Hexus_PuzzleForYou() = default;
+	};
+
+	class Platformer_Dialogue_Hexus_WeAcceptYourChallenge : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Hexus_WeAcceptYourChallenge* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Hexus_WeAcceptYourChallenge();
+		virtual ~Platformer_Dialogue_Hexus_WeAcceptYourChallenge() = default;
 	};
 
 	class Platformer_Dialogue_Hexus_WellPlayed : public LocalizedString
@@ -25899,21 +25899,6 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip() = default;
-	};
-
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou : public LocalizedString
 	{
 	public:
@@ -26017,6 +26002,21 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart();
 		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart() = default;
+	};
+
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip() = default;
 	};
 
 	class Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus : public LocalizedString

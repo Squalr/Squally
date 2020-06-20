@@ -27,7 +27,7 @@ SarudeTutorialBehavior* SarudeTutorialBehavior::create(GameObject* owner)
 	return instance;
 }
 
-SarudeTutorialBehavior::SarudeTutorialBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1, false, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+SarudeTutorialBehavior::SarudeTutorialBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1, false, Strings::Platformer_Dialogue_Hexus_WeAcceptYourChallenge::create())
 {
 }
 

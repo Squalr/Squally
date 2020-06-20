@@ -25,7 +25,7 @@ URPuzzleABehavior* URPuzzleABehavior::create(GameObject* owner)
 	return instance;
 }
 
-URPuzzleABehavior::URPuzzleABehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+URPuzzleABehavior::URPuzzleABehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_WeAcceptYourChallenge::create())
 {
 }
 
