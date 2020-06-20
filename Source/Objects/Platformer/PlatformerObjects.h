@@ -82,6 +82,7 @@
 #include "Objects/Platformer/Shops/ShopPool.h"
 #include "Objects/Platformer/Spawns/CombatSpawn.h"
 #include "Objects/Platformer/Switches/Lever/Lever.h"
+#include "Objects/Platformer/Switches/ObjectiveTrigger.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"
 #include "Objects/Platformer/Switches/Trigger.h"
 #include "Objects/Platformer/Transportation/Airship1.h"

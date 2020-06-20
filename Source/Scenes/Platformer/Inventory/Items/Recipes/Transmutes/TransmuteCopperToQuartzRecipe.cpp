@@ -39,6 +39,7 @@ std::vector<std::tuple<Item*, int>> TransmuteCopperToQuartzRecipe::getReagentsIn
 	return
 	{
 		{ Copper::create(), 4 },
+		{ Coal::create(), 1 },
 	};
 }
 

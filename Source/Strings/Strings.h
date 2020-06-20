@@ -5199,6 +5199,21 @@ namespace Strings
 		virtual ~Items_Crafting_Reagents_Snowball() = default;
 	};
 
+	class Items_Crafting_Recipes_TransmuteCopperToIron : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Recipes_TransmuteCopperToIron* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Recipes_TransmuteCopperToIron();
+		virtual ~Items_Crafting_Recipes_TransmuteCopperToIron() = default;
+	};
+
 	class Items_Crafting_Recipes_TransmuteCopperToQuartz : public LocalizedString
 	{
 	public:
@@ -5212,6 +5227,21 @@ namespace Strings
 	private:
 		Items_Crafting_Recipes_TransmuteCopperToQuartz();
 		virtual ~Items_Crafting_Recipes_TransmuteCopperToQuartz() = default;
+	};
+
+	class Items_Crafting_Recipes_TransmuteQuartzToEmerald : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Recipes_TransmuteQuartzToEmerald* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Recipes_TransmuteQuartzToEmerald();
+		virtual ~Items_Crafting_Recipes_TransmuteQuartzToEmerald() = default;
 	};
 
 	class Items_Crafting_Recipes_TransmuteWoodToCoal : public LocalizedString

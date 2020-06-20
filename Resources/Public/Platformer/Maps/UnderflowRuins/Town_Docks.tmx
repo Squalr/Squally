@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="95" nextobjectid="773">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="95" nextobjectid="775">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -273,6 +273,16 @@
    </properties>
   </object>
   <object id="772" name="solid" type="collision" x="783.349" y="-3.07497" width="126.878" height="1672.7"/>
+  <object id="773" name="objective-trigger" type="object" x="2556.56" y="-118.59" width="98.878" height="2609.18">
+   <properties>
+    <property name="send-event" value="UR_HEAD_TO_TOWN"/>
+   </properties>
+  </object>
+  <object id="774" name="objective-trigger" type="object" x="1994.56" y="-88.59" width="98.878" height="2609.18">
+   <properties>
+    <property name="send-event" value="UR_HEAD_TO_TOWN"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

@@ -1,16 +1,10 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
-
-namespace cocos2d
-{
-	class Sprite;
-}
+#include "Engine/Maps/GameObject.h"
 
 class CollisionObject;
-class HackableData;
 
-class Trigger : public HackableObject
+class Trigger : public GameObject
 {
 public:
 	static Trigger* create(cocos2d::ValueMap& properties);
@@ -22,19 +16,17 @@ protected:
 	virtual ~Trigger();
 
 	void onEnter() override;
-	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float) override;
-	cocos2d::Vec2 getButtonOffset() override;
-	void registerHackables() override;
+	virtual void onCollide();
 
-private:
-	typedef HackableObject super;
-
-	CollisionObject* triggerCollision;
 	bool wasActivated;
 	bool multiTrip;
 	bool saveState;
+
+private:
+	typedef GameObject super;
+
+	CollisionObject* triggerCollision;
 
 	static const std::string PropertySaveState;
 	static const std::string PropertyMultiTrip;

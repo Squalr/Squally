@@ -1,23 +1,11 @@
 #include "Trigger.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/ObjectEvents.h"
-#include "Engine/Localization/LocalizedString.h"
-#include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
-
-#include "Resources/ObjectResources.h"
-#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -57,13 +45,6 @@ void Trigger::onEnter()
 	{
 		this->wasActivated = this->loadObjectStateOrDefault(Trigger::PropertySaveState, Value(false)).asBool();
 	}
-
-	this->scheduleUpdate();
-}
-
-void Trigger::initializePositions()
-{
-	super::initializePositions(); 
 }
 
 void Trigger::initializeListeners()
@@ -88,17 +69,6 @@ void Trigger::initializeListeners()
 	});
 }
 
-void Trigger::update(float dt)
+void Trigger::onCollide()
 {
-	super::update(dt);
-}
-
-Vec2 Trigger::getButtonOffset()
-{
-	return Vec2(0.0f, 0.0f);
-}
-
-void Trigger::registerHackables()
-{
-	super::registerHackables();
 }

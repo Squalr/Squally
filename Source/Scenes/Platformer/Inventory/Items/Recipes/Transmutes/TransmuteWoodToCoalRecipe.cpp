@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> TransmuteWoodToCoalRecipe::getReagentsIntern
 {
 	return
 	{
-		{ Wood::create(), 2 },
+		{ Wood::create(), 1 },
 	};
 }
 

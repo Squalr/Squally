@@ -31,6 +31,8 @@ AlchemyPoolUR::AlchemyPoolUR(ValueMap& properties) : super(properties, AlchemyPo
 	// Transmutes
 	this->addItemToPool(ItemChance::create(TransmuteWoodToCoalRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(TransmuteCopperToQuartzRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(TransmuteCopperToIron::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(TransmuteQuartzToEmerald::create(), ItemChance::Probability::Guaranteed));
 }
 
 AlchemyPoolUR::~AlchemyPoolUR()
