@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="572">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="575">
+ <properties>
+  <property name="show-cracks" type="bool" value="true"/>
+ </properties>
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -8,6 +11,7 @@
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -150,6 +154,21 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
+  <object id="572" name="cinematic-marker" type="object" x="1288" y="1208.25" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="573" name="cinematic-marker" type="object" x="1292.55" y="893.638" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="574" name="cinematic-marker" type="object" x="1283.21" y="1678.97" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -160,31 +179,31 @@
     <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
-  <object id="562" name="camera-target" type="object" x="920.606" y="1278" width="128" height="128">
+  <object id="562" name="camera-target" type="object" x="1022.61" y="1294" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-1"/>
     <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
-  <object id="563" name="camera-target" type="object" x="1770" y="1272" width="128" height="128">
+  <object id="563" name="camera-target" type="object" x="1582" y="1310" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-1"/>
     <property name="zoom" type="float" value="1.05"/>
    </properties>
   </object>
-  <object id="564" name="camera-target" type="object" x="810" y="1398" width="128" height="128">
+  <object id="564" name="camera-target" type="object" x="912" y="1414" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-0"/>
     <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
-  <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
+  <object id="565" name="camera-target" type="object" x="1404" y="1380" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
-  <object id="566" name="camera-target" type="object" x="1730" y="1442" width="128" height="128">
+  <object id="566" name="camera-target" type="object" x="1542" y="1480" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-2"/>
     <property name="zoom" type="float" value="1.15"/>

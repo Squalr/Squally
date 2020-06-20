@@ -27,9 +27,13 @@ public:
 	static float getDepth(cocos2d::Node* node);
 	static float getRotation(cocos2d::Node* node);
 	static float getScale(cocos2d::Node* node);
+	static cocos2d::Vec2 getMapCoords(cocos2d::Node* node, bool checkForUIBound = true);
+	static cocos2d::Vec3 getMapCoords3D(cocos2d::Node* node, bool checkForUIBound = true);
 	static cocos2d::Vec2 getWorldCoords(cocos2d::Node* node, bool checkForUIBound = true);
 	static cocos2d::Vec3 getWorldCoords3D(cocos2d::Node* node, bool checkForUIBound = true);
+	static void setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords);
 	static void setWorldCoords3D(cocos2d::Node* node, cocos2d::Vec3 worldCoords);
+	static cocos2d::Vec2 getScreenCoords(cocos2d::Vec3 point);
 	static cocos2d::Rect getScreenBounds(cocos2d::Node* node);
 	static bool isVisible(cocos2d::Node* node);
 	static bool isEclipsed(cocos2d::Node* node, cocos2d::Vec2 mousePos);

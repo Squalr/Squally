@@ -102,10 +102,12 @@ void SpikedLog::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()) + 
-						"inc ecx\n",
-						// x64
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()) + 
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+						"inc ecx\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
 						"inc rcx\n"
 					)
 				},
@@ -178,14 +180,14 @@ NO_OPTIMIZE int SpikedLog::incrementSpikedLogAnimation(int count, int max)
 	countLocal = count;
 
 	ASM(push ZCX)
-	ASM_MOV_REG_VAR(ZCX, countLocal);
+	ASM_MOV_REG_VAR(ecx, countLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
 	ASM(inc ZCX)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(countLocal, ZCX);
+	ASM_MOV_VAR_REG(countLocal, ecx);
 	ASM(pop ZCX);
 
 	HACKABLES_STOP_SEARCH();

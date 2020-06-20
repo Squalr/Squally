@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -103,6 +104,16 @@ void Timeline::initializeListeners()
 		this->entriesNode->removeAllChildren();
 		this->timelineEntries.clear();
 		this->timelineEventGroups.clear();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventQueryTimeline, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::QueryTimelineArgs* args = static_cast<CombatEvents::QueryTimelineArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			args->callback(this);
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
@@ -207,6 +218,7 @@ void Timeline::update(float dt)
 	{
 		this->checkCombatComplete();
 		this->updateTimeline(dt);
+		this->updateTimelineTargetMarkers();
 	}
 }
 
@@ -229,11 +241,11 @@ void Timeline::checkCombatComplete()
 
 		if (dynamic_cast<PlatformerEnemy*>(entity) != nullptr)
 		{
-			anyEnemyAlive |= entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+			anyEnemyAlive |= entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
 		}
 		else if (dynamic_cast<PlatformerFriendly*>(entity) != nullptr)
 		{
-			anyPlayerAlive |= entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+			anyPlayerAlive |= entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
 		}
 	}
 
@@ -255,43 +267,79 @@ void Timeline::checkCombatComplete()
 
 void Timeline::updateTimeline(float dt)
 {
-	if (!(this->isTimelinePaused || this->isTimelineCinematicPaused) && !isCombatComplete)
+	if ((this->isTimelinePaused || this->isTimelineCinematicPaused) || this->isCombatComplete)
 	{
-		this->isTimelineInterrupted = false;
+		return;
+	}
 
-		CombatEvents::TriggerBuffTimeElapsed(CombatEvents::BuffTimeElapsedArgs(dt));
+	this->isTimelineInterrupted = false;
 
-		// Update all timeline entries
-		for (auto entry : this->timelineEntries)
+	CombatEvents::TriggerBuffTimeElapsed(CombatEvents::BuffTimeElapsedArgs(dt));
+
+	// Update all timeline entries
+	for (auto entry : this->timelineEntries)
+	{
+		if (!entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			continue;
+		}
+		
+		float currentTime = entry->getProgress();
+
+		if (!this->isTimelineInterrupted)
+		{
+			entry->addTimeWithoutActions(dt);
+			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
+
+			entry->tryPerformActions();
+		}
+		else
+		{
+			// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
+			entry->addTimeWithoutActions(dt);
+		}
+
+		for (auto eventGroup : this->timelineEventGroups)
+		{
+			if (eventGroup->getOwner() == entry->getEntity())
 			{
-				float currentTime = entry->getProgress();
-
-				if (!this->isTimelineInterrupted)
+				if (eventGroup->processEvents(currentTime, entry->getProgress()))
 				{
-					entry->addTimeWithoutActions(dt);
-					entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
-
-					entry->tryPerformActions();
-				}
-				else
-				{
-					// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
-					entry->addTimeWithoutActions(dt);
-				}
-
-				for (auto eventGroup : this->timelineEventGroups)
-				{
-					if (eventGroup->getOwner() == entry->getEntity())
-					{
-						if (eventGroup->processEvents(currentTime, entry->getProgress()))
-						{
-							this->unregisterTimelineEventGroup(eventGroup);
-						}
-					}
+					this->unregisterTimelineEventGroup(eventGroup);
 				}
 			}
+		}
+	}
+}
+
+void Timeline::updateTimelineTargetMarkers()
+{
+	for (auto next : this->timelineEntries)
+	{
+		next->clearBuffTargets();
+	}
+
+	for (auto next : this->timelineEntries)
+	{
+		if (!next->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			continue;
+		}
+
+		PlatformerAttack* attack = next->getStagedCast();
+		
+		if (attack == nullptr)
+		{
+			continue;
+		}
+
+		std::vector<PlatformerEntity*> targets = next->getStagedTargets();
+
+		for (auto target : targets)
+		{
+			TimelineEntry* entry = this->getAssociatedEntry(target);
+
+			entry->addBuffTarget(attack->getIconResource());
 		}
 	}
 }
@@ -300,7 +348,7 @@ void Timeline::refreshTimelinePositions()
 {
 	for (auto entry : this->timelineEntries)
 	{
-		if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
 		}
@@ -360,6 +408,32 @@ std::vector<PlatformerEntity*> Timeline::getEnemyEntities()
 	}
 
 	return entities;
+}
+
+std::vector<PlatformerEntity*> Timeline::getSameTeamEntities(PlatformerEntity* entity)
+{
+	for (auto next : this->timelineEntries)
+	{
+		if (next->getEntity() == entity)
+		{
+			return next->isPlayerEntry() ? this->getFriendlyEntities() : this->getEnemyEntities();
+		}
+	}
+	
+	return std::vector<PlatformerEntity*>();
+}
+
+TimelineEntry* Timeline::getAssociatedEntry(PlatformerEntity* entity)
+{
+	for (auto next : this->timelineEntries)
+	{
+		if (next->getEntity() == entity)
+		{
+			return next;
+		}
+	}
+
+	return nullptr;
 }
 
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vector<PlatformerEntity*>& friendlyEntities)

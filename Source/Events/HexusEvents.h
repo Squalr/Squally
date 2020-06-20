@@ -10,6 +10,7 @@ namespace cocos2d
 }
 
 class Card;
+class CardData;
 class GameState;
 class HexusOpponentData;
 class PlatformerEntity;
@@ -19,6 +20,7 @@ class HexusEvents
 public:
 	static const std::string EventOpenHexus;
 	static const std::string EventExitHexus;
+	static const std::string EventShowHelpMenuOutsideOfGame;
 	static const std::string EventCardPreviewed;
 	static const std::string EventCardMousedOut;
 	static const std::string EventBeforeRequestStateUpdate;
@@ -47,8 +49,19 @@ public:
 		}
 	};
 
+	struct HelpMenuArgs
+	{
+		CardData* cardData;
+		std::function<void()> onExit;
+
+		HelpMenuArgs(CardData* cardData, std::function<void()> onExit) : cardData(cardData), onExit(onExit)
+		{
+		}
+	};
+
 	static void TriggerOpenHexus(HexusOpenArgs args);
 	static void TriggerExitHexus(HexusExitArgs args);
+	static void TriggerShowHelpMenuOutsideOfGame(HelpMenuArgs args);
 	static void TriggerCardPreviewed(CardPreviewArgs args);
 	static void TriggerCardMousedOut();
 	static void TriggerBeforeRequestStateUpdate(GameState* gameState);

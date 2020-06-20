@@ -20,14 +20,14 @@ public:
 	void setOverrideLanguage(cocos2d::LanguageType overrideLanguage);
 
 protected:
+	LocalizedSprite(std::string resourceEn);
+	virtual ~LocalizedSprite();
+
 	void onEnter() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
-
-	LocalizedSprite(std::string resourceEn);
-	~LocalizedSprite();
 
 	void updateSprite();
 

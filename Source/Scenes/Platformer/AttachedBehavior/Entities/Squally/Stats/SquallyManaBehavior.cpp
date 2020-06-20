@@ -70,5 +70,5 @@ void SquallyManaBehavior::onDisable()
 
 void SquallyManaBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getRuntimeStateOrDefault(StateKeys::Mana, Value(0)));
 }

@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -32,7 +32,8 @@ DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, 
 	return instance;
 }
 
-DragonBreath::DragonBreath(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 7, 9, 12, attackDuration, recoverDuration)
+DragonBreath::DragonBreath(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_FireSphere, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration)
 {
 }
 
@@ -70,17 +71,17 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 			
-			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}
 
-			fireball->disable(false);
+			fireball->disable(true);
 			fireball->runImpactFX();
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			fireball->despawn(1.0f);
@@ -121,7 +122,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			fireball->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+			fireball->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 		});
 	}
 }

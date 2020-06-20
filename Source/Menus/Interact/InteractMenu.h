@@ -18,13 +18,13 @@ class LocalizedString;
 class InteractMenu : public SmartNode
 {
 public:
-	static InteractMenu* create(LocalizedString* displayString);
+	static InteractMenu* create(LocalizedString* displayString, cocos2d::Color3B backColor = cocos2d::Color3B::BLACK, float menuWidth = 128.0f);
 
 	void show();
 	void hide();
 
 protected:
-	InteractMenu(LocalizedString* displayString);
+	InteractMenu(LocalizedString* displayString, cocos2d::Color3B backColor, float menuWidth);
 	virtual ~InteractMenu();
 
 private:
@@ -34,8 +34,14 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	void tryRelocate();
+	bool isHidden();
+	bool isShowing();
+
+	cocos2d::Size menuSize;
 	bool hasRelocated;
-	bool isShown;
+	bool isFadingIn;
+	bool isFadingOut;
 
 	cocos2d::Node* uiElements;
 	cocos2d::LayerColor* backdrop;

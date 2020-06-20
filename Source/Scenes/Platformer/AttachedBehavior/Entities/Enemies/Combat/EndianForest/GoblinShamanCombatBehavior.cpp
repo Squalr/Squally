@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/GoblinShaman/CastShadowBolt.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CastCurseOfTongues.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
@@ -47,6 +47,8 @@ void GoblinShamanCombatBehavior::initializePositions()
 
 void GoblinShamanCombatBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(CastCurseOfTongues::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));

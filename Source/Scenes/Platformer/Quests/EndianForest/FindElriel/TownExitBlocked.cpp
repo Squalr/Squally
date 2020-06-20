@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -46,7 +47,7 @@ TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : supe
 {
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;
-	this->chiron = static_cast<Chiron*>(owner);
+	this->chiron = dynamic_cast<Chiron*>(owner);
 	this->bard = nullptr;
 	this->squally = nullptr;
 }
@@ -166,8 +167,9 @@ void TownExitBlocked::attachBardBehavior()
 					),
 					[=]()
 					{
+						Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterMedium2
+					Voices::GetNextVoiceLong()
 				));
 			}),
 			1.0f

@@ -57,7 +57,7 @@ void EnemyHealthBehavior::onLoad()
 			this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));
 		});
 
-		if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
+		if (this->entity->loadObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
 		{
 			this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{

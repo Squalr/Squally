@@ -65,7 +65,7 @@ std::string GroggOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 std::string GroggOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
+	return SoundResources::Platformer_Physical_Punches_PunchWoosh1;
 }
 
 float GroggOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
@@ -90,7 +90,8 @@ Projectile* GroggOutOfCombatAttackBehavior::createProjectile()
 	fireBreath->setPosition3D(Vec3((this->kingGrogg->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
 	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 	fireBreath->setFlippedX(this->kingGrogg->isFlippedX());
-
+	
+	projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
 	projectile->setProjectileRotation(this->kingGrogg->isFlippedX() ? 180.0f : 0.0f);
 
 	return projectile;

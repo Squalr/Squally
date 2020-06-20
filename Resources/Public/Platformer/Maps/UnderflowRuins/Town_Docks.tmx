@@ -1,68 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="757">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="95" nextobjectid="773">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="WaterfallSky"/>
+   <property name="background" value="DesertSky"/>
    <property name="gravity" value="-768"/>
+   <property name="crack-color" value=""/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="90" name="desert bg 4">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-5371.82" y="-368.888" width="13333.3" height="1140">
+  <object id="761" name="Ruins/Background/DesertLayer4" type="decor" x="-4389.32" y="-290.181" width="14981.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="89" name="desert bg 3">
   <properties>
-   <property name="depth" type="float" value="-512"/>
+   <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="760" name="Ruins/Background/DesertLayer3" type="decor" x="-4106.65" y="-1043.85" width="14229.3" height="1478">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="72" name="water back">
+ <objectgroup id="88" name="desert bg 2">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="759" name="Ruins/Background/DesertLayer2" type="decor" x="-4092.47" y="-25.788" width="14469.3" height="1512">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="86" name="desert bg 1">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="758" name="Ruins/Background/DesertLayer1" type="decor" x="-4204.71" y="446.091" width="14709.3" height="1076">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="85" name="desert bg 0">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="757" name="Ruins/Background/DesertLayer0" type="decor" x="-4136.44" y="1101" width="14517.6" height="1088">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="1.75"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="water -6">
   <properties>
    <property name="depth" type="float" value="-412"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="723" name="water" type="object" x="291.935" y="1604" width="4864.07" height="405.346">
-   <properties>
-    <property name="disable-physics" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="724" name="water" type="object" x="-510.907" y="1494.51" width="5722.02" height="405.346">
+  <object id="724" name="water" type="object" x="-422.907" y="1613.84" width="5618.02" height="540.013">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -81,7 +96,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="722" name="water" type="object" x="-358.232" y="1577.33" width="5482.35" height="458.11">
+  <object id="722" name="water" type="object" x="-382.232" y="1636.33" width="5533.35" height="580.171">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -98,12 +113,47 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="91" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="762" name="edge-portal" type="object" x="4407.98" y="-11.6374" width="199.918" height="2583.88">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Fishing_Village"/>
+    <property name="transition" value="docks-back"/>
+   </properties>
+  </object>
+  <object id="763" name="solid" type="collision" x="-397.44" y="2054.62" width="5466.88" height="474.756"/>
+  <object id="764" name="solid" type="collision" x="4420.74" y="-572.287" width="642.88" height="3330.76"/>
+  <object id="766" name="edge-portal" type="object" x="2.30076" y="952.845" width="199.918" height="1511.15">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="PerilousSea/Zone_UR_1_0"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="767" name="solid" type="collision" x="-523.605" y="-793.38" width="642.88" height="3330.76"/>
+ </objectgroup>
+ <objectgroup id="92" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="765" name="spawn" type="object" x="3960.24" y="1696.61" width="128" height="128">
+   <properties>
+    <property name="transition" value="docks-back"/>
+    <property name="zoom" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="70" name="water -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="721" name="water" type="object" x="-315.366" y="1604" width="5396.67" height="405.346">
+  <object id="721" name="water" type="object" x="-362.866" y="1653" width="5483.17" height="602.316">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -117,6 +167,17 @@
   <object id="755" name="ship-alt" type="terrain" x="2147.42" y="1580.5" width="414.5" height="363">
    <properties>
     <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="94" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="771" name="water" type="object" x="-345.703" y="1673.93" width="5430.42" height="602.316">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -136,7 +197,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="water" type="object" x="-264.642" y="1650.93" width="5305.42" height="405.346">
+  <object id="741" name="water" type="object" x="-320.703" y="1701.93" width="5355.42" height="602.316">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -180,12 +241,92 @@
   </properties>
   <object id="746" name="ship-alt" type="terrain" x="888" y="1671" width="3717.5" height="536"/>
  </objectgroup>
+ <objectgroup id="22" name="decor">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="2217.95" y="1435.93" width="256.687" height="235.919">
+   <properties>
+    <property name="map" value="EndianForest/Ship_Main"/>
+    <property name="tag" value="ship-portal"/>
+    <property name="transition" value="ship"/>
+   </properties>
+  </object>
+  <object id="708" name="edge-portal" type="object" x="4406.04" y="1182.08" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Shoreline"/>
+    <property name="transition" value="docks"/>
+   </properties>
+  </object>
+  <object id="768" name="edge-portal" type="object" x="0.041" y="1172.85" width="199.918" height="1127.4">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="PerilousSea/Zone_UR_1_0"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="772" name="solid" type="collision" x="783.349" y="-3.07497" width="126.878" height="1672.7"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="692" name="blackbeard" type="entity" x="2991.67" y="1538.79" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="3960.48" y="1543.34" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="709" name="spawn" type="object" x="4153.41" y="1543.39" width="128" height="128">
+   <properties>
+    <property name="transition" value="docks"/>
+   </properties>
+  </object>
+  <object id="745" name="spawn" type="object" x="2282.67" y="1542" width="128" height="128">
+   <properties>
+    <property name="transition" value="ship"/>
+   </properties>
+  </object>
+  <object id="769" name="spawn" type="object" x="442.061" y="1787.52" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="93" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="770" name="water" type="object" x="-294.031" y="1725.93" width="5255" height="608.74">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="79" name="water +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="735" name="water" type="object" x="-252.698" y="1760.93" width="5157" height="405.346">
+  <object id="735" name="water" type="object" x="-253.698" y="1751.93" width="5157" height="635.922">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -218,7 +359,7 @@
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="739" name="water" type="object" x="-236.689" y="1774.74" width="5036.27" height="405.346">
+  <object id="739" name="water" type="object" x="-195.022" y="1779.41" width="5036.27" height="657.346">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -240,7 +381,7 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="737" name="water" type="object" x="-221.3" y="1787.66" width="4913.43" height="405.346">
+  <object id="737" name="water" type="object" x="-142.27" y="1813.08" width="4913.43" height="666.376">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -262,13 +403,13 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="736" name="water" type="object" x="-203.2" y="1806.28" width="4822.75" height="405.346">
+  <object id="736" name="water" type="object" x="-97.8667" y="1846.95" width="4822.75" height="676.619">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="78" name="plank +5">
+ <objectgroup id="78" name="plank +5" visible="0">
   <properties>
    <property name="depth" type="float" value="320"/>
    <property name="type" value="objects"/>
@@ -278,102 +419,5 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="22" name="decor midground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="23" name="objects">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="694" name="portal" type="object" x="2217.95" y="1435.93" width="256.687" height="235.919">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="map" value="EndianForest/Ship_Main"/>
-    <property name="tag" value="ship-portal"/>
-    <property name="transition" value="ship"/>
-   </properties>
-  </object>
-  <object id="708" name="edge-portal" type="object" x="4406.04" y="1182.08" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Fishing_Village"/>
-    <property name="transition" value="docks"/>
-   </properties>
-  </object>
-  <object id="717" name="solid" type="collision" x="891.52" y="899.344" width="126.878" height="778.756"/>
- </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="24" name="entities">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="692" name="blackbeard" type="entity" x="2991.67" y="1538.79" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-    <property name="quest" value="sail-for-ruins"/>
-    <property name="quest-line" value="sail-for-ruins"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="25" name="player_layer">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="523" name="squally" type="entity" x="3960.48" y="1543.34" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
-  <object id="709" name="spawn" type="object" x="4153.41" y="1543.39" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="745" name="spawn" type="object" x="2282.67" y="1542" width="128" height="128">
-   <properties>
-    <property name="transition" value="ship"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="73" name="water">
-  <properties>
-   <property name="depth" type="float" value="128"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="28" name="fireflies">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
- <objectgroup id="31" name="rain">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="rain"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="4376.3" y="1776.33" width="270" height="748"/>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
 </map>

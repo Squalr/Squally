@@ -5,9 +5,9 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Events/DialogueEvents.h"
 
-class CollisionObject;
 class DialogueSet;
 class InteractMenu;
+class InteractObject;
 class LocalizedString;
 class PlatformerEntity;
 class Scrappy;
@@ -42,22 +42,18 @@ private:
 
 	void onInteract();
 	void progressDialogue();
-	void chooseOption(int option);
 	void showOptions();
 	bool hasDialogueOptions();
-	void updateInteractVisibility();
+	void updateInteractable();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 
 	PlatformerEntity* entity;
 	Scrappy* scrappy;
 	SpeechBubble* speechBubble;
+	InteractObject* dialogueInteraction;
 
-	bool canInteract;
-	bool hasCollision;
 	bool optionsVisible;
 	
-	CollisionObject* dialogueCollision;
-	InteractMenu* interactMenu;
 	std::queue<DialogueEvents::DialogueOpenArgs> pretextQueue;
 	DialogueSet* mainDialogueSet;
 	DialogueSet* activeDialogueSet;

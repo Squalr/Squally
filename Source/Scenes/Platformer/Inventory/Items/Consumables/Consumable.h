@@ -12,9 +12,13 @@ public:
 	PlatformerAttack* cloneAssociatedAttack(PlatformerEntity* entity);
 	PlatformerAttack* getAssociatedAttack(PlatformerEntity* entity);
 
+	virtual void useOutOfCombat(PlatformerEntity* target);
+	virtual bool canUseOnTarget(PlatformerEntity* target);
+	bool canUseOutOfCombat();
+
 protected:
-	Consumable(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
-	~Consumable();
+	Consumable(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta(), bool outOfCombatUseAllowed = false);
+	virtual ~Consumable();
 
 	PlatformerAttack* cloneAssociatedAttack();
 	PlatformerAttack* getAssociatedAttack();
@@ -26,4 +30,5 @@ private:
 	void bindItemUseCallback(PlatformerAttack* attack, PlatformerEntity* entity);
 
 	PlatformerAttack* associatedAttack;
+	bool outOfCombatUseAllowed;
 };

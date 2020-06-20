@@ -46,6 +46,8 @@ void RamWeakenedCombatBehavior::initializePositions()
 
 void RamWeakenedCombatBehavior::onLoad()
 {
+	super::onLoad();
+	
 	if (QuestTask::getQuestStateForTask(this->saveTownLine, RepairRam::MapKeyQuest) == QuestTask::QuestState::Complete)
 	{
 		this->entity->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)

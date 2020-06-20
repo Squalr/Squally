@@ -50,9 +50,9 @@ std::string MatuHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> MatuHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 6.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 7.0f / EFHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
+	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],

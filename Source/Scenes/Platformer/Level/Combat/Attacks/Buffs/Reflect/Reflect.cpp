@@ -35,11 +35,13 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_REFLECT 1
 
-const std::string Reflect::ReflectIdentifier = "fortitude";
+const std::string Reflect::ReflectIdentifier = "reflect";
 
-const int Reflect::MinReflect = 1;
-const int Reflect::MaxMultiplier = 1;
-const float Reflect::Duration = 12.0f;
+const int Reflect::MinMultiplier = 2;
+const int Reflect::MaxMultiplier = 2;
+const float Reflect::Duration = 10.0f;
+	
+const std::string Reflect::StateKeyDamageReflected = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_REFLECTED";
 
 Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -51,7 +53,7 @@ Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, AbilityType::Arcane, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -97,7 +99,7 @@ void Reflect::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -116,66 +118,112 @@ void Reflect::registerHackables()
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx::create()->setStringReplacementVariables(
 							{
-								ConstantString::create(std::to_string(Reflect::MinReflect)),
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MinMultiplier))),
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MaxMultiplier)))
 							}),
 					},
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi::create(),
 					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()) +
+						"shr esi, 1\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) +
+						"mov ebx, esi\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
+						
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()) +
+						"shr rsi, 1\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) +
+						"mov rbx, rsi\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
+					),
+				},
+				true
 			)
 		},
 	};
 
-	auto hasteFunc = &Reflect::applyReflect;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Reflect::applyReflect;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Reflect::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->damageReflected = *damageOrHealing;
-
-	*damageOrHealing = 0;
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageOrHealing->damageOrHealingValue);
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyReflect();
 
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(target, caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected));
+	// Bound multiplier in either direction
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(MathUtils::clamp(
+		this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
+		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier),
+		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
+	));
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
+		this->HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
+		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier),
+		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
+	));
+	
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+
+	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(), damageOrHealing->abilityType, true));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()
 {
-	volatile int originalDamage = this->damageReflected;
-	volatile int damageTaken = this->damageReflected;
+	static volatile int damageDealtLocal = 0;
+	static volatile int damageReflectedLocal = 0;
 
+	damageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	damageReflectedLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, damageTaken);
+
+	ASM_MOV_REG_VAR(esi, damageDealtLocal);
+	ASM_MOV_REG_VAR(ebx, damageReflectedLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
+	ASM(shr ZSI, 1);
 	ASM(mov ZBX, ZSI);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZBX);
+	ASM_MOV_VAR_REG(damageDealtLocal, esi);
+	ASM_MOV_VAR_REG(damageReflectedLocal, ebx);
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	// Bound multiplier in either direction
-	this->damageReflected = MathUtils::clamp(damageTaken, Reflect::MinReflect, std::abs(originalDamage) * Reflect::MaxMultiplier);
+	this->HackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
+	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

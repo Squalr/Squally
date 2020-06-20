@@ -85,7 +85,6 @@ ChestPoolPinata::ChestPoolPinata(ValueMap& properties) : super(
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Common));
 }
 
 ChestPoolPinata::~ChestPoolPinata()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="589">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="592">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -8,6 +8,7 @@
   <properties>
    <property name="background" value="YellowSky"/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -21,13 +22,17 @@
   </object>
  </objectgroup>
  <objectgroup id="36" name="bg objects">
-  <object id="582" name="torch" type="object" x="706.091" y="1318.64" width="42" height="130"/>
-  <object id="583" name="torch" type="object" x="1485.15" y="1307.7" width="42" height="130"/>
-  <object id="584" name="torch" type="object" x="2195.91" y="1328.55" width="42" height="130"/>
-  <object id="585" name="Ruins/Window" type="decor" x="145.864" y="974.409" width="313" height="381"/>
-  <object id="586" name="Ruins/Window" type="decor" x="977.803" y="972.773" width="313" height="381"/>
-  <object id="587" name="Ruins/Window" type="decor" x="1694.17" y="968.167" width="313" height="381"/>
-  <object id="588" name="Ruins/Window" type="decor" x="2401.08" y="976.167" width="313" height="381"/>
+  <properties>
+   <property name="depth" type="float" value="-356"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="582" name="torch" type="object" x="566.091" y="1294.64" width="42" height="130"/>
+  <object id="583" name="torch" type="object" x="1345.15" y="1283.7" width="42" height="130"/>
+  <object id="584" name="torch" type="object" x="2055.91" y="1304.55" width="42" height="130"/>
+  <object id="585" name="Ruins/Window" type="decor" x="5.864" y="950.409" width="313" height="381"/>
+  <object id="586" name="Ruins/Window" type="decor" x="837.803" y="948.773" width="313" height="381"/>
+  <object id="587" name="Ruins/Window" type="decor" x="1554.17" y="944.167" width="313" height="381"/>
+  <object id="588" name="Ruins/Window" type="decor" x="2261.08" y="952.167" width="313" height="381"/>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>
@@ -100,41 +105,56 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
+  <object id="589" name="cinematic-marker" type="object" x="1220.73" y="1131.94" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="590" name="cinematic-marker" type="object" x="1225.28" y="817.335" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="591" name="cinematic-marker" type="object" x="1215.94" y="1602.66" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="565" name="camera-focus" type="object" x="1183.28" y="1406.51" width="128" height="128">
+  <object id="565" name="camera-focus" type="object" x="1191.28" y="1220.51" width="128" height="128">
    <properties>
     <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
-  <object id="566" name="camera-target" type="object" x="892.303" y="1504.39" width="128" height="128">
+  <object id="566" name="camera-target" type="object" x="968.303" y="1320.39" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-1"/>
     <property name="zoom" type="float" value="1.05"/>
    </properties>
   </object>
-  <object id="568" name="camera-target" type="object" x="683.697" y="1580.39" width="128" height="128">
+  <object id="568" name="camera-target" type="object" x="759.697" y="1396.39" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-0"/>
     <property name="zoom" type="float" value="1.125"/>
    </properties>
   </object>
-  <object id="578" name="camera-target" type="object" x="1587" y="1655" width="128" height="128">
+  <object id="578" name="camera-target" type="object" x="1473" y="1475" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-1"/>
     <property name="zoom" type="float" value="1.05"/>
    </properties>
   </object>
-  <object id="579" name="camera-target" type="object" x="1585" y="1527" width="128" height="128">
+  <object id="579" name="camera-target" type="object" x="1471" y="1347" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
-  <object id="580" name="camera-target" type="object" x="1699" y="1563" width="128" height="128">
+  <object id="580" name="camera-target" type="object" x="1585" y="1383" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-2"/>
     <property name="zoom" type="float" value="1.1"/>

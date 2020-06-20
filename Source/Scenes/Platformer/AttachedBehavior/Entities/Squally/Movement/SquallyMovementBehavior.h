@@ -26,6 +26,8 @@ private:
 	typedef AttachedBehavior super;
 
 	void onMovementChanged();
+	void saveSquallyPosition();
+	void loadSquallyPosition();
 
 	Squally* squally;
 

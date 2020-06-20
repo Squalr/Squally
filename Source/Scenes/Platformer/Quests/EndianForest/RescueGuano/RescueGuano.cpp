@@ -19,6 +19,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -80,6 +81,7 @@ void RescueGuano::onActivate(bool isActiveThroughSkippable)
 
 void RescueGuano::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFSneakIntoTown);
 }
 
 void RescueGuano::onSkipped()
@@ -95,9 +97,9 @@ void RescueGuano::runRescueSequence()
 			Strings::Platformer_Quests_EndianForest_RescueGuano_E_Freedom::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->guano, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true),
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->guano, true),
 				true
 			),
 			[=]()
@@ -116,15 +118,15 @@ void RescueGuano::runRescueSequencePt2()
 		Strings::Platformer_Quests_EndianForest_RescueGuano_F_NotMuchOfAFighter::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
 			this->runRescueSequencePt3();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -135,9 +137,9 @@ void RescueGuano::runRescueSequencePt3()
 		Strings::Platformer_Quests_EndianForest_RescueGuano_G_HelpYouFindThings::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
@@ -167,7 +169,7 @@ void RescueGuano::runRescueSequencePt3()
 				SoundResources::Notifications_NotificationGood1
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="590">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="593">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -8,6 +8,7 @@
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -201,8 +202,23 @@
    </properties>
    <polygon points="6.66667,32 93.333,-0.183511 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711 0.171407,111.849"/>
   </object>
+  <object id="590" name="cinematic-marker" type="object" x="1364.73" y="1161.94" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="591" name="cinematic-marker" type="object" x="1369.28" y="847.335" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="592" name="cinematic-marker" type="object" x="1359.94" y="1632.66" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -259,7 +275,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="27" name="decor 256" visible="0">
+ <objectgroup id="27" name="decor 256">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>

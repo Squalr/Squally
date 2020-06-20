@@ -19,6 +19,10 @@
 	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
 
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
+	#define ASM_PUSH_EFLAGS() \
+		ASM(pushfq)
+	#define ASM_POP_EFLAGS() \
+		ASM(popfq)
 	#define ZAX rax
 	#define ZBX rbx
 	#define ZCX rcx
@@ -29,6 +33,10 @@
 	#define ZSP rsp
 	#define DIV_CONVERT cqo
 #else
+	#define ASM_PUSH_EFLAGS() \
+		ASM(pushfd)
+	#define ASM_POP_EFLAGS() \
+		ASM(popfd)
 	#define ZAX eax
 	#define ZBX ebx
 	#define ZCX ecx
@@ -59,6 +67,12 @@
 	#define ASM_MOV_VAR_REG(variable, register) \
 		ASM(mov variable, register)
 
+	#define ASM_MOV_REG_PTR(register, variable) \
+		ASM(mov register, variable)
+
+	#define ASM_MOV_PTR_REG(variable, register) \
+		ASM(mov variable, register)
+
 #elif __GNUC__ || __clang__
 	#ifdef __clang__
 		#define NO_OPTIMIZE \
@@ -68,7 +82,7 @@
 		#define NO_OPTIMIZE \
 			_Pragma("GCC push_options") \
 			_Pragma("GCC optimize (\"O0\")") \
-			 __attribute__((optimize("O0")))
+			__attribute__((optimize("O0")))
 		#define END_NO_OPTIMIZE \
 			_Pragma("GCC pop_options")
 	#endif
@@ -82,9 +96,15 @@
 	
 	#ifdef __x86_64__
 		#define ASM_MOV_REG_VAR(register, variable) \
-			__asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
+			__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
 
 		#define ASM_MOV_VAR_REG(variable, register) \
+			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
+
+		#define ASM_MOV_REG_PTR(register, variable) \
+			__asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
+
+		#define ASM_MOV_PTR_REG(variable, register) \
 			__asm__ __volatile__("movq %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
 	#else
 		#define ASM_MOV_REG_VAR(register, variable) \
@@ -92,6 +112,12 @@
 
 		#define ASM_MOV_VAR_REG(variable, register) \
 			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
+
+		#define ASM_MOV_REG_PTR(register, variable) \
+			ASM_MOV_REG_VAR(register, variable)
+
+		#define ASM_MOV_PTR_REG(variable, register) \
+			ASM_MOV_VAR_REG(register, variable)
 	#endif
 
 	#define ASM_GCC(asm_string) \

@@ -19,6 +19,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -78,7 +79,8 @@ void SailForRuins::onLoad(QuestState questState)
 		this->blackbeard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_UnderflowRuins::create()),
+				Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()
+					->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_UnderflowRuins::create()),
 				[=]()
 				{
 					switch(questState)
@@ -127,8 +129,9 @@ void SailForRuins::runNoSequence()
 		),
 		[=]()
 		{
+			Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }
@@ -146,7 +149,7 @@ void SailForRuins::runYesSequence()
 		[=]()
 		{
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

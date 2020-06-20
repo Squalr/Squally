@@ -11,7 +11,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
@@ -85,9 +84,4 @@ std::string PlatformerEnemy::getDropPool()
 void PlatformerEnemy::setDropPool(std::string dropPool)
 {
 	this->dropPool = dropPool;
-}
-
-void PlatformerEnemy::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
 }

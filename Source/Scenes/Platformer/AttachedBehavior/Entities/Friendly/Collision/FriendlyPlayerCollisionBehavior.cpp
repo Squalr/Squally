@@ -40,10 +40,13 @@ void FriendlyPlayerCollisionBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
-		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		});
+		if (collisionBehavior->movementCollision != nullptr)
+		{
+			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::CollideWithPhysics;
+			});
+		}
 	});
 }
 

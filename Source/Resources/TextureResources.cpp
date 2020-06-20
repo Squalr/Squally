@@ -5,6 +5,10 @@
 #include "TextureResources.h"
 #include <string>
 
+const std::string TextureResources::ArabicFlowerTexture = "Private/Platformer/Textures/ArabicFlowerTexture.png";
+const std::string TextureResources::ArabicStarTexture = "Private/Platformer/Textures/ArabicStarTexture.png";
+const std::string TextureResources::ArabicWebDarkTexture = "Private/Platformer/Textures/ArabicWebDarkTexture.png";
+const std::string TextureResources::ArabicWebTexture = "Private/Platformer/Textures/ArabicWebTexture.png";
 const std::string TextureResources::BlueGrassTexture = "Private/Platformer/Textures/BlueGrassTexture.png";
 const std::string TextureResources::BrickInteriorTexture = "Private/Platformer/Textures/BrickInteriorTexture.png";
 const std::string TextureResources::CastleTexture = "Private/Platformer/Textures/CastleTexture.png";
@@ -22,6 +26,9 @@ const std::string TextureResources::LeafTexture = "Private/Platformer/Textures/L
 const std::string TextureResources::MarbleDarkTexture = "Private/Platformer/Textures/MarbleDarkTexture.png";
 const std::string TextureResources::MarbleGrassTexture = "Private/Platformer/Textures/MarbleGrassTexture.png";
 const std::string TextureResources::MarbleTexture = "Private/Platformer/Textures/MarbleTexture.png";
+const std::string TextureResources::RuinsGrayDarkTexture = "Private/Platformer/Textures/RuinsGrayDarkTexture.png";
+const std::string TextureResources::RuinsGrayTexture = "Private/Platformer/Textures/RuinsGrayTexture.png";
+const std::string TextureResources::RuinsTexture = "Private/Platformer/Textures/RuinsTexture.png";
 const std::string TextureResources::ShadeGrassTexture = "Private/Platformer/Textures/ShadeGrassTexture.png";
 const std::string TextureResources::ShipAltTexture = "Private/Platformer/Textures/ShipAltTexture.png";
 const std::string TextureResources::ShipDarkTexture = "Private/Platformer/Textures/ShipDarkTexture.png";

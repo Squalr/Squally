@@ -10,6 +10,7 @@ public:
 	static EntityPacingBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
+	static const std::string PropertyTravelDistance;
 
 protected:
 	EntityPacingBehavior(GameObject* owner);
@@ -26,9 +27,10 @@ private:
 	void cancelPacing();
 
 	PlatformerEntity* entity;
-	cocos2d::Vec2 anchorPosition;
-	float destinationDelta;
+	cocos2d::Vec2 spawnPosition;
+	float maxTravelDistance;
 
-	static const float TravelDistanceMin;
-	static const float TravelDistanceMax;
+	static const float DefaultTravelDistanceMin;
+	static const float DefaultTravelDistanceMax;
+	static const float MinimumPaceDistance;
 };

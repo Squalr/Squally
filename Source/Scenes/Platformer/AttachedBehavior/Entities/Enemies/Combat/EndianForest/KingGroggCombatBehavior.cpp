@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/KingGrogg/DragonBreath.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
@@ -46,6 +46,8 @@ void KingGroggCombatBehavior::initializePositions()
 
 void KingGroggCombatBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(DragonBreath::create(0.5f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));

@@ -11,13 +11,14 @@ public:
 	{
 		int healthBonus;
 		int manaBonus;
-		int armorBonus;
 		int attackBonus;
+		int magicAttackBonus;
+		int armorBonus;
 		float speedBonus;
 
-		ItemStats() : healthBonus(0), manaBonus(0), armorBonus(0), attackBonus(0), speedBonus(0) { }
-		ItemStats(int healthBonus, int manaBonus, int armorBonus, int attackBonus, float speedBonus)
-			: healthBonus(healthBonus), manaBonus(manaBonus), armorBonus(armorBonus), attackBonus(attackBonus), speedBonus(speedBonus) { }
+		ItemStats() : healthBonus(0), manaBonus(0), attackBonus(0), magicAttackBonus(0), armorBonus(0), speedBonus(0.0f) { }
+		ItemStats(int healthBonus, int manaBonus, int attackBonus, int magicAttackBonus, int armorBonus, float speedBonus)
+			: healthBonus(healthBonus), manaBonus(manaBonus), attackBonus(attackBonus), magicAttackBonus(magicAttackBonus), armorBonus(armorBonus), speedBonus(speedBonus) { }
 	};
 
 	ItemStats getItemStats();

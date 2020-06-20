@@ -14,7 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -58,7 +58,7 @@ Projectile* FireLauncher::createProjectile()
 	
 	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{
-		fireball->disable(false);
+		fireball->disable(true);
 		fireball->runImpactFX();
 
 		return CollisionObject::CollisionResult::DoNothing;

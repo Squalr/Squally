@@ -8,7 +8,6 @@
 
 namespace cocos2d
 {
-	class EventListener;
 	class Value;
 	typedef std::map<std::string, cocos2d::Value> ValueMap;
 }
@@ -16,26 +15,26 @@ namespace cocos2d
 class GameObject : public SmartNode
 {
 public:
-	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
 	void detachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
-	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
-	int getStateOrDefaultInt(std::string key, int value);
-	float getStateOrDefaultFloat(std::string key, float value);
-	bool getStateOrDefaultBool(std::string key, bool value);
+	cocos2d::Value getRuntimeStateOrDefault(std::string key, cocos2d::Value value);
+	int getRuntimeStateOrDefaultInt(std::string key, int value);
+	float getRuntimeStateOrDefaultFloat(std::string key, float value);
+	bool getRuntimeStateOrDefaultBool(std::string key, bool value);
 	cocos2d::ValueMap& getStateVariables();
-	bool hasState(std::string key);
+	bool hasRuntimeState(std::string key);
 	void clearState(std::string key);
 	void setZSorted(bool zSorted);
 	bool isZSorted();
-	void saveObjectState(std::string key, cocos2d::Value value);
 	void listenForStateWrite(std::string key, std::function<void(cocos2d::Value)> onWrite);
 	void listenForStateWriteOnce(std::string key, std::function<void(cocos2d::Value)> onWrite);
-	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
+	void saveObjectState(std::string key, cocos2d::Value value);
+	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
+	const cocos2d::Value& loadObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	void listenForMapEventOnce(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
@@ -159,7 +158,6 @@ protected:
 	virtual void onDespawn();
 	bool isMapObject();
 	void loadObjectState();
-	virtual void onObjectStateLoaded();
 
 	std::string listenEvent;
 	std::string sendEvent;
@@ -167,6 +165,8 @@ protected:
 
 private:
 	typedef SmartNode super;
+	friend class MapLayer;
+	
 	bool isAttributeOrHiddenProperty(std::string propertyName);
 	bool containsAttributes();
 	bool containsProperties();

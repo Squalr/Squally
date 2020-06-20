@@ -66,7 +66,7 @@ void ShopkeeperDialogueBehavior::onLoad()
 					[=]()
 					{
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterQuestion1
+					Voices::GetNextVoiceQuestion()
 				));
 			}),
 			1.0f

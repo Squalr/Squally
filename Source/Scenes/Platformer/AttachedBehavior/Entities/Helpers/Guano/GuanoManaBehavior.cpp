@@ -70,5 +70,5 @@ void GuanoManaBehavior::onDisable()
 
 void GuanoManaBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoMana, this->guano->getStateOrDefault(StateKeys::Mana, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoMana, this->guano->getRuntimeStateOrDefault(StateKeys::Mana, Value(0)));
 }

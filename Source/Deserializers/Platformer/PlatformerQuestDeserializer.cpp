@@ -23,6 +23,9 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
 	this->lineDeserializers = std::map<std::string, std::function<QuestLine*()>>();
 
+	// GLOBAL QUESTS
+	this->lineDeserializers[RestoreWarpGatesLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RestoreWarpGatesLine::create(); };
+	
 	// ENDIAN FOREST QUESTS
 	this->lineDeserializers[BusinessHoursLine::MapKeyQuestLine] = [=]() { return (QuestLine*)BusinessHoursLine::create(); };
 	this->lineDeserializers[HexusGauntletLine::MapKeyQuestLine] = [=]() { return (QuestLine*)HexusGauntletLine::create(); };
@@ -36,6 +39,8 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[WindSpellbookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindSpellbookLine::create(); };
 
 	// UNDERFLOW RUINS QUESTS
+	this->lineDeserializers[CleansePyramidLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CleansePyramidLine::create(); };
+	this->lineDeserializers[CureTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureTownLine::create(); };
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()

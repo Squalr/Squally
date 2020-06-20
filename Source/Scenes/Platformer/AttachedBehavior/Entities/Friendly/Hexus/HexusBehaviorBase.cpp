@@ -252,6 +252,11 @@ void HexusBehaviorBase::onDisable()
 	super::onDisable();
 }
 
+float HexusBehaviorBase::calculateStrength(float localOrder, float zoneOrder)
+{
+	return localOrder / 10.0f + zoneOrder;
+}
+
 void HexusBehaviorBase::giveItems()
 {
 	if (this->rewardPool != nullptr)

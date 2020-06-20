@@ -192,4 +192,31 @@ public:
 
 		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
 	}
+
+	template <class T>
+	static void QueryObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::function<void()> onObjectNotFound = nullptr, std::string tag = "")
+	{
+		unsigned long long watchId = ObjectEvents::WatchId++;
+		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
+
+		bool wasHandled = false;
+
+		// Do an immediate check for the object
+		ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object, bool* handled)
+		{
+			onObjectFound(object);
+			*handled = true;
+			wasHandled = true;
+		}), tag);
+
+		if (wasHandled)
+		{
+			return;
+		}
+
+		if (onObjectNotFound != nullptr)
+		{
+			onObjectNotFound();
+		}
+	}
 };

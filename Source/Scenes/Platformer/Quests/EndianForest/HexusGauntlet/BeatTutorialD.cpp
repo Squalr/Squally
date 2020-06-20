@@ -13,6 +13,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialDBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -89,6 +90,8 @@ void BeatTutorialD::onComplete()
 	{
 		this->portal->openPortal(true);
 	}
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFBeatSarude);
 }
 
 void BeatTutorialD::onSkipped()

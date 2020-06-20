@@ -33,7 +33,8 @@ Flurry* Flurry::create(float attackDuration, float recoverDuration, Priority pri
 	return instance;
 }
 
-Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 2, 3, 0, attackDuration, recoverDuration)
+Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, AbilityType::Physical, 2, 3, 0, attackDuration, recoverDuration)
 {
 	this->slashSounds = std::vector<WorldSound*>();
 	this->hitSounds = std::vector<WorldSound*>();
@@ -43,12 +44,12 @@ Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority) :
 	{
 		switch (index % 3)
 		{
-			default: case 0: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade1)); }
-			case 1: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade2)); }
-			case 2: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade3)); }
+			default: case 0: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1)); }
+			case 1: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade2)); }
+			case 2: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade3)); }
 		}
 		
-		this->hitSounds.push_back(WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1));
+		this->hitSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1));
 	}
 
 	for (auto next : this->slashSounds)
@@ -149,7 +150,7 @@ void Flurry::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity
 
 void Flurry::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }
@@ -161,12 +162,14 @@ NO_OPTIMIZE void Flurry::setRandomHits()
 
 	ASM(push ZSI);
 	ASM(push ZDI);
+	
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FLURRY);
 	ASM(mov ZSI, 2);
 	ASM(mov ZDI, 4);
 	HACKABLE_CODE_END();
-	ASM_MOV_VAR_REG(minHits, ZSI);
-	ASM_MOV_VAR_REG(maxHits, ZDI);
+
+	ASM_MOV_VAR_REG(minHits, esi);
+	ASM_MOV_VAR_REG(maxHits, edi);
 	ASM(pop ZDI);
 	ASM(pop ZSI);
 

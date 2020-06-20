@@ -132,23 +132,19 @@ NO_OPTIMIZE float FloatingRock::getDensityNonVirtual()
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
 	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, densityRetPtr);
+	ASM_MOV_REG_PTR(ZAX, densityRetPtr);
 	ASM(movss xmm0, dword ptr [ZAX]);
-	ASM_MOV_REG_VAR(ZAX, densityCopyPtr);
+	ASM_MOV_REG_PTR(ZAX, densityCopyPtr);
 	ASM(movss xmm1, dword ptr [ZAX]);
-	ASM(pop ZAX);
+	ASM_MOV_REG_PTR(ZAX, freeMemoryForUser);
 
-	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, freeMemoryForUser);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GET_DENSITY);
 	ASM(movss xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-	ASM(pop ZAX);
 
 	// Copy from xmm0 to the output variable
-	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, densityRetPtr);
+	ASM_MOV_REG_PTR(ZAX, densityRetPtr);
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM(pop ZAX);
 

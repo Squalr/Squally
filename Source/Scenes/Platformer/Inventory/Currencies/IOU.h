@@ -14,8 +14,10 @@ public:
 	static std::string getIOUIdentifier();
 	static std::string getIOUIconResource();
 	static LocalizedString* getIOUString();
+	static LocalizedString* getIOUStringPlural();
 
 	LocalizedString* getString() override;
+	LocalizedString* getStringPlural() override;
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 

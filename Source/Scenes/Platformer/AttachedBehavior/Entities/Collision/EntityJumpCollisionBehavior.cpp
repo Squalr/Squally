@@ -64,6 +64,11 @@ void EntityJumpCollisionBehavior::onDisable()
 
 bool EntityJumpCollisionBehavior::canJump()
 {
+	if (this->jumpCollision == nullptr)
+	{
+		return true;
+	}
+
 	for (auto collision : this->jumpCollision->getCurrentCollisions())
 	{
 		if (collision->getCollisionType() == (int)PlatformerCollisionType::Solid

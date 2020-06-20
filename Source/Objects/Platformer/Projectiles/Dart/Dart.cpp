@@ -34,6 +34,8 @@ Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, CollisionObject
 	this->setProjectileRotation(dartRotation);
 	this->setLaunchVelocity(Vec3(this->dartSpeed, 0.0f, 0.0f));
 
+	this->setMovementMode(Projectile::MovementMode::RotationVelocity);
+
 	this->contentNode->addChild(this->sprite);
 }
 
@@ -44,4 +46,20 @@ Dart::~Dart()
 void Dart::onEnter()
 {
 	super::onEnter();
+	
+	this->sprite->setVisible(false);
+}
+
+void Dart::runSpawnFX()
+{
+	super::runSpawnFX();
+
+	this->sprite->setVisible(true);
+}
+
+void Dart::runImpactFX()
+{
+	super::runImpactFX();
+
+	this->sprite->setVisible(false);
 }

@@ -45,6 +45,9 @@ const float Enrage::DefaultSpeed = 2.0f;
 const float Enrage::MaxSpeed = 2.5f;
 const float Enrage::Duration = 6.0f;
 
+// Static to prevent GCC optimization issues
+volatile float Enrage::currentSpeed = 0.0f;
+
 Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Enrage* instance = new Enrage(caster, target);
@@ -55,7 +58,7 @@ Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Clock, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Clock, AbilityType::Physical, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -96,7 +99,7 @@ void Enrage::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -128,8 +131,8 @@ void Enrage::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create(),
 						// x86
-						"mov dword ptr [esi], 0.0",
-						// x64
+						"mov dword ptr [esi], 0.0"
+						, // x64
 						"mov dword ptr [rsi], 0.0"
 					)
 				}
@@ -137,32 +140,32 @@ void Enrage::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Enrage::applyEnrageSpeed;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Enrage::applyEnrageSpeed;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void Enrage::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	this->currentSpeed = *timelineSpeed;
+	this->currentSpeed = *(speed->speed);
 
 	this->applyEnrageSpeed();
 
-	*timelineSpeed = this->currentSpeed;
+	*(speed->speed) = this->currentSpeed;
 }
 
-void Enrage::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Enrage::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 }
 
-void Enrage::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Enrage::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageDealt(damageOrHealing);
 }
 
 NO_OPTIMIZE void Enrage::applyEnrageSpeed()
@@ -174,8 +177,9 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
@@ -192,7 +196,7 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 }
 END_NO_OPTIMIZE
 
-NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDelt()
+NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDealt()
 {
 	volatile float speedBonus = 0.0f;
 	volatile float increment = Enrage::DefaultSpeed;
@@ -201,8 +205,9 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDelt()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
@@ -228,8 +233,9 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageTaken()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);

@@ -77,10 +77,12 @@ void AddDoor::registerHackables()
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
 						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
 					"add ecx, 2",
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
 					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
+						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
+					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
 					"add rcx, 2"),
 				},
 				true
@@ -99,7 +101,7 @@ void AddDoor::registerHackables()
 
 void AddDoor::runOperation(int puzzleIndex)
 {
-	this->setRealValue(puzzleIndex + 3);
+	this->setRealValue(puzzleIndex + 5);
 
 	this->AddDoorTransform(puzzleIndex);
 }
@@ -111,14 +113,14 @@ NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 	transform = puzzleIndex;
 
 	ASM(push ZCX)
-	ASM_MOV_REG_VAR(ZCX, transform);
+	ASM_MOV_REG_VAR(ecx, transform);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RUN_OPERATION);
 	ASM(add ZCX, 2)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(transform, ZCX);
+	ASM_MOV_VAR_REG(transform, ecx);
 	ASM(pop ZCX);
 
 	this->setHackValue(transform);

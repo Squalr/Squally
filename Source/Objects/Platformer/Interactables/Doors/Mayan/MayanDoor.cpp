@@ -107,15 +107,17 @@ void MayanDoor::onEnter()
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
 	}, Squally::MapKey);
+
+	this->loadGems();
 }
 
 void MayanDoor::initializePositions()
 {
 	super::initializePositions();
 
-	const float Radius = 336.0f;
-	const float RedGemAngle = 5.0f * float(M_PI) / 6.0f;
-	const float PurpleGemAngle = 1.0f * float(M_PI) / 6.0f;
+	const float Radius = 356.0f;
+	const float RedGemAngle = 4.0f * float(M_PI) / 6.0f;
+	const float PurpleGemAngle = 2.0f * float(M_PI) / 6.0f;
 
 	this->redGem->setPosition(Vec2(Radius * std::cos(RedGemAngle) - 64.0f, Radius * std::sin(RedGemAngle)));
 	this->blueGem->setPosition(Vec2(0.0f, Radius));
@@ -132,7 +134,10 @@ void MayanDoor::initializeListeners()
 
 	this->listenForMapEvent(MayanDoor::EventMayanDoorUnlock, [=](ValueMap args)
 	{
-		this->tryUnlock();
+		if (this->isLocked)
+		{
+			this->tryUnlock();
+		}
 	});
 
 	this->turninHitbox->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
@@ -143,13 +148,12 @@ void MayanDoor::initializeListeners()
 	});
 }
 
-void MayanDoor::onObjectStateLoaded()
+void MayanDoor::loadGems()
 {
-	super::onObjectStateLoaded();
-
 	int redDefault = 0;
 	int blueDefault = 0;
 	int purpleDefault = 0;
+	int failSafeCount = 2048;
 
 	// 4, 11, 6 is the default combo. The answer can be anything except this.
 	do
@@ -157,11 +161,11 @@ void MayanDoor::onObjectStateLoaded()
 		redDefault = RandomHelper::random_int(0, 11);
 		blueDefault = RandomHelper::random_int(0, 11);
 		purpleDefault = RandomHelper::random_int(0, 11);
-	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6);
+	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6 && failSafeCount-- > 0);
 
-	this->redGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
-	this->blueGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
-	this->purpleGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
+	this->redGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
+	this->blueGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
+	this->purpleGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
 
 	this->redGem->loadAnswer(this->redGemAnswer);
 	this->blueGem->loadAnswer(this->blueGemAnswer);
@@ -171,7 +175,7 @@ void MayanDoor::onObjectStateLoaded()
 	this->saveObjectState(MayanDoor::SaveKeyBlueGemAnswer, Value(this->blueGemAnswer));
 	this->saveObjectState(MayanDoor::SaveKeyPurpleGemAnswer, Value(this->purpleGemAnswer));
 
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
 	{
 		this->unlock(false);
 	}
@@ -180,17 +184,17 @@ void MayanDoor::onObjectStateLoaded()
 		this->lock(false);
 	}
 	
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool())
 	{
 		this->redGem->enableGem();
 	}
 
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool())
 	{
 		this->blueGem->enableGem();
 	}
 
-	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
 	{
 		this->purpleGem->enableGem();
 	}
@@ -257,7 +261,7 @@ void MayanDoor::registerHackables()
 
 	for (auto next : hackablesRed)
 	{
-		this->registerCode(next);
+		this->redGem->registerCode(next);
 	}
 
 	auto gemFuncBlue = &MayanDoor::runGemBlue;
@@ -265,7 +269,7 @@ void MayanDoor::registerHackables()
 
 	for (auto next : hackablesBlue)
 	{
-		this->registerCode(next);
+		this->blueGem->registerCode(next);
 	}
 
 	auto gemFuncPurple = &MayanDoor::runGemPurple;
@@ -273,7 +277,7 @@ void MayanDoor::registerHackables()
 
 	for (auto next : hackablesPurple)
 	{
-		this->registerCode(next);
+		this->purpleGem->registerCode(next);
 	}
 }
 
@@ -465,14 +469,14 @@ NO_OPTIMIZE int MayanDoor::runGemRed(int currentIndex)
 	volatile int newIndex = currentIndex;
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, newIndex);
+	ASM_MOV_REG_VAR(ebx, newIndex);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_RED);
 	ASM(mov ZBX, 4);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(newIndex, ZBX);
+	ASM_MOV_VAR_REG(newIndex, ebx);
 
 	ASM(pop ZBX);
 
@@ -487,14 +491,14 @@ NO_OPTIMIZE int MayanDoor::runGemBlue(int currentIndex)
 	volatile int newIndex = currentIndex;
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, newIndex);
+	ASM_MOV_REG_VAR(ebx, newIndex);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_BLUE);
 	ASM(add ZBX, 7);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(newIndex, ZBX);
+	ASM_MOV_VAR_REG(newIndex, ebx);
 
 	ASM(pop ZBX);
 
@@ -509,14 +513,14 @@ NO_OPTIMIZE int MayanDoor::runGemPurple(int currentIndex)
 	volatile int newIndex = currentIndex;
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, newIndex);
+	ASM_MOV_REG_VAR(ebx, newIndex);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_PURPLE);
 	ASM(sub ZBX, 5);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(newIndex, ZBX);
+	ASM_MOV_VAR_REG(newIndex, ebx);
 
 	ASM(pop ZBX);
 

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="790">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="58" name="background">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="caverns" type="texture" x="807.438" y="1626.75">
+   <polygon points="-1375.64,-2086.15 2049.82,-2081.55 2045.87,1212.13 -1369.63,1198.72"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="59" name="terrain2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="771" name="caverns" type="terrain" x="-70.365" y="-0.505" width="1226.43" height="2313.01">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="786" name="caverns" type="terrain" x="-134.54" y="1658" width="2649.08" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="789" name="Caverns/ScreamingDoor" type="decor" x="19" y="545" width="800" height="1114"/>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="785" name="portal" type="object" x="282.5" y="1403.17" width="256" height="256">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
+    <property name="transition" value="zone-transition"/>
+   </properties>
+  </object>
+  <object id="787" name="help-totem-end-of-demo" type="object" x="1630.42" y="1402.55" width="256" height="256"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="823.9" y="1527.62" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn" type="object" x="344" y="1532" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="data-mines"/>
+    <property name="transition" value="zone-transition"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -17,6 +17,7 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		|| objectA == objectB
 		|| !objectA->physicsEnabled
 		|| !objectB->physicsEnabled
+		|| objectA->getUniverseId() != objectB->getUniverseId()
 		|| !CollisionResolver::isWithinZThreshold(objectA, objectB))
 	{
 		return;
@@ -76,10 +77,18 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 
 bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, CollisionObject* collisionObjectB)
 {
-	const float thisDepth = GameUtils::getDepth(collisionObjectA);
-	const float otherDepth = GameUtils::getDepth(collisionObjectB);
+	const float thisDepthCenter = GameUtils::getDepth(collisionObjectA);
+	const float otherDepthCenter = GameUtils::getDepth(collisionObjectB);
 
-	return std::abs(thisDepth - otherDepth) < CollisionObject::CollisionZThreshold;
+	// Ensure a < b and c < d
+	const float a = thisDepthCenter - collisionObjectA->collisionDepth;
+	const float b = thisDepthCenter + collisionObjectA->collisionDepth;
+
+	const float c = otherDepthCenter - collisionObjectB->collisionDepth;
+	const float d = otherDepthCenter + collisionObjectB->collisionDepth;
+
+	// https://stackoverflow.com/questions/15726825/find-overlap-between-collinear-lines
+	return b - c >= 0 && d - a >= 0.0f;
 }
 
 void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
@@ -584,6 +593,8 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 	correction.x *= (impactNormal.x * softness);
 	correction.y *= impactNormal.y;
 
+	Vec3 correction3d = Vec3(correction.x, correction.y, 0.0f);
+
 	// Handle dynamic <=> dynamic collisions differently
 	if (objectA->collisionProperties.isDynamic && objectB->collisionProperties.isDynamic)
 	{
@@ -595,8 +606,8 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		float ratioB = (objectA->collisionProperties.mass / massSum);
 		
 		// Apply corrections proportional to object masses
-		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction * ratioA);
-		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction * ratioB);
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction3d * ratioA);
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction3d * ratioB);
 	}
 	else
 	{
@@ -607,8 +618,8 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		objectA->velocity.y *= impactNormal.x;
 		objectB->velocity.y *= impactNormal.x;
 
-		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
-		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
 	}
 	
 	return correction;

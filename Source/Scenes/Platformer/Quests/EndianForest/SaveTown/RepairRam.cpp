@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -103,7 +104,7 @@ void RepairRam::onLoad(QuestState questState)
 		}
 	}, Ram::MapKey);
 
-	this->repairInteract->setOpenCallback([=]()
+	this->repairInteract->setInteractCallback([=]()
 	{
 		this->onRamInteract();
 
@@ -117,6 +118,7 @@ void RepairRam::onActivate(bool isActiveThroughSkippable)
 
 void RepairRam::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFConfrontCommander);
 }
 
 void RepairRam::onSkipped()
@@ -136,7 +138,7 @@ void RepairRam::runDialogue()
 		[=]()
 		{
 		},
-		SoundResources::Platformer_Entities_Droid_DroidChatter,
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		true
 	));
 }
@@ -193,6 +195,10 @@ void RepairRam::onRamInteract()
 		this->wasActivated = true;
 
 		this->complete();
+	}
+	else
+	{
+		Objectives::SetCurrentObjective(ObjectiveKeys::EFRepairRam);
 	}
 }
 

@@ -6,7 +6,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealth.h"
@@ -30,9 +30,10 @@ ThrowIncrementHealthFlask* ThrowIncrementHealthFlask::create(Priority priority)
 	return instance;
 }
 
-ThrowIncrementHealthFlask::ThrowIncrementHealthFlask(Priority priority) : super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskIncrement, priority, 10, 15, 0, 0.2f, 1.5f)
+ThrowIncrementHealthFlask::ThrowIncrementHealthFlask(Priority priority)
+	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskIncrement, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
+	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 
 	this->addChild(this->throwSound);
 }
@@ -69,9 +70,9 @@ bool ThrowIncrementHealthFlask::isWorthUsing(PlatformerEntity* caster, const std
 
 	for (auto entity : sameTeam)
 	{
-		int health = entity->getStateOrDefaultInt(StateKeys::Health, 0);
-		int maxHealth = entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-		bool isAlive = entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+		int health = entity->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0);
+		bool isAlive = entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
 
 		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
 		{
@@ -113,11 +114,11 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 		{
 			if (owner == next)
 			{
-				potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 			}
 			else
 			{
-				potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 			}
 		});
 	}

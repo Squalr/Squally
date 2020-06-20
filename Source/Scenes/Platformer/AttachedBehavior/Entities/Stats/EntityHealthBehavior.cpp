@@ -81,7 +81,7 @@ void EntityHealthBehavior::onDisable()
 
 int EntityHealthBehavior::getHealth()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::Health, 0);
+	return this->entity->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 }
 
 void EntityHealthBehavior::addHealth(int healthDelta)
@@ -110,6 +110,13 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 	if (this->isAlive() != wasAlive)
 	{
 		this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()), true);
+
+		// Cancel death anim
+		if (this->isAlive() && (this->entity->getAnimations()->getCurrentAnimation() == "Death" || this->entity->getAnimations()->getCurrentAnimation() == "Dead"))
+		{
+			this->entity->getAnimations()->clearAnimationPriority();
+			this->entity->getAnimations()->playAnimation();
+		}
 	}
 }
 
@@ -175,5 +182,5 @@ bool EntityHealthBehavior::isAlive()
 
 bool EntityHealthBehavior::isDead()
 {
-	return this->entity->getStateOrDefault(StateKeys::Health, Value(0)).asInt() <= 0;
+	return this->entity->getRuntimeStateOrDefault(StateKeys::Health, Value(0)).asInt() <= 0;
 }

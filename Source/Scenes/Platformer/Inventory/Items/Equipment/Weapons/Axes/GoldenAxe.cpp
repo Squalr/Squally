@@ -20,12 +20,14 @@ GoldenAxe* GoldenAxe::create()
 	return instance;
 }
 
-GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 15, ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
 	0,
 	// Attack
+	0,
+	// Magic Attack
 	0,
 	// Armor
 	0,
@@ -70,7 +72,7 @@ Size GoldenAxe::getWeaponCollisionSize()
 	return Size(112.0f, 96.0f);
 }
 
-Vec2 GoldenAxe::getWeaponOffset()
+Vec2 GoldenAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);

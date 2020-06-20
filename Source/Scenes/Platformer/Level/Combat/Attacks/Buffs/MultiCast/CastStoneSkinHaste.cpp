@@ -27,9 +27,9 @@ CastStoneSkinHaste* CastStoneSkinHaste::create(float attackDuration, float recov
 }
 
 CastStoneSkinHaste::CastStoneSkinHaste(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 12, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldBroken, priority, AbilityType::Physical, 0, 0, 12, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
 	this->addChild(this->castSound);
 }
@@ -86,12 +86,12 @@ bool CastStoneSkinHaste::isWorthUsing(PlatformerEntity* caster, const std::vecto
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
+		entityBuffBehavior->getBuff<Haste>([&](Haste* buff)
 		{
 			hasBuff = true;
 		});
 
-		entityBuffBehavior->getBuff<StoneSkin>([&](StoneSkin* stoneSkin)
+		entityBuffBehavior->getBuff<StoneSkin>([&](StoneSkin* buff)
 		{
 			hasBuff = true;
 		});

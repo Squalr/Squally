@@ -8,6 +8,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLife.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -26,9 +27,9 @@ CastSiphonLife* CastSiphonLife::create(float attackDuration, float recoverDurati
 }
 
 CastSiphonLife::CastSiphonLife(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_Fangs, priority, 0, 0, 2, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_BloodGoblet, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
 	this->addChild(this->castSound);
 }
@@ -80,25 +81,31 @@ void CastSiphonLife::onCleanup()
 
 bool CastSiphonLife::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	int debuffCount = 0;
+	int uncastableCount = 0;
 
 	for (auto next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+
 		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<SiphonLife>([&](SiphonLife* debuff)
 			{
-				debuffCount++;
+				uncastableCount++;
 			});
 		});
 	}
 
-	return debuffCount != int(otherTeam.size());
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastSiphonLife::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = 1.0f;
+	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

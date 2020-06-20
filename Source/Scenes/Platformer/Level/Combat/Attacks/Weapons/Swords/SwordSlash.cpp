@@ -21,10 +21,10 @@ SwordSlash* SwordSlash::create(int damageMin, int damageMax, float attackDuratio
 }
 
 SwordSlash::SwordSlash(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, AbilityType::Physical, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
-	this->SwordSlashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->SwordSlashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 
 	this->addChild(this->SwordSlashSound);
 	this->addChild(this->hitSound);
@@ -69,7 +69,7 @@ void SwordSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 void SwordSlash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

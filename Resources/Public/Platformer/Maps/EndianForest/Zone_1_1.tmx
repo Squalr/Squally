@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="748">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="750">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
    <property name="disable-unstuck" type="bool" value="true"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="1"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -145,12 +147,6 @@
     <property name="listen-event" value="event-door-open"/>
     <property name="map" value="EndianForest/Zone_1_2"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="646" name="respawn" type="object" x="2181.33" y="2814.68" width="128" height="128"/>
-  <object id="649" name="spawn" type="object" x="12966.7" y="2853.06" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="651" name="iou" type="object" x="8716.38" y="2868.44" width="87" height="87">
@@ -370,8 +366,14 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="650" name="spawn" type="object" x="199.418" y="2823.38" width="128" height="128">
+  <object id="748" name="spawn" type="object" x="12966.7" y="2853.06" width="128" height="128">
    <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="749" name="spawn" type="object" x="199.418" y="2823.38" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="endian-forest"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

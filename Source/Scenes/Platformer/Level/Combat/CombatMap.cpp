@@ -10,9 +10,11 @@
 
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
@@ -30,6 +32,7 @@
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Objects/Camera/CameraFocus.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
@@ -79,7 +82,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->collectablesMenu = CollectablesMenu::create();
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
-	this->inventoryMenu = InventoryMenu::create();
+	this->inventoryMenu = InventoryMenu::create(this->partyMenu);
 	this->combatHud = CombatHud::create();
 	this->timeline = Timeline::create();
 	this->cancelMenu = CancelMenu::create();
@@ -110,6 +113,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
 				BackgroundDeserializer::create(),
+				PlatformerCrackDeserializer::create(),
 				MusicDeserializer::create(),
 				PhysicsDeserializer::create(),
 				PlatformerRubberbandingDeserializer::create(),
@@ -147,8 +151,8 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->backMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
-	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
+	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->confirmationHud);
 
 	this->loadMap(levelFile);
@@ -469,6 +473,16 @@ void CombatMap::initializeListeners()
 		this->inventoryMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
+}
+
+void CombatMap::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+	{
+		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
+	}), CameraFocus::MapKey);
 }
 
 void CombatMap::spawnEntities()

@@ -42,6 +42,9 @@ const int Strength::MaxMultiplier = 2;
 const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
 
+// Static to prevent GCC optimization issues
+volatile int Strength::currentDamageDealt = 0;
+
 Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Strength* instance = new Strength(caster, target);
@@ -52,11 +55,11 @@ Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Strength, BuffData(Strength::Duration, Strength::StrengthIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Gauntlet, AbilityType::Physical, BuffData(Strength::Duration, Strength::StrengthIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageDelt = 0;
+	this->currentDamageDealt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -94,7 +97,7 @@ void Strength::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -107,7 +110,7 @@ void Strength::registerHackables()
 				Strength::StrengthIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
 				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_Strength,
+				UIResources::Menus_Icons_Gauntlet,
 				StrengthGenericPreview::create(),
 				{
 					{
@@ -130,8 +133,8 @@ void Strength::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
-						"add ecx, 3\n",
-						// x64
+						"add ecx, 3\n"
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
@@ -145,49 +148,47 @@ void Strength::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Strength::applyStrength;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Strength::applyStrength;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-NO_OPTIMIZE void Strength::onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Strength::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->currentDamageDelt = *damageOrHealing;
+	this->currentDamageDealt = damageOrHealing->damageOrHealingValue;
 
 	this->applyStrength();
+
+	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier), std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier));
 	
-	*damageOrHealing = this->currentDamageDelt;
+	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }
-END_NO_OPTIMIZE
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
-	static volatile int originalDamage;
-	static volatile int damageDelt;
+	static volatile int currentDamageDealtLocal = 0;
 
-	originalDamage = this->currentDamageDelt;
-	damageDelt = this->currentDamageDelt;
+	currentDamageDealtLocal = this->currentDamageDealt;
 
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ZCX, damageDelt);
+	ASM_MOV_REG_VAR(ecx, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
 	ASM(add ZCX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDelt, ZCX);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, ecx);
 
 	ASM(pop ZCX);
 
-	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(damageDelt, -std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
+	this->currentDamageDealt = currentDamageDealtLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -15,6 +15,7 @@ using namespace cocos2d;
 
 const std::string IllusionBehavior::MapKey = "illusion";
 const std::string IllusionBehavior::PropertyGroup = "illusion-group";
+const std::string IllusionBehavior::SaveKeyDispelled = "SAVE_KEY_DISPELLED";
 
 IllusionBehavior* IllusionBehavior::create(GameObject* owner)
 {
@@ -47,6 +48,11 @@ IllusionBehavior::~IllusionBehavior()
 
 void IllusionBehavior::onLoad()
 {
+	if (this->object->loadObjectStateOrDefault(IllusionBehavior::SaveKeyDispelled, Value(false)).asBool())
+	{
+		return;
+	}
+
 	this->object->setOpacity(0);
 
 	if (this->portal != nullptr)
@@ -60,6 +66,7 @@ void IllusionBehavior::onLoad()
 
 		if (args != nullptr && args->group == this->group)
 		{
+			this->object->saveObjectState(IllusionBehavior::SaveKeyDispelled, Value(true));
 			this->object->runAction(FadeTo::create(0.25f, 255));
 
 			if (this->portal != nullptr)

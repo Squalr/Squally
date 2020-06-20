@@ -173,7 +173,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 
 void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
 {
-	if (this->capacity == Inventory::InfiniteCapacity || int(this->items.size()) < this->capacity)
+	if (item != nullptr && this->canInsertItemIfUnique(item) && (this->capacity == Inventory::InfiniteCapacity || int(this->items.size()) < this->capacity))
 	{
 		this->itemsNode->addChild(item);
 		this->items.push_back(item);
@@ -187,6 +187,8 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 			onInsert(item);
 		}
+
+		return;
 	}
 	else
 	{
@@ -313,3 +315,29 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 		this->save();
 	}
 }
+
+bool Inventory::canInsertItemIfUnique(Item* item)
+{
+	int uniqueCount = item->getUniqueCount();
+
+	if (uniqueCount >= 1)
+	{
+		// Count how many duplicates exist
+		for (auto next : this->items)
+		{
+			if (item->getItemName() == next->getItemName())
+			{
+				uniqueCount--;
+			}
+		}
+
+		// Unique cap hit!
+		if (uniqueCount <= 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+

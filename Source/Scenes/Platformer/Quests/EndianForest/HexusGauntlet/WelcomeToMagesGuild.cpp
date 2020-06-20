@@ -11,6 +11,7 @@
 #include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -64,6 +65,7 @@ void WelcomeToMagesGuild::onActivate(bool isActiveThroughSkippable)
 
 void WelcomeToMagesGuild::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFTalkToSarude);
 }
 
 void WelcomeToMagesGuild::onSkipped()
@@ -91,7 +93,7 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -107,13 +109,13 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude::create()->setStringReplacementVariables(
-				Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Sarude::create()),
+				Strings::Platformer_Entities_Names_Npcs_DataMines_Sarude::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -124,7 +126,7 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});

@@ -20,12 +20,14 @@ SteelMace* SteelMace::create()
 	return instance;
 }
 
-SteelMace::SteelMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 24, ItemStats(
+SteelMace::SteelMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 9, 12, ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
 	0,
 	// Attack
+	0,
+	// Magic Attack
 	0,
 	// Armor
 	0,

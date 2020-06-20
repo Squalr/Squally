@@ -32,6 +32,11 @@ public:
 		H4,
 		P,
 		Small,
+		Tiny,
+		Micro,
+		
+		MAX = S1,
+		MIN = Micro,
 	};
 
 	static LocalizedLabel* create(
@@ -48,6 +53,8 @@ public:
 	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	void setFontSize(FontSize fontSize);
+	bool increaseFontSize();
+	bool decreaseFontSize();
 	float getFontSize();
 	std::string getFont();
 
@@ -70,6 +77,7 @@ private:
 
 	void onEnter() override;
 	void onStringUpdate(LocalizedString* localizedString);
+	void cleanupState();
 	cocos2d::LanguageType getCurrentLanguage();
 	float getFontSizeS1();
 	float getFontSizeS2();
@@ -83,6 +91,8 @@ private:
 	float getFontSizeH4();
 	float getFontSizeP();
 	float getFontSizeSmall();
+	float getFontSizeTiny();
+	float getFontSizeMicro();
 
 	std::string getMainFont();
 	std::string getMonospacedFont();

@@ -19,7 +19,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
 #include "Scenes/Platformer/Hackables/ScrappyClippy.h"
@@ -72,8 +72,8 @@ void FireballTutorialBehavior::onLoad()
 			{
 				args->projectile->registerClippyOnto(Fireball::HackIdentifierFireballSpeed, [=]
 				{
-					return ScrappyClippy::create(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create()));
+					return ScrappyClippy::create(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_FireballClippy::create()
+						->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_StopFireball::create()));
 				});
 
 				this->runTutorial();
@@ -146,7 +146,7 @@ void FireballTutorialBehavior::runTutorial()
 					CombatEvents::TriggerResumeTimelineCinematic();
 					HackableEvents::TriggerAllowHackerMode();
 				},
-				SoundResources::Platformer_Entities_Droid_DroidChatter
+				Voices::GetNextVoiceMedium(Voices::VoiceType::Droid)
 			));
 		}),
 		nullptr

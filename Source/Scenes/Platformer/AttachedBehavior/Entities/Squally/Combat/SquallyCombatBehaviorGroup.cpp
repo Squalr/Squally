@@ -46,6 +46,7 @@ SquallyCombatBehaviorGroup::~SquallyCombatBehaviorGroup()
 
 void SquallyCombatBehaviorGroup::onLoad()
 {
+	super::onLoad();
 }
 
 void SquallyCombatBehaviorGroup::onDisable()

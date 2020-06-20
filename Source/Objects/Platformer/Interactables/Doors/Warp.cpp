@@ -4,8 +4,10 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -20,8 +22,10 @@
 using namespace cocos2d;
 
 const std::string Warp::MapKey = "warp";
-const std::string Warp::MapKeyWarpFrom = "from";
-const std::string Warp::MapKeyWarpTo = "to";
+const std::string Warp::PropertyWarpFrom = "from";
+const std::string Warp::PropertyWarpTo = "to";
+const std::string Warp::PropertyNoWarpCamera = "no-warp-camera";
+const std::string Warp::PropertyRelayer = "relayer";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
 
 Warp* Warp::create(ValueMap& properties)
@@ -33,11 +37,21 @@ Warp* Warp::create(ValueMap& properties)
 	return instance;
 }
 
-Warp::Warp(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+Warp::Warp(ValueMap& properties) : super(
+	properties,
+	Size(
+		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	),
+	Vec2::ZERO,
+	Color3B(16, 23, 57))
 {
-	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpFrom, Value("")).asString();
-	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpTo, Value("")).asString();
+	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpFrom, Value("")).asString();
+	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
+	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
+	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
 
+	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);
 }
 
@@ -63,7 +77,9 @@ void Warp::initializeListeners()
 	{
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
-			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, this->getPosition()));
+			this->doRelayer();
+
+			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
 		}), Squally::MapKey);
 	});
 }
@@ -71,4 +87,19 @@ void Warp::initializeListeners()
 void Warp::loadMap()
 {
 	this->broadcastMapEvent(Warp::EventWarpToPrefix + this->to, ValueMap());
+}
+
+void Warp::doRelayer()
+{
+	if (!this->relayer)
+	{
+		return;
+	}
+
+	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+
+	if (layer != nullptr)
+	{
+		GameUtils::changeParent(squally, layer, true);
+	}
 }

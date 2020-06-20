@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include <string>
 
 class PlatformerEntity;
@@ -14,9 +15,11 @@ public:
 	{
 		PlatformerEntity* target;
 		MinMaxPool* pocketPool;
+		std::function<void()> onPickPocket;
 		std::string saveKeyPickPocketed;
 
-		RequestPickPocketArgs(PlatformerEntity* target, MinMaxPool* pocketPool, std::string saveKeyPickPocketed) : target(target), pocketPool(pocketPool), saveKeyPickPocketed(saveKeyPickPocketed)
+		RequestPickPocketArgs(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string saveKeyPickPocketed)
+			: target(target), pocketPool(pocketPool), onPickPocket(onPickPocket), saveKeyPickPocketed(saveKeyPickPocketed)
 		{
 		}
 	};

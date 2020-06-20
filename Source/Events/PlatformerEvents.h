@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 
+#include "cocos/base/ccTypes.h"
 #include "cocos/math/CCGeometry.h"
 
 class Currency;
@@ -20,6 +21,7 @@ public:
 	static const std::string EventSpawnToTransitionLocation;
 	static const std::string EventWarpToLocationPrefix;
 	static const std::string EventWarpToObjectIdPrefix;
+	static const std::string EventAfterWarpPrefix;
 	static const std::string EventBeforePlatformerMapChange;
 	static const std::string EventCinematicHijack;
 	static const std::string EventCinematicRestore;
@@ -28,10 +30,12 @@ public:
 	static const std::string EventEquippedItemsChanged;
 	static const std::string EventEngageEnemy;
 	static const std::string EventEnemyEngaged;
+	static const std::string EventRunFlashFx;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventOpenAlchemy;
 	static const std::string EventOpenSmithing;
+	static const std::string EventOpenItemInfo;
 	static const std::string EventDiscoverItem;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
@@ -44,6 +48,7 @@ public:
 	static const std::string EventSaveRespawn;
 	static const std::string EventBeforeLoadRespawn;
 	static const std::string EventLoadRespawn;
+	static const std::string EventObjectiveChanged;
 	static const std::string EventUnstuck;
 
 	struct TransitionArgs
@@ -58,9 +63,19 @@ public:
 	struct WarpObjectToLocationArgs
 	{
 		GameObject* object;
-		cocos2d::Vec2 position;
+		cocos2d::Vec3 position;
+		bool warpCamera;
 
-		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec2 position) : object(object), position(position)
+		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec3 position, bool warpCamera = true) : object(object), position(position), warpCamera(warpCamera)
+		{
+		}
+	};
+
+	struct AfterWarpArgs
+	{
+		GameObject* object;
+
+		AfterWarpArgs(GameObject* object) : object(object)
 		{
 		}
 	};
@@ -69,8 +84,9 @@ public:
 	{
 		GameObject* object;
 		std::string objectId;
+		bool warpCamera;
 
-		WarpObjectToObjectIdArgs(GameObject* object, std::string objectId) : object(object), objectId(objectId)
+		WarpObjectToObjectIdArgs(GameObject* object, std::string objectId, bool warpCamera = true) : object(object), objectId(objectId), warpCamera(warpCamera)
 		{
 		}
 	};
@@ -116,11 +132,29 @@ public:
 		EnemyEngagedArgs() { }
 	};
 
+	struct FlashFxArgs
+	{
+		cocos2d::Color3B flashColor;
+		float duration;
+		int repeatCount;
+
+		FlashFxArgs(cocos2d::Color3B flashColor, float duration, int repeatCount) : flashColor(flashColor), duration(duration), repeatCount(repeatCount) { }
+	};
+
 	struct CraftingOpenArgs
 	{
 		std::vector<Item*> recipes;
 
 		CraftingOpenArgs(std::vector<Item*> recipes) : recipes(recipes) { }
+	};
+
+	struct ItemInfoArgs
+	{
+		Item* item;
+		std::function<void()> onExit;
+		std::function<void()> onTakeDisplayItem;
+
+		ItemInfoArgs(Item* item, std::function<void()> onExit = nullptr, std::function<void()> onTakeDisplayItem = nullptr) : item(item), onExit(onExit), onTakeDisplayItem(onTakeDisplayItem) { }
 	};
 
 	struct GiveItemsFromPoolArgs
@@ -146,11 +180,10 @@ public:
 	struct ItemDiscoveryArgs
 	{
 		Item* item;
-		LocalizedString* messageOverride;
-		bool keepOpen;
+		bool cinematicHijack;
 
-		ItemDiscoveryArgs(Item* item, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
-			: item(item), messageOverride(messageOverride), keepOpen(keepOpen) { }
+		ItemDiscoveryArgs(Item* item, bool cinematicHijack = true)
+			: item(item), cinematicHijack(cinematicHijack) { }
 	};
 
 	struct GiveCurrenciesFromPoolArgs
@@ -190,6 +223,7 @@ public:
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpObjectToLocation(WarpObjectToLocationArgs args);
 	static void TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args);
+	static void TriggerAfterWarp(AfterWarpArgs args);
 	static void TriggerBeforePlatformerMapChange();
 	static void TriggerCinematicHijack();
 	static void TriggerCinematicRestore();
@@ -198,10 +232,12 @@ public:
 	static void TriggerEquippedItemsChanged();
 	static void TriggerEngageEnemy(EngageEnemyArgs args);
 	static void TriggerEnemyEngaged(EnemyEngagedArgs args);
+	static void TriggerRunFlashFx(FlashFxArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerOpenAlchemy(CraftingOpenArgs args);
 	static void TriggerOpenSmithing(CraftingOpenArgs args);
+	static void TriggerOpenItemInfo(ItemInfoArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);
@@ -214,5 +250,6 @@ public:
 	static void TriggerSaveRespawn(SaveRespawnArgs args);
 	static void TriggerBeforeLoadRespawn();
 	static void TriggerLoadRespawn();
+	static void TriggerObjectiveChanged();
 	static void TriggerUnstuck();
 };

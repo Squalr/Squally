@@ -30,6 +30,10 @@ public:
 protected:
 	OptionsMenu();
 	virtual ~OptionsMenu();
+	
+	void onEnter() override;
+	void initializeListeners() override;
+	void initializePositions() override;
 
 private:
 	typedef SmartNode super;
@@ -42,9 +46,6 @@ private:
 		Memes,
 	};
 
-	void onEnter() override;
-	void initializeListeners() override;
-	void initializePositions() override;
 	void setActiveTab(Tab tab);
 	void onMenuCancel();
 	void onMenuExit();

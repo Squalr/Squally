@@ -38,14 +38,14 @@ void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 	
 	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (!this->enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (!this->enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
 		Squally* squally = GameUtils::getFirstParentOfType<Squally>(collisionData.other);
 
-		if (squally != nullptr && squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (squally != nullptr && squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			// Encountered enemy w/ first-strike
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->enemy, false));

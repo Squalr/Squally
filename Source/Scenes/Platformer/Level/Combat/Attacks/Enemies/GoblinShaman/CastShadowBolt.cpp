@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/ShadowBolt/ShadowBolt.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ShadowBolt/ShadowBolt.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -33,7 +33,7 @@ CastShadowBolt* CastShadowBolt::create(float attackDuration, float recoverDurati
 }
 
 CastShadowBolt::CastShadowBolt(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_SpellCast, priority, 4, 6, 9, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SpellImpactPurple, priority, AbilityType::Shadow, 4, 6, 9, attackDuration, recoverDuration)
 {
 }
 
@@ -71,17 +71,17 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 			
-			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}
 
-			shadowBolt->disable(false);
+			shadowBolt->disable(true);
 			shadowBolt->runImpactFX();
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;
@@ -120,7 +120,7 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			shadowBolt->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+			shadowBolt->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 		});
 	}
 }

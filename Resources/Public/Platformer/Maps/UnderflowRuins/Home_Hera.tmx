@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="828">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-58" y="-58" width="3191.27" height="1264"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor background 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="822" name="Generic/Shelf1" type="decor" x="4828.71" y="74.2879" width="1135" height="753"/>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="entities background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="809" name="Ruins/ArchDoorGray1" type="decor" x="632.41" y="611.167" width="235" height="452"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="-62.3621" y="1065.94" width="3198.66" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="811" name="Generic/RedRug" type="decor" x="588.576" y="1056" width="332" height="21"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="632.86" y="691.211" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="UnderflowRuins/Town_Main"/>
+    <property name="transition" value="hera"/>
+   </properties>
+  </object>
+  <object id="818" name="reward-item" type="object" x="5083.13" y="391.432" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="819" name="reward-item" type="object" x="5376.46" y="391.432" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="820" name="reward-pool-hera" type="object" x="5384.51" y="155.841" width="64" height="64"/>
+  <object id="821" name="reward-item" type="object" x="5662.48" y="390.303" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="823" name="glass-display-item" type="object" x="2473.44" y="740.561" width="169" height="331">
+   <properties>
+    <property name="display-group" value="display-group-A"/>
+    <property name="is-opened" type="bool" value="false"/>
+    <property name="item-name" value="archers-hat"/>
+   </properties>
+  </object>
+  <object id="824" name="glass-display-item" type="object" x="2753.44" y="740.561" width="169" height="331">
+   <properties>
+    <property name="display-group" value="display-group-A"/>
+    <property name="is-opened" type="bool" value="false"/>
+    <property name="item-name" value="acolytes-cap"/>
+   </properties>
+  </object>
+  <object id="825" name="glass-display-item" type="object" x="2202.17" y="738.561" width="169" height="331">
+   <properties>
+    <property name="display-group" value="display-group-A"/>
+    <property name="is-opened" type="bool" value="false"/>
+    <property name="item-name" value="copper-helm"/>
+   </properties>
+  </object>
+  <object id="826" name="solid" type="collision" x="1905.65" y="-214.471" width="126.878" height="1598.76">
+   <properties>
+    <property name="tag" value="quest-solid-wall"/>
+   </properties>
+  </object>
+  <object id="827" name="camera-stop" type="object" x="1876.32" y="-75.1376" width="126.878" height="1366.76">
+   <properties>
+    <property name="no-y" type="bool" value="false"/>
+    <property name="tag" value="quest-camera-stop"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="hera" type="entity" x="1486.91" y="937.333" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="talk-to-hera,cure-town"/>
+    <property name="quest-line" value="cure-town"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="355.588" y="942.43" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="805" name="spawn" type="object" x="692.65" y="935.7" width="128" height="128">
+   <properties>
+    <property name="transition" value="hera"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

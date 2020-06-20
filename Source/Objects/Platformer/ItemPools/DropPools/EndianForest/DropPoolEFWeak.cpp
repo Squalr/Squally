@@ -7,7 +7,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/EndianForest/CurrencyPoolEFGeneric.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolT1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -27,7 +27,7 @@ DropPoolEFWeak* DropPoolEFWeak::create(ValueMap& properties)
 
 DropPoolEFWeak::DropPoolEFWeak(ValueMap& properties) : super(properties, DropPoolEFWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolEFGeneric::create(properties),
 	{
-		AlchemyPoolT1::create(SampleMethod::Guarantee, 1, 1),
+		AlchemyPoolTier1::create(SampleMethod::Guarantee, 1, 1),
 	})
 {
 }

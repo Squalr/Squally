@@ -17,8 +17,10 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ItemResources.h"
@@ -63,18 +65,28 @@ void WindSpellbook::onLoad(QuestState questState)
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
 			this->runCinematicSequence();
+
+			this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableTurnIn();
+			});
 		}
 	}, Marcel::MapKey);
 }
 
 void WindSpellbook::onActivate(bool isActiveThroughSkippable)
 {
+	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->enableTurnIn();
+	});
 }
 
 void WindSpellbook::onComplete()
 {
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFHeadNorth);
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),
@@ -82,6 +94,11 @@ void WindSpellbook::onComplete()
 		ItemResources::Spellbooks_SpellBookWind,
 		SoundResources::Notifications_NotificationGood1
 	));
+
+	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		questBehavior->disableAll();
+	});
 }
 
 void WindSpellbook::onSkipped()
@@ -109,7 +126,7 @@ void WindSpellbook::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -125,7 +142,7 @@ void WindSpellbook::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});

@@ -192,6 +192,23 @@ float GameCamera::getCameraDistance()
 	return Camera::getDefaultCamera()->getPositionZ();
 }
 
+float GameCamera::getCameraDepth()
+{
+	return this->getCameraDistance() - this->getIntendedCameraDistance();
+}
+
+float GameCamera::getTargetDepth()
+{
+	float depth = 0.0f;
+
+	if (this->getCurrentTrackingData() != nullptr && this->getCurrentTrackingData()->target != nullptr)
+	{
+		depth += GameUtils::getDepth(this->getCurrentTrackingData()->target);
+	}
+
+	return depth;
+}
+
 void GameCamera::setCameraDistance(float distance)
 {
 	if (Camera::getDefaultCamera() == nullptr)
@@ -206,6 +223,11 @@ void GameCamera::setCameraDistance(float distance)
 float GameCamera::getCameraZoomOnTarget(cocos2d::Node* target)
 {
 	return ((this->getCameraDistance() - GameUtils::getDepth(target)) / this->getIntendedCameraDistance());
+}
+
+float GameCamera::getCameraZoomOnZero()
+{
+	return (this->getCameraDistance() / this->defaultDistance);
 }
 
 float GameCamera::getCameraZoom()
@@ -433,7 +455,7 @@ Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 
 Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 {
-	const float CameraZoom = this->getCameraZoom();
+	const float CameraZoom = this->getCameraZoomOnZero();
 	const Size CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
 
 	const float MinX = this->mapBounds.getMinX() + CameraSize.width / 2.0f;
@@ -500,6 +522,14 @@ CameraTrackingData* GameCamera::getCurrentTrackingData()
 	}
 
 	return nullptr;
+}
+
+void GameCamera::popTargetIfMultiple()
+{
+	if (this->targetStack.size() > 1)
+	{
+		this->targetStack.pop();
+	}
 }
 
 void GameCamera::popTarget()

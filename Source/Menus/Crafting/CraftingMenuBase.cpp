@@ -246,6 +246,7 @@ void CraftingMenuBase::populateItemList()
 		});
 
 		entry->hideIcon();
+		entry->setCraftCount(this->getCraftCount(dynamic_cast<Recipe*>(item), this->inventory));
 	}
 
 	this->itemMenu->updateAndPositionItemText();
@@ -256,6 +257,8 @@ void CraftingMenuBase::open(std::vector<Item*> recipes)
 	this->recipes = recipes;
 	this->onFilterChange();
 
+	this->canCraft = false;
+
 	this->filterMenu->focus();
 	this->itemMenu->unfocus();
 }
@@ -265,13 +268,41 @@ void CraftingMenuBase::setReturnClickCallback(std::function<void()> returnClickC
 	this->returnClickCallback = returnClickCallback;
 }
 
-void CraftingMenuBase::onCraftPreview(Item* item)
+int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 {
-	if (dynamic_cast<Recipe*>(item) == nullptr)
+	if (recipe == nullptr || this->inventory == nullptr)
 	{
-		return;
+		return 0;
 	}
 
+	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
+
+	int craftCount = 1000;
+
+	for (auto reagent : reagents)
+	{
+		Item* next = std::get<0>(reagent);
+		int requiredCount = std::get<1>(reagent);
+		int existingCount = 0;
+
+		for (auto item : this->inventory->getItems())
+		{
+			if (item->getItemName() == next->getItemName())
+			{
+				existingCount++;
+			}
+		}
+
+		int reagentCraftAmount = requiredCount == 0 ? requiredCount : (existingCount / requiredCount);
+
+		craftCount = std::min(craftCount, reagentCraftAmount);
+	}
+
+	return craftCount;
+}
+
+void CraftingMenuBase::onCraftPreview(Item* item)
+{
 	this->canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
 	
 	if (this->canCraft)

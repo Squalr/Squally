@@ -36,7 +36,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackableList = std::vector<HackableBase*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackAbilityList = std::vector<HackActivatedAbility*>();
-	this->trackedAttributes = std::vector<HackableBase*>();
+	this->trackedHackables = std::vector<HackableBase*>();
 	this->uiElementsButton = Node::create();
 	this->uiElementsRain = Node::create();
 	this->uiElementsProgressBars = Node::create();
@@ -162,18 +162,18 @@ void HackableObject::onHackerModeEnable()
 	}
 
 	// Abort if all hackables off cooldown
-	if (std::all_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
+	if (std::all_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
 		{
-			return (!attribute->isCooldownComplete());
+			return (!hackable->isCooldownComplete());
 		}))
 	{
 		return;
 	}
 
 	// Enable if any hackable is off cooldown and unlocked (right hack flags are set)
-	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
 		{
-			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
+			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
 		}))
 	{
 		this->hackButton->setVisible(true);
@@ -203,25 +203,25 @@ void HackableObject::registerHackables()
 
 void HackableObject::updateTimeRemainingBars()
 {
-	// Add attributes that should be tracked by the UI (activated or on CD)
+	// Add hackables that should be tracked by the UI (activated or on CD)
 	for (auto next : this->hackableList)
 	{
-		if (std::find(this->trackedAttributes.begin(), this->trackedAttributes.end(), next) == this->trackedAttributes.end())
+		if (std::find(this->trackedHackables.begin(), this->trackedHackables.end(), next) == this->trackedHackables.end())
 		{
 			if (!next->isComplete() || !next->isCooldownComplete())
 			{
-				this->trackedAttributes.push_back(next);
+				this->trackedHackables.push_back(next);
 			}
 		}
 	}
 
-	// Remove attributes that have timed out and are available cooldown wise
-	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableBase* attribute)
+	// Remove hackables that have timed out and are available cooldown wise
+	this->trackedHackables.erase(std::remove_if(this->trackedHackables.begin(), this->trackedHackables.end(), [](HackableBase* hackable)
 	{
-		return attribute->isComplete() && attribute->isCooldownComplete();
-	}), this->trackedAttributes.end());
+		return hackable->isComplete() && hackable->isCooldownComplete();
+	}), this->trackedHackables.end());
 
-	while (this->timeRemainingBars.size() < this->trackedAttributes.size())
+	while (this->timeRemainingBars.size() < this->trackedHackables.size())
 	{
 		ProgressBar* progressBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_FillPurple);
 		Sprite* icon = Sprite::create();
@@ -233,13 +233,13 @@ void HackableObject::updateTimeRemainingBars()
 		this->uiElementsProgressBars->addChild(icon);
 	}
 
-	int attributeCount = int(this->trackedAttributes.size());
+	int hackableCount = int(this->trackedHackables.size());
 
 	for (int index = 0; index < int(this->timeRemainingBars.size()); index++)
 	{
-		if (index < attributeCount)
+		if (index < hackableCount)
 		{
-			auto next = this->trackedAttributes[index];
+			auto next = this->trackedHackables[index];
 
 			this->timeRemainingBars[index]->setVisible(true);
 			this->timeRemainingIcons[index]->setVisible(true);
@@ -258,7 +258,7 @@ void HackableObject::updateTimeRemainingBars()
 			this->timeRemainingBars[index]->setPositionY(float(index) * -32.0f);
 			this->timeRemainingIcons[index]->setPosition(Vec2(-80.0f, float(index) * -32.0f));
 
-			this->timeRemainingBars[index]->setProgress(1.0f - next->getElapsedDuration() / next->getDuration());
+			this->timeRemainingBars[index]->setProgress(next->getDuration() <= 0.0f ? 1.0f : (1.0f - next->getElapsedDuration() / next->getDuration()));
 		}
 		else
 		{
@@ -272,14 +272,14 @@ void HackableObject::updateTimeRemainingBars()
 
 void HackableObject::refreshParticleFx()
 {
-	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* attribute)
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
 		{
-			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
+			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
 		})
 		&& this->allowFx
 		&& this->isHackable
 		&& !this->hackableList.empty()
-		&& this->trackedAttributes.empty())
+		&& this->trackedHackables.empty())
 	{
 		this->createSensingParticles();
 
@@ -405,20 +405,11 @@ void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestor
 
 	if (hasHackableCode)
 	{
-		if (forceRestoreState)
+		// Removed all tracked hackables with the same ID as the code being removed
+		this->trackedHackables.erase(std::remove_if(this->trackedHackables.begin(), this->trackedHackables.end(), [=](HackableBase* hackable)
 		{
-			hackableCode->restoreState();
-		}
-		else
-		{
-			hackableCode->restoreStateIfUnique();
-		}
-		
-		// Removed all tracked attributes with the same ID as the code being removed
-		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
-		{
-			return attribute->getHackableIdentifier() == hackableCode->getHackableIdentifier();
-		}), this->trackedAttributes.end());
+			return hackable->getHackableIdentifier() == hackableCode->getHackableIdentifier();
+		}), this->trackedHackables.end());
 
 		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
 		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
@@ -447,11 +438,11 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 		return;
 	}
 
-	// Removed all tracked attributes with the same ID as the ability being removed
-	this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableBase* attribute)
+	// Removed all tracked hackables with the same ID as the ability being removed
+	this->trackedHackables.erase(std::remove_if(this->trackedHackables.begin(), this->trackedHackables.end(), [=](HackableBase* hackable)
 	{
-		return attribute->getHackableIdentifier() == hackActivatedAbility->getHackableIdentifier();
-	}), this->trackedAttributes.end());
+		return hackable->getHackableIdentifier() == hackActivatedAbility->getHackableIdentifier();
+	}), this->trackedHackables.end());
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());

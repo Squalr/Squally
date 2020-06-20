@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> BludgeonPlans::getReagentsInternal()
 	return
 	{
 		{ Copper::create(), 3 },
-		{ LightWood::create(), 10 },
+		{ Wood::create(), 10 },
 		{ Iron::create(), 2 },
 	};
 }

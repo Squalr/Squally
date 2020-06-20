@@ -44,6 +44,9 @@ const float CurseOfTongues::DefaultHackSpeed = -0.5f; // Keep in sync with the a
 const float CurseOfTongues::MaxSpeed = 1.0f;
 const float CurseOfTongues::Duration = 6.0f;
 
+// Static to prevent GCC optimization issues
+volatile float CurseOfTongues::currentSpeed = 0.0f;
+
 CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	CurseOfTongues* instance = new CurseOfTongues(caster, target);
@@ -54,7 +57,7 @@ CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntit
 }
 
 CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Voodoo, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Shadow, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
@@ -95,7 +98,7 @@ void CurseOfTongues::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -136,8 +139,8 @@ void CurseOfTongues::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
-						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
 							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
@@ -154,24 +157,24 @@ void CurseOfTongues::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &CurseOfTongues::applyCurseOfTongues;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &CurseOfTongues::applyCurseOfTongues;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void CurseOfTongues::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void CurseOfTongues::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
+	super::onModifyTimelineSpeed(speed);
 	
-	this->currentSpeed = *timelineSpeed;
+	this->currentSpeed = *(speed->speed);
 
 	this->applyCurseOfTongues();
 
-	*timelineSpeed = this->currentSpeed;
+	*(speed->speed) = this->currentSpeed;
 }
 
 NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
@@ -188,8 +191,8 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);

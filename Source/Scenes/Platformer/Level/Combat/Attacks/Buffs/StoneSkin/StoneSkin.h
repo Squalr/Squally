@@ -27,14 +27,14 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
 
 	void applyStoneSkin();
 	
-	volatile int currentDamageTaken;
+	static volatile int currentDamageTaken;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* bubble;

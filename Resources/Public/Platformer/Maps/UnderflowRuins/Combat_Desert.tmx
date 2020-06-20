@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="593">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DesertSky"/>
+   <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="38" name="desert bg 4">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="586" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-249.181" width="14981.3" height="318">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="40" name="desert bg 3">
+  <properties>
+   <property name="depth" type="float" value="-2432"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="585" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-1002.85" width="14229.3" height="1478">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="41" name="desert bg 2">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="584" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="15.212" width="14469.3" height="1512">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="desert bg 1">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="583" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="487.091" width="14709.3" height="1076">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
+  </properties>
+  <object id="518" name="combat-spawn" type="object" x="2131.75" y="1675.15" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="554" name="combat-spawn" type="object" x="1689.34" y="1570.05" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="555" name="combat-spawn" type="object" x="831.445" y="1670.73" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="556" name="caverns" type="terrain" x="1436.36" y="1635.46">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="557" name="caverns" type="terrain" x="-32.8152" y="1731.43">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 149.863,0.551976 342.186,29.3141 521.517,1.92086 1116.42,4.11202 1274.65,26.6141 1603.33,5.90541 2009.94,7.40305 2674.53,9.85085 2676.86,289.363 2637.47,576.874 2680.64,875.667 2652.51,1205.8 337.492,1194.93 -3.77993,1196.31 54.9407,698.474 -18.1734,371.03"/>
+  </object>
+  <object id="558" name="combat-spawn" type="object" x="690.307" y="1498.96" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="559" name="combat-spawn" type="object" x="2135.61" y="1438.34" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="560" name="caverns" type="terrain" x="1897.84" y="1503.35">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="561" name="caverns" type="terrain" x="451.697" y="1564.3">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="579" name="water" type="object" x="-36.4985" y="1826.58" width="3103.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="580" name="water" type="object" x="-218.68" y="1708.4" width="3439.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-96"/>
+   </properties>
+  </object>
+  <object id="581" name="water" type="object" x="-374.68" y="1626.58" width="3695.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-160"/>
+   </properties>
+  </object>
+  <object id="582" name="water" type="object" x="-499.65" y="1591.79" width="3967.3" height="904.42">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-288"/>
+   </properties>
+  </object>
+  <object id="590" name="cinematic-marker" type="object" x="1288.73" y="1131.94" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="591" name="cinematic-marker" type="object" x="1293.28" y="817.335" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="592" name="cinematic-marker" type="object" x="1283.94" y="1602.66" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="551" name="camera-focus" type="object" x="1269.58" y="1184.12" width="128" height="128">
+   <properties>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="562" name="camera-target" type="object" x="934.606" y="1182" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-1"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="563" name="camera-target" type="object" x="1784" y="1176" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-1"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
+  <object id="564" name="camera-target" type="object" x="824" y="1302" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-0"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="565" name="camera-target" type="object" x="1606" y="1246" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-0"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="566" name="camera-target" type="object" x="1744" y="1346" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-2"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="37" name="decor +n">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

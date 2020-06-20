@@ -86,8 +86,6 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
-	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
-	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 
 	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
@@ -97,6 +95,10 @@ GameObject::GameObject(const ValueMap& properties) : super()
 		
 		tags.push_back(this->uniqueIdentifier);
 	}
+	
+	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
+	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
+	this->addTag(this->getUniqueIdentifier());
 
 	for (auto tag : tags)
 	{
@@ -204,6 +206,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	}
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
+	this->loadObjectState();
 }
 
 GameObject::~GameObject()
@@ -213,8 +216,6 @@ GameObject::~GameObject()
 void GameObject::onEnter()
 {
 	super::onEnter();
-
-	this->loadObjectState();
 }
 
 void GameObject::onEnterTransitionDidFinish()
@@ -310,22 +311,22 @@ Value GameObject::getPropertyOrDefault(std::string key, Value value)
 	return GameUtils::getKeyOrDefault(this->properties, key, value);
 }
 
-Value GameObject::getStateOrDefault(std::string key, Value value)
+Value GameObject::getRuntimeStateOrDefault(std::string key, Value value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, value);
 }
 
-int GameObject::getStateOrDefaultInt(std::string key, int value)
+int GameObject::getRuntimeStateOrDefaultInt(std::string key, int value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asInt();
 }
 
-float GameObject::getStateOrDefaultFloat(std::string key, float value)
+float GameObject::getRuntimeStateOrDefaultFloat(std::string key, float value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asFloat();
 }
 
-bool GameObject::getStateOrDefaultBool(std::string key, bool value)
+bool GameObject::getRuntimeStateOrDefaultBool(std::string key, bool value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asBool();
 }
@@ -335,7 +336,7 @@ ValueMap& GameObject::getStateVariables()
 	return this->stateVariables;
 }
 
-bool GameObject::hasState(std::string key)
+bool GameObject::hasRuntimeState(std::string key)
 {
 	return GameUtils::keyExists(this->stateVariables, key);
 }
@@ -357,7 +358,7 @@ bool GameObject::isZSorted()
 
 bool GameObject::isMapObject()
 {
-	return this->uniqueIdentifier != "";
+	return !this->uniqueIdentifier.empty();
 }
 
 void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
@@ -379,7 +380,7 @@ void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 	}
 }
 
-const Value& GameObject::getObjectStateOrDefault(std::string key, const Value& defaultValue)
+const Value& GameObject::loadObjectStateOrDefault(std::string key, const Value& defaultValue)
 {
 	return GameUtils::getKeyOrDefault(this->saveProperties, key, defaultValue);
 }
@@ -389,7 +390,6 @@ void GameObject::loadObjectState()
 	if (this->isMapObject())
 	{
 		this->saveProperties = SaveManager::getProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
-		this->onObjectStateLoaded();
 	}
 }
 
@@ -430,10 +430,6 @@ void GameObject::listenForStateWriteOnce(std::string key, std::function<void(coc
 	listener->setTag(uniqueKey);
 
 	this->addEventListenerIgnorePause(listener);
-}
-
-void GameObject::onObjectStateLoaded()
-{
 }
 
 bool GameObject::containsAttributes()

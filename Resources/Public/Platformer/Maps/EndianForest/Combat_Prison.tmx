@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="966">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="969">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -223,6 +224,21 @@
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" value="0"/>
+   </properties>
+  </object>
+  <object id="966" name="cinematic-marker" type="object" x="1891.39" y="1231.28" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="967" name="cinematic-marker" type="object" x="1895.94" y="916.668" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="968" name="cinematic-marker" type="object" x="1886.6" y="1702" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
    </properties>
   </object>
  </objectgroup>

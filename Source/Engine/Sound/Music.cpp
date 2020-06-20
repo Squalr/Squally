@@ -64,6 +64,7 @@ void Music::initializeListeners()
 
 void Music::pause()
 {
+	// THIS IS NOT MUSIC PAUSE, THIS IS NODE PAUSE.
 	// Do nothing -- music never gets paused via node trees (pause is an engine function -- use freeze to pause music!)
 }
 
@@ -108,7 +109,7 @@ void Music::play(bool repeat, float startDelay)
 		}
 		case AudioEngine::AudioState::PAUSED:
 		{
-			this->unpause();
+			this->unfreeze();
 			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 			break;
 		}
@@ -142,12 +143,28 @@ void Music::clearState()
 	this->destroyOnFadeOut = false;
 }
 
-void Music::unpause()
+void Music::unfreeze()
 {
-	super::unpause();
+	super::unfreeze();
 
-	// Unpuase seems broken, just play a new sound I guess
-	this->play();
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		{
+			// Unpause failed, play new sound
+			this->play();
+			break;
+		}
+		case AudioEngine::AudioState::PLAYING:
+		{
+			break;
+		}
+	}
 
 	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 }

@@ -39,7 +39,6 @@ std::vector<std::tuple<Item*, int>> DemonicWandPlans::getReagentsInternal()
 	return
 	{
 		{ Wood::create(), 6 },
-		{ Tin::create(), 2 },
 		{ Gold::create(), 4 },
 		{ Emerald::create(), 2 },
 		{ Sapphire::create(), 3 },

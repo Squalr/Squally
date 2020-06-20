@@ -31,7 +31,7 @@ EnergyBolt* EnergyBolt::create()
 EnergyBolt::EnergyBolt() : super(nullptr, CollisionObject::createCapsulePolygon(Size(48.0f, 48.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->energyBolt = SmartAnimationSequenceNode::create(FXResources::ElectricOrb_ElectricOrb_0000);
-	this->energySfx = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_ElectricZap1);
+	this->energySfx = WorldSound::create(SoundResources::Platformer_Spells_ElectricZap1);
 
 	this->contentNode->addChild(this->energyBolt);
 	this->postFXNode->addChild(this->energySfx);

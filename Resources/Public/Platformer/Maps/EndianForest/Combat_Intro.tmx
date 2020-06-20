@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="572">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="575">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -8,6 +8,7 @@
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -84,7 +85,7 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1636.01" y="1579.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -124,6 +125,21 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
+  <object id="572" name="cinematic-marker" type="object" x="1284.97" y="1187.04" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="573" name="cinematic-marker" type="object" x="1289.52" y="872.426" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="574" name="cinematic-marker" type="object" x="1280.18" y="1657.76" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -146,7 +162,7 @@
     <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
-  <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
+  <object id="565" name="camera-target" type="object" x="1420" y="1358" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.1"/>

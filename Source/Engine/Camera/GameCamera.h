@@ -26,8 +26,11 @@ public:
 	static GameCamera* getInstance();
 
 	float getCameraDistance();
+	float getCameraDepth();
+	float getTargetDepth();
 	void setCameraDistance(float distance);
 	float getCameraZoomOnTarget(cocos2d::Node* target);
+	float getCameraZoomOnZero();
 	float getCameraZoom();
 	void setCameraZoom(float zoom);
 	cocos2d::Vec2 getCameraPosition();
@@ -41,6 +44,7 @@ public:
 	CameraTrackingData* getCurrentTrackingData();
 	void setTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
 	void pushTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
+	void popTargetIfMultiple();
 	void popTarget();
 	void clearTargets();
 
@@ -67,7 +71,6 @@ private:
 
 	std::stack<CameraTrackingData> targetStack;
 	cocos2d::Rect mapBounds;
-	CameraTrackingData currentTrackingData;
 	float defaultDistance;
 
 	Hud* hud;

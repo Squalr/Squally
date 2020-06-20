@@ -40,7 +40,7 @@ Size Weapon::getWeaponCollisionSize()
 	return Size(32.0f, 160.0f);
 }
 
-Vec2 Weapon::getWeaponOffset()
+Vec2 Weapon::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 192.0f);
@@ -48,5 +48,5 @@ Vec2 Weapon::getWeaponOffset()
 
 std::string Weapon::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid1;
+	return SoundResources::Platformer_Physical_Swings_SwingWeakHybrid1;
 }

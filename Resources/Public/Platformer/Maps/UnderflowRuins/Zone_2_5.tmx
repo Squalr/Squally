@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="970">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="7"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="118" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="119" name="decor -2.5">
+  <properties>
+   <property name="depth" type="float" value="-160"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="120" name="tiled bg -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="931" name="ruins-gray-dark" type="terrain" x="-318" y="-244" width="1788" height="3024">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="933" name="ruins-gray-dark" type="terrain" x="2170" y="-88" width="1308" height="3856">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="117" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="115" name="tiled bg -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="116" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="951" name="ruins-gray-thick" type="terrain" x="-66.97" y="2555.94" width="3737.93" height="248.12"/>
+  <object id="955" name="ruins-gray-thick" type="terrain" x="-58.97" y="287.94" width="3729.93" height="248.12"/>
+  <object id="956" name="ruins-gray-thick" type="terrain" x="-70.97" y="987.94" width="3737.93" height="248.12"/>
+  <object id="957" name="ruins-gray-thick" type="terrain" x="-70.97" y="1755.94" width="3737.93" height="248.12"/>
+  <object id="969" name="ruins-gray-thick" type="terrain" x="-52.965" y="3499.94" width="3737.93" height="248.12"/>
+ </objectgroup>
+ <objectgroup id="122" name="objects -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="960" name="solid" type="collision" x="355.035" y="-22.06" width="313.93" height="2692.12"/>
+ </objectgroup>
+ <objectgroup id="121" name="entities -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="959" name="mermaid" type="entity" x="857.818" y="1621.33" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="961" name="mermaid" type="entity" x="1032" y="860" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="962" name="mermaid" type="entity" x="2536" y="856" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="964" name="mermaid" type="entity" x="2384" y="2424" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="966" name="mermaid" type="entity" x="896" y="2432" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="967" name="mermaid" type="entity" x="1068" y="2428" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="935" name="ruins-gray-dark" type="terrain" x="1406" y="-488" width="796" height="4472">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="936" name="ruins-gray-dark" type="terrain" x="-94" y="2690" width="1500" height="1294">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="decor background 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="entities background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="907" name="ruins-gray-thick" type="terrain" x="2197.03" y="2595.94" width="1469.93" height="248.12"/>
+  <object id="937" name="ruins-gray-thick" type="terrain" x="-72.965" y="1801.94" width="1461.93" height="248.12"/>
+  <object id="938" name="ruins-gray-thick" type="terrain" x="-72.965" y="1033.94" width="1469.93" height="248.12"/>
+  <object id="939" name="ruins-gray-thick" type="terrain" x="-58.965" y="331.94" width="1449.93" height="248.12"/>
+  <object id="940" name="ruins-gray-thick" type="terrain" x="2197.03" y="327.94" width="1469.93" height="248.12"/>
+  <object id="941" name="ruins-gray-thick" type="terrain" x="2193.03" y="1027.94" width="1469.93" height="248.12"/>
+  <object id="942" name="ruins-gray-thick" type="terrain" x="2193.03" y="1795.94" width="1469.93" height="248.12"/>
+  <object id="968" name="ruins-gray-thick" type="terrain" x="2201.16" y="3536.18" width="1479.93" height="666.787"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="926" name="solid" type="collision" x="401.035" y="-22.06" width="261.93" height="2692.12"/>
+  <object id="927" name="solid" type="collision" x="2829.03" y="-74.06" width="261.93" height="3732.12"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="909" name="mermaid" type="entity" x="842.061" y="905.697" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="914" name="mermaid" type="entity" x="759.758" y="199.636" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="916" name="minotaur" type="entity" x="2574.91" y="3413.58" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="655.71" y="3401.14" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="805" name="spawn" type="object" x="443.589" y="3408.59" width="128" height="128">
+   <properties>
+    <property name="transition" value="passage"/>
+   </properties>
+  </object>
+  <object id="818" name="edge-portal" type="object" x="9.01036" y="2897.45" width="200" height="640">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_2_2"/>
+    <property name="transition" value="passage"/>
+   </properties>
+  </object>
+  <object id="928" name="edge-portal" type="object" x="1492" y="0" width="640" height="200">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="929" name="spawn" type="object" x="1736" y="468" width="128" height="128">
+   <properties>
+    <property name="transition" value="down"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="water fg" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="917" name="water" type="object" x="1400" y="-124.37" width="792.32" height="4284.74"/>
+  <object id="918" name="water" type="object" x="-25" y="2623.63" width="1425" height="1536.74"/>
+ </objectgroup>
+ <objectgroup id="114" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="919" name="ruins-gray-thick" type="terrain" x="-66.965" y="2599.33" width="1605.93" height="260.726"/>
+  <object id="920" name="ruins-gray-thick" type="terrain" x="2057.03" y="-120.06" width="245.93" height="3656.12"/>
+  <object id="921" name="ruins-gray-thick" type="terrain" x="1275.03" y="-126.06" width="261.93" height="2725.45"/>
+  <object id="922" name="ruins-gray-thick" type="terrain" x="-107.63" y="3537.82" width="2306.9" height="664.12"/>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

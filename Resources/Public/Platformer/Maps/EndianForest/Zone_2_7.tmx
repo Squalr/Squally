@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="974">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="981">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
+   <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -15,9 +17,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-537.462" y="-416.789">
-   <polygon points="215.558,68.3375 6098.84,64.5907 6104.15,3593.28 216.675,3595.94"/>
-  </object>
+  <object id="978" name="temple-dark" type="texture" x="-349.815" y="-358" width="5907.63" height="3540"/>
  </objectgroup>
  <objectgroup id="72" name="decor -2">
   <properties>
@@ -34,17 +34,15 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="948" name="temple" type="terrain" x="3510.65" y="-249.089">
+  <object id="976" name="temple" type="terrain" x="-601.815" y="-326" width="1899.63" height="3172">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
   </object>
-  <object id="950" name="temple" type="terrain" x="-648.87" y="-514.179">
+  <object id="977" name="temple" type="terrain" x="3610.18" y="-82" width="1819.63" height="3212">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -60,23 +58,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
-   <properties>
-    <property name="map-banner" value=""/>
-    <property name="transition" value="entrance-E"/>
-   </properties>
-  </object>
   <object id="944" name="temple-door" type="object" x="4205.22" y="1642.06" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
     <property name="listen-event" value="grogg-dead"/>
     <property name="map" value="EndianForest/Zone_2_8"/>
     <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="947" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit"/>
    </properties>
   </object>
   <object id="952" name="temple-door" type="object" x="332" y="1644" width="432" height="528">
@@ -89,6 +76,12 @@
   <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="979" name="help-totem-potions" type="object" x="1048.73" y="1924.48" width="248" height="248"/>
+  <object id="980" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
+   <properties>
+    <property name="send-event" value="talk-to-grogg"/>
    </properties>
   </object>
  </objectgroup>
@@ -107,11 +100,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
-   <properties>
-    <property name="send-event" value="talk-to-grogg"/>
-   </properties>
-  </object>
   <object id="966" name="king-grogg" type="entity" x="2756.06" y="1529.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="king-grogg,enemy,agro,run"/>
@@ -148,6 +136,17 @@
   <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
+   <properties>
+    <property name="map-banner" value=""/>
+    <property name="transition" value="entrance-E"/>
+   </properties>
+  </object>
+  <object id="975" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
    </properties>
   </object>
  </objectgroup>

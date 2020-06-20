@@ -5,9 +5,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/DoubleSlash.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/Flurry.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/ThrowWeapon.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
@@ -47,12 +46,12 @@ void OrcWarriorCombatBehavior::initializePositions()
 
 void OrcWarriorCombatBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(DoubleSlash::create(3, 5, 0.5f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed, 0.1f));
-		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::IfNecessary));
-		
-		// attackBehavior->registerAttack(Flurry::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(ThrowWeapon::create(0.55f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));
+		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Rare));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -61,7 +60,7 @@ void OrcWarriorCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			// inventory->forceInsert(IncrementHealthFlask::create());
+			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

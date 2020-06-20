@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -87,6 +88,7 @@ void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 
 void ChatWithGuano::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFRescueGuano);
 }
 
 void ChatWithGuano::onSkipped()
@@ -105,15 +107,15 @@ void ChatWithGuano::runChatSequence()
 				Strings::Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->guano, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->guano, true)
 				),
 				[=]()
 				{
 					this->runChatSequencePt2();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceLong(),
 				false
 			));
 		}),
@@ -127,9 +129,9 @@ void ChatWithGuano::runChatSequencePt2()
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::HardRight,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true),
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true),
 			true
 		),
 		[=]()
@@ -147,15 +149,15 @@ void ChatWithGuano::runChatSequencePt3()
 		Strings::Platformer_Quests_EndianForest_RescueGuano_B_WhatGotMeInHere::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
 			this->runChatSequencePt4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceLong(),
 		false
 	));
 }
@@ -174,7 +176,7 @@ void ChatWithGuano::runChatSequencePt4()
 		{
 			this->runChatSequencePt5();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		true
 	));
 }
@@ -185,16 +187,16 @@ void ChatWithGuano::runChatSequencePt5()
 		Strings::Platformer_Quests_EndianForest_RescueGuano_D_DoorTech::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
 			this->mulDoor->toggleHackable(true);
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceLong(),
 		true
 	));
 }

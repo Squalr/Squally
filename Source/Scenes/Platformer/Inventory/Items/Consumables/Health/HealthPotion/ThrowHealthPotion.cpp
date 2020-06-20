@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/HealthPotion.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
@@ -29,10 +29,11 @@ ThrowHealthPotion* ThrowHealthPotion::create(Priority priority, float healPercen
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource) : super(AttackType::Healing, iconResource, priority, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource)
+	: super(AttackType::Healing, iconResource, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
+	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healPercentage = healPercentage;
 
 	this->addChild(this->throwSound);
@@ -81,10 +82,10 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 
 			if (entity != nullptr)
 			{
-				int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
+				int healing = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
 
 				this->healSound->play();
-				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
+				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing, this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;
@@ -96,11 +97,11 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 		{
 			if (owner == next)
 			{
-				potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 			}
 			else
 			{
-				potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 			}
 		});
 	}

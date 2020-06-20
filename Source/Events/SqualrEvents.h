@@ -5,7 +5,7 @@
 class SqualrEvents
 {
 public:
-	static const std::string EventFireballCollided;
+	static const std::string EventProjectileCollided;
 
-	static void TriggerFireballCollided();
+	static void TriggerProjectileCollided();
 };

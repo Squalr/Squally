@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="750">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="752">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
+   <property name="crack-color" value=""/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -50,21 +52,17 @@
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
  </objectgroup>
- <objectgroup id="72" name="decor -12">
+ <objectgroup id="72" name="decor -13">
   <properties>
-   <property name="depth" type="float" value="-768"/>
+   <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="730" name="Generic/TownFencePost" type="decor" x="5548.64" y="1271.65" width="263" height="1118">
+  <object id="750" name="Forest/Totem" type="decor" x="5560.17" y="1264.5" width="181" height="527">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="731" name="Generic/TownFencePost" type="decor" x="5958.36" y="1270.35" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
+  <object id="751" name="Forest/Totem" type="decor" x="6018.83" y="1261.83" width="181" height="527"/>
  </objectgroup>
  <objectgroup id="7912" name="bridge -12">
   <properties>
@@ -102,7 +100,7 @@
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
  </objectgroup>
- <objectgroup id="16" name="trees-mid">
+ <objectgroup id="16" name="trees-mid" visible="0">
   <properties>
    <property name="depth" type="float" value="-612"/>
    <property name="type" value="objects"/>
@@ -162,7 +160,7 @@
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
   </object>
  </objectgroup>
- <objectgroup id="73" name="decor -6">
+ <objectgroup id="73" name="decor -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -248,7 +246,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="68" name="decor bg">
+ <objectgroup id="68" name="decor bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

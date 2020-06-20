@@ -28,6 +28,7 @@ DebugDisplay::DebugDisplay()
 	this->loseButton = ClickableNode::create(UIResources::Menus_Icons_BloodGoblet, UIResources::Menus_Icons_BloodGoblet);
 	this->drawButton = ClickableNode::create(UIResources::Menus_Icons_YinYang, UIResources::Menus_Icons_YinYang);
 	this->winButton = ClickableNode::create(UIResources::Menus_Icons_Medals, UIResources::Menus_Icons_Medals);
+	this->activeGameState = nullptr;
 
 	this->stateLabel->enableOutline(Color4B::BLACK, 2);
 
@@ -75,22 +76,33 @@ void DebugDisplay::initializeListeners()
 
 	this->loseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->activeGameState->playerLosses = 2;
-		this->activeGameState->enemyLosses = 0;
+		if (this->activeGameState != nullptr)
+		{
+			this->activeGameState->playerLosses = 2;
+			this->activeGameState->enemyLosses = 0;
+		}
 
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
+
 	this->drawButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->activeGameState->playerLosses = 2;
-		this->activeGameState->enemyLosses = 2;
+		if (this->activeGameState != nullptr)
+		{
+			this->activeGameState->playerLosses = 2;
+			this->activeGameState->enemyLosses = 2;
+		}
 
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
+
 	this->winButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->activeGameState->playerLosses = 0;
-		this->activeGameState->enemyLosses = 2;
+		if (this->activeGameState != nullptr)
+		{
+			this->activeGameState->playerLosses = 0;
+			this->activeGameState->enemyLosses = 2;
+		}
 		
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});

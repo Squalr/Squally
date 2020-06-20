@@ -21,24 +21,28 @@
 
 using namespace cocos2d;
 
-InteractMenu* InteractMenu::create(LocalizedString* displayString)
+InteractMenu* InteractMenu::create(LocalizedString* displayString, Color3B backColor, float menuWidth)
 {
-	InteractMenu* instance = new InteractMenu(displayString);
+	InteractMenu* instance = new InteractMenu(displayString, backColor, menuWidth);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractMenu::InteractMenu(LocalizedString* displayString)
+InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, float menuWidth)
 {
 	this->uiElements = Node::create();
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
-	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 128, 48);
+	this->menuSize = Size(menuWidth, 48.0f);
+	this->backdrop = LayerColor::create(Color4B(backColor.r, backColor.g, backColor.b, 196), this->menuSize.width, this->menuSize.height);
 	this->hasRelocated = false;
-	this->isShown = false;
+	this->isFadingIn = false;
+	this->isFadingOut = false;
 
+	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->uiElements->setOpacity(0);
 
 	this->uiElements->addChild(this->backdrop);
@@ -68,7 +72,7 @@ void InteractMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backdrop->setPosition(Vec2(-128.0f / 2.0f, -48.0f / 2.0f));
+	this->backdrop->setPosition(Vec2(-this->menuSize.width / 2.0f, -this->menuSize.height / 2.0f));
 	this->uiElements->setPosition(Vec2(0.0f, 144.0f));
 }
 
@@ -89,11 +93,52 @@ void InteractMenu::initializeListeners()
 
 void InteractMenu::show()
 {
-	if (this->isShown)
+	if (this->isShowing() || this->isFadingIn)
 	{
 		return;
 	}
+	
+	this->tryRelocate();
 
+	this->isFadingIn = true;
+	this->isFadingOut = false;
+
+	this->uiElements->runAction(Sequence::create(
+		FadeTo::create(0.15f, 255),
+		CallFunc::create([=]()
+		{
+			this->isFadingIn = false;
+		}),
+		nullptr
+	));
+
+	this->uiElements->runAction(FadeTo::create(0.15f, 255));
+}
+
+void InteractMenu::hide()
+{
+	if (this->isHidden() || this->isFadingOut)
+	{
+		return;
+	}
+	
+	this->tryRelocate();
+
+	this->isFadingOut = true;
+	this->isFadingIn = false;
+
+	this->uiElements->runAction(Sequence::create(
+		FadeTo::create(0.15f, 0),
+		CallFunc::create([=]()
+		{
+			this->isFadingOut = false;
+		}),
+		nullptr
+	));
+}
+
+void InteractMenu::tryRelocate()
+{
 	if (!this->hasRelocated)
 	{
 		// Move the UI elements to the top-most layer
@@ -102,28 +147,14 @@ void InteractMenu::show()
 		));
 		this->hasRelocated = true;
 	}
-
-	this->isShown = true;
-
-	if (this->uiElements->getOpacity() < 255)
-	{
-		this->uiElements->stopAllActions();
-		this->uiElements->runAction(FadeTo::create(0.15f, 255));
-	}
 }
 
-void InteractMenu::hide()
+bool InteractMenu::isHidden()
 {
-	if (!this->isShown)
-	{
-		return;
-	}
+	return this->uiElements->getOpacity() <= 0;
+}
 
-	this->isShown = false;
-	
-	if (this->uiElements->getOpacity() > 0)
-	{
-		this->uiElements->stopAllActions();
-		this->uiElements->runAction(FadeTo::create(0.15f, 0));
-	}
+bool InteractMenu::isShowing()
+{
+	return this->uiElements->getOpacity() >= 255;
 }

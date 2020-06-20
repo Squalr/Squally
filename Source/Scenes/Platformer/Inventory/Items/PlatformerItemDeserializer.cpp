@@ -112,6 +112,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Bone::SaveKey] = [=]() { return (Item*)Bone::create(); };
 	this->deserializers[Coal::SaveKey] = [=]() { return (Item*)Coal::create(); };
 	this->deserializers[Copper::SaveKey] = [=]() { return (Item*)Copper::create(); };
+	this->deserializers[Crystal::SaveKey] = [=]() { return (Item*)Crystal::create(); };
 	this->deserializers[Diamond::SaveKey] = [=]() { return (Item*)Diamond::create(); };
 	this->deserializers[Emerald::SaveKey] = [=]() { return (Item*)Emerald::create(); };
 	this->deserializers[Gold::SaveKey] = [=]() { return (Item*)Gold::create(); };
@@ -122,7 +123,6 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Ruby::SaveKey] = [=]() { return (Item*)Ruby::create(); };
 	this->deserializers[Sapphire::SaveKey] = [=]() { return (Item*)Sapphire::create(); };
 	this->deserializers[Sulfur::SaveKey] = [=]() { return (Item*)Sulfur::create(); };
-	this->deserializers[Tin::SaveKey] = [=]() { return (Item*)Tin::create(); };
 	this->deserializers[VoidCrystal::SaveKey] = [=]() { return (Item*)VoidCrystal::create(); };
 	
 	this->deserializers[DarkWood::SaveKey] = [=]() { return (Item*)DarkWood::create(); };
@@ -286,11 +286,19 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Necklaces
 	this->deserializers[GlowingPendant::SaveKey] = [=]() { return (Item*)GlowingPendant::create(); };
 
+	// Rings
+	this->deserializers[SapphireBand::SaveKey] = [=]() { return (Item*)SapphireBand::create(); };
+
+	// Earrings
+	this->deserializers[SapphireEarrings::SaveKey] = [=]() { return (Item*)SapphireEarrings::create(); };
+
 	// Keys
+	this->deserializers[FountainRoomKey::SaveKey] = [=]() { return (Item*)FountainRoomKey::create(); };
 	this->deserializers[MagesGuildPrisonKey::SaveKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
 	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
 	this->deserializers[MayanGemPurpleItem::SaveKey] = [=]() { return (Item*)MayanGemPurpleItem::create(); };
 	this->deserializers[MayanGemRedItem::SaveKey] = [=]() { return (Item*)MayanGemRedItem::create(); };
+	this->deserializers[MedusaMirror::SaveKey] = [=]() { return (Item*)MedusaMirror::create(); };
 	this->deserializers[RamWheel::SaveKey] = [=]() { return (Item*)RamWheel::create(); };
 	this->deserializers[TownKey::SaveKey] = [=]() { return (Item*)TownKey::create(); };
 }

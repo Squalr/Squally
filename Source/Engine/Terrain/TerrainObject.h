@@ -134,9 +134,8 @@ public:
 		}
 	};
 
-	static std::string MapKeyTypeTerrain;
-	static std::string MapKeyTypeIsHollow;
-	static std::string MapKeyTypeTopOnly;
+	static std::string MapKey;
+	static std::string PropertyTopOnly;
 	static unsigned int NextTerrainId;
 
 protected:
@@ -187,6 +186,7 @@ private:
 	bool isFlipped;
 	unsigned int terrainObjectId;
 
+	cocos2d::Rect drawRect;
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> intersectionPoints;

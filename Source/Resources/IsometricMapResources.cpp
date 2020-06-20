@@ -5,7 +5,7 @@
 #include "IsometricMapResources.h"
 #include <string>
 
-const std::string IsometricMapResources::BalmerPeaks_Map0 = "Private/Isometric/Maps/BalmerPeaks/Map0.tmx";
+const std::string IsometricMapResources::BallmerPeaks_Map0 = "Private/Isometric/Maps/BallmerPeaks/Map0.tmx";
 const std::string IsometricMapResources::DaemonsHallow_Map0 = "Private/Isometric/Maps/DaemonsHallow/Map0.tmx";
 const std::string IsometricMapResources::EndianForest_Map1 = "Private/Isometric/Maps/EndianForest/Map1.tmx";
 const std::string IsometricMapResources::EndianForest_Map10 = "Private/Isometric/Maps/EndianForest/Map10.tmx";

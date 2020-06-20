@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const float Defend::DamageReduction = 0.75f;
+const float Defend::DamageReduction = 0.5f;
 
 Defend* Defend::create(PlatformerEntity* caster)
 {
@@ -24,7 +24,7 @@ Defend* Defend::create(PlatformerEntity* caster)
 }
 
 Defend::Defend(PlatformerEntity* caster)
-	: super(caster, caster, UIResources::Menus_Icons_Shield, BuffData("defend-skill"))
+	: super(caster, caster, UIResources::Menus_Icons_Shield, AbilityType::Physical, BuffData("defend-skill"))
 {
 	this->defendEffect = Sprite::create(FXResources::Auras_DefendAura);
 	this->resetCount = 0;
@@ -52,20 +52,20 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Defend::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 	
-	*damageOrHealing = int(std::round(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
+	(*damageOrHealing->damageOrHealing) = int(std::round(float(damageOrHealing->damageOrHealingValue) * (1.0f - Defend::DamageReduction)));
 
 	CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->caster));
 
 	this->onDamageTakenOrCycle(true);
 }
 
-void Defend::onTimelineReset(bool wasInterrupt)
+void Defend::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
 {
-	super::onTimelineReset(wasInterrupt);
+	super::onTimelineReset(timelineReset);
 
 	this->resetCount++;
 	this->onDamageTakenOrCycle(false);

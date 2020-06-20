@@ -9,8 +9,10 @@ class ClickableTextNode;
 class CollectablesMenu;
 class ConfirmationHud;
 class GameHud;
+class HelpMenu;
 class Hexus;
 class InventoryMenu;
+class ItemInfoMenu;
 class CardsMenu;
 class NotificationHud;
 class PartyMenu;
@@ -28,16 +30,21 @@ public:
 protected:
 	PlatformerMap(std::string transition = "");
 	virtual ~PlatformerMap();
-
-private:
-	typedef MapBase super;
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 
+private:
+	typedef MapBase super;
+
 	void warpSquallyToRespawn();
+	void buildHexus();
+	void buildHexusCardHelp();
+	void buildItemInfoMenu();
+	void buildCipher();
 
 	bool awaitingConfirmationEnd;
 
@@ -46,7 +53,9 @@ private:
 	NotificationHud* notificationHud;
 	Cipher* cipher;
 	Hexus* hexus;
+	HelpMenu* cardHelpMenu;
 	CollectablesMenu* collectablesMenu;
+	ItemInfoMenu* itemInfoMenu;
 	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;

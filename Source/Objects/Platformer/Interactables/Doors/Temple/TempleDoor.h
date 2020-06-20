@@ -24,9 +24,9 @@ public:
 protected:
 	TempleDoor(cocos2d::ValueMap& properties);
 	virtual ~TempleDoor();
-
+	
+	void onEnter() override;
 	void initializePositions() override;
-	void onObjectStateLoaded() override;
 
 private:
 	typedef Portal super;
@@ -41,7 +41,7 @@ private:
 
 	WorldSound* doorOpenSound;
 
-	static const std::string MapKeyColor;
+	static const std::string PropertyColor;
 	static const float DoorOpenDelta;
 	static const std::string UnlockedSaveKey;
 };

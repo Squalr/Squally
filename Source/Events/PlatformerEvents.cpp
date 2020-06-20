@@ -10,6 +10,7 @@ using namespace cocos2d;
 const std::string PlatformerEvents::EventSpawnToTransitionLocation = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
 const std::string PlatformerEvents::EventWarpToLocationPrefix = "EVENT_WARP_TO_LOCATION_";
 const std::string PlatformerEvents::EventWarpToObjectIdPrefix = "EVENT_WARP_TO_OBJECT_ID_";
+const std::string PlatformerEvents::EventAfterWarpPrefix = "EVENT_AFTER_WARP_";
 const std::string PlatformerEvents::EventBeforePlatformerMapChange = "EVENT_BEFORE_PLATFORMER_MAP_CHANGE";
 const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJACK";
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
@@ -18,10 +19,12 @@ const std::string PlatformerEvents::EventRuneConsumed = "EVENT_RUNE_CONSUMED";
 const std::string PlatformerEvents::EventEquippedItemsChanged = "EVENT_EQUIPPED_ITEMS_CHANGED";
 const std::string PlatformerEvents::EventEngageEnemy = "EVENT_ENGAGE_ENEMY";
 const std::string PlatformerEvents::EventEnemyEngaged = "EVENT_ENEMY_ENGAGED";
+const std::string PlatformerEvents::EventRunFlashFx = "EVENT_RUN_FLASH_FX";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 const std::string PlatformerEvents::EventOpenAlchemy = "EVENT_OPEN_ALCHEMY";
 const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
+const std::string PlatformerEvents::EventOpenItemInfo = "EVENT_OPEN_ITEM_INFO";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
@@ -34,6 +37,7 @@ const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
 const std::string PlatformerEvents::EventSaveRespawn = "EVENT_SAVE_RESPAWN";
 const std::string PlatformerEvents::EventBeforeLoadRespawn = "EVENT_BEFORE_LOAD_RESPAWN";
 const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
+const std::string PlatformerEvents::EventObjectiveChanged = "EVENT_OBJECTIVE_CHANGED";
 const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
@@ -60,6 +64,16 @@ void PlatformerEvents::TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args
 
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventWarpToObjectIdPrefix + identifier,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerAfterWarp(AfterWarpArgs args)
+{
+	const std::string identifier = args.object->getUniqueIdentifier();
+
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventAfterWarpPrefix + identifier,
 		&args
 	);
 }
@@ -124,6 +138,14 @@ void PlatformerEvents::TriggerEnemyEngaged(EnemyEngagedArgs args)
 	);
 }
 
+void PlatformerEvents::TriggerRunFlashFx(FlashFxArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventRunFlashFx,
+		&args
+	);
+}
+
 void PlatformerEvents::TriggerHudTrackEntity(HudTrackEntityArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -152,6 +174,14 @@ void PlatformerEvents::TriggerOpenSmithing(CraftingOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventOpenSmithing,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenItemInfo(ItemInfoArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventOpenItemInfo,
 		&args
 	);
 }
@@ -244,6 +274,13 @@ void PlatformerEvents::TriggerLoadRespawn()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventLoadRespawn
+	);
+}
+
+void PlatformerEvents::TriggerObjectiveChanged()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventObjectiveChanged
 	);
 }
 

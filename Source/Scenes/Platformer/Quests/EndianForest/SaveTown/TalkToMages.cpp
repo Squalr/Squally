@@ -13,13 +13,14 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/FightGorgon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -81,6 +82,8 @@ void TalkToMages::onActivate(bool isActiveThroughSkippable)
 
 void TalkToMages::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFAmbush);
+	
 	this->setPostText();
 }
 
@@ -102,7 +105,7 @@ void TalkToMages::runCinematicSequencePart1()
 		{
 			this->runCinematicSequencePart2();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -121,7 +124,7 @@ void TalkToMages::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		false
 	));
 }
@@ -140,7 +143,7 @@ void TalkToMages::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -159,7 +162,7 @@ void TalkToMages::runCinematicSequencePart4()
 		{
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }
@@ -192,7 +195,7 @@ void TalkToMages::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

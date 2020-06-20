@@ -21,6 +21,7 @@ const std::string PlatformerCollisionMapping::MapKeyCollisionTypeForce = "force"
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc = "solid-npc";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeWater = "water";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeDamage = "damage";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKill = "kill";
 
 PlatformerCollisionMapping* PlatformerCollisionMapping::instance = nullptr;
 
@@ -88,5 +89,9 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeDamage)
 	{
 		args->callback((int)PlatformerCollisionType::Damage);
+	}
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeKill)
+	{
+		args->callback((int)PlatformerCollisionType::KillPlane);
 	}
 }

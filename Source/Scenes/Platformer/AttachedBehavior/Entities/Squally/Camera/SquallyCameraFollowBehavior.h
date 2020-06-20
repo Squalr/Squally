@@ -21,7 +21,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	Squally* squally;
+	float getLayerZoom();
 
-	float zoom;
+	Squally* squally;
 };

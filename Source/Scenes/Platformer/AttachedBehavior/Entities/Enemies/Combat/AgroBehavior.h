@@ -10,6 +10,7 @@ namespace cocos2d
 class PlatformerEntity;
 class Projectile;
 class Squally;
+class WorldSound;
 
 class AgroBehavior : public AttachedBehavior
 {
@@ -42,6 +43,7 @@ private:
 	PlatformerEntity* entity;
 	Squally* squally;
 	cocos2d::Sprite* exclamation;
+	WorldSound* agroBeep;
 
 	bool isEnabled;
 	bool isAgrod;
@@ -49,9 +51,12 @@ private:
 	bool warnOnAgro;
 	float agroRangeX;
 	float agroRangeY;
+	float agroRangeZ;
 	float engageCooldown;
+	float initCooldown;
 
 	static const float AgroRangeX;
 	static const float AgroRangeY;
+	static const float AgroRangeZ;
 	static const float EngageCooldownMax;
 };

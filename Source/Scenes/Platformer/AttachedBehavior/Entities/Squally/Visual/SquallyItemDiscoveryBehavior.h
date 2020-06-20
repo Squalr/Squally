@@ -29,7 +29,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void discoverItem(Item* item);
+	void discoverItem(Item* item, bool cinematicHijack);
 
 	cocos2d::Node* container;
 	cocos2d::Node* itemNode;

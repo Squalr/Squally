@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="781">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="785">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
+   <property name="crack-color" value=""/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -83,11 +85,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="765" name="blue-grass" type="terrain" x="580" y="2393.55">
+  <object id="784" name="blue-grass" type="terrain" x="741" y="2393" width="1518" height="1610">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="176,8.45049 1672.29,-1.82258 1678.06,1918.07 1698.04,2669.85 181.703,2659.96 191.617,1547.59"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -125,11 +126,6 @@
     <property name="direction" value="down"/>
     <property name="map" value="EndianForest/Zone_2_3"/>
     <property name="transition" value="down"/>
-   </properties>
-  </object>
-  <object id="772" name="spawn" type="object" x="5098.6" y="4632.15" width="128" height="128">
-   <properties>
-    <property name="transition" value="up"/>
    </properties>
   </object>
   <object id="777" name="camera-stop" type="object" x="-90.303" y="3304.73" width="2704" height="2696">
@@ -176,7 +172,7 @@
   </object>
   <object id="780" name="troll" type="entity" x="1096.61" y="2272.36" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,puzzle-B"/>
+    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-B"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -189,6 +185,16 @@
   <object id="523" name="squally" type="entity" x="686.08" y="2964.03" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="782" name="spawn" type="object" x="5098.6" y="4632.15" width="128" height="128">
+   <properties>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="783" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -252,11 +258,6 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="496.987" y="2802.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="2906.5" width="270" height="748"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="2879" width="270" height="748"/>
-  <object id="691" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
-   <properties>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

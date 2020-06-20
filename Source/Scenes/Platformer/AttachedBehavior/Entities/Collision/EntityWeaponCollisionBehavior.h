@@ -17,8 +17,8 @@ protected:
 
 	void onLoad() override;
 	void onDisable() override;
-	void setWeaponSize(cocos2d::Size weaponSize);
-	void setWeaponOffset(cocos2d::Vec2 weaponOffset);
+	void setWeaponCollisionSize(cocos2d::Size weaponCollisionSize);
+	void setWeaponCollisionOffset(cocos2d::Vec2 weaponCollisionOffset);
 	void rebuildWeaponCollision(int collisionType);
 
 	CollisionObject* weaponCollision;
@@ -28,8 +28,8 @@ private:
 
 	PlatformerEntity* entity;
 
-	cocos2d::Size weaponSize;
-	cocos2d::Vec2 weaponOffset;
+	cocos2d::Size weaponCollisionSize;
+	cocos2d::Vec2 weaponCollisionOffset;
 
 	static const cocos2d::Size DefaultWeaponSize;
 };

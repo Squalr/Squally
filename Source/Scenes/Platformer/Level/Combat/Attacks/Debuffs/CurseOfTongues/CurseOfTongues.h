@@ -27,14 +27,14 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
+	void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed) override;
 
 private:
 	typedef Buff super;
 
 	void applyCurseOfTongues();
 	
-	volatile float currentSpeed;
+	static volatile float currentSpeed;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;

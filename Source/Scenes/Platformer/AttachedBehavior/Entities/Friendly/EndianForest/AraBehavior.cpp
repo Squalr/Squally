@@ -70,7 +70,7 @@ void AraBehavior::onLoad()
 					[=]()
 					{
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterShort2,
+					Voices::GetNextVoiceShort(),
 					true
 				));
 			}),
@@ -88,14 +88,14 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Ellipses::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::HardRight,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->entity, false),
 				DialogueEvents::BuildPreviewNode(&this->squally, true),
 				true
@@ -117,7 +117,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -131,7 +131,7 @@ void AraBehavior::onLoad()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 	});

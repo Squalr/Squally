@@ -82,7 +82,7 @@ void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 	this->playerBackground->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->avatarEnemy->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->avatarEnemy->addChild(this->opponentPreview);
-	this->avatarEnemy->setPosition(opponentData->avatarOffset);
+	this->opponentPreview->setPosition(opponentData->avatarOffset);
 }
 
 void Avatars::onBeforeStateChange(GameState* gameState)

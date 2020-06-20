@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1074">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DesertSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="80" name="desert bg 4">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-3845.32" y="-249.181" width="14981.3" height="318">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="desert bg 3">
+  <properties>
+   <property name="depth" type="float" value="-2432"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3562.65" y="-1002.85" width="14229.3" height="1478">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="desert bg 2">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-3548.47" y="15.212" width="14469.3" height="1512">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="15" name="desert bg 1">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-3660.71" y="487.091" width="14709.3" height="1076">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="127" name="terrain -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1046" name="caverns" type="terrain" x="450.185" y="1178" width="2971.63" height="1484"/>
+ </objectgroup>
+ <objectgroup id="137" name="objects -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1050" name="lever" type="object" x="3081.08" y="976.288" width="177" height="205">
+   <properties>
+    <property name="send-event" value="bridge-group-A"/>
+   </properties>
+  </object>
+  <object id="1071" name="solid" type="collision" x="332.561" y="-518.59" width="126.878" height="1821.18"/>
+  <object id="1073" name="solid" type="collision" x="3412.56" y="-298.59" width="126.878" height="1821.18"/>
+ </objectgroup>
+ <objectgroup id="141" name="entities -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="rubber-band" type="int" value="6"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1069" name="tiger-man" type="entity" x="2295.92" y="1048.77" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1070" name="lion-man" type="entity" x="2303.35" y="714.135" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="136" name="player_layer -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+  <object id="1049" name="warp" type="object" x="571.333" y="915.455" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-12-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-9-C"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="140" name="bridge -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1061" name="wood" type="terrain" x="574.667" y="1189.17" width="256" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="139" name="bridge -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1060" name="wood" type="terrain" x="574.667" y="1213.17" width="256" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="138" name="bridge -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1059" name="wood" type="terrain" x="571.758" y="1236.62" width="256" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="119" name="terrain -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="985" name="caverns" type="terrain" x="395.03" y="1272.97" width="1476.84" height="1072"/>
+  <object id="986" name="caverns" type="terrain" x="2952.79" y="1272" width="1730.42" height="1072">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1068" name="caverns" type="terrain" x="2100.24" y="284.606">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+   <polygon points="-121.09,-568 770.526,-578.149 680.489,433.363 601.992,997.8 310.707,1170.93 16.3437,984.311 -64.2571,439.03"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="126" name="objects -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1041" name="edge-portal" type="object" x="3739.31" y="786.029" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_1_2"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1048" name="kill" type="collision" x="1881.11" y="2288.38" width="1242.03" height="384.818"/>
+  <object id="1072" name="solid" type="collision" x="268.561" y="-302.59" width="126.878" height="1821.18"/>
+ </objectgroup>
+ <objectgroup id="121" name="player_layer -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.25"/>
+  </properties>
+  <object id="1037" name="warp" type="object" x="576.003" y="1014.67" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-9-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-12-C"/>
+   </properties>
+  </object>
+  <object id="1039" name="warp" type="object" x="3085.94" y="1013.97" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-9-D"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-3-D"/>
+   </properties>
+  </object>
+  <object id="1042" name="spawn" type="object" x="3407.82" y="1144.7" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1052" name="warp" type="object" x="1494.67" y="1017.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-9-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-3-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="133" name="bridge -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1014" name="wood" type="terrain" x="3086.67" y="1282.92" width="256" height="356.5">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1058" name="wood" type="terrain" x="1499.35" y="1300.3" width="256" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="132" name="bridge -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1015" name="wood" type="terrain" x="3087.34" y="1302.92" width="256" height="356.5">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="1"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1057" name="wood" type="terrain" x="1500.02" y="1320.3" width="256" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="131" name="bridge -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1016" name="wood" type="terrain" x="3087.67" y="1322.26" width="256" height="356.5">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1056" name="wood" type="terrain" x="1500.35" y="1339.64" width="256" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="135" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1029" name="wood" type="terrain" x="3087.87" y="1344.44" width="256" height="363">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="3"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1055" name="wood" type="terrain" x="1500.55" y="1361.82" width="256" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="956" name="wood" type="terrain" x="3087.87" y="1367.44" width="256" height="363">
+   <properties>
+    <property name="attached-behavior" value="bridge"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="4"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1054" name="wood" type="terrain" x="1500.55" y="1384.82" width="256" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="104" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="954" name="wood" type="terrain" x="3086.54" y="1390.11" width="256" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="82" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="936" name="caverns" type="terrain" x="-270.91" y="1418" width="4551.63" height="1528">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="decor -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1023" name="edge-portal" type="object" x="-5.959" y="927.999" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_1_0"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1043" name="life-stone" type="object" x="2260.03" y="995.045" width="146" height="423"/>
+ </objectgroup>
+ <objectgroup id="102" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="944" name="lioness" type="entity" x="2647.14" y="1288.17" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="945" name="tigress" type="entity" x="2654.57" y="953.527" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="84" name="player_layer -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="943" name="squally" type="entity" x="481.281" y="1289.81" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="1027" name="spawn" type="object" x="496" y="1287.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1040" name="warp" type="object" x="3088" y="1161.34" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-3-D"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-9-D"/>
+   </properties>
+  </object>
+  <object id="1053" name="warp" type="object" x="1499.03" y="1160.24" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-3-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-9-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="97" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="922" name="water" type="object" x="-855.04" y="1492.99" width="7598.75" height="2425.35"/>
+ </objectgroup>
+ <objectgroup id="87" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="water -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="921" name="water" type="object" x="-738.646" y="1519.99" width="7307.36" height="2241.35"/>
+ </objectgroup>
+ <objectgroup id="88" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="95" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="920" name="water" type="object" x="-632.949" y="1551.99" width="7113.66" height="2081.35"/>
+ </objectgroup>
+ <objectgroup id="89" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="99" name="water bg">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="924" name="water" type="object" x="-525.436" y="1609.33" width="6920.81" height="1985.35"/>
+ </objectgroup>
+ <objectgroup id="68" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="103" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1045" name="caverns" type="terrain" x="-430.3" y="1572" width="4860.11" height="1484"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="94" name="water">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="919" name="water" type="object" x="-363.375" y="1677.33" width="6626.75" height="1825.35"/>
+ </objectgroup>
+ <objectgroup id="93" name="water +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="918" name="water" type="object" x="-227.375" y="1677.33" width="6350.75" height="1821.35"/>
+ </objectgroup>
+ <objectgroup id="92" name="water +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="917" name="water" type="object" x="-5.314" y="1719.75" width="5902.75" height="1781.35"/>
+ </objectgroup>
+ <objectgroup id="91" name="water +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="916" name="water" type="object" x="176.746" y="1753.08" width="5526.75" height="1745.35"/>
+ </objectgroup>
+ <objectgroup id="90" name="water +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="915" name="water" type="object" x="367.655" y="1804.6" width="5142.75" height="1693.35"/>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

@@ -59,7 +59,7 @@ void MusicPlayer::popMusic(bool unpauseNext)
 
 	if (unpauseNext && !MusicPlayer::SongQueue.empty())
 	{
-		MusicPlayer::SongQueue.back()->unpause();
+		MusicPlayer::SongQueue.back()->unfreeze();
 	}
 }
 

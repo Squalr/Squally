@@ -94,7 +94,9 @@ void EntityMovementCollisionBehavior::onLoad()
 		
 		if (args != nullptr)
 		{
-			this->warpToPosition(args->position);
+			this->warpToPosition(args->position, args->warpCamera);
+
+			PlatformerEvents::TriggerAfterWarp(PlatformerEvents::AfterWarpArgs(this->entity));
 		}
 	}));
 
@@ -106,8 +108,10 @@ void EntityMovementCollisionBehavior::onLoad()
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
 			{
-				this->warpToPosition(GameUtils::getWorldCoords(object));
+				this->warpToPosition(GameUtils::getWorldCoords3D(object), args->warpCamera);
 			}), args->objectId);
+
+			PlatformerEvents::TriggerAfterWarp(PlatformerEvents::AfterWarpArgs(this->entity));
 		}
 	}));
 
@@ -124,7 +128,7 @@ void EntityMovementCollisionBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
-void EntityMovementCollisionBehavior::warpToPosition(Vec2 position)
+void EntityMovementCollisionBehavior::warpToPosition(Vec3 position, bool warpCamera)
 {
 	// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
@@ -134,7 +138,7 @@ void EntityMovementCollisionBehavior::warpToPosition(Vec2 position)
 			this->tryBind();
 			this->movementCollision->warpTo(position);
 
-			if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
+			if (warpCamera && GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
 			{
 				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 			}
@@ -248,6 +252,15 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		CollisionObject::Properties(true, false),
 		Color4F::BLUE
 	);
+	
+	if (dynamic_cast<Squally*>(this->entity) != nullptr)
+	{
+		this->movementCollision->setName("squally movement");
+	}
+	else
+	{
+		this->movementCollision->setName("entity movement");
+	}
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
@@ -310,7 +323,11 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->submergeSound->isPlaying())
+		if (this->groundCollision != nullptr
+			&& !this->groundCollision->isOnGround()
+			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
+			&& !this->submergeSound->isPlaying() &&
+			!this->movementCollision->wasCollidingWithType((int)PlatformerCollisionType::Water))
 		{
 			this->submergeSound->play();
 		}
@@ -332,7 +349,11 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
 
-		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->emergeSound->isPlaying())
+		if (this->groundCollision != nullptr
+			&& !this->groundCollision->isOnGround()
+			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
+			&& !this->emergeSound->isPlaying()
+			&& !this->movementCollision->isCollidingWithType((int)PlatformerCollisionType::Water))
 		{
 			this->emergeSound->play();
 		}
@@ -343,7 +364,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		}
 
 		// Animate jumping out of water
-		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
+		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
 		{
 			// Give a velocity boost for jumping out of water
 			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityMovementCollisionBehavior::WaterJumpVelocity));

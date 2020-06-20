@@ -42,6 +42,7 @@ private:
 	cocos2d::Size waterSize;
 	int splashes;
 	float noSplashDelay;
+	bool splashDisabled;
 
 	static const float SplashSpacing;
 	static const float WaterGravity;

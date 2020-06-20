@@ -31,7 +31,13 @@ DivPage::DivPage() : super(DivPage::Identifier, PageType::Left)
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Menus_Hacking_Lexicon_Pages_Data_Div_Intro::create(),
+		Strings::Common_Triconcat::create()->setStringReplacementVariables(
+			{
+				Strings::Common_ConstantNewlineNewline::create()->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Pages_Data_Div_Intro::create()),
+				Strings::Common_ConstantNewlineNewline::create()->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2::create()),
+				Strings::Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3::create(),
+			}
+		),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

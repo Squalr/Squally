@@ -18,7 +18,7 @@
 using namespace cocos2d;
 
 const std::string TempleDoor::MapKey = "temple-door";
-const std::string TempleDoor::MapKeyColor = "color";
+const std::string TempleDoor::PropertyColor = "color";
 const float TempleDoor::DoorOpenDelta = 320.0f;
 const std::string TempleDoor::UnlockedSaveKey = "TEMPLE_DOOR_UNLOCKED";
 
@@ -31,14 +31,14 @@ TempleDoor* TempleDoor::create(ValueMap& properties)
 	return instance;
 }
 
-TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 528.0f), Vec2(0.0f, 0.0f))
+TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(192.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
 	this->topCollision = CollisionObject::create(CollisionObject::createBox(Size(420.0f, 32.0f)), (CollisionType)PlatformerCollisionType::PassThrough, CollisionObject::Properties(false, false));
 	this->emblem = nullptr;
 	this->emblemOffset = Vec2::ZERO;
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
-	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::MapKeyColor, Value("")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::PropertyColor, Value("")).asString();
 
 	// if (color == "yellow" || color == "yellow-skull" || color == "yellow-up" || color == "yellow-down")
 	{
@@ -84,6 +84,20 @@ TempleDoor::~TempleDoor()
 {
 }
 
+void TempleDoor::onEnter()
+{
+	super::onEnter();
+	
+	if (this->loadObjectStateOrDefault(TempleDoor::UnlockedSaveKey, Value(true)).asBool())
+	{
+		this->unlock(false);
+	}
+	else
+	{
+		this->lock(false);
+	}
+}
+
 void TempleDoor::initializePositions()
 {
 	super::initializePositions();
@@ -95,20 +109,6 @@ void TempleDoor::initializePositions()
 
 	this->topCollision->setPosition(Vec2(0.0f, 238.0f));
 	this->doorClip->setPosition(Vec2(0.0f, -66.0f));
-}
-
-void TempleDoor::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
-
-	if (this->getObjectStateOrDefault(TempleDoor::UnlockedSaveKey, Value(true)).asBool())
-	{
-		this->unlock(false);
-	}
-	else
-	{
-		this->lock(false);
-	}
 }
 
 void TempleDoor::lock(bool animate)

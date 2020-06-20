@@ -6,6 +6,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
@@ -34,6 +35,9 @@ PlatformerDialogueBox* PlatformerDialogueBox::create()
 
 PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::TextWidth, PlatformerDialogueBox::SpeakerPanelOffset, PlatformerDialogueBox::SpeakerPanelWidth)
 {
+	this->inputOptions = std::vector<std::function<bool()>>();
+	this->inputCancel = nullptr;
+
 	LocalizedString* bracketString = Strings::Common_Brackets::create();
 	LocalizedString* spaceString = Strings::Input_Spacebar::create();
 
@@ -87,6 +91,8 @@ void PlatformerDialogueBox::initializeListeners()
 		
 		if (args != nullptr)
 		{
+			this->inputOptions = args->inputOptions;
+			this->inputCancel = args->inputCancel;
 			this->leftSpeakerNode->removeAllChildren();
 			this->rightSpeakerNode->removeAllChildren();
 
@@ -171,6 +177,87 @@ void PlatformerDialogueBox::initializeListeners()
 			HackableEvents::TriggerForceUseHackerMode();
 		}
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(1))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(2))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(3))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(4))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_5 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(5))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_6 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(6))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_7 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(7))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_8 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(8))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_9 }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(9))
+		{
+			args->handle();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isDialogueFocused && this->cancelOptionChoice())
+		{
+			this->hideDialogue();
+			args->handle();
+		}
+	});
 }
 
 void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack)
@@ -196,6 +283,32 @@ void PlatformerDialogueBox::hideDialogue()
 	this->isDialogueFocused = false;
 	
 	super::hideDialogue();
+}
+
+bool PlatformerDialogueBox::chooseOption(int index)
+{
+	index--;
+
+	if (index >= 0 && index < int(this->inputOptions.size()) && this->inputOptions[index] != nullptr)
+	{
+		auto callback = this->inputOptions[index];
+
+		this->hideDialogue();
+		
+		return callback();
+	}
+
+	return false;
+}
+
+bool PlatformerDialogueBox::cancelOptionChoice()
+{
+	if (inputCancel != nullptr)
+	{
+		return inputCancel();
+	}
+
+	return false;
 }
 
 void PlatformerDialogueBox::onTypeWriterEffectComplete()

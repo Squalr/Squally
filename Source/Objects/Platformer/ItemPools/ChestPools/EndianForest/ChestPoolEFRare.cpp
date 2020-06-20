@@ -3,7 +3,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier2/CraftingPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 using namespace cocos2d;

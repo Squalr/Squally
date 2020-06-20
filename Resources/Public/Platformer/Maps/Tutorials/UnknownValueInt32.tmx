@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="903">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="Crypt3"/>
+   <property name="gravity" value="-768"/>
+   <property name="crack-color" value=""/>
+   <property name="map-banner" value=""/>
+   <property name="music" value=""/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="895" name="castle" type="terrain" x="-231.722" y="999.21">
+   <polygon points="-111.012,48.1572 2615.72,49.6516 2613.04,1194.63 -113.395,1196.79"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="894" name="lazarus" type="entity" x="1231.64" y="920" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,face-squally,squalr-unknown-int"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="891" name="castle" type="terrain" x="-37.3395" y="1267.21">
+   <polygon points="-93.765,48.1572 2209.34,49.6516 2207.07,1194.63 -95.7775,1196.79"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="896" name="fire-launcher-squalr" type="object" x="302.424" y="1188.97" width="128" height="128">
+   <properties>
+    <property name="listen-event" value="launch"/>
+    <property name="pivot-target" value="lazarus"/>
+   </properties>
+  </object>
+  <object id="897" name="camera-stop" type="object" x="-572" y="1488" width="3168" height="1008">
+   <properties>
+    <property name="no-x" type="bool" value="true"/>
+    <property name="soft" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="899" name="lever" type="object" x="630.909" y="1112.55" width="177" height="205">
+   <properties>
+    <property name="send-event" value="launch"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="951.322" y="1185.16" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

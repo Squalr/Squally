@@ -10,7 +10,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoManaBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoPickPocketBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/FollowMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperFollowMovementBehavior.h"
 
 using namespace cocos2d;
 
@@ -31,7 +31,7 @@ GuanoBehaviorGroup::GuanoBehaviorGroup(GameObject* owner) : super(owner, {
 	GuanoHealthBehavior::create(owner),
 	GuanoManaBehavior::create(owner),
 	GuanoPickPocketBehavior::create(owner),
-	FollowMovementBehavior::create(owner),
+	HelperFollowMovementBehavior::create(owner),
 	})
 {
 }

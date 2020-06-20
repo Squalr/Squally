@@ -26,9 +26,9 @@ CastStrength* CastStrength::create(float attackDuration, float recoverDuration, 
 }
 
 CastStrength::CastStrength(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_Strength, priority, 0, 0, 3, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_Gauntlet, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
 	this->addChild(this->castSound);
 }
@@ -84,7 +84,7 @@ bool CastStrength::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Strength>([&](Strength* haste)
+		entityBuffBehavior->getBuff<Strength>([&](Strength* buff)
 		{
 			hasBuff = true;
 		});

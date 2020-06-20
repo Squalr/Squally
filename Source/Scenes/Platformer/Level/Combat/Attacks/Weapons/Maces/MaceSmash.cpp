@@ -25,7 +25,9 @@ MaceSmash* MaceSmash::create(int damageMin, int damageMax, float attackDuration,
 MaceSmash::MaceSmash(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(
 		AttackType::Damage,
-		UIResources::Menus_Icons_MaceStrike, priority,
+		UIResources::Menus_Icons_MaceStrike,
+		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		6,
@@ -33,8 +35,8 @@ MaceSmash::MaceSmash(int damageMin, int damageMax, float attackDuration, float r
 		recoverDuration
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade2);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade2);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 
 	this->setDamageMultiplier(MaceSmash::DamageMultiplier);
 
@@ -81,7 +83,7 @@ void MaceSmash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 void MaceSmash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

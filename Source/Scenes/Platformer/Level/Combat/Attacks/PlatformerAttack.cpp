@@ -16,11 +16,15 @@
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
+const std::string PlatformerAttack::TagArenaTop = "arena-top";
+const std::string PlatformerAttack::TagArenaCenter = "arena-center";
+const std::string PlatformerAttack::TagArenaBottom = "arena-bottom";
 
 PlatformerAttack::PlatformerAttack(
 	AttackType attackType,
 	std::string iconResource,
 	Priority priority,
+	AbilityType abilityType,
 	int baseDamageOrHealingMin,
 	int baseDamageOrHealingMax,
 	int specialCost,
@@ -31,6 +35,7 @@ PlatformerAttack::PlatformerAttack(
 	this->attackType = attackType;
 	this->iconResource = iconResource;
 	this->priority = priority;
+	this->abilityType = abilityType;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->damageMultiplier = 1.0f;
@@ -145,6 +150,9 @@ bool PlatformerAttack::isWorthUsing(PlatformerEntity* caster, const std::vector<
 
 float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
+	bool isAlive = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+	bool pacifist = target->getRuntimeStateOrDefaultBool(StateKeys::IsPacifist, false);
+
 	// Generic utility function
 	switch(this->getAttackType())
 	{
@@ -152,26 +160,29 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 		case AttackType::Debuff:
 		{
 			// Priority based on whether the entity is alive or not. For more nuanced behavior, this function must be overridden.
-			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+			return (isAlive && !pacifist) ? 1.0f : 0.0f;
 		}
 		case AttackType::Damage:
 		{
-			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
-			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+			const float RandomPriority = RandomHelper::random_real(0.0f, 1.0f);
+			float hp = float(target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0));
+			float eq = float(target->getRuntimeStateOrDefaultInt(StateKeys::Eq, 0));
 
-			return hp / (hpMax <= 0.0f ? 1.0f : hpMax);
+			// If <= level 5, priority is based on health percentage, otherwise it is random
+			return (eq > 5 || pacifist) ? RandomPriority : (hp / (hpMax <= 0.0f ? 1.0f : hpMax));
 		}
 		case AttackType::Healing:
 		{
-			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
-			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+			float hp = float(target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0));
 			
 			// Rank by lowest health first (except if dead)
-			return !target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
+			return (!isAlive || pacifist) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
 		}
 		case AttackType::Resurrection:
 		{
-			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : 1.0f;
+			return (isAlive || pacifist) ? 0.0f : 1.0f;
 		}
 		default:
 		{
@@ -257,7 +268,7 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 
 int PlatformerAttack::getRandomDamage()
 {
-	return -int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
+	return int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
 }
 
 int PlatformerAttack::getBaseDamageMin()

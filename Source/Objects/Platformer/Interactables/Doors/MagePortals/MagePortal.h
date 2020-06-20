@@ -14,13 +14,15 @@ class WorldSound;
 class MagePortal : public Portal
 {
 public:
+	static MagePortal* create(cocos2d::ValueMap& properties);
+
 	virtual void closePortal(bool instant);
 	virtual void openPortal(bool instant);
 
-	static const std::string TagMagePortal;
+	static const std::string MapKey;
 
 protected:
-	MagePortal(cocos2d::ValueMap& properties, float portalRadius, cocos2d::Color4B portalBaseColor);
+	MagePortal(cocos2d::ValueMap& properties);
 	virtual ~MagePortal();
 	void onEnter() override;
 	void initializePositions() override;
@@ -37,4 +39,10 @@ private:
 	cocos2d::DrawNode* background;
 	cocos2d::DrawNode* edge;
 	WorldSound* portalOpenSound;
+
+	SmartParticles* portalParticles;
+	SmartParticles* edgeParticles;
+	
+	static const float PortalRadius;
+	static const cocos2d::Color4B BaseColor;
 };

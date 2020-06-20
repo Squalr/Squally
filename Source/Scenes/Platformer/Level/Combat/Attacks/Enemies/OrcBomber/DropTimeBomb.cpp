@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBomb.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/TimeBomb/TimeBomb.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/Bombed.h"
@@ -33,7 +33,8 @@ DropTimeBomb* DropTimeBomb::create(float attackDuration, float recoverDuration, 
 	return instance;
 }
 
-DropTimeBomb::DropTimeBomb(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_Clock, priority, 450, 500, 12, attackDuration, recoverDuration)
+DropTimeBomb::DropTimeBomb(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_Bomb, priority, AbilityType::Fire, 450, 500, 12, attackDuration, recoverDuration)
 {
 }
 
@@ -64,7 +65,7 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	{
 		TimeBomb* timeBomb = TimeBomb::create(owner, next, [=]()
 		{
-			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, next, this->getRandomDamage()));
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, next, this->getRandomDamage(), this->abilityType));
 		});
 
 		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(

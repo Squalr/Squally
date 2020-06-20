@@ -26,9 +26,9 @@ CastHaste* CastHaste::create(float attackDuration, float recoverDuration, Priori
 }
 
 CastHaste::CastHaste(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_HourGlass, priority, 0, 0, 8, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_HourGlass, priority, AbilityType::Physical, 0, 0, 8, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
 	this->addChild(this->castSound);
 }
@@ -84,7 +84,7 @@ bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<Platfor
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
+		entityBuffBehavior->getBuff<Haste>([&](Haste* buff)
 		{
 			hasBuff = true;
 		});

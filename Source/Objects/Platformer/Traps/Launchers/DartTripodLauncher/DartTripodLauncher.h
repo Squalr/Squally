@@ -21,6 +21,7 @@ protected:
 	HackablePreview* createDefaultPreview() override;
 	HackablePreview* getTimerPreview() override;
 	Projectile* createProjectile() override;
+	cocos2d::Vec2 getProjectileSpawnPosition() override;
 
 private:
 	typedef PivotLauncher super;

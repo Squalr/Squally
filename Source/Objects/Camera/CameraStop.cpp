@@ -34,6 +34,7 @@ CameraStop::CameraStop(ValueMap& properties) : super(properties)
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);
+	this->isDisabled = false;
 
 	this->debugDraw->drawRect(-Vec2(this->stopSize / 2.0f), Vec2(this->stopSize / 2.0f), Color4F::GREEN);
 
@@ -55,7 +56,7 @@ void CameraStop::update(float dt)
 {
 	super::update(dt);
 
-	if (this->noX && this->noY)
+	if (this->isDisabled || (this->noX && this->noY))
 	{
 		return;
 	}
@@ -143,4 +144,14 @@ void CameraStop::onDeveloperModeEnable(int debugLevel)
 void CameraStop::onDeveloperModeDisable()
 {
 	this->debugDraw->setVisible(false);
+}
+
+void CameraStop::enable()
+{
+	this->isDisabled = false;
+}
+
+void CameraStop::disable()
+{
+	this->isDisabled = true;
 }

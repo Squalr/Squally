@@ -48,11 +48,11 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
-	: super(caster, target, UIResources::Menus_Icons_Heal, BuffData(TrainingHeal::TrainingHealIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Heal, AbilityType::Holy, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 
 	this->spellAura->setOpacity(0);
@@ -86,14 +86,14 @@ void TrainingHeal::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
+	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
 }
 
 void TrainingHeal::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -123,7 +123,7 @@ void TrainingHeal::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
@@ -138,7 +138,7 @@ void TrainingHeal::runTrainingHeal()
 		icon->setScale(0.5f);
 
 		timelineEvents.push_back(TimelineEvent::create(
-				this->target,
+				this->owner,
 				icon,
 				TrainingHeal::TimeBetweenTicks * float(healIndex) + TrainingHeal::StartDelay, [=]()
 			{
@@ -153,7 +153,7 @@ void TrainingHeal::runTrainingHeal()
 	}
 
 	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, this, this->target, [=]()
+		TimelineEventGroup::create(timelineEvents, this, this->owner, [=]()
 		{
 			this->removeBuff();
 		})
@@ -173,14 +173,14 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	ASM(add ZDI, 256);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, ZDI);
+	ASM_MOV_VAR_REG(incrementAmount, edi);
 
 	ASM(pop ZDI);
 
 	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
 
 	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

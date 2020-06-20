@@ -75,7 +75,7 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (leftEye != nullptr)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				leftEye->replaceSprite(spriteResource);
 			}
@@ -87,7 +87,7 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (leftEye != nullptr)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				leftEye->replaceSprite(spriteResource);
 			}
@@ -100,7 +100,7 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (rightEye != nullptr)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				rightEye->replaceSprite(spriteResource);
 			}
@@ -112,7 +112,7 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		
 		if (rightEye != nullptr)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				rightEye->replaceSprite(spriteResource);
 			}

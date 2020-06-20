@@ -71,7 +71,7 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 	for (auto reagent : reagents)
 	{
 		Item* next = std::get<0>(reagent);
-		int count = std::get<1>(reagent);
+		int requiredCount = std::get<1>(reagent);
 		Sprite* icon = Sprite::create(next->getIconResource());
 		LocalizedString* counts = Strings::Common_XOverY::create();
 		LocalizedLabel* countsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, counts);
@@ -86,8 +86,8 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 		}
 
 		countsLabel->enableOutline(Color4B::BLACK, 2);
-		countsLabel->setTextColor(existingCount < count ? Color4B::RED : Color4B::WHITE);
-		counts->setStringReplacementVariables({ ConstantString::create(std::to_string(existingCount)), ConstantString::create(std::to_string(count)) });
+		countsLabel->setTextColor(existingCount < requiredCount ? Color4B::RED : Color4B::WHITE);
+		counts->setStringReplacementVariables({ ConstantString::create(std::to_string(existingCount)), ConstantString::create(std::to_string(requiredCount)) });
 
 		icon->setPosition(Vec2(0.0f, -64.0f * float(index)));
 		countsLabel->setPosition(Vec2(48.0f, -64.0f * float(index)));
@@ -96,7 +96,7 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 		this->previewNode->addChild(icon);
 		this->previewNode->addChild(countsLabel);
 
-		canCraft &= (existingCount >= count);
+		canCraft &= (existingCount >= requiredCount);
 
 		index++;
 	}

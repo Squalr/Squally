@@ -96,7 +96,7 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 
 	if (weapon == nullptr)
 	{
-		return SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
+		return SoundResources::Platformer_Physical_Punches_PunchWoosh1;
 	}
 	else
 	{
@@ -200,6 +200,7 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 
 	if (projectile != nullptr)
 	{
+		projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
 		projectile->setProjectileRotation(this->squally->isFlippedX() ? 180.0f : 0.0f);
 	}
 
@@ -217,14 +218,14 @@ void SquallyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile
 
 	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (!this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
 		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
 
-		if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (enemy != nullptr && enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			// Encountered enemy w/ first-strike
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));

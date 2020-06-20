@@ -86,7 +86,7 @@ void EntityManaBehavior::onDisable()
 
 int EntityManaBehavior::getMana()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::Mana, 0);
+	return this->entity->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 }
 
 void EntityManaBehavior::addMana(int manaDelta)

@@ -9,7 +9,7 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class SmartParticles;
+class SmartAnimationSequenceNode;
 class WorldSound;
 
 class SiphonLife : public Buff
@@ -17,8 +17,10 @@ class SiphonLife : public Buff
 public:
 	static SiphonLife* create(PlatformerEntity* caster, PlatformerEntity* target);
 
-	static const std::string PropertyRestorePotionTutorial;
 	static const std::string SiphonLifeIdentifier;
+	static const int HealAmount;
+	static const float TimeBetweenTicks;
+	static const float StartDelay;
 
 protected:
 	SiphonLife(PlatformerEntity* caster, PlatformerEntity* target);
@@ -27,20 +29,16 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
+	void runSiphonLife();
+	void runRestoreTick();
 
 private:
 	typedef Buff super;
 
-	void applySiphonLife();
-	
-	volatile float currentSpeed;
-	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	void incrementHeal();
 
-	static const float MinSpeed;
-	static const float DefaultSpeed;
-	static const float MaxSpeed;
-	static const float Duration;
+	int healAmount;
+	SmartAnimationSequenceNode* healEffect;
+	WorldSound* impactSound;
+	WorldSound* healSound;
 };

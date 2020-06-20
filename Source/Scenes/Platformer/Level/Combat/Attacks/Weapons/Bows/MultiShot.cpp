@@ -27,6 +27,7 @@ MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float r
 		AttackType::Damage,
 		UIResources::Menus_Icons_ArcheryTarget,
 		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		8,
@@ -35,8 +36,8 @@ MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float r
 		true
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 
 	this->setDamageMultiplier(MultiShot::DamageMultiplier);
 
@@ -84,7 +85,7 @@ void MultiShot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 void MultiShot::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

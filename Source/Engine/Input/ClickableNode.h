@@ -42,6 +42,10 @@ public:
 	virtual void disableInteraction(uint8_t newOpacity = 255);
 	virtual void enableInteraction(uint8_t newOpacity = 255);
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
+	void toggleAllowMouseOutDeselection(bool allowMouseOutDeselection);
+	void select();
+	void deselect();
+	bool isSelected();
 	cocos2d::Node* getContent();
 	cocos2d::Node* getContentSelected();
 	void setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction);
@@ -76,6 +80,7 @@ private:
 
 	cocos2d::Node* currentSprite;
 
+	bool allowMouseOutDeselection;
 	bool allowCollisionWhenInvisible;
 	bool interactionEnabled;
 	bool wasAnywhereClicked;

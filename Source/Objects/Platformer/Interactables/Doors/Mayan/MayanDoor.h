@@ -31,12 +31,12 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onObjectStateLoaded() override;
 	void registerHackables() override;
 
 private:
 	typedef Portal super;
 
+	void loadGems();
 	void tryTakeGems();
 	void tryUnlock();
 	int runGemRed(int currentIndex);

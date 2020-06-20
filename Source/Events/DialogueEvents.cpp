@@ -4,7 +4,11 @@
 #include "cocos/base/CCEventDispatcher.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -25,6 +29,34 @@ void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 		DialogueEvents::EventDialogueClose,
 		&args
 	);
+}
+
+LocalizedString* DialogueEvents::BuildOptions(LocalizedString* intro, std::vector<LocalizedString*> optionList)
+{
+	LocalizedString* options = Strings::Common_Triconcat::create();
+	LocalizedString* prelude = intro == nullptr ? nullptr : Strings::Common_Triconcat::create()
+		->setStringReplacementVariables({intro, Strings::Common_Newline::create(), options });
+	LocalizedString* currentOption = options;
+	int index = 1;
+
+	for (auto it = optionList.begin(); it != optionList.end(); it++, index++)
+	{
+		bool lastIter = it == (--optionList.end());
+		LocalizedString* option = *it;
+		LocalizedString* nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
+
+		LocalizedString* dash = Strings::Common_Dash::create();
+		LocalizedString* brackets = Strings::Common_Brackets::create();
+
+		brackets->setStringReplacementVariables(ConstantString::create(std::to_string(index)));
+
+		dash->setStringReplacementVariables({ brackets, option });
+
+		currentOption->setStringReplacementVariables({ dash, Strings::Common_Newline::create(), nextOption });
+		currentOption = nextOption;
+	}
+
+	return prelude != nullptr ? prelude : options;
 }
 
 std::function<Node*()> DialogueEvents::BuildPreviewNode(void* entity, bool isFlipped)

@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -81,6 +82,7 @@ void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 
 void TalkToElriel::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueen);
 }
 
 void TalkToElriel::onSkipped()
@@ -104,7 +106,7 @@ void TalkToElriel::runCinematicSequencePart1()
 				Strings::Platformer_Ellipses::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Top,
-					DialogueBox::DialogueAlignment::HardRight,
+					DialogueBox::DialogueAlignment::Right,
 					DialogueEvents::BuildPreviewNode(&this->elriel, false),
 					DialogueEvents::BuildPreviewNode(&this->squally, true),
 					true
@@ -117,7 +119,7 @@ void TalkToElriel::runCinematicSequencePart1()
 				false
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -128,7 +130,7 @@ void TalkToElriel::runCinematicSequencePart2()
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::HardRight,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->elriel, false),
 			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
@@ -136,7 +138,7 @@ void TalkToElriel::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		false
 	));
 }
@@ -156,7 +158,7 @@ void TalkToElriel::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

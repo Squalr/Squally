@@ -114,8 +114,8 @@ void MetalSpikes::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
-						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()) + 
 						COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()) + 
 						"addss xmm2, xmm4\n\n" +
@@ -160,8 +160,9 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 	
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, elapsedPtr);
-	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
+
+	ASM_MOV_REG_PTR(ZAX, elapsedPtr);
+	ASM_MOV_REG_PTR(ZBX, deltaTimePtr);
 
 	ASM(movss xmm2, [ZAX])
 	ASM(movss xmm4, [ZBX])

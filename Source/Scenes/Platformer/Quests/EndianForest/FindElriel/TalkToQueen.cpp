@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -81,6 +82,7 @@ void TalkToQueen::onActivate(bool isActiveThroughSkippable)
 
 void TalkToQueen::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFFindElriel);
 }
 
 void TalkToQueen::onSkipped()
@@ -109,7 +111,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 
@@ -124,7 +126,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -140,7 +142,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -156,7 +158,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Droid_DroidChatter,
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 			false
 		));
 
@@ -172,7 +174,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -190,7 +192,7 @@ void TalkToQueen::runCinematicSequence()
 				this->setPostText();
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceLong(),
 			true
 		));
 	});
@@ -215,7 +217,7 @@ void TalkToQueen::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceLong(),
 				true
 			));
 		});

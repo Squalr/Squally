@@ -4,9 +4,11 @@
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
+   <property name="crack-color" value=""/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -186,6 +188,79 @@
   </properties>
   <object id="746" name="ship-alt" type="terrain" x="-78" y="1690" width="3993.5" height="536"/>
  </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="map" value="EndianForest/Ship_Main"/>
+    <property name="tag" value="ship-portal"/>
+    <property name="transition" value="ship"/>
+   </properties>
+  </object>
+  <object id="708" name="edge-portal" type="object" x="-1.96156" y="1208.75" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="docks"/>
+   </properties>
+  </object>
+  <object id="717" name="solid" type="collision" x="3679.52" y="903.344" width="126.878" height="778.756"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="692" name="blackbeard" type="entity" x="1717.67" y="1554.79" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
+    <property name="quest" value="sail-for-ruins"/>
+    <property name="quest-line" value="sail-for-ruins"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="971.817" y="1553.34" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="709" name="spawn" type="object" x="384.988" y="1562.72" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="745" name="spawn" type="object" x="2284" y="1548.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="ship"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="73" name="water">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
  <objectgroup id="79" name="water +1">
   <properties>
    <property name="depth" type="float" value="64"/>
@@ -284,79 +359,6 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="22" name="decor midground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="23" name="objects">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="map" value="EndianForest/Ship_Main"/>
-    <property name="tag" value="ship-portal"/>
-    <property name="transition" value="ship"/>
-   </properties>
-  </object>
-  <object id="708" name="edge-portal" type="object" x="-1.96156" y="1208.75" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="EndianForest/Town_Main"/>
-    <property name="transition" value="docks"/>
-   </properties>
-  </object>
-  <object id="717" name="solid" type="collision" x="3679.52" y="903.344" width="126.878" height="778.756"/>
- </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="24" name="entities">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="692" name="blackbeard" type="entity" x="1717.67" y="1554.79" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="ef-generic"/>
-    <property name="quest" value="sail-for-ruins"/>
-    <property name="quest-line" value="sail-for-ruins"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="25" name="player_layer">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="523" name="squally" type="entity" x="971.817" y="1553.34" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
-  <object id="709" name="spawn" type="object" x="384.988" y="1562.72" width="128" height="128">
-   <properties>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="745" name="spawn" type="object" x="2284" y="1548.67" width="128" height="128">
-   <properties>
-    <property name="transition" value="ship"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="73" name="water">
-  <properties>
-   <property name="depth" type="float" value="128"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>

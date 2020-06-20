@@ -89,6 +89,20 @@ void Anvil::onInteract()
 	PlatformerEvents::TriggerOpenSmithing(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }
 
+void Anvil::activate()
+{
+	this->floatContainer->setVisible(true);
+
+	this->enable();
+}
+
+void Anvil::deactivate()
+{
+	this->floatContainer->setVisible(false);
+
+	this->disable();
+}
+
 void Anvil::loadRecipePool()
 {
 	ValueMap valueMap = ValueMap();

@@ -12,14 +12,14 @@ public:
 	static cocos2d::LanguageType getNativeLanguage();
 
 protected:
+	Localization();
+	virtual ~Localization();
+
+private:
 	friend class LocalizedLabel;
 	friend class LocalizedSprite;
 
-private:
 	static Localization* getInstance();
-
-	Localization();
-	~Localization();
 
 	static cocos2d::LanguageType languageCodeToLanguageType(std::string languageCode);
 	static std::string languageTypeToLanguageCode(cocos2d::LanguageType languageType);

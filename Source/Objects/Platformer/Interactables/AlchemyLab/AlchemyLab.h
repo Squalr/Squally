@@ -18,6 +18,9 @@ class AlchemyLab : public InteractObject
 public:
 	static AlchemyLab* create(cocos2d::ValueMap& properties);
 
+	void activate();
+	void deactivate();
+
 	static const std::string MapKey;
 
 protected:

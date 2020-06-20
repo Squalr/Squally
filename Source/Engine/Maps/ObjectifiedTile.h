@@ -16,9 +16,10 @@ public:
 
 protected:
 	ObjectifiedTile(cocos2d::Sprite* sprite, cocos2d::ValueMap properties);
-	~ObjectifiedTile();
+	virtual ~ObjectifiedTile();
 
 private:
 	typedef GameObject super;
+	
 	cocos2d::Sprite* innerSprite;
 };

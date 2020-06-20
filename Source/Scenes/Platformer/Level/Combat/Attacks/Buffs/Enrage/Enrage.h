@@ -27,18 +27,18 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
-	void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
-	void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed) override;
+	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
 
 	void applyEnrageSpeed();
-	void applyEnrageIncreaseDamageDelt();
+	void applyEnrageIncreaseDamageDealt();
 	void applyEnrageIncreaseDamageTaken();
 	
-	volatile float currentSpeed;
+	static volatile float currentSpeed;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;

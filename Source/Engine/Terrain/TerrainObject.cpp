@@ -31,9 +31,8 @@
 
 using namespace cocos2d;
 
-std::string TerrainObject::MapKeyTypeTerrain = "terrain";
-std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
-std::string TerrainObject::MapKeyTypeTopOnly = "top-only";
+std::string TerrainObject::MapKey = "terrain";
+std::string TerrainObject::PropertyTopOnly = "top-only";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
@@ -50,11 +49,13 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
-	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeTopOnly, Value(false)).asBool();
+	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::PropertyTopOnly, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
-	this->addTag(TerrainObject::MapKeyTypeTerrain);
+	this->addTag(TerrainObject::MapKey);
+
+	this->setName("terrain - " + GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKey, Value("")).asString());
 
 	this->rootNode = Node::create();
 	this->collisionNode = Node::create();
@@ -70,6 +71,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topCornersNode = Node::create();
 	this->debugLabelsNode = Node::create();
 	this->debugDrawNode = DrawNode::create();
+	this->drawRect = Rect::ZERO;
 	this->boundsRect = Rect::ZERO;
 
 	this->debugLabelsNode->setVisible(false);
@@ -247,9 +249,7 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	this->collisionSegments = this->segments;
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 	this->infillTriangles = this->textureTriangles;
-
-	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
-
+	this->drawRect = AlgoUtils::getPolygonRect(this->points);
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 }
 
@@ -992,9 +992,10 @@ ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
 	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(128.0f, 128.0f);
+	static const Size Padding = Size(1024.0f, 1024.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
+	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
 	if (cameraRect.intersectsRect(this->boundsRect))
 	{

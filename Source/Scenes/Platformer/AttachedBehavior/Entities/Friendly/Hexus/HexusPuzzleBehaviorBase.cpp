@@ -42,7 +42,7 @@ void HexusPuzzleBehaviorBase::onEnter()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 	});

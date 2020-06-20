@@ -44,6 +44,7 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 {
 	this->item = nullptr;
 	this->itemPreview = ItemPreview::create(true, false);
+	this->activationNode = Node::create();
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::PropertyShopPool, Value("")).asString();
@@ -60,11 +61,12 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 
 	this->setVisible(false);
 
-	this->addChild(this->itemPreview);
-	this->addChild(this->itemNode);
-	this->addChild(this->itemClickHitbox);
-	this->addChild(this->currencySprite);
-	this->addChild(this->itemCostLabel);
+	this->activationNode->addChild(this->itemPreview);
+	this->activationNode->addChild(this->itemNode);
+	this->activationNode->addChild(this->itemClickHitbox);
+	this->activationNode->addChild(this->currencySprite);
+	this->activationNode->addChild(this->itemCostLabel);
+	this->addChild(this->activationNode);
 }
 
 ShopItem::~ShopItem()
@@ -136,6 +138,16 @@ void ShopItem::initializeListeners()
 			}
 		));
 	});
+}
+
+void ShopItem::activate()
+{
+	this->activationNode->setVisible(true);
+}
+
+void ShopItem::deactivate()
+{
+	this->activationNode->setVisible(false);
 }
 
 void ShopItem::sellItem()

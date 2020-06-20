@@ -4,6 +4,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -40,6 +41,6 @@ void EnrageClippy::startDialogue()
 	this->runDialogue(
 		Strings::Menus_Hacking_Abilities_Buffs_Enrage_EnrageClippy::create()
 			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create()),
-		SoundResources::Platformer_Entities_Droid_DroidChatter
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid)
 	);
 }

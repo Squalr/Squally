@@ -8,32 +8,53 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Particles/SmartParticles.h"
+
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string MagePortal::TagMagePortal = "mage-portal";
+const std::string MagePortal::MapKey = "mage-portal";
+const float MagePortal::PortalRadius = 96.0f;
+const Color4B MagePortal::BaseColor = Color4B::BLUE;
 
-MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalBaseColor) : super(properties, Size(128.0f, 256.0f))
+MagePortal* MagePortal::create(ValueMap& properties)
+{
+	MagePortal* instance = new MagePortal(properties);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 256.0f))
 {
 	this->contentNode = Node::create();
-	this->portalBase = SmartClippingNode::create(this->contentNode, portalRadius);
+	this->portalBase = SmartClippingNode::create(this->contentNode, MagePortal::PortalRadius);
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
 	this->edge = DrawNode::create();
 	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 
-	this->addTag(MagePortal::TagMagePortal);
+	this->addTag(MagePortal::MapKey);
 
-	this->background->drawSolidCircle(Vec2::ZERO, portalRadius, 0.0f, 32, Color4F(portalBaseColor));
+	this->background->drawSolidCircle(Vec2::ZERO, MagePortal::PortalRadius, 0.0f, 32, Color4F(MagePortal::BaseColor));
 	
 	this->portalBase->setScaleX(0.5f);
-	this->drawEdge(Color4F::BLACK, this->edge, portalRadius, 8);
-
+	this->drawEdge(Color4F::BLACK, this->edge, MagePortal::PortalRadius, 8);
+	
+	this->portalEffectNode->addChild(this->edgeParticles);
+	this->portalEffectNode->addChild(this->portalParticles);
 	this->contentNode->addChild(this->background);
 	this->contentNode->addChild(this->portalEffectNode);
 	this->contentNode->addChild(this->edge);
@@ -64,6 +85,9 @@ void MagePortal::closePortal(bool instant)
 {
 	this->disable();
 
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
+
 	if (instant)
 	{
 		this->setOpacity(0);
@@ -87,6 +111,9 @@ void MagePortal::openPortal(bool instant)
 	}
 
 	this->enable();
+
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }
 
 void MagePortal::drawEdge(cocos2d::Color4F edgeColor, cocos2d::DrawNode* drawNode, float radius, int thickness)

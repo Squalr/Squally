@@ -26,7 +26,135 @@ const std::string GameMap::KeyTypeCollision = "collision";
 
 using namespace cocos2d;
 
-GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation)
+GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents)
+{
+	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
+
+	if (mapRaw == nullptr)
+	{
+		return nullptr;
+	}
+
+	std::map<int, MapLayer*> deserializedLayerMap = std::map<int, MapLayer*>();
+	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
+	std::vector<MapLayer*> deserializedLayers = std::vector<MapLayer*>();
+
+	// Callback to receive deserialized layers as they are parsed by their deserializers
+	auto onDeserializeCallback = [&](LayerDeserializer::LayerDeserializationArgs args)
+	{
+		deserializedLayerMap[args.layerIndex] = args.mapLayer;
+	};
+
+	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	bool isIsometric = mapRaw->getMapOrientation() == MapOrientation::Isometric;
+
+	if (isIsometric)
+	{
+		mapSize.width /= 2.0f;
+	}
+
+	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
+	for (auto next : mapRaw->getObjectGroups())
+	{
+		ValueMap properties = next->getProperties();
+
+		properties[GameObject::MapKeyName] = next->getGroupName();
+		properties[GameObject::MapKeyId] = next->layerIndex;
+
+		std::string layerType = GameUtils::getKeyOrDefault(properties, MapLayer::MapKeyType, Value("")).asString();
+
+		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
+			properties,
+			next->getObjects(),
+			next->layerIndex,
+			mapFileName,
+			mapSize,
+			isIsometric,
+			onDeserializeCallback
+		);
+
+		for (auto deserializer : layerDeserializers)
+		{
+			if (deserializer->getLayerType() == layerType)
+			{
+				deserializer->deserialize(&args);
+			}
+
+			if (args.isHandled())
+			{
+				break;
+			}
+		}
+	}
+
+	// Pull out tile layers
+	for (auto next : mapRaw->getChildren())
+	{
+		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(next);
+
+		if (tileLayer != nullptr)
+		{
+			tileLayers.push_back(tileLayer);
+		}
+	}
+
+	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
+	for (auto next : tileLayers)
+	{
+		deserializedLayerMap[next->layerIndex] = TileLayer::deserialize(next);
+	}
+
+	// Convert from map to ordered vector
+	for (auto next : deserializedLayerMap)
+	{
+		deserializedLayers.push_back(next.second);
+	}
+	
+	if (!isIsometric)
+	{
+		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
+
+		const float EdgeThickness = 256.0f;
+
+		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+
+		edgeCollisionLayer->addChild(topCollision);
+		edgeCollisionLayer->addChild(leftCollision);
+		edgeCollisionLayer->addChild(rightCollision);
+		edgeCollisionLayer->addChild(bottomCollision);
+
+		topCollision->setCollisionDepth(2048.0f);
+		leftCollision->setCollisionDepth(2048.0f);
+		rightCollision->setCollisionDepth(2048.0f);
+		bottomCollision->setCollisionDepth(2048.0f);
+
+		topCollision->setName("Top collision");
+		leftCollision->setName("Left collision");
+		rightCollision->setName("Right collision");
+		bottomCollision->setName("Bottom collision");
+
+		topCollision->setPosition(Vec2(mapSize.width / 2.0f, mapSize.height + EdgeThickness / 2.0f));
+		bottomCollision->setPosition(Vec2(mapSize.width / 2.0f, -EdgeThickness / 2.0f));
+		leftCollision->setPosition(Vec2(-EdgeThickness / 2.0f, mapSize.height / 2.0f));
+		rightCollision->setPosition(Vec2(mapSize.width + EdgeThickness / 2.0f, mapSize.height / 2.0f));
+
+		deserializedLayers.push_back(edgeCollisionLayer);
+	}
+
+	// Create a special hud_target layer for top-level display items
+	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
+
+	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation(), disableEvents);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation, bool disableEvents)
 {
 	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
@@ -36,6 +164,7 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
+	this->disableEvents = disableEvents;
 
 	for (auto next : this->mapLayers)
 	{
@@ -63,6 +192,11 @@ void GameMap::initializeListeners()
 {
 	super::initializeListeners();
 
+	if (disableEvents)
+	{
+		return;
+	}
+	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 	{
 		this->hackerModeEnable();
@@ -119,118 +253,6 @@ void GameMap::update(float dt)
 	super::update(dt);
 
 	this->isometricZSort();
-}
-
-GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers)
-{
-	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
-
-	if (mapRaw == nullptr)
-	{
-		return nullptr;
-	}
-
-	std::map<int, MapLayer*> deserializedLayerMap = std::map<int, MapLayer*>();
-	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
-	std::vector<MapLayer*> deserializedLayers = std::vector<MapLayer*>();
-
-	// Callback to receive deserialized layers as they are parsed by their deserializers
-	auto onDeserializeCallback = [&](LayerDeserializer::LayerDeserializationArgs args)
-	{
-		deserializedLayerMap[args.layerIndex] = args.mapLayer;
-	};
-
-	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
-	bool isIsometric = mapRaw->getMapOrientation() == MapOrientation::Isometric;
-
-	if (isIsometric)
-	{
-		mapSize.width /= 2.0f;
-	}
-	else
-	{
-		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
-
-		const float EdgeThickness = 256.0f;
-
-		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, CollisionObject::Properties(false, false));
-		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-
-		edgeCollisionLayer->addChild(topCollision);
-		edgeCollisionLayer->addChild(leftCollision);
-		edgeCollisionLayer->addChild(rightCollision);
-		edgeCollisionLayer->addChild(bottomCollision);
-
-		topCollision->setPosition(Vec2(mapSize.width / 2.0f, mapSize.height + EdgeThickness / 2.0f));
-		bottomCollision->setPosition(Vec2(mapSize.width / 2.0f, -EdgeThickness / 2.0f));
-		leftCollision->setPosition(Vec2(-EdgeThickness / 2.0f, mapSize.height / 2.0f));
-		rightCollision->setPosition(Vec2(mapSize.width + EdgeThickness / 2.0f, mapSize.height / 2.0f));
-
-		deserializedLayers.push_back(edgeCollisionLayer);
-	}
-
-	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
-	for (auto next : mapRaw->getObjectGroups())
-	{
-		std::string layerType = GameUtils::getKeyOrDefault(next->getProperties(), MapLayer::MapKeyType, Value("")).asString();
-
-		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
-			next->getProperties(),
-			next->getObjects(),
-			next->layerIndex,
-			mapFileName,
-			mapSize,
-			isIsometric,
-			onDeserializeCallback
-		);
-
-		for (auto deserializerIt = layerDeserializers.begin(); deserializerIt != layerDeserializers.end(); deserializerIt++)
-		{
-			if ((*deserializerIt)->getLayerType() == layerType)
-			{
-				(*deserializerIt)->deserialize(&args);
-			}
-
-			if (args.isHandled())
-			{
-				break;
-			}
-		}
-	}
-
-	// Pull out tile layers
-	for (auto next : mapRaw->getChildren())
-	{
-		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(next);
-
-		if (tileLayer != nullptr)
-		{
-			tileLayers.push_back(tileLayer);
-		}
-	}
-
-	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
-	for (auto next : tileLayers)
-	{
-		deserializedLayerMap[next->layerIndex] = TileLayer::deserialize(next);
-	}
-
-	// Convert from map to ordered vector
-	for (auto next : deserializedLayerMap)
-	{
-		deserializedLayers.push_back(next.second);
-	}
-
-	// Create a special hud_target layer for top-level display items
-	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
-
-	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
-
-	instance->autorelease();
-
-	return instance;
 }
 
 std::string GameMap::getMapFileName()

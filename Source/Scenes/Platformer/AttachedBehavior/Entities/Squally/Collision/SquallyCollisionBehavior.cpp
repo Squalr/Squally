@@ -70,6 +70,13 @@ void SquallyCollisionBehavior::onLoad()
 
 	this->squally->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* collisionBehavior)
 	{
+		collisionBehavior->setName("Squally entity collision");
+		
+		if (collisionBehavior->groundCollision == nullptr)
+		{
+			return;
+		}
+
 		collisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
 			collisionBehavior->onCollideWithGround();
@@ -80,6 +87,11 @@ void SquallyCollisionBehavior::onLoad()
 
 	this->squally->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
+		if (collisionBehavior->movementCollision == nullptr)
+		{
+			return;
+		}
+
 		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
@@ -118,7 +130,7 @@ void SquallyCollisionBehavior::onEntityCollisionCreated()
 {
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (this->noCombatDuration > 0.0f || !this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -127,7 +139,7 @@ void SquallyCollisionBehavior::onEntityCollisionCreated()
 
 		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
 
-		if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (enemy != nullptr && enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			// Encountered enemy body/weapon -- not a first-strike
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));

@@ -148,6 +148,15 @@ void PuzzleDoorBase::onEnter()
 {
 	super::onEnter();
 
+	if (this->loadObjectStateOrDefault(PuzzleDoorBase::UnlockedSaveKey, Value(this->unlockedByDefault)).asBool())
+	{
+		this->unlock(false);
+	}
+	else
+	{
+		this->lock(false);
+	}
+
 	this->runAction(RepeatForever::create(
 		Sequence::create(
 			CallFunc::create([=]()
@@ -281,20 +290,6 @@ void PuzzleDoorBase::initializePositions()
 void PuzzleDoorBase::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-void PuzzleDoorBase::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
-
-	if (this->getObjectStateOrDefault(PuzzleDoorBase::UnlockedSaveKey, Value(this->unlockedByDefault)).asBool())
-	{
-		this->unlock(false);
-	}
-	else
-	{
-		this->lock(false);
-	}
 }
 
 void PuzzleDoorBase::setRealValue(int value)

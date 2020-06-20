@@ -65,7 +65,7 @@ void SquallyRespawnBehavior::onLoad()
 
 	this->scheduleEvery([=]()
 	{
-		if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (!this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			this->respawn(1.5f);
 		}

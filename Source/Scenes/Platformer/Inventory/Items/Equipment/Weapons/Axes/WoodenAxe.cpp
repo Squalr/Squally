@@ -27,6 +27,8 @@ WoodenAxe::WoodenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 	0,
 	// Attack
 	0,
+	// Magic Attack
+	0,
 	// Armor
 	0,
 	// Speed
@@ -70,7 +72,7 @@ Size WoodenAxe::getWeaponCollisionSize()
 	return Size(140.0f, 92.0f);
 }
 
-Vec2 WoodenAxe::getWeaponOffset()
+Vec2 WoodenAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);

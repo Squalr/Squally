@@ -85,7 +85,7 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			{
 				// No AI required, these are worth playing immediately
 				gameState->selectedHandCard = card;
-				break;
+				return;
 			}
 			case CardData::CardType::Special_SHL:
 			case CardData::CardType::Special_SHR:

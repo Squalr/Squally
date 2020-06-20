@@ -20,12 +20,14 @@ SapphireWand* SapphireWand::create()
 	return instance;
 }
 
-SapphireWand::SapphireWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 6, ItemStats(
+SapphireWand::SapphireWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 9, 10, ItemStats(
 	// Health
 	0,
 	// Mana
-	0,
+	12,
 	// Attack
+	0,
+	// Magic Attack
 	0,
 	// Armor
 	0,

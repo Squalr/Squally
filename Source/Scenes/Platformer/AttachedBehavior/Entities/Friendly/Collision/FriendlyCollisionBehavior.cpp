@@ -32,20 +32,29 @@ void FriendlyCollisionBehavior::onLoad()
 
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
-		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::DoNothing;
-		});
+		if (collisionBehavior->leftCollision != nullptr)
+		{
+			collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::DoNothing;
+			});
+		}
 
-		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::DoNothing;
-		});
+		if (collisionBehavior->rightCollision != nullptr)
+		{
+			collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::DoNothing;
+			});
+		}
 
-		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		});
+		if (collisionBehavior->movementCollision != nullptr)
+		{
+			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::CollideWithPhysics;
+			});
+		}
 	});
 }
 

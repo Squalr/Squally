@@ -8,7 +8,7 @@
 #include "Entities/Platformer/Enemies/EndianForest/OrcBomber.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -84,7 +84,7 @@ std::string OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 std::string OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow5;
+	return SoundResources::Platformer_Physical_Projectiles_WeaponThrow5;
 }
 
 float OrcBomberOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
@@ -126,7 +126,7 @@ Projectile* OrcBomberOutOfCombatAttackBehavior::createProjectile()
 
 	this->agroBehavior->getAgroTarget()->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		projectile->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		projectile->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 	});
 
 	return projectile;

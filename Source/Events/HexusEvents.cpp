@@ -9,6 +9,7 @@ using namespace cocos2d;
 
 const std::string HexusEvents::EventOpenHexus = "EVENT_HEXUS_OPEN";
 const std::string HexusEvents::EventExitHexus = "EVENT_HEXUS_EXIT";
+const std::string HexusEvents::EventShowHelpMenuOutsideOfGame = "EVENT_HEXUS_SHOW_HELP_MENU";
 const std::string HexusEvents::EventCardPreviewed = "EVENT_HEXUS_CARD_PREVIEWED";
 const std::string HexusEvents::EventCardMousedOut = "EVENT_HEXUS_CARD_MOUSED_OUT";
 const std::string HexusEvents::EventBeforeRequestStateUpdate = "EVENT_HEXUS_BEFORE_REQUEST_UPDATE_STATE";
@@ -28,6 +29,14 @@ void HexusEvents::TriggerExitHexus(HexusExitArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HexusEvents::EventExitHexus,
+		&args
+	);
+}
+
+void HexusEvents::TriggerShowHelpMenuOutsideOfGame(HelpMenuArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HexusEvents::EventShowHelpMenuOutsideOfGame,
 		&args
 	);
 }

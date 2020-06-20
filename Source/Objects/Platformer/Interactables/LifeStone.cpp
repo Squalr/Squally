@@ -43,7 +43,7 @@ LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::I
 {
 	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal4);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal4);
 	this->isAnimating = false;
 
 	static bool runOnce = true;

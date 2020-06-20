@@ -18,6 +18,7 @@
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolLiana.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -112,9 +113,11 @@ void ReturnToQueen::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToQueen::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitMarcel);
+	
 	this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		questBehavior->disableTurnIn();
+		questBehavior->disableAll();
 	});
 }
 
@@ -144,7 +147,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 
@@ -163,7 +166,7 @@ void ReturnToQueen::runCinematicSequence()
 
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -178,7 +181,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -193,7 +196,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			Voices::GetNextVoiceQuestion(),
 			false
 		));
 
@@ -208,7 +211,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -223,7 +226,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -238,7 +241,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -253,7 +256,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -268,7 +271,7 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 
@@ -285,7 +288,7 @@ void ReturnToQueen::runCinematicSequence()
 			{
 				this->setPostText();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});
@@ -315,7 +318,7 @@ void ReturnToQueen::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

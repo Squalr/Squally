@@ -43,6 +43,9 @@ const float Haste::DefaultSpeed = 2.0f;
 const float Haste::MaxSpeed = 2.5f;
 const float Haste::Duration = 6.0f;
 
+// Static to prevent GCC optimization issues
+volatile float Haste::currentSpeed = 0.0f;
+
 Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Haste* instance = new Haste(caster, target);
@@ -53,7 +56,7 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_HourGlass, BuffData(Haste::Duration, Haste::HasteIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_HourGlass, AbilityType::Physical, BuffData(Haste::Duration, Haste::HasteIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -94,7 +97,7 @@ void Haste::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -126,8 +129,8 @@ void Haste::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
-						"mov dword ptr [esi], 0.0f",
-						// x64
+						"mov dword ptr [esi], 0.0f"
+						, // x64
 						"mov dword ptr [rsi], 0.0f"
 					)
 				}
@@ -135,24 +138,24 @@ void Haste::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Haste::applyHaste;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Haste::applyHaste;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void Haste::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
+	super::onModifyTimelineSpeed(speed);
 
-	this->currentSpeed = *timelineSpeed;
+	this->currentSpeed = *(speed->speed);
 
 	this->applyHaste();
 
-	*timelineSpeed = this->currentSpeed;
+	*(speed->speed) = this->currentSpeed;
 }
 
 NO_OPTIMIZE void Haste::applyHaste()
@@ -169,8 +172,8 @@ NO_OPTIMIZE void Haste::applyHaste()
 
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);

@@ -83,8 +83,9 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getEquipmentInventory()->forceInsert(WoodenSword::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);
 
-			for (int index = 0; index < 3; index++)
+			for (int index = 0; index < 7; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(HealthPotion::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(ManaPotion::create(), false);
@@ -93,7 +94,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			for (int index = 0; index < 20; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(Wood::create(), false);
-				entityInventoryBehavior->getInventory()->forceInsert(Tin::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Crystal::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Copper::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Iron::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Gold::create(), false);

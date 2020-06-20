@@ -14,7 +14,7 @@ Bombed* Bombed::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Bombed::Bombed(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, "", BuffData(-1.0f, Bombed::BombedIdentifier))
+	: super(caster, target, "", AbilityType::Fire, BuffData(-1.0f, Bombed::BombedIdentifier))
 {
 }
 

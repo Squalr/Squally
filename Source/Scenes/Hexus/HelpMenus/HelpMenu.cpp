@@ -48,6 +48,8 @@ HelpMenu::HelpMenu()
     exitLabel->enableOutline(Color4B::BLACK, 2);
     exitLabelSelect->enableOutline(Color4B::BLACK, 2);
     
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
     this->background = Sprite::create(HexusResources::StoreMenu_StoreBoard);
     this->textPanel = LayerColor::create(Color4B(0, 0, 0, 196), 1234, 196);
     this->addHelpMenu = AddHelpMenu::create();
@@ -68,7 +70,9 @@ HelpMenu::HelpMenu()
     this->xorHelpMenu = XorHelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_WoodButton, UIResources::Menus_Buttons_WoodButtonSelected);
     this->onExit = nullptr;
+    this->onExitSecondary = nullptr;
 
+    this->addChild(this->backdrop);
     this->addChild(this->background);
     this->addChild(this->textPanel);
     this->addChild(this->addHelpMenu);
@@ -108,6 +112,7 @@ void HelpMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
     this->textPanel->setPosition(Vec2(-1234.0f / 2.0f, 236.0f));
     this->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
     this->exitButton->setPosition(Vec2(0.0f, -356.0f));
@@ -123,12 +128,18 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
         {
             this->onExit();
         }
+
+        if (this->onExitSecondary != nullptr)
+        {
+            this->onExitSecondary();
+        }
     });
 }
 
-void HelpMenu::openMenu(CardData* cardData)
+void HelpMenu::openMenu(CardData* cardData, bool showBackdrop, std::function<void()> onExitSecondary)
 {
     this->setVisible(true);
+    this->backdrop->setVisible(showBackdrop);
     this->addHelpMenu->setVisible(false);
     this->andHelpMenu->setVisible(false);
     this->binDecHexHelpMenu->setVisible(false);
@@ -145,6 +156,7 @@ void HelpMenu::openMenu(CardData* cardData)
     this->shrHelpMenu->setVisible(false);
     this->subHelpMenu->setVisible(false);
     this->xorHelpMenu->setVisible(false);
+    this->onExitSecondary = onExitSecondary;
 
     if (cardData == nullptr)
     {

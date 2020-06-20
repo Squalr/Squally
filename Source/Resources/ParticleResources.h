@@ -60,6 +60,7 @@ namespace ParticleResources
 	extern const std::string MindBlast;
 	extern const std::string Objects_MagicWall;
 	extern const std::string Objects_Smoke;
+	extern const std::string Objects_StatueBreak;
 	extern const std::string Objects_VaseBreak;
 	extern const std::string Platformer_Combat_Abilities_Blue;
 	extern const std::string Platformer_Combat_Abilities_Curse;
@@ -98,6 +99,9 @@ namespace ParticleResources
 	extern const std::string Sparks;
 	extern const std::string Static;
 	extern const std::string WarpGate;
+	extern const std::string WarpGates_PortalCenter;
+	extern const std::string WarpGates_PortalEdgeHorizontal;
+	extern const std::string WarpGates_PortalEdgeVertical;
 	extern const std::string WarpPoint;
 	extern const std::string Wind;
 };

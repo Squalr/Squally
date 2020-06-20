@@ -7,7 +7,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -28,7 +28,8 @@ ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recov
 	return instance;
 }
 
-ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 5, 7, 4, attackDuration, recoverDuration)
+ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_FlamingTorch, priority, AbilityType::Fire, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -69,7 +70,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}
@@ -78,7 +79,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;
@@ -88,7 +89,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+			weapon->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 		});
 	}
 }

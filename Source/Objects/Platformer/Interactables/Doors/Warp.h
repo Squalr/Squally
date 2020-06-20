@@ -9,8 +9,10 @@ public:
 	static Warp* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
-	static const std::string MapKeyWarpFrom;
-	static const std::string MapKeyWarpTo;
+	static const std::string PropertyWarpFrom;
+	static const std::string PropertyWarpTo;
+	static const std::string PropertyNoWarpCamera;
+	static const std::string PropertyRelayer;
 
 protected:
 	Warp(cocos2d::ValueMap& properties);
@@ -24,8 +26,12 @@ protected:
 private:
 	typedef Portal super;
 
+	void doRelayer();
+
 	std::string from;
 	std::string to;
+	bool warpCamera;
+	bool relayer;
 
 	static const std::string EventWarpToPrefix;
 };

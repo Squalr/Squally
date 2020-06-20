@@ -20,7 +20,7 @@ MagesGuildPrisonKey* MagesGuildPrisonKey::create()
 	return instance;
 }
 
-MagesGuildPrisonKey::MagesGuildPrisonKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
+MagesGuildPrisonKey::MagesGuildPrisonKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(1, 1))
 {
 }
 

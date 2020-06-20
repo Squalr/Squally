@@ -27,6 +27,7 @@ AxeCleave::AxeCleave(int damageMin, int damageMax, float attackDuration, float r
 		AttackType::Damage,
 		UIResources::Menus_Icons_AxeSlash,
 		priority,
+		AbilityType::Physical,
 		damageMin,
 		damageMax,
 		8,
@@ -35,8 +36,8 @@ AxeCleave::AxeCleave(int damageMin, int damageMax, float attackDuration, float r
 		true
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid3);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingWeakHybrid3);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 
 	this->setDamageMultiplier(AxeCleave::DamageMultiplier);
 
@@ -84,7 +85,7 @@ void AxeCleave::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 void AxeCleave::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage(), this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

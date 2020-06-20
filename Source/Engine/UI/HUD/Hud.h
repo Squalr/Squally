@@ -13,6 +13,8 @@ class Hud : public SmartNode
 public:
 	static Hud* create();
 
+	cocos2d::Vec3 getRenderPosition();
+
 protected:
 	Hud();
 	virtual ~Hud();

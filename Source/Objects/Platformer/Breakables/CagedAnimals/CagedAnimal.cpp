@@ -79,7 +79,7 @@ void CagedAnimal::onBreak()
 	SaveManager::SaveProfileData(this->saveKey, Value(true));
 
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-		Strings::Menus_Notifications_AnimalRescued::create(),
+		Strings::Menus_Notifications_CreatureRescued::create(),
 		this->getAnimalName(),
 		this->getSpriteResource(),
 		SoundResources::Notifications_NotificationGood1

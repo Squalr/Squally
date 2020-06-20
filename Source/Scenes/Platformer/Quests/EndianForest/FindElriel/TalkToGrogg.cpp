@@ -113,7 +113,7 @@ void TalkToGrogg::runCinematicSequencePart1()
 		{
 			this->runCinematicSequencePart2();
 		},
-		SoundResources::Platformer_Entities_Orc_GruntDeep1,
+		Voices::GetNextVoiceShort(Voices::VoiceType::Orc),
 		false
 	));
 }
@@ -132,7 +132,7 @@ void TalkToGrogg::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Orc_GruntDeep2,
+		Voices::GetNextVoiceQuestion(Voices::VoiceType::Orc),
 		false
 	));
 }
@@ -151,7 +151,7 @@ void TalkToGrogg::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Orc_Grunt1,
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Orc),
 		false
 	));
 }
@@ -168,6 +168,8 @@ void TalkToGrogg::runCinematicSequencePart4()
 		),
 		[=]()
 		{
+			this->complete();
+			
 			this->kingGrogg->watchForAttachedBehavior<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
 			{
 				combatBehavior->attack();
@@ -181,7 +183,7 @@ void TalkToGrogg::runCinematicSequencePart4()
 				agroBehavior->setAgroRangeY(65535.0f);
 			});
 		},
-		SoundResources::Platformer_Entities_Orc_OrcLaugh1,
+		Voices::GetNextVoiceLong(Voices::VoiceType::Orc),
 		true
 	));
 }

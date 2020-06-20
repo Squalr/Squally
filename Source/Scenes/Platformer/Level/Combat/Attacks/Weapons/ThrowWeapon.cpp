@@ -6,7 +6,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -26,7 +26,8 @@ ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, Pr
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, 5, 7, 4, attackDuration, recoverDuration)
+ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SwordThrow, priority, AbilityType::Physical, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -61,7 +62,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 			
-			if (!entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}
@@ -70,7 +71,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 
 			if (entity != nullptr)
 			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;
@@ -80,7 +81,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+			weapon->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 		});
 
 		CombatEvents::TriggerProjectileSpawned(CombatEvents::ProjectileSpawnedArgs(owner, next, weapon));

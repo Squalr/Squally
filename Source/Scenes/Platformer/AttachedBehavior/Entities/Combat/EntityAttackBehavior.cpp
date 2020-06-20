@@ -98,7 +98,7 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 
 	for (auto attack : this->getAttacks())
 	{
-		if (attack->getSpecialCost() <= this->entity->getStateOrDefaultInt(StateKeys::Mana, 0))
+		if (attack->getSpecialCost() <= this->entity->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0))
 		{
 			availableAttacks.push_back(attack);
 		}
@@ -185,7 +185,6 @@ std::tuple<int, int> EntityAttackBehavior::computeAttackRange()
 	const int DefaultMinAttack = 3;
 	const int DefaultMaxAttack = 5;
 
-	int bonusAttack = StatsTables::getBonusAttack(this->entity);
 	int minAttack = DefaultMinAttack;
 	int maxAttack = DefaultMaxAttack;
 
@@ -197,5 +196,5 @@ std::tuple<int, int> EntityAttackBehavior::computeAttackRange()
 		maxAttack = weapon == nullptr ? maxAttack : weapon->getMaxAttack();
 	}
 
-	return std::make_tuple(minAttack + bonusAttack, maxAttack + bonusAttack);
+	return std::make_tuple(minAttack, maxAttack);
 }

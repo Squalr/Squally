@@ -48,12 +48,12 @@ IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEnt
 }
 
 IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
-	: super(caster, target, UIResources::Menus_Icons_ArrowUp, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_ArrowUp, AbilityType::Arcane, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
@@ -77,14 +77,14 @@ void IncrementHealth::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
+	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
 }
 
 void IncrementHealth::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -114,7 +114,7 @@ void IncrementHealth::registerHackables()
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
@@ -131,7 +131,7 @@ void IncrementHealth::runIncrementHealth()
 		icon->setScale(0.5f);
 
 		timelineEvents.push_back(TimelineEvent::create(
-				this->target,
+				this->owner,
 				icon,
 				IncrementHealth::TimeBetweenTicks * float(healIndex) + IncrementHealth::StartDelay, [=]()
 			{
@@ -146,7 +146,7 @@ void IncrementHealth::runIncrementHealth()
 	}
 
 	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, this, this->target, [=]()
+		TimelineEventGroup::create(timelineEvents, this, this->owner, [=]()
 		{
 			this->removeBuff();
 		})
@@ -166,14 +166,14 @@ NO_OPTIMIZE void IncrementHealth::runRestoreTick()
 	ASM(inc ZDI);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, ZDI);
+	ASM_MOV_VAR_REG(incrementAmount, edi);
 
 	ASM(pop ZDI);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
+	incrementAmount = MathUtils::clamp(incrementAmount, -2, 2);
 
 	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, incrementAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

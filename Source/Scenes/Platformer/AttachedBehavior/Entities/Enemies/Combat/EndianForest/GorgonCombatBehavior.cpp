@@ -5,8 +5,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/DoubleSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/MultiCast/CastStoneSkinHaste.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/DoubleSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
@@ -46,6 +46,8 @@ void GorgonCombatBehavior::initializePositions()
 
 void GorgonCombatBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(CastStoneSkinHaste::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));

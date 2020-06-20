@@ -71,7 +71,7 @@ void EntityEqBehavior::setEq(int eq)
 
 int EntityEqBehavior::getEq()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::Eq, 1);
+	return this->entity->getRuntimeStateOrDefaultInt(StateKeys::Eq, 1);
 }
 
 bool EntityEqBehavior::setEqExperience(int eqExperience)
@@ -103,7 +103,7 @@ bool EntityEqBehavior::addEqExperience(int eqExperience)
 
 int EntityEqBehavior::getEqExperience()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::EqExperience, 0);
+	return this->entity->getRuntimeStateOrDefaultInt(StateKeys::EqExperience, 0);
 }
 
 void EntityEqBehavior::save()

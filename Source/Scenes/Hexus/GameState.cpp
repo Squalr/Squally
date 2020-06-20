@@ -161,6 +161,11 @@ void GameState::onDeveloperModeDisable()
 
 void GameState::updateState(GameState* gameState, StateType newState)
 {
+	if (gameState == nullptr)
+	{
+		return;
+	}
+
 	gameState->previousStateType = gameState->stateType;
 	gameState->stateType = newState;
 	gameState->clearInteraction();

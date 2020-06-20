@@ -22,15 +22,16 @@ ItemEntry* ItemEntry::create(Item* associatedItem, LocalizedString* text, std::s
     return instance;
 }
 
-ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource) : super(Strings::Common_Count::create(), spriteResource)
+ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource) : super(Strings::Common_TriconcatSpaced::create(), spriteResource)
 {
     this->associatedItem = associatedItem;
     this->onToggle = nullptr;
     this->stackSize = 1;
     this->stackString = ConstantString::create();
+    this->craftString = ConstantString::create();
     this->equipHintMode = ItemPreview::EquipHintMode::None;
 
-    this->label->setStringReplacementVariables({ text, this->stackString });
+    this->label->setStringReplacementVariables({ text, this->stackString, this->craftString });
 
     this->hideIcon();
 }
@@ -71,6 +72,24 @@ void ItemEntry::setStackSize(int stackSize)
     {
         this->stackString->setString("(x" + std::to_string(this->stackSize) + ")");
     }
+
+    this->sizeFont();
+}
+
+void ItemEntry::setCraftCount(int craftCount)
+{
+    this->craftCount = craftCount;
+
+    if (this->craftCount <= 0)
+    {
+        this->craftString->setString("");
+    }
+    else
+    {
+        this->craftString->setString("[" + std::to_string(this->craftCount) + "]");
+    }
+    
+    this->sizeFont();
 }
 
 void ItemEntry::setEquipHintMode(ItemPreview::EquipHintMode equipHintMode)

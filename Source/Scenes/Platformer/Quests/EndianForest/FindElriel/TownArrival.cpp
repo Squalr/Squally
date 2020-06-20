@@ -16,6 +16,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -69,6 +70,7 @@ void TownArrival::onActivate(bool isActiveThroughSkippable)
 
 void TownArrival::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFFindAShip);
 }
 
 void TownArrival::onSkipped()
@@ -94,7 +96,7 @@ void TownArrival::runCinematicSequence()
 		[=]()
 		{
 		},
-		SoundResources::Platformer_Entities_Droid_DroidChatter,
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		true
 	));
 }

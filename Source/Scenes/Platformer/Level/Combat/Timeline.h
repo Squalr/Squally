@@ -22,6 +22,8 @@ public:
 	std::vector<PlatformerEntity*> getEntities();
 	std::vector<PlatformerEntity*> getFriendlyEntities();
 	std::vector<PlatformerEntity*> getEnemyEntities();
+	std::vector<PlatformerEntity*> getSameTeamEntities(PlatformerEntity* entity);
+	TimelineEntry* getAssociatedEntry(PlatformerEntity* entity);
 	std::vector<TimelineEntry*> initializeTimelineFriendly(const std::vector<PlatformerEntity*>& friendlyEntities);
 	std::vector<TimelineEntry*> initializeTimelineEnemies(const std::vector<PlatformerEntity*>& enemyEntities);
 	void initializeStartingProgress(bool isPlayerFirstStrike);
@@ -42,6 +44,7 @@ private:
 
 	void checkCombatComplete();
 	void updateTimeline(float dt);
+	void updateTimelineTargetMarkers();
 	void refreshTimelinePositions();
 	void registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 	void unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup);

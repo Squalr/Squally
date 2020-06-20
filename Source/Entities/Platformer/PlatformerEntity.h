@@ -5,7 +5,6 @@
 #include "Engine/Hackables/HackableObject.h"
 
 class HackablePreview;
-class HexusOpponentData;
 class LocalizedString;
 class PlatformerEntityDeserializer;
 class SmartAnimationNode;
@@ -76,8 +75,6 @@ protected:
 	cocos2d::Node* floatNode;
 	cocos2d::Node* belowAnimationNode;
 	SmartAnimationNode* animationNode;
-
-	HexusOpponentData* hexusOpponentData;
 
 	static const std::string PropertyState;
 

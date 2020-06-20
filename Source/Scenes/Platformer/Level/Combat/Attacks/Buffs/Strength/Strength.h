@@ -27,14 +27,14 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
+	void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
 
 	void applyStrength();
 	
-	volatile int currentDamageDelt;
+	static volatile int currentDamageDealt;
 	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;

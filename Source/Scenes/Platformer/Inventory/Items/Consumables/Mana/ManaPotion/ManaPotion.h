@@ -3,12 +3,15 @@
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 
 class LocalizedString;
+class Sound;
 
 class ManaPotion : public Consumable
 {
 public:
 	static ManaPotion* create();
 
+	void useOutOfCombat(PlatformerEntity* target) override;
+	bool canUseOnTarget(PlatformerEntity* target) override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;
@@ -26,4 +29,6 @@ protected:
 
 private:
 	typedef Consumable super;
+
+	Sound* outOfCombatSound;
 };

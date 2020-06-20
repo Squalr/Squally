@@ -8,9 +8,18 @@ class PlatformerEntity;
 class Projectile : public HackableObject
 {
 public:
+	enum class MovementMode
+	{
+		Kinematic,
+		RotationVelocity,
+	};
+
+	MovementMode getMovementMode();
+	void setMovementMode(MovementMode movementMode);
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollisionEnd);
-	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
+	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec2 secondsPer256pxLinearDistance = cocos2d::Vec2(0.75f, 0.75f), cocos2d::Vec2 gravity = cocos2d::Vec2(0.0f, -768.0f));
+	void launchTowardsTarget3D(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setLaunchVelocity(cocos2d::Vec3 velocity);
 	void setLaunchAcceleration(cocos2d::Vec3 acceleration);
 	void setProjectileRotation(float projectileRotation);
@@ -55,6 +64,8 @@ protected:
 
 private:
 	typedef HackableObject super;
+
+	MovementMode movementMode;
 
 	CollisionObject* ownerCollisionRef;
 	bool enabled;

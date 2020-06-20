@@ -15,8 +15,8 @@ protected:
 	virtual ~Sound();
 
 	void initializeListeners() override;
-	void pause() override;
-	void resume() override;
+	void freeze() override;
+	void unfreeze() override;
 	float getConfigVolume() override;
 
 private:

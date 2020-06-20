@@ -125,6 +125,30 @@ void LocalizedLabel::setFontSize(FontSize fontSize)
 	this->onStringUpdate(this->localizedString);
 }
 
+bool LocalizedLabel::increaseFontSize()
+{
+	if (this->fontSize == FontSize::MAX)
+	{
+		return false;
+	}
+
+	this->setFontSize(FontSize(int(this->fontSize) - 1));
+
+	return true;
+}
+
+bool LocalizedLabel::decreaseFontSize()
+{
+	if (this->fontSize == FontSize::MIN)
+	{
+		return false;
+	}
+
+	this->setFontSize(FontSize(int(this->fontSize) + 1));
+
+	return true;
+}
+
 float LocalizedLabel::getFontSize()
 {
 	switch (this->fontSize)
@@ -178,6 +202,14 @@ float LocalizedLabel::getFontSize()
 		{
 			return LocalizedLabel::getFontSizeSmall();
 		}
+		case FontSize::Tiny:
+		{
+			return LocalizedLabel::getFontSizeTiny();
+		}
+		case FontSize::Micro:
+		{
+			return LocalizedLabel::getFontSizeMicro();
+		}
 	}
 }
 
@@ -207,6 +239,8 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	int outlineSize = int(this->getOutlineSize());
 	Color4B outlineColor = Color4B(_effectColorF);
 
+	this->cleanupState();
+
 	this->initWithTTF(
 		localizedString->getString(),
 		this->getFont(),
@@ -221,6 +255,30 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	{
 		this->enableOutline(outlineColor, outlineSize);
 	}
+}
+
+void LocalizedLabel::cleanupState()
+{
+	if (_letters.size() > 0)
+	{
+		this->removeLetters();
+		int max = this->getStringLength();
+
+		for (int index = 0; index < max; index++)
+		{
+			Sprite* letter = this->getLetter(index);
+
+			if (letter != nullptr)
+			{
+				letter->stopAllActions();
+				letter->setTextureAtlas(nullptr);
+			}
+		}
+		
+		this->_letters.clear();
+	}
+
+	this->_contentDirty = true;
 }
 
 cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
@@ -404,4 +462,14 @@ float LocalizedLabel::getFontSizeP()
 float LocalizedLabel::getFontSizeSmall()
 {
 	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 20.0f : 16.0f;
+}
+
+float LocalizedLabel::getFontSizeTiny()
+{
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 16.0f : 12.0f;
+}
+
+float LocalizedLabel::getFontSizeMicro()
+{
+	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 12.0f : 8.0f;
 }

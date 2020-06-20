@@ -6,19 +6,22 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
 const std::string AgroBehavior::MapKey = "agro";
 const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
+const float AgroBehavior::AgroRangeZ = 24.0f;
 const float AgroBehavior::EngageCooldownMax = 1.0f;
 
 AgroBehavior* AgroBehavior::create(GameObject* owner)
@@ -33,14 +36,17 @@ AgroBehavior* AgroBehavior::create(GameObject* owner)
 AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->exclamation = Sprite::create(ObjectResources::Interactive_Help_Exclamation);
+	this->exclamation = Sprite::create(UIResources::Combat_Exclamation);
 	this->chaseOnAgro = true;
 	this->warnOnAgro = true;
 	this->isAgrod = false;
 	this->isEnabled = true;
-	this->engageCooldown = 0.f;
+	this->engageCooldown = 0.0f;
+	this->initCooldown = 0.0f;
 	this->agroRangeX = AgroBehavior::AgroRangeX;
 	this->agroRangeY = AgroBehavior::AgroRangeY;
+	this->agroRangeZ = AgroBehavior::AgroRangeZ;
+	this->agroBeep = WorldSound::create(SoundResources::Platformer_Entities_Generic_AgroBeep2);
 
 	if (this->entity == nullptr)
 	{
@@ -52,6 +58,7 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 	this->squally = nullptr;
 
 	this->addChild(this->exclamation);
+	this->addChild(this->agroBeep);
 }
 
 AgroBehavior::~AgroBehavior()
@@ -76,6 +83,9 @@ void AgroBehavior::onLoad()
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	// Prevent agro for a small amount of time. This gives time for entities to properly load/warp.
+	this->initCooldown = 0.25f;
 	
 	this->scheduleUpdate();
 }
@@ -129,19 +139,26 @@ void AgroBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->isEnabled || this->squally == nullptr || this->entity == nullptr || !this->entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	if (!this->isEnabled || this->squally == nullptr || this->entity == nullptr || !this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		this->exclamation->setVisible(false);
 		return;
 	}
 
-	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
-	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
+	if (this->initCooldown > 0.0f)
+	{
+		this->initCooldown -= dt;
+		return;
+	}
+
+	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
 	
 	if (!this->isAgrod)
 	{
 		if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
-			std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
+			std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY &&
+			std::abs(squallyPosition.z - entityPosition.z) <= this->agroRangeZ)
 		{
 			this->isAgrod = true;
 
@@ -149,6 +166,7 @@ void AgroBehavior::update(float dt)
 			{
 				this->engageCooldown = AgroBehavior::EngageCooldownMax;
 				this->exclamation->setVisible(true);
+				this->agroBeep->play();
 			}
 			else
 			{
@@ -166,7 +184,8 @@ void AgroBehavior::update(float dt)
 			this->exclamation->setVisible(false);
 			
 			if (std::abs(squallyPosition.x - entityPosition.x) <= this->agroRangeX &&
-				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY)
+				std::abs(squallyPosition.y - entityPosition.y) <= this->agroRangeY &&
+				std::abs(squallyPosition.z - entityPosition.z) <= this->agroRangeZ)
 			{
 				if (this->chaseOnAgro)
 				{
@@ -181,6 +200,7 @@ void AgroBehavior::update(float dt)
 			else
 			{
 				this->isAgrod = false;
+				this->entity->clearState(StateKeys::PatrolDestinationX);
 			}
 		}
 		else

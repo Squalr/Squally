@@ -22,8 +22,10 @@
 using namespace cocos2d;
 
 const std::string Portal::MapKey = "portal";
-const std::string Portal::MapKeyPortalTransition = "transition";
-const std::string Portal::MapKeyPortalMap = "map";
+const std::string Portal::PropertyPortalTransition = "transition";
+const std::string Portal::PropertyPortalMap = "map";
+const std::string Portal::PropertyIsLocked = "is-locked";
+const std::string Portal::SaveKeyListenEventTriggered = "SAVE_KEY_LISTEN_EVENT_TRIGGERED";
 
 Portal* Portal::create(ValueMap& properties)
 {
@@ -34,10 +36,13 @@ Portal* Portal::create(ValueMap& properties)
 	return instance;
 }
 
-Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties, InteractObject::InteractType::Input, size, offset)
+Portal::Portal(ValueMap& properties, Size size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, color)
 {
-	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
-	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
+	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalMap, Value("")).asString();
+	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalTransition, Value("")).asString();
+	this->isLocked = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyIsLocked, Value(this->isLocked)).asBool();
+
+	this->setName("Portal: " + this->mapFile);
 
 	if (this->mapFile.empty())
 	{
@@ -55,12 +60,20 @@ void Portal::onEnter()
 
 	if (!this->getListenEvent().empty())
 	{
-		this->lock(false);
-
-		this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
+		if (!this->loadObjectStateOrDefault(Portal::SaveKeyListenEventTriggered, Value(false)).asBool())
 		{
-			this->unlock(true);
-		});
+			this->lock(false);
+
+			this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
+			{
+				this->saveObjectState(Portal::SaveKeyListenEventTriggered, Value(true));
+				this->unlock(true);
+			});
+		}
+		else
+		{
+			this->unlock(false);
+		}
 	}
 }
 

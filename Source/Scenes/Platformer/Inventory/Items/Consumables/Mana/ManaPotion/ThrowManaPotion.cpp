@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ManaPotion.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
@@ -29,9 +29,10 @@ ThrowManaPotion* ThrowManaPotion::create(Priority priority)
 	return instance;
 }
 
-ThrowManaPotion::ThrowManaPotion(Priority priority) : super(AttackType::Healing, ItemResources::Consumables_Potions_ManaPotion, priority, 10, 15, 0, 0.2f, 1.5f)
+ThrowManaPotion::ThrowManaPotion(Priority priority)
+	: super(AttackType::Healing, ItemResources::Consumables_Potions_ManaPotion, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
+	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 
 	this->addChild(this->throwSound);
 }
@@ -78,9 +79,9 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 
 			if (entity != nullptr)
 			{
-				int restore = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
+				int restore = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
 				
-				CombatEvents::TriggerManaRestore(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
+				CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(owner, entity, restore, this->abilityType));
 			}
 
 			return CollisionObject::CollisionResult::DoNothing;
@@ -92,11 +93,11 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 		{
 			if (owner == next)
 			{
-				potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 			}
 			else
 			{
-				potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 			}
 		});
 	}

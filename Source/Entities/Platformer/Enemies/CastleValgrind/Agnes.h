@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerEnemy.h"
 
-class HexusOpponentData;
 class LocalizedString;
 
 class Agnes : public PlatformerEnemy
@@ -13,8 +12,7 @@ public:
 
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
-	static HexusOpponentData* getHexusOpponentData();
-
+	
 	static const std::string MapKey;
 
 protected:
@@ -23,7 +21,4 @@ protected:
 
 private:
 	typedef PlatformerEnemy super;
-
-	static HexusOpponentData* HexusOpponentDataInstance;
-	static const std::string HexusSaveKey;
 };

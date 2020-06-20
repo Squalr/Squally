@@ -2,6 +2,7 @@
 
 #include <algorithm> 
 #include <cctype>
+#include <iomanip>
 #include <locale>
 #include <regex>
 #include <sstream>
@@ -94,6 +95,24 @@ std::string StrUtils::toUpper(std::string str)
 	});
 
 	return str;
+}
+
+std::string StrUtils::doubleToString(double value, int precision)
+{
+	std::stringstream stream = std::stringstream();
+
+	stream << std::fixed << std::setprecision(precision) << value;
+
+	return stream.str();
+}
+
+std::string StrUtils::floatToString(float value, int precision)
+{
+	std::stringstream stream = std::stringstream();
+
+	stream << std::fixed << std::setprecision(precision) << value;
+
+	return stream.str();
 }
 
 std::vector<std::string> StrUtils::tokenize(std::string str, std::string delimiters)
@@ -223,7 +242,7 @@ bool StrUtils::isHexNumber(std::string str)
 	return false;
 }
 
-int StrUtils::HexToInt(std::string str)
+int StrUtils::hexToInt(std::string str)
 {
 	if (StrUtils::startsWith(str, "0x", false))
 	{

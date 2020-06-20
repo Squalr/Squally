@@ -21,7 +21,6 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onObjectStateLoaded() override;
 
 	cocos2d::Node* collectableNode;
 

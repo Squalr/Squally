@@ -40,7 +40,7 @@ const std::string Fortitude::HackIdentifierFortitude = "fortitude";
 
 const int Fortitude::MaxMultiplier = 4;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
-const float Fortitude::Duration = 12.0f;
+const float Fortitude::Duration = 16.0f;
 
 Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -52,12 +52,11 @@ Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Shield, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(Fortitude::Duration, Fortitude::FortitudeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageTaken = 0;
 
 	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -99,7 +98,7 @@ void Fortitude::registerHackables()
 {
 	super::registerHackables();
 
-	if (this->target == nullptr)
+	if (this->owner == nullptr)
 	{
 		return;
 	}
@@ -112,7 +111,7 @@ void Fortitude::registerHackables()
 				Fortitude::HackIdentifierFortitude,
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Shield,
+				UIResources::Menus_Icons_ShieldGlowBlue,
 				FortitudeGenericPreview::create(),
 				{
 					{
@@ -136,8 +135,8 @@ void Fortitude::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()) + 
-						"sub ebx, 3\n",
-						// x64
+						"sub ebx, 3\n"
+						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
@@ -152,48 +151,52 @@ void Fortitude::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Fortitude::applyFortitude;
-	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
+	auto func = &Fortitude::applyFortitude;
+	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
-		this->target->registerCode(next);
+		this->owner->registerCode(next);
 	}
 }
 
-void Fortitude::onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
+void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
+	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->currentDamageTaken = *damageOrHealing;
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyFortitude();
 
-	*damageOrHealing = this->currentDamageTaken;
+	// Bound multiplier in either direction
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(
+		this->HackStateStorage[Buff::StateKeyDamageTaken].asInt(),
+		-std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier),
+		std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier))
+	);
+	
+	(*damageOrHealing->damageOrHealing) = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
-	static volatile int originalDamage;
-	static volatile int damageTaken;
+	static volatile int currentDamageTakenLocal = 0;
 
-	originalDamage = this->currentDamageTaken;
-	damageTaken = this->currentDamageTaken;
+	currentDamageTakenLocal = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZBX, damageTaken);
+	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(sub ZBX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageTaken, ZBX);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 
 	ASM(pop ZBX);
 
-	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(damageTaken, -std::abs(originalDamage) * Fortitude::MaxMultiplier, std::abs(originalDamage) * Fortitude::MaxMultiplier);
+	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

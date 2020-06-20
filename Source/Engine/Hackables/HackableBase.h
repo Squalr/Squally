@@ -38,7 +38,6 @@ public:
 	HackablePreview* getHackablePreview();
 	virtual void* getPointer();
 	virtual void restoreState();
-	void restoreStateIfUnique();
 
 protected:
 	HackableBase(
@@ -55,7 +54,7 @@ protected:
 
 	void onEnter() override;
 	void initializeListeners() override;
-	void update(float dt);
+	void update(float dt) override;
 	void startTimer();
 	void resetTimer();
 
@@ -69,6 +68,7 @@ private:
 	float cooldown;
 	float elapsedDuration;
 	float elapsedCooldown;
+	bool isHackActive;
 
 	std::string hackableIdentifier;
 	LocalizedString* name;

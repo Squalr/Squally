@@ -9,9 +9,10 @@
 
 using namespace cocos2d;
 
-Consumable::Consumable(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, itemMeta)
+Consumable::Consumable(CurrencyInventory* cost, ItemMeta itemMeta, bool outOfCombatUseAllowed) : super(cost, itemMeta)
 {
 	this->associatedAttack = nullptr;
+	this->outOfCombatUseAllowed = outOfCombatUseAllowed;
 }
 
 Consumable::~Consumable()
@@ -34,6 +35,20 @@ PlatformerAttack* Consumable::getAssociatedAttack(PlatformerEntity* entity)
 	this->bindItemUseCallback(attack, entity);
 
 	return attack;
+}
+
+void Consumable::useOutOfCombat(PlatformerEntity* target)
+{
+}
+
+bool Consumable::canUseOnTarget(PlatformerEntity* target)
+{
+	return true;
+}
+
+bool Consumable::canUseOutOfCombat()
+{
+	return this->outOfCombatUseAllowed;
 }
 
 PlatformerAttack* Consumable::cloneAssociatedAttack()

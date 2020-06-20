@@ -26,9 +26,9 @@ CastReflect* CastReflect::create(float attackDuration, float recoverDuration, Pr
 }
 
 CastReflect::CastReflect(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldMagic, priority, 0, 0, 8, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldMagic, priority, AbilityType::Arcane, 0, 0, 8, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
 	this->addChild(this->castSound);
 }
@@ -84,7 +84,7 @@ bool CastReflect::isWorthUsing(PlatformerEntity* caster, const std::vector<Platf
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Reflect>([&](Reflect* haste)
+		entityBuffBehavior->getBuff<Reflect>([&](Reflect* buff)
 		{
 			hasBuff = true;
 		});

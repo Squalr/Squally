@@ -1,10 +1,16 @@
 #pragma once
 
+#include <map>
+
 #include "Engine/SmartNode.h"
+#include "Events/CombatEvents.h"
 
 namespace cocos2d
 {
 	class Sprite;
+	class Value;
+
+	typedef std::map<std::string, Value> ValueMap;
 }
 
 class Clippy;
@@ -17,19 +23,18 @@ public:
 	struct BuffData
 	{
 		float duration;
-		
-		// If set to non-empty string, the buff will be unique against this key.
-		std::string uniqueId;
+		std::string uniqueId; // If set to non-empty string, the buff will be unique against this key.
+		float priority;
 
-		BuffData() : duration(-1.0f), uniqueId("") { }
-		BuffData(float duration) : duration(duration), uniqueId("") { }
-		BuffData(std::string uniqueId) : duration(-1.0f), uniqueId(uniqueId) { }
-		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
+		BuffData() : duration(-1.0f), uniqueId(""), priority(0.5f) { }
+		BuffData(float duration) : duration(duration), uniqueId(""), priority(0.5f) { }
+		BuffData(std::string uniqueId) : duration(-1.0f), uniqueId(uniqueId), priority(0.5f) { }
+		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId), priority(0.5f) { }
+		BuffData(float duration, std::string uniqueId, float priority) : duration(duration), uniqueId(uniqueId), priority(priority) { }
 	};
 
 	void setBuffIndex(int index, int maxIndex);
 	bool hasBuffIcon();
-	void elapse(float dt);
 	float getRemainingDuration();
 	BuffData getBuffData();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
@@ -37,8 +42,7 @@ public:
 	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 
 protected:
-
-	Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffIconResource, BuffData buffData);
+	Buff(PlatformerEntity* caster, PlatformerEntity* owner, std::string buffIconResource, AbilityType abilityType, BuffData buffData);
 	virtual ~Buff();
 
 	void onEnter() override;
@@ -46,20 +50,36 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
-	virtual void onTimelineReset(bool wasInterrupt);
-	virtual void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback);
-	virtual void onBeforeDamageTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeDamageDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeHealingTaken(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
-	virtual void onBeforeHealingDelt(volatile int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target);
+	virtual void elapse(float dt);
+	virtual void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed);
+	virtual void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing);
+	virtual void onAfterDamageDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onBeforeHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
+	virtual void onAfterHealingTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing);
+	virtual void onAfterHealingDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing);
+	virtual void onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset);
 
 	BuffData buffData;
 	PlatformerEntity* caster;
-	PlatformerEntity* target;
+	PlatformerEntity* owner;
 	std::vector<HackableCode*> hackables;
+	AbilityType abilityType;
+
+	static cocos2d::ValueMap HackStateStorage;
+	
+	static const std::string StateKeyDamageOrHealingPtr;
+	static const std::string StateKeyOriginalDamageOrHealing;
+	static const std::string StateKeyHealth;
+	static const std::string StateKeyDamageDealt;
+	static const std::string StateKeyDamageTaken;
+	static const std::string StateKeySpeed;
 
 private:
 	typedef SmartNode super;
+	friend class TimelineEntry;
 
 	std::function<void()> removeBuffCallback;
 	cocos2d::Node* iconContainer;

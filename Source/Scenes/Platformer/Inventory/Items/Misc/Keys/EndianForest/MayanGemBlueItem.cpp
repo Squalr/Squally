@@ -20,7 +20,7 @@ MayanGemBlueItem* MayanGemBlueItem::create()
 	return instance;
 }
 
-MayanGemBlueItem::MayanGemBlueItem() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 0 }}))
+MayanGemBlueItem::MayanGemBlueItem() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 0 }}), ItemMeta(1, 1))
 {
 }
 

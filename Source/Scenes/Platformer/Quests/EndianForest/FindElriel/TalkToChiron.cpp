@@ -90,7 +90,7 @@ void TalkToChiron::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 	});

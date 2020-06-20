@@ -8,11 +8,15 @@
 const std::string BackgroundResources::Bliss = "Private/Platformer/Backgrounds/Bliss.png";
 const std::string BackgroundResources::BlueSky = "Private/Platformer/Backgrounds/BlueSky.png";
 const std::string BackgroundResources::Caverns = "Private/Platformer/Backgrounds/Caverns.png";
+const std::string BackgroundResources::Cracks_CrackLargeWhite = "Private/Platformer/Backgrounds/Cracks/CrackLargeWhite.png";
+const std::string BackgroundResources::Cracks_CrackMediumWhite = "Private/Platformer/Backgrounds/Cracks/CrackMediumWhite.png";
+const std::string BackgroundResources::Cracks_CrackSmallWhite = "Private/Platformer/Backgrounds/Cracks/CrackSmallWhite.png";
 const std::string BackgroundResources::Crypt1 = "Private/Platformer/Backgrounds/Crypt1.png";
 const std::string BackgroundResources::Crypt2 = "Private/Platformer/Backgrounds/Crypt2.png";
 const std::string BackgroundResources::Crypt3 = "Private/Platformer/Backgrounds/Crypt3.png";
 const std::string BackgroundResources::DarkForestSky = "Private/Platformer/Backgrounds/DarkForestSky.png";
 const std::string BackgroundResources::Dawn = "Private/Platformer/Backgrounds/Dawn.png";
+const std::string BackgroundResources::DesertSky = "Private/Platformer/Backgrounds/DesertSky.png";
 const std::string BackgroundResources::Hacking_HackerModeBackground = "Private/Platformer/Backgrounds/Hacking/HackerModeBackground.png";
 const std::string BackgroundResources::IndoorHouse = "Private/Platformer/Backgrounds/IndoorHouse.png";
 const std::string BackgroundResources::Laboratory = "Private/Platformer/Backgrounds/Laboratory.png";

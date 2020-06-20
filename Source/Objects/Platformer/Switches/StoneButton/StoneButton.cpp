@@ -10,6 +10,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -17,6 +18,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -43,12 +45,14 @@ StoneButton::StoneButton(ValueMap& properties) : super(properties)
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
 	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->isSwitch = GameUtils::getKeyOrDefault(this->properties, StoneButton::PropertySwitch, Value(false)).asBool();
+	this->buttonSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
 	this->maxDefaultButtonPosition = 48.0f;
 	this->hasCollided = false;
 
 	this->buttonCollision->addChild(this->button);
 	this->addChild(this->buttonCollision);
 	this->addChild(this->buttonBase);
+	this->addChild(this->buttonSound);
 }
 
 StoneButton::~StoneButton()
@@ -109,6 +113,11 @@ void StoneButton::update(float dt)
 		ValueMap args = {
 			{ SwitchEvents::SwitchArgProgress, Value(progress) },
 		};
+
+		if (!this->buttonSound->isPlaying())
+		{
+			this->buttonSound->play();
+		}
 
 		this->broadcastMapEvent(this->getSendEvent(), args);
 	}

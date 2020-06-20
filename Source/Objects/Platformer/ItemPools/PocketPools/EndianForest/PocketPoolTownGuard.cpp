@@ -6,9 +6,9 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolT1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolT1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
@@ -28,7 +28,7 @@ PocketPoolTownGuard* PocketPoolTownGuard::create(ValueMap& properties)
 }
 
 PocketPoolTownGuard::PocketPoolTownGuard(ValueMap& properties) : super(properties, PocketPoolTownGuard::PoolName, SampleMethod::Guarantee, 1, 1,
-	{  AlchemyPoolT1::create(SampleMethod::Guarantee, 1, 1), SmithingPoolT1::create(SampleMethod::Guarantee, 1, 1) })
+	{  AlchemyPoolTier1::create(SampleMethod::Guarantee, 1, 1), SmithingPoolTier1::create(SampleMethod::Guarantee, 1, 1) })
 {
 	this->addItemToPool(ItemChance::create(TownKey::create(), ItemChance::Probability::Guaranteed));
 }

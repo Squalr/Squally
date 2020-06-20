@@ -41,7 +41,6 @@ std::vector<std::tuple<Item*, int>> DemonicMacePlans::getReagentsInternal()
 		{ Iron::create(), 8 },
 		{ Coal::create(), 8 },
 		{ Copper::create(), 8 },
-		{ Tin::create(), 2 },
 		{ Sulfur::create(), 6 },
 	};
 }

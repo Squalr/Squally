@@ -68,7 +68,7 @@ public:
 		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
 	};
 
-	void warpTo(cocos2d::Vec2 location);
+	void warpTo(cocos2d::Vec3 location);
 	void bindTo(GameObject* bindTarget);
 	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
@@ -85,6 +85,7 @@ public:
 	void setVelocityX(float velocityX);
 	void setVelocityY(float velocityY);
 	void setGravity(cocos2d::Vec2 acceleration);
+	cocos2d::Vec2 getGravity();
 	void setAcceleration(cocos2d::Vec2 acceleration);
 	void setAccelerationX(float accelerationX);
 	void setAccelerationY(float accelerationY);
@@ -92,7 +93,12 @@ public:
 	void setVerticalDampening(float verticalDampening);
 	const std::set<CollisionObject*>& getCurrentCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
+	bool wasCollidingWith(CollisionObject* collisionObject);
+	bool isCollidingWithType(int collisionType);
+	bool wasCollidingWithType(int collisionType);
+	void setCollisionDepth(float collisionDepth);
 	virtual void setPhysicsEnabled(bool enabled);
+	unsigned int getUniverseId();
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
 	static std::vector<cocos2d::Vec2> createBox(cocos2d::Size size);
@@ -108,6 +114,8 @@ public:
 	static const float DefaultHorizontalDampening;
 	static const float DefaultVerticalDampening;
 	static const float CollisionZThreshold;
+	static unsigned int UniverseId;
+	static unsigned int AlternateUniverseCounter;
 
 protected:
 	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, CollisionType collisionType, Properties collisionProperties, cocos2d::Color4F debugColor);
@@ -128,11 +136,14 @@ private:
 	void runPhysics(float dt);
 
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
-	cocos2d::Vec2 getThisOrBindPosition();
-	void setThisOrBindPosition(cocos2d::Vec2 position);
+	cocos2d::Vec3 getThisOrBindPosition();
+	void setThisOrBindPosition(cocos2d::Vec3 position);
 	Shape determineShape();
 	void computeWorldCoords(bool force = false);
 	void propagateRotation();
+
+	void drawDebugShapes();
+	void drawDebugConnectors();
 
 	static void ClearCollisionObjects();
 	static void RegisterCollisionObject(CollisionObject* collisionObject);
@@ -147,8 +158,10 @@ private:
 	Properties collisionProperties;
 	float horizontalDampening;
 	float verticalDampening;
+	float collisionDepth;
 	bool physicsEnabled;
 	bool gravityEnabled;
+	unsigned int universeId;
 	
 	// Shape
 	Shape shape;
@@ -174,10 +187,12 @@ private:
 	// Cache
 	float cachedRotation;
 	cocos2d::Vec2 cachedWorldCoords;
+	cocos2d::Vec3 cachedWorldCoords3D;
 	unsigned int cachedTick;
 
 	// Debug
 	cocos2d::Color4F debugColor;
 	bool debugInfoSpawned;
-	cocos2d::DrawNode* debugDrawNode;
+	cocos2d::Node* debugDrawNode;
+	cocos2d::DrawNode* debugDrawNodeConnectors;
 };

@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/SquallySwimHackBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ItemResources.h"
@@ -76,6 +77,7 @@ void WaterSpellbook::onComplete()
 {
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFSearchTemple);
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),
@@ -115,7 +117,7 @@ void WaterSpellbook::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -130,7 +132,7 @@ void WaterSpellbook::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -145,7 +147,7 @@ void WaterSpellbook::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -162,7 +164,7 @@ void WaterSpellbook::runCinematicSequence()
 				this->setPostText();
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});
@@ -186,7 +188,7 @@ void WaterSpellbook::setPostText()
 				{
 					this->setPostText();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				Voices::GetNextVoiceMedium(),
 				true
 			));
 		});

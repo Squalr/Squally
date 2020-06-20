@@ -14,6 +14,9 @@ class Dart : public Projectile
 public:
 	static Dart* create(float dartRotation, float speed);
 
+	void runSpawnFX() override;
+	void runImpactFX() override;
+
 protected:
 	Dart(float dartRotation, float speed);
 	virtual ~Dart();

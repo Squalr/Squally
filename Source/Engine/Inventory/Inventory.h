@@ -18,6 +18,20 @@ public:
 	std::vector<Item*> getItems();
 
 	template<class T>
+	bool hasItemOfType()
+	{
+		for (auto next : this->items)
+		{
+			if (dynamic_cast<T*>(next) != nullptr)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	template<class T>
 	std::vector<T*> getItemsOfType()
 	{
 		std::vector<T*> foundItems;
@@ -74,6 +88,8 @@ protected:
 
 private:
 	typedef SmartNode super;
+
+	bool canInsertItemIfUnique(Item* item);
 
 	cocos2d::Node* itemsNode;
 

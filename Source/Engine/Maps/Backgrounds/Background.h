@@ -8,10 +8,12 @@ class Background : public GameObject
 public:
 	static Background* create(cocos2d::Node* child);
 
+protected:
+	Background(Node* child);
+	virtual ~Background();
+
 private:
 	typedef GameObject super;
-	Background(Node* child);
-	~Background();
 
 	Hud* background;
 };

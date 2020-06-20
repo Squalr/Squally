@@ -17,11 +17,11 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/EndianForest/Gorgon.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
+#include "Entities/Platformer/Npcs/BallmerPeaks/Aster.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/DataMines/Alder.h"
+#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -33,6 +33,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -66,9 +67,9 @@ FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner,
 	this->knifeImpact = SmartAnimationSequenceNode::create();
 	this->backPeddleSound = WorldSound::create(SoundResources::Platformer_Entities_Generic_Movement_BackPeddleSlow1);
 	this->runSound = WorldSound::create(SoundResources::Platformer_Entities_Generic_Movement_RunBrief1);
-	this->reboundSoundShield = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound3);
-	this->reboundSoundSword = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound1);
-	this->reboundSoundShieldLite = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound2);
+	this->reboundSoundShield = WorldSound::create(SoundResources::Platformer_Defense_Rebound3);
+	this->reboundSoundSword = WorldSound::create(SoundResources::Platformer_Defense_Rebound1);
+	this->reboundSoundShieldLite = WorldSound::create(SoundResources::Platformer_Defense_Rebound2);
 
 	this->addChild(this->shieldImpact);
 	this->addChild(this->swordImpact);
@@ -115,7 +116,7 @@ void FightGorgon::onLoad(QuestState questState)
 	{
 		this->gorgon = gorgon;
 
-		if (this->gorgon->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		if (this->gorgon->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			if (questState == QuestState::Active)
 			{
@@ -167,6 +168,8 @@ void FightGorgon::onActivate(bool isActiveThroughSkippable)
 
 void FightGorgon::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueenAgain);
+
 	// Might not be set yet due to potential timing race
 	this->forceField->setVisible(false);
 }

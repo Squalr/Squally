@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="810">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="812">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
+   <property name="crack-color" value=""/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -108,11 +110,6 @@
     <property name="transition" value="right-top"/>
    </properties>
   </object>
-  <object id="750" name="spawn" type="object" x="8180.79" y="1255.84" width="128" height="128">
-   <properties>
-    <property name="transition" value="left-top"/>
-   </properties>
-  </object>
   <object id="781" name="camera-target" type="object" x="5813.63" y="2164.22" width="128" height="128">
    <properties>
     <property name="tag" value="target-A"/>
@@ -129,11 +126,6 @@
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_3_4"/>
     <property name="transition" value="right-bottom"/>
-   </properties>
-  </object>
-  <object id="785" name="spawn" type="object" x="8246.85" y="2428.87" width="128" height="128">
-   <properties>
-    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
   <object id="794" name="trigger" type="object" x="4419" y="813.47" width="146" height="1829.06">
@@ -163,7 +155,7 @@
     <property name="quest-line" value="save-town"/>
    </properties>
   </object>
-  <object id="809" name="frost-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
+  <object id="809" name="mage-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
    <properties>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="tag" value="quest-portal"/>
@@ -261,7 +253,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="792" name="orc-swordsman" type="entity" x="6912" y="2408" width="128" height="128">
+  <object id="792" name="orc-warrior" type="entity" x="6912" y="2408" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -271,7 +263,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="793" name="orc-warrior" type="entity" x="6744" y="2406" width="128" height="128">
+  <object id="793" name="orc-swordsman" type="entity" x="6744" y="2406" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -329,6 +321,16 @@
    </properties>
   </object>
   <object id="770" name="Forest/Flower9" type="decor" x="6782.8" y="1391.56" width="199" height="133"/>
+  <object id="810" name="spawn" type="object" x="8180.79" y="1255.84" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-top"/>
+   </properties>
+  </object>
+  <object id="811" name="spawn" type="object" x="8246.85" y="2428.87" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-bottom"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="decor front">
   <properties>

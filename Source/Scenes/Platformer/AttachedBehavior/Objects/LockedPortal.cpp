@@ -15,6 +15,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -23,6 +24,7 @@ using namespace cocos2d;
 
 const std::string LockedPortal::MapKey = "locked-portal";
 const std::string LockedPortal::PropertyItemRequired = "item-required";
+const std::string LockedPortal::SaveKeyItemPresented = "item-presented";
 
 LockedPortal* LockedPortal::create(GameObject* owner)
 {
@@ -51,36 +53,40 @@ LockedPortal::~LockedPortal()
 
 void LockedPortal::onLoad()
 {
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	if (this->portal->loadObjectStateOrDefault(LockedPortal::SaveKeyItemPresented, Value(false)).asBool())
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		this->portal->unlock();
+	}
+	else
+	{
+		this->portal->lock();
+
+		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
-			this->playerInventory = entityInventoryBehavior->getInventory();
-			this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::PropertyItemRequired, Value("")).asString();
-
-			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->playerInventory->getSaveKey(), [=](EventCustom* eventCustom)
+			squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 			{
-				this->checkForRequiredItem();
-			}));
+				this->playerInventory = entityInventoryBehavior->getInventory();
+				this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::PropertyItemRequired, Value("")).asString();
 
-			this->checkForRequiredItem();
-		});
-	}, Squally::MapKey);
+				this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->playerInventory->getSaveKey(), [=](EventCustom* eventCustom)
+				{
+					this->checkForRequiredItem();
+				}));
+
+				this->checkForRequiredItem();
+			});
+		}, Squally::MapKey);
+	}
 }
 
 void LockedPortal::onDisable()
 {
 	super::onDisable();
-	
-	if (this->portal != nullptr)
-	{
-		this->portal->unlock();
-	}
 }
 
 void LockedPortal::checkForRequiredItem()
 {
-	this->portal->lock();
+	this->portal->setUnlockable(false);
 
 	if (this->playerInventory == nullptr)
 	{
@@ -91,7 +97,14 @@ void LockedPortal::checkForRequiredItem()
 	{
 		if (item != nullptr && this->requiredItemName == item->getItemName())
 		{
-			this->portal->unlock();
+			this->portal->setUnlockable(true, [=]()
+			{
+				this->portal->saveObjectState(LockedPortal::SaveKeyItemPresented, Value(true));
+
+				PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(item));
+
+				return true;
+			});
 		}
 	}
 }

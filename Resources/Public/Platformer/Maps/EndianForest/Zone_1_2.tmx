@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="779">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="783">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
    <property name="disable-unstuck" type="bool" value="true"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="1"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -170,20 +172,6 @@
    </properties>
   </object>
   <object id="764" name="iou" type="object" x="1624.5" y="2076.5" width="87" height="87"/>
-  <object id="769" name="warp" type="object" x="1532" y="1916" width="256" height="256">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="from" value="start"/>
-    <property name="to" value="end"/>
-   </properties>
-  </object>
-  <object id="770" name="warp" type="object" x="5216" y="1788" width="256" height="256">
-   <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
-    <property name="from" value="end"/>
-    <property name="to" value="start"/>
-   </properties>
-  </object>
   <object id="771" name="life-stone" type="object" x="6535" y="1136.5" width="146" height="423"/>
   <object id="777" name="trigger" type="object" x="7619.51" y="2141.88" width="195.164" height="877.51">
    <properties>
@@ -237,6 +225,30 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
+  <object id="779" name="spawn" type="object" x="9666" y="2820.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="780" name="warp" type="object" x="1532" y="1916" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="start"/>
+    <property name="to" value="end"/>
+   </properties>
+  </object>
+  <object id="781" name="warp" type="object" x="5216" y="1788" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="end"/>
+    <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="782" name="spawn" type="object" x="375.89" y="2028.47" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>
@@ -283,18 +295,8 @@
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="3727.11" y="1939.37" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1783.44" y="2085.7" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="932.204" y="1997.06" width="270" height="748"/>
-  <object id="691" name="spawn" type="object" x="375.89" y="2028.47" width="128" height="128">
-   <properties>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
   <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="6120.21" y="2927.24" width="242" height="738"/>
   <object id="760" name="Forest/Foreground/ForegroundTree2" type="decor" x="6961" y="3010" width="270" height="748"/>
-  <object id="778" name="spawn" type="object" x="9666" y="2820.67" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

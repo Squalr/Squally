@@ -14,5 +14,5 @@ Mace::~Mace()
 
 std::string Mace::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakBlunt2;
+	return SoundResources::Platformer_Physical_Swings_SwingWeakBlunt2;
 }

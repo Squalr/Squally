@@ -20,7 +20,7 @@ TownKey* TownKey::create()
 	return instance;
 }
 
-TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
+TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(1, 1))
 {
 }
 
@@ -45,7 +45,7 @@ LocalizedString* TownKey::getString()
 
 std::string TownKey::getIconResource()
 {
-	return ItemResources::Keys_KEY_1;
+	return ItemResources::Keys_KEY_6;
 }
 
 std::string TownKey::getSerializationKey()

@@ -18,6 +18,9 @@ class ShopItem : public GameObject
 public:
 	static ShopItem* create(cocos2d::ValueMap& properties);
 
+	void activate();
+	void deactivate();
+
 	static const std::string MapKey;
 	static const std::string PropertyShopPool;
 
@@ -35,14 +38,16 @@ private:
 	void sellItem();
 	void removeShopItem();
 
-	ItemPreview* itemPreview;
-	Item* item;
+	cocos2d::Node* activationNode;
 	cocos2d::Node* itemNode;
 	ClickableNode* itemClickHitbox;
-	std::string poolName;
 	cocos2d::Sprite* currencySprite;
 	LocalizedLabel* itemCostLabel;
 	ConstantString* itemCostString;
+
+	std::string poolName;
+	ItemPreview* itemPreview;
+	Item* item;
 
 	int itemCost;
 	bool available;

@@ -13,8 +13,9 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -48,6 +49,7 @@ DeveloperScene::DeveloperScene()
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
 
+	this->chapterList.push_back(this->buildDebugButton("DBG Warp Depth", MapResources::Dev_WarpDepth));
 	this->chapterList.push_back(this->buildDebugButton("DBG Notifications", MapResources::Dev_Items));
 	this->chapterList.push_back(this->buildDebugButton("DBG Collision", MapResources::Dev_Collision));
 	this->chapterList.push_back(this->buildDebugButton("DBG Positions", MapResources::Dev_PositionBug));
@@ -55,8 +57,50 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Animation Sequences", MapResources::Dev_AnimSeq));
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
-	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (EF)", MapResources::EndianForest_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (UR)", MapResources::UnderflowRuins_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (DM)", MapResources::DataMines_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (CV)", MapResources::CastleValgrind_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (BP)", MapResources::BallmerPeaks_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::DaemonsHallow_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("Warp Room (VS)", MapResources::VoidStar_Mages_Warp));
+	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	this->chapterList.push_back(this->buildDebugButton("Cleopatra (UR)", MapResources::UnderflowRuins_Home_Cleopatra));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_8 (UR) Pyramid Boss vv", MapResources::UnderflowRuins_Zone_3_8));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_7 (UR) Pyramid -->", MapResources::UnderflowRuins_Zone_3_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_6 (UR) Pyramid >>^^", MapResources::UnderflowRuins_Zone_3_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_5 (UR) Pyramid ^^^^", MapResources::UnderflowRuins_Zone_3_5));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_4 (UR) Pyramid <<^^", MapResources::UnderflowRuins_Zone_3_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_3 (UR) Pyramid <--", MapResources::UnderflowRuins_Zone_3_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_2 (UR) Pyramid Interior", MapResources::UnderflowRuins_Zone_3_2));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_1 (UR) Pyramid Top", MapResources::UnderflowRuins_Zone_3_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone_3_0 (UR) Pyramid", MapResources::UnderflowRuins_Zone_3_0));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_6 (UR) Sky", MapResources::UnderflowRuins_Zone_2_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_5 (UR) Exit", MapResources::UnderflowRuins_Zone_2_5));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_4 (UR) Medusa", MapResources::UnderflowRuins_Zone_2_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_3 (UR) Flame", MapResources::UnderflowRuins_Zone_2_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_2 (UR) Pass", MapResources::UnderflowRuins_Zone_2_2));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_1 (UR) Puzzle", MapResources::UnderflowRuins_Zone_2_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_0 (UR) Entrance", MapResources::UnderflowRuins_Zone_2_0));
+	this->chapterList.push_back(this->buildDebugButton("Well (UR)", MapResources::UnderflowRuins_Town_Well));
+	this->chapterList.push_back(this->buildDebugButton("Hera (UR)", MapResources::UnderflowRuins_Home_Hera));
+	this->chapterList.push_back(this->buildDebugButton("Smith (UR)", MapResources::UnderflowRuins_Town_Smith));
+	this->chapterList.push_back(this->buildDebugButton("Smith (DEV) (EF)", MapResources::UnderflowRuins_Town_Smith_Questless));
+	this->chapterList.push_back(this->buildDebugButton("Alch (UR)", MapResources::UnderflowRuins_Town_Alch));
+	this->chapterList.push_back(this->buildDebugButton("Alch (DEV) (EF)", MapResources::UnderflowRuins_Town_Alch_Questless));
+	this->chapterList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
+	this->chapterList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
+	this->chapterList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone_1_0 (UR)", MapResources::UnderflowRuins_Zone_1_0));
+	this->chapterList.push_back(this->buildDebugButton("Aphrodite (UR)", MapResources::UnderflowRuins_Home_Aphrodite));
+	this->chapterList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
+	this->chapterList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("==========", ""));
 	this->chapterList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));
+	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
 	this->chapterList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 	this->chapterList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
@@ -135,14 +179,14 @@ void DeveloperScene::initializePositions()
 void DeveloperScene::initializeListeners()
 {
 	super::initializeListeners();
-
-
+	
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
 			return;
 		}
+		
 		args->handle();
 		
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
@@ -167,15 +211,17 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
-			PlatformerMap* map = PlatformerMap::create(mapResource);
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
+			
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+			
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(mapResource));
 
-			return map;
+			return PlatformerMap::create(mapResource);
 		}));
 	});
 

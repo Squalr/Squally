@@ -35,8 +35,6 @@ protected:
 		float hoverHeight = 0.0f);
 	virtual ~PlatformerEnemy();
 
-	void onObjectStateLoaded() override;
-
 	std::string battleMapResource;
 	std::string battleMapTag;
 	std::string dropPool;

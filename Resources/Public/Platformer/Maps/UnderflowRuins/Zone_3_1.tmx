@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1010">
+ <properties>
+  <property name="rubber-band" type="int" value="8"/>
+ </properties>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DesertSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="8"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="74" name="desert bg 4">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="desert bg 3" locked="1">
+  <properties>
+   <property name="depth" type="float" value="-2432"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="desert bg 2">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="desert bg 1">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="980" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1076">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="73" name="desert bg 0">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="979" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="1654" width="14517.6" height="1088">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="1.75"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="terrain bg 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1008" name="temple-dark" type="terrain" x="250.185" y="204" width="2011.63" height="1708">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="79" name="terrain mid">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="949" name="ruins-thick" type="terrain" x="-1477.54" y="2122.44">
+   <polygon points="5414.33,50.3694 5414.95,799.376 132.839,801.973 126.995,39.3133 506.038,46.3319 632.708,45.9194 633.538,-80.8227 762.328,-81.1566 761.608,-208.352 889.308,-208.075 889.338,-336.465 1017.83,-337.127 1017.35,-465.291 3907.78,-466.266 3907.51,-338.775 4037.81,-339.715 4036.38,-208.567 4163.55,-207.94 4162.94,-83.8781 4292.95,-82.1483 4291.4,46.3778"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="977" name="edge-portal" type="object" x="-3.959" y="1176" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="UnderflowRuins/Zone_3_0"/>
+    <property name="transition" value="path"/>
+   </properties>
+  </object>
+  <object id="984" name="chest" type="object" x="3308.73" y="2040" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="985" name="temple-door" type="object" x="1692.64" y="1127.24" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow-down"/>
+    <property name="map" value="UnderflowRuins/Zone_3_5"/>
+    <property name="transition" value="dungeon"/>
+   </properties>
+  </object>
+  <object id="1009" name="life-stone" type="object" x="1097" y="1244.5" width="146" height="423"/>
+ </objectgroup>
+ <objectgroup id="71" name="decor">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="997" name="vase" type="object" x="880.834" y="1493.91" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+  <object id="998" name="vase" type="object" x="1337.28" y="1496.03" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="1001" name="vase" type="object" x="3028.35" y="2010.91" width="113" height="160">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="613.05" y="1527.47" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="974" name="spawn" type="object" x="465.818" y="1527.91" width="128" height="128">
+   <properties>
+    <property name="map-banner" value=""/>
+    <property name="transition" value="path"/>
+   </properties>
+  </object>
+  <object id="996" name="spawn" type="object" x="1841.06" y="1520.88" width="128" height="128">
+   <properties>
+    <property name="transition" value="dungeon"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

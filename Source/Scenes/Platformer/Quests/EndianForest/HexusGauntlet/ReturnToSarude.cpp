@@ -11,7 +11,7 @@
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
 
@@ -84,6 +85,7 @@ void ReturnToSarude::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToSarude::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::EFExplorePrison);
 }
 
 void ReturnToSarude::onSkipped()
@@ -111,7 +113,8 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 					[=]()
 					{
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterShort1
+					Voices::GetNextVoiceShort(),
+					true
 				));
 			});
 		}
@@ -177,7 +180,7 @@ void ReturnToSarude::runDialogueIntroWin()
 		{
 			this->runDialogueOutro();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -211,7 +214,7 @@ void ReturnToSarude::runDialogueIntroLoss()
 		{
 			this->runDialogueOutro();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		Voices::GetNextVoiceMedium(),
 		false
 	));
 }
@@ -229,7 +232,8 @@ void ReturnToSarude::runDialogueOutro()
 	[=]()
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters::create(),
+		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_CompleteYourTraining::create()
+			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
@@ -238,12 +242,26 @@ void ReturnToSarude::runDialogueOutro()
 		),
 		[=]()
 		{
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_LearnMoreOfTheseMonsters::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->sarude, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			true
+			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterLong1,
-		true
+		Voices::GetNextVoiceMedium(),
+		false
 		));
 	},
-	SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+	Voices::GetNextVoiceMedium(),
 	false
 	));
 }

@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class WorldSound;
 
 class StoneButton : public HackableObject
 {
@@ -36,6 +37,7 @@ private:
 	cocos2d::Sprite* buttonBase;
 	cocos2d::Sprite* button;
 	CollisionObject* buttonCollision;
+	WorldSound* buttonSound;
 
 	bool isSwitch;
 	bool hasCollided;

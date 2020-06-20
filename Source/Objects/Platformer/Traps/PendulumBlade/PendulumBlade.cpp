@@ -154,15 +154,15 @@ NO_OPTIMIZE void PendulumBlade::setSwingAngle(float angle)
 
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, angleInt);
-	ASM_MOV_REG_VAR(ZBX, previousAngleInt);
+	ASM_MOV_REG_VAR(eax, angleInt);
+	ASM_MOV_REG_VAR(ebx, previousAngleInt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
 	ASM(mov ZBX, ZAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(angleInt, ZBX);
+	ASM_MOV_VAR_REG(angleInt, ebx);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);

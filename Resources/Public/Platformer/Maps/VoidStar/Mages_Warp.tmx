@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="157" nextobjectid="1083">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DarkForestSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="147" name="stairs -36">
+  <properties>
+   <property name="depth" type="float" value="-2240"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="148" name="objects -36">
+  <properties>
+   <property name="depth" type="float" value="-2240"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="146" name="stairs -35">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="145" name="stairs -34">
+  <properties>
+   <property name="depth" type="float" value="-2112"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="144" name="stairs -33">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="143" name="stairs -32">
+  <properties>
+   <property name="depth" type="float" value="-1984"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="142" name="stairs -31">
+  <properties>
+   <property name="depth" type="float" value="-1920"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="141" name="stairs -30">
+  <properties>
+   <property name="depth" type="float" value="-1856"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="139" name="stairs -29">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="138" name="stairs -28">
+  <properties>
+   <property name="depth" type="float" value="-1728"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="137" name="stairs -27 top">
+  <properties>
+   <property name="depth" type="float" value="-1664"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="136" name="stairs -26 top">
+  <properties>
+   <property name="depth" type="float" value="-1600"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="135" name="stairs -25 top">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="134" name="stairs -24 top">
+  <properties>
+   <property name="depth" type="float" value="-1472"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="133" name="stairs -23 top">
+  <properties>
+   <property name="depth" type="float" value="-1408"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="132" name="stairs -22 top">
+  <properties>
+   <property name="depth" type="float" value="-1344"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="131" name="stairs -21 top">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="130" name="stairs -20 top">
+  <properties>
+   <property name="depth" type="float" value="-1216"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="129" name="stairs -19 top">
+  <properties>
+   <property name="depth" type="float" value="-1152"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="128" name="stairs -18 top">
+  <properties>
+   <property name="depth" type="float" value="-1088"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="127" name="stairs -17 top">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="126" name="stairs -16 top">
+  <properties>
+   <property name="depth" type="float" value="-960"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="118" name="stairs -15 top">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="121" name="terrain -15">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="117" name="stairs -14 top">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="116" name="stairs -13 top">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="119" name="pillar -12 top">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="123" name="objects -12 top">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="97" name="stairs -12 top">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="98" name="stairs -11 top">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="99" name="stairs -10 top">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="100" name="terrain -10 top">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="109" name="wall bg -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="993" name="marble" type="terrain" x="13.76" y="-465.242" width="5612.48" height="2146.49">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="107" name="stairs L -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="108" name="objects -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="990" name="Generic/MoonDoor" type="decor" x="2213.67" y="-125.833" width="648" height="667"/>
+ </objectgroup>
+ <objectgroup id="106" name="stairs L -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="992" name="marble" type="terrain" x="2169" y="554.667" width="742" height="682.667"/>
+ </objectgroup>
+ <objectgroup id="105" name="stairs L -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="989" name="marble" type="terrain" x="2286.33" y="577" width="512" height="682.667"/>
+ </objectgroup>
+ <objectgroup id="104" name="stairs L -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="988" name="marble" type="terrain" x="2287" y="613" width="512" height="676"/>
+ </objectgroup>
+ <objectgroup id="103" name="stairs L -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="987" name="marble" type="terrain" x="2287" y="645.667" width="512" height="677.333"/>
+ </objectgroup>
+ <objectgroup id="102" name="stairs L -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="986" name="marble" type="terrain" x="2289" y="684.333" width="512" height="670.667"/>
+ </objectgroup>
+ <objectgroup id="115" name="stairs L -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="983" name="marble" type="terrain" x="2287" y="718.667" width="512" height="673.333"/>
+ </objectgroup>
+ <objectgroup id="156" name="terrain bg -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="982" name="marble" type="terrain" x="2287" y="752.667" width="512" height="635.333"/>
+ </objectgroup>
+ <objectgroup id="114" name="stairs L -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="941" name="marble" type="terrain" x="-247" y="789.121" width="6143.52" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="153" name="objects -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="971" name="warp-gate-ur" type="object" x="978.985" y="110.818" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-ur"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="972" name="warp-gate-cv" type="object" x="3000.8" y="110.515" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-cv"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="976" name="warp-gate-ef" type="object" x="354.167" y="109.758" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="977" name="warp-gate-dm" type="object" x="1624.11" y="111.485" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="979" name="warp-gate-dh" type="object" x="4254.02" y="114.363" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="980" name="warp-gate-bp" type="object" x="3635.2" y="113.969" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-bp"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+  <object id="981" name="warp-gate-lc" type="object" x="4881.8" y="114.03" width="483" height="678">
+   <properties>
+    <property name="quest" value="power-warp-gate-lc"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="stairs L -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="940" name="marble" type="terrain" x="1608.93" y="825.425" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1001" name="marble" type="terrain" x="2978" y="819.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1014" name="marble" type="terrain" x="967.564" y="827.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1018" name="marble" type="terrain" x="336.777" y="829.455" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1052" name="marble" type="terrain" x="2288.67" y="826.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1056" name="marble" type="terrain" x="3623.33" y="822.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1060" name="marble" type="terrain" x="4242" y="824.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1064" name="marble" type="terrain" x="4862" y="824.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="151" name="pillar -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="152" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="112" name="stairs L -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="938" name="marble" type="terrain" x="1609.3" y="885.09" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1000" name="marble" type="terrain" x="2978.33" y="873.758" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1015" name="marble" type="terrain" x="967.94" y="885.09" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1019" name="marble" type="terrain" x="336.819" y="885.121" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1051" name="marble" type="terrain" x="2289" y="880.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1055" name="marble" type="terrain" x="3623.67" y="876.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1059" name="marble" type="terrain" x="4242.33" y="879.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1063" name="marble" type="terrain" x="4862.33" y="879.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="111" name="stairs L -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="937" name="marble" type="terrain" x="1609.61" y="939.272" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="999" name="marble" type="terrain" x="2978.33" y="930.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1016" name="marble" type="terrain" x="968.576" y="941.606" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1020" name="marble" type="terrain" x="336.455" y="938.969" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1050" name="marble" type="terrain" x="2287.67" y="942.758" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1054" name="marble" type="terrain" x="3623.67" y="932.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1058" name="marble" type="terrain" x="4242.33" y="935.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1062" name="marble" type="terrain" x="4862.33" y="935.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="110" name="stairs L -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="936" name="marble" type="terrain" x="1609.48" y="993.97" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="998" name="marble" type="terrain" x="2979" y="989.091" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1017" name="marble" type="terrain" x="968.455" y="993.637" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1021" name="marble" type="terrain" x="336" y="992.334" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1049" name="marble" type="terrain" x="2289" y="999.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1053" name="marble" type="terrain" x="3624.33" y="991.757" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1057" name="marble" type="terrain" x="4243" y="994.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1061" name="marble" type="terrain" x="4863" y="994.424" width="512" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="decor bg2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="125" name="entities -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="154" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="934" name="marble" type="terrain" x="-166.091" y="1048.76" width="5917.15" height="222"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="963" name="portal" type="object" x="2425.3" y="793.879" width="256" height="256">
+   <properties>
+    <property name="map" value="VoidStar/Zone_1_3"/>
+    <property name="transition" value="warp-room"/>
+   </properties>
+  </object>
+  <object id="1022" name="portal" type="object" x="1736" y="794" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-dm"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1023" name="portal" type="object" x="448.242" y="792.212" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-ef"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1024" name="portal" type="object" x="1086" y="794" width="256" height="256">
+   <properties>
+    <property name="map" value="UnderflowRuins/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-ur"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1025" name="portal" type="object" x="3095.33" y="792" width="256" height="256">
+   <properties>
+    <property name="map" value="CastleValgrind/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-cv"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1026" name="portal" type="object" x="3742.67" y="792" width="256" height="256">
+   <properties>
+    <property name="map" value="BallmerPeaks/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-bp"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
+   <properties>
+    <property name="map" value="DaemonsHallow/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1028" name="portal" type="object" x="4997.33" y="793.333" width="256" height="256">
+   <properties>
+    <property name="map" value="LambdaCrypts/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-lc"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1067" name="trigger" type="object" x="2146" y="534" width="814" height="516">
+   <properties>
+    <property name="send-event" value="power-warp-gate-vs"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="955" name="marcel" type="entity" x="2864.36" y="920.606" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="vs-generic"/>
+    <property name="quest" value="power-warp-gate-vs"/>
+    <property name="quest-line" value="restore-warp-gates"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="2579.72" y="920.314" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="933" name="spawn" type="object" x="2490.51" y="919.298" width="128" height="128">
+   <properties>
+    <property name="transition" value="warp-room"/>
+   </properties>
+  </object>
+  <object id="1029" name="spawn" type="object" x="507.515" y="921.03" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="ef"/>
+   </properties>
+  </object>
+  <object id="1030" name="spawn" type="object" x="1145.33" y="921.333" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="ur"/>
+   </properties>
+  </object>
+  <object id="1031" name="spawn" type="object" x="1800" y="922.667" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="1032" name="spawn" type="object" x="3155" y="920" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="cv"/>
+   </properties>
+  </object>
+  <object id="1033" name="spawn" type="object" x="3806.67" y="920" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="bp"/>
+   </properties>
+  </object>
+  <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="dh"/>
+   </properties>
+  </object>
+  <object id="1036" name="spawn" type="object" x="5062.67" y="921.333" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="void-star"/>
+    <property name="transition" value="vs"/>
+   </properties>
+  </object>
+  <object id="1081" x="1692.69" y="-1276.17">
+   <polygon points="-164.686,-335.832 381.771,708.168 883.314,-335.832 681.2,-328.531 381.771,416.14 29.9429,-321.231"/>
+  </object>
+  <object id="1082" x="3412" y="-736">
+   <polygon points="0,0 -684,-12 -684,144 196,144 204,-432 -504,-444 -504,-680 232,-660 228,-868 -696,-860 -684,-288 16,-264"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

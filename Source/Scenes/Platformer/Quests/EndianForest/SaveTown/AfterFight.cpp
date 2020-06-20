@@ -14,11 +14,11 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
+#include "Entities/Platformer/Npcs/BallmerPeaks/Aster.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/DataMines/Alder.h"
+#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -53,6 +53,7 @@ AfterFight::AfterFight(GameObject* owner, QuestLine* questLine) : super(owner, q
 	this->squally = nullptr;
 	this->scrappy = nullptr;
 	this->sarude = nullptr;
+	this->magePortal = nullptr;
 }
 
 AfterFight::~AfterFight()
@@ -128,7 +129,7 @@ void AfterFight::runCinematicSequencePart1()
 			this->runCinematicSequencePart2();
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		Voices::GetNextVoiceMedium(),
 		true
 	));
 }

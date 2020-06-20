@@ -171,7 +171,7 @@ void RewardsMenu::giveExp()
 				{
 					entity->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
 					{
-						healthBehavior->setHealth(healthBehavior->getMaxHealth());
+						healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 					});
 
 					entity->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)

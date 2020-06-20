@@ -9,10 +9,12 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 
 #include "Resources/EntityResources.h"
 
@@ -55,6 +57,23 @@ void ScrappyMovementBehavior::onLoad()
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
+
+		// Listen for Squally warp
+		this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventAfterWarpPrefix + this->squally->getUniqueIdentifier(), [=](EventCustom* eventCustom)
+		{
+			PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+
+				if (layer != nullptr)
+				{
+					GameUtils::changeParent(this->scrappy, layer, true);
+				}
+			}
+		}));
+
 	}, Squally::MapKey);
 
 	this->scheduleUpdate();
