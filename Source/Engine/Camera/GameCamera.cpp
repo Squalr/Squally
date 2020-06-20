@@ -222,12 +222,17 @@ void GameCamera::setCameraDistance(float distance)
 
 float GameCamera::getCameraZoomOnTarget(cocos2d::Node* target)
 {
-	return ((this->getCameraDistance() - GameUtils::getDepth(target)) / this->getIntendedCameraDistance());
+	return target == nullptr ? 1.0f : ((this->getCameraDistance() - GameUtils::getDepth(target)) / this->defaultDistance);
 }
 
-float GameCamera::getCameraZoomOnZero()
+float GameCamera::getCameraZoomOnTrackedTarget()
 {
-	return (this->getCameraDistance() / this->defaultDistance);
+	if (this->getCurrentTrackingData() != nullptr)
+	{
+		return GameCamera::getCameraZoomOnTarget(this->getCurrentTrackingData()->target);
+	}
+
+	return 1.0f;
 }
 
 float GameCamera::getCameraZoom()
@@ -455,7 +460,7 @@ Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 
 Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 {
-	const float CameraZoom = this->getCameraZoomOnZero();
+	const float CameraZoom = this->getCameraZoomOnTrackedTarget();
 	const Size CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
 
 	const float MinX = this->mapBounds.getMinX() + CameraSize.width / 2.0f;

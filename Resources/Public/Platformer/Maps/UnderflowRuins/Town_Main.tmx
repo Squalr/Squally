@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="139" nextobjectid="1063">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1065">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -213,6 +213,22 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="139" name="decor -4 bg bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1063" name="Generic/SignSmith" type="decor" x="1395.83" y="503.333" width="523" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1064" name="Generic/SignAlch" type="decor" x="3582.59" y="506.833" width="523" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="107" name="texture -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -236,16 +252,6 @@
   </properties>
   <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452"/>
   <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452"/>
-  <object id="1061" name="Generic/SignSmith" type="decor" x="1395.83" y="503.333" width="523" height="265">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1062" name="Generic/SignAlch" type="decor" x="3582.59" y="506.833" width="523" height="265">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="112" name="terrain -4">
   <properties>

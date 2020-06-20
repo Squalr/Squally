@@ -182,7 +182,7 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 		this->debugOffsetYStr->setString(streamY.str());
 	}
 
-	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		Weapon* weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
 		Hat* hat = entityInventoryBehavior->getEquipmentInventory()->getHat();
