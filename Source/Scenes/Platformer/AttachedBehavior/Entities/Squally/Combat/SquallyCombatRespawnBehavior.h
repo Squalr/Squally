@@ -21,7 +21,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 	
-	void respawn();
+	void respawn(bool softRevive);
 
 	Squally* squally;
 };

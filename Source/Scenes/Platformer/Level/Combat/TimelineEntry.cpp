@@ -646,7 +646,7 @@ void TimelineEntry::cameraFocusEntry()
 
 void TimelineEntry::tryInterrupt()
 {
-	if (!this->isBlocking && !this->isCasting)
+	if (!this->isBlocking && !this->isCasting || this->getStagedCast() == nullptr)
 	{
 		return;
 	}

@@ -10,6 +10,8 @@ class HelperManagerBehavior : public AttachedBehavior
 public:
 	static HelperManagerBehavior* create(GameObject* owner);
 
+	PlatformerEntity* getHelperRef();
+
 	static const std::string MapKey;
 
 protected:

@@ -22,6 +22,7 @@ private:
 	typedef AttachedBehavior super;
 	
 	void respawn(float delay);
+	void doRespawn();
 
 	bool isRespawning;
 

@@ -474,8 +474,9 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(const std::vecto
 
 void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 {
-	const float RootPosition = 0.70f;
-	const float IndexBonus = 0.25f;
+	// Note: do not pass TimelineEntry::CastPercentage -- 0.075f
+	static const std::vector<float> StartTimesFirstStrike = std::vector<float>({ 0.70f + 0.04f, 0.325f, 0.2f });
+	static const std::vector<float> StartTimesSecondStrike = std::vector<float>({ 0.575f, 0.45f, 0.075f });
 	int friendlyIndex = 0;
 	int enemyIndex = 0;
 	
@@ -483,14 +484,11 @@ void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 	{
 		bool isSameTeamFirstStrike = (isPlayerFirstStrike && entry->isPlayerEntry()) || (!isPlayerFirstStrike && !entry->isPlayerEntry());
 		int* indexPtr = entry->isPlayerEntry() ? &friendlyIndex : &enemyIndex;
+		const std::vector<float>* startTimes = entry->isPlayerEntry() ? &StartTimesFirstStrike : &StartTimesSecondStrike;
 
-		if (*indexPtr < 3)
+		if (*indexPtr < int(startTimes->size()))
 		{
-			float startPosition = RootPosition - (isSameTeamFirstStrike ? 0.0f : (IndexBonus / 2.0f));
-
-			startPosition -= float(*indexPtr) * IndexBonus;
-
-			entry->setProgress(startPosition);
+			entry->setProgress(startTimes->at(*indexPtr));
 		}
 		else
 		{
