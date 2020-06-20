@@ -651,7 +651,7 @@ void TimelineEntry::tryInterrupt()
 		return;
 	}
 	
-	if (this->isBlocking)
+	if (this->isBlocking && this->isCasting)
 	{
 		this->setProgress(this->progress / 2.0f);
 		this->interruptBonus = 0.1f;
