@@ -77,11 +77,9 @@ Getting the Resource Folder
 ------------
 We could not include the `Resources/Private` folder in this repository, because a lot of the art in this game comes from asset stores. This means we have non-exclusive rights to the art, and cannot redistribute it for free. This means the Resources must be copied from a legally purchased copy of the game.
 
-The `Resources/Private` folder in Squally will be synced up with the master branch in this repository.
+The `Resources/Private` folder in the Steam copy of Squally will correspond to the master branch of this repository.
 
-Note: currently there is no master branch -- we temporarily removed it when making this repository public. It will be recreated before the next release.
-
-To gain access to the `Resources/Private` folder being used in develop, do the following:
+To gain access to the `Resources/Private` folder being used in develop branch, do the following:
 - Open Steam
 - Right click on Squally and click Properties
 - Go to the BETAS tab
@@ -94,4 +92,4 @@ To gain access to the `Resources/Private` folder being used in develop, do the f
 ![Squally resource beta](https://i.imgur.com/012eDxg.png)
 ![Squally resource folder](https://i.imgur.com/5PaDZiG.png)
 
-For those that contribute significantly to the project, we can add you to the private repository. We're doing this sparringly because there are limted seats on Github.
+For those that contribute significantly to the project, we can give you access to the private `Resources/Private` Github repository. We're doing this sparringly because there are limted seats on Github.
