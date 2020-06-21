@@ -213,6 +213,10 @@ bool EntityPetrificationBehavior::tryCure()
 	{
 		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyAjaxCured, Value(true));
 	}
+	else if (this->entity->getEntityKey() == "griffin")
+	{
+		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyGriffinCured, Value(true));
+	}
 
 	this->cureInteraction->disable();
 	this->statueBreakSound->play();

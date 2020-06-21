@@ -35,6 +35,7 @@ using namespace cocos2d;
 const std::string CureTown::MapKeyQuest = "cure-town";
 const std::string CureTown::SaveKeyCuredCount = "SAVE_KEY_CURED_COUNT";
 const std::string CureTown::SaveKeyAjaxCured = "SAVE_KEY_AJAX_CURED";
+const std::string CureTown::SaveKeyGriffinCured = "SAVE_KEY_GRIFFIN_CURED";
 const int CureTown::MaxCuredCount = 6;
 
 CureTown* CureTown::create(GameObject* owner, QuestLine* questLine)

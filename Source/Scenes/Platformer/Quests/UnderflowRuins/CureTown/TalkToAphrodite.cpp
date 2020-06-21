@@ -13,10 +13,14 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"
+#include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
 
 #include "Resources/SoundResources.h"
 
@@ -26,6 +30,7 @@ using namespace cocos2d;
 
 const std::string TalkToAphrodite::MapKeyQuest = "talk-to-aphrodite";
 const std::string TalkToAphrodite::TagExitDoor = "exit-door";
+const std::string TalkToAphrodite::SaveKeyItemGiven = "APHRODITE_ITEM_GIVEN";
 
 TalkToAphrodite* TalkToAphrodite::create(GameObject* owner, QuestLine* questLine)
 {
@@ -77,6 +82,8 @@ void TalkToAphrodite::onLoad(QuestState questState)
 			{
 				exitDoor->unlock();
 			}, TalkToAphrodite::TagExitDoor);
+
+			this->runShipmentsComplete();
 		}
 	}, Aphrodite::MapKey);
 
@@ -243,4 +250,33 @@ void TalkToAphrodite::runCinematicSequence()
 			true
 		));
 	});
+}
+
+void TalkToAphrodite::runShipmentsComplete()
+{
+	bool griffinCured = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyGriffinCured, Value(false)).asBool();
+	
+	if (griffinCured && !this->aphrodite->loadObjectStateOrDefault(TalkToAphrodite::SaveKeyItemGiven, Value(false)).asBool())
+	{
+		this->aphrodite->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments::create()
+					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Griffin::create()),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
+				),
+				[=]()
+				{
+					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(GarnetBand::create()));
+					this->aphrodite->saveObjectState(TalkToAphrodite::SaveKeyItemGiven, Value(true));
+				},
+				Voices::GetNextVoiceMedium(),
+				true
+			));
+		});
+	}
 }

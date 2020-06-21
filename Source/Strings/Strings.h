@@ -26979,6 +26979,21 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead : public LocalizedString
 	{
 	public:
