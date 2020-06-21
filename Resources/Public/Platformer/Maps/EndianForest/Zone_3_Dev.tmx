@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Waterfall"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
@@ -156,8 +156,8 @@
   <object id="833" name="edge-portal" type="object" x="672.768" y="-24.1832" width="718.1" height="174.184">
    <properties>
     <property name="direction" value="up"/>
-    <property name="map" value="EndianForest/Zone_3_3"/>
-    <property name="transition" value="left-bottom"/>
+    <property name="map" value="EndianForest/Zone_3_4"/>
+    <property name="transition" value="right-bottom"/>
    </properties>
   </object>
   <object id="842" name="Generic/Wheel1" type="decor" x="720.5" y="1024.17" width="135" height="79"/>

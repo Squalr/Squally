@@ -32,6 +32,7 @@ private:
 	void runMageAnims();
 	void positionImpactFx();
 	void runCinematicSequencePart1();
+	void runCinematicSequencePart1Alt();
 	void runCinematicSequencePart2();
 	void runCinematicSequencePart3();
 	void killRammedEnemies();
@@ -53,4 +54,6 @@ private:
 	WorldSound* reboundSoundSword;
 
 	static const std::string ForceFieldTag;
+	static const std::string MarkerTagBack;
+	static const std::string MarkerTagFront;
 };

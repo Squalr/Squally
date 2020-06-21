@@ -47,6 +47,8 @@ using namespace cocos2d;
 
 const std::string FightGorgon::MapKeyQuest = "fight-gorgon";
 const std::string FightGorgon::ForceFieldTag = "force-field";
+const std::string FightGorgon::MarkerTagBack = "walk-to-back";
+const std::string FightGorgon::MarkerTagFront = "walk-to-front";
 
 FightGorgon* FightGorgon::create(GameObject* owner, QuestLine* questLine)
 {
@@ -120,13 +122,22 @@ void FightGorgon::onLoad(QuestState questState)
 		{
 			if (questState == QuestState::Active)
 			{
-				this->flickerOutForceField();
-
 				this->defer([=]()
 				{
 					this->killRammedEnemies();
-					this->runCinematicSequencePart1();
 					this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
+				});
+
+				this->listenForMapEventOnce(FightGorgon::MarkerTagBack, [=](ValueMap)
+				{
+					this->flickerOutForceField();
+					this->runCinematicSequencePart1();
+				});
+
+				this->listenForMapEventOnce(FightGorgon::MarkerTagFront, [=](ValueMap)
+				{
+					this->flickerOutForceField();
+					this->runCinematicSequencePart1Alt();
 				});
 			}
 			else if (questState == QuestState::ActiveThroughSkippable)
@@ -187,7 +198,27 @@ void FightGorgon::runCinematicSequencePart1()
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 			{
 				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
-			}, "walk-to");
+			}, FightGorgon::MarkerTagBack);
+
+			this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+			{
+				this->runCinematicSequencePart2();
+			});
+		}),
+		nullptr
+	));
+}
+
+void FightGorgon::runCinematicSequencePart1Alt()
+{
+	this->runAction(Sequence::create(
+		DelayTime::create(0.25f),
+		CallFunc::create([=]()
+		{
+			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+			{
+				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
+			}, FightGorgon::MarkerTagFront);
 
 			this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 			{
