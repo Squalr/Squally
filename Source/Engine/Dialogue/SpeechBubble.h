@@ -24,7 +24,7 @@ public:
 		Auto
 	};
 
-	void runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto);
+	void runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto, bool instant = false);
 	void hideDialogue();
 
 	static const float InfiniteDuration;

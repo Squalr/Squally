@@ -73,7 +73,7 @@ void SpeechBubble::initializeListeners()
 	super::initializeListeners();
 }
 
-void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration, std::function<void()> onComplete, Direction direction)
+void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration, std::function<void()> onComplete, Direction direction, bool instant)
 {
 	const Size padding = Size(16.0f, 16.0f);
 	const float centerAutoOffset = 256.0f;
@@ -112,7 +112,11 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string sou
 
 	this->text->setLocalizedString(localizedString);
 	this->text->setDimensions(320.0f, 0.0f);
-	TypeWriterEffect::runTypeWriterEffect(this, this->text);
+
+	if (!instant)
+	{
+		TypeWriterEffect::runTypeWriterEffect(this, this->text);
+	}
 
 	Size textSize = this->text->getContentSize();
 	std::vector<Vec2> trianglePoints = std::vector<Vec2>();

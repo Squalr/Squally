@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-ScrappyClippy* ScrappyClippy::create(LocalizedString* helpText)
+ScrappyClippy* ScrappyClippy::create(LocalizedString* helpText, std::string uniqueRunKey)
 {
-	ScrappyClippy* instance = new ScrappyClippy(helpText);
+	ScrappyClippy* instance = new ScrappyClippy(helpText, uniqueRunKey);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ScrappyClippy::ScrappyClippy(LocalizedString* helpText) : super()
+ScrappyClippy::ScrappyClippy(LocalizedString* helpText, std::string uniqueRunKey) : super(uniqueRunKey)
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
 	this->helpText = helpText;

@@ -44,6 +44,7 @@ ScriptList::ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void
 	this->confirmationMenuRef = confirmationMenuRef;
 	this->hackableCode = nullptr;
 	this->activeScript = nullptr;
+	this->readOnlyCount = 0;
 
 	this->createNewScriptLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->createNewScriptSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -110,7 +111,7 @@ ScriptEntry* ScriptList::addNewScript()
 	newScriptName->setStringReplacementVariables(
 	{
 		Strings::Menus_Hacking_CodeEditor_MyNewScript::create(),
-		ConstantString::create(std::to_string(this->scripts.size()))
+		ConstantString::create(std::to_string(int(this->scripts.size()) - this->readOnlyCount + 1))
 	});
 
 	std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
@@ -213,6 +214,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->scripts.clear();
 
 	std::vector<HackableCode::ReadOnlyScript> readonlyScripts = hackableCode->getReadOnlyScripts();
+	this->readOnlyCount = int(readonlyScripts.size());
 
 	for (auto readOnlyScript : readonlyScripts)
 	{

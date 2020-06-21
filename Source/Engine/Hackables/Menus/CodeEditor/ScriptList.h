@@ -54,6 +54,8 @@ private:
 	HackableCode* hackableCode;
 	ConfirmationMenu* confirmationMenuRef;
 
+	int readOnlyCount;
+
 	static const std::string ScriptNameKey;
 	static const std::string ScriptKey;
 	static const int MaxScripts;

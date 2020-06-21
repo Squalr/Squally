@@ -10,12 +10,12 @@ class Sound;
 class ScrappyClippy : public Clippy
 {
 public:
-	static ScrappyClippy* create(LocalizedString* helpText);
+	static ScrappyClippy* create(LocalizedString* helpText, std::string uniqueRunKey = "");
 
 	void startDialogue() override;
 
 protected:
-	ScrappyClippy(LocalizedString* helpText);
+	ScrappyClippy(LocalizedString* helpText, std::string uniqueRunKey);
 	virtual ~ScrappyClippy();
 
 private:
