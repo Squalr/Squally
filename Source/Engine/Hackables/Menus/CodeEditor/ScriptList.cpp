@@ -21,6 +21,7 @@ using namespace cocos2d;
 
 const std::string ScriptList::ScriptNameKey = "SCRIPT_NAME";
 const std::string ScriptList::ScriptKey = "SCRIPT";
+const std::string ScriptList::SaveKeyLastSelectedScriptIndexPrefix = "SAVE_KEY_SCRIPT_INDEX_";
 const int ScriptList::MaxScripts = 9;
 
 ScriptList* ScriptList::create(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect)
@@ -261,6 +262,18 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 
 	this->initializePositions();
 
+	// Try focusing the saved last selected script
+	if (SaveManager::hasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
+	{
+		int activeScriptIndex = SaveManager::getProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
+
+		if (activeScriptIndex >= 0 && activeScriptIndex < int(this->scripts.size()))
+		{
+			this->setActiveScript(this->scripts[activeScriptIndex]);
+			return;
+		}
+	}
+
 	// Focus the first non-readonly script
 	for (auto script : this->scripts)
 	{
@@ -327,12 +340,20 @@ void ScriptList::onScriptEntryDeleteClick(ScriptEntry* scriptEntry)
 
 void ScriptList::setActiveScript(ScriptEntry* activeScript)
 {
+	int activeScriptIndex = 0;
 	this->activeScript = activeScript;
 
-	for (auto script : this->scripts)
+	for (int index = 0; index < int(this->scripts.size()); index++)
 	{
-		script->toggleSelected(false);
+		if (this->scripts[index] == this->activeScript)
+		{
+			activeScriptIndex = index;
+		}
+
+		this->scripts[index]->toggleSelected(false);
 	}
+
+	SaveManager::SoftSaveProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(activeScriptIndex));
 
 	this->activeScript->toggleSelected(true);
 	this->onScriptSelect(this->activeScript);

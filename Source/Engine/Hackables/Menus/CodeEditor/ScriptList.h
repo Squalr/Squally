@@ -58,5 +58,6 @@ private:
 
 	static const std::string ScriptNameKey;
 	static const std::string ScriptKey;
+	static const std::string SaveKeyLastSelectedScriptIndexPrefix;
 	static const int MaxScripts;
 };
