@@ -59,6 +59,7 @@ void EnemyCombatEngageBehavior::onLoad()
 
 		if (args != nullptr && args->enemy != nullptr && args->enemy == this->enemy)
 		{
+			PlatformerEvents::TriggerCinematicHijack();
 			this->engageEnemy(args->firstStrike);
 		}
 

@@ -34,6 +34,7 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffI
 	this->buffIcon = Sprite::create(buffIconResource);
 	this->hackables = std::vector<HackableCode*>();
 	this->elapsedTime = 0.0f;
+	this->asyncElapsedTime = 0.0f;
 	this->wasRemoved = false;
 	this->isBuffIconPresent = !buffIconResource.empty();
 
@@ -53,6 +54,7 @@ void Buff::onEnter()
 	super::onEnter();
 
 	this->registerHackables();
+	this->scheduleUpdate();
 }
 
 void Buff::onExit()
@@ -128,6 +130,21 @@ void Buff::setBuffIndex(int index, int maxIndex)
 	const float BuffSpacing = 64.0f;
 
 	this->iconContainer->setPositionX(-float(maxIndex) * BuffSpacing / 2.0f + float(index) * BuffSpacing);
+}
+
+void Buff::update(float dt)
+{
+	super::update(dt);
+
+	const float FadeOpacityAt = 1.0f;
+
+	// Flicker animation
+	if (this->buffData.duration > 0.0f && this->elapsedTime >= this->buffData.duration - FadeOpacityAt)
+	{
+		this->buffIcon->setOpacity(GLubyte(std::abs(std::cos((FadeOpacityAt - this->asyncElapsedTime) * float(M_PI) * 2.0f)) * 255.0f));
+
+		this->asyncElapsedTime += dt;
+	}
 }
 
 void Buff::elapse(float dt)
