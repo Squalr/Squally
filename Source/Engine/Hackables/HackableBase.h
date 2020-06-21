@@ -31,6 +31,7 @@ public:
 	bool isCooldownComplete();
 	float getElapsedCooldown();
 	float getCooldown();
+	void tryRefreshCooldown();
 	std::string getHackBarResource();
 	HackBarColor getHackBarColor();
 	std::string getIconResource();

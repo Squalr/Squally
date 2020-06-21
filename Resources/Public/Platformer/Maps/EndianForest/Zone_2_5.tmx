@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="923">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="924">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -176,11 +176,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="squally" type="entity" x="1018.46" y="1778.75" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
   <object id="914" name="goblin-shaman" type="entity" x="1481.58" y="1783.39" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
@@ -225,6 +220,11 @@
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="923" name="squally" type="entity" x="1018.46" y="1778.75" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
  </objectgroup>

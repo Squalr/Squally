@@ -31,9 +31,9 @@ public:
 	
 	void toggleHackable(bool isHackable);
 	void toggleAllowFx(bool allowFx);
-	void registerCode(HackableCode* hackableCode);
+	void registerCode(HackableCode* hackableCode, bool refreshCooldowns = true);
 	void unregisterCode(HackableCode* hackableCode, bool forceRestoreState = false);
-	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
+	void registerHackAbility(HackActivatedAbility* hackActivatedAbility, bool refreshCooldowns = true);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 	cocos2d::Node* getHackParticlesNode();

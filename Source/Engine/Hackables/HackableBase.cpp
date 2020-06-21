@@ -144,6 +144,14 @@ float HackableBase::getCooldown()
 	return this->cooldown;
 }
 
+void HackableBase::tryRefreshCooldown()
+{
+	if (!this->isComplete())
+	{
+		this->startTimer();
+	}
+}
+
 std::string HackableBase::getHackBarResource()
 {
 	switch(this->getHackBarColor())

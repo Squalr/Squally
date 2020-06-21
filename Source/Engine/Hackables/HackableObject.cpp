@@ -347,7 +347,7 @@ HackablePreview* HackableObject::createDefaultPreview()
 	return nullptr;
 }
 
-void HackableObject::registerCode(HackableCode* hackableCode)
+void HackableObject::registerCode(HackableCode* hackableCode, bool refreshCooldowns)
 {
 	if (hackableCode == nullptr)
 	{
@@ -360,6 +360,11 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 		{
 			return;
 		}
+	}
+
+	if (refreshCooldowns)
+	{
+		hackableCode->tryRefreshCooldown();
 	}
 
 	this->hackableList.push_back(hackableCode);
@@ -418,11 +423,16 @@ void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestor
 	}
 }
 
-void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbility)
+void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbility, bool refreshCooldowns)
 {
 	if (hackActivatedAbility == nullptr)
 	{
 		return;
+	}
+
+	if (refreshCooldowns)
+	{
+		hackActivatedAbility->tryRefreshCooldown();
 	}
 	
 	this->hackableList.push_back(hackActivatedAbility);
