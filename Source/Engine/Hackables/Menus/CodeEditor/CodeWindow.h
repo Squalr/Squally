@@ -16,6 +16,7 @@ namespace cocos2d
 	{
 		class RichText;
 		class RichElement;
+		class RichElementText;
 	}
 }
 
@@ -82,7 +83,8 @@ private:
 	cocos2d::LayerColor* copyPanel;
 	LocalizedLabel* copyLabel;
 
-	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textElements;
+	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textInfo;
+	std::vector<cocos2d::ui::RichElementText*> textElements;
 	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
 
 	bool hasScriptChanges;
