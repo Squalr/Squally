@@ -601,7 +601,7 @@ void TimelineEntry::performCast()
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
-			if (this->targets.empty())
+			if (this->targets.empty() || this->entity == nullptr || this->currentCast == nullptr)
 			{
 				this->resetTimeline();
 				return;

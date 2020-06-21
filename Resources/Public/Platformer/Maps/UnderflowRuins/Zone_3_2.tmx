@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1149">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1155">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -29,15 +29,23 @@
   <object id="967" name="torch" type="object" x="4136.94" y="795.935" width="42" height="130"/>
   <object id="968" name="torch" type="object" x="410.506" y="807.388" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="5219.61" y="802.515" width="42" height="130"/>
+  <object id="1151" name="Generic/Vent" type="decor" x="2067.5" y="2310.5" width="305" height="307">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="75" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1036" name="ruins-thick" type="terrain" x="1973.94" y="1287.58" width="1926.05" height="672.97"/>
-  <object id="1114" name="ruins-thick" type="terrain" x="2526.02" y="2696.61" width="2082.75" height="576"/>
-  <object id="1124" name="solid" type="collision" x="2409.29" y="1371.23" width="126.878" height="1821.18"/>
+  <object id="1036" name="ruins-thick" type="terrain" x="1973.94" y="1287.58" width="1926.05" height="672.97">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1114" name="ruins-thick" type="terrain" x="1966.02" y="2696.61" width="2642.75" height="576"/>
  </objectgroup>
  <objectgroup id="94" name="objects -6">
   <properties>
@@ -87,6 +95,29 @@
    </properties>
   </object>
   <object id="1148" name="caged-mouse" type="object" x="4052" y="2586" width="196" height="112"/>
+  <object id="1149" name="solid" type="collision" x="3900.56" y="-111.438" width="126.878" height="1706.03"/>
+  <object id="1150" name="solid" type="collision" x="1844.56" y="-134.59" width="126.878" height="3341.18"/>
+  <object id="1152" name="wind" type="object" x="2031.22" y="2218.61" width="380" height="480">
+   <properties>
+    <property name="listen-event" value="activate-wind"/>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1153" name="wind" type="object" x="2036.78" y="1737.78" width="380" height="480">
+   <properties>
+    <property name="listen-event" value="activate-wind"/>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1154" name="wind" type="object" x="2033.99" y="1305.39" width="380" height="428">
+   <properties>
+    <property name="listen-event" value="activate-wind"/>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="95" name="player_layer -6">
   <properties>
@@ -145,7 +176,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="73" name="terrain -3">
+ <objectgroup id="73" name="terrain -3" locked="1">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -247,7 +278,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg">
+ <objectgroup id="58" name="terrain bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -272,7 +303,7 @@
   <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340"/>
   <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340"/>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
