@@ -1,6 +1,7 @@
 ﻿#include "CodeWindow.h"
 
 #include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/ui/UIRichText.h"
@@ -69,6 +70,7 @@ const float CodeWindow::MarginSize = 48.0f;
 const float CodeWindow::TitleBarHeight = 64.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
+const Color4B CodeWindow::ReadonlyWindowColor = Color4B(70, 66, 10, 255);
 
 CodeWindow* CodeWindow::create(cocos2d::Size windowSize)
 {
@@ -109,6 +111,7 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 		LocalizedLabel::FontSize::H3
 	);
 	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
+	this->copyButtonGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
 	this->copyPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->copyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CopyScript::create());
@@ -138,6 +141,7 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->addChild(this->windowTitle);
 	this->addChild(this->contentPane);
 	this->addChild(this->deleteButton);
+	this->addChild(this->copyButtonGlow);
 	this->addChild(this->copyButton);
 	this->addChild(this->deletePanel);
 	this->addChild(this->deleteLabel);
@@ -173,6 +177,7 @@ void CodeWindow::initializePositions()
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->deleteButton->setPosition(windowSize.width / 2.0f - 32.0f - 40.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->copyButtonGlow->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->copyButton->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
 	this->displayedText->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
@@ -248,6 +253,7 @@ void CodeWindow::initializeListeners()
 		this->deletePanel->setOpacity(196);
 		this->deleteLabel->setOpacity(255);
 	});
+
 	this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->deletePanel->setOpacity(0);
@@ -280,12 +286,18 @@ void CodeWindow::openScript(ScriptEntry* script)
 
 	if (script->isReadOnly)
 	{
+		this->copyButtonGlow->setVisible(true);
+		this->background->setColor(Color3B(CodeWindow::ReadonlyWindowColor));
+		this->background->setOpacity(CodeWindow::ReadonlyWindowColor.a);
 		this->windowTitle->getHitbox()->disableInteraction();
 		this->editableText->getHitbox()->disableInteraction();
 		this->unfocus();
 	}
 	else
 	{
+		this->copyButtonGlow->setVisible(false);
+		this->background->setColor(Color3B(CodeWindow::DefaultWindowColor));
+		this->background->setOpacity(CodeWindow::DefaultWindowColor.a);
 		this->deleteButton->setVisible(true);
 		this->windowTitle->getHitbox()->enableInteraction();
 		this->editableText->getHitbox()->enableInteraction();

@@ -566,7 +566,7 @@
   <object id="1235" name="goblin-warrior-pig" type="entity" x="1594.24" y="4816.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value="reflect-tutorial"/>
+    <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>

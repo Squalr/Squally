@@ -212,7 +212,9 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->scriptsNode->removeAllChildren();
 	this->scripts.clear();
 
-	for (auto readOnlyScript : hackableCode->getReadOnlyScripts())
+	std::vector<HackableCode::ReadOnlyScript> readonlyScripts = hackableCode->getReadOnlyScripts();
+
+	for (auto readOnlyScript : readonlyScripts)
 	{
 		ScriptEntry* scriptEntry = ScriptEntry::create(
 			readOnlyScript.title == nullptr ? nullptr : readOnlyScript.title->clone(),
@@ -249,7 +251,8 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
-	if (savedScripts.empty())
+	// Adding an initial fork of the default script is only useful when it is the ONLY readonly script.
+	if (savedScripts.empty() && readonlyScripts.size() <= 1)
 	{
 		this->addNewScript();
 	}
@@ -265,7 +268,14 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		}
 
 		this->setActiveScript(script);
-		break;
+		return;
+	}
+
+	// If none found, focus the last script
+	for (auto it = this->scripts.rbegin(); it != this->scripts.rend(); it++)
+	{
+		this->setActiveScript(*it);
+		return;
 	}
 }
 

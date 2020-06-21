@@ -62,10 +62,10 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	/*********************
 	    Combat
 	*********************/
+	this->attachedBehaviorDeserializers[CurseOfTonguesTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CurseOfTonguesTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[FireballTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FireballTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[IncrementHealthFlaskTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)IncrementHealthFlaskTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TrainingHealTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingHealTutorialBehavior::create(owner); };
-	this->attachedBehaviorDeserializers[ReflectTutorial::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ReflectTutorial::create(owner); };
 	
 	/*********************
 	    Transportation

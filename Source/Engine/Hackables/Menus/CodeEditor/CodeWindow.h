@@ -10,6 +10,7 @@
 namespace cocos2d
 {
 	class LayerColor;
+	class Sprite;
 
 	namespace ui
 	{
@@ -70,6 +71,7 @@ private:
 	cocos2d::LayerColor* titleBar;
 	InputText* windowTitle;
 	ClickableNode* deleteButton;
+	cocos2d::Sprite* copyButtonGlow;
 	ClickableNode* copyButton;
 	ScrollPane* contentPane;
 	cocos2d::ui::RichText* displayedText;
@@ -97,6 +99,7 @@ private:
 	static const float TitleBarHeight;
 	static const cocos2d::Color4B DefaultTitleBarColor;
 	static const cocos2d::Color4B DefaultWindowColor;
+	static const cocos2d::Color4B ReadonlyWindowColor;
 	static const cocos2d::Color3B LineNumberColor;
 	static const cocos2d::Size Padding;
 	static const float MarginSize;

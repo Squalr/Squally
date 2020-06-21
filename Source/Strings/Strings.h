@@ -9669,21 +9669,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTonguesClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTonguesClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTonguesClippy();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTonguesClippy() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse : public LocalizedString
 	{
 	public:
@@ -10357,6 +10342,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_WeakMinded();
 		virtual ~Menus_Hacking_Abilities_WeakMinded() = default;
+	};
+
+	class Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy();
+		virtual ~Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy() = default;
 	};
 
 	class Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal : public LocalizedString

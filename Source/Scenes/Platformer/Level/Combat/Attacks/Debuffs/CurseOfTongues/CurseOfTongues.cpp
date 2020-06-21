@@ -131,7 +131,7 @@ void CurseOfTongues::registerHackables()
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
-							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
+							->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 1) })) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
 						"mov dword ptr [esi], -0.5f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
@@ -142,7 +142,7 @@ void CurseOfTongues::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
-							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1))) + 
+							->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 1) })) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
 						"mov dword ptr [rsi], -0.5f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 

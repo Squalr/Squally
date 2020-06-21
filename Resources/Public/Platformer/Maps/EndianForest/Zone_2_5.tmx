@@ -132,6 +132,7 @@
   <object id="912" name="temple-door" type="object" x="1975.27" y="1384.74" width="432" height="528">
    <properties>
     <property name="color" value="yellow-up"/>
+    <property name="listen-event" value="shaman-death"/>
     <property name="map" value="EndianForest/Zone_2_6"/>
     <property name="transition" value="entrance-C"/>
    </properties>
@@ -179,10 +180,11 @@
   <object id="914" name="goblin-shaman" type="entity" x="1481.58" y="1783.39" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value="reflect-tutorial"/>
+    <property name="battle-behavior" value="curse-of-tongues-tutorial"/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>
+    <property name="send-event" value="shaman-death"/>
    </properties>
   </object>
   <object id="915" name="goblin-shaman" type="entity" x="1488" y="1528" width="128" height="128">
