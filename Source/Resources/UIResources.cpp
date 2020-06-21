@@ -49,6 +49,7 @@ const std::string UIResources::HUD_EmblemGlow = "Private/UI/HUD/EmblemGlow.png";
 const std::string UIResources::HUD_Eye = "Private/UI/HUD/Eye.png";
 const std::string UIResources::HUD_EyeSlot = "Private/UI/HUD/EyeSlot.png";
 const std::string UIResources::HUD_FillBlue = "Private/UI/HUD/FillBlue.png";
+const std::string UIResources::HUD_FillCooldown = "Private/UI/HUD/FillCooldown.png";
 const std::string UIResources::HUD_FillGray = "Private/UI/HUD/FillGray.png";
 const std::string UIResources::HUD_FillGreen = "Private/UI/HUD/FillGreen.png";
 const std::string UIResources::HUD_FillOrange = "Private/UI/HUD/FillOrange.png";

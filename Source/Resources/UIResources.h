@@ -50,6 +50,7 @@ namespace UIResources
 	extern const std::string HUD_Eye;
 	extern const std::string HUD_EyeSlot;
 	extern const std::string HUD_FillBlue;
+	extern const std::string HUD_FillCooldown;
 	extern const std::string HUD_FillGray;
 	extern const std::string HUD_FillGreen;
 	extern const std::string HUD_FillOrange;

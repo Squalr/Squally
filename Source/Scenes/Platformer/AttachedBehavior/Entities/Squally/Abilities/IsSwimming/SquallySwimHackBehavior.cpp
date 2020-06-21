@@ -92,7 +92,7 @@ void SquallySwimHackBehavior::registerHackables()
 				},
 				int(HackFlags::Water),
 				1.0f,
-				3.0f
+				2.0f
 			)
 		},
 	};

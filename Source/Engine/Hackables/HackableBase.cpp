@@ -91,8 +91,7 @@ void HackableBase::update(float dt)
 			this->restoreState();
 		}
 	}
-
-	if (this->elapsedCooldown < this->cooldown)
+	else if (this->elapsedCooldown < this->cooldown)
 	{
 		this->elapsedCooldown += dt;
 	}
@@ -194,6 +193,11 @@ std::string HackableBase::getHackBarResource()
 			return UIResources::HUD_FillPurple;
 		}
 	}
+}
+
+std::string HackableBase::getHackBarCooldownResource()
+{
+	return UIResources::HUD_FillCooldown;
 }
 
 HackableBase::HackBarColor HackableBase::getHackBarColor()

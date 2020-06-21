@@ -504,6 +504,7 @@
  <objectgroup id="77" name="player_layer +3">
   <properties>
    <property name="depth" type="float" value="192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>

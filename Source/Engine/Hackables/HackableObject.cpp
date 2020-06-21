@@ -250,15 +250,27 @@ void HackableObject::updateTimeRemainingBars()
 				this->timeRemainingIcons[index]->setScale(0.5f);
 			}
 
-			if (this->timeRemainingBars[index]->getFillSprite()->getResourceName() != next->getHackBarResource())
-			{
-				this->timeRemainingBars[index]->getFillSprite()->initWithFile(next->getHackBarResource());
-			}
-
 			this->timeRemainingBars[index]->setPositionY(float(index) * -32.0f);
 			this->timeRemainingIcons[index]->setPosition(Vec2(-80.0f, float(index) * -32.0f));
 
-			this->timeRemainingBars[index]->setProgress(next->getDuration() <= 0.0f ? 1.0f : (1.0f - next->getElapsedDuration() / next->getDuration()));
+			if (!next->isComplete())
+			{
+				if (this->timeRemainingBars[index]->getFillSprite()->getResourceName() != next->getHackBarResource())
+				{
+					this->timeRemainingBars[index]->getFillSprite()->initWithFile(next->getHackBarResource());
+				}
+
+				this->timeRemainingBars[index]->setProgress(next->getDuration() <= 0.0f ? 1.0f : (1.0f - next->getElapsedDuration() / next->getDuration()));
+			}
+			else if (!next->isCooldownComplete())
+			{
+				if (this->timeRemainingBars[index]->getFillSprite()->getResourceName() != next->getHackBarCooldownResource())
+				{
+					this->timeRemainingBars[index]->getFillSprite()->initWithFile(next->getHackBarCooldownResource());
+				}
+
+				this->timeRemainingBars[index]->setProgress(next->getCooldown() <= 0.0f ? 1.0f : (next->getElapsedCooldown() / next->getCooldown()));
+			}
 		}
 		else
 		{

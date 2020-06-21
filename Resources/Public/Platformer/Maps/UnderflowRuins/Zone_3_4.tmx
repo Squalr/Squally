@@ -381,6 +381,7 @@
  <objectgroup id="77" name="player_layer +3">
   <properties>
    <property name="depth" type="float" value="192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1123" name="spawn" type="object" x="1024" y="1434.67" width="128" height="128">
