@@ -41,7 +41,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="15.212" width="14469.3" height="1512">
+  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="15.212" width="14469.3" height="1519">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -53,7 +53,7 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1076">
+  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>

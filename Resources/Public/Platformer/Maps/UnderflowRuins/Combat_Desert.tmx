@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="586" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-249.181" width="14981.3" height="318">
+  <object id="586" name="Ruins/Background/DesertLayer4" type="decor" x="-4361.32" y="-85.181" width="14981.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -29,7 +29,7 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="585" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-1002.85" width="14229.3" height="1478">
+  <object id="585" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-1002.85" width="14229.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -41,7 +41,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="584" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="15.212" width="14469.3" height="1512">
+  <object id="584" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="15.212" width="14469.3" height="1519">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -53,7 +53,7 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="583" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="487.091" width="14709.3" height="1076">
+  <object id="583" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="487.091" width="14709.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
