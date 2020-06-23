@@ -66,7 +66,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1121" name="collision" type="solid" x="1966.67" y="2937.89" width="128" height="1417.67"/>
+  <object id="1121" name="solid" type="collision" x="1966.67" y="2319.71" width="128" height="2035.85"/>
   <object id="1123" name="vase" type="object" x="4142.65" y="4054.06" width="113" height="160">
    <properties>
     <property name="color" value="green"/>
@@ -189,7 +189,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="terrain -0">
+ <objectgroup id="74" name="terrain -0" visible="0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -482,7 +482,7 @@
   </object>
   <object id="1096" name="lycan" type="entity" x="1502" y="3990" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="lycan-hexus,friendly,pick-pocket,look-at-squally"/>
+    <property name="attached-behavior" value="lycan,lycan-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>

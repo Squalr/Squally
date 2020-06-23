@@ -25734,6 +25734,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops() = default;
 	};
 
+	class Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired() = default;
+	};
+
 	class Platformer_Quests_EndianForest_FindElriel_Scrappy_A_LetsFindABoat : public LocalizedString
 	{
 	public:
