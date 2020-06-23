@@ -69,10 +69,11 @@ void Warp::update(float dt)
 	{
 		this->disable();
 		this->cooldown -= dt;
-	}
-	else
-	{
-		this->enable();
+
+		if (this->cooldown <= 0.0f)
+		{
+			this->enable();
+		}
 	}
 }
 

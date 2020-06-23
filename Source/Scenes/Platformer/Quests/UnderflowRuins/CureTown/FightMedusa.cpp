@@ -124,7 +124,7 @@ void FightMedusa::runCinematicSequencePart1()
 		{
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->medusa, true));
 		},
-		"",
+		SoundResources::Platformer_Entities_Serpent_Hiss1,
 		false
 	));
 }

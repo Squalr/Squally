@@ -177,6 +177,7 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Pig_PigGrunt2;
 	extern const std::string Platformer_Entities_Pig_PigSqueal1;
 	extern const std::string Platformer_Entities_Pig_PigSqueelDeep1;
+	extern const std::string Platformer_Entities_Serpent_Hiss1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps2;
 	extern const std::string Platformer_Entities_Skeleton_SkeleDeath1;

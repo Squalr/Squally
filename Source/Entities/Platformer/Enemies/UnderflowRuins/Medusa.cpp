@@ -36,7 +36,7 @@ Medusa::~Medusa()
 
 Vec2 Medusa::getDialogueOffset()
 {
-	return Vec2(-32.0f, 0.0f);
+	return Vec2(-32.0f, -48.0f);
 }
 
 LocalizedString* Medusa::getEntityName()
