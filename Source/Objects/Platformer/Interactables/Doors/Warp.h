@@ -18,8 +18,7 @@ protected:
 	Warp(cocos2d::ValueMap& properties);
 	virtual ~Warp();
 	
-	void onEnter() override;
-	void initializePositions() override;
+	void update(float dt) override;
 	void initializeListeners() override;
 	void loadMap() override;
 
@@ -32,6 +31,8 @@ private:
 	std::string to;
 	bool warpCamera;
 	bool relayer;
+	float cooldown;
 
 	static const std::string EventWarpToPrefix;
+	static const float WarpCooldown;
 };

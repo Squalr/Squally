@@ -51,6 +51,7 @@ protected:
 	void scheduleEvery(std::function<void()> task, float seconds);
 
 	bool hackermodeEnabled;
+	bool disableHackerModeEvents;
 	
 private:
 	typedef cocos2d::Node super;

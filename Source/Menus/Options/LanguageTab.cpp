@@ -63,6 +63,18 @@ void LanguageTab::onEnter()
 void LanguageTab::initializeListeners()
 {
 	super::initializeListeners();
+
+	int buttonIndex = 0;
+
+	for (int index = (int)LanguageType::FIRST_LANGUAGE; index <= (int)LanguageType::LAST_LANGUAGE; index++, buttonIndex++)
+	{
+		LanguageType language = (LanguageType)index;
+
+		if (buttonIndex < int(this->languageButtons.size()))
+		{
+			this->languageButtons[buttonIndex]->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+		}
+	}
 }
 
 void LanguageTab::initializePositions()

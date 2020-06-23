@@ -27,6 +27,7 @@ const std::string Warp::PropertyWarpTo = "to";
 const std::string Warp::PropertyNoWarpCamera = "no-warp-camera";
 const std::string Warp::PropertyRelayer = "relayer";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
+const float Warp::WarpCooldown = 0.5f;
 
 Warp* Warp::create(ValueMap& properties)
 {
@@ -50,6 +51,7 @@ Warp::Warp(ValueMap& properties) : super(
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
 	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
 	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
+	this->cooldown = 0.0f;
 
 	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);
@@ -59,14 +61,19 @@ Warp::~Warp()
 {
 }
 
-void Warp::onEnter()
+void Warp::update(float dt)
 {
-	super::onEnter();
-}
+	super::update(dt);
 
-void Warp::initializePositions()
-{
-	super::initializePositions();
+	if (this->cooldown > 0.0f)
+	{
+		this->disable();
+		this->cooldown -= dt;
+	}
+	else
+	{
+		this->enable();
+	}
 }
 
 void Warp::initializeListeners()
@@ -80,6 +87,7 @@ void Warp::initializeListeners()
 			this->doRelayer();
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
+			this->cooldown = Warp::WarpCooldown;
 		}), Squally::MapKey);
 	});
 }
@@ -87,6 +95,8 @@ void Warp::initializeListeners()
 void Warp::loadMap()
 {
 	this->broadcastMapEvent(Warp::EventWarpToPrefix + this->to, ValueMap());
+
+	this->cooldown = Warp::WarpCooldown;
 }
 
 void Warp::doRelayer()

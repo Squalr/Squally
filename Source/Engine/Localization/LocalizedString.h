@@ -23,6 +23,7 @@ protected:
 	virtual ~LocalizedString();
 
 	void onEnter() override;
+	void initializeListeners() override;
 
 	void copyAttributesTo(LocalizedString* localizedString);
 	virtual std::string getStringByLanguage(cocos2d::LanguageType languageType) = 0;
@@ -36,5 +37,5 @@ private:
 	typedef SmartNode super;
 	friend class TypeWriterEffect; // I dont care if this is bad practice
 
-	bool runOnce;
+	void doStringUpdate();
 };
