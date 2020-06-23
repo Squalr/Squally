@@ -97,7 +97,7 @@
     <property name="save-key" value="SAVE_KEY_OR_PURPLE_1"/>
    </properties>
   </object>
-  <object id="897" name="medusa" type="entity" x="1605.7" y="1872.36" width="128" height="128">
+  <object id="897" name="mermaid" type="entity" x="1605.7" y="1872.36" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>

@@ -65,6 +65,16 @@ void EnemyCombatEngageBehavior::onLoad()
 
 		this->stopAllEntityActions();
 	}));
+
+	if (!this->enemy->getListenEvent().empty())
+	{
+		this->enemy->listenForMapEventOnce(this->enemy->getListenEvent(), [=](ValueMap)
+		{
+			PlatformerEvents::TriggerCinematicHijack();
+			this->engageEnemy(false);
+			this->stopAllEntityActions();
+		});
+	}
 }
 
 void EnemyCombatEngageBehavior::onDisable()

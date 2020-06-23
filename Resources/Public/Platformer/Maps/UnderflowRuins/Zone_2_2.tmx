@@ -95,7 +95,7 @@
   </object>
   <object id="953" name="poseidon" type="entity" x="900" y="976" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="poseidon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="poseidon,poseidon-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -217,7 +217,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1887.88"/>
+  <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1925.21"/>
   <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="1846.79"/>
  </objectgroup>
  <objectgroup id="22" name="decor">

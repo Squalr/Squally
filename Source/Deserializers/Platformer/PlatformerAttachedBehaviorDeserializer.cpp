@@ -134,11 +134,15 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 		ENTITIES / OVERWORLD
 	*********************/
 
-	// Endian forest
+	// EF
 	this->attachedBehaviorDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AraBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[CypressBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CypressBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[KingGroggBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)KingGroggBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[OrcBomberBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)OrcBomberBehaviorGroup::create(owner); };
+
+	// UR
+	this->attachedBehaviorDeserializers[PoseidonBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PoseidonBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RupertBehavior::create(owner); };
 
 	/*********************
 		COMBAT / IN-COMBAT

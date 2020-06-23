@@ -8,10 +8,8 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Enemies/EndianForest/KingGrogg.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -53,9 +51,6 @@ TalkToGrogg::~TalkToGrogg()
 
 void TalkToGrogg::onLoad(QuestState questState)
 {
-	// Ret-con to allow players to hack water stuff TODO: Delete after 4/x/2020
-	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
-
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
