@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/ObjectResources.h"
@@ -47,6 +48,20 @@ void Airship1::update(float dt)
 	super::update(dt);
 
 	const float Speed = 368.0f;
+	const float Multiplier = this->animations->getFlippedX() ? 1.0f : -1.0f;
+	const Rect MapBounds = GameCamera::getInstance()->getMapBounds();
+	const float Buffer = 4096.0f;
+	const float LeftWrap = MapBounds.origin.x - Buffer;
+	const float RightWrap = MapBounds.origin.x + MapBounds.size.width + Buffer;
 
-	this->animations->setPositionX(this->animations->getPositionX() + (this->animations->getFlippedX() ? Speed : -Speed) * dt);
+	this->setPositionX(this->getPositionX() + Multiplier * Speed * dt);
+
+	if (Multiplier < 0.0f && this->getPositionX() < LeftWrap)
+	{
+		this->setPositionX(RightWrap);
+	}
+	else if (Multiplier > 0.0f && this->getPositionX() > RightWrap)
+	{
+		this->setPositionX(LeftWrap);
+	}
 }

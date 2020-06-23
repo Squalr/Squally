@@ -133,7 +133,7 @@ void GameCamera::initializeListeners()
 			Size visibleSize = Director::getInstance()->getVisibleSize();
 
 			this->unscheduleUpdate();
-			this->setBounds(Rect(Vec2::ZERO, visibleSize));
+			this->setMapBounds(Rect(Vec2::ZERO, visibleSize));
 			this->resetCamera();
 			this->clearTargets();
 		}
@@ -326,14 +326,14 @@ void GameCamera::setCameraPosition3(Vec3 position, bool addTrackOffset)
 	}
 }
 
-Rect GameCamera::getBounds()
+Rect GameCamera::getMapBounds()
 {
 	return this->mapBounds;
 }
 
-void GameCamera::setBounds(Rect bounds)
+void GameCamera::setMapBounds(Rect mapBounds)
 {
-	this->mapBounds = bounds;
+	this->mapBounds = mapBounds;
 }
 
 void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float duration)

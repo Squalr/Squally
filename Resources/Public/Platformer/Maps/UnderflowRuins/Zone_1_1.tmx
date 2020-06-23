@@ -540,13 +540,13 @@
   </properties>
   <object id="915" name="water" type="object" x="367.655" y="1804.6" width="5142.75" height="1693.35"/>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

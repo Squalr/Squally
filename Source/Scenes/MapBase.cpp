@@ -104,7 +104,7 @@ void MapBase::onEnter()
 
 	if (this->map != nullptr)
 	{
-		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+		GameCamera::getInstance()->setMapBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
 }
 
@@ -232,7 +232,7 @@ bool MapBase::loadMap(std::string mapResource)
 	if (this->map != nullptr)
 	{
 		this->mapNode->addChild(this->map);
-		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+		GameCamera::getInstance()->setMapBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 
 		return true;
 	}

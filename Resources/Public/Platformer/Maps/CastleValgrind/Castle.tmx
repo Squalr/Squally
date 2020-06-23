@@ -279,7 +279,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup name="decor 256">
+ <objectgroup name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -287,7 +287,7 @@
   <object id="491" name="Crypts/Foreground/Spear3" type="decor" x="1549.72" y="3618" width="510" height="558"/>
   <object id="496" name="Crypts/Foreground/Spear3" type="decor" x="2057.42" y="3646.82" width="510" height="558"/>
  </objectgroup>
- <objectgroup name="decor 512">
+ <objectgroup name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

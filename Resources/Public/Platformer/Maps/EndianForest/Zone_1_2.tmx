@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="783">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="785">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -11,30 +11,6 @@
    <property name="rubber-band" type="int" value="1"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
-  </properties>
- </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="15" name="WaterfallRocks">
@@ -49,7 +25,25 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="78" name="ship left">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="783" name="airship-2" type="object" x="-5536" y="1040" width="256" height="256">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="79" name="ship right">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="784" name="airship-1" type="object" x="16864" y="1968" width="256" height="256"/>
+ </objectgroup>
+ <objectgroup id="16" name="WaterfallGround" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -285,7 +279,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -298,7 +292,7 @@
   <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="6120.21" y="2927.24" width="242" height="738"/>
   <object id="760" name="Forest/Foreground/ForegroundTree2" type="decor" x="6961" y="3010" width="270" height="748"/>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

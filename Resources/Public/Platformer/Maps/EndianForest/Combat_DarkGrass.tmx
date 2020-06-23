@@ -193,7 +193,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="27" name="decor 256">
+ <objectgroup id="27" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -211,7 +211,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="28" name="decor 512">
+ <objectgroup id="28" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

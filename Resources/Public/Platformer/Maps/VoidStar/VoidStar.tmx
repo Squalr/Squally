@@ -210,7 +210,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup name="decor 256">
+ <objectgroup name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -221,7 +221,7 @@
   <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="5282" y="2448" width="270" height="748"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3118" y="2380" width="242" height="738"/>
  </objectgroup>
- <objectgroup name="decor 512">
+ <objectgroup name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
