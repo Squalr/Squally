@@ -300,7 +300,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="807" name="orc-bomber" type="entity" x="5736" y="1928" width="128" height="128">
+  <object id="807" name="ogre" type="entity" x="5736" y="1928" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value="ram-weakened"/>
