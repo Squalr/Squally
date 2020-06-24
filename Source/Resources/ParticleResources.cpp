@@ -58,6 +58,7 @@ const std::string ParticleResources::Hover = "Public/Particles/Hover.plist";
 const std::string ParticleResources::ItemGlow = "Public/Particles/ItemGlow.plist";
 const std::string ParticleResources::MindBlast = "Public/Particles/MindBlast.plist";
 const std::string ParticleResources::Objects_MagicWall = "Public/Particles/Objects/MagicWall.plist";
+const std::string ParticleResources::Objects_ManaOrb = "Public/Particles/Objects/ManaOrb.plist";
 const std::string ParticleResources::Objects_Smoke = "Public/Particles/Objects/Smoke.plist";
 const std::string ParticleResources::Objects_StatueBreak = "Public/Particles/Objects/StatueBreak.plist";
 const std::string ParticleResources::Objects_VaseBreak = "Public/Particles/Objects/VaseBreak.plist";

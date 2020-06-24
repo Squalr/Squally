@@ -94,6 +94,8 @@ Vec2 BreakableCage::getButtonOffset()
 
 void BreakableCage::onBreak()
 {
+	super::onBreak();
+	
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	this->cageBottom->setPhysicsEnabled(true);
 	this->cage->setPhysicsEnabled(true);

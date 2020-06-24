@@ -14,6 +14,8 @@
 #include "Objects/Platformer/Cinematic/Sarcophagus/Sarcophagus.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/IOUDrop.h"
+#include "Objects/Platformer/Collectables/ManaOrb.h"
+#include "Objects/Platformer/Collectables/SpawnPools/SpawnPoolEF.h"
 #include "Objects/Platformer/Decor/FireplaceFire.h"
 #include "Objects/Platformer/Decor/MagicWall.h"
 #include "Objects/Platformer/Decor/Torch.h"

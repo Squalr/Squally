@@ -59,6 +59,7 @@ namespace ParticleResources
 	extern const std::string ItemGlow;
 	extern const std::string MindBlast;
 	extern const std::string Objects_MagicWall;
+	extern const std::string Objects_ManaOrb;
 	extern const std::string Objects_Smoke;
 	extern const std::string Objects_StatueBreak;
 	extern const std::string Objects_VaseBreak;

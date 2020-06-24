@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="944">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="945">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -188,6 +188,7 @@
   <object id="933" name="vase" type="object" x="8460.35" y="1974.42" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
  </objectgroup>
@@ -226,6 +227,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="944" name="spawn" type="object" x="7815.88" y="1127.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit-A"/>
    </properties>
   </object>
  </objectgroup>
@@ -368,11 +374,6 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="end"/>
-   </properties>
-  </object>
-  <object id="940" name="spawn" type="object" x="7815.88" y="1127.82" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit-A"/>
    </properties>
   </object>
   <object id="941" name="spawn" type="object" x="320.364" y="3644.97" width="128" height="128">

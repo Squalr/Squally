@@ -32,6 +32,11 @@ std::string ObjectDeserializer::getObjectType()
 	return this->objectType;
 }
 
+void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs args)
+{
+	this->deserialize(&args);
+}
+
 void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;

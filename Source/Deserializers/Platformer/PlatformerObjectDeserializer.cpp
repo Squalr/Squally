@@ -133,6 +133,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[LogicTorch::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicTorch::create(properties); };
+	this->deserializers[ManaOrb::MapKey] = [=](ValueMap properties) { return (GameObject*)ManaOrb::create(properties); };
 	this->deserializers[MagePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)MagePortal::create(properties); };
 	this->deserializers[MagicWall::MapKey] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };
 	this->deserializers[MayanDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)MayanDoor::create(properties); };
@@ -155,6 +156,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[ShopPoolGriffin::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGriffin::create(properties); };
 	this->deserializers[ShopPoolGeryon::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGeryon::create(properties); };
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
+	this->deserializers[SpawnPoolEF::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolEF::create(properties); };
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };
 	this->deserializers[SpikedLog::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedLog::create(properties); };
 	this->deserializers[SquallyShip::MapKey] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };

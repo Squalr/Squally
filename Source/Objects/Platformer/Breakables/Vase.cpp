@@ -114,6 +114,8 @@ Vec2 Vase::getButtonOffset()
 
 void Vase::onBreak()
 {
+	super::onBreak();
+	
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	this->vase->setVisible(false);
 	this->vaseBroken->setPhysicsEnabled(true);

@@ -36,6 +36,7 @@ public:
 		}
 	};
 
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs args);
 	virtual void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 	std::string getObjectType();
 
