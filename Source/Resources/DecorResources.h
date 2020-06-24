@@ -653,7 +653,6 @@ namespace DecorResources
 	extern const std::string Generic_birds;
 	extern const std::string Ruins_ArchDoor1;
 	extern const std::string Ruins_ArchDoorGray1;
-	extern const std::string Ruins_Background_CombatGround;
 	extern const std::string Ruins_Background_DesertLayer0;
 	extern const std::string Ruins_Background_DesertLayer1;
 	extern const std::string Ruins_Background_DesertLayer2;
@@ -666,7 +665,8 @@ namespace DecorResources
 	extern const std::string Ruins_Pillar2;
 	extern const std::string Ruins_Pyramid;
 	extern const std::string Ruins_PyramidRamp;
-	extern const std::string Ruins_Sphynx;
+	extern const std::string Ruins_ScarabDoor;
+	extern const std::string Ruins_ScarabDoorBroken;
 	extern const std::string Ruins_StoneGateLeft;
 	extern const std::string Ruins_StoneGateRight;
 	extern const std::string Ruins_Walls1;

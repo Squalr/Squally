@@ -176,7 +176,7 @@ void ManaDrain::runManaDrain()
 			{
 				if (!this->healEffect->isPlayingAnimation())
 				{
-					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+					this->healEffect->playAnimation(FXResources::HealMP_Heal_0000, 0.05f);
 				}
 				
 				this->runRestoreTick();

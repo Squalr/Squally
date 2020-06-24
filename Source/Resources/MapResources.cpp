@@ -11,6 +11,7 @@ const std::string MapResources::CastleValgrind_Castle = "Public/Platformer/Maps/
 const std::string MapResources::CastleValgrind_Mages_Warp = "Public/Platformer/Maps/CastleValgrind/Mages_Warp.tmx";
 const std::string MapResources::DaemonsHallow_Mages_Warp = "Public/Platformer/Maps/DaemonsHallow/Mages_Warp.tmx";
 const std::string MapResources::DaemonsHallow_Volcano = "Public/Platformer/Maps/DaemonsHallow/Volcano.tmx";
+const std::string MapResources::DataMines_Combat_Caves = "Public/Platformer/Maps/DataMines/Combat_Caves.tmx";
 const std::string MapResources::DataMines_Mages_Warp = "Public/Platformer/Maps/DataMines/Mages_Warp.tmx";
 const std::string MapResources::DataMines_Zone_1_0 = "Public/Platformer/Maps/DataMines/Zone_1_0.tmx";
 const std::string MapResources::DataMines_Zone_1_4 = "Public/Platformer/Maps/DataMines/Zone_1_4.tmx";

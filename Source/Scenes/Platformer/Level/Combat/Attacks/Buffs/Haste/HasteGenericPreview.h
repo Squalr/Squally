@@ -20,6 +20,4 @@ protected:
 
 private:
 	typedef HackablePreview super;
-
-	SmartAnimationSequenceNode* healEffect;
 };

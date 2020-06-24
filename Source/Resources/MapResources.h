@@ -12,6 +12,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Mages_Warp;
 	extern const std::string DaemonsHallow_Mages_Warp;
 	extern const std::string DaemonsHallow_Volcano;
+	extern const std::string DataMines_Combat_Caves;
 	extern const std::string DataMines_Mages_Warp;
 	extern const std::string DataMines_Zone_1_0;
 	extern const std::string DataMines_Zone_1_4;

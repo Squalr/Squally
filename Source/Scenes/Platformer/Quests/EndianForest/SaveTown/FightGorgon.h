@@ -6,6 +6,7 @@ class Gorgon;
 class Ram;
 class QuestLine;
 class Sarude;
+class Sound;
 class Squally;
 class SmartAnimationSequenceNode;
 class WorldSound;
@@ -52,6 +53,7 @@ private:
 	WorldSound* reboundSoundShield;
 	WorldSound* reboundSoundShieldLite;
 	WorldSound* reboundSoundSword;
+	Sound* impactSound;
 
 	static const std::string ForceFieldTag;
 	static const std::string MarkerTagBack;

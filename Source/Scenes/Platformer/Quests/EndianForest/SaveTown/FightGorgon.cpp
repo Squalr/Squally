@@ -72,6 +72,7 @@ FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner,
 	this->reboundSoundShield = WorldSound::create(SoundResources::Platformer_Defense_Rebound3);
 	this->reboundSoundSword = WorldSound::create(SoundResources::Platformer_Defense_Rebound1);
 	this->reboundSoundShieldLite = WorldSound::create(SoundResources::Platformer_Defense_Rebound2);
+	this->impactSound = Sound::create(SoundResources::Platformer_Objects_Misc_BowlingStrike1);
 
 	this->addChild(this->shieldImpact);
 	this->addChild(this->swordImpact);
@@ -81,6 +82,7 @@ FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner,
 	this->addChild(this->reboundSoundShield);
 	this->addChild(this->reboundSoundSword);
 	this->addChild(this->reboundSoundShieldLite);
+	this->addChild(this->impactSound);
 }
 
 FightGorgon::~FightGorgon()
@@ -268,6 +270,8 @@ void FightGorgon::killRammedEnemies()
 			});
 		}
 	}), PlatformerEnemy::PlatformerEnemyTag);
+
+	this->impactSound->play();
 }
 
 void FightGorgon::flickerOutForceField()

@@ -10269,6 +10269,111 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_CommentFloatPt4() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_CommentSeeLexicon : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_CommentSeeLexicon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_CommentSeeLexicon();
+		virtual ~Menus_Hacking_Abilities_Generic_CommentSeeLexicon() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Common_CommentDword : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Common_CommentDword* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Common_CommentDword();
+		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentDword() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Common_CommentPtr : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Common_CommentPtr* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Common_CommentPtr();
+		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentPtr() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon();
+		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Common_CommentQword : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Common_CommentQword* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Common_CommentQword();
+		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentQword() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Vector_CommentMovss1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Vector_CommentMovss1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Vector_CommentMovss1();
+		virtual ~Menus_Hacking_Abilities_Generic_Vector_CommentMovss1() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Vector_CommentMovss2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Vector_CommentMovss2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Vector_CommentMovss2();
+		virtual ~Menus_Hacking_Abilities_Generic_Vector_CommentMovss2() = default;
+	};
+
 	class Menus_Hacking_Abilities_Squally_IsAlive : public LocalizedString
 	{
 	public:

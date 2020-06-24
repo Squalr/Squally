@@ -20,9 +20,6 @@ StrengthGenericPreview* StrengthGenericPreview::create()
 
 StrengthGenericPreview::StrengthGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 StrengthGenericPreview::~StrengthGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* StrengthGenericPreview::clone()
 void StrengthGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void StrengthGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }
