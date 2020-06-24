@@ -127,6 +127,7 @@
   <object id="902" name="vase" type="object" x="1998.05" y="662.424" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="912" name="temple-door" type="object" x="1975.27" y="1384.74" width="432" height="528">
@@ -158,17 +159,20 @@
   <object id="903" name="vase" type="object" x="976.833" y="653.333" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="909" name="breakable-cage" type="object" x="1754.73" y="1795.51" width="196" height="112"/>
   <object id="910" name="vase" type="object" x="2595.02" y="1750.3" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="911" name="vase" type="object" x="361.682" y="1747.27" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
  </objectgroup>

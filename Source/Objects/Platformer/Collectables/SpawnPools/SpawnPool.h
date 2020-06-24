@@ -15,11 +15,22 @@ public:
 	static const std::string SaveKeySpawnCollected;
 
 protected:
+	struct SpawnObjectEvent
+	{
+		float probability;
+		std::function<Collectable*()> spawnFunc;
+
+		SpawnObjectEvent(float probability, std::function<Collectable*()> spawnFunc) : probability(probability), spawnFunc(spawnFunc) { }
+	};
+
 	SpawnPool(cocos2d::ValueMap& properties);
 	virtual ~SpawnPool();
 
 	void onEnter() override;
-	virtual Collectable* spawnCollectable() = 0;
+	Collectable* spawnCollectable();
+	void addSpawnEvent(SpawnObjectEvent spawnEvent);
+
+	std::vector<SpawnObjectEvent> spawnEvents;
 
 private:
 	typedef GameObject super;

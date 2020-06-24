@@ -118,16 +118,19 @@
   <object id="997" name="vase" type="object" x="880.834" y="1493.91" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="998" name="vase" type="object" x="1337.28" y="1496.03" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="1001" name="vase" type="object" x="3028.35" y="2010.91" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
  </objectgroup>

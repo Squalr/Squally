@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1151">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1155">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -72,6 +72,12 @@
     <property name="color" value="purple"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1153" name="vase" type="object" x="2330.5" y="2679" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
  </objectgroup>
@@ -225,6 +231,18 @@
   <object id="1132" name="solid" type="collision" x="1245.65" y="1350.02" width="126.878" height="1587.85"/>
   <object id="1137" name="solid" type="collision" x="566.864" y="-210.59" width="126.878" height="1821.18"/>
   <object id="1150" name="life-stone" type="object" x="1557" y="924.5" width="146" height="423"/>
+  <object id="1151" name="vase" type="object" x="1876.83" y="2771.52" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1152" name="vase" type="object" x="2264.02" y="2771.39" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>
@@ -397,6 +415,7 @@
   <object id="960" name="vase" type="object" x="3922.53" y="1241.88" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="1084" name="edge-portal" type="object" x="4407.04" y="915.999" width="199.918" height="488.002">
@@ -414,6 +433,12 @@
   </object>
   <object id="1108" name="solid" type="collision" x="2584.23" y="1437.74" width="873.545" height="100.513"/>
   <object id="1136" name="solid" type="collision" x="554.743" y="-149.984" width="126.878" height="1821.18"/>
+  <object id="1154" name="vase" type="object" x="1143.5" y="1245.33" width="113" height="160">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>

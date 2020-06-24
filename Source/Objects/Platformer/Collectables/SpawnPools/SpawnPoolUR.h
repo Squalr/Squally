@@ -2,16 +2,16 @@
 
 #include "Objects/Platformer/Collectables/SpawnPools/SpawnPool.h"
 
-class SpawnPoolEF : public SpawnPool
+class SpawnPoolUR : public SpawnPool
 {
 public:
-	static SpawnPoolEF* create(cocos2d::ValueMap& properties);
+	static SpawnPoolUR* create(cocos2d::ValueMap& properties);
 	
 	static const std::string MapKey;
 
 protected:
-	SpawnPoolEF(cocos2d::ValueMap& properties);
-	virtual ~SpawnPoolEF();
+	SpawnPoolUR(cocos2d::ValueMap& properties);
+	virtual ~SpawnPoolUR();
 
 private:
 	typedef SpawnPool super;

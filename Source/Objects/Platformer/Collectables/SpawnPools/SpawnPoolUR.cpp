@@ -1,4 +1,4 @@
-#include "SpawnPoolEF.h"
+#include "SpawnPoolUR.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -7,18 +7,18 @@
 
 using namespace cocos2d;
 
-const std::string SpawnPoolEF::MapKey = "spawn-pool-ef";
+const std::string SpawnPoolUR::MapKey = "spawn-pool-ur";
 
-SpawnPoolEF* SpawnPoolEF::create(ValueMap& properties)
+SpawnPoolUR* SpawnPoolUR::create(ValueMap& properties)
 {
-	SpawnPoolEF* instance = new SpawnPoolEF(properties);
+	SpawnPoolUR* instance = new SpawnPoolUR(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpawnPoolEF::SpawnPoolEF(ValueMap& properties) : super(properties)
+SpawnPoolUR::SpawnPoolUR(ValueMap& properties) : super(properties)
 {
 	this->addSpawnEvent(SpawnObjectEvent(0.35f, [=]()
 	{
@@ -33,6 +33,6 @@ SpawnPoolEF::SpawnPoolEF(ValueMap& properties) : super(properties)
 	}));
 }
 
-SpawnPoolEF::~SpawnPoolEF()
+SpawnPoolUR::~SpawnPoolUR()
 {
 }

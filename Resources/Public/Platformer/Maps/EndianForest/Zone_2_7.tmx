@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="981">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="982">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -76,12 +76,19 @@
   <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="979" name="help-totem-potions" type="object" x="1048.73" y="1924.48" width="248" height="248"/>
   <object id="980" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
    <properties>
     <property name="send-event" value="talk-to-grogg"/>
+   </properties>
+  </object>
+  <object id="981" name="vase" type="object" x="116.712" y="2009.7" width="113" height="160">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
  </objectgroup>

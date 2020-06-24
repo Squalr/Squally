@@ -31,7 +31,7 @@ ManaOrb* ManaOrb::create(ValueMap& properties)
 
 ManaOrb::ManaOrb(ValueMap& properties) : super(properties)
 {
-	this->collectSound = WorldSound::create(SoundResources::Notifications_NotificationPop1);
+	this->collectSound = WorldSound::create(SoundResources::Notifications_NotificationShine1);
 	this->manaOrb = SmartParticles::create(ParticleResources::Objects_ManaOrb);
 
 	this->collectableNode->addChild(this->manaOrb);
@@ -60,7 +60,7 @@ void ManaOrb::initializeListeners()
 		{
 			squally->watchForAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 			{
-				manaBehavior->setMana(manaBehavior->getMana() + 1);
+				manaBehavior->setMana(manaBehavior->getMana() + 2);
 			});
 		}, Squally::MapKey);
 

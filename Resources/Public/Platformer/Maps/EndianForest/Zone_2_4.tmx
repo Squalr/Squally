@@ -90,26 +90,31 @@
   <object id="1020" name="vase" type="object" x="5887.5" y="4692" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1021" name="vase" type="object" x="5771.5" y="4692" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1023" name="vase" type="object" x="3080.83" y="4544" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1024" name="vase" type="object" x="3196.83" y="4545.33" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1025" name="vase" type="object" x="845.5" y="4560" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
  </objectgroup>
@@ -477,16 +482,19 @@
   <object id="982" name="vase" type="object" x="1372.5" y="4792.5" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="983" name="vase" type="object" x="3468.83" y="4789.33" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="986" name="vase" type="object" x="5821.98" y="4788" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1030" name="solid-npc" type="collision" x="3118.27" y="1065.63" width="121.03" height="777.836"/>
@@ -535,26 +543,31 @@
   <object id="987" name="vase" type="object" x="4288.5" y="1518" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="988" name="vase" type="object" x="4428.5" y="1518" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1016" name="vase" type="object" x="5084.47" y="3424.61" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1017" name="vase" type="object" x="4587.44" y="4064" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1022" name="vase" type="object" x="865.5" y="954" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
  </objectgroup>

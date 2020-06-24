@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1178">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1182">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -50,9 +50,15 @@
   </properties>
   <object id="1152" name="solid" type="collision" x="2270.99" y="-61.2567" width="126.878" height="1405.18"/>
   <object id="1153" name="solid" type="collision" x="3428.56" y="-24.287" width="126.878" height="1365.18"/>
-  <object id="1176" name="chest" type="object" x="2845.82" y="1208.42" width="128" height="128">
+  <object id="1176" name="chest" type="object" x="2775.15" y="1208.42" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1181" name="vase" type="object" x="2954.83" y="1176" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
  </objectgroup>
@@ -384,6 +390,24 @@
    </properties>
   </object>
   <object id="1174" name="life-stone" type="object" x="2203" y="2468.5" width="146" height="423"/>
+  <object id="1178" name="vase" type="object" x="895.5" y="2720" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1179" name="vase" type="object" x="1048.83" y="2720" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1180" name="vase" type="object" x="2485.5" y="1406" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="player_layer +3">
   <properties>

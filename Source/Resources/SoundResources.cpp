@@ -64,6 +64,7 @@ const std::string SoundResources::Notifications_NotificationGood2 = "Private/Sou
 const std::string SoundResources::Notifications_NotificationGood3 = "Private/Sounds/Notifications/NotificationGood3.mp3";
 const std::string SoundResources::Notifications_NotificationPop1 = "Private/Sounds/Notifications/NotificationPop1.mp3";
 const std::string SoundResources::Notifications_NotificationPop2 = "Private/Sounds/Notifications/NotificationPop2.mp3";
+const std::string SoundResources::Notifications_NotificationShine1 = "Private/Sounds/Notifications/NotificationShine1.mp3";
 const std::string SoundResources::Notifications_Reveal1 = "Private/Sounds/Notifications/Reveal1.mp3";
 const std::string SoundResources::Platformer_Combat_CombatEngage1 = "Private/Sounds/Platformer/Combat/CombatEngage1.mp3";
 const std::string SoundResources::Platformer_Combat_Defeat = "Private/Sounds/Platformer/Combat/Defeat.mp3";

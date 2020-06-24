@@ -278,7 +278,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg" visible="0">
+ <objectgroup id="58" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -303,7 +303,7 @@
   <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340"/>
   <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -331,6 +331,7 @@
   <object id="960" name="vase" type="object" x="5202.53" y="1241.88" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="1083" name="edge-portal" type="object" x="-0.292333" y="915.332" width="199.918" height="488.002">

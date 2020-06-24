@@ -120,6 +120,9 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[LogicGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicGate::create(properties); };
 	this->deserializers[EdgeLanternGate::MapKey] = [=](ValueMap properties) { return (GameObject*)EdgeLanternGate::create(properties); };
 	this->deserializers[IOUDrop::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop::create(properties); };
+	this->deserializers[IOUDrop5::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop5::create(properties); };
+	this->deserializers[IOUDrop10::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop10::create(properties); };
+	this->deserializers[IOUDrop25::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop25::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEndOfDemo::create(properties); };
 	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEquipment::create(properties); };
@@ -157,6 +160,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[ShopPoolGeryon::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGeryon::create(properties); };
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
 	this->deserializers[SpawnPoolEF::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolEF::create(properties); };
+	this->deserializers[SpawnPoolUR::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolUR::create(properties); };
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };
 	this->deserializers[SpikedLog::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedLog::create(properties); };
 	this->deserializers[SquallyShip::MapKey] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };

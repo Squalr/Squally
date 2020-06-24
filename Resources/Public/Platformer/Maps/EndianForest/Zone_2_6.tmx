@@ -70,6 +70,7 @@
   <object id="1123" name="vase" type="object" x="4142.65" y="4054.06" width="113" height="160">
    <properties>
     <property name="color" value="green"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1129" name="wind" type="object" x="4818" y="4236" width="380" height="480">
@@ -189,7 +190,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="terrain -0" visible="0">
+ <objectgroup id="74" name="terrain -0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -414,36 +415,43 @@
   <object id="1052" name="vase" type="object" x="3739.5" y="5296" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1053" name="vase" type="object" x="239.5" y="5300" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1054" name="vase" type="object" x="4203.5" y="2904" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1055" name="vase" type="object" x="4711.5" y="2908" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1057" name="vase" type="object" x="1051.5" y="3956" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1058" name="vase" type="object" x="1235.5" y="3956" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1059" name="vase" type="object" x="6003.5" y="1324" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="1062" name="life-stone" type="object" x="4821" y="1056.5" width="146" height="423"/>
