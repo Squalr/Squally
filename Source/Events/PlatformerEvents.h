@@ -18,6 +18,7 @@ class Recipe;
 class PlatformerEvents
 {
 public:
+	static const std::string EventSquallySpawned;
 	static const std::string EventSpawnToTransitionLocation;
 	static const std::string EventWarpToLocationPrefix;
 	static const std::string EventWarpToObjectIdPrefix;
@@ -220,6 +221,7 @@ public:
 		SaveRespawnArgs(std::string objectIdentifier) : objectIdentifier(objectIdentifier) { }
 	};
 
+	static void TriggerSquallySpawned();
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpObjectToLocation(WarpObjectToLocationArgs args);
 	static void TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args);

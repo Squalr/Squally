@@ -132,6 +132,7 @@
    <property name="depth" type="float" value="-640"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
   </properties>
   <object id="1012" name="warp" type="object" x="4808.33" y="2334" width="256" height="256">
    <properties>
@@ -280,6 +281,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
   </properties>
   <object id="978" name="warp" type="object" x="6002.3" y="5538.67" width="256" height="256">
    <properties>

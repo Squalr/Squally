@@ -206,6 +206,8 @@ void SquallyMovementBehavior::loadSquallyPosition()
 			{
 				GameUtils::changeParent(this->squally, mapLayer, true);
 			}), layerId);
+
+			PlatformerEvents::TriggerSquallySpawned();
 		});
 	}
 }
