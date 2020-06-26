@@ -8,7 +8,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 
 #include "Resources/UIResources.h"
 
@@ -41,9 +41,9 @@ EntityNoGravityBehavior::~EntityNoGravityBehavior()
 
 void EntityNoGravityBehavior::onLoad()
 {
-	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
-		behavior->movementCollision->setGravity(Vec2::ZERO);
+		behavior->entityCollision->setGravity(Vec2::ZERO);
 	});
 }
 

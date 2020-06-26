@@ -62,13 +62,11 @@ PlatformerEntity::PlatformerEntity(
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->controlStateOverride = ControlState::None;
-	this->movementSize = this->entitySize + Size(0.0f, this->hoverHeight);
 
-	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
+	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->entitySize.height);
 
 	this->animationNode->setScale(this->entityScale);
 	this->animationNode->playAnimation();
-	this->animationNode->setPositionY(this->hoverHeight / 2.0f);
 	
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -174,11 +172,6 @@ Size PlatformerEntity::getEntitySize()
 	return this->entitySize;
 }
 
-Size PlatformerEntity::getMovementSize()
-{
-	return this->movementSize;
-}
-
 Vec2 PlatformerEntity::getCollisionOffset()
 {
 	return this->entityCollisionOffset;
@@ -190,11 +183,11 @@ Vec2 PlatformerEntity::getEntityCenterPoint()
 
 	if (this->isFlippedY())
 	{
-		offset = Vec2(offset.x, -offset.y) - Vec2(0.0f, this->getMovementSize().height / 2.0f);
+		offset = Vec2(offset.x, -offset.y) - Vec2(0.0f, this->getEntitySize().height / 2.0f);
 	}
 	else
 	{
-		offset = offset + Vec2(0.0f, this->getMovementSize().height / 2.0f);
+		offset = offset + Vec2(0.0f, this->getEntitySize().height / 2.0f);
 	}
 
 	return offset;
@@ -222,11 +215,11 @@ Vec2 PlatformerEntity::getEntityBottomPoint()
 
 	if (this->isFlippedY())
 	{
-		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f + this->getHoverHeight());
+		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f);
 	}
 	else
 	{
-		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f - this->getHoverHeight());
+		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f);
 	}
 
 	return offset;

@@ -2,7 +2,6 @@
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
@@ -30,22 +29,31 @@ void EnemyCollisionBehavior::onLoad()
 {
     super::onLoad();
 
-	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
-		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::DoNothing;
-		});
+		if (collisionBehavior->leftCollision != nullptr)
+		{
+			collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::DoNothing;
+			});
+		}
 
-		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::DoNothing;
-		});
+		if (collisionBehavior->rightCollision != nullptr)
+		{
+			collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::DoNothing;
+			});
+		}
 
-		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
-		{	
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		});
+		if (collisionBehavior->entityCollision != nullptr)
+		{
+			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			{	
+				return CollisionObject::CollisionResult::CollideWithPhysics;
+			});
+		}
 	});
 }
 

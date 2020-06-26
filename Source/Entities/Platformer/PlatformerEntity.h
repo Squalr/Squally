@@ -27,7 +27,6 @@ public:
 	cocos2d::Node* getFloatNode();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
-	cocos2d::Size getMovementSize();
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
 	cocos2d::Vec2 getEntityTopPoint();
@@ -86,7 +85,6 @@ private:
 	float entityScale;
 	cocos2d::Vec2 entityCollisionOffset;
 	cocos2d::Size entitySize;
-	cocos2d::Size movementSize;
 	float hoverHeight;
 	std::string entityName;
 	std::string animationResource;

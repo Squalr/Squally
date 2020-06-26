@@ -2,7 +2,7 @@
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
@@ -18,7 +18,7 @@ FriendlyCollisionBehavior* FriendlyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::FriendlyNpc)
+FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Entity)
 {
 }
 
@@ -30,7 +30,7 @@ void FriendlyCollisionBehavior::onLoad()
 {
     super::onLoad();
 
-	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
 		if (collisionBehavior->leftCollision != nullptr)
 		{
@@ -48,9 +48,9 @@ void FriendlyCollisionBehavior::onLoad()
 			});
 		}
 
-		if (collisionBehavior->movementCollision != nullptr)
+		if (collisionBehavior->entityCollision != nullptr)
 		{
-			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
 			{	
 				return CollisionObject::CollisionResult::CollideWithPhysics;
 			});

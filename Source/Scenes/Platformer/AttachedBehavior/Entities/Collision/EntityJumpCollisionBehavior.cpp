@@ -71,9 +71,9 @@ bool EntityJumpCollisionBehavior::canJump()
 
 	for (auto collision : this->jumpCollision->getCurrentCollisions())
 	{
-		if (collision->getCollisionType() == (int)PlatformerCollisionType::Solid
-			|| collision->getCollisionType() == (int)PlatformerCollisionType::Physics
-			|| collision->getCollisionType() == (int)PlatformerCollisionType::PassThrough)
+		if (collision->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
+			|| collision->hasCollisionType(CollisionType(PlatformerCollisionType::Physics))
+			|| collision->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough)))
 		{
 			return true;	
 		}
@@ -97,9 +97,9 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 		CollisionObject::Properties(false, false),
 		Color4F::YELLOW
 	);
-
+	
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
+	Vec2 offset = collisionOffset + Vec2(0.0f, /*-this->entity->getHoverHeight() / 2.0f + */ EntityJumpCollisionBehavior::JumpCollisionOffset);
 
 	this->jumpCollision->setPosition(offset);
 	

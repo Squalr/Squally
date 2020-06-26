@@ -57,6 +57,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	super(properties)
 {
 	this->collisionType = collisionType;
+	this->collisionTypes = std::vector<CollisionType>();
 	this->points = points;
 	this->pointsRotated = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
@@ -90,6 +91,14 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->cachedTick = 0;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
 	this->universeId = CollisionObject::UniverseId;
+
+	for (int shift = 0; shift <= sizeof(int) * 8; shift++)
+	{
+		if ((1 << shift) & this->collisionType)
+		{
+			this->collisionTypes.push_back(1 << shift);
+		}
+	}
 }
 
 CollisionObject::~CollisionObject()
@@ -335,6 +344,11 @@ CollisionType CollisionObject::getCollisionType()
 	return this->collisionType;
 }
 
+bool CollisionObject::hasCollisionType(CollisionType collisionType)
+{
+	return (this->collisionType & int(collisionType)) != 0;
+}
+
 const std::set<CollisionObject*>& CollisionObject::getCurrentCollisions()
 {
 	return *this->currentCollisions;
@@ -354,7 +368,7 @@ bool CollisionObject::isCollidingWithType(int collisionType)
 {
 	for (auto next : *this->currentCollisions)
 	{
-		if (next->getCollisionType() == collisionType)
+		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
 			return true;
 		}
@@ -367,7 +381,7 @@ bool CollisionObject::wasCollidingWithType(int collisionType)
 {
 	for (auto next : *this->previousCollisions)
 	{
-		if (next->getCollisionType() == collisionType)
+		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
 			return true;
 		}
@@ -619,6 +633,9 @@ void CollisionObject::drawDebugShapes()
 
 void CollisionObject::drawDebugConnectors()
 {
+	// This function isn't quite right, so I'm just leaving it disabled. It seems to be 50/50 in drawing correctly, or dead wrong.
+	return;
+
 	if (this->debugDrawNodeConnectors == nullptr || DeveloperModeController::getDebugLevel() <= 0)
 	{
 		return;
@@ -672,7 +689,10 @@ void CollisionObject::RegisterCollisionObject(CollisionObject* collisionObject)
 		return;
 	}
 
-	CollisionObject::CollisionObjects[collisionObject->collisionType].push_back(collisionObject);
+	for (auto next : collisionObject->collisionTypes)
+	{
+		CollisionObject::CollisionObjects[next].push_back(collisionObject);
+	}
 }
 
 void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject)
@@ -682,11 +702,14 @@ void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject
 		return;
 	}
 
-	CollisionObject::CollisionObjects[collisionObject->collisionType].erase(
-		std::remove(
-			CollisionObject::CollisionObjects[collisionObject->collisionType].begin(),
-			CollisionObject::CollisionObjects[collisionObject->collisionType].end(),
-			collisionObject
-		), CollisionObject::CollisionObjects[collisionObject->collisionType].end()
-	);
+	for (auto next : collisionObject->collisionTypes)
+	{
+		CollisionObject::CollisionObjects[next].erase(
+			std::remove(
+				CollisionObject::CollisionObjects[next].begin(),
+				CollisionObject::CollisionObjects[next].end(),
+				collisionObject
+			), CollisionObject::CollisionObjects[next].end()
+		);
+	}
 }

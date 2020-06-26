@@ -78,6 +78,7 @@ public:
 	const std::vector<cocos2d::Vec2>& getPoints();
 	Shape getShape();
 	CollisionType getCollisionType();
+	bool hasCollisionType(CollisionType collisionType);
 	void setGravityEnabled(bool isEnabled);
 	cocos2d::Vec2 getVelocity();
 	cocos2d::Vec2 getAcceleration();
@@ -172,6 +173,7 @@ private:
 	cocos2d::Rect boundsRect;
 
 	CollisionType collisionType;
+	std::vector<CollisionType> collisionTypes;
 	std::set<CollisionObject*>* currentCollisions;		// Will alternate between pointing to storage #1 and #2
 	std::set<CollisionObject*>* previousCollisions;		// Will point to the opposite storage as the current collisions
 	std::set<CollisionObject*> collisionsRed;			// Collision storage #1

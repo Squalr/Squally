@@ -12,7 +12,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -45,7 +45,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	this->walkSounds = std::vector<WorldSound*>();
 	this->swimSoundIndex = 0;
 	this->walkSoundIndex = 0;
-	this->movementCollision = nullptr;
+	this->entityCollision = nullptr;
 	this->groundCollision = nullptr;
 	this->jumpBehavior = nullptr;
 
@@ -104,9 +104,9 @@ void EntityMovementBehavior::onLoad()
 		this->prePatrolPosition = this->entity->getPosition();
 	});
 	
-	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* movementCollision)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollision)
 	{
-		this->movementCollision = movementCollision;
+		this->entityCollision = entityCollision;
 	});
 
 	this->entity->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* groundCollision)
@@ -131,7 +131,7 @@ void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->movementCollision == nullptr || this->groundCollision == nullptr || this->jumpBehavior == nullptr)
+	if (this->entityCollision == nullptr || this->groundCollision == nullptr || this->jumpBehavior == nullptr)
 	{
 		return;
 	}
@@ -158,7 +158,7 @@ void EntityMovementBehavior::update(float dt)
 		this->applyCinematicMovement(&movement);
 	}
 
-	Vec2 velocity = this->movementCollision->getVelocity();
+	Vec2 velocity = this->entityCollision->getVelocity();
 
 	bool canJump = this->jumpBehavior == nullptr ? false : this->jumpBehavior->canJump();
 	PlatformerEntity::ControlState controlState = this->entity->getControlState();
@@ -168,9 +168,9 @@ void EntityMovementBehavior::update(float dt)
 		default:
 		case PlatformerEntity::ControlState::Normal:
 		{
-			this->movementCollision->enableNormalPhysics();
-			bool hasLeftCollision = this->movementCollision->hasLeftWallCollision();
-			bool hasRightCollision = this->movementCollision->hasRightWallCollision();
+			this->entityCollision->enableNormalPhysics();
+			bool hasLeftCollision = this->entityCollision->hasLeftWallCollision();
+			bool hasRightCollision = this->entityCollision->hasRightWallCollision();
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
@@ -224,7 +224,7 @@ void EntityMovementBehavior::update(float dt)
 		}
 		case PlatformerEntity::ControlState::Swimming:
 		{
-			this->movementCollision->enableWaterPhysics();
+			this->entityCollision->enableWaterPhysics();
 
 			const float minSpeed = this->swimAcceleration.y;
 
@@ -265,7 +265,7 @@ void EntityMovementBehavior::update(float dt)
 	}
 	
 	// Save velocity
-	this->movementCollision->setVelocity(velocity);
+	this->entityCollision->setVelocity(velocity);
 
 	this->entity->setState(StateKeys::VelocityX, Value(velocity.x), false);
 	this->entity->setState(StateKeys::VelocityY, Value(velocity.y), false);

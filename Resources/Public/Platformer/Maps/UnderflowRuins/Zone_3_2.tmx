@@ -348,18 +348,6 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1102" name="solid" type="collision" x="1123.5" y="1403.5">
-   <polygon points="-0.909091,0.0909091 111.568,36.3864 -0.636364,36.0909"/>
-  </object>
-  <object id="1104" name="solid" type="collision" x="3887.5" y="1404.5">
-   <polygon points="-1.36364,-0.363636 100.091,35.5 -1.45455,36"/>
-  </object>
-  <object id="1105" name="solid" type="collision" x="1961.27" y="1404">
-   <polygon points="0,0 0.363636,36 -99.7045,35.875"/>
-  </object>
-  <object id="1106" name="solid" type="collision" x="4710.91" y="1404.06">
-   <polygon points="0,0 0.363636,36 -95.4545,36.3636"/>
-  </object>
   <object id="1109" name="solid" type="collision" x="1119.23" y="1436.08" width="873.545" height="100.513"/>
   <object id="1110" name="solid" type="collision" x="3865.23" y="1437.74" width="873.545" height="100.513"/>
   <object id="1131" name="dragon-door" type="object" x="2516" y="759" width="768" height="646">

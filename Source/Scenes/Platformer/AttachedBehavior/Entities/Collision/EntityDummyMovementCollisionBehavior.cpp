@@ -46,7 +46,7 @@ EntityDummyMovementCollisionBehavior::EntityDummyMovementCollisionBehavior(GameO
 	else
 	{
 		this->movementCollision = CollisionObject::create(
-			CollisionObject::createBox(this->entity->getMovementSize()),
+			CollisionObject::createBox(this->entity->getEntitySize()),
 			CollisionType(PlatformerCollisionType::None),
 			CollisionObject::Properties(false, false),
 			Color4F::BLUE

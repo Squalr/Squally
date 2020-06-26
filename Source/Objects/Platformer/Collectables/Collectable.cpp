@@ -69,7 +69,7 @@ void Collectable::initializeListeners()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
 	{
 		this->tryCollect();
 

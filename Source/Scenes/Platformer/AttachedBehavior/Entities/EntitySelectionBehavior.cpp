@@ -36,7 +36,7 @@ EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner) : super(owne
 	this->clickHitbox->setContentSize(this->entity->getEntitySize());
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
-	this->clickHitbox->setPosition(Vec2(this->entity->getMovementSize() / 2.0f));
+	this->clickHitbox->setPosition(Vec2(this->entity->getEntitySize() / 2.0f));
 
 	this->addChild(this->clickHitbox);
 }
