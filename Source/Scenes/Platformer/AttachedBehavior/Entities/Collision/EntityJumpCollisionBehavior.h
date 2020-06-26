@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class CollisionObject;
+class EntityHoverCollisionBehavior;
 class PlatformerEntity;
 
 class EntityJumpCollisionBehavior : public AttachedBehavior
@@ -15,6 +16,9 @@ public:
 	CollisionObject* jumpCollision;
 
 	static const std::string MapKey;
+	static const float JumpCollisionMargin;
+	static const float JumpCollisionOffset;
+	static const float JumpCollisionHeight;
 
 protected:
 	EntityJumpCollisionBehavior(GameObject* owner);
@@ -29,8 +33,5 @@ private:
 	void buildJumpCollisionDetector();
 
 	PlatformerEntity* entity;
-
-	static const float JumpCollisionMargin;
-	static const float JumpCollisionOffset;
-	static const float JumpCollisionHeight;
+	EntityHoverCollisionBehavior* hoverCollisionBehavior;
 };

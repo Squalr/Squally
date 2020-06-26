@@ -16,22 +16,23 @@ enum class PlatformerCollisionType
 	EnemyWeapon			= 1 << 6,
 	// Entity augmentation
 	GroundDetector		= 1 << 7,
-	HeadDetector		= 1 << 8,
-	WallDetector		= 1 << 9,
-	PlayerHover			= 1 << 10,
-	Hover				= 1 << 11,
-	Force				= 1 << 12,
+	JumpDetector		= 1 << 8,
+	HeadDetector		= 1 << 9,
+	WallDetector		= 1 << 10,
+	PlayerHover			= 1 << 11,
+	Hover				= 1 << 12,
+	Force				= 1 << 13,
 	// Triggers & Walls
-	Trigger				= 1 << 13,
-	SolidPlayerOnly		= 1 << 14,
-	SolidNpcOnly		= 1 << 15,
+	Trigger				= 1 << 14,
+	SolidPlayerOnly		= 1 << 15,
+	SolidNpcOnly		= 1 << 16,
 	// Environment
-	Water				= 1 << 16,
-	Damage				= 1 << 17,
+	Water				= 1 << 17,
+	Damage				= 1 << 18,
 	// Objects
-	Breakable			= 1 << 18,
-	Collectable			= 1 << 19,
-	Cinematic			= 1 << 20,
+	Breakable			= 1 << 19,
+	Collectable			= 1 << 20,
+	Cinematic			= 1 << 21,
 	
 	// Engine (keep in sync with EngineCollisionTypes)
 	KillPlane			= (int)EngineCollisionTypes::KillPlane,

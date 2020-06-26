@@ -5,6 +5,7 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityHoverCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -35,6 +36,7 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 	this->leftCornerCollision = nullptr;
 	this->rightCornerCollision = nullptr;
 	this->detectorWidth = 0.0f;
+	this->hoverCollisionBehavior = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -54,10 +56,15 @@ EntityGroundCollisionBehavior::~EntityGroundCollisionBehavior()
 
 void EntityGroundCollisionBehavior::onLoad()
 {
+	this->entity->watchForAttachedBehavior<EntityHoverCollisionBehavior>([=](EntityHoverCollisionBehavior* hoverCollisionBehavior)
+	{
+		this->hoverCollisionBehavior = hoverCollisionBehavior;
+	});
+
 	this->defer([=]()
 	{
 		this->buildGroundCollisionDetector();
-		this->buildCornerCollisionDetectors();
+		// this->buildCornerCollisionDetectors();
 		this->toggleQueryable(true);
 	});
 }
@@ -82,6 +89,11 @@ void EntityGroundCollisionBehavior::onDisable()
 	}
 }
 
+CollisionObject* EntityGroundCollisionBehavior::getGroundCollision()
+{
+	return this->groundCollision;
+}
+
 void EntityGroundCollisionBehavior::onCollideWithGround()
 {
 	// Clear current animation
@@ -98,7 +110,8 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 
 bool EntityGroundCollisionBehavior::isOnGround()
 {
-	return this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty();
+	return (this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty())
+		|| (this->hoverCollisionBehavior == nullptr ? false : this->hoverCollisionBehavior->isOnGround());
 }
 
 bool EntityGroundCollisionBehavior::hasLeftCornerCollision()

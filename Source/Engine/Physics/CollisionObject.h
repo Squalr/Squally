@@ -78,6 +78,7 @@ public:
 	const std::vector<cocos2d::Vec2>& getPoints();
 	Shape getShape();
 	CollisionType getCollisionType();
+	std::vector<CollisionType> getCollisionTypes();
 	bool hasCollisionType(CollisionType collisionType);
 	void setGravityEnabled(bool isEnabled);
 	cocos2d::Vec2 getVelocity();

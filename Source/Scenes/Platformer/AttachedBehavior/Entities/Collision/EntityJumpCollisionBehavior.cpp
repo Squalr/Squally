@@ -5,6 +5,7 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityHoverCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -30,6 +31,7 @@ EntityJumpCollisionBehavior::EntityJumpCollisionBehavior(GameObject* owner) : su
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->jumpCollision = nullptr;
+	this->hoverCollisionBehavior = nullptr;
 	
 	if (this->entity == nullptr)
 	{
@@ -45,6 +47,11 @@ EntityJumpCollisionBehavior::~EntityJumpCollisionBehavior()
 
 void EntityJumpCollisionBehavior::onLoad()
 {
+	this->entity->watchForAttachedBehavior<EntityHoverCollisionBehavior>([=](EntityHoverCollisionBehavior* hoverCollisionBehavior)
+	{
+		this->hoverCollisionBehavior = hoverCollisionBehavior;
+	});
+
 	this->defer([=]()
 	{
 		this->buildJumpCollisionDetector();
@@ -64,6 +71,9 @@ void EntityJumpCollisionBehavior::onDisable()
 
 bool EntityJumpCollisionBehavior::canJump()
 {
+	return (this->jumpCollision == nullptr ? false : !this->jumpCollision->getCurrentCollisions().empty())
+		|| (this->hoverCollisionBehavior == nullptr ? false : this->hoverCollisionBehavior->canJump());
+	/*
 	if (this->jumpCollision == nullptr)
 	{
 		return true;
@@ -80,6 +90,7 @@ bool EntityJumpCollisionBehavior::canJump()
 	}
 
 	return false;
+	*/
 }
 
 void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
@@ -93,7 +104,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 		CollisionObject::createCapsulePolygon(
 			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
 		),
-		(int)PlatformerCollisionType::GroundDetector,
+		(int)PlatformerCollisionType::JumpDetector,
 		CollisionObject::Properties(false, false),
 		Color4F::YELLOW
 	);
@@ -105,17 +116,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 	
 	this->addChild(this->jumpCollision);
 
-	this->jumpCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->jumpCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->jumpCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->jumpCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});

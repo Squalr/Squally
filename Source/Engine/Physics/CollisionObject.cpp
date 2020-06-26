@@ -242,9 +242,12 @@ void CollisionObject::runPhysics(float dt)
 	{
 		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
 		{
-			for (auto event : this->collisionEndEvents[collisionObject->getCollisionType()])
+			for (auto collisionType : collisionObject->getCollisionTypes())
 			{
-				event.collisionEvent(CollisionData(collisionObject, dt));
+				for (auto event : this->collisionEndEvents[collisionType])
+				{
+					event.collisionEvent(CollisionData(collisionObject, dt));
+				}
 			}
 		}
 	}
@@ -342,6 +345,11 @@ CollisionObject::Shape CollisionObject::getShape()
 CollisionType CollisionObject::getCollisionType()
 {
 	return this->collisionType;
+}
+	
+std::vector<CollisionType> CollisionObject::getCollisionTypes()
+{
+	return this->collisionTypes;
 }
 
 bool CollisionObject::hasCollisionType(CollisionType collisionType)

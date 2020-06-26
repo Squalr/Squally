@@ -71,12 +71,12 @@ void SquallyCollisionBehavior::onLoad()
 	{
 		collisionBehavior->setName("Squally entity collision");
 		
-		if (collisionBehavior->groundCollision == nullptr)
+		if (collisionBehavior->getGroundCollision() == nullptr)
 		{
 			return;
 		}
 
-		collisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->getGroundCollision()->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
 			collisionBehavior->onCollideWithGround();
 			
