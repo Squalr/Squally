@@ -77,6 +77,7 @@ public:
 	void ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	const std::vector<cocos2d::Vec2>& getPoints();
+	void setPoints(std::vector<cocos2d::Vec2> points);
 	Shape getShape();
 	CollisionType getCollisionType();
 	std::vector<CollisionType> getCollisionTypes();
@@ -145,7 +146,7 @@ private:
 	void applyCorrection(cocos2d::Vec3 position);
 	Shape determineShape();
 	void computeWorldCoords(bool force = false);
-	void propagateRotation();
+	void propagateRotation(bool force = false);
 
 	void drawDebugShapes();
 	void drawDebugConnectors();

@@ -338,6 +338,26 @@ const std::vector<cocos2d::Vec2>& CollisionObject::getPoints()
 	return this->points;
 }
 
+void CollisionObject::setPoints(std::vector<Vec2> points)
+{
+	this->points = points;
+	this->pointsRotated = this->points;
+	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
+	this->segmentsRotated = this->segments;
+	this->shape = this->determineShape();
+	this->boundsRect = AlgoUtils::getPolygonRect(this->pointsRotated);
+	
+	this->propagateRotation(true);
+	
+	// Invalidate debug info
+	this->debugInfoSpawned = false;
+
+	if (DeveloperModeController::getDebugLevel() > 0)
+	{
+		this->drawDebugShapes();
+	}
+}
+
 CollisionObject::Shape CollisionObject::getShape()
 {
 	return this->shape;
@@ -594,11 +614,11 @@ void CollisionObject::computeWorldCoords(bool force)
 	}
 }
 
-void CollisionObject::propagateRotation()
+void CollisionObject::propagateRotation(bool force)
 {
 	float rotation = GameUtils::getRotation(this);
 
-	if (rotation == this->cachedRotation)
+	if (!force && rotation == this->cachedRotation )
 	{
 		return;
 	}

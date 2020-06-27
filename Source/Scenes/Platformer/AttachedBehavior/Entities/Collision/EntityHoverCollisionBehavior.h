@@ -28,6 +28,12 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void crouch(float dt);
+	void uncrouch(float dt);
+	void rebuildHoverCrouchCollision();
+
+	float crouchProgress;
+
 	PlatformerEntity* entity;
 	CollisionObject* hoverCollision;
 	CollisionObject* hoverGroundCollisionDetector;
