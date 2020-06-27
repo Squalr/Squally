@@ -62,9 +62,9 @@ void SquallyStaticHelpBehavior::onLoad()
 
 	this->squally->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
-		SquallyStaticHelpBehavior::PositionXPtr = &collisionBehavior->entityCollision->getPositionPtr()->x;
-		SquallyStaticHelpBehavior::PositionYPtr = &collisionBehavior->entityCollision->getPositionPtr()->y;
-		SquallyStaticHelpBehavior::PositionZPtr = collisionBehavior->entityCollision->getPositionZPtr();
+		SquallyStaticHelpBehavior::PositionXPtr = &collisionBehavior->movementCollision->getPositionPtr()->x;
+		SquallyStaticHelpBehavior::PositionYPtr = &collisionBehavior->movementCollision->getPositionPtr()->y;
+		SquallyStaticHelpBehavior::PositionZPtr = collisionBehavior->movementCollision->getPositionZPtr();
 	});
 }
 

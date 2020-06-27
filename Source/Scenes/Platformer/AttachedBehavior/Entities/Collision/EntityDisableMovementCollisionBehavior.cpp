@@ -1,4 +1,4 @@
-#include "EntityDisableCollisionBehavior.h"
+#include "EntityDisableMovementCollisionBehavior.h"
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -14,18 +14,18 @@
 
 using namespace cocos2d;
 
-const std::string EntityDisableCollisionBehavior::MapKey = "disable-entity-collision";
+const std::string EntityDisableMovementCollisionBehavior::MapKey = "disable-movement-collision";
 
-EntityDisableCollisionBehavior* EntityDisableCollisionBehavior::create(GameObject* owner)
+EntityDisableMovementCollisionBehavior* EntityDisableMovementCollisionBehavior::create(GameObject* owner)
 {
-	EntityDisableCollisionBehavior* instance = new EntityDisableCollisionBehavior(owner);
+	EntityDisableMovementCollisionBehavior* instance = new EntityDisableMovementCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityDisableCollisionBehavior::EntityDisableCollisionBehavior(GameObject* owner) : super(owner)
+EntityDisableMovementCollisionBehavior::EntityDisableMovementCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -35,22 +35,21 @@ EntityDisableCollisionBehavior::EntityDisableCollisionBehavior(GameObject* owner
 	}
 }
 
-EntityDisableCollisionBehavior::~EntityDisableCollisionBehavior()
+EntityDisableMovementCollisionBehavior::~EntityDisableMovementCollisionBehavior()
 {
 }
 
-void EntityDisableCollisionBehavior::onLoad()
+void EntityDisableMovementCollisionBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
-		behavior->entityCollision->setPhysicsEnabled(false);
 		behavior->movementCollision->setPhysicsEnabled(false);
 		behavior->leftCollision->setPhysicsEnabled(false);
 		behavior->rightCollision->setPhysicsEnabled(false);
 	});
 }
 
-void EntityDisableCollisionBehavior::onDisable()
+void EntityDisableMovementCollisionBehavior::onDisable()
 {
 	super::onDisable();
 }

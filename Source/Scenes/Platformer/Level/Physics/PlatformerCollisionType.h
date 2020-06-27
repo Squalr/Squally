@@ -23,7 +23,7 @@ enum class PlatformerCollisionType
 	HeadDetector		= 1 << 12,
 	WallDetector		= 1 << 13,
 	Hover				= 1 << 14,
-	PlayerHover			= 1 << 15,
+	// PlayerHover			= 1 << 15, // Disabled, as Hover covers this. No other entity hovers yet.
 	Force				= 1 << 16,
 	// Triggers & Walls
 	Trigger				= 1 << 17,

@@ -76,7 +76,7 @@ void CombatSpawn::initializeListeners()
 			// Note: collision offset is factored in here because physics wont be active, thus not self-correcting.
 			// Normally in the overworld, if the collision box is shifted up, gravity will sort it out after the map loads.
 			// Here, there is no gravity, so the entity would appear to be loaded in a shifted up position unless we factor it in.
-			Vec2 offset = Vec2(0.0f, -this->spawnObjectHeight / 2.0f + args->entity->getHoverHeight() / 2.0f) - args->entity->getCollisionOffset();
+			Vec2 offset = Vec2(0.0f, -this->spawnObjectHeight / 2.0f + args->entity->getHoverHeight()) - args->entity->getCollisionOffset();
 			GameUtils::setWorldCoords3D(args->entity, GameUtils::getWorldCoords3D(this) + Vec3(offset.x, offset.y, ZSortOffset));
 
 			args->entity->setState(StateKeys::Zoom, Value(this->zoom), false);

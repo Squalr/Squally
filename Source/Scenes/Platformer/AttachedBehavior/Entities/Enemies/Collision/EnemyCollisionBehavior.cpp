@@ -17,7 +17,7 @@ EnemyCollisionBehavior* EnemyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-EnemyCollisionBehavior::EnemyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Enemy)
+EnemyCollisionBehavior::EnemyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EntityMovement)
 {
 }
 

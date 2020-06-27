@@ -43,7 +43,7 @@ void EntityNoGravityBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
-		behavior->entityCollision->setGravity(Vec2::ZERO);
+		behavior->movementCollision->setGravity(Vec2::ZERO);
 	});
 }
 

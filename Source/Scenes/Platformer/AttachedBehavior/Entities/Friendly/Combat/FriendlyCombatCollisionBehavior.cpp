@@ -19,7 +19,7 @@ FriendlyCombatCollisionBehavior* FriendlyCombatCollisionBehavior::create(GameObj
 	return instance;
 }
 
-FriendlyCombatCollisionBehavior::FriendlyCombatCollisionBehavior(GameObject* owner) : super(owner, (CollisionType)CombatCollisionType::EntityFriendly)
+FriendlyCombatCollisionBehavior::FriendlyCombatCollisionBehavior(GameObject* owner) : super(owner, (int)CombatCollisionType::EntityFriendly, (int)CombatCollisionType::Movement)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 

@@ -28,17 +28,19 @@ const float EntityCollisionBehaviorBase::WaterJumpVelocity = 7680.0f;
 const float EntityCollisionBehaviorBase::SwimVerticalDrag = 0.93f;
 const float EntityCollisionBehaviorBase::StaticFriction = 256.0f;
 
-EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int collisionType) : super(owner)
+EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int collisionType, int collisionTypeMovement) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->collisionType = collisionType | int(PlatformerCollisionType::Entity);
+	this->collisionTypeMovement = collisionTypeMovement | int(PlatformerCollisionType::EntityMovement);
 	this->entityCollision = nullptr;
+	this->movementCollision = nullptr;
 	this->groundCollision = nullptr;
 	this->headCollision = nullptr;
 	this->movementBehavior = nullptr;
 	this->leftCollision = nullptr;
 	this->rightCollision = nullptr;
-	this->entityCollisionBound = false;
+	this->movementCollisionBound = false;
 	this->submergeSound = WorldSound::create(SoundResources::Platformer_Environment_Splash1);
 	this->emergeSound = WorldSound::create(SoundResources::Platformer_Environment_Emerge1);
 	this->noEmergeSubmergeSoundCooldown = 1.0f;
@@ -115,6 +117,7 @@ void EntityCollisionBehaviorBase::onLoad()
 	{
 		this->buildWallDetectors();
 		this->buildEntityCollision();
+		this->buildMovementCollision();
 		this->toggleQueryable(true);
 		this->tryBind();
 	});
@@ -126,9 +129,9 @@ void EntityCollisionBehaviorBase::onDisable()
 {
 	super::onDisable();
 	
-	if (this->entityCollision != nullptr)
+	if (this->movementCollision != nullptr)
 	{
-		this->entityCollision->setPhysicsEnabled(false);
+		this->movementCollision->setPhysicsEnabled(false);
 	}
 }
 void EntityCollisionBehaviorBase::update(float dt)
@@ -148,10 +151,10 @@ void EntityCollisionBehaviorBase::warpToPosition(Vec3 position, bool warpCamera)
 	// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
-		if (this->entityCollision != nullptr)
+		if (this->movementCollision != nullptr)
 		{
 			this->tryBind();
-			this->entityCollision->warpTo(position);
+			this->movementCollision->warpTo(position);
 
 			if (warpCamera && GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
 			{
@@ -163,29 +166,29 @@ void EntityCollisionBehaviorBase::warpToPosition(Vec3 position, bool warpCamera)
 
 void EntityCollisionBehaviorBase::enableNormalPhysics()
 {
-	this->entityCollision->setGravityEnabled(true);
-	this->entityCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
+	this->movementCollision->setGravityEnabled(true);
+	this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 }
 
 void EntityCollisionBehaviorBase::enableWaterPhysics()
 {
-	this->entityCollision->setGravityEnabled(false);
-	this->entityCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
+	this->movementCollision->setGravityEnabled(false);
+	this->movementCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
 }
 
 Vec2 EntityCollisionBehaviorBase::getVelocity()
 {
-	return this->entityCollision == nullptr ? Vec2::ZERO : this->entityCollision->getVelocity();
+	return this->movementCollision == nullptr ? Vec2::ZERO : this->movementCollision->getVelocity();
 }
 
 void EntityCollisionBehaviorBase::setVelocity(Vec2 velocity)
 {
-	if (this->entityCollision == nullptr)
+	if (this->movementCollision == nullptr)
 	{
 		return;
 	}
 
-	this->entityCollision->setVelocity(velocity);
+	this->movementCollision->setVelocity(velocity);
 }
 
 bool EntityCollisionBehaviorBase::hasLeftWallCollision()
@@ -226,15 +229,41 @@ bool EntityCollisionBehaviorBase::hasRightWallCollisionWith(CollisionObject* col
 
 void EntityCollisionBehaviorBase::buildEntityCollision()
 {
-	if (this->isInvalidated())
+	if (this->entityCollision != nullptr || this->isInvalidated())
 	{
 		return;
 	}
 
+	const float ScaleFactor = 0.9f;
+
 	this->entityCollision = CollisionObject::create(
+		// CollisionObject::createBox(this->entity->getEntitySize() * ScaleFactor),
+		CollisionObject::createCapsulePolygon(this->entity->getEntitySize() * ScaleFactor, 8.0f),
+		(CollisionType)this->collisionType,
+		CollisionObject::Properties(false, false),
+		Color4F::WHITE
+	);
+
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+
+	this->entityCollision->setPosition(offset);
+	this->entityCollision->setName("Entity collision");
+
+	this->addChild(this->entityCollision);
+}
+
+void EntityCollisionBehaviorBase::buildMovementCollision()
+{
+	if (this->movementCollision != nullptr || this->isInvalidated())
+	{
+		return;
+	}
+
+	this->movementCollision = CollisionObject::create(
 		CollisionObject::createBox(this->entity->getEntitySize()),
 		// CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 8.0f),
-		(CollisionType)this->collisionType,
+		(CollisionType)this->collisionTypeMovement,
 		CollisionObject::Properties(true, false),
 		Color4F::RED
 	);
@@ -242,18 +271,17 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
-	this->entityCollision->setPosition(offset);
+	this->movementCollision->setPosition(offset);
+	this->movementCollision->setName("Movement collision");
 
-	this->entityCollision->setName("Entity collision");
+	this->addChild(this->movementCollision);
 
-	this->addChild(this->entityCollision);
-
-	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 	
-	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->groundCollision == nullptr || this->headCollision == nullptr)
 		{
@@ -273,7 +301,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 	
-	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->groundCollision == nullptr || this->headCollision == nullptr)
 		{
@@ -300,13 +328,13 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->groundCollision != nullptr
 			&& !this->groundCollision->isOnGround()
 			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
 			&& !this->submergeSound->isPlaying()
-			&& !this->entityCollision->wasCollidingWithType((int)PlatformerCollisionType::Water))
+			&& !this->movementCollision->wasCollidingWithType((int)PlatformerCollisionType::Water))
 		{
 			this->submergeSound->play();
 		}
@@ -314,7 +342,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Swimming;
 
@@ -324,7 +352,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
 
@@ -332,7 +360,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 			&& !this->groundCollision->isOnGround()
 			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
 			&& !this->emergeSound->isPlaying()
-			&& !this->entityCollision->isCollidingWithType((int)PlatformerCollisionType::Water))
+			&& !this->movementCollision->isCollidingWithType((int)PlatformerCollisionType::Water))
 		{
 			this->emergeSound->play();
 		}
@@ -343,10 +371,10 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		}
 
 		// Animate jumping out of water
-		if (this->entityCollision->getVelocity().y > 0.0f && this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
+		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
 		{
 			// Give a velocity boost for jumping out of water
-			this->entityCollision->setVelocity(Vec2(this->entityCollision->getVelocity().x, EntityCollisionBehaviorBase::WaterJumpVelocity));
+			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityCollisionBehaviorBase::WaterJumpVelocity));
 
 			this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(0.85f));
 		}
@@ -368,6 +396,11 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 
 void EntityCollisionBehaviorBase::buildWallDetectors()
 {
+	if (this->leftCollision != nullptr || this->rightCollision != nullptr || this->isInvalidated())
+	{
+		return;
+	}
+
 	const Size wallDetectorSize = Size(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
 
 	this->leftCollision = CollisionObject::create(
@@ -409,9 +442,9 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 
 void EntityCollisionBehaviorBase::tryBind()
 {
-	if (this->entityCollision != nullptr && !this->entityCollisionBound)
+	if (this->movementCollision != nullptr && !this->movementCollisionBound)
 	{
-		this->entityCollisionBound = true;
-		this->entityCollision->bindTo(this->entity);
+		this->movementCollisionBound = true;
+		this->movementCollision->bindTo(this->entity);
 	}
 }

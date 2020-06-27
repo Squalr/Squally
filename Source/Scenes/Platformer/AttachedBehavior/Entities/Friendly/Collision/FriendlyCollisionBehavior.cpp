@@ -18,7 +18,7 @@ FriendlyCollisionBehavior* FriendlyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Entity)
+FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Entity, (int)PlatformerCollisionType::EntityMovement)
 {
 }
 

@@ -23,11 +23,12 @@ public:
 	bool hasRightWallCollisionWith(CollisionObject* collisonObject);
 	
 	CollisionObject* entityCollision;
+	CollisionObject* movementCollision;
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
 
 protected:
-	EntityCollisionBehaviorBase(GameObject* owner, int collisionType);
+	EntityCollisionBehaviorBase(GameObject* owner, int collisionType, int collisionTypeMovement);
 	virtual ~EntityCollisionBehaviorBase();
 
 	void onLoad() override;
@@ -42,15 +43,17 @@ private:
 	
 	void warpToPosition(cocos2d::Vec3 position, bool warpCamera);
 	void buildEntityCollision();
+	void buildMovementCollision();
 	void buildWallDetectors();
 	void tryBind();
 
 	EntityGroundCollisionBehavior* groundCollision;
 	EntityHeadCollisionBehavior* headCollision;
 	EntityMovementBehavior* movementBehavior;
-	bool entityCollisionBound;
+	bool movementCollisionBound;
 	float noEmergeSubmergeSoundCooldown;
 	int collisionType;
+	int collisionTypeMovement;
 	WorldSound* submergeSound;
 	WorldSound* emergeSound;
 

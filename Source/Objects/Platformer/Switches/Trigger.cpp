@@ -51,7 +51,7 @@ void Trigger::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
 	{
 		if (!this->wasActivated || this->multiTrip)
 		{

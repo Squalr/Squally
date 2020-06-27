@@ -36,7 +36,7 @@ SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Player)
+SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->noCombatDuration = 0.0f;
@@ -179,11 +179,6 @@ void SquallyCollisionBehavior::onEntityCollisionCreated()
 			healthBehavior->kill();
 		});
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Entity, }, [=](CollisionObject::CollisionData collisionData)
-	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }

@@ -196,7 +196,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollision)
 	{
-		this->hoverCollision->setCorrectionRedirectionTarget(entityCollision->entityCollision);
+		this->hoverCollision->setCorrectionRedirectionTarget(entityCollision->movementCollision);
 	});
 	
 	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
@@ -212,13 +212,13 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 
 		if (this->entityCollision != nullptr)
 		{
-			Vec2 velocity = entityCollision->entityCollision->getVelocity();
-			Vec2 gravity = entityCollision->entityCollision->getGravity();
+			Vec2 velocity = entityCollision->movementCollision->getVelocity();
+			Vec2 gravity = entityCollision->movementCollision->getGravity();
 
 			velocity.y = velocity.y <= 0.0f ? 0.0f : velocity.y;
 
 			// Apply hover speed and counter-act gravity
-			entityCollision->entityCollision->setVelocity(velocity + (HoverSpeed - gravity) * collisionData.dt);
+			entityCollision->movementCollision->setVelocity(velocity + (HoverSpeed - gravity) * collisionData.dt);
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;
