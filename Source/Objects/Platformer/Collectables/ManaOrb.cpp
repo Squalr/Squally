@@ -1,5 +1,7 @@
 #include "ManaOrb.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/ObjectEvents.h"
@@ -66,4 +68,9 @@ void ManaOrb::initializeListeners()
 
 		this->collectSound->play();
 	});
+}
+
+void ManaOrb::hideCollectable()
+{
+	this->collectableCollision->runAction(FadeTo::create(0.5f, 0));
 }

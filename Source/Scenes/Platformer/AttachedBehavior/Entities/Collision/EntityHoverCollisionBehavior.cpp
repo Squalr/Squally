@@ -194,9 +194,21 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 
 	this->addChild(this->hoverCollision);
 
-	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollision)
+	{
+		this->hoverCollision->setCorrectionRedirectionTarget(entityCollision->entityCollision);
+	});
+	
+	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 	{
 		static const Vec2 HoverSpeed = Vec2(0.0f, 192.0f);
+		
+		/*
+		if (this->hoverGroundCollisionDetector->getCurrentCollisions().size() == 1)
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+		*/
 
 		if (this->entityCollision != nullptr)
 		{

@@ -112,9 +112,14 @@ void Collectable::tryCollect()
 	}
 }
 
+void Collectable::hideCollectable()
+{
+	this->collectableCollision->setVisible(false);
+}
+
 void Collectable::disableCollection()
 {
 	this->isCollected = true;
 	this->collectableCollision->setPhysicsEnabled(false);
-	this->collectableCollision->setVisible(false);
+	this->hideCollectable();
 }

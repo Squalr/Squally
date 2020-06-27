@@ -23,6 +23,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	virtual void hideCollectable();
 
 	cocos2d::Node* collectableNode;
 	CollisionObject* collectableCollision;

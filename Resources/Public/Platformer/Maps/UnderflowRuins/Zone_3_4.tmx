@@ -130,13 +130,41 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1019" name="ruins-thick" type="terrain" x="2822.57" y="1440" width="96" height="340"/>
-  <object id="1020" name="ruins-thick" type="terrain" x="2704.05" y="1440" width="96" height="340"/>
-  <object id="1021" name="ruins-thick" type="terrain" x="2581.48" y="1440" width="96" height="340"/>
-  <object id="1022" name="ruins-thick" type="terrain" x="2461.62" y="1440" width="96" height="340"/>
-  <object id="1023" name="ruins-thick" type="terrain" x="2339.43" y="1440" width="96" height="340"/>
-  <object id="1024" name="ruins-thick" type="terrain" x="2217.24" y="1440" width="96" height="340"/>
-  <object id="1025" name="ruins-thick" type="terrain" x="2099.52" y="1440" width="96" height="340"/>
+  <object id="1019" name="ruins-thick" type="terrain" x="2822.57" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1020" name="ruins-thick" type="terrain" x="2704.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1021" name="ruins-thick" type="terrain" x="2581.48" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1022" name="ruins-thick" type="terrain" x="2461.62" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1023" name="ruins-thick" type="terrain" x="2339.43" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1024" name="ruins-thick" type="terrain" x="2217.24" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1025" name="ruins-thick" type="terrain" x="2099.52" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -175,12 +203,6 @@
     <property name="map" value="UnderflowRuins/Zone_3_5"/>
     <property name="transition" value="right"/>
    </properties>
-  </object>
-  <object id="1104" name="solid" type="collision" x="2095.5" y="1404.5">
-   <polygon points="-1.36364,-0.363636 100.091,35.5 -1.45455,36"/>
-  </object>
-  <object id="1106" name="solid" type="collision" x="2918.91" y="1404.06">
-   <polygon points="0,0 0.363636,36 -95.4545,36.3636"/>
   </object>
   <object id="1110" name="solid" type="collision" x="2073.23" y="1437.74" width="873.545" height="100.513"/>
   <object id="1142" name="solid" type="collision" x="40.561" y="-354.59" width="126.878" height="1821.18"/>

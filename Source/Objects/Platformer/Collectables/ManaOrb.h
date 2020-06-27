@@ -18,6 +18,7 @@ protected:
 
 	void onEnter() override;
 	void initializeListeners() override;
+	void hideCollectable() override;
 
 private:
 	typedef Collectable super;

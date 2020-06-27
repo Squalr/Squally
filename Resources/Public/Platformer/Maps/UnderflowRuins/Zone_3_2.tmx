@@ -288,20 +288,76 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1009" name="ruins-thick" type="terrain" x="1861.1" y="1440" width="96" height="340"/>
-  <object id="1010" name="ruins-thick" type="terrain" x="1741.24" y="1440" width="96" height="340"/>
-  <object id="1013" name="ruins-thick" type="terrain" x="1619.05" y="1440" width="96" height="340"/>
-  <object id="1014" name="ruins-thick" type="terrain" x="1496.86" y="1440" width="96" height="340"/>
-  <object id="1015" name="ruins-thick" type="terrain" x="1379.14" y="1440" width="96" height="340"/>
-  <object id="1016" name="ruins-thick" type="terrain" x="1257.62" y="1440" width="96" height="340"/>
-  <object id="1017" name="ruins-thick" type="terrain" x="1139.05" y="1440" width="96" height="340"/>
-  <object id="1019" name="ruins-thick" type="terrain" x="4614.57" y="1440" width="96" height="340"/>
-  <object id="1020" name="ruins-thick" type="terrain" x="4496.05" y="1440" width="96" height="340"/>
-  <object id="1021" name="ruins-thick" type="terrain" x="4373.48" y="1440" width="96" height="340"/>
-  <object id="1022" name="ruins-thick" type="terrain" x="4253.62" y="1440" width="96" height="340"/>
-  <object id="1023" name="ruins-thick" type="terrain" x="4131.43" y="1440" width="96" height="340"/>
-  <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340"/>
-  <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340"/>
+  <object id="1009" name="ruins-thick" type="terrain" x="1861.1" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1010" name="ruins-thick" type="terrain" x="1741.24" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1013" name="ruins-thick" type="terrain" x="1619.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1014" name="ruins-thick" type="terrain" x="1496.86" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1015" name="ruins-thick" type="terrain" x="1379.14" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1016" name="ruins-thick" type="terrain" x="1257.62" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1017" name="ruins-thick" type="terrain" x="1139.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1019" name="ruins-thick" type="terrain" x="4614.57" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1020" name="ruins-thick" type="terrain" x="4496.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1021" name="ruins-thick" type="terrain" x="4373.48" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1022" name="ruins-thick" type="terrain" x="4253.62" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1023" name="ruins-thick" type="terrain" x="4131.43" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>

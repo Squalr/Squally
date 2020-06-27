@@ -76,6 +76,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->physicsEnabled = true;
 	this->gravityEnabled = collisionProperties.isDynamic;
 	this->bindTarget = nullptr;
+	this->correctionRedirectTarget = nullptr;
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
 	this->debugDrawNodeConnectors = nullptr;
@@ -413,6 +414,11 @@ void CollisionObject::unbind()
 	this->bindTarget = nullptr;
 }
 
+void CollisionObject::setCorrectionRedirectionTarget(CollisionObject* correctionRedirectTarget)
+{
+	this->correctionRedirectTarget = correctionRedirectTarget;
+}
+
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
 	for (auto collisionType : collisionTypes)
@@ -505,7 +511,7 @@ std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float capsule
 	return points; // PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
-cocos2d::Vec3 CollisionObject::getThisOrBindPosition()
+Vec3 CollisionObject::getThisOrBindPosition()
 {
 	if (this->bindTarget == nullptr)
 	{
@@ -517,7 +523,17 @@ cocos2d::Vec3 CollisionObject::getThisOrBindPosition()
 	}
 }
 
-void CollisionObject::setThisOrBindPosition(cocos2d::Vec3 position)
+Vec3 CollisionObject::getCorrectionPosition()
+{
+	if (this->correctionRedirectTarget != nullptr)
+	{
+		return this->correctionRedirectTarget->getThisOrBindPosition();
+	}
+
+	return this->getThisOrBindPosition();
+}
+
+void CollisionObject::setThisOrBindPosition(Vec3 position)
 {
 	if (this->bindTarget == nullptr)
 	{
@@ -529,6 +545,18 @@ void CollisionObject::setThisOrBindPosition(cocos2d::Vec3 position)
 	}
 
 	this->computeWorldCoords(true);
+}
+
+void CollisionObject::applyCorrection(cocos2d::Vec3 position)
+{
+	if (this->correctionRedirectTarget != nullptr)
+	{
+		this->correctionRedirectTarget->setThisOrBindPosition(position);
+	}
+	else
+	{
+		this->setThisOrBindPosition(position);
+	}
 }
 
 CollisionObject::Shape CollisionObject::determineShape()
