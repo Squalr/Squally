@@ -47,9 +47,9 @@ void EnemyCollisionBehavior::onLoad()
 			});
 		}
 
-		if (collisionBehavior->entityCollision != nullptr)
+		if (collisionBehavior->movementCollision != nullptr)
 		{
-			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
 			{	
 				return CollisionObject::CollisionResult::CollideWithPhysics;
 			});
