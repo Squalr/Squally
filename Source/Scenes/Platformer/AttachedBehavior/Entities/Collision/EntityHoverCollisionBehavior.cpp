@@ -202,6 +202,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 	{
 		static const Vec2 HoverSpeed = Vec2(0.0f, 192.0f);
+		static const float MinSpeed = -64.0f;
 		
 		/*
 		if (this->hoverGroundCollisionDetector->getCurrentCollisions().size() == 1)
@@ -215,7 +216,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			Vec2 velocity = entityCollision->movementCollision->getVelocity();
 			Vec2 gravity = entityCollision->movementCollision->getGravity();
 
-			velocity.y = velocity.y <= 0.0f ? 0.0f : velocity.y;
+			velocity.y = velocity.y <= MinSpeed ? MinSpeed : velocity.y;
 
 			// Apply hover speed and counter-act gravity
 			entityCollision->movementCollision->setVelocity(velocity + (HoverSpeed - gravity) * collisionData.dt);
