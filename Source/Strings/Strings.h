@@ -7974,6 +7974,21 @@ namespace Strings
 		virtual ~Menus_HackingTutorials() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare : public LocalizedString
 	{
 	public:
@@ -20122,6 +20137,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_EnergyBolt();
 		virtual ~Platformer_Combat_Attacks_EnergyBolt() = default;
+	};
+
+	class Platformer_Combat_Attacks_EnvelopingWinds : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_EnvelopingWinds* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_EnvelopingWinds();
+		virtual ~Platformer_Combat_Attacks_EnvelopingWinds() = default;
 	};
 
 	class Platformer_Combat_Attacks_Execute : public LocalizedString

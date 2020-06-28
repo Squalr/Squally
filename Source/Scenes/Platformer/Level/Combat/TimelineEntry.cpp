@@ -522,6 +522,16 @@ void TimelineEntry::setProgress(float progress)
 	this->progress = MathUtils::clamp(progress, 0.0f, 1.0f);
 }
 
+void TimelineEntry::addInitSpeed(float bonus)
+{
+	if (this->combatBehavior == nullptr)
+	{
+		return;
+	}
+
+	this->combatBehavior->setTimelineSpeedBase(this->combatBehavior->getTimelineSpeedBase() + bonus);
+}
+
 void TimelineEntry::addTimeWithoutActions(float dt)
 {
 	float speed = this->combatBehavior == nullptr ? 1.0f : this->combatBehavior->getTimelineSpeed();

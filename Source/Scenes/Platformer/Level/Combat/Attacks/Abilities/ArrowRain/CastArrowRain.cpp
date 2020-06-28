@@ -10,7 +10,6 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Combat/Abilities/ArrowRain/ArrowRain.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/Fortitude.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -69,7 +68,7 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{

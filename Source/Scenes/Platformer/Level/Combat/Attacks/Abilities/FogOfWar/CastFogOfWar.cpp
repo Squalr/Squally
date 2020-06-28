@@ -54,7 +54,7 @@ PlatformerAttack* CastFogOfWar::cloneInternal()
 
 LocalizedString* CastFogOfWar::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create();
+	return Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_FogOfWar::create();
 }
 
 std::string CastFogOfWar::getAttackAnimation()
@@ -68,7 +68,7 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{

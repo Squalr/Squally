@@ -9,7 +9,7 @@ class CombatObject : public HackableObject
 {
 public:
 protected:
-	CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline);
+	CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline, float duration = -1.0f);
 	virtual ~CombatObject();
 
 	void onEnter() override;
@@ -35,6 +35,11 @@ protected:
 
 private:
 	typedef HackableObject super;
+
+	void updateDuration(float dt);
+
+	float duration;
+	float elapsedDuration;
 	
 	void updateObjectCanUpdate();
 };

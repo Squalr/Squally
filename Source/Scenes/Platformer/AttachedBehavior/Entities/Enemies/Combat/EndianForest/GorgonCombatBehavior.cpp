@@ -33,7 +33,7 @@ GorgonCombatBehavior::GorgonCombatBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.20f);
+	this->setTimelineSpeedBase(1.20f);
 }
 
 GorgonCombatBehavior::~GorgonCombatBehavior()

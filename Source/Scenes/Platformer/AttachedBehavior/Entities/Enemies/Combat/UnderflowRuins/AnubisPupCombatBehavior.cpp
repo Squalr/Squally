@@ -33,7 +33,7 @@ AnubisPupCombatBehavior::AnubisPupCombatBehavior(GameObject* owner) : super(owne
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.15f);
+	this->setTimelineSpeedBase(1.15f);
 }
 
 AnubisPupCombatBehavior::~AnubisPupCombatBehavior()

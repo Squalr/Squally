@@ -31,7 +31,7 @@ TrainingDummyCombatBehavior::TrainingDummyCombatBehavior(GameObject* owner) : su
 		this->invalidate();
 	}
 
-	this->setTimelineSpeed(1.25f);
+	this->setTimelineSpeedBase(1.25f);
 }
 
 TrainingDummyCombatBehavior::~TrainingDummyCombatBehavior()

@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-CombatObject::CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline)
+CombatObject::CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline, float duration)
 	: super()
 {
 	this->caster = caster;
@@ -16,6 +16,8 @@ CombatObject::CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bo
 	this->timelinePausedCinematic = false;
 	this->canUpdate = true;
 	this->onTimeline = onTimeline;
+	this->duration = duration;
+	this->elapsedDuration = 0.0f;
 }
 
 CombatObject::~CombatObject()
@@ -148,6 +150,11 @@ void CombatObject::onEnter()
 void CombatObject::update(float dt)
 {
 	super::update(dt);
+
+	if (!this->onTimeline)
+	{
+		this->updateDuration(dt);
+	}
 	
 	if (!this->canUpdate)
 	{
@@ -157,6 +164,20 @@ void CombatObject::update(float dt)
 
 void CombatObject::elapse(float dt)
 {
+	if (this->onTimeline)
+	{
+		this->updateDuration(dt);
+	}
+}
+
+void CombatObject::updateDuration(float dt)
+{
+	this->elapsedDuration += dt;
+
+	if (this->duration > 0.0f && this->elapsedDuration >= this->duration)
+	{
+		this->despawn();
+	}
 }
 
 void CombatObject::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)

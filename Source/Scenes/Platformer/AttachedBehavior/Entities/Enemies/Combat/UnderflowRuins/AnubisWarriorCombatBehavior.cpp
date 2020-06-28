@@ -33,7 +33,7 @@ AnubisWarriorCombatBehavior::AnubisWarriorCombatBehavior(GameObject* owner) : su
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.15f);
+	this->setTimelineSpeedBase(1.15f);
 }
 
 AnubisWarriorCombatBehavior::~AnubisWarriorCombatBehavior()

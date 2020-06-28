@@ -10,7 +10,8 @@ class PlatformerEntity;
 class EntityCombatBehaviorBase : public AttachedBehaviorGroup
 {
 public:
-	void setTimelineSpeed(float timelineSpeed);
+	void setTimelineSpeedBase(float timelineSpeed);
+	float getTimelineSpeedBase();
 	float getTimelineSpeed();
 
 protected:

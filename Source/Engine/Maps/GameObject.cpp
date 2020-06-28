@@ -583,6 +583,7 @@ void GameObject::onDespawn()
 	}
 
 	this->removeAllListeners();
+	this->unscheduleUpdate();
 	this->setVisible(false);
 	this->despawned = true;
 }

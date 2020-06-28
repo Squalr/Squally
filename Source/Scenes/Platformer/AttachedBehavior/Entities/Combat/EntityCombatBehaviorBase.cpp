@@ -38,9 +38,14 @@ EntityCombatBehaviorBase::~EntityCombatBehaviorBase()
 {
 }
 
-void EntityCombatBehaviorBase::setTimelineSpeed(float timelineSpeed)
+void EntityCombatBehaviorBase::setTimelineSpeedBase(float timelineSpeed)
 {
 	this->timelineSpeed = timelineSpeed;
+}
+
+float EntityCombatBehaviorBase::getTimelineSpeedBase()
+{
+	return this->timelineSpeed;
 }
 
 float EntityCombatBehaviorBase::getTimelineSpeed()

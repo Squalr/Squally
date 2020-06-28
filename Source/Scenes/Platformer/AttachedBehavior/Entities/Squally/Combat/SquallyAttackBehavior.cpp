@@ -16,6 +16,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Condensation/CastCondensation.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/EnvelopingWinds/CastEnvelopingWinds.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttacks.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -76,7 +77,7 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerAttack(CastEnvelopingWinds::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookLightning, Value(false)).asBool())

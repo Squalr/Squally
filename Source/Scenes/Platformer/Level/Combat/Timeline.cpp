@@ -521,6 +521,9 @@ void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 	// Note: do not pass TimelineEntry::CastPercentage -- 0.075f
 	static const std::vector<float> StartTimesFirstStrike = std::vector<float>({ 0.70f + 0.04f, 0.325f, 0.2f });
 	static const std::vector<float> StartTimesSecondStrike = std::vector<float>({ 0.575f, 0.45f, 0.075f });
+	// Keep these the same vector length as start times because lazy
+	static const std::vector<float> SpeedBonusesFirstStrike = std::vector<float>({ 0.05f, 0.025f, 0.01f });
+	static const std::vector<float> SpeedBonusesSecondStrike = std::vector<float>({ 0.025f, 0.01f, 0.0f });
 	int friendlyIndex = 0;
 	int enemyIndex = 0;
 	
@@ -529,10 +532,12 @@ void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 		bool isSameTeamFirstStrike = (isPlayerFirstStrike && entry->isPlayerEntry()) || (!isPlayerFirstStrike && !entry->isPlayerEntry());
 		int* indexPtr = entry->isPlayerEntry() ? &friendlyIndex : &enemyIndex;
 		const std::vector<float>* startTimes = (isSameTeamFirstStrike) ? &StartTimesFirstStrike : &StartTimesSecondStrike;
+		const std::vector<float>* bonusSpeeds = (isSameTeamFirstStrike) ? &SpeedBonusesFirstStrike : &SpeedBonusesSecondStrike;
 
 		if (*indexPtr < int(startTimes->size()))
 		{
 			entry->setProgress(startTimes->at(*indexPtr));
+			entry->addInitSpeed(bonusSpeeds->at(*indexPtr));
 		}
 		else
 		{
