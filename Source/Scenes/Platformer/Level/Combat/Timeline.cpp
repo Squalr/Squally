@@ -363,11 +363,6 @@ void Timeline::resumeTimeline()
 	this->onPauseStateChanged();
 }
 
-std::vector<TimelineEntry*> Timeline::getEntries()
-{
-	return this->timelineEntries;
-}
-
 std::vector<PlatformerEntity*> Timeline::getEntities()
 {
 	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
@@ -436,6 +431,55 @@ TimelineEntry* Timeline::getAssociatedEntry(PlatformerEntity* entity)
 	return nullptr;
 }
 
+std::vector<TimelineEntry*> Timeline::getEntries()
+{
+	return this->timelineEntries;
+}
+
+std::vector<TimelineEntry*> Timeline::getFriendlyEntries()
+{
+	std::vector<TimelineEntry*> entities = std::vector<TimelineEntry*>();
+
+	for (auto next : this->timelineEntries)
+	{
+		if (next->isPlayerEntry())
+		{
+			entities.push_back(next);
+		}
+	}
+
+	return entities;
+}
+
+std::vector<TimelineEntry*> Timeline::getEnemyEntries()
+{
+	std::vector<TimelineEntry*> entities = std::vector<TimelineEntry*>();
+
+	for (auto next : this->timelineEntries)
+	{
+		if (!next->isPlayerEntry())
+		{
+			entities.push_back(next);
+		}
+	}
+
+	return entities;
+}
+
+std::vector<TimelineEntry*> Timeline::getSameTeamEntries(PlatformerEntity* entity)
+{
+	for (auto next : this->timelineEntries)
+	{
+		if (next->getEntity() == entity)
+		{
+			return next->isPlayerEntry() ? this->getFriendlyEntries() : this->getEnemyEntries();
+		}
+	}
+	
+	return std::vector<TimelineEntry*>();
+}
+
+
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vector<PlatformerEntity*>& friendlyEntities)
 {
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
@@ -484,7 +528,7 @@ void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 	{
 		bool isSameTeamFirstStrike = (isPlayerFirstStrike && entry->isPlayerEntry()) || (!isPlayerFirstStrike && !entry->isPlayerEntry());
 		int* indexPtr = entry->isPlayerEntry() ? &friendlyIndex : &enemyIndex;
-		const std::vector<float>* startTimes = entry->isPlayerEntry() ? &StartTimesFirstStrike : &StartTimesSecondStrike;
+		const std::vector<float>* startTimes = (isSameTeamFirstStrike) ? &StartTimesFirstStrike : &StartTimesSecondStrike;
 
 		if (*indexPtr < int(startTimes->size()))
 		{

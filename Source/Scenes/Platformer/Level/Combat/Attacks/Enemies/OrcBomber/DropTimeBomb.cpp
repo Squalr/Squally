@@ -6,6 +6,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
@@ -103,6 +104,13 @@ bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 
 	for (auto next : otherTeam)
 	{
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<DropTimeBomb*>(next) != nullptr;  }))
+		{
+			// Consider a cast-in-progress as a buff
+			buffCount++;
+			continue;
+		}
+
 		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<TimeBomb>([&](TimeBomb* bombed)
@@ -117,7 +125,7 @@ bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 
 float DropTimeBomb::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = 1.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<DropTimeBomb*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
