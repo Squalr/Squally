@@ -315,6 +315,9 @@ namespace SoundResources
 	extern const std::string Platformer_Physical_Swings_SwingWeakHybrid4;
 	extern const std::string Platformer_Physical_Swings_WindBlade1;
 	extern const std::string Platformer_Spells_ArcaneHit1;
+	extern const std::string Platformer_Spells_Bubbles1;
+	extern const std::string Platformer_Spells_Bubbles2;
+	extern const std::string Platformer_Spells_Bubbles3;
 	extern const std::string Platformer_Spells_Curse1;
 	extern const std::string Platformer_Spells_Ding1;
 	extern const std::string Platformer_Spells_Ding2;
@@ -350,9 +353,11 @@ namespace SoundResources
 	extern const std::string Platformer_Spells_IceHit7;
 	extern const std::string Platformer_Spells_IceHit8;
 	extern const std::string Platformer_Spells_IceHit9;
+	extern const std::string Platformer_Spells_Lightning1;
 	extern const std::string Platformer_Spells_MagicArrow1;
 	extern const std::string Platformer_Spells_MagicArrowHit1;
 	extern const std::string Platformer_Spells_PoisonSpell1;
 	extern const std::string Platformer_Spells_Recharge1;
 	extern const std::string Platformer_Spells_TelePush1;
+	extern const std::string Platformer_Spells_Wind1;
 };

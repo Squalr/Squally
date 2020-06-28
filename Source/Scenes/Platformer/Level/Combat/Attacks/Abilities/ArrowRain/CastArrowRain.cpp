@@ -31,7 +31,7 @@ CastArrowRain* CastArrowRain::create(float attackDuration, float recoverDuration
 }
 
 CastArrowRain::CastArrowRain(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource)
-	: super(AttackType::Damage, UIResources::Menus_Icons_ArrowRain, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, true)
+	: super(AttackType::Damage, UIResources::Menus_Icons_ArrowRain, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Multi)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	this->arrowResource = arrowResource;

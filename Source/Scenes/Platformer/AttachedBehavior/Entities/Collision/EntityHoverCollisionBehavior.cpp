@@ -133,7 +133,8 @@ void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 	static const Vec2 Offset = CollisionOffset + Vec2(0.0f, -OriginalHoverHeight / 2.0f);
 
 	float adjustedProgress = MathUtils::clamp(MinCrouch + (MaxCrouch - MinCrouch) * (1.0f - this->crouchProgress), 0.0f, 1.0f);
-	Size hoverSize = Size(this->entity->getEntitySize().width, this->entity->getHoverHeight() * adjustedProgress);
+	// Keep in sync with values used when building hover collision the first time.
+	Size hoverSize = Size(std::max(this->entity->getEntitySize().width - 24.0f, 16.0f), this->entity->getHoverHeight() * adjustedProgress);
 	float hoverDelta = OriginalHoverHeight - hoverSize.height;
 	this->hoverCollision->setPoints(CollisionObject::createBox(hoverSize));
 
@@ -157,7 +158,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		return;
 	}
 
-	Size hoverSize = Size(this->entity->getEntitySize().width, this->entity->getHoverHeight());
+	Size hoverSize = Size(std::max(this->entity->getEntitySize().width - 24.0f, 16.0f), this->entity->getHoverHeight());
 
 	CollisionType collisionType = CollisionType(PlatformerCollisionType::Hover);
 

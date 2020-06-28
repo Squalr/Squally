@@ -20094,6 +20094,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_Cleave() = default;
 	};
 
+	class Platformer_Combat_Attacks_Condensation : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Condensation* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Condensation();
+		virtual ~Platformer_Combat_Attacks_Condensation() = default;
+	};
+
 	class Platformer_Combat_Attacks_EnergyBolt : public LocalizedString
 	{
 	public:

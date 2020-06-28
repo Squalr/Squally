@@ -215,11 +215,11 @@ Vec2 PlatformerEntity::getEntityBottomPoint()
 
 	if (this->isFlippedY())
 	{
-		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f);
+		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f + this->getHoverHeight());
 	}
 	else
 	{
-		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f);
+		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f - this->getHoverHeight());
 	}
 
 	return offset;

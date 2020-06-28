@@ -112,22 +112,22 @@ void EntityTextOverlayBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestoreDelt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			// Negate restore (convert into a raw mana delta)
-			this->runManaDelta(-args->damageOrHealing, true);
+			this->runManaDelta(args->manaRestoreOrDrain, true);
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrainDelt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runManaDelta(args->damageOrHealing, false);
+			// Negate restore (convert into a raw mana delta)
+			this->runManaDelta(-args->manaRestoreOrDrain, false);
 		}
 	}));
 }

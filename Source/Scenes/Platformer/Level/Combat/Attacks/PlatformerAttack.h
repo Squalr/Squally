@@ -20,6 +20,13 @@ public:
 		Resurrection,
 	};
 
+	enum class TargetingType
+	{
+		Single,
+		Self,
+		Multi
+	};
+
 	enum class Priority
 	{
 		Guaranteed,	// 100% (not weighted against other attacks, this gets priority)
@@ -37,10 +44,10 @@ public:
 	virtual std::string getAttackAnimation();
 	std::string getIconResource();
 	void execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
-	bool isMultiTarget();
 	Priority getPriority();
 	int getSpecialCost();
 	AttackType getAttackType();
+	TargetingType getTargetingType();
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
 	virtual void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) = 0;
@@ -63,7 +70,7 @@ public:
 protected:
 	friend class EntityAttackBehavior;
 	
-	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, AbilityType abilityType, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, bool multiTarget = false);
+	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, AbilityType abilityType, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, TargetingType targetingType = TargetingType::Single);
 	virtual ~PlatformerAttack();
 
 	int getBaseDamageMin();
@@ -97,12 +104,12 @@ private:
 	virtual PlatformerAttack* cloneInternal() = 0;
 
 	AttackType attackType;
+	TargetingType targetingType;
 	std::string iconResource;
 	int baseDamageOrHealingMin;
 	int baseDamageOrHealingMax;
 	float damageMultiplier;
 	int specialCost;
-	bool multiTarget;
 
 	std::vector<std::function<void()>> attackCompleteCallbacks;
 };

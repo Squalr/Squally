@@ -30,6 +30,9 @@ private:
 	void performRetargetCorrections(TimelineEntry* attackingEntry);
 	void performAIActions(TimelineEntry* attackingEntry);
 	void selectTargets(TimelineEntry* attackingEntry);
+	void selectTargetSingle(TimelineEntry* attackingEntry);
+	void selectTargetSelf(TimelineEntry* attackingEntry);
+	void selectTargetsMulti(TimelineEntry* attackingEntry);
 	void selectAttack(TimelineEntry* attackingEntry);
 	void shuffleEntities();
 

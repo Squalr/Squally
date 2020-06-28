@@ -33,7 +33,7 @@ MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float r
 		8,
 		attackDuration,
 		recoverDuration,
-		true
+		TargetingType::Multi
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow1);

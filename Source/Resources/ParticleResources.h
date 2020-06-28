@@ -64,11 +64,14 @@ namespace ParticleResources
 	extern const std::string Objects_StatueBreak;
 	extern const std::string Objects_VaseBreak;
 	extern const std::string Platformer_Combat_Abilities_Blue;
+	extern const std::string Platformer_Combat_Abilities_Bubbles;
 	extern const std::string Platformer_Combat_Abilities_Curse;
 	extern const std::string Platformer_Combat_Abilities_Enrage;
 	extern const std::string Platformer_Combat_Abilities_Gray;
 	extern const std::string Platformer_Combat_Abilities_Heal;
+	extern const std::string Platformer_Combat_Abilities_Resurrect;
 	extern const std::string Platformer_Combat_Abilities_Speed;
+	extern const std::string Platformer_Combat_Abilities_WindStorm;
 	extern const std::string Platformer_Combat_LevelUp;
 	extern const std::string Platformer_Hacking_HackerRain1;
 	extern const std::string Platformer_Hacking_HackerRain2;
