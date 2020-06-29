@@ -53,7 +53,7 @@
 	<key>minRadiusVariance</key>
 	<real>0.0</real>
 	<key>particleLifespan</key>
-	<real>1</real>
+	<real>2.0</real>
 	<key>particleLifespanVariance</key>
 	<real>0.0</real>
 	<key>positionType</key>

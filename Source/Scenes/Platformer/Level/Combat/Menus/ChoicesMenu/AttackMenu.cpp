@@ -38,7 +38,7 @@ AttackMenu* AttackMenu::create(Timeline* timelineRef)
 	return instance;
 }
 
-AttackMenu::AttackMenu(Timeline* timelineRef) : super(AttackMenu::Radius)
+AttackMenu::AttackMenu(Timeline* timelineRef) : super(AttackMenu::Radius, float(M_PI) / 9.0f)
 {
 	this->timelineRef = timelineRef;
 }

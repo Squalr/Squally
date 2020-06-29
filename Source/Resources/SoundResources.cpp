@@ -359,3 +359,4 @@ const std::string SoundResources::Platformer_Spells_PoisonSpell1 = "Private/Soun
 const std::string SoundResources::Platformer_Spells_Recharge1 = "Private/Sounds/Platformer/Spells/Recharge1.mp3";
 const std::string SoundResources::Platformer_Spells_TelePush1 = "Private/Sounds/Platformer/Spells/TelePush1.mp3";
 const std::string SoundResources::Platformer_Spells_Wind1 = "Private/Sounds/Platformer/Spells/Wind1.mp3";
+const std::string SoundResources::Platformer_Spells_Wind2 = "Private/Sounds/Platformer/Spells/Wind2.mp3";

@@ -14,7 +14,7 @@ class Sound;
 class RadialScrollMenu : public SmartNode
 {
 public:
-	static RadialScrollMenu* create(float radius);
+	static RadialScrollMenu* create(float radius, float angleDelta = float(M_PI) / 6.0f);
 
 	int getIndex();
 	void clearItems();
@@ -29,7 +29,7 @@ public:
 	void setBackCallback(std::function<void()> backCallback);
 
 protected:
-	RadialScrollMenu(float radius);
+	RadialScrollMenu(float radius, float angleDelta = float(M_PI) / 6.0f);
 	virtual ~RadialScrollMenu();
 	
 	void initializePositions() override;
@@ -46,6 +46,7 @@ private:
 	Sound* indexChangeSound;
 	Sound* errorSound;
 	float radius;
+	float angleDelta;
 
 	int currentIndex;
 	bool focused;

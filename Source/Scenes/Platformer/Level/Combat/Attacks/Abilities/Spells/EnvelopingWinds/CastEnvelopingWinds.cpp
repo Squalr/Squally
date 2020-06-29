@@ -32,7 +32,7 @@ CastEnvelopingWinds* CastEnvelopingWinds::create(float attackDuration, float rec
 CastEnvelopingWinds::CastEnvelopingWinds(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_Fog, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Multi)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Wind2);
 	
 	this->addChild(this->castSound);
 }
@@ -87,7 +87,7 @@ void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<Pla
 		));
 
 		// We spawned the wind to the arena center, but actually we want to snap the X back to the owner.
-		envelopingWinds->setPosition(Vec2(owner->getPositionX() - 32.0f, envelopingWinds->getPositionY() + 256.0f));
+		envelopingWinds->setPosition(Vec2(owner->getPositionX() - 32.0f, envelopingWinds->getPositionY()));
 	},
 	[=]()
 	{

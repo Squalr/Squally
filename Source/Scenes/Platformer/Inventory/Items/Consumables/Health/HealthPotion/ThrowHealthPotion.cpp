@@ -51,7 +51,7 @@ PlatformerAttack* ThrowHealthPotion::cloneInternal()
 
 LocalizedString* ThrowHealthPotion::getString()
 {
-	return Strings::Common_Empty::create();
+	return Strings::Items_Consumables_Health_HealthPotion::create();
 }
 
 std::string ThrowHealthPotion::getAttackAnimation()

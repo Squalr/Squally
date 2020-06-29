@@ -19,16 +19,16 @@
 
 using namespace cocos2d;
 
-RadialScrollMenu* RadialScrollMenu::create(float radius)
+RadialScrollMenu* RadialScrollMenu::create(float radius, float angleDelta)
 {
-	RadialScrollMenu* instance = new RadialScrollMenu(radius);
+	RadialScrollMenu* instance = new RadialScrollMenu(radius, angleDelta);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RadialScrollMenu::RadialScrollMenu(float radius)
+RadialScrollMenu::RadialScrollMenu(float radius, float angleDelta)
 {
 	this->radius = radius;
 	this->buttonsNode = Node::create();
@@ -40,6 +40,7 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 	this->focused = true;
 	this->isTimelineCinematicPaused = false;
 	this->backCallback = nullptr;
+	this->angleDelta = angleDelta;
 
 	this->addChild(this->buttonsNode);
 	this->addChild(this->arrow);
@@ -299,7 +300,6 @@ void RadialScrollMenu::scrollTo(int index)
 
 void RadialScrollMenu::positionButtons()
 {
-	const float AngleDelta = float(M_PI) / 6.0f;
 	int buttonIndex = 0;
 
 	for (int buttonIndex = 0; buttonIndex < int(this->buttons.size()); buttonIndex++)
@@ -308,7 +308,7 @@ void RadialScrollMenu::positionButtons()
 
 		int effectiveIndex = buttonIndex - this->currentIndex;
 		int distance = std::abs(effectiveIndex);
-		float currentAngle = float(effectiveIndex) * AngleDelta;
+		float currentAngle = float(effectiveIndex) * this->angleDelta;
 
 		button->setTextOffset(Vec2(48.0f, 0.0f));
 		button->setPosition(Vec2(this->radius * std::cos(currentAngle), this->radius * -std::sin(currentAngle)));

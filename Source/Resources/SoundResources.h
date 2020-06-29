@@ -360,4 +360,5 @@ namespace SoundResources
 	extern const std::string Platformer_Spells_Recharge1;
 	extern const std::string Platformer_Spells_TelePush1;
 	extern const std::string Platformer_Spells_Wind1;
+	extern const std::string Platformer_Spells_Wind2;
 };
