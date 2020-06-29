@@ -215,8 +215,16 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));

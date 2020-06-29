@@ -131,10 +131,15 @@ void AttackMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, in
 			{
 				case PlatformerAttack::AttackType::Healing:
 				case PlatformerAttack::AttackType::Buff:
-				case PlatformerAttack::AttackType::Resurrection:
 				{
 					auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
 					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
+					break;
+				}
+				case PlatformerAttack::AttackType::Resurrection:
+				{
+					auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget, entry, meta));
 					break;
 				}
 				case PlatformerAttack::AttackType::Damage:

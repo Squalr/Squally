@@ -16,8 +16,7 @@ class TrainingHeal : public Buff
 {
 public:
 	static TrainingHeal* create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string TrainingHealIdentifier;
 	static const float TimeBetweenTicks;
 	static const int HackTicks;

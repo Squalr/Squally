@@ -172,6 +172,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_AlchemyBrew;
 	extern const std::string Menus_Icons_AlchemyPot;
 	extern const std::string Menus_Icons_Anchor;
+	extern const std::string Menus_Icons_Ankh;
 	extern const std::string Menus_Icons_Anvil;
 	extern const std::string Menus_Icons_ArcheryTarget;
 	extern const std::string Menus_Icons_Arrow;

@@ -16,8 +16,7 @@ class Reflect : public Buff
 {
 public:
 	static Reflect* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string ReflectIdentifier;
 
 protected:

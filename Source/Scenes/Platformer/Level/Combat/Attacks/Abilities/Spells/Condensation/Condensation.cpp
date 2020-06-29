@@ -23,7 +23,7 @@ Condensation* Condensation::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Condensation::Condensation(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, "", AbilityType::Water, BuffData(Condensation::Duration, Condensation::CondensationIdentifier))
+	: super(caster, target, "", AbilityType::Water, BuffData(Condensation::Duration))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Bubbles);
 

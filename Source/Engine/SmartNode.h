@@ -27,6 +27,8 @@ public:
 	cocos2d::EventListener* whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible = true);
 	void onDispose(std::function<void()> task);
 
 protected:

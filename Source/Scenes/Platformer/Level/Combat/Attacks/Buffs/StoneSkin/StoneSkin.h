@@ -16,8 +16,7 @@ class StoneSkin : public Buff
 {
 public:
 	static StoneSkin* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string StoneSkinIdentifier;
 
 protected:

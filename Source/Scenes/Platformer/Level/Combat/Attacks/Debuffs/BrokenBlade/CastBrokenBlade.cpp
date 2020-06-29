@@ -64,7 +64,7 @@ void CastBrokenBlade::performAttack(PlatformerEntity* owner, std::vector<Platfor
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("Attack");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (auto next : targets)
 	{

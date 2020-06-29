@@ -400,6 +400,46 @@ EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeybo
 	return listener;
 }
 
+EventListener* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+{
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
+		{
+			if (!requireVisible || GameUtils::isVisible(this))
+			{
+				callback(args);
+			}
+		}
+	});
+
+	this->addEventListener(listener);
+
+	return listener;
+}
+
+EventListener* SmartNode::whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+{
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
+		{
+			if (!requireVisible || GameUtils::isVisible(this))
+			{
+				callback(args);
+			}
+		}
+	});
+
+	this->addEventListener(listener);
+
+	return listener;
+}
+
 void SmartNode::onDispose(std::function<void()> task)
 {
 	this->disposeCallbacks.push_back(task);

@@ -32,7 +32,6 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
-const std::string TrainingHeal::PropertyRestorePotionTutorial = "training-heal-tutorial";
 const std::string TrainingHeal::TrainingHealIdentifier = "training-heal";
 const float TrainingHeal::TimeBetweenTicks = 0.5f;
 const int TrainingHeal::HackTicks = 5;

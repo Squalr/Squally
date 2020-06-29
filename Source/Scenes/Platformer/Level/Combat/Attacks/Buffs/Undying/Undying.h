@@ -16,8 +16,7 @@ class Undying : public Buff
 {
 public:
 	static Undying* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string UndyingIdentifier;
 
 protected:

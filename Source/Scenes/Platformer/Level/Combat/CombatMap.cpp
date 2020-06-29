@@ -54,6 +54,7 @@
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/MapResources.h"
 
@@ -335,6 +336,7 @@ void CombatMap::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
 				{
 					this->entityFocusTakeOver->unfocus();
 					this->focusTakeOver->unfocus();
@@ -353,9 +355,14 @@ void CombatMap::initializeListeners()
 
 						entity->getAnimations()->setOpacity(127);
 
-						if (combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget
-							|| (!entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget)
-							|| (entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
+						bool isAlive = entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+						bool isValidTarget = combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget;
+
+						isValidTarget |= (isAlive && !entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget);
+						isValidTarget |= (isAlive && entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget);
+						isValidTarget |= (!isAlive && entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget);
+
+						if (isValidTarget)
 						{
 							entity->getAnimations()->setOpacity(255);
 							entityFocusTargets.push_back(entity);

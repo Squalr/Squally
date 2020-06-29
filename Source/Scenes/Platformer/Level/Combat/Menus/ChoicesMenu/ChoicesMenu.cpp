@@ -128,6 +128,7 @@ void ChoicesMenu::initializeListeners()
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
 			{
 				args->handle();
 				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, this->selectedEntry));	
@@ -237,6 +238,7 @@ void ChoicesMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
 				{
 					PlatformerEvents::TriggerDisallowPause();
 

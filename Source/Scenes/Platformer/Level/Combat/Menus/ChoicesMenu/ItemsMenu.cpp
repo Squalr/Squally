@@ -108,10 +108,15 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 				{
 					case PlatformerAttack::AttackType::Healing:
 					case PlatformerAttack::AttackType::Buff:
-					case PlatformerAttack::AttackType::Resurrection:
 					{
 						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
 						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
+						break;
+					}
+					case PlatformerAttack::AttackType::Resurrection:
+					{
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget, entry, meta));
 						break;
 					}
 					case PlatformerAttack::AttackType::Damage:

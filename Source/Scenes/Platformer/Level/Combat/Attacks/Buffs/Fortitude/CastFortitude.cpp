@@ -63,7 +63,7 @@ void CastFortitude::performAttack(PlatformerEntity* owner, std::vector<Platforme
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (auto next : targets)
 	{

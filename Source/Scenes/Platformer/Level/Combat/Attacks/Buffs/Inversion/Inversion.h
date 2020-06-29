@@ -16,8 +16,7 @@ class Inversion : public Buff
 {
 public:
 	static Inversion* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string InversionIdentifier;
 
 protected:

@@ -38,6 +38,7 @@ private:
 	enum class AllowedSelection
 	{
 		None,
+		PlayerResurrection,
 		Player,
 		Enemy,
 		Either

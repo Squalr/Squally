@@ -91,6 +91,24 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
+	this->whenScrollDown([=](InputEvents::MouseEventArgs* args)
+	{
+		if (this->focused && !this->isTimelineCinematicPaused)
+		{
+			args->handle();
+			this->scrollDown();
+		}
+	});
+
+	this->whenScrollUp([=](InputEvents::MouseEventArgs* args)
+	{
+		if (this->focused && !this->isTimelineCinematicPaused)
+		{
+			args->handle();
+			this->scrollUp();
+		}
+	});
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused && this->backCallback != nullptr)
@@ -264,7 +282,10 @@ void RadialScrollMenu::scrollUp()
 	}
 	else
 	{
-		this->errorSound->play();
+		if (!this->errorSound->isPlaying())
+		{
+			this->errorSound->play();
+		}
 	}
 
 	this->positionButtons();
@@ -286,7 +307,10 @@ void RadialScrollMenu::scrollDown()
 	}
 	else
 	{
-		this->errorSound->play();
+		if (!this->errorSound->isPlaying())
+		{
+			this->errorSound->play();
+		}
 	}
 
 	this->positionButtons();

@@ -171,6 +171,7 @@ const std::string UIResources::Menus_HackerModeMenu_TrashCanSelected = "Private/
 const std::string UIResources::Menus_Icons_AlchemyBrew = "Private/UI/Menus/Icons/AlchemyBrew.png";
 const std::string UIResources::Menus_Icons_AlchemyPot = "Private/UI/Menus/Icons/AlchemyPot.png";
 const std::string UIResources::Menus_Icons_Anchor = "Private/UI/Menus/Icons/Anchor.png";
+const std::string UIResources::Menus_Icons_Ankh = "Private/UI/Menus/Icons/Ankh.png";
 const std::string UIResources::Menus_Icons_Anvil = "Private/UI/Menus/Icons/Anvil.png";
 const std::string UIResources::Menus_Icons_ArcheryTarget = "Private/UI/Menus/Icons/ArcheryTarget.png";
 const std::string UIResources::Menus_Icons_Arrow = "Private/UI/Menus/Icons/Arrow.png";

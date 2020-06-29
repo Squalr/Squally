@@ -20214,6 +20214,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_Punch() = default;
 	};
 
+	class Platformer_Combat_Attacks_Resurrect : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Resurrect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Resurrect();
+		virtual ~Platformer_Combat_Attacks_Resurrect() = default;
+	};
+
 	class Platformer_Combat_Attacks_Shoot : public LocalizedString
 	{
 	public:

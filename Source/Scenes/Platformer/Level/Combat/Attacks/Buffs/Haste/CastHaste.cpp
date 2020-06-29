@@ -63,7 +63,7 @@ void CastHaste::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (auto next : targets)
 	{
