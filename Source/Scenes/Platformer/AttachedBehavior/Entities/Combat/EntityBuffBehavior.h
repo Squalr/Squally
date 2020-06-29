@@ -37,7 +37,7 @@ public:
 
 	void sortBuffs();
 	std::vector<Buff*> getBuffs();
-	void applyBuff(Buff* buff);
+	void applyBuff(Buff* buff, bool checkAlive = true);
 	void removeBuff(Buff* buff);
 	void removeBuffsById(std::string buffId);
 	void removeAllBuffs();

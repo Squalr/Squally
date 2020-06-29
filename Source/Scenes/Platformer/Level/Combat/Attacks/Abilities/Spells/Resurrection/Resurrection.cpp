@@ -5,6 +5,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Particles/SmartParticles.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
@@ -29,9 +30,9 @@ Resurrection* Resurrection::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Resurrection::Resurrection(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Ankh, AbilityType::Holy, BuffData(Resurrection::Duration))
+	: super(caster, target, "", AbilityType::Holy, BuffData(Resurrection::Duration))
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Resurrect);
 	this->spellAura = Sprite::create(FXResources::Auras_HexagonAura);
 
 	this->spellAura->setColor(Color3B::YELLOW);
@@ -49,6 +50,7 @@ void Resurrection::onEnter()
 {
 	super::onEnter();
 
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPoint().y);
 	this->spellEffect->start();
 
 	this->spellAura->runAction(Sequence::create(

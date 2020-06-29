@@ -71,7 +71,7 @@ void CastResurrection::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	{
 		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
-			entityBuffBehavior->applyBuff(Resurrection::create(owner, next));
+			entityBuffBehavior->applyBuff(Resurrection::create(owner, next), false);
 		});
 
 		next->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* entityHealthBehavior)
