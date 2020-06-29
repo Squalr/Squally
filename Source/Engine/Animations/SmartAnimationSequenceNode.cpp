@@ -38,6 +38,7 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
 	this->repeatIndex = 0;
+	this->animationAnchor = Vec2(0.5f, 0.5f);
 	
 	this->primeCache(this->defaultSprite);
 
@@ -104,6 +105,14 @@ void SmartAnimationSequenceNode::playAnimation(std::vector<std::string> animatio
 		animation->addSpriteFrameWithFile(UIResources::EmptyImage);
 	}
 
+	for (auto next : animation->getFrames())
+	{
+		if (next->getSpriteFrame() != nullptr)
+		{
+			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
+		}
+	}
+
 	animation->setDelayPerUnit(animationSpeed);
 
 	this->forwardsAnimation = Animate::create(animation);
@@ -141,6 +150,14 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::vector<std::string> an
 	if (insertBlankFrame)
 	{
 		animation->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
+
+	for (auto next : animation->getFrames())
+	{
+		if (next->getSpriteFrame() != nullptr)
+		{
+			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
+		}
 	}
 
 	animation->setDelayPerUnit(animationSpeed);
@@ -205,6 +222,22 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::vector<std::string
 		animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
 	}
 
+	for (auto next : animationIn->getFrames())
+	{
+		if (next->getSpriteFrame() != nullptr)
+		{
+			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
+		}
+	}
+
+	for (auto next : animationOut->getFrames())
+	{
+		if (next->getSpriteFrame() != nullptr)
+		{
+			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
+		}
+	}
+
 	animationIn->setDelayPerUnit(animationSpeedIn);
 	animationOut->setDelayPerUnit(animationSpeedOut);
 
@@ -253,6 +286,22 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::
 	if (insertBlankFrame)
 	{
 		animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
+
+	for (auto next : animationIn->getFrames())
+	{
+		if (next->getSpriteFrame() != nullptr)
+		{
+			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
+		}
+	}
+
+	for (auto next : animationOut->getFrames())
+	{
+		if (next->getSpriteFrame() != nullptr)
+		{
+			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
+		}
 	}
 
 	animationIn->setDelayPerUnit(animationSpeedIn);
@@ -352,6 +401,11 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::
 			));
 		}
 	}
+}
+
+void SmartAnimationSequenceNode::setAnimationAnchor(Vec2 anchor)
+{
+	this->animationAnchor = anchor;
 }
 
 void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)

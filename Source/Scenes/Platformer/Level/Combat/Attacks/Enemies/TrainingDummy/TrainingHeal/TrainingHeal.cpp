@@ -53,7 +53,8 @@ TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, i
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
-
+	
+	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->healEffect);
@@ -69,6 +70,7 @@ void TrainingHeal::onEnter()
 {
 	super::onEnter();
 
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 24.0f);
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
 		DelayTime::create(0.5f),

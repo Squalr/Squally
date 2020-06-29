@@ -31,6 +31,8 @@ public:
 	cocos2d::Vec2 getEntityCenterPoint();
 	cocos2d::Vec2 getEntityTopPoint();
 	cocos2d::Vec2 getEntityBottomPoint();
+	cocos2d::Vec2 getEntityTopPointRelative();
+	cocos2d::Vec2 getEntityBottomPointRelative();
 	float getHoverHeight();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;

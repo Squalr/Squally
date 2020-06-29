@@ -28,6 +28,8 @@ LightningStrike::LightningStrike(PlatformerEntity* caster, PlatformerEntity* tar
 {
 	this->spellEffect = SmartAnimationSequenceNode::create();
 
+	this->spellEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
+
 	this->addChild(this->spellEffect);
 }
 
@@ -46,5 +48,5 @@ void LightningStrike::initializePositions()
 {
 	super::initializePositions();
 
-	this->spellEffect->setPositionY(512.0f + this->owner->getEntityBottomPoint().y);
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 56.0f);
 }

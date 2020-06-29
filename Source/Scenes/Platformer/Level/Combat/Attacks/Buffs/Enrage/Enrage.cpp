@@ -78,7 +78,7 @@ void Enrage::onEnter()
 {
 	super::onEnter();
 
-	this->spellEffect->setPositionY(this->owner->getEntityBottomPoint().y);
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
 
 	this->spellAura->runAction(Sequence::create(
