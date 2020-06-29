@@ -30,7 +30,7 @@ CastResurrection* CastResurrection::create(float attackDuration, float recoverDu
 CastResurrection::CastResurrection(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Resurrection, UIResources::Menus_Icons_Ankh, priority, AbilityType::Holy, 0, 0, 8, attackDuration, recoverDuration)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Notifications_Reveal1);
 
 	this->addChild(this->castSound);
 }

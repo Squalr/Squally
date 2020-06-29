@@ -20169,6 +20169,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_Execute() = default;
 	};
 
+	class Platformer_Combat_Attacks_LightningStrike : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_LightningStrike* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_LightningStrike();
+		virtual ~Platformer_Combat_Attacks_LightningStrike() = default;
+	};
+
 	class Platformer_Combat_Attacks_MultiShot : public LocalizedString
 	{
 	public:
