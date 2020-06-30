@@ -188,6 +188,11 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 	{
 		static const Vec2 HoverSpeed = Vec2(0.0f, 192.0f);
 		static const float MinSpeed = 0.0f;
+
+		if (this->entity->controlState == PlatformerEntity::ControlState::Swimming)
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
 		
 		/*
 		if (this->hoverGroundCollisionDetector->getCurrentCollisions().size() == 1)
