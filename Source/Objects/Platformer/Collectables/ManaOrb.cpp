@@ -72,5 +72,12 @@ void ManaOrb::initializeListeners()
 
 void ManaOrb::hideCollectable()
 {
-	this->collectableCollision->runAction(FadeTo::create(0.5f, 0));
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			this->manaOrb->stop(2.0f);
+		}),
+		nullptr
+	));
 }

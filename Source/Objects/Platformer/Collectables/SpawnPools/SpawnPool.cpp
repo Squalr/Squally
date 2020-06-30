@@ -45,8 +45,6 @@ void SpawnPool::trySpawnCollectable()
 	{
 		return;
 	}
-	
-	collectable->setCollectCooldown();
 
 	collectable->onCollected([=]()
 	{

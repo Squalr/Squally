@@ -33,7 +33,6 @@ Collectable::Collectable(ValueMap& properties) : super(properties)
 	this->collectableCollision = CollisionObject::create(CollisionObject::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, CollisionObject::Properties(true, false));
 	this->collectionEvents = std::vector<std::function<void()>>();
 	this->isCollected = false;
-	this->collectCooldown = 0.0f;
 
 	this->collectableCollision->addChild(this->collectableNode);
 	this->addChild(this->collectableCollision);
@@ -51,8 +50,6 @@ void Collectable::onEnter()
 	{
 		this->disableCollection();
 	}
-
-	this->scheduleUpdate();
 }
 
 void Collectable::initializePositions()
@@ -77,21 +74,6 @@ void Collectable::initializeListeners()
 	});
 }
 
-void Collectable::update(float dt)
-{
-	super::update(dt);
-
-	if (this->collectCooldown > 0.0f)
-	{
-		this->collectCooldown -= dt;
-	}
-}
-
-void Collectable::setCollectCooldown(float cooldown)
-{
-	this->collectCooldown = cooldown;
-}
-
 void Collectable::onCollected(std::function<void()> onCollectedEvent)
 {
 	this->collectionEvents.push_back(onCollectedEvent);
@@ -99,7 +81,7 @@ void Collectable::onCollected(std::function<void()> onCollectedEvent)
 
 void Collectable::tryCollect()
 {
-	if (!this->isCollected && collectCooldown <= 0.0f)
+	if (!this->isCollected)
 	{
 		this->disableCollection();
 

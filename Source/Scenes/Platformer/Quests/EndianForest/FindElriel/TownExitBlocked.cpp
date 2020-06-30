@@ -110,7 +110,7 @@ void TownExitBlocked::attachChironBehavior()
 
 	this->chironCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(this->chiron->getEntitySize(), 8.0f),
-		(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
+		(CollisionType)PlatformerCollisionType::Cinematic,
 		CollisionObject::Properties(false, false)
 	);
 	this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
