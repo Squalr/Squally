@@ -16,6 +16,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -38,20 +39,19 @@ const float IncrementHealth::TimeBetweenTicks = 0.5f;
 const int IncrementHealth::HackTicks = 5;
 const float IncrementHealth::StartDelay = 0.15f;
 
-IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
-	IncrementHealth* instance = new IncrementHealth(caster, target, healAmount);
+	IncrementHealth* instance = new IncrementHealth(caster, target);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_ArrowUp, AbilityType::Arcane, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
-	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
@@ -124,7 +124,7 @@ void IncrementHealth::runIncrementHealth()
 
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
-	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
+	for (int healIndex = 0; healIndex < IncrementHealthFlask::HealTicks; healIndex++)
 	{
 		Sprite* icon = Sprite::create(UIResources::Menus_Icons_ArrowUp);
 

@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/WorldSound.h"
@@ -49,6 +50,12 @@ PlatformerAttack* ThrowManaPotion::cloneInternal()
 LocalizedString* ThrowManaPotion::getString()
 {
 	return Strings::Items_Consumables_Mana_ManaPotion::create();
+}
+
+LocalizedString* ThrowManaPotion::getDescription()
+{
+	return Strings::Items_Consumables_Mana_ManaPotionDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(ManaPotion::RestorePercentage * 100.0f))));
 }
 
 std::string ThrowManaPotion::getAttackAnimation()

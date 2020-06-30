@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/WorldSound.h"
@@ -20,21 +21,20 @@
 
 using namespace cocos2d;
 
-ThrowHealthPotion* ThrowHealthPotion::create(Priority priority, float healPercentage, std::string iconResource)
+ThrowHealthPotion* ThrowHealthPotion::create(Priority priority)
 {
-	ThrowHealthPotion* instance = new ThrowHealthPotion(priority, healPercentage, iconResource);
+	ThrowHealthPotion* instance = new ThrowHealthPotion(priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource)
-	: super(AttackType::Healing, iconResource, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion(Priority priority)
+	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthPotion, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
-	this->healPercentage = healPercentage;
 
 	this->addChild(this->throwSound);
 	this->addChild(this->healSound);
@@ -46,12 +46,18 @@ ThrowHealthPotion::~ThrowHealthPotion()
 
 PlatformerAttack* ThrowHealthPotion::cloneInternal()
 {
-	return ThrowHealthPotion::create(this->priority, this->healPercentage, this->getIconResource());
+	return ThrowHealthPotion::create(this->priority);
 }
 
 LocalizedString* ThrowHealthPotion::getString()
 {
 	return Strings::Items_Consumables_Health_HealthPotion::create();
+}
+
+LocalizedString* ThrowHealthPotion::getDescription()
+{
+	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(HealthPotion::HealPercentage * 100.0f))));
 }
 
 std::string ThrowHealthPotion::getAttackAnimation()
@@ -82,7 +88,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 
 			if (entity != nullptr)
 			{
-				int healing = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
+				int healing = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0))) * HealthPotion::HealPercentage);
 
 				this->healSound->play();
 				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing, this->abilityType));

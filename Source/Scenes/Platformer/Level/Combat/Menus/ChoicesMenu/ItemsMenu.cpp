@@ -97,8 +97,9 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 				->setStringReplacementVariables(Strings::Common_TimesConstant::create()
 				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
 			LocalizedString* menuString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ attack->getString(), countString });
+			LocalizedString* description = attack->getDescription();
 
-			this->addEntry(menuString, { }, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
+			this->addEntry(menuString, { description }, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
 			{
 				this->scrollTo(index);
 
