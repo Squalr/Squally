@@ -10,6 +10,7 @@ public:
 	static WandEnergyBolt* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
+	LocalizedString* getDescription() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 

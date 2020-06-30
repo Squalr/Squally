@@ -17,6 +17,7 @@ public:
 	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	float getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	LocalizedString* getString() override;
+	LocalizedString* getDescription() override;
 	std::string getAttackAnimation() override;
 
 protected:
@@ -34,4 +35,6 @@ private:
 	PlatformerAttack* cloneInternal() override;
 	
 	WorldSound* castSound;
+
+	static const float HealPercentage;
 };

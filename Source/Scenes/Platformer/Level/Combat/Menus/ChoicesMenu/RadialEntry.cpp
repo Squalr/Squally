@@ -22,7 +22,7 @@ RadialEntry* RadialEntry::create(
 RadialEntry* RadialEntry::create(
 	LocalizedLabel* label,
 	LocalizedLabel* labelSelected,
-	cocos2d::Node* spriteResource,
+	Node* spriteResource,
 	std::string spriteSelectedResource)
 {
 	RadialEntry* instance = new RadialEntry(ClickableTextNode::create(label, labelSelected, spriteResource, spriteSelectedResource));
@@ -35,8 +35,8 @@ RadialEntry* RadialEntry::create(
 RadialEntry* RadialEntry::create(
 	LocalizedLabel* label,
 	LocalizedLabel* labelSelected, 
-	cocos2d::Node* content,
-	cocos2d::Node* contentSelected)
+	Node* content,
+	Node* contentSelected)
 {
 	RadialEntry* instance = new RadialEntry(ClickableTextNode::create(label, labelSelected, content, contentSelected));
 
@@ -75,7 +75,7 @@ void RadialEntry::setTextVisible(bool isVisible)
 	this->entry->setTextVisible(isVisible);
 }
 
-void RadialEntry::setTextOffset(cocos2d::Vec2 offset)
+void RadialEntry::setTextOffset(Vec2 offset)
 {
 	this->entry->setTextOffset(offset);
 }
@@ -90,7 +90,7 @@ void RadialEntry::interact()
 	this->entry->interact();
 }
 
-void RadialEntry::setContentSize(const cocos2d::Size & size)
+void RadialEntry::setContentSize(const Size& size)
 {
 	this->entry->setContentSize(size);
 }
@@ -181,22 +181,22 @@ void RadialEntry::toggleAllowInteractionEdits(bool allowInteractionEdits)
 	this->allowInteractionEdits = allowInteractionEdits;
 }
 
-void RadialEntry::setClickModifier(cocos2d::EventKeyboard::KeyCode modifier)
+void RadialEntry::setClickModifier(EventKeyboard::KeyCode modifier)
 {
 	this->entry->setClickModifier(modifier);
 }
 
-cocos2d::Node* RadialEntry::getContent()
+Node* RadialEntry::getContent()
 {
 	return this->entry->getContent();
 }
 
-cocos2d::Node* RadialEntry::getContentSelected()
+Node* RadialEntry::getContentSelected()
 {
 	return this->entry->getContentSelected();
 }
 
-void RadialEntry::setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction)
+void RadialEntry::setIntersectFunction(std::function<bool(Vec2 mousePos)> intersectFunction)
 {
 	this->entry->setIntersectFunction(intersectFunction);
 }

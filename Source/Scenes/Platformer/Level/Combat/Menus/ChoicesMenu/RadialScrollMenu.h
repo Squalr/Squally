@@ -18,7 +18,7 @@ public:
 
 	int getIndex();
 	void clearItems();
-	RadialEntry* addEntry(LocalizedString* labelStr, LocalizedString* lowerLabelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback);
+	RadialEntry* addEntry(LocalizedString* labelStr, std::vector<LocalizedString*> lowerLabelStrs, std::string iconResource, std::string backgroundResource, std::function<void()> callback);
 	void toggleAll(bool disableInteraction = true, bool fadeOpacity = false, bool hideText = true);
 	void enableAll();
 	void focus();
@@ -37,6 +37,7 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void positionButtons();
 	void goBack();
 

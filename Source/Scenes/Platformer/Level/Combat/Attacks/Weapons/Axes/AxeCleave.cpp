@@ -2,6 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 
 #include "Resources/SoundResources.h"
@@ -57,6 +58,12 @@ PlatformerAttack* AxeCleave::cloneInternal()
 LocalizedString* AxeCleave::getString()
 {
 	return Strings::Platformer_Combat_Attacks_Cleave::create();
+}
+
+LocalizedString* AxeCleave::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_CleaveDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(AxeCleave::DamageMultiplier * 100.0f))));
 }
 
 std::string AxeCleave::getAttackAnimation()

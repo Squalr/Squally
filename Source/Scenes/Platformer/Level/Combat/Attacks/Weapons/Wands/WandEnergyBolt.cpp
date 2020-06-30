@@ -58,6 +58,11 @@ LocalizedString* WandEnergyBolt::getString()
 	return Strings::Platformer_Combat_Attacks_EnergyBolt::create();
 }
 
+LocalizedString* WandEnergyBolt::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_EnergyBoltDescription::create();
+}
+
 std::string WandEnergyBolt::getAttackAnimation()
 {
 	return "AttackSlash"; // Keep this the same for now

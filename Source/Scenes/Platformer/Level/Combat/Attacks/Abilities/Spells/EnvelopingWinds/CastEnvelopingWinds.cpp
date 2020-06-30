@@ -61,6 +61,11 @@ std::string CastEnvelopingWinds::getAttackAnimation()
 	return "AttackCast";
 }
 
+LocalizedString* CastEnvelopingWinds::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_EnvelopingWindsDescription::create();
+}
+
 void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);

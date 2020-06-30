@@ -13,6 +13,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
@@ -64,6 +66,11 @@ PlatformerAttack* PlatformerAttack::clone()
 	}
 
 	return attack;
+}
+
+LocalizedString* PlatformerAttack::getDescription()
+{
+	return nullptr;
 }
 
 void PlatformerAttack::registerAttackCompleteCallback(std::function<void()> callback)

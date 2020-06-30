@@ -20109,6 +20109,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_Cleave() = default;
 	};
 
+	class Platformer_Combat_Attacks_CleaveDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_CleaveDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_CleaveDescription();
+		virtual ~Platformer_Combat_Attacks_CleaveDescription() = default;
+	};
+
 	class Platformer_Combat_Attacks_Condensation : public LocalizedString
 	{
 	public:
@@ -20122,6 +20137,36 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Condensation();
 		virtual ~Platformer_Combat_Attacks_Condensation() = default;
+	};
+
+	class Platformer_Combat_Attacks_CondensationDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_CondensationDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_CondensationDescription();
+		virtual ~Platformer_Combat_Attacks_CondensationDescription() = default;
+	};
+
+	class Platformer_Combat_Attacks_EmptyDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_EmptyDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_EmptyDescription();
+		virtual ~Platformer_Combat_Attacks_EmptyDescription() = default;
 	};
 
 	class Platformer_Combat_Attacks_EnergyBolt : public LocalizedString
@@ -20139,6 +20184,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_EnergyBolt() = default;
 	};
 
+	class Platformer_Combat_Attacks_EnergyBoltDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_EnergyBoltDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_EnergyBoltDescription();
+		virtual ~Platformer_Combat_Attacks_EnergyBoltDescription() = default;
+	};
+
 	class Platformer_Combat_Attacks_EnvelopingWinds : public LocalizedString
 	{
 	public:
@@ -20152,6 +20212,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_EnvelopingWinds();
 		virtual ~Platformer_Combat_Attacks_EnvelopingWinds() = default;
+	};
+
+	class Platformer_Combat_Attacks_EnvelopingWindsDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_EnvelopingWindsDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_EnvelopingWindsDescription();
+		virtual ~Platformer_Combat_Attacks_EnvelopingWindsDescription() = default;
 	};
 
 	class Platformer_Combat_Attacks_Execute : public LocalizedString
@@ -20169,6 +20244,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_Execute() = default;
 	};
 
+	class Platformer_Combat_Attacks_ExecuteDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_ExecuteDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_ExecuteDescription();
+		virtual ~Platformer_Combat_Attacks_ExecuteDescription() = default;
+	};
+
 	class Platformer_Combat_Attacks_LightningStrike : public LocalizedString
 	{
 	public:
@@ -20182,6 +20272,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_LightningStrike();
 		virtual ~Platformer_Combat_Attacks_LightningStrike() = default;
+	};
+
+	class Platformer_Combat_Attacks_LightningStrikeDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_LightningStrikeDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_LightningStrikeDescription();
+		virtual ~Platformer_Combat_Attacks_LightningStrikeDescription() = default;
 	};
 
 	class Platformer_Combat_Attacks_MultiShot : public LocalizedString
@@ -20199,6 +20304,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_MultiShot() = default;
 	};
 
+	class Platformer_Combat_Attacks_MultiShotDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_MultiShotDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_MultiShotDescription();
+		virtual ~Platformer_Combat_Attacks_MultiShotDescription() = default;
+	};
+
 	class Platformer_Combat_Attacks_Pound : public LocalizedString
 	{
 	public:
@@ -20212,6 +20332,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Pound();
 		virtual ~Platformer_Combat_Attacks_Pound() = default;
+	};
+
+	class Platformer_Combat_Attacks_PoundDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_PoundDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_PoundDescription();
+		virtual ~Platformer_Combat_Attacks_PoundDescription() = default;
 	};
 
 	class Platformer_Combat_Attacks_Punch : public LocalizedString
@@ -20242,6 +20377,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Resurrect();
 		virtual ~Platformer_Combat_Attacks_Resurrect() = default;
+	};
+
+	class Platformer_Combat_Attacks_ResurrectDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_ResurrectDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_ResurrectDescription();
+		virtual ~Platformer_Combat_Attacks_ResurrectDescription() = default;
 	};
 
 	class Platformer_Combat_Attacks_Shoot : public LocalizedString
@@ -20287,6 +20437,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Smash();
 		virtual ~Platformer_Combat_Attacks_Smash() = default;
+	};
+
+	class Platformer_Combat_Attacks_SmashDescription : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_SmashDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_SmashDescription();
+		virtual ~Platformer_Combat_Attacks_SmashDescription() = default;
 	};
 
 	class Platformer_Combat_Attacks_ThrowFlamingWeapon : public LocalizedString

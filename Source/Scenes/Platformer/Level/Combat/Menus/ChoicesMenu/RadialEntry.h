@@ -37,7 +37,7 @@ public:
 	// ClickableNode wrapper
 	void interact();
 	bool canInteract();
-	void setContentSize(const cocos2d::Size & size) override;
+	void setContentSize(const cocos2d::Size& size) override;
 	void setMouseClickCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseInCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseIn);
 	void setMouseOverCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseOver);

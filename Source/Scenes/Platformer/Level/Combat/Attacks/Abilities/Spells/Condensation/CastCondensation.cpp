@@ -2,6 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
@@ -57,6 +58,12 @@ PlatformerAttack* CastCondensation::cloneInternal()
 LocalizedString* CastCondensation::getString()
 {
 	return Strings::Platformer_Combat_Attacks_Condensation::create();
+}
+
+LocalizedString* CastCondensation::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_CondensationDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(CastCondensation::ManaGain))));
 }
 
 std::string CastCondensation::getAttackAnimation()

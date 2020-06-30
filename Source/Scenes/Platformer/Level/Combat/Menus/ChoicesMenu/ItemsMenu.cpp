@@ -98,7 +98,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
 			LocalizedString* menuString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ attack->getString(), countString });
 
-			this->addEntry(menuString, nullptr, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
+			this->addEntry(menuString, { }, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
 			{
 				this->scrollTo(index);
 

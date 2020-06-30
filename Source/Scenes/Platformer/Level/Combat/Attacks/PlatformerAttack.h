@@ -40,6 +40,7 @@ public:
 
 	PlatformerAttack* clone();
 	virtual LocalizedString* getString() = 0;
+	virtual LocalizedString* getDescription();
 	void registerAttackCompleteCallback(std::function<void()> callback);
 	virtual std::string getAttackAnimation();
 	std::string getIconResource();

@@ -56,6 +56,11 @@ LocalizedString* Pound::getString()
 	return Strings::Platformer_Combat_Attacks_Pound::create();
 }
 
+LocalizedString* Pound::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_PoundDescription::create();
+}
+
 std::string Pound::getAttackAnimation()
 {
 	return "AttackPunch";

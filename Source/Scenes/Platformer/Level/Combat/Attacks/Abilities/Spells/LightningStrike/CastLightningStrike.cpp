@@ -57,6 +57,11 @@ LocalizedString* CastLightningStrike::getString()
 	return Strings::Platformer_Combat_Attacks_LightningStrike::create();
 }
 
+LocalizedString* CastLightningStrike::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_LightningStrikeDescription::create();
+}
+
 std::string CastLightningStrike::getAttackAnimation()
 {
 	return "AttackCast";

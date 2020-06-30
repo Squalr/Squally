@@ -37,7 +37,7 @@ CancelMenu::CancelMenu()
 	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->trackTarget = nullptr;
 
-	this->cancelButton = this->cancelMenu->addEntry(Strings::Menus_Cancel::create(), nullptr, UIResources::Menus_Icons_Cross, UIResources::Combat_AttackCircle, [=]()
+	this->cancelButton = this->cancelMenu->addEntry(Strings::Menus_Cancel::create(), { }, UIResources::Menus_Icons_Cross, UIResources::Combat_AttackCircle, [=]()
 	{
 		this->onCancelClick();
 	});

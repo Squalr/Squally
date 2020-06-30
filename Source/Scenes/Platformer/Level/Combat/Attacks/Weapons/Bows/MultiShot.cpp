@@ -2,6 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 
 #include "Resources/SoundResources.h"
@@ -57,6 +58,12 @@ PlatformerAttack* MultiShot::cloneInternal()
 LocalizedString* MultiShot::getString()
 {
 	return Strings::Platformer_Combat_Attacks_MultiShot::create();
+}
+
+LocalizedString* MultiShot::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_MultiShotDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(MultiShot::DamageMultiplier * 100.0f))));
 }
 
 std::string MultiShot::getAttackAnimation()

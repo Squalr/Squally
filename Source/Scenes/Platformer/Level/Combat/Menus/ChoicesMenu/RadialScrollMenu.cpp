@@ -167,7 +167,7 @@ void RadialScrollMenu::clearItems()
 	this->currentIndex = 0;
 }
 
-RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedString* lowerLabelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
+RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, std::vector<LocalizedString*> lowerLabelStrs, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
 {
 	LocalizedLabel* entryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
 	LocalizedLabel* entryLabelSelected = entryLabel->clone();
@@ -178,9 +178,18 @@ RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedStri
 	entryLabelSelected->enableOutline(Color4B::BLACK, 2);
 	entryLabelSelected->setTextColor(Color4B::YELLOW);
 
-	if (lowerLabelStr != nullptr)
+	int positionIndex = 0;
+
+	for (int index = 0; index < int(lowerLabelStrs.size()); index++)
 	{
-		LocalizedLabel* lowerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, lowerLabelStr);
+		LocalizedString* next = lowerLabelStrs[index];
+
+		if (next == nullptr)
+		{
+			continue;
+		}
+
+		LocalizedLabel* lowerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, next);
 		LocalizedLabel* lowerLabelSelected = lowerLabel->clone();
 
 		lowerLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -189,16 +198,20 @@ RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedStri
 		lowerLabelSelected->enableOutline(Color4B::BLACK, 2);
 		lowerLabelSelected->setTextColor(Color4B::YELLOW);
 
-		lowerLabel->setPosition(Vec2(0.0f, -16.0f));
-		lowerLabelSelected->setPosition(Vec2(0.0f, -16.0f));
+		float positionY = positionIndex == 0 ? -16.0f : (-20.0f * float(positionIndex + 1));
+
+		lowerLabel->setPosition(Vec2(0.0f, positionY));
+		lowerLabelSelected->setPosition(Vec2(0.0f, positionY));
 
 		entryLabel->addChild(lowerLabel);
 		entryLabelSelected->addChild(lowerLabelSelected);
+
+		positionIndex++;
 	}
 
 	RadialEntry* entry = RadialEntry::create(entryLabel, entryLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
-	entry->setTextOffset(Vec2(48.0f, 0.0f));
+	entry->setTextOffset(Vec2(48.0f, float(positionIndex) * 16.0f));
 	entry->addIcon(iconResource);
 
 	if (callback != nullptr)
@@ -334,7 +347,6 @@ void RadialScrollMenu::positionButtons()
 		int distance = std::abs(effectiveIndex);
 		float currentAngle = float(effectiveIndex) * this->angleDelta;
 
-		button->setTextOffset(Vec2(48.0f, 0.0f));
 		button->setPosition(Vec2(this->radius * std::cos(currentAngle), this->radius * -std::sin(currentAngle)));
 
 		switch(distance)

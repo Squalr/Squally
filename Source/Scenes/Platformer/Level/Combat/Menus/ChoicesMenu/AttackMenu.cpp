@@ -72,8 +72,9 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 		{
 			int cost = attack->getSpecialCost();
 			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));
+			LocalizedString* descriptionString = attack->getDescription();
 
-			RadialEntry* newEntry = this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
+			RadialEntry* newEntry = this->addEntry(attack->getString(), { costString, descriptionString }, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
 				this->selectAttack(entry, attack, index);
 			});

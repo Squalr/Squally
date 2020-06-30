@@ -4,6 +4,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
@@ -17,6 +18,8 @@
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
+
+const float CastResurrection::HealPercentage = 0.5f;
 
 CastResurrection* CastResurrection::create(float attackDuration, float recoverDuration, Priority priority)
 {
@@ -54,6 +57,12 @@ LocalizedString* CastResurrection::getString()
 	return Strings::Platformer_Combat_Attacks_Resurrect::create();
 }
 
+LocalizedString* CastResurrection::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_ResurrectDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(CastResurrection::HealPercentage * 100.0f))));
+}
+
 std::string CastResurrection::getAttackAnimation()
 {
 	return "AttackCast";
@@ -76,7 +85,7 @@ void CastResurrection::performAttack(PlatformerEntity* owner, std::vector<Platfo
 
 		next->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* entityHealthBehavior)
 		{
-			entityHealthBehavior->setHealth(entityHealthBehavior->getMaxHealth() / 2, false);
+			entityHealthBehavior->setHealth(int(float(entityHealthBehavior->getMaxHealth() * CastResurrection::HealPercentage)), false);
 		});
 	}
 }
