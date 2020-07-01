@@ -37,6 +37,7 @@ private:
 	PlatformerEntity* entity;
 	CollisionObject* hoverCollision;
 	CollisionObject* hoverAntiGravityCollisionDetector;
+	CollisionObject* hoverAntiGravityTopCollisionDetector;
 
 	EntityCollisionBehaviorBase* entityCollision;
 	EntityGroundCollisionBehavior* groundCollision;

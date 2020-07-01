@@ -75,6 +75,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->collisionProperties = collisionProperties;
 	this->physicsEnabled = true;
 	this->gravityEnabled = collisionProperties.isDynamic;
+	this->gravityDisabledOverride = false;
 	this->bindTarget = nullptr;
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
@@ -171,7 +172,7 @@ void CollisionObject::runPhysics(float dt)
 	}
 
 	// Apply gravity & accel
-	this->velocity += this->gravityEnabled ? (this->gravity * dt) : Vec2::ZERO;
+	this->velocity += (this->gravityEnabled && !this->gravityDisabledOverride) ? (this->gravity * dt) : Vec2::ZERO;
 	this->velocity += this->acceleration * dt;
 
 	if (this->velocity != Vec2::ZERO)
@@ -269,6 +270,21 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 void CollisionObject::setGravityEnabled(bool isEnabled)
 {
 	this->gravityEnabled = isEnabled;
+}
+
+void CollisionObject::setGravityDisabledOverride(bool isDisabled)
+{
+	this->gravityDisabledOverride = isDisabled;
+}
+
+bool CollisionObject::getGravityEnabled()
+{
+	return this->gravityEnabled;
+}
+
+bool CollisionObject::getGravityDisabledOverride()
+{
+	return this->gravityDisabledOverride;
 }
 
 Vec2 CollisionObject::getVelocity()
@@ -397,6 +413,11 @@ bool CollisionObject::hasCollisionWith(CollisionObject* collisonObject)
 const std::set<CollisionObject*>& CollisionObject::getCurrentCollisions()
 {
 	return *this->currentCollisions;
+}
+
+bool CollisionObject::hasCollisions()
+{
+	return !this->currentCollisions->empty();
 }
 
 bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)

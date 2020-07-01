@@ -83,6 +83,9 @@ public:
 	bool hasCollisionType(CollisionType collisionType);
 	bool hasCollisionWith(CollisionObject* object);
 	void setGravityEnabled(bool isEnabled);
+	void setGravityDisabledOverride(bool isDisabled);
+	bool getGravityEnabled();
+	bool getGravityDisabledOverride();
 	cocos2d::Vec2 getVelocity();
 	cocos2d::Vec2 getAcceleration();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -96,6 +99,7 @@ public:
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
 	const std::set<CollisionObject*>& getCurrentCollisions();
+	bool hasCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
 	bool wasCollidingWith(CollisionObject* collisionObject);
 	bool isCollidingWithType(int collisionType);
@@ -165,6 +169,7 @@ private:
 	float collisionDepth;
 	bool physicsEnabled;
 	bool gravityEnabled;
+	bool gravityDisabledOverride;
 	unsigned int universeId;
 	
 	// Shape

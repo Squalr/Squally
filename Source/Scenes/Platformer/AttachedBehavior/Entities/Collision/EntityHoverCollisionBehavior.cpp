@@ -33,6 +33,7 @@ EntityHoverCollisionBehavior::EntityHoverCollisionBehavior(GameObject* owner) : 
 	this->groundCollision = nullptr;
 	this->jumpCollision = nullptr;
 	this->hoverAntiGravityCollisionDetector = nullptr;
+	this->hoverAntiGravityTopCollisionDetector = nullptr;
 	this->crouchProgress = 0.0f;
 
 	if (this->entity == nullptr)
@@ -97,6 +98,27 @@ void EntityHoverCollisionBehavior::update(float dt)
 	else
 	{
 		this->uncrouch(dt);
+	}
+	
+	if (this->hoverAntiGravityCollisionDetector != nullptr
+		&& this->hoverAntiGravityTopCollisionDetector != nullptr
+		&& this->entityCollision != nullptr
+		&& this->entityCollision->movementCollision != nullptr)
+	{
+		// Update anti-gravity to avoid jitter
+		if (this->hoverAntiGravityCollisionDetector->hasCollisions() && !this->hoverAntiGravityTopCollisionDetector->hasCollisions())
+		{
+			this->entityCollision->movementCollision->setGravityDisabledOverride(true);
+
+			if (this->entityCollision->movementCollision->getVelocity().y < 0.0f)
+			{
+				this->entityCollision->movementCollision->setVelocityY(0.0f);
+			}
+		}
+		else
+		{
+			this->entityCollision->movementCollision->setGravityDisabledOverride(false);
+		}
 	}
 }
 
@@ -219,6 +241,8 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		static const float MinSpeed = 0.0f;
 
 		if (this->groundCollision == nullptr
+			|| this->entityCollision == nullptr
+			|| this->entityCollision->movementCollision == nullptr
 			|| this->groundCollision->getGroundCollision() == nullptr
 			|| this->entity->controlState == PlatformerEntity::ControlState::Swimming)
 		{
@@ -244,7 +268,7 @@ void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 {
 	static const float AntiGravityDetectorSize = 32.0f;
 
-	if (this->hoverAntiGravityCollisionDetector != nullptr || this->entity->getHoverHeight() <= 0.0f)
+	if (this->hoverAntiGravityCollisionDetector != nullptr || this->hoverAntiGravityTopCollisionDetector != nullptr || this->entity->getHoverHeight() <= 0.0f)
 	{
 		return;
 	}
@@ -260,15 +284,33 @@ void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 		Color4F::PURPLE
 	);
 
+	this->hoverAntiGravityTopCollisionDetector = CollisionObject::create(
+		CollisionObject::createBox(
+			Size(detectorWidth, AntiGravityDetectorSize)
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		CollisionObject::Properties(false, false),
+		Color4F::GREEN
+	);
+
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getEntitySize().height / 2.0f - this->entity->getHoverHeight() / 2.0f - AntiGravityDetectorSize / 2.0f);
 
 	this->hoverAntiGravityCollisionDetector->setPosition(offset);
+	this->hoverAntiGravityTopCollisionDetector->setPosition(offset + Vec2(0.0f, AntiGravityDetectorSize));
 
 	this->addChild(this->hoverAntiGravityCollisionDetector);
+	this->addChild(this->hoverAntiGravityTopCollisionDetector);
+
+	this->hoverAntiGravityTopCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 
 	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
+		// See update(float dt) for anti-gravity logic
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }

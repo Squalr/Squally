@@ -76,7 +76,7 @@ CollisionObject* EntityJumpCollisionBehavior::getJumpCollision()
 
 bool EntityJumpCollisionBehavior::canJump()
 {
-	return this->jumpCollision == nullptr ? false : !this->jumpCollision->getCurrentCollisions().empty();
+	return this->jumpCollision == nullptr ? false : this->jumpCollision->hasCollisions();
 }
 
 void EntityJumpCollisionBehavior::buildJumpCollisionDetector()

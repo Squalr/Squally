@@ -110,17 +110,17 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 
 bool EntityGroundCollisionBehavior::isOnGround()
 {
-	return this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty();
+	return this->groundCollision == nullptr ? false : this->groundCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::hasLeftCornerCollision()
 {
-	return this->leftCornerCollision == nullptr ? false : !this->leftCornerCollision->getCurrentCollisions().empty();
+	return this->leftCornerCollision == nullptr ? false : this->leftCornerCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::hasRightCornerCollision()
 {
-	return this->rightCornerCollision == nullptr ? false :!this->rightCornerCollision->getCurrentCollisions().empty();
+	return this->rightCornerCollision == nullptr ? false : this->rightCornerCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)

@@ -193,12 +193,12 @@ void EntityCollisionBehaviorBase::setVelocity(Vec2 velocity)
 
 bool EntityCollisionBehaviorBase::hasLeftWallCollision()
 {
-	return this->leftCollision == nullptr ? false : !this->leftCollision->getCurrentCollisions().empty();
+	return this->leftCollision == nullptr ? false : this->leftCollision->hasCollisions();
 }
 
 bool EntityCollisionBehaviorBase::hasRightWallCollision()
 {
-	return this->rightCollision == nullptr ? false : !this->rightCollision->getCurrentCollisions().empty();
+	return this->rightCollision == nullptr ? false : this->rightCollision->hasCollisions();
 }
 
 bool EntityCollisionBehaviorBase::hasLeftWallCollisionWith(CollisionObject* collisonObject)

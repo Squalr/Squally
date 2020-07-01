@@ -91,7 +91,7 @@ void StoneButton::update(float dt)
 
 	float currentPositionY = this->buttonCollision->getPositionY();
 
-	if (!this->buttonCollision->getCurrentCollisions().empty() || (this->isSwitch && this->hasCollided))
+	if (this->buttonCollision->hasCollisions() || (this->isSwitch && this->hasCollided))
 	{
 		currentPositionY -= StoneButton::ButtonPressureSpeed * dt;
 	}
