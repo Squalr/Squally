@@ -76,7 +76,6 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->physicsEnabled = true;
 	this->gravityEnabled = collisionProperties.isDynamic;
 	this->bindTarget = nullptr;
-	this->correctionRedirectTarget = nullptr;
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
 	this->debugDrawNodeConnectors = nullptr;
@@ -434,11 +433,6 @@ void CollisionObject::unbind()
 	this->bindTarget = nullptr;
 }
 
-void CollisionObject::setCorrectionRedirectionTarget(CollisionObject* correctionRedirectTarget)
-{
-	this->correctionRedirectTarget = correctionRedirectTarget;
-}
-
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
 	for (auto collisionType : collisionTypes)
@@ -543,16 +537,6 @@ Vec3 CollisionObject::getThisOrBindPosition()
 	}
 }
 
-Vec3 CollisionObject::getCorrectionPosition()
-{
-	if (this->correctionRedirectTarget != nullptr)
-	{
-		return this->correctionRedirectTarget->getThisOrBindPosition();
-	}
-
-	return this->getThisOrBindPosition();
-}
-
 void CollisionObject::setThisOrBindPosition(Vec3 position)
 {
 	if (this->bindTarget == nullptr)
@@ -565,18 +549,6 @@ void CollisionObject::setThisOrBindPosition(Vec3 position)
 	}
 
 	this->computeWorldCoords(true);
-}
-
-void CollisionObject::applyCorrection(cocos2d::Vec3 position)
-{
-	if (this->correctionRedirectTarget != nullptr)
-	{
-		this->correctionRedirectTarget->setThisOrBindPosition(position);
-	}
-	else
-	{
-		this->setThisOrBindPosition(position);
-	}
 }
 
 CollisionObject::Shape CollisionObject::determineShape()
@@ -667,18 +639,18 @@ void CollisionObject::drawDebugShapes()
 	{
 		if (this->points.size() == 2)
 		{
-			collisionBack->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
+			// collisionBack->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
 			collisionFront->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
 		}
 		else
 		{
-			collisionBack->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
-			collisionFront->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
+			// collisionBack->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f * this->debugColor.a), 1.0f, this->debugColor);
+			collisionFront->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f * this->debugColor.a), 1.0f, this->debugColor);
 		}
 	}
 
-	collisionBack->setPositionZ(-this->collisionDepth);
-	collisionFront->setPositionZ(this->collisionDepth);
+	// collisionBack->setPositionZ(-this->collisionDepth);
+	// collisionFront->setPositionZ(this->collisionDepth);
 
 	this->debugDrawNode->addChild(collisionBack);
 	this->debugDrawNode->addChild(this->debugDrawNodeConnectors);

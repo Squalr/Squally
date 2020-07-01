@@ -606,8 +606,8 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		float ratioB = (objectA->collisionProperties.mass / massSum);
 		
 		// Apply corrections proportional to object masses
-		objectA->applyCorrection(objectA->getCorrectionPosition() + correction3d * ratioA);
-		objectB->applyCorrection(objectB->getCorrectionPosition() - correction3d * ratioB);
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction3d * ratioA);
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction3d * ratioB);
 	}
 	else
 	{
@@ -618,8 +618,8 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		objectA->velocity.y *= impactNormal.x;
 		objectB->velocity.y *= impactNormal.x;
 
-		objectA->applyCorrection(objectA->getCorrectionPosition() + ((objectA->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
-		objectB->applyCorrection(objectB->getCorrectionPosition() + ((objectB->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
 	}
 	
 	return correction;

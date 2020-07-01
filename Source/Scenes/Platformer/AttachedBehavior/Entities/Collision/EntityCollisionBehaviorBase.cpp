@@ -241,7 +241,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		CollisionObject::createCapsulePolygon(this->entity->getEntitySize() * ScaleFactor, 8.0f),
 		(CollisionType)this->collisionType,
 		CollisionObject::Properties(false, false),
-		Color4F::WHITE
+		Color4F::TRANSPARENT_WHITE
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
@@ -265,7 +265,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		// CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 8.0f),
 		(CollisionType)this->collisionTypeMovement,
 		CollisionObject::Properties(true, false),
-		Color4F::RED
+		Color4F::TRANSPARENT_WHITE
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
@@ -276,7 +276,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->addChild(this->movementCollision);
 
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});

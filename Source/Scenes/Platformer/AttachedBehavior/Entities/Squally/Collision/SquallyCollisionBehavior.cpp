@@ -87,31 +87,36 @@ void SquallyCollisionBehavior::onLoad()
 	// Self-query to wait for collision to be created
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
-		if (collisionBehavior->leftCollision != nullptr)
+		this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		});
+
+		if (this->leftCollision != nullptr)
 		{
-			collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+			this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 			{	
 				return CollisionObject::CollisionResult::DoNothing;
 			});
 		}
 
-		if (collisionBehavior->rightCollision != nullptr)
+		if (this->rightCollision != nullptr)
 		{
-			collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+			this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 			{	
 				return CollisionObject::CollisionResult::DoNothing;
 			});
 		}
 
-		if (collisionBehavior->entityCollision != nullptr)
+		if (this->entityCollision != nullptr)
 		{
-			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+			this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 			{	
 				return CollisionObject::CollisionResult::CollideWithPhysics;
 			});
 		}
 
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
+		this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
