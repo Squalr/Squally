@@ -26,6 +26,7 @@ protected:
 	void initializePositions() override;
 	HackablePreview* createDefaultPreview() override;
 	cocos2d::Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getProjectileSpawnPosition() override;
 	HackablePreview* getTimerPreview() override;
 	Projectile* createProjectile() override;
 

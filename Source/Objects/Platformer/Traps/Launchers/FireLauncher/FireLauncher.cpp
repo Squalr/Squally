@@ -52,6 +52,11 @@ void FireLauncher::initializePositions()
 	this->projectilePool->setPosition(Vec2(0.0f, 112.0f));
 }
 
+Vec2 FireLauncher::getProjectileSpawnPosition()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 Projectile* FireLauncher::createProjectile()
 {
 	Fireball* fireball = Fireball::create(nullptr, nullptr);

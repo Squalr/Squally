@@ -64,7 +64,7 @@ HackablePreview* DartTripodLauncher::getTimerPreview()
 
 Vec2 DartTripodLauncher::getProjectileSpawnPosition()
 {
-	return Vec2(0.0f, 96.0f);
+	return Vec2(0.0f, 72.0f);
 }
 
 Projectile* DartTripodLauncher::createProjectile()

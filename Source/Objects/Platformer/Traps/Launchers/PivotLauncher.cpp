@@ -34,7 +34,7 @@ const std::string PivotLauncher::PivotBone = "pivot_bone";
 const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
 const std::string PivotLauncher::PropertyPivotTarget = "pivot-target";
 const std::string PivotLauncher::PropertyFixed = "fixed";
-const std::string PivotLauncher::PropertyDisable3d = "disable-3d";
+const std::string PivotLauncher::PropertyEnable3D = "z-enabled";
 const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
@@ -48,7 +48,7 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
 	this->isFixed = GameUtils::keyExists(this->properties, PivotLauncher::PropertyFixed);
-	this->is3dDisabled = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyDisable3d, Value(false)).asBool();
+	this->is3DEnabled = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyEnable3D, Value(false)).asBool();
 	this->fixedAngle = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyFixed, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
 	this->currentAngle = this->fixedAngle;
@@ -189,16 +189,27 @@ void PivotLauncher::shoot()
 	float thisDepth = GameUtils::getDepth(this);
 	float targetDepth = GameUtils::getDepth(this->target);
 
-	if (std::abs(thisDepth - targetDepth) > 24.0f)
+	if (!this->is3DEnabled && std::abs(thisDepth - targetDepth) > 24.0f)
 	{
 		return;
 	}
 	
 	Projectile* projectile = this->projectilePool->getNextProjectile();
-
+	
+	projectile->setMovementMode(this->is3DEnabled ? Projectile::MovementMode::Kinematic : Projectile::MovementMode::RotationVelocity);
 	projectile->setPosition(projectile->getPosition() + this->getProjectileSpawnPosition());
 	projectile->setProjectileRotation(this->currentAngle);
-	projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
+
+	if (this->is3DEnabled)
+	{
+		float speed = 256.0f / (this->launchSpeed <= 0.0f ? 320.0f : this->launchSpeed);
+		
+		projectile->launchTowardsTarget3D(target, target->getEntityCenterPoint(), 0.0f, Vec3(speed, speed, speed), Vec3::ZERO);
+	}
+	else
+	{
+		projectile->setLaunchVelocity(Vec3(this->launchSpeed, 0.0f, 0.0f));
+	}
 }
 
 void PivotLauncher::faceTarget()
@@ -212,13 +223,13 @@ void PivotLauncher::faceTarget()
 		float thisDepth = GameUtils::getDepth(this);
 		float targetDepth = GameUtils::getDepth(this->target);
 
-		if (std::abs(thisDepth - targetDepth) > 24.0f)
+		if (!this->is3DEnabled && std::abs(thisDepth - targetDepth) > 24.0f)
 		{
 			return;
 		}
 
-		Vec2 thisCoords = GameUtils::getWorldCoords(this->launcherAnimations);
-		Vec2 targetCoords = GameUtils::getWorldCoords(this->target);
+		Vec3 thisCoords = GameUtils::getWorldCoords3D(this->launcherAnimations);
+		Vec3 targetCoords = GameUtils::getWorldCoords3D(this->target);
 
 		const float angleBetween = -std::atan2(thisCoords.y - targetCoords.y, thisCoords.x - targetCoords.x) + (this->launcherAnimations->getFlippedX() ? float(M_PI) : 0.0f);
 		const float angleNormalized = MathUtils::wrappingNormalize(float(M_PI) + angleBetween, 0.0f, 2.0f * float(M_PI));

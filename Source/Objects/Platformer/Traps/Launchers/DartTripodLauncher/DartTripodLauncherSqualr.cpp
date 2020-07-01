@@ -50,8 +50,11 @@ DartTripodLauncherSqualr::~DartTripodLauncherSqualr()
 void DartTripodLauncherSqualr::initializePositions()
 {
 	super::initializePositions();
+}
 
-	this->projectilePool->setPosition(Vec2(0.0f, 112.0f));
+Vec2 DartTripodLauncherSqualr::getProjectileSpawnPosition()
+{
+	return Vec2(0.0f, 72.0f);
 }
 
 Projectile* DartTripodLauncherSqualr::createProjectile()

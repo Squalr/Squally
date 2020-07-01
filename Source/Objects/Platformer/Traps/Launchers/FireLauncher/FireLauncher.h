@@ -24,6 +24,7 @@ protected:
 	virtual ~FireLauncher();
 
 	void initializePositions() override;
+	cocos2d::Vec2 getProjectileSpawnPosition() override;
 	Projectile* createProjectile() override;
 
 private:
