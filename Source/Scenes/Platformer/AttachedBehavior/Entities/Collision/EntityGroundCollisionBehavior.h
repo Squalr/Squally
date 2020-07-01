@@ -18,6 +18,8 @@ public:
 	bool hasRightCornerCollision();
 	bool isStandingOn(CollisionObject* collisonObject);
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
+	
+	cocos2d::Vec2 defaultPosition;
 
 	static const std::string MapKey;
 	static const float GroundCollisionPadding;

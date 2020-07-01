@@ -31,9 +31,8 @@ EntityHoverCollisionBehavior::EntityHoverCollisionBehavior(GameObject* owner) : 
 	this->hoverCollision = nullptr;
 	this->entityCollision = nullptr;
 	this->groundCollision = nullptr;
-	this->hoverGroundCollisionDetector = nullptr;
-	this->hoverFloorCollisionDetector = nullptr;
-	this->hoverJumpCollisionDetector = nullptr;
+	this->jumpCollision = nullptr;
+	this->hoverAntiGravityCollisionDetector = nullptr;
 	this->crouchProgress = 0.0f;
 
 	if (this->entity == nullptr)
@@ -61,12 +60,15 @@ void EntityHoverCollisionBehavior::onLoad()
 	{
 		this->groundCollision = groundCollision;
 	});
+
+	this->entity->watchForAttachedBehavior<EntityJumpCollisionBehavior>([=](EntityJumpCollisionBehavior* jumpCollision)
+	{
+		this->jumpCollision = jumpCollision;
+	});
 	
 	this->defer([=]()
 	{
-		this->buildHoverGroundCollision();
-		this->buildHoverFloorCollision();
-		this->buildHoverJumpCollision();
+		this->buildHoverAntiGravityCollision();
 		this->buildHoverCollision();
 		this->toggleQueryable(true);
 	});
@@ -128,48 +130,62 @@ void EntityHoverCollisionBehavior::uncrouch(float dt)
 
 void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 {
-	static const float MinCrouch = 0.25f;
+	static const float MinCrouch = 0.75f;
 	static const float MaxCrouch = 1.0f;
 
-	float adjustedProgress = MathUtils::clamp(MinCrouch + (MaxCrouch - MinCrouch) * (1.0f - this->crouchProgress), 0.0f, 1.0f);
-	Size hoverSize = this->getHoverSize(adjustedProgress);
+	float inverseProgress = MathUtils::clamp(1.0f - this->crouchProgress, 0.0f, 1.0f);
+	Size hoverSize = this->getHoverSize(inverseProgress);
 
 	this->hoverCollision->setPoints(CollisionObject::createBox(hoverSize));
-	this->positionHoverCollision(adjustedProgress);
+	this->positionHoverCollision(inverseProgress);
 }
 
 Size EntityHoverCollisionBehavior::getHoverSize(float progress)
 {
+	static const float CrouchLowPoint = this->entity->getHoverHeight() / 2.5f;
 	static const float UpwardsPadding = this->entity->getEntitySize().height;
+	static const float MinCrouch = this->entity->getCollisionOffset().y + this->entity->getEntitySize().height + CrouchLowPoint;
+	static const float MaxCrouch = this->entity->getCollisionOffset().y + this->entity->getHoverHeight() + UpwardsPadding;
+
+	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
 	return Size(
 		std::max(this->entity->getEntitySize().width - 24.0f, 16.0f),
-		(this->entity->getHoverHeight() + UpwardsPadding) * progress
+		crouchHeight
 	);
 }
 
 void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 {
+	static const float CrouchLowPoint = this->entity->getHoverHeight() / 2.5f;
 	static const float UpwardsPadding = this->entity->getEntitySize().height;
+	static const float MinCrouchGround = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float MaxCrouchGround = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset- EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float MinCrouchJump = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
+	static const float MaxCrouchJump = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
+
 	static const Vec2 CollisionOffset = this->entity->getCollisionOffset();
 	static const float OriginalHoverHeight = this->entity->getHoverHeight();
 	static const Vec2 Offset = CollisionOffset + Vec2(0.0f, -OriginalHoverHeight / 2.0f);
 
 	Size hoverSize = this->getHoverSize(progress);
-	Vec2 offset = CollisionOffset + Vec2(0.0f, -hoverSize.height / 2.0f + UpwardsPadding);
 	float hoverDelta = OriginalHoverHeight - hoverSize.height;
 
 	this->hoverCollision->setPosition(Offset + Vec2(0.0f, hoverDelta / 2.0f + UpwardsPadding));
-}
 
-bool EntityHoverCollisionBehavior::isOnGround()
-{
-	return (this->hoverGroundCollisionDetector == nullptr ? false : !this->hoverGroundCollisionDetector->getCurrentCollisions().empty());
-}
+	// Reposition ground/jump collision to the bottom of the hover
+	float crouchAdjustGroundY = MinCrouchGround + (MaxCrouchGround - MinCrouchGround) * progress;
+	float crouchAdjustJumpY = MinCrouchJump + (MaxCrouchJump - MinCrouchJump) * progress;
 
-bool EntityHoverCollisionBehavior::canJump()
-{
-	return (this->hoverJumpCollisionDetector == nullptr ? false : !this->hoverJumpCollisionDetector->getCurrentCollisions().empty());
+	if (this->groundCollision != nullptr && this->groundCollision->getGroundCollision() != nullptr)
+	{
+		this->groundCollision->getGroundCollision()->setPosition(Vec2(this->entity->getCollisionOffset().x,  crouchAdjustGroundY));
+	}
+
+	if (this->jumpCollision != nullptr && this->jumpCollision->getJumpCollision() != nullptr)
+	{
+		this->jumpCollision->getJumpCollision()->setPosition(Vec2(this->entity->getCollisionOffset().x,  crouchAdjustJumpY));
+	}
 }
 
 void EntityHoverCollisionBehavior::buildHoverCollision()
@@ -202,18 +218,11 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		static const Vec2 HoverSpeed = Vec2(0.0f, 192.0f);
 		static const float MinSpeed = 0.0f;
 
-		if (this->entity->controlState == PlatformerEntity::ControlState::Swimming)
+		if (this->groundCollision == nullptr
+			|| this->groundCollision->getGroundCollision() == nullptr
+			|| this->entity->controlState == PlatformerEntity::ControlState::Swimming)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
-		}
-		
-		// Pretty janky, but this prevents most jitter. When standing on a single platform uncrouched, simply collide with physics.
-		// This is like 98% effective, but will still let some jitter through when colliding with multiple objects.
-		// The benefit that comes from this jitter is being able to glide over small surface imbalances (ie stairs).
-		// There probably exists a solution to both jitter and surface imbalances, but they will be a time sink.
-		if (this->hoverFloorCollisionDetector->getCurrentCollisions().size() == 1 && this->crouchProgress <= 0.0f)
-		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
 		if (this->entityCollision != nullptr)
@@ -231,64 +240,20 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 	});
 }
 
-void EntityHoverCollisionBehavior::buildHoverGroundCollision()
+void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 {
-	if (this->hoverGroundCollisionDetector != nullptr || this->entity->getHoverHeight() <= 0.0f)
-	{
-		return;
-	}
+	static const float AntiGravityDetectorSize = 32.0f;
 
-	Size hoverSize = Size(this->entity->getEntitySize().width, this->entity->getHoverHeight());
-	float detectorWidth = std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f);
-
-	this->hoverGroundCollisionDetector = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(
-			Size(detectorWidth, this->entity->getHoverHeight())
-		),
-		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false),
-		Color4F::GRAY
-	);
-
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, -hoverSize.height / 2.0f - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f);
-	// Vec2 collisionOffset = this->entity->getCollisionOffset();
-	// Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getEntitySize().height / 2.0f - this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset / 2.0f);
-
-	this->hoverGroundCollisionDetector->setPosition(offset);
-
-	this->addChild(this->hoverGroundCollisionDetector);
-
-	this->hoverGroundCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->groundCollision != nullptr)
-		{
-			this->groundCollision->onCollideWithGround();
-		}
-		
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->hoverGroundCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Intersection }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-}
-
-void EntityHoverCollisionBehavior::buildHoverFloorCollision()
-{
-	static const float FloorDetectorSize = 32.0f;
-
-	if (this->hoverFloorCollisionDetector != nullptr || this->entity->getHoverHeight() <= 0.0f)
+	if (this->hoverAntiGravityCollisionDetector != nullptr || this->entity->getHoverHeight() <= 0.0f)
 	{
 		return;
 	}
 
 	float detectorWidth = std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f);
 
-	this->hoverFloorCollisionDetector = CollisionObject::create(
+	this->hoverAntiGravityCollisionDetector = CollisionObject::create(
 		CollisionObject::createBox(
-			Size(detectorWidth, FloorDetectorSize)
+			Size(detectorWidth, AntiGravityDetectorSize)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false),
@@ -296,51 +261,14 @@ void EntityHoverCollisionBehavior::buildHoverFloorCollision()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getEntitySize().height / 2.0f - this->entity->getHoverHeight() / 2.0f + FloorDetectorSize / 2.0f);
+	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getEntitySize().height / 2.0f - this->entity->getHoverHeight() / 2.0f - AntiGravityDetectorSize / 2.0f);
 
-	this->hoverFloorCollisionDetector->setPosition(offset);
+	this->hoverAntiGravityCollisionDetector->setPosition(offset);
 
-	this->addChild(this->hoverFloorCollisionDetector);
+	this->addChild(this->hoverAntiGravityCollisionDetector);
 
-	this->hoverFloorCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-}
-
-void EntityHoverCollisionBehavior::buildHoverJumpCollision()
-{
-	if (this->hoverJumpCollisionDetector != nullptr || this->entity->getHoverHeight() <= 0.0f)
-	{
-		return;
-	}
-
-	Size hoverSize = Size(this->entity->getEntitySize().width, this->entity->getHoverHeight());
-
-	this->hoverJumpCollisionDetector = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), this->entity->getHoverHeight())
-		),
-		(int)PlatformerCollisionType::JumpDetector,
-		CollisionObject::Properties(false, false),
-		Color4F::YELLOW
-	);
-
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, -hoverSize.height / 2.0f - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f);
-	// Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getEntitySize().height / 2.0f - this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f);
-
-	this->hoverJumpCollisionDetector->setPosition(offset);
-
-	this->addChild(this->hoverJumpCollisionDetector);
-
-	this->hoverJumpCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->groundCollision != nullptr)
-		{
-			this->groundCollision->onCollideWithGround();
-		}
-		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }

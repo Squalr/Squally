@@ -377,6 +377,23 @@ bool CollisionObject::hasCollisionType(CollisionType collisionType)
 	return (this->collisionType & int(collisionType)) != 0;
 }
 
+bool CollisionObject::hasCollisionWith(CollisionObject* collisonObject)
+{
+	Node* currentCollisionGroup = collisonObject->getParent();
+
+	for (auto next : this->getCurrentCollisions())
+	{
+		if (next->getParent() != currentCollisionGroup)
+		{
+			continue;
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
 const std::set<CollisionObject*>& CollisionObject::getCurrentCollisions()
 {
 	return *this->currentCollisions;

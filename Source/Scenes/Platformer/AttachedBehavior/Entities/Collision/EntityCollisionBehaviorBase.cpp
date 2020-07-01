@@ -251,6 +251,11 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 	this->entityCollision->setName("Entity collision");
 
 	this->addChild(this->entityCollision);
+	
+	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }
 
 void EntityCollisionBehaviorBase::buildMovementCollision()
@@ -310,6 +315,18 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 		// No collision when not standing on anything
 		if (!this->groundCollision->isOnGround())
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		// No collision if we have both a ground and head collision with the pass-through (aka we are fully inside it)
+		if (this->headCollision->hasHeadCollisionWith(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		// No collision if we have both a ground and head collision with the pass-through (aka we are fully inside it)
+		if (this->entityCollision->hasCollisionWith(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}

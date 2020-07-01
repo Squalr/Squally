@@ -5,15 +5,13 @@
 class CollisionObject;
 class EntityCollisionBehaviorBase;
 class EntityGroundCollisionBehavior;
+class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 
 class EntityHoverCollisionBehavior : public AttachedBehavior
 {
 public:
 	static EntityHoverCollisionBehavior* create(GameObject* owner);
-
-	bool canJump();
-	bool isOnGround();
 
 	static const std::string MapKey;
 
@@ -38,15 +36,12 @@ private:
 
 	PlatformerEntity* entity;
 	CollisionObject* hoverCollision;
-	CollisionObject* hoverGroundCollisionDetector;
-	CollisionObject* hoverFloorCollisionDetector;
-	CollisionObject* hoverJumpCollisionDetector;
+	CollisionObject* hoverAntiGravityCollisionDetector;
 
 	EntityCollisionBehaviorBase* entityCollision;
 	EntityGroundCollisionBehavior* groundCollision;
+	EntityJumpCollisionBehavior* jumpCollision;
 
-	void buildHoverGroundCollision();
-	void buildHoverFloorCollision();
-	void buildHoverJumpCollision();
+	void buildHoverAntiGravityCollision();
 	void buildHoverCollision();
 };

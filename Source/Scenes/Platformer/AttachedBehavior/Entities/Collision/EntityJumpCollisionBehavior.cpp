@@ -15,7 +15,7 @@ using namespace cocos2d;
 
 const std::string EntityJumpCollisionBehavior::MapKey = "entity-jump-collisions";
 const float EntityJumpCollisionBehavior::JumpCollisionMargin = 24.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionOffset = -4.0f;
+const float EntityJumpCollisionBehavior::JumpCollisionOffset = 0.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionHeight = 48.0f;
 
 EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* owner)
@@ -69,28 +69,14 @@ void EntityJumpCollisionBehavior::onDisable()
 	}
 }
 
+CollisionObject* EntityJumpCollisionBehavior::getJumpCollision()
+{
+	return this->jumpCollision;
+}
+
 bool EntityJumpCollisionBehavior::canJump()
 {
-	return (this->jumpCollision == nullptr ? false : !this->jumpCollision->getCurrentCollisions().empty())
-		|| (this->hoverCollisionBehavior == nullptr ? false : this->hoverCollisionBehavior->canJump());
-	/*
-	if (this->jumpCollision == nullptr)
-	{
-		return true;
-	}
-
-	for (auto collision : this->jumpCollision->getCurrentCollisions())
-	{
-		if (collision->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
-			|| collision->hasCollisionType(CollisionType(PlatformerCollisionType::Physics))
-			|| collision->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough)))
-		{
-			return true;	
-		}
-	}
-
-	return false;
-	*/
+	return this->jumpCollision == nullptr ? false : !this->jumpCollision->getCurrentCollisions().empty();
 }
 
 void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
@@ -110,7 +96,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 	);
 	
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, /*-this->entity->getHoverHeight() / 2.0f + */ EntityJumpCollisionBehavior::JumpCollisionOffset);
+	Vec2 offset = collisionOffset + Vec2(0.0f, EntityJumpCollisionBehavior::JumpCollisionOffset);
 
 	this->jumpCollision->setPosition(offset);
 	

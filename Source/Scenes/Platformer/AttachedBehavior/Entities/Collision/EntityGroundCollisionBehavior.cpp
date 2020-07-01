@@ -15,7 +15,7 @@ using namespace cocos2d;
 
 const std::string EntityGroundCollisionBehavior::MapKey = "entity-ground-collisions";
 const float EntityGroundCollisionBehavior::GroundCollisionPadding = 4.0f;
-const float EntityGroundCollisionBehavior::GroundCollisionOffset = 8.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionOffset = 0.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionHeight = 48.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
 const float EntityGroundCollisionBehavior::CornerCollisionWidth = 32.0f;
@@ -110,8 +110,7 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 
 bool EntityGroundCollisionBehavior::isOnGround()
 {
-	return (this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty())
-		|| (this->hoverCollisionBehavior == nullptr ? false : this->hoverCollisionBehavior->isOnGround());
+	return this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty();
 }
 
 bool EntityGroundCollisionBehavior::hasLeftCornerCollision()
@@ -216,11 +215,8 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 		CollisionObject::Properties(false, false),
 		Color4F::GRAY
 	);
-
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, /*-this->entity->getHoverHeight() / 2.0f*/ - EntityGroundCollisionBehavior::GroundCollisionOffset);
-
-	this->groundCollision->setPosition(offset);
+	
+	this->groundCollision->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, EntityGroundCollisionBehavior::GroundCollisionOffset));
 
 	this->addChild(this->groundCollision);
 
@@ -265,7 +261,7 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f, /*-this->entity->getHoverHeight() / 2.0f*/ - EntityGroundCollisionBehavior::GroundCollisionOffset);
+	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f,  EntityGroundCollisionBehavior::GroundCollisionOffset);
 
 	this->rightCornerCollision->setPosition(offset);
 	this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));

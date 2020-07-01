@@ -11,9 +11,8 @@ class EntityJumpCollisionBehavior : public AttachedBehavior
 public:
 	static EntityJumpCollisionBehavior* create(GameObject* owner);
 
+	CollisionObject* getJumpCollision();
 	bool canJump();
-	
-	CollisionObject* jumpCollision;
 
 	static const std::string MapKey;
 	static const float JumpCollisionMargin;
@@ -31,7 +30,8 @@ private:
 	typedef AttachedBehavior super;
 
 	void buildJumpCollisionDetector();
-
+	
+	CollisionObject* jumpCollision;
 	PlatformerEntity* entity;
 	EntityHoverCollisionBehavior* hoverCollisionBehavior;
 };

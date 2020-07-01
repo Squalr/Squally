@@ -81,6 +81,7 @@ public:
 	CollisionType getCollisionType();
 	std::vector<CollisionType> getCollisionTypes();
 	bool hasCollisionType(CollisionType collisionType);
+	bool hasCollisionWith(CollisionObject* object);
 	void setGravityEnabled(bool isEnabled);
 	cocos2d::Vec2 getVelocity();
 	cocos2d::Vec2 getAcceleration();
