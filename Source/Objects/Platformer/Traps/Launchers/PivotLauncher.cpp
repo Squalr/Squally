@@ -235,6 +235,8 @@ void PivotLauncher::faceTarget()
 		const float angleNormalized = MathUtils::wrappingNormalize(float(M_PI) + angleBetween, 0.0f, 2.0f * float(M_PI));
 
 		this->currentAngle = -angleNormalized * 180.0f / float(M_PI);
+
+		this->repositionHackButtons();
 	}
 
 	cannon->setRotation(this->currentAngle);

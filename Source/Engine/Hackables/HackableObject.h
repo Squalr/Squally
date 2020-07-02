@@ -56,6 +56,7 @@ protected:
 	void onHackerModeDisable() override;
 	void onDespawn() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
+	void repositionHackButtons();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getRainOffset();
 	virtual cocos2d::Vec2 getButtonOffset();

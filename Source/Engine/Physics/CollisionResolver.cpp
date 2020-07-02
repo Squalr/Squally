@@ -17,9 +17,17 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		|| objectA == objectB
 		|| !objectA->physicsEnabled
 		|| !objectB->physicsEnabled
-		|| objectA->getUniverseId() != objectB->getUniverseId()
-		// Z bounds check. This would be "most correct" if done after calls to computeWorldCoords(), but it turns out to not matter and be much faster here.
-		|| !CollisionResolver::isWithinZThreshold(objectA, objectB))
+		|| objectA->getUniverseId() != objectB->getUniverseId())
+	{
+		return;
+	}
+
+	// Computing depth is also done later when computing world coords, but this is cheaper and faster and will eliminate many collisions.
+	objectA->computeDepth();
+	objectB->computeDepth();
+
+	// Z bounds check
+	if (!CollisionResolver::isWithinZThreshold(objectA, objectB))
 	{
 		return;
 	}
@@ -36,7 +44,7 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 	rectA.origin += coordsA;
 	rectB.origin += coordsB;
 
-	// Cheap and easy bounds check
+	// Cheap and easy rectangular bounds check. Nuanced checks will be done later if this check passes.
 	if (!rectA.intersectsRect(rectB))
 	{
 		return;

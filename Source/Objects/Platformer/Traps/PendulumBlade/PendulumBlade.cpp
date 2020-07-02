@@ -89,6 +89,8 @@ void PendulumBlade::initializePositions()
 void PendulumBlade::update(float dt)
 {
 	super::update(dt);
+	
+	this->repositionHackButtons();
 }
 
 Vec2 PendulumBlade::getButtonOffset()
