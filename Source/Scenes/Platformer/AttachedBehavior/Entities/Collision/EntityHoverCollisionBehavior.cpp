@@ -166,9 +166,8 @@ void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 Size EntityHoverCollisionBehavior::getHoverSize(float progress)
 {
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 2.5f;
-	static const float UpwardsPadding = 0.0f; // this->entity->getEntitySize().height;
-	static const float MinCrouch = this->entity->getCollisionOffset().y + this->entity->getEntitySize().height + CrouchLowPoint;
-	static const float MaxCrouch = this->entity->getCollisionOffset().y + this->entity->getHoverHeight() + UpwardsPadding;
+	static const float MinCrouch = this->entity->getCollisionOffset().y + CrouchLowPoint;
+	static const float MaxCrouch = this->entity->getCollisionOffset().y + this->entity->getHoverHeight();
 
 	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
@@ -186,9 +185,8 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 	}
 
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 2.5f;
-	static const float UpwardsPadding = 0.0f;
 	static const float MinCrouchGround = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
-	static const float MaxCrouchGround = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset- EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float MaxCrouchGround = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
 	static const float MinCrouchJump = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
 	static const float MaxCrouchJump = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
 
@@ -201,7 +199,7 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 
 	if (this->hoverCollision != nullptr)
 	{
-		this->hoverCollision->setPosition(Offset + Vec2(0.0f, hoverDelta / 2.0f + UpwardsPadding));
+		this->hoverCollision->setPosition(Offset + Vec2(0.0f, hoverDelta / 2.0f));
 	}
 
 	// Reposition ground/jump collision to the bottom of the hover
@@ -266,6 +264,11 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			|| this->entityCollision->movementCollision == nullptr
 			|| this->groundCollision->getGroundCollision() == nullptr
 			|| this->entity->controlState == PlatformerEntity::ControlState::Swimming)
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		if (this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
