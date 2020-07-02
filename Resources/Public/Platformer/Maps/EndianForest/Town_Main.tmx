@@ -732,7 +732,7 @@
    </properties>
   </object>
   <object id="894" name="lantern-gate" type="object" x="5955.06" y="5563.87" width="356" height="320"/>
-  <object id="911" name="portal" type="object" x="126.666" y="5624.36" width="256" height="256">
+  <object id="911" name="portal" type="object" x="110.666" y="5623.36" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="town"/>
@@ -765,7 +765,7 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="961" name="pass-through" type="collision" x="4514.67" y="4782.67" width="792.667" height="125.333"/>
+  <object id="961" name="pass-through" type="collision" x="4514.67" y="4782.67" width="792.667" height="61.3333"/>
   <object id="982" name="pass-through" type="collision" x="5759.33" y="6636.67" width="894" height="74"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
