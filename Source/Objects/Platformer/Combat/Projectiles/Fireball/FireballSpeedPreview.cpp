@@ -51,7 +51,7 @@ void FireballSpeedPreview::onEnter()
 	const float speed = 1.5f;
 	const float offset = 48.0f;
 
-	this->fireball->setPosition(Vec2(0.0f, 16.0f));
+	this->fireball->setPosition(Vec2(0.0f, 0.0f));
 
 	this->fireball->runAction(
 		RepeatForever::create(Sequence::create(
@@ -68,8 +68,8 @@ void FireballSpeedPreview::initializePositions()
 {
 	super::initializePositions();
 
-	const float offset = 32.0f;
+	const float offset = 64.0f;
 	
-	this->xmm1Left->setPosition(Vec2(-HackablePreview::PreviewRadius + offset, -16.0f));
-	this->xmm1Right->setPosition(Vec2(HackablePreview::PreviewRadius - offset, -16.0f));
+	this->xmm1Left->setPosition(Vec2(-HackablePreview::PreviewRadius + offset, 32.0f));
+	this->xmm1Right->setPosition(Vec2(HackablePreview::PreviewRadius - offset, -32.0f));
 }

@@ -77,6 +77,7 @@ void Fireball::runImpactFX()
 {
 	this->explosionAnim->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
 	this->fireballAnim->stopAnimation();
+	this->setLaunchVelocity(Vec3::ZERO);
 
 	this->impactSound->play();
 }

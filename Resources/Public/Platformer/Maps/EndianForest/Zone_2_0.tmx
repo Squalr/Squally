@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="881">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="882">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -98,16 +98,6 @@
     <property name="send-event" value="bridge-group-A"/>
    </properties>
   </object>
-  <object id="854" name="warp" type="object" x="1636" y="1666" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-A"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-A"/>
-    <property name="zoom" type="float" value="2"/>
-   </properties>
-  </object>
   <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31"/>
   <object id="874" name="solid" type="collision" x="1075.73" y="-66.458" width="97.0303" height="2072.31"/>
  </objectgroup>
@@ -154,6 +144,16 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="881" name="warp" type="object" x="1636" y="1666" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+    <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
  </objectgroup>

@@ -163,7 +163,7 @@ void CardPreview::previewCardData(CardData* cardData, Card* card)
 void CardPreview::updatePreview(PreviewData previewData)
 {
 	int originalAttack = previewData.cardData->getAttack();
-	int attack = previewData.previewCard->getAttack();
+	int attack = (previewData.previewCard == nullptr) ? originalAttack : previewData.previewCard->getAttack();
 
 	switch (previewData.cardData->getCardType())
 	{
