@@ -18,6 +18,7 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		|| !objectA->physicsEnabled
 		|| !objectB->physicsEnabled
 		|| objectA->getUniverseId() != objectB->getUniverseId()
+		// Z bounds check. This would be "most correct" if done after calls to computeWorldCoords(), but it turns out to not matter and be much faster here.
 		|| !CollisionResolver::isWithinZThreshold(objectA, objectB))
 	{
 		return;
@@ -77,8 +78,8 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 
 bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, CollisionObject* collisionObjectB)
 {
-	const float thisDepthCenter = GameUtils::getDepth(collisionObjectA);
-	const float otherDepthCenter = GameUtils::getDepth(collisionObjectB);
+	const float thisDepthCenter = collisionObjectA->cachedWorldCoords3D.z;
+	const float otherDepthCenter = collisionObjectB->cachedWorldCoords3D.z;
 
 	// Ensure a < b and c < d
 	const float a = thisDepthCenter - collisionObjectA->collisionDepth;

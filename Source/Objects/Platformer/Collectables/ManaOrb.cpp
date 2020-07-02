@@ -34,7 +34,7 @@ ManaOrb* ManaOrb::create(ValueMap& properties)
 ManaOrb::ManaOrb(ValueMap& properties) : super(properties)
 {
 	this->collectSound = WorldSound::create(SoundResources::Notifications_NotificationShine1);
-	this->manaOrb = SmartParticles::create(ParticleResources::Objects_ManaOrb);
+	this->manaOrb = SmartParticles::create(ParticleResources::Objects_ManaOrb, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
 
 	this->collectableNode->addChild(this->manaOrb);
 	this->addChild(this->collectSound);

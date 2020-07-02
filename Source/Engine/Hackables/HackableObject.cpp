@@ -100,27 +100,24 @@ void HackableObject::initializeListeners()
 void HackableObject::initializePositions()
 {
 	super::initializePositions();
+
+	this->uiElementsButton->setPosition(this->getButtonOffset());
+	this->uiElementsRain->setPosition(this->getRainOffset());
+	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
 }
 
 void HackableObject::update(float dt)
 {
 	super::update(dt);
 
-	this->uiElementsButton->setPosition(this->getButtonOffset());
-	this->uiElementsRain->setPosition(this->getRainOffset());
-	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
-
-	if (!this->hackableList.empty())
+	if (!this->hasRelocatedUI && !this->hackableList.empty())
 	{	
-		// Note that this is deferred until now as an optimization, as TriggerBindObjectToUI is expensive
-		if (!this->hasRelocatedUI)
-		{
-			// Move the UI elements to the top-most layer
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsButton));
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsProgressBars));
-			this->hasRelocatedUI = true;
-		}
+		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsButton));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsProgressBars));
+
+		this->hasRelocatedUI = true;
 	}
 
 	this->updateTimeRemainingBars();
@@ -215,6 +212,12 @@ void HackableObject::updateTimeRemainingBars()
 		}
 	}
 
+	if (this->timeRemainingBars.empty() && this->trackedHackables.empty())
+	{
+		this->refreshParticleFx();
+		return;
+	}
+
 	// Remove hackables that have timed out and are available cooldown wise
 	this->trackedHackables.erase(std::remove_if(this->trackedHackables.begin(), this->trackedHackables.end(), [](HackableBase* hackable)
 	{
@@ -284,14 +287,14 @@ void HackableObject::updateTimeRemainingBars()
 
 void HackableObject::refreshParticleFx()
 {
-	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
-		{
-			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
-		})
-		&& this->allowFx
+	if (this->allowFx
 		&& this->isHackable
 		&& !this->hackableList.empty()
-		&& this->trackedHackables.empty())
+		&& this->trackedHackables.empty()
+		&& std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
+		{
+			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
+		}))
 	{
 		this->createSensingParticles();
 
