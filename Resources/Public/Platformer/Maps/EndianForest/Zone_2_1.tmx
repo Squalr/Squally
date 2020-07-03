@@ -97,7 +97,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="temple" type="terrain" x="4529.67" y="1498.33" width="574" height="398">
+  <object id="890" name="temple" type="terrain" x="4521.67" y="1478.33" width="574" height="398">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -108,7 +108,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="889" name="temple" type="terrain" x="4453.33" y="1552.67" width="574" height="398">
+  <object id="889" name="temple" type="terrain" x="4451.33" y="1508.67" width="574" height="398">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -134,7 +134,7 @@
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="5081.88,240.632 5093.06,2296.97 313.22,2314.73 311.452,594.252 1110.01,593.367 1110.34,478.102 1894.56,478.038 1894.51,364.258 2021.62,364.827 2023.17,242.456"/>
+   <polygon points="5079.88,188.632 5093.06,2296.97 313.22,2314.73 311.452,528.252 1110.01,527.367 1108.34,426.102 1892.56,426.038 1892.51,312.258 2019.62,312.827 2021.17,190.456"/>
   </object>
  </objectgroup>
  <objectgroup id="74" name="terrain -2">
@@ -164,7 +164,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="913" name="chest" type="object" x="5263.04" y="1365.82" width="128" height="128">
+  <object id="913" name="chest" type="object" x="5277.71" y="1315.15" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="255,252,253,0"/>
@@ -174,7 +174,7 @@
     <property name="tutorial" value="overflow"/>
    </properties>
   </object>
-  <object id="914" name="add-door" type="object" x="7544.97" y="464.44" width="696" height="775">
+  <object id="914" name="add-door" type="object" x="7541.94" y="415.955" width="696" height="775">
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="EndianForest/Zone_2_4"/>
@@ -198,7 +198,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="916" name="goblin-warrior-pig" type="entity" x="6760.73" y="1126.4" width="128" height="128">
+  <object id="916" name="goblin-warrior-pig" type="entity" x="6757.7" y="1077.92" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -207,7 +207,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="917" name="goblin-warrior-pig" type="entity" x="6766.31" y="717.97" width="128" height="128">
+  <object id="917" name="goblin-warrior-pig" type="entity" x="6763.28" y="669.485" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
@@ -229,7 +229,7 @@
     <property name="to" value="start"/>
    </properties>
   </object>
-  <object id="944" name="spawn" type="object" x="7815.88" y="1127.82" width="128" height="128">
+  <object id="944" name="spawn" type="object" x="7812.85" y="1079.34" width="128" height="128">
    <properties>
     <property name="transition" value="exit-A"/>
    </properties>

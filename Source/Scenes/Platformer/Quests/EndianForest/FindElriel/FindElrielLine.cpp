@@ -1,6 +1,7 @@
 #include "FindElrielLine.h"
 
 #include "Engine/Quests/QuestTask.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/BusinessHours.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielTelomere.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/ReturnToQueen.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/SneakPastLycan.h"
@@ -32,6 +33,7 @@ FindElrielLine::FindElrielLine() : super(FindElrielLine::MapKeyQuestLine, {
 	QuestData(TalkToChiron::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToChiron::create(owner, questLine); }),
 	QuestData(TalkToGrogg::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToGrogg::create(owner, questLine); }),
 	QuestData(TalkToElriel::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToElriel::create(owner, questLine); }),
+	QuestData(BusinessHours::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return BusinessHours::create(owner, questLine); }),
 	QuestData(ReturnToQueen::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return ReturnToQueen::create(owner, questLine); }),
 	QuestData(FindElrielTelomere::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return FindElrielTelomere::create(owner, questLine); }),
 })

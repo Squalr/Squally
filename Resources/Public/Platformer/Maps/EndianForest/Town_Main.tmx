@@ -267,7 +267,7 @@
    <properties>
     <property name="map" value="EndianForest/Town_Inn"/>
     <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="business-hours"/>
+    <property name="quest-line" value="find-elriel"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -701,7 +701,7 @@
    <properties>
     <property name="map" value="EndianForest/Town_Alch"/>
     <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="business-hours"/>
+    <property name="quest-line" value="find-elriel"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -709,7 +709,7 @@
    <properties>
     <property name="map" value="EndianForest/Town_Smith"/>
     <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="business-hours"/>
+    <property name="quest-line" value="find-elriel"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

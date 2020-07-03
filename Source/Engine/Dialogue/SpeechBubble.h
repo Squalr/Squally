@@ -25,6 +25,7 @@ public:
 	};
 
 	void runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto, bool instant = false);
+	bool isRunning();
 	void hideDialogue();
 
 	static const float InfiniteDuration;
@@ -43,6 +44,7 @@ private:
 	LocalizedLabel* text;
 	WorldSound* voiceSound;
 
+	bool isDialogueRunning;
 	bool hasBound;
 	bool uiBound;
 

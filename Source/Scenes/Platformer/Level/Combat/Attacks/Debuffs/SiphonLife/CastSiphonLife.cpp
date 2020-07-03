@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLife.h"
@@ -105,7 +106,7 @@ bool CastSiphonLife::isWorthUsing(PlatformerEntity* caster, const std::vector<Pl
 
 float CastSiphonLife::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastSiphonLife*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

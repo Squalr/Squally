@@ -35,6 +35,7 @@ TimelineEvent::TimelineEvent(PlatformerEntity* owner, Sprite* emblem, float offs
 	this->emblem = emblem;
 	this->time = offsetTime;
 	this->timelineEvent = timelineEvent;
+	this->isDeactivated = false;
 
 	this->addChild(this->line);
 	this->addChild(this->circle);
@@ -68,6 +69,12 @@ void TimelineEvent::initializePositions()
 	}
 }
 
+void TimelineEvent::deactivate()
+{
+	this->setVisible(false);
+	this->isDeactivated = true;
+}
+
 void TimelineEvent::setPositions(float timelineWidth)
 {
 	this->setPositionX(-timelineWidth / 2.0f + timelineWidth * this->getTime());
@@ -95,6 +102,11 @@ void TimelineEvent::setTime(float time)
 
 bool TimelineEvent::tryUpdateEvent(float previousTime, float currentTime)
 {
+	if (this->isDeactivated)
+	{
+		return false;
+	}
+	
 	if (previousTime <= this->time && currentTime >= this->time)
 	{
 		if (this->timelineEvent != nullptr)
