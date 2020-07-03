@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Sound/Sound.h"
@@ -63,7 +64,16 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->modifierReleasedListener = nullptr;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
 	this->intersectFunction = nullptr;
-	this->debugHitbox = DrawNode::create();
+
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugHitbox = DrawNode::create();
+		this->debugHitbox->setVisible(false);
+	}
+	else
+	{
+		this->debugHitbox = nullptr;
+	}
 
 	this->clickSound = Sound::create();
 	this->mouseOverSound = Sound::create(SoundResources::Menus_ButtonRollover1);
@@ -71,14 +81,17 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->content = content;
 	this->contentSelected = contentSelected;
 
-	this->debugHitbox->setVisible(false);
-
 	this->debugCachedPos = Vec2::ZERO;
 	this->setContentSize(this->content == nullptr ? Size(256.0f, 128.0f) : this->content->getContentSize());
 
 	this->addChild(this->content);
 	this->addChild(this->contentSelected);
-	this->addChild(this->debugHitbox);
+
+	if (this->debugHitbox != nullptr)
+	{
+		this->addChild(this->debugHitbox);
+	}
+
 	this->addChild(this->clickSound);
 	this->addChild(this->mouseOverSound);
 }
@@ -139,7 +152,10 @@ void ClickableNode::initializeListeners()
 
 void ClickableNode::setDebugDrawPosition()
 {
-	this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
+	}
 }
 
 bool ClickableNode::canInteract()
@@ -159,25 +175,34 @@ void ClickableNode::setContentSize(const Size & size)
 {
 	super::setContentSize(size);
 
-	this->debugHitbox->clear();
-	this->debugHitbox->drawRect(Vec2::ZERO, Vec2(size), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
-	this->debugHitbox->setContentSize(size);
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->clear();
+		this->debugHitbox->drawRect(Vec2::ZERO, Vec2(size), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
+		this->debugHitbox->setContentSize(size);
 
-	this->setDebugDrawPosition();
+		this->setDebugDrawPosition();
+	}
 }
 
 void ClickableNode::onDeveloperModeEnable(int debugLevel)
 {
 	super::onDeveloperModeEnable(debugLevel);
 
-	this->debugHitbox->setVisible(true);
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->setVisible(true);
+	}
 }
 
 void ClickableNode::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
-	this->debugHitbox->setVisible(false);
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->setVisible(false);
+	}
 }
 
 void ClickableNode::setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible)

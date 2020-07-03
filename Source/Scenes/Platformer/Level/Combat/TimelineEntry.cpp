@@ -173,26 +173,26 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestore, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaRestore(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
+				this->applyManaRestore(args->caster, args->manaRestoreOrDrain, args->disableBuffProcessing, args->abilityType);
 			}
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrain, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaDrain(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
+				this->applyManaDrain(args->caster, args->manaRestoreOrDrain, args->disableBuffProcessing, args->abilityType);
 			}
 		}
 	}));
@@ -447,16 +447,16 @@ void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, boo
 	CombatEvents::TriggerManaRestoreDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain, abilityType));
 }
 
-void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaDrain, bool disableBuffProcessing, AbilityType abilityType)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
 	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		manaBehavior->setMana(mana + manaGain);
+		manaBehavior->setMana(mana - manaDrain);
 	});
 
-	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain, abilityType));
+	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaDrain, abilityType));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
@@ -486,6 +486,11 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 		this->orphanedAttackCache->addChild(attack);
 	}
 
+	if (attack != nullptr)
+	{
+		this->isCasting = true;
+	}
+
 	this->currentCast = attack;
 }
 
@@ -505,6 +510,8 @@ void TimelineEntry::defend()
 	{
 		return;
 	}
+
+	this->isCasting = true;
 	
 	this->getEntity()->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
@@ -539,6 +546,12 @@ void TimelineEntry::addTimeWithoutActions(float dt)
 	CombatEvents::TriggerModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs(this->getEntity(), &speed));
 
 	this->setProgress(this->progress + (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier));
+
+	if (this->isCasting && speed < 0.0f && this->progress < TimelineEntry::CastPercentage)
+	{
+		this->stageCast(nullptr);
+		this->isCasting = false;
+	}
 }
 
 void TimelineEntry::addTime(float dt)
@@ -553,8 +566,6 @@ void TimelineEntry::tryPerformActions()
 	if (this->progress >= TimelineEntry::CastPercentage && !this->isCasting && !this->isPacifist())
 	{
 		CombatEvents::TriggerInterruptTimeline();
-
-		this->isCasting = true;
 
 		if (this->isPlayerEntry())
 		{
@@ -665,6 +676,10 @@ void TimelineEntry::tryInterrupt()
 	{
 		this->setProgress(this->progress / 2.0f);
 		this->interruptBonus = 0.1f;
+	}
+	else if (this->isBlocking && !this->isCasting)
+	{
+		// No interrupt when not casting. This is just a carry-over block.
 	}
 	else if (this->isCasting)
 	{

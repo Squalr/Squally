@@ -124,7 +124,25 @@ void Undying::registerHackables()
 				this->getRemainingDuration(),
 				0.0f,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						"cmp esi, ebx\n"
+						"cmovle esi, ebx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create())
+						, // x64
+						"cmp rsi, rbx\n"
+						"cmovle rsi, rbx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create())
+					),
+				},
+				true
 			)
 		},
 	};

@@ -62,8 +62,8 @@ void ManaOrb::initializeListeners()
 		{
 			squally->watchForAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 			{
-				// Restore 20% of mana
-				manaBehavior->setMana(manaBehavior->getMana() + int(std::ceil(float(manaBehavior->getMaxMana()) * 0.2f)));
+				// Restore 30% of mana
+				manaBehavior->setMana(manaBehavior->getMana() + int(std::ceil(float(manaBehavior->getMaxMana()) * 0.3f)));
 			});
 		}, Squally::MapKey);
 

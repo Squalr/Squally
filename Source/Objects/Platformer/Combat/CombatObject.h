@@ -3,6 +3,13 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Events/CombatEvents.h"
 
+namespace cocos2d
+{
+	class Value;
+
+	typedef std::map<std::string, Value> ValueMap;
+}
+
 class PlatformerEntity;
 
 class CombatObject : public HackableObject
@@ -32,6 +39,7 @@ protected:
 	bool onTimeline;
 	bool timelinePaused;
 	bool timelinePausedCinematic;
+	static cocos2d::ValueMap HackStateStorage;
 
 private:
 	typedef HackableObject super;

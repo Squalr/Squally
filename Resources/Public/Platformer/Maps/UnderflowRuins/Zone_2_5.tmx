@@ -6,7 +6,7 @@
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="7"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -164,7 +164,7 @@
     <property name="direction" value="right"/>
     <property name="listen-event" value="medusa-dead"/>
     <property name="map" value="UnderflowRuins/Zone_2_6"/>
-    <property name="transition" value="passage"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
   <object id="973" name="trigger" type="object" x="1889.32" y="-372" width="193" height="2840">
@@ -221,7 +221,7 @@
   </object>
   <object id="942" name="spawn" type="object" x="3417.33" y="2042.06" width="128" height="128">
    <properties>
-    <property name="transition" value="passage"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

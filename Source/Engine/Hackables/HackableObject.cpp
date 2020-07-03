@@ -407,6 +407,16 @@ void HackableObject::unregisterAllHackables(bool forceRestoreState)
 	{
 		this->unregisterHackAbility(next);
 	}
+
+	for (auto next : this->timeRemainingBars)
+	{
+		next->setVisible(false);
+	}
+
+	for (auto next : this->timeRemainingIcons)
+	{
+		next->setVisible(false);
+	}
 }
 
 void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestoreState)

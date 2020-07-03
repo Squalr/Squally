@@ -37,7 +37,6 @@ SmartScene::SmartScene()
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
 	this->layerColorHud = Hud::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
-	this->disposeCallbacks = std::vector<std::function<void()>>();
 
 	this->layerColor->setContentSize(Director::getInstance()->getVisibleSize());
 
@@ -49,10 +48,6 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
-	for (auto next : this->disposeCallbacks)
-	{
-		next();
-	}
 }
 
 void SmartScene::onEnter()
@@ -104,15 +99,18 @@ void SmartScene::initializeListeners()
 {
 	this->removeAllListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
+	if (DeveloperModeController::IsDeveloperBuild)
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
-	}));
+		this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
+		{
+			this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
+		}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
-	{
-		this->onDeveloperModeDisable();
-	}));
+		this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
+		{
+			this->onDeveloperModeDisable();
+		}));
+	}
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 	{
@@ -364,9 +362,4 @@ void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyC
 			}
 		}
 	}));
-}
-
-void SmartScene::onDispose(std::function<void()> task)
-{
-	this->disposeCallbacks.push_back(task);
 }

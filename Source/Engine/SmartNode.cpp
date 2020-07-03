@@ -32,15 +32,10 @@ SmartNode::SmartNode()
 	this->optimizationHasListener = false;
 	this->hasInitializedListeners = false;
 	this->disableHackerModeEvents = false;
-	this->disposeCallbacks = std::vector<std::function<void()>>();
 }
 
 SmartNode::~SmartNode()
 {
-	for (auto next : this->disposeCallbacks)
-	{
-		next();
-	}
 }
 
 void SmartNode::onEnter()
@@ -438,9 +433,4 @@ EventListener* SmartNode::whenScrollDown(std::function<void(InputEvents::MouseEv
 	this->addEventListener(listener);
 
 	return listener;
-}
-
-void SmartNode::onDispose(std::function<void()> task)
-{
-	this->disposeCallbacks.push_back(task);
 }

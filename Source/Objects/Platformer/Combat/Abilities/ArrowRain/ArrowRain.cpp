@@ -37,9 +37,7 @@ const int ArrowRain::TickCount = 6;
 const int ArrowRain::Damage = 2;
 const float ArrowRain::TimeBetweenTicks = 0.75f;
 const float ArrowRain::StartDelay = 0.25f;
-
-// Static to prevent GCC optimization issues
-volatile bool ArrowRain::isOnPlayerTeam = false;
+const std::string ArrowRain::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
 
 const std::string ArrowRain::HackIdentifierArrowRainTeamCompare = "arrow-rain-team";
 
@@ -56,7 +54,6 @@ ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::st
 {
 	this->arrowPool = std::vector<Sprite*>();
 	this->arrowCooldowns = std::vector<float>();
-	this->isOnPlayerTeam = false;
 	this->arrowResource = arrowResource;
 
 	for (int index = 0; index < 8; index++)
@@ -215,14 +212,17 @@ void ArrowRain::damageOtherTeam()
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
 	{
 		TimelineEntry* casterEntry = timeline->getAssociatedEntry(this->caster);
+		
+		if (casterEntry == nullptr)
+		{
+			return;
+		}
 
-		bool isCasterPlayerTeam = casterEntry == nullptr ? false : casterEntry->isPlayerEntry();
+		this->compareTeam(casterEntry);
 
 		for (auto next : timeline->getEntries())
 		{
-			this->compareTeam(next);
-
-			if (isCasterPlayerTeam != this->isOnPlayerTeam)
+			if (next->isPlayerEntry() == this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam].asBool())
 			{
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowRain::Damage), AbilityType::Passive, true));
 			}
@@ -232,15 +232,16 @@ void ArrowRain::damageOtherTeam()
 
 NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 {
-	static volatile int isOnPlayerTeamLocal;
+	static volatile int isOnEnemyTeamLocal;
 
-	isOnPlayerTeamLocal = entry->isPlayerEntry();
+	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 0 : 1;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(eax, isOnPlayerTeamLocal);
+	ASM(MOV ZAX, 0);
+	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
 
 	ASM(mov ZBX, 1);
 
@@ -250,9 +251,10 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 	HACKABLE_CODE_END();
 
 	// If the compare is true, set zax to 1, else 0
-	ASM(mov ZAX, 0);
+	ASM(MOV ZAX, 0);
 	ASM(cmove ZAX, ZBX);
-	ASM_MOV_VAR_REG(isOnPlayerTeamLocal, eax);
+
+	ASM_MOV_VAR_REG(isOnEnemyTeamLocal, eax);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
@@ -260,6 +262,6 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 
 	HACKABLES_STOP_SEARCH();
 
-	this->isOnPlayerTeam = (isOnPlayerTeamLocal == 0) ? false : true;
+	this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal == 0) ? false : true);
 }
 END_NO_OPTIMIZE

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1157">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1157">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>

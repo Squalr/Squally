@@ -2,10 +2,13 @@
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Events/CombatEvents.h"
 
 using namespace cocos2d;
+
+ValueMap CombatObject::HackStateStorage = ValueMap();
 
 CombatObject::CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline, float duration)
 	: super()

@@ -55,6 +55,8 @@ ManaDrain::ManaDrain(PlatformerEntity* caster, PlatformerEntity* target)
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
+	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
+	
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
 	this->addChild(this->healSound);
@@ -77,7 +79,7 @@ void ManaDrain::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 24.0f);
 }
 
 void ManaDrain::registerHackables()
@@ -105,6 +107,9 @@ void ManaDrain::registerHackables()
 					},
 					{
 						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx::create(),
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi::create(),
 					}
 				},
 				int(HackFlags::None),
@@ -207,7 +212,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 
 	ASM_MOV_REG_VAR(ecx, currentMana);
 	ASM(mov ZSI, 0);
-	ASM(mov ZDX, -1);
+	ASM(mov ZDX, 1);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MANA_DRAIN);
 	ASM(cmp ZCX, 4);
