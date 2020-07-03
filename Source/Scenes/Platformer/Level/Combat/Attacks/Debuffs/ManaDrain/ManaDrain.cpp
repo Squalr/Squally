@@ -96,7 +96,7 @@ void ManaDrain::registerHackables()
 			HackableCode::HackableCodeInfo(
 				ManaDrain::ManaDrainIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain::create(),
-				HackableBase::HackBarColor::Yellow,
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_ManaSkull,
 				ManaDrainGenericPreview::create(),
 				{

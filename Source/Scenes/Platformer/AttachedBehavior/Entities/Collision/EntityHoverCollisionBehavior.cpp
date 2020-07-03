@@ -125,7 +125,7 @@ void EntityHoverCollisionBehavior::update(float dt)
 
 void EntityHoverCollisionBehavior::crouch(float dt)
 {
-	static const float TimeToCrouch = 0.5f;
+	static const float TimeToCrouch = 0.25f;
 
 	if (this->crouchProgress >= 1.0f)
 	{
@@ -139,7 +139,7 @@ void EntityHoverCollisionBehavior::crouch(float dt)
 
 void EntityHoverCollisionBehavior::uncrouch(float dt)
 {
-	static const float TimeToUncrouch = 0.5f;
+	static const float TimeToUncrouch = 0.25f;
 
 	if (this->crouchProgress <= 0.0f)
 	{
@@ -172,7 +172,7 @@ Size EntityHoverCollisionBehavior::getHoverSize(float progress)
 	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
 	return Size(
-		std::max(this->entity->getEntitySize().width - 24.0f, 16.0f),
+		std::max(this->entity->getEntitySize().width - 8.0f, 16.0f),
 		crouchHeight
 	);
 }

@@ -32,7 +32,7 @@ CastLightningStrike::CastLightningStrike(float attackDuration, float recoverDura
 		AbilityType::Lightning,
 		12,
 		15,
-		6,
+		11,
 		attackDuration,
 		recoverDuration,
 		TargetingType::Single

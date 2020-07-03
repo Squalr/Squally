@@ -345,6 +345,14 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
+		// Catch an edge case when jamming the he player into a corner consisting of two objects
+		// This causes the ground detector to hit both, resulting in the above cases to fail.
+		// Just using wall detectors as a backup seems to work fine.
+		if (this->hasLeftWallCollision() || this->hasRightWallCollision())
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
