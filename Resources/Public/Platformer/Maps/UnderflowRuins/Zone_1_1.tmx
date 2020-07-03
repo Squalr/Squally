@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1074">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1074">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -178,7 +178,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1041" name="edge-portal" type="object" x="3739.31" y="786.029" width="199.918" height="488.002">
+  <object id="1041" name="edge-portal" type="object" x="3880.25" y="786.029" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_1_2"/>

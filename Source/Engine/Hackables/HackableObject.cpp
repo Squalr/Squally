@@ -101,9 +101,7 @@ void HackableObject::initializePositions()
 {
 	super::initializePositions();
 
-	this->uiElementsButton->setPosition(this->getButtonOffset());
-	this->uiElementsRain->setPosition(this->getRainOffset());
-	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
+	this->repositionHackButtons();
 }
 
 void HackableObject::update(float dt)
@@ -192,6 +190,13 @@ void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
 		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsButton, newParent));
 		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsProgressBars, newParent));
 	});
+}
+
+void HackableObject::repositionHackButtons()
+{
+	this->uiElementsButton->setPosition(this->getButtonOffset());
+	this->uiElementsRain->setPosition(this->getRainOffset());
+	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
 }
 
 void HackableObject::registerHackables()

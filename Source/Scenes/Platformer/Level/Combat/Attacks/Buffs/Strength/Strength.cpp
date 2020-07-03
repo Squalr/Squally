@@ -137,7 +137,7 @@ void Strength::registerHackables()
 						"add ecx, 3\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 

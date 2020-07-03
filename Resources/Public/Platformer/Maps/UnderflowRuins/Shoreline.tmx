@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -122,6 +122,7 @@
  <objectgroup id="85" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="913" name="warp" type="object" x="1617.12" y="1643.06" width="256" height="256">
@@ -152,6 +153,7 @@
  <objectgroup id="84" name="player_layer -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="905" name="spawn-wood-door" type="object" x="4271.23" y="1770.15" width="128" height="128">

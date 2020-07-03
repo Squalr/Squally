@@ -128,8 +128,8 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 		this->enemyPartyStatsNode->addChild(statsBars);
 	}
 
-	static const std::vector<int> PascaleTriangleX = { 0, 1, 0, 2, 1, 0, 3, 2, 1, 0, 4, 3, 2, 1, 0 };
-	static const std::vector<int> PascaleTriangleY = { 0, 0, 1, 0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 4 };
+	static const std::vector<int> PascaleTriangleX = { 0, 1, 0, 2, 1, 0, /*3,*/ 2, 1, 0, /* 4, 3, */ 2, 1, 0 };
+	static const std::vector<int> PascaleTriangleY = { 0, 0, 1, 0, 1, 2, /*0,*/ 1, 2, 3, /* 0, 1, */ 2, 3, 4 };
 	const float SpacingX = 364.0f;
 	const float SpacingY = -152.0f;
 	int xIndex = 0;

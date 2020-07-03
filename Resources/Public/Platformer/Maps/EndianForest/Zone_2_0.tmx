@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="881">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="882">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -98,16 +98,6 @@
     <property name="send-event" value="bridge-group-A"/>
    </properties>
   </object>
-  <object id="854" name="warp" type="object" x="1636" y="1666" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-A"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-A"/>
-    <property name="zoom" type="float" value="2"/>
-   </properties>
-  </object>
   <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31"/>
   <object id="874" name="solid" type="collision" x="1075.73" y="-66.458" width="97.0303" height="2072.31"/>
  </objectgroup>
@@ -154,6 +144,16 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="881" name="warp" type="object" x="1636" y="1666" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+    <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
  </objectgroup>
@@ -405,7 +405,7 @@
   <object id="786" name="mechanical-flail" type="object" x="5318.33" y="4665.2" width="42.4242" height="202.545"/>
   <object id="788" name="pendulum-blade" type="object" x="5162.79" y="4413.18" width="42.4242" height="244.303"/>
   <object id="790" name="mechanical-flail" type="object" x="4963.82" y="4092.12" width="42.4242" height="316.97"/>
-  <object id="799" name="mechanical-flail" type="object" x="5217.7" y="4235.88" width="42.4242" height="168.97"/>
+  <object id="799" name="mechanical-flail" type="object" x="5151.51" y="4242.01" width="42.4242" height="168.97"/>
   <object id="804" name="mechanical-flail" type="object" x="4128.79" y="4222.18" width="42.4242" height="187.636"/>
   <object id="806" name="edge-portal" type="object" x="14144.9" y="3910.24" width="199.918" height="640.851">
    <properties>
@@ -523,7 +523,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="69" name="water">
+ <objectgroup id="69" name="water" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

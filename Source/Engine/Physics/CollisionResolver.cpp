@@ -6,6 +6,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
@@ -17,9 +18,17 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		|| objectA == objectB
 		|| !objectA->physicsEnabled
 		|| !objectB->physicsEnabled
-		|| objectA->getUniverseId() != objectB->getUniverseId()
-		// Z bounds check. This would be "most correct" if done after calls to computeWorldCoords(), but it turns out to not matter and be much faster here.
-		|| !CollisionResolver::isWithinZThreshold(objectA, objectB))
+		|| objectA->getUniverseId() != objectB->getUniverseId())
+	{
+		return;
+	}
+
+	// Computing depth is also done later when computing world coords, but this is cheaper and faster and will eliminate many collisions.
+	objectA->computeDepth();
+	objectB->computeDepth();
+
+	// Z bounds check
+	if (!CollisionResolver::isWithinZThreshold(objectA, objectB))
 	{
 		return;
 	}
@@ -36,7 +45,7 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 	rectA.origin += coordsA;
 	rectB.origin += coordsB;
 
-	// Cheap and easy bounds check
+	// Cheap and easy rectangular bounds check. Nuanced checks will be done later if this check passes.
 	if (!rectA.intersectsRect(rectB))
 	{
 		return;
@@ -589,13 +598,23 @@ void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObje
 
 Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObject* objectB, Vec2 correction, Vec2 impactNormal)
 {
-	float softness = (objectA->collisionProperties.softness + objectB->collisionProperties.softness) / 2.0f;
+	if (!objectA->collisionProperties.isDynamic && !objectB->collisionProperties.isDynamic)
+	{
+		return Vec2::ZERO;
+	}
+	
+	static const float CorrectionLimit = 16.0f;
+	float numerator = (objectA->collisionProperties.isDynamic ? objectA->collisionProperties.softness : 0.0f) + 
+		(objectB->collisionProperties.isDynamic ? objectB->collisionProperties.softness : 0.0f);
+	float denominator = (objectA->collisionProperties.isDynamic ? 1.0f : 0.0f) + (objectB->collisionProperties.isDynamic ? 1.0f : 0.0f);
+	float softness = numerator / denominator;
 
 	correction.x *= (impactNormal.x * softness);
-	correction.y *= impactNormal.y;
+	correction.y *= (impactNormal.y * softness);
+	// correction.y *= impactNormal.y;
 
 	Vec3 correction3d = Vec3(correction.x, correction.y, 0.0f);
-
+	
 	// Handle dynamic <=> dynamic collisions differently
 	if (objectA->collisionProperties.isDynamic && objectB->collisionProperties.isDynamic)
 	{
@@ -622,6 +641,10 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
 		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
 	}
+
+	// Prevent overzealous corrections
+	correction.x = MathUtils::clamp(correction.x, -CorrectionLimit, CorrectionLimit);
+	correction.y = MathUtils::clamp(correction.y, -CorrectionLimit, CorrectionLimit);
 	
 	return correction;
 }

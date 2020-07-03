@@ -79,6 +79,7 @@ void ShadowBolt::runImpactFX()
 {
 	this->explosionAnim->playAnimation(FXResources::ShadowImpact_ShadowImpact_0000, 0.05f, true);
 	this->shadowBoltAnim->stopAnimation();
+	this->setLaunchVelocity(Vec3::ZERO);
 
 	this->impactSound->play();
 }

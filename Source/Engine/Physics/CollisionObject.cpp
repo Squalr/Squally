@@ -90,6 +90,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->cachedWorldCoords = Vec2::ZERO;
 	this->cachedWorldCoords3D = Vec3::ZERO;
 	this->cachedTick = 0;
+	this->cachedTickDepth = 0;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
 	this->universeId = CollisionObject::UniverseId;
 
@@ -613,11 +614,21 @@ CollisionObject::Shape CollisionObject::determineShape()
 	return Shape::Polygon;
 }
 
+void CollisionObject::computeDepth(bool force)
+{
+	if (this->cachedTickDepth != SmartScene::GlobalTick || force)
+	{
+		this->cachedTickDepth = SmartScene::GlobalTick;
+		this->cachedWorldCoords3D.z = GameUtils::getDepth(this);
+	}
+}
+
 void CollisionObject::computeWorldCoords(bool force)
 {
 	if (this->cachedTick != SmartScene::GlobalTick || force)
 	{
 		this->cachedTick = SmartScene::GlobalTick;
+		this->cachedTickDepth = SmartScene::GlobalTick;
 		this->cachedWorldCoords3D = GameUtils::getWorldCoords3D(this, false);
 		this->cachedWorldCoords.x = this->cachedWorldCoords3D.x;
 		this->cachedWorldCoords.y = this->cachedWorldCoords3D.y;

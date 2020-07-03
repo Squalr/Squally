@@ -147,6 +147,7 @@ private:
 	cocos2d::Vec3 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec3 position);
 	Shape determineShape();
+	void computeDepth(bool force = false);
 	void computeWorldCoords(bool force = false);
 	void propagateRotation(bool force = false);
 
@@ -199,6 +200,7 @@ private:
 	cocos2d::Vec2 cachedWorldCoords;
 	cocos2d::Vec3 cachedWorldCoords3D;
 	unsigned int cachedTick;
+	unsigned int cachedTickDepth;
 
 	// Debug
 	cocos2d::Color4F debugColor;

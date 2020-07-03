@@ -127,7 +127,7 @@ void InteractObject::initializeListeners()
 		});
 	}
 
-	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = true;
 
@@ -136,11 +136,14 @@ void InteractObject::initializeListeners()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 		 
-	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
 	{
-		this->canInteract = false;
-		this->updateInteractMenuVisibility();
-		this->onEndCollision();
+		if (!this->interactCollision->hasCollisions())
+		{
+			this->canInteract = false;
+			this->updateInteractMenuVisibility();
+			this->onEndCollision();
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

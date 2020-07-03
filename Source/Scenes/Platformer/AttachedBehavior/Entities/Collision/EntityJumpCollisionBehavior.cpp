@@ -16,7 +16,7 @@ using namespace cocos2d;
 const std::string EntityJumpCollisionBehavior::MapKey = "entity-jump-collisions";
 const float EntityJumpCollisionBehavior::JumpCollisionMargin = 24.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionOffset = 0.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionHeight = 48.0f;
+const float EntityJumpCollisionBehavior::JumpCollisionHeight = 64.0f;
 
 EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* owner)
 {

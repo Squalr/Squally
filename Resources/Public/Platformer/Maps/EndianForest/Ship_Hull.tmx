@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="718">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="719">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -61,6 +61,7 @@
    </properties>
   </object>
   <object id="705" name="caged-whale" type="object" x="1535.85" y="1548.38" width="196" height="112"/>
+  <object id="718" name="solid" type="collision" x="-165.233" y="1776.74" width="3482.46" height="189.017"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

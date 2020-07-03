@@ -2,6 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/Sound.h"
 
 #include "Resources/SoundResources.h"
@@ -58,7 +59,8 @@ LocalizedString* Pound::getString()
 
 LocalizedString* Pound::getDescription()
 {
-	return Strings::Platformer_Combat_Attacks_PoundDescription::create();
+	return Strings::Platformer_Combat_Attacks_PoundDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(Pound::DamageMultiplier * 100.0f))));
 }
 
 std::string Pound::getAttackAnimation()

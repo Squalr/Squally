@@ -91,6 +91,8 @@ void MechanicalFlail::initializePositions()
 void MechanicalFlail::update(float dt)
 {
 	super::update(dt);
+	
+	this->repositionHackButtons();
 }
 
 Vec2 MechanicalFlail::getButtonOffset()

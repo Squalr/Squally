@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -144,7 +144,7 @@
     <property name="disable-splash" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="896.744"/>
+  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="1099.06"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

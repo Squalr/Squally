@@ -581,7 +581,7 @@ void GameObject::onDespawn()
 	{
 		this->detachBehavior(behavior);
 	}
-
+	
 	this->removeAllListeners();
 	this->unscheduleUpdate();
 	this->setVisible(false);

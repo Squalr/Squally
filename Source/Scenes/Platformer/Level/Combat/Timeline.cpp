@@ -518,33 +518,44 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(const std::vecto
 
 void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 {
-	// Note: do not pass TimelineEntry::CastPercentage -- 0.075f
-	static const std::vector<float> StartTimesFirstStrike = std::vector<float>({ 0.70f + 0.04f, 0.325f, 0.2f });
-	static const std::vector<float> StartTimesSecondStrike = std::vector<float>({ 0.575f, 0.45f, 0.075f });
 	// Keep these the same vector length as start times because lazy
+	// Note: do not pass TimelineEntry::CastPercentage -- 0.075f
+	static const std::vector<float> StartTimesFirstStrike = std::vector<float>({ 0.725f, 0.325f, 0.2f });
+	static const std::vector<float> StartTimesSecondStrike = std::vector<float>({ 0.575f, 0.45f, 0.075f });
 	static const std::vector<float> SpeedBonusesFirstStrike = std::vector<float>({ 0.05f, 0.025f, 0.01f });
 	static const std::vector<float> SpeedBonusesSecondStrike = std::vector<float>({ 0.025f, 0.01f, 0.0f });
+
 	int friendlyIndex = 0;
 	int enemyIndex = 0;
-	
-	for (auto entry : this->timelineEntries)
-	{
-		bool isSameTeamFirstStrike = (isPlayerFirstStrike && entry->isPlayerEntry()) || (!isPlayerFirstStrike && !entry->isPlayerEntry());
-		int* indexPtr = entry->isPlayerEntry() ? &friendlyIndex : &enemyIndex;
-		const std::vector<float>* startTimes = (isSameTeamFirstStrike) ? &StartTimesFirstStrike : &StartTimesSecondStrike;
-		const std::vector<float>* bonusSpeeds = (isSameTeamFirstStrike) ? &SpeedBonusesFirstStrike : &SpeedBonusesSecondStrike;
 
-		if (*indexPtr < int(startTimes->size()))
+	for (auto playerEntry : this->getFriendlyEntries())
+	{
+		if (friendlyIndex < int(StartTimesFirstStrike.size()))
 		{
-			entry->setProgress(startTimes->at(*indexPtr));
-			entry->addInitSpeed(bonusSpeeds->at(*indexPtr));
+			playerEntry->setProgress(isPlayerFirstStrike ? StartTimesFirstStrike.at(friendlyIndex) : StartTimesSecondStrike.at(friendlyIndex));
+			playerEntry->addInitSpeed(isPlayerFirstStrike ? SpeedBonusesFirstStrike.at(friendlyIndex) : SpeedBonusesSecondStrike.at(friendlyIndex));
 		}
 		else
 		{
-			entry->setProgress(RandomHelper::random_real(0.0f, 0.325f));
+			playerEntry->setProgress(RandomHelper::random_real(0.0f, 0.325f));
 		}
 
-		(*indexPtr)++;
+		friendlyIndex++;
+	}
+	
+	for (auto enemyEntry : this->getEnemyEntries())
+	{
+		if (enemyIndex < int(StartTimesFirstStrike.size()))
+		{
+			enemyEntry->setProgress(!isPlayerFirstStrike ? StartTimesFirstStrike.at(enemyIndex) : StartTimesSecondStrike.at(enemyIndex));
+			enemyEntry->addInitSpeed(!isPlayerFirstStrike ? SpeedBonusesFirstStrike.at(enemyIndex) : SpeedBonusesSecondStrike.at(enemyIndex));
+		}
+		else
+		{
+			enemyEntry->setProgress(RandomHelper::random_real(0.0f, 0.325f));
+		}
+
+		enemyIndex++;
 	}
 }
 

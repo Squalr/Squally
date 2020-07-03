@@ -313,20 +313,23 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		// No collision when not standing on anything
-		if (!this->groundCollision->isOnGround())
+		// Non-swimming rules
+		if (this->entity->controlState != PlatformerEntity::ControlState::Swimming)
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			// No collision when not standing on anything
+			if (!this->groundCollision->isOnGround())
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
+			
+			if (this->entityCollision->hasCollisionWith(collisionData.other))
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
 		}
 
-		// No collision if we have both a ground and head collision with the pass-through (aka we are fully inside it)
+		// No collision if we have a head collision with the pass-through (aka below it, jumping upwards)
 		if (this->headCollision->hasHeadCollisionWith(collisionData.other))
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		// No collision if we have both a ground and head collision with the pass-through (aka we are fully inside it)
-		if (this->entityCollision->hasCollisionWith(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -338,6 +341,14 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		}
 
 		if (this->groundCollision->isStandingOn(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
+		// Catch an edge case when jamming the he player into a corner consisting of two objects
+		// This causes the ground detector to hit both, resulting in the above cases to fail.
+		// Just using wall detectors as a backup seems to work fine.
+		if (this->hasLeftWallCollision() || this->hasRightWallCollision())
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
