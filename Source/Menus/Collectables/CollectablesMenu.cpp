@@ -86,14 +86,6 @@ void CollectablesMenu::onEnter()
 {
 	super::onEnter();
 
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->collectablesWindow, delay, duration);
-	GameUtils::fadeInObject(this->collectablesLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-
 	this->updateCollectedVisualState();
 }
 

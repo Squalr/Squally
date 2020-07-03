@@ -54,6 +54,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
+	this->confirmationMenuHud = Hud::create();
 	this->hackerModeGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
 	
@@ -88,6 +89,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
+	this->addChild(this->confirmationMenuHud);
 }
 
 MapBase::~MapBase()

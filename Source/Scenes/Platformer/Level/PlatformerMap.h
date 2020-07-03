@@ -42,6 +42,7 @@ private:
 
 	void warpSquallyToRespawn();
 	void buildHexus();
+	void buildCardsMenu();
 	void buildHexusCardHelp();
 	void buildItemInfoMenu();
 	void buildCipher();

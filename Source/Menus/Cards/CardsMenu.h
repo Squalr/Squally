@@ -47,6 +47,7 @@ private:
 	void unequipHexusCard(HexusCard* card);
 	void showHelpMenu(CardData* cardData);
 	void close();
+	void buildHelpMenu();
 
 	cocos2d::Sprite* cardsWindow;
 	LocalizedLabel* cardsLabel;

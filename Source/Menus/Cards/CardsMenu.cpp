@@ -57,7 +57,7 @@ CardsMenu::CardsMenu()
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->helpMenu = HelpMenu::create();
+	this->helpMenu = nullptr; // Lazy initialized
 	this->inventory = nullptr;
 	this->equipmentInventory = nullptr;
 	this->returnClickCallback = nullptr;
@@ -93,7 +93,6 @@ CardsMenu::CardsMenu()
 	this->addChild(this->cardsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
-	this->addChild(this->helpMenu);
 }
 
 CardsMenu::~CardsMenu()
@@ -103,16 +102,6 @@ CardsMenu::~CardsMenu()
 void CardsMenu::onEnter()
 {
 	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->cardsWindow, delay, duration);
-	GameUtils::fadeInObject(this->cardsLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-
-	this->helpMenu->setVisible(false);
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -162,16 +151,6 @@ void CardsMenu::initializeListeners()
 	this->unequippedCardsMenu->getItemPreview()->getCardPreview()->setHelpClickCallback([=](CardData* cardData)
 	{
 		this->showHelpMenu(cardData);
-	});
-
-	this->helpMenu->setExitCallback([=]()
-	{
-		this->helpMenu->setVisible(false);
-		this->cardsWindow->setVisible(true);
-		this->returnButton->setVisible(true);
-		this->closeButton->setVisible(true);
-
-		GameUtils::focus(this);
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -365,6 +344,8 @@ void CardsMenu::unequipHexusCard(HexusCard* card)
 
 void CardsMenu::showHelpMenu(CardData* cardData)
 {
+	this->buildHelpMenu();
+	
 	this->helpMenu->openMenu(cardData);
 
 	this->cardsWindow->setVisible(false);
@@ -385,4 +366,28 @@ void CardsMenu::close()
 	{
 		this->returnClickCallback();
 	}
+}
+
+void CardsMenu::buildHelpMenu()
+{
+	if (this->helpMenu != nullptr)
+	{
+		return;
+	}
+
+	this->helpMenu = HelpMenu::create();
+
+	this->helpMenu->setVisible(false);
+
+	this->addChild(this->helpMenu);
+
+	this->helpMenu->setExitCallback([=]()
+	{
+		this->helpMenu->setVisible(false);
+		this->cardsWindow->setVisible(true);
+		this->returnButton->setVisible(true);
+		this->closeButton->setVisible(true);
+
+		GameUtils::focus(this);
+	});
 }

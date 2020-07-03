@@ -5,6 +5,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/HelpMenus/AddHelpMenu.h"
@@ -134,6 +135,26 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
             this->onExitSecondary();
         }
     });
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handle();
+
+        if (this->onExit != nullptr)
+        {
+            this->onExit();
+        }
+
+        if (this->onExitSecondary != nullptr)
+        {
+            this->onExitSecondary();
+        }
+	});
 }
 
 void HelpMenu::openMenu(CardData* cardData, bool showBackdrop, std::function<void()> onExitSecondary)

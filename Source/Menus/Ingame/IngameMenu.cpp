@@ -167,6 +167,16 @@ void IngameMenu::disableInventory()
 	this->inventoryButton->disableInteraction(128);
 }
 
+void IngameMenu::disableCards()
+{
+	this->cardsButton->disableInteraction(128);
+}
+
+void IngameMenu::disableCollectables()
+{
+	this->collectablesButton->disableInteraction(128);
+}
+
 void IngameMenu::setInventoryClickCallback(std::function<void()> inventoryClickCallback)
 {
 	this->inventoryClickCallback = inventoryClickCallback;

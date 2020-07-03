@@ -50,6 +50,7 @@ protected:
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
+	Hud* confirmationMenuHud;
 	IngameMenu* ingameMenu;
 	PauseMenu* pauseMenu;
 	GameMap* map;
