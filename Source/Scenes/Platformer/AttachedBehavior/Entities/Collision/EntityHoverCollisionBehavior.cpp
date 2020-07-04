@@ -170,6 +170,7 @@ void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 
 Size EntityHoverCollisionBehavior::getHoverSize(float progress)
 {
+	static const float UpwardsPadding = 40.0f;
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
 	static const float MinCrouch = this->entity->getCollisionOffset().y + CrouchLowPoint;
 	static const float MaxCrouch = this->entity->getCollisionOffset().y + this->entity->getHoverHeight();
@@ -178,7 +179,7 @@ Size EntityHoverCollisionBehavior::getHoverSize(float progress)
 
 	return Size(
 		std::max(this->entity->getEntitySize().width - 8.0f, 16.0f),
-		crouchHeight
+		crouchHeight + UpwardsPadding
 	);
 }
 
@@ -189,6 +190,8 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 		return;
 	}
 
+	// Upwards padding exists to help in collisions, as it will result in the "closest" points of a collision being near the bottom of the hover
+	static const float UpwardsPadding = 40.0f;
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
 	static const float MinCrouchGround = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
 	static const float MaxCrouchGround = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
@@ -197,7 +200,7 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 
 	static const Vec2 CollisionOffset = this->entity->getCollisionOffset();
 	static const float OriginalHoverHeight = this->entity->getHoverHeight();
-	static const Vec2 Offset = CollisionOffset + Vec2(0.0f, -OriginalHoverHeight / 2.0f);
+	static const Vec2 Offset = CollisionOffset + Vec2(0.0f, -OriginalHoverHeight / 2.0f + UpwardsPadding);
 
 	const Size hoverSize = this->getHoverSize(progress);
 	const float hoverDelta = OriginalHoverHeight - hoverSize.height;
@@ -283,12 +286,12 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		// to clip into the ground due to all of the detectors (ground, jump, etc) being below the surface
 		if (this->hoverAntiGravityCollisionDetector->isCollidingWithSingleGroup()
 			&& this->hoverAntiGravityTopCollisionDetector->isCollidingWithSingleGroup()
-			&& this->hoverCollision->isCollidingWithSingleGroup())
-			// && !this->entityCollision->movementCollision->hasCollisions()
-			// && !this->entityCollision->hasLeftWallCollision()
-			// && !this->entityCollision->hasRightWallCollision()
-			// && collisionData.other->getParent() == (*this->hoverAntiGravityCollisionDetector->getCurrentCollisions().begin())->getParent()
-			// && collisionData.other->getParent() == (*this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().begin())->getParent())
+			&& this->hoverCollision->isCollidingWithSingleGroup()
+			&& !this->entityCollision->movementCollision->hasCollisions()
+			&& !this->entityCollision->hasLeftWallCollision()
+			&& !this->entityCollision->hasRightWallCollision()
+			&& collisionData.other->getParent() == (*this->hoverAntiGravityCollisionDetector->getCurrentCollisions().begin())->getParent()
+			&& collisionData.other->getParent() == (*this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().begin())->getParent())
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
