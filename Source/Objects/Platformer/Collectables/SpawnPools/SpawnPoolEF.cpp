@@ -20,7 +20,7 @@ SpawnPoolEF* SpawnPoolEF::create(ValueMap& properties)
 
 SpawnPoolEF::SpawnPoolEF(ValueMap& properties) : super(properties)
 {
-	this->addSpawnEvent(SpawnObjectEvent(0.35f, [=]()
+	this->addSpawnEvent(SpawnObjectEvent(0.50f, [=]()
 	{
 		ValueMap spawnProperties = ValueMap();
 		return ManaOrb::create(spawnProperties);

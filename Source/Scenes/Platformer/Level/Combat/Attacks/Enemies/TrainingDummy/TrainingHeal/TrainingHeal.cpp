@@ -49,7 +49,7 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 	: super(caster, target, UIResources::Menus_Icons_Heal, AbilityType::Holy, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healEffect = SmartAnimationSequenceNode::create();
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);

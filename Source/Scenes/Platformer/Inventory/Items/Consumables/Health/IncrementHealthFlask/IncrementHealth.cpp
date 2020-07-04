@@ -51,7 +51,7 @@ IncrementHealth* IncrementHealth::create(PlatformerEntity* caster, PlatformerEnt
 IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_ArrowUp, AbilityType::Arcane, BuffData())
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
