@@ -421,6 +421,30 @@ bool CollisionObject::hasCollisions()
 	return !this->currentCollisions->empty();
 }
 
+bool CollisionObject::isCollidingWithSingleGroup()
+{
+	if (!this->hasCollisions())
+	{
+		return false;
+	}
+
+	Node* parent = nullptr;
+
+	for (auto next : *this->currentCollisions)
+	{
+		if (parent == nullptr)
+		{
+			parent = next->getParent();
+		}
+		else if (parent != next->getParent())
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
 bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
 {
 	return std::find(this->currentCollisions->begin(), this->currentCollisions->end(), collisionObject) != this->currentCollisions->end();

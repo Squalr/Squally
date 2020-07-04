@@ -82,6 +82,7 @@ public:
 	std::vector<CollisionType> getCollisionTypes();
 	bool hasCollisionType(CollisionType collisionType);
 	bool hasCollisionWith(CollisionObject* object);
+	bool isCollidingWithSingleGroup();
 	void setGravityEnabled(bool isEnabled);
 	void setGravityDisabledOverride(bool isDisabled);
 	bool getGravityEnabled();

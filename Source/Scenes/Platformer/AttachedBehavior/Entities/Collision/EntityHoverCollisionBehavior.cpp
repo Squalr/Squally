@@ -281,14 +281,14 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		// Special case to collide with physics when standing on a single surface.
 		// This prevents a bug where the hover collision pushes the player up too slowly, allowing them
 		// to clip into the ground due to all of the detectors (ground, jump, etc) being below the surface
-		if (this->hoverAntiGravityCollisionDetector->getCurrentCollisions().size() == 1
-			&& this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().size() == 1
-			&& this->hoverCollision->getCurrentCollisions().size() == 1
-			&& !this->entityCollision->movementCollision->hasCollisions()
-			&& !this->entityCollision->hasLeftWallCollision()
-			&& !this->entityCollision->hasRightWallCollision()
-			&& collisionData.other == *this->hoverAntiGravityCollisionDetector->getCurrentCollisions().begin()
-			&& collisionData.other == *this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().begin())
+		if (this->hoverAntiGravityCollisionDetector->isCollidingWithSingleGroup()
+			&& this->hoverAntiGravityTopCollisionDetector->isCollidingWithSingleGroup()
+			&& this->hoverCollision->isCollidingWithSingleGroup())
+			// && !this->entityCollision->movementCollision->hasCollisions()
+			// && !this->entityCollision->hasLeftWallCollision()
+			// && !this->entityCollision->hasRightWallCollision()
+			// && collisionData.other->getParent() == (*this->hoverAntiGravityCollisionDetector->getCurrentCollisions().begin())->getParent()
+			// && collisionData.other->getParent() == (*this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().begin())->getParent())
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
