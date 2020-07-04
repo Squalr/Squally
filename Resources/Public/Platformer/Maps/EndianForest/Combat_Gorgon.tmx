@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="593">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="593">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -195,7 +195,7 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="589" name="caverns" type="terrain" x="1485.33" y="1410.67">
+  <object id="589" name="dark-grass" type="terrain" x="1485.33" y="1410.67">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
@@ -224,13 +224,13 @@
   </properties>
   <object id="551" name="camera-focus" type="object" x="1349.58" y="1266.12" width="128" height="128">
    <properties>
-    <property name="zoom" type="float" value="1.4"/>
+    <property name="zoom" type="float" value="1.3999999999999999"/>
    </properties>
   </object>
   <object id="562" name="camera-target" type="object" x="1014.61" y="1264" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-1"/>
-    <property name="zoom" type="float" value="1.4"/>
+    <property name="zoom" type="float" value="1.3999999999999999"/>
    </properties>
   </object>
   <object id="564" name="camera-target" type="object" x="904" y="1384" width="128" height="128">
@@ -242,19 +242,19 @@
   <object id="565" name="camera-target" type="object" x="1682" y="1286" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
-    <property name="zoom" type="float" value="1.4"/>
+    <property name="zoom" type="float" value="1.3999999999999999"/>
    </properties>
   </object>
   <object id="582" name="camera-target" type="object" x="1534" y="1332" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-1"/>
-    <property name="zoom" type="float" value="1.35"/>
+    <property name="zoom" type="float" value="1.3500000000000001"/>
    </properties>
   </object>
   <object id="583" name="camera-target" type="object" x="1675.33" y="1333.33" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-2"/>
-    <property name="zoom" type="float" value="1.35"/>
+    <property name="zoom" type="float" value="1.3500000000000001"/>
    </properties>
   </object>
  </objectgroup>
@@ -281,13 +281,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="1944.97" y="1541.64" width="270" height="748"/>
-  <object id="494" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="-724.47" y="743.136" width="3959" height="265">
+  <object id="494" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="-724.47" y="654.224" width="3959" height="265">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="495" name="Forest/Foreground/ShadowVine2" type="decor" x="1226.79" y="836.47" width="340" height="135"/>
-  <object id="496" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="-906.53" y="742.348" width="4315" height="265">
+  <object id="495" name="Forest/Foreground/ShadowVine2" type="decor" x="1226.79" y="810.319" width="340" height="135"/>
+  <object id="496" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="-906.53" y="653.436" width="4315" height="265">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>

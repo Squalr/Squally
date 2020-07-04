@@ -38,6 +38,8 @@ FriendlyPlayerCollisionBehavior::~FriendlyPlayerCollisionBehavior()
 
 void FriendlyPlayerCollisionBehavior::onLoad()
 {
+	// This is fun, but results in a pretty bad game experience due to the tendency to clip friendly entities out of bounds
+	/*
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
 		if (collisionBehavior->movementCollision != nullptr)
@@ -48,6 +50,7 @@ void FriendlyPlayerCollisionBehavior::onLoad()
 			});
 		}
 	});
+	*/
 }
 
 void FriendlyPlayerCollisionBehavior::onDisable()

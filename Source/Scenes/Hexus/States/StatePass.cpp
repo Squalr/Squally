@@ -295,16 +295,19 @@ void StatePass::enableClaimVictoryButtonInteraction(GameState* gameState)
 void StatePass::showPassButton()
 {
 	this->passButton->runAction(FadeTo::create(0.25f, 255));
+	this->passSprite->runAction(FadeTo::create(0.25f, 0));
 }
 
 void StatePass::showLastStandButton()
 {
 	this->lastStandButton->runAction(FadeTo::create(0.25f, 255));
+	this->lastStandSprite->runAction(FadeTo::create(0.25f, 0));
 }
 
 void StatePass::showClaimVictoryButton()
 {
 	this->claimVictoryButton->runAction(FadeTo::create(0.25f, 255));
+	this->claimVictorySprite->runAction(FadeTo::create(0.25f, 0));
 }
 
 void StatePass::onPassMouseOver()
@@ -343,9 +346,9 @@ void StatePass::onClaimVictoryMouseOut()
 	this->claimVictoryLabel->setOpacity(0);
 }
 
-void StatePass::onAnyStateChange(GameState* gameState)
+void StatePass::onAfterAnyStateChange(GameState* gameState)
 {
-	super::onAnyStateChange(gameState);
+	super::onAfterAnyStateChange(gameState);
 
 	this->lastStandParticles->stop(5.0f);
 	this->claimVictoryParticles->stop(5.0f);

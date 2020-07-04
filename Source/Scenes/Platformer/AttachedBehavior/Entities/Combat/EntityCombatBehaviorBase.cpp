@@ -6,6 +6,7 @@
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
@@ -65,13 +66,17 @@ void EntityCombatBehaviorBase::onLoad()
 			this->bonusSpeed += next->getItemStats().speedBonus;
 		}
 	});
-	
-	StatsTables::Stats bonusStats = StatsTables::getBonusStats(this->entity);
 
-	this->bonusArmor += bonusStats.armor;
-	this->bonusAttack += bonusStats.attack;
-	this->bonusMagicAttack += bonusStats.magicAttack;
-	this->bonusSpeed += bonusStats.speed;
+	// Eq behavior loaded is a prereq of getting stats to function properly
+	this->entity->watchForAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
+	{
+		StatsTables::Stats bonusStats = StatsTables::getBonusStats(this->entity);
+
+		this->bonusArmor += bonusStats.armor;
+		this->bonusAttack += bonusStats.attack;
+		this->bonusMagicAttack += bonusStats.magicAttack;
+		this->bonusSpeed += bonusStats.speed;
+	});
 	
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventStatsModifyDamageDealt, [=](EventCustom* eventCustom)
 	{

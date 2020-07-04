@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
-// #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Weakness/CastWeakness.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Inversion/CastInversion.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
@@ -50,7 +50,7 @@ void AnubisPupCombatBehavior::onLoad()
 	
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		// attackBehavior->registerAttack(CastWeakness::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(CastInversion::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
 		attackBehavior->registerAttack(BasicSlash::create(4, 6, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	

@@ -51,13 +51,17 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		return;
 	}
 
+	// Note: rectToSegment is buggy as shit, but faster. If fixed, reinstate it.
+
 	if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Segment)
 	{
-		CollisionResolver::rectToSegment(objectA, objectB, onCollision);
+		CollisionResolver::polyToSegment(objectA, objectB, onCollision);
+		// CollisionResolver::rectToSegment(objectA, objectB, onCollision);
 	}
 	else if (objectA->shape == CollisionObject::Shape::Segment && objectB->shape == CollisionObject::Shape::Rectangle)
 	{
-		CollisionResolver::rectToSegment(objectB, objectA, onCollision);
+		CollisionResolver::polyToSegment(objectB, objectA, onCollision);
+		// CollisionResolver::rectToSegment(objectB, objectA, onCollision);
 	}
 	else if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Rectangle)
 	{

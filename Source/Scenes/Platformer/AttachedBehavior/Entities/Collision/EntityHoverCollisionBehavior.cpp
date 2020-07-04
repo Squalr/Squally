@@ -153,6 +153,11 @@ void EntityHoverCollisionBehavior::uncrouch(float dt)
 
 void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 {
+	if (this->hoverCollision == nullptr)
+	{
+		return;
+	}
+	
 	static const float MinCrouch = 0.75f;
 	static const float MaxCrouch = 1.0f;
 
