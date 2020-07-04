@@ -14,6 +14,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
 
@@ -87,6 +88,11 @@ void DefeatMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
 		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(true));
 		CombatEvents::TriggerReturnToMapRespawn();
 	});

@@ -20,6 +20,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
@@ -118,6 +119,11 @@ void RewardsMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+
 		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(false));
 		CombatEvents::TriggerReturnToMap();
 	});
