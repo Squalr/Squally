@@ -181,7 +181,7 @@ void Timeline::initializeListeners()
 	{
 		CombatEvents::MenuStateArgs* args = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->entry != nullptr)
+		if (args != nullptr)
 		{
 			this->timelineEntryAwaitingUserAction = args->entry;
 
@@ -196,8 +196,11 @@ void Timeline::initializeListeners()
 						this->timelineEntryAwaitingUserAction->stageTargets({ });
 					}
 					
-					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
-					CombatEvents::TriggerResumeTimeline();
+					this->defer([=]()
+					{
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+						CombatEvents::TriggerResumeTimeline();
+					});
 
 					break;
 				}

@@ -680,6 +680,7 @@ void TimelineEntry::tryInterrupt()
 	else if (this->isBlocking && !this->isCasting)
 	{
 		// No interrupt when not casting. This is just a carry-over block.
+		return;
 	}
 	else if (this->isCasting)
 	{

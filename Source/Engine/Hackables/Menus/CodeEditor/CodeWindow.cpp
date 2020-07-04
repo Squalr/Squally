@@ -106,7 +106,7 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, this->windowSize.width, this->windowSize.height);
 	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, this->windowSize.width, CodeWindow::TitleBarHeight);
 	this->windowTitle = InputText::create(
-		Size(this->windowSize.width - 16.0f, CodeWindow::TitleBarHeight - 16.0f),
+		Size(this->windowSize.width - 16.0f - 88.0f, CodeWindow::TitleBarHeight - 16.0f),
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::H3
 	);

@@ -36,15 +36,11 @@ void StatePlayerTurnStart::onStateEnter(GameState* gameState)
 	super::onStateEnter(gameState);
 
 	gameState->playableCardsThisTurn = Config::playableCardsPerTurn;
+}
 
-	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			GameState::updateState(gameState, GameState::StateType::Neutral);
-		}),
-		nullptr
-	));
+void StatePlayerTurnStart::onAfterStateEnter(GameState* gameState)
+{
+	GameState::updateState(gameState, GameState::StateType::Neutral);
 }
 
 void StatePlayerTurnStart::onStateReload(GameState* gameState)

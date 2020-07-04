@@ -51,6 +51,7 @@ ScriptEntry::ScriptEntry(LocalizedString* scriptName, std::string script, bool i
 		this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	}
 
+	this->originalBackPlateSize = this->backPlate->getContentSize();
 	this->selectedSprite = Sprite::create(UIResources::Menus_HackerModeMenu_SelectedScriptArrow);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->scriptName);
 	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
@@ -115,6 +116,21 @@ void ScriptEntry::initializePositions()
 		this->deleteButton->setPositionX(this->backPlate->getContentSize().width / 2.0f - 24.0f - 40.0f);
 		this->deletePanel->setPosition(this->deleteButton->getPosition() + Vec2(0.0f, 48.0f) - Vec2(this->deletePanel->getContentSize() / 2.0f));
 		this->deleteLabel->setPosition(this->deleteButton->getPosition() + Vec2(0.0f, 48.0f));
+	}
+
+	if (!this->isReadOnly)
+	{
+		this->backPlate->setPositionX(-40.0f);
+		this->backPlate->getContent()->setPositionX(40.0f);
+		this->backPlate->getContentSelected()->setPositionX(40.0f);
+		this->backPlate->setContentSize(this->backPlate->getContentSize() - Size(96.0f, 0.0f));
+	}
+	else
+	{
+		this->backPlate->setPositionX(-20.0f);
+		this->backPlate->getContent()->setPositionX(20.0f);
+		this->backPlate->getContentSelected()->setPositionX(20.0f);
+		this->backPlate->setContentSize(this->backPlate->getContentSize() - Size(48.0f, 0.0f));
 	}
 }
 
@@ -183,7 +199,7 @@ void ScriptEntry::toggleSelected(bool isSelected)
 	this->selectedSprite->setVisible(isSelected);
 
 	this->label->setTextColor(isSelected ? Color4B::YELLOW : Color4B::WHITE);
-	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + Margin + (isSelected ? SelectedOffset : 0.0f));
+	this->label->setPositionX(-this->originalBackPlateSize.width / 2.0f + Margin + (isSelected ? SelectedOffset : 0.0f));
 }
 
 void ScriptEntry::deleteScript()

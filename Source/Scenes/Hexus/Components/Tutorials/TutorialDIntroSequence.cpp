@@ -76,8 +76,11 @@ void TutorialDIntroSequence::initializeListeners()
 
 bool TutorialDIntroSequence::tryHijackState(GameState* gameState)
 {
-	this->initializeCallbacks(gameState);
-	this->runTutorialHandCards(gameState);
+	this->defer([=]()
+	{
+		this->initializeCallbacks(gameState);
+		this->runTutorialHandCards(gameState);
+	});
 
 	return true;
 }

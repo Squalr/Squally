@@ -75,8 +75,11 @@ void TutorialPuzzleOrder::initializeListeners()
 
 bool TutorialPuzzleOrder::tryHijackState(GameState* gameState)
 {
-	this->initializeCallbacks(gameState);
-	this->runTutorialIntro(gameState);
+	this->defer([=]()
+	{
+		this->initializeCallbacks(gameState);
+		this->runTutorialIntro(gameState);
+	});
 
 	return true;
 }

@@ -80,6 +80,8 @@ void ScrollPane::onEnter()
 {
 	super::onEnter();
 
+	this->dragHitbox->neverHandle();
+
 	this->setScrollPercentage(0.0f);
 }
 

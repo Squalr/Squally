@@ -64,6 +64,7 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->modifierReleasedListener = nullptr;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
 	this->intersectFunction = nullptr;
+	this->isNeverHandleEnabled = false;
 
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
@@ -391,7 +392,10 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 			this->showContent(this->contentSelected);
 
 			// Set args as handled. Caller must un-handle in the callback if they choose.
-			args->handle();
+			if (!this->isNeverHandleEnabled)
+			{
+				args->handle();
+			}
 		}
 
 		// Mouse over callback
@@ -426,7 +430,10 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 			if (!this->wasAnywhereClicked)
 			{
 				// Set args as handled. Caller must un-handle in either callback if they choose.
-				args->handle();
+				if (!this->isNeverHandleEnabled)
+				{
+					args->handle();
+				}
 
 				if (this->mousePressEvent != nullptr)
 				{
@@ -482,7 +489,10 @@ void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* even
 		}
 
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handle();
+		if (!this->isNeverHandleEnabled)
+		{
+			args->handle();
+		}
 
 		// Mouse click callback. IMPORTANT: Do not access any references to 'this' from here to the end of the function, in the case where this object is deleted in a callback
 		this->mouseClickEvent(args);
@@ -504,7 +514,10 @@ void ClickableNode::mouseScroll(InputEvents::MouseEventArgs* args, EventCustom* 
 	if (!args->isHandled() && this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
 	{
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handle();
+		if (!this->isNeverHandleEnabled)
+		{
+			args->handle();
+		}
 
 		this->mouseScrollEvent(args);
 	}
@@ -569,4 +582,9 @@ bool ClickableNode::intersects(cocos2d::Vec2 mousePos)
 	}
 
 	return GameUtils::intersects(this, mousePos);
+}
+
+void ClickableNode::neverHandle()
+{
+	this->isNeverHandleEnabled = true;
 }
