@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
 #include "Scenes/Hexus/Config.h"
 
@@ -71,6 +72,11 @@ void StateGameEnd::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
 	{
+		if (!GameUtils::isVisible(this) || !this->backButton->canInteract())
+		{
+			return;
+		}
+
 		args->handle();
 
 		this->backButton->interact();

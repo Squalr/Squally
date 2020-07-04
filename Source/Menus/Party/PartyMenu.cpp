@@ -236,6 +236,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
 		args->handle();
 
 		this->performSelectionActions();
