@@ -72,6 +72,18 @@ namespace DecorResources
 	extern const std::string Caverns_Background_middleground_3_1;
 	extern const std::string Caverns_Background_middleground_3_2;
 	extern const std::string Caverns_Background_middleground_3_3;
+	extern const std::string Caverns_CaveDoor1;
+	extern const std::string Caverns_CaveDoor2;
+	extern const std::string Caverns_CaveDoor3;
+	extern const std::string Caverns_CaveDoor4;
+	extern const std::string Caverns_CaveDoor5;
+	extern const std::string Caverns_CaveHouse1;
+	extern const std::string Caverns_CaveHouse2;
+	extern const std::string Caverns_CaveHouse3;
+	extern const std::string Caverns_CaveHouse4;
+	extern const std::string Caverns_CaveHouse5;
+	extern const std::string Caverns_CaveHouse6;
+	extern const std::string Caverns_CaveTent1;
 	extern const std::string Caverns_Foreground_Pillar1;
 	extern const std::string Caverns_Foreground_Pillar2;
 	extern const std::string Caverns_Foreground_PillarBrown1;

@@ -1,5 +1,6 @@
 #include "LiquidNode.h"
 
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
 
 #include "Engine/Physics/Liquid/LiquidTop.h"
@@ -27,9 +28,15 @@ LiquidNode::LiquidNode(Size liquidSize, float surfaceDepth, Color4B surfaceColor
     this->liquidSize.height = MathUtils::clamp(this->liquidSize.height, this->surfaceDepth, liquidSize.height);
     this->liquidBody = LayerColor::create(bodyColor, this->liquidSize.width, this->liquidSize.height - this->surfaceDepth);
     this->liquidTop = LiquidTop::create(Size(this->liquidSize.width, this->surfaceDepth), surfaceColor, bodyColor, kTension, kDampening, kSpread);
+    this->edges = DrawNode::create();
+
+    this->edges->drawSegment(Vec2(-liquidSize.width / 2.0f, liquidSize.height / 2.0f), Vec2(-liquidSize.width / 2.0f, -liquidSize.height / 2.0f), 2.0f, Color4F(surfaceColor));
+    this->edges->drawSegment(Vec2(-liquidSize.width / 2.0f, -liquidSize.height / 2.0f), Vec2(liquidSize.width / 2.0f, -liquidSize.height / 2.0f), 2.0f, Color4F(surfaceColor));
+    this->edges->drawSegment(Vec2(liquidSize.width / 2.0f, -liquidSize.height / 2.0f), Vec2(liquidSize.width / 2.0f, liquidSize.height / 2.0f), 2.0f, Color4F(surfaceColor));
 
     this->addChild(this->liquidBody);
     this->addChild(this->liquidTop);
+    this->addChild(this->edges);
 }
 
 LiquidNode::~LiquidNode()

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="61" nextobjectid="803">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="58" name="background">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="caverns" type="texture" x="807.438" y="1626.75">
+   <polygon points="-1375.64,-2086.15 2049.82,-2081.55 2045.87,1212.13 -1369.63,1198.72"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="59" name="terrain2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="786" name="caverns" type="terrain" x="-134.54" y="1658" width="2649.08" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="60" name="decor fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="798" name="Ruins/Walls1" type="decor" x="1348.18" y="3748.23" width="333" height="416"/>
+  <object id="799" name="Ruins/Walls2" type="decor" x="893.5" y="3264" width="689" height="132"/>
+  <object id="800" name="Ruins/Walls3" type="decor" x="1596" y="3268" width="262" height="130"/>
+  <object id="801" name="Ruins/Walls4" type="decor" x="1901" y="3251" width="262" height="130"/>
+  <object id="802" name="Ruins/Walls5" type="decor" x="1923.3" y="883.727" width="386" height="778"/>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="785" name="portal" type="object" x="506.5" y="1405.17" width="256" height="256">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="UnderflowRuins/Home_Cleopatra"/>
+    <property name="transition" value="zone-transition"/>
+   </properties>
+  </object>
+  <object id="787" name="help-totem-end-of-demo" type="object" x="1630.42" y="1402.55" width="256" height="256"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="823.9" y="1527.62" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn" type="object" x="568" y="1534" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="data-mines"/>
+    <property name="transition" value="zone-transition"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

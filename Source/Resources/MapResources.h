@@ -14,7 +14,9 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string DataMines_Combat_Caves;
 	extern const std::string DataMines_Mages_Warp;
+	extern const std::string DataMines_Town_Main;
 	extern const std::string DataMines_Zone_1_0;
+	extern const std::string DataMines_Zone_1_1;
 	extern const std::string DataMines_Zone_1_4;
 	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;

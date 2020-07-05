@@ -4,6 +4,7 @@
 
 namespace cocos2d
 {
+    class DrawNode;
     class LayerColor;
 }
 
@@ -30,4 +31,5 @@ private:
 
     cocos2d::LayerColor* liquidBody;
     LiquidTop* liquidTop;
+    cocos2d::DrawNode* edges;
 };
