@@ -1,0 +1,24 @@
+#pragma once
+
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Earrings/Earring.h"
+
+class HeartEarrings : public Earring
+{
+public:
+	static HeartEarrings* create();
+
+	Item* clone() override;
+	std::string getItemName() override;
+	LocalizedString* getString() override;
+	std::string getIconResource() override;
+	std::string getSerializationKey() override;
+
+	static const std::string SaveKey;
+
+protected:
+	HeartEarrings();
+	virtual ~HeartEarrings();
+
+private:
+	typedef Earring super;
+};

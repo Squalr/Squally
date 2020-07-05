@@ -73,14 +73,14 @@ std::vector<Buff*> EntityBuffBehavior::getBuffs()
 	return std::vector<Buff*>(this->buffs);
 }
 
-void EntityBuffBehavior::applyBuff(Buff* buff)
+void EntityBuffBehavior::applyBuff(Buff* buff, bool checkAlive)
 {
 	if (this->entity == nullptr || buff == nullptr)
 	{
 		return;
 	}
 
-	if (!this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	if (checkAlive && !this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		return;
 	}

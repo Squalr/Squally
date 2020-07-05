@@ -50,11 +50,13 @@ ManaDrain* ManaDrain::create(PlatformerEntity* caster, PlatformerEntity* target)
 ManaDrain::ManaDrain(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_ManaSkull, AbilityType::Shadow, BuffData())
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healEffect = SmartAnimationSequenceNode::create();
 	this->drainAmount = ManaDrain::DrainAmount;
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
+	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
+	
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
 	this->addChild(this->healSound);
@@ -77,7 +79,7 @@ void ManaDrain::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 24.0f);
 }
 
 void ManaDrain::registerHackables()
@@ -96,7 +98,7 @@ void ManaDrain::registerHackables()
 			HackableCode::HackableCodeInfo(
 				ManaDrain::ManaDrainIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain::create(),
-				HackableBase::HackBarColor::Yellow,
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_ManaSkull,
 				ManaDrainGenericPreview::create(),
 				{
@@ -105,6 +107,9 @@ void ManaDrain::registerHackables()
 					},
 					{
 						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx::create(),
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi::create(),
 					}
 				},
 				int(HackFlags::None),
@@ -176,7 +181,7 @@ void ManaDrain::runManaDrain()
 			{
 				if (!this->healEffect->isPlayingAnimation())
 				{
-					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+					this->healEffect->playAnimation(FXResources::HealMP_Heal_0000, 0.05f);
 				}
 				
 				this->runRestoreTick();
@@ -207,7 +212,7 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 
 	ASM_MOV_REG_VAR(ecx, currentMana);
 	ASM(mov ZSI, 0);
-	ASM(mov ZDX, -1);
+	ASM(mov ZDX, 1);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MANA_DRAIN);
 	ASM(cmp ZCX, 4);

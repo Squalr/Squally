@@ -52,17 +52,17 @@ ChoicesMenu::ChoicesMenu(Timeline* timelineRef)
 	this->itemsMenu = ItemsMenu::create();
 	this->trackTarget = nullptr;
 
-	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), nullptr, UIResources::Menus_Icons_Dice, UIResources::Combat_ItemsCircle, [=]()
+	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), { }, UIResources::Menus_Icons_Dice, UIResources::Combat_ItemsCircle, [=]()
 	{
 		this->onItemsClick();
 	});
 
-	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), nullptr, UIResources::Menus_Icons_SpearTip, UIResources::Combat_AttackCircle, [=]()
+	this->attackButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Attack::create(), { }, UIResources::Menus_Icons_SpearTip, UIResources::Combat_AttackCircle, [=]()
 	{
 		this->onAttackClick();
 	});
 
-	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), nullptr, UIResources::Menus_Icons_ShieldBroken, UIResources::Combat_DefendCircle, [=]()
+	this->defendButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Defend::create(), { }, UIResources::Menus_Icons_ShieldBroken, UIResources::Combat_DefendCircle, [=]()
 	{
 		this->onDefendClick();
 	});
@@ -128,6 +128,7 @@ void ChoicesMenu::initializeListeners()
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
 			{
 				args->handle();
 				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, this->selectedEntry));	
@@ -237,6 +238,7 @@ void ChoicesMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
 				{
 					PlatformerEvents::TriggerDisallowPause();
 

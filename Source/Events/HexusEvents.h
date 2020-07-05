@@ -27,6 +27,7 @@ public:
 	static const std::string EventRequestStateUpdate;
 	static const std::string EventBeforeStateUpdate;
 	static const std::string EventOnStateUpdate;
+	static const std::string EventAfterStateUpdate;
 
 	struct HexusOpenArgs
 	{
@@ -68,5 +69,6 @@ public:
 	static void TriggerRequestStateUpdate(GameState* gameState);
 	static void TriggerBeforeStateUpdate(GameState* gameState);
 	static void TriggerOnStateUpdate(GameState* gameState);
+	static void TriggerAfterStateUpdate(GameState* gameState);
 	static cocos2d::Node* BuildPreviewNode(PlatformerEntity* entity);
 };

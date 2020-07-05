@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -50,6 +51,12 @@ PlatformerAttack* ThrowIncrementHealthFlask::cloneInternal()
 LocalizedString* ThrowIncrementHealthFlask::getString()
 {
 	return Strings::Items_Consumables_Health_IncrementHealthFlask::create();
+}
+
+LocalizedString* ThrowIncrementHealthFlask::getDescription()
+{
+	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))), ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))) });
 }
 
 std::string ThrowIncrementHealthFlask::getAttackAnimation()
@@ -101,7 +108,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 			{
 				entity->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 				{
-					entityBuffBehavior->applyBuff(IncrementHealth::create(owner, entity, IncrementHealthFlask::HealTicks));
+					entityBuffBehavior->applyBuff(IncrementHealth::create(owner, entity));
 				});
 			}
 

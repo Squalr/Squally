@@ -6,7 +6,7 @@
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="5"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -29,7 +29,7 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3970.65" y="-962.85" width="14229.3" height="1478">
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3970.65" y="-962.85" width="14229.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>

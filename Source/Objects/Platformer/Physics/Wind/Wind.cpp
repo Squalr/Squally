@@ -47,7 +47,7 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
-	this->windParticles = SmartParticles::create(ParticleResources::Gust);
+	this->windParticles = SmartParticles::create(ParticleResources::Gust, SmartParticles::CullInfo(this->windSize));
 	this->windForce = CollisionObject::create(CollisionObject::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, CollisionObject::Properties(false, false));
 
 	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
@@ -81,7 +81,7 @@ void Wind::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->windForce->whileCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Movement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->windForce->whileCollidesWith({ (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->applyWindForce(collisionData.other, collisionData.dt);
 

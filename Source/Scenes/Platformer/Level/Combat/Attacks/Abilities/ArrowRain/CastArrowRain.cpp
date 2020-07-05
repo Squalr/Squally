@@ -10,7 +10,6 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Combat/Abilities/ArrowRain/ArrowRain.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/Fortitude.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -31,7 +30,7 @@ CastArrowRain* CastArrowRain::create(float attackDuration, float recoverDuration
 }
 
 CastArrowRain::CastArrowRain(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource)
-	: super(AttackType::Damage, UIResources::Menus_Icons_ArrowRain, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, true)
+	: super(AttackType::Damage, UIResources::Menus_Icons_ArrowRain, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Multi)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	this->arrowResource = arrowResource;
@@ -69,7 +68,7 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{

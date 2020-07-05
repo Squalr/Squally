@@ -16,8 +16,7 @@ class CurseOfTongues : public Buff
 {
 public:
 	static CurseOfTongues* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string CurseOfTonguesIdentifier;
 
 protected:

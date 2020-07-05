@@ -66,19 +66,9 @@ void Collectable::initializeListeners()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
-	{ 
-		if (!this->isCollected)
-		{
-			this->disableCollection();
-
-			for (auto callback : this->collectionEvents)
-			{
-				callback();
-			}
-
-			this->saveObjectState(Collectable::SaveKeyIsCollected, Value(true));
-		}
+	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
+	{
+		this->tryCollect();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -89,9 +79,29 @@ void Collectable::onCollected(std::function<void()> onCollectedEvent)
 	this->collectionEvents.push_back(onCollectedEvent);
 }
 
+void Collectable::tryCollect()
+{
+	if (!this->isCollected)
+	{
+		this->disableCollection();
+
+		for (auto callback : this->collectionEvents)
+		{
+			callback();
+		}
+
+		this->saveObjectState(Collectable::SaveKeyIsCollected, Value(true));
+	}
+}
+
+void Collectable::hideCollectable()
+{
+	this->collectableCollision->setVisible(false);
+}
+
 void Collectable::disableCollection()
 {
 	this->isCollected = true;
 	this->collectableCollision->setPhysicsEnabled(false);
-	this->collectableCollision->setVisible(false);
+	this->hideCollectable();
 }

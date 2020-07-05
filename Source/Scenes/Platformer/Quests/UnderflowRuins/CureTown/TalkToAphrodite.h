@@ -28,6 +28,7 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+	void runShipmentsComplete();
 
 	Guano* guano;
 	Aphrodite* aphrodite;
@@ -35,4 +36,5 @@ private:
 	Squally* squally;
 
 	static const std::string TagExitDoor;
+	static const std::string SaveKeyItemGiven;
 };

@@ -57,6 +57,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	super(properties)
 {
 	this->collisionType = collisionType;
+	this->collisionTypes = std::vector<CollisionType>();
 	this->points = points;
 	this->pointsRotated = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
@@ -74,6 +75,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->collisionProperties = collisionProperties;
 	this->physicsEnabled = true;
 	this->gravityEnabled = collisionProperties.isDynamic;
+	this->gravityDisabledOverride = false;
 	this->bindTarget = nullptr;
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
@@ -88,8 +90,17 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->cachedWorldCoords = Vec2::ZERO;
 	this->cachedWorldCoords3D = Vec3::ZERO;
 	this->cachedTick = 0;
+	this->cachedTickDepth = 0;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
 	this->universeId = CollisionObject::UniverseId;
+
+	for (int shift = 0; shift <= sizeof(int) * 8; shift++)
+	{
+		if ((1 << shift) & this->collisionType)
+		{
+			this->collisionTypes.push_back(1 << shift);
+		}
+	}
 }
 
 CollisionObject::~CollisionObject()
@@ -162,7 +173,7 @@ void CollisionObject::runPhysics(float dt)
 	}
 
 	// Apply gravity & accel
-	this->velocity += this->gravityEnabled ? (this->gravity * dt) : Vec2::ZERO;
+	this->velocity += (this->gravityEnabled && !this->gravityDisabledOverride) ? (this->gravity * dt) : Vec2::ZERO;
 	this->velocity += this->acceleration * dt;
 
 	if (this->velocity != Vec2::ZERO)
@@ -233,9 +244,12 @@ void CollisionObject::runPhysics(float dt)
 	{
 		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
 		{
-			for (auto event : this->collisionEndEvents[collisionObject->getCollisionType()])
+			for (auto collisionType : collisionObject->getCollisionTypes())
 			{
-				event.collisionEvent(CollisionData(collisionObject, dt));
+				for (auto event : this->collisionEndEvents[collisionType])
+				{
+					event.collisionEvent(CollisionData(collisionObject, dt));
+				}
 			}
 		}
 	}
@@ -257,6 +271,21 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 void CollisionObject::setGravityEnabled(bool isEnabled)
 {
 	this->gravityEnabled = isEnabled;
+}
+
+void CollisionObject::setGravityDisabledOverride(bool isDisabled)
+{
+	this->gravityDisabledOverride = isDisabled;
+}
+
+bool CollisionObject::getGravityEnabled()
+{
+	return this->gravityEnabled;
+}
+
+bool CollisionObject::getGravityDisabledOverride()
+{
+	return this->gravityDisabledOverride;
 }
 
 Vec2 CollisionObject::getVelocity()
@@ -325,6 +354,26 @@ const std::vector<cocos2d::Vec2>& CollisionObject::getPoints()
 	return this->points;
 }
 
+void CollisionObject::setPoints(std::vector<Vec2> points)
+{
+	this->points = points;
+	this->pointsRotated = this->points;
+	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
+	this->segmentsRotated = this->segments;
+	this->shape = this->determineShape();
+	this->boundsRect = AlgoUtils::getPolygonRect(this->pointsRotated);
+	
+	this->propagateRotation(true);
+	
+	// Invalidate debug info
+	this->debugInfoSpawned = false;
+
+	if (DeveloperModeController::getDebugLevel() > 0)
+	{
+		this->drawDebugShapes();
+	}
+}
+
 CollisionObject::Shape CollisionObject::getShape()
 {
 	return this->shape;
@@ -334,10 +383,66 @@ CollisionType CollisionObject::getCollisionType()
 {
 	return this->collisionType;
 }
+	
+std::vector<CollisionType> CollisionObject::getCollisionTypes()
+{
+	return this->collisionTypes;
+}
+
+bool CollisionObject::hasCollisionType(CollisionType collisionType)
+{
+	return (this->collisionType & int(collisionType)) != 0;
+}
+
+bool CollisionObject::hasCollisionWith(CollisionObject* collisonObject)
+{
+	Node* currentCollisionGroup = collisonObject->getParent();
+
+	for (auto next : this->getCurrentCollisions())
+	{
+		if (next->getParent() != currentCollisionGroup)
+		{
+			continue;
+		}
+
+		return true;
+	}
+
+	return false;
+}
 
 const std::set<CollisionObject*>& CollisionObject::getCurrentCollisions()
 {
 	return *this->currentCollisions;
+}
+
+bool CollisionObject::hasCollisions()
+{
+	return !this->currentCollisions->empty();
+}
+
+bool CollisionObject::isCollidingWithSingleGroup()
+{
+	if (!this->hasCollisions())
+	{
+		return false;
+	}
+
+	Node* parent = nullptr;
+
+	for (auto next : *this->currentCollisions)
+	{
+		if (parent == nullptr)
+		{
+			parent = next->getParent();
+		}
+		else if (parent != next->getParent())
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
@@ -354,7 +459,7 @@ bool CollisionObject::isCollidingWithType(int collisionType)
 {
 	for (auto next : *this->currentCollisions)
 	{
-		if (next->getCollisionType() == collisionType)
+		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
 			return true;
 		}
@@ -367,7 +472,7 @@ bool CollisionObject::wasCollidingWithType(int collisionType)
 {
 	for (auto next : *this->previousCollisions)
 	{
-		if (next->getCollisionType() == collisionType)
+		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
 			return true;
 		}
@@ -483,7 +588,7 @@ std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float capsule
 	return points; // PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
-cocos2d::Vec3 CollisionObject::getThisOrBindPosition()
+Vec3 CollisionObject::getThisOrBindPosition()
 {
 	if (this->bindTarget == nullptr)
 	{
@@ -495,7 +600,7 @@ cocos2d::Vec3 CollisionObject::getThisOrBindPosition()
 	}
 }
 
-void CollisionObject::setThisOrBindPosition(cocos2d::Vec3 position)
+void CollisionObject::setThisOrBindPosition(Vec3 position)
 {
 	if (this->bindTarget == nullptr)
 	{
@@ -533,22 +638,32 @@ CollisionObject::Shape CollisionObject::determineShape()
 	return Shape::Polygon;
 }
 
+void CollisionObject::computeDepth(bool force)
+{
+	if (this->cachedTickDepth != SmartScene::GlobalTick || force)
+	{
+		this->cachedTickDepth = SmartScene::GlobalTick;
+		this->cachedWorldCoords3D.z = GameUtils::getDepth(this);
+	}
+}
+
 void CollisionObject::computeWorldCoords(bool force)
 {
 	if (this->cachedTick != SmartScene::GlobalTick || force)
 	{
 		this->cachedTick = SmartScene::GlobalTick;
+		this->cachedTickDepth = SmartScene::GlobalTick;
 		this->cachedWorldCoords3D = GameUtils::getWorldCoords3D(this, false);
 		this->cachedWorldCoords.x = this->cachedWorldCoords3D.x;
 		this->cachedWorldCoords.y = this->cachedWorldCoords3D.y;
 	}
 }
 
-void CollisionObject::propagateRotation()
+void CollisionObject::propagateRotation(bool force)
 {
 	float rotation = GameUtils::getRotation(this);
 
-	if (rotation == this->cachedRotation)
+	if (!force && rotation == this->cachedRotation )
 	{
 		return;
 	}
@@ -597,18 +712,18 @@ void CollisionObject::drawDebugShapes()
 	{
 		if (this->points.size() == 2)
 		{
-			collisionBack->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
+			// collisionBack->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
 			collisionFront->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
 		}
 		else
 		{
-			collisionBack->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
-			collisionFront->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
+			// collisionBack->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f * this->debugColor.a), 1.0f, this->debugColor);
+			collisionFront->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f * this->debugColor.a), 1.0f, this->debugColor);
 		}
 	}
 
-	collisionBack->setPositionZ(-this->collisionDepth);
-	collisionFront->setPositionZ(this->collisionDepth);
+	// collisionBack->setPositionZ(-this->collisionDepth);
+	// collisionFront->setPositionZ(this->collisionDepth);
 
 	this->debugDrawNode->addChild(collisionBack);
 	this->debugDrawNode->addChild(this->debugDrawNodeConnectors);
@@ -619,6 +734,9 @@ void CollisionObject::drawDebugShapes()
 
 void CollisionObject::drawDebugConnectors()
 {
+	// This function isn't quite right, so I'm just leaving it disabled. It seems to be 50/50 in drawing correctly, or dead wrong.
+	return;
+
 	if (this->debugDrawNodeConnectors == nullptr || DeveloperModeController::getDebugLevel() <= 0)
 	{
 		return;
@@ -672,7 +790,10 @@ void CollisionObject::RegisterCollisionObject(CollisionObject* collisionObject)
 		return;
 	}
 
-	CollisionObject::CollisionObjects[collisionObject->collisionType].push_back(collisionObject);
+	for (auto next : collisionObject->collisionTypes)
+	{
+		CollisionObject::CollisionObjects[next].push_back(collisionObject);
+	}
 }
 
 void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject)
@@ -682,11 +803,14 @@ void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject
 		return;
 	}
 
-	CollisionObject::CollisionObjects[collisionObject->collisionType].erase(
-		std::remove(
-			CollisionObject::CollisionObjects[collisionObject->collisionType].begin(),
-			CollisionObject::CollisionObjects[collisionObject->collisionType].end(),
-			collisionObject
-		), CollisionObject::CollisionObjects[collisionObject->collisionType].end()
-	);
+	for (auto next : collisionObject->collisionTypes)
+	{
+		CollisionObject::CollisionObjects[next].erase(
+			std::remove(
+				CollisionObject::CollisionObjects[next].begin(),
+				CollisionObject::CollisionObjects[next].end(),
+				collisionObject
+			), CollisionObject::CollisionObjects[next].end()
+		);
+	}
 }

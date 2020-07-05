@@ -62,13 +62,11 @@ PlatformerEntity::PlatformerEntity(
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->controlStateOverride = ControlState::None;
-	this->movementSize = this->entitySize + Size(0.0f, this->hoverHeight);
 
-	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
+	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->entitySize.height);
 
 	this->animationNode->setScale(this->entityScale);
 	this->animationNode->playAnimation();
-	this->animationNode->setPositionY(this->hoverHeight / 2.0f);
 	
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -174,11 +172,6 @@ Size PlatformerEntity::getEntitySize()
 	return this->entitySize;
 }
 
-Size PlatformerEntity::getMovementSize()
-{
-	return this->movementSize;
-}
-
 Vec2 PlatformerEntity::getCollisionOffset()
 {
 	return this->entityCollisionOffset;
@@ -186,50 +179,36 @@ Vec2 PlatformerEntity::getCollisionOffset()
 
 Vec2 PlatformerEntity::getEntityCenterPoint()
 {
-	Vec2 offset = this->getCollisionOffset();
+	Vec2 collisionOffset = this->isFlippedY() ? Vec2(this->getCollisionOffset().x, -this->getCollisionOffset().y) : this->getCollisionOffset();
+	Vec2 center = this->isFlippedY() ? Vec2(0.0f, this->getEntitySize().height / 2.0f) : Vec2(0.0f, this->getEntitySize().height / 2.0f);
 
-	if (this->isFlippedY())
-	{
-		offset = Vec2(offset.x, -offset.y) - Vec2(0.0f, this->getMovementSize().height / 2.0f);
-	}
-	else
-	{
-		offset = offset + Vec2(0.0f, this->getMovementSize().height / 2.0f);
-	}
-
-	return offset;
+	return collisionOffset + center;
 }
 
 Vec2 PlatformerEntity::getEntityTopPoint()
 {
-	Vec2 offset = this->getEntityCenterPoint();
+	Vec2 center = this->getEntityCenterPoint();
+	Vec2 offset = this->getEntityTopPointRelative();
 
-	if (this->isFlippedY())
-	{
-		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f);
-	}
-	else
-	{
-		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f);
-	}
-
-	return offset;
+	return center + offset;
 }
 
 Vec2 PlatformerEntity::getEntityBottomPoint()
 {
-	Vec2 offset = this->getEntityCenterPoint();
+	Vec2 center = this->getEntityCenterPoint();
+	Vec2 offset = this->getEntityBottomPointRelative();
 
-	if (this->isFlippedY())
-	{
-		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f + this->getHoverHeight());
-	}
-	else
-	{
-		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f - this->getHoverHeight());
-	}
+	return center + offset;
+}
 
-	return offset;
+Vec2 PlatformerEntity::getEntityTopPointRelative()
+{
+	return Vec2(0.0f, (this->isFlippedY() ? -this->getEntitySize().height / 2.0f : this->getEntitySize().height / 2.0f));
+}
+
+Vec2 PlatformerEntity::getEntityBottomPointRelative()
+{
+	return Vec2(0.0f, (this->isFlippedY() ? this->getEntitySize().height / 2.0f + this->getHoverHeight() : (-this->getEntitySize().height / 2.0f - this->getHoverHeight())));
 }
 
 float PlatformerEntity::getHoverHeight()

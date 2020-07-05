@@ -19,7 +19,7 @@ EnemyCombatCollisionBehavior* EnemyCombatCollisionBehavior::create(GameObject* o
 	return instance;
 }
 
-EnemyCombatCollisionBehavior::EnemyCombatCollisionBehavior(GameObject* owner) : super(owner, (int)CombatCollisionType::EntityEnemy)
+EnemyCombatCollisionBehavior::EnemyCombatCollisionBehavior(GameObject* owner) : super(owner, (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::Movement)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 

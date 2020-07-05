@@ -1,5 +1,8 @@
 #include "LocalizedString.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCEventListener.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/LocalizationEvents.h"
@@ -15,7 +18,7 @@ LocalizedString::LocalizedString()
 	this->onStringUpdate = nullptr;
 	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
-	this->runOnce = false;
+	this->disableHackerModeEvents = true;
 }
 
 LocalizedString::~LocalizedString()
@@ -24,31 +27,22 @@ LocalizedString::~LocalizedString()
 
 void LocalizedString::onEnter()
 {
-	// ZAC: Optimization to skip SmartNode onEnter(). LocalizedStrings do not need the events set up by the SmartNode base class.
-	// Less stuff to dispose, this means significantly faster map destruction.
-	Node::onEnter();
+	super::onEnter();
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
-		if (this->onStringUpdate != nullptr)
-		{
-			this->onStringUpdate(this);
-		}
+		this->doStringUpdate();
 	}
+}
 
-	if (!this->runOnce)
+void LocalizedString::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
-		this->runOnce = true;
-
-		// This needs to be done here since we side-step SmartNode functions
-		this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-		{
-			if (this->onStringUpdate != nullptr)
-			{
-				this->onStringUpdate(this);
-			}
-		}));
-	}
+		this->doStringUpdate();
+	}));
 }
 
 std::string LocalizedString::getString()
@@ -132,19 +126,13 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 		// Update this string if any of the replacement variables get updated
 		next->setOnStringUpdateCallback([=](LocalizedString*)
 		{
-			if (this->onStringUpdate != nullptr)
-			{
-				this->onStringUpdate(this);
-			}
+			this->doStringUpdate();
 		});
 		
 		this->addChild(next);
 	}
 
-	if (this->onStringUpdate != nullptr)
-	{
-		this->onStringUpdate(this);
-	}
+	this->doStringUpdate();
 
 	return this;
 }
@@ -166,4 +154,14 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 	}
 
 	localizedString->setStringReplacementVariables(stringReplacementVariables);
+}
+
+void LocalizedString::doStringUpdate()
+{
+	this->currentLanguage = Localization::getLanguage();
+	
+	if (this->onStringUpdate != nullptr)
+	{
+		this->onStringUpdate(this);
+	}
 }

@@ -1,14 +1,13 @@
 #include "EntityCombatBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityDisableMovementCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntitySelectionOverlayBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityTextOverlayBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityDummyMovementCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
@@ -33,7 +32,7 @@ EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(
 	EntityBuffBehavior::create(owner),
 	EntityDropTableBehavior::create(owner),
 	EntityProjectileTargetBehavior::create(owner),
-	EntityDummyMovementCollisionBehavior::create(owner),
+	EntityDisableMovementCollisionBehavior::create(owner),
 	EntitySelectionBehavior::create(owner),
 	EntityDialogueBehavior::create(owner),
 	EntityDeveloperBehavior::create(owner),

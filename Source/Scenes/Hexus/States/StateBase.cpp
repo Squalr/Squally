@@ -32,6 +32,10 @@ void StateBase::initializeListeners()
 	{
 		this->onStateChangeEvent(eventCustom);
 	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventAfterStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onAfterStateChangeEvent(eventCustom);
+	}));
 }
 
 void StateBase::onRequestStateChangeEvent(EventCustom* eventCustom)
@@ -74,6 +78,21 @@ void StateBase::onStateChangeEvent(EventCustom* eventCustom)
 	this->onAnyStateChange(gameState);
 }
 
+void StateBase::onAfterStateChangeEvent(EventCustom* eventCustom)
+{
+	GameState* gameState = (GameState*)(eventCustom->getUserData());
+
+	if (gameState->stateType == this->stateType)
+	{
+		if (gameState->previousStateType != this->stateType)
+		{
+			this->onAfterStateEnter(gameState);
+		}
+	}
+
+	this->onAfterAnyStateChange(gameState);
+}
+
 void StateBase::onAnyStateChange(GameState* gameState)
 {
 }
@@ -82,11 +101,19 @@ void StateBase::onAnyRequestStateChange(GameState* gameState)
 {
 }
 
+void StateBase::onAfterAnyStateChange(GameState* gameState)
+{
+}
+
 void StateBase::onBeforeStateEnter(GameState* gameState)
 {
 }
 
 void StateBase::onStateEnter(GameState* gameState)
+{
+}
+
+void StateBase::onAfterStateEnter(GameState* gameState)
 {
 }
 

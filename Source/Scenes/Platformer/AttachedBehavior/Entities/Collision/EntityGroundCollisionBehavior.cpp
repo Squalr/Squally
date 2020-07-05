@@ -5,6 +5,7 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityHoverCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -13,9 +14,9 @@
 using namespace cocos2d;
 
 const std::string EntityGroundCollisionBehavior::MapKey = "entity-ground-collisions";
-const float EntityGroundCollisionBehavior::GroundCollisionPadding = 4.0f;
-const float EntityGroundCollisionBehavior::GroundCollisionOffset = 8.0f;
-const float EntityGroundCollisionBehavior::GroundCollisionHeight = 48.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionPadding = -4.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionOffset = -8.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionHeight = 64.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
 const float EntityGroundCollisionBehavior::CornerCollisionWidth = 32.0f;
 
@@ -35,6 +36,7 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 	this->leftCornerCollision = nullptr;
 	this->rightCornerCollision = nullptr;
 	this->detectorWidth = 0.0f;
+	this->hoverCollisionBehavior = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -54,10 +56,15 @@ EntityGroundCollisionBehavior::~EntityGroundCollisionBehavior()
 
 void EntityGroundCollisionBehavior::onLoad()
 {
+	this->entity->watchForAttachedBehavior<EntityHoverCollisionBehavior>([=](EntityHoverCollisionBehavior* hoverCollisionBehavior)
+	{
+		this->hoverCollisionBehavior = hoverCollisionBehavior;
+	});
+
 	this->defer([=]()
 	{
 		this->buildGroundCollisionDetector();
-		this->buildCornerCollisionDetectors();
+		// this->buildCornerCollisionDetectors();
 		this->toggleQueryable(true);
 	});
 }
@@ -82,6 +89,11 @@ void EntityGroundCollisionBehavior::onDisable()
 	}
 }
 
+CollisionObject* EntityGroundCollisionBehavior::getGroundCollision()
+{
+	return this->groundCollision;
+}
+
 void EntityGroundCollisionBehavior::onCollideWithGround()
 {
 	// Clear current animation
@@ -98,17 +110,17 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 
 bool EntityGroundCollisionBehavior::isOnGround()
 {
-	return this->groundCollision == nullptr ? false : !this->groundCollision->getCurrentCollisions().empty();
+	return this->groundCollision == nullptr ? false : this->groundCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::hasLeftCornerCollision()
 {
-	return this->leftCornerCollision == nullptr ? false : !this->leftCornerCollision->getCurrentCollisions().empty();
+	return this->leftCornerCollision == nullptr ? false : this->leftCornerCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::hasRightCornerCollision()
 {
-	return this->rightCornerCollision == nullptr ? false :!this->rightCornerCollision->getCurrentCollisions().empty();
+	return this->rightCornerCollision == nullptr ? false : this->rightCornerCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
@@ -123,35 +135,21 @@ bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject
 	// Special case for intersection points -- just return false
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
-		switch(next->getCollisionType())
+		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Intersection)))
 		{
-			case (int)EngineCollisionTypes::Intersection:
-			{
-				return false;
-			}
-			default:
-			{
-				break;
-			}
+			return false;
 		}
 	}
 
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
-		switch(next->getCollisionType())
+		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
+			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough)))
 		{
-			case (int)PlatformerCollisionType::Solid:
-			case (int)PlatformerCollisionType::PassThrough:
+			// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+			if (next->getParent() == currentCollisionGroup)
 			{
-				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
-				if (next->getParent() == currentCollisionGroup)
-				{
-					return true;
-				}
-			}
-			default:
-			{
-				break;
+				return true;
 			}
 		}
 	}
@@ -173,16 +171,9 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 	{
 		const Node* otherCollisionGroup = next->getParent();
 
-		switch(next->getCollisionType())
+		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Intersection)))
 		{
-			case (int)EngineCollisionTypes::Intersection:
-			{
-				return currentCollisionGroup == otherCollisionGroup;
-			}
-			default:
-			{
-				break;
-			}
+			return currentCollisionGroup == otherCollisionGroup;
 		}
 	}
 
@@ -191,24 +182,17 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 	{
 		const Node* otherCollisionGroup = next->getParent();
 
-		switch(next->getCollisionType())
+		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
+			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough)))
 		{
-			case (int)PlatformerCollisionType::Solid:
-			case (int)PlatformerCollisionType::PassThrough:
+			// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+			if (otherCollisionGroup != currentCollisionGroup)
 			{
-				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
-				if (otherCollisionGroup != currentCollisionGroup)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				return true;
 			}
-			default:
+			else
 			{
-				break;
+				return false;
 			}
 		}
 	}
@@ -231,11 +215,8 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 		CollisionObject::Properties(false, false),
 		Color4F::GRAY
 	);
-
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
-
-	this->groundCollision->setPosition(offset);
+	
+	this->groundCollision->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, EntityGroundCollisionBehavior::GroundCollisionOffset));
 
 	this->addChild(this->groundCollision);
 
@@ -280,7 +261,7 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
+	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f,  EntityGroundCollisionBehavior::GroundCollisionOffset);
 
 	this->rightCornerCollision->setPosition(offset);
 	this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));

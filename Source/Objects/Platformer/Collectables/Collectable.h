@@ -21,15 +21,16 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	virtual void hideCollectable();
 
 	cocos2d::Node* collectableNode;
+	CollisionObject* collectableCollision;
 
 private:
 	typedef GameObject super;
 
+	void tryCollect();
 	void disableCollection();
-
-	CollisionObject* collectableCollision;
 
 	bool isCollected;
 	std::vector<std::function<void()>> collectionEvents;

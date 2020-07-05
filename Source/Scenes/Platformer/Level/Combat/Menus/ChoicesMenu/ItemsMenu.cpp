@@ -35,7 +35,7 @@ ItemsMenu* ItemsMenu::create()
 	return instance;
 }
 
-ItemsMenu::ItemsMenu() : super(ItemsMenu::Radius)
+ItemsMenu::ItemsMenu() : super(ItemsMenu::Radius, float(M_PI) / 9.0f)
 {
 	this->hasItemsInList = false;
 }
@@ -96,9 +96,10 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 			LocalizedString* countString = Strings::Common_Brackets::create()
 				->setStringReplacementVariables(Strings::Common_TimesConstant::create()
 				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
-			LocalizedString* menuString = Strings::Common_TriconcatSpaced::create()->setStringReplacementVariables({ attack->getString(), countString });
+			LocalizedString* menuString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ attack->getString(), countString });
+			LocalizedString* description = attack->getDescription();
 
-			this->addEntry(menuString, nullptr, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
+			this->addEntry(menuString, { description }, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
 			{
 				this->scrollTo(index);
 
@@ -108,10 +109,15 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 				{
 					case PlatformerAttack::AttackType::Healing:
 					case PlatformerAttack::AttackType::Buff:
-					case PlatformerAttack::AttackType::Resurrection:
 					{
 						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
 						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
+						break;
+					}
+					case PlatformerAttack::AttackType::Resurrection:
+					{
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget, entry, meta));
 						break;
 					}
 					case PlatformerAttack::AttackType::Damage:

@@ -95,7 +95,7 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::EFRepairRam] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_RepairRam::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFConfrontCommander] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ConfrontCommander::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFReturnToQueenAgain] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFSailForUR] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SailForUR::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::EFSailForUR] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SailForUR::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()); }, priority++);
 
 	priority = 100;
 

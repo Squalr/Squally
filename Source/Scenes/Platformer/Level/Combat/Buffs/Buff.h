@@ -49,6 +49,7 @@ protected:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	virtual void registerHackables();
 	virtual void elapse(float dt);
 	virtual void onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed);
@@ -89,5 +90,6 @@ private:
 	bool isBuffIconPresent;
 	bool wasRemoved;
 	float elapsedTime;
+	float asyncElapsedTime;
 	void unregisterHackables();
 };

@@ -65,6 +65,7 @@ namespace SoundResources
 	extern const std::string Notifications_NotificationGood3;
 	extern const std::string Notifications_NotificationPop1;
 	extern const std::string Notifications_NotificationPop2;
+	extern const std::string Notifications_NotificationShine1;
 	extern const std::string Notifications_Reveal1;
 	extern const std::string Platformer_Combat_CombatEngage1;
 	extern const std::string Platformer_Combat_Defeat;
@@ -177,6 +178,7 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Pig_PigGrunt2;
 	extern const std::string Platformer_Entities_Pig_PigSqueal1;
 	extern const std::string Platformer_Entities_Pig_PigSqueelDeep1;
+	extern const std::string Platformer_Entities_Serpent_Hiss1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps2;
 	extern const std::string Platformer_Entities_Skeleton_SkeleDeath1;
@@ -313,6 +315,9 @@ namespace SoundResources
 	extern const std::string Platformer_Physical_Swings_SwingWeakHybrid4;
 	extern const std::string Platformer_Physical_Swings_WindBlade1;
 	extern const std::string Platformer_Spells_ArcaneHit1;
+	extern const std::string Platformer_Spells_Bubbles1;
+	extern const std::string Platformer_Spells_Bubbles2;
+	extern const std::string Platformer_Spells_Bubbles3;
 	extern const std::string Platformer_Spells_Curse1;
 	extern const std::string Platformer_Spells_Ding1;
 	extern const std::string Platformer_Spells_Ding2;
@@ -348,9 +353,12 @@ namespace SoundResources
 	extern const std::string Platformer_Spells_IceHit7;
 	extern const std::string Platformer_Spells_IceHit8;
 	extern const std::string Platformer_Spells_IceHit9;
+	extern const std::string Platformer_Spells_Lightning1;
 	extern const std::string Platformer_Spells_MagicArrow1;
 	extern const std::string Platformer_Spells_MagicArrowHit1;
 	extern const std::string Platformer_Spells_PoisonSpell1;
 	extern const std::string Platformer_Spells_Recharge1;
 	extern const std::string Platformer_Spells_TelePush1;
+	extern const std::string Platformer_Spells_Wind1;
+	extern const std::string Platformer_Spells_Wind2;
 };

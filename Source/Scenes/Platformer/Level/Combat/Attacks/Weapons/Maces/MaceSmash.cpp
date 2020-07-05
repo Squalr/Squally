@@ -2,6 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 
 #include "Resources/SoundResources.h"
@@ -11,7 +12,7 @@
 
 using namespace cocos2d;
 
-const float MaceSmash::DamageMultiplier = 1.4f;
+const float MaceSmash::DamageMultiplier = 1.5f;
 
 MaceSmash* MaceSmash::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
@@ -56,6 +57,12 @@ PlatformerAttack* MaceSmash::cloneInternal()
 LocalizedString* MaceSmash::getString()
 {
 	return Strings::Platformer_Combat_Attacks_Smash::create();
+}
+
+LocalizedString* MaceSmash::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_SmashDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(MaceSmash::DamageMultiplier * 100.0f))));
 }
 
 std::string MaceSmash::getAttackAnimation()

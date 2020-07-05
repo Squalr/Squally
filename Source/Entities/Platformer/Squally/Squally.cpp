@@ -108,7 +108,7 @@ Vec2 Squally::getButtonOffset()
 
 cocos2d::Vec2 Squally::getDialogueOffset()
 {
-	return Vec2(0.0f, -16.0f);
+	return Vec2(0.0f, 32.0f);
 }
 
 LocalizedString* Squally::getEntityName()

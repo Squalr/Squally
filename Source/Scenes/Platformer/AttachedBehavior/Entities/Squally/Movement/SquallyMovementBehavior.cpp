@@ -162,7 +162,9 @@ void SquallyMovementBehavior::onMovementChanged()
 	bool isCinematicHijacked = this->squally->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false);
 
 	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
-	this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
+	// this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
+	// We actually want to prioritize jump, instead of canceling out the inputs. This is better UX for performing a crouch jump.
+	this->squally->setState(StateKeys::MovementY, Value((this->upPressed ? 1.0f : (this->downPressed ? -1.0f : 0.0f))));
 
 	if (isCinematicHijacked)
 	{
@@ -206,6 +208,8 @@ void SquallyMovementBehavior::loadSquallyPosition()
 			{
 				GameUtils::changeParent(this->squally, mapLayer, true);
 			}), layerId);
+
+			PlatformerEvents::TriggerSquallySpawned();
 		});
 	}
 }

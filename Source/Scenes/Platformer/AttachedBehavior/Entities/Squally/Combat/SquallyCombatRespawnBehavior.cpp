@@ -6,10 +6,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerHelper.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
@@ -65,20 +67,8 @@ void SquallyCombatRespawnBehavior::onLoad()
 				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
 				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 			}
-		
-			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
-			{
-				if (args->defeat)
-				{
-					// Always revive squally on defeat
-					healthBehavior->revive();
-				}
-				else if (healthBehavior->isDead())
-				{
-					// Revive squally to 1hp on victory
-					healthBehavior->setHealth(1, false);
-				}
-			});
+
+			this->respawn(!args->defeat);
 		}
 	}));
 }
@@ -88,7 +78,42 @@ void SquallyCombatRespawnBehavior::onDisable()
 	super::onDisable();
 }
 
-void SquallyCombatRespawnBehavior::respawn()
+void SquallyCombatRespawnBehavior::respawn(bool softRevive)
 {
+	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
+	{
+		helper->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			if (healthBehavior->isDead())
+			{
+				if (softRevive)
+				{
+					// No soft revive for helpers
+				}
+				else
+				{
+					// Always revive squally on defeat
+					healthBehavior->revive();
+				}
+			}
+		});
+	}));
+
+	this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		if (healthBehavior->isDead())
+		{
+			if (softRevive)
+			{
+				// Revive squally to 1hp on victory
+				healthBehavior->setHealth(1, false);
+			}
+			else
+			{
+				// Always revive squally on defeat
+				healthBehavior->revive();
+			}
+		}
+	});
 }
 

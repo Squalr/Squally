@@ -35,7 +35,7 @@ MummyPriestCombatBehavior::MummyPriestCombatBehavior(GameObject* owner) : super(
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.25f);
+	this->setTimelineSpeedBase(1.25f);
 }
 
 MummyPriestCombatBehavior::~MummyPriestCombatBehavior()

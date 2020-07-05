@@ -105,8 +105,12 @@ bool TimelineEventGroup::processEvents(float previousTime, float currentTime)
 
 void TimelineEventGroup::removeAllTimelineEvents()
 {
+	for (auto next : this->timelineEvents)
+	{
+		next->deactivate();
+	}
+	
 	this->timelineEvents.clear();
-	this->timelineEventsNode->removeAllChildren();
 
 	if (this->timelineEvents.empty() && this->onGroupComplete != nullptr)
 	{
@@ -116,6 +120,12 @@ void TimelineEventGroup::removeAllTimelineEvents()
 
 void TimelineEventGroup::unregisterTimelineEvent(TimelineEvent* timelineEvent)
 {
+	if (timelineEvent == nullptr)
+	{
+		return;
+	}
+
+	timelineEvent->deactivate();
+
 	this->timelineEvents.erase(std::remove(this->timelineEvents.begin(), this->timelineEvents.end(), timelineEvent), this->timelineEvents.end());
-	this->timelineEventsNode->removeChild(timelineEvent);
 }

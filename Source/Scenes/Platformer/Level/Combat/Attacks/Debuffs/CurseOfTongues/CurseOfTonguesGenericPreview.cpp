@@ -20,9 +20,6 @@ CurseOfTonguesGenericPreview* CurseOfTonguesGenericPreview::create()
 
 CurseOfTonguesGenericPreview::CurseOfTonguesGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 CurseOfTonguesGenericPreview::~CurseOfTonguesGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* CurseOfTonguesGenericPreview::clone()
 void CurseOfTonguesGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	// this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void CurseOfTonguesGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

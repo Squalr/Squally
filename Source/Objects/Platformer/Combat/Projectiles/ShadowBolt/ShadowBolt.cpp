@@ -38,7 +38,7 @@ ShadowBolt* ShadowBolt::create(PlatformerEntity* owner, PlatformerEntity* target
 ShadowBolt::ShadowBolt(PlatformerEntity* owner, PlatformerEntity* target)
 	: super(owner, target, true, Node::create(), Size(32.0f, 32.0f))
 {
-	this->shadowBoltAnim = SmartAnimationSequenceNode::create(FXResources::ShadowImpact_ShadowImpact_0000);
+	this->shadowBoltAnim = SmartAnimationSequenceNode::create();
 
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->launchSound = WorldSound::create(SoundResources::Platformer_Spells_Fireball2);
@@ -79,6 +79,7 @@ void ShadowBolt::runImpactFX()
 {
 	this->explosionAnim->playAnimation(FXResources::ShadowImpact_ShadowImpact_0000, 0.05f, true);
 	this->shadowBoltAnim->stopAnimation();
+	this->setLaunchVelocity(Vec3::ZERO);
 
 	this->impactSound->play();
 }

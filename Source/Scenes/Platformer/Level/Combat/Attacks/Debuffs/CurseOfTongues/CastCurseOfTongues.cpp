@@ -66,7 +66,7 @@ void CastCurseOfTongues::performAttack(PlatformerEntity* owner, std::vector<Plat
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation("AttackCast");
+	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (auto next : targets)
 	{
@@ -93,7 +93,7 @@ bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vecto
 
 	for (auto next : otherTeam)
 	{
-		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTongues*>(next) != nullptr;  }))
 		{
 			uncastableCount++;
 			continue;
@@ -113,7 +113,7 @@ bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vecto
 
 float CastCurseOfTongues::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTongues*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

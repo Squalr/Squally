@@ -1,6 +1,7 @@
 ﻿#include "CodeWindow.h"
 
 #include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/ui/UIRichText.h"
@@ -69,6 +70,7 @@ const float CodeWindow::MarginSize = 48.0f;
 const float CodeWindow::TitleBarHeight = 64.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
+const Color4B CodeWindow::ReadonlyWindowColor = Color4B(70, 66, 10, 255);
 
 CodeWindow* CodeWindow::create(cocos2d::Size windowSize)
 {
@@ -84,7 +86,7 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->windowSize = windowSize;
 	this->currentLineNumber = 1;
 	this->lineNumberElements = std::vector<RichElement*>();
-	this->textElements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
+	this->textInfo = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
 	this->hasScriptChanges = false;
 
 	this->lineNumbers = RichText::create();
@@ -104,11 +106,12 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, this->windowSize.width, this->windowSize.height);
 	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, this->windowSize.width, CodeWindow::TitleBarHeight);
 	this->windowTitle = InputText::create(
-		Size(this->windowSize.width - 16.0f, CodeWindow::TitleBarHeight - 16.0f),
+		Size(this->windowSize.width - 16.0f - 88.0f, CodeWindow::TitleBarHeight - 16.0f),
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::H3
 	);
 	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
+	this->copyButtonGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
 	this->copyPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->copyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CopyScript::create());
@@ -138,6 +141,7 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->addChild(this->windowTitle);
 	this->addChild(this->contentPane);
 	this->addChild(this->deleteButton);
+	this->addChild(this->copyButtonGlow);
 	this->addChild(this->copyButton);
 	this->addChild(this->deletePanel);
 	this->addChild(this->deleteLabel);
@@ -173,6 +177,7 @@ void CodeWindow::initializePositions()
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->deleteButton->setPosition(windowSize.width / 2.0f - 32.0f - 40.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->copyButtonGlow->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->copyButton->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
 	this->displayedText->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
@@ -248,6 +253,7 @@ void CodeWindow::initializeListeners()
 		this->deletePanel->setOpacity(196);
 		this->deleteLabel->setOpacity(255);
 	});
+
 	this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->deletePanel->setOpacity(0);
@@ -280,12 +286,18 @@ void CodeWindow::openScript(ScriptEntry* script)
 
 	if (script->isReadOnly)
 	{
+		this->copyButtonGlow->setVisible(true);
+		this->background->setColor(Color3B(CodeWindow::ReadonlyWindowColor));
+		this->background->setOpacity(CodeWindow::ReadonlyWindowColor.a);
 		this->windowTitle->getHitbox()->disableInteraction();
 		this->editableText->getHitbox()->disableInteraction();
 		this->unfocus();
 	}
 	else
 	{
+		this->copyButtonGlow->setVisible(false);
+		this->background->setColor(Color3B(CodeWindow::DefaultWindowColor));
+		this->background->setOpacity(CodeWindow::DefaultWindowColor.a);
 		this->deleteButton->setVisible(true);
 		this->windowTitle->getHitbox()->enableInteraction();
 		this->editableText->getHitbox()->enableInteraction();
@@ -341,42 +353,21 @@ void CodeWindow::unfocus()
 	this->editableText->unfocus();
 }
 
-void CodeWindow::insertNewline()
-{
-	RichElement* lineNumberText = RichElementText::create(0, CodeWindow::LineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), this->editableText->getFont(), this->editableText->getFontSize());
-	RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
-
-	this->lineNumberElements.push_back(lineNumberText);
-	this->lineNumbers->pushBackElement(lineNumberText);
-	this->lineNumberElements.push_back(lineNumberNewLine);
-	this->lineNumbers->pushBackElement(lineNumberNewLine);
-
-	LocalizedString* text = Strings::Common_Newline::create();
-	RichElement* element = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
-
-	text->retain();
-	this->textElements.push_back(std::make_tuple(text, Color3B()));
-	this->displayedText->pushBackElement(element);
-}
-
 void CodeWindow::clearText()
 {
 	this->currentLineNumber = 1;
 
-	for (auto element : this->lineNumberElements)
-	{
-		this->lineNumbers->removeElement(element);
-	}
-
+	this->textElements.clear();
 	this->lineNumberElements.clear();
 
-	for (auto element : this->textElements)
+	for (auto textInfo : this->textInfo)
 	{
-		std::get<0>(element)->release();
+		std::get<0>(textInfo)->release();
 	}
 
-	this->textElements.clear();
+	this->textInfo.clear();
 	this->displayedText->clearElements();
+	this->lineNumbers->clearElements();
 }
 
 void CodeWindow::constructTokenizedText(std::string currentText)
@@ -483,11 +474,47 @@ void CodeWindow::setWindowTitle(std::string windowTitle)
 	this->windowTitle->setString(windowTitle);
 }
 
-void CodeWindow::insertText(LocalizedString* text, Color3B color)
+void CodeWindow::insertNewline()
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text->getString(), this->editableText->getFont(), this->editableText->getFontSize());
+	RichElement* lineNumberText = RichElementText::create(0, CodeWindow::LineNumberColor, 0xFF, std::to_string(this->currentLineNumber), this->editableText->getFont(), this->editableText->getFontSize());
+	RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
+	LocalizedString* text = Strings::Common_Newline::create();
+	RichElement* element = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
+	int textElementIndex = this->currentLineNumber - 2;
 
 	text->retain();
-	this->textElements.push_back(std::make_tuple(text, color));
+	this->textInfo.push_back(std::make_tuple(text, Color3B()));
+	this->displayedText->pushBackElement(element);
+
+	// Format call required to properly get newline counts on wraps
+	this->displayedText->formatText();
+	
+	// Add additional newlines in line numbers to handle wraps
+	if (textElementIndex >= 0 && textElementIndex < int(this->textElements.size()))
+	{
+		for (int wrapNewlineIndex = 0; wrapNewlineIndex < this->textElements[textElementIndex]->getNewlineCount(); wrapNewlineIndex++)
+		{
+			RichElement* wrapNewline = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
+
+			this->lineNumberElements.push_back(wrapNewline);
+			this->lineNumbers->pushBackElement(wrapNewline);
+		}
+	}
+
+	this->lineNumberElements.push_back(lineNumberText);
+	this->lineNumbers->pushBackElement(lineNumberText);
+	this->lineNumberElements.push_back(lineNumberNewLine);
+	this->lineNumbers->pushBackElement(lineNumberNewLine);
+
+	this->currentLineNumber++;
+}
+
+void CodeWindow::insertText(LocalizedString* text, Color3B color)
+{
+	RichElementText* element = RichElementText::create(0, color, 0xFF, text->getString(), this->editableText->getFont(), this->editableText->getFontSize());
+
+	text->retain();
+	this->textInfo.push_back(std::make_tuple(text, color));
+	this->textElements.push_back(element);
 	this->displayedText->pushBackElement(element);
 }

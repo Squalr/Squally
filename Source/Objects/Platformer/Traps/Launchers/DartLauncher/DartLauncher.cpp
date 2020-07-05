@@ -57,6 +57,11 @@ HackablePreview* DartLauncher::getTimerPreview()
 	return DartLauncherUpdateTimerPreview::create();
 }
 
+Vec2 DartLauncher::getProjectileSpawnPosition()
+{
+	return Vec2::ZERO;
+}
+
 Projectile* DartLauncher::createProjectile()
 {
 	return Dart::create(this->currentAngle, this->launchSpeed);

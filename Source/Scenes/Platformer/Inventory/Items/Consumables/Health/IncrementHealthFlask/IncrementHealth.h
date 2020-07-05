@@ -15,7 +15,7 @@ class WorldSound;
 class IncrementHealth : public Buff
 {
 public:
-	static IncrementHealth* create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
+	static IncrementHealth* create(PlatformerEntity* caster, PlatformerEntity* target);
 
 	static const std::string PropertyIncrementHealthTutorial;
 	static const std::string IncrementHealthIdentifier;
@@ -24,7 +24,7 @@ public:
 	static const float StartDelay;
 
 protected:
-	IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
+	IncrementHealth(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~IncrementHealth();
 
 	void onEnter() override;
@@ -38,7 +38,6 @@ private:
 
 	void incrementHeal();
 	
-	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
 	WorldSound* impactSound;
 	WorldSound* healSound;

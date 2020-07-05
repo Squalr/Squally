@@ -17,6 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
@@ -54,6 +55,14 @@ void TalkToSarude::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
+
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->sarude->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableNewQuest();
+			});
+		}
 	}, Sarude::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
@@ -83,6 +92,14 @@ void TalkToSarude::onComplete()
 	if (this->portal != nullptr)
 	{
 		this->portal->openPortal(true);
+	}
+
+	if (this->sarude != nullptr)
+	{
+		this->sarude->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		{
+			questBehavior->disableAll();
+		});
 	}
 
 	Objectives::SetCurrentObjective(ObjectiveKeys::EFBeatGauntlet);

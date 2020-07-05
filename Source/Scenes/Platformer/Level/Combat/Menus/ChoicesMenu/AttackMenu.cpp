@@ -38,7 +38,7 @@ AttackMenu* AttackMenu::create(Timeline* timelineRef)
 	return instance;
 }
 
-AttackMenu::AttackMenu(Timeline* timelineRef) : super(AttackMenu::Radius)
+AttackMenu::AttackMenu(Timeline* timelineRef) : super(AttackMenu::Radius, float(M_PI) / 9.0f)
 {
 	this->timelineRef = timelineRef;
 }
@@ -72,8 +72,9 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 		{
 			int cost = attack->getSpecialCost();
 			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));
+			LocalizedString* descriptionString = attack->getDescription();
 
-			RadialEntry* newEntry = this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
+			RadialEntry* newEntry = this->addEntry(attack->getString(), { costString, descriptionString }, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
 				this->selectAttack(entry, attack, index);
 			});
@@ -95,50 +96,68 @@ void AttackMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, in
 
 	entry->stageCast(attack);
 
-	if (attack->isMultiTarget())
+	switch (attack->getTargetingType())
 	{
-		switch (attack->getAttackType())
+		case PlatformerAttack::TargetingType::Self:
 		{
-			case PlatformerAttack::AttackType::Buff:
-			case PlatformerAttack::AttackType::Healing:
-			case PlatformerAttack::AttackType::Resurrection:
-			{
-				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getFriendlyEntities()));
-				break;
-			}
-			default:
-			case PlatformerAttack::AttackType::Damage:
-			case PlatformerAttack::AttackType::Debuff:
-			{
-				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getEnemyEntities()));
-				break;
-			}
-		}
-
-		return;
-	}
-
-	switch (attack->getAttackType())
-	{
-		case PlatformerAttack::AttackType::Healing:
-		case PlatformerAttack::AttackType::Buff:
-		case PlatformerAttack::AttackType::Resurrection:
-		{
-			auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
+			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs({ entry->getEntity() }));
 			break;
 		}
-		case PlatformerAttack::AttackType::Damage:
-		case PlatformerAttack::AttackType::Debuff:
+		case PlatformerAttack::TargetingType::Multi:
 		{
-			auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
+			switch (attack->getAttackType())
+			{
+				case PlatformerAttack::AttackType::Buff:
+				case PlatformerAttack::AttackType::Healing:
+				case PlatformerAttack::AttackType::Resurrection:
+				{
+					CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getFriendlyEntities()));
+					break;
+				}
+				default:
+				case PlatformerAttack::AttackType::Damage:
+				case PlatformerAttack::AttackType::Debuff:
+				{
+					CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getEnemyEntities()));
+					break;
+				}
+			}
+
 			break;
 		}
 		default:
+		case PlatformerAttack::TargetingType::Single:
 		{
-			auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
+			switch (attack->getAttackType())
+			{
+				case PlatformerAttack::AttackType::Healing:
+				case PlatformerAttack::AttackType::Buff:
+				{
+					auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
+					break;
+				}
+				case PlatformerAttack::AttackType::Resurrection:
+				{
+					auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget, entry, meta));
+					break;
+				}
+				case PlatformerAttack::AttackType::Damage:
+				case PlatformerAttack::AttackType::Debuff:
+				{
+					auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
+					break;
+				}
+				default:
+				{
+					auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
+					break;
+				}
+			}
+
 			break;
 		}
 	}

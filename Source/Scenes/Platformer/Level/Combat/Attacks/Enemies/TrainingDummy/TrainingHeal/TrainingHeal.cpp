@@ -32,7 +32,6 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
-const std::string TrainingHeal::PropertyRestorePotionTutorial = "training-heal-tutorial";
 const std::string TrainingHeal::TrainingHealIdentifier = "training-heal";
 const float TrainingHeal::TimeBetweenTicks = 0.5f;
 const int TrainingHeal::HackTicks = 5;
@@ -50,11 +49,12 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 	: super(caster, target, UIResources::Menus_Icons_Heal, AbilityType::Holy, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healEffect = SmartAnimationSequenceNode::create();
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
-
+	
+	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->healEffect);
@@ -70,6 +70,7 @@ void TrainingHeal::onEnter()
 {
 	super::onEnter();
 
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 24.0f);
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
 		DelayTime::create(0.5f),
@@ -180,6 +181,7 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
 
 	this->healSound->play();
+
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();

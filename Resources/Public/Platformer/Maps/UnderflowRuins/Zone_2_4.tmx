@@ -6,7 +6,7 @@
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="7"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -97,7 +97,7 @@
     <property name="save-key" value="SAVE_KEY_OR_PURPLE_1"/>
    </properties>
   </object>
-  <object id="897" name="medusa" type="entity" x="1605.7" y="1872.36" width="128" height="128">
+  <object id="897" name="mermaid" type="entity" x="1605.7" y="1872.36" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>

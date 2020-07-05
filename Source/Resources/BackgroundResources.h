@@ -8,6 +8,7 @@ namespace BackgroundResources
 {
 	extern const std::string Bliss;
 	extern const std::string BlueSky;
+	extern const std::string BrightSky;
 	extern const std::string Caverns;
 	extern const std::string Cracks_CrackLargeWhite;
 	extern const std::string Cracks_CrackMediumWhite;

@@ -80,6 +80,7 @@ void Reflect::onEnter()
 
 	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
 		DelayTime::create(0.5f),
@@ -118,7 +119,7 @@ void Reflect::registerHackables()
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx::create()->setStringReplacementVariables(
 							{
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MinMultiplier))),
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Reflect::MinMultiplier))),
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MaxMultiplier)))
 							}),
 					},

@@ -33,6 +33,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->animationParts = std::map<std::string, AnimationPart*>();
 	this->initialized = false;
 	this->currentAnimation = "";
+	this->currentAnimationPriority = -1.0f;
 
 	this->addChild(this->animationNode);
 }

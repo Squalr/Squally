@@ -47,7 +47,7 @@ void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 
 		if (squally != nullptr && squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			// Encountered enemy w/ first-strike
+			// Encountered enemy w/o first-strike
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->enemy, false));
 		}
 

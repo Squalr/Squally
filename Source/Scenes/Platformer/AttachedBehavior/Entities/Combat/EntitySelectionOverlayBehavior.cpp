@@ -97,6 +97,7 @@ void EntitySelectionOverlayBehavior::onLoad()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
 				{
 					this->setVisible(true);
 					break;

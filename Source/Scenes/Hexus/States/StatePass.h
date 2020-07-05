@@ -26,7 +26,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	
-	void onAnyStateChange(GameState* gameState) override;
+	void onAfterAnyStateChange(GameState* gameState) override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;

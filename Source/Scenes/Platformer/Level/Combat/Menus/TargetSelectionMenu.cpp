@@ -99,6 +99,18 @@ void TargetSelectionMenu::initializeListeners()
 					this->setVisible(true);
 					break;
 				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseResurrectionTarget:
+				{
+					this->allowedSelection = AllowedSelection::PlayerResurrection;
+					this->isActive = true;
+
+					this->setEntityClickCallbacks();
+					this->selectEntity(nullptr);
+					this->selectNext(false);
+					
+					this->setVisible(true);
+					break;
+				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				{
 					this->allowedSelection = AllowedSelection::Player;
@@ -182,10 +194,19 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 				targetEntityGroup.push_back(entity);
 			}
 		}
+		else if (next->isPlayerEntry() && this->allowedSelection == AllowedSelection::PlayerResurrection)
+		{
+			targetEntityGroup.push_back(entity);
+		}
 	}
 
 	if (targetEntityGroup.empty())
 	{
+		if (directionIsLeft)
+		{
+			CombatEvents::TriggerMenuGoBack();
+		}
+
 		return;
 	}
 
@@ -199,7 +220,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 	{
 		if (directionIsLeft)
 		{
-			// Looping disabled -- just go back if cycled through all entities
+			// Looping feels more natural when scrolling right, whereas going back is more natural when scrolling left
 			if (*entityPosition == targetEntityGroup.front())
 			{
 				CombatEvents::TriggerMenuGoBack();
@@ -214,16 +235,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			auto next = std::next(entityPosition);
 
-			// Looping disabled -- just go back if cycled through all entities
-			// Edit: Nvm, looping actually feels more natural when scrolling right, whereas going back is more natural when scrolling left
-			/*
-			if (next == std::end(targetEntityGroup))
-			{
-				CombatEvents::TriggerMenuGoBack();
-				return;
-			}
-			*/
-
+			// Cycle next entity
 			PlatformerEntity* nextEntity = (next != std::end(targetEntityGroup)) ? *next : targetEntityGroup.front();
 
 			this->selectEntity(nextEntity);
@@ -247,11 +259,38 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 {
 	entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{
-		if (!entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
-			|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
-			|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
+		TimelineEntry* entry = this->timelineRef->getAssociatedEntry(entity);
+		bool isAlive = entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+
+		switch(this->allowedSelection)
 		{
-			return;
+			case AllowedSelection::PlayerResurrection:
+			{
+				if (!entry->isPlayerEntry() || isAlive)
+				{
+					return;
+				}
+
+				break;
+			}
+			case AllowedSelection::Player:
+			{
+				if (!entry->isPlayerEntry() || !isAlive)
+				{
+					return;
+				}
+			}
+			case AllowedSelection::Enemy:
+			{
+				if (entry->isPlayerEntry() || !isAlive)
+				{
+					return;
+				}
+			}
+			default:
+			{
+				break;
+			}
 		}
 
 		PlatformerEntity* entityRef = entity;

@@ -17,7 +17,6 @@ class Strength : public Buff
 public:
 	static Strength* create(PlatformerEntity* caster, PlatformerEntity* target);
 
-	static const std::string PropertyRestorePotionTutorial;
 	static const std::string StrengthIdentifier;
 
 protected:

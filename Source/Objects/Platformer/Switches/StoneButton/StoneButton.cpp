@@ -77,7 +77,7 @@ void StoneButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData data)
+	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Hover, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData data)
 	{
 		this->hasCollided = true;
 		
@@ -91,7 +91,7 @@ void StoneButton::update(float dt)
 
 	float currentPositionY = this->buttonCollision->getPositionY();
 
-	if (!this->buttonCollision->getCurrentCollisions().empty() || (this->isSwitch && this->hasCollided))
+	if (this->buttonCollision->hasCollisions() || (this->isSwitch && this->hasCollided))
 	{
 		currentPositionY -= StoneButton::ButtonPressureSpeed * dt;
 	}

@@ -20,9 +20,6 @@ SharpenedBladeGenericPreview* SharpenedBladeGenericPreview::create()
 
 SharpenedBladeGenericPreview::SharpenedBladeGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 SharpenedBladeGenericPreview::~SharpenedBladeGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* SharpenedBladeGenericPreview::clone()
 void SharpenedBladeGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void SharpenedBladeGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

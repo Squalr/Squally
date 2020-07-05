@@ -15,6 +15,10 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Condensation/CastCondensation.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/EnvelopingWinds/CastEnvelopingWinds.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/LightningStrike/CastLightningStrike.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Resurrection/CastResurrection.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttacks.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -57,6 +61,7 @@ void SquallyAttackBehavior::onLoad()
 	this->squally->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		this->loadWeaponAttacks(attackBehavior);
+		this->loadSpellBookAttacks(attackBehavior);
 	});
 }
 
@@ -69,22 +74,22 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 {
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerAttack(CastCondensation::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerAttack(CastEnvelopingWinds::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookLightning, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerAttack(CastLightningStrike::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookHoly, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerAttack(CastResurrection::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())

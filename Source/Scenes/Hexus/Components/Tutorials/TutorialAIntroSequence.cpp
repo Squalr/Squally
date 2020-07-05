@@ -116,10 +116,10 @@ void TutorialAIntroSequence::onEnter()
 
 	this->scoreTotalsNextButton->disableInteraction(0);
 	this->lossDisplayNextButton->disableInteraction(0);
-	this->rowTotalsNextButton->disableInteraction(0);
 	this->binaryCardsNextButton->disableInteraction(0);
 	this->decimalCardsNextButton->disableInteraction(0);
 	this->hexCardsNextButton->disableInteraction(0);
+	this->rowTotalsNextButton->disableInteraction(0);
 	this->handCardsNextButton->disableInteraction(0);
 }
 
@@ -158,8 +158,11 @@ void TutorialAIntroSequence::initializeListeners()
 
 bool TutorialAIntroSequence::tryHijackState(GameState* gameState)
 {
-	this->initializeCallbacks(gameState);
-	this->runTutorialScoreTotal(gameState);
+	this->defer([=]()
+	{
+		this->initializeCallbacks(gameState);
+		this->runTutorialScoreTotal(gameState);
+	});
 
 	return true;
 }

@@ -31,6 +31,7 @@ public:
 	float getProgress();
 	void setProgress(float progress);
 	void tryPerformActions();
+	void addInitSpeed(float bonus);
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
 	bool isPlayerEntry();

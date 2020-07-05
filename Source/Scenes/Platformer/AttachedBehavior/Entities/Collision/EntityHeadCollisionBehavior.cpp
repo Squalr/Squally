@@ -72,17 +72,10 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 			continue;
 		}
 
-		switch(next->getCollisionType())
+		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough))
+			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::SolidRoof)))
 		{
-			case (int)PlatformerCollisionType::PassThrough:
-			case (int)PlatformerCollisionType::SolidRoof:
-			{
-				return true;
-			}
-			default:
-			{
-				break;
-			}
+			return true;
 		}
 	}
 

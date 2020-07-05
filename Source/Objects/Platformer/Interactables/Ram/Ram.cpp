@@ -33,7 +33,7 @@ Ram::Ram(ValueMap& properties) : super(properties)
 	this->ramAnimations = SmartAnimationNode::create(ObjectResources::Traps_Ram_Animations);
 	this->collision = CollisionObject::create(
 		CollisionObject::createBox(Size(512.0f, 288.0f)),
-		(CollisionType)PlatformerCollisionType::Machine,
+		(CollisionType)PlatformerCollisionType::Cinematic,
 		CollisionObject::Properties(true, false)
 	);
 

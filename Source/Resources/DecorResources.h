@@ -658,13 +658,6 @@ namespace DecorResources
 	extern const std::string Ruins_Background_DesertLayer2;
 	extern const std::string Ruins_Background_DesertLayer3;
 	extern const std::string Ruins_Background_DesertLayer4;
-	extern const std::string Ruins_Background_Island1;
-	extern const std::string Ruins_Background_Island2;
-	extern const std::string Ruins_Background_Island3;
-	extern const std::string Ruins_Background_Island4;
-	extern const std::string Ruins_Background_Island5;
-	extern const std::string Ruins_Background_Island6;
-	extern const std::string Ruins_Background_PalmTree1;
 	extern const std::string Ruins_LionDoor;
 	extern const std::string Ruins_LionDoorFront;
 	extern const std::string Ruins_Obelisk;
@@ -672,7 +665,8 @@ namespace DecorResources
 	extern const std::string Ruins_Pillar2;
 	extern const std::string Ruins_Pyramid;
 	extern const std::string Ruins_PyramidRamp;
-	extern const std::string Ruins_Sphynx;
+	extern const std::string Ruins_ScarabDoor;
+	extern const std::string Ruins_ScarabDoorBroken;
 	extern const std::string Ruins_StoneGateLeft;
 	extern const std::string Ruins_StoneGateRight;
 	extern const std::string Ruins_Walls1;
@@ -692,6 +686,8 @@ namespace DecorResources
 	extern const std::string Ruins_Well;
 	extern const std::string Ruins_Window;
 	extern const std::string Ruins_WindowTransparent;
+	extern const std::string Snow_Background_Canyon1;
+	extern const std::string Snow_Background_Canyon2;
 	extern const std::string Snow_Background_Forest1;
 	extern const std::string Snow_Background_Forest2;
 	extern const std::string Snow_Background_Forest3;

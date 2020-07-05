@@ -49,6 +49,7 @@ public:
 	cocos2d::Node* getContent();
 	cocos2d::Node* getContentSelected();
 	void setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction);
+	void neverHandle();
 
 protected:
 	ClickableNode(cocos2d::Node* content, cocos2d::Node* contentSelected);
@@ -86,6 +87,7 @@ private:
 	bool wasAnywhereClicked;
 	bool wasClickedDirectly;
 	bool isMousedOver;
+	bool isNeverHandleEnabled;
 	std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction;
 	cocos2d::EventKeyboard::KeyCode modifier;
 	cocos2d::EventListener* modifierReleasedListener;

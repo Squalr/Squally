@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1097">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="83" nextobjectid="1145">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -17,41 +17,90 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1065" name="temple-dark" type="texture" x="-881.815" y="-942" width="9923.63" height="9116"/>
+  <object id="1065" name="temple-dark" type="texture" x="-881.815" y="-838" width="9923.63" height="7988"/>
  </objectgroup>
  <objectgroup id="79" name="decor -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1033" name="Ruins/Window" type="decor" x="3473.2" y="5101.86" width="313" height="381"/>
-  <object id="1034" name="Ruins/Window" type="decor" x="2485.92" y="3821.62" width="313" height="381"/>
-  <object id="1035" name="Ruins/Window" type="decor" x="2495.02" y="1964.05" width="313" height="381"/>
-  <object id="1036" name="Ruins/Window" type="decor" x="646.53" y="2642.83" width="313" height="381"/>
-  <object id="1037" name="torch" type="object" x="412.333" y="2989.55" width="42" height="130"/>
-  <object id="1038" name="torch" type="object" x="1142.64" y="2992.58" width="42" height="130"/>
-  <object id="1039" name="torch" type="object" x="2263.85" y="2350.15" width="42" height="130"/>
-  <object id="1040" name="torch" type="object" x="2972.94" y="2359.24" width="42" height="130"/>
-  <object id="1041" name="torch" type="object" x="2269.91" y="4248.64" width="42" height="130"/>
-  <object id="1042" name="torch" type="object" x="2979" y="4257.73" width="42" height="130"/>
-  <object id="1043" name="torch" type="object" x="3272.94" y="5500.15" width="42" height="130"/>
-  <object id="1044" name="torch" type="object" x="3982.03" y="5509.24" width="42" height="130"/>
-  <object id="1045" name="torch" type="object" x="4803.24" y="5515.3" width="42" height="130"/>
-  <object id="1046" name="torch" type="object" x="5512.33" y="5524.39" width="42" height="130"/>
-  <object id="1047" name="torch" type="object" x="6324.45" y="4791.06" width="42" height="130"/>
-  <object id="1048" name="torch" type="object" x="7033.55" y="4800.15" width="42" height="130"/>
-  <object id="1049" name="torch" type="object" x="4657.79" y="3681.97" width="42" height="130"/>
-  <object id="1050" name="torch" type="object" x="5536.58" y="4433.48" width="42" height="130"/>
-  <object id="1051" name="torch" type="object" x="5094.15" y="4065.3" width="42" height="130"/>
+  <object id="1033" name="Ruins/Window" type="decor" x="4852.96" y="4297.25" width="313" height="381"/>
+  <object id="1034" name="Ruins/Window" type="decor" x="2485.92" y="2797.62" width="313" height="381"/>
+  <object id="1035" name="Ruins/Window" type="decor" x="2495.02" y="940.05" width="313" height="381"/>
+  <object id="1036" name="Ruins/Window" type="decor" x="646.53" y="1618.83" width="313" height="381"/>
+  <object id="1037" name="torch" type="object" x="412.333" y="1965.55" width="42" height="130"/>
+  <object id="1038" name="torch" type="object" x="1142.64" y="1968.58" width="42" height="130"/>
+  <object id="1039" name="torch" type="object" x="2263.85" y="1326.15" width="42" height="130"/>
+  <object id="1040" name="torch" type="object" x="2972.94" y="1335.24" width="42" height="130"/>
+  <object id="1041" name="torch" type="object" x="2269.91" y="3224.64" width="42" height="130"/>
+  <object id="1042" name="torch" type="object" x="2979" y="3233.73" width="42" height="130"/>
+  <object id="1043" name="torch" type="object" x="4009.3" y="3894.33" width="42" height="130"/>
+  <object id="1044" name="torch" type="object" x="4718.39" y="3903.42" width="42" height="130"/>
+  <object id="1045" name="torch" type="object" x="2951.6" y="4777.54" width="42" height="130"/>
+  <object id="1046" name="torch" type="object" x="5512.33" y="4500.39" width="42" height="130"/>
+  <object id="1047" name="torch" type="object" x="6744.45" y="4975.06" width="42" height="130"/>
+  <object id="1048" name="torch" type="object" x="7453.55" y="4984.15" width="42" height="130"/>
+  <object id="1049" name="torch" type="object" x="4167.73" y="2601.24" width="42" height="130"/>
+  <object id="1050" name="torch" type="object" x="5367.73" y="2613.36" width="42" height="130"/>
+  <object id="1051" name="torch" type="object" x="4773.79" y="2605.78" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="77" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1092" name="temple" type="terrain" x="2811.52" y="5300.67" width="275.63" height="1398">
+  <object id="1105" name="temple" type="terrain" x="4747.33" y="5765.33">
+   <polygon points="4236.23,132.985 -1190.38,118.068 -1190.79,-1140.19 -2090.49,-1288.06 -2087.84,131.497 -2643.08,132.124 -2643.01,-1928.31 -2016.46,-1929.19 -2015.96,-1866.01 -1814.61,-1865.01 -1813.75,-1799.39 -1637.31,-1799.58 -1637.8,-1742.92 -1472.49,-1743.53 -1471.68,-1682.65 -1296,-1684.74 -1295.37,-1624.75 -1118.66,-1623.39 -1119.04,-1552.93 25.2137,-1550.74 27.533,-1025.47 1094.81,-1025.9 1095.15,-904.847 1222.62,-904.805 1222.04,-773.918 1350.65,-773.002 1350.38,-648.039 1478.2,-646.842 1479.31,-515.543 1607.3,-513.957 1606.76,-390.375 2979.99,-381.829 2964,-3324.68 4228.71,-3321.53"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="82" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="81" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1121" name="solid" type="collision" x="1966.67" y="2319.71" width="128" height="2035.85"/>
+  <object id="1123" name="vase" type="object" x="4142.65" y="4054.06" width="113" height="160">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="color" value="green"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
+   </properties>
+  </object>
+  <object id="1129" name="wind" type="object" x="4818" y="4236" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="player_layer -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="2"/>
+  </properties>
+  <object id="1118" name="warp" type="object" x="6996.24" y="5123.76" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-6-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-0-A"/>
+   </properties>
+  </object>
+  <object id="1120" name="warp" type="object" x="2137.7" y="3595.21" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-6-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-0-B"/>
    </properties>
   </object>
  </objectgroup>
@@ -60,14 +109,14 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1089" name="temple" type="terrain" x="2941.18" y="5424.34" width="275.63" height="1275.33">
+  <object id="1137" name="wood" type="terrain" x="6984.52" y="5386.33" width="275.63" height="257.333">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1093" name="temple" type="terrain" x="2623.52" y="5226.67" width="275.63" height="1466">
+  <object id="1143" name="wood" type="terrain" x="2128.52" y="3845.33" width="275.63" height="257.333">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -76,20 +125,36 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1088" name="temple" type="terrain" x="3083.52" y="5536.5" width="275.63" height="1159.33">
+  <object id="1136" name="wood" type="terrain" x="6984.85" y="5397.33" width="275.63" height="257.333">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1142" name="wood" type="terrain" x="2128.85" y="3856.33" width="275.63" height="257.333">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="55" name="terrain -3 (pillar)">
+ <objectgroup id="55" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1066" name="temple" type="terrain" x="3001.18" y="-187.667" width="281.63" height="7352.67">
+  <object id="1066" name="temple" type="terrain" x="3001.18" y="-587.667" width="281.63" height="6728.67">
    <properties>
+    <property name="attached-behavior" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1135" name="wood" type="terrain" x="6984.85" y="5406.67" width="275.63" height="257.333">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1141" name="wood" type="terrain" x="2128.85" y="3865.67" width="275.63" height="257.333">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -98,9 +163,14 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1087" name="temple" type="terrain" x="3235.18" y="5649.17" width="275.63" height="1050.33">
+  <object id="1133" name="wood" type="terrain" x="6985.18" y="5416.67" width="275.63" height="257.333">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1140" name="wood" type="terrain" x="2129.18" y="3875.67" width="275.63" height="257.333">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -109,9 +179,14 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1086" name="temple" type="terrain" x="3350.18" y="5770.17" width="275.63" height="927.666">
+  <object id="1132" name="wood" type="terrain" x="6985.18" y="5428.33" width="275.63" height="257.333">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1139" name="wood" type="terrain" x="2129.18" y="3887.33" width="275.63" height="257.333">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -120,106 +195,115 @@
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="981" name="temple" type="terrain" x="3909.86" y="4867.14">
-   <polygon points="1659.78,-2.37451 1660.23,116.985 48.5311,116.977 54.2992,-1023.42 560.143,-1023.23 563.145,-902.18 690.618,-902.138 690.039,-771.251 818.648,-770.335 818.382,-645.372 946.204,-644.175 947.309,-512.876 1075.3,-511.29 1074.76,-387.708 1200.74,-388.123 1202.31,-258.274 1329.63,-258.612 1329.5,-131.483 1460.04,-132.14 1459.16,-2.06275"/>
-  </object>
-  <object id="1006" name="temple" type="terrain" x="-123.75" y="3653.63">
+  <object id="1006" name="temple" type="terrain" x="-122.107" y="2629.63">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="2421.42,-451.533 2411.02,2087.62 66.8528,2079.52 66.4497,100.933 773.679,108.617 2179.74,-453.396"/>
+   <polygon points="2215.78,-451.533 2206.26,2087.62 61.1752,2079.52 60.8063,100.933 707.973,108.617 1994.62,-453.396"/>
   </object>
-  <object id="1068" name="temple" type="terrain" x="2596.19" y="3140" width="275.63" height="257.333">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1069" name="temple" type="terrain" x="2786.85" y="3054" width="275.63" height="344">
+  <object id="1068" name="temple" type="terrain" x="2596.19" y="2116" width="275.63" height="257.333">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1070" name="temple" type="terrain" x="2986.85" y="2936" width="275.63" height="462.667">
+  <object id="1069" name="temple" type="terrain" x="2786.85" y="2030" width="275.63" height="344">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1071" name="temple" type="terrain" x="3155.52" y="2810.67" width="275.63" height="588.667">
+  <object id="1070" name="temple" type="terrain" x="2986.85" y="1912" width="275.63" height="462.667">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1072" name="temple" type="terrain" x="3395.85" y="2697" width="275.63" height="702.667">
+  <object id="1071" name="temple" type="terrain" x="3155.52" y="1786.67" width="275.63" height="588.667">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1073" name="temple" type="terrain" x="3570.18" y="2584.67" width="275.63" height="815.667">
+  <object id="1072" name="temple" type="terrain" x="3395.85" y="1673" width="275.63" height="702.667">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1074" name="temple" type="terrain" x="2597.18" y="4684.33" width="275.63" height="257.333">
+  <object id="1073" name="temple" type="terrain" x="3570.18" y="1560.67" width="275.63" height="815.667">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1075" name="temple" type="terrain" x="2790.18" y="4593.83" width="275.63" height="347.833">
+  <object id="1074" name="temple" type="terrain" x="2595.97" y="3766.27" width="275.63" height="257.333">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1075" name="temple" type="terrain" x="2788.97" y="3675.77" width="275.63" height="349.166">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1076" name="temple" type="terrain" x="2988.97" y="3557.27" width="275.63" height="471.818">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1077" name="temple" type="terrain" x="3159.64" y="3432.27" width="275.63" height="595.152">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1078" name="temple" type="terrain" x="3398.64" y="3317.94" width="275.63" height="710.122">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1079" name="temple" type="terrain" x="3572.97" y="3207.94" width="275.63" height="820.182">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1080" name="temple" type="terrain" x="2542.18" y="5414.33" width="275.63" height="257.333">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1076" name="temple" type="terrain" x="2990.18" y="4475.33" width="275.63" height="466">
+  <object id="1081" name="temple" type="terrain" x="2736.18" y="5324.33" width="275.63" height="347.333">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1077" name="temple" type="terrain" x="3160.85" y="4350.33" width="275.63" height="590.667">
+  <object id="1082" name="temple" type="terrain" x="2938.18" y="5205.33" width="275.63" height="466.333">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1078" name="temple" type="terrain" x="3399.85" y="4236" width="275.63" height="704.667">
+  <object id="1083" name="temple" type="terrain" x="3103.18" y="5079.83" width="275.63" height="591.333">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1079" name="temple" type="terrain" x="3574.18" y="4126" width="275.63" height="816">
+  <object id="1084" name="temple" type="terrain" x="3346.18" y="4964.33" width="275.63" height="706.333">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1080" name="temple" type="terrain" x="2542.18" y="6438.33" width="275.63" height="257.333">
+  <object id="1085" name="temple" type="terrain" x="3517.52" y="4854.17" width="275.63" height="815.666">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1081" name="temple" type="terrain" x="2736.18" y="6348.33" width="275.63" height="347.333">
+  <object id="1104" name="temple" type="terrain" x="5016" y="5824">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="attached-behavior" value="z-fade"/>
    </properties>
+   <polygon points="3238.17,395.046 -1003.35,386.916 -981.58,-1025.48 562.81,-1023.23 563.145,-902.18 690.618,-902.138 690.039,-771.251 818.648,-770.335 818.382,-645.372 946.204,-644.175 947.309,-512.876 1075.3,-511.29 1074.76,-387.708 2696.13,-383.486 2698.03,-1939.22 3248.66,-1930.62"/>
   </object>
-  <object id="1082" name="temple" type="terrain" x="2938.18" y="6229.33" width="275.63" height="466.333">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1083" name="temple" type="terrain" x="3103.18" y="6103.83" width="275.63" height="591.333">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1084" name="temple" type="terrain" x="3346.18" y="5988.33" width="275.63" height="706.333">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1085" name="temple" type="terrain" x="3517.52" y="5878.17" width="275.63" height="815.666">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1095" name="temple" type="terrain" x="5730.19" y="4961" width="283.63" height="579">
+  <object id="1122" name="temple" type="terrain" x="3849.09" y="3065.33" width="1719.63" height="336">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -229,13 +313,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="951" name="temple" type="terrain" x="-134.591" y="5043.04">
+  <object id="951" name="temple" type="terrain" x="-134.591" y="4019.04">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="2573.67,-180.691 2570.97,2117.25 75.1531,2113.08 74.7,102.562 2103.31,98.923 2103.32,-36.5393 2228.23,-36.8136 2228.51,-181.749"/>
+   <polygon points="2561.55,-123.115 2570.97,2117.25 75.1531,2113.08 126.215,102.562 2109.73,100.62 2108.8,-18.6445 2220.18,-16.1462 2222.45,-121.143"/>
   </object>
-  <object id="1067" name="temple" type="terrain" x="4394.19" y="730" width="2487.63" height="2008">
+  <object id="1067" name="temple" type="terrain" x="4394.19" y="-294" width="2487.63" height="2008">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -245,7 +329,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1094" name="temple" type="terrain" x="-85.815" y="6481.33" width="4235.63" height="760">
+  <object id="1094" name="temple" type="terrain" x="-85.815" y="5457.33" width="4111.63" height="760">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -255,132 +339,134 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="980" name="temple" type="terrain" x="3899.84" y="-546">
-   <polygon points="4489.29,539.47 4501.4,7732.89 73.1197,7724.36 72.0369,6303 1475.16,6304.41 1474.76,6174.55 1604.04,6175 1604.31,6047.33 1732.58,6047.33 1731.31,5920 1860.98,5919.59 1859.44,5791.75 2112.7,5791.39 2112.59,5662.01 3780.24,5654.01 3775.99,5023.82 1983.59,5030.01 1983.05,3868.37 65.9652,3865.82 56.679,3046.2 2388.09,3048.99 2388.15,537.208"/>
+  <object id="980" name="temple" type="terrain" x="3899.84" y="-1570">
+   <polygon points="4473.29,987.47 4479.99,3863.82 65.9652,3865.82 56.679,3046.2 2388.09,3048.99 2372.15,985.208"/>
   </object>
  </objectgroup>
  <objectgroup id="78" name="decor">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1026" name="torch" type="object" x="275" y="6073" width="42" height="130"/>
-  <object id="1027" name="torch" type="object" x="1099" y="6079" width="42" height="130"/>
-  <object id="1029" name="torch" type="object" x="1094.03" y="4705.76" width="42" height="130"/>
-  <object id="1030" name="torch" type="object" x="1782.03" y="4492.58" width="42" height="130"/>
-  <object id="1031" name="torch" type="object" x="5106.39" y="2149.09" width="42" height="130"/>
-  <object id="1032" name="torch" type="object" x="5930.39" y="2151.21" width="42" height="130"/>
-  <object id="1060" name="temple-door" type="object" x="488" y="5952" width="432" height="528">
+  <object id="1026" name="torch" type="object" x="275" y="5049" width="42" height="130"/>
+  <object id="1027" name="torch" type="object" x="1099" y="5055" width="42" height="130"/>
+  <object id="1029" name="torch" type="object" x="1094.03" y="3681.76" width="42" height="130"/>
+  <object id="1030" name="torch" type="object" x="1782.03" y="3468.58" width="42" height="130"/>
+  <object id="1031" name="torch" type="object" x="5106.39" y="1125.09" width="42" height="130"/>
+  <object id="1032" name="torch" type="object" x="5930.39" y="1127.21" width="42" height="130"/>
+  <object id="1060" name="temple-door" type="object" x="488" y="4928" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="EndianForest/Zone_2_5"/>
     <property name="transition" value="exit-C"/>
    </properties>
   </object>
-  <object id="1061" name="temple-door" type="object" x="5317.7" y="1977.44" width="432" height="528">
+  <object id="1061" name="temple-door" type="object" x="5317.7" y="953.44" width="432" height="528">
    <properties>
     <property name="color" value="yellow-skull"/>
     <property name="map" value="EndianForest/Zone_2_7"/>
     <property name="transition" value="exit-D"/>
    </properties>
   </object>
+  <object id="1130" name="Generic/Vent" type="decor" x="198.045" y="3742.62" width="305" height="307"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="934" name="life-stone" type="object" x="1668.09" y="6063.77" width="146" height="423"/>
-  <object id="999" name="wind" type="object" x="166.547" y="4483.69" width="380" height="480">
+  <object id="934" name="life-stone" type="object" x="1668.09" y="5039.77" width="146" height="423"/>
+  <object id="999" name="wind" type="object" x="166.547" y="3459.69" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1000" name="wind" type="object" x="173.757" y="4001.19" width="380" height="480">
+  <object id="1000" name="wind" type="object" x="173.757" y="2977.19" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1001" name="wind" type="object" x="172.657" y="3529.75" width="380" height="480">
+  <object id="1001" name="wind" type="object" x="172.657" y="2505.75" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1014" name="chest" type="object" x="7372" y="4976" width="128" height="128">
+  <object id="1014" name="chest" type="object" x="5288" y="2936" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="3,1,2,9,4"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}&gt;&gt;1&lt;&lt;1"/>
-    <property name="tokens" value="1,1,&lt;&lt;,&gt;&gt;"/>
-    <property name="tutorial" value=""/>
    </properties>
   </object>
-  <object id="1020" name="iou" type="object" x="4880.74" y="4268.62" width="87" height="87"/>
-  <object id="1021" name="iou" type="object" x="2683.77" y="4592.86" width="87" height="87"/>
-  <object id="1023" name="trigger" type="object" x="2307" y="5217.47" width="128" height="1257.06">
+  <object id="1020" name="iou" type="object" x="5000.74" y="2980.62" width="87" height="87"/>
+  <object id="1021" name="iou" type="object" x="2683.77" y="3568.86" width="87" height="87"/>
+  <object id="1023" name="trigger" type="object" x="2307" y="4120.74" width="128" height="1329.79">
    <properties>
     <property name="save-state" type="bool" value="true"/>
     <property name="send-event" value="cough-sfx"/>
    </properties>
   </object>
-  <object id="1024" name="sound" type="object" x="2309" y="6271.47" width="128" height="128">
+  <object id="1024" name="sound" type="object" x="2309" y="5247.47" width="128" height="128">
    <properties>
     <property name="listen-event" value="cough-sfx"/>
     <property name="resource" value="Platformer/Entities/Orc/OrcLaughCoughing1"/>
    </properties>
   </object>
-  <object id="1025" name="Generic/Vent" type="decor" x="198.045" y="4766.62" width="305" height="307"/>
-  <object id="1052" name="vase" type="object" x="3739.5" y="6320" width="113" height="160">
+  <object id="1052" name="vase" type="object" x="3739.5" y="5296" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1053" name="vase" type="object" x="239.5" y="6324" width="113" height="160">
+  <object id="1053" name="vase" type="object" x="239.5" y="5300" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1054" name="vase" type="object" x="6507.5" y="4952" width="113" height="160">
+  <object id="1054" name="vase" type="object" x="4203.5" y="2904" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1055" name="vase" type="object" x="6715.5" y="4952" width="113" height="160">
+  <object id="1055" name="vase" type="object" x="4711.5" y="2908" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1056" name="vase" type="object" x="4167.5" y="3680" width="113" height="160">
-   <properties>
-    <property name="color" value="green"/>
-   </properties>
-  </object>
-  <object id="1057" name="vase" type="object" x="1051.5" y="4980" width="113" height="160">
+  <object id="1057" name="vase" type="object" x="1051.5" y="3956" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1058" name="vase" type="object" x="1235.5" y="4980" width="113" height="160">
+  <object id="1058" name="vase" type="object" x="1235.5" y="3956" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1059" name="vase" type="object" x="6003.5" y="2348" width="113" height="160">
+  <object id="1059" name="vase" type="object" x="6003.5" y="1324" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1062" name="life-stone" type="object" x="4821" y="2080.5" width="146" height="423"/>
+  <object id="1062" name="life-stone" type="object" x="4821" y="1056.5" width="146" height="423"/>
+  <object id="1144" name="chest" type="object" x="7902" y="3758" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ef-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="946" name="goblin-grunt-boar" type="entity" x="5029.21" y="5620.22" width="128" height="128">
+  <object id="946" name="goblin-grunt-boar" type="entity" x="5029.21" y="4596.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -389,22 +475,22 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="947" name="orc-warrior" type="entity" x="5024.73" y="5295.78" width="128" height="128">
+  <object id="947" name="orc-warrior" type="entity" x="5024.73" y="4271.78" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
-  <object id="1017" name="goblin-grunt-boar" type="entity" x="4613.33" y="2372" width="128" height="128">
+  <object id="1017" name="goblin-grunt-boar" type="entity" x="4613.33" y="1348" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-E"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="1096" name="lycan" type="entity" x="1502" y="5014" width="128" height="128">
+  <object id="1096" name="lycan" type="entity" x="1502" y="3990" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="lycan-hexus,friendly,pick-pocket"/>
+    <property name="attached-behavior" value="lycan,lycan-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
@@ -415,19 +501,35 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1081.29" y="6346.5" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="1081.29" y="5322.5" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="1063" name="spawn" type="object" x="640.364" y="6353" width="128" height="128">
+  <object id="1063" name="spawn" type="object" x="640.364" y="5329" width="128" height="128">
    <properties>
     <property name="transition" value="entrance-C"/>
    </properties>
   </object>
-  <object id="1064" name="spawn" type="object" x="5470.06" y="2378.44" width="128" height="128">
+  <object id="1064" name="spawn" type="object" x="5470.06" y="1354.44" width="128" height="128">
    <properties>
     <property name="transition" value="entrance-D"/>
+   </properties>
+  </object>
+  <object id="1117" name="warp" type="object" x="6994.18" y="5184.73" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-0-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-6-A"/>
+   </properties>
+  </object>
+  <object id="1119" name="warp" type="object" x="2135.7" y="3641.21" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-0-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-6-B"/>
    </properties>
   </object>
  </objectgroup>

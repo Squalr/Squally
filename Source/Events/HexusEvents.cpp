@@ -16,6 +16,7 @@ const std::string HexusEvents::EventBeforeRequestStateUpdate = "EVENT_HEXUS_BEFO
 const std::string HexusEvents::EventRequestStateUpdate = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
 const std::string HexusEvents::EventBeforeStateUpdate = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
 const std::string HexusEvents::EventOnStateUpdate = "EVENT_HEXUS_ON_UPDATE_STATE";
+const std::string HexusEvents::EventAfterStateUpdate = "EVENT_HEXUS_AFTER_UPDATE_STATE";
 
 void HexusEvents::TriggerOpenHexus(HexusOpenArgs args)
 {
@@ -84,6 +85,14 @@ void HexusEvents::TriggerOnStateUpdate(GameState* gameState)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HexusEvents::EventOnStateUpdate,
+		gameState
+	);
+}
+
+void HexusEvents::TriggerAfterStateUpdate(GameState* gameState)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HexusEvents::EventAfterStateUpdate,
 		gameState
 	);
 }

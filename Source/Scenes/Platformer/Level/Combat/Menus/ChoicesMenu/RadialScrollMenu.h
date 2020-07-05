@@ -14,11 +14,11 @@ class Sound;
 class RadialScrollMenu : public SmartNode
 {
 public:
-	static RadialScrollMenu* create(float radius);
+	static RadialScrollMenu* create(float radius, float angleDelta = float(M_PI) / 6.0f);
 
 	int getIndex();
 	void clearItems();
-	RadialEntry* addEntry(LocalizedString* labelStr, LocalizedString* lowerLabelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback);
+	RadialEntry* addEntry(LocalizedString* labelStr, std::vector<LocalizedString*> lowerLabelStrs, std::string iconResource, std::string backgroundResource, std::function<void()> callback);
 	void toggleAll(bool disableInteraction = true, bool fadeOpacity = false, bool hideText = true);
 	void enableAll();
 	void focus();
@@ -29,7 +29,7 @@ public:
 	void setBackCallback(std::function<void()> backCallback);
 
 protected:
-	RadialScrollMenu(float radius);
+	RadialScrollMenu(float radius, float angleDelta = float(M_PI) / 6.0f);
 	virtual ~RadialScrollMenu();
 	
 	void initializePositions() override;
@@ -37,6 +37,7 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void positionButtons();
 	void goBack();
 
@@ -46,6 +47,7 @@ private:
 	Sound* indexChangeSound;
 	Sound* errorSound;
 	float radius;
+	float angleDelta;
 
 	int currentIndex;
 	bool focused;

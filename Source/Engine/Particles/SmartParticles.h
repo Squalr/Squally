@@ -51,6 +51,7 @@ private:
 
 	void optimizationHideOffscreenParticles();
 
+	bool canUpdate;
 	CullInfo cullInfo;
 
 	cocos2d::Rect boundsRect;

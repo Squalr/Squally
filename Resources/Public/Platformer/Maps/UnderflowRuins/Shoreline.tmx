@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="262.819" width="14981.3" height="318">
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4381.56" y="432.516" width="14981.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -29,7 +29,7 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-490.848" width="14229.3" height="1478">
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-490.848" width="14229.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -41,7 +41,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="527.212" width="14469.3" height="1512">
+  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="527.212" width="14469.3" height="1519">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -53,7 +53,7 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="999.091" width="14709.3" height="1076">
+  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="999.091" width="14709.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -122,6 +122,7 @@
  <objectgroup id="85" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="913" name="warp" type="object" x="1617.12" y="1643.06" width="256" height="256">
@@ -152,6 +153,7 @@
  <objectgroup id="84" name="player_layer -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="905" name="spawn-wood-door" type="object" x="4271.23" y="1770.15" width="128" height="128">
@@ -394,13 +396,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

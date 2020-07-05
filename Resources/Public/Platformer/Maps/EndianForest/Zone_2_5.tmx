@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="923">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="924">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
@@ -127,11 +127,13 @@
   <object id="902" name="vase" type="object" x="1998.05" y="662.424" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="912" name="temple-door" type="object" x="1975.27" y="1384.74" width="432" height="528">
    <properties>
     <property name="color" value="yellow-up"/>
+    <property name="listen-event" value="shaman-death"/>
     <property name="map" value="EndianForest/Zone_2_6"/>
     <property name="transition" value="entrance-C"/>
    </properties>
@@ -157,17 +159,20 @@
   <object id="903" name="vase" type="object" x="976.833" y="653.333" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="909" name="breakable-cage" type="object" x="1754.73" y="1795.51" width="196" height="112"/>
   <object id="910" name="vase" type="object" x="2595.02" y="1750.3" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
   <object id="911" name="vase" type="object" x="361.682" y="1747.27" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
  </objectgroup>
@@ -176,18 +181,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="squally" type="entity" x="1018.46" y="1778.75" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
   <object id="914" name="goblin-shaman" type="entity" x="1481.58" y="1783.39" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value="reflect-tutorial"/>
+    <property name="battle-behavior" value="curse-of-tongues-tutorial"/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>
+    <property name="send-event" value="shaman-death"/>
    </properties>
   </object>
   <object id="915" name="goblin-shaman" type="entity" x="1488" y="1528" width="128" height="128">
@@ -225,6 +226,11 @@
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="923" name="squally" type="entity" x="1018.46" y="1778.75" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -274,13 +280,13 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

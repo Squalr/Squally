@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="876">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="2"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -17,8 +17,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="808" name="ruins-gray-dark" type="texture" x="-286" y="-290" width="6280" height="2776"/>
-  <object id="839" name="Generic/Rope1" type="decor" x="457.288" y="-366.939" width="11" height="1010"/>
-  <object id="840" name="portal" type="object" x="344.606" y="551.273" width="256" height="256">
+  <object id="839" name="Generic/Rope1" type="decor" x="458.621" y="-457.606" width="11" height="1010"/>
+  <object id="840" name="portal" type="object" x="345.939" y="460.606" width="256" height="256">
    <properties>
     <property name="direction" value="up"/>
     <property name="map" value="UnderflowRuins/Town_Well"/>
@@ -62,6 +62,7 @@
   </properties>
   <object id="826" name="ruins-gray-thick" type="terrain" x="3216.37" y="1409.82" width="2593.69" height="1221.09"/>
   <object id="875" name="ruins-gray-thick" type="terrain" x="3871.15" y="-254.545" width="509.69" height="1221.09"/>
+  <object id="876" name="ruins-gray-thick" type="terrain" x="-128.845" y="716.97" width="1646.3" height="137.817"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -81,6 +82,12 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="877" name="lever" type="object" x="1046.16" y="516.166" width="177" height="205">
+   <properties>
+    <property name="send-event" value="power-toggle"/>
+    <property name="time" type="float" value="8"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -94,7 +101,7 @@
   </properties>
   <object id="829" name="rupert" type="entity" x="4468.15" y="1276.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="rupert-hexus,friendly,pick-pocket,pacing"/>
+    <property name="attached-behavior" value="rupert,rupert-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -105,12 +112,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="630.679" y="678.627" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="632.012" y="587.96" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="411.255" y="678.988" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="412.588" y="588.321" width="128" height="128">
    <properties>
     <property name="map-banner" value="lions-cistern"/>
     <property name="transition" value="well"/>
@@ -137,16 +144,16 @@
     <property name="disable-splash" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="896.744"/>
+  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="1099.06"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="823" name="ruins-gray" type="terrain" x="1795.94" y="-71.818" width="1142.3" height="2190.06"/>
-  <object id="825" name="ruins-gray" type="terrain" x="0.122727" y="-91.5755" width="292.845" height="901.333"/>
+  <object id="825" name="ruins-gray" type="terrain" x="-67.8773" y="-183.576" width="292.845" height="901.333"/>
   <object id="827" name="ruins-gray-thick" type="terrain" x="-63.2106" y="2393.94" width="3275.15" height="234.06"/>
-  <object id="838" name="ruins-gray" type="terrain" x="0.547076" y="807.696" width="1520.12" height="1583.76"/>
+  <object id="838" name="ruins-gray" type="terrain" x="-60.059" y="884.605" width="1580.73" height="1506.85"/>
  </objectgroup>
  <objectgroup id="115" name="objects fg">
   <properties>
@@ -220,12 +227,6 @@
     <property name="disable-save" type="bool" value="true"/>
     <property name="listen-event" value="power-toggle"/>
     <property name="vertical" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="862" name="lever" type="object" x="1044.83" y="606.833" width="177" height="205">
-   <properties>
-    <property name="send-event" value="power-toggle"/>
-    <property name="time" type="float" value="8"/>
    </properties>
   </object>
   <object id="863" name="electricity-beam" type="object" x="2826.07" y="1339.12" width="511" height="394">

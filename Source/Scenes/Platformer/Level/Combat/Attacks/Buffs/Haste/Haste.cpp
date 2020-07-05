@@ -76,6 +76,7 @@ void Haste::onEnter()
 {
 	super::onEnter();
 
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
 
 	this->spellAura->runAction(Sequence::create(
@@ -127,13 +128,31 @@ void Haste::registerHackables()
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						"movss [esi], xmm3\n\n" + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create())
+						, // x64
+						"movss [rsi], xmm3\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create())
+					),
+					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
-						"mov dword ptr [esi], 0.0f"
+						"mov dword ptr [esi], 0.0f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon::create())
 						, // x64
-						"mov dword ptr [rsi], 0.0f"
+						"mov dword ptr [rsi], 0.0f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon::create())
 					)
-				}
+				},
+				true
 			)
 		},
 	};

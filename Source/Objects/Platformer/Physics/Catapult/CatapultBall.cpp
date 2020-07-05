@@ -75,13 +75,6 @@ void CatapultBall::update(float dt)
 	{
 		this->ballCollision->setPosition(this->ballCollision->getPosition() + this->velocity * dt);
 	}
-
-	// TODO: God damn it, gravity seems too slow. This is a more fundamental issue that needs patching elsewhere.
-	// Also we can't do this when colliding because we'll just slide through the ground with ease
-	if (this->ballCollision->getCurrentCollisions().empty())
-	{
-		this->ballCollision->setPositionY(this->ballCollision->getPosition().y - 420.0f * dt);
-	}
 }
 
 Vec2 CatapultBall::getButtonOffset()

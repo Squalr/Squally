@@ -27,11 +27,12 @@ public:
 	cocos2d::Node* getFloatNode();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
-	cocos2d::Size getMovementSize();
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
 	cocos2d::Vec2 getEntityTopPoint();
 	cocos2d::Vec2 getEntityBottomPoint();
+	cocos2d::Vec2 getEntityTopPointRelative();
+	cocos2d::Vec2 getEntityBottomPointRelative();
 	float getHoverHeight();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;
@@ -86,7 +87,6 @@ private:
 	float entityScale;
 	cocos2d::Vec2 entityCollisionOffset;
 	cocos2d::Size entitySize;
-	cocos2d::Size movementSize;
 	float hoverHeight;
 	std::string entityName;
 	std::string animationResource;

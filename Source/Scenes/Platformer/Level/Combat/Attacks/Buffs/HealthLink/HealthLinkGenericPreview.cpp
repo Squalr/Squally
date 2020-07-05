@@ -20,9 +20,6 @@ HealthLinkGenericPreview* HealthLinkGenericPreview::create()
 
 HealthLinkGenericPreview::HealthLinkGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 HealthLinkGenericPreview::~HealthLinkGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* HealthLinkGenericPreview::clone()
 void HealthLinkGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void HealthLinkGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

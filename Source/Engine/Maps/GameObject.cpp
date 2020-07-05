@@ -361,6 +361,16 @@ bool GameObject::isMapObject()
 	return !this->uniqueIdentifier.empty();
 }
 
+void GameObject::saveObjectState(std::string key, cocos2d::Value value)
+{
+	if (this->isMapObject())
+	{
+		this->saveProperties[key] = value;
+
+		SaveManager::SaveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
+	}
+}
+
 void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
 	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
@@ -370,14 +380,25 @@ void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, 
 	SaveManager::SaveProfileData(uniqueIdentifier, Value(saveData));
 }
 
-void GameObject::saveObjectState(std::string key, cocos2d::Value value)
+void GameObject::saveTemporalObjectState(std::string key, cocos2d::Value value)
 {
+	// TODO: Implement temporal state, passing temporal flags (map temporal, time temporal, zone temporal, etc)
 	if (this->isMapObject())
 	{
 		this->saveProperties[key] = value;
 
 		SaveManager::SaveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
 	}
+}
+
+void GameObject::saveTemporalObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
+{
+	// TODO: Implement temporal state, passing temporal flags (map temporal, time temporal, zone temporal, etc)
+	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
+
+	saveData[key] = value;
+
+	SaveManager::SaveProfileData(uniqueIdentifier, Value(saveData));
 }
 
 const Value& GameObject::loadObjectStateOrDefault(std::string key, const Value& defaultValue)
@@ -560,8 +581,9 @@ void GameObject::onDespawn()
 	{
 		this->detachBehavior(behavior);
 	}
-
+	
 	this->removeAllListeners();
+	this->unscheduleUpdate();
 	this->setVisible(false);
 	this->despawned = true;
 }

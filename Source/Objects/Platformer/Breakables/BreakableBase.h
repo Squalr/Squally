@@ -3,6 +3,8 @@
 #include "Engine/Hackables/HackableObject.h"
 
 class CollisionObject;
+class PlatformerObjectDeserializer;
+class SpawnPool;
 
 class BreakableBase : public HackableObject
 {
@@ -15,12 +17,16 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	virtual void onBreak() = 0;
+	virtual void onBreak();
+	SpawnPool* getSpawnPool();
+
+	PlatformerObjectDeserializer* objectDeserializer;
 
 private:
 	typedef HackableObject super;
 
 	CollisionObject* breakableCollision;
 
+	SpawnPool* spawnPool;
 	bool hasBroke;
 };

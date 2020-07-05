@@ -118,6 +118,7 @@ public:
 			DefendSelect,
 			ChooseAttackTarget,
 			ChooseBuffTarget,
+			ChooseResurrectionTarget,
 			ChooseAnyTarget,
 		};
 		

@@ -26,6 +26,7 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 	this->particles = ParticleSystemQuad::create(particleResource);
 	this->debugDrawNode = DrawNode::create();
 	this->cullInfo = cullInfo;
+	this->canUpdate = false;
 
 	this->boundsRect = Rect(Vec2::ZERO, this->cullInfo.size);
 
@@ -88,9 +89,11 @@ void SmartParticles::start()
 		return;
 	}
 	
+	this->canUpdate = true;
+
 	this->stopAllActions();
 	this->particles->start();
-	this->particles->toggleCanUpdate(true);
+	this->particles->toggleCanUpdate(this->canUpdate);
 	this->particles->resumeEmissions();
 	this->particles->setVisible(true);
 }
@@ -117,7 +120,8 @@ void SmartParticles::stop(float disableUpdateAfter)
 
 	if (disableUpdateAfter <= 0.0f)
 	{
-		this->particles->toggleCanUpdate(false);
+		this->canUpdate = false;
+		this->particles->toggleCanUpdate(this->canUpdate);
 		this->particles->setVisible(false);
 	}
 	else
@@ -126,7 +130,8 @@ void SmartParticles::stop(float disableUpdateAfter)
 			DelayTime::create(disableUpdateAfter),
 			CallFunc::create([=]()
 			{
-				this->particles->toggleCanUpdate(false);
+				this->canUpdate = false;
+				this->particles->toggleCanUpdate(this->canUpdate);
 				this->particles->setVisible(false);
 			}),
 			nullptr
@@ -208,10 +213,12 @@ void SmartParticles::optimizationHideOffscreenParticles()
 
 	if (cameraRect.intersectsRect(thisRect))
 	{
+		this->particles->toggleCanUpdate(this->canUpdate);
 		this->cullContainer->setVisible(true);
 	}
 	else
 	{
+		this->particles->toggleCanUpdate(false);
 		this->cullContainer->setVisible(false);
 	}
 }

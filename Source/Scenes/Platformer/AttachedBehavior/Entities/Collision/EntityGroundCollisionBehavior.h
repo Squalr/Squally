@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class CollisionObject;
+class EntityHoverCollisionBehavior;
 class PlatformerEntity;
 
 class EntityGroundCollisionBehavior : public AttachedBehavior
@@ -10,6 +11,7 @@ class EntityGroundCollisionBehavior : public AttachedBehavior
 public:
 	static EntityGroundCollisionBehavior* create(GameObject* owner);
 
+	CollisionObject* getGroundCollision();
 	void onCollideWithGround();
 	bool isOnGround();
 	bool hasLeftCornerCollision();
@@ -17,11 +19,14 @@ public:
 	bool isStandingOn(CollisionObject* collisonObject);
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
-	CollisionObject* leftCornerCollision;
-	CollisionObject* rightCornerCollision;
-	CollisionObject* groundCollision;
+	cocos2d::Vec2 defaultPosition;
 
 	static const std::string MapKey;
+	static const float GroundCollisionPadding;
+	static const float GroundCollisionOffset;
+	static const float GroundCollisionHeight;
+	static const float GroundCollisionRadius;
+	static const float CornerCollisionWidth;
 
 protected:
 	EntityGroundCollisionBehavior(GameObject* owner);
@@ -36,13 +41,11 @@ private:
 	void buildGroundCollisionDetector();
 	void buildCornerCollisionDetectors();
 
+	CollisionObject* leftCornerCollision;
+	CollisionObject* rightCornerCollision;
+	CollisionObject* groundCollision;
 	PlatformerEntity* entity;
+	EntityHoverCollisionBehavior* hoverCollisionBehavior;
 
 	float detectorWidth;
-
-	static const float GroundCollisionPadding;
-	static const float GroundCollisionOffset;
-	static const float GroundCollisionHeight;
-	static const float GroundCollisionRadius;
-	static const float CornerCollisionWidth;
 };

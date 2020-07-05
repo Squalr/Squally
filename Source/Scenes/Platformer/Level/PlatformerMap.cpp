@@ -71,12 +71,6 @@ PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transi
 
 PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
-	if (!PlatformerMap::init())
-	{
-		return;
-		// throw std::uncaught_exceptions();
-	}
-
 	this->transition = transition;
 	this->gameHud = GameHud::create();
 	this->confirmationHud = ConfirmationHud::create();
@@ -87,7 +81,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->cardHelpMenu = nullptr; // Lazy initialized
 	this->itemInfoMenu = nullptr; // Lazy initialized
 	this->collectablesMenu = CollectablesMenu::create();
-	this->cardsMenu = CardsMenu::create();
+	this->cardsMenu = nullptr; // Lazy initialized
 	this->partyMenu = PartyMenu::create();
 	this->alchemyMenu = AlchemyMenu::create();
 	this->blacksmithingMenu = BlacksmithingMenu::create();
@@ -126,10 +120,9 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->menuHud->addChild(this->blacksmithingMenu);
 	this->menuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
-	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 	this->topMenuHud->addChild(this->partyMenu);
-	this->topMenuHud->addChild(this->confirmationHud);
+	this->confirmationMenuHud->addChild(this->confirmationHud);
 }
 
 PlatformerMap::~PlatformerMap()
@@ -141,7 +134,6 @@ void PlatformerMap::onEnter()
 	super::onEnter();
 
 	this->collectablesMenu->setVisible(false);
-	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
 	this->alchemyMenu->setVisible(false);
@@ -411,6 +403,8 @@ void PlatformerMap::initializeListeners()
 	
 	this->ingameMenu->setCardsClickCallback([=]()
 	{
+		this->buildCardsMenu();
+
 		this->ingameMenu->setVisible(false);
 		this->cardsMenu->setVisible(true);
 		this->cardsMenu->open();
@@ -429,13 +423,6 @@ void PlatformerMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(true);
 		this->collectablesMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
-	});
-
-	this->cardsMenu->setReturnClickCallback([=]()
-	{
-		this->ingameMenu->setVisible(true);
-		this->cardsMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
 
@@ -551,6 +538,27 @@ void PlatformerMap::buildHexus()
 		args->handle();
 
 		this->openPauseMenu(this->hexus);
+	});
+}
+
+void PlatformerMap::buildCardsMenu()
+{
+	if (this->cardsMenu != nullptr)
+	{
+		return;
+	}
+
+	this->cardsMenu = CardsMenu::create();
+	
+	this->cardsMenu->setVisible(false);
+
+	this->topMenuHud->addChild(this->cardsMenu);
+
+	this->cardsMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->cardsMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
 	});
 }
 

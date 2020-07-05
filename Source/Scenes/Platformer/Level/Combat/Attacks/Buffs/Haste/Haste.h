@@ -16,8 +16,7 @@ class Haste : public Buff
 {
 public:
 	static Haste* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string HasteIdentifier;
 
 protected:

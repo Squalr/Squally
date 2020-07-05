@@ -25,7 +25,7 @@ EFPuzzleGBehavior* EFPuzzleGBehavior::create(GameObject* owner)
 	return instance;
 }
 
-EFPuzzleGBehavior::EFPuzzleGBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+EFPuzzleGBehavior::EFPuzzleGBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_WeAcceptYourChallenge::create())
 {
 }
 

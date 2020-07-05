@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="760">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="761">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -61,12 +61,12 @@
   </properties>
   <object id="723" name="water" type="object" x="-460.065" y="2100" width="4864.07" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="724" name="water" type="object" x="-1262.91" y="1990.51" width="5722.02" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -84,7 +84,7 @@
   </properties>
   <object id="722" name="water" type="object" x="-1110.23" y="2073.33" width="5482.35" height="458.11">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -101,7 +101,7 @@
   </properties>
   <object id="721" name="water" type="object" x="-1067.37" y="2100" width="5396.67" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -124,7 +124,7 @@
   </properties>
   <object id="741" name="water" type="object" x="-1016.64" y="2146.93" width="5305.42" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -180,7 +180,7 @@
   </properties>
   <object id="735" name="water" type="object" x="-1004.7" y="2256.93" width="5157" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -203,7 +203,7 @@
   </properties>
   <object id="739" name="water" type="object" x="-988.689" y="2270.74" width="5036.27" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -220,7 +220,7 @@
   </properties>
   <object id="737" name="water" type="object" x="-973.3" y="2283.66" width="4913.43" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -237,7 +237,7 @@
   </properties>
   <object id="736" name="water" type="object" x="-955.2" y="2302.28" width="4822.75" height="405.346">
    <properties>
-    <property name="disable-physics" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -271,6 +271,7 @@
     <property name="transition" value="captain"/>
    </properties>
   </object>
+  <object id="760" name="solid" type="collision" x="-318.482" y="2055.51" width="4822.75" height="147.931"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -343,13 +344,13 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

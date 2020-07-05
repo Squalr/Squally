@@ -41,6 +41,8 @@ protected:
 private:
 	typedef SmartNode super;
 
+	cocos2d::Size originalBackPlateSize;
+
 	ClickableNode* backPlate;
 	cocos2d::Sprite* selectedSprite;
 	LocalizedLabel* label;

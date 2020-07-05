@@ -16,8 +16,7 @@ class Fortitude : public Buff
 {
 public:
 	static Fortitude* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string FortitudeIdentifier;
 	static const std::string HackIdentifierFortitude;
 

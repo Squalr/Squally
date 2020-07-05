@@ -12,6 +12,7 @@ protected:
 	virtual ~StatePlayerTurnStart();
 	
 	void onBeforeStateEnter(GameState* gameState) override;
+	void onAfterStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
 	void onStateExit(GameState* gameState) override;

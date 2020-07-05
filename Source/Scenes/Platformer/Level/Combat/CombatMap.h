@@ -13,7 +13,6 @@ class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
 class HackerModeWarningHud;
-class InventoryMenu;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
@@ -64,11 +63,12 @@ private:
 	typedef MapBase super;
 
 	void spawnEntities();
+	void buildCardsMenu();
+	void buildCollectablesMenu();
 
 	CollectablesMenu* collectablesMenu;
 	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
-	InventoryMenu* inventoryMenu;
 
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;

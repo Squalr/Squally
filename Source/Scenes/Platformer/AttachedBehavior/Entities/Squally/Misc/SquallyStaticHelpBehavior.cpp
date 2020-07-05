@@ -6,7 +6,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -60,7 +60,7 @@ void SquallyStaticHelpBehavior::onLoad()
 	SquallyStaticHelpBehavior::EqPtr = (int*)&this->squally->getStateVariables()[StateKeys::Eq];
 	SquallyStaticHelpBehavior::ExpPtr = (int*)&this->squally->getStateVariables()[StateKeys::EqExperience];
 
-	this->squally->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
+	this->squally->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
 		SquallyStaticHelpBehavior::PositionXPtr = &collisionBehavior->movementCollision->getPositionPtr()->x;
 		SquallyStaticHelpBehavior::PositionYPtr = &collisionBehavior->movementCollision->getPositionPtr()->y;

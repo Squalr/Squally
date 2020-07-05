@@ -21,6 +21,7 @@ using namespace cocos2d;
 
 const std::string ScriptList::ScriptNameKey = "SCRIPT_NAME";
 const std::string ScriptList::ScriptKey = "SCRIPT";
+const std::string ScriptList::SaveKeyLastSelectedScriptIndexPrefix = "SAVE_KEY_SCRIPT_INDEX_";
 const int ScriptList::MaxScripts = 9;
 
 ScriptList* ScriptList::create(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect)
@@ -44,6 +45,7 @@ ScriptList::ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void
 	this->confirmationMenuRef = confirmationMenuRef;
 	this->hackableCode = nullptr;
 	this->activeScript = nullptr;
+	this->readOnlyCount = 0;
 
 	this->createNewScriptLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->createNewScriptSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -110,7 +112,7 @@ ScriptEntry* ScriptList::addNewScript()
 	newScriptName->setStringReplacementVariables(
 	{
 		Strings::Menus_Hacking_CodeEditor_MyNewScript::create(),
-		ConstantString::create(std::to_string(this->scripts.size()))
+		ConstantString::create(std::to_string(int(this->scripts.size()) - this->readOnlyCount + 1))
 	});
 
 	std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
@@ -212,7 +214,10 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->scriptsNode->removeAllChildren();
 	this->scripts.clear();
 
-	for (auto readOnlyScript : hackableCode->getReadOnlyScripts())
+	std::vector<HackableCode::ReadOnlyScript> readonlyScripts = hackableCode->getReadOnlyScripts();
+	this->readOnlyCount = int(readonlyScripts.size());
+
+	for (auto readOnlyScript : readonlyScripts)
 	{
 		ScriptEntry* scriptEntry = ScriptEntry::create(
 			readOnlyScript.title == nullptr ? nullptr : readOnlyScript.title->clone(),
@@ -249,12 +254,25 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
-	if (savedScripts.empty())
+	// Adding an initial fork of the default script is only useful when it is the ONLY readonly script.
+	if (savedScripts.empty() && readonlyScripts.size() <= 1)
 	{
 		this->addNewScript();
 	}
 
 	this->initializePositions();
+
+	// Try focusing the saved last selected script
+	if (SaveManager::hasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
+	{
+		int activeScriptIndex = SaveManager::getProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
+
+		if (activeScriptIndex >= 0 && activeScriptIndex < int(this->scripts.size()))
+		{
+			this->setActiveScript(this->scripts[activeScriptIndex]);
+			return;
+		}
+	}
 
 	// Focus the first non-readonly script
 	for (auto script : this->scripts)
@@ -265,7 +283,14 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		}
 
 		this->setActiveScript(script);
-		break;
+		return;
+	}
+
+	// If none found, focus the last script
+	for (auto it = this->scripts.rbegin(); it != this->scripts.rend(); it++)
+	{
+		this->setActiveScript(*it);
+		return;
 	}
 }
 
@@ -315,12 +340,20 @@ void ScriptList::onScriptEntryDeleteClick(ScriptEntry* scriptEntry)
 
 void ScriptList::setActiveScript(ScriptEntry* activeScript)
 {
+	int activeScriptIndex = 0;
 	this->activeScript = activeScript;
 
-	for (auto script : this->scripts)
+	for (int index = 0; index < int(this->scripts.size()); index++)
 	{
-		script->toggleSelected(false);
+		if (this->scripts[index] == this->activeScript)
+		{
+			activeScriptIndex = index;
+		}
+
+		this->scripts[index]->toggleSelected(false);
 	}
+
+	SaveManager::SoftSaveProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(activeScriptIndex));
 
 	this->activeScript->toggleSelected(true);
 	this->onScriptSelect(this->activeScript);

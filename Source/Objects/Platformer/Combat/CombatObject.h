@@ -3,13 +3,20 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Events/CombatEvents.h"
 
+namespace cocos2d
+{
+	class Value;
+
+	typedef std::map<std::string, Value> ValueMap;
+}
+
 class PlatformerEntity;
 
 class CombatObject : public HackableObject
 {
 public:
 protected:
-	CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline);
+	CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline, float duration = -1.0f);
 	virtual ~CombatObject();
 
 	void onEnter() override;
@@ -32,9 +39,15 @@ protected:
 	bool onTimeline;
 	bool timelinePaused;
 	bool timelinePausedCinematic;
+	static cocos2d::ValueMap HackStateStorage;
 
 private:
 	typedef HackableObject super;
+
+	void updateDuration(float dt);
+
+	float duration;
+	float elapsedDuration;
 	
 	void updateObjectCanUpdate();
 };

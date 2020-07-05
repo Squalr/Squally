@@ -66,6 +66,7 @@ void BrokenBlade::onEnter()
 {
 	super::onEnter();
 
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
 
 	CombatEvents::TriggerHackableCombatCue();

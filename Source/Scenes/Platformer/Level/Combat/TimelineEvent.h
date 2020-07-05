@@ -15,6 +15,7 @@ public:
 	static TimelineEvent* create(PlatformerEntity* owner, cocos2d::Sprite* emblem, float offsetTime, std::function<void()> timelineEvent);
 
 	PlatformerEntity* getOwner();
+	void deactivate();
 	void setPositions(float timelineWidth);
 	void offsetByTimelineTime(float initialTime);
 	float getTime();
@@ -37,4 +38,5 @@ private:
 	cocos2d::Sprite* emblem;
 	float time;
 	std::function<void()> timelineEvent;
+	bool isDeactivated;
 };

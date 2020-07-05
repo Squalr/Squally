@@ -76,9 +76,17 @@ public:
 	void ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	const std::vector<cocos2d::Vec2>& getPoints();
+	void setPoints(std::vector<cocos2d::Vec2> points);
 	Shape getShape();
 	CollisionType getCollisionType();
+	std::vector<CollisionType> getCollisionTypes();
+	bool hasCollisionType(CollisionType collisionType);
+	bool hasCollisionWith(CollisionObject* object);
+	bool isCollidingWithSingleGroup();
 	void setGravityEnabled(bool isEnabled);
+	void setGravityDisabledOverride(bool isDisabled);
+	bool getGravityEnabled();
+	bool getGravityDisabledOverride();
 	cocos2d::Vec2 getVelocity();
 	cocos2d::Vec2 getAcceleration();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -92,6 +100,7 @@ public:
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
 	const std::set<CollisionObject*>& getCurrentCollisions();
+	bool hasCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
 	bool wasCollidingWith(CollisionObject* collisionObject);
 	bool isCollidingWithType(int collisionType);
@@ -139,8 +148,9 @@ private:
 	cocos2d::Vec3 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec3 position);
 	Shape determineShape();
+	void computeDepth(bool force = false);
 	void computeWorldCoords(bool force = false);
-	void propagateRotation();
+	void propagateRotation(bool force = false);
 
 	void drawDebugShapes();
 	void drawDebugConnectors();
@@ -161,6 +171,7 @@ private:
 	float collisionDepth;
 	bool physicsEnabled;
 	bool gravityEnabled;
+	bool gravityDisabledOverride;
 	unsigned int universeId;
 	
 	// Shape
@@ -172,6 +183,7 @@ private:
 	cocos2d::Rect boundsRect;
 
 	CollisionType collisionType;
+	std::vector<CollisionType> collisionTypes;
 	std::set<CollisionObject*>* currentCollisions;		// Will alternate between pointing to storage #1 and #2
 	std::set<CollisionObject*>* previousCollisions;		// Will point to the opposite storage as the current collisions
 	std::set<CollisionObject*> collisionsRed;			// Collision storage #1
@@ -189,6 +201,7 @@ private:
 	cocos2d::Vec2 cachedWorldCoords;
 	cocos2d::Vec3 cachedWorldCoords3D;
 	unsigned int cachedTick;
+	unsigned int cachedTickDepth;
 
 	// Debug
 	cocos2d::Color4F debugColor;

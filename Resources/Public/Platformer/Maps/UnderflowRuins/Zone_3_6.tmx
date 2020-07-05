@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1178">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1182">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -50,9 +50,15 @@
   </properties>
   <object id="1152" name="solid" type="collision" x="2270.99" y="-61.2567" width="126.878" height="1405.18"/>
   <object id="1153" name="solid" type="collision" x="3428.56" y="-24.287" width="126.878" height="1365.18"/>
-  <object id="1176" name="chest" type="object" x="2845.82" y="1208.42" width="128" height="128">
+  <object id="1176" name="chest" type="object" x="2775.15" y="1208.42" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1181" name="vase" type="object" x="2954.83" y="1176" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
  </objectgroup>
@@ -119,13 +125,41 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1019" name="ruins-thick" type="terrain" x="1864.57" y="1440" width="96" height="340"/>
-  <object id="1020" name="ruins-thick" type="terrain" x="1746.05" y="1440" width="96" height="340"/>
-  <object id="1021" name="ruins-thick" type="terrain" x="1623.48" y="1440" width="96" height="340"/>
-  <object id="1022" name="ruins-thick" type="terrain" x="1503.62" y="1440" width="96" height="340"/>
-  <object id="1023" name="ruins-thick" type="terrain" x="1381.43" y="1440" width="96" height="340"/>
-  <object id="1024" name="ruins-thick" type="terrain" x="1259.24" y="1440" width="96" height="340"/>
-  <object id="1025" name="ruins-thick" type="terrain" x="1141.52" y="1440" width="96" height="340"/>
+  <object id="1019" name="ruins-thick" type="terrain" x="1864.57" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1020" name="ruins-thick" type="terrain" x="1746.05" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1021" name="ruins-thick" type="terrain" x="1623.48" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1022" name="ruins-thick" type="terrain" x="1503.62" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1023" name="ruins-thick" type="terrain" x="1381.43" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1024" name="ruins-thick" type="terrain" x="1259.24" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1025" name="ruins-thick" type="terrain" x="1141.52" y="1440" width="96" height="340">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -164,12 +198,6 @@
     <property name="map" value="UnderflowRuins/Zone_3_5"/>
     <property name="transition" value="left"/>
    </properties>
-  </object>
-  <object id="1104" name="solid" type="collision" x="1137.5" y="1404.5">
-   <polygon points="-1.36364,-0.363636 100.091,35.5 -1.45455,36"/>
-  </object>
-  <object id="1106" name="solid" type="collision" x="1960.91" y="1404.06">
-   <polygon points="0,0 0.363636,36 -95.4545,36.3636"/>
   </object>
   <object id="1110" name="solid" type="collision" x="1115.23" y="1437.74" width="873.545" height="100.513"/>
   <object id="1142" name="solid" type="collision" x="3890.14" y="-363.681" width="126.878" height="1821.18"/>
@@ -384,10 +412,29 @@
    </properties>
   </object>
   <object id="1174" name="life-stone" type="object" x="2203" y="2468.5" width="146" height="423"/>
+  <object id="1178" name="vase" type="object" x="895.5" y="2720" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1179" name="vase" type="object" x="1048.83" y="2720" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1180" name="vase" type="object" x="2485.5" y="1406" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="player_layer +3">
   <properties>
    <property name="depth" type="float" value="192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1123" name="spawn" type="object" x="2816" y="1434.67" width="128" height="128">

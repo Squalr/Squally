@@ -34,6 +34,8 @@ public:
 	void listenForStateWriteOnce(std::string key, std::function<void(cocos2d::Value)> onWrite);
 	void saveObjectState(std::string key, cocos2d::Value value);
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
+	void saveTemporalObjectState(std::string key, cocos2d::Value value);
+	static void saveTemporalObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	const cocos2d::Value& loadObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);

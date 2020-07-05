@@ -9,7 +9,7 @@
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -38,7 +38,7 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="980" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1076">
+  <object id="980" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -118,16 +118,19 @@
   <object id="997" name="vase" type="object" x="880.834" y="1493.91" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="998" name="vase" type="object" x="1337.28" y="1496.03" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="1001" name="vase" type="object" x="3028.35" y="2010.91" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
  </objectgroup>

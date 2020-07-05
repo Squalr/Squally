@@ -13,6 +13,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
@@ -30,7 +32,7 @@ PlatformerAttack::PlatformerAttack(
 	int specialCost,
 	float attackDuration,
 	float recoverDuration,
-	bool multiTarget)
+	TargetingType targetingType)
 {
 	this->attackType = attackType;
 	this->iconResource = iconResource;
@@ -44,7 +46,7 @@ PlatformerAttack::PlatformerAttack(
 	this->recoverDuration = recoverDuration;
 	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
 	this->owner = nullptr;
-	this->multiTarget = multiTarget;
+	this->targetingType = targetingType;
 }
 
 PlatformerAttack::~PlatformerAttack()
@@ -66,6 +68,11 @@ PlatformerAttack* PlatformerAttack::clone()
 	return attack;
 }
 
+LocalizedString* PlatformerAttack::getDescription()
+{
+	return nullptr;
+}
+
 void PlatformerAttack::registerAttackCompleteCallback(std::function<void()> callback)
 {
 	this->attackCompleteCallbacks.push_back(callback);
@@ -81,11 +88,6 @@ std::string PlatformerAttack::getIconResource()
 	return this->iconResource;
 }
 
-bool PlatformerAttack::isMultiTarget()
-{
-	return this->multiTarget;
-}
-
 PlatformerAttack::Priority PlatformerAttack::getPriority()
 {
 	return this->priority;
@@ -99,6 +101,11 @@ int PlatformerAttack::getSpecialCost()
 PlatformerAttack::AttackType PlatformerAttack::getAttackType()
 {
 	return this->attackType;
+}
+
+PlatformerAttack::TargetingType PlatformerAttack::getTargetingType()
+{
+	return this->targetingType;
 }
 
 void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete)

@@ -62,10 +62,10 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	/*********************
 	    Combat
 	*********************/
+	this->attachedBehaviorDeserializers[CurseOfTonguesTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CurseOfTonguesTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[FireballTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FireballTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[IncrementHealthFlaskTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)IncrementHealthFlaskTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TrainingHealTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingHealTutorialBehavior::create(owner); };
-	this->attachedBehaviorDeserializers[ReflectTutorial::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ReflectTutorial::create(owner); };
 	
 	/*********************
 	    Transportation
@@ -134,11 +134,16 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 		ENTITIES / OVERWORLD
 	*********************/
 
-	// Endian forest
+	// EF
 	this->attachedBehaviorDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AraBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[CypressBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CypressBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[LycanBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LycanBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[KingGroggBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)KingGroggBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[OrcBomberBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)OrcBomberBehaviorGroup::create(owner); };
+
+	// UR
+	this->attachedBehaviorDeserializers[PoseidonBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PoseidonBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RupertBehavior::create(owner); };
 
 	/*********************
 		COMBAT / IN-COMBAT

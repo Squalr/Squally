@@ -6,7 +6,7 @@
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="5"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="262.819" width="14981.3" height="318">
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="434.819" width="14981.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -29,7 +29,7 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-490.848" width="14229.3" height="1478">
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-4074.65" y="-490.848" width="14229.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -41,7 +41,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="527.212" width="14469.3" height="1512">
+  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4060.47" y="527.212" width="14469.3" height="1519">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -53,7 +53,7 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="999.091" width="14709.3" height="1076">
+  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4172.71" y="999.091" width="14709.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -514,7 +514,7 @@
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1055" name="caverns" type="terrain" x="1798.18" y="2150" width="1219.63" height="604">
+  <object id="1055" name="caverns" type="terrain" x="1798.18" y="2098.57" width="1219.63" height="604">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>

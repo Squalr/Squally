@@ -38,7 +38,7 @@ void DartLauncherClippyNopBehavior::onLoad()
 {
 	this->object->registerClippyOnto(DartLauncher::HackIdentifierLaunchTimer, [=]
 	{
-		return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop::create());
+		return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop::create(), "dart-launcher-nop");
 	});
 }
 

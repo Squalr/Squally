@@ -110,8 +110,11 @@ void TutorialCIntroSequence::initializeListeners()
 
 bool TutorialCIntroSequence::tryHijackState(GameState* gameState)
 {
-	this->initializeCallbacks(gameState);
-	this->runTutorialScoreTotal(gameState);
+	this->defer([=]()
+	{
+		this->initializeCallbacks(gameState);
+		this->runTutorialScoreTotal(gameState);
+	});
 
 	return true;
 }

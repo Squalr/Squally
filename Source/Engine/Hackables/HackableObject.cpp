@@ -100,27 +100,22 @@ void HackableObject::initializeListeners()
 void HackableObject::initializePositions()
 {
 	super::initializePositions();
+
+	this->repositionHackButtons();
 }
 
 void HackableObject::update(float dt)
 {
 	super::update(dt);
 
-	this->uiElementsButton->setPosition(this->getButtonOffset());
-	this->uiElementsRain->setPosition(this->getRainOffset());
-	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
-
-	if (!this->hackableList.empty())
+	if (!this->hasRelocatedUI && !this->hackableList.empty())
 	{	
-		// Note that this is deferred until now as an optimization, as TriggerBindObjectToUI is expensive
-		if (!this->hasRelocatedUI)
-		{
-			// Move the UI elements to the top-most layer
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsButton));
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsProgressBars));
-			this->hasRelocatedUI = true;
-		}
+		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsButton));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsProgressBars));
+
+		this->hasRelocatedUI = true;
 	}
 
 	this->updateTimeRemainingBars();
@@ -197,6 +192,13 @@ void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
 	});
 }
 
+void HackableObject::repositionHackButtons()
+{
+	this->uiElementsButton->setPosition(this->getButtonOffset());
+	this->uiElementsRain->setPosition(this->getRainOffset());
+	this->uiElementsProgressBars->setPosition(this->getProgressBarsOffset());
+}
+
 void HackableObject::registerHackables()
 {
 }
@@ -213,6 +215,12 @@ void HackableObject::updateTimeRemainingBars()
 				this->trackedHackables.push_back(next);
 			}
 		}
+	}
+
+	if (this->timeRemainingBars.empty() && this->trackedHackables.empty())
+	{
+		this->refreshParticleFx();
+		return;
 	}
 
 	// Remove hackables that have timed out and are available cooldown wise
@@ -250,15 +258,27 @@ void HackableObject::updateTimeRemainingBars()
 				this->timeRemainingIcons[index]->setScale(0.5f);
 			}
 
-			if (this->timeRemainingBars[index]->getFillSprite()->getResourceName() != next->getHackBarResource())
-			{
-				this->timeRemainingBars[index]->getFillSprite()->initWithFile(next->getHackBarResource());
-			}
-
 			this->timeRemainingBars[index]->setPositionY(float(index) * -32.0f);
 			this->timeRemainingIcons[index]->setPosition(Vec2(-80.0f, float(index) * -32.0f));
 
-			this->timeRemainingBars[index]->setProgress(next->getDuration() <= 0.0f ? 1.0f : (1.0f - next->getElapsedDuration() / next->getDuration()));
+			if (!next->isComplete())
+			{
+				if (this->timeRemainingBars[index]->getFillSprite()->getResourceName() != next->getHackBarResource())
+				{
+					this->timeRemainingBars[index]->getFillSprite()->initWithFile(next->getHackBarResource());
+				}
+
+				this->timeRemainingBars[index]->setProgress(next->getDuration() <= 0.0f ? 1.0f : (1.0f - next->getElapsedDuration() / next->getDuration()));
+			}
+			else if (!next->isCooldownComplete())
+			{
+				if (this->timeRemainingBars[index]->getFillSprite()->getResourceName() != next->getHackBarCooldownResource())
+				{
+					this->timeRemainingBars[index]->getFillSprite()->initWithFile(next->getHackBarCooldownResource());
+				}
+
+				this->timeRemainingBars[index]->setProgress(next->getCooldown() <= 0.0f ? 1.0f : (next->getElapsedCooldown() / next->getCooldown()));
+			}
 		}
 		else
 		{
@@ -272,14 +292,14 @@ void HackableObject::updateTimeRemainingBars()
 
 void HackableObject::refreshParticleFx()
 {
-	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
-		{
-			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
-		})
-		&& this->allowFx
+	if (this->allowFx
 		&& this->isHackable
 		&& !this->hackableList.empty()
-		&& this->trackedHackables.empty())
+		&& this->trackedHackables.empty()
+		&& std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
+		{
+			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
+		}))
 	{
 		this->createSensingParticles();
 
@@ -347,7 +367,7 @@ HackablePreview* HackableObject::createDefaultPreview()
 	return nullptr;
 }
 
-void HackableObject::registerCode(HackableCode* hackableCode)
+void HackableObject::registerCode(HackableCode* hackableCode, bool refreshCooldowns)
 {
 	if (hackableCode == nullptr)
 	{
@@ -360,6 +380,11 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 		{
 			return;
 		}
+	}
+
+	if (refreshCooldowns)
+	{
+		hackableCode->tryRefreshCooldown();
 	}
 
 	this->hackableList.push_back(hackableCode);
@@ -381,6 +406,16 @@ void HackableObject::unregisterAllHackables(bool forceRestoreState)
 	for (auto next : hackAbilityListClone)
 	{
 		this->unregisterHackAbility(next);
+	}
+
+	for (auto next : this->timeRemainingBars)
+	{
+		next->setVisible(false);
+	}
+
+	for (auto next : this->timeRemainingIcons)
+	{
+		next->setVisible(false);
 	}
 }
 
@@ -418,11 +453,16 @@ void HackableObject::unregisterCode(HackableCode* hackableCode, bool forceRestor
 	}
 }
 
-void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbility)
+void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbility, bool refreshCooldowns)
 {
 	if (hackActivatedAbility == nullptr)
 	{
 		return;
+	}
+
+	if (refreshCooldowns)
+	{
+		hackActivatedAbility->tryRefreshCooldown();
 	}
 	
 	this->hackableList.push_back(hackActivatedAbility);

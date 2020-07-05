@@ -19,16 +19,16 @@
 
 using namespace cocos2d;
 
-RadialScrollMenu* RadialScrollMenu::create(float radius)
+RadialScrollMenu* RadialScrollMenu::create(float radius, float angleDelta)
 {
-	RadialScrollMenu* instance = new RadialScrollMenu(radius);
+	RadialScrollMenu* instance = new RadialScrollMenu(radius, angleDelta);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RadialScrollMenu::RadialScrollMenu(float radius)
+RadialScrollMenu::RadialScrollMenu(float radius, float angleDelta)
 {
 	this->radius = radius;
 	this->buttonsNode = Node::create();
@@ -40,6 +40,7 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 	this->focused = true;
 	this->isTimelineCinematicPaused = false;
 	this->backCallback = nullptr;
+	this->angleDelta = angleDelta;
 
 	this->addChild(this->buttonsNode);
 	this->addChild(this->arrow);
@@ -87,6 +88,24 @@ void RadialScrollMenu::initializeListeners()
 		{
 			args->handle();
 			this->scrollDown();
+		}
+	});
+
+	this->whenScrollDown([=](InputEvents::MouseEventArgs* args)
+	{
+		if (this->focused && !this->isTimelineCinematicPaused)
+		{
+			args->handle();
+			this->scrollDown();
+		}
+	});
+
+	this->whenScrollUp([=](InputEvents::MouseEventArgs* args)
+	{
+		if (this->focused && !this->isTimelineCinematicPaused)
+		{
+			args->handle();
+			this->scrollUp();
 		}
 	});
 
@@ -148,7 +167,7 @@ void RadialScrollMenu::clearItems()
 	this->currentIndex = 0;
 }
 
-RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedString* lowerLabelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
+RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, std::vector<LocalizedString*> lowerLabelStrs, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
 {
 	LocalizedLabel* entryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
 	LocalizedLabel* entryLabelSelected = entryLabel->clone();
@@ -159,9 +178,18 @@ RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedStri
 	entryLabelSelected->enableOutline(Color4B::BLACK, 2);
 	entryLabelSelected->setTextColor(Color4B::YELLOW);
 
-	if (lowerLabelStr != nullptr)
+	int positionIndex = 0;
+
+	for (int index = 0; index < int(lowerLabelStrs.size()); index++)
 	{
-		LocalizedLabel* lowerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, lowerLabelStr);
+		LocalizedString* next = lowerLabelStrs[index];
+
+		if (next == nullptr)
+		{
+			continue;
+		}
+
+		LocalizedLabel* lowerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, next);
 		LocalizedLabel* lowerLabelSelected = lowerLabel->clone();
 
 		lowerLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -170,16 +198,20 @@ RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedStri
 		lowerLabelSelected->enableOutline(Color4B::BLACK, 2);
 		lowerLabelSelected->setTextColor(Color4B::YELLOW);
 
-		lowerLabel->setPosition(Vec2(0.0f, -16.0f));
-		lowerLabelSelected->setPosition(Vec2(0.0f, -16.0f));
+		float positionY = positionIndex == 0 ? -16.0f : (-20.0f * float(positionIndex + 1));
+
+		lowerLabel->setPosition(Vec2(0.0f, positionY));
+		lowerLabelSelected->setPosition(Vec2(0.0f, positionY));
 
 		entryLabel->addChild(lowerLabel);
 		entryLabelSelected->addChild(lowerLabelSelected);
+
+		positionIndex++;
 	}
 
 	RadialEntry* entry = RadialEntry::create(entryLabel, entryLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
-	entry->setTextOffset(Vec2(48.0f, 0.0f));
+	entry->setTextOffset(Vec2(48.0f, float(positionIndex) * 16.0f));
 	entry->addIcon(iconResource);
 
 	if (callback != nullptr)
@@ -263,7 +295,10 @@ void RadialScrollMenu::scrollUp()
 	}
 	else
 	{
-		this->errorSound->play();
+		if (!this->errorSound->isPlaying())
+		{
+			this->errorSound->play();
+		}
 	}
 
 	this->positionButtons();
@@ -285,7 +320,10 @@ void RadialScrollMenu::scrollDown()
 	}
 	else
 	{
-		this->errorSound->play();
+		if (!this->errorSound->isPlaying())
+		{
+			this->errorSound->play();
+		}
 	}
 
 	this->positionButtons();
@@ -299,7 +337,6 @@ void RadialScrollMenu::scrollTo(int index)
 
 void RadialScrollMenu::positionButtons()
 {
-	const float AngleDelta = float(M_PI) / 6.0f;
 	int buttonIndex = 0;
 
 	for (int buttonIndex = 0; buttonIndex < int(this->buttons.size()); buttonIndex++)
@@ -308,9 +345,8 @@ void RadialScrollMenu::positionButtons()
 
 		int effectiveIndex = buttonIndex - this->currentIndex;
 		int distance = std::abs(effectiveIndex);
-		float currentAngle = float(effectiveIndex) * AngleDelta;
+		float currentAngle = float(effectiveIndex) * this->angleDelta;
 
-		button->setTextOffset(Vec2(48.0f, 0.0f));
 		button->setPosition(Vec2(this->radius * std::cos(currentAngle), this->radius * -std::sin(currentAngle)));
 
 		switch(distance)

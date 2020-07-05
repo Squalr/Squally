@@ -6,6 +6,7 @@ class Gorgon;
 class Ram;
 class QuestLine;
 class Sarude;
+class Sound;
 class Squally;
 class SmartAnimationSequenceNode;
 class WorldSound;
@@ -32,6 +33,7 @@ private:
 	void runMageAnims();
 	void positionImpactFx();
 	void runCinematicSequencePart1();
+	void runCinematicSequencePart1Alt();
 	void runCinematicSequencePart2();
 	void runCinematicSequencePart3();
 	void killRammedEnemies();
@@ -51,6 +53,9 @@ private:
 	WorldSound* reboundSoundShield;
 	WorldSound* reboundSoundShieldLite;
 	WorldSound* reboundSoundSword;
+	Sound* impactSound;
 
 	static const std::string ForceFieldTag;
+	static const std::string MarkerTagBack;
+	static const std::string MarkerTagFront;
 };

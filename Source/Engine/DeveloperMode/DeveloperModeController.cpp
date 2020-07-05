@@ -13,6 +13,7 @@ using namespace cocos2d;
 
 DeveloperModeController* DeveloperModeController::instance = nullptr;
 volatile bool DeveloperModeController::IsDeveloperBuild = false;
+volatile bool DeveloperModeController::ShowFPSInfo = false;
 int DeveloperModeController::MaxDebugLevel = 2;
 int DeveloperModeController::CurrentDebugLevel = 0;
 
@@ -50,7 +51,7 @@ void DeveloperModeController::onEnter()
 {
 	super::onEnter();
 	
-	if (DeveloperModeController::IsDeveloperBuild)
+	if (DeveloperModeController::ShowFPSInfo)
 	{
 		Director::getInstance()->setDisplayStats(true);
 	}

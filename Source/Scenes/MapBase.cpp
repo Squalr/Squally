@@ -54,6 +54,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
+	this->confirmationMenuHud = Hud::create();
 	this->hackerModeGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
 	
@@ -88,6 +89,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
+	this->addChild(this->confirmationMenuHud);
 }
 
 MapBase::~MapBase()
@@ -104,7 +106,7 @@ void MapBase::onEnter()
 
 	if (this->map != nullptr)
 	{
-		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+		GameCamera::getInstance()->setMapBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
 }
 
@@ -232,7 +234,7 @@ bool MapBase::loadMap(std::string mapResource)
 	if (this->map != nullptr)
 	{
 		this->mapNode->addChild(this->map);
-		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+		GameCamera::getInstance()->setMapBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 
 		return true;
 	}

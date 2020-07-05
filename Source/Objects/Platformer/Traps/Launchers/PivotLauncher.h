@@ -57,14 +57,14 @@ private:
 	
 	float fixedAngle;
 	bool isFixed;
-	bool is3dDisabled;
+	bool is3DEnabled;
 	bool isAutoLaunch;
 
 	static const std::string PivotBone;
 	static const std::string PropertyLaunchSpeed;
 	static const std::string PropertyPivotTarget;
 	static const std::string PropertyFixed;
-	static const std::string PropertyDisable3d;
+	static const std::string PropertyEnable3D;
 	static const float DefaultLaunchSpeed;
 	static const float LaunchCooldownMin;
 	static const float LaunchCooldownMax;

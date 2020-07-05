@@ -20,9 +20,6 @@ EnrageGenericPreview* EnrageGenericPreview::create()
 
 EnrageGenericPreview::EnrageGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 EnrageGenericPreview::~EnrageGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* EnrageGenericPreview::clone()
 void EnrageGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void EnrageGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

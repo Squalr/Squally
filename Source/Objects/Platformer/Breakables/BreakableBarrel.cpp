@@ -59,6 +59,8 @@ void BreakableBarrel::initializeListeners()
 
 void BreakableBarrel::onBreak()
 {
+	super::onBreak();
+	
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	this->barrelSprite->setVisible(false);
 }

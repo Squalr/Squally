@@ -38,7 +38,7 @@ void IsSwimmingClippyBehavior::onLoad()
 {
 	this->object->registerClippyOnto(SquallySwimHackBehavior::HackIdentifierIsSwimming, [=]
 	{
-		return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal::create());
+		return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal::create(), "is-swimming-hack");
 	});
 }
 

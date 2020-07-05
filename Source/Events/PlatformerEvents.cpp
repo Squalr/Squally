@@ -7,6 +7,7 @@
 
 using namespace cocos2d;
 
+const std::string PlatformerEvents::EventSquallySpawned = "EVENT_SQUALLY_SPAWNED";
 const std::string PlatformerEvents::EventSpawnToTransitionLocation = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
 const std::string PlatformerEvents::EventWarpToLocationPrefix = "EVENT_WARP_TO_LOCATION_";
 const std::string PlatformerEvents::EventWarpToObjectIdPrefix = "EVENT_WARP_TO_OBJECT_ID_";
@@ -39,6 +40,13 @@ const std::string PlatformerEvents::EventBeforeLoadRespawn = "EVENT_BEFORE_LOAD_
 const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
 const std::string PlatformerEvents::EventObjectiveChanged = "EVENT_OBJECTIVE_CHANGED";
 const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
+
+void PlatformerEvents::TriggerSquallySpawned()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventSquallySpawned
+	);
+}
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {

@@ -29,7 +29,7 @@ public:
 	void playAnimationAndReverse(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
 	void playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay = 0.0f, bool insertBlankFrame = false, bool startReversed = false, int repeatCount = -1, std::function<void()> onAnimationComplete = nullptr);
 	void playAnimationAndReverseRepeat(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay = 0.0f, bool insertBlankFrame = false, bool startReversed = false, int repeatCount = -1, std::function<void()> onAnimationComplete = nullptr);
-
+	void setAnimationAnchor(cocos2d::Vec2 anchor);
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
 
@@ -49,6 +49,7 @@ private:
 	std::string defaultSprite;
 	bool hasPlayingAnimation;
 	int repeatIndex;
+	cocos2d::Vec2 animationAnchor;
 
 	static std::map<std::string, std::vector<std::string>> AnimationFileCache;
 	static std::vector<std::string> getAllAnimationFiles(std::string firstFrameResource);

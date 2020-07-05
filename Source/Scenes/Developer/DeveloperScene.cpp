@@ -67,6 +67,8 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
 	this->chapterList.push_back(this->buildDebugButton("Warp Room (VS)", MapResources::VoidStar_Mages_Warp));
 	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	this->chapterList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
+	this->chapterList.push_back(this->buildDebugButton("==========", ""));
 	this->chapterList.push_back(this->buildDebugButton("Cleopatra (UR)", MapResources::UnderflowRuins_Home_Cleopatra));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_8 (UR) Pyramid Boss vv", MapResources::UnderflowRuins_Zone_3_8));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_7 (UR) Pyramid -->", MapResources::UnderflowRuins_Zone_3_7));
@@ -77,10 +79,11 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_2 (UR) Pyramid Interior", MapResources::UnderflowRuins_Zone_3_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_1 (UR) Pyramid Top", MapResources::UnderflowRuins_Zone_3_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone_3_0 (UR) Pyramid", MapResources::UnderflowRuins_Zone_3_0));
-	this->chapterList.push_back(this->buildDebugButton("Zone_2_6 (UR) Sky", MapResources::UnderflowRuins_Zone_2_6));
-	this->chapterList.push_back(this->buildDebugButton("Zone_2_5 (UR) Exit", MapResources::UnderflowRuins_Zone_2_5));
-	this->chapterList.push_back(this->buildDebugButton("Zone_2_4 (UR) Medusa", MapResources::UnderflowRuins_Zone_2_4));
-	this->chapterList.push_back(this->buildDebugButton("Zone_2_3 (UR) Flame", MapResources::UnderflowRuins_Zone_2_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_7 (UR) Sky", MapResources::UnderflowRuins_Zone_2_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_6 (UR) Exit", MapResources::UnderflowRuins_Zone_2_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_5 (UR) Medusa", MapResources::UnderflowRuins_Zone_2_5));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_4 (UR) Flame #2", MapResources::UnderflowRuins_Zone_2_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone_2_3 (UR) Flame #1", MapResources::UnderflowRuins_Zone_2_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_2 (UR) Pass", MapResources::UnderflowRuins_Zone_2_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_1 (UR) Puzzle", MapResources::UnderflowRuins_Zone_2_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone_2_0 (UR) Entrance", MapResources::UnderflowRuins_Zone_2_0));
@@ -212,8 +215,16 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));

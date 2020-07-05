@@ -2,6 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 
 #include "Resources/SoundResources.h"
@@ -56,6 +57,12 @@ PlatformerAttack* SwordExecute::cloneInternal()
 LocalizedString* SwordExecute::getString()
 {
 	return Strings::Platformer_Combat_Attacks_Execute::create();
+}
+
+LocalizedString* SwordExecute::getDescription()
+{
+	return Strings::Platformer_Combat_Attacks_ExecuteDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(SwordExecute::DamageMultiplier * 100.0f))));
 }
 
 std::string SwordExecute::getAttackAnimation()

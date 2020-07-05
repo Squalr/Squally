@@ -33,7 +33,7 @@ TrollCombatBehavior::TrollCombatBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.15f);
+	this->setTimelineSpeedBase(1.15f);
 }
 
 TrollCombatBehavior::~TrollCombatBehavior()

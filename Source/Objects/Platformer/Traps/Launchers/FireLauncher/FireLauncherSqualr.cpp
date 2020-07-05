@@ -55,6 +55,11 @@ void FireLauncherSqualr::initializePositions()
 	this->projectilePool->setPosition(Vec2(0.0f, 112.0f));
 }
 
+Vec2 FireLauncherSqualr::getProjectileSpawnPosition()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 Projectile* FireLauncherSqualr::createProjectile()
 {
 	OverworldFireball* fireball = OverworldFireball::create();

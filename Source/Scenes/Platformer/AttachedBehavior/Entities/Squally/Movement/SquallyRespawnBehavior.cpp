@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -88,20 +89,45 @@ void SquallyRespawnBehavior::respawn(float duration)
 
 	PlatformerEvents::TriggerBeforeLoadRespawn();
 	
-	this->runAction(Sequence::create(
-		DelayTime::create(duration),
-		CallFunc::create([=]()
+	if (duration <= 0.0f)
+	{
+		this->doRespawn();
+	}
+	else
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(duration),
+			CallFunc::create([=]()
+			{
+				this->doRespawn();
+			}),
+			nullptr
+		));
+	}
+}
+
+void SquallyRespawnBehavior::doRespawn()
+{
+	this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->revive();
+	});
+
+	this->squally->getAttachedBehavior<HelperManagerBehavior>([=](HelperManagerBehavior* helperManagerBehavior)
+	{
+		PlatformerEntity* helper = helperManagerBehavior->getHelperRef();
+
+		if (helper != nullptr)
 		{
-			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			helper->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->revive();
 			});
+		}
+	});
 
-			PlatformerEvents::TriggerLoadRespawn();
+	PlatformerEvents::TriggerLoadRespawn();
 
-			this->isRespawning = false;
-		}),
-		nullptr
-	));
+	this->isRespawning = false;
 }
 

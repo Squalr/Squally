@@ -94,9 +94,13 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString)
 
 	this->onStringUpdate(this->localizedString);
 
-	this->localizedString->setOnStringUpdateCallback(CC_CALLBACK_1(LocalizedLabel::onStringUpdate, this));
+	this->localizedString->setOnStringUpdateCallback([=](LocalizedString* string)
+	{
+		this->onStringUpdate(string);
+	});
 
-	GameUtils::changeParent(this->localizedString, this, false); // Retain as a child so it can listen for events (no visuals)
+	// Retain as a child so it can listen for events (no visuals). Use changeParent in case the child is already added.
+	GameUtils::changeParent(this->localizedString, this, false);
 }
 
 void LocalizedLabel::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
@@ -240,7 +244,7 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	Color4B outlineColor = Color4B(_effectColorF);
 
 	this->cleanupState();
-
+	
 	this->initWithTTF(
 		localizedString->getString(),
 		this->getFont(),

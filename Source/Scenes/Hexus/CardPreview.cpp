@@ -125,6 +125,7 @@ void CardPreview::previewCardData(CardData* cardData, Card* card)
 		this->previewPanel->addChild(this->currentPreviewData.previewNode);
 	}
 
+	this->updatePreview(this->currentPreviewData);
 	this->currentPreviewData.previewNode->setVisible(true);
 	
 	switch (cardData->getCardType())
@@ -159,6 +160,55 @@ void CardPreview::previewCardData(CardData* cardData, Card* card)
 	}
 }
 
+void CardPreview::updatePreview(PreviewData previewData)
+{
+	int originalAttack = previewData.cardData->getAttack();
+	int attack = (previewData.previewCard == nullptr) ? originalAttack : previewData.previewCard->getAttack();
+
+	switch (previewData.cardData->getCardType())
+	{
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Binary:
+		case CardData::CardType::Hexidecimal:
+		{
+			if (previewData.binStrRef != nullptr)
+			{
+				previewData.binStrRef->setString(HackUtils::toBinary4(attack));
+			}
+
+			if (previewData.decStrRef != nullptr)
+			{
+				previewData.decStrRef->setString(std::to_string(attack));
+			}
+
+			if (previewData.hexStrRef != nullptr)
+			{
+				previewData.hexStrRef->setString(HackUtils::toHex(attack));
+			}
+
+			/*
+			if (previewData.binLabelRef != nullptr)
+			{
+				previewData.binLabelRef->setTextColor(attack == originalAttack ? Card::BinaryColor : (attack < originalAttack ? Color4B::RED : Color4B::GREEN ));
+			}
+
+			if (previewData.decLabelRef != nullptr)
+			{
+				previewData.decLabelRef->setTextColor(attack == originalAttack ? Card::DecimalColor : (attack < originalAttack ? Color4B::RED : Color4B::GREEN ));
+			}
+
+			if (previewData.hexLabelRef != nullptr)
+			{
+				previewData.hexLabelRef->setTextColor(attack == originalAttack ? Card::HexColor : (attack < originalAttack ? Color4B::RED : Color4B::GREEN ));
+			}*/
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
 CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card* card)
 {
 	if (cardData == nullptr)
@@ -168,6 +218,12 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 
 	Node* preview = Node::create();
 	Sprite* previewSprite = Sprite::create(cardData->getCardResourceFile());
+	ConstantString* binStrRef = nullptr;
+	ConstantString* decStrRef = nullptr;
+	ConstantString* hexStrRef = nullptr;
+	LocalizedLabel* binLabelRef = nullptr;
+	LocalizedLabel* decLabelRef = nullptr;
+	LocalizedLabel* hexLabelRef = nullptr;
 
 	preview->addChild(previewSprite);
 
@@ -247,6 +303,13 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 			binaryLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset));
 			decimalLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
 			hexLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
+
+			binStrRef = binaryString;
+			decStrRef = decimalString;
+			hexStrRef = hexString;
+			binLabelRef = binaryLabel;
+			decLabelRef = decimalLabel;
+			hexLabelRef = hexLabel;
 
 			preview->addChild(binaryLabel);
 			preview->addChild(decimalLabel);
@@ -392,5 +455,5 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 		}
 	}
 
-	return PreviewData(card, cardData, preview);
+	return PreviewData(card, cardData, preview, binStrRef, decStrRef, hexStrRef, binLabelRef, decLabelRef, hexLabelRef);
 }

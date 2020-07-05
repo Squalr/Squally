@@ -10,6 +10,8 @@ namespace cocos2d
 class Card;
 class CardData;
 class ClickableTextNode;
+class ConstantString;
+class LocalizedLabel;
 
 class CardPreview : public SmartNode
 {
@@ -36,12 +38,20 @@ private:
 		Card* previewCard;
 		CardData* cardData;
 		cocos2d::Node* previewNode;
+		ConstantString* binStrRef;
+		ConstantString* decStrRef;
+		ConstantString* hexStrRef;
+		LocalizedLabel* binLabelRef;
+		LocalizedLabel* decLabelRef;
+		LocalizedLabel* hexLabelRef;
 
-		PreviewData() : previewCard(nullptr), cardData(nullptr), previewNode(nullptr) { }
-		PreviewData(Card* previewCard, CardData* cardData, cocos2d::Node* previewNode) : previewCard(previewCard), cardData(cardData), previewNode(previewNode) { }
+		PreviewData() : previewCard(nullptr), cardData(nullptr), previewNode(nullptr), binStrRef(binStrRef), decStrRef(decStrRef), hexStrRef(hexStrRef) { }
+		PreviewData(Card* previewCard, CardData* cardData, cocos2d::Node* previewNode, ConstantString* binStrRef, ConstantString* decStrRef, ConstantString* hexStrRef, LocalizedLabel* binLabelRef, LocalizedLabel* decLabelRef, LocalizedLabel* hexLabelRef)
+			: previewCard(previewCard), cardData(cardData), previewNode(previewNode), binStrRef(binStrRef), decStrRef(decStrRef), hexStrRef(hexStrRef), binLabelRef(binLabelRef), decLabelRef(decLabelRef), hexLabelRef(hexLabelRef) { }
 	};
 
 	CardPreview::PreviewData constructPreview(CardData* cardData, Card* card);
+	void updatePreview(PreviewData previewData);
 
 	cocos2d::Sprite* cardPad;
 	PreviewData currentPreviewData;

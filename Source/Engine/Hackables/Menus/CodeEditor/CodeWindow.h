@@ -10,11 +10,13 @@
 namespace cocos2d
 {
 	class LayerColor;
+	class Sprite;
 
 	namespace ui
 	{
 		class RichText;
 		class RichElement;
+		class RichElementText;
 	}
 }
 
@@ -70,6 +72,7 @@ private:
 	cocos2d::LayerColor* titleBar;
 	InputText* windowTitle;
 	ClickableNode* deleteButton;
+	cocos2d::Sprite* copyButtonGlow;
 	ClickableNode* copyButton;
 	ScrollPane* contentPane;
 	cocos2d::ui::RichText* displayedText;
@@ -80,7 +83,8 @@ private:
 	cocos2d::LayerColor* copyPanel;
 	LocalizedLabel* copyLabel;
 
-	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textElements;
+	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textInfo;
+	std::vector<cocos2d::ui::RichElementText*> textElements;
 	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
 
 	bool hasScriptChanges;
@@ -97,6 +101,7 @@ private:
 	static const float TitleBarHeight;
 	static const cocos2d::Color4B DefaultTitleBarColor;
 	static const cocos2d::Color4B DefaultWindowColor;
+	static const cocos2d::Color4B ReadonlyWindowColor;
 	static const cocos2d::Color3B LineNumberColor;
 	static const cocos2d::Size Padding;
 	static const float MarginSize;

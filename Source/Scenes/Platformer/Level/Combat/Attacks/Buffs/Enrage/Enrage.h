@@ -16,8 +16,7 @@ class Enrage : public Buff
 {
 public:
 	static Enrage* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string EnrageIdentifier;
 
 protected:

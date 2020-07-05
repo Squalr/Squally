@@ -202,6 +202,7 @@ void GameState::updateState(GameState* gameState, StateType newState)
 	HexusEvents::TriggerRequestStateUpdate(gameState);
 	HexusEvents::TriggerBeforeStateUpdate(gameState);
 	HexusEvents::TriggerOnStateUpdate(gameState);
+	HexusEvents::TriggerAfterStateUpdate(gameState);
 }
 
 void GameState::clearInteraction()

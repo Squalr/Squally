@@ -20,9 +20,6 @@ ReflectGenericPreview* ReflectGenericPreview::create()
 
 ReflectGenericPreview::ReflectGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 ReflectGenericPreview::~ReflectGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* ReflectGenericPreview::clone()
 void ReflectGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void ReflectGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

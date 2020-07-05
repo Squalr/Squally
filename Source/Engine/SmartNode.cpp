@@ -31,15 +31,11 @@ SmartNode::SmartNode()
 	this->optimizationHasGlobalListener = false;
 	this->optimizationHasListener = false;
 	this->hasInitializedListeners = false;
-	this->disposeCallbacks = std::vector<std::function<void()>>();
+	this->disableHackerModeEvents = false;
 }
 
 SmartNode::~SmartNode()
 {
-	for (auto next : this->disposeCallbacks)
-	{
-		next();
-	}
 }
 
 void SmartNode::onEnter()
@@ -92,35 +88,42 @@ void SmartNode::initializeListeners()
 		this->removeAllListeners();
 	}
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* eventCustom)
+	// Only listen for dev events in non-dev builds to save time in release mode
+	if (DeveloperModeController::IsDeveloperBuild)
 	{
-		DeveloperModeEvents::DeveloperModeEnableArgs* args = static_cast<DeveloperModeEvents::DeveloperModeEnableArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* eventCustom)
 		{
-			this->onDeveloperModeEnable(args->debugLevel);
-		}
-	}));
+			DeveloperModeEvents::DeveloperModeEnableArgs* args = static_cast<DeveloperModeEvents::DeveloperModeEnableArgs*>(eventCustom->getUserData());
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* eventCustom)
-	{
-		this->onDeveloperModeDisable();
-	}));
+			if (args != nullptr)
+			{
+				this->onDeveloperModeEnable(args->debugLevel);
+			}
+		}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* eventCustom)
 		{
-			this->onHackerModeEnable();
-		}
-	}));
+			this->onDeveloperModeDisable();
+		}));
+	}
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	if (!this->disableHackerModeEvents)
 	{
-		this->onHackerModeDisable();
-	}));
+		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+		{
+			HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->onHackerModeEnable();
+			}
+		}));
+
+		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+		{
+			this->onHackerModeDisable();
+		}));
+	}
 }
 
 void SmartNode::onDeveloperModeEnable(int debugLevel)
@@ -392,7 +395,42 @@ EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeybo
 	return listener;
 }
 
-void SmartNode::onDispose(std::function<void()> task)
+EventListener* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
 {
-	this->disposeCallbacks.push_back(task);
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
+		{
+			if (!requireVisible || GameUtils::isVisible(this))
+			{
+				callback(args);
+			}
+		}
+	});
+
+	this->addEventListener(listener);
+
+	return listener;
+}
+
+EventListener* SmartNode::whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+{
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
+		{
+			if (!requireVisible || GameUtils::isVisible(this))
+			{
+				callback(args);
+			}
+		}
+	});
+
+	this->addEventListener(listener);
+
+	return listener;
 }

@@ -75,11 +75,17 @@ void HelperManagerBehavior::onLoad()
 	});
 }
 
+PlatformerEntity* HelperManagerBehavior::getHelperRef()
+{
+	return this->helperRef;
+}
+
 void HelperManagerBehavior::despawnCurrentHelper()
 {
 	if (this->helperRef != nullptr)
 	{
 		this->helperRef->despawn();
+		this->helperRef = nullptr;
 	}
 }
 

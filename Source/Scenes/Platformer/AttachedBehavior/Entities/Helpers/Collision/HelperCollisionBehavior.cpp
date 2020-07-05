@@ -15,7 +15,7 @@ HelperCollisionBehavior* HelperCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-HelperCollisionBehavior::HelperCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Helper)
+HelperCollisionBehavior::HelperCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Entity, (int)PlatformerCollisionType::EntityMovement)
 {
 }
 

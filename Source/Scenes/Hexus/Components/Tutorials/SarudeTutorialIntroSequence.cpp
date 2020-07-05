@@ -74,8 +74,11 @@ void SarudeTutorialIntroSequence::initializeListeners()
 
 bool SarudeTutorialIntroSequence::tryHijackState(GameState* gameState)
 {
-	this->initializeCallbacks(gameState);
-	this->runTutorialLossDisplay(gameState);
+	this->defer([=]()
+	{
+		this->initializeCallbacks(gameState);
+		this->runTutorialLossDisplay(gameState);
+	});
 
 	return true;
 }

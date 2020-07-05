@@ -16,8 +16,7 @@ class BrokenBlade : public Buff
 {
 public:
 	static BrokenBlade* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	static const std::string PropertyRestorePotionTutorial;
+	
 	static const std::string BrokenBladeIdentifier;
 	static const std::string HackIdentifierBrokenBlade;
 

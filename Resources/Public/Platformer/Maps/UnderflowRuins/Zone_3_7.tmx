@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1152">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1157">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -71,6 +71,18 @@
     <property name="color" value="green"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1154" name="vase" type="object" x="2046.53" y="2689.7" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1156" name="vase" type="object" x="2237.44" y="2692.73" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
  </objectgroup>
@@ -224,6 +236,18 @@
   <object id="1132" name="solid" type="collision" x="3193.65" y="1354.02" width="126.878" height="1587.85"/>
   <object id="1137" name="solid" type="collision" x="4004.44" y="-459.075" width="126.878" height="1821.18"/>
   <object id="1151" name="life-stone" type="object" x="2833" y="922.5" width="146" height="423"/>
+  <object id="1152" name="vase" type="object" x="2207.59" y="2766.27" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1153" name="vase" type="object" x="2370.5" y="2767" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>
@@ -340,36 +364,43 @@
   <object id="1019" name="ruins-thick" type="terrain" x="1866.42" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1020" name="ruins-thick" type="terrain" x="1747.9" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1021" name="ruins-thick" type="terrain" x="1625.33" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1022" name="ruins-thick" type="terrain" x="1505.47" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1023" name="ruins-thick" type="terrain" x="1383.28" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1024" name="ruins-thick" type="terrain" x="1261.09" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1025" name="ruins-thick" type="terrain" x="1143.37" y="1439.85" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -395,7 +426,8 @@
   </properties>
   <object id="960" name="vase" type="object" x="589.863" y="1238.55" width="113" height="160">
    <properties>
-    <property name="color" value="blue"/>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="1084" name="edge-portal" type="object" x="-2.29333" y="909.999" width="199.918" height="488.002">
@@ -404,12 +436,6 @@
     <property name="map" value="UnderflowRuins/Zone_3_2"/>
     <property name="transition" value="left"/>
    </properties>
-  </object>
-  <object id="1104" name="solid" type="collision" x="1139.35" y="1404.35">
-   <polygon points="-1.36364,-0.363636 100.091,35.5 -1.45455,36"/>
-  </object>
-  <object id="1106" name="solid" type="collision" x="1962.76" y="1403.91">
-   <polygon points="0,0 0.363636,36 -95.4545,36.3636"/>
   </object>
   <object id="1108" name="solid" type="collision" x="1116.08" y="1437.59" width="873.545" height="100.513"/>
   <object id="1136" name="solid" type="collision" x="3889.89" y="-366.105" width="126.878" height="1821.18"/>
@@ -504,6 +530,7 @@
  <objectgroup id="77" name="player_layer +3">
   <properties>
    <property name="depth" type="float" value="192"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>

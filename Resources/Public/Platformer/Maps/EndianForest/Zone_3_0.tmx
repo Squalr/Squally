@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="759">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="759">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -165,7 +165,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="630" name="dark-grass" type="terrain" x="8557.9" y="1096.87">
-   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -1974.38,1667.56 -2587.48,1893.01 -2725.05,2243.54 -2920.74,2254.77 -2923.12,1717.12 -3050.24,1263.25 -3633.47,1071.09 -4205.76,838.41 -5081.75,814.483 -5391.94,781.554 -5782.51,740.093 -5779.6,519.92 -5574.03,451.611 -5109.36,396.793 -4643.62,459.109 -3657.84,457.248 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1694.8,87.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
+   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -1974.38,1667.56 -2587.48,1893.01 -2725.05,2243.54 -2920.74,2254.77 -2923.12,1717.12 -3050.24,1263.25 -3633.47,1071.09 -4205.76,838.41 -4854.75,806.376 -5100.09,761.286 -5279.97,664.287 -5309.8,488.257 -5290.28,346.22 -5069.4,325.977 -4914.79,417.061 -4643.62,459.109 -3657.84,457.248 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1694.8,87.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
   </object>
   <object id="667" name="dark-grass" type="terrain" x="6727.16" y="5282.75">
    <polygon points="-2172.51,-2466.57 -1471.65,-2083.26 -1475.38,-1313.25 -91.177,-1316.27 308.823,-1555.22 3576.95,-1551.21 3578.05,-200.696 -6846.03,-194.69 -6810.77,-2714.44 -5455.05,-2721.6 -4462.85,-2782.29 -3796.45,-2777.93 -3163.15,-2540.44 -2599.26,-2465.27"/>
@@ -358,7 +358,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -369,7 +369,7 @@
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3941.57" y="2594.1" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="9280.81" y="3823" width="270" height="748"/>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

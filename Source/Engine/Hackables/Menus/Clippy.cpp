@@ -4,11 +4,19 @@
 
 using namespace cocos2d;
 
-Clippy::Clippy()
+std::map<std::string, bool> Clippy::UniqueRunMap = std::map<std::string, bool>();
+
+Clippy::Clippy(std::string uniqueRunKey)
 {
 	this->animationNode = Node::create();
 	this->speechBubble = SpeechBubble::create(false);
 	this->isEnabled = true;
+	this->uniqueRunKey = uniqueRunKey;
+
+	if (!uniqueRunKey.empty() && Clippy::UniqueRunMap.find(uniqueRunKey) == Clippy::UniqueRunMap.end())
+	{
+		Clippy::UniqueRunMap[uniqueRunKey] = false;
+	}
 
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
@@ -29,8 +37,27 @@ void Clippy::runDialogue(LocalizedString* localizedString, std::string soundReso
 {
 	if (this->isEnabled)
 	{
-		this->speechBubble->runDialogue(localizedString, soundResource, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::ExpandLeft);
+		if (this->isFirstUniqueRun())
+		{
+			this->speechBubble->runDialogue(localizedString, soundResource, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::ExpandLeft);
+			
+			Clippy::UniqueRunMap[this->uniqueRunKey] = true;
+		}
+		else
+		{
+			this->speechBubble->runDialogue(localizedString, "", SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::ExpandLeft, true);
+		}
 	}
+}
+
+bool Clippy::isFirstUniqueRun()
+{
+	if (this->uniqueRunKey.empty() || Clippy::UniqueRunMap.find(this->uniqueRunKey) == Clippy::UniqueRunMap.end() || !Clippy::UniqueRunMap[this->uniqueRunKey])
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void Clippy::setIsEnabled(bool isEnabled)

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="812">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="815">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
@@ -141,12 +141,12 @@
   </object>
   <object id="799" name="cinematic-marker" type="object" x="7288" y="2408" width="128" height="128">
    <properties>
-    <property name="tag" value="walk-to"/>
+    <property name="tag" value="walk-to-back"/>
    </properties>
   </object>
-  <object id="800" name="trigger" type="object" x="8171" y="1677.47" width="602" height="1105.06">
+  <object id="800" name="trigger" type="object" x="8147" y="1685.47" width="166" height="1105.06">
    <properties>
-    <property name="send-event" value="fight-gorgon"/>
+    <property name="send-event" value="walk-to-back"/>
    </properties>
   </object>
   <object id="802" name="cinematic-marker" type="object" x="4163.27" y="1611.76" width="128" height="128">
@@ -160,6 +160,16 @@
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="tag" value="quest-portal"/>
     <property name="transition" value="mage-portal"/>
+   </properties>
+  </object>
+  <object id="813" name="trigger" type="object" x="4633" y="1923.47" width="146" height="789.06">
+   <properties>
+    <property name="send-event" value="walk-to-front"/>
+   </properties>
+  </object>
+  <object id="814" name="cinematic-marker" type="object" x="5033.33" y="2394.67" width="128" height="128">
+   <properties>
+    <property name="tag" value="walk-to-front"/>
    </properties>
   </object>
  </objectgroup>
@@ -332,7 +342,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="decor front">
+ <objectgroup id="42" name="decor front" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -359,7 +369,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -370,7 +380,7 @@
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="277.57" y="3426.1" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="5752.81" y="2743" width="270" height="748"/>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

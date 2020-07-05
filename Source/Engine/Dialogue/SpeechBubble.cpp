@@ -39,6 +39,7 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 	this->speechBubbleNode = Node::create();
 	this->hasBound = false;
+	this->isDialogueRunning = false;
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 
@@ -73,12 +74,13 @@ void SpeechBubble::initializeListeners()
 	super::initializeListeners();
 }
 
-void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration, std::function<void()> onComplete, Direction direction)
+void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration, std::function<void()> onComplete, Direction direction, bool instant)
 {
 	const Size padding = Size(16.0f, 16.0f);
 	const float centerAutoOffset = 256.0f;
 	const Size triangleSize = Size(16.0f, 32.0f);
 
+	this->isDialogueRunning = true;
 	this->voiceSound->setSoundResource(soundResource);
 
 	if (!this->hasBound && this->uiBound)
@@ -112,7 +114,11 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string sou
 
 	this->text->setLocalizedString(localizedString);
 	this->text->setDimensions(320.0f, 0.0f);
-	TypeWriterEffect::runTypeWriterEffect(this, this->text);
+
+	if (!instant)
+	{
+		TypeWriterEffect::runTypeWriterEffect(this, this->text);
+	}
 
 	Size textSize = this->text->getContentSize();
 	std::vector<Vec2> trianglePoints = std::vector<Vec2>();
@@ -168,7 +174,10 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string sou
 	this->bubble->drawSolidRect(source, dest, SpeechBubble::BubbleColor);
 	this->bubble->drawRect(source, dest, SpeechBubble::BubbleEdgeColor);
 
-	this->voiceSound->play();
+	if (!this->voiceSound->isPlaying())
+	{
+		this->voiceSound->play();
+	}
 
 	if (sustainDuration >= 0.0f)
 	{
@@ -188,10 +197,16 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string sou
 	}
 }
 
+bool SpeechBubble::isRunning()
+{
+	return this->isDialogueRunning;
+}
+
 void SpeechBubble::hideDialogue()
 {
 	TypeWriterEffect::cancelEffect(this->text);
 
+	this->isDialogueRunning = false;
 	this->bubble->runAction(FadeTo::create(0.5f, 0));
 	this->stem->runAction(FadeTo::create(0.5f, 0));
 	this->text->runAction(FadeTo::create(0.5f, 0));

@@ -187,7 +187,9 @@ void RepairRam::onRamInteract()
 			CallFunc::create([=]()
 			{
 				this->rollSound->stopAndFadeOut();
-				this->impactSound->play();
+
+				// Disabled -- play on the next scene instead
+				// this->impactSound->play();
 			}),
 			nullptr
 		));

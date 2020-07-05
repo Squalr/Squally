@@ -17,6 +17,7 @@ public:
 	static int getDebugLevel();
 	
 	static volatile bool IsDeveloperBuild;
+	static volatile bool ShowFPSInfo;
 
 protected:
 	DeveloperModeController();

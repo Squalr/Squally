@@ -51,10 +51,21 @@ void SquallyCameraFollowBehavior::onLoad()
 		}
 	}));
 
-	// Request camera & hud track player
+	// This event fires after squally is relayered properly after loading.
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventSquallySpawned, [=](EventCustom* eventCustom)
+	{
+		CameraTrackingData* data = GameCamera::getInstance()->getCurrentTrackingData();
+
+		if (data != nullptr)
+		{
+			data->zoom = this->getLayerZoom();
+		}
+	}));
+	
+	// Request camera & hud track player. Squally may not be in the correct layer yet.
 	CameraTrackingData trackingData = CameraTrackingData(
 		this->squally,
-		Vec2(0.0f, 128.0f),
+		Vec2(0.0f, 192.0f),
 		Vec2(128.0f, 96.0f),
 		CameraTrackingData::CameraScrollType::Rectangle,
 		Vec2(0.075f, 0.075f),

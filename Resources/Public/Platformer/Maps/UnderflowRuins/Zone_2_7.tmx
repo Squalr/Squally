@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="864">
+ <objectgroup id="1" name="meta" visible="0">
+  <properties>
+   <property name="background" value="BlueSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="7"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="113" name="decor -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="836" name="Generic/Background/Cloud1" type="decor" x="3540.47" y="751.61" width="690" height="500"/>
+  <object id="837" name="Generic/Background/Cloud2" type="decor" x="2250.88" y="867.576" width="570" height="271"/>
+  <object id="838" name="Generic/Background/Cloud3" type="decor" x="2929.79" y="973.227" width="390" height="137"/>
+  <object id="839" name="Generic/Background/Cloud4" type="decor" x="3757.24" y="1020.77" width="614" height="122"/>
+  <object id="840" name="Generic/Background/Cloud6" type="decor" x="2951.18" y="945.303" width="1539" height="251"/>
+  <object id="841" name="Generic/Background/Cloud5" type="decor" x="2005.36" y="938.773" width="864" height="177"/>
+  <object id="842" name="Generic/Background/Cloud7" type="decor" x="1800.32" y="889.652" width="1159" height="372"/>
+  <object id="843" name="Generic/Background/Cloud8" type="decor" x="2644.32" y="786.182" width="761" height="387"/>
+  <object id="844" name="Generic/Background/Cloud9" type="decor" x="3204.77" y="721.348" width="637" height="481"/>
+  <object id="861" name="Generic/Background/Cloud1" type="decor" x="1059.79" y="726" width="690" height="500"/>
+  <object id="862" name="Generic/Background/Cloud4" type="decor" x="1276.56" y="995.16" width="614" height="122"/>
+  <object id="863" name="Generic/Background/Cloud6" type="decor" x="470.5" y="919.693" width="1539" height="251"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="637.638" y="1065.94" width="3691.33" height="234.06"/>
+  <object id="856" name="ruins-gray-thick" type="terrain" x="3080.34" y="956.97" width="331.33" height="343.06"/>
+ </objectgroup>
+ <objectgroup id="114" name="decor" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="848" name="Ruins/Well" type="decor" x="3804.43" y="873.091" width="312" height="224"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="813" name="edge-portal" type="object" x="-5.89839" y="979.15" width="640" height="200">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="map" value="UnderflowRuins/Zone_2_0"/>
+    <property name="transition" value="rope"/>
+   </properties>
+  </object>
+  <object id="821" name="portal" type="object" x="3834.5" y="811.931" width="256" height="256">
+   <properties>
+    <property name="map" value="UnderflowRuins/Zone_2_5"/>
+    <property name="transition" value="down"/>
+   </properties>
+  </object>
+  <object id="853" name="trigger" type="object" x="1186" y="-8" width="178" height="1072">
+   <properties>
+    <property name="send-event" value="talk-to-zeus"/>
+   </properties>
+  </object>
+  <object id="854" name="metal-chest" type="object" x="3181.72" y="830.122" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-mirror"/>
+    <property name="send-event" value="ur-mirror"/>
+   </properties>
+  </object>
+  <object id="855" name="cinematic-marker" type="object" x="3182.28" y="738.545" width="128" height="128">
+   <properties>
+    <property name="listen-event" value="ur-mirror"/>
+    <property name="quest" value="obtain-mirror"/>
+    <property name="quest-line" value="cure-town"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="851" name="angel" type="entity" x="2012.33" y="938" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="angel-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="852" name="zeus" type="entity" x="866" y="932" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="talk-to-zeus"/>
+    <property name="quest-line" value="cure-town"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="3593.07" y="938.96" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="816" name="spawn" type="object" x="3896.3" y="940.121" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="skys-reach"/>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="849" name="spawn" type="object" x="768.788" y="936.909" width="128" height="128">
+   <properties>
+    <property name="map-banner" value="skys-reach"/>
+    <property name="transition" value="rope"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor +1" visible="0">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="823" name="Generic/Background/Cloud1" type="decor" x="2034.41" y="772.822" width="690" height="500">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="824" name="Generic/Background/Cloud2" type="decor" x="2559.97" y="1022.12" width="570" height="271">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="825" name="Generic/Background/Cloud3" type="decor" x="3047.97" y="1012.62" width="390" height="137">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="826" name="Generic/Background/Cloud4" type="decor" x="3337.97" y="991.621" width="614" height="122">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="827" name="Generic/Background/Cloud6" type="decor" x="1729.97" y="927.121" width="1539" height="251">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="828" name="Generic/Background/Cloud5" type="decor" x="3565.97" y="923.621" width="864" height="177">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="829" name="Generic/Background/Cloud7" type="decor" x="3415.47" y="886.621" width="1159" height="372">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="830" name="Generic/Background/Cloud8" type="decor" x="2459.47" y="880.121" width="761" height="387">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="831" name="Generic/Background/Cloud9" type="decor" x="3074.47" y="848.621" width="637" height="481">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="857" name="Generic/Background/Cloud4" type="decor" x="1093.5" y="958.5" width="614" height="122">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="858" name="Generic/Background/Cloud5" type="decor" x="1321.5" y="890.5" width="864" height="177">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="859" name="Generic/Background/Cloud7" type="decor" x="1171" y="853.5" width="1159" height="372">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="860" name="Generic/Background/Cloud9" type="decor" x="830" y="815.5" width="637" height="481">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

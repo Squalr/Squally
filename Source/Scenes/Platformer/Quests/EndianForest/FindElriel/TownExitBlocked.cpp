@@ -109,15 +109,15 @@ void TownExitBlocked::attachChironBehavior()
 	this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
 
 	this->chironCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 8.0f),
-		(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
+		CollisionObject::createCapsulePolygon(this->chiron->getEntitySize(), 8.0f),
+		(CollisionType)PlatformerCollisionType::Cinematic,
 		CollisionObject::Properties(false, false)
 	);
 	this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
 
 	this->chiron->addChild(this->chironCollision);
 
-	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData collisionData)
+	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
 		{

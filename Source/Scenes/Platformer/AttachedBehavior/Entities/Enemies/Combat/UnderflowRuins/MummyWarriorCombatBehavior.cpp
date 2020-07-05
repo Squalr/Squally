@@ -34,7 +34,7 @@ MummyWarriorCombatBehavior::MummyWarriorCombatBehavior(GameObject* owner) : supe
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeed(1.25f);
+	this->setTimelineSpeedBase(1.25f);
 }
 
 MummyWarriorCombatBehavior::~MummyWarriorCombatBehavior()

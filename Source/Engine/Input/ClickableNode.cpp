@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Sound/Sound.h"
@@ -63,7 +64,17 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->modifierReleasedListener = nullptr;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
 	this->intersectFunction = nullptr;
-	this->debugHitbox = DrawNode::create();
+	this->isNeverHandleEnabled = false;
+
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugHitbox = DrawNode::create();
+		this->debugHitbox->setVisible(false);
+	}
+	else
+	{
+		this->debugHitbox = nullptr;
+	}
 
 	this->clickSound = Sound::create();
 	this->mouseOverSound = Sound::create(SoundResources::Menus_ButtonRollover1);
@@ -71,14 +82,17 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->content = content;
 	this->contentSelected = contentSelected;
 
-	this->debugHitbox->setVisible(false);
-
 	this->debugCachedPos = Vec2::ZERO;
 	this->setContentSize(this->content == nullptr ? Size(256.0f, 128.0f) : this->content->getContentSize());
 
 	this->addChild(this->content);
 	this->addChild(this->contentSelected);
-	this->addChild(this->debugHitbox);
+
+	if (this->debugHitbox != nullptr)
+	{
+		this->addChild(this->debugHitbox);
+	}
+
 	this->addChild(this->clickSound);
 	this->addChild(this->mouseOverSound);
 }
@@ -139,7 +153,10 @@ void ClickableNode::initializeListeners()
 
 void ClickableNode::setDebugDrawPosition()
 {
-	this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
+	}
 }
 
 bool ClickableNode::canInteract()
@@ -159,25 +176,34 @@ void ClickableNode::setContentSize(const Size & size)
 {
 	super::setContentSize(size);
 
-	this->debugHitbox->clear();
-	this->debugHitbox->drawRect(Vec2::ZERO, Vec2(size), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
-	this->debugHitbox->setContentSize(size);
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->clear();
+		this->debugHitbox->drawRect(Vec2::ZERO, Vec2(size), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
+		this->debugHitbox->setContentSize(size);
 
-	this->setDebugDrawPosition();
+		this->setDebugDrawPosition();
+	}
 }
 
 void ClickableNode::onDeveloperModeEnable(int debugLevel)
 {
 	super::onDeveloperModeEnable(debugLevel);
 
-	this->debugHitbox->setVisible(true);
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->setVisible(true);
+	}
 }
 
 void ClickableNode::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
-	this->debugHitbox->setVisible(false);
+	if (this->debugHitbox != nullptr)
+	{
+		this->debugHitbox->setVisible(false);
+	}
 }
 
 void ClickableNode::setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible)
@@ -366,7 +392,10 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 			this->showContent(this->contentSelected);
 
 			// Set args as handled. Caller must un-handle in the callback if they choose.
-			args->handle();
+			if (!this->isNeverHandleEnabled)
+			{
+				args->handle();
+			}
 		}
 
 		// Mouse over callback
@@ -401,7 +430,10 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 			if (!this->wasAnywhereClicked)
 			{
 				// Set args as handled. Caller must un-handle in either callback if they choose.
-				args->handle();
+				if (!this->isNeverHandleEnabled)
+				{
+					args->handle();
+				}
 
 				if (this->mousePressEvent != nullptr)
 				{
@@ -457,7 +489,10 @@ void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* even
 		}
 
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handle();
+		if (!this->isNeverHandleEnabled)
+		{
+			args->handle();
+		}
 
 		// Mouse click callback. IMPORTANT: Do not access any references to 'this' from here to the end of the function, in the case where this object is deleted in a callback
 		this->mouseClickEvent(args);
@@ -479,7 +514,10 @@ void ClickableNode::mouseScroll(InputEvents::MouseEventArgs* args, EventCustom* 
 	if (!args->isHandled() && this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
 	{
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handle();
+		if (!this->isNeverHandleEnabled)
+		{
+			args->handle();
+		}
 
 		this->mouseScrollEvent(args);
 	}
@@ -544,4 +582,9 @@ bool ClickableNode::intersects(cocos2d::Vec2 mousePos)
 	}
 
 	return GameUtils::intersects(this, mousePos);
+}
+
+void ClickableNode::neverHandle()
+{
+	this->isNeverHandleEnabled = true;
 }

@@ -49,7 +49,7 @@ void MechanicalFlailClippyAngleBehavior::onLoad()
 			localizedString->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create());
 		}
 
-		return ScrappyClippy::create(localizedString);
+		return ScrappyClippy::create(localizedString, "mechanical-flail");
 	});
 }
 

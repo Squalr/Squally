@@ -31,9 +31,9 @@ public:
 	
 	void toggleHackable(bool isHackable);
 	void toggleAllowFx(bool allowFx);
-	void registerCode(HackableCode* hackableCode);
+	void registerCode(HackableCode* hackableCode, bool refreshCooldowns = true);
 	void unregisterCode(HackableCode* hackableCode, bool forceRestoreState = false);
-	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
+	void registerHackAbility(HackActivatedAbility* hackActivatedAbility, bool refreshCooldowns = true);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 	cocos2d::Node* getHackParticlesNode();
@@ -56,6 +56,7 @@ protected:
 	void onHackerModeDisable() override;
 	void onDespawn() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
+	void repositionHackButtons();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getRainOffset();
 	virtual cocos2d::Vec2 getButtonOffset();

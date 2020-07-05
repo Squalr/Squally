@@ -14,7 +14,7 @@ public:
 	virtual void startDialogue() = 0;
 
 protected:
-	Clippy();
+	Clippy(std::string uniqueRunKey = "");
 	virtual ~Clippy();
 
 	void initializePositions() override;
@@ -25,6 +25,11 @@ protected:
 private:
 	typedef SmartNode super;
 
+	bool isFirstUniqueRun();
+
 	SpeechBubble* speechBubble;
 	bool isEnabled;
+	std::string uniqueRunKey;
+
+	static std::map<std::string, bool> UniqueRunMap;
 };

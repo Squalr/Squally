@@ -50,6 +50,7 @@ namespace UIResources
 	extern const std::string HUD_Eye;
 	extern const std::string HUD_EyeSlot;
 	extern const std::string HUD_FillBlue;
+	extern const std::string HUD_FillCooldown;
 	extern const std::string HUD_FillGray;
 	extern const std::string HUD_FillGreen;
 	extern const std::string HUD_FillOrange;
@@ -171,6 +172,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_AlchemyBrew;
 	extern const std::string Menus_Icons_AlchemyPot;
 	extern const std::string Menus_Icons_Anchor;
+	extern const std::string Menus_Icons_Ankh;
 	extern const std::string Menus_Icons_Anvil;
 	extern const std::string Menus_Icons_ArcheryTarget;
 	extern const std::string Menus_Icons_Arrow;

@@ -134,7 +134,7 @@ void EdgePortal::initializeListeners()
 		}
 	}
 
-	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
 	{
 		for (auto arrow : this->edgeArrows)
 		{
@@ -144,12 +144,16 @@ void EdgePortal::initializeListeners()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->arrowHintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->arrowHintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
 	{
-		for (auto arrow : this->edgeArrows)
+		if (!this->arrowHintCollision->hasCollisions())
 		{
-			arrow->runAction(FadeTo::create(0.25f, 0));
+			for (auto arrow : this->edgeArrows)
+			{
+				arrow->runAction(FadeTo::create(0.25f, 0));
+			}
 		}
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }

@@ -8,13 +8,13 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string EntityDisableCollisionBehavior::MapKey = "disable-collision";
+const std::string EntityDisableCollisionBehavior::MapKey = "disable-entity-collision";
 
 EntityDisableCollisionBehavior* EntityDisableCollisionBehavior::create(GameObject* owner)
 {
@@ -41,8 +41,9 @@ EntityDisableCollisionBehavior::~EntityDisableCollisionBehavior()
 
 void EntityDisableCollisionBehavior::onLoad()
 {
-	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
+		behavior->entityCollision->setPhysicsEnabled(false);
 		behavior->movementCollision->setPhysicsEnabled(false);
 		behavior->leftCollision->setPhysicsEnabled(false);
 		behavior->rightCollision->setPhysicsEnabled(false);

@@ -35,7 +35,7 @@ DoubleSlash::DoubleSlash(int damageMin, int damageMax, float attackDuration, flo
 		0,
 		attackDuration,
 		recoverDuration,
-		true
+		TargetingType::Multi
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1);
@@ -76,7 +76,7 @@ void DoubleSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 {
 	super::performAttack(owner, targets);
 
-	for (int index = 0; index < int(targets.size()); index++)
+	for (int index = 0; index < std::min(2, int(targets.size())); index++)
 	{
 		this->runAction(Sequence::create(
 			DelayTime::create(float(index) * this->weaveDelay),
