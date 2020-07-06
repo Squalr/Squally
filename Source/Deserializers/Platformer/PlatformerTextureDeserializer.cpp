@@ -56,6 +56,8 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 		PlatformerTextureDeserializer::Deserializers[ShipAltTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipAltTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ShipDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ShipTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[StoneTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[StoneDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[TempleDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[TempleGreenTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleGreenTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[TempleGreenDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleGreenDarkTexture::create(properties); };

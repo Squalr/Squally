@@ -53,6 +53,8 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[ShadeGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTerrain::create(properties); };
 	this->deserializers[ShipAltTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipAltTerrain::create(properties); };
 	this->deserializers[ShipTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipTerrain::create(properties); };
+	this->deserializers[StoneTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneTerrain::create(properties); };
+	this->deserializers[StoneDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneDarkTerrain::create(properties); };
 	this->deserializers[TempleGreenTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleGreenTerrain::create(properties); };
 	this->deserializers[TempleDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDarkTerrain::create(properties); };
 	this->deserializers[TempleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleTerrain::create(properties); };

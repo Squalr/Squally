@@ -217,7 +217,7 @@
     <property name="reward-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="797" name="caged-zebra" type="object" x="1877.09" y="950.97" width="196" height="112"/>
+  <object id="797" name="caged-giraffe" type="object" x="1877.09" y="950.97" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

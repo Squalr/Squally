@@ -25,6 +25,8 @@
 #include "Scenes/Platformer/Terrain/ShadeGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/ShipAltTerrain.h"
 #include "Scenes/Platformer/Terrain/ShipTerrain.h"
+#include "Scenes/Platformer/Terrain/StoneDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/StoneTerrain.h"
 #include "Scenes/Platformer/Terrain/TempleGreenTerrain.h"
 #include "Scenes/Platformer/Terrain/TempleDarkTerrain.h"
 #include "Scenes/Platformer/Terrain/TempleTerrain.h"

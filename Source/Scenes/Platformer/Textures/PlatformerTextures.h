@@ -25,6 +25,8 @@
 #include "Scenes/Platformer/Textures/ShipAltTexture.h"
 #include "Scenes/Platformer/Textures/ShipDarkTexture.h"
 #include "Scenes/Platformer/Textures/ShipTexture.h"
+#include "Scenes/Platformer/Textures/StoneDarkTexture.h"
+#include "Scenes/Platformer/Textures/StoneTexture.h"
 #include "Scenes/Platformer/Textures/TempleDarkTexture.h"
 #include "Scenes/Platformer/Textures/TempleGreenDarkTexture.h"
 #include "Scenes/Platformer/Textures/TempleGreenTexture.h"
