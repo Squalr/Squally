@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="60" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="119" nextobjectid="971">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="58" name="background">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="mines" type="terrain" x="2800.18" y="1931.39">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-3984.38,-2814.79 5937.08,-2808.58 5925.64,1635.49 -3966.99,1617.4"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="67" name="water -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="947" name="water" type="object" x="3639.71" y="1136.11" width="741.36" height="2873.47"/>
+ </objectgroup>
+ <objectgroup id="64" name="decor -12 bg">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="834" name="Mines/CaveDoor3" type="decor" x="1554.25" y="762.197" width="376" height="332">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="835" name="Caverns/CaveDoor4" type="decor" x="5731.7" y="714.03" width="333" height="385">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="836" name="Mines/CaveDoor5" type="decor" x="5791.32" y="-613.864" width="240" height="164">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="884" name="Mines/ScreamingDoor" type="decor" x="3606" y="127.788" width="800" height="1114"/>
+  <object id="885" name="Caverns/TigerDoor" type="decor" x="2747.39" y="-1716.97" width="688" height="528">
+   <properties>
+    <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="92" name="decor -12 bg fg">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="63" name="terrain -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="818" name="mines" type="terrain" x="-948.54" y="1098" width="4595.38" height="2508"/>
+  <object id="819" name="mines" type="terrain" x="4380.43" y="1098" width="4512.11" height="2508"/>
+  <object id="930" name="mines" type="terrain" x="-945.69" y="-758" width="2131.38" height="4372"/>
+  <object id="934" name="mines" type="terrain" x="6486.31" y="-826" width="2131.38" height="4372"/>
+ </objectgroup>
+ <objectgroup id="82" name="terrain -12 fg">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="869" name="mines" type="terrain" x="3219.52" y="1129.39" width="402.08" height="810.667"/>
+  <object id="870" name="mines" type="terrain" x="4404.73" y="1132.27" width="371.08" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="91" name="decor -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="93" name="objects -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="889" name="mayan-door" type="object" x="4167" y="-1707" width="478" height="478">
+   <properties>
+    <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="96" name="player_layer -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="3.5"/>
+  </properties>
+  <object id="903" name="warp" type="object" x="3260" y="840.364" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="904" name="warp" type="object" x="4491.79" y="843.364" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-D"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-D"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="118" name="fireflies -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="83" name="water -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="871" name="water-disabled" type="object" x="3265.99" y="1182.78" width="1493.36" height="2837.11"/>
+  <object id="949" name="water-disabled" type="object" x="1787.2" y="1452.48" width="1493.36" height="2837.11"/>
+  <object id="957" name="water-disabled" type="object" x="4755.2" y="1464.48" width="1493.36" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="81" name="terrain -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="867" name="mines" type="terrain" x="3201.86" y="1162.73" width="396.08" height="810.667"/>
+  <object id="868" name="mines" type="terrain" x="4430.07" y="1165.61" width="369.08" height="810.667"/>
+  <object id="941" name="mines" type="terrain" x="2419.71" y="1162.73" width="223.686" height="810.667"/>
+  <object id="944" name="mines" type="terrain" x="313.649" y="-261.512" width="308.534" height="2234.91"/>
+ </objectgroup>
+ <objectgroup id="117" name="fireflies -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="water -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="873" name="water" type="object" x="3273.99" y="1213.78" width="1489.36" height="2837.11"/>
+  <object id="950" name="water-disabled" type="object" x="1795.2" y="1483.48" width="1489.36" height="2837.11"/>
+  <object id="958" name="water-disabled" type="object" x="4763.2" y="1495.48" width="1489.36" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="80" name="terrain -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="865" name="mines" type="terrain" x="3181.85" y="1196.06" width="381.08" height="810.667"/>
+  <object id="866" name="mines" type="terrain" x="4464.73" y="1198.94" width="362.413" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="116" name="fireflies -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="water -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="874" name="water" type="object" x="3277.66" y="1239.11" width="1485.36" height="2837.11"/>
+  <object id="951" name="water-disabled" type="object" x="1798.87" y="1508.81" width="1485.36" height="2837.11"/>
+  <object id="959" name="water-disabled" type="object" x="4766.87" y="1520.81" width="1485.36" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="76" name="terrain -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="857" name="mines" type="terrain" x="3167.86" y="1225.39" width="351.08" height="810.667"/>
+  <object id="858" name="mines" type="terrain" x="4494.74" y="1228.27" width="355.747" height="810.667"/>
+  <object id="936" name="mines" type="terrain" x="3909.41" y="1228.27" width="212.837" height="810.667"/>
+  <object id="937" name="mines" type="terrain" x="2627.86" y="1225.39" width="265.08" height="810.667"/>
+  <object id="938" name="mines" type="terrain" x="5389.41" y="-250.518" width="213.201" height="2289.45"/>
+  <object id="942" name="mines" type="terrain" x="1027.86" y="1225.39" width="271.141" height="810.667"/>
+  <object id="945" name="mines" type="terrain" x="6231.83" y="934.331" width="246.534" height="1104.61"/>
+ </objectgroup>
+ <objectgroup id="115" name="fireflies -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="86" name="water -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="875" name="water" type="object" x="3281.5" y="1264.78" width="1483.78" height="2837.11"/>
+  <object id="952" name="water-disabled" type="object" x="1802.71" y="1534.48" width="1483.78" height="2837.11"/>
+  <object id="960" name="water-disabled" type="object" x="4770.71" y="1546.48" width="1483.78" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="79" name="terrain -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="863" name="mines" type="terrain" x="3147.19" y="1248.72" width="329.08" height="810.667"/>
+  <object id="864" name="mines" type="terrain" x="4521.4" y="1251.61" width="346.413" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="114" name="fireflies -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="87" name="water -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="876" name="water" type="object" x="3283.87" y="1291.44" width="1483.78" height="2837.11"/>
+  <object id="953" name="water-disabled" type="object" x="1805.08" y="1561.14" width="1483.78" height="2837.11"/>
+  <object id="961" name="water-disabled" type="object" x="4773.08" y="1573.14" width="1483.78" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="78" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="861" name="mines" type="terrain" x="3142.85" y="1275.39" width="309.08" height="810.667"/>
+  <object id="862" name="mines" type="terrain" x="4552.06" y="1278.27" width="329.08" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="113" name="fireflies -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="88" name="water -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="877" name="water" type="object" x="3265.68" y="1315.45" width="1505" height="2837.11"/>
+  <object id="954" name="water-disabled" type="object" x="1786.89" y="1585.15" width="1505" height="2837.11"/>
+  <object id="962" name="water-disabled" type="object" x="4754.89" y="1597.15" width="1505" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="77" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="859" name="mines" type="terrain" x="3134.19" y="1300.72" width="293.08" height="810.667"/>
+  <object id="860" name="mines" type="terrain" x="4578.73" y="1303.61" width="311.747" height="810.667"/>
+  <object id="939" name="mines" type="terrain" x="5120" y="1280" width="213.201" height="810.667"/>
+  <object id="940" name="mines" type="terrain" x="1831.58" y="1286.67" width="176.837" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="112" name="fireflies -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="89" name="water -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="878" name="water" type="object" x="3273.74" y="1344.45" width="1501.97" height="2837.11"/>
+  <object id="955" name="water-disabled" type="object" x="1794.95" y="1614.15" width="1501.97" height="2837.11"/>
+  <object id="963" name="water-disabled" type="object" x="4762.95" y="1626.15" width="1501.97" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="75" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="855" name="mines" type="terrain" x="3132.19" y="1326.06" width="281.08" height="810.667"/>
+  <object id="856" name="mines" type="terrain" x="4602.73" y="1328.94" width="287.747" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="111" name="fireflies -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="90" name="water -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="879" name="water" type="object" x="3266.65" y="1370.45" width="1509.03" height="2837.11"/>
+  <object id="956" name="water-disabled" type="object" x="1787.86" y="1640.15" width="1509.03" height="2837.11"/>
+  <object id="964" name="water-disabled" type="object" x="4755.86" y="1652.15" width="1509.03" height="2837.11"/>
+ </objectgroup>
+ <objectgroup id="74" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="853" name="mines" type="terrain" x="3133.19" y="1352.06" width="269.08" height="810.667"/>
+  <object id="854" name="mines" type="terrain" x="4619.4" y="1354.94" width="269.08" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="110" name="fireflies -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="66" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="839" name="water" type="object" x="3635.32" y="1449.45" width="749.36" height="2409.11"/>
+ </objectgroup>
+ <objectgroup id="99" name="terrain -3 bg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="919" name="wood" type="terrain" x="3391.21" y="1378.91" width="1242.9" height="130.18"/>
+ </objectgroup>
+ <objectgroup id="61" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="mines" type="terrain" x="-52.54" y="1378" width="3455.75" height="844"/>
+  <object id="812" name="mines" type="terrain" x="4620.79" y="1378" width="3279.75" height="844"/>
+ </objectgroup>
+ <objectgroup id="103" name="terrain -3 fg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="931" name="mines" type="terrain" x="-1385.69" y="-274" width="1651.38" height="3228"/>
+  <object id="935" name="mines" type="terrain" x="7466.31" y="-426" width="1651.38" height="3228"/>
+ </objectgroup>
+ <objectgroup id="62" name="decor -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="815" name="Mines/CaveHouse5" type="decor" x="4970" y="626.5" width="812" height="755">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="817" name="Mines/CaveHouse4" type="decor" x="1303.5" y="181.5" width="1729" height="1195">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="882" name="Mines/CaveHouse1" type="decor" x="6123.02" y="269" width="1017" height="1110">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="97" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="910" name="portal" type="object" x="6490.42" y="1057.52" width="256" height="320">
+   <properties>
+    <property name="map" value="DataMines/Town_Inn"/>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
+  <object id="912" name="portal" type="object" x="5270" y="1190" width="256" height="192">
+   <properties>
+    <property name="map" value="DataMines/Home_Dawn"/>
+    <property name="transition" value="dawn"/>
+   </properties>
+  </object>
+  <object id="913" name="portal" type="object" x="2265.21" y="1188.12" width="256" height="192">
+   <properties>
+    <property name="map" value="DataMines/Home_Finch"/>
+    <property name="transition" value="finch"/>
+   </properties>
+  </object>
+  <object id="925" name="portal" type="object" x="1851.82" y="512.182" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Home_Finch"/>
+    <property name="transition" value="finch-top"/>
+   </properties>
+  </object>
+  <object id="968" name="portal" type="object" x="6489.45" y="513.334" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Town_Inn"/>
+    <property name="transition" value="inn-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="95" name="player_layer -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+  <object id="898" name="warp" type="object" x="1565.33" y="1120" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="899" name="warp" type="object" x="5780.61" y="1124.61" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-B"/>
+    <property name="zoom" type="float" value="1.5"/>
+   </properties>
+  </object>
+  <object id="901" name="warp" type="object" x="3136" y="1122" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-C"/>
+   </properties>
+  </object>
+  <object id="902" name="warp" type="object" x="4626" y="1118" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-D"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-D"/>
+   </properties>
+  </object>
+  <object id="909" name="spawn" type="object" x="6549.76" y="1247.7" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
+  <object id="911" name="spawn" type="object" x="5332" y="1254" width="128" height="128">
+   <properties>
+    <property name="transition" value="dawn"/>
+   </properties>
+  </object>
+  <object id="915" name="spawn" type="object" x="2328" y="1250" width="128" height="128">
+   <properties>
+    <property name="transition" value="finch"/>
+   </properties>
+  </object>
+  <object id="924" name="spawn" type="object" x="1915.82" y="638.848" width="128" height="128">
+   <properties>
+    <property name="transition" value="finch-top"/>
+   </properties>
+  </object>
+  <object id="970" name="spawn" type="object" x="6557.45" y="641.333" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="109" name="fireflies -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="73" name="water -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="852" name="water" type="object" x="-84.92" y="1453.87" width="7887.78" height="1184.26"/>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="849" name="mines" type="terrain" x="1557.86" y="1476.39" width="277.08" height="810.667"/>
+  <object id="850" name="mines" type="terrain" x="5776.65" y="1463.97" width="269.08" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="108" name="fireflies -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="100" name="water -1.5">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="921" name="water" type="object" x="81.075" y="1541.87" width="7861.85" height="1184.26"/>
+ </objectgroup>
+ <objectgroup id="72" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="851" name="water" type="object" x="-140.92" y="1617.87" width="7861.85" height="1184.26"/>
+ </objectgroup>
+ <objectgroup id="70" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="847" name="mines" type="terrain" x="1559.31" y="1567.48" width="277.08" height="810.667"/>
+  <object id="848" name="mines" type="terrain" x="5776.1" y="1571.06" width="269.08" height="810.667"/>
+ </objectgroup>
+ <objectgroup id="107" name="fireflies -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="65" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="98" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="918" name="wood" type="terrain" x="3618.31" y="1661.91" width="778.534" height="156.182"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="786" name="mines" type="terrain" x="-190.54" y="1658" width="3824.6" height="844"/>
+  <object id="808" name="mines" type="terrain" x="4377.1" y="1658" width="3233.44" height="844"/>
+ </objectgroup>
+ <objectgroup id="104" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="932" name="mines" type="terrain" x="-228.3" y="-174" width="488.6" height="2636"/>
+  <object id="933" name="mines" type="terrain" x="7463.7" y="-226" width="488.6" height="2636"/>
+ </objectgroup>
+ <objectgroup id="94" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="891" name="Generic/SignAlch" type="decor" x="2795.83" y="1162.77" width="523" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="892" name="Generic/SignSmith" type="decor" x="5847.47" y="1142.95" width="523" height="265">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="803" name="Caverns/CaveHouse2" type="decor" x="6147.76" y="960.303" width="1306" height="698">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="804" name="Mines/CaveHouse3" type="decor" x="263.5" y="462" width="1299" height="1197">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="883" name="Mines/CaveHouse6" type="decor" x="1923.3" y="973.561" width="1206" height="681">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="60" name="decor fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="785" name="portal" type="object" x="6869.17" y="1401.17" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Town_Smith"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="907" name="portal" type="object" x="2349.94" y="1399.39" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Town_Alch"/>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="916" name="portal" type="object" x="843.879" y="1404.33" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Home_Mildred"/>
+    <property name="transition" value="mildred"/>
+   </properties>
+  </object>
+  <object id="922" name="portal" type="object" x="812" y="756" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Home_Mildred"/>
+    <property name="transition" value="mildred-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.25"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="5005.48" y="1530.62" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn" type="object" x="6930.67" y="1530" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="897" name="warp" type="object" x="1561.33" y="1405.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="900" name="warp" type="object" x="5781.33" y="1404" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+  <object id="906" name="spawn" type="object" x="2416.97" y="1530.06" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="917" name="spawn" type="object" x="901.818" y="1535" width="128" height="128">
+   <properties>
+    <property name="transition" value="mildred"/>
+   </properties>
+  </object>
+  <object id="923" name="spawn" type="object" x="880" y="884" width="128" height="128">
+   <properties>
+    <property name="transition" value="mildred-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="68" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="841" name="water" type="object" x="3635.32" y="1751.45" width="747.663" height="1078.2"/>
+ </objectgroup>
+ <objectgroup id="69" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="843" name="mines" type="terrain" x="3347.4" y="1745.33" width="286.655" height="810.667">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="844" name="mines" type="terrain" x="4369.15" y="1745.88" width="332.716" height="810.667">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="water +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="928" name="water" type="object" x="3629.26" y="1869.63" width="747.663" height="1078.2"/>
+ </objectgroup>
+ <objectgroup id="101" name="terrain +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="926" name="mines" type="terrain" x="3395.88" y="1821.09" width="286.655" height="810.667">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="927" name="mines" type="terrain" x="4320.67" y="1821.64" width="326.656" height="810.667">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="105" name="fireflies +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+</map>

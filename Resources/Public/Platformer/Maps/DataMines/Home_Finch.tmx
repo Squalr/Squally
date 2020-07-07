@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="846">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="808" name="stone-dark" type="texture" x="-129.152" y="-77.1515" width="2226.42" height="2179.15"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor background 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="822" name="Generic/Shelf1" type="decor" x="4572.71" y="970.288" width="1135" height="753"/>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="entities background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="828" name="Mines/CaveDoor5" type="decor" x="1438.94" y="1798" width="240" height="164"/>
+ </objectgroup>
+ <objectgroup id="113" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="stone" type="terrain" x="-115.332" y="1961.94" width="2235.63" height="234.06"/>
+  <object id="836" name="stone" type="terrain" x="-75.7576" y="999.03">
+   <polygon points="0,-2.90909 -0.0152873,62.1148 2215.15,790.909 2212.12,-3.0303"/>
+  </object>
+  <object id="839" name="stone" type="terrain" x="-172.784" y="-191.755" width="2425.57" height="455.51"/>
+ </objectgroup>
+ <objectgroup id="114" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="837" name="stone" type="terrain" x="-211.391" y="-164.485" width="401.569" height="2327.51"/>
+  <object id="838" name="stone" type="terrain" x="1820.43" y="-165.755" width="401.569" height="2351.51"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="832" name="Mines/CaveWindow3" type="decor" x="527.152" y="1332.73" width="264" height="272">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="845" name="Mines/CaveWindow2" type="decor" x="654" y="434" width="237" height="241">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="1434.41" y="1708.24" width="237.527" height="256">
+   <properties>
+    <property name="map" value="DataMines/Town_Main"/>
+    <property name="transition" value="finch"/>
+   </properties>
+  </object>
+  <object id="818" name="reward-item" type="object" x="4827.13" y="1287.43" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="819" name="reward-item" type="object" x="5120.46" y="1287.43" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="820" name="reward-pool-hera" type="object" x="5128.51" y="1051.84" width="64" height="64"/>
+  <object id="821" name="reward-item" type="object" x="5406.48" y="1286.3" width="64" height="64">
+   <properties>
+    <property name="pool" value="reward-pool-hera"/>
+   </properties>
+  </object>
+  <object id="840" name="chest" type="object" x="951.152" y="868.667" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dm-generic"/>
+   </properties>
+  </object>
+  <object id="842" name="portal" type="object" x="643.691" y="424.658" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Town_Main"/>
+    <property name="transition" value="finch-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="finch" type="entity" x="658.183" y="1833.33" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="finch-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="dm-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="1525.83" y="1833.4" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="805" name="spawn" type="object" x="1493.2" y="1832.73" width="128" height="128">
+   <properties>
+    <property name="transition" value="finch"/>
+   </properties>
+  </object>
+  <object id="844" name="spawn" type="object" x="707.55" y="554.424" width="128" height="128">
+   <properties>
+    <property name="transition" value="finch-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

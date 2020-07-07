@@ -102,7 +102,7 @@ bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, Co
 	const float d = otherDepthCenter + collisionObjectB->collisionDepth;
 
 	// https://stackoverflow.com/questions/15726825/find-overlap-between-collinear-lines
-	return b - c >= 0 && d - a >= 0.0f;
+	return b - c >= 0.0f && d - a >= 0.0f;
 }
 
 void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)

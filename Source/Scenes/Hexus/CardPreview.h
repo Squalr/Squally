@@ -51,7 +51,7 @@ private:
 	};
 
 	CardPreview::PreviewData constructPreview(CardData* cardData, Card* card);
-	void updatePreview(PreviewData previewData);
+	void updatePreview(PreviewData previewData, Card* refCard);
 
 	cocos2d::Sprite* cardPad;
 	PreviewData currentPreviewData;

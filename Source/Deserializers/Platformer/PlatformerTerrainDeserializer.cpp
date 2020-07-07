@@ -44,6 +44,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[MarbleDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleDarkTerrain::create(properties); };
 	this->deserializers[MarbleGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTerrain::create(properties); };
 	this->deserializers[MarbleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleTerrain::create(properties); };
+	this->deserializers[MinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MinesTerrain::create(properties); };
 	this->deserializers[RuinsGrayDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayDarkTerrain::create(properties); };
 	this->deserializers[RuinsGrayTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayTerrain::create(properties); };
 	this->deserializers[RuinsGrayThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayThickTerrain::create(properties); };
@@ -52,6 +53,8 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[ShadeGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTerrain::create(properties); };
 	this->deserializers[ShipAltTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipAltTerrain::create(properties); };
 	this->deserializers[ShipTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipTerrain::create(properties); };
+	this->deserializers[StoneTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneTerrain::create(properties); };
+	this->deserializers[StoneDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneDarkTerrain::create(properties); };
 	this->deserializers[TempleGreenTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleGreenTerrain::create(properties); };
 	this->deserializers[TempleDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDarkTerrain::create(properties); };
 	this->deserializers[TempleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleTerrain::create(properties); };

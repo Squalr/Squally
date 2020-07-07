@@ -170,7 +170,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="892" name="fraya" type="entity" x="2550.19" y="543.339" width="128" height="128">
+  <object id="892" name="jasper" type="entity" x="2550.19" y="543.339" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
