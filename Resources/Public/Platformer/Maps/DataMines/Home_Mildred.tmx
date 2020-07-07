@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="843">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="844">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -76,7 +76,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="632.86" y="1587.21" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="603.86" y="1585.21" width="237.527" height="375.411">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
     <property name="transition" value="mildred"/>
@@ -99,7 +99,7 @@
    </properties>
   </object>
   <object id="837" name="caged-skunk" type="object" x="1478" y="928" width="196" height="112"/>
-  <object id="839" name="portal" type="object" x="926.691" y="448.658" width="256" height="256">
+  <object id="839" name="portal" type="object" x="948.691" y="449.325" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
     <property name="transition" value="mildred-top"/>
@@ -134,12 +134,12 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="692.65" y="1831.7" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="663.65" y="1829.7" width="128" height="128">
    <properties>
     <property name="transition" value="mildred"/>
    </properties>
   </object>
-  <object id="840" name="spawn" type="object" x="990.545" y="578.424" width="128" height="128">
+  <object id="840" name="spawn" type="object" x="1012.55" y="579.091" width="128" height="128">
    <properties>
     <property name="transition" value="mildred-top"/>
    </properties>

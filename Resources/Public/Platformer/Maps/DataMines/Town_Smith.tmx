@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="812">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="816">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -95,7 +95,13 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="decor background 2">
+ <objectgroup id="114" name="decor bg 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="814" name="Mines/CaveWindow3" type="decor" x="1488" y="462" width="264" height="272"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor bg 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -130,6 +136,17 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="807" name="stone" type="terrain" x="-49.0288" y="1064.61" width="2290.3" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="113" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="812" name="stone" type="terrain" x="1136" y="-152">
+   <polygon points="0,-2.90909 -0.0152873,62.1148 1531.15,782.909 1528.12,-11.0303"/>
+  </object>
+  <object id="815" name="stone" type="terrain" x="-668" y="-176">
+   <polygon points="510,-8.90909 509.985,1300.11 568.145,1303.06 931.927,456.706 1779.15,124.909 1780.12,-11.0303"/>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>

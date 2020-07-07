@@ -58,9 +58,12 @@ public:
 
 	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
 
+	Card* clone(bool relocateUI);
 	Operation toOperation(unsigned int immediate = 0);
 	void reveal();
 	void hide();
+	void showUI();
+	void hideUI();
 	void focus();
 	void unfocus();
 	void setFocusTint(cocos2d::Color3B color);
@@ -110,6 +113,7 @@ private:
 	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
 
+	CardStyle cardStyle;
 	bool isPlayerOwnedCard;
 	bool relocateUI;
 

@@ -46,6 +46,7 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->relocateUI = relocateUI;
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
+	this->cardStyle = cardStyle;
 
 	switch (data->getCardType())
 	{
@@ -149,6 +150,22 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 
 Card::~Card()
 {
+}
+
+Card* Card::clone(bool relocateUI)
+{
+	Card* card = Card::create(this->cardStyle, this->cardData, this->isPlayerOwnedCard, relocateUI);
+	
+	if (!this->cardBack->isVisible())
+	{
+		card->reveal();
+	}
+	else
+	{
+		card->hide();
+	}
+
+	return card;
 }
 
 void Card::onEnter()
@@ -407,6 +424,18 @@ void Card::hide()
 	this->cardBack->setVisible(true);
 	this->cardFront->setVisible(false);
 	this->cardSprite->setVisible(false);
+	this->cardLabel->setVisible(false);
+}
+
+void Card::showUI()
+{
+	this->cardFront->setVisible(true);
+	this->cardLabel->setVisible(true);
+}
+
+void Card::hideUI()
+{
+	this->cardFront->setVisible(false);
 	this->cardLabel->setVisible(false);
 }
 

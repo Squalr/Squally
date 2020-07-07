@@ -583,7 +583,7 @@
   </properties>
   <object id="963" name="portal" type="object" x="2425.3" y="793.879" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Zone_1_3"/>
+    <property name="map" value="DataMines/Zone_1_1"/>
     <property name="transition" value="warp-room"/>
    </properties>
   </object>

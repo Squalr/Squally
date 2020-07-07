@@ -61,6 +61,9 @@
   <object id="833" name="stone" type="terrain" x="-58.1197" y="-92.4245" width="2610.3" height="245.455"/>
  </objectgroup>
  <objectgroup id="113" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="830" name="stone" type="terrain" x="-97.15" y="-67.4548" width="326.3" height="2498.18"/>
   <object id="831" name="stone" type="terrain" x="2304.85" y="-73.6341" width="326.3" height="2488.36"/>
  </objectgroup>
@@ -96,10 +99,10 @@
     <property name="transition" value="inn"/>
    </properties>
   </object>
-  <object id="834" name="portal" type="object" x="1144.85" y="307.758" width="256" height="256">
+  <object id="834" name="portal" type="object" x="1144.85" y="304.758" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="finch-top"/>
+    <property name="transition" value="inn-top"/>
    </properties>
   </object>
   <object id="837" name="chest" type="object" x="1580" y="720" width="128" height="128">
@@ -143,7 +146,7 @@
   </object>
   <object id="836" name="spawn" type="object" x="1214.91" y="434.424" width="128" height="128">
    <properties>
-    <property name="transition" value="finch-top"/>
+    <property name="transition" value="inn-top"/>
    </properties>
   </object>
  </objectgroup>

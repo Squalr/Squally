@@ -125,7 +125,7 @@ void CardPreview::previewCardData(CardData* cardData, Card* card)
 		this->previewPanel->addChild(this->currentPreviewData.previewNode);
 	}
 
-	this->updatePreview(this->currentPreviewData);
+	this->updatePreview(this->currentPreviewData, card);
 	this->currentPreviewData.previewNode->setVisible(true);
 	
 	switch (cardData->getCardType())
@@ -160,10 +160,10 @@ void CardPreview::previewCardData(CardData* cardData, Card* card)
 	}
 }
 
-void CardPreview::updatePreview(PreviewData previewData)
+void CardPreview::updatePreview(PreviewData previewData, Card* refCard)
 {
 	int originalAttack = previewData.cardData->getAttack();
-	int attack = (previewData.previewCard == nullptr) ? originalAttack : previewData.previewCard->getAttack();
+	int attack = (refCard == nullptr) ? originalAttack : refCard->getAttack();
 
 	switch (previewData.cardData->getCardType())
 	{
@@ -185,22 +185,6 @@ void CardPreview::updatePreview(PreviewData previewData)
 			{
 				previewData.hexStrRef->setString(HackUtils::toHex(attack));
 			}
-
-			/*
-			if (previewData.binLabelRef != nullptr)
-			{
-				previewData.binLabelRef->setTextColor(attack == originalAttack ? Card::BinaryColor : (attack < originalAttack ? Color4B::RED : Color4B::GREEN ));
-			}
-
-			if (previewData.decLabelRef != nullptr)
-			{
-				previewData.decLabelRef->setTextColor(attack == originalAttack ? Card::DecimalColor : (attack < originalAttack ? Color4B::RED : Color4B::GREEN ));
-			}
-
-			if (previewData.hexLabelRef != nullptr)
-			{
-				previewData.hexLabelRef->setTextColor(attack == originalAttack ? Card::HexColor : (attack < originalAttack ? Color4B::RED : Color4B::GREEN ));
-			}*/
 		}
 		default:
 		{
@@ -217,15 +201,22 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 	}
 
 	Node* preview = Node::create();
-	Sprite* previewSprite = Sprite::create(cardData->getCardResourceFile());
 	ConstantString* binStrRef = nullptr;
 	ConstantString* decStrRef = nullptr;
 	ConstantString* hexStrRef = nullptr;
 	LocalizedLabel* binLabelRef = nullptr;
 	LocalizedLabel* decLabelRef = nullptr;
 	LocalizedLabel* hexLabelRef = nullptr;
+	Card* cardClone = card == nullptr ? nullptr : card->clone(false);
 
-	preview->addChild(previewSprite);
+	cardClone->setScale(1.0f);
+
+	if (cardClone != nullptr)
+	{
+		preview->addChild(cardClone);
+		cardClone->reveal();
+		cardClone->hideUI();
+	}
 
 	switch (cardData->getCardType())
 	{
@@ -268,8 +259,8 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 				specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 				specialLabel->setTextColor(Card::SpecialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
-				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, 160.0f));
-				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
+				specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, 160.0f));
+				specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
 
 				preview->addChild(specialLabel);
 			}
@@ -300,9 +291,9 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 
 			const float yOffset = -72.0f;
 
-			binaryLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset));
-			decimalLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
-			hexLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
+			binaryLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset));
+			decimalLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
+			hexLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
 
 			binStrRef = binaryString;
 			decStrRef = decimalString;
@@ -324,8 +315,8 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 			specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 			specialLabel->setTextColor(Card::SpecialColor);
 			specialLabel->enableOutline(Color4B::BLACK, 2);
-			specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
-			specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
+			specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, -160.0f));
+			specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
 
 			switch (cardData->getCardType())
 			{
@@ -455,5 +446,5 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 		}
 	}
 
-	return PreviewData(card, cardData, preview, binStrRef, decStrRef, hexStrRef, binLabelRef, decLabelRef, hexLabelRef);
+	return PreviewData(cardClone, cardData, preview, binStrRef, decStrRef, hexStrRef, binLabelRef, decLabelRef, hexLabelRef);
 }
