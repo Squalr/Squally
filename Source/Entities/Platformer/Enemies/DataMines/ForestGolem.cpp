@@ -24,7 +24,7 @@ ForestGolem::ForestGolem(ValueMap& properties) : super(properties,
 	ForestGolem::MapKey,
 	EntityResources::Enemies_DataMines_ForestGolem_Animations,
 	EntityResources::Enemies_DataMines_ForestGolem_Emblem,
-	Size(768.0f, 840.0f),
+	Size(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

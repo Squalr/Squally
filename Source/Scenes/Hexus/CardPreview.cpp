@@ -209,13 +209,13 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 	LocalizedLabel* hexLabelRef = nullptr;
 	Card* cardClone = card == nullptr ? nullptr : card->clone(false);
 
-	cardClone->setScale(1.0f);
-
 	if (cardClone != nullptr)
 	{
-		preview->addChild(cardClone);
+		cardClone->setScale(1.0f);
 		cardClone->reveal();
 		cardClone->hideUI();
+		
+		preview->addChild(cardClone);
 	}
 
 	switch (cardData->getCardType())

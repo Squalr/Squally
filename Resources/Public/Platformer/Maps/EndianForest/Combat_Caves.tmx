@@ -17,28 +17,28 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="575" name="Caverns/Background/CavernsBg1" type="decor" x="-531.273" y="242.182" width="3397" height="1518.67"/>
+  <object id="575" name="Mines/Background/CavernsBg1" type="decor" x="-531.273" y="242.182" width="3397" height="1518.67"/>
  </objectgroup>
  <objectgroup id="40" name="bg -420">
   <properties>
    <property name="depth" type="float" value="-420"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="576" name="Caverns/Background/CavernsBg2" type="decor" x="135.545" y="1166.3" width="2262.48" height="837.939"/>
+  <object id="576" name="Mines/Background/CavernsBg2" type="decor" x="135.545" y="1166.3" width="2262.48" height="837.939"/>
  </objectgroup>
  <objectgroup id="41" name="bg -312">
   <properties>
    <property name="depth" type="float" value="-312"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="577" name="Caverns/Background/CavernsBg3" type="decor" x="-525.091" y="1120.48" width="3386.73" height="909.515"/>
+  <object id="577" name="Mines/Background/CavernsBg3" type="decor" x="-525.091" y="1120.48" width="3386.73" height="909.515"/>
  </objectgroup>
  <objectgroup id="42" name="bg -256">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="578" name="Caverns/Background/CavernsBg4" type="decor" x="-410.788" y="1560.36" width="3170" height="606"/>
+  <object id="578" name="Mines/Background/CavernsBg4" type="decor" x="-410.788" y="1560.36" width="3170" height="606"/>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>
@@ -106,7 +106,7 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="573" name="Caverns/Foreground/PillarBrown1" type="decor" x="1942.23" y="524.424" width="579" height="1387">
+  <object id="573" name="Mines/Foreground/PillarBrown1" type="decor" x="1942.23" y="524.424" width="579" height="1387">
    <properties>
     <property name="depth" type="float" value="-96"/>
    </properties>
@@ -172,6 +172,6 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="571" name="Caverns/Foreground/PillarBrownDark1" type="decor" x="161.773" y="668.227" width="579" height="1387"/>
+  <object id="571" name="Mines/Foreground/PillarBrownDark1" type="decor" x="161.773" y="668.227" width="579" height="1387"/>
  </objectgroup>
 </map>

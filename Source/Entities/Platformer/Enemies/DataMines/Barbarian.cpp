@@ -24,9 +24,9 @@ Barbarian::Barbarian(ValueMap& properties) : super(properties,
 	Barbarian::MapKey,
 	EntityResources::Enemies_DataMines_Barbarian_Animations,
 	EntityResources::Enemies_DataMines_Barbarian_Emblem,
-	Size(1280.0f, 920.0f),
+	Size(256.0f, 228.0f),
 	1.0f,
-	Vec2(-32.0f, 0.0f))
+	Vec2(0.0f, 0.0f))
 {
 }
 

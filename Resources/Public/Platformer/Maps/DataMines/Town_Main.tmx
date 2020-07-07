@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="60" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="119" nextobjectid="971">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="60" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="121" nextobjectid="976">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -36,28 +36,20 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="834" name="Mines/CaveDoor3" type="decor" x="1554.25" y="762.197" width="376" height="332">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="835" name="Caverns/CaveDoor4" type="decor" x="5731.7" y="714.03" width="333" height="385">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="834" name="Mines/CaveDoor3" type="decor" x="1554.25" y="762.197" width="376" height="332"/>
   <object id="836" name="Mines/CaveDoor5" type="decor" x="5791.32" y="-613.864" width="240" height="164">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
   <object id="884" name="Mines/ScreamingDoor" type="decor" x="3606" y="127.788" width="800" height="1114"/>
-  <object id="885" name="Caverns/TigerDoor" type="decor" x="2747.39" y="-1716.97" width="688" height="528">
+  <object id="885" name="Mines/TigerDoor" type="decor" x="2747.39" y="-1716.97" width="688" height="528">
    <properties>
     <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
+  <object id="975" name="Mines/CaveDoor4" type="decor" x="5735.7" y="712.03" width="333" height="385"/>
  </objectgroup>
  <objectgroup id="92" name="decor -12 bg fg">
   <properties>
@@ -101,6 +93,12 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
+  <object id="973" name="portal" type="object" x="5782" y="842" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_2_0"/>
+    <property name="transition" value="passage-right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="96" name="player_layer -12">
   <properties>
@@ -123,6 +121,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-D"/>
+   </properties>
+  </object>
+  <object id="974" name="spawn" type="object" x="5844" y="970" width="128" height="128">
+   <properties>
+    <property name="transition" value="passage-right"/>
    </properties>
   </object>
  </objectgroup>
@@ -593,7 +596,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="Caverns/CaveHouse2" type="decor" x="6147.76" y="960.303" width="1306" height="698">
+  <object id="803" name="Mines/CaveHouse2" type="decor" x="6147.76" y="960.303" width="1306" height="698">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
