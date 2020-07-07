@@ -105,7 +105,11 @@ void TextureObject::buildTextures()
 		texture->setAnchorPoint(Vec2::ZERO);
 	}
 
-	texture->getTexture()->setTexParameters(params);
+	if (texture->getTexture() != nullptr)
+	{
+		texture->getTexture()->setTexParameters(params);
+	}
+	
 	texture->setPosition(drawRect.origin);
 	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width, drawRect.size.height));
 

@@ -812,7 +812,11 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 	segmentLength = std::ceil(segmentLength);
 
 	sprite->setAnchorPoint(anchor);
-	sprite->getTexture()->setTexParameters(params);
+	
+	if (sprite->getTexture() != nullptr)
+	{
+		sprite->getTexture()->setTexParameters(params);
+	}
 
 	// Start the texture from where the previous texture left off for seamless integration
 	if (tileMethod == TileMethod::Horizontal)
