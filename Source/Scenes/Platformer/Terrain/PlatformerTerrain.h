@@ -17,6 +17,7 @@
 #include "Scenes/Platformer/Terrain/MarbleGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleTerrain.h"
 #include "Scenes/Platformer/Terrain/MinesTerrain.h"
+#include "Scenes/Platformer/Terrain/RailsTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsGrayDarkTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsGrayTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsGrayThickTerrain.h"

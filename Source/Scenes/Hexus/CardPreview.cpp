@@ -214,7 +214,7 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 		cardClone->setScale(1.0f);
 		cardClone->reveal();
 		cardClone->hideUI();
-		
+
 		preview->addChild(cardClone);
 	}
 
@@ -259,8 +259,12 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 				specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 				specialLabel->setTextColor(Card::SpecialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
-				specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, 160.0f));
-				specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
+
+				if (cardClone != nullptr)
+				{
+					specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, 160.0f));
+					specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
+				}
 
 				preview->addChild(specialLabel);
 			}
@@ -291,9 +295,12 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 
 			const float yOffset = -72.0f;
 
-			binaryLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset));
-			decimalLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
-			hexLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
+			if (cardClone != nullptr)
+			{
+				binaryLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset));
+				decimalLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
+				hexLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
+			}
 
 			binStrRef = binaryString;
 			decStrRef = decimalString;
@@ -315,8 +322,12 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 			specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 			specialLabel->setTextColor(Card::SpecialColor);
 			specialLabel->enableOutline(Color4B::BLACK, 2);
-			specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, -160.0f));
-			specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
+			
+			if (cardClone != nullptr)
+			{
+				specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, -160.0f));
+				specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
+			}
 
 			switch (cardData->getCardType())
 			{

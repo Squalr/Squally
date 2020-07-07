@@ -310,6 +310,14 @@ namespace TerrainResources
 	extern const std::string Mines_TopConnectorConvexDeep;
 	extern const std::string Mines_TopLeft;
 	extern const std::string Mines_TopRight;
+	extern const std::string Rails_Top;
+	extern const std::string Rails_TopConnector;
+	extern const std::string Rails_TopConnectorConcave;
+	extern const std::string Rails_TopConnectorConcaveDeep;
+	extern const std::string Rails_TopConnectorConvex;
+	extern const std::string Rails_TopConnectorConvexDeep;
+	extern const std::string Rails_TopLeft;
+	extern const std::string Rails_TopRight;
 	extern const std::string RuinsGrayThick_Bottom;
 	extern const std::string RuinsGrayThick_BottomConnector;
 	extern const std::string RuinsGrayThick_BottomLeft;
