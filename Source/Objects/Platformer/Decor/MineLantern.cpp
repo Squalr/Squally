@@ -28,17 +28,15 @@ MineLantern* MineLantern::create(ValueMap& properties)
 
 MineLantern::MineLantern(ValueMap& properties) : super(properties)
 {
-	this->torch = Sprite::create(ObjectResources::Decor_MineLantern_LanternBack);
+	this->lanternBack = Sprite::create(ObjectResources::Decor_MineLantern_LanternBack);
 	this->glow = Sprite::create(ObjectResources::Decor_MineLantern_TorchGlow);
 	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 	this->lantern = Sprite::create(ObjectResources::Decor_MineLantern_LanternFront);
 	this->isOn = false;
 	this->isCulled = false;
 
-	this->fire->setScale(1.5f);
-
+	this->addChild(this->lanternBack);
 	this->addChild(this->glow);
-	this->addChild(this->torch);
 	this->addChild(this->fire);
 	this->addChild(this->lantern);
 }
@@ -51,18 +49,18 @@ void MineLantern::onEnter()
 {
 	super::onEnter();
 
-	this->torchOn();
+	this->lanternOn();
 }
 
 void MineLantern::initializePositions()
 {
 	super::initializePositions();
 
-	// this->fire->setPosition(Vec2(0.0f, 80.0f));
+	// this->fire->setPosition(Vec2(0.0f, 0.0f));
 	// this->glow->setPosition(Vec2(0.0f, 56.0f));
 }
 
-void MineLantern::torchOn()
+void MineLantern::lanternOn()
 {
 	if (this->isOn)
 	{
@@ -74,7 +72,7 @@ void MineLantern::torchOn()
 	this->updateMineLanternVisibility();
 }
 
-void MineLantern::torchOff()
+void MineLantern::lanternOff()
 {
 	if (!this->isOn)
 	{

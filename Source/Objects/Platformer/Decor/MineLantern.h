@@ -15,8 +15,8 @@ class MineLantern : public GameObject
 public:
 	static MineLantern* create(cocos2d::ValueMap& properties);
 
-	void torchOn();
-	void torchOff();
+	void lanternOn();
+	void lanternOff();
 
 	static const std::string MapKey;
 
@@ -33,7 +33,7 @@ private:
 	void updateMineLanternVisibility();
 	void optimizationHideOffscreenMineLantern();
 
-	cocos2d::Sprite* torch;
+	cocos2d::Sprite* lanternBack;
 	cocos2d::Sprite* glow;
 	SmartAnimationSequenceNode* fire;
 	cocos2d::Sprite* lantern;

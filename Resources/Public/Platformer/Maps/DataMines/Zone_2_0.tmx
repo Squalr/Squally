@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="83" nextobjectid="840">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="850">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -61,11 +61,6 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="mines" type="terrain" x="963.46" y="1178" width="301.08" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="63" name="objects -5">
   <properties>
@@ -132,11 +127,18 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="79" name="terrain bg" visible="0">
+ <objectgroup id="83" name="objects -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="846" name="mine-claw" type="object" x="2302.38" y="1342.68" width="200" height="1350"/>
+ </objectgroup>
+ <objectgroup id="79" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="mines" type="terrain" x="-166.54" y="-219.576" width="3693.08" height="4047.64">
+  <object id="826" name="mines" type="terrain" x="-166.54" y="-219.576" width="3673.08" height="1711.64">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -147,6 +149,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="831" name="Mines/CaveDoor4" type="decor" x="248.53" y="822.652" width="333" height="385"/>
+  <object id="843" name="winch" type="object" x="4430.55" y="2073.21" width="251" height="263"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -158,7 +161,7 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="838" name="mines" type="terrain" x="2351.46" y="1986" width="3681.08" height="412">
+  <object id="838" name="mines" type="terrain" x="2207.46" y="2338" width="3681.08" height="552">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -171,12 +174,23 @@
   <object id="829" name="Mines/SupportMedium" type="decor" x="1327.41" y="573.061" width="127" height="634"/>
   <object id="832" name="Mines/SupportMedium" type="decor" x="2252.5" y="571" width="127" height="634"/>
   <object id="833" name="Mines/SupportMedium" type="decor" x="3168.5" y="575" width="127" height="634"/>
+  <object id="848" name="Mines/CartStop" type="decor" x="780.5" y="1039" width="188" height="169"/>
+  <object id="849" name="Mines/CartStop" type="decor" x="5103.21" y="2168.71" width="188" height="169">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="81" name="rails">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="836" name="rails" type="terrain" x="794.492" y="1206.79" width="2725.44" height="92">
+  <object id="836" name="rails" type="terrain" x="1005.16" y="1206.79" width="2492.11" height="92">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="847" name="rails" type="terrain" x="2311.34" y="2340.12" width="2725.44" height="92">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -206,7 +220,7 @@
     <property name="transition" value="passage-right"/>
    </properties>
   </object>
-  <object id="839" name="mine-lantern" type="object" x="3532.04" y="1048" width="96" height="96"/>
+  <object id="839" name="mine-lantern" type="object" x="3160.04" y="1364" width="96" height="96"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -218,7 +232,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="834" name="barbarian" type="entity" x="4407.27" y="1853.79" width="128" height="128">
+  <object id="834" name="barbarian" type="entity" x="4263.27" y="2205.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
