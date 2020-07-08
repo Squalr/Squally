@@ -58,7 +58,8 @@ void MineWinch::initializeListeners()
 
 void MineWinch::runAnimation()
 {
-	this->mineClawAnimations->playAnimation("LowerAndRaise", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true), [=]()
+	this->mineClawAnimations->clearAnimationPriority();
+	this->mineClawAnimations->playAnimation("LowerAndRaise", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(), [=]()
 	{
 		this->runAction(Sequence::create(
 			DelayTime::create(RandomHelper::random_real(1.0f, 5.0f)),

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="850">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="851">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -221,6 +221,12 @@
    </properties>
   </object>
   <object id="839" name="mine-lantern" type="object" x="3160.04" y="1364" width="96" height="96"/>
+  <object id="850" name="mine-cart-coal" type="object" x="3893.45" y="2156.73" width="240" height="184">
+   <properties>
+    <property name="color" value="brown"/>
+    <property name="reward-pool" value="dm-coal"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
