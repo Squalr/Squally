@@ -400,7 +400,11 @@ void TerrainObject::buildInnerTextures()
 		TextureObject* textures = this->terrainData.textureFactory(this->properties);
 
 		this->infillTexturesNode->removeAllChildren();
-		this->infillTexturesNode->addChild(textures);
+
+		if (textures != nullptr)
+		{
+			this->infillTexturesNode->addChild(textures);
+		}
 	}
 }
 

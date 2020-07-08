@@ -45,6 +45,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[MarbleGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTerrain::create(properties); };
 	this->deserializers[MarbleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleTerrain::create(properties); };
 	this->deserializers[MinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MinesTerrain::create(properties); };
+	this->deserializers[RailsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RailsTerrain::create(properties); };
 	this->deserializers[RuinsGrayDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayDarkTerrain::create(properties); };
 	this->deserializers[RuinsGrayTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayTerrain::create(properties); };
 	this->deserializers[RuinsGrayThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayThickTerrain::create(properties); };

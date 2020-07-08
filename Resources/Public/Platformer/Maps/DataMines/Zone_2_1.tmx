@@ -195,7 +195,7 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="837" name="rails" type="terrain" x="915.46" y="1212" width="3553.08" height="92">
+  <object id="837" name="rails" type="terrain" x="921.521" y="1172.61" width="2689.44" height="92">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
