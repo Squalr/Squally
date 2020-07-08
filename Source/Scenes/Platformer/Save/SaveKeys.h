@@ -27,6 +27,11 @@ public:
 	static const std::string SaveKeyHasGivenDefaultItems;
 	static const std::string SaveKeyCrackProgress;
 
+	static const std::string SaveKeyGeckyHealth;
+	static const std::string SaveKeyGeckyMana;
+	static const std::string SaveKeyGeckyEq;
+	static const std::string SaveKeyGeckyEqExperience;
+
 	static const std::string SaveKeyGuanoHealth;
 	static const std::string SaveKeyGuanoMana;
 	static const std::string SaveKeyGuanoEq;

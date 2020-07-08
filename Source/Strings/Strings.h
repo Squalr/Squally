@@ -22869,10 +22869,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_DataMines_Gecko : public LocalizedString
+	class Platformer_Entities_Names_Helpers_DataMines_Gecky : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_DataMines_Gecko* create();
+		static Platformer_Entities_Names_Helpers_DataMines_Gecky* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22880,8 +22880,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Helpers_DataMines_Gecko();
-		virtual ~Platformer_Entities_Names_Helpers_DataMines_Gecko() = default;
+		Platformer_Entities_Names_Helpers_DataMines_Gecky();
+		virtual ~Platformer_Entities_Names_Helpers_DataMines_Gecky() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_EndianForest_Guano : public LocalizedString

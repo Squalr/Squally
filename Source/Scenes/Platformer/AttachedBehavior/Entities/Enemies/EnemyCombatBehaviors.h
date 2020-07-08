@@ -27,5 +27,3 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/TigressCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/UnderflowRuins/TigerManCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/Misc/RamWeakenedCombatBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Combat/GuanoCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Combat/GuanoPetrifiedCombatBehaviorGroup.h"

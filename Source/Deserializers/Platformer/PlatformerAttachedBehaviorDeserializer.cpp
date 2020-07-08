@@ -73,6 +73,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[EFURTransportationBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EFURTransportationBehavior::create(owner); };
 
 	// Helpers
+	this->attachedBehaviorDeserializers[GeckyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GeckyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[GuanoBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GuanoBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[GuanoPetrifiedBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GuanoPetrifiedBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[ScrappyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ScrappyBehaviorGroup::create(owner); };

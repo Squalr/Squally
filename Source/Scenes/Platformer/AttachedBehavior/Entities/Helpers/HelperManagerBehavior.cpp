@@ -16,6 +16,7 @@
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Events/HelperEvents.h"
 #include "Events/NotificationEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Gecky/GeckyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/GuanoPetrifiedBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
@@ -192,6 +193,7 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
+	this->attachedBehaviorMap[Gecky::MapKey] = GeckyBehaviorGroup::MapKey;
 	this->attachedBehaviorMap[Guano::MapKey] = GuanoBehaviorGroup::MapKey;
 	this->attachedBehaviorMap[GuanoPetrified::MapKey] = GuanoPetrifiedBehaviorGroup::MapKey;
 	this->attachedBehaviorMap[Snowman::MapKey] = GuanoBehaviorGroup::MapKey;

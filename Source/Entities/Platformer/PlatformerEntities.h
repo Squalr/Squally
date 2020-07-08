@@ -154,7 +154,7 @@
 #include "Entities/Platformer/Enemies/DataMines/SkeletalNecromancer.h"
 #include "Entities/Platformer/Enemies/DataMines/SkeletalWarrior.h"
 #include "Entities/Platformer/Enemies/DataMines/TikiGolem.h"
-#include "Entities/Platformer/Helpers/DataMines/Gecko.h"
+#include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Npcs/DataMines/Alder.h"
 #include "Entities/Platformer/Npcs/DataMines/Bonnie.h"
 #include "Entities/Platformer/Npcs/DataMines/Brock.h"

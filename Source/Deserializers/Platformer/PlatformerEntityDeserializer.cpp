@@ -190,7 +190,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[SkeletalNecromancer::MapKey] = [=](ValueMap properties) { return (GameObject*)SkeletalNecromancer::deserialize(properties); };
 	this->deserializers[SkeletalWarrior::MapKey] = [=](ValueMap properties) { return (GameObject*)SkeletalWarrior::deserialize(properties); };
 	this->deserializers[TikiGolem::MapKey] = [=](ValueMap properties) { return (GameObject*)TikiGolem::deserialize(properties); };
-	this->deserializers[Gecko::MapKey] = [=](ValueMap properties) { return (GameObject*)Gecko::deserialize(properties); };
+	this->deserializers[Gecky::MapKey] = [=](ValueMap properties) { return (GameObject*)Gecky::deserialize(properties); };
 	this->deserializers[Alder::MapKey] = [=](ValueMap properties) { return (GameObject*)Alder::deserialize(properties); };
 	this->deserializers[Bonnie::MapKey] = [=](ValueMap properties) { return (GameObject*)Bonnie::deserialize(properties); };
 	this->deserializers[Brock::MapKey] = [=](ValueMap properties) { return (GameObject*)Brock::deserialize(properties); };

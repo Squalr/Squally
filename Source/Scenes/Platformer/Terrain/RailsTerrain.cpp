@@ -56,9 +56,9 @@ RailsTerrain::RailsTerrain(ValueMap& properties) : super(
 		// Right
 		Vec2::ZERO,
 		// TopLeft
-		Vec2(-58.0f, -8.0f),
+		Vec2(-58.0f, -7.0f),
 		// TopRight
-		Vec2(40.0f, 6.0f),
+		Vec2(39.0f, 6.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight

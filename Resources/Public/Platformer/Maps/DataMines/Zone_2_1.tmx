@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="838">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="839">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -195,11 +195,6 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="837" name="rails" type="terrain" x="921.521" y="1172.61" width="2689.44" height="92">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -208,6 +203,11 @@
   <object id="829" name="Mines/SupportMedium" type="decor" x="1327.41" y="573.061" width="127" height="634"/>
   <object id="832" name="Mines/SupportMedium" type="decor" x="2252.5" y="571" width="127" height="634"/>
   <object id="833" name="Mines/SupportMedium" type="decor" x="3168.5" y="575" width="127" height="634"/>
+ </objectgroup>
+ <objectgroup id="81" name="rails">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>

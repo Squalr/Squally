@@ -22,6 +22,11 @@ const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
 const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
 const std::string SaveKeys::SaveKeyCrackProgress = "SAVE_KEY_CRACK_PROGRESS";
 
+const std::string SaveKeys::SaveKeyGeckyHealth = "SAVE_KEY_GECKY_HEALTH";
+const std::string SaveKeys::SaveKeyGeckyMana = "SAVE_KEY_GECKY_MANA";
+const std::string SaveKeys::SaveKeyGeckyEq = "SAVE_KEY_GECKY_EQ";
+const std::string SaveKeys::SaveKeyGeckyEqExperience = "SAVE_KEY_GECKY_EQ_EXPERIENCE";
+
 const std::string SaveKeys::SaveKeyGuanoHealth = "SAVE_KEY_GUANO_HEALTH";
 const std::string SaveKeys::SaveKeyGuanoMana = "SAVE_KEY_GUANO_MANA";
 const std::string SaveKeys::SaveKeyGuanoEq = "SAVE_KEY_GUANO_EQ";

@@ -176,7 +176,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(16, 8, 32));
 
-	StatsTables::StatsTable[Gecko::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Gecky::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Alder::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Bonnie::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Brock::MapKey] = StatsIncrements(Stats(16, 8, 32));
