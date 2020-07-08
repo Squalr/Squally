@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Collectables/SpawnPools/SpawnPoolUR.h"
 #include "Objects/Platformer/Decor/FireplaceFire.h"
 #include "Objects/Platformer/Decor/MagicWall.h"
+#include "Objects/Platformer/Decor/MineLantern.h"
 #include "Objects/Platformer/Decor/Torch.h"
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"

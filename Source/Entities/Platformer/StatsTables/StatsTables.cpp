@@ -83,12 +83,11 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Squally::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 
 	// HELPERS
+	StatsTables::StatsTable[Gecky::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[Guano::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[GuanoPetrified::MapKey] = StatsIncrements(Stats(20, 0, 10000));
-	StatsTables::StatsTable[Turtle::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[Snowman::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[YetiBaby::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
-	StatsTables::StatsTable[Mummy::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	
 	StatsTables::StatsTable[Scrappy::MapKey] = StatsIncrements(Stats(420, 666, 32));
 
@@ -209,7 +208,6 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	
 	StatsTables::StatsTable[Knight::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Princess::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Elric::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Garin::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Gaunt::MapKey] = StatsIncrements(Stats(16, 8, 32));

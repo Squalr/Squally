@@ -76,7 +76,6 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Zombie::MapKey] = [=](ValueMap properties) { return (GameObject*)Zombie::deserialize(properties); };
 	this->deserializers[ZombieElric::MapKey] = [=](ValueMap properties) { return (GameObject*)ZombieElric::deserialize(properties); };
 	this->deserializers[Knight::MapKey] = [=](ValueMap properties) { return (GameObject*)Knight::deserialize(properties); };
-	this->deserializers[Princess::MapKey] = [=](ValueMap properties) { return (GameObject*)Princess::deserialize(properties); };
 	this->deserializers[Elric::MapKey] = [=](ValueMap properties) { return (GameObject*)Elric::deserialize(properties); };
 	this->deserializers[Garin::MapKey] = [=](ValueMap properties) { return (GameObject*)Garin::deserialize(properties); };
 	this->deserializers[Gaunt::MapKey] = [=](ValueMap properties) { return (GameObject*)Gaunt::deserialize(properties); };
@@ -135,7 +134,6 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Troll::MapKey] = [=](ValueMap properties) { return (GameObject*)Troll::deserialize(properties); };
 	this->deserializers[Guano::MapKey] = [=](ValueMap properties) { return (GameObject*)Guano::deserialize(properties); };
 	this->deserializers[GuanoPetrified::MapKey] = [=](ValueMap properties) { return (GameObject*)GuanoPetrified::deserialize(properties); };
-	this->deserializers[Turtle::MapKey] = [=](ValueMap properties) { return (GameObject*)Turtle::deserialize(properties); };
 	this->deserializers[Appolo::MapKey] = [=](ValueMap properties) { return (GameObject*)Appolo::deserialize(properties); };
 	this->deserializers[Ara::MapKey] = [=](ValueMap properties) { return (GameObject*)Ara::deserialize(properties); };
 	this->deserializers[Bard::MapKey] = [=](ValueMap properties) { return (GameObject*)Bard::deserialize(properties); };
@@ -217,7 +215,6 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Osiris::MapKey] = [=](ValueMap properties) { return (GameObject*)Osiris::deserialize(properties); };
 	this->deserializers[TigerMan::MapKey] = [=](ValueMap properties) { return (GameObject*)TigerMan::deserialize(properties); };
 	this->deserializers[Tigress::MapKey] = [=](ValueMap properties) { return (GameObject*)Tigress::deserialize(properties); };
-	this->deserializers[Mummy::MapKey] = [=](ValueMap properties) { return (GameObject*)Mummy::deserialize(properties); };
 	this->deserializers[Ajax::MapKey] = [=](ValueMap properties) { return (GameObject*)Ajax::deserialize(properties); };
 	this->deserializers[Angel::MapKey] = [=](ValueMap properties) { return (GameObject*)Angel::deserialize(properties); };
 	this->deserializers[Aphrodite::MapKey] = [=](ValueMap properties) { return (GameObject*)Aphrodite::deserialize(properties); };
