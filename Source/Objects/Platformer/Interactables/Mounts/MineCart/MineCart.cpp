@@ -31,7 +31,7 @@ MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, Size(240.0
 {
 	this->parseColor();
 	this->parseDirection();
-	this->cartSpeed = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertySpeed, Value(512.0f)).asFloat();
+	this->cartSpeed = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertySpeed, Value(768.0f)).asFloat();
 	this->body = Sprite::create(this->cartColor == CartColor::Brown ? ObjectResources::Interactive_MineCarts_Body1 : ObjectResources::Interactive_MineCarts_Body2);
 	this->wheelFront = Sprite::create(ObjectResources::Interactive_MineCarts_WheelFront);
 	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);

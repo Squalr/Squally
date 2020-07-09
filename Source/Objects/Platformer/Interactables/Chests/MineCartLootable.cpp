@@ -73,17 +73,41 @@ void MineCartLootable::parseFill()
 Node* MineCartLootable::buildCart(bool withFill)
 {
 	Node* container = Node::create();
-	Sprite* fill = withFill ? Sprite::create(ObjectResources::Interactive_MineCarts_FillCoal) : nullptr;
+	Sprite* fill = nullptr;
 	Sprite* body = Sprite::create(this->cartColor == CartColor::Brown ? ObjectResources::Interactive_MineCarts_Body1 : ObjectResources::Interactive_MineCarts_Body2);
 	Sprite* wheelFront = Sprite::create(ObjectResources::Interactive_MineCarts_WheelFront);
 	Sprite* wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
+
+	if (withFill)
+	{
+		switch(this->cartFill)
+		{
+			case Fill::Coal:
+			{
+				fill = Sprite::create(ObjectResources::Interactive_MineCarts_FillCoal);
+				fill->setPosition(Vec2(0.0f, 96.0f));
+				break;
+			}
+			case Fill::Gold:
+			{
+				fill = Sprite::create(ObjectResources::Interactive_MineCarts_FillGold);
+				fill->setPosition(Vec2(0.0f, 96.0f));
+				break;
+			}
+			case Fill::Diamond:
+			{
+				fill = Sprite::create(ObjectResources::Interactive_MineCarts_FillDiamond);
+				fill->setPosition(Vec2(8.0f, 96.0f));
+				break;
+			}
+		}
+	}
 
 	wheelBack->setPosition(Vec2(-32.0f, -64.0f));
 	wheelFront->setPosition(Vec2(32.0f, -69.0f));
 
 	if (fill != nullptr)
 	{
-		fill->setPosition(Vec2(0.0f, 96.0f));
 		container->addChild(fill);
 	}
 

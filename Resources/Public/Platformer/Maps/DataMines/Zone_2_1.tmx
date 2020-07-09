@@ -154,7 +154,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="863" name="Mines/SupportMedium" type="decor" x="3141.59" y="2796.61" width="127" height="634"/>
+  <object id="863" name="Mines/SupportMedium" type="decor" x="3525.59" y="2804.61" width="127" height="634"/>
  </objectgroup>
  <objectgroup id="81" name="rails">
   <properties>

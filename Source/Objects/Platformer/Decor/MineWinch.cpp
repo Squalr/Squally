@@ -69,5 +69,8 @@ void MineWinch::runAnimation()
 			}),
 			nullptr
 		));
+
+		this->mineClawAnimations->clearAnimationPriority();
+		this->mineClawAnimations->playAnimation();
 	});
 }
