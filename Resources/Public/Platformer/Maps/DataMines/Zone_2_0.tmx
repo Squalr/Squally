@@ -199,7 +199,7 @@
   </object>
   <object id="854" name="rails" type="terrain" x="2670.37" y="3433.61" width="3301.44" height="92">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="collision" value="rails"/>
    </properties>
   </object>
  </objectgroup>
@@ -228,16 +228,19 @@
    </properties>
   </object>
   <object id="839" name="mine-lantern" type="object" x="3160.04" y="1364" width="96" height="96"/>
-  <object id="850" name="mine-cart-coal" type="object" x="3901.45" y="2077.73" width="240" height="184">
+  <object id="850" name="mine-cart-lootable" type="object" x="3901.45" y="2077.73" width="240" height="184">
    <properties>
     <property name="color" value="brown"/>
+    <property name="fill" value="coal"/>
     <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
   <object id="859" name="kill" type="collision" x="2912.55" y="3901.61" width="3121.08" height="316"/>
-  <object id="861" name="mine-cart" type="object" x="2754.42" y="3247.61" width="240" height="184">
+  <object id="861" name="mine-cart" type="object" x="2670.42" y="3250.27" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
+    <property name="direction" value="right"/>
+    <property name="tag" value="cart-A"/>
    </properties>
   </object>
  </objectgroup>
@@ -280,6 +283,8 @@
   </object>
   <object id="805" name="spawn-cart" type="object" x="5433.76" y="3302.27" width="128" height="128">
    <properties>
+    <property name="direction" value="left"/>
+    <property name="tag" value="cart-A"/>
     <property name="transition" value="left"/>
    </properties>
   </object>

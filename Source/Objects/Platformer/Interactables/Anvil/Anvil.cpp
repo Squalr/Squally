@@ -82,9 +82,9 @@ void Anvil::initializeListeners()
 	super::initializeListeners();
 }
 
-void Anvil::onInteract()
+void Anvil::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	PlatformerEvents::TriggerOpenSmithing(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }

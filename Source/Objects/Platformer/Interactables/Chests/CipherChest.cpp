@@ -71,7 +71,7 @@ void CipherChest::initializeListeners()
 	super::initializeListeners();
 }
 
-void CipherChest::onInteract()
+void CipherChest::onInteract(PlatformerEntity* interactingEntity)
 {
 	// Intentionally do not call super here. Overriding default behavior of giving items.
 

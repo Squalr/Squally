@@ -7,6 +7,7 @@ class ClickableNode;
 class CollisionObject;
 class HackableData;
 class InteractMenu;
+class PlatformerEntity;
 class Scrappy;
 class Squally;
 
@@ -40,8 +41,8 @@ protected:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void updateInteractMenuVisibility();
-	void tryInteractObject();
-	virtual void onInteract();
+	void tryInteractObject(PlatformerEntity* interactingEntity);
+	virtual void onInteract(PlatformerEntity* interactingEntity);
 	virtual void onEndCollision();
 
 	InteractType interactType;

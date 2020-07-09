@@ -23,7 +23,7 @@ enum class PlatformerCollisionType
 	HeadDetector		= 1 << 12,
 	WallDetector		= 1 << 13,
 	Hover				= 1 << 14,
-	// PlayerHover			= 1 << 15, // Disabled, as Hover covers this. No other entity hovers yet.
+	// PlayerHover		= 1 << 15, // Disabled, as Hover covers this. No other entity hovers yet.
 	Force				= 1 << 16,
 	// Triggers & Walls
 	Trigger				= 1 << 17,
@@ -36,6 +36,7 @@ enum class PlatformerCollisionType
 	Breakable			= 1 << 22,
 	Collectable			= 1 << 23,
 	Cinematic			= 1 << 24,
+	Rails				= 1 << 25,
 	
 	// Engine (keep in sync with EngineCollisionTypes)
 	KillPlane			= (int)EngineCollisionTypes::KillPlane,

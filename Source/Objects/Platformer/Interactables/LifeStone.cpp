@@ -91,9 +91,9 @@ void LifeStone::initializeListeners()
 	super::initializeListeners();
 }
 
-void LifeStone::onInteract()
+void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	this->runHealAnimation();
 

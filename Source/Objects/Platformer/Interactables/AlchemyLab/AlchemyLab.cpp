@@ -97,9 +97,9 @@ void AlchemyLab::deactivate()
 	this->disable();
 }
 
-void AlchemyLab::onInteract()
+void AlchemyLab::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	PlatformerEvents::TriggerOpenAlchemy(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }

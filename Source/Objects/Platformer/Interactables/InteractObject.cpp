@@ -154,14 +154,9 @@ void InteractObject::initializeListeners()
 		{
 			case InteractType::Input:
 			{
-				// Technically this is bad design in the sense that this object should not need to concern itself with the interacting entity,
-				// However in this game only Squally interacts with things via input as of now, so this check is fine.
-				if (this->squally != nullptr && this->squally->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))
-				{
-					return;
-				}
-
-				this->tryInteractObject();
+				// Technically this is bad design in the sense that we hard code squally, but it seems like this game is unlikely to support
+				// Non-squally entities interacting with objects.
+				this->tryInteractObject(this->squally);
 				break;
 			}
 			case InteractType::None:
@@ -211,7 +206,7 @@ void InteractObject::onStateRefresh()
 		}
 		case InteractType::Collision:
 		{
-			this->tryInteractObject();
+			this->tryInteractObject(this->squally);
 			break;
 		}
 	}
@@ -263,15 +258,20 @@ void InteractObject::setUnlockable(bool isUnlockable, std::function<bool()> unlo
 	this->unlockCallback = unlockCallback;
 }
 
-void InteractObject::tryInteractObject()
+void InteractObject::tryInteractObject(PlatformerEntity* interactingEntity)
 {
+	if (interactingEntity == nullptr || interactingEntity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+	{
+		return;
+	}
+
 	if (this->canInteract && !this->disabled)
 	{
 		if (!this->isLocked)
 		{
 			if (this->interactCallback == nullptr || this->interactCallback())
 			{
-				this->onInteract();
+				this->onInteract(interactingEntity);
 			}
 		}
 		else if (this->isUnlockable)
@@ -284,7 +284,7 @@ void InteractObject::tryInteractObject()
 	}
 }
 
-void InteractObject::onInteract()
+void InteractObject::onInteract(PlatformerEntity* interactingEntity)
 {
 }
 

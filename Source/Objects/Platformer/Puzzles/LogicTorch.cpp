@@ -238,7 +238,7 @@ LogicTorch::Operation LogicTorch::StrToOperation(std::string operationName)
 	return Operation::None;
 }
 
-void LogicTorch::onInteract()
+void LogicTorch::onInteract(PlatformerEntity* interactingEntity)
 {
 	if (this->cooldown > 0.0f)
 	{

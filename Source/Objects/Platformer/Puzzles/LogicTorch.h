@@ -55,7 +55,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	void onInteract() override;
+	void onInteract(PlatformerEntity* interactingEntity) override;
 
 private:
 	typedef InteractObject super;

@@ -25,7 +25,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onInteract() override;
+	void onInteract(PlatformerEntity* interactingEntity) override;
 	void onEndCollision() override;
 
 private:

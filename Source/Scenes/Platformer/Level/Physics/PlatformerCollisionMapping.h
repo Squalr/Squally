@@ -25,7 +25,9 @@ public:
 	static const std::string MapKeyCollisionTypeSolidNpc;
 	static const std::string MapKeyCollisionTypeWater;
 	static const std::string MapKeyCollisionTypeDamage;
+	static const std::string MapKeyCollisionTypeRails;
 	static const std::string MapKeyCollisionTypeKill;
+	static const std::string MapKeyCollisionTypeKillAlt;
 
 protected:
 	PlatformerCollisionMapping();
@@ -35,6 +37,10 @@ protected:
 
 private:
 	typedef GlobalNode super;
+
+	void buildCollisionMap();
 	
 	static PlatformerCollisionMapping* instance;
+
+	static std::map<std::string, int> CollisionMap;
 };

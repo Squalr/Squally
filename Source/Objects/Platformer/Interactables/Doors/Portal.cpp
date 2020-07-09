@@ -87,9 +87,9 @@ void Portal::initializeListeners()
 	super::initializeListeners();
 }
 
-void Portal::onInteract()
+void Portal::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	this->loadMap();
 }

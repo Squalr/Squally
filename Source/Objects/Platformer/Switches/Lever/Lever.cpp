@@ -55,9 +55,9 @@ void Lever::initializeListeners()
 	super::initializeListeners();
 }
 
-void Lever::onInteract()
+void Lever::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	if (!this->canPull)
 	{

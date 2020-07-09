@@ -144,7 +144,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[MetalChest::MapKey] = [=](ValueMap properties) { return (GameObject*)MetalChest::create(properties); };
 	this->deserializers[MetalSpikes::MapKey] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKey] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };
-	this->deserializers[MineCartCoal::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCartCoal::create(properties); };
+	this->deserializers[MineCart::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCart::create(properties); };
+	this->deserializers[MineCartLootable::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCartLootable::create(properties); };
 	this->deserializers[MineClaw::MapKey] = [=](ValueMap properties) { return (GameObject*)MineClaw::create(properties); };
 	this->deserializers[MineLantern::MapKey] = [=](ValueMap properties) { return (GameObject*)MineLantern::create(properties); };
 	this->deserializers[MineWinch::MapKey] = [=](ValueMap properties) { return (GameObject*)MineWinch::create(properties); };

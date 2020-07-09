@@ -71,7 +71,7 @@ void HelpTotem::initializeListeners()
 	super::initializeListeners();
 }
 
-void HelpTotem::onInteract()
+void HelpTotem::onInteract(PlatformerEntity* interactingEntity)
 {
 	this->tryDisplayHint();
 }

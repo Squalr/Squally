@@ -7,6 +7,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
@@ -32,6 +33,7 @@ EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityProjectileTargetBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
 	EntityMovementBehavior::create(owner),
+	EntityMountBehavior::create(owner),
 	EntityQuestVisualBehavior::create(owner),
 	})
 {
