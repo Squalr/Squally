@@ -30,15 +30,15 @@ protected:
 	void onInteract(PlatformerEntity* interactingEntity) override;
 	virtual cocos2d::Vec2 getReparentPosition();
 	
+	void setToMountPositionX();
+	void setToMountPosition();
+	
 	cocos2d::Node* backNode;
 	cocos2d::Node* frontNode;
+	PlatformerEntity* mountedEntity;
 
 private:
 	typedef InteractObject super;
-	
-	void setToMountPositionX();
-	void setToMountPosition();
 
-	PlatformerEntity* mountedEntity;
 	cocos2d::Node* reparentNode;
 };

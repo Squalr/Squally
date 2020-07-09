@@ -31,9 +31,9 @@ protected:
 	virtual ~MineCart();
 
 	void onEnter() override;
+	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	cocos2d::Vec2 getReparentPosition() override;
 
 private:
@@ -46,6 +46,7 @@ private:
 	};
 
 	void reverse();
+	void faceEntityTowardsDirection();
 	void moveCart(float dt);
 	void parseColor();
 	void parseDirection();

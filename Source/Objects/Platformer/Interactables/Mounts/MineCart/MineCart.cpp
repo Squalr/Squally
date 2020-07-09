@@ -37,7 +37,7 @@ MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, Size(240.0
 	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
 	this->isMoving = false;
 	this->bottomCollision = CollisionObject::create(
-		CollisionObject::createBox(Size(240.0f, 64.0f)),
+		CollisionObject::createBox(Size(240.0f, 48.0f)),
 		int(PlatformerCollisionType::PassThrough),
 		CollisionObject::Properties(false, false)
 	);
@@ -63,7 +63,7 @@ void MineCart::initializePositions()
 {
 	super::initializePositions();
 
-	this->bottomCollision->setPositionY(-72.0f);
+	this->bottomCollision->setPositionY(-96.0f);
 	this->wheelBack->setPosition(Vec2(-32.0f, -64.0f));
 	this->wheelFront->setPosition(Vec2(32.0f, -69.0f));
 }
@@ -87,26 +87,14 @@ void MineCart::update(float dt)
 	super::update(dt);
 
 	this->moveCart(dt);
+	this->faceEntityTowardsDirection();
 }
 
 void MineCart::mount(PlatformerEntity* interactingEntity)
 {
 	super::mount(interactingEntity);
 
-	switch(this->cartDirection)
-	{
-		case CartDirection::Left:
-		{
-			interactingEntity->getAnimations()->setFlippedX(true);
-			break;
-		}
-		default:
-		case CartDirection::Right:
-		{
-			interactingEntity->getAnimations()->setFlippedX(false);
-			break;
-		}
-	}
+	this->faceEntityTowardsDirection();
 
 	this->isMoving = true;
 }
@@ -136,6 +124,29 @@ void MineCart::reverse()
 	}
 }
 
+void MineCart::faceEntityTowardsDirection()
+{
+	if (this->mountedEntity == nullptr)
+	{
+		return;
+	}
+
+	switch(this->cartDirection)
+	{
+		case CartDirection::Left:
+		{
+			this->mountedEntity->getAnimations()->setFlippedX(true);
+			break;
+		}
+		default:
+		case CartDirection::Right:
+		{
+			this->mountedEntity->getAnimations()->setFlippedX(false);
+			break;
+		}
+	}
+}
+
 void MineCart::setCartDirection(CartDirection cartDirection)
 {
 	this->cartDirection = cartDirection;
@@ -143,7 +154,7 @@ void MineCart::setCartDirection(CartDirection cartDirection)
 
 Vec2 MineCart::getReparentPosition()
 {
-	return Vec2::ZERO;
+	return Vec2(0.0f, 128.0f);
 }
 
 void MineCart::moveCart(float dt)
@@ -153,19 +164,17 @@ void MineCart::moveCart(float dt)
 		return;
 	}
 
-	const float CartSpeed = 768.0f;
-
 	switch(this->cartDirection)
 	{
 		case CartDirection::Left:
 		{
-			this->setPosition(this->getPosition() - Vec2(CartSpeed * dt, 0.0f));
+			this->setPosition(this->getPosition() - Vec2(this->cartSpeed * dt, 0.0f));
 			break;
 		}
 		default:
 		case CartDirection::Right:
 		{
-			this->setPosition(this->getPosition() + Vec2(CartSpeed * dt, 0.0f));
+			this->setPosition(this->getPosition() + Vec2(this->cartSpeed * dt, 0.0f));
 			break;
 		}
 	}
