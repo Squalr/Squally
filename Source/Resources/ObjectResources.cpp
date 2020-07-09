@@ -314,6 +314,7 @@ const std::string ObjectResources::Physics_CartLift_Platform = "Private/Platform
 const std::string ObjectResources::Physics_CartLift_PlatformSpiked = "Private/Platformer/Objects/Physics/CartLift/PlatformSpiked.png";
 const std::string ObjectResources::Physics_CartLift_Rail = "Private/Platformer/Objects/Physics/CartLift/Rail.png";
 const std::string ObjectResources::Physics_CartLift_Stop = "Private/Platformer/Objects/Physics/CartLift/Stop.png";
+const std::string ObjectResources::Physics_CartStop_CartStop = "Private/Platformer/Objects/Physics/CartStop/CartStop.png";
 const std::string ObjectResources::Physics_RollingStone_RollingStone = "Private/Platformer/Objects/Physics/RollingStone/RollingStone.png";
 const std::string ObjectResources::Physics_WoodenBeam_WoodenBeam = "Private/Platformer/Objects/Physics/WoodenBeam/WoodenBeam.png";
 const std::string ObjectResources::Physics_WoodenCrate_WoodenCrate = "Private/Platformer/Objects/Physics/WoodenCrate/WoodenCrate.png";

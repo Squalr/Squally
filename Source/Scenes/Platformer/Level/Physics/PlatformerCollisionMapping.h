@@ -25,7 +25,7 @@ public:
 	static const std::string MapKeyCollisionTypeSolidNpc;
 	static const std::string MapKeyCollisionTypeWater;
 	static const std::string MapKeyCollisionTypeDamage;
-	static const std::string MapKeyCollisionTypeRails;
+	static const std::string MapKeyCollisionTypeCartStop;
 	static const std::string MapKeyCollisionTypeKill;
 	static const std::string MapKeyCollisionTypeKillAlt;
 

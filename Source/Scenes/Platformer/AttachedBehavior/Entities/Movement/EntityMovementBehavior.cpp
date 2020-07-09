@@ -148,8 +148,9 @@ void EntityMovementBehavior::update(float dt)
 	else
 	{
 		bool isCinematicHijacked = this->entity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+		bool isMountHijacked = this->entity->getRuntimeStateOrDefaultBool(StateKeys::MountHijacked, false);
 		
-		if (isCinematicHijacked)
+		if (isCinematicHijacked || isMountHijacked)
 		{
 			movement = Vec2::ZERO;
 		}

@@ -6,6 +6,7 @@
 class CollisionObject;
 class HackableData;
 class InteractMenu;
+class PlatformerEntity;
 class Squally;
 
 class PortalSpawn : public HackableObject
@@ -25,12 +26,12 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	virtual void onPlayerSpawn();
+	virtual void onPlayerSpawn(PlatformerEntity* entity);
 
 private:
 	typedef HackableObject super;
 
-	void doRelayer(Squally* squally);
+	void doRelayer(PlatformerEntity* entity);
 	void applyZoomOverride();
 	void tryShowBanner();
 

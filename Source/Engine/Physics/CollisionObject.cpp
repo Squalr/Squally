@@ -663,7 +663,7 @@ void CollisionObject::propagateRotation(bool force)
 {
 	float rotation = GameUtils::getRotation(this);
 
-	if (!force && rotation == this->cachedRotation )
+	if (!force && rotation == this->cachedRotation)
 	{
 		return;
 	}

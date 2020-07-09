@@ -67,6 +67,7 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemPotions.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSwimHack.h"
 #include "Objects/Platformer/Interactables/LifeStone.h"
+#include "Objects/Platformer/Interactables/Mounts/MineCart/CartStop.h"
 #include "Objects/Platformer/Interactables/Mounts/MineCart/MineCart.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/Tent.h"

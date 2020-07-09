@@ -49,6 +49,20 @@ Vec2 MountBase::getReparentPosition()
 	return Vec2::ZERO;
 }
 
+void MountBase::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void MountBase::update(float dt)
+{
+	super::update(dt);
+
+	this->setToMountPositionX();
+}
+
 void MountBase::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
@@ -69,6 +83,8 @@ void MountBase::mount(PlatformerEntity* interactingEntity)
 		{
 			this->setInteractType(InteractObject::InteractType::None);
 			this->mountedEntity = interactingEntity;
+
+			this->setToMountPosition();
 		}
 	});
 }
@@ -84,7 +100,28 @@ void MountBase::dismount()
 	{
 		if (entityMountBehavior->dismount())
 		{
+			this->mountedEntity = nullptr;
 			this->setInteractType(InteractObject::InteractType::Input);
 		}
 	});
+}
+
+void MountBase::setToMountPositionX()
+{
+	if (this->mountedEntity == nullptr)
+	{
+		return;
+	}
+
+	this->mountedEntity->setPositionX(this->getReparentPosition().x);
+}
+
+void MountBase::setToMountPosition()
+{
+	if (this->mountedEntity == nullptr)
+	{
+		return;
+	}
+
+	this->mountedEntity->setPosition(this->getReparentPosition());
 }

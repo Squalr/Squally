@@ -54,9 +54,8 @@ bool EntityMountBehavior::mount(MountBase* mountTarget)
 	this->mountTarget = mountTarget;
 
 	GameUtils::changeParent(this->entity, this->mountTarget->getReparentNode(), false);
-
-	this->entity->setPosition(this->mountTarget->getReparentPosition());
-	this->entity->setState(StateKeys::CinematicHijacked, Value(true));
+	
+	this->entity->setState(StateKeys::MountHijacked, Value(true));
 
 	return true;
 }
@@ -71,7 +70,7 @@ bool EntityMountBehavior::dismount()
 	this->mountTarget = nullptr;
 
 	GameUtils::changeParent(this->entity, this->originalParent, true);
-	this->entity->setState(StateKeys::CinematicHijacked, Value(false));
+	this->entity->setState(StateKeys::MountHijacked, Value(false));
 
 	return true;
 }

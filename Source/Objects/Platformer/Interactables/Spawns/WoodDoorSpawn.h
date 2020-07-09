@@ -16,7 +16,7 @@ protected:
 	WoodDoorSpawn(cocos2d::ValueMap& properties);
 	virtual ~WoodDoorSpawn();
 
-	void onPlayerSpawn() override;
+	void onPlayerSpawn(PlatformerEntity* entity) override;
 
 private:
 	typedef PortalSpawn super;

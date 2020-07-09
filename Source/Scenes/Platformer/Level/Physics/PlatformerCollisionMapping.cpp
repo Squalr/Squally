@@ -22,7 +22,7 @@ const std::string PlatformerCollisionMapping::MapKeyCollisionTypeForce = "force"
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc = "solid-npc";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeWater = "water";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeDamage = "damage";
-const std::string PlatformerCollisionMapping::MapKeyCollisionTypeRails = "rails";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeCartStop = "cart-stop";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKill = "kill";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKillAlt = "kill-plane";
 std::map<std::string, int> PlatformerCollisionMapping::CollisionMap = std::map<std::string, int>();
@@ -70,7 +70,7 @@ void PlatformerCollisionMapping::buildCollisionMap()
 	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeForce] = (int)PlatformerCollisionType::Force;
 	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeWater] = (int)PlatformerCollisionType::Water;
 	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeDamage] = (int)PlatformerCollisionType::Damage;
-	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeRails] = (int)PlatformerCollisionType::Rails;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeCartStop] = (int)PlatformerCollisionType::CartStop;
 	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeKill] = (int)PlatformerCollisionType::KillPlane;
 	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeKillAlt] = (int)PlatformerCollisionType::KillPlane;
 }

@@ -36,7 +36,7 @@ enum class PlatformerCollisionType
 	Breakable			= 1 << 22,
 	Collectable			= 1 << 23,
 	Cinematic			= 1 << 24,
-	Rails				= 1 << 25,
+	CartStop			= 1 << 25,
 	
 	// Engine (keep in sync with EngineCollisionTypes)
 	KillPlane			= (int)EngineCollisionTypes::KillPlane,

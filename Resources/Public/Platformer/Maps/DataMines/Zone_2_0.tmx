@@ -172,15 +172,15 @@
   <object id="829" name="Mines/SupportMedium" type="decor" x="1327.41" y="573.061" width="127" height="634"/>
   <object id="832" name="Mines/SupportMedium" type="decor" x="2252.5" y="571" width="127" height="634"/>
   <object id="833" name="Mines/SupportMedium" type="decor" x="3168.5" y="575" width="127" height="634"/>
-  <object id="848" name="Mines/CartStop" type="decor" x="780.5" y="1039" width="188" height="169"/>
-  <object id="849" name="Mines/CartStop" type="decor" x="5110.21" y="2089.71" width="188" height="169">
+  <object id="848" name="cart-stop" type="object" x="780.5" y="1039" width="188" height="169"/>
+  <object id="849" name="cart-stop" type="object" x="5110.21" y="2089.71" width="188" height="169">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="855" name="Mines/SupportMedium" type="decor" x="3220.5" y="1627" width="127" height="634"/>
   <object id="856" name="Mines/SupportMedium" type="decor" x="2346.5" y="1625" width="127" height="634"/>
-  <object id="858" name="Mines/CartStop" type="decor" x="2445.09" y="3262.11" width="188" height="169"/>
+  <object id="858" name="cart-stop" type="object" x="2445.09" y="3262.11" width="188" height="169"/>
   <object id="863" name="Mines/SupportMedium" type="decor" x="3141.59" y="2796.61" width="127" height="634"/>
  </objectgroup>
  <objectgroup id="81" name="rails">
@@ -199,7 +199,7 @@
   </object>
   <object id="854" name="rails" type="terrain" x="2670.37" y="3433.61" width="3301.44" height="92">
    <properties>
-    <property name="collision" value="rails"/>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -214,7 +214,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="804" name="edge-portal" type="object" x="5703.8" y="2942.27" width="199.918" height="488.002">
+  <object id="804" name="edge-portal" type="object" x="5695.8" y="2942.27" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="DataMines/Zone_2_1"/>
@@ -284,18 +284,13 @@
   <object id="805" name="spawn-cart" type="object" x="5433.76" y="3302.27" width="128" height="128">
    <properties>
     <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="link-tag" value="cart-A"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="821" name="spawn" type="object" x="340.246" y="1081.7" width="128" height="128">
    <properties>
     <property name="transition" value="passage-right"/>
-   </properties>
-  </object>
-  <object id="860" name="spawn" type="object" x="1931.88" y="3306.21" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

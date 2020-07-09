@@ -3,7 +3,11 @@
 #include "cocos/base/CCValue.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEntities.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -12,6 +16,7 @@ using namespace cocos2d;
 const std::string MineCart::MapKey = "mine-cart";
 const std::string MineCart::PropertyColor = "color";
 const std::string MineCart::PropertyDirection = "direction";
+const std::string MineCart::PropertySpeed = "speed";
 
 MineCart* MineCart::create(cocos2d::ValueMap& properties)
 {
@@ -22,15 +27,22 @@ MineCart* MineCart::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, Size(240.0f, 184.0f))
 {
 	this->parseColor();
 	this->parseDirection();
+	this->cartSpeed = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertySpeed, Value(512.0f)).asFloat();
 	this->body = Sprite::create(this->cartColor == CartColor::Brown ? ObjectResources::Interactive_MineCarts_Body1 : ObjectResources::Interactive_MineCarts_Body2);
 	this->wheelFront = Sprite::create(ObjectResources::Interactive_MineCarts_WheelFront);
 	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
 	this->isMoving = false;
+	this->bottomCollision = CollisionObject::create(
+		CollisionObject::createBox(Size(240.0f, 64.0f)),
+		int(PlatformerCollisionType::PassThrough),
+		CollisionObject::Properties(false, false)
+	);
 
+	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->body);
 	this->frontNode->addChild(this->wheelFront);
 	this->frontNode->addChild(this->wheelBack);
@@ -51,8 +63,23 @@ void MineCart::initializePositions()
 {
 	super::initializePositions();
 
-	wheelBack->setPosition(Vec2(-32.0f, -64.0f));
-	wheelFront->setPosition(Vec2(32.0f, -69.0f));
+	this->bottomCollision->setPositionY(-72.0f);
+	this->wheelBack->setPosition(Vec2(-32.0f, -64.0f));
+	this->wheelFront->setPosition(Vec2(32.0f, -69.0f));
+}
+
+void MineCart::initializeListeners()
+{
+	super::initializeListeners();
+	
+
+	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->reverse();
+		this->dismount();
+		
+		return CollisionObject::CollisionResult::CollideWithPhysics;
+	});
 }
 
 void MineCart::update(float dt)
@@ -66,6 +93,21 @@ void MineCart::mount(PlatformerEntity* interactingEntity)
 {
 	super::mount(interactingEntity);
 
+	switch(this->cartDirection)
+	{
+		case CartDirection::Left:
+		{
+			interactingEntity->getAnimations()->setFlippedX(true);
+			break;
+		}
+		default:
+		case CartDirection::Right:
+		{
+			interactingEntity->getAnimations()->setFlippedX(false);
+			break;
+		}
+	}
+
 	this->isMoving = true;
 }
 
@@ -74,6 +116,29 @@ void MineCart::dismount()
 	super::dismount();
 	
 	this->isMoving = false;
+}
+
+void MineCart::reverse()
+{
+	switch(this->cartDirection)
+	{
+		case CartDirection::Left:
+		{
+			this->setCartDirection(CartDirection::Right);
+			break;
+		}
+		default:
+		case CartDirection::Right:
+		{
+			this->setCartDirection(CartDirection::Left);
+			break;
+		}
+	}
+}
+
+void MineCart::setCartDirection(CartDirection cartDirection)
+{
+	this->cartDirection = cartDirection;
 }
 
 Vec2 MineCart::getReparentPosition()

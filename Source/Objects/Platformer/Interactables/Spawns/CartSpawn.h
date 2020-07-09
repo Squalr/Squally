@@ -14,8 +14,16 @@ protected:
 	CartSpawn(cocos2d::ValueMap& properties);
 	virtual ~CartSpawn();
 
-	void onPlayerSpawn() override;
+	void onPlayerSpawn(PlatformerEntity* entity) override;
 
 private:
 	typedef PortalSpawn super;
+
+	void enterCart(PlatformerEntity* entity);
+
+	std::string linkTag;
+	std::string direction;
+
+	static const std::string PropertyLinkTag;
+	static const std::string PropertyDirection;
 };

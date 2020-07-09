@@ -585,11 +585,6 @@ namespace DecorResources
 	extern const std::string Mines_BucketWheelFilled2;
 	extern const std::string Mines_BucketWheelFilled3;
 	extern const std::string Mines_BucketWheelFilled4;
-	extern const std::string Mines_Cactus1;
-	extern const std::string Mines_Cactus2;
-	extern const std::string Mines_Cactus3;
-	extern const std::string Mines_Cactus4;
-	extern const std::string Mines_CartStop;
 	extern const std::string Mines_CaveDoor1;
 	extern const std::string Mines_CaveDoor2;
 	extern const std::string Mines_CaveDoor3;
@@ -699,6 +694,10 @@ namespace DecorResources
 	extern const std::string Ruins_Background_DesertLayer2;
 	extern const std::string Ruins_Background_DesertLayer3;
 	extern const std::string Ruins_Background_DesertLayer4;
+	extern const std::string Ruins_Cactus1;
+	extern const std::string Ruins_Cactus2;
+	extern const std::string Ruins_Cactus3;
+	extern const std::string Ruins_Cactus4;
 	extern const std::string Ruins_LionDoor;
 	extern const std::string Ruins_LionDoorFront;
 	extern const std::string Ruins_Obelisk;

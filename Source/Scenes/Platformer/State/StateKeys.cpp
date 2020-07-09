@@ -15,6 +15,7 @@ const std::string StateKeys::NotifyNewHelper = "STATE_KEY_NOTIFY_NEW_HELPER";
 const std::string StateKeys::NewHelperSpawnX = "STATE_KEY_NEW_HELPER_SPAWN_X";
 const std::string StateKeys::NewHelperSpawnY = "STATE_KEY_NEW_HELPER_SPAWN_Y";
 const std::string StateKeys::CinematicHijacked = "STATE_KEY_CINEMATIC_HIJACKED";
+const std::string StateKeys::MountHijacked = "STATE_KEY_MOUNT_HIJACKED";
 const std::string StateKeys::CinematicDestinationX = "STATE_KEY_CINEMATIC_DESTINATION_X";
 const std::string StateKeys::CinematicDestinationReached = "STATE_KEY_CINEMATIC_DESTINATION_REACHED";
 const std::string StateKeys::PatrolHijacked = "STATE_KEY_PATROL_HIJACKED";

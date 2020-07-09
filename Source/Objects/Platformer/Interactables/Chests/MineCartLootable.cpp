@@ -22,7 +22,7 @@ MineCartLootable* MineCartLootable::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MineCartLootable::MineCartLootable(cocos2d::ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+MineCartLootable::MineCartLootable(cocos2d::ValueMap& properties) : super(properties, Size(240.0f, 184.0f))
 {
 	this->parseFill();
 	this->parseColor();

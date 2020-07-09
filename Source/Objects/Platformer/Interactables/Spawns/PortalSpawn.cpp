@@ -66,38 +66,37 @@ void PortalSpawn::initializeListeners()
 		
 		if (args != nullptr && args->transition == this->transition)
 		{
-			this->onPlayerSpawn();
+			ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+			{
+				this->onPlayerSpawn(squally);
+			}), Squally::MapKey);
 		}
 	}));
 }
 
-void PortalSpawn::onPlayerSpawn()
+void PortalSpawn::onPlayerSpawn(PlatformerEntity* entity)
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+	this->doRelayer(entity);
+	this->applyZoomOverride();
+
+	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(entity, GameUtils::getWorldCoords3D(this)));
+	
+	this->tryShowBanner();
+	
+	if (entity->getAnimations() != nullptr)
 	{
-		this->doRelayer(squally);
-		this->applyZoomOverride();
-
-		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this)));
-		
-		this->tryShowBanner();
-		
-		if (squally->getAnimations() != nullptr)
-		{
-			squally->getAnimations()->setFlippedX(this->flipX);
-		}
-
-	}), Squally::MapKey);
+		entity->getAnimations()->setFlippedX(this->flipX);
+	}
 }
 
-void PortalSpawn::doRelayer(Squally* squally)
+void PortalSpawn::doRelayer(PlatformerEntity* entity)
 {
 	// Relayer to the spawn object layer
 	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
 
 	if (layer != nullptr)
 	{
-		GameUtils::changeParent(squally, layer, true);
+		GameUtils::changeParent(entity, layer, true);
 	}
 }
 
