@@ -31,7 +31,6 @@ ChestPoolURRare::ChestPoolURRare(ValueMap& properties) : super(
 {
 	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
 }
 
 ChestPoolURRare::~ChestPoolURRare()

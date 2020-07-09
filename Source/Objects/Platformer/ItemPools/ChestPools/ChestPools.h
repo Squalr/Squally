@@ -8,7 +8,6 @@
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolRamWheel.h"
 #include "Objects/Platformer/ItemPools/ChestPools/Special/ChestPoolPinata.h"
 #include "Objects/Platformer/ItemPools/ChestPools/Special/ChestPoolDisplayOr.h"
-#include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolUREquipment.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURGeneric.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURMirror.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURRare.h"

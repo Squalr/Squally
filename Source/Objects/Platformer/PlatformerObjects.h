@@ -69,6 +69,7 @@
 #include "Objects/Platformer/Interactables/LifeStone.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/Tent.h"
+#include "Objects/Platformer/Interactables/Spawns/CartSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/PortalSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/WoodDoorSpawn.h"
 #include "Objects/Platformer/Liquids/Water.h"
