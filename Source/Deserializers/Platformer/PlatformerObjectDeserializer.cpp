@@ -93,6 +93,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CameraScrollTracker::MapKey] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
 	this->deserializers[CameraStop::MapKey] = [=](ValueMap properties) { return (GameObject*)CameraStop::create(properties); };
 	this->deserializers[CameraTarget::MapKey] = [=](ValueMap properties) { return (GameObject*)CameraTarget::create(properties); };
+	this->deserializers[CartLift::MapKey] = [=](ValueMap properties) { return (GameObject*)CartLift::create(properties); };
 	this->deserializers[CartSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)CartSpawn::create(properties); };
 	this->deserializers[CartStop::MapKey] = [=](ValueMap properties) { return (GameObject*)CartStop::create(properties); };
 	this->deserializers[CastleGate::MapKey] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
