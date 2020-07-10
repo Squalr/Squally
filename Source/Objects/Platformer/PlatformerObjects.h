@@ -26,6 +26,8 @@
 #include "Objects/Platformer/Decor/MineLantern.h"
 #include "Objects/Platformer/Decor/MineWheel.h"
 #include "Objects/Platformer/Decor/MineWinch.h"
+#include "Objects/Platformer/Decor/PullyHorizontal.h"
+#include "Objects/Platformer/Decor/PullyVertical.h"
 #include "Objects/Platformer/Decor/Torch.h"
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"

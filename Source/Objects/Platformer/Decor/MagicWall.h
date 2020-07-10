@@ -4,7 +4,6 @@
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Hackables/HackableObject.h"
 
-class HackableData;
 class SmartParticles;
 
 class MagicWall : public HackableObject

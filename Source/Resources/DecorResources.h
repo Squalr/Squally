@@ -638,9 +638,6 @@ namespace DecorResources
 	extern const std::string Mines_PlankConnector4;
 	extern const std::string Mines_PlankConnector5;
 	extern const std::string Mines_PlankConnector6;
-	extern const std::string Mines_Pully1;
-	extern const std::string Mines_Pully2;
-	extern const std::string Mines_Pully3;
 	extern const std::string Mines_Rock1;
 	extern const std::string Mines_Rock2;
 	extern const std::string Mines_Rock3;

@@ -145,6 +145,14 @@ namespace ObjectResources
 	extern const std::string Decor_MineLantern_LanternBack;
 	extern const std::string Decor_MineLantern_LanternFront;
 	extern const std::string Decor_MineLantern_TorchGlow;
+	extern const std::string Decor_Pullies_Hook;
+	extern const std::string Decor_Pullies_PullyHorizontal_0000;
+	extern const std::string Decor_Pullies_PullyHorizontal_0001;
+	extern const std::string Decor_Pullies_PullyVertical_0000;
+	extern const std::string Decor_Pullies_PullyVertical_0001;
+	extern const std::string Decor_Pullies_Rope1;
+	extern const std::string Decor_Pullies_WheelDark;
+	extern const std::string Decor_Pullies_WheelLight;
 	extern const std::string Decor_Torch_Torch;
 	extern const std::string Decor_Torch_TorchGlow;
 	extern const std::string Decor_Torch_TorchGlowBlue;

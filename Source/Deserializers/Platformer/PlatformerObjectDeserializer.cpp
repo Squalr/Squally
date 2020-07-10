@@ -139,6 +139,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[LogicTorch::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicTorch::create(properties); };
+	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyHorizontal::create(properties); };
+	this->deserializers[PullyVertical::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyVertical::create(properties); };
 	this->deserializers[ManaOrb::MapKey] = [=](ValueMap properties) { return (GameObject*)ManaOrb::create(properties); };
 	this->deserializers[MagePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)MagePortal::create(properties); };
 	this->deserializers[MagicWall::MapKey] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };

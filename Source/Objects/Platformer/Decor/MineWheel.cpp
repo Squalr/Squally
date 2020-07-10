@@ -102,7 +102,7 @@ std::vector<MineWheel::BucketType> MineWheel::createOrdering(int count)
 
 	for (int index = 0; index < count; index++)
 	{
-		buckets.push_back(BucketType(index % int(BucketType::MAX)));
+		buckets.push_back(BucketType(index % (int(BucketType::MAX) + 1)));
 	}
 
 	std::random_device rd1;

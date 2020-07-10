@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 };
 
-class HackableData;
 class SmartAnimationSequenceNode;
 
 class FireplaceFire : public GameObject
