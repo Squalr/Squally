@@ -624,6 +624,7 @@ namespace DecorResources
 	extern const std::string Mines_MineDoorTunnel;
 	extern const std::string Mines_Plank1;
 	extern const std::string Mines_Plank10;
+	extern const std::string Mines_Plank11;
 	extern const std::string Mines_Plank2;
 	extern const std::string Mines_Plank3;
 	extern const std::string Mines_Plank4;

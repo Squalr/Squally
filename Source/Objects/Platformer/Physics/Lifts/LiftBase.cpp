@@ -77,6 +77,17 @@ LiftBase::~LiftBase()
 {
 }
 
+void LiftBase::initializePositions()
+{
+	super::initializePositions();
+
+    const float Padding = this->getPadding();
+    const float AdjustedSpeed = (this->movementDirection == MovementDirection::LeftRight ? this->width : this->height) / this->speedPer256px / 256.0f;
+    const Vec2 StartPosition = this->movementDirection == MovementDirection::LeftRight ? Vec2(this->width / 2.0f - Padding, 0.0f) : Vec2(0.0f, this->height / 2.0f - Padding);
+
+	this->liftCollision->setPosition(-StartPosition);
+}
+
 void LiftBase::onEnter()
 {
     super::onEnter();

@@ -623,6 +623,7 @@ const std::string DecorResources::Mines_MineDoorOpen = "Private/Platformer/Decor
 const std::string DecorResources::Mines_MineDoorTunnel = "Private/Platformer/Decor/Mines/MineDoorTunnel.png";
 const std::string DecorResources::Mines_Plank1 = "Private/Platformer/Decor/Mines/Plank1.png";
 const std::string DecorResources::Mines_Plank10 = "Private/Platformer/Decor/Mines/Plank10.png";
+const std::string DecorResources::Mines_Plank11 = "Private/Platformer/Decor/Mines/Plank11.png";
 const std::string DecorResources::Mines_Plank2 = "Private/Platformer/Decor/Mines/Plank2.png";
 const std::string DecorResources::Mines_Plank3 = "Private/Platformer/Decor/Mines/Plank3.png";
 const std::string DecorResources::Mines_Plank4 = "Private/Platformer/Decor/Mines/Plank4.png";

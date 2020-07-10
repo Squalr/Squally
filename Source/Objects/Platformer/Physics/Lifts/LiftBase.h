@@ -23,6 +23,7 @@ protected:
 		LeftRight
 	};
 
+	void initializePositions() override;
 	void onEnter() override;
 	virtual float getPadding();
 

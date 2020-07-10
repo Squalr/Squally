@@ -605,6 +605,7 @@ const std::string ObjectResources::Traps_Spikes_spikes_6 = "Private/Platformer/O
 const std::string ObjectResources::Traps_Spikes_spikes_7 = "Private/Platformer/Objects/Traps/Spikes/spikes 7.png";
 const std::string ObjectResources::Traps_Spikes_spikes_8 = "Private/Platformer/Objects/Traps/Spikes/spikes 8.png";
 const std::string ObjectResources::Traps_Spikes_spikes_9 = "Private/Platformer/Objects/Traps/Spikes/spikes 9.png";
+const std::string ObjectResources::Traps_Stalactite_Stalactite = "Private/Platformer/Objects/Traps/Stalactite/Stalactite.png";
 const std::string ObjectResources::Traps_TNTBarrel_BARREL_TNT = "Private/Platformer/Objects/Traps/TNTBarrel/BARREL-TNT.png";
 const std::string ObjectResources::Traps_TNTBarrel_FULL_BARREL = "Private/Platformer/Objects/Traps/TNTBarrel/FULL-BARREL.png";
 const std::string ObjectResources::Traps_TNTBarrel_STONES = "Private/Platformer/Objects/Traps/TNTBarrel/STONES.png";

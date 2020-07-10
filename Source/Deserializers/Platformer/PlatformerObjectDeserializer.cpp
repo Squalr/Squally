@@ -175,6 +175,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };
 	this->deserializers[SpikedLog::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedLog::create(properties); };
 	this->deserializers[SquallyShip::MapKey] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };
+	this->deserializers[Stalactite::MapKey] = [=](ValueMap properties) { return (GameObject*)Stalactite::create(properties); };
 	this->deserializers[StoneButton::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
 	this->deserializers[TempleDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDoor::create(properties); };
 	this->deserializers[Tent::MapKey] = [=](ValueMap properties) { return (GameObject*)Tent::create(properties); };

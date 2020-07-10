@@ -606,6 +606,7 @@ namespace ObjectResources
 	extern const std::string Traps_Spikes_spikes_7;
 	extern const std::string Traps_Spikes_spikes_8;
 	extern const std::string Traps_Spikes_spikes_9;
+	extern const std::string Traps_Stalactite_Stalactite;
 	extern const std::string Traps_TNTBarrel_BARREL_TNT;
 	extern const std::string Traps_TNTBarrel_FULL_BARREL;
 	extern const std::string Traps_TNTBarrel_STONES;
