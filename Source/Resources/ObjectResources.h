@@ -501,7 +501,7 @@ namespace ObjectResources
 	extern const std::string Traps_HeavenHug_CHAIN_HUG;
 	extern const std::string Traps_HeavenHug_HEAVEN_HUG;
 	extern const std::string Traps_HeavenHug_PreviewHeavenHug;
-	extern const std::string Traps_Icicles_Icicles;
+	extern const std::string Traps_Icicle_Icicle;
 	extern const std::string Traps_Laser_LaserHead;
 	extern const std::string Traps_Laser_LaserMid;
 	extern const std::string Traps_Laser_LaserWeak;

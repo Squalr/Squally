@@ -35,6 +35,9 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
+	HackablePreview* createDefaultPreview() override;
 
 private:
 	typedef MountBase super;
@@ -45,6 +48,7 @@ private:
 		Blue
 	};
 
+	void updateCanMove();
 	void reverse();
 	void faceEntityTowardsDirection();
 	void moveCart(float dt);
@@ -52,6 +56,7 @@ private:
 	void parseDirection();
 
 	float cartSpeed;
+	bool canMoveHack;
 	bool isMoving;
 	CartColor cartColor;
 	CartDirection cartDirection;

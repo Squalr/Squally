@@ -122,6 +122,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[LanternGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LanternGate::create(properties); };
 	this->deserializers[LogicGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicGate::create(properties); };
 	this->deserializers[EdgeLanternGate::MapKey] = [=](ValueMap properties) { return (GameObject*)EdgeLanternGate::create(properties); };
+	this->deserializers[Icicle::MapKey] = [=](ValueMap properties) { return (GameObject*)Icicle::create(properties); };
 	this->deserializers[IOUDrop::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop::create(properties); };
 	this->deserializers[IOUDrop5::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop5::create(properties); };
 	this->deserializers[IOUDrop10::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop10::create(properties); };

@@ -8,12 +8,15 @@
 
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMountBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -54,6 +57,24 @@ void MountBase::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
+}
+
+void MountBase::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Damage }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->mountedEntity != nullptr)
+		{
+			this->mountedEntity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->setHealth(0, true);
+			});
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }
 
 void MountBase::update(float dt)

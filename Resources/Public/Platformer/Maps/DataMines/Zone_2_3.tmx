@@ -234,7 +234,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="863" name="Mines/SupportMedium" type="decor" x="2577.11" y="2804.61" width="127" height="634"/>
+  <object id="863" name="Mines/SupportMedium" type="decor" x="2462.44" y="2804.61" width="127" height="634"/>
   <object id="1490" name="Mines/PlankConnector4" type="decor" x="4286.07" y="3341.52" width="106" height="96"/>
  </objectgroup>
  <objectgroup id="81" name="rails">
@@ -273,7 +273,7 @@
     <property name="tag" value="cart-A"/>
    </properties>
   </object>
-  <object id="991" name="life-stone" type="object" x="3647.97" y="3015.77" width="146" height="423"/>
+  <object id="991" name="life-stone" type="object" x="2658.64" y="3014.44" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

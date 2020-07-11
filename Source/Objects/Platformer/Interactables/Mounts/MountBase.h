@@ -26,6 +26,7 @@ protected:
 	virtual ~MountBase();
 
 	void onEnter();
+	void initializeListeners() override;
 	void update(float dt);
 	void onInteract(PlatformerEntity* interactingEntity) override;
 	virtual cocos2d::Vec2 getReparentPosition();

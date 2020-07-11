@@ -108,6 +108,7 @@
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeam.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"
+#include "Objects/Platformer/Traps/Icicle/Icicle.h"
 #include "Objects/Platformer/Traps/Laser/Laser.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncher.h"
 #include "Objects/Platformer/Traps/Launchers/DartTripodLauncher/DartTripodLauncher.h"

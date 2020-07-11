@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1757">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1770">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -364,7 +364,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="861" name="mine-cart" type="object" x="2823.75" y="2742.27" width="240" height="184">
+  <object id="861" name="mine-cart" type="object" x="544.417" y="2741.6" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
     <property name="direction" value="left"/>
@@ -378,88 +378,65 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1744" name="stelactite" type="object" x="1911.88" y="1933.82" width="52" height="150">
+  <object id="1748" name="stalactite" type="object" x="2601.61" y="1934.25" width="52" height="150">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="listen-event" value="4"/>
    </properties>
   </object>
-  <object id="1745" name="stelactite" type="object" x="2130" y="1931.33" width="52" height="150">
+  <object id="1749" name="stalactite" type="object" x="2819.72" y="1931.76" width="52" height="150">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="listen-event" value="5"/>
    </properties>
   </object>
-  <object id="1746" name="stelactite" type="object" x="2360.67" y="1933" width="52" height="150">
+  <object id="1750" name="stalactite" type="object" x="3050.39" y="1933.43" width="52" height="150">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="listen-event" value="6"/>
    </properties>
   </object>
-  <object id="1748" name="stelactite" type="object" x="2601.61" y="1934.25" width="52" height="150">
+  <object id="1751" name="stalactite" type="object" x="3294.62" y="1933.3" width="52" height="150">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="listen-event" value="7"/>
    </properties>
   </object>
-  <object id="1749" name="stelactite" type="object" x="2819.72" y="1931.76" width="52" height="150">
+  <object id="1752" name="stalactite" type="object" x="3512.74" y="1930.81" width="52" height="150">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="listen-event" value="8"/>
    </properties>
   </object>
-  <object id="1750" name="stelactite" type="object" x="3050.39" y="1933.43" width="52" height="150">
+  <object id="1753" name="stalactite" type="object" x="3743.41" y="1932.48" width="52" height="150">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="listen-event" value="9"/>
    </properties>
   </object>
-  <object id="1751" name="stelactite" type="object" x="3294.62" y="1933.3" width="52" height="150">
+  <object id="1757" name="kill" type="collision" x="-59.8733" y="3106" width="6861.08" height="268"/>
+  <object id="1761" name="trigger" type="object" x="2071.67" y="2088.31" width="1113.63" height="1852.12">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="send-event" value="4"/>
    </properties>
   </object>
-  <object id="1752" name="stelactite" type="object" x="3512.74" y="1930.81" width="52" height="150">
+  <object id="1762" name="trigger" type="object" x="2295.18" y="2089.94" width="1113.63" height="1852.12">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="send-event" value="5"/>
    </properties>
   </object>
-  <object id="1753" name="stelactite" type="object" x="3743.41" y="1932.48" width="52" height="150">
+  <object id="1763" name="trigger" type="object" x="2522.88" y="2088.42" width="1113.63" height="1852.12">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="send-event" value="6"/>
    </properties>
   </object>
-  <object id="1754" name="stelactite" type="object" x="3984.35" y="1933.73" width="52" height="150">
+  <object id="1764" name="trigger" type="object" x="2764.76" y="2084.73" width="1113.63" height="1852.12">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="send-event" value="7"/>
    </properties>
   </object>
-  <object id="1755" name="stelactite" type="object" x="4202.46" y="1931.24" width="52" height="150">
+  <object id="1765" name="trigger" type="object" x="2986.46" y="2084.12" width="1113.63" height="1852.12">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="send-event" value="8"/>
    </properties>
   </object>
-  <object id="1756" name="stelactite" type="object" x="4433.13" y="1932.91" width="52" height="150">
+  <object id="1766" name="trigger" type="object" x="3213" y="2081.91" width="1113.63" height="1852.12">
    <properties>
-    <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
-    <property name="tag" value="cart-A"/>
+    <property name="send-event" value="9"/>
    </properties>
   </object>
  </objectgroup>
@@ -487,7 +464,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="864" name="squally" type="entity" x="2888" y="2596" width="128" height="128">
+  <object id="864" name="squally" type="entity" x="602.667" y="2598" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

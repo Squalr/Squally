@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -8,9 +8,8 @@ namespace cocos2d
 }
 
 class CollisionObject;
-class HackableData;
 
-class Stalactite : public HackableObject
+class Stalactite : public GameObject
 {
 public:
 	static Stalactite* create(cocos2d::ValueMap& properties);
@@ -23,20 +22,16 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	cocos2d::Vec2 getButtonOffset() override;
-	void registerHackables() override;
-	HackablePreview* createDefaultPreview() override;
+	void initializeListeners() override;
+	void update(float) override;
 
 private:
-	typedef HackableObject super;
-	void updateStalactite();
-	float getTravelHeight();
-	std::vector<cocos2d::Vec2> createSpikeCollision();
+	typedef GameObject super;
 
-	volatile float travelDistance;
-	cocos2d::Node* heavenHugContainer;
-	cocos2d::Sprite* heavenHug;
-	CollisionObject* spikeCollision;
+	void applyGravity(float dt);
 
-	static const float SpeedPer480Px;
+	bool isFalling;
+
+	cocos2d::Sprite* sprite;
+	CollisionObject* collision;
 };

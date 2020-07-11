@@ -7,20 +7,20 @@ namespace cocos2d
 	class Sprite;
 }
 
-class StalactiteGenericPreview : public HackablePreview
+class MineCartPreview : public HackablePreview
 {
 public:
-	static StalactiteGenericPreview* create();
+	static MineCartPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	StalactiteGenericPreview();
-	virtual ~StalactiteGenericPreview() = default;
+	MineCartPreview();
+	virtual ~MineCartPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewStalactite;
+	cocos2d::Sprite* previewCart;
 };
