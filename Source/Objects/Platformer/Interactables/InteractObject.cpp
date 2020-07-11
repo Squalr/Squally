@@ -168,8 +168,8 @@ void InteractObject::initializeListeners()
 		 
 	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
 	{
-		if (!this->interactCollision->hasCollisionType((int)PlatformerCollisionType::Player)
-			&& !this->interactCollision->hasCollisionType((int)PlatformerCollisionType::Hover))
+		if (!this->interactCollision->isCollidingWithType((int)PlatformerCollisionType::Player)
+			&& !this->interactCollision->isCollidingWithType((int)PlatformerCollisionType::Hover))
 		{
 			this->canInteract = false;
 			this->updateInteractMenuVisibility();

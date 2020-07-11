@@ -15,6 +15,7 @@
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
@@ -34,7 +35,7 @@ RegisterStone* RegisterStone::create(ValueMap& properties)
 	return instance;
 }
 
-RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2(0.0f, 64.0f), Strings::Platformer_Objects_Interaction_OperationPush::create(), EventKeyboard::KeyCode::KEY_C, Color3B(16, 23, 57))
+RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPush::create(), EventKeyboard::KeyCode::KEY_C, Color3B(16, 23, 57))
 {
 	std::string valueStr = GameUtils::getKeyOrDefault(this->properties, RegisterStone::PropertyValue, Value("0")).asString();
 	std::string correctValueStr = GameUtils::getKeyOrDefault(this->properties, RegisterStone::PropertyCorrectValue, Value("0")).asString();
@@ -52,19 +53,25 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->correctValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->correctValueString);
 	this->registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->buildRegisterString());
 	this->popInteract = InteractObject::create(InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPop::create(), EventKeyboard::KeyCode::KEY_V, Color3B(16, 23, 57));
+	this->fxGlow = Sprite::create(UIResources::HUD_EmblemGlow);
+	this->fxGlowTop = Sprite::create(UIResources::HUD_EmblemGlow);
 
 	this->addTag(this->registerStr);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2);
 	this->correctValueLabel->enableOutline(Color4B::BLACK, 2);
 	this->registerLabel->enableOutline(Color4B::BLACK, 2);
 	this->setValue(this->value);
+	this->fxGlow->setOpacity(0);
+	this->fxGlowTop->setOpacity(0);
 	
 	this->addChild(this->popInteract);
 	this->addChild(this->registerStone);
 	this->addChild(this->correctValueStone);
+	this->addChild(this->fxGlow);
 	this->addChild(this->correctValueLabel);
 	this->addChild(this->valueStone);
 	this->addChild(this->valueLabel);
+	this->addChild(this->fxGlowTop);
 	this->addChild(this->registerLabel);
 }
 
@@ -89,13 +96,27 @@ void RegisterStone::initializePositions()
 	this->registerLabel->setPosition(Vec2(-Width / 2.0f, BaseY - 6.0f));
 	this->correctValueStone->setPosition(Vec2(Width / 2.0f, BaseY));
 	this->correctValueLabel->setPosition(Vec2(Width / 2.0f, BaseY - 6.0f));
+	this->fxGlow->setPosition(Vec2(Width / 2.0f, BaseY - 6.0f));
 	this->valueStone->setPosition(Vec2(0.0f, BaseY + 42.0f));
 	this->valueLabel->setPosition(Vec2(0.0f, BaseY + 42.0f - 6.0f));
+	this->fxGlowTop->setPosition(Vec2(0.0f, BaseY + 42.0f - 6.0f));
 }
 
 void RegisterStone::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->listenForMapEvent(MayanDoor::MapEventLockInteraction, [=](ValueMap args)
+	{
+		this->disable();
+		this->popInteract->disable();
+	});
+
+	this->listenForMapEvent(MayanDoor::MapEventUnlockInteraction, [=](ValueMap args)
+	{
+		this->enable();
+		this->popInteract->enable();
+	});
 
 	this->listenForMapEvent(MayanDoor::MapEventPopRet + this->registerStr, [=](ValueMap args)
 	{
@@ -122,6 +143,33 @@ void RegisterStone::onInteract(PlatformerEntity* interactingEntity)
 	args[MayanDoor::PropertyValue] = Value(this->value);
 
 	this->broadcastMapEvent(MayanDoor::MapEventPush, args);
+}
+
+void RegisterStone::runFx()
+{
+	this->fxGlow->runAction(Sequence::create(
+		FadeTo::create(0.5f, 255),
+		DelayTime::create(0.25f),
+		FadeTo::create(0.5f, 0),
+		nullptr
+	));
+
+	this->fxGlowTop->runAction(Sequence::create(
+		FadeTo::create(0.5f, 255),
+		DelayTime::create(0.25f),
+		FadeTo::create(0.5f, 0),
+		nullptr
+	));
+}
+
+int RegisterStone::getValue()
+{
+	return this->value;
+}
+
+int RegisterStone::getCorrectValue()
+{
+	return this->correctValue;
 }
 
 void RegisterStone::setValue(int value)

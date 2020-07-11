@@ -9,7 +9,6 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
@@ -17,10 +16,9 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStone.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -37,13 +35,15 @@ using namespace cocos2d;
 const std::string MayanDoor::MapKey = "mayan-door";
 const float MayanDoor::DoorOpenDelta = 420.0f;
 const std::string MayanDoor::EventMayanDoorUnlock = "mayan-door-unlock";
-const std::string MayanDoor::MapEventResetPuzzle = "reset-puzzle";
 const std::string MayanDoor::MapEventPush = "EVENT_STONE_PUZZLE_PUSH";
 const std::string MayanDoor::MapEventPop = "EVENT_STONE_PUZZLE_POP";
 const std::string MayanDoor::MapEventPopRet = "EVENT_STONE_PUZZLE_POP_RET";
 const std::string MayanDoor::PropertyRegister = "register";
 const std::string MayanDoor::PropertyValue = "value";
 const std::string MayanDoor::SaveKeyUnlocked = "SAVE_KEY_UNLOCKED";
+const std::string MayanDoor::MapEventLockInteraction = "EVENT_STONE_PUZZLE_LOCK_INTERACTION";
+const std::string MayanDoor::MapEventUnlockInteraction = "EVENT_STONE_PUZZLE_UNLOCK_INTERACTION";
+const std::string MayanDoor::MapEventResetPuzzle = "reset-puzzle";
 
 MayanDoor* MayanDoor::create(ValueMap& properties)
 {
@@ -62,8 +62,8 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->innerContainer = Node::create();
 	this->doorContainer = Node::create();
 	this->doorOpenSound = WorldSound::create();
-	this->inventory = nullptr;
 	this->isUnlocking = false;
+	this->registerStones = std::vector<RegisterStone*>();
 
 	this->doorContainer->addChild(this->doorFrame);
 	this->doorContainer->addChild(this->innerContainer);
@@ -81,15 +81,24 @@ void MayanDoor::onEnter()
 {
 	super::onEnter();
 	
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
-		{
-			this->inventory = entityInventoryBehavior->getInventory();
-		});
-	}, Squally::MapKey);
+		this->unlock(false);
+	}
+	else
+	{
+		this->lock(false);
+	}
+}
 
-	this->loadGems();
+void MayanDoor::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+	
+	if (this->isLocked)
+	{
+		this->discoverStones();
+	}
 }
 
 void MayanDoor::initializePositions()
@@ -118,16 +127,37 @@ void MayanDoor::initializeListeners()
 	});
 }
 
-void MayanDoor::loadGems()
+void MayanDoor::discoverStones()
 {
-	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
+	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
 	{
-		this->unlock(false);
-	}
-	else
+		this->registerStones.push_back(stone);
+	}, nullptr, "eax");
+
+	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
 	{
-		this->lock(false);
-	}
+		this->registerStones.push_back(stone);
+	}, nullptr, "ebx");
+
+	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	{
+		this->registerStones.push_back(stone);
+	}, nullptr, "ecx");
+
+	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	{
+		this->registerStones.push_back(stone);
+	}, nullptr, "edx");
+
+	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	{
+		this->registerStones.push_back(stone);
+	}, nullptr, "edi");
+
+	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	{
+		this->registerStones.push_back(stone);
+	}, nullptr, "esi");
 }
 
 void MayanDoor::tryUnlock()
@@ -137,12 +167,19 @@ void MayanDoor::tryUnlock()
 		return;
 	}
 
+	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 	this->isUnlocking = true;
 
 	int index = 0;
-	int indexRed = this->runGemRed(index);
-	int indexBlue = this->runGemBlue(indexRed);
-	int indexPurple = this->runGemPurple(indexBlue);
+	std::vector<int> combination = std::vector<int>();
+	bool willUnlock = true;
+
+	for (auto next : this->registerStones)
+	{
+		combination.push_back(next->getValue());
+
+		willUnlock &= (next->getValue() == next->getCorrectValue());
+	}
 
 	auto getRotation = [=](int rotationIndex)
 	{
@@ -151,10 +188,15 @@ void MayanDoor::tryUnlock()
 
 	const float RotationSpeedPerUnit = 0.25f;
 	const float RotationSpeedPerUnitReturn = 0.5f;
-	float rotationRed = getRotation(indexRed);
-	float rotationBlue = getRotation(indexBlue);
-	float rotationPurple = getRotation(indexPurple);
-	float rotationReturn = getRotation(0);
+	std::vector<float> rotations = std::vector<float>();
+	std::vector<float> delays = std::vector<float>();
+
+	for (auto next : combination)
+	{
+		rotations.push_back(getRotation(next));
+	}
+
+	rotations.push_back(getRotation(0));
 
 	auto getDist = [=](int indexFrom, int indexTo)
 	{
@@ -164,39 +206,44 @@ void MayanDoor::tryUnlock()
 		return float(std::min(distBetweenWrapped, distBetween));
 	};
 
-	float delayRed = std::max(getDist(indexRed, 0) * RotationSpeedPerUnit, RotationSpeedPerUnit);
-	float delayBlue = std::max(getDist(indexRed, indexBlue) * RotationSpeedPerUnit, RotationSpeedPerUnit);
-	float delayPurple = std::max(getDist(indexBlue, indexPurple) * RotationSpeedPerUnit, RotationSpeedPerUnit);
-	float delayReturn = std::max(getDist(indexPurple, 0) * RotationSpeedPerUnitReturn, RotationSpeedPerUnitReturn);
+	int previousIndex = 0;
 
-	this->innerContainer->runAction(Sequence::create(
-		RotateTo::create(delayRed, rotationRed),
-		CallFunc::create([=]()
+	// Return to 0 at the end
+	combination.push_back(0);
+
+	for (auto next : combination)
+	{
+		delays.push_back(std::max(getDist(previousIndex, next) * RotationSpeedPerUnit, RotationSpeedPerUnit));
+		previousIndex = next;
+	}
+
+	Vector<FiniteTimeAction*> actions = Vector<FiniteTimeAction*>();
+
+	for (int index = 0; index < std::min(int(rotations.size()), int(delays.size())); index++)
+	{
+		actions.pushBack(CallFunc::create([=]()
 		{
-			// this->redGem->runFX();
-		}),
-		DelayTime::create(0.5f),
-		RotateTo::create(delayBlue, rotationBlue),
-		CallFunc::create([=]()
-		{
-			// this->blueGem->runFX();
-		}),
-		DelayTime::create(0.5f),
-		RotateTo::create(delayPurple, rotationPurple),
-		CallFunc::create([=]()
-		{
-			// this->purpleGem->runFX();
-		}),
-		DelayTime::create(0.5f),
-		RotateTo::create(delayReturn, rotationReturn),
-		CallFunc::create([=]()
+			if (index < int(this->registerStones.size()))
+			{
+				this->registerStones[index]->runFx();
+			}
+		}));
+		actions.pushBack(RotateTo::create(delays[index], rotations[index]));
+		actions.pushBack(DelayTime::create(0.5f));
+	}
+
+	actions.pushBack(CallFunc::create([=]()
+	{
+		if (willUnlock)
 		{
 			this->unlock(true);
+		}
 
-			this->isUnlocking = false;
-		}),
-		nullptr
-	));
+		this->isUnlocking = false;
+		this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+	}));
+
+	this->innerContainer->runAction(Sequence::create(actions));
 }
 
 void MayanDoor::lock(bool animate)
@@ -254,69 +301,3 @@ void MayanDoor::unlock(bool animate)
 		this->doorContainer->setRotation(180.0f);
 	}
 }
-
-NO_OPTIMIZE int MayanDoor::runGemRed(int currentIndex)
-{
-	volatile int newIndex = currentIndex;
-
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, newIndex);
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_RED);
-	ASM(mov ZBX, 4);
-	ASM_NOP8();
-	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(newIndex, ebx);
-
-	ASM(pop ZBX);
-
-	HACKABLES_STOP_SEARCH();
-
-	return MathUtils::clamp(newIndex, 0, 11);
-}
-END_NO_OPTIMIZE
-
-NO_OPTIMIZE int MayanDoor::runGemBlue(int currentIndex)
-{
-	volatile int newIndex = currentIndex;
-
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, newIndex);
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_BLUE);
-	ASM(add ZBX, 7);
-	ASM_NOP8();
-	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(newIndex, ebx);
-
-	ASM(pop ZBX);
-
-	HACKABLES_STOP_SEARCH();
-
-	return MathUtils::clamp(newIndex, 0, 11);
-}
-END_NO_OPTIMIZE
-
-NO_OPTIMIZE int MayanDoor::runGemPurple(int currentIndex)
-{
-	volatile int newIndex = currentIndex;
-
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, newIndex);
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_PURPLE);
-	ASM(sub ZBX, 5);
-	ASM_NOP8();
-	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(newIndex, ebx);
-
-	ASM(pop ZBX);
-
-	HACKABLES_STOP_SEARCH();
-
-	return MathUtils::clamp(newIndex, 0, 11);
-}
-END_NO_OPTIMIZE

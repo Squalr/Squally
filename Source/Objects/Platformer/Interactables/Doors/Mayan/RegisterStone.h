@@ -15,6 +15,10 @@ class RegisterStone : public InteractObject
 public:
 	static RegisterStone* create(cocos2d::ValueMap& properties);
 
+	void runFx();
+	int getValue();
+	int getCorrectValue();
+
 	static const std::string MapKey;
 
 protected:
@@ -45,6 +49,8 @@ private:
 	ConstantString* correctValueString;
 	LocalizedLabel* correctValueLabel;
 	LocalizedLabel* registerLabel;
+	cocos2d::Sprite* fxGlow;
+	cocos2d::Sprite* fxGlowTop;
 
 	static const std::string PropertyRegister;
 	static const std::string PropertyValue;
