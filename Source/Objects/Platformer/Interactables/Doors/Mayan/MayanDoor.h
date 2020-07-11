@@ -37,7 +37,6 @@ private:
 	typedef Portal super;
 
 	void loadGems();
-	void tryTakeGems();
 	void tryUnlock();
 	int runGemRed(int currentIndex);
 	int runGemBlue(int currentIndex);
@@ -48,10 +47,6 @@ private:
 	int blueGemAnswer;
 	int purpleGemAnswer;
 	
-	MayanGemRed* redGem;
-	MayanGemBlue* blueGem;
-	MayanGemPurple* purpleGem;
-	CollisionObject* turninHitbox;
 	cocos2d::Sprite* doorArrow;
 	cocos2d::Sprite* doorFrame;
 	cocos2d::Node* doorContainer;

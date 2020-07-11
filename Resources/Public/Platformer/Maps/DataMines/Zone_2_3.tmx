@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1621">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1653">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -72,17 +72,88 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
+ <objectgroup id="88" name="terrain -5 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1628" name="mines" type="terrain" x="3779.46" y="1882" width="3117.08" height="2084"/>
+ </objectgroup>
+ <objectgroup id="89" name="decor -5 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1629" name="Mines/CaveDoor4" type="decor" x="4797.5" y="2875.5" width="333" height="385"/>
+ </objectgroup>
  <objectgroup id="62" name="terrain -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1626" name="mines" type="terrain" x="4237.46" y="3258" width="1465.08" height="948"/>
+ </objectgroup>
+ <objectgroup id="90" name="terrain -5 fg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1641" name="mines" type="terrain" x="4238.98" y="3386.06" width="1465.08" height="880"/>
  </objectgroup>
  <objectgroup id="63" name="objects -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1624" name="mayan-door" type="object" x="4733" y="2781" width="478" height="478">
+   <properties>
+    <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="1630" name="stack" type="object" x="4449.24" y="2905.24" width="100" height="354">
+   <properties>
+    <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
+    <property name="transition" value="main"/>
+    <property name="values" value="7,2,1"/>
+   </properties>
+  </object>
+  <object id="1639" name="register-stone-value" type="object" x="4287" y="3268.33" width="100" height="118">
+   <properties>
+    <property name="register" value="eax"/>
+    <property name="value" type="int" value="8"/>
+   </properties>
+  </object>
+  <object id="1640" name="register-stone-value" type="object" x="4542.33" y="3267.83" width="100" height="118">
+   <properties>
+    <property name="register" value="ebx"/>
+    <property name="value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="1642" name="register-stone-value" type="object" x="4799.5" y="3268" width="100" height="118">
+   <properties>
+    <property name="register" value="ecxs"/>
+    <property name="value" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="1643" name="register-stone-value" type="object" x="5054.5" y="3267" width="100" height="118">
+   <properties>
+    <property name="register" value="edx"/>
+    <property name="value" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="1644" name="register-stone-value" type="object" x="5309.5" y="3266" width="100" height="118">
+   <properties>
+    <property name="register" value="edi"/>
+    <property name="value" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="1645" name="register-stone-value" type="object" x="5567.5" y="3268" width="100" height="118">
+   <properties>
+    <property name="register" value="esi"/>
+    <property name="value" type="int" value="6"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="75" name="fireflies -5">
   <properties>
@@ -224,6 +295,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="852" name="mines" type="terrain" x="2430.55" y="3437.61" width="4261.08" height="948"/>
+  <object id="1623" name="mines" type="terrain" x="-527.025" y="1854.61" width="4141.08" height="948"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -235,7 +307,6 @@
    </properties>
   </object>
   <object id="863" name="Mines/SupportMedium" type="decor" x="2462.44" y="2804.61" width="127" height="634"/>
-  <object id="1490" name="Mines/PlankConnector4" type="decor" x="4286.07" y="3341.52" width="106" height="96"/>
  </objectgroup>
  <objectgroup id="81" name="rails">
   <properties>
@@ -274,6 +345,42 @@
    </properties>
   </object>
   <object id="991" name="life-stone" type="object" x="2658.64" y="3014.44" width="146" height="423"/>
+  <object id="1647" name="register-stone" type="object" x="4286.38" y="3319.7" width="100" height="118">
+   <properties>
+    <property name="register" value="eax"/>
+    <property name="value" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="1648" name="register-stone" type="object" x="4540.55" y="3320.7" width="100" height="118">
+   <properties>
+    <property name="register" value="ebx"/>
+    <property name="value" type="int" value="8"/>
+   </properties>
+  </object>
+  <object id="1649" name="register-stone" type="object" x="4799.21" y="3320.03" width="100" height="118">
+   <properties>
+    <property name="register" value="ecx"/>
+    <property name="value" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="1650" name="register-stone" type="object" x="5054.8" y="3320.03" width="100" height="118">
+   <properties>
+    <property name="register" value="edx"/>
+    <property name="value" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="1651" name="register-stone" type="object" x="5308.96" y="3321.03" width="100" height="118">
+   <properties>
+    <property name="register" value="edi"/>
+    <property name="value" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="1652" name="register-stone" type="object" x="5567.63" y="3320.36" width="100" height="118">
+   <properties>
+    <property name="register" value="esi"/>
+    <property name="value" type="int" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

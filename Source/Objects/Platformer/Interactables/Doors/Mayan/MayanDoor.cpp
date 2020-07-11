@@ -16,9 +16,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemBlue.h"
-#include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemPurple.h"
-#include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemRed.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -65,15 +62,6 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->innerContainer = Node::create();
 	this->doorContainer = Node::create();
 	this->doorOpenSound = WorldSound::create();
-	this->redGem = MayanGemRed::create();
-	this->blueGem = MayanGemBlue::create();
-	this->purpleGem = MayanGemPurple::create();
-	this->turninHitbox = CollisionObject::create(
-		CollisionObject::createBox(Size(640.0f, 256.0f)),
-		(CollisionType)PlatformerCollisionType::Trigger,
-		CollisionObject::Properties(false, false),
-		Color4F::WHITE
-	);
 	this->inventory = nullptr;
 	this->isUnlocking = false;
 	this->redGemAnswer = 0;
@@ -84,12 +72,8 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->doorContainer->addChild(this->innerContainer);
 	this->innerContainer->addChild(this->doorArrow);
 	this->innerContainer->addChild(this->door);
-	this->addChild(this->redGem);
-	this->addChild(this->blueGem);
-	this->addChild(this->purpleGem);
 	this->addChild(this->doorContainer);
 	this->addChild(this->doorOpenSound);
-	this->addChild(this->turninHitbox);
 }
 
 MayanDoor::~MayanDoor()
@@ -119,12 +103,8 @@ void MayanDoor::initializePositions()
 	const float RedGemAngle = 4.0f * float(M_PI) / 6.0f;
 	const float PurpleGemAngle = 2.0f * float(M_PI) / 6.0f;
 
-	this->redGem->setPosition(Vec2(Radius * std::cos(RedGemAngle) - 64.0f, Radius * std::sin(RedGemAngle)));
-	this->blueGem->setPosition(Vec2(0.0f, Radius));
-	this->purpleGem->setPosition(Vec2(Radius * std::cos(PurpleGemAngle) + 64.0f, Radius * std::sin(PurpleGemAngle)));
 	this->doorArrow->setPosition(Vec2(0.0f, 180.0f));
 	this->doorFrame->setPosition(Vec2(0.0f, 0.0f));
-	this->turninHitbox->setPosition(Vec2(0.0f, (256.0f - 478.0f) / 2.0f));
 	this->innerContainer->setPosition(Vec2(0.0f, 0.0f));
 }
 
@@ -138,13 +118,6 @@ void MayanDoor::initializeListeners()
 		{
 			this->tryUnlock();
 		}
-	});
-
-	this->turninHitbox->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		this->tryTakeGems();
-
-		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
 
@@ -167,10 +140,6 @@ void MayanDoor::loadGems()
 	this->blueGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
 	this->purpleGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
 
-	this->redGem->loadAnswer(this->redGemAnswer);
-	this->blueGem->loadAnswer(this->blueGemAnswer);
-	this->purpleGem->loadAnswer(this->purpleGemAnswer);
-
 	this->saveObjectState(MayanDoor::SaveKeyRedGemAnswer, Value(this->redGemAnswer));
 	this->saveObjectState(MayanDoor::SaveKeyBlueGemAnswer, Value(this->blueGemAnswer));
 	this->saveObjectState(MayanDoor::SaveKeyPurpleGemAnswer, Value(this->purpleGemAnswer));
@@ -182,21 +151,6 @@ void MayanDoor::loadGems()
 	else
 	{
 		this->lock(false);
-	}
-	
-	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool())
-	{
-		this->redGem->enableGem();
-	}
-
-	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool())
-	{
-		this->blueGem->enableGem();
-	}
-
-	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
-	{
-		this->purpleGem->enableGem();
 	}
 }
 
@@ -255,79 +209,6 @@ void MayanDoor::registerHackables()
 			)
 		},
 	};
-
-	auto gemFuncRed = &MayanDoor::runGemRed;
-	std::vector<HackableCode*> hackablesRed = HackableCode::create((void*&)gemFuncRed, codeInfoMap);
-
-	for (auto next : hackablesRed)
-	{
-		this->redGem->registerCode(next);
-	}
-
-	auto gemFuncBlue = &MayanDoor::runGemBlue;
-	std::vector<HackableCode*> hackablesBlue = HackableCode::create((void*&)gemFuncBlue, codeInfoMap);
-
-	for (auto next : hackablesBlue)
-	{
-		this->blueGem->registerCode(next);
-	}
-
-	auto gemFuncPurple = &MayanDoor::runGemPurple;
-	std::vector<HackableCode*> hackablesPurple = HackableCode::create((void*&)gemFuncPurple, codeInfoMap);
-
-	for (auto next : hackablesPurple)
-	{
-		this->purpleGem->registerCode(next);
-	}
-}
-
-void MayanDoor::tryTakeGems()
-{
-	if (this->inventory == nullptr)
-	{
-		return;
-	}
-
-	std::vector<MayanGemRedItem*> redGems = this->inventory->getItemsOfType<MayanGemRedItem>();
-	std::vector<MayanGemBlueItem*> blueGems = this->inventory->getItemsOfType<MayanGemBlueItem>();
-	std::vector<MayanGemPurpleItem*> purpleGems = this->inventory->getItemsOfType<MayanGemPurpleItem>();
-
-	if (!redGems.empty())
-	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(redGems.back()));
-	}
-	else if (!blueGems.empty())
-	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(blueGems.back()));
-	}
-	else if (!purpleGems.empty())
-	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(purpleGems.back()));
-	}
-
-	if (!redGems.empty())
-	{
-		inventory->tryRemove(redGems.back());
-
-		this->saveObjectState(MayanDoor::SaveKeyRedGem, Value(true));
-		this->redGem->enableGem();
-	}
-
-	if (!blueGems.empty())
-	{
-		inventory->tryRemove(blueGems.back());
-
-		this->saveObjectState(MayanDoor::SaveKeyBlueGem, Value(true));
-		this->blueGem->enableGem();
-	}
-
-	if (!purpleGems.empty())
-	{
-		inventory->tryRemove(purpleGems.back());
-
-		this->saveObjectState(MayanDoor::SaveKeyPurpleGem, Value(true));
-		this->purpleGem->enableGem();
-	}
 }
 
 void MayanDoor::tryUnlock()
@@ -408,9 +289,6 @@ void MayanDoor::lock(bool animate)
 
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(false));
 
-	this->redGem->showText();
-	this->blueGem->showText();
-	this->purpleGem->showText();
 	this->toggleHackable(true);
 	
 	float currentProgress = this->doorContainer->getPositionX() / MayanDoor::DoorOpenDelta;
@@ -439,9 +317,6 @@ void MayanDoor::unlock(bool animate)
 
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(true));
 
-	this->redGem->hideText();
-	this->blueGem->hideText();
-	this->purpleGem->hideText();
 	this->toggleHackable(false);
 
 	float currentProgress = 1.0f - this->doorContainer->getPositionX() / MayanDoor::DoorOpenDelta;

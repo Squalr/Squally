@@ -87,12 +87,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="889" name="mayan-door" type="object" x="4167" y="-1707" width="478" height="478">
-   <properties>
-    <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="973" name="portal" type="object" x="5782" y="842" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Zone_2_0"/>
