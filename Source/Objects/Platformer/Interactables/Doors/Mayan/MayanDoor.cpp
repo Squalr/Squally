@@ -37,7 +37,7 @@ using namespace cocos2d;
 const std::string MayanDoor::MapKey = "mayan-door";
 const float MayanDoor::DoorOpenDelta = 420.0f;
 const std::string MayanDoor::EventMayanDoorUnlock = "mayan-door-unlock";
-const std::string MayanDoor::MapEventResetPuzzle = "EVENT_STONE_PUZZLE_RESET";
+const std::string MayanDoor::MapEventResetPuzzle = "reset-puzzle";
 const std::string MayanDoor::MapEventPush = "EVENT_STONE_PUZZLE_PUSH";
 const std::string MayanDoor::MapEventPop = "EVENT_STONE_PUZZLE_POP";
 const std::string MayanDoor::MapEventPopRet = "EVENT_STONE_PUZZLE_POP_RET";
