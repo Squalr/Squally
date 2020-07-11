@@ -163,7 +163,6 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
 	this->deserializers[Ram::MapKey] = [=](ValueMap properties) { return (GameObject*)Ram::create(properties); };
 	this->deserializers[RegisterStone::MapKey] = [=](ValueMap properties) { return (GameObject*)RegisterStone::create(properties); };
-	this->deserializers[RegisterStoneValue::MapKey] = [=](ValueMap properties) { return (GameObject*)RegisterStoneValue::create(properties); };
 	this->deserializers[RewardItem::MapKey] = [=](ValueMap properties) { return (GameObject*)RewardItem::create(properties); };
 	this->deserializers[RewardPoolHera::MapKey] = [=](ValueMap properties) { return (GameObject*)RewardPoolHera::create(properties); };
 	this->deserializers[Sarcophagus::MapKey] = [=](ValueMap properties) { return (GameObject*)Sarcophagus::create(properties); };
