@@ -25734,6 +25734,96 @@ namespace Strings
 		virtual ~Platformer_Objects_GlassCase_InspectItem() = default;
 	};
 
+	class Platformer_Objects_Interaction_Enter : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Enter* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Enter();
+		virtual ~Platformer_Objects_Interaction_Enter() = default;
+	};
+
+	class Platformer_Objects_Interaction_Open : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Open* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Open();
+		virtual ~Platformer_Objects_Interaction_Open() = default;
+	};
+
+	class Platformer_Objects_Interaction_OperationPop : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_OperationPop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_OperationPop();
+		virtual ~Platformer_Objects_Interaction_OperationPop() = default;
+	};
+
+	class Platformer_Objects_Interaction_OperationPush : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_OperationPush* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_OperationPush();
+		virtual ~Platformer_Objects_Interaction_OperationPush() = default;
+	};
+
+	class Platformer_Objects_Interaction_Pull : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Pull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Pull();
+		virtual ~Platformer_Objects_Interaction_Pull() = default;
+	};
+
+	class Platformer_Objects_Interaction_Push : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Push* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Push();
+		virtual ~Platformer_Objects_Interaction_Push() = default;
+	};
+
 	class Platformer_Objects_Warps_Back : public LocalizedString
 	{
 	public:
@@ -29032,51 +29122,6 @@ namespace Strings
 	private:
 		PointerTrace_Victory();
 		virtual ~PointerTrace_Victory() = default;
-	};
-
-	class SpaceForce_SpaceForce : public LocalizedString
-	{
-	public:
-		static SpaceForce_SpaceForce* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		SpaceForce_SpaceForce();
-		virtual ~SpaceForce_SpaceForce() = default;
-	};
-
-	class Stacks_Stacks : public LocalizedString
-	{
-	public:
-		static Stacks_Stacks* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Stacks_Stacks();
-		virtual ~Stacks_Stacks() = default;
-	};
-
-	class TowerDefense_TowerDefense : public LocalizedString
-	{
-	public:
-		static TowerDefense_TowerDefense* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		TowerDefense_TowerDefense();
-		virtual ~TowerDefense_TowerDefense() = default;
 	};
 
 }

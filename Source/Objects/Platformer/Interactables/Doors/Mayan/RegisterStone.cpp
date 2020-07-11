@@ -11,9 +11,12 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -30,7 +33,7 @@ RegisterStone* RegisterStone::create(ValueMap& properties)
 	return instance;
 }
 
-RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f))
+RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2(0.0f, 64.0f), Strings::Platformer_Objects_Interaction_OperationPush::create(), EventKeyboard::KeyCode::KEY_V, Color3B(16, 23, 57))
 {
 	std::string valueStr = GameUtils::getKeyOrDefault(this->properties, RegisterStone::PropertyValue, Value("0")).asString();
 
@@ -41,12 +44,14 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->valueString = ConstantString::create(std::to_string(this->value));
 	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->valueString);
 	this->registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->buildRegisterString());
+	this->popInteract = InteractObject::create(InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPop::create(), EventKeyboard::KeyCode::KEY_C, Color3B(16, 23, 57));
 
 	this->addTag(this->registerStr);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2);
 	this->registerLabel->enableOutline(Color4B::BLACK, 2);
 	this->setValue(StrUtils::isInteger(valueStr) ? std::stoi(valueStr) : 0);
 	
+	this->addChild(this->popInteract);
 	this->addChild(this->registerStone);
 	this->addChild(this->valueStone);
 	this->addChild(this->valueLabel);
@@ -69,14 +74,40 @@ void RegisterStone::initializePositions()
 	const float BaseY = -registerStone->getContentSize().height / 2.0f;
 
 	this->registerStone->setPositionY(BaseY);
-	this->registerLabel->setPositionY(BaseY - 4.0f);
+	this->registerLabel->setPositionY(BaseY - 6.0f);
 	this->valueStone->setPositionY(BaseY + 42.0f);
-	this->valueLabel->setPositionY(BaseY + 42.0f - 4.0f);
+	this->valueLabel->setPositionY(BaseY + 42.0f - 6.0f);
 }
 
 void RegisterStone::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->listenForMapEvent(MayanDoor::MapEventPopRet + this->registerStr, [=](ValueMap args)
+	{
+		this->setValue(GameUtils::getKeyOrDefault(args, MayanDoor::PropertyValue, Value(0)).asInt());
+	});
+
+	this->popInteract->setInteractCallback([=]()
+	{
+		ValueMap args = ValueMap();
+
+		args[MayanDoor::PropertyRegister] = Value(this->registerStr);
+
+		this->broadcastMapEvent(MayanDoor::MapEventPop, args);
+
+		return true;
+	});
+}
+
+void RegisterStone::onInteract(PlatformerEntity* interactingEntity)
+{
+	ValueMap args = ValueMap();
+
+	args[MayanDoor::PropertyRegister] = Value(this->registerStr);
+	args[MayanDoor::PropertyValue] = Value(this->value);
+
+	this->broadcastMapEvent(MayanDoor::MapEventPush, args);
 }
 
 void RegisterStone::setValue(int value)

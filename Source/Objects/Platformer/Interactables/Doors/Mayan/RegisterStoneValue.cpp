@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -30,14 +31,14 @@ RegisterStoneValue* RegisterStoneValue::create(ValueMap& properties)
 	return instance;
 }
 
-RegisterStoneValue::RegisterStoneValue(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f))
+RegisterStoneValue::RegisterStoneValue(ValueMap& properties) : super(properties)
 {
 	std::string valueStr = GameUtils::getKeyOrDefault(this->properties, RegisterStoneValue::PropertyValue, Value("0")).asString();
 	
 	this->registerStr = GameUtils::getKeyOrDefault(this->properties, RegisterStoneValue::PropertyRegister, Value("")).asString();
 	this->value = 0;
 	this->registerStone = Sprite::create(ObjectResources::Puzzles_Stack_RegisterBlock);
-	this->valueStone = Sprite::create(ObjectResources::Puzzles_Stack_StackBlock);
+	this->valueStone = Sprite::create(ObjectResources::Puzzles_Stack_DeactivatedBlock);
 	this->valueString = ConstantString::create(std::to_string(this->value));
 	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->valueString);
 	this->registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->buildRegisterString());
@@ -69,9 +70,9 @@ void RegisterStoneValue::initializePositions()
 	const float BaseY = -registerStone->getContentSize().height / 2.0f;
 
 	this->registerStone->setPositionY(BaseY);
-	this->registerLabel->setPositionY(BaseY - 4.0f);
+	this->registerLabel->setPositionY(BaseY - 6.0f);
 	this->valueStone->setPositionY(BaseY + 42.0f);
-	this->valueLabel->setPositionY(BaseY + 42.0f - 4.0f);
+	this->valueLabel->setPositionY(BaseY + 42.0f - 6.0f);
 }
 
 void RegisterStoneValue::initializeListeners()

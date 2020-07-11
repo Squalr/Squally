@@ -36,7 +36,7 @@ Portal* Portal::create(ValueMap& properties)
 	return instance;
 }
 
-Portal::Portal(ValueMap& properties, Size size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, color)
+Portal::Portal(ValueMap& properties, Size size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, nullptr, EventKeyboard::KeyCode::KEY_V, color)
 {
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalMap, Value("")).asString();
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalTransition, Value("")).asString();

@@ -23,6 +23,12 @@ public:
 	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
+	static const std::string MapEventResetPuzzle;
+	static const std::string MapEventPush;
+	static const std::string MapEventPop;
+	static const std::string MapEventPopRet;
+	static const std::string PropertyRegister;
+	static const std::string PropertyValue;
 
 protected:
 	MayanDoor(cocos2d::ValueMap& properties);
@@ -31,7 +37,6 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void registerHackables() override;
 
 private:
 	typedef Portal super;
@@ -43,9 +48,6 @@ private:
 	int runGemPurple(int currentIndex);
 
 	bool isUnlocking;
-	int redGemAnswer;
-	int blueGemAnswer;
-	int purpleGemAnswer;
 	
 	cocos2d::Sprite* doorArrow;
 	cocos2d::Sprite* doorFrame;
@@ -59,11 +61,5 @@ private:
 
 	static const float DoorOpenDelta;
 	static const std::string EventMayanDoorUnlock;
-	static const std::string SaveKeyRedGem;
-	static const std::string SaveKeyBlueGem;
-	static const std::string SaveKeyPurpleGem;
-	static const std::string SaveKeyRedGemAnswer;
-	static const std::string SaveKeyBlueGemAnswer;
-	static const std::string SaveKeyPurpleGemAnswer;
 	static const std::string SaveKeyUnlocked;
 };

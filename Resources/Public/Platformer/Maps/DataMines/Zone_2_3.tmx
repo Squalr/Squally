@@ -77,7 +77,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1628" name="mines" type="terrain" x="3779.46" y="1882" width="3117.08" height="2084"/>
+  <object id="1628" name="mines" type="terrain" x="3779.46" y="1882" width="3613.08" height="2084"/>
  </objectgroup>
  <objectgroup id="89" name="decor -5 bg">
   <properties>
@@ -91,14 +91,14 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1626" name="mines" type="terrain" x="4237.46" y="3258" width="1465.08" height="948"/>
+  <object id="1626" name="mines" type="terrain" x="3855.64" y="3258" width="2795.38" height="948"/>
  </objectgroup>
  <objectgroup id="90" name="terrain -5 fg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1641" name="mines" type="terrain" x="4238.98" y="3386.06" width="1465.08" height="880"/>
+  <object id="1641" name="mines" type="terrain" x="4018.98" y="3386.06" width="1941.08" height="880"/>
  </objectgroup>
  <objectgroup id="63" name="objects -5">
   <properties>
@@ -111,44 +111,42 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="1630" name="stack" type="object" x="4449.24" y="2905.24" width="100" height="354">
+  <object id="1630" name="stone-stack" type="object" x="4449.24" y="2905.24" width="100" height="354">
    <properties>
-    <property name="map" value="SeaSharpCaverns/Zone_1_0"/>
-    <property name="transition" value="main"/>
     <property name="values" value="7,2,1"/>
    </properties>
   </object>
-  <object id="1639" name="register-stone-value" type="object" x="4287" y="3268.33" width="100" height="118">
+  <object id="1639" name="register-stone-value" type="object" x="4093" y="3267.33" width="100" height="118">
    <properties>
     <property name="register" value="eax"/>
     <property name="value" type="int" value="8"/>
    </properties>
   </object>
-  <object id="1640" name="register-stone-value" type="object" x="4542.33" y="3267.83" width="100" height="118">
+  <object id="1640" name="register-stone-value" type="object" x="4420.33" y="3268.83" width="100" height="118">
    <properties>
     <property name="register" value="ebx"/>
     <property name="value" type="int" value="1"/>
    </properties>
   </object>
-  <object id="1642" name="register-stone-value" type="object" x="4799.5" y="3268" width="100" height="118">
+  <object id="1642" name="register-stone-value" type="object" x="4744.5" y="3268" width="100" height="118">
    <properties>
-    <property name="register" value="ecxs"/>
+    <property name="register" value="ecx"/>
     <property name="value" type="int" value="3"/>
    </properties>
   </object>
-  <object id="1643" name="register-stone-value" type="object" x="5054.5" y="3267" width="100" height="118">
+  <object id="1643" name="register-stone-value" type="object" x="5117.5" y="3268" width="100" height="118">
    <properties>
     <property name="register" value="edx"/>
     <property name="value" type="int" value="11"/>
    </properties>
   </object>
-  <object id="1644" name="register-stone-value" type="object" x="5309.5" y="3266" width="100" height="118">
+  <object id="1644" name="register-stone-value" type="object" x="5448.5" y="3267" width="100" height="118">
    <properties>
     <property name="register" value="edi"/>
     <property name="value" type="int" value="7"/>
    </properties>
   </object>
-  <object id="1645" name="register-stone-value" type="object" x="5567.5" y="3268" width="100" height="118">
+  <object id="1645" name="register-stone-value" type="object" x="5788.5" y="3267" width="100" height="118">
    <properties>
     <property name="register" value="esi"/>
     <property name="value" type="int" value="6"/>

@@ -25,28 +25,58 @@
 
 using namespace cocos2d;
 
-InteractObject* InteractObject::create(InteractType interactType, Size size, Vec2 offset, Color3B interactColor, Color4F debugColor, bool disableLockDebug)
+InteractObject* InteractObject::create(
+	InteractType interactType,
+	Size size,
+	Vec2 offset,
+	LocalizedString* actionStr,
+	EventKeyboard::KeyCode input,
+	Color3B interactColor,
+	Color4F debugColor,
+	bool disableLockDebug)
 {
 	ValueMap properties = ValueMap();
 
-	InteractObject* instance = new InteractObject(properties, interactType, size, offset, interactColor, debugColor, disableLockDebug);
+	InteractObject* instance = new InteractObject(properties, interactType, size, offset, actionStr, input, interactColor, debugColor, disableLockDebug);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset, Color3B interactColor, Color4F debugColor, bool disableLockDebug)
+InteractObject::InteractObject(
+	ValueMap& properties, 
+	InteractType interactType,
+	Size size,
+	Vec2 offset,
+	LocalizedString* actionStr,
+	EventKeyboard::KeyCode input,
+	Color3B interactColor,
+	Color4F debugColor,
+	bool disableLockDebug)
 	: super(properties)
 {
+	this->input = input;
 	this->interactType = interactType;
 	this->lockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
 	this->unlockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false), debugColor);
-	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"), interactColor);
+	
+	if (actionStr == nullptr)
+	{
+		this->interactKeyStr = ConstantString::create(this->inputToString(this->input));
+	}
+	else
+	{
+		this->interactKeyStr = Strings::Common_Dash::create()->setStringReplacementVariables(
+			{ ConstantString::create(this->inputToString(this->input)), actionStr });
+	}
+	
+	this->unlockKeyStr = ConstantString::create(this->inputToString(this->input));
+	this->interactMenu = InteractMenu::create(this->interactKeyStr, interactColor);
 	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor);
 	this->unlockMenu = InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(
-		{ ConstantString::create("[V]"), Strings::Platformer_Objects_Doors_Unlock::create() }
+		{ this->unlockKeyStr, Strings::Platformer_Objects_Doors_Unlock::create() }
 	), interactColor, 256.0f);
 	this->isLocked = !this->listenEvent.empty();
 	this->isUnlockable = false;
@@ -149,7 +179,7 @@ void InteractObject::initializeListeners()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ this->input }, [=](InputEvents::InputArgs* args)
 	{
 		switch(this->interactType)
 		{
@@ -328,4 +358,45 @@ void InteractObject::updateInteractMenuVisibility()
 	{
 		this->interactMenu->hide();
 	}
+}
+
+std::string InteractObject::inputToString(EventKeyboard::KeyCode input)
+{
+	std::string inputStr = "";
+
+	switch(input)
+	{
+        case EventKeyboard::KeyCode::KEY_A: { inputStr = "A"; break; }
+        case EventKeyboard::KeyCode::KEY_B: { inputStr = "B"; break; }
+        case EventKeyboard::KeyCode::KEY_C: { inputStr = "C"; break; }
+        case EventKeyboard::KeyCode::KEY_D: { inputStr = "D"; break; }
+        case EventKeyboard::KeyCode::KEY_E: { inputStr = "E"; break; }
+        case EventKeyboard::KeyCode::KEY_F: { inputStr = "F"; break; }
+        case EventKeyboard::KeyCode::KEY_G: { inputStr = "G"; break; }
+        case EventKeyboard::KeyCode::KEY_H: { inputStr = "H"; break; }
+        case EventKeyboard::KeyCode::KEY_I: { inputStr = "I"; break; }
+        case EventKeyboard::KeyCode::KEY_J: { inputStr = "J"; break; }
+        case EventKeyboard::KeyCode::KEY_K: { inputStr = "K"; break; }
+        case EventKeyboard::KeyCode::KEY_L: { inputStr = "L"; break; }
+        case EventKeyboard::KeyCode::KEY_M: { inputStr = "M"; break; }
+        case EventKeyboard::KeyCode::KEY_N: { inputStr = "N"; break; }
+        case EventKeyboard::KeyCode::KEY_O: { inputStr = "O"; break; }
+        case EventKeyboard::KeyCode::KEY_P: { inputStr = "P"; break; }
+        case EventKeyboard::KeyCode::KEY_Q: { inputStr = "Q"; break; }
+        case EventKeyboard::KeyCode::KEY_R: { inputStr = "R"; break; }
+        case EventKeyboard::KeyCode::KEY_S: { inputStr = "S"; break; }
+        case EventKeyboard::KeyCode::KEY_T: { inputStr = "T"; break; }
+        case EventKeyboard::KeyCode::KEY_U: { inputStr = "U"; break; }
+        case EventKeyboard::KeyCode::KEY_V: { inputStr = "V"; break; }
+        case EventKeyboard::KeyCode::KEY_W: { inputStr = "W"; break; }
+        case EventKeyboard::KeyCode::KEY_X: { inputStr = "X"; break; }
+        case EventKeyboard::KeyCode::KEY_Y: { inputStr = "Y"; break; }
+        case EventKeyboard::KeyCode::KEY_Z: { inputStr = "Z"; break; }
+		default:
+		{
+			inputStr = "UNMAPPED";
+		}
+	}
+
+	return "[" + inputStr + "]";
 }

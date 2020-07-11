@@ -334,6 +334,7 @@ namespace ObjectResources
 	extern const std::string Physics_WoodenCrate_WoodenCrate;
 	extern const std::string Puzzles_LogicGate_LogicGateGray;
 	extern const std::string Puzzles_LogicGate_LogicGateYellow;
+	extern const std::string Puzzles_Stack_DeactivatedBlock;
 	extern const std::string Puzzles_Stack_RegisterBlock;
 	extern const std::string Puzzles_Stack_StackBlock;
 	extern const std::string Puzzles_Torch_Torch;

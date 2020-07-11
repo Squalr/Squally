@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Interactables/InteractObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class ConstantString;
 class LocalizedLabel;
 
-class RegisterStoneValue : public InteractObject
+class RegisterStoneValue : public GameObject
 {
 public:
 	static RegisterStoneValue* create(cocos2d::ValueMap& properties);
@@ -26,7 +26,7 @@ protected:
 	void initializeListeners() override;
 
 private:
-	typedef InteractObject super;
+	typedef GameObject super;
 
 	void setValue(int value);
 	ConstantString* buildRegisterString();

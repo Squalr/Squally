@@ -333,6 +333,7 @@ const std::string ObjectResources::Physics_WoodenBeam_WoodenBeam = "Private/Plat
 const std::string ObjectResources::Physics_WoodenCrate_WoodenCrate = "Private/Platformer/Objects/Physics/WoodenCrate/WoodenCrate.png";
 const std::string ObjectResources::Puzzles_LogicGate_LogicGateGray = "Private/Platformer/Objects/Puzzles/LogicGate/LogicGateGray.png";
 const std::string ObjectResources::Puzzles_LogicGate_LogicGateYellow = "Private/Platformer/Objects/Puzzles/LogicGate/LogicGateYellow.png";
+const std::string ObjectResources::Puzzles_Stack_DeactivatedBlock = "Private/Platformer/Objects/Puzzles/Stack/DeactivatedBlock.png";
 const std::string ObjectResources::Puzzles_Stack_RegisterBlock = "Private/Platformer/Objects/Puzzles/Stack/RegisterBlock.png";
 const std::string ObjectResources::Puzzles_Stack_StackBlock = "Private/Platformer/Objects/Puzzles/Stack/StackBlock.png";
 const std::string ObjectResources::Puzzles_Torch_Torch = "Private/Platformer/Objects/Puzzles/Torch/Torch.png";

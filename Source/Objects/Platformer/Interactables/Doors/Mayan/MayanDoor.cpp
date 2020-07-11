@@ -37,13 +37,13 @@ using namespace cocos2d;
 const std::string MayanDoor::MapKey = "mayan-door";
 const float MayanDoor::DoorOpenDelta = 420.0f;
 const std::string MayanDoor::EventMayanDoorUnlock = "mayan-door-unlock";
-const std::string MayanDoor::SaveKeyRedGem = "SAVE_KEY_RED_GEM";
-const std::string MayanDoor::SaveKeyBlueGem = "SAVE_KEY_BLUE_GEM";
-const std::string MayanDoor::SaveKeyPurpleGem = "SAVE_KEY_PURPLE_GEM";
+const std::string MayanDoor::MapEventResetPuzzle = "EVENT_STONE_PUZZLE_RESET";
+const std::string MayanDoor::MapEventPush = "EVENT_STONE_PUZZLE_PUSH";
+const std::string MayanDoor::MapEventPop = "EVENT_STONE_PUZZLE_POP";
+const std::string MayanDoor::MapEventPopRet = "EVENT_STONE_PUZZLE_POP_RET";
+const std::string MayanDoor::PropertyRegister = "register";
+const std::string MayanDoor::PropertyValue = "value";
 const std::string MayanDoor::SaveKeyUnlocked = "SAVE_KEY_UNLOCKED";
-const std::string MayanDoor::SaveKeyRedGemAnswer = "SAVE_KEY_RED_GEM_ANSWER";
-const std::string MayanDoor::SaveKeyBlueGemAnswer = "SAVE_KEY_BLUE_GEM_ANSWER";
-const std::string MayanDoor::SaveKeyPurpleGemAnswer = "SAVE_KEY_PURPLE_GEM_ANSWER";
 
 MayanDoor* MayanDoor::create(ValueMap& properties)
 {
@@ -64,9 +64,6 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->doorOpenSound = WorldSound::create();
 	this->inventory = nullptr;
 	this->isUnlocking = false;
-	this->redGemAnswer = 0;
-	this->blueGemAnswer = 0;
-	this->purpleGemAnswer = 0;
 
 	this->doorContainer->addChild(this->doorFrame);
 	this->doorContainer->addChild(this->innerContainer);
@@ -123,27 +120,6 @@ void MayanDoor::initializeListeners()
 
 void MayanDoor::loadGems()
 {
-	int redDefault = 0;
-	int blueDefault = 0;
-	int purpleDefault = 0;
-	int failSafeCount = 2048;
-
-	// 4, 11, 6 is the default combo. The answer can be anything except this.
-	do
-	{
-		redDefault = RandomHelper::random_int(0, 11);
-		blueDefault = RandomHelper::random_int(0, 11);
-		purpleDefault = RandomHelper::random_int(0, 11);
-	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6 && failSafeCount-- > 0);
-
-	this->redGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
-	this->blueGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
-	this->purpleGemAnswer = this->loadObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
-
-	this->saveObjectState(MayanDoor::SaveKeyRedGemAnswer, Value(this->redGemAnswer));
-	this->saveObjectState(MayanDoor::SaveKeyBlueGemAnswer, Value(this->blueGemAnswer));
-	this->saveObjectState(MayanDoor::SaveKeyPurpleGemAnswer, Value(this->purpleGemAnswer));
-
 	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
 	{
 		this->unlock(false);
@@ -152,63 +128,6 @@ void MayanDoor::loadGems()
 	{
 		this->lock(false);
 	}
-}
-
-void MayanDoor::registerHackables()
-{
-	super::registerHackables();
-	
-	HackableCode::CodeInfoMap codeInfoMap =
-	{
-		{
-			LOCAL_FUNC_ID_GEM_RED,
-			HackableCode::HackableCodeInfo(
-				"mayan-gem-red",
-				Strings::Menus_Hacking_Objects_MayanDoor_Combination1::create(),
-				HackableBase::HackBarColor::Red,
-				UIResources::Menus_Icons_Ruby,
-				nullptr, // PendulumBladeSetAnglePreview::create(),
-				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() }
-				},
-				int(HackFlags::None),
-				15.0f,
-				0.0f
-			)
-		},
-		{
-			LOCAL_FUNC_ID_GEM_BLUE,
-			HackableCode::HackableCodeInfo(
-				"mayan-gem-blue",
-				Strings::Menus_Hacking_Objects_MayanDoor_Combination2::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_Diamond,
-				nullptr, // PendulumBladeSetAnglePreview::create(),
-				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() }
-				},
-				int(HackFlags::None),
-				15.0f,
-				0.0f
-			)
-		},
-		{
-			LOCAL_FUNC_ID_GEM_PURPLE,
-			HackableCode::HackableCodeInfo(
-				"mayan-gem-purple",
-				Strings::Menus_Hacking_Objects_MayanDoor_Combination3::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_CrystalShard,
-				nullptr, // PendulumBladeSetAnglePreview::create(),
-				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() }
-				},
-				int(HackFlags::None),
-				15.0f,
-				0.0f
-			)
-		},
-	};
 }
 
 void MayanDoor::tryUnlock()
@@ -272,10 +191,7 @@ void MayanDoor::tryUnlock()
 		RotateTo::create(delayReturn, rotationReturn),
 		CallFunc::create([=]()
 		{
-			if (indexRed == this->redGemAnswer && indexBlue == this->blueGemAnswer && indexPurple == this->purpleGemAnswer)
-			{
-				this->unlock(true);
-			}
+			this->unlock(true);
 
 			this->isUnlocking = false;
 		}),

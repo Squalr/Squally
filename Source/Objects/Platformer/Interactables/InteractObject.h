@@ -1,12 +1,16 @@
 #pragma once
 #include <set>
 
+#include "cocos/base/CCEventKeyboard.h"
+
 #include "Engine/Hackables/HackableObject.h"
 
 class ClickableNode;
 class CollisionObject;
+class ConstantString;
 class HackableData;
 class InteractMenu;
+class LocalizedString;
 class PlatformerEntity;
 class Scrappy;
 class Squally;
@@ -21,7 +25,16 @@ public:
 		Collision,
 	};
 
-	static InteractObject* create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, cocos2d::Color3B interactColor = cocos2d::Color3B::BLACK, cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA, bool disableLockDebug = false);
+	static InteractObject* create(
+		InteractType interactType,
+		cocos2d::Size size,
+		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
+		LocalizedString* actionStr = nullptr,
+		cocos2d::EventKeyboard::KeyCode input = cocos2d::EventKeyboard::KeyCode::KEY_V,
+		cocos2d::Color3B interactColor = cocos2d::Color3B::BLACK,
+		cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA,
+		bool disableLockDebug = false
+	);
 	
 	void enable();
 	void disable();
@@ -32,7 +45,16 @@ public:
 	virtual void unlock(bool animate = true);
 
 protected:
-	InteractObject(cocos2d::ValueMap& properties, InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, cocos2d::Color3B interactColor = cocos2d::Color3B::BLACK, cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA, bool disableLockDebug = false);
+	InteractObject(cocos2d::ValueMap& properties,
+		InteractType interactType,
+		cocos2d::Size size,
+		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
+		LocalizedString* actionStr = nullptr,
+		cocos2d::EventKeyboard::KeyCode input = cocos2d::EventKeyboard::KeyCode::KEY_V,
+		cocos2d::Color3B interactColor = cocos2d::Color3B::BLACK,
+		cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA,
+		bool disableLockDebug = false
+	);
 	virtual ~InteractObject();
 
 	void onEnter() override;
@@ -60,6 +82,11 @@ private:
 	typedef HackableObject super;
 
 	void onStateRefresh();
+	std::string inputToString(cocos2d::EventKeyboard::KeyCode input);
+
+	cocos2d::EventKeyboard::KeyCode input;
+	LocalizedString* interactKeyStr;
+	ConstantString* unlockKeyStr;
 
 	InteractMenu* interactMenu;
 	InteractMenu* lockedMenu;

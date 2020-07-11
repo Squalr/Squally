@@ -46,6 +46,7 @@
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStone.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStoneValue.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/StoneStack.h"
 #include "Objects/Platformer/Interactables/Doors/OptionWarp.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoor.h"

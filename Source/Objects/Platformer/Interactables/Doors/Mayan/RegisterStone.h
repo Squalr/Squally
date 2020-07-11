@@ -24,6 +24,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onInteract(PlatformerEntity* interactingEntity) override;
 
 private:
 	typedef InteractObject super;
@@ -31,6 +32,7 @@ private:
 	void setValue(int value);
 	ConstantString* buildRegisterString();
 
+	InteractObject* popInteract;
 	std::string registerStr;
 	int value;
 	cocos2d::Sprite* registerStone;
