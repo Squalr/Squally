@@ -1029,6 +1029,21 @@ namespace Strings
 		virtual ~Common_TriconcatSpaced() = default;
 	};
 
+	class Common_XArrowY : public LocalizedString
+	{
+	public:
+		static Common_XArrowY* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XArrowY();
+		virtual ~Common_XArrowY() = default;
+	};
+
 	class Common_XColonY : public LocalizedString
 	{
 	public:
@@ -1042,6 +1057,21 @@ namespace Strings
 	private:
 		Common_XColonY();
 		virtual ~Common_XColonY() = default;
+	};
+
+	class Common_XColonYSpaced : public LocalizedString
+	{
+	public:
+		static Common_XColonYSpaced* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XColonYSpaced();
+		virtual ~Common_XColonYSpaced() = default;
 	};
 
 	class Common_XEqualsY : public LocalizedString

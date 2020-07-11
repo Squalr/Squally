@@ -45,7 +45,6 @@ private:
 	cocos2d::Sprite* valueStone;
 	ConstantString* valueString;
 	LocalizedLabel* valueLabel;
-	cocos2d::Sprite* correctValueStone;
 	ConstantString* correctValueString;
 	LocalizedLabel* correctValueLabel;
 	LocalizedLabel* registerLabel;

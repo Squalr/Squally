@@ -125,6 +125,18 @@ void MayanDoor::initializeListeners()
 			this->tryUnlock();
 		}
 	});
+
+	this->listenForMapEvent(MayanDoor::MapEventLockInteraction, [=](ValueMap args)
+	{
+		this->isUnlocking = true;
+		this->disable();
+	});
+
+	this->listenForMapEvent(MayanDoor::MapEventUnlockInteraction, [=](ValueMap args)
+	{
+		this->isUnlocking = false;
+		this->enable();
+	});
 }
 
 void MayanDoor::discoverStones()
@@ -168,7 +180,6 @@ void MayanDoor::tryUnlock()
 	}
 
 	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
-	this->isUnlocking = true;
 
 	int index = 0;
 	std::vector<int> combination = std::vector<int>();
@@ -238,9 +249,10 @@ void MayanDoor::tryUnlock()
 		{
 			this->unlock(true);
 		}
-
-		this->isUnlocking = false;
-		this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+		else
+		{
+			this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+		}
 	}));
 
 	this->innerContainer->runAction(Sequence::create(actions));
