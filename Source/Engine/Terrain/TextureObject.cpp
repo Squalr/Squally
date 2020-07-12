@@ -109,9 +109,16 @@ void TextureObject::buildTextures()
 	{
 		texture->getTexture()->setTexParameters(params);
 	}
+
+	// This allows for a determinstic way to make terrain tile differently.
+	// Breaks up the visual sameness of similar sized terrain chunks by starting their tiling at a different position in the texture.
+	static Vec2 TilingOffset = Vec2(0.0f, 0.0f);
+
+	TilingOffset.x = MathUtils::wrappingNormalize(TilingOffset.x + 768.0f, 0.0f, 1024.0f);
+	TilingOffset.y = MathUtils::wrappingNormalize(TilingOffset.y + 384.0f, 0.0f, 1024.0f);
 	
 	texture->setPosition(drawRect.origin);
-	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width, drawRect.size.height));
+	texture->setTextureRect(Rect(TilingOffset.x, TilingOffset.y, drawRect.size.width, drawRect.size.height));
 
 	if (this->useClipping)
 	{
