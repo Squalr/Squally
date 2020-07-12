@@ -19,7 +19,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="82" name="tiled bg -8" visible="0">
+ <objectgroup id="82" name="tiled bg -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>

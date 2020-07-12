@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1754">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1763">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -24,7 +24,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="texture" x="-1494.54" y="-1415.82" width="11277.1" height="7231.64"/>
+  <object id="837" name="mines" type="texture" x="-1494.54" y="-1415.82" width="9645.1" height="6799.64"/>
  </objectgroup>
  <objectgroup id="69" name="terrain -7">
   <properties>
@@ -514,6 +514,12 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1754" name="mines" type="terrain" x="4374.46" y="2221" width="1731.08" height="2268">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1762" name="mines" type="terrain" x="-177.54" y="-174" width="7027.08" height="924"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -532,7 +538,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="863" name="Mines/SupportMedium" type="decor" x="4173.11" y="748.61" width="127" height="634"/>
+  <object id="863" name="Mines/SupportMedium" type="decor" x="4171.11" y="752.61" width="127" height="634"/>
   <object id="1730" name="Mines/PlankConnector4" type="decor" x="419.222" y="2847.93" width="106" height="96"/>
   <object id="1748" name="cart-stop" type="object" x="6337" y="3207.5" width="188" height="169">
    <properties>
@@ -540,6 +546,11 @@
    </properties>
   </object>
   <object id="1749" name="cart-stop" type="object" x="3778" y="3213.5" width="188" height="169">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1759" name="cart-stop" type="object" x="4706" y="2051.5" width="188" height="169">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
@@ -555,6 +566,11 @@
    </properties>
   </object>
   <object id="1747" name="rails" type="terrain" x="4037.4" y="3386" width="2231.2" height="92">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1756" name="rails" type="terrain" x="4968.4" y="2220" width="1141.2" height="92">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -615,6 +631,21 @@
     <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
+  <object id="1755" name="cart-lift" type="object" x="4520" y="1405.5" width="72" height="769"/>
+  <object id="1760" name="mine-cart-lootable" type="object" x="5625.58" y="2037.79" width="240" height="184">
+   <properties>
+    <property name="color" value="brown"/>
+    <property name="fill" value="coal"/>
+    <property name="reward-pool" value="dm-coal"/>
+   </properties>
+  </object>
+  <object id="1761" name="mine-cart-lootable" type="object" x="5261" y="2037" width="240" height="184">
+   <properties>
+    <property name="color" value="brown"/>
+    <property name="fill" value="diamond"/>
+    <property name="reward-pool" value="dm-diamond"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -653,7 +684,7 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="1619" name="spawn-cart" type="object" x="425" y="1263" width="128" height="128">
+  <object id="1619" name="spawn-cart" type="object" x="421" y="1257.67" width="128" height="128">
    <properties>
     <property name="direction" value="right"/>
     <property name="link-tag" value="cart-A"/>

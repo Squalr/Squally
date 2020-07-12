@@ -27,10 +27,7 @@ ChestPoolDMDiamond::ChestPoolDMDiamond(ValueMap& properties) : super(
 	{
 	})
 {
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Crystal::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::VeryCommon));
 }
 
 ChestPoolDMDiamond::~ChestPoolDMDiamond()
