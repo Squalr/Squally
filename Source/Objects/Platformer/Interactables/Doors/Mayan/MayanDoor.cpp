@@ -62,6 +62,11 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->innerContainer = Node::create();
 	this->doorContainer = Node::create();
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
+	this->doorSound2Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism2Units);
+	this->doorSound3Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism3Units);
+	this->doorSound4Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism4Units);
+	this->doorSound5Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism5Units);
+	this->doorSound6Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism6Units);
 	this->isUnlocking = false;
 	this->registerStones = std::vector<RegisterStone*>();
 
@@ -71,6 +76,11 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->innerContainer->addChild(this->door);
 	this->addChild(this->doorContainer);
 	this->addChild(this->doorOpenSound);
+	this->addChild(this->doorSound2Units);
+	this->addChild(this->doorSound3Units);
+	this->addChild(this->doorSound4Units);
+	this->addChild(this->doorSound5Units);
+	this->addChild(this->doorSound6Units);
 }
 
 MayanDoor::~MayanDoor()
@@ -224,7 +234,7 @@ void MayanDoor::tryUnlock()
 
 	for (auto next : combination)
 	{
-		delays.push_back(std::max(getDist(previousIndex, next) * RotationSpeedPerUnit, RotationSpeedPerUnit));
+		delays.push_back(getDist(previousIndex, next) * RotationSpeedPerUnit);
 		previousIndex = next;
 	}
 
@@ -238,8 +248,32 @@ void MayanDoor::tryUnlock()
 			{
 				this->registerStones[index]->runFx();
 			}
+
+			if (delays[index] <= 0.15f)
+			{
+			}
+			else if (delays[index] <= 0.5f)
+			{
+				this->doorSound2Units->play();
+			}
+			else if (delays[index] <= 0.75f)
+			{
+				this->doorSound3Units->play();
+			}
+			else if (delays[index] <= 1.0f)
+			{
+				this->doorSound4Units->play();
+			}
+			else if (delays[index] <= 1.25f)
+			{
+				this->doorSound5Units->play();
+			}
+			else if (delays[index] <= 1.5f)
+			{
+				this->doorSound6Units->play();
+			}
 		}));
-		actions.pushBack(RotateTo::create(delays[index], rotations[index]));
+		actions.pushBack(RotateTo::create(std::max(delays[index], RotationSpeedPerUnit), rotations[index]));
 		actions.pushBack(DelayTime::create(0.5f));
 	}
 

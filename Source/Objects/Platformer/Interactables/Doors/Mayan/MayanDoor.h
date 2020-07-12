@@ -52,6 +52,11 @@ private:
 	cocos2d::Node* doorContainer;
 	cocos2d::Node* innerContainer;
 	cocos2d::Sprite* door;
+	WorldSound* doorSound2Units;
+	WorldSound* doorSound3Units;
+	WorldSound* doorSound4Units;
+	WorldSound* doorSound5Units;
+	WorldSound* doorSound6Units;
 	WorldSound* doorOpenSound;
 
 	static const float DoorOpenDelta;
