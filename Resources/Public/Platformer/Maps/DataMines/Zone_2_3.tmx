@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1677">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1679">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -418,7 +418,7 @@
     <property name="value" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1653" name="stone-stack" type="object" x="5688.79" y="1294.58" width="100" height="354">
+  <object id="1653" name="stone-stack" type="object" x="5758.79" y="1293.58" width="100" height="354">
    <properties>
     <property name="values" value="1,0,7"/>
    </properties>
@@ -426,6 +426,18 @@
   <object id="1654" name="lever" type="object" x="4462.17" y="1442.05" width="177" height="205">
    <properties>
     <property name="send-event" value="mayan-door-unlock"/>
+   </properties>
+  </object>
+  <object id="1677" name="trigger" type="object" x="4697.73" y="953.121" width="2202" height="1046">
+   <properties>
+    <property name="end-event" value="helper-stop-rest"/>
+    <property name="multi" type="bool" value="true"/>
+    <property name="send-event" value="helper-move-to-rest"/>
+   </properties>
+  </object>
+  <object id="1678" name="cinematic-marker" type="object" x="5563.12" y="1520.36" width="128" height="128">
+   <properties>
+    <property name="tag" value="helper-rest"/>
    </properties>
   </object>
  </objectgroup>

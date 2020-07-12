@@ -61,7 +61,7 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->door = Sprite::create(ObjectResources::Doors_Mayan_StoneCircleDoorInner);
 	this->innerContainer = Node::create();
 	this->doorContainer = Node::create();
-	this->doorOpenSound = WorldSound::create();
+	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 	this->isUnlocking = false;
 	this->registerStones = std::vector<RegisterStone*>();
 

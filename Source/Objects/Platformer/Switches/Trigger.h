@@ -27,7 +27,9 @@ private:
 	typedef GameObject super;
 
 	CollisionObject* triggerCollision;
+	std::string endCollisionEvent;
 
+	static const std::string PropertyEndEvent;
 	static const std::string PropertySaveState;
 	static const std::string PropertyMultiTrip;
 };

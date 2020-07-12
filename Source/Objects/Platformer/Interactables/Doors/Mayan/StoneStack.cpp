@@ -10,6 +10,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
 
@@ -51,6 +52,15 @@ StoneStack::StoneStack(ValueMap& properties) : super(properties)
 		this->valueStones.push_back(stone);
 		this->valueStrings.push_back(str);
 	}
+	
+	this->animatedStone = Sprite::create(ObjectResources::Puzzles_Stack_StackBlock);
+	this->animatedString = ConstantString::create(std::to_string(0));
+	LocalizedLabel* animatedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->animatedString);
+	
+	animatedLabel->enableOutline(Color4B::BLACK, 2);
+	animatedLabel->setPosition(Vec2(this->animatedStone->getContentSize()) / 2.0f + Vec2(0.0f, -6.0f));
+
+	this->animatedStone->addChild(animatedLabel);
 
 	for (auto next : values)
 	{
@@ -58,7 +68,7 @@ StoneStack::StoneStack(ValueMap& properties) : super(properties)
 		{
 			int value = std::stoi(next);
 
-			this->push(value);
+			this->push(value, false);
 		}
 	}
 
@@ -66,6 +76,8 @@ StoneStack::StoneStack(ValueMap& properties) : super(properties)
 	{
 		this->addChild(next);
 	}
+
+	this->addChild(this->animatedStone);
 }
 
 StoneStack::~StoneStack()
@@ -81,19 +93,12 @@ void StoneStack::initializePositions()
 {
 	super::initializePositions();
 
-	const float ObjectHeight = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
-
 	for (int index = 0; index < int(this->valueStones.size()); index++)
 	{
-		auto next = this->valueStones[index];
-		const float StoneHeight = next->getContentSize().height;
-		const float Spacing = 44.0f;
-
-		next->setPosition(Vec2(
-			0.0f,
-			float(index) * Spacing + StoneHeight / 2.0f - ObjectHeight / 2.0f
-		));
+		this->valueStones[index]->setPosition(this->getPositionForStone(index));
 	}
+
+	this->animatedStone->setPositionY(1536.0f);
 }
 
 void StoneStack::initializeListeners()
@@ -107,13 +112,16 @@ void StoneStack::initializeListeners()
 			return;
 		}
 
-		std::string regStr = GameUtils::getKeyOrDefault(args, MayanDoor::PropertyRegister, Value("")).asString();
-		ValueMap retArgs = ValueMap();
+		this->pop([=](int value)
+		{
+			std::string regStr = GameUtils::getKeyOrDefault(args, MayanDoor::PropertyRegister, Value("")).asString();
+			ValueMap retArgs = ValueMap();
 
-		retArgs[MayanDoor::PropertyRegister] = Value(regStr);
-		retArgs[MayanDoor::PropertyValue] = Value(this->pop());
+			retArgs[MayanDoor::PropertyRegister] = Value(regStr);
+			retArgs[MayanDoor::PropertyValue] = Value(value);
 
-		this->broadcastMapEvent(MayanDoor::MapEventPopRet + regStr, retArgs);
+			this->broadcastMapEvent(MayanDoor::MapEventPopRet + regStr, retArgs);
+		});
 	});
 
 	this->listenForMapEvent(MayanDoor::MapEventPush, [=](ValueMap args)
@@ -124,30 +132,81 @@ void StoneStack::initializeListeners()
 	});
 }
 
-void StoneStack::push(int value)
+void StoneStack::push(int value, bool animate)
 {
-	if (int(this->values.size()) >= StoneStack::MaxStackSize - 1)
+	const float Speed = 0.5f;
+	const Vec2 Offset = Vec2(0.0f, 1536.0f);
+
+	bool overFlow = int(this->values.size()) >= StoneStack::MaxStackSize - 1;
+	int stoneIndex = int(this->values.size());
+	Vec2 stonePosition = this->getPositionForStone(stoneIndex);
+	this->animatedString->setString(std::to_string(value));
+
+	if (animate)
+	{
+		this->animatedStone->setPosition(stonePosition + Offset);
+		this->animatedStone->runAction(Sequence::create(
+			MoveTo::create(0.5f, stonePosition),
+			CallFunc::create([=]()
+			{
+				if (overFlow)
+				{
+					this->animatedStone->setPosition(stonePosition + Offset);
+					return;
+				}
+
+				this->values.push_back(value);
+				this->valueStrings[stoneIndex]->setString(std::to_string(value));
+				this->updateStackVisibility();
+			}),
+			nullptr
+		));
+	}
+	else
+	{
+		if (overFlow)
+		{
+			return;
+		}
+
+		this->values.push_back(value);
+		this->valueStrings[stoneIndex]->setString(std::to_string(value));
+		this->updateStackVisibility();
+	}
+}
+
+void StoneStack::pop(std::function<void(int)> callback)
+{
+	const float Speed = 0.5f;
+	const Vec2 Offset = Vec2(0.0f, 1536.0f);
+
+	if (this->values.empty())
 	{
 		return;
 	}
-
-	this->values.push_back(value);
-	this->valueStrings[int(this->values.size() - 1)]->setString(std::to_string(value));
-	this->updateStackVisibility();
-}
-
-int StoneStack::pop()
-{
-	if (this->values.empty())
-	{
-		return 0;
-	}
-
+	
+	int stoneIndex = int(this->values.size() - 1);
+	Vec2 stonePosition = this->getPositionForStone(stoneIndex);
 	int value = this->values.back();
 	this->values.pop_back();
 	this->updateStackVisibility();
 
-	return value;
+	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
+
+	this->animatedStone->setPosition(stonePosition);
+	this->animatedStone->runAction(Sequence::create(
+		MoveTo::create(0.5f, stonePosition + Offset),
+		CallFunc::create([=]()
+		{
+			if (callback != nullptr)
+			{
+				callback(value);
+			}
+
+			this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+		}),
+		nullptr
+	));
 }
 
 void StoneStack::updateStackVisibility()
@@ -161,4 +220,16 @@ void StoneStack::updateStackVisibility()
 	{
 		this->valueStones[index]->setVisible(true);
 	}
+}
+
+Vec2 StoneStack::getPositionForStone(int index)
+{
+	index = MathUtils::clamp(index, 0, int(this->valueStones.size()) - 1);
+
+	static const float ObjectHeight = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
+	auto next = this->valueStones[index];
+	const float StoneHeight = next->getContentSize().height;
+	const float Spacing = 44.0f;
+
+	return Vec2(0.0f, float(index) * Spacing + StoneHeight / 2.0f - ObjectHeight / 2.0f);
 }

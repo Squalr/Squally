@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
@@ -28,13 +30,17 @@ protected:
 private:
 	typedef GameObject super;
 
-	void push(int value);
-	int pop();
+	void push(int value, bool animate = true);
+	void pop(std::function<void(int)> callback);
 	void updateStackVisibility();
+	cocos2d::Vec2 getPositionForStone(int index);
 
 	std::vector<cocos2d::Sprite*> valueStones;
 	std::vector<int> values;
 	std::vector<ConstantString*> valueStrings;
+
+	cocos2d::Sprite* animatedStone;
+	ConstantString* animatedString;
 
 	static const std::string PropertyValues;
 	static const int MaxStackSize;

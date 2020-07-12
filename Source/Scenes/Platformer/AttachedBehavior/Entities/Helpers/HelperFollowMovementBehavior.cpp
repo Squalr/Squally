@@ -11,6 +11,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -20,6 +21,8 @@
 using namespace cocos2d;
 
 const std::string HelperFollowMovementBehavior::MapKey = "follow-movement";
+const std::string HelperFollowMovementBehavior::MapEventMoveToRest = "helper-move-to-rest";
+const std::string HelperFollowMovementBehavior::MapEventStopRest = "helper-stop-rest";
 const float HelperFollowMovementBehavior::StopFollowRangeX = 128.0f;
 const float HelperFollowMovementBehavior::TryJumpRangeY = 160.0f;
 const float HelperFollowMovementBehavior::ResetRangeX = 2048.0f;
@@ -78,6 +81,21 @@ void HelperFollowMovementBehavior::onLoad()
 	this->entity->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
 	{
 		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
+	});
+
+	this->entity->listenForMapEvent(HelperFollowMovementBehavior::MapEventMoveToRest, [=](ValueMap)
+	{
+		ObjectEvents::WatchForObject<CinematicMarker>(this->entity, [=](CinematicMarker* rest)
+		{
+			this->entity->setState(StateKeys::PatrolHijacked, Value(true));
+			this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(rest).x));
+		}, "helper-rest");
+	});
+
+	this->entity->listenForMapEvent(HelperFollowMovementBehavior::MapEventStopRest, [=](ValueMap)
+	{
+		this->entity->clearState(StateKeys::PatrolHijacked);
+		this->entity->clearState(StateKeys::PatrolDestinationX);
 	});
 	
 	this->scheduleUpdate();

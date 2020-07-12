@@ -28,11 +28,14 @@ private:
 
 	PlatformerEntity* entity;
 	Squally* squally;
-
+	
 	bool followEnabled;
 
 	static const float StopFollowRangeX;
 	static const float TryJumpRangeY;
 	static const float ResetRangeX;
 	static const float ResetRangeY;
+
+	static const std::string MapEventMoveToRest;
+	static const std::string MapEventStopRest;
 };

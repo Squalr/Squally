@@ -33,10 +33,12 @@ protected:
 private:
 	typedef InteractObject super;
 
+	void runAnimationIn(int newValue);
+	void runAnimationOut();
 	void setValue(int value);
 	ConstantString* buildRegisterString();
 
-	InteractObject* popInteract;
+	InteractObject* pushInteract;
 	std::string registerStr;
 	int value;
 	int correctValue;
@@ -45,6 +47,9 @@ private:
 	cocos2d::Sprite* valueStone;
 	ConstantString* valueString;
 	LocalizedLabel* valueLabel;
+	cocos2d::Sprite* animatedStone;
+	ConstantString* animatedString;
+	LocalizedLabel* animatedLabel;
 	ConstantString* correctValueString;
 	LocalizedLabel* correctValueLabel;
 	LocalizedLabel* registerLabel;

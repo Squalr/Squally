@@ -10,6 +10,7 @@
 using namespace cocos2d;
 
 const std::string Trigger::MapKey = "trigger";
+const std::string Trigger::PropertyEndEvent = "end-event";
 const std::string Trigger::PropertySaveState = "save-state";
 const std::string Trigger::PropertyMultiTrip = "multi";
 
@@ -26,6 +27,7 @@ Trigger::Trigger(ValueMap& properties) : super(properties)
 {
 	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(CollisionObject::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
+	this->endCollisionEvent = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertyEndEvent, Value("")).asString();
 	this->saveState = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertySaveState, Value(false)).asBool();
 	this->multiTrip = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertyMultiTrip, Value(false)).asBool();
 	this->wasActivated = false;
@@ -65,6 +67,13 @@ void Trigger::initializeListeners()
 			this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 		}
 
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->triggerCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
+	{
+		this->broadcastMapEvent(this->endCollisionEvent, ValueMap());
+		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
