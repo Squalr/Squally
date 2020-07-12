@@ -111,7 +111,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 				entityInventoryBehavior->getInventory()->forceInsert(VoidCrystal::create(), false);
 			}
 
-			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 420);
+			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 117);
 
 			this->defer([=]()
 			{

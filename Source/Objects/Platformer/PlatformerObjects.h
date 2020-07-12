@@ -86,6 +86,7 @@
 #include "Objects/Platformer/Physics/FloatingRock/FloatingRock.h"
 #include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeam.h"
 #include "Objects/Platformer/Physics/Lifts/CartLift.h"
+#include "Objects/Platformer/Physics/Lifts/MineElevatorLift.h"
 #include "Objects/Platformer/Physics/Wind/Wind.h"
 #include "Objects/Platformer/Physics/WoodenCrate/WoodenCrate.h"
 #include "Objects/Platformer/Puzzles/LogicGate.h"

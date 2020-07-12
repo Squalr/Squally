@@ -90,8 +90,10 @@ MayanDoor::~MayanDoor()
 void MayanDoor::onEnter()
 {
 	super::onEnter();
+
+	bool isUnlocked = this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(!this->isLocked)).asBool();
 	
-	if (this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
+	if (isUnlocked)
 	{
 		this->unlock(false);
 	}

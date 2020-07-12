@@ -152,6 +152,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[MineCart::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCart::create(properties); };
 	this->deserializers[MineCartLootable::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCartLootable::create(properties); };
 	this->deserializers[MineClaw::MapKey] = [=](ValueMap properties) { return (GameObject*)MineClaw::create(properties); };
+	this->deserializers[MineElevatorLift::MapKey] = [=](ValueMap properties) { return (GameObject*)MineElevatorLift::create(properties); };
 	this->deserializers[MineLantern::MapKey] = [=](ValueMap properties) { return (GameObject*)MineLantern::create(properties); };
 	this->deserializers[MineWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)MineWheel::create(properties); };
 	this->deserializers[MineWinch::MapKey] = [=](ValueMap properties) { return (GameObject*)MineWinch::create(properties); };

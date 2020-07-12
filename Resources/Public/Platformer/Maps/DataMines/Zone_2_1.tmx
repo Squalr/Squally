@@ -204,7 +204,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="80" name="decor bg" visible="0">
+ <objectgroup id="80" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>

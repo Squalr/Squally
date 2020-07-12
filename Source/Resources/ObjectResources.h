@@ -324,6 +324,9 @@ namespace ObjectResources
 	extern const std::string Physics_CartLift_Rail;
 	extern const std::string Physics_CartLift_Stop;
 	extern const std::string Physics_CartStop_CartStop;
+	extern const std::string Physics_MineElevator_MineElevatorBase;
+	extern const std::string Physics_MineElevator_MineElevatorGear;
+	extern const std::string Physics_MineElevator_MineElevatorGearShaft;
 	extern const std::string Physics_MineWheel_Crane;
 	extern const std::string Physics_MineWheel_Fill1;
 	extern const std::string Physics_MineWheel_Fill2;

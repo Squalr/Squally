@@ -26,6 +26,7 @@ protected:
 	void initializePositions() override;
 	void onEnter() override;
 	virtual float getPadding();
+	virtual cocos2d::Vec2 getRailsOffset();
 
 	float width;
 	float height;

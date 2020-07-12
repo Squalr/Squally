@@ -144,6 +144,7 @@ void StoneStack::push(int value, bool animate)
 
 	if (animate)
 	{
+		this->animatedStone->setVisible(true);
 		this->animatedStone->setPosition(stonePosition + Offset);
 		this->animatedStone->runAction(Sequence::create(
 			MoveTo::create(0.5f, stonePosition),
@@ -193,11 +194,14 @@ void StoneStack::pop(std::function<void(int)> callback)
 
 	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 
+	this->animatedStone->setVisible(true);
 	this->animatedStone->setPosition(stonePosition);
 	this->animatedStone->runAction(Sequence::create(
 		MoveTo::create(0.5f, stonePosition + Offset),
 		CallFunc::create([=]()
 		{
+			this->animatedStone->setVisible(false);
+
 			if (callback != nullptr)
 			{
 				callback(value);

@@ -85,6 +85,7 @@ void LiftBase::initializePositions()
     const float AdjustedSpeed = (this->movementDirection == MovementDirection::LeftRight ? this->width : this->height) / this->speedPer256px / 256.0f;
     const Vec2 StartPosition = this->movementDirection == MovementDirection::LeftRight ? Vec2(this->width / 2.0f - Padding, 0.0f) : Vec2(0.0f, this->height / 2.0f - Padding);
 
+    this->railing->setPosition(this->getRailsOffset());
 	this->liftCollision->setPosition(-StartPosition);
 }
 
@@ -109,5 +110,10 @@ void LiftBase::onEnter()
 float LiftBase::getPadding()
 {
     return 0.0f;
+}
+
+Vec2 LiftBase::getRailsOffset()
+{
+    return Vec2::ZERO;
 }
 

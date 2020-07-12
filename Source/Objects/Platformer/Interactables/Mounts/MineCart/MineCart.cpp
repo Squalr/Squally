@@ -72,7 +72,7 @@ void MineCart::initializePositions()
 {
 	super::initializePositions();
 
-	this->bottomCollision->setPositionY(-96.0f);
+	this->bottomCollision->setPositionY(-108.0f);
 	this->wheelBack->setPosition(Vec2(-32.0f, -64.0f));
 	this->wheelFront->setPosition(Vec2(32.0f, -69.0f));
 }
