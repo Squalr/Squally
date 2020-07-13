@@ -49,7 +49,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1599" name="gorilla" type="entity" x="2733.24" y="1985.37" width="128" height="128">
+  <object id="1599" name="thug" type="entity" x="2733.24" y="1985.37" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -58,7 +58,7 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="1600" name="gorilla" type="entity" x="2740.4" y="1596.63" width="128" height="128">
+  <object id="1600" name="thug" type="entity" x="2740.4" y="1596.63" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

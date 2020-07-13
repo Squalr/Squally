@@ -22,8 +22,8 @@ Zana* Zana::deserialize(ValueMap& properties)
 
 Zana::Zana(ValueMap& properties) : super(properties,
 	Zana::MapKey,
-	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
-	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
+	EntityResources::Npcs_CastleValgrind_Zana_Animations,
+	EntityResources::Npcs_CastleValgrind_Zana_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 Zana::getDialogueOffset()
 
 LocalizedString* Zana::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Zana::create();
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Zana::create();
 }

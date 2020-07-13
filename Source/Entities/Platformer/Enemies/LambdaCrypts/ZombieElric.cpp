@@ -22,8 +22,8 @@ ZombieElric* ZombieElric::deserialize(ValueMap& properties)
 
 ZombieElric::ZombieElric(ValueMap& properties) : super(properties,
 	ZombieElric::MapKey,
-	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
-	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
+	EntityResources::Enemies_LambdaCrypts_ZombieElric_Animations,
+	EntityResources::Enemies_LambdaCrypts_ZombieElric_Emblem,
 	Size(114.0f, 208.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 ZombieElric::getDialogueOffset()
 
 LocalizedString* ZombieElric::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_ZombieElric::create();
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric::create();
 }

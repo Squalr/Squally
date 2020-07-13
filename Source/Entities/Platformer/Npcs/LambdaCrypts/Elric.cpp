@@ -22,8 +22,8 @@ Elric* Elric::deserialize(ValueMap& properties)
 
 Elric::Elric(ValueMap& properties) : super(properties,
 	Elric::MapKey,
-	EntityResources::Npcs_CastleValgrind_Elric_Animations,
-	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
+	EntityResources::Npcs_LambdaCrypts_Elric_Animations,
+	EntityResources::Npcs_LambdaCrypts_Elric_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 Elric::getDialogueOffset()
 
 LocalizedString* Elric::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Elric::create();
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create();
 }

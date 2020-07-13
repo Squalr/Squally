@@ -114,8 +114,8 @@ void TextureObject::buildTextures()
 	// Breaks up the visual sameness of similar sized terrain chunks by starting their tiling at a different position in the texture.
 	static Vec2 TilingOffset = Vec2(0.0f, 0.0f);
 
-	TilingOffset.x = MathUtils::wrappingNormalize(TilingOffset.x + 768.0f, 0.0f, 1024.0f);
-	TilingOffset.y = MathUtils::wrappingNormalize(TilingOffset.y + 384.0f, 0.0f, 1024.0f);
+	TilingOffset.x = MathUtils::wrappingNormalize(TilingOffset.x + 757.0f, 0.0f, 1024.0f);
+	TilingOffset.y = MathUtils::wrappingNormalize(TilingOffset.y + 359.0f, 0.0f, 1024.0f);
 	
 	texture->setPosition(drawRect.origin);
 	texture->setTextureRect(Rect(TilingOffset.x, TilingOffset.y, drawRect.size.width, drawRect.size.height));

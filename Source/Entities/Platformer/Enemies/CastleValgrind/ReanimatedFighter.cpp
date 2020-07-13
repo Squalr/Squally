@@ -22,8 +22,8 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& properties)
 
 ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : super(properties,
 	ReanimatedFighter::MapKey,
-	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
-	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
+	EntityResources::Enemies_CastleValgrind_ReanimatedFighter_Animations,
+	EntityResources::Enemies_CastleValgrind_ReanimatedFighter_Emblem,
 	Size(256.0f, 248.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 ReanimatedFighter::getDialogueOffset()
 
 LocalizedString* ReanimatedFighter::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedFighter::create();
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter::create();
 }

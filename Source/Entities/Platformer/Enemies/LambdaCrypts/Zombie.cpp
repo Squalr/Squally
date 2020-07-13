@@ -22,8 +22,8 @@ Zombie* Zombie::deserialize(ValueMap& properties)
 
 Zombie::Zombie(ValueMap& properties) : super(properties,
 	Zombie::MapKey,
-	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
-	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
+	EntityResources::Enemies_LambdaCrypts_Zombie_Animations,
+	EntityResources::Enemies_LambdaCrypts_Zombie_Emblem,
 	Size(146.0f, 248.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 Zombie::getDialogueOffset()
 
 LocalizedString* Zombie::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Zombie::create();
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie::create();
 }

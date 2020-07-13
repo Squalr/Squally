@@ -22,8 +22,8 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& properties)
 
 SkeletalBaron::SkeletalBaron(ValueMap& properties) : super(properties,
 	SkeletalBaron::MapKey,
-	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
-	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
+	EntityResources::Enemies_CastleValgrind_SkeletalBaron_Animations,
+	EntityResources::Enemies_CastleValgrind_SkeletalBaron_Emblem,
 	Size(112.0f, 368.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 SkeletalBaron::getDialogueOffset()
 
 LocalizedString* SkeletalBaron::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalBaron::create();
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron::create();
 }
