@@ -64,9 +64,13 @@ void MineCartLootable::parseFill()
 	{
 		this->cartFill = Fill::Gold;
 	}
-	else // if (fill == "coal")
+	else if (fill == "coal")
 	{
 		this->cartFill = Fill::Coal;
+	}
+	else
+	{
+		this->cartFill = Fill::None;
 	}
 }
 
@@ -98,6 +102,11 @@ Node* MineCartLootable::buildCart(bool withFill)
 			{
 				fill = Sprite::create(ObjectResources::Interactive_MineCarts_FillDiamond);
 				fill->setPosition(Vec2(8.0f, 96.0f));
+				break;
+			}
+			default:
+			case Fill::None:
+			{
 				break;
 			}
 		}

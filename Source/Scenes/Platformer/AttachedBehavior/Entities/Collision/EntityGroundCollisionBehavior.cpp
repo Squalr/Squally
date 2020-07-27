@@ -132,6 +132,7 @@ bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject
 
 	Node* currentCollisionGroup = collisonObject->getParent();
 
+	/*
 	// Special case for intersection points -- just return false
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
@@ -140,6 +141,7 @@ bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject
 			return false;
 		}
 	}
+	*/
 
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{

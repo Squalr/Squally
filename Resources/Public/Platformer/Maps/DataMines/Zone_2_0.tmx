@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="935">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="936">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -194,8 +194,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="831" name="Mines/CaveDoor4" type="decor" x="248.53" y="822.652" width="333" height="385"/>
   <object id="843" name="winch" type="object" x="4438.55" y="1994.21" width="251" height="263"/>
+  <object id="935" name="Mines/MineDoorTunnel" type="decor" x="193.167" y="818.833" width="435" height="389"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>

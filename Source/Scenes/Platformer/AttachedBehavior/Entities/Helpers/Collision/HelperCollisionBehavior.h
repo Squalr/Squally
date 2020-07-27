@@ -10,8 +10,6 @@ class HelperCollisionBehavior : public EntityCollisionBehaviorBase
 public:
 	static HelperCollisionBehavior* create(GameObject* owner);
 
-	CollisionObject* entityCollision;
-
 	static const std::string MapKey;
 
 protected:

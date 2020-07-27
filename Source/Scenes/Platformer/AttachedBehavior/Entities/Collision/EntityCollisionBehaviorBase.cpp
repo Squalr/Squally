@@ -321,11 +321,6 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}
-			
-			if (this->entityCollision->hasCollisionWith(collisionData.other))
-			{
-				return CollisionObject::CollisionResult::DoNothing;
-			}
 		}
 
 		// No collision if we have a head collision with the pass-through (aka below it, jumping upwards)
@@ -334,12 +329,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
-		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
-		if (!this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
-		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		}
-
+		/*
 		if (this->groundCollision->isStandingOn(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
@@ -349,6 +339,13 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		// This causes the ground detector to hit both, resulting in the above cases to fail.
 		// Just using wall detectors as a backup seems to work fine.
 		if (this->hasLeftWallCollision() || this->hasRightWallCollision())
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+		*/
+		
+		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
+		if (!this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}

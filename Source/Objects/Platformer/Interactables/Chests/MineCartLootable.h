@@ -24,6 +24,7 @@ private:
 	
 	enum class Fill
 	{
+		None,
 		Coal,
 		Gold,
 		Diamond
