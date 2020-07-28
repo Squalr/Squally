@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="958">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="136" nextobjectid="1050">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -12,39 +12,41 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="106" name="bg -4">
+ <objectgroup id="106" name="bg -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="911" name="brick-interior" type="texture" x="2354" y="-336" width="2512" height="1596"/>
-  <object id="912" name="temple" type="texture" x="4872" y="-330" width="1136" height="1556"/>
-  <object id="913" name="castle" type="texture" x="6140" y="-358" width="1124" height="1600"/>
+  <object id="911" name="temple" type="texture" x="3638" y="-336" width="1228" height="1596"/>
+  <object id="912" name="castle" type="texture" x="4872" y="-330" width="1272" height="1556"/>
+  <object id="913" name="brick-interior" type="texture" x="6140" y="-358" width="1412" height="1600"/>
   <object id="951" name="lava" type="texture" x="1192.73" y="-336.667" width="1154.3" height="1492.24"/>
+  <object id="1045" name="brick-interior" type="texture" x="2351.7" y="-336.364" width="1281.58" height="1600"/>
  </objectgroup>
- <objectgroup id="117" name="terrain -3">
+ <objectgroup id="117" name="terrain -1.5">
   <properties>
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="925" name="lava" type="terrain" x="1223.45" y="977.634" width="1129.1" height="574.731"/>
-  <object id="926" name="marble" type="terrain" x="2371.81" y="967.18" width="2477.58" height="580.792"/>
-  <object id="927" name="ruins-thick" type="terrain" x="4856.66" y="970.21" width="1268.49" height="574.731"/>
-  <object id="928" name="castle" type="terrain" x="6135.45" y="967.18" width="1386.67" height="574.731"/>
+  <object id="926" name="ruins-thick" type="terrain" x="3635.81" y="967.18" width="1213.58" height="580.792"/>
+  <object id="927" name="castle" type="terrain" x="4856.66" y="970.21" width="1268.49" height="574.731"/>
+  <object id="928" name="marble" type="terrain" x="6135.45" y="967.18" width="1386.67" height="574.731"/>
+  <object id="1047" name="marble" type="terrain" x="2355.63" y="983.665" width="1280.61" height="574.731"/>
  </objectgroup>
- <objectgroup id="121" name="npc collision walls -3">
+ <objectgroup id="121" name="npc collision walls -1.5">
   <properties>
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="894" name="solid-npc" type="collision" x="2101.15" y="80.4078" width="537.03" height="993"/>
-  <object id="895" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="667.333" height="993"/>
-  <object id="896" name="solid-npc" type="collision" x="4366.26" y="98.9323" width="759.517" height="993"/>
+  <object id="895" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="482.485" height="993"/>
+  <object id="896" name="solid-npc" type="collision" x="4602.62" y="98.9323" width="523.153" height="993"/>
   <object id="897" name="solid-npc" type="collision" x="5873.41" y="70.3842" width="537.03" height="993"/>
   <object id="898" name="solid-npc" type="collision" x="7084.67" y="86.6974" width="537.03" height="993"/>
   <object id="900" name="solid-npc" type="collision" x="898.738" y="69.5377" width="537.03" height="993"/>
  </objectgroup>
- <objectgroup id="116" name="entities -3">
+ <objectgroup id="116" name="entities -1.5">
   <properties>
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
@@ -55,19 +57,19 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="843" name="anubis-warrior" type="entity" x="5275.37" y="831.98" width="128" height="128">
+  <object id="843" name="anubis-warrior" type="entity" x="3783.37" y="831.98" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
-  <object id="849" name="reaper" type="entity" x="6894.98" y="836.204" width="128" height="128">
+  <object id="849" name="reaper" type="entity" x="5616.98" y="840.204" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="122" name="columns -2">
+ <objectgroup id="122" name="columns -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -128,12 +130,13 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="802" name="marble" type="terrain" x="2358.03" y="1018.63">
-   <polygon points="0,0 2495.27,-6.92166 2495.27,581.418 6.04186,588.341"/>
+  <object id="802" name="ruins-thick" type="terrain" x="3634.03" y="1018.63">
+   <polygon points="0,0 1219.27,-6.92166 1219.27,581.418 2.95225,588.341"/>
   </object>
   <object id="924" name="lava" type="terrain" x="1228.66" y="1043.45" width="1117.1" height="568.731"/>
-  <object id="929" name="castle" type="terrain" x="6143.03" y="1018.7" width="1386.67" height="574.731"/>
-  <object id="930" name="ruins-thick" type="terrain" x="4858.18" y="1015.66" width="1274.55" height="574.731"/>
+  <object id="929" name="marble" type="terrain" x="6143.03" y="1018.7" width="1386.67" height="574.731"/>
+  <object id="930" name="castle" type="terrain" x="4858.18" y="1015.66" width="1274.55" height="574.731"/>
+  <object id="1046" name="marble" type="terrain" x="2347.03" y="1048.63" width="1283.64" height="562.61"/>
  </objectgroup>
  <objectgroup id="120" name="npc collision walls -1">
   <properties>
@@ -141,10 +144,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="885" name="solid-npc" type="collision" x="2101.15" y="80.4078" width="537.03" height="993"/>
-  <object id="888" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="664.303" height="993"/>
-  <object id="889" name="solid-npc" type="collision" x="4384.44" y="77.7202" width="735.275" height="993"/>
-  <object id="890" name="solid-npc" type="collision" x="5873.41" y="70.3842" width="537.03" height="993"/>
-  <object id="891" name="solid-npc" type="collision" x="7084.67" y="86.6974" width="537.03" height="993"/>
+  <object id="888" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="479.455" height="993"/>
+  <object id="889" name="solid-npc" type="collision" x="4596.56" y="77.7202" width="523.154" height="993"/>
+  <object id="890" name="solid-npc" type="collision" x="5894.62" y="70.3842" width="470.363" height="993"/>
+  <object id="891" name="solid-npc" type="collision" x="7130.12" y="86.6974" width="491.575" height="993"/>
   <object id="899" name="solid-npc" type="collision" x="898.738" y="69.5377" width="537.03" height="993"/>
  </objectgroup>
  <objectgroup id="113" name="entites -1">
@@ -152,7 +155,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="805" name="guano" type="entity" x="4123.99" y="882.734" width="128" height="128">
+  <object id="805" name="guano" type="entity" x="6753.99" y="888.067" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
     <property name="quest" value="chat-with-guano"/>
@@ -164,13 +167,13 @@
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
-  <object id="844" name="mermaid" type="entity" x="5609.03" y="884.051" width="128" height="128">
+  <object id="844" name="mermaid" type="entity" x="4117.03" y="884.051" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="850" name="vampire-lord" type="entity" x="6552.11" y="883.808" width="128" height="128">
+  <object id="850" name="vampire-lord" type="entity" x="5274.11" y="887.808" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
    </properties>
@@ -193,13 +196,13 @@
     <property name="repeat-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="848" name="Generic/Background/Jail" type="decor" x="6362.91" y="105.559" width="749.102" height="993">
+  <object id="1048" name="Generic/Background/Jail" type="decor" x="3800.45" y="86.5" width="749.102" height="993">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="878" name="Generic/JailGateSmall" type="decor" x="3781.94" y="60.8761" width="779" height="993"/>
+  <object id="1049" name="Generic/JailGateSmall" type="decor" x="6366.02" y="104.591" width="779" height="993"/>
  </objectgroup>
  <objectgroup id="119" name="walls">
   <properties>
@@ -207,7 +210,7 @@
   </properties>
   <object id="873" name="magic-wall" type="object" x="1411.92" y="96.721" width="749.102" height="993"/>
   <object id="874" name="magic-wall" type="object" x="5106.68" y="94.8286" width="749.102" height="993"/>
-  <object id="875" name="magic-wall" type="object" x="6362.91" y="105.559" width="749.102" height="993"/>
+  <object id="875" name="magic-wall" type="object" x="3824.91" y="75.559" width="749.102" height="993"/>
  </objectgroup>
  <objectgroup id="16" name="tiled bg">
   <properties>
@@ -296,8 +299,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="922" name="marble" type="terrain" x="-71.275" y="1059.69" width="7658.55" height="240.61"/>
-  <object id="952" name="marble" type="terrain" x="688.907" y="-97.7595" width="7294.55" height="240.61"/>
+  <object id="963" name="marble" type="terrain" x="7140.42" y="-54.3656" width="439.152" height="1360.61"/>
+ </objectgroup>
+ <objectgroup id="124" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="962" name="marble" type="terrain" x="-71.275" y="1059.69" width="7223.1" height="520.61"/>
+ </objectgroup>
+ <objectgroup id="123" name="terrain fg fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="961" name="marble" type="terrain" x="-119.093" y="-97.7595" width="8102.55" height="240.61"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -315,7 +329,7 @@
     <property name="transition" value="prison"/>
    </properties>
   </object>
-  <object id="796" name="mul-door" type="object" x="3832.09" y="274.351" width="696" height="775">
+  <object id="796" name="mul-door" type="object" x="6379.12" y="276.927" width="696" height="775">
    <properties>
     <property name="map" value="EndianForest/Home_Guano"/>
     <property name="quest" value="rescue-guano"/>
@@ -324,7 +338,7 @@
     <property name="transition" value="cell"/>
    </properties>
   </object>
-  <object id="810" name="trigger" type="object" x="3836.81" y="-16.9566" width="139.488" height="1073.13">
+  <object id="810" name="trigger" type="object" x="6383.84" y="-14.3808" width="139.488" height="1073.13">
    <properties>
     <property name="send-event" value="explain-door"/>
    </properties>
@@ -339,24 +353,20 @@
     <property name="tag" value="dialogue-pause"/>
    </properties>
   </object>
-  <object id="903" name="cinematic-marker" type="object" x="4135.14" y="965.836" width="78.7879" height="88">
+  <object id="903" name="cinematic-marker" type="object" x="6682.17" y="968.412" width="78.7879" height="88">
    <properties>
     <property name="tag" value="prison-door"/>
    </properties>
   </object>
-  <object id="910" name="chest" type="object" x="6060" y="926" width="128" height="128">
-   <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="m,a,g,e"/>
-    <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}"/>
-    <property name="tokens" value=""/>
-    <property name="tutorial" value="connect"/>
-   </properties>
-  </object>
-  <object id="957" name="trigger" type="object" x="4006.01" y="-27.4741" width="139.488" height="1073.13">
+  <object id="957" name="trigger" type="object" x="6553.04" y="-24.8983" width="139.488" height="1073.13">
    <properties>
     <property name="send-event" value="explain-door"/>
+   </properties>
+  </object>
+  <object id="958" name="portal" type="object" x="2814.57" y="739.294" width="320" height="320">
+   <properties>
+    <property name="map" value="EndianForest/Home_Troll"/>
+    <property name="transition" value="troll"/>
    </properties>
   </object>
  </objectgroup>
@@ -391,6 +401,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.25"/>
   </properties>
   <object id="523" name="squally" type="entity" x="533.668" y="938.223" width="128" height="128">
    <properties>
@@ -403,9 +414,14 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="955" name="spawn" type="object" x="4110.67" y="926" width="128" height="128">
+  <object id="955" name="spawn" type="object" x="6754.82" y="931.697" width="128" height="128">
    <properties>
     <property name="transition" value="cell"/>
+   </properties>
+  </object>
+  <object id="959" name="spawn" type="object" x="2934" y="933" width="128" height="128">
+   <properties>
+    <property name="transition" value="troll"/>
    </properties>
   </object>
  </objectgroup>
@@ -415,10 +431,317 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="114" name="jail +8">
+ <objectgroup id="114" name="jail +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="984" name="Generic/Background/Jail" type="decor" x="1461.45" y="171.5" width="5669.1" height="993">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="repeat-y" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="125" name="terrain +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects-disabled"/>
+  </properties>
+  <object id="970" name="marble" type="terrain" x="7150.85" y="-167.151" width="427.152" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="991" name="marble" type="terrain" x="-258.669" y="-82.7292" width="8243.03" height="240.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="992" name="marble" type="terrain" x="-118.97" y="-43.9414" width="1574.91" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="126" name="ground +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="976" name="frost" type="terrain" x="1384.85" y="1144.15" width="1011.82" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1005" name="dark-grass" type="terrain" x="2399.57" y="1147.3" width="1208.25" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1006" name="shade-grass" type="terrain" x="3611.76" y="1143.3" width="1252.19" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1007" name="castle" type="terrain" x="4864.73" y="1143.3" width="1272.61" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1015" name="lava" type="terrain" x="6140.97" y="1150.21" width="991.761" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1016" name="lava" type="terrain" x="6138.66" y="1201.73" width="1000.55" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="128" name="entities +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="983" name="earth-golem" type="entity" x="2921.33" y="1018.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="993" name="frost-fiend" type="entity" x="1785.33" y="1018.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="994" name="skeletal-priestess" type="entity" x="4178.06" y="1016.82" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1009" name="demon-ghost" type="entity" x="6709.09" y="1022.06" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1010" name="zombie" type="entity" x="5384.48" y="1016.03" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="127" name="collision +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="977" name="solid-npc" type="collision" x="2127.49" y="203.5" width="537.03" height="993"/>
+  <object id="978" name="solid-npc" type="collision" x="879.485" y="207.5" width="537.03" height="993"/>
+  <object id="979" name="solid-npc" type="collision" x="4583.49" y="197.5" width="537.03" height="993"/>
+  <object id="980" name="solid-npc" type="collision" x="3335.48" y="201.5" width="537.03" height="993"/>
+  <object id="981" name="solid-npc" type="collision" x="7107.49" y="209.5" width="537.03" height="993"/>
+  <object id="982" name="solid-npc" type="collision" x="5859.48" y="213.5" width="537.03" height="993"/>
+ </objectgroup>
+ <objectgroup id="129" name="columns +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="995" name="wood" type="terrain" x="1393.75" y="-158" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="997" name="wood" type="terrain" x="2342.42" y="-171.333" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="999" name="wood" type="terrain" x="3553.76" y="-144" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1000" name="wood" type="terrain" x="4808.42" y="-156.667" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1003" name="wood" type="terrain" x="6082.45" y="-171.091" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1004" name="wood" type="terrain" x="7076" y="-173.152" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="135" name="terrain + 3.5">
+  <properties>
+   <property name="depth" type="float" value="224"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1038" name="marble" type="terrain" x="7150.85" y="-167.151" width="745.334" height="1360.61"/>
+  <object id="1039" name="marble" type="terrain" x="6081.76" y="-157.759" width="109.152" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1040" name="marble" type="terrain" x="4813.76" y="-88.0624" width="106.607" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1041" name="marble" type="terrain" x="3560.91" y="-74.9714" width="96.91" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1042" name="marble" type="terrain" x="2349.63" y="-36.5474" width="98.91" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1043" name="marble" type="terrain" x="-258.669" y="-82.7292" width="8243.03" height="240.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1044" name="marble" type="terrain" x="-118.97" y="-43.9414" width="1574.91" height="1360.61">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="131" name="ground +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1011" name="frost" type="terrain" x="1383.03" y="1192.15" width="1014.73" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1012" name="dark-grass" type="terrain" x="2400.97" y="1195.3" width="1206.12" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1013" name="shade-grass" type="terrain" x="3606.48" y="1191.3" width="1255.09" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1014" name="castle" type="terrain" x="4862.85" y="1191.3" width="1273.34" height="574.731">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="132" name="entities +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1017" name="earth-elemental" type="entity" x="2831.33" y="1062.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1018" name="snow-fiend" type="entity" x="1695.33" y="1062.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1019" name="skeletal-baron" type="entity" x="4088.06" y="1060.82" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1020" name="demon-dragon" type="entity" x="6616.42" y="1076.73" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1021" name="undead" type="entity" x="5294.48" y="1060.03" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="134" name="collision +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1032" name="solid-npc" type="collision" x="2127.49" y="203.5" width="537.03" height="993"/>
+  <object id="1033" name="solid-npc" type="collision" x="879.485" y="207.5" width="537.03" height="993"/>
+  <object id="1034" name="solid-npc" type="collision" x="4583.49" y="197.5" width="537.03" height="993"/>
+  <object id="1035" name="solid-npc" type="collision" x="3335.48" y="201.5" width="537.03" height="993"/>
+  <object id="1036" name="solid-npc" type="collision" x="7107.49" y="209.5" width="537.03" height="993"/>
+  <object id="1037" name="solid-npc" type="collision" x="5859.48" y="213.5" width="537.03" height="993"/>
+ </objectgroup>
+ <objectgroup id="133" name="columns +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1022" name="wood" type="terrain" x="1393.75" y="-158" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1024" name="wood" type="terrain" x="2345.09" y="-172" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1026" name="wood" type="terrain" x="3555.76" y="-144" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1028" name="wood" type="terrain" x="4811.33" y="-155.939" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1029" name="wood" type="terrain" x="6085.85" y="-171.03" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1031" name="wood" type="terrain" x="7076" y="-173.152" width="101.823" height="1465.64">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

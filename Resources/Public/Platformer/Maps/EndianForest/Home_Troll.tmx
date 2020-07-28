@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="749">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="753">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -17,21 +17,21 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="lava" type="texture" x="-848" y="-802" width="3792" height="2688"/>
+  <object id="712" name="dark-grass" type="texture" x="-848" y="-802" width="3792" height="2688"/>
  </objectgroup>
  <objectgroup id="89" name="terrain bg -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="lava" type="terrain" x="-394.788" y="1056.36" width="2832" height="341.818"/>
+  <object id="746" name="dark-grass" type="terrain" x="-394.788" y="1056.36" width="2832" height="341.818"/>
  </objectgroup>
  <objectgroup id="88" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="744" name="demon-dragon" type="entity" x="966.303" y="923.879" width="128" height="128">
+  <object id="744" name="earth-elemental" type="entity" x="966.303" y="923.879" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -51,14 +51,14 @@
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="737" name="lava" type="terrain" x="-391.758" y="1159.39" width="2832" height="341.818"/>
+  <object id="737" name="dark-grass" type="terrain" x="-391.758" y="1159.39" width="2832" height="341.818"/>
  </objectgroup>
  <objectgroup id="86" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="demon-ghost" type="entity" x="948.121" y="1029.94" width="128" height="128">
+  <object id="741" name="earth-golem" type="entity" x="948.121" y="1029.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -162,8 +162,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="695" name="Generic/Bed" type="decor" x="1698.66" y="1148.24" width="339.213" height="127.347"/>
-  <object id="696" name="Generic/Sack" type="decor" x="1542.79" y="1133.23" width="162" height="145">
+  <object id="695" name="Generic/Bed" type="decor" x="179.418" y="1151.27" width="339.213" height="127.347"/>
+  <object id="696" name="Generic/Sack" type="decor" x="23.5476" y="1136.26" width="162" height="145">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -174,14 +174,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="721" name="mul-door" type="object" x="696.666" y="493.167" width="696" height="775">
+  <object id="749" name="chest" type="object" x="1683.12" y="1150.24" width="128" height="128">
    <properties>
-    <property name="map" value="EndianForest/Mages_Prison"/>
-    <property name="transition" value="cell"/>
-    <property name="unlocked" type="bool" value="true"/>
+    <property name="data-type" value="decimal"/>
+    <property name="inputs" value="m,a,g,e"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule" value="{i}"/>
+    <property name="tokens" value=""/>
+    <property name="tutorial" value="connect"/>
    </properties>
   </object>
-  <object id="722" name="caged-cat" type="object" x="243.515" y="1166.73" width="196" height="112"/>
+  <object id="752" name="portal" type="object" x="896.667" y="961.333" width="320" height="320">
+   <properties>
+    <property name="map" value="EndianForest/Mages_Prison"/>
+    <property name="transition" value="troll"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -189,19 +197,19 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="650.588" y="1148.64" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="squally"/>
-   </properties>
-  </object>
   <object id="748" name="spawn" type="object" x="972.485" y="1149.33" width="128" height="128">
    <properties>
-    <property name="transition" value="cell"/>
+    <property name="transition" value="troll"/>
+   </properties>
+  </object>
+  <object id="750" name="squally" type="entity" x="1118.79" y="1149.21" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
  </objectgroup>

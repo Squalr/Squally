@@ -14,7 +14,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="941" name="frost" type="terrain" x="190.18" y="209.135" width="1297.64" height="1599.73"/>
-  <object id="942" name="castle" type="terrain" x="1495.18" y="204.135" width="1151.64" height="1599.73"/>
+  <object id="942" name="dark-grass" type="terrain" x="1495.18" y="204.135" width="1151.64" height="1599.73"/>
   <object id="943" name="shade-grass" type="terrain" x="2692.18" y="210.135" width="1151.64" height="1599.73"/>
  </objectgroup>
  <objectgroup id="117" name="terrain -3">
@@ -23,7 +23,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="938" name="frost" type="terrain" x="224.818" y="1422.05" width="1195.64" height="725.73"/>
-  <object id="939" name="castle" type="terrain" x="1428.03" y="1421.91" width="1195.64" height="725.73"/>
+  <object id="939" name="dark-grass" type="terrain" x="1428.03" y="1421.91" width="1195.64" height="725.73"/>
   <object id="940" name="shade-grass" type="terrain" x="2634.09" y="1421.91" width="1195.64" height="725.73"/>
  </objectgroup>
  <objectgroup id="121" name="npc collision walls -3">
@@ -41,7 +41,7 @@
    <property name="depth" type="float" value="-352"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="832" name="ice-golem" type="entity" x="972.62" y="1301.44" width="128" height="128">
+  <object id="832" name="frost-fiend" type="entity" x="972.62" y="1301.44" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -52,7 +52,7 @@
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
-  <object id="849" name="lightning-golem" type="entity" x="2190.01" y="1297.41" width="128" height="128">
+  <object id="849" name="earth-elemental" type="entity" x="2190.01" y="1297.41" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -79,7 +79,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="935" name="frost" type="terrain" x="220.18" y="1573.64" width="1195.64" height="725.73"/>
-  <object id="936" name="castle" type="terrain" x="1423.39" y="1573.5" width="1195.64" height="725.73"/>
+  <object id="936" name="dark-grass" type="terrain" x="1423.39" y="1573.5" width="1195.64" height="725.73"/>
   <object id="937" name="shade-grass" type="terrain" x="2629.45" y="1573.5" width="1195.64" height="725.73"/>
  </objectgroup>
  <objectgroup id="120" name="npc collision walls -1">
