@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1692">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1967">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -19,12 +19,12 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="82" name="tiled bg -8">
+ <objectgroup id="82" name="tiled bg -8" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="texture" x="-2742.54" y="-2471.82" width="10701.1" height="7231.64"/>
+  <object id="837" name="mines" type="texture" x="1865.46" y="-2471.82" width="10701.1" height="7231.64"/>
  </objectgroup>
  <objectgroup id="69" name="terrain -7">
   <properties>
@@ -198,8 +198,8 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1668" name="mine-claw" type="object" x="3918.06" y="952.758" width="200" height="1350"/>
-  <object id="1684" name="mine-wheel" type="object" x="1548.97" y="1443.83" width="414" height="415"/>
+  <object id="1668" name="mine-claw" type="object" x="8526.06" y="952.758" width="200" height="1350"/>
+  <object id="1684" name="mine-wheel" type="object" x="6156.97" y="1443.83" width="414" height="415"/>
  </objectgroup>
  <objectgroup id="96" name="objects -1 bg">
   <properties>
@@ -211,7 +211,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1691" name="mines" type="terrain" x="-352.54" y="626" width="1369.08" height="1676">
+  <object id="1691" name="mines" type="terrain" x="-153.388" y="626" width="5777.93" height="1676">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -221,84 +221,309 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="907" name="Mines/Plank3" type="decor" x="3876.72" y="1644.83" width="53" height="366"/>
-  <object id="908" name="Mines/Plank1" type="decor" x="4148.07" y="1644.71" width="54" height="374"/>
-  <object id="909" name="Mines/Plank2" type="decor" x="4506.22" y="1644.83" width="51" height="374"/>
-  <object id="910" name="Mines/Plank4" type="decor" x="4156.55" y="1729.83" width="496" height="38"/>
-  <object id="911" name="Mines/Plank5" type="decor" x="4147.72" y="1814.83" width="414" height="38"/>
-  <object id="912" name="Mines/Plank6" type="decor" x="3878.72" y="1772.83" width="321" height="38"/>
-  <object id="913" name="Mines/Plank8" type="decor" x="3876.55" y="1870.16" width="173" height="38"/>
-  <object id="914" name="Mines/Plank9" type="decor" x="4051.22" y="1870.16" width="110" height="38"/>
-  <object id="916" name="Mines/PlankConnector1" type="decor" x="4279.39" y="1728.83" width="148" height="124"/>
-  <object id="920" name="Mines/PlankConnector5" type="decor" x="3878.05" y="1765.83" width="50" height="54"/>
-  <object id="921" name="Mines/PlankConnector6" type="decor" x="4148.05" y="1766.83" width="54" height="50"/>
-  <object id="923" name="Mines/Plank1" type="decor" x="3416.4" y="1644.44" width="54" height="374"/>
-  <object id="924" name="Mines/Plank2" type="decor" x="3774.55" y="1644.56" width="51" height="374"/>
-  <object id="925" name="Mines/Plank5" type="decor" x="3416.05" y="1814.56" width="414" height="38"/>
-  <object id="926" name="Mines/Plank6" type="decor" x="3147.05" y="1772.56" width="321" height="38"/>
-  <object id="928" name="Mines/Plank9" type="decor" x="3319.55" y="1869.89" width="110" height="38"/>
-  <object id="930" name="Mines/PlankConnector2" type="decor" x="3418.38" y="1816.23" width="164" height="183"/>
-  <object id="933" name="Mines/PlankConnector6" type="decor" x="3416.38" y="1766.56" width="54" height="50"/>
-  <object id="934" name="Mines/Plank4" type="decor" x="3423.72" y="1721.83" width="496" height="38"/>
-  <object id="935" name="Mines/PlankConnector1" type="decor" x="3547.72" y="1728.56" width="148" height="124"/>
-  <object id="936" name="Mines/Plank11" type="decor" x="4004.05" y="1870.5" width="93" height="38"/>
-  <object id="937" name="Mines/Plank11" type="decor" x="3272.39" y="1869.33" width="93" height="38"/>
-  <object id="938" name="Mines/Plank3" type="decor" x="5330.2" y="1647.13" width="53" height="366"/>
-  <object id="939" name="Mines/Plank1" type="decor" x="5601.55" y="1647.01" width="54" height="374"/>
-  <object id="943" name="Mines/Plank6" type="decor" x="5332.2" y="1775.13" width="321" height="38"/>
-  <object id="944" name="Mines/Plank8" type="decor" x="5330.03" y="1872.46" width="173" height="38"/>
-  <object id="945" name="Mines/Plank9" type="decor" x="5504.7" y="1872.46" width="110" height="38"/>
-  <object id="951" name="Mines/PlankConnector5" type="decor" x="5331.53" y="1768.13" width="50" height="54"/>
-  <object id="952" name="Mines/PlankConnector6" type="decor" x="5601.53" y="1769.13" width="54" height="50"/>
-  <object id="953" name="Mines/Plank3" type="decor" x="4598.53" y="1646.86" width="53" height="366"/>
-  <object id="954" name="Mines/Plank1" type="decor" x="4869.88" y="1646.74" width="54" height="374"/>
-  <object id="955" name="Mines/Plank2" type="decor" x="5228.03" y="1646.86" width="51" height="374"/>
-  <object id="956" name="Mines/Plank5" type="decor" x="4869.53" y="1816.86" width="414" height="38"/>
-  <object id="957" name="Mines/Plank6" type="decor" x="4600.53" y="1774.86" width="321" height="38"/>
-  <object id="958" name="Mines/Plank8" type="decor" x="4598.36" y="1872.19" width="173" height="38"/>
-  <object id="959" name="Mines/Plank9" type="decor" x="4773.03" y="1872.19" width="110" height="38"/>
-  <object id="961" name="Mines/PlankConnector2" type="decor" x="4871.86" y="1818.53" width="164" height="183"/>
-  <object id="963" name="Mines/PlankConnector5" type="decor" x="4599.86" y="1767.86" width="50" height="54"/>
-  <object id="964" name="Mines/PlankConnector6" type="decor" x="4869.86" y="1768.86" width="54" height="50"/>
-  <object id="965" name="Mines/Plank4" type="decor" x="4877.2" y="1724.13" width="496" height="38"/>
-  <object id="966" name="Mines/PlankConnector1" type="decor" x="5001.2" y="1730.86" width="148" height="124"/>
-  <object id="967" name="Mines/Plank11" type="decor" x="5457.53" y="1872.8" width="93" height="38"/>
-  <object id="968" name="Mines/Plank11" type="decor" x="4725.87" y="1871.63" width="93" height="38"/>
-  <object id="970" name="Mines/Plank1" type="decor" x="3415.67" y="1965" width="54" height="374"/>
-  <object id="971" name="Mines/Plank2" type="decor" x="3777.17" y="1969" width="51" height="374"/>
-  <object id="972" name="Mines/Plank3" type="decor" x="3878.83" y="1961" width="53" height="366"/>
-  <object id="973" name="Mines/Plank1" type="decor" x="4149" y="1975.67" width="54" height="374"/>
-  <object id="974" name="Mines/Plank2" type="decor" x="4507.83" y="1967.67" width="51" height="374"/>
-  <object id="975" name="Mines/Plank3" type="decor" x="4600.17" y="1969" width="53" height="366"/>
-  <object id="976" name="Mines/Plank1" type="decor" x="4871.67" y="1971.67" width="54" height="374"/>
-  <object id="977" name="Mines/Plank2" type="decor" x="5230.5" y="1970.33" width="51" height="374"/>
-  <object id="978" name="Mines/Plank1" type="decor" x="5603.67" y="1974.33" width="54" height="374"/>
-  <object id="979" name="Mines/Plank3" type="decor" x="5330.83" y="1971.67" width="53" height="366"/>
-  <object id="981" name="Mines/Plank5" type="decor" x="4144.05" y="1956.83" width="414" height="38"/>
-  <object id="982" name="Mines/Plank5" type="decor" x="3412.38" y="1956.56" width="414" height="38"/>
-  <object id="983" name="Mines/Plank5" type="decor" x="4865.86" y="1958.86" width="414" height="38"/>
-  <object id="985" name="Mines/PlankConnector2" type="decor" x="4150.05" y="1816.5" width="164" height="183"/>
-  <object id="1688" name="Mines/CaveDoor4" type="decor" x="290.955" y="1266.05" width="333" height="385"/>
+  <object id="907" name="Mines/Plank3" type="decor" x="8484.72" y="1644.83" width="53" height="366"/>
+  <object id="908" name="Mines/Plank1" type="decor" x="8756.07" y="1644.71" width="54" height="374"/>
+  <object id="909" name="Mines/Plank2" type="decor" x="9114.22" y="1644.83" width="51" height="374"/>
+  <object id="910" name="Mines/Plank4" type="decor" x="8764.55" y="1729.83" width="496" height="38"/>
+  <object id="911" name="Mines/Plank5" type="decor" x="8755.72" y="1814.83" width="414" height="38"/>
+  <object id="912" name="Mines/Plank6" type="decor" x="8486.72" y="1772.83" width="321" height="38"/>
+  <object id="913" name="Mines/Plank8" type="decor" x="8484.55" y="1870.16" width="173" height="38"/>
+  <object id="914" name="Mines/Plank9" type="decor" x="8659.22" y="1870.16" width="110" height="38"/>
+  <object id="916" name="Mines/PlankConnector1" type="decor" x="8887.39" y="1728.83" width="148" height="124"/>
+  <object id="920" name="Mines/PlankConnector5" type="decor" x="8486.05" y="1765.83" width="50" height="54"/>
+  <object id="921" name="Mines/PlankConnector6" type="decor" x="8756.05" y="1766.83" width="54" height="50"/>
+  <object id="923" name="Mines/Plank1" type="decor" x="8024.4" y="1644.44" width="54" height="374"/>
+  <object id="924" name="Mines/Plank2" type="decor" x="8382.55" y="1644.56" width="51" height="374"/>
+  <object id="925" name="Mines/Plank5" type="decor" x="8024.05" y="1814.56" width="414" height="38"/>
+  <object id="926" name="Mines/Plank6" type="decor" x="7755.05" y="1772.56" width="321" height="38"/>
+  <object id="928" name="Mines/Plank9" type="decor" x="7927.55" y="1869.89" width="110" height="38"/>
+  <object id="930" name="Mines/PlankConnector2" type="decor" x="8026.38" y="1816.23" width="164" height="183"/>
+  <object id="933" name="Mines/PlankConnector6" type="decor" x="8024.38" y="1766.56" width="54" height="50"/>
+  <object id="934" name="Mines/Plank4" type="decor" x="8031.72" y="1721.83" width="496" height="38"/>
+  <object id="935" name="Mines/PlankConnector1" type="decor" x="8155.72" y="1728.56" width="148" height="124"/>
+  <object id="936" name="Mines/Plank11" type="decor" x="8612.05" y="1870.5" width="93" height="38"/>
+  <object id="937" name="Mines/Plank11" type="decor" x="7880.39" y="1869.33" width="93" height="38"/>
+  <object id="938" name="Mines/Plank3" type="decor" x="9938.2" y="1647.13" width="53" height="366"/>
+  <object id="939" name="Mines/Plank1" type="decor" x="10209.5" y="1647.01" width="54" height="374"/>
+  <object id="943" name="Mines/Plank6" type="decor" x="9940.2" y="1775.13" width="321" height="38"/>
+  <object id="944" name="Mines/Plank8" type="decor" x="9938.03" y="1872.46" width="173" height="38"/>
+  <object id="945" name="Mines/Plank9" type="decor" x="10112.7" y="1872.46" width="110" height="38"/>
+  <object id="951" name="Mines/PlankConnector5" type="decor" x="9939.53" y="1768.13" width="50" height="54"/>
+  <object id="952" name="Mines/PlankConnector6" type="decor" x="10209.5" y="1769.13" width="54" height="50"/>
+  <object id="953" name="Mines/Plank3" type="decor" x="9206.53" y="1646.86" width="53" height="366"/>
+  <object id="954" name="Mines/Plank1" type="decor" x="9477.88" y="1646.74" width="54" height="374"/>
+  <object id="955" name="Mines/Plank2" type="decor" x="9836.03" y="1646.86" width="51" height="374"/>
+  <object id="956" name="Mines/Plank5" type="decor" x="9477.53" y="1816.86" width="414" height="38"/>
+  <object id="957" name="Mines/Plank6" type="decor" x="9208.53" y="1774.86" width="321" height="38"/>
+  <object id="958" name="Mines/Plank8" type="decor" x="9206.36" y="1872.19" width="173" height="38"/>
+  <object id="959" name="Mines/Plank9" type="decor" x="9381.03" y="1872.19" width="110" height="38"/>
+  <object id="961" name="Mines/PlankConnector2" type="decor" x="9479.86" y="1818.53" width="164" height="183"/>
+  <object id="963" name="Mines/PlankConnector5" type="decor" x="9207.86" y="1767.86" width="50" height="54"/>
+  <object id="964" name="Mines/PlankConnector6" type="decor" x="9477.86" y="1768.86" width="54" height="50"/>
+  <object id="965" name="Mines/Plank4" type="decor" x="9485.2" y="1724.13" width="496" height="38"/>
+  <object id="966" name="Mines/PlankConnector1" type="decor" x="9609.2" y="1730.86" width="148" height="124"/>
+  <object id="967" name="Mines/Plank11" type="decor" x="10065.5" y="1872.8" width="93" height="38"/>
+  <object id="968" name="Mines/Plank11" type="decor" x="9333.87" y="1871.63" width="93" height="38"/>
+  <object id="970" name="Mines/Plank1" type="decor" x="8023.67" y="1965" width="54" height="374"/>
+  <object id="971" name="Mines/Plank2" type="decor" x="8385.17" y="1969" width="51" height="374"/>
+  <object id="972" name="Mines/Plank3" type="decor" x="8486.83" y="1961" width="53" height="366"/>
+  <object id="973" name="Mines/Plank1" type="decor" x="8757" y="1975.67" width="54" height="374"/>
+  <object id="974" name="Mines/Plank2" type="decor" x="9115.83" y="1967.67" width="51" height="374"/>
+  <object id="975" name="Mines/Plank3" type="decor" x="9208.17" y="1969" width="53" height="366"/>
+  <object id="976" name="Mines/Plank1" type="decor" x="9479.67" y="1971.67" width="54" height="374"/>
+  <object id="977" name="Mines/Plank2" type="decor" x="9838.5" y="1970.33" width="51" height="374"/>
+  <object id="978" name="Mines/Plank1" type="decor" x="10211.7" y="1974.33" width="54" height="374"/>
+  <object id="979" name="Mines/Plank3" type="decor" x="9938.83" y="1971.67" width="53" height="366"/>
+  <object id="981" name="Mines/Plank5" type="decor" x="8752.05" y="1956.83" width="414" height="38"/>
+  <object id="982" name="Mines/Plank5" type="decor" x="8020.38" y="1956.56" width="414" height="38"/>
+  <object id="983" name="Mines/Plank5" type="decor" x="9473.86" y="1958.86" width="414" height="38"/>
+  <object id="985" name="Mines/PlankConnector2" type="decor" x="8758.05" y="1816.5" width="164" height="183"/>
+  <object id="1751" name="Mines/Rock2" type="decor" x="3405.88" y="1558.64" width="114" height="86"/>
+  <object id="1752" name="Mines/Rock3" type="decor" x="3263.38" y="1541.14" width="142" height="104"/>
+  <object id="1753" name="Mines/Rock4" type="decor" x="3298.05" y="1421.47" width="223" height="133"/>
+  <object id="1754" name="Mines/Rock2" type="decor" x="3243.55" y="1509.64" width="114" height="86"/>
+  <object id="1755" name="Mines/Rock3" type="decor" x="3059.04" y="1543.14" width="142" height="104"/>
+  <object id="1756" name="Mines/Rock4" type="decor" x="3153.04" y="1379.14" width="223" height="133"/>
+  <object id="1757" name="Mines/Rock2" type="decor" x="3456.05" y="1438.81" width="114" height="86" rotation="-15"/>
+  <object id="1758" name="Mines/Rock3" type="decor" x="3370.88" y="1419.97" width="142" height="104"/>
+  <object id="1759" name="Mines/Rock4" type="decor" x="3376.21" y="1510.97" width="223" height="133"/>
+  <object id="1760" name="Mines/Rock2" type="decor" x="3351.05" y="1388.47" width="114" height="86"/>
+  <object id="1761" name="Mines/Rock3" type="decor" x="3208.54" y="1370.97" width="142" height="104"/>
+  <object id="1762" name="Mines/Rock4" type="decor" x="3260.55" y="1257.97" width="223" height="133"/>
+  <object id="1763" name="Mines/Rock2" type="decor" x="3202.29" y="1388.73" width="114" height="86"/>
+  <object id="1765" name="Mines/Rock4" type="decor" x="3113.79" y="1300.23" width="223" height="133"/>
+  <object id="1769" name="Mines/Rock2" type="decor" x="3309.8" y="1267.55" width="114" height="86"/>
+  <object id="1770" name="Mines/Rock3" type="decor" x="3167.29" y="1250.05" width="142" height="104"/>
+  <object id="1771" name="Mines/Rock4" type="decor" x="3233.96" y="1226.39" width="223" height="133" rotation="-15"/>
+  <object id="1772" name="Mines/Rock2" type="decor" x="3147.46" y="1218.55" width="114" height="86"/>
+  <object id="1775" name="Mines/Rock2" type="decor" x="3144.29" y="1560.73" width="114" height="86"/>
+  <object id="1781" name="Mines/Rock2" type="decor" x="3251.8" y="1439.55" width="114" height="86"/>
+  <object id="1782" name="Mines/Rock3" type="decor" x="3089.29" y="1472.05" width="142" height="104"/>
+  <object id="1783" name="Mines/Rock4" type="decor" x="3161.29" y="1309.05" width="223" height="133" rotation="-15"/>
+  <object id="1784" name="Mines/Rock2" type="decor" x="3107.46" y="1435.55" width="114" height="86"/>
+  <object id="1787" name="Mines/Rock4" type="decor" x="3249.71" y="1089.81" width="223" height="133"/>
+  <object id="1788" name="Mines/Rock2" type="decor" x="3259.63" y="1192.14" width="114" height="86"/>
+  <object id="1789" name="Mines/Rock3" type="decor" x="3163.13" y="1168.64" width="142" height="104"/>
+  <object id="1790" name="Mines/Rock4" type="decor" x="3209.13" y="1037.64" width="223" height="133"/>
+  <object id="1792" name="Mines/Rock2" type="decor" x="3309.8" y="1072.31" width="114" height="86" rotation="-15"/>
+  <object id="1793" name="Mines/Rock3" type="decor" x="3302.63" y="1057.47" width="142" height="104"/>
+  <object id="1794" name="Mines/Rock4" type="decor" x="3227.96" y="1162.47" width="223" height="133"/>
+  <object id="1795" name="Mines/Rock2" type="decor" x="3282.8" y="1025.97" width="114" height="86"/>
+  <object id="1800" name="Mines/Rock2" type="decor" x="3355.55" y="1342.64" width="114" height="86" rotation="-15"/>
+  <object id="1801" name="Mines/Rock3" type="decor" x="3583.67" y="1363.23" width="142" height="104"/>
+  <object id="1802" name="Mines/Rock2" type="decor" x="3542.5" y="1331.73" width="114" height="86"/>
+  <object id="1803" name="Mines/Rock3" type="decor" x="3377.33" y="1407.56" width="142" height="104"/>
+  <object id="1804" name="Mines/Rock4" type="decor" x="3398.67" y="1298.56" width="223" height="133" rotation="15"/>
+  <object id="1805" name="Mines/Rock3" type="decor" x="3442.17" y="1243.05" width="142" height="104" rotation="15"/>
+  <object id="1806" name="Mines/Rock4" type="decor" x="3326.17" y="1200.72" width="223" height="133" rotation="7"/>
+  <object id="1807" name="Mines/Rock3" type="decor" x="3504.33" y="1535.23" width="142" height="104"/>
+  <object id="1808" name="Mines/Rock4" type="decor" x="3556.33" y="1422.23" width="223" height="133"/>
+  <object id="1809" name="Mines/Rock2" type="decor" x="3484.5" y="1503.73" width="114" height="86"/>
+  <object id="1810" name="Mines/Rock3" type="decor" x="3415.33" y="1520.9" width="142" height="104"/>
+  <object id="1811" name="Mines/Rock4" type="decor" x="3324.67" y="1505.23" width="223" height="133"/>
+  <object id="1812" name="Mines/Rock3" type="decor" x="3429.5" y="1411.72" width="142" height="104" rotation="15"/>
+  <object id="1813" name="Mines/Rock4" type="decor" x="3501.5" y="1252.05" width="223" height="133"/>
+  <object id="1814" name="Mines/Rock4" type="decor" x="3422.67" y="1127.97" width="223" height="133"/>
+  <object id="1815" name="Mines/Rock3" type="decor" x="3491.33" y="1139.18" width="142" height="104" rotation="15"/>
+  <object id="1816" name="Mines/Rock4" type="decor" x="3375.33" y="1096.85" width="223" height="133" rotation="7"/>
+  <object id="1817" name="Mines/Rock4" type="decor" x="3470.67" y="1162.18" width="223" height="133"/>
+  <object id="1818" name="Mines/Rock4" type="decor" x="3429.17" y="1014.77" width="223" height="133"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="852" name="mines" type="terrain" x="-1766.45" y="1647.61" width="5206.08" height="948"/>
-  <object id="1623" name="mines" type="terrain" x="-267.025" y="-105.394" width="6225.08" height="1116"/>
+  <object id="852" name="mines" type="terrain" x="-93.4803" y="1659.73" width="8147.17" height="948"/>
+  <object id="1623" name="mines" type="terrain" x="-132.964" y="-105.394" width="10699" height="1116"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="858" name="cart-stop" type="object" x="2382.64" y="1481.02" width="188" height="169"/>
-  <object id="863" name="Mines/SupportMedium" type="decor" x="3152.32" y="1013.64" width="127" height="634"/>
+  <object id="858" name="cart-stop" type="object" x="6990.64" y="1481.02" width="188" height="169"/>
+  <object id="863" name="Mines/SupportMedium" type="decor" x="7760.32" y="1013.64" width="127" height="634"/>
+  <object id="1694" name="Mines/TigerDoor" type="decor" x="4738" y="1139" width="688" height="528"/>
+  <object id="1697" name="Mines/Rock2" type="decor" x="3736" y="1561" width="114" height="86"/>
+  <object id="1698" name="Mines/Rock3" type="decor" x="3593.5" y="1543.5" width="142" height="104"/>
+  <object id="1699" name="Mines/Rock4" type="decor" x="3628.17" y="1423.83" width="223" height="133"/>
+  <object id="1701" name="Mines/Rock2" type="decor" x="3573.67" y="1512" width="114" height="86"/>
+  <object id="1702" name="Mines/Rock3" type="decor" x="3431.17" y="1494.5" width="142" height="104"/>
+  <object id="1703" name="Mines/Rock4" type="decor" x="3483.17" y="1381.5" width="223" height="133"/>
+  <object id="1704" name="Mines/Rock2" type="decor" x="3742.17" y="1456.17" width="114" height="86" rotation="-15"/>
+  <object id="1705" name="Mines/Rock3" type="decor" x="3701" y="1422.33" width="142" height="104"/>
+  <object id="1706" name="Mines/Rock4" type="decor" x="3706.33" y="1513.33" width="223" height="133"/>
+  <object id="1708" name="Mines/Rock2" type="decor" x="3681.17" y="1390.83" width="114" height="86"/>
+  <object id="1709" name="Mines/Rock3" type="decor" x="3538.67" y="1373.33" width="142" height="104"/>
+  <object id="1710" name="Mines/Rock4" type="decor" x="3590.67" y="1260.33" width="223" height="133"/>
+  <object id="1711" name="Mines/Rock2" type="decor" x="3532.42" y="1391.09" width="114" height="86"/>
+  <object id="1712" name="Mines/Rock3" type="decor" x="3389.92" y="1373.59" width="142" height="104"/>
+  <object id="1713" name="Mines/Rock4" type="decor" x="3441.92" y="1260.59" width="223" height="133"/>
+  <object id="1714" name="Mines/Rock2" type="decor" x="3348.75" y="1342.09" width="114" height="86"/>
+  <object id="1715" name="Mines/Rock3" type="decor" x="3183.58" y="1417.92" width="142" height="104"/>
+  <object id="1716" name="Mines/Rock4" type="decor" x="3204.92" y="1308.92" width="223" height="133" rotation="15"/>
+  <object id="1717" name="Mines/Rock2" type="decor" x="3639.92" y="1269.91" width="114" height="86"/>
+  <object id="1718" name="Mines/Rock3" type="decor" x="3497.42" y="1252.41" width="142" height="104"/>
+  <object id="1719" name="Mines/Rock4" type="decor" x="3564.08" y="1228.75" width="223" height="133" rotation="-15"/>
+  <object id="1721" name="Mines/Rock2" type="decor" x="3477.59" y="1220.91" width="114" height="86"/>
+  <object id="1722" name="Mines/Rock3" type="decor" x="3328.42" y="1239.41" width="142" height="104" rotation="15"/>
+  <object id="1723" name="Mines/Rock4" type="decor" x="3212.42" y="1197.08" width="223" height="133" rotation="7"/>
+  <object id="1724" name="Mines/Rock2" type="decor" x="3474.42" y="1563.09" width="114" height="86"/>
+  <object id="1725" name="Mines/Rock3" type="decor" x="3310.58" y="1545.59" width="142" height="104"/>
+  <object id="1726" name="Mines/Rock4" type="decor" x="3362.58" y="1432.59" width="223" height="133" rotation="-4"/>
+  <object id="1727" name="Mines/Rock2" type="decor" x="3290.75" y="1514.09" width="114" height="86"/>
+  <object id="1728" name="Mines/Rock3" type="decor" x="3221.58" y="1531.26" width="142" height="104"/>
+  <object id="1729" name="Mines/Rock4" type="decor" x="3130.92" y="1515.59" width="223" height="133"/>
+  <object id="1730" name="Mines/Rock2" type="decor" x="3581.92" y="1441.91" width="114" height="86"/>
+  <object id="1731" name="Mines/Rock3" type="decor" x="3439.42" y="1424.41" width="142" height="104"/>
+  <object id="1732" name="Mines/Rock4" type="decor" x="3491.42" y="1311.41" width="223" height="133" rotation="-15"/>
+  <object id="1734" name="Mines/Rock2" type="decor" x="3419.59" y="1392.91" width="114" height="86"/>
+  <object id="1735" name="Mines/Rock3" type="decor" x="3235.75" y="1422.08" width="142" height="104" rotation="15"/>
+  <object id="1736" name="Mines/Rock4" type="decor" x="3307.75" y="1262.41" width="223" height="133"/>
+  <object id="1737" name="Mines/Rock4" type="decor" x="3501.83" y="1088.17" width="223" height="133"/>
+  <object id="1738" name="Mines/Rock2" type="decor" x="3589.75" y="1194.5" width="114" height="86"/>
+  <object id="1739" name="Mines/Rock3" type="decor" x="3447.25" y="1177" width="142" height="104" rotation="7"/>
+  <object id="1740" name="Mines/Rock4" type="decor" x="3407.25" y="1048" width="223" height="133"/>
+  <object id="1741" name="Mines/Rock4" type="decor" x="3308.92" y="1124.33" width="223" height="133"/>
+  <object id="1742" name="Mines/Rock2" type="decor" x="3617.92" y="1111.67" width="114" height="86" rotation="-15"/>
+  <object id="1743" name="Mines/Rock3" type="decor" x="3554.75" y="1055.83" width="142" height="104"/>
+  <object id="1744" name="Mines/Rock4" type="decor" x="3560.08" y="1146.83" width="223" height="133"/>
+  <object id="1745" name="Mines/Rock2" type="decor" x="3534.92" y="1024.33" width="114" height="86"/>
+  <object id="1746" name="Mines/Rock3" type="decor" x="3377.58" y="1135.54" width="142" height="104" rotation="15"/>
+  <object id="1747" name="Mines/Rock4" type="decor" x="3261.58" y="1093.21" width="223" height="133" rotation="7"/>
+  <object id="1748" name="Mines/Rock4" type="decor" x="3356.92" y="1158.54" width="223" height="133"/>
+  <object id="1749" name="Mines/Rock4" type="decor" x="3315.42" y="1011.13" width="223" height="133"/>
+  <object id="1750" name="Mines/Rock2" type="decor" x="3685.67" y="1345" width="114" height="86" rotation="-15"/>
+  <object id="1819" name="Mines/Rock2" type="decor" x="2879.69" y="1562.28" width="114" height="86"/>
+  <object id="1820" name="Mines/Rock3" type="decor" x="2737.19" y="1544.78" width="142" height="104"/>
+  <object id="1821" name="Mines/Rock4" type="decor" x="2771.86" y="1425.11" width="223" height="133" rotation="2"/>
+  <object id="1822" name="Mines/Rock2" type="decor" x="2717.36" y="1513.28" width="114" height="86"/>
+  <object id="1823" name="Mines/Rock3" type="decor" x="2532.86" y="1546.78" width="142" height="104"/>
+  <object id="1824" name="Mines/Rock4" type="decor" x="2626.86" y="1382.78" width="223" height="133" rotation="3"/>
+  <object id="1825" name="Mines/Rock2" type="decor" x="2929.86" y="1442.45" width="114" height="86" rotation="-15"/>
+  <object id="1826" name="Mines/Rock3" type="decor" x="2844.69" y="1423.61" width="142" height="104"/>
+  <object id="1827" name="Mines/Rock4" type="decor" x="2850.02" y="1514.61" width="223" height="133"/>
+  <object id="1828" name="Mines/Rock2" type="decor" x="2824.86" y="1392.11" width="114" height="86"/>
+  <object id="1829" name="Mines/Rock3" type="decor" x="2682.36" y="1374.61" width="142" height="104"/>
+  <object id="1830" name="Mines/Rock4" type="decor" x="2734.36" y="1261.61" width="223" height="133"/>
+  <object id="1831" name="Mines/Rock2" type="decor" x="2676.11" y="1392.37" width="114" height="86"/>
+  <object id="1832" name="Mines/Rock4" type="decor" x="2587.61" y="1303.87" width="223" height="133"/>
+  <object id="1833" name="Mines/Rock2" type="decor" x="2783.61" y="1271.19" width="114" height="86"/>
+  <object id="1834" name="Mines/Rock3" type="decor" x="2641.11" y="1253.69" width="142" height="104"/>
+  <object id="1835" name="Mines/Rock4" type="decor" x="2707.77" y="1230.03" width="223" height="133" rotation="-15"/>
+  <object id="1836" name="Mines/Rock2" type="decor" x="2621.28" y="1222.19" width="114" height="86"/>
+  <object id="1837" name="Mines/Rock2" type="decor" x="2618.11" y="1564.37" width="114" height="86"/>
+  <object id="1838" name="Mines/Rock2" type="decor" x="2725.61" y="1443.19" width="114" height="86"/>
+  <object id="1839" name="Mines/Rock3" type="decor" x="2563.11" y="1475.69" width="142" height="104"/>
+  <object id="1840" name="Mines/Rock4" type="decor" x="2635.11" y="1312.69" width="223" height="133" rotation="-15"/>
+  <object id="1841" name="Mines/Rock2" type="decor" x="2581.28" y="1439.19" width="114" height="86"/>
+  <object id="1842" name="Mines/Rock4" type="decor" x="2723.52" y="1093.45" width="223" height="133" rotation="4"/>
+  <object id="1843" name="Mines/Rock2" type="decor" x="2733.44" y="1195.78" width="114" height="86"/>
+  <object id="1844" name="Mines/Rock3" type="decor" x="2636.94" y="1172.28" width="142" height="104"/>
+  <object id="1845" name="Mines/Rock4" type="decor" x="2682.94" y="1041.28" width="223" height="133"/>
+  <object id="1846" name="Mines/Rock2" type="decor" x="2783.61" y="1075.95" width="114" height="86" rotation="-15"/>
+  <object id="1847" name="Mines/Rock3" type="decor" x="2776.44" y="1061.11" width="142" height="104"/>
+  <object id="1848" name="Mines/Rock4" type="decor" x="2701.77" y="1166.11" width="223" height="133"/>
+  <object id="1849" name="Mines/Rock2" type="decor" x="2756.61" y="1029.61" width="114" height="86"/>
+  <object id="1850" name="Mines/Rock2" type="decor" x="2829.36" y="1346.28" width="114" height="86" rotation="-15"/>
+  <object id="1851" name="Mines/Rock3" type="decor" x="3057.48" y="1366.87" width="142" height="104"/>
+  <object id="1853" name="Mines/Rock3" type="decor" x="2851.14" y="1411.2" width="142" height="104"/>
+  <object id="1854" name="Mines/Rock4" type="decor" x="2872.48" y="1302.2" width="223" height="133" rotation="15"/>
+  <object id="1855" name="Mines/Rock3" type="decor" x="2915.98" y="1246.69" width="142" height="104" rotation="15"/>
+  <object id="1856" name="Mines/Rock4" type="decor" x="2799.98" y="1204.36" width="223" height="133" rotation="7"/>
+  <object id="1857" name="Mines/Rock3" type="decor" x="2978.14" y="1538.87" width="142" height="104"/>
+  <object id="1858" name="Mines/Rock4" type="decor" x="3030.14" y="1425.87" width="223" height="133"/>
+  <object id="1859" name="Mines/Rock2" type="decor" x="2958.32" y="1507.37" width="114" height="86"/>
+  <object id="1860" name="Mines/Rock3" type="decor" x="2889.15" y="1524.54" width="142" height="104"/>
+  <object id="1861" name="Mines/Rock4" type="decor" x="2798.48" y="1508.87" width="223" height="133"/>
+  <object id="1862" name="Mines/Rock3" type="decor" x="2903.31" y="1415.36" width="142" height="104" rotation="15"/>
+  <object id="1863" name="Mines/Rock4" type="decor" x="2975.32" y="1255.69" width="223" height="133"/>
+  <object id="1864" name="Mines/Rock4" type="decor" x="2896.48" y="1131.61" width="223" height="133"/>
+  <object id="1865" name="Mines/Rock3" type="decor" x="2965.14" y="1142.82" width="142" height="104" rotation="15"/>
+  <object id="1866" name="Mines/Rock4" type="decor" x="2849.15" y="1100.49" width="223" height="133" rotation="7"/>
+  <object id="1867" name="Mines/Rock4" type="decor" x="2944.48" y="1165.82" width="223" height="133"/>
+  <object id="1868" name="Mines/Rock4" type="decor" x="2902.98" y="1018.41" width="223" height="133" rotation="1"/>
+  <object id="1869" name="Mines/Rock2" type="decor" x="3209.81" y="1564.64" width="114" height="86"/>
+  <object id="1870" name="Mines/Rock3" type="decor" x="3067.31" y="1547.14" width="142" height="104"/>
+  <object id="1871" name="Mines/Rock4" type="decor" x="3101.98" y="1427.47" width="223" height="133"/>
+  <object id="1872" name="Mines/Rock2" type="decor" x="3047.48" y="1515.64" width="114" height="86"/>
+  <object id="1873" name="Mines/Rock3" type="decor" x="2904.98" y="1498.14" width="142" height="104"/>
+  <object id="1874" name="Mines/Rock4" type="decor" x="2956.98" y="1385.14" width="223" height="133"/>
+  <object id="1875" name="Mines/Rock2" type="decor" x="3259.98" y="1444.81" width="114" height="86" rotation="-15"/>
+  <object id="1876" name="Mines/Rock3" type="decor" x="3174.81" y="1425.97" width="142" height="104"/>
+  <object id="1877" name="Mines/Rock4" type="decor" x="3180.14" y="1516.97" width="223" height="133"/>
+  <object id="1878" name="Mines/Rock2" type="decor" x="3154.98" y="1394.47" width="114" height="86"/>
+  <object id="1879" name="Mines/Rock3" type="decor" x="3012.48" y="1376.97" width="142" height="104"/>
+  <object id="1880" name="Mines/Rock4" type="decor" x="3064.48" y="1263.97" width="223" height="133"/>
+  <object id="1881" name="Mines/Rock2" type="decor" x="3006.23" y="1394.73" width="114" height="86"/>
+  <object id="1882" name="Mines/Rock3" type="decor" x="2863.73" y="1377.23" width="142" height="104"/>
+  <object id="1883" name="Mines/Rock4" type="decor" x="2915.73" y="1264.23" width="223" height="133"/>
+  <object id="1884" name="Mines/Rock2" type="decor" x="2822.57" y="1345.73" width="114" height="86"/>
+  <object id="1885" name="Mines/Rock3" type="decor" x="2657.4" y="1421.56" width="142" height="104"/>
+  <object id="1886" name="Mines/Rock4" type="decor" x="2678.73" y="1312.56" width="223" height="133" rotation="15"/>
+  <object id="1887" name="Mines/Rock2" type="decor" x="3113.73" y="1273.55" width="114" height="86"/>
+  <object id="1888" name="Mines/Rock3" type="decor" x="2971.23" y="1256.05" width="142" height="104"/>
+  <object id="1889" name="Mines/Rock4" type="decor" x="3037.89" y="1232.39" width="223" height="133" rotation="-15"/>
+  <object id="1890" name="Mines/Rock2" type="decor" x="2951.4" y="1224.55" width="114" height="86"/>
+  <object id="1891" name="Mines/Rock3" type="decor" x="2802.23" y="1243.05" width="142" height="104" rotation="15"/>
+  <object id="1892" name="Mines/Rock4" type="decor" x="2686.23" y="1200.72" width="223" height="133" rotation="7"/>
+  <object id="1893" name="Mines/Rock2" type="decor" x="2948.23" y="1566.73" width="114" height="86"/>
+  <object id="1894" name="Mines/Rock3" type="decor" x="2784.4" y="1549.23" width="142" height="104"/>
+  <object id="1895" name="Mines/Rock4" type="decor" x="2836.4" y="1436.23" width="223" height="133" rotation="2"/>
+  <object id="1896" name="Mines/Rock2" type="decor" x="2764.57" y="1517.73" width="114" height="86"/>
+  <object id="1897" name="Mines/Rock3" type="decor" x="2695.4" y="1534.9" width="142" height="104"/>
+  <object id="1898" name="Mines/Rock4" type="decor" x="2604.73" y="1519.23" width="223" height="133"/>
+  <object id="1899" name="Mines/Rock2" type="decor" x="3055.73" y="1445.55" width="114" height="86" rotation="4"/>
+  <object id="1900" name="Mines/Rock3" type="decor" x="2913.23" y="1428.05" width="142" height="104"/>
+  <object id="1901" name="Mines/Rock4" type="decor" x="2965.23" y="1315.05" width="223" height="133" rotation="-15"/>
+  <object id="1902" name="Mines/Rock2" type="decor" x="2893.4" y="1396.55" width="114" height="86"/>
+  <object id="1903" name="Mines/Rock3" type="decor" x="2709.56" y="1425.72" width="142" height="104" rotation="15"/>
+  <object id="1904" name="Mines/Rock4" type="decor" x="2781.57" y="1266.05" width="223" height="133"/>
+  <object id="1905" name="Mines/Rock4" type="decor" x="2975.65" y="1091.81" width="223" height="133"/>
+  <object id="1906" name="Mines/Rock2" type="decor" x="3063.56" y="1198.14" width="114" height="86"/>
+  <object id="1907" name="Mines/Rock3" type="decor" x="2921.07" y="1180.64" width="142" height="104" rotation="7"/>
+  <object id="1908" name="Mines/Rock4" type="decor" x="2881.07" y="1051.64" width="223" height="133"/>
+  <object id="1909" name="Mines/Rock4" type="decor" x="2782.73" y="1127.97" width="223" height="133"/>
+  <object id="1910" name="Mines/Rock2" type="decor" x="3113.73" y="1078.31" width="114" height="86" rotation="-15"/>
+  <object id="1911" name="Mines/Rock3" type="decor" x="3028.57" y="1059.47" width="142" height="104"/>
+  <object id="1912" name="Mines/Rock4" type="decor" x="3033.89" y="1150.47" width="223" height="133"/>
+  <object id="1913" name="Mines/Rock2" type="decor" x="3008.74" y="1027.97" width="114" height="86" rotation="7"/>
+  <object id="1914" name="Mines/Rock3" type="decor" x="2851.39" y="1139.18" width="142" height="104" rotation="15"/>
+  <object id="1915" name="Mines/Rock4" type="decor" x="2735.4" y="1096.85" width="223" height="133" rotation="7"/>
+  <object id="1916" name="Mines/Rock4" type="decor" x="2830.73" y="1162.18" width="223" height="133"/>
+  <object id="1917" name="Mines/Rock4" type="decor" x="2789.23" y="1014.77" width="223" height="133"/>
+  <object id="1918" name="Mines/Rock2" type="decor" x="3159.48" y="1348.64" width="114" height="86" rotation="-15"/>
+  <object id="1919" name="Mines/Rock4" type="decor" x="3180.91" y="1193.71" width="223" height="133" rotation="-15"/>
+  <object id="1920" name="Mines/Rock4" type="decor" x="3118.67" y="1053.13" width="223" height="133"/>
+  <object id="1921" name="Mines/Rock4" type="decor" x="3024.09" y="1012.96" width="223" height="133"/>
+  <object id="1922" name="Mines/Rock2" type="decor" x="3256.75" y="1039.63" width="114" height="86" rotation="-15"/>
+  <object id="1923" name="Mines/Rock3" type="decor" x="3171.58" y="1020.79" width="142" height="104"/>
+  <object id="1924" name="Mines/Rock4" type="decor" x="3176.91" y="1111.79" width="223" height="133"/>
+  <object id="1946" name="Mines/Rock4" type="decor" x="2591.79" y="1275.71" width="223" height="133"/>
+  <object id="1949" name="Mines/Rock4" type="decor" x="2583.21" y="1224.49" width="223" height="133" rotation="-15"/>
+  <object id="1951" name="Mines/Rock2" type="decor" x="2608.88" y="1190.24" width="114" height="86"/>
+  <object id="1952" name="Mines/Rock2" type="decor" x="2659.05" y="1070.41" width="114" height="86" rotation="-15"/>
+  <object id="1954" name="Mines/Rock4" type="decor" x="2619.21" y="1148.57" width="223" height="133"/>
+  <object id="1955" name="Mines/Rock2" type="decor" x="2715.05" y="1056.07" width="114" height="86" rotation="15"/>
+  <object id="1958" name="Mines/Rock4" type="decor" x="2563.17" y="1388.83" width="223" height="133"/>
+  <object id="1960" name="Mines/CaveDoor4" type="decor" x="283.924" y="1275.08" width="333" height="385"/>
+  <object id="1961" name="portal" type="object" x="332.363" y="1401.64" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Town_Main"/>
+    <property name="transition" value="passage-exit"/>
+   </properties>
+  </object>
+  <object id="1962" name="spawn" type="object" x="393.696" y="1528.64" width="128" height="128">
+   <properties>
+    <property name="transition" value="passage-exit"/>
+   </properties>
+  </object>
+  <object id="1964" name="Mines/TigerDoor" type="decor" x="1505.33" y="1145.67" width="688" height="528"/>
  </objectgroup>
  <objectgroup id="81" name="rails">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="854" name="rails" type="terrain" x="2634.13" y="1645.97" width="3021.44" height="92">
+  <object id="854" name="rails" type="terrain" x="7242.13" y="1645.97" width="3021.44" height="92">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -315,26 +540,38 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="804" name="edge-portal" type="object" x="5430.47" y="1159.6" width="199.918" height="488.002">
+  <object id="804" name="edge-portal" type="object" x="10038.5" y="1159.6" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="DataMines/Zone_3_1"/>
     <property name="transition" value="cart-right"/>
    </properties>
   </object>
-  <object id="859" name="kill" type="collision" x="3168.55" y="1865.61" width="2622.05" height="603.879"/>
-  <object id="861" name="mine-cart" type="object" x="2776.96" y="1460.94" width="240" height="184">
+  <object id="859" name="kill" type="collision" x="7776.55" y="1865.61" width="2622.05" height="603.879"/>
+  <object id="861" name="mine-cart" type="object" x="7384.96" y="1460.94" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
     <property name="direction" value="right"/>
     <property name="tag" value="cart-A"/>
    </properties>
   </object>
-  <object id="991" name="life-stone" type="object" x="2122.64" y="1223.77" width="146" height="423"/>
-  <object id="1689" name="portal" type="object" x="332" y="1396" width="256" height="256">
+  <object id="991" name="life-stone" type="object" x="6730.64" y="1223.77" width="146" height="423"/>
+  <object id="1689" name="portal" type="object" x="4940" y="1396" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="passage-exit"/>
+    <property name="map" value="DataMines/Zone_3_3"/>
+    <property name="transition" value="tiger-right"/>
+   </properties>
+  </object>
+  <object id="1957" name="solid" type="collision" x="4002.55" y="1627.64">
+   <polygon points="-112,22 -303.879,-627.273 -465.455,-626.303 -306.788,18.7879"/>
+  </object>
+  <object id="1963" name="solid" type="collision" x="2406" y="1606">
+   <polygon points="310,54 440.121,-587.273 278.545,-586.303 115.212,50.7879"/>
+  </object>
+  <object id="1965" name="portal" type="object" x="1707.33" y="1402.67" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_3_3"/>
+    <property name="transition" value="tiger-left"/>
    </properties>
   </object>
  </objectgroup>
@@ -348,7 +585,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1686" name="skeletal-necromancer" type="entity" x="1372.42" y="1519.7" width="128" height="128">
+  <object id="1686" name="skeletal-necromancer" type="entity" x="5980.42" y="1519.7" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -357,7 +594,7 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="1687" name="skeletal-necromancer" type="entity" x="1379.58" y="1130.96" width="128" height="128">
+  <object id="1687" name="skeletal-necromancer" type="entity" x="5987.58" y="1130.96" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
@@ -371,21 +608,26 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="805" name="spawn-cart" type="object" x="5113.15" y="1518.16" width="128" height="128">
+  <object id="805" name="spawn-cart" type="object" x="9721.15" y="1518.16" width="128" height="128">
    <properties>
     <property name="direction" value="left"/>
     <property name="tag" value="cart-A"/>
     <property name="transition" value="cart-left"/>
    </properties>
   </object>
-  <object id="864" name="squally" type="entity" x="2604" y="1517.88" width="128" height="128">
+  <object id="864" name="squally" type="entity" x="7212" y="1517.88" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="1690" name="spawn" type="object" x="393.333" y="1523" width="128" height="128">
+  <object id="1690" name="spawn" type="object" x="5001.33" y="1526.03" width="128" height="128">
    <properties>
-    <property name="transition" value="passage-exit"/>
+    <property name="transition" value="tiger-right"/>
+   </properties>
+  </object>
+  <object id="1966" name="spawn" type="object" x="1768.67" y="1532.7" width="128" height="128">
+   <properties>
+    <property name="transition" value="tiger-left"/>
    </properties>
   </object>
  </objectgroup>

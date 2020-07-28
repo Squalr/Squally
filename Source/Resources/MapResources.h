@@ -30,6 +30,8 @@ namespace MapResources
 	extern const std::string DataMines_Zone_3_0;
 	extern const std::string DataMines_Zone_3_1;
 	extern const std::string DataMines_Zone_3_2;
+	extern const std::string DataMines_Zone_3_3;
+	extern const std::string DataMines_Zone_4_0;
 	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
@@ -51,6 +53,7 @@ namespace MapResources
 	extern const std::string EndianForest_Home_Ara;
 	extern const std::string EndianForest_Home_Guano;
 	extern const std::string EndianForest_Home_Hut;
+	extern const std::string EndianForest_Home_Troll;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
 	extern const std::string EndianForest_Mages_Gauntlet_3;

@@ -125,7 +125,7 @@
    </properties>
   </object>
   <object id="1019" name="solid" type="collision" x="5659.82" y="-395.79" width="97.0303" height="2975.58"/>
-  <object id="1020" name="solid" type="collision" x="2014.48" y="-18.5779" width="97.0303" height="2654.37"/>
+  <object id="1020" name="solid" type="collision" x="2171.81" y="-14.5779" width="97.0303" height="2654.37"/>
  </objectgroup>
  <objectgroup id="92" name="player_layer -12">
   <properties>
@@ -726,7 +726,7 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="887" name="spawn" type="object" x="451.335" y="5790.59" width="128" height="128">
+  <object id="887" name="spawn" type="object" x="173.335" y="5750.59" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>

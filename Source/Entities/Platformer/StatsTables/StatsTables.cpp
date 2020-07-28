@@ -158,7 +158,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Zeus::MapKey] = StatsIncrements(Stats(16, 8, 32));
 
 	/***********
-		SSC
+		DM
 	************/
 
 	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(16, 8, 32));
@@ -166,7 +166,6 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[EarthGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[ForestGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Gorilla::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[LightningGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Shaman::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
@@ -333,6 +332,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[EvilEye::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Gargoyle::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[LightningGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Shade::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[VoidArcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(16, 8, 32));

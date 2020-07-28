@@ -21954,21 +21954,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_DataMines_ForestGolem() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_DataMines_LightningGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DataMines_LightningGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DataMines_LightningGolem();
-		virtual ~Platformer_Entities_Names_Enemies_DataMines_LightningGolem() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_DataMines_Rhinoman : public LocalizedString
 	{
 	public:
@@ -22762,6 +22747,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_VoidStar_Gargoyle();
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_Gargoyle() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_VoidStar_LightningGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_VoidStar_LightningGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_VoidStar_LightningGolem();
+		virtual ~Platformer_Entities_Names_Enemies_VoidStar_LightningGolem() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_VoidStar_Shade : public LocalizedString

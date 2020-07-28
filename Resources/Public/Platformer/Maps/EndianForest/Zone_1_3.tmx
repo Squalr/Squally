@@ -311,7 +311,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="787" name="spawn" type="object" x="4743.62" y="1542.46" width="128" height="128">
+  <object id="787" name="spawn" type="object" x="5044.95" y="1542.46" width="128" height="128">
    <properties>
     <property name="transition" value="town"/>
    </properties>
