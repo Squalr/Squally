@@ -53,14 +53,13 @@ protected:
 	Hud* confirmationMenuHud;
 	IngameMenu* ingameMenu;
 	PauseMenu* pauseMenu;
+	cocos2d::Node* mapNode;
 	GameMap* map;
 
 	bool canPause;
 	bool allowHackerMode;
 	std::string mapResource;
 	std::vector<std::string> mapArgs;
-
-	cocos2d::Node* mapNode;
 
 private:
 	typedef GlobalScene super;

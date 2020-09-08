@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string TrailTerrain::MapKey = "trail";
+const Color4B TrailTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B TrailTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 TrailTerrain* TrailTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ TrailTerrain::TrailTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(TrailTerrain::FillColor, false, true, true)))
 {
 }
 

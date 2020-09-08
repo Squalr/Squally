@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string ArabicTerrain::MapKey = "arabic";
+const Color4B ArabicTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B ArabicTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 ArabicTerrain* ArabicTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ ArabicTerrain::ArabicTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(ArabicTerrain::FillColor, false, true, true)))
 {
 }
 

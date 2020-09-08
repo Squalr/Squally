@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string LeafTerrain::MapKey = "leaf";
+const Color4B LeafTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B LeafTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 LeafTerrain* LeafTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(LeafTerrain::FillColor, false, true, true)))
 {
 }
 

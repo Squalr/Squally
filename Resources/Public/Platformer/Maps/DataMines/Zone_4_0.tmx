@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1874">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1875">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="texture" x="-966.54" y="-1671.82" width="8749.1" height="5535.64"/>
+  <object id="837" name="mines" type="texture" x="-966.54" y="-1543.82" width="8077.1" height="5407.64"/>
  </objectgroup>
  <objectgroup id="78" name="fireflies -8">
   <properties>
@@ -221,16 +221,17 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1699" name="portal" type="object" x="4947.21" y="1396.82" width="256" height="256">
-   <properties>
-    <property name="map" value="DataMines/Zone_3_2"/>
-    <property name="transition" value="tiger-right"/>
-   </properties>
-  </object>
   <object id="1704" name="portal" type="object" x="337.21" y="1390.79" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
     <property name="transition" value="goa"/>
+   </properties>
+  </object>
+  <object id="1874" name="edge-portal" type="object" x="5432.04" y="1162" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_4_1"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -244,7 +245,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1865" name="forest-golem" type="entity" x="1152.42" y="1520.37" width="128" height="128">
+  <object id="1865" name="forest-golem" type="entity" x="2704.42" y="1520.37" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -253,52 +254,11 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="1866" name="forest-golem" type="entity" x="1159.58" y="1131.63" width="128" height="128">
+  <object id="1866" name="forest-golem" type="entity" x="2711.58" y="1131.63" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="1867" name="earth-golem" type="entity" x="1808.42" y="1518.37" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="dm-generic"/>
-   </properties>
-  </object>
-  <object id="1868" name="earth-golem" type="entity" x="1815.58" y="1129.63" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="1869" name="earth-elemental" type="entity" x="2432.42" y="1520.37" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="dm-generic"/>
-   </properties>
-  </object>
-  <object id="1870" name="earth-elemental" type="entity" x="2439.58" y="1131.63" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="1871" name="rhinoman" type="entity" x="3068" y="1528" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -315,7 +275,7 @@
   </object>
   <object id="1698" name="spawn" type="object" x="5008.55" y="1520.79" width="128" height="128">
    <properties>
-    <property name="transition" value="tiger-right"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="1705" name="spawn" type="object" x="398.545" y="1517.79" width="128" height="128">

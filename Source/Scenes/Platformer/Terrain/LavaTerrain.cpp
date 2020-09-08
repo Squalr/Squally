@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string LavaTerrain::MapKey = "lava";
+const Color4B LavaTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B LavaTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 LavaTerrain* LavaTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ LavaTerrain::LavaTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(LavaTerrain::FillColor, false, true, true)))
 {
 }
 

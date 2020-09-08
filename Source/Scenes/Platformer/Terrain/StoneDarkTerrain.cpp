@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string StoneDarkTerrain::MapKey = "stone-dark";
+const Color4B StoneDarkTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B StoneDarkTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 StoneDarkTerrain* StoneDarkTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ StoneDarkTerrain::StoneDarkTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(StoneDarkTerrain::FillColor, false, true, true)))
 {
 }
 

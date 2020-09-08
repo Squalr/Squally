@@ -47,6 +47,7 @@
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/ConfirmationHud.h"
+#include "Scenes/Platformer/Level/Huds/MiniMap/MiniMap.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -88,6 +89,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->inventoryMenu = InventoryMenu::create(this->partyMenu);
 	this->canPause = true;
 	this->awaitingConfirmationEnd = false;
+	this->miniMap = MiniMap::create();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create(
@@ -115,6 +117,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	// this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
+	this->menuHud->addChild(this->miniMap);
 	this->menuHud->addChild(this->combatFadeInNode);
 	this->menuHud->addChild(this->alchemyMenu);
 	this->menuHud->addChild(this->blacksmithingMenu);
@@ -456,6 +459,9 @@ void PlatformerMap::initializeListeners()
 bool PlatformerMap::loadMap(std::string mapResource)
 {
 	CollisionObject::UniverseId = 0;
+
+	// Best effort
+	this->miniMap->loadMap(mapResource);
 
 	if (super::loadMap(mapResource))
 	{

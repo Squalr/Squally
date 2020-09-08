@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="141" nextobjectid="1052">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1057">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -371,7 +371,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="992" name="mines" type="terrain" x="6439.8" y="2687.64" width="3349.08" height="1475.69">
+  <object id="992" name="mines" type="terrain" x="6439.8" y="2657.34" width="3349.08" height="1475.69">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -382,7 +382,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1003" name="rails" type="terrain" x="6498.8" y="2687.64" width="3224.96" height="92">
+  <object id="1003" name="rails" type="terrain" x="6498.8" y="2657.34" width="3224.96" height="92">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -423,21 +423,21 @@
     <property name="transition" value="passage-right"/>
    </properties>
   </object>
-  <object id="1002" name="solid" type="collision" x="8235.27" y="2234.93" width="217.455" height="1436.15"/>
-  <object id="1007" name="mine-cart-lootable" type="object" x="8106.97" y="2503.64" width="240" height="184">
+  <object id="1007" name="mine-cart-lootable" type="object" x="7428.18" y="2473.34" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
-    <property name="fill" value="coal"/>
-    <property name="reward-pool" value="dm-coal"/>
+    <property name="fill" value="gold"/>
+    <property name="reward-pool" value="dm-gold"/>
    </properties>
   </object>
-  <object id="1009" name="mine-cart-lootable" type="object" x="8842.97" y="2501.64" width="240" height="184">
+  <object id="1009" name="mine-cart-lootable" type="object" x="8842.97" y="2471.34" width="240" height="184">
    <properties>
     <property name="color" value="brown"/>
     <property name="fill" value="none"/>
     <property name="reward-pool" value="none"/>
    </properties>
   </object>
+  <object id="1056" name="mines" type="terrain" x="8233.34" y="1245.19" width="229.08" height="3187.69"/>
  </objectgroup>
  <objectgroup id="132" name="player_layer -6">
   <properties>
@@ -602,7 +602,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="103" name="terrain -3 fg">
+ <objectgroup id="103" name="terrain -3 fg" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -611,7 +611,7 @@
   <object id="935" name="mines" type="terrain" x="9258.3" y="1878" width="1651.38" height="3228"/>
   <object id="997" name="ship-alt" type="terrain" x="4647.27" y="3730.91" width="1770.84" height="130.18"/>
  </objectgroup>
- <objectgroup id="62" name="decor -3">
+ <objectgroup id="62" name="decor -3" visible="0" locked="1">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -827,7 +827,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="mines" type="terrain" x="-894.54" y="2522" width="5900.6" height="1956">
+  <object id="786" name="mines" type="terrain" x="-894.54" y="2522" width="5900.6" height="2560">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
    </properties>
@@ -978,6 +978,17 @@
     <property name="transition" value="mildred-top"/>
    </properties>
   </object>
+  <object id="1054" name="portal" type="object" x="6233.33" y="3705.94" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_1_3"/>
+    <property name="transition" value="down"/>
+   </properties>
+  </object>
+  <object id="1055" name="spawn" type="object" x="6294" y="3834" width="128" height="128">
+   <properties>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="68" name="water">
   <properties>
@@ -1058,5 +1069,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="141" name="objects +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1052" name="cart-lift" type="object" x="6188.24" y="4263.71" width="72" height="924.087"/>
  </objectgroup>
 </map>

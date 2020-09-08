@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string WoodTerrain::MapKey = "wood";
+const Color4B WoodTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B WoodTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 WoodTerrain* WoodTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ WoodTerrain::WoodTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(WoodTerrain::FillColor, false, true, true)))
 {
 }
 

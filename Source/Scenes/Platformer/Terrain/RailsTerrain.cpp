@@ -8,6 +8,8 @@
 using namespace cocos2d;
 
 const std::string RailsTerrain::MapKey = "rails";
+const Color4B RailsTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B RailsTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 RailsTerrain* RailsTerrain::create(ValueMap& properties)
 {
@@ -76,7 +78,7 @@ RailsTerrain::RailsTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(RailsTerrain::FillColor, false, true, true)))
 {
 }
 

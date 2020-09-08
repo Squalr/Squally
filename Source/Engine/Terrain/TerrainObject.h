@@ -17,6 +17,19 @@ class TextureObject;
 class TerrainObject : public HackableObject
 {
 public:
+	struct InfillData
+	{
+		cocos2d::Color4B infillColor;
+		bool applyInfill;
+		bool blurInfill;
+		bool insetFill;
+
+		InfillData()
+			: infillColor(cocos2d::Color4B::BLACK), applyInfill(false), blurInfill(false), insetFill(true) { }
+		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill, bool insetFill)
+			: infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill), insetFill(insetFill) { }
+	};
+
 	struct TerrainData
 	{
 		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory;
@@ -53,7 +66,9 @@ public:
 		cocos2d::Vec2 topConnectorConvexOffset;
 		cocos2d::Vec2 topConnectorConvexDeepOffset;
 		cocos2d::Vec2 bottomConnectorOffset;
-		cocos2d::Color4B infillColor;
+		InfillData infillData;
+		bool buildCollision = true;
+		bool optimizationHideOffscreen = true;
 
 		TerrainData(
 			std::function<TextureObject*(cocos2d::ValueMap)> textureFactory,
@@ -90,7 +105,10 @@ public:
 			cocos2d::Vec2 topConnectorConvexOffset,
 			cocos2d::Vec2 topConnectorConvexDeepOffset,
 			cocos2d::Vec2 bottomConnectorOffset,
-			cocos2d::Color4B infillColor) :
+			InfillData infillData = InfillData(),
+			bool buildCollision = true,
+			bool optimizationHideOffscreen = true
+			) :
 			textureFactory(textureFactory),
 			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
@@ -125,7 +143,9 @@ public:
 			topConnectorConvexOffset(topConnectorConvexOffset),
 			topConnectorConvexDeepOffset(topConnectorConvexDeepOffset),
 			bottomConnectorOffset(bottomConnectorOffset),
-			infillColor(infillColor)
+			infillData(infillData),
+			buildCollision(buildCollision),
+			optimizationHideOffscreen(optimizationHideOffscreen)
 		{
 		}
 
@@ -168,7 +188,7 @@ private:
 	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
-	void buildInfill(cocos2d::Color4B infillColor);
+	void buildInfill(InfillData infillData);
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
 	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);

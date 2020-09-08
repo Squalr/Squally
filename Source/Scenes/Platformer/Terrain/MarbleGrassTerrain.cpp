@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string MarbleGrassTerrain::MapKey = "marble-grass";
+const Color4B MarbleGrassTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B MarbleGrassTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 MarbleGrassTerrain* MarbleGrassTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ MarbleGrassTerrain::MarbleGrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(MarbleGrassTerrain::FillColor, false, true, true)))
 {
 }
 

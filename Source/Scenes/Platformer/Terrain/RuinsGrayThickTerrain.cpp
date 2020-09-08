@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string RuinsGrayThickTerrain::MapKey = "ruins-gray-thick";
+const Color4B RuinsGrayThickTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B RuinsGrayThickTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 RuinsGrayThickTerrain* RuinsGrayThickTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ RuinsGrayThickTerrain::RuinsGrayThickTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(RuinsGrayThickTerrain::FillColor, false, true, true)))
 {
 }
 

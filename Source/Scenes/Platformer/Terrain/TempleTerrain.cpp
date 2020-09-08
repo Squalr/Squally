@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string TempleTerrain::MapKey = "temple";
+const Color4B TempleTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B TempleTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 TempleTerrain* TempleTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ TempleTerrain::TempleTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(TempleTerrain::FillColor, false, true, true)))
 {
 }
 

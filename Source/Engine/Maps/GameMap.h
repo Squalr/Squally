@@ -26,7 +26,7 @@ public:
 		Isometric = 2,
 	};
 
-	static GameMap* deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents = false);
+	static GameMap* deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents = false, bool disableBounds = false);
 	void appendLayer(MapLayer* mapLayer);
 	void setCollisionLayersVisible(bool isVisible);
 	std::vector<TileLayer*> getCollisionLayers();
@@ -41,7 +41,7 @@ public:
 
 protected:
 	GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::Size unitSize,
-			cocos2d::Size tileSize, MapOrientation orientation, bool disableEvents);
+			cocos2d::Size tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds);
 	virtual ~GameMap();
 
 	void onEnter() override;
@@ -70,4 +70,5 @@ private:
 	cocos2d::Size mapUnitSize;
 	cocos2d::Size mapTileSize;
 	bool disableEvents;
+	bool disableBounds;
 };

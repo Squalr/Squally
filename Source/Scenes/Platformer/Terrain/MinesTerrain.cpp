@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string MinesTerrain::MapKey = "mines";
+const Color4B MinesTerrain::FillColor = Color4B(14, 5, 2, 255);
+const Color4B MinesTerrain::MiniMapColor = Color4B(14, 5, 2, 255);
 
 MinesTerrain* MinesTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ MinesTerrain::MinesTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(14, 5, 2, 255)))
+		InfillData(MinesTerrain::FillColor, false, true, true)))
 {
 }
 

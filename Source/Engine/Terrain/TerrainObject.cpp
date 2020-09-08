@@ -259,6 +259,7 @@ void TerrainObject::rebuildTerrain(TerrainData terrainData)
 	this->debugDrawNode->removeAllChildren();
 
 	this->buildInnerTextures();
+	this->buildInfill(terrainData.infillData);
 
 	switch(ConfigManager::getGraphics())
 	{
@@ -325,7 +326,7 @@ void TerrainObject::buildCollision()
 {
 	this->collisionNode->removeAllChildren();
 
-	if (this->isInactive)
+	if (!this->terrainData.buildCollision || this->isInactive)
 	{
 		return;
 	}
@@ -408,17 +409,26 @@ void TerrainObject::buildInnerTextures()
 	}
 }
 
-void TerrainObject::buildInfill(Color4B infillColor)
+void TerrainObject::buildInfill(InfillData infillData)
 {
 	this->infillNode->removeAllChildren();
 
-	if (this->textureTriangles.empty())
+	if (!infillData.applyInfill || this->textureTriangles.empty())
 	{
 		return;
 	}
 
-	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::InfillDistance);
-	std::vector<AlgoUtils::Triangle> infillTriangles = AlgoUtils::trianglefyPolygon(infillPoints);
+	std::vector<AlgoUtils::Triangle> infillTriangles;
+
+	if (infillData.insetFill)
+	{
+		std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::InfillDistance);
+		std::vector<AlgoUtils::Triangle> infillTriangles = AlgoUtils::trianglefyPolygon(infillPoints);
+	}
+	else
+	{
+		infillTriangles = this->textureTriangles;
+	}
 
 	DrawNode* infill = DrawNode::create();
 
@@ -427,7 +437,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillColor), 0.0f));
+		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillData.infillColor), 0.0f));
 	}
 
 	// Loop over all infill triangles and create the solid infill color
@@ -435,23 +445,34 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
+		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillData.infillColor));
 	}
 
 	// Render the infill to a texture (Note: using outer points, not the infill points, due to the earlier padding)
 	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
-
 	Sprite* renderedInfill = RenderUtils::renderNodeToSprite(infill, infillRect.origin, infillRect.size);
-	Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
-	{
-		state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
-		state->setUniformFloat("blurRadius", 112.0f);
-		state->setUniformFloat("sampleNum", 24.0f);
-	});
-	rasterizedInfill->setAnchorPoint(Vec2::ZERO);
-	rasterizedInfill->setPosition(infillRect.origin);
 
-	this->infillNode->addChild(rasterizedInfill);
+	if (infillData.blurInfill)
+	{
+		Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
+		{
+			state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
+			state->setUniformFloat("blurRadius", 112.0f);
+			state->setUniformFloat("sampleNum", 24.0f);
+		});
+		
+		rasterizedInfill->setAnchorPoint(Vec2::ZERO);
+		rasterizedInfill->setPosition(infillRect.origin);
+
+		this->infillNode->addChild(rasterizedInfill);
+	}
+	else
+	{
+		// renderedInfill->setAnchorPoint(Vec2::ZERO);
+		// renderedInfill->setPosition(infillRect.origin);
+
+		this->infillNode->addChild(renderedInfill);
+	}
 }
 
 void TerrainObject::buildSurfaceShadow()
@@ -999,6 +1020,11 @@ ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
+	if (!this->terrainData.optimizationHideOffscreen)
+	{
+		return;
+	}
+
 	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
 	static const Size Padding = Size(1024.0f, 1024.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;

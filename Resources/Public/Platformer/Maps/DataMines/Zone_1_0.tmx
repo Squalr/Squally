@@ -82,16 +82,6 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="800" name="Ruins/Walls3" type="decor" x="4657.15" y="919.273" width="262" height="130">
-   <properties>
-    <property name="flip-y" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="801" name="Ruins/Walls4" type="decor" x="4392.67" y="917.727" width="262" height="130">
-   <properties>
-    <property name="flip-y" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="802" name="Ruins/Walls5" type="decor" x="1923.3" y="883.727" width="386" height="778"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
@@ -112,7 +102,6 @@
     <property name="transition" value="zone-transition"/>
    </properties>
   </object>
-  <object id="787" name="help-totem-end-of-demo" type="object" x="1630.42" y="1402.55" width="256" height="256"/>
   <object id="797" name="pass-through" type="collision" x="207.76" y="1102.04" width="807" height="106.19"/>
   <object id="804" name="edge-portal" type="object" x="3900.04" y="1180" width="199.918" height="488.002">
    <properties>

@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string ShipAltTerrain::MapKey = "ship-alt";
+const Color4B ShipAltTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B ShipAltTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 ShipAltTerrain* ShipAltTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(ShipAltTerrain::FillColor, false, true, true)))
 {
 }
 

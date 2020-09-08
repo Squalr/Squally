@@ -26,7 +26,7 @@ const std::string GameMap::KeyTypeCollision = "collision";
 
 using namespace cocos2d;
 
-GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents)
+GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents, bool disableBounds)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 
@@ -110,7 +110,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 		deserializedLayers.push_back(next.second);
 	}
 	
-	if (!isIsometric)
+	if (!disableBounds && !isIsometric)
 	{
 		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
 
@@ -147,14 +147,14 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	// Create a special hud_target layer for top-level display items
 	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
 
-	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation(), disableEvents);
+	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation(), disableEvents, disableBounds);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation, bool disableEvents)
+GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds)
 {
 	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
@@ -165,6 +165,7 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 	this->disableEvents = disableEvents;
+	this->disableBounds = disableBounds;
 
 	for (auto next : this->mapLayers)
 	{

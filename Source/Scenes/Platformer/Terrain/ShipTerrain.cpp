@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string ShipTerrain::MapKey = "ship";
+const Color4B ShipTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B ShipTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 ShipTerrain* ShipTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ ShipTerrain::ShipTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(ShipTerrain::FillColor, false, true, true)))
 {
 }
 

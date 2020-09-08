@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string DryTerrain::MapKey = "dry";
+const Color4B DryTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B DryTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 DryTerrain* DryTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ DryTerrain::DryTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(DryTerrain::FillColor, false, true, true)))
 {
 }
 

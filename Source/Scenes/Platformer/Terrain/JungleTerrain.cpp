@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string JungleTerrain::MapKey = "jungle";
+const Color4B JungleTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B JungleTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 JungleTerrain* JungleTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(JungleTerrain::FillColor, false, true, true)))
 {
 }
 

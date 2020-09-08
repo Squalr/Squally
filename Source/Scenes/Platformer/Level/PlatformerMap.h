@@ -17,6 +17,7 @@ class CardsMenu;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEnemy;
+class MiniMap;
 
 class PlatformerMap : public MapBase
 {
@@ -63,6 +64,7 @@ private:
 	AlchemyMenu* alchemyMenu;
 	BlacksmithingMenu* blacksmithingMenu;
 	cocos2d::Node* combatFadeInNode;
+	MiniMap* miniMap;
 
 	std::string transition;
 };

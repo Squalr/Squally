@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string FrostTerrain::MapKey = "frost";
+const Color4B FrostTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B FrostTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 FrostTerrain* FrostTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(FrostTerrain::FillColor, false, true, true)))
 {
 }
 

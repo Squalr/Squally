@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string RuinsTerrain::MapKey = "ruins";
+const Color4B RuinsTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B RuinsTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 RuinsTerrain* RuinsTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ RuinsTerrain::RuinsTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(RuinsTerrain::FillColor, false, true, true)))
 {
 }
 

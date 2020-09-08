@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string GrassTerrain::MapKey = "grass";
+const Color4B GrassTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B GrassTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 GrassTerrain* GrassTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ GrassTerrain::GrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(GrassTerrain::FillColor, false, true, true)))
 {
 }
 

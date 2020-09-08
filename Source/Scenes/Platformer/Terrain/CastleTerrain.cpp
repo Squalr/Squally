@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string CastleTerrain::MapKey = "castle";
+const Color4B CastleTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B CastleTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 CastleTerrain* CastleTerrain::create(ValueMap& properties)
 {
@@ -77,7 +79,7 @@ CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(CastleTerrain::FillColor, false, true, true)))
 {
 }
 
