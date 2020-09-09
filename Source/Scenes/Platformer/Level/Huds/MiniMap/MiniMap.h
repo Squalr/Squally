@@ -5,7 +5,6 @@
 namespace cocos2d
 {
 	class DrawNode;
-	class Sprite;
 };
 
 class GameMap;
@@ -15,7 +14,7 @@ class LocalizedString;
 class MiniMapObject;
 class SmartClippingNode;
 class Squally;
-class TerrainObject;
+class MiniMapTerrainObject;
 
 class MiniMap : public Hud
 {
@@ -28,7 +27,7 @@ protected:
 	MiniMap();
 	virtual ~MiniMap();
 	
-	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void initializePositions() override;
@@ -43,7 +42,6 @@ protected:
 	cocos2d::Node* mapNode;
 	GameMap* map;
 	cocos2d::DrawNode* squallyMarker;
-	cocos2d::Sprite* squallySprite;
 	SmartClippingNode* mapClip;
 
 	std::string mapResource;
@@ -59,7 +57,7 @@ private:
 	cocos2d::Node* contentNode;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
-	std::map<TerrainObject*, float> miniMapTerrainObjects;
+	std::map<MiniMapTerrainObject*, float> miniMapTerrainObjects;
 	std::map<MiniMapObject*, float> miniMapObjects;
 
 	static const float MiniMapScale;

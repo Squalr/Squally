@@ -42,6 +42,7 @@ private:
 	typedef MapBase super;
 
 	void warpSquallyToRespawn();
+	void loadMiniMap();
 	void buildHexus();
 	void buildCardsMenu();
 	void buildHexusCardHelp();

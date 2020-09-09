@@ -79,7 +79,7 @@ BlueGrassTerrain::BlueGrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(BlueGrassTerrain::FillColor, false, true, true)))
+		InfillData(BlueGrassTerrain::FillColor, false, true)))
 {
 }
 

@@ -79,7 +79,7 @@ MinesTerrain::MinesTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(MinesTerrain::FillColor, false, true, true)))
+		InfillData(MinesTerrain::FillColor, false, true)))
 {
 }
 

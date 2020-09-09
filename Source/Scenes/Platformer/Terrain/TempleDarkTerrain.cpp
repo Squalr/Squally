@@ -79,7 +79,7 @@ TempleDarkTerrain::TempleDarkTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(TempleDarkTerrain::FillColor, false, true, true)))
+		InfillData(TempleDarkTerrain::FillColor, false, true)))
 {
 }
 

@@ -79,7 +79,7 @@ DryGrassTerrain::DryGrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(DryGrassTerrain::FillColor, false, true, true)))
+		InfillData(DryGrassTerrain::FillColor, false, true)))
 {
 }
 

@@ -22,12 +22,11 @@ public:
 		cocos2d::Color4B infillColor;
 		bool applyInfill;
 		bool blurInfill;
-		bool insetFill;
 
 		InfillData()
-			: infillColor(cocos2d::Color4B::BLACK), applyInfill(false), blurInfill(false), insetFill(true) { }
-		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill, bool insetFill)
-			: infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill), insetFill(insetFill) { }
+			: infillColor(cocos2d::Color4B::BLACK), applyInfill(false), blurInfill(false) { }
+		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill)
+			: infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill) { }
 	};
 
 	struct TerrainData
@@ -67,7 +66,6 @@ public:
 		cocos2d::Vec2 topConnectorConvexDeepOffset;
 		cocos2d::Vec2 bottomConnectorOffset;
 		InfillData infillData;
-		bool isMiniMap;
 		bool buildCollision;
 
 		TerrainData(
@@ -106,7 +104,6 @@ public:
 			cocos2d::Vec2 topConnectorConvexDeepOffset,
 			cocos2d::Vec2 bottomConnectorOffset,
 			InfillData infillData = InfillData(),
-			bool isMiniMap = false,
 			bool buildCollision = true
 			) :
 			textureFactory(textureFactory),
@@ -144,7 +141,6 @@ public:
 			topConnectorConvexDeepOffset(topConnectorConvexDeepOffset),
 			bottomConnectorOffset(bottomConnectorOffset),
 			infillData(infillData),
-			isMiniMap(isMiniMap),
 			buildCollision(buildCollision)
 		{
 		}
@@ -154,10 +150,8 @@ public:
 		}
 	};
 
-	static std::string MapKey;
-	static std::string PropertyTopOnly;
-	static std::string PropertyMiniMapHidden;
-	static std::string TagMiniMapTerrain;
+	static const std::string MapKey;
+	static const std::string PropertyTopOnly;
 	static unsigned int NextTerrainId;
 
 protected:

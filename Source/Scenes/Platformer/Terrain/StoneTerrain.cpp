@@ -79,7 +79,7 @@ StoneTerrain::StoneTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(StoneTerrain::FillColor, false, true, true)))
+		InfillData(StoneTerrain::FillColor, false, true)))
 {
 }
 

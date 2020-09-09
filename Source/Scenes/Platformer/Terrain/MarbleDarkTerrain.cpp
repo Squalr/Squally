@@ -79,7 +79,7 @@ MarbleDarkTerrain::MarbleDarkTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(MarbleDarkTerrain::FillColor, false, true, true)))
+		InfillData(MarbleDarkTerrain::FillColor, false, true)))
 {
 }
 

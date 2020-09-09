@@ -79,7 +79,7 @@ JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(JungleTerrain::FillColor, false, true, true)))
+		InfillData(JungleTerrain::FillColor, false, true)))
 {
 }
 

@@ -80,7 +80,7 @@ TempleGreenTerrain::TempleGreenTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(TempleGreenTerrain::FillColor, false, true, true)))
+		InfillData(TempleGreenTerrain::FillColor, false, true)))
 {
 }
 

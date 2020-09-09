@@ -79,7 +79,7 @@ GrassTerrain::GrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(GrassTerrain::FillColor, false, true, true)))
+		InfillData(GrassTerrain::FillColor, false, true)))
 {
 }
 

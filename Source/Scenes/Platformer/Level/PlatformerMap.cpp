@@ -460,14 +460,13 @@ bool PlatformerMap::loadMap(std::string mapResource)
 {
 	CollisionObject::UniverseId = 0;
 
-	// Best effort
-	this->miniMap->loadMap(mapResource);
-
 	if (super::loadMap(mapResource))
 	{
 		SaveManager::batchSaveProfileData({
 			{ SaveKeys::SaveKeyMap, Value(mapResource) },
 		});
+
+		this->loadMiniMap();
 
 		return true;
 	}
@@ -510,7 +509,11 @@ bool PlatformerMap::loadMap(std::string mapResource)
 		{ SaveKeys::SaveKeyMap, Value(mapResource) },
 	});
 
-	return super::loadMap(mapResource);
+	bool fallbackResult = super::loadMap(mapResource);
+
+	this->loadMiniMap();
+
+	return fallbackResult;
 }
 
 void PlatformerMap::warpSquallyToRespawn()
@@ -521,6 +524,12 @@ void PlatformerMap::warpSquallyToRespawn()
 
 		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
 	}, Squally::MapKey);
+}
+
+void PlatformerMap::loadMiniMap()
+{
+	// Best effort.
+	this->miniMap->loadMap(mapResource);
 }
 
 void PlatformerMap::buildHexus()

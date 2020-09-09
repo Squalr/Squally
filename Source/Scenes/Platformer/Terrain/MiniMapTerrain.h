@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Terrain/TerrainObject.h"
+#include "Engine/Terrain/MiniMapTerrainObject.h"
 
-class MiniMapTerrain : public TerrainObject
+class MiniMapTerrain : public MiniMapTerrainObject
 {
 public:
 	static MiniMapTerrain* create(cocos2d::ValueMap& properties, cocos2d::Color4B drawColor);
@@ -14,5 +14,5 @@ protected:
 	virtual ~MiniMapTerrain();
 
 private:
-	typedef TerrainObject super;
+	typedef MiniMapTerrainObject super;
 };

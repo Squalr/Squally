@@ -79,7 +79,7 @@ DarkGrassTerrain::DarkGrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(DarkGrassTerrain::FillColor, false, true, true)))
+		InfillData(DarkGrassTerrain::FillColor, false, true)))
 {
 }
 

@@ -79,7 +79,7 @@ DryTerrain::DryTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(DryTerrain::FillColor, false, true, true)))
+		InfillData(DryTerrain::FillColor, false, true)))
 {
 }
 

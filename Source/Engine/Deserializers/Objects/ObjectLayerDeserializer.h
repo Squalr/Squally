@@ -13,7 +13,7 @@ public:
 
 protected:
 	ObjectLayerDeserializer(std::map<std::string, ObjectDeserializer*> objectDeserializers);
-	virtual~ObjectLayerDeserializer();
+	virtual ~ObjectLayerDeserializer();
 
 private:
 	typedef LayerDeserializer super;

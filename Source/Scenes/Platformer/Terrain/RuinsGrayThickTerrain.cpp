@@ -79,7 +79,7 @@ RuinsGrayThickTerrain::RuinsGrayThickTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(RuinsGrayThickTerrain::FillColor, false, true, true)))
+		InfillData(RuinsGrayThickTerrain::FillColor, false, true)))
 {
 }
 

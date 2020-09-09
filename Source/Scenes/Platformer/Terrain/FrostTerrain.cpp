@@ -79,7 +79,7 @@ FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(FrostTerrain::FillColor, false, true, true)))
+		InfillData(FrostTerrain::FillColor, false, true)))
 {
 }
 

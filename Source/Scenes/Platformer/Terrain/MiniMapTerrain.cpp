@@ -70,8 +70,8 @@ MiniMapTerrain::MiniMapTerrain(ValueMap& properties, Color4B drawColor) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(drawColor, true, false, false),
-		true,
+		TerrainObject::InfillData(drawColor, true, false),
+		// BuildCollision
 		false))
 {
 }

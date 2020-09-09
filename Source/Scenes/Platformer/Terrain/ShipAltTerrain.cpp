@@ -79,7 +79,7 @@ ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(ShipAltTerrain::FillColor, false, true, true)))
+		InfillData(ShipAltTerrain::FillColor, false, true)))
 {
 }
 

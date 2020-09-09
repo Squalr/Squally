@@ -79,7 +79,7 @@ LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(LeafTerrain::FillColor, false, true, true)))
+		InfillData(LeafTerrain::FillColor, false, true)))
 {
 }
 

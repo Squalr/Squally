@@ -1,13 +1,12 @@
 #include "MiniMap.h"
 
 #include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCSprite.h"
 
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Terrain/TerrainObject.h"
+#include "Engine/Terrain/MiniMapTerrainObject.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Maps/GameMap.h"
@@ -41,15 +40,14 @@ MiniMap::MiniMap()
 	this->map = nullptr;
 	this->mapResource = "";
 	this->squally = nullptr;
-	this->miniMapTerrainObjects = std::map<TerrainObject*, float>();
+	this->miniMapTerrainObjects = std::map<MiniMapTerrainObject*, float>();
 	this->miniMapObjects = std::map<MiniMapObject*, float>();
 	this->rootNode = Node::create();
 	this->background = DrawNode::create();
 	this->squallyMarker = nullptr;
-	this->squallySprite = nullptr; // Lazy initialized
 
 	this->background->drawSolidRect(-Vec2(MiniMap::MiniMapSize) / 2.0f, Vec2(MiniMap::MiniMapSize) / 2.0f, Color4F(0, 0, 0, 0.5f));
-
+	
 	this->addLayerDeserializers({
 			ObjectLayerDeserializer::create({
 				{ MiniMapObjectDeserializer::MapKeyTypeObject, MiniMapObjectDeserializer::create() },
@@ -70,20 +68,17 @@ MiniMap::~MiniMap()
 {
 }
 
-void MiniMap::onEnter()
+void MiniMap::onEnterTransitionDidFinish()
 {
-	super::onEnter();
+	super::onEnterTransitionDidFinish();
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 		this->squallyMap = GameUtils::getFirstParentOfType<GameMap>(this->squally);
 	}, Squally::MapKey);
-
-	this->miniMapTerrainObjects.clear();
-	this->miniMapObjects.clear();
 	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<TerrainObject>([=](TerrainObject* terrainObject)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapTerrainObject>([=](MiniMapTerrainObject* terrainObject)
 	{
 		// All layers are forced to a depth of 0.0f, but we cache the original depth
 		this->miniMapTerrainObjects[terrainObject] = GameUtils::getDepthUntil<GameMap>(terrainObject);
@@ -91,7 +86,7 @@ void MiniMap::onEnter()
 		terrainObject->setPositionZ(0.0f);
 		terrainObject->detachAllBehavior();
 
-	}), TerrainObject::TagMiniMapTerrain);
+	}), MiniMapTerrainObject::TagMiniMapTerrain);
 	
 	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapObject>([=](MiniMapObject* miniMapObject)
 	{
@@ -145,9 +140,11 @@ bool MiniMap::loadMap(std::string mapResource)
 	if (this->map != nullptr)
 	{
 		this->mapNode->removeChild(this->map);
-		this->squallySprite = nullptr;
 		this->squallyMarker = nullptr;
 	}
+
+	this->miniMapTerrainObjects.clear();
+	this->miniMapObjects.clear();
 	
 	this->mapResource = mapResource;
 	this->map = GameMap::deserialize(this->mapResource, this->layerDeserializers, true, true);
@@ -204,7 +201,7 @@ void MiniMap::positionMiniMap()
 
 	for (auto next : this->miniMapTerrainObjects)
 	{
-		TerrainObject* terrain = next.first;
+		MiniMapTerrainObject* terrain = next.first;
 		float depth = next.second;
 
 		terrain->setVisible(std::abs(depth - squallyDepth) <= CollisionObject::CollisionZThreshold);

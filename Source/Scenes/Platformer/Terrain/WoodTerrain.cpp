@@ -79,7 +79,7 @@ WoodTerrain::WoodTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(WoodTerrain::FillColor, false, true, true)))
+		InfillData(WoodTerrain::FillColor, false, true)))
 {
 }
 

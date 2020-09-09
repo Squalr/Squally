@@ -79,7 +79,7 @@ ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(ShadeGrassTerrain::FillColor, false, true, true)))
+		InfillData(ShadeGrassTerrain::FillColor, false, true)))
 {
 }
 

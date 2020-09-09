@@ -79,7 +79,7 @@ CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(CastleTerrain::FillColor, false, true, true)))
+		InfillData(CastleTerrain::FillColor, false, true)))
 {
 }
 

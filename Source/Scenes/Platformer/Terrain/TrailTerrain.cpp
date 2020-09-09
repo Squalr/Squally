@@ -79,7 +79,7 @@ TrailTerrain::TrailTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(TrailTerrain::FillColor, false, true, true)))
+		InfillData(TrailTerrain::FillColor, false, true)))
 {
 }
 

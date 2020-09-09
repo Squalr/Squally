@@ -79,7 +79,7 @@ CavernsTerrain::CavernsTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(CavernsTerrain::FillColor, false, true, true)))
+		InfillData(CavernsTerrain::FillColor, false, true)))
 {
 }
 

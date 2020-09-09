@@ -79,7 +79,7 @@ IceTerrain::IceTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(IceTerrain::FillColor, false, true, true)))
+		InfillData(IceTerrain::FillColor, false, true)))
 {
 }
 

@@ -79,7 +79,7 @@ LavaTerrain::LavaTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(LavaTerrain::FillColor, false, true, true)))
+		InfillData(LavaTerrain::FillColor, false, true)))
 {
 }
 

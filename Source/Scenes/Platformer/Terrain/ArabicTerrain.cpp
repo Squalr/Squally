@@ -79,7 +79,7 @@ ArabicTerrain::ArabicTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(ArabicTerrain::FillColor, false, true, true)))
+		InfillData(ArabicTerrain::FillColor, false, true)))
 {
 }
 

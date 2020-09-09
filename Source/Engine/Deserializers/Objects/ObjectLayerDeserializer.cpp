@@ -25,6 +25,14 @@ ObjectLayerDeserializer* ObjectLayerDeserializer::create(std::map<std::string, O
 ObjectLayerDeserializer::ObjectLayerDeserializer(std::map<std::string, ObjectDeserializer*> objectDeserializers) : super(ObjectLayerDeserializer::MapKeyObjectLayer)
 {
 	this->objectDeserializers = objectDeserializers;
+
+	for (auto next : this->objectDeserializers)
+	{
+		if (next.second != nullptr)
+		{
+			this->addChild(next.second);
+		}
+	}
 }
 
 ObjectLayerDeserializer::~ObjectLayerDeserializer()

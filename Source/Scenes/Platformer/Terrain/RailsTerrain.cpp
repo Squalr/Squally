@@ -78,7 +78,7 @@ RailsTerrain::RailsTerrain(ValueMap& properties) : super(
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		InfillData(RailsTerrain::FillColor, false, true, true)))
+		InfillData(RailsTerrain::FillColor, false, true)))
 {
 }
 
