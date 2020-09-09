@@ -66,6 +66,26 @@ public:
 	}
 
 	template <class T>
+	static float getDepthUntil(cocos2d::Node* node)
+	{
+		float depth = 0.0f;
+
+		while (node != nullptr)
+		{
+			depth += node->getPositionZ();
+
+			if (dynamic_cast<T*>(node) != nullptr)
+			{
+				break;
+			}
+
+			node = node->getParent();
+		}
+
+		return depth;
+	}
+
+	template <class T>
 	static T* getFirstParentOfType(cocos2d::Node *node, bool includeTarget = false)
 	{
 		if (node != nullptr && !includeTarget)
@@ -84,5 +104,31 @@ public:
 		}
 
 		return nullptr;
+	}
+
+	template <class T>
+	static void getChildrenOfType(cocos2d::Node *node, std::function<void(T*)> onFound, bool recurseOnFound = false)
+	{
+		if (node == nullptr)
+		{
+			return;
+		}
+
+		for (auto next : node->getChildren())
+		{
+			if (dynamic_cast<T*>(next) != nullptr)
+			{
+				onFound(dynamic_cast<T*>(next));
+
+				if (recurseOnFound)
+				{
+					getChildrenOfType(next, onFound, recurseOnFound);
+				}
+			}
+			else
+			{
+				getChildrenOfType(next, onFound, recurseOnFound);
+			}
+		}
 	}
 };

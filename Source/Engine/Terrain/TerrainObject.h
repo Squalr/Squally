@@ -67,8 +67,8 @@ public:
 		cocos2d::Vec2 topConnectorConvexDeepOffset;
 		cocos2d::Vec2 bottomConnectorOffset;
 		InfillData infillData;
-		bool buildCollision = true;
-		bool optimizationHideOffscreen = true;
+		bool isMiniMap;
+		bool buildCollision;
 
 		TerrainData(
 			std::function<TextureObject*(cocos2d::ValueMap)> textureFactory,
@@ -106,8 +106,8 @@ public:
 			cocos2d::Vec2 topConnectorConvexDeepOffset,
 			cocos2d::Vec2 bottomConnectorOffset,
 			InfillData infillData = InfillData(),
-			bool buildCollision = true,
-			bool optimizationHideOffscreen = true
+			bool isMiniMap = false,
+			bool buildCollision = true
 			) :
 			textureFactory(textureFactory),
 			friction(friction),
@@ -144,8 +144,8 @@ public:
 			topConnectorConvexDeepOffset(topConnectorConvexDeepOffset),
 			bottomConnectorOffset(bottomConnectorOffset),
 			infillData(infillData),
-			buildCollision(buildCollision),
-			optimizationHideOffscreen(optimizationHideOffscreen)
+			isMiniMap(isMiniMap),
+			buildCollision(buildCollision)
 		{
 		}
 
@@ -156,6 +156,8 @@ public:
 
 	static std::string MapKey;
 	static std::string PropertyTopOnly;
+	static std::string PropertyMiniMapHidden;
+	static std::string TagMiniMapTerrain;
 	static unsigned int NextTerrainId;
 
 protected:

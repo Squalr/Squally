@@ -71,7 +71,7 @@ MiniMapTerrain::MiniMapTerrain(ValueMap& properties, Color4B drawColor) : super(
 		Vec2::ZERO,
 		// FillColor
 		InfillData(drawColor, true, false, false),
-		false,
+		true,
 		false))
 {
 }

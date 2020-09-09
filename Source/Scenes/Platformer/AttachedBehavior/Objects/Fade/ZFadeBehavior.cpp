@@ -42,6 +42,8 @@ void ZFadeBehavior::onLoad()
 void ZFadeBehavior::onDisable()
 {
 	super::onDisable();
+
+	this->object->setOpacity(255);
 }
 
 void ZFadeBehavior::update(float dt)

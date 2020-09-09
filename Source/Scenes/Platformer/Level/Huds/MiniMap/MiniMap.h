@@ -12,6 +12,8 @@ class LayerDeserializer;
 class LocalizedLabel;
 class LocalizedString;
 class SmartClippingNode;
+class Squally;
+class TerrainObject;
 
 class MiniMap : public Hud
 {
@@ -24,6 +26,7 @@ protected:
 	MiniMap();
 	virtual ~MiniMap();
 	
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
@@ -40,10 +43,16 @@ protected:
 private:
 	typedef Hud super;
 
+	void positionMiniMap();
+
+	Squally* squally;
+	GameMap* squallyMap;
 	cocos2d::Node* contentNode;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
+	std::map<TerrainObject*, float> miniMapTerrainObjects;
 
+	static const float MiniMapScale;
 	static const cocos2d::Size MiniMapSize;
 	static const cocos2d::Vec2 MiniMapMargin;
 };

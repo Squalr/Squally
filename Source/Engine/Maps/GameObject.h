@@ -17,6 +17,7 @@ class GameObject : public SmartNode
 public:
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
+	void detachAllBehavior();
 	void detachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);

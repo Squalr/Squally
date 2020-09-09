@@ -267,6 +267,21 @@ void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 	this->addChild(attachedBehavior);
 }
 
+void GameObject::detachAllBehavior()
+{
+	if (this->isDespawned())
+	{
+		return;
+	}
+
+	for (auto next : this->attachedBehavior)
+	{
+		next->onDisable();
+	}
+
+	this->attachedBehavior.clear();
+}
+
 void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
 {
 	if (this->isDespawned() || attachedBehavior == nullptr)

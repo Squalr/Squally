@@ -33,6 +33,8 @@ using namespace cocos2d;
 
 std::string TerrainObject::MapKey = "terrain";
 std::string TerrainObject::PropertyTopOnly = "top-only";
+std::string TerrainObject::PropertyMiniMapHidden = "mini-map-hidden";
+std::string TerrainObject::TagMiniMapTerrain = "mini-map-terrain";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
@@ -54,6 +56,13 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
 	this->addTag(TerrainObject::MapKey);
+
+	if (terrainData.isMiniMap)
+	{
+		properties[GameObject::MapKeyAttachedBehavior] = "";
+		this->properties[GameObject::MapKeyAttachedBehavior] = "";
+		this->addTag(TerrainObject::TagMiniMapTerrain);
+	}
 
 	this->setName("terrain - " + GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKey, Value("")).asString());
 
@@ -413,7 +422,10 @@ void TerrainObject::buildInfill(InfillData infillData)
 {
 	this->infillNode->removeAllChildren();
 
-	if (!infillData.applyInfill || this->textureTriangles.empty())
+	if (!infillData.applyInfill
+		|| this->textureTriangles.empty()
+		|| (this->terrainData.isMiniMap && this->getPropertyOrDefault(TerrainObject::PropertyMiniMapHidden, Value(false)).asBool())
+		|| this->isInactive)
 	{
 		return;
 	}
@@ -468,8 +480,8 @@ void TerrainObject::buildInfill(InfillData infillData)
 	}
 	else
 	{
-		// renderedInfill->setAnchorPoint(Vec2::ZERO);
-		// renderedInfill->setPosition(infillRect.origin);
+		renderedInfill->setAnchorPoint(Vec2::ZERO);
+		renderedInfill->setPosition(infillRect.origin);
 
 		this->infillNode->addChild(renderedInfill);
 	}
@@ -1020,7 +1032,7 @@ ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
-	if (!this->terrainData.optimizationHideOffscreen)
+	if (this->terrainData.isMiniMap)
 	{
 		return;
 	}
