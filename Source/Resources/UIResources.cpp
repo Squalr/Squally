@@ -483,6 +483,7 @@ const std::string UIResources::Menus_LexiconMenu_Title_Lexicon_zh_TW = "Private/
 const std::string UIResources::Menus_LexiconMenu_desert_background = "Private/UI/Menus/LexiconMenu/desert_background.png";
 const std::string UIResources::Menus_LoadingMenu_LoadingFrame = "Private/UI/Menus/LoadingMenu/LoadingFrame.png";
 const std::string UIResources::Menus_LoadingMenu_LoadingFrameFill = "Private/UI/Menus/LoadingMenu/LoadingFrameFill.png";
+const std::string UIResources::Menus_MiniMap_SquallyIcon = "Private/UI/Menus/MiniMap/SquallyIcon.png";
 const std::string UIResources::Menus_MinigamesMenu_Banner = "Private/UI/Menus/MinigamesMenu/Banner.png";
 const std::string UIResources::Menus_MinigamesMenu_BannerGray = "Private/UI/Menus/MinigamesMenu/BannerGray.png";
 const std::string UIResources::Menus_MinigamesMenu_BannerHover = "Private/UI/Menus/MinigamesMenu/BannerHover.png";

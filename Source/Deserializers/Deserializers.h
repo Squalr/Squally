@@ -11,5 +11,6 @@
 #include "Deserializers/Platformer/PlatformerRubberbandingDeserializer.h"
 #include "Deserializers/Platformer/PlatformerTerrainDeserializer.h"
 #include "Deserializers/Platformer/PlatformerTextureDeserializer.h"
+#include "Deserializers/Platformer/MiniMapObjectDeserializer.h"
 #include "Deserializers/Platformer/MiniMapTerrainDeserializer.h"
 #include "Deserializers/WeatherDeserializer.h"

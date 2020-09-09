@@ -22,7 +22,7 @@ MiniMapTerrainDeserializer* MiniMapTerrainDeserializer::create()
 	return instance;
 }
 
-MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainDeserializer::MapKeyTypeTerrain, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
+MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainDeserializer::MapKeyTypeTerrain)
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 	

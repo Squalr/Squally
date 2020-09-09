@@ -545,6 +545,11 @@ void TerrainObject::buildSurfaceShadow()
 
 void TerrainObject::buildSurfaceTextures()
 {
+	if (this->terrainData.isMiniMap)
+	{
+		return;
+	}
+	
 	this->leftWallNode->removeAllChildren();
 	this->rightWallNode->removeAllChildren();
 	this->bottomsNode->removeAllChildren();

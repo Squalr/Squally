@@ -484,6 +484,7 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_desert_background;
 	extern const std::string Menus_LoadingMenu_LoadingFrame;
 	extern const std::string Menus_LoadingMenu_LoadingFrameFill;
+	extern const std::string Menus_MiniMap_SquallyIcon;
 	extern const std::string Menus_MinigamesMenu_Banner;
 	extern const std::string Menus_MinigamesMenu_BannerGray;
 	extern const std::string Menus_MinigamesMenu_BannerHover;
