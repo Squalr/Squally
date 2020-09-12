@@ -107,11 +107,5 @@ void MiniMapTerrainObject::buildInfill(TerrainObject::InfillData infillData)
 		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillData.infillColor));
 	}
 
-	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
-	Sprite* renderedInfill = RenderUtils::renderNodeToSprite(infill, infillRect.origin, infillRect.size);
-
-	renderedInfill->setAnchorPoint(Vec2::ZERO);
-	renderedInfill->setPosition(infillRect.origin);
-
-	this->infillNode->addChild(renderedInfill);
+	this->infillNode->addChild(infill);
 }

@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Waterfall"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
@@ -106,7 +106,11 @@
     <property name="quest-line" value="water-spellbook"/>
    </properties>
   </object>
-  <object id="836" name="solid" type="collision" x="-102.303" y="1192.3" width="2265.39" height="168.242"/>
+  <object id="836" name="solid" type="collision" x="-102.303" y="1192.3" width="2265.39" height="168.242">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="838" name="help-totem-swim-hack" type="object" x="392.364" y="945.091" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
