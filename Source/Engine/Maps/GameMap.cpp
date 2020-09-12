@@ -26,10 +26,15 @@ const std::string GameMap::KeyTypeCollision = "collision";
 
 using namespace cocos2d;
 
-GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents, bool disableBounds)
+cocos_experimental::TMXTiledMap* GameMap::parse(std::string mapFileName)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 
+	return mapRaw;
+}
+
+GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTiledMap* mapRaw, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents, bool disableBounds)
+{
 	if (mapRaw == nullptr)
 	{
 		return nullptr;

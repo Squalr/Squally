@@ -120,7 +120,9 @@ void MemoryEditingTab::loadKnownValueIntTutorial()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueInt32));
 	
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueInt32);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueInt32);
 
 		return map;
 	}));
@@ -140,7 +142,9 @@ void MemoryEditingTab::loadKnownValueFloatTutorial()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueFloat));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueFloat);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueFloat);
 
 		return map;
 	}));
@@ -160,7 +164,9 @@ void MemoryEditingTab::loadUnknownValueIntTutorial()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_UnknownValueInt32));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_UnknownValueInt32);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_UnknownValueInt32);
 
 		return map;
 	}));
@@ -180,7 +186,9 @@ void MemoryEditingTab::loadUnknownValueFloatTutorial()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_UnknownValueFloat));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_UnknownValueFloat);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_UnknownValueFloat);
 
 		return map;
 	}));
@@ -200,7 +208,9 @@ void MemoryEditingTab::loadKnownValueDoubleTutorial()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueDouble));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueDouble);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueDouble);
 
 		return map;
 	}));
@@ -220,7 +230,9 @@ void MemoryEditingTab::loadUnknownValueFloatTutorialAdvanced()
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueFloatAdvanced));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueFloatAdvanced);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueFloatAdvanced);
 
 		return map;
 	}));

@@ -7,6 +7,11 @@ namespace cocos2d
 	class Sprite;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
+
+	namespace cocos_experimental
+	{
+		class TMXTiledMap;
+	}
 }
 
 class CodeHud;
@@ -26,7 +31,7 @@ class HackerModeHud;
 class MapBase : public GlobalScene
 {
 public:
-	virtual bool loadMap(std::string mapResource);
+	bool loadMap(std::string mapResource);
 
 protected:
 	MapBase(bool useIngameMenu, bool allowHackerMode);
@@ -41,6 +46,7 @@ protected:
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 	void openPauseMenu(cocos2d::Node* refocusTarget);
+	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 
 	cocos2d::Node* hudNode;
 	Hud* hud;

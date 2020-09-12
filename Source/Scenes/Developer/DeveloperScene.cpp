@@ -248,7 +248,11 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(mapResource));
 
-			return PlatformerMap::create(mapResource);
+			PlatformerMap* map = PlatformerMap::create();
+
+			map->loadMap(mapResource);
+
+			return map;
 		}));
 	});
 

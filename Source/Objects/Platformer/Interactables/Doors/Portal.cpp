@@ -111,8 +111,12 @@ void Portal::loadMap()
 		{
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 			{
+				std::string mapResource = "Public/Platformer/Maps/" + this->mapFile + ".tmx";
+
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
-				PlatformerMap* map = PlatformerMap::create("Public/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
+				PlatformerMap* map = PlatformerMap::create(this->transition);
+
+				map->loadMap(mapResource);
 
 				return map;
 			}));

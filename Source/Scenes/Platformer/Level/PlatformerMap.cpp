@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCFastTMXTiledMap.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -60,13 +61,11 @@ using namespace cocos2d;
 
 const std::string PlatformerMap::TransitionRespawn = "transition-special-respawn";
 
-PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transition)
+PlatformerMap* PlatformerMap::create(std::string transition)
 {
 	PlatformerMap* instance = new PlatformerMap(transition);
 
 	instance->autorelease();
-
-	instance->loadMap(mapResource);
 
 	return instance;
 }
@@ -212,7 +211,9 @@ void PlatformerMap::initializeListeners()
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
 			PlatformerEvents::TriggerBeforePlatformerMapChange();
-			PlatformerMap* map = PlatformerMap::create(this->mapResource, this->transition);
+			PlatformerMap* map = PlatformerMap::create(this->transition);
+
+			map->loadMap(this->mapResource);
 
 			return map;
 		}));
@@ -281,7 +282,9 @@ void PlatformerMap::initializeListeners()
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 			{
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
-				PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
+				PlatformerMap* map = PlatformerMap::create(PlatformerMap::TransitionRespawn);
+
+				map->loadMap(savedMap);
 
 				return map;
 			}));
@@ -462,17 +465,17 @@ void PlatformerMap::initializeListeners()
 	});
 }
 
-bool PlatformerMap::loadMap(std::string mapResource)
+bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
 	CollisionObject::UniverseId = 0;
 
-	if (super::loadMap(mapResource))
+	if (super::loadMapFromTmx(mapResource, mapRaw))
 	{
 		SaveManager::batchSaveProfileData({
 			{ SaveKeys::SaveKeyMap, Value(mapResource) },
 		});
 
-		this->loadMiniMap();
+		this->loadMiniMap(mapResource, mapRaw);
 
 		return true;
 	}
@@ -517,7 +520,7 @@ bool PlatformerMap::loadMap(std::string mapResource)
 
 	bool fallbackResult = super::loadMap(mapResource);
 
-	this->loadMiniMap();
+	this->loadMiniMap(mapResource, mapRaw);
 
 	return fallbackResult;
 }
@@ -532,18 +535,24 @@ void PlatformerMap::warpSquallyToRespawn()
 	}, Squally::MapKey);
 }
 
-void PlatformerMap::loadMiniMap()
+void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
+	if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+	{
+		return;
+	}
+
+	mapRaw->retain();
+
 	// Seems to interfer with player spawning somehow. Just defer until this happens.
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->defer([=]()
 		{
-			if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
-			{
-				// Best effort.
-				this->miniMap->loadMap(mapResource);
-			}
+			// Best effort.
+			this->miniMap->loadMapFromTmx(mapResource, mapRaw);
+
+			mapRaw->release();
 		}, 3);
 	}, Squally::MapKey);
 }

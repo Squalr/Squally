@@ -14,6 +14,11 @@ class TileLayer;
 namespace cocos2d
 {
 	class Node;
+
+	namespace cocos_experimental
+	{
+		class TMXTiledMap;
+	}
 }
 
 class GameMap : public SmartNode
@@ -26,7 +31,8 @@ public:
 		Isometric = 2,
 	};
 
-	static GameMap* deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents = false, bool disableBounds = false);
+	static cocos2d::cocos_experimental::TMXTiledMap* parse(std::string mapFileName);
+	static GameMap* deserialize(std::string mapFileName, cocos2d::cocos_experimental::TMXTiledMap* mapRaw, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents = false, bool disableBounds = false);
 	void appendLayer(MapLayer* mapLayer);
 	void setCollisionLayersVisible(bool isVisible);
 	std::vector<TileLayer*> getCollisionLayers();

@@ -240,7 +240,9 @@ void CombatMap::initializeListeners()
 		{
 			std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-			PlatformerMap* map = PlatformerMap::create(mapResource, { });
+			PlatformerMap* map = PlatformerMap::create();
+
+			map->loadMap(mapResource);
 
 			return map;
 		}));
@@ -253,7 +255,9 @@ void CombatMap::initializeListeners()
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
 			PlatformerEvents::TriggerBeforePlatformerMapChange();
-			PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
+			PlatformerMap* map = PlatformerMap::create(PlatformerMap::TransitionRespawn);
+
+			map->loadMap(savedMap);
 
 			return map;
 		}));

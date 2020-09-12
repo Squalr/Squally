@@ -335,7 +335,9 @@ void SaveSelectMenu::loadSave()
 		bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
 		std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
 		
-		PlatformerMap* map = PlatformerMap::create(mapFile);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(mapFile);
 
 		return map;
 	}));

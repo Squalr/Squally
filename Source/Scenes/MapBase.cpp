@@ -223,13 +223,20 @@ void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeseria
 
 bool MapBase::loadMap(std::string mapResource)
 {
+	this->mapResource = mapResource;
+	
+	return this->loadMapFromTmx(this->mapResource, GameMap::parse(this->mapResource));
+}
+
+bool MapBase::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
+{
 	if (this->map != nullptr)
 	{
 		this->mapNode->removeChild(this->map);
 	}
 
 	this->mapResource = mapResource;
-	this->map = GameMap::deserialize(this->mapResource, this->layerDeserializers);
+	this->map = GameMap::deserialize(this->mapResource, mapRaw, this->layerDeserializers);
 	
 	if (this->map != nullptr)
 	{

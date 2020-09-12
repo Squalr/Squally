@@ -114,7 +114,7 @@ void MiniMap::update(float dt)
 	this->positionEntityIcons();
 }
 
-bool MiniMap::loadMap(std::string mapResource)
+bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
 	if (this->map != nullptr)
 	{
@@ -128,7 +128,7 @@ bool MiniMap::loadMap(std::string mapResource)
 	this->miniMapObjects.clear();
 	
 	this->mapResource = mapResource;
-	this->map = GameMap::deserialize(this->mapResource, this->layerDeserializers, true, true);
+	this->map = GameMap::deserialize(this->mapResource, mapRaw, this->layerDeserializers, true, true);
 	
 	if (this->map != nullptr)
 	{

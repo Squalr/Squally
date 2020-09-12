@@ -22,9 +22,7 @@ class MiniMap;
 class PlatformerMap : public MapBase
 {
 public:
-	static PlatformerMap* create(std::string mapResource, std::string transition = "");
-
-	bool loadMap(std::string mapResource) override;
+	static PlatformerMap* create(std::string transition = "");
 	
 	static const std::string TransitionRespawn;
 
@@ -37,12 +35,13 @@ protected:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
+	bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw) override;
 
 private:
 	typedef MapBase super;
 
 	void warpSquallyToRespawn();
-	void loadMiniMap();
+	void loadMiniMap(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 	void buildHexus();
 	void buildCardsMenu();
 	void buildHexusCardHelp();

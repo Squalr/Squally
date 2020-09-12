@@ -5,6 +5,11 @@
 namespace cocos2d
 {
 	class DrawNode;
+
+	namespace cocos_experimental
+	{
+		class TMXTiledMap;
+	};
 };
 
 class GameMap;
@@ -21,7 +26,7 @@ class MiniMap : public Hud
 public:
 	static MiniMap* create();
 
-	bool loadMap(std::string mapResource);
+	bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 
 protected:
 	MiniMap();
