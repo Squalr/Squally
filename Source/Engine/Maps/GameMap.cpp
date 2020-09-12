@@ -52,8 +52,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	{
 		mapSize.width /= 2.0f;
 	}
-
-	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
+	
 	for (auto next : mapRaw->getObjectGroups())
 	{
 		ValueMap properties = next->getProperties();
@@ -461,6 +460,11 @@ void GameMap::setCollisionLayersVisible(bool isVisible)
 std::vector<TileLayer*> GameMap::getCollisionLayers()
 {
 	return this->collisionLayers;
+}
+
+std::vector<MapLayer*> GameMap::getMapLayers()
+{
+	return this->mapLayers;
 }
 
 void GameMap::isometricZSort()

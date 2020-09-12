@@ -52,7 +52,7 @@ protected:
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
 	virtual void removeNonGlobalListeners();
-	void defer(std::function<void()> task);
+	void defer(std::function<void()> task, int ticks = 1);
 
 	bool hackermodeEnabled;
 	Hud* layerColorHud;

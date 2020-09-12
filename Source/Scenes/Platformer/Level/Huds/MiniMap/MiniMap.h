@@ -49,6 +49,7 @@ protected:
 private:
 	typedef Hud super;
 
+	void initializeObjectLists();
 	void positionMiniMap();
 	void positionEntityIcons();
 

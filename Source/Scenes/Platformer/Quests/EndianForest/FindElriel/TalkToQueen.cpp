@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
@@ -61,6 +62,14 @@ void TalkToQueen::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
 		this->queenLiana = queenLiana;
+		
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableNewQuest();
+			});
+		}
 	}, QueenLiana::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
@@ -83,6 +92,14 @@ void TalkToQueen::onActivate(bool isActiveThroughSkippable)
 void TalkToQueen::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::EFFindElriel);
+
+	if (this->queenLiana != nullptr)
+	{
+		this->queenLiana->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		{
+			questBehavior->disableAll();
+		});
+	}
 }
 
 void TalkToQueen::onSkipped()

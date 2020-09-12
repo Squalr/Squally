@@ -249,7 +249,7 @@ void SmartScene::pause()
 	super::pause();
 }
 
-void SmartScene::defer(std::function<void()> task)
+void SmartScene::defer(std::function<void()> task, int ticks)
 {
 		unsigned long long taskId = SmartScene::TaskId++;
 		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
@@ -257,7 +257,15 @@ void SmartScene::defer(std::function<void()> task)
 		// Schedule the task for the next update loop
 		this->schedule([=](float dt)
 		{
-			task();
+			if (ticks <= 1)
+			{
+				task();
+			}
+			else
+			{
+				this->defer(task, ticks - 1);
+			}
+
 			this->unschedule(eventKey);
 		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
 }

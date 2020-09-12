@@ -528,8 +528,15 @@ void PlatformerMap::warpSquallyToRespawn()
 
 void PlatformerMap::loadMiniMap()
 {
-	// Best effort.
-	this->miniMap->loadMap(mapResource);
+	// Seems to interfer with player spawning somehow. Just defer until this happens.
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->defer([=]()
+		{
+			// Best effort.
+			this->miniMap->loadMap(mapResource);
+		}, 3);
+	}, Squally::MapKey);
 }
 
 void PlatformerMap::buildHexus()

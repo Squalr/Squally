@@ -267,35 +267,6 @@ Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound);
 
 	return Vec2(worldCoords3d.x, worldCoords3d.y);
-	/*
-	if (node == nullptr)
-	{
-		return Vec2::ZERO;
-	}
-
-	Rect resultRect = node->getBoundingBox();
-	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f);
-	Node* parent = node->getParent();
-	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
-	// Hud* hudParent = checkForUIBound ? GameUtils::getFirstParentOfType<Hud>(parent) : nullptr;
-
-	// Special conditions for a ui-bound object
-	if (uiBoundObjectParent != nullptr)
-	{
-		Vec2 relativeCoords = uiBoundObjectParent->convertToWorldSpace(resultCoords);
-		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
-		Vec2 fixedCoords = Vec2(realCoords.x, realCoords.y) + Vec2(relativeCoords.x, -resultRect.size.height / 2.0f);
-
-		return fixedCoords;
-	}
-
-	if (parent != nullptr)
-	{
-		resultCoords = parent->convertToWorldSpace(resultCoords);
-	}
-
-	return resultCoords;
-	*/
 }
 
 Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)

@@ -244,7 +244,7 @@ void SmartNode::addGlobalEventListener(EventListener* listener)
 	this->addEventListenerIgnorePause(listener);
 }
 
-void SmartNode::defer(std::function<void()> task)
+void SmartNode::defer(std::function<void()> task, int ticks)
 {
 	unsigned long long taskId = SmartNode::TaskId++;
 	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
@@ -252,7 +252,15 @@ void SmartNode::defer(std::function<void()> task)
 	// Schedule the task for the next update loop
 	this->schedule([=](float dt)
 	{
-		task();
+		if (ticks <= 1)
+		{
+			task();
+		}
+		else
+		{
+			this->defer(task, ticks - 1);
+		}
+
 		this->unschedule(eventKey);
 	}, 1.0f / 60.0f, 1, 0.0f, eventKey);
 }

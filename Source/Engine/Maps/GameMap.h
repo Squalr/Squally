@@ -30,6 +30,7 @@ public:
 	void appendLayer(MapLayer* mapLayer);
 	void setCollisionLayersVisible(bool isVisible);
 	std::vector<TileLayer*> getCollisionLayers();
+	std::vector<MapLayer*> getMapLayers();
 	cocos2d::Size getMapSize();
 	cocos2d::Size getMapUnitSize();
 	cocos2d::Size getMapTileSize();

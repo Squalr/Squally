@@ -315,7 +315,7 @@
     <property name="to" value="bridge-front-D"/>
    </properties>
   </object>
-  <object id="1011" name="warp" type="object" x="4817.24" y="2555.79" width="256" height="256">
+  <object id="1011" name="warp" type="object" x="4809.24" y="2470.46" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-AA"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -599,7 +599,7 @@
   <object id="962" name="blue-grass" type="terrain" x="3851.39" y="2811.09" width="1694.18" height="959.628"/>
   <object id="1042" name="blue-grass" type="terrain" x="5944.91" y="392.186" width="2014.18" height="3367.63"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -632,7 +632,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -697,7 +697,7 @@
     <property name="transition" value="shack"/>
    </properties>
   </object>
-  <object id="700" name="portal" type="object" x="4814.37" y="2465.76" width="256.687" height="349.061">
+  <object id="700" name="portal" type="object" x="4815.7" y="2464.43" width="256.687" height="349.061">
    <properties>
     <property name="map" value="EndianForest/Town_Alch"/>
     <property name="quest" value="business-hours"/>
