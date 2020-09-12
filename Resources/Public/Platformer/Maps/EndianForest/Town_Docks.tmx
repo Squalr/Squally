@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="759">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="760">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -79,7 +79,7 @@
   </properties>
   <object id="710" name="ship" type="object" x="1127.74" y="804.427" width="2375" height="1008"/>
  </objectgroup>
- <objectgroup id="71" name="water -5" visible="0">
+ <objectgroup id="71" name="water -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -101,7 +101,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="70" name="water -4" visible="0">
+ <objectgroup id="70" name="water -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -250,11 +250,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="73" name="water">
+ <objectgroup id="86" name="water">
   <properties>
-   <property name="depth" type="float" value="128"/>
+   <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="759" name="water" type="object" x="-2164.7" y="1768.93" width="8509" height="2181.35"/>
  </objectgroup>
  <objectgroup id="79" name="water +1">
   <properties>

@@ -10,6 +10,7 @@
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
+#include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -100,6 +101,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 				PhysicsDeserializer::create(),
 				PlatformerBannerDeserializer::create(),
 				PlatformerRubberbandingDeserializer::create(),
+				PlatformerHideMiniMapDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
@@ -533,8 +535,11 @@ void PlatformerMap::loadMiniMap()
 	{
 		this->defer([=]()
 		{
-			// Best effort.
-			this->miniMap->loadMap(mapResource);
+			if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+			{
+				// Best effort.
+				this->miniMap->loadMap(mapResource);
+			}
 		}, 3);
 	}, Squally::MapKey);
 }

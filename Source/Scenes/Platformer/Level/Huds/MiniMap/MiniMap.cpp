@@ -57,6 +57,8 @@ MiniMap::MiniMap()
 		}
 	);
 
+	this->setVisible(false);
+
 	this->mapNode->setScale(MiniMap::MiniMapScale);
 	
 	this->rootNode->addChild(this->background);
@@ -118,6 +120,8 @@ bool MiniMap::loadMap(std::string mapResource)
 		this->mapNode->removeChild(this->map);
 		this->squallyMarker = nullptr;
 	}
+
+	this->setVisible(true);
 
 	this->miniMapTerrainObjects.clear();
 	this->miniMapObjects.clear();

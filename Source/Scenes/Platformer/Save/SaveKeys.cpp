@@ -36,6 +36,7 @@ const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
 const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
+const std::string SaveKeys::SaveKeyLevelHideMiniMap = "SAVE_KEY_HIDE_MINIMAP";
 
 const std::string SaveKeys::SaveKeySpellBookArcane = "SAVE_KEY_SPELLBOOK_ARCANE";
 const std::string SaveKeys::SaveKeySpellBookFire = "SAVE_KEY_SPELLBOOK_FIRE";

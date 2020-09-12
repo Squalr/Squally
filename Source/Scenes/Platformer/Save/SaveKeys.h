@@ -41,6 +41,7 @@ public:
 	static const std::string SaveKeyRespawnObjectId;
 
 	static const std::string SaveKeyLevelRubberband;
+	static const std::string SaveKeyLevelHideMiniMap;
 	
 	static const std::string SaveKeySpellBookArcane;
 	static const std::string SaveKeySpellBookFire;

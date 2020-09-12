@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="93" nextobjectid="1044">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="94" nextobjectid="1045">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -124,8 +124,16 @@
     <property name="transition" value="liana"/>
    </properties>
   </object>
-  <object id="1019" name="solid" type="collision" x="5659.82" y="-395.79" width="97.0303" height="2975.58"/>
-  <object id="1020" name="solid" type="collision" x="2171.81" y="-14.5779" width="97.0303" height="2654.37"/>
+  <object id="1019" name="solid" type="collision" x="5659.82" y="-395.79" width="97.0303" height="2975.58">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1020" name="solid" type="collision" x="2171.81" y="-14.5779" width="97.0303" height="2654.37">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="92" name="player_layer -12">
   <properties>
@@ -271,10 +279,26 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="984" name="solid" type="collision" x="2567.06" y="3446.27" width="97.0303" height="2367.58"/>
-  <object id="985" name="solid" type="collision" x="6545.42" y="-379.911" width="97.0303" height="6183.58"/>
-  <object id="1018" name="solid" type="collision" x="5559.48" y="-399.79" width="97.0303" height="3295.58"/>
-  <object id="1041" name="solid" type="collision" x="2239.36" y="-14.093" width="97.0303" height="2740.31"/>
+  <object id="984" name="solid" type="collision" x="2567.06" y="3446.27" width="97.0303" height="2367.58">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="985" name="solid" type="collision" x="6545.42" y="-379.911" width="97.0303" height="6183.58">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1018" name="solid" type="collision" x="5559.48" y="-399.79" width="97.0303" height="3295.58">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1041" name="solid" type="collision" x="2239.36" y="-14.093" width="97.0303" height="2740.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="88" name="player_layer -6">
   <properties>
@@ -552,12 +576,23 @@
    <polygon points="0,-31.5088 42.0742,-30.9282 42.9652,-0.641023 556.172,-4.22532 556.172,354.925 1.34667,359.152"/>
   </object>
  </objectgroup>
+ <objectgroup id="93" name="water">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1044" name="water" type="object" x="9843.99" y="5944.65" width="1101.32" height="831.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="84" name="water +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="905" name="water" type="object" x="9846.66" y="5955.32" width="1101.32" height="831.346">
+  <object id="905" name="water" type="object" x="9846.66" y="5960.65" width="1101.32" height="831.346">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -769,7 +804,11 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="961" name="pass-through" type="collision" x="4514.67" y="4782.67" width="792.667" height="61.3333"/>
+  <object id="961" name="pass-through" type="collision" x="4514.67" y="4782.67" width="792.667" height="61.3333">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="982" name="pass-through" type="collision" x="5759.33" y="6636.67" width="894" height="74"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
@@ -909,7 +948,7 @@
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2422.49" y="5845.47" width="270" height="748"/>
   <object id="942" name="Forest/Foreground/ForegroundTree1" type="decor" x="8543" y="5647" width="242" height="738"/>
  </objectgroup>
- <objectgroup id="33" name="decor 1024">
+ <objectgroup id="33" name="decor 1024" visible="0">
   <properties>
    <property name="depth" type="float" value="1024"/>
    <property name="type" value="objects"/>
