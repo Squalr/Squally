@@ -52,6 +52,7 @@ MiniMap::MiniMap()
 	this->addLayerDeserializers({
 			ObjectLayerDeserializer::create({
 				{ MiniMapObjectDeserializer::MapKeyTypeObject, MiniMapObjectDeserializer::create() },
+				{ MiniMapCollisionDeserializer::MapKeyTypeCollision, MiniMapCollisionDeserializer::create() },
 				{ MiniMapTerrainDeserializer::MapKeyTypeTerrain, MiniMapTerrainDeserializer::create() },
 			})
 		}

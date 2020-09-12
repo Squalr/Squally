@@ -300,6 +300,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->buildCipher();
 
+			this->menuHud->setVisible(false);
 			this->cipher->setVisible(true);
 			this->mapNode->setVisible(false);
 			this->notificationHud->setVisible(false);
@@ -317,6 +318,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->buildCipher();
 
+			this->menuHud->setVisible(true);
 			this->cipher->setVisible(false);
 			this->mapNode->setVisible(true);
 			this->notificationHud->setVisible(true);
@@ -335,6 +337,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->buildHexus();
 			
+			this->menuHud->setVisible(false);
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
 			this->mapNode->setVisible(false);
@@ -352,6 +355,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->buildHexus();
 
+			this->menuHud->setVisible(true);
 			this->hexus->setVisible(false);
 			this->mapNode->setVisible(true);
 			this->notificationHud->setVisible(true);
