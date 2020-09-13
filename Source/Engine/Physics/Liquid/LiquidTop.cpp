@@ -39,7 +39,7 @@ LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, 
     this->columns = std::vector<ColumnData>();
     this->columnIndicies = std::vector<int>();
     this->colorArray = std::vector<cocos2d::Color4B>();
-    this->customCommand = new CustomCommand();
+    this->customDrawCommand = new CustomCommand();
     this->tension = tension;
     this->dampening = dampening;
     this->spread = spread;
@@ -64,7 +64,7 @@ LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, 
 
 LiquidTop::~LiquidTop()
 {
-    delete(this->customCommand);
+    delete(this->customDrawCommand);
 }
 
 void LiquidTop::onEnter()
@@ -134,10 +134,10 @@ void LiquidTop::splash(float x, float speed, float splashRadius, float decay)
 
 void LiquidTop::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform, uint32_t flags)
 {
-    this->customCommand->init(_globalZOrder);
-    this->customCommand->func = CC_CALLBACK_0(LiquidTop::onCustomDraw, this, transform);
+    this->customDrawCommand->init(_globalZOrder);
+    this->customDrawCommand->func = CC_CALLBACK_0(LiquidTop::onCustomDraw, this, transform);
 
-    renderer->addCommand(customCommand);
+    renderer->addCommand(customDrawCommand);
 }
 
 void LiquidTop::onCustomDraw(const Mat4 &transform)

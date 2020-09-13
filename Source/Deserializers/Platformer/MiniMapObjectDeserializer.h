@@ -16,6 +16,7 @@ public:
 	static const cocos2d::Color4B WindColor;
 	static const cocos2d::Color4B DestroyableColor;
 	static const cocos2d::Color4B InteractableColor;
+	static const cocos2d::Color4B ShrineColor;
 
 private:
 	typedef ObjectDeserializer super;

@@ -110,7 +110,7 @@ void SharpenedBlade::registerHackables()
 				SharpenedBladeGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax::create(),
 					},
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEbx::create(),

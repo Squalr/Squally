@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -139,10 +139,15 @@
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="UnderflowRuins/Town_Docks"/>
+    <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="docks-back"/>
    </properties>
   </object>
-  <object id="940" name="solid" type="collision" x="1244.56" y="6.622" width="126.878" height="1890.76"/>
+  <object id="940" name="solid" type="collision" x="1244.56" y="6.622" width="126.878" height="3058.76">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="944" name="portal" type="object" x="4221.24" y="1522.29" width="237.527" height="375.411">
    <properties>
     <property name="map" value="UnderflowRuins/Home_Aphrodite"/>
@@ -174,7 +179,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="923" name="water" type="object" x="-1472.71" y="1981.33" width="7806.75" height="933.346">
+  <object id="923" name="water" type="object" x="-1472.71" y="1981.33" width="7806.75" height="1085.35">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>

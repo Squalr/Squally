@@ -13,12 +13,13 @@ using namespace cocos2d;
 
 const std::string MiniMapObjectDeserializer::MapKeyTypeObject = "object";
 const Color4B MiniMapObjectDeserializer::NoColor = Color4B(0, 0, 0, 0);
-const Color4B MiniMapObjectDeserializer::WarpColor = Color4B(255, 165, 0, 255);
+const Color4B MiniMapObjectDeserializer::WarpColor = Color4B(160, 11, 11, 255);
 const Color4B MiniMapObjectDeserializer::PortalColor = Color4B(255, 0, 0, 255);
 const Color4B MiniMapObjectDeserializer::WaterColor = Color4B(72, 156, 189, 192);
 const Color4B MiniMapObjectDeserializer::WindColor = Color4B(255, 255, 255, 128);
 const Color4B MiniMapObjectDeserializer::DestroyableColor = Color4B(102, 56, 38, 255);
-const Color4B MiniMapObjectDeserializer::InteractableColor = Color4B(255, 255, 0, 255);
+const Color4B MiniMapObjectDeserializer::InteractableColor = Color4B(76, 121, 166, 255);
+const Color4B MiniMapObjectDeserializer::ShrineColor = Color4B(122, 163, 0, 255);
 
 MiniMapObjectDeserializer* MiniMapObjectDeserializer::create()
 {
@@ -130,7 +131,7 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::InteractableColor); };
-	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::InteractableColor); };
+	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::ShrineColor); };
 	this->deserializers[LogicTorch::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::InteractableColor); };
 	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[PullyVertical::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
@@ -148,8 +149,7 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[MineWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[MineWinch::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[MulDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
-	this->deserializers[ObjectiveTrigger::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
-	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
+	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::WarpColor); };
 	this->deserializers[Portal::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Ram::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };

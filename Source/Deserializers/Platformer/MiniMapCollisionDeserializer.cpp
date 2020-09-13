@@ -13,8 +13,8 @@ using namespace cocos2d;
 
 const std::string MiniMapCollisionDeserializer::MapKeyTypeCollision = "collision";
 const std::string MiniMapCollisionDeserializer::PropertyMiniMapVisible = "mini-map-visible";
-const Color4B MiniMapCollisionDeserializer::PassThroughColor = Color4B(69, 89, 1, 255);
-const Color4B MiniMapCollisionDeserializer::SolidColor = Color4B(69, 89, 1, 255);
+const Color4B MiniMapCollisionDeserializer::PassThroughColor = Color4B(164, 164, 164, 255);
+const Color4B MiniMapCollisionDeserializer::SolidColor = Color4B(126, 126, 126, 255);
 
 MiniMapCollisionDeserializer* MiniMapCollisionDeserializer::create()
 {

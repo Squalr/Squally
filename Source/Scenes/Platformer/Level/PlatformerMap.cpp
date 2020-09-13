@@ -537,7 +537,7 @@ void PlatformerMap::warpSquallyToRespawn()
 
 void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
-	if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
 	{
 		return;
 	}

@@ -141,10 +141,15 @@
   </properties>
   <object id="817" name="water" type="object" x="1404" y="904.78" width="540" height="1530.56">
    <properties>
-    <property name="disable-splash" type="bool" value="true"/>
+    <property name="disable-edges" type="bool" value="true"/>
+    <property name="disable-waves" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="1099.06"/>
+  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="1099.06">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

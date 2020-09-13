@@ -82,7 +82,7 @@ void LifeStone::initializePositions()
 {
 	super::initializePositions();
 
-	this->lifeStone->setPosition(Vec2(0.0f, 0.0f));
+	this->lifeStone->setPosition(Vec2(0.0f, -12.0f));
 	this->healAnimation->setPosition(Vec2(0.0f, -96.0f));
 }
 

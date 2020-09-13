@@ -11,6 +11,8 @@ class ColumnData;
 
 class LiquidTop : public SmartNode
 {
+public:
+    
 private:
     typedef SmartNode super;
     friend class LiquidNode;
@@ -51,7 +53,7 @@ private:
     std::vector<float> leftDeltas;
     std::vector<float> rightDeltas;
     std::vector<cocos2d::Color4B> colorArray;
-    cocos2d::CustomCommand* customCommand;
+    cocos2d::CustomCommand* customDrawCommand;
 
     cocos2d::Size surfaceSize;
     float tension;

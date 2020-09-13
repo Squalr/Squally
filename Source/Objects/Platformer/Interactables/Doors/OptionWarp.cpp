@@ -153,6 +153,15 @@ void OptionWarp::openDialogue()
 			return true;
 		});
 	}
+	
+	options.push_back(Strings::Menus_Cancel::create());
+
+	callbacks.push_back([=]()
+	{
+		this->cancelOptionChoice();
+
+		return true;
+	});
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		DialogueEvents::BuildOptions(Strings::Platformer_Objects_Warps_WhereTo::create(), options),
@@ -200,9 +209,10 @@ bool OptionWarp::cancelOptionChoice()
 
 	DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
 	{
-		this->canChooseOption = false;
-		PlatformerEvents::TriggerAllowPause();
 	}));
+	
+	this->canChooseOption = false;
+	PlatformerEvents::TriggerAllowPause();
 
 	return true;
 }

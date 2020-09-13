@@ -10,7 +10,7 @@ namespace cocos2d
 class MiniMapObject : public GameObject
 {
 public:
-	static MiniMapObject* create(cocos2d::ValueMap& properties, cocos2d::Color4B defaultColor = cocos2d::Color4B(147, 83, 87, 255));
+	static MiniMapObject* create(cocos2d::ValueMap& properties, cocos2d::Color4B defaultColor = cocos2d::Color4B(255, 165, 0, 255));
 
 	static const std::string MapKey;
 	static const std::string PropertyMiniMapHidden;
