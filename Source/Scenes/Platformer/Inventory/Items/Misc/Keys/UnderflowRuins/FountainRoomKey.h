@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Misc/Misc.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/Key.h"
 
-class FountainRoomKey : public Misc
+class FountainRoomKey : public Key
 {
 public:
 	static FountainRoomKey* create();
@@ -20,5 +20,5 @@ protected:
 	virtual ~FountainRoomKey();
 
 private:
-	typedef Misc super;
+	typedef Key super;
 };

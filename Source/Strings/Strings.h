@@ -7719,6 +7719,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_TownKey() = default;
 	};
 
+	class Items_Misc_Maps_DungeonMap : public LocalizedString
+	{
+	public:
+		static Items_Misc_Maps_DungeonMap* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Maps_DungeonMap();
+		virtual ~Items_Misc_Maps_DungeonMap() = default;
+	};
+
 	class Menus_Accept : public LocalizedString
 	{
 	public:

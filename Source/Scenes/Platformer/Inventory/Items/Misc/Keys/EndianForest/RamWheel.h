@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Misc/Misc.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/Key.h"
 
-class RamWheel : public Misc
+class RamWheel : public Key
 {
 public:
 	static RamWheel* create();
@@ -20,5 +20,5 @@ protected:
 	virtual ~RamWheel();
 
 private:
-	typedef Misc super;
+	typedef Key super;
 };

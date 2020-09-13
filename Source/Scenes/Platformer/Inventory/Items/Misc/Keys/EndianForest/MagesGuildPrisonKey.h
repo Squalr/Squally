@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Misc/Misc.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/Key.h"
 
-class MagesGuildPrisonKey : public Misc
+class MagesGuildPrisonKey : public Key
 {
 public:
 	static MagesGuildPrisonKey* create();
@@ -20,5 +20,5 @@ protected:
 	virtual ~MagesGuildPrisonKey();
 
 private:
-	typedef Misc super;
+	typedef Key super;
 };

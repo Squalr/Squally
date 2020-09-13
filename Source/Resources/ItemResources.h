@@ -245,6 +245,7 @@ namespace ItemResources
 	extern const std::string Keys_PurpleGem;
 	extern const std::string Keys_RamWheel;
 	extern const std::string Keys_RedGem;
+	extern const std::string Maps_Map;
 	extern const std::string Misc_HeartOfFire;
 	extern const std::string Misc_HeartOfShadow;
 	extern const std::string Misc_NecroBook;

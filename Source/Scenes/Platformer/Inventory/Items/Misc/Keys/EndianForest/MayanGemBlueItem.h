@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Misc/Misc.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/Key.h"
 
-class MayanGemBlueItem : public Misc
+class MayanGemBlueItem : public Key
 {
 public:
 	static MayanGemBlueItem* create();
@@ -20,5 +20,5 @@ protected:
 	virtual ~MayanGemBlueItem();
 
 private:
-	typedef Misc super;
+	typedef Key super;
 };
