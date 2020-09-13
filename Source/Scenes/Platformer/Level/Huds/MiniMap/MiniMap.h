@@ -12,7 +12,7 @@ namespace cocos2d
 	};
 };
 
-class GameMap;
+class MiniGameMap;
 class LayerDeserializer;
 class LocalizedLabel;
 class LocalizedString;
@@ -33,7 +33,7 @@ protected:
 	MiniMap();
 	virtual ~MiniMap();
 	
-	void onEnterTransitionDidFinish() override;
+	void onEnter() override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void initializePositions() override;
@@ -46,7 +46,7 @@ protected:
 	cocos2d::Node* rootNode;
 	cocos2d::DrawNode* background;
 	cocos2d::Node* mapNode;
-	GameMap* map;
+	MiniGameMap* map;
 	cocos2d::DrawNode* squallyMarker;
 	SmartClippingNode* mapClip;
 
@@ -60,7 +60,7 @@ private:
 	void positionEntityIcons();
 
 	Squally* squally;
-	GameMap* squallyMap;
+	MiniGameMap* squallyMap;
 	cocos2d::Node* contentNode;
 
 	std::vector<LayerDeserializer*> layerDeserializers;

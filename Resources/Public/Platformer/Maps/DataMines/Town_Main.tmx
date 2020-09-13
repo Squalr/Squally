@@ -660,12 +660,14 @@
   <object id="925" name="portal" type="object" x="1989.76" y="1530.73" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Home_Finch"/>
+    <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="finch-top"/>
    </properties>
   </object>
   <object id="968" name="portal" type="object" x="8596.6" y="2816.3" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Inn"/>
+    <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="inn-top"/>
    </properties>
   </object>
