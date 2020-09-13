@@ -26,6 +26,7 @@ class MiniMap : public Hud
 public:
 	static MiniMap* create();
 
+	void setPositioning(std::string miniMapPositioning = "");
 	bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 
 protected:
@@ -54,7 +55,6 @@ protected:
 private:
 	typedef Hud super;
 
-	void initializeObjectLists();
 	void positionMiniMap();
 	void positionEntityIcons();
 

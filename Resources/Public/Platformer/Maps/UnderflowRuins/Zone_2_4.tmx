@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="898">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="21" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="898">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -46,7 +46,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="terrain" x="-151.333" y="-70" width="2604" height="2304">
+  <object id="808" name="ruins-gray-dark" type="terrain" x="-151.333" y="-70" width="2964" height="2304">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -77,7 +77,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="ruins-gray-thick" type="terrain" x="-107.63" y="2001.82" width="2509.93" height="664.12"/>
+  <object id="835" name="ruins-gray-thick" type="terrain" x="-107.63" y="2001.82" width="2878.17" height="664.12"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -89,7 +89,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="logic-torch" type="object" x="1873.02" y="1890.5" width="101" height="111">
+  <object id="896" name="logic-torch" type="object" x="2313.41" y="1891.5" width="101" height="111">
    <properties>
     <property name="color" value="purple"/>
     <property name="interactable" type="bool" value="true"/>

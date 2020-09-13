@@ -23,7 +23,7 @@ MiniMapObject* MiniMapObject::create(ValueMap& properties, Color4B defaultColor)
 	return instance;
 }
 
-MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super(properties)
+MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super(MiniMapObject::transformUUID(properties))
 {
 	this->drawColor = defaultColor;
 	this->miniMapObject = DrawNode::create();
@@ -85,4 +85,11 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 
 MiniMapObject::~MiniMapObject()
 {
+}
+
+cocos2d::ValueMap MiniMapObject::transformUUID(cocos2d::ValueMap properties)
+{
+	properties[GameObject::MapKeyId] = Value(properties[GameObject::MapKeyId].asString() + "_MINI_MAP");
+
+	return properties;
 }

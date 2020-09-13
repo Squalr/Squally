@@ -34,6 +34,7 @@ const std::string PlatformerEvents::EventGiveCurrenciesFromPool = "EVENT_GIVE_CU
 const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
 const std::string PlatformerEvents::EventDisallowPause = "EVENT_DISALLOW_PAUSE";
 const std::string PlatformerEvents::EventDispelIllusion = "EVENT_DISPEL_ILLUSION";
+const std::string PlatformerEvents::EventRelocateMiniMap = "EVENT_RELOCATE_MINI_MAP";
 const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
 const std::string PlatformerEvents::EventSaveRespawn = "EVENT_SAVE_RESPAWN";
 const std::string PlatformerEvents::EventBeforeLoadRespawn = "EVENT_BEFORE_LOAD_RESPAWN";
@@ -252,6 +253,14 @@ void PlatformerEvents::TriggerDispelIllusion(DispelIllusionArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventDispelIllusion,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerRelocateMiniMap(RelocateMiniMapArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventRelocateMiniMap,
 		&args
 	);
 }

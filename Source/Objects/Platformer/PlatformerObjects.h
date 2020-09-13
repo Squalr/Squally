@@ -81,6 +81,7 @@
 #include "Objects/Platformer/Interactables/Spawns/WoodDoorSpawn.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"
+#include "Objects/Platformer/MiniMap/MiniMapRelocator.h"
 #include "Objects/Platformer/Physics/Catapult/Catapult.h"
 #include "Objects/Platformer/Physics/FloatingAsteroid/FloatingAsteroid.h"
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrate.h"

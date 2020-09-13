@@ -188,6 +188,16 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventRelocateMiniMap, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::RelocateMiniMapArgs* args = static_cast<PlatformerEvents::RelocateMiniMapArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->miniMap->setPositioning(args->miniMapPositioning);
+		}
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforeLoadRespawn, [=](EventCustom* eventCustom)
 	{
 		// Using combat transitions for respawn transition, for now.
@@ -542,19 +552,8 @@ void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMX
 		return;
 	}
 
-	mapRaw->retain();
-
-	// Seems to interfer with player spawning somehow. Just defer until this happens.
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->defer([=]()
-		{
-			// Best effort.
-			this->miniMap->loadMapFromTmx(mapResource, mapRaw);
-
-			mapRaw->release();
-		}, 3);
-	}, Squally::MapKey);
+	// Best effort.
+	this->miniMap->loadMapFromTmx(mapResource, mapRaw);
 }
 
 void PlatformerMap::buildHexus()

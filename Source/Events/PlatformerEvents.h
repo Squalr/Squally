@@ -45,6 +45,7 @@ public:
 	static const std::string EventAllowPause;
 	static const std::string EventDisallowPause;
 	static const std::string EventDispelIllusion;
+	static const std::string EventRelocateMiniMap;
 	static const std::string EventSavePosition;
 	static const std::string EventSaveRespawn;
 	static const std::string EventBeforeLoadRespawn;
@@ -214,6 +215,13 @@ public:
 		DispelIllusionArgs(std::string group) : group(group) { }
 	};
 
+	struct RelocateMiniMapArgs
+	{
+		std::string miniMapPositioning;
+
+		RelocateMiniMapArgs(std::string miniMapPositioning) : miniMapPositioning(miniMapPositioning) { }
+	};
+
 	struct SaveRespawnArgs
 	{
 		std::string objectIdentifier;
@@ -248,6 +256,7 @@ public:
 	static void TriggerAllowPause();
 	static void TriggerDisallowPause();
 	static void TriggerDispelIllusion(DispelIllusionArgs args);
+	static void TriggerRelocateMiniMap(RelocateMiniMapArgs args);
 	static void TriggerSavePosition();
 	static void TriggerSaveRespawn(SaveRespawnArgs args);
 	static void TriggerBeforeLoadRespawn();

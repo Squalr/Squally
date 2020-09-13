@@ -75,6 +75,39 @@ MiniMap::~MiniMap()
 void MiniMap::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
+
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+		this->squallyMap = GameUtils::getFirstParentOfType<GameMap>(this->squally);
+	}, Squally::MapKey);
+	
+	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapTerrainObject>([=](MiniMapTerrainObject* terrainObject)
+	{
+		// All layers are forced to a depth of 0.0f, but we cache the original depth
+		this->miniMapTerrainObjects[terrainObject] = GameUtils::getDepthUntil<GameMap>(terrainObject);
+
+		terrainObject->setPositionZ(0.0f);
+		terrainObject->detachAllBehavior();
+
+	}), MiniMapTerrainObject::TagMiniMapTerrain);
+	
+	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapObject>([=](MiniMapObject* miniMapObject)
+	{
+		// All layers are forced to a depth of 0.0f, but we cache the original depth
+		this->miniMapObjects[miniMapObject] = GameUtils::getDepthUntil<GameMap>(miniMapObject);
+
+		miniMapObject->setPositionZ(0.0f);
+
+	}), MiniMapObject::TagMiniMapObject);
+
+	if (this->map != nullptr)
+	{
+		for (auto next : this->map->getMapLayers())
+		{
+			next->setPositionZ(0.0f);
+		}
+	}
 }
 
 void MiniMap::onHackerModeEnable()
@@ -95,15 +128,38 @@ void MiniMap::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	const Vec2 Offset = Vec2(visibleSize - MiniMapSize) / 2.0f - MiniMapMargin;
-
-	this->rootNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f) + Offset);
+	this->setPositioning();
 }
 
 void MiniMap::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void MiniMap::setPositioning(std::string miniMapPositioning)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	const Vec2 DefaultPosition = (Vec2(visibleSize) - Vec2(MiniMapSize)) / 2.0f - MiniMapMargin;
+	Vec2 newPosition = Vec2::ZERO;
+	
+	if (miniMapPositioning == "top-left")
+	{
+		newPosition = Vec2(-DefaultPosition.x, DefaultPosition.y);
+	}
+	else if (miniMapPositioning == "bottom-left")
+	{
+		newPosition = Vec2(-DefaultPosition.x, -DefaultPosition.y);
+	}
+	else if (miniMapPositioning== "bottom-right")
+	{
+		newPosition = Vec2(DefaultPosition.x, -DefaultPosition.y);
+	}
+	else
+	{
+		newPosition = Vec2(DefaultPosition.x, DefaultPosition.y);
+	}
+
+	this->rootNode->setPosition(Vec2(visibleSize) / 2.0f + newPosition);
 }
 
 void MiniMap::update(float dt)
@@ -141,48 +197,10 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 		this->mapNode->addChild(this->map);
 		this->mapNode->addChild(this->squallyMarker);
 
-		this->initializeObjectLists();
-
 		return true;
 	}
 
 	return false;
-}
-
-void MiniMap::initializeObjectLists()
-{
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->squally = squally;
-		this->squallyMap = GameUtils::getFirstParentOfType<GameMap>(this->squally);
-	}, Squally::MapKey);
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapTerrainObject>([=](MiniMapTerrainObject* terrainObject)
-	{
-		// All layers are forced to a depth of 0.0f, but we cache the original depth
-		this->miniMapTerrainObjects[terrainObject] = GameUtils::getDepthUntil<GameMap>(terrainObject);
-
-		terrainObject->setPositionZ(0.0f);
-		terrainObject->detachAllBehavior();
-
-	}), MiniMapTerrainObject::TagMiniMapTerrain);
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapObject>([=](MiniMapObject* miniMapObject)
-	{
-		// All layers are forced to a depth of 0.0f, but we cache the original depth
-		this->miniMapObjects[miniMapObject] = GameUtils::getDepthUntil<GameMap>(miniMapObject);
-
-		miniMapObject->setPositionZ(0.0f);
-
-	}), MiniMapObject::TagMiniMapObject);
-
-	if (this->map != nullptr)
-	{
-		for (auto next : this->map->getMapLayers())
-		{
-			next->setPositionZ(0.0f);
-		}
-	}
 }
 
 void MiniMap::addLayerDeserializer(LayerDeserializer* layerDeserializer)

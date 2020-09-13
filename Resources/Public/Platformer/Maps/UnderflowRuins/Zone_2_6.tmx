@@ -236,12 +236,20 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg" visible="0">
+ <objectgroup id="113" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="917" name="water" type="object" x="1400" y="-124.37" width="792.32" height="4284.74"/>
-  <object id="918" name="water" type="object" x="-25" y="2623.63" width="1425" height="1536.74"/>
+  <object id="917" name="water" type="object" x="1400" y="-124.37" width="792.32" height="4284.74">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="918" name="water" type="object" x="-25" y="2623.63" width="1425" height="1536.74">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>
