@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
@@ -241,6 +242,12 @@ void Timeline::checkCombatComplete()
 	for (auto next : this->timelineEntries)
 	{
 		PlatformerEntity* entity = next->getEntity();
+
+		// Special case for petrified helper -- consider it dead.
+		if (dynamic_cast<GuanoPetrified*>(entity) != nullptr)
+		{
+			continue;
+		}
 
 		if (dynamic_cast<PlatformerEnemy*>(entity) != nullptr)
 		{
