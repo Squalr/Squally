@@ -60,7 +60,11 @@
     <property name="transition" value="bottom-center"/>
    </properties>
   </object>
-  <object id="1123" name="solid" type="collision" x="4616.56" y="1481.41" width="126.878" height="1821.18"/>
+  <object id="1123" name="solid" type="collision" x="4608.56" y="1453.41" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1128" name="logic-torch" type="object" x="2038.13" y="1175.71" width="101" height="111">
    <properties>
     <property name="color" value="red"/>
@@ -95,8 +99,16 @@
    </properties>
   </object>
   <object id="1148" name="caged-mouse" type="object" x="4052" y="2586" width="196" height="112"/>
-  <object id="1149" name="solid" type="collision" x="3900.56" y="-111.438" width="126.878" height="1706.03"/>
-  <object id="1150" name="solid" type="collision" x="1844.56" y="-134.59" width="126.878" height="3341.18"/>
+  <object id="1149" name="solid" type="collision" x="3900.56" y="-111.438" width="126.878" height="2073.03">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1150" name="solid" type="collision" x="1844.56" y="-134.59" width="126.878" height="3341.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1152" name="wind" type="object" x="2031.22" y="2218.61" width="380" height="480">
    <properties>
     <property name="listen-event" value="activate-wind"/>
@@ -291,71 +303,85 @@
   <object id="1009" name="ruins-thick" type="terrain" x="1861.1" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1010" name="ruins-thick" type="terrain" x="1741.24" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1013" name="ruins-thick" type="terrain" x="1619.05" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1014" name="ruins-thick" type="terrain" x="1496.86" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1015" name="ruins-thick" type="terrain" x="1379.14" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1016" name="ruins-thick" type="terrain" x="1257.62" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1017" name="ruins-thick" type="terrain" x="1139.05" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1019" name="ruins-thick" type="terrain" x="4614.57" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1020" name="ruins-thick" type="terrain" x="4496.05" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1021" name="ruins-thick" type="terrain" x="4373.48" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1022" name="ruins-thick" type="terrain" x="4253.62" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1023" name="ruins-thick" type="terrain" x="4131.43" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1024" name="ruins-thick" type="terrain" x="4009.24" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1025" name="ruins-thick" type="terrain" x="3891.52" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -610,8 +636,16 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1097" name="solid" type="collision" x="468.561" y="-186.59" width="126.878" height="1821.18"/>
-  <object id="1098" name="solid" type="collision" x="5256.56" y="-190.59" width="126.878" height="1821.18"/>
+  <object id="1097" name="solid" type="collision" x="468.561" y="-186.59" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1098" name="solid" type="collision" x="5256.56" y="-190.59" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="player_layer +3">
   <properties>

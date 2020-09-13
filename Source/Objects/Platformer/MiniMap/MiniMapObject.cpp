@@ -87,9 +87,10 @@ MiniMapObject::~MiniMapObject()
 {
 }
 
-cocos2d::ValueMap MiniMapObject::transformUUID(cocos2d::ValueMap properties)
+cocos2d::ValueMap& MiniMapObject::transformUUID(cocos2d::ValueMap& properties)
 {
 	properties[GameObject::MapKeyId] = Value(properties[GameObject::MapKeyId].asString() + "_MINI_MAP");
+	properties[GameObject::MapKeyTags] = Value("");
 
 	return properties;
 }

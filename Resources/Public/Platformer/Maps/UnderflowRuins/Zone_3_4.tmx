@@ -51,8 +51,16 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1152" name="solid" type="collision" x="478.985" y="-61.2567" width="126.878" height="1405.18"/>
-  <object id="1153" name="solid" type="collision" x="1636.56" y="-24.287" width="126.878" height="1365.18"/>
+  <object id="1152" name="solid" type="collision" x="478.985" y="-61.2567" width="126.878" height="1405.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1153" name="solid" type="collision" x="1636.56" y="-24.287" width="126.878" height="1365.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1176" name="caged-squirrel" type="object" x="1005" y="1224" width="196" height="112"/>
   <object id="1178" name="vase" type="object" x="1271.5" y="1176" width="113" height="160">
    <properties>
@@ -133,36 +141,43 @@
   <object id="1019" name="ruins-thick" type="terrain" x="2822.57" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1020" name="ruins-thick" type="terrain" x="2704.05" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1021" name="ruins-thick" type="terrain" x="2581.48" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1022" name="ruins-thick" type="terrain" x="2461.62" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1023" name="ruins-thick" type="terrain" x="2339.43" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1024" name="ruins-thick" type="terrain" x="2217.24" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1025" name="ruins-thick" type="terrain" x="2099.52" y="1440" width="96" height="340">
    <properties>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -205,7 +220,11 @@
    </properties>
   </object>
   <object id="1110" name="solid" type="collision" x="2073.23" y="1437.74" width="873.545" height="100.513"/>
-  <object id="1142" name="solid" type="collision" x="40.561" y="-354.59" width="126.878" height="1821.18"/>
+  <object id="1142" name="solid" type="collision" x="40.561" y="-354.59" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1167" name="edge-portal" type="object" x="3888.04" y="2216" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
@@ -394,7 +413,11 @@
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1141" name="solid" type="collision" x="4.561" y="-218.59" width="126.878" height="1821.18"/>
+  <object id="1141" name="solid" type="collision" x="4.561" y="-218.59" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1174" name="ruins-thick" type="terrain" x="776.685" y="2840" width="3326.63" height="576"/>
  </objectgroup>
  <objectgroup id="96" name="objects +3">
@@ -408,7 +431,11 @@
     <property name="transition" value="center"/>
    </properties>
   </object>
-  <object id="1140" name="solid" type="collision" x="648.561" y="1654.74" width="126.878" height="1293.18"/>
+  <object id="1140" name="solid" type="collision" x="648.561" y="1654.74" width="126.878" height="1413.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1147" name="portal" type="object" x="963.414" y="2489.71" width="256.687" height="349.061">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_3_3"/>

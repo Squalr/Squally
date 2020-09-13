@@ -41,7 +41,7 @@ MiniMapTerrainObject::MiniMapTerrainObject(ValueMap& properties, TerrainObject::
 	this->points = std::vector<Vec2>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
-	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapTerrainObject::PropertyMiniMapHidden, Value(false)).asBool();
+	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapTerrainObject::PropertyMiniMapHidden, Value(this->isInactive)).asBool();
 
 	this->addTag(MiniMapTerrainObject::TagMiniMapTerrain);
 
@@ -90,7 +90,7 @@ void MiniMapTerrainObject::setPoints(std::vector<Vec2> points)
 
 void MiniMapTerrainObject::buildInfill(TerrainObject::InfillData infillData)
 {
-	if (this->isInactive || this->isMiniMapHidden)
+	if (this->isMiniMapHidden)
 	{
 		return;
 	}

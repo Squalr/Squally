@@ -55,6 +55,7 @@ protected:
 private:
 	typedef Hud super;
 
+	void initializeMapData();
 	void positionMiniMap();
 	void positionEntityIcons();
 

@@ -42,7 +42,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1092" name="solid" type="collision" x="787.71" y="-503.681" width="126.878" height="1821.18"/>
+  <object id="1092" name="solid" type="collision" x="787.71" y="-503.681" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1101" name="temple-door" type="object" x="1379" y="758" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
@@ -59,7 +63,11 @@
   </object>
   <object id="1140" name="solid" type="collision" x="1257.77" y="1345.47" width="126.878" height="1587.85"/>
   <object id="1141" name="solid" type="collision" x="1257.77" y="1345.47" width="126.878" height="1587.85"/>
-  <object id="1142" name="solid" type="collision" x="3770.56" y="-61.7432" width="126.878" height="2969.67"/>
+  <object id="1142" name="solid" type="collision" x="3770.56" y="-61.7432" width="126.878" height="2969.67">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1145" name="logic-torch" type="object" x="928.5" y="1176.5" width="101" height="111">
    <properties>
     <property name="color" value="purple"/>
@@ -229,7 +237,11 @@
    </properties>
   </object>
   <object id="1132" name="solid" type="collision" x="1245.65" y="1350.02" width="126.878" height="1587.85"/>
-  <object id="1137" name="solid" type="collision" x="566.864" y="-210.59" width="126.878" height="1821.18"/>
+  <object id="1137" name="solid" type="collision" x="566.864" y="-210.59" width="126.878" height="3277.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1150" name="life-stone" type="object" x="1557" y="924.5" width="146" height="423"/>
   <object id="1151" name="vase" type="object" x="1876.83" y="2771.52" width="113" height="160">
    <properties>
@@ -360,42 +372,49 @@
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1020" name="ruins-thick" type="terrain" x="3216.05" y="1440" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1021" name="ruins-thick" type="terrain" x="3093.48" y="1440" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1022" name="ruins-thick" type="terrain" x="2973.62" y="1440" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1023" name="ruins-thick" type="terrain" x="2851.43" y="1440" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1024" name="ruins-thick" type="terrain" x="2729.24" y="1440" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1025" name="ruins-thick" type="terrain" x="2611.52" y="1440" width="96" height="340">
    <properties>
     <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -433,7 +452,11 @@
    </properties>
   </object>
   <object id="1108" name="solid" type="collision" x="2584.23" y="1437.74" width="873.545" height="100.513"/>
-  <object id="1136" name="solid" type="collision" x="554.743" y="-149.984" width="126.878" height="1821.18"/>
+  <object id="1136" name="solid" type="collision" x="554.743" y="-149.984" width="126.878" height="3221.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1154" name="vase" type="object" x="1143.5" y="1245.33" width="113" height="160">
    <properties>
     <property name="color" value="green"/>

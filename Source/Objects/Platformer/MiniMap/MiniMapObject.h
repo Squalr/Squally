@@ -25,7 +25,7 @@ protected:
 private:
 	typedef GameObject super;
 
-	static cocos2d::ValueMap transformUUID(cocos2d::ValueMap properties);
+	static cocos2d::ValueMap& transformUUID(cocos2d::ValueMap& properties);
 	
 	cocos2d::DrawNode* miniMapObject;
 	cocos2d::Color4B drawColor;

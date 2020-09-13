@@ -76,38 +76,7 @@ void MiniMap::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->squally = squally;
-		this->squallyMap = GameUtils::getFirstParentOfType<GameMap>(this->squally);
-	}, Squally::MapKey);
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapTerrainObject>([=](MiniMapTerrainObject* terrainObject)
-	{
-		// All layers are forced to a depth of 0.0f, but we cache the original depth
-		this->miniMapTerrainObjects[terrainObject] = GameUtils::getDepthUntil<GameMap>(terrainObject);
-
-		terrainObject->setPositionZ(0.0f);
-		terrainObject->detachAllBehavior();
-
-	}), MiniMapTerrainObject::TagMiniMapTerrain);
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapObject>([=](MiniMapObject* miniMapObject)
-	{
-		// All layers are forced to a depth of 0.0f, but we cache the original depth
-		this->miniMapObjects[miniMapObject] = GameUtils::getDepthUntil<GameMap>(miniMapObject);
-
-		miniMapObject->setPositionZ(0.0f);
-
-	}), MiniMapObject::TagMiniMapObject);
-
-	if (this->map != nullptr)
-	{
-		for (auto next : this->map->getMapLayers())
-		{
-			next->setPositionZ(0.0f);
-		}
-	}
+	this->initializeMapData();
 }
 
 void MiniMap::onHackerModeEnable()
@@ -134,6 +103,44 @@ void MiniMap::initializePositions()
 void MiniMap::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void MiniMap::initializeMapData()
+{
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+		this->squallyMap = GameUtils::getFirstParentOfType<GameMap>(this->squally);
+	}, Squally::MapKey);
+	
+	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapTerrainObject>([=](MiniMapTerrainObject* terrainObject)
+	{
+		// All layers are forced to a depth of 0.0f, but we cache the original depth
+		this->miniMapTerrainObjects[terrainObject] = GameUtils::getDepthUntil<GameMap>(terrainObject);
+
+		terrainObject->setPositionZ(0.0f);
+		terrainObject->detachAllBehavior();
+		terrainObject->properties[GameObject::MapKeyQueryable] = Value(false);
+
+	}), MiniMapTerrainObject::TagMiniMapTerrain);
+	
+	ObjectEvents::QueryObjects(QueryObjectsArgs<MiniMapObject>([=](MiniMapObject* miniMapObject)
+	{
+		// All layers are forced to a depth of 0.0f, but we cache the original depth
+		this->miniMapObjects[miniMapObject] = GameUtils::getDepthUntil<GameMap>(miniMapObject);
+
+		miniMapObject->setPositionZ(0.0f);
+		miniMapObject->properties[GameObject::MapKeyQueryable] = Value(false);
+
+	}), MiniMapObject::TagMiniMapObject);
+
+	if (this->map != nullptr)
+	{
+		for (auto next : this->map->getMapLayers())
+		{
+			next->setPositionZ(0.0f);
+		}
+	}
 }
 
 void MiniMap::setPositioning(std::string miniMapPositioning)
