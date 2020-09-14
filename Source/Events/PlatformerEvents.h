@@ -45,6 +45,8 @@ public:
 	static const std::string EventAllowPause;
 	static const std::string EventDisallowPause;
 	static const std::string EventDispelIllusion;
+	static const std::string EventShowMiniMap;
+	static const std::string EventHideMiniMap;
 	static const std::string EventRelocateMiniMap;
 	static const std::string EventSavePosition;
 	static const std::string EventSaveRespawn;
@@ -256,6 +258,8 @@ public:
 	static void TriggerAllowPause();
 	static void TriggerDisallowPause();
 	static void TriggerDispelIllusion(DispelIllusionArgs args);
+	static void TriggerShowMiniMap();
+	static void TriggerHideMiniMap();
 	static void TriggerRelocateMiniMap(RelocateMiniMapArgs args);
 	static void TriggerSavePosition();
 	static void TriggerSaveRespawn(SaveRespawnArgs args);

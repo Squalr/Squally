@@ -29,6 +29,7 @@ ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::Ma
 	this->deserializers[ChestPoolDisplayOr::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDisplayOr::create(properties); };
 
 	// EF pools
+	this->deserializers[ChestPoolEFDungeonMap::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFDungeonMap::create(properties); };
 	this->deserializers[ChestPoolEFEquipment::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFEquipment::create(properties); };
 	this->deserializers[ChestPoolEFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFGeneric::create(properties); };
 	this->deserializers[ChestPoolEFRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFRare::create(properties); };

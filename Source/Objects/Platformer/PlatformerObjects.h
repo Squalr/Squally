@@ -33,6 +33,7 @@
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"
 #include "Objects/Platformer/Interactables/Chests/Chest.h"
 #include "Objects/Platformer/Interactables/Chests/CipherChest.h"
+#include "Objects/Platformer/Interactables/Chests/EgyptianChest.h"
 #include "Objects/Platformer/Interactables/Chests/GlassDisplays/GlassDisplayItem.h"
 #include "Objects/Platformer/Interactables/Chests/MetalChest.h"
 #include "Objects/Platformer/Interactables/Chests/MineCartLootable.h"

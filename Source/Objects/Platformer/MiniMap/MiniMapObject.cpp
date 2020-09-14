@@ -30,6 +30,7 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyMiniMapHidden, Value(false)).asBool();
 
 	this->addTag(MiniMapObject::TagMiniMapObject);
+	this->properties[GameObject::MapKeyQueryable] = Value(false);
 	
 	Size size = Size(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(16.0f)).asFloat(),

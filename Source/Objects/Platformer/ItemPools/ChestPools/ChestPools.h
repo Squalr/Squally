@@ -6,6 +6,7 @@
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolPurpleGem.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolRedGem.h"
+#include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFDungeonMap.h"
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFEquipment.h"
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFGeneric.h"
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFRare.h"

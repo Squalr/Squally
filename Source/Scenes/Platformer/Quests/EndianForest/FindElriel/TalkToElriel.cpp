@@ -77,12 +77,14 @@ void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 	this->defer([=]()
 	{
 		this->runCinematicSequencePart1();
+		PlatformerEvents::TriggerHideMiniMap();
 	});
 }
 
 void TalkToElriel::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueen);
+	PlatformerEvents::TriggerShowMiniMap();
 }
 
 void TalkToElriel::onSkipped()

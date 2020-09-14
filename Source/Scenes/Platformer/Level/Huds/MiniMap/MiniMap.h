@@ -12,14 +12,15 @@ namespace cocos2d
 	};
 };
 
-class MiniGameMap;
+class Inventory;
 class LayerDeserializer;
 class LocalizedLabel;
 class LocalizedString;
+class MiniGameMap;
 class MiniMapObject;
+class MiniMapTerrainObject;
 class SmartClippingNode;
 class Squally;
-class MiniMapTerrainObject;
 
 class MiniMap : public Hud
 {
@@ -44,6 +45,7 @@ protected:
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 
 	cocos2d::Node* rootNode;
+	cocos2d::Node* toggleNode;
 	cocos2d::DrawNode* background;
 	cocos2d::Node* mapNode;
 	MiniGameMap* map;
@@ -55,17 +57,21 @@ protected:
 private:
 	typedef Hud super;
 
+	void checkMapRequiredItem();
 	void initializeMapData();
 	void positionMiniMap();
 	void positionEntityIcons();
 
 	Squally* squally;
+	Inventory* squallyInventory;
 	MiniGameMap* squallyMap;
 	cocos2d::Node* contentNode;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
 	std::map<MiniMapTerrainObject*, float> miniMapTerrainObjects;
 	std::map<MiniMapObject*, float> miniMapObjects;
+	
+	std::string requiredItemKey;
 
 	static const float MiniMapScale;
 	static const cocos2d::Size MiniMapSize;

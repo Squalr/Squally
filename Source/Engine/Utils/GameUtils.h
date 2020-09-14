@@ -105,7 +105,8 @@ public:
 
 		return nullptr;
 	}
-
+	
+	// This function is O(n) and should be used sparringly
 	template <class T>
 	static void getChildrenOfType(cocos2d::Node *node, std::function<void(T*)> onFound, bool recurseOnFound = false)
 	{

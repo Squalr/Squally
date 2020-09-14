@@ -44,6 +44,7 @@ MiniMapTerrainObject::MiniMapTerrainObject(ValueMap& properties, TerrainObject::
 	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapTerrainObject::PropertyMiniMapHidden, Value(this->isInactive)).asBool();
 
 	this->addTag(MiniMapTerrainObject::TagMiniMapTerrain);
+	this->properties[GameObject::MapKeyQueryable] = Value(false);
 
 	this->rootNode = Node::create();
 	this->infillNode = Node::create();

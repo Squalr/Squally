@@ -31,6 +31,8 @@ public:
 		return false;
 	};
 
+	bool hasItemOfName(std::string itemName);
+
 	template<class T>
 	std::vector<T*> getItemsOfType()
 	{
@@ -82,6 +84,7 @@ protected:
 	void clearItems();
 
 	std::vector<Item*> items;
+	std::set<std::string> itemLookup;
 	int capacity;
 
 	static const int InfiniteCapacity;
@@ -89,6 +92,7 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void rebuildLookupTable();
 	bool canInsertItemIfUnique(Item* item);
 
 	cocos2d::Node* itemsNode;

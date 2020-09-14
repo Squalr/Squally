@@ -31,6 +31,7 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->saveKey = saveKey;
 	this->capacity = capacity;
 	this->items = std::vector<Item*>();
+	this->itemLookup = std::set<std::string>();
 	this->itemsNode = Node::create();
 
 	this->load();
@@ -94,10 +95,16 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	}
 }
 
+bool Inventory::hasItemOfName(std::string itemName)
+{
+	return this->itemLookup.find(itemName) != this->itemLookup.end();
+}
+
 void Inventory::clearItems()
 {
 	this->itemsNode->removeAllChildren();
 	this->items.clear();
+	this->itemLookup.clear();
 }
 
 void Inventory::save()
@@ -145,7 +152,8 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 		return;
 	}
 
-	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end())
+	// Quick O(1) check using the set
+	if (this->itemLookup.find(item->getItemName()) == this->itemLookup.end())
 	{
 		if (onRemoveFailed != nullptr)
 		{
@@ -164,6 +172,8 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 	{
 		this->save();
 	}
+	
+	this->rebuildLookupTable();
 
 	if (onRemove != nullptr)
 	{
@@ -188,6 +198,8 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 			onInsert(item);
 		}
 
+		this->rebuildLookupTable();
+
 		return;
 	}
 	else
@@ -210,6 +222,8 @@ void Inventory::forceInsert(Item* item, bool doSave)
 		{
 			this->save();
 		}
+
+		this->rebuildLookupTable();
 	}
 }
 
@@ -314,6 +328,8 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 	{
 		this->save();
 	}
+
+	this->rebuildLookupTable();
 }
 
 bool Inventory::canInsertItemIfUnique(Item* item)
@@ -341,3 +357,12 @@ bool Inventory::canInsertItemIfUnique(Item* item)
 	return true;
 }
 
+void Inventory::rebuildLookupTable()
+{
+	this->itemLookup.clear();
+
+	for (auto next : this->items)
+	{
+		this->itemLookup.insert(next->getItemName());
+	}
+}
