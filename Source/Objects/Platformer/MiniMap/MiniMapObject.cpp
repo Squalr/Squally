@@ -4,11 +4,15 @@
 #include "cocos/base/ccTypes.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Objects/Platformer/MiniMap/Binders/MiniMapObjectBinder.h"
+#include "Objects/Platformer/MiniMap/Binders/MiniMapObjectBinderDeserializer.h"
 
 using namespace cocos2d;
 
 const std::string MiniMapObject::MapKey = "mini-map-object";
+const std::string MiniMapObject::PropertyOriginalId = "original-uuid";
 const std::string MiniMapObject::PropertyMiniMapHidden = "mini-map-hidden";
 const std::string MiniMapObject::PropertyColor = "mini-map-color";
 const std::string MiniMapObject::PropertyShape = "shape";
@@ -26,7 +30,8 @@ MiniMapObject* MiniMapObject::create(ValueMap& properties, Color4B defaultColor)
 MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super(MiniMapObject::transformUUID(properties))
 {
 	this->drawColor = defaultColor;
-	this->miniMapObject = DrawNode::create();
+	this->rotatorNode = Node::create();
+	this->drawNode = DrawNode::create();
 	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyMiniMapHidden, Value(false)).asBool();
 
 	this->addTag(MiniMapObject::TagMiniMapObject);
@@ -37,6 +42,7 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(16.0f)).asFloat()
 	);
 
+	this->drawNode->setContentSize(size);
 	std::string color = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyColor, Value("")).asString();
 	std::string shape = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyShape, Value("")).asString();
 
@@ -73,23 +79,42 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 	{
 		if (shape == "circle")
 		{
-			this->miniMapObject->drawSolidCircle(Vec2::ZERO, std::max(size.width, size.height), 0.0f, 16, Color4F(this->drawColor));
+			this->drawNode->drawSolidCircle(Vec2::ZERO, std::max(size.width, size.height), 0.0f, 16, Color4F(this->drawColor));
 		}
 		else
 		{
-			this->miniMapObject->drawSolidRect(-Vec2(size) / 2.0f, Vec2(size) / 2.0f, Color4F(this->drawColor));
+			this->drawNode->drawSolidRect(-Vec2(size) / 2.0f, Vec2(size) / 2.0f, Color4F(this->drawColor));
 		}
 	}
-
-	this->addChild(this->miniMapObject);
+	
+	this->rotatorNode->addChild(this->drawNode);
+	this->addChild(this->rotatorNode);
 }
 
 MiniMapObject::~MiniMapObject()
 {
 }
 
+void MiniMapObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	std::string identifier = GameObject::BuildUUID(this->properties.at(GameObject::MapKeyMetaMapIdentifier).asString(), this->properties.at(MiniMapObject::PropertyOriginalId).asString());
+
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* object)
+	{
+		MiniMapObjectBinder* binder = MiniMapObjectBinderDeserializer::Deserialize(GameUtils::getKeyOrDefault(object->properties, GameObject::MapKeyName, Value("")).asString());
+
+		binder->bindTo(this, object);
+
+		this->addChild(binder);
+
+	}, identifier);
+}
+
 cocos2d::ValueMap& MiniMapObject::transformUUID(cocos2d::ValueMap& properties)
 {
+	properties[MiniMapObject::PropertyOriginalId] = properties[GameObject::MapKeyId];
 	properties[GameObject::MapKeyId] = Value(properties[GameObject::MapKeyId].asString() + "_MINI_MAP");
 	properties[GameObject::MapKeyTags] = Value("");
 

@@ -31,6 +31,8 @@ protected:
 
 private:
 	typedef HackableObject super;
+	friend class BinderPendulumBlade;
+
 	void startSwing();
 	void setSwingAngle(float angle);
 	void doSwing();

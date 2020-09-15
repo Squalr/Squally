@@ -161,6 +161,7 @@ protected:
 	virtual void onDespawn();
 	bool isMapObject();
 	void loadObjectState();
+	static std::string BuildUUID(std::string mapId, std::string objectId);
 
 	std::string listenEvent;
 	std::string sendEvent;

@@ -33,6 +33,8 @@ protected:
 
 private:
 	typedef HackableObject super;
+	friend class BinderMechanicalFlail;
+
 	void startSwing();
 	void setSwingAngle(float angle);
 	void doSwing();

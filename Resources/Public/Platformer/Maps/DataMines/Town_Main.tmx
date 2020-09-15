@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1057">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1058">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -542,7 +542,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="839" name="water" type="object" x="5427.32" y="3753.45" width="749.36" height="2409.11"/>
+  <object id="839" name="water" type="object" x="5379.32" y="3753.45" width="1041.36" height="2409.11"/>
  </objectgroup>
  <objectgroup id="139" name="decor -3 bg bg bg">
   <properties>
@@ -602,7 +602,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="103" name="terrain -3 fg" visible="0">
+ <objectgroup id="103" name="terrain -3 fg">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -611,7 +611,7 @@
   <object id="935" name="mines" type="terrain" x="9258.3" y="1878" width="1651.38" height="3228"/>
   <object id="997" name="ship-alt" type="terrain" x="4647.27" y="3730.91" width="1770.84" height="130.18"/>
  </objectgroup>
- <objectgroup id="62" name="decor -3" visible="0" locked="1">
+ <objectgroup id="62" name="decor -3" locked="1">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -921,6 +921,11 @@
     <property name="transition" value="mildred-top"/>
    </properties>
   </object>
+  <object id="1057" name="life-stone" type="object" x="6947" y="3540.5" width="146" height="423">
+   <properties>
+    <property name="attached-behavior" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -939,7 +944,7 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="6797.48" y="3834.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="6665.48" y="3834.62" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

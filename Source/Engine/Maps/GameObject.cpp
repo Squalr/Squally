@@ -91,19 +91,12 @@ GameObject::GameObject(const ValueMap& properties) : super()
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
-		this->uniqueIdentifier = (this->properties.at(GameObject::MapKeyMetaMapIdentifier).asString()) + "_" + (this->properties.at(GameObject::MapKeyId).asString());
-		
-		tags.push_back(this->uniqueIdentifier);
+		this->uniqueIdentifier = GameObject::BuildUUID(this->properties.at(GameObject::MapKeyMetaMapIdentifier).asString(), this->properties.at(GameObject::MapKeyId).asString());
 	}
 	
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 	this->addTag(this->getUniqueIdentifier());
-
-	for (auto tag : tags)
-	{
-		this->addTag(tag);
-	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
 	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyMetaIsIsometric, Value(false)).asBool())
@@ -315,10 +308,7 @@ void GameObject::addTag(std::string tag)
 		return;
 	}
 
-	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
-	{
-		this->tags.insert(tag);
-	}
+	this->tags.insert(tag);
 }
 
 Value GameObject::getPropertyOrDefault(std::string key, Value value)
@@ -606,4 +596,9 @@ void GameObject::onDespawn()
 bool GameObject::isDespawned()
 {
 	return this->despawned;
+}
+
+std::string GameObject::BuildUUID(std::string mapId, std::string objectId)
+{
+	return mapId + "_" + objectId;
 }

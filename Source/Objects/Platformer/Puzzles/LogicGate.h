@@ -29,6 +29,7 @@ protected:
 
 private:
 	typedef GameObject super;
+	friend class BinderLogicGate;
 
 	void computeIsOpen(bool isInstant);
 	void checkComplete();

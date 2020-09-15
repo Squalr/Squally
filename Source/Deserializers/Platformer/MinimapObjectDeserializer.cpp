@@ -91,7 +91,6 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[CagedYeti::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[CagedZebra::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[CartLift::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
-	this->deserializers[CartStop::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[CastleGate::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Catapult::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Chest::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
