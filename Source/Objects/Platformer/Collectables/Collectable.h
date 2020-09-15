@@ -28,6 +28,7 @@ protected:
 
 private:
 	typedef GameObject super;
+	friend class BinderCollectable;
 
 	void tryCollect();
 	void disableCollection();

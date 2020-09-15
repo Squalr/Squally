@@ -38,6 +38,16 @@ void MiniMapObjectBinderDeserializer::InitializeBindingTable()
     MiniMapObjectBinderDeserializer::BindingTable[MechanicalFlail::MapKey] = [=](){ return BinderMechanicalFlail::create(); };
     MiniMapObjectBinderDeserializer::BindingTable[PendulumBlade::MapKey] = [=](){ return BinderPendulumBlade::create(); };
 
+    // Physics
+    MiniMapObjectBinderDeserializer::BindingTable[TrapDoor::MapKey] = [=](){ return BinderTrapDoor::create(); };
+
+    // Collectables
+    MiniMapObjectBinderDeserializer::BindingTable[IOUDrop::MapKey] = [=](){ return BinderCollectable::create(); };
+    MiniMapObjectBinderDeserializer::BindingTable[IOUDrop5::MapKey] = [=](){ return BinderCollectable::create(); };
+    MiniMapObjectBinderDeserializer::BindingTable[IOUDrop10::MapKey] = [=](){ return BinderCollectable::create(); };
+    MiniMapObjectBinderDeserializer::BindingTable[IOUDrop25::MapKey] = [=](){ return BinderCollectable::create(); };
+    MiniMapObjectBinderDeserializer::BindingTable[ManaOrb::MapKey] = [=](){ return BinderCollectable::create(); };
+
     // Doors
     MiniMapObjectBinderDeserializer::BindingTable[AddDoor::MapKey] = [=](){ return BinderPortal::create(); };
     MiniMapObjectBinderDeserializer::BindingTable[DragonDoor::MapKey] = [=](){ return BinderPortal::create(); };

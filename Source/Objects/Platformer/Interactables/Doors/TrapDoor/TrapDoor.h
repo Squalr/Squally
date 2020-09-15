@@ -31,6 +31,7 @@ protected:
 
 private:
 	typedef HackableObject super;
+	friend class BinderTrapDoor;
 
 	void onDoorEventTriggered(cocos2d::ValueMap args);
 
