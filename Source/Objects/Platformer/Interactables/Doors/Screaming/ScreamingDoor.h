@@ -7,6 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class TrackingEye;
+
 class ScreamingDoor : public Portal
 {
 public:
@@ -21,11 +23,12 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	cocos2d::Vec2 getButtonOffset() override;
-	HackablePreview* createDefaultPreview() override;
 
 private:
 	typedef Portal super;
 
 	cocos2d::Sprite* screamingDoor;
+
+	TrackingEye* leftEye;
+	TrackingEye* rightEye;
 };

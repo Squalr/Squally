@@ -3,6 +3,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Objects/Platformer/Interactables/Doors/Screaming/TrackingEye.h"
+
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
@@ -21,8 +23,12 @@ ScreamingDoor* ScreamingDoor::create(ValueMap& properties)
 ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, Size(256.0f, 420.0f), Vec2(0.0f, -320.0f))
 {
 	this->screamingDoor = Sprite::create(ObjectResources::Doors_ScreamingDoor_ScreamingDoor);
+	this->leftEye = TrackingEye::create();
+	this->rightEye = TrackingEye::create();
 
 	this->backNode->addChild(this->screamingDoor);
+	this->backNode->addChild(this->leftEye);
+	this->backNode->addChild(this->rightEye);
 }
 
 ScreamingDoor::~ScreamingDoor()
@@ -39,19 +45,11 @@ void ScreamingDoor::initializePositions()
 	super::initializePositions();
 
 	this->screamingDoor->setPosition(Vec2(0.0f, 0.0f));
+	this->leftEye->setPosition(Vec2(-108.0f, 76.0f));
+	this->rightEye->setPosition(Vec2(96.0f, 76.0f));
 }
 
 void ScreamingDoor::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-Vec2 ScreamingDoor::getButtonOffset()
-{
-	return Vec2(-286.0f, -128.0f);
-}
-
-HackablePreview* ScreamingDoor::createDefaultPreview()
-{
-	return nullptr;
 }
