@@ -7,16 +7,16 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LanternGate : public Portal
+class ScreamingDoor : public Portal
 {
 public:
-	static LanternGate* create(cocos2d::ValueMap& properties);
+	static ScreamingDoor* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
 
 protected:
-	LanternGate(cocos2d::ValueMap& properties);
-	virtual ~LanternGate();
+	ScreamingDoor(cocos2d::ValueMap& properties);
+	virtual ~ScreamingDoor();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -27,6 +27,5 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* gateRight;
-	cocos2d::Sprite* gateLeft;
+	cocos2d::Sprite* screamingDoor;
 };

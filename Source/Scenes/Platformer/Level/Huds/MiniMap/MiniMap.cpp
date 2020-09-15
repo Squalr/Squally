@@ -294,6 +294,6 @@ void MiniMap::positionMiniMap()
 		MiniMapObject* object = next.first;
 		float depth = next.second;
 
-		object->setVisible(std::abs(depth - squallyDepth) <= CollisionObject::CollisionZThreshold);
+		object->depthVisibilityNode->setVisible(std::abs(depth - squallyDepth) <= CollisionObject::CollisionZThreshold);
 	}
 }

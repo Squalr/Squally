@@ -58,7 +58,7 @@ MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 25
 	this->contentNode->addChild(this->background);
 	this->contentNode->addChild(this->portalEffectNode);
 	this->contentNode->addChild(this->edge);
-	this->addChild(this->portalBase);
+	this->backNode->addChild(this->portalBase);
 	this->addChild(this->portalOpenSound);
 }
 

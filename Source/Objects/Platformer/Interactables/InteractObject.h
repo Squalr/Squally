@@ -70,6 +70,7 @@ protected:
 	virtual void onEndCollision();
 
 	InteractType interactType;
+	cocos2d::Node* backNode;
 	CollisionObject* interactCollision;
 	Scrappy* scrappy;
 	Squally* squally;

@@ -645,7 +645,6 @@ const std::string DecorResources::Mines_Rock4 = "Private/Platformer/Decor/Mines/
 const std::string DecorResources::Mines_Rope1 = "Private/Platformer/Decor/Mines/Rope1.png";
 const std::string DecorResources::Mines_Rope2 = "Private/Platformer/Decor/Mines/Rope2.png";
 const std::string DecorResources::Mines_Rope3 = "Private/Platformer/Decor/Mines/Rope3.png";
-const std::string DecorResources::Mines_ScreamingDoor = "Private/Platformer/Decor/Mines/ScreamingDoor.png";
 const std::string DecorResources::Mines_Stelag1 = "Private/Platformer/Decor/Mines/Stelag1.png";
 const std::string DecorResources::Mines_Stelag2 = "Private/Platformer/Decor/Mines/Stelag2.png";
 const std::string DecorResources::Mines_Stelag3 = "Private/Platformer/Decor/Mines/Stelag3.png";

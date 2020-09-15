@@ -111,29 +111,29 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->lightLeft->setOpacity(0);
 	this->lightRight->setOpacity(0);
 
-	this->addChild(this->barLeft);
-	this->addChild(this->barRight);
-	this->addChild(this->backNode);
-	this->addChild(this->lightLeft);
-	this->addChild(this->lightRight);
-	this->addChild(this->doorClip);
-	this->addChild(this->frontNode);
-	this->addChild(this->indexLabel);
-	this->addChild(this->truthLabel);
-	this->addChild(this->hackableLabel);
+	this->backNode->addChild(this->barLeft);
+	this->backNode->addChild(this->barRight);
+	this->backNode->addChild(this->backNode);
+	this->backNode->addChild(this->lightLeft);
+	this->backNode->addChild(this->lightRight);
+	this->backNode->addChild(this->doorClip);
+	this->backNode->addChild(this->frontNode);
+	this->backNode->addChild(this->indexLabel);
+	this->backNode->addChild(this->truthLabel);
+	this->backNode->addChild(this->hackableLabel);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
-		this->addChild(this->runes[index]);
-		this->addChild(this->runesFailed[index]);
-		this->addChild(this->runesPassed[index]);
+		this->backNode->addChild(this->runes[index]);
+		this->backNode->addChild(this->runesFailed[index]);
+		this->backNode->addChild(this->runesPassed[index]);
 	}
 
 	this->sliderSound->setCustomMultiplier(0.25f);
 	this->sliderResetSound->setCustomMultiplier(0.25f);
 	this->electricitySound->setCustomMultiplier(0.75f);
 
-	this->addChild(this->marker);
+	this->backNode->addChild(this->marker);
 	this->addChild(this->electricitySound);
 	this->addChild(this->sliderSound);
 	this->addChild(this->sliderResetSound);

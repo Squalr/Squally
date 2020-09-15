@@ -646,7 +646,6 @@ namespace DecorResources
 	extern const std::string Mines_Rope1;
 	extern const std::string Mines_Rope2;
 	extern const std::string Mines_Rope3;
-	extern const std::string Mines_ScreamingDoor;
 	extern const std::string Mines_Stelag1;
 	extern const std::string Mines_Stelag2;
 	extern const std::string Mines_Stelag3;

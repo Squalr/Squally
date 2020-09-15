@@ -34,7 +34,7 @@ private:
 	ClickableNode* buildDeleteButton(int profileId);
 	cocos2d::Node* buildSaveGameContent(int profileId);
 	cocos2d::Node* buildEntityFrame(PlatformerEntity* entity, cocos2d::Vec2 offsetAdjustment, int eq);
-	std::string getBackgroundResourceForCurrentSaveProfile();
+	cocos2d::Sprite* getBackgroundForCurrentSaveProfile();
 	void loadSave();
 	void goBack();
 

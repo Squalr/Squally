@@ -358,14 +358,13 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	Node* content = Node::create();
 	Node* entityContent = Node::create();
 	Sprite* entityFrame = Sprite::create(UIResources::Menus_SaveSelectMenu_AvatarFrame);
-	std::string backgroundResource = this->getBackgroundResourceForCurrentSaveProfile();
 
 	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, Size(128.0f, 128.0f));
-	Sprite* backgroundSqually = Sprite::create(backgroundResource);
+	Sprite* backgroundEnvironment = this->getBackgroundForCurrentSaveProfile();
 
 	entity->setPosition(entity->getDialogueOffset() + Vec2(-16.0f, -80.0f) + offsetAdjustment);
 
-	entityContent->addChild(backgroundSqually);
+	entityContent->addChild(backgroundEnvironment);
 	entityContent->addChild(entity);
 	content->addChild(entityClip);
 	content->addChild(entityFrame);
@@ -383,40 +382,44 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	return content;
 }
 
-std::string SaveSelectMenu::getBackgroundResourceForCurrentSaveProfile()
+Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 {
 	std::string currentMap = StrUtils::toLower(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
 
 	if (StrUtils::contains(currentMap, "underflowruins", true))
 	{
-		return HexusResources::Menus_HexusFrameUnderflowRuins;
+		return Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins);
 	}
-	else if (StrUtils::contains(currentMap, "seasharpcaverns", true))
+	else if (StrUtils::contains(currentMap, "datamines", true))
 	{
-		return HexusResources::Menus_HexusFrameDataMines;
+		Sprite* background = Sprite::create(HexusResources::Menus_HexusFrameDataMines);
+
+		background->setPositionY(-72.0f);
+
+		return background;
 	}
 	else if (StrUtils::contains(currentMap, "castlevalgrind", true))
 	{
-		return HexusResources::Menus_HexusFrameCastleValgrind;
+		return Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind);
 	}
 	else if (StrUtils::contains(currentMap, "balmerPeaks", true))
 	{
-		return HexusResources::Menus_HexusFrameBallmerPeaks;
+		return Sprite::create(HexusResources::Menus_HexusFrameBallmerPeaks);
 	}
 	else if (StrUtils::contains(currentMap, "daemonshallow", true))
 	{
-		return HexusResources::Menus_HexusFrameDaemonsHallow;
+		return Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow);
 	}
 	else if (StrUtils::contains(currentMap, "lambdacrypts", true))
 	{
-		return HexusResources::Menus_HexusFrameLambdaCrypts;
+		return Sprite::create(HexusResources::Menus_HexusFrameLambdaCrypts);
 	}
 	else if (StrUtils::contains(currentMap, "voidStar", true))
 	{
-		return HexusResources::Menus_HexusFrameVoidStar;
+		return Sprite::create(HexusResources::Menus_HexusFrameVoidStar);
 	}
 	else
 	{
-		return HexusResources::Menus_HexusFrameEndianForest;
+		return Sprite::create(HexusResources::Menus_HexusFrameEndianForest);
 	}
 }

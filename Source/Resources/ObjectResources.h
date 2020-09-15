@@ -239,6 +239,11 @@ namespace ObjectResources
 	extern const std::string Doors_PuzzleDoor_YellowStone_Back;
 	extern const std::string Doors_PuzzleDoor_YellowStone_Door;
 	extern const std::string Doors_PuzzleDoor_YellowStone_Front;
+	extern const std::string Doors_ScreamingDoor_EyeBase;
+	extern const std::string Doors_ScreamingDoor_EyeInner;
+	extern const std::string Doors_ScreamingDoor_EyePupil;
+	extern const std::string Doors_ScreamingDoor_EyeRing;
+	extern const std::string Doors_ScreamingDoor_ScreamingDoor;
 	extern const std::string Doors_Temple_DownArrow;
 	extern const std::string Doors_Temple_Scarab;
 	extern const std::string Doors_Temple_Skull;
@@ -292,6 +297,8 @@ namespace ObjectResources
 	extern const std::string Interactive_Chests_ChestOpen;
 	extern const std::string Interactive_Chests_CipherChestClosed;
 	extern const std::string Interactive_Chests_CipherChestOpened;
+	extern const std::string Interactive_Chests_EgyptianChestAltClosed;
+	extern const std::string Interactive_Chests_EgyptianChestAltOpen;
 	extern const std::string Interactive_Chests_EgyptianChestClosed;
 	extern const std::string Interactive_Chests_EgyptianChestOpen;
 	extern const std::string Interactive_Chests_GlassDisplay;

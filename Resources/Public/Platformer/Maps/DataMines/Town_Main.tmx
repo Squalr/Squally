@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1058">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1059">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -36,7 +36,12 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="884" name="Mines/ScreamingDoor" type="decor" x="5377.82" y="2066.03" width="800" height="1114"/>
+  <object id="884" name="screaming-door" type="object" x="5378" y="2066" width="800" height="1114">
+   <properties>
+    <property name="map" value="DataMines/Zone_4_0"/>
+    <property name="transition" value="goa"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="92" name="decor -12 bg fg">
   <properties>
@@ -107,12 +112,6 @@
     <property name="color" value="blue"/>
     <property name="fill" value="diamond"/>
     <property name="reward-pool" value="dm-diamond"/>
-   </properties>
-  </object>
-  <object id="1049" name="portal" type="object" x="5653.45" y="2923.52" width="256" height="256">
-   <properties>
-    <property name="map" value="DataMines/Zone_4_0"/>
-    <property name="transition" value="goa"/>
    </properties>
   </object>
  </objectgroup>
@@ -439,6 +438,18 @@
   </object>
   <object id="1056" name="mines" type="terrain" x="8233.34" y="1245.19" width="229.08" height="3187.69"/>
  </objectgroup>
+ <objectgroup id="142" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1058" name="olive" type="entity" x="7604" y="3481" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="olive-hexus,friendly,pick-pocket,face-squally"/>
+    <property name="pocket-pool" value="dm-generic"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="132" name="player_layer -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
@@ -671,7 +682,7 @@
     <property name="transition" value="inn-top"/>
    </properties>
   </object>
-  <object id="998" name="solid" type="collision" x="4778.24" y="2729.83" width="217.455" height="1206.15"/>
+  <object id="998" name="solid" type="collision" x="4778.24" y="2409.83" width="217.455" height="1526.15"/>
   <object id="1036" name="portal" type="object" x="538.667" y="2146.55" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Zone_3_3"/>
@@ -918,6 +929,7 @@
   <object id="922" name="portal" type="object" x="3719.88" y="1618.55" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Home_Mildred"/>
+    <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="mildred-top"/>
    </properties>
   </object>

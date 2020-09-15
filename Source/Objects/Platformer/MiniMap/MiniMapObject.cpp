@@ -30,6 +30,7 @@ MiniMapObject* MiniMapObject::create(ValueMap& properties, Color4B defaultColor)
 MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super(MiniMapObject::transformUUID(properties))
 {
 	this->drawColor = defaultColor;
+	this->depthVisibilityNode = Node::create();
 	this->rotatorNode = Node::create();
 	this->drawNode = DrawNode::create();
 	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyMiniMapHidden, Value(false)).asBool();
@@ -87,8 +88,9 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 		}
 	}
 	
+	this->depthVisibilityNode->addChild(this->rotatorNode);
 	this->rotatorNode->addChild(this->drawNode);
-	this->addChild(this->rotatorNode);
+	this->addChild(this->depthVisibilityNode);
 }
 
 MiniMapObject::~MiniMapObject()

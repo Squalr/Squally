@@ -24,7 +24,8 @@ protected:
 
 private:
 	typedef HackableObject super;
-
+	friend class BinderDensityObject;
+	
 	float heightRange;
 
 	static const float DensityFloatSpeed;

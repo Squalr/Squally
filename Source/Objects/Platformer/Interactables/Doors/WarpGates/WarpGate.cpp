@@ -44,9 +44,9 @@ WarpGate::WarpGate(ValueMap& properties) : super(properties, Size(128.0f, 256.0f
 	this->innerContentNode->addChild(this->edgeParticlesRight);
 	this->innerContentNode->addChild(this->edgeParticlesUp);
 	this->innerContentNode->addChild(this->edgeParticlesDown);
-	this->addChild(this->portalClip);
-	this->addChild(this->doorFrame);
-	this->addChild(this->doorClosed);
+	this->backNode->addChild(this->portalClip);
+	this->backNode->addChild(this->doorFrame);
+	this->backNode->addChild(this->doorClosed);
 	this->addChild(this->portalOpenSound);
 }
 

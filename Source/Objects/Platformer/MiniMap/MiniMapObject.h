@@ -19,6 +19,7 @@ public:
 	static const std::string PropertyShape;
 	static const std::string TagMiniMapObject;
 	
+	cocos2d::Node* depthVisibilityNode;
 	cocos2d::Node* rotatorNode;
 	cocos2d::DrawNode* drawNode;
 
