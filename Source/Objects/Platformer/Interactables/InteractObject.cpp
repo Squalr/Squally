@@ -289,6 +289,16 @@ void InteractObject::setUnlockable(bool isUnlockable, std::function<bool()> unlo
 	this->unlockCallback = unlockCallback;
 }
 
+bool InteractObject::getIsLocked()
+{
+	return this->isLocked;
+}
+
+bool InteractObject::getIsDisabled()
+{
+	return this->disabled;
+}
+
 void InteractObject::tryInteractObject(PlatformerEntity* interactingEntity)
 {
 	if (interactingEntity == nullptr || interactingEntity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))

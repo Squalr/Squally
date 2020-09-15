@@ -136,6 +136,11 @@ void EdgePortal::initializeListeners()
 
 	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
 	{
+		if (this->getIsLocked() || this->getIsDisabled())
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
 		for (auto arrow : this->edgeArrows)
 		{
 			arrow->runAction(FadeTo::create(0.25f, 255));
