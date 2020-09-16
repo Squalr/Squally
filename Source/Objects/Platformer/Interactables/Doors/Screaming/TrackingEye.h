@@ -14,6 +14,8 @@ class TrackingEye : public SmartNode
 public:
 	static TrackingEye* create();
 
+	void pair(TrackingEye* pairedEye);
+
 	static const std::string MapKey;
 
 protected:
@@ -27,7 +29,11 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void updateEyeTracking();
+	void updateEyeTracking(float dt);
+
+	cocos2d::Vec2 eyeVector;
+
+	TrackingEye* pairedEye;
 
 	std::vector<cocos2d::Sprite*> eyeParts;
 	std::vector<float> leeway;

@@ -26,6 +26,9 @@ ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, Size(256.
 	this->leftEye = TrackingEye::create();
 	this->rightEye = TrackingEye::create();
 
+	this->leftEye->pair(this->rightEye);
+	this->rightEye->pair(this->leftEye);
+
 	this->backNode->addChild(this->screamingDoor);
 	this->backNode->addChild(this->leftEye);
 	this->backNode->addChild(this->rightEye);
