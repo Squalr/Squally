@@ -91,6 +91,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->canPause = true;
 	this->awaitingConfirmationEnd = false;
 	this->miniMap = MiniMap::create();
+	this->mapRawRef = nullptr;
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create(
@@ -204,6 +205,11 @@ void PlatformerMap::initializeListeners()
 	{
 		// Using combat transitions for respawn transition, for now.
 		this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->tryReleaseMapRawRef();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
@@ -554,8 +560,32 @@ void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMX
 		return;
 	}
 
-	// Best effort.
-	this->miniMap->loadMapFromTmx(mapResource, mapRaw);
+	this->mapRawRef = mapRaw;
+	this->mapRawRef->retain();
+
+	this->miniMap->setOpacity(0);
+
+	// Data race! By defering for awhile, a very strange bug is avoided that can cause Squally to glitch out and fly away.
+	// No idea how loading the mini-map interferes with this, but debugging it was becoming too big of a time sink.
+	this->defer([=]()
+	{
+		// Best effort load. No reason it shouldn't work since the mapRaw object is deserialized.
+		if (this->mapRawRef != nullptr)
+		{
+			this->miniMap->loadMapFromTmx(mapResource, this->mapRawRef);
+			this->miniMap->runAction(FadeTo::create(0.25f, 255));
+			this->tryReleaseMapRawRef();
+		}
+	}, 15);
+}
+
+void PlatformerMap::tryReleaseMapRawRef()
+{
+	if (this->mapRawRef != nullptr)
+	{
+		this->mapRawRef->release();
+		this->mapRawRef = nullptr;
+	}
 }
 
 void PlatformerMap::buildHexus()

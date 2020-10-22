@@ -2,6 +2,14 @@
 
 #include "Scenes/MapBase.h"
 
+namespace cocos2d
+{
+	namespace cocos_experimental
+	{
+		class TMXTiledMap;
+	}
+}
+
 class AlchemyMenu;
 class BlacksmithingMenu;
 class Cipher;
@@ -47,6 +55,7 @@ private:
 	void buildHexusCardHelp();
 	void buildItemInfoMenu();
 	void buildCipher();
+	void tryReleaseMapRawRef();
 
 	bool awaitingConfirmationEnd;
 
@@ -66,5 +75,6 @@ private:
 	cocos2d::Node* combatFadeInNode;
 	MiniMap* miniMap;
 
+	cocos2d::cocos_experimental::TMXTiledMap* mapRawRef;
 	std::string transition;
 };
