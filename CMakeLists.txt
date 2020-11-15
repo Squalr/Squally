@@ -4,6 +4,12 @@ project(Squally VERSION 1.1.5 LANGUAGES C CXX)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
+find_program(IWYU_PATH NAMES include-what-you-use iwyu)
+if(IWYU_PATH)
+    set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+    set(CMAKE_C_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+endif()
+
 # External dependencies
 find_package(RapidJSON REQUIRED)
 find_package(tinyxml2 REQUIRED)

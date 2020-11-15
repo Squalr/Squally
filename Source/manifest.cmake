@@ -2135,6 +2135,7 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Title/TitleScreenBackground.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Tutorials/Save/TutorialSaveKeys.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Strings.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/precheader_squally.cpp"
 )
 
 set(GAME_HEADERS
@@ -4330,5 +4331,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Title/TitleScreenBackground.h"
     "${CMAKE_CURRENT_LIST_DIR}/Scenes/Tutorials/Save/TutorialSaveKeys.h"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Strings.h"
+    "${CMAKE_CURRENT_LIST_DIR}/precheader_squally.h"
 )
 
