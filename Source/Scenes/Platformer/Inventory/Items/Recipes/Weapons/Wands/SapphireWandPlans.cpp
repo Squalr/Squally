@@ -31,7 +31,7 @@ SapphireWandPlans::~SapphireWandPlans()
 
 Item* SapphireWandPlans::craft()
 {
-	return SerpentWand::create();
+	return SapphireWand::create();
 }
 
 std::vector<std::tuple<Item*, int>> SapphireWandPlans::getReagentsInternal()

@@ -168,8 +168,8 @@ void InventoryMenu::initializeListeners()
 
 void InventoryMenu::onFilterChange()
 {
-	this->populateItemList();
 	this->itemMenu->clearPreview();
+	this->populateItemList();
 }
 
 void InventoryMenu::populateItemList()

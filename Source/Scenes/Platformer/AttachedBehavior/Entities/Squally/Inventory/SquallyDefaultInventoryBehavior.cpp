@@ -78,6 +78,8 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 		// It is safe to add items to the player's inventory here for testing purposes, without fear of accidentally shipping this code live
 		if (DeveloperModeController::IsDeveloperBuild && SquallyDefaultInventoryBehavior::GiveDeveloperItems)
 		{
+			entityInventoryBehavior->getInventory()->forceInsert(WoodenBow::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(BucketHelm::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(SantaHat::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenClub::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenAxe::create(), false);

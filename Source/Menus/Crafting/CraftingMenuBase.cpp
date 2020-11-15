@@ -229,9 +229,9 @@ void CraftingMenuBase::update(float dt)
 
 void CraftingMenuBase::onFilterChange()
 {
-	this->populateItemList();
 	this->itemMenu->clearPreview();
 	this->craftingPreview->clearPreview();
+	this->populateItemList();
 }
 
 void CraftingMenuBase::populateItemList()
@@ -259,8 +259,8 @@ void CraftingMenuBase::open(std::vector<Item*> recipes)
 
 	this->canCraft = false;
 
-	this->filterMenu->focus();
-	this->itemMenu->unfocus();
+	// this->filterMenu->focus();
+	// this->itemMenu->unfocus();
 }
 
 void CraftingMenuBase::setReturnClickCallback(std::function<void()> returnClickCallback)

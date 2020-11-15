@@ -68,6 +68,9 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
 	this->chapterList.push_back(this->buildDebugButton("Warp Room (VS)", MapResources::VoidStar_Mages_Warp));
 	this->chapterList.push_back(this->buildDebugButton("==========", ""));
+	this->chapterList.push_back(this->buildDebugButton("Alch (DM)", MapResources::DataMines_Town_Alch));
+	this->chapterList.push_back(this->buildDebugButton("Inn (DM)", MapResources::DataMines_Town_Inn));
+	this->chapterList.push_back(this->buildDebugButton("Smith (DM)", MapResources::DataMines_Town_Smith));
 	this->chapterList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Zone_4_3 (DM)", MapResources::DataMines_Zone_4_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone_4_2 (DM)", MapResources::DataMines_Zone_4_2));
