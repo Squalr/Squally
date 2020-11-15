@@ -2,13 +2,6 @@
 #include <functional>
 #include <stack>
 
-#include "cocos/math/CCGeometry.h"
-#include "cocos/math/Vec2.h"
-
-#include "Engine/GlobalNode.h"
-
-class Hud;
-
 namespace cocos2d
 {
 	class Node;

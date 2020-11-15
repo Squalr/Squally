@@ -71,8 +71,8 @@ void Tent::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->healAnimation));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->tentFront));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->healAnimation));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->tentFront));
 }
 
 void Tent::initializePositions()
@@ -90,12 +90,12 @@ void Tent::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->topCollision->whenCollidesWith({(int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
+	this->topCollision->whenCollidesWith({(int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics}, [=](CollisionData data)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
-	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 	{
 		this->runHealAnimation();
 
@@ -107,14 +107,14 @@ void Tent::initializeListeners()
 			});
 		}), PlatformerFriendly::PlatformerFriendlyTag);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 	{
 		this->isAnimating = false;
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

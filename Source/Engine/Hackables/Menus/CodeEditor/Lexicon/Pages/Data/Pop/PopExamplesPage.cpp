@@ -5,7 +5,6 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Components/RegisterBlock.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Components/StackBlock.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/TextPanel.h"
@@ -132,80 +131,80 @@ void PopExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->pointerHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->pointerHelpButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->show();
 	});
 
-	this->pointerHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->pointerHelpButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->hide();
 	});
 
-	this->offsetHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->offsetHelpButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp->show();
 	});
 
-	this->offsetHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->offsetHelpButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp->hide();
 	});
 
-	this->resetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->resetButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->resetState();
 	});
 
-	this->popButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->popButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->setEcx(this->stackBlock->pop());
 		this->registerBlock->setEsp(this->registerBlock->getEsp() - sizeof(void*));
 	});
 
-	this->popButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->popButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->highlightEcx(true);
 		this->stackBlock->highlightTop();
 	});
 
-	this->popButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->popButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 		this->stackBlock->clearHighlights();
 	});
 
-	this->popPtrButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->popPtrButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->setEbxPtr(this->stackBlock->pop(), 0);
 		this->registerBlock->setEsp(this->registerBlock->getEsp() - sizeof(void*));
 	});
 
-	this->popPtrButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->popPtrButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->highlightEbxPtr(true, 0);
 		this->stackBlock->highlightTop();
 	});
 
-	this->popPtrButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->popPtrButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 		this->stackBlock->clearHighlights();
 	});
 
-	this->popPtrOffsetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->popPtrOffsetButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->setEsiPtr(this->stackBlock->pop(), 3);
 		this->registerBlock->setEsp(this->registerBlock->getEsp() - sizeof(void*));
 	});
 
-	this->popPtrOffsetButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->popPtrOffsetButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->highlightEsiPtr(true, 3);
 		this->stackBlock->highlightTop();
 	});
 
-	this->popPtrOffsetButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->popPtrOffsetButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 		this->stackBlock->clearHighlights();

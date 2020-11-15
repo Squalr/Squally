@@ -117,7 +117,7 @@ void TownExitBlocked::attachChironBehavior()
 
 	this->chiron->addChild(this->chironCollision);
 
-	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
+	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionData collisionData)
 	{
 		if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
 		{
@@ -140,7 +140,7 @@ void TownExitBlocked::attachChironBehavior()
 			));
 		}
 		
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

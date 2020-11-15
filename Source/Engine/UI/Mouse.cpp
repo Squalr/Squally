@@ -79,12 +79,12 @@ void Mouse::initializeListeners()
 		this->onEventMouseStateUpdate(eventCustom);
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](InputEvents::InputArgs*)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](KeyboardEventArgs*)
 	{
 		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](InputEvents::InputArgs*)
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](KeyboardEventArgs*)
 	{
 		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 	});
@@ -138,7 +138,7 @@ const Vec2& Mouse::getPosition() const
 
 void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
 {
-	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getUserData());
+	MouseEventArgs* args = (MouseEventArgs*)(eventCustom->getUserData());
 
 	if (args->isDragging)
 	{

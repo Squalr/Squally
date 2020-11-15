@@ -74,11 +74,11 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	{
 		FogOfWar* fogOfWar = FogOfWar::create(owner, nullptr);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			marker,
 			fogOfWar,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -92,11 +92,11 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		// TOP CENTER ARENA MARKER NOT FOUND!
 		FogOfWar* fogOfWar = FogOfWar::create(owner, nullptr);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,
 			fogOfWar,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},

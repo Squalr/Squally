@@ -78,7 +78,7 @@ void InputOutputItem::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->panel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->panel->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->selectCallback != nullptr)
 		{

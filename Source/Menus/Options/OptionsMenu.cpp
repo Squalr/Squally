@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -129,15 +130,15 @@ void OptionsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onMenuCancel();  });
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->generalTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
-	this->videoTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
-	this->languageTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
-	this->memesTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
+	this->cancelButton->setMouseClickCallback([=](MouseEventArgs*) { this->onMenuCancel();  });
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*) { this->onMenuExit();  });
+	this->closeButton->setMouseClickCallback([=](MouseEventArgs*) { this->onMenuExit();  });
+	this->generalTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::General); });
+	this->videoTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::Video); });
+	this->languageTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::Language); });
+	this->memesTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

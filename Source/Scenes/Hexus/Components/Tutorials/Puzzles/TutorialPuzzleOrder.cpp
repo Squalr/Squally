@@ -96,12 +96,12 @@ void TutorialPuzzleOrder::onAnyStateChange(GameState* gameState)
 
 void TutorialPuzzleOrder::initializeCallbacks(GameState* gameState)
 {
-	this->introNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->introNextButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->introNextButton->interact();
 	});

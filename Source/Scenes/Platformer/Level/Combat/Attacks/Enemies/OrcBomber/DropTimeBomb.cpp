@@ -69,11 +69,11 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, next, this->getRandomDamage(), this->abilityType));
 		});
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			owner,
 			timeBomb,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::Discard,
+			SpawnMethod::Above,
+			PositionMode::Discard,
 			[&]()
 			{
 			},

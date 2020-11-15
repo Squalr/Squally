@@ -1,15 +1,13 @@
 #pragma once
 #include <set>
 
-#include "cocos/2d/CCNode.h"
-#include "cocos/base/CCEventKeyboard.h"
-
-#include "Engine/Events/InputEvents.h"
-
 namespace cocos2d
 {
 	class EventListener;
 }
+
+struct KeyboardEventArgs;
+struct MouseEventArgs;
 
 class SmartNode : public cocos2d::Node
 {
@@ -21,14 +19,14 @@ public:
 	virtual void removeEventListenerByTag(std::string tag);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 	void addGlobalEventListener(cocos2d::EventListener* listener);
-	cocos2d::EventListener* whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible = true);
-	cocos2d::EventListener* whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenScrollUp(std::function<void(MouseEventArgs*)> callback, bool requireVisible = true);
+	cocos2d::EventListener* whenScrollDown(std::function<void(MouseEventArgs*)> callback, bool requireVisible = true);
 
 protected:
 	SmartNode();

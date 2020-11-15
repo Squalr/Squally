@@ -10,6 +10,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
@@ -164,7 +165,7 @@ void MapBase::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventQueryHackerModeAllowed, [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackerModeQueryArgs* args = static_cast<HackableEvents::HackerModeQueryArgs*>(eventCustom->getUserData());
+		HackerModeQueryArgs* args = static_cast<HackerModeQueryArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -172,7 +173,7 @@ void MapBase::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!this->canPause ||!GameUtils::isFocused(this))
 		{
@@ -297,7 +298,7 @@ void MapBase::toggleHackerMode(void* userData)
 
 	if (!this->hackermodeEnabled)
 	{
-		HackableEvents::HackToggleArgs args = *static_cast<HackableEvents::HackToggleArgs*>(userData);
+		HackToggleArgs args = *static_cast<HackToggleArgs*>(userData);
 		
 		HackableEvents::TriggerHackerModeEnable(args);
 	}

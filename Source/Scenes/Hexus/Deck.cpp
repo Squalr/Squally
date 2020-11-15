@@ -255,7 +255,7 @@ void Deck::setCardOrder()
 void Deck::enableDeckSelection(std::function<void(Deck*)> callback)
 {
 	this->pad->enableInteraction();
-	this->pad->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->pad->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		callback(this);
 	});

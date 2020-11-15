@@ -151,11 +151,11 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 					));
 				}
 
-				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+				ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 					this->entity,
 					deserializeArgs.gameObject,
-					ObjectEvents::SpawnMethod::Below,
-					ObjectEvents::PositionMode::Discard,
+					SpawnMethod::Below,
+					PositionMode::Discard,
 					[&]()
 					{
 					},

@@ -2,8 +2,6 @@
 
 #include "Engine/Inventory/MinMaxPool.h"
 
-class CurrencyPool;
-
 // Merge pools will combine all nested pools into a single pool. This is useful for better sampling, as sampling occurs once instead of for each pool.
 class MergePool : public MinMaxPool
 {

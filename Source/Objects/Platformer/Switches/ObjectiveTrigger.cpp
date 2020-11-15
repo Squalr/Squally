@@ -33,10 +33,10 @@ ObjectiveTrigger::~ObjectiveTrigger()
 
 void ObjectiveTrigger::initializeListeners()
 {
-	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
+	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionData data)
 	{
 		Objectives::SetCurrentObjective(this->getSendEvent());
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

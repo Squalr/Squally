@@ -232,7 +232,7 @@ void CodeWindow::initializeListeners()
 		}
 	});
 
-	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->copyButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->script != nullptr)
 		{
@@ -240,7 +240,7 @@ void CodeWindow::initializeListeners()
 		}
 	});
 
-	this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->deleteButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->script != nullptr)
 		{
@@ -248,24 +248,24 @@ void CodeWindow::initializeListeners()
 		}
 	});
 
-	this->deleteButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->deleteButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->deletePanel->setOpacity(196);
 		this->deleteLabel->setOpacity(255);
 	});
 
-	this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->deleteButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->deletePanel->setOpacity(0);
 		this->deleteLabel->setOpacity(0);
 	});
 
-	this->copyButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->copyButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(196);
 		this->copyLabel->setOpacity(255);
 	});
-	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->copyButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(0);
 		this->copyLabel->setOpacity(0);
@@ -372,7 +372,7 @@ void CodeWindow::clearText()
 
 void CodeWindow::constructTokenizedText(std::string currentText)
 {
-	std::vector<CodeWindow::token> tokens = std::vector<CodeWindow::token>();
+	std::vector<AsmToken> tokens = std::vector<AsmToken>();
 
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
 	// Also split them down further if they contain comments
@@ -446,7 +446,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 				color = CodeWindow::CommentColor;
 			}
 
-			CodeWindow::token nextToken = CodeWindow::token(ConstantString::create(token), color);
+			AsmToken nextToken = AsmToken(ConstantString::create(token), color);
 			tokens.push_back(nextToken);
 		}
 	}

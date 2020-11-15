@@ -82,11 +82,11 @@ void ScrappyCombatManagerBehavior::spawnScrappy()
 		properties,
 		[=] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
 		{
-			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 				this->entity,
 				deserializeArgs.gameObject,
-				ObjectEvents::SpawnMethod::Above,
-				ObjectEvents::PositionMode::Discard,
+				SpawnMethod::Above,
+				PositionMode::Discard,
 				[&]()
 				{
 				},

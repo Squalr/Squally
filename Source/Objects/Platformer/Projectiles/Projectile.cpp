@@ -146,26 +146,26 @@ void Projectile::setMovementMode(MovementMode movementMode)
 	this->movementMode = movementMode;
 }
 
-void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision)
+void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	this->getCollision()->whenCollidesWith(collisionTypes, [=](CollisionObject::CollisionData data)
+	this->getCollision()->whenCollidesWith(collisionTypes, [=](CollisionData data)
 	{
 		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration > 0.0f)
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		return onCollision(data);
 	});
 }
 
-void Projectile::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollisionEnd)
+void Projectile::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	this->getCollision()->whenStopsCollidingWith(collisionTypes, [=](CollisionObject::CollisionData data)
+	this->getCollision()->whenStopsCollidingWith(collisionTypes, [=](CollisionData data)
 	{
 		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration > 0.0f)
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 		
 		return onCollisionEnd(data);

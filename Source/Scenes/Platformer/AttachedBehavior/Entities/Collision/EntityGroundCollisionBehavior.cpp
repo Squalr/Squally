@@ -222,16 +222,16 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 
 	this->addChild(this->groundCollision);
 
-	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		this->onCollideWithGround();
 		
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Intersection }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Intersection }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -271,13 +271,13 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 	this->addChild(this->rightCornerCollision);
 	this->addChild(this->leftCornerCollision);
 
-	this->leftCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->leftCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->rightCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->rightCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

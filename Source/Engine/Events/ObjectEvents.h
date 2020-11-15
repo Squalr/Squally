@@ -4,9 +4,7 @@
 
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCValue.h"
 
-class UIBoundObject;
 class MapLayer;
 class GameObject;
 class SmartNode;
@@ -15,6 +13,73 @@ class QueryObjectsArgsBase
 {
 public:
 	virtual void tryInvoke(SmartNode* object) = 0;
+	virtual ~QueryObjectsArgsBase() = default;
+};
+
+enum class SpawnMethod
+{
+	LayerBelow,
+	Below,
+	Above,
+	TopMost,
+};
+
+enum class PositionMode
+{
+	Discard,
+	Retain,
+	SetToOwner,
+};
+
+struct RequestObjectSpawnArgs
+{
+	cocos2d::Node* spawner;
+	cocos2d::Node* objectToSpawn;
+	SpawnMethod spawnMethod;
+	PositionMode positionMode;
+	std::function<void()> onSpawnSuccess;
+	std::function<void()> onSpawnFailed;
+	
+	bool handled;
+
+	RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above), onSpawnSuccess(nullptr), onSpawnFailed(nullptr), handled(false) { }
+	RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode, std::function<void()> onSpawnSuccess, std::function<void()> onSpawnFailed)
+		: spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode), onSpawnSuccess(onSpawnSuccess), onSpawnFailed(onSpawnFailed), handled(false) { }
+};
+
+struct RequestObjectSpawnDelegatorArgs
+{
+	MapLayer* sourceLayer;
+	RequestObjectSpawnArgs* innerArgs;
+
+	RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), innerArgs(nullptr) { }
+	RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, RequestObjectSpawnArgs* innerArgs) : sourceLayer(sourceLayer), innerArgs(innerArgs) { }
+};
+
+struct RelocateObjectArgs
+{
+	cocos2d::Node* relocatedObject;
+
+	RelocateObjectArgs() : relocatedObject(nullptr) { }
+	RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
+};
+
+struct ReparentBindArgs
+{
+	cocos2d::Node* relocatedObject;
+	cocos2d::Node* newParent;
+
+	ReparentBindArgs() : relocatedObject(nullptr), newParent(nullptr) { }
+	ReparentBindArgs(cocos2d::Node* relocatedObject, cocos2d::Node* newParent) : relocatedObject(relocatedObject), newParent(newParent) { }
+};
+
+struct StateWriteArgs
+{
+	GameObject* owner;
+	std::string key;
+	cocos2d::Value value;
+
+	StateWriteArgs(GameObject* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
 };
 
 template<class T>
@@ -63,72 +128,6 @@ public:
 	static const std::string EventElevateObject;
 	static const std::string EventUnbindObjectPrefix;
 	static const std::string EventWriteStatePrefix;
-
-	enum class SpawnMethod
-	{
-		LayerBelow,
-		Below,
-		Above,
-		TopMost,
-	};
-
-	enum class PositionMode
-	{
-		Discard,
-		Retain,
-		SetToOwner,
-	};
-
-	struct RequestObjectSpawnArgs
-	{
-		cocos2d::Node* spawner;
-		cocos2d::Node* objectToSpawn;
-		SpawnMethod spawnMethod;
-		PositionMode positionMode;
-		std::function<void()> onSpawnSuccess;
-		std::function<void()> onSpawnFailed;
-		
-		bool handled;
-
-		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above), onSpawnSuccess(nullptr), onSpawnFailed(nullptr), handled(false) { }
-		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode, std::function<void()> onSpawnSuccess, std::function<void()> onSpawnFailed)
-			: spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode), onSpawnSuccess(onSpawnSuccess), onSpawnFailed(onSpawnFailed), handled(false) { }
-	};
-
-	struct RequestObjectSpawnDelegatorArgs
-	{
-		MapLayer* sourceLayer;
-		RequestObjectSpawnArgs* innerArgs;
-
-		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), innerArgs(nullptr) { }
-		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, RequestObjectSpawnArgs* innerArgs) : sourceLayer(sourceLayer), innerArgs(innerArgs) { }
-	};
-
-	struct RelocateObjectArgs
-	{
-		cocos2d::Node* relocatedObject;
-
-		RelocateObjectArgs() : relocatedObject(nullptr) { }
-		RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
-	};
-
-	struct ReparentBindArgs
-	{
-		cocos2d::Node* relocatedObject;
-		cocos2d::Node* newParent;
-
-		ReparentBindArgs() : relocatedObject(nullptr), newParent(nullptr) { }
-		ReparentBindArgs(cocos2d::Node* relocatedObject, cocos2d::Node* newParent) : relocatedObject(relocatedObject), newParent(newParent) { }
-	};
-
-	struct StateWriteArgs
-	{
-		GameObject* owner;
-		std::string key;
-		cocos2d::Value value;
-
-		StateWriteArgs(GameObject* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
-	};
 	
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerBindObjectToUI(RelocateObjectArgs args);

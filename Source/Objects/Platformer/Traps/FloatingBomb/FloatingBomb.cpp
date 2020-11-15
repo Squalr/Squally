@@ -37,9 +37,9 @@ FloatingBomb::FloatingBomb(ValueMap& properties) : super(properties)
 	this->bomb = Sprite::create(ObjectResources::Traps_FloatingBomb_FloatingBomb);
 	this->bombCollision = CollisionObject::create(CollisionObject::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(true, true));
 
-	this->bombCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->bombCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	this->bombCollision->addChild(this->bomb);

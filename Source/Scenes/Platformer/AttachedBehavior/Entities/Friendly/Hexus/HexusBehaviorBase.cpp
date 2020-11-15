@@ -108,7 +108,7 @@ void HexusBehaviorBase::onEnter()
 	}
 	else
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->iconNode));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->iconNode));
 		
 		this->iconContainer->runAction(RepeatForever::create(Sequence::create(
 			EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, -16.0f))),

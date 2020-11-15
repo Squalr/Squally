@@ -2,8 +2,6 @@
 
 #include "Engine/Deserializers/Objects/ObjectDeserializer.h"
 
-class GameObject;
-
 class PlatformerEntityDeserializer : public ObjectDeserializer
 {
 public:

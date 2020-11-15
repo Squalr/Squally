@@ -37,25 +37,25 @@ void Water::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->liquidCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->liquidCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		this->runObjectSplash(collisionData.other, false);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->liquidCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->liquidCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		this->runObjectSplash(collisionData.other, true);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->liquidCollision->whileCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->liquidCollision->whileCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		this->applyWaterForce(collisionData.other, collisionData.dt);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

@@ -4,7 +4,6 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Components/RegisterBlockSigned.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/TextPanel.h"
@@ -126,72 +125,72 @@ void NegExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->pointerHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->pointerHelpButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->show();
 	});
 
-	this->pointerHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->pointerHelpButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->hide();
 	});
 
-	this->offsetHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->offsetHelpButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp->show();
 	});
 
-	this->offsetHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->offsetHelpButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp->hide();
 	});
 
-	this->resetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->resetButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->resetState();
 	});
 
-	this->negButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->negButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->setEcx(-this->registerBlock->getEcx());
 	});
 
-	this->negButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->negButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->highlightEcx(true);
 	});
 
-	this->negButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->negButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->negPtrButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->negPtrButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->setEbxPtr(-this->registerBlock->getEbxPtr(0), 0);
 	});
 
-	this->negPtrButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->negPtrButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->highlightEbxPtr(true, 0);
 	});
 
-	this->negPtrButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->negPtrButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->negPtrOffsetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->negPtrOffsetButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->setEsiPtr(-this->registerBlock->getEsiPtr(3), 3);
 	});
 
-	this->negPtrOffsetButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->negPtrOffsetButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->highlightEsiPtr(true, 3);
 	});
 
-	this->negPtrOffsetButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->negPtrOffsetButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});

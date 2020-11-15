@@ -1,8 +1,5 @@
 #pragma once
 
-#include "cocos/base/ccTypes.h"
-#include "cocos/math/CCGeometry.h"
-
 #include "Engine/Lighting/Effect.h"
 
 namespace cocos2d
@@ -31,6 +28,8 @@ public:
 protected:
     LightEffect(std::string fragmentShader);
     virtual ~LightEffect();
+
+private:
     bool init();
 
     cocos2d::Vec3 _lightPos;

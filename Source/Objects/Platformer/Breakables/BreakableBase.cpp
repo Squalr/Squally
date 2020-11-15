@@ -60,7 +60,7 @@ void BreakableBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->breakableCollision->whenCollidesWith({(int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData data)
+	this->breakableCollision->whenCollidesWith({(int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionData data)
 	{
 		if (!this->hasBroke)
 		{
@@ -70,7 +70,7 @@ void BreakableBase::initializeListeners()
 
 		this->breakableCollision->setPhysicsEnabled(false);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

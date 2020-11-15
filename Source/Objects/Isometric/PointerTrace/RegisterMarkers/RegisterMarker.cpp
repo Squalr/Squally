@@ -34,7 +34,7 @@ void RegisterMarker::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->registerLabel));
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->registerLabel));
 }
 
 void RegisterMarker::initializePositions()

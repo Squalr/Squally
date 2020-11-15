@@ -133,20 +133,20 @@ void CipherAdditionTutorial::onAnyStateChange(CipherState* cipherState)
 
 void CipherAdditionTutorial::initializeCallbacks(CipherState* cipherState)
 {
-	this->nextButtonIntro->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->nextButtonIntro->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->runTutorialPartB(cipherState);
 	});
-	this->nextButtonButtons->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->nextButtonButtons->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->runTutorialPartC(cipherState);
 	});
-	this->nextButtonConnect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->nextButtonConnect->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->tryUnHijackState(cipherState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->nextButtonIntro->interact();
 		this->nextButtonButtons->interact();

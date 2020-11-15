@@ -2,8 +2,6 @@
 
 #include "Engine/Deserializers/Objects/ObjectDeserializer.h"
 
-class GameObject;
-
 class IsometricEntityDeserializer : public ObjectDeserializer
 {
 public:

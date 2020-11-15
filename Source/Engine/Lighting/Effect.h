@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/CCRef.h"
-
 namespace cocos2d
 {
 	class GLProgramState;

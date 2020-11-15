@@ -3,7 +3,6 @@
 #include <string>
 
 class Music;
-class SmartNode;
 class Track;
 
 class SoundEvents

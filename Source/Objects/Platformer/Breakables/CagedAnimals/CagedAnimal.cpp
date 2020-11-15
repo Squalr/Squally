@@ -85,11 +85,11 @@ void CagedAnimal::onBreak()
 		SoundResources::Notifications_NotificationGood1
 	));
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this,
 		this->animalNode,
-		ObjectEvents::SpawnMethod::TopMost,
-		ObjectEvents::PositionMode::Retain,
+		SpawnMethod::TopMost,
+		PositionMode::Retain,
 		[&]()
 		{
 		},

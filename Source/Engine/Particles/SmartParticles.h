@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/Maps/GameObject.h"
 
 namespace cocos2d

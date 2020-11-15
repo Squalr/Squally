@@ -64,12 +64,12 @@ void MapLayer::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObject, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RequestObjectSpawnArgs* args = static_cast<ObjectEvents::RequestObjectSpawnArgs*>(eventCustom->getUserData());
+		RequestObjectSpawnArgs* args = static_cast<RequestObjectSpawnArgs*>(eventCustom->getUserData());
 
 		if (GameUtils::getFirstParentOfType<MapLayer>(args->spawner) == this)
 		{
 			// Delegate the spawning to the map, which will decide where to place the object
-			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args));
+			ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs(this, args));
 		}
 	}));
 

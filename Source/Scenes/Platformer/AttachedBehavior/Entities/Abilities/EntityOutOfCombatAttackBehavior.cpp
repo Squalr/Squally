@@ -202,11 +202,11 @@ void EntityOutOfCombatAttackBehavior::replaceAnimationPartWithProjectile(std::st
 		weapon->replaceWithObject(projectile, 2.0f);
 	}
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this->entity,
 		projectile,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 		},
@@ -241,11 +241,11 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 			this->cachedProjectile = nullptr;
 		}
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,
 			projectile,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 				this->cachedProjectile = projectile;

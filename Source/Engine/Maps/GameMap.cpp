@@ -224,7 +224,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RequestObjectSpawnDelegatorArgs* args = static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventCustom->getUserData());
+		RequestObjectSpawnDelegatorArgs* args = static_cast<RequestObjectSpawnDelegatorArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -234,7 +234,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -244,7 +244,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -265,14 +265,14 @@ std::string GameMap::getMapFileName()
 	return this->levelMapFileName;
 }
 
-void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
+void GameMap::spawnObject(RequestObjectSpawnDelegatorArgs* args)
 {
 	if (args == nullptr)
 	{
 		return;
 	}
 
-	ObjectEvents::RequestObjectSpawnArgs* innerArgs = args->innerArgs;
+	RequestObjectSpawnArgs* innerArgs = args->innerArgs;
 
 	if (this->mapLayers.empty() || innerArgs->objectToSpawn == nullptr)
 	{
@@ -280,16 +280,16 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 	}
 
 	bool isReentry = (innerArgs->objectToSpawn->getParent() != nullptr);
-	bool retainPosition = (innerArgs->positionMode != ObjectEvents::PositionMode::Discard);
+	bool retainPosition = (innerArgs->positionMode != PositionMode::Discard);
 
-	if (innerArgs->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	if (innerArgs->positionMode == PositionMode::SetToOwner)
 	{
 		innerArgs->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(innerArgs->spawner));
 	}
 
 	switch (innerArgs->spawnMethod)
 	{
-		case ObjectEvents::SpawnMethod::LayerBelow:
+		case SpawnMethod::LayerBelow:
 		{
 			std::vector<MapLayer*>::iterator prevIt = this->mapLayers.end();
 
@@ -318,7 +318,7 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 
 			break;
 		}
-		case ObjectEvents::SpawnMethod::TopMost:
+		case SpawnMethod::TopMost:
 		{
 			if (!this->mapLayers.empty())
 			{
@@ -328,7 +328,7 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 			
 			break;
 		}
-		case ObjectEvents::SpawnMethod::Below:
+		case SpawnMethod::Below:
 		{
 			for (auto layer : this->mapLayers)
 			{
@@ -340,7 +340,7 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 			}
 		}
 		default:
-		case ObjectEvents::SpawnMethod::Above:
+		case SpawnMethod::Above:
 		{
 			for (auto layer : this->mapLayers)
 			{
@@ -356,7 +356,7 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 	}
 }
 
-void GameMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
+void GameMap::moveObjectToTopLayer(RelocateObjectArgs* args)
 {
 	if (this->mapLayers.empty())
 	{
@@ -366,7 +366,7 @@ void GameMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
 	this->mapLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
 }
 
-void GameMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
+void GameMap::moveObjectToElevateLayer(RelocateObjectArgs* args)
 {
 	if (this->mapLayers.empty())
 	{

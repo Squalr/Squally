@@ -58,7 +58,7 @@ void MouseOverPanel::initializeListeners()
 
 void MouseOverPanel::onMouseMove(EventCustom* event)
 {
-	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getUserData());
+	MouseEventArgs* args = static_cast<MouseEventArgs*>(event->getUserData());
 
 	if (GameUtils::isVisible(this) && GameUtils::intersects(this->content, args->mouseCoords))
 	{

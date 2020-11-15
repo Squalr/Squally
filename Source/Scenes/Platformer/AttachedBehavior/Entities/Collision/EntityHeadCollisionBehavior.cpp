@@ -105,8 +105,8 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 	
 	this->addChild(this->headCollision);
 
-	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

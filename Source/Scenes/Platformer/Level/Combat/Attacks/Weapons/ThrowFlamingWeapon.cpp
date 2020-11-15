@@ -66,13 +66,13 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 		fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
 		fire->setPosition(Vec2(0.0f, 56.0f));
 		
-		weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+		weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			}
 
 			weapon->disable(true);
@@ -82,7 +82,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage(), this->abilityType));
 			}
 
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		});
 		
 		this->replaceMainhandWithProjectile(owner, weapon);

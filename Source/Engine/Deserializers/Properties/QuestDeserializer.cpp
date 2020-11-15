@@ -1,7 +1,5 @@
 #include "QuestDeserializer.h"
 
-#include "cocos/base/CCValue.h"
-
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Utils/LogUtils.h"
 

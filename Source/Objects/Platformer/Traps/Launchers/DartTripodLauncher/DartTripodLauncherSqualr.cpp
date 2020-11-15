@@ -61,14 +61,14 @@ Projectile* DartTripodLauncherSqualr::createProjectile()
 {
 	Dart* dart = Dart::create(this->currentAngle, this->launchSpeed);
 	
-	dart->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	dart->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
 	{
 		dart->disable(true);
 		dart->runImpactFX();
 
 		SqualrEvents::TriggerProjectileCollided();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	return dart;

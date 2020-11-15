@@ -57,7 +57,7 @@ EntityTextOverlayBehavior::~EntityTextOverlayBehavior()
 
 void EntityTextOverlayBehavior::onLoad()
 {
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->contentNode));
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->contentNode));
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
 	{

@@ -62,18 +62,18 @@ void EntityPacingBehavior::onLoad()
 
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
-		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionData collisionData)
 		{
 			this->cancelPacing();
 			
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		});
 
-		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionData collisionData)
 		{	
 			this->cancelPacing();
 
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		});
 	});
 

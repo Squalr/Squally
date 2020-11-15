@@ -47,7 +47,7 @@ void JmpMarker::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->assemblyLabel));
 	
 	this->scheduleUpdate();
 }

@@ -49,18 +49,18 @@ void CameraControl::initializeListeners()
 		this->cameraTarget = cameraTarget;
 	}, this->targetTag);
 
-	this->controlCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->controlCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->beginTrack();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->controlCollision->whenStopsCollidingWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->controlCollision->whenStopsCollidingWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->endTrack();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

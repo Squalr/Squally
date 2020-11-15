@@ -2,8 +2,6 @@
 #include <string>
 #include <vector>
 
-#include "cocos/math/CCGeometry.h"
-
 class Item;
 class Inventory;
 

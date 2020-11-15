@@ -78,11 +78,11 @@ void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<Pla
 	{
 		EnvelopingWinds* envelopingWinds = EnvelopingWinds::create(owner, nullptr);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			marker,
 			envelopingWinds,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -99,11 +99,11 @@ void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<Pla
 		// TOP CENTER ARENA MARKER NOT FOUND!
 		EnvelopingWinds* envelopingWinds = EnvelopingWinds::create(owner, nullptr);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,
 			envelopingWinds,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},

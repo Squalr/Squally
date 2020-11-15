@@ -76,54 +76,54 @@ void SquallyCollisionBehavior::onLoad()
 			return;
 		}
 
-		collisionBehavior->getGroundCollision()->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->getGroundCollision()->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 		{
 			collisionBehavior->onCollideWithGround();
 			
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		});
 	});
 
 	// Self-query to wait for collision to be created
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
-		this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
+		this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 		{	
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		});
 
 		if (this->leftCollision != nullptr)
 		{
-			this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+			this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			});
 		}
 
 		if (this->rightCollision != nullptr)
 		{
-			this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+			this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			});
 		}
 
 		if (this->entityCollision != nullptr)
 		{
-			this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+			this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::CollideWithPhysics;
+				return CollisionResult::CollideWithPhysics;
 			});
 		}
 
-		this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
+		this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionData collisionData)
 		{
 			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->kill();
 			});
 
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		});
 	});
 
@@ -147,11 +147,11 @@ void SquallyCollisionBehavior::onDisable()
 
 void SquallyCollisionBehavior::onEntityCollisionCreated()
 {
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionData collisionData)
 	{
 		if (this->noCombatDuration > 0.0f || !this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
@@ -164,26 +164,26 @@ void SquallyCollisionBehavior::onEntityCollisionCreated()
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionData collisionData)
 	{
 		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->kill();
 		});
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionData collisionData)
 	{
 		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->kill();
 		});
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

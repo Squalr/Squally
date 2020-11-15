@@ -2,13 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-	typedef std::vector<Value> ValueVector;
-}
-
 class MapLayer;
 
 class LayerDeserializer : public SmartNode
@@ -67,7 +60,7 @@ public:
 
 protected:
 	LayerDeserializer(std::string layerType);
-	~LayerDeserializer();
+	virtual ~LayerDeserializer();
 
 private:
 	typedef SmartNode super;

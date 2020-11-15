@@ -37,11 +37,11 @@ CatapultBall::CatapultBall(const ValueMap& properties, Vec2 velocity) : super(pr
 	this->velocity = velocity;
 	this->isAccelerating = true;
 
-	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
 		this->isAccelerating = false;
 
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
 	this->ballCollision->setHorizontalDampening(1.0f);

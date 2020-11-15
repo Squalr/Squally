@@ -101,9 +101,9 @@ void Vase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->vaseBroken->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Player, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+	this->vaseBroken->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Player, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

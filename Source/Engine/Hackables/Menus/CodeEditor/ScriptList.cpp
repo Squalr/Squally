@@ -89,7 +89,7 @@ void ScriptList::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->createNewScriptButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->addNewScript(); });
+	this->createNewScriptButton->setMouseClickCallback([=](MouseEventArgs*) { this->addNewScript(); });
 }
 
 void ScriptList::setActiveScriptText(std::string text)

@@ -3,6 +3,7 @@
 #include "cocos/2d/CCDrawNode.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
@@ -10,7 +11,7 @@
 
 using namespace cocos2d;
 
-void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	// Check for easy disqualifications
 	if (objectA == nullptr
@@ -53,17 +54,17 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 
 	// Note: rectToSegment is buggy as shit, but faster. If fixed, reinstate it.
 
-	if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Segment)
+	if (objectA->shape == CollisionShape::Rectangle && objectB->shape == CollisionShape::Segment)
 	{
 		CollisionResolver::polyToSegment(objectA, objectB, onCollision);
 		// CollisionResolver::rectToSegment(objectA, objectB, onCollision);
 	}
-	else if (objectA->shape == CollisionObject::Shape::Segment && objectB->shape == CollisionObject::Shape::Rectangle)
+	else if (objectA->shape == CollisionShape::Segment && objectB->shape == CollisionShape::Rectangle)
 	{
 		CollisionResolver::polyToSegment(objectB, objectA, onCollision);
 		// CollisionResolver::rectToSegment(objectB, objectA, onCollision);
 	}
-	else if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Rectangle)
+	else if (objectA->shape == CollisionShape::Rectangle && objectB->shape == CollisionShape::Rectangle)
 	{
 		CollisionResolver::rectToRect(objectA, objectB, onCollision);
 	}
@@ -71,15 +72,15 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 	{
 		CollisionResolver::quadToQuad(objectA, objectB, onCollision);
 	}
-	else if (objectA->shape == CollisionObject::Shape::Segment && objectB->shape == CollisionObject::Shape::Segment)
+	else if (objectA->shape == CollisionShape::Segment && objectB->shape == CollisionShape::Segment)
 	{
 		CollisionResolver::segmentToSegment(objectA, objectB, onCollision);
 	}
-	else if (objectA->shape == CollisionObject::Shape::Segment && CollisionResolver::isPolyCompatible(objectB))
+	else if (objectA->shape == CollisionShape::Segment && CollisionResolver::isPolyCompatible(objectB))
 	{
 		CollisionResolver::polyToSegment(objectB, objectA, onCollision);
 	}
-	else if (CollisionResolver::isPolyCompatible(objectA) && objectB->shape == CollisionObject::Shape::Segment)
+	else if (CollisionResolver::isPolyCompatible(objectA) && objectB->shape == CollisionShape::Segment)
 	{
 		CollisionResolver::polyToSegment(objectA, objectB, onCollision);
 	}
@@ -105,7 +106,7 @@ bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, Co
 	return b - c >= 0.0f && d - a >= 0.0f;
 }
 
-void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
@@ -197,7 +198,7 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 
 	if (intersectionCount == 2)
 	{
-		if (onCollision() != CollisionObject::CollisionResult::CollideWithPhysics)
+		if (onCollision() != CollisionResult::CollideWithPhysics)
 		{
 			return;
 		}
@@ -243,7 +244,7 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 	CollisionResolver::polyToPoly(objectA, objectB, onCollision);
 }
 
-void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
@@ -260,7 +261,7 @@ void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* ob
 		return;
 	}
 
-	if (onCollision() != CollisionObject::CollisionResult::CollideWithPhysics)
+	if (onCollision() != CollisionResult::CollideWithPhysics)
 	{
 		return;
 	}
@@ -289,7 +290,7 @@ void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* ob
 	CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
 }
 
-void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	auto resolve = [](CollisionObject* innerObject, CollisionObject* outerObject, Vec2 innerPoint)
 	{
@@ -333,7 +334,7 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
 	bool hasRunEvents = false;
-	CollisionObject::CollisionResult result = CollisionObject::CollisionResult::DoNothing;
+	CollisionResult result = CollisionResult::DoNothing;
 
 	auto runCollisonEventsOnce = [&]()
 	{
@@ -352,7 +353,7 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 
 		if (AlgoUtils::isPointInPolygon(objectB->pointsRotated, point))
 		{
-			if (runCollisonEventsOnce() == CollisionObject::CollisionResult::CollideWithPhysics)
+			if (runCollisonEventsOnce() == CollisionResult::CollideWithPhysics)
 			{
 				resolve(objectA, objectB, point);
 			}
@@ -365,7 +366,7 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 
 		if (AlgoUtils::isPointInPolygon(objectA->pointsRotated, point))
 		{
-			if (runCollisonEventsOnce() == CollisionObject::CollisionResult::CollideWithPhysics)
+			if (runCollisonEventsOnce() == CollisionResult::CollideWithPhysics)
 			{
 				resolve(objectB, objectA,  point);
 			}
@@ -373,11 +374,11 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 	}
 }
 
-void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
-	CollisionObject::CollisionResult result = CollisionObject::CollisionResult::DoNothing;
+	CollisionResult result = CollisionResult::DoNothing;
 
 	// Collision check by determining if any points from either polygon is contained by the other polygon
 	if (std::any_of(objectA->pointsRotated.begin(), objectA->pointsRotated.end(), [=](Vec2 point)
@@ -396,7 +397,7 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 		result = onCollision();
 	}
 
-	if (result != CollisionObject::CollisionResult::CollideWithPhysics)
+	if (result != CollisionResult::CollideWithPhysics)
 	{
 		return;
 	}
@@ -465,7 +466,7 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 	}
 }
 
-void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
@@ -483,7 +484,7 @@ void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject*
 
 		if (!hadCollision)
 		{
-			if (onCollision() != CollisionObject::CollisionResult::CollideWithPhysics)
+			if (onCollision() != CollisionResult::CollideWithPhysics)
 			{
 				return;
 			}
@@ -540,7 +541,7 @@ void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject*
 	}
 }
 
-void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
 {
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
@@ -553,7 +554,7 @@ void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObje
 		return;
 	}
 
-	if (onCollision() != CollisionObject::CollisionResult::CollideWithPhysics)
+	if (onCollision() != CollisionResult::CollideWithPhysics)
 	{
 		return;
 	}
@@ -655,15 +656,15 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 
 bool CollisionResolver::isQuadCompatible(CollisionObject* objectA)
 {
-	return objectA->shape == CollisionObject::Shape::Rectangle
-			|| objectA->shape == CollisionObject::Shape::Quad;
+	return objectA->shape == CollisionShape::Rectangle
+			|| objectA->shape == CollisionShape::Quad;
 }
 
 bool CollisionResolver::isPolyCompatible(CollisionObject* objectA)
 {
-	return objectA->shape == CollisionObject::Shape::Polygon
-			|| objectA->shape == CollisionObject::Shape::Rectangle
-			|| objectA->shape == CollisionObject::Shape::Quad;
+	return objectA->shape == CollisionShape::Polygon
+			|| objectA->shape == CollisionShape::Rectangle
+			|| objectA->shape == CollisionShape::Quad;
 }
 
 void CollisionResolver::spawnDebugPoint(CollisionObject* objectA, Vec2 point, Color4F color)
@@ -672,11 +673,11 @@ void CollisionResolver::spawnDebugPoint(CollisionObject* objectA, Vec2 point, Co
 
 	dbg->drawPoint(point, 4.0f, color);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		objectA,
 		dbg,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 		},
@@ -692,11 +693,11 @@ void CollisionResolver::spawnDebugVector(CollisionObject* objectA, Vec2 pointA, 
 
 	dbg->drawSegment(pointA, pointB, 1.0f, color);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		objectA,
 		dbg,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 		},
@@ -715,11 +716,11 @@ void CollisionResolver::spawnDebugShapes(CollisionObject* objectA)
 		dbgA->drawLine(std::get<0>(next), std::get<1>(next), Color4F(Color4F::YELLOW.r, Color4F::YELLOW.g, Color4F::YELLOW.b, 0.4f));
 	}
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		objectA,
 		dbgA,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Retain,
+		SpawnMethod::Above,
+		PositionMode::Retain,
 		[&]()
 		{
 		},

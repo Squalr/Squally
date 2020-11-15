@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
@@ -83,7 +84,7 @@ void CameraScrollTracker::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+		MouseEventArgs* args = static_cast<MouseEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{

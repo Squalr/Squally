@@ -51,11 +51,11 @@ void SpawnPool::trySpawnCollectable()
 		this->saveCollected();
 	});
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this,
 		collectable,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::SetToOwner,
+		SpawnMethod::Above,
+		PositionMode::SetToOwner,
 		[&]()
 		{
 		},

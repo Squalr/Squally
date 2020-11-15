@@ -85,7 +85,7 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string sou
 
 	if (!this->hasBound && this->uiBound)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->speechBubbleNode));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->speechBubbleNode));
 		hasBound = true;
 	}
 

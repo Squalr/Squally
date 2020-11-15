@@ -253,11 +253,11 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 		weapon->replaceWithObject(projectile, 2.0f);
 	}
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		owner,
 		projectile,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 		},

@@ -60,8 +60,8 @@ void WoodenGate::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->doorClip));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->bridge2));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->doorClip));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->bridge2));
 
 	this->scheduleUpdate();
 }

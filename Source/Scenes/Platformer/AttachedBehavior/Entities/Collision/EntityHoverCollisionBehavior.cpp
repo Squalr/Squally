@@ -262,7 +262,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 
 	this->addChild(this->hoverCollision);
 	
-	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 	{
 		static const float HoverSpeed = 128.0f;
 		static const float MinSpeed = 0.0f;
@@ -273,12 +273,12 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			|| this->groundCollision->getGroundCollision() == nullptr
 			|| this->entity->controlState == PlatformerEntity::ControlState::Swimming)
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		if (this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 		
 		// Special case to collide with physics when standing on a single surface.
@@ -293,7 +293,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			&& collisionData.other->getParent() == (*this->hoverAntiGravityCollisionDetector->getCurrentCollisions().begin())->getParent()
 			&& collisionData.other->getParent() == (*this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().begin())->getParent())
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 
 		if (this->entityCollision != nullptr)
@@ -308,7 +308,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			entityCollision->movementCollision->setVelocity(velocity + (Vec2(0.0f, speedBoost) - gravity) * collisionData.dt);
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -340,15 +340,15 @@ void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 	this->addChild(this->hoverAntiGravityCollisionDetector);
 	this->addChild(this->hoverAntiGravityTopCollisionDetector);
 
-	this->hoverAntiGravityTopCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->hoverAntiGravityTopCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		// See update(float dt) for anti-gravity logic
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

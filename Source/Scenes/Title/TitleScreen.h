@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
 class ClickableTextNode;
 class MusicOverlay;
 class TitleScreenBackground;

@@ -68,7 +68,7 @@ void AsciiButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->asciiButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->asciiButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(nullptr));
 	});

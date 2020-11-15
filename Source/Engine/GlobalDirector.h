@@ -2,7 +2,6 @@
 #include <stack>
 
 #include "Engine/GlobalNode.h"
-#include "Engine/GlobalScene.h"
 
 namespace cocos2d
 {
@@ -10,6 +9,8 @@ namespace cocos2d
 }
 
 class GlobalHud;
+class GlobalScene;
+class SmartScene;
 
 class GlobalDirector : public GlobalNode
 {

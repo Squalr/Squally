@@ -38,9 +38,9 @@ MouseState::~MouseState()
 {
 }
 
-InputEvents::MouseEventArgs MouseState::getMouseState()
+MouseEventArgs MouseState::getMouseState()
 {
-	return InputEvents::MouseEventArgs(MouseState::mouseInitialPosition, MouseState::mousePosition, MouseState::scrollDelta, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
+	return MouseEventArgs(MouseState::mouseInitialPosition, MouseState::mousePosition, MouseState::scrollDelta, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
 }
 
 Vec2 MouseState::getMousePosition()

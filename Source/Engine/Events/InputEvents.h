@@ -1,8 +1,58 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/CCEventKeyboard.h"
-#include "cocos/math/Vec2.h"
+struct MouseEventArgs
+{
+	cocos2d::Vec2 mouseInitialCoords;
+	cocos2d::Vec2 mouseCoords;
+	cocos2d::Vec2 scrollDelta;
+	bool isDragging;
+	bool canClick;
+	bool isLeftClicked;
+
+	MouseEventArgs(cocos2d::Vec2 mouseInitialCoords, cocos2d::Vec2 mouseCoords, cocos2d::Vec2 scrollDelta, bool isDragging, bool canClick, bool isLeftClicked) :
+			mouseInitialCoords(mouseInitialCoords), mouseCoords(mouseCoords), scrollDelta(scrollDelta), isDragging(isDragging), canClick(canClick), isLeftClicked(isLeftClicked), handled(false)
+	{
+	}
+
+	void handle()
+	{
+		this->handled = true;
+	}
+
+	void unhandle()
+	{
+		this->handled = false;
+	}
+
+	bool isHandled()
+	{
+		return this->handled;
+	}
+
+	private:
+		bool handled;
+};
+
+struct KeyboardEventArgs
+{
+	cocos2d::EventKeyboard::KeyCode keycode;
+
+	KeyboardEventArgs(cocos2d::EventKeyboard::KeyCode keycode) : keycode(keycode), handled(false) { }
+
+	void handle()
+	{
+		this->handled = true;
+	}
+
+	bool isHandled()
+	{
+		return this->handled;
+	}
+
+	private:
+		bool handled;
+};
 
 class InputEvents
 {
@@ -19,59 +69,6 @@ public:
 	static const std::string EventKeyJustPressed;
 	static const std::string EventKeyJustReleased;
 
-	struct MouseEventArgs
-	{
-		cocos2d::Vec2 mouseInitialCoords;
-		cocos2d::Vec2 mouseCoords;
-		cocos2d::Vec2 scrollDelta;
-		bool isDragging;
-		bool canClick;
-		bool isLeftClicked;
-
-		MouseEventArgs(cocos2d::Vec2 mouseInitialCoords, cocos2d::Vec2 mouseCoords, cocos2d::Vec2 scrollDelta, bool isDragging, bool canClick, bool isLeftClicked) :
-				mouseInitialCoords(mouseInitialCoords), mouseCoords(mouseCoords), scrollDelta(scrollDelta), isDragging(isDragging), canClick(canClick), isLeftClicked(isLeftClicked), handled(false)
-		{
-		}
-
-		void handle()
-		{
-			this->handled = true;
-		}
-
-		void unhandle()
-		{
-			this->handled = false;
-		}
-
-		bool isHandled()
-		{
-			return this->handled;
-		}
-
-		private:
-			bool handled;
-	};
-
-	struct InputArgs
-	{
-		cocos2d::EventKeyboard::KeyCode keycode;
-
-		InputArgs(cocos2d::EventKeyboard::KeyCode keycode) : keycode(keycode), handled(false) { }
-
-		void handle()
-		{
-			this->handled = true;
-		}
-
-		bool isHandled()
-		{
-			return this->handled;
-		}
-
-		private:
-			bool handled;
-	};
-
 	static void TriggerMouseMove(MouseEventArgs args);
 	static void TriggerMouseRefresh(MouseEventArgs args);
 	static void TriggerMouseDown(MouseEventArgs args);
@@ -81,6 +78,6 @@ public:
 	static void TriggerEventClickableMouseOver();
 	static void TriggerEventClickableMouseOut();
 	static void TriggerDragEvent();
-	static void TriggerKeyJustPressed(InputArgs args);
-	static void TriggerKeyJustReleased(InputArgs args);
+	static void TriggerKeyJustPressed(KeyboardEventArgs args);
+	static void TriggerKeyJustReleased(KeyboardEventArgs args);
 };

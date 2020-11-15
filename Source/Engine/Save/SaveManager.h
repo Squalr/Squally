@@ -4,11 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
+#include "cocos/base/ccTypes.h"
 
 class SaveManager
 {
@@ -35,10 +31,11 @@ public:
 	static bool hasProfileData(std::string key);
 	static ActiveSaveProfile getActiveSaveProfile();
 
-private:
+protected:
 	SaveManager();
-	~SaveManager();
+	virtual ~SaveManager();
 
+private:
 	static void initializeSaveData();
 	static void doSave(cocos2d::ValueMap valueMap, std::string localSavePath, std::string cloudSavePath);
 	static cocos2d::ValueMap loadSaveFile(std::string localSavePath, std::string cloudSavePath);

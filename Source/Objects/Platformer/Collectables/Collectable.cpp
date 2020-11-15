@@ -61,16 +61,16 @@ void Collectable::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->collectableCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionData data)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::Hover }, [=](CollisionData data)
 	{
 		this->tryCollect();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

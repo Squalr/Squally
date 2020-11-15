@@ -1,11 +1,12 @@
 #pragma once
+
+#include "cocos/base/ccTypes.h"
+
 #include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
 	class Sprite;
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
 }
 
 // A special class for represeting a tile as an object to allow for dynamic z-sorting in isometric maps

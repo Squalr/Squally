@@ -141,13 +141,13 @@ void BlockBase::initializeListeners()
 		}
 		case BlockType::Normal:
 		{
-			this->block->setMousePressCallback([=](InputEvents::MouseEventArgs* args)
+			this->block->setMousePressCallback([=](MouseEventArgs* args)
 			{
 				this->originalPosition = this->getPosition();
 				this->clickDelta = this->originalPosition - args->mouseCoords;
 			});
 
-			this->block->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
+			this->block->setMouseReleaseNoHitTestCallback([=](MouseEventArgs* args)
 			{
 				if (!this->isInGameArea())
 				{
@@ -155,7 +155,7 @@ void BlockBase::initializeListeners()
 				}
 			});
 
-			this->block->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
+			this->block->setMouseDragCallback([=](MouseEventArgs* args)
 			{
 				this->setPosition(args->mouseCoords + this->clickDelta);
 			});

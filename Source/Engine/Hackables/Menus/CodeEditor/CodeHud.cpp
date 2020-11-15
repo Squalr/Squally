@@ -20,6 +20,7 @@
 #include "Engine/Hackables/Menus/CodeEditor/ScriptList.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
+#include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
@@ -213,12 +214,12 @@ void CodeHud::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->applyChangesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->applyChangesButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->onAccept();
 	});
 
-	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->cancelButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->onCancel();
 	});
@@ -239,7 +240,7 @@ void CodeHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEdit, [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());
+		HackableObjectEditArgs* args = static_cast<HackableObjectEditArgs*>(eventCustom->getUserData());
 		
 		if (args != nullptr)
 		{
@@ -247,19 +248,19 @@ void CodeHud::initializeListeners()
 		}
 	}));
 	
-	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->lexiconButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->functionWindow->unfocus();
 		this->getLexicon()->open();
 	});
 	
-	this->stuckButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->stuckButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		Application::getInstance()->openURL("https://discord.gg/3maVXN5");
 	});
 }
 
-void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
+void CodeHud::open(HackableObjectEditArgs* args)
 {
 	HackableCode* hackableCode = dynamic_cast<HackableCode*>(args->hackableAttribute);
 

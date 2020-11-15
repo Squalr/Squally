@@ -1,5 +1,7 @@
 #include "KSequence.h"
 
+#include "Engine/Events/InputEvents.h"
+
 using namespace cocos2d;
 
 KSequence* KSequence::create(std::vector<EventKeyboard::KeyCode> sequence, std::function<void()> callback, bool interruptable)
@@ -61,7 +63,7 @@ void KSequence::initializeListeners()
 		EventKeyboard::KeyCode::KEY_X,
 		EventKeyboard::KeyCode::KEY_Y,
 		EventKeyboard::KeyCode::KEY_Z,
-	}, [=](InputEvents::InputArgs* args)
+	}, [=](KeyboardEventArgs* args)
 	{
 		this->processInput(args->keycode);
 	});

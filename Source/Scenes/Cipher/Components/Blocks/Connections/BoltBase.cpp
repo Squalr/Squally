@@ -48,7 +48,7 @@ void BoltBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->connectButton->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
+	this->connectButton->setMouseDragCallback([=](MouseEventArgs* args)
 	{
 		if (!this->isCreatingConnection)
 		{
@@ -64,7 +64,7 @@ void BoltBase::initializeListeners()
 		}		
 	});
 
-	this->connectButton->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
+	this->connectButton->setMouseReleaseNoHitTestCallback([=](MouseEventArgs* args)
 	{
 		if (this->isCreatingConnection && this->connection != nullptr)
 		{

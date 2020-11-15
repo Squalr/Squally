@@ -3,6 +3,7 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Localization/LocalizedString.h"
 
 using namespace cocos2d;
@@ -68,7 +69,7 @@ void HackActivatedAbility::activate()
 		this->onActivate();
 	}
 
-	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
+	HackableEvents::TriggerOnHackApplied(HackAppliedArgs(this));
 	this->startTimer();
 }
 

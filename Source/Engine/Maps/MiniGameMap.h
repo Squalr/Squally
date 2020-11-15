@@ -2,10 +2,6 @@
 #include <string>
 #include <vector>
 
-#include "cocos/2d/CCNode.h"
-#include "cocos/math/CCGeometry.h"
-
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/SmartNode.h"
 
 class LayerDeserializer;

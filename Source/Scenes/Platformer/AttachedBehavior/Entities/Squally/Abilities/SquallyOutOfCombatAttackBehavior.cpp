@@ -61,7 +61,7 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 {
 	super::onLoad();
 
-	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->attack();
 	});
@@ -216,11 +216,11 @@ void SquallyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile
 		return;
 	}
 
-	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
 	{
 		if (!this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
@@ -231,6 +231,6 @@ void SquallyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

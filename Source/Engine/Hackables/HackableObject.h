@@ -2,7 +2,6 @@
 #include <map>
 #include <string>
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
@@ -10,7 +9,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
 class Clippy;
 class HackableBase;
 class HackableCode;

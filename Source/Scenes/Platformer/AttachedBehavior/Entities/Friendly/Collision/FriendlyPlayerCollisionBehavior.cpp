@@ -44,9 +44,9 @@ void FriendlyPlayerCollisionBehavior::onLoad()
 	{
 		if (collisionBehavior->movementCollision != nullptr)
 		{
-			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::CollideWithPhysics;
+				return CollisionResult::CollideWithPhysics;
 			});
 		}
 	});

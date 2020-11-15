@@ -77,11 +77,11 @@ void StoneButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Hover, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData data)
+	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Hover, (int)PlatformerCollisionType::Physics }, [=](CollisionData data)
 	{
 		this->hasCollided = true;
 		
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

@@ -1,24 +1,20 @@
 #pragma once
 #include <functional>
-#include "cocos/math/Vec2.h"
 
-#include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalHud.h"
 
 namespace cocos2d
 {
-	class EventCustom;
 	class LayerColor;
 	class Sprite;
 }
 
 class ClickableNode;
-class CodeEditor;
 class HackableBase;
-class HackableCode;
-class HackableData;
 class HackableObject;
 class LocalizedString;
+
+struct HackableObjectOpenArgs;
 
 class RadialMenu : public GlobalHud
 {
@@ -37,7 +33,7 @@ private:
 
 	void onHackableEdit(HackableBase* hackable);
 	void close();
-	void buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args);
+	void buildRadialMenu(HackableObjectOpenArgs* args);
 	ClickableNode* createRadialNode(std::string iconResource, int requiredLevel, cocos2d::Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback);
 
 	HackableObject* activeHackableObject;

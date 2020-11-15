@@ -82,12 +82,12 @@ void MineCart::initializeListeners()
 	super::initializeListeners();
 	
 
-	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionObject::CollisionData collisionData)
+	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
 		this->dismount();
 		
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

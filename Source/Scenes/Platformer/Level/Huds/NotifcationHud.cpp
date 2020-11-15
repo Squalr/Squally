@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Sound.h"
@@ -128,12 +129,12 @@ void NotificationHud::initializeListeners()
 		}
 	}));
 
-	this->okButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->okButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->closeNotificationMenu();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this->takeoverNode))
 		{

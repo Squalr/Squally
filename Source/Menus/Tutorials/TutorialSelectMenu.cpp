@@ -147,15 +147,15 @@ void TutorialSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onReturnClick();  });
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onReturnClick();  });
-	this->homeTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Home); });
-	this->memoryEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::MemoryEditing); });
-	this->hexEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::HexEditing); });
-	this->pointersTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Pointers); });
-	this->assemblyEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::AssemblyEditing); });
+	this->closeButton->setMouseClickCallback([=](MouseEventArgs*) { this->onReturnClick();  });
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*) { this->onReturnClick();  });
+	this->homeTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::Home); });
+	this->memoryEditingTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::MemoryEditing); });
+	this->hexEditingTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::HexEditing); });
+	this->pointersTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::Pointers); });
+	this->assemblyEditingTabButton->setMouseClickCallback([=](MouseEventArgs*) { this->setActiveTab(Tab::AssemblyEditing); });
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

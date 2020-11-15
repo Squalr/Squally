@@ -1,12 +1,6 @@
 #pragma once
 
-#include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/GlobalNode.h"
-
-namespace cocos2d
-{
-	class Event;
-}
 
 class DeveloperModeController : public GlobalNode
 {

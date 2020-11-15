@@ -138,7 +138,7 @@ void ScriptEntry::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->backPlate->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->backPlate->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->onScriptEntryClick != nullptr)
 		{
@@ -146,7 +146,7 @@ void ScriptEntry::initializeListeners()
 		}
 	});
 
-	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->copyButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->onCopyClick != nullptr)
 		{
@@ -156,7 +156,7 @@ void ScriptEntry::initializeListeners()
 	
 	if (this->deleteButton != nullptr)
 	{
-		this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		this->deleteButton->setMouseClickCallback([=](MouseEventArgs*)
 		{
 			if (this->onDeleteClick != nullptr)
 			{
@@ -167,24 +167,24 @@ void ScriptEntry::initializeListeners()
 
 	if (this->deleteButton != nullptr)
 	{
-		this->deleteButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+		this->deleteButton->setMouseOverCallback([=](MouseEventArgs*)
 		{
 			this->deletePanel->setOpacity(196);
 			this->deleteLabel->setOpacity(255);
 		});
-		this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+		this->deleteButton->setMouseOutCallback([=](MouseEventArgs*)
 		{
 			this->deletePanel->setOpacity(0);
 			this->deleteLabel->setOpacity(0);
 		});
 	}
 
-	this->copyButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->copyButton->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(196);
 		this->copyLabel->setOpacity(255);
 	});
-	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->copyButton->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(0);
 		this->copyLabel->setOpacity(0);

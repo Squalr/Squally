@@ -84,26 +84,26 @@ void Catapult::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->interactionEnabled = true;
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->catapultCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->catapultCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->interactionEnabled = false;
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](KeyboardEventArgs* args)
 	{
 		if (this->interactionEnabled && this->currentCooldown <= 0.0f)
 		{
@@ -191,11 +191,11 @@ void Catapult::launchBall()
 	catapultBall->setScale(this->catapultAnimations->getScale());
 	catapultBall->setRotation(0.0f);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::SetToOwner,
+		SpawnMethod::Above,
+		PositionMode::SetToOwner,
 		[&]()
 		{
 		},

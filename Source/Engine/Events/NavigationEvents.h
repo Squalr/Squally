@@ -2,9 +2,6 @@
 #include <functional>
 #include <string>
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
-
 class SmartScene;
 
 class NavigationEvents

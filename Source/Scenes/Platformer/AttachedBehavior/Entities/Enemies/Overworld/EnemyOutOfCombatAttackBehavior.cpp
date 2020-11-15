@@ -36,11 +36,11 @@ void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 		return;
 	}
 	
-	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		if (!this->enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		Squally* squally = GameUtils::getFirstParentOfType<Squally>(collisionData.other);
@@ -53,6 +53,6 @@ void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 
 		projectile->runImpactFX();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

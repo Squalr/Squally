@@ -169,13 +169,13 @@ void AsciiTable::initializeListeners()
 
 	for (auto block : this->asciiLetters)
 	{
-		block->getBlock()->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		block->getBlock()->setMouseClickCallback([=](MouseEventArgs*)
 		{
 			this->select(block);
 		});
 	}
 
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->close();
 	});

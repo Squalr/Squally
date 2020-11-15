@@ -183,8 +183,8 @@ void Card::onEnterTransitionDidFinish()
 	if (this->relocateUI)
 	{
 		// TODO: This is broken somehow, there is an issue where these are not being properly positioned as UIBoundObjects
-		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
-		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+		// ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->overflowLabel));
+		// ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->underflowLabel));
 	}
 }
 
@@ -201,9 +201,9 @@ void Card::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cardSelect->setMouseOverCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseOver(); });
-	this->cardSelect->setMouseOutCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseOut(); });
-	this->cardSelect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseClick(); });
+	this->cardSelect->setMouseOverCallback([=](MouseEventArgs* args){ this->onMouseOver(); });
+	this->cardSelect->setMouseOutCallback([=](MouseEventArgs* args){ this->onMouseOut(); });
+	this->cardSelect->setMouseClickCallback([=](MouseEventArgs* args){ this->onMouseClick(); });
 }
 
 void Card::addOperation(Operation operation)

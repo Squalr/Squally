@@ -201,7 +201,7 @@ void DeveloperScene::initializeListeners()
 {
 	super::initializeListeners();
 	
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -224,7 +224,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 	
 	ClickableTextNode* clickableTextNode = ClickableTextNode::create(label, labelSelected, UIResources::Menus_MinigamesMenu_Banner, UIResources::Menus_MinigamesMenu_BannerHover);
 
-	clickableTextNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	clickableTextNode->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{

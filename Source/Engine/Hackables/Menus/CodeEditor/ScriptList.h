@@ -9,7 +9,6 @@ namespace cocos2d
 }
 
 class ConfirmationMenu;
-class ConstantString;
 class ClickableNode;
 class HackableCode;
 class LocalizedLabel;

@@ -79,7 +79,7 @@ void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->hackButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->hackButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->onHackableClick();
 	});
@@ -111,9 +111,9 @@ void HackableObject::update(float dt)
 	if (!this->hasRelocatedUI && !this->hackableList.empty())
 	{	
 		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsButton));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsProgressBars));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsButton));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsRain));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsProgressBars));
 
 		this->hasRelocatedUI = true;
 	}
@@ -130,7 +130,7 @@ void HackableObject::SetHackFlags(int hackFlags)
 {
 	HackableObject::HackFlags = hackFlags;
 
-	HackableEvents::TriggerHackFlagsChanged(HackableEvents::HackFlagsChangedArgs(HackableObject::HackFlags));
+	HackableEvents::TriggerHackFlagsChanged(HackFlagsChangedArgs(HackableObject::HackFlags));
 }
 
 void HackableObject::toggleHackable(bool isHackable)
@@ -186,9 +186,9 @@ void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
 {
 	this->defer([=]()
 	{
-		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsRain, newParent));
-		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsButton, newParent));
-		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElementsProgressBars, newParent));
+		ObjectEvents::TriggerReparentBind(ReparentBindArgs(this->uiElementsRain, newParent));
+		ObjectEvents::TriggerReparentBind(ReparentBindArgs(this->uiElementsButton, newParent));
+		ObjectEvents::TriggerReparentBind(ReparentBindArgs(this->uiElementsProgressBars, newParent));
 	});
 }
 
@@ -359,7 +359,7 @@ cocos2d::Vec2 HackableObject::getProgressBarsOffset()
 
 void HackableObject::onHackableClick()
 {
-	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this, HackableObject::HackFlags));
+	HackableEvents::TriggerOpenHackable(HackableObjectOpenArgs(this, HackableObject::HackFlags));
 }
 
 HackablePreview* HackableObject::createDefaultPreview()

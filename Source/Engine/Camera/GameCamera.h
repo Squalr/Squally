@@ -2,8 +2,6 @@
 #include <functional>
 #include <stack>
 
-#include "cocos/math/CCGeometry.h"
-
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/GlobalNode.h"
 

@@ -67,13 +67,13 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 		fireball->runSpawnFX();
 
-		fireball->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+		fireball->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{
 			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 			
 			if (!entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			}
 
 			fireball->disable(true);
@@ -86,17 +86,17 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 			fireball->despawn(1.0f);
 
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		});
 
 		fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 		fireBreath->setFlippedX(owner->isFlippedX());
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			owner,
 			fireball,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::Discard,
+			SpawnMethod::Above,
+			PositionMode::Discard,
 			[&]()
 			{
 			},
@@ -104,11 +104,11 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			{
 			}
 		));
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			owner,
 			fireBreath,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::Discard,
+			SpawnMethod::Above,
+			PositionMode::Discard,
 			[&]()
 			{
 			},

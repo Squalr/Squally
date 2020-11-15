@@ -2,10 +2,6 @@
 #include <functional>
 #include <string>
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCValue.h"
-
 class CollisionObject;
 
 class CollisionEvents

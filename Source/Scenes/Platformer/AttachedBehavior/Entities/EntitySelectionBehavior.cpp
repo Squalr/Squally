@@ -61,21 +61,21 @@ void EntitySelectionBehavior::onDisable()
 void EntitySelectionBehavior::setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver, std::function<void()> onMouseOut)
 {
 	this->clickHitbox->enableInteraction();
-	this->clickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->clickHitbox->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (onClick != nullptr)
 		{
 			onClick();
 		}
 	});
-	this->clickHitbox->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	this->clickHitbox->setMouseOverCallback([=](MouseEventArgs*)
 	{
 		if (onMouseOver != nullptr)
 		{
 			onMouseOver();
 		}
 	});
-	this->clickHitbox->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	this->clickHitbox->setMouseOutCallback([=](MouseEventArgs*)
 	{
 		if (onMouseOut != nullptr)
 		{

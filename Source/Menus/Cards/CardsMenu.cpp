@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -132,12 +133,12 @@ void CardsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->close();
 	});
 
-	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->close();
 	});
@@ -153,7 +154,7 @@ void CardsMenu::initializeListeners()
 		this->showHelpMenu(cardData);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -164,13 +165,13 @@ void CardsMenu::initializeListeners()
 		this->close();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](KeyboardEventArgs* args)
 	{
 		this->equippedCardsMenu->focus();
 		this->unequippedCardsMenu->unfocus();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](KeyboardEventArgs* args)
 	{
 		this->equippedCardsMenu->unfocus();
 		this->unequippedCardsMenu->focus();

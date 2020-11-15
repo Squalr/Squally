@@ -230,7 +230,7 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
 			gameState->boardSelection->enableInteraction();
-			gameState->boardSelection->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+			gameState->boardSelection->setMouseClickCallback([=](MouseEventArgs*)
 			{
 				this->immediatelyPlayCard(gameState->selectedHandCard, gameState);
 			});

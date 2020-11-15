@@ -49,7 +49,7 @@ void EdgeLanternGate::onEnter()
 
 	this->defer([=]()
 	{
-		ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->gateFront));
+		ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->gateFront));
 	});
 }
 

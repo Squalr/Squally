@@ -42,9 +42,9 @@ Icicle::Icicle(ValueMap& properties) : super(properties)
 	this->sprite = Sprite::create(ObjectResources::Traps_Icicle_Icicle);
 	this->collision = CollisionObject::create(CollisionObject::createBox(Size(32.0f, 96.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
 
-	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
 	this->collision->addChild(this->sprite);

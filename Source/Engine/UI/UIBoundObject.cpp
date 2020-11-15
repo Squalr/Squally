@@ -57,7 +57,7 @@ void UIBoundObject::initializeListeners()
 
     this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventReparentBindPrefix + std::to_string((unsigned long long)(this->referencedObject)), [=](EventCustom* eventCustom)
     {
-        ObjectEvents::ReparentBindArgs* args = static_cast<ObjectEvents::ReparentBindArgs*>(eventCustom->getUserData());
+        ReparentBindArgs* args = static_cast<ReparentBindArgs*>(eventCustom->getUserData());
         
         if (args != nullptr)
         {

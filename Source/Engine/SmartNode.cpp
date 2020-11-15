@@ -111,7 +111,7 @@ void SmartNode::initializeListeners()
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 		{
-			HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
+			HackToggleArgs* args = static_cast<HackToggleArgs*>(eventCustom->getUserData());
 
 			if (args != nullptr)
 			{
@@ -277,11 +277,11 @@ void SmartNode::scheduleEvery(std::function<void()> task, float seconds)
 	}, seconds, CC_REPEAT_FOREVER, 0.0f, eventKey);
 }
 
-EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		KeyboardEventArgs* args = static_cast<KeyboardEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -297,11 +297,11 @@ EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCod
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		KeyboardEventArgs* args = static_cast<KeyboardEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -317,13 +317,13 @@ EventListener* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeybo
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+			KeyboardEventArgs* args = static_cast<KeyboardEventArgs*>(eventCustom->getUserData());
 
 			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
@@ -340,11 +340,11 @@ EventListener* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboa
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		KeyboardEventArgs* args = static_cast<KeyboardEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -360,11 +360,11 @@ EventListener* SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCo
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		KeyboardEventArgs* args = static_cast<KeyboardEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -380,13 +380,13 @@ EventListener* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyb
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+			KeyboardEventArgs* args = static_cast<KeyboardEventArgs*>(eventCustom->getUserData());
 
 			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
@@ -403,11 +403,11 @@ EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeybo
 	return listener;
 }
 
-EventListener* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenScrollUp(std::function<void(MouseEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+		MouseEventArgs* args = static_cast<MouseEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
 		{
@@ -423,11 +423,11 @@ EventListener* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEven
 	return listener;
 }
 
-EventListener* SmartNode::whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenScrollDown(std::function<void(MouseEventArgs*)> callback, bool requireVisible)
 {
 	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+		MouseEventArgs* args = static_cast<MouseEventArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
 		{

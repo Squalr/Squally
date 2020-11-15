@@ -2,7 +2,7 @@
 #include <set>
 #include <string>
 
-#include "cocos/math/Vec2.h"
+#include "cocos/base/ccTypes.h"
 
 #include "Engine/Events/CollisionMappingEvents.h"
 #include "Engine/Maps/GameObject.h"
@@ -12,9 +12,39 @@ typedef int CollisionType;
 namespace cocos2d
 {
 	class DrawNode;
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
 }
+
+class CollisionObject;
+
+enum class CollisionResult
+{
+	DoNothing = 0,
+	CollideWithPhysics = 1
+};
+
+enum class CollisionShape
+{
+	Polygon,
+	Segment,
+	Rectangle,
+	Quad,
+};
+
+struct CollisionData
+{
+	CollisionObject* other;
+	float dt;
+
+	CollisionData() : other(nullptr), dt(0.0f) { }
+	CollisionData(CollisionObject* other, float dt) : other(other), dt(dt) { }
+};
+
+struct CollisionEvent
+{
+	std::function<CollisionResult(CollisionData)> collisionEvent;
+
+	CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
+};
 
 class CollisionObject : public GameObject
 {
@@ -38,36 +68,6 @@ public:
 	static CollisionObject* create(std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties, cocos2d::Color4F debugColor = cocos2d::Color4F::RED);
 	virtual ~CollisionObject();
 
-	enum class CollisionResult
-	{
-		DoNothing = 0,
-		CollideWithPhysics = 1
-	};
-
-	enum class Shape
-	{
-		Polygon,
-		Segment,
-		Rectangle,
-		Quad,
-	};
-
-	struct CollisionData
-	{
-		CollisionObject* other;
-		float dt;
-
-		CollisionData() : other(nullptr), dt(0.0f) { }
-		CollisionData(CollisionObject* other, float dt) : other(other), dt(dt) { }
-	};
-
-	struct CollisionEvent
-	{
-		std::function<CollisionResult(CollisionData)> collisionEvent;
-
-		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
-	};
-
 	void warpTo(cocos2d::Vec3 location);
 	void bindTo(GameObject* bindTarget);
 	void unbind();
@@ -77,7 +77,7 @@ public:
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	const std::vector<cocos2d::Vec2>& getPoints();
 	void setPoints(std::vector<cocos2d::Vec2> points);
-	Shape getShape();
+	CollisionShape getShape();
 	CollisionType getCollisionType();
 	std::vector<CollisionType> getCollisionTypes();
 	bool hasCollisionType(CollisionType collisionType);
@@ -147,7 +147,7 @@ private:
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
 	cocos2d::Vec3 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec3 position);
-	Shape determineShape();
+	CollisionShape determineShape();
 	void computeDepth(bool force = false);
 	void computeWorldCoords(bool force = false);
 	void propagateRotation(bool force = false);
@@ -175,7 +175,7 @@ private:
 	unsigned int universeId;
 	
 	// Shape
-	Shape shape;
+	CollisionShape shape;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> pointsRotated;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;

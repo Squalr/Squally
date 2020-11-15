@@ -3,9 +3,6 @@
 #include "Engine/Maps/GameObject.h"
 
 class Currency;
-class Item;
-class ItemChance;
-class Inventory;
 class LocalizedString;
 
 class CurrencyPool : public GameObject

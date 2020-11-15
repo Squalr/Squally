@@ -5,6 +5,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -162,27 +163,27 @@ void CraftingMenuBase::initializeListeners()
 		this->onCraftPreview(item);
 	});
 
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->close();
 	});
 
-	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->close();
 	});
 
-	this->craftButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->craftButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->onCraftInteract();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->onCraftInteract();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -193,13 +194,13 @@ void CraftingMenuBase::initializeListeners()
 		this->close();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](KeyboardEventArgs* args)
 	{
 		this->filterMenu->unfocus();
 		this->itemMenu->focus();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](KeyboardEventArgs* args)
 	{
 		this->filterMenu->focus();
 		this->itemMenu->unfocus();

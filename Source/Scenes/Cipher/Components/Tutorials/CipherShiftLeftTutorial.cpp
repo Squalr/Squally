@@ -116,16 +116,16 @@ void CipherShiftLeftTutorial::onAnyStateChange(CipherState* cipherState)
 
 void CipherShiftLeftTutorial::initializeCallbacks(CipherState* cipherState)
 {
-	this->nextButtonIntro->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->nextButtonIntro->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->runTutorialPartB(cipherState);
 	});
-	this->nextButtonConnect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->nextButtonConnect->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->tryUnHijackState(cipherState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->nextButtonIntro->interact();
 		this->nextButtonConnect->interact();

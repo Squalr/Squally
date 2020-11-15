@@ -92,7 +92,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 		// Enable to debug weapon/hat visual offsets:
 		// this->debugHud->setVisible(true);
 
-		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_J }, [=](InputEvents::InputArgs* args)
+		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_J }, [=](KeyboardEventArgs* args)
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
@@ -109,7 +109,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 			}
 		});
 
-		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_L }, [=](InputEvents::InputArgs* args)
+		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_L }, [=](KeyboardEventArgs* args)
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
@@ -126,7 +126,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 			}
 		});
 
-		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_K }, [=](InputEvents::InputArgs* args)
+		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_K }, [=](KeyboardEventArgs* args)
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
@@ -143,7 +143,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 			}
 		});
 
-		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_I }, [=](InputEvents::InputArgs* args)
+		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_I }, [=](KeyboardEventArgs* args)
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{

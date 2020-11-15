@@ -6,9 +6,10 @@
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/GlobalNode.h"
 #include "Engine/GlobalHud.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;

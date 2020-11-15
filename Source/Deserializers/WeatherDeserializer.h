@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Deserializers/LayerDeserializer.h"
-#include "Engine/GlobalNode.h"
 
 class WeatherDeserializer : public LayerDeserializer
 {

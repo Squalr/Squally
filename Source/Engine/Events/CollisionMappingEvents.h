@@ -1,8 +1,4 @@
 #pragma once
-#include "cocos/base/CCValue.h"
-#include "cocos/math/CCGeometry.h"
-
-class CollisionObject;
 
 namespace cocos2d
 {

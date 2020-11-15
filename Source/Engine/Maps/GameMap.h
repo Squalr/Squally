@@ -4,12 +4,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/SmartNode.h"
-
-class LayerDeserializer;
-class MapLayer;
-class TileLayer;
 
 namespace cocos2d
 {
@@ -20,6 +15,13 @@ namespace cocos2d
 		class TMXTiledMap;
 	}
 }
+
+class LayerDeserializer;
+class MapLayer;
+class TileLayer;
+
+struct RelocateObjectArgs;
+struct RequestObjectSpawnDelegatorArgs;
 
 class GameMap : public SmartNode
 {
@@ -57,9 +59,9 @@ protected:
 
 private:
 	typedef SmartNode super;
-	void spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args);
-	void moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args);
-	void moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args);
+	void spawnObject(RequestObjectSpawnDelegatorArgs* args);
+	void moveObjectToTopLayer(RelocateObjectArgs* args);
+	void moveObjectToElevateLayer(RelocateObjectArgs* args);
 	void isometricZSort();
 	void isometricMapPreparation();
 	void hackerModeEnable();

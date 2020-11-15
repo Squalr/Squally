@@ -42,9 +42,9 @@ FloatingAsteroid::FloatingAsteroid(ValueMap& properties) : super(properties)
 	this->sprite = Sprite::create(ObjectResources::Physics_Asteroid_Asteroid);
 	this->collision = CollisionObject::create(CollisionObject::createCircle(96.0f), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
 
-	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
 	this->collision->addChild(this->sprite);

@@ -9,6 +9,8 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableBase.h"
@@ -76,7 +78,7 @@ void RadialMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackableObjectOpenArgs* args = static_cast<HackableEvents::HackableObjectOpenArgs*>(eventCustom->getUserData());
+		HackableObjectOpenArgs* args = static_cast<HackableObjectOpenArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -97,7 +99,7 @@ void RadialMenu::initializeListeners()
 		this->close();
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -119,7 +121,7 @@ void RadialMenu::onHackableEdit(HackableBase* hackable)
 	}
 	else
 	{
-		HackableEvents::TriggerEditHackableBase(HackableEvents::HackableObjectEditArgs(this->activeHackableObject, hackable));
+		HackableEvents::TriggerEditHackableBase(HackableObjectEditArgs(this->activeHackableObject, hackable));
 
 		this->setVisible(false);
 	}
@@ -133,7 +135,7 @@ void RadialMenu::close()
 	HackableEvents::TriggerHackerModeDisable();
 }
 
-void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
+void RadialMenu::buildRadialMenu(HackableObjectOpenArgs* args)
 {
 	this->previewNode->removeAllChildren();
 	this->radialMenuItems->removeAllChildren();
@@ -207,9 +209,9 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
-	clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) {	clickCallback(); });
-	clickableNode->setMouseOverCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
-	clickableNode->setMouseOutCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
+	clickableNode->setMouseClickCallback([=](MouseEventArgs*) {	clickCallback(); });
+	clickableNode->setMouseOverCallback([=](MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
+	clickableNode->setMouseOutCallback([=](MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
 
 	const float tolerance = float(M_PI) / 64.0f;
 	const float offset = 64.0f;

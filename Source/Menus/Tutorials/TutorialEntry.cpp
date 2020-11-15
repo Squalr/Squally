@@ -114,7 +114,7 @@ bool TutorialEntry::isComplete()
 
 void TutorialEntry::setClickCallback(std::function<void()> clickCallback)
 {
-	this->frame->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->frame->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (clickCallback != nullptr)
 		{

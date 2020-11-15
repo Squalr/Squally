@@ -75,7 +75,7 @@ void LifeStone::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->healAnimation));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->healAnimation));
 }
 
 void LifeStone::initializePositions()

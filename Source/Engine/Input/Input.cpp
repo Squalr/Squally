@@ -61,7 +61,7 @@ void Input::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) == Input::getInstance()->pressedKeysPrevious.end() ||
 		!Input::getInstance()->pressedKeysPrevious[(int)keyCode])
 	{
-		InputEvents::TriggerKeyJustPressed(InputEvents::InputArgs(keyCode));
+		InputEvents::TriggerKeyJustPressed(KeyboardEventArgs(keyCode));
 	}
 }
 
@@ -70,7 +70,7 @@ void Input::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 	this->pressedKeysPrevious = this->pressedKeys;
 	this->pressedKeys[(int)keyCode] = false;
 
-	InputEvents::TriggerKeyJustReleased(InputEvents::InputArgs(keyCode));
+	InputEvents::TriggerKeyJustReleased(KeyboardEventArgs(keyCode));
 }
 
 EventKeyboard::KeyCode Input::getActiveModifiers()

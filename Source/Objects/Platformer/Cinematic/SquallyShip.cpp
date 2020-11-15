@@ -153,11 +153,11 @@ void SquallyShip::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
+	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics}, [=](CollisionData data)
 	{
 		this->onCrash();
 
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 
@@ -232,11 +232,11 @@ void SquallyShip::onCrash()
 	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
 	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this->ship,
 		squally,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 			squally->setPosition(crashCoords);

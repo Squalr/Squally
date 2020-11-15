@@ -1,19 +1,16 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
-#include "Engine/Localization/LocalizedString.h"
 
 namespace cocos2d
 {
 	class LayerColor;
-	class Node;
 	class Sprite;
 }
 
-class ConstantString;
 class ClickableNode;
-class HackableCode;
 class LocalizedLabel;
+class LocalizedString;
 
 class ScriptEntry : public SmartNode
 {

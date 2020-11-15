@@ -14,7 +14,7 @@ public:
 	static void registerGlobalNode();
 
 	static cocos2d::Vec2 getMousePosition();
-	static InputEvents::MouseEventArgs getMouseState();
+	static MouseEventArgs getMouseState();
 
 private:
 	typedef GlobalNode super;

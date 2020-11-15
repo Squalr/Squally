@@ -116,7 +116,7 @@ void ShopItem::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->itemClickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->itemClickHitbox->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->item == nullptr)
 		{

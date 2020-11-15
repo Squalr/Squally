@@ -110,22 +110,22 @@ void DisplayModeToggles::initializeListeners()
 		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Ascii));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](KeyboardEventArgs* args)
 	{
 		this->toggleButtonDec->check();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](KeyboardEventArgs* args)
 	{
 		this->toggleButtonHex->check();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](KeyboardEventArgs* args)
 	{
 		this->toggleButtonBin->check();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](KeyboardEventArgs* args)
 	{
 		this->toggleButtonAscii->check();
 	});

@@ -55,49 +55,49 @@ SquallyMovementBehavior::~SquallyMovementBehavior()
 
 void SquallyMovementBehavior::onLoad()
 {
-	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](KeyboardEventArgs* args)
 	{
 		this->leftPressed = true;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](KeyboardEventArgs* args)
 	{
 		this->rightPressed = true;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](KeyboardEventArgs* args)
 	{
 		this->upPressed = true;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressedIgnorePause({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](KeyboardEventArgs* args)
 	{
 		this->downPressed = true;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](KeyboardEventArgs* args)
 	{
 		this->leftPressed = false;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](KeyboardEventArgs* args)
 	{
 		this->rightPressed = false;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](KeyboardEventArgs* args)
 	{
 		this->upPressed = false;
 		this->onMovementChanged();
 	});
 
-	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleasedIgnorePause({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](KeyboardEventArgs* args)
 	{
 		this->downPressed = false;
 		this->onMovementChanged();

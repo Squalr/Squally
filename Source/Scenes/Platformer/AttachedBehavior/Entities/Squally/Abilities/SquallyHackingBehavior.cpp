@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityRuneBehavior.h"
@@ -46,9 +47,9 @@ void SquallyHackingBehavior::onLoad()
 			runeBehavior->tryUseRune();
 		}));
 
-		this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+		this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](KeyboardEventArgs* args)
 		{
-			HackableEvents::HackerModeQueryArgs queryArgs = HackableEvents::HackerModeQueryArgs();
+			HackerModeQueryArgs queryArgs = HackerModeQueryArgs();
 
 			HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
 			
@@ -65,7 +66,7 @@ void SquallyHackingBehavior::onLoad()
 		this->toggleHackerMode();
 	}));
 
-	this->squally->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->squally->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		args->handle();
 
@@ -82,5 +83,5 @@ void SquallyHackingBehavior::onDisable()
 
 void SquallyHackingBehavior::toggleHackerMode()
 {
-	HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs());
+	HackableEvents::TriggerHackerModeToggle(HackToggleArgs());
 }

@@ -1,11 +1,6 @@
 #pragma once
 #include "Engine/UI/HUD/Hud.h"
 
-namespace cocos2d
-{
-	class EventListener;
-}
-
 class GlobalHud : public Hud
 {
 public:

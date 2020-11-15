@@ -3,7 +3,6 @@
 
 #include "Engine/SmartNode.h"
 
-class Clippy;
 class HackablePreview;
 class LocalizedString;
 

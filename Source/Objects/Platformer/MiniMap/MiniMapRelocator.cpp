@@ -42,18 +42,18 @@ void MiniMapRelocator::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->triggerCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->triggerCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->positionMiniMap();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->triggerCollision->whenStopsCollidingWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->triggerCollision->whenStopsCollidingWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->endPositionMiniMap();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

@@ -99,12 +99,12 @@ void SarudeTutorialClaimVictory::onAnyStateChange(GameState* gameState)
 
 void SarudeTutorialClaimVictory::initializeCallbacks(GameState* gameState)
 {
-	this->tutorialNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->tutorialNextButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->tutorialNextButton->interact();
 	});

@@ -1,4 +1,4 @@
-#include "GameCamera.h"
+#include "CameraTrackingData.h"
 
 #include "cocos/2d/CCNode.h"
 

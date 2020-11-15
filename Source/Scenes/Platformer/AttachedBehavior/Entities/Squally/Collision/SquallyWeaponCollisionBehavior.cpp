@@ -102,11 +102,11 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 	{
 		this->weaponCollision->setName("Squally weapon collision");
 		
-		this->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+		this->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
 		{
 			if (!this->canEngage || !this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			}
 
 			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
@@ -119,7 +119,7 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 				this->canEngage = false;
 			}
 
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		});
 	}
 }

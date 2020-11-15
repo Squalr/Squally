@@ -2,13 +2,9 @@
 
 #include <string>
 
-#include "Engine/Maps/GameObject.h"
+#include "cocos/base/ccTypes.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
+#include "Engine/Maps/GameObject.h"
 
 class MapLayer : public GameObject
 {

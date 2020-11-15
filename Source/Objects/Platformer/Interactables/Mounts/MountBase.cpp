@@ -63,7 +63,7 @@ void MountBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Damage }, [=](CollisionObject::CollisionData collisionData)
+	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Damage }, [=](CollisionData collisionData)
 	{
 		if (this->mountedEntity != nullptr)
 		{
@@ -73,7 +73,7 @@ void MountBase::initializeListeners()
 			});
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

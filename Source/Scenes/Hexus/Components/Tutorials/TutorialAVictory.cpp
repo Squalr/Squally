@@ -98,12 +98,12 @@ void TutorialAVictory::onAnyStateChange(GameState* gameState)
 
 void TutorialAVictory::initializeCallbacks(GameState* gameState)
 {
-	this->lossDisplayNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		this->lossDisplayNextButton->interact();
 	});

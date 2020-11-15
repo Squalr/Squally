@@ -67,7 +67,7 @@ void LevelNode::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->indexLabel));
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->indexLabel));
 
 	this->setLockState();
 }
@@ -88,7 +88,7 @@ void LevelNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->sprite->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->sprite->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{

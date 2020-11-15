@@ -134,11 +134,11 @@ void EdgePortal::initializeListeners()
 		}
 	}
 
-	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
+	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionData collisionData)
 	{
 		if (this->getIsLocked() || this->getIsDisabled())
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		for (auto arrow : this->edgeArrows)
@@ -146,10 +146,10 @@ void EdgePortal::initializeListeners()
 			arrow->runAction(FadeTo::create(0.25f, 255));
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->arrowHintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
+	this->arrowHintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionData collisionData)
 	{
 		if (!this->arrowHintCollision->hasCollisions())
 		{
@@ -159,6 +159,6 @@ void EdgePortal::initializeListeners()
 			}
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

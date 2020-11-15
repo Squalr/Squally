@@ -3,7 +3,8 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/UIResources.h"
@@ -64,5 +65,5 @@ void NopPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->enableBack(BinaryIntroPage::Identifier, BinarySelectPage::Identifier);
+	this->enableBack(ControlFlowIntroPage::Identifier, ControlFlowSelectPage::Identifier);
 }

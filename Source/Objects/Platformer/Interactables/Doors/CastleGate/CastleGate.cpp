@@ -72,10 +72,10 @@ void CastleGate::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->doorClip));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->bridge2));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->castleDoorFront2));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->castleDoorFront));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->doorClip));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->bridge2));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->castleDoorFront2));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->castleDoorFront));
 
 	this->scheduleUpdate();
 }

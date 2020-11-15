@@ -86,7 +86,7 @@ void InputEvents::TriggerDragEvent()
 	);
 }
 
-void InputEvents::TriggerKeyJustPressed(InputArgs args)
+void InputEvents::TriggerKeyJustPressed(KeyboardEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		InputEvents::EventKeyJustPressed,
@@ -94,7 +94,7 @@ void InputEvents::TriggerKeyJustPressed(InputArgs args)
 	);
 }
 
-void InputEvents::TriggerKeyJustReleased(InputArgs args)
+void InputEvents::TriggerKeyJustReleased(KeyboardEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		InputEvents::EventKeyJustReleased,

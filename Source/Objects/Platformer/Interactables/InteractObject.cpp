@@ -145,13 +145,13 @@ void InteractObject::initializeListeners()
 
 	if (this->lockButton != nullptr && this->unlockButton != nullptr)
 	{
-		this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		this->lockButton->setMouseClickCallback([=](MouseEventArgs*)
 		{
 			this->lock(false);
 			this->updateInteractMenuVisibility();
 		});
 
-		this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		this->unlockButton->setMouseClickCallback([=](MouseEventArgs*)
 		{
 			this->unlock(false);
 			this->enable();
@@ -159,16 +159,16 @@ void InteractObject::initializeListeners()
 		});
 	}
 
-	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
+	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionData data)
 	{
 		this->canInteract = true;
 
 		this->onStateRefresh();
 		
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 		 
-	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
+	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Hover }, [=](CollisionData data)
 	{
 		if (!this->interactCollision->isCollidingWithType((int)PlatformerCollisionType::Player)
 			&& !this->interactCollision->isCollidingWithType((int)PlatformerCollisionType::Hover))
@@ -178,10 +178,10 @@ void InteractObject::initializeListeners()
 			this->onEndCollision();
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ this->input }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ this->input }, [=](KeyboardEventArgs* args)
 	{
 		switch(this->interactType)
 		{

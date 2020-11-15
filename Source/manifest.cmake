@@ -2334,7 +2334,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointSelectPage.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/IntroPage.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPage.h"
-    "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorIntroPage.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorSelectPage.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Hackables/Menus/CodeEditor/ScriptEntry.h"

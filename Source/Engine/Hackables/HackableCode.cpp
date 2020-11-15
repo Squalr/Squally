@@ -196,7 +196,7 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 
 	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.compiledBytes.size());
 
-	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
+	HackableEvents::TriggerOnHackApplied(HackAppliedArgs(this));
 	this->startTimer();
 
 	return true;

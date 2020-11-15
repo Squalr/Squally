@@ -37,7 +37,7 @@ LanguageTab::LanguageTab()
 
 		ClickableTextNode* button = this->constructLanguageButton(nextString);
 
-		button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+		button->setMouseClickCallback([=](MouseEventArgs*) { Localization::setLanguage(language); });
 
 		this->languageButtons.push_back(button);
 	}
@@ -72,7 +72,7 @@ void LanguageTab::initializeListeners()
 
 		if (buttonIndex < int(this->languageButtons.size()))
 		{
-			this->languageButtons[buttonIndex]->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+			this->languageButtons[buttonIndex]->setMouseClickCallback([=](MouseEventArgs*) { Localization::setLanguage(language); });
 		}
 	}
 }

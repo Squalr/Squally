@@ -2,8 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class AttachedBehavior;
-
 class AttachedBehaviorGroup : public AttachedBehavior
 {
 public:

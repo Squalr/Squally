@@ -374,7 +374,7 @@ void CollisionObject::setPoints(std::vector<Vec2> points)
 	}
 }
 
-CollisionObject::Shape CollisionObject::getShape()
+CollisionShape CollisionObject::getShape()
 {
 	return this->shape;
 }
@@ -614,11 +614,11 @@ void CollisionObject::setThisOrBindPosition(Vec3 position)
 	this->computeWorldCoords(true);
 }
 
-CollisionObject::Shape CollisionObject::determineShape()
+CollisionShape CollisionObject::determineShape()
 {
 	if (this->points.size() == 2)
 	{
-		return Shape::Segment;
+		return CollisionShape::Segment;
 	}
 	else if (this->points.size() == 4)
 	{
@@ -632,10 +632,10 @@ CollisionObject::Shape CollisionObject::determineShape()
 			sameY += (point.y == prior.y ? 1 : 0);
 		}
 
-		return (sameX == 2 && sameY == 2) ? Shape::Rectangle : Shape::Quad;
+		return (sameX == 2 && sameY == 2) ? CollisionShape::Rectangle : CollisionShape::Quad;
 	}
 
-	return Shape::Polygon;
+	return CollisionShape::Polygon;
 }
 
 void CollisionObject::computeDepth(bool force)

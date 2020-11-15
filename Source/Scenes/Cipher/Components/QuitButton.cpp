@@ -68,7 +68,7 @@ void QuitButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->quitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->quitButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(false));
 	});

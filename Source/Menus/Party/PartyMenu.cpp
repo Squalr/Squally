@@ -6,6 +6,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -172,7 +173,7 @@ void PartyMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->stuckButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->stuckButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
 			Strings::Menus_Party_StuckConfirm::create(),
@@ -189,52 +190,52 @@ void PartyMenu::initializeListeners()
 		));
 	});
 
-	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->cancelButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->onCancelClick();
 	});
 
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->onReturnClick();
 	});
 
-	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->onCancelClick();
 		this->onReturnClick();
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](KeyboardEventArgs* args)
 	{
 		args->handle();
 		
 		this->trySelectPrevious();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](KeyboardEventArgs* args)
 	{
 		args->handle();
 		
 		this->trySelectPrevious();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](KeyboardEventArgs* args)
 	{
 		args->handle();
 		
 		this->trySelectNext();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](KeyboardEventArgs* args)
 	{
 		args->handle();
 
 		this->trySelectNext();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -246,7 +247,7 @@ void PartyMenu::initializeListeners()
 		this->performSelectionActions();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

@@ -74,11 +74,11 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 	{
 		ArrowRain* arrowRain = ArrowRain::create(owner, nullptr, this->arrowResource);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			marker,
 			arrowRain,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -95,11 +95,11 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 		// TOP CENTER ARENA MARKER NOT FOUND!
 		ArrowRain* arrowRain = ArrowRain::create(owner, nullptr, this->arrowResource);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,
 			arrowRain,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},

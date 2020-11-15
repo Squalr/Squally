@@ -297,7 +297,7 @@ void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 
 	if (broadcastUpdate)
 	{
-		ObjectEvents::TriggerWriteObjectState(ObjectEvents::StateWriteArgs(this, key, value));
+		ObjectEvents::TriggerWriteObjectState(StateWriteArgs(this, key, value));
 	}
 }
 
@@ -426,7 +426,7 @@ void GameObject::listenForStateWrite(std::string key, std::function<void(cocos2d
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::StateWriteArgs* args = static_cast<ObjectEvents::StateWriteArgs*>(eventCustom->getUserData());
+		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getUserData());
 		
 		if (args != nullptr)
 		{
@@ -443,7 +443,7 @@ void GameObject::listenForStateWriteOnce(std::string key, std::function<void(coc
 
 	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::StateWriteArgs* args = static_cast<ObjectEvents::StateWriteArgs*>(eventCustom->getUserData());
+		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getUserData());
 		
 		if (args != nullptr)
 		{

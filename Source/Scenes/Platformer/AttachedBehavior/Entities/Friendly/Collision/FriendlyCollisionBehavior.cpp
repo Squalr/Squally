@@ -34,25 +34,25 @@ void FriendlyCollisionBehavior::onLoad()
 	{
 		if (collisionBehavior->leftCollision != nullptr)
 		{
-			collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			});
 		}
 
 		if (collisionBehavior->rightCollision != nullptr)
 		{
-			collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			});
 		}
 
 		if (collisionBehavior->movementCollision != nullptr)
 		{
-			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionData collisionData)
 			{	
-				return CollisionObject::CollisionResult::CollideWithPhysics;
+				return CollisionResult::CollideWithPhysics;
 			});
 		}
 	});

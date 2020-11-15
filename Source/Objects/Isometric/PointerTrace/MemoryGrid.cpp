@@ -191,13 +191,13 @@ void MemoryGrid::onEnter()
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(*it));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 
 	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(*it));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 
@@ -238,7 +238,7 @@ void MemoryGrid::initializeListeners()
 
 	for (auto it = this->gridHitBoxes.begin(); it != this->gridHitBoxes.end(); index++, it++)
 	{
-		(*it)->setMouseOverCallback([=](InputEvents::MouseEventArgs* args)
+		(*it)->setMouseOverCallback([=](MouseEventArgs* args)
 		{
 			this->selector->setPosition((*it)->getPosition());
 			this->selector->setOpacity(255);
@@ -247,7 +247,7 @@ void MemoryGrid::initializeListeners()
 			this->addresses[index]->setOpacity(255);
 		});
 
-		(*it)->setMouseOutCallback([=](InputEvents::MouseEventArgs* args)
+		(*it)->setMouseOutCallback([=](MouseEventArgs* args)
 		{
 			if (!this->isAddressFocused)
 			{
@@ -302,7 +302,7 @@ void MemoryGrid::initializeListeners()
 		this->positionRegisterMarkers();
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](KeyboardEventArgs* args)
 	{
 		this->isAddressFocused = true;
 
@@ -313,7 +313,7 @@ void MemoryGrid::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](KeyboardEventArgs* args)
 	{
 		this->isValueFocused = true;
 
@@ -324,7 +324,7 @@ void MemoryGrid::initializeListeners()
 		}
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_TAB }, [=](KeyboardEventArgs* args)
 	{
 		this->isAddressFocused = false;
 		
@@ -334,10 +334,10 @@ void MemoryGrid::initializeListeners()
 			(*it)->setVisible(false);
 		}
 
-		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
+		InputEvents::TriggerMouseRefresh(MouseEventArgs(MouseState::getMouseState()));
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](KeyboardEventArgs* args)
 	{
 		this->isValueFocused = false;
 		
@@ -347,7 +347,7 @@ void MemoryGrid::initializeListeners()
 			(*it)->setVisible(false);
 		}
 
-		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
+		InputEvents::TriggerMouseRefresh(MouseEventArgs(MouseState::getMouseState()));
 	});
 }
 

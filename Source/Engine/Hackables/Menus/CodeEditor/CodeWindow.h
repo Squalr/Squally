@@ -3,8 +3,6 @@
 #include <string>
 #include <vector>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -26,22 +24,22 @@ class LocalizedLabel;
 class LocalizedString;
 class ScriptEntry;
 class ScrollPane;
+	
+struct AsmToken
+{
+	LocalizedString* tokenStr;
+	cocos2d::Color3B color;
+
+	AsmToken(LocalizedString* tokenStr, cocos2d::Color3B color) :
+		tokenStr(tokenStr), color(color)
+	{
+	}
+};
 
 class CodeWindow : public SmartNode
 {
 public:
 	static CodeWindow* create(cocos2d::Size windowSize);
-	
-	struct token
-	{
-		LocalizedString* tokenStr;
-		cocos2d::Color3B color;
-
-		token(LocalizedString* tokenStr, cocos2d::Color3B color) :
-			tokenStr(tokenStr), color(color)
-		{
-		}
-	};
 
 	void openScript(ScriptEntry* script);
 	bool hasChanges();

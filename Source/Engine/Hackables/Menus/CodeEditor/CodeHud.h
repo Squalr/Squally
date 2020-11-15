@@ -3,25 +3,25 @@
 #include <string>
 #include <vector>
 
-#include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalHud.h"
-#include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class ClickableNode;
 class ClickableTextNode;
+class CodeWindow;
 class ConfirmationMenu;
 class HackableCode;
 class LabelStack;
 class Lexicon;
-class MenuLabel;
-class ScriptEntry;
+class LocalizedLabel;
 class ScriptList;
-class TextWindow;
+
+struct AsmToken;
+
+struct HackableObjectEditArgs;
 
 class CodeHud : public GlobalHud
 {
@@ -40,12 +40,12 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void open(HackableEvents::HackableObjectEditArgs* args);
+	void open(HackableObjectEditArgs* args);
 	void enableAccept();
 	void disableAccept();
 	void buildRegisterWindow();
 	void compile(std::string rawText);
-	void tokenizeCallback(std::string text, std::vector<CodeWindow::token>&);
+	void tokenizeCallback(std::string text, std::vector<AsmToken>&);
 	void onAccept();
 	void onCancel();
 	void setWindowColor(cocos2d::Color4B windowColor);

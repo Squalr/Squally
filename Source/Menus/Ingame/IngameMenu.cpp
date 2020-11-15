@@ -129,7 +129,7 @@ void IngameMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->inventoryButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->inventoryButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->inventoryClickCallback != nullptr)
 		{
@@ -137,7 +137,7 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->partyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->partyButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->partyClickCallback != nullptr)
 		{
@@ -145,7 +145,7 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->cardsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->cardsButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->cardsClickCallback != nullptr)
 		{
@@ -153,7 +153,7 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->collectablesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->collectablesButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		if (this->collectablesClickCallback != nullptr)
 		{

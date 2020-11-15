@@ -3,7 +3,6 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/UIResources.h"

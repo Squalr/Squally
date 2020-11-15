@@ -64,9 +64,9 @@ void Ram::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->collision->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->collision->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

@@ -8,6 +8,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -120,7 +121,7 @@ void SaveSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -132,12 +133,12 @@ void SaveSelectMenu::initializeListeners()
 		this->goBack();
 	});
 
-	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->goBack();
 	});
 
-	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
 		this->goBack();
 	});
@@ -211,7 +212,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 		UIResources::Menus_SaveSelectMenu_Row,
 		UIResources::Menus_SaveSelectMenu_RowSelected);
 
-	saveGameButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	saveGameButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		SaveManager::setActiveSaveProfile(profileId);
 		this->loadSave();
@@ -302,7 +303,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 {
 	ClickableNode* deleteButton = ClickableNode::create(UIResources::Menus_Buttons_TrashV2Button, UIResources::Menus_Buttons_TrashV2ButtonHover);
 
-	deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	deleteButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{

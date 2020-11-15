@@ -3,7 +3,16 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinaryIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinarySelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/DataIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/DataSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorSelectPage.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
@@ -96,33 +105,33 @@ void ChapterSelectPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->dataChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->dataChapterButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(DataIntroPage::Identifier));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(DataSelectPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(DataIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(DataSelectPage::Identifier));
 	});
 
-	this->binaryChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->binaryChapterButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinaryIntroPage::Identifier));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(BinaryIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
-	this->controlFlowChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->controlFlowChapterButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ControlFlowIntroPage::Identifier));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ControlFlowSelectPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(ControlFlowIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(ControlFlowSelectPage::Identifier));
 	});
 
-	this->vectorChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->vectorChapterButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(VectorIntroPage::Identifier));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(VectorSelectPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(VectorIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(VectorSelectPage::Identifier));
 	});
 
-	this->floatingPointChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->floatingPointChapterButton->setMouseClickCallback([=](MouseEventArgs*)
 	{
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(FloatingPointIntroPage::Identifier));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(FloatingPointSelectPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(FloatingPointIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(FloatingPointSelectPage::Identifier));
 	});
 }

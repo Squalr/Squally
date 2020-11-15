@@ -252,9 +252,9 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 
 	this->addChild(this->entityCollision);
 	
-	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->entityCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -281,36 +281,36 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->addChild(this->movementCollision);
 
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{	
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 	
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{
 		if (this->groundCollision == nullptr || this->headCollision == nullptr)
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 
 		if (this->groundCollision->isStandingOn(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		if (this->headCollision->hasHeadCollisionWith(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 	
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
 		if (this->groundCollision == nullptr || this->headCollision == nullptr)
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 
 		// Non-swimming rules
@@ -319,20 +319,20 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			// No collision when not standing on anything
 			if (!this->groundCollision->isOnGround())
 			{
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionResult::DoNothing;
 			}
 		}
 
 		// No collision if we have a head collision with the pass-through (aka below it, jumping upwards)
 		if (this->headCollision->hasHeadCollisionWith(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		/*
 		if (this->groundCollision->isStandingOn(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 
 		// Catch an edge case when jamming the he player into a corner consisting of two objects
@@ -340,20 +340,20 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		// Just using wall detectors as a backup seems to work fine.
 		if (this->hasLeftWallCollision() || this->hasRightWallCollision())
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 		*/
 		
 		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
 		if (!this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
+			return CollisionResult::CollideWithPhysics;
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionData collisionData)
 	{
 		if (this->groundCollision != nullptr
 			&& !this->groundCollision->isOnGround()
@@ -364,20 +364,20 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			this->submergeSound->play();
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Swimming;
 
 		// Clear current animation
 		this->entity->getAnimations()->playAnimation();
 		
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
 
@@ -413,7 +413,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 			this->entity->getAnimations()->playAnimation();
 		}
 		
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	this->onEntityCollisionCreated();
@@ -439,14 +439,14 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 		CollisionObject::Properties(false, false)
 	);
 
-	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{	
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{	
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();

@@ -2,9 +2,8 @@
 #include <string>
 
 #include "Engine/Hackables/HackableBase.h"
-#include "Engine/Utils/HackUtils.h"
 
-class HackableCode;
+class Clippy;
 class LocalizedString;
 
 class HackActivatedAbility : public HackableBase
