@@ -7,7 +7,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -61,7 +61,7 @@ void AsciiButton::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->asciiButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 448.0f, visibleSize.height / 2.0f + 420.0f));
+	this->asciiButton->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + 448.0f, visibleSize.height / 2.0f + 420.0f));
 }
 
 void AsciiButton::initializeListeners()

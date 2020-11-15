@@ -6,7 +6,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/UI/SmartClippingNode.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/EntityResources.h"
@@ -64,10 +64,10 @@ void Avatars::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->framePlayer->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
-	this->frameEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
-	this->clipPlayer->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
-	this->clipEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
+	this->framePlayer->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::frameOffsetX, visibleSize.height / 2.0f - HexusConfig::frameOffsetY);
+	this->frameEnemy->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::frameOffsetX, visibleSize.height / 2.0f + HexusConfig::frameOffsetY);
+	this->clipPlayer->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::frameOffsetX, visibleSize.height / 2.0f - HexusConfig::frameOffsetY);
+	this->clipEnemy->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::frameOffsetX, visibleSize.height / 2.0f + HexusConfig::frameOffsetY);
 	
 	this->playerPreview->setPosition(Vec2(-24.0f, -112.0f));
 }

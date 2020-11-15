@@ -5,8 +5,8 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -40,7 +40,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 
 	// Draw starting cards
 	std::vector<Card*> drawnCards = std::vector<Card*>();
-	int playerDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->playerCardsDrawnNextRound;
+	int playerDrawCount = gameState->roundNumber == 0 ? HexusConfig::startingCardAmount : gameState->playerCardsDrawnNextRound;
 
 	for (int index = 0; index < playerDrawCount; index++)
 	{
@@ -57,11 +57,11 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	}
 
 	this->runAction(Sequence::create(
-		CallFunc::create(CC_CALLBACK_0(CardRow::insertCards, gameState->playerHand, drawnCards, Config::insertDelay, indexDelay, true)),
+		CallFunc::create(CC_CALLBACK_0(CardRow::insertCards, gameState->playerHand, drawnCards, HexusConfig::insertDelay, indexDelay, true)),
 		nullptr
 	));
 
-	int enemyDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->enemyCardsDrawnNextRound;
+	int enemyDrawCount = gameState->roundNumber == 0 ? HexusConfig::startingCardAmount : gameState->enemyCardsDrawnNextRound;
 
 	for (int index = 0; index < enemyDrawCount; index++)
 	{

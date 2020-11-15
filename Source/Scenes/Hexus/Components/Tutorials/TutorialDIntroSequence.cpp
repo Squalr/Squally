@@ -10,7 +10,7 @@
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"
@@ -64,9 +64,9 @@ void TutorialDIntroSequence::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->handCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
-	this->handCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 144.0f);
-	this->helpArrowHandCards->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 288.0f));
+	this->handCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
+	this->handCardsNextButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 144.0f);
+	this->helpArrowHandCards->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 288.0f));
 }
 
 void TutorialDIntroSequence::initializeListeners()

@@ -6,7 +6,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/RenderUtils.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -69,9 +69,9 @@ void CipherDecor::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->furnace->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 492.0f, visibleSize.height / 2.0f - 394.0f));
-	this->logo->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 16.0f, visibleSize.height / 2.0f + 456.0f + 16.0f));
-	this->cipherLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f + 456.0f));
+	this->furnace->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + 492.0f, visibleSize.height / 2.0f - 394.0f));
+	this->logo->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + 16.0f, visibleSize.height / 2.0f + 456.0f + 16.0f));
+	this->cipherLabel->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f + 456.0f));
 }
 
 void CipherDecor::onAnyStateChange(CipherState* cipherState)

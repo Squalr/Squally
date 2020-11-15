@@ -8,7 +8,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/RadioButton.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -82,10 +82,10 @@ void DisplayModeToggles::initializePositions()
 	}
 	else
 	{
-		this->toggleButtonDec->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 0.0f, visibleSize.height / 2.0f + 416.0f));
-		this->toggleButtonHex->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 1.0f, visibleSize.height / 2.0f + 416.0f));
-		this->toggleButtonBin->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 2.0f, visibleSize.height / 2.0f + 416.0f));
-		this->toggleButtonAscii->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 3.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonDec->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + -532.0f + 64.0f * 0.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonHex->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + -532.0f + 64.0f * 1.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonBin->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + -532.0f + 64.0f * 2.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonAscii->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + -532.0f + 64.0f * 3.0f, visibleSize.height / 2.0f + 416.0f));
 	}
 }
 

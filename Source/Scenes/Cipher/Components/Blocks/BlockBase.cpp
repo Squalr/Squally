@@ -11,10 +11,10 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 
@@ -201,13 +201,13 @@ void BlockBase::onAnyStateChange(CipherState* cipherState)
 bool BlockBase::isInGameArea()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 center = Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f);
+	Vec2 center = Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f);
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 
-	if (thisPosition.x > center.x - Config::GameAreaWidth / 2.0f &&
-		thisPosition.x < center.x + Config::GameAreaWidth / 2.0f &&
-		thisPosition.y > center.y - Config::GameAreaHeight / 2.0f &&
-		thisPosition.y < center.y + Config::GameAreaHeight / 2.0f)
+	if (thisPosition.x > center.x - CipherConfig::GameAreaWidth / 2.0f &&
+		thisPosition.x < center.x + CipherConfig::GameAreaWidth / 2.0f &&
+		thisPosition.y > center.y - CipherConfig::GameAreaHeight / 2.0f &&
+		thisPosition.y < center.y + CipherConfig::GameAreaHeight / 2.0f)
 	{
 		return true;
 	}

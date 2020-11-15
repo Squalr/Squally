@@ -7,7 +7,7 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardEffects.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/SoundResources.h"
 
@@ -51,7 +51,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 		this->runIncrementHex0Effect(gameState);
 	}
 
-	float endTurnDelay = Config::endTurnDelay;
+	float endTurnDelay = HexusConfig::endTurnDelay;
 	gameState->isRepeatingSameTurn = false;
 	gameState->selectedRow = nullptr;
 	gameState->selectedSourceCard = nullptr;
@@ -67,7 +67,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 		this->runAction(Sequence::create(
 			DelayTime::create(endTurnDelay),
-			DelayTime::create(Config::betweenTurnDelay),
+			DelayTime::create(HexusConfig::betweenTurnDelay),
 			changeState,
 			nullptr
 		));
@@ -82,7 +82,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 			gameState->isRepeatingSameTurn = true;
 		}
 
-		endTurnDelay = Config::enemyEndTurnDelay;
+		endTurnDelay = HexusConfig::enemyEndTurnDelay;
 		gameState->turn = GameState::Turn::Enemy;
 		CallFunc* changeState = CallFunc::create([gameState]
 		{
@@ -91,7 +91,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 		this->runAction(Sequence::create(
 			DelayTime::create(endTurnDelay),
-			DelayTime::create(Config::betweenTurnDelay),
+			DelayTime::create(HexusConfig::betweenTurnDelay),
 			changeState,
 			nullptr
 		));
@@ -114,7 +114,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 		this->runAction(Sequence::create(
 			DelayTime::create(endTurnDelay),
-			DelayTime::create(Config::betweenTurnDelay),
+			DelayTime::create(HexusConfig::betweenTurnDelay),
 			changeState,
 			nullptr
 		));
@@ -126,7 +126,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	{
 		case GameState::Turn::Enemy:
 		{
-			endTurnDelay = Config::enemyEndTurnDelay;
+			endTurnDelay = HexusConfig::enemyEndTurnDelay;
 			gameState->turn = GameState::Turn::Player;
 			CallFunc* changeState = CallFunc::create([gameState]
 			{
@@ -135,7 +135,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 			this->runAction(Sequence::create(
 				DelayTime::create(endTurnDelay),
-				DelayTime::create(Config::betweenTurnDelay),
+				DelayTime::create(HexusConfig::betweenTurnDelay),
 				changeState,
 				nullptr
 			));
@@ -152,7 +152,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 			this->runAction(Sequence::create(
 				DelayTime::create(endTurnDelay),
-				DelayTime::create(Config::betweenTurnDelay),
+				DelayTime::create(HexusConfig::betweenTurnDelay),
 				changeState,
 				nullptr
 			));

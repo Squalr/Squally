@@ -10,9 +10,9 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/UIResources.h"
 

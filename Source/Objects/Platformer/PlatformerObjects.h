@@ -99,6 +99,7 @@
 #include "Objects/Platformer/Rewards/RewardPool.h"
 #include "Objects/Platformer/Rewards/UnderflowRuins/RewardPoolHera.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolMinos.h"
+#include "Objects/Platformer/Shops/EndianForest/ShopPoolPolyphemus.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolToben.h"
 #include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolGeryon.h"
 #include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolGriffin.h"

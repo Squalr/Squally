@@ -9,7 +9,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"
@@ -65,7 +65,7 @@ void TutorialAWinningRound::initializePositions()
 
 	this->scoreTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 32.0f);
 	this->scoreTotalsNextButton->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 32.0f);
-	this->helpArrowScoreTotals->setPosition(Vec2(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX - 144.0f, visibleSize.height / 2.0f - Config::totalAttackOffsetY));
+	this->helpArrowScoreTotals->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX - 144.0f, visibleSize.height / 2.0f - HexusConfig::totalAttackOffsetY));
 }
 
 void TutorialAWinningRound::initializeListeners()

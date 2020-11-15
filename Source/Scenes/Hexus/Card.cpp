@@ -13,7 +13,7 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -462,7 +462,7 @@ void Card::doDrawAnimation(float cardDrawDelay)
 	this->reveal();
 
 	this->runAction(
-		EaseSineInOut::create(MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f)))
+		EaseSineInOut::create(MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f)))
 	);
 
 	this->runAction(

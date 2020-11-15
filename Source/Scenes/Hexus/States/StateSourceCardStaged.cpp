@@ -4,7 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -134,7 +134,7 @@ void StateSourceCardStaged::selectCard(Card* card, GameState* gameState)
 	{
 		gameState->selectedSourceCard = nullptr;
 		gameState->selectedHandCard->stopAllActions();
-		gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position));
+		gameState->selectedHandCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, gameState->selectedHandCard->position));
 		gameState->selectedHandCard = nullptr;
 
 		GameState::updateState(gameState, GameState::StateType::Neutral);
@@ -143,11 +143,11 @@ void StateSourceCardStaged::selectCard(Card* card, GameState* gameState)
 
 	// Otherwise this is just a selection/re-staging of a new card
 	gameState->selectedHandCard->stopAllActions();
-	gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position));
+	gameState->selectedHandCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, gameState->selectedHandCard->position));
 
 	gameState->selectedHandCard = card;
 	gameState->selectedHandCard->stopAllActions();
-	gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+	gameState->selectedHandCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, gameState->selectedHandCard->position + Vec2(0.0f, HexusConfig::cardSelectOffsetY)));
 
 	// Transition to the selection state (re-initialize things)
 	GameState::updateState(gameState, GameState::StateType::SelectionStaged);

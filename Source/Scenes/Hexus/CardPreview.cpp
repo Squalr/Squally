@@ -10,8 +10,8 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"

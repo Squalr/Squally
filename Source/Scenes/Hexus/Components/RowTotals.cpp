@@ -7,8 +7,8 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -187,13 +187,13 @@ void RowTotals::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->enemyBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
-	this->enemyDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
-	this->enemyHexTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
+	this->enemyBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::binaryRowOffsetY);
+	this->enemyDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::decimalRowOffsetY);
+	this->enemyHexTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::hexRowOffsetY);
 
-	this->playerBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
-	this->playerDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
-	this->playerHexTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
+	this->playerBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::binaryRowOffsetY);
+	this->playerDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::decimalRowOffsetY);
+	this->playerHexTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::hexRowOffsetY);
 
 	this->enemyBinaryCardTotal->setPosition(this->enemyBinaryTotalSocket->getContentSize() / 2.0f);
 	this->enemyDecimalCardTotal->setPosition(this->enemyDecimalTotalSocket->getContentSize() / 2.0f);
@@ -205,21 +205,21 @@ void RowTotals::initializePositions()
 
 	const float offsetX = 32.0f;
 
-	this->playerBinaryCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
-	this->playerDecimalCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
-	this->playerHexCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
+	this->playerBinaryCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::binaryRowOffsetY);
+	this->playerDecimalCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::decimalRowOffsetY);
+	this->playerHexCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::hexRowOffsetY);
 
-	this->playerBinaryCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
-	this->playerDecimalCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
-	this->playerHexCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
+	this->playerBinaryCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::binaryRowOffsetY);
+	this->playerDecimalCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::decimalRowOffsetY);
+	this->playerHexCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::hexRowOffsetY);
 
-	this->enemyBinaryCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
-	this->enemyDecimalCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
-	this->enemyHexCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
+	this->enemyBinaryCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::binaryRowOffsetY);
+	this->enemyDecimalCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::decimalRowOffsetY);
+	this->enemyHexCardIncreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::hexRowOffsetY);
 	
-	this->enemyBinaryCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
-	this->enemyDecimalCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
-	this->enemyHexCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
+	this->enemyBinaryCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::binaryRowOffsetY);
+	this->enemyDecimalCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::decimalRowOffsetY);
+	this->enemyHexCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::hexRowOffsetY);
 }
 
 void RowTotals::onBeforeStateChange(GameState* gameState)
@@ -275,7 +275,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 			this->runDeltaAnimation(
 				delta >= 0 ? this->enemyBinaryCardIncreaseLabel : this->enemyBinaryCardDecreaseLabel,
 				delta >= 0 ? this->enemyBinaryCardIncreaseStr : this->enemyBinaryCardDecreaseStr,
-				visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY,
+				visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::binaryRowOffsetY,
 				delta
 			);
 		}
@@ -292,7 +292,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 			this->runDeltaAnimation(
 				delta >= 0 ? this->enemyDecimalCardIncreaseLabel : this->enemyDecimalCardDecreaseLabel,
 				delta >= 0 ? this->enemyDecimalCardIncreaseStr : this->enemyDecimalCardDecreaseStr,
-				visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY,
+				visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::decimalRowOffsetY,
 				delta
 			);
 		}
@@ -309,7 +309,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 			this->runDeltaAnimation(
 				delta >= 0 ? this->enemyHexCardIncreaseLabel : this->enemyHexCardDecreaseLabel,
 				delta >= 0 ? this->enemyHexCardIncreaseStr : this->enemyHexCardDecreaseStr,
-				visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY,
+				visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::hexRowOffsetY,
 				delta
 			);
 		}
@@ -326,7 +326,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 			this->runDeltaAnimation(
 				delta >= 0 ? this->playerBinaryCardIncreaseLabel : this->playerBinaryCardDecreaseLabel,
 				delta >= 0 ? this->playerBinaryCardIncreaseStr : this->playerBinaryCardDecreaseStr,
-				visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY,
+				visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::binaryRowOffsetY,
 				delta
 			);
 		}
@@ -343,7 +343,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 			this->runDeltaAnimation(
 				delta >= 0 ? this->playerDecimalCardIncreaseLabel : this->playerDecimalCardDecreaseLabel,
 				delta >= 0 ? this->playerDecimalCardIncreaseStr : this->playerDecimalCardDecreaseStr,
-				visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY,
+				visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::decimalRowOffsetY,
 				delta
 			);
 		}
@@ -360,7 +360,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 			this->runDeltaAnimation(
 				delta >= 0 ? this->playerHexCardIncreaseLabel : this->playerHexCardDecreaseLabel,
 				delta >= 0 ? this->playerHexCardIncreaseStr : this->playerHexCardDecreaseStr,
-				visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY,
+				visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::hexRowOffsetY,
 				delta
 			);
 		}

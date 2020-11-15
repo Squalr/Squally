@@ -9,7 +9,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"
@@ -65,7 +65,7 @@ void TutorialAVictory::initializePositions()
 
 	this->lossDisplayTutorialLabel->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f + 32.0f);
 	this->lossDisplayNextButton->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 32.0f);
-	this->helpArrowLossDisplay->setPosition(Vec2(visibleSize.width / 2.0f + Config::leftColumnCenter + (Config::socketAOffsetX + Config::socketBOffsetX) / 2.0f, visibleSize.height / 2.0f + Config::socketOffsetY + 128.0f));
+	this->helpArrowLossDisplay->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + (HexusConfig::socketAOffsetX + HexusConfig::socketBOffsetX) / 2.0f, visibleSize.height / 2.0f + HexusConfig::socketOffsetY + 128.0f));
 }
 
 void TutorialAVictory::initializeListeners()

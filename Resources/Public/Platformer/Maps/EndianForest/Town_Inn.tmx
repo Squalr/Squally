@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="826">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -244,6 +244,37 @@
     <property name="transition" value="inn"/>
    </properties>
   </object>
+  <object id="826" name="shop-item" type="object" x="1798.52" y="250.119" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-polyphemus"/>
+   </properties>
+  </object>
+  <object id="827" name="shop-item" type="object" x="2091.85" y="250.119" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-polyphemus"/>
+   </properties>
+  </object>
+  <object id="828" name="shop-item" type="object" x="2373.85" y="250.119" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-polyphemus"/>
+   </properties>
+  </object>
+  <object id="829" name="shop-item" type="object" x="1799.38" y="534.365" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-polyphemus"/>
+   </properties>
+  </object>
+  <object id="830" name="shop-item" type="object" x="2091.85" y="534.365" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-polyphemus"/>
+   </properties>
+  </object>
+  <object id="831" name="shop-item" type="object" x="2373.85" y="534.365" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-polyphemus"/>
+   </properties>
+  </object>
+  <object id="832" name="shop-pool-polyphemus" type="object" x="1174.06" y="374.061" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

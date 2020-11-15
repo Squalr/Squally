@@ -7,9 +7,9 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -72,18 +72,18 @@ void DrawCountDisplay::initializePositions()
 
 	const float spriteOffsetY = 144.0f;
 
-	this->drawCountSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY);
+	this->drawCountSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX, visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY);
 	this->drawCountLabel->setPosition(Vec2(16.0f, -this->drawCountSprite->getContentSize().height / 2.0f + 16.0f));
-	this->enemyDrawCountSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY - spriteOffsetY);
+	this->enemyDrawCountSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX, visibleSize.height / 2.0f + HexusConfig::deckOffsetY - spriteOffsetY);
 	this->enemyDrawCountLabel->setPosition(Vec2(this->enemyDrawCountSprite->getContentSize().width / 2.0f + 16.0f, 16.0f));
 
 	const float panelXOffset = -72.0f;
 
 	this->deckDrawCountMouseOverPanel->setPosition(
-		visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - this->deckDrawCountMouseOverPanel->getContentSize().width / 2.0f + panelXOffset,
-		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->deckDrawCountMouseOverPanel->getContentSize().height / 2.0f + 96.0f
+		visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - this->deckDrawCountMouseOverPanel->getContentSize().width / 2.0f + panelXOffset,
+		visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY - this->deckDrawCountMouseOverPanel->getContentSize().height / 2.0f + 96.0f
 	);
-	this->deckDrawCountCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX + panelXOffset, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY + 96.0f);
+	this->deckDrawCountCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX + panelXOffset, visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY + 96.0f);
 }
 
 void DrawCountDisplay::onDrawCountDisplayMouseOver()

@@ -10,8 +10,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
@@ -81,17 +81,17 @@ void RemainingCardDisplay::initializePositions()
 
 	const float spriteOffsetY = 144.0f;
 
-	this->particles->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY);
-	this->remainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY);
+	this->particles->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY);
+	this->remainingCardSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY);
 	this->remainingCardLabel->setPosition(Vec2(16.0f, -this->remainingCardSprite->getContentSize().height / 2.0f + 16.0f));
-	this->enemyRemainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY - spriteOffsetY);
+	this->enemyRemainingCardSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f + HexusConfig::deckOffsetY - spriteOffsetY);
 	this->enemyRemainingCardLabel->setPosition(Vec2(this->enemyRemainingCardSprite->getContentSize().width / 2.0f + 16.0f, 16.0f));
 
 	this->remainingCardMouseOverPanel->setPosition(
-		visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX - this->remainingCardMouseOverPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->remainingCardMouseOverPanel->getContentSize().height / 2.0f + 96.0f
+		visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX - this->remainingCardMouseOverPanel->getContentSize().width / 2.0f,
+		visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY - this->remainingCardMouseOverPanel->getContentSize().height / 2.0f + 96.0f
 	);
-	this->remainingCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY + 96.0f);
+	this->remainingCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f - HexusConfig::deckOffsetY + spriteOffsetY + 96.0f);
 }
 
 void RemainingCardDisplay::onRemaningCardDisplayMouseOver()

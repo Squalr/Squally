@@ -5,8 +5,8 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/UIResources.h"
 
@@ -64,10 +64,10 @@ void DebugDisplay::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->stateLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter, visibleSize.height - 32.0f);
-	this->loseButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter - 64.0f - 112.0f, visibleSize.height - 372.0f);
-	this->drawButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter - 64.0f, visibleSize.height - 372.0f);
-	this->winButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter - 64.0f + 112.0f, visibleSize.height - 372.0f);
+	this->stateLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter, visibleSize.height - 32.0f);
+	this->loseButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter - 64.0f - 112.0f, visibleSize.height - 372.0f);
+	this->drawButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter - 64.0f, visibleSize.height - 372.0f);
+	this->winButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter - 64.0f + 112.0f, visibleSize.height - 372.0f);
 }
 
 void DebugDisplay::initializeListeners()

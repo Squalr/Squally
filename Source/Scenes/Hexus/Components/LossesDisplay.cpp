@@ -4,8 +4,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -61,14 +61,14 @@ void LossesDisplay::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->playerSocketA->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketAOffsetX, visibleSize.height / 2.0f - Config::socketOffsetY);
-	this->playerSocketB->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketBOffsetX, visibleSize.height / 2.0f - Config::socketOffsetY);
-	this->playerSkullA->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketAOffsetX, visibleSize.height / 2.0f - Config::socketOffsetY);
-	this->playerSkullB->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketBOffsetX, visibleSize.height / 2.0f - Config::socketOffsetY);
-	this->enemySocketA->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketAOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
-	this->enemySocketB->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketBOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
-	this->enemySkullA->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketAOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
-	this->enemySkullB->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketBOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
+	this->playerSocketA->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketAOffsetX, visibleSize.height / 2.0f - HexusConfig::socketOffsetY);
+	this->playerSocketB->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketBOffsetX, visibleSize.height / 2.0f - HexusConfig::socketOffsetY);
+	this->playerSkullA->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketAOffsetX, visibleSize.height / 2.0f - HexusConfig::socketOffsetY);
+	this->playerSkullB->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketBOffsetX, visibleSize.height / 2.0f - HexusConfig::socketOffsetY);
+	this->enemySocketA->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketAOffsetX, visibleSize.height / 2.0f + HexusConfig::socketOffsetY);
+	this->enemySocketB->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketBOffsetX, visibleSize.height / 2.0f + HexusConfig::socketOffsetY);
+	this->enemySkullA->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketAOffsetX, visibleSize.height / 2.0f + HexusConfig::socketOffsetY);
+	this->enemySkullB->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketBOffsetX, visibleSize.height / 2.0f + HexusConfig::socketOffsetY);
 }
 
 void LossesDisplay::onBeforeStateChange(GameState* gameState)
@@ -87,33 +87,33 @@ void LossesDisplay::updateDisplayedLosses(GameState* gameState)
 {
 	if (gameState->playerLosses >= 2)
 	{
-		this->playerSkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
-		this->playerSkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->playerSkullA->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
+		this->playerSkullB->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
 	}
 	else if (gameState->playerLosses >= 1)
 	{
-		this->playerSkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
-		this->playerSkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->playerSkullA->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
+		this->playerSkullB->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
 	}
 	else
 	{
-		this->playerSkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
-		this->playerSkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->playerSkullA->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
+		this->playerSkullB->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
 	}
 
 	if (gameState->enemyLosses >= 2)
 	{
-		this->enemySkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
-		this->enemySkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->enemySkullA->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
+		this->enemySkullB->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
 	}
 	else if (gameState->enemyLosses >= 1)
 	{
-		this->enemySkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
-		this->enemySkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->enemySkullA->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
+		this->enemySkullB->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
 	}
 	else
 	{
-		this->enemySkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
-		this->enemySkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->enemySkullA->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
+		this->enemySkullB->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
 	}
 }

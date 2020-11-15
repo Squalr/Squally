@@ -13,8 +13,8 @@
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/Components/CardPreviewComponent.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"
@@ -87,14 +87,14 @@ void TutorialPuzzleOverflow::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->introTutorialLabel->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 32.0f);
-	this->decimalCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
-	this->helpTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
+	this->decimalCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
+	this->helpTutorialLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
 	
 	this->introNextButton->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 32.0f);
-	this->decimalCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
-	this->helpNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
+	this->decimalCardsNextButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
+	this->helpNextButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
 
-	this->helpArrow->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - 224.0f, visibleSize.height / 2.0f - 188.0f);
+	this->helpArrow->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter - 224.0f, visibleSize.height / 2.0f - 188.0f);
 }
 
 void TutorialPuzzleOverflow::initializeListeners()

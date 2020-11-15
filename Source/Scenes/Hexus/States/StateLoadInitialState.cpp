@@ -1,8 +1,8 @@
 #include "StateLoadInitialState.h"
 
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 

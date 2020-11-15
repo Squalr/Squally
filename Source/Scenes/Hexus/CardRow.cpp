@@ -8,7 +8,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -36,7 +36,7 @@ CardRow::CardRow(bool isPlayerRow)
 	this->rowCards = std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
 	this->clearOperationsOnInsert = false;
-	this->rowWidth = Config::rowWidth;
+	this->rowWidth = HexusConfig::rowWidth;
 
 	this->rowSelectSprite = ClickableNode::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);
 
@@ -203,7 +203,7 @@ Card* CardRow::removeCard(Card* card)
 	}
 
 	this->rowCards.erase(std::remove(this->rowCards.begin(), this->rowCards.end(), card), this->rowCards.end());
-	this->setCardPositions(Config::insertDelay);
+	this->setCardPositions(HexusConfig::insertDelay);
 
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }
@@ -214,7 +214,7 @@ void CardRow::removeCardsWhere(std::function<bool(Card*)> predicate)
 	// Note: We let the caller remove the child because it allows for control over positioning
 	auto removed = std::remove_if(this->rowCards.begin(), this->rowCards.end(), predicate);
 	this->rowCards.erase(removed, this->rowCards.end());
-	this->setCardPositions(Config::insertDelay);
+	this->setCardPositions(HexusConfig::insertDelay);
 }
 
 int CardRow::getCardCount()
@@ -357,7 +357,7 @@ void CardRow::clear()
 	}
 
 	this->rowCards.clear();
-	this->setCardPositions(Config::insertDelay);
+	this->setCardPositions(HexusConfig::insertDelay);
 }
 
 void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
@@ -392,7 +392,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 	int index = 0;
 
 	float scaledCardWidth = 225.0f * this->cardScale;
-	float spacing = scaledCardWidth + Config::defaultCardSpacing;
+	float spacing = scaledCardWidth + HexusConfig::defaultCardSpacing;
 	float length = spacing * cardCount;
 
 	// Update the spacing to overlap if too large

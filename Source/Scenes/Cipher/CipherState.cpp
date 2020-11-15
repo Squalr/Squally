@@ -10,8 +10,8 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
-#include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 #include "Scenes/Cipher/Components/Blocks/Blocks.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
@@ -45,11 +45,11 @@ CipherState::CipherState()
 	this->outputContent = Node::create();
 	this->blockContent = Node::create();
 	this->connectionContent = Node::create();
-	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
+	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), CipherConfig::GameAreaWidth, CipherConfig::GameAreaHeight);
 	this->puzzleData = nullptr;
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 
-	for (int index = 0; index < Config::MaxInputOutputCount; index++)
+	for (int index = 0; index < CipherConfig::MaxInputOutputCount; index++)
 	{
 		this->inputBlocks.push_back(SourceBlock::create(index));
 		this->outputBlocks.push_back(DestinationBlock::create(index));
@@ -82,20 +82,20 @@ void CipherState::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->gameAreaDebug->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter - Config::GameAreaWidth / 2.0f, visibleSize.height / 2.0f - Config::GameAreaHeight / 2.0f));
+	this->gameAreaDebug->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter - CipherConfig::GameAreaWidth / 2.0f, visibleSize.height / 2.0f - CipherConfig::GameAreaHeight / 2.0f));
 
 	int index = 0;
 
 	for (auto it = this->inputBlocks.begin(); it != this->inputBlocks.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f + Config::IOVerticalOffset));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + float(index - CipherConfig::MaxInputOutputCount / 2) * CipherConfig::IOSpacing, visibleSize.height / 2.0f + CipherConfig::IOVerticalOffset));
 	}
 
 	index = 0;
 
 	for (auto it = this->outputBlocks.begin(); it != this->outputBlocks.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f - Config::IOVerticalOffset + 16.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + float(index - CipherConfig::MaxInputOutputCount / 2) * CipherConfig::IOSpacing, visibleSize.height / 2.0f - CipherConfig::IOVerticalOffset + 16.0f));
 	}
 }
 

@@ -25,8 +25,7 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 	return instance;
 }
 
-ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName,
-	{ CardPoolTier1::create(SampleMethod::Guarantee, 2, 2) })
+ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName)
 {
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));

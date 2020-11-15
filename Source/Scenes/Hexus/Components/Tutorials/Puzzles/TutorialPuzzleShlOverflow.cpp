@@ -11,8 +11,8 @@
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"

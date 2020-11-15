@@ -6,8 +6,8 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -63,13 +63,13 @@ void ScoreTotal::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->playerTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
-	this->playerLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::leaderEmblemOffsetY);
-	this->playerTotalLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
+	this->playerTotalFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f - HexusConfig::totalAttackOffsetY);
+	this->playerLeaderEmblem->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f - HexusConfig::leaderEmblemOffsetY);
+	this->playerTotalLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f - HexusConfig::totalAttackOffsetY);
 
-	this->enemyTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
-	this->enemyLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::leaderEmblemOffsetY);
-	this->enemyTotalLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
+	this->enemyTotalFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f + HexusConfig::totalAttackOffsetY);
+	this->enemyLeaderEmblem->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f + HexusConfig::leaderEmblemOffsetY);
+	this->enemyTotalLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f + HexusConfig::totalAttackOffsetY);
 }
 
 void ScoreTotal::onBeforeStateChange(GameState* gameState)
@@ -97,17 +97,17 @@ void ScoreTotal::updateTotals(GameState* gameState)
 
 	if (playerTotalAttack > enemyTotalAttack)
 	{
-		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
-		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->playerLeaderEmblem->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
 	}
 	else if (enemyTotalAttack > playerTotalAttack)
 	{
-		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
-		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->playerLeaderEmblem->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 255));
 	}
 	else
 	{
-		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
-		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->playerLeaderEmblem->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(HexusConfig::skullFadeSpeed, 0));
 	}
 }

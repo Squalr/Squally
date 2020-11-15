@@ -1,6 +1,6 @@
 #pragma once
 
-class Config
+class CipherConfig
 {
 public:
 	static const float LeftColumnCenter;

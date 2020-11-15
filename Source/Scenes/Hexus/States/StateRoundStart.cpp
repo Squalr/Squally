@@ -4,7 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Sound/Sound.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/SoundResources.h"
 
@@ -46,7 +46,7 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 	gameState->enemyPassed = false;
 
 	this->runAction(Sequence::create(
-		DelayTime::create(Config::bannerDisplayDuration),
+		DelayTime::create(HexusConfig::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::DrawInitialCards);

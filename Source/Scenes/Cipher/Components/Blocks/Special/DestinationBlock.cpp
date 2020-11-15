@@ -11,9 +11,9 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"

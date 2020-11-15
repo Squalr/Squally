@@ -4,7 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -63,7 +63,7 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	const float fadeSpeed = 0.5f;
 
 	this->runAction(Sequence::create(
-		DelayTime::create(Config::bannerDisplayDuration),
+		DelayTime::create(HexusConfig::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
 			gameState->sendFieldCardsToGraveyard(playerWonRound, enemyWonRound);

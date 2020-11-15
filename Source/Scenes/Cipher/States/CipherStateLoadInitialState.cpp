@@ -4,9 +4,9 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Cipher/Components/Blocks/Blocks.h"
-#include "Scenes/Cipher/Config.h"
 
 using namespace cocos2d;
 
@@ -243,10 +243,10 @@ void CipherStateLoadInitialState::spawnBlocks(CipherState* cipherState)
 void CipherStateLoadInitialState::spawnBlock(BlockBase* block, int index, int total)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 center = Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f);
+	Vec2 center = Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f);
 
-	float possibleOffsetX = Config::GameAreaWidth / 2.0f - 128.0f;
-	float possibleOffsetY = Config::GameAreaHeight / 2.0f - 256.0f;
+	float possibleOffsetX = CipherConfig::GameAreaWidth / 2.0f - 128.0f;
+	float possibleOffsetY = CipherConfig::GameAreaHeight / 2.0f - 256.0f;
 
 	Vec2 position = center + Vec2(RandomHelper::random_real(-possibleOffsetX, possibleOffsetX), RandomHelper::random_real(-possibleOffsetY, possibleOffsetY));
 

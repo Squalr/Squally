@@ -10,7 +10,7 @@
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"
@@ -64,9 +64,9 @@ void SarudeTutorialClaimVictory::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->claimVictoryLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
-	this->tutorialNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 144.0f);
-	this->helpArrowHandCards->setPosition(Vec2(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - 288.0f));
+	this->claimVictoryLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
+	this->tutorialNextButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 144.0f);
+	this->helpArrowHandCards->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - 288.0f));
 }
 
 void SarudeTutorialClaimVictory::initializeListeners()

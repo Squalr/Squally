@@ -11,7 +11,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Sound.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -92,7 +92,7 @@ void CipherLock::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + Config::TopPanelCenter));
+	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f + CipherConfig::TopPanelCenter));
 	this->background->setPosition(Vec2(0.0f, 0.0f));
 	this->steelGear->setPosition(Vec2(0.0f + 64.0f, 0.0f));
 	this->woodGearTop->setPosition(Vec2(0.0f + 120.0f, 80.0f));

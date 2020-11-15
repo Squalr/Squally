@@ -6,7 +6,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/RenderUtils.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"

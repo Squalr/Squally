@@ -5,7 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Particles/SmartParticles.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/ParticleResources.h"
 

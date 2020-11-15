@@ -7,7 +7,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -46,7 +46,7 @@ void StateCoinFlip::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->coinAnimation->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
+	this->coinAnimation->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
 void StateCoinFlip::onBeforeStateEnter(GameState* gameState)
@@ -105,36 +105,36 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 		gameState->turn = GameState::Turn::Enemy;
 	}
 
-	this->coinAnimation->setScale(Config::coinFlipStartScale);
+	this->coinAnimation->setScale(HexusConfig::coinFlipStartScale);
 	this->coinAnimation->runAction(FadeTo::create(0.25f, 255));
 
 	this->coinAnimation->runAction(Sequence::create(
-		DelayTime::create(Config::coinFlipStartDelay),
+		DelayTime::create(HexusConfig::coinFlipStartDelay),
 		CallFunc::create([=]()
 		{
 			switch (gameState->turn)
 			{
 				case GameState::Turn::Player:
 				{
-					this->coinAnimation->playAnimationRepeat(HexusResources::CoinFlip_0000, Config::coinFlipSpeed, 0.0f, false, Config::coinFlipCount, [=]()
+					this->coinAnimation->playAnimationRepeat(HexusResources::CoinFlip_0000, HexusConfig::coinFlipSpeed, 0.0f, false, HexusConfig::coinFlipCount, [=]()
 					{
-						this->coinAnimation->playAnimation(std::vector<std::string>({ HexusResources::CoinFlip_0000 }), Config::coinFlipSpeed);
+						this->coinAnimation->playAnimation(std::vector<std::string>({ HexusResources::CoinFlip_0000 }), HexusConfig::coinFlipSpeed);
 					});
 
 					break;
 				}
 				case GameState::Turn::Enemy:
 				{
-					this->coinAnimation->playAnimationRepeat(HexusResources::CoinFlip_0000, Config::coinFlipSpeed, 0.0f, false, Config::coinFlipCount, [=]()
+					this->coinAnimation->playAnimationRepeat(HexusResources::CoinFlip_0000, HexusConfig::coinFlipSpeed, 0.0f, false, HexusConfig::coinFlipCount, [=]()
 					{
-						this->coinAnimation->playAnimation({ HexusResources::CoinFlip_0000, HexusResources::CoinFlip_0001, HexusResources::CoinFlip_0002, HexusResources::CoinFlip_0003, HexusResources::CoinFlip_0004, HexusResources::CoinFlip_0005, HexusResources::CoinFlip_0006 }, Config::coinFlipSpeed);
+						this->coinAnimation->playAnimation({ HexusResources::CoinFlip_0000, HexusResources::CoinFlip_0001, HexusResources::CoinFlip_0002, HexusResources::CoinFlip_0003, HexusResources::CoinFlip_0004, HexusResources::CoinFlip_0005, HexusResources::CoinFlip_0006 }, HexusConfig::coinFlipSpeed);
 					});
 					break;
 				}
 			}
 		}),
-		EaseSineOut::create(ScaleTo::create(Config::coinFlipUpDuration, Config::coinFlipEndScale)),
-		EaseSineOut::create(ScaleTo::create(Config::coinFlipDownDuration, Config::coinFlipStartScale)),
+		EaseSineOut::create(ScaleTo::create(HexusConfig::coinFlipUpDuration, HexusConfig::coinFlipEndScale)),
+		EaseSineOut::create(ScaleTo::create(HexusConfig::coinFlipDownDuration, HexusConfig::coinFlipStartScale)),
 		CallFunc::create([=]()
 		{
 			switch (gameState->turn)
@@ -152,8 +152,8 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 				}
 			}
 		}),
-		DelayTime::create(Config::coinFlipRestDuration),
-		FadeOut::create(Config::coinFlipFadeSpeed),
+		DelayTime::create(HexusConfig::coinFlipRestDuration),
+		FadeOut::create(HexusConfig::coinFlipFadeSpeed),
 		nullptr
 	));
 }

@@ -9,8 +9,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/States/StatePlayCard.h"
 
 #include "Resources/UIResources.h"
@@ -64,7 +64,7 @@ void StatePeekCards::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
-	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
+	this->doneButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
 
 void StatePeekCards::onEndPeekCards(GameState* gameState)
@@ -83,13 +83,13 @@ void StatePeekCards::onStateEnter(GameState* gameState)
 	super::onStateEnter(gameState);
 
 	this->doneButton->enableInteraction(0);
-	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+	this->doneButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	GameUtils::changeParent(gameState->enemyHand, this, true);
-	gameState->enemyHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f)));
+	gameState->enemyHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f)));
 	gameState->enemyHand->setCardScale(0.6f, 0.25f);
-	gameState->enemyHand->setRowWidth(Config::previewWidth, 0.25f);
+	gameState->enemyHand->setRowWidth(HexusConfig::previewWidth, 0.25f);
 	gameState->enemyHand->enableRowCardInteraction();
 
 	gameState = gameState;
@@ -109,12 +109,12 @@ void StatePeekCards::onStateExit(GameState* gameState)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	GameUtils::changeParent(gameState->enemyHand, gameState, true);
 	gameState->enemyHand->setCardScale(Card::cardScale, 0.25f);
-	gameState->enemyHand->setRowWidth(Config::handWidth, 0.25f);
-	gameState->enemyHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f)));
+	gameState->enemyHand->setRowWidth(HexusConfig::handWidth, 0.25f);
+	gameState->enemyHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::handOffsetY + 256.0f)));
 
 	// Hide Done Button
 	this->doneButton->disableInteraction(this->doneButton->getOpacity());
-	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
+	this->doneButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 0));
 }
 
 void StatePeekCards::initializeCallbacks(GameState* gameState)

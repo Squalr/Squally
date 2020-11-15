@@ -5,7 +5,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Strings/Strings.h"
 
@@ -55,7 +55,7 @@ void BannerBase::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->bannerOverlay->setPosition(0.0f, visibleSize.height / 2.0f - this->bannerOverlay->getContentSize().height / 2 + 320.0f);
-	this->bannerLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
+	this->bannerLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
 }
 
 void BannerBase::onBeforeStateChange(GameState* gameState)
@@ -76,23 +76,23 @@ void BannerBase::setBannerText(LocalizedString* text)
 void BannerBase::flashBanner()
 {
 	this->bannerLabel->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 255),
-		DelayTime::create(Config::bannerDisplayDuration),
-		FadeTo::create(Config::bannerFadeSpeed, 0),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 255),
+		DelayTime::create(HexusConfig::bannerDisplayDuration),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 0),
 		nullptr
 	));
 
 	this->bannerOverlay->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 196),
-		DelayTime::create(Config::bannerDisplayDuration),
-		FadeTo::create(Config::bannerFadeSpeed, 0),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 196),
+		DelayTime::create(HexusConfig::bannerDisplayDuration),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 0),
 		nullptr
 	));
 
 	this->bannerChildrenNode->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 255),
-		DelayTime::create(Config::bannerDisplayDuration),
-		FadeTo::create(Config::bannerFadeSpeed, 0),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 255),
+		DelayTime::create(HexusConfig::bannerDisplayDuration),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 0),
 		nullptr
 	));
 }
@@ -100,17 +100,17 @@ void BannerBase::flashBanner()
 void BannerBase::showBanner()
 {
 	this->bannerLabel->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 255),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 255),
 		nullptr
 	));
 
 	this->bannerOverlay->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 196),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 196),
 		nullptr
 	));
 
 	this->bannerChildrenNode->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 255),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 255),
 		nullptr
 	));
 }
@@ -118,17 +118,17 @@ void BannerBase::showBanner()
 void BannerBase::hideBanner()
 {
 	this->bannerLabel->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 0),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 0),
 		nullptr
 	));
 
 	this->bannerOverlay->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 0),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 0),
 		nullptr
 	));
 
 	this->bannerChildrenNode->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 0),
+		FadeTo::create(HexusConfig::bannerFadeSpeed, 0),
 		nullptr
 	));
 }

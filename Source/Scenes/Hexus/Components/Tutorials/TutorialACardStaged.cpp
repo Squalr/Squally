@@ -11,8 +11,8 @@
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/UIResources.h"
@@ -56,9 +56,9 @@ void TutorialACardStaged::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->binaryCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::binaryRowOffsetY + 212.0f));
-	this->decimalCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::decimalRowOffsetY + 212.0f));
-	this->hexCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::hexRowOffsetY + 212.0f));
+	this->binaryCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::binaryRowOffsetY + 212.0f));
+	this->decimalCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::decimalRowOffsetY + 212.0f));
+	this->hexCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::hexRowOffsetY + 212.0f));
 }
 
 void TutorialACardStaged::initializeListeners()

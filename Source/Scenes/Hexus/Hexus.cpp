@@ -25,11 +25,11 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
-#include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/States/States.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -220,7 +220,7 @@ void Hexus::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
-	this->boardSelection->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY);
+	this->boardSelection->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY);
 }
 
 void Hexus::initializeListeners()

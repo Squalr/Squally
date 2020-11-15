@@ -7,7 +7,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -61,7 +61,7 @@ void QuitButton::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->quitButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f - 444.0f));
+	this->quitButton->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f - 444.0f));
 }
 
 void QuitButton::initializeListeners()

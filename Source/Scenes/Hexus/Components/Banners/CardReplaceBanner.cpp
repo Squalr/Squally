@@ -5,8 +5,8 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Particles/SmartParticles.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
@@ -50,8 +50,8 @@ void CardReplaceBanner::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->penaltyIconParticles->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f));
-	this->penaltyIcon->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f));
+	this->penaltyIconParticles->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 320.0f));
+	this->penaltyIcon->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 320.0f));
 }
 
 void CardReplaceBanner::onBeforeStateChange(GameState* gameState)

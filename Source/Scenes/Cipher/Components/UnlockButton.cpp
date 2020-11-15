@@ -6,7 +6,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -62,7 +62,7 @@ void UnlockButton::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->unlockButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f - 420.0f));
+	this->unlockButton->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f - 420.0f));
 }
 
 void UnlockButton::initializeListeners()

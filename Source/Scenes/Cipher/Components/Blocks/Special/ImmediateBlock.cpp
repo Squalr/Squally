@@ -12,10 +12,10 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 

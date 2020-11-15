@@ -6,9 +6,9 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -56,11 +56,11 @@ void DeckCardCountDisplay::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY - 32.0f);
-	this->playerDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY + 2.0f);
+	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f, visibleSize.height / 2.0f - HexusConfig::deckOffsetY - HexusConfig::deckCardCountOffsetY - 32.0f);
+	this->playerDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f - HexusConfig::deckOffsetY - HexusConfig::deckCardCountOffsetY + 2.0f);
 
-	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY);
-	this->enemyDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f + 2.0f);
+	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f, visibleSize.height / 2.0f + HexusConfig::deckOffsetY + HexusConfig::deckCardCountOffsetY);
+	this->enemyDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f + HexusConfig::deckOffsetY + HexusConfig::deckCardCountOffsetY + 32.0f + 2.0f);
 }
 
 void DeckCardCountDisplay::onBeforeStateChange(GameState* gameState)

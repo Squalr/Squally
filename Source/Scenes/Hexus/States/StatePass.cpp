@@ -10,7 +10,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/Sound.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
@@ -178,50 +178,50 @@ void StatePass::initializePositions()
 	// Pass
 	const float playerPassCorrectionY = 12.0f;
 
-	this->passParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerPassCorrectionY);
-	this->passSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerPassCorrectionY);
-	this->passButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
+	this->passParticles->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + playerPassCorrectionY);
+	this->passSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + playerPassCorrectionY);
+	this->passButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY);
 	
 	this->passPanel->setPosition(
-		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->passPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->passPanel->getContentSize().height / 2.0f
+		visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX - this->passPanel->getContentSize().width / 2.0f,
+		visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + 64.0f - this->passPanel->getContentSize().height / 2.0f
 	);
-	this->passLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f);
+	this->passLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + 64.0f);
 
-	this->enemyPassSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
-	this->enemyPassParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
+	this->enemyPassSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - HexusConfig::passButtonOffsetY);
+	this->enemyPassParticles->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - HexusConfig::passButtonOffsetY);
 
 	// Last stand
 	const float playerLastStandCorrectionY = 6.0f;
 
-	this->lastStandParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerLastStandCorrectionY);
-	this->lastStandSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerLastStandCorrectionY);
-	this->lastStandButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
+	this->lastStandParticles->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + playerLastStandCorrectionY);
+	this->lastStandSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + playerLastStandCorrectionY);
+	this->lastStandButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY);
 	
 	this->lastStandPanel->setPosition(
-		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->lastStandPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->lastStandPanel->getContentSize().height / 2.0f
+		visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX - this->lastStandPanel->getContentSize().width / 2.0f,
+		visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + 64.0f - this->lastStandPanel->getContentSize().height / 2.0f
 	);
-	this->lastStandLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f);
+	this->lastStandLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + 64.0f);
 
-	this->enemyLastStandSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
-	this->enemyLastStandParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
+	this->enemyLastStandSprite->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - HexusConfig::passButtonOffsetY);
+	this->enemyLastStandParticles->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - HexusConfig::passButtonOffsetY);
 
 	// Claim victory
 	const float playerClaimVictoryCorrectionY = 4.0f;
 
-	this->claimVictoryParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerClaimVictoryCorrectionY);
-	this->claimVictorySprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerClaimVictoryCorrectionY);
-	this->claimVictoryButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
+	this->claimVictoryParticles->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + playerClaimVictoryCorrectionY);
+	this->claimVictorySprite->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + playerClaimVictoryCorrectionY);
+	this->claimVictoryButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY);
 	
 	this->claimVictoryPanel->setPosition(
-		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->claimVictoryPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->claimVictoryPanel->getContentSize().height / 2.0f
+		visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX - this->claimVictoryPanel->getContentSize().width / 2.0f,
+		visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + 64.0f - this->claimVictoryPanel->getContentSize().height / 2.0f
 	);
-	this->claimVictoryLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f);
+	this->claimVictoryLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f + HexusConfig::passButtonOffsetY + 64.0f);
 
-	this->enemyClaimVictorySprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
-	this->enemyClaimVictoryParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
+	this->enemyClaimVictorySprite->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - HexusConfig::passButtonOffsetY);
+	this->enemyClaimVictoryParticles->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::passButtonOffsetX, visibleSize.height / 2.0f - HexusConfig::passButtonOffsetY);
 }
 
 void StatePass::onPassClick(GameState* gameState)
@@ -530,7 +530,7 @@ void StatePass::onStateEnter(GameState* gameState)
 	}
 
 	this->runAction(Sequence::create(
-		DelayTime::create(Config::bannerDisplayDuration),
+		DelayTime::create(HexusConfig::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::TurnEnd);

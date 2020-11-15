@@ -12,10 +12,10 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/InputOutputItem.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -68,9 +68,9 @@ void InputsOutputsPanel::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->inputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter - 80.0f, visibleSize.height / 2.0f - 16.0f));
-	this->outputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + 80.0f, visibleSize.height / 2.0f - 16.0f));
-	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f -  232.0f));
+	this->inputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter - 80.0f, visibleSize.height / 2.0f - 16.0f));
+	this->outputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter + 80.0f, visibleSize.height / 2.0f - 16.0f));
+	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f -  232.0f));
 
 	for (int index = 0; index < int(this->ioItems.size()); index++)
 	{

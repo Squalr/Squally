@@ -5,7 +5,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 
 #include "Resources/CipherResources.h"
 

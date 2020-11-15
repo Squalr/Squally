@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -28,14 +28,14 @@ void StatePlayerTurnStart::onBeforeStateEnter(GameState* gameState)
 {
 	super::onBeforeStateEnter(gameState);
 
-	gameState->playerCardsDrawnNextRound += Config::cardBonusPerTurn;
+	gameState->playerCardsDrawnNextRound += HexusConfig::cardBonusPerTurn;
 }
 
 void StatePlayerTurnStart::onStateEnter(GameState* gameState)
 {
 	super::onStateEnter(gameState);
 
-	gameState->playableCardsThisTurn = Config::playableCardsPerTurn;
+	gameState->playableCardsThisTurn = HexusConfig::playableCardsPerTurn;
 }
 
 void StatePlayerTurnStart::onAfterStateEnter(GameState* gameState)

@@ -1,6 +1,6 @@
 #pragma once
 
-class Config
+class HexusConfig
 {
 public:
 

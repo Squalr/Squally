@@ -15,7 +15,7 @@
 #include "Scenes/Cipher/Components/Blocks/Special/ImmediateBlock.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"

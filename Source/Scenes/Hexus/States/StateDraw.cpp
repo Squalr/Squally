@@ -5,8 +5,8 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -47,7 +47,7 @@ void StateDraw::onStateEnter(GameState* gameState)
 			}
 
 			this->runAction(Sequence::create(
-				DelayTime::create(Config::enemyDrawDelay),
+				DelayTime::create(HexusConfig::enemyDrawDelay),
 				CallFunc::create([gameState]
 				{
 					GameState::updateState(gameState, GameState::StateType::AIDecideCard);
@@ -77,11 +77,11 @@ void StateDraw::onStateEnter(GameState* gameState)
 			GameUtils::changeParent(card, this, true);
 
 			this->runAction(Sequence::create(
-				CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, Config::cardDrawDelay)),
-				DelayTime::create(Config::cardDrawDelay),
-				DelayTime::create(Config::revealDelay),
-				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay, true)),
-				DelayTime::create(Config::insertDelay),
+				CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, HexusConfig::cardDrawDelay)),
+				DelayTime::create(HexusConfig::cardDrawDelay),
+				DelayTime::create(HexusConfig::revealDelay),
+				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, HexusConfig::insertDelay, true)),
+				DelayTime::create(HexusConfig::insertDelay),
 				CallFunc::create([gameState]
 				{
 					GameState::updateState(gameState, GameState::StateType::Neutral);

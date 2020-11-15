@@ -7,8 +7,8 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/UIResources.h"
 
@@ -32,7 +32,7 @@ StagingHelperText::StagingHelperText()
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);
 	this->selectionLabel->enableOutline(Color4B::BLACK, 2);
-	this->selectionLabel->setDimensions(Config::statusLabelWidth - 48.0f, 0.0f);
+	this->selectionLabel->setDimensions(HexusConfig::statusLabelWidth - 48.0f, 0.0f);
 
 	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelV2Button, UIResources::Menus_Buttons_CancelV2ButtonHover);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -59,8 +59,8 @@ void StagingHelperText::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
-	this->selectionLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
+	this->cancelButton->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width, visibleSize.height / 2.0f + HexusConfig::statusLabelOffsetY);
+	this->selectionLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter - HexusConfig::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + HexusConfig::statusLabelOffsetY);
 }
 
 void StagingHelperText::onBeforeStateChange(GameState* gameState)
@@ -102,7 +102,7 @@ void StagingHelperText::onSelectionCancel(GameState* gameState)
 	if (gameState->selectedHandCard != nullptr)
 	{
 		gameState->selectedHandCard->stopAllActions();
-		gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position));
+		gameState->selectedHandCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, gameState->selectedHandCard->position));
 		gameState->selectedHandCard = nullptr;
 	}
 
@@ -196,14 +196,14 @@ void StagingHelperText::onCombineCancel(GameState* gameState)
 	if (gameState->selectedSourceCard != nullptr)
 	{
 		gameState->selectedSourceCard->stopAllActions();
-		gameState->selectedSourceCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedSourceCard->position));
+		gameState->selectedSourceCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, gameState->selectedSourceCard->position));
 		gameState->selectedSourceCard = nullptr;
 	}
 
 	if (gameState->selectedHandCard != nullptr)
 	{
 		gameState->selectedHandCard->stopAllActions();
-		gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position));
+		gameState->selectedHandCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, gameState->selectedHandCard->position));
 		gameState->selectedHandCard = nullptr;
 	}
 

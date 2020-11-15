@@ -13,7 +13,7 @@
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -89,7 +89,7 @@ void StateGameEnd::initializePositions()
 	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 196.0f);
+	this->backButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 196.0f);
 }
 
 void StateGameEnd::onBackClick(GameState* gameState)
@@ -187,7 +187,7 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 	}
 
 	this->backButton->enableInteraction(0);
-	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+	this->backButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
 	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onBackClick(gameState);
