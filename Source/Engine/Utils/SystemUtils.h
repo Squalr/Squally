@@ -4,5 +4,5 @@
 class SystemUtils
 {
 public:
-	static std::string getUniqueSystemIdentifier();
+	static std::string GetUniqueSystemIdentifier();
 };

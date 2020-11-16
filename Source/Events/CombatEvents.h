@@ -5,17 +5,11 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
-namespace cocos2d
-{
-	class Node;
-}
-
 class Buff;
 class PlatformerEntity;
 class Projectile;
 class Timeline;
 class TimelineEntry;
-class TimelineEvent;
 class TimelineEventGroup;
 
 class CombatEvents

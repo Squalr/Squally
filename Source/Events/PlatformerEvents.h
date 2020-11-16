@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "cocos/base/ccTypes.h"
-#include "cocos/math/CCGeometry.h"
+#include "cocos/math/Vec3.h"
 
 class Currency;
 class CurrencyPool;
@@ -13,7 +13,6 @@ class LocalizedString;
 class MinMaxPool;
 class PlatformerEntity;
 class PlatformerEnemy;
-class Recipe;
 
 class PlatformerEvents
 {

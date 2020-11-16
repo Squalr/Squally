@@ -1,8 +1,6 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -14,12 +12,10 @@ namespace cocos2d
 class CardData;
 class ClickableNode;
 class ClickableTextNode;
-class CurrencyInventory;
 class EquipmentInventory;
 class HelpMenu;
 class HexusCard;
 class HexusFilter;
-class Item;
 class ItemMenu;
 class Inventory;
 class LocalizedLabel;

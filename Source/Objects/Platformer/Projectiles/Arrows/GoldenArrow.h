@@ -7,8 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
-
 class GoldenArrow : public Projectile
 {
 public:

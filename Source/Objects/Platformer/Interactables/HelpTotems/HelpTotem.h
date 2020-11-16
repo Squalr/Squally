@@ -4,12 +4,10 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Sprite;
 }
 
 class SpeechBubble;
-class LocalizedLabel;
 class LocalizedString;
 
 class HelpTotem : public InteractObject

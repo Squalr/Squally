@@ -18,6 +18,7 @@
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolLiana.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"

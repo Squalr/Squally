@@ -2,6 +2,8 @@
 #include <functional>
 #include <stack>
 
+#include "cocos/math/Vec2.h"
+
 namespace cocos2d
 {
 	class Node;

@@ -2,11 +2,6 @@
 
 #include "Engine/Maps/GameObject.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class SmartAnimationNode;
 
 class MineClaw : public GameObject

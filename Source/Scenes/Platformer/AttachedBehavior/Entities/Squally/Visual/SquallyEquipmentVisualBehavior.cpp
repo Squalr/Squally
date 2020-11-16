@@ -1,5 +1,6 @@
 #include "SquallyEquipmentVisualBehavior.h"
 
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 

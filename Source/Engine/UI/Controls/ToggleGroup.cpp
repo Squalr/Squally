@@ -2,7 +2,6 @@
 
 #include "cocos/base/ccMacros.h"
 
-#include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/Checkbox.h"
 
 using namespace cocos2d;

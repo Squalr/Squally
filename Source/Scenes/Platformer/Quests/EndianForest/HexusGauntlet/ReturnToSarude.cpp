@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 

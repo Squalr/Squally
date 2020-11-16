@@ -2,10 +2,7 @@
 
 #include "Engine/SmartNode.h"
 
-class ConstantString;
 class Inventory;
-class LocalizedLabel;
-class LocalizedString;
 class Recipe;
 
 class CraftingPreview : public SmartNode

@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 

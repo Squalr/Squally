@@ -2,7 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-class ItemPool;
 class Item;
 class Inventory;
 

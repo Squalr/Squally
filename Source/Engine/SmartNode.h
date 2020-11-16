@@ -1,6 +1,9 @@
 #pragma once
 #include <set>
 
+#include "cocos/2d/CCNode.h"
+#include "cocos/base/CCEventKeyboard.h"
+
 namespace cocos2d
 {
 	class EventListener;

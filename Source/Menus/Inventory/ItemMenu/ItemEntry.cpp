@@ -6,7 +6,6 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Menus/Inventory/MenuEntry.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
 #include "Strings/Strings.h"

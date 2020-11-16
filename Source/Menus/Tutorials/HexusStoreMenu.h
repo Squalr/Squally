@@ -7,21 +7,15 @@
 
 namespace cocos2d
 {
-	class LayerColor;
-	class ParticleSystem;
 	class Sprite;
 }
 
-class Card;
 class CardData;
 class ConstantString;
 class ClickableNode;
 class ClickableTextNode;
 class LocalizedLabel;
-class MenuCard;
-class ScrollPane;
 class Shopkeeper;
-class SmartAnimationNode;
 class SmartParticles;
 class Sound;
 

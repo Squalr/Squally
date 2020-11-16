@@ -8,8 +8,6 @@ namespace cocos2d
 }
 
 class CraftFilterEntry;
-class Item;
-class LocalizedLabel;
 class SmartClippingNode;
 
 class CraftFilterMenu : public SmartNode

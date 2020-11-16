@@ -164,7 +164,7 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 	SaveManager::saveFileCache[cloudSavePath] = valueMap;
 
 	// Save to cloud if available
-	if (Steam::isCloudSaveAvailable())
+	if (Steam::IsCloudSaveAvailable())
 	{
 		ISteamRemoteStorage* steamRemoteStorage = SteamRemoteStorage();
 		const char* file = cloudSavePath.c_str();
@@ -232,7 +232,7 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 		bool cloudReadSuccess = false;
 
 		// Load from cloud if it's available
-		if (Steam::isCloudSaveAvailable())
+		if (Steam::IsCloudSaveAvailable())
 		{
 			ISteamRemoteStorage* steamRemoteStorage = SteamRemoteStorage();
 			const char* file = cloudSavePath.c_str();

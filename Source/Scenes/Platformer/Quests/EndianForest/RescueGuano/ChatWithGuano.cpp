@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"

@@ -1,14 +1,8 @@
 #pragma once
 
+#include "cocos/base/ccTypes.h"
+
 #include "Entities/Platformer/PlatformerEntity.h"
-
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
-
-class Inventory;
 
 // Base class for enemies
 class PlatformerEnemy : public PlatformerEntity

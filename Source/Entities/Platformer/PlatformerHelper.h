@@ -2,8 +2,6 @@
 
 #include "Entities/Platformer/PlatformerFriendly.h"
 
-class ClickableNode;
-
 // Base class for player + npcs
 class PlatformerHelper : public PlatformerFriendly
 {

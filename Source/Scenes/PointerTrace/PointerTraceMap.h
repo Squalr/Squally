@@ -4,7 +4,6 @@
 #include "Events/PointerTraceEvents.h"
 #include "Scenes/MapBase.h"
 
-class GridEntity;
 class MemoryGrid;
 class Music;
 class PointerTraceHud;

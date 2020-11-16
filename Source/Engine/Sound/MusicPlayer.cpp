@@ -2,7 +2,6 @@
 
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/GlobalNode.h"
 #include "Engine/GlobalHud.h"
 #include "Engine/GlobalScene.h"
 #include "Engine/Utils/GameUtils.h"

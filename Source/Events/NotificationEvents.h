@@ -1,11 +1,9 @@
 #pragma once
+#include <functional>
 #include <string>
 #include <vector>
 
-#include "cocos/math/CCGeometry.h"
-
 class LocalizedString;
-class PlatformerEntity;
 
 class NotificationEvents
 {

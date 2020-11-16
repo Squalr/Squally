@@ -25,6 +25,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/HexusBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"

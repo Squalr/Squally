@@ -2,9 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-class Item;
-class ItemChance;
-class Inventory;
 class LocalizedString;
 
 class Currency : public SmartNode

@@ -2,8 +2,6 @@
 
 #include "Engine/Sound/Track.h"
 
-class Item;
-
 class Medieval : public Track
 {
 public:

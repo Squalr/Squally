@@ -1,12 +1,8 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "cocos/base/ccTypes.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
+#include "Engine/SmartNode.h"
 
 class GameObject;
 class LocalizedString;

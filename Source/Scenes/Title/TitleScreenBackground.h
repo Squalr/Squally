@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class AnimationPart;
-class ClickableNode;
 class FloatingSprite;
 class InfiniteParallaxNode;
 class SmartAnimationNode;

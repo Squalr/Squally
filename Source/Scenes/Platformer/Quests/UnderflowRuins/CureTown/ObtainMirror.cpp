@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

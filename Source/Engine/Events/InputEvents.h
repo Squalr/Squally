@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/ccTypes.h"
+
 struct MouseEventArgs
 {
 	cocos2d::Vec2 mouseInitialCoords;

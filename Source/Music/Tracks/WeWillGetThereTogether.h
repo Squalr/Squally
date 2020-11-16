@@ -2,8 +2,6 @@
 
 #include "Engine/Sound/Track.h"
 
-class Item;
-
 class WeWillGetThereTogether : public Track
 {
 public:

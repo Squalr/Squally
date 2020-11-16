@@ -62,7 +62,7 @@ bool GameWindow::applicationDidFinishLaunching()
 {
 	LogUtils::initialize();
 
-	if (!Steam::init())
+	if (!Steam::Init())
 	{
 		return false;
 	}

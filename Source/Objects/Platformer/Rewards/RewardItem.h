@@ -8,8 +8,6 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class ConstantString;
-class LocalizedLabel;
 class ItemPreview;
 class Item;
 

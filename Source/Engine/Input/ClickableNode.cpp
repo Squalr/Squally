@@ -8,6 +8,7 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Sound/Sound.h"

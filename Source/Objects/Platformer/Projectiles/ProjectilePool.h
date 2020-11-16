@@ -2,11 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class Projectile;
 
 class ProjectilePool : public SmartNode

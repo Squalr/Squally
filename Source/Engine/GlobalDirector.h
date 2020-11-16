@@ -3,11 +3,6 @@
 
 #include "Engine/GlobalNode.h"
 
-namespace cocos2d
-{
-	class Scene;
-}
-
 class GlobalHud;
 class GlobalScene;
 class SmartScene;

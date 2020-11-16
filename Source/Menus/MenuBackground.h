@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Sprite;
 }
 

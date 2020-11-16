@@ -1,28 +1,30 @@
 #pragma once
 #include <string>
+
 #include "cocos/platform/CCCommon.h"
 
 class Steam
 {
 public:
-	static bool init();
-	static bool isSquallySteamBuild();
-	static bool isSteamDebugFilePresent();
-	static bool isCloudSaveAvailable();
-	static std::string getSteamUserId();
-	static cocos2d::LanguageType getLanguage();
+	static bool Init();
+	static bool IsSquallySteamBuild();
+	static bool IsSteamDebugFilePresent();
+	static bool IsCloudSaveAvailable();
+	static std::string GetSteamUserId();
+	static cocos2d::LanguageType GetLanguage();
 
 	static const int SteamAppId;
 
-private:
-	static Steam* getInstance();
-
+protected:
 	Steam();
-	~Steam();
+	virtual ~Steam();
 
-	static bool isItchFilePresent();
+private:
+	static Steam* GetInstance();
+
+	static bool IsItchFilePresent();
 
 	static const std::string ItchFile;
 	static const std::string SteamDebugFile;
-	static Steam* instance;
+	static Steam* Instance;
 };

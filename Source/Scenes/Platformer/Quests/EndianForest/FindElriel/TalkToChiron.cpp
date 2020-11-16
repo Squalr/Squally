@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/SoundResources.h"
 

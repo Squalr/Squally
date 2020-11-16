@@ -1,14 +1,11 @@
 #pragma once
 #include <functional>
 
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 class Checkbox;
-class ClickableNode;
-class ClickableTextNode;
 class LocalizedLabel;
 class RadioButton;
-class Slider;
 
 class VideoTab : public SmartNode
 {

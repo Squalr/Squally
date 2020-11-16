@@ -1,9 +1,7 @@
 #pragma once
 
-namespace cocos2d
-{
-	class TMXObjectGroup;
-}
+#include <functional>
+#include <string>
 
 class CollisionMappingEvents
 {

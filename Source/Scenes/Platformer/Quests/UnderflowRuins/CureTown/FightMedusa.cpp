@@ -17,6 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 

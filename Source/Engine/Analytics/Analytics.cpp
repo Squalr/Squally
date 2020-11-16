@@ -29,7 +29,7 @@ Analytics::Analytics()
 {
 	if (Analytics::areAnalyticsEnabled())
 	{
-		TAnalytics_Init(Analytics::trackingCode.c_str(), SystemUtils::getUniqueSystemIdentifier().c_str());
+		TAnalytics_Init(Analytics::trackingCode.c_str(), SystemUtils::GetUniqueSystemIdentifier().c_str());
 	}
 }
 
@@ -87,7 +87,7 @@ void Analytics::shutDown()
 bool Analytics::areAnalyticsEnabled()
 {
 	// Analytics are currently disabled in Steam builds, and only on Itch.io (this is the price of being free for Itch)
-	if (!Steam::isSquallySteamBuild())
+	if (!Steam::IsSquallySteamBuild())
 	{
 		return true;
 	}

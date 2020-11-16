@@ -15,6 +15,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/DialogueEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/ScrappyClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHeal.h"
 

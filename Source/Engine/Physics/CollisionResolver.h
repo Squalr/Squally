@@ -1,6 +1,8 @@
 #pragma once
 #include <functional>
 
+#include "cocos/base/ccTypes.h"
+
 class CollisionObject;
 
 enum class CollisionResult;
@@ -15,8 +17,6 @@ public:
 	static void spawnDebugShapes(CollisionObject* objectA);
 
 private:
-	typedef SmartNode super;
-
 	static void rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision);
 	static void rectToRect(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision);
 	static void quadToQuad(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision);

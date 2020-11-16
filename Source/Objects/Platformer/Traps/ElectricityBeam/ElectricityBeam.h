@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class CollisionObject;
-class HackableData;
 class SmartAnimationSequenceNode;
 
 class ElectricityBeam : public HackableObject

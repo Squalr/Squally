@@ -12,7 +12,6 @@ class ClickableNode;
 class ClickableTextNode;
 class ConstantString;
 class LocalizedLabel;
-class LocalizedString;
 class PlatformerEntity;
 class StatsBars;
 

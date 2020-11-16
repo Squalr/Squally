@@ -2,8 +2,6 @@
 #include <functional>
 #include <string>
 
-#include "cocos/math/CCGeometry.h"
-
 namespace cocos2d
 {
 	class Node;

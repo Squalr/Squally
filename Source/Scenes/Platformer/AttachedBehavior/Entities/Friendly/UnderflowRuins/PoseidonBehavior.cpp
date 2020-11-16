@@ -8,6 +8,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"

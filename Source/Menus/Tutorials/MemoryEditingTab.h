@@ -2,15 +2,7 @@
 
 #include "Menus/Tutorials/TutorialTabBase.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class ClickableTextNode;
-class LocalizedLabel;
 class PlatformerEntity;
-class ScrollPane;
 class TutorialEntry;
 
 class MemoryEditingTab : public TutorialTabBase

@@ -8,8 +8,6 @@ namespace cocos2d
 }
 
 class FilterEntry;
-class Item;
-class LocalizedLabel;
 class SmartClippingNode;
 
 class FilterMenu : public SmartNode
@@ -22,14 +20,15 @@ public:
 	FilterEntry* getActiveFilter();
 
 protected:
+	FilterMenu(std::function<void()> onFilterChange);
+	virtual ~FilterMenu();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
-	FilterMenu(std::function<void()> onFilterChange);
-	virtual ~FilterMenu();
 
 	void scrollFilterUp();
 	void scrollFilterDown();

@@ -3,7 +3,6 @@
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 
 class Item;
-class LocalizedLabel;
 
 class BowsFilter : public CraftFilterEntry
 {

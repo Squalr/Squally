@@ -3,11 +3,6 @@
 #include "Menus/Inventory/MenuEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class ConstantString;
 class Item;
 

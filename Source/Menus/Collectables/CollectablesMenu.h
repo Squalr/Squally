@@ -11,7 +11,6 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class LocalizedLabel;
-class LocalizedString;
 class ScrollPane;
 
 class CollectablesMenu : public SmartNode
@@ -24,7 +23,7 @@ public:
 
 protected:
 	CollectablesMenu();
-	~CollectablesMenu();
+	virtual ~CollectablesMenu();
 
 private:
 	typedef SmartNode super;

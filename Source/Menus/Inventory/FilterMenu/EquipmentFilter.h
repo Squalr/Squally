@@ -3,7 +3,6 @@
 #include "Menus/Inventory/FilterMenu/FilterEntry.h"
 
 class Item;
-class LocalizedLabel;
 
 class EquipmentFilter : public FilterEntry
 {
@@ -13,11 +12,12 @@ public:
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
 protected:
+	EquipmentFilter();
+	virtual ~EquipmentFilter();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef FilterEntry super;
-	EquipmentFilter();
-	virtual ~EquipmentFilter();
 };

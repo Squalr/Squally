@@ -2,13 +2,12 @@
 #include <functional>
 
 #include "cocos/math/CCGeometry.h"
+#include "cocos/math/Vec2.h"
 
 namespace cocos2d
 {
-	class GLProgram;
 	class GLProgramState;
 	class Node;
-	class RenderTexture;
 	class Sprite;
 }
 

@@ -16,7 +16,6 @@ class LocalizedLabel;
 class LocalizedString;
 class PointersTab;
 class MemoryEditingTab;
-class ScrollPane;
 
 class TutorialSelectMenu : public GlobalScene
 {

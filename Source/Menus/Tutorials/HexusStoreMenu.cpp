@@ -30,6 +30,7 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/ParticleResources.h"

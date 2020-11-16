@@ -11,6 +11,7 @@
 #include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"

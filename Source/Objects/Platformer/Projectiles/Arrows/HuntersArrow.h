@@ -7,8 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
-
 class HuntersArrow : public Projectile
 {
 public:

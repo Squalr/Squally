@@ -2,8 +2,6 @@
 
 #include "Engine/Sound/SoundBase.h"
 
-class SmartNode;
-class SmartScene;
 class Track;
 
 class Music : public SoundBase

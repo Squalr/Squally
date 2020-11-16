@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class Item;
 class LocalizedLabel;
 class LocalizedString;
 

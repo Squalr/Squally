@@ -7,21 +7,12 @@
 
 namespace cocos2d
 {
-	class LayerColor;
 	class Sprite;
 }
 
-class ClickableNode;
-class ClickableTextNode;
-class ConfirmationMenu;
-class CurrencyInventory;
-class EquipmentInventory;
-class Inventory;
 class Item;
 class ItemEntry;
 class ItemPreview;
-class LocalizedLabel;
-class LocalizedString;
 class SmartClippingNode;
 
 class ItemMenu : public SmartNode
@@ -44,8 +35,6 @@ public:
 	static const cocos2d::Vec3 DefaultTextOffset;
 
 protected:
-	typedef SmartNode super;
-	
 	ItemMenu();
 	virtual ~ItemMenu();
 
@@ -54,6 +43,8 @@ protected:
 	void initializeListeners() override;
 
 private:
+	typedef SmartNode super;
+
 	void scrollInventoryUp();
 	void scrollInventoryDown();
 

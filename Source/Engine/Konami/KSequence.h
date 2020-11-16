@@ -1,7 +1,5 @@
 #pragma once
 
-#include "cocos/base/CCEventKeyboard.h"
-
 #include "Engine/SmartNode.h"
 
 class KSequence : public SmartNode
@@ -11,7 +9,8 @@ public:
 
 protected:
 	KSequence(std::vector<cocos2d::EventKeyboard::KeyCode> sequence, std::function<void()> callback, bool interruptable);
-	~KSequence();
+	virtual ~KSequence();
+
 	void onEnter() override;
 	void initializeListeners() override;
 

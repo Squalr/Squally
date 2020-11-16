@@ -5,6 +5,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Input/MouseState.h"

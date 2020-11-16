@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/math/Vec2.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d

@@ -4,9 +4,7 @@
 
 namespace cocos2d
 {
-	class Node;
 	class Sprite;
-	class Label;
 }
 
 class Slider;

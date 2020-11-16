@@ -2,13 +2,6 @@
 
 #include "Scenes/MapBase.h"
 
-namespace cocos2d
-{
-	class Event;
-}
-
-class Music;
-
 class PointerTraceLevelSelect  : public MapBase
 {
 public:

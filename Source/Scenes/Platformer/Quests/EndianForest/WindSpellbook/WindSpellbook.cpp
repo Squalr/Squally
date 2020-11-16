@@ -19,6 +19,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

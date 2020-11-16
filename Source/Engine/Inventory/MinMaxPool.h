@@ -2,7 +2,6 @@
 
 #include "Engine/Inventory/ItemPool.h"
 
-class ItemPool;
 class Item;
 class Inventory;
 

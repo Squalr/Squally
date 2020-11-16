@@ -7,10 +7,12 @@ class WeatherDeserializer : public LayerDeserializer
 public:
 	static WeatherDeserializer* create();
 
+protected:
+	WeatherDeserializer();
+	virtual ~WeatherDeserializer();
+
 private:
 	typedef LayerDeserializer super;
-	WeatherDeserializer();
-	~WeatherDeserializer();
 
 	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args);
 

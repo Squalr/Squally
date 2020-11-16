@@ -1,7 +1,5 @@
 #include "Item.h"
 
-#include "cocos/base/CCValue.h"
-
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Utils/MathUtils.h"
 

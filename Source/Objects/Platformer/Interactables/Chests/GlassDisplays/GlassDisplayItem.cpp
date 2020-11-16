@@ -12,6 +12,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ItemResources.h"

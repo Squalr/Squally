@@ -7,10 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
 class ClickableTextNode;
-class ConfirmationMenu;
-class LocalizedLabel;
 class LocalizedString;
 
 class IngameMenu : public PauseMenu

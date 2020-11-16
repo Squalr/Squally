@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Events/SoundEvents.h"
-#include "Engine/SmartNode.h"
 #include "Engine/GlobalNode.h"
 
 class Track;

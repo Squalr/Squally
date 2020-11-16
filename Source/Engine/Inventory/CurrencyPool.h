@@ -3,7 +3,6 @@
 #include "Engine/Maps/GameObject.h"
 
 class Currency;
-class LocalizedString;
 
 class CurrencyPool : public GameObject
 {

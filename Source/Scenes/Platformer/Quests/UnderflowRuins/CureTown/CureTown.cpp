@@ -22,8 +22,9 @@
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
-#include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/FountainRoomKey.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"

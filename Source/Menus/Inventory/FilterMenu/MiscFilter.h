@@ -13,11 +13,12 @@ public:
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
 protected:
+	MiscFilter();
+	virtual ~MiscFilter();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef FilterEntry super;
-	MiscFilter();
-	virtual ~MiscFilter();
 };

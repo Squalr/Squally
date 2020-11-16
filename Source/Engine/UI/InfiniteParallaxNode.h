@@ -3,8 +3,6 @@
 #include <vector>
 
 #include "cocos/2d/CCParallaxNode.h"
-#include "cocos/math/Mat4.h"
-#include "cocos/math/Vec2.h"
 
 namespace cocos2d
 {

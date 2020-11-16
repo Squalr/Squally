@@ -4,6 +4,12 @@
 
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCValue.h"
+
+namespace cocos2d
+{
+	class Node;
+}
 
 class MapLayer;
 class GameObject;

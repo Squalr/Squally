@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 
@@ -23,10 +21,8 @@ public:
 		bool applyInfill;
 		bool blurInfill;
 
-		InfillData()
-			: infillColor(cocos2d::Color4B::BLACK), applyInfill(false), blurInfill(false) { }
-		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill)
-			: infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill) { }
+		InfillData() : infillColor(cocos2d::Color4B::BLACK), applyInfill(false), blurInfill(false) { }
+		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill) : infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill) { }
 	};
 
 	struct TerrainData

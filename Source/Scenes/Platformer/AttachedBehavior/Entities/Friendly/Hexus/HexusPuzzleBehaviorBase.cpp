@@ -4,6 +4,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/SoundResources.h"
 

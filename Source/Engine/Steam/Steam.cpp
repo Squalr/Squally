@@ -14,16 +14,16 @@ const int Steam::SteamAppId = 770200;
 const std::string Steam::ItchFile = ".itch.toml";
 const std::string Steam::SteamDebugFile = "steam_appid.txt";
 
-Steam* Steam::instance = nullptr;
+Steam* Steam::Instance = nullptr;
 
-Steam* Steam::getInstance()
+Steam* Steam::GetInstance()
 {
-	if (Steam::instance == nullptr)
+	if (Steam::Instance == nullptr)
 	{
-		Steam::instance = new Steam();
+		Steam::Instance = new Steam();
 	}
 
-	return Steam::instance;
+	return Steam::Instance;
 }
 
 Steam::Steam()
@@ -34,9 +34,9 @@ Steam::~Steam()
 {
 }
 
-bool Steam::init()
+bool Steam::Init()
 {
-	if (Steam::isSquallySteamBuild())
+	if (Steam::IsSquallySteamBuild())
 	{
 		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
 		{
@@ -54,7 +54,7 @@ bool Steam::init()
 	return true;
 }
 
-bool Steam::isSquallySteamBuild()
+bool Steam::IsSquallySteamBuild()
 {
 	static bool init = false;
 	static bool isItchBuild = false;
@@ -63,7 +63,7 @@ bool Steam::isSquallySteamBuild()
 	{
 		init = true;
 
-		if (!isSteamDebugFilePresent() && Steam::isItchFilePresent())
+		if (!IsSteamDebugFilePresent() && Steam::IsItchFilePresent())
 		{
 			isItchBuild = true;
 		}
@@ -72,9 +72,9 @@ bool Steam::isSquallySteamBuild()
 	return !isItchBuild;
 }
 
-bool Steam::isCloudSaveAvailable()
+bool Steam::IsCloudSaveAvailable()
 {
-	if (!Steam::isSquallySteamBuild())
+	if (!Steam::IsSquallySteamBuild())
 	{
 		return false;
 	}
@@ -89,9 +89,9 @@ bool Steam::isCloudSaveAvailable()
 	return true;
 }
 
-std::string Steam::getSteamUserId()
+std::string Steam::GetSteamUserId()
 {
-	if (!Steam::isSquallySteamBuild())
+	if (!Steam::IsSquallySteamBuild())
 	{
 		return "";
 	}
@@ -106,9 +106,9 @@ std::string Steam::getSteamUserId()
 	return "";
 }
 
-LanguageType Steam::getLanguage()
+LanguageType Steam::GetLanguage()
 {
-	if (!Steam::isSquallySteamBuild())
+	if (!Steam::IsSquallySteamBuild())
 	{
 		return LanguageType::ENGLISH;
 	}
@@ -243,12 +243,12 @@ LanguageType Steam::getLanguage()
 	return LanguageType::ENGLISH;
 }
 
-bool Steam::isSteamDebugFilePresent()
+bool Steam::IsSteamDebugFilePresent()
 {
 	return FileUtils::getInstance()->isFileExist(Steam::SteamDebugFile);
 }
 
-bool Steam::isItchFilePresent()
+bool Steam::IsItchFilePresent()
 {
 	return FileUtils::getInstance()->isFileExist(Steam::ItchFile);
 }

@@ -9,6 +9,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/HexusResources.h"

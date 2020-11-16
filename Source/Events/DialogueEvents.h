@@ -3,15 +3,12 @@
 
 #include "Engine/Dialogue/DialogueBox.h"
 
-#include "Scenes/Platformer/Dialogue/Voices.h"
-
 namespace cocos2d
 {
 	class Node;
 }
 
 class LocalizedString;
-class PlatformerEntity;
 
 class DialogueEvents
 {

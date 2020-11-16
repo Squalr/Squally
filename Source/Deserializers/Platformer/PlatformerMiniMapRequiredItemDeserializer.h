@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 
 class PlatformerMiniMapRequiredItemDeserializer : public PropertyDeserializer

@@ -9,10 +9,7 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class ClickableTextNode;
-class LocalizedLabel;
 class PlatformerEntity;
-class ScrollPane;
 class SmartClippingNode;
 
 class TutorialEntry : public SmartNode

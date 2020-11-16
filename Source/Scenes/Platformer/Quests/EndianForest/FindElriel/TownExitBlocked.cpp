@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 

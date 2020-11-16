@@ -1,5 +1,8 @@
 #pragma once
 
+#include "cocos/base/ccTypes.h"
+#include "cocos/math/Vec3.h"
+
 #include "Engine/Lighting/Effect.h"
 
 namespace cocos2d

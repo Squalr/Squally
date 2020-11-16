@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-#include "cocos/math/CCGeometry.h"
+#include "cocos/math/Vec2.h"
 
 class BlockBase;
 class BoltBase;
@@ -11,7 +11,6 @@ class CipherState;
 class Connection;
 class InputBolt;
 class ImmediateBlock;
-class OutputBolt;
 
 class CipherEvents
 {

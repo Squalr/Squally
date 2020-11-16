@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+#include "cocos/platform/CCCommon.h"
+
 class LocalizedString;
 
 class LocalizationEvents

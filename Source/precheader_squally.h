@@ -28,8 +28,10 @@
 #include <utility>
 #include <tuple>
 
+/*
 // cocos
 #include "cocos2d.h"
+*/
 
 // squally
 #include "Strings/Strings.h"

@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
 class CollisionObject;
 class ConstantString;
 class InteractMenu;

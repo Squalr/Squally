@@ -1,7 +1,5 @@
 #include "ObjectDeserializer.h"
 
-#include "cocos/base/CCValue.h"
-
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/LogUtils.h"

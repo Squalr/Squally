@@ -2,16 +2,6 @@
 
 #include "Objects/Platformer/Traps/Launchers/PivotLauncher.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class AnimationPart;
-class DartPool;
-class HackableData;
-class SmartAnimationNode;
-
 class DartLauncher : public PivotLauncher
 {
 public:

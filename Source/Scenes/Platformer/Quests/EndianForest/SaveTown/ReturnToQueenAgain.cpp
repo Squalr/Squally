@@ -17,6 +17,7 @@
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"

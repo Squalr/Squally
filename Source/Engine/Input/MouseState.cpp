@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerMouse.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
 
 using namespace cocos2d;

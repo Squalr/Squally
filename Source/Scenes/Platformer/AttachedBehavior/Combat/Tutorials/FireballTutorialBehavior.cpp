@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/ScrappyClippy.h"
 
 #include "Resources/SoundResources.h"

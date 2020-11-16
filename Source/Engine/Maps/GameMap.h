@@ -2,8 +2,6 @@
 #include <string>
 #include <vector>
 
-#include "cocos/math/CCGeometry.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d

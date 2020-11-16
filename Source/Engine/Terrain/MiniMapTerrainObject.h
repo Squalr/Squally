@@ -7,14 +7,6 @@
 #include "Engine/Terrain/TerrainObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 
-namespace cocos2d
-{
-	class DrawNode;
-	class Sprite;
-}
-
-class TextureObject;
-
 class MiniMapTerrainObject : public HackableObject
 {
 public:
