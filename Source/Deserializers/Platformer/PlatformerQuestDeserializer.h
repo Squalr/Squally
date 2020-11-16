@@ -1,7 +1,5 @@
 #pragma once
 
-#include "cocos/base/CCValue.h"
-
 #include "Engine/Deserializers/Properties/QuestDeserializer.h"
 
 class PlatformerQuestDeserializer : public QuestDeserializer

@@ -9,7 +9,6 @@ namespace cocos2d
 
 class Item;
 class Squally;
-class SmartAnimationSequenceNode;
 class Sound;
 
 class SquallyItemDiscoveryBehavior : public AttachedBehavior

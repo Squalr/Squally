@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/Sarcophagus/Sarcophagus.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 

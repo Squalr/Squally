@@ -8,10 +8,11 @@ public:
 	static PlatformerEntityDeserializer* create();
 
 	static const std::string MapKeyTypeEntity;
+	
+protected:
+	PlatformerEntityDeserializer();
+	virtual ~PlatformerEntityDeserializer();
 
 private:
 	typedef ObjectDeserializer super;
-
-	PlatformerEntityDeserializer();
-	virtual ~PlatformerEntityDeserializer();
 };

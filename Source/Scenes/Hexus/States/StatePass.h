@@ -9,7 +9,6 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class ClickableIconNode;
 class LocalizedLabel;
 class SmartParticles;
 class Sound;

@@ -3,7 +3,6 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class Scrappy;
-class Squally;
 
 class ScrappyHackableCueBehavior : public AttachedBehavior
 {

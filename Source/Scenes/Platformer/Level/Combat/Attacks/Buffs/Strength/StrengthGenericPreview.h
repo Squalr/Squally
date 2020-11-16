@@ -2,8 +2,6 @@
 
 #include "Engine/Hackables/Menus/HackablePreview.h"
 
-class SmartAnimationSequenceNode;
-
 class StrengthGenericPreview : public HackablePreview
 {
 public:

@@ -172,7 +172,7 @@ class LocalizedString;
 class HackableCode : public HackableBase
 {
 public:
-	enum Register
+	enum class Register
 	{
 		zax, zbx, zcx, zdx, zdi, zsi, zbp, zsp, zip,
 		r8, r9, r10, r11, r12, r13, r14, r15,

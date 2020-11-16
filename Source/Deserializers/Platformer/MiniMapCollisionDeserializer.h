@@ -14,10 +14,11 @@ public:
 	static const std::string PropertyMiniMapVisible;
 	static const cocos2d::Color4B PassThroughColor;
 	static const cocos2d::Color4B SolidColor;
+	
+protected:
+	MiniMapCollisionDeserializer();
+	virtual ~MiniMapCollisionDeserializer();
 
 private:
 	typedef ObjectDeserializer super;
-
-	MiniMapCollisionDeserializer();
-	virtual ~MiniMapCollisionDeserializer();
 };

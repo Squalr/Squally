@@ -5,7 +5,6 @@
 
 class AttackMenu;
 class ItemsMenu;
-class PlatformerAttack;
 class PlatformerEntity;
 class RadialEntry;
 class RadialScrollMenu;

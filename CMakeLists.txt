@@ -4,11 +4,12 @@ project(Squally VERSION 1.1.5 LANGUAGES C CXX)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-find_program(IWYU_PATH NAMES include-what-you-use iwyu)
-if(IWYU_PATH)
-    set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
-    set(CMAKE_C_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
-endif()
+# Enable if we ever decide to use IWYU
+# find_program(IWYU_PATH NAMES include-what-you-use iwyu)
+# if(IWYU_PATH)
+    # set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+    # set(CMAKE_C_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+# endif()
 
 # External dependencies
 find_package(RapidJSON REQUIRED)
@@ -28,9 +29,9 @@ endif()
 # Fix rapidjson target
 add_library(RapidJSON INTERFACE)
 add_library(RapidJSON::RapidJSON ALIAS RapidJSON)
-target_include_directories(RapidJSON INTERFACE
-    ${RAPIDJSON_INCLUDE_DIRS}
-)
+# target_include_directories(RapidJSON INTERFACE
+    # ${RAPIDJSON_INCLUDE_DIRS}
+# )
 
 # Fix tinyxml2 relwithdebinfo configuration (chooses debug instead of release
 # for relwithdebinfo)

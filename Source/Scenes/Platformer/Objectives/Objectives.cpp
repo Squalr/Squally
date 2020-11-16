@@ -4,6 +4,7 @@
 
 #include "Engine/Save/SaveManager.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Strings/Strings.h"

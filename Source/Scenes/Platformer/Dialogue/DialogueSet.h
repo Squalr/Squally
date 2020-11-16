@@ -4,7 +4,6 @@
 #include "Events/DialogueEvents.h"
 
 class DialogueOption;
-class LocalizedString;
 
 class DialogueSet : public SmartNode
 {

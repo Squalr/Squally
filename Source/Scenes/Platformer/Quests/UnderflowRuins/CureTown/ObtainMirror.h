@@ -5,7 +5,6 @@
 class Guano;
 class GuanoPetrified;
 class Inventory;
-class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;

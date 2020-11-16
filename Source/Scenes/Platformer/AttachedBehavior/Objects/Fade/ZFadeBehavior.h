@@ -2,8 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class Portal;
-
 class ZFadeBehavior : public AttachedBehavior
 {
 public:

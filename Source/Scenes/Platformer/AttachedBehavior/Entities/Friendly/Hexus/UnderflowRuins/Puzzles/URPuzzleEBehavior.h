@@ -3,9 +3,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/HexusPuzzleBehaviorBase.h"
 
 class CardData;
-class HexusOpponentData;
 class MinMaxPool;
-class PlatformerEntity;
 
 class URPuzzleEBehavior : public HexusPuzzleBehaviorBase
 {

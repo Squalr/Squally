@@ -45,10 +45,12 @@ public:
 
 	static void save();
 
+protected:
+	ConfigManager();
+	virtual ~ConfigManager();
+
 private:
 	static ConfigManager* getInstance();
-	ConfigManager();
-	~ConfigManager();
 
 	cocos2d::ValueMap valueMap;
 

@@ -4,7 +4,6 @@
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
-class PlatformerAttack;
 class PlatformerEntity;
 
 class EntityCombatBehaviorBase : public AttachedBehaviorGroup

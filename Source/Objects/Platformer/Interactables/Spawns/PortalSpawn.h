@@ -4,10 +4,7 @@
 #include "Engine/Hackables/HackableObject.h"
 
 class CollisionObject;
-class HackableData;
-class InteractMenu;
 class PlatformerEntity;
-class Squally;
 
 class PortalSpawn : public HackableObject
 {

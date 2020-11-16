@@ -12,7 +12,6 @@ namespace cocos2d
 class ClickableTextNode;
 class LocalizedLabel;
 class LocalizedString;
-class PlatformerEntity;
 class Sound;
 
 class NotificationHud : public Hud

@@ -15,16 +15,19 @@ add_executable(${PROJECT_NAME}
     ${GAME_HEADERS}
 )
 
-target_precompile_headers(${PROJECT_NAME} PUBLIC
-  "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
-)
+# target_precompile_headers(${PROJECT_NAME} PUBLIC
+  # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
+# )
+
+# C++20
+target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
 
 # Target Propeties (PIE and edit the output directory)
 set_target_properties(${PROJECT_NAME} PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     # UNITY_BUILD ON
-    # UNITY_BUILD_BATCH_SIZE 20
+    UNITY_BUILD_BATCH_SIZE 64
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -86,13 +89,15 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Z7")
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /Z7")
 
-    # Find C++ 17, allow large multi-class C++ files
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /bigobj")
+    # Allow large multi-class C++ files
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+
+    message(${CMAKE_CXX_FLAGS_DEBUG})
 
     target_link_options(${PROJECT_NAME} PRIVATE
         # Enable to allow profiling on windows:
         # $<$<CONFIG:DEBUG>:/PROFILE>
-        # $<$<CONFIG:DEBUG>:/DEBUG:FASTLINK>
+        $<$<CONFIG:DEBUG>:/VERBOSE>
     )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # setup rpath so binaries can search relative to themselves for libs

@@ -4,7 +4,6 @@
 
 class MinMaxPool;
 class PlatformerEntity;
-class Squally;
 
 class GuanoPickPocketBehavior : public AttachedBehavior
 {

@@ -867,8 +867,8 @@ Error RALocalAllocator::allocBranch(InstNode* node, RABlock* target, RABlock* co
       if (ASMJIT_UNLIKELY(!targetOp.isLabel()))
         return DebugUtils::errored(kErrorInvalidState);
 
-      Label trampoline = _cc->newLabel();
-      Label savedTarget = targetOp.as<Label>();
+      AsmLabel trampoline = _cc->newLabel();
+      AsmLabel savedTarget = targetOp.as<AsmLabel>();
 
       // Patch `target` to point to the `trampoline` we just created.
       targetOp = trampoline;

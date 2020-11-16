@@ -2,13 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class Squally;
-
 class EnemyBehaviorGroup : public AttachedBehaviorGroup
 {
 public:

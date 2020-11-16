@@ -9,8 +9,6 @@ namespace cocos2d
 
 class ClickableTextNode;
 class LocalizedLabel;
-class PlatformerEntity;
-class ScrollPane;
 class Sound;
 
 class DefeatMenu : public SmartNode

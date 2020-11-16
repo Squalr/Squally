@@ -3,7 +3,6 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class Squally;
-class SmartAnimationSequenceNode;
 
 class SquallyDeadVisualBehavior : public AttachedBehavior
 {

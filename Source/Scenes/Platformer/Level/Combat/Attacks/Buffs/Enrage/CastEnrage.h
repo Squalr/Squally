@@ -2,11 +2,6 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-namespace cocos2d
-{
-	class Sprite;
-};
-
 class WorldSound;
 
 class CastEnrage : public PlatformerAttack
@@ -17,7 +12,7 @@ public:
 	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	float getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	LocalizedString* getString() override;
-	std::string getAttackAnimation() override;
+	std::string getAttackAnimation() override;\
 
 protected:
 	CastEnrage(float attackDuration, float recoverDuration, Priority priority);

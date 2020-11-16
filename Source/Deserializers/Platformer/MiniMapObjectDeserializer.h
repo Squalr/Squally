@@ -18,9 +18,10 @@ public:
 	static const cocos2d::Color4B InteractableColor;
 	static const cocos2d::Color4B ShrineColor;
 
-private:
-	typedef ObjectDeserializer super;
-
+protected:
 	MiniMapObjectDeserializer();
 	virtual ~MiniMapObjectDeserializer();
+
+private:
+	typedef ObjectDeserializer super;
 };

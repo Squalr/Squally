@@ -2,13 +2,6 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class Squally;
-
 class SquallyCombatBehaviorGroup : public EntityCombatBehaviorBase
 {
 public:

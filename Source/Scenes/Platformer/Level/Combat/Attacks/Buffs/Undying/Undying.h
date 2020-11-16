@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class Undying : public Buff
 {

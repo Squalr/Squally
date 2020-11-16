@@ -9,8 +9,14 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
-#include "Deserializers/Deserializers.h"
+#include "Deserializers/Isometric/IsometricDecorDeserializer.h"
+#include "Deserializers/Isometric/IsometricEntityDeserializer.h"
+#include "Deserializers/Isometric/IsometricObjectDeserializer.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Deserializers/Meta/BackgroundDeserializer.h"
+#include "Engine/Deserializers/Meta/MetaLayerDeserializer.h"
+#include "Engine/Deserializers/Meta/MusicDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -19,7 +25,6 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 
-#include "Resources/IsometricMapResources.h"
 #include "Resources/IsometricMapResources.h"
 #include "Resources/MusicResources.h"
 #include "Resources/PointerTraceResources.h"

@@ -2,7 +2,6 @@
 
 #include "Engine/Inventory/Item.h"
 
-class LocalizedString;
 class PlatformerAttack;
 class PlatformerEntity;
 

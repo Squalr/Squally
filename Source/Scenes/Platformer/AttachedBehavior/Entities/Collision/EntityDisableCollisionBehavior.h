@@ -2,7 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class CollisionObject;
 class PlatformerEntity;
 
 class EntityDisableCollisionBehavior : public AttachedBehavior

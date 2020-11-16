@@ -5,7 +5,6 @@
 #include "Engine/SmartNode.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class PlatformerAttack;
 class PlatformerEntity;
 class TimelineEntry;
 

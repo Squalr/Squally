@@ -2,7 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class PlatformerEnemy;
 class Squally;
 
 class SquallyFloatBehavior : public AttachedBehavior

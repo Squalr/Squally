@@ -14,8 +14,6 @@ namespace cocos2d
 
 class Inventory;
 class LayerDeserializer;
-class LocalizedLabel;
-class LocalizedString;
 class MiniGameMap;
 class MiniMapObject;
 class MiniMapTerrainObject;

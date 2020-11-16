@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Maps/MapLayer.h"
 
 class SmartParticles;

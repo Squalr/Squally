@@ -2,15 +2,7 @@
 
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class HackablePreview;
 class PlatformerEntity;
-class SmartParticles;
-class WorldSound;
 
 class UndyingAutoCast : public Buff
 {

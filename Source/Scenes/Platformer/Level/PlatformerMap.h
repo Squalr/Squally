@@ -13,7 +13,6 @@ namespace cocos2d
 class AlchemyMenu;
 class BlacksmithingMenu;
 class Cipher;
-class ClickableTextNode;
 class CollectablesMenu;
 class ConfirmationHud;
 class GameHud;
@@ -24,7 +23,6 @@ class ItemInfoMenu;
 class CardsMenu;
 class NotificationHud;
 class PartyMenu;
-class PlatformerEnemy;
 class MiniMap;
 
 class PlatformerMap : public MapBase

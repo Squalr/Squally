@@ -10,7 +10,6 @@ namespace cocos2d
 class ConstantString;
 class EntityEqBehavior;
 class LocalizedLabel;
-class LocalizedString;
 class PlatformerEntity;
 
 class EqDisplay : public SmartNode

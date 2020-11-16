@@ -2,10 +2,8 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Guano;
 class Lycan;
 class QuestLine;
-class Scrappy;
 class Squally;
 
 class SneakPastLycan : public QuestTask

@@ -2,13 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class Scrappy;
-class Squally;
 class PlatformerEntity;
 
 class IncrementHealthFlaskTutorialBehavior : public AttachedBehavior

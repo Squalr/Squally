@@ -3,7 +3,6 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class LocalizedLabel;
-class LocalizedString;
 class PlatformerEntity;
 
 class EntityTextOverlayBehavior : public AttachedBehavior

@@ -2,11 +2,6 @@
 
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
 

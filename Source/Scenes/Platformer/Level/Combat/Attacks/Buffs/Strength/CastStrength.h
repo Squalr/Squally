@@ -2,11 +2,6 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-namespace cocos2d
-{
-	class Sprite;
-};
-
 class WorldSound;
 
 class CastStrength : public PlatformerAttack

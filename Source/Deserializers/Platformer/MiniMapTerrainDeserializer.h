@@ -9,11 +9,12 @@ public:
 
 	static const std::string MapKeyTypeTerrain;
 
-private:
-	typedef ObjectDeserializer super;
-
+protected:
 	MiniMapTerrainDeserializer();
 	virtual ~MiniMapTerrainDeserializer();
+
+private:
+	typedef ObjectDeserializer super;
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 

@@ -2,11 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Action;
-}
-
 class MatrixLetter;
 
 class MatrixStrand : public SmartNode
@@ -14,14 +9,16 @@ class MatrixStrand : public SmartNode
 public:
 	static MatrixStrand* create(int strandIndex);
 
-private:
-	typedef SmartNode super;
+protected:
 	MatrixStrand(int strandIndex);
-	~MatrixStrand();
+	virtual ~MatrixStrand();
 
 	void onEnter() override;
 	void update(float) override;
 	void pause(void) override;
+
+private:
+	typedef SmartNode super;
 
 	void nextStrandAction();
 	void beginStrand();

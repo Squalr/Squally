@@ -8,7 +8,6 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"

@@ -3,12 +3,9 @@
 #include "Engine/Quests/QuestTask.h"
 
 class HelpTotem;
-class MagePortal;
-class Marcel;
 class QuestLine;
 class Scrappy;
 class Squally;
-class WorldSound;
 
 class TeachHackerMode : public QuestTask
 {

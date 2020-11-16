@@ -4,9 +4,12 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Deserializers/Deserializers.h"
+#include "Deserializers/Platformer/MinimapCollisionDeserializer.h"
+#include "Deserializers/Platformer/MiniMapObjectDeserializer.h"
+#include "Deserializers/Platformer/MiniMapTerrainDeserializer.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"

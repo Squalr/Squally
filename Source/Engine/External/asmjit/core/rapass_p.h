@@ -1049,7 +1049,7 @@ public:
   virtual Error onEmitLoad(uint32_t workId, uint32_t dstPhysId) noexcept = 0;
   virtual Error onEmitSave(uint32_t workId, uint32_t srcPhysId) noexcept = 0;
 
-  virtual Error onEmitJump(const Label& label) noexcept = 0;
+  virtual Error onEmitJump(const AsmLabel& label) noexcept = 0;
   virtual Error onEmitPreCall(FuncCallNode* call) noexcept = 0;
 
   //! \}

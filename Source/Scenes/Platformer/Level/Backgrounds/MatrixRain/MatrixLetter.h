@@ -1,6 +1,6 @@
 #pragma once
+
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/ccTypes.h"
 
 class MatrixLetter : public cocos2d::Sprite
 {
@@ -13,10 +13,12 @@ public:
 
 	static const int LetterSize;
 
+protected:
+	MatrixLetter();
+	virtual ~MatrixLetter();
+
 private:
 	typedef cocos2d::Sprite super;
-	MatrixLetter();
-	~MatrixLetter();
 
 	void pause(void) override;
 	void randomizeLetter();

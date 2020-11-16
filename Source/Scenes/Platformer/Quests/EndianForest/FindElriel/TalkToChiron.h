@@ -2,10 +2,8 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Guano;
 class Chiron;
 class QuestLine;
-class Scrappy;
 class Squally;
 
 class TalkToChiron : public QuestTask

@@ -353,7 +353,7 @@ static uint32_t x86ParseSize(const uint8_t* s, size_t size) noexcept {
 }
 
 static Error asmHandleSymbol(AsmParser& parser, Operand_& dst, const uint8_t* name, size_t size) noexcept {
-  Label L = parser._emitter->labelByName(reinterpret_cast<const char*>(name), size);
+  AsmLabel L = parser._emitter->labelByName(reinterpret_cast<const char*>(name), size);
 
   if (!L.isValid()) {
     if (parser._unknownSymbolHandler) {
@@ -564,7 +564,7 @@ MemOp:
 
           int32_t disp32 = int32_t(offset & 0xFFFFFFFFu);
           if (base.isLabel())
-            dst = x86::ptr(base.as<Label>(), disp32);
+            dst = x86::ptr(base.as<AsmLabel>(), disp32);
           else if (!index.isReg())
             dst = x86::ptr(base.as<x86::Gp>(), disp32);
           else
@@ -1023,7 +1023,7 @@ Error AsmParser::parseCommand() noexcept {
     tType = nextToken(&tmp);
     if (tType == AsmToken::kColon) {
       // Parse label.
-      Label dst;
+      AsmLabel dst;
       ASMJIT_PROPAGATE(asmHandleSymbol(*this, dst, token.data, token.size));
       ASMJIT_PROPAGATE(_emitter->bind(dst));
       return kErrorOk;

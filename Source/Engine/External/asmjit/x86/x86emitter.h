@@ -241,17 +241,17 @@ struct EmitterExplicitT {
     return Mem(base, index, shift, offset, nativeGpSize);
   }
   //! \overload
-  inline Mem intptr_ptr(const Label& base, int32_t offset = 0) const noexcept {
+  inline Mem intptr_ptr(const AsmLabel& base, int32_t offset = 0) const noexcept {
     uint32_t nativeGpSize = static_cast<const This*>(this)->gpSize();
     return Mem(base, offset, nativeGpSize);
   }
   //! \overload
-  inline Mem intptr_ptr(const Label& base, const Gp& index, uint32_t shift, int32_t offset = 0) const noexcept {
+  inline Mem intptr_ptr(const AsmLabel& base, const Gp& index, uint32_t shift, int32_t offset = 0) const noexcept {
     uint32_t nativeGpSize = static_cast<const This*>(this)->gpSize();
     return Mem(base, index, shift, offset, nativeGpSize);
   }
   //! \overload
-  inline Mem intptr_ptr(const Label& base, const Vec& index, uint32_t shift, int32_t offset = 0) const noexcept {
+  inline Mem intptr_ptr(const AsmLabel& base, const Vec& index, uint32_t shift, int32_t offset = 0) const noexcept {
     uint32_t nativeGpSize = static_cast<const This*>(this)->gpSize();
     return Mem(base, index, shift, offset, nativeGpSize);
   }
@@ -502,7 +502,7 @@ public:
   ASMJIT_INST_1x(cwde, Cwde, EAX)                                      // ANY       [EXPLICIT] EAX     <- Sign Extend AX
   ASMJIT_INST_1x(call, Call, Gp)                                       // ANY
   ASMJIT_INST_1x(call, Call, Mem)                                      // ANY
-  ASMJIT_INST_1x(call, Call, Label)                                    // ANY
+  ASMJIT_INST_1x(call, Call, AsmLabel)                                    // ANY
   ASMJIT_INST_1i(call, Call, Imm)                                      // ANY
   ASMJIT_INST_0x(clc, Clc)                                             // ANY
   ASMJIT_INST_0x(cld, Cld)                                             // ANY
@@ -555,15 +555,15 @@ public:
   ASMJIT_INST_0x(invd, Invd)                                           // ANY
   ASMJIT_INST_1x(invlpg, Invlpg, Mem)                                  // ANY
   ASMJIT_INST_2x(invpcid, Invpcid, Gp, Mem)                            // ANY
-  ASMJIT_INST_1c(j, J, Condition::toJcc, Label)                        // ANY
+  ASMJIT_INST_1c(j, J, Condition::toJcc, AsmLabel)                        // ANY
   ASMJIT_INST_1c(j, J, Condition::toJcc, Imm)                          // ANY
   ASMJIT_INST_1c(j, J, Condition::toJcc, uint64_t)                     // ANY
-  ASMJIT_INST_2x(jecxz, Jecxz, Gp, Label)                              // ANY       [EXPLICIT] Short jump if CX/ECX/RCX is zero.
+  ASMJIT_INST_2x(jecxz, Jecxz, Gp, AsmLabel)                              // ANY       [EXPLICIT] Short jump if CX/ECX/RCX is zero.
   ASMJIT_INST_2x(jecxz, Jecxz, Gp, Imm)                                // ANY       [EXPLICIT] Short jump if CX/ECX/RCX is zero.
   ASMJIT_INST_2x(jecxz, Jecxz, Gp, uint64_t)                           // ANY       [EXPLICIT] Short jump if CX/ECX/RCX is zero.
   ASMJIT_INST_1x(jmp, Jmp, Gp)                                         // ANY
   ASMJIT_INST_1x(jmp, Jmp, Mem)                                        // ANY
-  ASMJIT_INST_1x(jmp, Jmp, Label)                                      // ANY
+  ASMJIT_INST_1x(jmp, Jmp, AsmLabel)                                      // ANY
   ASMJIT_INST_1x(jmp, Jmp, Imm)                                        // ANY
   ASMJIT_INST_1x(jmp, Jmp, uint64_t)                                   // ANY
   ASMJIT_INST_1x(lahf, Lahf, AH)                                       // LAHFSAHF  [EXPLICIT] AH <- EFL
@@ -584,13 +584,13 @@ public:
   ASMJIT_INST_1x(lmsw, Lmsw, Gp)                                       // ANY
   ASMJIT_INST_1x(lmsw, Lmsw, Mem)                                      // ANY
   ASMJIT_INST_2x(lods, Lods, ZAX, DS_ZSI)                              // ANY       [EXPLICIT]
-  ASMJIT_INST_2x(loop, Loop, ZCX, Label)                               // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0.
+  ASMJIT_INST_2x(loop, Loop, ZCX, AsmLabel)                               // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0.
   ASMJIT_INST_2x(loop, Loop, ZCX, Imm)                                 // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0.
   ASMJIT_INST_2x(loop, Loop, ZCX, uint64_t)                            // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0.
-  ASMJIT_INST_2x(loope, Loope, ZCX, Label)                             // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
+  ASMJIT_INST_2x(loope, Loope, ZCX, AsmLabel)                             // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
   ASMJIT_INST_2x(loope, Loope, ZCX, Imm)                               // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
   ASMJIT_INST_2x(loope, Loope, ZCX, uint64_t)                          // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
-  ASMJIT_INST_2x(loopne, Loopne, ZCX, Label)                           // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
+  ASMJIT_INST_2x(loopne, Loopne, ZCX, AsmLabel)                           // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
   ASMJIT_INST_2x(loopne, Loopne, ZCX, Imm)                             // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
   ASMJIT_INST_2x(loopne, Loopne, ZCX, uint64_t)                        // ANY       [EXPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
   ASMJIT_INST_2x(lsl, Lsl, Gp, Gp)                                     // ANY
@@ -935,7 +935,7 @@ public:
   //! \{
 
   ASMJIT_INST_0x(xabort, Xabort)                                       // RTM
-  ASMJIT_INST_1x(xbegin, Xbegin, Label)                                // RTM
+  ASMJIT_INST_1x(xbegin, Xbegin, AsmLabel)                                // RTM
   ASMJIT_INST_1x(xbegin, Xbegin, Imm)                                  // RTM
   ASMJIT_INST_1x(xbegin, Xbegin, uint64_t)                             // RTM
   ASMJIT_INST_0x(xend, Xend)                                           // RTM
@@ -5319,17 +5319,17 @@ struct EmitterImplicitT : public EmitterExplicitT<This> {
   ASMJIT_INST_0x(iretd, Iretd)                                         // ANY       [IMPLICIT]
   ASMJIT_INST_0x(iretq, Iretq)                                         // X64       [IMPLICIT]
   ASMJIT_INST_0x(iretw, Iretw)                                         // ANY       [IMPLICIT]
-  ASMJIT_INST_1x(jecxz, Jecxz, Label)                                  // ANY       [IMPLICIT] Short jump if CX/ECX/RCX is zero.
+  ASMJIT_INST_1x(jecxz, Jecxz, AsmLabel)                                  // ANY       [IMPLICIT] Short jump if CX/ECX/RCX is zero.
   ASMJIT_INST_1x(jecxz, Jecxz, Imm)                                    // ANY       [IMPLICIT] Short jump if CX/ECX/RCX is zero.
   ASMJIT_INST_1x(jecxz, Jecxz, uint64_t)                               // ANY       [IMPLICIT] Short jump if CX/ECX/RCX is zero.
   ASMJIT_INST_0x(lahf, Lahf)                                           // LAHFSAHF  [IMPLICIT] AH <- EFL
-  ASMJIT_INST_1x(loop, Loop, Label)                                    // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0.
+  ASMJIT_INST_1x(loop, Loop, AsmLabel)                                    // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0.
   ASMJIT_INST_1x(loop, Loop, Imm)                                      // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0.
   ASMJIT_INST_1x(loop, Loop, uint64_t)                                 // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0.
-  ASMJIT_INST_1x(loope, Loope, Label)                                  // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
+  ASMJIT_INST_1x(loope, Loope, AsmLabel)                                  // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
   ASMJIT_INST_1x(loope, Loope, Imm)                                    // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
   ASMJIT_INST_1x(loope, Loope, uint64_t)                               // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 1.
-  ASMJIT_INST_1x(loopne, Loopne, Label)                                // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
+  ASMJIT_INST_1x(loopne, Loopne, AsmLabel)                                // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
   ASMJIT_INST_1x(loopne, Loopne, Imm)                                  // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
   ASMJIT_INST_1x(loopne, Loopne, uint64_t)                             // ANY       [IMPLICIT] Decrement xCX; short jump if xCX != 0 && ZF == 0.
   ASMJIT_INST_1x(mul, Mul, Gp)                                         // ANY       [IMPLICIT] {AX <- AL * r8} {xDX:xAX <- xAX * r16|r32|r64}

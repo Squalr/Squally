@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTypeObject;
 
-private:
-	typedef ObjectDeserializer super;
-
+protected:
 	PlatformerObjectDeserializer();
 	virtual ~PlatformerObjectDeserializer();
+
+private:
+	typedef ObjectDeserializer super;
 };

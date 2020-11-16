@@ -10,7 +10,6 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"

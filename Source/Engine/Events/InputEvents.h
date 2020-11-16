@@ -2,7 +2,7 @@
 #include <string>
 
 #include "cocos/base/CCEventKeyboard.h"
-#include "cocos/base/ccTypes.h"
+#include "cocos/math/Vec2.h"
 
 struct MouseEventArgs
 {

@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTypeObject;
 
+protected:
+	IsometricObjectDeserializer();
+	virtual ~IsometricObjectDeserializer();
+
 private:
 	typedef ObjectDeserializer super;
-
-	IsometricObjectDeserializer();
-	~IsometricObjectDeserializer();
 };

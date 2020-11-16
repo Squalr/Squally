@@ -2,16 +2,8 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class Axe;
-class Bow;
 class EntityAttackBehavior;
-class Mace;
-class PlatformerAttack;
 class Squally;
-class Spear;
-class Sword;
-class Wand;
-class Weapon;
 
 class SquallyAttackBehavior : public AttachedBehavior
 {

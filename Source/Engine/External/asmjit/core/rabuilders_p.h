@@ -200,7 +200,7 @@ public:
                   return DebugUtils::errored(kErrorInvalidState);
 
                 LabelNode* cbLabel;
-                ASMJIT_PROPAGATE(cc()->labelNodeOf(&cbLabel, opArray[opCount - 1].as<Label>()));
+                ASMJIT_PROPAGATE(cc()->labelNodeOf(&cbLabel, opArray[opCount - 1].as<AsmLabel>()));
 
                 RABlock* targetBlock = _pass->newBlockOrExistingAt(cbLabel);
                 if (ASMJIT_UNLIKELY(!targetBlock))

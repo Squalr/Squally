@@ -2,7 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class PlatformerAttack;
 class PlatformerEntity;
 
 class GuanoAttackBehavior : public AttachedBehavior

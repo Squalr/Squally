@@ -1,13 +1,11 @@
 #pragma once
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
 {
-	class Sprite;
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-
 	namespace cocos_experimental
 	{
 		class TMXTiledMap;
@@ -24,9 +22,7 @@ class MatrixRain;
 class MusicOverlay;
 class OptionsMenu;
 class PauseMenu;
-class PlatformerDialogueBox;
 class RadialMenu;
-class HackerModeHud;
 
 class MapBase : public GlobalScene
 {

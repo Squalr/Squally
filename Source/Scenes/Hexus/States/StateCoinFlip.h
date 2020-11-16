@@ -2,12 +2,6 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-namespace cocos2d
-{
-	class Animation;
-	class Sprite;
-}
-
 class SmartAnimationSequenceNode;
 
 class StateCoinFlip : public StateBase

@@ -3,7 +3,6 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Elriel;
-class PlatformerEntity;
 class QuestLine;
 class Scrappy;
 class Squally;

@@ -19,7 +19,6 @@ class PlatformerEntityDeserializer;
 class RewardsMenu;
 class Scrappy;
 class TargetSelectionMenu;
-class TextOverlays;
 class Timeline;
 
 class CombatMap : public MapBase

@@ -2,8 +2,6 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
-class LocalizedString;
-
 class Offhand : public Equipable
 {
 public:

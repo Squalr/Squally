@@ -8,10 +8,11 @@ public:
 	static IsometricEntityDeserializer* create();
 
 	static const std::string MapKeyTypeEntity;
+	
+protected:
+	IsometricEntityDeserializer();
+	virtual ~IsometricEntityDeserializer();
 
 private:
 	typedef ObjectDeserializer super;
-
-	IsometricEntityDeserializer();
-	~IsometricEntityDeserializer();
 };

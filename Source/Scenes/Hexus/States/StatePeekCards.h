@@ -4,7 +4,6 @@
 
 class Card;
 class ClickableTextNode;
-class ClickableNode;
 
 class StatePeekCards : public StateBase
 {

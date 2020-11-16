@@ -2,8 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
 
-class Squally;
-
 class SquallyVisualBehaviorGroup : public AttachedBehaviorGroup
 {
 public:

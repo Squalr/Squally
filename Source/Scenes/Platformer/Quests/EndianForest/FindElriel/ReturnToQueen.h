@@ -9,7 +9,6 @@ class QuestLine;
 class RewardPoolLiana;
 class Scrappy;
 class Squally;
-class SaveTownLine;
 
 class ReturnToQueen : public QuestTask
 {

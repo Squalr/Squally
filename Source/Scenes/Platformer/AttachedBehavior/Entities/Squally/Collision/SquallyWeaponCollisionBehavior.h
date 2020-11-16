@@ -2,12 +2,6 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class PlatformerEnemy;
 class Squally;
 
 class SquallyWeaponCollisionBehavior : public EntityWeaponCollisionBehavior

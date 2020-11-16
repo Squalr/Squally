@@ -3,7 +3,6 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 
 class CollisionObject;
-class PlatformerEntity;
 
 class FriendlyCollisionBehavior : public EntityCollisionBehaviorBase
 {

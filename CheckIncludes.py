@@ -21,7 +21,7 @@ with open("CheckIncludesIntermediate.txt", "w") as f:
         '--include-path=proj.mac'
     ], stdout=f)
     
-ignored_words = [' static data ', 'asmjit', 'asmtk', 'libudis86']
+ignored_words = ['Squally.dir', 'cocos2d.dir', 'spriter2dx.dir', ' static data ', 'precheader', 'asmjit', 'asmtk', 'libudis86']
     
 with open("CheckIncludesIntermediate.txt", "r") as input, open("CheckIncludes.txt", "w") as output:
     for line in input:

@@ -12,7 +12,6 @@ namespace cocos2d
 class EntityRuneBehavior;
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
-class SmartClippingNode;
 class Sound;
 
 class RuneBar : public SmartNode

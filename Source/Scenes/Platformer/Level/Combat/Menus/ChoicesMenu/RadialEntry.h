@@ -1,9 +1,6 @@
 #pragma once
 
-#include "cocos/math/Vec2.h"
-
 #include "Engine/SmartNode.h"
-#include "Engine/Events/InputEvents.h"
 
 class ClickableTextNode;
 class LocalizedLabel;

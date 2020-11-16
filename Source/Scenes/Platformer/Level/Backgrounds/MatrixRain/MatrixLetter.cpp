@@ -3,7 +3,6 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
 
 #include "Resources/FontResources.h"
 

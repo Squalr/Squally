@@ -8,10 +8,7 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
-class ConstantString;
 class LocalizedLabel;
-class PlatformerEntity;
-class ScrollPane;
 class Sound;
 class Timeline;
 

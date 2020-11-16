@@ -2,7 +2,6 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class HexusOpponentData;
 class MagePortal;
 class PlatformerEntity;
 class QuestLine;

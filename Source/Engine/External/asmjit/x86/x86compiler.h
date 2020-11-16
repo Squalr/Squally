@@ -223,7 +223,7 @@ public:
   //! \overload
   inline FuncCallNode* call(const Mem& dst, const FuncSignature& sign) { return addCall(Inst::kIdCall, dst, sign); }
   //! \overload
-  inline FuncCallNode* call(const Label& label, const FuncSignature& sign) { return addCall(Inst::kIdCall, label, sign); }
+  inline FuncCallNode* call(const AsmLabel& label, const FuncSignature& sign) { return addCall(Inst::kIdCall, label, sign); }
   //! \overload
   inline FuncCallNode* call(const Imm& dst, const FuncSignature& sign) { return addCall(Inst::kIdCall, dst, sign); }
   //! \overload

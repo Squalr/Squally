@@ -213,7 +213,7 @@ public:
   }
 
   //! \overload
-  inline bool hasRegisteredLabelNode(const Label& label) const noexcept {
+  inline bool hasRegisteredLabelNode(const AsmLabel& label) const noexcept {
     return hasRegisteredLabelNode(label.id());
   }
 
@@ -225,7 +225,7 @@ public:
   ASMJIT_API Error labelNodeOf(LabelNode** pOut, uint32_t labelId) noexcept;
 
   //! \overload
-  inline Error labelNodeOf(LabelNode** pOut, const Label& label) noexcept {
+  inline Error labelNodeOf(LabelNode** pOut, const AsmLabel& label) noexcept {
     return labelNodeOf(pOut, label.id());
   }
 
@@ -236,9 +236,9 @@ public:
   //! get back `LabelNode` from a label or its identifier.
   ASMJIT_API Error registerLabelNode(LabelNode* node) noexcept;
 
-  ASMJIT_API Label newLabel() override;
-  ASMJIT_API Label newNamedLabel(const char* name, size_t nameSize = SIZE_MAX, uint32_t type = Label::kTypeGlobal, uint32_t parentId = Globals::kInvalidId) override;
-  ASMJIT_API Error bind(const Label& label) override;
+  ASMJIT_API AsmLabel newLabel() override;
+  ASMJIT_API AsmLabel newNamedLabel(const char* name, size_t nameSize = SIZE_MAX, uint32_t type = AsmLabel::kTypeGlobal, uint32_t parentId = Globals::kInvalidId) override;
+  ASMJIT_API Error bind(const AsmLabel& label) override;
 
   //! \}
 
@@ -300,9 +300,9 @@ public:
   //! \{
 
   ASMJIT_API Error embed(const void* data, uint32_t dataSize) override;
-  ASMJIT_API Error embedLabel(const Label& label) override;
-  ASMJIT_API Error embedLabelDelta(const Label& label, const Label& base, uint32_t dataSize) override;
-  ASMJIT_API Error embedConstPool(const Label& label, const ConstPool& pool) override;
+  ASMJIT_API Error embedLabel(const AsmLabel& label) override;
+  ASMJIT_API Error embedLabelDelta(const AsmLabel& label, const AsmLabel& base, uint32_t dataSize) override;
+  ASMJIT_API Error embedConstPool(const AsmLabel& label, const ConstPool& pool) override;
 
   //! \}
 
@@ -916,7 +916,7 @@ public:
   //! Returns the id of the label.
   inline uint32_t id() const noexcept { return _id; }
   //! Returns the label as `Label` operand.
-  inline Label label() const noexcept { return Label(_id); }
+  inline AsmLabel label() const noexcept { return AsmLabel(_id); }
 
   //! \}
 };
@@ -1054,9 +1054,9 @@ public:
   inline void setId(uint32_t id) noexcept { _id = id; }
 
   //! Returns the label as `Label` operand.
-  inline Label label() const noexcept { return Label(_id); }
+  inline AsmLabel label() const noexcept { return AsmLabel(_id); }
   //! Sets the label id from `label` operand.
-  inline void setLabel(const Label& label) noexcept { setId(label.id()); }
+  inline void setLabel(const AsmLabel& label) noexcept { setId(label.id()); }
 
   //! \}
 };
@@ -1094,18 +1094,18 @@ public:
   //! Sets the label id.
   inline void setId(uint32_t id) noexcept { _id = id; }
   //! Returns the label as `Label` operand.
-  inline Label label() const noexcept { return Label(_id); }
+  inline AsmLabel label() const noexcept { return AsmLabel(_id); }
   //! Sets the label id from `label` operand.
-  inline void setLabel(const Label& label) noexcept { setId(label.id()); }
+  inline void setLabel(const AsmLabel& label) noexcept { setId(label.id()); }
 
   //! Returns the id of the base label.
   inline uint32_t baseId() const noexcept { return _baseId; }
   //! Sets the base label id.
   inline void setBaseId(uint32_t baseId) noexcept { _baseId = baseId; }
   //! Returns the base label as `Label` operand.
-  inline Label baseLabel() const noexcept { return Label(_baseId); }
+  inline AsmLabel baseLabel() const noexcept { return AsmLabel(_baseId); }
   //! Sets the base label id from `label` operand.
-  inline void setBaseLabel(const Label& baseLabel) noexcept { setBaseId(baseLabel.id()); }
+  inline void setBaseLabel(const AsmLabel& baseLabel) noexcept { setBaseId(baseLabel.id()); }
 
   inline uint32_t dataSize() const noexcept { return _dataSize; }
   inline void setDataSize(uint32_t dataSize) noexcept { _dataSize = dataSize; }

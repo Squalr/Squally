@@ -2,7 +2,6 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-class ClickableNode;
 class ClickableTextNode;
 class Sound;
 

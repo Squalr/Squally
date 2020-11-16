@@ -4,7 +4,6 @@
 
 class Portal;
 class QuestLine;
-class Squally;
 
 class SneakIntoLianasHouse : public QuestTask
 {

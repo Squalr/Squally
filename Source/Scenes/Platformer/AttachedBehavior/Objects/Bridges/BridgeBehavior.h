@@ -3,7 +3,6 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class WorldSound;
-class Sound;
 
 class BridgeBehavior : public AttachedBehavior
 {

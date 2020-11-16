@@ -8,12 +8,13 @@ public:
 	static IsometricDecorDeserializer* create();
 
 	static const std::string MapKeyTypeDecor;
+	
+protected:
+	IsometricDecorDeserializer();
+	virtual ~IsometricDecorDeserializer();
 
 private:
 	typedef ObjectDeserializer super;
-	
-	IsometricDecorDeserializer();
-	~IsometricDecorDeserializer();
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 };

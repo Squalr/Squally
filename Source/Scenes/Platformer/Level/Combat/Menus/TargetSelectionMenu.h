@@ -2,11 +2,6 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class ChooseTargetMenu;
 class PlatformerEntity;
 class Timeline;

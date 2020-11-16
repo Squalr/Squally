@@ -88,7 +88,7 @@ public:
   Error onEmitLoad(uint32_t workId, uint32_t dstPhysId) noexcept override;
   Error onEmitSave(uint32_t workId, uint32_t srcPhysId) noexcept override;
 
-  Error onEmitJump(const Label& label) noexcept override;
+  Error onEmitJump(const AsmLabel& label) noexcept override;
   Error onEmitPreCall(FuncCallNode* node) noexcept override;
 };
 
