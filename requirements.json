@@ -9,10 +9,9 @@
         "libogg",
         "libpng",
         "libvorbis",
-        "mpg123",
-        "rapidjson",
-        "tiff",
-        "tinyxml2",
+        "mpg123", 
+        "tiff", 
+        "tinyxml2", 
         "zlib"
     ],
     "darwin": [

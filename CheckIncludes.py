@@ -12,7 +12,7 @@ with open("CheckIncludesIntermediate.txt", "w") as f:
     subprocess.call([
         sys.executable,
         'C:/Python38/Scripts/cppclean', #cppclean
-        '.',
+        './Source',
         '--include-path=Source',
         '--include-path=cocos2d',
         '--include-path=cocos2d/cocos',
