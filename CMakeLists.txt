@@ -12,7 +12,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 # endif()
 
 # External dependencies
-find_package(RapidJSON REQUIRED)
 find_package(tinyxml2 REQUIRED)
 find_package(SteamWorks REQUIRED)
 
@@ -25,13 +24,6 @@ endif()
 ###############################################################################
 # Dependency Fixing
 ###############################################################################
-
-# Fix rapidjson target
-add_library(RapidJSON INTERFACE)
-add_library(RapidJSON::RapidJSON ALIAS RapidJSON)
-# target_include_directories(RapidJSON INTERFACE
-    # ${RAPIDJSON_INCLUDE_DIRS}
-# )
 
 # Fix tinyxml2 relwithdebinfo configuration (chooses debug instead of release
 # for relwithdebinfo)

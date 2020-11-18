@@ -10,10 +10,8 @@
         "libpng", 
         "libvorbis",
         "mpg123", 
-        "rapidjson", 
         "tiff", 
         "tinyxml2", 
-        "xxhash", 
         "zlib"
     ], 
     "darwin": [], 
