@@ -159,7 +159,8 @@ void NotificationHud::update(float dt)
 		{
 			if (this->slotCooldowns[index] >= Cooldown)
 			{
-				Node* notification = this->toProcess.front();
+				Node* notification = std::get<0>(this->toProcess.front());
+				bool keepOpen = std::get<1>(this->toProcess.front());
 				this->toProcess.pop();
 
 				static const Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -170,9 +171,9 @@ void NotificationHud::update(float dt)
 
 				notification->setPosition(basePosition + Vec2(0.0f, float(index % halfCount) * 160.0f));
 				
-				if (bool(notification->getTag()))
+				if (keepOpen)
 				{
-					// Slight hack. If the keep open flag is set on the object, just never hide the notification.
+					// If the keep open flag is set on the object, just never hide the notification.
 					// This is used in situations like combat, where we do not expect to exhaust the full # of possible notifications shown,
 					// So keeping them always visible is fine. This HUD will get disposed when they leave combat anyhow.
 					notification->runAction(Sequence::create(
@@ -257,9 +258,7 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 		this->notificationSound->play();
 	}
 
-	notification->setTag(int(keepOpen));
-
-	this->toProcess.push(notification);
+	this->toProcess.push(std::make_tuple(notification, keepOpen));
 }
 
 void NotificationHud::closeNotificationMenu()

@@ -45,7 +45,7 @@ void TypeWriterEffect::runTypeWriterEffect(SmartNode* host, LocalizedLabel* labe
 
 		if (letter != nullptr)
 		{
-			int realIndex = letter->getTag();
+			int realIndex = letter->getSpriteTag();
 
 			maxRealIndex = std::max(maxRealIndex, realIndex);
 

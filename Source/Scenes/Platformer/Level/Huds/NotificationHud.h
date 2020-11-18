@@ -49,7 +49,7 @@ private:
 	cocos2d::Node* notificationsNode;
 	Sound* notificationSound;
 
-	std::queue<cocos2d::Node*> toProcess;
+	std::queue<std::tuple<cocos2d::Node*, bool>> toProcess;
 	std::vector<float> slotCooldowns;
 
 	static const int SlotCount;
