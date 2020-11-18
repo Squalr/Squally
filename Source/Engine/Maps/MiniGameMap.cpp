@@ -114,8 +114,8 @@ MiniGameMap::MiniGameMap(std::string mapFileName, const std::vector<MapLayer*>& 
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
-	this->disableEvents = disableEvents;
-	this->disableBounds = disableBounds;
+	this->disableEvents = true;
+	this->disableBounds = true;
 
 	for (auto next : this->mapLayers)
 	{

@@ -44,7 +44,6 @@ LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType c
 	float waterCollisionHeight = MathUtils::clamp(this->liquidSize.height - LiquidNode::WaterCollisionOffset, 0.0f, this->liquidSize.height);
 	float effectiveOffset = this->liquidSize.height - waterCollisionHeight;
 	Size collisionSize = Size(this->liquidSize.width, waterCollisionHeight);
-    this->liquidSize = liquidSize;
 
 	this->liquidCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), collisionType, CollisionObject::Properties(false, false));
 

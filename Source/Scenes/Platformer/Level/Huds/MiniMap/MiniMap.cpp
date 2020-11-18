@@ -4,7 +4,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Deserializers/Platformer/MinimapCollisionDeserializer.h"
+#include "Deserializers/Platformer/MiniMapCollisionDeserializer.h"
 #include "Deserializers/Platformer/MiniMapObjectDeserializer.h"
 #include "Deserializers/Platformer/MiniMapTerrainDeserializer.h"
 #include "Engine/Camera/GameCamera.h"

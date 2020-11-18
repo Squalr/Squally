@@ -45,7 +45,7 @@ private:
 		LocalizedLabel* decLabelRef;
 		LocalizedLabel* hexLabelRef;
 
-		PreviewData() : previewCard(nullptr), cardData(nullptr), previewNode(nullptr), binStrRef(binStrRef), decStrRef(decStrRef), hexStrRef(hexStrRef) { }
+		PreviewData() : previewCard(nullptr), cardData(nullptr), previewNode(nullptr), binStrRef(nullptr), decStrRef(nullptr), hexStrRef(nullptr) { }
 		PreviewData(Card* previewCard, CardData* cardData, cocos2d::Node* previewNode, ConstantString* binStrRef, ConstantString* decStrRef, ConstantString* hexStrRef, LocalizedLabel* binLabelRef, LocalizedLabel* decLabelRef, LocalizedLabel* hexLabelRef)
 			: previewCard(previewCard), cardData(cardData), previewNode(previewNode), binStrRef(binStrRef), decStrRef(decStrRef), hexStrRef(hexStrRef), binLabelRef(binLabelRef), decLabelRef(decLabelRef), hexLabelRef(hexLabelRef) { }
 	};

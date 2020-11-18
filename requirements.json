@@ -1,27 +1,28 @@
 {
     "common": [
-        "cereal", 
-        "curl", 
-        "freetype", 
-        "glew", 
-        "glfw3", 
-        "libjpeg-turbo", 
-        "libogg", 
-        "libpng", 
+        "cereal",
+        "curl",
+        "freetype",
+        "glew",
+        "glfw3",
+        "libjpeg-turbo",
+        "libogg",
+        "libpng",
         "libvorbis",
-        "mpg123", 
-        "rapidjson", 
-        "tiff", 
-        "tinyxml2", 
-        "xxhash", 
+        "mpg123",
+        "rapidjson",
+        "tiff",
+        "tinyxml2",
         "zlib"
-    ], 
-    "darwin": [], 
+    ],
+    "darwin": [
+        "openssl"
+    ],
     "linux": [
-        "fontconfig", 
-        "opengl", 
+        "fontconfig",
+        "opengl",
         "openal-soft"
-    ], 
+    ],
     "windows": [
         "openal-soft"
     ]

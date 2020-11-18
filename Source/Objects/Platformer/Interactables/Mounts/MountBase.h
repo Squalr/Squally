@@ -16,9 +16,9 @@ protected:
 	MountBase(cocos2d::ValueMap& properties, cocos2d::Size size);
 	virtual ~MountBase();
 
-	void onEnter();
+	void onEnter() override;
 	void initializeListeners() override;
-	void update(float dt);
+	void update(float dt) override;
 	void onInteract(PlatformerEntity* interactingEntity) override;
 	virtual cocos2d::Vec2 getReparentPosition();
 	
