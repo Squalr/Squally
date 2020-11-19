@@ -46,6 +46,30 @@ void InfiniteParallaxNode::setAnchorPoint(const Vec2& anchor)
 	}
 }
 
+void InfiniteParallaxNode::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void InfiniteParallaxNode::update(float dt)
+{
+	super::update(dt);
+
+	Vec2 position = this->getParent()->convertToWorldSpace(this->getPosition());
+
+	if (position.x < -this->spriteWidth)
+	{
+		this->setPosition(Vec2(0, this->getPosition().y));
+	}
+
+	if (position.x > this->spriteWidth)
+	{
+		this->setPosition(Vec2(0, this->getPosition().y));
+	}
+}
+
 void InfiniteParallaxNode::rebuildNodes()
 {
 	for (auto next : this->nodes)
@@ -71,7 +95,7 @@ void InfiniteParallaxNode::rebuildNodes()
 			nextSprite->setPosition(nextPosition);
 
 			this->nodes.push_back(nextSprite);
-			this->addChild(nextSprite, 0, Vec2(1.0f, 1.0f), nextPosition);
+			this->addChild(nextSprite);
 
 			remainingSize -= this->spriteWidth;
 
@@ -87,21 +111,4 @@ void InfiniteParallaxNode::rebuildNodes()
 
 	// Anchor all new nodes
 	this->setAnchorPoint(this->spriteAnchor);
-}
-
-void InfiniteParallaxNode::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
-{
-	Vec2 position = this->getParent()->convertToWorldSpace(this->getPosition());
-
-	if (position.x < -this->spriteWidth)
-	{
-		this->setPosition(Vec2(0, this->getPosition().y));
-	}
-
-	if (position.x > this->spriteWidth)
-	{
-		this->setPosition(Vec2(0, this->getPosition().y));
-	}
-
-	ParallaxNode::visit(renderer, parentTransform, parentFlags);
 }

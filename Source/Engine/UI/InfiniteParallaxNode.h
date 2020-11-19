@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "cocos/2d/CCParallaxNode.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 	class Renderer;
 }
 
-class InfiniteParallaxNode : public cocos2d::ParallaxNode
+class InfiniteParallaxNode : public SmartNode
 {
 public:
 	static InfiniteParallaxNode* create(std::string spriteResourcePath);
@@ -22,8 +22,9 @@ protected:
 	InfiniteParallaxNode(std::string spriteResourcePath);
 	virtual ~InfiniteParallaxNode();
 
+	void onEnter();
+	void update(float dt);
 	void rebuildNodes();
-	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
 	std::vector<cocos2d::Node*> nodes;
 	float spriteWidth;
@@ -31,5 +32,5 @@ protected:
 	cocos2d::Vec2 spriteAnchor;
 	std::string resourcePath;
 private:
-	typedef cocos2d::ParallaxNode super;
+	typedef SmartNode super;
 };
