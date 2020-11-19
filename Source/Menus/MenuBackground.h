@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class InfiniteParallaxNode;
+class InfiniteScrollSprite;
 class FloatingSprite;
 class SmartParticles;
 
@@ -30,8 +30,8 @@ private:
 	FloatingSprite* backgroundTrees;
 	FloatingSprite* midgroundTrees;
 	FloatingSprite* foregroundVines;
-	InfiniteParallaxNode* fog;
-	InfiniteParallaxNode* foregroundFog;
+	InfiniteScrollSprite* fog;
+	InfiniteScrollSprite* foregroundFog;
 	FloatingSprite* foregroundGrassBottom;
 	FloatingSprite* foregroundGrassTop;
 	cocos2d::Sprite* webs;

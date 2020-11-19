@@ -13,7 +13,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/FloatingSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/UI/InfiniteScrollSprite.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/EntityResources.h"
@@ -35,8 +35,8 @@ TitleScreenBackground* TitleScreenBackground::create()
 TitleScreenBackground::TitleScreenBackground()
 {
 	this->background = Sprite::create(UIResources::Menus_Backgrounds_ForestBackground);
-	this->fog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->foregroundFog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->fog = InfiniteScrollSprite::create(UIResources::Menus_Backgrounds_Fog);
+	this->foregroundFog = InfiniteScrollSprite::create(UIResources::Menus_Backgrounds_Fog);
 	this->backgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_LightTrees, Vec2(-12.0f, 8.0f), Vec2(7.0f, 5.0f));
 	this->backgroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_FarVines, Vec2(12.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));

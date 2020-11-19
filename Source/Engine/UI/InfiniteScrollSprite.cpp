@@ -1,4 +1,4 @@
-#include "InfiniteParallaxNode.h"
+#include "InfiniteScrollSprite.h"
 
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCSprite.h"
@@ -7,16 +7,16 @@
 
 using namespace cocos2d;
 
-InfiniteParallaxNode* InfiniteParallaxNode::create(std::string spriteResourcePath)
+InfiniteScrollSprite* InfiniteScrollSprite::create(std::string spriteResourcePath)
 {
-	InfiniteParallaxNode* instance = new InfiniteParallaxNode(spriteResourcePath);
+	InfiniteScrollSprite* instance = new InfiniteScrollSprite(spriteResourcePath);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
+InfiniteScrollSprite::InfiniteScrollSprite(std::string spriteResourcePath)
 {
 	this->spriteScale = this->getScale();
 	this->spriteAnchor = Vec2(0.5f, 0.5f);
@@ -26,17 +26,17 @@ InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
 	this->rebuildNodes();
 }
 
-InfiniteParallaxNode::~InfiniteParallaxNode()
+InfiniteScrollSprite::~InfiniteScrollSprite()
 {
 }
 
-void InfiniteParallaxNode::setScale(float scale)
+void InfiniteScrollSprite::setScale(float scale)
 {
 	this->spriteScale = scale;
 	this->rebuildNodes();
 }
 
-void InfiniteParallaxNode::setAnchorPoint(const Vec2& anchor)
+void InfiniteScrollSprite::setAnchorPoint(const Vec2& anchor)
 {
 	this->spriteAnchor = anchor;
 
@@ -46,14 +46,14 @@ void InfiniteParallaxNode::setAnchorPoint(const Vec2& anchor)
 	}
 }
 
-void InfiniteParallaxNode::onEnter()
+void InfiniteScrollSprite::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void InfiniteParallaxNode::update(float dt)
+void InfiniteScrollSprite::update(float dt)
 {
 	super::update(dt);
 
@@ -70,7 +70,7 @@ void InfiniteParallaxNode::update(float dt)
 	}
 }
 
-void InfiniteParallaxNode::rebuildNodes()
+void InfiniteScrollSprite::rebuildNodes()
 {
 	for (auto next : this->nodes)
 	{

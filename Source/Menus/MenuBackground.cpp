@@ -7,7 +7,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/FloatingSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/UI/InfiniteScrollSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
@@ -42,8 +42,8 @@ MenuBackground* MenuBackground::getInstance()
 MenuBackground::MenuBackground()
 {
 	this->background = Sprite::create(UIResources::Menus_Backgrounds_DarkBackground);
-	this->fog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->foregroundFog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->fog = InfiniteScrollSprite::create(UIResources::Menus_Backgrounds_Fog);
+	this->foregroundFog = InfiniteScrollSprite::create(UIResources::Menus_Backgrounds_Fog);
 	this->backgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_LightTrees, Vec2(-24.0f, 8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_MidgroundTrees2, Vec2(16.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->webs = Sprite::create(UIResources::Menus_Backgrounds_Webs);

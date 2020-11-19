@@ -9,7 +9,7 @@ namespace cocos2d
 
 class AnimationPart;
 class FloatingSprite;
-class InfiniteParallaxNode;
+class InfiniteScrollSprite;
 class SmartAnimationNode;
 class SmartAnimationSequenceNode;
 class SmartParticles;
@@ -45,8 +45,8 @@ private:
 	SmartAnimationSequenceNode* eyes1;
 	SmartAnimationSequenceNode* eyes2;
 	FloatingSprite* foregroundVines;
-	InfiniteParallaxNode* fog;
-	InfiniteParallaxNode* foregroundFog;
+	InfiniteScrollSprite* fog;
+	InfiniteScrollSprite* foregroundFog;
 	FloatingSprite* foregroundGrassBottom;
 	FloatingSprite* foregroundGrassTop;
 	cocos2d::Sprite* foregroundLight;

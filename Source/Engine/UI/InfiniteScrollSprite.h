@@ -10,17 +10,17 @@ namespace cocos2d
 	class Renderer;
 }
 
-class InfiniteParallaxNode : public SmartNode
+class InfiniteScrollSprite : public SmartNode
 {
 public:
-	static InfiniteParallaxNode* create(std::string spriteResourcePath);
+	static InfiniteScrollSprite* create(std::string spriteResourcePath);
 
 	virtual void setScale(float scale) override;
 	virtual void setAnchorPoint(const cocos2d::Vec2& anchor) override;
 
 protected:
-	InfiniteParallaxNode(std::string spriteResourcePath);
-	virtual ~InfiniteParallaxNode();
+	InfiniteScrollSprite(std::string spriteResourcePath);
+	virtual ~InfiniteScrollSprite();
 
 	void onEnter();
 	void update(float dt);
