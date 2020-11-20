@@ -44,7 +44,7 @@ void PlatformerCrackDeserializer::deserializeProperties(GameObject* owner, Value
 		return;
 	}
 
-	int crackProgress = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyCrackProgress, Value(0)).asInt();
+	int crackProgress = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCrackProgress, Value(0)).asInt();
 	Sprite* sprite = nullptr;
 
 	// For decor, simply grab the resource of the same name of the object type

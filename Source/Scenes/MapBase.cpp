@@ -1,5 +1,6 @@
 #include "MapBase.h"
 
+#include "cocos/2d/CCFastTMXTiledMap.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
@@ -30,6 +31,8 @@
 #include "Resources/BackgroundResources.h"
 
 using namespace cocos2d;
+
+std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*> MapBase::MapCache = std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*>();
 
 MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 {
@@ -225,8 +228,14 @@ void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeseria
 bool MapBase::loadMap(std::string mapResource)
 {
 	this->mapResource = mapResource;
+
+	if (MapBase::MapCache.find(mapResource) == MapBase::MapCache.end())
+	{
+		MapBase::MapCache[this->mapResource] = GameMap::parse(this->mapResource);
+		MapBase::MapCache[this->mapResource]->retain();
+	}
 	
-	return this->loadMapFromTmx(this->mapResource, GameMap::parse(this->mapResource));
+	return this->loadMapFromTmx(this->mapResource, MapBase::MapCache[this->mapResource]);
 }
 
 bool MapBase::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)

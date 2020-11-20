@@ -94,7 +94,7 @@ void LevelNode::initializeListeners()
 		{
 			PointerTraceMap* map = PointerTraceMap::create(this->nodeMapFile, [=]()
 			{
-				SaveManager::saveGlobalData(this->getSaveKey(), Value(true));
+				SaveManager::SaveGlobalData(this->getSaveKey(), Value(true));
 			});
 
 			return map;
@@ -136,8 +136,8 @@ void LevelNode::setLockState()
 	std::string saveKey = this->getSaveKey();
 	
 	if (previousSaveKey == ""
-		|| SaveManager::getGlobalDataOrDefault(previousSaveKey, Value(false)).asBool()
-		|| SaveManager::getGlobalDataOrDefault(saveKey, Value(false)).asBool())
+		|| SaveManager::GetGlobalDataOrDefault(previousSaveKey, Value(false)).asBool()
+		|| SaveManager::GetGlobalDataOrDefault(saveKey, Value(false)).asBool())
 	{
 		this->disabledSprite->setVisible(false);
 		this->sprite->setVisible(true);

@@ -110,7 +110,7 @@ void EntityPickPocketBehavior::onLoad()
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-		this->currentHelperName = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
+		this->currentHelperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
 		this->pickPocketIcon->setVisible(this->canPickPocket());
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)

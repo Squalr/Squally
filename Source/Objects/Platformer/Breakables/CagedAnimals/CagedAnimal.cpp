@@ -42,7 +42,7 @@ void CagedAnimal::onEnter()
 {
 	super::onEnter();
 
-	if (SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool())
 	{
 		this->alreadyCollected = true;
 		this->animalNode->setVisible(false);

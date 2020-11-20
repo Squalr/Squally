@@ -43,7 +43,7 @@ FloatTutorialPortal::~FloatTutorialPortal()
 	
 void FloatTutorialPortal::loadMap()
 {
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyKnownValueFloatAdvanced, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyKnownValueFloatAdvanced, Value(true));
 
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 	{

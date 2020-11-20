@@ -162,7 +162,7 @@ void KnownValueBarInt32Behavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
 
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyKnownValueInt, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyKnownValueInt, Value(true));
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.5f),

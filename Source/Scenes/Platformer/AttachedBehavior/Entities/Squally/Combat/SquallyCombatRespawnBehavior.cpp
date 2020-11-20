@@ -62,10 +62,10 @@ void SquallyCombatRespawnBehavior::onLoad()
 		{
 			if (args->defeat)
 			{
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
+				SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+				SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+				SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
+				SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 			}
 
 			this->respawn(!args->defeat);

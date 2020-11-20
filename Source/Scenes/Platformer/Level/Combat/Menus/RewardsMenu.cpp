@@ -145,7 +145,7 @@ void RewardsMenu::giveExp()
 		{
 			entity->getAttachedBehavior<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
 			{
-				const int intendedLevel = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
+				const int intendedLevel = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
 				const int currentLevel = eqBehavior->getEq();
 				const int levelDelta = intendedLevel - currentLevel;
 				int expGain = 0;

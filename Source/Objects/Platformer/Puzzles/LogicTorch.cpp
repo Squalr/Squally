@@ -115,11 +115,11 @@ void LogicTorch::onEnter()
 	// Listen for events if unsolved
 	if (!this->isSolved() && !this->saveKey.empty())
 	{
-		this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
+		this->isOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
 
 		this->listenForMapEvent(LogicTorch::MapEventTorchLogicSwitchSavePrefix + this->saveKey, [=](ValueMap)
 		{
-			this->isOn = SaveManager::getProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
+			this->isOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
 			
 			this->updateLogicTorchVisibility();
 		});
@@ -320,7 +320,7 @@ bool LogicTorch::isSolved()
 	}
 	else
 	{
-		return SaveManager::getProfileDataOrDefault(this->saveKey + "_" + LogicTorch::SaveKeyIsSolved, Value(false)).asBool();
+		return SaveManager::GetProfileDataOrDefault(this->saveKey + "_" + LogicTorch::SaveKeyIsSolved, Value(false)).asBool();
 	}
 }
 

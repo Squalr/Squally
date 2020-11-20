@@ -57,7 +57,7 @@ void ScrappyCombatManagerBehavior::onLoad()
 {
 	this->defer([=]()
 	{
-		if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyScrappyFound, Value(false)).asBool())
+		if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyScrappyFound, Value(false)).asBool())
 		{
 			this->spawnScrappy();
 		}

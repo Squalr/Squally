@@ -48,7 +48,7 @@ void HelpTotemSwimHack::onEnter()
 {
 	super::onEnter();
 
-	if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
+	if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
 	{
 		this->deactivate(true);
 	}

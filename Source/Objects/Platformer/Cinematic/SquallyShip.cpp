@@ -227,10 +227,10 @@ void SquallyShip::onCrash()
 	Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
 	Squally* squally = Squally::create();
 	
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 
 	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this->ship,

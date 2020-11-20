@@ -71,7 +71,7 @@ private:
 	void unregisterAllHackables(bool forceRestoreState = false);
 	void updateTimeRemainingBars();
 	void refreshParticleFx();
-	void createSensingParticles();
+	void createHackParticles();
 	void createHackCircle();
 
 	cocos2d::Node* hackParticlesNode;

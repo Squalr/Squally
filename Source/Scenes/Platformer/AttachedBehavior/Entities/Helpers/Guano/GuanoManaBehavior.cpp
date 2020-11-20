@@ -52,7 +52,7 @@ void GuanoManaBehavior::onLoad()
 	
 	this->guano->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyGuanoMana, Value(manaBehavior->getMaxMana())).asInt();
+		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
 	});

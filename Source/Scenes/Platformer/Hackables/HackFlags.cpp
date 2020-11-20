@@ -32,7 +32,7 @@ int HackFlagUtils::GetCurrentHackFlags()
 
     for (auto next : HackFlagUtils::EssenceFlagMap)
     {
-        if (SaveManager::getProfileDataOrDefault(next.first, Value(false)).asBool())
+        if (SaveManager::GetProfileDataOrDefault(next.first, Value(false)).asBool())
         {
             flags |= next.second;
         }

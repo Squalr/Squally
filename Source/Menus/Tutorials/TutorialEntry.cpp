@@ -109,7 +109,7 @@ Node* TutorialEntry::addContent(Node* content, Vec2 offset)
 
 bool TutorialEntry::isComplete()
 {
-	return SaveManager::getGlobalDataOrDefault(this->saveKey, Value(false)).asBool();
+	return SaveManager::GetGlobalDataOrDefault(this->saveKey, Value(false)).asBool();
 }
 
 void TutorialEntry::setClickCallback(std::function<void()> clickCallback)

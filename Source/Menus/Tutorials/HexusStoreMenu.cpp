@@ -272,7 +272,7 @@ ClickableNode* HexusStoreMenu::constructCard(CardData* cardData, int price, std:
 
 bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 {
-	int gold = SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt();
+	int gold = SaveManager::GetGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt();
 
 	if (gold < price)
 	{
@@ -283,7 +283,7 @@ bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 	gold -= price;
 	this->purchaseSound->play();
 
-	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(gold));
+	SaveManager::SaveGlobalData(HexusStoreMenu::SaveKeyGold, Value(gold));
 	this->updateGoldText();
 
 	return true;
@@ -291,7 +291,7 @@ bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 
 void HexusStoreMenu::onChallengeComplete()
 {
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyHexEditGold, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyHexEditGold, Value(true));
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
@@ -310,12 +310,12 @@ void HexusStoreMenu::onBackClick()
 
 void HexusStoreMenu::onResetClick()
 {
-	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold));
+	SaveManager::SaveGlobalData(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold));
 
 	this->updateGoldText();
 }
 
 void HexusStoreMenu::updateGoldText()
 {
-	this->goldString->setString(std::to_string(SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt()));
+	this->goldString->setString(std::to_string(SaveManager::GetGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt()));
 }

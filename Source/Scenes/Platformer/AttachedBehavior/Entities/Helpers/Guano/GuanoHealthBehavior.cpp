@@ -58,7 +58,7 @@ void GuanoHealthBehavior::onLoad()
 	
 	this->guano->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyGuanoHealth, Value(healthBehavior->getMaxHealth())).asInt();
+		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
 	});

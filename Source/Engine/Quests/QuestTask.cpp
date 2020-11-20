@@ -178,7 +178,7 @@ cocos2d::Value QuestTask::GetQuestSaveStateOrDefault(std::string questLine, std:
 {
 	std::string combinedKey = questLine + "_" + questTask + "_" + key;
 
-	return SaveManager::getProfileDataOrDefault(combinedKey, value);
+	return SaveManager::GetProfileDataOrDefault(combinedKey, value);
 }
 
 void QuestTask::saveQuestSaveState(std::string key, Value value)

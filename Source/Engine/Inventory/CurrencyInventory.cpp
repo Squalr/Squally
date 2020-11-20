@@ -111,6 +111,6 @@ void CurrencyInventory::load()
 {
 	if (!this->saveKey.empty())
 	{
-		this->currencyMap = SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap();
+		this->currencyMap = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap();
 	}
 }

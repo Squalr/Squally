@@ -232,7 +232,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
-	ValueVector savedScripts = SaveManager::getProfileDataOrDefault(hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
+	ValueVector savedScripts = SaveManager::GetProfileDataOrDefault(hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
 
 	// Add user scripts
 	for (auto savedScript : savedScripts)
@@ -263,9 +263,9 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->initializePositions();
 
 	// Try focusing the saved last selected script
-	if (SaveManager::hasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
+	if (SaveManager::HasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
 	{
-		int activeScriptIndex = SaveManager::getProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
+		int activeScriptIndex = SaveManager::GetProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
 
 		if (activeScriptIndex >= 0 && activeScriptIndex < int(this->scripts.size()))
 		{

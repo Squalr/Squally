@@ -89,7 +89,7 @@ void MiniMap::onEnter()
 {
 	super::onEnter();
 
-	this->requiredItemKey = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
+	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
 	mapNode->setVisible(this->requiredItemKey == "");
 
 	this->initializeMapData();

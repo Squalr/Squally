@@ -75,4 +75,6 @@ private:
 	MusicOverlay* musicOverlay;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
+
+	static std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*> MapCache;
 };

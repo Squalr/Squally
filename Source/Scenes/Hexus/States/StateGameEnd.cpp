@@ -107,9 +107,9 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 	if (isDraw)
 	{
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 
 		// Analytics for losing (as a tie)
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyAnalyticsIdentifier, losses);
@@ -121,10 +121,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	}
 	else if (isWin)
 	{
-		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
+		int wins = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
 
-		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
+		SaveManager::SaveGlobalData(winsKey, cocos2d::Value(wins));
 
 		if (wins == 1 && losses == 0)
 		{
@@ -146,10 +146,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	}
 	else
 	{
-		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int wins = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
+		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 
 		if (wins == 0 && losses == 1)
 		{

@@ -58,7 +58,7 @@ void GeckyHealthBehavior::onLoad()
 	
 	this->guano->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyGeckyHealth, Value(healthBehavior->getMaxHealth())).asInt();
+		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
 	});

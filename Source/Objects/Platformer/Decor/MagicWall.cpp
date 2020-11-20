@@ -39,6 +39,6 @@ void MagicWall::onEnter()
 	super::onEnter();
 
 	this->wallParticles->start();
-	this->wallParticles->getParticles()->setTotalParticles(int(this->wallSize.width * this->wallSize.height / 256.0f));
-	this->wallParticles->getParticles()->setPosVar(Vec2(this->wallSize.width / 2.0f, this->wallSize.height / 2.0f));
+	this->wallParticles->setTotalParticles(int(this->wallSize.width * this->wallSize.height / 256.0f));
+	this->wallParticles->setPosVar(Vec2(this->wallSize.width / 2.0f, this->wallSize.height / 2.0f));
 }

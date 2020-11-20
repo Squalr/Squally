@@ -171,7 +171,7 @@ void KnownValueBarFloatBehavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
 
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyKnownValueFloat, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyKnownValueFloat, Value(true));
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.5f),

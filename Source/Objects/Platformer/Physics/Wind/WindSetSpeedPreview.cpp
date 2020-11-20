@@ -1,7 +1,6 @@
 #include "WindSetSpeedPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Particles/SmartParticles.h"
@@ -28,8 +27,8 @@ WindSetSpeedPreview::WindSetSpeedPreview()
 	this->windParticles->setGrouped();
 	this->windParticles->setScale(0.4f);
 
-	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
-	this->windParticles->getParticles()->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
+	this->windParticles->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
 
 	this->eaxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("-1.0f"));
 	this->eaxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("1.0f"));

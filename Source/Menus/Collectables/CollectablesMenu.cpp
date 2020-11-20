@@ -156,7 +156,7 @@ void CollectablesMenu::updateCollectedVisualState()
 
 	for (int index = 0; index < int(this->saveKeys.size()); index++)
 	{
-		if (SaveManager::getProfileDataOrDefault(this->saveKeys[index], Value(false)).asBool())
+		if (SaveManager::GetProfileDataOrDefault(this->saveKeys[index], Value(false)).asBool())
 		{
 			collectedCount++;
 			this->sprites[index]->setVisible(true);

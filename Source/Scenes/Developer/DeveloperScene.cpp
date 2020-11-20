@@ -230,8 +230,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 		{
 			const int UNUSED_SAVE_PROFILE = 99;
 
-			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+			SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+			SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));

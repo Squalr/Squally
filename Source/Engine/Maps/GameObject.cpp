@@ -378,7 +378,7 @@ void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 
 void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
-	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
+	ValueMap saveData = SaveManager::GetProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
 
 	saveData[key] = value;
 
@@ -399,7 +399,7 @@ void GameObject::saveTemporalObjectState(std::string key, cocos2d::Value value)
 void GameObject::saveTemporalObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
 	// TODO: Implement temporal state, passing temporal flags (map temporal, time temporal, zone temporal, etc)
-	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
+	ValueMap saveData = SaveManager::GetProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
 
 	saveData[key] = value;
 
@@ -415,7 +415,7 @@ void GameObject::loadObjectState()
 {
 	if (this->isMapObject())
 	{
-		this->saveProperties = SaveManager::getProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
+		this->saveProperties = SaveManager::GetProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
 	}
 }
 

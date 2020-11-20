@@ -1,6 +1,5 @@
 #include "Fireflies.h"
 
-#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
@@ -49,5 +48,5 @@ void Fireflies::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->fireflies->getParticles()->setSourcePosition(cameraPosition + visibleSize / 2.0f);
+	this->fireflies->setSourcePosition(cameraPosition + visibleSize / 2.0f);
 }

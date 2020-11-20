@@ -29,7 +29,7 @@ LocalizedString* Objectives::GetObjectiveString()
 
 std::string Objectives::GetCurrentObjective()
 {
-	return SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyCurrentObjective, Value("")).asString();
+	return SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCurrentObjective, Value("")).asString();
 }
 
 void Objectives::ClearObjective()

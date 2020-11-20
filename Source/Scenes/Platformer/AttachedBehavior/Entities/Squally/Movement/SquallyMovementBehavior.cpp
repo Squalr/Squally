@@ -107,10 +107,10 @@ void SquallyMovementBehavior::onLoad()
 	{
 		this->isDisposing = true;
 
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
+		SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+		SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+		SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
+		SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSavePosition, [=](EventCustom* eventCustom)
@@ -187,10 +187,10 @@ void SquallyMovementBehavior::loadSquallyPosition()
 {
 	Vec3 position = GameUtils::getWorldCoords3D(this->squally);
 
-	float x = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
-	float y = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
-	float z = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
-	std::string layerId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyLayerId, Value("")).asString();
+	float x = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
+	float y = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
+	float z = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
+	std::string layerId = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyLayerId, Value("")).asString();
 
 	GameUtils::setWorldCoords3D(this->squally, Vec3(x, y, z));
 

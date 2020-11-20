@@ -58,7 +58,7 @@ void SquallyHealthBehavior::onLoad()
 	
 	this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(healthBehavior->getMaxHealth())).asInt();
+		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
 	});

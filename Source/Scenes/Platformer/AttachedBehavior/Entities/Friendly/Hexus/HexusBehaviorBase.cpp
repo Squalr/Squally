@@ -143,17 +143,17 @@ void HexusBehaviorBase::initializePositions()
 
 int HexusBehaviorBase::getWins()
 {
-	return SaveManager::getProfileDataOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::GetProfileDataOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 int HexusBehaviorBase::getLosses()
 {
-	return SaveManager::getProfileDataOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::GetProfileDataOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 int HexusBehaviorBase::getDraws()
 {
-	return SaveManager::getProfileDataOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::GetProfileDataOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 void HexusBehaviorBase::addWin()

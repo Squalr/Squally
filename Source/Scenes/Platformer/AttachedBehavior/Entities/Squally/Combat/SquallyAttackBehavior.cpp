@@ -72,47 +72,47 @@ void SquallyAttackBehavior::onDisable()
 
 void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBehavior)
 {
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
 	{
 		attackBehavior->registerAttack(CastCondensation::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
 	{
 		attackBehavior->registerAttack(CastEnvelopingWinds::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookLightning, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookLightning, Value(false)).asBool())
 	{
 		attackBehavior->registerAttack(CastLightningStrike::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookHoly, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookHoly, Value(false)).asBool())
 	{
 		attackBehavior->registerAttack(CastResurrection::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
 	{
 		
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookFrost, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookFrost, Value(false)).asBool())
 	{
 		
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookFire, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookFire, Value(false)).asBool())
 	{
 		
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
 	{
 		
 	}
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
 	{
 		
 	}

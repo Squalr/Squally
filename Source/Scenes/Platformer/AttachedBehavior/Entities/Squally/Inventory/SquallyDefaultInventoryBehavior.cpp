@@ -59,7 +59,7 @@ void SquallyDefaultInventoryBehavior::onDisable()
 
 void SquallyDefaultInventoryBehavior::giveDefaultItems()
 {
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHasGivenDefaultItems, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHasGivenDefaultItems, Value(false)).asBool())
 	{
 		return;
 	}

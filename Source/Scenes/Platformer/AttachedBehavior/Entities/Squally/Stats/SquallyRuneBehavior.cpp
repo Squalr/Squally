@@ -53,7 +53,7 @@ void SquallyRuneBehavior::onLoad()
 
 	if (this->entityRuneBehavior != nullptr)
 	{
-		ValueVector cooldowns = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
+		ValueVector cooldowns = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
 		
 		for (int index = 0; index < std::min((int)cooldowns.size(), EntityRuneBehavior::MaxRunes); index++)
 		{

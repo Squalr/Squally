@@ -126,7 +126,7 @@ void Inventory::load()
 {
 	if (!this->saveKey.empty())
 	{
-		this->deserialize(SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
+		this->deserialize(SaveManager::GetProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
 	}
 }
 

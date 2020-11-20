@@ -22,13 +22,25 @@ SmartParticles* SmartParticles::create(std::string particleResource, CullInfo cu
 
 SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) : super()
 {
+	this->particleResource = particleResource;
 	this->cullContainer = Node::create();
-	this->particles = ParticleSystemQuad::create(particleResource);
+	this->particles = nullptr; // lazy init for culled particles
 	this->debugDrawNode = DrawNode::create();
 	this->cullInfo = cullInfo;
 	this->canUpdate = false;
+	this->hasAnchorOverride = false;
+	this->hasPosVarOverride = false;
+	this->hasSourcePositionOverride = false;
+	this->hasTotalParticlesOverride = false;
+	this->hasAngleOverride = false;
+	this->hasPositionTypeOverride = false;
 
 	this->boundsRect = Rect(Vec2::ZERO, this->cullInfo.size);
+
+	if (!cullInfo.cull)
+	{
+		tryCreateParticleInstance();
+	}
 
 	this->stop();
 
@@ -37,7 +49,6 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 		this->debugDrawNode->drawRect(-Vec2(this->cullInfo.size) / 2.0f, Vec2(this->cullInfo.size) / 2.0f, Color4F::GREEN);
 	}
 
-	this->cullContainer->addChild(this->particles);
 	this->addChild(this->cullContainer);
 	this->addChild(this->debugDrawNode);
 }
@@ -77,20 +88,55 @@ void SmartParticles::update(float dt)
 	this->optimizationHideOffscreenParticles();
 }
 
-ParticleSystem* SmartParticles::getParticles()
+void SmartParticles::tryCreateParticleInstance()
 {
-	return this->particles;
+	if (this->particles == nullptr)
+	{
+		this->particles = ParticleSystemQuad::create(particleResource);
+
+		if (this->hasAnchorOverride)
+		{
+			this->particles->setAnchorPoint(this->particleAnchor);
+		}
+
+		if (this->hasPosVarOverride)
+		{
+			this->particles->setPosVar(this->particlePosVar);
+		}
+
+		if (this->hasSourcePositionOverride)
+		{
+			this->particles->setSourcePosition(this->particleSourcePosition);
+		}
+
+		if (this->hasTotalParticlesOverride)
+		{
+			this->particles->setTotalParticles(this->particleTotalParticles);
+		}
+
+		if (this->hasAngleOverride)
+		{
+			this->particles->setAngle(this->particleAngle);
+		}
+
+		if (this->hasPositionTypeOverride)
+		{
+			this->particles->setPositionType(ParticleSystem::PositionType(this->particlePositionType));
+		}
+
+		this->cullContainer->addChild(this->particles);
+	}
 }
 
 void SmartParticles::start()
 {
+	this->canUpdate = true;
+
 	if (this->particles == nullptr)
 	{
 		return;
 	}
 	
-	this->canUpdate = true;
-
 	this->stopAllActions();
 	this->particles->start();
 	this->particles->toggleCanUpdate(this->canUpdate);
@@ -112,6 +158,7 @@ void SmartParticles::stop(float disableUpdateAfter)
 {
 	if (this->particles == nullptr)
 	{
+		this->canUpdate = false;
 		return;
 	}
 
@@ -166,34 +213,90 @@ void SmartParticles::accelerate(float duration)
 	}
 }
 
+void SmartParticles::setTotalParticles(int totalParticles)
+{
+	this->particleTotalParticles = totalParticles;
+	this->hasTotalParticlesOverride = true;
+
+	if (this->particles != nullptr)
+	{
+		this->particles->setTotalParticles(this->particleTotalParticles);
+	}
+}
+
+void SmartParticles::setPosVar(cocos2d::Vec2 posVar)
+{
+	this->particlePosVar = posVar;
+	this->hasPosVarOverride = true;
+
+	if (this->particles != nullptr)
+	{
+		this->particles->setPosVar(this->particlePosVar);
+	}
+}
+
+void SmartParticles::setSourcePosition(cocos2d::Vec2 sourcePosition)
+{
+	this->particleSourcePosition = sourcePosition;
+	this->hasSourcePositionOverride = true;
+
+	if (this->particles != nullptr)
+	{
+		this->particles->setSourcePosition(this->particleSourcePosition);
+	}
+}
+
+void SmartParticles::setAngle(float angle)
+{
+	this->particleAngle = angle;
+	this->hasAngleOverride = true;
+
+	if (this->particles != nullptr)
+	{
+		this->particles->setAngle(this->particleAngle);
+	}
+}
+
+void SmartParticles::setParticleAnchorPoint(cocos2d::Vec2 anchorPoint)
+{
+	this->particleAnchor = anchorPoint;
+	this->hasAnchorOverride = true;
+
+	if (this->particles != nullptr)
+	{
+		this->particles->setAnchorPoint(this->particleAnchor);
+	}
+}
+
 void SmartParticles::setGrouped()
 {
-	if (this->particles == nullptr)
-	{
-		return;
-	}
+	this->particlePositionType = int(ParticleSystem::PositionType::GROUPED);
+	this->hasPositionTypeOverride = true;
 
-	this->particles->setPositionType(ParticleSystem::PositionType::GROUPED);
+	if (this->particles != nullptr)
+	{
+		this->particles->setPositionType(ParticleSystem::PositionType(this->particlePositionType));
+	}
 }
 
 void SmartParticles::setRelative()
 {
-	if (this->particles == nullptr)
-	{
-		return;
-	}
+	this->particlePositionType = int(ParticleSystem::PositionType::RELATIVE);
 
-	this->particles->setPositionType(ParticleSystem::PositionType::RELATIVE);
+	if (this->particles != nullptr)
+	{
+		this->particles->setPositionType(ParticleSystem::PositionType(this->particlePositionType));
+	}
 }
 
 void SmartParticles::setFree()
 {
-	if (this->particles == nullptr)
-	{
-		return;
-	}
+	this->particlePositionType = int(ParticleSystem::PositionType::FREE);
 
-	this->particles->setPositionType(ParticleSystem::PositionType::FREE);
+	if (this->particles != nullptr)
+	{
+		this->particles->setPositionType(ParticleSystem::PositionType(this->particlePositionType));
+	}
 }
 
 void SmartParticles::optimizationHideOffscreenParticles()
@@ -213,12 +316,27 @@ void SmartParticles::optimizationHideOffscreenParticles()
 
 	if (cameraRect.intersectsRect(thisRect))
 	{
-		this->particles->toggleCanUpdate(this->canUpdate);
+		// Lazy initialize finally!
+		if (this->canUpdate && this->particles == nullptr)
+		{
+			this->tryCreateParticleInstance();
+			this->start();
+		}
+		
+		if (this->particles != nullptr)
+		{
+			this->particles->toggleCanUpdate(this->canUpdate);
+		}
+
 		this->cullContainer->setVisible(true);
 	}
 	else
 	{
-		this->particles->toggleCanUpdate(false);
+		if (this->particles != nullptr)
+		{
+			this->particles->toggleCanUpdate(false);
+		}
+
 		this->cullContainer->setVisible(false);
 	}
 }

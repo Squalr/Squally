@@ -184,7 +184,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 	const Color3B highlightColor = Color3B::YELLOW;
 	const Color4B glowColor = Color4B::ORANGE;
 
-	bool hasSaveData = SaveManager::hasSaveProfile(profileId);
+	bool hasSaveData = SaveManager::HasSaveProfile(profileId);
 	LocalizedLabel*	saveGameLabel = nullptr;
 
 	if (hasSaveData)
@@ -214,7 +214,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 
 	saveGameButton->setMouseClickCallback([=](MouseEventArgs* args)
 	{
-		SaveManager::setActiveSaveProfile(profileId);
+		SaveManager::SetActiveSaveProfile(profileId);
 		this->loadSave();
 	});
 
@@ -230,12 +230,12 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 {
 	// Temporarily set the active profile
-	SaveManager::setActiveSaveProfile(profileId);
+	SaveManager::SetActiveSaveProfile(profileId);
 
-	int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(1)).asInt();
+	int squallyEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(1)).asInt();
 	Node* content = Node::create();
 	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(-32.0f, -32.0f), squallyEq);
-	std::string helperName = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
+	std::string helperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
 
 	squallyAvatar->setPosition(Vec2(-356.0f, 0.0f));
 
@@ -254,7 +254,7 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 
 		if (helperName == Guano::MapKey)
 		{
-			helperEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)).asInt();
+			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)).asInt();
 		}
 
 		ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -307,7 +307,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{
-			SaveManager::deleteAllProfileData(profileId);
+			SaveManager::DeleteAllProfileData(profileId);
 
 			this->buildSaveButtons();
 
@@ -333,8 +333,8 @@ void SaveSelectMenu::loadSave()
 {
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 	{
-		bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
-		std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
+		bool isReload = SaveManager::HasProfileData(SaveKeys::SaveKeyMap);
+		std::string mapFile = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
 		
 		PlatformerMap* map = PlatformerMap::create();
 
@@ -385,7 +385,7 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 
 Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 {
-	std::string currentMap = StrUtils::toLower(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
+	std::string currentMap = StrUtils::toLower(SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
 
 	if (StrUtils::contains(currentMap, "underflowruins", true))
 	{

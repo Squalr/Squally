@@ -48,7 +48,7 @@ void HelpTotemPickPocket::onEnter()
 {
 	super::onEnter();
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKey)
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKey)
 	{
 		this->deactivate(true);
 	}

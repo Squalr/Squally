@@ -60,7 +60,7 @@ void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 	// Reparent the global director onto the active scene so that all global nodes are part of the active scene graph
 	scene->addChild(GlobalDirector::getInstance());
 
-	SaveManager::save();
+	SaveManager::Save();
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
 

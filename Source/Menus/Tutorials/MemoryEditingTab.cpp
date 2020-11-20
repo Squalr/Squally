@@ -112,8 +112,8 @@ void MemoryEditingTab::loadKnownValueIntTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
@@ -134,8 +134,8 @@ void MemoryEditingTab::loadKnownValueFloatTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
@@ -156,8 +156,8 @@ void MemoryEditingTab::loadUnknownValueIntTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
@@ -178,8 +178,8 @@ void MemoryEditingTab::loadUnknownValueFloatTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
@@ -200,8 +200,8 @@ void MemoryEditingTab::loadKnownValueDoubleTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
@@ -222,8 +222,8 @@ void MemoryEditingTab::loadUnknownValueFloatTutorialAdvanced()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));

@@ -301,7 +301,7 @@ void HackableObject::refreshParticleFx()
 			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
 		}))
 	{
-		this->createSensingParticles();
+		this->createHackParticles();
 
 		if (!hackParticles1->isActive())
 		{
@@ -495,7 +495,7 @@ void HackableObject::registerClippyOnto(std::string identifier, std::function<Cl
 	this->clippyMap[identifier] = clippyFunc;
 }
 
-void HackableObject::createSensingParticles()
+void HackableObject::createHackParticles()
 {
 	if (this->hackParticles1 == nullptr)
 	{

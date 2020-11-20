@@ -1,6 +1,5 @@
 #include "Snow.h"
 
-#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
@@ -49,5 +48,5 @@ void Snow::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->snow->getParticles()->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
+	this->snow->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
 }

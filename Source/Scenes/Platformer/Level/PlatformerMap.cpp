@@ -299,14 +299,18 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			SaveManager::SaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(this->mapResource));
-			SaveManager::SaveProfileData(SaveKeys::SaveKeyRespawnObjectId, Value(args->objectIdentifier));
+			SaveManager::BatchSaveProfileData(
+				{
+					{ SaveKeys::SaveKeyRespawnMap, Value(this->mapResource) },
+					{ SaveKeys::SaveKeyRespawnObjectId, Value(args->objectIdentifier) },
+				}
+			);
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
 	{
-		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+		std::string savedMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
 
 		if (savedMap != this->mapResource)
 		{
@@ -502,7 +506,7 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 
 	if (super::loadMapFromTmx(mapResource, mapRaw))
 	{
-		SaveManager::batchSaveProfileData({
+		SaveManager::BatchSaveProfileData({
 			{ SaveKeys::SaveKeyMap, Value(mapResource) },
 		});
 
@@ -545,7 +549,7 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	
-	SaveManager::batchSaveProfileData({
+	SaveManager::BatchSaveProfileData({
 		{ SaveKeys::SaveKeyMap, Value(mapResource) },
 	});
 
@@ -560,7 +564,7 @@ void PlatformerMap::warpSquallyToRespawn()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		std::string savedObjectId = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnObjectId, Value("error-no-object-id")).asString();
+		std::string savedObjectId = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyRespawnObjectId, Value("error-no-object-id")).asString();
 
 		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
 	}, Squally::MapKey);
@@ -568,7 +572,7 @@ void PlatformerMap::warpSquallyToRespawn()
 
 void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
 	{
 		return;
 	}

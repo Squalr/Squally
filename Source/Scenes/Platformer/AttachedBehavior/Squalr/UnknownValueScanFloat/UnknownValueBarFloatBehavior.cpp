@@ -162,7 +162,7 @@ void UnknownValueBarFloatBehavior::onDeath()
 {
 	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
 
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyUnknownValueFloat, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyUnknownValueFloat, Value(true));
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.5f),

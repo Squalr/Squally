@@ -52,7 +52,7 @@ void SquallyManaBehavior::onLoad()
 	
 	this->squally->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(manaBehavior->getMaxMana())).asInt();
+		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
 	});

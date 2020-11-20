@@ -253,7 +253,7 @@ void CombatMap::initializeListeners()
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
-			std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+			std::string mapResource = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
 			PlatformerMap* map = PlatformerMap::create();
 
@@ -265,7 +265,7 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMapRespawn, [=](EventCustom* eventCustom)
 	{
-		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+		std::string savedMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
 
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{

@@ -1,6 +1,5 @@
 #include "Wind.h"
 
-#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
@@ -50,7 +49,7 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	this->windParticles = SmartParticles::create(ParticleResources::Gust, SmartParticles::CullInfo(this->windSize));
 	this->windForce = CollisionObject::create(CollisionObject::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, CollisionObject::Properties(false, false));
 
-	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->setAnchorPoint(Vec2::ZERO);
 	this->windParticles->setGrouped();
 	
 	this->addChild(this->windForce);
@@ -66,8 +65,8 @@ void Wind::onEnter()
 	super::onEnter();
 
 	this->windParticles->start();
-	this->windParticles->getParticles()->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
-	this->windParticles->getParticles()->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
+	this->windParticles->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
+	this->windParticles->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
 
 	this->scheduleUpdate();
 }
@@ -224,6 +223,6 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 
 	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / float(M_PI);
 
-	this->windParticles->getParticles()->setAngle(angle);
+	this->windParticles->setAngle(angle);
 }
 END_NO_OPTIMIZE
