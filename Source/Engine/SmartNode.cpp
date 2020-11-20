@@ -262,7 +262,7 @@ void SmartNode::defer(std::function<void()> task, int ticks)
 		}
 
 		this->unschedule(eventKey);
-	}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+	}, eventKey, 0.0f, 1);
 }
 
 void SmartNode::scheduleEvery(std::function<void()> task, float seconds)
@@ -270,11 +270,11 @@ void SmartNode::scheduleEvery(std::function<void()> task, float seconds)
 	unsigned long long taskId = SmartNode::TaskId++;
 	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
 
-	// Schedule the task for the next update loop
+	// Schedules the task to be repeated every x seconds.
 	this->schedule([=](float dt)
 	{
 		task();
-	}, seconds, CC_REPEAT_FOREVER, 0.0f, eventKey);
+	}, eventKey, seconds);
 }
 
 EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)

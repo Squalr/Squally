@@ -368,8 +368,7 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 				Camera::getDefaultCamera()->setRotation(0.0f);
 			}
 		}
-
-	}, this, 0.0f, ticks, 0.0f, false, GameCamera::SchedulerKeyCameraShake);
+	}, this, GameCamera::SchedulerKeyCameraShake, 0.0f, ticks);
 }
 
 Vec2 GameCamera::boundCameraByEllipses(Vec2 cameraPosition)

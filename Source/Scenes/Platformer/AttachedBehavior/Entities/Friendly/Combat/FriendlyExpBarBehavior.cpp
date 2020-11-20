@@ -151,20 +151,27 @@ void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, flo
 
 	expProgressBar->setProgress(startProgress);
 
-	expProgressBar->schedule([=](float dt)
-	{
-		if (onComplete != nullptr && *tickCounter == Ticks)
+	this->runAction(Sequence::create(
+		DelayTime::create(startDelay),
+		CallFunc::create([=]()
 		{
-			onComplete();
-		}
-		else if (*tickCounter < Ticks)
-		{
-			expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
-		}
+			expProgressBar->schedule([=](float dt)
+			{
+				if (onComplete != nullptr && *tickCounter == Ticks)
+				{
+					onComplete();
+				}
+				else if (*tickCounter < Ticks)
+				{
+					expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
+				}
 
-		++*tickCounter;
+				++*tickCounter;
 
-	}, Interval, Ticks, startDelay, "EVENT_EXP_BAR_UPDATE_" + std::to_string(UniqueId));
+			}, "EVENT_EXP_BAR_UPDATE_" + std::to_string(UniqueId), Interval, Ticks);
+		}),
+		nullptr
+	));
 }
 
 void FriendlyExpBarBehavior::runLevelUpEffect()

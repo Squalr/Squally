@@ -194,8 +194,7 @@ public:
 				onObjectFound(object);
 				*handled = true;
 			}), tag);
-
-		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
+		}, eventKey);
 	}
 
 	template <class T>

@@ -98,8 +98,7 @@ public:
 				this->unschedule(eventKey);
 				onBehaviorFound(behavior);
 			}
-
-		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
+		}, eventKey);
 	}
 
 	static const std::string MapKeyId;

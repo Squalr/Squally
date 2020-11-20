@@ -94,7 +94,7 @@ void UIBoundObject::scheduleUpdateTask()
 
         this->realCoords = UIBoundObject::getRealCoords(this);
         this->realScale = UIBoundObject::getRealScale(this);
-    }, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, this->eventKey);
+    }, this->eventKey);
 }
 
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)

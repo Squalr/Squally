@@ -268,7 +268,7 @@ void SmartScene::defer(std::function<void()> task, int ticks)
 			}
 
 			this->unschedule(eventKey);
-		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+		}, eventKey, 0.0f, 1);
 }
 
 void SmartScene::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible)
