@@ -15,7 +15,7 @@ const std::string SoundEvents::EventSoundVolumeUpdated = "EVENT_SOUND_VOLUME_UPD
 
 void SoundEvents::TriggerTrackPlayed(TrackPlayedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventTrackPlayed,
 		&args
 	);
@@ -23,7 +23,7 @@ void SoundEvents::TriggerTrackPlayed(TrackPlayedArgs args)
 
 void SoundEvents::TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventRequestTrackDeserialization,
 		&args
 	);
@@ -31,14 +31,14 @@ void SoundEvents::TriggerRequestTrackDeserialization(RequestTrackDeserialization
 
 void SoundEvents::TriggerDestroyOrphanedMusic()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventDestroyOrphanedMusic
 	);
 }
 
 void SoundEvents::TriggerMusicDestroyed(MusicDestroyedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventOnMusicDestroyed,
 		&args
 	);
@@ -46,21 +46,21 @@ void SoundEvents::TriggerMusicDestroyed(MusicDestroyedArgs args)
 
 void SoundEvents::TriggerMusicVolumeUpdated()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventMusicVolumeUpdated
 	);
 }
 
 void SoundEvents::TriggerSoundVolumeUpdated()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventSoundVolumeUpdated
 	);
 }
 
 void SoundEvents::TriggerFadeOutMusic(FadeOutMusicArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventFadeOutMusic,
 		&args
 	);

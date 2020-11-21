@@ -22,7 +22,7 @@ const std::string CipherEvents::EventOnStateUpdate = "EVENT_CIPHER_ON_STATE_UPDA
 
 void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventOpenCipher,
 		&args
 	);
@@ -30,7 +30,7 @@ void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
 
 void CipherEvents::TriggerExitCipher(CipherExitArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventExitCipher,
 		&args
 	);
@@ -38,7 +38,7 @@ void CipherEvents::TriggerExitCipher(CipherExitArgs args)
 
 void CipherEvents::TriggerRequestBlockSpawn(CipherBlockSpawnArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventRequestBlockSpawn,
 		&args
 	);
@@ -46,7 +46,7 @@ void CipherEvents::TriggerRequestBlockSpawn(CipherBlockSpawnArgs args)
 
 void CipherEvents::TriggerRequestConnectionCreate(CipherConnectionCreateArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventRequestConnectionCreate,
 		&args
 	);
@@ -54,7 +54,7 @@ void CipherEvents::TriggerRequestConnectionCreate(CipherConnectionCreateArgs arg
 
 void CipherEvents::TriggerConnectionUpdated(CipherConnectionUpdatedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventConnectionUpdated,
 		&args
 	);
@@ -62,7 +62,7 @@ void CipherEvents::TriggerConnectionUpdated(CipherConnectionUpdatedArgs args)
 
 void CipherEvents::TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventConnectionDestroy,
 		&args
 	);
@@ -70,7 +70,7 @@ void CipherEvents::TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs a
 
 void CipherEvents::TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventChangeActiveCipher,
 		&args
 	);
@@ -78,7 +78,7 @@ void CipherEvents::TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args)
 
 void CipherEvents::TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventChangeDisplayDataType,
 		&args
 	);
@@ -86,7 +86,7 @@ void CipherEvents::TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs 
 
 void CipherEvents::TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventOpenAsciiTable,
 		&args
 	);
@@ -94,7 +94,7 @@ void CipherEvents::TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args)
 
 void CipherEvents::TriggerTryUnlockCurrentCipher(UnlockArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventTryUnlockCurrentCipher,
 		&args
 	);
@@ -102,7 +102,7 @@ void CipherEvents::TriggerTryUnlockCurrentCipher(UnlockArgs args)
 
 void CipherEvents::TriggerBeforeRequestStateUpdate(CipherState* cipherState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventBeforeRequestStateUpdate,
 		cipherState
 	);
@@ -110,7 +110,7 @@ void CipherEvents::TriggerBeforeRequestStateUpdate(CipherState* cipherState)
 	
 void CipherEvents::TriggerRequestStateUpdate(CipherState* cipherState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventRequestStateUpdate,
 		cipherState
 	);
@@ -118,7 +118,7 @@ void CipherEvents::TriggerRequestStateUpdate(CipherState* cipherState)
 
 void CipherEvents::TriggerBeforeStateUpdate(CipherState* cipherState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventBeforeStateUpdate,
 		cipherState
 	);
@@ -126,7 +126,7 @@ void CipherEvents::TriggerBeforeStateUpdate(CipherState* cipherState)
 
 void CipherEvents::TriggerOnStateUpdate(CipherState* cipherState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CipherEvents::EventOnStateUpdate,
 		cipherState
 	);

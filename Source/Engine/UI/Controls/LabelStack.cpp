@@ -7,7 +7,6 @@
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/UI/Controls/MenuLabel.h"
 
 #include "Strings/Strings.h"
 

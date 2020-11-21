@@ -2,10 +2,9 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -107,7 +106,7 @@ void CollectablesMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->returnClickCallback != nullptr)
 		{
@@ -115,7 +114,7 @@ void CollectablesMenu::initializeListeners()
 		}
 	});
 
-	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->returnClickCallback != nullptr)
 		{
@@ -124,7 +123,7 @@ void CollectablesMenu::initializeListeners()
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

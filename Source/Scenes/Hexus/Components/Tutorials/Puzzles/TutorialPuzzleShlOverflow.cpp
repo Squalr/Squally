@@ -97,12 +97,12 @@ void TutorialPuzzleShlOverflow::onAnyStateChange(GameState* gameState)
 
 void TutorialPuzzleShlOverflow::initializeCallbacks(GameState* gameState)
 {
-	this->introNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->introNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->introNextButton->interact();
 	});

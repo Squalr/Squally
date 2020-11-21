@@ -10,14 +10,14 @@ const std::string SceneEvents::EventAfterSceneChange = "EVENT_AFTER_SCENE_CHANGE
 
 void SceneEvents::TriggerBeforeSceneChange()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SceneEvents::EventBeforeSceneChange
 	);
 }
 
 void SceneEvents::TriggerAfterSceneChange()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SceneEvents::EventAfterSceneChange
 	);
 }

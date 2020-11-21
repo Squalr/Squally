@@ -11,7 +11,7 @@ const std::string InventoryEvents::EventCurrencyInventoryInstanceChangedPrefix =
 
 void InventoryEvents::TriggerRequestItemDeserialization(RequestItemDeserializationArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		InventoryEvents::EventRequestItemDeserialization,
 		&args
 	);
@@ -19,7 +19,7 @@ void InventoryEvents::TriggerRequestItemDeserialization(RequestItemDeserializati
 
 void InventoryEvents::TriggerInventoryInstanceChanged(InventoryInstanceChangedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		InventoryEvents::EventInventoryInstanceChangedPrefix + args.inventorySaveKey,
 		&args
 	);
@@ -27,7 +27,7 @@ void InventoryEvents::TriggerInventoryInstanceChanged(InventoryInstanceChangedAr
 
 void InventoryEvents::TriggerCurrencyInventoryInstanceChanged(CurrencyInventoryInstanceChangedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		InventoryEvents::EventCurrencyInventoryInstanceChangedPrefix + args.inventorySaveKey,
 		&args
 	);

@@ -91,7 +91,7 @@ void Slider::updateSliderPosition()
 	}
 }
 
-void Slider::onDrag(MouseEventArgs* args)
+void Slider::onDrag(InputEvents::MouseEventArgs* args)
 {
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 

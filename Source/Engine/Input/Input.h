@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 
-#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/GlobalNode.h"
 
@@ -15,9 +15,9 @@ class Input : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	static cocos2d::EventKeyboard::KeyCode getActiveModifiers();
-	static bool isPressed(cocos2d::EventKeyboard::KeyCode keyCode);
-	static bool isReleased(cocos2d::EventKeyboard::KeyCode keyCode);
+	static cocos2d::InputEvents::KeyCode getActiveModifiers();
+	static bool isPressed(cocos2d::InputEvents::KeyCode keyCode);
+	static bool isReleased(cocos2d::InputEvents::KeyCode keyCode);
 
 private:
 	typedef GlobalNode super;
@@ -26,8 +26,8 @@ private:
 
 	static Input* getInstance();
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void onKeyPressed(cocos2d::InputEvents::KeyCode keyCode, cocos2d::Event* event);
+	void onKeyReleased(cocos2d::InputEvents::KeyCode keyCode, cocos2d::Event* event);
 
 	std::unordered_map<int, bool> pressedKeysPrevious;
 	std::unordered_map<int, bool> pressedKeys;

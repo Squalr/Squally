@@ -204,7 +204,7 @@ void Lexicon::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->backButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->close();
 	});

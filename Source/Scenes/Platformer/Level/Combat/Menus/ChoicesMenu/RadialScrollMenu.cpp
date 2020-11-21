@@ -5,7 +5,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Sound.h"
@@ -74,7 +73,7 @@ void RadialScrollMenu::initializeListeners()
 		this->isTimelineCinematicPaused = false;
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_W, InputEvents::KeyCode::KEY_UP_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -83,7 +82,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_S, InputEvents::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -92,7 +91,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenScrollDown([=](MouseEventArgs* args)
+	this->whenScrollDown([=](InputEvents::MouseEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -101,7 +100,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenScrollUp([=](MouseEventArgs* args)
+	this->whenScrollUp([=](InputEvents::MouseEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -110,7 +109,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE, InputEvents::KeyCode::KEY_BACKSPACE, InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused && this->backCallback != nullptr)
 		{
@@ -119,7 +118,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER, EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE, InputEvents::KeyCode::KEY_ENTER, InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -217,7 +216,7 @@ RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, std::vector<L
 
 	if (callback != nullptr)
 	{
-		entry->setMouseClickCallback([=](MouseEventArgs*)
+		entry->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			if (!this->isTimelineCinematicPaused)
 			{

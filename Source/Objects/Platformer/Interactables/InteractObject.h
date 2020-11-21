@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Hackables/HackableObject.h"
 
@@ -30,7 +30,7 @@ public:
 		cocos2d::Size size,
 		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
 		LocalizedString* actionStr = nullptr,
-		cocos2d::EventKeyboard::KeyCode input = cocos2d::EventKeyboard::KeyCode::KEY_V,
+		cocos2d::InputEvents::KeyCode input = cocos2d::InputEvents::KeyCode::KEY_V,
 		cocos2d::Color3B interactColor = cocos2d::Color3B::BLACK,
 		cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA,
 		bool disableLockDebug = false
@@ -52,7 +52,7 @@ protected:
 		cocos2d::Size size,
 		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
 		LocalizedString* actionStr = nullptr,
-		cocos2d::EventKeyboard::KeyCode input = cocos2d::EventKeyboard::KeyCode::KEY_V,
+		cocos2d::InputEvents::KeyCode input = cocos2d::InputEvents::KeyCode::KEY_V,
 		cocos2d::Color3B interactColor = cocos2d::Color3B::BLACK,
 		cocos2d::Color4F debugColor = cocos2d::Color4F::MAGENTA,
 		bool disableLockDebug = false
@@ -85,9 +85,9 @@ private:
 	typedef HackableObject super;
 
 	void onStateRefresh();
-	std::string inputToString(cocos2d::EventKeyboard::KeyCode input);
+	std::string inputToString(cocos2d::InputEvents::KeyCode input);
 
-	cocos2d::EventKeyboard::KeyCode input;
+	cocos2d::InputEvents::KeyCode input;
 	LocalizedString* interactKeyStr;
 	ConstantString* unlockKeyStr;
 

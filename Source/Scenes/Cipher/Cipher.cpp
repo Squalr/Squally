@@ -5,7 +5,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableNode.h"

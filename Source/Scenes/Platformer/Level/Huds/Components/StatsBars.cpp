@@ -310,7 +310,7 @@ void StatsBars::setMouseOverCallback(std::function<void(StatsBars*)> onMouseOver
 	}
 	else
 	{
-		this->frame->setMouseOverCallback([=](MouseEventArgs*)
+		this->frame->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 		{
 			onMouseOverCallback(this);
 		});
@@ -325,7 +325,7 @@ void StatsBars::setClickCallback(std::function<void(StatsBars*)> onClickCallback
 	}
 	else
 	{
-		this->frame->setMouseClickCallback([=](MouseEventArgs*)
+		this->frame->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			onClickCallback(this);
 		});

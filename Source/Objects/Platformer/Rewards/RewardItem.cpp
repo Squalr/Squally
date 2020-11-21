@@ -93,7 +93,7 @@ void RewardItem::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->itemClickHitbox->setMouseClickCallback([=](MouseEventArgs*)
+	this->itemClickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->item == nullptr)
 		{

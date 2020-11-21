@@ -27,7 +27,7 @@ HackButton::~HackButton()
 {
 }
 
-void HackButton::addEventListener(cocos2d::EventListener* listener)
+void HackButton::addEventListener(cocos2d::EventListenerCustom* listener)
 {
 	static bool isWrappingCall = false;
 

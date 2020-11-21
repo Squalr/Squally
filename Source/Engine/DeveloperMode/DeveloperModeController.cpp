@@ -3,10 +3,9 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/DeveloperModeEvents.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Utils/MathUtils.h"
@@ -59,7 +58,7 @@ void DeveloperModeController::initializeListeners()
 
 	static LanguageType nextLanguage = LanguageType::ENGLISH;
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK_SLASH }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_BACK_SLASH }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -80,7 +79,7 @@ void DeveloperModeController::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F1 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F1 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -92,7 +91,7 @@ void DeveloperModeController::initializeListeners()
 		this->stopAllActions();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F2 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F2 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -114,7 +113,7 @@ void DeveloperModeController::initializeListeners()
 		)));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F3 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F3 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -136,7 +135,7 @@ void DeveloperModeController::initializeListeners()
 		)));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F4 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F4 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -158,7 +157,7 @@ void DeveloperModeController::initializeListeners()
 		)));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F5 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F5 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{

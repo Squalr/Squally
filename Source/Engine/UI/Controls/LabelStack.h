@@ -2,8 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-class MenuLabel;
-
 class LocalizedLabel;
 
 class LabelStack : public SmartNode

@@ -4,7 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
@@ -134,17 +134,17 @@ void TargetSelectionMenu::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->selectNext(true);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->selectNext(false);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ENTER, EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ENTER, InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->chooseCurrentTarget();
 	});

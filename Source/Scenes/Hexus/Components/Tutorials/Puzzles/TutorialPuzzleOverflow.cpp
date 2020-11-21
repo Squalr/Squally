@@ -125,20 +125,20 @@ void TutorialPuzzleOverflow::onAnyStateChange(GameState* gameState)
 
 void TutorialPuzzleOverflow::initializeCallbacks(GameState* gameState)
 {
-	this->introNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->introNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->runTutorialDecimalCards(gameState);
 	});
-	this->decimalCardsNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->decimalCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHelp(gameState);
 	});
-	this->helpNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->helpNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->introNextButton->interact();
 		this->decimalCardsNextButton->interact();

@@ -221,7 +221,7 @@ void TitleScreen::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->storyModeButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->storyModeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
@@ -229,7 +229,7 @@ void TitleScreen::initializeListeners()
 		}));
 	});
 
-	this->tutorialsButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->tutorialsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
@@ -237,7 +237,7 @@ void TitleScreen::initializeListeners()
 		}));
 	});
 	
-	this->optionsButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
@@ -245,12 +245,12 @@ void TitleScreen::initializeListeners()
 		}));
 	});
 
-	this->exitButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		Director::getInstance()->end();
 	});
 	
-	this->debugButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{

@@ -6,7 +6,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/PlatformerEvents.h"

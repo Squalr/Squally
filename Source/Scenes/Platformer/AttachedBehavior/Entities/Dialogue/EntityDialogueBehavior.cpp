@@ -40,7 +40,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		(this->entity == nullptr ? Size::ZERO : this->entity->getEntitySize()),
 		Vec2::ZERO,
 		nullptr,
-		EventKeyboard::KeyCode::KEY_V,
+		InputEvents::KeyCode::KEY_V,
 		Color3B(28, 42, 46),
 		Color4F::ORANGE,
 		true

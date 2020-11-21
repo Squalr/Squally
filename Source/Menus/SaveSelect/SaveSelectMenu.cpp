@@ -4,11 +4,10 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCValue.h"
 
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -121,7 +120,7 @@ void SaveSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -133,12 +132,12 @@ void SaveSelectMenu::initializeListeners()
 		this->goBack();
 	});
 
-	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->goBack();
 	});
 
-	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->goBack();
 	});
@@ -212,7 +211,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 		UIResources::Menus_SaveSelectMenu_Row,
 		UIResources::Menus_SaveSelectMenu_RowSelected);
 
-	saveGameButton->setMouseClickCallback([=](MouseEventArgs* args)
+	saveGameButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		SaveManager::SetActiveSaveProfile(profileId);
 		this->loadSave();
@@ -303,7 +302,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 {
 	ClickableNode* deleteButton = ClickableNode::create(UIResources::Menus_Buttons_TrashV2Button, UIResources::Menus_Buttons_TrashV2ButtonHover);
 
-	deleteButton->setMouseClickCallback([=](MouseEventArgs* args)
+	deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{

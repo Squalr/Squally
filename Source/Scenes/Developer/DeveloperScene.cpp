@@ -4,7 +4,6 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -201,7 +200,7 @@ void DeveloperScene::initializeListeners()
 {
 	super::initializeListeners();
 	
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -224,7 +223,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 	
 	ClickableTextNode* clickableTextNode = ClickableTextNode::create(label, labelSelected, UIResources::Menus_MinigamesMenu_Banner, UIResources::Menus_MinigamesMenu_BannerHover);
 
-	clickableTextNode->setMouseClickCallback([=](MouseEventArgs* args)
+	clickableTextNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{

@@ -7,7 +7,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"

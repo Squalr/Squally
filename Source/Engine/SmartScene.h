@@ -2,7 +2,7 @@
 #include <set>
 
 #include "cocos/2d/CCScene.h"
-#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 namespace cocos2d
 {
@@ -22,16 +22,16 @@ public:
 
 	void setFadeSpeed(float newFadeSpeed);
 	float getFadeSpeed();
-	virtual void addEventListener(cocos2d::EventListener* listener);
-	virtual void removeEventListener(cocos2d::EventListener* listener);
-	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
-	void addGlobalEventListener(cocos2d::EventListener* listener);
-	void whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
-	void whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
-	void whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
-	void whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
-	void whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
-	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(KeyboardEventArgs*)> callback, bool requireVisible = true);
+	virtual void addEventListener(cocos2d::EventListenerCustom* listener);
+	virtual void removeEventListener(cocos2d::EventListenerCustom* listener);
+	void addEventListenerIgnorePause(cocos2d::EventListenerCustom* listener);
+	void addGlobalEventListener(cocos2d::EventListenerCustom* listener);
+	void whenKeyPressed(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
+	void whenKeyPressedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
+	void whenKeyPressedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
+	void whenKeyReleased(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
+	void whenKeyReleasedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
+	void whenKeyReleasedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
 
 	static unsigned int GlobalTick;
 

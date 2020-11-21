@@ -6,11 +6,10 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableBase.h"
@@ -99,7 +98,7 @@ void RadialMenu::initializeListeners()
 		this->close();
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_TAB, InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -209,9 +208,9 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
-	clickableNode->setMouseClickCallback([=](MouseEventArgs*) {	clickCallback(); });
-	clickableNode->setMouseOverCallback([=](MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
-	clickableNode->setMouseOutCallback([=](MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
+	clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) {	clickCallback(); });
+	clickableNode->setMouseOverCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
+	clickableNode->setMouseOutCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
 
 	const float tolerance = float(M_PI) / 64.0f;
 	const float offset = 64.0f;

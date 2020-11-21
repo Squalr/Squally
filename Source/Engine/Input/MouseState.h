@@ -1,5 +1,7 @@
 #pragma once
 
+#include "base/CCInputEvents.h"
+
 #include "Engine/GlobalNode.h"
 
 namespace cocos2d
@@ -8,15 +10,13 @@ namespace cocos2d
 	class EventMouse;
 }
 
-struct MouseEventArgs;
-
 class MouseState : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
 
 	static cocos2d::Vec2 getMousePosition();
-	static MouseEventArgs getMouseState();
+	static cocos2d::InputEvents::MouseEventArgs getMouseState();
 
 private:
 	typedef GlobalNode super;

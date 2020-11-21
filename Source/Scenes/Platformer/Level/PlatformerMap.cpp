@@ -26,7 +26,6 @@
 #include "Engine/Deserializers/Meta/PhysicsDeserializer.h"
 #include "Engine/Deserializers/Objects/CollisionDeserializer.h"
 #include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
@@ -616,7 +615,7 @@ void PlatformerMap::buildHexus()
 
 	this->miniGameHud->addChild(this->hexus);
 
-	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->hexus->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause || !GameUtils::isFocused(this->hexus))
 		{
@@ -668,7 +667,7 @@ void PlatformerMap::buildHexusCardHelp()
 
 	this->miniGameHud->addChild(this->cardHelpMenu);
 
-	this->cardHelpMenu->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->cardHelpMenu->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause ||!GameUtils::isFocused(this->cardHelpMenu))
 		{
@@ -701,7 +700,7 @@ void PlatformerMap::buildItemInfoMenu()
 
 	this->miniGameHud->addChild(this->itemInfoMenu);
 
-	this->itemInfoMenu->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->itemInfoMenu->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause ||!GameUtils::isFocused(this->itemInfoMenu))
 		{
@@ -727,7 +726,7 @@ void PlatformerMap::buildCipher()
 
 	this->miniGameHud->addChild(this->cipher);
 
-	this->cipher->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->cipher->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause ||!GameUtils::isFocused(this->cipher))
 		{

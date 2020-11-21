@@ -7,10 +7,8 @@
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCNode.h"
-#include "cocos/base/CCEventListenerMouse.h"
 #include "cocos/math/TransformUtils.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -113,17 +111,17 @@ void ScrollPane::initializeListeners()
 		this->setScrollPercentage(progress, false);
 	});
 
-	this->dragHitbox->setMouseScrollCallback([=](MouseEventArgs* args)
+	this->dragHitbox->setMouseScrollCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->scrollBy(args->scrollDelta.y * ScrollPane::ScrollSpeed);
 	});
 
-	this->dragHitbox->setMouseDownCallback([=](MouseEventArgs* args)
+	this->dragHitbox->setMouseDownCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->initialDragDepth = this->getScrollDepth();
 	});
 
-	this->dragHitbox->setMouseDragCallback([=](MouseEventArgs* args)
+	this->dragHitbox->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		float dragDelta = (args->mouseCoords.y - args->mouseInitialCoords.y) * ScrollPane::DragSpeed;
 

@@ -69,14 +69,14 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 
 	this->skipSequence = KSequence::create(
 	{
-		EventKeyboard::KeyCode::KEY_S,
-		EventKeyboard::KeyCode::KEY_W,
-		EventKeyboard::KeyCode::KEY_A,
-		EventKeyboard::KeyCode::KEY_G,
-		EventKeyboard::KeyCode::KEY_L,
-		EventKeyboard::KeyCode::KEY_O,
-		EventKeyboard::KeyCode::KEY_R,
-		EventKeyboard::KeyCode::KEY_D,
+		InputEvents::KeyCode::KEY_S,
+		InputEvents::KeyCode::KEY_W,
+		InputEvents::KeyCode::KEY_A,
+		InputEvents::KeyCode::KEY_G,
+		InputEvents::KeyCode::KEY_L,
+		InputEvents::KeyCode::KEY_O,
+		InputEvents::KeyCode::KEY_R,
+		InputEvents::KeyCode::KEY_D,
 	}, [=]()
 	{
 		this->onCrash();

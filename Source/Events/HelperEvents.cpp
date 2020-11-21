@@ -10,14 +10,14 @@ const std::string HelperEvents::EventRequestPickPocket = "EVENT_REQUEST_PICK_POC
 
 void HelperEvents::TriggerFindScrappy()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HelperEvents::EventFindScrappy
 	);
 }
 
 void HelperEvents::TriggerRequestPickPocket(RequestPickPocketArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HelperEvents::EventRequestPickPocket,
 		&args
 	);

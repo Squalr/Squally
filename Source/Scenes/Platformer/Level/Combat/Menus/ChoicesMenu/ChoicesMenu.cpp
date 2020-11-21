@@ -5,7 +5,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
@@ -122,7 +121,7 @@ void ChoicesMenu::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE, InputEvents::KeyCode::KEY_BACKSPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		switch (this->currentMenu)
 		{

@@ -232,7 +232,7 @@ void CodeWindow::initializeListeners()
 		}
 	});
 
-	this->copyButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->script != nullptr)
 		{
@@ -240,7 +240,7 @@ void CodeWindow::initializeListeners()
 		}
 	});
 
-	this->deleteButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->script != nullptr)
 		{
@@ -248,24 +248,24 @@ void CodeWindow::initializeListeners()
 		}
 	});
 
-	this->deleteButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->deleteButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->deletePanel->setOpacity(196);
 		this->deleteLabel->setOpacity(255);
 	});
 
-	this->deleteButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->deletePanel->setOpacity(0);
 		this->deleteLabel->setOpacity(0);
 	});
 
-	this->copyButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->copyButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(196);
 		this->copyLabel->setOpacity(255);
 	});
-	this->copyButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(0);
 		this->copyLabel->setOpacity(0);

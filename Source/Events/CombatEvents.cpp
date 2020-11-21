@@ -60,7 +60,7 @@ const std::string CombatEvents::EventModifyHealingTakenComplete = "EVENT_COMBAT_
 
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventSpawn,
 		&args
 	);
@@ -68,7 +68,7 @@ void CombatEvents::TriggerSpawn(SpawnArgs args)
 
 void CombatEvents::TriggerQueryTimeline(QueryTimelineArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventQueryTimeline,
 		&args
 	);
@@ -76,7 +76,7 @@ void CombatEvents::TriggerQueryTimeline(QueryTimelineArgs args)
 
 void CombatEvents::TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventGetAssociatedTimelineEntry,
 		&args
 	);
@@ -84,14 +84,14 @@ void CombatEvents::TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args)
 
 void CombatEvents::TriggerMenuGoBack()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventMenuBack
 	);
 }
 
 void CombatEvents::TriggerMenuStateChange(MenuStateArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventChangeMenuState,
 		&args
 	);
@@ -99,21 +99,21 @@ void CombatEvents::TriggerMenuStateChange(MenuStateArgs args)
 
 void CombatEvents::TriggerDisableDefend()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventDisableDefend
 	);
 }
 
 void CombatEvents::TriggerDisableItems()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventDisableItems
 	);
 }
 
 void CombatEvents::TriggerSelectionChanged(SelectionArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventSelectionChanged,
 		&args
 	);
@@ -121,7 +121,7 @@ void CombatEvents::TriggerSelectionChanged(SelectionArgs args)
 
 void CombatEvents::TriggerSelectCastTarget(CastTargetsArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventSelectCastTarget,
 		&args
 	);
@@ -129,7 +129,7 @@ void CombatEvents::TriggerSelectCastTarget(CastTargetsArgs args)
 
 void CombatEvents::TriggerRequestRetargetCorrection(AIRequestArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventRequestRetargetCorrection,
 		&args
 	);
@@ -137,7 +137,7 @@ void CombatEvents::TriggerRequestRetargetCorrection(AIRequestArgs args)
 
 void CombatEvents::TriggerRequestAIAction(AIRequestArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventRequestAIAction,
 		&args
 	);
@@ -145,42 +145,42 @@ void CombatEvents::TriggerRequestAIAction(AIRequestArgs args)
 
 void CombatEvents::TriggerPauseTimeline()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventPauseTimeline
 	);
 }
 
 void CombatEvents::TriggerPauseTimelineCinematic()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventPauseTimelineCinematic
 	);
 }
 
 void CombatEvents::TriggerResumeTimeline()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventResumeTimeline
 	);
 }
 
 void CombatEvents::TriggerResumeTimelineCinematic()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventResumeTimelineCinematic
 	);
 }
 
 void CombatEvents::TriggerInterruptTimeline()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventInterruptTimeline
 	);
 }
 
 void CombatEvents::TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventRegisterTimelineEventGroup,
 		&args
 	);
@@ -188,7 +188,7 @@ void CombatEvents::TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupA
 
 void CombatEvents::TriggerBuffApplied(BuffAppliedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventBuffApplied,
 		&args
 	);
@@ -196,7 +196,7 @@ void CombatEvents::TriggerBuffApplied(BuffAppliedArgs args)
 
 void CombatEvents::TriggerBuffRemoved(BuffRemovedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventBuffRemoved,
 		&args
 	);
@@ -204,7 +204,7 @@ void CombatEvents::TriggerBuffRemoved(BuffRemovedArgs args)
 
 void CombatEvents::TriggerBuffTimeElapsed(BuffTimeElapsedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventBuffTimeElapsed,
 		&args
 	);
@@ -212,7 +212,7 @@ void CombatEvents::TriggerBuffTimeElapsed(BuffTimeElapsedArgs args)
 
 void CombatEvents::TriggerProjectileSpawned(ProjectileSpawnedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventProjectileSpawned,
 		&args
 	);
@@ -220,7 +220,7 @@ void CombatEvents::TriggerProjectileSpawned(ProjectileSpawnedArgs args)
 
 void CombatEvents::TriggerEntityTimelineReset(TimelineResetArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventEntityTimelineReset,
 		&args
 	);
@@ -228,7 +228,7 @@ void CombatEvents::TriggerEntityTimelineReset(TimelineResetArgs args)
 
 void CombatEvents::TriggerCastBlocked(CastBlockedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventCastBlocked,
 		&args
 	);
@@ -236,7 +236,7 @@ void CombatEvents::TriggerCastBlocked(CastBlockedArgs args)
 
 void CombatEvents::TriggerCastInterrupt(CastInterruptArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventCastInterrupt,
 		&args
 	);
@@ -244,7 +244,7 @@ void CombatEvents::TriggerCastInterrupt(CastInterruptArgs args)
 
 void CombatEvents::TriggerCombatFinished(CombatFinishedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventCombatFinished,
 		&args
 	);
@@ -252,21 +252,21 @@ void CombatEvents::TriggerCombatFinished(CombatFinishedArgs args)
 
 void CombatEvents::TriggerGiveExp()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventGiveExp
 	);
 }
 
 void CombatEvents::TriggerGiveRewards()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventGiveRewards
 	);
 }
 
 void CombatEvents::TriggerBeforeReturnToMap(BeforeReturnToMapArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventBeforeReturnToMap,
 		&args
 	);
@@ -274,28 +274,28 @@ void CombatEvents::TriggerBeforeReturnToMap(BeforeReturnToMapArgs args)
 
 void CombatEvents::TriggerReturnToMap()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventReturnToMap
 	);
 }
 
 void CombatEvents::TriggerReturnToMapRespawn()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventReturnToMapRespawn
 	);
 }
 
 void CombatEvents::TriggerHackableCombatCue()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventHackableCombatCue
 	);
 }
 
 void CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventDamageDealt,
 		&args
 	);
@@ -303,7 +303,7 @@ void CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs args)
 
 void CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventHealingDealt,
 		&args
 	);
@@ -311,7 +311,7 @@ void CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs args)
 
 void CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventDamage,
 		&args
 	);
@@ -319,7 +319,7 @@ void CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs args)
 
 void CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventHealing,
 		&args
 	);
@@ -327,7 +327,7 @@ void CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs args)
 
 void CombatEvents::TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventManaRestoreDelt,
 		&args
 	);
@@ -335,7 +335,7 @@ void CombatEvents::TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args)
 
 void CombatEvents::TriggerManaRestore(ManaRestoreOrDrainArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventManaRestore,
 		&args
 	);
@@ -343,7 +343,7 @@ void CombatEvents::TriggerManaRestore(ManaRestoreOrDrainArgs args)
 
 void CombatEvents::TriggerManaDrainDelt(ManaRestoreOrDrainArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventManaDrainDelt,
 		&args
 	);
@@ -351,7 +351,7 @@ void CombatEvents::TriggerManaDrainDelt(ManaRestoreOrDrainArgs args)
 
 void CombatEvents::TriggerManaDrain(ManaRestoreOrDrainArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventManaDrain,
 		&args
 	);
@@ -360,7 +360,7 @@ void CombatEvents::TriggerManaDrain(ManaRestoreOrDrainArgs args)
 
 void CombatEvents::TriggerModifyTimelineSpeed(ModifiableTimelineSpeedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyTimelineSpeed,
 		&args
 	);
@@ -368,7 +368,7 @@ void CombatEvents::TriggerModifyTimelineSpeed(ModifiableTimelineSpeedArgs args)
 
 void CombatEvents::TriggerModifyDamageTaken(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyDamageTaken,
 		&args
 	);
@@ -376,7 +376,7 @@ void CombatEvents::TriggerModifyDamageTaken(ModifiableDamageOrHealingArgs args)
 
 void CombatEvents::TriggerModifyDamageDealt(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyDamageDealt,
 		&args
 	);
@@ -384,7 +384,7 @@ void CombatEvents::TriggerModifyDamageDealt(ModifiableDamageOrHealingArgs args)
 
 void CombatEvents::TriggerModifyHealingTaken(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyHealingTaken,
 		&args
 	);
@@ -392,7 +392,7 @@ void CombatEvents::TriggerModifyHealingTaken(ModifiableDamageOrHealingArgs args)
 
 void CombatEvents::TriggerModifyHealingDealt(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyHealingDealt,
 		&args
 	);
@@ -400,7 +400,7 @@ void CombatEvents::TriggerModifyHealingDealt(ModifiableDamageOrHealingArgs args)
 
 void CombatEvents::TriggerStatsModifyDamageTaken(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventStatsModifyDamageTaken,
 		&args
 	);
@@ -408,7 +408,7 @@ void CombatEvents::TriggerStatsModifyDamageTaken(ModifiableDamageOrHealingArgs a
 
 void CombatEvents::TriggerStatsModifyDamageDealt(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventStatsModifyDamageDealt,
 		&args
 	);
@@ -416,7 +416,7 @@ void CombatEvents::TriggerStatsModifyDamageDealt(ModifiableDamageOrHealingArgs a
 
 void CombatEvents::TriggerStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventStatsModifyHealingTaken,
 		&args
 	);
@@ -424,7 +424,7 @@ void CombatEvents::TriggerStatsModifyHealingTaken(ModifiableDamageOrHealingArgs 
 
 void CombatEvents::TriggerStatsModifyHealingDealt(ModifiableDamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventStatsModifyHealingDealt,
 		&args
 	);
@@ -432,7 +432,7 @@ void CombatEvents::TriggerStatsModifyHealingDealt(ModifiableDamageOrHealingArgs 
 
 void CombatEvents::TriggerModifyDamageDealtComplete(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyDamageDealtComplete,
 		&args
 	);
@@ -440,7 +440,7 @@ void CombatEvents::TriggerModifyDamageDealtComplete(CombatEvents::DamageOrHealin
 
 void CombatEvents::TriggerModifyDamageTakenComplete(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyDamageTakenComplete,
 		&args
 	);
@@ -448,7 +448,7 @@ void CombatEvents::TriggerModifyDamageTakenComplete(CombatEvents::DamageOrHealin
 
 void CombatEvents::TriggerModifyHealingDealtComplete(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyHealingDealtComplete,
 		&args
 	);
@@ -456,7 +456,7 @@ void CombatEvents::TriggerModifyHealingDealtComplete(CombatEvents::DamageOrHeali
 
 void CombatEvents::TriggerModifyHealingTakenComplete(CombatEvents::DamageOrHealingArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventModifyHealingTakenComplete,
 		&args
 	);

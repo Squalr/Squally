@@ -103,7 +103,7 @@ void Catapult::initializeListeners()
 		return CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_V }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->interactionEnabled && this->currentCooldown <= 0.0f)
 		{

@@ -35,7 +35,7 @@ RegisterStone* RegisterStone::create(ValueMap& properties)
 	return instance;
 }
 
-RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPop::create(), EventKeyboard::KeyCode::KEY_V, Color3B(16, 23, 57))
+RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPop::create(), InputEvents::KeyCode::KEY_V, Color3B(16, 23, 57))
 {
 	std::string valueStr = GameUtils::getKeyOrDefault(this->properties, RegisterStone::PropertyValue, Value("0")).asString();
 	std::string correctValueStr = GameUtils::getKeyOrDefault(this->properties, RegisterStone::PropertyCorrectValue, Value("0")).asString();
@@ -54,7 +54,7 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->correctValueString = ConstantString::create(correctValueStr);
 	this->correctValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->correctValueString);
 	this->registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->buildRegisterString());
-	this->pushInteract = InteractObject::create(InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPush::create(), EventKeyboard::KeyCode::KEY_C, Color3B(16, 23, 57));
+	this->pushInteract = InteractObject::create(InteractObject::InteractType::Input, Size(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPush::create(), InputEvents::KeyCode::KEY_C, Color3B(16, 23, 57));
 	this->fxGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->fxGlowTop = Sprite::create(UIResources::HUD_EmblemGlow);
 

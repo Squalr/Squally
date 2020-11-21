@@ -46,14 +46,14 @@ const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
 
 void PlatformerEvents::TriggerSquallySpawned()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventSquallySpawned
 	);
 }
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventSpawnToTransitionLocation,
 		&args
 	);
@@ -63,7 +63,7 @@ void PlatformerEvents::TriggerWarpObjectToLocation(WarpObjectToLocationArgs args
 {
 	const std::string identifier = args.object->getUniqueIdentifier();
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventWarpToLocationPrefix + identifier,
 		&args
 	);
@@ -73,7 +73,7 @@ void PlatformerEvents::TriggerWarpObjectToObjectId(WarpObjectToObjectIdArgs args
 {
 	const std::string identifier = args.object->getUniqueIdentifier();
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventWarpToObjectIdPrefix + identifier,
 		&args
 	);
@@ -83,7 +83,7 @@ void PlatformerEvents::TriggerAfterWarp(AfterWarpArgs args)
 {
 	const std::string identifier = args.object->getUniqueIdentifier();
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventAfterWarpPrefix + identifier,
 		&args
 	);
@@ -91,28 +91,28 @@ void PlatformerEvents::TriggerAfterWarp(AfterWarpArgs args)
 
 void PlatformerEvents::TriggerBeforePlatformerMapChange()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventBeforePlatformerMapChange
 	);
 }
 
 void PlatformerEvents::TriggerCinematicHijack()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventCinematicHijack
 	);
 }
 
 void PlatformerEvents::TriggerCinematicRestore()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventCinematicRestore
 	);
 }
 
 void PlatformerEvents::TriggerQueryMapArgs(QueryMapArgsArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventQueryMapArgs,
 		&args
 	);
@@ -120,7 +120,7 @@ void PlatformerEvents::TriggerQueryMapArgs(QueryMapArgsArgs args)
 
 void PlatformerEvents::TriggerRuneConsumed(RuneConsumedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventRuneConsumed,
 		&args
 	);
@@ -128,14 +128,14 @@ void PlatformerEvents::TriggerRuneConsumed(RuneConsumedArgs args)
 
 void PlatformerEvents::TriggerEquippedItemsChanged()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventEquippedItemsChanged
 	);
 }
 
 void PlatformerEvents::TriggerEngageEnemy(EngageEnemyArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventEngageEnemy,
 		&args
 	);
@@ -143,7 +143,7 @@ void PlatformerEvents::TriggerEngageEnemy(EngageEnemyArgs args)
 
 void PlatformerEvents::TriggerEnemyEngaged(EnemyEngagedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventEnemyEngaged,
 		&args
 	);
@@ -151,7 +151,7 @@ void PlatformerEvents::TriggerEnemyEngaged(EnemyEngagedArgs args)
 
 void PlatformerEvents::TriggerRunFlashFx(FlashFxArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventRunFlashFx,
 		&args
 	);
@@ -159,7 +159,7 @@ void PlatformerEvents::TriggerRunFlashFx(FlashFxArgs args)
 
 void PlatformerEvents::TriggerHudTrackEntity(HudTrackEntityArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventHudTrackEntity,
 		&args
 	);
@@ -167,7 +167,7 @@ void PlatformerEvents::TriggerHudTrackEntity(HudTrackEntityArgs args)
 
 void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventHudUntrackEntity,
 		&args
 	);
@@ -175,7 +175,7 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 
 void PlatformerEvents::TriggerOpenAlchemy(CraftingOpenArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventOpenAlchemy,
 		&args
 	);
@@ -183,7 +183,7 @@ void PlatformerEvents::TriggerOpenAlchemy(CraftingOpenArgs args)
 
 void PlatformerEvents::TriggerOpenSmithing(CraftingOpenArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventOpenSmithing,
 		&args
 	);
@@ -191,7 +191,7 @@ void PlatformerEvents::TriggerOpenSmithing(CraftingOpenArgs args)
 
 void PlatformerEvents::TriggerOpenItemInfo(ItemInfoArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventOpenItemInfo,
 		&args
 	);
@@ -199,7 +199,7 @@ void PlatformerEvents::TriggerOpenItemInfo(ItemInfoArgs args)
 
 void PlatformerEvents::TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventGiveItemsFromPool,
 		&args
 	);
@@ -207,7 +207,7 @@ void PlatformerEvents::TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args)
 
 void PlatformerEvents::TriggerGiveItem(GiveItemArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventGiveItem,
 		&args
 	);
@@ -215,7 +215,7 @@ void PlatformerEvents::TriggerGiveItem(GiveItemArgs args)
 
 void PlatformerEvents::TriggerDiscoverItem(ItemDiscoveryArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventDiscoverItem,
 		&args
 	);
@@ -223,7 +223,7 @@ void PlatformerEvents::TriggerDiscoverItem(ItemDiscoveryArgs args)
 
 void PlatformerEvents::TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventGiveCurrenciesFromPool,
 		&args
 	);
@@ -231,7 +231,7 @@ void PlatformerEvents::TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs 
 
 void PlatformerEvents::TriggerGiveCurrency(GiveCurrencyArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventGiveCurrency,
 		&args
 	);
@@ -239,21 +239,21 @@ void PlatformerEvents::TriggerGiveCurrency(GiveCurrencyArgs args)
 
 void PlatformerEvents::TriggerAllowPause()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventAllowPause
 	);
 }
 
 void PlatformerEvents::TriggerDisallowPause()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventDisallowPause
 	);
 }
 
 void PlatformerEvents::TriggerDispelIllusion(DispelIllusionArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventDispelIllusion,
 		&args
 	);
@@ -261,21 +261,21 @@ void PlatformerEvents::TriggerDispelIllusion(DispelIllusionArgs args)
 
 void PlatformerEvents::TriggerShowMiniMap()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventShowMiniMap
 	);
 }
 
 void PlatformerEvents::TriggerHideMiniMap()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventHideMiniMap
 	);
 }
 
 void PlatformerEvents::TriggerRelocateMiniMap(RelocateMiniMapArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventRelocateMiniMap,
 		&args
 	);
@@ -283,14 +283,14 @@ void PlatformerEvents::TriggerRelocateMiniMap(RelocateMiniMapArgs args)
 
 void PlatformerEvents::TriggerSavePosition()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventSavePosition
 	);
 }
 
 void PlatformerEvents::TriggerSaveRespawn(SaveRespawnArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventSaveRespawn,
 		&args
 	);
@@ -298,28 +298,28 @@ void PlatformerEvents::TriggerSaveRespawn(SaveRespawnArgs args)
 
 void PlatformerEvents::TriggerBeforeLoadRespawn()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventBeforeLoadRespawn
 	);
 }
 
 void PlatformerEvents::TriggerLoadRespawn()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventLoadRespawn
 	);
 }
 
 void PlatformerEvents::TriggerObjectiveChanged()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventObjectiveChanged
 	);
 }
 
 void PlatformerEvents::TriggerUnstuck()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventUnstuck
 	);
 }

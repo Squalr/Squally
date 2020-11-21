@@ -11,11 +11,11 @@ const std::string LocalizationEvents::TranslationBeginEdit = "EVENT_BEGIN_EDIT";
 
 void LocalizationEvents::TriggerLocaleChange(LocaleChangeArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		LocalizationEvents::BeforeLocaleChangeEvent,
 		&args
 	);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		LocalizationEvents::LocaleChangeEvent,
 		&args
 	);
@@ -23,7 +23,7 @@ void LocalizationEvents::TriggerLocaleChange(LocaleChangeArgs args)
 
 void LocalizationEvents::TriggerTranslationBeginEdit(TranslationBeginEditArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		LocalizationEvents::TranslationBeginEdit,
 		&args
 	);

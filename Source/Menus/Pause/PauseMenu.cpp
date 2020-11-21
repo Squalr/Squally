@@ -2,9 +2,8 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -157,13 +156,13 @@ void PauseMenu::initializeListeners()
 
 	if (this->resumeButton != nullptr)
 	{
-		this->resumeButton->setMouseClickCallback([=](MouseEventArgs*)
+		this->resumeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->close();
 		});
 	}
 	
-	this->optionsButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->optionsClickCallback != nullptr)
 		{
@@ -171,7 +170,7 @@ void PauseMenu::initializeListeners()
 		}
 	});
 
-	this->quitToTitleButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->quitToTitleButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->quitToTitleClickCallback != nullptr)
 		{
@@ -179,13 +178,13 @@ void PauseMenu::initializeListeners()
 		}
 	});
 
-	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->close();
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

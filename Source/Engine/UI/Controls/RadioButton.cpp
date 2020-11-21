@@ -80,7 +80,7 @@ void RadioButton::check(bool invokeCallback)
 {
 	if (!this->isChecked)
 	{
-		this->getEventDispatcher()->dispatchCustomEvent(this->RadioButtonCheckEvent, &this->groupId);
+		this->getEventDispatcher()->dispatchEvent(this->RadioButtonCheckEvent, &this->groupId);
 
 		this->checked->setVisible(true);
 		this->unchecked->setVisible(false);

@@ -26,7 +26,6 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/LabelStack.h"
-#include "Engine/UI/Controls/MenuLabel.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
@@ -214,12 +213,12 @@ void CodeHud::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->applyChangesButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->applyChangesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onAccept();
 	});
 
-	this->cancelButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onCancel();
 	});
@@ -248,13 +247,13 @@ void CodeHud::initializeListeners()
 		}
 	}));
 	
-	this->lexiconButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->functionWindow->unfocus();
 		this->getLexicon()->open();
 	});
 	
-	this->stuckButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->stuckButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		Application::getInstance()->openURL("https://discord.gg/3maVXN5");
 	});

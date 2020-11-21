@@ -100,12 +100,12 @@ void CipherExtraTokensTutorial::onAnyStateChange(CipherState* cipherState)
 
 void CipherExtraTokensTutorial::initializeCallbacks(CipherState* cipherState)
 {
-	this->nextButtonIntro->setMouseClickCallback([=](MouseEventArgs* args)
+	this->nextButtonIntro->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(cipherState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->nextButtonIntro->interact();
 	});

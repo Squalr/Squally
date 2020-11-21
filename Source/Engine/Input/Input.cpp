@@ -1,8 +1,9 @@
 #include "Input.h"
 
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCInputEvents.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
 
 using namespace cocos2d;
@@ -43,16 +44,30 @@ Input::~Input()
 void Input::initializeListeners()
 {
 	super::initializeListeners();
+	
+	/*
+	EventListenerCustom* keyEvents = EventListenerCustom::create(KeyboardEvents::EventKeyboard, [=](EventCustom* eventCustom)
+	{
+		InputEvents::KeyboardArgs* args = static_cast<KeyboardEvents::KeyboardArgs*>(eventCustom->getUserData());
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+		if (args != nullptr)
+		{
+			if (args->isPressed)
+			{
+				this->onKeyPressed(args->keyCode, eventCustom);
+			}
+			else
+			{
+				this->onKeyReleased(args->keyCode, eventCustom);
+			}
+		}
+	});
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(Input::onKeyPressed, this);
-	keyboardListener->onKeyReleased = CC_CALLBACK_2(Input::onKeyReleased, this);
-
-	this->addGlobalEventListener(keyboardListener);
+	this->addGlobalEventListener(keyEvents);
+	*/
 }
 
-void Input::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void Input::onKeyPressed(InputEvents::KeyCode keyCode, Event* event)
 {
 	this->pressedKeysPrevious = this->pressedKeys;
 	this->pressedKeys[(int)keyCode] = true;
@@ -61,41 +76,41 @@ void Input::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) == Input::getInstance()->pressedKeysPrevious.end() ||
 		!Input::getInstance()->pressedKeysPrevious[(int)keyCode])
 	{
-		InputEvents::TriggerKeyJustPressed(KeyboardEventArgs(keyCode));
+		InputEvents::TriggerKeyJustPressed(InputEvents::KeyboardEventArgs(keyCode));
 	}
 }
 
-void Input::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+void Input::onKeyReleased(InputEvents::KeyCode keyCode, Event* event)
 {
 	this->pressedKeysPrevious = this->pressedKeys;
 	this->pressedKeys[(int)keyCode] = false;
 
-	InputEvents::TriggerKeyJustReleased(KeyboardEventArgs(keyCode));
+	InputEvents::TriggerKeyJustReleased(InputEvents::KeyboardEventArgs(keyCode));
 }
 
-EventKeyboard::KeyCode Input::getActiveModifiers()
+InputEvents::KeyCode Input::getActiveModifiers()
 {
-	EventKeyboard::KeyCode modifiers = EventKeyboard::KeyCode::KEY_NONE;
+	InputEvents::KeyCode modifiers = InputEvents::KeyCode::KEY_NONE;
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	if (Input::isPressed(InputEvents::KeyCode::KEY_SHIFT))
 	{
-		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_SHIFT);
+		modifiers = (InputEvents::KeyCode)((int)modifiers | (int)InputEvents::KeyCode::KEY_SHIFT);
 	}
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
+	if (Input::isPressed(InputEvents::KeyCode::KEY_ALT))
 	{
-		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_ALT);
+		modifiers = (InputEvents::KeyCode)((int)modifiers | (int)InputEvents::KeyCode::KEY_ALT);
 	}
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_CTRL))
+	if (Input::isPressed(InputEvents::KeyCode::KEY_CTRL))
 	{
-		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_CTRL);
+		modifiers = (InputEvents::KeyCode)((int)modifiers | (int)InputEvents::KeyCode::KEY_CTRL);
 	}
 
 	return modifiers;
 }
 
-bool Input::isPressed(EventKeyboard::KeyCode keyCode)
+bool Input::isPressed(InputEvents::KeyCode keyCode)
 {
 	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
 	{
@@ -105,7 +120,7 @@ bool Input::isPressed(EventKeyboard::KeyCode keyCode)
 	return false;
 }
 
-bool Input::isReleased(EventKeyboard::KeyCode keyCode)
+bool Input::isReleased(InputEvents::KeyCode keyCode)
 {
 	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
 	{

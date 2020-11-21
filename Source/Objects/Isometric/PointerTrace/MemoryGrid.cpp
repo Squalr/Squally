@@ -8,8 +8,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
@@ -238,7 +238,7 @@ void MemoryGrid::initializeListeners()
 
 	for (auto it = this->gridHitBoxes.begin(); it != this->gridHitBoxes.end(); index++, it++)
 	{
-		(*it)->setMouseOverCallback([=](MouseEventArgs* args)
+		(*it)->setMouseOverCallback([=](InputEvents::MouseEventArgs* args)
 		{
 			this->selector->setPosition((*it)->getPosition());
 			this->selector->setOpacity(255);
@@ -247,7 +247,7 @@ void MemoryGrid::initializeListeners()
 			this->addresses[index]->setOpacity(255);
 		});
 
-		(*it)->setMouseOutCallback([=](MouseEventArgs* args)
+		(*it)->setMouseOutCallback([=](InputEvents::MouseEventArgs* args)
 		{
 			if (!this->isAddressFocused)
 			{
@@ -302,7 +302,7 @@ void MemoryGrid::initializeListeners()
 		this->positionRegisterMarkers();
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_TAB }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isAddressFocused = true;
 
@@ -313,7 +313,7 @@ void MemoryGrid::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SHIFT }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isValueFocused = true;
 
@@ -324,7 +324,7 @@ void MemoryGrid::initializeListeners()
 		}
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_TAB }, [=](KeyboardEventArgs* args)
+	this->whenKeyReleased({ InputEvents::KeyCode::KEY_TAB }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isAddressFocused = false;
 		
@@ -334,10 +334,10 @@ void MemoryGrid::initializeListeners()
 			(*it)->setVisible(false);
 		}
 
-		InputEvents::TriggerMouseRefresh(MouseEventArgs(MouseState::getMouseState()));
+		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](KeyboardEventArgs* args)
+	this->whenKeyReleased({ InputEvents::KeyCode::KEY_SHIFT }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isValueFocused = false;
 		
@@ -347,7 +347,7 @@ void MemoryGrid::initializeListeners()
 			(*it)->setVisible(false);
 		}
 
-		InputEvents::TriggerMouseRefresh(MouseEventArgs(MouseState::getMouseState()));
+		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
 	});
 }
 

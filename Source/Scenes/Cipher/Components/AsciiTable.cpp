@@ -5,7 +5,6 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Input/MouseState.h"
@@ -170,13 +169,13 @@ void AsciiTable::initializeListeners()
 
 	for (auto block : this->asciiLetters)
 	{
-		block->getBlock()->setMouseClickCallback([=](MouseEventArgs*)
+		block->getBlock()->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->select(block);
 		});
 	}
 
-	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->close();
 	});

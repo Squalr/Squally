@@ -119,12 +119,12 @@ void ItemInfoMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->close();
 	});
 
-	this->closeButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->close();
 	});
@@ -144,7 +144,7 @@ void ItemInfoMenu::open(Item* item, std::function<void()> takeItemCallback, std:
 	else
 	{
 		this->takeItemButton->setVisible(true);
-		this->takeItemButton->setMouseClickCallback([=](MouseEventArgs*)
+		this->takeItemButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			if (takeItemCallback != nullptr)
 			{

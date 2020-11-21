@@ -80,7 +80,7 @@ void EntityDeveloperBehavior::onDeveloperModeDisable()
 
 void EntityDeveloperBehavior::onLoad()
 {
-	this->resurrectButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
@@ -88,7 +88,7 @@ void EntityDeveloperBehavior::onLoad()
 		});
 	});
 
-	this->halfHealthButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->halfHealthButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
@@ -96,7 +96,7 @@ void EntityDeveloperBehavior::onLoad()
 		});
 	});
 
-	this->killButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{

@@ -48,19 +48,19 @@ void IsometricBall::update(float dt)
 {
 	super::update(dt);
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
+	if (Input::isPressed(InputEvents::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(InputEvents::KeyCode::KEY_A))
 	{
 		this->moveUp(IsometricBall::MovementSpeed);
 	}
-	else if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
+	else if (Input::isPressed(InputEvents::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(InputEvents::KeyCode::KEY_D))
 	{
 		this->moveDown(IsometricBall::MovementSpeed);
 	}
-	else if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W) || Input::isPressed(EventKeyboard::KeyCode::KEY_SPACE))
+	else if (Input::isPressed(InputEvents::KeyCode::KEY_UP_ARROW) || Input::isPressed(InputEvents::KeyCode::KEY_W) || Input::isPressed(InputEvents::KeyCode::KEY_SPACE))
 	{
 		this->moveRight(IsometricBall::MovementSpeed);
 	}
-	else if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
+	else if (Input::isPressed(InputEvents::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(InputEvents::KeyCode::KEY_S))
 	{
 		this->moveLeft(IsometricBall::MovementSpeed);
 	}

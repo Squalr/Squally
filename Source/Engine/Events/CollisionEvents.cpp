@@ -11,7 +11,7 @@ const std::string CollisionEvents::EventQueryCollisionObjectPrefix = "EVENT_QUER
 
 void CollisionEvents::QueryCollisionObjects(QueryCollisionObjectsArgs args)
 {
-    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
         CollisionEvents::EventQueryCollisionObjectPrefix + std::to_string(args.bitmask),
         &args
     );

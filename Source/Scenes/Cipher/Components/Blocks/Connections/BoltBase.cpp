@@ -6,7 +6,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
@@ -48,7 +47,7 @@ void BoltBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->connectButton->setMouseDragCallback([=](MouseEventArgs* args)
+	this->connectButton->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		if (!this->isCreatingConnection)
 		{
@@ -64,7 +63,7 @@ void BoltBase::initializeListeners()
 		}		
 	});
 
-	this->connectButton->setMouseReleaseNoHitTestCallback([=](MouseEventArgs* args)
+	this->connectButton->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		if (this->isCreatingConnection && this->connection != nullptr)
 		{

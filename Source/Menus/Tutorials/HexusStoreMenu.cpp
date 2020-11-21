@@ -8,11 +8,10 @@
 #include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -181,7 +180,7 @@ void HexusStoreMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -192,12 +191,12 @@ void HexusStoreMenu::initializeListeners()
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TutorialSelectMenu::getInstance(); }));
 	});
 
-	this->backButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onBackClick();
 	});
 
-	this->resetButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->resetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onResetClick();
 	});
@@ -251,7 +250,7 @@ ClickableNode* HexusStoreMenu::constructCard(CardData* cardData, int price, std:
 
 	cardContainer->addChild(menuCard);
 
-	cardContainer->setMouseClickCallback([=](MouseEventArgs*)
+	cardContainer->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (clickCallback != nullptr)
 		{

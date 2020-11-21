@@ -20,7 +20,7 @@ const std::string HexusEvents::EventAfterStateUpdate = "EVENT_HEXUS_AFTER_UPDATE
 
 void HexusEvents::TriggerOpenHexus(HexusOpenArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventOpenHexus,
 		&args
 	);
@@ -28,7 +28,7 @@ void HexusEvents::TriggerOpenHexus(HexusOpenArgs args)
 
 void HexusEvents::TriggerExitHexus(HexusExitArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventExitHexus,
 		&args
 	);
@@ -36,7 +36,7 @@ void HexusEvents::TriggerExitHexus(HexusExitArgs args)
 
 void HexusEvents::TriggerShowHelpMenuOutsideOfGame(HelpMenuArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventShowHelpMenuOutsideOfGame,
 		&args
 	);
@@ -44,7 +44,7 @@ void HexusEvents::TriggerShowHelpMenuOutsideOfGame(HelpMenuArgs args)
 
 void HexusEvents::TriggerCardPreviewed(CardPreviewArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventCardPreviewed,
 		&args
 	);
@@ -52,14 +52,14 @@ void HexusEvents::TriggerCardPreviewed(CardPreviewArgs args)
 
 void HexusEvents::TriggerCardMousedOut()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventCardMousedOut
 	);
 }
 
 void HexusEvents::TriggerBeforeRequestStateUpdate(GameState* gameState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventBeforeRequestStateUpdate,
 		gameState
 	);
@@ -67,7 +67,7 @@ void HexusEvents::TriggerBeforeRequestStateUpdate(GameState* gameState)
 
 void HexusEvents::TriggerRequestStateUpdate(GameState* gameState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventRequestStateUpdate,
 		gameState
 	);
@@ -75,7 +75,7 @@ void HexusEvents::TriggerRequestStateUpdate(GameState* gameState)
 
 void HexusEvents::TriggerBeforeStateUpdate(GameState* gameState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventBeforeStateUpdate,
 		gameState
 	);
@@ -83,7 +83,7 @@ void HexusEvents::TriggerBeforeStateUpdate(GameState* gameState)
 
 void HexusEvents::TriggerOnStateUpdate(GameState* gameState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventOnStateUpdate,
 		gameState
 	);
@@ -91,7 +91,7 @@ void HexusEvents::TriggerOnStateUpdate(GameState* gameState)
 
 void HexusEvents::TriggerAfterStateUpdate(GameState* gameState)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HexusEvents::EventAfterStateUpdate,
 		gameState
 	);

@@ -5,7 +5,6 @@
 
 #include "Analytics/AnalyticsCategories.h"
 #include "Engine/Analytics/Analytics.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -71,7 +70,7 @@ void StateGameEnd::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE, InputEvents::KeyCode::KEY_ENTER }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this) || !this->backButton->canInteract())
 		{
@@ -189,7 +188,7 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	this->backButton->enableInteraction(0);
 	this->backButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
-	this->backButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onBackClick(gameState);
 	});

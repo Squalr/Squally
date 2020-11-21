@@ -131,20 +131,20 @@ void TutorialBIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialBIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->scoreTotalsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHandCards(gameState);
 	});
-	this->handCardsNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->handCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->runTutorialLastStand(gameState);
 	});
-	this->lastStandNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->lastStandNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scoreTotalsNextButton->interact();
 		this->handCardsNextButton->interact();

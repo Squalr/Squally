@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/RadioButton.h"
@@ -110,22 +110,22 @@ void DisplayModeToggles::initializeListeners()
 		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Ascii));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_1 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->toggleButtonDec->check();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_2 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->toggleButtonHex->check();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_3 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->toggleButtonBin->check();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_4 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->toggleButtonAscii->check();
 	});

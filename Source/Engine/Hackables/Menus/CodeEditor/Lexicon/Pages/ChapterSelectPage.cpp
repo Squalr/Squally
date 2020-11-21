@@ -105,31 +105,31 @@ void ChapterSelectPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->dataChapterButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->dataChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(DataIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(DataSelectPage::Identifier));
 	});
 
-	this->binaryChapterButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->binaryChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(BinaryIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
-	this->controlFlowChapterButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->controlFlowChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(ControlFlowIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(ControlFlowSelectPage::Identifier));
 	});
 
-	this->vectorChapterButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->vectorChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(VectorIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(VectorSelectPage::Identifier));
 	});
 
-	this->floatingPointChapterButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->floatingPointChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(FloatingPointIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(FloatingPointSelectPage::Identifier));

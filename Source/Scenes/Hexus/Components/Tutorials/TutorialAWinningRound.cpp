@@ -98,12 +98,12 @@ void TutorialAWinningRound::onAnyStateChange(GameState* gameState)
 
 void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->scoreTotalsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scoreTotalsNextButton->interact();
 	});

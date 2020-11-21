@@ -26,14 +26,14 @@ const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGH
 
 void HackableEvents::TriggerForceUseHackerMode()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventForceUseHackerMode
 	);
 }
 
 void HackableEvents::TriggerHackerModeToggle(HackToggleArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackerModeToggle,
 		&args
 	);
@@ -41,7 +41,7 @@ void HackableEvents::TriggerHackerModeToggle(HackToggleArgs args)
 
 void HackableEvents::TriggerHackerModeEnable(HackToggleArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackerModeEnable,
 		&args
 	);
@@ -49,28 +49,28 @@ void HackableEvents::TriggerHackerModeEnable(HackToggleArgs args)
 
 void HackableEvents::TriggerHackerModeDisable()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackerModeDisable
 	);
 }
 
 void HackableEvents::TriggerAllowHackerMode()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventAllowHackerMode
 	);
 }
 
 void HackableEvents::TriggerDisallowHackerMode()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventDisallowHackerMode
 	);
 }
 
 void HackableEvents::TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventQueryHackerModeAllowed,
 		args
 	);
@@ -78,7 +78,7 @@ void HackableEvents::TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args)
 
 void HackableEvents::TriggerOpenHackable(HackableObjectOpenArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackableObjectOpen,
 		&args
 	);
@@ -86,14 +86,14 @@ void HackableEvents::TriggerOpenHackable(HackableObjectOpenArgs args)
 
 void HackableEvents::TriggerCloseHackable()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackableObjectClose
 	);
 }
 
 void HackableEvents::TriggerEditHackableBase(HackableObjectEditArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackableBaseEdit,
 		&args
 	);
@@ -101,14 +101,14 @@ void HackableEvents::TriggerEditHackableBase(HackableObjectEditArgs args)
 
 void HackableEvents::TriggerEditHackableBaseDone()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackableBaseEditDone
 	);
 }
 
 void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackApplied,
 		&args
 	);
@@ -116,7 +116,7 @@ void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 
 void HackableEvents::TriggerHackFlagsChanged(HackFlagsChangedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackFlagsChanged,
 		&args
 	);
@@ -124,21 +124,21 @@ void HackableEvents::TriggerHackFlagsChanged(HackFlagsChangedArgs args)
 
 void HackableEvents::TriggerPauseHackTimers()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventPauseHackTimers
 	);
 }
 
 void HackableEvents::TriggerResumeHackTimers()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventResumeHackTimers
 	);
 }
 
 void HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventOpenLexiconPage,
 		&args
 	);
@@ -146,14 +146,14 @@ void HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs args)
 
 void HackableEvents::TriggerCloseLeftLexiconPage()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventCloseLeftLexiconPage
 	);
 }
 
 void HackableEvents::TriggerCloseRightLexiconPage()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventCloseRightLexiconPage
 	);
 }

@@ -88,7 +88,7 @@ void EntityPickPocketBehavior::onLoad()
 
 		this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 		{
-			selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
+			selectionBehavior->setClickModifier(InputEvents::KeyCode::KEY_SHIFT);
 			selectionBehavior->setEntityClickCallbacks([=]()
 			{
 				this->attemptPickPocket();

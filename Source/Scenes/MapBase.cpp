@@ -6,12 +6,10 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventMouse.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
@@ -176,7 +174,7 @@ void MapBase::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause ||!GameUtils::isFocused(this))
 		{

@@ -124,7 +124,7 @@ void RegisterCrystal::update(float dt)
 {
 	super::update(dt);
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_TAB) || Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	if (Input::isPressed(InputEvents::KeyCode::KEY_TAB) || Input::isPressed(InputEvents::KeyCode::KEY_SHIFT))
 	{
 		this->assemblyLabel->setOpacity(0);
 	}

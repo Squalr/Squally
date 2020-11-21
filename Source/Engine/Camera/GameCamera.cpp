@@ -11,7 +11,6 @@
 #include "cocos/base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/GlobalDirector.h"
@@ -140,7 +139,7 @@ void GameCamera::initializeListeners()
 		}
 	));
 
-	this->debugScrollHitbox->setMouseScrollCallback([=](MouseEventArgs* args)
+	this->debugScrollHitbox->setMouseScrollCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		args->unhandle();
 		float delta = args->scrollDelta.y * 64.0f;

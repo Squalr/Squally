@@ -2,7 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -100,7 +100,7 @@ void ItemMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->isFocused || this->visibleItems.empty())
 		{
@@ -115,7 +115,7 @@ void ItemMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D, }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D, }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->isFocused || this->visibleItems.empty())
 		{
@@ -134,12 +134,12 @@ void ItemMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_W, InputEvents::KeyCode::KEY_UP_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollInventoryUp();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_S, InputEvents::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollInventoryDown();
 	});

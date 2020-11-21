@@ -148,14 +148,14 @@ public:
 	{
 		if (tag.empty())
 		{
-			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
 				ObjectEvents::EventQueryObject,
 				&args
 			);
 		}
 		else
 		{
-			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
 				ObjectEvents::EventQueryObjectByTagPrefix + tag,
 				&args
 			);

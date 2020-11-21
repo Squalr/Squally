@@ -30,7 +30,7 @@ InteractObject* InteractObject::create(
 	Size size,
 	Vec2 offset,
 	LocalizedString* actionStr,
-	EventKeyboard::KeyCode input,
+	InputEvents::KeyCode input,
 	Color3B interactColor,
 	Color4F debugColor,
 	bool disableLockDebug)
@@ -50,7 +50,7 @@ InteractObject::InteractObject(
 	Size size,
 	Vec2 offset,
 	LocalizedString* actionStr,
-	EventKeyboard::KeyCode input,
+	InputEvents::KeyCode input,
 	Color3B interactColor,
 	Color4F debugColor,
 	bool disableLockDebug)
@@ -145,13 +145,13 @@ void InteractObject::initializeListeners()
 
 	if (this->lockButton != nullptr && this->unlockButton != nullptr)
 	{
-		this->lockButton->setMouseClickCallback([=](MouseEventArgs*)
+		this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->lock(false);
 			this->updateInteractMenuVisibility();
 		});
 
-		this->unlockButton->setMouseClickCallback([=](MouseEventArgs*)
+		this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->unlock(false);
 			this->enable();
@@ -181,7 +181,7 @@ void InteractObject::initializeListeners()
 		return CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ this->input }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ this->input }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		switch(this->interactType)
 		{
@@ -372,38 +372,38 @@ void InteractObject::updateInteractMenuVisibility()
 	}
 }
 
-std::string InteractObject::inputToString(EventKeyboard::KeyCode input)
+std::string InteractObject::inputToString(InputEvents::KeyCode input)
 {
 	std::string inputStr = "";
 
 	switch(input)
 	{
-        case EventKeyboard::KeyCode::KEY_A: { inputStr = "A"; break; }
-        case EventKeyboard::KeyCode::KEY_B: { inputStr = "B"; break; }
-        case EventKeyboard::KeyCode::KEY_C: { inputStr = "C"; break; }
-        case EventKeyboard::KeyCode::KEY_D: { inputStr = "D"; break; }
-        case EventKeyboard::KeyCode::KEY_E: { inputStr = "E"; break; }
-        case EventKeyboard::KeyCode::KEY_F: { inputStr = "F"; break; }
-        case EventKeyboard::KeyCode::KEY_G: { inputStr = "G"; break; }
-        case EventKeyboard::KeyCode::KEY_H: { inputStr = "H"; break; }
-        case EventKeyboard::KeyCode::KEY_I: { inputStr = "I"; break; }
-        case EventKeyboard::KeyCode::KEY_J: { inputStr = "J"; break; }
-        case EventKeyboard::KeyCode::KEY_K: { inputStr = "K"; break; }
-        case EventKeyboard::KeyCode::KEY_L: { inputStr = "L"; break; }
-        case EventKeyboard::KeyCode::KEY_M: { inputStr = "M"; break; }
-        case EventKeyboard::KeyCode::KEY_N: { inputStr = "N"; break; }
-        case EventKeyboard::KeyCode::KEY_O: { inputStr = "O"; break; }
-        case EventKeyboard::KeyCode::KEY_P: { inputStr = "P"; break; }
-        case EventKeyboard::KeyCode::KEY_Q: { inputStr = "Q"; break; }
-        case EventKeyboard::KeyCode::KEY_R: { inputStr = "R"; break; }
-        case EventKeyboard::KeyCode::KEY_S: { inputStr = "S"; break; }
-        case EventKeyboard::KeyCode::KEY_T: { inputStr = "T"; break; }
-        case EventKeyboard::KeyCode::KEY_U: { inputStr = "U"; break; }
-        case EventKeyboard::KeyCode::KEY_V: { inputStr = "V"; break; }
-        case EventKeyboard::KeyCode::KEY_W: { inputStr = "W"; break; }
-        case EventKeyboard::KeyCode::KEY_X: { inputStr = "X"; break; }
-        case EventKeyboard::KeyCode::KEY_Y: { inputStr = "Y"; break; }
-        case EventKeyboard::KeyCode::KEY_Z: { inputStr = "Z"; break; }
+        case InputEvents::KeyCode::KEY_A: { inputStr = "A"; break; }
+        case InputEvents::KeyCode::KEY_B: { inputStr = "B"; break; }
+        case InputEvents::KeyCode::KEY_C: { inputStr = "C"; break; }
+        case InputEvents::KeyCode::KEY_D: { inputStr = "D"; break; }
+        case InputEvents::KeyCode::KEY_E: { inputStr = "E"; break; }
+        case InputEvents::KeyCode::KEY_F: { inputStr = "F"; break; }
+        case InputEvents::KeyCode::KEY_G: { inputStr = "G"; break; }
+        case InputEvents::KeyCode::KEY_H: { inputStr = "H"; break; }
+        case InputEvents::KeyCode::KEY_I: { inputStr = "I"; break; }
+        case InputEvents::KeyCode::KEY_J: { inputStr = "J"; break; }
+        case InputEvents::KeyCode::KEY_K: { inputStr = "K"; break; }
+        case InputEvents::KeyCode::KEY_L: { inputStr = "L"; break; }
+        case InputEvents::KeyCode::KEY_M: { inputStr = "M"; break; }
+        case InputEvents::KeyCode::KEY_N: { inputStr = "N"; break; }
+        case InputEvents::KeyCode::KEY_O: { inputStr = "O"; break; }
+        case InputEvents::KeyCode::KEY_P: { inputStr = "P"; break; }
+        case InputEvents::KeyCode::KEY_Q: { inputStr = "Q"; break; }
+        case InputEvents::KeyCode::KEY_R: { inputStr = "R"; break; }
+        case InputEvents::KeyCode::KEY_S: { inputStr = "S"; break; }
+        case InputEvents::KeyCode::KEY_T: { inputStr = "T"; break; }
+        case InputEvents::KeyCode::KEY_U: { inputStr = "U"; break; }
+        case InputEvents::KeyCode::KEY_V: { inputStr = "V"; break; }
+        case InputEvents::KeyCode::KEY_W: { inputStr = "W"; break; }
+        case InputEvents::KeyCode::KEY_X: { inputStr = "X"; break; }
+        case InputEvents::KeyCode::KEY_Y: { inputStr = "Y"; break; }
+        case InputEvents::KeyCode::KEY_Z: { inputStr = "Z"; break; }
 		default:
 		{
 			inputStr = "UNMAPPED";

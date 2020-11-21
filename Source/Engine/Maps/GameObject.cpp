@@ -441,7 +441,7 @@ void GameObject::listenForStateWriteOnce(std::string key, std::function<void(coc
 	const std::string eventKey = key + "_" + std::to_string((unsigned long long)(this));
 	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
 
-	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{
 		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getUserData());
 		
@@ -533,7 +533,7 @@ void GameObject::listenForMapEventOnce(std::string eventName, std::function<void
 	const std::string eventKey = eventName + "_" + std::to_string((unsigned long long)(this));
 	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
 
-	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
 	{
 		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
 		

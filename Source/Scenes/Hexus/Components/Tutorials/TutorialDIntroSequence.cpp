@@ -97,12 +97,12 @@ void TutorialDIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialDIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->handCardsNextButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->handCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->handCardsNextButton->interact();
 	});

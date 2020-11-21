@@ -12,7 +12,7 @@ const std::string NotificationEvents::EventConfirmationEnd = "EVENT_NOTIFICATION
 
 void NotificationEvents::TriggerNotificationTakeover(NotificationTakeoverArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		NotificationEvents::EventNotificationTakeover,
 		&args
 	);
@@ -20,7 +20,7 @@ void NotificationEvents::TriggerNotificationTakeover(NotificationTakeoverArgs ar
 
 void NotificationEvents::TriggerNotification(NotificationArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		NotificationEvents::EventNotification,
 		&args
 	);
@@ -28,7 +28,7 @@ void NotificationEvents::TriggerNotification(NotificationArgs args)
 
 void NotificationEvents::TriggerConfirmation(ConfirmationArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		NotificationEvents::EventConfirmation,
 		&args
 	);
@@ -36,7 +36,7 @@ void NotificationEvents::TriggerConfirmation(ConfirmationArgs args)
 
 void NotificationEvents::TriggerConfirmationEnd()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		NotificationEvents::EventConfirmationEnd
 	);
 }

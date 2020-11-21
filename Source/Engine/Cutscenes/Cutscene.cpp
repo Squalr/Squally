@@ -1,10 +1,8 @@
 #include "Cutscene.h"
 
-#include "cocos/base/CCEventKeyboard.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -37,7 +35,7 @@ void Cutscene::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

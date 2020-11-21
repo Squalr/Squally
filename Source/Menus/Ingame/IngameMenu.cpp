@@ -2,7 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -129,7 +129,7 @@ void IngameMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->inventoryButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->inventoryButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->inventoryClickCallback != nullptr)
 		{
@@ -137,7 +137,7 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->partyButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->partyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->partyClickCallback != nullptr)
 		{
@@ -145,7 +145,7 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->cardsButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->cardsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->cardsClickCallback != nullptr)
 		{
@@ -153,7 +153,7 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->collectablesButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->collectablesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->collectablesClickCallback != nullptr)
 		{

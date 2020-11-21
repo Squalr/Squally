@@ -184,130 +184,130 @@ void MovExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->pointerHelpButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->pointerHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->show();
 	});
 
-	this->pointerHelpButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->pointerHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->hide();
 	});
 
-	this->offsetHelp4Button->setMouseOverCallback([=](MouseEventArgs*)
+	this->offsetHelp4Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp4->show();
 	});
 
-	this->offsetHelp4Button->setMouseOutCallback([=](MouseEventArgs*)
+	this->offsetHelp4Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp4->hide();
 	});
 
-	this->offsetHelp8Button->setMouseOverCallback([=](MouseEventArgs*)
+	this->offsetHelp8Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp8->show();
 	});
 
-	this->offsetHelp8Button->setMouseOutCallback([=](MouseEventArgs*)
+	this->offsetHelp8Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp8->hide();
 	});
 
-	this->resetButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->resetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->resetState();
 	});
 
-	this->movRegImmButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->movRegImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEbx(200);
 	});
 
-	this->movRegImmButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->movRegImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEbx(true);
 	});
 
-	this->movRegImmButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->movRegImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->movRegRegButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->movRegRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEcx(this->registerBlock->getEdx());
 	});
 
-	this->movRegRegButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->movRegRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEcx(true);
 		this->registerBlock->highlightEdx(false);
 	});
 
-	this->movRegRegButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->movRegRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->movPtrImmButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->movPtrImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEaxPtr(10, 0);
 	});
 
-	this->movPtrImmButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->movPtrImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEaxPtr(true, 0);
 	});
 
-	this->movPtrImmButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->movPtrImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->movPtrRegButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->movPtrRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEspPtr(this->registerBlock->getEdi(), 0);
 	});
 
-	this->movPtrRegButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->movPtrRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEspPtr(true, 0);
 		this->registerBlock->highlightEdi(false);
 	});
 
-	this->movPtrRegButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->movPtrRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->movPtrOffsetImmButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->movPtrOffsetImmButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEspPtr(100, 1);
 	});
 
-	this->movPtrOffsetImmButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->movPtrOffsetImmButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEspPtr(true, 1);
 	});
 
-	this->movPtrOffsetImmButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->movPtrOffsetImmButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->movPtrOffsetRegButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->movPtrOffsetRegButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEspPtr(this->registerBlock->getEsi(), 2);
 	});
 
-	this->movPtrOffsetRegButton->setMouseOverCallback([=](MouseEventArgs*)
+	this->movPtrOffsetRegButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEspPtr(true, 2);
 		this->registerBlock->highlightEsi(false);
 	});
 
-	this->movPtrOffsetRegButton->setMouseOutCallback([=](MouseEventArgs*)
+	this->movPtrOffsetRegButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});

@@ -3,7 +3,6 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -124,7 +123,7 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
 {
     this->onExit = onExit;
 
-    this->exitButton->setMouseClickCallback([=](MouseEventArgs*)
+    this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         if (this->onExit != nullptr)
         {
@@ -137,7 +136,7 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
         }
     });
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

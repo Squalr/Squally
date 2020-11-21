@@ -1,8 +1,9 @@
 #pragma once
 #include <functional>
 
+#include "cocos/base/CCInputEvents.h"
+
 #include "Engine/SmartNode.h"
-#include "Engine/Events/InputEvents.h"
 
 namespace cocos2d
 {
@@ -33,7 +34,7 @@ protected:
 private:
 	typedef SmartNode super;
 	void updateSliderPosition();
-	void onDrag(MouseEventArgs* args);
+	void onDrag(cocos2d::InputEvents::MouseEventArgs* args);
 
 	ClickableNode* slide;
 	ProgressBar* progressBar;

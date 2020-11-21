@@ -111,13 +111,13 @@ void RewardsMenu::initializeListeners()
 		this->loadRewards();
 	}));
 
-	this->returnButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(false));
 		CombatEvents::TriggerReturnToMap();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

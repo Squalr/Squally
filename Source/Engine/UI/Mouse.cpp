@@ -5,7 +5,6 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/UI/HUD/Hud.h"
 
@@ -79,12 +78,12 @@ void Mouse::initializeListeners()
 		this->onEventMouseStateUpdate(eventCustom);
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](KeyboardEventArgs*)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
 	{
 		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](KeyboardEventArgs*)
+	this->whenKeyReleased({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
 	{
 		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 	});
@@ -138,7 +137,7 @@ const Vec2& Mouse::getPosition() const
 
 void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
 {
-	MouseEventArgs* args = (MouseEventArgs*)(eventCustom->getUserData());
+	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getUserData());
 
 	if (args->isDragging)
 	{

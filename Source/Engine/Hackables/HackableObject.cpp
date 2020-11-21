@@ -79,7 +79,7 @@ void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->hackButton->setMouseClickCallback([=](MouseEventArgs* args)
+	this->hackButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->onHackableClick();
 	});

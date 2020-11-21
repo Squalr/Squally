@@ -5,7 +5,7 @@
 #include "cocos/base/CCEvent.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
@@ -17,7 +17,6 @@
 #include "Engine/Deserializers/Meta/MetaLayerDeserializer.h"
 #include "Engine/Deserializers/Meta/MusicDeserializer.h"
 #include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Sound/Music.h"
@@ -97,7 +96,7 @@ void PointerTraceLevelSelect::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

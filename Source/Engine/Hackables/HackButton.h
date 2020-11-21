@@ -12,7 +12,7 @@ protected:
 	virtual ~HackButton();
 	
 	void initializeListeners() override;
-	virtual void addEventListener(cocos2d::EventListener* listener) override;
+	virtual void addEventListener(cocos2d::EventListenerCustom* listener) override;
 
 private:
 	typedef ClickableNode super;

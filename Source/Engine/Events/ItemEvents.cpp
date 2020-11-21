@@ -9,7 +9,7 @@ const std::string ItemEvents::EventRequestItemFromPoolPrefix = "EVENT_REQUEST_IT
 
 void ItemEvents::TriggerRequestItem(ItemRequestArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		ItemEvents::EventRequestItemFromPoolPrefix + args.poolName,
 		&args
 	);

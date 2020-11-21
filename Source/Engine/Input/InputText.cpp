@@ -46,7 +46,7 @@ void InputText::onEnter()
 {
 	super::onEnter();
 
-	this->hitBox->setMouseClickCallback([=](MouseEventArgs*)
+	this->hitBox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->attachWithIME();
 	});

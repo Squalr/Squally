@@ -116,16 +116,16 @@ void CipherOverflowTutorial::onAnyStateChange(CipherState* cipherState)
 
 void CipherOverflowTutorial::initializeCallbacks(CipherState* cipherState)
 {
-	this->nextButtonIntro->setMouseClickCallback([=](MouseEventArgs* args)
+	this->nextButtonIntro->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->runTutorialPartB(cipherState);
 	});
-	this->nextButtonConnect->setMouseClickCallback([=](MouseEventArgs* args)
+	this->nextButtonConnect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(cipherState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->nextButtonIntro->interact();
 		this->nextButtonConnect->interact();

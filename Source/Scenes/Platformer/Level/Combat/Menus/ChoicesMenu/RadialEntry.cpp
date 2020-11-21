@@ -95,52 +95,52 @@ void RadialEntry::setContentSize(const Size& size)
 	this->entry->setContentSize(size);
 }
 
-void RadialEntry::setMouseClickCallback(std::function<void(MouseEventArgs* args)> onMouseClick)
+void RadialEntry::setMouseClickCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->entry->setMouseClickCallback(onMouseClick);
 }
 
-void RadialEntry::setMouseInCallback(std::function<void(MouseEventArgs* args)> onMouseIn)
+void RadialEntry::setMouseInCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseIn)
 {
 	this->entry->setMouseInCallback(onMouseIn);
 }
 
-void RadialEntry::setMouseOverCallback(std::function<void(MouseEventArgs* args)> onMouseOver)
+void RadialEntry::setMouseOverCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseOver)
 {
 	this->entry->setMouseOverCallback(onMouseOver);
 }
 
-void RadialEntry::setMouseOutCallback(std::function<void(MouseEventArgs* args)> onMouseOut)
+void RadialEntry::setMouseOutCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseOut)
 {
 	this->entry->setMouseOutCallback(onMouseOut);
 }
 
-void RadialEntry::setMouseDownCallback(std::function<void(MouseEventArgs* args)> onMouseDown)
+void RadialEntry::setMouseDownCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseDown)
 {
 	this->entry->setMouseDownCallback(onMouseDown);
 }
 
-void RadialEntry::setMousePressCallback(std::function<void(MouseEventArgs* args)> mousePressEvent)
+void RadialEntry::setMousePressCallback(std::function<void(InputEvents::MouseEventArgs* args)> mousePressEvent)
 {
 	this->entry->setMousePressCallback(mousePressEvent);
 }
 
-void RadialEntry::setMouseReleaseNoHitTestCallback(std::function<void(MouseEventArgs* args)> mouseReleaseNoHitTestEvent)
+void RadialEntry::setMouseReleaseNoHitTestCallback(std::function<void(InputEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent)
 {
 	this->entry->setMouseReleaseNoHitTestCallback(mouseReleaseNoHitTestEvent);
 }
 
-void RadialEntry::setMouseReleaseCallback(std::function<void(MouseEventArgs* args)> mouseReleaseEvent)
+void RadialEntry::setMouseReleaseCallback(std::function<void(InputEvents::MouseEventArgs* args)> mouseReleaseEvent)
 {
 	this->entry->setMouseReleaseCallback(mouseReleaseEvent);
 }
 
-void RadialEntry::setMouseDragCallback(std::function<void(MouseEventArgs* args)> onDrag)
+void RadialEntry::setMouseDragCallback(std::function<void(InputEvents::MouseEventArgs* args)> onDrag)
 {
 	this->entry->setMouseDragCallback(onDrag);
 }
 
-void RadialEntry::setMouseScrollCallback(std::function<void(MouseEventArgs* args)> onScroll)
+void RadialEntry::setMouseScrollCallback(std::function<void(InputEvents::MouseEventArgs* args)> onScroll)
 {
 	this->entry->setMouseScrollCallback(onScroll);
 }
@@ -181,7 +181,7 @@ void RadialEntry::toggleAllowInteractionEdits(bool allowInteractionEdits)
 	this->allowInteractionEdits = allowInteractionEdits;
 }
 
-void RadialEntry::setClickModifier(EventKeyboard::KeyCode modifier)
+void RadialEntry::setClickModifier(InputEvents::KeyCode modifier)
 {
 	this->entry->setClickModifier(modifier);
 }

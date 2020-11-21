@@ -74,7 +74,7 @@ void DebugDisplay::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->loseButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->loseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->activeGameState != nullptr)
 		{
@@ -85,7 +85,7 @@ void DebugDisplay::initializeListeners()
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
 
-	this->drawButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->drawButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->activeGameState != nullptr)
 		{
@@ -96,7 +96,7 @@ void DebugDisplay::initializeListeners()
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
 
-	this->winButton->setMouseClickCallback([=](MouseEventArgs*)
+	this->winButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->activeGameState != nullptr)
 		{

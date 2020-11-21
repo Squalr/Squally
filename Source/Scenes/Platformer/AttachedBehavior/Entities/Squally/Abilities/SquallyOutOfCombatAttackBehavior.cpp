@@ -61,7 +61,7 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 {
 	super::onLoad();
 
-	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](KeyboardEventArgs* args)
+	this->squally->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->attack();
 	});

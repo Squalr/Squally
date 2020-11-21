@@ -92,22 +92,22 @@ void ToggleCard::initializeListeners()
 {
     super::initializeListeners();
 
-    this->rightToggle->setMouseClickCallback([=](MouseEventArgs*)
+    this->rightToggle->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         this->toggleNextValue();
     });
 
-    this->leftToggle->setMouseClickCallback([=](MouseEventArgs*)
+    this->leftToggle->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         this->togglePreviousValue();
     });
 
-    this->upToggle->setMouseClickCallback([=](MouseEventArgs*)
+    this->upToggle->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         this->toggleNextDisplayType();
     });
 
-    this->downToggle->setMouseClickCallback([=](MouseEventArgs*)
+    this->downToggle->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         this->togglePreviousDisplayType();
     });

@@ -88,7 +88,7 @@ void LevelNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->sprite->setMouseClickCallback([=](MouseEventArgs*)
+	this->sprite->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
