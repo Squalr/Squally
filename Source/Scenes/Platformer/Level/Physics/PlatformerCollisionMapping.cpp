@@ -77,7 +77,7 @@ void PlatformerCollisionMapping::buildCollisionMap()
 
 void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom)
 {
-	CollisionMappingEvents::CollisionMapRequestArgs* args = (CollisionMappingEvents::CollisionMapRequestArgs*)(eventCustom->getUserData());
+	CollisionMappingEvents::CollisionMapRequestArgs* args = (CollisionMappingEvents::CollisionMapRequestArgs*)(eventCustom->getData());
 
 	if (args == nullptr || args->callback == nullptr)
 	{

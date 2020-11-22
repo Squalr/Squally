@@ -48,7 +48,7 @@ void Music::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
 	{
-		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getUserData());
+		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->trackId != this->activeTrackId && args->trackId != SoundBase::INVALID_ID && this->activeTrackId != SoundBase::INVALID_ID)
 		{

@@ -22,19 +22,19 @@ void ComponentBase::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onBeforeAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
+		this->onBeforeAnyRequestStateChange((GameState*)(eventCustom->getData()));
 	}));
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
+		this->onAnyRequestStateChange((GameState*)(eventCustom->getData()));
 	}));
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onBeforeStateChange((GameState*)(eventCustom->getUserData()));
+		this->onBeforeStateChange((GameState*)(eventCustom->getData()));
 	}));
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onAnyStateChange((GameState*)(eventCustom->getUserData()));
+		this->onAnyStateChange((GameState*)(eventCustom->getData()));
 	}));
 }
 

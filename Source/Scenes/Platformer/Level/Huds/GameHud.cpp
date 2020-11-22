@@ -85,7 +85,7 @@ void GameHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHudTrackEntity, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getUserData());
+		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -103,7 +103,7 @@ void GameHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHudUntrackEntity, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getUserData());
+		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -117,7 +117,7 @@ void GameHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventRunFlashFx, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::FlashFxArgs* args = static_cast<PlatformerEvents::FlashFxArgs*>(eventCustom->getUserData());
+		PlatformerEvents::FlashFxArgs* args = static_cast<PlatformerEvents::FlashFxArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{

@@ -116,7 +116,7 @@ void CipherLock::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventTryUnlockCurrentCipher, ([=](EventCustom* eventCustom)
 	{
-		CipherEvents::UnlockArgs* args = static_cast<CipherEvents::UnlockArgs*>(eventCustom->getUserData());
+		CipherEvents::UnlockArgs* args = static_cast<CipherEvents::UnlockArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

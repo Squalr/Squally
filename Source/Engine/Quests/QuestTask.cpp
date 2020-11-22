@@ -48,7 +48,7 @@ void QuestTask::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + this->questLine->getQuestLine(), [=](EventCustom* eventCustom)
 	{
-		QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getUserData());
+		QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && this->questLine != nullptr && args->questLine == this->questLine->getQuestLine())
 		{

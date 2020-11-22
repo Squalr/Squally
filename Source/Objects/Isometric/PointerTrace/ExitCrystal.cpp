@@ -82,7 +82,7 @@ void ExitCrystal::initializeListeners()
 		PointerTraceEvents::EventEntityMoved,
 		[=](EventCustom* eventCustom)
 		{
-			PointerTraceEvents::PointerTraceEntityMovedArgs* args = static_cast<PointerTraceEvents::PointerTraceEntityMovedArgs*>(eventCustom->getUserData());
+			PointerTraceEvents::PointerTraceEntityMovedArgs* args = static_cast<PointerTraceEvents::PointerTraceEntityMovedArgs*>(eventCustom->getData());
 
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{

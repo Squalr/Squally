@@ -73,7 +73,7 @@ void Mouse::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseStateUpdate, [=](EventCustom* eventCustom)
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
 	{
 		this->onEventMouseStateUpdate(eventCustom);
 	}));
@@ -130,14 +130,11 @@ int Mouse::getActiveCursorSet()
 	return this->activeCursorSet;
 }
 
-const Vec2& Mouse::getPosition() const
-{
-	return this->readMousePosition;
-}
-
 void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
 {
-	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getUserData());
+	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getData());
+
+	this->readMousePosition = args->mouseCoords;
 
 	if (args->isDragging)
 	{
@@ -156,7 +153,6 @@ void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
 		this->setActiveMouseSprite(this->mouseSpriteIdle);
 	}
 
-	this->readMousePosition = MouseState::getMousePosition();
 	this->setSpriteToCursorPosition();
 }
 
@@ -173,8 +169,8 @@ void Mouse::setActiveMouseSprite(Node* mouseSprite)
 
 void Mouse::setSpriteToCursorPosition()
 {
-	this->mouseSpriteIdle->setPosition(MouseState::getMousePosition());
-	this->mouseSpritePoint->setPosition(MouseState::getMousePosition());
-	this->mouseSpritePointPressed->setPosition(MouseState::getMousePosition());
-	this->mouseSpriteDrag->setPosition(MouseState::getMousePosition());
+	this->mouseSpriteIdle->setPosition(this->readMousePosition);
+	this->mouseSpritePoint->setPosition(this->readMousePosition);
+	this->mouseSpritePointPressed->setPosition(this->readMousePosition);
+	this->mouseSpriteDrag->setPosition(this->readMousePosition);
 }

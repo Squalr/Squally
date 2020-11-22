@@ -65,7 +65,7 @@ void CombatHud::initializeListeners()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectionChanged, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::SelectionArgs* args = static_cast<CombatEvents::SelectionArgs*>(eventCustom->getUserData());
+		CombatEvents::SelectionArgs* args = static_cast<CombatEvents::SelectionArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

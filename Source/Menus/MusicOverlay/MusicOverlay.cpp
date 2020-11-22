@@ -76,7 +76,7 @@ void MusicOverlay::initializeListeners()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventTrackPlayed, [=](EventCustom* eventCustom)
 	{
-		SoundEvents::TrackPlayedArgs* args = static_cast<SoundEvents::TrackPlayedArgs*>(eventCustom->getUserData());
+		SoundEvents::TrackPlayedArgs* args = static_cast<SoundEvents::TrackPlayedArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

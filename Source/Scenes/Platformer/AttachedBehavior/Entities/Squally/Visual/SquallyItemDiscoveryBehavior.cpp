@@ -61,7 +61,7 @@ void SquallyItemDiscoveryBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventDiscoverItem, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::ItemDiscoveryArgs* args = static_cast<PlatformerEvents::ItemDiscoveryArgs*>(eventCustom->getUserData());
+		PlatformerEvents::ItemDiscoveryArgs* args = static_cast<PlatformerEvents::ItemDiscoveryArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->item != nullptr)
 		{

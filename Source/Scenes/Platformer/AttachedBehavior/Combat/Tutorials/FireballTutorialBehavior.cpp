@@ -64,7 +64,7 @@ void FireballTutorialBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventProjectileSpawned, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ProjectileSpawnedArgs* args = static_cast<CombatEvents::ProjectileSpawnedArgs*>(eventCustom->getUserData());
+		CombatEvents::ProjectileSpawnedArgs* args = static_cast<CombatEvents::ProjectileSpawnedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && dynamic_cast<Fireball*>(args->projectile) != nullptr)
 		{

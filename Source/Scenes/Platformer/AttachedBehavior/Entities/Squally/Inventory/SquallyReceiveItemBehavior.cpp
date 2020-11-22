@@ -51,7 +51,7 @@ void SquallyReceiveItemBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItem, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::GiveItemArgs* args = static_cast<PlatformerEvents::GiveItemArgs*>(eventCustom->getUserData());
+		PlatformerEvents::GiveItemArgs* args = static_cast<PlatformerEvents::GiveItemArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->item != nullptr)
 		{
@@ -77,7 +77,7 @@ void SquallyReceiveItemBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItemsFromPool, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::GiveItemsFromPoolArgs* args = static_cast<PlatformerEvents::GiveItemsFromPoolArgs*>(eventCustom->getUserData());
+		PlatformerEvents::GiveItemsFromPoolArgs* args = static_cast<PlatformerEvents::GiveItemsFromPoolArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->pool != nullptr)
 		{
@@ -113,7 +113,7 @@ void SquallyReceiveItemBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveCurrency, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::GiveCurrencyArgs* args = static_cast<PlatformerEvents::GiveCurrencyArgs*>(eventCustom->getUserData());
+		PlatformerEvents::GiveCurrencyArgs* args = static_cast<PlatformerEvents::GiveCurrencyArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->currency != nullptr && args->currency->getCount() > 0)
 		{
@@ -137,7 +137,7 @@ void SquallyReceiveItemBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveCurrenciesFromPool, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::GiveCurrenciesFromPoolArgs* args = static_cast<PlatformerEvents::GiveCurrenciesFromPoolArgs*>(eventCustom->getUserData());
+		PlatformerEvents::GiveCurrenciesFromPoolArgs* args = static_cast<PlatformerEvents::GiveCurrenciesFromPoolArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->pool != nullptr)
 		{

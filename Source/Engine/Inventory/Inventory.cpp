@@ -54,7 +54,7 @@ void Inventory::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->saveKey, [=](EventCustom* eventCustom)
 	{
-		InventoryEvents::InventoryInstanceChangedArgs* args = static_cast<InventoryEvents::InventoryInstanceChangedArgs*>(eventCustom->getUserData());
+		InventoryEvents::InventoryInstanceChangedArgs* args = static_cast<InventoryEvents::InventoryInstanceChangedArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && args->instance != this)
 		{

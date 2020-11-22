@@ -50,7 +50,7 @@ void Track::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventOnMusicDestroyed, [=](EventCustom* eventCustom)
 	{
-		SoundEvents::MusicDestroyedArgs* args = static_cast<SoundEvents::MusicDestroyedArgs*>(eventCustom->getUserData());
+		SoundEvents::MusicDestroyedArgs* args = static_cast<SoundEvents::MusicDestroyedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->music == this->music)
 		{

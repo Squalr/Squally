@@ -43,7 +43,7 @@ void TimelineEventGroup::initializeListeners()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBuffRemoved, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BuffRemovedArgs* args = static_cast<CombatEvents::BuffRemovedArgs*>(eventCustom->getUserData());
+		CombatEvents::BuffRemovedArgs* args = static_cast<CombatEvents::BuffRemovedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->buff == this->getAssociatedBuff())
 		{

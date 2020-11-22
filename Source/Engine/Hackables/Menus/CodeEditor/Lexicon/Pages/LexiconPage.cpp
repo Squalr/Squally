@@ -103,7 +103,7 @@ void LexiconPage::initializeListeners()
     
     this->addEventListener(EventListenerCustom::create(HackableEvents::EventOpenLexiconPage, [=](EventCustom* eventCustom)
     {
-        OpenLexiconPageArgs* args = static_cast<OpenLexiconPageArgs*>(eventCustom->getUserData());
+        OpenLexiconPageArgs* args = static_cast<OpenLexiconPageArgs*>(eventCustom->getData());
 
         if (args != nullptr)
         {

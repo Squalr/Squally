@@ -615,7 +615,7 @@ public:
   inline void setUserDataAsUInt64(uint64_t value) noexcept { _userDataU64 = value; }
 
   //! Resets user data to zero / nullptr.
-  inline void resetUserData() noexcept { _userDataU64 = 0; }
+  inline void resetData() noexcept { _userDataU64 = 0; }
 
   //! Tests whether the node has an associated pass data.
   inline bool hasPassData() const noexcept { return _passData != nullptr; }

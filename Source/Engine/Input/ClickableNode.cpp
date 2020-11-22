@@ -127,27 +127,27 @@ void ClickableNode::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
 	{
-		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
+		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
 	}));
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
 	{
-		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom, true);
+		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom, true);
 	}));
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseDown, [=](EventCustom* eventCustom)
 	{
-		this->mouseDown(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
+		this->mouseDown(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
 	}));
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseUp, [=](EventCustom* eventCustom)
 	{
-		this->mouseUp(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
+		this->mouseUp(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
 	}));
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		this->mouseScroll(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
+		this->mouseScroll(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
 	}));
 }
 

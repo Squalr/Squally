@@ -21,19 +21,19 @@ void CipherComponentBase::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventBeforeRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onBeforeAnyRequestStateChange((CipherState*)(eventCustom->getUserData()));
+		this->onBeforeAnyRequestStateChange((CipherState*)(eventCustom->getData()));
 	}));
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onAnyRequestStateChange((CipherState*)(eventCustom->getUserData()));
+		this->onAnyRequestStateChange((CipherState*)(eventCustom->getData()));
 	}));
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onBeforeStateChange((CipherState*)(eventCustom->getUserData()));
+		this->onBeforeStateChange((CipherState*)(eventCustom->getData()));
 	}));
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onAnyStateChange((CipherState*)(eventCustom->getUserData()));
+		this->onAnyStateChange((CipherState*)(eventCustom->getData()));
 	}));
 }
 

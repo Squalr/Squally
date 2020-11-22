@@ -109,7 +109,7 @@ void Timeline::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventQueryTimeline, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::QueryTimelineArgs* args = static_cast<CombatEvents::QueryTimelineArgs*>(eventCustom->getUserData());
+		CombatEvents::QueryTimelineArgs* args = static_cast<CombatEvents::QueryTimelineArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -119,7 +119,7 @@ void Timeline::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastTargetsArgs* args = static_cast<CombatEvents::CastTargetsArgs*>(eventCustom->getUserData());
+		CombatEvents::CastTargetsArgs* args = static_cast<CombatEvents::CastTargetsArgs*>(eventCustom->getData());
 
 		if (this->timelineEntryAwaitingUserAction != nullptr)
 		{
@@ -170,7 +170,7 @@ void Timeline::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRegisterTimelineEventGroup, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::RegisterTimelineEventGroupArgs* args = static_cast<CombatEvents::RegisterTimelineEventGroupArgs*>(eventCustom->getUserData());
+		CombatEvents::RegisterTimelineEventGroupArgs* args = static_cast<CombatEvents::RegisterTimelineEventGroupArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -180,7 +180,7 @@ void Timeline::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* args = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
+		CombatEvents::MenuStateArgs* args = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

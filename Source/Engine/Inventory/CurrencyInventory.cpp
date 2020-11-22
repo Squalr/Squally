@@ -50,7 +50,7 @@ void CurrencyInventory::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventCurrencyInventoryInstanceChangedPrefix + this->saveKey, [=](EventCustom* eventCustom)
 	{
-		InventoryEvents::CurrencyInventoryInstanceChangedArgs* args = static_cast<InventoryEvents::CurrencyInventoryInstanceChangedArgs*>(eventCustom->getUserData());
+		InventoryEvents::CurrencyInventoryInstanceChangedArgs* args = static_cast<InventoryEvents::CurrencyInventoryInstanceChangedArgs*>(eventCustom->getData());
 		
 		this->load();
 		if (args != nullptr && args->instance != this)

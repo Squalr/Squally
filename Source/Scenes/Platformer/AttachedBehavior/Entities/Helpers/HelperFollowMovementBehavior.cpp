@@ -62,7 +62,7 @@ void HelperFollowMovementBehavior::onLoad()
 		// Listen for Squally warp
 		this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventAfterWarpPrefix + this->squally->getUniqueIdentifier(), [=](EventCustom* eventCustom)
 		{
-			PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getUserData());
+			PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{

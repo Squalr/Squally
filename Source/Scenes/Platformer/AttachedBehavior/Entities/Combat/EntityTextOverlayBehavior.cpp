@@ -61,7 +61,7 @@ void EntityTextOverlayBehavior::onLoad()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getUserData());
+		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -76,7 +76,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getUserData());
+		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -91,7 +91,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageDealt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -102,7 +102,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealingDealt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -112,7 +112,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestoreDelt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -122,7 +122,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrainDelt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{

@@ -32,7 +32,6 @@ public:
 	void registerCursorSet(int setId, CursorSet cursorSet);
 	void setActiveCursorSet(int setId);
 	int getActiveCursorSet();
-	const cocos2d::Vec2& getPosition() const override;
 
 	static const int SET_ID_DEFAULT = 0;
 	static const int SET_ID_TRANSLATION_CURSOR = 1;

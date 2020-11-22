@@ -138,7 +138,7 @@ void MapBase::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventQueryMapArgs, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::QueryMapArgsArgs* args = static_cast<PlatformerEvents::QueryMapArgsArgs*>(eventCustom->getUserData());
+		PlatformerEvents::QueryMapArgsArgs* args = static_cast<PlatformerEvents::QueryMapArgsArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->argRef != nullptr)
 		{
@@ -151,7 +151,7 @@ void MapBase::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom* eventCustom)
 	{
-		this->toggleHackerMode(eventCustom->getUserData());
+		this->toggleHackerMode(eventCustom->getData());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventAllowHackerMode, [=](EventCustom*)
@@ -166,7 +166,7 @@ void MapBase::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventQueryHackerModeAllowed, [=](EventCustom* eventCustom)
 	{
-		HackerModeQueryArgs* args = static_cast<HackerModeQueryArgs*>(eventCustom->getUserData());
+		HackerModeQueryArgs* args = static_cast<HackerModeQueryArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

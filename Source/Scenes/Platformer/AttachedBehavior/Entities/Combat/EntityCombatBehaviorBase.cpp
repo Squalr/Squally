@@ -80,7 +80,7 @@ void EntityCombatBehaviorBase::onLoad()
 	
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventStatsModifyDamageDealt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->caster == this->entity && !args->isHandled())
 		{
@@ -90,7 +90,7 @@ void EntityCombatBehaviorBase::onLoad()
 	
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventStatsModifyDamageTaken, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->caster == this->entity && !args->isHandled())
 		{

@@ -62,7 +62,7 @@ void IllusionBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventDispelIllusion, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::DispelIllusionArgs* args = static_cast<PlatformerEvents::DispelIllusionArgs*>(eventCustom->getUserData());
+		PlatformerEvents::DispelIllusionArgs* args = static_cast<PlatformerEvents::DispelIllusionArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->group == this->group)
 		{

@@ -222,7 +222,7 @@ void GameObject::initializeListeners()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 	{
-		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getData());
 
 		if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
 		{
@@ -234,7 +234,7 @@ void GameObject::initializeListeners()
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + tag, [=](EventCustom* eventCustom)
 		{
-			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getData());
 
 			if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
 			{
@@ -426,7 +426,7 @@ void GameObject::listenForStateWrite(std::string key, std::function<void(cocos2d
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{
-		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getUserData());
+		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -437,23 +437,21 @@ void GameObject::listenForStateWrite(std::string key, std::function<void(cocos2d
 
 void GameObject::listenForStateWriteOnce(std::string key, std::function<void(cocos2d::Value)> onWrite)
 {
-	static unsigned int UniqueCounter = 0;
 	const std::string eventKey = key + "_" + std::to_string((unsigned long long)(this));
-	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
 
-	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, nullptr);
+
+	listener->setCallback([=](EventCustom* eventCustom)
 	{
-		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getUserData());
+		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
-			this->removeEventListenerByTag(uniqueKey);
+			this->removeEventListener(listener);
 			
 			onWrite(args->value);
 		}
 	});
-
-	listener->setTag(uniqueKey);
 
 	this->addEventListenerIgnorePause(listener);
 }
@@ -513,7 +511,7 @@ void GameObject::listenForMapEvent(std::string eventName, std::function<void(Val
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
 	{
-		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
+		ValueMap* args = static_cast<ValueMap*>(eventCustom->getData());
 
 		if (args != nullptr && callback != nullptr)
 		{
@@ -529,22 +527,20 @@ void GameObject::listenForMapEventOnce(std::string eventName, std::function<void
 		return;
 	}
 	
-	static unsigned int UniqueCounter = 0;
 	const std::string eventKey = eventName + "_" + std::to_string((unsigned long long)(this));
-	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
 
-	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, nullptr);
+	
+	listener->setCallback([=](EventCustom* eventCustom)
 	{
-		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
+		ValueMap* args = static_cast<ValueMap*>(eventCustom->getData());
 		
 		if (args != nullptr && callback != nullptr)
 		{
-			this->removeEventListenerByTag(uniqueKey);
+			this->removeEventListener(listener);
 			callback(*args);
 		}
 	});
-
-	listener->setTag(uniqueKey);
 
 	this->addEventListenerIgnorePause(listener);
 }

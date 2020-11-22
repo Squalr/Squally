@@ -59,7 +59,7 @@ void ConfirmationHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
 	{
-		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getUserData());
+		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{

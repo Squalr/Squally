@@ -268,7 +268,7 @@ void MemoryGrid::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventWriteValue, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceWriteArgs* args = static_cast<PointerTraceEvents::PointerTraceWriteArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceWriteArgs* args = static_cast<PointerTraceEvents::PointerTraceWriteArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -283,7 +283,7 @@ void MemoryGrid::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventReadValue, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceReadArgs* args = static_cast<PointerTraceEvents::PointerTraceReadArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceReadArgs* args = static_cast<PointerTraceEvents::PointerTraceReadArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

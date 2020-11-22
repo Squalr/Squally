@@ -239,7 +239,7 @@ void CodeHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEdit, [=](EventCustom* eventCustom)
 	{
-		HackableObjectEditArgs* args = static_cast<HackableObjectEditArgs*>(eventCustom->getUserData());
+		HackableObjectEditArgs* args = static_cast<HackableObjectEditArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{

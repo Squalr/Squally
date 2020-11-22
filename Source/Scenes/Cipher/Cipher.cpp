@@ -139,7 +139,7 @@ void Cipher::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenAsciiTable, ([=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherOpenAsciiTableArgs* args = static_cast<CipherEvents::CipherOpenAsciiTableArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherOpenAsciiTableArgs* args = static_cast<CipherEvents::CipherOpenAsciiTableArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

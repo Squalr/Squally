@@ -194,7 +194,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEnemyEngaged, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::EnemyEngagedArgs* args = static_cast<PlatformerEvents::EnemyEngagedArgs*>(eventCustom->getUserData());
+		PlatformerEvents::EnemyEngagedArgs* args = static_cast<PlatformerEvents::EnemyEngagedArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -205,7 +205,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventRelocateMiniMap, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::RelocateMiniMapArgs* args = static_cast<PlatformerEvents::RelocateMiniMapArgs*>(eventCustom->getUserData());
+		PlatformerEvents::RelocateMiniMapArgs* args = static_cast<PlatformerEvents::RelocateMiniMapArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -264,7 +264,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenAlchemy, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -279,7 +279,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenSmithing, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -294,7 +294,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSaveRespawn, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::SaveRespawnArgs* args = static_cast<PlatformerEvents::SaveRespawnArgs*>(eventCustom->getUserData());
+		PlatformerEvents::SaveRespawnArgs* args = static_cast<PlatformerEvents::SaveRespawnArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -331,7 +331,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -349,7 +349,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventExitCipher, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherExitArgs* args = static_cast<CipherEvents::CipherExitArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherExitArgs* args = static_cast<CipherEvents::CipherExitArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -368,7 +368,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventOpenHexus, [=](EventCustom* eventCustom)
 	{
-		HexusEvents::HexusOpenArgs* args = static_cast<HexusEvents::HexusOpenArgs*>(eventCustom->getUserData());
+		HexusEvents::HexusOpenArgs* args = static_cast<HexusEvents::HexusOpenArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -386,7 +386,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
 	{
-		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getUserData());
+		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -403,7 +403,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventShowHelpMenuOutsideOfGame, [=](EventCustom* eventCustom)
 	{
-		HexusEvents::HelpMenuArgs* args = static_cast<HexusEvents::HelpMenuArgs*>(eventCustom->getUserData());
+		HexusEvents::HelpMenuArgs* args = static_cast<HexusEvents::HelpMenuArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -418,7 +418,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenItemInfo, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::ItemInfoArgs* args = static_cast<PlatformerEvents::ItemInfoArgs*>(eventCustom->getUserData());
+		PlatformerEvents::ItemInfoArgs* args = static_cast<PlatformerEvents::ItemInfoArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

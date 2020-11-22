@@ -87,7 +87,7 @@ void PlatformerDialogueBox::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueOpen, [=](EventCustom* eventCustom)
 	{
-		DialogueEvents::DialogueOpenArgs* args = static_cast<DialogueEvents::DialogueOpenArgs*>(eventCustom->getUserData());
+		DialogueEvents::DialogueOpenArgs* args = static_cast<DialogueEvents::DialogueOpenArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -140,7 +140,7 @@ void PlatformerDialogueBox::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueClose, [=](EventCustom* eventCustom)
 	{
-		DialogueEvents::DialogueCloseArgs* args = static_cast<DialogueEvents::DialogueCloseArgs*>(eventCustom->getUserData());
+		DialogueEvents::DialogueCloseArgs* args = static_cast<DialogueEvents::DialogueCloseArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{

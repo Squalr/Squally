@@ -73,7 +73,7 @@ void AssemblyHelpText::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventCardPreviewed, [=](EventCustom* eventCustom)
 	{
-		HexusEvents::CardPreviewArgs* args = static_cast<HexusEvents::CardPreviewArgs*>(eventCustom->getUserData());
+		HexusEvents::CardPreviewArgs* args = static_cast<HexusEvents::CardPreviewArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->card != nullptr && this->gameState != nullptr && this->gameState->selectedHandCard != nullptr)
 		{

@@ -62,7 +62,7 @@ void PortalSpawn::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventSpawnToTransitionLocation, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::TransitionArgs* args = static_cast<PlatformerEvents::TransitionArgs*>(eventCustom->getUserData());
+		PlatformerEvents::TransitionArgs* args = static_cast<PlatformerEvents::TransitionArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && args->transition == this->transition)
 		{

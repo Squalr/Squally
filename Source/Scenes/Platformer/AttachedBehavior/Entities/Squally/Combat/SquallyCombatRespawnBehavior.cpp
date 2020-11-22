@@ -56,7 +56,7 @@ void SquallyCombatRespawnBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBeforeReturnToMap, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BeforeReturnToMapArgs* args = static_cast<CombatEvents::BeforeReturnToMapArgs*>(eventCustom->getUserData());
+		CombatEvents::BeforeReturnToMapArgs* args = static_cast<CombatEvents::BeforeReturnToMapArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

@@ -19,10 +19,9 @@ public:
 	static SmartNode* create();
 
 	virtual void addEventListener(cocos2d::EventListenerCustom* listener);
-	virtual void removeEventListener(cocos2d::EventListenerCustom* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListenerCustom* listener);
 	void addGlobalEventListener(cocos2d::EventListenerCustom* listener);
-	virtual void removeEventListenerByTag(std::string tag);
+	virtual void removeEventListener(cocos2d::EventListenerCustom* listener);
 	cocos2d::EventListenerCustom* whenKeyPressed(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListenerCustom* whenKeyPressedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListenerCustom* whenKeyPressedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
@@ -59,9 +58,9 @@ protected:
 private:
 	typedef cocos2d::Node super;
 
-	static unsigned long long TaskId;
+	std::set<cocos2d::EventListenerCustom*> listeners;
+	std::set<cocos2d::EventListenerCustom*> listenersIgnorePause;
+	std::set<cocos2d::EventListenerCustom*> listenersGlobal;
 
-	bool optimizationHasGlobalListener;
-	bool optimizationHasListener;
-	bool hasInitializedListeners;
+	static unsigned long long TaskId;
 };

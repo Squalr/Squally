@@ -55,7 +55,7 @@ void EnemyCombatEngageBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::EngageEnemyArgs* args = static_cast<PlatformerEvents::EngageEnemyArgs*>(eventCustom->getUserData());
+		PlatformerEvents::EngageEnemyArgs* args = static_cast<PlatformerEvents::EngageEnemyArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->enemy != nullptr && args->enemy == this->enemy)
 		{

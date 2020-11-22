@@ -54,7 +54,7 @@ void GuanoPickPocketBehavior::onLoad()
 {
 	this->addEventListener(EventListenerCustom::create(HelperEvents::EventRequestPickPocket, [=](EventCustom* eventCustom)
 	{
-		HelperEvents::RequestPickPocketArgs* args = static_cast<HelperEvents::RequestPickPocketArgs*>(eventCustom->getUserData());
+		HelperEvents::RequestPickPocketArgs* args = static_cast<HelperEvents::RequestPickPocketArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !this->isPickPocketing)
 		{

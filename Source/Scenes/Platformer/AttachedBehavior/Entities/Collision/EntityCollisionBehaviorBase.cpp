@@ -73,7 +73,7 @@ void EntityCollisionBehaviorBase::onLoad()
 	
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + identifier, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getUserData());
+		PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -85,7 +85,7 @@ void EntityCollisionBehaviorBase::onLoad()
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToObjectIdPrefix + identifier, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::WarpObjectToObjectIdArgs* args = static_cast<PlatformerEvents::WarpObjectToObjectIdArgs*>(eventCustom->getUserData());
+		PlatformerEvents::WarpObjectToObjectIdArgs* args = static_cast<PlatformerEvents::WarpObjectToObjectIdArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && !args->objectId.empty())
 		{

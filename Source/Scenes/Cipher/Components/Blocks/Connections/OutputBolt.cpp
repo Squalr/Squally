@@ -71,7 +71,7 @@ void OutputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionUpdated, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionUpdatedArgs* args = static_cast<CipherEvents::CipherConnectionUpdatedArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionUpdatedArgs* args = static_cast<CipherEvents::CipherConnectionUpdatedArgs*>(eventCustom->getData());
 
 		// Enforce that every input only has one output flowing into it
 		if (args != nullptr && this->connection != nullptr && args->connection != this->connection)
@@ -85,7 +85,7 @@ void OutputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionCreate, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
@@ -103,7 +103,7 @@ void OutputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionDestroy, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionDestroyArgs* args = static_cast<CipherEvents::CipherConnectionDestroyArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionDestroyArgs* args = static_cast<CipherEvents::CipherConnectionDestroyArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

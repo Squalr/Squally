@@ -110,7 +110,7 @@ void NotificationHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventNotificationTakeover, [=](EventCustom* eventCustom)
 	{
-		NotificationEvents::NotificationTakeoverArgs* args = static_cast<NotificationEvents::NotificationTakeoverArgs*>(eventCustom->getUserData());
+		NotificationEvents::NotificationTakeoverArgs* args = static_cast<NotificationEvents::NotificationTakeoverArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -120,7 +120,7 @@ void NotificationHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventNotification, [=](EventCustom* eventCustom)
 	{
-		NotificationEvents::NotificationArgs* args = static_cast<NotificationEvents::NotificationArgs*>(eventCustom->getUserData());
+		NotificationEvents::NotificationArgs* args = static_cast<NotificationEvents::NotificationArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{

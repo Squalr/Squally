@@ -58,7 +58,7 @@ void RadioButton::setCheckCallback(std::function<void(RadioButton*)> callback)
 
 void RadioButton::onGroupCheck(EventCustom* event)
 {
-	int* eventGroupId = static_cast<int*>(event->getUserData());
+	int* eventGroupId = static_cast<int*>(event->getData());
 
 	if (*eventGroupId == this->groupId)
 	{

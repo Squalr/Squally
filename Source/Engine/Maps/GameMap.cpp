@@ -223,7 +223,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventCustom)
 	{
-		RequestObjectSpawnDelegatorArgs* args = static_cast<RequestObjectSpawnDelegatorArgs*>(eventCustom->getUserData());
+		RequestObjectSpawnDelegatorArgs* args = static_cast<RequestObjectSpawnDelegatorArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -233,7 +233,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventCustom)
 	{
-		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getUserData());
+		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -243,7 +243,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventCustom)
 	{
-		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getUserData());
+		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

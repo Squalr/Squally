@@ -128,7 +128,7 @@ void RuneBar::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventRuneConsumed, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::RuneConsumedArgs* args = static_cast<PlatformerEvents::RuneConsumedArgs*>(eventCustom->getUserData());
+		PlatformerEvents::RuneConsumedArgs* args = static_cast<PlatformerEvents::RuneConsumedArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && this->target != nullptr && args->entity == this->target)
 		{

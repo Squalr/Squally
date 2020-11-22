@@ -132,7 +132,7 @@ void PointerTraceMap::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventRequestMovement, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -142,7 +142,7 @@ void PointerTraceMap::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventResumeMovement, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

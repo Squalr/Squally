@@ -77,7 +77,7 @@ void RadialMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
 	{
-		HackableObjectOpenArgs* args = static_cast<HackableObjectOpenArgs*>(eventCustom->getUserData());
+		HackableObjectOpenArgs* args = static_cast<HackableObjectOpenArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

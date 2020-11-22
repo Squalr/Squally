@@ -23,9 +23,9 @@ public:
 	void setFadeSpeed(float newFadeSpeed);
 	float getFadeSpeed();
 	virtual void addEventListener(cocos2d::EventListenerCustom* listener);
-	virtual void removeEventListener(cocos2d::EventListenerCustom* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListenerCustom* listener);
 	void addGlobalEventListener(cocos2d::EventListenerCustom* listener);
+	virtual void removeEventListener(cocos2d::EventListenerCustom* listener);
 	void whenKeyPressed(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
 	void whenKeyPressedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
 	void whenKeyPressedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
@@ -64,6 +64,10 @@ protected:
 
 private:
 	typedef cocos2d::Scene super;
+
+	std::set<cocos2d::EventListenerCustom*> listeners;
+	std::set<cocos2d::EventListenerCustom*> listenersIgnorePause;
+	std::set<cocos2d::EventListenerCustom*> listenersGlobal;
 
 	static unsigned long long TaskId;
 };

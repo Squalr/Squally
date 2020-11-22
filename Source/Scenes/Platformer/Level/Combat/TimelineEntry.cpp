@@ -137,7 +137,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getUserData());
+		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -147,7 +147,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamage, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
@@ -160,7 +160,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealing, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
@@ -173,7 +173,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestore, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
@@ -186,7 +186,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrain, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
@@ -199,7 +199,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGetAssociatedTimelineEntry, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getUserData());
+		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->entity == this->getEntity())
 		{

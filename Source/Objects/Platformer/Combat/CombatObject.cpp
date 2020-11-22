@@ -61,7 +61,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventBuffTimeElapsed, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BuffTimeElapsedArgs* args = static_cast<CombatEvents::BuffTimeElapsedArgs*>(eventCustom->getUserData());
+		CombatEvents::BuffTimeElapsedArgs* args = static_cast<CombatEvents::BuffTimeElapsedArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -71,7 +71,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyTimelineSpeed, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
@@ -81,7 +81,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageDealt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
@@ -91,7 +91,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageDealtComplete, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -101,7 +101,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageTaken, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
@@ -111,7 +111,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyDamageTakenComplete, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -121,7 +121,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyHealingDealt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
@@ -131,7 +131,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyHealingTaken, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
@@ -141,7 +141,7 @@ void CombatObject::onEnter()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityTimelineReset, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::TimelineResetArgs* args = static_cast<CombatEvents::TimelineResetArgs*>(eventCustom->getUserData());
+		CombatEvents::TimelineResetArgs* args = static_cast<CombatEvents::TimelineResetArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

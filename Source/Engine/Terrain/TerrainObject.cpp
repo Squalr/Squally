@@ -169,7 +169,7 @@ void TerrainObject::initializeListeners()
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{
-			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getUserData());
+			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getData());
 
 			if (args != nullptr && args->newTerrain != this && this->terrainObjectId < args->newTerrain->terrainObjectId)
 			{

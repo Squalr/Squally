@@ -40,14 +40,14 @@ void StateBase::initializeListeners()
 
 void StateBase::onRequestStateChangeEvent(EventCustom* eventCustom)
 {
-	GameState* gameState = (GameState*)(eventCustom->getUserData());
+	GameState* gameState = (GameState*)(eventCustom->getData());
 
 	this->onAnyRequestStateChange(gameState);
 }
 
 void StateBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
 {
-	GameState* gameState = (GameState*)(eventCustom->getUserData());
+	GameState* gameState = (GameState*)(eventCustom->getData());
 
 	if (gameState->stateType == this->stateType && gameState->previousStateType != this->stateType)
 	{
@@ -61,7 +61,7 @@ void StateBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
 
 void StateBase::onStateChangeEvent(EventCustom* eventCustom)
 {
-	GameState* gameState = (GameState*)(eventCustom->getUserData());
+	GameState* gameState = (GameState*)(eventCustom->getData());
 
 	if (gameState->stateType == this->stateType)
 	{
@@ -80,7 +80,7 @@ void StateBase::onStateChangeEvent(EventCustom* eventCustom)
 
 void StateBase::onAfterStateChangeEvent(EventCustom* eventCustom)
 {
-	GameState* gameState = (GameState*)(eventCustom->getUserData());
+	GameState* gameState = (GameState*)(eventCustom->getData());
 
 	if (gameState->stateType == this->stateType)
 	{

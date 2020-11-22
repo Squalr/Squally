@@ -338,7 +338,7 @@ void PlatformerItemDeserializer::initializeListeners()
 		InventoryEvents::EventRequestItemDeserialization,
 		[=](EventCustom* eventCustom)
 		{
-			InventoryEvents::RequestItemDeserializationArgs* args = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(eventCustom->getUserData());
+			InventoryEvents::RequestItemDeserializationArgs* args = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{

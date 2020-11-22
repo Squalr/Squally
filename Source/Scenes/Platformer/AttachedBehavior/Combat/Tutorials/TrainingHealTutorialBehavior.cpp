@@ -58,7 +58,7 @@ void TrainingHealTutorialBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBuffApplied, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BuffAppliedArgs* args = static_cast<CombatEvents::BuffAppliedArgs*>(eventCustom->getUserData());
+		CombatEvents::BuffAppliedArgs* args = static_cast<CombatEvents::BuffAppliedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->buff != nullptr && dynamic_cast<TrainingHeal*>(args->buff) != nullptr)
 		{

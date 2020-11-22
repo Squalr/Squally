@@ -84,7 +84,7 @@ void CameraScrollTracker::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

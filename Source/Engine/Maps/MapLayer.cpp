@@ -64,7 +64,7 @@ void MapLayer::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObject, [=](EventCustom* eventCustom)
 	{
-		RequestObjectSpawnArgs* args = static_cast<RequestObjectSpawnArgs*>(eventCustom->getUserData());
+		RequestObjectSpawnArgs* args = static_cast<RequestObjectSpawnArgs*>(eventCustom->getData());
 
 		if (GameUtils::getFirstParentOfType<MapLayer>(args->spawner) == this)
 		{

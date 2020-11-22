@@ -48,7 +48,7 @@ void Input::initializeListeners()
 	/*
 	EventListenerCustom* keyEvents = EventListenerCustom::create(KeyboardEvents::EventKeyboard, [=](EventCustom* eventCustom)
 	{
-		InputEvents::KeyboardArgs* args = static_cast<KeyboardEvents::KeyboardArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardArgs* args = static_cast<KeyboardEvents::KeyboardArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

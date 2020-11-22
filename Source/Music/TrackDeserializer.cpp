@@ -56,7 +56,7 @@ void TrackDeserializer::initializeListeners()
 		SoundEvents::EventRequestTrackDeserialization,
 		[=](EventCustom* eventCustom)
 		{
-			SoundEvents::RequestTrackDeserializationArgs* args = static_cast<SoundEvents::RequestTrackDeserializationArgs*>(eventCustom->getUserData());
+			SoundEvents::RequestTrackDeserializationArgs* args = static_cast<SoundEvents::RequestTrackDeserializationArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{

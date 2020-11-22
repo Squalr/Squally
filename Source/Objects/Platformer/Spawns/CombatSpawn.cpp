@@ -60,7 +60,7 @@ void CombatSpawn::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSpawn, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::SpawnArgs* args = static_cast<CombatEvents::SpawnArgs*>(eventCustom->getUserData());
+		CombatEvents::SpawnArgs* args = static_cast<CombatEvents::SpawnArgs*>(eventCustom->getData());
 
 		if (args != nullptr &&
 			args->spawnIndex == this->getSpawnOrder() &&
