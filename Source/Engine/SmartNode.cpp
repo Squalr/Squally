@@ -28,7 +28,7 @@ SmartNode* SmartNode::create()
 SmartNode::SmartNode()
 {
 	this->hackermodeEnabled = false;
-	this->disableHackerModeEvents = false;
+	this->enableHackerModeEvents = false;
 	this->listeners = std::set<EventListenerCustom*>();
 	this->listenersIgnorePause = std::set<EventListenerCustom*>();
 	this->listenersGlobal = std::set<EventListenerCustom*>();
@@ -36,6 +36,7 @@ SmartNode::SmartNode()
 
 SmartNode::~SmartNode()
 {
+	this->removeNonGlobalListeners();
 }
 
 void SmartNode::onEnter()
@@ -94,7 +95,7 @@ void SmartNode::initializeListeners()
 		}));
 	}
 
-	if (!this->disableHackerModeEvents)
+	if (this->enableHackerModeEvents)
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 		{
@@ -235,7 +236,7 @@ void SmartNode::scheduleEvery(std::function<void()> task, float seconds)
 {
 	unsigned long long taskId = SmartNode::TaskId++;
 	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
-
+	
 	// Schedules the task to be repeated every x seconds.
 	this->schedule([=](float dt)
 	{

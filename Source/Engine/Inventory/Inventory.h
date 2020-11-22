@@ -92,6 +92,8 @@ private:
 	void rebuildLookupTable();
 	bool canInsertItemIfUnique(Item* item);
 
+	bool disableLookupTableRebuilding;
+
 	cocos2d::Node* itemsNode;
 
 	std::string saveKey;

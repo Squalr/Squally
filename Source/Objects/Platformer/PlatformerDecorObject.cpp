@@ -33,6 +33,7 @@ PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(prope
 	float y = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat();
 	bool repeatX = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatX, Value(false)).asBool();
 	bool repeatY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatY, Value(false)).asBool();
+	this->enableHackerModeEvents = true;
 
 	if (repeatX || repeatY)
 	{

@@ -18,7 +18,6 @@ LocalizedString::LocalizedString()
 	this->onStringUpdate = nullptr;
 	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
-	this->disableHackerModeEvents = true;
 }
 
 LocalizedString::~LocalizedString()

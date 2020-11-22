@@ -34,6 +34,7 @@ ConfirmationHud::ConfirmationHud()
 {
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->contentNode = Node::create();
+	this->enableHackerModeEvents = true;
 
 	this->contentNode->addChild(this->confirmationMenu);
 	this->addChild(this->contentNode);

@@ -49,6 +49,7 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
+	this->removeNonGlobalListeners();
 }
 
 void SmartScene::onEnter()

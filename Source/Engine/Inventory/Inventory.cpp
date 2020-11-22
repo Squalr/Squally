@@ -33,6 +33,7 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->items = std::vector<Item*>();
 	this->itemLookup = std::set<std::string>();
 	this->itemsNode = Node::create();
+	this->disableLookupTableRebuilding = false;
 
 	this->load();
 
@@ -86,6 +87,8 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
 	ValueVector itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueVector())).asValueVector();
 
+	this->disableLookupTableRebuilding = true;
+
 	for (auto next : itemData)
 	{
 		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(next.asString(), [=](Item* item)
@@ -93,6 +96,9 @@ void Inventory::deserialize(const ValueMap& valueMap)
 			this->forceInsert(item, false);
 		}));
 	}
+
+	this->disableLookupTableRebuilding = false;
+	this->rebuildLookupTable();
 }
 
 bool Inventory::hasItemOfName(std::string itemName)
