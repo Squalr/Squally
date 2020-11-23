@@ -3,7 +3,7 @@
 #include <spriter2dx/AnimationNode.h>
 
 #include "Engine/Animations/AnimationPart.h"
-#include "Engine/Animations/SpriterAnimationNode.h"
+#include "Engine/Animations/Spriter/SpriterAnimationNode.h"
 
 using namespace cocos2d;
 using namespace Spriter2dX;

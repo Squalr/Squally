@@ -1,10 +1,9 @@
 #pragma once
-#include <map>
-#include <stack>
+#include <vector>
 
-#include "cocos/base/CCValue.h"
 #include "cocos/math/Vec2.h"
-#include "cocos/platform/CCSAXParser.h"
+
+// TODO: Variables, events, sounds
 
 struct SpriterBoneRef
 {
@@ -51,15 +50,32 @@ struct SpriterObject
 		: folderId(folderId), fileId(fileId), position(position), scale(scale), angle(angle) { }
 };
 
+enum class SpriterCurveType
+{
+	Instant,
+	Linear,
+	Quadratic,
+	Cubic,
+	Quartic,
+	Quintic,
+	Bezier,
+};
+
 struct SpriterMainlineKey
 {
 	int id;
 	float time;
+	SpriterCurveType curveType;
+	float c1;
+	float c2;
+	float c3;
+	float c4;
 	std::vector<SpriterObjectRef> objectRefs;
 	std::vector<SpriterBoneRef> boneRefs;
 
-	SpriterMainlineKey(int id, float time)
-		: id(id), time(time), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
+	SpriterMainlineKey(int id, float time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
+		: id(id), time(time), curveType(curveType), c1(c1), c2(c2), c3(c3), c4(c4), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
+	SpriterMainlineKey() : id(-1), time(0.0f), curveType(SpriterCurveType::Linear), c1(0.0f), c2(0.0f), c3(0.0f), c4(0.0f), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
 };
 
 struct SpriterTimelineKey
@@ -105,6 +121,7 @@ struct SpriterAnimation
 
 	SpriterAnimation(int id, std::string name, float length, float interval, bool isLooping)
 		: id(id), name(name), length(length), interval(interval), isLooping(isLooping), mainline(SpriterMainline()), timelines(std::vector<SpriterTimeline>()) { }
+	SpriterAnimation() : id(-1), name(""), length(0.0f), interval(0.0f), isLooping(false), mainline(SpriterMainline()), timelines(std::vector<SpriterTimeline>()) { }
 };
 
 struct SpriterObjectInfo
@@ -151,58 +168,4 @@ struct SpriterData
 {
 	std::vector<SpriterFolder> folders;
 	std::vector<SpriterEntity> entities;
-};
-
-class SpriterAnimationParser : public cocos2d::SAXDelegator
-{
-public:
-	static SpriterData Parse(std::string animationResource);
-
-protected:
-	SpriterAnimationParser();
-	virtual ~SpriterAnimationParser();
-
-	static bool ParseXMLFile(const std::string& xmlFilename);
-    void startElement(void* ctx, const char* name, const char** atts) override;
-    void endElement(void* ctx, const char* name) override;
-    void textHandler(void* ctx, const char* ch, size_t len) override;
-
-private:
-	static SpriterData CurrentParse;
-
-	static SpriterAnimationParser* Instance;
-	
-	enum class AttributeFocus
-	{
-		Data,
-		Folder,
-		File,
-		Entity,
-		ObjectInfo,
-		Animation,
-		Mainline,
-		Timeline,
-		Key,
-		Object,
-		ObjectRef,
-		Bone,
-		BoneRef,
-	};
-
-	static std::stack<AttributeFocus> FocusStack;
-	static std::map<std::string, SpriterData> SpriterDataCache;
-
-	static const std::string AttributeSpriterData;
-	static const std::string AttributeFolder;
-	static const std::string AttributeFile;
-	static const std::string AttributeEntity;
-	static const std::string AttributeObjectInfo;
-	static const std::string AttributeAnimation;
-	static const std::string AttributeMainline;
-	static const std::string AttributeTimeline;
-	static const std::string AttributeKey;
-	static const std::string AttributeObject;
-	static const std::string AttributeObjectRef;
-	static const std::string AttributeBone;
-	static const std::string AttributeBoneRef;
 };

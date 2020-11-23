@@ -8,6 +8,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class SpriterAnimationTimelineEventAnimation;
+
 class SpriterAnimationNode : public SmartNode
 {
 public:
@@ -16,10 +18,19 @@ public:
 protected:
 	SpriterAnimationNode(std::string animationResource);
 
+	void onEnter() override;
+	void update(float dt);
+
+	void setFlippedX(bool isFlippedX);
+
 private:
 	typedef SmartNode super;
 
-	std::vector<cocos2d::Sprite*> animationParts;
+	float currentTime;
+
+	std::map<std::string, cocos2d::Node*> bones;
+	std::map<int, cocos2d::Sprite*> animationParts;
+	std::map<std::string, SpriterAnimationTimelineEventAnimation*> animations;
 
 	void loadAnimationData(std::string animationResource);
 	

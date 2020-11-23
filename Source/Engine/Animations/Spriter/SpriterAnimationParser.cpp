@@ -201,9 +201,42 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 		{
 			case AttributeFocus::Mainline:
 			{
+				SpriterCurveType curveType = SpriterCurveType::Linear;
+				std::string curveTypeStr = GameUtils::getKeyOrDefault(attributes, "curve_type", Value("")).asString();
+
+				if (curveTypeStr == "instant")
+				{
+					curveType = SpriterCurveType::Instant;
+				}
+				else if (curveTypeStr == "quadrtaic")
+				{
+					curveType = SpriterCurveType::Quadratic;
+				}
+				else if (curveTypeStr == "cubic")
+				{
+					curveType = SpriterCurveType::Cubic;
+				}
+				else if (curveTypeStr == "quartic")
+				{
+					curveType = SpriterCurveType::Quartic;
+				}
+				else if (curveTypeStr == "quintic")
+				{
+					curveType = SpriterCurveType::Quintic;
+				}
+				else if (curveTypeStr == "bezier")
+				{
+					curveType = SpriterCurveType::Bezier;
+				}
+
 				SpriterAnimationParser::CurrentParse.entities.back().animations.back().mainline.keys.push_back(SpriterMainlineKey(
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
-					std::stof(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString())
+					std::stof(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
+					curveType,
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c1", Value("0")).asString()),
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c2", Value("0")).asString()),
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c3", Value("0")).asString()),
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c4", Value("0")).asString())
 				));
 				break;
 			}
