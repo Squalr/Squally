@@ -1,15 +1,42 @@
 #pragma once
+#include <map>
 #include <stack>
 
 #include "cocos/base/CCValue.h"
 #include "cocos/math/Vec2.h"
 #include "cocos/platform/CCSAXParser.h"
 
+struct SpriterBoneRef
+{
+	int id;
+	int parent; // nullable => -1
+	int timeline;
+	int key;
+
+	SpriterBoneRef(int id, int parent, int timeline, int key)
+		: id(id), parent(parent), timeline(timeline), key(key) { }
+};
+
 struct SpriterBone
 {
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 scale;
 	float angle;
+
+	SpriterBone(cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle)
+		: position(position), scale(scale), angle(angle) { }
+};
+
+struct SpriterObjectRef
+{
+	int id;
+	int parent;
+	int timeline;
+	int key;
+	int zIndex;
+
+	SpriterObjectRef(int id, int parent, int timeline, int key, int zIndex)
+		: id(id), parent(parent), timeline(timeline), key(key), zIndex(zIndex) { }
 };
 
 struct SpriterObject
@@ -19,15 +46,32 @@ struct SpriterObject
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 scale;
 	float angle;
+
+	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle)
+		: folderId(folderId), fileId(fileId), position(position), scale(scale), angle(angle) { }
 };
 
-struct SpriterKey
+struct SpriterMainlineKey
+{
+	int id;
+	float time;
+	std::vector<SpriterObjectRef> objectRefs;
+	std::vector<SpriterBoneRef> boneRefs;
+
+	SpriterMainlineKey(int id, float time)
+		: id(id), time(time), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
+};
+
+struct SpriterTimelineKey
 {
 	int id;
 	int spin;
 	float time;
 	std::vector<SpriterObject> objects;
 	std::vector<SpriterBone> bones;
+
+	SpriterTimelineKey(int id, int spin, float time)
+		: id(id), spin(spin), time(time), objects(std::vector<SpriterObject>()), bones(std::vector<SpriterBone>()) { }
 };
 
 struct SpriterTimeline
@@ -36,12 +80,17 @@ struct SpriterTimeline
 	int object;
 	std::string name;
 	std::string objectType;
-	std::vector<SpriterKey> spriterKeys;
+	std::vector<SpriterTimelineKey> keys;
+
+	SpriterTimeline(int id, int object, std::string name, std::string objectType)
+		: id(id), object(object), name(name), objectType(objectType), keys(std::vector<SpriterTimelineKey>()) { }
 };
 
 struct SpriterMainline
 {
-	std::vector<SpriterKey> spriterKeys;
+	std::vector<SpriterMainlineKey> keys;
+	
+	SpriterMainline() : keys(std::vector<SpriterMainlineKey>()) { }
 };
 
 struct SpriterAnimation
@@ -50,8 +99,12 @@ struct SpriterAnimation
 	std::string name;
 	float length;
 	float interval;
+	bool isLooping;
 	SpriterMainline mainline;
 	std::vector<SpriterTimeline> timelines;
+
+	SpriterAnimation(int id, std::string name, float length, float interval, bool isLooping)
+		: id(id), name(name), length(length), interval(interval), isLooping(isLooping), mainline(SpriterMainline()), timelines(std::vector<SpriterTimeline>()) { }
 };
 
 struct SpriterObjectInfo
@@ -59,6 +112,9 @@ struct SpriterObjectInfo
 	std::string name;
 	std::string type;
 	cocos2d::Vec2 size;
+
+	SpriterObjectInfo(std::string name, std::string type, cocos2d::Vec2 size)
+		: name(name), type(type), size(size) { }
 };
 
 struct SpriterEntity
@@ -67,6 +123,9 @@ struct SpriterEntity
 	std::string name;
 	std::vector<SpriterObjectInfo> objectInfo;
 	std::vector<SpriterAnimation> animations;
+
+	SpriterEntity(int id, std::string name)
+		: id(id), name(name), objectInfo(std::vector<SpriterObjectInfo>()), animations(std::vector<SpriterAnimation>()) { }
 };
 
 struct SpriterFile
@@ -131,6 +190,7 @@ private:
 	};
 
 	static std::stack<AttributeFocus> FocusStack;
+	static std::map<std::string, SpriterData> SpriterDataCache;
 
 	static const std::string AttributeSpriterData;
 	static const std::string AttributeFolder;

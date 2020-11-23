@@ -3,6 +3,11 @@
 
 #include "Engine/SmartNode.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class SpriterAnimationNode : public SmartNode
 {
 public:
@@ -13,4 +18,10 @@ protected:
 
 private:
 	typedef SmartNode super;
+
+	std::vector<cocos2d::Sprite*> animationParts;
+
+	void loadAnimationData(std::string animationResource);
+	
+	cocos2d::Node* animationPartContainer;
 };
