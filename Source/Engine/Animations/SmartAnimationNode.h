@@ -13,6 +13,7 @@ namespace SpriterEngine
 }
 
 class AnimationPart;
+class SpriterAnimationNode;
 
 class SmartAnimationNode : public SmartNode
 {
@@ -60,6 +61,7 @@ protected:
 	SmartAnimationNode(std::string animationResource, std::string entityName);
 	virtual ~SmartAnimationNode();
 
+	SpriterAnimationNode* spriterAnimation;
 	Spriter2dX::AnimationNode* animationNode;
 	SpriterEngine::EntityInstance* entity;
 
