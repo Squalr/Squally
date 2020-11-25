@@ -33,5 +33,5 @@ private:
 
 	PlatformerEntity* entity;
 
-	cocos2d::DrawNode* projectileTarget;
+	cocos2d::Node* projectileTarget;
 };

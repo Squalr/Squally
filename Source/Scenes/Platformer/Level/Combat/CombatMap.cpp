@@ -31,6 +31,7 @@
 #include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
@@ -43,7 +44,8 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
-#include "Menus/Ingame/IngameMenu.h"
+#include "Menus/Options/OptionsMenu.h"
+#include "Menus/Pause/PlatformerPauseMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Objects/Camera/CameraFocus.h"
@@ -69,6 +71,7 @@
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/MapResources.h"
 
@@ -86,11 +89,12 @@ CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std:
 	return instance;
 }
 
-CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
+CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true)
 {
-	this->collectablesMenu = nullptr; // Lazy initialized
-	this->cardsMenu = nullptr; // Lazy initialized
-	this->partyMenu = PartyMenu::create();
+	this->collectablesMenu = LazyNode<CollectablesMenu>::create(CC_CALLBACK_0(CombatMap::buildCollectablesMenu, this));
+	this->cardsMenu = LazyNode<CardsMenu>::create(CC_CALLBACK_0(CombatMap::buildCardsMenu, this));
+	this->partyMenu = LazyNode<PartyMenu>::create(CC_CALLBACK_0(CombatMap::buildPartyMenu, this));
+	this->platformerPauseMenu = LazyNode<PlatformerPauseMenu>::create(CC_CALLBACK_0(CombatMap::buildPlatformerPauseMenu, this));
 	this->combatHud = CombatHud::create();
 	this->timeline = Timeline::create();
 	this->cancelMenu = CancelMenu::create();
@@ -115,8 +119,6 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 
 	this->focusTakeOver->setTakeOverOpacity(127);
 	this->entityFocusTakeOver->setTakeOverOpacity(0);
-	this->ingameMenu->disableInventory();
-	this->partyMenu->disableUnstuck();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -157,7 +159,10 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->backMenuHud->addChild(this->defeatMenu);
 	this->backMenuHud->addChild(this->rewardsMenu);
 	this->backMenuHud->addChild(this->notificationHud);
+	this->topMenuHud->addChild(this->platformerPauseMenu);
 	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->cardsMenu);
+	this->topMenuHud->addChild(this->collectablesMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
 
 	this->loadMap(levelFile);
@@ -171,7 +176,6 @@ void CombatMap::onEnter()
 {
 	super::onEnter();
 
-	this->partyMenu->setVisible(false);
 	this->combatEndBackdrop->setOpacity(0);
 	
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
@@ -199,7 +203,6 @@ void CombatMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->ingameMenu->setPosition(Vec2(72.0f, 0.0f));
 	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -425,40 +428,21 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
+}
 
-	this->ingameMenu->setPartyClickCallback([=]()
-	{
-		this->ingameMenu->setVisible(false);
-		this->partyMenu->setVisible(true);
-		this->partyMenu->open();
-		GameUtils::focus(this->partyMenu);
-	});
-	
-	this->ingameMenu->setCardsClickCallback([=]()
-	{
-		this->buildCardsMenu();
+void CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
+{
+	super::openPauseMenu(refocusTarget);
 
-		this->ingameMenu->setVisible(false);
-		this->cardsMenu->setVisible(true);
-		this->cardsMenu->open();
-		GameUtils::focus(this->cardsMenu);
-	});
-	
-	this->ingameMenu->setCollectablesClickCallback([=]()
+	if (!this->canPause)
 	{
-		this->buildCollectablesMenu();
-		
-		this->ingameMenu->setVisible(false);
-		this->collectablesMenu->setVisible(true);
-		this->collectablesMenu->open();
-		GameUtils::focus(this->collectablesMenu);
-	});
+		return;
+	}
 
-	this->partyMenu->setReturnClickCallback([=]()
+	this->platformerPauseMenu->lazyGet()->open([=]()
 	{
-		this->ingameMenu->setVisible(true);
-		this->partyMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
+		this->menuBackDrop->setOpacity(0);
+		GameUtils::focus(refocusTarget);
 	});
 }
 
@@ -585,44 +569,94 @@ void CombatMap::spawnEntities()
 	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }
 
-void CombatMap::buildCardsMenu()
+CollectablesMenu* CombatMap::buildCollectablesMenu()
 {
-	if (this->cardsMenu != nullptr)
+	CollectablesMenu* instance = CollectablesMenu::create();
+	
+	instance->setReturnClickCallback([=]()
 	{
-		return;
-	}
-
-	this->cardsMenu = CardsMenu::create();
-
-	this->cardsMenu->setVisible(false);
-
-	this->topMenuHud->addChild(this->cardsMenu);
-
-	this->cardsMenu->setReturnClickCallback([=]()
-	{
-		this->ingameMenu->setVisible(true);
-		this->cardsMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu);
 	});
+
+	return instance;
 }
 
-void CombatMap::buildCollectablesMenu()
+CardsMenu* CombatMap::buildCardsMenu()
 {
-	if (this->collectablesMenu != nullptr)
+	CardsMenu* instance = CardsMenu::create();
+
+	instance->setReturnClickCallback([=]()
 	{
-		return;
-	}
-
-	this->collectablesMenu = CollectablesMenu::create();
-	
-	this->collectablesMenu->setVisible(false);
-
-	this->topMenuHud->addChild(this->collectablesMenu);
-
-	this->collectablesMenu->setReturnClickCallback([=]()
-	{
-		this->ingameMenu->setVisible(true);
-		this->collectablesMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu);
 	});
+
+	return instance;
+}
+
+PartyMenu* CombatMap::buildPartyMenu()
+{
+	PartyMenu* instance = PartyMenu::create();
+
+	instance->disableUnstuck();
+	instance->setReturnClickCallback([=]()
+	{
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu);
+	});
+
+	return instance;
+}
+
+PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
+{
+	PlatformerPauseMenu* instance = PlatformerPauseMenu::create();
+	
+	instance->setPosition(Vec2(72.0f, 0.0f));
+	instance->disableInventory();
+
+	instance->setOptionsClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->optionsMenu->lazyGet()->setVisible(true);
+		GameUtils::focus(this->optionsMenu);
+	});
+
+	instance->setQuitToTitleClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		instance->setVisible(false);
+		
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
+	});
+
+	instance->setPartyClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->partyMenu->lazyGet()->setVisible(true);
+		this->partyMenu->lazyGet()->open();
+		GameUtils::focus(this->partyMenu);
+	});
+	
+	instance->setCardsClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->cardsMenu->lazyGet()->setVisible(true);
+		this->cardsMenu->lazyGet()->open();
+		GameUtils::focus(this->cardsMenu);
+	});
+	
+	instance->setCollectablesClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->collectablesMenu->lazyGet()->setVisible(true);
+		this->collectablesMenu->lazyGet()->open();
+		GameUtils::focus(this->collectablesMenu);
+	});
+
+	return instance;
 }

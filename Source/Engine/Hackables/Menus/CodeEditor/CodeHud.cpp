@@ -13,6 +13,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
@@ -57,7 +58,7 @@ CodeHud::CodeHud()
 {
 	this->timeSinceLastCompile = CodeHud::CompileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
-	this->lexicon = nullptr;
+	this->lexicon = LazyNode<Lexicon>::create(CC_CALLBACK_0(CodeHud::buildLexicon, this));
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
 	this->rightBarBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
@@ -167,6 +168,7 @@ CodeHud::CodeHud()
 	this->addChild(this->lexiconButton);
 	this->addChild(this->stuckButton);
 	this->addChild(this->clippyNode);
+	this->addChild(this->lexicon);
 	this->addChild(this->confirmationMenu);
 }
 
@@ -250,7 +252,7 @@ void CodeHud::initializeListeners()
 	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->functionWindow->unfocus();
-		this->getLexicon()->open();
+		this->lexicon->lazyGet()->open();
 	});
 	
 	this->stuckButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
@@ -680,9 +682,9 @@ void CodeHud::compile(std::string assemblyText)
 
 void CodeHud::onAccept()
 {
-	if (this->lexicon != nullptr)
+	if (this->lexicon->isBuilt())
 	{
-		this->lexicon->close();
+		this->lexicon->lazyGet()->close();
 	}
 
 	this->functionWindow->unfocus();
@@ -709,9 +711,9 @@ void CodeHud::onAccept()
 
 void CodeHud::onCancel()
 {
-	if (this->lexicon != nullptr)
+	if (this->lexicon->isBuilt())
 	{
-		this->getLexicon()->close();
+		this->lexicon->lazyGet()->close();
 	}
 
 	this->functionWindow->unfocus();
@@ -722,23 +724,15 @@ void CodeHud::onCancel()
 	HackableEvents::TriggerEditHackableBaseDone();
 }
 
-Lexicon* CodeHud::getLexicon()
+Lexicon* CodeHud::buildLexicon()
 {
-	// Lazy initialization for lexicon since it is a little bit resource intensive (several sprites, buttons)
-	if (this->lexicon == nullptr)
+	Lexicon* instance = Lexicon::create();
+
+	instance->setCloseCallBack([=]()
 	{
-		this->lexicon = Lexicon::create();
+		GameUtils::focus(this);
+		this->functionWindow->focus();
+	});
 
-		this->lexicon->setCloseCallBack([=]()
-		{
-			GameUtils::focus(this);
-			this->functionWindow->focus();
-		});
-
-		this->lexicon->setVisible(false);
-
-		this->addChild(this->lexicon);
-	}
-
-	return this->lexicon;
+	return instance;
 }

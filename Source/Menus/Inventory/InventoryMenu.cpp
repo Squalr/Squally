@@ -10,6 +10,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -35,7 +36,7 @@
 
 using namespace cocos2d;
 
-InventoryMenu* InventoryMenu::create(PartyMenu* partyMenu)
+InventoryMenu* InventoryMenu::create(LazyNode<PartyMenu>* partyMenu)
 {
 	InventoryMenu* instance = new InventoryMenu(partyMenu);
 
@@ -44,7 +45,7 @@ InventoryMenu* InventoryMenu::create(PartyMenu* partyMenu)
 	return instance;
 }
 
-InventoryMenu::InventoryMenu(PartyMenu* partyMenu)
+InventoryMenu::InventoryMenu(LazyNode<PartyMenu>* partyMenu)
 {
 	this->currencyInventory = nullptr;
 	this->equipmentInventory = nullptr;
@@ -93,14 +94,6 @@ InventoryMenu::~InventoryMenu()
 void InventoryMenu::onEnter()
 {
 	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->inventoryWindow, delay, duration);
-	GameUtils::fadeInObject(this->inventoryLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -319,7 +312,7 @@ void InventoryMenu::consumeItem(Consumable* item)
 		return;
 	}
 
-	this->partyMenu->setVisible(true);
+	this->partyMenu->lazyGet()->setVisible(true);
 	GameUtils::focus(this->partyMenu);
 
 	int count = 0;
@@ -332,15 +325,15 @@ void InventoryMenu::consumeItem(Consumable* item)
 		}
 	}
 
-	this->partyMenu->openForSelection(item->getIconResource(), count, [=](PlatformerEntity* target)
+	this->partyMenu->lazyGet()->openForSelection(item->getIconResource(), count, [=](PlatformerEntity* target)
 	{
 		return item->canUseOnTarget(target);
 	},
 	[=](PlatformerEntity* target)
 	{
-		int currentSelectionIndex = this->partyMenu->getSelectionIndex();
+		int currentSelectionIndex = this->partyMenu->lazyGet()->getSelectionIndex();
 		
-		this->partyMenu->setVisible(false);
+		this->partyMenu->lazyGet()->setVisible(false);
 		GameUtils::focus(this);
 
 		item->useOutOfCombat(target);
@@ -356,7 +349,7 @@ void InventoryMenu::consumeItem(Consumable* item)
 				{
 					this->consumeItem(dynamic_cast<Consumable*>(next));
 
-					this->partyMenu->setSelectionIndex(currentSelectionIndex);
+					this->partyMenu->lazyGet()->setSelectionIndex(currentSelectionIndex);
 					return;
 				}
 			}
@@ -374,7 +367,7 @@ void InventoryMenu::consumeItem(Consumable* item)
 	},
 	[=]()
 	{
-		this->partyMenu->setVisible(false);
+		this->partyMenu->lazyGet()->setVisible(false);
 		GameUtils::focus(this);
 	});
 }

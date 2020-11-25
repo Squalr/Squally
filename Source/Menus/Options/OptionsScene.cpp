@@ -30,7 +30,7 @@ OptionsScene* OptionsScene::getInstance()
 
 OptionsScene::OptionsScene()
 {
-	this->menu = OptionsMenu::create();
+	this->menu = OptionsMenu::create(true);
 	this->backgroundNode = Node::create();
 
 	this->addChild(this->backgroundNode);

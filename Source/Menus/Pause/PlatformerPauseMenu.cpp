@@ -1,4 +1,4 @@
-#include "IngameMenu.h"
+#include "PlatformerPauseMenu.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
@@ -18,16 +18,16 @@
 
 using namespace cocos2d;
 
-IngameMenu* IngameMenu::create()
+PlatformerPauseMenu* PlatformerPauseMenu::create()
 {
-	IngameMenu* instance = new IngameMenu();
+	PlatformerPauseMenu* instance = new PlatformerPauseMenu();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IngameMenu::IngameMenu() : super(true)
+PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 {
 	this->pauseWindow = Sprite::create(UIResources::Menus_IngameMenu_IngameMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
@@ -92,24 +92,11 @@ IngameMenu::IngameMenu() : super(true)
 	this->addChild(this->newButtonsNode);
 }
 
-IngameMenu::~IngameMenu()
+PlatformerPauseMenu::~PlatformerPauseMenu()
 {
 }
 
-void IngameMenu::onEnter()
-{
-	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	for (auto next : this->addedButtons)
-	{
-		GameUtils::fadeInObject(next, delay, duration);
-	}
-}
-
-void IngameMenu::initializePositions()
+void PlatformerPauseMenu::initializePositions()
 {
 	super::initializePositions();
 
@@ -125,7 +112,7 @@ void IngameMenu::initializePositions()
 	this->collectablesButton->setPosition(Vec2(visibleSize.width / 2.0f + 104.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
-void IngameMenu::initializeListeners()
+void PlatformerPauseMenu::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -162,42 +149,42 @@ void IngameMenu::initializeListeners()
 	});
 }
 
-void IngameMenu::disableInventory()
+void PlatformerPauseMenu::disableInventory()
 {
 	this->inventoryButton->disableInteraction(128);
 }
 
-void IngameMenu::disableCards()
+void PlatformerPauseMenu::disableCards()
 {
 	this->cardsButton->disableInteraction(128);
 }
 
-void IngameMenu::disableCollectables()
+void PlatformerPauseMenu::disableCollectables()
 {
 	this->collectablesButton->disableInteraction(128);
 }
 
-void IngameMenu::setInventoryClickCallback(std::function<void()> inventoryClickCallback)
+void PlatformerPauseMenu::setInventoryClickCallback(std::function<void()> inventoryClickCallback)
 {
 	this->inventoryClickCallback = inventoryClickCallback;
 }
 
-void IngameMenu::setPartyClickCallback(std::function<void()> partyClickCallback)
+void PlatformerPauseMenu::setPartyClickCallback(std::function<void()> partyClickCallback)
 {
 	this->partyClickCallback = partyClickCallback;
 }
 
-void IngameMenu::setCardsClickCallback(std::function<void()> cardsClickCallback)
+void PlatformerPauseMenu::setCardsClickCallback(std::function<void()> cardsClickCallback)
 {
 	this->cardsClickCallback = cardsClickCallback;
 }
 
-void IngameMenu::setCollectablesClickCallback(std::function<void()> collectablesClickCallback)
+void PlatformerPauseMenu::setCollectablesClickCallback(std::function<void()> collectablesClickCallback)
 {
 	this->collectablesClickCallback = collectablesClickCallback;
 }
 
-ClickableTextNode* IngameMenu::buildButton(std::string spriteResource, std::string spriteResourceSelected, LocalizedString* text, bool isLeftAligned,  Vec2 offset)
+ClickableTextNode* PlatformerPauseMenu::buildButton(std::string spriteResource, std::string spriteResourceSelected, LocalizedString* text, bool isLeftAligned,  Vec2 offset)
 {
 	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, text);
 	LocalizedLabel*	labelSelected = label->clone();

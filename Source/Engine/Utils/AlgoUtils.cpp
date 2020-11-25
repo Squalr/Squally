@@ -193,11 +193,10 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 	// Triangulate the shape
 	MPE_PolyTriangulate(&polyContext);
 
-	// Parse out the triangle and create the in-fill color from that
+	// Parse out the triangle
 	for (uxx triangleIndex = 0; triangleIndex < polyContext.TriangleCount; ++triangleIndex)
 	{
 		MPEPolyTriangle* triangle = polyContext.Triangles[triangleIndex];
-		DrawNode* infillTriangle = DrawNode::create();
 
 		Vec2 trianglePointA = Vec2(triangle->Points[0]->X, triangle->Points[0]->Y);
 		Vec2 trianglePointB = Vec2(triangle->Points[1]->X, triangle->Points[1]->Y);

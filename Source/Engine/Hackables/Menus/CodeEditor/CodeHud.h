@@ -15,6 +15,8 @@ class CodeWindow;
 class ConfirmationMenu;
 class HackableCode;
 class LabelStack;
+template <class T>
+class LazyNode;
 class Lexicon;
 class LocalizedLabel;
 class ScriptList;
@@ -50,7 +52,7 @@ private:
 	void onCancel();
 	void setWindowColor(cocos2d::Color4B windowColor);
 	void setTitleBarColor(cocos2d::Color4B titleBarColor);
-	Lexicon* getLexicon();
+	Lexicon* buildLexicon();
 
 	// This is an unused label that is simply kept around to steal attributes from (font size, font style, etc)
 	LocalizedLabel* referenceContentLabel;
@@ -72,7 +74,7 @@ private:
 	LocalizedLabel* titleLabel;
 	ClickableTextNode* stuckButton;
 	ClickableTextNode* lexiconButton;
-	Lexicon* lexicon;
+	LazyNode<Lexicon>* lexicon;
 	ConfirmationMenu* confirmationMenu;
 
 	HackableCode* activeHackableCode;

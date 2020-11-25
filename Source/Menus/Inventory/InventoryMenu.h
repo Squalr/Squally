@@ -16,6 +16,8 @@ class EquipmentInventory;
 class Item;
 class ItemMenu;
 class Inventory;
+template <class T>
+class LazyNode;
 class LocalizedLabel;
 class PartyMenu;
 class FilterMenu;
@@ -23,13 +25,13 @@ class FilterMenu;
 class InventoryMenu : public SmartNode
 {
 public:
-	static InventoryMenu* create(PartyMenu* partyMenu);
+	static InventoryMenu* create(LazyNode<PartyMenu>* partyMenu);
 
 	void open();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
-	InventoryMenu(PartyMenu* partyMenu);
+	InventoryMenu(LazyNode<PartyMenu>* partyMenu);
 	virtual ~InventoryMenu();
 	
 	void onEnter() override;
@@ -62,7 +64,7 @@ private:
 	std::function<void()> returnClickCallback;
 	bool equipmentChanged;
 
-	PartyMenu* partyMenu;
+	LazyNode<PartyMenu>* partyMenu;
 
 	static const int MinHexusCards;
 	static const int MaxHexusCards;

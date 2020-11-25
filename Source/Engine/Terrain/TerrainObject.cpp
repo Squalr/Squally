@@ -70,13 +70,16 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topsNode = Node::create();
 	this->connectorsNode = Node::create();
 	this->topCornersNode = Node::create();
-	this->debugLabelsNode = Node::create();
-	this->debugDrawNode = DrawNode::create();
+	this->debugLabelsNode = DeveloperModeController::IsDeveloperBuild ? Node::create() : nullptr;
+	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
 	this->drawRect = Rect::ZERO;
 	this->boundsRect = Rect::ZERO;
 
-	this->debugLabelsNode->setVisible(false);
-	this->debugDrawNode->setVisible(false);
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->setVisible(false);
+		this->debugDrawNode->setVisible(false);
+	}
 	
 	this->setLocalZOrder(int32_t(this->getPositionZ()));
 
@@ -90,8 +93,11 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->rootNode->addChild(this->connectorsNode);
 	this->rootNode->addChild(this->bottomCornersNode);
 	this->rootNode->addChild(this->topCornersNode);
-	this->rootNode->addChild(this->debugLabelsNode);
-	this->rootNode->addChild(this->debugDrawNode);
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->rootNode->addChild(this->debugLabelsNode);
+		this->rootNode->addChild(this->debugDrawNode);
+	}
 	this->rootNode->addChild(this->collisionNode);
 	this->addChild(this->rootNode);
 }
@@ -149,7 +155,7 @@ void TerrainObject::onEnterTransitionDidFinish()
 
 void TerrainObject::onDeveloperModeEnable(int debugLevel)
 {
-	if (debugLevel >= 2)
+	if (debugLevel >= 2 && DeveloperModeController::IsDeveloperBuild)
 	{
 		this->debugLabelsNode->setVisible(true);
 		this->debugDrawNode->setVisible(true);
@@ -158,8 +164,11 @@ void TerrainObject::onDeveloperModeEnable(int debugLevel)
 
 void TerrainObject::onDeveloperModeDisable()
 {
-	this->debugLabelsNode->setVisible(false);
-	this->debugDrawNode->setVisible(false);
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->setVisible(false);
+		this->debugDrawNode->setVisible(false);
+	}
 }
 
 void TerrainObject::initializeListeners()
@@ -243,7 +252,7 @@ void TerrainObject::initResources()
 	);
 }
 
-void TerrainObject::setPoints(std::vector<Vec2> points)
+void TerrainObject::setPoints(const std::vector<Vec2>& points)
 {
 	this->points = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
@@ -256,8 +265,11 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 
 void TerrainObject::rebuildTerrain(TerrainData terrainData)
 {
-	this->debugLabelsNode->removeAllChildren();
-	this->debugDrawNode->removeAllChildren();
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->removeAllChildren();
+		this->debugDrawNode->removeAllChildren();
+	}
 
 	this->buildInnerTextures();
 	this->buildInfill(terrainData.infillData);

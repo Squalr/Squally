@@ -13,9 +13,12 @@ class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
 class HackerModeWarningHud;
+template <class T>
+class LazyNode;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
+class PlatformerPauseMenu;
 class RewardsMenu;
 class Scrappy;
 class TargetSelectionMenu;
@@ -57,17 +60,21 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onHackerModeEnable() override;
+	void openPauseMenu(cocos2d::Node* refocusTarget) override;
 
 private:
 	typedef MapBase super;
 
 	void spawnEntities();
-	void buildCardsMenu();
-	void buildCollectablesMenu();
+	CollectablesMenu* buildCollectablesMenu();
+	CardsMenu* buildCardsMenu();
+	PartyMenu* buildPartyMenu();
+	PlatformerPauseMenu* buildPlatformerPauseMenu();
 
-	CollectablesMenu* collectablesMenu;
-	CardsMenu* cardsMenu;
-	PartyMenu* partyMenu;
+	LazyNode<CollectablesMenu>* collectablesMenu;
+	LazyNode<CardsMenu>* cardsMenu;
+	LazyNode<PartyMenu>* partyMenu;
+	LazyNode<PlatformerPauseMenu>* platformerPauseMenu;
 
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;

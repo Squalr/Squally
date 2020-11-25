@@ -10,10 +10,10 @@ namespace cocos2d
 class ClickableTextNode;
 class LocalizedString;
 
-class IngameMenu : public PauseMenu
+class PlatformerPauseMenu : public PauseMenu
 {
 public:
-	static IngameMenu* create();
+	static PlatformerPauseMenu* create();
 
 	void disableInventory();
 	void disableCards();
@@ -24,14 +24,14 @@ public:
 	void setCollectablesClickCallback(std::function<void()> collectablesClickCallback);
 
 protected:
-	IngameMenu();
-	virtual ~IngameMenu();
+	PlatformerPauseMenu();
+	virtual ~PlatformerPauseMenu();
+	
+	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef PauseMenu super;
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 	ClickableTextNode* buildButton(std::string spriteResource, std::string spriteResourceSelected, LocalizedString* text, bool isLeftAligned,  cocos2d::Vec2 offset);
 

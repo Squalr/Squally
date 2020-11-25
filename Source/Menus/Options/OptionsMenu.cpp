@@ -22,18 +22,19 @@ using namespace cocos2d;
 
 const Color3B OptionsMenu::TitleColor = Color3B(88, 188, 193);
 
-OptionsMenu* OptionsMenu::create()
+OptionsMenu* OptionsMenu::create(bool useEnterFade)
 {
-	OptionsMenu* instance = new OptionsMenu();
+	OptionsMenu* instance = new OptionsMenu(useEnterFade);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OptionsMenu::OptionsMenu()
+OptionsMenu::OptionsMenu(bool useEnterFade)
 {
 	this->backClickCallback = nullptr;
+	this->useEnterFade = useEnterFade;
 
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
@@ -111,16 +112,20 @@ void OptionsMenu::onEnter()
 {
 	super::onEnter();
 
-	float delay = 0.1f;
-	float duration = 0.25f;
+	if (this->useEnterFade)
+	{
+		static const float Delay = 0.1f;
+		static const float Duration = 0.25f;
 
-	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
-	GameUtils::fadeInObject(this->optionsLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->cancelButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-	GameUtils::fadeInObject(this->leftPanel, delay, duration);
-	GameUtils::fadeInObject(this->rightPanel, delay, duration);
+		GameUtils::fadeInObject(this->optionsWindow, Delay, Duration);
+		GameUtils::fadeInObject(this->optionsLabel, Delay, Duration);
+		GameUtils::fadeInObject(this->closeButton, Delay, Duration);
+		GameUtils::fadeInObject(this->cancelButton, Delay, Duration);
+		GameUtils::fadeInObject(this->returnButton, Delay, Duration);
+		GameUtils::fadeInObject(this->leftPanel, Delay, Duration);
+		GameUtils::fadeInObject(this->rightPanel, Delay, Duration);
+
+	}
 
 	this->setActiveTab(Tab::General);
 }

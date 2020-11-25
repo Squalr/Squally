@@ -365,6 +365,11 @@ bool Inventory::canInsertItemIfUnique(Item* item)
 
 void Inventory::rebuildLookupTable()
 {
+	if (this->disableLookupTableRebuilding)
+	{
+		return;
+	}
+	
 	this->itemLookup.clear();
 
 	for (auto next : this->items)

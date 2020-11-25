@@ -94,8 +94,12 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     message(${CMAKE_CXX_FLAGS_DEBUG})
 
     target_link_options(${PROJECT_NAME} PRIVATE
+        
         # Enable to allow profiling on windows:
+        $<$<CONFIG:RELEASE>:/PROFILE>
         $<$<CONFIG:DEBUG>:/PROFILE>
+
+        # Enable for verbose linker output
         # $<$<CONFIG:DEBUG>:/VERBOSE>
     )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")

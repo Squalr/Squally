@@ -14,17 +14,17 @@
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
 #include "Engine/Hackables/Menus/RadialMenu.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
-#include "Menus/Ingame/IngameMenu.h"
 #include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsMenu.h"
+#include "Menus/Pause/PlatformerPauseMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
-#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/BackgroundResources.h"
 
@@ -32,7 +32,7 @@ using namespace cocos2d;
 
 std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*> MapBase::MapCache = std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*>();
 
-MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
+MapBase::MapBase(bool allowHackerMode)
 {
 	this->allowHackerMode = allowHackerMode;
 	this->layerDeserializers = std::vector<LayerDeserializer*>();
@@ -43,11 +43,9 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->map = nullptr;
 	this->mapNode = Node::create();
 	this->musicOverlay = MusicOverlay::create();
-	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
-	this->codeHud = allowHackerMode ? CodeHud::create() : nullptr;
-	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
-	this->pauseMenu = useIngameMenu ? (PauseMenu*)this->ingameMenu : PauseMenu::create();
-	this->optionsMenu = OptionsMenu::create();
+	this->radialMenu = LazyNode<RadialMenu>::create(CC_CALLBACK_0(MapBase::buildRadialMenu, this));
+	this->codeHud = LazyNode<CodeHud>::create(CC_CALLBACK_0(MapBase::buildCodeHud, this));
+	this->optionsMenu = LazyNode<OptionsMenu>::create(CC_CALLBACK_0(MapBase::buildOptionsMenu, this));
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
 	this->hackerModeVisibleHud = Hud::create();
@@ -70,14 +68,9 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->hackerModeRain->setVisible(false);
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
-
-	if (allowHackerMode)
-	{
-		this->menuHud->addChild(this->radialMenu);
-		this->menuHud->addChild(this->codeHud);
-	}
 	
-	this->topMenuHud->addChild(this->pauseMenu);
+	this->menuHud->addChild(this->radialMenu);
+	this->menuHud->addChild(this->codeHud);
 	this->topMenuHud->addChild(this->optionsMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
@@ -103,8 +96,6 @@ void MapBase::onEnter()
 	super::onEnter();
 
 	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(false);
 
 	if (this->map != nullptr)
 	{
@@ -184,27 +175,6 @@ void MapBase::initializeListeners()
 		args->handle();
 
 		this->openPauseMenu(this);
-	});
-
-	this->optionsMenu->setBackClickCallback([=]()
-	{
-		this->optionsMenu->setVisible(false);
-		this->openPauseMenu(this);
-	});
-
-	this->pauseMenu->setOptionsClickCallback([=]()
-	{
-		this->pauseMenu->setVisible(false);
-		this->optionsMenu->setVisible(true);
-		GameUtils::focus(this->optionsMenu);
-	});
-
-	this->pauseMenu->setQuitToTitleClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
 }
 
@@ -323,9 +293,31 @@ void MapBase::openPauseMenu(Node* refocusTarget)
 	}
 	
 	this->menuBackDrop->setOpacity(196);
-	this->pauseMenu->open([=]()
+}
+
+CodeHud* MapBase::buildCodeHud()
+{
+	CodeHud* instance = CodeHud::create();
+
+	return instance;
+}
+
+RadialMenu* MapBase::buildRadialMenu()
+{
+	RadialMenu* instance = RadialMenu::create();
+
+	return instance;
+}
+
+OptionsMenu* MapBase::buildOptionsMenu()
+{
+	OptionsMenu* instance = OptionsMenu::create(false);
+
+	instance->setBackClickCallback([=]()
 	{
-		this->menuBackDrop->setOpacity(0);
-		GameUtils::focus(refocusTarget);
+		instance->setVisible(false);
+		this->openPauseMenu(this);
 	});
+
+	return instance;
 }

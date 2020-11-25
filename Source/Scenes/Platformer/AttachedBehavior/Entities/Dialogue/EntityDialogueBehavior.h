@@ -8,6 +8,8 @@
 class DialogueSet;
 class InteractMenu;
 class InteractObject;
+template <class T>
+class LazyNode;
 class LocalizedString;
 class PlatformerEntity;
 class Scrappy;
@@ -46,10 +48,11 @@ private:
 	bool hasDialogueOptions();
 	void updateInteractable();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
+	SpeechBubble* buildSpeechBubble();
 
 	PlatformerEntity* entity;
 	Scrappy* scrappy;
-	SpeechBubble* speechBubble;
+	LazyNode<SpeechBubble>* speechBubble;
 	InteractObject* dialogueInteraction;
 
 	bool optionsVisible;

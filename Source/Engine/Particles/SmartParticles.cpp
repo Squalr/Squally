@@ -7,6 +7,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -25,7 +26,7 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 	this->particleResource = particleResource;
 	this->cullContainer = Node::create();
 	this->particles = nullptr; // lazy init for culled particles
-	this->debugDrawNode = DrawNode::create();
+	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
 	this->cullInfo = cullInfo;
 	this->canUpdate = false;
 	this->hasAnchorOverride = false;
@@ -44,13 +45,17 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 
 	this->stop();
 
-	if (cullInfo.cull)
+	if (this->debugDrawNode != nullptr && cullInfo.cull)
 	{
 		this->debugDrawNode->drawRect(-Vec2(this->cullInfo.size) / 2.0f, Vec2(this->cullInfo.size) / 2.0f, Color4F::GREEN);
 	}
 
 	this->addChild(this->cullContainer);
-	this->addChild(this->debugDrawNode);
+
+	if (this->debugDrawNode != nullptr)
+	{
+		this->addChild(this->debugDrawNode);
+	}
 }
 
 SmartParticles::~SmartParticles()
@@ -70,7 +75,7 @@ void SmartParticles::onEnter()
 
 void SmartParticles::onDeveloperModeEnable(int debugLevel)
 {
-	if (debugLevel >= 2)
+	if (debugLevel >= 2 && this->debugDrawNode != nullptr)
 	{
 		this->debugDrawNode->setVisible(true);
 	}
@@ -78,7 +83,10 @@ void SmartParticles::onDeveloperModeEnable(int debugLevel)
 
 void SmartParticles::onDeveloperModeDisable()
 {
-	this->debugDrawNode->setVisible(false);
+	if (this->debugDrawNode != nullptr)
+	{
+		this->debugDrawNode->setVisible(false);
+	}
 }
 
 void SmartParticles::update(float dt)

@@ -18,6 +18,8 @@ class HexusCard;
 class HexusFilter;
 class ItemMenu;
 class Inventory;
+template <class T>
+class LazyNode;
 class LocalizedLabel;
 
 class CardsMenu : public SmartNode
@@ -43,7 +45,7 @@ private:
 	void unequipHexusCard(HexusCard* card);
 	void showHelpMenu(CardData* cardData);
 	void close();
-	void buildHelpMenu();
+	HelpMenu* buildHelpMenu();
 
 	cocos2d::Sprite* cardsWindow;
 	LocalizedLabel* cardsLabel;
@@ -52,7 +54,7 @@ private:
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
 	cocos2d::LayerColor* backdrop;
-	HelpMenu* helpMenu;
+	LazyNode<HelpMenu>* helpMenu;
 
 	EquipmentInventory* equipmentInventory;
 	Inventory* inventory;

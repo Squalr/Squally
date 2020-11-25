@@ -16,12 +16,12 @@ class CodeHud;
 class DeveloperHud;
 class GameMap;
 class Hud;
-class IngameMenu;
 class LayerDeserializer;
+template <class T>
+class LazyNode;
 class MatrixRain;
 class MusicOverlay;
 class OptionsMenu;
-class PauseMenu;
 class RadialMenu;
 
 class MapBase : public GlobalScene
@@ -30,7 +30,7 @@ public:
 	bool loadMap(std::string mapResource);
 
 protected:
-	MapBase(bool useIngameMenu, bool allowHackerMode);
+	MapBase(bool allowHackerMode);
 	virtual ~MapBase();
 
 	void onEnter() override;
@@ -41,7 +41,7 @@ protected:
 	void onHackerModeDisable() override;
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
-	void openPauseMenu(cocos2d::Node* refocusTarget);
+	virtual void openPauseMenu(cocos2d::Node* refocusTarget);
 	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 
 	cocos2d::Node* hudNode;
@@ -53,8 +53,7 @@ protected:
 	Hud* menuHud;
 	Hud* topMenuHud;
 	Hud* confirmationMenuHud;
-	IngameMenu* ingameMenu;
-	PauseMenu* pauseMenu;
+	LazyNode<OptionsMenu>* optionsMenu;
 	cocos2d::Node* mapNode;
 	GameMap* map;
 
@@ -66,12 +65,14 @@ protected:
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode(void* userData);
+	CodeHud* buildCodeHud();
+	RadialMenu* buildRadialMenu();
+	OptionsMenu* buildOptionsMenu();
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
-	CodeHud* codeHud;
-	RadialMenu* radialMenu;
-	OptionsMenu* optionsMenu;
+	LazyNode<CodeHud>* codeHud;
+	LazyNode<RadialMenu>* radialMenu;
 	MusicOverlay* musicOverlay;
 
 	std::vector<LayerDeserializer*> layerDeserializers;

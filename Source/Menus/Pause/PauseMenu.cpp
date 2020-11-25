@@ -110,26 +110,6 @@ PauseMenu::~PauseMenu()
 {
 }
 
-void PauseMenu::onEnter()
-{
-	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->pauseWindow, delay, duration);
-	GameUtils::fadeInObject(this->pauseLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->resumeButton, delay, duration);
-	GameUtils::fadeInObject(this->optionsButton, delay, duration);
-	GameUtils::fadeInObject(this->quitToTitleButton, delay, duration);
-
-	for (auto next : this->addedButtons)
-	{
-		GameUtils::fadeInObject(next, delay, duration);
-	}
-}
-
 void PauseMenu::initializePositions()
 {
 	super::initializePositions();

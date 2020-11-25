@@ -133,20 +133,6 @@ PartyMenu::~PartyMenu()
 {
 }
 
-void PartyMenu::onEnter()
-{
-	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->partyWindow, delay, duration);
-	GameUtils::fadeInObject(this->partyLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->cancelButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-}
-
 void PartyMenu::initializePositions()
 {
 	super::initializePositions();

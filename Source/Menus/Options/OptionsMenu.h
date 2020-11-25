@@ -21,12 +21,12 @@ class VideoTab;
 class OptionsMenu : public SmartNode
 {
 public:
-	static OptionsMenu* create();
+	static OptionsMenu* create(bool useEnterFade);
 
 	void setBackClickCallback(std::function<void()> backClickCallback);
 
 protected:
-	OptionsMenu();
+	OptionsMenu(bool useEnterFade);
 	virtual ~OptionsMenu();
 	
 	void onEnter() override;
@@ -69,6 +69,8 @@ private:
 	MemesTab* memesTab;
 
 	Tab activeTab;
+
+	bool useEnterFade;
 
 	static const cocos2d::Color3B TitleColor;
 };

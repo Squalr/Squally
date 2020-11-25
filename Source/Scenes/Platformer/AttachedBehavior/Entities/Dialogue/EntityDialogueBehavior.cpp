@@ -5,6 +5,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -57,7 +58,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		DialogueEvents::BuildPreviewNode(&this->entity, true)
 	));
 
-	this->speechBubble = SpeechBubble::create();
+	this->speechBubble = LazyNode<SpeechBubble>::create(CC_CALLBACK_0(EntityDialogueBehavior::buildSpeechBubble, this));
 	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
 	this->dialogueSets = std::vector<DialogueSet*>();
 	this->activeDialogueSet = this->mainDialogueSet;
@@ -85,13 +86,6 @@ EntityDialogueBehavior::~EntityDialogueBehavior()
 void EntityDialogueBehavior::initializePositions()
 {
 	super::initializePositions();
-
-	if (this->entity != nullptr)
-	{
-		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 16.0f);
-
-		this->speechBubble->setPosition(offset);
-	}
 }
 
 void EntityDialogueBehavior::onLoad()
@@ -132,7 +126,7 @@ void EntityDialogueBehavior::update(float dt)
 
 SpeechBubble* EntityDialogueBehavior::getSpeechBubble()
 {
-	return this->speechBubble;
+	return this->speechBubble->lazyGet();
 }
 
 void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)
@@ -309,4 +303,18 @@ LocalizedString* EntityDialogueBehavior::getOptionString(int index, LocalizedStr
 	dash->setStringReplacementVariables({ brackets, optionText });
 
 	return dash;
+}
+
+SpeechBubble* EntityDialogueBehavior::buildSpeechBubble()
+{
+	SpeechBubble* instance = SpeechBubble::create();
+
+	if (this->entity != nullptr)
+	{
+		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 16.0f);
+
+		instance->setPosition(offset);
+	}
+
+	return instance;
 }

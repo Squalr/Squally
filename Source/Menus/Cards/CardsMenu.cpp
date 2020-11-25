@@ -10,6 +10,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -57,7 +58,7 @@ CardsMenu::CardsMenu()
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->helpMenu = nullptr; // Lazy initialized
+	this->helpMenu = LazyNode<HelpMenu>::create(CC_CALLBACK_0(CardsMenu::buildHelpMenu, this));
 	this->inventory = nullptr;
 	this->equipmentInventory = nullptr;
 	this->returnClickCallback = nullptr;
@@ -93,6 +94,7 @@ CardsMenu::CardsMenu()
 	this->addChild(this->cardsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
+	this->addChild(this->helpMenu);
 }
 
 CardsMenu::~CardsMenu()
@@ -344,9 +346,7 @@ void CardsMenu::unequipHexusCard(HexusCard* card)
 
 void CardsMenu::showHelpMenu(CardData* cardData)
 {
-	this->buildHelpMenu();
-	
-	this->helpMenu->openMenu(cardData);
+	this->helpMenu->lazyGet()->openMenu(cardData);
 
 	this->cardsWindow->setVisible(false);
 	this->returnButton->setVisible(false);
@@ -368,26 +368,19 @@ void CardsMenu::close()
 	}
 }
 
-void CardsMenu::buildHelpMenu()
+HelpMenu* CardsMenu::buildHelpMenu()
 {
-	if (this->helpMenu != nullptr)
+	HelpMenu* instance = HelpMenu::create();
+
+	instance->setExitCallback([=]()
 	{
-		return;
-	}
-
-	this->helpMenu = HelpMenu::create();
-
-	this->helpMenu->setVisible(false);
-
-	this->addChild(this->helpMenu);
-
-	this->helpMenu->setExitCallback([=]()
-	{
-		this->helpMenu->setVisible(false);
+		instance->setVisible(false);
 		this->cardsWindow->setVisible(true);
 		this->returnButton->setVisible(true);
 		this->closeButton->setVisible(true);
 
 		GameUtils::focus(this);
 	});
+
+	return instance;
 }

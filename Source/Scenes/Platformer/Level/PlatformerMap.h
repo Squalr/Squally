@@ -12,15 +12,18 @@ namespace cocos2d
 
 class AlchemyMenu;
 class BlacksmithingMenu;
+class CardsMenu;
 class Cipher;
 class CollectablesMenu;
 class ConfirmationHud;
+class PlatformerPauseMenu;
 class GameHud;
 class HelpMenu;
 class Hexus;
 class InventoryMenu;
 class ItemInfoMenu;
-class CardsMenu;
+template <class T>
+class LazyNode;
 class NotificationHud;
 class PartyMenu;
 class MiniMap;
@@ -42,37 +45,45 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw) override;
+	void openPauseMenu(cocos2d::Node* refocusTarget) override;
 
 private:
 	typedef MapBase super;
 
 	void warpSquallyToRespawn();
 	void loadMiniMap(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
-	void buildHexus();
-	void buildCardsMenu();
-	void buildHexusCardHelp();
-	void buildItemInfoMenu();
-	void buildCipher();
-	void tryReleaseMapRawRef();
+
+	// Lazy initializers
+	Cipher* buildCipher();
+	Hexus* buildHexus();
+	HelpMenu* buildHexusCardHelpMenu();
+	CollectablesMenu* buildCollectablesMenu();
+	ItemInfoMenu* buildItemInfoMenu();
+	CardsMenu* buildCardsMenu();
+	PartyMenu* buildPartyMenu();
+	InventoryMenu* buildInventoryMenu();
+	AlchemyMenu* buildAlchemyMenu();
+	BlacksmithingMenu* buildBlacksmithingMenu();
+	PlatformerPauseMenu* buildPlatformerPauseMenu();
 
 	bool awaitingConfirmationEnd;
 
 	GameHud* gameHud;
 	ConfirmationHud* confirmationHud;
 	NotificationHud* notificationHud;
-	Cipher* cipher;
-	Hexus* hexus;
-	HelpMenu* cardHelpMenu;
-	CollectablesMenu* collectablesMenu;
-	ItemInfoMenu* itemInfoMenu;
-	CardsMenu* cardsMenu;
-	PartyMenu* partyMenu;
-	InventoryMenu* inventoryMenu;
-	AlchemyMenu* alchemyMenu;
-	BlacksmithingMenu* blacksmithingMenu;
+	LazyNode<Cipher>* cipher;
+	LazyNode<Hexus>* hexus;
+	LazyNode<HelpMenu>* cardHelpMenu;
+	LazyNode<CollectablesMenu>* collectablesMenu;
+	LazyNode<ItemInfoMenu>* itemInfoMenu;
+	LazyNode<CardsMenu>* cardsMenu;
+	LazyNode<PartyMenu>* partyMenu;
+	LazyNode<InventoryMenu>* inventoryMenu;
+	LazyNode<AlchemyMenu>* alchemyMenu;
+	LazyNode<BlacksmithingMenu>* blacksmithingMenu;
 	cocos2d::Node* combatFadeInNode;
+	LazyNode<PlatformerPauseMenu>* platformerPauseMenu;
 	MiniMap* miniMap;
 
-	cocos2d::cocos_experimental::TMXTiledMap* mapRawRef;
 	std::string transition;
 };

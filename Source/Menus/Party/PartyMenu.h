@@ -32,8 +32,7 @@ public:
 protected:
 	PartyMenu();
 	virtual ~PartyMenu();
-
-	void onEnter() override;
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 

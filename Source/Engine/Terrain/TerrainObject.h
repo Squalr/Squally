@@ -175,7 +175,7 @@ private:
 	};
 
 	void initResources();
-	void setPoints(std::vector<cocos2d::Vec2> points);
+	void setPoints(const std::vector<cocos2d::Vec2>& points);
 	void rebuildTerrain(TerrainData terrainData);
 	void cullCollision();
 	void buildCollision();

@@ -22,14 +22,14 @@ EntityProjectileTargetBehavior* EntityProjectileTargetBehavior::create(GameObjec
 EntityProjectileTargetBehavior::EntityProjectileTargetBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->projectileTarget = DrawNode::create();
+	this->projectileTarget = Node::create();
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
 
-	this->projectileTarget->drawSolidCircle(Vec2::ZERO, 6.0f, 0.0f, 8, Color4F::ORANGE);
+	// this->projectileTarget->drawSolidCircle(Vec2::ZERO, 6.0f, 0.0f, 8, Color4F::ORANGE);
 
 	this->addChild(this->projectileTarget);
 }
