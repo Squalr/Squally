@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -114,7 +115,7 @@ void Enrage::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Enrage_Enrage::create(),
 				HackableBase::HackBarColor::Orange,
 				UIResources::Menus_Icons_Clock,
-				EnrageGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return EnrageGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Enrage_RegisterEsi::create()

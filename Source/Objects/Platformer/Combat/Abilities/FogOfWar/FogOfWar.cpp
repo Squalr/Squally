@@ -8,6 +8,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -111,7 +112,7 @@ void FogOfWar::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_FogOfWar::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Fog,
-				this->createDefaultPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
 						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx::create()

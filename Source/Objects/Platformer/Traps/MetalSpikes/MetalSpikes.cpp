@@ -7,6 +7,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -95,7 +96,7 @@ void MetalSpikes::registerHackables()
 				Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
-				MetalSpikesUpdateTimerPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return MetalSpikesUpdateTimerPreview::create(); }),
 				{
 					{ HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
 					{ HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },

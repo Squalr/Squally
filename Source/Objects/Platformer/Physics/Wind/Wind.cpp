@@ -4,6 +4,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -131,7 +132,7 @@ void Wind::registerHackables()
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_SpellWind,
-				WindSetSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([](){ return (HackablePreview*)WindSetSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },

@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -112,7 +113,7 @@ void Haste::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_HourGlass,
-				HasteGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return HasteGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi::create()

@@ -8,6 +8,7 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -87,7 +88,7 @@ void HeavenHug::registerHackables()
 				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_BleedingLimb,
-				HeavenHugSetSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return HeavenHugSetSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
 					{ HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_RegisterRbpWarning::create() }

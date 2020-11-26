@@ -7,6 +7,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeamCountDownPreview.h"
@@ -160,7 +161,7 @@ void ElectricityBeam::registerHackables()
 				Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown::create(),
 				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_Lightning,
-				ElectricityBeamCountDownPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return ElectricityBeamCountDownPreview::create(); }),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0::create() },
 				},

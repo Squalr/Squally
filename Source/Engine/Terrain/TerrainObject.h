@@ -176,7 +176,6 @@ private:
 
 	void initResources();
 	void setPoints(const std::vector<cocos2d::Vec2>& points);
-	void rebuildTerrain(TerrainData terrainData);
 	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
@@ -190,12 +189,14 @@ private:
 	bool isLeftAngle(float normalAngle);
 	bool isRightAngle(float normalAngle);
 	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
+	void buildTerrain();
 	void optimizationHideOffscreenTerrain();
 
 	TerrainData terrainData;
 	bool isTopOnlyCollision;
 	bool isInactive;
 	bool isFlipped;
+	bool hasBuiltTerrain;
 	unsigned int terrainObjectId;
 
 	cocos2d::Rect drawRect;

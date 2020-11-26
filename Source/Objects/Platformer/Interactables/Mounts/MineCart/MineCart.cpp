@@ -4,6 +4,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -118,7 +119,7 @@ void MineCart::registerHackables()
 				Strings::Menus_StoryMode::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_GearBroken,
-				MineCartPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return MineCartPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_StoryMode::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_StoryMode::create() },

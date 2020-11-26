@@ -4,6 +4,8 @@
 #include "Engine/SmartNode.h"
 
 class HackablePreview;
+template <class T>
+class LazyNode;
 class LocalizedString;
 
 class HackableBase : public SmartNode
@@ -36,7 +38,7 @@ public:
 	HackBarColor getHackBarColor();
 	std::string getIconResource();
 	LocalizedString* getName();
-	HackablePreview* getHackablePreview();
+	LazyNode<HackablePreview>* getHackablePreview();
 	virtual void* getPointer();
 	virtual void restoreState();
 
@@ -49,7 +51,7 @@ protected:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview
+		LazyNode<HackablePreview>* hackablePreview
 	);
 	virtual ~HackableBase();
 
@@ -75,6 +77,6 @@ private:
 	LocalizedString* name;
 	HackBarColor hackBarColor;
 	std::string iconResource;
-	HackablePreview* hackablePreview;
+	LazyNode<HackablePreview>* hackablePreview;
 	int requiredHackFlag;
 };

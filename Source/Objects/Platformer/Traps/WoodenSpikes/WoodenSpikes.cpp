@@ -7,6 +7,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -95,7 +96,7 @@ void WoodenSpikes::registerHackables()
 				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
-				WoodenSpikesUpdateTimerPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return WoodenSpikesUpdateTimerPreview::create(); }),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 					{ HackableCode::Register::st0, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },

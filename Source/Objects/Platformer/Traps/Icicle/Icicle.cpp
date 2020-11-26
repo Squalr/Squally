@@ -8,6 +8,7 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -92,7 +93,7 @@ void Icicle::registerHackables()
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Anvil,
-				IcicleGetDensityPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return IcicleGetDensityPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },

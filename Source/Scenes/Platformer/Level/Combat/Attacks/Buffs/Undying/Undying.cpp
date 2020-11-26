@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -111,7 +112,7 @@ void Undying::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Undying_Undying::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_Skull,
-				UndyingGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return UndyingGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx::create(),

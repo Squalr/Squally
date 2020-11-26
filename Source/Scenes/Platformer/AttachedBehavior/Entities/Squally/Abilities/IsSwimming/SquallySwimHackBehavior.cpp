@@ -10,6 +10,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -86,7 +87,7 @@ void SquallySwimHackBehavior::registerHackables()
 				Strings::Menus_Hacking_Abilities_Squally_IsSwimming::create(),
 				HackableBase::HackBarColor::Teal,
 				UIResources::Menus_Icons_Bubbles,
-				EntityPreview::create(this->squally),
+				LazyNode<HackablePreview>::create([=](){ return (HackablePreview*)EntityPreview::create(this->squally); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax::create() },
 				},

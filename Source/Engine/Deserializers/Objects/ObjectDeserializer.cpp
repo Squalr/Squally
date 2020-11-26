@@ -1,6 +1,7 @@
 #include "ObjectDeserializer.h"
 
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
@@ -37,20 +38,15 @@ void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRe
 
 void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
-	ValueMap properties = args->properties;
-	const std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
+	const std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
 
 	if (this->deserializers.find(name) != this->deserializers.end())
 	{
-		GameObject* object = this->deserializers[name](properties);
+		GameObject* object = this->deserializers[name](args->properties);
 
-		this->deserializeProperties(object, properties);
+		this->deserializeProperties(object, args->properties);
 
 		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));
-	}
-	else
-	{
-		LogUtils::logError("Unknown entity encountered: " + name);
 	}
 }
 

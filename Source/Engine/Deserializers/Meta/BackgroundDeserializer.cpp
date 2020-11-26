@@ -34,8 +34,11 @@ void BackgroundDeserializer::deserializeProperties(GameObject* owner, ValueMap p
 {
 	std::string background = GameUtils::getKeyOrDefault(properties, BackgroundDeserializer::MapKey, Value("")).asString();
 
-	// For decor, simply grab the resource of the same name of the object type
-	Sprite* sprite = Sprite::create("Private/Platformer/Backgrounds/" + background + ".png");
+	if (!background.empty())
+	{
+		// For decor, simply grab the resource of the same name of the object type
+		Sprite* sprite = Sprite::create("Private/Platformer/Backgrounds/" + background + ".png");
 
-	owner->addChild(Background::create(sprite));
+		owner->addChild(Background::create(sprite));
+	}
 }

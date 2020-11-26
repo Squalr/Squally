@@ -4,6 +4,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -102,7 +103,7 @@ void ShadowBolt::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_SpellImpactPurple,
-				ShadowBoltSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return ShadowBoltSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0::create() },

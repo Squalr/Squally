@@ -8,6 +8,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -91,7 +92,7 @@ void SpikedLog::registerHackables()
 				Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Banner,
-				SpikedLogSetRotationPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return SpikedLogSetRotationPreview::create(); }),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},

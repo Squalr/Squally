@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -163,7 +164,7 @@ void TimeBomb::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick::create(),
 				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Clock,
-				TimeBombTickPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return TimeBombTickPreview::create(); }),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx::create() },
 				},

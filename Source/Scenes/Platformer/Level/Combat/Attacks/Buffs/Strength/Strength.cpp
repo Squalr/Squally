@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -112,7 +113,7 @@ void Strength::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_Gauntlet,
-				StrengthGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return StrengthGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()->setStringReplacementVariables(

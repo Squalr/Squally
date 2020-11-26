@@ -7,6 +7,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/Laser/LaserAnimation.h"
@@ -113,7 +114,7 @@ void Laser::registerHackables()
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
 				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_SpellImpactWhite,
-				LaserCountDownPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return LaserCountDownPreview::create(); }),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},

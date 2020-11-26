@@ -6,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -64,7 +65,7 @@ void AddDoor::registerHackables()
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Health,
-				AddDoorPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return AddDoorPreview::create(); }),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx::create() },
 				},

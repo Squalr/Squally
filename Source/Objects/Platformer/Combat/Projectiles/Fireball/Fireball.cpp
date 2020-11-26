@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -100,7 +101,7 @@ void Fireball::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_FireSphere,
-				FireballSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return FireballSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm0::create() },

@@ -11,6 +11,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -127,7 +128,7 @@ void PivotLauncher::registerHackables()
 				Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
-				this->getTimerPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->getTimerPreview(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0::create() },

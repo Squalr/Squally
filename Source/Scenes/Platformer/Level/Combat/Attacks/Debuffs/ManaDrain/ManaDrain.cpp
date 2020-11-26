@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -100,7 +101,7 @@ void ManaDrain::registerHackables()
 				Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain::create(),
 				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_ManaSkull,
-				ManaDrainGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return ManaDrainGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx::create(),

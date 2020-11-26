@@ -32,11 +32,12 @@ MatrixStrand* MatrixStrand::create(int strandIndex)
 
 MatrixStrand::MatrixStrand(int strandIndex)
 {
-	this->letters = std::vector<MatrixLetter*>();
+	this->letters = std::vector<MatrixLetter*>(MatrixStrand::MaxLetterCount);
 	this->letterCount = 0;
 	this->elapsedDuration = 0.0f;
 	this->currentLetterIndex = 0;
 	this->isAlive = true;
+	this->hasBuiltLetters = false;
 
 	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
 	{
@@ -44,7 +45,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 
 		letter->setPositionY((float)index * -(MatrixLetter::LetterSize - 12));
 
-		this->letters.push_back(letter);
+		this->letters[index] = letter;
 		this->addChild(letter);
 	}
 	
@@ -66,6 +67,21 @@ void MatrixStrand::onEnter()
 void MatrixStrand::pause()
 {
 	// Ignore pause
+}
+
+void MatrixStrand::onHackerModeEnable()
+{
+	if (this->hasBuiltLetters)
+	{
+		return;
+	}
+
+	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
+	{
+		this->letters[index]->build();
+	}
+
+	this->hasBuiltLetters = true;
 }
 
 void MatrixStrand::update(float dt)
@@ -115,7 +131,6 @@ void MatrixStrand::nextStrandAction()
 {
 	if (this->currentLetterIndex < MatrixStrand::letterCount)
 	{
-		
 		MatrixLetter* letter = this->letters[this->currentLetterIndex];
 
 		letter->spawn();

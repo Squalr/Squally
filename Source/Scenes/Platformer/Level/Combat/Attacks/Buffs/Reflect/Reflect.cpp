@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -114,7 +115,7 @@ void Reflect::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Reflect_Reflect::create(),
 				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_ShieldMagic,
-				ReflectGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return ReflectGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx::create()->setStringReplacementVariables(

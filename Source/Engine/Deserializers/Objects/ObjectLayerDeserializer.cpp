@@ -42,10 +42,8 @@ ObjectLayerDeserializer::~ObjectLayerDeserializer()
 void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
 {
 	std::vector<GameObject*> deserializedObjects = std::vector<GameObject*>();
-	ValueMap properties = args->properties;
-	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
-	std::string type = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyType, Value("")).asString();
-	ValueVector objects = args->objects;
+	std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
+	std::string type = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyType, Value("")).asString();
 
 	// Callback to receive deserialized layers as they are parsed by their deserializers
 	auto onDeserializeCallback = [&](ObjectDeserializer::ObjectDeserializationArgs args)
@@ -54,11 +52,11 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 	};
 
 	// Fire deserialization events for objects
-	for (int index = 0; index < int(objects.size()); index++)
+	for (int index = 0; index < int(args->objects.size()); index++)
 	{
-		if (objects[index].getType() == cocos2d::Value::Type::MAP)
+		if (args->objects[index].getType() == cocos2d::Value::Type::MAP)
 		{
-			ValueMap object = objects[index].asValueMap();
+			ValueMap object = args->objects[index].asValueMap();
 
 			// Append additional map metadata properties to object at load time to assist in deserialization
 			object[GameObject::MapKeyMetaIsIsometric] = args->isIsometric;
@@ -102,7 +100,6 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 				continue;
 			}
 
-			std::string objectName = GameUtils::getKeyOrDefault(object, GameObject::MapKeyName, Value("")).asString();
 			std::string objectType = GameUtils::getKeyOrDefault(object, GameObject::MapKeyType, Value("")).asString();
 
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -117,5 +114,5 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 		}
 	}
 
-	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(MapLayer::create(properties, name, type, deserializedObjects), args->layerIndex));
+	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(MapLayer::create(args->properties, name, type, deserializedObjects), args->layerIndex));
 }

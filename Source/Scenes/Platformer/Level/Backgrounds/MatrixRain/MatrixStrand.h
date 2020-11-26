@@ -16,6 +16,7 @@ protected:
 	void onEnter() override;
 	void update(float) override;
 	void pause(void) override;
+	void onHackerModeEnable() override;
 
 private:
 	typedef SmartNode super;
@@ -34,6 +35,7 @@ private:
 	int currentLetterIndex;
 	int letterCount;
 	float elapsedDuration;
+	bool hasBuiltLetters;
 
 	static const int MinLetterCount;
 	static const int MaxLetterCount;

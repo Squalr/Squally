@@ -7,6 +7,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -113,7 +114,7 @@ void MechanicalFlail::registerHackables()
 				Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
-				MechanicalFlailSetAnglePreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return MechanicalFlailSetAnglePreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }

@@ -13,6 +13,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Hackables/HackButton.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/Controls/ProgressBar.h"
@@ -40,7 +41,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->uiElementsButton = Node::create();
 	this->uiElementsRain = Node::create();
 	this->uiElementsProgressBars = Node::create();
-	this->hackButton = HackButton::create();
+	this->hackButton = LazyNode<HackButton>::create(CC_CALLBACK_0(HackableObject::buildHackButton, this));
 	this->timeRemainingIcons = std::vector<Sprite*>();
 	this->timeRemainingBars = std::vector<ProgressBar*>();
 	this->clippyMap = std::map<std::string, std::function<Clippy*()>>();
@@ -54,8 +55,6 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackParticles4 = nullptr;
 	this->hackParticles5 = nullptr;
 	this->hackCircle = nullptr;
-
-	this->hackButton->setVisible(false);
 
 	this->uiElementsButton->addChild(this->hackButton);
 	this->uiElementsRain->addChild(this->hackParticlesNode);
@@ -78,11 +77,6 @@ void HackableObject::onEnter()
 void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	this->hackButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
-	{
-		this->onHackableClick();
-	});
 
 	this->registerHackables();
 }
@@ -171,7 +165,7 @@ void HackableObject::onHackerModeEnable()
 			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
 		}))
 	{
-		this->hackButton->setVisible(true);
+		this->hackButton->lazyGet()->setVisible(true);
 	}
 }
 
@@ -179,7 +173,7 @@ void HackableObject::onHackerModeDisable()
 {
 	super::onHackerModeDisable();
 
-	this->hackButton->setVisible(false);
+	this->hackButton->lazyGet()->setVisible(false);
 }
 
 void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
@@ -533,4 +527,18 @@ void HackableObject::onDespawn()
 	super::onDespawn();
 
 	this->unregisterAllHackables();
+}
+
+HackButton* HackableObject::buildHackButton()
+{
+	HackButton* instance = HackButton::create();
+
+	instance->setVisible(false);
+
+	instance->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		this->onHackableClick();
+	});
+
+	return instance;
 }

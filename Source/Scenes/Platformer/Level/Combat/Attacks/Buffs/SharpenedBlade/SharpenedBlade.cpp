@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -107,7 +108,7 @@ void SharpenedBlade::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_SharpenedBlade::create(),
 				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_SwordAlt,
-				SharpenedBladeGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return SharpenedBladeGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax::create(),

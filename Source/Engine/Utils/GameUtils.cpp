@@ -262,18 +262,30 @@ float GameUtils::getScale(cocos2d::Node* node)
 	return scale;
 }
 
-Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
+Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound, bool useParentStackCache)
 {
-	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound);
+	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound, useParentStackCache);
 
 	return Vec2(worldCoords3d.x, worldCoords3d.y);
 }
 
-Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
+Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound, bool useParentStackCache)
 {
 	if (node == nullptr)
 	{
 		return Vec3::ZERO;
+	}
+
+	if (useParentStackCache)
+	{
+		unsigned int parentPositionStackHash = GameUtils::hashParentPositionStack(node);
+
+		if (node->parentStackPositionHash == parentPositionStackHash)
+		{
+			return node->cachedWorldCoords3D;
+		}
+		
+		node->parentStackPositionHash = parentPositionStackHash;
 	}
 
 	Rect resultRect = node->getBoundingBox();
@@ -298,7 +310,27 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 		uiBoundObjectParent->popRealPosition();
 	}
 
+	node->cachedWorldCoords3D = resultCoords;
+
 	return resultCoords;
+}
+
+unsigned int GameUtils::hashParentPositionStack(Node* node)
+{
+	unsigned int hash = 0;
+
+	while (node != nullptr)
+	{
+		// Works well enough for non regular input. Doing this on nested objects with user coded positions is prone to errors.
+		// A stack of { Vec3(10, 0, 0), Vec3(10, 0, 0) } would conflict with a stack of pure zeros. Use wisely.
+		hash ^= unsigned int(node->getPositionX());
+		hash ^= unsigned int(node->getPositionY());
+		hash ^= unsigned int(node->getPositionZ());
+
+		node = node->getParent();
+	}
+
+	return hash;
 }
 
 void GameUtils::setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords)
@@ -334,18 +366,25 @@ cocos2d::Vec2 GameUtils::getScreenCoords(cocos2d::Vec3 point)
 
 Rect GameUtils::getScreenBounds(Node* node)
 {
+	if (node == nullptr)
+	{
+		return Rect::ZERO;
+	}
+	
+	return getScreenBounds(node, node->getContentSize());
+}
+
+Rect GameUtils::getScreenBounds(cocos2d::Node* node, const Size& size)
+{
 	if (node == nullptr || Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
 	{
 		return Rect::ZERO;
 	}
 
-	Rect worldRect = node->getBoundingBoxNoTransform();
+	float scale = GameUtils::getScale(node);
 	Vec3 worldCoordsA = GameUtils::getWorldCoords3D(node);
-	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f) * GameUtils::getScale(node);
-
 	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
-	Vec2 resultCoordsB = Camera::getDefaultCamera()->projectGL(worldCoordsB);
-	Rect resultRect = Rect(resultCoordsA, Size(resultCoordsB - resultCoordsA));
+	Rect resultRect = Rect(resultCoordsA, size * scale);
 
 	return resultRect;
 }

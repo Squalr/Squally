@@ -580,7 +580,7 @@ void Card::runOverflowEffect(bool offsetYPosition)
 void Card::runUnderflowEffect(bool offsetYPosition, bool isGoodEffect)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;\
+	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
 
 	this->underflowLabel->setTextColor(isGoodEffect ? Color4B::GREEN : Color4B::RED);
 

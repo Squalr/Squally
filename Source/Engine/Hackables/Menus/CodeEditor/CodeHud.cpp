@@ -275,7 +275,7 @@ void CodeHud::open(HackableObjectEditArgs* args)
 
 		if (hackableCode->getHackablePreview() != nullptr)
 		{
-			HackablePreview* preview = hackableCode->getHackablePreview()->clone();
+			HackablePreview* preview = hackableCode->getHackablePreview()->lazyClone();
 
 			preview->setAssemblyTextVisible(true);
 

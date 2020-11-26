@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -108,7 +109,7 @@ void TrainingHeal::registerHackables()
 				Strings::Menus_Hacking_Abilities_TrainingDummy_AddHealth::create(),
 				HackableBase::HackBarColor::Green,
 				UIResources::Menus_Icons_Heal,
-				TrainingHealGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return TrainingHealGenericPreview::create(); }),
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_TrainingDummy_RegisterEdi::create() }
 				},

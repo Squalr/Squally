@@ -167,6 +167,8 @@
 #define ASM_NOP16() ASM_NOP15() ASM_NOP1()
 
 class HackablePreview;
+template <class T>
+class LazyNode;
 class LocalizedString;
 
 class HackableCode : public HackableBase
@@ -196,7 +198,7 @@ public:
 		LocalizedString* functionName;
 		HackBarColor hackBarColor;
 		std::string iconResource;
-		HackablePreview* hackablePreview;
+		LazyNode<HackablePreview>* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
 		int hackFlags;
 		float duration;
@@ -205,7 +207,7 @@ public:
 		bool excludeDefaultScript;
 
 		HackableCodeInfo() : hackableIdentifier(""), functionName(nullptr), hackBarColor(HackBarColor::Purple), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), readOnlyScripts({ }), excludeDefaultScript(false) { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, LazyNode<HackablePreview>* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
 				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	};
 

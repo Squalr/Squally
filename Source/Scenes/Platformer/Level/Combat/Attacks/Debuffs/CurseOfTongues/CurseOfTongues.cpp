@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -113,7 +114,7 @@ void CurseOfTongues::registerHackables()
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Voodoo,
-				CurseOfTonguesGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return CurseOfTonguesGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi::create()

@@ -134,7 +134,7 @@ void LiquidTop::splash(float x, float speed, float splashRadius, float decay)
 
 void LiquidTop::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform, uint32_t flags)
 {
-    this->customDrawCommand->init(_globalZOrder);
+    this->customDrawCommand->init(0);
     this->customDrawCommand->func = CC_CALLBACK_0(LiquidTop::onCustomDraw, this, transform);
 
     renderer->addCommand(customDrawCommand);

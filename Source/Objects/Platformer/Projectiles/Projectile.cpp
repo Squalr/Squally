@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
@@ -190,7 +191,7 @@ void Projectile::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_GetProjectileVelocity::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_AxeSlash,
-				this->createVelocityPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createVelocityPreview(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEbx::create() },
@@ -209,7 +210,7 @@ void Projectile::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_GetProjectileAcceleration::create(),
 				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_Scale,
-				this->createAccelerationPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createAccelerationPreview(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEbx::create() },

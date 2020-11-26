@@ -18,7 +18,7 @@ public:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview,
+		LazyNode<HackablePreview>* hackablePreview,
 		Clippy* clippy = nullptr);
 
 	void activate();
@@ -33,7 +33,7 @@ protected:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview,
+		LazyNode<HackablePreview>* hackablePreview,
 		Clippy* clippy = nullptr);
 	virtual ~HackActivatedAbility();
 	

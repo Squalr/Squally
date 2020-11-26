@@ -6,6 +6,7 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Localization/LocalizedString.h"
 
 #include "Resources/UIResources.h"
@@ -22,7 +23,7 @@ HackableBase::HackableBase(
 	HackBarColor hackBarColor,
 	std::string iconResource,
 	LocalizedString* name,
-	HackablePreview* hackablePreview)
+	LazyNode<HackablePreview>* hackablePreview)
 {
 	this->hackableIdentifier = hackableIdentifier;
 	this->requiredHackFlag = requiredHackFlag;
@@ -38,7 +39,7 @@ HackableBase::HackableBase(
 
 	if (this->hackablePreview != nullptr)
 	{
-		this->hackablePreview->retain();
+		this->addChild(this->hackablePreview);
 	}
 
 	if (this->name != nullptr)
@@ -49,10 +50,6 @@ HackableBase::HackableBase(
 
 HackableBase::~HackableBase()
 {
-	if (this->hackablePreview != nullptr)
-	{
-		this->hackablePreview->release();
-	}
 }
 
 void HackableBase::onEnter()
@@ -215,7 +212,7 @@ LocalizedString* HackableBase::getName()
 	return this->name;
 }
 
-HackablePreview* HackableBase::getHackablePreview()
+LazyNode<HackablePreview>* HackableBase::getHackablePreview()
 {
 	return this->hackablePreview;
 }

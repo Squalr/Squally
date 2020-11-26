@@ -53,6 +53,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
+	this->hasBuiltTerrain = false;
 
 	this->addTag(TerrainObject::MapKey);
 
@@ -132,7 +133,6 @@ void TerrainObject::onEnter()
 	}
 
 	this->cullCollision();
-	this->rebuildTerrain(terrainData);
 	this->optimizationHideOffscreenTerrain();
 }
 
@@ -261,35 +261,6 @@ void TerrainObject::setPoints(const std::vector<Vec2>& points)
 	this->infillTriangles = this->textureTriangles;
 	this->drawRect = AlgoUtils::getPolygonRect(this->points);
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
-}
-
-void TerrainObject::rebuildTerrain(TerrainData terrainData)
-{
-	if (DeveloperModeController::IsDeveloperBuild)
-	{
-		this->debugLabelsNode->removeAllChildren();
-		this->debugDrawNode->removeAllChildren();
-	}
-
-	this->buildInnerTextures();
-	this->buildInfill(terrainData.infillData);
-
-	switch(ConfigManager::getGraphics())
-	{
-		case ConfigManager::GraphicsSetting::SlowHighQuality:
-		{
-			// Zac: Disabled for now since this is pretty slow
-			// this->buildInfill(terrainData.infillColor);
-			// this->buildSurfaceShadow();
-			break;
-		}
-		case ConfigManager::GraphicsSetting::FastLowQuality:
-		{
-			break;
-		}
-	}
-
-	this->buildSurfaceTextures();
 }
 
 void TerrainObject::cullCollision()
@@ -1022,6 +993,42 @@ ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 	return textureProperties;
 }
 
+void TerrainObject::buildTerrain()
+{
+	if (this->hasBuiltTerrain)
+	{
+		return;
+	}
+
+	this->hasBuiltTerrain = true;
+
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->removeAllChildren();
+		this->debugDrawNode->removeAllChildren();
+	}
+
+	this->buildInnerTextures();
+	this->buildInfill(terrainData.infillData);
+
+	switch(ConfigManager::getGraphics())
+	{
+		case ConfigManager::GraphicsSetting::SlowHighQuality:
+		{
+			// Zac: Disabled for now since this is pretty slow
+			// this->buildInfill(terrainData.infillColor);
+			// this->buildSurfaceShadow();
+			break;
+		}
+		case ConfigManager::GraphicsSetting::FastLowQuality:
+		{
+			break;
+		}
+	}
+
+	this->buildSurfaceTextures();
+}
+
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
 	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
@@ -1032,6 +1039,7 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 
 	if (cameraRect.intersectsRect(this->boundsRect))
 	{
+		this->buildTerrain();
 		this->rootNode->setVisible(true);
 	}
 	else

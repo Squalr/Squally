@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -98,7 +99,7 @@ void IncrementHealth::registerHackables()
 				Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth::create(),
 				HackableBase::HackBarColor::Green,
 				UIResources::Menus_Icons_ArrowUp,
-				IncrementHealthGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return IncrementHealthGenericPreview::create(); }),
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi::create() }
 				},

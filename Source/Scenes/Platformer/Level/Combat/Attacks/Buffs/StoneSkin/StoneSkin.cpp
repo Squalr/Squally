@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Localization/ConstantString.h"
@@ -116,7 +117,7 @@ void StoneSkin::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create(),
 				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_ShieldBroken,
-				StoneSkinGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return StoneSkinGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()->setStringReplacementVariables(

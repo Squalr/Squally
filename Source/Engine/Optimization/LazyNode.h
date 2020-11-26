@@ -20,7 +20,7 @@ public:
 
 	T* lazyGet()
 	{
-		if (lazyInstance == nullptr)
+		if (lazyInstance == nullptr && createFunc != nullptr)
 		{
 			lazyInstance = createFunc();
 
@@ -28,6 +28,11 @@ public:
 		}
 
 		return lazyInstance;
+	}
+
+	T* lazyClone()
+	{
+		return createFunc == nullptr ? nullptr : createFunc();
 	}
 
 protected:
@@ -43,8 +48,8 @@ private:
 	typedef cocos2d::Node super;
 	
 	// Hide methods that we do not want available
-	using super::setOpacity;
 	using super::setVisible;
+	using super::setOpacity;
 	using super::setPosition;
 	using super::setPositionX;
 	using super::setPositionY;
@@ -54,8 +59,9 @@ private:
 	using super::setScaleZ;
 	using super::setAnchorPoint;
 	using super::setRotation;
-	using super::getOpacity;
+	using super::setContentSize;
 	using super::isVisible;
+	using super::getOpacity;
 	using super::getPosition;
 	using super::getPositionX;
 	using super::getPositionY;
@@ -65,6 +71,7 @@ private:
 	using super::getScaleZ;
 	using super::getAnchorPoint;
 	using super::getRotation;
+	using super::getContentSize;
 
 	std::function<T*()> createFunc;
 	T* lazyInstance;

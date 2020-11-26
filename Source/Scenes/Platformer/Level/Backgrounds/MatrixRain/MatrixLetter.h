@@ -1,12 +1,21 @@
 #pragma once
 
-#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCNode.h"
 
-class MatrixLetter : public cocos2d::Sprite
+namespace cocos2d
+{
+	class Sprite;
+}
+
+template <class T>
+class LazyNode;
+
+class MatrixLetter : public cocos2d::Node
 {
 public:
 	static MatrixLetter* create();
 
+	void build();
 	void spawnImmediate();
 	void spawn();
 	void despawn();
@@ -18,10 +27,13 @@ protected:
 	virtual ~MatrixLetter();
 
 private:
-	typedef cocos2d::Sprite super;
+	typedef cocos2d::Node super;
 
 	void pause(void) override;
-	void randomizeLetter();
+	void randomizeLetter(cocos2d::Sprite* target);
+	cocos2d::Sprite* buildSprite();
+
+	LazyNode<cocos2d::Sprite>* sprite;
 
 	static const cocos2d::Color3B LetterColor;
 	static const cocos2d::Color3B SpawnColor;

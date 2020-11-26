@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -113,7 +114,7 @@ void Fortitude::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_ShieldGlowBlue,
-				FortitudeGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return FortitudeGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()->setStringReplacementVariables(

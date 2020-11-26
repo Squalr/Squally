@@ -35,7 +35,6 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 	this->hasTotalParticlesOverride = false;
 	this->hasAngleOverride = false;
 	this->hasPositionTypeOverride = false;
-
 	this->boundsRect = Rect(Vec2::ZERO, this->cullInfo.size);
 
 	if (!cullInfo.cull)
@@ -319,7 +318,7 @@ void SmartParticles::optimizationHideOffscreenParticles()
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
 	Rect thisRect = this->boundsRect;
-
+	
 	thisRect.origin += GameUtils::getWorldCoords(this);
 
 	if (cameraRect.intersectsRect(thisRect))

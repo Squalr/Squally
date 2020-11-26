@@ -12,6 +12,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -140,7 +141,7 @@ void Catapult::registerHackables()
 				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Meteor,
-				CatapultApplyPowerPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return CatapultApplyPowerPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },

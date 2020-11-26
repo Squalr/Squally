@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -97,7 +98,7 @@ void SiphonLife::registerHackables()
 				Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_BloodGoblet,
-				SiphonLifeGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return SiphonLifeGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi::create(),
