@@ -201,6 +201,7 @@ private:
 
 	cocos2d::Rect drawRect;
 	cocos2d::Rect boundsRect;
+	cocos2d::Vec3 cachedCoords;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> intersectionPoints;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;

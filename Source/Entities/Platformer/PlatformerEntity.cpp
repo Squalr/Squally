@@ -55,6 +55,8 @@ PlatformerEntity::PlatformerEntity(
 	this->entitySize = size * this->entityScale;
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
+	this->setContentSize(this->entitySize);
+
 	// Tag all entities by class to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEntity::PlatformerEntityTag);
 	this->addTag(PlatformerEntity::entityName);
@@ -269,13 +271,12 @@ PlatformerEntity* PlatformerEntity::uiClone()
 
 void PlatformerEntity::optimizationHideOffscreenEntity()
 {
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(384.0f, 384.0f);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	Rect thisRect = Rect(GameUtils::getWorldCoords(this), this->entitySize);
+	// Slight padding for any rendering beyond the entity hitbox
+	static const Size Padding = Size(256.0f, 256.0f);
+	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
 
-	if (cameraRect.intersectsRect(thisRect))
+	if (CameraRect.intersectsRect(thisRect))
 	{
 		this->animationNode->enableRender();
 	}

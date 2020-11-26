@@ -37,6 +37,8 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 	this->hasPositionTypeOverride = false;
 	this->boundsRect = Rect(Vec2::ZERO, this->cullInfo.size);
 
+	this->setContentSize(this->cullInfo.size);
+
 	if (!cullInfo.cull)
 	{
 		tryCreateParticleInstance();
@@ -312,16 +314,13 @@ void SmartParticles::optimizationHideOffscreenParticles()
 	{
 		return;
 	}
-
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(512.0f, 512.0f);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	Rect thisRect = this->boundsRect;
 	
-	thisRect.origin += GameUtils::getWorldCoords(this);
+	// A little extra padding to give particles time to start up if needed
+	static const Size Padding = Size(512.0f, 512.0f);
+	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
 
-	if (cameraRect.intersectsRect(thisRect))
+	if (CameraRect.intersectsRect(thisRect))
 	{
 		// Lazy initialize finally!
 		if (this->canUpdate && this->particles == nullptr)

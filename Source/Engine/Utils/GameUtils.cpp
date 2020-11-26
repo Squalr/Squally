@@ -43,10 +43,10 @@ void GameUtils::resumeAll()
 	GameUtils::resume(Director::getInstance()->getRunningScene());
 }
 
-bool GameUtils::isInRunningScene(cocos2d::Node* node)
+bool GameUtils::isInRunningScene(Node* node)
 {
 	return node == Director::getInstance()->getRunningScene()
-		|| GameUtils::getFirstParentOfType<cocos2d::Scene>(node) == Director::getInstance()->getRunningScene();
+		|| GameUtils::getFirstParentOfType<Scene>(node) == Director::getInstance()->getRunningScene();
 }
 
 Node* GameUtils::getFocusedNode()
@@ -220,7 +220,7 @@ void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte op
 	node->runAction(sequence);
 }
 
-float GameUtils::getDepth(cocos2d::Node* node)
+float GameUtils::getDepth(Node* node)
 {
 	float depth = 0.0f;
 
@@ -234,7 +234,7 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	return depth;
 }
 
-float GameUtils::getRotation(cocos2d::Node* node)
+float GameUtils::getRotation(Node* node)
 {
 	float rotation = 0.0f;
 
@@ -248,7 +248,7 @@ float GameUtils::getRotation(cocos2d::Node* node)
 	return rotation;
 }
 
-float GameUtils::getScale(cocos2d::Node* node)
+float GameUtils::getScale(Node* node)
 {
 	float scale = 1.0f;
 
@@ -333,7 +333,7 @@ unsigned int GameUtils::hashParentPositionStack(Node* node)
 	return hash;
 }
 
-void GameUtils::setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords)
+void GameUtils::setWorldCoords(Node* node, Vec2 worldCoords)
 {
 	if (node == nullptr)
 	{
@@ -346,7 +346,7 @@ void GameUtils::setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords)
 	node->setPosition(node->getPosition() + delta);
 }
 
-void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
+void GameUtils::setWorldCoords3D(Node* node, Vec3 worldCoords)
 {
 	if (node == nullptr)
 	{
@@ -359,34 +359,35 @@ void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
 	node->setPosition3D(node->getPosition3D() + delta);
 }
 
-cocos2d::Vec2 GameUtils::getScreenCoords(cocos2d::Vec3 point)
+Vec2 GameUtils::getScreenCoords(const Vec3& point)
 {
 	return Camera::getDefaultCamera()->projectGL(point);
 }
 
-Rect GameUtils::getScreenBounds(Node* node)
+Rect GameUtils::getScreenBounds(Node* node, const Size& padding)
 {
 	if (node == nullptr)
 	{
 		return Rect::ZERO;
 	}
 	
-	return getScreenBounds(node, node->getContentSize());
+	// Rect worldRect = node->getBoundingBoxNoTransform();
+	return getScreenBounds(GameUtils::getWorldCoords3D(node, false), padding + node->getContentSize() * GameUtils::getScale(node));
 }
 
-Rect GameUtils::getScreenBounds(cocos2d::Node* node, const Size& size)
+Rect GameUtils::getScreenBounds(const Vec3& position, const Size& size)
 {
-	if (node == nullptr || Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
+	if (Camera::getDefaultCamera() == nullptr)
 	{
 		return Rect::ZERO;
 	}
 
-	float scale = GameUtils::getScale(node);
-	Vec3 worldCoordsA = GameUtils::getWorldCoords3D(node);
-	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
-	Rect resultRect = Rect(resultCoordsA, size * scale);
+	Vec3 rightEdgeCoords = position + Vec3(size.width, size.height, 0.0f);
 
-	return resultRect;
+	Vec2 projectedLeftEdge = Camera::getDefaultCamera()->projectGL(position);
+	Vec2 projectedRightEdge = Camera::getDefaultCamera()->projectGL(rightEdgeCoords);
+
+	return Rect(projectedLeftEdge, Size(projectedRightEdge - projectedLeftEdge));
 }
 
 bool GameUtils::isVisible(Node* node)
@@ -404,7 +405,7 @@ bool GameUtils::isVisible(Node* node)
 	return true;
 }
 
-bool GameUtils::isEclipsed(Node* node, cocos2d::Vec2 mousePos)
+bool GameUtils::isEclipsed(Node* node, Vec2 mousePos)
 {
 	ClippingNode* parentClip = GameUtils::getFirstParentOfType<ClippingNode>(node);
 
@@ -485,7 +486,7 @@ bool GameUtils::hasArg(const std::vector<std::string>& argList, std::string arg)
 	return (std::find(argList.begin(), argList.end(), arg) != argList.end());
 }
 
-const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::string key, const Value& defaultValue)
+const Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::string key, const Value& defaultValue)
 {
 	if (GameUtils::keyExists(valueMap, key))
 	{
@@ -495,7 +496,7 @@ const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::
 	return defaultValue;
 }
 
-void GameUtils::deleteKey(cocos2d::ValueMap& valueMap, std::string key)
+void GameUtils::deleteKey(ValueMap& valueMap, std::string key)
 {
 	if (GameUtils::keyExists(valueMap, key))
 	{

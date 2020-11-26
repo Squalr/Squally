@@ -35,6 +35,8 @@ MineLantern::MineLantern(ValueMap& properties) : super(properties)
 	this->isOn = false;
 	this->isCulled = false;
 
+	this->setContentSize(Size(128.0f, 128.0f));
+
 	this->addChild(this->lanternBack);
 	this->addChild(this->glow);
 	this->addChild(this->fire);
@@ -50,6 +52,7 @@ void MineLantern::onEnter()
 	super::onEnter();
 
 	this->lanternOn();
+	this->optimizationHideOffscreenMineLantern();
 }
 
 void MineLantern::initializePositions()
@@ -105,12 +108,11 @@ void MineLantern::updateMineLanternVisibility()
 
 void MineLantern::optimizationHideOffscreenMineLantern()
 {
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	Size clipSize = (Director::getInstance()->getVisibleSize()) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	Rect thisRect = Rect(GameUtils::getWorldCoords(this), Size(128.0f, 128.0f));
+	static const Size Padding = Size(128.0f, 128.0f);
+	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
 
-	bool isNotOnScreen = !cameraRect.intersectsRect(thisRect);
+	bool isNotOnScreen = !CameraRect.intersectsRect(thisRect);
 
 	if (this->isCulled != isNotOnScreen)
 	{

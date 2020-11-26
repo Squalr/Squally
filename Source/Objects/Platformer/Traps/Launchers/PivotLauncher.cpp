@@ -56,6 +56,8 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->target = nullptr;
 	this->isAutoLaunch = true;
 
+	this->setContentSize(Size(128.0f, 192.0f));
+
 	this->launcherAnimations->playAnimation();
 	this->launcherAnimations->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 	this->launcherAnimations->setFlippedX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipX, Value(false)).asBool());
@@ -169,15 +171,10 @@ bool PivotLauncher::rangeCheck()
 {
 	// It may be ideal for this to be configurable. Fixed-angle launchers can get away with this being a high value, but player-tracking launchers would want this to be low.
 	static const Size Padding = Size(1024.0f, 512.0f);
+	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
 
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	Rect thisRect = GameUtils::getScreenBounds(this);
-
-	thisRect.origin += GameUtils::getWorldCoords(this);
-
-	return cameraRect.intersectsRect(thisRect);
+	return CameraRect.intersectsRect(thisRect);
 }
 
 void PivotLauncher::shoot()

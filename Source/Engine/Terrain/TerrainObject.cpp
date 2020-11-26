@@ -75,6 +75,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
 	this->drawRect = Rect::ZERO;
 	this->boundsRect = Rect::ZERO;
+	this->cachedWorldCoords3D = Vec3::ZERO;
 
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
@@ -261,6 +262,9 @@ void TerrainObject::setPoints(const std::vector<Vec2>& points)
 	this->infillTriangles = this->textureTriangles;
 	this->drawRect = AlgoUtils::getPolygonRect(this->points);
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+
+	// Terrain doesn't move, this should never need to be updated.
+	this->cachedCoords = GameUtils::getWorldCoords3D(this, false) + Vec3(drawRect.origin.x, drawRect.origin.y, 0.0f);
 }
 
 void TerrainObject::cullCollision()
@@ -842,12 +846,9 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
-	if (this->isInactive || !this->boundsRect.intersectsRect(other->boundsRect))
-	{
-		return;
-	}
-
-	if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(other)) > CollisionObject::CollisionZThreshold)
+	if (this->isInactive
+		|| !this->boundsRect.intersectsRect(other->boundsRect)
+		|| (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(other))) > CollisionObject::CollisionZThreshold)
 	{
 		return;
 	}
@@ -1031,13 +1032,12 @@ void TerrainObject::buildTerrain()
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(1024.0f, 1024.0f);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
+	static const Size Padding = Size(128.0f, 128.0f);
+	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	Rect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
 
-	if (cameraRect.intersectsRect(this->boundsRect))
+	if (CameraRect.intersectsRect(thisRect))
 	{
 		this->buildTerrain();
 		this->rootNode->setVisible(true);

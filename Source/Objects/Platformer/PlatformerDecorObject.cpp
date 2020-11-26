@@ -11,8 +11,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 
-#include "Resources/UIResources.h"
-
 using namespace cocos2d;
 
 PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& properties)
@@ -33,10 +31,10 @@ PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(prope
 	);
 	this->enableHackerModeEvents = true;
 
-	this->setContentSize(Size(this->objectSize.width / 2.0f, 0.0f));
+	// Makes getScreenBounds() work
+	this->setContentSize(this->objectSize);
 
 	this->addChild(this->sprite);
-	this->addChild(Sprite::create(UIResources::Cinematic_FilmProjectorBase));
 }
 
 PlatformerDecorObject::~PlatformerDecorObject()
@@ -49,6 +47,7 @@ void PlatformerDecorObject::onEnter()
 
 	this->runBounce();
 	this->scheduleUpdate();
+	this->optimizationHideOffscreenDecor();
 }
 
 void PlatformerDecorObject::update(float dt)
@@ -108,23 +107,11 @@ void PlatformerDecorObject::runBounce()
 
 void PlatformerDecorObject::optimizationHideOffscreenDecor()
 {
-	static const Size Padding = Size(512.0f, 512.0f);
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(Vec2::ZERO, clipSize);
-	Rect thisRect = GameUtils::getScreenBounds(this, this->objectSize);
+	static const Size Padding = Size(0.0f, 0.0f);
+	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
 
-	const std::string& name = this->properties["name"].asString();
-	bool dbg = name == "Generic/TownHome2";
-
-	if (dbg)
-	{
-		int bp = 5;
-	}
-
-	thisRect = GameUtils::getScreenBounds(this, this->objectSize);
-
-	if (cameraRect.intersectsRect(thisRect))
+	if (CameraRect.intersectsRect(thisRect))
 	{
 		this->sprite->lazyGet()->setVisible(true);
 	}
