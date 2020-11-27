@@ -75,7 +75,6 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
 	this->drawRect = Rect::ZERO;
 	this->boundsRect = Rect::ZERO;
-	this->cachedWorldCoords3D = Vec3::ZERO;
 
 	if (DeveloperModeController::IsDeveloperBuild)
 	{

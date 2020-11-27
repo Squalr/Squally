@@ -9,6 +9,8 @@
 
 using namespace cocos2d;
 
+std::map<std::string, SpriterAnimationTimelineEventAnimation*> SpriterAnimationNode::TimelineCache = std::map<std::string, SpriterAnimationTimelineEventAnimation*>();
+
 SpriterAnimationNode* SpriterAnimationNode::create(std::string animationResource)
 {
 	SpriterAnimationNode* instance = new SpriterAnimationNode(animationResource);
@@ -83,6 +85,8 @@ void SpriterAnimationNode::loadAnimationData(std::string animationResource)
 		}
 	}
 
+	/*
+	// TODO: Cache these and make them fast
 	for (auto entities : spriterData.entities)
 	{
 		for (auto animation : entities.animations)
@@ -94,4 +98,5 @@ void SpriterAnimationNode::loadAnimationData(std::string animationResource)
 			this->addChild(animationTimeline);
 		}
 	}
+	*/
 }

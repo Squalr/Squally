@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Optimization/LazyNode.h"
@@ -124,7 +125,7 @@ void PlatformerDecorObject::optimizationHideOffscreenDecor()
 Sprite* PlatformerDecorObject::buildSprite()
 {
 	const std::string name = this->properties.at(GameObject::MapKeyName).asString();
-
+	
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* instance = Sprite::create("Private/Platformer/Decor/" + name + ".png");
 

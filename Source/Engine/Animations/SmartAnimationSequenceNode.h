@@ -6,7 +6,6 @@
 // forward declarations
 namespace cocos2d
 {
-	class Animate;
 	class Sprite;
 }
 
@@ -33,9 +32,6 @@ public:
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
 
-	cocos2d::Animate* getForwardsAnimation();
-	cocos2d::Animate* getBackwardsAnimation();
-
 protected:
 	cocos2d::Sprite* sprite;
 
@@ -44,8 +40,6 @@ private:
 	SmartAnimationSequenceNode(std::string defaultSprite);
 	virtual ~SmartAnimationSequenceNode();
 
-	cocos2d::Animate* forwardsAnimation;
-	cocos2d::Animate* backwardsAnimation;
 	std::string defaultSprite;
 	bool hasPlayingAnimation;
 	int repeatIndex;

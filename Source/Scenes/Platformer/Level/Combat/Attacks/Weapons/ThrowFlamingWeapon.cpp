@@ -1,6 +1,7 @@
 #include "ThrowFlamingWeapon.h"
 
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"

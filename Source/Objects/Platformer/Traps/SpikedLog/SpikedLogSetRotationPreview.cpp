@@ -52,6 +52,7 @@ void SpikedLogSetRotationPreview::onEnter()
 	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
 	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLog_SpikedLog_00, 0.5f, 0.0f);
 
+	/*
 	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max)
 	{
 		count = MathUtils::wrappingNormalize(count + 1, 0, max);
@@ -60,6 +61,7 @@ void SpikedLogSetRotationPreview::onEnter()
 
 		return count;
 	};
+	*/
 }
 
 void SpikedLogSetRotationPreview::initializePositions()

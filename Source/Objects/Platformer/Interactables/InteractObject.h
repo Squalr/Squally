@@ -10,6 +10,8 @@ class CollisionObject;
 class ConstantString;
 class HackableData;
 class InteractMenu;
+template <class T>
+class LazyNode;
 class LocalizedString;
 class PlatformerEntity;
 class Scrappy;
@@ -90,10 +92,10 @@ private:
 	cocos2d::InputEvents::KeyCode input;
 	LocalizedString* interactKeyStr;
 	ConstantString* unlockKeyStr;
-
-	InteractMenu* interactMenu;
-	InteractMenu* lockedMenu;
-	InteractMenu* unlockMenu;
+	
+	LazyNode<InteractMenu>* interactMenu;
+	LazyNode<InteractMenu>* lockedMenu;
+	LazyNode<InteractMenu>* unlockMenu;
 
 	ClickableNode* lockButton;
 	ClickableNode* unlockButton;

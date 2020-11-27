@@ -200,6 +200,7 @@ void TitleScreenBackground::runEyeBlinkLoop()
 	const float TimeBetweenBlinks = 5.5f;
 	
 	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	/*
 	this->leftEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimationPart("eye_left");
@@ -218,7 +219,9 @@ void TitleScreenBackground::runEyeBlinkLoop()
 			leftEye->replaceSprite(spriteResource);
 		}
 	};
+	*/
 	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	/*
 	this->rightEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimationPart("eye_right");
@@ -237,4 +240,5 @@ void TitleScreenBackground::runEyeBlinkLoop()
 			rightEye->replaceSprite(spriteResource);
 		}
 	};
+	*/
 }

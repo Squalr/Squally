@@ -1,6 +1,5 @@
 #include "SmartAnimationSequenceNode.h"
 
-#include "cocos/2d/CCAnimation.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -35,8 +34,6 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 {
 	this->defaultSprite = defaultSprite;
 	this->sprite = Sprite::create(this->defaultSprite);
-	this->forwardsAnimation = nullptr;
-	this->backwardsAnimation = nullptr;
 	this->repeatIndex = 0;
 	this->animationAnchor = Vec2(0.5f, 0.5f);
 	
@@ -93,6 +90,7 @@ void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResour
 
 void SmartAnimationSequenceNode::playAnimation(std::vector<std::string> animationFiles, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
+	/*
 	Animation* animation = Animation::create();
 
 	for (auto next : animationFiles)
@@ -129,6 +127,7 @@ void SmartAnimationSequenceNode::playAnimation(std::vector<std::string> animatio
 		}),
 		nullptr
 	));
+	*/
 }
 
 void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
@@ -140,6 +139,7 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequence
 
 void SmartAnimationSequenceNode::playAnimationRepeat(std::vector<std::string> animationFiles, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
 {
+	/*
 	Animation* animation = Animation::create();
 
 	for (auto next : animationFiles)
@@ -192,6 +192,7 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::vector<std::string> an
 			repeatCount
 		));
 	}
+	*/
 }
 
 void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, std::function<void()> onAnimationComplete)
@@ -203,6 +204,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequ
 
 void SmartAnimationSequenceNode::playAnimationAndReverse(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
+	/*
 	Animation* animationIn = Animation::create();
 	Animation* animationOut = Animation::create();
 
@@ -258,6 +260,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::vector<std::string
 		}),
 		nullptr
 	));
+	*/
 }
 
 void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
@@ -269,6 +272,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initi
 
 void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
 {
+	/*
 	Animation* animationIn = Animation::create();
 	Animation* animationOut = Animation::create();
 
@@ -401,6 +405,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::
 			));
 		}
 	}
+	*/
 }
 
 void SmartAnimationSequenceNode::setAnimationAnchor(Vec2 anchor)
@@ -416,16 +421,6 @@ void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)
 void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 {
 	this->sprite->setFlippedY(isFlipped);
-}
-
-Animate* SmartAnimationSequenceNode::getForwardsAnimation()
-{
-	return this->forwardsAnimation;
-}
-
-Animate* SmartAnimationSequenceNode::getBackwardsAnimation()
-{
-	return this->backwardsAnimation;
 }
 
 std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::string firstFrameResource)

@@ -262,30 +262,18 @@ float GameUtils::getScale(Node* node)
 	return scale;
 }
 
-Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound, bool useParentStackCache)
+Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 {
-	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound, useParentStackCache);
+	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound);
 
 	return Vec2(worldCoords3d.x, worldCoords3d.y);
 }
 
-Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound, bool useParentStackCache)
+Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 {
 	if (node == nullptr)
 	{
 		return Vec3::ZERO;
-	}
-
-	if (useParentStackCache)
-	{
-		unsigned int parentPositionStackHash = GameUtils::hashParentPositionStack(node);
-
-		if (node->parentStackPositionHash == parentPositionStackHash)
-		{
-			return node->cachedWorldCoords3D;
-		}
-		
-		node->parentStackPositionHash = parentPositionStackHash;
 	}
 
 	Rect resultRect = node->getBoundingBox();
@@ -310,27 +298,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound, bool useParen
 		uiBoundObjectParent->popRealPosition();
 	}
 
-	node->cachedWorldCoords3D = resultCoords;
-
 	return resultCoords;
-}
-
-unsigned int GameUtils::hashParentPositionStack(Node* node)
-{
-	unsigned int hash = 0;
-
-	while (node != nullptr)
-	{
-		// Works well enough for non regular input. Doing this on nested objects with user coded positions is prone to errors.
-		// A stack of { Vec3(10, 0, 0), Vec3(10, 0, 0) } would conflict with a stack of pure zeros. Use wisely.
-		hash ^= unsigned int(node->getPositionX());
-		hash ^= unsigned int(node->getPositionY());
-		hash ^= unsigned int(node->getPositionZ());
-
-		node = node->getParent();
-	}
-
-	return hash;
 }
 
 void GameUtils::setWorldCoords(Node* node, Vec2 worldCoords)

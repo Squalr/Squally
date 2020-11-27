@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"

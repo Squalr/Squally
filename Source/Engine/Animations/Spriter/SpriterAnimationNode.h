@@ -33,6 +33,8 @@ private:
 	std::map<std::string, SpriterAnimationTimelineEventAnimation*> animations;
 
 	void loadAnimationData(std::string animationResource);
+
+	static std::map<std::string, SpriterAnimationTimelineEventAnimation*> TimelineCache;
 	
 	cocos2d::Node* animationPartContainer;
 };

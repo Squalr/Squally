@@ -8,6 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -62,7 +63,7 @@ InteractObject::InteractObject(
 	this->unlockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->backNode = Node::create();
 	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false), debugColor);
-	
+
 	if (actionStr == nullptr)
 	{
 		this->interactKeyStr = ConstantString::create(this->inputToString(this->input));
@@ -74,11 +75,15 @@ InteractObject::InteractObject(
 	}
 	
 	this->unlockKeyStr = ConstantString::create(this->inputToString(this->input));
-	this->interactMenu = InteractMenu::create(this->interactKeyStr, interactColor);
-	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor);
-	this->unlockMenu = InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(
-		{ this->unlockKeyStr, Strings::Platformer_Objects_Doors_Unlock::create() }
-	), interactColor, 256.0f);
+	this->interactMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(this->interactKeyStr, interactColor, offset); });
+	this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor, offset); });
+	this->unlockMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(
+		{ this->unlockKeyStr, Strings::Platformer_Objects_Doors_Unlock::create() }), interactColor, offset, 256.0f); });
+
+	// These are potentially passed to the interact menu as captured lambda later, we need to hold onto a ref
+	this->unlockKeyStr->retain();
+	this->interactKeyStr->retain();
+
 	this->isLocked = !this->listenEvent.empty();
 	this->isUnlockable = false;
 	this->wasTripped = false;
@@ -90,11 +95,7 @@ InteractObject::InteractObject(
 	this->scrappy = nullptr;
 
 	this->interactCollision->setName("Interact");
-
 	this->interactCollision->setPosition(offset);
-	this->interactMenu->setPosition(offset);
-	this->lockedMenu->setPosition(offset);
-	this->unlockMenu->setPosition(offset);
 
 	this->addChild(this->backNode);
 	this->addChild(this->interactCollision);
@@ -111,6 +112,8 @@ InteractObject::InteractObject(
 
 InteractObject::~InteractObject()
 {
+	this->unlockKeyStr->release();
+	this->interactKeyStr->release();
 }
 
 void InteractObject::onEnter()
@@ -339,9 +342,20 @@ void InteractObject::updateInteractMenuVisibility()
 {
 	if (this->interactType != InteractType::Input || this->disabled)
 	{
-		this->interactMenu->hide();
-		this->lockedMenu->hide();
-		this->unlockMenu->hide();
+		if (this->interactMenu->isBuilt())
+		{
+			this->interactMenu->lazyGet()->hide();
+		}
+
+		if (this->lockedMenu->isBuilt())
+		{
+			this->lockedMenu->lazyGet()->hide();
+		}
+
+		if (this->unlockMenu->isBuilt())
+		{
+			this->unlockMenu->lazyGet()->hide();
+		}
 		return;
 	}
 
@@ -349,26 +363,36 @@ void InteractObject::updateInteractMenuVisibility()
 	{
 		if (this->isUnlockable)
 		{
-			this->unlockMenu->show();
+			this->unlockMenu->lazyGet()->show();
 		}
 		else
 		{
-			this->lockedMenu->show();
+			this->lockedMenu->lazyGet()->show();
 		}
 	}
 	else
 	{
-		this->lockedMenu->hide();
-		this->unlockMenu->hide();
+		if (this->lockedMenu->isBuilt())
+		{
+			this->lockedMenu->lazyGet()->hide();
+		}
+
+		if (this->unlockMenu->isBuilt())
+		{
+			this->unlockMenu->lazyGet()->hide();
+		}
 	}
 
 	if (!this->isLocked && this->canInteract)
 	{
-		this->interactMenu->show();
+		this->interactMenu->lazyGet()->show();
 	}
 	else
 	{
-		this->interactMenu->hide();
+		if (this->interactMenu->isBuilt())
+		{
+			this->interactMenu->lazyGet()->hide();
+		}
 	}
 }
 

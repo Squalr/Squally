@@ -17,6 +17,7 @@ MatrixRain* MatrixRain::create()
 
 MatrixRain::MatrixRain()
 {
+	return;
 	this->strands = std::vector<MatrixStrand*>();
 
 	// Initialize strands

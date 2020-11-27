@@ -68,6 +68,7 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 	
 	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
 	
+	/*
 	this->leftEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimations()->getAnimationPart("eye_left");
@@ -117,4 +118,5 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 			}
 		}
 	};
+	*/
 }

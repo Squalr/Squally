@@ -21,16 +21,16 @@
 
 using namespace cocos2d;
 
-InteractMenu* InteractMenu::create(LocalizedString* displayString, Color3B backColor, float minWidth)
+InteractMenu* InteractMenu::create(LocalizedString* displayString, Color3B backColor, Vec2 offset, float minWidth)
 {
-	InteractMenu* instance = new InteractMenu(displayString, backColor, minWidth);
+	InteractMenu* instance = new InteractMenu(displayString, backColor, offset, minWidth);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, float minWidth)
+InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, Vec2 offset, float minWidth)
 {
 	this->uiElements = Node::create();
 	this->displayString = displayString;
@@ -44,6 +44,7 @@ InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, fl
 	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->uiElements->setOpacity(0);
+	this->setPosition(offset);
 
 	this->uiElements->addChild(this->backdrop);
 	this->uiElements->addChild(this->displayLabel);
