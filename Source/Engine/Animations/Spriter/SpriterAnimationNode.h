@@ -3,38 +3,36 @@
 
 #include "Engine/SmartNode.h"
 
+#include "Engine/Animations/Spriter/SpriterStructs.h"
+
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class SpriterAnimationTimelineEventAnimation;
+class SpriterAnimationTimeline;
 
 class SpriterAnimationNode : public SmartNode
 {
 public:
-	static SpriterAnimationNode* create(std::string animationResource);
+	static SpriterAnimationNode* create(const std::string& animationResource);
 
 protected:
-	SpriterAnimationNode(std::string animationResource);
-
-	void onEnter() override;
-	void update(float dt);
+	SpriterAnimationNode(const std::string& animationResource);
+	virtual ~SpriterAnimationNode();
 
 	void setFlippedX(bool isFlippedX);
 
 private:
 	typedef SmartNode super;
 
-	float currentTime;
+	SpriterAnimationTimeline* timeline;
 
-	std::map<std::string, cocos2d::Node*> bones;
+	std::map<int, cocos2d::Node*> bones;
 	std::map<int, cocos2d::Sprite*> animationParts;
-	std::map<std::string, SpriterAnimationTimelineEventAnimation*> animations;
 
-	void loadAnimationData(std::string animationResource);
-
-	static std::map<std::string, SpriterAnimationTimelineEventAnimation*> TimelineCache;
+	void buildBones(const SpriterData& spriterData);
+	void buildSprites(const SpriterData& spriterData, const std::string& animationResource);
 	
 	cocos2d::Node* animationPartContainer;
 };

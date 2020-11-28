@@ -1,34 +1,103 @@
-#include "SpriterAnimationTimelineEventMainline.h"
+#include "SpriterAnimationTimeline.h"
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
+
 using namespace cocos2d;
 
-SpriterAnimationTimelineEventMainline* SpriterAnimationTimelineEventMainline::create(SpriterAnimationNode* animations, const SpriterMainlineKey& mainlineData, float endTime)
+std::map<std::string, SpriterAnimationTimeline*> SpriterAnimationTimeline::TimelineCache = std::map<std::string, SpriterAnimationTimeline*>();
+
+SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::string& animationResource)
 {
-	SpriterAnimationTimelineEventMainline* instance = new SpriterAnimationTimelineEventMainline(animations, mainlineData, endTime);
+	if (SpriterAnimationTimeline::TimelineCache.find(animationResource) == SpriterAnimationTimeline::TimelineCache.end())
+	{
+		SpriterAnimationTimeline* timeline = new SpriterAnimationTimeline(animationResource);
 
-	instance->autorelease();
+		timeline->autorelease();
 
-	return instance;
+		SpriterAnimationTimeline::TimelineCache[animationResource] = timeline;
+	}
+
+	return SpriterAnimationTimeline::TimelineCache[animationResource];
 }
 
-SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(SpriterAnimationNode* animations, const SpriterMainlineKey& mainlineData, float endTime) : super(animations, mainlineData.time, endTime)
+SpriterAnimationTimeline::SpriterAnimationTimeline(const std::string& animationResource)
 {
-	this->mainlineData = mainlineData;
+	this->mainlineEvents = std::vector<SpriterAnimationTimelineEventMainline*>();
+	this->animationEvents = std::vector<SpriterAnimationTimelineEventAnimation*>();
+	this->elapsedTimes = std::map<SpriterAnimationNode*, float>();
 }
 
-void SpriterAnimationTimelineEventMainline::onEnter()
+void SpriterAnimationTimeline::onEnter()
 {
 	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
-float SpriterAnimationTimelineEventMainline::SampleMainlineCurve(float timeRatio)
+void SpriterAnimationTimeline::update(float dt)
 {
-	return this->SampleCurve(timeRatio, this->mainlineData.curveType, this->mainlineData.c1, this->mainlineData.c2, this->mainlineData.c3, this->mainlineData.c4);
+	super::update(dt);
 }
 
-float SpriterAnimationTimelineEventMainline::SampleCurve(float timeRatio, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
+void SpriterAnimationTimeline::registerAnimationNode(SpriterAnimationNode* animationNode)
+{
+	this->elapsedTimes[animationNode] = 0.0f;
+}
+
+void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* animationNode)
+{
+	this->elapsedTimes.erase(animationNode);
+}
+
+void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
+{
+	for (auto entities : spriterData.entities)
+	{
+		for (auto animation : entities.animations)
+		{
+			int previousTime = 0;
+			float maxTime = animation.length;
+
+			for (auto mainline : animation.mainline.keys)
+			{
+				SpriterAnimationTimelineEventMainline* mainlineEvents = SpriterAnimationTimelineEventMainline::create(mainline, animation.length);
+			}
+
+			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
+			{
+				float endTime = index == int(animation.mainline.keys.size()) - 1 ? animation.length : animation.mainline.keys[index].time;
+				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(animation.mainline.keys[index], endTime);
+
+				this->mainlineEvents.push_back(mainlineEvent);
+				
+				this->addChild(mainlineEvent);
+			}
+		}
+	}
+
+	for (auto entities : spriterData.entities)
+	{
+		for (auto animation : entities.animations)
+		{
+			SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(0.0f, 0.0f);
+
+			this->animationEvents.push_back(animationTimeline);
+
+			this->addChild(animationTimeline);
+		}
+	}
+}
+
+float SpriterAnimationTimeline::sampleMainlineCurve(float timeRatio)
+{
+	// TODO: Pick correct mainline based current elapsed time, sample that
+	return 1.0f; // this->SampleCurve(timeRatio, this->mainlineData.curveType, this->mainlineData.c1, this->mainlineData.c2, this->mainlineData.c3, this->mainlineData.c4);
+}
+
+float SpriterAnimationTimeline::sampleCurve(float timeRatio, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
 {
 	// Polynomial math
 	static const auto linear = [](float a, float b, float t) { return ((b - a) * t) + a; };
@@ -150,13 +219,4 @@ float SpriterAnimationTimelineEventMainline::SampleCurve(float timeRatio, Sprite
 			return bezier(timeRatio, c1, c2, c3, c4);
 		}
 	}
-}
-
-SpriterCurveType SpriterAnimationTimelineEventMainline::getCurveType()
-{
-	return this->mainlineData.curveType;
-}
-
-void SpriterAnimationTimelineEventMainline::onFire()
-{
 }

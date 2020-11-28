@@ -3,15 +3,15 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/platform/CCFileUtils.h"
 
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
 #include "Engine/Animations/Spriter/SpriterAnimationParser.h"
-#include "Engine/Animations/Spriter/SpriterAnimationTimelineEventAnimation.h"
 #include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 
-std::map<std::string, SpriterAnimationTimelineEventAnimation*> SpriterAnimationNode::TimelineCache = std::map<std::string, SpriterAnimationTimelineEventAnimation*>();
-
-SpriterAnimationNode* SpriterAnimationNode::create(std::string animationResource)
+SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationResource)
 {
 	SpriterAnimationNode* instance = new SpriterAnimationNode(animationResource);
 
@@ -20,30 +20,24 @@ SpriterAnimationNode* SpriterAnimationNode::create(std::string animationResource
 	return instance;
 }
 
-SpriterAnimationNode::SpriterAnimationNode(std::string animationResource)
+SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
 	this->animationParts = std::map<int, cocos2d::Sprite*>();
-	this->bones = std::map<std::string, cocos2d::Node*>();
+	this->bones = std::map<int, cocos2d::Node*>();
 	this->animationPartContainer = Node::create();
-	this->animations = std::map<std::string, SpriterAnimationTimelineEventAnimation*>();
+	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
+	
+	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
 
-	this->loadAnimationData(animationResource);
+	this->buildBones(spriterData);
+	this->buildSprites(spriterData, animationResource);
 
 	this->addChild(this->animationPartContainer);
 }
 
-void SpriterAnimationNode::onEnter()
+SpriterAnimationNode::~SpriterAnimationNode()
 {
-	super::onEnter();
 
-	this->scheduleUpdate();
-}
-
-void SpriterAnimationNode::update(float dt)
-{
-	super::update(dt);
-
-	this->currentTime += dt;
 }
 
 void SpriterAnimationNode::setFlippedX(bool isFlippedX)
@@ -51,14 +45,29 @@ void SpriterAnimationNode::setFlippedX(bool isFlippedX)
 	// TODO
 }
 
-void SpriterAnimationNode::loadAnimationData(std::string animationResource)
+void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 {
-	SpriterData spriterData = SpriterAnimationParser::Parse(animationResource);
-	
+	for (auto entities : spriterData.entities)
+	{
+		for (auto objectInfo : entities.objectInfo)
+		{
+			if (objectInfo.type == "bone")
+			{
+				Node* bone = Node::create();
+
+				// this->bones[objectInfo.name] = bone;
+
+				this->animationPartContainer->addChild(bone);
+			}
+		}
+	}
+}
+void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const std::string& animationResource)
+{
 	std::string containingFolder = StrUtils::replaceAll(animationResource, "\\", "/");
 	containingFolder = FileUtils::getInstance()->fullPathForFilename(animationResource);
 	containingFolder = containingFolder.substr(0, containingFolder.find_last_of("/\\")) + "/";
-
+	
 	for (auto folders : spriterData.folders)
 	{
 		for (auto file : folders.files)
@@ -69,34 +78,4 @@ void SpriterAnimationNode::loadAnimationData(std::string animationResource)
 			this->animationPartContainer->addChild(sprite);
 		}
 	}
-
-	for (auto entities : spriterData.entities)
-	{
-		for (auto objectInfo : entities.objectInfo)
-		{
-			if (objectInfo.type == "bone")
-			{
-				Node* bone = Node::create();
-
-				this->bones[objectInfo.name] = bone;
-
-				this->animationPartContainer->addChild(bone);
-			}
-		}
-	}
-
-	/*
-	// TODO: Cache these and make them fast
-	for (auto entities : spriterData.entities)
-	{
-		for (auto animation : entities.animations)
-		{
-			SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, animation);
-
-			this->animations[animation.name] = animationTimeline;
-
-			this->addChild(animationTimeline);
-		}
-	}
-	*/
 }

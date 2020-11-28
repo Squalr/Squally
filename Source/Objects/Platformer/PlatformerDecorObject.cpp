@@ -6,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
+#include "cocos/renderer/CCTextureCache.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Optimization/LazyNode.h"
@@ -25,12 +26,16 @@ PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& properties)
 
 PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(properties)
 {
+	const std::string name = this->properties.at(GameObject::MapKeyName).asString();
+	this->filePath = "Private/Platformer/Decor/" + name + ".png";
 	this->sprite = LazyNode<Sprite>::create(CC_CALLBACK_0(PlatformerDecorObject::buildSprite, this));
 	this->objectSize = Size(
 		 GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	);
 	this->enableHackerModeEvents = true;
+
+    Director::getInstance()->getTextureCache()->cacheImageAsync(this->filePath);
 
 	// Makes getScreenBounds() work
 	this->setContentSize(this->objectSize);
@@ -124,10 +129,8 @@ void PlatformerDecorObject::optimizationHideOffscreenDecor()
 
 Sprite* PlatformerDecorObject::buildSprite()
 {
-	const std::string name = this->properties.at(GameObject::MapKeyName).asString();
-	
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* instance = Sprite::create("Private/Platformer/Decor/" + name + ".png");
+	Sprite* instance = Sprite::create(this->filePath);
 
 	bool repeatX = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatX, Value(false)).asBool();
 	bool repeatY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatY, Value(false)).asBool();

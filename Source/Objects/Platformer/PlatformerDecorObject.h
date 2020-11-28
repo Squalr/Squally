@@ -30,7 +30,8 @@ private:
 	void runBounce();
 	void optimizationHideOffscreenDecor();
 	cocos2d::Sprite* buildSprite();
-
+	
+	std::string filePath;
 	cocos2d::Size objectSize;
 	LazyNode<cocos2d::Sprite>* sprite;
 };

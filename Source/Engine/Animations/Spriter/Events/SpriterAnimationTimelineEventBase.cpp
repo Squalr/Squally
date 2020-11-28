@@ -4,12 +4,10 @@
 
 using namespace cocos2d;
 
-SpriterAnimationTimelineEventBase::SpriterAnimationTimelineEventBase(SpriterAnimationNode* animations, float startTime, float endTime)
+SpriterAnimationTimelineEventBase::SpriterAnimationTimelineEventBase(float startTime, float endTime)
 {
-	this->animations = animations;
 	this->startTime = startTime;
 	this->endTime = endTime;
-	this->childTimelineEvents = std::vector<SpriterAnimationTimelineEventBase*>();
 	this->hasFired = false;
 }
 
@@ -18,6 +16,11 @@ void SpriterAnimationTimelineEventBase::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
+}
+
+void SpriterAnimationTimelineEventBase::reset()
+{
+	this->hasFired = false;
 }
 
 void SpriterAnimationTimelineEventBase::advance(float elapsedTime)

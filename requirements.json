@@ -5,14 +5,11 @@
         "freetype",
         "glew",
         "glfw3",
-        "libjpeg-turbo",
         "libogg",
         "libpng",
         "libvorbis",
         "mpg123", 
-        "tiff", 
-        "tinyxml2", 
-        "zlib"
+        "tinyxml2"
     ],
     "darwin": [
         "openssl"
