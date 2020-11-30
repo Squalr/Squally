@@ -1,5 +1,5 @@
 #pragma once
-#include <map>
+#include <set>
 
 #include "cocos/base/CCValue.h"
 
@@ -34,7 +34,8 @@ private:
 
 	void buildTimelines(const SpriterData& spriterData);
 
-	std::map<SpriterAnimationNode*, float> elapsedTimes;
+	// Animation nodes that will be updated every update tick
+	std::set<SpriterAnimationNode*> registeredAnimationNodes;
 	
 	// Responsible for reparenting, curve sampling, bone heirarchy, and z-sorting
 	std::vector<SpriterAnimationTimelineEventMainline*> mainlineEvents;

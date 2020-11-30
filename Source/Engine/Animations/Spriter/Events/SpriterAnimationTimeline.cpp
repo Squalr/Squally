@@ -4,6 +4,7 @@
 
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
+#include "Engine/Animations/Spriter/SpriterAnimationNode.h"
 
 using namespace cocos2d;
 
@@ -27,7 +28,7 @@ SpriterAnimationTimeline::SpriterAnimationTimeline(const std::string& animationR
 {
 	this->mainlineEvents = std::vector<SpriterAnimationTimelineEventMainline*>();
 	this->animationEvents = std::vector<SpriterAnimationTimelineEventAnimation*>();
-	this->elapsedTimes = std::map<SpriterAnimationNode*, float>();
+	this->registeredAnimationNodes = std::set<SpriterAnimationNode*>();
 }
 
 void SpriterAnimationTimeline::onEnter()
@@ -40,53 +41,64 @@ void SpriterAnimationTimeline::onEnter()
 void SpriterAnimationTimeline::update(float dt)
 {
 	super::update(dt);
+
+	for (auto animationNode : this->registeredAnimationNodes)
+	{
+		animationNode->advanceTimelineTime(dt);
+		
+		for (auto next : this->mainlineEvents)
+		{
+			next->advance(animationNode);
+		}
+
+		for (auto next : this->animationEvents)
+		{
+			next->advance(animationNode);
+		}
+	}
 }
 
 void SpriterAnimationTimeline::registerAnimationNode(SpriterAnimationNode* animationNode)
 {
-	this->elapsedTimes[animationNode] = 0.0f;
+	this->registeredAnimationNodes.insert(animationNode);
 }
 
 void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* animationNode)
 {
-	this->elapsedTimes.erase(animationNode);
+	this->registeredAnimationNodes.erase(animationNode);
 }
 
 void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 {
-	for (auto entities : spriterData.entities)
+	for (const auto& entities : spriterData.entities)
 	{
-		for (auto animation : entities.animations)
+		for (const auto& animation : entities.animations)
 		{
-			int previousTime = 0;
-			float maxTime = animation.length;
-
-			for (auto mainline : animation.mainline.keys)
-			{
-				SpriterAnimationTimelineEventMainline* mainlineEvents = SpriterAnimationTimelineEventMainline::create(mainline, animation.length);
-			}
-
+			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
 			{
 				float endTime = index == int(animation.mainline.keys.size()) - 1 ? animation.length : animation.mainline.keys[index].time;
-				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(animation.mainline.keys[index], endTime);
+				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(this, endTime, animation.mainline.keys[index]);
 
 				this->mainlineEvents.push_back(mainlineEvent);
 				
 				this->addChild(mainlineEvent);
 			}
-		}
-	}
+			
+			// Parse animations
+			for (const auto& timeline : animation.timelines)
+			{
+				// Parse animation keys (each key is a unique event)
+				for (int index = 0; index < int(timeline.keys.size()); index++)
+				{
+					float endTime = index == int(timeline.keys.size()) - 1 ? animation.length : timeline.keys[index].time;
+					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timeline.keys[index]);
 
-	for (auto entities : spriterData.entities)
-	{
-		for (auto animation : entities.animations)
-		{
-			SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(0.0f, 0.0f);
+					this->animationEvents.push_back(animationTimeline);
 
-			this->animationEvents.push_back(animationTimeline);
-
-			this->addChild(animationTimeline);
+					this->addChild(animationTimeline);
+				}
+			}
 		}
 	}
 }

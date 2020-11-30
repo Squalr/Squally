@@ -91,6 +91,12 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 
 	if (name == SpriterAnimationParser::AttributeSpriterData)
 	{
+		// Clear any existing data, if it exists
+		while (SpriterAnimationParser::FocusStack.size() > 0)
+		{
+			SpriterAnimationParser::FocusStack.pop();
+		}
+
 		SpriterAnimationParser::FocusStack.push(AttributeFocus::Data);
 	}
 	else if (name == SpriterAnimationParser::AttributeFolder)
@@ -201,33 +207,8 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 		{
 			case AttributeFocus::Mainline:
 			{
-				SpriterCurveType curveType = SpriterCurveType::Linear;
 				std::string curveTypeStr = GameUtils::getKeyOrDefault(attributes, "curve_type", Value("")).asString();
-
-				if (curveTypeStr == "instant")
-				{
-					curveType = SpriterCurveType::Instant;
-				}
-				else if (curveTypeStr == "quadrtaic")
-				{
-					curveType = SpriterCurveType::Quadratic;
-				}
-				else if (curveTypeStr == "cubic")
-				{
-					curveType = SpriterCurveType::Cubic;
-				}
-				else if (curveTypeStr == "quartic")
-				{
-					curveType = SpriterCurveType::Quartic;
-				}
-				else if (curveTypeStr == "quintic")
-				{
-					curveType = SpriterCurveType::Quintic;
-				}
-				else if (curveTypeStr == "bezier")
-				{
-					curveType = SpriterCurveType::Bezier;
-				}
+				SpriterCurveType curveType = SpriterAnimationParser::StringToCurveType(curveTypeStr, SpriterCurveType::Linear);
 
 				SpriterAnimationParser::CurrentParse.entities.back().animations.back().mainline.keys.push_back(SpriterMainlineKey(
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
@@ -247,10 +228,18 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 					break;
 				}
 
+				std::string curveTypeStr = GameUtils::getKeyOrDefault(attributes, "curve_type", Value("")).asString();
+				SpriterCurveType curveType = SpriterAnimationParser::StringToCurveType(curveTypeStr, SpriterCurveType::Inherit);
+
 				SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.push_back(SpriterTimelineKey(
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "spin", Value("0")).asString()),
-					std::stof(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString())
+					std::stof(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
+					curveType,
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c1", Value("0")).asString()),
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c2", Value("0")).asString()),
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c3", Value("0")).asString()),
+					std::stof(GameUtils::getKeyOrDefault(attributes, "c4", Value("0")).asString())
 				));
 
 				break;
@@ -275,13 +264,14 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 			return;
 		}
 
-		SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.back().objects.push_back(SpriterObject(
+		SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.back().objectType = SpriterObjectType::Object;
+		SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.back().object = SpriterObject(
 			std::stoi(GameUtils::getKeyOrDefault(attributes, "folder", Value("0")).asString()),
 			std::stoi(GameUtils::getKeyOrDefault(attributes, "file", Value("0")).asString()),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "y", Value("0")).asString())),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "scale_x", Value("1")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "scale_y", Value("1")).asString())),
 			std::stof(GameUtils::getKeyOrDefault(attributes, "angle", Value("0")).asString())
-		));
+		);
 	}
 	else if (name == SpriterAnimationParser::AttributeObjectRef)
 	{
@@ -314,11 +304,12 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 			return;
 		}
 
-		SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.back().bones.push_back(SpriterBone(
+		SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.back().objectType = SpriterObjectType::Bone;
+		SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.back().bone = SpriterBone(
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "y", Value("0")).asString())),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "scale_x", Value("1")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "scale_y", Value("1")).asString())),
 			std::stof(GameUtils::getKeyOrDefault(attributes, "angle", Value("0")).asString())
-		));
+		);
 	}
 	else if (name == SpriterAnimationParser::AttributeBoneRef)
 	{
@@ -342,9 +333,42 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 
 void SpriterAnimationParser::endElement(void* ctx, const char* name)
 {
-	SpriterAnimationParser::FocusStack.pop();
+	if (SpriterAnimationParser::FocusStack.size() > 0)
+	{
+		SpriterAnimationParser::FocusStack.pop();
+	}
 }
 
 void SpriterAnimationParser::textHandler(void* ctx, const char* ch, size_t len)
 {
+}
+
+SpriterCurveType SpriterAnimationParser::StringToCurveType(const std::string& curveTypeStr, SpriterCurveType defaultCurveType)
+{
+	if (curveTypeStr == "instant")
+	{
+		return SpriterCurveType::Instant;
+	}
+	else if (curveTypeStr == "quadrtaic")
+	{
+		return SpriterCurveType::Quadratic;
+	}
+	else if (curveTypeStr == "cubic")
+	{
+		return SpriterCurveType::Cubic;
+	}
+	else if (curveTypeStr == "quartic")
+	{
+		return SpriterCurveType::Quartic;
+	}
+	else if (curveTypeStr == "quintic")
+	{
+		return SpriterCurveType::Quintic;
+	}
+	else if (curveTypeStr == "bezier")
+	{
+		return SpriterCurveType::Bezier;
+	}
+
+	return defaultCurveType;
 }

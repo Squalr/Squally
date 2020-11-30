@@ -2,20 +2,22 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"
+
 using namespace cocos2d;
 
-SpriterAnimationTimelineEventMainline* SpriterAnimationTimelineEventMainline::create(const SpriterMainlineKey& mainlineData, float endTime)
+SpriterAnimationTimelineEventMainline* SpriterAnimationTimelineEventMainline::create(SpriterAnimationTimeline* timeline, float endTime, const SpriterMainlineKey& mainlineKey)
 {
-	SpriterAnimationTimelineEventMainline* instance = new SpriterAnimationTimelineEventMainline(mainlineData, endTime);
+	SpriterAnimationTimelineEventMainline* instance = new SpriterAnimationTimelineEventMainline(timeline, endTime, mainlineKey);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(const SpriterMainlineKey& mainlineData, float endTime) : super(mainlineData.time, endTime)
+SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(SpriterAnimationTimeline* timeline, float endTime, const SpriterMainlineKey& mainlineKey)
+	: super(timeline, mainlineKey.time, endTime, mainlineKey.curveType, mainlineKey.c1, mainlineKey.c2, mainlineKey.c3, mainlineKey.c4)
 {
-	this->mainlineData = mainlineData;
 }
 
 void SpriterAnimationTimelineEventMainline::onEnter()
@@ -23,11 +25,6 @@ void SpriterAnimationTimelineEventMainline::onEnter()
 	super::onEnter();
 }
 
-SpriterCurveType SpriterAnimationTimelineEventMainline::getCurveType()
-{
-	return this->mainlineData.curveType;
-}
-
-void SpriterAnimationTimelineEventMainline::onFire()
+void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animation)
 {
 }

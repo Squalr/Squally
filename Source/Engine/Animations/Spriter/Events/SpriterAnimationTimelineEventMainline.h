@@ -6,17 +6,13 @@
 class SpriterAnimationTimelineEventMainline : public SpriterAnimationTimelineEventBase
 {
 public:
-	static SpriterAnimationTimelineEventMainline* create(const SpriterMainlineKey& mainlineData, float endTime);
-
-	SpriterCurveType getCurveType();
+	static SpriterAnimationTimelineEventMainline* create(SpriterAnimationTimeline* timeline, float endTime, const SpriterMainlineKey& mainlineKey);
 
 protected:
-	SpriterAnimationTimelineEventMainline(const SpriterMainlineKey& mainlineData, float endTime);
+	SpriterAnimationTimelineEventMainline(SpriterAnimationTimeline* timeline, float endTime, const SpriterMainlineKey& mainlineKey);
 
 	void onEnter() override;
-	void onFire() override;
-
-	SpriterMainlineKey mainlineData;
+	void onFire(SpriterAnimationNode* animation) override;
 
 private:
 	typedef SpriterAnimationTimelineEventBase super;

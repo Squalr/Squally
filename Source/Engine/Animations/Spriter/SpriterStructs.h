@@ -22,6 +22,7 @@ struct SpriterBone
 	cocos2d::Vec2 scale;
 	float angle;
 
+	SpriterBone() : position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f) { }
 	SpriterBone(cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle)
 		: position(position), scale(scale), angle(angle) { }
 };
@@ -34,6 +35,7 @@ struct SpriterObjectRef
 	int key;
 	int zIndex;
 
+	SpriterObjectRef() : id(-1), parent(-1), timeline(-1), key(-1), zIndex(0) { }
 	SpriterObjectRef(int id, int parent, int timeline, int key, int zIndex)
 		: id(id), parent(parent), timeline(timeline), key(key), zIndex(zIndex) { }
 };
@@ -46,12 +48,14 @@ struct SpriterObject
 	cocos2d::Vec2 scale;
 	float angle;
 
+	SpriterObject() : folderId(-1), fileId(-1), position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f) { }
 	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle)
 		: folderId(folderId), fileId(fileId), position(position), scale(scale), angle(angle) { }
 };
 
 enum class SpriterCurveType
 {
+	Inherit,
 	Instant,
 	Linear,
 	Quadratic,
@@ -78,16 +82,28 @@ struct SpriterMainlineKey
 	SpriterMainlineKey() : id(-1), time(0.0f), curveType(SpriterCurveType::Linear), c1(0.0f), c2(0.0f), c3(0.0f), c4(0.0f), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
 };
 
+enum class SpriterObjectType
+{
+	Object,
+	Bone,
+};
+
 struct SpriterTimelineKey
 {
 	int id;
 	int spin;
 	float time;
-	std::vector<SpriterObject> objects;
-	std::vector<SpriterBone> bones;
+	SpriterCurveType curveType;
+	float c1;
+	float c2;
+	float c3;
+	float c4;
+	SpriterObject object;
+	SpriterBone bone;
+	SpriterObjectType objectType;
 
-	SpriterTimelineKey(int id, int spin, float time)
-		: id(id), spin(spin), time(time), objects(std::vector<SpriterObject>()), bones(std::vector<SpriterBone>()) { }
+	SpriterTimelineKey(int id, int spin, float time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
+		: id(id), spin(spin), time(time), curveType(curveType), c1(c1), c2(c2), c3(c3), c4(c4), object(SpriterObject()), bone(SpriterBone()) { }
 };
 
 struct SpriterTimeline

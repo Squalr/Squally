@@ -6,26 +6,30 @@
 #include "Engine/Animations/Spriter/SpriterStructs.h"
 
 class SpriterAnimationNode;
+class SpriterAnimationTimeline;
 
 class SpriterAnimationTimelineEventBase : public SmartNode
 {
 public:
-	void reset();
-	virtual void advance(float elapsedTime);
+	virtual void advance(SpriterAnimationNode* animation);
 
 protected:
-	SpriterAnimationTimelineEventBase(float startTime, float endTime);
+	SpriterAnimationTimelineEventBase(SpriterAnimationTimeline* timeline, float startTime, float endTime, SpriterCurveType curveType, float c1, float c2, float c3, float c4);
 
 	void onEnter() override;
 
-	virtual void onFire() = 0;
+	virtual void onFire(SpriterAnimationNode* animation) = 0;
 
-	SpriterCurveType curveType;
+	SpriterAnimationTimeline* timeline;
 
 private:
 	typedef SmartNode super;
-
+	
 	float startTime;
 	float endTime;
-	bool hasFired;
+	SpriterCurveType curveType;
+	float c1;
+	float c2;
+	float c3;
+	float c4;
 };

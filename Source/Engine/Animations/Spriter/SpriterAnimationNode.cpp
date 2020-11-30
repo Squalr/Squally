@@ -7,6 +7,7 @@
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
 #include "Engine/Animations/Spriter/SpriterAnimationParser.h"
+#include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 #include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
@@ -22,12 +23,13 @@ SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationR
 
 SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
-	this->animationParts = std::map<int, cocos2d::Sprite*>();
-	this->bones = std::map<int, cocos2d::Node*>();
+	this->animationParts = std::map<std::string, SpriterAnimationPart*>();
 	this->animationPartContainer = Node::create();
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
 	
 	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
+
+	this->timeline->registerAnimationNode(this);
 
 	this->buildBones(spriterData);
 	this->buildSprites(spriterData, animationResource);
@@ -36,6 +38,40 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 }
 
 SpriterAnimationNode::~SpriterAnimationNode()
+{
+	if (this->timeline != nullptr)
+	{
+		this->timeline->unregisterAnimationNode(this);
+	}
+}
+
+void SpriterAnimationNode::advanceTimelineTime(float dt)
+{
+	this->previousTimelineTime = this->timelineTime;
+	this->timelineTime += dt;
+}
+
+float SpriterAnimationNode::getPreviousTimelineTime()
+{
+	return this->previousTimelineTime;
+}
+
+float SpriterAnimationNode::getTimelineTime()
+{
+	return this->timelineTime;
+}
+
+SpriterAnimationPart* SpriterAnimationNode::getPartById(const std::string& name)
+{
+	if (this->animationParts.find(name) != this->animationParts.end())
+	{
+		return this->animationParts[name];
+	}
+
+	return nullptr;
+}
+
+void SpriterAnimationNode::playAnimation(std::string animation)
 {
 
 }
@@ -53,11 +89,10 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 		{
 			if (objectInfo.type == "bone")
 			{
-				Node* bone = Node::create();
+				SpriterAnimationPart* part = SpriterAnimationPart::create();
 
-				// this->bones[objectInfo.name] = bone;
-
-				this->animationPartContainer->addChild(bone);
+				this->animationParts[objectInfo.name] = part;
+				this->animationPartContainer->addChild(part);
 			}
 		}
 	}
@@ -72,10 +107,13 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 	{
 		for (auto file : folders.files)
 		{
+			SpriterAnimationPart* part = SpriterAnimationPart::create();
 			Sprite* sprite = Sprite::create(containingFolder + file.name);
 
-			this->animationParts[file.id] = sprite;
-			this->animationPartContainer->addChild(sprite);
+			part->addChild(sprite);
+
+			this->animationParts[file.name] = part;
+			this->animationPartContainer->addChild(part);
 		}
 	}
 }
