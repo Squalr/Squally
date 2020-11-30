@@ -5,6 +5,8 @@
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
 #include "Engine/Animations/Spriter/SpriterAnimationNode.h"
+#include "Engine/Animations/Spriter/SpriterAnimationParser.h"
+#include "Engine/GlobalDirector.h"
 
 using namespace cocos2d;
 
@@ -19,6 +21,7 @@ SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::strin
 		timeline->autorelease();
 
 		SpriterAnimationTimeline::TimelineCache[animationResource] = timeline;
+		GlobalDirector::getInstance()->registerGlobalNode(timeline);
 	}
 
 	return SpriterAnimationTimeline::TimelineCache[animationResource];
@@ -26,9 +29,11 @@ SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::strin
 
 SpriterAnimationTimeline::SpriterAnimationTimeline(const std::string& animationResource)
 {
-	this->mainlineEvents = std::vector<SpriterAnimationTimelineEventMainline*>();
-	this->animationEvents = std::vector<SpriterAnimationTimelineEventAnimation*>();
+	this->mainlineEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventMainline*>>>();
+	this->animationEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>>();
 	this->registeredAnimationNodes = std::set<SpriterAnimationNode*>();
+
+	this->buildTimelines(SpriterAnimationParser::Parse(animationResource));
 }
 
 void SpriterAnimationTimeline::onEnter()
@@ -44,16 +49,28 @@ void SpriterAnimationTimeline::update(float dt)
 
 	for (auto animationNode : this->registeredAnimationNodes)
 	{
-		animationNode->advanceTimelineTime(dt);
-		
-		for (auto next : this->mainlineEvents)
+		const std::string& entityName = animationNode->getCurrentEntityName();
+		const std::string& animationName = animationNode->getCurrentAnimation();
+
+		if (this->mainlineEvents.find(entityName) == this->mainlineEvents.end()
+			|| this->mainlineEvents[entityName].find(animationName) == this->mainlineEvents[entityName].end())
 		{
-			next->advance(animationNode);
+			continue;
+		}
+		
+		// Advance animation time on the registered node
+		animationNode->advanceTimelineTime(dt, this->mainlineEvents[entityName][animationName].back()->getEndTime());
+
+		// Process all mainline events (heirarchy, z-sorting, global interpolation type)
+		for (auto mainlineEvent : this->mainlineEvents[entityName][animationName])
+		{
+			mainlineEvent->advance(animationNode);
 		}
 
-		for (auto next : this->animationEvents)
+		// Process all animation events (position, scale, rotation, local interpolation type)
+		for (auto animationEvent : this->animationEvents[entityName][animationName])
 		{
-			next->advance(animationNode);
+			animationEvent->advance(animationNode);
 		}
 	}
 }
@@ -70,9 +87,9 @@ void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* ani
 
 void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 {
-	for (const auto& entities : spriterData.entities)
+	for (const auto& entity : spriterData.entities)
 	{
-		for (const auto& animation : entities.animations)
+		for (const auto& animation : entity.animations)
 		{
 			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
@@ -80,7 +97,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				float endTime = index == int(animation.mainline.keys.size()) - 1 ? animation.length : animation.mainline.keys[index].time;
 				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(this, endTime, animation.mainline.keys[index]);
 
-				this->mainlineEvents.push_back(mainlineEvent);
+				this->mainlineEvents[entity.name][animation.name].push_back(mainlineEvent);
 				
 				this->addChild(mainlineEvent);
 			}
@@ -88,15 +105,18 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			// Parse animations
 			for (const auto& timeline : animation.timelines)
 			{
+				SpriterAnimationTimelineEventAnimation* previous = nullptr;
+
 				// Parse animation keys (each key is a unique event)
 				for (int index = 0; index < int(timeline.keys.size()); index++)
 				{
 					float endTime = index == int(timeline.keys.size()) - 1 ? animation.length : timeline.keys[index].time;
-					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timeline.keys[index]);
+					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timeline.keys[index], previous);
 
-					this->animationEvents.push_back(animationTimeline);
+					this->animationEvents[entity.name][animation.name].push_back(animationTimeline);
 
 					this->addChild(animationTimeline);
+					previous = animationTimeline;
 				}
 			}
 		}

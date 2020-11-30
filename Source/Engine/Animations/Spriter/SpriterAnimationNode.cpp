@@ -8,9 +8,13 @@
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
 #include "Engine/Animations/Spriter/SpriterAnimationParser.h"
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
+
+const std::string SpriterAnimationNode::DefaultAnimationEntityName = "Entity";
+const std::string SpriterAnimationNode::DefaultAnimationName = "Idle";
 
 SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationResource)
 {
@@ -23,9 +27,15 @@ SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationR
 
 SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
-	this->animationParts = std::map<std::string, SpriterAnimationPart*>();
+	this->bones = std::map<std::string, std::map<std::string, SpriterAnimationPart*>>();
+	this->boneIdMap = std::map<int, SpriterAnimationPart*>();
+	this->sprites = std::map<std::string, std::map<std::string, SpriterAnimationPart*>>();
+	this->spriteIdMap = std::map<int, SpriterAnimationPart*>();
 	this->animationPartContainer = Node::create();
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
+	this->isRepeating = true;
+	this->currentEntityName = SpriterAnimationNode::DefaultAnimationEntityName;
+	this->currentAnimation = SpriterAnimationNode::DefaultAnimationName;
 	
 	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
 
@@ -45,10 +55,10 @@ SpriterAnimationNode::~SpriterAnimationNode()
 	}
 }
 
-void SpriterAnimationNode::advanceTimelineTime(float dt)
+void SpriterAnimationNode::advanceTimelineTime(float dt, float timelineMax)
 {
 	this->previousTimelineTime = this->timelineTime;
-	this->timelineTime += dt;
+	this->timelineTime = MathUtils::wrappingNormalize(this->timelineTime + dt, 0.0f, timelineMax);
 }
 
 float SpriterAnimationNode::getPreviousTimelineTime()
@@ -63,9 +73,18 @@ float SpriterAnimationNode::getTimelineTime()
 
 SpriterAnimationPart* SpriterAnimationNode::getPartById(const std::string& name)
 {
-	if (this->animationParts.find(name) != this->animationParts.end())
+	// Check if part matches a bone name
+	if (this->bones.find(this->currentEntityName) != this->bones.end()
+		&& this->bones[this->currentEntityName].find(name) != this->bones[this->currentEntityName].end())
 	{
-		return this->animationParts[name];
+		return this->bones[this->currentEntityName][name];
+	}
+
+	// Check if part matches a sprite name
+	if (this->sprites.find(this->currentEntityName) != this->sprites.end()
+		&& this->sprites[this->currentEntityName].find(name) != this->sprites[this->currentEntityName].end())
+	{
+		return this->sprites[this->currentEntityName][name];
 	}
 
 	return nullptr;
@@ -73,7 +92,14 @@ SpriterAnimationPart* SpriterAnimationNode::getPartById(const std::string& name)
 
 void SpriterAnimationNode::playAnimation(std::string animation)
 {
+	this->currentAnimation = animation;
+	this->resetAnimation();
+}
 
+void SpriterAnimationNode::resetAnimation()
+{
+	this->previousTimelineTime = 0.0f;
+	this->timelineTime = 0.0f;
 }
 
 void SpriterAnimationNode::setFlippedX(bool isFlippedX)
@@ -81,17 +107,27 @@ void SpriterAnimationNode::setFlippedX(bool isFlippedX)
 	// TODO
 }
 
+const std::string& SpriterAnimationNode::getCurrentEntityName()
+{
+	return this->currentEntityName;
+}
+
+const std::string& SpriterAnimationNode::getCurrentAnimation()
+{
+	return this->currentAnimation;
+}
+
 void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 {
-	for (auto entities : spriterData.entities)
+	for (auto entity : spriterData.entities)
 	{
-		for (auto objectInfo : entities.objectInfo)
+		for (auto objectInfo : entity.objectInfo)
 		{
 			if (objectInfo.type == "bone")
 			{
 				SpriterAnimationPart* part = SpriterAnimationPart::create();
 
-				this->animationParts[objectInfo.name] = part;
+				this->bones[entity.name][objectInfo.name] = part;
 				this->animationPartContainer->addChild(part);
 			}
 		}
@@ -102,18 +138,52 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 	std::string containingFolder = StrUtils::replaceAll(animationResource, "\\", "/");
 	containingFolder = FileUtils::getInstance()->fullPathForFilename(animationResource);
 	containingFolder = containingFolder.substr(0, containingFolder.find_last_of("/\\")) + "/";
+
+	std::map<unsigned long long, std::string> folderFileIdMap = std::map<unsigned long long, std::string>();
 	
-	for (auto folders : spriterData.folders)
+	// Build a mapping of folder/file ids to file names
+	for (auto folder : spriterData.folders)
 	{
-		for (auto file : folders.files)
+		for (auto file : folder.files)
 		{
-			SpriterAnimationPart* part = SpriterAnimationPart::create();
-			Sprite* sprite = Sprite::create(containingFolder + file.name);
+			folderFileIdMap[unsigned long long(folder.id) << 32 | unsigned long long(file.id)] = file.name;
+		}
+	}
+	
+	for (auto entity : spriterData.entities)
+	{
+		for (auto animation : entity.animations)
+		{
+			for (auto timeline : animation.timelines)
+			{
+				for (auto key : timeline.keys)
+				{
+					if (key.objectType != SpriterObjectType::Object)
+					{
+						continue;
+					}
 
-			part->addChild(sprite);
+					unsigned long long folderFileKey = unsigned long long(key.object.folderId) << 32 | unsigned long long(key.object.fileId);
 
-			this->animationParts[file.name] = part;
-			this->animationPartContainer->addChild(part);
+					if (folderFileIdMap.find(folderFileKey) == folderFileIdMap.end()
+						|| this->sprites[entity.name].find(timeline.name) != this->sprites[entity.name].end())
+					{
+						continue;
+					}
+
+					// Creation was deferred until now rather than during the folder/file id map building, since we needed a timeline id
+					// As far as I can tell, timeline ids are the same for all references of an object.
+					SpriterAnimationPart* part = SpriterAnimationPart::create();
+					Sprite* sprite = Sprite::create(containingFolder + folderFileIdMap[folderFileKey]);
+
+					part->addChild(sprite);
+
+					this->animationPartContainer->addChild(part);
+
+					this->sprites[entity.name][timeline.name] = part;
+					this->spriteIdMap[timeline.id] = part;
+				}
+			}
 		}
 	}
 }

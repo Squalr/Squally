@@ -13,23 +13,25 @@ class SpriterAnimationTimelineEventBase : public SmartNode
 public:
 	virtual void advance(SpriterAnimationNode* animation);
 
+	float getKeyTime();
+	float getEndTime();
+
 protected:
-	SpriterAnimationTimelineEventBase(SpriterAnimationTimeline* timeline, float startTime, float endTime, SpriterCurveType curveType, float c1, float c2, float c3, float c4);
+	SpriterAnimationTimelineEventBase(SpriterAnimationTimeline* timeline, float keytime, float endTime, SpriterCurveType curveType, float c1, float c2, float c3, float c4);
 
 	void onEnter() override;
 
 	virtual void onFire(SpriterAnimationNode* animation) = 0;
 
 	SpriterAnimationTimeline* timeline;
-
-private:
-	typedef SmartNode super;
-	
-	float startTime;
+	float keytime;
 	float endTime;
 	SpriterCurveType curveType;
 	float c1;
 	float c2;
 	float c3;
 	float c4;
+
+private:
+	typedef SmartNode super;
 };

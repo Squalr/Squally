@@ -21,10 +21,11 @@ struct SpriterBone
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 scale;
 	float angle;
+	float alpha;
 
-	SpriterBone() : position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f) { }
-	SpriterBone(cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle)
-		: position(position), scale(scale), angle(angle) { }
+	SpriterBone() : position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f), alpha(1.0f) { }
+	SpriterBone(cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle, float alpha)
+		: position(position), scale(scale), angle(angle), alpha(alpha) { }
 };
 
 struct SpriterObjectRef
@@ -47,10 +48,11 @@ struct SpriterObject
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 scale;
 	float angle;
+	float alpha;
 
-	SpriterObject() : folderId(-1), fileId(-1), position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f) { }
-	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle)
-		: folderId(folderId), fileId(fileId), position(position), scale(scale), angle(angle) { }
+	SpriterObject() : folderId(-1), fileId(-1), position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f), alpha(1.0f) { }
+	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle, float alpha)
+		: folderId(folderId), fileId(fileId), position(position), scale(scale), angle(angle), alpha(alpha) { }
 };
 
 enum class SpriterCurveType
@@ -163,21 +165,21 @@ struct SpriterEntity
 
 struct SpriterFile
 {
-	int id;
+	unsigned int id;
 	std::string name;
 	cocos2d::Vec2 size;
 	cocos2d::Vec2 anchor;
 
-	SpriterFile(int id, std::string name, cocos2d::Vec2 size, cocos2d::Vec2 anchor)
+	SpriterFile(unsigned int id, std::string name, cocos2d::Vec2 size, cocos2d::Vec2 anchor)
 		: id(id), name(name), size(size), anchor(anchor) { }
 };
 
 struct SpriterFolder
 {
-	int id;
+	unsigned int id;
 	std::vector<SpriterFile> files;
 
-	SpriterFolder(int id) : id(id), files(std::vector<SpriterFile>()) { }
+	SpriterFolder(unsigned int id) : id(id), files(std::vector<SpriterFile>()) { }
 };
 
 struct SpriterData

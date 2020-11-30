@@ -4,13 +4,13 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/Spriter/SpriterStructs.h"
-#include "Engine/SmartNode.h"
+#include "Engine/GlobalNode.h"
 
 class SpriterAnimationNode;
 class SpriterAnimationTimelineEventAnimation;
 class SpriterAnimationTimelineEventMainline;
 
-class SpriterAnimationTimeline : public SmartNode
+class SpriterAnimationTimeline : public GlobalNode
 {
 public:
 	static SpriterAnimationTimeline* getInstance(const std::string& animationResource);
@@ -37,11 +37,11 @@ private:
 	// Animation nodes that will be updated every update tick
 	std::set<SpriterAnimationNode*> registeredAnimationNodes;
 	
-	// Responsible for reparenting, curve sampling, bone heirarchy, and z-sorting
-	std::vector<SpriterAnimationTimelineEventMainline*> mainlineEvents;
+	// Responsible for reparenting, curve sampling, bone heirarchy, and z-sorting -- Keyed by: Entity => Animation Name => { Mainline Events }
+	std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventMainline*>>> mainlineEvents;
 
-	// Responsible for object position/scale, and curve sampling overrides
-	std::vector<SpriterAnimationTimelineEventAnimation*> animationEvents;
+	// Responsible for object position/scale, and curve sampling overrides -- Keyed by: Entity => Animation Name => { Animation Events }
+	std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>> animationEvents;
 
 	static std::map<std::string, SpriterAnimationTimeline*> TimelineCache;
 };

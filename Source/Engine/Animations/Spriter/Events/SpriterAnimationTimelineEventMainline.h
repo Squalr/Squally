@@ -16,4 +16,7 @@ protected:
 
 private:
 	typedef SpriterAnimationTimelineEventBase super;
+
+	std::map<int, int> boneParentTable;
+	std::map<int, int> objectParentTable;
 };
