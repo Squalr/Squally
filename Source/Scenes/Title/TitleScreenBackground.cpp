@@ -52,7 +52,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->rightEyeController = SmartAnimationSequenceNode::create();
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
-	this->squally->setFlippedX(true);
+	// this->squally->setFlippedX(true);
 	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f));
 	this->mainhand = this->squally->getAnimationPart("mainhand");
 

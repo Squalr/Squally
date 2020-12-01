@@ -12,23 +12,23 @@ public:
 		SpriterAnimationTimeline* timeline,
 		float endTime,
 		const SpriterTimeline& keyParent,
-		const SpriterTimelineKey& animationKey,
-		SpriterAnimationTimelineEventAnimation* previous
+		const SpriterTimelineKey& animationKey
 	);
 
+	SpriterAnimationTimelineEventAnimation* getNext();
+	void setNext(SpriterAnimationTimelineEventAnimation* next);
 	void advance(SpriterAnimationNode* animation) override;
 
 protected:
 	SpriterAnimationTimelineEventAnimation(SpriterAnimationTimeline* timeline,
 		float endTime,
 		const SpriterTimeline& keyParent,
-		const SpriterTimelineKey& animationKey,
-		SpriterAnimationTimelineEventAnimation* previous
+		const SpriterTimelineKey& animationKey
 	);
 	
 	void onFire(SpriterAnimationNode* animation) override;
 
-	SpriterAnimationTimelineEventAnimation* previous;
+	SpriterAnimationTimelineEventAnimation* next;
 
 private:
 	typedef SpriterAnimationTimelineEventBase super;

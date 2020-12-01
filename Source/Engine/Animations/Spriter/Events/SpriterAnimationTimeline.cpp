@@ -94,7 +94,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
 			{
-				float endTime = index == int(animation.mainline.keys.size()) - 1 ? animation.length : animation.mainline.keys[index].time;
+				float endTime = index + 1 < int(animation.mainline.keys.size()) ? animation.mainline.keys[index + 1].time : animation.length;
 				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(this, endTime, animation.mainline.keys[index]);
 
 				this->mainlineEvents[entity.name][animation.name].push_back(mainlineEvent);
@@ -105,18 +105,22 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			// Parse animations
 			for (const auto& timeline : animation.timelines)
 			{
-				SpriterAnimationTimelineEventAnimation* previous = nullptr;
-
 				// Parse animation keys (each key is a unique event)
 				for (int index = 0; index < int(timeline.keys.size()); index++)
 				{
-					float endTime = index == int(timeline.keys.size()) - 1 ? animation.length : timeline.keys[index].time;
-					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timeline.keys[index], previous);
+					float endTime = index + 1 < int(timeline.keys.size()) ? timeline.keys[index + 1].time : animation.length;
+					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timeline.keys[index]);
 
 					this->animationEvents[entity.name][animation.name].push_back(animationTimeline);
 
 					this->addChild(animationTimeline);
-					previous = animationTimeline;
+				}
+
+				// Set up 'next' targets for all animation events
+				for (int index = 0; index < int(timeline.keys.size()); index++)
+				{
+					int nextIndex = index + 1 < int(timeline.keys.size()) ? index + 1 : 0;
+					this->animationEvents[entity.name][animation.name][index]->setNext(this->animationEvents[entity.name][animation.name][nextIndex]);
 				}
 			}
 		}

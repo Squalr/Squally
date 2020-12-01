@@ -12,10 +12,9 @@ SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::
 	SpriterAnimationTimeline* timeline,
 	float endTime,
 	const SpriterTimeline& keyParent,
-	const SpriterTimelineKey& animationKey,
-	SpriterAnimationTimelineEventAnimation* previous)
+	const SpriterTimelineKey& animationKey)
 {
-	SpriterAnimationTimelineEventAnimation* instance = new SpriterAnimationTimelineEventAnimation(timeline, endTime, keyParent, animationKey, previous);
+	SpriterAnimationTimelineEventAnimation* instance = new SpriterAnimationTimelineEventAnimation(timeline, endTime, keyParent, animationKey);
 
 	instance->autorelease();
 
@@ -26,12 +25,11 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	SpriterAnimationTimeline* timeline,
 	float endTime,
 	const SpriterTimeline& keyParent,
-	const SpriterTimelineKey& animationKey,
-	SpriterAnimationTimelineEventAnimation* previous)
+	const SpriterTimelineKey& animationKey)
 	: super(timeline, animationKey.time, endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
 {
 	this->partName = keyParent.name;
-	this->previous = previous;
+	this->next = nullptr;
 
 	switch(animationKey.objectType)
 	{
@@ -55,6 +53,16 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	}
 }
 
+SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::getNext()
+{
+	return this->next;
+}
+
+void SpriterAnimationTimelineEventAnimation::setNext(SpriterAnimationTimelineEventAnimation* next)
+{
+	this->next = next;
+}
+
 void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
 {
 	super::advance(animation);
@@ -67,23 +75,28 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 	}
 
 	float currentTime = animation->getTimelineTime();
-	float previousTime = animation->getPreviousTimelineTime();
 	
 	if (currentTime >= this->keytime && currentTime < this->endTime)
 	{
-		// TODO: Use curve functions to transform the time ratio, this is linear right now
-		float timeRatio = (this->keytime - currentTime) / this->endTime;
+		if (this->next == nullptr || this->endTime <= this->keytime)
+		{
+			object->setPosition(this->position);
+			object->setScaleX(this->scale.x);
+			object->setScaleY(this->scale.y);
+			object->setRotation(this->rotation);
+			object->setOpacity(GLubyte(255.0f * this->alpha));
+		}
+		else
+		{
+			// TODO: Use curve functions to transform the time ratio, this is linear right now
+			float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
 
-		const Vec2& basePosition = previous == nullptr ? Vec2::ZERO : this->previous->position;
-		const Vec2& baseScale = previous == nullptr ? Vec2::ONE : this->previous->scale;
-		const float baseRotation = previous == nullptr ? 0.0f : this->previous->rotation;
-		const float baseAlpha = previous == nullptr ? 1.0f : float(this->previous->alpha);
-
-		object->setPosition(basePosition + (this->position - basePosition) * timeRatio);
-		object->setScaleX(baseScale.x + (this->scale.x - baseScale.x) * timeRatio);
-		object->setScaleY(baseScale.y + (this->scale.y - baseScale.y) * timeRatio);
-		object->setRotation(baseRotation + (this->rotation - baseRotation) * timeRatio);
-		object->setOpacity(GLubyte(255.0f * (baseAlpha + (this->alpha - baseAlpha) * timeRatio)));
+			object->setPosition(this->position + (this->next->position - this->position) * timeRatio);
+			object->setScaleX(this->scale.x + (this->next->scale.x - this->scale.x) * timeRatio);
+			object->setScaleY(this->scale.y + (this->next->scale.y - this->scale.y) * timeRatio);
+			object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
+			object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
+		}
 	}
 }
 

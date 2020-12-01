@@ -129,6 +129,11 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 
 				this->bones[entity.name][objectInfo.name] = part;
 				this->animationPartContainer->addChild(part);
+
+				// TODO: Get the ID for the bone. This will be tedious.
+				// Perhaps this logic needs to be moved to a pre-processing and passed with parsed data.
+				// This shit seems to be expensive and pre-computable.
+				this->boneIdMap = this->boneIdMap;
 			}
 		}
 	}
@@ -182,6 +187,9 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					this->sprites[entity.name][timeline.name] = part;
 					this->spriteIdMap[timeline.id] = part;
+
+					// Erase the key to ensure we only create the sprite once
+					folderFileIdMap.erase(folderFileKey);
 				}
 			}
 		}
