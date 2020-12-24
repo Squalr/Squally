@@ -35,9 +35,9 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 	this->defaultSprite = defaultSprite;
 	this->sprite = Sprite::create(this->defaultSprite);
 	this->repeatIndex = 0;
-	this->animationAnchor = Vec2(0.5f, 0.5f);
+	this->incrementCallback = nullptr;
 	
-	this->primeCache(this->defaultSprite);
+	SmartAnimationSequenceNode::PrimeCache(this->defaultSprite);
 
 	this->addChild(this->sprite);
 }
@@ -51,11 +51,11 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::clone()
 	return SmartAnimationSequenceNode::create(this->defaultSprite);
 }
 
-void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceFile)
+void SmartAnimationSequenceNode::PrimeCache(std::string initialSequenceResourceFile)
 {
-	std::vector<std::string> images = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
+	const std::vector<std::string>& images = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
-	for (auto next : images)
+	for (const std::string& next : images)
 	{
 		Director::getInstance()->getTextureCache()->addImage(next);
 	}
@@ -83,334 +83,155 @@ void SmartAnimationSequenceNode::stopAnimation()
 
 void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
-	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
+	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
 	this->playAnimation(animationFiles, animationSpeed, insertBlankFrame, onAnimationComplete);
 }
 
-void SmartAnimationSequenceNode::playAnimation(std::vector<std::string> animationFiles, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& animationFiles, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
-	/*
-	Animation* animation = Animation::create();
+	Vector<FiniteTimeAction*> animationSequence = Vector<FiniteTimeAction*>();
 
-	for (auto next : animationFiles)
+	for (const auto& animationFile : animationFiles)
 	{
-		animation->addSpriteFrameWithFile(next);
+		animationSequence.pushBack(CallFunc::create([=]()
+		{
+			this->sprite->initWithFile(animationFile);
+		}));
+
+		if (&animationFile != &animationFiles.back())
+		{
+			animationSequence.pushBack(DelayTime::create(animationSpeed));
+		}
 	}
 
 	if (insertBlankFrame)
 	{
-		animation->addSpriteFrameWithFile(UIResources::EmptyImage);
-	}
-
-	for (auto next : animation->getFrames())
-	{
-		if (next->getSpriteFrame() != nullptr)
+		animationSequence.pushBack(DelayTime::create(animationSpeed));
+		animationSequence.pushBack(CallFunc::create([=]()
 		{
-			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
-		}
+			this->sprite->initWithFile(UIResources::EmptyImage);
+		}));
 	}
 
-	animation->setDelayPerUnit(animationSpeed);
-
-	this->forwardsAnimation = Animate::create(animation);
+	animationSequence.pushBack(CallFunc::create([=]()
+	{
+		if (onAnimationComplete != nullptr)
+		{
+			onAnimationComplete();
+		}
+	}));
 
 	this->sprite->stopAllActions();
-	this->sprite->runAction(Sequence::create(
-		this->forwardsAnimation,
-		CallFunc::create([=]()
-		{
-			if (onAnimationComplete != nullptr)
-			{
-				onAnimationComplete();
-			}
-		}),
-		nullptr
-	));
-	*/
+	this->sprite->runAction(Sequence::create(animationSequence));
 }
 
 void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
 {
-	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
+	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
 	this->playAnimationRepeat(animationFiles, animationSpeed, repeatDelay, insertBlankFrame, repeatCount, onAnimationComplete);
 }
 
-void SmartAnimationSequenceNode::playAnimationRepeat(std::vector<std::string> animationFiles, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimationRepeat(const std::vector<std::string>& animationFiles, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
 {
-	/*
-	Animation* animation = Animation::create();
-
-	for (auto next : animationFiles)
+	// Note: checking for exactly 0 as negative values are interpreted as repeat forever
+	if (repeatCount == 0)
 	{
-		animation->addSpriteFrameWithFile(next);
+		this->playAnimation(animationFiles, animationSpeed, insertBlankFrame, onAnimationComplete);
+		return;
 	}
 
-	if (insertBlankFrame)
+	this->playAnimation(animationFiles, animationSpeed, insertBlankFrame, [=]()
 	{
-		animation->addSpriteFrameWithFile(UIResources::EmptyImage);
-	}
-
-	for (auto next : animation->getFrames())
-	{
-		if (next->getSpriteFrame() != nullptr)
-		{
-			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
-		}
-	}
-
-	animation->setDelayPerUnit(animationSpeed);
-
-	this->forwardsAnimation = Animate::create(animation);
-
-	this->sprite->stopAllActions();
-
-	if (repeatCount <= 0)
-	{
-		this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), nullptr)));
-	}
-	else
-	{
-		this->repeatIndex = 0;
-
-		this->sprite->runAction(Repeat::create(
-			Sequence::create(
-				this->forwardsAnimation,
-				DelayTime::create(repeatDelay),
-				CallFunc::create([=]()
-				{
-					this->repeatIndex++;
-
-					if (this->repeatIndex == repeatCount && onAnimationComplete != nullptr)
-					{
-						onAnimationComplete();
-					}
-				}),
-				nullptr
-			),
-			repeatCount
-		));
-	}
-	*/
-}
-
-void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, std::function<void()> onAnimationComplete)
-{
-	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
-
-	this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, insertBlankFrame, onAnimationComplete);
-}
-
-void SmartAnimationSequenceNode::playAnimationAndReverse(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, std::function<void()> onAnimationComplete)
-{
-	/*
-	Animation* animationIn = Animation::create();
-	Animation* animationOut = Animation::create();
-
-	if (insertBlankFrame)
-	{
-		animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
-	}
-
-	for (auto next : animationFiles)
-	{
-		animationIn->addSpriteFrameWithFile(next);
-		animationOut->addSpriteFrameWithFile(next);
-	}
-
-	if (insertBlankFrame)
-	{
-		animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
-	}
-
-	for (auto next : animationIn->getFrames())
-	{
-		if (next->getSpriteFrame() != nullptr)
-		{
-			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
-		}
-	}
-
-	for (auto next : animationOut->getFrames())
-	{
-		if (next->getSpriteFrame() != nullptr)
-		{
-			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
-		}
-	}
-
-	animationIn->setDelayPerUnit(animationSpeedIn);
-	animationOut->setDelayPerUnit(animationSpeedOut);
-
-	this->forwardsAnimation = Animate::create(animationIn);
-	this->backwardsAnimation = Animate::create(animationOut)->reverse();
-
-	this->sprite->stopAllActions();
-	this->sprite->runAction(Sequence::create(
-		this->forwardsAnimation,
-		DelayTime::create(reverseDelay),
-		this->backwardsAnimation,
-		CallFunc::create([=]()
+		if (repeatCount == 0)
 		{
 			if (onAnimationComplete != nullptr)
 			{
 				onAnimationComplete();
 			}
-		}),
-		nullptr
-	));
-	*/
+		}
+		else
+		{
+			this->sprite->runAction(Sequence::create(
+				DelayTime::create(repeatDelay),
+				CallFunc::create([=]()
+				{
+					this->playAnimationRepeat(animationFiles, animationSpeed, repeatDelay, insertBlankFrame, repeatCount - 1, onAnimationComplete);
+				}),
+				nullptr
+			));
+		}
+	});
+}
+
+void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, bool startReversed, std::function<void()> onAnimationComplete)
+{
+	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
+
+	this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, insertBlankFrame, startReversed, onAnimationComplete);
+}
+
+void SmartAnimationSequenceNode::playAnimationAndReverse(const std::vector<std::string>& animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, bool startReversed, std::function<void()> onAnimationComplete)
+{
+	std::vector<std::string> animationFilesReverse = std::vector<std::string>(animationFiles.rbegin(), animationFiles.rend());
+
+	this->playAnimation(startReversed ? animationFilesReverse : animationFiles, animationSpeedIn, insertBlankFrame, [=]
+	{
+		this->sprite->runAction(Sequence::create(
+			DelayTime::create(reverseDelay),
+			CallFunc::create([=]()
+			{
+
+				// No blank frame on animation out
+				this->playAnimation(startReversed ? animationFiles : animationFilesReverse, animationSpeedIn, false, onAnimationComplete);
+			}),
+			nullptr
+		));
+	});
 }
 
 void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
 {
-	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
+	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
 	this->playAnimationAndReverseRepeat(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, repeatDelay, insertBlankFrame, startReversed, repeatCount, onAnimationComplete);
 }
 
-void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector<std::string>& animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
 {
-	/*
-	Animation* animationIn = Animation::create();
-	Animation* animationOut = Animation::create();
-
-	if (insertBlankFrame)
+	if (repeatCount == 0)
 	{
-		animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
+		this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, insertBlankFrame, startReversed, animationSpeedOut, onAnimationComplete);
+		return;
 	}
 
-	for (auto next : animationFiles)
+	this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, insertBlankFrame, startReversed, animationSpeedOut, [=]()
 	{
-		animationIn->addSpriteFrameWithFile(next);
-		animationOut->addSpriteFrameWithFile(next);
-	}
-
-	if (insertBlankFrame)
-	{
-		animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
-	}
-
-	for (auto next : animationIn->getFrames())
-	{
-		if (next->getSpriteFrame() != nullptr)
+		if (repeatCount == 0)
 		{
-			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
-		}
-	}
-
-	for (auto next : animationOut->getFrames())
-	{
-		if (next->getSpriteFrame() != nullptr)
-		{
-			next->getSpriteFrame()->setAnchorPoint(this->animationAnchor);
-		}
-	}
-
-	animationIn->setDelayPerUnit(animationSpeedIn);
-	animationOut->setDelayPerUnit(animationSpeedOut);
-
-	this->forwardsAnimation = Animate::create(animationIn);
-	this->backwardsAnimation = Animate::create(animationOut)->reverse();
-	this->sprite->stopAllActions();
-
-	if (startReversed)
-	{
-		if (repeatCount <= 0)
-		{
-			this->sprite->runAction(RepeatForever::create(
-				Sequence::create(
-					this->backwardsAnimation,
-					DelayTime::create(repeatDelay),
-					this->forwardsAnimation,
-					DelayTime::create(reverseDelay),
-					CallFunc::create([=]()
-					{
-						if (onAnimationComplete != nullptr)
-						{
-							onAnimationComplete();
-						}
-					}),
-					nullptr
-				)
-			));
+			if (onAnimationComplete != nullptr)
+			{
+				onAnimationComplete();
+			}
 		}
 		else
 		{
-			this->sprite->runAction(Repeat::create(
-				Sequence::create(
-					this->backwardsAnimation,
-					DelayTime::create(repeatDelay),
-					this->forwardsAnimation,
-					DelayTime::create(reverseDelay),
-					CallFunc::create([=]()
-					{
-						this->repeatIndex++;
-
-						if (this->repeatIndex == repeatCount && onAnimationComplete != nullptr)
-						{
-							onAnimationComplete();
-						}
-					}),
-					nullptr
-				),
-				repeatCount
+			this->sprite->runAction(Sequence::create(
+				DelayTime::create(repeatDelay),
+				CallFunc::create([=]()
+				{
+					this->playAnimationAndReverseRepeat(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, repeatDelay, insertBlankFrame, startReversed, repeatCount - 1, onAnimationComplete);
+				}),
+				nullptr
 			));
 		}
-	}
-	else
-	{
-		if (repeatCount <= 0)
-		{
-			this->sprite->runAction(RepeatForever::create(
-				Sequence::create(
-					this->forwardsAnimation,
-					DelayTime::create(reverseDelay),
-					this->backwardsAnimation,
-					DelayTime::create(repeatDelay),
-					CallFunc::create([=]()
-					{
-						if (onAnimationComplete != nullptr)
-						{
-							onAnimationComplete();
-						}
-					}),
-					nullptr
-				)
-			));
-		}
-		else
-		{
-			this->repeatIndex = 0;
-
-			this->sprite->runAction(Repeat::create(
-				Sequence::create(
-					this->forwardsAnimation,
-					DelayTime::create(reverseDelay),
-					this->backwardsAnimation,
-					DelayTime::create(repeatDelay),
-					CallFunc::create([=]()
-					{
-						this->repeatIndex++;
-
-						if (this->repeatIndex == repeatCount && onAnimationComplete != nullptr)
-						{
-							onAnimationComplete();
-						}
-					}),
-					nullptr
-				),
-				repeatCount
-			));
-		}
-	}
-	*/
+	});
 }
 
 void SmartAnimationSequenceNode::setAnimationAnchor(Vec2 anchor)
 {
-	this->animationAnchor = anchor;
+	this->sprite->setAnchorPoint(anchor);
 }
 
 void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)
@@ -423,7 +244,12 @@ void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 	this->sprite->setFlippedY(isFlipped);
 }
 
-std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::string firstFrameResource)
+void SmartAnimationSequenceNode::setIncrementCallback(std::function<int(int, int)> incrementCallback)
+{
+	this->incrementCallback = incrementCallback;
+}
+
+const std::vector<std::string>& SmartAnimationSequenceNode::GetAllAnimationFiles(std::string firstFrameResource)
 {
 	if (SmartAnimationSequenceNode::AnimationFileCache.find(firstFrameResource) != SmartAnimationSequenceNode::AnimationFileCache.end())
 	{
@@ -446,7 +272,7 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 	std::map<int, std::string> orderedAnimationFileMap = std::map<int, std::string>();
 	std::vector<std::string> files = FileUtils::getInstance()->listFiles(containingFolder);
 
-	for (auto next : files)
+	for (const std::string& next : files)
 	{
 		std::string fileName = StrUtils::replaceAll(next, "\\", "/");
 
@@ -468,16 +294,14 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 		}
 	}
 
-	std::vector<std::string> foundAnimations = std::vector<std::string>();
+	SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource] = std::vector<std::string>();
 
-	for (auto next : orderedAnimationFileMap)
+	for (const auto& next : orderedAnimationFileMap)
 	{
 		std::string fileName = next.second;
 
-		foundAnimations.push_back(fileName);
+		SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource].push_back(fileName);
 	}
 
-	SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource] = foundAnimations;
-
-	return foundAnimations;
+	return SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource];
 }

@@ -206,7 +206,7 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});

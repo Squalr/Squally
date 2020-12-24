@@ -12,7 +12,10 @@ class SpriterAnimationBone : public SpriterAnimationPart
 public:
 	static SpriterAnimationBone* create(cocos2d::Size boneSize);
 
+	// Fix to super stupid bullshit where matricies do not properly propagate in cocos, so we need to prevent all chained rotations.
 	/*
+    float getRotation() const override;
+    void setRotation(float rotation) override;
 	const cocos2d::Vec2& getBoneScale() const;
     void setScaleX(float scaleX) override;
     void setScaleY(float scaleY) override;
@@ -31,6 +34,7 @@ private:
 
 	void redrawDebugDraw();
 
+	float boneRotation;
 	cocos2d::Size boneSize;
 	cocos2d::Vec2 boneScale;
 	cocos2d::DrawNode* debugDraw;

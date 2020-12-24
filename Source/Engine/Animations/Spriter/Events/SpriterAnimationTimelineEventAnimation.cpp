@@ -1,5 +1,6 @@
 #include "SpriterAnimationTimelineEventAnimation.h"
 
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"

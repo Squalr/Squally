@@ -56,6 +56,16 @@ void SpriterAnimationBone::setDebugDrawHeirarchyDepth(int heirarchyDepth)
 }
 
 /*
+float SpriterAnimationBone::getRotation() const
+{
+	return this->boneRotation;
+}
+
+void SpriterAnimationBone::setRotation(float rotation)
+{
+	this->boneRotation = rotation;
+}
+
 const cocos2d::Vec2& SpriterAnimationBone::getBoneScale() const
 {
 	return this->boneScale;

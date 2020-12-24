@@ -14,10 +14,11 @@ public:
 	
     void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
 	/*
+	void setRotation(float rotation) override;
     void setScaleX(float scaleX) override;
     void setScaleY(float scaleY) override;
-	*/
     void visit(cocos2d::Renderer* renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
+	*/
 
 	void setDebugDrawHeirarchyDepth();
 	void setDebugDrawBoneScale();

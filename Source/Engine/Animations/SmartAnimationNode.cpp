@@ -35,10 +35,12 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->initialized = false;
 	this->currentAnimation = "";
 	this->currentAnimationPriority = -1.0f;
-	this->spriterAnimation = SpriterAnimationNode::create(animationResource);
+	// this->spriterAnimation = SpriterAnimationNode::create(animationResource);
+
+	// animationNode->setPosition(Vec2(256.0f, 256.0f));
 
 	this->addChild(this->animationNode);
-	this->addChild(this->spriterAnimation);
+	// this->addChild(this->spriterAnimation);
 }
 
 SmartAnimationNode::~SmartAnimationNode()

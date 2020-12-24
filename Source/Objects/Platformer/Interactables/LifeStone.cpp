@@ -52,7 +52,7 @@ LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::I
 	{
 		runOnce = false;
 
-		SmartAnimationSequenceNode::primeCache(FXResources::Heal_Heal_0000);
+		SmartAnimationSequenceNode::PrimeCache(FXResources::Heal_Heal_0000);
 	}
 	
 	this->addChild(this->lifeStone);

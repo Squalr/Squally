@@ -203,7 +203,7 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});

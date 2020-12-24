@@ -60,12 +60,10 @@ void SpikedLog::onEnter()
 
 	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLog_SpikedLog_00, 0.08f, 0.0f);
 
-	/*
-	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int current, int max)
+	this->spikedLog->setIncrementCallback([=](int current, int max)
 	{
 		return this->incrementSpikedLogAnimation(current, max);
-	};
-	*/
+	});
 }
 
 void SpikedLog::initializePositions()
