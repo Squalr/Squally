@@ -91,13 +91,30 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 	{
 		for (const auto& animation : entity.animations)
 		{
+			// There exists a 'key' property on bone/obj refs that maps to a timeline key at a given time.
+			// Painfully, there can be extraneous info in the timeilne that we need to ignore if it references a value that does not exist in this set.
+			// Joint key of key << 48 | timeline id << 32 | timeline time. We can get away with hashing 3 ints this way because key/timeline ID will always be small ints.
+			std::set<uint64_t> mainlineTimelineRefKeys = std::set<uint64_t>();
+
 			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
 			{
+				const SpriterMainlineKey& mainlineKey = animation.mainline.keys[index];
+
 				float endTime = index + 1 < int(animation.mainline.keys.size()) ? animation.mainline.keys[index + 1].time : animation.length;
-				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(this, endTime, animation.mainline.keys[index]);
+				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(this, endTime, animation, mainlineKey);
 
 				this->mainlineEvents[entity.name][animation.name].push_back(mainlineEvent);
+
+				for (const auto& boneRef : mainlineKey.boneRefs)
+				{
+					mainlineTimelineRefKeys.insert(uint64_t(boneRef.key) << 48 | uint64_t(boneRef.timeline) << 32 | uint64_t(mainlineKey.time));
+				}
+
+				for (const auto& objectRef : mainlineKey.objectRefs)
+				{
+					mainlineTimelineRefKeys.insert(uint64_t(objectRef.key) << 48 | uint64_t(objectRef.timeline) << 32 | uint64_t(mainlineKey.time));
+				}
 				
 				this->addChild(mainlineEvent);
 			}
@@ -105,11 +122,24 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			// Parse animations
 			for (const auto& timeline : animation.timelines)
 			{
-				// Parse animation keys (each key is a unique event)
-				for (int index = 0; index < int(timeline.keys.size()); index++)
+				// Filter out extraneous timeline information that references non-existent keys.
+				std::vector<SpriterTimelineKey> filteredKeys = std::vector<SpriterTimelineKey>();
+				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
 				{
-					float endTime = index + 1 < int(timeline.keys.size()) ? timeline.keys[index + 1].time : animation.length;
-					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timeline.keys[index]);
+					return mainlineTimelineRefKeys.find(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time)) != mainlineTimelineRefKeys.end();
+				});
+
+				// Sort by time ascending
+				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
+				{ 
+					return a.time > b.time; 
+				});
+				
+				// Parse animation keys (each key is a unique event)
+				for (int index = 0; index < int(filteredKeys.size()); index++)
+				{
+					float endTime = index + 1 < int(filteredKeys.size()) ? filteredKeys[index + 1].time : animation.length;
+					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, filteredKeys[index]);
 
 					this->animationEvents[entity.name][animation.name].push_back(animationTimeline);
 
@@ -117,9 +147,9 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				}
 
 				// Set up 'next' targets for all animation events
-				for (int index = 0; index < int(timeline.keys.size()); index++)
+				for (int index = 0; index < int(filteredKeys.size()); index++)
 				{
-					int nextIndex = index + 1 < int(timeline.keys.size()) ? index + 1 : 0;
+					int nextIndex = index + 1 < int(filteredKeys.size()) ? index + 1 : 0;
 					this->animationEvents[entity.name][animation.name][index]->setNext(this->animationEvents[entity.name][animation.name][nextIndex]);
 				}
 			}

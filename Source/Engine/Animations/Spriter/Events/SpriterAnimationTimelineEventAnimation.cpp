@@ -3,8 +3,10 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"
+#include "Engine/Animations/Spriter/SpriterAnimationBone.h"
 #include "Engine/Animations/Spriter/SpriterAnimationNode.h"
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 
 using namespace cocos2d;
 
@@ -26,7 +28,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	float endTime,
 	const SpriterTimeline& keyParent,
 	const SpriterTimelineKey& animationKey)
-	: super(timeline, animationKey.time, endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
+	: super(timeline, float(animationKey.time), endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
 {
 	this->partName = keyParent.name;
 	this->next = nullptr;
@@ -36,7 +38,9 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 		case SpriterObjectType::Bone:
 		{
 			this->position = animationKey.bone.position;
-			this->scale = animationKey.bone.scale;
+			// We don't actually want to set the scale for bones -- scale for bones does not propagate. It is only used in draw size for the debug boxes.
+			this->debugDrawScale = animationKey.bone.scale;
+			this->scale = Vec2::ONE;
 			this->rotation = animationKey.bone.angle;
 			this->alpha = animationKey.bone.alpha;
 			break;
@@ -46,11 +50,15 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 		{
 			this->position = animationKey.object.position;
 			this->scale = animationKey.object.scale;
+			this->debugDrawScale = Vec2::ONE;
 			this->rotation = animationKey.object.angle;
 			this->alpha = animationKey.object.alpha;
 			break;
 		}
 	}
+
+	// Map spriter rotation to cocos rotation
+	this->rotation *= -1.0f;
 }
 
 SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::getNext()
@@ -85,6 +93,17 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 			object->setScaleY(this->scale.y);
 			object->setRotation(this->rotation);
 			object->setOpacity(GLubyte(255.0f * this->alpha));
+
+			// Debug draw info
+			if (DeveloperModeController::isDeveloperModeEnabled())
+			{
+				SpriterAnimationBone* bone = animation->getBoneById(this->partName);
+
+				if (bone != nullptr)
+				{
+					bone->setDebugDrawBoneScale(this->debugDrawScale);
+				}
+			}
 		}
 		else
 		{
@@ -96,6 +115,17 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 			object->setScaleY(this->scale.y + (this->next->scale.y - this->scale.y) * timeRatio);
 			object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
 			object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
+
+			// Debug draw info
+			if (DeveloperModeController::isDeveloperModeEnabled())
+			{
+				SpriterAnimationBone* bone = animation->getBoneById(this->partName);
+
+				if (bone != nullptr)
+				{
+					bone->setDebugDrawBoneScale(this->debugDrawScale + (this->next->debugDrawScale - this->debugDrawScale) * timeRatio);
+				}
+			}
 		}
 	}
 }

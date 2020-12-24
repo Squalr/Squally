@@ -39,7 +39,11 @@ float SpriterAnimationTimelineEventBase::getEndTime()
 
 void SpriterAnimationTimelineEventBase::advance(SpriterAnimationNode* animation)
 {
-	if (animation->getPreviousTimelineTime() < this->keytime && animation->getTimelineTime() > this->keytime)
+	const float previousTime = animation->getPreviousTimelineTime();
+	const float currentTime = animation->getTimelineTime();
+	const bool timeWrapped = previousTime > currentTime;
+
+	if ((timeWrapped || previousTime <= this->keytime) && currentTime > this->keytime)
 	{
 		this->onFire(animation);
 	}

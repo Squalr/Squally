@@ -10,6 +10,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class SpriterAnimationBone;
 class SpriterAnimationPart;
 class SpriterAnimationTimeline;
 
@@ -24,10 +25,14 @@ public:
 	float getTimelineTime();
 
 	SpriterAnimationPart* getPartById(const std::string& name);
+	SpriterAnimationBone* getBoneById(const std::string& name);
+	SpriterAnimationPart* getSpriteById(const std::string& name);
 	void playAnimation(std::string animation);
 	void resetAnimation();
 	const std::string& getCurrentEntityName();
 	const std::string& getCurrentAnimation();
+	const std::map<std::string, SpriterAnimationBone*>& getCurrentBoneMap();
+	const std::map<std::string, SpriterAnimationPart*>& getCurrentSpriteMap();
 
 protected:
 	SpriterAnimationNode(const std::string& animationResource);
@@ -41,8 +46,8 @@ private:
 	SpriterAnimationTimeline* timeline;
 
 	// Entity => Name => Bone
-	std::map<std::string, std::map<std::string, SpriterAnimationPart*>> bones;
-	std::map<int, SpriterAnimationPart*> boneIdMap;
+	std::map<std::string, std::map<std::string, SpriterAnimationBone*>> bones;
+	std::map<int, SpriterAnimationBone*> boneIdMap;
 	
 	// Entity => Name => Sprite
 	std::map<std::string, std::map<std::string, SpriterAnimationPart*>> sprites;

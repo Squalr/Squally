@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "cocos/math/Vec2.h"
+#include "cocos/math/CCGeometry.h"
 
 // TODO: Variables, events, sounds
 
@@ -70,7 +71,7 @@ enum class SpriterCurveType
 struct SpriterMainlineKey
 {
 	int id;
-	float time;
+	int time;
 	SpriterCurveType curveType;
 	float c1;
 	float c2;
@@ -79,9 +80,9 @@ struct SpriterMainlineKey
 	std::vector<SpriterObjectRef> objectRefs;
 	std::vector<SpriterBoneRef> boneRefs;
 
-	SpriterMainlineKey(int id, float time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
+	SpriterMainlineKey(int id, int time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
 		: id(id), time(time), curveType(curveType), c1(c1), c2(c2), c3(c3), c4(c4), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
-	SpriterMainlineKey() : id(-1), time(0.0f), curveType(SpriterCurveType::Linear), c1(0.0f), c2(0.0f), c3(0.0f), c4(0.0f), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
+	SpriterMainlineKey() : id(-1), time(0), curveType(SpriterCurveType::Linear), c1(0.0f), c2(0.0f), c3(0.0f), c4(0.0f), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
 };
 
 enum class SpriterObjectType
@@ -94,7 +95,7 @@ struct SpriterTimelineKey
 {
 	int id;
 	int spin;
-	float time;
+	int time;
 	SpriterCurveType curveType;
 	float c1;
 	float c2;
@@ -104,7 +105,7 @@ struct SpriterTimelineKey
 	SpriterBone bone;
 	SpriterObjectType objectType;
 
-	SpriterTimelineKey(int id, int spin, float time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
+	SpriterTimelineKey(int id, int spin, int time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
 		: id(id), spin(spin), time(time), curveType(curveType), c1(c1), c2(c2), c3(c3), c4(c4), object(SpriterObject()), bone(SpriterBone()) { }
 };
 
@@ -146,9 +147,9 @@ struct SpriterObjectInfo
 {
 	std::string name;
 	std::string type;
-	cocos2d::Vec2 size;
+	cocos2d::Size size;
 
-	SpriterObjectInfo(std::string name, std::string type, cocos2d::Vec2 size)
+	SpriterObjectInfo(std::string name, std::string type, cocos2d::Size size)
 		: name(name), type(type), size(size) { }
 };
 
@@ -167,10 +168,10 @@ struct SpriterFile
 {
 	unsigned int id;
 	std::string name;
-	cocos2d::Vec2 size;
+	cocos2d::Size size;
 	cocos2d::Vec2 anchor;
 
-	SpriterFile(unsigned int id, std::string name, cocos2d::Vec2 size, cocos2d::Vec2 anchor)
+	SpriterFile(unsigned int id, std::string name, cocos2d::Size size, cocos2d::Vec2 anchor)
 		: id(id), name(name), size(size), anchor(anchor) { }
 };
 
@@ -186,4 +187,7 @@ struct SpriterData
 {
 	std::vector<SpriterFolder> folders;
 	std::vector<SpriterEntity> entities;
+
+	// Precomputed {animationId => {timeline id => {bone name => bone ID map}}}
+	std::map<int, std::map<std::string, int>> boneMap;
 };

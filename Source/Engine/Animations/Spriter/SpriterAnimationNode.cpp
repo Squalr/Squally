@@ -4,8 +4,7 @@
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"
-#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
-#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventMainline.h"
+#include "Engine/Animations/Spriter/SpriterAnimationBone.h"
 #include "Engine/Animations/Spriter/SpriterAnimationParser.h"
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 #include "Engine/Utils/MathUtils.h"
@@ -27,8 +26,8 @@ SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationR
 
 SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
-	this->bones = std::map<std::string, std::map<std::string, SpriterAnimationPart*>>();
-	this->boneIdMap = std::map<int, SpriterAnimationPart*>();
+	this->bones = std::map<std::string, std::map<std::string, SpriterAnimationBone*>>();
+	this->boneIdMap = std::map<int, SpriterAnimationBone*>();
 	this->sprites = std::map<std::string, std::map<std::string, SpriterAnimationPart*>>();
 	this->spriteIdMap = std::map<int, SpriterAnimationPart*>();
 	this->animationPartContainer = Node::create();
@@ -36,6 +35,8 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 	this->isRepeating = true;
 	this->currentEntityName = SpriterAnimationNode::DefaultAnimationEntityName;
 	this->currentAnimation = SpriterAnimationNode::DefaultAnimationName;
+	this->previousTimelineTime = 0.0f;
+	this->timelineTime = 0.0f;
 	
 	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
 
@@ -74,13 +75,30 @@ float SpriterAnimationNode::getTimelineTime()
 SpriterAnimationPart* SpriterAnimationNode::getPartById(const std::string& name)
 {
 	// Check if part matches a bone name
+	SpriterAnimationBone* bone = this->getBoneById(name);
+
+	if (bone != nullptr)
+	{
+		return bone;
+	}
+
+	// Check if part matches a sprite name
+	return getSpriteById(name);
+}
+
+SpriterAnimationBone* SpriterAnimationNode::getBoneById(const std::string& name)
+{
 	if (this->bones.find(this->currentEntityName) != this->bones.end()
 		&& this->bones[this->currentEntityName].find(name) != this->bones[this->currentEntityName].end())
 	{
 		return this->bones[this->currentEntityName][name];
 	}
 
-	// Check if part matches a sprite name
+	return nullptr;
+}
+
+SpriterAnimationPart* SpriterAnimationNode::getSpriteById(const std::string& name)
+{
 	if (this->sprites.find(this->currentEntityName) != this->sprites.end()
 		&& this->sprites[this->currentEntityName].find(name) != this->sprites[this->currentEntityName].end())
 	{
@@ -117,6 +135,26 @@ const std::string& SpriterAnimationNode::getCurrentAnimation()
 	return this->currentAnimation;
 }
 
+const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCurrentBoneMap()
+{
+	if (this->bones.find(this->currentEntityName) == this->bones.end())
+	{
+		this->bones[this->currentEntityName] = std::map<std::string, SpriterAnimationBone*>();
+	}
+
+	return this->bones[this->currentEntityName];
+}
+
+const std::map<std::string, SpriterAnimationPart*>& SpriterAnimationNode::getCurrentSpriteMap()
+{
+	if (this->sprites.find(this->currentEntityName) == this->sprites.end())
+	{
+		this->sprites[this->currentEntityName] = std::map<std::string, SpriterAnimationPart*>();
+	}
+
+	return this->sprites[this->currentEntityName];
+}
+
 void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 {
 	for (auto entity : spriterData.entities)
@@ -125,15 +163,10 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 		{
 			if (objectInfo.type == "bone")
 			{
-				SpriterAnimationPart* part = SpriterAnimationPart::create();
+				SpriterAnimationBone* bone = SpriterAnimationBone::create(objectInfo.size);
 
-				this->bones[entity.name][objectInfo.name] = part;
-				this->animationPartContainer->addChild(part);
-
-				// TODO: Get the ID for the bone. This will be tedious.
-				// Perhaps this logic needs to be moved to a pre-processing and passed with parsed data.
-				// This shit seems to be expensive and pre-computable.
-				this->boneIdMap = this->boneIdMap;
+				this->bones[entity.name][objectInfo.name] = bone;
+				this->animationPartContainer->addChild(bone);
 			}
 		}
 	}
@@ -144,14 +177,14 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 	containingFolder = FileUtils::getInstance()->fullPathForFilename(animationResource);
 	containingFolder = containingFolder.substr(0, containingFolder.find_last_of("/\\")) + "/";
 
-	std::map<unsigned long long, std::string> folderFileIdMap = std::map<unsigned long long, std::string>();
+	std::map<uint64_t, std::string> folderFileIdMap = std::map<uint64_t, std::string>();
 	
 	// Build a mapping of folder/file ids to file names
 	for (auto folder : spriterData.folders)
 	{
 		for (auto file : folder.files)
 		{
-			folderFileIdMap[unsigned long long(folder.id) << 32 | unsigned long long(file.id)] = file.name;
+			folderFileIdMap[uint64_t(folder.id) << 32 | uint64_t(file.id)] = file.name;
 		}
 	}
 	
@@ -168,7 +201,7 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 						continue;
 					}
 
-					unsigned long long folderFileKey = unsigned long long(key.object.folderId) << 32 | unsigned long long(key.object.fileId);
+					uint64_t folderFileKey = uint64_t(key.object.folderId) << 32 | uint64_t(key.object.fileId);
 
 					if (folderFileIdMap.find(folderFileKey) == folderFileIdMap.end()
 						|| this->sprites[entity.name].find(timeline.name) != this->sprites[entity.name].end())

@@ -119,7 +119,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 		SpriterAnimationParser::CurrentParse.folders.back().files.push_back(SpriterFile(
 			std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
 			GameUtils::getKeyOrDefault(attributes, "name", Value("")).asString(),
-			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "width", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "height", Value("0")).asString())),
+			Size(std::stof(GameUtils::getKeyOrDefault(attributes, "width", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "height", Value("0")).asString())),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "pivot_x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "pivot_y", Value("0")).asString()))
 		));
 	}
@@ -144,7 +144,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 		SpriterAnimationParser::CurrentParse.entities.back().objectInfo.push_back(SpriterObjectInfo(
 			GameUtils::getKeyOrDefault(attributes, "name", Value("")).asString(),
 			GameUtils::getKeyOrDefault(attributes, "type", Value("")).asString(),
-			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "w", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "h", Value("0")).asString()))
+			Size(std::stof(GameUtils::getKeyOrDefault(attributes, "w", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "h", Value("0")).asString()))
 		));
 	}
 	else if (name == SpriterAnimationParser::AttributeAnimation)
@@ -212,7 +212,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 
 				SpriterAnimationParser::CurrentParse.entities.back().animations.back().mainline.keys.push_back(SpriterMainlineKey(
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
-					std::stof(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
+					std::stoi(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
 					curveType,
 					std::stof(GameUtils::getKeyOrDefault(attributes, "c1", Value("0")).asString()),
 					std::stof(GameUtils::getKeyOrDefault(attributes, "c2", Value("0")).asString()),
@@ -234,7 +234,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 				SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.push_back(SpriterTimelineKey(
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "spin", Value("0")).asString()),
-					std::stof(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
+					std::stoi(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
 					curveType,
 					std::stof(GameUtils::getKeyOrDefault(attributes, "c1", Value("0")).asString()),
 					std::stof(GameUtils::getKeyOrDefault(attributes, "c2", Value("0")).asString()),
