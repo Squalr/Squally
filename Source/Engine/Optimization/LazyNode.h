@@ -56,7 +56,6 @@ private:
 	using super::setScale;
 	using super::setScaleX;
 	using super::setScaleY;
-	using super::setScaleZ;
 	using super::setAnchorPoint;
 	using super::setRotation;
 	using super::setContentSize;
@@ -68,7 +67,6 @@ private:
 	using super::getScale;
 	using super::getScaleX;
 	using super::getScaleY;
-	using super::getScaleZ;
 	using super::getAnchorPoint;
 	using super::getRotation;
 	using super::getContentSize;

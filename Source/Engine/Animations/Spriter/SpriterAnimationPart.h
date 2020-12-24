@@ -6,8 +6,6 @@
 class SpriterAnimationPart : public SmartNode
 {
 public:
-	static SpriterAnimationPart* create();
-
 	int getId() const;
 
 protected:

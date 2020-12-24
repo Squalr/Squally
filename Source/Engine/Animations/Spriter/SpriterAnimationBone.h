@@ -12,8 +12,12 @@ class SpriterAnimationBone : public SpriterAnimationPart
 public:
 	static SpriterAnimationBone* create(cocos2d::Size boneSize);
 
+	/*
+	const cocos2d::Vec2& getBoneScale() const;
+    void setScaleX(float scaleX) override;
+    void setScaleY(float scaleY) override;
+	*/
 	void setDebugDrawHeirarchyDepth(int heirarchyDepth);
-	void setDebugDrawBoneScale(cocos2d::Vec2 boneScale);
 
 protected:
 	SpriterAnimationBone(cocos2d::Size boneSize);

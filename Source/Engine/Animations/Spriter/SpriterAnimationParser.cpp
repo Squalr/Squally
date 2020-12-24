@@ -269,6 +269,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 			std::stoi(GameUtils::getKeyOrDefault(attributes, "folder", Value("0")).asString()),
 			std::stoi(GameUtils::getKeyOrDefault(attributes, "file", Value("0")).asString()),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "y", Value("0")).asString())),
+			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "pivot_x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "pivot_y", Value("1")).asString())),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "scale_x", Value("1")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "scale_y", Value("1")).asString())),
 			std::stof(GameUtils::getKeyOrDefault(attributes, "angle", Value("0")).asString()),
 			std::stof(GameUtils::getKeyOrDefault(attributes, "alpha", Value("1")).asString())

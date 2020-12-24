@@ -149,6 +149,12 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	}
 	
 	Node* originalParent = node->getParent();
+
+	if (originalParent == newParent)
+	{
+		return node;
+	}
+
 	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
 	unsigned int refIncrement = 0;
 

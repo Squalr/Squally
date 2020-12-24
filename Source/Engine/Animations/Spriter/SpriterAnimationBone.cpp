@@ -55,15 +55,32 @@ void SpriterAnimationBone::setDebugDrawHeirarchyDepth(int heirarchyDepth)
 	}
 }
 
-void SpriterAnimationBone::setDebugDrawBoneScale(cocos2d::Vec2 boneScale)
+/*
+const cocos2d::Vec2& SpriterAnimationBone::getBoneScale() const
 {
-	this->boneScale = boneScale;
+	return this->boneScale;
+}
 
-	if (this->debugDraw != nullptr)
+void SpriterAnimationBone::setScaleX(float scaleX)
+{
+    this->boneScale.x = scaleX;
+
+	if (DeveloperModeController::isDeveloperModeEnabled())
 	{
 		this->redrawDebugDraw();
 	}
 }
+
+void SpriterAnimationBone::setScaleY(float scaleY)
+{
+    this->boneScale.y = scaleY;
+	
+	if (DeveloperModeController::isDeveloperModeEnabled())
+	{
+		this->redrawDebugDraw();
+	}
+}
+*/
 
 void SpriterAnimationBone::onDeveloperModeEnable(int debugLevel)
 {

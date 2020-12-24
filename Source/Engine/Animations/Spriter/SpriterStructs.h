@@ -47,13 +47,14 @@ struct SpriterObject
 	int folderId;
 	int fileId;
 	cocos2d::Vec2 position;
+	cocos2d::Vec2 anchor;
 	cocos2d::Vec2 scale;
 	float angle;
 	float alpha;
 
-	SpriterObject() : folderId(-1), fileId(-1), position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f), alpha(1.0f) { }
-	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle, float alpha)
-		: folderId(folderId), fileId(fileId), position(position), scale(scale), angle(angle), alpha(alpha) { }
+	SpriterObject() : folderId(-1), fileId(-1), position(cocos2d::Vec2::ZERO), anchor(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f), alpha(1.0f) { }
+	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 anchor, cocos2d::Vec2 scale, float angle, float alpha)
+		: folderId(folderId), fileId(fileId), position(position), anchor(anchor), scale(scale), angle(angle), alpha(alpha) { }
 };
 
 enum class SpriterCurveType

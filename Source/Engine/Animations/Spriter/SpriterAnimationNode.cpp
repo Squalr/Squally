@@ -7,6 +7,7 @@
 #include "Engine/Animations/Spriter/SpriterAnimationBone.h"
 #include "Engine/Animations/Spriter/SpriterAnimationParser.h"
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
+#include "Engine/Animations/Spriter/SpriterAnimationSprite.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
@@ -28,8 +29,8 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
 	this->bones = std::map<std::string, std::map<std::string, SpriterAnimationBone*>>();
 	this->boneIdMap = std::map<int, SpriterAnimationBone*>();
-	this->sprites = std::map<std::string, std::map<std::string, SpriterAnimationPart*>>();
-	this->spriteIdMap = std::map<int, SpriterAnimationPart*>();
+	this->sprites = std::map<std::string, std::map<std::string, SpriterAnimationSprite*>>();
+	this->spriteIdMap = std::map<int, SpriterAnimationSprite*>();
 	this->animationPartContainer = Node::create();
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
 	this->isRepeating = true;
@@ -97,7 +98,7 @@ SpriterAnimationBone* SpriterAnimationNode::getBoneById(const std::string& name)
 	return nullptr;
 }
 
-SpriterAnimationPart* SpriterAnimationNode::getSpriteById(const std::string& name)
+SpriterAnimationSprite* SpriterAnimationNode::getSpriteById(const std::string& name)
 {
 	if (this->sprites.find(this->currentEntityName) != this->sprites.end()
 		&& this->sprites[this->currentEntityName].find(name) != this->sprites[this->currentEntityName].end())
@@ -145,11 +146,11 @@ const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCur
 	return this->bones[this->currentEntityName];
 }
 
-const std::map<std::string, SpriterAnimationPart*>& SpriterAnimationNode::getCurrentSpriteMap()
+const std::map<std::string, SpriterAnimationSprite*>& SpriterAnimationNode::getCurrentSpriteMap()
 {
 	if (this->sprites.find(this->currentEntityName) == this->sprites.end())
 	{
-		this->sprites[this->currentEntityName] = std::map<std::string, SpriterAnimationPart*>();
+		this->sprites[this->currentEntityName] = std::map<std::string, SpriterAnimationSprite*>();
 	}
 
 	return this->sprites[this->currentEntityName];
@@ -178,13 +179,17 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 	containingFolder = containingFolder.substr(0, containingFolder.find_last_of("/\\")) + "/";
 
 	std::map<uint64_t, std::string> folderFileIdMap = std::map<uint64_t, std::string>();
+	std::map<uint64_t, Vec2> anchorMap = std::map<uint64_t, Vec2>();
 	
 	// Build a mapping of folder/file ids to file names
 	for (auto folder : spriterData.folders)
 	{
 		for (auto file : folder.files)
 		{
-			folderFileIdMap[uint64_t(folder.id) << 32 | uint64_t(file.id)] = file.name;
+			uint64_t folderFileKey = uint64_t(folder.id) << 32 | uint64_t(file.id);
+
+			folderFileIdMap[folderFileKey] = file.name;
+			anchorMap[folderFileKey] = file.anchor;
 		}
 	}
 	
@@ -211,11 +216,8 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					// Creation was deferred until now rather than during the folder/file id map building, since we needed a timeline id
 					// As far as I can tell, timeline ids are the same for all references of an object.
-					SpriterAnimationPart* part = SpriterAnimationPart::create();
-					Sprite* sprite = Sprite::create(containingFolder + folderFileIdMap[folderFileKey]);
-
-					part->addChild(sprite);
-
+					SpriterAnimationSprite* part = SpriterAnimationSprite::create(containingFolder + folderFileIdMap[folderFileKey], anchorMap[folderFileKey]);
+					
 					this->animationPartContainer->addChild(part);
 
 					this->sprites[entity.name][timeline.name] = part;

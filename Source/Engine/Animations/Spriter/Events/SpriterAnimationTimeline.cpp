@@ -134,6 +134,8 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				{ 
 					return a.time > b.time; 
 				});
+
+				std::vector<SpriterAnimationTimelineEventAnimation*> eventsToAdd = std::vector<SpriterAnimationTimelineEventAnimation*>(filteredKeys.size());
 				
 				// Parse animation keys (each key is a unique event)
 				for (int index = 0; index < int(filteredKeys.size()); index++)
@@ -141,16 +143,18 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 					float endTime = index + 1 < int(filteredKeys.size()) ? filteredKeys[index + 1].time : animation.length;
 					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, filteredKeys[index]);
 
-					this->animationEvents[entity.name][animation.name].push_back(animationTimeline);
+					eventsToAdd[index] = animationTimeline;
 
 					this->addChild(animationTimeline);
 				}
 
-				// Set up 'next' targets for all animation events
-				for (int index = 0; index < int(filteredKeys.size()); index++)
+				// Set up 'next' targets for added animation events
+				for (int index = 0; index < int(eventsToAdd.size()); index++)
 				{
-					int nextIndex = index + 1 < int(filteredKeys.size()) ? index + 1 : 0;
-					this->animationEvents[entity.name][animation.name][index]->setNext(this->animationEvents[entity.name][animation.name][nextIndex]);
+					int nextIndex = index + 1 < int(eventsToAdd.size()) ? index + 1 : 0;
+					eventsToAdd[index]->setNext(eventsToAdd[nextIndex]);
+
+					this->animationEvents[entity.name][animation.name].push_back(eventsToAdd[index]);
 				}
 			}
 		}
@@ -160,7 +164,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 float SpriterAnimationTimeline::sampleMainlineCurve(float timeRatio)
 {
 	// TODO: Pick correct mainline based current elapsed time, sample that
-	return 1.0f; // this->SampleCurve(timeRatio, this->mainlineData.curveType, this->mainlineData.c1, this->mainlineData.c2, this->mainlineData.c3, this->mainlineData.c4);
+	return timeRatio; // this->SampleCurve(timeRatio, this->mainlineData.curveType, this->mainlineData.c1, this->mainlineData.c2, this->mainlineData.c3, this->mainlineData.c4);
 }
 
 float SpriterAnimationTimeline::sampleCurve(float timeRatio, SpriterCurveType curveType, float c1, float c2, float c3, float c4)

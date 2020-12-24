@@ -19,11 +19,13 @@ protected:
 private:
 	typedef SpriterAnimationTimelineEventBase super;
 
-	void reparentAnimationPart(std::string partName, SpriterAnimationPart* part, std::map<int, int>& parentTable);
 	int getBoneDepth(int boneId);
 
 	std::map<int, int> boneParentTable;
 	std::map<int, int> objectParentTable;
-	std::map<std::string, int> boneIdMap;
 	std::map<int, std::string> boneNameMap;
+	std::map<int, std::string> objectNameMap;
+	std::map<std::string, int> boneIdMap;
+	std::map<std::string, int> objectIdMap;
+	std::map<std::string, int> objectZMap;
 };

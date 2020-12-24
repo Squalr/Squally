@@ -35,8 +35,8 @@ private:
 	
 	std::string partName;
 	cocos2d::Vec2 position;
+	cocos2d::Vec2 anchor;
 	cocos2d::Vec2 scale;
-	cocos2d::Vec2 debugDrawScale;
 	float rotation;
 	float alpha;
 	

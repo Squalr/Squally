@@ -6,6 +6,7 @@
 #include "Engine/Animations/Spriter/SpriterAnimationBone.h"
 #include "Engine/Animations/Spriter/SpriterAnimationNode.h"
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
+#include "Engine/Animations/Spriter/SpriterAnimationSprite.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -23,9 +24,11 @@ SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(Spr
 	: super(timeline, float(mainlineKey.time), endTime, mainlineKey.curveType, mainlineKey.c1, mainlineKey.c2, mainlineKey.c3, mainlineKey.c4)
 {
 	this->boneParentTable = std::map<int, int>();
-	this->boneIdMap = std::map<std::string, int>();
-	this->boneNameMap = std::map<int, std::string>();
 	this->objectParentTable = std::map<int, int>();
+	this->boneNameMap = std::map<int, std::string>();
+	this->objectNameMap = std::map<int, std::string>();
+	this->boneIdMap = std::map<std::string, int>();
+	this->objectIdMap = std::map<std::string, int>();
 
 	for (auto boneRef : mainlineKey.boneRefs)
 	{
@@ -45,6 +48,17 @@ SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(Spr
 	for (auto objectRef : mainlineKey.objectRefs)
 	{
 		this->objectParentTable[objectRef.id] = objectRef.parent;
+
+		// If the profiler doesn't like this, we can switch to parsing an {int => timeline} map when we build the timelines to avoid a linear search here
+		for (const auto& animTimeline : animation.timelines)
+		{
+			if (animTimeline.id == objectRef.timeline)
+			{
+				this->objectIdMap[animTimeline.name] = objectRef.id;
+				this->objectZMap[animTimeline.name] = objectRef.zIndex;
+				this->objectNameMap[objectRef.id] = animTimeline.name;
+			}
+		}
 	}
 }
 
@@ -56,12 +70,57 @@ void SpriterAnimationTimelineEventMainline::onEnter()
 void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animation)
 {
 	const std::map<std::string, SpriterAnimationBone*>& boneMap = animation->getCurrentBoneMap();
-	const std::map<std::string, SpriterAnimationPart*>& spriteMap = animation->getCurrentSpriteMap();
+	const std::map<std::string, SpriterAnimationSprite*>& spriteMap = animation->getCurrentSpriteMap();
 
-	// Parent all bones first
+	// Parent all sprites
+	for (const auto& part : spriteMap)
+	{
+		SpriterAnimationSprite* childSprite = part.second;
+
+		if (this->objectIdMap.find(part.first) != this->objectIdMap.end() && this->objectZMap.find(part.first) != this->objectZMap.end())
+		{
+			int objectId = this->objectIdMap[part.first];
+			int zOrder = this->objectZMap[part.first];
+
+			childSprite->setLocalZOrder(zOrder);
+
+			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
+			{
+				int parentBoneId = this->objectParentTable[objectId];
+
+				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
+				{
+					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
+
+					if (boneMap.find(parentBoneName) != boneMap.end())
+					{
+						SpriterAnimationBone* parentPart = boneMap.at(parentBoneName);
+
+						GameUtils::changeParent(childSprite, parentPart, true);
+						childSprite->setVisible(true);
+						continue;
+					}
+				}
+
+				// No parent -- set to root
+				GameUtils::changeParent(childSprite, animation, true);
+				childSprite->setVisible(true);
+				continue;
+			}
+		}
+
+		// hide / unparent sprite
+		GameUtils::changeParent(childSprite, animation, true);
+		childSprite->setVisible(false);
+	}
+	
+	// Parent all bones
 	for (const auto& part : boneMap)
 	{
-		SpriterAnimationBone* childPart = part.second;
+		SpriterAnimationBone* childBone = part.second;
+
+		// Lazy solution to competing Z order on sibling sprites, bones should render last (BFS)
+		childBone->setLocalZOrder(2048);
 
 		if (this->boneIdMap.find(part.first) != this->boneIdMap.end())
 		{
@@ -77,39 +136,27 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 
 					if (boneMap.find(parentBoneName) != boneMap.end())
 					{
-						SpriterAnimationBone* parentPart = boneMap.at(parentBoneName);
+						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
-						GameUtils::changeParent(childPart, parentPart, true);
-						childPart->setDebugDrawHeirarchyDepth(this->getBoneDepth(boneId));
-						childPart->setVisible(true);
+						GameUtils::changeParent(childBone, parentBone, true);
+						childBone->setDebugDrawHeirarchyDepth(this->getBoneDepth(boneId));
+						childBone->setVisible(true);
 						continue;
 					}
 				}
 
 				// No parent -- set to root
-				GameUtils::changeParent(childPart, animation, true);
-				childPart->setDebugDrawHeirarchyDepth(this->getBoneDepth(boneId));
-				childPart->setVisible(true);
+				GameUtils::changeParent(childBone, animation, true);
+				childBone->setDebugDrawHeirarchyDepth(this->getBoneDepth(boneId));
+				childBone->setVisible(true);
 				continue;
 			}
 		}
 
 		// hide / unparent bone
-		GameUtils::changeParent(childPart, animation, true);
-		childPart->setVisible(false);
+		GameUtils::changeParent(childBone, animation, true);
+		childBone->setVisible(false);
 	}
-
-	// Parent all sprites
-	for (const auto& part : spriteMap)
-	{
-		// Temp debugging
-		part.second->setVisible(false);
-	}
-}
-
-void SpriterAnimationTimelineEventMainline::reparentAnimationPart(std::string partName, SpriterAnimationPart* part, std::map<int, int>& parentTable)
-{
-
 }
 
 int SpriterAnimationTimelineEventMainline::getBoneDepth(int boneId)

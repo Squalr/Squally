@@ -12,6 +12,7 @@ namespace cocos2d
 
 class SpriterAnimationBone;
 class SpriterAnimationPart;
+class SpriterAnimationSprite;
 class SpriterAnimationTimeline;
 
 class SpriterAnimationNode : public SmartNode
@@ -26,13 +27,13 @@ public:
 
 	SpriterAnimationPart* getPartById(const std::string& name);
 	SpriterAnimationBone* getBoneById(const std::string& name);
-	SpriterAnimationPart* getSpriteById(const std::string& name);
+	SpriterAnimationSprite* getSpriteById(const std::string& name);
 	void playAnimation(std::string animation);
 	void resetAnimation();
 	const std::string& getCurrentEntityName();
 	const std::string& getCurrentAnimation();
 	const std::map<std::string, SpriterAnimationBone*>& getCurrentBoneMap();
-	const std::map<std::string, SpriterAnimationPart*>& getCurrentSpriteMap();
+	const std::map<std::string, SpriterAnimationSprite*>& getCurrentSpriteMap();
 
 protected:
 	SpriterAnimationNode(const std::string& animationResource);
@@ -50,8 +51,8 @@ private:
 	std::map<int, SpriterAnimationBone*> boneIdMap;
 	
 	// Entity => Name => Sprite
-	std::map<std::string, std::map<std::string, SpriterAnimationPart*>> sprites;
-	std::map<int, SpriterAnimationPart*> spriteIdMap;
+	std::map<std::string, std::map<std::string, SpriterAnimationSprite*>> sprites;
+	std::map<int, SpriterAnimationSprite*> spriteIdMap;
 
 	void buildBones(const SpriterData& spriterData);
 	void buildSprites(const SpriterData& spriterData, const std::string& animationResource);
