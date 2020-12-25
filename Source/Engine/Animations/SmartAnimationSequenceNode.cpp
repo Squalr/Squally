@@ -21,7 +21,7 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
 	return SmartAnimationSequenceNode::create(UIResources::EmptyImage);
 }
 
-SmartAnimationSequenceNode* SmartAnimationSequenceNode::create(std::string defaultSprite)
+SmartAnimationSequenceNode* SmartAnimationSequenceNode::create(const std::string& defaultSprite)
 {
 	SmartAnimationSequenceNode* instance = new SmartAnimationSequenceNode(defaultSprite);
 
@@ -30,12 +30,11 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::create(std::string defau
 	return instance;
 }
 
-SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite)
+SmartAnimationSequenceNode::SmartAnimationSequenceNode(const std::string& defaultSprite)
 {
 	this->defaultSprite = defaultSprite;
 	this->sprite = Sprite::create(this->defaultSprite);
 	this->repeatIndex = 0;
-	this->incrementCallback = nullptr;
 	
 	SmartAnimationSequenceNode::PrimeCache(this->defaultSprite);
 
@@ -51,7 +50,7 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::clone()
 	return SmartAnimationSequenceNode::create(this->defaultSprite);
 }
 
-void SmartAnimationSequenceNode::PrimeCache(std::string initialSequenceResourceFile)
+void SmartAnimationSequenceNode::PrimeCache(const std::string& initialSequenceResourceFile)
 {
 	const std::vector<std::string>& images = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
@@ -78,10 +77,55 @@ void SmartAnimationSequenceNode::stopAnimation()
 	{
 		this->sprite->initWithFile(this->defaultSprite);
 	}
-	
 }
 
-void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playSingleFrame(const std::string& initialSequenceResourceFile, int index, float animationSpeed, std::function<void()> onAnimationComplete)
+{
+	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
+
+	this->playSingleFrame(animationFiles, index, animationSpeed, onAnimationComplete);
+}
+
+void SmartAnimationSequenceNode::playSingleFrame(const std::vector<std::string>& animationFiles, int index, float animationSpeed, std::function<void()> onAnimationComplete)
+{
+	// Delay then callback for out of range indexes
+	if (index < 0 || index >= int(animationFiles.size()))
+	{
+		if (onAnimationComplete != nullptr)
+		{
+			this->sprite->runAction(Sequence::create(
+				DelayTime::create(animationSpeed),
+				CallFunc::create([=]()
+				{
+					onAnimationComplete();
+				}),
+				nullptr
+			));
+		}
+
+		return;
+	}
+
+	std::vector<std::string> singleFrame = std::vector<std::string>{ animationFiles[index] };
+
+	// Playing a 1 frame animation will complete instantly, so introduce a delay based on animation speed to call the callback
+	this->playAnimation(singleFrame, animationSpeed, false, [=]()
+	{
+		if (onAnimationComplete != nullptr)
+		{
+			this->sprite->runAction(Sequence::create(
+				DelayTime::create(animationSpeed),
+				CallFunc::create([=]()
+				{
+					onAnimationComplete();
+				}),
+				nullptr
+			));
+		}
+	});
+}
+
+void SmartAnimationSequenceNode::playAnimation(const std::string& initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
 	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
@@ -126,7 +170,7 @@ void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& a
 	this->sprite->runAction(Sequence::create(animationSequence));
 }
 
-void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimationRepeat(const std::string& initialSequenceResourceFile, float animationSpeed, float repeatDelay, bool insertBlankFrame, int repeatCount, std::function<void()> onAnimationComplete)
 {
 	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
@@ -157,7 +201,8 @@ void SmartAnimationSequenceNode::playAnimationRepeat(const std::vector<std::stri
 				DelayTime::create(repeatDelay),
 				CallFunc::create([=]()
 				{
-					this->playAnimationRepeat(animationFiles, animationSpeed, repeatDelay, insertBlankFrame, repeatCount - 1, onAnimationComplete);
+					int repeatCountNew = repeatCount < 0 ? repeatCount : (repeatCount - 1);
+					this->playAnimationRepeat(animationFiles, animationSpeed, repeatDelay, insertBlankFrame, repeatCountNew, onAnimationComplete);
 				}),
 				nullptr
 			));
@@ -165,7 +210,7 @@ void SmartAnimationSequenceNode::playAnimationRepeat(const std::vector<std::stri
 	});
 }
 
-void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, bool startReversed, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimationAndReverse(const std::string& initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, bool startReversed, std::function<void()> onAnimationComplete)
 {
 	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
@@ -182,7 +227,6 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(const std::vector<std::
 			DelayTime::create(reverseDelay),
 			CallFunc::create([=]()
 			{
-
 				// No blank frame on animation out
 				this->playAnimation(startReversed ? animationFiles : animationFilesReverse, animationSpeedIn, false, onAnimationComplete);
 			}),
@@ -191,7 +235,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(const std::vector<std::
 	});
 }
 
-void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::string& initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
 {
 	const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile);
 
@@ -221,7 +265,8 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector
 				DelayTime::create(repeatDelay),
 				CallFunc::create([=]()
 				{
-					this->playAnimationAndReverseRepeat(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, repeatDelay, insertBlankFrame, startReversed, repeatCount - 1, onAnimationComplete);
+					int repeatCountNew = repeatCount < 0 ? repeatCount : (repeatCount - 1);
+					this->playAnimationAndReverseRepeat(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, repeatDelay, insertBlankFrame, startReversed, repeatCountNew, onAnimationComplete);
 				}),
 				nullptr
 			));
@@ -244,20 +289,20 @@ void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 	this->sprite->setFlippedY(isFlipped);
 }
 
-void SmartAnimationSequenceNode::setIncrementCallback(std::function<int(int, int)> incrementCallback)
+int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSequenceResourceFile)
 {
-	this->incrementCallback = incrementCallback;
+	return SmartAnimationSequenceNode::GetAllAnimationFiles(initialSequenceResourceFile).size();
 }
 
-const std::vector<std::string>& SmartAnimationSequenceNode::GetAllAnimationFiles(std::string firstFrameResource)
+const std::vector<std::string>& SmartAnimationSequenceNode::GetAllAnimationFiles(const std::string& initialSequenceResourceFile)
 {
-	if (SmartAnimationSequenceNode::AnimationFileCache.find(firstFrameResource) != SmartAnimationSequenceNode::AnimationFileCache.end())
+	if (SmartAnimationSequenceNode::AnimationFileCache.find(initialSequenceResourceFile) != SmartAnimationSequenceNode::AnimationFileCache.end())
 	{
-		return SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource];
+		return SmartAnimationSequenceNode::AnimationFileCache[initialSequenceResourceFile];
 	}
 
 	// Normalize directory seperator
-	firstFrameResource = StrUtils::replaceAll(firstFrameResource, "\\", "/");
+	std::string firstFrameResource = StrUtils::replaceAll(initialSequenceResourceFile, "\\", "/");
 	std::string containingFolder = FileUtils::getInstance()->fullPathForFilename(firstFrameResource);
 	containingFolder = containingFolder.substr(0, containingFolder.find_last_of("/\\")) + "/";
 

@@ -94,7 +94,7 @@ void MulDoor::registerHackables()
 	auto incrementAnimationFunc = &MulDoor::mulDoorTransform;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

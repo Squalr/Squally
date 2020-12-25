@@ -175,7 +175,7 @@ void ElectricityBeam::registerHackables()
 	auto updateElectricityBeamFunc = &ElectricityBeam::updateElectricityBeam;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateElectricityBeamFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

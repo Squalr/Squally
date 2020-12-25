@@ -133,7 +133,7 @@ void WoodenSpikes::registerHackables()
 	auto updateSpikesFunc = &WoodenSpikes::updateSpikes;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

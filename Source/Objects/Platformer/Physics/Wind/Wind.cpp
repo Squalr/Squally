@@ -159,7 +159,7 @@ void Wind::registerHackables()
 	auto updateWindFunc = &Wind::updateWind;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateWindFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

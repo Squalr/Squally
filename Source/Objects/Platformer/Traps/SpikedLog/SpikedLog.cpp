@@ -43,6 +43,8 @@ SpikedLog::SpikedLog(ValueMap& properties) : super(properties)
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLog_SpikedLog_00);
 	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->logCollision = CollisionObject::create(CollisionObject::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLog_SpikedLog_00);
+	this->currentAnimationIndex = 0;
 
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
@@ -58,12 +60,7 @@ void SpikedLog::onEnter()
 {
 	super::onEnter();
 
-	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLog_SpikedLog_00, 0.08f, 0.0f);
-
-	this->spikedLog->setIncrementCallback([=](int current, int max)
-	{
-		return this->incrementSpikedLogAnimation(current, max);
-	});
+	this->onFrameComplete();
 }
 
 void SpikedLog::initializePositions()
@@ -121,7 +118,7 @@ void SpikedLog::registerHackables()
 	auto incrementAnimationFunc = &SpikedLog::incrementSpikedLogAnimation;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -130,6 +127,16 @@ void SpikedLog::registerHackables()
 HackablePreview* SpikedLog::createDefaultPreview()
 {
 	return SpikedLogGenericPreview::create();
+}
+
+void SpikedLog::onFrameComplete()
+{
+	this->currentAnimationIndex = MathUtils::wrappingNormalize(incrementSpikedLogAnimation(this->currentAnimationIndex, this->animationLength), 0, this->animationLength - 1);
+
+	this->spikedLog->playSingleFrame(ObjectResources::Traps_SpikedLog_SpikedLog_00, this->currentAnimationIndex, 0.08f, [=]()
+	{
+		this->onFrameComplete();
+	});
 }
 
 NO_OPTIMIZE int SpikedLog::incrementSpikedLogAnimation(int count, int max)

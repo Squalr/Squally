@@ -103,7 +103,7 @@ void HeavenHug::registerHackables()
 	auto getHeightFunc = &HeavenHug::getTravelHeight;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

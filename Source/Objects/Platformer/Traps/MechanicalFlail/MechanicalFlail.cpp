@@ -129,7 +129,7 @@ void MechanicalFlail::registerHackables()
 	auto swingFunc = &MechanicalFlail::setSwingAngle;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

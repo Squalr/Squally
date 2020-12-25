@@ -178,7 +178,7 @@ void TimeBomb::registerHackables()
 	auto tickFunc = &TimeBomb::tickTimeBomb;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)tickFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

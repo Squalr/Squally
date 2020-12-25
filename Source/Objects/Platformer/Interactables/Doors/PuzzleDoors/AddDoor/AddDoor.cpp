@@ -94,7 +94,7 @@ void AddDoor::registerHackables()
 	auto incrementAnimationFunc = &AddDoor::AddDoorTransform;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

@@ -128,7 +128,7 @@ void Laser::registerHackables()
 	auto updateLaserFunc = &Laser::updateLaser;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateLaserFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
