@@ -83,8 +83,8 @@ MapBase::MapBase(bool allowHackerMode)
 	this->addChild(this->musicOverlay);
 	this->addChild(this->backMenuHud);
 	this->addChild(this->menuBackDrop);
-	this->addChild(this->hackMenuHud);
 	this->addChild(this->menuHud);
+	this->addChild(this->hackMenuHud);
 	this->addChild(this->topMenuHud);
 	this->addChild(this->confirmationMenuHud);
 }

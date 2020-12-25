@@ -51,6 +51,14 @@ void Torch::onEnter()
 	super::onEnter();
 
 	this->torchOn();
+	this->scheduleUpdate();
+}
+
+void Torch::update(float dt)
+{
+	super::update(dt);
+	
+	this->optimizationHideOffscreenTorch();
 }
 
 void Torch::initializePositions()

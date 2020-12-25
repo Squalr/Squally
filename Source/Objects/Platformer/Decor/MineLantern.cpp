@@ -51,6 +51,7 @@ void MineLantern::onEnter()
 {
 	super::onEnter();
 
+	this->scheduleUpdate();
 	this->lanternOn();
 	this->optimizationHideOffscreenMineLantern();
 }
@@ -63,6 +64,13 @@ void MineLantern::initializePositions()
 	// this->glow->setPosition(Vec2(0.0f, 56.0f));
 }
 
+void MineLantern::update(float dt)
+{
+	super::update(dt);
+	
+	this->optimizationHideOffscreenMineLantern();
+}
+
 void MineLantern::lanternOn()
 {
 	if (this->isOn)
@@ -72,7 +80,7 @@ void MineLantern::lanternOn()
 
 	this->isOn = true;
 
-	this->updateMineLanternVisibility();
+	this->optimizationHideOffscreenMineLantern();
 }
 
 void MineLantern::lanternOff()

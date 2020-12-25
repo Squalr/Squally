@@ -39,9 +39,10 @@ protected:
 	SmartScene();
 	virtual ~SmartScene();
 	
-	void pause() override;
 	void onEnter() override;
 	void onExit() override;
+	void pause() override;
+	void resume() override;
 	void update(float dt) override;
 	virtual void onDeveloperModeEnable(int debugLevel);
 	virtual void onDeveloperModeDisable();

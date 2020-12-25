@@ -63,13 +63,15 @@ void GlobalHackAttributeContainer::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	this->addGlobalEventListener(EventListenerCustom::create(SceneEvents::EventBeforeSceneChangeFinalize, [=](EventCustom* eventCustom)
 	{
 		HackableBase::HackTimersPaused = false;
 
-		// Hack abilities, unlike code, have lambdas that interact with the objects on the map. Bad things happen if we cache between scenes.
+		// These can have lambdas that interact with the objects on the map. Bad things happen if we cache between scenes.
 		this->hackableAbilityContainer->removeAllChildren();
+		this->hackableCodeContainer->removeAllChildren();
 		this->abilityMap.clear();
+		this->codeMap.clear();
 	}));
 
 	this->addGlobalEventListener(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)

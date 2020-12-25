@@ -41,6 +41,7 @@ void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 {
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
+	SceneEvents::TriggerBeforeSceneChangeFinalize();
 
 	CollisionObject::ClearCollisionObjects();
 

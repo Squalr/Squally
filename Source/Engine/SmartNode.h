@@ -34,12 +34,14 @@ public:
 protected:
 	SmartNode();
 	virtual ~SmartNode();
+	
 	void onEnter() override;
-
 	// IMPORTANT: This method may not get called if the object is being disposed (new scene) as an optimization.
 	// Instead, put critical exit code in a BeforeSceneChange event listener, or in the destructor.	
 	void onExit() override;
 	void onReenter() override; // Called on parent change
+	void pause() override;
+	void resume() override;
 	virtual void onDeveloperModeEnable(int debugLevel);
 	virtual void onDeveloperModeDisable();
 	virtual void onHackerModeEnable();

@@ -25,6 +25,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void update(float dt) override;
 
 private:
 	typedef GameObject super;

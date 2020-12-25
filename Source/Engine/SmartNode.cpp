@@ -68,6 +68,26 @@ void SmartNode::onReenter()
 	super::onReenter();
 }
 
+void SmartNode::pause()
+{
+	super::pause();
+
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(true);
+	}
+}
+
+void SmartNode::resume()
+{
+	super::resume();
+
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(false);
+	}
+}
+
 void SmartNode::initializePositions()
 {
 }

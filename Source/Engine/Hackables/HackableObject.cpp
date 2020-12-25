@@ -390,25 +390,25 @@ void HackableObject::registerCode(HackableCode* hackableCode, bool refreshCooldo
 
 void HackableObject::unregisterAllHackables(bool forceRestoreState)
 {
-	auto codeListClone = this->codeList;
-	auto hackAbilityListClone = this->hackAbilityList;
+	std::vector<HackableCode*> codeListClone = this->codeList;
+	std::vector<HackActivatedAbility*> hackAbilityListClone = this->hackAbilityList;
 
-	for (auto next : codeListClone)
+	for (HackableCode* next : codeListClone)
 	{
 		this->unregisterCode(next, forceRestoreState);
 	}
 
-	for (auto next : hackAbilityListClone)
+	for (HackActivatedAbility* next : hackAbilityListClone)
 	{
 		this->unregisterHackAbility(next);
 	}
 
-	for (auto next : this->timeRemainingBars)
+	for (ProgressBar* next : this->timeRemainingBars)
 	{
 		next->setVisible(false);
 	}
 
-	for (auto next : this->timeRemainingIcons)
+	for (Sprite* next : this->timeRemainingIcons)
 	{
 		next->setVisible(false);
 	}

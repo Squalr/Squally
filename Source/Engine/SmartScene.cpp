@@ -93,6 +93,33 @@ void SmartScene::onExit()
 	this->removeNonGlobalListeners();
 }
 
+void SmartScene::pause()
+{
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(true);
+	}
+
+	// On pause cancel the fade in animation
+	if (this->fadeAction != nullptr)
+	{
+		this->stopAction(this->fadeAction);
+		this->layerColor->setOpacity(0);
+	}
+
+	super::pause();
+}
+
+void SmartScene::resume()
+{
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(false);
+	}
+
+	super::resume();
+}
+
 void SmartScene::initializePositions()
 {
 }
@@ -248,18 +275,6 @@ void SmartScene::setFadeSpeed(float newFadeSpeed)
 float SmartScene::getFadeSpeed()
 {
 	return this->fadeSpeed;
-}
-
-void SmartScene::pause()
-{
-	// On pause cancel the fade in animation
-	if (this->fadeAction != nullptr)
-	{
-		this->stopAction(this->fadeAction);
-		this->layerColor->setOpacity(0);
-	}
-
-	super::pause();
 }
 
 void SmartScene::defer(std::function<void()> task, int ticks)
