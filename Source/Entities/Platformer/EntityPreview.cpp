@@ -25,14 +25,17 @@ EntityPreview::EntityPreview(PlatformerEntity* entity)
 	this->animationResource = entity == nullptr ? "" : entity->getAnimationResource();
 	this->scale = entity == nullptr ? 1.0f : entity->getScale();
 	this->offset = entity == nullptr ? Vec2::ZERO : Vec2(0.0f, -(entity->getEntitySize() * this->scale).height / 2.0f);
-	this->entityClone = entity->uiClone();
+	this->entityClone = entity == nullptr ? entity : entity->uiClone();
 	this->previewAnimation = SmartAnimationNode::create(this->animationResource);
 
 	this->previewAnimation->setScale(this->scale * 0.75f);
 
-	this->entityClone->setVisible(false);
-
-	this->previewNode->addChild(this->entityClone);
+	if (this->entityClone != nullptr)
+	{
+		this->entityClone->setVisible(false);
+		this->previewNode->addChild(this->entityClone);
+	}
+	
 	this->previewNode->addChild(this->previewAnimation);
 }
 

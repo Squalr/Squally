@@ -7,7 +7,6 @@
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Input/Input.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/Mouse.h"
 
@@ -24,7 +23,6 @@ void EngineBootstrapper::initialize()
 	GameCamera::registerGlobalNode();
 	Input::registerGlobalNode();
 	Mouse::registerGlobalNode();
-	MouseState::registerGlobalNode();
 	MusicPlayer::registerGlobalNode();
 }
 

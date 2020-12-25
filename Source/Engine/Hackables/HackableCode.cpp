@@ -222,7 +222,7 @@ std::vector<HackableCode*> HackableCode::parseHackables(void* functionStart, Cod
 	std::vector<HackableCode*> extractedHackableCode = std::vector<HackableCode*>();
 
 	// Bind the code info to each of the BEGIN/END markers to create a HackableCode object.
-	for (auto marker : markerMap)
+	for (const auto& marker : markerMap)
 	{
 		unsigned char funcId = marker.first;
 		HackableCodeMarkers markers = marker.second;

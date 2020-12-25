@@ -15,22 +15,27 @@ class Input : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	static cocos2d::InputEvents::KeyCode getActiveModifiers();
-	static bool isPressed(cocos2d::InputEvents::KeyCode keyCode);
-	static bool isReleased(cocos2d::InputEvents::KeyCode keyCode);
+	static cocos2d::InputEvents::KeyCode GetActiveModifiers();
+	static bool IsPressed(cocos2d::InputEvents::KeyCode keyCode);
+	static bool IsReleased(cocos2d::InputEvents::KeyCode keyCode);
 
-private:
-	typedef GlobalNode super;
+protected:
 	Input();
 	virtual ~Input();
 
-	static Input* getInstance();
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::InputEvents::KeyCode keyCode, cocos2d::Event* event);
-	void onKeyReleased(cocos2d::InputEvents::KeyCode keyCode, cocos2d::Event* event);
 
-	std::unordered_map<int, bool> pressedKeysPrevious;
-	std::unordered_map<int, bool> pressedKeys;
+private:
+	typedef GlobalNode super;
 
-	static Input* instance;
+	static Input* GetInstance();
+
+	void onKeyPressed(cocos2d::InputEvents::KeyCode keyCode);
+	void onKeyReleased(cocos2d::InputEvents::KeyCode keyCode);
+	
+	static cocos2d::InputEvents::MouseEventArgs MouseState;
+	static std::unordered_map<int, bool> PressedKeysPrevious;
+	static std::unordered_map<int, bool> PressedKeys;
+
+	static Input* Instance;
 };

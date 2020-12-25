@@ -8,33 +8,36 @@
 
 using namespace cocos2d;
 
-Input* Input::instance = nullptr;
+Input* Input::Instance = nullptr;
+InputEvents::MouseEventArgs Input::MouseState = InputEvents::MouseEventArgs();
+std::unordered_map<int, bool> Input::PressedKeysPrevious = std::unordered_map<int, bool>();
+std::unordered_map<int, bool> Input::PressedKeys = std::unordered_map<int, bool>();
 
 void Input::registerGlobalNode()
 {
-	if (Input::instance == nullptr)
+	if (Input::Instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(Input::getInstance());
+		GlobalDirector::getInstance()->registerGlobalNode(Input::GetInstance());
 	}
 }
 
-Input* Input::getInstance()
+Input* Input::GetInstance()
 {
-	if (Input::instance == nullptr)
+	if (Input::Instance == nullptr)
 	{
-		Input::instance = new Input();
+		Input::Instance = new Input();
 
-		Input::instance->autorelease();
+		Input::Instance->autorelease();
 	}
 
-	return Input::instance;
+	return Input::Instance;
 }
 
 Input::Input()
 {
-	this->pressedKeys = std::unordered_map<int, bool>();
-	this->pressedKeysPrevious = std::unordered_map<int, bool>();
+	Input::PressedKeys = std::unordered_map<int, bool>();
+	Input::PressedKeysPrevious = std::unordered_map<int, bool>();
 }
 
 Input::~Input()
@@ -45,64 +48,139 @@ void Input::initializeListeners()
 {
 	super::initializeListeners();
 	
-	/*
-	EventListenerCustom* keyEvents = EventListenerCustom::create(KeyboardEvents::EventKeyboard, [=](EventCustom* eventCustom)
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressedInternal, [=](EventCustom* eventCustom)
 	{
-		InputEvents::KeyboardArgs* args = static_cast<KeyboardEvents::KeyboardArgs*>(eventCustom->getData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
-			if (args->isPressed)
-			{
-				this->onKeyPressed(args->keyCode, eventCustom);
-			}
-			else
-			{
-				this->onKeyReleased(args->keyCode, eventCustom);
-			}
+			this->onKeyPressed(args->keycode);
 		}
+	}));
+	
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleasedInternal, [=](EventCustom* eventCustom)
+	{
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->onKeyReleased(args->keycode);
+		}
+	}));
+
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseMoveInternal, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			Input::MouseState.canClick = false;
+			Input::MouseState.mouseCoords = args->mouseCoords;
+
+			InputEvents::TriggerMouseMove(Input::MouseState);
+			InputEvents::TriggerMouseRefresh(Input::MouseState);
+		}
+	}));
+
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseDownInternal, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			Input::MouseState.isLeftClicked = true;
+
+			InputEvents::TriggerMouseDown(Input::MouseState);
+			InputEvents::TriggerMouseRefresh(Input::MouseState);
+		}
+	}));
+
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseUpInternal, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			Input::MouseState.isLeftClicked = false;
+			Input::MouseState.isDragging = false;
+
+			InputEvents::TriggerMouseUp(Input::MouseState);
+			InputEvents::TriggerMouseRefresh(Input::MouseState);
+		}
+	}));
+
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseScrollInternal, [=](EventCustom* eventCustom)
+	{
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			Input::MouseState.scrollDelta = args->scrollDelta;
+
+			InputEvents::TriggerMouseScroll(Input::MouseState);
+			InputEvents::TriggerMouseRefresh(Input::MouseState);
+		}
+	}));
+	
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventClickableMouseOver, [=](EventCustom* eventCustom)
+	{
+		Input::MouseState.canClick = true;
+
+		InputEvents::TriggerMouseRefresh(Input::MouseState);
+	}));
+	
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventClickableMouseOut, [=](EventCustom* eventCustom)
+	{
+		InputEvents::TriggerMouseRefresh(Input::MouseState);
+	}));
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
+	{
+		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	});
 
-	this->addGlobalEventListener(keyEvents);
-	*/
+	this->whenKeyReleased({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
+	{
+		InputEvents::TriggerMouseRefresh(Input::MouseState);
+	});
 }
 
-void Input::onKeyPressed(InputEvents::KeyCode keyCode, Event* event)
+void Input::onKeyPressed(InputEvents::KeyCode keyCode)
 {
-	this->pressedKeysPrevious = this->pressedKeys;
-	this->pressedKeys[(int)keyCode] = true;
+	Input::PressedKeysPrevious = Input::PressedKeys;
+	Input::PressedKeys[(int)keyCode] = true;
 
 	// Check if previously not pressed or if previously up
-	if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) == Input::getInstance()->pressedKeysPrevious.end() ||
-		!Input::getInstance()->pressedKeysPrevious[(int)keyCode])
+	if (Input::PressedKeysPrevious.find((int)keyCode) == Input::PressedKeysPrevious.end() ||
+		!Input::PressedKeysPrevious[(int)keyCode])
 	{
 		InputEvents::TriggerKeyJustPressed(InputEvents::KeyboardEventArgs(keyCode));
 	}
 }
 
-void Input::onKeyReleased(InputEvents::KeyCode keyCode, Event* event)
+void Input::onKeyReleased(InputEvents::KeyCode keyCode)
 {
-	this->pressedKeysPrevious = this->pressedKeys;
-	this->pressedKeys[(int)keyCode] = false;
+	Input::PressedKeysPrevious = Input::PressedKeys;
+	Input::PressedKeys[(int)keyCode] = false;
 
 	InputEvents::TriggerKeyJustReleased(InputEvents::KeyboardEventArgs(keyCode));
 }
 
-InputEvents::KeyCode Input::getActiveModifiers()
+InputEvents::KeyCode Input::GetActiveModifiers()
 {
 	InputEvents::KeyCode modifiers = InputEvents::KeyCode::KEY_NONE;
 
-	if (Input::isPressed(InputEvents::KeyCode::KEY_SHIFT))
+	if (Input::IsPressed(InputEvents::KeyCode::KEY_SHIFT))
 	{
 		modifiers = (InputEvents::KeyCode)((int)modifiers | (int)InputEvents::KeyCode::KEY_SHIFT);
 	}
 
-	if (Input::isPressed(InputEvents::KeyCode::KEY_ALT))
+	if (Input::IsPressed(InputEvents::KeyCode::KEY_ALT))
 	{
 		modifiers = (InputEvents::KeyCode)((int)modifiers | (int)InputEvents::KeyCode::KEY_ALT);
 	}
 
-	if (Input::isPressed(InputEvents::KeyCode::KEY_CTRL))
+	if (Input::IsPressed(InputEvents::KeyCode::KEY_CTRL))
 	{
 		modifiers = (InputEvents::KeyCode)((int)modifiers | (int)InputEvents::KeyCode::KEY_CTRL);
 	}
@@ -110,21 +188,21 @@ InputEvents::KeyCode Input::getActiveModifiers()
 	return modifiers;
 }
 
-bool Input::isPressed(InputEvents::KeyCode keyCode)
+bool Input::IsPressed(InputEvents::KeyCode keyCode)
 {
-	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
+	if (Input::PressedKeys.find((int)keyCode) != Input::PressedKeys.end())
 	{
-		return Input::getInstance()->pressedKeys[(int)keyCode];
+		return Input::PressedKeys[(int)keyCode];
 	}
 
 	return false;
 }
 
-bool Input::isReleased(InputEvents::KeyCode keyCode)
+bool Input::IsReleased(InputEvents::KeyCode keyCode)
 {
-	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
+	if (Input::PressedKeys.find((int)keyCode) != Input::PressedKeys.end())
 	{
-		return !Input::getInstance()->pressedKeys[(int)keyCode];
+		return !Input::PressedKeys[(int)keyCode];
 	}
 
 	return true;

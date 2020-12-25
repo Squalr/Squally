@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class EventCustom;
 	class Sprite;
 	class Vec2;
 }
@@ -44,7 +43,6 @@ private:
 	typedef GlobalNode super;
 	void onEnter() override;
 	void initializeListeners() override;
-	void onEventMouseStateUpdate(cocos2d::EventCustom* eventCustom);
 	void setActiveMouseSprite(cocos2d::Node* mouseSprite);
 	void setSpriteToCursorPosition();
 
@@ -59,5 +57,5 @@ private:
 	int activeCursorSet;
 	std::map<int, CursorSet> cursorSets;
 
-	static Mouse* instance;
+	static Mouse* Instance;
 };

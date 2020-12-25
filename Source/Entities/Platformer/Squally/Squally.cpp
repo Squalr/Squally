@@ -5,7 +5,6 @@
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/Input.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/Save/SaveManager.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"

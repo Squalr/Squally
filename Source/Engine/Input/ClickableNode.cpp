@@ -9,7 +9,6 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Input/Input.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -112,15 +111,6 @@ void ClickableNode::onEnter()
 	this->contentSelected->setVisible(false);
 }
 
-void ClickableNode::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-
-	// Trigger mouse move event to refresh cursor state
-	InputEvents::MouseEventArgs args = MouseState::getMouseState();
-	this->mouseMove(&args);
-}
-
 void ClickableNode::initializeListeners()
 {
 	super::initializeListeners();
@@ -128,11 +118,6 @@ void ClickableNode::initializeListeners()
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
-	}));
-
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
-	{
-		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom, true);
 	}));
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseDown, [=](EventCustom* eventCustom)
@@ -216,9 +201,8 @@ void ClickableNode::disableInteraction(GLubyte newOpacity)
 	this->interactionEnabled = false;
 	this->showContent(this->content);
 	this->setOpacity(newOpacity);
-
-	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
-	// InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	
+	// REFRESH
 }
 
 void ClickableNode::enableInteraction(GLubyte newOpacity)
@@ -226,9 +210,8 @@ void ClickableNode::enableInteraction(GLubyte newOpacity)
 	this->interactionEnabled = true;
 	this->showContent(this->content);
 	this->setOpacity(newOpacity);
-
-	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
-	// InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	
+	// REFRESH
 }
 
 void ClickableNode::setClickModifier(InputEvents::KeyCode modifier)
@@ -242,9 +225,7 @@ void ClickableNode::setClickModifier(InputEvents::KeyCode modifier)
 
 	this->modifierReleasedListener = this->whenKeyReleased({ modifier }, [=](InputEvents::KeyboardEventArgs*)
 	{
-		InputEvents::MouseEventArgs args = MouseState::getMouseState();
-
-		this->mouseOut(&args, true);
+		// REFRESH
 	}, false);
 }
 
@@ -347,7 +328,7 @@ void ClickableNode::clearState()
 void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
 	if (!this->interactionEnabled ||
-		(this->modifier != InputEvents::KeyCode::KEY_NONE && this->modifier != Input::getActiveModifiers()) ||
+		(this->modifier != InputEvents::KeyCode::KEY_NONE && this->modifier != Input::GetActiveModifiers()) ||
 		(!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
@@ -412,7 +393,7 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 
 void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
+	if (!this->interactionEnabled || (this->modifier != Input::GetActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
 	}
@@ -458,7 +439,7 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 
 void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
+	if (!this->interactionEnabled || (this->modifier != Input::GetActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
 	}

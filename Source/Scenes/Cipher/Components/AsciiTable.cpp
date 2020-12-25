@@ -7,7 +7,6 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/RadioButton.h"
 #include "Engine/UI/Controls/ScrollPane.h"
@@ -245,7 +244,6 @@ void AsciiTable::close()
 {
 	this->setVisible(false);
 	GameUtils::focus(this->getParent());
-	InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 	
 	if (this->immediateBlock != nullptr && this->selectedBlock != nullptr)
 	{

@@ -12,7 +12,6 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -333,8 +332,6 @@ void MemoryGrid::initializeListeners()
 			(*it)->setOpacity(0);
 			(*it)->setVisible(false);
 		}
-
-		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
 	});
 
 	this->whenKeyReleased({ InputEvents::KeyCode::KEY_SHIFT }, [=](InputEvents::KeyboardEventArgs* args)
@@ -346,8 +343,6 @@ void MemoryGrid::initializeListeners()
 			(*it)->setOpacity(0);
 			(*it)->setVisible(false);
 		}
-
-		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
 	});
 }
 

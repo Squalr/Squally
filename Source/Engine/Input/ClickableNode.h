@@ -55,7 +55,6 @@ protected:
 	virtual ~ClickableNode();
 
 	void onEnter() override;
-	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;

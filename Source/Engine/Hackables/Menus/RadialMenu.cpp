@@ -142,7 +142,7 @@ void RadialMenu::buildRadialMenu(HackableObjectOpenArgs* args)
 	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
 	std::vector<HackableBase*> filteredAttributes = std::vector<HackableBase*>();
 
-	for (auto hackable : this->activeHackableObject->hackableList)
+	for (const auto& hackable : this->activeHackableObject->hackableList)
 	{
 		if ((hackable->getRequiredHackFlag() & HackableObject::GetHackFlags()) == hackable->getRequiredHackFlag())
 		{
@@ -167,7 +167,7 @@ void RadialMenu::buildRadialMenu(HackableObjectOpenArgs* args)
 	this->radialMenuItems->addChild(returnRadialNode);
 
 	// Draw icons
-	for (auto hackable : filteredAttributes)
+	for (const auto& hackable : filteredAttributes)
 	{
 		LocalizedString* name = hackable->getName();
 

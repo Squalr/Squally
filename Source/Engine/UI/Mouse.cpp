@@ -3,14 +3,14 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/UI/HUD/Hud.h"
 
 using namespace cocos2d;
 
-Mouse* Mouse::instance = nullptr;
+Mouse* Mouse::Instance = nullptr;
 
 void Mouse::registerGlobalNode()
 {
@@ -19,13 +19,13 @@ void Mouse::registerGlobalNode()
 
 Mouse* Mouse::getInstance()
 {
-	if (Mouse::instance == nullptr)
+	if (Mouse::Instance == nullptr)
 	{
-		Mouse::instance = new Mouse();
-		Mouse::instance->autorelease();
+		Mouse::Instance = new Mouse();
+		Mouse::Instance->autorelease();
 	}
 
-	return Mouse::instance;
+	return Mouse::Instance;
 }
 
 Mouse::Mouse()
@@ -73,20 +73,34 @@ void Mouse::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
 	{
-		this->onEventMouseStateUpdate(eventCustom);
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->readMousePosition = args->mouseCoords;
+
+			if (args->isDragging)
+			{
+				this->setActiveMouseSprite(this->mouseSpriteDrag);
+			}
+			else if (args->isLeftClicked && args->canClick)
+			{
+				this->setActiveMouseSprite(this->mouseSpritePointPressed);
+			}
+			else if (args->canClick)
+			{
+				this->setActiveMouseSprite(this->mouseSpritePoint);
+			}
+			else
+			{
+				this->setActiveMouseSprite(this->mouseSpriteIdle);
+			}
+
+			this->setSpriteToCursorPosition();
+		}
 	}));
-
-	this->whenKeyPressed({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
-	{
-		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
-	});
-
-	this->whenKeyReleased({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
-	{
-		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
-	});
 }
 
 void Mouse::registerCursorSet(int setId, CursorSet cursorSet)
@@ -128,32 +142,6 @@ void Mouse::setActiveCursorSet(int setId)
 int Mouse::getActiveCursorSet()
 {
 	return this->activeCursorSet;
-}
-
-void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
-{
-	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getData());
-
-	this->readMousePosition = args->mouseCoords;
-
-	if (args->isDragging)
-	{
-		this->setActiveMouseSprite(this->mouseSpriteDrag);
-	}
-	else if (args->isLeftClicked && args->canClick)
-	{
-		this->setActiveMouseSprite(this->mouseSpritePointPressed);
-	}
-	else if (args->canClick)
-	{
-		this->setActiveMouseSprite(this->mouseSpritePoint);
-	}
-	else
-	{
-		this->setActiveMouseSprite(this->mouseSpriteIdle);
-	}
-
-	this->setSpriteToCursorPosition();
 }
 
 void Mouse::setActiveMouseSprite(Node* mouseSprite)

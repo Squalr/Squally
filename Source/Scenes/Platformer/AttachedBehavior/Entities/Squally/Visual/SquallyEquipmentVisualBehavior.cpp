@@ -95,7 +95,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 
 		this->whenKeyPressed({ InputEvents::KeyCode::KEY_J }, [=](InputEvents::KeyboardEventArgs* args)
 		{
-			if (Input::isPressed(InputEvents::KeyCode::KEY_ALT))
+			if (Input::IsPressed(InputEvents::KeyCode::KEY_ALT))
 			{
 				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
 				{
@@ -112,7 +112,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 
 		this->whenKeyPressed({ InputEvents::KeyCode::KEY_L }, [=](InputEvents::KeyboardEventArgs* args)
 		{
-			if (Input::isPressed(InputEvents::KeyCode::KEY_ALT))
+			if (Input::IsPressed(InputEvents::KeyCode::KEY_ALT))
 			{
 				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
 				{
@@ -129,7 +129,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 
 		this->whenKeyPressed({ InputEvents::KeyCode::KEY_K }, [=](InputEvents::KeyboardEventArgs* args)
 		{
-			if (Input::isPressed(InputEvents::KeyCode::KEY_ALT))
+			if (Input::IsPressed(InputEvents::KeyCode::KEY_ALT))
 			{
 				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
 				{
@@ -146,7 +146,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 
 		this->whenKeyPressed({ InputEvents::KeyCode::KEY_I }, [=](InputEvents::KeyboardEventArgs* args)
 		{
-			if (Input::isPressed(InputEvents::KeyCode::KEY_ALT))
+			if (Input::IsPressed(InputEvents::KeyCode::KEY_ALT))
 			{
 				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
 				{
