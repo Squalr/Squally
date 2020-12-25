@@ -55,6 +55,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackParticles4 = nullptr;
 	this->hackParticles5 = nullptr;
 	this->hackCircle = nullptr;
+	this->enableHackerModeEvents = true;
 
 	this->uiElementsButton->addChild(this->hackButton);
 	this->uiElementsRain->addChild(this->hackParticlesNode);

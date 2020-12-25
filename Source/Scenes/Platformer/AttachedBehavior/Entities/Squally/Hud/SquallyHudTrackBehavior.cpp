@@ -20,7 +20,7 @@ SquallyHudTrackBehavior* SquallyHudTrackBehavior::create(GameObject* owner)
 
 SquallyHudTrackBehavior::SquallyHudTrackBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = dynamic_cast<Squally*>(owner);
+	this->squally = static_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{

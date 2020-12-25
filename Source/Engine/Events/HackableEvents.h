@@ -102,7 +102,7 @@ public:
 	static void TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args);
 	static void TriggerOpenHackable(HackableObjectOpenArgs args);
 	static void TriggerCloseHackable();
-	static void TriggerEditHackableBase(HackableObjectEditArgs args);
+	static void TriggerEditHackableBaseEdit(HackableObjectEditArgs args);
 	static void TriggerEditHackableBaseDone();
 	static void TriggerOnHackApplied(HackAppliedArgs args);
 	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);

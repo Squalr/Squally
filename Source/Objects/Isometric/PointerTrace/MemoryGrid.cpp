@@ -262,7 +262,7 @@ void MemoryGrid::initializeListeners()
 
 		(*it)->setIntersectFunction([=](Vec2 mousePos)
 		{
-			return GameUtils::intersectsIsometric(*it, mousePos);
+			return GameUtils::intersectsIsometric(*it, mousePos, false);
 		});
 	}
 

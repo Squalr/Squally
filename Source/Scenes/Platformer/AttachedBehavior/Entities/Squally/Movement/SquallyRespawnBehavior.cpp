@@ -38,7 +38,7 @@ SquallyRespawnBehavior* SquallyRespawnBehavior::create(GameObject* owner)
 
 SquallyRespawnBehavior::SquallyRespawnBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = dynamic_cast<Squally*>(owner);
+	this->squally = static_cast<Squally*>(owner);
 	this->isRespawning = false;
 
 	if (this->squally == nullptr)

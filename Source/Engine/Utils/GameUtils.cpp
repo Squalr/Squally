@@ -285,9 +285,10 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	Rect resultRect = node->getBoundingBox();
 	Vec3 resultCoords = Vec3(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f, node->getPositionZ());
 	Node* parent = node->getParent();
+
+	// Getting the world coords of a UIBound node is expensive so we only check when asked
 	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
 
-	// Special conditions for objects that track the camera
 	if (uiBoundObjectParent != nullptr)
 	{
 		uiBoundObjectParent->pushRealPosition();
@@ -297,8 +298,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	{
 		resultCoords = parent->convertToWorldSpace3(resultCoords);
 	}
-
-	// Special conditions for objects that track the camera
+	
 	if (uiBoundObjectParent != nullptr)
 	{
 		uiBoundObjectParent->popRealPosition();
@@ -338,7 +338,7 @@ Vec2 GameUtils::getScreenCoords(const Vec3& point)
 	return Camera::getDefaultCamera()->projectGL(point);
 }
 
-Rect GameUtils::getScreenBounds(Node* node, const Size& padding)
+Rect GameUtils::getScreenBounds(Node* node, const Size& padding, bool checkForUIBound)
 {
 	if (node == nullptr)
 	{
@@ -346,7 +346,7 @@ Rect GameUtils::getScreenBounds(Node* node, const Size& padding)
 	}
 	
 	// Rect worldRect = node->getBoundingBoxNoTransform();
-	return getScreenBounds(GameUtils::getWorldCoords3D(node, false), padding + node->getContentSize() * GameUtils::getScale(node));
+	return getScreenBounds(GameUtils::getWorldCoords3D(node, checkForUIBound), padding + node->getContentSize() * GameUtils::getScale(node));
 }
 
 Rect GameUtils::getScreenBounds(const Vec3& position, const Size& size)
@@ -401,7 +401,7 @@ bool GameUtils::isEclipsed(Node* node, Vec2 mousePos)
 	return false;
 }
 
-bool GameUtils::intersects(Node* node, Vec2 mousePos)
+bool GameUtils::intersects(Node* node, Vec2 mousePos, bool checkForUIBound)
 {
 	if (GameUtils::isEclipsed(node, mousePos))
 	{
@@ -410,7 +410,7 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos)
 
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (GameUtils::getScreenBounds(node).intersectsRect(mouseRect))
+	if (GameUtils::getScreenBounds(node, Size::ZERO, checkForUIBound).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -420,7 +420,7 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos)
 	}
 }
 
-bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos)
+bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos, bool checkForUIBound)
 {
 	if (GameUtils::isEclipsed(node, mousePos))
 	{
@@ -428,7 +428,7 @@ bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos)
 	}
 
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
-	Rect nodeBounds = GameUtils::getScreenBounds(node);
+	Rect nodeBounds = GameUtils::getScreenBounds(node, Size::ZERO, checkForUIBound);
 
 	float dx = std::abs(mousePos.x - nodeBounds.getMidX());
 	float dy = std::abs(mousePos.y - nodeBounds.getMidY());

@@ -34,12 +34,12 @@ public:
 	static void setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords);
 	static void setWorldCoords3D(cocos2d::Node* node, cocos2d::Vec3 worldCoords);
 	static cocos2d::Vec2 getScreenCoords(const cocos2d::Vec3& point);
-	static cocos2d::Rect getScreenBounds(cocos2d::Node* node, const cocos2d::Size& padding = cocos2d::Size::ZERO);
+	static cocos2d::Rect getScreenBounds(cocos2d::Node* node, const cocos2d::Size& padding = cocos2d::Size::ZERO, bool checkForUIBound = true);
 	static cocos2d::Rect getScreenBounds(const cocos2d::Vec3& position, const cocos2d::Size& size);
 	static bool isVisible(cocos2d::Node* node);
 	static bool isEclipsed(cocos2d::Node* node, cocos2d::Vec2 mousePos);
-	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos);
-	static bool intersectsIsometric(cocos2d::Node* node, cocos2d::Vec2 mousePos);
+	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos, bool checkForUIBound = true);
+	static bool intersectsIsometric(cocos2d::Node* node, cocos2d::Vec2 mousePos, bool checkForUIBound = true);
 	static bool keyExists(const cocos2d::ValueMap& valueMap, std::string key);
 	static void deleteKey(cocos2d::ValueMap& valueMap, std::string key);
 	static bool hasArg(const std::vector<std::string>& argList, std::string arg);

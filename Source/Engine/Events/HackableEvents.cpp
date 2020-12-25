@@ -91,7 +91,7 @@ void HackableEvents::TriggerCloseHackable()
 	);
 }
 
-void HackableEvents::TriggerEditHackableBase(HackableObjectEditArgs args)
+void HackableEvents::TriggerEditHackableBaseEdit(HackableObjectEditArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		HackableEvents::EventHackableBaseEdit,

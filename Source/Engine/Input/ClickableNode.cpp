@@ -581,7 +581,7 @@ bool ClickableNode::intersects(cocos2d::Vec2 mousePos)
 		return this->intersectFunction(mousePos);
 	}
 
-	return GameUtils::intersects(this, mousePos);
+	return GameUtils::intersects(this, mousePos, true);
 }
 
 void ClickableNode::neverHandle()

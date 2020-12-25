@@ -50,6 +50,7 @@ protected:
 	Hud* miniGameHud;
 	Hud* backMenuHud;
 	Hud* menuBackDrop;
+	Hud* hackMenuHud;
 	Hud* menuHud;
 	Hud* topMenuHud;
 	Hud* confirmationMenuHud;

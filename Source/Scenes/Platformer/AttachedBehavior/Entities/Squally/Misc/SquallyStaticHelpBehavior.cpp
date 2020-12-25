@@ -38,7 +38,7 @@ SquallyStaticHelpBehavior* SquallyStaticHelpBehavior::create(GameObject* owner)
 
 SquallyStaticHelpBehavior::SquallyStaticHelpBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = dynamic_cast<Squally*>(owner);
+	this->squally = static_cast<Squally*>(owner);
 }
 
 SquallyStaticHelpBehavior::~SquallyStaticHelpBehavior()

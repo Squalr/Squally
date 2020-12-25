@@ -21,7 +21,7 @@ SquallyEqBehavior* SquallyEqBehavior::create(GameObject* owner)
 
 SquallyEqBehavior::SquallyEqBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = dynamic_cast<Squally*>(owner);
+	this->squally = static_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{

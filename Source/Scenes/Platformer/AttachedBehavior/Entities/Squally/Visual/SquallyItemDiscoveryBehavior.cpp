@@ -32,7 +32,7 @@ SquallyItemDiscoveryBehavior* SquallyItemDiscoveryBehavior::create(GameObject* o
 
 SquallyItemDiscoveryBehavior::SquallyItemDiscoveryBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = dynamic_cast<Squally*>(owner);
+	this->squally = static_cast<Squally*>(owner);
 	this->container = Node::create();
 	this->itemNode = Node::create();
 	this->glow = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);

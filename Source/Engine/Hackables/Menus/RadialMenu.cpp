@@ -120,7 +120,7 @@ void RadialMenu::onHackableEdit(HackableBase* hackable)
 	}
 	else
 	{
-		HackableEvents::TriggerEditHackableBase(HackableObjectEditArgs(this->activeHackableObject, hackable));
+		HackableEvents::TriggerEditHackableBaseEdit(HackableObjectEditArgs(this->activeHackableObject, hackable));
 
 		this->setVisible(false);
 	}

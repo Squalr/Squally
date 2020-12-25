@@ -52,6 +52,7 @@ MapBase::MapBase(bool allowHackerMode)
 	this->miniGameHud = Hud::create();
 	this->backMenuHud = Hud::create();
 	this->menuBackDrop = Hud::create();
+	this->hackMenuHud = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
 	this->confirmationMenuHud = Hud::create();
@@ -69,8 +70,8 @@ MapBase::MapBase(bool allowHackerMode)
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 	
-	this->menuHud->addChild(this->radialMenu);
-	this->menuHud->addChild(this->codeHud);
+	this->hackMenuHud->addChild(this->radialMenu);
+	this->hackMenuHud->addChild(this->codeHud);
 	this->topMenuHud->addChild(this->optionsMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
@@ -82,6 +83,7 @@ MapBase::MapBase(bool allowHackerMode)
 	this->addChild(this->musicOverlay);
 	this->addChild(this->backMenuHud);
 	this->addChild(this->menuBackDrop);
+	this->addChild(this->hackMenuHud);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
 	this->addChild(this->confirmationMenuHud);
@@ -249,6 +251,10 @@ void MapBase::onHackerModeEnable()
 
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);
+
+	// Good chance the user will use these soon, lazy init it so it can listen for events
+	this->radialMenu->lazyGet();
+	this->codeHud->lazyGet();
 
 	this->hud->setVisible(false);
 	this->hackerModeGlow->setVisible(true);

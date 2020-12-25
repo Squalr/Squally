@@ -90,7 +90,7 @@ void OutputBolt::initializeListeners()
 		if (args != nullptr && !args->isHandled())
 		{
 			// Source bolt is input bolt
-			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
+			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination, false))
 			{
 				this->setConnection(args->connection);
 				this->connection->setInputBolt(dynamic_cast<InputBolt*>(args->sourceBolt));

@@ -248,13 +248,16 @@ EventListenerCustom* SmartNode::whenKeyPressed(std::set<cocos2d::InputEvents::Ke
 {
 	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
-
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
@@ -311,13 +314,16 @@ EventListenerCustom* SmartNode::whenKeyReleased(std::set<cocos2d::InputEvents::K
 {
 	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
-
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
@@ -374,13 +380,16 @@ EventListenerCustom* SmartNode::whenScrollUp(std::function<void(InputEvents::Mou
 {
 	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
-
-		if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
@@ -394,13 +403,16 @@ EventListenerCustom* SmartNode::whenScrollDown(std::function<void(InputEvents::M
 {
 	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
-
-		if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
