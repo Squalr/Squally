@@ -58,9 +58,6 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<PLATFORM_ID:Windows>:_UNICODE>
 )
 
-# Supported architecture
-target_compile_options(${PROJECT_NAME} PRIVATE "/arch:SSE2")
-
 # Platform specific target options
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -71,7 +68,16 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         MACOSX_PACKAGE_LOCATION Resources
     )
 
+    # Patch to default segment permissions to allow self-modifying code
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMENT "Patching executable file init_prot to 0x07 (r/w/e for all segments)"
+        COMMAND ${PROJECT_SOURCE_DIR}/PostBuildMac.sh
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/
+    )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    # Supported architecture
+    target_compile_options(${PROJECT_NAME} PRIVATE "/arch:SSE2")
+
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE YES
     )
@@ -97,7 +103,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     message(${CMAKE_CXX_FLAGS_DEBUG})
 
     target_link_options(${PROJECT_NAME} PRIVATE
-        
         # Enable to allow profiling on windows:
         # $<$<CONFIG:RELEASE>:/PROFILE>
         # $<$<CONFIG:DEBUG>:/PROFILE>

@@ -68,7 +68,7 @@ void SaveManager::Save()
 	);
 }
 
-void SaveManager::SaveGlobalData(std::string key, const Value& data)
+void SaveManager::SaveGlobalData(const std::string& key, const Value& data)
 {
 	SaveManager::InitializeSaveData();
 
@@ -77,7 +77,7 @@ void SaveManager::SaveGlobalData(std::string key, const Value& data)
 	SaveManager::DoSave(SaveManager::GlobalSaveData, SaveManager::GetLocalGlobalSaveFilePath(), SaveManager::GetCloudGlobalSaveFilePath());
 }
 
-void SaveManager::BatchSaveGlobalData(std::vector<std::tuple<std::string, cocos2d::Value>> newData)
+void SaveManager::BatchSaveGlobalData(const std::vector<std::tuple<std::string, cocos2d::Value>>& newData)
 {
 	SaveManager::InitializeSaveData();
 
@@ -89,7 +89,7 @@ void SaveManager::BatchSaveGlobalData(std::vector<std::tuple<std::string, cocos2
 	SaveManager::DoSave(SaveManager::GlobalSaveData, SaveManager::GetLocalGlobalSaveFilePath(), SaveManager::GetCloudGlobalSaveFilePath());
 }
 
-void SaveManager::BatchSaveProfileData(std::vector<std::tuple<std::string, cocos2d::Value>> newData)
+void SaveManager::BatchSaveProfileData(const std::vector<std::tuple<std::string, cocos2d::Value>>& newData)
 {
 	SaveManager::InitializeSaveData();
 
@@ -105,7 +105,7 @@ void SaveManager::BatchSaveProfileData(std::vector<std::tuple<std::string, cocos
 	);
 }
 
-void SaveManager::SoftSaveProfileData(std::string key, const Value& data)
+void SaveManager::SoftSaveProfileData(const std::string& key, const Value& data)
 {
 	SaveManager::InitializeSaveData();
 
@@ -116,7 +116,7 @@ void SaveManager::SoftSaveProfileData(std::string key, const Value& data)
 	}
 }
 
-void SaveManager::SaveProfileData(std::string key, const Value& data)
+void SaveManager::SaveProfileData(const std::string& key, const Value& data)
 {
 	SaveManager::InitializeSaveData();
 
@@ -129,28 +129,28 @@ void SaveManager::SaveProfileData(std::string key, const Value& data)
 	);
 }
 
-Value SaveManager::GetGlobalDataOrDefault(std::string key, const Value& defaultValue)
+Value SaveManager::GetGlobalDataOrDefault(const std::string& key, const Value& defaultValue)
 {
 	SaveManager::InitializeSaveData();
 
 	return GameUtils::getKeyOrDefault(SaveManager::GlobalSaveData, key, defaultValue);
 }
 
-Value SaveManager::GetGlobalData(std::string key)
+Value SaveManager::GetGlobalData(const std::string& key)
 {
 	SaveManager::InitializeSaveData();
 
 	return GameUtils::getKeyOrDefault(SaveManager::GlobalSaveData, key, Value());
 }
 
-Value SaveManager::GetProfileDataOrDefault(std::string key, const Value& defaultValue)
+Value SaveManager::GetProfileDataOrDefault(const std::string& key, const Value& defaultValue)
 {
 	SaveManager::InitializeSaveData();
 
 	return GameUtils::getKeyOrDefault(SaveManager::ProfileSaveData, key, defaultValue);
 }
 
-Value SaveManager::GetProfileData(std::string key)
+Value SaveManager::GetProfileData(const std::string& key)
 {
 	SaveManager::InitializeSaveData();
 
@@ -162,7 +162,7 @@ SaveManager::SaveProfile SaveManager::GetActiveSaveProfile()
 	return SaveManager::ActiveSaveProfile;
 }
 
-void SaveManager::DoSave(ValueMap valueMap, std::string localSavePath, std::string cloudSavePath)
+void SaveManager::DoSave(ValueMap valueMap, const std::string& localSavePath, const std::string& cloudSavePath)
 {
 	if (!SaveManager::HasUnsavedChanges)
 	{
@@ -243,7 +243,7 @@ void SaveManager::DoSave(ValueMap valueMap, std::string localSavePath, std::stri
 	}
 }
 
-ValueMap SaveManager::LoadSaveFile(std::string localSavePath, std::string cloudSavePath)
+ValueMap SaveManager::LoadSaveFile(const std::string& localSavePath, const std::string& cloudSavePath)
 {
 	ValueMap cloudValueMap = ValueMap();
 	ValueMap localValueMap = ValueMap();
@@ -364,11 +364,11 @@ bool SaveManager::HasSaveProfile(int profileId)
 	return !saveData.empty();
 }
 
-void SaveManager::BatchDeleteProfileData(std::vector<std::string> keys)
+void SaveManager::BatchDeleteProfileData(const std::vector<std::string>& keys)
 {
-	for (auto next : keys)
+	for (const std::string& next : keys)
 	{
-		SaveManager::ProfileSaveData.erase(next);
+		SaveManager::SoftDeleteProfileData(next);
 	}
 
 	SaveManager::DoSave(
@@ -378,14 +378,18 @@ void SaveManager::BatchDeleteProfileData(std::vector<std::string> keys)
 	);
 }
 
-void SaveManager::SoftDeleteProfileData(std::string key)
+void SaveManager::SoftDeleteProfileData(const std::string& key)
 {
-	SaveManager::ProfileSaveData.erase(key);
+	if (SaveManager::ProfileSaveData.find(key) != SaveManager::ProfileSaveData.end())
+	{
+		SaveManager::ProfileSaveData.erase(key);
+		SaveManager::HasUnsavedChanges = true;
+	}
 }
 
-void SaveManager::DeleteProfileData(std::string key)
+void SaveManager::DeleteProfileData(const std::string& key)
 {
-	SaveManager::ProfileSaveData.erase(key);
+	SaveManager::SoftDeleteProfileData(key);
 
 	SaveManager::DoSave(
 		SaveManager::ProfileSaveData,
@@ -405,6 +409,7 @@ void SaveManager::DeleteAllProfileData(int profileId)
 
 	// Copy the save increment from the old save file. Prevents clashing in the case where a save fails to delete on the cloud, but is deleted locally.
 	wipedSave[SaveManager::SaveKeyIncrement] = GameUtils::getKeyOrDefault(oldSaveData, SaveManager::SaveKeyIncrement, Value(0));
+	SaveManager::HasUnsavedChanges = true;
 
 	// Wipe save on disk
 	SaveManager::DoSave(
@@ -414,39 +419,55 @@ void SaveManager::DeleteAllProfileData(int profileId)
 	);
 }
 
-bool SaveManager::HasGlobalData(std::string key)
+bool SaveManager::HasGlobalData(const std::string& key)
 {
 	return GameUtils::keyExists(SaveManager::GlobalSaveData, key);
 }
 
-bool SaveManager::HasProfileData(std::string key)
+bool SaveManager::HasProfileData(const std::string& key)
 {
 	return GameUtils::keyExists(SaveManager::ProfileSaveData, key);
 }
 
-std::string SaveManager::GetLocalGlobalSaveFilePath()
+const std::string& SaveManager::GetLocalGlobalSaveFilePath()
 {
-	return FileUtils::getInstance()->getWritablePath() + SaveManager::GlobalSaveFileName;
+	static const std::string FilePath = FileUtils::getInstance()->getWritablePath() + SaveManager::GlobalSaveFileName;
+
+	return FilePath;
 }
 
-std::string SaveManager::GetLocalProfileSaveFilePath(int profileId)
+const std::string& SaveManager::GetLocalProfileSaveFilePath(int profileId)
 {
-	std::string fileName = StrUtils::replaceAll(SaveManager::ProfileSaveFileTemplate.c_str(), "%d", std::to_string(profileId));
-	std::string fullPath = FileUtils::getInstance()->getWritablePath() + fileName;
-	
-	return fullPath;
+	static std::map<int, std::string> LocalProfileFilePathCache = std::map<int, std::string>();
+
+	if (LocalProfileFilePathCache.find(profileId) == LocalProfileFilePathCache.end())
+	{
+		std::string fileName = StrUtils::replaceAll(SaveManager::ProfileSaveFileTemplate.c_str(), "%d", std::to_string(profileId));
+		std::string fullPath = FileUtils::getInstance()->getWritablePath() + fileName;
+		
+		LocalProfileFilePathCache[profileId] = fullPath;
+	}
+
+	return LocalProfileFilePathCache[profileId];
 }
 
-std::string SaveManager::GetCloudGlobalSaveFilePath()
+const std::string& SaveManager::GetCloudGlobalSaveFilePath()
 {
 	// Raw filename is actually good enough as a path for cloud
 	return SaveManager::GlobalSaveFileName;
 }
 
-std::string SaveManager::GetCloudProfileSaveFilePath(int profileId)
+const std::string& SaveManager::GetCloudProfileSaveFilePath(int profileId)
 {
-	std::string fileName = StrUtils::replaceAll(SaveManager::ProfileSaveFileTemplate.c_str(), "%d", std::to_string(profileId));
+	static std::map<int, std::string> CloudProfileFilePathCache = std::map<int, std::string>();
 
+	if (CloudProfileFilePathCache.find(profileId) == CloudProfileFilePathCache.end())
+	{
+		std::string fileName = StrUtils::replaceAll(SaveManager::ProfileSaveFileTemplate.c_str(), "%d", std::to_string(profileId));
+		
+		CloudProfileFilePathCache[profileId] = fileName;
+	}
+	
 	// Raw filename is actually good enough as a path for cloud
-	return fileName;
+	return CloudProfileFilePathCache[profileId];
 }

@@ -97,7 +97,7 @@ public:
 		int byteCount;
 	};
 
-	static void setAllMemoryPermissions(void* address, int length);
+	static bool setAllMemoryPermissions(void* address, int length);
 	static void writeMemory(void* to, void* from, int length);
 	static std::string preProcessAssembly(std::string assembly);
 	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);

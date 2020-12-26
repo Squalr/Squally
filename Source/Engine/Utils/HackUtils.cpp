@@ -16,33 +16,72 @@
 
 #if __GNUC__ || __clang__
 	#include <unistd.h>
+	#include <signal.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <errno.h>
 	#include <sys/mman.h>
 #endif
 
 using namespace asmjit;
 using namespace asmtk;
 
-void HackUtils::setAllMemoryPermissions(void* address, int length)
+static void handler(int sig, siginfo_t *si, void *unused)
+{
+	printf("Got SIGSEGV at address: %p\n", si->si_addr);
+}
+
+bool HackUtils::setAllMemoryPermissions(void* address, int length)
 {
 	#ifdef _WIN32
 		DWORD old;
-		VirtualProtect(address, length, PAGE_EXECUTE_READWRITE, &old);
+		return VirtualProtect(address, length, PAGE_EXECUTE_READWRITE, &old);
 	#else
-		// Unix requires changing memory protection on the start of the page, not just the address
 		size_t pageSize = sysconf(_SC_PAGESIZE);
-		void* pageStart = (void*)((unsigned long)address & -pageSize);
-		int newLength = (int)((unsigned long)address + length - (unsigned long)pageStart);
+		struct sigaction sa;
 
-		mprotect(pageStart, newLength, PROT_READ | PROT_WRITE | PROT_EXEC);
+		sa.sa_flags = SA_SIGINFO;
+		sigemptyset(&sa.sa_mask);
+		sa.sa_sigaction = handler;
+
+		if (sigaction(SIGSEGV, &sa, NULL) == -1)
+		{
+			perror("sigaction");
+			return false;
+		}
+
+		if (pageSize == -1)
+		{
+			perror("sysconf");
+			return false;
+		}
+		
+		// Unix requires changing memory protection on the start of the page, not just the address
+		void* pageStart = (void*)((unsigned long long)address & -(unsigned long long)pageSize);
+		int newLength = (int)((unsigned long long)address + length - (unsigned long long)pageStart);
+
+		// If this fails on OSX, there is a good chance you're getting fucked by Apple
+		// In order for mprotect to succeed here, the max_prot of the section must be 0x7 (r/w/e flags set)
+		// In Mac's implementation of ld, this value gets set to 0x5 which is not what the spec suggests
+		// max_prot for the section is initialized by a global init_prot field in the binary,
+		// which can be manually set after linking by running the following command
+		// printf '\x07' | dd of=PATH/TO/Squally bs=1 seek=160 count=1 conv=notrunc
+		if (mprotect(pageStart, newLength, PROT_READ | PROT_WRITE | PROT_EXEC) == -1)
+		{
+			perror("mprotect");
+			return false;
+		}
+
+		return true;
 	#endif
 }
 
 void HackUtils::writeMemory(void* to, void* from, int length)
 {
-	HackUtils::setAllMemoryPermissions(to, length);
-	HackUtils::setAllMemoryPermissions(from, length);
-
-	memcpy(to, from, length);
+	if (HackUtils::setAllMemoryPermissions(to, length))
+	{
+		memcpy(to, from, length);
+	}
 }
 
 std::string HackUtils::preProcessAssembly(std::string assembly)
