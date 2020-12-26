@@ -45,6 +45,10 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void setNewSpriteImage(const std::string& spriteImage);
+
+	bool isFlippedX;
+	bool isFlippedY;
 	std::string defaultSprite;
 	bool hasPlayingAnimation;
 	int repeatIndex;

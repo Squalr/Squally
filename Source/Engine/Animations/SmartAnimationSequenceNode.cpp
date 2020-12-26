@@ -35,6 +35,8 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(const std::string& defaul
 	this->defaultSprite = defaultSprite;
 	this->sprite = Sprite::create(this->defaultSprite);
 	this->repeatIndex = 0;
+	this->isFlippedX = false;
+	this->isFlippedY = false;
 	
 	SmartAnimationSequenceNode::PrimeCache(this->defaultSprite);
 
@@ -71,11 +73,11 @@ void SmartAnimationSequenceNode::stopAnimation()
 
 	if (this->defaultSprite.empty())
 	{
-		this->sprite->initWithFile(UIResources::EmptyImage);
+		this->setNewSpriteImage(UIResources::EmptyImage);
 	}
 	else
 	{
-		this->sprite->initWithFile(this->defaultSprite);
+		this->setNewSpriteImage(this->defaultSprite);
 	}
 }
 
@@ -140,7 +142,7 @@ void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& a
 	{
 		animationSequence.pushBack(CallFunc::create([=]()
 		{
-			this->sprite->initWithFile(animationFile);
+			this->setNewSpriteImage(animationFile);
 		}));
 
 		if (&animationFile != &animationFiles.back())
@@ -154,7 +156,7 @@ void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& a
 		animationSequence.pushBack(DelayTime::create(animationSpeed));
 		animationSequence.pushBack(CallFunc::create([=]()
 		{
-			this->sprite->initWithFile(UIResources::EmptyImage);
+			this->setNewSpriteImage(UIResources::EmptyImage);
 		}));
 	}
 
@@ -281,12 +283,21 @@ void SmartAnimationSequenceNode::setAnimationAnchor(Vec2 anchor)
 
 void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)
 {
-	this->sprite->setFlippedX(isFlipped);
+	this->isFlippedX = isFlipped;
+	this->sprite->setFlippedX(this->isFlippedX);
 }
 
 void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 {
-	this->sprite->setFlippedY(isFlipped);
+	this->isFlippedY = isFlipped;
+	this->sprite->setFlippedY(this->isFlippedY);
+}
+
+void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImage)
+{
+	this->sprite->initWithFile(spriteImage);
+	this->sprite->setFlippedX(this->isFlippedX);
+	this->sprite->setFlippedY(this->isFlippedY);
 }
 
 int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSequenceResourceFile)

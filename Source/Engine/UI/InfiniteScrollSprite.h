@@ -22,8 +22,8 @@ protected:
 	InfiniteScrollSprite(std::string spriteResourcePath);
 	virtual ~InfiniteScrollSprite();
 
-	void onEnter();
-	void update(float dt);
+	void onEnter() override;
+	void update(float dt) override;
 	void rebuildNodes();
 
 	std::vector<cocos2d::Node*> nodes;

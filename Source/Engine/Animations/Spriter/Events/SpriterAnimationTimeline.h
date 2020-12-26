@@ -22,7 +22,7 @@ protected:
 	SpriterAnimationTimeline(const std::string& animationResource);
 
 	void onEnter() override;
-	void update(float dt);
+	void update(float dt) override;
 
 	float sampleMainlineCurve(float timeRatio);
 	float sampleCurve(float timeRatio, SpriterCurveType curveType, float c1, float c2, float c3, float c4);
