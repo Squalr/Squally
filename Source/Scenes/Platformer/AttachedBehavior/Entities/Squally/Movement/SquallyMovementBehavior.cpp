@@ -185,14 +185,15 @@ void SquallyMovementBehavior::saveSquallyPosition()
 
 void SquallyMovementBehavior::loadSquallyPosition()
 {
-	Vec3 position = GameUtils::getWorldCoords3D(this->squally);
-
-	float x = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
-	float y = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
-	float z = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
+	Vec3 squallyWorldCoords = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 warpPosition = Vec3(
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(squallyWorldCoords.x)).asFloat(),
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(squallyWorldCoords.y)).asFloat(),
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(squallyWorldCoords.z)).asFloat()
+	);
 	std::string layerId = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyLayerId, Value("")).asString();
 
-	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->squally, Vec3(x, y, z), true));
+	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->squally, warpPosition, true));
 
 	if (!layerId.empty())
 	{

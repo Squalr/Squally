@@ -82,7 +82,11 @@ void ScrappyMovementBehavior::onLoad()
 	}));
 
 	this->scheduleUpdate();
-	this->warpToSqually();
+
+	this->defer([=]()
+	{
+		this->warpToSqually();
+	});
 }
 
 void ScrappyMovementBehavior::onDisable()
@@ -171,7 +175,7 @@ void ScrappyMovementBehavior::warpToSqually()
 	if (layer != nullptr)
 	{
 		GameUtils::changeParent(this->scrappy, layer, true);
-
-		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->scrappy, GameUtils::getWorldCoords3D(this->squally)));
 	}
+
+	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->scrappy, GameUtils::getWorldCoords3D(this->squally)));
 }

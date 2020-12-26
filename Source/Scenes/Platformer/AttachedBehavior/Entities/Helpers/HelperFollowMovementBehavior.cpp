@@ -97,7 +97,11 @@ void HelperFollowMovementBehavior::onLoad()
 	});
 	
 	this->scheduleUpdate();
-	this->warpToSqually();
+
+	this->defer([=]()
+	{
+		this->warpToSqually();
+	});
 }
 
 void HelperFollowMovementBehavior::onDisable()
@@ -155,9 +159,9 @@ void HelperFollowMovementBehavior::warpToSqually()
 	if (layer != nullptr)
 	{
 		GameUtils::changeParent(this->entity, layer, true);
-
-		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, GameUtils::getWorldCoords3D(this->squally)));
 	}
+
+	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, GameUtils::getWorldCoords3D(this->squally)));
 }
 
 void HelperFollowMovementBehavior::enableFollow()
