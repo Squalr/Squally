@@ -44,8 +44,7 @@ protected:
 	virtual void runOperation(int puzzleIndex) = 0;
 	void setRealValue(int value);
 	void setHackValue(int value);
-
-	cocos2d::Node* backNode;
+	
 	cocos2d::Node* doorNode;
 	SmartClippingNode* doorClip;
 	cocos2d::Node* frontNode;
@@ -58,6 +57,7 @@ protected:
 
 private:
 	typedef Portal super;
+
 	cocos2d::Sprite* barLeft;
 	cocos2d::Sprite* barRight;
 	cocos2d::Sprite* lightLeft;

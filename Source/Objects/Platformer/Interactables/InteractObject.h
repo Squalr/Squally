@@ -71,8 +71,9 @@ protected:
 	virtual void onInteract(PlatformerEntity* interactingEntity);
 	virtual void onEndCollision();
 
-	InteractType interactType;
+	// This exists to allow for adding objects that render below the interact collision for hitbox debugging
 	cocos2d::Node* backNode;
+	InteractType interactType;
 	CollisionObject* interactCollision;
 	Scrappy* scrappy;
 	Squally* squally;

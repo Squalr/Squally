@@ -28,12 +28,10 @@ using namespace cocos2d;
 
 MountBase::MountBase(ValueMap& properties, Size size) : super(properties, InteractObject::InteractType::Input, size)
 {
-	this->backNode = Node::create();
 	this->reparentNode = Node::create();
 	this->frontNode = Node::create();
 	this->mountedEntity = nullptr;
-
-	this->addChild(this->backNode);
+	
 	this->addChild(this->reparentNode);
 	this->addChild(this->frontNode);
 }

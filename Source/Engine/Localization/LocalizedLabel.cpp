@@ -92,11 +92,11 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString)
 		return;
 	}
 
-	this->onStringUpdate(this->localizedString);
+	this->onStringUpdate();
 
-	this->localizedString->setOnStringUpdateCallback([=](LocalizedString* string)
+	this->localizedString->setOnStringUpdateCallback([=]()
 	{
-		this->onStringUpdate(string);
+		this->onStringUpdate();
 	});
 
 	// Retain as a child so it can listen for events (no visuals). Use changeParent in case the child is already added.
@@ -126,7 +126,7 @@ void LocalizedLabel::setFontSize(FontSize fontSize)
 	this->fontSize = fontSize;
 
 	// Refresh
-	this->onStringUpdate(this->localizedString);
+	this->onStringUpdate();
 }
 
 bool LocalizedLabel::increaseFontSize()
@@ -237,7 +237,7 @@ std::string LocalizedLabel::getFont()
 	}
 }
 
-void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
+void LocalizedLabel::onStringUpdate()
 {
 	// Save some state we wish to keep
 	int outlineSize = int(this->getOutlineSize());
@@ -246,7 +246,7 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	this->cleanupState();
 	
 	this->initWithTTF(
-		localizedString->getString(),
+		this->localizedString == nullptr ? "" : this->localizedString->getString(),
 		this->getFont(),
 		this->getFontSize(),
 		this->getDimensions(), 

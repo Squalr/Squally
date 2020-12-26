@@ -25,7 +25,6 @@ protected:
 	void setToMountPositionX();
 	void setToMountPosition();
 	
-	cocos2d::Node* backNode;
 	cocos2d::Node* frontNode;
 	PlatformerEntity* mountedEntity;
 

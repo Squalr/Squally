@@ -31,7 +31,7 @@ void ConstantString::setString(std::string newString)
 
 	if (this->onStringUpdate != nullptr)
 	{
-		this->onStringUpdate(this);
+		this->onStringUpdate();
 	}
 }
 

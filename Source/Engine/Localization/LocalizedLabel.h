@@ -75,7 +75,7 @@ private:
 	using super::setString;
 
 	void onEnter() override;
-	void onStringUpdate(LocalizedString* localizedString);
+	void onStringUpdate();
 	void cleanupState();
 	cocos2d::LanguageType getCurrentLanguage();
 	float getFontSizeS1();

@@ -42,7 +42,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		float doorOpenDelta)
 	: super(properties, doorClipSize, portalOffset)
 {
-	this->backNode = Node::create();
 	this->barLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarLeft);
 	this->barRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarRight);
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
@@ -113,7 +112,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 
 	this->backNode->addChild(this->barLeft);
 	this->backNode->addChild(this->barRight);
-	this->backNode->addChild(this->backNode);
 	this->backNode->addChild(this->lightLeft);
 	this->backNode->addChild(this->lightRight);
 	this->backNode->addChild(this->doorClip);

@@ -30,12 +30,12 @@ GameWindow::GameWindow()
 	this->glView = nullptr;
 
 	// Listen for locale change events and update the window title
-	this->gameWindowTitle->setOnStringUpdateCallback([=](LocalizedString* newString)
+	this->gameWindowTitle->setOnStringUpdateCallback([=]()
 	{
 		if (this->glView != nullptr)
 		{
-			this->glView->setViewName(newString->getString());
-			glfwSetWindowTitle(this->glView->getWindow(), newString->getString().c_str());
+			this->glView->setViewName(this->gameWindowTitle->getString());
+			glfwSetWindowTitle(this->glView->getWindow(), this->gameWindowTitle->getString().c_str());
 		}
 	});
 

@@ -15,7 +15,7 @@ public:
 	void setOverrideLanguage(cocos2d::LanguageType overrideLanguage);
 	LocalizedString* setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	LocalizedString* setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
-	void setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate);
+	void setOnStringUpdateCallback(std::function<void()> onStringUpdate);
 	virtual std::string getStringIdentifier() = 0;
 
 protected:
@@ -28,7 +28,7 @@ protected:
 	void copyAttributesTo(LocalizedString* localizedString);
 	virtual std::string getStringByLanguage(cocos2d::LanguageType languageType) = 0;
 
-	std::function<void(LocalizedString* newString)> onStringUpdate;
+	std::function<void()> onStringUpdate;
 	std::vector<LocalizedString*> stringReplacementVariables;
 	cocos2d::LanguageType currentLanguage;
 	cocos2d::LanguageType overrideLanguage;

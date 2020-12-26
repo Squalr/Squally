@@ -38,7 +38,7 @@ void ConstantFloat::setPrecision(int precision)
 
 	if (this->onStringUpdate != nullptr)
 	{
-		this->onStringUpdate(this);
+		this->onStringUpdate();
 	}
 }
 
@@ -48,7 +48,7 @@ void ConstantFloat::setAppendF(bool appendF)
 
 	if (this->onStringUpdate != nullptr)
 	{
-		this->onStringUpdate(this);
+		this->onStringUpdate();
 	}
 }
 
@@ -58,7 +58,7 @@ void ConstantFloat::setValue(float newValue)
 
 	if (this->onStringUpdate != nullptr)
 	{
-		this->onStringUpdate(this);
+		this->onStringUpdate();
 	}
 }
 

@@ -156,7 +156,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	}
 
 	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
-	unsigned int refIncrement = 0;
 
 	// Remove child from current parent
 	if (originalParent != nullptr)
@@ -202,11 +201,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		}
 
 		node->setPosition3D(delta);
-	}
-
-	while (node->getReferenceCount() > 1 && refIncrement > 0)
-	{
-		node->release();
 	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.

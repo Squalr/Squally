@@ -109,7 +109,12 @@ void SaveManager::SoftSaveProfileData(const std::string& key, const Value& data)
 {
 	SaveManager::InitializeSaveData();
 
-	if (SaveManager::ProfileSaveData.find(key) == SaveManager::ProfileSaveData.end() || SaveManager::ProfileSaveData[key] != data)
+	if (SaveManager::ProfileSaveData.find(key) == SaveManager::ProfileSaveData.end()
+		|| SaveManager::ProfileSaveData[key] != data
+		// Always save for collection types, as checking unsaved changes for these is tedious
+		|| data.getType() == Value::Type::INT_KEY_MAP
+		|| data.getType() == Value::Type::MAP
+		|| data.getType() == Value::Type::VECTOR)
 	{
 		SaveManager::HasUnsavedChanges = true;
 		SaveManager::ProfileSaveData[key] = data;

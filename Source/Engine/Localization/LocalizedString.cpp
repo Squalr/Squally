@@ -123,7 +123,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 		}
 
 		// Update this string if any of the replacement variables get updated
-		next->setOnStringUpdateCallback([=](LocalizedString*)
+		next->setOnStringUpdateCallback([=]()
 		{
 			this->doStringUpdate();
 		});
@@ -136,7 +136,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 	return this;
 }
 
-void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate)
+void LocalizedString::setOnStringUpdateCallback(std::function<void()> onStringUpdate)
 {
 	this->onStringUpdate = onStringUpdate;
 }
@@ -161,6 +161,6 @@ void LocalizedString::doStringUpdate()
 	
 	if (this->onStringUpdate != nullptr)
 	{
-		this->onStringUpdate(this);
+		this->onStringUpdate();
 	}
 }
