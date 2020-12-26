@@ -141,7 +141,7 @@ void GameUtils::flattenNode(Node* parent)
 	}
 }
 
-Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, bool addAsReentry, int index)
+Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
 {
 	if (node == nullptr)
 	{
@@ -156,9 +156,10 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	}
 
 	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
+	bool addAsReentry = originalParent != nullptr;
 
 	// Remove child from current parent
-	if (originalParent != nullptr)
+	if (addAsReentry)
 	{
 		node->retain();
 		originalParent->removeChildNoExit(node);
@@ -168,7 +169,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		newParent->addChildInsert(node, index, true);
+		newParent->addChildInsert(node, index, addAsReentry);
 	}
 	else if (newParent != nullptr)
 	{

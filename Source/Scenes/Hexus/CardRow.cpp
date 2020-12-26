@@ -93,7 +93,7 @@ float CardRow::getCardScale()
 	return this->cardScale;
 }
 
-void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay, bool asReentry)
+void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay)
 {
 	for (auto card : cards)
 	{
@@ -102,7 +102,7 @@ void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float
 			continue;
 		}
 
-		GameUtils::changeParent(card, this, true, asReentry);
+		GameUtils::changeParent(card, this, true);
 
 		card->setMouseOverCallback(nullptr);
 		card->setMouseClickCallback(nullptr);
@@ -119,14 +119,14 @@ void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float
 	this->setCardPositions(cardInsertDelay, indexDelay);
 }
 
-void CardRow::insertCard(Card* card, float cardInsertDelay, bool asReentry)
+void CardRow::insertCard(Card* card, float cardInsertDelay)
 {
 	if (card == nullptr)
 	{
 		return;
 	}
 
-	GameUtils::changeParent(card, this, true, asReentry);
+	GameUtils::changeParent(card, this, true);
 
 	card->setMouseOverCallback(nullptr);
 	card->setMouseClickCallback(nullptr);
@@ -141,7 +141,7 @@ void CardRow::insertCard(Card* card, float cardInsertDelay, bool asReentry)
 	}
 }
 
-void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay, bool asReentry)
+void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay)
 {
 	for (auto card : cards)
 	{
@@ -150,7 +150,7 @@ void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, 
 			continue;
 		}
 
-		GameUtils::changeParent(card, this, true, asReentry);
+		GameUtils::changeParent(card, this, true);
 
 		card->setMouseOverCallback(nullptr);
 		card->setMouseClickCallback(nullptr);
@@ -167,14 +167,14 @@ void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, 
 	this->setCardPositions(cardInsertDelay, indexDelay);
 }
 
-void CardRow::insertCardFront(Card* card, float cardInsertDelay, bool asReentry)
+void CardRow::insertCardFront(Card* card, float cardInsertDelay)
 {
 	if (card == nullptr)
 	{
 		return;
 	}
 
-	GameUtils::changeParent(card, this, true, asReentry);
+	GameUtils::changeParent(card, this, true);
 
 	card->setMouseOverCallback(nullptr);
 	card->setMouseClickCallback(nullptr);

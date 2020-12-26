@@ -32,9 +32,9 @@ public:
 	void setCardScale(float scale, float scaleSpeed);
 	bool hasCards();
 	void shuffle();
-	void insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
-	void insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
-	void insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
+	void insertCardTop(Card* card, bool faceUp, float insertDelay);
+	void insertCardBottom(Card* card, bool faceUp, float insertDelay);
+	void insertCardRandom(Card* card, bool faceUp, float insertDelay);
 	void clear();
 	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 	

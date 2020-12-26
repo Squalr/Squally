@@ -67,55 +67,55 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	gameState->showChallengeBanner = stateOverride->showChallengeBanner;
 
 	// Load player cards
-	for (auto next : stateOverride->playerHand)
+	for (CardData* next : stateOverride->playerHand)
 	{
-		gameState->playerHand->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
+		gameState->playerHand->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f);
 	}
 
-	for (auto next : stateOverride->playerDeck)
+	for (CardData* next : stateOverride->playerDeck)
 	{
-		gameState->playerDeck->insertCardBottom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f, false);
+		gameState->playerDeck->insertCardBottom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f);
 	}
 
-	for (auto next : stateOverride->playerBinaryCards)
+	for (CardData* next : stateOverride->playerBinaryCards)
 	{
-		gameState->playerBinaryCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
+		gameState->playerBinaryCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f);
 	}
 
-	for (auto next : stateOverride->playerDecimalCards)
+	for (CardData* next : stateOverride->playerDecimalCards)
 	{
-		gameState->playerDecimalCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
+		gameState->playerDecimalCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f);
 	}
 
-	for (auto next : stateOverride->playerHexCards)
+	for (CardData* next : stateOverride->playerHexCards)
 	{
-		gameState->playerHexCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f, false);
+		gameState->playerHexCards->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f);
 	}
 
 	// Load enemy cards
-	for (auto next : stateOverride->enemyHand)
+	for (CardData* next : stateOverride->enemyHand)
 	{
-		gameState->enemyHand->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
+		gameState->enemyHand->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f);
 	}
 
-	for (auto next : stateOverride->enemyDeck)
+	for (CardData* next : stateOverride->enemyDeck)
 	{
-		gameState->enemyDeck->insertCardBottom(Card::create(Card::CardStyle::Shadow, next, false), false, 0.0f, false);
+		gameState->enemyDeck->insertCardBottom(Card::create(Card::CardStyle::Shadow, next, false), false, 0.0f);
 	}
 
-	for (auto next : stateOverride->enemyBinaryCards)
+	for (CardData* next : stateOverride->enemyBinaryCards)
 	{
-		gameState->enemyBinaryCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
+		gameState->enemyBinaryCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f);
 	}
 
-	for (auto next : stateOverride->enemyDecimalCards)
+	for (CardData* next : stateOverride->enemyDecimalCards)
 	{
-		gameState->enemyDecimalCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
+		gameState->enemyDecimalCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f);
 	}
 
-	for (auto next : stateOverride->enemyHexCards)
+	for (CardData* next : stateOverride->enemyHexCards)
 	{
-		gameState->enemyHexCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f, false);
+		gameState->enemyHexCards->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f);
 	}
 
 	if (stateOverride->playersTurn)

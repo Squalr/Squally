@@ -155,7 +155,7 @@ void FocusTakeOver::unfocus(Transition transition)
 {
 	for (auto next : this->hijackedNodes)
 	{
-		GameUtils::changeParent(next.node, next.originalParent, true, true, next.originalIndex);
+		GameUtils::changeParent(next.node, next.originalParent, true, next.originalIndex);
 	}
 
 	switch(transition)
@@ -213,7 +213,7 @@ void FocusTakeOver::softUnfocus()
 {
 	for (auto next : this->hijackedNodes)
 	{
-		GameUtils::changeParent(next.node, next.originalParent, true, true, next.originalIndex);
+		GameUtils::changeParent(next.node, next.originalParent, true, next.originalIndex);
 	}
 }
 

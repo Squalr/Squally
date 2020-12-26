@@ -57,7 +57,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	}
 
 	this->runAction(Sequence::create(
-		CallFunc::create(CC_CALLBACK_0(CardRow::insertCards, gameState->playerHand, drawnCards, HexusConfig::insertDelay, indexDelay, true)),
+		CallFunc::create(CC_CALLBACK_0(CardRow::insertCards, gameState->playerHand, drawnCards, HexusConfig::insertDelay, indexDelay)),
 		nullptr
 	));
 

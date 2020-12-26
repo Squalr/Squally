@@ -83,7 +83,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString*
 LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
-	for (auto next : this->stringReplacementVariables)
+	for (const auto& next : this->stringReplacementVariables)
 	{
 		if (next == nullptr)
 		{
@@ -97,13 +97,14 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 			if (next == *compareIt)
 			{
 				isReentry = true;
+				break;
 			}
 		}
 
 		if (isReentry)
 		{
 			// Remove the child and retain it
-			GameUtils::changeParent(next, nullptr, true, false);
+			GameUtils::changeParent(next, nullptr, false);
 		}
 		else
 		{

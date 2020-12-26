@@ -328,7 +328,7 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 	for (auto card : enemyCards)
 	{
-		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, card, false), false, 0.0f, false);
+		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, card, false), false, 0.0f);
 	}
 }
 
@@ -357,7 +357,7 @@ void Hexus::buildPlayerDeck()
 
 			for (auto next : cardData)
 			{
-				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f, false);
+				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f);
 			}
 		});
 	}, Squally::MapKey);

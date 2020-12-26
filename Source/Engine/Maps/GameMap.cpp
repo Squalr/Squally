@@ -298,14 +298,14 @@ void GameMap::spawnObject(RequestObjectSpawnDelegatorArgs* args)
 				{
 					if (prevIt != this->mapLayers.end())
 					{
-						GameUtils::changeParent(innerArgs->objectToSpawn, (*prevIt), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*prevIt), retainPosition);
 						innerArgs->handled = true;
 
 						return;
 					}
 					else
 					{
-						GameUtils::changeParent(innerArgs->objectToSpawn, (*it), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*it), retainPosition);
 						innerArgs->handled = true;
 
 						return;
@@ -321,8 +321,9 @@ void GameMap::spawnObject(RequestObjectSpawnDelegatorArgs* args)
 		{
 			if (!this->mapLayers.empty())
 			{
-				GameUtils::changeParent(innerArgs->objectToSpawn, this->mapLayers.back(), retainPosition, isReentry);
+				GameUtils::changeParent(innerArgs->objectToSpawn, this->mapLayers.back(), retainPosition);
 				innerArgs->handled = true;
+				return;
 			}
 			
 			break;
@@ -333,8 +334,10 @@ void GameMap::spawnObject(RequestObjectSpawnDelegatorArgs* args)
 			{
 				if (layer == args->sourceLayer)
 				{
-					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry, 0);
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, 0);
 					innerArgs->handled = true;
+
+					return;
 				}
 			}
 		}
@@ -345,8 +348,10 @@ void GameMap::spawnObject(RequestObjectSpawnDelegatorArgs* args)
 			{
 				if (layer == args->sourceLayer)
 				{
-					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry);
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition);
 					innerArgs->handled = true;
+					
+					return;
 				}
 			}
 			

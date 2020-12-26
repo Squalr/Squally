@@ -155,7 +155,7 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 					this->entity,
 					deserializeArgs.gameObject,
 					SpawnMethod::Below,
-					PositionMode::Discard,
+					PositionMode::SetToOwner,
 					[&]()
 					{
 					},
@@ -163,8 +163,6 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 					{
 					}
 				));
-
-				deserializeArgs.gameObject->setPosition(this->entity->getPosition());
 			}
 		}
 	);

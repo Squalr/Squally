@@ -22,7 +22,7 @@ public:
 	static bool isFocused(cocos2d::Node *node);
 	static void focus(cocos2d::Node *node);
 	static void flattenNode(cocos2d::Node* node);
-	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition, bool addAsReentry = true, int index = -1);
+	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition, int index = -1);
 	static void fadeInObject(cocos2d::Node* node, float delay, float duration, uint8_t opacity = 255);
 	static float getDepth(cocos2d::Node* node);
 	static float getRotation(cocos2d::Node* node);
