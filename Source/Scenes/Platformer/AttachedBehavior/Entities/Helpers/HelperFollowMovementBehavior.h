@@ -25,6 +25,8 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+	
+	void warpToSqually();
 
 	PlatformerEntity* entity;
 	Squally* squally;

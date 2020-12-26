@@ -192,7 +192,7 @@ void SquallyMovementBehavior::loadSquallyPosition()
 	float z = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionZ, Value(position.z)).asFloat();
 	std::string layerId = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyLayerId, Value("")).asString();
 
-	GameUtils::setWorldCoords3D(this->squally, Vec3(x, y, z));
+	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->squally, Vec3(x, y, z), true));
 
 	if (!layerId.empty())
 	{
@@ -205,5 +205,9 @@ void SquallyMovementBehavior::loadSquallyPosition()
 
 			PlatformerEvents::TriggerSquallySpawned();
 		});
+	}
+	else
+	{
+		PlatformerEvents::TriggerSquallySpawned();
 	}
 }

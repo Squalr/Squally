@@ -22,6 +22,8 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+	
+	void warpToSqually();
 
 	Scrappy* scrappy;
 	Squally* squally;

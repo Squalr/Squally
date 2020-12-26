@@ -76,7 +76,13 @@ void ScrappyMovementBehavior::onLoad()
 
 	}, Squally::MapKey);
 
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventSquallySpawned, [=](EventCustom* eventCustom)
+	{
+		this->warpToSqually();
+	}));
+
 	this->scheduleUpdate();
+	this->warpToSqually();
 }
 
 void ScrappyMovementBehavior::onDisable()
@@ -156,4 +162,16 @@ void ScrappyMovementBehavior::update(float dt)
 	this->scrappy->setPositionX(scrappyPosition.x + parentDelta.x + speed.x * dt);
 	this->scrappy->setPositionY(scrappyPosition.y + parentDelta.y + speed.y * dt);
 	this->scrappy->setPositionZ(squallyPosition.z + parentDelta.z);
+}
+
+void ScrappyMovementBehavior::warpToSqually()
+{
+	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+
+	if (layer != nullptr)
+	{
+		GameUtils::changeParent(this->scrappy, layer, true);
+
+		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->scrappy, GameUtils::getWorldCoords3D(this->squally)));
+	}
 }

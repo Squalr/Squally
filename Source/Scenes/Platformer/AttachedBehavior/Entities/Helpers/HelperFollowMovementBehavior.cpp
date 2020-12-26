@@ -66,17 +66,15 @@ void HelperFollowMovementBehavior::onLoad()
 			
 			if (args != nullptr)
 			{
-				MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
-
-				if (layer != nullptr)
-				{
-					GameUtils::changeParent(this->entity, layer, true);
-
-					PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, GameUtils::getWorldCoords3D(this->squally)));
-				}
+				this->warpToSqually();
 			}
 		}));
 	}, Squally::MapKey);
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventSquallySpawned, [=](EventCustom* eventCustom)
+	{
+		this->warpToSqually();
+	}));
 	
 	this->entity->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
 	{
@@ -99,6 +97,7 @@ void HelperFollowMovementBehavior::onLoad()
 	});
 	
 	this->scheduleUpdate();
+	this->warpToSqually();
 }
 
 void HelperFollowMovementBehavior::onDisable()
@@ -134,7 +133,7 @@ void HelperFollowMovementBehavior::update(float dt)
 	if (std::abs(squallyPosition.x - entityPosition.x) >= HelperFollowMovementBehavior::ResetRangeX ||
 		std::abs(squallyPosition.y - entityPosition.y) >= HelperFollowMovementBehavior::ResetRangeY)
 	{
-		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, squallyPosition));
+		this->warpToSqually();
 		return;
 	}
 
@@ -146,6 +145,18 @@ void HelperFollowMovementBehavior::update(float dt)
 	if (squallyPosition.y >= entityPosition.y + HelperFollowMovementBehavior::TryJumpRangeY)
 	{
 		this->entity->setState(StateKeys::MovementY, Value(1.0f));
+	}
+}
+
+void HelperFollowMovementBehavior::warpToSqually()
+{
+	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+
+	if (layer != nullptr)
+	{
+		GameUtils::changeParent(this->entity, layer, true);
+
+		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->entity, GameUtils::getWorldCoords3D(this->squally)));
 	}
 }
 
