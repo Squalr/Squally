@@ -292,6 +292,8 @@ void InteractObject::setUnlockable(bool isUnlockable, std::function<bool()> unlo
 {
 	this->isUnlockable = isUnlockable;
 	this->unlockCallback = unlockCallback;
+
+	this->onStateRefresh();
 }
 
 bool InteractObject::getIsLocked()
@@ -364,9 +366,11 @@ void InteractObject::updateInteractMenuVisibility()
 		if (this->isUnlockable)
 		{
 			this->unlockMenu->lazyGet()->show();
+			this->lockedMenu->lazyGet()->hide();
 		}
 		else
 		{
+			this->unlockMenu->lazyGet()->hide();
 			this->lockedMenu->lazyGet()->show();
 		}
 	}

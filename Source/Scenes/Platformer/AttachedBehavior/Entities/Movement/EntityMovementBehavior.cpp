@@ -6,6 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
@@ -393,9 +394,10 @@ void EntityMovementBehavior::checkPatrolMovementComplete()
 	{
 		float patrolDestionationX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::PatrolDestinationX, 0.0f);
 		bool patrolMovementDirectionLeft = patrolDestionationX < this->prePatrolPosition.x;
+		Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 
-		if ((patrolMovementDirectionLeft && this->entity->getPositionX() <= patrolDestionationX) ||
-			(!patrolMovementDirectionLeft && this->entity->getPositionX() >= patrolDestionationX))
+		if ((patrolMovementDirectionLeft && entityPosition.x <= patrolDestionationX) ||
+			(!patrolMovementDirectionLeft && entityPosition.x >= patrolDestionationX))
 		{
 			this->entity->clearState(StateKeys::PatrolDestinationX);
 			this->entity->setState(StateKeys::PatrolDestinationReached, Value(true));

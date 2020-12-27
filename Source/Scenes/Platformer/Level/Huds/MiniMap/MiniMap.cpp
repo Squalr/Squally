@@ -91,8 +91,6 @@ void MiniMap::onEnter()
 
 	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
 	mapNode->setVisible(this->requiredItemKey == "");
-
-	this->initializeMapData();
 }
 
 void MiniMap::onHackerModeEnable()
@@ -192,6 +190,8 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 
 		this->mapNode->addChild(this->map);
 		this->mapNode->addChild(this->squallyMarker);
+
+		this->initializeMapData();
 
 		return true;
 	}
