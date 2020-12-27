@@ -92,11 +92,12 @@ void PortalSpawn::onPlayerSpawn(PlatformerEntity* entity)
 void PortalSpawn::doRelayer(PlatformerEntity* entity)
 {
 	// Relayer to the spawn object layer
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+	MapLayer* mapLayer = GameUtils::getFirstParentOfType<MapLayer>(this);
 
-	if (layer != nullptr)
+	if (mapLayer != nullptr)
 	{
-		GameUtils::changeParent(entity, layer, true);
+		GameUtils::changeParent(entity, mapLayer, true);
+		mapLayer->setHackable();
 	}
 }
 

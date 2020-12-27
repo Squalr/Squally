@@ -46,3 +46,8 @@ void FriendlyCombatCollisionBehavior::onDisable()
 void FriendlyCombatCollisionBehavior::onEntityCollisionCreated()
 {
 }
+
+void FriendlyCombatCollisionBehavior::tryBind()
+{
+	// Disabled
+}

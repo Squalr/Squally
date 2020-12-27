@@ -59,8 +59,6 @@ EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int 
 	{
 		this->invalidate();
 	}
-
-	this->toggleQueryable(false);
 }
 
 EntityCollisionBehaviorBase::~EntityCollisionBehaviorBase()

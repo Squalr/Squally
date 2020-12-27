@@ -20,7 +20,6 @@
   <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-249.181" width="14981.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -32,7 +31,6 @@
   <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3970.65" y="-962.85" width="14229.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -52,7 +50,6 @@
   <object id="1044" name="Ruins/Background/DesertLayer0" type="decor" x="-3152.44" y="774" width="14517.6" height="1088">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>

@@ -18,6 +18,7 @@ protected:
 	void onLoad() override;
 	void onDisable() override;
 	void onEntityCollisionCreated() override;
+	void tryBind() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;

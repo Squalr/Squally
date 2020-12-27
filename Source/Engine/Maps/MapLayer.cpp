@@ -7,6 +7,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 
@@ -92,6 +93,14 @@ void MapLayer::update(float dt)
 bool MapLayer::isHackable()
 {
 	return GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyIsHackable, Value(false)).asBool();
+}
+
+void MapLayer::setHackable()
+{
+	if (!this->isHackable())
+	{
+		this->properties[MapLayer::PropertyIsHackable] = Value(true);
+	}
 }
 
 bool MapLayer::isElevateTarget()

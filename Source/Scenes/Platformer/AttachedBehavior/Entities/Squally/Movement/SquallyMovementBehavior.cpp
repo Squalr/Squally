@@ -201,6 +201,7 @@ void SquallyMovementBehavior::loadSquallyPosition()
 			ObjectEvents::QueryObjects<MapLayer>(QueryObjectsArgs<MapLayer>([&](MapLayer* mapLayer)
 			{
 				GameUtils::changeParent(this->squally, mapLayer, true);
+				mapLayer->setHackable();
 			}), layerId);
 
 			PlatformerEvents::TriggerSquallySpawned();

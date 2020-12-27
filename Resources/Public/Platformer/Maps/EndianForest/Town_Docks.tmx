@@ -41,10 +41,9 @@
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="758" name="Forest/Background/LakeSideRocks1" type="decor" x="-5323.82" y="-1824.89" width="13333.3" height="1140">
+  <object id="758" name="Forest/Background/LakeSideRocks1" type="decor" x="-5323.82" y="-1824.89" width="21589.2" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -53,10 +52,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5339.82" y="-1392.89" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5339.82" y="-1392.89" width="21589.2" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>

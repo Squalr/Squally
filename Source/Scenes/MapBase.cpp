@@ -9,6 +9,7 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/SceneEvents.h"
@@ -199,11 +200,17 @@ bool MapBase::loadMap(std::string mapResource)
 {
 	this->mapResource = mapResource;
 
+	// No map caching for dev builds to allow for hot reloads of TMX files for faster debugging
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		return this->loadMapFromTmx(this->mapResource, GameMap::parse(this->mapResource));
+	}
+
 	if (MapBase::MapCache.find(mapResource) == MapBase::MapCache.end())
 	{
 		MapBase::MapCache[this->mapResource] = GameMap::parse(this->mapResource);
 		MapBase::MapCache[this->mapResource]->retain();
-	}
+	}	
 	
 	return this->loadMapFromTmx(this->mapResource, MapBase::MapCache[this->mapResource]);
 }

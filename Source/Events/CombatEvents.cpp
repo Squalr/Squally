@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
+const std::string CombatEvents::EventSpawnPrefix = "EVENT_COMBAT_SPAWN_";
 const std::string CombatEvents::EventQueryTimeline = "EVENT_COMBAT_QUERY_TIMELINE";
 const std::string CombatEvents::EventGetAssociatedTimelineEntry = "EVENT_COMBAT_GET_ASSOCIATED_TIMELINE_ENTRY";
 const std::string CombatEvents::EventMenuBack = "EVENT_COMBAT_CHANGE_MENU_BACK";
@@ -61,7 +61,7 @@ const std::string CombatEvents::EventModifyHealingTakenComplete = "EVENT_COMBAT_
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		CombatEvents::EventSpawn,
+		CombatEvents::EventSpawnPrefix + std::to_string(args.spawnIndex) + "_" + (args.isEnemySpawn ? "ENEMY" : "PLAYER"),
 		&args
 	);
 }

@@ -512,6 +512,12 @@ void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMX
 
 	this->miniMap->setOpacity(0);
 
+	// Increase ref count so that it is valid when mini-map parses it later
+	if (mapRaw)
+	{
+		mapRaw->retain();
+	}
+
 	// Data race! By defering for awhile, a very strange bug is avoided that can cause Squally to glitch out and fly away.
 	// No idea how loading the mini-map interferes with this, but debugging it was becoming too big of a time sink.
 	this->defer([=]()
@@ -521,6 +527,7 @@ void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMX
 		{
 			// Best effort load. No reason it shouldn't work since the mapRaw object is deserialized.
 			this->miniMap->loadMapFromTmx(mapResource, mapRaw);
+			mapRaw->release();
 		}
 		
 		this->miniMap->runAction(FadeTo::create(0.25f, 255));

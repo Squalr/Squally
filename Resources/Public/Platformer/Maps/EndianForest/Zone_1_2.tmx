@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="785">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="787">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -18,10 +18,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-6505.69" y="845.3" width="23473.7" height="866">
+  <object id="785" name="Forest/Background/WaterfallRocks" type="decor" x="-5961.69" y="413.3" width="23125.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -43,15 +42,14 @@
   </properties>
   <object id="784" name="airship-1" type="object" x="16864" y="1968" width="256" height="256"/>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-6477.81" y="837.98" width="23373.6" height="922">
+  <object id="786" name="Forest/Background/WaterfallGround" type="decor" x="-4269.81" y="753.6" width="20009.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
  </objectgroup>
