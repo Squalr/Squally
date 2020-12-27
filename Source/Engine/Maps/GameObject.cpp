@@ -84,7 +84,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
 
-	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
+	std::vector<std::string> parsedTags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
@@ -94,6 +94,11 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 	this->addTag(this->getUniqueIdentifier());
+
+	for (const std::string& next : parsedTags)
+	{
+		this->addTag(next);
+	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
 	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyMetaIsIsometric, Value(false)).asBool())

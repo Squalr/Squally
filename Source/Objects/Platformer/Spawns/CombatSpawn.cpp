@@ -69,7 +69,6 @@ void CombatSpawn::initializeListeners()
 			GameUtils::setWorldCoords3D(args->entity, GameUtils::getWorldCoords3D(this) + Vec3(offset.x, offset.y, ZSortOffset));
 
 			args->entity->setState(StateKeys::Zoom, Value(this->zoom), false);
-			args->entity->setAnchorPoint(Vec2(0.5f, 0.0f));
 			args->onSpawnSuccess();
 		}
 	}));
