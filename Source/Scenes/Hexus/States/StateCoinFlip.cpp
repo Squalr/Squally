@@ -96,6 +96,20 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 		return;
 	}
 
+	// Additional frames required for coin loop animation when the enemy wins
+	static const std::vector<std::string> EnemyTurnAnimFrames =
+	{
+		HexusResources::CoinFlip_0000,
+		HexusResources::CoinFlip_0001,
+		HexusResources::CoinFlip_0002,
+		HexusResources::CoinFlip_0003,
+		HexusResources::CoinFlip_0004,
+		HexusResources::CoinFlip_0005,
+		HexusResources::CoinFlip_0006
+	};
+
+	float extraDuration = 0.0f;
+
 	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
 		gameState->turn = GameState::Turn::Player;
@@ -103,8 +117,14 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 	else
 	{
 		gameState->turn = GameState::Turn::Enemy;
+		extraDuration = float(EnemyTurnAnimFrames.size()) * HexusConfig::coinFlipSpeed;
 	}
+	
+	// Some correction is needed to make the coin look like it is not still flipping after it lands
+	const float timingCorrection = 0.5f;
 
+	float loopDuration = float(SmartAnimationSequenceNode::GetAnimationLength(HexusResources::CoinFlip_0000)) * HexusConfig::coinFlipSpeed;
+	float flipDuration = extraDuration + loopDuration * float(HexusConfig::coinFlipCount) + timingCorrection;
 	this->coinAnimation->setScale(HexusConfig::coinFlipStartScale);
 	this->coinAnimation->runAction(FadeTo::create(0.25f, 255));
 
@@ -118,7 +138,7 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 				{
 					this->coinAnimation->playAnimationRepeat(HexusResources::CoinFlip_0000, HexusConfig::coinFlipSpeed, 0.0f, false, HexusConfig::coinFlipCount, [=]()
 					{
-						this->coinAnimation->playAnimation(std::vector<std::string>({ HexusResources::CoinFlip_0000 }), HexusConfig::coinFlipSpeed);
+						this->coinAnimation->playSingleFrame(HexusResources::CoinFlip_0000, 0, HexusConfig::coinFlipSpeed);
 					});
 
 					break;
@@ -127,14 +147,14 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 				{
 					this->coinAnimation->playAnimationRepeat(HexusResources::CoinFlip_0000, HexusConfig::coinFlipSpeed, 0.0f, false, HexusConfig::coinFlipCount, [=]()
 					{
-						this->coinAnimation->playAnimation({ HexusResources::CoinFlip_0000, HexusResources::CoinFlip_0001, HexusResources::CoinFlip_0002, HexusResources::CoinFlip_0003, HexusResources::CoinFlip_0004, HexusResources::CoinFlip_0005, HexusResources::CoinFlip_0006 }, HexusConfig::coinFlipSpeed);
+						this->coinAnimation->playAnimation(EnemyTurnAnimFrames, HexusConfig::coinFlipSpeed);
 					});
 					break;
 				}
 			}
 		}),
-		EaseSineOut::create(ScaleTo::create(HexusConfig::coinFlipUpDuration, HexusConfig::coinFlipEndScale)),
-		EaseSineOut::create(ScaleTo::create(HexusConfig::coinFlipDownDuration, HexusConfig::coinFlipStartScale)),
+		EaseSineOut::create(ScaleTo::create(flipDuration / 2.0f, HexusConfig::coinFlipEndScale)),
+		EaseSineOut::create(ScaleTo::create(flipDuration / 2.0f, HexusConfig::coinFlipStartScale)),
 		CallFunc::create([=]()
 		{
 			switch (gameState->turn)

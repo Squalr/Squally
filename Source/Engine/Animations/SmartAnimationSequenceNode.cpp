@@ -145,21 +145,18 @@ void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& a
 			this->setNewSpriteImage(animationFile);
 		}));
 
-		if (&animationFile != &animationFiles.back())
-		{
-			animationSequence.pushBack(DelayTime::create(animationSpeed));
-		}
+		animationSequence.pushBack(DelayTime::create(animationSpeed));
 	}
 
 	if (insertBlankFrame)
 	{
-		animationSequence.pushBack(DelayTime::create(animationSpeed));
 		animationSequence.pushBack(CallFunc::create([=]()
 		{
 			this->setNewSpriteImage(UIResources::EmptyImage);
 		}));
+		animationSequence.pushBack(DelayTime::create(animationSpeed));
 	}
-
+	
 	animationSequence.pushBack(CallFunc::create([=]()
 	{
 		if (onAnimationComplete != nullptr)
@@ -200,7 +197,7 @@ void SmartAnimationSequenceNode::playAnimationRepeat(const std::vector<std::stri
 		else
 		{
 			this->sprite->runAction(Sequence::create(
-				DelayTime::create(animationSpeed + repeatDelay),
+				DelayTime::create(repeatDelay),
 				CallFunc::create([=]()
 				{
 					int repeatCountNew = repeatCount < 0 ? repeatCount : (repeatCount - 1);
@@ -264,7 +261,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector
 		else
 		{
 			this->sprite->runAction(Sequence::create(
-				DelayTime::create(animationSpeedOut + repeatDelay),
+				DelayTime::create(repeatDelay),
 				CallFunc::create([=]()
 				{
 					int repeatCountNew = repeatCount < 0 ? repeatCount : (repeatCount - 1);
