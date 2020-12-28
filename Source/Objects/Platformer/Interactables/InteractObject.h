@@ -72,7 +72,7 @@ protected:
 	virtual void onEndCollision();
 
 	// This exists to allow for adding objects that render below the interact collision for hitbox debugging
-	cocos2d::Node* backNode;
+	cocos2d::Node* contentNode;
 	InteractType interactType;
 	CollisionObject* interactCollision;
 	Scrappy* scrappy;

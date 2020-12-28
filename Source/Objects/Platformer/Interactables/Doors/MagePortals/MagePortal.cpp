@@ -34,8 +34,8 @@ MagePortal* MagePortal::create(ValueMap& properties)
 
 MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 256.0f))
 {
-	this->contentNode = Node::create();
-	this->portalBase = SmartClippingNode::create(this->contentNode, MagePortal::PortalRadius);
+	this->portalContentNode = Node::create();
+	this->portalBase = SmartClippingNode::create(this->portalContentNode, MagePortal::PortalRadius);
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
 	this->edge = DrawNode::create();
@@ -55,10 +55,10 @@ MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 25
 	
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
-	this->contentNode->addChild(this->background);
-	this->contentNode->addChild(this->portalEffectNode);
-	this->contentNode->addChild(this->edge);
-	this->backNode->addChild(this->portalBase);
+	this->portalContentNode->addChild(this->background);
+	this->portalContentNode->addChild(this->portalEffectNode);
+	this->portalContentNode->addChild(this->edge);
+	this->contentNode->addChild(this->portalBase);
 	this->addChild(this->portalOpenSound);
 }
 

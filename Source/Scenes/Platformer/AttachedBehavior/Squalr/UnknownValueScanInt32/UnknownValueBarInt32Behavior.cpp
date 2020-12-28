@@ -43,7 +43,7 @@ UnknownValueBarInt32Behavior* UnknownValueBarInt32Behavior::create(GameObject* o
 
 UnknownValueBarInt32Behavior::UnknownValueBarInt32Behavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));

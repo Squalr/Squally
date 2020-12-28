@@ -21,7 +21,7 @@ EnemyCombatCollisionBehavior* EnemyCombatCollisionBehavior::create(GameObject* o
 
 EnemyCombatCollisionBehavior::EnemyCombatCollisionBehavior(GameObject* owner) : super(owner, (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::Movement)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

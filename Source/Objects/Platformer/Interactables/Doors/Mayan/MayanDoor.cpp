@@ -74,7 +74,7 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->doorContainer->addChild(this->innerContainer);
 	this->innerContainer->addChild(this->doorArrow);
 	this->innerContainer->addChild(this->door);
-	this->backNode->addChild(this->doorContainer);
+	this->contentNode->addChild(this->doorContainer);
 	this->addChild(this->doorOpenSound);
 	this->addChild(this->doorSound2Units);
 	this->addChild(this->doorSound3Units);

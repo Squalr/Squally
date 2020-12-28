@@ -44,7 +44,7 @@ SquallyEquipmentVisualBehavior* SquallyEquipmentVisualBehavior::create(GameObjec
 
 SquallyEquipmentVisualBehavior::SquallyEquipmentVisualBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 	this->debugOffset = Vec2::ZERO;
 	this->debugHud = Node::create();
 	this->debugOffsetXStr = ConstantString::create("--");

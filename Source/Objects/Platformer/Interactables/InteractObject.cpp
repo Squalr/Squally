@@ -61,7 +61,7 @@ InteractObject::InteractObject(
 	this->interactType = interactType;
 	this->lockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
 	this->unlockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
-	this->backNode = Node::create();
+	this->contentNode = Node::create();
 	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false), debugColor);
 
 	if (actionStr == nullptr)
@@ -97,7 +97,7 @@ InteractObject::InteractObject(
 	this->interactCollision->setName("Interact");
 	this->interactCollision->setPosition(offset);
 
-	this->addChild(this->backNode);
+	this->addChild(this->contentNode);
 	this->addChild(this->interactCollision);
 	this->addChild(this->interactMenu);
 	this->addChild(this->lockedMenu);

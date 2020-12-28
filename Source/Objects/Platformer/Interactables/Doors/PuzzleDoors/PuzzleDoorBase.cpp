@@ -47,6 +47,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
 	this->lightRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
 	this->marker = Sprite::create(ObjectResources::Doors_PuzzleDoor_Marker);
+	this->backNode = Node::create();
 	this->doorNode = Node::create();
 	this->frontNode = Node::create();
 	this->runes = std::vector<Sprite*>();
@@ -110,28 +111,29 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->lightLeft->setOpacity(0);
 	this->lightRight->setOpacity(0);
 
-	this->backNode->addChild(this->barLeft);
-	this->backNode->addChild(this->barRight);
-	this->backNode->addChild(this->lightLeft);
-	this->backNode->addChild(this->lightRight);
-	this->backNode->addChild(this->doorClip);
-	this->backNode->addChild(this->frontNode);
-	this->backNode->addChild(this->indexLabel);
-	this->backNode->addChild(this->truthLabel);
-	this->backNode->addChild(this->hackableLabel);
-
-	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
-	{
-		this->backNode->addChild(this->runes[index]);
-		this->backNode->addChild(this->runesFailed[index]);
-		this->backNode->addChild(this->runesPassed[index]);
-	}
-
 	this->sliderSound->setCustomMultiplier(0.25f);
 	this->sliderResetSound->setCustomMultiplier(0.25f);
 	this->electricitySound->setCustomMultiplier(0.75f);
 
-	this->backNode->addChild(this->marker);
+	this->contentNode->addChild(this->backNode);
+	this->contentNode->addChild(this->barLeft);
+	this->contentNode->addChild(this->barRight);
+	this->contentNode->addChild(this->lightLeft);
+	this->contentNode->addChild(this->lightRight);
+	this->contentNode->addChild(this->doorClip);
+	this->contentNode->addChild(this->frontNode);
+	this->contentNode->addChild(this->indexLabel);
+	this->contentNode->addChild(this->truthLabel);
+	this->contentNode->addChild(this->hackableLabel);
+
+	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
+	{
+		this->contentNode->addChild(this->runes[index]);
+		this->contentNode->addChild(this->runesFailed[index]);
+		this->contentNode->addChild(this->runesPassed[index]);
+	}
+
+	this->contentNode->addChild(this->marker);
 	this->addChild(this->electricitySound);
 	this->addChild(this->sliderSound);
 	this->addChild(this->sliderResetSound);

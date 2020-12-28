@@ -97,12 +97,12 @@ void EntityMovementBehavior::onLoad()
 {
 	this->entity->listenForStateWrite(StateKeys::CinematicDestinationX, [=](Value value)
 	{
-		this->preCinematicPosition = this->entity->getPosition();
+		this->preCinematicPosition = GameUtils::getWorldCoords(this->entity);
 	});
 
 	this->entity->listenForStateWrite(StateKeys::PatrolDestinationX, [=](Value value)
 	{
-		this->prePatrolPosition = this->entity->getPosition();
+		this->prePatrolPosition = GameUtils::getWorldCoords(this->entity);
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollision)
@@ -362,9 +362,10 @@ void EntityMovementBehavior::checkCinematicMovementComplete()
 	{
 		float cinematicDestionationX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
 		bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
+		Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 
-		if ((cinematicMovementDirectionLeft && this->entity->getPositionX() <= cinematicDestionationX) ||
-			(!cinematicMovementDirectionLeft && this->entity->getPositionX() >= cinematicDestionationX))
+		if ((cinematicMovementDirectionLeft && entityPosition.x <= cinematicDestionationX) ||
+			(!cinematicMovementDirectionLeft && entityPosition.x >= cinematicDestionationX))
 		{
 			this->entity->clearState(StateKeys::CinematicDestinationX);
 			this->entity->setState(StateKeys::CinematicDestinationReached, Value(true));

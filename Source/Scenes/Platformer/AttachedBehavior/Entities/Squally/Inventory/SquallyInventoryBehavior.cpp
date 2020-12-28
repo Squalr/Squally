@@ -37,7 +37,7 @@ SquallyInventoryBehavior* SquallyInventoryBehavior::create(GameObject* owner)
 
 SquallyInventoryBehavior::SquallyInventoryBehavior(GameObject* owner) : super(owner, SaveKeys::SaveKeySquallyInventory, SaveKeys::SaveKeySquallyEquipment, SaveKeys::SaveKeySquallyCurrencyInventory)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{

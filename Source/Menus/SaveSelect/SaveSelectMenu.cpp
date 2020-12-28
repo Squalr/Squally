@@ -233,7 +233,7 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 
 	int squallyEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(1)).asInt();
 	Node* content = Node::create();
-	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(-32.0f, -32.0f), squallyEq);
+	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(0.0f, -32.0f), squallyEq);
 	std::string helperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
 
 	squallyAvatar->setPosition(Vec2(-356.0f, 0.0f));
@@ -362,7 +362,7 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, Size(128.0f, 128.0f));
 	Sprite* backgroundEnvironment = this->getBackgroundForCurrentSaveProfile();
 
-	entity->setPosition(entity->getDialogueOffset() + Vec2(-16.0f, -80.0f) + offsetAdjustment);
+	entity->setPosition(entity->getDialogueOffset() + Vec2(16.0f, -80.0f) + offsetAdjustment);
 
 	entityContent->addChild(backgroundEnvironment);
 	entityContent->addChild(entity);

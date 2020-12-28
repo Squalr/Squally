@@ -68,12 +68,12 @@ TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(192.0f, 52
 		this->emblemOffset = Vec2(0.0f, 172.0f);
 	}
 
-	this->backNode->addChild(this->back);
-	this->backNode->addChild(this->doorClip);
+	this->contentNode->addChild(this->back);
+	this->contentNode->addChild(this->doorClip);
 
 	if (this->emblem != nullptr)
 	{
-		this->backNode->addChild(this->emblem);
+		this->contentNode->addChild(this->emblem);
 	}
 
 	this->addChild(this->topCollision);
