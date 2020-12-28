@@ -25,11 +25,11 @@ SpikedLogSetRotationPreview* SpikedLogSetRotationPreview::create()
 SpikedLogSetRotationPreview::SpikedLogSetRotationPreview()
 {
 	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLog_SpikedLog_00);
+	this->countString = ConstantString::create("0");
+	this->currentAnimationIndex = -1;
+	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLog_SpikedLog_00);
 
 	this->previewSpikedLog->setScale(0.4f);
-
-	this->countString = ConstantString::create("0");
-
 	this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::zcx, false, this->countString);
 
 	this->previewNode->addChild(this->previewSpikedLog);
@@ -50,18 +50,19 @@ void SpikedLogSetRotationPreview::onEnter()
 	super::onEnter();
 
 	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
-	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLog_SpikedLog_00, 0.5f, 0.0f);
 
-	/*
-	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max)
+	this->onFrameComplete();
+}
+
+void SpikedLogSetRotationPreview::onFrameComplete()
+{
+	this->currentAnimationIndex = MathUtils::wrappingNormalize(this->currentAnimationIndex + 1, 0, this->animationLength - 1);
+	this->countString->setString(std::to_string(this->currentAnimationIndex));
+
+	this->previewSpikedLog->playSingleFrame(ObjectResources::Traps_SpikedLog_SpikedLog_00, this->currentAnimationIndex, 0.5f, [=]()
 	{
-		count = MathUtils::wrappingNormalize(count + 1, 0, max);
-
-		this->countString->setString(std::to_string(count));
-
-		return count;
-	};
-	*/
+		this->onFrameComplete();
+	});
 }
 
 void SpikedLogSetRotationPreview::initializePositions()

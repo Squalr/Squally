@@ -200,7 +200,7 @@ void SmartAnimationSequenceNode::playAnimationRepeat(const std::vector<std::stri
 		else
 		{
 			this->sprite->runAction(Sequence::create(
-				DelayTime::create(repeatDelay),
+				DelayTime::create(animationSpeed + repeatDelay),
 				CallFunc::create([=]()
 				{
 					int repeatCountNew = repeatCount < 0 ? repeatCount : (repeatCount - 1);
@@ -264,7 +264,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector
 		else
 		{
 			this->sprite->runAction(Sequence::create(
-				DelayTime::create(repeatDelay),
+				DelayTime::create(animationSpeedOut + repeatDelay),
 				CallFunc::create([=]()
 				{
 					int repeatCountNew = repeatCount < 0 ? repeatCount : (repeatCount - 1);

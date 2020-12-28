@@ -58,6 +58,7 @@ MiniMap::MiniMap()
 	this->miniMapObjects = std::map<MiniMapObject*, float>();
 	this->background = DrawNode::create();
 	this->squallyMarker = nullptr;
+	this->squallyInventory = nullptr;
 
 	this->background->drawSolidRect(-Vec2(MiniMap::MiniMapSize) / 2.0f, Vec2(MiniMap::MiniMapSize) / 2.0f, Color4F(0, 0, 0, 0.5f));
 	
@@ -241,7 +242,7 @@ void MiniMap::initializeMapData()
 
 void MiniMap::checkMapRequiredItem()
 {
-	if (this->squallyInventory == nullptr || mapNode->isVisible())
+	if (this->squallyInventory == nullptr || this->mapNode->isVisible())
 	{
 		return;
 	}
