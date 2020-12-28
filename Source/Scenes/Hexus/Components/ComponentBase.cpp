@@ -36,6 +36,10 @@ void ComponentBase::initializeListeners()
 	{
 		this->onAnyStateChange((GameState*)(eventCustom->getData()));
 	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventAfterStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onAfterAnyStateChange((GameState*)(eventCustom->getData()));
+	}));
 }
 
 void ComponentBase::onBeforeStateChange(GameState* gameState)
@@ -51,5 +55,9 @@ void ComponentBase::onAnyRequestStateChange(GameState* gameState)
 }
 
 void ComponentBase::onAnyStateChange(GameState* gameState)
+{
+}
+
+void ComponentBase::onAfterAnyStateChange(GameState* gameState)
 {
 }

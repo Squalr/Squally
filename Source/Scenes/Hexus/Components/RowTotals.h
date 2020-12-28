@@ -29,11 +29,11 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeStateChange(GameState* gameState) override;
-	void onAnyStateChange(GameState* gameState) override;
+	void onAfterAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
+	
 	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);
 	void runDeltaAnimation(LocalizedLabel* label, ConstantString* str, float startPositionY, int delta);
