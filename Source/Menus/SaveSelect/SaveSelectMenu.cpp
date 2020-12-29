@@ -362,7 +362,7 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, Size(128.0f, 128.0f));
 	Sprite* backgroundEnvironment = this->getBackgroundForCurrentSaveProfile();
 
-	entity->setPosition(entity->getDialogueOffset() + Vec2(16.0f, -80.0f) + offsetAdjustment);
+	entity->setPosition(entity->getDialogueOffset() + Vec2(-16.0f, -80.0f) + offsetAdjustment);
 
 	entityContent->addChild(backgroundEnvironment);
 	entityContent->addChild(entity);

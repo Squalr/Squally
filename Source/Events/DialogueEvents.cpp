@@ -79,7 +79,7 @@ std::function<Node*()> DialogueEvents::BuildPreviewNode(void* entity, bool isFli
 		{
 			uiClone->getAnimations()->setFlippedX(isFlipped);
 			wrapper->addChild(uiClone);
-			uiClone->setPosition(uiClone->getDialogueOffset() + Vec2(uiClone->getEntitySize().width / 2.0f, offsetY));
+			uiClone->setPosition(uiClone->getDialogueOffset() + Vec2(0.0f, offsetY));
 		}
 
 		return wrapper;

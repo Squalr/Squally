@@ -454,5 +454,5 @@ std::vector<TutorialBase*> HexusBehaviorBase::getTutorials()
 Vec2 HexusBehaviorBase::getAvatarOffset()
 {
 	// A pretty good default
-	return Vec2(16.0f, -32.0f);
+	return Vec2(-16.0f, -32.0f);
 }
