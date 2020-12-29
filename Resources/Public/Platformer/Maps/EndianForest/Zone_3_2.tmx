@@ -103,7 +103,7 @@
    <property name="depth" type="float" value="-612"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/GreenForestGround3" type="decor" x="-5409.81" y="825.6" width="19241.6" height="1953">
+  <object id="602" name="Forest/Background/GreenForestGround3" type="decor" x="-4225.81" y="793.6" width="16681.6" height="1953">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>

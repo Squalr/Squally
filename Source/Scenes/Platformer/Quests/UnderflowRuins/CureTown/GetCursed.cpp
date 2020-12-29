@@ -29,6 +29,7 @@
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -108,6 +109,7 @@ void GetCursed::onActivate(bool isActiveThroughSkippable)
 
 void GetCursed::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::URSearchCistern);
 }
 
 void GetCursed::onSkipped()

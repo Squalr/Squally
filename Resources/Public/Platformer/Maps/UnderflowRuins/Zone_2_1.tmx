@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="910">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="911">
  <properties>
   <property name="rubber-band" type="int" value="7"/>
  </properties>
@@ -277,6 +277,11 @@
   <object id="909" name="mini-map-relocator" type="object" x="3353.06" y="1313.97" width="2943.88" height="1036.06">
    <properties>
     <property name="position" value="bottom-right"/>
+   </properties>
+  </object>
+  <object id="910" name="objective-trigger" type="object" x="5448.95" y="1003.39" width="839.061" height="1065.58">
+   <properties>
+    <property name="send-event" value="UR_SOLVE_PUZZLE"/>
    </properties>
   </object>
  </objectgroup>

@@ -49,10 +49,9 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="979" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="1654" width="14517.6" height="1088">
+  <object id="979" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="1654" width="14517.6" height="1904">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="1.75"/>
    </properties>
   </object>
  </objectgroup>
