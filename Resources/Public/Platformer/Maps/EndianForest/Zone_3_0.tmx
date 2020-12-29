@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="759">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="759">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="725" name="Forest/Background/GreenForestRocks1" type="decor" x="-4677.69" y="1869.3" width="13333.3" height="4560">
+  <object id="725" name="Forest/Background/GreenForestRocks1" type="decor" x="-5317.69" y="1869.3" width="20981.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -28,7 +28,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="723" name="Forest/Background/GreenForestGround2" type="decor" x="-4693.69" y="701.3" width="13333.3" height="4560">
+  <object id="723" name="Forest/Background/GreenForestGround2" type="decor" x="-4693.69" y="701.3" width="19701.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -39,7 +39,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="724" name="Forest/Background/GreenForestGround3" type="decor" x="-5305.81" y="2297.6" width="14985.6" height="1116">
+  <object id="724" name="Forest/Background/GreenForestGround3" type="decor" x="-2105.81" y="2297.6" width="14281.6" height="1116">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="1.75"/>
