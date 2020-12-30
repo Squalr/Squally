@@ -152,6 +152,7 @@ void GetCursed::runCinematicSequencePt2()
 {
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
+		this->medusa->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->medusa).x));
 		this->medusa->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 
 		this->medusa->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)

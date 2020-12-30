@@ -11,6 +11,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
@@ -89,6 +90,7 @@ void TrollInTheDungeon::runChatSequence()
 {
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
+		this->mage->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->mage).x));
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 		PlatformerEvents::TriggerCinematicHijack();
 

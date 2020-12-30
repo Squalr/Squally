@@ -332,6 +332,7 @@ void EntityPetrificationBehavior::ajaxRun()
 {
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
+		this->entity->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->entity).x));
 		this->entity->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 
 		this->entity->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)

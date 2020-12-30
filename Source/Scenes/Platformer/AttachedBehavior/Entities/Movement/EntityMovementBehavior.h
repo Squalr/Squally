@@ -48,8 +48,6 @@ private:
 	float jumpVelocity;
 
 	PlatformerEntity* entity;
-	cocos2d::Vec2 preCinematicPosition;
-	cocos2d::Vec2 prePatrolPosition;
 
 	WorldSound* jumpSound;
 	std::vector<WorldSound*> swimSounds;

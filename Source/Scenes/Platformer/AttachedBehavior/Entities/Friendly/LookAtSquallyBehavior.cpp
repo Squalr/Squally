@@ -57,7 +57,9 @@ void LookAtSquallyBehavior::update(float dt)
 	if (this->squally == nullptr
 		|| this->entity == nullptr
 		|| !this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
+		|| this->entity->hasRuntimeState(StateKeys::PatrolSourceX)
 		|| this->entity->hasRuntimeState(StateKeys::PatrolDestinationX)
+		|| this->entity->hasRuntimeState(StateKeys::CinematicSourceX)
 		|| this->entity->hasRuntimeState(StateKeys::CinematicDestinationX)
 		|| this->entity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{

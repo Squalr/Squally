@@ -84,6 +84,7 @@ void EnemyCombatEngageBehavior::onDisable()
 
 void EnemyCombatEngageBehavior::stopAllEntityActions()
 {
+	this->enemy->clearState(StateKeys::PatrolSourceX);
 	this->enemy->clearState(StateKeys::PatrolDestinationX);
 	this->enemy->setState(StateKeys::CinematicHijacked, Value(true));
 	this->enemy->setState(StateKeys::PatrolHijacked, Value(true));

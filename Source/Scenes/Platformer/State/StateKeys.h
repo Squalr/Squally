@@ -20,10 +20,12 @@ public:
 	static const std::string NewHelperSpawnX;
 	static const std::string NewHelperSpawnY;
 	static const std::string PatrolHijacked;
+	static const std::string PatrolSourceX;
 	static const std::string PatrolDestinationX;
 	static const std::string PatrolDestinationReached;
 	static const std::string CinematicHijacked;
 	static const std::string MountHijacked;
+	static const std::string CinematicSourceX;
 	static const std::string CinematicDestinationX;
 	static const std::string CinematicDestinationReached;
 	static const std::string WeakMinded;

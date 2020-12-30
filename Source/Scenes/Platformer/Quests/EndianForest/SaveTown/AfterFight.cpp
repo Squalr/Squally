@@ -145,6 +145,7 @@ void AfterFight::runCinematicSequencePart2()
 		
 		ObjectEvents::WatchForObject<Igneus>(this, [=](Igneus* igneus)
 		{
+			igneus->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(igneus).x));
 			igneus->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
 			igneus->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
@@ -155,6 +156,7 @@ void AfterFight::runCinematicSequencePart2()
 
 		ObjectEvents::WatchForObject<Alder>(this, [=](Alder* alder)
 		{
+			alder->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(alder).x));
 			alder->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
 			alder->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
@@ -165,6 +167,7 @@ void AfterFight::runCinematicSequencePart2()
 
 		ObjectEvents::WatchForObject<Sarude>(this, [=](Sarude* sarude)
 		{
+			sarude->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(sarude).x));
 			sarude->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
 			sarude->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
@@ -180,6 +183,7 @@ void AfterFight::runCinematicSequencePart2()
 
 		ObjectEvents::WatchForObject<Aster>(this, [=](Aster* aster)
 		{
+			aster->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(aster).x));
 			aster->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
 			aster->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
@@ -190,6 +194,7 @@ void AfterFight::runCinematicSequencePart2()
 
 		ObjectEvents::WatchForObject<Merlin>(this, [=](Merlin* merlin)
 		{
+			merlin->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(merlin).x));
 			merlin->setState(StateKeys::CinematicDestinationX, Value(destCoords.x));
 			
 			merlin->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)

@@ -189,6 +189,7 @@ void AgroBehavior::update(float dt)
 			{
 				if (this->chaseOnAgro)
 				{
+					this->entity->setState(StateKeys::PatrolSourceX, Value(entityPosition.x));
 					this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
 				}
 				else
@@ -200,6 +201,7 @@ void AgroBehavior::update(float dt)
 			else
 			{
 				this->isAgrod = false;
+				this->entity->clearState(StateKeys::PatrolSourceX);
 				this->entity->clearState(StateKeys::PatrolDestinationX);
 			}
 		}

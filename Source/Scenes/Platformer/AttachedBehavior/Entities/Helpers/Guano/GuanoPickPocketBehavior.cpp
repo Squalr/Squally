@@ -71,6 +71,7 @@ void GuanoPickPocketBehavior::update(float dt)
 
 	if (this->isPickPocketing)
 	{
+		// The target may be moving so keep updating to track it
 		this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
 	}
 }
@@ -90,6 +91,7 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 	this->isPickPocketing = true;
 	this->target = target;
 	this->entity->setState(StateKeys::PatrolHijacked, Value(true));
+	this->entity->setState(StateKeys::PatrolSourceX, Value(GameUtils::getWorldCoords(this->entity).x));
 	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
 	this->entity->setOpacity(192);
 

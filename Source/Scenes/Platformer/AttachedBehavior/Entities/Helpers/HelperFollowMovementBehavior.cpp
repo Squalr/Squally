@@ -86,6 +86,7 @@ void HelperFollowMovementBehavior::onLoad()
 		ObjectEvents::WatchForObject<CinematicMarker>(this->entity, [=](CinematicMarker* rest)
 		{
 			this->entity->setState(StateKeys::PatrolHijacked, Value(true));
+			this->entity->setState(StateKeys::PatrolSourceX, Value(GameUtils::getWorldCoords(this->entity).x));
 			this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(rest).x));
 		}, "helper-rest");
 	});
@@ -93,6 +94,7 @@ void HelperFollowMovementBehavior::onLoad()
 	this->entity->listenForMapEvent(HelperFollowMovementBehavior::MapEventStopRest, [=](ValueMap)
 	{
 		this->entity->clearState(StateKeys::PatrolHijacked);
+		this->entity->clearState(StateKeys::PatrolSourceX);
 		this->entity->clearState(StateKeys::PatrolDestinationX);
 	});
 	
@@ -122,6 +124,7 @@ void HelperFollowMovementBehavior::update(float dt)
 	}
 
 	if (this->entity->getRuntimeStateOrDefault(StateKeys::CinematicHijacked, Value(false)).asBool()
+		|| this->entity->hasRuntimeState(StateKeys::CinematicSourceX)
 		|| this->entity->hasRuntimeState(StateKeys::CinematicDestinationX))
 	{
 		return;
@@ -139,6 +142,7 @@ void HelperFollowMovementBehavior::update(float dt)
 
 	if (std::abs(squallyPosition.x - entityPosition.x) >= HelperFollowMovementBehavior::StopFollowRangeX)
 	{
+		this->entity->setState(StateKeys::PatrolSourceX, Value(entityPosition.x));
 		this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
 	}
 

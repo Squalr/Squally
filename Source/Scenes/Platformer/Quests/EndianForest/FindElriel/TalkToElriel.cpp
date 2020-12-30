@@ -178,6 +178,7 @@ void TalkToElriel::runCinematicSequencePart4()
 
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{
+		this->elriel->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->elriel).x));
 		this->elriel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 	}, TalkToElriel::TagElrielExit);
 }
