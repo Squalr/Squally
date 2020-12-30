@@ -125,7 +125,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 				helper->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 			)
 		));
-	}), Squally::BattleTag);
+	}), Squally::TeamTag);
 
 	// Build enemy team
 	enemyCombatData.push_back(CombatMap::CombatData(

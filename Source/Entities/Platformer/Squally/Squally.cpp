@@ -19,7 +19,7 @@ using namespace cocos2d;
 
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKey = "squally";
-const std::string Squally::BattleTag = "squally-team";
+const std::string Squally::TeamTag = "squally-team";
 
 Squally* Squally::create()
 {

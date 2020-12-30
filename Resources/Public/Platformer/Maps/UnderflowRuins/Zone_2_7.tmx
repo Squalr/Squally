@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="864">
- <objectgroup id="1" name="meta" visible="0">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BlueSky"/>
    <property name="crack-color" value=""/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="16" name="tiled bg" visible="0">
+ <objectgroup id="16" name="tiled bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -35,20 +35,20 @@
   <object id="862" name="Generic/Background/Cloud4" type="decor" x="1276.56" y="995.16" width="614" height="122"/>
   <object id="863" name="Generic/Background/Cloud6" type="decor" x="470.5" y="919.693" width="1539" height="251"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="807" name="ruins-gray-thick" type="terrain" x="637.638" y="1065.94" width="3691.33" height="234.06"/>
   <object id="856" name="ruins-gray-thick" type="terrain" x="3080.34" y="956.97" width="331.33" height="343.06"/>
  </objectgroup>
- <objectgroup id="114" name="decor" visible="0">
+ <objectgroup id="114" name="decor">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="848" name="Ruins/Well" type="decor" x="3804.43" y="873.091" width="312" height="224"/>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -85,12 +85,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects" visible="0">
+ <objectgroup id="42" name="no hack objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -112,7 +112,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -135,7 +135,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor +1" visible="0">
+ <objectgroup id="22" name="decor +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
