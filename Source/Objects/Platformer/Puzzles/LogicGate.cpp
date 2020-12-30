@@ -38,11 +38,11 @@ LogicGate* LogicGate::create(ValueMap& properties)
 
 LogicGate::LogicGate(ValueMap& properties) : super(properties)
 {
-	this->colorName = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyColor, Value("")).asString();
-	this->operationName = GameUtils::getKeyOrDefault(this->properties, LogicTorch::PropertyOperation, Value("")).asString();
+	this->colorName = GameUtils::getKeyOrDefault(this->properties, Brazier::PropertyColor, Value("")).asString();
+	this->operationName = GameUtils::getKeyOrDefault(this->properties, Brazier::PropertyOperation, Value("")).asString();
 	this->gateCollision = CollisionObject::create(CollisionObject::createBox(Size(285.0f, 676.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
-	this->torchColor = LogicTorch::StrToColor(this->colorName);
-	this->operation = LogicTorch::StrToOperation(this->operationName);
+	this->torchColor = Brazier::StrToColor(this->colorName);
+	this->operation = Brazier::StrToOperation(this->operationName);
 	this->delta = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyDelta, Value(512.0f)).asFloat();
 	this->answer = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyAnswer, Value(false)).asBool();
 	this->openSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism1);
@@ -76,19 +76,19 @@ void LogicGate::onEnter()
 
 	this->computeIsOpen(true);
 
-	this->listenForMapEvent(LogicTorch::MapEventTorchLogicSwitchPrefix + this->colorName, [=](ValueMap)
+	this->listenForMapEvent(Brazier::MapEventTorchLogicSwitchPrefix + this->colorName, [=](ValueMap)
 	{
 		this->computeIsOpen(false);
 	});
 
-	this->listenForMapEvent(LogicTorch::MapEventSolveTorches, [=](ValueMap)
+	this->listenForMapEvent(Brazier::MapEventSolveTorches, [=](ValueMap)
 	{
-		this->saveObjectState(LogicTorch::SaveKeyIsSolved, Value(true));
+		this->saveObjectState(Brazier::SaveKeyIsSolved, Value(true));
 		this->checkComplete();
 		this->computeIsOpen(false);
 	});
 
-	this->listenForMapEvent(LogicTorch::MapEventCheckComplete, [=](ValueMap)
+	this->listenForMapEvent(Brazier::MapEventCheckComplete, [=](ValueMap)
 	{
 		this->checkComplete();
 		this->computeIsOpen(false);
@@ -107,7 +107,7 @@ bool LogicGate::isSolved()
 
 void LogicGate::computeIsOpen(bool isInstant)
 {
-	if (this->loadObjectStateOrDefault(LogicTorch::SaveKeyIsSolved, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(Brazier::SaveKeyIsSolved, Value(false)).asBool())
 	{
 		this->isOpen = this->answer;
 		this->runGateAnim(isInstant);
@@ -117,24 +117,24 @@ void LogicGate::computeIsOpen(bool isInstant)
 	this->isOpen = false;
 	this->firstRun = true;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<LogicTorch>([=](LogicTorch* logicTorch)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<Brazier>([=](Brazier* logicTorch)
 	{
 		switch (this->operation)
 		{
-			case LogicTorch::Operation::And:
+			case Brazier::Operation::And:
 			{
-				this->isOpen = firstRun ? logicTorch->isTorchOn() : (this->isOpen & logicTorch->isTorchOn());
+				this->isOpen = firstRun ? logicTorch->isOn() : (this->isOpen & logicTorch->isOn());
 				break;
 			}
-			case LogicTorch::Operation::Xor:
+			case Brazier::Operation::Xor:
 			{
-				this->isOpen ^= logicTorch->isTorchOn();
+				this->isOpen ^= logicTorch->isOn();
 				break;
 			}
 			default:
-			case LogicTorch::Operation::Or:
+			case Brazier::Operation::Or:
 			{
-				this->isOpen |= logicTorch->isTorchOn();
+				this->isOpen |= logicTorch->isOn();
 				break;
 			}
 		}
@@ -147,7 +147,7 @@ void LogicGate::computeIsOpen(bool isInstant)
 
 void LogicGate::checkComplete()
 {
-	if (this->loadObjectStateOrDefault(LogicTorch::SaveKeyIsSolved, Value(false)).asBool())
+	if (this->loadObjectStateOrDefault(Brazier::SaveKeyIsSolved, Value(false)).asBool())
 	{
 		return;
 	}
@@ -164,7 +164,7 @@ void LogicGate::checkComplete()
 
 	if (areAllSolved)
 	{
-		this->broadcastMapEvent(LogicTorch::MapEventSolveTorches, ValueMap());
+		this->broadcastMapEvent(Brazier::MapEventSolveTorches, ValueMap());
 	}
 }
 

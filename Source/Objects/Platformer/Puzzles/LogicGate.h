@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Engine/Maps/GameObject.h"
-#include "Objects/Platformer/Puzzles/LogicTorch.h"
+#include "Objects/Platformer/Puzzles/Brazier.h"
 
 namespace cocos2d
 {
@@ -39,8 +39,8 @@ private:
 	CollisionObject* gateCollision;
 	WorldSound* openSound;
 
-	LogicTorch::TorchColor torchColor;
-	LogicTorch::Operation operation;
+	Brazier::TorchColor torchColor;
+	Brazier::Operation operation;
 	std::string colorName;
 	std::string operationName;
 	std::string saveKey;

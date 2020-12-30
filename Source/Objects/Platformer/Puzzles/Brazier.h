@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Interactables/InteractObject.h"
+#include "Objects/Platformer/Interactables/ToggleableObject.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class SmartAnimationSequenceNode;
 class WorldSound;
 
-class LogicTorch : public InteractObject
+class Brazier : public ToggleableObject
 {
 public:
 	enum class TorchColor
@@ -29,14 +29,10 @@ public:
 		Xor
 	};
 
-	static LogicTorch* create(cocos2d::ValueMap& properties);
+	static Brazier* create(cocos2d::ValueMap& properties);
 
 	static TorchColor StrToColor(std::string colorName);
 	static Operation StrToOperation(std::string operationName);
-
-	bool isTorchOn();
-	void torchOn(bool playSfx = true);
-	void torchOff(bool playSfx = true);
 
 	static const std::string MapKey;
 	static const std::string MapEventTorchLogicSwitchSavePrefix;
@@ -48,19 +44,23 @@ public:
 	static const std::string SaveKeyIsSolved;
 
 protected:
-	LogicTorch(cocos2d::ValueMap& properties);
-	virtual ~LogicTorch();
+	Brazier(cocos2d::ValueMap& properties);
+	virtual ~Brazier();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void update(float dt) override;
-	void onInteract(PlatformerEntity* interactingEntity) override;
+	void onToggle() override;
+	void onEnable() override;
+	void onDisable() override;
+	void onOptimizationHide() override;
+	void onOptimizationShow() override;
 
 private:
-	typedef InteractObject super;
+	typedef ToggleableObject super;
 
 	bool isSolved();
-	void updateLogicTorchVisibility();
+	void startFx();
+	void stopFx();
 
 	cocos2d::Sprite* torch;
 	cocos2d::Sprite* glow;
@@ -70,15 +70,11 @@ private:
 	WorldSound* offSound;
 	WorldSound* interactSound;
 
-	float cooldown;
-	bool isOn;
 	TorchColor color;
 	Operation operation;
 	std::string colorName;
 	std::string operationName;
 	std::string saveKey;
 
-	static const std::string PropertyIsOn;
-	static const std::string PropertyIsInteractable;
 	static const std::string PropertySaveKey;
 };

@@ -17,7 +17,7 @@ MetalChest* MetalChest::create(ValueMap& properties)
 	return instance;
 }
 
-MetalChest::MetalChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+MetalChest::MetalChest(ValueMap& properties) : super(properties, Size(128.0f, 112.0f))
 {
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_MetalChestOpen);
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_MetalChestClosed);

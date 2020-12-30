@@ -46,7 +46,7 @@ InteractObject* InteractObject::create(
 }
 
 InteractObject::InteractObject(
-	ValueMap& properties, 
+	ValueMap& properties,
 	InteractType interactType,
 	Size size,
 	Vec2 offset,

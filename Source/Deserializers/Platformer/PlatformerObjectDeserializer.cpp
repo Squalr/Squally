@@ -36,6 +36,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Airship2::MapKey] = [=](ValueMap properties) { return (GameObject*)Airship2::create(properties); };
 	this->deserializers[AlchemyLab::MapKey] = [=](ValueMap properties) { return (GameObject*)AlchemyLab::create(properties); };
 	this->deserializers[Anvil::MapKey] = [=](ValueMap properties) { return (GameObject*)Anvil::create(properties); };
+	this->deserializers[Brazier::MapKey] = [=](ValueMap properties) { return (GameObject*)Brazier::create(properties); };
 	this->deserializers[BreakableBarrel::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[BreakableCage::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableCage::create(properties); };
 	this->deserializers[CagedBat::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBat::create(properties); };
@@ -140,7 +141,6 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
-	this->deserializers[LogicTorch::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicTorch::create(properties); };
 	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyHorizontal::create(properties); };
 	this->deserializers[PullyVertical::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyVertical::create(properties); };
 	this->deserializers[ManaOrb::MapKey] = [=](ValueMap properties) { return (GameObject*)ManaOrb::create(properties); };

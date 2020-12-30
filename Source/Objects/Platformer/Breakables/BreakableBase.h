@@ -21,6 +21,7 @@ protected:
 	SpawnPool* getSpawnPool();
 
 	PlatformerObjectDeserializer* objectDeserializer;
+	cocos2d::Node* contentNode;
 
 private:
 	typedef HackableObject super;

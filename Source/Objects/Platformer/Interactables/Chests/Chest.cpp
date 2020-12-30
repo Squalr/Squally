@@ -17,7 +17,7 @@ Chest* Chest::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-Chest::Chest(cocos2d::ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+Chest::Chest(cocos2d::ValueMap& properties) : super(properties, Size(128.0f, 112.0f))
 {
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_ChestOpen);
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_ChestClosed);

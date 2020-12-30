@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Interactables/ToggleableObject.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class SmartAnimationSequenceNode;
 
-class Torch : public GameObject
+class Torch : public ToggleableObject
 {
 public:
 	static Torch* create(cocos2d::ValueMap& properties);
@@ -25,18 +25,18 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void update(float dt) override;
+	void onEnable() override;
+	void onDisable() override;
+	void onOptimizationHide() override;
+	void onOptimizationShow() override;
 
 private:
-	typedef GameObject super;
+	typedef ToggleableObject super;
 
-	void updateTorchVisibility();
-	void optimizationHideOffscreenTorch();
+	void startFx();
+	void stopFx();
 
 	cocos2d::Sprite* torch;
 	cocos2d::Sprite* glow;
 	SmartAnimationSequenceNode* fire;
-
-	bool isOn;
-	bool isCulled;
 };

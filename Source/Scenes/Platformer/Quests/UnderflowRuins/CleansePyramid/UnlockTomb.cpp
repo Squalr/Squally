@@ -2,7 +2,7 @@
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"
-#include "Objects/Platformer/Puzzles/LogicTorch.h"
+#include "Objects/Platformer/Puzzles/Brazier.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -38,11 +38,11 @@ void UnlockTomb::onLoad(QuestState questState)
 	{
 		ObjectEvents::WatchForObject<DragonDoor>(this, [=](DragonDoor* portal)
 		{
-			ObjectEvents::WatchForObject<LogicTorch>(this, [=](LogicTorch* logicTorchLeft)
+			ObjectEvents::WatchForObject<Brazier>(this, [=](Brazier* logicTorchLeft)
 			{
-				ObjectEvents::WatchForObject<LogicTorch>(this, [=](LogicTorch* logicTorchRight)
+				ObjectEvents::WatchForObject<Brazier>(this, [=](Brazier* logicTorchRight)
 				{
-					if (!logicTorchLeft->isTorchOn() || !logicTorchRight->isTorchOn())
+					if (!logicTorchLeft->isOn() || !logicTorchRight->isOn())
 					{
 						portal->lock(false);
 					}

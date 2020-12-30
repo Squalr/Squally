@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -6">
+ <objectgroup id="18" name="bg -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -896,7 +896,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="objects +3">
+ <objectgroup id="96" name="objects +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>

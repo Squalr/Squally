@@ -79,11 +79,11 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.
 	this->vaseBroken->setPhysicsEnabled(false);
 	this->vaseBroken->setVisible(false);
 
-	this->addChild(this->vase);
-	this->addChild(this->vaseBroken);
-	this->addChild(this->shardParticles);
-	this->addChild(this->explosion);
-	this->addChild(this->breakSound);
+	this->contentNode->addChild(this->vase);
+	this->contentNode->addChild(this->vaseBroken);
+	this->contentNode->addChild(this->shardParticles);
+	this->contentNode->addChild(this->explosion);
+	this->contentNode->addChild(this->breakSound);
 }
 
 Vase::~Vase()

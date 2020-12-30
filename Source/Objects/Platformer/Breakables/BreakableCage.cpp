@@ -31,7 +31,7 @@ BreakableCage* BreakableCage::create(ValueMap& properties)
 BreakableCage::BreakableCage(ValueMap& properties, int requiredHits) : super(properties, Size(196.0f, 112.0f + 64.0f), requiredHits)
 {
 	this->cageBottom = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f, 0.2f));
-	this->contentNode = Node::create();
+	this->cagedContentNode = Node::create();
 	this->cage = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f, 0.2f));
 	this->cageTop = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f, 0.2f));
 	this->explosion = SmartAnimationSequenceNode::create();
@@ -45,12 +45,12 @@ BreakableCage::BreakableCage(ValueMap& properties, int requiredHits) : super(pro
 	this->cage->setPhysicsEnabled(false);
 	this->cageTop->setPhysicsEnabled(false);
 
-	this->addChild(this->cageBottom);
-	this->addChild(this->contentNode);
-	this->addChild(this->cage);
-	this->addChild(this->cageTop);
-	this->addChild(this->explosion);
-	this->addChild(this->breakSound);
+	this->contentNode->addChild(this->cageBottom);
+	this->contentNode->addChild(this->cagedContentNode);
+	this->contentNode->addChild(this->cage);
+	this->contentNode->addChild(this->cageTop);
+	this->contentNode->addChild(this->explosion);
+	this->contentNode->addChild(this->breakSound);
 }
 
 BreakableCage::~BreakableCage()

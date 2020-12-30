@@ -18,6 +18,7 @@ BreakableBase::BreakableBase(ValueMap& properties, Size collisionSize, int requi
 {
 	this->breakableCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)(PlatformerCollisionType::Breakable), CollisionObject::Properties(false, false));
 	this->objectDeserializer = PlatformerObjectDeserializer::create();
+	this->contentNode = Node::create();
 	this->hasBroke = false;
 	this->spawnPool = nullptr;
 
@@ -36,6 +37,7 @@ BreakableBase::BreakableBase(ValueMap& properties, Size collisionSize, int requi
 		}
 	}));
 
+	this->addChild(this->contentNode);
 	this->addChild(this->breakableCollision);
 	this->addChild(this->objectDeserializer);
 }
