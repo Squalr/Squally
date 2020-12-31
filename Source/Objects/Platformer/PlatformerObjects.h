@@ -78,6 +78,7 @@
 #include "Objects/Platformer/Interactables/Mounts/MineCart/MineCart.h"
 #include "Objects/Platformer/Interactables/Puzzles/Brazier.h"
 #include "Objects/Platformer/Interactables/Puzzles/LogicGate.h"
+#include "Objects/Platformer/Interactables/Puzzles/LogicPuzzleController.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/Tent.h"
 #include "Objects/Platformer/Interactables/Spawns/CartSpawn.h"

@@ -21,7 +21,6 @@
 using namespace cocos2d;
 
 const std::string Brazier::MapKey = "logic-torch";
-const std::string Brazier::PropertySaveKey = "save-key";
 
 Brazier* Brazier::create(ValueMap& properties)
 {
@@ -37,7 +36,6 @@ Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, S
 	this->colorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);
 	this->fire = SmartAnimationSequenceNode::create();
-	this->saveKey = GameUtils::getKeyOrDefault(this->properties, Brazier::PropertySaveKey, Value("")).asString();
 	this->color = Brazier::StrToColor(this->colorName);
 	this->burnSound = WorldSound::create(SoundResources::Platformer_FX_Fire_FireSizzle1);
 	this->onSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshFire2);
@@ -124,11 +122,15 @@ Brazier::TorchColor Brazier::StrToColor(std::string colorName)
 
 void Brazier::onToggle()
 {
+	super::onToggle();
+	
 	this->interactSound->play();
 }
 
 void Brazier::onEnable(bool isInit)
 {
+	super::onEnable(isInit);
+
 	// this->burnSound->play(true);
 	
 	if (!isInit)
@@ -141,6 +143,8 @@ void Brazier::onEnable(bool isInit)
 
 void Brazier::onDisable(bool isInit)
 {
+	super::onDisable(isInit);
+
 	if (!isInit)
 	{
 		this->offSound->play();
@@ -153,12 +157,19 @@ void Brazier::onDisable(bool isInit)
 
 void Brazier::onOptimizationHide()
 {
+	super::onOptimizationHide();
+
 	this->stopFx();
 }
 
 void Brazier::onOptimizationShow()
 {
-	this->startFx();
+	super::onOptimizationShow();
+	
+	if (this->isOn())
+	{
+		this->startFx();
+	}
 }
 
 void Brazier::startFx()

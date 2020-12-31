@@ -57,7 +57,4 @@ private:
 	TorchColor color;
 	std::string colorName;
 	std::string operationName;
-	std::string saveKey;
-
-	static const std::string PropertySaveKey;
 };

@@ -1,23 +1,16 @@
 #include "ToggleableObject.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"
-
-#include "Resources/FXResources.h"
-#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
 const std::string ToggleableObject::PropertyIsOn = "is-on";
+const std::string ToggleableObject::PropertyIsOneUse = "is-one-use";
 const std::string ToggleableObject::PropertyIsInteractable = "interactable";
+const std::string ToggleableObject::PropertySaveKey = "save-key";
 
 ToggleableObject::ToggleableObject(
 	ValueMap& properties,
@@ -38,11 +31,18 @@ ToggleableObject::ToggleableObject(
 	this->onNode = Node::create();
 	this->offNode = Node::create();
 	this->frontNode = Node::create();
-
+	this->saveKey = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertySaveKey, Value("")).asString();
 	this->cullPadding = cullPadding;
-	this->isToggledOn = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsOn, Value(true)).asBool();
+	this->originalToggleValue = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsOn, Value(true)).asBool();
+	this->isToggledOn = this->originalToggleValue;
+	this->isOneUse = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsOneUse, Value(true)).asBool();
 	this->isCulled = false;
 	this->cooldown = 0.0f;
+
+	if (GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsInteractable, Value(true)).asBool())
+	{
+		this->setInteractType(InteractType::Input);
+	}
 
 	this->setContentSize(size);
 
@@ -63,8 +63,26 @@ void ToggleableObject::onEnter()
 {
 	super::onEnter();
 
-	this->isToggledOn = true;
-	this->onEnable(true);
+	// Overwrite default value if we have one saved
+	if (!this->saveKey.empty())
+	{
+		this->isToggledOn = this->loadObjectStateOrDefault(this->saveKey, Value(this->isOn())).asBool();
+	}
+	
+	// Run the events for enable/disable (passing in a flag indicating this is an initialization)
+	if (this->isOn())
+	{
+		this->onEnable(true);
+	}
+	else
+	{
+		this->onDisable(true);
+	}
+
+	if (this->isOneUse && this->isOn() != this->originalToggleValue)
+	{
+		this->setInteractType(InteractType::None);
+	}
 	
 	this->scheduleUpdate();
 }
@@ -105,14 +123,32 @@ void ToggleableObject::onToggle()
 	{
 		this->enable();
 	}
+
+	if (!this->saveKey.empty())
+	{
+		this->saveObjectState(this->saveKey, Value(this->isOn()));
+	}
+
+	if (this->isOneUse && this->isOn() != this->originalToggleValue)
+	{
+		this->setInteractType(InteractType::None);
+	}
 }
 
 void ToggleableObject::onEnable(bool isInit)
 {
+	this->backOffNode->setVisible(false);
+	this->offNode->setVisible(false);
+	this->backOnNode->setVisible(true);
+	this->onNode->setVisible(true);
 }
 
 void ToggleableObject::onDisable(bool isInit)
 {
+	this->backOffNode->setVisible(true);
+	this->offNode->setVisible(true);
+	this->backOnNode->setVisible(false);
+	this->onNode->setVisible(false);
 }
 
 bool ToggleableObject::isOn()

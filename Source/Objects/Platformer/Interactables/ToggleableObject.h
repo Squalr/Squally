@@ -11,9 +11,6 @@ public:
 	void enable();
 	void disable();
 
-	static const std::string PropertyIsOn;
-	static const std::string PropertyIsInteractable;
-
 protected:
 	ToggleableObject(cocos2d::ValueMap& properties,
 		InteractType interactType,
@@ -53,6 +50,14 @@ private:
 	void optimizationHideOffscreenToggleableObject();
 
 	cocos2d::Size cullPadding;
+	bool originalToggleValue;
 	bool isToggledOn;
+	bool isOneUse;
 	float cooldown;
+	std::string saveKey;
+
+	static const std::string PropertyIsOn;
+	static const std::string PropertyIsOneUse;
+	static const std::string PropertyIsInteractable;
+	static const std::string PropertySaveKey;
 };

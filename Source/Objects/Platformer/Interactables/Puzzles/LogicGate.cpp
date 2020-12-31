@@ -76,10 +76,13 @@ void LogicGate::initializeListeners()
 
 void LogicGate::onToggle()
 {
+	super::onToggle();
 }
 
 void LogicGate::onEnable(bool isInit)
 {
+	super::onEnable(isInit);
+
 	if (!isInit)
 	{
 		this->openSound->play();
