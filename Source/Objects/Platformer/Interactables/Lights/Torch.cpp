@@ -50,8 +50,6 @@ Torch::~Torch()
 void Torch::onEnter()
 {
 	super::onEnter();
-
-	this->enable();
 }
 
 void Torch::initializePositions()
@@ -62,16 +60,16 @@ void Torch::initializePositions()
 	this->glow->setPosition(Vec2(0.0f, 56.0f));
 }
 
-void Torch::onEnable()
+void Torch::onEnable(bool isInit)
 {
-	super::onEnable();
+	super::onEnable(isInit);
 	
 	this->startFx();
 }
 
-void Torch::onDisable()
+void Torch::onDisable(bool isInit)
 {
-	super::onDisable();
+	super::onDisable(isInit);
 
 	this->stopFx();
 }

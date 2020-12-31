@@ -21,7 +21,6 @@
 using namespace cocos2d;
 
 const std::string Vase::MapKey = "vase";
-const std::string Vase::PropertyColor = "color";
 
 Vase* Vase::create(ValueMap& properties)
 {
@@ -36,7 +35,7 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.
 {
 	this->explosion = SmartAnimationSequenceNode::create();
 	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_PotBreak_PotSmash1);
-	this->color = GameUtils::getKeyOrDefault(this->properties, Vase::PropertyColor, Value("yellow")).asString();
+	this->color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("yellow")).asString();
 	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
 	this->vaseBroken = CollisionObject::create(CollisionObject::createBox(Size(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f));
 

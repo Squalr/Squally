@@ -25,8 +25,8 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onEnable() override;
-	void onDisable() override;
+	void onEnable(bool isInit) override;
+	void onDisable(bool isInit) override;
 	void onOptimizationHide() override;
 	void onOptimizationShow() override;
 

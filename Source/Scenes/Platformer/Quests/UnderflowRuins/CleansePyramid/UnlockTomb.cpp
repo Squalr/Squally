@@ -2,7 +2,7 @@
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"
-#include "Objects/Platformer/Puzzles/Brazier.h"
+#include "Objects/Platformer/Interactables/Puzzles/Brazier.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 

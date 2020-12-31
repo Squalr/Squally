@@ -21,27 +21,11 @@ public:
 		Purple
 	};
 
-	enum class Operation
-	{
-		None,
-		And,
-		Or,
-		Xor
-	};
-
 	static Brazier* create(cocos2d::ValueMap& properties);
 
 	static TorchColor StrToColor(std::string colorName);
-	static Operation StrToOperation(std::string operationName);
 
 	static const std::string MapKey;
-	static const std::string MapEventTorchLogicSwitchSavePrefix;
-	static const std::string MapEventTorchLogicSwitchPrefix;
-	static const std::string MapEventSolveTorches;
-	static const std::string MapEventCheckComplete;
-	static const std::string PropertyColor;
-	static const std::string PropertyOperation;
-	static const std::string SaveKeyIsSolved;
 
 protected:
 	Brazier(cocos2d::ValueMap& properties);
@@ -50,8 +34,8 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void onToggle() override;
-	void onEnable() override;
-	void onDisable() override;
+	void onEnable(bool isInit) override;
+	void onDisable(bool isInit) override;
 	void onOptimizationHide() override;
 	void onOptimizationShow() override;
 
@@ -71,7 +55,6 @@ private:
 	WorldSound* interactSound;
 
 	TorchColor color;
-	Operation operation;
 	std::string colorName;
 	std::string operationName;
 	std::string saveKey;

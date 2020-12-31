@@ -28,6 +28,4 @@ private:
 	
 	cocos2d::Sprite* wheel;
 	SmartAnimationSequenceNode* rope;
-
-	static const std::string PropertyColor;
 };

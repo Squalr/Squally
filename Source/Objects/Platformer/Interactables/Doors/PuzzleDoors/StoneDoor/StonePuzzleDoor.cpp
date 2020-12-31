@@ -25,7 +25,6 @@
 using namespace cocos2d;
 
 const Vec2 StonePuzzleDoor::Offset = Vec2(0.0f, -160.0f);
-const std::string StonePuzzleDoor::PropertyColor = "color";
 
 StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 	Size(256.0f, 512.0f),
@@ -38,7 +37,7 @@ StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 	136.0f,
 	292.0f)
 {
-	std::string color = GameUtils::getKeyOrDefault(this->properties, StonePuzzleDoor::PropertyColor, Value("yellow")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("yellow")).asString();
 	
 	if (color == "green")
 	{

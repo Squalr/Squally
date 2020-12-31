@@ -21,14 +21,7 @@
 using namespace cocos2d;
 
 const std::string Brazier::MapKey = "logic-torch";
-const std::string Brazier::PropertyColor = "color";
-const std::string Brazier::PropertyOperation = "operation";
 const std::string Brazier::PropertySaveKey = "save-key";
-const std::string Brazier::MapEventTorchLogicSwitchSavePrefix = "torch-logic-switched-by-save-";
-const std::string Brazier::MapEventTorchLogicSwitchPrefix = "torch-logic-switched";
-const std::string Brazier::MapEventSolveTorches = "solve-torches";
-const std::string Brazier::MapEventCheckComplete = "check-complete";
-const std::string Brazier::SaveKeyIsSolved = "SAVE_KEY_IS_SOLVED";
 
 Brazier* Brazier::create(ValueMap& properties)
 {
@@ -41,13 +34,11 @@ Brazier* Brazier::create(ValueMap& properties)
 
 Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, Size(101.0f, 111.0f))
 {
-	this->colorName = GameUtils::getKeyOrDefault(this->properties, Brazier::PropertyColor, Value("")).asString();
-	this->operationName = GameUtils::getKeyOrDefault(this->properties, Brazier::PropertyOperation, Value("")).asString();
+	this->colorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);
 	this->fire = SmartAnimationSequenceNode::create();
 	this->saveKey = GameUtils::getKeyOrDefault(this->properties, Brazier::PropertySaveKey, Value("")).asString();
 	this->color = Brazier::StrToColor(this->colorName);
-	this->operation = Brazier::StrToOperation(this->operationName);
 	this->burnSound = WorldSound::create(SoundResources::Platformer_FX_Fire_FireSizzle1);
 	this->onSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshFire2);
 	this->offSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_Woosh1);
@@ -101,73 +92,6 @@ Brazier::~Brazier()
 void Brazier::onEnter()
 {
 	super::onEnter();
-	
-	/*
-	this->isOn |= this->isSolved();
-
-	static float TorchDelay = 0.0f;
-
-	TorchDelay = 0.0f;
-
-	// Listen for events if unsolved
-	if (!this->isSolved() && !this->saveKey.empty())
-	{
-		this->isOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
-
-		this->listenForMapEvent(Brazier::MapEventTorchLogicSwitchSavePrefix + this->saveKey, [=](ValueMap)
-		{
-			this->isOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->isOn)).asBool();
-			
-			this->updateBrazierVisibility();
-		});
-
-		// For torches with a save key, use a different mode to save! Allows cross map syncing.
-		this->listenForMapEvent(Brazier::MapEventSolveTorches, [=](ValueMap)
-		{
-			SaveManager::SoftSaveProfileData(this->saveKey + "_" + Brazier::SaveKeyIsSolved, Value(true));
-			this->setInteractType(InteractType::None);
-
-			TorchDelay += 0.1f;
-
-			this->runAction(Sequence::create(
-				DelayTime::create(TorchDelay),
-				CallFunc::create([=]()
-				{
-					this->torchOn();
-				}),
-				nullptr
-			));
-		});
-
-		SaveManager::SoftSaveProfileData(this->saveKey, Value(this->isOn));
-	}
-	else if (!this->isSolved() && this->saveKey.empty())
-	{
-		// For torches with no save key, save as object state
-		this->listenForMapEvent(Brazier::MapEventSolveTorches, [=](ValueMap)
-		{
-			this->saveObjectState(Brazier::SaveKeyIsSolved, Value(true));
-			this->setInteractType(InteractType::None);
-
-			TorchDelay += 0.1f;
-
-			this->runAction(Sequence::create(
-				DelayTime::create(TorchDelay),
-				CallFunc::create([=]()
-				{
-					this->torchOn();
-				}),
-				nullptr
-			));
-		});
-	}
-
-	// Set interactable if unsolved
-	if (!this->isSolved() && GameUtils::getKeyOrDefault(this->properties, Brazier::PropertyIsInteractable, Value(false)).asBool())
-	{
-		this->setInteractType(InteractType::Input);
-	}
-	*/
 }
 
 void Brazier::initializePositions()
@@ -198,52 +122,30 @@ Brazier::TorchColor Brazier::StrToColor(std::string colorName)
 	}
 }
 
-Brazier::Operation Brazier::StrToOperation(std::string operationName)
-{
-	if (operationName == "and")
-	{
-		return Operation::And;
-	}
-	else if (operationName == "or")
-	{
-		return Operation::Or;
-	}
-	else if (operationName == "xor")
-	{
-		return Operation::Xor;
-	}
-
-	return Operation::None;
-}
-
 void Brazier::onToggle()
 {
 	this->interactSound->play();
-
-	/*
-	if (!this->saveKey.empty())
-	{
-		SaveManager::SoftSaveProfileData(this->saveKey, Value(this->isOn()));
-
-		this->broadcastMapEvent(Brazier::MapEventTorchLogicSwitchSavePrefix + this->saveKey, ValueMap());
-		this->broadcastMapEvent(Brazier::MapEventTorchLogicSwitchPrefix + this->colorName, ValueMap());
-	}
-
-	this->broadcastMapEvent(Brazier::MapEventCheckComplete, ValueMap());
-	*/
 }
 
-void Brazier::onEnable()
+void Brazier::onEnable(bool isInit)
 {
 	// this->burnSound->play(true);
-	this->onSound->play();
+	
+	if (!isInit)
+	{
+		this->onSound->play();
+	}
 
 	this->startFx();
 }
 
-void Brazier::onDisable()
+void Brazier::onDisable(bool isInit)
 {
-	this->offSound->play();
+	if (!isInit)
+	{
+		this->offSound->play();
+	}
+
 	this->burnSound->stop();
 
 	this->stopFx();
@@ -299,16 +201,4 @@ void Brazier::stopFx()
 {
 	this->glow->stopAllActions();
 	this->fire->stopAnimation();
-}
-
-bool Brazier::isSolved()
-{
-	if (this->saveKey.empty())
-	{
-		return this->loadObjectStateOrDefault(Brazier::SaveKeyIsSolved, Value(false)).asBool();
-	}
-	else
-	{
-		return SaveManager::GetProfileDataOrDefault(this->saveKey + "_" + Brazier::SaveKeyIsSolved, Value(false)).asBool();
-	}
 }

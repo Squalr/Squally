@@ -23,7 +23,6 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_CAN_MOVE 1
 
 const std::string MineCart::MapKey = "mine-cart";
-const std::string MineCart::PropertyColor = "color";
 const std::string MineCart::PropertyDirection = "direction";
 const std::string MineCart::PropertySpeed = "speed";
 
@@ -285,7 +284,7 @@ void MineCart::parseDirection()
 
 void MineCart::parseColor()
 {
-	std::string color = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertyColor, Value("")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 
 	if (color == "blue")
 	{

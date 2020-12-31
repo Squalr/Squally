@@ -14,7 +14,7 @@ using namespace cocos2d;
 const std::string MiniMapObject::MapKey = "mini-map-object";
 const std::string MiniMapObject::PropertyOriginalId = "original-uuid";
 const std::string MiniMapObject::PropertyMiniMapHidden = "mini-map-hidden";
-const std::string MiniMapObject::PropertyColor = "mini-map-color";
+const std::string MiniMapObject::PropertyMiniMapColor = "mini-map-color";
 const std::string MiniMapObject::PropertyShape = "shape";
 const std::string MiniMapObject::TagMiniMapObject = "mini-map-object";
 
@@ -44,7 +44,7 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 	);
 
 	this->drawNode->setContentSize(size);
-	std::string color = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyColor, Value("")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyMiniMapColor, Value("")).asString();
 	std::string shape = GameUtils::getKeyOrDefault(this->properties, MiniMapObject::PropertyShape, Value("")).asString();
 
 	if (color == "red")

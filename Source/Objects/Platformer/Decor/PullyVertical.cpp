@@ -15,7 +15,6 @@
 using namespace cocos2d;
 
 const std::string PullyVertical::MapKey = "pully-vertical";
-const std::string PullyVertical::PropertyColor = "color";
 
 PullyVertical* PullyVertical::create(ValueMap& properties)
 {
@@ -28,7 +27,7 @@ PullyVertical* PullyVertical::create(ValueMap& properties)
 
 PullyVertical::PullyVertical(ValueMap& properties) : super(properties)
 {
-	bool isYellow = GameUtils::getKeyOrDefault(this->properties, PullyVertical::PropertyColor, Value("")).asString() == "yellow";
+	bool isYellow = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString() == "yellow";
 	this->wheel = Sprite::create(isYellow ? ObjectResources::Decor_Pullies_WheelLight : ObjectResources::Decor_Pullies_WheelDark);
 	this->rope = SmartAnimationSequenceNode::create(ObjectResources::Decor_Pullies_PullyVertical_0000);
 

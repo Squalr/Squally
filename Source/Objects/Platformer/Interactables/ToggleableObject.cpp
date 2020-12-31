@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/GameCamera.h"
@@ -39,7 +40,7 @@ ToggleableObject::ToggleableObject(
 	this->frontNode = Node::create();
 
 	this->cullPadding = cullPadding;
-	this->isToggledOn = false;
+	this->isToggledOn = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsOn, Value(true)).asBool();
 	this->isCulled = false;
 	this->cooldown = 0.0f;
 
@@ -62,6 +63,9 @@ void ToggleableObject::onEnter()
 {
 	super::onEnter();
 
+	this->isToggledOn = true;
+	this->onEnable(true);
+	
 	this->scheduleUpdate();
 }
 
@@ -103,11 +107,11 @@ void ToggleableObject::onToggle()
 	}
 }
 
-void ToggleableObject::onEnable()
+void ToggleableObject::onEnable(bool isInit)
 {
 }
 
-void ToggleableObject::onDisable()
+void ToggleableObject::onDisable(bool isInit)
 {
 }
 
@@ -125,7 +129,7 @@ void ToggleableObject::enable()
 
 	this->isToggledOn = true;
 
-	this->onEnable();
+	this->onEnable(true);
 }
 
 void ToggleableObject::disable()
@@ -137,7 +141,7 @@ void ToggleableObject::disable()
 
 	this->isToggledOn = false;
 
-	this->onDisable();
+	this->onDisable(true);
 }
 
 void ToggleableObject::onOptimizationHide()

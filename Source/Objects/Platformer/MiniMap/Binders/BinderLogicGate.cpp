@@ -5,7 +5,7 @@
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/Puzzles/LogicGate.h"
+#include "Objects/Platformer/Interactables/Puzzles/LogicGate.h"
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"
 
 using namespace cocos2d;

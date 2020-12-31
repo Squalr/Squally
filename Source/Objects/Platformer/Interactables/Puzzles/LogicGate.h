@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
-#include "Objects/Platformer/Puzzles/Brazier.h"
+#include "Objects/Platformer/Interactables/ToggleableObject.h"
 
 namespace cocos2d
 {
@@ -11,12 +10,10 @@ namespace cocos2d
 class CollisionObject;
 class WorldSound;
 
-class LogicGate : public GameObject
+class LogicGate : public ToggleableObject
 {
 public:
 	static LogicGate* create(cocos2d::ValueMap& properties);
-
-	bool isSolved();
 
 	static const std::string MapKey;
 
@@ -26,28 +23,23 @@ protected:
 
 	void onEnter() override;
 	void initializeListeners() override;
+	void onToggle() override;
+	void onEnable(bool isInit) override;
+	void onDisable(bool isInit) override;
 
 private:
-	typedef GameObject super;
+	typedef ToggleableObject super;
 	friend class BinderLogicGate;
 
-	void computeIsOpen(bool isInstant);
-	void checkComplete();
 	void runGateAnim(bool isInstant);
 
 	cocos2d::Sprite* gate;
 	CollisionObject* gateCollision;
 	WorldSound* openSound;
-
-	Brazier::TorchColor torchColor;
-	Brazier::Operation operation;
+	
 	std::string colorName;
-	std::string operationName;
 	std::string saveKey;
 	bool answer;
-	bool firstRun;
-	bool isOpen;
-	bool wasOpen;
 	float delta;
 
 	static const std::string PropertyGateColor;

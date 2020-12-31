@@ -32,8 +32,8 @@ protected:
 	void update(float dt) override;
 	void onInteract(PlatformerEntity* interactingEntity) override;
 	virtual void onToggle();
-	virtual void onEnable();
-	virtual void onDisable();
+	virtual void onEnable(bool isInit);
+	virtual void onDisable(bool isInit);
 	virtual void onOptimizationHide();
 	virtual void onOptimizationShow();
 

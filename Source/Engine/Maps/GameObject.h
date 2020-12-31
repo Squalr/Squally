@@ -143,6 +143,7 @@ public:
 	static const std::string PropertyName;
 	static const std::string PropertyType;
 	static const std::string PropertyValue;
+	static const std::string PropertyColor;
 
 	cocos2d::ValueMap properties;
 	
