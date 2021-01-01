@@ -393,7 +393,7 @@
     <property name="drop-pool" value="ef-generic"/>
     <property name="quest" value="fight-troll"/>
     <property name="quest-line" value="rescue-guano"/>
-    <property name="send-event" value="event-door-open"/>
+    <property name="send-event" value=""/>
    </properties>
   </object>
  </objectgroup>
@@ -425,13 +425,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="77" name="decor +1">
+ <objectgroup id="77" name="decor +1" visible="0">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="114" name="jail +2">
+ <objectgroup id="114" name="jail +2" visible="0">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -444,7 +444,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="125" name="terrain +2">
+ <objectgroup id="125" name="terrain +2" visible="0">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects-disabled"/>
@@ -459,13 +459,8 @@
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="992" name="marble" type="terrain" x="-118.97" y="-43.9414" width="1574.91" height="1360.61">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="126" name="ground +3">
+ <objectgroup id="126" name="ground +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -501,7 +496,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="128" name="entities +3">
+ <objectgroup id="128" name="entities +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -537,7 +532,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="127" name="collision +3">
+ <objectgroup id="127" name="collision +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -549,7 +544,7 @@
   <object id="981" name="solid-npc" type="collision" x="7107.49" y="209.5" width="537.03" height="993"/>
   <object id="982" name="solid-npc" type="collision" x="5859.48" y="213.5" width="537.03" height="993"/>
  </objectgroup>
- <objectgroup id="129" name="columns +3">
+ <objectgroup id="129" name="columns +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -591,7 +586,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="135" name="terrain + 3.5">
+ <objectgroup id="135" name="terrain + 3.5" visible="0">
   <properties>
    <property name="depth" type="float" value="224"/>
    <property name="type" value="objects"/>
@@ -622,13 +617,8 @@
     <property name="attached-behavior" value="z-fade"/>
    </properties>
   </object>
-  <object id="1044" name="marble" type="terrain" x="-118.97" y="-43.9414" width="1574.91" height="1360.61">
-   <properties>
-    <property name="attached-behavior" value="z-fade"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="131" name="ground +4">
+ <objectgroup id="131" name="ground +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -654,7 +644,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="132" name="entities +4">
+ <objectgroup id="132" name="entities +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -690,7 +680,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="134" name="collision +4">
+ <objectgroup id="134" name="collision +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -702,7 +692,7 @@
   <object id="1036" name="solid-npc" type="collision" x="7107.49" y="209.5" width="537.03" height="993"/>
   <object id="1037" name="solid-npc" type="collision" x="5859.48" y="213.5" width="537.03" height="993"/>
  </objectgroup>
- <objectgroup id="133" name="columns +4">
+ <objectgroup id="133" name="columns +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>

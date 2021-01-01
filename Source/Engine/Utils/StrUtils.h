@@ -14,6 +14,7 @@ public:
 	static std::string toUpper(std::string str);
 	static std::string doubleToString(double value, int precision);
 	static std::string floatToString(float value, int precision);
+	static bool isEmptyOrWhitespace(std::string str);
 	static bool isInteger(std::string str);
 	static bool isFloat(std::string str);
 	static bool isHexNumber(std::string str);

@@ -55,6 +55,8 @@ IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* tar
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
+	
+	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);

@@ -209,6 +209,11 @@ std::vector<std::string> StrUtils::splitOn(std::string str, std::string delimite
 	return tokens;
 }
 
+bool StrUtils::isEmptyOrWhitespace(std::string  str)
+{
+	return str.find_first_not_of(" \t\n\v\f\r") == std::string::npos;
+}
+
 bool StrUtils::isInteger(std::string  str)
 {
 	if (StrUtils::startsWith(str, "-", false))

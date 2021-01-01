@@ -270,7 +270,7 @@ PlatformerEntity* PlatformerEntity::uiClone()
 void PlatformerEntity::optimizationHideOffscreenEntity()
 {
 	// Slight padding for any rendering beyond the entity hitbox
-	static const Size Padding = Size(256.0f, 256.0f);
+	static const Size Padding = Size(384.0f, 384.0f);
 	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 	Rect thisRect = GameUtils::getScreenBounds(this->animationNode, Padding);
 

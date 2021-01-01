@@ -278,7 +278,7 @@ void DeveloperScene::initializePositions()
 	{
 		ChapterDebugInfo& next = this->chapterDebugInfoList[chapterIndex];
 
-		next.titleButton->setPosition(Vec2(108.0f + float(chapterIndex) * 212.0f, visibleSize.height - 96.0f));
+		next.titleButton->setPosition(Vec2(112.0f + float(chapterIndex) * 212.0f, visibleSize.height - 96.0f));
 		next.scrollPane->setPosition(Vec2(visibleSize / 2.0f));
 
 		for (int index = 0; index < int(next.mapList.size()); index++)

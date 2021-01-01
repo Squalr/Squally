@@ -124,7 +124,8 @@ void TrollInTheDungeon::runChatSequencePt2()
 {
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
-		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
+		this->mage->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->mage).x));
+		this->mage->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords3D(cinematicMarker).x));
 		
 		this->mage->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{

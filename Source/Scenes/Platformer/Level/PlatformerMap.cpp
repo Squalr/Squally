@@ -505,13 +505,6 @@ void PlatformerMap::warpSquallyToRespawn()
 
 void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
-	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
-	{
-		return;
-	}
-
-	this->miniMap->setOpacity(0);
-
 	// Increase ref count so that it is valid when mini-map parses it later
 	if (mapRaw)
 	{
@@ -529,8 +522,6 @@ void PlatformerMap::loadMiniMap(std::string mapResource, cocos_experimental::TMX
 			this->miniMap->loadMapFromTmx(mapResource, mapRaw);
 			mapRaw->release();
 		}
-		
-		this->miniMap->runAction(FadeTo::create(0.25f, 255));
 	}, 15);
 }
 
