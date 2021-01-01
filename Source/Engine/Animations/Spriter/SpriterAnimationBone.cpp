@@ -36,7 +36,6 @@ SpriterAnimationBone* SpriterAnimationBone::create(Size boneSize)
 SpriterAnimationBone::SpriterAnimationBone(Size boneSize)
 {
 	this->boneSize = boneSize;
-	this->boneScale = Vec2::ONE;
 	this->debugDraw = nullptr;
 	this->heirarchyDepth = 0;
 }
@@ -54,43 +53,6 @@ void SpriterAnimationBone::setDebugDrawHeirarchyDepth(int heirarchyDepth)
 		this->redrawDebugDraw();
 	}
 }
-
-/*
-float SpriterAnimationBone::getRotation() const
-{
-	return this->boneRotation;
-}
-
-void SpriterAnimationBone::setRotation(float rotation)
-{
-	this->boneRotation = rotation;
-}
-
-const cocos2d::Vec2& SpriterAnimationBone::getBoneScale() const
-{
-	return this->boneScale;
-}
-
-void SpriterAnimationBone::setScaleX(float scaleX)
-{
-    this->boneScale.x = scaleX;
-
-	if (DeveloperModeController::isDeveloperModeEnabled())
-	{
-		this->redrawDebugDraw();
-	}
-}
-
-void SpriterAnimationBone::setScaleY(float scaleY)
-{
-    this->boneScale.y = scaleY;
-	
-	if (DeveloperModeController::isDeveloperModeEnabled())
-	{
-		this->redrawDebugDraw();
-	}
-}
-*/
 
 void SpriterAnimationBone::onDeveloperModeEnable(int debugLevel)
 {
@@ -122,12 +84,14 @@ void SpriterAnimationBone::redrawDebugDraw()
 
 	this->debugDraw->clear();
 
+	Vec2 fullScale = this->getFullHeirarchyScale();
+
 	// Applying scale on draw is preferred to scaling the draw node, as the w/h can be small values.
 	// The alternative is to draw sub-pixel shapes and try to scale them up, which seems sketchy.
 	this->debugDraw->drawTriangle(
-		Vec2(0.0f, this->boneSize.height / 2.0f * this->boneScale.y),
-		Vec2(0.0f, -this->boneSize.height / 2.0f * this->boneScale.y),
-		Vec2(this->boneSize.width * this->boneScale.x, 0.0f),
+		Vec2(0.0f, this->boneSize.height / 2.0f * fullScale.y),
+		Vec2(0.0f, -this->boneSize.height / 2.0f * fullScale.y),
+		Vec2(this->boneSize.width * fullScale.x, 0.0f),
 		SpriterAnimationBone::DebugColorHeirarchy[this->heirarchyDepth]
 	);
 }

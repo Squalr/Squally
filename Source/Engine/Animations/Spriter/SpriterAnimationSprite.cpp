@@ -35,6 +35,13 @@ void SpriterAnimationSprite::setAnchorPoint(const Vec2& anchorPoint)
 	this->sprite->setAnchorPoint(anchorPoint);
 }
 
+void SpriterAnimationSprite::setHeirarchyScale(const Vec2& scale)
+{
+	super::setHeirarchyScale(scale);
+
+	this->setScale(this->getFullHeirarchyScale());
+}
+
 /*
 void SpriterAnimationSprite::setRotation(float rotation)
 {
@@ -47,32 +54,6 @@ void SpriterAnimationSprite::setRotation(float rotation)
 	}
 
 	super::setRotation(rotation);
-}
-
-void SpriterAnimationSprite::setScaleX(float scaleX)
-{
-	SpriterAnimationBone* parent = GameUtils::getFirstParentOfType<SpriterAnimationBone>(this);
-
-	while (parent != nullptr)
-	{
-		scaleX *= parent->getBoneScale().x;
-		parent = GameUtils::getFirstParentOfType<SpriterAnimationBone>(parent);
-	}
-
-    super::setScaleX(scaleX);
-}
-
-void SpriterAnimationSprite::setScaleY(float scaleY)
-{
-	SpriterAnimationBone* parent = GameUtils::getFirstParentOfType<SpriterAnimationBone>(this);
-
-	while (parent != nullptr)
-	{
-		scaleY *= parent->getBoneScale().y;
-		parent = GameUtils::getFirstParentOfType<SpriterAnimationBone>(parent);
-	}
-
-    super::setScaleY(scaleY);
 }
 
 void SpriterAnimationSprite::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)

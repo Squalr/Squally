@@ -72,55 +72,18 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	const std::map<std::string, SpriterAnimationBone*>& boneMap = animation->getCurrentBoneMap();
 	const std::map<std::string, SpriterAnimationSprite*>& spriteMap = animation->getCurrentSpriteMap();
 
-	// Parent all sprites
-	for (const auto& part : spriteMap)
-	{
-		SpriterAnimationSprite* childSprite = part.second;
-
-		if (this->objectIdMap.find(part.first) != this->objectIdMap.end() && this->objectZMap.find(part.first) != this->objectZMap.end())
-		{
-			int objectId = this->objectIdMap[part.first];
-			int zOrder = this->objectZMap[part.first];
-
-			childSprite->setLocalZOrder(zOrder);
-
-			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
-			{
-				int parentBoneId = this->objectParentTable[objectId];
-
-				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
-				{
-					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
-
-					if (boneMap.find(parentBoneName) != boneMap.end())
-					{
-						SpriterAnimationBone* parentPart = boneMap.at(parentBoneName);
-
-						GameUtils::changeParent(childSprite, parentPart, true);
-						childSprite->setVisible(true);
-						continue;
-					}
-				}
-
-				// No parent -- set to root
-				GameUtils::changeParent(childSprite, animation, true);
-				childSprite->setVisible(true);
-				continue;
-			}
-		}
-
-		// hide / unparent sprite
-		GameUtils::changeParent(childSprite, animation, true);
-		childSprite->setVisible(false);
-	}
+	// Known issue -- bone structures like this fail:
+	//           b
+	//      b         b
+	//    z1, z3      z2
+	// The first bone has sprites of z order 1 and 3, and the second has a z order of two. These conflict in a parent heirarchy chain.
+	// The only solution that would allow for parent heirarchies is to clone the first bone, splitting it into two.
 	
 	// Parent all bones
 	for (const auto& part : boneMap)
 	{
 		SpriterAnimationBone* childBone = part.second;
-
-		// Lazy solution to competing Z order on sibling sprites, bones should render last (BFS)
-		childBone->setLocalZOrder(2048);
+		childBone->setLocalZOrder(2048); // Set to arbitrary high value. Will be adjusted later.
 
 		if (this->boneIdMap.find(part.first) != this->boneIdMap.end())
 		{
@@ -156,6 +119,49 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		// hide / unparent bone
 		GameUtils::changeParent(childBone, animation, true);
 		childBone->setVisible(false);
+	}
+
+	// Parent all sprites
+	for (const auto& part : spriteMap)
+	{
+		SpriterAnimationSprite* childSprite = part.second;
+
+		if (this->objectIdMap.find(part.first) != this->objectIdMap.end() && this->objectZMap.find(part.first) != this->objectZMap.end())
+		{
+			int objectId = this->objectIdMap[part.first];
+			int zOrder = this->objectZMap[part.first];
+
+			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
+			{
+				int parentBoneId = this->objectParentTable[objectId];
+
+				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
+				{
+					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
+
+					if (boneMap.find(parentBoneName) != boneMap.end())
+					{
+						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
+
+						GameUtils::changeParent(childSprite, parentBone, true);
+						parentBone->setLocalZOrder(std::min(parentBone->getLocalZOrder(), zOrder));
+						childSprite->setLocalZOrder(zOrder);
+						childSprite->setVisible(true);
+						continue;
+					}
+				}
+
+				// No parent -- set to root
+				GameUtils::changeParent(childSprite, animation, true);
+				childSprite->setLocalZOrder(zOrder);
+				childSprite->setVisible(true);
+				continue;
+			}
+		}
+
+		// hide / unparent sprite
+		GameUtils::changeParent(childSprite, animation, true);
+		childSprite->setVisible(false);
 	}
 }
 

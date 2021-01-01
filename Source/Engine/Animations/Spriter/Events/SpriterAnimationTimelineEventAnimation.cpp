@@ -90,8 +90,8 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 		if (this->next == nullptr || this->next == this || this->endTime <= this->keytime)
 		{
 			object->setPosition(this->position);
+			//object->setScale(this->scale);
 			object->setAnchorPoint(this->anchor);
-			object->setScale(this->scale);
 			object->setRotation(this->rotation);
 			object->setOpacity(GLubyte(255.0f * this->alpha));
 		}
@@ -101,8 +101,8 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 			float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
 
 			object->setPosition(this->position + (this->next->position - this->position) * timeRatio);
+			//object->setScale(this->scale + (this->next->scale - this->scale) * timeRatio);
 			object->setAnchorPoint(this->anchor + (this->next->anchor - this->anchor) * timeRatio);
-			object->setScale(this->scale + (this->next->scale - this->scale) * timeRatio);
 			object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
 			object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
 		}

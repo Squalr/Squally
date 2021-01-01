@@ -87,6 +87,17 @@ public:
 	}
 
 	template <class T>
+	static T* getParentAsType(cocos2d::Node *node)
+	{
+		if (node == nullptr)
+		{
+			return nullptr;
+		}
+
+		return dynamic_cast<T*>(node->getParent());
+	}
+
+	template <class T>
 	static T* getFirstParentOfType(cocos2d::Node *node, bool includeTarget = false)
 	{
 		if (node != nullptr && !includeTarget)
