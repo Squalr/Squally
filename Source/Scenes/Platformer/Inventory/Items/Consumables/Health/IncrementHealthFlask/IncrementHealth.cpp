@@ -77,8 +77,8 @@ void IncrementHealth::onEnter()
 void IncrementHealth::initializePositions()
 {
 	super::initializePositions();
-
-	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
+	
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 12.0f);
 }
 
 void IncrementHealth::registerHackables()

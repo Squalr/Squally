@@ -53,11 +53,13 @@ private:
 	bool originalToggleValue;
 	bool isToggledOn;
 	bool isOneUse;
+	bool isGlobalSave;
 	float cooldown;
 	std::string saveKey;
 
 	static const std::string PropertyIsOn;
 	static const std::string PropertyIsOneUse;
 	static const std::string PropertyIsInteractable;
+	static const std::string PropertyIsGlobalSave;
 	static const std::string PropertySaveKey;
 };

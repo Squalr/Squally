@@ -113,6 +113,7 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="is-one-use" type="bool" value="true"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
@@ -122,6 +123,7 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="is-one-use" type="bool" value="true"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>

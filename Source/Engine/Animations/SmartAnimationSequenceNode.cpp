@@ -37,7 +37,8 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(const std::string& defaul
 	this->repeatIndex = 0;
 	this->isFlippedX = false;
 	this->isFlippedY = false;
-	
+	this->animationAnchor = this->sprite->getAnchorPoint();
+
 	SmartAnimationSequenceNode::PrimeCache(this->defaultSprite);
 
 	this->addChild(this->sprite);
@@ -275,7 +276,8 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector
 
 void SmartAnimationSequenceNode::setAnimationAnchor(Vec2 anchor)
 {
-	this->sprite->setAnchorPoint(anchor);
+	this->animationAnchor = anchor;
+	this->sprite->setAnchorPoint(this->animationAnchor);
 }
 
 void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)
@@ -295,6 +297,7 @@ void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImag
 	this->sprite->initWithFile(spriteImage);
 	this->sprite->setFlippedX(this->isFlippedX);
 	this->sprite->setFlippedY(this->isFlippedY);
+	this->sprite->setAnchorPoint(this->animationAnchor);
 }
 
 int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSequenceResourceFile)

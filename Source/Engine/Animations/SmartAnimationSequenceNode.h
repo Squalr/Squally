@@ -47,6 +47,7 @@ private:
 
 	void setNewSpriteImage(const std::string& spriteImage);
 
+	cocos2d::Vec2 animationAnchor;
 	bool isFlippedX;
 	bool isFlippedY;
 	std::string defaultSprite;

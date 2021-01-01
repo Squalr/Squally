@@ -3,6 +3,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -10,6 +11,7 @@ using namespace cocos2d;
 const std::string ToggleableObject::PropertyIsOn = "is-on";
 const std::string ToggleableObject::PropertyIsOneUse = "is-one-use";
 const std::string ToggleableObject::PropertyIsInteractable = "interactable";
+const std::string ToggleableObject::PropertyIsGlobalSave = "is-global-save";
 const std::string ToggleableObject::PropertySaveKey = "save-key";
 
 ToggleableObject::ToggleableObject(
@@ -36,6 +38,7 @@ ToggleableObject::ToggleableObject(
 	this->originalToggleValue = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsOn, Value(true)).asBool();
 	this->isToggledOn = this->originalToggleValue;
 	this->isOneUse = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsOneUse, Value(true)).asBool();
+	this->isGlobalSave = GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsGlobalSave, Value(true)).asBool();
 	this->isCulled = false;
 	this->cooldown = 0.0f;
 
@@ -66,7 +69,14 @@ void ToggleableObject::onEnter()
 	// Overwrite default value if we have one saved
 	if (!this->saveKey.empty())
 	{
-		this->isToggledOn = this->loadObjectStateOrDefault(this->saveKey, Value(this->isOn())).asBool();
+		if (this->isGlobalSave)
+		{
+			this->isToggledOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->isOn())).asBool();
+		}
+		else
+		{
+			this->isToggledOn = this->loadObjectStateOrDefault(this->saveKey, Value(this->isOn())).asBool();
+		}
 	}
 	
 	// Run the events for enable/disable (passing in a flag indicating this is an initialization)
@@ -126,7 +136,14 @@ void ToggleableObject::onToggle()
 
 	if (!this->saveKey.empty())
 	{
-		this->saveObjectState(this->saveKey, Value(this->isOn()));
+		if (this->isGlobalSave)
+		{
+			SaveManager::SaveProfileData(this->saveKey, Value(this->isOn()));
+		}
+		else
+		{
+			this->saveObjectState(this->saveKey, Value(this->isOn()));
+		}
 	}
 
 	if (this->isOneUse && this->isOn() != this->originalToggleValue)
