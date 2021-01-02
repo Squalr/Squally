@@ -33,7 +33,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	: super(timeline, float(animationKey.time), endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
 {
 	this->partName = keyParent.name;
-	this->next = nullptr;
+	this->next = this;
 
 	// Read in spriter data, mapping rotation/anchors to cocos space
 	switch(animationKey.objectType)
@@ -75,8 +75,6 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 	super::advance(animation);
 
 	SpriterAnimationPart* object = animation->getPartById(this->partName);
-	SpriterAnimationBone* bone = animation->getBoneById(this->partName);
-	SpriterAnimationSprite* sprite = animation->getSpriteById(this->partName);
 
 	if (object == nullptr || this->endTime < 0.0f)
 	{
@@ -87,25 +85,14 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 	
 	if (currentTime >= this->keytime && currentTime < this->endTime)
 	{
-		if (this->next == nullptr || this->next == this || this->endTime <= this->keytime)
-		{
-			object->setRelativePosition(this->position);
-			object->setHeirarchyScale(this->scale);
-			object->setAnchorPoint(this->anchor);
-			object->setRotation(this->rotation);
-			object->setOpacity(GLubyte(255.0f * this->alpha));
-		}
-		else
-		{
-			// TODO: Use curve functions to transform the time ratio, this is linear right now
-			float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
+		// TODO: Use curve functions to transform the time ratio, this is linear right now
+		float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
 
-			object->setRelativePosition(this->position + (this->next->position - this->position) * timeRatio);
-			object->setHeirarchyScale(this->scale + (this->next->scale - this->scale) * timeRatio);
-			object->setAnchorPoint(this->anchor + (this->next->anchor - this->anchor) * timeRatio);
-			object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
-			object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
-		}
+		object->setRelativePosition(this->position + (this->next->position - this->position) * timeRatio);
+		object->setHeirarchyScale(this->scale + (this->next->scale - this->scale) * timeRatio);
+		object->setAnchorPoint(this->anchor + (this->next->anchor - this->anchor) * timeRatio);
+		object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
+		object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
 	}
 }
 

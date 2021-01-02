@@ -13,6 +13,7 @@ public:
 
 protected:
 	friend class SpriterAnimationTimeline;
+	friend class SpriterAnimationTimelineEventMainline;
 
 	SpriterAnimationPart();
 	virtual ~SpriterAnimationPart();

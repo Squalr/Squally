@@ -35,12 +35,12 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->initialized = false;
 	this->currentAnimation = "";
 	this->currentAnimationPriority = -1.0f;
-	// this->spriterAnimation = SpriterAnimationNode::create(animationResource);
+	this->spriterAnimation = SpriterAnimationNode::create(animationResource);
 
-	// animationNode->setPosition(Vec2(256.0f, 256.0f));
+	animationNode->setPosition(Vec2(256.0f, -0.0f));
 
 	this->addChild(this->animationNode);
-	// this->addChild(this->spriterAnimation);
+	this->addChild(this->spriterAnimation);
 }
 
 SmartAnimationNode::~SmartAnimationNode()
@@ -75,6 +75,11 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 	}
 
 	this->currentAnimationPriority = animParams.priority;
+
+	if (this->spriterAnimation != nullptr)
+	{
+		this->spriterAnimation->playAnimation(animationName);
+	}
 	
 	if (this->entity->hasAnimation(animationName))
 	{
@@ -169,21 +174,41 @@ void SmartAnimationNode::restoreAnimationPart(std::string partName)
 
 void SmartAnimationNode::setFlippedX(bool flippedX)
 {
+	if (this->animationNode == nullptr)
+	{
+		return;
+	}
+
 	this->animationNode->setFlippedX(flippedX);
 }
 
 void SmartAnimationNode::setFlippedY(bool flippedY)
 {
+	if (this->animationNode == nullptr)
+	{
+		return;
+	}
+	
 	this->animationNode->setFlippedY(flippedY);
 }
 
 bool SmartAnimationNode::getFlippedX()
 {
+	if (this->animationNode == nullptr)
+	{
+		return false;
+	}
+	
 	return this->animationNode->getFlippedX();
 }
 
 bool SmartAnimationNode::getFlippedY()
 {
+	if (this->animationNode == nullptr)
+	{
+		return false;
+	}
+	
 	return this->animationNode->getFlippedY();
 }
 
@@ -199,10 +224,20 @@ std::string SmartAnimationNode::getAnimationResource()
 
 void SmartAnimationNode::disableRender()
 {
+	if (this->animationNode == nullptr)
+	{
+		return;
+	}
+
 	this->animationNode->disableRender();
 }
 
 void SmartAnimationNode::enableRender()
 {
+	if (this->animationNode == nullptr)
+	{
+		return;
+	}
+	
 	this->animationNode->enableRender();
 }

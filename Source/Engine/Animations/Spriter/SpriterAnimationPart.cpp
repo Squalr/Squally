@@ -40,11 +40,9 @@ void SpriterAnimationPart::cascadeScales(Vec2 scale)
 
 void SpriterAnimationPart::addAnimationPartChild(SpriterAnimationPart* part)
 {
-    GameUtils::changeParent(part, nullptr, false);
-
     this->childAnimationParts.push_back(part);
-
-    this->addChild(part);
+    
+    GameUtils::changeParent(part, this, false);
 }
 
 void SpriterAnimationPart::clearAnimationPartChildren()
