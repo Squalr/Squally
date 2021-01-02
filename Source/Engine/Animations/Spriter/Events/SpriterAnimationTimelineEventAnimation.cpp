@@ -9,6 +9,7 @@
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 #include "Engine/Animations/Spriter/SpriterAnimationSprite.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
@@ -34,6 +35,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 {
 	this->partName = keyParent.name;
 	this->next = this;
+	this->spin = animationKey.spin;
 
 	// Read in spriter data, mapping rotation/anchors to cocos space
 	switch(animationKey.objectType)
@@ -43,8 +45,8 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 			this->position = animationKey.bone.position;
 			this->anchor = Vec2::ZERO;
 			this->scale = animationKey.bone.scale;
-			this->rotation = animationKey.bone.angle * -1.0f;
-			this->alpha = animationKey.bone.alpha;
+			this->rotation = MathUtils::wrappingNormalize(animationKey.bone.angle * -1.0f, 0.0f, 360.0f);
+			this->alpha = animationKey.bone.alpha * 255.0f;
 			break;
 		}
 		default:
@@ -53,11 +55,17 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 			this->position = animationKey.object.position;
 			this->anchor = animationKey.object.anchor;
 			this->scale = animationKey.object.scale;
-			this->rotation = animationKey.object.angle * -1.0f;
-			this->alpha = animationKey.object.alpha;
+			this->rotation = MathUtils::wrappingNormalize(animationKey.object.angle * -1.0f, 0.0f, 360.0f);
+			this->alpha = animationKey.object.alpha * 255.0f;
 			break;
 		}
 	}
+	
+	this->deltaPosition = Vec2::ZERO;
+	this->deltaAnchor = Vec2::ZERO;
+	this->deltaScale = Vec2::ZERO;
+	this->deltaRotation = 0.0f;
+	this->deltaAlpha = 0.0f;
 }
 
 SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::getNext()
@@ -67,7 +75,15 @@ SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::
 
 void SpriterAnimationTimelineEventAnimation::setNext(SpriterAnimationTimelineEventAnimation* next)
 {
-	this->next = next;
+	this->next = (next == nullptr ? this : next);
+	
+	this->deltaPosition = this->next->position - this->position;
+	this->deltaAnchor = this->next->anchor - this->anchor;
+	this->deltaScale = this->next->scale - this->scale;
+	// Modified shortest-rotation algorithm from https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
+	// Key difference is that I add 540 (360 + 180) then wrap to avoid having to worry about large negative values
+	this->deltaRotation = MathUtils::wrappingNormalize((this->next->rotation - this->rotation + 540.0f), 0.0f, 360.0f) - 180.0f;
+	this->deltaAlpha = this->next->alpha - this->alpha;
 }
 
 void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
@@ -88,11 +104,11 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 		// TODO: Use curve functions to transform the time ratio, this is linear right now
 		float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
 
-		object->setRelativePosition(this->position + (this->next->position - this->position) * timeRatio);
-		object->setHeirarchyScale(this->scale + (this->next->scale - this->scale) * timeRatio);
-		object->setAnchorPoint(this->anchor + (this->next->anchor - this->anchor) * timeRatio);
-		object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
-		object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
+		object->setRelativePosition(this->position + this->deltaPosition * timeRatio);
+		object->setAnchorPoint(this->anchor + this->deltaAnchor * timeRatio);
+		object->setHeirarchyScale(this->scale + this->deltaScale * timeRatio);
+		object->setRotation(this->rotation + this->deltaRotation * timeRatio);
+		object->setOpacity(GLubyte(this->alpha + this->deltaAlpha * timeRatio));
 	}
 }
 

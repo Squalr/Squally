@@ -134,7 +134,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				// Sort by time ascending
 				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
 				{ 
-					return a.time > b.time; 
+					return a.time < b.time; 
 				});
 
 				std::vector<SpriterAnimationTimelineEventAnimation*> eventsToAdd = std::vector<SpriterAnimationTimelineEventAnimation*>(filteredKeys.size());

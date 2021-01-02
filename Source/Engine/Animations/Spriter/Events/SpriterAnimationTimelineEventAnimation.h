@@ -39,6 +39,12 @@ private:
 	cocos2d::Vec2 scale;
 	float rotation;
 	float alpha;
-	
+	int spin;
 	float speed;
+
+	cocos2d::Vec2 deltaPosition;
+	cocos2d::Vec2 deltaAnchor;
+	cocos2d::Vec2 deltaScale;
+	float deltaRotation;
+	float deltaAlpha;
 };
