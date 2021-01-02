@@ -13,13 +13,14 @@ public:
 	static SpriterAnimationSprite* create(std::string spriteResource, cocos2d::Vec2 anchor);
 	
     void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
-    void setHeirarchyScale(const cocos2d::Vec2& scale) override;
 	void setDebugDrawHeirarchyDepth();
 	void setDebugDrawBoneScale();
 
 protected:
 	SpriterAnimationSprite(std::string spriteResource, cocos2d::Vec2 anchor);
 	virtual ~SpriterAnimationSprite();
+	
+	void cascadeScales(cocos2d::Vec2 scale = cocos2d::Vec2::ONE) override;
 
 private:
 	typedef SpriterAnimationPart super;

@@ -20,8 +20,6 @@ const std::vector<Color4F> SpriterAnimationBone::DebugColorHeirarchy = std::vect
 	Color4F(Color4B(205, 207, 223, 255)),
 	Color4F(Color4B(230, 231, 239, 255)),
 	Color4F(Color4B(255, 255, 255, 255)),
-
-	
 };
 
 SpriterAnimationBone* SpriterAnimationBone::create(Size boneSize)
@@ -84,14 +82,12 @@ void SpriterAnimationBone::redrawDebugDraw()
 
 	this->debugDraw->clear();
 
-	Vec2 fullScale = this->getFullHeirarchyScale();
-
 	// Applying scale on draw is preferred to scaling the draw node, as the w/h can be small values.
 	// The alternative is to draw sub-pixel shapes and try to scale them up, which seems sketchy.
 	this->debugDraw->drawTriangle(
-		Vec2(0.0f, this->boneSize.height / 2.0f * fullScale.y),
-		Vec2(0.0f, -this->boneSize.height / 2.0f * fullScale.y),
-		Vec2(this->boneSize.width * fullScale.x, 0.0f),
+		Vec2(0.0f, this->boneSize.height / 2.0f * this->_scaleY),
+		Vec2(0.0f, -this->boneSize.height / 2.0f * this->_scaleY),
+		Vec2(this->boneSize.width * this->_scaleX, 0.0f),
 		SpriterAnimationBone::DebugColorHeirarchy[this->heirarchyDepth]
 	);
 }

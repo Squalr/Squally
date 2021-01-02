@@ -89,8 +89,8 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 	{
 		if (this->next == nullptr || this->next == this || this->endTime <= this->keytime)
 		{
-			object->setPosition(this->position);
-			//object->setScale(this->scale);
+			object->setRelativePosition(this->position);
+			object->setHeirarchyScale(this->scale);
 			object->setAnchorPoint(this->anchor);
 			object->setRotation(this->rotation);
 			object->setOpacity(GLubyte(255.0f * this->alpha));
@@ -100,8 +100,8 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 			// TODO: Use curve functions to transform the time ratio, this is linear right now
 			float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
 
-			object->setPosition(this->position + (this->next->position - this->position) * timeRatio);
-			//object->setScale(this->scale + (this->next->scale - this->scale) * timeRatio);
+			object->setRelativePosition(this->position + (this->next->position - this->position) * timeRatio);
+			object->setHeirarchyScale(this->scale + (this->next->scale - this->scale) * timeRatio);
 			object->setAnchorPoint(this->anchor + (this->next->anchor - this->anchor) * timeRatio);
 			object->setRotation(this->rotation + (this->next->rotation - this->rotation) * timeRatio);
 			object->setOpacity(GLubyte(255.0f * (this->alpha + (this->next->alpha - this->alpha) * timeRatio)));
@@ -111,5 +111,5 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 
 void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animation)
 {
-	// Not useful for animation nodes, the "event" is actually fired gradually as the event advances
+	// Empty for animation nodes, the "event" is actually fired gradually as the event advances
 }

@@ -6,18 +6,24 @@
 class SpriterAnimationPart : public SmartNode
 {
 public:
-	int getId() const;
-
-	virtual void setHeirarchyScale(const cocos2d::Vec2& scale);
-	cocos2d::Vec2 getHeirarchyScale();
-	cocos2d::Vec2 getFullHeirarchyScale();
+	void setRelativePosition(const cocos2d::Vec2& relativePosition);
+	void setHeirarchyScale(const cocos2d::Vec2& scale);
+	void addAnimationPartChild(SpriterAnimationPart* part);
+	void clearAnimationPartChildren();
 
 protected:
+	friend class SpriterAnimationTimeline;
+
 	SpriterAnimationPart();
 	virtual ~SpriterAnimationPart();
+
+	virtual void cascadeScales(cocos2d::Vec2 scale = cocos2d::Vec2::ONE);
+	
+	cocos2d::Vec2 heirarchyScale;
 	
 private:
 	typedef SmartNode super;
 
-	cocos2d::Vec2 heirarchyScale;
+	std::vector<SpriterAnimationPart*> childAnimationParts;
+	cocos2d::Vec2 relativePosition;
 };

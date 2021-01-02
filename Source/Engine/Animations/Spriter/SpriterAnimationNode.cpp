@@ -31,7 +31,6 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 	this->boneIdMap = std::map<int, SpriterAnimationBone*>();
 	this->sprites = std::map<std::string, std::map<std::string, SpriterAnimationSprite*>>();
 	this->spriteIdMap = std::map<int, SpriterAnimationSprite*>();
-	this->animationPartContainer = Node::create();
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
 	this->isRepeating = true;
 	this->currentEntityName = SpriterAnimationNode::DefaultAnimationEntityName;
@@ -45,8 +44,6 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 
 	this->buildBones(spriterData);
 	this->buildSprites(spriterData, animationResource);
-
-	this->addChild(this->animationPartContainer);
 }
 
 SpriterAnimationNode::~SpriterAnimationNode()
@@ -123,7 +120,7 @@ void SpriterAnimationNode::resetAnimation()
 
 void SpriterAnimationNode::setFlippedX(bool isFlippedX)
 {
-	// TODO
+	this->setScaleX(isFlippedX ? 1.0f : -1.0f);
 }
 
 const std::string& SpriterAnimationNode::getCurrentEntityName()
@@ -167,7 +164,7 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 				SpriterAnimationBone* bone = SpriterAnimationBone::create(objectInfo.size);
 
 				this->bones[entity.name][objectInfo.name] = bone;
-				this->animationPartContainer->addChild(bone);
+				this->addAnimationPartChild(bone);
 			}
 		}
 	}
@@ -216,12 +213,12 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					// Creation was deferred until now rather than during the folder/file id map building, since we needed a timeline id
 					// As far as I can tell, timeline ids are the same for all references of an object.
-					SpriterAnimationSprite* part = SpriterAnimationSprite::create(containingFolder + folderFileIdMap[folderFileKey], anchorMap[folderFileKey]);
+					SpriterAnimationSprite* sprite = SpriterAnimationSprite::create(containingFolder + folderFileIdMap[folderFileKey], anchorMap[folderFileKey]);
 					
-					this->animationPartContainer->addChild(part);
+					this->addAnimationPartChild(sprite);
 
-					this->sprites[entity.name][timeline.name] = part;
-					this->spriteIdMap[timeline.id] = part;
+					this->sprites[entity.name][timeline.name] = sprite;
+					this->spriteIdMap[timeline.id] = sprite;
 
 					// Erase the key to ensure we only create the sprite once
 					folderFileIdMap.erase(folderFileKey);

@@ -76,8 +76,20 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	//           b
 	//      b         b
 	//    z1, z3      z2
-	// The first bone has sprites of z order 1 and 3, and the second has a z order of two. These conflict in a parent heirarchy chain.
+	// The first bone has sprites of z order 1 and 3, and the second has a z order of 2. These conflict in a parent heirarchy chain.
 	// The only solution that would allow for parent heirarchies is to clone the first bone, splitting it into two.
+
+	for (const auto& part : boneMap)
+	{
+		SpriterAnimationBone* childBone = part.second;
+		childBone->clearAnimationPartChildren();
+	}
+
+	for (const auto& part : spriteMap)
+	{
+		SpriterAnimationSprite* childSprite = part.second;
+		childSprite->clearAnimationPartChildren();
+	}
 	
 	// Parent all bones
 	for (const auto& part : boneMap)
@@ -101,7 +113,7 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 					{
 						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
-						GameUtils::changeParent(childBone, parentBone, true);
+						parentBone->addAnimationPartChild(childBone);
 						childBone->setDebugDrawHeirarchyDepth(this->getBoneDepth(boneId));
 						childBone->setVisible(true);
 						continue;
@@ -109,7 +121,7 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 				}
 
 				// No parent -- set to root
-				GameUtils::changeParent(childBone, animation, true);
+				animation->addAnimationPartChild(childBone);
 				childBone->setDebugDrawHeirarchyDepth(this->getBoneDepth(boneId));
 				childBone->setVisible(true);
 				continue;
@@ -117,7 +129,7 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		}
 
 		// hide / unparent bone
-		GameUtils::changeParent(childBone, animation, true);
+		animation->addAnimationPartChild(childBone);
 		childBone->setVisible(false);
 	}
 
@@ -143,7 +155,7 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 					{
 						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
-						GameUtils::changeParent(childSprite, parentBone, true);
+						parentBone->addAnimationPartChild(childSprite);
 						parentBone->setLocalZOrder(std::min(parentBone->getLocalZOrder(), zOrder));
 						childSprite->setLocalZOrder(zOrder);
 						childSprite->setVisible(true);
@@ -152,7 +164,7 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 				}
 
 				// No parent -- set to root
-				GameUtils::changeParent(childSprite, animation, true);
+				animation->addAnimationPartChild(childSprite);
 				childSprite->setLocalZOrder(zOrder);
 				childSprite->setVisible(true);
 				continue;
@@ -160,7 +172,7 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		}
 
 		// hide / unparent sprite
-		GameUtils::changeParent(childSprite, animation, true);
+		animation->addAnimationPartChild(childSprite);
 		childSprite->setVisible(false);
 	}
 }

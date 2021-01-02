@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos/base/CCValue.h"
 
-#include "Engine/SmartNode.h"
+#include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 
 #include "Engine/Animations/Spriter/SpriterStructs.h"
 
@@ -15,7 +15,7 @@ class SpriterAnimationPart;
 class SpriterAnimationSprite;
 class SpriterAnimationTimeline;
 
-class SpriterAnimationNode : public SmartNode
+class SpriterAnimationNode : public SpriterAnimationPart
 {
 public:
 	static SpriterAnimationNode* create(const std::string& animationResource);
@@ -34,15 +34,14 @@ public:
 	const std::string& getCurrentAnimation();
 	const std::map<std::string, SpriterAnimationBone*>& getCurrentBoneMap();
 	const std::map<std::string, SpriterAnimationSprite*>& getCurrentSpriteMap();
+	void setFlippedX(bool isFlippedX);
 
 protected:
 	SpriterAnimationNode(const std::string& animationResource);
 	virtual ~SpriterAnimationNode();
 
-	void setFlippedX(bool isFlippedX);
-
 private:
-	typedef SmartNode super;
+	typedef SpriterAnimationPart super;
 
 	SpriterAnimationTimeline* timeline;
 
@@ -56,8 +55,6 @@ private:
 
 	void buildBones(const SpriterData& spriterData);
 	void buildSprites(const SpriterData& spriterData, const std::string& animationResource);
-	
-	cocos2d::Node* animationPartContainer;
 
 	std::string currentEntityName;
 	std::string currentAnimation;

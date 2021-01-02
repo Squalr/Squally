@@ -35,54 +35,9 @@ void SpriterAnimationSprite::setAnchorPoint(const Vec2& anchorPoint)
 	this->sprite->setAnchorPoint(anchorPoint);
 }
 
-void SpriterAnimationSprite::setHeirarchyScale(const Vec2& scale)
+void SpriterAnimationSprite::cascadeScales(cocos2d::Vec2 scale)
 {
-	super::setHeirarchyScale(scale);
+	super::cascadeScales(scale);
 
-	this->setScale(this->getFullHeirarchyScale());
+	this->sprite->setScale(scale * this->heirarchyScale);
 }
-
-/*
-void SpriterAnimationSprite::setRotation(float rotation)
-{
-	SpriterAnimationBone* parent = GameUtils::getFirstParentOfType<SpriterAnimationBone>(this);
-
-	while (parent != nullptr)
-	{
-		rotation += parent->getRotation();
-		parent = GameUtils::getFirstParentOfType<SpriterAnimationBone>(parent);
-	}
-
-	super::setRotation(rotation);
-}
-
-void SpriterAnimationSprite::visit(Renderer* renderer, const Mat4& parentTransform, uint32_t parentFlags)
-{
-    _selfFlags |= parentFlags;
-
-    // quick return if not visible. children won't be drawn.
-    if (!_visible || (_displayedOpacity == 0 && _cascadeOpacityEnabled))
-    {
-        return;
-    }
-    
-    if(_selfFlags & FLAGS_DIRTY_MASK)
-    {
-        _modelViewTransform = parentTransform * getNodeToParentTransform();
-    }
-
-    // self draw
-    this->draw(renderer, _modelViewTransform, _selfFlags);
-
-    const int size = _children.size();
-
-    this->sortAllChildren();
-
-    for (int index = 0; index < size; index++)
-    {
-        _children[index]->visit(renderer, _modelViewTransform, _selfFlags);
-    }
-
-	_selfFlags = 0;
-}
-*/

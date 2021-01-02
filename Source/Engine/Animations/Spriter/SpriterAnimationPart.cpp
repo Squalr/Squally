@@ -6,6 +6,7 @@ using namespace cocos2d;
 
 SpriterAnimationPart::SpriterAnimationPart()
 {
+	this->childAnimationParts = std::vector<SpriterAnimationPart*>();
     this->heirarchyScale = Vec2::ONE;
 }
 
@@ -13,20 +14,40 @@ SpriterAnimationPart::~SpriterAnimationPart()
 {
 }
 
+void SpriterAnimationPart::setRelativePosition(const Vec2& relativePosition)
+{
+    this->relativePosition = relativePosition;
+
+    this->setPosition(this->relativePosition);
+}
+
 void SpriterAnimationPart::setHeirarchyScale(const Vec2& scale)
 {
     this->heirarchyScale = scale;
 }
 
-Vec2 SpriterAnimationPart::getHeirarchyScale()
+void SpriterAnimationPart::cascadeScales(Vec2 scale)
 {
-    return this->heirarchyScale;
+    this->setPosition(this->relativePosition * scale);
+
+    scale *= this->heirarchyScale;
+
+	for (SpriterAnimationPart* child : this->childAnimationParts)
+	{
+		child->cascadeScales(scale);
+	}
 }
 
-Vec2 SpriterAnimationPart::getFullHeirarchyScale()
+void SpriterAnimationPart::addAnimationPartChild(SpriterAnimationPart* part)
 {
-    SpriterAnimationPart* parent = GameUtils::getParentAsType<SpriterAnimationPart>(this);
-    Vec2 parentScale = (parent == nullptr ? Vec2::ONE : parent->getFullHeirarchyScale());
+    GameUtils::changeParent(part, nullptr, false);
 
-    return Vec2(this->heirarchyScale.x * parentScale.x, this->heirarchyScale.y * parentScale.y);
+    this->childAnimationParts.push_back(part);
+
+    this->addChild(part);
+}
+
+void SpriterAnimationPart::clearAnimationPartChildren()
+{
+    this->childAnimationParts.clear();
 }

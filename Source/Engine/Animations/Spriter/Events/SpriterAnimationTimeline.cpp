@@ -47,7 +47,7 @@ void SpriterAnimationTimeline::update(float dt)
 {
 	super::update(dt);
 
-	for (auto animationNode : this->registeredAnimationNodes)
+	for (SpriterAnimationNode* animationNode : this->registeredAnimationNodes)
 	{
 		const std::string& entityName = animationNode->getCurrentEntityName();
 		const std::string& animationName = animationNode->getCurrentAnimation();
@@ -62,16 +62,18 @@ void SpriterAnimationTimeline::update(float dt)
 		animationNode->advanceTimelineTime(dt, this->mainlineEvents[entityName][animationName].back()->getEndTime());
 
 		// Process all mainline events (heirarchy, z-sorting, global interpolation type)
-		for (auto mainlineEvent : this->mainlineEvents[entityName][animationName])
+		for (SpriterAnimationTimelineEventMainline* mainlineEvent : this->mainlineEvents[entityName][animationName])
 		{
 			mainlineEvent->advance(animationNode);
 		}
 
 		// Process all animation events (position, scale, rotation, local interpolation type)
-		for (auto animationEvent : this->animationEvents[entityName][animationName])
+		for (SpriterAnimationTimelineEventAnimation* animationEvent : this->animationEvents[entityName][animationName])
 		{
 			animationEvent->advance(animationNode);
 		}
+
+		animationNode->cascadeScales();
 	}
 }
 
@@ -87,9 +89,9 @@ void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* ani
 
 void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 {
-	for (const auto& entity : spriterData.entities)
+	for (const SpriterEntity& entity : spriterData.entities)
 	{
-		for (const auto& animation : entity.animations)
+		for (const SpriterAnimation& animation : entity.animations)
 		{
 			// There exists a 'key' property on bone/obj refs that maps to a timeline key at a given time.
 			// Painfully, there can be extraneous info in the timeilne that we need to ignore if it references a value that does not exist in this set.
