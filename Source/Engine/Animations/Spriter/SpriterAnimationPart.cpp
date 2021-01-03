@@ -14,30 +14,6 @@ SpriterAnimationPart::~SpriterAnimationPart()
 {
 }
 
-void SpriterAnimationPart::setRelativePosition(const Vec2& relativePosition)
-{
-    this->relativePosition = relativePosition;
-
-    this->setPosition(this->relativePosition);
-}
-
-void SpriterAnimationPart::setHeirarchyScale(const Vec2& scale)
-{
-    this->heirarchyScale = scale;
-}
-
-void SpriterAnimationPart::cascadeScales(Vec2 scale)
-{
-    this->setPosition(this->relativePosition * scale);
-
-    scale *= this->heirarchyScale;
-
-	for (SpriterAnimationPart* child : this->childAnimationParts)
-	{
-		child->cascadeScales(scale);
-	}
-}
-
 void SpriterAnimationPart::addAnimationPartChild(SpriterAnimationPart* part)
 {
     this->childAnimationParts.push_back(part);

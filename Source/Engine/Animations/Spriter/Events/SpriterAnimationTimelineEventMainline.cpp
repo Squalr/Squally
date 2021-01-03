@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"
+#include "Engine/Animations/Spriter/Events/SpriterAnimationTimelineEventAnimation.h"
 #include "Engine/Animations/Spriter/SpriterAnimationBone.h"
 #include "Engine/Animations/Spriter/SpriterAnimationNode.h"
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
@@ -29,6 +30,8 @@ SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(Spr
 	this->objectNameMap = std::map<int, std::string>();
 	this->boneIdMap = std::map<std::string, int>();
 	this->objectIdMap = std::map<std::string, int>();
+	this->registeredAnimationEventsByPartName = std::map<std::string, SpriterAnimationTimelineEventAnimation*>();
+	this->roots = std::vector<SpriterAnimationTimelineEventAnimation*>();
 
 	for (auto boneRef : mainlineKey.boneRefs)
 	{
@@ -62,9 +65,9 @@ SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(Spr
 	}
 }
 
-void SpriterAnimationTimelineEventMainline::onEnter()
+void SpriterAnimationTimelineEventMainline::registerAnimation(SpriterAnimationTimelineEventAnimation* animationEvent)
 {
-	super::onEnter();
+	this->registeredAnimationEventsByPartName[animationEvent->getPartName()] = animationEvent;
 }
 
 void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animation)
@@ -174,6 +177,78 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		// hide / unparent sprite
 		animation->addAnimationPartChild(childSprite);
 		childSprite->setVisible(false);
+	}
+}
+
+void SpriterAnimationTimelineEventMainline::buildAnimationHeirarchy()
+{
+	for (const auto& [key, animationEvent] : this->registeredAnimationEventsByPartName)
+	{
+		animationEvent->clearCascadeChildren();
+	}
+	
+	// Parent all timeline events
+	for (const auto& [childObjectName, animationEvent] : this->registeredAnimationEventsByPartName)
+	{
+		if (this->boneIdMap.contains(childObjectName) && this->registeredAnimationEventsByPartName.contains(childObjectName))
+		{
+			int boneId = this->boneIdMap[childObjectName];
+
+			if (this->boneParentTable.contains(boneId))
+			{
+				int parentBoneId = this->boneParentTable[boneId];
+
+				if (this->boneNameMap.contains(parentBoneId))
+				{
+					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
+
+					if (registeredAnimationEventsByPartName.contains(parentBoneName))
+					{
+						SpriterAnimationTimelineEventAnimation* parentEvent = this->registeredAnimationEventsByPartName[parentBoneName];
+
+						parentEvent->addCascadeChild(animationEvent);
+						continue;
+					}
+				}
+			}
+		}
+		else if (this->objectIdMap.contains(childObjectName) && this->registeredAnimationEventsByPartName.contains(childObjectName))
+		{
+			int objectId = this->objectIdMap[childObjectName];
+
+			if (this->objectParentTable.contains(objectId))
+			{
+				int parentBoneId = this->objectParentTable[objectId];
+
+				if (this->boneNameMap.contains(parentBoneId))
+				{
+					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
+
+					if (registeredAnimationEventsByPartName.contains(parentBoneName))
+					{
+						SpriterAnimationTimelineEventAnimation* parentEvent = this->registeredAnimationEventsByPartName[parentBoneName];
+
+						parentEvent->addCascadeChild(animationEvent);
+						continue;
+					}
+				}
+			}
+		}
+
+		this->roots.push_back(animationEvent);
+	}
+
+	for (SpriterAnimationTimelineEventAnimation* next : this->roots)
+	{
+		next->cascade();
+	}
+}
+
+void SpriterAnimationTimelineEventMainline::buildDeltas()
+{
+	for (SpriterAnimationTimelineEventAnimation* next : this->roots)
+	{
+		next->computeDeltas();
 	}
 }
 

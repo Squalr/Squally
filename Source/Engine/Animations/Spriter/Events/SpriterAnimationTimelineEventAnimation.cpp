@@ -37,6 +37,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	this->next = this;
 	this->spin = animationKey.spin;
 	this->hasNoAnimationChanges = false;
+	this->cascadeChildren = std::vector<SpriterAnimationTimelineEventAnimation*>();
 	
 	std::hash<std::string> hasher = std::hash<std::string>();
 	size_t hash = hasher(this->partName);
@@ -74,6 +75,16 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	this->deltaAlpha = 0.0f;
 }
 
+int SpriterAnimationTimelineEventAnimation::getPartHash()
+{
+	return this->partHash;
+}
+
+const std::string& SpriterAnimationTimelineEventAnimation::getPartName()
+{
+	return this->partName;
+}
+
 SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::getNext()
 {
 	return this->next;
@@ -82,20 +93,6 @@ SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::
 void SpriterAnimationTimelineEventAnimation::setNext(SpriterAnimationTimelineEventAnimation* next)
 {
 	this->next = (next == nullptr ? this : next);
-	
-	this->deltaPosition = this->next->position - this->position;
-	this->deltaAnchor = this->next->anchor - this->anchor;
-	this->deltaScale = this->next->scale - this->scale;
-	// Modified shortest-rotation algorithm from https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
-	// Key difference is that I add 540 (360 + 180) then wrap to avoid having to worry about large negative values
-	this->deltaRotation = MathUtils::wrappingNormalize((this->next->rotation - this->rotation + 540.0f), 0.0f, 360.0f) - 180.0f;
-	this->deltaAlpha = this->next->alpha - this->alpha;
-
-	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO
-		&& this->deltaAnchor == Vec2::ZERO
-		&& this->deltaScale == Vec2::ZERO
-		&& this->deltaRotation == 0.0f
-		&& this->deltaAlpha == 0.0f;
 }
 
 void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
@@ -122,9 +119,9 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 		// TODO: Use curve functions to transform the time ratio, this is linear right now
 		float timeRatio = MathUtils::clamp((currentTime - this->keytime) / (this->endTime - this->keytime), 0.0f, 1.0f);
 
-		object->setRelativePosition(this->position + this->deltaPosition * timeRatio);
+		object->setPosition(this->position + this->deltaPosition * timeRatio);
 		object->setAnchorPoint(this->anchor + this->deltaAnchor * timeRatio);
-		object->setHeirarchyScale(this->scale + this->deltaScale * timeRatio);
+		object->setScale(this->scale + this->deltaScale * timeRatio);
 		object->setRotation(this->rotation + this->deltaRotation * timeRatio);
 		object->setOpacity(GLubyte(this->alpha + this->deltaAlpha * timeRatio));
 	}
@@ -139,9 +136,63 @@ void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animat
 		return;
 	}
 
-	object->setRelativePosition(this->position);
+	object->setPosition(this->position);
 	object->setAnchorPoint(this->anchor);
-	object->setHeirarchyScale(this->scale);
+	object->setScale(this->scale);
 	object->setRotation(this->rotation);
 	object->setOpacity(GLubyte(this->alpha));
+}
+
+void SpriterAnimationTimelineEventAnimation::cascade(SpriterAnimationTimelineEventAnimation* parent)
+{
+	// Apply cascaded scale. Only child objects should contain the final scale. This avoids annoying render issues in cocos.
+	// Mixing rotations and scales in the node heirarchy can cause skewing, so we push all scales down the hierarchy chain to sprites.
+	if (parent != nullptr)
+	{
+		this->position = this->position * parent->scale;
+		this->scale *= parent->scale;
+	}
+	
+	for (SpriterAnimationTimelineEventAnimation* next: this->cascadeChildren)
+	{
+		next->cascade(this);
+	}
+
+	// Reset scale after it has been cascaded to children
+	if (!this->cascadeChildren.empty())
+	{
+		this->scale = Vec2::ONE;
+	}
+}
+
+void SpriterAnimationTimelineEventAnimation::addCascadeChild(SpriterAnimationTimelineEventAnimation* cascadeChild)
+{
+	this->cascadeChildren.push_back(cascadeChild);
+}
+
+void SpriterAnimationTimelineEventAnimation::clearCascadeChildren()
+{
+	this->cascadeChildren.clear();
+}
+
+void SpriterAnimationTimelineEventAnimation::computeDeltas()
+{
+	this->deltaPosition = this->next->position - this->position;
+	this->deltaAnchor = this->next->anchor - this->anchor;
+	this->deltaScale = this->next->scale - this->scale;
+	// Modified shortest-rotation algorithm from https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
+	// Key difference is that I add 540 (360 + 180) then wrap to avoid having to worry about large negative values
+	this->deltaRotation = MathUtils::wrappingNormalize((this->next->rotation - this->rotation + 540.0f), 0.0f, 360.0f) - 180.0f;
+	this->deltaAlpha = this->next->alpha - this->alpha;
+
+	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO
+		&& this->deltaAnchor == Vec2::ZERO
+		&& this->deltaScale == Vec2::ZERO
+		&& this->deltaRotation == 0.0f
+		&& this->deltaAlpha == 0.0f;
+
+	for (SpriterAnimationTimelineEventAnimation* next: this->cascadeChildren)
+	{
+		next->computeDeltas();
+	}
 }

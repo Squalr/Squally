@@ -186,7 +186,6 @@ void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName
 	{
 		this->entitySpritesByHash = &this->spritesByHash[this->currentEntityName];
 	}
-
 }
 
 const std::string& SpriterAnimationNode::getCurrentEntityName()

@@ -71,8 +71,6 @@ void SpriterAnimationTimeline::update(float dt)
 		{
 			animationEvent->advance(animationNode);
 		}
-
-		animationNode->cascadeScales();
 	}
 }
 
@@ -88,6 +86,8 @@ void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* ani
 
 void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 {
+	std::vector<SpriterAnimationTimelineEventMainline*> allMainlines = std::vector<SpriterAnimationTimelineEventMainline*>();
+
 	for (const SpriterEntity& entity : spriterData.entities)
 	{
 		for (const SpriterAnimation& animation : entity.animations)
@@ -96,6 +96,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			// Painfully, there can be extraneous info in the timeilne that we need to ignore if it references a value that does not exist in this set.
 			// Joint key of key << 48 | timeline id << 32 | timeline time. We can get away with hashing 3 ints this way because key/timeline ID will always be small ints.
 			std::set<uint64_t> mainlineTimelineRefKeys = std::set<uint64_t>();
+			std::map<int, SpriterAnimationTimelineEventMainline*> mainlinesByTime = std::map<int, SpriterAnimationTimelineEventMainline*>();
 
 			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
@@ -116,7 +117,10 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				{
 					mainlineTimelineRefKeys.insert(uint64_t(objectRef.key) << 48 | uint64_t(objectRef.timeline) << 32 | uint64_t(mainlineKey.time));
 				}
+
+				mainlinesByTime[mainlineKey.time] = mainlineEvent;
 				
+				allMainlines.push_back(mainlineEvent);
 				this->addChild(mainlineEvent);
 			}
 			
@@ -141,8 +145,14 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				// Parse animation keys (each key is a unique event)
 				for (int index = 0; index < int(filteredKeys.size()); index++)
 				{
+					const SpriterTimelineKey& timelineKey = filteredKeys[index];
 					float endTime = index + 1 < int(filteredKeys.size()) ? filteredKeys[index + 1].time : animation.length;
-					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, filteredKeys[index]);
+					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timelineKey);
+
+					if (mainlinesByTime.contains(timelineKey.time))
+					{
+						mainlinesByTime[timelineKey.time]->registerAnimation(animationTimeline);
+					}
 
 					eventsToAdd[index] = animationTimeline;
 
@@ -159,6 +169,16 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				}
 			}
 		}
+	}
+
+	for (SpriterAnimationTimelineEventMainline* next : allMainlines)
+	{
+		next->buildAnimationHeirarchy();
+	}
+
+	for (SpriterAnimationTimelineEventMainline* next : allMainlines)
+	{
+		next->buildDeltas();
 	}
 }
 

@@ -15,9 +15,15 @@ public:
 		const SpriterTimelineKey& animationKey
 	);
 
+	int getPartHash();
+	const std::string& getPartName();
 	SpriterAnimationTimelineEventAnimation* getNext();
 	void setNext(SpriterAnimationTimelineEventAnimation* next);
 	void advance(SpriterAnimationNode* animation) override;
+	void cascade(SpriterAnimationTimelineEventAnimation* parent = nullptr);
+	void computeDeltas();
+	void addCascadeChild(SpriterAnimationTimelineEventAnimation* cascadeChild);
+	void clearCascadeChildren();
 
 protected:
 	SpriterAnimationTimelineEventAnimation(SpriterAnimationTimeline* timeline,
@@ -35,19 +41,22 @@ private:
 	
 	std::string partName;
 	int partHash;
+	int spin;
+	float speed;
+	
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 anchor;
 	cocos2d::Vec2 scale;
 	float rotation;
 	float alpha;
-	int spin;
-	float speed;
 
 	cocos2d::Vec2 deltaPosition;
 	cocos2d::Vec2 deltaAnchor;
 	cocos2d::Vec2 deltaScale;
 	float deltaRotation;
 	float deltaAlpha;
+
+	std::vector<SpriterAnimationTimelineEventAnimation*> cascadeChildren;
 
 	bool hasNoAnimationChanges;
 };

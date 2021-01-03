@@ -35,9 +35,12 @@ void SpriterAnimationSprite::setAnchorPoint(const Vec2& anchorPoint)
 	this->sprite->setAnchorPoint(anchorPoint);
 }
 
-void SpriterAnimationSprite::cascadeScales(cocos2d::Vec2 scale)
+void SpriterAnimationSprite::setScaleX(float scaleX)
 {
-	super::cascadeScales(scale);
+	this->sprite->setScaleX(scaleX);
+}
 
-	this->sprite->setScale(scale * this->heirarchyScale);
+void SpriterAnimationSprite::setScaleY(float scaleY)
+{
+	this->sprite->setScaleX(scaleY);
 }
