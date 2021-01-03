@@ -148,7 +148,7 @@ void SmartAnimationNode::clearAnimationPriority()
 
 AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 {
-	if (this->animationParts.find(partName) != this->animationParts.end())
+	if (this->animationParts.contains(partName))
 	{
 		return this->animationParts[partName];
 	}
@@ -183,7 +183,7 @@ void SmartAnimationNode::setFlippedX(bool flippedX)
 	{
 		this->spriterAnimation->setFlippedX(flippedX);
 	}
-	
+
 	this->animationNode->setFlippedX(flippedX);
 }
 

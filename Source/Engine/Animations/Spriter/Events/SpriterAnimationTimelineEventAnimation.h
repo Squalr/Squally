@@ -48,4 +48,6 @@ private:
 	cocos2d::Vec2 deltaScale;
 	float deltaRotation;
 	float deltaAlpha;
+
+	bool hasNoAnimationChanges;
 };

@@ -14,7 +14,7 @@ std::map<std::string, SpriterAnimationTimeline*> SpriterAnimationTimeline::Timel
 
 SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::string& animationResource)
 {
-	if (SpriterAnimationTimeline::TimelineCache.find(animationResource) == SpriterAnimationTimeline::TimelineCache.end())
+	if (!SpriterAnimationTimeline::TimelineCache.contains(animationResource))
 	{
 		SpriterAnimationTimeline* timeline = new SpriterAnimationTimeline(animationResource);
 
@@ -52,8 +52,7 @@ void SpriterAnimationTimeline::update(float dt)
 		const std::string& entityName = animationNode->getCurrentEntityName();
 		const std::string& animationName = animationNode->getCurrentAnimation();
 
-		if (this->mainlineEvents.find(entityName) == this->mainlineEvents.end()
-			|| this->mainlineEvents[entityName].find(animationName) == this->mainlineEvents[entityName].end())
+		if (!this->mainlineEvents.contains(entityName) || !this->mainlineEvents[entityName].contains(animationName))
 		{
 			continue;
 		}
@@ -128,7 +127,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				std::vector<SpriterTimelineKey> filteredKeys = std::vector<SpriterTimelineKey>();
 				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
 				{
-					return mainlineTimelineRefKeys.find(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time)) != mainlineTimelineRefKeys.end();
+					return mainlineTimelineRefKeys.contains(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time));
 				});
 
 				// Sort by time ascending

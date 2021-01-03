@@ -347,7 +347,7 @@ void Hexus::buildPlayerDeck()
 			{
 				std::string key = card->getCardKey();
 
-				if (cardList.find(key) != cardList.end())
+				if (cardList.contains(key))
 				{
 					cardData.push_back(cardList[key]);
 				}

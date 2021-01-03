@@ -128,7 +128,7 @@ void AutoCard::updateToggle()
         default:
         case DisplayType::Binary:
         {
-            if (this->binaryCardMap.find(this->currentAttack) != this->binaryCardMap.end())
+            if (this->binaryCardMap.contains(this->currentAttack))
             {
                 this->activeCard = this->binaryCardMap[this->currentAttack];
             }
@@ -142,7 +142,7 @@ void AutoCard::updateToggle()
         }
         case DisplayType::Decimal:
         {
-            if (this->decimalCardMap.find(this->currentAttack) != this->decimalCardMap.end())
+            if (this->decimalCardMap.contains(this->currentAttack))
             {
                 this->activeCard = this->decimalCardMap[this->currentAttack];
             }
@@ -156,7 +156,7 @@ void AutoCard::updateToggle()
         }
         case DisplayType::Hex:
         {
-            if (this->hexCardMap.find(this->currentAttack) != this->hexCardMap.end())
+            if (this->hexCardMap.contains(this->currentAttack))
             {
                 this->activeCard = this->hexCardMap[this->currentAttack];
             }

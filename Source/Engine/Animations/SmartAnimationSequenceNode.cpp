@@ -307,7 +307,7 @@ int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSeq
 
 const std::vector<std::string>& SmartAnimationSequenceNode::GetAllAnimationFiles(const std::string& initialSequenceResourceFile)
 {
-	if (SmartAnimationSequenceNode::AnimationFileCache.find(initialSequenceResourceFile) != SmartAnimationSequenceNode::AnimationFileCache.end())
+	if (SmartAnimationSequenceNode::AnimationFileCache.contains(initialSequenceResourceFile))
 	{
 		return SmartAnimationSequenceNode::AnimationFileCache[initialSequenceResourceFile];
 	}

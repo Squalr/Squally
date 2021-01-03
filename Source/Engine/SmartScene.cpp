@@ -304,7 +304,7 @@ void SmartScene::whenKeyPressed(std::set<cocos2d::InputEvents::KeyCode> keyCodes
 	{
 		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
 		{
 			if (!requireVisible || GameUtils::isVisible(this))
 			{
@@ -320,7 +320,7 @@ void SmartScene::whenKeyPressedIgnorePause(std::set<cocos2d::InputEvents::KeyCod
 	{
 		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
 		{
 			if (!requireVisible || GameUtils::isVisible(this))
 			{
@@ -338,7 +338,7 @@ void SmartScene::whenKeyPressedHackerMode(std::set<cocos2d::InputEvents::KeyCode
 		{
 			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+			if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
 			{
 				if (!requireVisible || GameUtils::isVisible(this))
 				{
@@ -355,7 +355,7 @@ void SmartScene::whenKeyReleased(std::set<cocos2d::InputEvents::KeyCode> keyCode
 	{
 		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
 		{
 			if (!requireVisible || GameUtils::isVisible(this))
 			{
@@ -371,7 +371,7 @@ void SmartScene::whenKeyReleasedIgnorePause(std::set<cocos2d::InputEvents::KeyCo
 	{
 		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
 		{
 			if (!requireVisible || GameUtils::isVisible(this))
 			{
@@ -389,7 +389,7 @@ void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::InputEvents::KeyCod
 		{
 			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+			if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
 			{
 				if (!requireVisible || GameUtils::isVisible(this))
 				{

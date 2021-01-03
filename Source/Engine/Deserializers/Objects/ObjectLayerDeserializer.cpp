@@ -107,7 +107,7 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 				onDeserializeCallback
 			);
 
-			if (objectDeserializers.find(objectType) != objectDeserializers.end())
+			if (objectDeserializers.contains(objectType))
 			{
 				objectDeserializers[objectType]->deserialize(&args);
 			}

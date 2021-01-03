@@ -103,7 +103,7 @@ void Inventory::deserialize(const ValueMap& valueMap)
 
 bool Inventory::hasItemOfName(std::string itemName)
 {
-	return this->itemLookup.find(itemName) != this->itemLookup.end();
+	return this->itemLookup.contains(itemName);
 }
 
 void Inventory::clearItems()
@@ -159,7 +159,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 	}
 
 	// Quick O(1) check using the set
-	if (this->itemLookup.find(item->getItemName()) == this->itemLookup.end())
+	if (!this->itemLookup.contains(item->getItemName()))
 	{
 		if (onRemoveFailed != nullptr)
 		{

@@ -13,7 +13,7 @@ Clippy::Clippy(std::string uniqueRunKey)
 	this->isEnabled = true;
 	this->uniqueRunKey = uniqueRunKey;
 
-	if (!uniqueRunKey.empty() && Clippy::UniqueRunMap.find(uniqueRunKey) == Clippy::UniqueRunMap.end())
+	if (!uniqueRunKey.empty() && !Clippy::UniqueRunMap.contains(uniqueRunKey))
 	{
 		Clippy::UniqueRunMap[uniqueRunKey] = false;
 	}
@@ -52,7 +52,7 @@ void Clippy::runDialogue(LocalizedString* localizedString, std::string soundReso
 
 bool Clippy::isFirstUniqueRun()
 {
-	if (this->uniqueRunKey.empty() || Clippy::UniqueRunMap.find(this->uniqueRunKey) == Clippy::UniqueRunMap.end() || !Clippy::UniqueRunMap[this->uniqueRunKey])
+	if (this->uniqueRunKey.empty() || !Clippy::UniqueRunMap.contains(this->uniqueRunKey) || !Clippy::UniqueRunMap[this->uniqueRunKey])
 	{
 		return true;
 	}

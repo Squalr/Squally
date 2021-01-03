@@ -24,7 +24,7 @@ public:
 		Yellow
 	};
 
-	std::string getHackableIdentifier();
+	const std::string& getHackableIdentifier();
 	int getRequiredHackFlag();
 	float getElapsedDuration();
 	float getDuration();
@@ -33,10 +33,10 @@ public:
 	float getElapsedCooldown();
 	float getCooldown();
 	void tryRefreshCooldown();
-	std::string getHackBarResource();
-	std::string getHackBarCooldownResource();
+	const std::string& getHackBarResource();
+	const std::string& getHackBarCooldownResource();
 	HackBarColor getHackBarColor();
-	std::string getIconResource();
+	const std::string& getIconResource();
 	LocalizedString* getName();
 	LazyNode<HackablePreview>* getHackablePreview();
 	virtual void* getPointer();

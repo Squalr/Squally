@@ -87,7 +87,7 @@ void GlobalHackAttributeContainer::initializeListeners()
 
 HackableCode* GlobalHackAttributeContainer::GetHackableCode(void* startAddress)
 {
-	if (GlobalHackAttributeContainer::instance->codeMap.find(startAddress) != GlobalHackAttributeContainer::instance->codeMap.end())
+	if (GlobalHackAttributeContainer::instance->codeMap.contains(startAddress))
 	{
 		return GlobalHackAttributeContainer::instance->codeMap[startAddress];
 	}
@@ -102,7 +102,7 @@ void GlobalHackAttributeContainer::RegisterHackableCode(HackableCode* hackableCo
 		return;
 	}
 
-	if (GlobalHackAttributeContainer::instance->codeMap.find(hackableCode->codePointer) == GlobalHackAttributeContainer::instance->codeMap.end())
+	if (!GlobalHackAttributeContainer::instance->codeMap.contains(hackableCode->codePointer))
 	{
 		GlobalHackAttributeContainer::instance->codeMap[hackableCode->codePointer] = hackableCode;
 		GlobalHackAttributeContainer::instance->hackableCodeContainer->addChild(hackableCode);
@@ -111,7 +111,7 @@ void GlobalHackAttributeContainer::RegisterHackableCode(HackableCode* hackableCo
 
 HackActivatedAbility* GlobalHackAttributeContainer::GetHackActivatedAbility(std::string identifier)
 {
-	if (GlobalHackAttributeContainer::instance->abilityMap.find(identifier) != GlobalHackAttributeContainer::instance->abilityMap.end())
+	if (GlobalHackAttributeContainer::instance->abilityMap.contains(identifier))
 	{
 		return GlobalHackAttributeContainer::instance->abilityMap[identifier];
 	}
@@ -126,9 +126,9 @@ void GlobalHackAttributeContainer::RegisterHackActivatedAbility(HackActivatedAbi
 		return;
 	}
 
-	const std::string identifier = hackActivatedAbility->getHackableIdentifier();
+	const std::string& identifier = hackActivatedAbility->getHackableIdentifier();
 
-	if (GlobalHackAttributeContainer::instance->abilityMap.find(identifier) == GlobalHackAttributeContainer::instance->abilityMap.end())
+	if (!GlobalHackAttributeContainer::instance->abilityMap.contains(identifier))
 	{
 		GlobalHackAttributeContainer::instance->abilityMap[identifier] = hackActivatedAbility;
 		GlobalHackAttributeContainer::instance->hackableAbilityContainer->addChild(hackActivatedAbility);

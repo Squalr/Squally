@@ -167,22 +167,22 @@ void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName
 	this->entitySpritesByName = nullptr;
 	this->entitySpritesByHash = nullptr;
 	
-	if (this->bonesByName.find(this->currentEntityName) != this->bonesByName.end())
+	if (this->bonesByName.contains(this->currentEntityName))
 	{
 		this->entityBonesByName = &this->bonesByName[this->currentEntityName];
 	}
 	
-	if (this->bonesByHash.find(this->currentEntityName) != this->bonesByHash.end())
+	if (this->bonesByHash.contains(this->currentEntityName))
 	{
 		this->entityBonesByHash = &this->bonesByHash[this->currentEntityName];
 	}
 	
-	if (this->spritesByName.find(this->currentEntityName) != this->spritesByName.end())
+	if (this->spritesByName.contains(this->currentEntityName))
 	{
 		this->entitySpritesByName = &this->spritesByName[this->currentEntityName];
 	}
 	
-	if (this->spritesByHash.find(this->currentEntityName) != this->spritesByHash.end())
+	if (this->spritesByHash.contains(this->currentEntityName))
 	{
 		this->entitySpritesByHash = &this->spritesByHash[this->currentEntityName];
 	}
@@ -201,7 +201,7 @@ const std::string& SpriterAnimationNode::getCurrentAnimation()
 
 const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCurrentBoneMap()
 {
-	if (this->bonesByName.find(this->currentEntityName) == this->bonesByName.end())
+	if (!this->bonesByName.contains(this->currentEntityName))
 	{
 		this->bonesByName[this->currentEntityName] = std::map<std::string, SpriterAnimationBone*>();
 	}
@@ -211,7 +211,7 @@ const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCur
 
 const std::map<std::string, SpriterAnimationSprite*>& SpriterAnimationNode::getCurrentSpriteMap()
 {
-	if (this->spritesByName.find(this->currentEntityName) == this->spritesByName.end())
+	if (!this->spritesByName.contains(this->currentEntityName))
 	{
 		this->spritesByName[this->currentEntityName] = std::map<std::string, SpriterAnimationSprite*>();
 	}
@@ -275,8 +275,7 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					uint64_t folderFileKey = uint64_t(key.object.folderId) << 32 | uint64_t(key.object.fileId);
 
-					if (folderFileIdMap.find(folderFileKey) == folderFileIdMap.end()
-						|| this->spritesByName[entity.name].find(timeline.name) != this->spritesByName[entity.name].end())
+					if (!folderFileIdMap.contains(folderFileKey) || this->spritesByName[entity.name].contains(timeline.name))
 					{
 						continue;
 					}

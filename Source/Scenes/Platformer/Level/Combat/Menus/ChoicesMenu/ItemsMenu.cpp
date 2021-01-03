@@ -76,7 +76,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 		{
 			const std::string identifier = consumable->getItemName();
 
-			if (consumablesMap.find(identifier) == consumablesMap.end())
+			if (!consumablesMap.contains(identifier))
 			{
 				consumablesMap[identifier] = std::make_tuple<int, PlatformerAttack*>(1, consumable->getAssociatedAttack(entity));
 			}

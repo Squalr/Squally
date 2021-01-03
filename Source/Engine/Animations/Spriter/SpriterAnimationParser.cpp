@@ -34,7 +34,7 @@ SpriterData SpriterAnimationParser::Parse(std::string animationResource)
 	}
 
 	// Check if data has already been parsed in cache
-	if (SpriterAnimationParser::SpriterDataCache.find(animationResource) != SpriterAnimationParser::SpriterDataCache.end())
+	if (SpriterAnimationParser::SpriterDataCache.contains(animationResource))
 	{
 		return SpriterAnimationParser::SpriterDataCache[animationResource];
 	}
@@ -272,7 +272,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "pivot_x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "pivot_y", Value("1")).asString())),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "scale_x", Value("1")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "scale_y", Value("1")).asString())),
 			std::stof(GameUtils::getKeyOrDefault(attributes, "angle", Value("0")).asString()),
-			std::stof(GameUtils::getKeyOrDefault(attributes, "alpha", Value("1")).asString())
+			std::stof(GameUtils::getKeyOrDefault(attributes, "a", Value("1")).asString())
 		);
 	}
 	else if (name == SpriterAnimationParser::AttributeObjectRef)
@@ -311,7 +311,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "x", Value("0")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "y", Value("0")).asString())),
 			Vec2(std::stof(GameUtils::getKeyOrDefault(attributes, "scale_x", Value("1")).asString()), std::stof(GameUtils::getKeyOrDefault(attributes, "scale_y", Value("1")).asString())),
 			std::stof(GameUtils::getKeyOrDefault(attributes, "angle", Value("0")).asString()),
-			std::stof(GameUtils::getKeyOrDefault(attributes, "alpha", Value("1")).asString())
+			std::stof(GameUtils::getKeyOrDefault(attributes, "a", Value("1")).asString())
 		);
 	}
 	else if (name == SpriterAnimationParser::AttributeBoneRef)

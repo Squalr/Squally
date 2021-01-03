@@ -19,7 +19,7 @@ LocalizedString* Objectives::GetObjectiveString()
 
 	std::string objectiveKey = Objectives::GetCurrentObjective();
 
-	if (Objectives::ObjectiveMap.find(objectiveKey) != Objectives::ObjectiveMap.end())
+	if (Objectives::ObjectiveMap.contains(objectiveKey))
 	{
 		return Objectives::ObjectiveMap[objectiveKey].createFunc();
 	}
@@ -39,14 +39,14 @@ void Objectives::ClearObjective()
 
 void Objectives::SetCurrentObjective(std::string objectiveKey)
 {
-	if (Objectives::ObjectiveMap.find(objectiveKey) == Objectives::ObjectiveMap.end())
+	if (!Objectives::ObjectiveMap.contains(objectiveKey))
 	{
 		return;
 	}
 
-	std::string currentObjectiveKey = Objectives::GetCurrentObjective();
+	const std::string& currentObjectiveKey = Objectives::GetCurrentObjective();
 
-	if (Objectives::ObjectiveMap.find(currentObjectiveKey) != Objectives::ObjectiveMap.end())
+	if (Objectives::ObjectiveMap.contains(currentObjectiveKey))
 	{
 		int currentPriority = Objectives::ObjectiveMap[currentObjectiveKey].priority;
 		int newPriority = Objectives::ObjectiveMap[objectiveKey].priority;

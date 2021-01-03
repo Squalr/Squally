@@ -97,19 +97,19 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		SpriterAnimationBone* childBone = part.second;
 		childBone->setLocalZOrder(2048); // Set to arbitrary high value. Will be adjusted later.
 
-		if (this->boneIdMap.find(part.first) != this->boneIdMap.end())
+		if (this->boneIdMap.contains(part.first))
 		{
 			int boneId = this->boneIdMap[part.first];
 
-			if (this->boneParentTable.find(boneId) != this->boneParentTable.end())
+			if (this->boneParentTable.contains(boneId))
 			{
 				int parentBoneId = this->boneParentTable[boneId];
 
-				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
+				if (this->boneNameMap.contains(parentBoneId))
 				{
 					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
 
-					if (boneMap.find(parentBoneName) != boneMap.end())
+					if (boneMap.contains(parentBoneName))
 					{
 						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
@@ -138,20 +138,20 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	{
 		SpriterAnimationSprite* childSprite = part.second;
 
-		if (this->objectIdMap.find(part.first) != this->objectIdMap.end() && this->objectZMap.find(part.first) != this->objectZMap.end())
+		if (this->objectIdMap.contains(part.first) && this->objectZMap.contains(part.first))
 		{
 			int objectId = this->objectIdMap[part.first];
 			int zOrder = this->objectZMap[part.first];
 
-			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
+			if (this->objectParentTable.contains(objectId))
 			{
 				int parentBoneId = this->objectParentTable[objectId];
 
-				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
+				if (this->boneNameMap.contains(parentBoneId))
 				{
 					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
 
-					if (boneMap.find(parentBoneName) != boneMap.end())
+					if (boneMap.contains(parentBoneName))
 					{
 						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
@@ -181,7 +181,7 @@ int SpriterAnimationTimelineEventMainline::getBoneDepth(int boneId)
 {
 	int depth = 0;
 	
-	while (this->boneParentTable.find(boneId) != this->boneParentTable.end())
+	while (this->boneParentTable.contains(boneId))
 	{
 		boneId = boneParentTable[boneId];
 		depth++;

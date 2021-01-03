@@ -36,6 +36,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	this->partName = keyParent.name;
 	this->next = this;
 	this->spin = animationKey.spin;
+	this->hasNoAnimationChanges = false;
 	
 	std::hash<std::string> hasher = std::hash<std::string>();
 	size_t hash = hasher(this->partName);
@@ -89,15 +90,27 @@ void SpriterAnimationTimelineEventAnimation::setNext(SpriterAnimationTimelineEve
 	// Key difference is that I add 540 (360 + 180) then wrap to avoid having to worry about large negative values
 	this->deltaRotation = MathUtils::wrappingNormalize((this->next->rotation - this->rotation + 540.0f), 0.0f, 360.0f) - 180.0f;
 	this->deltaAlpha = this->next->alpha - this->alpha;
+
+	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO
+		&& this->deltaAnchor == Vec2::ZERO
+		&& this->deltaScale == Vec2::ZERO
+		&& this->deltaRotation == 0.0f
+		&& this->deltaAlpha == 0.0f;
 }
 
 void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
 {
 	super::advance(animation);
 
+	// Early exit if this animation event does not have any changes
+	if (this->hasNoAnimationChanges)
+	{
+		return;
+	}
+
 	SpriterAnimationPart* object = animation->getPartByHash(this->partHash);
 
-	if (object == nullptr || this->endTime < 0.0f)
+	if (object == nullptr)
 	{
 		return;
 	}
@@ -107,7 +120,7 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 	if (currentTime >= this->keytime && currentTime < this->endTime)
 	{
 		// TODO: Use curve functions to transform the time ratio, this is linear right now
-		float timeRatio = (currentTime - this->keytime) / (this->endTime - this->keytime);
+		float timeRatio = MathUtils::clamp((currentTime - this->keytime) / (this->endTime - this->keytime), 0.0f, 1.0f);
 
 		object->setRelativePosition(this->position + this->deltaPosition * timeRatio);
 		object->setAnchorPoint(this->anchor + this->deltaAnchor * timeRatio);
@@ -119,5 +132,16 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 
 void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animation)
 {
-	// Empty for animation nodes, the "event" is actually fired gradually as the event advances
+	SpriterAnimationPart* object = animation->getPartByHash(this->partHash);
+	
+	if (object == nullptr)
+	{
+		return;
+	}
+
+	object->setRelativePosition(this->position);
+	object->setAnchorPoint(this->anchor);
+	object->setHeirarchyScale(this->scale);
+	object->setRotation(this->rotation);
+	object->setOpacity(GLubyte(this->alpha));
 }
