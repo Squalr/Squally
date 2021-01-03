@@ -110,7 +110,7 @@ void Mouse::registerCursorSet(int setId, CursorSet cursorSet)
 
 void Mouse::setActiveCursorSet(int setId)
 {
-	if (this->cursorSets.contains(setId))
+	if (!this->cursorSets.contains(setId))
 	{
 		return;
 	}
