@@ -42,5 +42,5 @@ void SpriterAnimationSprite::setScaleX(float scaleX)
 
 void SpriterAnimationSprite::setScaleY(float scaleY)
 {
-	this->sprite->setScaleX(scaleY);
+	this->sprite->setScaleY(scaleY);
 }

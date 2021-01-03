@@ -58,5 +58,6 @@ private:
 
 	std::vector<SpriterAnimationTimelineEventAnimation*> cascadeChildren;
 
+	bool isBone;
 	bool hasNoAnimationChanges;
 };

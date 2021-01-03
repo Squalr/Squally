@@ -54,6 +54,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 			this->scale = animationKey.bone.scale;
 			this->rotation = MathUtils::wrappingNormalize(animationKey.bone.angle * -1.0f, 0.0f, 360.0f);
 			this->alpha = animationKey.bone.alpha * 255.0f;
+			this->isBone = true;
 			break;
 		}
 		default:
@@ -64,6 +65,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 			this->scale = animationKey.object.scale;
 			this->rotation = MathUtils::wrappingNormalize(animationKey.object.angle * -1.0f, 0.0f, 360.0f);
 			this->alpha = animationKey.object.alpha * 255.0f;
+			this->isBone = false;
 			break;
 		}
 	}
@@ -145,21 +147,20 @@ void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animat
 
 void SpriterAnimationTimelineEventAnimation::cascade(SpriterAnimationTimelineEventAnimation* parent)
 {
+	const Vec2& parentScale = (parent == nullptr ? Vec2::ONE : parent->scale);
+
 	// Apply cascaded scale. Only child objects should contain the final scale. This avoids annoying render issues in cocos.
 	// Mixing rotations and scales in the node heirarchy can cause skewing, so we push all scales down the hierarchy chain to sprites.
-	if (parent != nullptr)
-	{
-		this->position = this->position * parent->scale;
-		this->scale *= parent->scale;
-	}
+	this->position = this->position * parentScale;
+	this->scale *= parentScale;
 	
 	for (SpriterAnimationTimelineEventAnimation* next: this->cascadeChildren)
 	{
 		next->cascade(this);
 	}
 
-	// Reset scale after it has been cascaded to children
-	if (!this->cascadeChildren.empty())
+	// Reset scale for bones after cascading to children.
+	if (this->isBone)
 	{
 		this->scale = Vec2::ONE;
 	}

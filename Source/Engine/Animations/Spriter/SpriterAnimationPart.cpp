@@ -7,7 +7,6 @@ using namespace cocos2d;
 SpriterAnimationPart::SpriterAnimationPart()
 {
 	this->childAnimationParts = std::vector<SpriterAnimationPart*>();
-    this->heirarchyScale = Vec2::ONE;
 }
 
 SpriterAnimationPart::~SpriterAnimationPart()

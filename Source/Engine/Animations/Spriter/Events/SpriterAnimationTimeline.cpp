@@ -129,6 +129,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			{
 				// Filter out extraneous timeline information that references non-existent keys.
 				std::vector<SpriterTimelineKey> filteredKeys = std::vector<SpriterTimelineKey>();
+
 				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
 				{
 					return mainlineTimelineRefKeys.contains(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time));

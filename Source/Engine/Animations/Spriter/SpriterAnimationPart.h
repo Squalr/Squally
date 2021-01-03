@@ -16,10 +16,8 @@ protected:
 	SpriterAnimationPart();
 	virtual ~SpriterAnimationPart();
 	
-	cocos2d::Vec2 heirarchyScale;
+	std::vector<SpriterAnimationPart*> childAnimationParts;
 	
 private:
 	typedef SmartNode super;
-
-	std::vector<SpriterAnimationPart*> childAnimationParts;
 };
