@@ -107,7 +107,7 @@ Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
     Vec3 thisCoords = GameUtils::getWorldCoords3D(uiBoundObject);
     Vec3 originalParentCoords = GameUtils::getWorldCoords3D(uiBoundObject->originalParent);
     Vec3 originalCoords = uiBoundObject->referencedObject->getPosition3D();
-    float originalScale = GameUtils::getScale(uiBoundObject->originalParent);
+    float originalScale = GameUtils::getUniformScale(uiBoundObject->originalParent);
     Vec3 anchorOffset = Vec3(
         0.5f * uiBoundObject->originalParent->getContentSize().width * originalScale,
         0.5f * uiBoundObject->originalParent->getContentSize().height * originalScale,
@@ -125,7 +125,7 @@ float UIBoundObject::getRealScale(UIBoundObject* uiBoundObject)
         return 1.0f;
     }
 
-    float parentScale = GameUtils::getScale(uiBoundObject->originalParent);
+    float parentScale = GameUtils::getUniformScale(uiBoundObject->originalParent);
 
     return parentScale * uiBoundObject->referencedObject->getScale();
 }

@@ -9,6 +9,7 @@
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 #include "Engine/Animations/Spriter/SpriterAnimationSprite.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
@@ -97,17 +98,27 @@ void SpriterAnimationTimelineEventAnimation::setNext(SpriterAnimationTimelineEve
 	this->next = (next == nullptr ? this : next);
 }
 
+bool SpriterAnimationTimelineEventAnimation::canAdvance()
+{
+	// Early exit if this animation event does not have any changes
+	if (this->isBone)
+	{
+		return false;
+	}
+
+	return true;
+}
+
 void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
 {
 	super::advance(animation);
 
-	// Early exit if this animation event does not have any changes
 	if (this->hasNoAnimationChanges)
 	{
 		return;
 	}
 
-	SpriterAnimationPart* object = animation->getPartByHash(this->partHash);
+	SpriterAnimationPart* object = animation->getSpriteByHash(this->partHash);
 
 	if (object == nullptr)
 	{
@@ -147,12 +158,31 @@ void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animat
 
 void SpriterAnimationTimelineEventAnimation::cascade(SpriterAnimationTimelineEventAnimation* parent)
 {
+	// This method applies a few magic tricks with a lot of nuance. First, it reparents itself to the parent timeline event.
+	// This allows us to use GameUtils methods to convert our relative position/scale/rotation etc to absolute.
+	// We are careful not to call setScale on ourself though. Mixing rotations and scales in the node heirarchy can cause skewing.
+	// Instead, we use the parent scale to adjust the position we set, and propagate it manually.
+	// All of this allows us to maintain a boneless heirarchy, which allows us to Z-Sort sprites and maintain compliance with Spriter.
+	// Ex) A bone with two sprites, z depth 1 and 3. A sibling bone with a sprite of z depth 2. In a heirarchical structure, this would
+	// be a z-order conflict! The sprite of depth 2 would either need to be above or below those of depth 1 and 3. It could not be inbetween.
+	// This solves that.
+
 	const Vec2& parentScale = (parent == nullptr ? Vec2::ONE : parent->scale);
 
-	// Apply cascaded scale. Only child objects should contain the final scale. This avoids annoying render issues in cocos.
-	// Mixing rotations and scales in the node heirarchy can cause skewing, so we push all scales down the hierarchy chain to sprites.
-	this->position = this->position * parentScale;
+	if (parent != nullptr)
+	{
+		GameUtils::changeParent(this, parent, false);
+	}
+	
+	this->setPosition(this->position * parentScale);
+	this->setAnchorPoint(this->anchor);
+	this->setRotation(this->rotation);
+	this->setOpacity(GLubyte(this->alpha));
+
+	this->position = GameUtils::getWorldCoords(this, false);
+	this->rotation = GameUtils::getRotation(this);
 	this->scale *= parentScale;
+	this->alpha = float(this->getDisplayedOpacity());
 	
 	for (SpriterAnimationTimelineEventAnimation* next: this->cascadeChildren)
 	{

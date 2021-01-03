@@ -19,6 +19,7 @@ public:
 	const std::string& getPartName();
 	SpriterAnimationTimelineEventAnimation* getNext();
 	void setNext(SpriterAnimationTimelineEventAnimation* next);
+	bool canAdvance();
 	void advance(SpriterAnimationNode* animation) override;
 	void cascade(SpriterAnimationTimelineEventAnimation* parent = nullptr);
 	void computeDeltas();

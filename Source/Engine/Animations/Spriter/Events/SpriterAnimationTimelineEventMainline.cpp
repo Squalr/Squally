@@ -93,6 +93,8 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		SpriterAnimationSprite* childSprite = part.second;
 		childSprite->clearAnimationPartChildren();
 	}
+
+	animation->clearAnimationPartChildren();
 	
 	// Parent all bones
 	for (const auto& part : boneMap)
@@ -141,31 +143,13 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	{
 		SpriterAnimationSprite* childSprite = part.second;
 
-		if (this->objectIdMap.contains(part.first) && this->objectZMap.contains(part.first))
+		if (this->objectZMap.contains(part.first))
 		{
 			int objectId = this->objectIdMap[part.first];
 			int zOrder = this->objectZMap[part.first];
 
 			if (this->objectParentTable.contains(objectId))
 			{
-				int parentBoneId = this->objectParentTable[objectId];
-
-				if (this->boneNameMap.contains(parentBoneId))
-				{
-					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
-
-					if (boneMap.contains(parentBoneName))
-					{
-						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
-
-						parentBone->addAnimationPartChild(childSprite);
-						childSprite->setLocalZOrder(zOrder);
-						childSprite->setVisible(true);
-						continue;
-					}
-				}
-
-				// No parent -- set to root
 				animation->addAnimationPartChild(childSprite);
 				childSprite->setLocalZOrder(zOrder);
 				childSprite->setVisible(true);

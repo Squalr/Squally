@@ -162,7 +162,12 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	if (addAsReentry)
 	{
 		node->retain();
-		originalParent->removeChildNoExit(node);
+
+		if (originalParent != nullptr)
+		{
+			originalParent->removeChildNoExit(node);
+		}
+
 		node->softRelease();
 	}
 
@@ -249,7 +254,22 @@ float GameUtils::getRotation(Node* node)
 	return rotation;
 }
 
-float GameUtils::getScale(Node* node)
+Vec2 GameUtils::getScale(Node* node)
+{
+	Vec2 scale = Vec2::ONE;
+
+	while (node != nullptr)
+	{
+		scale.x *= node->getScaleX();
+		scale.y *= node->getScaleY();
+
+		node = node->getParent();
+	}
+
+	return scale;
+}
+
+float GameUtils::getUniformScale(Node* node)
 {
 	float scale = 1.0f;
 
@@ -341,7 +361,7 @@ Rect GameUtils::getScreenBounds(Node* node, const Size& padding, bool checkForUI
 	}
 	
 	// Rect worldRect = node->getBoundingBoxNoTransform();
-	return getScreenBounds(GameUtils::getWorldCoords3D(node, checkForUIBound), padding + node->getContentSize() * GameUtils::getScale(node));
+	return getScreenBounds(GameUtils::getWorldCoords3D(node, checkForUIBound), padding + node->getContentSize() * GameUtils::getUniformScale(node));
 }
 
 Rect GameUtils::getScreenBounds(const Vec3& position, const Size& size)

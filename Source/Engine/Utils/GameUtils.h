@@ -26,7 +26,8 @@ public:
 	static void fadeInObject(cocos2d::Node* node, float delay, float duration, uint8_t opacity = 255);
 	static float getDepth(cocos2d::Node* node);
 	static float getRotation(cocos2d::Node* node);
-	static float getScale(cocos2d::Node* node);
+	static cocos2d::Vec2 getScale(cocos2d::Node* node);
+	static float getUniformScale(cocos2d::Node* node);
 	static cocos2d::Vec2 getMapCoords(cocos2d::Node* node, bool checkForUIBound = true);
 	static cocos2d::Vec3 getMapCoords3D(cocos2d::Node* node, bool checkForUIBound = true);
 	static cocos2d::Vec2 getWorldCoords(cocos2d::Node* node, bool checkForUIBound = true);

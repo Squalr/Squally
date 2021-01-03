@@ -69,7 +69,10 @@ void SpriterAnimationTimeline::update(float dt)
 		// Process all animation events (position, scale, rotation, local interpolation type)
 		for (SpriterAnimationTimelineEventAnimation* animationEvent : this->animationEvents[entityName][animationName])
 		{
-			animationEvent->advance(animationNode);
+			if (animationEvent->canAdvance())
+			{
+				animationEvent->advance(animationNode);
+			}
 		}
 	}
 }
