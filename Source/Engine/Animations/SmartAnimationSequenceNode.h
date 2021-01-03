@@ -31,6 +31,7 @@ public:
 	void setAnimationAnchor(cocos2d::Vec2 anchor);
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
+	void setSpriteChangeCallback(std::function<void(const std::string&)>);
 
 	static void PrimeCache(const std::string& initialSequenceResourceFile);
 	static int GetAnimationLength(const std::string& initialSequenceResourceFile);

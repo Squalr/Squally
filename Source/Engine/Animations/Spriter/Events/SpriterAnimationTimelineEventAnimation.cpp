@@ -36,6 +36,11 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	this->partName = keyParent.name;
 	this->next = this;
 	this->spin = animationKey.spin;
+	
+	std::hash<std::string> hasher = std::hash<std::string>();
+	size_t hash = hasher(this->partName);
+
+	this->partHash = int(hash);
 
 	// Read in spriter data, mapping rotation/anchors to cocos space
 	switch(animationKey.objectType)
@@ -90,7 +95,7 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 {
 	super::advance(animation);
 
-	SpriterAnimationPart* object = animation->getPartById(this->partName);
+	SpriterAnimationPart* object = animation->getPartByHash(this->partHash);
 
 	if (object == nullptr || this->endTime < 0.0f)
 	{

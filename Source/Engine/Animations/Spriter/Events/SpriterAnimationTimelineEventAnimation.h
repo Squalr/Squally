@@ -34,6 +34,7 @@ private:
 	typedef SpriterAnimationTimelineEventBase super;
 	
 	std::string partName;
+	int partHash;
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 anchor;
 	cocos2d::Vec2 scale;

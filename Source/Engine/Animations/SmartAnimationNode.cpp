@@ -179,6 +179,11 @@ void SmartAnimationNode::setFlippedX(bool flippedX)
 		return;
 	}
 
+	if (this->spriterAnimation != nullptr)
+	{
+		this->spriterAnimation->setFlippedX(flippedX);
+	}
+	
 	this->animationNode->setFlippedX(flippedX);
 }
 
