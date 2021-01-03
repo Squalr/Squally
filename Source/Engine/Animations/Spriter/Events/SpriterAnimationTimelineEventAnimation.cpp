@@ -175,12 +175,11 @@ void SpriterAnimationTimelineEventAnimation::cascade(SpriterAnimationTimelineEve
 	}
 	
 	this->setPosition(this->position * parentScale);
-	this->setAnchorPoint(this->anchor);
 	this->setRotation(this->rotation);
 	this->setOpacity(GLubyte(this->alpha));
 
 	this->position = GameUtils::getWorldCoords(this, false);
-	this->rotation = GameUtils::getRotation(this);
+	this->rotation = MathUtils::wrappingNormalize(GameUtils::getRotation(this), 0.0f, 360.0f);
 	this->scale *= parentScale;
 	this->alpha = float(this->getDisplayedOpacity());
 	
@@ -211,10 +210,11 @@ void SpriterAnimationTimelineEventAnimation::computeDeltas()
 	this->deltaPosition = this->next->position - this->position;
 	this->deltaAnchor = this->next->anchor - this->anchor;
 	this->deltaScale = this->next->scale - this->scale;
-	// Modified shortest-rotation algorithm from https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
-	// Key difference is that I add 540 (360 + 180) then wrap to avoid having to worry about large negative values
-	this->deltaRotation = MathUtils::wrappingNormalize((this->next->rotation - this->rotation + 540.0f), 0.0f, 360.0f) - 180.0f;
 	this->deltaAlpha = this->next->alpha - this->alpha;
+
+	// https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
+    this->deltaRotation = std::fmodf((this->next->rotation - this->rotation + 180.0f), 360.0f) - 180.0f;
+    this->deltaRotation = this->deltaRotation < -180.0f ? this->deltaRotation + 360.0f : this->deltaRotation;
 
 	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO
 		&& this->deltaAnchor == Vec2::ZERO
