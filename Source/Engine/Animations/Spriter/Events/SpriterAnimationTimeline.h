@@ -44,4 +44,6 @@ private:
 	std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>> animationEvents;
 
 	static std::map<std::string, SpriterAnimationTimeline*> TimelineCache;
+
+	bool onEnterRunOnce;
 };

@@ -32,13 +32,20 @@ SpriterAnimationTimeline::SpriterAnimationTimeline(const std::string& animationR
 	this->mainlineEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventMainline*>>>();
 	this->animationEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>>();
 	this->registeredAnimationNodes = std::set<SpriterAnimationNode*>();
-
+	this->onEnterRunOnce = false;
+	
 	this->buildTimelines(SpriterAnimationParser::Parse(animationResource));
 }
 
 void SpriterAnimationTimeline::onEnter()
 {
-	super::onEnter();
+	// Optimization
+	if (!this->onEnterRunOnce)
+	{
+		super::onEnter();
+
+		this->onEnterRunOnce = true;
+	}
 
 	this->scheduleUpdate();
 }

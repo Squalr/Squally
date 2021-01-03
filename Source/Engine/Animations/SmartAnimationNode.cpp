@@ -29,17 +29,17 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 {
 	this->animationResource = animationResource;
 	this->entityName = entityName;
-	this->animationNode = AnimationNode::create(animationResource);
-	this->entity = this->animationNode->play(entityName);
+	this->animationNode = nullptr; // AnimationNode::create(animationResource);
+	this->entity = nullptr; // this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
 	this->initialized = false;
 	this->currentAnimation = "";
 	this->currentAnimationPriority = -1.0f;
 	this->spriterAnimation = SpriterAnimationNode::create(animationResource);
 
-	animationNode->setPosition(Vec2(256.0f, -0.0f));
+	// animationNode->setPosition(Vec2(256.0f, -0.0f));
 
-	this->addChild(this->animationNode);
+	// this->addChild(this->animationNode);
 	this->addChild(this->spriterAnimation);
 }
 
@@ -64,11 +64,6 @@ void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayM
 
 void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, AnimParams animParams, std::function<void()> callback)
 {
-	if (this->entity == nullptr)
-	{
-		return;
-	}
-
 	if (animParams.priority <= this->currentAnimationPriority)
 	{
 		return;
@@ -79,6 +74,11 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 	if (this->spriterAnimation != nullptr)
 	{
 		this->spriterAnimation->playAnimation(animationName);
+	}
+
+	if (this->entity == nullptr)
+	{
+		return;
 	}
 	
 	if (this->entity->hasAnimation(animationName))
@@ -148,6 +148,11 @@ void SmartAnimationNode::clearAnimationPriority()
 
 AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 {
+	if (this->entity == nullptr)
+	{
+		return nullptr;
+	}
+
 	if (this->animationParts.contains(partName))
 	{
 		return this->animationParts[partName];
@@ -164,6 +169,11 @@ AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 
 void SmartAnimationNode::restoreAnimationPart(std::string partName)
 {
+	if (this->entity == nullptr)
+	{
+		return;
+	}
+	
 	auto animVariable = this->entity->getObjectInstance(partName);
 
 	if (animVariable != nullptr)
@@ -174,14 +184,14 @@ void SmartAnimationNode::restoreAnimationPart(std::string partName)
 
 void SmartAnimationNode::setFlippedX(bool flippedX)
 {
-	if (this->animationNode == nullptr)
-	{
-		return;
-	}
-
 	if (this->spriterAnimation != nullptr)
 	{
 		this->spriterAnimation->setFlippedX(flippedX);
+	}
+
+	if (this->animationNode == nullptr)
+	{
+		return;
 	}
 
 	this->animationNode->setFlippedX(flippedX);
