@@ -129,6 +129,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			{
 				// Filter out extraneous timeline information that references non-existent keys.
 				std::vector<SpriterTimelineKey> filteredKeys = std::vector<SpriterTimelineKey>();
+				std::set<int> filteredKeyTimes = std::set<int>();
 
 				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
 				{
@@ -136,6 +137,34 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				});
 
 				// Sort by time ascending
+				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
+				{ 
+					return a.time < b.time; 
+				});
+
+				for (const SpriterTimelineKey& next : filteredKeys)
+				{
+					filteredKeyTimes.insert(next.time);
+				}
+
+				// Fill in missing times. Our particular implementation expects an event for each object at each frame.
+				for (const auto& [time, value] : mainlinesByTime)
+				{
+					if (!filteredKeyTimes.contains(time))
+					{
+						for (int index = int(filteredKeys.size() - 1); index >= 0; index--)
+						{
+							if (filteredKeys[index].time < time)
+							{
+								filteredKeys.push_back(filteredKeys[index]);
+								filteredKeys.back().time = time;
+								break;
+							}
+						}
+					}
+				}
+
+				// Resort
 				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
 				{ 
 					return a.time < b.time; 

@@ -98,8 +98,8 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	for (const auto& part : boneMap)
 	{
 		SpriterAnimationBone* childBone = part.second;
-		childBone->setLocalZOrder(2048); // Set to arbitrary high value. Will be adjusted later.
-
+		childBone->setLocalZOrder(0);
+		
 		if (this->boneIdMap.contains(part.first))
 		{
 			int boneId = this->boneIdMap[part.first];
@@ -159,7 +159,6 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
 						parentBone->addAnimationPartChild(childSprite);
-						parentBone->setLocalZOrder(std::min(parentBone->getLocalZOrder(), zOrder));
 						childSprite->setLocalZOrder(zOrder);
 						childSprite->setVisible(true);
 						continue;

@@ -90,7 +90,7 @@ SpriterAnimationPart* SpriterAnimationNode::getPartByName(const std::string& nam
 
 SpriterAnimationBone* SpriterAnimationNode::getBoneByName(const std::string& name)
 {
-	if (this->entityBonesByName != nullptr && this->entityBonesByName->find(name) != this->entityBonesByName->end())
+	if (this->entityBonesByName != nullptr && this->entityBonesByName->contains(name))
 	{
 		return (*this->entityBonesByName)[name];
 	}
@@ -100,7 +100,7 @@ SpriterAnimationBone* SpriterAnimationNode::getBoneByName(const std::string& nam
 
 SpriterAnimationSprite* SpriterAnimationNode::getSpriteByName(const std::string& name)
 {
-	if (this->entitySpritesByName != nullptr && this->entitySpritesByName->find(name) != this->entitySpritesByName->end())
+	if (this->entitySpritesByName != nullptr && this->entitySpritesByName->contains(name))
 	{
 		return (*this->entitySpritesByName)[name];
 	}
@@ -124,7 +124,7 @@ SpriterAnimationPart* SpriterAnimationNode::getPartByHash(int id)
 
 SpriterAnimationBone* SpriterAnimationNode::getBoneByHash(int id)
 {
-	if (this->entityBonesByHash != nullptr && this->entityBonesByHash->find(id) != this->entityBonesByHash->end())
+	if (this->entityBonesByHash != nullptr && this->entityBonesByHash->contains(id))
 	{
 		return (*this->entityBonesByHash)[id];
 	}
@@ -134,7 +134,7 @@ SpriterAnimationBone* SpriterAnimationNode::getBoneByHash(int id)
 
 SpriterAnimationSprite* SpriterAnimationNode::getSpriteByHash(int id)
 {
-	if (this->entitySpritesByHash != nullptr && this->entitySpritesByHash->find(id) != this->entitySpritesByHash->end())
+	if (this->entitySpritesByHash != nullptr && this->entitySpritesByHash->contains(id))
 	{
 		return (*this->entitySpritesByHash)[id];
 	}

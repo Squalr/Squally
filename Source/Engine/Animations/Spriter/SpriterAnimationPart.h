@@ -16,6 +16,7 @@ protected:
 	SpriterAnimationPart();
 	virtual ~SpriterAnimationPart();
 	
+	SpriterAnimationPart* parentPart;
 	std::vector<SpriterAnimationPart*> childAnimationParts;
 	
 private:

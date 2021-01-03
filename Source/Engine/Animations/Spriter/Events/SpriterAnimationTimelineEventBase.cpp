@@ -20,13 +20,6 @@ SpriterAnimationTimelineEventBase::SpriterAnimationTimelineEventBase(SpriterAnim
 	this->c4 = c4;
 }
 
-void SpriterAnimationTimelineEventBase::onEnter()
-{
-	super::onEnter();
-
-	this->scheduleUpdate();
-}
-
 float SpriterAnimationTimelineEventBase::getKeyTime()
 {
 	return this->keytime;
