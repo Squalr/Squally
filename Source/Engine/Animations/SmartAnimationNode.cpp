@@ -29,18 +29,39 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 {
 	this->animationResource = animationResource;
 	this->entityName = entityName;
-	this->animationNode = nullptr; // AnimationNode::create(animationResource);
-	this->entity = nullptr; // this->animationNode->play(entityName);
+	this->animationNode = AnimationNode::create(animationResource);
+	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
 	this->initialized = false;
 	this->currentAnimation = "";
 	this->currentAnimationPriority = -1.0f;
-	this->spriterAnimation = SpriterAnimationNode::create(animationResource);
+	this->spriterAnimation = nullptr;// SpriterAnimationNode::create(animationResource);
+
+	/*
+	BRAIN DUMP FOR WHEN I REVISIT IMPLEMENTING HIGHER EFFICIENCY SPRITER CODE:
+	- Cascading is the source of all of my problems.
+	- The existing method of cascading position and scale is broken.
+	- Our mainline implementation expects corresponding animation events for it's time. But these dont exist.
+	- This means bones keyed at various times eventually cascade down and then fail to apply their "danging scales" due to a missing anim key at that time.
+	- If we try to duplicate keys and shove them in ex post facto, it ruins their time sampling.
+
+	COCOS FIX (preferred)
+	- Figure out how to allow rotations and scales to exist simultaneously in the heirarchy. This would mean we could avoid the cascade problem.
+	    - Check if the rotation/scale bug exists in modern cocos. If it does, it's not my fault and I can ask for help fixing it.
+	    - Another possibility is to apply scales based on the full rotation stack. something something cosine sine something something.
+	- Less painfully but less optimally, we could redo cocos code to pass along scales differently. Some sort of child dirty recursive strategy.
+	- Do not apply the scales to the matrix until we reach a sprite or other UI based node.
+	- This may run into the issue of needing to then solve the Z sorting issue if we allow for bones to exist in the heirarchy with scale
+	
+	SPRITER FIX:
+	- Figure out how to apply dangling scales to the closest animation event object? Ughhhhh
+	- I don't know. I'm so confused.
+	*/
 
 	// animationNode->setPosition(Vec2(256.0f, -0.0f));
 
-	// this->addChild(this->animationNode);
-	this->addChild(this->spriterAnimation);
+	this->addChild(this->animationNode);
+	// this->addChild(this->spriterAnimation);
 }
 
 SmartAnimationNode::~SmartAnimationNode()
