@@ -35,9 +35,31 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->initialized = false;
 	this->currentAnimation = "";
 	this->currentAnimationPriority = -1.0f;
-	this->spriterAnimation = nullptr;// SpriterAnimationNode::create(animationResource);
+	this->spriterAnimation = nullptr; // SpriterAnimationNode::create(animationResource);
 
 	/*
+	I really want the new implementation of spriter to work, because it will cut load times down by 15%, and reduce ~4-5% of update cycle time consumption.
+	Also, and more importantly, I should be able to get animation blending to work if I implement spriter myself.
+
+	Two general strategies exist:
+	- Full heirarchy, where bones and sprites have a full parent stack up to the root bone.
+		- Tragically, cocos2d-x does not allow for cascading scales and rotations simultaneously. This results in skewing due to their matrix math.
+		- This strategy relies on global Z sorting working, which we disabled at one point. Supporting it is a huge performance hit.
+			- There may be hacky fixes like bone duplication or some sort of draw redirect magic (UIBoundNodes are the closest concept I know of)
+	- No heirarchy, cascading all bone positioning down to the sprites at each time frame. This runs into the problem of interrupting timeline sampling,
+		as it would require a "key" at each time. If we enforce linear sampling as the only supported sampling, this is probably fine.
+
+	Cascading has the benefit of requiring more up front computation, and less runtime strain. We can also cache these computations, meaning subsequent
+	loads will be significantly faster. We would only need timeline events for sprites themselves! We could eliminate all bone timeline events.
+	At least in theory.
+
+	The correct answer is likely a mix of these, which is what my current implementation does. The current implementation builds a full heirarchy of bones,
+	but does it out of the timeline objects themselves. It even positions the timelines despite the fact that they are not renderable.
+	By doing this, we can query their "world position/scale/rotation/etc" -- ie their cascaded state. Then we simply apply these to the sprites at each time frame.
+
+	Or at least that was the hope. It turns out not every sprite has a frame at the same time as the mainline event that is firing.
+	Cascading logic gets fucked here
+
 	BRAIN DUMP FOR WHEN I REVISIT IMPLEMENTING HIGHER EFFICIENCY SPRITER CODE:
 	- Cascading is the source of all of my problems.
 	- The existing method of cascading position and scale is broken.
@@ -45,17 +67,28 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	- This means bones keyed at various times eventually cascade down and then fail to apply their "danging scales" due to a missing anim key at that time.
 	- If we try to duplicate keys and shove them in ex post facto, it ruins their time sampling.
 
-	COCOS FIX (preferred)
+	OPTION 1) Dangling cascades
+	- Use a heirarchy, but cascade scales (and modified positions as a result of these scales)
+	- Some of these scales will "dangle", as is our current problem.
+	- Attempt to "reach up" and find these dangling scales when setting the position of a sprite.
+
+	This might be complete garbage though, as these dangling scales may be several parents up the chain. Expensive.
+
+	OPTION 2) COCOS FIX (Would be a heirarchy solution though)
 	- Figure out how to allow rotations and scales to exist simultaneously in the heirarchy. This would mean we could avoid the cascade problem.
 	    - Check if the rotation/scale bug exists in modern cocos. If it does, it's not my fault and I can ask for help fixing it.
 	    - Another possibility is to apply scales based on the full rotation stack. something something cosine sine something something.
 	- Less painfully but less optimally, we could redo cocos code to pass along scales differently. Some sort of child dirty recursive strategy.
 	- Do not apply the scales to the matrix until we reach a sprite or other UI based node.
 	- This may run into the issue of needing to then solve the Z sorting issue if we allow for bones to exist in the heirarchy with scale
-	
-	SPRITER FIX:
-	- Figure out how to apply dangling scales to the closest animation event object? Ughhhhh
-	- I don't know. I'm so confused.
+	- Either way, this would solve all positioning errors. Cascading is no longer required, and those problems go away.
+
+	Assessment: Option 2 seems best. It is the most clear path to getting this working, without rewriting much of my code.
+	Will have to walk back the git history and ensure that we are reparenting sprites, and we will need to disable the cascading code.
+	The problems are very clear and solveable.
+	1) Solve the scale/rotation duality bug (super frustrating)
+	2) Switch back to a heirarchical spriter model.
+	3) Solve the Z sorting bug
 	*/
 
 	// animationNode->setPosition(Vec2(256.0f, -0.0f));
