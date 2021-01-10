@@ -1,7 +1,10 @@
 #include "EntitySelectionBehavior.h"
 
+#include "cocos/base/CCInputEvents.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
@@ -32,6 +35,7 @@ EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner) : super(owne
 	}
 
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
+	this->savedWorldCoords = Vec3::ZERO;
 
 	this->clickHitbox->setContentSize(this->entity->getEntitySize());
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -45,12 +49,23 @@ EntitySelectionBehavior::~EntitySelectionBehavior()
 {
 }
 
-void EntitySelectionBehavior::initializePositions()
+void EntitySelectionBehavior::update(float dt)
 {
+	super::update(dt);
+
+	Vec3 coords = GameUtils::getWorldCoords3D(this->entity, false);
+
+	if (this->savedWorldCoords != coords)
+	{
+		this->savedWorldCoords = coords;
+
+		InputEvents::TriggerMouseRequestRefresh();
+	}
 }
 
 void EntitySelectionBehavior::onLoad()
 {
+	this->scheduleUpdate();
 }
 
 void EntitySelectionBehavior::onDisable()

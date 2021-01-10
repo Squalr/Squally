@@ -12,6 +12,7 @@ Input* Input::Instance = nullptr;
 InputEvents::MouseEventArgs Input::MouseState = InputEvents::MouseEventArgs();
 std::unordered_map<int, bool> Input::PressedKeysPrevious = std::unordered_map<int, bool>();
 std::unordered_map<int, bool> Input::PressedKeys = std::unordered_map<int, bool>();
+float Input::MinDragDistance = 4.0f;
 
 void Input::registerGlobalNode()
 {
@@ -36,12 +37,18 @@ Input* Input::GetInstance()
 
 Input::Input()
 {
-	Input::PressedKeys = std::unordered_map<int, bool>();
-	Input::PressedKeysPrevious = std::unordered_map<int, bool>();
+	this->refreshRequested = false;
 }
 
 Input::~Input()
 {
+}
+
+void Input::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void Input::initializeListeners()
@@ -76,6 +83,9 @@ void Input::initializeListeners()
 		{
 			Input::MouseState.canClick = false;
 			Input::MouseState.mouseCoords = args->mouseCoords;
+			Input::MouseState.isDragging = Input::MouseState.isLeftClicked
+				&& (std::abs(Input::MouseState.mouseInitialCoords.x - args->mouseCoords.x) >= Input::MinDragDistance
+					|| std::abs(Input::MouseState.mouseInitialCoords.y - args->mouseCoords.y) >= Input::MinDragDistance);
 
 			InputEvents::TriggerMouseMove(Input::MouseState);
 			InputEvents::TriggerMouseRefresh(Input::MouseState);
@@ -88,6 +98,7 @@ void Input::initializeListeners()
 
 		if (args != nullptr)
 		{
+			Input::MouseState.mouseInitialCoords = args->mouseInitialCoords;
 			Input::MouseState.isLeftClicked = true;
 
 			InputEvents::TriggerMouseDown(Input::MouseState);
@@ -133,11 +144,17 @@ void Input::initializeListeners()
 	{
 		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	}));
+	
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseRequestRefresh, [=](EventCustom* eventCustom)
+	{
+		this->refreshRequested = true;
+	}));
+	
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
 	{
 		Input::MouseState.canClick = false;
-		
+
 		InputEvents::TriggerMouseMove(Input::MouseState);
 		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	});
@@ -149,6 +166,19 @@ void Input::initializeListeners()
 		InputEvents::TriggerMouseMove(Input::MouseState);
 		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	});
+}
+
+void Input::update(float dt)
+{
+	super::update(dt);
+
+	if (this->refreshRequested)
+	{
+		this->refreshRequested = false;
+		
+		InputEvents::TriggerMouseMove(Input::MouseState);
+		InputEvents::TriggerMouseRefresh(Input::MouseState);
+	}
 }
 
 InputEvents::MouseEventArgs Input::GetMouseEvent()

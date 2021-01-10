@@ -8,6 +8,7 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
@@ -291,7 +292,8 @@ void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 
 	if (addTrackOffset && this->targetStack.size() > 0)
 	{
-		cameraPosition += this->targetStack.top().trackOffset;
+		cameraPosition.x += this->targetStack.top().trackOffset.x;
+		cameraPosition.y += this->targetStack.top().trackOffset.y;
 	}
 
 	if (this->isDeveloperModeEnabled())
@@ -302,6 +304,7 @@ void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 	if (Camera::getDefaultCamera() != nullptr)
 	{
 		Camera::getDefaultCamera()->setPosition(cameraPosition);
+		InputEvents::TriggerMouseRequestRefresh();
 	}
 }
 
@@ -323,6 +326,7 @@ void GameCamera::setCameraPosition3(Vec3 position, bool addTrackOffset)
 	if (Camera::getDefaultCamera() != nullptr)
 	{
 		Camera::getDefaultCamera()->setPosition3D(cameraPosition);
+		InputEvents::TriggerMouseRequestRefresh();
 	}
 }
 

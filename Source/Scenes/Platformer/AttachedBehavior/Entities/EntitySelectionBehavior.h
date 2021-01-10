@@ -19,8 +19,8 @@ public:
 protected:
 	EntitySelectionBehavior(GameObject* owner);
 	virtual ~EntitySelectionBehavior();
-
-	void initializePositions() override;
+	
+	void update(float dt) override;
 	void onLoad() override;
 	void onDisable() override;
 
@@ -28,6 +28,8 @@ private:
 	typedef AttachedBehavior super;
 
 	PlatformerEntity* entity;
+
+	cocos2d::Vec3 savedWorldCoords;
 	
 	ClickableNode* clickHitbox;
 };

@@ -24,7 +24,9 @@ protected:
 	Input();
 	virtual ~Input();
 
+	void onEnter() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 
 private:
 	typedef GlobalNode super;
@@ -33,10 +35,12 @@ private:
 
 	void onKeyPressed(cocos2d::InputEvents::KeyCode keyCode);
 	void onKeyReleased(cocos2d::InputEvents::KeyCode keyCode);
+
+	bool refreshRequested;
 	
 	static cocos2d::InputEvents::MouseEventArgs MouseState;
 	static std::unordered_map<int, bool> PressedKeysPrevious;
 	static std::unordered_map<int, bool> PressedKeys;
-
+	static float MinDragDistance;
 	static Input* Instance;
 };
