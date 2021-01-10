@@ -21,4 +21,7 @@ private:
 	typedef AttachedBehavior super;
 
 	GameObject* object;
+	float multiplier;
+	
+	static const std::string PropertyFadeMultiplier;
 };

@@ -10,6 +10,7 @@
 using namespace cocos2d;
 
 const std::string ZFadeBehavior::MapKey = "z-fade";
+const std::string ZFadeBehavior::PropertyFadeMultiplier = "fade-multiplier";
 
 ZFadeBehavior* ZFadeBehavior::create(GameObject* owner)
 {
@@ -28,6 +29,8 @@ ZFadeBehavior::ZFadeBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+
+	this->multiplier = GameUtils::getKeyOrDefault(owner->properties, ZFadeBehavior::PropertyFadeMultiplier, Value(1.0f)).asFloat();
 }
 
 ZFadeBehavior::~ZFadeBehavior()
@@ -57,14 +60,14 @@ void ZFadeBehavior::update(float dt)
 
 	if (depth >= (GameCamera::getInstance()->getTargetDepth() + Increment * 6 + HalfIncrement))
 	{
-		this->object->setOpacity(64);
+		this->object->setOpacity(GLubyte(64.0f * this->multiplier));
 	}
 	else if (depth >= (GameCamera::getInstance()->getTargetDepth() + HalfIncrement))
 	{
-		this->object->setOpacity(127);
+		this->object->setOpacity(GLubyte(127.0f * this->multiplier));
 	}
 	else
 	{
-		this->object->setOpacity(255);
+		this->object->setOpacity(GLubyte(255.0f * this->multiplier));
 	}
 }

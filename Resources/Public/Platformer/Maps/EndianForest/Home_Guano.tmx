@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="749">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="750">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -17,26 +17,18 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="lava" type="texture" x="-848" y="-802" width="3792" height="2688"/>
  </objectgroup>
  <objectgroup id="89" name="terrain bg -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="lava" type="terrain" x="-394.788" y="1056.36" width="2832" height="341.818"/>
  </objectgroup>
  <objectgroup id="88" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="744" name="demon-dragon" type="entity" x="966.303" y="923.879" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="87" name="npc collision walls -4">
   <properties>
@@ -51,19 +43,12 @@
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="737" name="lava" type="terrain" x="-391.758" y="1159.39" width="2832" height="341.818"/>
  </objectgroup>
  <objectgroup id="86" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-96"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="demon-ghost" type="entity" x="948.121" y="1029.94" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="85" name="npc collision walls -3">
   <properties>
@@ -86,30 +71,25 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="730" name="Generic/Background/Jail" type="decor" x="655.955" y="251.985" width="779" height="993"/>
  </objectgroup>
  <objectgroup id="90" name="magic wall bg -2">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="747" name="magic-wall" type="object" x="679.994" y="255.015" width="749.102" height="993"/>
  </objectgroup>
  <objectgroup id="81" name="columns bg -2">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="731" name="wood" type="terrain" x="574.268" y="-212.879" width="101.823" height="1536.31">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="732" name="wood" type="terrain" x="1408.94" y="-209.061" width="101.823" height="1534.97">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+ </objectgroup>
+ <objectgroup id="91" name="bg -2">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="749" name="marble" type="texture" x="-848" y="-802" width="3792" height="2688"/>
  </objectgroup>
  <objectgroup id="74" name="terrain hall -1">
   <properties>
@@ -189,7 +169,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

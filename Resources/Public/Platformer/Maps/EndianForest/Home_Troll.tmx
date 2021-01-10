@@ -12,13 +12,6 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="20" name="bg -8">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="712" name="dark-grass" type="texture" x="-848" y="-802" width="3792" height="2688"/>
- </objectgroup>
  <objectgroup id="89" name="terrain bg -4">
   <properties>
    <property name="depth" type="float" value="-128"/>
@@ -86,14 +79,12 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="730" name="Generic/Background/Jail" type="decor" x="655.955" y="251.985" width="779" height="993"/>
  </objectgroup>
  <objectgroup id="90" name="magic wall bg -2">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="747" name="magic-wall" type="object" x="679.994" y="255.015" width="749.102" height="993"/>
  </objectgroup>
  <objectgroup id="81" name="columns bg -2">
   <properties>
@@ -111,6 +102,13 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="20" name="bg -2">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="marble" type="texture" x="-848" y="-802" width="3792" height="2688"/>
+ </objectgroup>
  <objectgroup id="74" name="terrain hall -1">
   <properties>
    <property name="depth" type="float" value="-32"/>
@@ -125,7 +123,7 @@
   <object id="725" name="marble" type="texture" x="-85.455" y="-44.305" width="704.91" height="1360.61"/>
   <object id="726" name="marble" type="texture" x="1479.76" y="-28.7898" width="682.91" height="1360.61"/>
  </objectgroup>
- <objectgroup id="75" name="jail">
+ <objectgroup id="75" name="jail" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -152,7 +150,7 @@
   </properties>
   <object id="717" name="marble" type="terrain" x="-202.303" y="1278.91" width="2424" height="341.818"/>
  </objectgroup>
- <objectgroup id="79" name="terrain top">
+ <objectgroup id="79" name="terrain top" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
