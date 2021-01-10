@@ -12,23 +12,16 @@ class SpriterAnimationSprite : public SpriterAnimationPart
 public:
 	static SpriterAnimationSprite* create(std::string spriteResource, cocos2d::Vec2 anchor);
 	
-    void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
-	/*
-	void setRotation(float rotation) override;
     void setScaleX(float scaleX) override;
-    void setScaleY(float scaleY) override;
-    void visit(cocos2d::Renderer* renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
-	*/
-
-	void setDebugDrawHeirarchyDepth();
-	void setDebugDrawBoneScale();
+    void setScaleY(float scaleX) override;
+    void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
 
 protected:
 	SpriterAnimationSprite(std::string spriteResource, cocos2d::Vec2 anchor);
 	virtual ~SpriterAnimationSprite();
 
 private:
-	typedef SmartNode super;
+	typedef SpriterAnimationPart super;
 
 	cocos2d::Sprite* sprite;
 };

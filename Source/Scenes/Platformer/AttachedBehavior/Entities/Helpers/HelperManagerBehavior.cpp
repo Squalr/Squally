@@ -127,7 +127,7 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(helperName);
-	properties[GameObject::MapKeyTags] = Value(Squally::BattleTag);
+	properties[GameObject::MapKeyTags] = Value(Squally::TeamTag);
 	properties[GameObject::MapKeyAttachedBehavior] = Value(helperBehavior);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 
@@ -179,9 +179,9 @@ void HelperManagerBehavior::onDisable()
 	super::onDisable();
 }
 
-std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperName)
+const std::string& HelperManagerBehavior::getHelperAttachedBehavior(const std::string& helperName)
 {
-	if (this->attachedBehaviorMap.find(helperName) != this->attachedBehaviorMap.end())
+	if (this->attachedBehaviorMap.contains(helperName))
 	{
 		return this->attachedBehaviorMap[helperName];
 	}

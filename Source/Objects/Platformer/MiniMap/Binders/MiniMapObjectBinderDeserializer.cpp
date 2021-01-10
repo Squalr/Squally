@@ -12,7 +12,7 @@ MiniMapObjectBinder* MiniMapObjectBinderDeserializer::Deserialize(std::string ob
 {
     MiniMapObjectBinderDeserializer::InitializeBindingTable();
 
-    if (MiniMapObjectBinderDeserializer::BindingTable.find(objectName) != MiniMapObjectBinderDeserializer::BindingTable.end())
+    if (MiniMapObjectBinderDeserializer::BindingTable.contains(objectName))
     {
         return MiniMapObjectBinderDeserializer::BindingTable[objectName]();
     }

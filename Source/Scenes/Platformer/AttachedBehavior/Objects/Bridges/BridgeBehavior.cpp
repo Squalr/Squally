@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Terrain/TerrainObject.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -83,6 +84,14 @@ void BridgeBehavior::onLoad()
 	if (this->object->loadObjectStateOrDefault(BridgeBehavior::SaveKeyRaised, Value(false)).asBool())
 	{
 		return;
+	}
+
+	TerrainObject* terrain = dynamic_cast<TerrainObject*>(this->object);
+
+	if (terrain != nullptr)
+	{
+		// If it is terrain we need to set it as dynamic for culling reasons. It normally caches the spawn position otherwise.
+		terrain->setDynamic(true);
 	}
 
 	this->originalPosition = this->object->getPosition();

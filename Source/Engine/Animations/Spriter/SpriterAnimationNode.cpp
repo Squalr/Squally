@@ -27,17 +27,19 @@ SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationR
 
 SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
-	this->bones = std::map<std::string, std::map<std::string, SpriterAnimationBone*>>();
-	this->boneIdMap = std::map<int, SpriterAnimationBone*>();
-	this->sprites = std::map<std::string, std::map<std::string, SpriterAnimationSprite*>>();
-	this->spriteIdMap = std::map<int, SpriterAnimationSprite*>();
-	this->animationPartContainer = Node::create();
+	this->bonesByName = std::map<std::string, std::map<std::string, SpriterAnimationBone*>>();
+	this->bonesByHash = std::map<std::string, std::map<int, SpriterAnimationBone*>>();
+	this->spritesByName = std::map<std::string, std::map<std::string, SpriterAnimationSprite*>>();
+	this->spritesByHash = std::map<std::string, std::map<int, SpriterAnimationSprite*>>();
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
 	this->isRepeating = true;
-	this->currentEntityName = SpriterAnimationNode::DefaultAnimationEntityName;
 	this->currentAnimation = SpriterAnimationNode::DefaultAnimationName;
 	this->previousTimelineTime = 0.0f;
 	this->timelineTime = 0.0f;
+	this->entityBonesByName = nullptr;
+	this->entityBonesByHash = nullptr;
+	this->entitySpritesByName = nullptr;
+	this->entitySpritesByHash = nullptr;
 	
 	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
 
@@ -45,8 +47,7 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 
 	this->buildBones(spriterData);
 	this->buildSprites(spriterData, animationResource);
-
-	this->addChild(this->animationPartContainer);
+	this->setCurrentEntity(SpriterAnimationNode::DefaultAnimationEntityName);
 }
 
 SpriterAnimationNode::~SpriterAnimationNode()
@@ -73,10 +74,10 @@ float SpriterAnimationNode::getTimelineTime()
 	return this->timelineTime;
 }
 
-SpriterAnimationPart* SpriterAnimationNode::getPartById(const std::string& name)
+SpriterAnimationPart* SpriterAnimationNode::getPartByName(const std::string& name)
 {
 	// Check if part matches a bone name
-	SpriterAnimationBone* bone = this->getBoneById(name);
+	SpriterAnimationBone* bone = this->getBoneByName(name);
 
 	if (bone != nullptr)
 	{
@@ -84,26 +85,58 @@ SpriterAnimationPart* SpriterAnimationNode::getPartById(const std::string& name)
 	}
 
 	// Check if part matches a sprite name
-	return getSpriteById(name);
+	return getSpriteByName(name);
 }
 
-SpriterAnimationBone* SpriterAnimationNode::getBoneById(const std::string& name)
+SpriterAnimationBone* SpriterAnimationNode::getBoneByName(const std::string& name)
 {
-	if (this->bones.find(this->currentEntityName) != this->bones.end()
-		&& this->bones[this->currentEntityName].find(name) != this->bones[this->currentEntityName].end())
+	if (this->entityBonesByName != nullptr && this->entityBonesByName->contains(name))
 	{
-		return this->bones[this->currentEntityName][name];
+		return (*this->entityBonesByName)[name];
 	}
 
 	return nullptr;
 }
 
-SpriterAnimationSprite* SpriterAnimationNode::getSpriteById(const std::string& name)
+SpriterAnimationSprite* SpriterAnimationNode::getSpriteByName(const std::string& name)
 {
-	if (this->sprites.find(this->currentEntityName) != this->sprites.end()
-		&& this->sprites[this->currentEntityName].find(name) != this->sprites[this->currentEntityName].end())
+	if (this->entitySpritesByName != nullptr && this->entitySpritesByName->contains(name))
 	{
-		return this->sprites[this->currentEntityName][name];
+		return (*this->entitySpritesByName)[name];
+	}
+
+	return nullptr;
+}
+
+SpriterAnimationPart* SpriterAnimationNode::getPartByHash(int id)
+{
+	// Check if part matches a bone id
+	SpriterAnimationBone* bone = this->getBoneByHash(id);
+
+	if (bone != nullptr)
+	{
+		return bone;
+	}
+
+	// Check if part matches a sprite id
+	return getSpriteByHash(id);
+}
+
+SpriterAnimationBone* SpriterAnimationNode::getBoneByHash(int id)
+{
+	if (this->entityBonesByHash != nullptr && this->entityBonesByHash->contains(id))
+	{
+		return (*this->entityBonesByHash)[id];
+	}
+
+	return nullptr;
+}
+
+SpriterAnimationSprite* SpriterAnimationNode::getSpriteByHash(int id)
+{
+	if (this->entitySpritesByHash != nullptr && this->entitySpritesByHash->contains(id))
+	{
+		return (*this->entitySpritesByHash)[id];
 	}
 
 	return nullptr;
@@ -123,7 +156,36 @@ void SpriterAnimationNode::resetAnimation()
 
 void SpriterAnimationNode::setFlippedX(bool isFlippedX)
 {
-	// TODO
+	this->setScaleX(isFlippedX ? -1.0f : 1.0f);
+}
+
+void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName)
+{
+	this->currentEntityName = currentEntityName;
+	this->entityBonesByName = nullptr;
+	this->entityBonesByHash = nullptr;
+	this->entitySpritesByName = nullptr;
+	this->entitySpritesByHash = nullptr;
+	
+	if (this->bonesByName.contains(this->currentEntityName))
+	{
+		this->entityBonesByName = &this->bonesByName[this->currentEntityName];
+	}
+	
+	if (this->bonesByHash.contains(this->currentEntityName))
+	{
+		this->entityBonesByHash = &this->bonesByHash[this->currentEntityName];
+	}
+	
+	if (this->spritesByName.contains(this->currentEntityName))
+	{
+		this->entitySpritesByName = &this->spritesByName[this->currentEntityName];
+	}
+	
+	if (this->spritesByHash.contains(this->currentEntityName))
+	{
+		this->entitySpritesByHash = &this->spritesByHash[this->currentEntityName];
+	}
 }
 
 const std::string& SpriterAnimationNode::getCurrentEntityName()
@@ -138,22 +200,22 @@ const std::string& SpriterAnimationNode::getCurrentAnimation()
 
 const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCurrentBoneMap()
 {
-	if (this->bones.find(this->currentEntityName) == this->bones.end())
+	if (!this->bonesByName.contains(this->currentEntityName))
 	{
-		this->bones[this->currentEntityName] = std::map<std::string, SpriterAnimationBone*>();
+		this->bonesByName[this->currentEntityName] = std::map<std::string, SpriterAnimationBone*>();
 	}
 
-	return this->bones[this->currentEntityName];
+	return this->bonesByName[this->currentEntityName];
 }
 
 const std::map<std::string, SpriterAnimationSprite*>& SpriterAnimationNode::getCurrentSpriteMap()
 {
-	if (this->sprites.find(this->currentEntityName) == this->sprites.end())
+	if (!this->spritesByName.contains(this->currentEntityName))
 	{
-		this->sprites[this->currentEntityName] = std::map<std::string, SpriterAnimationSprite*>();
+		this->spritesByName[this->currentEntityName] = std::map<std::string, SpriterAnimationSprite*>();
 	}
 
-	return this->sprites[this->currentEntityName];
+	return this->spritesByName[this->currentEntityName];
 }
 
 void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
@@ -165,9 +227,13 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 			if (objectInfo.type == "bone")
 			{
 				SpriterAnimationBone* bone = SpriterAnimationBone::create(objectInfo.size);
+				std::hash<std::string> hasher = std::hash<std::string>();
+				size_t hash = hasher(objectInfo.name);
 
-				this->bones[entity.name][objectInfo.name] = bone;
-				this->animationPartContainer->addChild(bone);
+				this->bonesByName[entity.name][objectInfo.name] = bone;
+				this->bonesByHash[entity.name][int(hash)] = bone;
+				
+				this->addAnimationPartChild(bone);
 			}
 		}
 	}
@@ -208,20 +274,22 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					uint64_t folderFileKey = uint64_t(key.object.folderId) << 32 | uint64_t(key.object.fileId);
 
-					if (folderFileIdMap.find(folderFileKey) == folderFileIdMap.end()
-						|| this->sprites[entity.name].find(timeline.name) != this->sprites[entity.name].end())
+					if (!folderFileIdMap.contains(folderFileKey) || this->spritesByName[entity.name].contains(timeline.name))
 					{
 						continue;
 					}
 
 					// Creation was deferred until now rather than during the folder/file id map building, since we needed a timeline id
 					// As far as I can tell, timeline ids are the same for all references of an object.
-					SpriterAnimationSprite* part = SpriterAnimationSprite::create(containingFolder + folderFileIdMap[folderFileKey], anchorMap[folderFileKey]);
+					SpriterAnimationSprite* sprite = SpriterAnimationSprite::create(containingFolder + folderFileIdMap[folderFileKey], anchorMap[folderFileKey]);
 					
-					this->animationPartContainer->addChild(part);
+					this->addAnimationPartChild(sprite);
 
-					this->sprites[entity.name][timeline.name] = part;
-					this->spriteIdMap[timeline.id] = part;
+					std::hash<std::string> hasher = std::hash<std::string>();
+					size_t hash = hasher(timeline.name);
+
+					this->spritesByName[entity.name][timeline.name] = sprite;
+					this->spritesByHash[entity.name][int(hash)] = sprite;
 
 					// Erase the key to ensure we only create the sprite once
 					folderFileIdMap.erase(folderFileKey);

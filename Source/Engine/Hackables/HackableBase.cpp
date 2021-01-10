@@ -94,7 +94,7 @@ void HackableBase::update(float dt)
 	}
 }
 
-std::string HackableBase::getHackableIdentifier()
+const std::string& HackableBase::getHackableIdentifier()
 {
 	return this->hackableIdentifier;
 }
@@ -148,7 +148,7 @@ void HackableBase::tryRefreshCooldown()
 	}
 }
 
-std::string HackableBase::getHackBarResource()
+const std::string& HackableBase::getHackBarResource()
 {
 	switch(this->getHackBarColor())
 	{
@@ -192,7 +192,7 @@ std::string HackableBase::getHackBarResource()
 	}
 }
 
-std::string HackableBase::getHackBarCooldownResource()
+const std::string& HackableBase::getHackBarCooldownResource()
 {
 	return UIResources::HUD_FillCooldown;
 }
@@ -202,7 +202,7 @@ HackableBase::HackBarColor HackableBase::getHackBarColor()
 	return this->hackBarColor;
 }
 
-std::string HackableBase::getIconResource()
+const std::string& HackableBase::getIconResource()
 {
 	return this->iconResource;
 }

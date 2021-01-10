@@ -222,17 +222,13 @@ void RowTotals::initializePositions()
 	this->enemyHexCardDecreaseLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX + offsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::hexRowOffsetY);
 }
 
-void RowTotals::onBeforeStateChange(GameState* gameState)
+void RowTotals::onAfterAnyStateChange(GameState* gameState)
 {
-	super::onBeforeStateChange(gameState);
-}
-
-void RowTotals::onAnyStateChange(GameState* gameState)
-{
-	super::onAnyStateChange(gameState);
+	super::onAfterAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{
+		case GameState::StateType::LoadInitialState:
 		case GameState::StateType::GameStart:
 		case GameState::StateType::GameEnd:
 		case GameState::StateType::RoundStart:

@@ -25569,21 +25569,6 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_EnterTheMines() = default;
 	};
 
-	class Platformer_Objectives_UnderflowRuins_UR_ExploreCistern : public LocalizedString
-	{
-	public:
-		static Platformer_Objectives_UnderflowRuins_UR_ExploreCistern* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Objectives_UnderflowRuins_UR_ExploreCistern();
-		virtual ~Platformer_Objectives_UnderflowRuins_UR_ExploreCistern() = default;
-	};
-
 	class Platformer_Objectives_UnderflowRuins_UR_ExploreFountain : public LocalizedString
 	{
 	public:
@@ -25672,6 +25657,51 @@ namespace Strings
 	private:
 		Platformer_Objectives_UnderflowRuins_UR_ReturnToHera();
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_ReturnToHera() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_SearchCistern : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_SearchCistern* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_SearchCistern();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_SearchCistern() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_SlayMedusa : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_SlayMedusa* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_SlayMedusa();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_SlayMedusa() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle() = default;
 	};
 
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString

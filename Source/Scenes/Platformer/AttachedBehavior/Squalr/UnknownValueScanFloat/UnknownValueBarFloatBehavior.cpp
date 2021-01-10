@@ -44,7 +44,7 @@ UnknownValueBarFloatBehavior* UnknownValueBarFloatBehavior::create(GameObject* o
 
 UnknownValueBarFloatBehavior::UnknownValueBarFloatBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->deltaString);
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillRed));

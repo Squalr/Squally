@@ -35,7 +35,7 @@ FriendlyExpBarBehavior* FriendlyExpBarBehavior::create(GameObject* owner)
 
 FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->deltaString = Strings::Common_PlusConstant::create();
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 	this->levelUpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_LevelUp::create());

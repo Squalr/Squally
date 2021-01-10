@@ -34,7 +34,7 @@ SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 
 SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 	this->leftPressed = false;
 	this->rightPressed = false;
 	this->upPressed = false;
@@ -202,6 +202,7 @@ void SquallyMovementBehavior::loadSquallyPosition()
 			ObjectEvents::QueryObjects<MapLayer>(QueryObjectsArgs<MapLayer>([&](MapLayer* mapLayer)
 			{
 				GameUtils::changeParent(this->squally, mapLayer, true);
+				mapLayer->setHackable();
 			}), layerId);
 
 			PlatformerEvents::TriggerSquallySpawned();

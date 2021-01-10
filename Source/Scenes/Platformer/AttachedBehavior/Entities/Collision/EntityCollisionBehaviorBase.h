@@ -45,7 +45,7 @@ private:
 	void buildEntityCollision();
 	void buildMovementCollision();
 	void buildWallDetectors();
-	void tryBind();
+	virtual void tryBind();
 
 	EntityGroundCollisionBehavior* groundCollision;
 	EntityHeadCollisionBehavior* headCollision;

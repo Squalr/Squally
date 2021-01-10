@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1010">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1011">
  <properties>
   <property name="rubber-band" type="int" value="8"/>
  </properties>
@@ -38,10 +38,9 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="980" name="Ruins/Background/DesertLayer1" type="decor" x="-4178.71" y="485.091" width="14709.3" height="1090">
+  <object id="980" name="Ruins/Background/DesertLayer1" type="decor" x="-3250.71" y="1557.09" width="10101.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -50,10 +49,9 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="979" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="1654" width="14517.6" height="1088">
+  <object id="979" name="Ruins/Background/DesertLayer0" type="decor" x="-2568.44" y="1654" width="8885.6" height="1904">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="1.75"/>
    </properties>
   </object>
  </objectgroup>
@@ -110,6 +108,11 @@
    </properties>
   </object>
   <object id="1009" name="life-stone" type="object" x="1097" y="1244.5" width="146" height="423"/>
+  <object id="1010" name="chest" type="object" x="397.333" y="74.6667" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>

@@ -14,16 +14,29 @@ protected:
 	DeveloperScene();
 	virtual ~DeveloperScene();
 
-private:
-	typedef GlobalScene super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	ScrollPane* scrollPane;
-	std::vector<ClickableTextNode*> chapterList;
+private:
+	typedef GlobalScene super;
 
+	struct ChapterDebugInfo
+	{
+		ClickableTextNode* titleButton;
+		std::vector<ClickableTextNode*> mapList;
+		ScrollPane* scrollPane;
+
+		ChapterDebugInfo(ClickableTextNode* titleButton, std::vector<ClickableTextNode*> mapList, ScrollPane* scrollPane)
+			: titleButton(titleButton), mapList(mapList), scrollPane(scrollPane) { }
+	};
+
+	void selectChapter(int index);
+	ScrollPane* buildScrollPane();
+	ClickableTextNode* buildTitleButton(std::string displayName);
 	ClickableTextNode* buildDebugButton(std::string displayName, std::string mapResource);
 
-	static DeveloperScene* instance;
+	std::vector<ChapterDebugInfo> chapterDebugInfoList;
+
+	static DeveloperScene* Instance;
 };

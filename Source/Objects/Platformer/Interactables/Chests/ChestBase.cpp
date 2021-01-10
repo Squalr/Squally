@@ -48,8 +48,8 @@ ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties
 
 	chestPoolDeserializer->deserialize(&deserializeArgs);
 
-	this->addChild(this->chestClosed);
-	this->addChild(this->chestOpen);
+	this->contentNode->addChild(this->chestClosed);
+	this->contentNode->addChild(this->chestOpen);
 }
 
 ChestBase::~ChestBase()

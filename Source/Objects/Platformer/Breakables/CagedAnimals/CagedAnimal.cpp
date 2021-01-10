@@ -31,7 +31,7 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 	this->shineFx->setOpacity(0);
 
 	this->animalNode->addChild(this->shineFx);
-	this->contentNode->addChild(this->animalNode);
+	this->cagedContentNode->addChild(this->animalNode);
 }
 
 CagedAnimal::~CagedAnimal()

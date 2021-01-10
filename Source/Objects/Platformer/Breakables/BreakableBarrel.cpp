@@ -32,8 +32,8 @@ BreakableBarrel::BreakableBarrel(ValueMap& properties) : super(properties, Size(
 	this->barrelSprite = Sprite::create(ObjectResources::Doors_Tent_BARREL);
 	this->explosion = SmartAnimationSequenceNode::create();
 
-	this->addChild(this->barrelSprite);
-	this->addChild(this->explosion);
+	this->contentNode->addChild(this->barrelSprite);
+	this->contentNode->addChild(this->explosion);
 }
 
 BreakableBarrel::~BreakableBarrel()

@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4109.32" y="-57.181" width="14981.3" height="318">
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4141.32" y="894.819" width="14981.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3714.65" y="-962.85" width="14229.3" height="1478">
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3634.65" y="701.15" width="11797.3" height="1478">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,10 +39,9 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-3804.47" y="15.212" width="14469.3" height="1519">
+  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-3308.47" y="1039.21" width="11013.3" height="1519">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -53,10 +50,9 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-3922.71" y="485.091" width="14709.3" height="1090">
+  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-2882.71" y="1509.09" width="10133.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>

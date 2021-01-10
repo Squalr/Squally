@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1210">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1215">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -6">
+ <objectgroup id="18" name="bg -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -99,22 +99,6 @@
     <property name="transition" value="bottom-right"/>
    </properties>
   </object>
-  <object id="1131" name="logic-torch" type="object" x="2566.38" y="1223.83" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
-   </properties>
-  </object>
-  <object id="1132" name="logic-torch" type="object" x="4246.56" y="1222.47" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
-   </properties>
-  </object>
   <object id="1133" name="lever" type="object" x="2383.38" y="2642.11" width="177" height="205">
    <properties>
     <property name="send-event" value="bridge-group-A"/>
@@ -123,6 +107,26 @@
   <object id="1134" name="lever" type="object" x="4338.77" y="2642.95" width="177" height="205">
    <properties>
     <property name="send-event" value="bridge-group-B"/>
+   </properties>
+  </object>
+  <object id="1210" name="logic-torch" type="object" x="2579.11" y="1223.94" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
+   </properties>
+  </object>
+  <object id="1211" name="logic-torch" type="object" x="4259.29" y="1219.58" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
    </properties>
   </object>
  </objectgroup>
@@ -873,7 +877,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="101" name="terrain +3 bg">
+ <objectgroup id="101" name="terrain +3 bg" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -896,7 +900,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="objects +3">
+ <objectgroup id="96" name="objects +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>

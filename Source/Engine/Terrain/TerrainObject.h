@@ -146,6 +146,8 @@ public:
 		}
 	};
 
+	void setDynamic(bool isDynamic);
+
 	static const std::string MapKey;
 	static const std::string PropertyTopOnly;
 	static unsigned int NextTerrainId;
@@ -190,6 +192,7 @@ private:
 	bool isRightAngle(float normalAngle);
 	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
 	void buildTerrain();
+	void updateCachedCoords(bool force = false);
 	void optimizationHideOffscreenTerrain();
 
 	TerrainData terrainData;
@@ -197,6 +200,7 @@ private:
 	bool isInactive;
 	bool isFlipped;
 	bool hasBuiltTerrain;
+	bool isDynamic;
 	unsigned int terrainObjectId;
 
 	cocos2d::Rect drawRect;

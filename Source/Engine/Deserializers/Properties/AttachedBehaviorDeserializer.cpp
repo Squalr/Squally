@@ -17,7 +17,7 @@ AttachedBehaviorDeserializer::~AttachedBehaviorDeserializer()
 
 AttachedBehavior* AttachedBehaviorDeserializer::deserialize(AttachedBehaviorDeserializer::AttachedBehaviorDeserializationRequestArgs args)
 {
-	if (this->attachedBehaviorDeserializers.find(args.attachedBehavior) != this->attachedBehaviorDeserializers.end())
+	if (this->attachedBehaviorDeserializers.contains(args.attachedBehavior))
 	{
 		return this->attachedBehaviorDeserializers[args.attachedBehavior](args.owner);
 	}

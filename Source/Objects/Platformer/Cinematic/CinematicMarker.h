@@ -2,11 +2,6 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class CollisionObject;
 class HackableData;
 
@@ -20,10 +15,6 @@ public:
 protected:
 	CinematicMarker(cocos2d::ValueMap& properties);
 	virtual ~CinematicMarker();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef HackableObject super;

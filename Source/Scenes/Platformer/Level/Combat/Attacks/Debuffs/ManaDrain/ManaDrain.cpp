@@ -80,7 +80,7 @@ void ManaDrain::initializePositions()
 {
 	super::initializePositions();
 
-	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 24.0f);
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 12.0f);
 }
 
 void ManaDrain::registerHackables()

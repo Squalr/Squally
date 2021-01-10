@@ -106,10 +106,11 @@ void Warp::doRelayer()
 		return;
 	}
 
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+	MapLayer* mapLayer = GameUtils::getFirstParentOfType<MapLayer>(this);
 
-	if (layer != nullptr)
+	if (mapLayer != nullptr)
 	{
-		GameUtils::changeParent(squally, layer, true);
+		GameUtils::changeParent(squally, mapLayer, true);
+		mapLayer->setHackable();
 	}
 }

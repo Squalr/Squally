@@ -35,8 +35,8 @@ EdgeLanternGate::EdgeLanternGate(ValueMap& properties) : super(properties, Size(
 		this->gateFront->setFlippedX(true);
 	}
 
-	this->backNode->addChild(this->gateBack);
-	this->backNode->addChild(this->gateFront);
+	this->contentNode->addChild(this->gateBack);
+	this->contentNode->addChild(this->gateFront);
 }
 
 EdgeLanternGate::~EdgeLanternGate()

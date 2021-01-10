@@ -72,6 +72,7 @@ void TalkToHera::onLoad(QuestState questState)
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
+			this->hera->clearState(StateKeys::PatrolSourceX);
 			this->hera->clearState(StateKeys::PatrolDestinationX);
 			this->hera->setState(StateKeys::PatrolHijacked, Value(true));
 			this->hera->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));

@@ -15,7 +15,7 @@ class TimelineEventGroup;
 class CombatEvents
 {
 public:
-	static const std::string EventSpawn;
+	static const std::string EventSpawnPrefix;
 	static const std::string EventQueryTimeline;
 	static const std::string EventGetAssociatedTimelineEntry;
 	static const std::string EventMenuBack;

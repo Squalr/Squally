@@ -45,6 +45,7 @@ protected:
 	void setRealValue(int value);
 	void setHackValue(int value);
 	
+	cocos2d::Node* backNode;
 	cocos2d::Node* doorNode;
 	SmartClippingNode* doorClip;
 	cocos2d::Node* frontNode;

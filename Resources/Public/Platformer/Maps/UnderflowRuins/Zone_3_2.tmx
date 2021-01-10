@@ -555,6 +555,7 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
     <property name="tag" value="torch-left"/>
@@ -564,6 +565,7 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
     <property name="tag" value="torch-right"/>

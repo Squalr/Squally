@@ -233,7 +233,7 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 
 	int squallyEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(1)).asInt();
 	Node* content = Node::create();
-	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(-32.0f, -32.0f), squallyEq);
+	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(0.0f, -32.0f), squallyEq);
 	std::string helperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
 
 	squallyAvatar->setPosition(Vec2(-356.0f, 0.0f));

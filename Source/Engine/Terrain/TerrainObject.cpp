@@ -54,6 +54,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
 	this->hasBuiltTerrain = false;
+	this->isDynamic = false;
 
 	this->addTag(TerrainObject::MapKey);
 
@@ -210,6 +211,11 @@ void TerrainObject::onHackerModeDisable()
 	this->setVisible(true);
 }
 
+void TerrainObject::setDynamic(bool isDynamic)
+{
+	this->isDynamic = isDynamic;
+}
+
 void TerrainObject::initResources()
 {
 	if (!this->isFlipped)
@@ -262,8 +268,8 @@ void TerrainObject::setPoints(const std::vector<Vec2>& points)
 	this->drawRect = AlgoUtils::getPolygonRect(this->points);
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
-	// Terrain doesn't move, this should never need to be updated.
-	this->cachedCoords = GameUtils::getWorldCoords3D(this, false) + Vec3(drawRect.origin.x, drawRect.origin.y, 0.0f);
+	// Most terrain is static, so the coords only need be updated once
+	this->updateCachedCoords(true);
 }
 
 void TerrainObject::cullCollision()
@@ -1029,11 +1035,23 @@ void TerrainObject::buildTerrain()
 	this->buildSurfaceTextures();
 }
 
+void TerrainObject::updateCachedCoords(bool force)
+{
+	if (this->isDynamic || force)
+	{
+		// Terrain doesn't move, this should never need to be updated.
+		this->cachedCoords = GameUtils::getWorldCoords3D(this, false) + Vec3(drawRect.origin.x, drawRect.origin.y, 0.0f);
+		return;
+	}
+}
+
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
-	static const Size Padding = Size(128.0f, 128.0f);
+	static const Size Padding = Size(384.0f, 384.0f);
 	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+
+	this->updateCachedCoords();
 	Rect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
 
 	if (CameraRect.intersectsRect(thisRect))

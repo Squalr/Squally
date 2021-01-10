@@ -14,7 +14,7 @@ std::map<std::string, SpriterAnimationTimeline*> SpriterAnimationTimeline::Timel
 
 SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::string& animationResource)
 {
-	if (SpriterAnimationTimeline::TimelineCache.find(animationResource) == SpriterAnimationTimeline::TimelineCache.end())
+	if (!SpriterAnimationTimeline::TimelineCache.contains(animationResource))
 	{
 		SpriterAnimationTimeline* timeline = new SpriterAnimationTimeline(animationResource);
 
@@ -32,13 +32,20 @@ SpriterAnimationTimeline::SpriterAnimationTimeline(const std::string& animationR
 	this->mainlineEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventMainline*>>>();
 	this->animationEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>>();
 	this->registeredAnimationNodes = std::set<SpriterAnimationNode*>();
-
+	this->onEnterRunOnce = false;
+	
 	this->buildTimelines(SpriterAnimationParser::Parse(animationResource));
 }
 
 void SpriterAnimationTimeline::onEnter()
 {
-	super::onEnter();
+	// Optimization
+	if (!this->onEnterRunOnce)
+	{
+		super::onEnter();
+
+		this->onEnterRunOnce = true;
+	}
 
 	this->scheduleUpdate();
 }
@@ -47,13 +54,12 @@ void SpriterAnimationTimeline::update(float dt)
 {
 	super::update(dt);
 
-	for (auto animationNode : this->registeredAnimationNodes)
+	for (SpriterAnimationNode* animationNode : this->registeredAnimationNodes)
 	{
 		const std::string& entityName = animationNode->getCurrentEntityName();
 		const std::string& animationName = animationNode->getCurrentAnimation();
 
-		if (this->mainlineEvents.find(entityName) == this->mainlineEvents.end()
-			|| this->mainlineEvents[entityName].find(animationName) == this->mainlineEvents[entityName].end())
+		if (!this->mainlineEvents.contains(entityName) || !this->mainlineEvents[entityName].contains(animationName))
 		{
 			continue;
 		}
@@ -62,15 +68,18 @@ void SpriterAnimationTimeline::update(float dt)
 		animationNode->advanceTimelineTime(dt, this->mainlineEvents[entityName][animationName].back()->getEndTime());
 
 		// Process all mainline events (heirarchy, z-sorting, global interpolation type)
-		for (auto mainlineEvent : this->mainlineEvents[entityName][animationName])
+		for (SpriterAnimationTimelineEventMainline* mainlineEvent : this->mainlineEvents[entityName][animationName])
 		{
 			mainlineEvent->advance(animationNode);
 		}
 
 		// Process all animation events (position, scale, rotation, local interpolation type)
-		for (auto animationEvent : this->animationEvents[entityName][animationName])
+		for (SpriterAnimationTimelineEventAnimation* animationEvent : this->animationEvents[entityName][animationName])
 		{
-			animationEvent->advance(animationNode);
+			if (animationEvent->canAdvance())
+			{
+				animationEvent->advance(animationNode);
+			}
 		}
 	}
 }
@@ -87,14 +96,17 @@ void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* ani
 
 void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 {
-	for (const auto& entity : spriterData.entities)
+	std::vector<SpriterAnimationTimelineEventMainline*> allMainlines = std::vector<SpriterAnimationTimelineEventMainline*>();
+
+	for (const SpriterEntity& entity : spriterData.entities)
 	{
-		for (const auto& animation : entity.animations)
+		for (const SpriterAnimation& animation : entity.animations)
 		{
 			// There exists a 'key' property on bone/obj refs that maps to a timeline key at a given time.
 			// Painfully, there can be extraneous info in the timeilne that we need to ignore if it references a value that does not exist in this set.
 			// Joint key of key << 48 | timeline id << 32 | timeline time. We can get away with hashing 3 ints this way because key/timeline ID will always be small ints.
 			std::set<uint64_t> mainlineTimelineRefKeys = std::set<uint64_t>();
+			std::map<int, SpriterAnimationTimelineEventMainline*> mainlinesByTime = std::map<int, SpriterAnimationTimelineEventMainline*>();
 
 			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
@@ -115,7 +127,10 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				{
 					mainlineTimelineRefKeys.insert(uint64_t(objectRef.key) << 48 | uint64_t(objectRef.timeline) << 32 | uint64_t(mainlineKey.time));
 				}
+
+				mainlinesByTime[mainlineKey.time] = mainlineEvent;
 				
+				allMainlines.push_back(mainlineEvent);
 				this->addChild(mainlineEvent);
 			}
 			
@@ -124,15 +139,45 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 			{
 				// Filter out extraneous timeline information that references non-existent keys.
 				std::vector<SpriterTimelineKey> filteredKeys = std::vector<SpriterTimelineKey>();
+				std::set<int> filteredKeyTimes = std::set<int>();
+
 				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
 				{
-					return mainlineTimelineRefKeys.find(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time)) != mainlineTimelineRefKeys.end();
+					return mainlineTimelineRefKeys.contains(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time));
 				});
 
 				// Sort by time ascending
 				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
 				{ 
-					return a.time > b.time; 
+					return a.time < b.time; 
+				});
+
+				for (const SpriterTimelineKey& next : filteredKeys)
+				{
+					filteredKeyTimes.insert(next.time);
+				}
+
+				// Fill in missing times. Our particular implementation expects an event for each object at each frame.
+				for (const auto& [time, value] : mainlinesByTime)
+				{
+					if (!filteredKeyTimes.contains(time))
+					{
+						for (int index = int(filteredKeys.size() - 1); index >= 0; index--)
+						{
+							if (filteredKeys[index].time < time)
+							{
+								filteredKeys.push_back(filteredKeys[index]);
+								filteredKeys.back().time = time;
+								break;
+							}
+						}
+					}
+				}
+
+				// Resort
+				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
+				{ 
+					return a.time < b.time; 
 				});
 
 				std::vector<SpriterAnimationTimelineEventAnimation*> eventsToAdd = std::vector<SpriterAnimationTimelineEventAnimation*>(filteredKeys.size());
@@ -140,8 +185,14 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				// Parse animation keys (each key is a unique event)
 				for (int index = 0; index < int(filteredKeys.size()); index++)
 				{
+					const SpriterTimelineKey& timelineKey = filteredKeys[index];
 					float endTime = index + 1 < int(filteredKeys.size()) ? filteredKeys[index + 1].time : animation.length;
-					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, filteredKeys[index]);
+					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timelineKey);
+
+					if (mainlinesByTime.contains(timelineKey.time))
+					{
+						mainlinesByTime[timelineKey.time]->registerAnimation(animationTimeline);
+					}
 
 					eventsToAdd[index] = animationTimeline;
 
@@ -158,6 +209,16 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				}
 			}
 		}
+	}
+
+	for (SpriterAnimationTimelineEventMainline* next : allMainlines)
+	{
+		next->buildAnimationHeirarchy();
+	}
+
+	for (SpriterAnimationTimelineEventMainline* next : allMainlines)
+	{
+		next->buildDeltas();
 	}
 }
 

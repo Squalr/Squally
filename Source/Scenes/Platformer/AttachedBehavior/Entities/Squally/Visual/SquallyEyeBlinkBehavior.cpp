@@ -29,7 +29,7 @@ SquallyEyeBlinkBehavior* SquallyEyeBlinkBehavior::create(GameObject* owner)
 
 SquallyEyeBlinkBehavior::SquallyEyeBlinkBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 
 	this->leftEyeController = SmartAnimationSequenceNode::create();
 	this->rightEyeController = SmartAnimationSequenceNode::create();

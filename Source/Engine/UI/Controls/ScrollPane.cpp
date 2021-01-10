@@ -285,7 +285,7 @@ float ScrollPane::getLowestChild(Vector<cocos2d::Node*>& children, float lowestI
 	{
 		if (GameUtils::isVisibleUntil<ScrollPane>(next))
 		{
-			lowestItem = std::min(lowestItem, next->getBoundingBox().getMinY() - (next->getContentSize().height / 2.0f * GameUtils::getScale(next)));
+			lowestItem = std::min(lowestItem, next->getBoundingBox().getMinY() - (next->getContentSize().height / 2.0f * GameUtils::getUniformScale(next)));
 
 			// Recurse
 			lowestItem = this->getLowestChild(next->getChildren(), lowestItem);

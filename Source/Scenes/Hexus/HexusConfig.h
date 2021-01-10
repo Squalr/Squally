@@ -24,8 +24,6 @@ public:
 	static const float coinFlipStartDelay;
 	static const float coinFlipStartScale;
 	static const float coinFlipEndScale;
-	static const float coinFlipUpDuration;
-	static const float coinFlipDownDuration;
 	static const float coinFlipSpeed;
 	static const float coinFlipRestDuration;
 	static const float coinFlipFadeSpeed;

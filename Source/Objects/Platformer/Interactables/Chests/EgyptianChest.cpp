@@ -17,7 +17,7 @@ EgyptianChest* EgyptianChest::create(ValueMap& properties)
 	return instance;
 }
 
-EgyptianChest::EgyptianChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+EgyptianChest::EgyptianChest(ValueMap& properties) : super(properties, Size(128.0f, 112.0f))
 {
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_EgyptianChestOpen);
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_EgyptianChestClosed);

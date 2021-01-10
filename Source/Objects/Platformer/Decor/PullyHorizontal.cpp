@@ -15,7 +15,6 @@
 using namespace cocos2d;
 
 const std::string PullyHorizontal::MapKey = "pully-horizontal";
-const std::string PullyHorizontal::PropertyColor = "color";
 
 PullyHorizontal* PullyHorizontal::create(ValueMap& properties)
 {
@@ -28,7 +27,7 @@ PullyHorizontal* PullyHorizontal::create(ValueMap& properties)
 
 PullyHorizontal::PullyHorizontal(ValueMap& properties) : super(properties)
 {
-	bool isYellow = GameUtils::getKeyOrDefault(this->properties, PullyHorizontal::PropertyColor, Value("")).asString() == "yellow";
+	bool isYellow = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString() == "yellow";
 	this->wheelLeft = Sprite::create(isYellow ? ObjectResources::Decor_Pullies_WheelLight : ObjectResources::Decor_Pullies_WheelDark);
 	this->wheelRight = Sprite::create(isYellow ? ObjectResources::Decor_Pullies_WheelLight : ObjectResources::Decor_Pullies_WheelDark);
 	this->rope = SmartAnimationSequenceNode::create(ObjectResources::Decor_Pullies_PullyHorizontal_0000);

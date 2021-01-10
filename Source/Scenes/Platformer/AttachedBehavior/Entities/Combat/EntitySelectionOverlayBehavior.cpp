@@ -30,7 +30,7 @@ EntitySelectionOverlayBehavior* EntitySelectionOverlayBehavior::create(GameObjec
 
 EntitySelectionOverlayBehavior::EntitySelectionOverlayBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
 
 	this->lightRay->setVisible(false);

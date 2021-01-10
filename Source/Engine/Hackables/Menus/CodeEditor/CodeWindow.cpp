@@ -433,7 +433,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 		{
 			Color3B color = CodeWindow::DefaultColor;
 
-			if (CodeWindow::Registers.find(token) != CodeWindow::Registers.end())
+			if (CodeWindow::Registers.contains(token))
 			{
 				color = CodeWindow::RegisterColor;
 			}

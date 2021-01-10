@@ -21,7 +21,7 @@ FriendlyCombatCollisionBehavior* FriendlyCombatCollisionBehavior::create(GameObj
 
 FriendlyCombatCollisionBehavior::FriendlyCombatCollisionBehavior(GameObject* owner) : super(owner, (int)CombatCollisionType::EntityFriendly, (int)CombatCollisionType::Movement)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{
@@ -45,4 +45,9 @@ void FriendlyCombatCollisionBehavior::onDisable()
 
 void FriendlyCombatCollisionBehavior::onEntityCollisionCreated()
 {
+}
+
+void FriendlyCombatCollisionBehavior::tryBind()
+{
+	// Disabled
 }

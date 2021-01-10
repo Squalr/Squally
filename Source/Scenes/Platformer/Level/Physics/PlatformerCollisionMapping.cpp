@@ -84,7 +84,7 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 		return;
 	}
 
-	if (PlatformerCollisionMapping::CollisionMap.find(args->deserializedCollisionName) != PlatformerCollisionMapping::CollisionMap.end())
+	if (PlatformerCollisionMapping::CollisionMap.contains(args->deserializedCollisionName))
 	{
 		args->callback(PlatformerCollisionMapping::CollisionMap[args->deserializedCollisionName]);
 	}

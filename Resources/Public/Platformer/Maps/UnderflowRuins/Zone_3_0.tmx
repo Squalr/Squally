@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-249.181" width="14981.3" height="318">
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4341.32" y="782.819" width="11797.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3970.65" y="-962.85" width="14229.3" height="1534">
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3898.65" y="569.15" width="10773.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,7 +39,7 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1090" name="Ruins/Pyramid" type="decor" x="3183" y="33" width="1922" height="878"/>
+  <object id="1090" name="Ruins/Pyramid" type="decor" x="3191" y="225" width="1922" height="878"/>
   <object id="1091" name="Ruins/Obelisk" type="decor" x="-1257" y="-7" width="298" height="1102"/>
  </objectgroup>
  <objectgroup id="136" name="desert bg 0">
@@ -49,10 +47,9 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1044" name="Ruins/Background/DesertLayer0" type="decor" x="-3152.44" y="774" width="14517.6" height="1088">
+  <object id="1044" name="Ruins/Background/DesertLayer0" type="decor" x="-3136.44" y="1270" width="9045.6" height="1904">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>

@@ -40,10 +40,10 @@ DragonDoor::DragonDoor(ValueMap& properties) : super(properties, Size(420.0f, 52
 	this->top = Sprite::create(ObjectResources::Doors_Dragon_DragonDoorTop);
 	this->teeth = Sprite::create(ObjectResources::Doors_Dragon_DragonDoorTeeth);
 
-	this->backNode->addChild(this->base);
-	this->backNode->addChild(this->bars);
-	this->backNode->addChild(this->top);
-	this->backNode->addChild(this->teeth);
+	this->contentNode->addChild(this->base);
+	this->contentNode->addChild(this->bars);
+	this->contentNode->addChild(this->top);
+	this->contentNode->addChild(this->teeth);
 	this->addChild(this->doorOpenSound);
 }
 

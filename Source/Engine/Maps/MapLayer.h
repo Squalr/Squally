@@ -13,6 +13,7 @@ public:
 
 	std::string getLayerType();
 	bool isHackable();
+	void setHackable();
 	bool isElevateTarget();
 
 	static const std::string MapKeyType;

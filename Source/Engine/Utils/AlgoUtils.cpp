@@ -105,7 +105,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 		{
 			std::tuple<int, int> signature = std::tuple<int, int>(remainder, numbers.size() - vote_choice_index);
 
-			if (memoization.find(signature) != memoization.end())
+			if (memoization.contains(signature))
 			{
 				return;
 			}

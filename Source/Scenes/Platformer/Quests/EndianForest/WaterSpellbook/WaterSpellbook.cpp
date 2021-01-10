@@ -47,7 +47,7 @@ WaterSpellbook* WaterSpellbook::create(GameObject* owner, QuestLine* questLine)
 WaterSpellbook::WaterSpellbook(GameObject* owner, QuestLine* questLine) : super(owner, questLine, WaterSpellbook::MapKeyQuest, false)
 {
 	this->squally = nullptr;
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 }
 
 WaterSpellbook::~WaterSpellbook()

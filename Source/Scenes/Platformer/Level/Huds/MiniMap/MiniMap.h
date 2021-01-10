@@ -25,6 +25,8 @@ class MiniMap : public Hud
 public:
 	static MiniMap* create();
 
+	void show(bool instant = false);
+	void hide(bool instant = false);
 	void setPositioning(std::string miniMapPositioning = "");
 	bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 
@@ -32,7 +34,6 @@ protected:
 	MiniMap();
 	virtual ~MiniMap();
 	
-	void onEnter() override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void initializePositions() override;
@@ -43,7 +44,6 @@ protected:
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 
 	cocos2d::Node* rootNode;
-	cocos2d::Node* toggleNode;
 	cocos2d::DrawNode* background;
 	cocos2d::Node* mapNode;
 	MiniGameMap* map;

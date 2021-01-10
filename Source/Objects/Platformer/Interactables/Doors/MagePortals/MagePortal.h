@@ -35,7 +35,7 @@ private:
 	typedef Portal super;
 
 	SmartClippingNode* portalBase;
-	cocos2d::Node* contentNode;
+	cocos2d::Node* portalContentNode;
 	cocos2d::DrawNode* background;
 	cocos2d::DrawNode* edge;
 	WorldSound* portalOpenSound;

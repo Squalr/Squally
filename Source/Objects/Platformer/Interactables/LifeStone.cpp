@@ -14,7 +14,8 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/PlatformerHelper.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
@@ -98,14 +99,22 @@ void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 	this->runHealAnimation();
 
 	PlatformerEvents::TriggerSaveRespawn(PlatformerEvents::SaveRespawnArgs(this->getUniqueIdentifier()));
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
+	
+	ObjectEvents::QueryObjects<Squally>(QueryObjectsArgs<Squally>([&](Squally* squally)
+	{
+		squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+		});
+	}), Squally::MapKey);
+	
+	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* entity)
 	{
 		entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});
-	}), PlatformerFriendly::PlatformerFriendlyTag);
+	}), Squally::TeamTag);
 }
 
 void LifeStone::onEndCollision()

@@ -44,7 +44,7 @@ SquallyOutOfCombatAttackBehavior* SquallyOutOfCombatAttackBehavior::create(GameO
 
 SquallyOutOfCombatAttackBehavior::SquallyOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 	this->projectile = nullptr;
 
 	if (this->squally == nullptr)

@@ -28,7 +28,11 @@ protected:
 private:
 	typedef HackablePreview super;
 
+	void onFrameComplete();
+
 	SmartAnimationSequenceNode* previewSpikedLog;
 	LocalizedLabel* ecxAnimationCount;
 	ConstantString* countString;
+	int currentAnimationIndex;
+	int animationLength;
 };

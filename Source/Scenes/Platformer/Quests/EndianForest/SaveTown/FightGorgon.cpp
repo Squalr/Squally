@@ -200,6 +200,7 @@ void FightGorgon::runCinematicSequencePart1()
 		{
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 			{
+				this->squally->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->squally).x));
 				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 			}, FightGorgon::MarkerTagBack);
 
@@ -220,6 +221,7 @@ void FightGorgon::runCinematicSequencePart1Alt()
 		{
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 			{
+				this->squally->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->squally).x));
 				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 			}, FightGorgon::MarkerTagFront);
 

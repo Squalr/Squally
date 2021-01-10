@@ -117,8 +117,9 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			}
 		));
 		
-		fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
-		fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
+		float flipMultiplier = (owner->isFlippedX() ? -1.0f : 1.0f);
+		fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3(flipMultiplier * 96.0f, 96.0f, 0.0f));
+		fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3(flipMultiplier * 180.0f, 0.0f, 0.0f));
 
 		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{

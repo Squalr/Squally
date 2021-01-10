@@ -6,12 +6,19 @@
 class SpriterAnimationPart : public SmartNode
 {
 public:
-	int getId() const;
+	void addAnimationPartChild(SpriterAnimationPart* part);
+	void clearAnimationPartChildren();
 
 protected:
+	friend class SpriterAnimationTimeline;
+	friend class SpriterAnimationTimelineEventMainline;
+
 	SpriterAnimationPart();
 	virtual ~SpriterAnimationPart();
-
+	
+	SpriterAnimationPart* parentPart;
+	std::vector<SpriterAnimationPart*> childAnimationParts;
+	
 private:
 	typedef SmartNode super;
 };

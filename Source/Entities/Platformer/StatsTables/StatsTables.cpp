@@ -361,7 +361,7 @@ StatsTables::~StatsTables()
 
 int StatsTables::getExpRequiredAtLevel(PlatformerEntity* platformerEntity)
 {
-	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.contains(platformerEntity->getEntityKey()))
 	{
 		StatsIncrements stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 		int exp = stats.baseStats.exp;
@@ -380,7 +380,7 @@ int StatsTables::getExpRequiredAtLevel(PlatformerEntity* platformerEntity)
 
 int StatsTables::getKillExp(PlatformerEntity* platformerEntity)
 {
-	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.contains(platformerEntity->getEntityKey()))
 	{
 		return StatsTables::StatsTable[platformerEntity->getEntityKey()].baseStats.exp;
 	}
@@ -390,7 +390,7 @@ int StatsTables::getKillExp(PlatformerEntity* platformerEntity)
 
 int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 {
-	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.contains(platformerEntity->getEntityKey()))
 	{
 		StatsIncrements stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 		int mana = stats.baseStats.mana;
@@ -409,7 +409,7 @@ int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 
 int StatsTables::getBaseHealth(PlatformerEntity* platformerEntity)
 {
-	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.contains(platformerEntity->getEntityKey()))
 	{
 		StatsIncrements stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 		int health = stats.baseStats.health;
@@ -430,7 +430,7 @@ StatsTables::Stats StatsTables::getBonusStats(PlatformerEntity* platformerEntity
 {
 	Stats stats = Stats();
 	
-	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.contains(platformerEntity->getEntityKey()))
 	{
 		StatsIncrements statsIncrements = StatsTables::StatsTable[platformerEntity->getEntityKey()];
 

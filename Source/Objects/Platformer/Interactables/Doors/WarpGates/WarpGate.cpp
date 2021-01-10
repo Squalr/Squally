@@ -23,9 +23,10 @@ const std::string WarpGate::TagWarpGate = "warp-gate";
 
 WarpGate::WarpGate(ValueMap& properties) : super(properties, Size(128.0f, 256.0f))
 {
-	this->innerContentNode = Node::create();
-	this->contentNode = Node::create();
-	this->portalClip = SmartClippingNode::create(this->innerContentNode, Size(256.0f, 488.0f));
+	this->mapNodeContainer = Node::create();
+	this->mapNode = Node::create();
+	this->particlesNode = Node::create();
+	this->mapClip = SmartClippingNode::create(this->mapNodeContainer, Size(256.0f, 488.0f));
 	this->doorClosed = Sprite::create(ObjectResources::Doors_WarpGate_WarpGateClosed);
 	this->doorFrame = Sprite::create(ObjectResources::Doors_WarpGate_WarpGateFrame);
 	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
@@ -34,19 +35,19 @@ WarpGate::WarpGate(ValueMap& properties) : super(properties, Size(128.0f, 256.0f
 	this->edgeParticlesRight = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeVertical, SmartParticles::CullInfo(Size(64.0f, 512.0f)));
 	this->edgeParticlesUp = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeHorizontal, SmartParticles::CullInfo(Size(256.0f, 64.0f)));
 	this->edgeParticlesDown = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeHorizontal, SmartParticles::CullInfo(Size(256.0f, 64.0f)));
-
-	this->doorClosed->setVisible(false);
+	
 	this->addTag(WarpGate::TagWarpGate);
 
-	this->innerContentNode->addChild(this->contentNode);
-	this->innerContentNode->addChild(this->centerParticles);
-	this->innerContentNode->addChild(this->edgeParticlesLeft);
-	this->innerContentNode->addChild(this->edgeParticlesRight);
-	this->innerContentNode->addChild(this->edgeParticlesUp);
-	this->innerContentNode->addChild(this->edgeParticlesDown);
-	this->backNode->addChild(this->portalClip);
-	this->backNode->addChild(this->doorFrame);
-	this->backNode->addChild(this->doorClosed);
+	this->mapNodeContainer->addChild(this->mapNode);
+	this->mapNodeContainer->addChild(this->particlesNode);
+	this->particlesNode->addChild(this->centerParticles);
+	this->particlesNode->addChild(this->edgeParticlesLeft);
+	this->particlesNode->addChild(this->edgeParticlesRight);
+	this->particlesNode->addChild(this->edgeParticlesUp);
+	this->particlesNode->addChild(this->edgeParticlesDown);
+	this->contentNode->addChild(this->mapClip);
+	this->contentNode->addChild(this->doorFrame);
+	this->contentNode->addChild(this->doorClosed);
 	this->addChild(this->portalOpenSound);
 }
 
@@ -71,7 +72,7 @@ void WarpGate::initializePositions()
 
 	const float YOffset = -88.0f;
 
-	this->portalClip->setPosition(Vec2(0.0f, YOffset));
+	this->mapClip->setPosition(Vec2(0.0f, YOffset));
 	this->centerParticles->setPosition(Vec2(0.0f, 0.0f));
 	this->edgeParticlesLeft->setPosition(Vec2(-128.0f + 32.0f, 0.0f));
 	this->edgeParticlesRight->setPosition(Vec2(128.0f - 32.0f, 0.0f));
@@ -90,7 +91,7 @@ void WarpGate::lock(bool animate)
 
 	this->doorFrame->setVisible(false);
 	this->doorClosed->setVisible(true);
-	this->contentNode->setVisible(false);
+	this->mapNodeContainer->setVisible(false);
 
 	this->centerParticles->stop();
 	this->edgeParticlesLeft->stop();
@@ -105,7 +106,7 @@ void WarpGate::unlock(bool animate)
 
 	this->doorFrame->setVisible(true);
 	this->doorClosed->setVisible(false);
-	this->contentNode->setVisible(true);
+	this->mapNodeContainer->setVisible(true);
 	
 	this->centerParticles->start();
 	this->edgeParticlesLeft->start();

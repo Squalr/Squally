@@ -43,7 +43,7 @@ KnownValueBarInt32Behavior* KnownValueBarInt32Behavior::create(GameObject* owner
 
 KnownValueBarInt32Behavior::KnownValueBarInt32Behavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->deltaString);
 	this->healthString = ConstantString::create("-");

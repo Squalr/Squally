@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="5"/>
@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="777" name="Forest/Background/GreenForestRocks1" type="decor" x="-4781.69" y="397.3" width="13333.3" height="1140">
+  <object id="777" name="Forest/Background/GreenForestRocks1" type="decor" x="-4781.69" y="397.3" width="13333.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="776" name="Forest/Background/GreenForestGround2" type="decor" x="-4789.69" y="-938.7" width="13333.3" height="1140">
+  <object id="776" name="Forest/Background/GreenForestGround2" type="decor" x="-4789.69" y="-938.7" width="13333.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -128,10 +126,9 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="774" name="Forest/Background/GreenForestGround3" type="decor" x="-5505.81" y="609.6" width="14985.6" height="1116">
+  <object id="774" name="Forest/Background/GreenForestGround3" type="decor" x="-1529.81" y="761.6" width="7193.6" height="1953">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="1.75"/>
    </properties>
   </object>
  </objectgroup>

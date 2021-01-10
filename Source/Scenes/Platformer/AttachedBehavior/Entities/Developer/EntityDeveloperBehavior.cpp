@@ -8,6 +8,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -85,6 +86,11 @@ void EntityDeveloperBehavior::onLoad()
 		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->revive();
+		});
+
+		this->entity->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+		{
+			manaBehavior->setMana(manaBehavior->getMaxMana());
 		});
 	});
 

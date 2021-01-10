@@ -19,7 +19,7 @@ LocalizedString* Objectives::GetObjectiveString()
 
 	std::string objectiveKey = Objectives::GetCurrentObjective();
 
-	if (Objectives::ObjectiveMap.find(objectiveKey) != Objectives::ObjectiveMap.end())
+	if (Objectives::ObjectiveMap.contains(objectiveKey))
 	{
 		return Objectives::ObjectiveMap[objectiveKey].createFunc();
 	}
@@ -39,14 +39,14 @@ void Objectives::ClearObjective()
 
 void Objectives::SetCurrentObjective(std::string objectiveKey)
 {
-	if (Objectives::ObjectiveMap.find(objectiveKey) == Objectives::ObjectiveMap.end())
+	if (!Objectives::ObjectiveMap.contains(objectiveKey))
 	{
 		return;
 	}
 
-	std::string currentObjectiveKey = Objectives::GetCurrentObjective();
+	const std::string& currentObjectiveKey = Objectives::GetCurrentObjective();
 
-	if (Objectives::ObjectiveMap.find(currentObjectiveKey) != Objectives::ObjectiveMap.end())
+	if (Objectives::ObjectiveMap.contains(currentObjectiveKey))
 	{
 		int currentPriority = Objectives::ObjectiveMap[currentObjectiveKey].priority;
 		int newPriority = Objectives::ObjectiveMap[objectiveKey].priority;
@@ -104,7 +104,9 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::URHeadToTown] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_HeadToTown::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URLookForSurvivors] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URExploreFountain] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ExploreFountain::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::URExploreCistern] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ExploreCistern::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URSearchCistern] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_SearchCistern::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URSolvePuzzle] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URSlayMedusa] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_SlayMedusa::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URCureTownspeople] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CureTownspeople::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URReturnToHera] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ReturnToHera::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URCrossBridge] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CrossBridge::create(); }, priority++);

@@ -21,15 +21,15 @@
 	#include <stdlib.h>
 	#include <errno.h>
 	#include <sys/mman.h>
+
+	static void handler(int sig, siginfo_t *si, void *unused)
+	{
+		printf("Got SIGSEGV at address: %p\n", si->si_addr);
+	}
 #endif
 
 using namespace asmjit;
 using namespace asmtk;
-
-static void handler(int sig, siginfo_t *si, void *unused)
-{
-	printf("Got SIGSEGV at address: %p\n", si->si_addr);
-}
 
 bool HackUtils::setAllMemoryPermissions(void* address, int length)
 {

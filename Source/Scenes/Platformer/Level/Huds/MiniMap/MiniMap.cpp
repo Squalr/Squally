@@ -1,6 +1,7 @@
 #include "MiniMap.h"
 
 #include "cocos/2d/CCDrawNode.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
@@ -10,6 +11,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
+#include "Engine/Events/InventoryEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -17,6 +19,7 @@
 #include "Engine/Terrain/MiniMapTerrainObject.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Engine/Maps/MiniGameMap.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -47,7 +50,6 @@ MiniMap::MiniMap()
 	this->contentNode = Node::create();
 	this->layerDeserializers = std::vector<LayerDeserializer*>();
 	this->rootNode = Node::create();
-	this->toggleNode = Node::create();
 	this->mapNode = Node::create();
 	this->contentNode = Node::create();
 	this->mapClip = SmartClippingNode::create(this->mapNode, MiniMap::MiniMapSize);
@@ -58,6 +60,7 @@ MiniMap::MiniMap()
 	this->miniMapObjects = std::map<MiniMapObject*, float>();
 	this->background = DrawNode::create();
 	this->squallyMarker = nullptr;
+	this->squallyInventory = nullptr;
 
 	this->background->drawSolidRect(-Vec2(MiniMap::MiniMapSize) / 2.0f, Vec2(MiniMap::MiniMapSize) / 2.0f, Color4F(0, 0, 0, 0.5f));
 	
@@ -70,29 +73,18 @@ MiniMap::MiniMap()
 		}
 	);
 
-	this->setVisible(false);
+	this->rootNode->setOpacity(0);
 
 	this->mapNode->setScale(MiniMap::MiniMapScale);
 	
-	this->toggleNode->addChild(this->background);
-	this->toggleNode->addChild(this->mapClip);
-	this->toggleNode->addChild(this->contentNode);
-	this->rootNode->addChild(this->toggleNode);
+	this->rootNode->addChild(this->background);
+	this->rootNode->addChild(this->mapClip);
+	this->rootNode->addChild(this->contentNode);
 	this->addChild(this->rootNode);
 }
 
 MiniMap::~MiniMap()
 {
-}
-
-void MiniMap::onEnter()
-{
-	super::onEnter();
-
-	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
-	mapNode->setVisible(this->requiredItemKey == "");
-
-	this->initializeMapData();
 }
 
 void MiniMap::onHackerModeEnable()
@@ -122,13 +114,45 @@ void MiniMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventShowMiniMap, [=](EventCustom* eventCustom)
 	{
-		this->toggleNode->setVisible(true);
+		this->show();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHideMiniMap, [=](EventCustom* eventCustom)
 	{
-		this->toggleNode->setVisible(false);
+		this->hide();
 	}));
+}
+
+void MiniMap::update(float dt)
+{
+	super::update(dt);
+
+	this->positionMiniMap();
+	this->positionEntityIcons();
+}
+
+void MiniMap::show(bool instant)
+{
+	if (instant)
+	{
+		this->rootNode->setOpacity(255);
+	}
+	else
+	{
+		this->rootNode->runAction(FadeTo::create(0.25f, 255));
+	}
+}
+
+void MiniMap::hide(bool instant)
+{
+	if (instant)
+	{
+		this->rootNode->setOpacity(0);
+	}
+	else
+	{
+		this->rootNode->runAction(FadeTo::create(0.25f, 0));
+	}
 }
 
 void MiniMap::setPositioning(std::string miniMapPositioning)
@@ -157,15 +181,6 @@ void MiniMap::setPositioning(std::string miniMapPositioning)
 	this->rootNode->setPosition(Vec2(visibleSize) / 2.0f + newPosition);
 }
 
-void MiniMap::update(float dt)
-{
-	super::update(dt);
-
-	this->checkMapRequiredItem();
-	this->positionMiniMap();
-	this->positionEntityIcons();
-}
-
 bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
 {
 	if (this->map != nullptr)
@@ -173,8 +188,6 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 		this->mapNode->removeChild(this->map);
 		this->squallyMarker = nullptr;
 	}
-
-	this->setVisible(true);
 
 	this->miniMapTerrainObjects.clear();
 	this->miniMapObjects.clear();
@@ -193,6 +206,8 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 		this->mapNode->addChild(this->map);
 		this->mapNode->addChild(this->squallyMarker);
 
+		this->initializeMapData();
+
 		return true;
 	}
 
@@ -209,6 +224,11 @@ void MiniMap::initializeMapData()
 		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->squallyInventory = entityInventoryBehavior->getInventory();
+
+			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->squallyInventory->getSaveKey(), [=](EventCustom* eventCustom)
+			{
+				this->checkMapRequiredItem();
+			}));
 		});
 	}, Squally::MapKey);
 
@@ -237,11 +257,22 @@ void MiniMap::initializeMapData()
 			next->setPositionZ(0.0f);
 		}
 	}
+	
+	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
+	
+	if (this->requiredItemKey != "" || SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+	{
+		this->hide(true);
+	}
+	else
+	{
+		this->show();
+	}
 }
 
 void MiniMap::checkMapRequiredItem()
 {
-	if (this->squallyInventory == nullptr || mapNode->isVisible())
+	if (this->squallyInventory == nullptr || this->mapNode->isVisible())
 	{
 		return;
 	}
@@ -284,7 +315,7 @@ void MiniMap::positionMiniMap()
 	this->mapNode->setPosition(-GameCamera::getInstance()->getCameraPosition() * MiniMap::MiniMapScale);
 
 	float squallyDepth = GameUtils::getDepthUntil<MiniGameMap>(this->squally);
-
+	
 	for (auto next : this->miniMapTerrainObjects)
 	{
 		MiniMapTerrainObject* terrain = next.first;

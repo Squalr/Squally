@@ -37,7 +37,8 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(const std::string& defaul
 	this->repeatIndex = 0;
 	this->isFlippedX = false;
 	this->isFlippedY = false;
-	
+	this->animationAnchor = this->sprite->getAnchorPoint();
+
 	SmartAnimationSequenceNode::PrimeCache(this->defaultSprite);
 
 	this->addChild(this->sprite);
@@ -145,21 +146,18 @@ void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& a
 			this->setNewSpriteImage(animationFile);
 		}));
 
-		if (&animationFile != &animationFiles.back())
-		{
-			animationSequence.pushBack(DelayTime::create(animationSpeed));
-		}
+		animationSequence.pushBack(DelayTime::create(animationSpeed));
 	}
 
 	if (insertBlankFrame)
 	{
-		animationSequence.pushBack(DelayTime::create(animationSpeed));
 		animationSequence.pushBack(CallFunc::create([=]()
 		{
 			this->setNewSpriteImage(UIResources::EmptyImage);
 		}));
+		animationSequence.pushBack(DelayTime::create(animationSpeed));
 	}
-
+	
 	animationSequence.pushBack(CallFunc::create([=]()
 	{
 		if (onAnimationComplete != nullptr)
@@ -278,7 +276,8 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector
 
 void SmartAnimationSequenceNode::setAnimationAnchor(Vec2 anchor)
 {
-	this->sprite->setAnchorPoint(anchor);
+	this->animationAnchor = anchor;
+	this->sprite->setAnchorPoint(this->animationAnchor);
 }
 
 void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)
@@ -298,6 +297,7 @@ void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImag
 	this->sprite->initWithFile(spriteImage);
 	this->sprite->setFlippedX(this->isFlippedX);
 	this->sprite->setFlippedY(this->isFlippedY);
+	this->sprite->setAnchorPoint(this->animationAnchor);
 }
 
 int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSequenceResourceFile)
@@ -307,7 +307,7 @@ int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSeq
 
 const std::vector<std::string>& SmartAnimationSequenceNode::GetAllAnimationFiles(const std::string& initialSequenceResourceFile)
 {
-	if (SmartAnimationSequenceNode::AnimationFileCache.find(initialSequenceResourceFile) != SmartAnimationSequenceNode::AnimationFileCache.end())
+	if (SmartAnimationSequenceNode::AnimationFileCache.contains(initialSequenceResourceFile))
 	{
 		return SmartAnimationSequenceNode::AnimationFileCache[initialSequenceResourceFile];
 	}

@@ -30,17 +30,10 @@ CombatSpawn* CombatSpawn::create(ValueMap& properties)
 
 CombatSpawn::CombatSpawn(ValueMap& properties) : super(properties)
 {
-	this->spawnType = SpawnType::Player;
 	this->zoom = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::PropertyZoom, Value(1.0f)).asFloat();
 	this->spawnOrder = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::MapKeySpawnOrder, Value(0)).asInt();
 	this->spawnObjectHeight = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
-
-	std::string spawnKey = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::MapKeySpawnType, Value("")).asString();
-
-	if (spawnKey == CombatSpawn::MapKeyEnemySpawn)
-	{
-		this->spawnType = SpawnType::Enemy;
-	}
+	this->isEnemySpawn = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::MapKeySpawnType, Value("")).asString() == CombatSpawn::MapKeyEnemySpawn;
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 }
@@ -58,17 +51,13 @@ void CombatSpawn::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSpawn, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(this->getEventString(), [=](EventCustom* eventCustom)
 	{
 		CombatEvents::SpawnArgs* args = static_cast<CombatEvents::SpawnArgs*>(eventCustom->getData());
 
-		if (args != nullptr &&
-			args->spawnIndex == this->getSpawnOrder() &&
-			((args->isEnemySpawn && this->getSpawnType() == SpawnType::Enemy) || (!args->isEnemySpawn && this->getSpawnType() == SpawnType::Player)) &&
-			args->entity != nullptr &&
-			args->entity->getParent() == nullptr)
+		if (args != nullptr && args->entity != nullptr)
 		{
-			this->getParent()->addChild(args->entity);
+			GameUtils::changeParent(args->entity, this->getParent(), false);
 
 			// Because terrain is sorted against entities, add a 1px buffer to entities to give them draw priority
 			const float ZSortOffset = 1.0f;
@@ -80,15 +69,14 @@ void CombatSpawn::initializeListeners()
 			GameUtils::setWorldCoords3D(args->entity, GameUtils::getWorldCoords3D(this) + Vec3(offset.x, offset.y, ZSortOffset));
 
 			args->entity->setState(StateKeys::Zoom, Value(this->zoom), false);
-			args->entity->setAnchorPoint(Vec2(0.5f, 0.0f));
 			args->onSpawnSuccess();
 		}
 	}));
 }
 
-CombatSpawn::SpawnType CombatSpawn::getSpawnType()
+std::string CombatSpawn::getEventString()
 {
-	return this->spawnType;
+	return CombatEvents::EventSpawnPrefix + std::to_string(this->getSpawnOrder()) + "_" + (this->isEnemySpawn ? "ENEMY" : "PLAYER");
 }
 
 int CombatSpawn::getSpawnOrder()

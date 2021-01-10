@@ -54,14 +54,14 @@
    </properties>
   </object>
   <object id="705" name="breakable-cage" type="object" x="938.88" y="1292.38" width="196" height="112"/>
-  <object id="717" name="portal" type="object" x="2781.54" y="1128.52" width="237.527" height="233.023">
+  <object id="717" name="portal" type="object" x="5157.54" y="1152.52" width="237.527" height="233.023">
    <properties>
     <property name="map" value="EndianForest/Town_Docks"/>
     <property name="tag" value="back-portal"/>
     <property name="transition" value="ship"/>
    </properties>
   </object>
-  <object id="718" name="portal" type="object" x="3138.51" y="1135.43" width="237.527" height="233.023">
+  <object id="718" name="portal" type="object" x="5514.51" y="1159.43" width="237.527" height="233.023">
    <properties>
     <property name="map" value="UnderflowRuins/Town_Docks"/>
     <property name="tag" value="leave-portal"/>

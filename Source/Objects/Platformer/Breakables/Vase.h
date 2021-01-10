@@ -37,6 +37,4 @@ private:
 	CollisionObject* vaseBroken;
 	SmartParticles* shardParticles;
 	std::string color;
-
-	static const std::string PropertyColor;
 };

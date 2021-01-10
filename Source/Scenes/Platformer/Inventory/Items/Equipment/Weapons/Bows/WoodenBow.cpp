@@ -68,5 +68,5 @@ std::string WoodenBow::getSerializationKey()
 
 Vec2 WoodenBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-14.0f, -62.0f);
 }

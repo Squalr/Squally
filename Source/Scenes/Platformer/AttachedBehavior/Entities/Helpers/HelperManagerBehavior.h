@@ -27,7 +27,7 @@ private:
 	void despawnCurrentHelper();
 	void spawnHelperFromState();
 	void spawnHelper(std::string helperName, bool notify);
-	std::string getHelperAttachedBehavior(std::string helperName);
+	const std::string& getHelperAttachedBehavior(const std::string& helperName);
 	void buildAttachedBehaviorMap();
 
 	PlatformerEntity* entity;

@@ -28,14 +28,14 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* contentNode;
+	cocos2d::Node* particlesNode;
+	cocos2d::Node* mapNode;
 
 private:
 	typedef Portal super;
 
-	cocos2d::Node* innerContentNode;
-
-	SmartClippingNode* portalClip;
+	SmartClippingNode* mapClip;
+	cocos2d::Node* mapNodeContainer;
 	cocos2d::Sprite* doorClosed;
 	cocos2d::Sprite* doorFrame;
 	SmartParticles* centerParticles;

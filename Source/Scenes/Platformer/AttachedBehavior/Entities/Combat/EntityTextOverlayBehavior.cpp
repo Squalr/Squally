@@ -40,7 +40,7 @@ EntityTextOverlayBehavior* EntityTextOverlayBehavior::create(GameObject* owner)
 
 EntityTextOverlayBehavior::EntityTextOverlayBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->contentNode = Node::create();
 
 	if (this->entity == nullptr)

@@ -26,7 +26,7 @@ WarpGateUR::WarpGateUR(ValueMap& properties) : super(properties)
 	map->setPositionY(-map->getMapSize().height / 2.0f);
 	map->setPositionZ(-256.0f);
 
-	this->contentNode->addChild(map);
+	this->mapNode->addChild(map);
 }
 
 WarpGateUR::~WarpGateUR()

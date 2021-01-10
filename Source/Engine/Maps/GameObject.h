@@ -115,9 +115,6 @@ public:
 	static const std::string MapKeyYPosition;
 	static const std::string MapKeyDepth;
 	static const std::string MapKeyScale;
-	static const std::string MapKeyScaleX;
-	static const std::string MapKeyScaleY;
-	static const std::string MapKeyAutoScale;
 	static const std::string MapKeyFlipX;
 	static const std::string MapKeyFlipY;
 	static const std::string MapKeyRepeatX;
@@ -146,6 +143,7 @@ public:
 	static const std::string PropertyName;
 	static const std::string PropertyType;
 	static const std::string PropertyValue;
+	static const std::string PropertyColor;
 
 	cocos2d::ValueMap properties;
 	

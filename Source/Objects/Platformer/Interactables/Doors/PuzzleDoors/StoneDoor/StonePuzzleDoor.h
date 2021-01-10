@@ -25,7 +25,7 @@ protected:
 private:
 	typedef PuzzleDoorBase super;
 
-	cocos2d::Sprite* back;
+	cocos2d::Sprite* background;
 	cocos2d::Sprite* door;
 	cocos2d::Sprite* front;
 

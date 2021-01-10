@@ -26,7 +26,8 @@ protected:
 	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void onBreak() override;
-	cocos2d::Node* contentNode;
+
+	cocos2d::Node* cagedContentNode;
 
 private:
 	typedef BreakableBase super;

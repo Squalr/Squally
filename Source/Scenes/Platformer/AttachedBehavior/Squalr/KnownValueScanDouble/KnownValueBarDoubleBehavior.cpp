@@ -44,7 +44,7 @@ KnownValueBarDoubleBehavior* KnownValueBarDoubleBehavior::create(GameObject* own
 
 KnownValueBarDoubleBehavior::KnownValueBarDoubleBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->deltaString = ConstantString::create("+0");
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->deltaString);
 	this->healthString = ConstantString::create("-");

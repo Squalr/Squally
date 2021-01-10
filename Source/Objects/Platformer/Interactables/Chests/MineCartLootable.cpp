@@ -11,7 +11,6 @@ using namespace cocos2d;
 
 const std::string MineCartLootable::MapKey = "mine-cart-lootable";
 const std::string MineCartLootable::PropertyFill = "fill";
-const std::string MineCartLootable::PropertyColor = "color";
 
 MineCartLootable* MineCartLootable::create(cocos2d::ValueMap& properties)
 {
@@ -40,7 +39,7 @@ MineCartLootable::~MineCartLootable()
 
 void MineCartLootable::parseColor()
 {
-	std::string color = GameUtils::getKeyOrDefault(this->properties, MineCartLootable::PropertyColor, Value("")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 
 	if (color == "blue")
 	{

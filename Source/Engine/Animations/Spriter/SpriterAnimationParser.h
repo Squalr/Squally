@@ -25,7 +25,7 @@ protected:
 private:
 	static SpriterData CurrentParse;
 	static SpriterAnimationParser* Instance;
-
+	
 	static SpriterCurveType StringToCurveType(const std::string& curveTypeStr, SpriterCurveType defaultCurveType);
 	
 	enum class AttributeFocus

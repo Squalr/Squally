@@ -18,7 +18,6 @@
 using namespace cocos2d;
 
 const std::string TempleDoor::MapKey = "temple-door";
-const std::string TempleDoor::PropertyColor = "color";
 const float TempleDoor::DoorOpenDelta = 320.0f;
 const std::string TempleDoor::UnlockedSaveKey = "TEMPLE_DOOR_UNLOCKED";
 
@@ -38,7 +37,7 @@ TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(192.0f, 52
 	this->emblemOffset = Vec2::ZERO;
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
-	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::PropertyColor, Value("")).asString();
+	std::string color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 
 	// if (color == "yellow" || color == "yellow-skull" || color == "yellow-up" || color == "yellow-down")
 	{
@@ -68,12 +67,12 @@ TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(192.0f, 52
 		this->emblemOffset = Vec2(0.0f, 172.0f);
 	}
 
-	this->backNode->addChild(this->back);
-	this->backNode->addChild(this->doorClip);
+	this->contentNode->addChild(this->back);
+	this->contentNode->addChild(this->doorClip);
 
 	if (this->emblem != nullptr)
 	{
-		this->backNode->addChild(this->emblem);
+		this->contentNode->addChild(this->emblem);
 	}
 
 	this->addChild(this->topCollision);

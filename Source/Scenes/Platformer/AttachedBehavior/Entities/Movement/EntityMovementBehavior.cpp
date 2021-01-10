@@ -6,6 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
@@ -83,9 +84,6 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 
 		this->addChild(this->jumpSound);
 	}
-
-	this->preCinematicPosition = Vec2::ZERO;
-	this->prePatrolPosition = Vec2::ZERO;
 }
 
 EntityMovementBehavior::~EntityMovementBehavior()
@@ -94,16 +92,6 @@ EntityMovementBehavior::~EntityMovementBehavior()
 
 void EntityMovementBehavior::onLoad()
 {
-	this->entity->listenForStateWrite(StateKeys::CinematicDestinationX, [=](Value value)
-	{
-		this->preCinematicPosition = this->entity->getPosition();
-	});
-
-	this->entity->listenForStateWrite(StateKeys::PatrolDestinationX, [=](Value value)
-	{
-		this->prePatrolPosition = this->entity->getPosition();
-	});
-	
 	this->entity->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollision)
 	{
 		this->entityCollision = entityCollision;
@@ -290,12 +278,13 @@ void EntityMovementBehavior::update(float dt)
 
 void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 {
-	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicSourceX) && this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
 
 	if (hasCinematicMovement)
 	{
+		float cinematicSourceX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::CinematicSourceX, 0.0f);
 		float cinematicDestionationX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
-		bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
+		bool cinematicMovementDirectionLeft = cinematicDestionationX < cinematicSourceX;
 
 		if (cinematicMovementDirectionLeft)
 		{
@@ -333,14 +322,15 @@ void EntityMovementBehavior::cancelWaterSfx()
 
 void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
 {
-	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicSourceX) && this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
 	bool isCinematicHijacked = this->entity->getRuntimeStateOrDefaultBool(StateKeys::CinematicHijacked, false);
-	bool hasPatrolMovement = this->entity->hasRuntimeState(StateKeys::PatrolDestinationX);
+	bool hasPatrolMovement = this->entity->hasRuntimeState(StateKeys::PatrolSourceX) && this->entity->hasRuntimeState(StateKeys::PatrolDestinationX);
 
 	if (!hasCinematicMovement && !isCinematicHijacked && hasPatrolMovement)
 	{
+		float patrolSourceX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::PatrolSourceX, 0.0f);
 		float patrolDestionationX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::PatrolDestinationX, 0.0f);
-		bool patrolMovementDirectionLeft = patrolDestionationX < this->prePatrolPosition.x;
+		bool patrolMovementDirectionLeft = patrolDestionationX < patrolSourceX;
 
 		if (patrolMovementDirectionLeft)
 		{
@@ -355,16 +345,19 @@ void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
 
 void EntityMovementBehavior::checkCinematicMovementComplete()
 {
-	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicSourceX) && this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
 	
 	if (hasCinematicMovement)
 	{
+		float cinematicSourceX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::CinematicSourceX, 0.0f);
 		float cinematicDestionationX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
-		bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
+		bool cinematicMovementDirectionLeft = cinematicDestionationX < cinematicSourceX;
+		Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 
-		if ((cinematicMovementDirectionLeft && this->entity->getPositionX() <= cinematicDestionationX) ||
-			(!cinematicMovementDirectionLeft && this->entity->getPositionX() >= cinematicDestionationX))
+		if ((cinematicMovementDirectionLeft && entityPosition.x <= cinematicDestionationX) ||
+			(!cinematicMovementDirectionLeft && entityPosition.x >= cinematicDestionationX))
 		{
+			this->entity->clearState(StateKeys::CinematicSourceX);
 			this->entity->clearState(StateKeys::CinematicDestinationX);
 			this->entity->setState(StateKeys::CinematicDestinationReached, Value(true));
 		}
@@ -373,8 +366,8 @@ void EntityMovementBehavior::checkCinematicMovementComplete()
 
 void EntityMovementBehavior::checkPatrolMovementComplete()
 {
-	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
-	bool hasPatrolMovement = this->entity->hasRuntimeState(StateKeys::PatrolDestinationX);
+	bool hasCinematicMovement = this->entity->hasRuntimeState(StateKeys::CinematicSourceX) && this->entity->hasRuntimeState(StateKeys::CinematicDestinationX);
+	bool hasPatrolMovement = this->entity->hasRuntimeState(StateKeys::PatrolSourceX) && this->entity->hasRuntimeState(StateKeys::PatrolDestinationX);
 
 	// Exit if doing cinematic movement. That has priority.
 	if (hasCinematicMovement)
@@ -382,6 +375,7 @@ void EntityMovementBehavior::checkPatrolMovementComplete()
 		// Just clear any existing patrol state
 		if (hasPatrolMovement)
 		{
+			this->entity->clearState(StateKeys::PatrolSourceX);
 			this->entity->clearState(StateKeys::PatrolDestinationX);
 			this->entity->clearState(StateKeys::PatrolDestinationReached);
 		}
@@ -391,12 +385,15 @@ void EntityMovementBehavior::checkPatrolMovementComplete()
 	
 	if (hasPatrolMovement)
 	{
+		float patrolSourceX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::PatrolSourceX, 0.0f);
 		float patrolDestionationX = this->entity->getRuntimeStateOrDefaultFloat(StateKeys::PatrolDestinationX, 0.0f);
-		bool patrolMovementDirectionLeft = patrolDestionationX < this->prePatrolPosition.x;
+		bool patrolMovementDirectionLeft = patrolDestionationX < patrolSourceX;
+		Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 
-		if ((patrolMovementDirectionLeft && this->entity->getPositionX() <= patrolDestionationX) ||
-			(!patrolMovementDirectionLeft && this->entity->getPositionX() >= patrolDestionationX))
+		if ((patrolMovementDirectionLeft && entityPosition.x <= patrolDestionationX) ||
+			(!patrolMovementDirectionLeft && entityPosition.x >= patrolDestionationX))
 		{
+			this->entity->clearState(StateKeys::PatrolSourceX);
 			this->entity->clearState(StateKeys::PatrolDestinationX);
 			this->entity->setState(StateKeys::PatrolDestinationReached, Value(true));
 		}

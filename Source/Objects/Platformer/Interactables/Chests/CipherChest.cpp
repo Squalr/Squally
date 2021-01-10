@@ -39,7 +39,7 @@ CipherChest* CipherChest::create(ValueMap& properties)
 	return instance;
 }
 
-CipherChest::CipherChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+CipherChest::CipherChest(ValueMap& properties) : super(properties, Size(128.0f, 112.0f))
 {
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestOpened);
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestClosed);

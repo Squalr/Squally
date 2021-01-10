@@ -43,7 +43,6 @@
   <object id="601" name="Snow/Background/Mountains3" type="decor" x="-5382.54" y="2757.32" width="13333.3" height="761">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>

@@ -45,8 +45,8 @@ Gate::Gate(ValueMap& properties) : super(properties, Size(512.0f, 512.0f), Vec2(
 	this->gateRight = Sprite::create(ObjectResources::Doors_Gate_GateRight);
 	this->gateLeft = Sprite::create(ObjectResources::Doors_Gate_GateLeft);
 
-	this->backNode->addChild(this->gateRight);
-	this->backNode->addChild(this->gateLeft);
+	this->contentNode->addChild(this->gateRight);
+	this->contentNode->addChild(this->gateLeft);
 }
 
 Gate::~Gate()

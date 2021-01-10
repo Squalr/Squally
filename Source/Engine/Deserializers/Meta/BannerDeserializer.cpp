@@ -34,7 +34,7 @@ MapTitleBanner* BannerDeserializer::deserializeProperties(cocos2d::ValueMap prop
 {
 	std::string bannerName = GameUtils::getKeyOrDefault(properties, BannerDeserializer::MapKey, Value("")).asString();
 
-	if (this->deserializers.find(bannerName) != deserializers.end())
+	if (this->deserializers.contains(bannerName))
 	{
 		return MapTitleBanner::create(deserializers[bannerName]());
 	}

@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="875" name="Forest/Background/GreenForestRocks1" type="decor" x="-4050.65" y="1766" width="14469.3" height="1140">
+  <object id="875" name="Forest/Background/GreenForestRocks1" type="decor" x="-4050.65" y="1766" width="17029.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="Forest/Background/GreenForestGround2" type="decor" x="-4042.65" y="342" width="14501.3" height="1140">
+  <object id="876" name="Forest/Background/GreenForestGround2" type="decor" x="-4042.65" y="342" width="16997.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,10 +39,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="873" name="Forest/Background/GreenForestGround3" type="decor" x="-4580.8" y="2090" width="14985.6" height="1116">
+  <object id="873" name="Forest/Background/GreenForestGround3" type="decor" x="-2020.8" y="2090" width="12777.6" height="1953">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="1.75"/>
    </properties>
   </object>
  </objectgroup>

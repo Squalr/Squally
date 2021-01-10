@@ -15,6 +15,7 @@ protected:
 	virtual void onBeforeAnyRequestStateChange(GameState* gameState);
 	virtual void onAnyRequestStateChange(GameState* gameState);
 	virtual void onAnyStateChange(GameState* gameState);
+	virtual void onAfterAnyStateChange(GameState* gameState);
 
 private:
 	typedef SmartNode super;

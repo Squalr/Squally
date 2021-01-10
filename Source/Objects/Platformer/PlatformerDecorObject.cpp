@@ -153,10 +153,12 @@ Sprite* PlatformerDecorObject::buildSprite()
 
 		if (repeatX && !repeatY)
 		{
-			instance->setTextureRect(Rect(0.0f, 0.0f, this->objectSize.width, instance->getContentSize().height));
+			float scale = this->objectSize.height / instance->getContentSize().height;
 
 			// X is repeating -- set the scale based on the height
-			instance->setScale(this->objectSize.height / instance->getContentSize().height);
+			instance->setScale(scale);
+
+			instance->setTextureRect(Rect(0.0f, 0.0f, this->objectSize.width / scale, instance->getContentSize().height));
 		}
 		if (repeatY && !repeatX)
 		{
@@ -181,26 +183,6 @@ Sprite* PlatformerDecorObject::buildSprite()
 	{
 		// Default -- set the scale of the decor based on the height
 		instance->setScale(this->objectSize.height / instance->getContentSize().height);
-	}
-	
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyAutoScale))
-	{
-		instance->setScale(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyAutoScale, Value(1.0f)).asFloat());
-	}
-	
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyScale))
-	{
-		instance->setScale(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScale, Value(1.0f)).asFloat());
-	}
-	
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyScaleX))
-	{
-		instance->setScaleX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScaleX, Value(1.0f)).asFloat());
-	}
-	
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyScaleY))
-	{
-		instance->setScaleY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScaleY, Value(1.0f)).asFloat());
 	}
 	
 	// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this

@@ -15,7 +15,7 @@ public:
 	static const std::string MapKey;
 	static const std::string PropertyOriginalId;
 	static const std::string PropertyMiniMapHidden;
-	static const std::string PropertyColor;
+	static const std::string PropertyMiniMapColor;
 	static const std::string PropertyShape;
 	static const std::string TagMiniMapObject;
 	
