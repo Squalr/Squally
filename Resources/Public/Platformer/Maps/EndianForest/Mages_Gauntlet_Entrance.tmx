@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="757">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="759">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -22,12 +22,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="748" name="marble" type="terrain" x="-45.4762" y="-90.3629">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 2669.39,-16.3627 2669.39,1374.48 6.46348,1390.83"/>
-  </object>
+  <object id="758" name="marble" type="texture" x="-87.12" y="-97" width="2710.24" height="1378"/>
  </objectgroup>
  <objectgroup id="57" name="terrain 3">
   <properties>
@@ -43,9 +38,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="marble" type="terrain" x="-427.766" y="1066.21">
-   <polygon points="0,0 3112.12,-2.8322 3112.12,237.904 7.53542,240.737"/>
-  </object>
+  <object id="757" name="marble" type="terrain" x="-230" y="1070" width="2900" height="222"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>

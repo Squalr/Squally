@@ -51,6 +51,7 @@
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Crafting/AlchemyMenu.h"
 #include "Menus/Crafting/BlacksmithingMenu.h"
+#include "Menus/CursorSets.h"
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Inventory/ItemInfoMenu.h"
 #include "Menus/Options/OptionsMenu.h"
@@ -480,6 +481,8 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 void PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 {
 	super::openPauseMenu(refocusTarget);
+	
+	CursorSets::setActiveCursorSet(CursorSets::Default);
 
 	if (!this->canPause)
 	{

@@ -136,13 +136,24 @@ void Input::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
 	{
+		Input::MouseState.canClick = false;
+		
+		InputEvents::TriggerMouseMove(Input::MouseState);
 		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	});
 
 	this->whenKeyReleased({ InputEvents::KeyCode::KEY_CTRL, InputEvents::KeyCode::KEY_ALT, InputEvents::KeyCode::KEY_SHIFT}, [=](InputEvents::KeyboardEventArgs*)
 	{
+		Input::MouseState.canClick = false;
+		
+		InputEvents::TriggerMouseMove(Input::MouseState);
 		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	});
+}
+
+InputEvents::MouseEventArgs Input::GetMouseEvent()
+{
+	return Input::MouseState;
 }
 
 void Input::onKeyPressed(InputEvents::KeyCode keyCode)

@@ -33,6 +33,7 @@ private:
 	void attemptPickPocket();
 	bool canPickPocket();
 	bool wasPickPocketed();
+	void onPickPocketed();
 	void updateIconVisibility();
 
 	PlatformerEntity* entity;

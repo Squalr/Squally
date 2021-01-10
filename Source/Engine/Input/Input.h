@@ -15,6 +15,7 @@ class Input : public GlobalNode
 public:
 	static void registerGlobalNode();
 
+	static cocos2d::InputEvents::MouseEventArgs GetMouseEvent();
 	static cocos2d::InputEvents::KeyCode GetActiveModifiers();
 	static bool IsPressed(cocos2d::InputEvents::KeyCode keyCode);
 	static bool IsReleased(cocos2d::InputEvents::KeyCode keyCode);

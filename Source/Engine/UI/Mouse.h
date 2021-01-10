@@ -39,10 +39,12 @@ protected:
 	Mouse();
 	virtual ~Mouse();
 
-private:
-	typedef GlobalNode super;
 	void onEnter() override;
 	void initializeListeners() override;
+
+private:
+	typedef GlobalNode super;
+	
 	void setActiveMouseSprite(cocos2d::Node* mouseSprite);
 	void setSpriteToCursorPosition();
 

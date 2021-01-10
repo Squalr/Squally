@@ -362,10 +362,10 @@ Rect GameUtils::getScreenBounds(Node* node, const Size& padding, bool checkForUI
 
 	Vec3 nodeCoords = GameUtils::getWorldCoords3D(node, checkForUIBound);
 
-	nodeCoords.x -= padding.width / 2.0f;
-	nodeCoords.y -= padding.height / 2.0f;
+	nodeCoords.x -= padding.width;
+	nodeCoords.y -= padding.height;
 	
-	return getScreenBounds(nodeCoords, node->getContentSize() * GameUtils::getUniformScale(node) + padding / 2.0f);
+	return getScreenBounds(nodeCoords, node->getContentSize() * GameUtils::getUniformScale(node) + padding);
 }
 
 Rect GameUtils::getScreenBounds(const Vec3& position, const Size& size)

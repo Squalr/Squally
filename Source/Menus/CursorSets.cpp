@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Input/Input.h"
 #include "Engine/UI/Mouse.h"
 
 #include "Resources/UIResources.h"
@@ -31,4 +32,6 @@ void CursorSets::registerCursorSets()
 void CursorSets::setActiveCursorSet(CursorSet cursorSet)
 {
 	Mouse::getInstance()->setActiveCursorSet(cursorSet);
+
+	InputEvents::TriggerMouseRefresh(Input::GetMouseEvent());
 }

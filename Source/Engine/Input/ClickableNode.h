@@ -67,7 +67,7 @@ private:
 	void setDebugDrawPosition();
 	void showContent(cocos2d::Node* content);
 	void clearState();
-	void mouseMove(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr, bool isRefresh = false);
+	void mouseMove(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseDown(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseUp(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseScroll(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
@@ -88,7 +88,6 @@ private:
 	bool isNeverHandleEnabled;
 	std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction;
 	cocos2d::InputEvents::KeyCode modifier;
-	cocos2d::EventListenerCustom* modifierReleasedListener;
 	cocos2d::DrawNode* debugHitbox;
 	cocos2d::Vec2 debugCachedPos;
 

@@ -73,7 +73,6 @@ void EntityPickPocketBehavior::initializePositions()
 
 void EntityPickPocketBehavior::onLoad()
 {
-	// Defer this task since it adds an object during onEnterTransitionDidFinish(), which would otherwise cause a crash
 	this->defer([=]()
 	{
 		if (this->entity->getAttachedBehavior<EntitySelectionBehavior>() == nullptr)
@@ -88,6 +87,11 @@ void EntityPickPocketBehavior::onLoad()
 
 		this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 		{
+			if (!this->canPickPocket())
+			{
+				return;
+			}
+
 			selectionBehavior->setClickModifier(InputEvents::KeyCode::KEY_SHIFT);
 			selectionBehavior->setEntityClickCallbacks([=]()
 			{
@@ -158,7 +162,7 @@ void EntityPickPocketBehavior::attemptPickPocket()
 			this->pocketPool,
 			[=]()
 			{
-				this->updateIconVisibility();
+				this->onPickPocketed();
 			},
 			EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed
 		));
@@ -173,6 +177,16 @@ bool EntityPickPocketBehavior::canPickPocket()
 bool EntityPickPocketBehavior::wasPickPocketed()
 {
 	return this->entity->loadObjectStateOrDefault(EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed, Value(false)).asBool();
+}
+
+void EntityPickPocketBehavior::onPickPocketed()
+{
+	this->updateIconVisibility();
+	
+	this->entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
+	{
+		selectionBehavior->clearEntityClickCallbacks();
+	});
 }
 
 void EntityPickPocketBehavior::updateIconVisibility()
