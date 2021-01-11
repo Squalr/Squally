@@ -167,8 +167,7 @@
 #define ASM_NOP16() ASM_NOP15() ASM_NOP1()
 
 class HackablePreview;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class LocalizedString;
 
 class HackableCode : public HackableBase

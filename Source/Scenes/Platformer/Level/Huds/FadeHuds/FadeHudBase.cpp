@@ -1,4 +1,4 @@
-#include "CombatFadeInHud.h"
+#include "FadeHudBase.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -9,9 +9,7 @@
 
 using namespace cocos2d;
 
-const float CombatFadeInHud::AnimationTimeBudget = 0.75f;
-
-CombatFadeInHud::CombatFadeInHud()
+FadeHudBase::FadeHudBase()
 {
 	this->blackout = DrawNode::create();
 
@@ -20,25 +18,23 @@ CombatFadeInHud::CombatFadeInHud()
 	this->addChild(this->blackout);
 }
 
-CombatFadeInHud::~CombatFadeInHud()
+FadeHudBase::~FadeHudBase()
 {
 }
 
-void CombatFadeInHud::onEnter()
+void FadeHudBase::onEnter()
 {
 	super::onEnter();
 
 	this->blackout->setOpacity(0);
-
-	this->runAnim();
 }
 
-void CombatFadeInHud::fillSeams()
+void FadeHudBase::fillSeams()
 {
 	this->blackout->setOpacity(255);
 }
 
-void CombatFadeInHud::buildBlackout()
+void FadeHudBase::buildBlackout()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

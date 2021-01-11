@@ -13,8 +13,7 @@ class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
 class HackerModeWarningHud;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;

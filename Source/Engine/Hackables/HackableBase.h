@@ -4,8 +4,7 @@
 #include "Engine/SmartNode.h"
 
 class HackablePreview;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class LocalizedString;
 
 class HackableBase : public SmartNode

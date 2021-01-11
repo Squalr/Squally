@@ -15,8 +15,7 @@ class HackableCode;
 class HackActivatedAbility;
 class HackablePreview;
 class HackButton;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class ProgressBar;
 class SmartParticles;
 

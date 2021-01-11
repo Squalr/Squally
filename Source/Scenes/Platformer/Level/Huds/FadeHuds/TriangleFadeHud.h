@@ -1,27 +1,28 @@
 #pragma once
 
-#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
+#include "Scenes/Platformer/Level/Huds/FadeHuds/FadeHudBase.h"
 
 namespace cocos2d
 {
 	class DrawNode;
 }
 
-class TriangleFadeIn : public CombatFadeInHud
+class TriangleFadeHud : public FadeHudBase
 {
 public:
-	static TriangleFadeIn* create();
+	static TriangleFadeHud* create();
 
 	void runAnim() override;
+	void resetAnim() override;
 
 protected:
-	TriangleFadeIn();
-	virtual ~TriangleFadeIn();
+	TriangleFadeHud();
+	virtual ~TriangleFadeHud();
 
 	void initializePositions() override;
 
 private:
-	typedef CombatFadeInHud super;
+	typedef FadeHudBase super;
 
 	void buildShapes();
 

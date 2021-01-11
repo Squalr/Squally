@@ -16,8 +16,7 @@ class EquipmentInventory;
 class Item;
 class ItemMenu;
 class Inventory;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class LocalizedLabel;
 class PartyMenu;
 class FilterMenu;

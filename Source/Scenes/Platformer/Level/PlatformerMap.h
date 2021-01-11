@@ -16,14 +16,14 @@ class CardsMenu;
 class Cipher;
 class CollectablesMenu;
 class ConfirmationHud;
-class PlatformerPauseMenu;
 class GameHud;
+class FadeHud;
 class HelpMenu;
 class Hexus;
 class InventoryMenu;
 class ItemInfoMenu;
-template <class T>
-class LazyNode;
+class PlatformerPauseMenu;
+template <class T> class LazyNode;
 class NotificationHud;
 class PartyMenu;
 class MiniMap;
@@ -81,7 +81,7 @@ private:
 	LazyNode<InventoryMenu>* inventoryMenu;
 	LazyNode<AlchemyMenu>* alchemyMenu;
 	LazyNode<BlacksmithingMenu>* blacksmithingMenu;
-	cocos2d::Node* combatFadeInNode;
+	FadeHud* fadeHud;
 	LazyNode<PlatformerPauseMenu>* platformerPauseMenu;
 	MiniMap* miniMap;
 

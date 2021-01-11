@@ -7,16 +7,15 @@ namespace cocos2d
 	class DrawNode;
 }
 
-class CombatFadeInHud : public Hud
+class FadeHudBase : public Hud
 {
 public:
 	virtual void runAnim() = 0;
-
-	static const float AnimationTimeBudget;
+	virtual void resetAnim() = 0;
 
 protected:
-	CombatFadeInHud();
-	virtual ~CombatFadeInHud();
+	FadeHudBase();
+	virtual ~FadeHudBase();
 
 	void onEnter() override;
 	void fillSeams();

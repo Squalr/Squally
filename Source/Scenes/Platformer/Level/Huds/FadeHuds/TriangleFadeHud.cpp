@@ -1,4 +1,4 @@
-#include "TriangleFadeIn.h"
+#include "TriangleFadeHud.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-TriangleFadeIn* TriangleFadeIn::create()
+TriangleFadeHud* TriangleFadeHud::create()
 {
-	TriangleFadeIn* instance = new TriangleFadeIn();
+	TriangleFadeHud* instance = new TriangleFadeHud();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TriangleFadeIn::TriangleFadeIn()
+TriangleFadeHud::TriangleFadeHud()
 {
 	this->upperTraingle = DrawNode::create();
 	this->leftTriangle = DrawNode::create();
@@ -33,23 +33,18 @@ TriangleFadeIn::TriangleFadeIn()
 	this->addChild(this->bottomTriangle);
 }
 
-TriangleFadeIn::~TriangleFadeIn()
+TriangleFadeHud::~TriangleFadeHud()
 {
 }
 
-void TriangleFadeIn::initializePositions()
+void TriangleFadeHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->upperTraingle->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
-	this->leftTriangle->setPosition(Vec2(-visibleSize.width / 2.0f, 0.0f));
-	this->rightTriangle->setPosition(Vec2(visibleSize.width / 2.0f, 0.0f));
-	this->bottomTriangle->setPosition(Vec2(0.0f, -visibleSize.height / 2.0f));
+	this->resetAnim();
 }
 
-void TriangleFadeIn::runAnim()
+void TriangleFadeHud::runAnim()
 {
 	const float duration = 0.5f;
 
@@ -68,7 +63,17 @@ void TriangleFadeIn::runAnim()
 	));
 }
 
-void TriangleFadeIn::buildShapes()
+void TriangleFadeHud::resetAnim()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->upperTraingle->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
+	this->leftTriangle->setPosition(Vec2(-visibleSize.width / 2.0f, 0.0f));
+	this->rightTriangle->setPosition(Vec2(visibleSize.width / 2.0f, 0.0f));
+	this->bottomTriangle->setPosition(Vec2(0.0f, -visibleSize.height / 2.0f));
+}
+
+void TriangleFadeHud::buildShapes()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

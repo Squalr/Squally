@@ -15,7 +15,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
-#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
+#include "Scenes/Platformer/Level/Huds/FadeHuds/FadeHud.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -167,7 +167,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	}
 
 	this->runAction(Sequence::create(
-		DelayTime::create(CombatFadeInHud::AnimationTimeBudget + 0.25f),
+		DelayTime::create(FadeHud::AnimationTimeBudget + 0.25f),
 		CallFunc::create([=]()
 		{
 			// Start combat

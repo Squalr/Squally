@@ -15,8 +15,7 @@ class CodeWindow;
 class ConfirmationMenu;
 class HackableCode;
 class LabelStack;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class Lexicon;
 class LocalizedLabel;
 class ScriptList;

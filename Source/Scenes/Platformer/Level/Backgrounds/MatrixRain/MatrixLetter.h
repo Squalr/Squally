@@ -7,8 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 
 class MatrixLetter : public cocos2d::Node
 {

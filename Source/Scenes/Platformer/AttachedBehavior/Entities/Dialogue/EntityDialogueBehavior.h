@@ -8,8 +8,7 @@
 class DialogueSet;
 class InteractMenu;
 class InteractObject;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class LocalizedString;
 class PlatformerEntity;
 class Scrappy;

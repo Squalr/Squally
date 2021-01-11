@@ -60,8 +60,7 @@
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
-#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
+#include "Scenes/Platformer/Level/Huds/FadeHuds/FadeHud.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/ConfirmationHud.h"
 #include "Scenes/Platformer/Level/Huds/MiniMap/MiniMap.h"
@@ -92,7 +91,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->gameHud = GameHud::create();
 	this->confirmationHud = ConfirmationHud::create();
 	this->notificationHud = NotificationHud::create();
-	this->combatFadeInNode = Node::create();
+	this->fadeHud = FadeHud::create();
 	this->cipher = LazyNode<Cipher>::create(CC_CALLBACK_0(PlatformerMap::buildCipher, this));
 	this->hexus = LazyNode<Hexus>::create(CC_CALLBACK_0(PlatformerMap::buildHexus, this));
 	this->platformerPauseMenu = LazyNode<PlatformerPauseMenu>::create(CC_CALLBACK_0(PlatformerMap::buildPlatformerPauseMenu, this));
@@ -137,9 +136,9 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->menuHud->addChild(this->miniMap);
-	this->menuHud->addChild(this->combatFadeInNode);
 	this->menuHud->addChild(this->alchemyMenu);
 	this->menuHud->addChild(this->blacksmithingMenu);
+	this->menuHud->addChild(this->fadeHud);
 	this->menuHud->addChild(this->notificationHud);
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
@@ -200,7 +199,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			// In the future, we can pass parameters via EnemyEngagedArgs to dictate which fade-in animation to use
-			this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+			this->fadeHud->runAnim(FadeHud::FadeHudType::Triangles);
 		}
 	}));
 
@@ -217,19 +216,12 @@ void PlatformerMap::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforeLoadRespawn, [=](EventCustom* eventCustom)
 	{
 		// Using combat transitions for respawn transition, for now.
-		this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+		this->fadeHud->runAnim(FadeHud::FadeHudType::Normal);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventLoadRespawn, [=](EventCustom* eventCustom)
 	{
-		this->combatFadeInNode->runAction(Sequence::create(
-			FadeTo::create(1.0f, 0),
-			CallFunc::create([=]()
-			{
-				this->combatFadeInNode->removeAllChildren();
-			}),
-			nullptr
-		));
+		this->fadeHud->resetAnims();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnstuck, [=](EventCustom* eventCustom)

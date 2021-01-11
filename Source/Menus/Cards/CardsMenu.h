@@ -18,8 +18,7 @@ class HexusCard;
 class HexusFilter;
 class ItemMenu;
 class Inventory;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class LocalizedLabel;
 
 class CardsMenu : public SmartNode

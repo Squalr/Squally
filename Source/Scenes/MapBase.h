@@ -17,8 +17,7 @@ class DeveloperHud;
 class GameMap;
 class Hud;
 class LayerDeserializer;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class MatrixRain;
 class MusicOverlay;
 class OptionsMenu;

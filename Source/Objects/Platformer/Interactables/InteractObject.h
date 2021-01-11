@@ -10,8 +10,7 @@ class CollisionObject;
 class ConstantString;
 class HackableData;
 class InteractMenu;
-template <class T>
-class LazyNode;
+template <class T> class LazyNode;
 class LocalizedString;
 class PlatformerEntity;
 class Scrappy;
