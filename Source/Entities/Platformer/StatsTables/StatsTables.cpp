@@ -15,9 +15,9 @@ const int StatsTables::FallbackExp = 666;
 const int StatsTables::FallbackMana = 69;
 const int StatsTables::FallbackHealth = 420;
 
-void StatsTables::registerGlobalNode()
+void StatsTables::RegisterGlobalNode()
 {
-	GlobalDirector::getInstance()->registerGlobalNode(StatsTables::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(StatsTables::getInstance());
 }
 
 StatsTables* StatsTables::getInstance()

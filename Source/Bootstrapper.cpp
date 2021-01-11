@@ -11,11 +11,11 @@ void Bootstrapper::initialize()
 {
 	EngineBootstrapper::initialize();
 
-	PlatformerCollisionMapping::registerGlobalNode();
-	PlatformerItemDeserializer::registerGlobalNode();
-	TrackDeserializer::registerGlobalNode();
-	CursorSets::registerCursorSets();
-	StatsTables::registerGlobalNode();
+	PlatformerCollisionMapping::RegisterGlobalNode();
+	PlatformerItemDeserializer::RegisterGlobalNode();
+	TrackDeserializer::RegisterGlobalNode();
+	CursorSets::RegisterCursorSets();
+	StatsTables::RegisterGlobalNode();
 }
 
 void Bootstrapper::shutDown()

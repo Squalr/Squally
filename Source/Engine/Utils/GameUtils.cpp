@@ -46,7 +46,7 @@ void GameUtils::resumeAll()
 bool GameUtils::isInRunningScene(Node* node)
 {
 	return node == Director::getInstance()->getRunningScene()
-		|| GameUtils::getFirstParentOfType<Scene>(node) == Director::getInstance()->getRunningScene();
+		|| GameUtils::GetFirstParentOfType<Scene>(node) == Director::getInstance()->getRunningScene();
 }
 
 Node* GameUtils::getFocusedNode()
@@ -198,7 +198,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		// Correct a strange bug where changing from a null parent to a HUD causes wrong positioning.
 		if (originalParent == nullptr)
 		{
-			Hud* newHudParent = GameUtils::getFirstParentOfType<Hud>(node);
+			Hud* newHudParent = GameUtils::GetFirstParentOfType<Hud>(node);
 
 			if (newHudParent != nullptr)
 			{
@@ -302,7 +302,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	Node* parent = node->getParent();
 
 	// Getting the world coords of a UIBound node is expensive so we only check when asked
-	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
+	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::GetFirstParentOfType<UIBoundObject>(parent) : nullptr;
 
 	if (uiBoundObjectParent != nullptr)
 	{
@@ -400,7 +400,7 @@ bool GameUtils::isVisible(Node* node)
 
 bool GameUtils::isEclipsed(Node* node, Vec2 mousePos)
 {
-	ClippingNode* parentClip = GameUtils::getFirstParentOfType<ClippingNode>(node);
+	ClippingNode* parentClip = GameUtils::GetFirstParentOfType<ClippingNode>(node);
 
 	if (parentClip != nullptr)
 	{

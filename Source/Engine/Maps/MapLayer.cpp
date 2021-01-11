@@ -67,7 +67,7 @@ void MapLayer::initializeListeners()
 	{
 		RequestObjectSpawnArgs* args = static_cast<RequestObjectSpawnArgs*>(eventCustom->getData());
 
-		if (GameUtils::getFirstParentOfType<MapLayer>(args->spawner) == this)
+		if (GameUtils::GetFirstParentOfType<MapLayer>(args->spawner) == this)
 		{
 			// Delegate the spawning to the map, which will decide where to place the object
 			ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs(this, args));

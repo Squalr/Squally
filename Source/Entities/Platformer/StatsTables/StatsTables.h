@@ -8,7 +8,7 @@ class PlatformerEntity;
 class StatsTables : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 	
 	struct Stats
 	{

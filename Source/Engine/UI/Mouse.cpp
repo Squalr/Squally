@@ -12,9 +12,9 @@ using namespace cocos2d;
 
 Mouse* Mouse::Instance = nullptr;
 
-void Mouse::registerGlobalNode()
+void Mouse::RegisterGlobalNode()
 {
-	GlobalDirector::registerGlobalNode(Mouse::getInstance());
+	GlobalDirector::RegisterGlobalNode(Mouse::getInstance());
 }
 
 Mouse* Mouse::getInstance()

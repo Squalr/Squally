@@ -41,7 +41,7 @@ TitleScreen* TitleScreen::getInstance()
 		TitleScreen::instance->autorelease();
 		TitleScreen::instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(TitleScreen::getInstance());
+		GlobalDirector::RegisterGlobalScene(TitleScreen::getInstance());
 	}
 
 	return TitleScreen::instance;

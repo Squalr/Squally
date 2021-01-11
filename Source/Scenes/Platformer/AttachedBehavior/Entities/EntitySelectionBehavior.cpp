@@ -116,3 +116,8 @@ ClickableNode* EntitySelectionBehavior::getHitbox()
 {
 	return this->clickHitbox;
 }
+
+PlatformerEntity* EntitySelectionBehavior::getEntity()
+{
+	return this->entity;
+}

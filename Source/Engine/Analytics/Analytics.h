@@ -4,7 +4,7 @@
 class Analytics : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 	static void shutDown();
 	static void sendEvent(std::string category, std::string action, std::string label, int value);
 	static void sendEvent(std::string category, std::string action, std::string label);

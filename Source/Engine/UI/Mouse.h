@@ -13,7 +13,7 @@ class Hud;
 class Mouse : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 	static Mouse* getInstance();
 
 	struct CursorSet

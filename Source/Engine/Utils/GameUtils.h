@@ -99,7 +99,7 @@ public:
 	}
 
 	template <class T>
-	static T* getFirstParentOfType(cocos2d::Node *node, bool includeTarget = false)
+	static T* GetFirstParentOfType(cocos2d::Node *node, bool includeTarget = false)
 	{
 		if (node != nullptr && !includeTarget)
 		{

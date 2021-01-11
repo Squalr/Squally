@@ -14,12 +14,12 @@ std::unordered_map<int, bool> Input::PressedKeysPrevious = std::unordered_map<in
 std::unordered_map<int, bool> Input::PressedKeys = std::unordered_map<int, bool>();
 float Input::MinDragDistance = 4.0f;
 
-void Input::registerGlobalNode()
+void Input::RegisterGlobalNode()
 {
 	if (Input::Instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(Input::GetInstance());
+		GlobalDirector::getInstance()->RegisterGlobalNode(Input::GetInstance());
 	}
 }
 

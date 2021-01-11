@@ -29,9 +29,9 @@ using namespace cocos2d;
 GameCamera* GameCamera::cameraInstance = nullptr;
 const std::string GameCamera::SchedulerKeyCameraShake = "SCHEDULER_KEY_CAMERA_SHAKE";
 
-void GameCamera::registerGlobalNode()
+void GameCamera::RegisterGlobalNode()
 {
-	GlobalDirector::getInstance()->registerGlobalNode(GameCamera::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(GameCamera::getInstance());
 }
 
 GameCamera* GameCamera::getInstance()

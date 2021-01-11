@@ -13,12 +13,12 @@ using namespace cocos2d;
 MusicPlayer* MusicPlayer::instance = nullptr;
 std::vector<Music*> MusicPlayer::SongQueue = std::vector<Music*>();
 
-void MusicPlayer::registerGlobalNode()
+void MusicPlayer::RegisterGlobalNode()
 {
 	if (MusicPlayer::instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(MusicPlayer::getInstance());
+		GlobalDirector::getInstance()->RegisterGlobalNode(MusicPlayer::getInstance());
 	}
 }
 
@@ -177,7 +177,7 @@ void MusicPlayer::performHandoff(Music* music)
 
 bool MusicPlayer::isParentGlobal(Track* track)
 {
-	return (GameUtils::getFirstParentOfType<GlobalNode>(track) != nullptr ||
-		GameUtils::getFirstParentOfType<GlobalHud>(track) != nullptr ||
-		GameUtils::getFirstParentOfType<GlobalScene>(track) != nullptr);
+	return (GameUtils::GetFirstParentOfType<GlobalNode>(track) != nullptr ||
+		GameUtils::GetFirstParentOfType<GlobalHud>(track) != nullptr ||
+		GameUtils::GetFirstParentOfType<GlobalScene>(track) != nullptr);
 }

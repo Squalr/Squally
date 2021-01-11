@@ -10,7 +10,7 @@ namespace cocos2d
 class PlatformerCollisionMapping : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	void onMapKeyMappingRequest(cocos2d::EventCustom* eventCustom);
 

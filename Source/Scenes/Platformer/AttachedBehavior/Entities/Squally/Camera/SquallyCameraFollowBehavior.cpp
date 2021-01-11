@@ -82,7 +82,7 @@ void SquallyCameraFollowBehavior::onDisable()
 
 float SquallyCameraFollowBehavior::getLayerZoom()
 {
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+	MapLayer* layer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
 
 	if (layer == nullptr)
 	{

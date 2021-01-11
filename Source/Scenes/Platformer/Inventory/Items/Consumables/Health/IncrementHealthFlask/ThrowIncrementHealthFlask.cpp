@@ -102,7 +102,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 		{
 			potion->disable(true);
 
-			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+			PlatformerEntity* entity = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 			if (entity != nullptr)
 			{

@@ -41,7 +41,7 @@ PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 		PointerTraceLevelSelect::instance->autorelease();
 		PointerTraceLevelSelect::instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(PointerTraceLevelSelect::instance);
+		GlobalDirector::RegisterGlobalScene(PointerTraceLevelSelect::instance);
 	}
 
 	return PointerTraceLevelSelect::instance;

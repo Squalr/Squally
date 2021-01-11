@@ -38,7 +38,7 @@ DeveloperScene* DeveloperScene::getInstance()
 		DeveloperScene::Instance->autorelease();
 		DeveloperScene::Instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(DeveloperScene::getInstance());
+		GlobalDirector::RegisterGlobalScene(DeveloperScene::getInstance());
 	}
 
 	return DeveloperScene::Instance;
@@ -57,6 +57,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("DBG Warp Depth", MapResources::Dev_WarpDepth));
 		mapList.push_back(this->buildDebugButton("DBG Notifications", MapResources::Dev_Items));
 		mapList.push_back(this->buildDebugButton("DBG Collision", MapResources::Dev_Collision));
+		mapList.push_back(this->buildDebugButton("DBG Pickpocket", MapResources::Dev_Pickpocket));
 		mapList.push_back(this->buildDebugButton("DBG Positions", MapResources::Dev_PositionBug));
 		mapList.push_back(this->buildDebugButton("DBG Bounds", MapResources::Dev_Bounds));
 		mapList.push_back(this->buildDebugButton("DBG Animation Sequences", MapResources::Dev_AnimSeq));

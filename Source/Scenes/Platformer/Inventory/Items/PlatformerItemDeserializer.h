@@ -9,7 +9,7 @@ class PlatformerItemDeserializer : public GlobalNode
 {
 public:
 	static PlatformerItemDeserializer* getInstance();
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	void deserialize(InventoryEvents::RequestItemDeserializationArgs args);
 

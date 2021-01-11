@@ -17,13 +17,13 @@ void EngineBootstrapper::initialize()
 	FileUtils::getInstance()->setWritablePath(FileUtils::getInstance()->getWritablePath());
 
 	// Initialize global objects
-	Analytics::registerGlobalNode();
-	GlobalHackAttributeContainer::registerGlobalNode();
-	DeveloperModeController::registerGlobalNode();
-	GameCamera::registerGlobalNode();
-	Input::registerGlobalNode();
-	Mouse::registerGlobalNode();
-	MusicPlayer::registerGlobalNode();
+	Analytics::RegisterGlobalNode();
+	GlobalHackAttributeContainer::RegisterGlobalNode();
+	DeveloperModeController::RegisterGlobalNode();
+	GameCamera::RegisterGlobalNode();
+	Input::RegisterGlobalNode();
+	Mouse::RegisterGlobalNode();
+	MusicPlayer::RegisterGlobalNode();
 }
 
 void EngineBootstrapper::shutDown()

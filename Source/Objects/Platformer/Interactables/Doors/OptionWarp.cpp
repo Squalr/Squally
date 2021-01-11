@@ -224,7 +224,7 @@ void OptionWarp::doRelayer()
 		return;
 	}
 
-	MapLayer* mapLayer = GameUtils::getFirstParentOfType<MapLayer>(this);
+	MapLayer* mapLayer = GameUtils::GetFirstParentOfType<MapLayer>(this);
 
 	if (mapLayer != nullptr)
 	{

@@ -41,7 +41,7 @@ GameWindow::GameWindow()
 
 	// The string needs to be in a global node so that it can utilize the cocos event system
 	this->gameWindowTitleContainer->addChild(this->gameWindowTitle);
-	GlobalDirector::getInstance()->registerGlobalNode(this->gameWindowTitleContainer);
+	GlobalDirector::getInstance()->RegisterGlobalNode(this->gameWindowTitleContainer);
 }
 
 GameWindow::~GameWindow()

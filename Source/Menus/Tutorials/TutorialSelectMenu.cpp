@@ -45,7 +45,7 @@ TutorialSelectMenu* TutorialSelectMenu::getInstance()
 		TutorialSelectMenu::instance->autorelease();
 		TutorialSelectMenu::instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(TutorialSelectMenu::getInstance());
+		GlobalDirector::RegisterGlobalScene(TutorialSelectMenu::getInstance());
 	}
 
 	return TutorialSelectMenu::instance;

@@ -84,7 +84,7 @@ void ThrowGreaterHealthPotion::performAttack(PlatformerEntity* owner, std::vecto
 		{
 			potion->disable(true);
 			
-			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+			PlatformerEntity* entity = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 			if (entity != nullptr)
 			{

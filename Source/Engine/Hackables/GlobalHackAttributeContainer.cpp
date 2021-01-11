@@ -14,12 +14,12 @@ using namespace cocos2d;
 
 GlobalHackAttributeContainer* GlobalHackAttributeContainer::instance = nullptr;
 
-void GlobalHackAttributeContainer::registerGlobalNode()
+void GlobalHackAttributeContainer::RegisterGlobalNode()
 {
 	if (GlobalHackAttributeContainer::instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(GlobalHackAttributeContainer::getInstance());
+		GlobalDirector::getInstance()->RegisterGlobalNode(GlobalHackAttributeContainer::getInstance());
 	}
 }
 

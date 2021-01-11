@@ -13,9 +13,9 @@ public:
 	static GlobalDirector* getInstance();
 
 	static void loadScene(std::function<SmartScene*()> sceneCreator);
-	static void registerGlobalNode(GlobalNode* node);
-	static void registerGlobalNode(GlobalHud* node);
-	static void registerGlobalScene(GlobalScene* node);
+	static void RegisterGlobalNode(GlobalNode* node);
+	static void RegisterGlobalNode(GlobalHud* node);
+	static void RegisterGlobalScene(GlobalScene* node);
 
 protected:
 	GlobalDirector();

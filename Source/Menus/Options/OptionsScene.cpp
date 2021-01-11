@@ -22,7 +22,7 @@ OptionsScene* OptionsScene::getInstance()
 
 		OptionsScene::instance->autorelease();
 		OptionsScene::instance->initializeListeners();
-		GlobalDirector::registerGlobalScene(OptionsScene::instance);
+		GlobalDirector::RegisterGlobalScene(OptionsScene::instance);
 	}
 
 	return OptionsScene::instance;

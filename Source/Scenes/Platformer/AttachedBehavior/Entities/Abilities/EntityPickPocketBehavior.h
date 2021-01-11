@@ -16,6 +16,9 @@ class EntityPickPocketBehavior : public AttachedBehavior
 {
 public:
 	static EntityPickPocketBehavior* create(GameObject* owner);
+	
+	bool canPickPocket();
+	bool wasPickPocketed();
 
 	static const std::string MapKey;
 
@@ -31,10 +34,9 @@ private:
 	typedef AttachedBehavior super;
 
 	void attemptPickPocket();
-	bool canPickPocket();
-	bool wasPickPocketed();
 	void onPickPocketed();
 	void updateIconVisibility();
+	void refreshCursorState();
 
 	PlatformerEntity* entity;
 	Squally* squally;

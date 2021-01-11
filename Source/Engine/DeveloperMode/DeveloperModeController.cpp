@@ -17,12 +17,12 @@ volatile bool DeveloperModeController::IsDeveloperBuild = true;
 int DeveloperModeController::MaxDebugLevel = 2;
 int DeveloperModeController::CurrentDebugLevel = 0;
 
-void DeveloperModeController::registerGlobalNode()
+void DeveloperModeController::RegisterGlobalNode()
 {
 	if (DeveloperModeController::instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(DeveloperModeController::getInstance());
+		GlobalDirector::getInstance()->RegisterGlobalNode(DeveloperModeController::getInstance());
 	}
 }
 

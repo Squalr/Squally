@@ -43,7 +43,7 @@ void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 			return CollisionResult::DoNothing;
 		}
 
-		Squally* squally = GameUtils::getFirstParentOfType<Squally>(collisionData.other);
+		Squally* squally = GameUtils::GetFirstParentOfType<Squally>(collisionData.other);
 
 		if (squally != nullptr && squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

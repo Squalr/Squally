@@ -29,7 +29,7 @@ std::map<std::string, int> PlatformerCollisionMapping::CollisionMap = std::map<s
 
 PlatformerCollisionMapping* PlatformerCollisionMapping::instance = nullptr;
 
-void PlatformerCollisionMapping::registerGlobalNode()
+void PlatformerCollisionMapping::RegisterGlobalNode()
 {
 	if (PlatformerCollisionMapping::instance == nullptr)
 	{
@@ -38,7 +38,7 @@ void PlatformerCollisionMapping::registerGlobalNode()
 		instance->autorelease();
 
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(PlatformerCollisionMapping::instance);
+		GlobalDirector::getInstance()->RegisterGlobalNode(PlatformerCollisionMapping::instance);
 	}
 }
 

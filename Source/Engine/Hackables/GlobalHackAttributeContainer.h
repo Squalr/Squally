@@ -10,7 +10,7 @@ class GlobalHackAttributeContainer : public GlobalNode
 public:
 	static GlobalHackAttributeContainer* create();
 
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 	static HackableCode* GetHackableCode(void* startAddress);
 	static void RegisterHackableCode(HackableCode* hackableCode);
 	static HackActivatedAbility* GetHackActivatedAbility(std::string identifier);

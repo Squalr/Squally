@@ -25,10 +25,10 @@ TrackDeserializer* TrackDeserializer::getInstance()
 	return TrackDeserializer::instance;
 }
 
-void TrackDeserializer::registerGlobalNode()
+void TrackDeserializer::RegisterGlobalNode()
 {
 	// Register this class globally so that it can always listen for events
-	GlobalDirector::getInstance()->registerGlobalNode(TrackDeserializer::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(TrackDeserializer::getInstance());
 }
 
 TrackDeserializer::TrackDeserializer()

@@ -14,6 +14,7 @@ public:
 	void setClickModifier(cocos2d::InputEvents::KeyCode modifier);
 	void clearEntityClickCallbacks();
 	ClickableNode* getHitbox();
+	PlatformerEntity* getEntity();
 
 	static const std::string MapKey;
 

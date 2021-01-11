@@ -4761,6 +4761,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Ysara_WEAPON_2;
 	extern const std::string Npcs_VoidStar_Ysara_WEAPON;
 	extern const std::string Squally_Animations;
+	extern const std::string Squally_Animations_ScaleTests;
 	extern const std::string Squally_BODY;
 	extern const std::string Squally_Blink_EYE_L_Blink_0000;
 	extern const std::string Squally_Blink_EYE_L_Blink_0001;

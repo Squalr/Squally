@@ -482,7 +482,7 @@ void PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 {
 	super::openPauseMenu(refocusTarget);
 	
-	CursorSets::setActiveCursorSet(CursorSets::Default);
+	CursorSets::SetActiveCursorSet(CursorSets::Default);
 
 	if (!this->canPause)
 	{

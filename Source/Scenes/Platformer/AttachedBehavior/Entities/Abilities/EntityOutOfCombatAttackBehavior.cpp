@@ -216,7 +216,7 @@ void EntityOutOfCombatAttackBehavior::replaceAnimationPartWithProjectile(std::st
 	));
 
 	Node* reference = weapon == nullptr ? (Node*)this->entity : (Node*)weapon;
-	float layerZ = GameUtils::getDepth(GameUtils::getFirstParentOfType<MapLayer>(reference));
+	float layerZ = GameUtils::getDepth(GameUtils::GetFirstParentOfType<MapLayer>(reference));
 
 	// Set the position to the reference object's position. Offset it by any layer positioning.
 	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference) - Vec3(0.0f, 0.0f, layerZ));

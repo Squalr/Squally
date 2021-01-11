@@ -108,7 +108,7 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 				return CollisionResult::DoNothing;
 			}
 
-			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+			PlatformerEnemy* enemy = GameUtils::GetFirstParentOfType<PlatformerEnemy>(collisionData.other);
 
 			if (enemy != nullptr && enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{

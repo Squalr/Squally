@@ -174,7 +174,7 @@ void SquallyMovementBehavior::disablePositionSaving()
 void SquallyMovementBehavior::saveSquallyPosition()
 {
 	Vec3 position = GameUtils::getWorldCoords3D(this->squally);
-	MapLayer* mapLayer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+	MapLayer* mapLayer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
 	std::string layerId = mapLayer == nullptr ? "" : mapLayer->getUniqueIdentifier();
 
 	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));

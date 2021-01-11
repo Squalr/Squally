@@ -9,7 +9,7 @@ class TrackDeserializer : public GlobalNode
 {
 public:
 	static TrackDeserializer* getInstance();
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	void deserialize(SoundEvents::RequestTrackDeserializationArgs args);
 

@@ -12,6 +12,7 @@ public:
 		PickPocket = 2,
 	};
 
-	static void registerCursorSets();
-	static void setActiveCursorSet(CursorSet cursorSet);
+	static void RegisterCursorSets();
+	static void SetActiveCursorSet(CursorSet cursorSet);
+	static CursorSet GetActiveCursorSet();
 };

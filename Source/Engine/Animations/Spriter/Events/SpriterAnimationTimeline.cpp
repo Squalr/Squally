@@ -21,7 +21,7 @@ SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::strin
 		timeline->autorelease();
 
 		SpriterAnimationTimeline::TimelineCache[animationResource] = timeline;
-		GlobalDirector::getInstance()->registerGlobalNode(timeline);
+		GlobalDirector::getInstance()->RegisterGlobalNode(timeline);
 	}
 
 	return SpriterAnimationTimeline::TimelineCache[animationResource];

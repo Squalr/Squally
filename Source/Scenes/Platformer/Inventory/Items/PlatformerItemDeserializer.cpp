@@ -25,10 +25,10 @@ PlatformerItemDeserializer* PlatformerItemDeserializer::getInstance()
 	return PlatformerItemDeserializer::instance;
 }
 
-void PlatformerItemDeserializer::registerGlobalNode()
+void PlatformerItemDeserializer::RegisterGlobalNode()
 {
 	// Register this class globally so that it can always listen for events
-	GlobalDirector::getInstance()->registerGlobalNode(PlatformerItemDeserializer::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(PlatformerItemDeserializer::getInstance());
 }
 
 PlatformerItemDeserializer::PlatformerItemDeserializer()

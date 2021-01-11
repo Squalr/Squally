@@ -155,7 +155,7 @@ void SquallyCollisionBehavior::onEntityCollisionCreated()
 
 		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 
-		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+		PlatformerEnemy* enemy = GameUtils::GetFirstParentOfType<PlatformerEnemy>(collisionData.other);
 
 		if (enemy != nullptr && enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

@@ -5,7 +5,7 @@
 class DeveloperModeController : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	static bool isDeveloperModeEnabled();
 	static int getDebugLevel();

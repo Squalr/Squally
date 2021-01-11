@@ -10,9 +10,9 @@ using namespace cocos2d;
 Analytics* Analytics::instance = nullptr;
 const std::string Analytics::trackingCode = "UA-125390935-1";
 
-void Analytics::registerGlobalNode()
+void Analytics::RegisterGlobalNode()
 {
-	GlobalDirector::getInstance()->registerGlobalNode(Analytics::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(Analytics::getInstance());
 }
 
 Analytics* Analytics::getInstance()

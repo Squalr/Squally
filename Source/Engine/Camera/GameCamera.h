@@ -20,7 +20,7 @@ class LocalizedLabel;
 class GameCamera : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 	static GameCamera* getInstance();
 
 	float getCameraDistance();

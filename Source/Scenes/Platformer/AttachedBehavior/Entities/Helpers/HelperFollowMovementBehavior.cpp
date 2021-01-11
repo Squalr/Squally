@@ -158,7 +158,7 @@ void HelperFollowMovementBehavior::update(float dt)
 
 void HelperFollowMovementBehavior::warpToSqually()
 {
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+	MapLayer* layer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
 
 	if (layer != nullptr)
 	{

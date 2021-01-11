@@ -61,3 +61,8 @@ bool AttachedBehavior::isQueryable()
 {
 	return (this->queryable && !this->invalidated);
 }
+
+GameObject* AttachedBehavior::getOwner()
+{
+	return this->owner;
+}

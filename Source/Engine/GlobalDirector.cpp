@@ -68,7 +68,7 @@ void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 	SceneEvents::TriggerAfterSceneChange();
 }
 
-void GlobalDirector::registerGlobalNode(GlobalNode* node)
+void GlobalDirector::RegisterGlobalNode(GlobalNode* node)
 {
 	if (node != nullptr)
 	{
@@ -77,7 +77,7 @@ void GlobalDirector::registerGlobalNode(GlobalNode* node)
 	}
 }
 
-void GlobalDirector::registerGlobalNode(GlobalHud* node)
+void GlobalDirector::RegisterGlobalNode(GlobalHud* node)
 {
 	if (node != nullptr)
 	{
@@ -86,7 +86,7 @@ void GlobalDirector::registerGlobalNode(GlobalHud* node)
 	}
 }
 
-void GlobalDirector::registerGlobalScene(GlobalScene* scene)
+void GlobalDirector::RegisterGlobalScene(GlobalScene* scene)
 {
 	if (scene != nullptr)
 	{

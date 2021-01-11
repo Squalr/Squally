@@ -10,7 +10,8 @@ class AttachedBehavior : public SmartNode
 public:
 	bool isInvalidated();
 	bool isQueryable();
-
+	GameObject* getOwner();
+	
 	virtual void onDisable();
 
 protected:

@@ -8,7 +8,7 @@ class Track;
 class MusicPlayer : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	static void registerMusic(Music* music);
 

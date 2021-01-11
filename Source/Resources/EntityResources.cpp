@@ -4760,6 +4760,7 @@ const std::string EntityResources::Npcs_VoidStar_Ysara_TORSO = "Private/Platform
 const std::string EntityResources::Npcs_VoidStar_Ysara_WEAPON_2 = "Private/Platformer/Entities/Npcs/VoidStar/Ysara/WEAPON 2.png";
 const std::string EntityResources::Npcs_VoidStar_Ysara_WEAPON = "Private/Platformer/Entities/Npcs/VoidStar/Ysara/WEAPON.png";
 const std::string EntityResources::Squally_Animations = "Private/Platformer/Entities/Squally/Animations.scml";
+const std::string EntityResources::Squally_Animations_ScaleTests = "Private/Platformer/Entities/Squally/Animations_ScaleTests.scml";
 const std::string EntityResources::Squally_BODY = "Private/Platformer/Entities/Squally/BODY.png";
 const std::string EntityResources::Squally_Blink_EYE_L_Blink_0000 = "Private/Platformer/Entities/Squally/Blink/EYE L_Blink_0000.png";
 const std::string EntityResources::Squally_Blink_EYE_L_Blink_0001 = "Private/Platformer/Entities/Squally/Blink/EYE L_Blink_0001.png";

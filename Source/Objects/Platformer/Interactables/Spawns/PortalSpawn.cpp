@@ -92,7 +92,7 @@ void PortalSpawn::onPlayerSpawn(PlatformerEntity* entity)
 void PortalSpawn::doRelayer(PlatformerEntity* entity)
 {
 	// Relayer to the spawn object layer
-	MapLayer* mapLayer = GameUtils::getFirstParentOfType<MapLayer>(this);
+	MapLayer* mapLayer = GameUtils::GetFirstParentOfType<MapLayer>(this);
 
 	if (mapLayer != nullptr)
 	{

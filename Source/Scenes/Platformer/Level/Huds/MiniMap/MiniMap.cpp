@@ -219,7 +219,7 @@ void MiniMap::initializeMapData()
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-		this->squallyMap = GameUtils::getFirstParentOfType<MiniGameMap>(this->squally);
+		this->squallyMap = GameUtils::GetFirstParentOfType<MiniGameMap>(this->squally);
 		
 		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{

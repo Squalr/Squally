@@ -13,7 +13,7 @@ namespace cocos2d
 class Input : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	static cocos2d::InputEvents::MouseEventArgs GetMouseEvent();
 	static cocos2d::InputEvents::KeyCode GetActiveModifiers();

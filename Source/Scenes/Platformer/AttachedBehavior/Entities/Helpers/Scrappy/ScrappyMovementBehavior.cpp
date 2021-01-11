@@ -65,7 +65,7 @@ void ScrappyMovementBehavior::onLoad()
 			
 			if (args != nullptr)
 			{
-				MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+				MapLayer* layer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
 
 				if (layer != nullptr)
 				{
@@ -170,7 +170,7 @@ void ScrappyMovementBehavior::update(float dt)
 
 void ScrappyMovementBehavior::warpToSqually()
 {
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this->squally);
+	MapLayer* layer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
 
 	if (layer != nullptr)
 	{

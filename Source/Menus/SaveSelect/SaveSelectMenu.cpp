@@ -46,7 +46,7 @@ SaveSelectMenu* SaveSelectMenu::getInstance()
 		SaveSelectMenu::instance->autorelease();
 		SaveSelectMenu::instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
+		GlobalDirector::RegisterGlobalScene(SaveSelectMenu::instance);
 	}
 
 	return SaveSelectMenu::instance;

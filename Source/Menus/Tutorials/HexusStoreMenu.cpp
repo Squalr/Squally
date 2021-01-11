@@ -54,7 +54,7 @@ HexusStoreMenu* HexusStoreMenu::getInstance()
 		HexusStoreMenu::instance->autorelease();
 		HexusStoreMenu::instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(HexusStoreMenu::getInstance());
+		GlobalDirector::RegisterGlobalScene(HexusStoreMenu::getInstance());
 	}
 
 	return HexusStoreMenu::instance;

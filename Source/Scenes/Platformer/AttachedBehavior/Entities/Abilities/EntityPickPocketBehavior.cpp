@@ -4,11 +4,14 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/Input.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -101,12 +104,12 @@ void EntityPickPocketBehavior::onLoad()
 			{
 				if (this->currentHelperName == Guano::MapKey && this->canPickPocket())
 				{
-					CursorSets::setActiveCursorSet(CursorSets::PickPocket);
+					CursorSets::SetActiveCursorSet(CursorSets::PickPocket);
 				}
 			},
 			[=]()
 			{
-				CursorSets::setActiveCursorSet(CursorSets::Default);
+				CursorSets::SetActiveCursorSet(CursorSets::Default);
 			});
 		});
 	});
@@ -183,13 +186,42 @@ void EntityPickPocketBehavior::onPickPocketed()
 {
 	this->updateIconVisibility();
 	
-	this->entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
+	this->entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{
-		selectionBehavior->clearEntityClickCallbacks();
+		selection->clearEntityClickCallbacks();
+		
+		this->refreshCursorState();
 	});
 }
 
 void EntityPickPocketBehavior::updateIconVisibility()
 {
 	this->pickPocketIcon->setVisible(this->canPickPocket());
+}
+
+void EntityPickPocketBehavior::refreshCursorState()
+{
+	CursorSets::SetActiveCursorSet(CursorSets::Default);
+
+	// Fire a hit test to see if any other entities are still selected. Restore the pickpocket cursor set if so.
+	InputEvents::TriggerMouseHitTest(InputEvents::MouseHitTestArgs(
+		Input::GetMouseEvent().mouseCoords,
+		[=](Node* node)
+		{
+			EntitySelectionBehavior* selection = GameUtils::GetFirstParentOfType<EntitySelectionBehavior>(node);
+
+			if (selection != nullptr)
+			{
+				selection->getOwner()->getAttachedBehavior<EntityPickPocketBehavior>([](EntityPickPocketBehavior* pickPocketBehavior)
+				{
+					if (pickPocketBehavior->canPickPocket())
+					{
+						CursorSets::SetActiveCursorSet(CursorSets::PickPocket);
+					}
+				});
+			}
+		}, false, false)
+	);
+
+	InputEvents::TriggerMouseRequestRefresh();
 }
