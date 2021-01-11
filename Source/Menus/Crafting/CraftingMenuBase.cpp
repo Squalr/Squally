@@ -188,6 +188,12 @@ void CraftingMenuBase::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (this->isCrafting)
+		{
+			this->stopCraft(true);
+			return;
+		}
+
 		if (!GameUtils::isVisible(this))
 		{
 			return;
