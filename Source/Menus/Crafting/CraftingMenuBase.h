@@ -70,6 +70,7 @@ private:
 
 	Sound* errorSound;
 
+	Item* selectedRecipe;
 	std::vector<Item*> recipes;
 	CurrencyInventory* currencyInventory;
 	Inventory* inventory;

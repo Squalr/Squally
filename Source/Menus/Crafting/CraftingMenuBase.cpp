@@ -59,6 +59,7 @@ CraftingMenuBase::CraftingMenuBase()
 	this->backDecorNode = Node::create();
 	this->returnClickCallback = nullptr;
 	this->isCrafting = 0.0f;
+	this->selectedRecipe = nullptr;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -179,7 +180,10 @@ void CraftingMenuBase::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->onCraftInteract();
+		if (this->itemMenu->hasFocus())
+		{
+			this->onCraftInteract();
+		}
 	});
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
@@ -204,6 +208,11 @@ void CraftingMenuBase::initializeListeners()
 		this->filterMenu->focus();
 		this->itemMenu->unfocus();
 		this->craftingPreview->clearPreview();
+
+		if (this->isCrafting)
+		{
+			this->stopCraft(true);
+		}
 	});
 }
 
@@ -255,12 +264,8 @@ void CraftingMenuBase::populateItemList()
 void CraftingMenuBase::open(std::vector<Item*> recipes)
 {
 	this->recipes = recipes;
+	this->onCraftPreview(this->selectedRecipe);
 	this->onFilterChange();
-
-	this->canCraft = false;
-
-	// this->filterMenu->focus();
-	// this->itemMenu->unfocus();
 }
 
 void CraftingMenuBase::setReturnClickCallback(std::function<void()> returnClickCallback)

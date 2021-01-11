@@ -30,6 +30,7 @@ public:
 	void updateAndPositionItemText();
 	void focus();
 	void unfocus();
+	bool hasFocus();
 
 	static const cocos2d::Vec2 DefaultPreviewOffset;
 	static const cocos2d::Vec3 DefaultTextOffset;

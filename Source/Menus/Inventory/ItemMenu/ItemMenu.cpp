@@ -237,6 +237,11 @@ void ItemMenu::unfocus()
 	this->updateAndPositionItemText();
 }
 
+bool ItemMenu::hasFocus()
+{
+	return this->isFocused;
+}
+
 void ItemMenu::scrollInventoryUp()
 {
 	if (!this->isFocused)
