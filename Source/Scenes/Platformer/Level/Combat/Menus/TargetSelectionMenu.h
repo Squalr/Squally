@@ -20,15 +20,17 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 
 private:
 	typedef Hud super;
+
+	void switchToInputMode();
+	void switchToMouseMode();
 	void chooseCurrentTarget();
 	void setEntityClickCallbacks();
 	void setEntityClickCallbacks(PlatformerEntity* entity);
 	void clearEntityClickCallbacks();
-	void selectNext(bool directionIsLeft);
+	void selectNext(bool directionIsLeft, bool withMouseHitTest);
 
 	enum class AllowedSelection
 	{
@@ -43,6 +45,7 @@ private:
 	AllowedSelection allowedSelection;
 	bool isActive;
 	PlatformerEntity* selectedEntity;
+	bool areCallbacksSet;
 
 	ChooseTargetMenu* chooseTargetMenu;
 };

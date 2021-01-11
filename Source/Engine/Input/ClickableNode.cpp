@@ -114,24 +114,29 @@ void ClickableNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseMove, [=](EventCustom* event)
 	{
-		this->mouseMove(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
+		this->mouseMove(event);
 	}));
 
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseDown, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseDown, [=](EventCustom* event)
 	{
-		this->mouseDown(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
+		this->mouseDown(event);
 	}));
 
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseUp, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseUp, [=](EventCustom* event)
 	{
-		this->mouseUp(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
+		this->mouseUp(event);
 	}));
 
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* event)
 	{
-		this->mouseScroll(static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData()), eventCustom);
+		this->mouseScroll(event);
+	}));
+
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseHitTest, [=](EventCustom* event)
+	{
+		this->mouseHitTest(event);
 	}));
 }
 
@@ -201,7 +206,7 @@ void ClickableNode::disableInteraction(GLubyte newOpacity)
 	this->showContent(this->content);
 	this->setOpacity(newOpacity);
 	
-	InputEvents::TriggerMouseRefresh(Input::GetMouseEvent());
+	InputEvents::TriggerMouseRequestRefresh();
 }
 
 void ClickableNode::enableInteraction(GLubyte newOpacity)
@@ -210,7 +215,7 @@ void ClickableNode::enableInteraction(GLubyte newOpacity)
 	this->showContent(this->content);
 	this->setOpacity(newOpacity);
 	
-	InputEvents::TriggerMouseRefresh(Input::GetMouseEvent());
+	InputEvents::TriggerMouseRequestRefresh();
 }
 
 void ClickableNode::setClickModifier(InputEvents::KeyCode modifier)
@@ -314,9 +319,15 @@ void ClickableNode::clearState()
 	this->wasAnywhereClicked = false;
 }
 
-void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* event)
+void ClickableNode::mouseMove(EventCustom* event)
 {
+	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getData());
 	bool hasValidModifier = this->modifier == InputEvents::KeyCode::KEY_NONE || this->modifier == Input::GetActiveModifiers();
+
+	if (!this->interactionEnabled && this->isMousedOver)
+	{
+		this->mouseOut(event);
+	}
 
 	if (!this->interactionEnabled || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
@@ -376,12 +387,14 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 	}
 	else
 	{
-		this->mouseOut(args);
+		this->mouseOut(event);
 	}
 }
 
-void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* event)
+void ClickableNode::mouseDown(EventCustom* event)
 {
+	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getData());
+
 	if (!this->interactionEnabled || (this->modifier != Input::GetActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
@@ -426,8 +439,10 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 	}
 }
 
-void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* event)
+void ClickableNode::mouseUp(EventCustom* event)
 {
+	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getData());
+
 	if (!this->interactionEnabled || (this->modifier != Input::GetActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
@@ -474,8 +489,10 @@ void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* even
 	}
 }
 
-void ClickableNode::mouseScroll(InputEvents::MouseEventArgs* args, EventCustom* event)
+void ClickableNode::mouseScroll(EventCustom* event)
 {
+	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getData());
+
 	if (!this->interactionEnabled || !GameUtils::isVisible(this))
 	{
 		return;
@@ -493,8 +510,10 @@ void ClickableNode::mouseScroll(InputEvents::MouseEventArgs* args, EventCustom* 
 	}
 }
 
-void ClickableNode::mouseOut(InputEvents::MouseEventArgs* args, bool force)
+void ClickableNode::mouseOut(EventCustom* event, bool force)
 {
+	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getData());
+
 	// Recursion protection
 	bool wasMousedOver = this->isMousedOver;
 	this->isMousedOver = false;
@@ -508,6 +527,26 @@ void ClickableNode::mouseOut(InputEvents::MouseEventArgs* args, bool force)
 	if (this->allowMouseOutDeselection)
 	{
 		this->showContent(this->content);
+	}
+}
+
+void ClickableNode::mouseHitTest(EventCustom* event)
+{
+	InputEvents::MouseHitTestArgs* args = static_cast<InputEvents::MouseHitTestArgs*>(event->getData());
+
+	if (args->isHandled() || (!this->interactionEnabled && !args->ignoreEnabled) || !GameUtils::isVisible(this))
+	{
+		return;
+	}
+
+	if (this->intersects(args->mouseCoords))
+	{
+		if (args->handleOnHit)
+		{
+			args->handle();
+		}
+
+		args->onHit(this);
 	}
 }
 

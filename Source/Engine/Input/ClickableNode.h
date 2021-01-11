@@ -67,11 +67,12 @@ private:
 	void setDebugDrawPosition();
 	void showContent(cocos2d::Node* content);
 	void clearState();
-	void mouseMove(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
-	void mouseDown(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
-	void mouseUp(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
-	void mouseScroll(cocos2d::InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
-	void mouseOut(cocos2d::InputEvents::MouseEventArgs* args, bool force = false);
+	void mouseMove(cocos2d::EventCustom* event);
+	void mouseDown(cocos2d::EventCustom* event);
+	void mouseUp(cocos2d::EventCustom* event);
+	void mouseScroll(cocos2d::EventCustom* event);
+	void mouseOut(cocos2d::EventCustom* event, bool force = false);
+	void mouseHitTest(cocos2d::EventCustom* event);
 	bool intersects(cocos2d::Vec2 mousePos);
 
 	Sound* mouseOverSound;

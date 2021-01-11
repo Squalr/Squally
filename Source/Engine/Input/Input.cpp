@@ -176,6 +176,8 @@ void Input::update(float dt)
 	{
 		this->refreshRequested = false;
 		
+		Input::MouseState.canClick = false;
+		
 		InputEvents::TriggerMouseMove(Input::MouseState);
 		InputEvents::TriggerMouseRefresh(Input::MouseState);
 	}

@@ -111,3 +111,8 @@ void EntitySelectionBehavior::clearEntityClickCallbacks()
 	this->clickHitbox->setMouseOverCallback(nullptr);
 	this->clickHitbox->setMouseOutCallback(nullptr);
 }
+
+ClickableNode* EntitySelectionBehavior::getHitbox()
+{
+	return this->clickHitbox;
+}
