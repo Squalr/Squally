@@ -61,6 +61,8 @@ MiniMap::MiniMap()
 	this->background = DrawNode::create();
 	this->squallyMarker = nullptr;
 	this->squallyInventory = nullptr;
+	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
+	this->isShown = false;
 
 	this->background->drawSolidRect(-Vec2(MiniMap::MiniMapSize) / 2.0f, Vec2(MiniMap::MiniMapSize) / 2.0f, Color4F(0, 0, 0, 0.5f));
 	
@@ -133,6 +135,14 @@ void MiniMap::update(float dt)
 
 void MiniMap::show(bool instant)
 {
+	if (this->isShown)
+	{
+		return;
+	}
+
+	this->isShown = true;
+	this->rootNode->stopAllActions();
+	
 	if (instant)
 	{
 		this->rootNode->setOpacity(255);
@@ -145,6 +155,14 @@ void MiniMap::show(bool instant)
 
 void MiniMap::hide(bool instant)
 {
+	if (!this->isShown)
+	{
+		return;
+	}
+	
+	this->isShown = false;
+	this->rootNode->stopAllActions();
+
 	if (instant)
 	{
 		this->rootNode->setOpacity(0);
@@ -216,6 +234,11 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 
 void MiniMap::initializeMapData()
 {
+	if (!this->requiredItemKey.empty() && !SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+	{
+		this->show();
+	}
+
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
@@ -227,8 +250,16 @@ void MiniMap::initializeMapData()
 
 			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->squallyInventory->getSaveKey(), [=](EventCustom* eventCustom)
 			{
-				this->checkMapRequiredItem();
+				if (this->hasRequiredItem())
+				{
+					this->show();
+				}
 			}));
+
+			if (this->hasRequiredItem())
+			{
+				this->show();
+			}
 		});
 	}, Squally::MapKey);
 
@@ -257,30 +288,26 @@ void MiniMap::initializeMapData()
 			next->setPositionZ(0.0f);
 		}
 	}
-	
-	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
-	
-	if (this->requiredItemKey != "" || SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
-	{
-		this->hide(true);
-	}
-	else
-	{
-		this->show();
-	}
 }
 
-void MiniMap::checkMapRequiredItem()
+bool MiniMap::hasRequiredItem()
 {
-	if (this->squallyInventory == nullptr || this->mapNode->isVisible())
+	if (this->requiredItemKey.empty())
 	{
-		return;
+		return true;
+	}
+
+	if (this->squallyInventory == nullptr)
+	{
+		return false;
 	}
 
 	if (this->squallyInventory->hasItemOfName(this->requiredItemKey))
 	{
-		this->mapNode->setVisible(true);
+		return true;
 	}
+
+	return false;
 }
 
 void MiniMap::addLayerDeserializer(LayerDeserializer* layerDeserializer)

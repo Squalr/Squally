@@ -133,7 +133,7 @@ void SpikedLog::onFrameComplete()
 {
 	this->currentAnimationIndex = MathUtils::wrappingNormalize(incrementSpikedLogAnimation(this->currentAnimationIndex, this->animationLength), 0, this->animationLength - 1);
 
-	this->spikedLog->playSingleFrame(ObjectResources::Traps_SpikedLog_SpikedLog_00, this->currentAnimationIndex, 0.08f, [=]()
+	this->spikedLog->playSingleFrame(ObjectResources::Traps_SpikedLog_SpikedLog_00, this->currentAnimationIndex, 0.05f, [=]()
 	{
 		this->onFrameComplete();
 	});

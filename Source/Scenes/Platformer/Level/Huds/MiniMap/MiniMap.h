@@ -55,7 +55,7 @@ protected:
 private:
 	typedef Hud super;
 
-	void checkMapRequiredItem();
+	bool hasRequiredItem();
 	void initializeMapData();
 	void positionMiniMap();
 	void positionEntityIcons();
@@ -69,6 +69,7 @@ private:
 	std::map<MiniMapTerrainObject*, float> miniMapTerrainObjects;
 	std::map<MiniMapObject*, float> miniMapObjects;
 	
+	bool isShown;
 	std::string requiredItemKey;
 
 	static const float MiniMapScale;
