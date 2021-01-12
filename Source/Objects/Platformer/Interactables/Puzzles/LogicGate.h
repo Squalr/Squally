@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Objects/Platformer/Interactables/Puzzles/Brazier.h"
 #include "Objects/Platformer/Interactables/ToggleableObject.h"
 
 namespace cocos2d
@@ -14,6 +15,8 @@ class LogicGate : public ToggleableObject
 {
 public:
 	static LogicGate* create(cocos2d::ValueMap& properties);
+
+	Brazier::TorchColor getTorchColor();
 
 	static const std::string MapKey;
 
@@ -37,7 +40,8 @@ private:
 	CollisionObject* gateCollision;
 	WorldSound* openSound;
 	
-	std::string colorName;
+	std::string torchColorName;
+	Brazier::TorchColor torchColor;
 	std::string saveKey;
 	bool answer;
 	float delta;

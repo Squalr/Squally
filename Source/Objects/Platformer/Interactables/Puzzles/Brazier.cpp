@@ -33,10 +33,10 @@ Brazier* Brazier::create(ValueMap& properties)
 
 Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, Size(101.0f, 111.0f))
 {
-	this->colorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
+	this->torchColorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);
 	this->fire = SmartAnimationSequenceNode::create();
-	this->color = Brazier::StrToColor(this->colorName);
+	this->torchColor = Brazier::StrToColor(this->torchColorName);
 	this->burnSound = WorldSound::create(SoundResources::Platformer_FX_Fire_FireSizzle1);
 	this->onSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshFire2);
 	this->offSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_Woosh1);
@@ -45,7 +45,7 @@ Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, S
 	this->onSound->setCustomMultiplier(0.25f);
 	this->offSound->setCustomMultiplier(0.25f);
 
-	switch (this->color)
+	switch (this->torchColor)
 	{
 		case TorchColor::Green:
 		{
@@ -70,7 +70,7 @@ Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, S
 		}
 	}
 
-	this->addTag(this->operationName + "_" + this->colorName);
+	this->addTag(this->operationName + "_" + this->torchColorName);
 
 	this->fire->setScale(1.5f);
 
@@ -100,17 +100,22 @@ void Brazier::initializePositions()
 	this->glow->setPosition(Vec2(0.0f, 0.0f));
 }
 
-Brazier::TorchColor Brazier::StrToColor(std::string colorName)
+Brazier::TorchColor Brazier::getTorchColor()
 {
-	if (colorName == "blue")
+	return this->torchColor;
+}
+
+Brazier::TorchColor Brazier::StrToColor(std::string torchColorName)
+{
+	if (torchColorName == "blue")
 	{
 		return TorchColor::Blue;
 	}
-	else if (colorName == "green")
+	else if (torchColorName == "green")
 	{
 		return TorchColor::Green;
 	}
-	else if (colorName == "purple")
+	else if (torchColorName == "purple")
 	{
 		return TorchColor::Purple;
 	}
@@ -174,7 +179,7 @@ void Brazier::onOptimizationShow()
 
 void Brazier::startFx()
 {
-	switch (this->color)
+	switch (this->torchColor)
 	{
 		case TorchColor::Green:
 		{

@@ -1,9 +1,12 @@
 #pragma once
 
 #include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Interactables/Puzzles/Brazier.h"
 
+class Brazier;
 class CollisionObject;
 class HackableData;
+class LogicGate;
 
 class LogicPuzzleController : public GameObject
 {
@@ -24,7 +27,7 @@ public:
 	static const std::string PropertyOperation;
 	
 	static const std::string MapEventTorchLogicSwitchSavePrefix;
-	static const std::string MapEventTorchLogicSwitchPrefix;
+	static const std::string MapEventTorchLogicSwitch;
 	static const std::string MapEventSolveTorches;
 	static const std::string MapEventCheckComplete;
 	static const std::string SaveKeyIsSolved;
@@ -40,11 +43,15 @@ protected:
 private:
 	typedef GameObject super;
 
+	void computeIsOpen(bool isInstant);
+	void runGateAnims(bool isInstant);
 	/*
 	bool isSolved();
-	void computeIsOpen(bool isInstant);
 	void checkComplete();
 	*/
+
+	std::map<Brazier::TorchColor, std::vector<Brazier*>> braziers;
+	std::map<Brazier::TorchColor, LogicGate*> logicGates;
 
 	Operation operation;
 	std::string operationName;

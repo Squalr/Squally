@@ -8,6 +8,7 @@ class ToggleableObject : public InteractObject
 {
 public:
 	bool isOn();
+	void toggle(bool enabled);
 	void enable();
 	void disable();
 

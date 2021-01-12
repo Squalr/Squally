@@ -173,6 +173,18 @@ bool ToggleableObject::isOn()
 	return this->isToggledOn;
 }
 
+void ToggleableObject::toggle(bool enabled)
+{
+	if (enabled)
+	{
+		this->enable();
+	}
+	else
+	{
+		this->disable();
+	}
+}
+
 void ToggleableObject::enable()
 {
 	if (this->isToggledOn)

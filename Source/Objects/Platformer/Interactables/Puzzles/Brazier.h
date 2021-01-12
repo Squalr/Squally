@@ -22,8 +22,9 @@ public:
 	};
 
 	static Brazier* create(cocos2d::ValueMap& properties);
+	static TorchColor StrToColor(std::string torchColorName);
 
-	static TorchColor StrToColor(std::string colorName);
+	TorchColor getTorchColor();
 
 	static const std::string MapKey;
 
@@ -54,7 +55,7 @@ private:
 	WorldSound* offSound;
 	WorldSound* interactSound;
 
-	TorchColor color;
-	std::string colorName;
+	TorchColor torchColor;
+	std::string torchColorName;
 	std::string operationName;
 };

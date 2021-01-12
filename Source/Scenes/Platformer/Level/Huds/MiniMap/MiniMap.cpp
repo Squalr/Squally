@@ -234,7 +234,9 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 
 void MiniMap::initializeMapData()
 {
-	if (!this->requiredItemKey.empty() && !SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool())
+	bool hideMiniMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool();
+
+	if (!this->requiredItemKey.empty() && !hideMiniMap)
 	{
 		this->show();
 	}
@@ -292,17 +294,14 @@ void MiniMap::initializeMapData()
 
 bool MiniMap::hasRequiredItem()
 {
-	if (this->requiredItemKey.empty())
-	{
-		return true;
-	}
+	bool hideMiniMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool();
 
-	if (this->squallyInventory == nullptr)
+	if (hideMiniMap || this->squallyInventory == nullptr)
 	{
 		return false;
 	}
 
-	if (this->squallyInventory->hasItemOfName(this->requiredItemKey))
+	if (this->requiredItemKey.empty() || this->squallyInventory->hasItemOfName(this->requiredItemKey))
 	{
 		return true;
 	}

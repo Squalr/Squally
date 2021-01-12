@@ -38,11 +38,12 @@ LogicGate* LogicGate::create(ValueMap& properties)
 
 LogicGate::LogicGate(ValueMap& properties) : super(properties, InteractType::None, Size(285.0f, 676.0f))
 {
-	this->colorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
+	this->torchColorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 	this->gateCollision = CollisionObject::create(CollisionObject::createBox(Size(285.0f, 676.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->delta = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyDelta, Value(512.0f)).asFloat();
 	this->answer = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyAnswer, Value(false)).asBool();
 	this->openSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism1);
+	this->torchColor = Brazier::StrToColor(this->torchColorName);
 
 	std::string gateColor = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyGateColor, Value("")).asString();
 
@@ -77,6 +78,11 @@ void LogicGate::initializeListeners()
 void LogicGate::onToggle()
 {
 	super::onToggle();
+}
+
+Brazier::TorchColor LogicGate::getTorchColor()
+{
+	return this->torchColor;
 }
 
 void LogicGate::onEnable(bool isInit)
