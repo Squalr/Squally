@@ -25,7 +25,7 @@ NormalFadeHud::NormalFadeHud()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->fadeScreen->drawSolidRect(Vec2::ZERO, Vec2(visibleSize), Color4F::BLACK);
 	this->fadeScreen->setOpacity(0);
-
+	
 	this->addChild(this->fadeScreen);
 }
 

@@ -185,6 +185,9 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[TigressCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TigressCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TigerManCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TigerManCombatBehavior::create(owner); };
 
+	// DM
+	this->attachedBehaviorDeserializers[TikiGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TikiGolemCombatBehavior::create(owner); };
+
 	// Misc
 	this->attachedBehaviorDeserializers[RamWeakenedCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RamWeakenedCombatBehavior::create(owner); };
 	
