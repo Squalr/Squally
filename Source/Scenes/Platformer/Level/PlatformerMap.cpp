@@ -51,6 +51,7 @@
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Crafting/AlchemyMenu.h"
 #include "Menus/Crafting/BlacksmithingMenu.h"
+#include "Menus/Crafting/DismantleMenu.h"
 #include "Menus/CursorSets.h"
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Inventory/ItemInfoMenu.h"
@@ -102,6 +103,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->partyMenu = LazyNode<PartyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildPartyMenu, this));
 	this->alchemyMenu = LazyNode<AlchemyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildAlchemyMenu, this));
 	this->blacksmithingMenu = LazyNode<BlacksmithingMenu>::create(CC_CALLBACK_0(PlatformerMap::buildBlacksmithingMenu, this));
+	this->dismantleMenu = LazyNode<DismantleMenu>::create(CC_CALLBACK_0(PlatformerMap::buildDismantleMenu, this));
 	this->inventoryMenu = LazyNode<InventoryMenu>::create(CC_CALLBACK_0(PlatformerMap::buildInventoryMenu, this));
 	this->canPause = true;
 	this->awaitingConfirmationEnd = false;
@@ -138,6 +140,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->menuHud->addChild(this->miniMap);
 	this->menuHud->addChild(this->alchemyMenu);
 	this->menuHud->addChild(this->blacksmithingMenu);
+	this->menuHud->addChild(this->dismantleMenu);
 	this->menuHud->addChild(this->fadeHud);
 	this->menuHud->addChild(this->notificationHud);
 	this->miniGameHud->addChild(this->cipher);
@@ -275,6 +278,21 @@ void PlatformerMap::initializeListeners()
 			this->blacksmithingMenu->lazyGet()->setVisible(true);
 
 			GameUtils::focus(this->blacksmithingMenu);
+			GameUtils::resume(this->notificationHud);
+			GameUtils::resume(this->confirmationHud);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenDismantling, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->dismantleMenu->lazyGet()->open(args->recipes);
+			this->dismantleMenu->lazyGet()->setVisible(true);
+
+			GameUtils::focus(this->dismantleMenu);
 			GameUtils::resume(this->notificationHud);
 			GameUtils::resume(this->confirmationHud);
 		}
@@ -687,6 +705,19 @@ AlchemyMenu* PlatformerMap::buildAlchemyMenu()
 BlacksmithingMenu* PlatformerMap::buildBlacksmithingMenu()
 {
 	BlacksmithingMenu* instance = BlacksmithingMenu::create();
+
+	instance->setReturnClickCallback([=]()
+	{
+		instance->setVisible(false);
+		GameUtils::focus(this);
+	});
+	
+	return instance;
+}
+
+DismantleMenu* PlatformerMap::buildDismantleMenu()
+{
+	DismantleMenu* instance = DismantleMenu::create();
 
 	instance->setReturnClickCallback([=]()
 	{

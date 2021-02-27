@@ -1,4 +1,4 @@
-#include "Anvil.h"
+#include "SmeltingPot.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -21,20 +21,20 @@
 
 using namespace cocos2d;
 
-const std::string Anvil::MapKey = "anvil";
+const std::string SmeltingPot::MapKey = "smelting-pot";
 
-Anvil* Anvil::create(ValueMap& properties)
+SmeltingPot* SmeltingPot::create(ValueMap& properties)
 {
-	Anvil* instance = new Anvil(properties);
+	SmeltingPot* instance = new SmeltingPot(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(256.0f, 128.0f))
+SmeltingPot::SmeltingPot(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(170.0f, 168.0f))
 {
-	this->anvil = Sprite::create(ObjectResources::Interactive_Anvil_Anvil);
+	this->smeltingpot = Sprite::create(ObjectResources::Interactive_SmeltingPot_SmeltingPot);
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->hammer = Sprite::create(ObjectResources::Interactive_Anvil_AnvilHammer);
 	this->floatContainer = Node::create();
@@ -45,16 +45,16 @@ Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractT
 	
 	this->floatContainer->addChild(this->shine);
 	this->floatContainer->addChild(this->hammer);
-	this->addChild(this->anvil);
+	this->addChild(this->smeltingpot);
 	this->addChild(this->floatContainer);
 	this->addChild(this->recipePoolDeserializer);
 }
 
-Anvil::~Anvil()
+SmeltingPot::~SmeltingPot()
 {
 }
 
-void Anvil::onEnter()
+void SmeltingPot::onEnter()
 {
 	super::onEnter();
 
@@ -67,43 +67,43 @@ void Anvil::onEnter()
 	this->loadRecipePool();
 }
 
-void Anvil::initializePositions()
+void SmeltingPot::initializePositions()
 {
 	super::initializePositions();
 
 	this->hammer->setPosition(Vec2(24.0f, 0.0f));
 	this->shine->setPosition(Vec2(24.0f, 0.0f));
 	this->floatContainer->setPosition(Vec2(0.0f, 160.0f));
-	this->anvil->setPosition(Vec2(0.0f, 0.0f));
+	this->smeltingpot->setPosition(Vec2(0.0f, 0.0f));
 }
 
-void Anvil::initializeListeners()
+void SmeltingPot::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void Anvil::onInteract(PlatformerEntity* interactingEntity)
+void SmeltingPot::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
 
-	PlatformerEvents::TriggerOpenSmithing(PlatformerEvents::CraftingOpenArgs(this->recipes));
+	PlatformerEvents::TriggerOpenDismantling(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }
 
-void Anvil::activate()
+void SmeltingPot::activate()
 {
 	this->floatContainer->setVisible(true);
 
 	this->enable();
 }
 
-void Anvil::deactivate()
+void SmeltingPot::deactivate()
 {
 	this->floatContainer->setVisible(false);
 
 	this->disable();
 }
 
-void Anvil::loadRecipePool()
+void SmeltingPot::loadRecipePool()
 {
 	ValueMap valueMap = ValueMap();
 

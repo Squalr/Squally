@@ -320,6 +320,7 @@ const std::string ObjectResources::Interactive_MineCarts_FillDiamond = "Private/
 const std::string ObjectResources::Interactive_MineCarts_FillGold = "Private/Platformer/Objects/Interactive/MineCarts/FillGold.png";
 const std::string ObjectResources::Interactive_MineCarts_WheelBack = "Private/Platformer/Objects/Interactive/MineCarts/WheelBack.png";
 const std::string ObjectResources::Interactive_MineCarts_WheelFront = "Private/Platformer/Objects/Interactive/MineCarts/WheelFront.png";
+const std::string ObjectResources::Interactive_SmeltingPot_SmeltingPot = "Private/Platformer/Objects/Interactive/SmeltingPot/SmeltingPot.png";
 const std::string ObjectResources::Interactive_TentBack = "Private/Platformer/Objects/Interactive/TentBack.png";
 const std::string ObjectResources::Interactive_TentFront = "Private/Platformer/Objects/Interactive/TentFront.png";
 const std::string ObjectResources::Physics_Asteroid_Asteroid = "Private/Platformer/Objects/Physics/Asteroid/Asteroid.png";

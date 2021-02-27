@@ -321,6 +321,7 @@ namespace ObjectResources
 	extern const std::string Interactive_MineCarts_FillGold;
 	extern const std::string Interactive_MineCarts_WheelBack;
 	extern const std::string Interactive_MineCarts_WheelFront;
+	extern const std::string Interactive_SmeltingPot_SmeltingPot;
 	extern const std::string Interactive_TentBack;
 	extern const std::string Interactive_TentFront;
 	extern const std::string Physics_Asteroid_Asteroid;

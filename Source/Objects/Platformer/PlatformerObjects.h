@@ -81,6 +81,7 @@
 #include "Objects/Platformer/Interactables/Puzzles/LogicPuzzleController.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/Tent.h"
+#include "Objects/Platformer/Interactables/SmeltingPot/SmeltingPot.h"
 #include "Objects/Platformer/Interactables/Spawns/CartSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/PortalSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/WoodDoorSpawn.h"

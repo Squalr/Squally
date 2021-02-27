@@ -267,6 +267,17 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 
 	GameUtils::setWorldCoords3D(projectile, GameUtils::getWorldCoords3D(this) + Vec3(spawnOffset.x, spawnOffset.y, 0.0f));
 
+	const float FadeDuration = 0.15f;
+
+	projectile->runAction(Sequence::create(
+		DelayTime::create(std::max(this->getProjectileLifetime() - FadeDuration, 0.0f)),
+		CallFunc::create([=]()
+		{
+			projectile->runAction(FadeTo::create(FadeDuration, 0));
+		}),
+		nullptr
+	));
+
 	projectile->runAction(Sequence::create(
 		DelayTime::create(this->getProjectileLifetime()),
 		CallFunc::create([=]()

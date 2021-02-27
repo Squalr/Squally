@@ -186,7 +186,87 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[TigerManCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TigerManCombatBehavior::create(owner); };
 
 	// DM
+	this->attachedBehaviorDeserializers[BarbarianCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)BarbarianCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[EarthElementalCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EarthElementalCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[EarthGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EarthGolemCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ForestGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ForestGolemCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[KrampusCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)KrampusCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[RhinomanCombatBeahvior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RhinomanCombatBeahvior::create(owner); };
+	this->attachedBehaviorDeserializers[ShamanCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ShamanCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalArcherCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalArcherCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalNecromancerCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalNecromancerCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalWarriorCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ThugCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ThugCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TikiGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TikiGolemCombatBehavior::create(owner); };
+	
+	// CV
+	this->attachedBehaviorDeserializers[AgnesCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AgnesCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[GorillaCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GorillaCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[JackCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)JackCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ReanimatedFighterCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ReanimatedFighterCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ReaperCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ReaperCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ScarecrowCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ScarecrowCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalBaronCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalBaronCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalPirateCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalPirateCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[VampireLordCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)VampireLordCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[VampiressCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)VampiressCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[WerewolfCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)WerewolfCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[WraithCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)WraithCombatBehavior::create(owner); };
+
+	// BP
+	this->attachedBehaviorDeserializers[CryogenCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CryogenCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[FrostFiendCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FrostFiendCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[GoblinElfCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinElfCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[IceGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)IceGolemCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PenguinGruntCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PenguinGruntCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PenguinWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)PenguinWarriorCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SantaCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SantaCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SnowFiendCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SnowFiendCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ToySoldierGoblinCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ToySoldierGoblinCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[VikingCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)VikingCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[WaterElementalCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)WaterElementalCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[YetiCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)YetiCombatBehavior::create(owner); };
+
+	// DH
+	this->attachedBehaviorDeserializers[AsmodeusCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AsmodeusCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonDragonCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonDragonCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonGhostCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonGhostCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonGruntCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonGruntCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonRogueCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonRogueCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonShamanCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonShamanCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonSwordsmanCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonSwordsmanCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DemonWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DemonWarriorCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[FireElementalCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FireElementalCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[FireTigerCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FireTigerCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[LavaGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LavaGolemCombatBehavior::create(owner); };
+
+	// LC
+	this->attachedBehaviorDeserializers[BoneFiendCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)BoneFiendCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[HunterCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)HunterCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[KingZulCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)KingZulCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[LazarusCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LazarusCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[MysticCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)MysticCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ReanimatedPigCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ReanimatedPigCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalCleaverCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalCleaverCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalKnightCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalKnightCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[SkeletalPriestessCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)SkeletalPriestessCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[UndeadCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)UndeadCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ZombieCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ZombieCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ZombieElricCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ZombieElricCombatBehavior::create(owner); };
+
+	// VS
+	this->attachedBehaviorDeserializers[AbominationCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AbominationCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[AssassinCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AssassinCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[BoneKnightCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)BoneKnightCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DarkTigerCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)DarkTigerCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[EvilEyeCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)EvilEyeCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ExterminatorCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ExterminatorCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[GargoyleCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GargoyleCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[LightningGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LightningGolemCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ShadeCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)ShadeCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[VoidArcherCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)VoidArcherCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[VoidDemonCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)VoidDemonCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[WarlockCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)WarlockCombatBehavior::create(owner); };
 
 	// Misc
 	this->attachedBehaviorDeserializers[RamWeakenedCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)RamWeakenedCombatBehavior::create(owner); };

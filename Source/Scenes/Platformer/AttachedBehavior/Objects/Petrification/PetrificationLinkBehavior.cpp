@@ -13,6 +13,7 @@
 #include "Objects/Platformer/Shops/ShopItem.h"
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"
+#include "Objects/Platformer/Interactables/SmeltingPot/SmeltingPot.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/EntityPetrificationBehavior.h"
 
 #include "Strings/Strings.h"

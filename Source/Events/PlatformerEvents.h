@@ -35,6 +35,7 @@ public:
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventOpenAlchemy;
 	static const std::string EventOpenSmithing;
+	static const std::string EventOpenDismantling;
 	static const std::string EventOpenItemInfo;
 	static const std::string EventDiscoverItem;
 	static const std::string EventGiveItemsFromPool;
@@ -248,6 +249,7 @@ public:
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerOpenAlchemy(CraftingOpenArgs args);
 	static void TriggerOpenSmithing(CraftingOpenArgs args);
+	static void TriggerOpenDismantling(CraftingOpenArgs args);
 	static void TriggerOpenItemInfo(ItemInfoArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);

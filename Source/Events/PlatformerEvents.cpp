@@ -25,6 +25,7 @@ const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTIT
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 const std::string PlatformerEvents::EventOpenAlchemy = "EVENT_OPEN_ALCHEMY";
 const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
+const std::string PlatformerEvents::EventOpenDismantling = "EVENT_OPEN_DISMANTLING";
 const std::string PlatformerEvents::EventOpenItemInfo = "EVENT_OPEN_ITEM_INFO";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
@@ -185,6 +186,14 @@ void PlatformerEvents::TriggerOpenSmithing(CraftingOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventOpenSmithing,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenDismantling(CraftingOpenArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventOpenDismantling,
 		&args
 	);
 }
