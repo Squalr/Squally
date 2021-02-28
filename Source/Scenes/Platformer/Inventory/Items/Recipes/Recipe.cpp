@@ -7,7 +7,7 @@ Recipe::Recipe(CurrencyInventory* cost) : super(cost, ItemMeta(1, 1))
     this->reagentsNode = Node::create();
     this->reagentsCache = std::vector<std::tuple<Item*, int>>();
 
-    this->craftedItem = nullptr;
+    this->craftedItems = std::vector<Item*>();
     this->reagentsNode->setVisible(false);
 
     this->addChild(this->reagentsNode);
@@ -32,14 +32,17 @@ std::vector<std::tuple<Item*, int>> Recipe::getReagents()
     return this->reagentsCache;
 }
 	
-Item* Recipe::getCraftedItemRef()
+std::vector<Item*>& Recipe::getCraftedItemsRef()
 {
-    if (this->craftedItem == nullptr)
+    if (this->craftedItems.empty())
     {
-        this->craftedItem = this->craft();
+        this->craftedItems = this->craft();
 
-        this->addChild(this->craftedItem);
+        for (Item* item : craftedItems)
+        {
+            this->addChild(item);
+        }
     }
 
-    return this->craftedItem;
+    return this->craftedItems;
 }

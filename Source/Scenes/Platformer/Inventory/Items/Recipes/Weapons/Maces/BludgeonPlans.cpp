@@ -29,9 +29,9 @@ BludgeonPlans::~BludgeonPlans()
 {
 }
 
-Item* BludgeonPlans::craft()
+std::vector<Item*> BludgeonPlans::craft()
 {
-	return Bludgeon::create();
+	return { Bludgeon::create() };
 }
 
 std::vector<std::tuple<Item*, int>> BludgeonPlans::getReagentsInternal()

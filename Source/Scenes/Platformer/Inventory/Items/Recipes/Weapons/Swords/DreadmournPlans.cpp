@@ -29,9 +29,9 @@ DreadmournPlans::~DreadmournPlans()
 {
 }
 
-Item* DreadmournPlans::craft()
+std::vector<Item*> DreadmournPlans::craft()
 {
-	return Dreadmourn::create();
+	return { Dreadmourn::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DreadmournPlans::getReagentsInternal()

@@ -29,9 +29,9 @@ GoldenSwordPlans::~GoldenSwordPlans()
 {
 }
 
-Item* GoldenSwordPlans::craft()
+std::vector<Item*> GoldenSwordPlans::craft()
 {
-	return GoldenSword::create();
+	return { GoldenSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenSwordPlans::getReagentsInternal()

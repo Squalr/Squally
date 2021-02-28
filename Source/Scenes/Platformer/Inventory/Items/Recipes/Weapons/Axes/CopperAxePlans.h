@@ -7,7 +7,7 @@ class CopperAxePlans : public AxeRecipe
 public:
 	static CopperAxePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

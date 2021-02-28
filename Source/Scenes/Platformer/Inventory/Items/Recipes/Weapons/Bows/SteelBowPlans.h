@@ -7,7 +7,7 @@ class SteelBowPlans : public BowRecipe
 public:
 	static SteelBowPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

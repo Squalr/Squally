@@ -7,7 +7,7 @@ class WitchingMacePlans : public MaceRecipe
 public:
 	static WitchingMacePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

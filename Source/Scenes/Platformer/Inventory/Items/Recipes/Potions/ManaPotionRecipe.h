@@ -7,7 +7,7 @@ class ManaPotionRecipe : public TransmuteRecipe
 public:
 	static ManaPotionRecipe* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

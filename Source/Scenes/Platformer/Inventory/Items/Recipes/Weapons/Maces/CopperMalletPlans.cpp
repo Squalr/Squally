@@ -29,9 +29,9 @@ CopperMalletPlans::~CopperMalletPlans()
 {
 }
 
-Item* CopperMalletPlans::craft()
+std::vector<Item*> CopperMalletPlans::craft()
 {
-	return CopperMallet::create();
+	return { CopperMallet::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CopperMalletPlans::getReagentsInternal()

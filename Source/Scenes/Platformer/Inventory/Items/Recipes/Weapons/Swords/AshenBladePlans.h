@@ -7,7 +7,7 @@ class AshenBladePlans : public SwordRecipe
 public:
 	static AshenBladePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

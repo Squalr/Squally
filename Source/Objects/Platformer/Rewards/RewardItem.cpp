@@ -128,7 +128,7 @@ void RewardItem::sellItem()
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+			PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
 			this->removeRewardItem();
 		});
 	}, Squally::MapKey);

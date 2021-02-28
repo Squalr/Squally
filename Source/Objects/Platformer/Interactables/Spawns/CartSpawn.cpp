@@ -41,7 +41,7 @@ void CartSpawn::onPlayerSpawn(PlatformerEntity* entity)
 
 void CartSpawn::enterCart(PlatformerEntity* entity)
 {
-	ObjectEvents::QueryObject<MineCart>(this, [=](MineCart* mineCart)
+	ObjectEvents::QueryObject<MineCart>([=](MineCart* mineCart)
 	{
 		mineCart->setPositionX(this->getPositionX());
 
@@ -55,8 +55,5 @@ void CartSpawn::enterCart(PlatformerEntity* entity)
 		{
 			mineCart->setCartDirection(MineCart::CartDirection::Right);
 		}
-	},
-	[=]()
-	{
 	}, this->linkTag);
 }

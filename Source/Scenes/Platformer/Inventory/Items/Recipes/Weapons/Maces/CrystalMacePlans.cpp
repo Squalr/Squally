@@ -29,9 +29,9 @@ CrystalMacePlans::~CrystalMacePlans()
 {
 }
 
-Item* CrystalMacePlans::craft()
+std::vector<Item*> CrystalMacePlans::craft()
 {
-	return CrystalMace::create();
+	return { CrystalMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalMacePlans::getReagentsInternal()

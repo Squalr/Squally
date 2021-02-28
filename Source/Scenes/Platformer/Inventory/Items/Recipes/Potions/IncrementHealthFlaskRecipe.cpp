@@ -29,9 +29,9 @@ IncrementHealthFlaskRecipe::~IncrementHealthFlaskRecipe()
 {
 }
 
-Item* IncrementHealthFlaskRecipe::craft()
+std::vector<Item*> IncrementHealthFlaskRecipe::craft()
 {
-	return IncrementHealthFlask::create();
+	return { IncrementHealthFlask::create() };
 }
 
 std::vector<std::tuple<Item*, int>> IncrementHealthFlaskRecipe::getReagentsInternal()

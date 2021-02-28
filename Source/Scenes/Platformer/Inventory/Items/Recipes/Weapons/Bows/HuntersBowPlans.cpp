@@ -29,9 +29,9 @@ HuntersBowPlans::~HuntersBowPlans()
 {
 }
 
-Item* HuntersBowPlans::craft()
+std::vector<Item*> HuntersBowPlans::craft()
 {
-	return HuntersBow::create();
+	return { HuntersBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> HuntersBowPlans::getReagentsInternal()

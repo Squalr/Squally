@@ -29,9 +29,9 @@ WoodenClubPlans::~WoodenClubPlans()
 {
 }
 
-Item* WoodenClubPlans::craft()
+std::vector<Item*> WoodenClubPlans::craft()
 {
-	return WoodenClub::create();
+	return { WoodenClub::create() };
 }
 
 std::vector<std::tuple<Item*, int>> WoodenClubPlans::getReagentsInternal()

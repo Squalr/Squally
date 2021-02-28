@@ -82,13 +82,13 @@ void Warp::initializeListeners()
 
 	this->listenForMapEvent(Warp::EventWarpToPrefix + this->from, [=](ValueMap args)
 	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		ObjectEvents::QueryObject<Squally>([=](Squally* squally)
 		{
 			this->doRelayer();
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
 			this->cooldown = Warp::WarpCooldown;
-		}), Squally::MapKey);
+		}, Squally::MapKey);
 	});
 }
 

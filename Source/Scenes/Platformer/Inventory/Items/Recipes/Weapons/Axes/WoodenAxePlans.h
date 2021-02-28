@@ -7,7 +7,7 @@ class WoodenAxePlans : public AxeRecipe
 public:
 	static WoodenAxePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

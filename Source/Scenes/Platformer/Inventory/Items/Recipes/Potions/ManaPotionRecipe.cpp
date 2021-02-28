@@ -29,9 +29,9 @@ ManaPotionRecipe::~ManaPotionRecipe()
 {
 }
 
-Item* ManaPotionRecipe::craft()
+std::vector<Item*> ManaPotionRecipe::craft()
 {
-	return ManaPotion::create();
+	return { ManaPotion::create() };
 }
 
 std::vector<std::tuple<Item*, int>> ManaPotionRecipe::getReagentsInternal()

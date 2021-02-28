@@ -142,23 +142,36 @@ public:
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
 	static void TriggerWriteObjectState(StateWriteArgs args);
-
-	template<class T>
-	static void QueryObjects(QueryObjectsArgs<T> args, std::string tag = "")
+	
+	template <class T>
+	static void QueryObjects(std::function<void(T*)> onObjectFound, std::string tag = "")
 	{
-		if (tag.empty())
+		ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object, bool* handled)
 		{
-			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
-				ObjectEvents::EventQueryObject,
-				&args
-			);
+			onObjectFound(object);
+		}), tag);
+	}
+	
+	template <class T>
+	static void QueryObject(std::function<void(T*)> onObjectFound, std::string tag = "", std::function<void()> onObjectNotFound = nullptr)
+	{
+		bool wasHandled = false;
+
+		ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object, bool* handled)
+		{
+			onObjectFound(object);
+			*handled = true;
+			wasHandled = true;
+		}), tag);
+
+		if (wasHandled)
+		{
+			return;
 		}
-		else
+
+		if (onObjectNotFound != nullptr)
 		{
-			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
-				ObjectEvents::EventQueryObjectByTagPrefix + tag,
-				&args
-			);
+			onObjectNotFound();
 		}
 	}
 
@@ -197,30 +210,23 @@ public:
 		}, eventKey);
 	}
 
-	template <class T>
-	static void QueryObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::function<void()> onObjectNotFound = nullptr, std::string tag = "")
+private:
+	template<class T>
+	static void QueryObjects(QueryObjectsArgs<T> args, std::string tag = "")
 	{
-		unsigned long long watchId = ObjectEvents::WatchId++;
-		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
-
-		bool wasHandled = false;
-
-		// Do an immediate check for the object
-		ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object, bool* handled)
+		if (tag.empty())
 		{
-			onObjectFound(object);
-			*handled = true;
-			wasHandled = true;
-		}), tag);
-
-		if (wasHandled)
-		{
-			return;
+			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
+				ObjectEvents::EventQueryObject,
+				&args
+			);
 		}
-
-		if (onObjectNotFound != nullptr)
+		else
 		{
-			onObjectNotFound();
+			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(
+				ObjectEvents::EventQueryObjectByTagPrefix + tag,
+				&args
+			);
 		}
 	}
 };

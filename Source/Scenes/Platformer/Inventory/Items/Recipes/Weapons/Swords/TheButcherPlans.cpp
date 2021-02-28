@@ -29,9 +29,9 @@ TheButcherPlans::~TheButcherPlans()
 {
 }
 
-Item* TheButcherPlans::craft()
+std::vector<Item*> TheButcherPlans::craft()
 {
-	return TheButcher::create();
+	return { TheButcher::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TheButcherPlans::getReagentsInternal()

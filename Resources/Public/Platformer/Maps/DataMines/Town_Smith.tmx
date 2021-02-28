@@ -201,11 +201,7 @@
     <property name="recipe-pool" value="smithing-pool-ur"/>
    </properties>
   </object>
-  <object id="816" name="smelting-pot" type="object" x="1575.5" y="897.394" width="170" height="167">
-   <properties>
-    <property name="recipe-pool" value="smithing-pool-ur"/>
-   </properties>
-  </object>
+  <object id="816" name="smelting-pot" type="object" x="1575.5" y="897.394" width="170" height="167"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -29,9 +29,9 @@ VoidMacePlans::~VoidMacePlans()
 {
 }
 
-Item* VoidMacePlans::craft()
+std::vector<Item*> VoidMacePlans::craft()
 {
-	return VoidMace::create();
+	return { VoidMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> VoidMacePlans::getReagentsInternal()

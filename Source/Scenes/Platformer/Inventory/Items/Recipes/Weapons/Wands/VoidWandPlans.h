@@ -7,7 +7,7 @@ class VoidWandPlans : public WandRecipe
 public:
 	static VoidWandPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

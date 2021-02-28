@@ -29,9 +29,9 @@ CrystalAxePlans::~CrystalAxePlans()
 {
 }
 
-Item* CrystalAxePlans::craft()
+std::vector<Item*> CrystalAxePlans::craft()
 {
-	return CrystalAxe::create();
+	return { CrystalAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalAxePlans::getReagentsInternal()

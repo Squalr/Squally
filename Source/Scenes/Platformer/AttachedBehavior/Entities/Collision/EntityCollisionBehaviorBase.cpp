@@ -87,10 +87,10 @@ void EntityCollisionBehaviorBase::onLoad()
 		
 		if (args != nullptr && !args->objectId.empty())
 		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<GameObject>([=](GameObject* object)
+			ObjectEvents::QueryObjects<GameObject>([=](GameObject* object)
 			{
 				this->warpToPosition(GameUtils::getWorldCoords3D(object), args->warpCamera);
-			}), args->objectId);
+			}, args->objectId);
 
 			PlatformerEvents::TriggerAfterWarp(PlatformerEvents::AfterWarpArgs(this->entity));
 		}

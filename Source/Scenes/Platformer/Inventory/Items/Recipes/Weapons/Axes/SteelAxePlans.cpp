@@ -29,9 +29,9 @@ SteelAxePlans::~SteelAxePlans()
 {
 }
 
-Item* SteelAxePlans::craft()
+std::vector<Item*> SteelAxePlans::craft()
 {
-	return SteelAxe::create();
+	return { SteelAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SteelAxePlans::getReagentsInternal()

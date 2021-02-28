@@ -7,7 +7,7 @@ class TransmuteCopperToQuartzRecipe : public TransmuteRecipe
 public:
 	static TransmuteCopperToQuartzRecipe* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

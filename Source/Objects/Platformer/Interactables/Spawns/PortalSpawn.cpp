@@ -66,10 +66,10 @@ void PortalSpawn::initializeListeners()
 		
 		if (args != nullptr && args->transition == this->transition)
 		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+			ObjectEvents::QueryObject<Squally>([=](Squally* squally)
 			{
 				this->onPlayerSpawn(squally);
-			}), Squally::MapKey);
+			}, Squally::MapKey);
 		}
 	}));
 }

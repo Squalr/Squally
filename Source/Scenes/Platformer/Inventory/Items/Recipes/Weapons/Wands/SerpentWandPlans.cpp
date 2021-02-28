@@ -29,9 +29,9 @@ SerpentWandPlans::~SerpentWandPlans()
 {
 }
 
-Item* SerpentWandPlans::craft()
+std::vector<Item*> SerpentWandPlans::craft()
 {
-	return TaserRod::create();
+	return { TaserRod::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SerpentWandPlans::getReagentsInternal()

@@ -29,9 +29,9 @@ VoidSwordPlans::~VoidSwordPlans()
 {
 }
 
-Item* VoidSwordPlans::craft()
+std::vector<Item*> VoidSwordPlans::craft()
 {
-	return VoidSword::create();
+	return { VoidSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> VoidSwordPlans::getReagentsInternal()

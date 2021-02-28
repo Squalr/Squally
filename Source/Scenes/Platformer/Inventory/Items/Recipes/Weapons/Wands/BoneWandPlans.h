@@ -7,7 +7,7 @@ class BoneWandPlans : public WandRecipe
 public:
 	static BoneWandPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

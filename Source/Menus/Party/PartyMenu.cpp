@@ -343,15 +343,15 @@ void PartyMenu::buildAllStats()
 	this->partyStatsBars.clear();
 	this->statsBarsNode->removeAllChildren();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* entity)
+	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{
-		this->buildStats(entity);
-	}));
+		this->buildStats(squally);
+	});
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* entity)
+	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* entity)
 	{
 		this->buildStats(entity);
-	}));
+	});
 
 	for (int index = 0; index < int(this->partyStatsBars.size()); index++)
 	{

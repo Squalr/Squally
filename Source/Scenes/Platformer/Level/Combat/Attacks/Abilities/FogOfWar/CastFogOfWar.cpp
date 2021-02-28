@@ -70,7 +70,7 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 	{
 		FogOfWar* fogOfWar = FogOfWar::create(owner, nullptr);
 
@@ -87,6 +87,7 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			}
 		));
 	},
+	PlatformerAttack::TagArenaBottom,
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
@@ -104,7 +105,7 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			{
 			}
 		));
-	}, PlatformerAttack::TagArenaBottom);
+	});
 }
 
 void CastFogOfWar::onCleanup()
@@ -127,7 +128,7 @@ bool CastFogOfWar::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 		}
 	}));
 
-	ObjectEvents::QueryObject<FogOfWar>(this, [&](FogOfWar*)
+	ObjectEvents::QueryObject<FogOfWar>([&](FogOfWar*)
 	{
 		worthUsing = false;
 	});

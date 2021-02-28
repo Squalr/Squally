@@ -29,9 +29,9 @@ FrostbanePlans::~FrostbanePlans()
 {
 }
 
-Item* FrostbanePlans::craft()
+std::vector<Item*> FrostbanePlans::craft()
 {
-	return Frostbane::create();
+	return { Frostbane::create() };
 }
 
 std::vector<std::tuple<Item*, int>> FrostbanePlans::getReagentsInternal()

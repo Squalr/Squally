@@ -29,9 +29,9 @@ EmeraldWandPlans::~EmeraldWandPlans()
 {
 }
 
-Item* EmeraldWandPlans::craft()
+std::vector<Item*> EmeraldWandPlans::craft()
 {
-	return EmeraldWand::create();
+	return { EmeraldWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> EmeraldWandPlans::getReagentsInternal()

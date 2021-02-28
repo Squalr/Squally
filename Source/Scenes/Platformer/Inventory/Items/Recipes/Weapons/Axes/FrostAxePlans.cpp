@@ -29,9 +29,9 @@ FrostAxePlans::~FrostAxePlans()
 {
 }
 
-Item* FrostAxePlans::craft()
+std::vector<Item*> FrostAxePlans::craft()
 {
-	return FrostAxe::create();
+	return { FrostAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> FrostAxePlans::getReagentsInternal()

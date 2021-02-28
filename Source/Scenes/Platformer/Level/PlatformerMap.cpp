@@ -283,7 +283,7 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenDismantling, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenDismantle, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getData());
 

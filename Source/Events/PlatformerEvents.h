@@ -35,11 +35,11 @@ public:
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventOpenAlchemy;
 	static const std::string EventOpenSmithing;
-	static const std::string EventOpenDismantling;
+	static const std::string EventOpenDismantle;
 	static const std::string EventOpenItemInfo;
 	static const std::string EventDiscoverItem;
 	static const std::string EventGiveItemsFromPool;
-	static const std::string EventGiveItem;
+	static const std::string EventGiveItems;
 	static const std::string EventGiveCurrenciesFromPool;
 	static const std::string EventGiveCurrency;
 	static const std::string EventAllowPause;
@@ -171,14 +171,14 @@ public:
 			: pool(pool), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
-	struct GiveItemArgs
+	struct GiveItemsArgs
 	{
-		Item* item;
+		std::vector<Item*> items;
 		LocalizedString* messageOverride;
 		bool keepOpen;
 
-		GiveItemArgs(Item* item, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
-			: item(item), messageOverride(messageOverride), keepOpen(keepOpen) { }
+		GiveItemsArgs(std::vector<Item*> items, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
+			: items(items), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
 	struct ItemDiscoveryArgs
@@ -249,10 +249,10 @@ public:
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerOpenAlchemy(CraftingOpenArgs args);
 	static void TriggerOpenSmithing(CraftingOpenArgs args);
-	static void TriggerOpenDismantling(CraftingOpenArgs args);
+	static void TriggerOpenDismantle(CraftingOpenArgs args);
 	static void TriggerOpenItemInfo(ItemInfoArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
-	static void TriggerGiveItem(GiveItemArgs args);
+	static void TriggerGiveItems(GiveItemsArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);
 	static void TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args);
 	static void TriggerGiveCurrency(GiveCurrencyArgs args);

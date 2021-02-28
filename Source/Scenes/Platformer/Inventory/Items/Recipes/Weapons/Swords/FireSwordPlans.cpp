@@ -29,9 +29,9 @@ FireSwordPlans::~FireSwordPlans()
 {
 }
 
-Item* FireSwordPlans::craft()
+std::vector<Item*> FireSwordPlans::craft()
 {
-	return FireSword::create();
+	return { FireSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> FireSwordPlans::getReagentsInternal()

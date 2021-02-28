@@ -29,9 +29,9 @@ ScythePlans::~ScythePlans()
 {
 }
 
-Item* ScythePlans::craft()
+std::vector<Item*> ScythePlans::craft()
 {
-	return Scythe::create();
+	return { Scythe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> ScythePlans::getReagentsInternal()

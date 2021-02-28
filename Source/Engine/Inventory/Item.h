@@ -51,8 +51,9 @@ public:
 	float getRubberBandFactor();
 
 protected:
-	Item(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	Item(CurrencyInventory* cost = nullptr, ItemMeta itemMeta = ItemMeta());
 	virtual ~Item();
+	
 	void onEnter() override;
 	void initializeListeners() override;
 

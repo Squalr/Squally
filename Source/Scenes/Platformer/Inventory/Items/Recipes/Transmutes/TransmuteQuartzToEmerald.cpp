@@ -29,9 +29,9 @@ TransmuteQuartzToEmerald::~TransmuteQuartzToEmerald()
 {
 }
 
-Item* TransmuteQuartzToEmerald::craft()
+std::vector<Item*> TransmuteQuartzToEmerald::craft()
 {
-	return Emerald::create();
+	return { Emerald::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TransmuteQuartzToEmerald::getReagentsInternal()

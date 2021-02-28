@@ -29,9 +29,9 @@ WoodenBowPlans::~WoodenBowPlans()
 {
 }
 
-Item* WoodenBowPlans::craft()
+std::vector<Item*> WoodenBowPlans::craft()
 {
-	return WoodenBow::create();
+	return { WoodenBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> WoodenBowPlans::getReagentsInternal()

@@ -29,9 +29,9 @@ DemonicWandPlans::~DemonicWandPlans()
 {
 }
 
-Item* DemonicWandPlans::craft()
+std::vector<Item*> DemonicWandPlans::craft()
 {
-	return DemonicWand::create();
+	return { DemonicWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonicWandPlans::getReagentsInternal()

@@ -167,7 +167,7 @@ void ShopItem::sellItem()
 			
 			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
 			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
 				playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
 
 				if (dynamic_cast<HexusCard*>(this->item) != nullptr)

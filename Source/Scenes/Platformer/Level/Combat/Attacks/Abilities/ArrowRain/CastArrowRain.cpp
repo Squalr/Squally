@@ -70,7 +70,7 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 	{
 		ArrowRain* arrowRain = ArrowRain::create(owner, nullptr, this->arrowResource);
 
@@ -90,6 +90,7 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 		// Place it quasi off-screen
 		arrowRain->setPosition(arrowRain->getPosition() + Vec2(0.0f, 512.0f));
 	},
+	PlatformerAttack::TagArenaTop,
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
@@ -110,7 +111,7 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 		
 		// Fall back by spawning the arrow rain in a quasi reasonable spot.
 		arrowRain->setPosition(arrowRain->getPosition() + Vec2(-256.0f, 1024.0f));
-	}, PlatformerAttack::TagArenaTop);
+	});
 }
 
 void CastArrowRain::onCleanup()
@@ -133,7 +134,7 @@ bool CastArrowRain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 		}
 	}));
 
-	ObjectEvents::QueryObject<ArrowRain>(this, [&](ArrowRain*)
+	ObjectEvents::QueryObject<ArrowRain>([&](ArrowRain*)
 	{
 		worthUsing = false;
 	});

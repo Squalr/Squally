@@ -29,9 +29,9 @@ DemonicMacePlans::~DemonicMacePlans()
 {
 }
 
-Item* DemonicMacePlans::craft()
+std::vector<Item*> DemonicMacePlans::craft()
 {
-	return DemonicMace::create();
+	return { DemonicMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonicMacePlans::getReagentsInternal()

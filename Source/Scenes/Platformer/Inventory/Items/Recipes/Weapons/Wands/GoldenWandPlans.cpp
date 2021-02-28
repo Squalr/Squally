@@ -29,9 +29,9 @@ GoldenWandPlans::~GoldenWandPlans()
 {
 }
 
-Item* GoldenWandPlans::craft()
+std::vector<Item*> GoldenWandPlans::craft()
 {
-	return GoldenWand::create();
+	return { GoldenWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenWandPlans::getReagentsInternal()

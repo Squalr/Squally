@@ -7,7 +7,7 @@ class SteelMacePlans : public MaceRecipe
 public:
 	static SteelMacePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

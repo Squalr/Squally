@@ -80,7 +80,7 @@ void SquallyCombatRespawnBehavior::onDisable()
 
 void SquallyCombatRespawnBehavior::respawn(bool softRevive)
 {
-	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
+	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* helper)
 	{
 		helper->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
@@ -97,7 +97,7 @@ void SquallyCombatRespawnBehavior::respawn(bool softRevive)
 				}
 			}
 		});
-	}));
+	});
 
 	this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{

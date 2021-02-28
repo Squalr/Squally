@@ -29,9 +29,9 @@ MithrilMacePlans::~MithrilMacePlans()
 {
 }
 
-Item* MithrilMacePlans::craft()
+std::vector<Item*> MithrilMacePlans::craft()
 {
-	return MithrilMace::create();
+	return { MithrilMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> MithrilMacePlans::getReagentsInternal()

@@ -7,7 +7,7 @@ class DreadmournPlans : public SwordRecipe
 public:
 	static DreadmournPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

@@ -7,7 +7,7 @@ class ScythePlans : public AxeRecipe
 public:
 	static ScythePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

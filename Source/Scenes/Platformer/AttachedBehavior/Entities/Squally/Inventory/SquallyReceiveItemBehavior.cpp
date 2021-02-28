@@ -49,29 +49,32 @@ SquallyReceiveItemBehavior::~SquallyReceiveItemBehavior()
 
 void SquallyReceiveItemBehavior::onLoad()
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItem, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItems, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::GiveItemArgs* args = static_cast<PlatformerEvents::GiveItemArgs*>(eventCustom->getData());
+		PlatformerEvents::GiveItemsArgs* args = static_cast<PlatformerEvents::GiveItemsArgs*>(eventCustom->getData());
 
-		if (args != nullptr && args->item != nullptr)
+		if (args != nullptr)
 		{
-			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			for (Item* item : args->items)
 			{
-				entityInventoryBehavior->getInventory()->tryInsert(args->item, [=](Item* item)
+				this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 				{
-					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-						args->messageOverride,
-						args->item->getString(),
-						args->item->getIconResource(),
-						SoundResources::Notifications_NotificationGood3,
-						args->keepOpen
-					));
-				},
-				[=](Item* item)
-				{
-				},
-				true);
-			});
+					entityInventoryBehavior->getInventory()->tryInsert(item, [=](Item* item)
+					{
+						NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+							args->messageOverride,
+							item->getString(),
+							item->getIconResource(),
+							SoundResources::Notifications_NotificationGood3,
+							args->keepOpen
+						));
+					},
+					[=](Item* item)
+					{
+					},
+					true);
+				});
+			}
 		}
 	}));
 

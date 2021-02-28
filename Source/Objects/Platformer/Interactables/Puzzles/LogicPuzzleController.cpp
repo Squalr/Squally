@@ -42,16 +42,15 @@ void LogicPuzzleController::onEnter()
 {
 	super::onEnter();
 
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Brazier>([=](Brazier* brazier)
+	ObjectEvents::QueryObjects<Brazier>([=](Brazier* brazier)
 	{
 		this->braziers[brazier->getTorchColor()].push_back(brazier);
-	}));
+	});
 	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<LogicGate>([=](LogicGate* logicGate)
+	ObjectEvents::QueryObjects<LogicGate>([=](LogicGate* logicGate)
 	{
 		this->logicGates[logicGate->getTorchColor()] = logicGate;
-	}));
+	});
 
 	this->computeIsOpen(true);
 
@@ -216,10 +215,10 @@ void LogicPuzzleController::checkComplete()
 	// Note: using variable firstRun here instead of local variable "areAllSolved", because reference capture lambdas are glitchy
 	this->firstRun = this->isSolved();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<LogicGate>([=](LogicGate* logicGate)
+	ObjectEvents::QueryObjects([=](LogicGate* logicGate)
 	{
 		this->firstRun &= logicGate->isSolved();
-	}));
+	});
 
 	bool areAllSolved = this->firstRun;
 

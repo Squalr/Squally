@@ -578,10 +578,10 @@ void TimelineEntry::tryPerformActions()
 			CombatEvents::TriggerRequestAIAction(CombatEvents::AIRequestArgs(this));
 		}
 
-		ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+		ObjectEvents::QueryObjects<CameraFocus>([&](CameraFocus* cameraTarget)
 		{
 			GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-		}), CameraFocus::MapKey);
+		}, CameraFocus::MapKey);
 	}
 	// Progress complete, do the cast
 	else if (this->progress >= 1.0f)
@@ -659,10 +659,10 @@ void TimelineEntry::cameraFocusEntry()
 {
 	std::string cameraTag = (this->isPlayerEntry() ? "player" : "enemy") + ("-camera-" + std::to_string(this->spawnIndex));
 
-	ObjectEvents::QueryObjects<CameraTarget>(QueryObjectsArgs<CameraTarget>([&](CameraTarget* cameraTarget)
+	ObjectEvents::QueryObjects<CameraTarget>([&](CameraTarget* cameraTarget)
 	{
 		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-	}), cameraTag);
+	}, cameraTag);
 }
 
 void TimelineEntry::tryInterrupt()

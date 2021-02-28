@@ -99,13 +99,13 @@ void Tent::initializeListeners()
 	{
 		this->runHealAnimation();
 
-		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
+		ObjectEvents::QueryObjects<PlatformerFriendly>([=](PlatformerFriendly* entity)
 		{
 			entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->setHealth(healthBehavior->getMaxHealth());
 			});
-		}), PlatformerFriendly::PlatformerFriendlyTag);
+		}, PlatformerFriendly::PlatformerFriendlyTag);
 
 		return CollisionResult::DoNothing;
 	});

@@ -29,9 +29,9 @@ WitchingMacePlans::~WitchingMacePlans()
 {
 }
 
-Item* WitchingMacePlans::craft()
+std::vector<Item*> WitchingMacePlans::craft()
 {
-	return WitchingMace::create();
+	return { WitchingMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> WitchingMacePlans::getReagentsInternal()

@@ -29,9 +29,9 @@ CrystalSwordPlans::~CrystalSwordPlans()
 {
 }
 
-Item* CrystalSwordPlans::craft()
+std::vector<Item*> CrystalSwordPlans::craft()
 {
-	return CrystalSword::create();
+	return { CrystalSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalSwordPlans::getReagentsInternal()

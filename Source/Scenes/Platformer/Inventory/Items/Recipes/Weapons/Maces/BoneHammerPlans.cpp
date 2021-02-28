@@ -29,9 +29,9 @@ BoneHammerPlans::~BoneHammerPlans()
 {
 }
 
-Item* BoneHammerPlans::craft()
+std::vector<Item*> BoneHammerPlans::craft()
 {
-	return BoneHammer::create();
+	return { BoneHammer::create() };
 }
 
 std::vector<std::tuple<Item*, int>> BoneHammerPlans::getReagentsInternal()

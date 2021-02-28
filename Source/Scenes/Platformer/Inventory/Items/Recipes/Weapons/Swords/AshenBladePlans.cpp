@@ -29,9 +29,9 @@ AshenBladePlans::~AshenBladePlans()
 {
 }
 
-Item* AshenBladePlans::craft()
+std::vector<Item*> AshenBladePlans::craft()
 {
-	return AshenBlade::create();
+	return { AshenBlade::create() };
 }
 
 std::vector<std::tuple<Item*, int>> AshenBladePlans::getReagentsInternal()

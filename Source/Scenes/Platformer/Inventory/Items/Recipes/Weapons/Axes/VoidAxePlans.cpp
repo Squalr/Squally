@@ -29,9 +29,9 @@ VoidAxePlans::~VoidAxePlans()
 {
 }
 
-Item* VoidAxePlans::craft()
+std::vector<Item*> VoidAxePlans::craft()
 {
-	return VoidAxe::create();
+	return { VoidAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> VoidAxePlans::getReagentsInternal()

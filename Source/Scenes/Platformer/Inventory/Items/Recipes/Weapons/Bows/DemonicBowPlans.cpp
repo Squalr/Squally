@@ -29,9 +29,9 @@ DemonicBowPlans::~DemonicBowPlans()
 {
 }
 
-Item* DemonicBowPlans::craft()
+std::vector<Item*> DemonicBowPlans::craft()
 {
-	return DemonicBow::create();
+	return { DemonicBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonicBowPlans::getReagentsInternal()

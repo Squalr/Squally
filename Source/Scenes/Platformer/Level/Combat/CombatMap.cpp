@@ -450,10 +450,10 @@ void CombatMap::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
 
-	ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+	ObjectEvents::QueryObjects<CameraFocus>([&](CameraFocus* cameraTarget)
 	{
 		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-	}), CameraFocus::MapKey);
+	}, CameraFocus::MapKey);
 }
 
 void CombatMap::spawnEntities()

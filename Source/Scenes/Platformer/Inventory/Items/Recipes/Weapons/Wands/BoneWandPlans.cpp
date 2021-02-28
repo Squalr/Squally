@@ -29,9 +29,9 @@ BoneWandPlans::~BoneWandPlans()
 {
 }
 
-Item* BoneWandPlans::craft()
+std::vector<Item*> BoneWandPlans::craft()
 {
-	return BoneWand::create();
+	return { BoneWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> BoneWandPlans::getReagentsInternal()

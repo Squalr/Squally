@@ -29,9 +29,9 @@ TimmyPlans::~TimmyPlans()
 {
 }
 
-Item* TimmyPlans::craft()
+std::vector<Item*> TimmyPlans::craft()
 {
-	return Timmy::create();
+	return { Timmy::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TimmyPlans::getReagentsInternal()

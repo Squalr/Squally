@@ -29,9 +29,9 @@ MithrilAxePlans::~MithrilAxePlans()
 {
 }
 
-Item* MithrilAxePlans::craft()
+std::vector<Item*> MithrilAxePlans::craft()
 {
-	return MithrilAxe::create();
+	return { MithrilAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> MithrilAxePlans::getReagentsInternal()

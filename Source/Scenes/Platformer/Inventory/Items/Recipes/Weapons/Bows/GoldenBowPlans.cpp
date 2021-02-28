@@ -29,9 +29,9 @@ GoldenBowPlans::~GoldenBowPlans()
 {
 }
 
-Item* GoldenBowPlans::craft()
+std::vector<Item*> GoldenBowPlans::craft()
 {
-	return GoldenBow::create();
+	return { GoldenBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenBowPlans::getReagentsInternal()

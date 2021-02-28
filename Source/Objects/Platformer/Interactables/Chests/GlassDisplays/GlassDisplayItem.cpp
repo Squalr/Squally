@@ -133,7 +133,7 @@ void GlassDisplayItem::unlockAndGiveItems()
 		return;
 	}
 
-	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
 }
 
 void GlassDisplayItem::tryRunTutorials()

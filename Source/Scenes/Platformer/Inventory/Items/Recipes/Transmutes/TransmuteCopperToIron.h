@@ -7,7 +7,7 @@ class TransmuteCopperToIron : public TransmuteRecipe
 public:
 	static TransmuteCopperToIron* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

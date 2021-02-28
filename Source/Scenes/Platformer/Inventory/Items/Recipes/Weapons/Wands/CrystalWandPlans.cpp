@@ -29,9 +29,9 @@ CrystalWandPlans::~CrystalWandPlans()
 {
 }
 
-Item* CrystalWandPlans::craft()
+std::vector<Item*> CrystalWandPlans::craft()
 {
-	return CrystalWand::create();
+	return { CrystalWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalWandPlans::getReagentsInternal()

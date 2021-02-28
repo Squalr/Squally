@@ -263,7 +263,7 @@ void FightGorgon::runCinematicSequencePart3()
 
 void FightGorgon::killRammedEnemies()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* enemy)
+	ObjectEvents::QueryObjects<PlatformerEnemy>([=](PlatformerEnemy* enemy)
 	{
 		if (enemy != this->gorgon)
 		{
@@ -272,7 +272,7 @@ void FightGorgon::killRammedEnemies()
 				healthBehavior->kill();
 			});
 		}
-	}), PlatformerEnemy::PlatformerEnemyTag);
+	}, PlatformerEnemy::PlatformerEnemyTag);
 
 	this->impactSound->play();
 }

@@ -29,9 +29,9 @@ TransmuteWoodToCoalRecipe::~TransmuteWoodToCoalRecipe()
 {
 }
 
-Item* TransmuteWoodToCoalRecipe::craft()
+std::vector<Item*> TransmuteWoodToCoalRecipe::craft()
 {
-	return Coal::create();
+	return { Coal::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TransmuteWoodToCoalRecipe::getReagentsInternal()

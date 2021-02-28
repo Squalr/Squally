@@ -167,7 +167,7 @@ void CureTown::runCinematicSequence()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ FountainRoomKey::create() }));
 			},
 			Voices::GetNextVoiceShort(),
 			false
@@ -271,7 +271,7 @@ void CureTown::setPreText()
 				),
 				[=]()
 				{
-					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(FountainRoomKey::create()));
+					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ FountainRoomKey::create() }));
 					this->setPreText();
 				},
 				Voices::GetNextVoiceMedium(),

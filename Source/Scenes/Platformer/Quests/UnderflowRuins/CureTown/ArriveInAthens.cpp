@@ -127,10 +127,10 @@ void ArriveInAthens::runCinematicSequencePt1()
 
 void ArriveInAthens::runCinematicSequencePt2()
 {
-	ObjectEvents::QueryObjects<CameraTarget>(QueryObjectsArgs<CameraTarget>([&](CameraTarget* cameraTarget)
+	ObjectEvents::QueryObjects<CameraTarget>([&](CameraTarget* cameraTarget)
 	{
 		GameCamera::getInstance()->pushTarget(cameraTarget->getTrackingData());
-	}), ArriveInAthens::TagTownCinematic);
+	}, ArriveInAthens::TagTownCinematic);
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),

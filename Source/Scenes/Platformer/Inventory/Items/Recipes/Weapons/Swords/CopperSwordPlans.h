@@ -7,7 +7,7 @@ class CopperSwordPlans : public SwordRecipe
 public:
 	static CopperSwordPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

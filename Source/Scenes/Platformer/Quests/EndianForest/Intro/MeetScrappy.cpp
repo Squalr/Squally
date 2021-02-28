@@ -102,10 +102,10 @@ void MeetScrappy::runCinematicSequencePt1()
 {
 	Vec2 positionA = Vec2::ZERO;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
+	ObjectEvents::QueryObject<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
 		positionA = GameUtils::getWorldCoords(cinematicMarker);
-	}), MeetScrappy::TagScrappyStop);
+	}, MeetScrappy::TagScrappyStop);
 
 	if (this->scrappy != nullptr)
 	{
@@ -180,10 +180,10 @@ void MeetScrappy::runCinematicSequencePt4()
 			{
 				Vec2 positionB = Vec2::ZERO;
 
-				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
+				ObjectEvents::QueryObjects<Squally>([&](Squally* squally)
 				{
 					positionB = GameUtils::getWorldCoords(squally);
-				}), Squally::MapKey);
+				}, Squally::MapKey);
 
 				this->scrappy->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),

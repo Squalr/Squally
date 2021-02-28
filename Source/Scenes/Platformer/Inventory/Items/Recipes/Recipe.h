@@ -5,14 +5,14 @@
 class Recipe : public Item
 {
 public:
-	virtual Item* craft() = 0;
+	virtual std::vector<Item*> craft() = 0;
 	std::vector<std::tuple<Item*, int>> getReagents();
 	
-	Item* getCraftedItemRef();
+	std::vector<Item*>& getCraftedItemsRef();
 	virtual std::string getCraftedItemIconResource() = 0;
 
 protected:
-	Recipe(CurrencyInventory* cost);
+	Recipe(CurrencyInventory* cost = nullptr);
 	virtual ~Recipe();
 
 	virtual std::vector<std::tuple<Item*, int>> getReagentsInternal() = 0;
@@ -20,7 +20,7 @@ protected:
 private:
 	typedef Item super;
 
-	Item* craftedItem;
+	std::vector<Item*> craftedItems;
 
 	cocos2d::Node* reagentsNode;
 	std::vector<std::tuple<Item*, int>> reagentsCache;

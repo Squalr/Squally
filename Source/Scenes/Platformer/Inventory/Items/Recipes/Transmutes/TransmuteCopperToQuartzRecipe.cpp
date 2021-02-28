@@ -29,9 +29,9 @@ TransmuteCopperToQuartzRecipe::~TransmuteCopperToQuartzRecipe()
 {
 }
 
-Item* TransmuteCopperToQuartzRecipe::craft()
+std::vector<Item*> TransmuteCopperToQuartzRecipe::craft()
 {
-	return Quartz::create();
+	return { Quartz::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TransmuteCopperToQuartzRecipe::getReagentsInternal()

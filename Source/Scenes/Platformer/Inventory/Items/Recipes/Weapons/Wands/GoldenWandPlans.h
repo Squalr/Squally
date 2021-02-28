@@ -7,7 +7,7 @@ class GoldenWandPlans : public WandRecipe
 public:
 	static GoldenWandPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

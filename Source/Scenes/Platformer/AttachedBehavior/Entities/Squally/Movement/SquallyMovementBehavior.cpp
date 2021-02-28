@@ -199,11 +199,11 @@ void SquallyMovementBehavior::loadSquallyPosition()
 	{
 		this->defer([=]()
 		{
-			ObjectEvents::QueryObjects<MapLayer>(QueryObjectsArgs<MapLayer>([&](MapLayer* mapLayer)
+			ObjectEvents::QueryObjects<MapLayer>([&](MapLayer* mapLayer)
 			{
 				GameUtils::changeParent(this->squally, mapLayer, true);
 				mapLayer->setHackable();
-			}), layerId);
+			}, layerId);
 
 			PlatformerEvents::TriggerSquallySpawned();
 		});

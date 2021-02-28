@@ -7,7 +7,7 @@ class FrostAxePlans : public AxeRecipe
 public:
 	static FrostAxePlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

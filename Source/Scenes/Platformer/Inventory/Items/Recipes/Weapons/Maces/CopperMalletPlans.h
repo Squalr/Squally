@@ -7,7 +7,7 @@ class CopperMalletPlans : public MaceRecipe
 public:
 	static CopperMalletPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

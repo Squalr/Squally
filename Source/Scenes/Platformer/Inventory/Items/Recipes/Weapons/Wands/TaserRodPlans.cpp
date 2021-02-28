@@ -29,9 +29,9 @@ TaserRodPlans::~TaserRodPlans()
 {
 }
 
-Item* TaserRodPlans::craft()
+std::vector<Item*> TaserRodPlans::craft()
 {
-	return TaserRod::create();
+	return { TaserRod::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TaserRodPlans::getReagentsInternal()

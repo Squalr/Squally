@@ -29,9 +29,9 @@ IvyBowPlans::~IvyBowPlans()
 {
 }
 
-Item* IvyBowPlans::craft()
+std::vector<Item*> IvyBowPlans::craft()
 {
-	return IvyBow::create();
+	return { IvyBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> IvyBowPlans::getReagentsInternal()

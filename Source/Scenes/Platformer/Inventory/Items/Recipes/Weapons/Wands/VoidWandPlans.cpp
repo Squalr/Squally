@@ -29,9 +29,9 @@ VoidWandPlans::~VoidWandPlans()
 {
 }
 
-Item* VoidWandPlans::craft()
+std::vector<Item*> VoidWandPlans::craft()
 {
-	return VoidWand::create();
+	return { VoidWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> VoidWandPlans::getReagentsInternal()

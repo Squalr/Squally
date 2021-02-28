@@ -153,35 +153,35 @@ void MayanDoor::initializeListeners()
 
 void MayanDoor::discoverStones()
 {
-	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
-	}, nullptr, "eax");
+	}, "eax");
 
-	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
-	}, nullptr, "ebx");
+	}, "ebx");
 
-	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
-	}, nullptr, "ecx");
+	}, "ecx");
 
-	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
-	}, nullptr, "edx");
+	}, "edx");
 
-	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
-	}, nullptr, "edi");
+	}, "edi");
 
-	ObjectEvents::QueryObject<RegisterStone>(this, [=](RegisterStone* stone)
+	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
-	}, nullptr, "esi");
+	}, "esi");
 }
 
 void MayanDoor::tryUnlock()

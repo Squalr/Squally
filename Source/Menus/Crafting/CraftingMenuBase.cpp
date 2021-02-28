@@ -373,7 +373,7 @@ void CraftingMenuBase::craftItem()
 		return;
 	}
 
-	Item* craftedItem = recipe->craft();
+	std::vector<Item*> craftedItems = recipe->craft();
 	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
 
 	for (auto reagent : reagents)
@@ -394,7 +394,7 @@ void CraftingMenuBase::craftItem()
 		}
 	}
 
-	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(craftedItem, Strings::Platformer_Notifications_ItemCrafted::create()));
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs(craftedItems, Strings::Platformer_Notifications_ItemCrafted::create()));
 
 	this->populateItemList();
 	this->craftingPreview->refresh();

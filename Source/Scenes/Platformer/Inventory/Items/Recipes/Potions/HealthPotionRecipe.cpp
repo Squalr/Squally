@@ -29,9 +29,9 @@ HealthPotionRecipe::~HealthPotionRecipe()
 {
 }
 
-Item* HealthPotionRecipe::craft()
+std::vector<Item*> HealthPotionRecipe::craft()
 {
-	return HealthPotion::create();
+	return { HealthPotion::create() };
 }
 
 std::vector<std::tuple<Item*, int>> HealthPotionRecipe::getReagentsInternal()

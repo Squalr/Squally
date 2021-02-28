@@ -101,7 +101,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
 	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
 	
-	ObjectEvents::QueryObjects<Squally>(QueryObjectsArgs<Squally>([&](Squally* squally)
+	ObjectEvents::QueryObjects<Squally>([&](Squally* squally)
 	{
 		playerCombatData.push_back(CombatMap::CombatData(
 			squally->getEntityKey(),
@@ -112,9 +112,9 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 				squally->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 			)
 		));
-	}), Squally::MapKey);
+	}, Squally::MapKey);
 	
-	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
+	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* helper)
 	{
 		playerCombatData.push_back(CombatMap::CombatData(
 			helper->getEntityKey(),
@@ -125,7 +125,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 				helper->getRuntimeStateOrDefault(StateKeys::Mana, Value(8888)).asInt()
 			)
 		));
-	}), Squally::TeamTag);
+	}, Squally::TeamTag);
 
 	// Build enemy team
 	enemyCombatData.push_back(CombatMap::CombatData(
@@ -141,7 +141,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 
 	if (!this->enemy->getBattleTag().empty())
 	{
-		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
+		ObjectEvents::QueryObjects<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
 		{
 			if (enemyAlly != this->enemy && enemyAlly->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
@@ -156,7 +156,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 					enemyAlly->getDropPool()
 				));
 			}
-		}), this->enemy->getBattleTag());
+		}, this->enemy->getBattleTag());
 	}
 
 	PlatformerEvents::TriggerEnemyEngaged(PlatformerEvents::EnemyEngagedArgs());

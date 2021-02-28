@@ -7,7 +7,7 @@ class TransmuteWoodToCoalRecipe : public TransmuteRecipe
 public:
 	static TransmuteWoodToCoalRecipe* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;

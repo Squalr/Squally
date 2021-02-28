@@ -29,9 +29,9 @@ CandySwordPlans::~CandySwordPlans()
 {
 }
 
-Item* CandySwordPlans::craft()
+std::vector<Item*> CandySwordPlans::craft()
 {
-	return CandySword::create();
+	return { CandySword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CandySwordPlans::getReagentsInternal()

@@ -29,9 +29,9 @@ ChieftainsWandPlans::~ChieftainsWandPlans()
 {
 }
 
-Item* ChieftainsWandPlans::craft()
+std::vector<Item*> ChieftainsWandPlans::craft()
 {
-	return ChieftainsWand::create();
+	return { ChieftainsWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> ChieftainsWandPlans::getReagentsInternal()

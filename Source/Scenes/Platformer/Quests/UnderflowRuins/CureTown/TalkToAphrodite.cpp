@@ -273,7 +273,7 @@ void TalkToAphrodite::runShipmentsComplete()
 				),
 				[=]()
 				{
-					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(GarnetBand::create()));
+					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ GarnetBand::create() }));
 					this->aphrodite->saveObjectState(TalkToAphrodite::SaveKeyItemGiven, Value(true));
 				},
 				Voices::GetNextVoiceMedium(),

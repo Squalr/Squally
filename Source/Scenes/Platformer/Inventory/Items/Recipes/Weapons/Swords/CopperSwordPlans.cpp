@@ -29,9 +29,9 @@ CopperSwordPlans::~CopperSwordPlans()
 {
 }
 
-Item* CopperSwordPlans::craft()
+std::vector<Item*> CopperSwordPlans::craft()
 {
-	return CopperSword::create();
+	return { CopperSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CopperSwordPlans::getReagentsInternal()

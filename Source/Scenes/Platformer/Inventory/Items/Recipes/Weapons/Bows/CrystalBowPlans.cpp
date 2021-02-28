@@ -29,9 +29,9 @@ CrystalBowPlans::~CrystalBowPlans()
 {
 }
 
-Item* CrystalBowPlans::craft()
+std::vector<Item*> CrystalBowPlans::craft()
 {
-	return CrystalBow::create();
+	return { CrystalBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalBowPlans::getReagentsInternal()

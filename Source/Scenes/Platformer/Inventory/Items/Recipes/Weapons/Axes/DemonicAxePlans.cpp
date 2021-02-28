@@ -29,9 +29,9 @@ DemonicAxePlans::~DemonicAxePlans()
 {
 }
 
-Item* DemonicAxePlans::craft()
+std::vector<Item*> DemonicAxePlans::craft()
 {
-	return DemonicAxe::create();
+	return { DemonicAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonicAxePlans::getReagentsInternal()

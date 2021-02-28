@@ -139,7 +139,7 @@ void RewardsMenu::giveExp()
 {
 	this->clearEmblems();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([&](PlatformerEntity* entity)
+	ObjectEvents::QueryObject<PlatformerEntity>([&](PlatformerEntity* entity)
 	{
 		entity->getAttachedBehavior<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
 		{
@@ -189,12 +189,12 @@ void RewardsMenu::giveExp()
 				this->addExpEmblem(entity->getEmblemResource(), adjustedGain);
 			});
 		});
-	}), PlatformerEntity::PlatformerEntityTag);
+	}, PlatformerEntity::PlatformerEntityTag);
 }
 
 void RewardsMenu::loadRewards()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
+	ObjectEvents::QueryObject<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
 		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
@@ -206,7 +206,7 @@ void RewardsMenu::loadRewards()
 				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(dropPool, nullptr, true));
 			}
 		});
-	}), PlatformerEnemy::PlatformerEnemyTag);
+	}, PlatformerEnemy::PlatformerEnemyTag);
 }
 
 void RewardsMenu::clearEmblems()

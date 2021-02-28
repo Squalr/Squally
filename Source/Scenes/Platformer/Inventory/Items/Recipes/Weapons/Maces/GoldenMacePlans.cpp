@@ -29,9 +29,9 @@ GoldenMacePlans::~GoldenMacePlans()
 {
 }
 
-Item* GoldenMacePlans::craft()
+std::vector<Item*> GoldenMacePlans::craft()
 {
-	return GoldenMace::create();
+	return { GoldenMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenMacePlans::getReagentsInternal()

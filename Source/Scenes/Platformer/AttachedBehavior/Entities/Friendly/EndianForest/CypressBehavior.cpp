@@ -85,7 +85,7 @@ void CypressBehavior::onLoad()
 				),
 				[=]()
 				{
-					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(SapphireBand::create()));
+					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
 					this->entity->saveObjectState(CypressBehavior::SaveKeyItemGiven, Value(true));
 				},
 				Voices::GetNextVoiceMedium(),

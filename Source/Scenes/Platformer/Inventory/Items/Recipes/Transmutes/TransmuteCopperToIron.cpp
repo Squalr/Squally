@@ -29,9 +29,9 @@ TransmuteCopperToIron::~TransmuteCopperToIron()
 {
 }
 
-Item* TransmuteCopperToIron::craft()
+std::vector<Item*> TransmuteCopperToIron::craft()
 {
-	return Iron::create();
+	return { Iron::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TransmuteCopperToIron::getReagentsInternal()

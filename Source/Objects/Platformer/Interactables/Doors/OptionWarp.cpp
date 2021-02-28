@@ -92,13 +92,13 @@ void OptionWarp::initializeListeners()
 
 	this->listenForMapEvent(OptionWarp::EventWarpToPrefix + this->from, [=](ValueMap args)
 	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		ObjectEvents::QueryObject<Squally>([=](Squally* squally)
 		{
 			this->doRelayer();
 			this->applyZoomOverride();
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
-		}), Squally::MapKey);
+		}, Squally::MapKey);
 	});
 }
 

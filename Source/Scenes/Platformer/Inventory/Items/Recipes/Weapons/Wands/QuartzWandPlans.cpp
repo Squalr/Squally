@@ -29,9 +29,9 @@ QuartzWandPlans::~QuartzWandPlans()
 {
 }
 
-Item* QuartzWandPlans::craft()
+std::vector<Item*> QuartzWandPlans::craft()
 {
-	return QuartzWand::create();
+	return { QuartzWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> QuartzWandPlans::getReagentsInternal()

@@ -100,21 +100,21 @@ void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 
 	PlatformerEvents::TriggerSaveRespawn(PlatformerEvents::SaveRespawnArgs(this->getUniqueIdentifier()));
 	
-	ObjectEvents::QueryObjects<Squally>(QueryObjectsArgs<Squally>([&](Squally* squally)
+	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{
 		squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});
-	}), Squally::MapKey);
+	}, Squally::MapKey);
 	
-	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* entity)
+	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* entity)
 	{
 		entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});
-	}), Squally::TeamTag);
+	}, Squally::TeamTag);
 }
 
 void LifeStone::onEndCollision()

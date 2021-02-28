@@ -74,7 +74,7 @@ void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<Pla
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 	{
 		EnvelopingWinds* envelopingWinds = EnvelopingWinds::create(owner, nullptr);
 
@@ -94,6 +94,7 @@ void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<Pla
 		// We spawned the wind to the arena center, but actually we want to snap the X back to the owner.
 		envelopingWinds->setPosition(Vec2(owner->getPositionX() - 32.0f, envelopingWinds->getPositionY()));
 	},
+	PlatformerAttack::TagArenaCenter,
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
@@ -114,7 +115,7 @@ void CastEnvelopingWinds::performAttack(PlatformerEntity* owner, std::vector<Pla
 		
 		// Fall back by spawning in a quasi reasonable spot.
 		envelopingWinds->setPosition(envelopingWinds->getPosition() + Vec2(-32.0f, 256.0f));
-	}, PlatformerAttack::TagArenaCenter);
+	});
 }
 
 void CastEnvelopingWinds::onCleanup()
@@ -137,7 +138,7 @@ bool CastEnvelopingWinds::isWorthUsing(PlatformerEntity* caster, const std::vect
 		}
 	}));
 
-	ObjectEvents::QueryObject<EnvelopingWinds>(this, [&](EnvelopingWinds*)
+	ObjectEvents::QueryObject<EnvelopingWinds>([&](EnvelopingWinds*)
 	{
 		worthUsing = false;
 	});

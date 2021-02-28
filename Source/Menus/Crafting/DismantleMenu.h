@@ -15,6 +15,8 @@ class DismantleMenu : public CraftingMenuBase
 public:
 	static DismantleMenu* create();
 
+	void open(std::vector<Item*> recipes) override;
+
 protected:
 	DismantleMenu();
 	virtual ~DismantleMenu();
@@ -26,7 +28,7 @@ protected:
 private:
 	typedef CraftingMenuBase super;
 
-	cocos2d::Sprite* anvil;
+	cocos2d::Sprite* smeltingPot;
 	cocos2d::Sprite* icon;
 	Sound* craftSound;
 };
