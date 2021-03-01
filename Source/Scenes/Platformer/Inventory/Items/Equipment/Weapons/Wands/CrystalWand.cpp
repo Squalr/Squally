@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/CrystalWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string CrystalWand::getSerializationKey()
 Vec2 CrystalWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* CrystalWand::getRecipe()
+{
+	return CrystalWandPlans::create();
 }

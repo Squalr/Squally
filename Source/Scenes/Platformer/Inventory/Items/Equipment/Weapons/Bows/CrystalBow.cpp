@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/CrystalBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string CrystalBow::getSerializationKey()
 Vec2 CrystalBow::getDisplayOffset()
 {
 	return Vec2(-10.0f, -74.0f);
+}
+
+Recipe* CrystalBow::getRecipe()
+{
+	return CrystalBowPlans::create();
 }

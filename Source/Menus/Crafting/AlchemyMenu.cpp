@@ -25,7 +25,7 @@ AlchemyMenu* AlchemyMenu::create()
 	return instance;
 }
 
-AlchemyMenu::AlchemyMenu()
+AlchemyMenu::AlchemyMenu() : super(Strings::Menus_Crafting_Crafting::create())
 {
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Table);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_PlantIcon);

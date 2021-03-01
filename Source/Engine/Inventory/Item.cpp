@@ -10,7 +10,10 @@ Item::Item(CurrencyInventory* cost, ItemMeta itemMeta)
 	this->cost = cost;
 	this->itemMeta = itemMeta;
 
-	this->addChild(this->cost);
+	if (this->cost != nullptr)
+	{
+		this->addChild(this->cost);
+	}
 }
 
 Item::~Item()

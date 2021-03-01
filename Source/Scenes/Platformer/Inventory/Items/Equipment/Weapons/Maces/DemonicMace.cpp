@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/DemonicMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string DemonicMace::getSerializationKey()
 Vec2 DemonicMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* DemonicMace::getRecipe()
+{
+	return DemonicMacePlans::create();
 }

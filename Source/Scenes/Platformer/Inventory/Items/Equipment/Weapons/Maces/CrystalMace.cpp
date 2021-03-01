@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/CrystalMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string CrystalMace::getSerializationKey()
 Vec2 CrystalMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* CrystalMace::getRecipe()
+{
+	return CrystalMacePlans::create();
 }

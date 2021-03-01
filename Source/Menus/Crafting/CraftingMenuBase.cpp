@@ -37,7 +37,7 @@ using namespace cocos2d;
 
 const float CraftingMenuBase::CraftDuration = 1.5f;
 
-CraftingMenuBase::CraftingMenuBase()
+CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
@@ -53,7 +53,7 @@ CraftingMenuBase::CraftingMenuBase()
 	this->craftIconNode = Node::create();
 	this->cancelIcon = Sprite::create(UIResources::Menus_CraftingMenu_CancelIcon);
 	this->craftProgress = ProgressBar::create(Sprite::create(UIResources::Menus_CraftingMenu_CraftFrame), Sprite::create(UIResources::Menus_CraftingMenu_CraftBarFill));
-	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
+	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, titleString);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 	this->backDecorNode = Node::create();

@@ -21,6 +21,7 @@ protected:
 	DismantleMenu();
 	virtual ~DismantleMenu();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void onCraftStart() override;
 	void onCraftEnd(bool viaCancel) override;
@@ -28,6 +29,8 @@ protected:
 private:
 	typedef CraftingMenuBase super;
 
+	cocos2d::Node* dismantledRecipiesNode;
+	std::vector<Item*> dismantleRecipes;
 	cocos2d::Sprite* smeltingPot;
 	cocos2d::Sprite* icon;
 	Sound* craftSound;

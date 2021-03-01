@@ -5,6 +5,7 @@
 
 class CurrencyInventory;
 class LocalizedString;
+class Recipe;
 
 class Item : public SmartNode
 {
@@ -44,6 +45,7 @@ public:
 	virtual LocalizedString* getString() = 0;
 	virtual std::string getIconResource() = 0;
 	virtual std::string getSerializationKey() = 0;
+	virtual Recipe* getRecipe() { return nullptr; };
 	CurrencyInventory* getCost();
 	int getStackSize();
 	int getUniqueCount();

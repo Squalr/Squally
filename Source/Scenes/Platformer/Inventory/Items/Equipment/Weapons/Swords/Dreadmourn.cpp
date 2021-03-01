@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/DreadmournPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ std::string Dreadmourn::getIconResource()
 std::string Dreadmourn::getSerializationKey()
 {
 	return Dreadmourn::SaveKey;
+}
+
+Recipe* Dreadmourn::getRecipe()
+{
+	return DreadmournPlans::create();
 }

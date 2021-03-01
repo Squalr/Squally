@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/CopperAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -81,4 +82,9 @@ Vec2 CopperAxe::getWeaponCollisionOffset()
 Vec2 CopperAxe::getDisplayOffset()
 {
 	return Vec2(20.0f, -4.0f);
+}
+
+Recipe* CopperAxe::getRecipe()
+{
+	return CopperAxePlans::create();
 }

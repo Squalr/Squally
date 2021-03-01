@@ -13,6 +13,7 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 	cocos2d::Vec2 getDisplayOffset() override;
+	Recipe* getRecipe() override;
 
 	static const std::string SaveKey;
 

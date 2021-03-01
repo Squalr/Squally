@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/WoodenClubPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string WoodenClub::getSerializationKey()
 Vec2 WoodenClub::getDisplayOffset()
 {
 	return Vec2(-4.0f, -2.0f);
+}
+
+Recipe* WoodenClub::getRecipe()
+{
+	return WoodenClubPlans::create();
 }

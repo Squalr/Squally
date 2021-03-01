@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/DemonicSwordPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ std::string DemonicSword::getIconResource()
 std::string DemonicSword::getSerializationKey()
 {
 	return DemonicSword::SaveKey;
+}
+
+Recipe* DemonicSword::getRecipe()
+{
+	return DemonicSwordPlans::create();
 }

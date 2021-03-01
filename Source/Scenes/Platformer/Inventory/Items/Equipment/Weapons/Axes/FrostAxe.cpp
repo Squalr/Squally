@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/FrostAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -81,4 +82,9 @@ Vec2 FrostAxe::getWeaponCollisionOffset()
 Vec2 FrostAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* FrostAxe::getRecipe()
+{
+	return FrostAxePlans::create();
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/HuntersBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string HuntersBow::getSerializationKey()
 Vec2 HuntersBow::getDisplayOffset()
 {
 	return Vec2(-20.0f, -72.0f);
+}
+
+Recipe* HuntersBow::getRecipe()
+{
+	return HuntersBowPlans::create();
 }

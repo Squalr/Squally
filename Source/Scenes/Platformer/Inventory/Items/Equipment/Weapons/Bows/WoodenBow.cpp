@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/WoodenBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -69,4 +70,9 @@ std::string WoodenBow::getSerializationKey()
 Vec2 WoodenBow::getDisplayOffset()
 {
 	return Vec2(-14.0f, -62.0f);
+}
+
+Recipe* WoodenBow::getRecipe()
+{
+	return WoodenBowPlans::create();
 }

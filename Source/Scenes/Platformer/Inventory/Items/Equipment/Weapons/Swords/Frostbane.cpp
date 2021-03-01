@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/FrostbanePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ std::string Frostbane::getIconResource()
 std::string Frostbane::getSerializationKey()
 {
 	return Frostbane::SaveKey;
+}
+
+Recipe* Frostbane::getRecipe()
+{
+	return FrostbanePlans::create();
 }

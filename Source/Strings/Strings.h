@@ -7929,6 +7929,21 @@ namespace Strings
 		virtual ~Menus_Crafting_Crafting() = default;
 	};
 
+	class Menus_Crafting_Dismantle : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Dismantle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Dismantle();
+		virtual ~Menus_Crafting_Dismantle() = default;
+	};
+
 	class Menus_Crafting_Maces : public LocalizedString
 	{
 	public:

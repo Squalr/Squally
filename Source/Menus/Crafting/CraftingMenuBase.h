@@ -18,6 +18,7 @@ class Item;
 class ItemMenu;
 class Inventory;
 class LocalizedLabel;
+class LocalizedString;
 class ProgressBar;
 class Recipe;
 class Sound;
@@ -29,7 +30,7 @@ public:
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
-	CraftingMenuBase();
+	CraftingMenuBase(LocalizedString* titleString);
 	virtual ~CraftingMenuBase();
 
 	void onEnter() override;

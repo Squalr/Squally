@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/CopperSwordPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ std::string CopperSword::getIconResource()
 std::string CopperSword::getSerializationKey()
 {
 	return CopperSword::SaveKey;
+}
+
+Recipe* CopperSword::getRecipe()
+{
+	return CopperSwordPlans::create();
 }

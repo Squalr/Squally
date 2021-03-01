@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/BoneSwordPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ std::string BoneSword::getIconResource()
 std::string BoneSword::getSerializationKey()
 {
 	return BoneSword::SaveKey;
+}
+
+Recipe* BoneSword::getRecipe()
+{
+	return BoneSwordPlans::create();
 }

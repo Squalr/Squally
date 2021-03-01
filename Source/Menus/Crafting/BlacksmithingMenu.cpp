@@ -30,7 +30,7 @@ BlacksmithingMenu* BlacksmithingMenu::create()
 	return instance;
 }
 
-BlacksmithingMenu::BlacksmithingMenu()
+BlacksmithingMenu::BlacksmithingMenu() : super(Strings::Menus_Crafting_Crafting::create())
 {
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_AnvilIcon);

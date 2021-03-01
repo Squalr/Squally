@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/MithrilAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -81,4 +82,9 @@ Vec2 MithrilAxe::getWeaponCollisionOffset()
 Vec2 MithrilAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* MithrilAxe::getRecipe()
+{
+	return MithrilAxePlans::create();
 }

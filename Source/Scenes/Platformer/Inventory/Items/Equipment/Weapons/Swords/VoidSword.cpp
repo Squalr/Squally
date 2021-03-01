@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/VoidSwordPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ std::string VoidSword::getIconResource()
 std::string VoidSword::getSerializationKey()
 {
 	return VoidSword::SaveKey;
+}
+
+Recipe* VoidSword::getRecipe()
+{
+	return VoidSwordPlans::create();
 }

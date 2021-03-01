@@ -5,12 +5,15 @@
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftFilterMenu/Dismantle/AllEquipmentFilter.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Dismantle/DismantleRecipe.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -28,21 +31,45 @@ DismantleMenu* DismantleMenu::create()
 	return instance;
 }
 
-DismantleMenu::DismantleMenu()
+DismantleMenu::DismantleMenu() : super(Strings::Menus_Crafting_Dismantle::create())
 {
 	this->smeltingPot = Sprite::create(UIResources::Menus_CraftingMenu_SmeltingPot);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_SmeltingIcon);
 	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Blacksmithing);
+	this->dismantleRecipes = std::vector<Item*>();
+	this->dismantledRecipiesNode = Node::create();
 
 	this->filterMenu->addFilter(AllEquipmentFilter::create());
 
 	this->backDecorNode->addChild(this->smeltingPot);
 	this->craftIconNode->addChild(this->icon);
+	this->addChild(this->dismantledRecipiesNode);
 	this->addChild(this->craftSound);
 }
 
 DismantleMenu::~DismantleMenu()
 {
+}
+
+void DismantleMenu::onEnter()
+{
+	super::onEnter();
+
+	ObjectEvents::WatchForObject<Squally>(this, [&](Squally* squally)
+	{
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			for (Item* item : entityInventoryBehavior->getInventory()->getItems())
+			{
+				if (dynamic_cast<Equipable*>(item))
+				{
+					DismantleRecipe* recipe = DismantleRecipe::create(item);
+					this->dismantledRecipiesNode->addChild(recipe);
+					this->dismantleRecipes.push_back(recipe);
+				}
+			}
+		});
+	}, Squally::MapKey);
 }
 
 void DismantleMenu::initializePositions()
@@ -58,14 +85,8 @@ void DismantleMenu::initializePositions()
 
 void DismantleMenu::open(std::vector<Item*> recipes)
 {
-	// There shouldn't be any recipes passed to this. Instead, we create a DismantleRecipe for every item in the players inventory.
-	ObjectEvents::QueryObject<Squally>([=](Squally* squally)
-	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
-		{
-			entityInventoryBehavior->getInventory();
-		});
-	}, Squally::MapKey);
+	// There shouldn't be any recipes passed to this. Instead, we create a DismantleRecipe for every item in the players inventory
+	super::open(this->dismantleRecipes);
 }
 
 void DismantleMenu::onCraftStart()

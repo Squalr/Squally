@@ -5,7 +5,7 @@
 class DismantleRecipe : public Recipe
 {
 public:
-	static DismantleRecipe* create();
+	static DismantleRecipe* create(Item* item);
 
 	std::vector<Item*> craft() override;
 	Item* clone() override;
@@ -18,11 +18,14 @@ public:
 	static const std::string SaveKey;
 
 protected:
-	DismantleRecipe();
+	DismantleRecipe(Item* item);
 	virtual ~DismantleRecipe();
 	
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 
 private:
 	typedef Recipe super;
+
+	Item* dismantleItem;
+	Recipe* dismantledItemRecipe;
 };
