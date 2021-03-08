@@ -26,6 +26,10 @@ MineCartPreview::MineCartPreview()
 	this->previewNode->addChild(this->previewCart);
 }
 
+MineCartPreview::~MineCartPreview()
+{
+}
+
 HackablePreview* MineCartPreview::clone()
 {
 	return MineCartPreview::create();

@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	CatapultApplyPowerPreview();
-	virtual ~CatapultApplyPowerPreview() = default;
+	virtual ~CatapultApplyPowerPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* catapultBall1;
 	cocos2d::Sprite* catapultBall2;

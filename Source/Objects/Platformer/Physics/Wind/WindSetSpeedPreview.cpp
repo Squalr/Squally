@@ -42,6 +42,10 @@ WindSetSpeedPreview::WindSetSpeedPreview()
 	this->assemblyTextNode->addChild(this->ebxPositive);
 }
 
+WindSetSpeedPreview::~WindSetSpeedPreview()
+{
+}
+
 HackablePreview* WindSetSpeedPreview::clone()
 {
 	return WindSetSpeedPreview::create();

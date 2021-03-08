@@ -14,13 +14,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	MineCartPreview();
-	virtual ~MineCartPreview() = default;
+	virtual ~MineCartPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* previewCart;
 };

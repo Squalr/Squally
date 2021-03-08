@@ -53,6 +53,10 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 	}
 }
 
+AnimationPart::~AnimationPart()
+{
+}
+
 void AnimationPart::onEnter()
 {
 	super::onEnter();

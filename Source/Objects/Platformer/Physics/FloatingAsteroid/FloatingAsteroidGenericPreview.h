@@ -14,11 +14,13 @@ public:
 
 	HackablePreview* clone() override;
 
+protected:
+	FloatingAsteroidGenericPreview();
+	virtual ~FloatingAsteroidGenericPreview();
+
 private:
 	typedef HackablePreview super;
 
-	FloatingAsteroidGenericPreview();
-	virtual ~FloatingAsteroidGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

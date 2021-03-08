@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	FloatingWoodenBeamGetDensityPreview();
-	virtual ~FloatingWoodenBeamGetDensityPreview() = default;
+	virtual ~FloatingWoodenBeamGetDensityPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* previewAsteroid;
 	LocalizedLabel* xmm0Top;

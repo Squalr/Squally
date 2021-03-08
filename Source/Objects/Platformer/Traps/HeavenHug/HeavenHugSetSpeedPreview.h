@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	HeavenHugSetSpeedPreview();
-	virtual ~HeavenHugSetSpeedPreview() = default;
+	virtual ~HeavenHugSetSpeedPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* previewHeavenHug100;
 	cocos2d::Sprite* previewHeavenHug200;

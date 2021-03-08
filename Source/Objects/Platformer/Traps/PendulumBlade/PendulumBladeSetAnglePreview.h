@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	PendulumBladeSetAnglePreview();
-	virtual ~PendulumBladeSetAnglePreview() = default;
+	virtual ~PendulumBladeSetAnglePreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* previewBlade;
 	LocalizedLabel* eax0Degrees;

@@ -26,6 +26,10 @@ IcicleGenericPreview::IcicleGenericPreview()
 	this->previewNode->addChild(this->previewAsteroid);
 }
 
+IcicleGenericPreview::~IcicleGenericPreview()
+{
+}
+
 HackablePreview* IcicleGenericPreview::clone()
 {
 	return IcicleGenericPreview::create();

@@ -26,6 +26,10 @@ PendulumBladeGenericPreview::PendulumBladeGenericPreview()
 	this->previewNode->addChild(this->previewBlade);
 }
 
+PendulumBladeGenericPreview::~PendulumBladeGenericPreview()
+{
+}
+
 HackablePreview* PendulumBladeGenericPreview::clone()
 {
 	return PendulumBladeGenericPreview::create();

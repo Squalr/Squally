@@ -39,7 +39,7 @@ public:
 private:
 	typedef SmartNode super;
 	AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName);
-	virtual ~AnimationPart() = default;
+	virtual ~AnimationPart();
 
 	void onEnter() override;
 	void update(float dt) override;

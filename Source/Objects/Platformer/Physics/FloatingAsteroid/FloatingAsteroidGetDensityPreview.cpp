@@ -34,6 +34,10 @@ FloatingAsteroidGetDensityPreview::FloatingAsteroidGetDensityPreview()
 	this->assemblyTextNode->addChild(this->xmm0Bottom);
 }
 
+FloatingAsteroidGetDensityPreview::~FloatingAsteroidGetDensityPreview()
+{
+}
+
 HackablePreview* FloatingAsteroidGetDensityPreview::clone()
 {
 	return FloatingAsteroidGetDensityPreview::create();

@@ -15,7 +15,7 @@ public:
 
 protected:
 	TargetSelectionMenu(Timeline* timelineRef);
-	virtual ~TargetSelectionMenu() = default;
+	virtual ~TargetSelectionMenu();
 
 	void onEnter() override;
 	void initializePositions() override;

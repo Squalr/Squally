@@ -26,6 +26,10 @@ FloatingRockGenericPreview::FloatingRockGenericPreview()
 	this->previewNode->addChild(this->previewAsteroid);
 }
 
+FloatingRockGenericPreview::~FloatingRockGenericPreview()
+{
+}
+
 HackablePreview* FloatingRockGenericPreview::clone()
 {
 	return FloatingRockGenericPreview::create();

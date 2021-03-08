@@ -23,7 +23,7 @@ public:
 private:
 	typedef UICCTextField super;
 	InputText(cocos2d::Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);
-	virtual ~InputText() = default;
+	virtual ~InputText();
 
 	void onEnter() override;
 	void update(float dt) override;

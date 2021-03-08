@@ -42,6 +42,10 @@ InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle,
 	this->addChild(this->hitBox);
 }
 
+InputText::~InputText()
+{
+}
+
 void InputText::onEnter()
 {
 	super::onEnter();

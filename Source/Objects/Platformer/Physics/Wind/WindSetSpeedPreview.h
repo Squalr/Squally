@@ -14,7 +14,7 @@ public:
 
 protected:
 	WindSetSpeedPreview();
-	virtual ~WindSetSpeedPreview() = default;
+	virtual ~WindSetSpeedPreview();
 	
 	void onEnter() override;
 	void initializePositions() override;

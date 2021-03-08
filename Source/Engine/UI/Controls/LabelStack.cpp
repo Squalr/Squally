@@ -33,6 +33,10 @@ LabelStack::LabelStack(cocos2d::Size windowSize, float spacing)
 	this->addChild(this->labelsNode);
 }
 
+LabelStack::~LabelStack()
+{
+}
+
 void LabelStack::onEnter()
 {
 	super::onEnter();

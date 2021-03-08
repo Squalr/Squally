@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	MechanicalFlailSetAnglePreview();
-	virtual ~MechanicalFlailSetAnglePreview() = default;
+	virtual ~MechanicalFlailSetAnglePreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* previewFlail;
 	cocos2d::Sprite* previewJoint;

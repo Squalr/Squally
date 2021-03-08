@@ -41,8 +41,6 @@ protected:
 		this->lazyInstance = nullptr;
 		this->createFunc = createFunc;
 	}
-
-	virtual ~LazyNode() = default;
 	
 private:
 	typedef cocos2d::Node super;

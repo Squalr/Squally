@@ -46,6 +46,10 @@ TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 	this->addChild(this->chooseTargetMenu);
 }
 
+TargetSelectionMenu::~TargetSelectionMenu()
+{
+}
+
 void TargetSelectionMenu::onEnter()
 {
 	super::onEnter();

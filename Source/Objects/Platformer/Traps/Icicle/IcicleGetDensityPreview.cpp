@@ -34,6 +34,10 @@ IcicleGetDensityPreview::IcicleGetDensityPreview()
 	this->assemblyTextNode->addChild(this->xmm0Bottom);
 }
 
+IcicleGetDensityPreview::~IcicleGetDensityPreview()
+{
+}
+
 HackablePreview* IcicleGetDensityPreview::clone()
 {
 	return IcicleGetDensityPreview::create();

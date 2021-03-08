@@ -14,13 +14,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	IcicleGenericPreview();
-	virtual ~IcicleGenericPreview() = default;
+	virtual ~IcicleGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	cocos2d::Sprite* previewAsteroid;
 };

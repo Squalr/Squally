@@ -34,6 +34,10 @@ FloatingCrateGetDensityPreview::FloatingCrateGetDensityPreview()
 	this->assemblyTextNode->addChild(this->xmm0Bottom);
 }
 
+FloatingCrateGetDensityPreview::~FloatingCrateGetDensityPreview()
+{
+}
+
 HackablePreview* FloatingCrateGetDensityPreview::clone()
 {
 	return FloatingCrateGetDensityPreview::create();

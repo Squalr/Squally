@@ -19,7 +19,6 @@ class QueryObjectsArgsBase
 {
 public:
 	virtual void tryInvoke(SmartNode* object) = 0;
-	virtual ~QueryObjectsArgsBase() = default;
 };
 
 enum class SpawnMethod
