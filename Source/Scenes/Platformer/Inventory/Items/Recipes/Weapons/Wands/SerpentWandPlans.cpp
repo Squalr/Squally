@@ -68,7 +68,7 @@ std::string SerpentWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
-const std::string& SerpentWandPlans::getSerializationKey()
+const std::string& SerpentWandPlans::getIdentifier()
 {
 	return SerpentWandPlans::SaveKey;
 }

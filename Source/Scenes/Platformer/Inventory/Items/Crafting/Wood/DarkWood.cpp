@@ -48,7 +48,7 @@ const std::string& DarkWood::getIconResource()
 	return ItemResources::Crafting_Smithing_WoodDark;
 }
 
-const std::string& DarkWood::getSerializationKey()
+const std::string& DarkWood::getIdentifier()
 {
 	return DarkWood::SaveKey;
 }

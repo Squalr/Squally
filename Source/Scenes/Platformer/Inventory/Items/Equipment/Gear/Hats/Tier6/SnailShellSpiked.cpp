@@ -61,7 +61,7 @@ const std::string& SnailShellSpiked::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_SnailShellSpiked;
 }
 
-const std::string& SnailShellSpiked::getSerializationKey()
+const std::string& SnailShellSpiked::getIdentifier()
 {
 	return SnailShellSpiked::SaveKey;
 }

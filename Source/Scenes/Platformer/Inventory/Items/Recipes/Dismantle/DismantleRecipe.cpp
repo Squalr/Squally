@@ -113,7 +113,7 @@ std::string DismantleRecipe::getCraftedItemIconResource()
 	return this->dismantledItemRecipe == nullptr ? ItemResources::Misc_SCROLL_1 : this->dismantledItemRecipe->getCraftedItemIconResource();
 }
 
-const std::string& DismantleRecipe::getSerializationKey()
+const std::string& DismantleRecipe::getIdentifier()
 {
 	return DismantleRecipe::ItemNamePrefix;
 }

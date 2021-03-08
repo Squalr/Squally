@@ -61,7 +61,7 @@ const std::string& AmethystNecklace::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_AmethystNecklace;
 }
 
-const std::string& AmethystNecklace::getSerializationKey()
+const std::string& AmethystNecklace::getIdentifier()
 {
 	return AmethystNecklace::SaveKey;
 }

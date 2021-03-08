@@ -88,7 +88,7 @@ const std::string& IncrementHealthFlask::getIconResource()
 	return ItemResources::Consumables_Potions_HealthFlaskIncrement;
 }
 
-const std::string& IncrementHealthFlask::getSerializationKey()
+const std::string& IncrementHealthFlask::getIdentifier()
 {
 	return IncrementHealthFlask::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& MithrilAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
-const std::string& MithrilAxe::getSerializationKey()
+const std::string& MithrilAxe::getIdentifier()
 {
 	return MithrilAxe::SaveKey;
 }

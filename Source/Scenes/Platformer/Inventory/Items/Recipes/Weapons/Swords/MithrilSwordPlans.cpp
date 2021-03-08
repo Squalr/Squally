@@ -68,7 +68,7 @@ std::string MithrilSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_MithrilSword;
 }
 
-const std::string& MithrilSwordPlans::getSerializationKey()
+const std::string& MithrilSwordPlans::getIdentifier()
 {
 	return MithrilSwordPlans::SaveKey;
 }

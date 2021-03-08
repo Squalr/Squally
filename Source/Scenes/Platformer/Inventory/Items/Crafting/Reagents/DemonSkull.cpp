@@ -48,7 +48,7 @@ const std::string& DemonSkull::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_DemonSkull;
 }
 
-const std::string& DemonSkull::getSerializationKey()
+const std::string& DemonSkull::getIdentifier()
 {
 	return DemonSkull::SaveKey;
 }

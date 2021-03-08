@@ -61,7 +61,7 @@ const std::string& WoodenShield::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_WoodenPikeHelm;
 }
 
-const std::string& WoodenShield::getSerializationKey()
+const std::string& WoodenShield::getIdentifier()
 {
 	return WoodenShield::SaveKey;
 }

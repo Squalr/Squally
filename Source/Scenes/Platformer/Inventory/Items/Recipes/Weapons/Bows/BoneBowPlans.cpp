@@ -68,7 +68,7 @@ std::string BoneBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_BoneBow;
 }
 
-const std::string& BoneBowPlans::getSerializationKey()
+const std::string& BoneBowPlans::getIdentifier()
 {
 	return BoneBowPlans::SaveKey;
 }

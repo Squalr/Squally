@@ -71,7 +71,7 @@ std::string AshenBladePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
-const std::string& AshenBladePlans::getSerializationKey()
+const std::string& AshenBladePlans::getIdentifier()
 {
 	return AshenBladePlans::SaveKey;
 }

@@ -68,7 +68,7 @@ std::string VoidAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_VoidAxe;
 }
 
-const std::string& VoidAxePlans::getSerializationKey()
+const std::string& VoidAxePlans::getIdentifier()
 {
 	return VoidAxePlans::SaveKey;
 }

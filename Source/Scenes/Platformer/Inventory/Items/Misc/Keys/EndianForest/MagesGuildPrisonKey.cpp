@@ -48,7 +48,7 @@ const std::string& MagesGuildPrisonKey::getIconResource()
 	return ItemResources::Keys_KEY_2;
 }
 
-const std::string& MagesGuildPrisonKey::getSerializationKey()
+const std::string& MagesGuildPrisonKey::getIdentifier()
 {
 	return MagesGuildPrisonKey::SaveKey;
 }

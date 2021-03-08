@@ -69,7 +69,7 @@ std::string SteelMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_SteelMace;
 }
 
-const std::string& SteelMacePlans::getSerializationKey()
+const std::string& SteelMacePlans::getIdentifier()
 {
 	return SteelMacePlans::SaveKey;
 }

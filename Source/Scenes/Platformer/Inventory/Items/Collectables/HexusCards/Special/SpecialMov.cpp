@@ -49,7 +49,7 @@ const std::string& SpecialMov::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialMov::getSerializationKey()
+const std::string& SpecialMov::getIdentifier()
 {
 	return SpecialMov::SaveKey;
 }

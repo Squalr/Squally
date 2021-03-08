@@ -61,7 +61,7 @@ const std::string& TopazPendant::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_TopazPendant;
 }
 
-const std::string& TopazPendant::getSerializationKey()
+const std::string& TopazPendant::getIdentifier()
 {
 	return TopazPendant::SaveKey;
 }

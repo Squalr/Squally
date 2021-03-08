@@ -61,7 +61,7 @@ const std::string& TigersBane::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_TigersBane;
 }
 
-const std::string& TigersBane::getSerializationKey()
+const std::string& TigersBane::getIdentifier()
 {
 	return TigersBane::SaveKey;
 }

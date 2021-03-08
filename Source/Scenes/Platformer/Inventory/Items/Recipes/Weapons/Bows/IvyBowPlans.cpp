@@ -68,7 +68,7 @@ std::string IvyBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_IvyBow;
 }
 
-const std::string& IvyBowPlans::getSerializationKey()
+const std::string& IvyBowPlans::getIdentifier()
 {
 	return IvyBowPlans::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& Tiara::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_Tiara;
 }
 
-const std::string& Tiara::getSerializationKey()
+const std::string& Tiara::getIdentifier()
 {
 	return Tiara::SaveKey;
 }

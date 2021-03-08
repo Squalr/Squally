@@ -48,7 +48,7 @@ const std::string& Obsidian::getIconResource()
 	return ItemResources::Crafting_Smithing_Obsidian;
 }
 
-const std::string& Obsidian::getSerializationKey()
+const std::string& Obsidian::getIdentifier()
 {
 	return Obsidian::SaveKey;
 }

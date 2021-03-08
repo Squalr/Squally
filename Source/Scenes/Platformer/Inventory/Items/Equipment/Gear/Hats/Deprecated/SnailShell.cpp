@@ -61,7 +61,7 @@ const std::string& SnailShell::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_SnailShell;
 }
 
-const std::string& SnailShell::getSerializationKey()
+const std::string& SnailShell::getIdentifier()
 {
 	return SnailShell::SaveKey;
 }

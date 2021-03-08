@@ -67,7 +67,7 @@ std::string TransmuteWoodToCoalRecipe::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Coal;
 }
 
-const std::string& TransmuteWoodToCoalRecipe::getSerializationKey()
+const std::string& TransmuteWoodToCoalRecipe::getIdentifier()
 {
 	return TransmuteWoodToCoalRecipe::SaveKey;
 }

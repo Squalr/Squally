@@ -61,7 +61,7 @@ const std::string& WarlocksHeaddress::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_WarlocksHeaddress;
 }
 
-const std::string& WarlocksHeaddress::getSerializationKey()
+const std::string& WarlocksHeaddress::getIdentifier()
 {
 	return WarlocksHeaddress::SaveKey;
 }

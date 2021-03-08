@@ -61,7 +61,7 @@ const std::string& DemonShell::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_DemonShell;
 }
 
-const std::string& DemonShell::getSerializationKey()
+const std::string& DemonShell::getIdentifier()
 {
 	return DemonShell::SaveKey;
 }

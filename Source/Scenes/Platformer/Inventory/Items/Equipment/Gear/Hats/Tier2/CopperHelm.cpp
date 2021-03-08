@@ -61,7 +61,7 @@ const std::string& CopperHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_CopperHelm;
 }
 
-const std::string& CopperHelm::getSerializationKey()
+const std::string& CopperHelm::getIdentifier()
 {
 	return CopperHelm::SaveKey;
 }

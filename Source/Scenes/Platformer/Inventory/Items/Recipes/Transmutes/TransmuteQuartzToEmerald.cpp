@@ -68,7 +68,7 @@ std::string TransmuteQuartzToEmerald::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Emerald;
 }
 
-const std::string& TransmuteQuartzToEmerald::getSerializationKey()
+const std::string& TransmuteQuartzToEmerald::getIdentifier()
 {
 	return TransmuteQuartzToEmerald::SaveKey;
 }

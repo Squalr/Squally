@@ -61,7 +61,7 @@ const std::string& MarineBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_MarineBand;
 }
 
-const std::string& MarineBand::getSerializationKey()
+const std::string& MarineBand::getIdentifier()
 {
 	return MarineBand::SaveKey;
 }

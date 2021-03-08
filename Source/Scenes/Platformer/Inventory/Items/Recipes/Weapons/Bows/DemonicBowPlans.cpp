@@ -71,7 +71,7 @@ std::string DemonicBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_DemonicBow;
 }
 
-const std::string& DemonicBowPlans::getSerializationKey()
+const std::string& DemonicBowPlans::getIdentifier()
 {
 	return DemonicBowPlans::SaveKey;
 }

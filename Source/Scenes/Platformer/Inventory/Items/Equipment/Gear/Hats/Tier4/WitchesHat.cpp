@@ -61,7 +61,7 @@ const std::string& WitchesHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_WitchesHat;
 }
 
-const std::string& WitchesHat::getSerializationKey()
+const std::string& WitchesHat::getIdentifier()
 {
 	return WitchesHat::SaveKey;
 }

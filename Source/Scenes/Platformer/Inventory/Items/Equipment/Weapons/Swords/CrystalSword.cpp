@@ -62,7 +62,7 @@ const std::string& CrystalSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_CrystalSword;
 }
 
-const std::string& CrystalSword::getSerializationKey()
+const std::string& CrystalSword::getIdentifier()
 {
 	return CrystalSword::SaveKey;
 }

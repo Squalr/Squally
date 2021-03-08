@@ -70,7 +70,7 @@ std::string CrystalMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
-const std::string& CrystalMacePlans::getSerializationKey()
+const std::string& CrystalMacePlans::getIdentifier()
 {
 	return CrystalMacePlans::SaveKey;
 }

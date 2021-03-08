@@ -48,7 +48,7 @@ const std::string& Clover::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_Clover;
 }
 
-const std::string& Clover::getSerializationKey()
+const std::string& Clover::getIdentifier()
 {
 	return Clover::SaveKey;
 }

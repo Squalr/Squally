@@ -69,7 +69,7 @@ std::string BludgeonPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Bludgeon;
 }
 
-const std::string& BludgeonPlans::getSerializationKey()
+const std::string& BludgeonPlans::getIdentifier()
 {
 	return BludgeonPlans::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& MagesHatBlue::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_MagesHatBlue;
 }
 
-const std::string& MagesHatBlue::getSerializationKey()
+const std::string& MagesHatBlue::getIdentifier()
 {
 	return MagesHatBlue::SaveKey;
 }

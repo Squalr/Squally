@@ -48,7 +48,7 @@ const std::string& VoidCrystal::getIconResource()
 	return ItemResources::Crafting_Smithing_VoidCrystal;
 }
 
-const std::string& VoidCrystal::getSerializationKey()
+const std::string& VoidCrystal::getIdentifier()
 {
 	return VoidCrystal::SaveKey;
 }

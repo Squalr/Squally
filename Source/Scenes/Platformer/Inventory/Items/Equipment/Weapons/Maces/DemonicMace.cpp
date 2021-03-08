@@ -62,7 +62,7 @@ const std::string& DemonicMace::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_DemonicMace;
 }
 
-const std::string& DemonicMace::getSerializationKey()
+const std::string& DemonicMace::getIdentifier()
 {
 	return DemonicMace::SaveKey;
 }

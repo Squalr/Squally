@@ -68,7 +68,7 @@ std::string CrystalAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_CrystalAxe;
 }
 
-const std::string& CrystalAxePlans::getSerializationKey()
+const std::string& CrystalAxePlans::getIdentifier()
 {
 	return CrystalAxePlans::SaveKey;
 }

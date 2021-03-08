@@ -62,7 +62,7 @@ const std::string& WoodenBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_WoodenBow;
 }
 
-const std::string& WoodenBow::getSerializationKey()
+const std::string& WoodenBow::getIdentifier()
 {
 	return WoodenBow::SaveKey;
 }

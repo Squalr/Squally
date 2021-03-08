@@ -62,7 +62,7 @@ const std::string& VoidWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_VoidWand;
 }
 
-const std::string& VoidWand::getSerializationKey()
+const std::string& VoidWand::getIdentifier()
 {
 	return VoidWand::SaveKey;
 }

@@ -48,7 +48,7 @@ const std::string& Crystal::getIconResource()
 	return ItemResources::Crafting_Smithing_Crystal;
 }
 
-const std::string& Crystal::getSerializationKey()
+const std::string& Crystal::getIdentifier()
 {
 	return Crystal::SaveKey;
 }

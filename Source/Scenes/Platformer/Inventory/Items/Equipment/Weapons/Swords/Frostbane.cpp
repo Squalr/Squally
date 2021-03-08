@@ -62,7 +62,7 @@ const std::string& Frostbane::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_Frostbane;
 }
 
-const std::string& Frostbane::getSerializationKey()
+const std::string& Frostbane::getIdentifier()
 {
 	return Frostbane::SaveKey;
 }

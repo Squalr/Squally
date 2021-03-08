@@ -62,7 +62,7 @@ const std::string& WoodenClub::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_WoodenClub;
 }
 
-const std::string& WoodenClub::getSerializationKey()
+const std::string& WoodenClub::getIdentifier()
 {
 	return WoodenClub::SaveKey;
 }

@@ -69,7 +69,7 @@ std::string GoldenSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_GoldenSword;
 }
 
-const std::string& GoldenSwordPlans::getSerializationKey()
+const std::string& GoldenSwordPlans::getIdentifier()
 {
 	return GoldenSwordPlans::SaveKey;
 }

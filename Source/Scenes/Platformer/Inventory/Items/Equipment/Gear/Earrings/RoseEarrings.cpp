@@ -61,7 +61,7 @@ const std::string& RoseEarrings::getIconResource()
 	return ItemResources::Equipment_Gear_Earrings_RoseEarrings;
 }
 
-const std::string& RoseEarrings::getSerializationKey()
+const std::string& RoseEarrings::getIdentifier()
 {
 	return RoseEarrings::SaveKey;
 }

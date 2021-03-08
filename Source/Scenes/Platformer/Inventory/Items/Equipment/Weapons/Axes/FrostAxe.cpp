@@ -62,7 +62,7 @@ const std::string& FrostAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_FrostAxe;
 }
 
-const std::string& FrostAxe::getSerializationKey()
+const std::string& FrostAxe::getIdentifier()
 {
 	return FrostAxe::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& AcolytesCap::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_AcolytesCap;
 }
 
-const std::string& AcolytesCap::getSerializationKey()
+const std::string& AcolytesCap::getIdentifier()
 {
 	return AcolytesCap::SaveKey;
 }

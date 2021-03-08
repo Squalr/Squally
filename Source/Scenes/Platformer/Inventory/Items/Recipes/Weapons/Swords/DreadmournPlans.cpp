@@ -70,7 +70,7 @@ std::string DreadmournPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Dreadmourn;
 }
 
-const std::string& DreadmournPlans::getSerializationKey()
+const std::string& DreadmournPlans::getIdentifier()
 {
 	return DreadmournPlans::SaveKey;
 }

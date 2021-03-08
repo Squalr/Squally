@@ -61,7 +61,7 @@ const std::string& EmeraldPendant::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_EmeraldPendant;
 }
 
-const std::string& EmeraldPendant::getSerializationKey()
+const std::string& EmeraldPendant::getIdentifier()
 {
 	return EmeraldPendant::SaveKey;
 }

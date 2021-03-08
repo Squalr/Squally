@@ -48,7 +48,7 @@ const std::string& PhoenixFeather::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_PhoenixFeather;
 }
 
-const std::string& PhoenixFeather::getSerializationKey()
+const std::string& PhoenixFeather::getIdentifier()
 {
 	return PhoenixFeather::SaveKey;
 }

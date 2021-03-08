@@ -48,7 +48,7 @@ const std::string& MedusaMirror::getIconResource()
 	return ItemResources::Keys_MedusaMirror;
 }
 
-const std::string& MedusaMirror::getSerializationKey()
+const std::string& MedusaMirror::getIdentifier()
 {
 	return MedusaMirror::SaveKey;
 }

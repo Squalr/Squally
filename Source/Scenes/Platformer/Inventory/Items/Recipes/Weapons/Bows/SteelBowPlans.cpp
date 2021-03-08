@@ -69,7 +69,7 @@ std::string SteelBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_SteelBow;
 }
 
-const std::string& SteelBowPlans::getSerializationKey()
+const std::string& SteelBowPlans::getIdentifier()
 {
 	return SteelBowPlans::SaveKey;
 }

@@ -48,7 +48,7 @@ const std::string& Quartz::getIconResource()
 	return ItemResources::Crafting_Smithing_Quartz;
 }
 
-const std::string& Quartz::getSerializationKey()
+const std::string& Quartz::getIdentifier()
 {
 	return Quartz::SaveKey;
 }

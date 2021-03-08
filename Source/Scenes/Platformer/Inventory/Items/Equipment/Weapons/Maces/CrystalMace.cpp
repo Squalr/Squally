@@ -62,7 +62,7 @@ const std::string& CrystalMace::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
-const std::string& CrystalMace::getSerializationKey()
+const std::string& CrystalMace::getIdentifier()
 {
 	return CrystalMace::SaveKey;
 }

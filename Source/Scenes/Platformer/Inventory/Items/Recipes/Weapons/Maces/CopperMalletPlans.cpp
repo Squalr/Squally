@@ -68,7 +68,7 @@ std::string CopperMalletPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CopperMallet;
 }
 
-const std::string& CopperMalletPlans::getSerializationKey()
+const std::string& CopperMalletPlans::getIdentifier()
 {
 	return CopperMalletPlans::SaveKey;
 }

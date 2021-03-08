@@ -49,7 +49,7 @@ const std::string& SpecialShrCircular::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialShrCircular::getSerializationKey()
+const std::string& SpecialShrCircular::getIdentifier()
 {
 	return SpecialShrCircular::SaveKey;
 }

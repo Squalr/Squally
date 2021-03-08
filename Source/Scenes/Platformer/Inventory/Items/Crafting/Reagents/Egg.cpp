@@ -48,7 +48,7 @@ const std::string& Egg::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_Egg;
 }
 
-const std::string& Egg::getSerializationKey()
+const std::string& Egg::getIdentifier()
 {
 	return Egg::SaveKey;
 }

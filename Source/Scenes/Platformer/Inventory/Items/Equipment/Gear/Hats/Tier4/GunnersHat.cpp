@@ -61,7 +61,7 @@ const std::string& GunnersHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_GunnersHat;
 }
 
-const std::string& GunnersHat::getSerializationKey()
+const std::string& GunnersHat::getIdentifier()
 {
 	return GunnersHat::SaveKey;
 }

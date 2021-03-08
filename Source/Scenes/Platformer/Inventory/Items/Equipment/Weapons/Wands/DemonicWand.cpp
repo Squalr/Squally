@@ -62,7 +62,7 @@ const std::string& DemonicWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_DemonicWand;
 }
 
-const std::string& DemonicWand::getSerializationKey()
+const std::string& DemonicWand::getIdentifier()
 {
 	return DemonicWand::SaveKey;
 }

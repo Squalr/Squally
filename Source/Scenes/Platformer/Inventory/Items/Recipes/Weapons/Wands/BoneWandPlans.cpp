@@ -69,7 +69,7 @@ std::string BoneWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_BoneWand;
 }
 
-const std::string& BoneWandPlans::getSerializationKey()
+const std::string& BoneWandPlans::getIdentifier()
 {
 	return BoneWandPlans::SaveKey;
 }

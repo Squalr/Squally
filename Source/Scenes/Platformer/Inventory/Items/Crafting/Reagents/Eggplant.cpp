@@ -48,7 +48,7 @@ const std::string& Eggplant::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_Eggplant;
 }
 
-const std::string& Eggplant::getSerializationKey()
+const std::string& Eggplant::getIdentifier()
 {
 	return Eggplant::SaveKey;
 }

@@ -49,7 +49,7 @@ const std::string& SpecialFlip2::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialFlip2::getSerializationKey()
+const std::string& SpecialFlip2::getIdentifier()
 {
 	return SpecialFlip2::SaveKey;
 }

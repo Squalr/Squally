@@ -62,7 +62,7 @@ const std::string& BoneSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_BoneSword;
 }
 
-const std::string& BoneSword::getSerializationKey()
+const std::string& BoneSword::getIdentifier()
 {
 	return BoneSword::SaveKey;
 }

@@ -48,7 +48,7 @@ const std::string& FountainRoomKey::getIconResource()
 	return ItemResources::Keys_KEY_1;
 }
 
-const std::string& FountainRoomKey::getSerializationKey()
+const std::string& FountainRoomKey::getIdentifier()
 {
 	return FountainRoomKey::SaveKey;
 }

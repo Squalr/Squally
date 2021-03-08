@@ -61,7 +61,7 @@ const std::string& EmeraldBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_EmeraldBand;
 }
 
-const std::string& EmeraldBand::getSerializationKey()
+const std::string& EmeraldBand::getIdentifier()
 {
 	return EmeraldBand::SaveKey;
 }

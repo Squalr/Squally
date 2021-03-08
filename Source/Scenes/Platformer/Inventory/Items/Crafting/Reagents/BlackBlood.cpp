@@ -48,7 +48,7 @@ const std::string& BlackBlood::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_BlackBlood;
 }
 
-const std::string& BlackBlood::getSerializationKey()
+const std::string& BlackBlood::getIdentifier()
 {
 	return BlackBlood::SaveKey;
 }

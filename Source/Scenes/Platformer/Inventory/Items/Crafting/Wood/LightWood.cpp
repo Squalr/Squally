@@ -48,7 +48,7 @@ const std::string& LightWood::getIconResource()
 	return ItemResources::Crafting_Smithing_WoodLight;
 }
 
-const std::string& LightWood::getSerializationKey()
+const std::string& LightWood::getIdentifier()
 {
 	return LightWood::SaveKey;
 }

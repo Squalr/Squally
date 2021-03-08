@@ -62,7 +62,7 @@ const std::string& HuntersBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_HuntersBow;
 }
 
-const std::string& HuntersBow::getSerializationKey()
+const std::string& HuntersBow::getIdentifier()
 {
 	return HuntersBow::SaveKey;
 }

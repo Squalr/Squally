@@ -61,7 +61,7 @@ const std::string& LeatherCap::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_LeatherCap;
 }
 
-const std::string& LeatherCap::getSerializationKey()
+const std::string& LeatherCap::getIdentifier()
 {
 	return LeatherCap::SaveKey;
 }

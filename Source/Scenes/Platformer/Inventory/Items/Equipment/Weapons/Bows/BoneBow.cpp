@@ -62,7 +62,7 @@ const std::string& BoneBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_BoneBow;
 }
 
-const std::string& BoneBow::getSerializationKey()
+const std::string& BoneBow::getIdentifier()
 {
 	return BoneBow::SaveKey;
 }

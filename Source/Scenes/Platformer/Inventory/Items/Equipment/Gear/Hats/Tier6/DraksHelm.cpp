@@ -61,7 +61,7 @@ const std::string& DraksHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_DraksHelm;
 }
 
-const std::string& DraksHelm::getSerializationKey()
+const std::string& DraksHelm::getIdentifier()
 {
 	return DraksHelm::SaveKey;
 }

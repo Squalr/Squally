@@ -48,7 +48,7 @@ const std::string& Mithril::getIconResource()
 	return ItemResources::Crafting_Smithing_Mithril;
 }
 
-const std::string& Mithril::getSerializationKey()
+const std::string& Mithril::getIdentifier()
 {
 	return Mithril::SaveKey;
 }

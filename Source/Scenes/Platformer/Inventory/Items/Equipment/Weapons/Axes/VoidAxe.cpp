@@ -62,7 +62,7 @@ const std::string& VoidAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_VoidAxe;
 }
 
-const std::string& VoidAxe::getSerializationKey()
+const std::string& VoidAxe::getIdentifier()
 {
 	return VoidAxe::SaveKey;
 }

@@ -49,7 +49,7 @@ const std::string& SpecialXor::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialXor::getSerializationKey()
+const std::string& SpecialXor::getIdentifier()
 {
 	return SpecialXor::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& GoldenDungHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_GoldenDungHelm;
 }
 
-const std::string& GoldenDungHelm::getSerializationKey()
+const std::string& GoldenDungHelm::getIdentifier()
 {
 	return GoldenDungHelm::SaveKey;
 }

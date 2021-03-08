@@ -62,7 +62,7 @@ const std::string& GoldenWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_GoldenWand;
 }
 
-const std::string& GoldenWand::getSerializationKey()
+const std::string& GoldenWand::getIdentifier()
 {
 	return GoldenWand::SaveKey;
 }

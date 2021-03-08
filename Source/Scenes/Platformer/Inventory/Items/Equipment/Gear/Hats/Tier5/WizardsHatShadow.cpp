@@ -61,7 +61,7 @@ const std::string& WizardsHatShadow::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_WizardsHatShadow;
 }
 
-const std::string& WizardsHatShadow::getSerializationKey()
+const std::string& WizardsHatShadow::getIdentifier()
 {
 	return WizardsHatShadow::SaveKey;
 }

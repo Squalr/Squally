@@ -61,7 +61,7 @@ const std::string& RoyalCrown::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_RoyalCrown;
 }
 
-const std::string& RoyalCrown::getSerializationKey()
+const std::string& RoyalCrown::getIdentifier()
 {
 	return RoyalCrown::SaveKey;
 }

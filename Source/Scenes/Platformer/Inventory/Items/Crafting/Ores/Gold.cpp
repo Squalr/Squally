@@ -48,7 +48,7 @@ const std::string& Gold::getIconResource()
 	return ItemResources::Crafting_Smithing_Gold;
 }
 
-const std::string& Gold::getSerializationKey()
+const std::string& Gold::getIdentifier()
 {
 	return Gold::SaveKey;
 }

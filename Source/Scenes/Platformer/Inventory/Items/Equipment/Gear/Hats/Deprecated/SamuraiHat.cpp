@@ -61,7 +61,7 @@ const std::string& SamuraiHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_SamuraiHat;
 }
 
-const std::string& SamuraiHat::getSerializationKey()
+const std::string& SamuraiHat::getIdentifier()
 {
 	return SamuraiHat::SaveKey;
 }

@@ -67,7 +67,7 @@ std::string WoodenAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_WoodenAxe;
 }
 
-const std::string& WoodenAxePlans::getSerializationKey()
+const std::string& WoodenAxePlans::getIdentifier()
 {
 	return WoodenAxePlans::SaveKey;
 }

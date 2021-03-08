@@ -68,7 +68,7 @@ std::string MithrilAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
-const std::string& MithrilAxePlans::getSerializationKey()
+const std::string& MithrilAxePlans::getIdentifier()
 {
 	return MithrilAxePlans::SaveKey;
 }

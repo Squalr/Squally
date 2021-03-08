@@ -69,7 +69,7 @@ std::string GoldenMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_GoldenMace;
 }
 
-const std::string& GoldenMacePlans::getSerializationKey()
+const std::string& GoldenMacePlans::getIdentifier()
 {
 	return GoldenMacePlans::SaveKey;
 }

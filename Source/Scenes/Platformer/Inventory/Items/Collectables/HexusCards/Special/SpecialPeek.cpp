@@ -49,7 +49,7 @@ const std::string& SpecialPeek::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialPeek::getSerializationKey()
+const std::string& SpecialPeek::getIdentifier()
 {
 	return SpecialPeek::SaveKey;
 }

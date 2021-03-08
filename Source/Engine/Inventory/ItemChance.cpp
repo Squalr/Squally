@@ -65,7 +65,7 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
 		{
             for (auto nextItem : inventory->getItems())
             {
-                if (nextItem != nullptr && nextItem->getItemName() == this->item->getItemName())
+                if (nextItem != nullptr && nextItem->getIdentifier() == this->item->getIdentifier())
                 {
                     currentCount++;
 

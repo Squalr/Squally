@@ -61,7 +61,7 @@ const std::string& ConchHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_ConchHelm;
 }
 
-const std::string& ConchHelm::getSerializationKey()
+const std::string& ConchHelm::getIdentifier()
 {
 	return ConchHelm::SaveKey;
 }

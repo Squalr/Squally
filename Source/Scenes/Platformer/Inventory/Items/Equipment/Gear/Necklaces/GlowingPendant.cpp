@@ -61,7 +61,7 @@ const std::string& GlowingPendant::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_GlowingPendant;
 }
 
-const std::string& GlowingPendant::getSerializationKey()
+const std::string& GlowingPendant::getIdentifier()
 {
 	return GlowingPendant::SaveKey;
 }

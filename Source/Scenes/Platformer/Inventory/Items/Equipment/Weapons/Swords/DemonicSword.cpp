@@ -62,7 +62,7 @@ const std::string& DemonicSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_DemonicSword;
 }
 
-const std::string& DemonicSword::getSerializationKey()
+const std::string& DemonicSword::getIdentifier()
 {
 	return DemonicSword::SaveKey;
 }

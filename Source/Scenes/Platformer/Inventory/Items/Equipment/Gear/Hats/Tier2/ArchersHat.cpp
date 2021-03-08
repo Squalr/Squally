@@ -61,7 +61,7 @@ const std::string& ArchersHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_ArchersHat;
 }
 
-const std::string& ArchersHat::getSerializationKey()
+const std::string& ArchersHat::getIdentifier()
 {
 	return ArchersHat::SaveKey;
 }

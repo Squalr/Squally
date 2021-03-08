@@ -61,7 +61,7 @@ const std::string& PriestHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_PriestHat;
 }
 
-const std::string& PriestHat::getSerializationKey()
+const std::string& PriestHat::getIdentifier()
 {
 	return PriestHat::SaveKey;
 }

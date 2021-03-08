@@ -48,7 +48,7 @@ const std::string& Snowball::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_Snowball;
 }
 
-const std::string& Snowball::getSerializationKey()
+const std::string& Snowball::getIdentifier()
 {
 	return Snowball::SaveKey;
 }

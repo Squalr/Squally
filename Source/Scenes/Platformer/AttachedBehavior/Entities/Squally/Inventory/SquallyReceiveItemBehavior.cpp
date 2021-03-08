@@ -92,7 +92,7 @@ void SquallyReceiveItemBehavior::onLoad()
 
 			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 			{
-				entityInventoryBehavior->getCurrencyInventory()->addCurrency(args->currency->getSerializationKey(), args->currency->getCount());
+				entityInventoryBehavior->getCurrencyInventory()->addCurrency(args->currency->getIdentifier(), args->currency->getCount());
 			});
 		}
 	}));
@@ -125,7 +125,7 @@ void SquallyReceiveItemBehavior::onLoad()
 						args->keepOpen
 					));
 
-					entityInventoryBehavior->getCurrencyInventory()->addCurrency(currency->getSerializationKey(), currency->getCount());
+					entityInventoryBehavior->getCurrencyInventory()->addCurrency(currency->getIdentifier(), currency->getCount());
 				}
 			});
 		}
@@ -155,7 +155,7 @@ void SquallyReceiveItemBehavior::obtainItems(const std::vector<Item*>& items, Lo
 				continue;
 			}
 
-			itemsById[item->getSerializationKey()].push_back(item);
+			itemsById[item->getIdentifier()].push_back(item);
 			entityInventoryBehavior->getInventory()->forceInsert(item, false);
 		}
 

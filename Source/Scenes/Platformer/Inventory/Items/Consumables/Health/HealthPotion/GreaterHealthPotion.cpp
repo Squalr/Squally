@@ -89,7 +89,7 @@ const std::string& GreaterHealthPotion::getIconResource()
 	return ItemResources::Consumables_Potions_HealthPotionGreater;
 }
 
-const std::string& GreaterHealthPotion::getSerializationKey()
+const std::string& GreaterHealthPotion::getIdentifier()
 {
 	return GreaterHealthPotion::SaveKey;
 }

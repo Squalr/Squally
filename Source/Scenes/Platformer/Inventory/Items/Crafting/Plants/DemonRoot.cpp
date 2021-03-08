@@ -48,7 +48,7 @@ const std::string& DemonRoot::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_DemonRoot;
 }
 
-const std::string& DemonRoot::getSerializationKey()
+const std::string& DemonRoot::getIdentifier()
 {
 	return DemonRoot::SaveKey;
 }

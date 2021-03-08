@@ -74,7 +74,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 		
 		for (auto consumable : attackBehavior->getAvailableConsumables())
 		{
-			const std::string identifier = consumable->getItemName();
+			const std::string identifier = consumable->getIdentifier();
 
 			if (!consumablesMap.contains(identifier))
 			{

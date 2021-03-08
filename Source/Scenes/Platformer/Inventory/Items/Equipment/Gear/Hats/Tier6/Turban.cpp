@@ -61,7 +61,7 @@ const std::string& Turban::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_Turban;
 }
 
-const std::string& Turban::getSerializationKey()
+const std::string& Turban::getIdentifier()
 {
 	return Turban::SaveKey;
 }

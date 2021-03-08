@@ -48,7 +48,7 @@ const std::string& Sulfur::getIconResource()
 	return ItemResources::Crafting_Smithing_Sulfur;
 }
 
-const std::string& Sulfur::getSerializationKey()
+const std::string& Sulfur::getIdentifier()
 {
 	return Sulfur::SaveKey;
 }

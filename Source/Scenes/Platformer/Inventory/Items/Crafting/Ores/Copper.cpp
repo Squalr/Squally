@@ -48,7 +48,7 @@ const std::string& Copper::getIconResource()
 	return ItemResources::Crafting_Smithing_Copper;
 }
 
-const std::string& Copper::getSerializationKey()
+const std::string& Copper::getIdentifier()
 {
 	return Copper::SaveKey;
 }

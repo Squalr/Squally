@@ -61,7 +61,7 @@ const std::string& JoustingHelmet::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_JoustingHelmet;
 }
 
-const std::string& JoustingHelmet::getSerializationKey()
+const std::string& JoustingHelmet::getIdentifier()
 {
 	return JoustingHelmet::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& BoneHammer::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_BoneHammer;
 }
 
-const std::string& BoneHammer::getSerializationKey()
+const std::string& BoneHammer::getIdentifier()
 {
 	return BoneHammer::SaveKey;
 }

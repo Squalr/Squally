@@ -62,7 +62,7 @@ const std::string& GoldenBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_GoldenBow;
 }
 
-const std::string& GoldenBow::getSerializationKey()
+const std::string& GoldenBow::getIdentifier()
 {
 	return GoldenBow::SaveKey;
 }

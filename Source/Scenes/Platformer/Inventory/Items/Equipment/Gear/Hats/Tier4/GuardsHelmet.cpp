@@ -61,7 +61,7 @@ const std::string& GuardsHelmet::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_GuardsHelmet;
 }
 
-const std::string& GuardsHelmet::getSerializationKey()
+const std::string& GuardsHelmet::getIdentifier()
 {
 	return GuardsHelmet::SaveKey;
 }

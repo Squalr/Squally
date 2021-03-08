@@ -61,7 +61,7 @@ const std::string& DepressingWig::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_DepressingWig;
 }
 
-const std::string& DepressingWig::getSerializationKey()
+const std::string& DepressingWig::getIdentifier()
 {
 	return DepressingWig::SaveKey;
 }

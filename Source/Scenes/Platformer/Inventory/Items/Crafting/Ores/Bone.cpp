@@ -48,7 +48,7 @@ const std::string& Bone::getIconResource()
 	return ItemResources::Crafting_Smithing_Bone;
 }
 
-const std::string& Bone::getSerializationKey()
+const std::string& Bone::getIdentifier()
 {
 	return Bone::SaveKey;
 }

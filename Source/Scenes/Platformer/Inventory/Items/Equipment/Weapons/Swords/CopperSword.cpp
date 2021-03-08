@@ -62,7 +62,7 @@ const std::string& CopperSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_CopperSword;
 }
 
-const std::string& CopperSword::getSerializationKey()
+const std::string& CopperSword::getIdentifier()
 {
 	return CopperSword::SaveKey;
 }

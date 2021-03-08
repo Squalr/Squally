@@ -49,7 +49,7 @@ const std::string& Binary8::getIconResource()
 	return ItemResources::Collectables_Cards_CardBinary;
 }
 
-const std::string& Binary8::getSerializationKey()
+const std::string& Binary8::getIdentifier()
 {
 	return Binary8::SaveKey;
 }

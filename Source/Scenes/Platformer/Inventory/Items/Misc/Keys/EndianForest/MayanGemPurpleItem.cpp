@@ -48,7 +48,7 @@ const std::string& MayanGemPurpleItem::getIconResource()
 	return ItemResources::Keys_PurpleGem;
 }
 
-const std::string& MayanGemPurpleItem::getSerializationKey()
+const std::string& MayanGemPurpleItem::getIdentifier()
 {
 	return MayanGemPurpleItem::SaveKey;
 }

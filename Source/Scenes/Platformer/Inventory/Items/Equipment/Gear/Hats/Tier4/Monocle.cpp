@@ -61,7 +61,7 @@ const std::string& Monocle::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_Monocle;
 }
 
-const std::string& Monocle::getSerializationKey()
+const std::string& Monocle::getIdentifier()
 {
 	return Monocle::SaveKey;
 }

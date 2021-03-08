@@ -62,7 +62,7 @@ const std::string& QuartzWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_QuartzWand;
 }
 
-const std::string& QuartzWand::getSerializationKey()
+const std::string& QuartzWand::getIdentifier()
 {
 	return QuartzWand::SaveKey;
 }

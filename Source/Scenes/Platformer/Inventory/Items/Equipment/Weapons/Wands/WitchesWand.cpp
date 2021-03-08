@@ -62,7 +62,7 @@ const std::string& WitchesWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_WitchesWand;
 }
 
-const std::string& WitchesWand::getSerializationKey()
+const std::string& WitchesWand::getIdentifier()
 {
 	return WitchesWand::SaveKey;
 }

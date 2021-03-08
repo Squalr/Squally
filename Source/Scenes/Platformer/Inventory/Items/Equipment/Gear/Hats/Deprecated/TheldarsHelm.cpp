@@ -61,7 +61,7 @@ const std::string& TheldarsHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_TheldarsHelm;
 }
 
-const std::string& TheldarsHelm::getSerializationKey()
+const std::string& TheldarsHelm::getIdentifier()
 {
 	return TheldarsHelm::SaveKey;
 }

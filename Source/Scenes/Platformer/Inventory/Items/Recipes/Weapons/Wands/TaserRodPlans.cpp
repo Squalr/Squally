@@ -68,7 +68,7 @@ std::string TaserRodPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
-const std::string& TaserRodPlans::getSerializationKey()
+const std::string& TaserRodPlans::getIdentifier()
 {
 	return TaserRodPlans::SaveKey;
 }

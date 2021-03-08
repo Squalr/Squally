@@ -62,7 +62,7 @@ const std::string& CopperAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_CopperAxe;
 }
 
-const std::string& CopperAxe::getSerializationKey()
+const std::string& CopperAxe::getIdentifier()
 {
 	return CopperAxe::SaveKey;
 }

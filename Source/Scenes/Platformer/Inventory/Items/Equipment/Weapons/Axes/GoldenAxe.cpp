@@ -62,7 +62,7 @@ const std::string& GoldenAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_GoldenAxe;
 }
 
-const std::string& GoldenAxe::getSerializationKey()
+const std::string& GoldenAxe::getIdentifier()
 {
 	return GoldenAxe::SaveKey;
 }

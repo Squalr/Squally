@@ -48,7 +48,7 @@ const std::string& Honey::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_Honey;
 }
 
-const std::string& Honey::getSerializationKey()
+const std::string& Honey::getIdentifier()
 {
 	return Honey::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& PirateHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_PirateHat;
 }
 
-const std::string& PirateHat::getSerializationKey()
+const std::string& PirateHat::getIdentifier()
 {
 	return PirateHat::SaveKey;
 }

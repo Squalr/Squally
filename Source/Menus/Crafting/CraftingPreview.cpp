@@ -79,7 +79,7 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == next->getItemName())
+			if (item->getIdentifier() == next->getIdentifier())
 			{
 				existingCount++;
 			}

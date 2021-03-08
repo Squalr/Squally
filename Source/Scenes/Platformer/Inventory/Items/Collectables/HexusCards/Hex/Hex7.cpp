@@ -49,7 +49,7 @@ const std::string& Hex7::getIconResource()
 	return ItemResources::Collectables_Cards_CardHex;
 }
 
-const std::string& Hex7::getSerializationKey()
+const std::string& Hex7::getIdentifier()
 {
 	return Hex7::SaveKey;
 }

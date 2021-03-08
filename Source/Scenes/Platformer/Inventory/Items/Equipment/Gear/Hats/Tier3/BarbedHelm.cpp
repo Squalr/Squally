@@ -61,7 +61,7 @@ const std::string& BarbedHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_BarbedHelm;
 }
 
-const std::string& BarbedHelm::getSerializationKey()
+const std::string& BarbedHelm::getIdentifier()
 {
 	return BarbedHelm::SaveKey;
 }

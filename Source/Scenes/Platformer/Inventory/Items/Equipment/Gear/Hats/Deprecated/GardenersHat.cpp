@@ -61,7 +61,7 @@ const std::string& GardenersHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_GardenersHat;
 }
 
-const std::string& GardenersHat::getSerializationKey()
+const std::string& GardenersHat::getIdentifier()
 {
 	return GardenersHat::SaveKey;
 }

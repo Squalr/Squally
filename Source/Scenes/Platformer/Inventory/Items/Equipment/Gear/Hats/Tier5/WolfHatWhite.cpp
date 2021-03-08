@@ -61,7 +61,7 @@ const std::string& WolfHatWhite::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_WolfHatWhite;
 }
 
-const std::string& WolfHatWhite::getSerializationKey()
+const std::string& WolfHatWhite::getIdentifier()
 {
 	return WolfHatWhite::SaveKey;
 }

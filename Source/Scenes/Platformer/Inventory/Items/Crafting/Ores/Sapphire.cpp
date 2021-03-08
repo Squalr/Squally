@@ -48,7 +48,7 @@ const std::string& Sapphire::getIconResource()
 	return ItemResources::Crafting_Smithing_Sapphire;
 }
 
-const std::string& Sapphire::getSerializationKey()
+const std::string& Sapphire::getIdentifier()
 {
 	return Sapphire::SaveKey;
 }

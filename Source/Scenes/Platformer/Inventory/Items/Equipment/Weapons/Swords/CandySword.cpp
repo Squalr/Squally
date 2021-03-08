@@ -62,7 +62,7 @@ const std::string& CandySword::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_CandySword;
 }
 
-const std::string& CandySword::getSerializationKey()
+const std::string& CandySword::getIdentifier()
 {
 	return CandySword::SaveKey;
 }

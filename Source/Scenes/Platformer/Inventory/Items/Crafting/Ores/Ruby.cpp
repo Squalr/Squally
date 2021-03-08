@@ -48,7 +48,7 @@ const std::string& Ruby::getIconResource()
 	return ItemResources::Crafting_Smithing_Ruby;
 }
 
-const std::string& Ruby::getSerializationKey()
+const std::string& Ruby::getIdentifier()
 {
 	return Ruby::SaveKey;
 }

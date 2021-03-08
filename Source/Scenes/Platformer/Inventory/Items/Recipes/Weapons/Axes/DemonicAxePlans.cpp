@@ -68,7 +68,7 @@ std::string DemonicAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_DemonicAxe;
 }
 
-const std::string& DemonicAxePlans::getSerializationKey()
+const std::string& DemonicAxePlans::getIdentifier()
 {
 	return DemonicAxePlans::SaveKey;
 }

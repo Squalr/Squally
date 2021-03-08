@@ -61,7 +61,7 @@ const std::string& SapphireEarrings::getIconResource()
 	return ItemResources::Equipment_Gear_Earrings_SapphireEarrings;
 }
 
-const std::string& SapphireEarrings::getSerializationKey()
+const std::string& SapphireEarrings::getIdentifier()
 {
 	return SapphireEarrings::SaveKey;
 }

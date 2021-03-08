@@ -70,7 +70,7 @@ std::string SteelAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_SteelAxe;
 }
 
-const std::string& SteelAxePlans::getSerializationKey()
+const std::string& SteelAxePlans::getIdentifier()
 {
 	return SteelAxePlans::SaveKey;
 }

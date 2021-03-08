@@ -68,7 +68,7 @@ std::string TransmuteCopperToIron::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Iron;
 }
 
-const std::string& TransmuteCopperToIron::getSerializationKey()
+const std::string& TransmuteCopperToIron::getIdentifier()
 {
 	return TransmuteCopperToIron::SaveKey;
 }

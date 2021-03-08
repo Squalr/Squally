@@ -68,7 +68,7 @@ std::string FrostAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_FrostAxe;
 }
 
-const std::string& FrostAxePlans::getSerializationKey()
+const std::string& FrostAxePlans::getIdentifier()
 {
 	return FrostAxePlans::SaveKey;
 }

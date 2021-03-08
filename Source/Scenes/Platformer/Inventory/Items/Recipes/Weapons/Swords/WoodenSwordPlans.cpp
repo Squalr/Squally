@@ -67,7 +67,7 @@ std::string WoodenSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_WoodenSword;
 }
 
-const std::string& WoodenSwordPlans::getSerializationKey()
+const std::string& WoodenSwordPlans::getIdentifier()
 {
 	return WoodenSwordPlans::SaveKey;
 }

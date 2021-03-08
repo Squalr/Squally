@@ -61,7 +61,7 @@ const std::string& NecrobatHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_NecrobatHelm;
 }
 
-const std::string& NecrobatHelm::getSerializationKey()
+const std::string& NecrobatHelm::getIdentifier()
 {
 	return NecrobatHelm::SaveKey;
 }

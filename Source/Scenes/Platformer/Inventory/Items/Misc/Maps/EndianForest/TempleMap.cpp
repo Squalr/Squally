@@ -49,7 +49,7 @@ const std::string& TempleMap::getIconResource()
 	return ItemResources::Maps_Map;
 }
 
-const std::string& TempleMap::getSerializationKey()
+const std::string& TempleMap::getIdentifier()
 {
 	return TempleMap::SaveKey;
 }

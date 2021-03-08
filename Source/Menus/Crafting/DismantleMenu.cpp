@@ -91,7 +91,7 @@ void DismantleMenu::open(std::vector<Item*> recipes)
 
 	std::sort(this->dismantleRecipes.begin(), this->dismantleRecipes.end(), [](Item* a, Item* b) -> bool
 	{
-		return a->getItemName() < b->getItemName();
+		return a->getIdentifier() < b->getIdentifier();
 	});
 
 	// There shouldn't be any recipes passed to this. Instead, we create a DismantleRecipe for every item in the players inventory

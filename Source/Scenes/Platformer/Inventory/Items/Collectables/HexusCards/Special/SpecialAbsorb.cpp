@@ -49,7 +49,7 @@ const std::string& SpecialAbsorb::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialAbsorb::getSerializationKey()
+const std::string& SpecialAbsorb::getIdentifier()
 {
 	return SpecialAbsorb::SaveKey;
 }

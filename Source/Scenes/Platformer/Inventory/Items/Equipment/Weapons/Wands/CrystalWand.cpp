@@ -62,7 +62,7 @@ const std::string& CrystalWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_CrystalWand;
 }
 
-const std::string& CrystalWand::getSerializationKey()
+const std::string& CrystalWand::getIdentifier()
 {
 	return CrystalWand::SaveKey;
 }

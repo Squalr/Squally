@@ -62,7 +62,7 @@ const std::string& DemonicAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_DemonicAxe;
 }
 
-const std::string& DemonicAxe::getSerializationKey()
+const std::string& DemonicAxe::getIdentifier()
 {
 	return DemonicAxe::SaveKey;
 }

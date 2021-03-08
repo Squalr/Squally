@@ -48,7 +48,7 @@ const std::string& DarkSeed::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_DarkSeed;
 }
 
-const std::string& DarkSeed::getSerializationKey()
+const std::string& DarkSeed::getIdentifier()
 {
 	return DarkSeed::SaveKey;
 }

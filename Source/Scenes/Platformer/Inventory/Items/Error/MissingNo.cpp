@@ -49,7 +49,7 @@ const std::string& MissingNo::getIconResource()
 	return ItemResources::Error_MissingNo;
 }
 
-const std::string& MissingNo::getSerializationKey()
+const std::string& MissingNo::getIdentifier()
 {
 	return MissingNo::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& ReindeerHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_ReindeerHat;
 }
 
-const std::string& ReindeerHat::getSerializationKey()
+const std::string& ReindeerHat::getIdentifier()
 {
 	return ReindeerHat::SaveKey;
 }

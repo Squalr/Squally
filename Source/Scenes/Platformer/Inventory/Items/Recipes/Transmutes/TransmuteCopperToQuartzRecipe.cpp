@@ -68,7 +68,7 @@ std::string TransmuteCopperToQuartzRecipe::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Quartz;
 }
 
-const std::string& TransmuteCopperToQuartzRecipe::getSerializationKey()
+const std::string& TransmuteCopperToQuartzRecipe::getIdentifier()
 {
 	return TransmuteCopperToQuartzRecipe::SaveKey;
 }

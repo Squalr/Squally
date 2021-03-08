@@ -61,7 +61,7 @@ const std::string& BucketHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_BucketHelm;
 }
 
-const std::string& BucketHelm::getSerializationKey()
+const std::string& BucketHelm::getIdentifier()
 {
 	return BucketHelm::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& EmeraldEarrings::getIconResource()
 	return ItemResources::Equipment_Gear_Earrings_EmeraldEarrings;
 }
 
-const std::string& EmeraldEarrings::getSerializationKey()
+const std::string& EmeraldEarrings::getIdentifier()
 {
 	return EmeraldEarrings::SaveKey;
 }

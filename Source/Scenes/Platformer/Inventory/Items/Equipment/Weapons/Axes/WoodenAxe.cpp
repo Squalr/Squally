@@ -62,7 +62,7 @@ const std::string& WoodenAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_WoodenAxe;
 }
 
-const std::string& WoodenAxe::getSerializationKey()
+const std::string& WoodenAxe::getIdentifier()
 {
 	return WoodenAxe::SaveKey;
 }

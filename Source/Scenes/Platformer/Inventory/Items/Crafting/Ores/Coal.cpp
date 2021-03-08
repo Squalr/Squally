@@ -48,7 +48,7 @@ const std::string& Coal::getIconResource()
 	return ItemResources::Crafting_Smithing_Coal;
 }
 
-const std::string& Coal::getSerializationKey()
+const std::string& Coal::getIdentifier()
 {
 	return Coal::SaveKey;
 }

@@ -68,7 +68,7 @@ std::string WitchesWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_WitchesWand;
 }
 
-const std::string& WitchesWandPlans::getSerializationKey()
+const std::string& WitchesWandPlans::getIdentifier()
 {
 	return WitchesWandPlans::SaveKey;
 }

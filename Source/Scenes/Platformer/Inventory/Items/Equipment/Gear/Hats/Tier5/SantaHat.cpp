@@ -61,7 +61,7 @@ const std::string& SantaHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_SantaHat;
 }
 
-const std::string& SantaHat::getSerializationKey()
+const std::string& SantaHat::getIdentifier()
 {
 	return SantaHat::SaveKey;
 }

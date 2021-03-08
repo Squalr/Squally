@@ -61,7 +61,7 @@ const std::string& MarineNecklace::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_MarineNecklace;
 }
 
-const std::string& MarineNecklace::getSerializationKey()
+const std::string& MarineNecklace::getIdentifier()
 {
 	return MarineNecklace::SaveKey;
 }

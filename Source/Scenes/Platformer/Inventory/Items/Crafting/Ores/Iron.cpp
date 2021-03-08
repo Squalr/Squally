@@ -48,7 +48,7 @@ const std::string& Iron::getIconResource()
 	return ItemResources::Crafting_Smithing_Iron;
 }
 
-const std::string& Iron::getSerializationKey()
+const std::string& Iron::getIdentifier()
 {
 	return Iron::SaveKey;
 }

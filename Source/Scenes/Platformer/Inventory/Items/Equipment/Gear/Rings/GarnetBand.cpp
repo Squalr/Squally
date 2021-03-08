@@ -61,7 +61,7 @@ const std::string& GarnetBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_GarnetBand;
 }
 
-const std::string& GarnetBand::getSerializationKey()
+const std::string& GarnetBand::getIdentifier()
 {
 	return GarnetBand::SaveKey;
 }

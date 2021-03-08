@@ -62,7 +62,7 @@ const std::string& CrystalAxe::getIconResource()
 	return ItemResources::Equipment_Weapons_Axes_CrystalAxe;
 }
 
-const std::string& CrystalAxe::getSerializationKey()
+const std::string& CrystalAxe::getIdentifier()
 {
 	return CrystalAxe::SaveKey;
 }

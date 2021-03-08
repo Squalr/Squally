@@ -48,7 +48,7 @@ const std::string& GoldWeed::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_GoldWeed;
 }
 
-const std::string& GoldWeed::getSerializationKey()
+const std::string& GoldWeed::getIdentifier()
 {
 	return GoldWeed::SaveKey;
 }

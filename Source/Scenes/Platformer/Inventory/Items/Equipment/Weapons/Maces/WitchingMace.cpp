@@ -62,7 +62,7 @@ const std::string& WitchingMace::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_WitchingMace;
 }
 
-const std::string& WitchingMace::getSerializationKey()
+const std::string& WitchingMace::getIdentifier()
 {
 	return WitchingMace::SaveKey;
 }

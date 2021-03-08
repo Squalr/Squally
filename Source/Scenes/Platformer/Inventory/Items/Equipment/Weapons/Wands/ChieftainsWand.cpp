@@ -62,7 +62,7 @@ const std::string& ChieftainsWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
-const std::string& ChieftainsWand::getSerializationKey()
+const std::string& ChieftainsWand::getIdentifier()
 {
 	return ChieftainsWand::SaveKey;
 }

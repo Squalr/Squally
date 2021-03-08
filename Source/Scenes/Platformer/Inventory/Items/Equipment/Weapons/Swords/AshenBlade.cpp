@@ -62,7 +62,7 @@ const std::string& AshenBlade::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
-const std::string& AshenBlade::getSerializationKey()
+const std::string& AshenBlade::getIdentifier()
 {
 	return AshenBlade::SaveKey;
 }

@@ -68,7 +68,7 @@ std::string CrystalWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_CrystalWand;
 }
 
-const std::string& CrystalWandPlans::getSerializationKey()
+const std::string& CrystalWandPlans::getIdentifier()
 {
 	return CrystalWandPlans::SaveKey;
 }

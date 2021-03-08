@@ -67,7 +67,7 @@ std::string WoodenWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_WoodenWand;
 }
 
-const std::string& WoodenWandPlans::getSerializationKey()
+const std::string& WoodenWandPlans::getIdentifier()
 {
 	return WoodenWandPlans::SaveKey;
 }

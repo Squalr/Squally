@@ -68,7 +68,7 @@ std::string BoneHammerPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_BoneHammer;
 }
 
-const std::string& BoneHammerPlans::getSerializationKey()
+const std::string& BoneHammerPlans::getIdentifier()
 {
 	return BoneHammerPlans::SaveKey;
 }

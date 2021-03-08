@@ -95,7 +95,7 @@ void LockedPortal::checkForRequiredItem()
 
 	for (auto item : this->playerInventory->getItems())
 	{
-		if (item != nullptr && this->requiredItemName == item->getItemName())
+		if (item != nullptr && this->requiredItemName == item->getIdentifier())
 		{
 			this->portal->setUnlockable(true, [=]()
 			{

@@ -61,7 +61,7 @@ const std::string& SapphireNecklace::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_SapphireNecklace;
 }
 
-const std::string& SapphireNecklace::getSerializationKey()
+const std::string& SapphireNecklace::getIdentifier()
 {
 	return SapphireNecklace::SaveKey;
 }

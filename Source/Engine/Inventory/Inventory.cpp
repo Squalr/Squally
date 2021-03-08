@@ -71,7 +71,7 @@ ValueMap Inventory::serialize()
 
 	for (auto next : this->items)
 	{
-		itemData.push_back(Value(next->getSerializationKey()));
+		itemData.push_back(Value(next->getIdentifier()));
 	}
 
 	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
@@ -159,7 +159,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 	}
 
 	// Quick O(1) check using the set
-	if (!this->itemLookup.contains(item->getItemName()))
+	if (!this->itemLookup.contains(item->getIdentifier()))
 	{
 		if (onRemoveFailed != nullptr)
 		{
@@ -347,7 +347,7 @@ bool Inventory::canInsertItemIfUnique(Item* item)
 		// Count how many duplicates exist
 		for (auto next : this->items)
 		{
-			if (item->getItemName() == next->getItemName())
+			if (item->getIdentifier() == next->getIdentifier())
 			{
 				uniqueCount--;
 			}
@@ -374,6 +374,6 @@ void Inventory::rebuildLookupTable()
 
 	for (auto next : this->items)
 	{
-		this->itemLookup.insert(next->getItemName());
+		this->itemLookup.insert(next->getIdentifier());
 	}
 }

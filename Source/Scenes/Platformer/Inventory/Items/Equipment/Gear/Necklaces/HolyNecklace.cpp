@@ -61,7 +61,7 @@ const std::string& HolyNecklace::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_HolyNecklace;
 }
 
-const std::string& HolyNecklace::getSerializationKey()
+const std::string& HolyNecklace::getIdentifier()
 {
 	return HolyNecklace::SaveKey;
 }

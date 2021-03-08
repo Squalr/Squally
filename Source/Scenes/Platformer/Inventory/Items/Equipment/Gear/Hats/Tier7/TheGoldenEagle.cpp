@@ -61,7 +61,7 @@ const std::string& TheGoldenEagle::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_TheGoldenEagle;
 }
 
-const std::string& TheGoldenEagle::getSerializationKey()
+const std::string& TheGoldenEagle::getIdentifier()
 {
 	return TheGoldenEagle::SaveKey;
 }

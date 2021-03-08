@@ -69,7 +69,7 @@ std::string WitchingMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_WitchingMace;
 }
 
-const std::string& WitchingMacePlans::getSerializationKey()
+const std::string& WitchingMacePlans::getIdentifier()
 {
 	return WitchingMacePlans::SaveKey;
 }

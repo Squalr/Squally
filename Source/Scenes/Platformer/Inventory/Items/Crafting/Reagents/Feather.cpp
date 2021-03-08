@@ -48,7 +48,7 @@ const std::string& Feather::getIconResource()
 	return ItemResources::Crafting_Alchemy_Reagents_Feather;
 }
 
-const std::string& Feather::getSerializationKey()
+const std::string& Feather::getIdentifier()
 {
 	return Feather::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& CopperMallet::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CopperMallet;
 }
 
-const std::string& CopperMallet::getSerializationKey()
+const std::string& CopperMallet::getIdentifier()
 {
 	return CopperMallet::SaveKey;
 }

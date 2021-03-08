@@ -69,7 +69,7 @@ std::string IncrementHealthFlaskRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_HealthFlaskIncrement;
 }
 
-const std::string& IncrementHealthFlaskRecipe::getSerializationKey()
+const std::string& IncrementHealthFlaskRecipe::getIdentifier()
 {
 	return IncrementHealthFlaskRecipe::SaveKey;
 }

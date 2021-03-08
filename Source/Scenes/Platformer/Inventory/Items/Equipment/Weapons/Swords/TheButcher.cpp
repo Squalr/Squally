@@ -62,7 +62,7 @@ const std::string& TheButcher::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_TheButcher;
 }
 
-const std::string& TheButcher::getSerializationKey()
+const std::string& TheButcher::getIdentifier()
 {
 	return TheButcher::SaveKey;
 }

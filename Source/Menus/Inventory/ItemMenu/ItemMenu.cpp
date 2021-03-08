@@ -177,7 +177,7 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 
 	for (auto entry : this->visibleItems)
 	{
-		if (entry->getAssociatedItem()->getItemName() == visibleItem->getItemName())
+		if (entry->getAssociatedItem()->getIdentifier() == visibleItem->getIdentifier())
 		{
 			if (entry->getStackSize() < entry->getAssociatedItem()->getStackSize())
 			{

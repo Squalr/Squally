@@ -61,7 +61,7 @@ const std::string& BrocksHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_BrocksHelm;
 }
 
-const std::string& BrocksHelm::getSerializationKey()
+const std::string& BrocksHelm::getIdentifier()
 {
 	return BrocksHelm::SaveKey;
 }

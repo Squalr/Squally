@@ -68,7 +68,7 @@ std::string VoidBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_VoidBow;
 }
 
-const std::string& VoidBowPlans::getSerializationKey()
+const std::string& VoidBowPlans::getIdentifier()
 {
 	return VoidBowPlans::SaveKey;
 }

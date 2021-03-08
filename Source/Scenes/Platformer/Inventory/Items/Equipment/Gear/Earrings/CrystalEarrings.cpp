@@ -61,7 +61,7 @@ const std::string& CrystalEarrings::getIconResource()
 	return ItemResources::Equipment_Gear_Earrings_CrystalEarrings;
 }
 
-const std::string& CrystalEarrings::getSerializationKey()
+const std::string& CrystalEarrings::getIdentifier()
 {
 	return CrystalEarrings::SaveKey;
 }

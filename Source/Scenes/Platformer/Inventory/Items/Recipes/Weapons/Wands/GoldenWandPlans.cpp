@@ -69,7 +69,7 @@ std::string GoldenWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_GoldenWand;
 }
 
-const std::string& GoldenWandPlans::getSerializationKey()
+const std::string& GoldenWandPlans::getIdentifier()
 {
 	return GoldenWandPlans::SaveKey;
 }

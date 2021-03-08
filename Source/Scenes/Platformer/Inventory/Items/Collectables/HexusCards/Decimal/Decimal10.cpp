@@ -49,7 +49,7 @@ const std::string& Decimal10::getIconResource()
 	return ItemResources::Collectables_Cards_CardDecimal;
 }
 
-const std::string& Decimal10::getSerializationKey()
+const std::string& Decimal10::getIdentifier()
 {
 	return Decimal10::SaveKey;
 }

@@ -68,7 +68,7 @@ std::string ScythePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Scythe;
 }
 
-const std::string& ScythePlans::getSerializationKey()
+const std::string& ScythePlans::getIdentifier()
 {
 	return ScythePlans::SaveKey;
 }

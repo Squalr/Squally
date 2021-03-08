@@ -61,7 +61,7 @@ const std::string& ShellBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_ShellBand;
 }
 
-const std::string& ShellBand::getSerializationKey()
+const std::string& ShellBand::getIdentifier()
 {
 	return ShellBand::SaveKey;
 }

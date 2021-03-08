@@ -68,7 +68,7 @@ std::string CopperAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_CopperAxe;
 }
 
-const std::string& CopperAxePlans::getSerializationKey()
+const std::string& CopperAxePlans::getIdentifier()
 {
 	return CopperAxePlans::SaveKey;
 }

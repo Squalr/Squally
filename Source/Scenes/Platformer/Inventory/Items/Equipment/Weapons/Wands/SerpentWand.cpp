@@ -62,7 +62,7 @@ const std::string& SerpentWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_SerpentWand;
 }
 
-const std::string& SerpentWand::getSerializationKey()
+const std::string& SerpentWand::getIdentifier()
 {
 	return SerpentWand::SaveKey;
 }

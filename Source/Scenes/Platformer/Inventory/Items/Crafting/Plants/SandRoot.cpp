@@ -48,7 +48,7 @@ const std::string& SandRoot::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_SandRoot;
 }
 
-const std::string& SandRoot::getSerializationKey()
+const std::string& SandRoot::getIdentifier()
 {
 	return SandRoot::SaveKey;
 }

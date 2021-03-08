@@ -61,7 +61,7 @@ const std::string& TopHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_TopHat;
 }
 
-const std::string& TopHat::getSerializationKey()
+const std::string& TopHat::getIdentifier()
 {
 	return TopHat::SaveKey;
 }

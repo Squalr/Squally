@@ -48,7 +48,7 @@ const std::string& TownKey::getIconResource()
 	return ItemResources::Keys_KEY_6;
 }
 
-const std::string& TownKey::getSerializationKey()
+const std::string& TownKey::getIdentifier()
 {
 	return TownKey::SaveKey;
 }

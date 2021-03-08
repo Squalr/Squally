@@ -69,7 +69,7 @@ std::string DemonicSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_DemonicSword;
 }
 
-const std::string& DemonicSwordPlans::getSerializationKey()
+const std::string& DemonicSwordPlans::getIdentifier()
 {
 	return DemonicSwordPlans::SaveKey;
 }

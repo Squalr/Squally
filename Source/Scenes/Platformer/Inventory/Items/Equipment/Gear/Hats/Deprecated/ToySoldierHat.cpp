@@ -61,7 +61,7 @@ const std::string& ToySoldierHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_ToySoldierHat;
 }
 
-const std::string& ToySoldierHat::getSerializationKey()
+const std::string& ToySoldierHat::getIdentifier()
 {
 	return ToySoldierHat::SaveKey;
 }

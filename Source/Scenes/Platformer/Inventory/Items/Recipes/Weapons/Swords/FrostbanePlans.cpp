@@ -69,7 +69,7 @@ std::string FrostbanePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Frostbane;
 }
 
-const std::string& FrostbanePlans::getSerializationKey()
+const std::string& FrostbanePlans::getIdentifier()
 {
 	return FrostbanePlans::SaveKey;
 }

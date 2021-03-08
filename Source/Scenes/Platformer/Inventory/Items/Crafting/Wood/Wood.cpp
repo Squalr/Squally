@@ -48,7 +48,7 @@ const std::string& Wood::getIconResource()
 	return ItemResources::Crafting_Smithing_Wood;
 }
 
-const std::string& Wood::getSerializationKey()
+const std::string& Wood::getIdentifier()
 {
 	return Wood::SaveKey;
 }

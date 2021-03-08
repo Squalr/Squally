@@ -62,7 +62,7 @@ const std::string& IvyBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_IvyBow;
 }
 
-const std::string& IvyBow::getSerializationKey()
+const std::string& IvyBow::getIdentifier()
 {
 	return IvyBow::SaveKey;
 }

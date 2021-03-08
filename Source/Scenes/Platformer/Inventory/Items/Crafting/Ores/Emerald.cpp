@@ -48,7 +48,7 @@ const std::string& Emerald::getIconResource()
 	return ItemResources::Crafting_Smithing_Emerald;
 }
 
-const std::string& Emerald::getSerializationKey()
+const std::string& Emerald::getIdentifier()
 {
 	return Emerald::SaveKey;
 }

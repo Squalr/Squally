@@ -68,7 +68,7 @@ std::string ManaPotionRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_ManaPotion;
 }
 
-const std::string& ManaPotionRecipe::getSerializationKey()
+const std::string& ManaPotionRecipe::getIdentifier()
 {
 	return ManaPotionRecipe::SaveKey;
 }

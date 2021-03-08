@@ -68,7 +68,7 @@ std::string HealthPotionRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_HealthPotion;
 }
 
-const std::string& HealthPotionRecipe::getSerializationKey()
+const std::string& HealthPotionRecipe::getIdentifier()
 {
 	return HealthPotionRecipe::SaveKey;
 }

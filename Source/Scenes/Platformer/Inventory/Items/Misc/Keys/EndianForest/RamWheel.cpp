@@ -48,7 +48,7 @@ const std::string& RamWheel::getIconResource()
 	return ItemResources::Keys_RamWheel;
 }
 
-const std::string& RamWheel::getSerializationKey()
+const std::string& RamWheel::getIdentifier()
 {
 	return RamWheel::SaveKey;
 }

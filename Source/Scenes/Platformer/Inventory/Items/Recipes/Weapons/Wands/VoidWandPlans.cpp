@@ -68,7 +68,7 @@ std::string VoidWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_VoidWand;
 }
 
-const std::string& VoidWandPlans::getSerializationKey()
+const std::string& VoidWandPlans::getIdentifier()
 {
 	return VoidWandPlans::SaveKey;
 }

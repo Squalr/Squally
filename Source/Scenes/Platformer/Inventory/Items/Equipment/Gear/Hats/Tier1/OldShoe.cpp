@@ -61,7 +61,7 @@ const std::string& OldShoe::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_OldShoe;
 }
 
-const std::string& OldShoe::getSerializationKey()
+const std::string& OldShoe::getIdentifier()
 {
 	return OldShoe::SaveKey;
 }

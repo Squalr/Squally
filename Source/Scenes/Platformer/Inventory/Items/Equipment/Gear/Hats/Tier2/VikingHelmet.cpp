@@ -61,7 +61,7 @@ const std::string& VikingHelmet::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_VikingHelmet;
 }
 
-const std::string& VikingHelmet::getSerializationKey()
+const std::string& VikingHelmet::getIdentifier()
 {
 	return VikingHelmet::SaveKey;
 }

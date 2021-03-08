@@ -61,7 +61,7 @@ const std::string& AquaMarineNecklace::getIconResource()
 	return ItemResources::Equipment_Gear_Necklaces_AquaMarineNecklace;
 }
 
-const std::string& AquaMarineNecklace::getSerializationKey()
+const std::string& AquaMarineNecklace::getIdentifier()
 {
 	return AquaMarineNecklace::SaveKey;
 }

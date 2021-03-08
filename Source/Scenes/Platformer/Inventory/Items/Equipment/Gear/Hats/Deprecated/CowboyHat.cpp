@@ -61,7 +61,7 @@ const std::string& CowboyHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_CowboyHat;
 }
 
-const std::string& CowboyHat::getSerializationKey()
+const std::string& CowboyHat::getIdentifier()
 {
 	return CowboyHat::SaveKey;
 }

@@ -317,9 +317,9 @@ void InventoryMenu::consumeItem(Consumable* item)
 
 	int count = 0;
 	
-	for (auto next : this->inventory->getItems())
+	for (Item* next : this->inventory->getItems())
 	{
-		if (next->getItemName() == item->getItemName())
+		if (next->getIdentifier() == item->getIdentifier())
 		{
 			count++;
 		}
@@ -345,7 +345,7 @@ void InventoryMenu::consumeItem(Consumable* item)
 			// Chain consumable usage
 			for (auto next : this->inventory->getItems())
 			{
-				if (next->getItemName() == removedItem->getItemName())
+				if (next->getIdentifier() == removedItem->getIdentifier())
 				{
 					this->consumeItem(dynamic_cast<Consumable*>(next));
 

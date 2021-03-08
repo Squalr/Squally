@@ -48,7 +48,7 @@ const std::string& Diamond::getIconResource()
 	return ItemResources::Crafting_Smithing_Diamond;
 }
 
-const std::string& Diamond::getSerializationKey()
+const std::string& Diamond::getIdentifier()
 {
 	return Diamond::SaveKey;
 }

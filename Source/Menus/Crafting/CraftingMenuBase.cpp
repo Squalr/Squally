@@ -249,7 +249,7 @@ void CraftingMenuBase::populateItemList()
 
 	for (Item* recipe : filteredRecipes)
 	{
-		const std::string& recipeName = recipe->getItemName();
+		const std::string& recipeName = recipe->getIdentifier();
 
 		if (recipe == nullptr || processedRecipes.find(recipeName) != processedRecipes.end())
 		{
@@ -287,7 +287,8 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 
 	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
 
-	int craftCount = 1000;
+	const int MaxCraftCount = 1000;
+	int craftCount = MaxCraftCount;
 
 	for (auto reagent : reagents)
 	{
@@ -297,7 +298,7 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == next->getItemName())
+			if (item->getIdentifier() == next->getIdentifier())
 			{
 				existingCount++;
 			}
@@ -382,7 +383,7 @@ void CraftingMenuBase::craftItem()
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == std::get<0>(reagent)->getItemName())
+			if (item->getIdentifier() == std::get<0>(reagent)->getIdentifier())
 			{
 				this->inventory->tryRemove(item);
 				

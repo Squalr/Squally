@@ -61,7 +61,7 @@ const std::string& SteelHelm::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_SteelHelm;
 }
 
-const std::string& SteelHelm::getSerializationKey()
+const std::string& SteelHelm::getIdentifier()
 {
 	return SteelHelm::SaveKey;
 }

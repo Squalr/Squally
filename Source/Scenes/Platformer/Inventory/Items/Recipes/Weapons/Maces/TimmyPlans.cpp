@@ -69,7 +69,7 @@ std::string TimmyPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Timmy;
 }
 
-const std::string& TimmyPlans::getSerializationKey()
+const std::string& TimmyPlans::getIdentifier()
 {
 	return TimmyPlans::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& VoidBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_VoidBow;
 }
 
-const std::string& VoidBow::getSerializationKey()
+const std::string& VoidBow::getIdentifier()
 {
 	return VoidBow::SaveKey;
 }

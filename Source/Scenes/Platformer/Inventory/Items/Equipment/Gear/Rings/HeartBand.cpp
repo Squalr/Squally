@@ -61,7 +61,7 @@ const std::string& HeartBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_HeartBand;
 }
 
-const std::string& HeartBand::getSerializationKey()
+const std::string& HeartBand::getIdentifier()
 {
 	return HeartBand::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& WoodenSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_WoodenSword;
 }
 
-const std::string& WoodenSword::getSerializationKey()
+const std::string& WoodenSword::getIdentifier()
 {
 	return WoodenSword::SaveKey;
 }

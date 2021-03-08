@@ -61,7 +61,7 @@ const std::string& DarkHeartBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_DarkHeartBand;
 }
 
-const std::string& DarkHeartBand::getSerializationKey()
+const std::string& DarkHeartBand::getIdentifier()
 {
 	return DarkHeartBand::SaveKey;
 }

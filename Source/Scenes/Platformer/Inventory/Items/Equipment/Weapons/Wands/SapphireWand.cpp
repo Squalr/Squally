@@ -62,7 +62,7 @@ const std::string& SapphireWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_SapphireWand;
 }
 
-const std::string& SapphireWand::getSerializationKey()
+const std::string& SapphireWand::getIdentifier()
 {
 	return SapphireWand::SaveKey;
 }

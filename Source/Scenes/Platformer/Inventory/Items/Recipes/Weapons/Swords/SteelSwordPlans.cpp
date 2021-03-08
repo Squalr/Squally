@@ -68,7 +68,7 @@ std::string SteelSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_SteelSword;
 }
 
-const std::string& SteelSwordPlans::getSerializationKey()
+const std::string& SteelSwordPlans::getIdentifier()
 {
 	return SteelSwordPlans::SaveKey;
 }

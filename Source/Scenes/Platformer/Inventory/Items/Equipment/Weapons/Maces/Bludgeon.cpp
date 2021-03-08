@@ -62,7 +62,7 @@ const std::string& Bludgeon::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_Bludgeon;
 }
 
-const std::string& Bludgeon::getSerializationKey()
+const std::string& Bludgeon::getIdentifier()
 {
 	return Bludgeon::SaveKey;
 }

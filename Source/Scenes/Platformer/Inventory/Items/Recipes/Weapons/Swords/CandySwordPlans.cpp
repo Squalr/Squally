@@ -68,7 +68,7 @@ std::string CandySwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_CandySword;
 }
 
-const std::string& CandySwordPlans::getSerializationKey()
+const std::string& CandySwordPlans::getIdentifier()
 {
 	return CandySwordPlans::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& AquaMarineEarrings::getIconResource()
 	return ItemResources::Equipment_Gear_Earrings_AquaMarineEarrings;
 }
 
-const std::string& AquaMarineEarrings::getSerializationKey()
+const std::string& AquaMarineEarrings::getIdentifier()
 {
 	return AquaMarineEarrings::SaveKey;
 }

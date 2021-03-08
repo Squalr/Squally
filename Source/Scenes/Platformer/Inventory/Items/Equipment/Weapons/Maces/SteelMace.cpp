@@ -62,7 +62,7 @@ const std::string& SteelMace::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_SteelMace;
 }
 
-const std::string& SteelMace::getSerializationKey()
+const std::string& SteelMace::getIdentifier()
 {
 	return SteelMace::SaveKey;
 }

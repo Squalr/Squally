@@ -62,7 +62,7 @@ const std::string& MithrilSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_MithrilSword;
 }
 
-const std::string& MithrilSword::getSerializationKey()
+const std::string& MithrilSword::getIdentifier()
 {
 	return MithrilSword::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& SteelSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Swords_SteelSword;
 }
 
-const std::string& SteelSword::getSerializationKey()
+const std::string& SteelSword::getIdentifier()
 {
 	return SteelSword::SaveKey;
 }

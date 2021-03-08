@@ -69,7 +69,7 @@ std::string MithrilMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_MithrilMace;
 }
 
-const std::string& MithrilMacePlans::getSerializationKey()
+const std::string& MithrilMacePlans::getIdentifier()
 {
 	return MithrilMacePlans::SaveKey;
 }

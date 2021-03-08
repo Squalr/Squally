@@ -61,7 +61,7 @@ const std::string& SkullBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_SkullBand;
 }
 
-const std::string& SkullBand::getSerializationKey()
+const std::string& SkullBand::getIdentifier()
 {
 	return SkullBand::SaveKey;
 }

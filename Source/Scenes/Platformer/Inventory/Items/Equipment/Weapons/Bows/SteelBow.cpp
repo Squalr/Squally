@@ -62,7 +62,7 @@ const std::string& SteelBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_SteelBow;
 }
 
-const std::string& SteelBow::getSerializationKey()
+const std::string& SteelBow::getIdentifier()
 {
 	return SteelBow::SaveKey;
 }

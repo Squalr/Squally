@@ -62,7 +62,7 @@ const std::string& DemonicBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_DemonicBow;
 }
 
-const std::string& DemonicBow::getSerializationKey()
+const std::string& DemonicBow::getIdentifier()
 {
 	return DemonicBow::SaveKey;
 }

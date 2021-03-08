@@ -62,7 +62,7 @@ const std::string& Scythe::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_Scythe;
 }
 
-const std::string& Scythe::getSerializationKey()
+const std::string& Scythe::getIdentifier()
 {
 	return Scythe::SaveKey;
 }

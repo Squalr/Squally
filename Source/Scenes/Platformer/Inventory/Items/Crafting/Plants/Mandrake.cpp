@@ -48,7 +48,7 @@ const std::string& Mandrake::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_Mandrake;
 }
 
-const std::string& Mandrake::getSerializationKey()
+const std::string& Mandrake::getIdentifier()
 {
 	return Mandrake::SaveKey;
 }

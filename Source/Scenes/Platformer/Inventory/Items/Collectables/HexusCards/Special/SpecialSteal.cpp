@@ -49,7 +49,7 @@ const std::string& SpecialSteal::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialSteal::getSerializationKey()
+const std::string& SpecialSteal::getIdentifier()
 {
 	return SpecialSteal::SaveKey;
 }

@@ -48,7 +48,7 @@ const std::string& PoisonMushroom::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_PoisonMushroom;
 }
 
-const std::string& PoisonMushroom::getSerializationKey()
+const std::string& PoisonMushroom::getIdentifier()
 {
 	return PoisonMushroom::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& CrystalBow::getIconResource()
 	return ItemResources::Equipment_Weapons_Bows_CrystalBow;
 }
 
-const std::string& CrystalBow::getSerializationKey()
+const std::string& CrystalBow::getIdentifier()
 {
 	return CrystalBow::SaveKey;
 }

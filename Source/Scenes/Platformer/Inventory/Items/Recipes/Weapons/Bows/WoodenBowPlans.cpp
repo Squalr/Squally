@@ -68,7 +68,7 @@ std::string WoodenBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_WoodenBow;
 }
 
-const std::string& WoodenBowPlans::getSerializationKey()
+const std::string& WoodenBowPlans::getIdentifier()
 {
 	return WoodenBowPlans::SaveKey;
 }

@@ -49,7 +49,7 @@ const std::string& Binary15::getIconResource()
 	return ItemResources::Collectables_Cards_CardBinary;
 }
 
-const std::string& Binary15::getSerializationKey()
+const std::string& Binary15::getIdentifier()
 {
 	return Binary15::SaveKey;
 }

@@ -61,7 +61,7 @@ const std::string& SapphireBand::getIconResource()
 	return ItemResources::Equipment_Gear_Rings_SapphireBand;
 }
 
-const std::string& SapphireBand::getSerializationKey()
+const std::string& SapphireBand::getIdentifier()
 {
 	return SapphireBand::SaveKey;
 }

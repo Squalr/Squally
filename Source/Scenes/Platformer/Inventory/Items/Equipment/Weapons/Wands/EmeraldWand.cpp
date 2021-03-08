@@ -62,7 +62,7 @@ const std::string& EmeraldWand::getIconResource()
 	return ItemResources::Equipment_Weapons_Wands_EmeraldWand;
 }
 
-const std::string& EmeraldWand::getSerializationKey()
+const std::string& EmeraldWand::getIdentifier()
 {
 	return EmeraldWand::SaveKey;
 }

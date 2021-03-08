@@ -62,7 +62,7 @@ const std::string& FireSword::getIconResource()
 	return ItemResources::Equipment_Weapons_Special_FireSword;
 }
 
-const std::string& FireSword::getSerializationKey()
+const std::string& FireSword::getIdentifier()
 {
 	return FireSword::SaveKey;
 }

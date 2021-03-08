@@ -48,7 +48,7 @@ const std::string& FrostBerries::getIconResource()
 	return ItemResources::Crafting_Alchemy_Plants_FrostBerries;
 }
 
-const std::string& FrostBerries::getSerializationKey()
+const std::string& FrostBerries::getIdentifier()
 {
 	return FrostBerries::SaveKey;
 }

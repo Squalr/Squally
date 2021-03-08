@@ -61,7 +61,7 @@ const std::string& HeartEarrings::getIconResource()
 	return ItemResources::Equipment_Gear_Earrings_HeartEarrings;
 }
 
-const std::string& HeartEarrings::getSerializationKey()
+const std::string& HeartEarrings::getIdentifier()
 {
 	return HeartEarrings::SaveKey;
 }

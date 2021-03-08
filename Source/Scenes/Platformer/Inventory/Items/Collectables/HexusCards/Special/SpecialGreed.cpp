@@ -49,7 +49,7 @@ const std::string& SpecialGreed::getIconResource()
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-const std::string& SpecialGreed::getSerializationKey()
+const std::string& SpecialGreed::getIdentifier()
 {
 	return SpecialGreed::SaveKey;
 }

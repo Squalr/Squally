@@ -61,7 +61,7 @@ const std::string& GrandpasLuckyHat::getIconResource()
 	return ItemResources::Equipment_Gear_Hats_GrandpasLuckyHat;
 }
 
-const std::string& GrandpasLuckyHat::getSerializationKey()
+const std::string& GrandpasLuckyHat::getIdentifier()
 {
 	return GrandpasLuckyHat::SaveKey;
 }

@@ -62,7 +62,7 @@ const std::string& VoidMace::getIconResource()
 	return ItemResources::Equipment_Weapons_Maces_VoidMace;
 }
 
-const std::string& VoidMace::getSerializationKey()
+const std::string& VoidMace::getIdentifier()
 {
 	return VoidMace::SaveKey;
 }

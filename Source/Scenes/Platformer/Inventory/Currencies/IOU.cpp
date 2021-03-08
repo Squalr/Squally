@@ -38,7 +38,7 @@ const std::string& IOU::getIconResource()
 	return IOU::getIOUIconResource();
 }
 
-const std::string& IOU::getSerializationKey()
+const std::string& IOU::getIdentifier()
 {
 	return IOU::getIOUIdentifier();
 }
