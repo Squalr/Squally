@@ -46,24 +46,26 @@ std::vector<Item*> DismantleRecipe::craft()
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
-	if (this->dismantledItemRecipe != nullptr)
+	std::vector<std::tuple<Item*, int>> reagents = this->dismantledItemRecipe == nullptr ? std::vector<std::tuple<Item*, int>>() : this->dismantledItemRecipe->getReagents();
+
+	if (reagents.size() <= 0)
 	{
-		std::vector<std::tuple<Item*, int>> reagents = this->dismantledItemRecipe->getReagents();
+		reagents.push_back(std::make_tuple(MissingNo::create(), 1));
+	}
 
-		for (const std::tuple<Item*, int>& reagent : reagents)
+	for (const std::tuple<Item*, int>& reagent : reagents)
+	{
+		Item* item = std::get<0>(reagent);
+		int count = std::get<1>(reagent);
+
+		if (item == nullptr)
 		{
-			Item* item = std::get<0>(reagent);
-			int count = std::get<1>(reagent);
+			continue;
+		}
 
-			if (item == nullptr)
-			{
-				continue;
-			}
-
-			for (int index = 0; index < (count + 1) / 2; index++)
-			{
-				items.push_back(item->clone());
-			}
+		for (int index = 0; index < (count + 1) / 2; index++)
+		{
+			items.push_back(item->clone());
 		}
 	}
 
