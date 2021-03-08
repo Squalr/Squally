@@ -47,7 +47,7 @@ Item* BoneHammer::clone()
 	return BoneHammer::create();
 }
 
-std::string BoneHammer::getItemName()
+const std::string& BoneHammer::getItemName()
 {
 	return BoneHammer::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* BoneHammer::getString()
 	return Strings::Items_Equipment_Weapons_Maces_BoneHammer::create();
 }
 
-std::string BoneHammer::getIconResource()
+const std::string& BoneHammer::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_BoneHammer;
 }
 
-std::string BoneHammer::getSerializationKey()
+const std::string& BoneHammer::getSerializationKey()
 {
 	return BoneHammer::SaveKey;
 }

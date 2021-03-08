@@ -10,10 +10,10 @@ public:
 	static Binary8* create();
 
 	Item* clone() override;
-	std::string getItemName() override;
+	const std::string& getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getSerializationKey() override;
 	std::string getCardKey() override;
 
 	static const std::string SaveKey;

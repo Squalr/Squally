@@ -46,7 +46,7 @@ Item* SantaHat::clone()
 	return SantaHat::create();
 }
 
-std::string SantaHat::getItemName()
+const std::string& SantaHat::getItemName()
 {
 	return SantaHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SantaHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
 }
 
-std::string SantaHat::getIconResource()
+const std::string& SantaHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SantaHat;
 }
 
-std::string SantaHat::getSerializationKey()
+const std::string& SantaHat::getSerializationKey()
 {
 	return SantaHat::SaveKey;
 }

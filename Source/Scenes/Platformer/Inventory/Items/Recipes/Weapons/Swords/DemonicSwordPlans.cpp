@@ -49,7 +49,7 @@ Item* DemonicSwordPlans::clone()
 	return DemonicSwordPlans::create();
 }
 
-std::string DemonicSwordPlans::getItemName()
+const std::string& DemonicSwordPlans::getItemName()
 {
 	return DemonicSwordPlans::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* DemonicSwordPlans::getString()
 	return Strings::Items_Equipment_Weapons_Swords_DemonicSword::create();
 }
 
-std::string DemonicSwordPlans::getIconResource()
+const std::string& DemonicSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string DemonicSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_DemonicSword;
 }
 
-std::string DemonicSwordPlans::getSerializationKey()
+const std::string& DemonicSwordPlans::getSerializationKey()
 {
 	return DemonicSwordPlans::SaveKey;
 }

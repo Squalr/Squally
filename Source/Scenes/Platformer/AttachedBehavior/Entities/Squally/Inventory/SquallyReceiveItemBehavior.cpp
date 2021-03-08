@@ -10,6 +10,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -55,26 +56,7 @@ void SquallyReceiveItemBehavior::onLoad()
 
 		if (args != nullptr)
 		{
-			for (Item* item : args->items)
-			{
-				this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-				{
-					entityInventoryBehavior->getInventory()->tryInsert(item, [=](Item* item)
-					{
-						NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-							args->messageOverride,
-							item->getString(),
-							item->getIconResource(),
-							SoundResources::Notifications_NotificationGood3,
-							args->keepOpen
-						));
-					},
-					[=](Item* item)
-					{
-					},
-					true);
-				});
-			}
+			this->obtainItems(args->items, args->messageOverride, args->keepOpen);
 		}
 	}));
 
@@ -86,30 +68,7 @@ void SquallyReceiveItemBehavior::onLoad()
 		{
 			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 			{
-				std::vector<Item*> items = args->pool->getItems(entityInventoryBehavior->getAllInventories());
-
-				for (auto item : items)
-				{
-					if (item == nullptr)
-					{
-						continue;
-					}
-
-					entityInventoryBehavior->getInventory()->tryInsert(item, [=](Item* item)
-					{
-						NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-							args->messageOverride,
-							item->getString(),
-							item->getIconResource(),
-							SoundResources::Notifications_NotificationGood3,
-							args->keepOpen
-						));
-					},
-					[=](Item* item)
-					{
-					},
-					true);
-				}
+				this->obtainItems(args->pool->getItems(entityInventoryBehavior->getAllInventories()), args->messageOverride, args->keepOpen);
 			});
 		}
 	}));
@@ -141,7 +100,7 @@ void SquallyReceiveItemBehavior::onLoad()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveCurrenciesFromPool, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::GiveCurrenciesFromPoolArgs* args = static_cast<PlatformerEvents::GiveCurrenciesFromPoolArgs*>(eventCustom->getData());
-
+		
 		if (args != nullptr && args->pool != nullptr)
 		{
 			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
@@ -176,4 +135,54 @@ void SquallyReceiveItemBehavior::onLoad()
 void SquallyReceiveItemBehavior::onDisable()
 {
 	super::onDisable();
+}
+
+void SquallyReceiveItemBehavior::obtainItems(const std::vector<Item*>& items, LocalizedString* messageOverride, bool keepOpen)
+{
+	if (this->squally == nullptr)
+	{
+		return;
+	}
+
+	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		std::map<std::string, std::vector<Item*>> itemsById = std::map<std::string, std::vector<Item*>>();
+
+		for (Item* item : items)
+		{
+			if (item == nullptr)
+			{
+				continue;
+			}
+
+			itemsById[item->getSerializationKey()].push_back(item);
+			entityInventoryBehavior->getInventory()->forceInsert(item, false);
+		}
+
+		entityInventoryBehavior->getInventory()->save();
+		
+		for (const auto& [id, itemsOfId] : itemsById)
+		{
+			if (itemsOfId.size() < 1)
+			{
+				continue;
+			}
+
+			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+				messageOverride,
+				itemsOfId.size() <= 1 ? itemsOfId[0]->getString() : Strings::Common_ConcatSpaced::create()->setStringReplacementVariables(
+				{
+					itemsOfId[0]->getString(),
+					Strings::Common_Parenthesis::create()->setStringReplacementVariables(
+						Strings::Common_TimesConstant::create()->setStringReplacementVariables(
+							ConstantString::create(std::to_string(itemsOfId.size()))
+						)
+					)
+				}),
+				itemsOfId[0]->getIconResource(),
+				SoundResources::Notifications_NotificationGood3,
+				keepOpen
+			));
+		}
+	});
 }

@@ -47,7 +47,7 @@ Item* WitchingMace::clone()
 	return WitchingMace::create();
 }
 
-std::string WitchingMace::getItemName()
+const std::string& WitchingMace::getItemName()
 {
 	return WitchingMace::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WitchingMace::getString()
 	return Strings::Items_Equipment_Weapons_Maces_WitchingMace::create();
 }
 
-std::string WitchingMace::getIconResource()
+const std::string& WitchingMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_WitchingMace;
 }
 
-std::string WitchingMace::getSerializationKey()
+const std::string& WitchingMace::getSerializationKey()
 {
 	return WitchingMace::SaveKey;
 }

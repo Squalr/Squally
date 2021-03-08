@@ -46,7 +46,7 @@ Item* BucketHelm::clone()
 	return BucketHelm::create();
 }
 
-std::string BucketHelm::getItemName()
+const std::string& BucketHelm::getItemName()
 {
 	return BucketHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* BucketHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_BucketHelm::create();
 }
 
-std::string BucketHelm::getIconResource()
+const std::string& BucketHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_BucketHelm;
 }
 
-std::string BucketHelm::getSerializationKey()
+const std::string& BucketHelm::getSerializationKey()
 {
 	return BucketHelm::SaveKey;
 }

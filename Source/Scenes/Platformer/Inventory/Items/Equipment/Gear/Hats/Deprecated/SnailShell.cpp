@@ -46,7 +46,7 @@ Item* SnailShell::clone()
 	return SnailShell::create();
 }
 
-std::string SnailShell::getItemName()
+const std::string& SnailShell::getItemName()
 {
 	return SnailShell::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SnailShell::getString()
 	return Strings::Items_Equipment_Gear_Hats_SnailShell::create();
 }
 
-std::string SnailShell::getIconResource()
+const std::string& SnailShell::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SnailShell;
 }
 
-std::string SnailShell::getSerializationKey()
+const std::string& SnailShell::getSerializationKey()
 {
 	return SnailShell::SaveKey;
 }

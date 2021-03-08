@@ -46,7 +46,7 @@ Item* SoulBand::clone()
 	return SoulBand::create();
 }
 
-std::string SoulBand::getItemName()
+const std::string& SoulBand::getItemName()
 {
 	return SoulBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SoulBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_SoulBand::create();
 }
 
-std::string SoulBand::getIconResource()
+const std::string& SoulBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_SoulBand;
 }
 
-std::string SoulBand::getSerializationKey()
+const std::string& SoulBand::getSerializationKey()
 {
 	return SoulBand::SaveKey;
 }

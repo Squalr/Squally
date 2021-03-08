@@ -47,7 +47,7 @@ Item* DemonicBow::clone()
 	return DemonicBow::create();
 }
 
-std::string DemonicBow::getItemName()
+const std::string& DemonicBow::getItemName()
 {
 	return DemonicBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* DemonicBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_DemonicBow::create();
 }
 
-std::string DemonicBow::getIconResource()
+const std::string& DemonicBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_DemonicBow;
 }
 
-std::string DemonicBow::getSerializationKey()
+const std::string& DemonicBow::getSerializationKey()
 {
 	return DemonicBow::SaveKey;
 }

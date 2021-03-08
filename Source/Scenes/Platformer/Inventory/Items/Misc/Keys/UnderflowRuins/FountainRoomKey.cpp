@@ -33,7 +33,7 @@ Item* FountainRoomKey::clone()
 	return FountainRoomKey::create();
 }
 
-std::string FountainRoomKey::getItemName()
+const std::string& FountainRoomKey::getItemName()
 {
 	return FountainRoomKey::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* FountainRoomKey::getString()
 	return Strings::Items_Misc_Keys_FountainRoomKey::create();
 }
 
-std::string FountainRoomKey::getIconResource()
+const std::string& FountainRoomKey::getIconResource()
 {
 	return ItemResources::Keys_KEY_1;
 }
 
-std::string FountainRoomKey::getSerializationKey()
+const std::string& FountainRoomKey::getSerializationKey()
 {
 	return FountainRoomKey::SaveKey;
 }

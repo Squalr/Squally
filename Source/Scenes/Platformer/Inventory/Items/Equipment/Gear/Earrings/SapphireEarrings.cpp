@@ -46,7 +46,7 @@ Item* SapphireEarrings::clone()
 	return SapphireEarrings::create();
 }
 
-std::string SapphireEarrings::getItemName()
+const std::string& SapphireEarrings::getItemName()
 {
 	return SapphireEarrings::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SapphireEarrings::getString()
 	return Strings::Items_Equipment_Gear_Earrings_SapphireEarrings::create();
 }
 
-std::string SapphireEarrings::getIconResource()
+const std::string& SapphireEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_SapphireEarrings;
 }
 
-std::string SapphireEarrings::getSerializationKey()
+const std::string& SapphireEarrings::getSerializationKey()
 {
 	return SapphireEarrings::SaveKey;
 }

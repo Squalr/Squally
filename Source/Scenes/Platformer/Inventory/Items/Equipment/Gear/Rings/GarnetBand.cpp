@@ -46,7 +46,7 @@ Item* GarnetBand::clone()
 	return GarnetBand::create();
 }
 
-std::string GarnetBand::getItemName()
+const std::string& GarnetBand::getItemName()
 {
 	return GarnetBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* GarnetBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_GarnetBand::create();
 }
 
-std::string GarnetBand::getIconResource()
+const std::string& GarnetBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_GarnetBand;
 }
 
-std::string GarnetBand::getSerializationKey()
+const std::string& GarnetBand::getSerializationKey()
 {
 	return GarnetBand::SaveKey;
 }

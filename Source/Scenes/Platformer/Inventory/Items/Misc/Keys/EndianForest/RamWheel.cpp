@@ -33,7 +33,7 @@ Item* RamWheel::clone()
 	return RamWheel::create();
 }
 
-std::string RamWheel::getItemName()
+const std::string& RamWheel::getItemName()
 {
 	return RamWheel::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* RamWheel::getString()
 	return Strings::Items_Misc_Keys_RamWheel::create();
 }
 
-std::string RamWheel::getIconResource()
+const std::string& RamWheel::getIconResource()
 {
 	return ItemResources::Keys_RamWheel;
 }
 
-std::string RamWheel::getSerializationKey()
+const std::string& RamWheel::getSerializationKey()
 {
 	return RamWheel::SaveKey;
 }

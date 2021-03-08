@@ -954,6 +954,21 @@ namespace Strings
 		virtual ~Common_NewlineNewline() = default;
 	};
 
+	class Common_Parenthesis : public LocalizedString
+	{
+	public:
+		static Common_Parenthesis* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_Parenthesis();
+		virtual ~Common_Parenthesis() = default;
+	};
+
 	class Common_PlusConstant : public LocalizedString
 	{
 	public:
@@ -1102,6 +1117,21 @@ namespace Strings
 	private:
 		Common_XOverY();
 		virtual ~Common_XOverY() = default;
+	};
+
+	class Common_XTimesY : public LocalizedString
+	{
+	public:
+		static Common_XTimesY* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XTimesY();
+		virtual ~Common_XTimesY() = default;
 	};
 
 	class Debugging_CameraX : public LocalizedString
@@ -25207,6 +25237,21 @@ namespace Strings
 	private:
 		Platformer_Notifications_ItemWon();
 		virtual ~Platformer_Notifications_ItemWon() = default;
+	};
+
+	class Platformer_Notifications_MaterialsRecovered : public LocalizedString
+	{
+	public:
+		static Platformer_Notifications_MaterialsRecovered* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Notifications_MaterialsRecovered();
+		virtual ~Platformer_Notifications_MaterialsRecovered() = default;
 	};
 
 	class Platformer_Notifications_Party_HelperJoinedParty : public LocalizedString

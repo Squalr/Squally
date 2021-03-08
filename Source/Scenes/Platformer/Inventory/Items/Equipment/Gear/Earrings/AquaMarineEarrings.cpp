@@ -46,7 +46,7 @@ Item* AquaMarineEarrings::clone()
 	return AquaMarineEarrings::create();
 }
 
-std::string AquaMarineEarrings::getItemName()
+const std::string& AquaMarineEarrings::getItemName()
 {
 	return AquaMarineEarrings::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* AquaMarineEarrings::getString()
 	return Strings::Items_Equipment_Gear_Earrings_AquaMarineEarrings::create();
 }
 
-std::string AquaMarineEarrings::getIconResource()
+const std::string& AquaMarineEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_AquaMarineEarrings;
 }
 
-std::string AquaMarineEarrings::getSerializationKey()
+const std::string& AquaMarineEarrings::getSerializationKey()
 {
 	return AquaMarineEarrings::SaveKey;
 }

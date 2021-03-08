@@ -46,7 +46,7 @@ Item* GrandpasLuckyHat::clone()
 	return GrandpasLuckyHat::create();
 }
 
-std::string GrandpasLuckyHat::getItemName()
+const std::string& GrandpasLuckyHat::getItemName()
 {
 	return GrandpasLuckyHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* GrandpasLuckyHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_GrandpasLuckyHat::create();
 }
 
-std::string GrandpasLuckyHat::getIconResource()
+const std::string& GrandpasLuckyHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GrandpasLuckyHat;
 }
 
-std::string GrandpasLuckyHat::getSerializationKey()
+const std::string& GrandpasLuckyHat::getSerializationKey()
 {
 	return GrandpasLuckyHat::SaveKey;
 }

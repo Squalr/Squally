@@ -47,7 +47,7 @@ Item* Dreadmourn::clone()
 	return Dreadmourn::create();
 }
 
-std::string Dreadmourn::getItemName()
+const std::string& Dreadmourn::getItemName()
 {
 	return Dreadmourn::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* Dreadmourn::getString()
 	return Strings::Items_Equipment_Weapons_Swords_Dreadmourn::create();
 }
 
-std::string Dreadmourn::getIconResource()
+const std::string& Dreadmourn::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_Dreadmourn;
 }
 
-std::string Dreadmourn::getSerializationKey()
+const std::string& Dreadmourn::getSerializationKey()
 {
 	return Dreadmourn::SaveKey;
 }

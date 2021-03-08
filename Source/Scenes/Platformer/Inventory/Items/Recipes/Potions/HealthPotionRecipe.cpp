@@ -48,7 +48,7 @@ Item* HealthPotionRecipe::clone()
 	return HealthPotionRecipe::create();
 }
 
-std::string HealthPotionRecipe::getItemName()
+const std::string& HealthPotionRecipe::getItemName()
 {
 	return HealthPotionRecipe::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* HealthPotionRecipe::getString()
 	return Strings::Items_Consumables_Health_HealthPotion::create();
 }
 
-std::string HealthPotionRecipe::getIconResource()
+const std::string& HealthPotionRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string HealthPotionRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_HealthPotion;
 }
 
-std::string HealthPotionRecipe::getSerializationKey()
+const std::string& HealthPotionRecipe::getSerializationKey()
 {
 	return HealthPotionRecipe::SaveKey;
 }

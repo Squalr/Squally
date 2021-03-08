@@ -33,7 +33,7 @@ Item* DarkSeed::clone()
 	return DarkSeed::create();
 }
 
-std::string DarkSeed::getItemName()
+const std::string& DarkSeed::getItemName()
 {
 	return DarkSeed::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* DarkSeed::getString()
 	return Strings::Items_Crafting_Plants_DarkSeed::create();
 }
 
-std::string DarkSeed::getIconResource()
+const std::string& DarkSeed::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_DarkSeed;
 }
 
-std::string DarkSeed::getSerializationKey()
+const std::string& DarkSeed::getSerializationKey()
 {
 	return DarkSeed::SaveKey;
 }

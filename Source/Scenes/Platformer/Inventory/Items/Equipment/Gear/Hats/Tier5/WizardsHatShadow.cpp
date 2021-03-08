@@ -46,7 +46,7 @@ Item* WizardsHatShadow::clone()
 	return WizardsHatShadow::create();
 }
 
-std::string WizardsHatShadow::getItemName()
+const std::string& WizardsHatShadow::getItemName()
 {
 	return WizardsHatShadow::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* WizardsHatShadow::getString()
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatShadow::create();
 }
 
-std::string WizardsHatShadow::getIconResource()
+const std::string& WizardsHatShadow::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WizardsHatShadow;
 }
 
-std::string WizardsHatShadow::getSerializationKey()
+const std::string& WizardsHatShadow::getSerializationKey()
 {
 	return WizardsHatShadow::SaveKey;
 }

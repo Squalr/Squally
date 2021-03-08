@@ -49,7 +49,7 @@ Item* HuntersBowPlans::clone()
 	return HuntersBowPlans::create();
 }
 
-std::string HuntersBowPlans::getItemName()
+const std::string& HuntersBowPlans::getItemName()
 {
 	return HuntersBowPlans::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* HuntersBowPlans::getString()
 	return Strings::Items_Equipment_Weapons_Bows_HuntersBow::create();
 }
 
-std::string HuntersBowPlans::getIconResource()
+const std::string& HuntersBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string HuntersBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_HuntersBow;
 }
 
-std::string HuntersBowPlans::getSerializationKey()
+const std::string& HuntersBowPlans::getSerializationKey()
 {
 	return HuntersBowPlans::SaveKey;
 }

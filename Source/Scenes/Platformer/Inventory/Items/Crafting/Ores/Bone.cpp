@@ -33,7 +33,7 @@ Item* Bone::clone()
 	return Bone::create();
 }
 
-std::string Bone::getItemName()
+const std::string& Bone::getItemName()
 {
 	return Bone::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Bone::getString()
 	return Strings::Items_Crafting_Ore_Bone::create();
 }
 
-std::string Bone::getIconResource()
+const std::string& Bone::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Bone;
 }
 
-std::string Bone::getSerializationKey()
+const std::string& Bone::getSerializationKey()
 {
 	return Bone::SaveKey;
 }

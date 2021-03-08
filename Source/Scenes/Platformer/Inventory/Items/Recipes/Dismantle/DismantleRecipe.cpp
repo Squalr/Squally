@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string DismantleRecipe::SaveKey = "dismantle-recipe";
+const std::string DismantleRecipe::ItemNamePrefix = "dismantle-recipe-";
 
 DismantleRecipe* DismantleRecipe::create(Item* item)
 {
@@ -25,6 +25,7 @@ DismantleRecipe::DismantleRecipe(Item* item) : super()
 {
 	this->dismantleItem = item == nullptr ? nullptr : item->clone();
 	this->dismantledItemRecipe = this->dismantleItem == nullptr ? nullptr : this->dismantleItem->getRecipe();
+	this->dismantleItemName = DismantleRecipe::ItemNamePrefix + (this->dismantleItem == nullptr ? "" : this->dismantleItem->getItemName());
 
 	if (this->dismantleItem != nullptr)
 	{
@@ -71,9 +72,17 @@ std::vector<Item*> DismantleRecipe::craft()
 
 std::vector<std::tuple<Item*, int>> DismantleRecipe::getReagentsInternal()
 {
+	if (this->dismantleItem == nullptr)
+	{
+		return
+		{
+			{ MissingNo::create(), 1 }
+		};
+	}
+
 	return
 	{
-		{ this->dismantleItem == nullptr ? nullptr : this->dismantleItem->clone(), 1 }
+		{ this->dismantleItem->clone(), 1 }
 	};
 }
 
@@ -82,9 +91,9 @@ Item* DismantleRecipe::clone()
 	return DismantleRecipe::create(this->dismantleItem);
 }
 
-std::string DismantleRecipe::getItemName()
+const std::string& DismantleRecipe::getItemName()
 {
-	return DismantleRecipe::SaveKey;
+	return dismantleItemName;
 }
 
 LocalizedString* DismantleRecipe::getString()
@@ -92,7 +101,7 @@ LocalizedString* DismantleRecipe::getString()
 	return this->dismantleItem == nullptr ? nullptr : this->dismantleItem->getString();
 }
 
-std::string DismantleRecipe::getIconResource()
+const std::string& DismantleRecipe::getIconResource()
 {
 	return this->dismantleItem == nullptr ? ItemResources::Misc_SCROLL_1 : this->dismantleItem->getIconResource();
 }
@@ -102,7 +111,7 @@ std::string DismantleRecipe::getCraftedItemIconResource()
 	return this->dismantledItemRecipe == nullptr ? ItemResources::Misc_SCROLL_1 : this->dismantledItemRecipe->getCraftedItemIconResource();
 }
 
-std::string DismantleRecipe::getSerializationKey()
+const std::string& DismantleRecipe::getSerializationKey()
 {
-	return DismantleRecipe::SaveKey;
+	return DismantleRecipe::ItemNamePrefix;
 }

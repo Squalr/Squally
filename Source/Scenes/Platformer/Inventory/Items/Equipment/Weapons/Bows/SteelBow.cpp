@@ -47,7 +47,7 @@ Item* SteelBow::clone()
 	return SteelBow::create();
 }
 
-std::string SteelBow::getItemName()
+const std::string& SteelBow::getItemName()
 {
 	return SteelBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* SteelBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_SteelBow::create();
 }
 
-std::string SteelBow::getIconResource()
+const std::string& SteelBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_SteelBow;
 }
 
-std::string SteelBow::getSerializationKey()
+const std::string& SteelBow::getSerializationKey()
 {
 	return SteelBow::SaveKey;
 }

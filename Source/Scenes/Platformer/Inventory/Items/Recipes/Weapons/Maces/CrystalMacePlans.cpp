@@ -50,7 +50,7 @@ Item* CrystalMacePlans::clone()
 	return CrystalMacePlans::create();
 }
 
-std::string CrystalMacePlans::getItemName()
+const std::string& CrystalMacePlans::getItemName()
 {
 	return CrystalMacePlans::SaveKey;
 }
@@ -60,7 +60,7 @@ LocalizedString* CrystalMacePlans::getString()
 	return Strings::Items_Equipment_Weapons_Maces_CrystalMace::create();
 }
 
-std::string CrystalMacePlans::getIconResource()
+const std::string& CrystalMacePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +70,7 @@ std::string CrystalMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
-std::string CrystalMacePlans::getSerializationKey()
+const std::string& CrystalMacePlans::getSerializationKey()
 {
 	return CrystalMacePlans::SaveKey;
 }

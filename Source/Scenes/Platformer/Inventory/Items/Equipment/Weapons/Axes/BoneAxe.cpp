@@ -47,7 +47,7 @@ Item* BoneAxe::clone()
 	return BoneAxe::create();
 }
 
-std::string BoneAxe::getItemName()
+const std::string& BoneAxe::getItemName()
 {
 	return BoneAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* BoneAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_BoneAxe::create();
 }
 
-std::string BoneAxe::getIconResource()
+const std::string& BoneAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_BoneAxe;
 }
 
-std::string BoneAxe::getSerializationKey()
+const std::string& BoneAxe::getSerializationKey()
 {
 	return BoneAxe::SaveKey;
 }

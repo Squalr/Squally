@@ -47,7 +47,7 @@ Item* WoodenBow::clone()
 	return WoodenBow::create();
 }
 
-std::string WoodenBow::getItemName()
+const std::string& WoodenBow::getItemName()
 {
 	return WoodenBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WoodenBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_WoodenBow::create();
 }
 
-std::string WoodenBow::getIconResource()
+const std::string& WoodenBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_WoodenBow;
 }
 
-std::string WoodenBow::getSerializationKey()
+const std::string& WoodenBow::getSerializationKey()
 {
 	return WoodenBow::SaveKey;
 }

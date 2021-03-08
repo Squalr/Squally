@@ -73,7 +73,7 @@ Item* ManaPotion::clone()
 	return ManaPotion::create();
 }
 
-std::string ManaPotion::getItemName()
+const std::string& ManaPotion::getItemName()
 {
 	return ManaPotion::SaveKey;
 }
@@ -83,12 +83,12 @@ LocalizedString* ManaPotion::getString()
 	return Strings::Items_Consumables_Mana_ManaPotion::create();
 }
 
-std::string ManaPotion::getIconResource()
+const std::string& ManaPotion::getIconResource()
 {
 	return ItemResources::Consumables_Potions_ManaPotion;
 }
 
-std::string ManaPotion::getSerializationKey()
+const std::string& ManaPotion::getSerializationKey()
 {
 	return ManaPotion::SaveKey;
 }

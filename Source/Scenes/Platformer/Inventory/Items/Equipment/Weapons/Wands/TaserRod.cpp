@@ -47,7 +47,7 @@ Item* TaserRod::clone()
 	return TaserRod::create();
 }
 
-std::string TaserRod::getItemName()
+const std::string& TaserRod::getItemName()
 {
 	return TaserRod::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* TaserRod::getString()
 	return Strings::Items_Equipment_Weapons_Wands_TaserRod::create();
 }
 
-std::string TaserRod::getIconResource()
+const std::string& TaserRod::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
-std::string TaserRod::getSerializationKey()
+const std::string& TaserRod::getSerializationKey()
 {
 	return TaserRod::SaveKey;
 }

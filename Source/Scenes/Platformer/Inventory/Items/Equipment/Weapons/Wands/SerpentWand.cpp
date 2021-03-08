@@ -47,7 +47,7 @@ Item* SerpentWand::clone()
 	return SerpentWand::create();
 }
 
-std::string SerpentWand::getItemName()
+const std::string& SerpentWand::getItemName()
 {
 	return SerpentWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* SerpentWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_SerpentWand::create();
 }
 
-std::string SerpentWand::getIconResource()
+const std::string& SerpentWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_SerpentWand;
 }
 
-std::string SerpentWand::getSerializationKey()
+const std::string& SerpentWand::getSerializationKey()
 {
 	return SerpentWand::SaveKey;
 }

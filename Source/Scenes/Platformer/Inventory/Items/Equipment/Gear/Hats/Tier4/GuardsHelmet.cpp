@@ -46,7 +46,7 @@ Item* GuardsHelmet::clone()
 	return GuardsHelmet::create();
 }
 
-std::string GuardsHelmet::getItemName()
+const std::string& GuardsHelmet::getItemName()
 {
 	return GuardsHelmet::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* GuardsHelmet::getString()
 	return Strings::Items_Equipment_Gear_Hats_GuardsHelmet::create();
 }
 
-std::string GuardsHelmet::getIconResource()
+const std::string& GuardsHelmet::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GuardsHelmet;
 }
 
-std::string GuardsHelmet::getSerializationKey()
+const std::string& GuardsHelmet::getSerializationKey()
 {
 	return GuardsHelmet::SaveKey;
 }

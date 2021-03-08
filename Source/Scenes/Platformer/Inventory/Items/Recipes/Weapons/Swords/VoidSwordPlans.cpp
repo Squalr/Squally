@@ -48,7 +48,7 @@ Item* VoidSwordPlans::clone()
 	return VoidSwordPlans::create();
 }
 
-std::string VoidSwordPlans::getItemName()
+const std::string& VoidSwordPlans::getItemName()
 {
 	return VoidSwordPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* VoidSwordPlans::getString()
 	return Strings::Items_Equipment_Weapons_Swords_VoidSword::create();
 }
 
-std::string VoidSwordPlans::getIconResource()
+const std::string& VoidSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string VoidSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_VoidSword;
 }
 
-std::string VoidSwordPlans::getSerializationKey()
+const std::string& VoidSwordPlans::getSerializationKey()
 {
 	return VoidSwordPlans::SaveKey;
 }

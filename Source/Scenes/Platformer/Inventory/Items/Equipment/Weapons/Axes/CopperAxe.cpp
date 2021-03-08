@@ -47,7 +47,7 @@ Item* CopperAxe::clone()
 	return CopperAxe::create();
 }
 
-std::string CopperAxe::getItemName()
+const std::string& CopperAxe::getItemName()
 {
 	return CopperAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* CopperAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_CopperAxe::create();
 }
 
-std::string CopperAxe::getIconResource()
+const std::string& CopperAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_CopperAxe;
 }
 
-std::string CopperAxe::getSerializationKey()
+const std::string& CopperAxe::getSerializationKey()
 {
 	return CopperAxe::SaveKey;
 }

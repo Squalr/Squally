@@ -47,7 +47,7 @@ Item* TheButcher::clone()
 	return TheButcher::create();
 }
 
-std::string TheButcher::getItemName()
+const std::string& TheButcher::getItemName()
 {
 	return TheButcher::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* TheButcher::getString()
 	return Strings::Items_Equipment_Weapons_Swords_TheButcher::create();
 }
 
-std::string TheButcher::getIconResource()
+const std::string& TheButcher::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_TheButcher;
 }
 
-std::string TheButcher::getSerializationKey()
+const std::string& TheButcher::getSerializationKey()
 {
 	return TheButcher::SaveKey;
 }

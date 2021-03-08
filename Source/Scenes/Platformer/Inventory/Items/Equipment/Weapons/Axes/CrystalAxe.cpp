@@ -47,7 +47,7 @@ Item* CrystalAxe::clone()
 	return CrystalAxe::create();
 }
 
-std::string CrystalAxe::getItemName()
+const std::string& CrystalAxe::getItemName()
 {
 	return CrystalAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* CrystalAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_CrystalAxe::create();
 }
 
-std::string CrystalAxe::getIconResource()
+const std::string& CrystalAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_CrystalAxe;
 }
 
-std::string CrystalAxe::getSerializationKey()
+const std::string& CrystalAxe::getSerializationKey()
 {
 	return CrystalAxe::SaveKey;
 }

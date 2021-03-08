@@ -47,7 +47,7 @@ Item* BoneBow::clone()
 	return BoneBow::create();
 }
 
-std::string BoneBow::getItemName()
+const std::string& BoneBow::getItemName()
 {
 	return BoneBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* BoneBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_BoneBow::create();
 }
 
-std::string BoneBow::getIconResource()
+const std::string& BoneBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_BoneBow;
 }
 
-std::string BoneBow::getSerializationKey()
+const std::string& BoneBow::getSerializationKey()
 {
 	return BoneBow::SaveKey;
 }

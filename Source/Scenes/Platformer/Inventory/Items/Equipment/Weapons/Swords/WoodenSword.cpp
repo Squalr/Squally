@@ -47,7 +47,7 @@ Item* WoodenSword::clone()
 	return WoodenSword::create();
 }
 
-std::string WoodenSword::getItemName()
+const std::string& WoodenSword::getItemName()
 {
 	return WoodenSword::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WoodenSword::getString()
 	return Strings::Items_Equipment_Weapons_Swords_WoodenSword::create();
 }
 
-std::string WoodenSword::getIconResource()
+const std::string& WoodenSword::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Swords_WoodenSword;
 }
 
-std::string WoodenSword::getSerializationKey()
+const std::string& WoodenSword::getSerializationKey()
 {
 	return WoodenSword::SaveKey;
 }

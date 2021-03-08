@@ -34,7 +34,7 @@ Item* MissingNo::clone()
 	return MissingNo::create();
 }
 
-std::string MissingNo::getItemName()
+const std::string& MissingNo::getItemName()
 {
 	return MissingNo::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* MissingNo::getString()
 	return Strings::Items_Error_MissingNo::create();
 }
 
-std::string MissingNo::getIconResource()
+const std::string& MissingNo::getIconResource()
 {
 	return ItemResources::Error_MissingNo;
 }
 
-std::string MissingNo::getSerializationKey()
+const std::string& MissingNo::getSerializationKey()
 {
 	return MissingNo::SaveKey;
 }

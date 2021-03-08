@@ -46,7 +46,7 @@ Item* TheGoldenEagle::clone()
 	return TheGoldenEagle::create();
 }
 
-std::string TheGoldenEagle::getItemName()
+const std::string& TheGoldenEagle::getItemName()
 {
 	return TheGoldenEagle::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* TheGoldenEagle::getString()
 	return Strings::Items_Equipment_Gear_Hats_TheGoldenEagle::create();
 }
 
-std::string TheGoldenEagle::getIconResource()
+const std::string& TheGoldenEagle::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TheGoldenEagle;
 }
 
-std::string TheGoldenEagle::getSerializationKey()
+const std::string& TheGoldenEagle::getSerializationKey()
 {
 	return TheGoldenEagle::SaveKey;
 }

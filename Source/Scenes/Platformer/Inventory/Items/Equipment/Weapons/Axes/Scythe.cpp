@@ -47,7 +47,7 @@ Item* Scythe::clone()
 	return Scythe::create();
 }
 
-std::string Scythe::getItemName()
+const std::string& Scythe::getItemName()
 {
 	return Scythe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* Scythe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_Scythe::create();
 }
 
-std::string Scythe::getIconResource()
+const std::string& Scythe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_Scythe;
 }
 
-std::string Scythe::getSerializationKey()
+const std::string& Scythe::getSerializationKey()
 {
 	return Scythe::SaveKey;
 }

@@ -46,7 +46,7 @@ Item* MarineNecklace::clone()
 	return MarineNecklace::create();
 }
 
-std::string MarineNecklace::getItemName()
+const std::string& MarineNecklace::getItemName()
 {
 	return MarineNecklace::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* MarineNecklace::getString()
 	return Strings::Items_Equipment_Gear_Necklaces_MarineNecklace::create();
 }
 
-std::string MarineNecklace::getIconResource()
+const std::string& MarineNecklace::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_MarineNecklace;
 }
 
-std::string MarineNecklace::getSerializationKey()
+const std::string& MarineNecklace::getSerializationKey()
 {
 	return MarineNecklace::SaveKey;
 }

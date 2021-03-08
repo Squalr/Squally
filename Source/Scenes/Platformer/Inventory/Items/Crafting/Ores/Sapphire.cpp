@@ -33,7 +33,7 @@ Item* Sapphire::clone()
 	return Sapphire::create();
 }
 
-std::string Sapphire::getItemName()
+const std::string& Sapphire::getItemName()
 {
 	return Sapphire::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Sapphire::getString()
 	return Strings::Items_Crafting_Ore_Sapphire::create();
 }
 
-std::string Sapphire::getIconResource()
+const std::string& Sapphire::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Sapphire;
 }
 
-std::string Sapphire::getSerializationKey()
+const std::string& Sapphire::getSerializationKey()
 {
 	return Sapphire::SaveKey;
 }

@@ -47,7 +47,7 @@ Item* SteelMace::clone()
 	return SteelMace::create();
 }
 
-std::string SteelMace::getItemName()
+const std::string& SteelMace::getItemName()
 {
 	return SteelMace::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* SteelMace::getString()
 	return Strings::Items_Equipment_Weapons_Maces_SteelMace::create();
 }
 
-std::string SteelMace::getIconResource()
+const std::string& SteelMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_SteelMace;
 }
 
-std::string SteelMace::getSerializationKey()
+const std::string& SteelMace::getSerializationKey()
 {
 	return SteelMace::SaveKey;
 }

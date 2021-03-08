@@ -48,7 +48,7 @@ Item* ScythePlans::clone()
 	return ScythePlans::create();
 }
 
-std::string ScythePlans::getItemName()
+const std::string& ScythePlans::getItemName()
 {
 	return ScythePlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* ScythePlans::getString()
 	return Strings::Items_Equipment_Weapons_Axes_Scythe::create();
 }
 
-std::string ScythePlans::getIconResource()
+const std::string& ScythePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string ScythePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Scythe;
 }
 
-std::string ScythePlans::getSerializationKey()
+const std::string& ScythePlans::getSerializationKey()
 {
 	return ScythePlans::SaveKey;
 }

@@ -34,7 +34,7 @@ Item* Decimal13::clone()
 	return Decimal13::create();
 }
 
-std::string Decimal13::getItemName()
+const std::string& Decimal13::getItemName()
 {
 	return Decimal13::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* Decimal13::getString()
 	return Strings::Hexus_Cards_Decimal13::create();
 }
 
-std::string Decimal13::getIconResource()
+const std::string& Decimal13::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardDecimal;
 }
 
-std::string Decimal13::getSerializationKey()
+const std::string& Decimal13::getSerializationKey()
 {
 	return Decimal13::SaveKey;
 }

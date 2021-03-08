@@ -46,7 +46,7 @@ Item* Monocle::clone()
 	return Monocle::create();
 }
 
-std::string Monocle::getItemName()
+const std::string& Monocle::getItemName()
 {
 	return Monocle::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* Monocle::getString()
 	return Strings::Items_Equipment_Gear_Hats_Monocle::create();
 }
 
-std::string Monocle::getIconResource()
+const std::string& Monocle::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_Monocle;
 }
 
-std::string Monocle::getSerializationKey()
+const std::string& Monocle::getSerializationKey()
 {
 	return Monocle::SaveKey;
 }

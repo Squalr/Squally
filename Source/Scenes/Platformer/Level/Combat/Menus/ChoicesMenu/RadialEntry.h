@@ -24,7 +24,7 @@ public:
 		cocos2d::Node* content,
 		cocos2d::Node* contentSelected);
 
-	std::string getIconResource();
+	const std::string& getIconResource();
 	void addIcon(std::string iconResource);
 
 	// ClickableTextNode wrapper

@@ -46,7 +46,7 @@ Item* CrystalEarrings::clone()
 	return CrystalEarrings::create();
 }
 
-std::string CrystalEarrings::getItemName()
+const std::string& CrystalEarrings::getItemName()
 {
 	return CrystalEarrings::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* CrystalEarrings::getString()
 	return Strings::Items_Equipment_Gear_Earrings_CrystalEarrings::create();
 }
 
-std::string CrystalEarrings::getIconResource()
+const std::string& CrystalEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_CrystalEarrings;
 }
 
-std::string CrystalEarrings::getSerializationKey()
+const std::string& CrystalEarrings::getSerializationKey()
 {
 	return CrystalEarrings::SaveKey;
 }

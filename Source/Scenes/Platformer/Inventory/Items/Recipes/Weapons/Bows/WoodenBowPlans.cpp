@@ -48,7 +48,7 @@ Item* WoodenBowPlans::clone()
 	return WoodenBowPlans::create();
 }
 
-std::string WoodenBowPlans::getItemName()
+const std::string& WoodenBowPlans::getItemName()
 {
 	return WoodenBowPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* WoodenBowPlans::getString()
 	return Strings::Items_Equipment_Weapons_Bows_WoodenBow::create();
 }
 
-std::string WoodenBowPlans::getIconResource()
+const std::string& WoodenBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string WoodenBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_WoodenBow;
 }
 
-std::string WoodenBowPlans::getSerializationKey()
+const std::string& WoodenBowPlans::getSerializationKey()
 {
 	return WoodenBowPlans::SaveKey;
 }

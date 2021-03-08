@@ -33,7 +33,7 @@ Item* Ruby::clone()
 	return Ruby::create();
 }
 
-std::string Ruby::getItemName()
+const std::string& Ruby::getItemName()
 {
 	return Ruby::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Ruby::getString()
 	return Strings::Items_Crafting_Ore_Ruby::create();
 }
 
-std::string Ruby::getIconResource()
+const std::string& Ruby::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Ruby;
 }
 
-std::string Ruby::getSerializationKey()
+const std::string& Ruby::getSerializationKey()
 {
 	return Ruby::SaveKey;
 }

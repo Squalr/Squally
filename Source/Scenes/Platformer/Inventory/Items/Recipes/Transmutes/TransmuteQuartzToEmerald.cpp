@@ -48,7 +48,7 @@ Item* TransmuteQuartzToEmerald::clone()
 	return TransmuteQuartzToEmerald::create();
 }
 
-std::string TransmuteQuartzToEmerald::getItemName()
+const std::string& TransmuteQuartzToEmerald::getItemName()
 {
 	return TransmuteQuartzToEmerald::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* TransmuteQuartzToEmerald::getString()
 	return Strings::Items_Crafting_Recipes_TransmuteQuartzToEmerald::create();
 }
 
-std::string TransmuteQuartzToEmerald::getIconResource()
+const std::string& TransmuteQuartzToEmerald::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string TransmuteQuartzToEmerald::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Emerald;
 }
 
-std::string TransmuteQuartzToEmerald::getSerializationKey()
+const std::string& TransmuteQuartzToEmerald::getSerializationKey()
 {
 	return TransmuteQuartzToEmerald::SaveKey;
 }

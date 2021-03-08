@@ -83,7 +83,7 @@ std::string PlatformerAttack::getAttackAnimation()
 	return "Attack";
 }
 
-std::string PlatformerAttack::getIconResource()
+const std::string& PlatformerAttack::getIconResource()
 {
 	return this->iconResource;
 }

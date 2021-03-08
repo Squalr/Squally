@@ -33,7 +33,7 @@ Item* Coal::clone()
 	return Coal::create();
 }
 
-std::string Coal::getItemName()
+const std::string& Coal::getItemName()
 {
 	return Coal::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Coal::getString()
 	return Strings::Items_Crafting_Ore_Coal::create();
 }
 
-std::string Coal::getIconResource()
+const std::string& Coal::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Coal;
 }
 
-std::string Coal::getSerializationKey()
+const std::string& Coal::getSerializationKey()
 {
 	return Coal::SaveKey;
 }

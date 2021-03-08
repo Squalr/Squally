@@ -33,7 +33,7 @@ Item* LightWood::clone()
 	return LightWood::create();
 }
 
-std::string LightWood::getItemName()
+const std::string& LightWood::getItemName()
 {
 	return LightWood::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* LightWood::getString()
 	return Strings::Items_Crafting_Wood_LightWood::create();
 }
 
-std::string LightWood::getIconResource()
+const std::string& LightWood::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_WoodLight;
 }
 
-std::string LightWood::getSerializationKey()
+const std::string& LightWood::getSerializationKey()
 {
 	return LightWood::SaveKey;
 }

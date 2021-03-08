@@ -47,7 +47,7 @@ Item* WitchesWand::clone()
 	return WitchesWand::create();
 }
 
-std::string WitchesWand::getItemName()
+const std::string& WitchesWand::getItemName()
 {
 	return WitchesWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WitchesWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_WitchesWand::create();
 }
 
-std::string WitchesWand::getIconResource()
+const std::string& WitchesWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_WitchesWand;
 }
 
-std::string WitchesWand::getSerializationKey()
+const std::string& WitchesWand::getSerializationKey()
 {
 	return WitchesWand::SaveKey;
 }

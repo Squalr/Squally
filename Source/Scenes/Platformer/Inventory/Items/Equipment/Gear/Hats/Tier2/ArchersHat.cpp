@@ -46,7 +46,7 @@ Item* ArchersHat::clone()
 	return ArchersHat::create();
 }
 
-std::string ArchersHat::getItemName()
+const std::string& ArchersHat::getItemName()
 {
 	return ArchersHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* ArchersHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_ArchersHat::create();
 }
 
-std::string ArchersHat::getIconResource()
+const std::string& ArchersHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ArchersHat;
 }
 
-std::string ArchersHat::getSerializationKey()
+const std::string& ArchersHat::getSerializationKey()
 {
 	return ArchersHat::SaveKey;
 }

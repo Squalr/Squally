@@ -47,7 +47,7 @@ Item* CrystalSword::clone()
 	return CrystalSword::create();
 }
 
-std::string CrystalSword::getItemName()
+const std::string& CrystalSword::getItemName()
 {
 	return CrystalSword::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* CrystalSword::getString()
 	return Strings::Items_Equipment_Weapons_Swords_CrystalSword::create();
 }
 
-std::string CrystalSword::getIconResource()
+const std::string& CrystalSword::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Swords_CrystalSword;
 }
 
-std::string CrystalSword::getSerializationKey()
+const std::string& CrystalSword::getSerializationKey()
 {
 	return CrystalSword::SaveKey;
 }

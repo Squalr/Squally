@@ -46,7 +46,7 @@ Item* ShellBand::clone()
 	return ShellBand::create();
 }
 
-std::string ShellBand::getItemName()
+const std::string& ShellBand::getItemName()
 {
 	return ShellBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* ShellBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_ShellBand::create();
 }
 
-std::string ShellBand::getIconResource()
+const std::string& ShellBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_ShellBand;
 }
 
-std::string ShellBand::getSerializationKey()
+const std::string& ShellBand::getSerializationKey()
 {
 	return ShellBand::SaveKey;
 }

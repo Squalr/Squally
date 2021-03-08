@@ -50,7 +50,7 @@ Item* DemonicWandPlans::clone()
 	return DemonicWandPlans::create();
 }
 
-std::string DemonicWandPlans::getItemName()
+const std::string& DemonicWandPlans::getItemName()
 {
 	return DemonicWandPlans::SaveKey;
 }
@@ -60,7 +60,7 @@ LocalizedString* DemonicWandPlans::getString()
 	return Strings::Items_Equipment_Weapons_Wands_DemonicWand::create();
 }
 
-std::string DemonicWandPlans::getIconResource()
+const std::string& DemonicWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +70,7 @@ std::string DemonicWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_DemonicWand;
 }
 
-std::string DemonicWandPlans::getSerializationKey()
+const std::string& DemonicWandPlans::getSerializationKey()
 {
 	return DemonicWandPlans::SaveKey;
 }

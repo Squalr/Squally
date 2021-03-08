@@ -47,7 +47,7 @@ Item* QuartzWand::clone()
 	return QuartzWand::create();
 }
 
-std::string QuartzWand::getItemName()
+const std::string& QuartzWand::getItemName()
 {
 	return QuartzWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* QuartzWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_QuartzWand::create();
 }
 
-std::string QuartzWand::getIconResource()
+const std::string& QuartzWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_QuartzWand;
 }
 
-std::string QuartzWand::getSerializationKey()
+const std::string& QuartzWand::getSerializationKey()
 {
 	return QuartzWand::SaveKey;
 }

@@ -43,7 +43,7 @@ public:
 	virtual LocalizedString* getDescription();
 	void registerAttackCompleteCallback(std::function<void()> callback);
 	virtual std::string getAttackAnimation();
-	std::string getIconResource();
+	const std::string& getIconResource();
 	void execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
 	Priority getPriority();
 	int getSpecialCost();

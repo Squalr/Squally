@@ -46,7 +46,7 @@ Item* OldShoe::clone()
 	return OldShoe::create();
 }
 
-std::string OldShoe::getItemName()
+const std::string& OldShoe::getItemName()
 {
 	return OldShoe::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* OldShoe::getString()
 	return Strings::Items_Equipment_Gear_Hats_OldShoe::create();
 }
 
-std::string OldShoe::getIconResource()
+const std::string& OldShoe::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_OldShoe;
 }
 
-std::string OldShoe::getSerializationKey()
+const std::string& OldShoe::getSerializationKey()
 {
 	return OldShoe::SaveKey;
 }

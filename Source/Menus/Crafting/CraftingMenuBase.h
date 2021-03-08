@@ -39,12 +39,14 @@ protected:
 	void update(float dt) override;
 	virtual void onCraftStart() = 0;
 	virtual void onCraftEnd(bool viaCancel) = 0;
+	virtual LocalizedString* getCraftString();
 	void startCraft();
 	void craftItem();
 	
 	CraftFilterMenu* filterMenu;
 	cocos2d::Node* backDecorNode;
 	cocos2d::Node* craftIconNode;
+	Item* selectedRecipe;
 
 private:
 	typedef SmartNode super;
@@ -71,7 +73,6 @@ private:
 
 	Sound* errorSound;
 
-	Item* selectedRecipe;
 	std::vector<Item*> recipes;
 	CurrencyInventory* currencyInventory;
 	Inventory* inventory;

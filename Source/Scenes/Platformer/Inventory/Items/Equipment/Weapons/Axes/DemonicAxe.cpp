@@ -47,7 +47,7 @@ Item* DemonicAxe::clone()
 	return DemonicAxe::create();
 }
 
-std::string DemonicAxe::getItemName()
+const std::string& DemonicAxe::getItemName()
 {
 	return DemonicAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* DemonicAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_DemonicAxe::create();
 }
 
-std::string DemonicAxe::getIconResource()
+const std::string& DemonicAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_DemonicAxe;
 }
 
-std::string DemonicAxe::getSerializationKey()
+const std::string& DemonicAxe::getSerializationKey()
 {
 	return DemonicAxe::SaveKey;
 }

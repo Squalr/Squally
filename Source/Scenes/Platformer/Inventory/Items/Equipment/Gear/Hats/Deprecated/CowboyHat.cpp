@@ -46,7 +46,7 @@ Item* CowboyHat::clone()
 	return CowboyHat::create();
 }
 
-std::string CowboyHat::getItemName()
+const std::string& CowboyHat::getItemName()
 {
 	return CowboyHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* CowboyHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_CowboyHat::create();
 }
 
-std::string CowboyHat::getIconResource()
+const std::string& CowboyHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_CowboyHat;
 }
 
-std::string CowboyHat::getSerializationKey()
+const std::string& CowboyHat::getSerializationKey()
 {
 	return CowboyHat::SaveKey;
 }

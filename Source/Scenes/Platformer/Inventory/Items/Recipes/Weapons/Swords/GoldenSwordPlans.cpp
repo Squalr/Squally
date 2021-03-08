@@ -49,7 +49,7 @@ Item* GoldenSwordPlans::clone()
 	return GoldenSwordPlans::create();
 }
 
-std::string GoldenSwordPlans::getItemName()
+const std::string& GoldenSwordPlans::getItemName()
 {
 	return GoldenSwordPlans::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* GoldenSwordPlans::getString()
 	return Strings::Items_Equipment_Weapons_Swords_GoldenSword::create();
 }
 
-std::string GoldenSwordPlans::getIconResource()
+const std::string& GoldenSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string GoldenSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_GoldenSword;
 }
 
-std::string GoldenSwordPlans::getSerializationKey()
+const std::string& GoldenSwordPlans::getSerializationKey()
 {
 	return GoldenSwordPlans::SaveKey;
 }

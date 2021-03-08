@@ -47,7 +47,7 @@ Item* VoidBow::clone()
 	return VoidBow::create();
 }
 
-std::string VoidBow::getItemName()
+const std::string& VoidBow::getItemName()
 {
 	return VoidBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* VoidBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_VoidBow::create();
 }
 
-std::string VoidBow::getIconResource()
+const std::string& VoidBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_VoidBow;
 }
 
-std::string VoidBow::getSerializationKey()
+const std::string& VoidBow::getSerializationKey()
 {
 	return VoidBow::SaveKey;
 }

@@ -33,7 +33,7 @@ Item* Wood::clone()
 	return Wood::create();
 }
 
-std::string Wood::getItemName()
+const std::string& Wood::getItemName()
 {
 	return Wood::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Wood::getString()
 	return Strings::Items_Crafting_Wood_Wood::create();
 }
 
-std::string Wood::getIconResource()
+const std::string& Wood::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Wood;
 }
 
-std::string Wood::getSerializationKey()
+const std::string& Wood::getSerializationKey()
 {
 	return Wood::SaveKey;
 }

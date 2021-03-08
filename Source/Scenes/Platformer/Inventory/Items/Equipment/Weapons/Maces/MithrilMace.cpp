@@ -47,7 +47,7 @@ Item* MithrilMace::clone()
 	return MithrilMace::create();
 }
 
-std::string MithrilMace::getItemName()
+const std::string& MithrilMace::getItemName()
 {
 	return MithrilMace::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* MithrilMace::getString()
 	return Strings::Items_Equipment_Weapons_Maces_MithrilMace::create();
 }
 
-std::string MithrilMace::getIconResource()
+const std::string& MithrilMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_MithrilMace;
 }
 
-std::string MithrilMace::getSerializationKey()
+const std::string& MithrilMace::getSerializationKey()
 {
 	return MithrilMace::SaveKey;
 }

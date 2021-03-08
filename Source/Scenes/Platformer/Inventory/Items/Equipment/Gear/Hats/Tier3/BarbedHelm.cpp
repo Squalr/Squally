@@ -46,7 +46,7 @@ Item* BarbedHelm::clone()
 	return BarbedHelm::create();
 }
 
-std::string BarbedHelm::getItemName()
+const std::string& BarbedHelm::getItemName()
 {
 	return BarbedHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* BarbedHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_BarbedHelm::create();
 }
 
-std::string BarbedHelm::getIconResource()
+const std::string& BarbedHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_BarbedHelm;
 }
 
-std::string BarbedHelm::getSerializationKey()
+const std::string& BarbedHelm::getSerializationKey()
 {
 	return BarbedHelm::SaveKey;
 }

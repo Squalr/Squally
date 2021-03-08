@@ -46,7 +46,7 @@ Item* TheldarsHelm::clone()
 	return TheldarsHelm::create();
 }
 
-std::string TheldarsHelm::getItemName()
+const std::string& TheldarsHelm::getItemName()
 {
 	return TheldarsHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* TheldarsHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_TheldarsHelm::create();
 }
 
-std::string TheldarsHelm::getIconResource()
+const std::string& TheldarsHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TheldarsHelm;
 }
 
-std::string TheldarsHelm::getSerializationKey()
+const std::string& TheldarsHelm::getSerializationKey()
 {
 	return TheldarsHelm::SaveKey;
 }

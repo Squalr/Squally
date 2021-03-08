@@ -33,12 +33,12 @@ LocalizedString* IOU::getStringPlural()
 	return IOU::getIOUStringPlural();
 }
 
-std::string IOU::getIconResource()
+const std::string& IOU::getIconResource()
 {
 	return IOU::getIOUIconResource();
 }
 
-std::string IOU::getSerializationKey()
+const std::string& IOU::getSerializationKey()
 {
 	return IOU::getIOUIdentifier();
 }

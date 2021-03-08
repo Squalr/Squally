@@ -8,10 +8,10 @@ public:
 	static MithrilSword* create();
 
 	Item* clone() override;
-	std::string getItemName() override;
+	const std::string& getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getSerializationKey() override;
 	Recipe* getRecipe() override;
 
 	static const std::string SaveKey;

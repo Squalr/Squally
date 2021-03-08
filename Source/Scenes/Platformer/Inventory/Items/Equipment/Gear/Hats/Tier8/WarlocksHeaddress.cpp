@@ -46,7 +46,7 @@ Item* WarlocksHeaddress::clone()
 	return WarlocksHeaddress::create();
 }
 
-std::string WarlocksHeaddress::getItemName()
+const std::string& WarlocksHeaddress::getItemName()
 {
 	return WarlocksHeaddress::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* WarlocksHeaddress::getString()
 	return Strings::Items_Equipment_Gear_Hats_WarlocksHeaddress::create();
 }
 
-std::string WarlocksHeaddress::getIconResource()
+const std::string& WarlocksHeaddress::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WarlocksHeaddress;
 }
 
-std::string WarlocksHeaddress::getSerializationKey()
+const std::string& WarlocksHeaddress::getSerializationKey()
 {
 	return WarlocksHeaddress::SaveKey;
 }

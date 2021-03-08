@@ -46,7 +46,7 @@ Item* SapphireNecklace::clone()
 	return SapphireNecklace::create();
 }
 
-std::string SapphireNecklace::getItemName()
+const std::string& SapphireNecklace::getItemName()
 {
 	return SapphireNecklace::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SapphireNecklace::getString()
 	return Strings::Items_Equipment_Gear_Necklaces_SapphireNecklace::create();
 }
 
-std::string SapphireNecklace::getIconResource()
+const std::string& SapphireNecklace::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_SapphireNecklace;
 }
 
-std::string SapphireNecklace::getSerializationKey()
+const std::string& SapphireNecklace::getSerializationKey()
 {
 	return SapphireNecklace::SaveKey;
 }

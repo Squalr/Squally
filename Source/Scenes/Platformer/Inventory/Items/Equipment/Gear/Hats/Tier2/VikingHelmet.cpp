@@ -46,7 +46,7 @@ Item* VikingHelmet::clone()
 	return VikingHelmet::create();
 }
 
-std::string VikingHelmet::getItemName()
+const std::string& VikingHelmet::getItemName()
 {
 	return VikingHelmet::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* VikingHelmet::getString()
 	return Strings::Items_Equipment_Gear_Hats_VikingHelmet::create();
 }
 
-std::string VikingHelmet::getIconResource()
+const std::string& VikingHelmet::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_VikingHelmet;
 }
 
-std::string VikingHelmet::getSerializationKey()
+const std::string& VikingHelmet::getSerializationKey()
 {
 	return VikingHelmet::SaveKey;
 }

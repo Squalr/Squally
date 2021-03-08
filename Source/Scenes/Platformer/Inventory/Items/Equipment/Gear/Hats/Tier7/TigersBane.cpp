@@ -46,7 +46,7 @@ Item* TigersBane::clone()
 	return TigersBane::create();
 }
 
-std::string TigersBane::getItemName()
+const std::string& TigersBane::getItemName()
 {
 	return TigersBane::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* TigersBane::getString()
 	return Strings::Items_Equipment_Gear_Hats_TigersBane::create();
 }
 
-std::string TigersBane::getIconResource()
+const std::string& TigersBane::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TigersBane;
 }
 
-std::string TigersBane::getSerializationKey()
+const std::string& TigersBane::getSerializationKey()
 {
 	return TigersBane::SaveKey;
 }

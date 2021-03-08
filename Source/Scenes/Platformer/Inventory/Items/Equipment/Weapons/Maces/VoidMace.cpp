@@ -47,7 +47,7 @@ Item* VoidMace::clone()
 	return VoidMace::create();
 }
 
-std::string VoidMace::getItemName()
+const std::string& VoidMace::getItemName()
 {
 	return VoidMace::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* VoidMace::getString()
 	return Strings::Items_Equipment_Weapons_Maces_VoidMace::create();
 }
 
-std::string VoidMace::getIconResource()
+const std::string& VoidMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_VoidMace;
 }
 
-std::string VoidMace::getSerializationKey()
+const std::string& VoidMace::getSerializationKey()
 {
 	return VoidMace::SaveKey;
 }

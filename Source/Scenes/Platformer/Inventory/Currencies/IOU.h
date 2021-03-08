@@ -18,8 +18,8 @@ public:
 
 	LocalizedString* getString() override;
 	LocalizedString* getStringPlural() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getSerializationKey() override;
 
 protected:
 	IOU();

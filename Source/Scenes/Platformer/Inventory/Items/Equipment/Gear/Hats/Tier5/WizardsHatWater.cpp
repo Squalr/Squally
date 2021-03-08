@@ -46,7 +46,7 @@ Item* WizardsHatWater::clone()
 	return WizardsHatWater::create();
 }
 
-std::string WizardsHatWater::getItemName()
+const std::string& WizardsHatWater::getItemName()
 {
 	return WizardsHatWater::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* WizardsHatWater::getString()
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatWater::create();
 }
 
-std::string WizardsHatWater::getIconResource()
+const std::string& WizardsHatWater::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WizardsHatWater;
 }
 
-std::string WizardsHatWater::getSerializationKey()
+const std::string& WizardsHatWater::getSerializationKey()
 {
 	return WizardsHatWater::SaveKey;
 }

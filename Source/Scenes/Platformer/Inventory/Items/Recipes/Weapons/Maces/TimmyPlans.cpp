@@ -49,7 +49,7 @@ Item* TimmyPlans::clone()
 	return TimmyPlans::create();
 }
 
-std::string TimmyPlans::getItemName()
+const std::string& TimmyPlans::getItemName()
 {
 	return TimmyPlans::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* TimmyPlans::getString()
 	return Strings::Items_Equipment_Weapons_Maces_Timmy::create();
 }
 
-std::string TimmyPlans::getIconResource()
+const std::string& TimmyPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string TimmyPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Timmy;
 }
 
-std::string TimmyPlans::getSerializationKey()
+const std::string& TimmyPlans::getSerializationKey()
 {
 	return TimmyPlans::SaveKey;
 }

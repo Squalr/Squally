@@ -33,7 +33,7 @@ Item* Honey::clone()
 	return Honey::create();
 }
 
-std::string Honey::getItemName()
+const std::string& Honey::getItemName()
 {
 	return Honey::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Honey::getString()
 	return Strings::Items_Crafting_Reagents_Honey::create();
 }
 
-std::string Honey::getIconResource()
+const std::string& Honey::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_Honey;
 }
 
-std::string Honey::getSerializationKey()
+const std::string& Honey::getSerializationKey()
 {
 	return Honey::SaveKey;
 }

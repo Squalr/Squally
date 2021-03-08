@@ -46,7 +46,7 @@ Item* MagesHatRed::clone()
 	return MagesHatRed::create();
 }
 
-std::string MagesHatRed::getItemName()
+const std::string& MagesHatRed::getItemName()
 {
 	return MagesHatRed::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* MagesHatRed::getString()
 	return Strings::Items_Equipment_Gear_Hats_MagesHatRed::create();
 }
 
-std::string MagesHatRed::getIconResource()
+const std::string& MagesHatRed::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_MagesHatRed;
 }
 
-std::string MagesHatRed::getSerializationKey()
+const std::string& MagesHatRed::getSerializationKey()
 {
 	return MagesHatRed::SaveKey;
 }

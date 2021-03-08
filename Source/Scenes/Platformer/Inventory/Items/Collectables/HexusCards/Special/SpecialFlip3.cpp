@@ -34,7 +34,7 @@ Item* SpecialFlip3::clone()
 	return SpecialFlip3::create();
 }
 
-std::string SpecialFlip3::getItemName()
+const std::string& SpecialFlip3::getItemName()
 {
 	return SpecialFlip3::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialFlip3::getString()
 	return Strings::Hexus_Cards_Flip3::create();
 }
 
-std::string SpecialFlip3::getIconResource()
+const std::string& SpecialFlip3::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialFlip3::getSerializationKey()
+const std::string& SpecialFlip3::getSerializationKey()
 {
 	return SpecialFlip3::SaveKey;
 }

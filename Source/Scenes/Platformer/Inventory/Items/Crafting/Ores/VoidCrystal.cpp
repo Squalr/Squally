@@ -33,7 +33,7 @@ Item* VoidCrystal::clone()
 	return VoidCrystal::create();
 }
 
-std::string VoidCrystal::getItemName()
+const std::string& VoidCrystal::getItemName()
 {
 	return VoidCrystal::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* VoidCrystal::getString()
 	return Strings::Items_Crafting_Ore_VoidCrystal::create();
 }
 
-std::string VoidCrystal::getIconResource()
+const std::string& VoidCrystal::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_VoidCrystal;
 }
 
-std::string VoidCrystal::getSerializationKey()
+const std::string& VoidCrystal::getSerializationKey()
 {
 	return VoidCrystal::SaveKey;
 }

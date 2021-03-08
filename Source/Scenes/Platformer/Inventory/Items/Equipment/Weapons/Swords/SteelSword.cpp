@@ -47,7 +47,7 @@ Item* SteelSword::clone()
 	return SteelSword::create();
 }
 
-std::string SteelSword::getItemName()
+const std::string& SteelSword::getItemName()
 {
 	return SteelSword::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* SteelSword::getString()
 	return Strings::Items_Equipment_Weapons_Swords_SteelSword::create();
 }
 
-std::string SteelSword::getIconResource()
+const std::string& SteelSword::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Swords_SteelSword;
 }
 
-std::string SteelSword::getSerializationKey()
+const std::string& SteelSword::getSerializationKey()
 {
 	return SteelSword::SaveKey;
 }

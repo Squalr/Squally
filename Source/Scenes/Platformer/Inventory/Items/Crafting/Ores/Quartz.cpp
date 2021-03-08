@@ -33,7 +33,7 @@ Item* Quartz::clone()
 	return Quartz::create();
 }
 
-std::string Quartz::getItemName()
+const std::string& Quartz::getItemName()
 {
 	return Quartz::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Quartz::getString()
 	return Strings::Items_Crafting_Ore_Quartz::create();
 }
 
-std::string Quartz::getIconResource()
+const std::string& Quartz::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Quartz;
 }
 
-std::string Quartz::getSerializationKey()
+const std::string& Quartz::getSerializationKey()
 {
 	return Quartz::SaveKey;
 }

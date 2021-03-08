@@ -47,7 +47,7 @@ Item* GoldenMace::clone()
 	return GoldenMace::create();
 }
 
-std::string GoldenMace::getItemName()
+const std::string& GoldenMace::getItemName()
 {
 	return GoldenMace::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* GoldenMace::getString()
 	return Strings::Items_Equipment_Weapons_Maces_GoldenMace::create();
 }
 
-std::string GoldenMace::getIconResource()
+const std::string& GoldenMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_GoldenMace;
 }
 
-std::string GoldenMace::getSerializationKey()
+const std::string& GoldenMace::getSerializationKey()
 {
 	return GoldenMace::SaveKey;
 }

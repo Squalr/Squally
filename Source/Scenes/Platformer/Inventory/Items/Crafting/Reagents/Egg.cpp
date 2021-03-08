@@ -33,7 +33,7 @@ Item* Egg::clone()
 	return Egg::create();
 }
 
-std::string Egg::getItemName()
+const std::string& Egg::getItemName()
 {
 	return Egg::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Egg::getString()
 	return Strings::Items_Crafting_Reagents_Egg::create();
 }
 
-std::string Egg::getIconResource()
+const std::string& Egg::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_Egg;
 }
 
-std::string Egg::getSerializationKey()
+const std::string& Egg::getSerializationKey()
 {
 	return Egg::SaveKey;
 }

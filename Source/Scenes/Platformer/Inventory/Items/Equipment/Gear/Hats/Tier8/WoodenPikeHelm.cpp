@@ -46,7 +46,7 @@ Item* WoodenPikeHelm::clone()
 	return WoodenPikeHelm::create();
 }
 
-std::string WoodenPikeHelm::getItemName()
+const std::string& WoodenPikeHelm::getItemName()
 {
 	return WoodenPikeHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* WoodenPikeHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_WoodenPikeHelm::create();
 }
 
-std::string WoodenPikeHelm::getIconResource()
+const std::string& WoodenPikeHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WoodenPikeHelm;
 }
 
-std::string WoodenPikeHelm::getSerializationKey()
+const std::string& WoodenPikeHelm::getSerializationKey()
 {
 	return WoodenPikeHelm::SaveKey;
 }

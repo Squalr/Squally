@@ -34,7 +34,7 @@ Item* Binary4::clone()
 	return Binary4::create();
 }
 
-std::string Binary4::getItemName()
+const std::string& Binary4::getItemName()
 {
 	return Binary4::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* Binary4::getString()
 	return Strings::Hexus_Cards_Binary4::create();
 }
 
-std::string Binary4::getIconResource()
+const std::string& Binary4::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardBinary;
 }
 
-std::string Binary4::getSerializationKey()
+const std::string& Binary4::getSerializationKey()
 {
 	return Binary4::SaveKey;
 }

@@ -46,7 +46,7 @@ Item* WolfHat::clone()
 	return WolfHat::create();
 }
 
-std::string WolfHat::getItemName()
+const std::string& WolfHat::getItemName()
 {
 	return WolfHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* WolfHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_WolfHat::create();
 }
 
-std::string WolfHat::getIconResource()
+const std::string& WolfHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WolfHat;
 }
 
-std::string WolfHat::getSerializationKey()
+const std::string& WolfHat::getSerializationKey()
 {
 	return WolfHat::SaveKey;
 }

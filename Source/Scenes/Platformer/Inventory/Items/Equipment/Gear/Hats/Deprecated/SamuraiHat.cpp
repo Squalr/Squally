@@ -46,7 +46,7 @@ Item* SamuraiHat::clone()
 	return SamuraiHat::create();
 }
 
-std::string SamuraiHat::getItemName()
+const std::string& SamuraiHat::getItemName()
 {
 	return SamuraiHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SamuraiHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_SamuraiHat::create();
 }
 
-std::string SamuraiHat::getIconResource()
+const std::string& SamuraiHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SamuraiHat;
 }
 
-std::string SamuraiHat::getSerializationKey()
+const std::string& SamuraiHat::getSerializationKey()
 {
 	return SamuraiHat::SaveKey;
 }

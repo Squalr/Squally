@@ -47,7 +47,7 @@ Item* MithrilAxe::clone()
 	return MithrilAxe::create();
 }
 
-std::string MithrilAxe::getItemName()
+const std::string& MithrilAxe::getItemName()
 {
 	return MithrilAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* MithrilAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_MithrilAxe::create();
 }
 
-std::string MithrilAxe::getIconResource()
+const std::string& MithrilAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
-std::string MithrilAxe::getSerializationKey()
+const std::string& MithrilAxe::getSerializationKey()
 {
 	return MithrilAxe::SaveKey;
 }

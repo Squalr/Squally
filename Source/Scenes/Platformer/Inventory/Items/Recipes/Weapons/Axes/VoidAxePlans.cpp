@@ -48,7 +48,7 @@ Item* VoidAxePlans::clone()
 	return VoidAxePlans::create();
 }
 
-std::string VoidAxePlans::getItemName()
+const std::string& VoidAxePlans::getItemName()
 {
 	return VoidAxePlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* VoidAxePlans::getString()
 	return Strings::Items_Equipment_Weapons_Axes_VoidAxe::create();
 }
 
-std::string VoidAxePlans::getIconResource()
+const std::string& VoidAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string VoidAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_VoidAxe;
 }
 
-std::string VoidAxePlans::getSerializationKey()
+const std::string& VoidAxePlans::getSerializationKey()
 {
 	return VoidAxePlans::SaveKey;
 }

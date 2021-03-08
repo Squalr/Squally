@@ -47,7 +47,7 @@ Item* VoidAxe::clone()
 	return VoidAxe::create();
 }
 
-std::string VoidAxe::getItemName()
+const std::string& VoidAxe::getItemName()
 {
 	return VoidAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* VoidAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_VoidAxe::create();
 }
 
-std::string VoidAxe::getIconResource()
+const std::string& VoidAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_VoidAxe;
 }
 
-std::string VoidAxe::getSerializationKey()
+const std::string& VoidAxe::getSerializationKey()
 {
 	return VoidAxe::SaveKey;
 }

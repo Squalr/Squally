@@ -47,7 +47,7 @@ Item* GoldenAxe::clone()
 	return GoldenAxe::create();
 }
 
-std::string GoldenAxe::getItemName()
+const std::string& GoldenAxe::getItemName()
 {
 	return GoldenAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* GoldenAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_GoldenAxe::create();
 }
 
-std::string GoldenAxe::getIconResource()
+const std::string& GoldenAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_GoldenAxe;
 }
 
-std::string GoldenAxe::getSerializationKey()
+const std::string& GoldenAxe::getSerializationKey()
 {
 	return GoldenAxe::SaveKey;
 }

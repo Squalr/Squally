@@ -47,7 +47,7 @@ Item* WoodenWandPlans::clone()
 	return WoodenWandPlans::create();
 }
 
-std::string WoodenWandPlans::getItemName()
+const std::string& WoodenWandPlans::getItemName()
 {
 	return WoodenWandPlans::SaveKey;
 }
@@ -57,7 +57,7 @@ LocalizedString* WoodenWandPlans::getString()
 	return Strings::Items_Equipment_Weapons_Wands_WoodenWand::create();
 }
 
-std::string WoodenWandPlans::getIconResource()
+const std::string& WoodenWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -67,7 +67,7 @@ std::string WoodenWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_WoodenWand;
 }
 
-std::string WoodenWandPlans::getSerializationKey()
+const std::string& WoodenWandPlans::getSerializationKey()
 {
 	return WoodenWandPlans::SaveKey;
 }

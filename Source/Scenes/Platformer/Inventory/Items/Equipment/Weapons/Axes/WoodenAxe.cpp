@@ -47,7 +47,7 @@ Item* WoodenAxe::clone()
 	return WoodenAxe::create();
 }
 
-std::string WoodenAxe::getItemName()
+const std::string& WoodenAxe::getItemName()
 {
 	return WoodenAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WoodenAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_WoodenAxe::create();
 }
 
-std::string WoodenAxe::getIconResource()
+const std::string& WoodenAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_WoodenAxe;
 }
 
-std::string WoodenAxe::getSerializationKey()
+const std::string& WoodenAxe::getSerializationKey()
 {
 	return WoodenAxe::SaveKey;
 }

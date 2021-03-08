@@ -34,7 +34,7 @@ Item* SpecialPeek::clone()
 	return SpecialPeek::create();
 }
 
-std::string SpecialPeek::getItemName()
+const std::string& SpecialPeek::getItemName()
 {
 	return SpecialPeek::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialPeek::getString()
 	return Strings::Hexus_Cards_Peek::create();
 }
 
-std::string SpecialPeek::getIconResource()
+const std::string& SpecialPeek::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialPeek::getSerializationKey()
+const std::string& SpecialPeek::getSerializationKey()
 {
 	return SpecialPeek::SaveKey;
 }

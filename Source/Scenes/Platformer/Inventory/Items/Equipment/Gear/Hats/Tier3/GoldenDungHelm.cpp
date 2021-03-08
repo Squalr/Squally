@@ -46,7 +46,7 @@ Item* GoldenDungHelm::clone()
 	return GoldenDungHelm::create();
 }
 
-std::string GoldenDungHelm::getItemName()
+const std::string& GoldenDungHelm::getItemName()
 {
 	return GoldenDungHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* GoldenDungHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_GoldenDungHelm::create();
 }
 
-std::string GoldenDungHelm::getIconResource()
+const std::string& GoldenDungHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GoldenDungHelm;
 }
 
-std::string GoldenDungHelm::getSerializationKey()
+const std::string& GoldenDungHelm::getSerializationKey()
 {
 	return GoldenDungHelm::SaveKey;
 }

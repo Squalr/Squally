@@ -48,7 +48,7 @@ Item* BoneBowPlans::clone()
 	return BoneBowPlans::create();
 }
 
-std::string BoneBowPlans::getItemName()
+const std::string& BoneBowPlans::getItemName()
 {
 	return BoneBowPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* BoneBowPlans::getString()
 	return Strings::Items_Equipment_Weapons_Bows_BoneBow::create();
 }
 
-std::string BoneBowPlans::getIconResource()
+const std::string& BoneBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string BoneBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_BoneBow;
 }
 
-std::string BoneBowPlans::getSerializationKey()
+const std::string& BoneBowPlans::getSerializationKey()
 {
 	return BoneBowPlans::SaveKey;
 }

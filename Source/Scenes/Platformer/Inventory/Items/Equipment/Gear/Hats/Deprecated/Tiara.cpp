@@ -46,7 +46,7 @@ Item* Tiara::clone()
 	return Tiara::create();
 }
 
-std::string Tiara::getItemName()
+const std::string& Tiara::getItemName()
 {
 	return Tiara::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* Tiara::getString()
 	return Strings::Items_Equipment_Gear_Hats_Tiara::create();
 }
 
-std::string Tiara::getIconResource()
+const std::string& Tiara::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_Tiara;
 }
 
-std::string Tiara::getSerializationKey()
+const std::string& Tiara::getSerializationKey()
 {
 	return Tiara::SaveKey;
 }

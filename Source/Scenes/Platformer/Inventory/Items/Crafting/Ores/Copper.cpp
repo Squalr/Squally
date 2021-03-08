@@ -33,7 +33,7 @@ Item* Copper::clone()
 	return Copper::create();
 }
 
-std::string Copper::getItemName()
+const std::string& Copper::getItemName()
 {
 	return Copper::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Copper::getString()
 	return Strings::Items_Crafting_Ore_Copper::create();
 }
 
-std::string Copper::getIconResource()
+const std::string& Copper::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Copper;
 }
 
-std::string Copper::getSerializationKey()
+const std::string& Copper::getSerializationKey()
 {
 	return Copper::SaveKey;
 }

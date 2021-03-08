@@ -46,7 +46,7 @@ Item* BrocksHelm::clone()
 	return BrocksHelm::create();
 }
 
-std::string BrocksHelm::getItemName()
+const std::string& BrocksHelm::getItemName()
 {
 	return BrocksHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* BrocksHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_BrocksHelm::create();
 }
 
-std::string BrocksHelm::getIconResource()
+const std::string& BrocksHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_BrocksHelm;
 }
 
-std::string BrocksHelm::getSerializationKey()
+const std::string& BrocksHelm::getSerializationKey()
 {
 	return BrocksHelm::SaveKey;
 }

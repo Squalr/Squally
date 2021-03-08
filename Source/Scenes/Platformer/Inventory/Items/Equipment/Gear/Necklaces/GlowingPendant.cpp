@@ -46,7 +46,7 @@ Item* GlowingPendant::clone()
 	return GlowingPendant::create();
 }
 
-std::string GlowingPendant::getItemName()
+const std::string& GlowingPendant::getItemName()
 {
 	return GlowingPendant::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* GlowingPendant::getString()
 	return Strings::Items_Equipment_Gear_Necklaces_GlowingPendant::create();
 }
 
-std::string GlowingPendant::getIconResource()
+const std::string& GlowingPendant::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_GlowingPendant;
 }
 
-std::string GlowingPendant::getSerializationKey()
+const std::string& GlowingPendant::getSerializationKey()
 {
 	return GlowingPendant::SaveKey;
 }

@@ -34,7 +34,7 @@ Item* SpecialAbsorb::clone()
 	return SpecialAbsorb::create();
 }
 
-std::string SpecialAbsorb::getItemName()
+const std::string& SpecialAbsorb::getItemName()
 {
 	return SpecialAbsorb::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialAbsorb::getString()
 	return Strings::Hexus_Cards_Absorb::create();
 }
 
-std::string SpecialAbsorb::getIconResource()
+const std::string& SpecialAbsorb::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialAbsorb::getSerializationKey()
+const std::string& SpecialAbsorb::getSerializationKey()
 {
 	return SpecialAbsorb::SaveKey;
 }

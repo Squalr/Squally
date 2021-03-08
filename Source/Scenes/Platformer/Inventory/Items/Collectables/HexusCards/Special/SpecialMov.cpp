@@ -34,7 +34,7 @@ Item* SpecialMov::clone()
 	return SpecialMov::create();
 }
 
-std::string SpecialMov::getItemName()
+const std::string& SpecialMov::getItemName()
 {
 	return SpecialMov::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialMov::getString()
 	return Strings::Hexus_Cards_Mov::create();
 }
 
-std::string SpecialMov::getIconResource()
+const std::string& SpecialMov::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialMov::getSerializationKey()
+const std::string& SpecialMov::getSerializationKey()
 {
 	return SpecialMov::SaveKey;
 }

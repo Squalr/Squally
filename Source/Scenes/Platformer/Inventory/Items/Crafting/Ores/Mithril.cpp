@@ -33,7 +33,7 @@ Item* Mithril::clone()
 	return Mithril::create();
 }
 
-std::string Mithril::getItemName()
+const std::string& Mithril::getItemName()
 {
 	return Mithril::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Mithril::getString()
 	return Strings::Items_Crafting_Ore_Mithril::create();
 }
 
-std::string Mithril::getIconResource()
+const std::string& Mithril::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Mithril;
 }
 
-std::string Mithril::getSerializationKey()
+const std::string& Mithril::getSerializationKey()
 {
 	return Mithril::SaveKey;
 }

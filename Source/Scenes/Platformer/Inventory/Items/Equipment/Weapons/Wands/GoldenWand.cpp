@@ -47,7 +47,7 @@ Item* GoldenWand::clone()
 	return GoldenWand::create();
 }
 
-std::string GoldenWand::getItemName()
+const std::string& GoldenWand::getItemName()
 {
 	return GoldenWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* GoldenWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_GoldenWand::create();
 }
 
-std::string GoldenWand::getIconResource()
+const std::string& GoldenWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_GoldenWand;
 }
 
-std::string GoldenWand::getSerializationKey()
+const std::string& GoldenWand::getSerializationKey()
 {
 	return GoldenWand::SaveKey;
 }

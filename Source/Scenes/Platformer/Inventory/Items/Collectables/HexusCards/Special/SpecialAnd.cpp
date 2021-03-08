@@ -34,7 +34,7 @@ Item* SpecialAnd::clone()
 	return SpecialAnd::create();
 }
 
-std::string SpecialAnd::getItemName()
+const std::string& SpecialAnd::getItemName()
 {
 	return SpecialAnd::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialAnd::getString()
 	return Strings::Hexus_Cards_LogicalAnd::create();
 }
 
-std::string SpecialAnd::getIconResource()
+const std::string& SpecialAnd::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialAnd::getSerializationKey()
+const std::string& SpecialAnd::getSerializationKey()
 {
 	return SpecialAnd::SaveKey;
 }

@@ -33,7 +33,7 @@ Item* Diamond::clone()
 	return Diamond::create();
 }
 
-std::string Diamond::getItemName()
+const std::string& Diamond::getItemName()
 {
 	return Diamond::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Diamond::getString()
 	return Strings::Items_Crafting_Ore_Diamond::create();
 }
 
-std::string Diamond::getIconResource()
+const std::string& Diamond::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Diamond;
 }
 
-std::string Diamond::getSerializationKey()
+const std::string& Diamond::getSerializationKey()
 {
 	return Diamond::SaveKey;
 }

@@ -106,14 +106,6 @@ void CraftingMenuBase::onEnter()
 {
 	super::onEnter();
 
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->craftingWindow, delay, duration);
-	GameUtils::fadeInObject(this->craftingLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-
 	this->cancelIcon->setVisible(false);
 	this->craftProgress->setVisible(false);
 	
@@ -252,16 +244,23 @@ void CraftingMenuBase::onFilterChange()
 void CraftingMenuBase::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
-	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->recipes);
-	
-	for (auto item : items)
-	{
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
-		{
-		});
+	std::vector<Item*> filteredRecipes = this->filterMenu->getActiveFilter()->filter(this->recipes);
+	std::set<std::string> processedRecipes = std::set<std::string>();
 
+	for (Item* recipe : filteredRecipes)
+	{
+		const std::string& recipeName = recipe->getItemName();
+
+		if (recipe == nullptr || processedRecipes.find(recipeName) != processedRecipes.end())
+		{
+			continue;
+		}
+
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(recipe, [=](){ });
+		
 		entry->hideIcon();
-		entry->setCraftCount(this->getCraftCount(dynamic_cast<Recipe*>(item), this->inventory));
+		entry->setCraftCount(this->getCraftCount(dynamic_cast<Recipe*>(recipe), this->inventory));
+		processedRecipes.insert(recipeName);
 	}
 
 	this->itemMenu->updateAndPositionItemText();
@@ -314,6 +313,7 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 
 void CraftingMenuBase::onCraftPreview(Item* item)
 {
+	this->selectedRecipe = dynamic_cast<Recipe*>(item);
 	this->canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
 	
 	if (this->canCraft)
@@ -394,7 +394,7 @@ void CraftingMenuBase::craftItem()
 		}
 	}
 
-	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs(craftedItems, Strings::Platformer_Notifications_ItemCrafted::create()));
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs(craftedItems, this->getCraftString()));
 
 	this->populateItemList();
 	this->craftingPreview->refresh();
@@ -408,7 +408,17 @@ void CraftingMenuBase::stopCraft(bool viaCancel)
 	this->craftIconNode->setVisible(true);
 	this->craftProgress->setVisible(false);
 
+	if (!viaCancel)
+	{
+		this->selectedRecipe = nullptr;
+	}
+
 	this->onCraftEnd(viaCancel);
+}
+
+LocalizedString* CraftingMenuBase::getCraftString()
+{
+	return Strings::Platformer_Notifications_ItemCrafted::create();
 }
 
 void CraftingMenuBase::close()

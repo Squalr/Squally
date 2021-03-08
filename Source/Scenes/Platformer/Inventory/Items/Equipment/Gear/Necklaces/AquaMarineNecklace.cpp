@@ -46,7 +46,7 @@ Item* AquaMarineNecklace::clone()
 	return AquaMarineNecklace::create();
 }
 
-std::string AquaMarineNecklace::getItemName()
+const std::string& AquaMarineNecklace::getItemName()
 {
 	return AquaMarineNecklace::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* AquaMarineNecklace::getString()
 	return Strings::Items_Equipment_Gear_Necklaces_AquaMarineNecklace::create();
 }
 
-std::string AquaMarineNecklace::getIconResource()
+const std::string& AquaMarineNecklace::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_AquaMarineNecklace;
 }
 
-std::string AquaMarineNecklace::getSerializationKey()
+const std::string& AquaMarineNecklace::getSerializationKey()
 {
 	return AquaMarineNecklace::SaveKey;
 }

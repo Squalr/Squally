@@ -48,7 +48,7 @@ Item* ChieftainsWandPlans::clone()
 	return ChieftainsWandPlans::create();
 }
 
-std::string ChieftainsWandPlans::getItemName()
+const std::string& ChieftainsWandPlans::getItemName()
 {
 	return ChieftainsWandPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* ChieftainsWandPlans::getString()
 	return Strings::Items_Equipment_Weapons_Wands_ChieftainsWand::create();
 }
 
-std::string ChieftainsWandPlans::getIconResource()
+const std::string& ChieftainsWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string ChieftainsWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
-std::string ChieftainsWandPlans::getSerializationKey()
+const std::string& ChieftainsWandPlans::getSerializationKey()
 {
 	return ChieftainsWandPlans::SaveKey;
 }

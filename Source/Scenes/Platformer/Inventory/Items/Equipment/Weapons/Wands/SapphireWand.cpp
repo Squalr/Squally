@@ -47,7 +47,7 @@ Item* SapphireWand::clone()
 	return SapphireWand::create();
 }
 
-std::string SapphireWand::getItemName()
+const std::string& SapphireWand::getItemName()
 {
 	return SapphireWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* SapphireWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_SapphireWand::create();
 }
 
-std::string SapphireWand::getIconResource()
+const std::string& SapphireWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_SapphireWand;
 }
 
-std::string SapphireWand::getSerializationKey()
+const std::string& SapphireWand::getSerializationKey()
 {
 	return SapphireWand::SaveKey;
 }

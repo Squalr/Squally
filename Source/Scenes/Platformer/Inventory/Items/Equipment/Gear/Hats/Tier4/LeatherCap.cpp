@@ -46,7 +46,7 @@ Item* LeatherCap::clone()
 	return LeatherCap::create();
 }
 
-std::string LeatherCap::getItemName()
+const std::string& LeatherCap::getItemName()
 {
 	return LeatherCap::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* LeatherCap::getString()
 	return Strings::Items_Equipment_Gear_Hats_LeatherCap::create();
 }
 
-std::string LeatherCap::getIconResource()
+const std::string& LeatherCap::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_LeatherCap;
 }
 
-std::string LeatherCap::getSerializationKey()
+const std::string& LeatherCap::getSerializationKey()
 {
 	return LeatherCap::SaveKey;
 }

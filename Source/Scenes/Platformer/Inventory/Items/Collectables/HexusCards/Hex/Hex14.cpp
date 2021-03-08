@@ -34,7 +34,7 @@ Item* Hex14::clone()
 	return Hex14::create();
 }
 
-std::string Hex14::getItemName()
+const std::string& Hex14::getItemName()
 {
 	return Hex14::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* Hex14::getString()
 	return Strings::Hexus_Cards_Hex14::create();
 }
 
-std::string Hex14::getIconResource()
+const std::string& Hex14::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardHex;
 }
 
-std::string Hex14::getSerializationKey()
+const std::string& Hex14::getSerializationKey()
 {
 	return Hex14::SaveKey;
 }

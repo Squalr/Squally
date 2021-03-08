@@ -41,10 +41,10 @@ public:
 	};
 
 	virtual Item* clone() = 0;
-	virtual std::string getItemName() = 0;
+	virtual const std::string& getItemName() = 0;
 	virtual LocalizedString* getString() = 0;
-	virtual std::string getIconResource() = 0;
-	virtual std::string getSerializationKey() = 0;
+	virtual const std::string& getIconResource() = 0;
+	virtual const std::string& getSerializationKey() = 0;
 	virtual Recipe* getRecipe() { return nullptr; };
 	CurrencyInventory* getCost();
 	int getStackSize();

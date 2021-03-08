@@ -46,7 +46,7 @@ Item* NecrobatHelm::clone()
 	return NecrobatHelm::create();
 }
 
-std::string NecrobatHelm::getItemName()
+const std::string& NecrobatHelm::getItemName()
 {
 	return NecrobatHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* NecrobatHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_NecrobatHelm::create();
 }
 
-std::string NecrobatHelm::getIconResource()
+const std::string& NecrobatHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_NecrobatHelm;
 }
 
-std::string NecrobatHelm::getSerializationKey()
+const std::string& NecrobatHelm::getSerializationKey()
 {
 	return NecrobatHelm::SaveKey;
 }

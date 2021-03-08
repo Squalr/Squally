@@ -46,7 +46,7 @@ Item* EmeraldPendant::clone()
 	return EmeraldPendant::create();
 }
 
-std::string EmeraldPendant::getItemName()
+const std::string& EmeraldPendant::getItemName()
 {
 	return EmeraldPendant::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* EmeraldPendant::getString()
 	return Strings::Items_Equipment_Gear_Necklaces_EmeraldPendant::create();
 }
 
-std::string EmeraldPendant::getIconResource()
+const std::string& EmeraldPendant::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_EmeraldPendant;
 }
 
-std::string EmeraldPendant::getSerializationKey()
+const std::string& EmeraldPendant::getSerializationKey()
 {
 	return EmeraldPendant::SaveKey;
 }

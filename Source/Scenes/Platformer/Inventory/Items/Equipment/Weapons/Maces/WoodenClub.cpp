@@ -47,7 +47,7 @@ Item* WoodenClub::clone()
 	return WoodenClub::create();
 }
 
-std::string WoodenClub::getItemName()
+const std::string& WoodenClub::getItemName()
 {
 	return WoodenClub::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WoodenClub::getString()
 	return Strings::Items_Equipment_Weapons_Maces_WoodenClub::create();
 }
 
-std::string WoodenClub::getIconResource()
+const std::string& WoodenClub::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_WoodenClub;
 }
 
-std::string WoodenClub::getSerializationKey()
+const std::string& WoodenClub::getSerializationKey()
 {
 	return WoodenClub::SaveKey;
 }

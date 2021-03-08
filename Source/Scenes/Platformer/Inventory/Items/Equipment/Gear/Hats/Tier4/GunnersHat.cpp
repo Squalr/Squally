@@ -46,7 +46,7 @@ Item* GunnersHat::clone()
 	return GunnersHat::create();
 }
 
-std::string GunnersHat::getItemName()
+const std::string& GunnersHat::getItemName()
 {
 	return GunnersHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* GunnersHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_GunnersHat::create();
 }
 
-std::string GunnersHat::getIconResource()
+const std::string& GunnersHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GunnersHat;
 }
 
-std::string GunnersHat::getSerializationKey()
+const std::string& GunnersHat::getSerializationKey()
 {
 	return GunnersHat::SaveKey;
 }

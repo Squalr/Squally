@@ -47,7 +47,7 @@ Item* GoldenBow::clone()
 	return GoldenBow::create();
 }
 
-std::string GoldenBow::getItemName()
+const std::string& GoldenBow::getItemName()
 {
 	return GoldenBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* GoldenBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_GoldenBow::create();
 }
 
-std::string GoldenBow::getIconResource()
+const std::string& GoldenBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_GoldenBow;
 }
 
-std::string GoldenBow::getSerializationKey()
+const std::string& GoldenBow::getSerializationKey()
 {
 	return GoldenBow::SaveKey;
 }

@@ -48,7 +48,7 @@ Item* TheButcherPlans::clone()
 	return TheButcherPlans::create();
 }
 
-std::string TheButcherPlans::getItemName()
+const std::string& TheButcherPlans::getItemName()
 {
 	return TheButcherPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* TheButcherPlans::getString()
 	return Strings::Items_Equipment_Weapons_Swords_TheButcher::create();
 }
 
-std::string TheButcherPlans::getIconResource()
+const std::string& TheButcherPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string TheButcherPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_TheButcher;
 }
 
-std::string TheButcherPlans::getSerializationKey()
+const std::string& TheButcherPlans::getSerializationKey()
 {
 	return TheButcherPlans::SaveKey;
 }

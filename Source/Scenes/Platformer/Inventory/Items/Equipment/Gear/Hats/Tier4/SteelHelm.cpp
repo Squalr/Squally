@@ -46,7 +46,7 @@ Item* SteelHelm::clone()
 	return SteelHelm::create();
 }
 
-std::string SteelHelm::getItemName()
+const std::string& SteelHelm::getItemName()
 {
 	return SteelHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* SteelHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_SteelHelm::create();
 }
 
-std::string SteelHelm::getIconResource()
+const std::string& SteelHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SteelHelm;
 }
 
-std::string SteelHelm::getSerializationKey()
+const std::string& SteelHelm::getSerializationKey()
 {
 	return SteelHelm::SaveKey;
 }

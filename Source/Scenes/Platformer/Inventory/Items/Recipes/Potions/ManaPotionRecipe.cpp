@@ -48,7 +48,7 @@ Item* ManaPotionRecipe::clone()
 	return ManaPotionRecipe::create();
 }
 
-std::string ManaPotionRecipe::getItemName()
+const std::string& ManaPotionRecipe::getItemName()
 {
 	return ManaPotionRecipe::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* ManaPotionRecipe::getString()
 	return Strings::Items_Consumables_Mana_ManaPotion::create();
 }
 
-std::string ManaPotionRecipe::getIconResource()
+const std::string& ManaPotionRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string ManaPotionRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_ManaPotion;
 }
 
-std::string ManaPotionRecipe::getSerializationKey()
+const std::string& ManaPotionRecipe::getSerializationKey()
 {
 	return ManaPotionRecipe::SaveKey;
 }

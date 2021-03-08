@@ -50,7 +50,7 @@ Item* EmeraldWandPlans::clone()
 	return EmeraldWandPlans::create();
 }
 
-std::string EmeraldWandPlans::getItemName()
+const std::string& EmeraldWandPlans::getItemName()
 {
 	return EmeraldWandPlans::SaveKey;
 }
@@ -60,7 +60,7 @@ LocalizedString* EmeraldWandPlans::getString()
 	return Strings::Items_Equipment_Weapons_Wands_EmeraldWand::create();
 }
 
-std::string EmeraldWandPlans::getIconResource()
+const std::string& EmeraldWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +70,7 @@ std::string EmeraldWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_EmeraldWand;
 }
 
-std::string EmeraldWandPlans::getSerializationKey()
+const std::string& EmeraldWandPlans::getSerializationKey()
 {
 	return EmeraldWandPlans::SaveKey;
 }

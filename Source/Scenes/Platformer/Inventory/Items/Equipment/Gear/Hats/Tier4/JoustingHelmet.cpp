@@ -46,7 +46,7 @@ Item* JoustingHelmet::clone()
 	return JoustingHelmet::create();
 }
 
-std::string JoustingHelmet::getItemName()
+const std::string& JoustingHelmet::getItemName()
 {
 	return JoustingHelmet::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* JoustingHelmet::getString()
 	return Strings::Items_Equipment_Gear_Hats_JoustingHelmet::create();
 }
 
-std::string JoustingHelmet::getIconResource()
+const std::string& JoustingHelmet::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_JoustingHelmet;
 }
 
-std::string JoustingHelmet::getSerializationKey()
+const std::string& JoustingHelmet::getSerializationKey()
 {
 	return JoustingHelmet::SaveKey;
 }

@@ -33,7 +33,7 @@ Item* TownKey::clone()
 	return TownKey::create();
 }
 
-std::string TownKey::getItemName()
+const std::string& TownKey::getItemName()
 {
 	return TownKey::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* TownKey::getString()
 	return Strings::Items_Misc_Keys_TownKey::create();
 }
 
-std::string TownKey::getIconResource()
+const std::string& TownKey::getIconResource()
 {
 	return ItemResources::Keys_KEY_6;
 }
 
-std::string TownKey::getSerializationKey()
+const std::string& TownKey::getSerializationKey()
 {
 	return TownKey::SaveKey;
 }

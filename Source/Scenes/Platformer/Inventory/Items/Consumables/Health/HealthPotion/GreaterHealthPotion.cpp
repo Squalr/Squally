@@ -74,7 +74,7 @@ Item* GreaterHealthPotion::clone()
 	return GreaterHealthPotion::create();
 }
 
-std::string GreaterHealthPotion::getItemName()
+const std::string& GreaterHealthPotion::getItemName()
 {
 	return GreaterHealthPotion::SaveKey;
 }
@@ -84,12 +84,12 @@ LocalizedString* GreaterHealthPotion::getString()
 	return Strings::Items_Consumables_Health_GreaterHealthPotion::create();
 }
 
-std::string GreaterHealthPotion::getIconResource()
+const std::string& GreaterHealthPotion::getIconResource()
 {
 	return ItemResources::Consumables_Potions_HealthPotionGreater;
 }
 
-std::string GreaterHealthPotion::getSerializationKey()
+const std::string& GreaterHealthPotion::getSerializationKey()
 {
 	return GreaterHealthPotion::SaveKey;
 }

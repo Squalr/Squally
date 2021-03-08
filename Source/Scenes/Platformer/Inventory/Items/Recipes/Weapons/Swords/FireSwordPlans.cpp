@@ -49,7 +49,7 @@ Item* FireSwordPlans::clone()
 	return FireSwordPlans::create();
 }
 
-std::string FireSwordPlans::getItemName()
+const std::string& FireSwordPlans::getItemName()
 {
 	return FireSwordPlans::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* FireSwordPlans::getString()
 	return Strings::Items_Equipment_Weapons_Swords_FireSword::create();
 }
 
-std::string FireSwordPlans::getIconResource()
+const std::string& FireSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string FireSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_FireSword;
 }
 
-std::string FireSwordPlans::getSerializationKey()
+const std::string& FireSwordPlans::getSerializationKey()
 {
 	return FireSwordPlans::SaveKey;
 }

@@ -49,7 +49,7 @@ Item* IncrementHealthFlaskRecipe::clone()
 	return IncrementHealthFlaskRecipe::create();
 }
 
-std::string IncrementHealthFlaskRecipe::getItemName()
+const std::string& IncrementHealthFlaskRecipe::getItemName()
 {
 	return IncrementHealthFlaskRecipe::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* IncrementHealthFlaskRecipe::getString()
 	return Strings::Items_Consumables_Health_IncrementHealthFlask::create();
 }
 
-std::string IncrementHealthFlaskRecipe::getIconResource()
+const std::string& IncrementHealthFlaskRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string IncrementHealthFlaskRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_HealthFlaskIncrement;
 }
 
-std::string IncrementHealthFlaskRecipe::getSerializationKey()
+const std::string& IncrementHealthFlaskRecipe::getSerializationKey()
 {
 	return IncrementHealthFlaskRecipe::SaveKey;
 }

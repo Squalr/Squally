@@ -33,7 +33,7 @@ Item* TempleMap::clone()
 	return TempleMap::create();
 }
 
-std::string TempleMap::getItemName()
+const std::string& TempleMap::getItemName()
 {
 	return TempleMap::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* TempleMap::getString()
 		->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_LimestoneTemple::create());
 }
 
-std::string TempleMap::getIconResource()
+const std::string& TempleMap::getIconResource()
 {
 	return ItemResources::Maps_Map;
 }
 
-std::string TempleMap::getSerializationKey()
+const std::string& TempleMap::getSerializationKey()
 {
 	return TempleMap::SaveKey;
 }

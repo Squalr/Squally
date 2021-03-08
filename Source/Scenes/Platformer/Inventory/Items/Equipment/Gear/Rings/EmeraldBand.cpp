@@ -46,7 +46,7 @@ Item* EmeraldBand::clone()
 	return EmeraldBand::create();
 }
 
-std::string EmeraldBand::getItemName()
+const std::string& EmeraldBand::getItemName()
 {
 	return EmeraldBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* EmeraldBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_EmeraldBand::create();
 }
 
-std::string EmeraldBand::getIconResource()
+const std::string& EmeraldBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_EmeraldBand;
 }
 
-std::string EmeraldBand::getSerializationKey()
+const std::string& EmeraldBand::getSerializationKey()
 {
 	return EmeraldBand::SaveKey;
 }

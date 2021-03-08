@@ -34,7 +34,7 @@ Item* SpecialShr::clone()
 	return SpecialShr::create();
 }
 
-std::string SpecialShr::getItemName()
+const std::string& SpecialShr::getItemName()
 {
 	return SpecialShr::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialShr::getString()
 	return Strings::Hexus_Cards_ShiftRight::create();
 }
 
-std::string SpecialShr::getIconResource()
+const std::string& SpecialShr::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialShr::getSerializationKey()
+const std::string& SpecialShr::getSerializationKey()
 {
 	return SpecialShr::SaveKey;
 }

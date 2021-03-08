@@ -9,8 +9,8 @@ class Currency : public SmartNode
 public:
 	virtual LocalizedString* getString() = 0;
 	virtual LocalizedString* getStringPlural() = 0;
-	virtual std::string getIconResource() = 0;
-	virtual std::string getSerializationKey() = 0;
+	virtual const std::string& getIconResource() = 0;
+	virtual const std::string& getSerializationKey() = 0;
 
 	void setCount(int count);
 	int getCount();

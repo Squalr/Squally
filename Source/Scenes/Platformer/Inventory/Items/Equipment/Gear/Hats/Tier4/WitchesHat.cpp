@@ -46,7 +46,7 @@ Item* WitchesHat::clone()
 	return WitchesHat::create();
 }
 
-std::string WitchesHat::getItemName()
+const std::string& WitchesHat::getItemName()
 {
 	return WitchesHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* WitchesHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_WitchesHat::create();
 }
 
-std::string WitchesHat::getIconResource()
+const std::string& WitchesHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WitchesHat;
 }
 
-std::string WitchesHat::getSerializationKey()
+const std::string& WitchesHat::getSerializationKey()
 {
 	return WitchesHat::SaveKey;
 }

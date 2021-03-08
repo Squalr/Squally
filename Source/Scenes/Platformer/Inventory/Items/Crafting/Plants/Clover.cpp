@@ -33,7 +33,7 @@ Item* Clover::clone()
 	return Clover::create();
 }
 
-std::string Clover::getItemName()
+const std::string& Clover::getItemName()
 {
 	return Clover::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Clover::getString()
 	return Strings::Items_Crafting_Plants_Clover::create();
 }
 
-std::string Clover::getIconResource()
+const std::string& Clover::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_Clover;
 }
 
-std::string Clover::getSerializationKey()
+const std::string& Clover::getSerializationKey()
 {
 	return Clover::SaveKey;
 }

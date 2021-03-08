@@ -46,7 +46,7 @@ Item* ConchHelm::clone()
 	return ConchHelm::create();
 }
 
-std::string ConchHelm::getItemName()
+const std::string& ConchHelm::getItemName()
 {
 	return ConchHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* ConchHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_ConchHelm::create();
 }
 
-std::string ConchHelm::getIconResource()
+const std::string& ConchHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ConchHelm;
 }
 
-std::string ConchHelm::getSerializationKey()
+const std::string& ConchHelm::getSerializationKey()
 {
 	return ConchHelm::SaveKey;
 }

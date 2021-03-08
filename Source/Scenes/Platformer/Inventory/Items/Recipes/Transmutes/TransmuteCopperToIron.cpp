@@ -48,7 +48,7 @@ Item* TransmuteCopperToIron::clone()
 	return TransmuteCopperToIron::create();
 }
 
-std::string TransmuteCopperToIron::getItemName()
+const std::string& TransmuteCopperToIron::getItemName()
 {
 	return TransmuteCopperToIron::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* TransmuteCopperToIron::getString()
 	return Strings::Items_Crafting_Recipes_TransmuteCopperToIron::create();
 }
 
-std::string TransmuteCopperToIron::getIconResource()
+const std::string& TransmuteCopperToIron::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string TransmuteCopperToIron::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Iron;
 }
 
-std::string TransmuteCopperToIron::getSerializationKey()
+const std::string& TransmuteCopperToIron::getSerializationKey()
 {
 	return TransmuteCopperToIron::SaveKey;
 }

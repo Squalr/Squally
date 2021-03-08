@@ -58,7 +58,7 @@ RadialEntry::~RadialEntry()
 {
 }
 
-std::string RadialEntry::getIconResource()
+const std::string& RadialEntry::getIconResource()
 {
 	return this->iconResource;
 }

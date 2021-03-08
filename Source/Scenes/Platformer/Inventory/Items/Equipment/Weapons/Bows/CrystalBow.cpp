@@ -47,7 +47,7 @@ Item* CrystalBow::clone()
 	return CrystalBow::create();
 }
 
-std::string CrystalBow::getItemName()
+const std::string& CrystalBow::getItemName()
 {
 	return CrystalBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* CrystalBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_CrystalBow::create();
 }
 
-std::string CrystalBow::getIconResource()
+const std::string& CrystalBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_CrystalBow;
 }
 
-std::string CrystalBow::getSerializationKey()
+const std::string& CrystalBow::getSerializationKey()
 {
 	return CrystalBow::SaveKey;
 }

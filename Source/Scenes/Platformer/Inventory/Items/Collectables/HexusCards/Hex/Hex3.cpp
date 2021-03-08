@@ -34,7 +34,7 @@ Item* Hex3::clone()
 	return Hex3::create();
 }
 
-std::string Hex3::getItemName()
+const std::string& Hex3::getItemName()
 {
 	return Hex3::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* Hex3::getString()
 	return Strings::Hexus_Cards_Hex3::create();
 }
 
-std::string Hex3::getIconResource()
+const std::string& Hex3::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardHex;
 }
 
-std::string Hex3::getSerializationKey()
+const std::string& Hex3::getSerializationKey()
 {
 	return Hex3::SaveKey;
 }

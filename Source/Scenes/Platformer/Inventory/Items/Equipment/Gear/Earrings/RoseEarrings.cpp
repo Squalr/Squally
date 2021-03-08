@@ -46,7 +46,7 @@ Item* RoseEarrings::clone()
 	return RoseEarrings::create();
 }
 
-std::string RoseEarrings::getItemName()
+const std::string& RoseEarrings::getItemName()
 {
 	return RoseEarrings::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* RoseEarrings::getString()
 	return Strings::Items_Equipment_Gear_Earrings_RoseEarrings::create();
 }
 
-std::string RoseEarrings::getIconResource()
+const std::string& RoseEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_RoseEarrings;
 }
 
-std::string RoseEarrings::getSerializationKey()
+const std::string& RoseEarrings::getSerializationKey()
 {
 	return RoseEarrings::SaveKey;
 }

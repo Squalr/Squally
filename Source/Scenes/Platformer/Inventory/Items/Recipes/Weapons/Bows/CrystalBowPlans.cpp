@@ -48,7 +48,7 @@ Item* CrystalBowPlans::clone()
 	return CrystalBowPlans::create();
 }
 
-std::string CrystalBowPlans::getItemName()
+const std::string& CrystalBowPlans::getItemName()
 {
 	return CrystalBowPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* CrystalBowPlans::getString()
 	return Strings::Items_Equipment_Weapons_Bows_CrystalBow::create();
 }
 
-std::string CrystalBowPlans::getIconResource()
+const std::string& CrystalBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string CrystalBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_CrystalBow;
 }
 
-std::string CrystalBowPlans::getSerializationKey()
+const std::string& CrystalBowPlans::getSerializationKey()
 {
 	return CrystalBowPlans::SaveKey;
 }

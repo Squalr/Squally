@@ -47,7 +47,7 @@ Item* IvyBow::clone()
 	return IvyBow::create();
 }
 
-std::string IvyBow::getItemName()
+const std::string& IvyBow::getItemName()
 {
 	return IvyBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* IvyBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_IvyBow::create();
 }
 
-std::string IvyBow::getIconResource()
+const std::string& IvyBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_IvyBow;
 }
 
-std::string IvyBow::getSerializationKey()
+const std::string& IvyBow::getSerializationKey()
 {
 	return IvyBow::SaveKey;
 }

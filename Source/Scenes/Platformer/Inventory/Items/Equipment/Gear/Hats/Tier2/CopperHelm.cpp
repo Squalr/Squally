@@ -46,7 +46,7 @@ Item* CopperHelm::clone()
 	return CopperHelm::create();
 }
 
-std::string CopperHelm::getItemName()
+const std::string& CopperHelm::getItemName()
 {
 	return CopperHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* CopperHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_CopperHelm::create();
 }
 
-std::string CopperHelm::getIconResource()
+const std::string& CopperHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_CopperHelm;
 }
 
-std::string CopperHelm::getSerializationKey()
+const std::string& CopperHelm::getSerializationKey()
 {
 	return CopperHelm::SaveKey;
 }

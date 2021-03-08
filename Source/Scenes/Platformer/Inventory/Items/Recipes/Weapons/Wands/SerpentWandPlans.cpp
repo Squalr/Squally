@@ -48,7 +48,7 @@ Item* SerpentWandPlans::clone()
 	return SerpentWandPlans::create();
 }
 
-std::string SerpentWandPlans::getItemName()
+const std::string& SerpentWandPlans::getItemName()
 {
 	return SerpentWandPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* SerpentWandPlans::getString()
 	return Strings::Items_Equipment_Weapons_Wands_TaserRod::create();
 }
 
-std::string SerpentWandPlans::getIconResource()
+const std::string& SerpentWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string SerpentWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
-std::string SerpentWandPlans::getSerializationKey()
+const std::string& SerpentWandPlans::getSerializationKey()
 {
 	return SerpentWandPlans::SaveKey;
 }

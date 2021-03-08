@@ -46,7 +46,7 @@ Item* DemonShell::clone()
 	return DemonShell::create();
 }
 
-std::string DemonShell::getItemName()
+const std::string& DemonShell::getItemName()
 {
 	return DemonShell::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* DemonShell::getString()
 	return Strings::Items_Equipment_Gear_Hats_DemonShell::create();
 }
 
-std::string DemonShell::getIconResource()
+const std::string& DemonShell::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_DemonShell;
 }
 
-std::string DemonShell::getSerializationKey()
+const std::string& DemonShell::getSerializationKey()
 {
 	return DemonShell::SaveKey;
 }

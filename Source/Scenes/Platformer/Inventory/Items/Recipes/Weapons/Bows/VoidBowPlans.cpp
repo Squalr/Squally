@@ -48,7 +48,7 @@ Item* VoidBowPlans::clone()
 	return VoidBowPlans::create();
 }
 
-std::string VoidBowPlans::getItemName()
+const std::string& VoidBowPlans::getItemName()
 {
 	return VoidBowPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* VoidBowPlans::getString()
 	return Strings::Items_Equipment_Weapons_Bows_VoidBow::create();
 }
 
-std::string VoidBowPlans::getIconResource()
+const std::string& VoidBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string VoidBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_VoidBow;
 }
 
-std::string VoidBowPlans::getSerializationKey()
+const std::string& VoidBowPlans::getSerializationKey()
 {
 	return VoidBowPlans::SaveKey;
 }

@@ -47,7 +47,7 @@ Item* SteelAxe::clone()
 	return SteelAxe::create();
 }
 
-std::string SteelAxe::getItemName()
+const std::string& SteelAxe::getItemName()
 {
 	return SteelAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* SteelAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_SteelAxe::create();
 }
 
-std::string SteelAxe::getIconResource()
+const std::string& SteelAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_SteelAxe;
 }
 
-std::string SteelAxe::getSerializationKey()
+const std::string& SteelAxe::getSerializationKey()
 {
 	return SteelAxe::SaveKey;
 }

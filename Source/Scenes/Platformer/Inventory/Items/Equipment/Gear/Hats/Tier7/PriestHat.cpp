@@ -46,7 +46,7 @@ Item* PriestHat::clone()
 	return PriestHat::create();
 }
 
-std::string PriestHat::getItemName()
+const std::string& PriestHat::getItemName()
 {
 	return PriestHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* PriestHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_PriestHat::create();
 }
 
-std::string PriestHat::getIconResource()
+const std::string& PriestHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_PriestHat;
 }
 
-std::string PriestHat::getSerializationKey()
+const std::string& PriestHat::getSerializationKey()
 {
 	return PriestHat::SaveKey;
 }

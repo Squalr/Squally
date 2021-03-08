@@ -2,6 +2,8 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class Item;
+class LocalizedString;
 class Squally;
 
 class SquallyReceiveItemBehavior : public AttachedBehavior
@@ -20,6 +22,8 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+
+	void obtainItems(const std::vector<Item*>& items, LocalizedString* messageOverride, bool keepOpen);
 
 	Squally* squally;
 };

@@ -47,7 +47,7 @@ Item* BoneWand::clone()
 	return BoneWand::create();
 }
 
-std::string BoneWand::getItemName()
+const std::string& BoneWand::getItemName()
 {
 	return BoneWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* BoneWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_BoneWand::create();
 }
 
-std::string BoneWand::getIconResource()
+const std::string& BoneWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_BoneWand;
 }
 
-std::string BoneWand::getSerializationKey()
+const std::string& BoneWand::getSerializationKey()
 {
 	return BoneWand::SaveKey;
 }

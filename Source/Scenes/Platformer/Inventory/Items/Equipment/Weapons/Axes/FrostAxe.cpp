@@ -47,7 +47,7 @@ Item* FrostAxe::clone()
 	return FrostAxe::create();
 }
 
-std::string FrostAxe::getItemName()
+const std::string& FrostAxe::getItemName()
 {
 	return FrostAxe::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* FrostAxe::getString()
 	return Strings::Items_Equipment_Weapons_Axes_FrostAxe::create();
 }
 
-std::string FrostAxe::getIconResource()
+const std::string& FrostAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_FrostAxe;
 }
 
-std::string FrostAxe::getSerializationKey()
+const std::string& FrostAxe::getSerializationKey()
 {
 	return FrostAxe::SaveKey;
 }

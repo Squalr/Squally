@@ -47,7 +47,7 @@ Item* CrystalWand::clone()
 	return CrystalWand::create();
 }
 
-std::string CrystalWand::getItemName()
+const std::string& CrystalWand::getItemName()
 {
 	return CrystalWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* CrystalWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_CrystalWand::create();
 }
 
-std::string CrystalWand::getIconResource()
+const std::string& CrystalWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_CrystalWand;
 }
 
-std::string CrystalWand::getSerializationKey()
+const std::string& CrystalWand::getSerializationKey()
 {
 	return CrystalWand::SaveKey;
 }

@@ -33,7 +33,7 @@ Item* MedusaMirror::clone()
 	return MedusaMirror::create();
 }
 
-std::string MedusaMirror::getItemName()
+const std::string& MedusaMirror::getItemName()
 {
 	return MedusaMirror::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* MedusaMirror::getString()
 	return Strings::Items_Misc_Keys_MedusasMirror::create();
 }
 
-std::string MedusaMirror::getIconResource()
+const std::string& MedusaMirror::getIconResource()
 {
 	return ItemResources::Keys_MedusaMirror;
 }
 
-std::string MedusaMirror::getSerializationKey()
+const std::string& MedusaMirror::getSerializationKey()
 {
 	return MedusaMirror::SaveKey;
 }

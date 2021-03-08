@@ -48,7 +48,7 @@ Item* BoneHammerPlans::clone()
 	return BoneHammerPlans::create();
 }
 
-std::string BoneHammerPlans::getItemName()
+const std::string& BoneHammerPlans::getItemName()
 {
 	return BoneHammerPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* BoneHammerPlans::getString()
 	return Strings::Items_Equipment_Weapons_Maces_BoneHammer::create();
 }
 
-std::string BoneHammerPlans::getIconResource()
+const std::string& BoneHammerPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string BoneHammerPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_BoneHammer;
 }
 
-std::string BoneHammerPlans::getSerializationKey()
+const std::string& BoneHammerPlans::getSerializationKey()
 {
 	return BoneHammerPlans::SaveKey;
 }

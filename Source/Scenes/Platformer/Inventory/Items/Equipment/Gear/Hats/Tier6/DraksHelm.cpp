@@ -46,7 +46,7 @@ Item* DraksHelm::clone()
 	return DraksHelm::create();
 }
 
-std::string DraksHelm::getItemName()
+const std::string& DraksHelm::getItemName()
 {
 	return DraksHelm::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* DraksHelm::getString()
 	return Strings::Items_Equipment_Gear_Hats_DraksHelm::create();
 }
 
-std::string DraksHelm::getIconResource()
+const std::string& DraksHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_DraksHelm;
 }
 
-std::string DraksHelm::getSerializationKey()
+const std::string& DraksHelm::getSerializationKey()
 {
 	return DraksHelm::SaveKey;
 }

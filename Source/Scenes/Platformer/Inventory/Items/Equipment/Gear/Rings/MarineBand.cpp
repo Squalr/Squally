@@ -46,7 +46,7 @@ Item* MarineBand::clone()
 	return MarineBand::create();
 }
 
-std::string MarineBand::getItemName()
+const std::string& MarineBand::getItemName()
 {
 	return MarineBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* MarineBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_MarineBand::create();
 }
 
-std::string MarineBand::getIconResource()
+const std::string& MarineBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_MarineBand;
 }
 
-std::string MarineBand::getSerializationKey()
+const std::string& MarineBand::getSerializationKey()
 {
 	return MarineBand::SaveKey;
 }

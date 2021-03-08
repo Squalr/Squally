@@ -33,7 +33,7 @@ Item* SandRoot::clone()
 	return SandRoot::create();
 }
 
-std::string SandRoot::getItemName()
+const std::string& SandRoot::getItemName()
 {
 	return SandRoot::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* SandRoot::getString()
 	return Strings::Items_Crafting_Plants_SandRoot::create();
 }
 
-std::string SandRoot::getIconResource()
+const std::string& SandRoot::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_SandRoot;
 }
 
-std::string SandRoot::getSerializationKey()
+const std::string& SandRoot::getSerializationKey()
 {
 	return SandRoot::SaveKey;
 }

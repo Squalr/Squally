@@ -34,7 +34,7 @@ Item* SpecialInv::clone()
 	return SpecialInv::create();
 }
 
-std::string SpecialInv::getItemName()
+const std::string& SpecialInv::getItemName()
 {
 	return SpecialInv::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialInv::getString()
 	return Strings::Hexus_Cards_Inverse::create();
 }
 
-std::string SpecialInv::getIconResource()
+const std::string& SpecialInv::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialInv::getSerializationKey()
+const std::string& SpecialInv::getSerializationKey()
 {
 	return SpecialInv::SaveKey;
 }

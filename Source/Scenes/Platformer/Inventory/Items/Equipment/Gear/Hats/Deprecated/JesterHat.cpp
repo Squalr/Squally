@@ -46,7 +46,7 @@ Item* JesterHat::clone()
 	return JesterHat::create();
 }
 
-std::string JesterHat::getItemName()
+const std::string& JesterHat::getItemName()
 {
 	return JesterHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* JesterHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_JesterHat::create();
 }
 
-std::string JesterHat::getIconResource()
+const std::string& JesterHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_JesterHat;
 }
 
-std::string JesterHat::getSerializationKey()
+const std::string& JesterHat::getSerializationKey()
 {
 	return JesterHat::SaveKey;
 }

@@ -50,7 +50,7 @@ Item* DemonicMacePlans::clone()
 	return DemonicMacePlans::create();
 }
 
-std::string DemonicMacePlans::getItemName()
+const std::string& DemonicMacePlans::getItemName()
 {
 	return DemonicMacePlans::SaveKey;
 }
@@ -60,7 +60,7 @@ LocalizedString* DemonicMacePlans::getString()
 	return Strings::Items_Equipment_Weapons_Maces_DemonicMace::create();
 }
 
-std::string DemonicMacePlans::getIconResource()
+const std::string& DemonicMacePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +70,7 @@ std::string DemonicMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_DemonicMace;
 }
 
-std::string DemonicMacePlans::getSerializationKey()
+const std::string& DemonicMacePlans::getSerializationKey()
 {
 	return DemonicMacePlans::SaveKey;
 }

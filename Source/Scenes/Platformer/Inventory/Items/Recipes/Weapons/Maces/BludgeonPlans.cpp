@@ -49,7 +49,7 @@ Item* BludgeonPlans::clone()
 	return BludgeonPlans::create();
 }
 
-std::string BludgeonPlans::getItemName()
+const std::string& BludgeonPlans::getItemName()
 {
 	return BludgeonPlans::SaveKey;
 }
@@ -59,7 +59,7 @@ LocalizedString* BludgeonPlans::getString()
 	return Strings::Items_Equipment_Weapons_Maces_Bludgeon::create();
 }
 
-std::string BludgeonPlans::getIconResource()
+const std::string& BludgeonPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +69,7 @@ std::string BludgeonPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Bludgeon;
 }
 
-std::string BludgeonPlans::getSerializationKey()
+const std::string& BludgeonPlans::getSerializationKey()
 {
 	return BludgeonPlans::SaveKey;
 }

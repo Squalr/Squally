@@ -34,7 +34,7 @@ Item* SpecialSteal::clone()
 	return SpecialSteal::create();
 }
 
-std::string SpecialSteal::getItemName()
+const std::string& SpecialSteal::getItemName()
 {
 	return SpecialSteal::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialSteal::getString()
 	return Strings::Hexus_Cards_Steal::create();
 }
 
-std::string SpecialSteal::getIconResource()
+const std::string& SpecialSteal::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialSteal::getSerializationKey()
+const std::string& SpecialSteal::getSerializationKey()
 {
 	return SpecialSteal::SaveKey;
 }

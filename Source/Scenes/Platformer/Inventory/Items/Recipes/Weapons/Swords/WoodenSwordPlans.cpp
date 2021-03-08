@@ -47,7 +47,7 @@ Item* WoodenSwordPlans::clone()
 	return WoodenSwordPlans::create();
 }
 
-std::string WoodenSwordPlans::getItemName()
+const std::string& WoodenSwordPlans::getItemName()
 {
 	return WoodenSwordPlans::SaveKey;
 }
@@ -57,7 +57,7 @@ LocalizedString* WoodenSwordPlans::getString()
 	return Strings::Items_Equipment_Weapons_Swords_WoodenSword::create();
 }
 
-std::string WoodenSwordPlans::getIconResource()
+const std::string& WoodenSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -67,7 +67,7 @@ std::string WoodenSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_WoodenSword;
 }
 
-std::string WoodenSwordPlans::getSerializationKey()
+const std::string& WoodenSwordPlans::getSerializationKey()
 {
 	return WoodenSwordPlans::SaveKey;
 }

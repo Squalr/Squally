@@ -48,7 +48,7 @@ Item* BoneAxePlans::clone()
 	return BoneAxePlans::create();
 }
 
-std::string BoneAxePlans::getItemName()
+const std::string& BoneAxePlans::getItemName()
 {
 	return BoneAxePlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* BoneAxePlans::getString()
 	return Strings::Items_Equipment_Weapons_Axes_BoneAxe::create();
 }
 
-std::string BoneAxePlans::getIconResource()
+const std::string& BoneAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string BoneAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_BoneAxe;
 }
 
-std::string BoneAxePlans::getSerializationKey()
+const std::string& BoneAxePlans::getSerializationKey()
 {
 	return BoneAxePlans::SaveKey;
 }

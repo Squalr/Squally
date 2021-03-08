@@ -33,7 +33,7 @@ Item* PhoenixFeather::clone()
 	return PhoenixFeather::create();
 }
 
-std::string PhoenixFeather::getItemName()
+const std::string& PhoenixFeather::getItemName()
 {
 	return PhoenixFeather::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* PhoenixFeather::getString()
 	return Strings::Items_Crafting_Reagents_PhoenixFeather::create();
 }
 
-std::string PhoenixFeather::getIconResource()
+const std::string& PhoenixFeather::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_PhoenixFeather;
 }
 
-std::string PhoenixFeather::getSerializationKey()
+const std::string& PhoenixFeather::getSerializationKey()
 {
 	return PhoenixFeather::SaveKey;
 }

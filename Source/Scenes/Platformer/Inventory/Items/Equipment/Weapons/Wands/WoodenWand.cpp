@@ -47,7 +47,7 @@ Item* WoodenWand::clone()
 	return WoodenWand::create();
 }
 
-std::string WoodenWand::getItemName()
+const std::string& WoodenWand::getItemName()
 {
 	return WoodenWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* WoodenWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_WoodenWand::create();
 }
 
-std::string WoodenWand::getIconResource()
+const std::string& WoodenWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_WoodenWand;
 }
 
-std::string WoodenWand::getSerializationKey()
+const std::string& WoodenWand::getSerializationKey()
 {
 	return WoodenWand::SaveKey;
 }

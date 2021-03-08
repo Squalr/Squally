@@ -46,7 +46,7 @@ Item* ReindeerHat::clone()
 	return ReindeerHat::create();
 }
 
-std::string ReindeerHat::getItemName()
+const std::string& ReindeerHat::getItemName()
 {
 	return ReindeerHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* ReindeerHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_ReindeerHat::create();
 }
 
-std::string ReindeerHat::getIconResource()
+const std::string& ReindeerHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ReindeerHat;
 }
 
-std::string ReindeerHat::getSerializationKey()
+const std::string& ReindeerHat::getSerializationKey()
 {
 	return ReindeerHat::SaveKey;
 }

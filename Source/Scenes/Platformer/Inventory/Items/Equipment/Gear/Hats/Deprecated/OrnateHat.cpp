@@ -46,7 +46,7 @@ Item* OrnateHat::clone()
 	return OrnateHat::create();
 }
 
-std::string OrnateHat::getItemName()
+const std::string& OrnateHat::getItemName()
 {
 	return OrnateHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* OrnateHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_OrnateHat::create();
 }
 
-std::string OrnateHat::getIconResource()
+const std::string& OrnateHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_OrnateHat;
 }
 
-std::string OrnateHat::getSerializationKey()
+const std::string& OrnateHat::getSerializationKey()
 {
 	return OrnateHat::SaveKey;
 }

@@ -46,7 +46,7 @@ Item* AcolytesCap::clone()
 	return AcolytesCap::create();
 }
 
-std::string AcolytesCap::getItemName()
+const std::string& AcolytesCap::getItemName()
 {
 	return AcolytesCap::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* AcolytesCap::getString()
 	return Strings::Items_Equipment_Gear_Hats_AcolytesCap::create();
 }
 
-std::string AcolytesCap::getIconResource()
+const std::string& AcolytesCap::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_AcolytesCap;
 }
 
-std::string AcolytesCap::getSerializationKey()
+const std::string& AcolytesCap::getSerializationKey()
 {
 	return AcolytesCap::SaveKey;
 }

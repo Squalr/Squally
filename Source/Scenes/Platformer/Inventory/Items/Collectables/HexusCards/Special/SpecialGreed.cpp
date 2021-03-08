@@ -34,7 +34,7 @@ Item* SpecialGreed::clone()
 	return SpecialGreed::create();
 }
 
-std::string SpecialGreed::getItemName()
+const std::string& SpecialGreed::getItemName()
 {
 	return SpecialGreed::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialGreed::getString()
 	return Strings::Hexus_Cards_Greed::create();
 }
 
-std::string SpecialGreed::getIconResource()
+const std::string& SpecialGreed::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialGreed::getSerializationKey()
+const std::string& SpecialGreed::getSerializationKey()
 {
 	return SpecialGreed::SaveKey;
 }

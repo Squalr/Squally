@@ -33,7 +33,7 @@ Item* Sulfur::clone()
 	return Sulfur::create();
 }
 
-std::string Sulfur::getItemName()
+const std::string& Sulfur::getItemName()
 {
 	return Sulfur::SaveKey;
 }
@@ -43,12 +43,12 @@ LocalizedString* Sulfur::getString()
 	return Strings::Items_Crafting_Ore_Sulfur::create();
 }
 
-std::string Sulfur::getIconResource()
+const std::string& Sulfur::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Sulfur;
 }
 
-std::string Sulfur::getSerializationKey()
+const std::string& Sulfur::getSerializationKey()
 {
 	return Sulfur::SaveKey;
 }

@@ -34,7 +34,7 @@ Item* SpecialShrCircular::clone()
 	return SpecialShrCircular::create();
 }
 
-std::string SpecialShrCircular::getItemName()
+const std::string& SpecialShrCircular::getItemName()
 {
 	return SpecialShrCircular::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialShrCircular::getString()
 	return Strings::Hexus_Cards_ShiftRightCircular::create();
 }
 
-std::string SpecialShrCircular::getIconResource()
+const std::string& SpecialShrCircular::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialShrCircular::getSerializationKey()
+const std::string& SpecialShrCircular::getSerializationKey()
 {
 	return SpecialShrCircular::SaveKey;
 }

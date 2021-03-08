@@ -46,7 +46,7 @@ Item* HeartBand::clone()
 	return HeartBand::create();
 }
 
-std::string HeartBand::getItemName()
+const std::string& HeartBand::getItemName()
 {
 	return HeartBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* HeartBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_HeartBand::create();
 }
 
-std::string HeartBand::getIconResource()
+const std::string& HeartBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_HeartBand;
 }
 
-std::string HeartBand::getSerializationKey()
+const std::string& HeartBand::getSerializationKey()
 {
 	return HeartBand::SaveKey;
 }

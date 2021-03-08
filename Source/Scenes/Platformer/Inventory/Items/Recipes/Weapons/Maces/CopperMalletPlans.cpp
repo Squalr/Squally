@@ -48,7 +48,7 @@ Item* CopperMalletPlans::clone()
 	return CopperMalletPlans::create();
 }
 
-std::string CopperMalletPlans::getItemName()
+const std::string& CopperMalletPlans::getItemName()
 {
 	return CopperMalletPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* CopperMalletPlans::getString()
 	return Strings::Items_Equipment_Weapons_Maces_CopperMallet::create();
 }
 
-std::string CopperMalletPlans::getIconResource()
+const std::string& CopperMalletPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string CopperMalletPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CopperMallet;
 }
 
-std::string CopperMalletPlans::getSerializationKey()
+const std::string& CopperMalletPlans::getSerializationKey()
 {
 	return CopperMalletPlans::SaveKey;
 }

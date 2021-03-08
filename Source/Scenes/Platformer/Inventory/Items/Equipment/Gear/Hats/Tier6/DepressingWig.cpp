@@ -46,7 +46,7 @@ Item* DepressingWig::clone()
 	return DepressingWig::create();
 }
 
-std::string DepressingWig::getItemName()
+const std::string& DepressingWig::getItemName()
 {
 	return DepressingWig::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* DepressingWig::getString()
 	return Strings::Items_Equipment_Gear_Hats_DepressingWig::create();
 }
 
-std::string DepressingWig::getIconResource()
+const std::string& DepressingWig::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_DepressingWig;
 }
 
-std::string DepressingWig::getSerializationKey()
+const std::string& DepressingWig::getSerializationKey()
 {
 	return DepressingWig::SaveKey;
 }

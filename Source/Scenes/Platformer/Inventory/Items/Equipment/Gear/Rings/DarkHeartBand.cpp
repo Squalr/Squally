@@ -46,7 +46,7 @@ Item* DarkHeartBand::clone()
 	return DarkHeartBand::create();
 }
 
-std::string DarkHeartBand::getItemName()
+const std::string& DarkHeartBand::getItemName()
 {
 	return DarkHeartBand::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* DarkHeartBand::getString()
 	return Strings::Items_Equipment_Gear_Rings_DarkHeartBand::create();
 }
 
-std::string DarkHeartBand::getIconResource()
+const std::string& DarkHeartBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_DarkHeartBand;
 }
 
-std::string DarkHeartBand::getSerializationKey()
+const std::string& DarkHeartBand::getSerializationKey()
 {
 	return DarkHeartBand::SaveKey;
 }

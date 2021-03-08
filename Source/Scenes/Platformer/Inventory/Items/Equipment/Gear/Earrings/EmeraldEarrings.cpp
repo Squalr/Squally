@@ -46,7 +46,7 @@ Item* EmeraldEarrings::clone()
 	return EmeraldEarrings::create();
 }
 
-std::string EmeraldEarrings::getItemName()
+const std::string& EmeraldEarrings::getItemName()
 {
 	return EmeraldEarrings::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* EmeraldEarrings::getString()
 	return Strings::Items_Equipment_Gear_Earrings_EmeraldEarrings::create();
 }
 
-std::string EmeraldEarrings::getIconResource()
+const std::string& EmeraldEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_EmeraldEarrings;
 }
 
-std::string EmeraldEarrings::getSerializationKey()
+const std::string& EmeraldEarrings::getSerializationKey()
 {
 	return EmeraldEarrings::SaveKey;
 }

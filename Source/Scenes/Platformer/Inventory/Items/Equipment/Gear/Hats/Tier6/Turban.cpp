@@ -46,7 +46,7 @@ Item* Turban::clone()
 	return Turban::create();
 }
 
-std::string Turban::getItemName()
+const std::string& Turban::getItemName()
 {
 	return Turban::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* Turban::getString()
 	return Strings::Items_Equipment_Gear_Hats_Turban::create();
 }
 
-std::string Turban::getIconResource()
+const std::string& Turban::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_Turban;
 }
 
-std::string Turban::getSerializationKey()
+const std::string& Turban::getSerializationKey()
 {
 	return Turban::SaveKey;
 }

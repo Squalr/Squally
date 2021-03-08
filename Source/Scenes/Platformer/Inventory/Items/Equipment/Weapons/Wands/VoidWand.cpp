@@ -47,7 +47,7 @@ Item* VoidWand::clone()
 	return VoidWand::create();
 }
 
-std::string VoidWand::getItemName()
+const std::string& VoidWand::getItemName()
 {
 	return VoidWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* VoidWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_VoidWand::create();
 }
 
-std::string VoidWand::getIconResource()
+const std::string& VoidWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_VoidWand;
 }
 
-std::string VoidWand::getSerializationKey()
+const std::string& VoidWand::getSerializationKey()
 {
 	return VoidWand::SaveKey;
 }

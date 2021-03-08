@@ -34,7 +34,7 @@ Item* SpecialXor::clone()
 	return SpecialXor::create();
 }
 
-std::string SpecialXor::getItemName()
+const std::string& SpecialXor::getItemName()
 {
 	return SpecialXor::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialXor::getString()
 	return Strings::Hexus_Cards_LogicalXor::create();
 }
 
-std::string SpecialXor::getIconResource()
+const std::string& SpecialXor::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialXor::getSerializationKey()
+const std::string& SpecialXor::getSerializationKey()
 {
 	return SpecialXor::SaveKey;
 }

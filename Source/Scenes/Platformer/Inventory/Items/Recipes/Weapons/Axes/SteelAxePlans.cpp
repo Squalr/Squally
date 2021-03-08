@@ -50,7 +50,7 @@ Item* SteelAxePlans::clone()
 	return SteelAxePlans::create();
 }
 
-std::string SteelAxePlans::getItemName()
+const std::string& SteelAxePlans::getItemName()
 {
 	return SteelAxePlans::SaveKey;
 }
@@ -60,7 +60,7 @@ LocalizedString* SteelAxePlans::getString()
 	return Strings::Items_Equipment_Weapons_Axes_SteelAxe::create();
 }
 
-std::string SteelAxePlans::getIconResource()
+const std::string& SteelAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +70,7 @@ std::string SteelAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_SteelAxe;
 }
 
-std::string SteelAxePlans::getSerializationKey()
+const std::string& SteelAxePlans::getSerializationKey()
 {
 	return SteelAxePlans::SaveKey;
 }

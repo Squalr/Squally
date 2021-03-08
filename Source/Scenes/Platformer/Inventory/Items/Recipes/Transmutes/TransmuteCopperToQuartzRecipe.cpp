@@ -48,7 +48,7 @@ Item* TransmuteCopperToQuartzRecipe::clone()
 	return TransmuteCopperToQuartzRecipe::create();
 }
 
-std::string TransmuteCopperToQuartzRecipe::getItemName()
+const std::string& TransmuteCopperToQuartzRecipe::getItemName()
 {
 	return TransmuteCopperToQuartzRecipe::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* TransmuteCopperToQuartzRecipe::getString()
 	return Strings::Items_Crafting_Recipes_TransmuteCopperToQuartz::create();
 }
 
-std::string TransmuteCopperToQuartzRecipe::getIconResource()
+const std::string& TransmuteCopperToQuartzRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string TransmuteCopperToQuartzRecipe::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Quartz;
 }
 
-std::string TransmuteCopperToQuartzRecipe::getSerializationKey()
+const std::string& TransmuteCopperToQuartzRecipe::getSerializationKey()
 {
 	return TransmuteCopperToQuartzRecipe::SaveKey;
 }

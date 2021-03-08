@@ -46,7 +46,7 @@ Item* PirateHat::clone()
 	return PirateHat::create();
 }
 
-std::string PirateHat::getItemName()
+const std::string& PirateHat::getItemName()
 {
 	return PirateHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* PirateHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_PirateHat::create();
 }
 
-std::string PirateHat::getIconResource()
+const std::string& PirateHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_PirateHat;
 }
 
-std::string PirateHat::getSerializationKey()
+const std::string& PirateHat::getSerializationKey()
 {
 	return PirateHat::SaveKey;
 }

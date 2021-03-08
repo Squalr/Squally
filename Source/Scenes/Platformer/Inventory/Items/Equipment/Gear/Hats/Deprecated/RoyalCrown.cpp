@@ -46,7 +46,7 @@ Item* RoyalCrown::clone()
 	return RoyalCrown::create();
 }
 
-std::string RoyalCrown::getItemName()
+const std::string& RoyalCrown::getItemName()
 {
 	return RoyalCrown::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* RoyalCrown::getString()
 	return Strings::Items_Equipment_Gear_Hats_RoyalCrown::create();
 }
 
-std::string RoyalCrown::getIconResource()
+const std::string& RoyalCrown::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_RoyalCrown;
 }
 
-std::string RoyalCrown::getSerializationKey()
+const std::string& RoyalCrown::getSerializationKey()
 {
 	return RoyalCrown::SaveKey;
 }

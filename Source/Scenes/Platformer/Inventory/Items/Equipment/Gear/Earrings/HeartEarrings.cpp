@@ -46,7 +46,7 @@ Item* HeartEarrings::clone()
 	return HeartEarrings::create();
 }
 
-std::string HeartEarrings::getItemName()
+const std::string& HeartEarrings::getItemName()
 {
 	return HeartEarrings::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* HeartEarrings::getString()
 	return Strings::Items_Equipment_Gear_Earrings_HeartEarrings::create();
 }
 
-std::string HeartEarrings::getIconResource()
+const std::string& HeartEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_HeartEarrings;
 }
 
-std::string HeartEarrings::getSerializationKey()
+const std::string& HeartEarrings::getSerializationKey()
 {
 	return HeartEarrings::SaveKey;
 }

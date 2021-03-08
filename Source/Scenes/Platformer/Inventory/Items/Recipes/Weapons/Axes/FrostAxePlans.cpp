@@ -48,7 +48,7 @@ Item* FrostAxePlans::clone()
 	return FrostAxePlans::create();
 }
 
-std::string FrostAxePlans::getItemName()
+const std::string& FrostAxePlans::getItemName()
 {
 	return FrostAxePlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* FrostAxePlans::getString()
 	return Strings::Items_Equipment_Weapons_Axes_FrostAxe::create();
 }
 
-std::string FrostAxePlans::getIconResource()
+const std::string& FrostAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string FrostAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_FrostAxe;
 }
 
-std::string FrostAxePlans::getSerializationKey()
+const std::string& FrostAxePlans::getSerializationKey()
 {
 	return FrostAxePlans::SaveKey;
 }

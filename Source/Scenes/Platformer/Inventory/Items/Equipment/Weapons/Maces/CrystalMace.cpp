@@ -47,7 +47,7 @@ Item* CrystalMace::clone()
 	return CrystalMace::create();
 }
 
-std::string CrystalMace::getItemName()
+const std::string& CrystalMace::getItemName()
 {
 	return CrystalMace::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* CrystalMace::getString()
 	return Strings::Items_Equipment_Weapons_Maces_CrystalMace::create();
 }
 
-std::string CrystalMace::getIconResource()
+const std::string& CrystalMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
-std::string CrystalMace::getSerializationKey()
+const std::string& CrystalMace::getSerializationKey()
 {
 	return CrystalMace::SaveKey;
 }

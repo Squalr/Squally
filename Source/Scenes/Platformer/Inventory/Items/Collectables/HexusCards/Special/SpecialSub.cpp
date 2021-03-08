@@ -34,7 +34,7 @@ Item* SpecialSub::clone()
 	return SpecialSub::create();
 }
 
-std::string SpecialSub::getItemName()
+const std::string& SpecialSub::getItemName()
 {
 	return SpecialSub::SaveKey;
 }
@@ -44,12 +44,12 @@ LocalizedString* SpecialSub::getString()
 	return Strings::Hexus_Cards_Subtract::create();
 }
 
-std::string SpecialSub::getIconResource()
+const std::string& SpecialSub::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialSub::getSerializationKey()
+const std::string& SpecialSub::getSerializationKey()
 {
 	return SpecialSub::SaveKey;
 }

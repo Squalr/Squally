@@ -46,7 +46,7 @@ Item* ShamanTiara::clone()
 	return ShamanTiara::create();
 }
 
-std::string ShamanTiara::getItemName()
+const std::string& ShamanTiara::getItemName()
 {
 	return ShamanTiara::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* ShamanTiara::getString()
 	return Strings::Items_Equipment_Gear_Hats_ShamanTiara::create();
 }
 
-std::string ShamanTiara::getIconResource()
+const std::string& ShamanTiara::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ShamanTiara;
 }
 
-std::string ShamanTiara::getSerializationKey()
+const std::string& ShamanTiara::getSerializationKey()
 {
 	return ShamanTiara::SaveKey;
 }

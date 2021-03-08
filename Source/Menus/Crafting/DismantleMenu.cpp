@@ -12,6 +12,7 @@
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftFilterMenu/Dismantle/AllEquipmentFilter.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Dismantle/DismantleRecipe.h"
 
@@ -54,22 +55,6 @@ DismantleMenu::~DismantleMenu()
 void DismantleMenu::onEnter()
 {
 	super::onEnter();
-
-	ObjectEvents::WatchForObject<Squally>(this, [&](Squally* squally)
-	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
-		{
-			for (Item* item : entityInventoryBehavior->getInventory()->getItems())
-			{
-				if (dynamic_cast<Equipable*>(item))
-				{
-					DismantleRecipe* recipe = DismantleRecipe::create(item);
-					this->dismantledRecipiesNode->addChild(recipe);
-					this->dismantleRecipes.push_back(recipe);
-				}
-			}
-		});
-	}, Squally::MapKey);
 }
 
 void DismantleMenu::initializePositions()
@@ -85,6 +70,30 @@ void DismantleMenu::initializePositions()
 
 void DismantleMenu::open(std::vector<Item*> recipes)
 {
+	this->dismantledRecipiesNode->removeAllChildren();
+	this->dismantleRecipes.clear();
+
+	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
+	{
+		squally->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			for (Item* item : entityInventoryBehavior->getInventory()->getItems())
+			{
+				if (dynamic_cast<Equipable*>(item) != nullptr && dynamic_cast<HexusCard*>(item) == nullptr)
+				{
+					DismantleRecipe* recipe = DismantleRecipe::create(item);
+					this->dismantledRecipiesNode->addChild(recipe);
+					this->dismantleRecipes.push_back(recipe);
+				}
+			}
+		});
+	}, Squally::MapKey);
+
+	std::sort(this->dismantleRecipes.begin(), this->dismantleRecipes.end(), [](Item* a, Item* b) -> bool
+	{
+		return a->getItemName() < b->getItemName();
+	});
+
 	// There shouldn't be any recipes passed to this. Instead, we create a DismantleRecipe for every item in the players inventory
 	super::open(this->dismantleRecipes);
 }
@@ -101,4 +110,16 @@ void DismantleMenu::onCraftEnd(bool viaCancel)
 	{
 		this->craftSound->stop();
 	}
+	else
+	{
+		this->dismantleRecipes.erase(std::remove(this->dismantleRecipes.begin(), this->dismantleRecipes.end(), this->selectedRecipe), this->dismantleRecipes.end());
+
+		// Refresh UI with the dismantled item removed. Go directly to base class since we do not need to rebuild the dismantle recipe list.
+		super::open(this->dismantleRecipes);
+	}
+}
+
+LocalizedString* DismantleMenu::getCraftString()
+{
+	return Strings::Platformer_Notifications_MaterialsRecovered::create();
 }

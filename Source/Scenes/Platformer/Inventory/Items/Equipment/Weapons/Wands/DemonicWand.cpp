@@ -47,7 +47,7 @@ Item* DemonicWand::clone()
 	return DemonicWand::create();
 }
 
-std::string DemonicWand::getItemName()
+const std::string& DemonicWand::getItemName()
 {
 	return DemonicWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* DemonicWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_DemonicWand::create();
 }
 
-std::string DemonicWand::getIconResource()
+const std::string& DemonicWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_DemonicWand;
 }
 
-std::string DemonicWand::getSerializationKey()
+const std::string& DemonicWand::getSerializationKey()
 {
 	return DemonicWand::SaveKey;
 }

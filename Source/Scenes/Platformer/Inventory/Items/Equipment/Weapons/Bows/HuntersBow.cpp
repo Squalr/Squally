@@ -47,7 +47,7 @@ Item* HuntersBow::clone()
 	return HuntersBow::create();
 }
 
-std::string HuntersBow::getItemName()
+const std::string& HuntersBow::getItemName()
 {
 	return HuntersBow::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* HuntersBow::getString()
 	return Strings::Items_Equipment_Weapons_Bows_HuntersBow::create();
 }
 
-std::string HuntersBow::getIconResource()
+const std::string& HuntersBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_HuntersBow;
 }
 
-std::string HuntersBow::getSerializationKey()
+const std::string& HuntersBow::getSerializationKey()
 {
 	return HuntersBow::SaveKey;
 }

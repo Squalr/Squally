@@ -48,7 +48,7 @@ Item* MithrilAxePlans::clone()
 	return MithrilAxePlans::create();
 }
 
-std::string MithrilAxePlans::getItemName()
+const std::string& MithrilAxePlans::getItemName()
 {
 	return MithrilAxePlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* MithrilAxePlans::getString()
 	return Strings::Items_Equipment_Weapons_Axes_MithrilAxe::create();
 }
 
-std::string MithrilAxePlans::getIconResource()
+const std::string& MithrilAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string MithrilAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
-std::string MithrilAxePlans::getSerializationKey()
+const std::string& MithrilAxePlans::getSerializationKey()
 {
 	return MithrilAxePlans::SaveKey;
 }

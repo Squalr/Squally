@@ -46,7 +46,7 @@ Item* ToySoldierHat::clone()
 	return ToySoldierHat::create();
 }
 
-std::string ToySoldierHat::getItemName()
+const std::string& ToySoldierHat::getItemName()
 {
 	return ToySoldierHat::SaveKey;
 }
@@ -56,12 +56,12 @@ LocalizedString* ToySoldierHat::getString()
 	return Strings::Items_Equipment_Gear_Hats_ToySoldierHat::create();
 }
 
-std::string ToySoldierHat::getIconResource()
+const std::string& ToySoldierHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ToySoldierHat;
 }
 
-std::string ToySoldierHat::getSerializationKey()
+const std::string& ToySoldierHat::getSerializationKey()
 {
 	return ToySoldierHat::SaveKey;
 }

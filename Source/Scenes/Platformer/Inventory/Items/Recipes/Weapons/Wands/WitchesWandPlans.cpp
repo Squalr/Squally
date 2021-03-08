@@ -48,7 +48,7 @@ Item* WitchesWandPlans::clone()
 	return WitchesWandPlans::create();
 }
 
-std::string WitchesWandPlans::getItemName()
+const std::string& WitchesWandPlans::getItemName()
 {
 	return WitchesWandPlans::SaveKey;
 }
@@ -58,7 +58,7 @@ LocalizedString* WitchesWandPlans::getString()
 	return Strings::Items_Equipment_Weapons_Wands_WitchesWand::create();
 }
 
-std::string WitchesWandPlans::getIconResource()
+const std::string& WitchesWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +68,7 @@ std::string WitchesWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_WitchesWand;
 }
 
-std::string WitchesWandPlans::getSerializationKey()
+const std::string& WitchesWandPlans::getSerializationKey()
 {
 	return WitchesWandPlans::SaveKey;
 }

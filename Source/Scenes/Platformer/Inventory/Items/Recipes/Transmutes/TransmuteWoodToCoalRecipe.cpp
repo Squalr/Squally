@@ -47,7 +47,7 @@ Item* TransmuteWoodToCoalRecipe::clone()
 	return TransmuteWoodToCoalRecipe::create();
 }
 
-std::string TransmuteWoodToCoalRecipe::getItemName()
+const std::string& TransmuteWoodToCoalRecipe::getItemName()
 {
 	return TransmuteWoodToCoalRecipe::SaveKey;
 }
@@ -57,7 +57,7 @@ LocalizedString* TransmuteWoodToCoalRecipe::getString()
 	return Strings::Items_Crafting_Recipes_TransmuteWoodToCoal::create();
 }
 
-std::string TransmuteWoodToCoalRecipe::getIconResource()
+const std::string& TransmuteWoodToCoalRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -67,7 +67,7 @@ std::string TransmuteWoodToCoalRecipe::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Coal;
 }
 
-std::string TransmuteWoodToCoalRecipe::getSerializationKey()
+const std::string& TransmuteWoodToCoalRecipe::getSerializationKey()
 {
 	return TransmuteWoodToCoalRecipe::SaveKey;
 }

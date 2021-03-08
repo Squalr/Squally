@@ -47,7 +47,7 @@ Item* ChieftainsWand::clone()
 	return ChieftainsWand::create();
 }
 
-std::string ChieftainsWand::getItemName()
+const std::string& ChieftainsWand::getItemName()
 {
 	return ChieftainsWand::SaveKey;
 }
@@ -57,12 +57,12 @@ LocalizedString* ChieftainsWand::getString()
 	return Strings::Items_Equipment_Weapons_Wands_ChieftainsWand::create();
 }
 
-std::string ChieftainsWand::getIconResource()
+const std::string& ChieftainsWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
-std::string ChieftainsWand::getSerializationKey()
+const std::string& ChieftainsWand::getSerializationKey()
 {
 	return ChieftainsWand::SaveKey;
 }
