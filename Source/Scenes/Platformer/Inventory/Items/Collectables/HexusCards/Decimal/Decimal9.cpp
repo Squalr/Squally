@@ -34,11 +34,6 @@ Item* Decimal9::clone()
 	return Decimal9::create();
 }
 
-const std::string& Decimal9::getItemName()
-{
-	return Decimal9::SaveKey;
-}
-
 LocalizedString* Decimal9::getString()
 {
 	return Strings::Hexus_Cards_Decimal9::create();

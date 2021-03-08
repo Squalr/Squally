@@ -46,11 +46,6 @@ Item* MarineNecklace::clone()
 	return MarineNecklace::create();
 }
 
-const std::string& MarineNecklace::getItemName()
-{
-	return MarineNecklace::SaveKey;
-}
-
 LocalizedString* MarineNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_MarineNecklace::create();

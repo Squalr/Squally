@@ -33,11 +33,6 @@ Item* DarkSeed::clone()
 	return DarkSeed::create();
 }
 
-const std::string& DarkSeed::getItemName()
-{
-	return DarkSeed::SaveKey;
-}
-
 LocalizedString* DarkSeed::getString()
 {
 	return Strings::Items_Crafting_Plants_DarkSeed::create();

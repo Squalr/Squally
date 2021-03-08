@@ -46,11 +46,6 @@ Item* RoyalCrown::clone()
 	return RoyalCrown::create();
 }
 
-const std::string& RoyalCrown::getItemName()
-{
-	return RoyalCrown::SaveKey;
-}
-
 LocalizedString* RoyalCrown::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_RoyalCrown::create();

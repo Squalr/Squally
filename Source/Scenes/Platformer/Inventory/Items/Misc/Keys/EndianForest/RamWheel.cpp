@@ -33,11 +33,6 @@ Item* RamWheel::clone()
 	return RamWheel::create();
 }
 
-const std::string& RamWheel::getItemName()
-{
-	return RamWheel::SaveKey;
-}
-
 LocalizedString* RamWheel::getString()
 {
 	return Strings::Items_Misc_Keys_RamWheel::create();

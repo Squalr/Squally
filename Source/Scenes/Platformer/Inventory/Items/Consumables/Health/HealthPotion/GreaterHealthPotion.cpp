@@ -74,11 +74,6 @@ Item* GreaterHealthPotion::clone()
 	return GreaterHealthPotion::create();
 }
 
-const std::string& GreaterHealthPotion::getItemName()
-{
-	return GreaterHealthPotion::SaveKey;
-}
-
 LocalizedString* GreaterHealthPotion::getString()
 {
 	return Strings::Items_Consumables_Health_GreaterHealthPotion::create();

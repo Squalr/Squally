@@ -34,11 +34,6 @@ Item* SpecialPeek::clone()
 	return SpecialPeek::create();
 }
 
-const std::string& SpecialPeek::getItemName()
-{
-	return SpecialPeek::SaveKey;
-}
-
 LocalizedString* SpecialPeek::getString()
 {
 	return Strings::Hexus_Cards_Peek::create();

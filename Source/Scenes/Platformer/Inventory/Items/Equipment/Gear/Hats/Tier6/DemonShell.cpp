@@ -46,11 +46,6 @@ Item* DemonShell::clone()
 	return DemonShell::create();
 }
 
-const std::string& DemonShell::getItemName()
-{
-	return DemonShell::SaveKey;
-}
-
 LocalizedString* DemonShell::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_DemonShell::create();

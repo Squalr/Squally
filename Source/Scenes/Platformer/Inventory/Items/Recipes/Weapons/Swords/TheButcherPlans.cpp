@@ -48,11 +48,6 @@ Item* TheButcherPlans::clone()
 	return TheButcherPlans::create();
 }
 
-const std::string& TheButcherPlans::getItemName()
-{
-	return TheButcherPlans::SaveKey;
-}
-
 LocalizedString* TheButcherPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_TheButcher::create();

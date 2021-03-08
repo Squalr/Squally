@@ -47,11 +47,6 @@ Item* BoneAxe::clone()
 	return BoneAxe::create();
 }
 
-const std::string& BoneAxe::getItemName()
-{
-	return BoneAxe::SaveKey;
-}
-
 LocalizedString* BoneAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_BoneAxe::create();

@@ -46,11 +46,6 @@ Item* AquaMarineEarrings::clone()
 	return AquaMarineEarrings::create();
 }
 
-const std::string& AquaMarineEarrings::getItemName()
-{
-	return AquaMarineEarrings::SaveKey;
-}
-
 LocalizedString* AquaMarineEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_AquaMarineEarrings::create();

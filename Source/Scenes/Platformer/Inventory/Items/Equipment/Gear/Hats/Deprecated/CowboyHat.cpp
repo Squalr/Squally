@@ -46,11 +46,6 @@ Item* CowboyHat::clone()
 	return CowboyHat::create();
 }
 
-const std::string& CowboyHat::getItemName()
-{
-	return CowboyHat::SaveKey;
-}
-
 LocalizedString* CowboyHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_CowboyHat::create();

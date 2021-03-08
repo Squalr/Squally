@@ -47,11 +47,6 @@ Item* WoodenWand::clone()
 	return WoodenWand::create();
 }
 
-const std::string& WoodenWand::getItemName()
-{
-	return WoodenWand::SaveKey;
-}
-
 LocalizedString* WoodenWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_WoodenWand::create();

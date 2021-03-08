@@ -47,11 +47,6 @@ Item* ChieftainsWand::clone()
 	return ChieftainsWand::create();
 }
 
-const std::string& ChieftainsWand::getItemName()
-{
-	return ChieftainsWand::SaveKey;
-}
-
 LocalizedString* ChieftainsWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_ChieftainsWand::create();

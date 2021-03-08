@@ -46,11 +46,6 @@ Item* PirateHat::clone()
 	return PirateHat::create();
 }
 
-const std::string& PirateHat::getItemName()
-{
-	return PirateHat::SaveKey;
-}
-
 LocalizedString* PirateHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_PirateHat::create();

@@ -34,11 +34,6 @@ Item* Binary11::clone()
 	return Binary11::create();
 }
 
-const std::string& Binary11::getItemName()
-{
-	return Binary11::SaveKey;
-}
-
 LocalizedString* Binary11::getString()
 {
 	return Strings::Hexus_Cards_Binary11::create();

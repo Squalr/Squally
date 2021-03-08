@@ -46,11 +46,6 @@ Item* MagesHatRed::clone()
 	return MagesHatRed::create();
 }
 
-const std::string& MagesHatRed::getItemName()
-{
-	return MagesHatRed::SaveKey;
-}
-
 LocalizedString* MagesHatRed::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_MagesHatRed::create();

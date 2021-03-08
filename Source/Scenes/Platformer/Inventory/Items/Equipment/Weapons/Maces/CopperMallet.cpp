@@ -47,11 +47,6 @@ Item* CopperMallet::clone()
 	return CopperMallet::create();
 }
 
-const std::string& CopperMallet::getItemName()
-{
-	return CopperMallet::SaveKey;
-}
-
 LocalizedString* CopperMallet::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_CopperMallet::create();

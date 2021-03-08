@@ -33,11 +33,6 @@ Item* TempleMap::clone()
 	return TempleMap::create();
 }
 
-const std::string& TempleMap::getItemName()
-{
-	return TempleMap::SaveKey;
-}
-
 LocalizedString* TempleMap::getString()
 {
 	return Strings::Items_Misc_Maps_DungeonMap::create()

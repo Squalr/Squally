@@ -46,11 +46,6 @@ Item* AcolytesCap::clone()
 	return AcolytesCap::create();
 }
 
-const std::string& AcolytesCap::getItemName()
-{
-	return AcolytesCap::SaveKey;
-}
-
 LocalizedString* AcolytesCap::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_AcolytesCap::create();

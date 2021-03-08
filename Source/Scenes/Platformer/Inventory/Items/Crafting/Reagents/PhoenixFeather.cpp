@@ -33,11 +33,6 @@ Item* PhoenixFeather::clone()
 	return PhoenixFeather::create();
 }
 
-const std::string& PhoenixFeather::getItemName()
-{
-	return PhoenixFeather::SaveKey;
-}
-
 LocalizedString* PhoenixFeather::getString()
 {
 	return Strings::Items_Crafting_Reagents_PhoenixFeather::create();

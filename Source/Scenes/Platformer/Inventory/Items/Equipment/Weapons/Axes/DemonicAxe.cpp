@@ -47,11 +47,6 @@ Item* DemonicAxe::clone()
 	return DemonicAxe::create();
 }
 
-const std::string& DemonicAxe::getItemName()
-{
-	return DemonicAxe::SaveKey;
-}
-
 LocalizedString* DemonicAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_DemonicAxe::create();

@@ -46,11 +46,6 @@ Item* TheGoldenEagle::clone()
 	return TheGoldenEagle::create();
 }
 
-const std::string& TheGoldenEagle::getItemName()
-{
-	return TheGoldenEagle::SaveKey;
-}
-
 LocalizedString* TheGoldenEagle::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TheGoldenEagle::create();

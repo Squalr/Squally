@@ -46,11 +46,6 @@ Item* ReindeerHat::clone()
 	return ReindeerHat::create();
 }
 
-const std::string& ReindeerHat::getItemName()
-{
-	return ReindeerHat::SaveKey;
-}
-
 LocalizedString* ReindeerHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ReindeerHat::create();

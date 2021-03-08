@@ -50,11 +50,6 @@ Item* DreadmournPlans::clone()
 	return DreadmournPlans::create();
 }
 
-const std::string& DreadmournPlans::getItemName()
-{
-	return DreadmournPlans::SaveKey;
-}
-
 LocalizedString* DreadmournPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Dreadmourn::create();

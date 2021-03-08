@@ -33,11 +33,6 @@ Item* Crystal::clone()
 	return Crystal::create();
 }
 
-const std::string& Crystal::getItemName()
-{
-	return Crystal::SaveKey;
-}
-
 LocalizedString* Crystal::getString()
 {
 	return Strings::Items_Crafting_Ore_Crystal::create();

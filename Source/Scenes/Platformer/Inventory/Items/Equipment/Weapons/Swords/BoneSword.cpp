@@ -47,11 +47,6 @@ Item* BoneSword::clone()
 	return BoneSword::create();
 }
 
-const std::string& BoneSword::getItemName()
-{
-	return BoneSword::SaveKey;
-}
-
 LocalizedString* BoneSword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_BoneSword::create();

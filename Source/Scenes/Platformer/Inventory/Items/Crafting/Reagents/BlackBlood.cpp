@@ -33,11 +33,6 @@ Item* BlackBlood::clone()
 	return BlackBlood::create();
 }
 
-const std::string& BlackBlood::getItemName()
-{
-	return BlackBlood::SaveKey;
-}
-
 LocalizedString* BlackBlood::getString()
 {
 	return Strings::Items_Crafting_Reagents_BlackBlood::create();

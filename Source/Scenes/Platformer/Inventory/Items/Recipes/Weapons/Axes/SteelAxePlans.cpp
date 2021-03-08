@@ -50,11 +50,6 @@ Item* SteelAxePlans::clone()
 	return SteelAxePlans::create();
 }
 
-const std::string& SteelAxePlans::getItemName()
-{
-	return SteelAxePlans::SaveKey;
-}
-
 LocalizedString* SteelAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_SteelAxe::create();

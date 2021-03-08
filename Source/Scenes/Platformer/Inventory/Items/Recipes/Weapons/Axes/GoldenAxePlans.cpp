@@ -49,11 +49,6 @@ Item* GoldenAxePlans::clone()
 	return GoldenAxePlans::create();
 }
 
-const std::string& GoldenAxePlans::getItemName()
-{
-	return GoldenAxePlans::SaveKey;
-}
-
 LocalizedString* GoldenAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_GoldenAxe::create();

@@ -46,11 +46,6 @@ Item* WitchesHat::clone()
 	return WitchesHat::create();
 }
 
-const std::string& WitchesHat::getItemName()
-{
-	return WitchesHat::SaveKey;
-}
-
 LocalizedString* WitchesHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WitchesHat::create();

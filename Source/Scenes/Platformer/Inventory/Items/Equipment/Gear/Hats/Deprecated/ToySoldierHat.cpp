@@ -46,11 +46,6 @@ Item* ToySoldierHat::clone()
 	return ToySoldierHat::create();
 }
 
-const std::string& ToySoldierHat::getItemName()
-{
-	return ToySoldierHat::SaveKey;
-}
-
 LocalizedString* ToySoldierHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ToySoldierHat::create();

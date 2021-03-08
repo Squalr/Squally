@@ -34,11 +34,6 @@ Item* SpecialOr::clone()
 	return SpecialOr::create();
 }
 
-const std::string& SpecialOr::getItemName()
-{
-	return SpecialOr::SaveKey;
-}
-
 LocalizedString* SpecialOr::getString()
 {
 	return Strings::Hexus_Cards_LogicalOr::create();

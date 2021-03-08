@@ -33,11 +33,6 @@ Item* Mandrake::clone()
 	return Mandrake::create();
 }
 
-const std::string& Mandrake::getItemName()
-{
-	return Mandrake::SaveKey;
-}
-
 LocalizedString* Mandrake::getString()
 {
 	return Strings::Items_Crafting_Plants_Mandrake::create();

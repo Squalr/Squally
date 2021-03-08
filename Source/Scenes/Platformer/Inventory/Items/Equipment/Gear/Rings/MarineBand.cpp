@@ -46,11 +46,6 @@ Item* MarineBand::clone()
 	return MarineBand::create();
 }
 
-const std::string& MarineBand::getItemName()
-{
-	return MarineBand::SaveKey;
-}
-
 LocalizedString* MarineBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_MarineBand::create();

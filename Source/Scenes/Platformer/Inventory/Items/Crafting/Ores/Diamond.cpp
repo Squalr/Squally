@@ -33,11 +33,6 @@ Item* Diamond::clone()
 	return Diamond::create();
 }
 
-const std::string& Diamond::getItemName()
-{
-	return Diamond::SaveKey;
-}
-
 LocalizedString* Diamond::getString()
 {
 	return Strings::Items_Crafting_Ore_Diamond::create();

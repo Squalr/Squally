@@ -47,11 +47,6 @@ Item* BoneHammer::clone()
 	return BoneHammer::create();
 }
 
-const std::string& BoneHammer::getItemName()
-{
-	return BoneHammer::SaveKey;
-}
-
 LocalizedString* BoneHammer::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_BoneHammer::create();

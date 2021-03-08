@@ -47,11 +47,6 @@ Item* WitchesWand::clone()
 	return WitchesWand::create();
 }
 
-const std::string& WitchesWand::getItemName()
-{
-	return WitchesWand::SaveKey;
-}
-
 LocalizedString* WitchesWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_WitchesWand::create();

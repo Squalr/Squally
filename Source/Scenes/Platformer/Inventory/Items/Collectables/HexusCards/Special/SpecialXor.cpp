@@ -34,11 +34,6 @@ Item* SpecialXor::clone()
 	return SpecialXor::create();
 }
 
-const std::string& SpecialXor::getItemName()
-{
-	return SpecialXor::SaveKey;
-}
-
 LocalizedString* SpecialXor::getString()
 {
 	return Strings::Hexus_Cards_LogicalXor::create();

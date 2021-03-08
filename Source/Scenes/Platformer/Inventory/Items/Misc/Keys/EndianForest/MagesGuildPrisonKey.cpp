@@ -33,11 +33,6 @@ Item* MagesGuildPrisonKey::clone()
 	return MagesGuildPrisonKey::create();
 }
 
-const std::string& MagesGuildPrisonKey::getItemName()
-{
-	return MagesGuildPrisonKey::SaveKey;
-}
-
 LocalizedString* MagesGuildPrisonKey::getString()
 {
 	return Strings::Items_Misc_Keys_MagesGuildPrisonKey::create();

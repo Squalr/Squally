@@ -33,11 +33,6 @@ Item* TownKey::clone()
 	return TownKey::create();
 }
 
-const std::string& TownKey::getItemName()
-{
-	return TownKey::SaveKey;
-}
-
 LocalizedString* TownKey::getString()
 {
 	return Strings::Items_Misc_Keys_TownKey::create();

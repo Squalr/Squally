@@ -47,11 +47,6 @@ Item* WoodenBow::clone()
 	return WoodenBow::create();
 }
 
-const std::string& WoodenBow::getItemName()
-{
-	return WoodenBow::SaveKey;
-}
-
 LocalizedString* WoodenBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_WoodenBow::create();

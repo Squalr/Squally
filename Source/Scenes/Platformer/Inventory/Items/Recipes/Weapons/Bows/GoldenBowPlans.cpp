@@ -50,11 +50,6 @@ Item* GoldenBowPlans::clone()
 	return GoldenBowPlans::create();
 }
 
-const std::string& GoldenBowPlans::getItemName()
-{
-	return GoldenBowPlans::SaveKey;
-}
-
 LocalizedString* GoldenBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_GoldenBow::create();

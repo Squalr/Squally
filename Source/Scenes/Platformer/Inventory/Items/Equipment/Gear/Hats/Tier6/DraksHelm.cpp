@@ -46,11 +46,6 @@ Item* DraksHelm::clone()
 	return DraksHelm::create();
 }
 
-const std::string& DraksHelm::getItemName()
-{
-	return DraksHelm::SaveKey;
-}
-
 LocalizedString* DraksHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_DraksHelm::create();

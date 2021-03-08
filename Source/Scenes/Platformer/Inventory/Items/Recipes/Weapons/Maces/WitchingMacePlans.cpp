@@ -49,11 +49,6 @@ Item* WitchingMacePlans::clone()
 	return WitchingMacePlans::create();
 }
 
-const std::string& WitchingMacePlans::getItemName()
-{
-	return WitchingMacePlans::SaveKey;
-}
-
 LocalizedString* WitchingMacePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_WitchingMace::create();

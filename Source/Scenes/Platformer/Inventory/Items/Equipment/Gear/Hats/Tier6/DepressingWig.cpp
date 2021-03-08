@@ -46,11 +46,6 @@ Item* DepressingWig::clone()
 	return DepressingWig::create();
 }
 
-const std::string& DepressingWig::getItemName()
-{
-	return DepressingWig::SaveKey;
-}
-
 LocalizedString* DepressingWig::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_DepressingWig::create();

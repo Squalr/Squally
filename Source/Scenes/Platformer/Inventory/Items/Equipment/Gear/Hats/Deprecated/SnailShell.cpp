@@ -46,11 +46,6 @@ Item* SnailShell::clone()
 	return SnailShell::create();
 }
 
-const std::string& SnailShell::getItemName()
-{
-	return SnailShell::SaveKey;
-}
-
 LocalizedString* SnailShell::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SnailShell::create();

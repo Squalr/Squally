@@ -47,11 +47,6 @@ Item* GoldenMace::clone()
 	return GoldenMace::create();
 }
 
-const std::string& GoldenMace::getItemName()
-{
-	return GoldenMace::SaveKey;
-}
-
 LocalizedString* GoldenMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_GoldenMace::create();

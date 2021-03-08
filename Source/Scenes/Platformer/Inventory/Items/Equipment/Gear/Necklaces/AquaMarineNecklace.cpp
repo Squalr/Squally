@@ -46,11 +46,6 @@ Item* AquaMarineNecklace::clone()
 	return AquaMarineNecklace::create();
 }
 
-const std::string& AquaMarineNecklace::getItemName()
-{
-	return AquaMarineNecklace::SaveKey;
-}
-
 LocalizedString* AquaMarineNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_AquaMarineNecklace::create();

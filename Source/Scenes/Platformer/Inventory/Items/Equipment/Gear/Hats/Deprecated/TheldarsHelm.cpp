@@ -46,11 +46,6 @@ Item* TheldarsHelm::clone()
 	return TheldarsHelm::create();
 }
 
-const std::string& TheldarsHelm::getItemName()
-{
-	return TheldarsHelm::SaveKey;
-}
-
 LocalizedString* TheldarsHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TheldarsHelm::create();

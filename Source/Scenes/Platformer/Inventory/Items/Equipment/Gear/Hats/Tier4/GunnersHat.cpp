@@ -46,11 +46,6 @@ Item* GunnersHat::clone()
 	return GunnersHat::create();
 }
 
-const std::string& GunnersHat::getItemName()
-{
-	return GunnersHat::SaveKey;
-}
-
 LocalizedString* GunnersHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GunnersHat::create();

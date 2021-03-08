@@ -47,11 +47,6 @@ Item* SteelAxe::clone()
 	return SteelAxe::create();
 }
 
-const std::string& SteelAxe::getItemName()
-{
-	return SteelAxe::SaveKey;
-}
-
 LocalizedString* SteelAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_SteelAxe::create();

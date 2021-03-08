@@ -47,11 +47,6 @@ Item* WoodenSwordPlans::clone()
 	return WoodenSwordPlans::create();
 }
 
-const std::string& WoodenSwordPlans::getItemName()
-{
-	return WoodenSwordPlans::SaveKey;
-}
-
 LocalizedString* WoodenSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_WoodenSword::create();

@@ -47,11 +47,6 @@ Item* SapphireWand::clone()
 	return SapphireWand::create();
 }
 
-const std::string& SapphireWand::getItemName()
-{
-	return SapphireWand::SaveKey;
-}
-
 LocalizedString* SapphireWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_SapphireWand::create();

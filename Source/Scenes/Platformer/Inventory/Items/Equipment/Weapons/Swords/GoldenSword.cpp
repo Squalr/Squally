@@ -47,11 +47,6 @@ Item* GoldenSword::clone()
 	return GoldenSword::create();
 }
 
-const std::string& GoldenSword::getItemName()
-{
-	return GoldenSword::SaveKey;
-}
-
 LocalizedString* GoldenSword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_GoldenSword::create();

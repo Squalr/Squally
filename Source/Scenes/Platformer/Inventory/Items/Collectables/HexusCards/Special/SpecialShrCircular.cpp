@@ -34,11 +34,6 @@ Item* SpecialShrCircular::clone()
 	return SpecialShrCircular::create();
 }
 
-const std::string& SpecialShrCircular::getItemName()
-{
-	return SpecialShrCircular::SaveKey;
-}
-
 LocalizedString* SpecialShrCircular::getString()
 {
 	return Strings::Hexus_Cards_ShiftRightCircular::create();

@@ -34,11 +34,6 @@ Item* SpecialAnd::clone()
 	return SpecialAnd::create();
 }
 
-const std::string& SpecialAnd::getItemName()
-{
-	return SpecialAnd::SaveKey;
-}
-
 LocalizedString* SpecialAnd::getString()
 {
 	return Strings::Hexus_Cards_LogicalAnd::create();

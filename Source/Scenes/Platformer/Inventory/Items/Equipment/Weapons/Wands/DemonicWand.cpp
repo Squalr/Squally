@@ -47,11 +47,6 @@ Item* DemonicWand::clone()
 	return DemonicWand::create();
 }
 
-const std::string& DemonicWand::getItemName()
-{
-	return DemonicWand::SaveKey;
-}
-
 LocalizedString* DemonicWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_DemonicWand::create();

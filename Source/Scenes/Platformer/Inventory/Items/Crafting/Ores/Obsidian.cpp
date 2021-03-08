@@ -33,11 +33,6 @@ Item* Obsidian::clone()
 	return Obsidian::create();
 }
 
-const std::string& Obsidian::getItemName()
-{
-	return Obsidian::SaveKey;
-}
-
 LocalizedString* Obsidian::getString()
 {
 	return Strings::Items_Crafting_Ore_Obsidian::create();

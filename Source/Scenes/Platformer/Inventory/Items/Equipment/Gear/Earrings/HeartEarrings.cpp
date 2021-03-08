@@ -46,11 +46,6 @@ Item* HeartEarrings::clone()
 	return HeartEarrings::create();
 }
 
-const std::string& HeartEarrings::getItemName()
-{
-	return HeartEarrings::SaveKey;
-}
-
 LocalizedString* HeartEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_HeartEarrings::create();

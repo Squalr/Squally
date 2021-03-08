@@ -46,11 +46,6 @@ Item* CrystalEarrings::clone()
 	return CrystalEarrings::create();
 }
 
-const std::string& CrystalEarrings::getItemName()
-{
-	return CrystalEarrings::SaveKey;
-}
-
 LocalizedString* CrystalEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_CrystalEarrings::create();

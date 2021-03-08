@@ -46,11 +46,6 @@ Item* EmeraldPendant::clone()
 	return EmeraldPendant::create();
 }
 
-const std::string& EmeraldPendant::getItemName()
-{
-	return EmeraldPendant::SaveKey;
-}
-
 LocalizedString* EmeraldPendant::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_EmeraldPendant::create();

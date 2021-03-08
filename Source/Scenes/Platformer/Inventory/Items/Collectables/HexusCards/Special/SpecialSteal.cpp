@@ -34,11 +34,6 @@ Item* SpecialSteal::clone()
 	return SpecialSteal::create();
 }
 
-const std::string& SpecialSteal::getItemName()
-{
-	return SpecialSteal::SaveKey;
-}
-
 LocalizedString* SpecialSteal::getString()
 {
 	return Strings::Hexus_Cards_Steal::create();

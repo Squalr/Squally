@@ -47,11 +47,6 @@ Item* CandySword::clone()
 	return CandySword::create();
 }
 
-const std::string& CandySword::getItemName()
-{
-	return CandySword::SaveKey;
-}
-
 LocalizedString* CandySword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CandySword::create();

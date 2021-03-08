@@ -34,11 +34,6 @@ Item* MissingNo::clone()
 	return MissingNo::create();
 }
 
-const std::string& MissingNo::getItemName()
-{
-	return MissingNo::SaveKey;
-}
-
 LocalizedString* MissingNo::getString()
 {
 	return Strings::Items_Error_MissingNo::create();

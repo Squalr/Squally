@@ -47,11 +47,6 @@ Item* CopperAxe::clone()
 	return CopperAxe::create();
 }
 
-const std::string& CopperAxe::getItemName()
-{
-	return CopperAxe::SaveKey;
-}
-
 LocalizedString* CopperAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_CopperAxe::create();

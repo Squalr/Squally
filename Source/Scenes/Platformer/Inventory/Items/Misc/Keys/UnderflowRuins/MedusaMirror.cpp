@@ -33,11 +33,6 @@ Item* MedusaMirror::clone()
 	return MedusaMirror::create();
 }
 
-const std::string& MedusaMirror::getItemName()
-{
-	return MedusaMirror::SaveKey;
-}
-
 LocalizedString* MedusaMirror::getString()
 {
 	return Strings::Items_Misc_Keys_MedusasMirror::create();

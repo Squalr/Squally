@@ -46,11 +46,6 @@ Item* TigersBane::clone()
 	return TigersBane::create();
 }
 
-const std::string& TigersBane::getItemName()
-{
-	return TigersBane::SaveKey;
-}
-
 LocalizedString* TigersBane::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TigersBane::create();

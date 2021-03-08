@@ -49,11 +49,6 @@ Item* BoneWandPlans::clone()
 	return BoneWandPlans::create();
 }
 
-const std::string& BoneWandPlans::getItemName()
-{
-	return BoneWandPlans::SaveKey;
-}
-
 LocalizedString* BoneWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_BoneWand::create();

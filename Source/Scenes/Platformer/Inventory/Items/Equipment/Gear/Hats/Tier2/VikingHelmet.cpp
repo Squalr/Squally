@@ -46,11 +46,6 @@ Item* VikingHelmet::clone()
 	return VikingHelmet::create();
 }
 
-const std::string& VikingHelmet::getItemName()
-{
-	return VikingHelmet::SaveKey;
-}
-
 LocalizedString* VikingHelmet::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_VikingHelmet::create();

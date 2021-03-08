@@ -73,11 +73,6 @@ Item* HealthPotion::clone()
 	return HealthPotion::create();
 }
 
-const std::string& HealthPotion::getItemName()
-{
-	return HealthPotion::SaveKey;
-}
-
 LocalizedString* HealthPotion::getString()
 {
 	return Strings::Items_Consumables_Health_HealthPotion::create();

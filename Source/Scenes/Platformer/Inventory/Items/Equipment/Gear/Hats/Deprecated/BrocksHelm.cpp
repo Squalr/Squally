@@ -46,11 +46,6 @@ Item* BrocksHelm::clone()
 	return BrocksHelm::create();
 }
 
-const std::string& BrocksHelm::getItemName()
-{
-	return BrocksHelm::SaveKey;
-}
-
 LocalizedString* BrocksHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_BrocksHelm::create();

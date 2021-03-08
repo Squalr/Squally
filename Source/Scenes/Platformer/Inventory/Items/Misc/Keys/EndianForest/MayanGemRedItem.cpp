@@ -33,11 +33,6 @@ Item* MayanGemRedItem::clone()
 	return MayanGemRedItem::create();
 }
 
-const std::string& MayanGemRedItem::getItemName()
-{
-	return MayanGemRedItem::SaveKey;
-}
-
 LocalizedString* MayanGemRedItem::getString()
 {
 	return Strings::Items_Misc_Keys_RedGem::create();

@@ -34,11 +34,6 @@ Item* Hex3::clone()
 	return Hex3::create();
 }
 
-const std::string& Hex3::getItemName()
-{
-	return Hex3::SaveKey;
-}
-
 LocalizedString* Hex3::getString()
 {
 	return Strings::Hexus_Cards_Hex3::create();

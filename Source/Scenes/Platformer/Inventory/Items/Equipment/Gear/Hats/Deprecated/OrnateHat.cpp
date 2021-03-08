@@ -46,11 +46,6 @@ Item* OrnateHat::clone()
 	return OrnateHat::create();
 }
 
-const std::string& OrnateHat::getItemName()
-{
-	return OrnateHat::SaveKey;
-}
-
 LocalizedString* OrnateHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_OrnateHat::create();

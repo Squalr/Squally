@@ -46,11 +46,6 @@ Item* EmeraldBand::clone()
 	return EmeraldBand::create();
 }
 
-const std::string& EmeraldBand::getItemName()
-{
-	return EmeraldBand::SaveKey;
-}
-
 LocalizedString* EmeraldBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_EmeraldBand::create();

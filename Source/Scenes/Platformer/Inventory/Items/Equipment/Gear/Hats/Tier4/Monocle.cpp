@@ -46,11 +46,6 @@ Item* Monocle::clone()
 	return Monocle::create();
 }
 
-const std::string& Monocle::getItemName()
-{
-	return Monocle::SaveKey;
-}
-
 LocalizedString* Monocle::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_Monocle::create();

@@ -48,11 +48,6 @@ Item* BoneSwordPlans::clone()
 	return BoneSwordPlans::create();
 }
 
-const std::string& BoneSwordPlans::getItemName()
-{
-	return BoneSwordPlans::SaveKey;
-}
-
 LocalizedString* BoneSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_BoneSword::create();

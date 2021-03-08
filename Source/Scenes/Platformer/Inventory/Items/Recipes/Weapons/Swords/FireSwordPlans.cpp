@@ -49,11 +49,6 @@ Item* FireSwordPlans::clone()
 	return FireSwordPlans::create();
 }
 
-const std::string& FireSwordPlans::getItemName()
-{
-	return FireSwordPlans::SaveKey;
-}
-
 LocalizedString* FireSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_FireSword::create();

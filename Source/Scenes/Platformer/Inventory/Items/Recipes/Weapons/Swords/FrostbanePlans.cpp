@@ -49,11 +49,6 @@ Item* FrostbanePlans::clone()
 	return FrostbanePlans::create();
 }
 
-const std::string& FrostbanePlans::getItemName()
-{
-	return FrostbanePlans::SaveKey;
-}
-
 LocalizedString* FrostbanePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Frostbane::create();

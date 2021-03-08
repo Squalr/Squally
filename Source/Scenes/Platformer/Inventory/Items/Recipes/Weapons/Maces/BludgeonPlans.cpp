@@ -49,11 +49,6 @@ Item* BludgeonPlans::clone()
 	return BludgeonPlans::create();
 }
 
-const std::string& BludgeonPlans::getItemName()
-{
-	return BludgeonPlans::SaveKey;
-}
-
 LocalizedString* BludgeonPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_Bludgeon::create();

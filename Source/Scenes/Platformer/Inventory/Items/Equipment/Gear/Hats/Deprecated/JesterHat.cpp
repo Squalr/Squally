@@ -46,11 +46,6 @@ Item* JesterHat::clone()
 	return JesterHat::create();
 }
 
-const std::string& JesterHat::getItemName()
-{
-	return JesterHat::SaveKey;
-}
-
 LocalizedString* JesterHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_JesterHat::create();

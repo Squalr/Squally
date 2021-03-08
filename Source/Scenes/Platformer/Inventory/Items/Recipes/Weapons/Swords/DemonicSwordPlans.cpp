@@ -49,11 +49,6 @@ Item* DemonicSwordPlans::clone()
 	return DemonicSwordPlans::create();
 }
 
-const std::string& DemonicSwordPlans::getItemName()
-{
-	return DemonicSwordPlans::SaveKey;
-}
-
 LocalizedString* DemonicSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_DemonicSword::create();

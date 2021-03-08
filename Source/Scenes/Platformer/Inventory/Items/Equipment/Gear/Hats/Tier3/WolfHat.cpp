@@ -46,11 +46,6 @@ Item* WolfHat::clone()
 	return WolfHat::create();
 }
 
-const std::string& WolfHat::getItemName()
-{
-	return WolfHat::SaveKey;
-}
-
 LocalizedString* WolfHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WolfHat::create();

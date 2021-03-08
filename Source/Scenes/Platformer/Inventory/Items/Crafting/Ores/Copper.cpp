@@ -33,11 +33,6 @@ Item* Copper::clone()
 	return Copper::create();
 }
 
-const std::string& Copper::getItemName()
-{
-	return Copper::SaveKey;
-}
-
 LocalizedString* Copper::getString()
 {
 	return Strings::Items_Crafting_Ore_Copper::create();

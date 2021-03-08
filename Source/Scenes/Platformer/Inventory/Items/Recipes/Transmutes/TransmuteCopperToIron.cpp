@@ -48,11 +48,6 @@ Item* TransmuteCopperToIron::clone()
 	return TransmuteCopperToIron::create();
 }
 
-const std::string& TransmuteCopperToIron::getItemName()
-{
-	return TransmuteCopperToIron::SaveKey;
-}
-
 LocalizedString* TransmuteCopperToIron::getString()
 {
 	return Strings::Items_Crafting_Recipes_TransmuteCopperToIron::create();

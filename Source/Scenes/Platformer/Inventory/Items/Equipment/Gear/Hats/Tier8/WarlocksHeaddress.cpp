@@ -46,11 +46,6 @@ Item* WarlocksHeaddress::clone()
 	return WarlocksHeaddress::create();
 }
 
-const std::string& WarlocksHeaddress::getItemName()
-{
-	return WarlocksHeaddress::SaveKey;
-}
-
 LocalizedString* WarlocksHeaddress::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WarlocksHeaddress::create();

@@ -73,11 +73,6 @@ Item* ManaPotion::clone()
 	return ManaPotion::create();
 }
 
-const std::string& ManaPotion::getItemName()
-{
-	return ManaPotion::SaveKey;
-}
-
 LocalizedString* ManaPotion::getString()
 {
 	return Strings::Items_Consumables_Mana_ManaPotion::create();

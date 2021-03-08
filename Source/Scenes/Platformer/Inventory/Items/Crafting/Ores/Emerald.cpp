@@ -33,11 +33,6 @@ Item* Emerald::clone()
 	return Emerald::create();
 }
 
-const std::string& Emerald::getItemName()
-{
-	return Emerald::SaveKey;
-}
-
 LocalizedString* Emerald::getString()
 {
 	return Strings::Items_Crafting_Ore_Emerald::create();

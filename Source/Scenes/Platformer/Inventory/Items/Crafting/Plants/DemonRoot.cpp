@@ -33,11 +33,6 @@ Item* DemonRoot::clone()
 	return DemonRoot::create();
 }
 
-const std::string& DemonRoot::getItemName()
-{
-	return DemonRoot::SaveKey;
-}
-
 LocalizedString* DemonRoot::getString()
 {
 	return Strings::Items_Crafting_Plants_DemonRoot::create();

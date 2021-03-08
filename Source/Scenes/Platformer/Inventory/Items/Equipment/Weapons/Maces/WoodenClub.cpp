@@ -47,11 +47,6 @@ Item* WoodenClub::clone()
 	return WoodenClub::create();
 }
 
-const std::string& WoodenClub::getItemName()
-{
-	return WoodenClub::SaveKey;
-}
-
 LocalizedString* WoodenClub::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_WoodenClub::create();

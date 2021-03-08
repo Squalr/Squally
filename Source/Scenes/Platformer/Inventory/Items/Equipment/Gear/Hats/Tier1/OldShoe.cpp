@@ -46,11 +46,6 @@ Item* OldShoe::clone()
 	return OldShoe::create();
 }
 
-const std::string& OldShoe::getItemName()
-{
-	return OldShoe::SaveKey;
-}
-
 LocalizedString* OldShoe::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_OldShoe::create();

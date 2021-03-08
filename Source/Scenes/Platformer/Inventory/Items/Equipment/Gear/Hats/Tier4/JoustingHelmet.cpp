@@ -46,11 +46,6 @@ Item* JoustingHelmet::clone()
 	return JoustingHelmet::create();
 }
 
-const std::string& JoustingHelmet::getItemName()
-{
-	return JoustingHelmet::SaveKey;
-}
-
 LocalizedString* JoustingHelmet::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_JoustingHelmet::create();

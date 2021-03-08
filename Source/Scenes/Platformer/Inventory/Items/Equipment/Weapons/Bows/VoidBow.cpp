@@ -47,11 +47,6 @@ Item* VoidBow::clone()
 	return VoidBow::create();
 }
 
-const std::string& VoidBow::getItemName()
-{
-	return VoidBow::SaveKey;
-}
-
 LocalizedString* VoidBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_VoidBow::create();

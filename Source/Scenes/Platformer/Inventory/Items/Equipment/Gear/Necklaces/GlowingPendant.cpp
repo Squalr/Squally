@@ -46,11 +46,6 @@ Item* GlowingPendant::clone()
 	return GlowingPendant::create();
 }
 
-const std::string& GlowingPendant::getItemName()
-{
-	return GlowingPendant::SaveKey;
-}
-
 LocalizedString* GlowingPendant::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_GlowingPendant::create();

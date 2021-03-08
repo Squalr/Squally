@@ -73,11 +73,6 @@ Item* IncrementHealthFlask::clone()
 	return IncrementHealthFlask::create();
 }
 
-const std::string& IncrementHealthFlask::getItemName()
-{
-	return IncrementHealthFlask::SaveKey;
-}
-
 LocalizedString* IncrementHealthFlask::getString()
 {
 	return Strings::Items_Consumables_Health_IncrementHealthFlask::create();

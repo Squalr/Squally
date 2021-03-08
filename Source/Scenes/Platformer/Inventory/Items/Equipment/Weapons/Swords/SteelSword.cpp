@@ -47,11 +47,6 @@ Item* SteelSword::clone()
 	return SteelSword::create();
 }
 
-const std::string& SteelSword::getItemName()
-{
-	return SteelSword::SaveKey;
-}
-
 LocalizedString* SteelSword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_SteelSword::create();

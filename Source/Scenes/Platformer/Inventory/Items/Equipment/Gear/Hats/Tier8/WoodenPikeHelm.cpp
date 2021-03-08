@@ -46,11 +46,6 @@ Item* WoodenPikeHelm::clone()
 	return WoodenPikeHelm::create();
 }
 
-const std::string& WoodenPikeHelm::getItemName()
-{
-	return WoodenPikeHelm::SaveKey;
-}
-
 LocalizedString* WoodenPikeHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WoodenPikeHelm::create();

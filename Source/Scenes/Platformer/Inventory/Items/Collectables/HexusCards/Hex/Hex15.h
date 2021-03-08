@@ -10,7 +10,6 @@ public:
 	static Hex15* create();
 
 	Item* clone() override;
-	const std::string& getItemName() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;
 	const std::string& getIdentifier() override;
@@ -20,7 +19,7 @@ public:
 
 protected:
 	Hex15();
-	~Hex15();
+	virtual ~Hex15();
 
 private:
 	typedef HexusCard super;

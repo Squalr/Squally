@@ -46,11 +46,6 @@ Item* DarkHeartBand::clone()
 	return DarkHeartBand::create();
 }
 
-const std::string& DarkHeartBand::getItemName()
-{
-	return DarkHeartBand::SaveKey;
-}
-
 LocalizedString* DarkHeartBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_DarkHeartBand::create();

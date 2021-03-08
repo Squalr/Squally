@@ -49,11 +49,6 @@ Item* SteelBowPlans::clone()
 	return SteelBowPlans::create();
 }
 
-const std::string& SteelBowPlans::getItemName()
-{
-	return SteelBowPlans::SaveKey;
-}
-
 LocalizedString* SteelBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_SteelBow::create();

@@ -46,11 +46,6 @@ Item* WizardsHatWater::clone()
 	return WizardsHatWater::create();
 }
 
-const std::string& WizardsHatWater::getItemName()
-{
-	return WizardsHatWater::SaveKey;
-}
-
 LocalizedString* WizardsHatWater::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatWater::create();

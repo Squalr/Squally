@@ -47,11 +47,6 @@ Item* VoidAxe::clone()
 	return VoidAxe::create();
 }
 
-const std::string& VoidAxe::getItemName()
-{
-	return VoidAxe::SaveKey;
-}
-
 LocalizedString* VoidAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_VoidAxe::create();

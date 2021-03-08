@@ -47,11 +47,6 @@ Item* WoodenClubPlans::clone()
 	return WoodenClubPlans::create();
 }
 
-const std::string& WoodenClubPlans::getItemName()
-{
-	return WoodenClubPlans::SaveKey;
-}
-
 LocalizedString* WoodenClubPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_WoodenClub::create();

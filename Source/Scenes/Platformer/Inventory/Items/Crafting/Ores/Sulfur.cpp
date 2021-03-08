@@ -33,11 +33,6 @@ Item* Sulfur::clone()
 	return Sulfur::create();
 }
 
-const std::string& Sulfur::getItemName()
-{
-	return Sulfur::SaveKey;
-}
-
 LocalizedString* Sulfur::getString()
 {
 	return Strings::Items_Crafting_Ore_Sulfur::create();

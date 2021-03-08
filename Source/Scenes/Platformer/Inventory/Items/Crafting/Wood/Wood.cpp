@@ -33,11 +33,6 @@ Item* Wood::clone()
 	return Wood::create();
 }
 
-const std::string& Wood::getItemName()
-{
-	return Wood::SaveKey;
-}
-
 LocalizedString* Wood::getString()
 {
 	return Strings::Items_Crafting_Wood_Wood::create();

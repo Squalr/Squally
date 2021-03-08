@@ -46,11 +46,6 @@ Item* Tiara::clone()
 	return Tiara::create();
 }
 
-const std::string& Tiara::getItemName()
-{
-	return Tiara::SaveKey;
-}
-
 LocalizedString* Tiara::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_Tiara::create();

@@ -46,11 +46,6 @@ Item* WizardsHatArcane::clone()
 	return WizardsHatArcane::create();
 }
 
-const std::string& WizardsHatArcane::getItemName()
-{
-	return WizardsHatArcane::SaveKey;
-}
-
 LocalizedString* WizardsHatArcane::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatArcane::create();

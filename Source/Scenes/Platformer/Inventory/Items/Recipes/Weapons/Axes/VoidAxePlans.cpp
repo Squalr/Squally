@@ -48,11 +48,6 @@ Item* VoidAxePlans::clone()
 	return VoidAxePlans::create();
 }
 
-const std::string& VoidAxePlans::getItemName()
-{
-	return VoidAxePlans::SaveKey;
-}
-
 LocalizedString* VoidAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_VoidAxe::create();

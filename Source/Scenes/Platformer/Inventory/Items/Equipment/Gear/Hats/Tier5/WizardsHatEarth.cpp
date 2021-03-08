@@ -46,11 +46,6 @@ Item* WizardsHatEarth::clone()
 	return WizardsHatEarth::create();
 }
 
-const std::string& WizardsHatEarth::getItemName()
-{
-	return WizardsHatEarth::SaveKey;
-}
-
 LocalizedString* WizardsHatEarth::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatEarth::create();

@@ -47,11 +47,6 @@ Item* HuntersBow::clone()
 	return HuntersBow::create();
 }
 
-const std::string& HuntersBow::getItemName()
-{
-	return HuntersBow::SaveKey;
-}
-
 LocalizedString* HuntersBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_HuntersBow::create();

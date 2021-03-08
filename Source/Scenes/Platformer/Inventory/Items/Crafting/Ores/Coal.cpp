@@ -33,11 +33,6 @@ Item* Coal::clone()
 	return Coal::create();
 }
 
-const std::string& Coal::getItemName()
-{
-	return Coal::SaveKey;
-}
-
 LocalizedString* Coal::getString()
 {
 	return Strings::Items_Crafting_Ore_Coal::create();

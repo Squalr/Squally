@@ -46,11 +46,6 @@ Item* SoulBand::clone()
 	return SoulBand::create();
 }
 
-const std::string& SoulBand::getItemName()
-{
-	return SoulBand::SaveKey;
-}
-
 LocalizedString* SoulBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_SoulBand::create();

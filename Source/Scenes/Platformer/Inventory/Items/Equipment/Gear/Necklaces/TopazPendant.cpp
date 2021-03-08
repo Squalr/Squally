@@ -46,11 +46,6 @@ Item* TopazPendant::clone()
 	return TopazPendant::create();
 }
 
-const std::string& TopazPendant::getItemName()
-{
-	return TopazPendant::SaveKey;
-}
-
 LocalizedString* TopazPendant::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_TopazPendant::create();

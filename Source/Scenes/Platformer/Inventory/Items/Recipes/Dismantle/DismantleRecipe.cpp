@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string DismantleRecipe::ItemNamePrefix = "dismantle-recipe-";
+const std::string DismantleRecipe::ItemIdentifierPrefix = "dismantle-recipe-";
 
 DismantleRecipe* DismantleRecipe::create(Item* item)
 {
@@ -25,7 +25,7 @@ DismantleRecipe::DismantleRecipe(Item* item) : super()
 {
 	this->dismantleItem = item == nullptr ? nullptr : item->clone();
 	this->dismantledItemRecipe = this->dismantleItem == nullptr ? nullptr : this->dismantleItem->getRecipe();
-	this->dismantleItemName = DismantleRecipe::ItemNamePrefix + (this->dismantleItem == nullptr ? "" : this->dismantleItem->getItemName());
+	this->dismantleItemIdentifier = DismantleRecipe::ItemIdentifierPrefix + (this->dismantleItem == nullptr ? "" : this->dismantleItem->getIdentifier());
 
 	if (this->dismantleItem != nullptr)
 	{
@@ -93,11 +93,6 @@ Item* DismantleRecipe::clone()
 	return DismantleRecipe::create(this->dismantleItem);
 }
 
-const std::string& DismantleRecipe::getItemName()
-{
-	return dismantleItemName;
-}
-
 LocalizedString* DismantleRecipe::getString()
 {
 	return this->dismantleItem == nullptr ? nullptr : this->dismantleItem->getString();
@@ -115,5 +110,5 @@ std::string DismantleRecipe::getCraftedItemIconResource()
 
 const std::string& DismantleRecipe::getIdentifier()
 {
-	return DismantleRecipe::ItemNamePrefix;
+	return dismantleItemIdentifier;
 }

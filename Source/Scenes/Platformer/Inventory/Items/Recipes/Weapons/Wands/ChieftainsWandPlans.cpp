@@ -48,11 +48,6 @@ Item* ChieftainsWandPlans::clone()
 	return ChieftainsWandPlans::create();
 }
 
-const std::string& ChieftainsWandPlans::getItemName()
-{
-	return ChieftainsWandPlans::SaveKey;
-}
-
 LocalizedString* ChieftainsWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_ChieftainsWand::create();

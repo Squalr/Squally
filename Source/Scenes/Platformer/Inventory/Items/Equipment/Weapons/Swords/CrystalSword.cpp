@@ -47,11 +47,6 @@ Item* CrystalSword::clone()
 	return CrystalSword::create();
 }
 
-const std::string& CrystalSword::getItemName()
-{
-	return CrystalSword::SaveKey;
-}
-
 LocalizedString* CrystalSword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CrystalSword::create();

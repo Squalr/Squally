@@ -47,11 +47,6 @@ Item* Dreadmourn::clone()
 	return Dreadmourn::create();
 }
 
-const std::string& Dreadmourn::getItemName()
-{
-	return Dreadmourn::SaveKey;
-}
-
 LocalizedString* Dreadmourn::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Dreadmourn::create();

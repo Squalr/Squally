@@ -46,11 +46,6 @@ Item* LeatherCap::clone()
 	return LeatherCap::create();
 }
 
-const std::string& LeatherCap::getItemName()
-{
-	return LeatherCap::SaveKey;
-}
-
 LocalizedString* LeatherCap::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_LeatherCap::create();

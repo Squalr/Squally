@@ -47,11 +47,6 @@ Item* EmeraldWand::clone()
 	return EmeraldWand::create();
 }
 
-const std::string& EmeraldWand::getItemName()
-{
-	return EmeraldWand::SaveKey;
-}
-
 LocalizedString* EmeraldWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_EmeraldWand::create();

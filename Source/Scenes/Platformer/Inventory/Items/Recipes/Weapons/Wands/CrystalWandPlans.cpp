@@ -48,11 +48,6 @@ Item* CrystalWandPlans::clone()
 	return CrystalWandPlans::create();
 }
 
-const std::string& CrystalWandPlans::getItemName()
-{
-	return CrystalWandPlans::SaveKey;
-}
-
 LocalizedString* CrystalWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_CrystalWand::create();

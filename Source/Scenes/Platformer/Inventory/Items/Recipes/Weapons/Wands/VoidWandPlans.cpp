@@ -48,11 +48,6 @@ Item* VoidWandPlans::clone()
 	return VoidWandPlans::create();
 }
 
-const std::string& VoidWandPlans::getItemName()
-{
-	return VoidWandPlans::SaveKey;
-}
-
 LocalizedString* VoidWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_VoidWand::create();

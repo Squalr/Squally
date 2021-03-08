@@ -47,11 +47,6 @@ Item* QuartzWand::clone()
 	return QuartzWand::create();
 }
 
-const std::string& QuartzWand::getItemName()
-{
-	return QuartzWand::SaveKey;
-}
-
 LocalizedString* QuartzWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_QuartzWand::create();

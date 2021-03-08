@@ -46,11 +46,6 @@ Item* BucketHelm::clone()
 	return BucketHelm::create();
 }
 
-const std::string& BucketHelm::getItemName()
-{
-	return BucketHelm::SaveKey;
-}
-
 LocalizedString* BucketHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_BucketHelm::create();

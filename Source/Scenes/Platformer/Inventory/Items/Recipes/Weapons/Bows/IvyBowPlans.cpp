@@ -48,11 +48,6 @@ Item* IvyBowPlans::clone()
 	return IvyBowPlans::create();
 }
 
-const std::string& IvyBowPlans::getItemName()
-{
-	return IvyBowPlans::SaveKey;
-}
-
 LocalizedString* IvyBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_IvyBow::create();

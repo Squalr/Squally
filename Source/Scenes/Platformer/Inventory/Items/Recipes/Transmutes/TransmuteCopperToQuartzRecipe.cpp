@@ -48,11 +48,6 @@ Item* TransmuteCopperToQuartzRecipe::clone()
 	return TransmuteCopperToQuartzRecipe::create();
 }
 
-const std::string& TransmuteCopperToQuartzRecipe::getItemName()
-{
-	return TransmuteCopperToQuartzRecipe::SaveKey;
-}
-
 LocalizedString* TransmuteCopperToQuartzRecipe::getString()
 {
 	return Strings::Items_Crafting_Recipes_TransmuteCopperToQuartz::create();

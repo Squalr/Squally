@@ -34,11 +34,6 @@ Item* Decimal13::clone()
 	return Decimal13::create();
 }
 
-const std::string& Decimal13::getItemName()
-{
-	return Decimal13::SaveKey;
-}
-
 LocalizedString* Decimal13::getString()
 {
 	return Strings::Hexus_Cards_Decimal13::create();

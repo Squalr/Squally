@@ -33,11 +33,6 @@ Item* Mithril::clone()
 	return Mithril::create();
 }
 
-const std::string& Mithril::getItemName()
-{
-	return Mithril::SaveKey;
-}
-
 LocalizedString* Mithril::getString()
 {
 	return Strings::Items_Crafting_Ore_Mithril::create();

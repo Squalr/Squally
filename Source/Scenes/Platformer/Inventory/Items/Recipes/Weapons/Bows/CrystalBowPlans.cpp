@@ -48,11 +48,6 @@ Item* CrystalBowPlans::clone()
 	return CrystalBowPlans::create();
 }
 
-const std::string& CrystalBowPlans::getItemName()
-{
-	return CrystalBowPlans::SaveKey;
-}
-
 LocalizedString* CrystalBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_CrystalBow::create();

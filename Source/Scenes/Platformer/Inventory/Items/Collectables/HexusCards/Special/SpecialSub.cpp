@@ -34,11 +34,6 @@ Item* SpecialSub::clone()
 	return SpecialSub::create();
 }
 
-const std::string& SpecialSub::getItemName()
-{
-	return SpecialSub::SaveKey;
-}
-
 LocalizedString* SpecialSub::getString()
 {
 	return Strings::Hexus_Cards_Subtract::create();

@@ -47,11 +47,6 @@ Item* AshenBlade::clone()
 	return AshenBlade::create();
 }
 
-const std::string& AshenBlade::getItemName()
-{
-	return AshenBlade::SaveKey;
-}
-
 LocalizedString* AshenBlade::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_AshenBlade::create();

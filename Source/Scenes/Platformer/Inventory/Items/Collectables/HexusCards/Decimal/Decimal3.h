@@ -10,7 +10,6 @@ public:
 	static Decimal3* create();
 
 	Item* clone() override;
-	const std::string& getItemName() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;
 	const std::string& getIdentifier() override;
@@ -20,7 +19,7 @@ public:
 
 protected:
 	Decimal3();
-	~Decimal3();
+	virtual ~Decimal3();
 
 private:
 	typedef HexusCard super;

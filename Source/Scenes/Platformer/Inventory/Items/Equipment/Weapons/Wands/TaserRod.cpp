@@ -47,11 +47,6 @@ Item* TaserRod::clone()
 	return TaserRod::create();
 }
 
-const std::string& TaserRod::getItemName()
-{
-	return TaserRod::SaveKey;
-}
-
 LocalizedString* TaserRod::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_TaserRod::create();

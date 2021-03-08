@@ -33,11 +33,6 @@ Item* SandRoot::clone()
 	return SandRoot::create();
 }
 
-const std::string& SandRoot::getItemName()
-{
-	return SandRoot::SaveKey;
-}
-
 LocalizedString* SandRoot::getString()
 {
 	return Strings::Items_Crafting_Plants_SandRoot::create();

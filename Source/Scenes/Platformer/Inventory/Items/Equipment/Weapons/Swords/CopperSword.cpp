@@ -47,11 +47,6 @@ Item* CopperSword::clone()
 	return CopperSword::create();
 }
 
-const std::string& CopperSword::getItemName()
-{
-	return CopperSword::SaveKey;
-}
-
 LocalizedString* CopperSword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CopperSword::create();

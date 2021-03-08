@@ -48,11 +48,6 @@ Item* FrostAxePlans::clone()
 	return FrostAxePlans::create();
 }
 
-const std::string& FrostAxePlans::getItemName()
-{
-	return FrostAxePlans::SaveKey;
-}
-
 LocalizedString* FrostAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_FrostAxe::create();

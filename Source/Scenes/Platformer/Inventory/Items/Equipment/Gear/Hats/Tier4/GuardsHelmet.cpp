@@ -46,11 +46,6 @@ Item* GuardsHelmet::clone()
 	return GuardsHelmet::create();
 }
 
-const std::string& GuardsHelmet::getItemName()
-{
-	return GuardsHelmet::SaveKey;
-}
-
 LocalizedString* GuardsHelmet::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GuardsHelmet::create();

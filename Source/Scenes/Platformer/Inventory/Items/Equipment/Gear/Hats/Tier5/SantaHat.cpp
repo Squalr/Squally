@@ -46,11 +46,6 @@ Item* SantaHat::clone()
 	return SantaHat::create();
 }
 
-const std::string& SantaHat::getItemName()
-{
-	return SantaHat::SaveKey;
-}
-
 LocalizedString* SantaHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();

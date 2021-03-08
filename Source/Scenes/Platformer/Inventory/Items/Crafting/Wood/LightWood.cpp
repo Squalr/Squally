@@ -33,11 +33,6 @@ Item* LightWood::clone()
 	return LightWood::create();
 }
 
-const std::string& LightWood::getItemName()
-{
-	return LightWood::SaveKey;
-}
-
 LocalizedString* LightWood::getString()
 {
 	return Strings::Items_Crafting_Wood_LightWood::create();

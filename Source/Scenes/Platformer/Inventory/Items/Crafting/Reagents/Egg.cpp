@@ -33,11 +33,6 @@ Item* Egg::clone()
 	return Egg::create();
 }
 
-const std::string& Egg::getItemName()
-{
-	return Egg::SaveKey;
-}
-
 LocalizedString* Egg::getString()
 {
 	return Strings::Items_Crafting_Reagents_Egg::create();

@@ -46,11 +46,6 @@ Item* SteelHelm::clone()
 	return SteelHelm::create();
 }
 
-const std::string& SteelHelm::getItemName()
-{
-	return SteelHelm::SaveKey;
-}
-
 LocalizedString* SteelHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SteelHelm::create();

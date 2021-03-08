@@ -34,11 +34,6 @@ Item* Decimal8::clone()
 	return Decimal8::create();
 }
 
-const std::string& Decimal8::getItemName()
-{
-	return Decimal8::SaveKey;
-}
-
 LocalizedString* Decimal8::getString()
 {
 	return Strings::Hexus_Cards_Decimal8::create();

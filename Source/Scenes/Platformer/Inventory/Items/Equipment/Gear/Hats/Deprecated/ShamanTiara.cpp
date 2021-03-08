@@ -46,11 +46,6 @@ Item* ShamanTiara::clone()
 	return ShamanTiara::create();
 }
 
-const std::string& ShamanTiara::getItemName()
-{
-	return ShamanTiara::SaveKey;
-}
-
 LocalizedString* ShamanTiara::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ShamanTiara::create();

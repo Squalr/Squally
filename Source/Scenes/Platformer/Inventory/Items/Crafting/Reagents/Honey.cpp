@@ -33,11 +33,6 @@ Item* Honey::clone()
 	return Honey::create();
 }
 
-const std::string& Honey::getItemName()
-{
-	return Honey::SaveKey;
-}
-
 LocalizedString* Honey::getString()
 {
 	return Strings::Items_Crafting_Reagents_Honey::create();

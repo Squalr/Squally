@@ -46,11 +46,6 @@ Item* GardenersHat::clone()
 	return GardenersHat::create();
 }
 
-const std::string& GardenersHat::getItemName()
-{
-	return GardenersHat::SaveKey;
-}
-
 LocalizedString* GardenersHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GardenersHat::create();

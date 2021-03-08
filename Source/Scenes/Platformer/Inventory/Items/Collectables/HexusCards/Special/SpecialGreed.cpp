@@ -34,11 +34,6 @@ Item* SpecialGreed::clone()
 	return SpecialGreed::create();
 }
 
-const std::string& SpecialGreed::getItemName()
-{
-	return SpecialGreed::SaveKey;
-}
-
 LocalizedString* SpecialGreed::getString()
 {
 	return Strings::Hexus_Cards_Greed::create();

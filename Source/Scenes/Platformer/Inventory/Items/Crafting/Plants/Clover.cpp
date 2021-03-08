@@ -33,11 +33,6 @@ Item* Clover::clone()
 	return Clover::create();
 }
 
-const std::string& Clover::getItemName()
-{
-	return Clover::SaveKey;
-}
-
 LocalizedString* Clover::getString()
 {
 	return Strings::Items_Crafting_Plants_Clover::create();

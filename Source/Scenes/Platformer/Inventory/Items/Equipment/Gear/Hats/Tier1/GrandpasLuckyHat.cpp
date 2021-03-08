@@ -46,11 +46,6 @@ Item* GrandpasLuckyHat::clone()
 	return GrandpasLuckyHat::create();
 }
 
-const std::string& GrandpasLuckyHat::getItemName()
-{
-	return GrandpasLuckyHat::SaveKey;
-}
-
 LocalizedString* GrandpasLuckyHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GrandpasLuckyHat::create();

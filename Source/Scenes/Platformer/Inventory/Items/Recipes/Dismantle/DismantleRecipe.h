@@ -9,13 +9,12 @@ public:
 
 	std::vector<Item*> craft() override;
 	Item* clone() override;
-	const std::string& getItemName() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;
 	std::string getCraftedItemIconResource() override;
 	const std::string& getIdentifier() override;
 
-	static const std::string ItemNamePrefix;
+	static const std::string ItemIdentifierPrefix;
 
 protected:
 	DismantleRecipe(Item* item);
@@ -28,5 +27,5 @@ private:
 
 	Item* dismantleItem;
 	Recipe* dismantledItemRecipe;
-	std::string dismantleItemName;
+	std::string dismantleItemIdentifier;
 };

@@ -10,7 +10,6 @@ public:
 	static Binary0* create();
 
 	Item* clone() override;
-	const std::string& getItemName() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;
 	const std::string& getIdentifier() override;
@@ -20,7 +19,7 @@ public:
 
 protected:
 	Binary0();
-	~Binary0();
+	virtual ~Binary0();
 
 private:
 	typedef HexusCard super;

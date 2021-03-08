@@ -46,11 +46,6 @@ Item* GarnetBand::clone()
 	return GarnetBand::create();
 }
 
-const std::string& GarnetBand::getItemName()
-{
-	return GarnetBand::SaveKey;
-}
-
 LocalizedString* GarnetBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_GarnetBand::create();

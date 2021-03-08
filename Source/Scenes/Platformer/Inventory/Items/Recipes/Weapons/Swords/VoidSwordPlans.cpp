@@ -48,11 +48,6 @@ Item* VoidSwordPlans::clone()
 	return VoidSwordPlans::create();
 }
 
-const std::string& VoidSwordPlans::getItemName()
-{
-	return VoidSwordPlans::SaveKey;
-}
-
 LocalizedString* VoidSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_VoidSword::create();

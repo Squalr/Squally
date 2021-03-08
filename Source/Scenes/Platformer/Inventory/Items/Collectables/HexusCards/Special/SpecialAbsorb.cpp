@@ -34,11 +34,6 @@ Item* SpecialAbsorb::clone()
 	return SpecialAbsorb::create();
 }
 
-const std::string& SpecialAbsorb::getItemName()
-{
-	return SpecialAbsorb::SaveKey;
-}
-
 LocalizedString* SpecialAbsorb::getString()
 {
 	return Strings::Hexus_Cards_Absorb::create();

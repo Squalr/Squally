@@ -46,11 +46,6 @@ Item* PriestHat::clone()
 	return PriestHat::create();
 }
 
-const std::string& PriestHat::getItemName()
-{
-	return PriestHat::SaveKey;
-}
-
 LocalizedString* PriestHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_PriestHat::create();

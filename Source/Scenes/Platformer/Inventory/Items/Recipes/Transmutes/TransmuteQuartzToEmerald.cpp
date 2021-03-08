@@ -48,11 +48,6 @@ Item* TransmuteQuartzToEmerald::clone()
 	return TransmuteQuartzToEmerald::create();
 }
 
-const std::string& TransmuteQuartzToEmerald::getItemName()
-{
-	return TransmuteQuartzToEmerald::SaveKey;
-}
-
 LocalizedString* TransmuteQuartzToEmerald::getString()
 {
 	return Strings::Items_Crafting_Recipes_TransmuteQuartzToEmerald::create();

@@ -33,11 +33,6 @@ Item* Ruby::clone()
 	return Ruby::create();
 }
 
-const std::string& Ruby::getItemName()
-{
-	return Ruby::SaveKey;
-}
-
 LocalizedString* Ruby::getString()
 {
 	return Strings::Items_Crafting_Ore_Ruby::create();

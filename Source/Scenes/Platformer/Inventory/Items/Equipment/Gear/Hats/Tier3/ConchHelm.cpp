@@ -46,11 +46,6 @@ Item* ConchHelm::clone()
 	return ConchHelm::create();
 }
 
-const std::string& ConchHelm::getItemName()
-{
-	return ConchHelm::SaveKey;
-}
-
 LocalizedString* ConchHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ConchHelm::create();

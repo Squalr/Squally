@@ -46,11 +46,6 @@ Item* EmeraldEarrings::clone()
 	return EmeraldEarrings::create();
 }
 
-const std::string& EmeraldEarrings::getItemName()
-{
-	return EmeraldEarrings::SaveKey;
-}
-
 LocalizedString* EmeraldEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_EmeraldEarrings::create();

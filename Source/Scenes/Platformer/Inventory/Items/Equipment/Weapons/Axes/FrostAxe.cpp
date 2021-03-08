@@ -47,11 +47,6 @@ Item* FrostAxe::clone()
 	return FrostAxe::create();
 }
 
-const std::string& FrostAxe::getItemName()
-{
-	return FrostAxe::SaveKey;
-}
-
 LocalizedString* FrostAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_FrostAxe::create();

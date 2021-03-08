@@ -33,11 +33,6 @@ Item* Sapphire::clone()
 	return Sapphire::create();
 }
 
-const std::string& Sapphire::getItemName()
-{
-	return Sapphire::SaveKey;
-}
-
 LocalizedString* Sapphire::getString()
 {
 	return Strings::Items_Crafting_Ore_Sapphire::create();

@@ -34,11 +34,6 @@ Item* SpecialInv::clone()
 	return SpecialInv::create();
 }
 
-const std::string& SpecialInv::getItemName()
-{
-	return SpecialInv::SaveKey;
-}
-
 LocalizedString* SpecialInv::getString()
 {
 	return Strings::Hexus_Cards_Inverse::create();

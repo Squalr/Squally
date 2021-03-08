@@ -47,11 +47,6 @@ Item* SteelMace::clone()
 	return SteelMace::create();
 }
 
-const std::string& SteelMace::getItemName()
-{
-	return SteelMace::SaveKey;
-}
-
 LocalizedString* SteelMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_SteelMace::create();

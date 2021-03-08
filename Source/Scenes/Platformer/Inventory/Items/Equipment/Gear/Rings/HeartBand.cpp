@@ -46,11 +46,6 @@ Item* HeartBand::clone()
 	return HeartBand::create();
 }
 
-const std::string& HeartBand::getItemName()
-{
-	return HeartBand::SaveKey;
-}
-
 LocalizedString* HeartBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_HeartBand::create();

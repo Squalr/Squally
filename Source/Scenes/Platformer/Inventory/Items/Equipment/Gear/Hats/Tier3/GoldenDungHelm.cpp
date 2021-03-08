@@ -46,11 +46,6 @@ Item* GoldenDungHelm::clone()
 	return GoldenDungHelm::create();
 }
 
-const std::string& GoldenDungHelm::getItemName()
-{
-	return GoldenDungHelm::SaveKey;
-}
-
 LocalizedString* GoldenDungHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GoldenDungHelm::create();

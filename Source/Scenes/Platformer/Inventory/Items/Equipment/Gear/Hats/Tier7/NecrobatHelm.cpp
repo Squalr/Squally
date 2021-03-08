@@ -46,11 +46,6 @@ Item* NecrobatHelm::clone()
 	return NecrobatHelm::create();
 }
 
-const std::string& NecrobatHelm::getItemName()
-{
-	return NecrobatHelm::SaveKey;
-}
-
 LocalizedString* NecrobatHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_NecrobatHelm::create();

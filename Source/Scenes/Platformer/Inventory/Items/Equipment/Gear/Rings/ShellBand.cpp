@@ -46,11 +46,6 @@ Item* ShellBand::clone()
 	return ShellBand::create();
 }
 
-const std::string& ShellBand::getItemName()
-{
-	return ShellBand::SaveKey;
-}
-
 LocalizedString* ShellBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_ShellBand::create();

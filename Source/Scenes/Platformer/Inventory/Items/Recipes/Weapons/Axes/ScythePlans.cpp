@@ -48,11 +48,6 @@ Item* ScythePlans::clone()
 	return ScythePlans::create();
 }
 
-const std::string& ScythePlans::getItemName()
-{
-	return ScythePlans::SaveKey;
-}
-
 LocalizedString* ScythePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_Scythe::create();

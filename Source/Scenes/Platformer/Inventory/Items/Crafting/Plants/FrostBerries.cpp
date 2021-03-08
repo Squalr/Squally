@@ -33,11 +33,6 @@ Item* FrostBerries::clone()
 	return FrostBerries::create();
 }
 
-const std::string& FrostBerries::getItemName()
-{
-	return FrostBerries::SaveKey;
-}
-
 LocalizedString* FrostBerries::getString()
 {
 	return Strings::Items_Crafting_Plants_FrostBerries::create();

@@ -34,11 +34,6 @@ Item* SpecialFlip4::clone()
 	return SpecialFlip4::create();
 }
 
-const std::string& SpecialFlip4::getItemName()
-{
-	return SpecialFlip4::SaveKey;
-}
-
 LocalizedString* SpecialFlip4::getString()
 {
 	return Strings::Hexus_Cards_Flip4::create();

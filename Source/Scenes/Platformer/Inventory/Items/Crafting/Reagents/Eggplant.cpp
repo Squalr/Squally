@@ -33,11 +33,6 @@ Item* Eggplant::clone()
 	return Eggplant::create();
 }
 
-const std::string& Eggplant::getItemName()
-{
-	return Eggplant::SaveKey;
-}
-
 LocalizedString* Eggplant::getString()
 {
 	return Strings::Items_Crafting_Reagents_Eggplant::create();

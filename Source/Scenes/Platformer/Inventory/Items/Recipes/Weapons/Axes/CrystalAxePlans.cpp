@@ -48,11 +48,6 @@ Item* CrystalAxePlans::clone()
 	return CrystalAxePlans::create();
 }
 
-const std::string& CrystalAxePlans::getItemName()
-{
-	return CrystalAxePlans::SaveKey;
-}
-
 LocalizedString* CrystalAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_CrystalAxe::create();

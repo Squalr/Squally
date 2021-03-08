@@ -33,11 +33,6 @@ Item* Quartz::clone()
 	return Quartz::create();
 }
 
-const std::string& Quartz::getItemName()
-{
-	return Quartz::SaveKey;
-}
-
 LocalizedString* Quartz::getString()
 {
 	return Strings::Items_Crafting_Ore_Quartz::create();

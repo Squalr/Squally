@@ -34,11 +34,6 @@ Item* SpecialShl::clone()
 	return SpecialShl::create();
 }
 
-const std::string& SpecialShl::getItemName()
-{
-	return SpecialShl::SaveKey;
-}
-
 LocalizedString* SpecialShl::getString()
 {
 	return Strings::Hexus_Cards_ShiftLeft::create();

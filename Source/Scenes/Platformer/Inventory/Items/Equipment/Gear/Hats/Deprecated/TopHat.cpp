@@ -46,11 +46,6 @@ Item* TopHat::clone()
 	return TopHat::create();
 }
 
-const std::string& TopHat::getItemName()
-{
-	return TopHat::SaveKey;
-}
-
 LocalizedString* TopHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TopHat::create();

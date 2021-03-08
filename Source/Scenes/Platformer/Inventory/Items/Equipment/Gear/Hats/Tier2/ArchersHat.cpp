@@ -46,11 +46,6 @@ Item* ArchersHat::clone()
 	return ArchersHat::create();
 }
 
-const std::string& ArchersHat::getItemName()
-{
-	return ArchersHat::SaveKey;
-}
-
 LocalizedString* ArchersHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ArchersHat::create();

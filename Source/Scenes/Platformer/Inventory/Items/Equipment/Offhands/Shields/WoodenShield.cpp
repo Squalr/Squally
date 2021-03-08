@@ -46,11 +46,6 @@ Item* WoodenShield::clone()
 	return WoodenShield::create();
 }
 
-const std::string& WoodenShield::getItemName()
-{
-	return WoodenShield::SaveKey;
-}
-
 LocalizedString* WoodenShield::getString()
 {
 	return Strings::Items_Equipment_Offhands_Shields_WoodenShield::create();

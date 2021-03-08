@@ -47,11 +47,6 @@ Item* VoidWand::clone()
 	return VoidWand::create();
 }
 
-const std::string& VoidWand::getItemName()
-{
-	return VoidWand::SaveKey;
-}
-
 LocalizedString* VoidWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_VoidWand::create();

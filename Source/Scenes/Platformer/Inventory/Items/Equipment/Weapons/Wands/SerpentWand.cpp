@@ -47,11 +47,6 @@ Item* SerpentWand::clone()
 	return SerpentWand::create();
 }
 
-const std::string& SerpentWand::getItemName()
-{
-	return SerpentWand::SaveKey;
-}
-
 LocalizedString* SerpentWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_SerpentWand::create();

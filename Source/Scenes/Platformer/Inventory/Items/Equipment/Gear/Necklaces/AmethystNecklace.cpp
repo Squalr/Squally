@@ -46,11 +46,6 @@ Item* AmethystNecklace::clone()
 	return AmethystNecklace::create();
 }
 
-const std::string& AmethystNecklace::getItemName()
-{
-	return AmethystNecklace::SaveKey;
-}
-
 LocalizedString* AmethystNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_AmethystNecklace::create();

@@ -46,11 +46,6 @@ Item* SapphireNecklace::clone()
 	return SapphireNecklace::create();
 }
 
-const std::string& SapphireNecklace::getItemName()
-{
-	return SapphireNecklace::SaveKey;
-}
-
 LocalizedString* SapphireNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_SapphireNecklace::create();

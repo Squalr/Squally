@@ -34,11 +34,6 @@ Item* SpecialMov::clone()
 	return SpecialMov::create();
 }
 
-const std::string& SpecialMov::getItemName()
-{
-	return SpecialMov::SaveKey;
-}
-
 LocalizedString* SpecialMov::getString()
 {
 	return Strings::Hexus_Cards_Mov::create();

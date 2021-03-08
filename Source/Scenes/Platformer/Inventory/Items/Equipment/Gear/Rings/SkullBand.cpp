@@ -46,11 +46,6 @@ Item* SkullBand::clone()
 	return SkullBand::create();
 }
 
-const std::string& SkullBand::getItemName()
-{
-	return SkullBand::SaveKey;
-}
-
 LocalizedString* SkullBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_SkullBand::create();

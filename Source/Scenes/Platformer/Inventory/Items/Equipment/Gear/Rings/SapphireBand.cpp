@@ -46,11 +46,6 @@ Item* SapphireBand::clone()
 	return SapphireBand::create();
 }
 
-const std::string& SapphireBand::getItemName()
-{
-	return SapphireBand::SaveKey;
-}
-
 LocalizedString* SapphireBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_SapphireBand::create();

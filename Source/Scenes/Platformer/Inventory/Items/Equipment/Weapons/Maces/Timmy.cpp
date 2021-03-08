@@ -47,11 +47,6 @@ Item* Timmy::clone()
 	return Timmy::create();
 }
 
-const std::string& Timmy::getItemName()
-{
-	return Timmy::SaveKey;
-}
-
 LocalizedString* Timmy::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_Timmy::create();

@@ -46,11 +46,6 @@ Item* RoseEarrings::clone()
 	return RoseEarrings::create();
 }
 
-const std::string& RoseEarrings::getItemName()
-{
-	return RoseEarrings::SaveKey;
-}
-
 LocalizedString* RoseEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_RoseEarrings::create();

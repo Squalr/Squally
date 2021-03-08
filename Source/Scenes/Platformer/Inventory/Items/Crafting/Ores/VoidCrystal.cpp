@@ -33,11 +33,6 @@ Item* VoidCrystal::clone()
 	return VoidCrystal::create();
 }
 
-const std::string& VoidCrystal::getItemName()
-{
-	return VoidCrystal::SaveKey;
-}
-
 LocalizedString* VoidCrystal::getString()
 {
 	return Strings::Items_Crafting_Ore_VoidCrystal::create();

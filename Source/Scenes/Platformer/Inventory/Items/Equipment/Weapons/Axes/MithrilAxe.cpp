@@ -47,11 +47,6 @@ Item* MithrilAxe::clone()
 	return MithrilAxe::create();
 }
 
-const std::string& MithrilAxe::getItemName()
-{
-	return MithrilAxe::SaveKey;
-}
-
 LocalizedString* MithrilAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_MithrilAxe::create();

@@ -46,11 +46,6 @@ Item* CopperHelm::clone()
 	return CopperHelm::create();
 }
 
-const std::string& CopperHelm::getItemName()
-{
-	return CopperHelm::SaveKey;
-}
-
 LocalizedString* CopperHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_CopperHelm::create();

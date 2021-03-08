@@ -48,11 +48,6 @@ Item* SerpentWandPlans::clone()
 	return SerpentWandPlans::create();
 }
 
-const std::string& SerpentWandPlans::getItemName()
-{
-	return SerpentWandPlans::SaveKey;
-}
-
 LocalizedString* SerpentWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_TaserRod::create();

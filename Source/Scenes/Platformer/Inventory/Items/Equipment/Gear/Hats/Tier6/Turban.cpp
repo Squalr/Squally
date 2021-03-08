@@ -46,11 +46,6 @@ Item* Turban::clone()
 	return Turban::create();
 }
 
-const std::string& Turban::getItemName()
-{
-	return Turban::SaveKey;
-}
-
 LocalizedString* Turban::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_Turban::create();

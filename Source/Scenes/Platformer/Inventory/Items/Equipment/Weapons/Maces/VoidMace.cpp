@@ -47,11 +47,6 @@ Item* VoidMace::clone()
 	return VoidMace::create();
 }
 
-const std::string& VoidMace::getItemName()
-{
-	return VoidMace::SaveKey;
-}
-
 LocalizedString* VoidMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_VoidMace::create();

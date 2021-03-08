@@ -46,11 +46,6 @@ Item* HolyNecklace::clone()
 	return HolyNecklace::create();
 }
 
-const std::string& HolyNecklace::getItemName()
-{
-	return HolyNecklace::SaveKey;
-}
-
 LocalizedString* HolyNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_HolyNecklace::create();

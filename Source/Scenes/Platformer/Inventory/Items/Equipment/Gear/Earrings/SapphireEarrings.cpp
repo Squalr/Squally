@@ -46,11 +46,6 @@ Item* SapphireEarrings::clone()
 	return SapphireEarrings::create();
 }
 
-const std::string& SapphireEarrings::getItemName()
-{
-	return SapphireEarrings::SaveKey;
-}
-
 LocalizedString* SapphireEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_SapphireEarrings::create();

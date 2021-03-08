@@ -34,11 +34,6 @@ Item* SpecialAdd::clone()
 	return SpecialAdd::create();
 }
 
-const std::string& SpecialAdd::getItemName()
-{
-	return SpecialAdd::SaveKey;
-}
-
 LocalizedString* SpecialAdd::getString()
 {
 	return Strings::Hexus_Cards_Addition::create();

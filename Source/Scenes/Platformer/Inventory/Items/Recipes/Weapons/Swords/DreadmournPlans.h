@@ -9,7 +9,6 @@ public:
 
 	std::vector<Item*> craft() override;
 	Item* clone() override;
-	const std::string& getItemName() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;
 	std::string getCraftedItemIconResource() override;

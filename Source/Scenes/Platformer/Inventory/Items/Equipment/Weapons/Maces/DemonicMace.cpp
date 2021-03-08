@@ -47,11 +47,6 @@ Item* DemonicMace::clone()
 	return DemonicMace::create();
 }
 
-const std::string& DemonicMace::getItemName()
-{
-	return DemonicMace::SaveKey;
-}
-
 LocalizedString* DemonicMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_DemonicMace::create();

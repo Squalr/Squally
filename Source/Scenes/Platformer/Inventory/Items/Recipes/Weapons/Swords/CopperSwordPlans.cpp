@@ -48,11 +48,6 @@ Item* CopperSwordPlans::clone()
 	return CopperSwordPlans::create();
 }
 
-const std::string& CopperSwordPlans::getItemName()
-{
-	return CopperSwordPlans::SaveKey;
-}
-
 LocalizedString* CopperSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CopperSword::create();

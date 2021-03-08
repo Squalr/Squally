@@ -41,7 +41,6 @@ public:
 	};
 
 	virtual Item* clone() = 0;
-	virtual const std::string& getItemName() = 0;
 	virtual LocalizedString* getString() = 0;
 	virtual const std::string& getIconResource() = 0;
 	virtual const std::string& getIdentifier() = 0;

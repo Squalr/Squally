@@ -49,11 +49,6 @@ Item* MithrilMacePlans::clone()
 	return MithrilMacePlans::create();
 }
 
-const std::string& MithrilMacePlans::getItemName()
-{
-	return MithrilMacePlans::SaveKey;
-}
-
 LocalizedString* MithrilMacePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_MithrilMace::create();

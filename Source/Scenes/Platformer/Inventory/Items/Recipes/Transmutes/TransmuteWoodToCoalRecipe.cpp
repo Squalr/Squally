@@ -47,11 +47,6 @@ Item* TransmuteWoodToCoalRecipe::clone()
 	return TransmuteWoodToCoalRecipe::create();
 }
 
-const std::string& TransmuteWoodToCoalRecipe::getItemName()
-{
-	return TransmuteWoodToCoalRecipe::SaveKey;
-}
-
 LocalizedString* TransmuteWoodToCoalRecipe::getString()
 {
 	return Strings::Items_Crafting_Recipes_TransmuteWoodToCoal::create();

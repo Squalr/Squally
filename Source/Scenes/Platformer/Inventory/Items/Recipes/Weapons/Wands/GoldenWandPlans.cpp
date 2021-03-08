@@ -49,11 +49,6 @@ Item* GoldenWandPlans::clone()
 	return GoldenWandPlans::create();
 }
 
-const std::string& GoldenWandPlans::getItemName()
-{
-	return GoldenWandPlans::SaveKey;
-}
-
 LocalizedString* GoldenWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_GoldenWand::create();

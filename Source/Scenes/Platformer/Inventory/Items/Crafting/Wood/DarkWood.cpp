@@ -33,11 +33,6 @@ Item* DarkWood::clone()
 	return DarkWood::create();
 }
 
-const std::string& DarkWood::getItemName()
-{
-	return DarkWood::SaveKey;
-}
-
 LocalizedString* DarkWood::getString()
 {
 	return Strings::Items_Crafting_Wood_DarkWood::create();

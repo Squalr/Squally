@@ -46,11 +46,6 @@ Item* BarbedHelm::clone()
 	return BarbedHelm::create();
 }
 
-const std::string& BarbedHelm::getItemName()
-{
-	return BarbedHelm::SaveKey;
-}
-
 LocalizedString* BarbedHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_BarbedHelm::create();

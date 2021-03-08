@@ -47,11 +47,6 @@ Item* DemonicBow::clone()
 	return DemonicBow::create();
 }
 
-const std::string& DemonicBow::getItemName()
-{
-	return DemonicBow::SaveKey;
-}
-
 LocalizedString* DemonicBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_DemonicBow::create();

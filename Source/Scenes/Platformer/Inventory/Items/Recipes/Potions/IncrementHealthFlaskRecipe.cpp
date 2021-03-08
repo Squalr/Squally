@@ -49,11 +49,6 @@ Item* IncrementHealthFlaskRecipe::clone()
 	return IncrementHealthFlaskRecipe::create();
 }
 
-const std::string& IncrementHealthFlaskRecipe::getItemName()
-{
-	return IncrementHealthFlaskRecipe::SaveKey;
-}
-
 LocalizedString* IncrementHealthFlaskRecipe::getString()
 {
 	return Strings::Items_Consumables_Health_IncrementHealthFlask::create();

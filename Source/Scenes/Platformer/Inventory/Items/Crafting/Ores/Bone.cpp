@@ -33,11 +33,6 @@ Item* Bone::clone()
 	return Bone::create();
 }
 
-const std::string& Bone::getItemName()
-{
-	return Bone::SaveKey;
-}
-
 LocalizedString* Bone::getString()
 {
 	return Strings::Items_Crafting_Ore_Bone::create();

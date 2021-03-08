@@ -14,6 +14,7 @@ public:
 protected:
 	IncrementHealthGenericPreview();
 	virtual ~IncrementHealthGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 

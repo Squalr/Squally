@@ -47,11 +47,6 @@ Item* CrystalMace::clone()
 	return CrystalMace::create();
 }
 
-const std::string& CrystalMace::getItemName()
-{
-	return CrystalMace::SaveKey;
-}
-
 LocalizedString* CrystalMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_CrystalMace::create();

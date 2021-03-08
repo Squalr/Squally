@@ -33,11 +33,6 @@ Item* FountainRoomKey::clone()
 	return FountainRoomKey::create();
 }
 
-const std::string& FountainRoomKey::getItemName()
-{
-	return FountainRoomKey::SaveKey;
-}
-
 LocalizedString* FountainRoomKey::getString()
 {
 	return Strings::Items_Misc_Keys_FountainRoomKey::create();

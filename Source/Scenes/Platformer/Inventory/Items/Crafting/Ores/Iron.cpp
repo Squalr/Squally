@@ -33,11 +33,6 @@ Item* Iron::clone()
 	return Iron::create();
 }
 
-const std::string& Iron::getItemName()
-{
-	return Iron::SaveKey;
-}
-
 LocalizedString* Iron::getString()
 {
 	return Strings::Items_Crafting_Ore_Iron::create();

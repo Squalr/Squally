@@ -33,11 +33,6 @@ Item* VoidFlower::clone()
 	return VoidFlower::create();
 }
 
-const std::string& VoidFlower::getItemName()
-{
-	return VoidFlower::SaveKey;
-}
-
 LocalizedString* VoidFlower::getString()
 {
 	return Strings::Items_Crafting_Plants_VoidFlower::create();
