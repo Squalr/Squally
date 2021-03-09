@@ -205,7 +205,7 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 
 	if (dynamic_cast<Recipe*>(item) != nullptr)
 	{
-		std::vector<Item*>& craftedItems = dynamic_cast<Recipe*>(item)->getCraftedItemsRef();
+		const std::vector<Item*>& craftedItems = dynamic_cast<Recipe*>(item)->getCraftedItemsRef();
 
 		item = craftedItems.size() > 0 ? craftedItems[0] : nullptr;
 	}

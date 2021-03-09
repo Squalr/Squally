@@ -11,6 +11,7 @@
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftFilterMenu/Dismantle/AllEquipmentFilter.h"
+#include "Menus/Crafting/CraftingPreview.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -41,6 +42,7 @@ DismantleMenu::DismantleMenu() : super(Strings::Menus_Crafting_Dismantle::create
 	this->dismantledRecipiesNode = Node::create();
 
 	this->filterMenu->addFilter(AllEquipmentFilter::create());
+	this->craftingPreview->setDisplayMode(CraftingPreview::DisplayMode::ProducedItems);
 
 	this->backDecorNode->addChild(this->smeltingPot);
 	this->craftIconNode->addChild(this->icon);

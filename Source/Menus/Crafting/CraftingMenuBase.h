@@ -46,6 +46,7 @@ protected:
 	CraftFilterMenu* filterMenu;
 	cocos2d::Node* backDecorNode;
 	cocos2d::Node* craftIconNode;
+	CraftingPreview* craftingPreview;
 	Item* selectedRecipe;
 
 private:
@@ -62,7 +63,6 @@ private:
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* craftingWindow;
 	LocalizedLabel* craftingLabel;
-	CraftingPreview* craftingPreview;
 	ItemMenu* itemMenu;
 	ClickableNode* craftButton;
 	cocos2d::Sprite* craftButtonDisabled;

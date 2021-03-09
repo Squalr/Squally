@@ -8,7 +8,8 @@ public:
 	virtual std::vector<Item*> craft() = 0;
 	std::vector<std::tuple<Item*, int>> getReagents();
 	
-	std::vector<Item*>& getCraftedItemsRef();
+	const std::vector<Item*>& getCraftedItemsRef();
+	const std::vector<std::tuple<Item*, int>>& getCraftedItemsByCountRef();
 	virtual std::string getCraftedItemIconResource() = 0;
 
 protected:
@@ -21,7 +22,9 @@ private:
 	typedef Item super;
 
 	std::vector<Item*> craftedItems;
+	std::vector<std::tuple<Item*, int>> craftedItemsByCount;
 
+	cocos2d::Node* craftedItemsNode;
 	cocos2d::Node* reagentsNode;
 	std::vector<std::tuple<Item*, int>> reagentsCache;
 };
