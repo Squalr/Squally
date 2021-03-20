@@ -26,7 +26,7 @@ class Sound;
 class CraftingMenuBase : public SmartNode
 {
 public:
-	virtual void open(std::vector<Item*> recipes);
+	virtual void open(const std::vector<Item*>& recipes);
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:

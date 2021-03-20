@@ -70,8 +70,9 @@ void DismantleMenu::initializePositions()
 	this->smeltingPot->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + SmeltingPotOffset);
 }
 
-void DismantleMenu::open(std::vector<Item*> recipes)
+void DismantleMenu::open(const std::vector<Item*>& recipes)
 {
+	this->selectedRecipe = nullptr;
 	this->dismantledRecipiesNode->removeAllChildren();
 	this->dismantleRecipes.clear();
 

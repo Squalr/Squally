@@ -266,7 +266,7 @@ void CraftingMenuBase::populateItemList()
 	this->itemMenu->updateAndPositionItemText();
 }
 
-void CraftingMenuBase::open(std::vector<Item*> recipes)
+void CraftingMenuBase::open(const std::vector<Item*>& recipes)
 {
 	this->recipes = recipes;
 	this->onCraftPreview(this->selectedRecipe);

@@ -15,7 +15,7 @@ class DismantleMenu : public CraftingMenuBase
 public:
 	static DismantleMenu* create();
 
-	void open(std::vector<Item*> recipes) override;
+	void open(const std::vector<Item*>& recipes) override;
 
 protected:
 	DismantleMenu();
