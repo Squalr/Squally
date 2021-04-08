@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Earrings/RoseEarringsRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& RoseEarrings::getIconResource()
 const std::string& RoseEarrings::getIdentifier()
 {
 	return RoseEarrings::SaveKey;
+}
+
+Recipe* RoseEarrings::getRecipe()
+{
+	return RoseEarringsRecipe::create();
 }

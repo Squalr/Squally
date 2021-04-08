@@ -155,6 +155,7 @@ namespace ItemResources
 	extern const std::string Equipment_Gear_Necklaces_MarineNecklace;
 	extern const std::string Equipment_Gear_Necklaces_SapphireNecklace;
 	extern const std::string Equipment_Gear_Necklaces_TopazPendant;
+	extern const std::string Equipment_Gear_Offhands_Shields_WoodenShield;
 	extern const std::string Equipment_Gear_Rings_DarkHeartBand;
 	extern const std::string Equipment_Gear_Rings_EmeraldBand;
 	extern const std::string Equipment_Gear_Rings_GarnetBand;

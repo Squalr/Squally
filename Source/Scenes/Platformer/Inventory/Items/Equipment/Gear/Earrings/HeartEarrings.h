@@ -11,6 +11,7 @@ public:
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;
 	const std::string& getIdentifier() override;
+	Recipe* getRecipe() override;
 
 	static const std::string SaveKey;
 

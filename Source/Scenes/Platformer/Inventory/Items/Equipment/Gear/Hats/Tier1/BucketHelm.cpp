@@ -65,3 +65,8 @@ Vec2 BucketHelm::getDisplayOffset()
 {
 	return Vec2(6.0f, -20.0f);
 }
+
+Recipe* BucketHelm::getRecipe()
+{
+	return nullptr;
+}

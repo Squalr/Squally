@@ -154,6 +154,7 @@ const std::string ItemResources::Equipment_Gear_Necklaces_HolyNecklace = "Privat
 const std::string ItemResources::Equipment_Gear_Necklaces_MarineNecklace = "Private/Platformer/Items/Equipment/Gear/Necklaces/MarineNecklace.png";
 const std::string ItemResources::Equipment_Gear_Necklaces_SapphireNecklace = "Private/Platformer/Items/Equipment/Gear/Necklaces/SapphireNecklace.png";
 const std::string ItemResources::Equipment_Gear_Necklaces_TopazPendant = "Private/Platformer/Items/Equipment/Gear/Necklaces/TopazPendant.png";
+const std::string ItemResources::Equipment_Gear_Offhands_Shields_WoodenShield = "Private/Platformer/Items/Equipment/Gear/Offhands/Shields/WoodenShield.png";
 const std::string ItemResources::Equipment_Gear_Rings_DarkHeartBand = "Private/Platformer/Items/Equipment/Gear/Rings/DarkHeartBand.png";
 const std::string ItemResources::Equipment_Gear_Rings_EmeraldBand = "Private/Platformer/Items/Equipment/Gear/Rings/EmeraldBand.png";
 const std::string ItemResources::Equipment_Gear_Rings_GarnetBand = "Private/Platformer/Items/Equipment/Gear/Rings/GarnetBand.png";
