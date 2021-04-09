@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/DraksHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& DraksHelm::getIdentifier()
 Vec2 DraksHelm::getDisplayOffset()
 {
 	return Vec2(10.0f, -30.0f);
+}
+
+Recipe* DraksHelm::getRecipe()
+{
+	return DraksHelmPlans::create();
 }

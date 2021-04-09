@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/SteelHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& SteelHelm::getIdentifier()
 Vec2 SteelHelm::getDisplayOffset()
 {
 	return Vec2(4.0f, -22.0f);
+}
+
+Recipe* SteelHelm::getRecipe()
+{
+	return SteelHelmPlans::create();
 }

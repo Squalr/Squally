@@ -65,3 +65,8 @@ Vec2 CowboyHat::getDisplayOffset()
 {
 	return Vec2(-10.0f, -24.0f);
 }
+
+Recipe* CowboyHat::getRecipe()
+{
+	return nullptr;
+}

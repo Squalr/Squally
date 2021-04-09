@@ -65,3 +65,8 @@ Vec2 SamuraiHat::getDisplayOffset()
 {
 	return Vec2(-18.0f, -10.0f);
 }
+
+Recipe* SamuraiHat::getRecipe()
+{
+	return nullptr;
+}

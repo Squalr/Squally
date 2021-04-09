@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/GoldenDungHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& GoldenDungHelm::getIdentifier()
 Vec2 GoldenDungHelm::getDisplayOffset()
 {
 	return Vec2(8.0f, 26.0f);
+}
+
+Recipe* GoldenDungHelm::getRecipe()
+{
+	return GoldenDungHelmPlans::create();
 }

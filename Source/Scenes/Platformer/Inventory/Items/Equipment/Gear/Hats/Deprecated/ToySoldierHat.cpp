@@ -65,3 +65,8 @@ Vec2 ToySoldierHat::getDisplayOffset()
 {
 	return Vec2(16.0f, 8.0f);
 }
+
+Recipe* ToySoldierHat::getRecipe()
+{
+	return nullptr;
+}

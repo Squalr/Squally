@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier2/ArchersHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& ArchersHat::getIdentifier()
 Vec2 ArchersHat::getDisplayOffset()
 {
 	return Vec2(2.0f, -10.0f);
+}
+
+Recipe* ArchersHat::getRecipe()
+{
+	return ArchersHatPlans::create();
 }

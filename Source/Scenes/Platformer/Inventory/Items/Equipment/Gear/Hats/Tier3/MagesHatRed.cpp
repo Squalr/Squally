@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/MagesHatRedPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& MagesHatRed::getIdentifier()
 Vec2 MagesHatRed::getDisplayOffset()
 {
 	return Vec2(-36.0f, -12.0f);
+}
+
+Recipe* MagesHatRed::getRecipe()
+{
+	return MagesHatRedPlans::create();
 }

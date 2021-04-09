@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/MonoclePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& Monocle::getIdentifier()
 Vec2 Monocle::getDisplayOffset()
 {
 	return Vec2(68.0f, -94.0f);
+}
+
+Recipe* Monocle::getRecipe()
+{
+	return MonoclePlans::create();
 }

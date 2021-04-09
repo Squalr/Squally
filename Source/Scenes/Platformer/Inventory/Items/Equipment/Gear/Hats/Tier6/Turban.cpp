@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/TurbanPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& Turban::getIdentifier()
 Vec2 Turban::getDisplayOffset()
 {
 	return Vec2(2.0f, 6.0f);
+}
+
+Recipe* Turban::getRecipe()
+{
+	return TurbanPlans::create();
 }

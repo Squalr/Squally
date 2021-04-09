@@ -65,3 +65,8 @@ Vec2 JesterHat::getDisplayOffset()
 {
 	return Vec2(-34.0f, 14.0f);
 }
+
+Recipe* JesterHat::getRecipe()
+{
+	return nullptr;
+}

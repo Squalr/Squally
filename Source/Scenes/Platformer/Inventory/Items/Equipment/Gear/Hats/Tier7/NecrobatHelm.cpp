@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/NecrobatHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& NecrobatHelm::getIdentifier()
 Vec2 NecrobatHelm::getDisplayOffset()
 {
 	return Vec2(-42.0f, 22.0f);
+}
+
+Recipe* NecrobatHelm::getRecipe()
+{
+	return NecrobatHelmPlans::create();
 }

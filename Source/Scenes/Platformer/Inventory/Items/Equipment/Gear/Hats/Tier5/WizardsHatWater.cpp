@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier5/WizardsHatWaterPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& WizardsHatWater::getIdentifier()
 Vec2 WizardsHatWater::getDisplayOffset()
 {
 	return Vec2(-20.0f, -8.0f);
+}
+
+Recipe* WizardsHatWater::getRecipe()
+{
+	return WizardsHatWaterPlans::create();
 }

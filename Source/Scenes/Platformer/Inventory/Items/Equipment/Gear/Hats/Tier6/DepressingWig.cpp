@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/DepressingWigPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& DepressingWig::getIdentifier()
 Vec2 DepressingWig::getDisplayOffset()
 {
 	return Vec2(18.0f, -48.0f);
+}
+
+Recipe* DepressingWig::getRecipe()
+{
+	return DepressingWigPlans::create();
 }

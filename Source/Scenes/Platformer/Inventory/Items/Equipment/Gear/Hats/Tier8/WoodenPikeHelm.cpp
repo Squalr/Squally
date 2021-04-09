@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier8/WoodenPikeHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& WoodenPikeHelm::getIdentifier()
 Vec2 WoodenPikeHelm::getDisplayOffset()
 {
 	return Vec2(22.0f, 20.0f);
+}
+
+Recipe* WoodenPikeHelm::getRecipe()
+{
+	return WoodenPikeHelmPlans::create();
 }

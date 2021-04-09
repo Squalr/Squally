@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/WitchesHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& WitchesHat::getIdentifier()
 Vec2 WitchesHat::getDisplayOffset()
 {
 	return Vec2(-38.0f, 32.0f);
+}
+
+Recipe* WitchesHat::getRecipe()
+{
+	return nullptr;
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier2/VikingHelmetPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& VikingHelmet::getIdentifier()
 Vec2 VikingHelmet::getDisplayOffset()
 {
 	return Vec2(-2.0f, -16.0f);
+}
+
+Recipe* VikingHelmet::getRecipe()
+{
+	return VikingHelmetPlans::create();
 }

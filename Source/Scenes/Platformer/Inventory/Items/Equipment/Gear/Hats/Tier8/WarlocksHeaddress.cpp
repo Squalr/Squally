@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier8/WarlocksHeaddressPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& WarlocksHeaddress::getIdentifier()
 Vec2 WarlocksHeaddress::getDisplayOffset()
 {
 	return Vec2(-10.0f, 40.0f);
+}
+
+Recipe* WarlocksHeaddress::getRecipe()
+{
+	return WarlocksHeaddressPlans::create();
 }

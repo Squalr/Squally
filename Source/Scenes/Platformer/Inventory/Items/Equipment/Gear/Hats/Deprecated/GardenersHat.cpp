@@ -65,3 +65,8 @@ Vec2 GardenersHat::getDisplayOffset()
 {
 	return Vec2(-12.0f, -2.0f);
 }
+
+Recipe* GardenersHat::getRecipe()
+{
+	return nullptr;
+}

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier5/SantaHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& SantaHat::getIdentifier()
 Vec2 SantaHat::getDisplayOffset()
 {
 	return Vec2(12.0f, -24.0f);
+}
+
+Recipe* SantaHat::getRecipe()
+{
+	return SantaHatPlans::create();
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/TheGoldenEaglePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& TheGoldenEagle::getIdentifier()
 Vec2 TheGoldenEagle::getDisplayOffset()
 {
 	return Vec2(-42.0f, 6.0f);
+}
+
+Recipe* TheGoldenEagle::getRecipe()
+{
+	return TheGoldenEaglePlans::create();
 }

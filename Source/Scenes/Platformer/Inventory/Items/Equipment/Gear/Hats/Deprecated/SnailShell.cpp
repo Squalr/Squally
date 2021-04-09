@@ -65,3 +65,8 @@ Vec2 SnailShell::getDisplayOffset()
 {
 	return Vec2(-36.0f, -34.0f);
 }
+
+Recipe* SnailShell::getRecipe()
+{
+	return nullptr;
+}

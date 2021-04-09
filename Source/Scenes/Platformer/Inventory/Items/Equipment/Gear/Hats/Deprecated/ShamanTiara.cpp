@@ -65,3 +65,8 @@ Vec2 ShamanTiara::getDisplayOffset()
 {
 	return Vec2(8.0f, -10.0f);
 }
+
+Recipe* ShamanTiara::getRecipe()
+{
+	return nullptr;
+}

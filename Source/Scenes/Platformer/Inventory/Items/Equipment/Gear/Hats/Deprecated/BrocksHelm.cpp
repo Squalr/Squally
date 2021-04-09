@@ -65,3 +65,8 @@ Vec2 BrocksHelm::getDisplayOffset()
 {
 	return Vec2(-6.0f, -20.0f);
 }
+
+Recipe* BrocksHelm::getRecipe()
+{
+	return nullptr;
+}

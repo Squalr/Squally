@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/DemonShellPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& DemonShell::getIdentifier()
 Vec2 DemonShell::getDisplayOffset()
 {
 	return Vec2(6.0f, -34.0f);
+}
+
+Recipe* DemonShell::getRecipe()
+{
+	return DemonShellPlans::create();
 }

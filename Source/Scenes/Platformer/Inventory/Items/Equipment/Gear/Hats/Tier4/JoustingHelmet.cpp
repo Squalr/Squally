@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/JoustingHelmetPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& JoustingHelmet::getIdentifier()
 Vec2 JoustingHelmet::getDisplayOffset()
 {
 	return Vec2(-40.0f, 34.0f);
+}
+
+Recipe* JoustingHelmet::getRecipe()
+{
+	return JoustingHelmetPlans::create();
 }

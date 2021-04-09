@@ -65,3 +65,8 @@ Vec2 RoyalCrown::getDisplayOffset()
 {
 	return Vec2(16.0f, -16.0f);
 }
+
+Recipe* RoyalCrown::getRecipe()
+{
+	return nullptr;
+}

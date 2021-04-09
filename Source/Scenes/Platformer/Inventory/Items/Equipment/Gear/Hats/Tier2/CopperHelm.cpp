@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier2/CopperHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& CopperHelm::getIdentifier()
 Vec2 CopperHelm::getDisplayOffset()
 {
 	return Vec2(10.0f, -2.0f);
+}
+
+Recipe* CopperHelm::getRecipe()
+{
+	return CopperHelmPlans::create();
 }

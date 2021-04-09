@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier2/AcolytesCapPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& AcolytesCap::getIdentifier()
 Vec2 AcolytesCap::getDisplayOffset()
 {
 	return Vec2(26.0f, -38.0f);
+}
+
+Recipe* AcolytesCap::getRecipe()
+{
+	return AcolytesCapPlans::create();
 }

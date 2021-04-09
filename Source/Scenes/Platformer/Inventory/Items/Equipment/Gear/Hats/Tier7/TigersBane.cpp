@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/TigersBanePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& TigersBane::getIdentifier()
 Vec2 TigersBane::getDisplayOffset()
 {
 	return Vec2(12.0f, -18.0f);
+}
+
+Recipe* TigersBane::getRecipe()
+{
+	return TigersBanePlans::create();
 }

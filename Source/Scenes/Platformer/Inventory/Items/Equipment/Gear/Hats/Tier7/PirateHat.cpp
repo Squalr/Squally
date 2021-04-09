@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/PirateHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& PirateHat::getIdentifier()
 Vec2 PirateHat::getDisplayOffset()
 {
 	return Vec2(-12.0f, 2.0f);
+}
+
+Recipe* PirateHat::getRecipe()
+{
+	return PirateHatPlans::create();
 }

@@ -65,3 +65,8 @@ Vec2 TheldarsHelm::getDisplayOffset()
 {
 	return Vec2(-2.0f, 26.0f);
 }
+
+Recipe* TheldarsHelm::getRecipe()
+{
+	return nullptr;
+}

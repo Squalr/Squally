@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier1/BucketHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -68,5 +69,5 @@ Vec2 BucketHelm::getDisplayOffset()
 
 Recipe* BucketHelm::getRecipe()
 {
-	return nullptr;
+	return BucketHelmPlans::create();
 }

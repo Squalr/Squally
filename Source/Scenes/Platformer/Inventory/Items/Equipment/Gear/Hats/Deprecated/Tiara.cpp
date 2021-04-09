@@ -65,3 +65,8 @@ Vec2 Tiara::getDisplayOffset()
 {
 	return Vec2(54.0f, -44.0f);
 }
+
+Recipe* Tiara::getRecipe()
+{
+	return nullptr;
+}

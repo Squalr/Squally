@@ -65,3 +65,8 @@ Vec2 OrnateHat::getDisplayOffset()
 {
 	return Vec2(-22.0f, -6.0f);
 }
+
+Recipe* OrnateHat::getRecipe()
+{
+	return nullptr;
+}

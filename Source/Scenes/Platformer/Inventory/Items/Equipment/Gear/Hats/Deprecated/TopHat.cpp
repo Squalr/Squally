@@ -65,3 +65,8 @@ Vec2 TopHat::getDisplayOffset()
 {
 	return Vec2(-26.0f, 10.0f);
 }
+
+Recipe* TopHat::getRecipe()
+{
+	return nullptr;
+}

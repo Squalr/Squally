@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/BarbedHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& BarbedHelm::getIdentifier()
 Vec2 BarbedHelm::getDisplayOffset()
 {
 	return Vec2(-24.0f, -4.0f);
+}
+
+Recipe* BarbedHelm::getRecipe()
+{
+	return BarbedHelmPlans::create();
 }

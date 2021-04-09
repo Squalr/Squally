@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier1/OldShoePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -64,4 +65,9 @@ const std::string& OldShoe::getIdentifier()
 Vec2 OldShoe::getDisplayOffset()
 {
 	return Vec2(14.0f, 8.0f);
+}
+
+Recipe* OldShoe::getRecipe()
+{
+	return OldShoePlans::create();
 }
