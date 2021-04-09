@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/MarineBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& MarineBand::getIconResource()
 const std::string& MarineBand::getIdentifier()
 {
 	return MarineBand::SaveKey;
+}
+
+Recipe* MarineBand::getRecipe()
+{
+	return MarineBandRecipe::create();
 }

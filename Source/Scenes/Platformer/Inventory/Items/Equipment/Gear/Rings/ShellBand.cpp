@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/ShellBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& ShellBand::getIconResource()
 const std::string& ShellBand::getIdentifier()
 {
 	return ShellBand::SaveKey;
+}
+
+Recipe* ShellBand::getRecipe()
+{
+	return ShellBandRecipe::create();
 }

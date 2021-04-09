@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/GarnetBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& GarnetBand::getIconResource()
 const std::string& GarnetBand::getIdentifier()
 {
 	return GarnetBand::SaveKey;
+}
+
+Recipe* GarnetBand::getRecipe()
+{
+	return GarnetBandRecipe::create();
 }

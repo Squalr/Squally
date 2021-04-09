@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/HeartBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& HeartBand::getIconResource()
 const std::string& HeartBand::getIdentifier()
 {
 	return HeartBand::SaveKey;
+}
+
+Recipe* HeartBand::getRecipe()
+{
+	return HeartBandRecipe::create();
 }

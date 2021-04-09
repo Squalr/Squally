@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/DarkHeartBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& DarkHeartBand::getIconResource()
 const std::string& DarkHeartBand::getIdentifier()
 {
 	return DarkHeartBand::SaveKey;
+}
+
+Recipe* DarkHeartBand::getRecipe()
+{
+	return DarkHeartBandRecipe::create();
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/SapphireBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& SapphireBand::getIconResource()
 const std::string& SapphireBand::getIdentifier()
 {
 	return SapphireBand::SaveKey;
+}
+
+Recipe* SapphireBand::getRecipe()
+{
+	return SapphireBandRecipe::create();
 }

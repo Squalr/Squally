@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/TopazPendantRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& TopazPendant::getIconResource()
 const std::string& TopazPendant::getIdentifier()
 {
 	return TopazPendant::SaveKey;
+}
+
+Recipe* TopazPendant::getRecipe()
+{
+	return TopazPendantRecipe::create();
 }

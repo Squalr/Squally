@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Offhands/Shields/WoodenShieldPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -53,10 +54,15 @@ LocalizedString* WoodenShield::getString()
 
 const std::string& WoodenShield::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_WoodenPikeHelm;
+	return ItemResources::Equipment_Gear_Offhands_Shields_WoodenShield;
 }
 
 const std::string& WoodenShield::getIdentifier()
 {
 	return WoodenShield::SaveKey;
+}
+
+Recipe* WoodenShield::getRecipe()
+{
+	return WoodenShieldPlans::create();
 }

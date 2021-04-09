@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/GlowingPendantRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& GlowingPendant::getIconResource()
 const std::string& GlowingPendant::getIdentifier()
 {
 	return GlowingPendant::SaveKey;
+}
+
+Recipe* GlowingPendant::getRecipe()
+{
+	return GlowingPendantRecipe::create();
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/EmeraldBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& EmeraldBand::getIconResource()
 const std::string& EmeraldBand::getIdentifier()
 {
 	return EmeraldBand::SaveKey;
+}
+
+Recipe* EmeraldBand::getRecipe()
+{
+	return EmeraldBandRecipe::create();
 }

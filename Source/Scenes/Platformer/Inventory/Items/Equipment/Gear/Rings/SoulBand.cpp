@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/SoulBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& SoulBand::getIconResource()
 const std::string& SoulBand::getIdentifier()
 {
 	return SoulBand::SaveKey;
+}
+
+Recipe* SoulBand::getRecipe()
+{
+	return SoulBandRecipe::create();
 }

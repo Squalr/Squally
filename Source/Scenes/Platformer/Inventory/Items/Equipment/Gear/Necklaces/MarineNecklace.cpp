@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/MarineNecklaceRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& MarineNecklace::getIconResource()
 const std::string& MarineNecklace::getIdentifier()
 {
 	return MarineNecklace::SaveKey;
+}
+
+Recipe* MarineNecklace::getRecipe()
+{
+	return MarineNecklaceRecipe::create();
 }

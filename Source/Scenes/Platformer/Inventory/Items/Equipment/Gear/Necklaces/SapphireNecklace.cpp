@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/SapphireNecklaceRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -59,4 +60,9 @@ const std::string& SapphireNecklace::getIconResource()
 const std::string& SapphireNecklace::getIdentifier()
 {
 	return SapphireNecklace::SaveKey;
+}
+
+Recipe* SapphireNecklace::getRecipe()
+{
+	return SapphireNecklaceRecipe::create();
 }
