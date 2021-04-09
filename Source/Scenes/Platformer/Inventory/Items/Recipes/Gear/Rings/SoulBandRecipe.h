@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/NecklaceRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/RingRecipe.h"
 
-class SoulBandRecipe : public NecklaceRecipe
+class SoulBandRecipe : public RingRecipe
 {
 public:
 	static SoulBandRecipe* create();
@@ -23,5 +23,5 @@ protected:
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 
 private:
-	typedef NecklaceRecipe super;
+	typedef RingRecipe super;
 };

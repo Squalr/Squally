@@ -88,6 +88,8 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(HeartBand::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(DarkHeartBand::create(), false);
 
 			for (int index = 0; index < 7; index++)
 			{
