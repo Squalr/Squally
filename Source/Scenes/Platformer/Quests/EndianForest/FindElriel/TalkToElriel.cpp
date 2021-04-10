@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -31,6 +32,7 @@ using namespace cocos2d;
 
 const std::string TalkToElriel::MapKeyQuest = "talk-to-elriel";
 const std::string TalkToElriel::TagElrielExit = "elriel-exit";
+const std::string TalkToElriel::TagCutscenePortal = "cutscene-portal";
 
 TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine)
 {
@@ -45,6 +47,7 @@ TalkToElriel::TalkToElriel(GameObject* owner, QuestLine* questLine) : super(owne
 {
 	this->elriel = nullptr;
 	this->squally = nullptr;
+	this->cutscenePortal = nullptr;
 }
 
 TalkToElriel::~TalkToElriel()
@@ -72,6 +75,11 @@ void TalkToElriel::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* cutscenePortal)
+	{
+		this->cutscenePortal = cutscenePortal;
+	}, TalkToElriel::TagCutscenePortal);
 }
 
 void TalkToElriel::onActivate(bool isActiveThroughSkippable)
@@ -87,6 +95,20 @@ void TalkToElriel::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueen);
 	PlatformerEvents::TriggerShowMiniMap();
+
+	if (this->cutscenePortal)
+	{
+		PlatformerEvents::TriggerCinematicHijack();
+
+		this->runAction(Sequence::create(
+			DelayTime::create(2.0f),
+			CallFunc::create([=]()
+			{
+				this->cutscenePortal->loadMap();
+			}),
+			nullptr
+		));
+	}
 }
 
 void TalkToElriel::onSkipped()

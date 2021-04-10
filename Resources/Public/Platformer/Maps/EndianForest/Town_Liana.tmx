@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="780">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="781">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -315,6 +315,11 @@
   <object id="779" name="spawn-wood-door" type="object" x="1686.93" y="1067.25" width="128" height="128">
    <properties>
     <property name="transition" value="inner"/>
+   </properties>
+  </object>
+  <object id="780" name="spawn" type="object" x="1142.67" y="1069.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="elriel"/>
    </properties>
   </object>
  </objectgroup>

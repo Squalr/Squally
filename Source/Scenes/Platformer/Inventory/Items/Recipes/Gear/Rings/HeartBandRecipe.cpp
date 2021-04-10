@@ -38,7 +38,8 @@ std::vector<std::tuple<Item*, int>> HeartBandRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Iron::create(), 4 },
+		{ Gold::create(), 2 },
+		{ Ruby::create(), 2 },
 	};
 }
 

@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Elriel;
+class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -34,6 +35,8 @@ private:
 	Elriel* elriel;
 	Scrappy* scrappy;
 	Squally* squally;
+	Portal* cutscenePortal;
 
 	static const std::string TagElrielExit;
+	static const std::string TagCutscenePortal;
 };

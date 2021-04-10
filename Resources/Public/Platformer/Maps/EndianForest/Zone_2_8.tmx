@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1036">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1037">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -469,10 +469,16 @@
     <property name="transition" value="fall"/>
    </properties>
   </object>
-  <object id="1032" name="iou" type="object" x="997.833" y="1359.17" width="87" height="87"/>
   <object id="1035" name="mini-map-relocator" type="object" x="1912.06" y="-134.03" width="1375.88" height="3360.06">
    <properties>
     <property name="position" value="bottom-right"/>
+   </properties>
+  </object>
+  <object id="1036" name="portal" type="object" x="1161.24" y="4531.49" width="237.527" height="233.023">
+   <properties>
+    <property name="map" value="EndianForest/Town_Liana"/>
+    <property name="tag" value="cutscene-portal"/>
+    <property name="transition" value="elriel"/>
    </properties>
   </object>
  </objectgroup>
