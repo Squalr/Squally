@@ -112,11 +112,16 @@ void Portal::loadMap()
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 			{
 				std::string mapResource = "Public/Platformer/Maps/" + this->mapFile + ".tmx";
+				std::string mapResourceFallback = "Private/Platformer/Maps/" + this->mapFile + ".tmx";
 
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
 				PlatformerMap* map = PlatformerMap::create(this->transition);
 
-				map->loadMap(mapResource);
+				// Attempt the public map first, try the private path if that fails
+				if (!map->loadMap(mapResource))
+				{
+					map->loadMap(mapResourceFallback);
+				}
 
 				return map;
 			}));
