@@ -106,19 +106,69 @@ void ClockDoor::onEnter()
 	const float PendulumSpeed = 0.85f;
 	const float PendulumSwing = 12.5f;
 
-	this->pendulum->runAction(RepeatForever::create(Sequence::create(
-		EaseSineOut::create(RotateTo::create(PendulumSpeed, PendulumSwing)),
-		CallFunc::create([=]()
+	if (!this->isHaunted)
+	{
+		this->pendulum->runAction(RepeatForever::create(Sequence::create(
+			EaseSineOut::create(RotateTo::create(PendulumSpeed, PendulumSwing)),
+			CallFunc::create([=]()
+			{
+			}),
+			EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
+			EaseSineOut::create(RotateTo::create(PendulumSpeed, -PendulumSwing)),
+			CallFunc::create([=]()
+			{
+			}),
+			EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
+			nullptr
+		)));
+
+		const float OneFakeMinute = 2.0f;
+		const float OneFakeHour = OneFakeMinute * 60.0f / 8.0f;
+
+		this->handMinutes->runAction(RepeatForever::create(Sequence::create(
+			RotateBy::create(OneFakeMinute, 360.0f),
+			nullptr
+		)));
+
+		this->handHours->runAction(RepeatForever::create(Sequence::create(
+			RotateBy::create(OneFakeHour, 360.0f),
+			nullptr
+		)));
+
+		static const std::vector<float> WeightInitDelays = { 1.14f, 2.12f, 0.37f };
+		static const std::vector<float> WeightSpeeds = { 1.91f, 2.12f, 2.37f };
+		static const std::vector<float> WeightDelays = { 1.91f, 2.12f, 2.37f };
+		static const std::vector<float> Deltas = { 32.0f, -16.0f, 16.0f };
+
+		for (int index = 0; index < int(this->weights.size()); index++)
 		{
-		}),
-		EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
-		EaseSineOut::create(RotateTo::create(PendulumSpeed, -PendulumSwing)),
-		CallFunc::create([=]()
-		{
-		}),
-		EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
-		nullptr
-	)));
+			Node* weight = std::get<0>(this->weights[index]);
+			Node* spinner = std::get<1>(this->weights[index]);
+
+			weight->runAction(Sequence::create(
+				DelayTime::create(WeightInitDelays[index]),
+				CallFunc::create([=]()
+				{
+					weight->runAction(RepeatForever::create(Sequence::create(
+						EaseSineInOut::create(MoveBy::create(WeightSpeeds[index], Vec2(0.0f, Deltas[index]))),
+						DelayTime::create(WeightDelays[index]),
+						EaseSineInOut::create(MoveBy::create(WeightSpeeds[index], Vec2(0.0f, -Deltas[index]))),
+						DelayTime::create(WeightDelays[index]),
+						nullptr
+					)));
+				}), nullptr));
+			spinner->runAction(Sequence::create(
+				DelayTime::create(WeightInitDelays[index]),
+				CallFunc::create([=]()
+				{
+					spinner->runAction(RepeatForever::create(Sequence::create(
+						RotateBy::create(WeightSpeeds[index], 360.0f),
+						DelayTime::create(WeightDelays[index]),
+						nullptr
+					)));
+				}), nullptr));
+		}
+	}
 }
 
 void ClockDoor::initializePositions()
@@ -127,7 +177,7 @@ void ClockDoor::initializePositions()
 
 	this->clippingNode->setPosition(Vec2(0.0f, this->isHaunted ? -112.0f : -48.0f));
 	this->background->setPosition(-Vec2(ClockDoor::ClipSize / 2.0f));
-	this->handNode->setPosition(Vec2(0.0f, (this->isHaunted ? 0.0f : 16.0f) + 128.0f));
+	this->handNode->setPosition(Vec2(0.0f, (this->isHaunted ? 0.0f : 16.0f) + 136.0f));
 	this->pendulum->setPosition(Vec2(0.0f, (this->isHaunted ? -16.0f : 0.0f) + 144.0f));
 
 	for (int index = 0; index < int(this->weights.size()); index++)
@@ -139,7 +189,7 @@ void ClockDoor::initializePositions()
 			float(index - 1) * 32.0f,
 			float(std::abs(index - 1)) * -16.0f + 32.0f + (this->isHaunted ? -8.0f : 0.0f)
 		));
-		spinner->setPosition(Vec2(0.0f, 64.0f));
+		spinner->setPosition(Vec2(0.0f, 56.0f));
 	}
 }
 
@@ -159,7 +209,7 @@ std::tuple<cocos2d::Node*, cocos2d::Node*> ClockDoor::createWeight(std::string w
 	baseNode->addChild(weight);
 	baseNode->addChild(spinner);
 
-	rope->setPosition(Vec2(0.0f, 64.0f));
+	rope->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	return std::make_tuple(baseNode, spinner);
 }
