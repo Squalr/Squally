@@ -24,6 +24,7 @@ public:
 protected:
 	MagePortal(cocos2d::ValueMap& properties);
 	virtual ~MagePortal();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

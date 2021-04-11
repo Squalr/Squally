@@ -55,7 +55,7 @@ typedef struct state {
     const char *start;
     const char *next;
     int type;
-    union {unsigned char value; const int* bound; const void *function;};
+    union {unsigned char value; const int* bound;  void* function;};
     void *context;
 
     const te_variable *lookup;

@@ -6,6 +6,8 @@
 
 using namespace cocos2d;
 
+const std::string IOU::IOUIdentifier = "IOU";
+
 IOU* IOU::create()
 {
 	IOU* instance = new IOU();
@@ -35,17 +37,17 @@ LocalizedString* IOU::getStringPlural()
 
 const std::string& IOU::getIconResource()
 {
-	return IOU::getIOUIconResource();
+	return ItemResources::Collectables_Currency_IOU;
 }
 
 const std::string& IOU::getIdentifier()
 {
-	return IOU::getIOUIdentifier();
+	return IOU::IOUIdentifier;
 }
 
 std::string IOU::getIOUIdentifier()
 {
-	return "IOU";
+	return IOU::IOUIdentifier;
 }
 
 std::string IOU::getIOUIconResource()

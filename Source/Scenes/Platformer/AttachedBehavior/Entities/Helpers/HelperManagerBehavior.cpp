@@ -181,12 +181,14 @@ void HelperManagerBehavior::onDisable()
 
 const std::string& HelperManagerBehavior::getHelperAttachedBehavior(const std::string& helperName)
 {
+	static const std::string Empty = "";
+
 	if (this->attachedBehaviorMap.contains(helperName))
 	{
 		return this->attachedBehaviorMap[helperName];
 	}
 
-	return "";
+	return Empty;
 }
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()

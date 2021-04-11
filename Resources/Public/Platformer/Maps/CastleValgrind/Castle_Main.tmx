@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="797">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="hide-mini-map" type="bool" value="true"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="wall bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="756" name="brick-interior" type="texture" x="1162" y="-182" width="1188" height="1128"/>
+ </objectgroup>
+ <objectgroup id="95" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="746" name="Generic/MoonDoor" type="decor" x="1423.75" y="173.677" width="648" height="667"/>
+ </objectgroup>
+ <objectgroup id="87" name="stairs -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="762" name="marble" type="terrain" x="1314.52" y="837.303" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="93" name="columns -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="773" name="wood" type="terrain" x="1358.39" y="-48.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="774" name="wood" type="terrain" x="2062.39" y="-56.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="86" name="stairs -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="761" name="marble" type="terrain" x="1315.52" y="900.303" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="92" name="columns -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="771" name="wood" type="terrain" x="1356.39" y="-52.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="772" name="wood" type="terrain" x="2066.39" y="-54.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="85" name="stairs -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="marble" type="terrain" x="1317.18" y="964.97" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="91" name="columns -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="769" name="wood" type="terrain" x="1356.39" y="-44.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="770" name="wood" type="terrain" x="2062.39" y="-58.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="84" name="stairs -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="759" name="marble" type="terrain" x="1317.52" y="1025.3" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="90" name="columns -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="767" name="wood" type="terrain" x="1354.39" y="-48.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="768" name="wood" type="terrain" x="2058.39" y="-54.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="stairs -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="758" name="marble" type="terrain" x="1318.18" y="1079.64" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="88" name="columns -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="765" name="wood" type="terrain" x="1349.85" y="-47.9715" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="766" name="wood" type="terrain" x="2062.39" y="-56.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="82" name="stairs -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="757" name="marble" type="terrain" x="1315.52" y="1140.97" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="Tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="754" name="brick-interior" type="texture" x="-82" y="-52" width="1492" height="1364"/>
+  <object id="755" name="brick-interior" type="texture" x="2079.33" y="-46" width="6166.67" height="1364"/>
+ </objectgroup>
+ <objectgroup id="81" name="columns -0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="763" name="wood" type="terrain" x="1401.09" y="-44.82" width="51.823" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="764" name="wood" type="terrain" x="2050.09" y="-51.82" width="51.823" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="decor bg2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="713" name="Castle/Banner2" type="decor" x="1197.45" y="451.107" width="184" height="424"/>
+  <object id="714" name="Castle/Banner2" type="decor" x="2139.6" y="435.152" width="184" height="424"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="709" name="Castle/Window1" type="decor" x="851.061" y="488" width="293" height="575"/>
+  <object id="711" name="Castle/Window1" type="decor" x="2376.07" y="481.887" width="293" height="575"/>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="753" name="marble" type="terrain" x="-79.5152" y="1195.09" width="8338.3" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="484" name="Generic/LesserMoonDoor" type="decor" x="403.186" y="690.62" width="310" height="492"/>
+  <object id="699" name="Castle/Throne2" type="decor" x="3495.81" y="808.582" width="202.8" height="380.439">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="721" name="Generic/DiningTable1" type="decor" x="2868.19" y="891.805" width="610" height="301"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="433.163" y="731.189" width="237.527" height="464.666">
+   <properties>
+    <property name="map" value="EndianForest/Town_Liana_Entrance"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="752" name="cinematic-marker" type="object" x="2709.7" y="797.697" width="128" height="128">
+   <properties>
+    <property name="quest" value="return-to-queen-again"/>
+    <property name="quest-line" value="save-town"/>
+   </properties>
+  </object>
+  <object id="775" name="portal" type="object" x="1634.63" y="731.182" width="237.527" height="464.666">
+   <properties>
+    <property name="map" value="EndianForest/Town_Liana_Back"/>
+    <property name="quest" value="liana-door-locked"/>
+    <property name="quest-line" value="sneak-liana-line"/>
+    <property name="transition" value="inner"/>
+   </properties>
+  </object>
+  <object id="795" name="clock-door" type="object" x="4323.66" y="467.667" width="257" height="729">
+   <properties>
+    <property name="door-style" value="old"/>
+    <property name="map" value="Castle_Valgrind/Castle_Main_Haunted"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="transition" value="clock"/>
+   </properties>
+  </object>
+  <object id="796" name="clock-door" type="object" x="5103.83" y="451.652" width="288" height="743">
+   <properties>
+    <property name="clock-style" value="haunted"/>
+    <property name="map" value="Castle_Valgrind/Castle_Main"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="transition" value="clock"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="692" name="garin" type="entity" x="2703.53" y="1068.38" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="782" name="gaunt" type="entity" x="2946.67" y="1066" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="783" name="king-redsong" type="entity" x="3178.67" y="1067.33" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="784" name="king-redsong-slime" type="entity" x="3417.33" y="1066.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="785" name="leopold" type="entity" x="3672" y="1064" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="786" name="leroy" type="entity" x="3944" y="1068" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="787" name="mabel" type="entity" x="4213.33" y="1064" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="788" name="merlin" type="entity" x="4558.67" y="1064" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="789" name="princess-opal" type="entity" x="4968" y="1068" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="790" name="raven" type="entity" x="5404" y="1066.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="791" name="rogas" type="entity" x="5844" y="1066.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="792" name="thurstan" type="entity" x="6297.33" y="1066.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="793" name="tyracius" type="entity" x="6676" y="1066.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="794" name="zana" type="entity" x="7020" y="1069.33" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="4679.95" y="1066.33" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="778" name="spawn-wood-door" type="object" x="485.456" y="1067.26" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn-wood-door" type="object" x="1686.93" y="1067.25" width="128" height="128">
+   <properties>
+    <property name="transition" value="inner"/>
+   </properties>
+  </object>
+  <object id="780" name="spawn" type="object" x="4800.67" y="1066.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="elriel"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="720" name="Generic/Chandilier1" type="decor" x="2822.84" y="126.742" width="372.519" height="492.296"/>
+ </objectgroup>
+</map>

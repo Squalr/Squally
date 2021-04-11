@@ -7,7 +7,7 @@
 
 const std::string MapResources::BallmerPeaks_Mages_Warp = "Public/Platformer/Maps/BallmerPeaks/Mages_Warp.tmx";
 const std::string MapResources::BallmerPeaks_Town_Main = "Public/Platformer/Maps/BallmerPeaks/Town_Main.tmx";
-const std::string MapResources::CastleValgrind_Castle = "Public/Platformer/Maps/CastleValgrind/Castle.tmx";
+const std::string MapResources::CastleValgrind_Castle_Main = "Public/Platformer/Maps/CastleValgrind/Castle_Main.tmx";
 const std::string MapResources::CastleValgrind_Mages_Warp = "Public/Platformer/Maps/CastleValgrind/Mages_Warp.tmx";
 const std::string MapResources::DaemonsHallow_Mages_Warp = "Public/Platformer/Maps/DaemonsHallow/Mages_Warp.tmx";
 const std::string MapResources::DaemonsHallow_Volcano = "Public/Platformer/Maps/DaemonsHallow/Volcano.tmx";

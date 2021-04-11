@@ -26,7 +26,7 @@ target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
 set_target_properties(${PROJECT_NAME} PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-    # UNITY_BUILD ON
+    UNITY_BUILD ON
     UNITY_BUILD_BATCH_SIZE 64
 )
 

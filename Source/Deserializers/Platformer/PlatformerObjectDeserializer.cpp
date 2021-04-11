@@ -103,6 +103,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Chest::MapKey] = [=](ValueMap properties) { return (GameObject*)Chest::create(properties); };
 	this->deserializers[CinematicMarker::MapKey] = [=](ValueMap properties) { return (GameObject*)CinematicMarker::create(properties); };
 	this->deserializers[CipherChest::MapKey] = [=](ValueMap properties) { return (GameObject*)CipherChest::create(properties); };
+	this->deserializers[ClockDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)ClockDoor::create(properties); };
 	this->deserializers[DartLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)DartLauncher::create(properties); };
 	this->deserializers[DartTripodLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncher::create(properties); };
 	this->deserializers[DartTripodLauncherSqualr::MapKey] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncherSqualr::create(properties); };

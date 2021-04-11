@@ -27,4 +27,6 @@ protected:
 
 private:
 	typedef Currency super;
+
+	static const std::string IOUIdentifier;
 };
