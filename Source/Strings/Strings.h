@@ -21414,6 +21414,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Critters_Horse() = default;
 	};
 
+	class Platformer_Entities_Names_Critters_Seagull : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Critters_Seagull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Critters_Seagull();
+		virtual ~Platformer_Entities_Names_Critters_Seagull() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen : public LocalizedString
 	{
 	public:

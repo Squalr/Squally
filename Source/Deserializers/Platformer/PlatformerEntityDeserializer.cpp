@@ -30,8 +30,9 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Squally::MapKey] = [=](ValueMap properties) { return (GameObject*)Squally::deserialize(properties); };
 
 	// Critters
-	this->deserializers[TrainingDummy::MapKey] = [=](ValueMap properties) { return (GameObject*)TrainingDummy::deserialize(properties); };
 	this->deserializers[Horse::MapKey] = [=](ValueMap properties) { return (GameObject*)Horse::deserialize(properties); };
+	this->deserializers[Seagull::MapKey] = [=](ValueMap properties) { return (GameObject*)Seagull::deserialize(properties); };
+	this->deserializers[TrainingDummy::MapKey] = [=](ValueMap properties) { return (GameObject*)TrainingDummy::deserialize(properties); };
 	
 	// Npcs, helpers, and enemies
 	this->deserializers[Cryogen::MapKey] = [=](ValueMap properties) { return (GameObject*)Cryogen::deserialize(properties); };

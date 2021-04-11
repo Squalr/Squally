@@ -10,6 +10,7 @@ from os import path
 from os.path import isfile, join, splitext, abspath, realpath, basename, relpath
 import os
 import sys
+import CopyResources
 
 def main():
 	continueStr = "n"
@@ -279,3 +280,4 @@ def createResourceFile(outputFileBase, extensions, searchPath):
 
 if __name__ == '__main__':
     main()
+    CopyResources.main()

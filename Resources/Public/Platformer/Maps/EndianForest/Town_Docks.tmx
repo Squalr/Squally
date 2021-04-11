@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="760">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="769">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -224,6 +224,51 @@
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="sail-for-ruins"/>
     <property name="quest-line" value="sail-for-ruins"/>
+   </properties>
+  </object>
+  <object id="760" name="seagull" type="entity" x="3469.33" y="1562.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="761" name="seagull" type="entity" x="3288" y="1561.33" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="762" name="seagull" type="entity" x="3574.66" y="1563.34" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="763" name="seagull" type="entity" x="3393.34" y="1562" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="764" name="seagull" type="entity" x="3661.33" y="1564" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="765" name="seagull" type="entity" x="2732.73" y="1563.94" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="766" name="seagull" type="entity" x="2551.4" y="1562.6" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="767" name="seagull" type="entity" x="1902.42" y="1563.94" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="768" name="seagull" type="entity" x="1721.09" y="1562.6" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
  </objectgroup>
