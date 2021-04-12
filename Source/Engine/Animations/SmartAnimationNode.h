@@ -40,7 +40,6 @@ public:
 
 	SmartAnimationNode* clone();
 	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
-	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
 	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
 	void clearAnimationPriority();
 	AnimationPart* getAnimationPart(std::string partName);

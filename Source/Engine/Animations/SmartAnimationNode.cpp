@@ -111,14 +111,9 @@ void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, Anim
 	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, animParams, callback);
 }
 
-void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, AnimParams animParams, std::function<void()> callback)
-{
-	this->playAnimation(std::string(animationName), animationPlayMode, animParams, callback);
-}
-
 void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, AnimParams animParams, std::function<void()> callback)
 {
-	if (animParams.priority <= this->currentAnimationPriority)
+	if (animParams.priority <= this->currentAnimationPriority && !animParams.cancelAnim)
 	{
 		return;
 	}

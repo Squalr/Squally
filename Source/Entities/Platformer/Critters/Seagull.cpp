@@ -2,10 +2,9 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
@@ -27,9 +26,10 @@ Seagull::Seagull(ValueMap& properties) : super(properties,
 	EntityResources::Misc_EndianForest_Seagull_Animations,
 	EntityResources::Misc_EndianForest_Seagull_Emblem,
 	Size(96.0f, 160.0f),
-	1.0f,
+	0.8f,
 	Vec2(0.0f, 0.0f))
 {
+	this->animationNode->setScaleX(-this->getScale());
 }
 
 Seagull::~Seagull()
