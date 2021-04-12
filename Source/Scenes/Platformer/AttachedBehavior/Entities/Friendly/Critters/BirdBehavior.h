@@ -2,8 +2,10 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class EntityCollisionBehaviorBase;
 class PlatformerEntity;
 class Squally;
+class WorldSound;
 
 class BirdBehavior : public AttachedBehavior
 {
@@ -18,15 +20,20 @@ protected:
 
 	void onLoad() override;
 	void onDisable() override;
+	void update(float dt) override;
 
 private:
 	typedef AttachedBehavior super;
 
-	void tryPeck();
+	void tryNextAction();
 	void queueNextAction();
-	void flyAway();
+	void onHit(EntityCollisionBehaviorBase* collisionBehavior);
+	void moveBeak(float duration);
 
 	PlatformerEntity* entity;
 	Squally* squally;
+	WorldSound* startledSound;
+	WorldSound* squawkSound;
 	bool wasStartled;
+	float hitDelay;
 };

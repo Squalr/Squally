@@ -178,6 +178,17 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Pig_PigGrunt2;
 	extern const std::string Platformer_Entities_Pig_PigSqueal1;
 	extern const std::string Platformer_Entities_Pig_PigSqueelDeep1;
+	extern const std::string Platformer_Entities_Seagull_FlyAway;
+	extern const std::string Platformer_Entities_Seagull_Squawk1;
+	extern const std::string Platformer_Entities_Seagull_Squawk2;
+	extern const std::string Platformer_Entities_Seagull_Squawk3;
+	extern const std::string Platformer_Entities_Seagull_Squawk4;
+	extern const std::string Platformer_Entities_Seagull_Squawk5;
+	extern const std::string Platformer_Entities_Seagull_Startled1;
+	extern const std::string Platformer_Entities_Seagull_Startled2;
+	extern const std::string Platformer_Entities_Seagull_Startled3;
+	extern const std::string Platformer_Entities_Seagull_Startled4;
+	extern const std::string Platformer_Entities_Seagull_Startled5;
 	extern const std::string Platformer_Entities_Serpent_Hiss1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps2;

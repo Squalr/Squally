@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="781">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="783">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -76,7 +76,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="710" name="ship" type="object" x="1127.74" y="804.427" width="2375" height="1008"/>
-  <object id="778" name="solid-npc" type="collision" x="2554.08" y="826.895" width="126.878" height="778.756"/>
  </objectgroup>
  <objectgroup id="71" name="water -5">
   <properties>
@@ -158,11 +157,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="754" name="ship-alt" type="terrain" x="2148.08" y="1604.5" width="414.5" height="363">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="754" name="ship-alt" type="terrain" x="2148.08" y="1604.5" width="414.5" height="363"/>
  </objectgroup>
  <objectgroup id="90" name="objects -3">
   <properties>
@@ -170,6 +165,8 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="781" name="solid-npc" type="collision" x="2554.08" y="826.895" width="126.878" height="778.756"/>
+  <object id="782" name="solid-npc" type="collision" x="2024.56" y="829.622" width="126.878" height="778.756"/>
  </objectgroup>
  <objectgroup id="89" name="entities -3">
   <properties>
@@ -183,7 +180,6 @@
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="780" name="solid-npc" type="collision" x="2024.56" y="829.622" width="126.878" height="778.756"/>
  </objectgroup>
  <objectgroup id="83" name="water -2">
   <properties>

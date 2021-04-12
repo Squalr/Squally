@@ -74,6 +74,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->previousCollisions = &this->collisionsBlack;
 	this->collisionProperties = collisionProperties;
 	this->physicsEnabled = true;
+	this->collisionEnabled = true;
 	this->gravityEnabled = collisionProperties.isDynamic;
 	this->gravityDisabledOverride = false;
 	this->bindTarget = nullptr;
@@ -202,6 +203,11 @@ void CollisionObject::runPhysics(float dt)
 	this->previousCollisions->clear();
 	this->previousCollisions = this->currentCollisions;
 	this->currentCollisions = this->previousCollisions == &this->collisionsBlack ? &this->collisionsRed : &this->collisionsBlack;
+	
+	if (!this->collisionEnabled)
+	{
+		return;
+	}
 
 	for (auto collisionType : this->collidesWithTypes)
 	{
@@ -266,6 +272,11 @@ void CollisionObject::setCollisionDepth(float collisionDepth)
 void CollisionObject::setPhysicsEnabled(bool enabled)
 {
 	this->physicsEnabled = enabled;
+}
+
+void CollisionObject::setCollisionEnabled(bool enabled)
+{
+	this->collisionEnabled = enabled;
 }
 
 void CollisionObject::setGravityEnabled(bool isEnabled)

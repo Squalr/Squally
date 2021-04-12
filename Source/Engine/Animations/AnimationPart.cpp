@@ -78,6 +78,16 @@ void AnimationPart::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& pare
 	super::visit(renderer, parentTransform, parentFlags);
 }
 
+void AnimationPart::reattachToTimeline()
+{
+	if (this->spriterAnimationPart == nullptr)
+	{
+		return;
+	}
+
+	this->spriterAnimationPart->toggleTimelineCanUpdate(true);
+}
+
 void AnimationPart::detachFromTimeline()
 {
 	if (this->spriterAnimationPart == nullptr)
@@ -162,6 +172,26 @@ void AnimationPart::restoreSprite()
 	}
 	
 	this->spriterAnimationPart->getImage()->setPath(this->originalPath);
+}
+
+float AnimationPart::getRotationSpriter()
+{
+	if (this->spriterAnimationPart != nullptr)
+	{
+		return float(this->spriterAnimationPart->getAngle());
+	}
+
+	return 0.0f;
+}
+
+void AnimationPart::setRotationSpriter(float rotation)
+{
+	this->detachFromTimeline();
+
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setAngle(rotation);
+	}
 }
 
 void AnimationPart::setRotation(float rotation)

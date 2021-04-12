@@ -23,11 +23,14 @@ public:
 	void removeTrackingObject(cocos2d::Node* trackedObject);
 	void addTrackingObject(cocos2d::Node* trackedObject);
 	void replaceWithObject(cocos2d::Node* replacement, float disappearDuration = 2.0f, float fadeInDuration = 0.5f);
+	void reattachToTimeline();
 	void detachFromTimeline();
 	std::string getSpriteResource();
 	void replaceSprite(std::string spriteResource);
 	void restoreSprite();
 	void setRotation(float rotation) override;
+	float getRotationSpriter();
+	void setRotationSpriter(float rotation);
 	void setOffset(cocos2d::Vec2 offset);
 	void restoreOffset();
 	void setOpacity(GLubyte opacity) override;

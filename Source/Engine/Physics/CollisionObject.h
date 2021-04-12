@@ -107,6 +107,7 @@ public:
 	bool wasCollidingWithType(int collisionType);
 	void setCollisionDepth(float collisionDepth);
 	virtual void setPhysicsEnabled(bool enabled);
+	virtual void setCollisionEnabled(bool enabled);
 	unsigned int getUniverseId();
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
@@ -170,6 +171,7 @@ private:
 	float verticalDampening;
 	float collisionDepth;
 	bool physicsEnabled;
+	bool collisionEnabled;
 	bool gravityEnabled;
 	bool gravityDisabledOverride;
 	unsigned int universeId;
