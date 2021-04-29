@@ -352,12 +352,12 @@ void CollisionObject::setAccelerationY(float accelerationY)
 
 void CollisionObject::setHorizontalDampening(float horizontalDampening)
 {
-	this->horizontalDampening =  MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);
+	this->horizontalDampening = MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);
 }
 
 void CollisionObject::setVerticalDampening(float verticalDampening)
 {
-	this->verticalDampening =  MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
+	this->verticalDampening = MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
 }
 
 const std::vector<cocos2d::Vec2>& CollisionObject::getPoints()
@@ -641,6 +641,8 @@ CollisionShape CollisionObject::determineShape()
 		{
 			sameX += (point.x == prior.x ? 1 : 0);
 			sameY += (point.y == prior.y ? 1 : 0);
+
+			prior = point;
 		}
 
 		return (sameX == 2 && sameY == 2) ? CollisionShape::Rectangle : CollisionShape::Quad;

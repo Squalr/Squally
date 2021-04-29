@@ -113,7 +113,9 @@
         "shared_mutex": "cpp",
         "execution": "cpp",
         "*.vert": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "compare": "cpp",
+        "stop_token": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",

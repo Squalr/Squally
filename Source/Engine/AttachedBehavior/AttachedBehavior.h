@@ -28,8 +28,6 @@ protected:
 
 private:
 	typedef SmartNode super;
-	
-	void updateState();
 
 	bool invalidated;
 	bool queryable;

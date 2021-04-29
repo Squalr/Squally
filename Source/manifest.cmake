@@ -2537,7 +2537,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/EngineCollisionTypes.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/Liquid/LiquidNode.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/Liquid/LiquidTop.h"
-    "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/PesudoCollisionObject.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/PhysicsInitializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Quests/QuestLine.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Quests/QuestTask.h"
