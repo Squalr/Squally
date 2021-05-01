@@ -247,7 +247,7 @@
   </properties>
   <object id="1871" name="rhinoman" type="entity" x="3068" y="1528" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -263,7 +263,7 @@
   </properties>
   <object id="864" name="squally" type="entity" x="451.333" y="1518.55" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1698" name="spawn" type="object" x="5008.55" y="1520.79" width="128" height="128">

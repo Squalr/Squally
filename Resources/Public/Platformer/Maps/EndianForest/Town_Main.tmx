@@ -630,17 +630,17 @@
   <object id="651" name="Generic/Shack1" type="decor" x="5561.75" y="6621.81" width="1241" height="792"/>
   <object id="654" name="Generic/TownAlchemist" type="decor" x="4252.09" y="391.354" width="1421" height="2421">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="655" name="Generic/TownSmith" type="decor" x="843.15" y="987.854" width="2591" height="1827">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="880" name="Generic/TownHomeEmpty1" type="decor" x="4186.63" y="4634.65" width="1367" height="1233">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -815,13 +815,13 @@
   </properties>
   <object id="883" name="bard" type="entity" x="5482.59" y="5752.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bard-hexus,pick-pocket"/>
+    <property name="components" value="friendly,bard-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="928" name="chiron" type="entity" x="9960.24" y="5122.06" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="quest" value="town-exit-blocked"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
@@ -835,7 +835,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="970.484" y="5754.01" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="976" name="warp" type="object" x="2911.64" y="5626.42" width="256" height="256">

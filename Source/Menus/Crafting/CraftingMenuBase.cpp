@@ -22,7 +22,7 @@
 #include "Menus/Crafting/CraftingPreview.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
@@ -111,7 +111,7 @@ void CraftingMenuBase::onEnter()
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();

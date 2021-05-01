@@ -27,7 +27,7 @@
   </properties>
   <object id="894" name="asmodeus" type="entity" x="1231.64" y="920" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,face-squally,squalr-unknown-float"/>
+    <property name="components" value="enemy,face-squally,squalr-unknown-float"/>
    </properties>
   </object>
  </objectgroup>
@@ -71,7 +71,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="951.322" y="1185.16" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

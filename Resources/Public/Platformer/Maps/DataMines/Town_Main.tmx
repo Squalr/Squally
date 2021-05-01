@@ -158,14 +158,14 @@
   </properties>
   <object id="867" name="mines" type="terrain" x="5063.56" y="3166.85" width="306.382" height="1110.55">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="868" name="mines" type="terrain" x="6280.4" y="354.64" width="541.807" height="3925.64"/>
   <object id="944" name="mines" type="terrain" x="2105.65" y="1714.49" width="308.534" height="2234.91"/>
   <object id="1025" name="mines" type="terrain" x="3217.27" y="2373.8" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -191,13 +191,13 @@
   </properties>
   <object id="865" name="mines" type="terrain" x="5057.97" y="3129.21" width="312.292" height="1174.85">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="866" name="mines" type="terrain" x="6296.06" y="398.943" width="1195.75" height="3915.67"/>
   <object id="1024" name="mines" type="terrain" x="3217.14" y="2376.42" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -235,7 +235,7 @@
   </properties>
   <object id="857" name="mines" type="terrain" x="5062.41" y="3088.87" width="307.201" height="1237.18">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="858" name="mines" type="terrain" x="6321.07" y="489.448" width="843.871" height="3849.48"/>
@@ -243,7 +243,7 @@
   <object id="945" name="mines" type="terrain" x="8233.83" y="2414.33" width="1663.81" height="1928.61"/>
   <object id="1026" name="mines" type="terrain" x="3217.14" y="2379.35" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -308,13 +308,13 @@
   </properties>
   <object id="863" name="mines" type="terrain" x="5053.92" y="3053.75" width="316.353" height="1289.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="864" name="mines" type="terrain" x="6334.73" y="539.401" width="603.989" height="3822.88"/>
   <object id="1027" name="mines" type="terrain" x="3217.09" y="2382.87" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -340,13 +340,13 @@
   </properties>
   <object id="861" name="mines" type="terrain" x="5069.27" y="3013.7" width="299.989" height="1345.03">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1014" name="mines" type="terrain" x="6347" y="589.104" width="331.75" height="3815.25"/>
   <object id="1028" name="mines" type="terrain" x="3217.08" y="2386.43" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -401,13 +401,13 @@
   </properties>
   <object id="859" name="mines" type="terrain" x="4926.19" y="2482.05" width="441.08" height="1933.33">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="860" name="mines" type="terrain" x="6438.73" y="3609.61" width="1793.5" height="810.667"/>
   <object id="1029" name="mines" type="terrain" x="3216.96" y="2390.11" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -445,7 +445,7 @@
   </properties>
   <object id="1058" name="olive" type="entity" x="7604" y="3481" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="olive-hexus,friendly,pick-pocket,face-squally"/>
+    <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
     <property name="pocket-pool" value="dm-generic"/>
    </properties>
   </object>
@@ -493,13 +493,13 @@
   </properties>
   <object id="855" name="mines" type="terrain" x="4924.19" y="2468.61" width="451.08" height="1972.12">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="856" name="mines" type="terrain" x="6432.73" y="3629.94" width="287.747" height="812.667"/>
   <object id="1030" name="mines" type="terrain" x="3217.06" y="2394.31" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -531,13 +531,13 @@
   </properties>
   <object id="853" name="mines" type="terrain" x="4925.19" y="2452.06" width="449.08" height="2014.67">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="854" name="mines" type="terrain" x="6411.4" y="3652.94" width="269.08" height="816.667"/>
   <object id="1031" name="mines" type="terrain" x="3218.04" y="2399.43" width="347.806" height="1482.28">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -577,7 +577,7 @@
   </properties>
   <object id="1033" name="mines" type="terrain" x="-924.966" y="970.604" width="2342.66" height="2180.25">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -596,7 +596,7 @@
   </properties>
   <object id="810" name="mines" type="terrain" x="-964.54" y="2402.48" width="6338.66" height="1795.52">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -609,7 +609,7 @@
   </properties>
   <object id="1000" name="cart-lift" type="object" x="5119.39" y="2496.41" width="72" height="1157.42">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -629,18 +629,18 @@
   </properties>
   <object id="815" name="Mines/CaveHouse5" type="decor" x="6762" y="2930.5" width="812" height="755">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="817" name="Mines/CaveHouse4" type="decor" x="1439.44" y="1205.05" width="1729" height="1195">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="882" name="Mines/CaveHouse1" type="decor" x="8230.17" y="2571.97" width="1017" height="1110">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -842,7 +842,7 @@
   </properties>
   <object id="786" name="mines" type="terrain" x="-894.54" y="2522" width="5900.6" height="2560">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="808" name="mines" type="terrain" x="6169.1" y="3962" width="3233.44" height="844"/>
@@ -860,13 +860,13 @@
   </properties>
   <object id="891" name="Generic/SignAlch" type="decor" x="1946.05" y="2035.95" width="523" height="265">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="892" name="Generic/SignSmith" type="decor" x="7639.47" y="3446.95" width="523" height="265">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -877,18 +877,18 @@
   </properties>
   <object id="803" name="Mines/CaveHouse2" type="decor" x="7939.76" y="3264.3" width="1306" height="698">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="804" name="Mines/CaveHouse3" type="decor" x="3171.38" y="1324.55" width="1299" height="1197">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="883" name="Mines/CaveHouse6" type="decor" x="1025.03" y="1841.11" width="1206" height="681">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -935,7 +935,7 @@
   </object>
   <object id="1057" name="life-stone" type="object" x="6947" y="3540.5" width="146" height="423">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -958,7 +958,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="6665.48" y="3834.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="779" name="spawn" type="object" x="8722.67" y="3834" width="128" height="128">

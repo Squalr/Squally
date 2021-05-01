@@ -1,0 +1,44 @@
+#pragma once
+
+#include "Engine/Components/Component.h"
+
+class LocalizedLabel;
+class LocalizedString;
+class PlatformerEntity;
+class ProgressBar;
+class SmartParticles;
+class Sound;
+
+class FriendlyExpBarBehavior : public Component
+{
+public:
+	static FriendlyExpBarBehavior* create(GameObject* owner);
+
+	void giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain);
+
+	static const std::string MapKey;
+
+protected:
+	FriendlyExpBarBehavior(GameObject* owner);
+	virtual ~FriendlyExpBarBehavior();
+
+	void onLoad() override;
+	void onDisable() override;
+
+private:
+	typedef Component super;
+
+	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete = nullptr);
+	void runLevelUpEffect();
+
+	PlatformerEntity* entity;
+	
+	int tickCounterA;
+	int tickCounterB;
+	ProgressBar* expProgressBar;
+	LocalizedString* deltaString;
+	LocalizedLabel* deltaLabel;
+	LocalizedLabel* levelUpLabel;
+	SmartParticles* levelUpFx;
+	Sound* levelUpSound;
+};

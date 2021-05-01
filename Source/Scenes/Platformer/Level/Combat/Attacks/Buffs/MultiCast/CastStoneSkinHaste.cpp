@@ -6,7 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/Haste.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/StoneSkin/StoneSkin.h"
 
@@ -68,7 +68,7 @@ void CastStoneSkinHaste::performAttack(PlatformerEntity* owner, std::vector<Plat
 	
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Haste::create(owner, next));
 			entityBuffBehavior->applyBuff(StoneSkin::create(owner, next));
@@ -84,7 +84,7 @@ bool CastStoneSkinHaste::isWorthUsing(PlatformerEntity* caster, const std::vecto
 {
 	bool hasBuff = false;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Haste>([&](Haste* buff)
 		{

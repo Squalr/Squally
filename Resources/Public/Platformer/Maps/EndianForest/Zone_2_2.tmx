@@ -154,7 +154,7 @@
   </object>
   <object id="702" name="ogre" type="entity" x="2638" y="2956.91" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
@@ -163,14 +163,14 @@
   </object>
   <object id="703" name="troll" type="entity" x="2642.6" y="2680.48" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="780" name="troll" type="entity" x="1096.61" y="2272.36" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-B"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-B"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -182,7 +182,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="686.08" y="2964.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="782" name="spawn" type="object" x="5098.6" y="4632.15" width="128" height="128">

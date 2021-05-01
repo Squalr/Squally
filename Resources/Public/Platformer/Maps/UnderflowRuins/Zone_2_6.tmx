@@ -77,32 +77,32 @@
   </properties>
   <object id="959" name="mermaid" type="entity" x="857.818" y="1621.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="961" name="mermaid" type="entity" x="1032" y="860" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="962" name="mermaid" type="entity" x="2536" y="856" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="964" name="mermaid" type="entity" x="2384" y="2424" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="966" name="mermaid" type="entity" x="896" y="2432" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="967" name="mermaid" type="entity" x="1068" y="2428" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -187,17 +187,17 @@
   </properties>
   <object id="909" name="mermaid" type="entity" x="842.061" y="905.697" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="914" name="mermaid" type="entity" x="759.758" y="199.636" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="916" name="minotaur" type="entity" x="2574.91" y="3413.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -208,7 +208,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="655.71" y="3401.14" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="443.589" y="3408.59" width="128" height="128">

@@ -16,7 +16,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -101,7 +101,7 @@ void Tent::initializeListeners()
 
 		ObjectEvents::QueryObjects<PlatformerFriendly>([=](PlatformerFriendly* entity)
 		{
-			entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->setHealth(healthBehavior->getMaxHealth());
 			});

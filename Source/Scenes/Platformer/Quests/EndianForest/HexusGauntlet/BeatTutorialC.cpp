@@ -12,7 +12,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialCBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialCBehavior.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"

@@ -23,11 +23,11 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityEqBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -141,9 +141,9 @@ void RewardsMenu::giveExp()
 
 	ObjectEvents::QueryObject<PlatformerEntity>([&](PlatformerEntity* entity)
 	{
-		entity->getAttachedBehavior<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
+		entity->getComponent<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
 		{
-			entity->getAttachedBehavior<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
+			entity->getComponent<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
 			{
 				const int intendedLevel = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
 				const int currentLevel = eqBehavior->getEq();
@@ -175,12 +175,12 @@ void RewardsMenu::giveExp()
 
 				if (didLevelUp)
 				{
-					entity->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+					entity->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
 					{
 						healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 					});
 
-					entity->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+					entity->getComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 					{
 						manaBehavior->setMana(manaBehavior->getMaxMana());
 					});
@@ -196,7 +196,7 @@ void RewardsMenu::loadRewards()
 {
 	ObjectEvents::QueryObject<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
-		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+		enemy->getComponent<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
 			DropPool* dropPool = entityDropTableBehavior->getDropPool();
 

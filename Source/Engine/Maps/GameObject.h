@@ -3,7 +3,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/Components/Component.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -16,9 +16,9 @@ class GameObject : public SmartNode
 {
 public:
 	std::string getUniqueIdentifier();
-	void attachBehavior(AttachedBehavior* attachedBehavior);
+	void attachBehavior(Component* component);
 	void detachAllBehavior();
-	void detachBehavior(AttachedBehavior* attachedBehavior);
+	void detachBehavior(Component* component);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
@@ -47,9 +47,9 @@ public:
 	bool isDespawned();
 
 	template <class T>
-	T* getAttachedBehavior()
+	T* getComponent()
 	{
-		for (auto next : attachedBehavior)
+		for (auto next : component)
 		{
 			if (dynamic_cast<T*>(next) != nullptr && next->isQueryable())
 			{
@@ -61,26 +61,26 @@ public:
 	}
 
 	template <class T>
-	void getAttachedBehavior(std::function<void(T*)> onFound)
+	void getComponent(std::function<void(T*)> onFound)
 	{
-		T* attachedBehavior = this->getAttachedBehavior<T>();
+		T* component = this->getComponent<T>();
 
-		if (attachedBehavior != nullptr && onFound != nullptr)
+		if (component != nullptr && onFound != nullptr)
 		{
-			onFound(attachedBehavior);
+			onFound(component);
 		}
 	}
 	
 	static unsigned long long WatchId;
 
 	template <class T>
-	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
+	void watchForComponent(std::function<void(T*)> onBehaviorFound)
 	{
 		unsigned long long watchId = GameObject::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
 
 		// Do an immediate check for the object
-		T* behavior = this->getAttachedBehavior<T>();
+		T* behavior = this->getComponent<T>();
 
 		if (behavior != nullptr)
 		{
@@ -91,7 +91,7 @@ public:
 		// Schedule a task to watch for the object
 		this->schedule([=](float dt)
 		{
-			T* behavior = this->getAttachedBehavior<T>();
+			T* behavior = this->getComponent<T>();
 
 			if (behavior != nullptr)
 			{
@@ -125,8 +125,8 @@ public:
 	static const std::string MapKeyQuest;
 	static const std::string MapKeyQuestLine;
 	static const std::string MapKeyQuestTag;
-	static const std::string MapKeyAttachedBehavior;
-	static const std::string MapKeyAttachedBehaviorArgs;
+	static const std::string MapKeyComponent;
+	static const std::string MapKeyComponentArgs;
 	static const std::string MapKeyArgs;
 	static const std::string MapKeyQueryable;
 	static const std::string MapKeyZoom;
@@ -178,5 +178,5 @@ private:
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;
-	std::vector<AttachedBehavior*> attachedBehavior;
+	std::vector<Component*> component;
 };

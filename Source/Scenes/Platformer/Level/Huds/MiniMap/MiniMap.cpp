@@ -25,7 +25,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
@@ -246,7 +246,7 @@ void MiniMap::initializeMapData()
 		this->squally = squally;
 		this->squallyMap = GameUtils::GetFirstParentOfType<MiniGameMap>(this->squally);
 		
-		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+		this->squally->watchForComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->squallyInventory = entityInventoryBehavior->getInventory();
 

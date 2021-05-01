@@ -71,7 +71,7 @@
   </properties>
   <object id="692" name="aphrodite" type="entity" x="1047.36" y="935.725" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="aphrodite-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="aphrodite-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-aphrodite"/>
     <property name="quest-line" value="cure-town"/>
@@ -86,7 +86,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="518.32" y="939.556" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="717" name="spawn-wood-door" type="object" x="307.491" y="947.243" width="128" height="128">
@@ -107,17 +107,17 @@
   </properties>
   <object id="732" name="Ruins/Pillar2" type="decor" x="-119.045" y="-100.879" width="369" height="1370">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="733" name="Ruins/Pillar2" type="decor" x="921.561" y="-98.0909" width="369" height="1370">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="734" name="Ruins/Pillar2" type="decor" x="1751.5" y="-69" width="369" height="1370">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>

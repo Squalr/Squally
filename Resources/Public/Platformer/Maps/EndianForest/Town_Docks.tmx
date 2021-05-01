@@ -112,20 +112,20 @@
   </properties>
   <object id="769" name="seagull" type="entity" x="2573.66" y="1427.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="770" name="seagull" type="entity" x="1828.34" y="1427.66" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="773" name="seagull" type="entity" x="1969.33" y="1429.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
@@ -176,7 +176,7 @@
   </properties>
   <object id="774" name="seagull" type="entity" x="2303" y="1477" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
@@ -242,7 +242,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="map" value="EndianForest/Ship_Main"/>
     <property name="tag" value="ship-portal"/>
     <property name="transition" value="ship"/>
@@ -269,7 +269,7 @@
   </properties>
   <object id="692" name="blackbeard" type="entity" x="1717.67" y="1554.79" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="sail-for-ruins"/>
     <property name="quest-line" value="sail-for-ruins"/>
@@ -277,58 +277,58 @@
   </object>
   <object id="760" name="seagull" type="entity" x="3469.33" y="1562.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="761" name="seagull" type="entity" x="3288" y="1561.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="762" name="seagull" type="entity" x="3574.66" y="1563.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="763" name="seagull" type="entity" x="3393.34" y="1562" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="764" name="seagull" type="entity" x="3661.33" y="1564" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="765" name="seagull" type="entity" x="2732.73" y="1563.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="766" name="seagull" type="entity" x="2551.4" y="1562.6" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="767" name="seagull" type="entity" x="1902.42" y="1563.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="768" name="seagull" type="entity" x="1319.76" y="1561.27" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,bird,pacing"/>
+    <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
@@ -341,7 +341,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="971.817" y="1553.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="709" name="spawn" type="object" x="384.988" y="1562.72" width="128" height="128">

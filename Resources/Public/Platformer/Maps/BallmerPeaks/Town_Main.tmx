@@ -619,7 +619,7 @@
   </object>
   <object id="782" name="gate" type="object" x="752.638" y="2013.93" width="450.603" height="423.038">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
+    <property name="components" value="locked-portal"/>
     <property name="item-required" value="gate-key"/>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="main"/>
@@ -742,12 +742,12 @@
   </properties>
   <object id="883" name="aspen" type="entity" x="5482.59" y="4472.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="928" name="chiron" type="entity" x="9960.24" y="3842.06" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="quest" value="town-exit-blocked"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
@@ -760,7 +760,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="971.817" y="4497.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

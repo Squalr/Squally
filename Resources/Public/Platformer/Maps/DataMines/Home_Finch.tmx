@@ -130,7 +130,7 @@
   </properties>
   <object id="810" name="finch" type="entity" x="658.183" y="1833.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="finch-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="finch-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -143,7 +143,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1525.83" y="1833.4" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="1493.2" y="1832.73" width="128" height="128">

@@ -110,7 +110,7 @@
   </properties>
   <object id="966" name="king-grogg" type="entity" x="2756.06" y="1529.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="king-grogg,enemy,agro,run"/>
+    <property name="components" value="king-grogg,enemy,agro,run"/>
     <property name="battle-behavior" value="fireball-tutorial"/>
     <property name="battle-map" value="EndianForest/Combat_TempleBoss"/>
     <property name="battle-tag" value="group-a"/>
@@ -123,14 +123,14 @@
   </object>
   <object id="971" name="goblin-shaman" type="entity" x="2827.45" y="1134.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="972" name="goblin-shaman" type="entity" x="2653.45" y="1136.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -143,7 +143,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">

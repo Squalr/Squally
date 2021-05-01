@@ -8,7 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
 #include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
@@ -49,12 +49,12 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Objects/Camera/CameraFocus.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Stats/EnemyHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/CancelMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
@@ -129,7 +129,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 				PlatformerRubberbandingDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
-				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
 				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
@@ -474,7 +474,7 @@ void CombatMap::spawnEntities()
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
-			valueMap[GameObject::MapKeyAttachedBehavior] = this->playerData[index].battleBehavior;
+			valueMap[GameObject::MapKeyComponent] = this->playerData[index].battleBehavior;
 			
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
@@ -490,12 +490,12 @@ void CombatMap::spawnEntities()
 
 					if (this->playerData[index].statsOverrides.useOverrides)
 					{
-						entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+						entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 						{
 							healthBehavior->setHealth(this->playerData[index].statsOverrides.health);
 						});
 
-						entity->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+						entity->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 						{
 							manaBehavior->setMana(this->playerData[index].statsOverrides.mana);
 						});
@@ -520,7 +520,7 @@ void CombatMap::spawnEntities()
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
-			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;
+			valueMap[GameObject::MapKeyComponent] = this->enemyData[index].battleBehavior;
 			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
 			std::vector<std::string> behavior = StrUtils::splitOn(this->enemyData[index].battleBehavior, ", ", false);
@@ -545,7 +545,7 @@ void CombatMap::spawnEntities()
 					{
 						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
 
-						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+						entity->getComponent<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 						{
 							entityDropTableBehavior->setDropTable(this->enemyData[index].dropPool);
 						});

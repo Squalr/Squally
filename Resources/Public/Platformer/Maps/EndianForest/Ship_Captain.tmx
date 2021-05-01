@@ -76,7 +76,7 @@
   </properties>
   <object id="715" name="blackbeard" type="entity" x="1700.18" y="1269.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,ef-ur-transportation"/>
+    <property name="components" value="friendly,ef-ur-transportation"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -88,7 +88,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="637.133" y="1272.28" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="719" name="spawn-wood-door" type="object" x="262.134" y="1267.48" width="128" height="128">

@@ -5,7 +5,6 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCInputEvents.h"
@@ -28,7 +27,7 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
@@ -170,7 +169,7 @@ void HexusStoreMenu::onEnter()
 
 	this->updateGoldText();
 	
-	this->shopKeeper->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
+	this->shopKeeper->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 	{
 		dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_Tutorials_HexEditing_TutorialStringSearch::create(), Voices::GetNextVoiceMedium(), SpeechBubble::InfiniteDuration);
 	});

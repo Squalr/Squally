@@ -20,8 +20,8 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Camera/CameraStop.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/FountainRoomKey.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -92,7 +92,7 @@ void CureTown::onLoad(QuestState questState)
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
-			this->hera->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			this->hera->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
 				int currentCureCount = this->getQuestSaveStateOrDefault(CureTown::SaveKeyCuredCount, Value(0)).asInt();
 
@@ -124,7 +124,7 @@ void CureTown::onActivate(bool isActiveThroughSkippable)
 
 void CureTown::onComplete()
 {
-	this->hera->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	this->hera->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->disableAll();
 	});
@@ -154,7 +154,7 @@ void CureTown::runCinematicSequence()
 		return;
 	}
 	
-	this->hera->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->hera->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -256,7 +256,7 @@ void CureTown::setPreText()
 {
 	this->defer([=]()
 	{
-		this->hera->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		this->hera->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			int remaining = CureTown::MaxCuredCount - this->getQuestSaveStateOrDefault(CureTown::SaveKeyCuredCount, Value(0)).asInt();
 

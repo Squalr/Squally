@@ -72,7 +72,7 @@
   </properties>
   <object id="985" name="caverns" type="terrain" x="1455.03" y="1714.97" width="2764.48" height="1072">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1034" name="caverns" type="terrain" x="1247.18" y="1604.85" width="167.51" height="1072"/>
@@ -173,7 +173,7 @@
   </properties>
   <object id="971" name="caverns" type="terrain" x="866.74" y="1772" width="4133.75" height="1072">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -194,7 +194,7 @@
   </properties>
   <object id="1077" name="tiger-man" type="entity" x="4511.76" y="1642.06" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-A"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-A"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
@@ -319,13 +319,13 @@
   </properties>
   <object id="966" name="caverns" type="terrain" x="575.093" y="2088">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="2187.08,-1544.3 2346.85,-1543.37 2347.94,-211.904 4389.04,-220.156 4392.66,871.001 1832.41,861.671 1828.8,63.0723 2186.7,64.008"/>
   </object>
   <object id="967" name="caverns" type="terrain" x="-3340.36" y="2089.82">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="2796.88,-274.217 2796.36,-1248.11 4392.3,-1246.53 4394.3,-232.294 5842,-224.297 5842.72,864.94 2794.37,845.768"/>
   </object>
@@ -338,7 +338,7 @@
   </properties>
   <object id="962" name="lioness" type="entity" x="1828.21" y="1734.74" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
     <property name="battle-tag" value="group-b"/>
@@ -347,7 +347,7 @@
   </object>
   <object id="963" name="lioness" type="entity" x="1827.31" y="1465.25" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
    </properties>
@@ -489,7 +489,7 @@
   </object>
   <object id="1056" name="caverns" type="terrain" x="2346.18" y="550" width="155.63" height="2644">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -507,17 +507,17 @@
   </properties>
   <object id="936" name="caverns" type="terrain" x="-190.91" y="1930" width="1971.63" height="904">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1055" name="caverns" type="terrain" x="1798.18" y="2098.57" width="1219.63" height="604">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1072" name="caverns" type="terrain" x="164" y="2190.33">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="2187.08,-1544.3 2346.85,-1543.37 2344.94,-236.904 4778.87,-239.975 4781.81,871.849 2187.44,875.489"/>
   </object>
@@ -561,7 +561,7 @@
   </properties>
   <object id="944" name="tigress" type="entity" x="3187.38" y="1801.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
     <property name="battle-tag" value="group-a"/>
@@ -570,7 +570,7 @@
   </object>
   <object id="945" name="tigress" type="entity" x="3194.81" y="1466.86" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -598,7 +598,7 @@
   </object>
   <object id="943" name="squally" type="entity" x="854.129" y="1801.81" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1057" name="warp" type="object" x="1324.18" y="1675.06" width="256" height="256">
@@ -688,7 +688,7 @@
   </properties>
   <object id="959" name="caverns" type="terrain" x="-288" y="2056">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="2397.11,63.1028 3159.94,55.4956 3180.17,-1201.8 3318.26,-1200.52 3325.79,317.534 3759.71,315.753 3762.66,-211.635 3935.54,-215.305 3941.21,315.039 4368.03,315.929 4364,-99.7293 4516.32,-97.9553 4528.49,310.441 4994.94,317.236 4985.3,-230.336 5156.89,-226.857 5168.56,310.046 6462.96,312.515 6482.3,-679.65 6637.15,-683.375 6668.9,1368.94 314.37,1393.77 300.607,659.962 1473.47,660.595 1790.31,303.117"/>
   </object>
@@ -712,7 +712,7 @@
   </object>
   <object id="951" name="chest" type="object" x="2345.73" y="1989.42" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="reward-pool" value="ur-generic"/>
    </properties>
   </object>

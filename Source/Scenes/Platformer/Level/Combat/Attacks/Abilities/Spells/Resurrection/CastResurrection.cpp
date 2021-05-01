@@ -7,8 +7,8 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Resurrection/Resurrection.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -78,12 +78,12 @@ void CastResurrection::performAttack(PlatformerEntity* owner, std::vector<Platfo
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Resurrection::create(owner, next), false);
 		});
 
-		next->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* entityHealthBehavior)
+		next->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* entityHealthBehavior)
 		{
 			entityHealthBehavior->setHealth(int(float(entityHealthBehavior->getMaxHealth() * CastResurrection::HealPercentage)), false);
 		});

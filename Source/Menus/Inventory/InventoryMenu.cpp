@@ -21,7 +21,7 @@
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Scenes/Title/TitleScreen.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -97,7 +97,7 @@ void InventoryMenu::onEnter()
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();

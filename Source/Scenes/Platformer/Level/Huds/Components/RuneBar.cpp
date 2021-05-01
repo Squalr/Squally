@@ -13,7 +13,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityRuneBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityRuneBehavior.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -237,7 +237,7 @@ void RuneBar::update(float dt)
 void RuneBar::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
-	this->runeBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityRuneBehavior>();
+	this->runeBehavior = this->target == nullptr ? nullptr : this->target->getComponent<EntityRuneBehavior>();
 
 	if (this->runeBehavior == nullptr)
 	{

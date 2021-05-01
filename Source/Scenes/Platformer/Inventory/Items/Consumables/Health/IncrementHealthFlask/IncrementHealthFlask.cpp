@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/ThrowIncrementHealthFlask.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -40,7 +40,7 @@ IncrementHealthFlask::~IncrementHealthFlask()
 
 void IncrementHealthFlask::useOutOfCombat(PlatformerEntity* target)
 {
-	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		healthBehavior->setHealth(healthBehavior->getHealth() + IncrementHealthFlask::HealTicks);
 	});
@@ -57,7 +57,7 @@ bool IncrementHealthFlask::canUseOnTarget(PlatformerEntity* target)
 	
 	bool canUse = true;
 
-	target->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+	target->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
 	{
 		if (healthBehavior->getHealth() == healthBehavior->getMaxHealth())
 		{

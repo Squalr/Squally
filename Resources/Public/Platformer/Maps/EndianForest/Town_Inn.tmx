@@ -205,7 +205,7 @@
   </properties>
   <object id="760" name="polyphemus" type="entity" x="2210.93" y="851.352" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="face-squally"/>
+    <property name="components" value="face-squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -288,7 +288,7 @@
   </properties>
   <object id="692" name="robin" type="entity" x="2640.1" y="930.785" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,robin-hexus,pick-pocket"/>
+    <property name="components" value="friendly,robin-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
@@ -300,7 +300,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="784.265" y="938.223" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="824" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">

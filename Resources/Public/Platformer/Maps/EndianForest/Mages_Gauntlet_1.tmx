@@ -470,7 +470,7 @@
   </properties>
   <object id="755" name="alder" type="entity" x="1364.05" y="938.031" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="beat-tutorial-A"/>
@@ -479,7 +479,7 @@
   </object>
   <object id="901" name="necron" type="entity" x="1780.47" y="93.455" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
@@ -491,7 +491,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="825.722" y="936.314" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="933" name="spawn" type="object" x="509.18" y="936.631" width="128" height="128">

@@ -123,7 +123,7 @@
   </properties>
   <object id="904" name="mermaid" type="entity" x="642.467" y="1525.32" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
@@ -132,7 +132,7 @@
   </object>
   <object id="907" name="minotaur" type="entity" x="3464" y="1524" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-C"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-C"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -144,7 +144,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1971.95" y="1702.17" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="849" name="spawn" type="object" x="2011.34" y="1700" width="128" height="128">

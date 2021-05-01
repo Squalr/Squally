@@ -17,10 +17,10 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/RopedMovementBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/GuanoPetrified/RopedMovementBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -63,7 +63,7 @@ void ObtainMirror::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 
-		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		this->squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
@@ -139,7 +139,7 @@ void ObtainMirror::runCinematicSequencePt2()
 
 	this->doBehaviorAttach = true;
 
-	this->guanoPetrified->watchForAttachedBehavior<RopedMovementBehavior>([=](RopedMovementBehavior* ropedMovementBehavior)
+	this->guanoPetrified->watchForComponent<RopedMovementBehavior>([=](RopedMovementBehavior* ropedMovementBehavior)
 	{
 		ropedMovementBehavior->detach();
 	});

@@ -23,7 +23,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -107,7 +107,7 @@ void CardsMenu::onEnter()
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();

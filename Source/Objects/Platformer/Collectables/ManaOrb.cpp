@@ -10,7 +10,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ParticleResources.h"
@@ -60,7 +60,7 @@ void ManaOrb::initializeListeners()
 	{
 		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
-			squally->watchForAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+			squally->watchForComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 			{
 				// Restore 30% of mana
 				manaBehavior->setMana(manaBehavior->getMana() + int(std::ceil(float(manaBehavior->getMaxMana()) * 0.3f)));

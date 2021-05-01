@@ -18,7 +18,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/HealthLink/HealthLinkGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -155,7 +155,7 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 		{
 			if (next != damageOrHealing->target && next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
-				caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+				caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 				{
 					entityBuffBehavior->getBuff<HealthLink>([&](HealthLink* healthLink)
 					{

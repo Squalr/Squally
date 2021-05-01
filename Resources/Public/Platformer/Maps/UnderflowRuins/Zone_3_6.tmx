@@ -26,12 +26,12 @@
   </properties>
   <object id="1143" name="torch" type="object" x="3330.21" y="783.88" width="42" height="130">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1144" name="torch" type="object" x="2455.36" y="767.03" width="42" height="130">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -100,19 +100,19 @@
   </properties>
   <object id="1157" name="ruins-thick" type="terrain" x="2429.83" y="1356.17" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1158" name="ruins-thick" type="terrain" x="3106.17" y="1355.5" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1160" name="ruins-thick" type="terrain" x="3107" y="1379" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -124,7 +124,7 @@
   </properties>
   <object id="1159" name="ruins-thick" type="terrain" x="2430" y="1384.17" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -182,12 +182,12 @@
   </properties>
   <object id="976" name="ruins-thick" type="terrain" x="1961.18" y="1404" width="1924.63" height="1772.97">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1028" name="ruins-thick" type="terrain" x="-515.487" y="1404.67" width="1652.45" height="1872">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -198,7 +198,7 @@
   </properties>
   <object id="1166" name="ruins-thick" type="terrain" x="-237.45" y="2734" width="2198.27" height="576">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -240,7 +240,7 @@
   </properties>
   <object id="982" name="mummy-priest" type="entity" x="3364.84" y="1271.07" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
     <property name="battle-tag" value="group-a"/>
@@ -249,14 +249,14 @@
   </object>
   <object id="983" name="mummy-warrior" type="entity" x="3372.28" y="936.437" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="1177" name="anubis-pup" type="entity" x="864.182" y="1275.15" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-G"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-G"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -268,7 +268,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="2758.5" y="1276.68" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1032" name="warp" type="object" x="2065.64" y="1144.97" width="256" height="256">
@@ -329,19 +329,19 @@
   </properties>
   <object id="1125" name="ruins-thick" type="terrain" x="2057.33" y="1443.33" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1130" name="ruins-thick" type="terrain" x="3533.33" y="1437.33" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1163" name="ruins-thick" type="terrain" x="1495.88" y="2764.13" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -353,13 +353,13 @@
   </properties>
   <object id="1126" name="ruins-thick" type="terrain" x="2054.66" y="1483.33" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1129" name="ruins-thick" type="terrain" x="3532.67" y="1476.67" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -376,13 +376,13 @@
   </properties>
   <object id="1127" name="ruins-thick" type="terrain" x="2056.67" y="1524.67" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1128" name="ruins-thick" type="terrain" x="3532" y="1520" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -399,7 +399,7 @@
   </properties>
   <object id="1039" name="ruins-thick" type="terrain" x="1933.68" y="1564" width="2064.63" height="321.455">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1141" name="solid" type="collision" x="3999.59" y="-221.62" width="126.878" height="3293.18">

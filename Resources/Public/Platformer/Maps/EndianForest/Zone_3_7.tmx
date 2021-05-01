@@ -41,7 +41,7 @@
   </properties>
   <object id="745" name="Generic/TreeHome1" type="decor" x="1849.97" y="-172.258" width="1824" height="1969">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
@@ -53,7 +53,7 @@
   </properties>
   <object id="729" name="dark-grass" type="terrain" x="2466.64" y="4518.79">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
    </properties>
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
@@ -66,14 +66,14 @@
   </properties>
   <object id="730" name="Generic/TownFencePost" type="decor" x="2361.28" y="1277.83" width="263" height="1118">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
   <object id="731" name="Generic/TownFencePost" type="decor" x="2771" y="1276.53" width="263" height="1118">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="flip-x" type="bool" value="false"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -86,7 +86,7 @@
   </properties>
   <object id="798" name="wood" type="terrain" x="2514.25" y="1793.81">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -100,7 +100,7 @@
   </properties>
   <object id="798" name="wood" type="terrain" x="2514.25" y="1812.81">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -114,7 +114,7 @@
   </properties>
   <object id="798" name="wood" type="terrain" x="2514.25" y="1836.81">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -139,7 +139,7 @@
   </properties>
   <object id="797" name="wood" type="terrain" x="2513.25" y="1859.5">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -153,7 +153,7 @@
   </properties>
   <object id="796" name="wood" type="terrain" x="2513.25" y="1882.82">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -167,7 +167,7 @@
   </properties>
   <object id="795" name="wood" type="terrain" x="2513.25" y="1906.51">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -181,7 +181,7 @@
   </properties>
   <object id="794" name="wood" type="terrain" x="2515.25" y="1930.9">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -195,14 +195,14 @@
   </properties>
   <object id="732" name="Generic/TownFencePost" type="decor" x="2361.28" y="1277.83" width="263" height="1118">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
   <object id="733" name="Generic/TownFencePost" type="decor" x="2771" y="1276.53" width="263" height="1118">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="flip-x" type="bool" value="false"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -215,7 +215,7 @@
   </properties>
   <object id="798" name="wood" type="terrain" x="2514.25" y="1950.81">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -229,7 +229,7 @@
   </properties>
   <object id="797" name="wood" type="terrain" x="2515.25" y="1970.5">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -243,7 +243,7 @@
   </properties>
   <object id="796" name="wood" type="terrain" x="2515.25" y="1993.82">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -257,7 +257,7 @@
   </properties>
   <object id="795" name="wood" type="terrain" x="2515.25" y="2018.51">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -271,7 +271,7 @@
   </properties>
   <object id="794" name="wood" type="terrain" x="2515.25" y="2044.57">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="collision" value="none"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -289,14 +289,14 @@
   </properties>
   <object id="722" name="Generic/TownFencePost" type="decor" x="2357.28" y="1275.83" width="263" height="1118">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
   <object id="723" name="Generic/TownFencePost" type="decor" x="2773" y="1274.53" width="263" height="1118">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="flip-x" type="bool" value="false"/>
     <property name="illusion-group" value="A"/>
    </properties>
@@ -366,7 +366,7 @@
   </object>
   <object id="736" name="portal" type="object" x="2569.63" y="1797.33" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="illusion"/>
+    <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
     <property name="map" value="EndianForest/Home_Ara"/>
     <property name="transition" value="home"/>
@@ -374,7 +374,7 @@
   </object>
   <object id="748" name="magic-wall" type="object" x="2360.09" y="1267.68" width="679.102" height="781">
    <properties>
-    <property name="attached-behavior" value="dispel-illusion"/>
+    <property name="components" value="dispel-illusion"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
@@ -391,7 +391,7 @@
   </properties>
   <object id="692" name="cyclops" type="entity" x="1857.82" y="1920.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
@@ -400,7 +400,7 @@
   </object>
   <object id="693" name="cyclops" type="entity" x="1857.4" y="1675.91" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -413,7 +413,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="705.253" y="1924.29" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="716" name="spawn" type="object" x="416.667" y="1922.67" width="128" height="128">

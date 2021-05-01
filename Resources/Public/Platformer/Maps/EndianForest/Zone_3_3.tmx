@@ -177,32 +177,32 @@
   </properties>
   <object id="774" name="igneus" type="entity" x="4770" y="2395" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="775" name="alder" type="entity" x="4965" y="2396" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="776" name="aster" type="entity" x="5400" y="2395" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="777" name="merlin" type="entity" x="5619" y="2397" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="778" name="sarude" type="entity" x="5185" y="2393" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="786" name="orc-grunt" type="entity" x="6812" y="2404" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -212,7 +212,7 @@
   </object>
   <object id="787" name="ogre" type="entity" x="6657.21" y="2402.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -222,7 +222,7 @@
   </object>
   <object id="788" name="cyclops" type="entity" x="6987.52" y="2408.73" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -232,7 +232,7 @@
   </object>
   <object id="789" name="troll" type="entity" x="7067.58" y="2406.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -242,7 +242,7 @@
   </object>
   <object id="790" name="orc-grunt" type="entity" x="6586" y="2406" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -252,7 +252,7 @@
   </object>
   <object id="791" name="orc-bomber" type="entity" x="6488" y="2404" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -262,7 +262,7 @@
   </object>
   <object id="792" name="orc-warrior" type="entity" x="6912" y="2408" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -272,7 +272,7 @@
   </object>
   <object id="793" name="orc-swordsman" type="entity" x="6744" y="2406" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -282,7 +282,7 @@
   </object>
   <object id="796" name="gorgon" type="entity" x="5970.67" y="2400" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy"/>
+    <property name="components" value="enemy"/>
     <property name="battle-behavior" value="ram-weakened"/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
@@ -299,14 +299,14 @@
   </object>
   <object id="807" name="orc-bomber" type="entity" x="5736" y="1928" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value="ram-weakened"/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="808" name="orc-bomber" type="entity" x="5956" y="1926" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value="ram-weakened"/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -319,7 +319,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="713.92" y="3483.86" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="716" name="spawn" type="object" x="424" y="3484.36" width="128" height="128">

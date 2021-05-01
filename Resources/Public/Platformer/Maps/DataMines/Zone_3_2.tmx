@@ -587,7 +587,7 @@
   </properties>
   <object id="1686" name="skeletal-necromancer" type="entity" x="5980.42" y="1519.7" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -596,7 +596,7 @@
   </object>
   <object id="1687" name="skeletal-necromancer" type="entity" x="5987.58" y="1130.96" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -617,7 +617,7 @@
   </object>
   <object id="864" name="squally" type="entity" x="7212" y="1517.88" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1690" name="spawn" type="object" x="5001.33" y="1526.03" width="128" height="128">

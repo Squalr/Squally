@@ -159,7 +159,7 @@
   </properties>
   <object id="983" name="gate" type="object" x="-5609.3" y="-1035.52" width="450.603" height="423.038">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
+    <property name="components" value="locked-portal"/>
     <property name="item-required" value="gate-key"/>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="main"/>
@@ -457,7 +457,7 @@
   </object>
   <object id="1024" name="portal" type="object" x="1260.98" y="1190.81" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="map" value="EndianForest/Town_Liana"/>
     <property name="transition" value="main"/>
    </properties>
@@ -495,7 +495,7 @@
   </properties>
   <object id="872" name="elriel" type="entity" x="1205.67" y="1319.21" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,run"/>
+    <property name="components" value="friendly,disarmed,run"/>
     <property name="quest" value="talk-to-elriel"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
@@ -508,7 +508,7 @@
   </properties>
   <object id="873" name="squally" type="entity" x="1789.91" y="1319.09" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
     <property name="zoom" type="float" value="1.5"/>
    </properties>
   </object>

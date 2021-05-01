@@ -17,7 +17,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -96,7 +96,7 @@ void TrollInTheDungeon::runChatSequence()
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
-			this->mage->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			this->mage->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
 				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_Alder_A_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
 			});
@@ -127,7 +127,7 @@ void TrollInTheDungeon::runChatSequencePt2()
 		this->mage->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->mage).x));
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords3D(cinematicMarker).x));
 		
-		this->mage->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		this->mage->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getSpeechBubble()->hideDialogue();
 		});

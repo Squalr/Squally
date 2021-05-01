@@ -54,7 +54,7 @@
   </properties>
   <object id="1045" name="queen-liana" type="entity" x="-108" y="448" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="travel-distance" type="float" value="64"/>
    </properties>
   </object>
@@ -137,7 +137,7 @@
   </properties>
   <object id="1050" name="bard" type="entity" x="-142.667" y="601.333" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="travel-distance" type="float" value="64"/>
    </properties>
   </object>

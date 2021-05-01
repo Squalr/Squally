@@ -5,7 +5,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Scenes/Platformer/Terrain/ArabicDarkTerrain.h"
 #include "Scenes/Platformer/Terrain/ArabicTerrain.h"
@@ -57,7 +57,7 @@ PlatformerTerrainDeserializer* PlatformerTerrainDeserializer::create()
 	return instance;
 }
 
-PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(PlatformerTerrainDeserializer::MapKeyTypeTerrain, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
+PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(PlatformerTerrainDeserializer::MapKeyTypeTerrain, { (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 	

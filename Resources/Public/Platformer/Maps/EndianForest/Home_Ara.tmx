@@ -172,7 +172,7 @@
   </properties>
   <object id="692" name="ara" type="entity" x="1099.92" y="1064.74" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,ara,ara-hexus,pick-pocket"/>
+    <property name="components" value="friendly,pacing,ara,ara-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
@@ -184,7 +184,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1459.95" y="1064.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="763" name="spawn-wood-door" type="object" x="1936.12" y="1061.93" width="128" height="128">

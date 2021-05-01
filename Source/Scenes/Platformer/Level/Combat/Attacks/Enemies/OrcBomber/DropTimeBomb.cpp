@@ -12,8 +12,8 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/TimeBomb/TimeBomb.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/Bombed.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
@@ -91,7 +91,7 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		timeBomb->runSpawnFX();
 		timeBomb->setPosition3D(GameUtils::getWorldCoords3D(next) + Vec3(offset.x, offset.y, ZDrawDepthOffset));
 		
-		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Bombed::create(owner, next));
 		});
@@ -111,7 +111,7 @@ bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 			continue;
 		}
 
-		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<TimeBomb>([&](TimeBomb* bombed)
 			{
@@ -127,7 +127,7 @@ float DropTimeBomb::getUseUtility(PlatformerEntity* caster, PlatformerEntity* ta
 {
 	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<DropTimeBomb*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
-	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Bombed>([&](Bombed* bombed)
 		{

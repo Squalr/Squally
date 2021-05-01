@@ -27,10 +27,10 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/MageCastBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Cinematic/MageCastBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -267,7 +267,7 @@ void FightGorgon::killRammedEnemies()
 	{
 		if (enemy != this->gorgon)
 		{
-			enemy->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			enemy->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->kill();
 			});

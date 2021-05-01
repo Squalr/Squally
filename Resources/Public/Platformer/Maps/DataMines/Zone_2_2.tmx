@@ -466,7 +466,7 @@
   </object>
   <object id="864" name="squally" type="entity" x="602.667" y="2598" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1621" name="spawn-cart" type="object" x="6150.18" y="2724.55" width="128" height="128">

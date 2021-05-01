@@ -52,242 +52,242 @@
   </properties>
   <object id="711" name="spiked-log" type="object" x="-33.015" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="712" name="spiked-log" type="object" x="110.735" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="713" name="spiked-log" type="object" x="251.175" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="714" name="spiked-log" type="object" x="389.175" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="715" name="spiked-log" type="object" x="531.175" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="716" name="spiked-log" type="object" x="673.175" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="717" name="spiked-log" type="object" x="817.175" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="718" name="spiked-log" type="object" x="962.075" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="719" name="spiked-log" type="object" x="1105.82" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="720" name="spiked-log" type="object" x="1246.26" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="721" name="spiked-log" type="object" x="1384.26" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="722" name="spiked-log" type="object" x="1526.26" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="723" name="spiked-log" type="object" x="1668.26" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="724" name="spiked-log" type="object" x="1812.26" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="725" name="spiked-log" type="object" x="1963.53" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="726" name="spiked-log" type="object" x="2107.28" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="727" name="spiked-log" type="object" x="2247.72" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="728" name="spiked-log" type="object" x="2385.72" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="729" name="spiked-log" type="object" x="2527.72" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="730" name="spiked-log" type="object" x="2669.72" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="731" name="spiked-log" type="object" x="2813.72" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="732" name="spiked-log" type="object" x="2958.62" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="733" name="spiked-log" type="object" x="3102.37" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="734" name="spiked-log" type="object" x="3242.81" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="735" name="spiked-log" type="object" x="3380.81" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="736" name="spiked-log" type="object" x="3522.81" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="737" name="spiked-log" type="object" x="3664.81" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="738" name="spiked-log" type="object" x="3808.81" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="739" name="spiked-log" type="object" x="3958.27" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="740" name="spiked-log" type="object" x="4102.02" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="741" name="spiked-log" type="object" x="4242.47" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="742" name="spiked-log" type="object" x="4380.47" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="743" name="spiked-log" type="object" x="4522.47" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="744" name="spiked-log" type="object" x="4664.47" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="745" name="spiked-log" type="object" x="4808.47" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="746" name="spiked-log" type="object" x="4953.36" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="747" name="spiked-log" type="object" x="5097.11" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="748" name="spiked-log" type="object" x="5237.56" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="749" name="spiked-log" type="object" x="5375.56" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="750" name="spiked-log" type="object" x="5517.56" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="751" name="spiked-log" type="object" x="5659.56" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="752" name="spiked-log" type="object" x="5803.56" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="753" name="spiked-log" type="object" x="5954.83" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="754" name="spiked-log" type="object" x="6098.58" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="755" name="spiked-log" type="object" x="6239.01" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="756" name="spiked-log" type="object" x="6377.01" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="757" name="spiked-log" type="object" x="6519.01" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="758" name="spiked-log" type="object" x="6661.01" y="1408" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="759" name="portal" type="object" x="1023.52" y="2166.97" width="256" height="256">
@@ -315,7 +315,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1101.14" y="2298.86" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="761" name="castle" type="terrain" x="2700.34" y="-1312.39">

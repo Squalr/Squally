@@ -86,7 +86,7 @@
   </properties>
   <object id="1069" name="tiger-man" type="entity" x="2295.92" y="1048.77" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
     <property name="battle-tag" value="group-b"/>
@@ -95,7 +95,7 @@
   </object>
   <object id="1070" name="lion-man" type="entity" x="2303.35" y="714.135" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
    </properties>
@@ -158,12 +158,12 @@
   <object id="985" name="caverns" type="terrain" x="395.03" y="1272.97" width="1476.84" height="1072"/>
   <object id="986" name="caverns" type="terrain" x="2952.79" y="1272" width="1730.42" height="1072">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1068" name="caverns" type="terrain" x="2100.24" y="284.606">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="-121.09,-568 770.526,-578.149 680.489,433.363 601.992,997.8 310.707,1170.93 16.3437,984.311 -64.2571,439.03"/>
   </object>
@@ -228,7 +228,7 @@
   </properties>
   <object id="1014" name="wood" type="terrain" x="3086.67" y="1282.92" width="256" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
@@ -247,7 +247,7 @@
   </properties>
   <object id="1015" name="wood" type="terrain" x="3087.34" y="1302.92" width="256" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
@@ -266,7 +266,7 @@
   </properties>
   <object id="1016" name="wood" type="terrain" x="3087.67" y="1322.26" width="256" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
@@ -285,7 +285,7 @@
   </properties>
   <object id="1029" name="wood" type="terrain" x="3087.87" y="1344.44" width="256" height="363">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="3"/>
     <property name="collision" value="none"/>
@@ -304,7 +304,7 @@
   </properties>
   <object id="956" name="wood" type="terrain" x="3087.87" y="1367.44" width="256" height="363">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="4"/>
     <property name="collision" value="none"/>
@@ -334,7 +334,7 @@
   </properties>
   <object id="936" name="caverns" type="terrain" x="-270.91" y="1418" width="4551.63" height="1528">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -367,7 +367,7 @@
   </properties>
   <object id="944" name="lioness" type="entity" x="2647.14" y="1288.17" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
     <property name="battle-tag" value="group-a"/>
@@ -376,7 +376,7 @@
   </object>
   <object id="945" name="tigress" type="entity" x="2654.57" y="953.527" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -390,7 +390,7 @@
   </properties>
   <object id="943" name="squally" type="entity" x="481.281" y="1289.81" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1027" name="spawn" type="object" x="496" y="1287.33" width="128" height="128">

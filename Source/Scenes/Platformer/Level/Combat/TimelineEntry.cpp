@@ -16,14 +16,14 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Camera/CameraFocus.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityCombatBehaviorBase.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Pacifist/Pacifist.h"
 
 #include "Resources/UIResources.h"
@@ -103,7 +103,7 @@ void TimelineEntry::onEnter()
 
 	if (this->entity != nullptr)
 	{
-		this->entity->watchForAttachedBehavior<EntityCombatBehaviorBase>([=](EntityCombatBehaviorBase* combatBehavior)
+		this->entity->watchForComponent<EntityCombatBehaviorBase>([=](EntityCombatBehaviorBase* combatBehavior)
 		{
 			this->combatBehavior = combatBehavior;
 		});
@@ -264,7 +264,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerModifyDamageDealt(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -298,7 +298,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerModifyDamageTaken(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -332,7 +332,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
-	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		healthBehavior->setHealth(health - damage);
 	});
@@ -368,7 +368,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		CombatEvents::TriggerModifyHealingDealt(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -400,7 +400,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		CombatEvents::TriggerModifyHealingTaken(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -427,7 +427,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
-	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		healthBehavior->setHealth(health + healing);
 	});
@@ -439,7 +439,7 @@ void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, boo
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
-	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	this->getEntity()->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		manaBehavior->setMana(mana + manaGain);
 	});
@@ -451,7 +451,7 @@ void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaDrain, bool
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
-	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	this->getEntity()->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		manaBehavior->setMana(mana - manaDrain);
 	});
@@ -513,7 +513,7 @@ void TimelineEntry::defend()
 
 	this->isCasting = true;
 	
-	this->getEntity()->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	this->getEntity()->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(Defend::create(this->getEntity()));
 	});

@@ -307,7 +307,7 @@
   </properties>
   <object id="889" name="minotaur" type="entity" x="1630.1" y="2091.56" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
@@ -316,14 +316,14 @@
   </object>
   <object id="890" name="minotaur" type="entity" x="1452.68" y="1714.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="904" name="minotaur" type="entity" x="1802.67" y="1717.82" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -336,7 +336,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="524.406" y="2097.63" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="387.589" y="2095.93" width="128" height="128">

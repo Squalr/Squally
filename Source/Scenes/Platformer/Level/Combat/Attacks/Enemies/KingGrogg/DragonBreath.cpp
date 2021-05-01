@@ -11,7 +11,7 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -121,7 +121,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3(flipMultiplier * 96.0f, 96.0f, 0.0f));
 		fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3(flipMultiplier * 180.0f, 0.0f, 0.0f));
 
-		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+		next->getComponent<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
 			fireball->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 		});

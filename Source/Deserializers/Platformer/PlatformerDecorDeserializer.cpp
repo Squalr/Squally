@@ -3,7 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 
@@ -20,7 +20,7 @@ PlatformerDecorDeserializer* PlatformerDecorDeserializer::create()
 	return instance;
 }
 
-PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
+PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor, { (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 }
 

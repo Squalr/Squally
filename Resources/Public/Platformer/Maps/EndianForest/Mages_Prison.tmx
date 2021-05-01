@@ -56,24 +56,24 @@
   </properties>
   <object id="832" name="fire-tiger" type="entity" x="1867.59" y="846.23" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="843" name="anubis-warrior" type="entity" x="3783.37" y="831.98" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
   <object id="849" name="reaper" type="entity" x="5616.98" y="840.204" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1072" name="shade" type="entity" x="6889.71" y="840.204" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -178,30 +178,30 @@
   </properties>
   <object id="805" name="guano" type="entity" x="8117.99" y="893.219" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="quest" value="chat-with-guano"/>
     <property name="quest-line" value="rescue-guano"/>
    </properties>
   </object>
   <object id="826" name="demon-warrior" type="entity" x="1614.83" y="899.806" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
   <object id="844" name="mermaid" type="entity" x="4117.03" y="884.051" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="850" name="vampire-lord" type="entity" x="5274.11" y="887.808" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
   <object id="1070" name="exterminator" type="entity" x="6546.84" y="887.808" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -416,7 +416,7 @@
   </properties>
   <object id="817" name="merlin" type="entity" x="1494" y="935.153" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,run,pick-pocket"/>
+    <property name="components" value="friendly,run,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="troll-in-the-dungeon"/>
@@ -425,7 +425,7 @@
   </object>
   <object id="892" name="troll" type="entity" x="2881.84" y="928.803" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro,run"/>
+    <property name="components" value="enemy,agro,run"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Prison"/>
     <property name="battle-tag" value="prison"/>
@@ -444,7 +444,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="533.668" y="938.223" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="954" name="spawn" type="object" x="211.051" y="941.2" width="128" height="128">
@@ -477,14 +477,14 @@
   </properties>
   <object id="984" name="Generic/Background/Jail" type="decor" x="3624.84" y="171.5" width="3721.65" height="993">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1083" name="Generic/Background/Jail" type="decor" x="1480.84" y="171.5" width="890.983" height="993">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
    </properties>
@@ -497,7 +497,7 @@
   </properties>
   <object id="991" name="marble" type="terrain" x="-221.578" y="-203.669" width="9083.03" height="416.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -508,22 +508,22 @@
   </properties>
   <object id="976" name="frost" type="terrain" x="1443.52" y="1144.15" width="953.153" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1005" name="dark-grass" type="terrain" x="6137.57" y="1145.3" width="1208.25" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1006" name="shade-grass" type="terrain" x="3611.76" y="1143.3" width="1252.19" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1007" name="castle" type="terrain" x="4864.73" y="1143.3" width="1272.61" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -534,25 +534,25 @@
   </properties>
   <object id="983" name="earth-golem" type="entity" x="6659.33" y="1016.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="993" name="frost-fiend" type="entity" x="1785.33" y="1018.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="994" name="skeletal-priestess" type="entity" x="4178.06" y="1016.82" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1010" name="zombie" type="entity" x="5384.48" y="1016.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -576,37 +576,37 @@
   </properties>
   <object id="995" name="wood" type="terrain" x="1393.75" y="-158" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="997" name="wood" type="terrain" x="2342.42" y="-171.333" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="999" name="wood" type="terrain" x="3553.76" y="-144" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1000" name="wood" type="terrain" x="4808.42" y="-156.667" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1003" name="wood" type="terrain" x="6082.45" y="-171.091" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1079" name="wood" type="terrain" x="7298.45" y="-143.091" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
@@ -618,32 +618,32 @@
   </properties>
   <object id="1039" name="marble" type="terrain" x="6081.76" y="-157.759" width="109.152" height="1360.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1040" name="marble" type="terrain" x="4813.76" y="-88.0624" width="106.607" height="1360.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1041" name="marble" type="terrain" x="3560.91" y="-74.9714" width="96.91" height="1360.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1042" name="marble" type="terrain" x="2349.63" y="-36.5474" width="98.91" height="1360.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1043" name="marble" type="terrain" x="-53.5781" y="-227.669" width="9092.97" height="440.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1078" name="marble" type="terrain" x="7297.76" y="-129.759" width="109.152" height="1360.61">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -654,27 +654,27 @@
   </properties>
   <object id="1011" name="frost" type="terrain" x="1445.7" y="1192.15" width="952.063" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1012" name="dark-grass" type="terrain" x="6138.97" y="1193.3" width="1206.12" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1013" name="shade-grass" type="terrain" x="3606.48" y="1191.3" width="1255.09" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1014" name="castle" type="terrain" x="4862.85" y="1191.3" width="1273.34" height="574.731">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1085" name="marble" type="terrain" x="2402.81" y="-500.016" width="1215.23" height="2359.67">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
@@ -682,7 +682,7 @@
   </object>
   <object id="1086" name="marble" type="terrain" x="7348.39" y="-487.835" width="1439.23" height="2359.67">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
@@ -696,25 +696,25 @@
   </properties>
   <object id="1017" name="earth-elemental" type="entity" x="6569.33" y="1060.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1018" name="snow-fiend" type="entity" x="1695.33" y="1062.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1019" name="skeletal-baron" type="entity" x="4088.06" y="1060.82" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1021" name="undead" type="entity" x="5294.48" y="1060.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="z-fade,friendly,disarmed,pacing"/>
+    <property name="components" value="z-fade,friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -739,37 +739,37 @@
   </properties>
   <object id="1022" name="wood" type="terrain" x="1393.75" y="-158" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1024" name="wood" type="terrain" x="2345.09" y="-172" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1026" name="wood" type="terrain" x="3555.76" y="-144" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1028" name="wood" type="terrain" x="4811.33" y="-155.939" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1029" name="wood" type="terrain" x="6085.85" y="-171.03" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1077" name="wood" type="terrain" x="7301.85" y="-143.03" width="101.823" height="1465.64">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
    </properties>
   </object>

@@ -16,9 +16,9 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -101,7 +101,7 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 	{
 		if (!isActiveThroughSkippable)
 		{
-			this->sarude->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			this->sarude->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
 				// Pre-text chain
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -153,7 +153,7 @@ void ReturnToSarude::onHexusWin()
 
 void ReturnToSarude::onHexusLoss()
 {
-	this->sarude->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+	this->sarude->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
 	{
 		if (hexusBehavior->getLosses() + hexusBehavior->getDraws() >= 2)
 		{
@@ -194,7 +194,7 @@ void ReturnToSarude::runPostHexusMatchCleanup()
 		this->portal->closePortal(false);
 	}
 
-	this->sarude->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+	this->sarude->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
 	{
 		hexusBehavior->removeFromDialogue();
 	});

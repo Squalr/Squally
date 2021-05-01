@@ -313,7 +313,7 @@
   </properties>
   <object id="710" name="cyclops" type="entity" x="8097.15" y="846.099" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -322,14 +322,14 @@
   </object>
   <object id="711" name="troll" type="entity" x="8098.73" y="537.659" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="778" name="ogre" type="entity" x="2154.67" y="2310.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-G"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-G"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -341,7 +341,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="823.9" y="2807.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="779" name="spawn" type="object" x="224" y="2818" width="128" height="128">

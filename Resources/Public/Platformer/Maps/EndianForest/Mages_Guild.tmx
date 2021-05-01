@@ -166,13 +166,13 @@
   </properties>
   <object id="881" name="igneus" type="entity" x="3791.62" y="543.489" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="892" name="jasper" type="entity" x="2550.19" y="543.339" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
@@ -340,7 +340,7 @@
   </properties>
   <object id="825" name="necron" type="entity" x="2880.36" y="974.613" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -494,14 +494,14 @@
   </properties>
   <object id="795" name="aster" type="entity" x="1440.58" y="33.5654" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
   <object id="884" name="alder" type="entity" x="1889.09" y="613.358" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -809,7 +809,7 @@
   </properties>
   <object id="842" name="cypress" type="entity" x="4110.41" y="153.778" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="cypress,friendly"/>
+    <property name="components" value="cypress,friendly"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
@@ -845,7 +845,7 @@
   </object>
   <object id="898" name="portal" type="object" x="3626.03" y="814.849" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
+    <property name="components" value="locked-portal"/>
     <property name="item-required" value="mages-guild-prison-key"/>
     <property name="map" value="EndianForest/Mages_Prison"/>
     <property name="transition" value="main"/>
@@ -870,7 +870,7 @@
   </properties>
   <object id="899" name="marcel" type="entity" x="1330.12" y="935.848" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="marcel,friendly,pacing,pick-pocket"/>
+    <property name="components" value="marcel,friendly,pacing,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="mages-guild,wind-spellbook"/>
@@ -885,7 +885,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="542.18" y="942.503" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="981" name="spawn" type="object" x="423.76" y="942.352" width="128" height="128">

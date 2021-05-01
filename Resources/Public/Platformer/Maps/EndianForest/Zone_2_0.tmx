@@ -116,7 +116,7 @@
   </properties>
   <object id="856" name="ogre" type="entity" x="6207.21" y="1668.21" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
@@ -125,7 +125,7 @@
   </object>
   <object id="857" name="orc-grunt" type="entity" x="6208.79" y="1399.78" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -162,7 +162,7 @@
   </properties>
   <object id="847" name="wood" type="terrain" x="1598.5" y="1936.42" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
@@ -170,7 +170,7 @@
   </object>
   <object id="859" name="wood" type="terrain" x="8046.83" y="1819.14" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
@@ -189,7 +189,7 @@
   </properties>
   <object id="848" name="wood" type="terrain" x="1598.5" y="1964.42" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
@@ -197,7 +197,7 @@
   </object>
   <object id="860" name="wood" type="terrain" x="8048.83" y="1848.14" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
@@ -216,7 +216,7 @@
   </properties>
   <object id="849" name="wood" type="terrain" x="1598.5" y="1993.75" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
@@ -224,7 +224,7 @@
   </object>
   <object id="861" name="wood" type="terrain" x="8050.83" y="1878.14" width="347" height="356.5">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
@@ -302,7 +302,7 @@
   </properties>
   <object id="838" name="horse" type="entity" x="11081.5" y="2405.7" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -448,13 +448,13 @@
   </properties>
   <object id="727" name="orc-grunt" type="entity" x="12099.2" y="2468.74" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-A"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-A"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
   <object id="813" name="orc-warrior" type="entity" x="9157.99" y="1888.22" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
@@ -463,7 +463,7 @@
   </object>
   <object id="840" name="troll" type="entity" x="9157.09" y="1618.73" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
    </properties>
@@ -476,7 +476,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="805.292" y="2434.49" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="841" name="spawn" type="object" x="372.364" y="2428.97" width="128" height="128">

@@ -10,7 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Strings/Strings.h"
@@ -112,7 +112,7 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 {
 	this->onAttackTelegraphBegin();
 
-	owner->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	owner->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		manaBehavior->setMana(manaBehavior->getMana() - this->getSpecialCost());
 	});

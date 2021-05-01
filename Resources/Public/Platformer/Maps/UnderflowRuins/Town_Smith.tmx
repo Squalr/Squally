@@ -114,7 +114,7 @@
   </properties>
   <object id="760" name="geryon" type="entity" x="1037.5" y="850.554" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="petrified,shopkeeper"/>
+    <property name="components" value="petrified,shopkeeper"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
@@ -151,42 +151,42 @@
   </object>
   <object id="795" name="shop-item" type="object" x="682.67" y="198" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
+    <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-geryon"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="976" y="198" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
+    <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-geryon"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1258" y="198" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
+    <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-geryon"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="683.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
+    <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-geryon"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="976" y="482.246" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
+    <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-geryon"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1258" y="482.246" width="64" height="64">
    <properties>
-    <property name="attached-behavior" value="petrification-link"/>
+    <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="pool" value="shop-pool-geryon"/>
    </properties>
@@ -194,7 +194,7 @@
   <object id="801" name="shop-pool-geryon" type="object" x="1847.68" y="226.045" width="64" height="64"/>
   <object id="804" name="anvil" type="object" x="126.451" y="960.88" width="249" height="106">
    <properties>
-    <property name="attached-behavior" value="petrification-link-disabled"/>
+    <property name="components" value="petrification-link-disabled"/>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="recipe-pool" value="smithing-pool-ur"/>
    </properties>
@@ -218,7 +218,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1916.32" y="934.96" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn-wood-door" type="object" x="1869.38" y="934.23" width="128" height="128">

@@ -131,7 +131,7 @@
   </properties>
   <object id="808" name="tiki-golem" type="entity" x="1438" y="1530.85" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -140,7 +140,7 @@
   </object>
   <object id="809" name="tiki-golem" type="entity" x="1445.16" y="1142.11" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -153,7 +153,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="356.627" y="1533.68" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="1746" y="1520" width="128" height="128">

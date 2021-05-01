@@ -16,8 +16,8 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -64,7 +64,7 @@ void SailForRuins::onLoad(QuestState questState)
 
 		if (questState != QuestState::None)
 		{
-			this->portal->getAttachedBehavior<DisabledPortal>([=](DisabledPortal* disabledPortal)
+			this->portal->getComponent<DisabledPortal>([=](DisabledPortal* disabledPortal)
 			{
 				disabledPortal->enablePortal();
 			});
@@ -78,7 +78,7 @@ void SailForRuins::onLoad(QuestState questState)
 	{
 		this->blackbeard = blackbeard;
 
-		this->blackbeard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		this->blackbeard->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 				Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()

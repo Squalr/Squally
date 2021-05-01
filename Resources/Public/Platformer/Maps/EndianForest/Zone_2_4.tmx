@@ -126,7 +126,7 @@
   </properties>
   <object id="972" name="goblin-grunt-boar" type="entity" x="1122.79" y="4595.52" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -412,32 +412,32 @@
   </object>
   <object id="860" name="spiked-log" type="object" x="2026.81" y="4095.2" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="861" name="spiked-log" type="object" x="2328.29" y="4091.4" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="862" name="spiked-log" type="object" x="2031.57" y="3500.5" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="863" name="spiked-log" type="object" x="2327.32" y="3492.5" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="864" name="spiked-log" type="object" x="2034.18" y="2907.1" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="865" name="spiked-log" type="object" x="2329.93" y="2899.1" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="903" name="trap-door" type="object" x="5248.18" y="1896.11" width="299.579" height="85.7283">
@@ -502,14 +502,14 @@
   <object id="1031" name="solid-npc" type="collision" x="5009.18" y="1117.14" width="121.03" height="777.836"/>
   <object id="1233" name="warp" type="object" x="4641.7" y="1426.55" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>
   </object>
   <object id="1234" name="warp" type="object" x="4714.42" y="2772" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>
@@ -534,7 +534,7 @@
   <object id="932" name="life-stone" type="object" x="3823" y="1256.5" width="146" height="423"/>
   <object id="941" name="orc-warrior" type="entity" x="3404" y="1544" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-D"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-D"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -579,7 +579,7 @@
   </properties>
   <object id="1235" name="goblin-warrior-pig" type="entity" x="1594.24" y="4816.22" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
@@ -588,7 +588,7 @@
   </object>
   <object id="1236" name="troll" type="entity" x="1589.76" y="4491.78" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -601,7 +601,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="573.292" y="4810.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1238" name="spawn" type="object" x="344.364" y="4813" width="128" height="128">

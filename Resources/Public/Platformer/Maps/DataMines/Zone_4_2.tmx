@@ -247,7 +247,7 @@
   </properties>
   <object id="1869" name="earth-elemental" type="entity" x="2432.42" y="1520.37" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -256,7 +256,7 @@
   </object>
   <object id="1870" name="earth-elemental" type="entity" x="2439.58" y="1131.63" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -270,7 +270,7 @@
   </properties>
   <object id="864" name="squally" type="entity" x="458" y="1518.38" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1698" name="spawn" type="object" x="5008.55" y="1520.79" width="128" height="128">

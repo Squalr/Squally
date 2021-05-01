@@ -11,7 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
+#include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/UIResources.h"
@@ -68,7 +68,7 @@ void Projectile::onEnter()
 
 	if (this->caster != nullptr)
 	{
-		this->caster->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
+		this->caster->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 		{
 			this->ownerCollisionRef = collisionBehavior->entityCollision;
 		});

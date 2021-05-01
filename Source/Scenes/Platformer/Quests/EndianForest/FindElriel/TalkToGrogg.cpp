@@ -15,9 +15,9 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Overworld/EndianForest/KingGrogg/GroggOutOfCombatAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/KingGrogg/GroggOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -66,7 +66,7 @@ void TalkToGrogg::onLoad(QuestState questState)
 	{
 		this->kingGrogg = kingGrogg;
 		
-		this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
+		this->kingGrogg->watchForComponent<AgroBehavior>([&](AgroBehavior* agroBehavior)
 		{
 			agroBehavior->disable();
 		});
@@ -166,12 +166,12 @@ void TalkToGrogg::runCinematicSequencePart4()
 		{
 			this->complete();
 			
-			this->kingGrogg->watchForAttachedBehavior<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
+			this->kingGrogg->watchForComponent<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
 			{
 				combatBehavior->attack();
 			});
 			
-			this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
+			this->kingGrogg->watchForComponent<AgroBehavior>([&](AgroBehavior* agroBehavior)
 			{
 				agroBehavior->enable();
 				agroBehavior->toggleWarnOnAgro(false);

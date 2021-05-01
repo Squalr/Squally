@@ -13,7 +13,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Dialogue/PlatformerDialogueBox.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Huds/Components/CinematicIndicator.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/ObjectiveDisplay.h"
@@ -91,7 +91,7 @@ void GameHud::initializeListeners()
 		{
 			this->statsBars->setStatsTarget(args->entity);
 
-			args->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			args->entity->getComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 			{
 				this->currencyDisplay->setCurrencyInventory(entityInventoryBehavior->getCurrencyInventory());
 			});

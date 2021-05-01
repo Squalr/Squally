@@ -144,7 +144,7 @@
   </properties>
   <object id="1066" name="temple" type="terrain" x="3001.18" y="-587.667" width="281.63" height="6728.67">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -234,37 +234,37 @@
   </object>
   <object id="1074" name="temple" type="terrain" x="2595.97" y="3766.27" width="275.63" height="257.333">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1075" name="temple" type="terrain" x="2788.97" y="3675.77" width="275.63" height="349.166">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1076" name="temple" type="terrain" x="2988.97" y="3557.27" width="275.63" height="471.818">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1077" name="temple" type="terrain" x="3159.64" y="3432.27" width="275.63" height="595.152">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1078" name="temple" type="terrain" x="3398.64" y="3317.94" width="275.63" height="710.122">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1079" name="temple" type="terrain" x="3572.97" y="3207.94" width="275.63" height="820.182">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -300,7 +300,7 @@
   </object>
   <object id="1104" name="temple" type="terrain" x="5016" y="5824">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="3238.17,395.046 -1003.35,386.916 -981.58,-1025.48 562.81,-1023.23 563.145,-902.18 690.618,-902.138 690.039,-771.251 818.648,-770.335 818.382,-645.372 946.204,-644.175 947.309,-512.876 1075.3,-511.29 1074.76,-387.708 2696.13,-383.486 2698.03,-1939.22 3248.66,-1930.62"/>
   </object>
@@ -469,7 +469,7 @@
   </properties>
   <object id="946" name="goblin-grunt-boar" type="entity" x="5029.21" y="4596.22" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
@@ -478,20 +478,20 @@
   </object>
   <object id="947" name="orc-warrior" type="entity" x="5024.73" y="4271.78" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="1017" name="goblin-grunt-boar" type="entity" x="4613.33" y="1348" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-E"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-E"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
   <object id="1096" name="lycan" type="entity" x="1502" y="3990" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="lycan,lycan-hexus,friendly,pick-pocket"/>
+    <property name="components" value="lycan,lycan-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
@@ -504,7 +504,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1081.29" y="5322.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1063" name="spawn" type="object" x="640.364" y="5329" width="128" height="128">

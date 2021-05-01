@@ -2,7 +2,7 @@
 
 #include "Engine/Inventory/Inventory.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/ItemResources.h"
@@ -82,7 +82,7 @@ void Consumable::bindItemUseCallback(PlatformerAttack* attack, PlatformerEntity*
 
 	attack->registerAttackCompleteCallback([=]()
 	{
-		entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+		entity->getComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			Inventory* inventory = entityInventoryBehavior->getInventory();
 			

@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ThrowManaPotion.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -40,7 +40,7 @@ ManaPotion::~ManaPotion()
 
 void ManaPotion::useOutOfCombat(PlatformerEntity* target)
 {
-	target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	target->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		manaBehavior->setMana(manaBehavior->getMana() + int(float(manaBehavior->getMaxMana()) * ManaPotion::RestorePercentage));
 	});
@@ -57,7 +57,7 @@ bool ManaPotion::canUseOnTarget(PlatformerEntity* target)
 	
 	bool canUse = true;
 
-	target->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+	target->getComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 	{
 		if (manaBehavior->getMana() == manaBehavior->getMaxMana())
 		{

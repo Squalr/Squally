@@ -12,7 +12,7 @@
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftFilterMenu/Dismantle/AllEquipmentFilter.h"
 #include "Menus/Crafting/CraftingPreview.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Dismantle/DismantleRecipe.h"
@@ -78,7 +78,7 @@ void DismantleMenu::open(const std::vector<Item*>& recipes)
 
 	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{
-		squally->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->getComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			for (Item* item : entityInventoryBehavior->getInventory()->getItems())
 			{

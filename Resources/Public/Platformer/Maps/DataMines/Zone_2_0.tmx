@@ -346,7 +346,7 @@
   </properties>
   <object id="834" name="barbarian" type="entity" x="1468.6" y="3304.12" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -355,7 +355,7 @@
   </object>
   <object id="835" name="barbarian" type="entity" x="1475.76" y="2915.39" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -368,7 +368,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="595.9" y="1080.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn-cart" type="object" x="5433.76" y="3302.27" width="128" height="128">

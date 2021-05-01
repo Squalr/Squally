@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/SiphonLife/SiphonLife.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -69,7 +69,7 @@ void CastSiphonLife::performAttack(PlatformerEntity* owner, std::vector<Platform
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(SiphonLife::create(owner, next));
 		});
@@ -92,7 +92,7 @@ bool CastSiphonLife::isWorthUsing(PlatformerEntity* caster, const std::vector<Pl
 			continue;
 		}
 
-		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<SiphonLife>([&](SiphonLife* debuff)
 			{
@@ -108,7 +108,7 @@ float CastSiphonLife::getUseUtility(PlatformerEntity* caster, PlatformerEntity* 
 {
 	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastSiphonLife*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
-	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<SiphonLife>([&](SiphonLife* debuff)
 		{

@@ -337,7 +337,7 @@
   </properties>
   <object id="692" name="orc-bomber" type="entity" x="2533.82" y="1892.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="orc-bomber,enemy,agro"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
@@ -346,7 +346,7 @@
   </object>
   <object id="693" name="orc-bomber" type="entity" x="2535.4" y="1647.91" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -359,7 +359,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="713.92" y="1923.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="650" name="spawn" type="object" x="7311.02" y="1929.5" width="128" height="128">

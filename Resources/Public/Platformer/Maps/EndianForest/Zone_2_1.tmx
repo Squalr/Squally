@@ -198,7 +198,7 @@
   </properties>
   <object id="916" name="goblin-warrior-pig" type="entity" x="6757.7" y="1077.92" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
@@ -207,7 +207,7 @@
   </object>
   <object id="917" name="goblin-warrior-pig" type="entity" x="6763.28" y="669.485" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -349,7 +349,7 @@
   </properties>
   <object id="827" name="chiron" type="entity" x="6600" y="2056" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="chiron-hexus,friendly,face-squally,pick-pocket"/>
+    <property name="components" value="chiron-hexus,friendly,face-squally,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="talk-to-chiron"/>
     <property name="quest-line" value="find-elriel"/>
@@ -363,7 +363,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="537.292" y="3638.49" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="934" name="warp" type="object" x="6940" y="1932" width="256" height="256">

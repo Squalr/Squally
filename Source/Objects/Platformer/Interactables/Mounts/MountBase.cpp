@@ -13,8 +13,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMountBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -65,7 +65,7 @@ void MountBase::initializeListeners()
 	{
 		if (this->mountedEntity != nullptr)
 		{
-			this->mountedEntity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			this->mountedEntity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->setHealth(0, true);
 			});
@@ -96,7 +96,7 @@ void MountBase::mount(PlatformerEntity* interactingEntity)
 		return;
 	}
 
-	interactingEntity->watchForAttachedBehavior<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
+	interactingEntity->watchForComponent<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
 	{
 		if (entityMountBehavior->mount(this))
 		{
@@ -115,7 +115,7 @@ void MountBase::dismount()
 		return;
 	}
 
-	this->mountedEntity->watchForAttachedBehavior<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
+	this->mountedEntity->watchForComponent<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
 	{
 		if (entityMountBehavior->dismount())
 		{

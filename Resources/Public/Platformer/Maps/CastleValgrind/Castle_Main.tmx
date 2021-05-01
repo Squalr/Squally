@@ -299,7 +299,7 @@
   </properties>
   <object id="692" name="garin" type="entity" x="2703.53" y="1068.38" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -308,7 +308,7 @@
   </object>
   <object id="782" name="gaunt" type="entity" x="2946.67" y="1066" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -317,7 +317,7 @@
   </object>
   <object id="783" name="king-redsong" type="entity" x="3178.67" y="1067.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -326,7 +326,7 @@
   </object>
   <object id="784" name="king-redsong-slime" type="entity" x="3417.33" y="1066.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -335,7 +335,7 @@
   </object>
   <object id="785" name="leopold" type="entity" x="3672" y="1064" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -344,7 +344,7 @@
   </object>
   <object id="786" name="leroy" type="entity" x="3944" y="1068" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -353,7 +353,7 @@
   </object>
   <object id="787" name="mabel" type="entity" x="4213.33" y="1064" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -362,7 +362,7 @@
   </object>
   <object id="788" name="merlin" type="entity" x="4558.67" y="1064" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -371,7 +371,7 @@
   </object>
   <object id="789" name="princess-opal" type="entity" x="4968" y="1068" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -380,7 +380,7 @@
   </object>
   <object id="790" name="raven" type="entity" x="5404" y="1066.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -389,7 +389,7 @@
   </object>
   <object id="791" name="rogas" type="entity" x="5844" y="1066.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -398,7 +398,7 @@
   </object>
   <object id="792" name="thurstan" type="entity" x="6297.33" y="1066.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -407,7 +407,7 @@
   </object>
   <object id="793" name="tyracius" type="entity" x="6676" y="1066.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -416,7 +416,7 @@
   </object>
   <object id="794" name="zana" type="entity" x="7020" y="1069.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -431,7 +431,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="4679.95" y="1066.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="778" name="spawn-wood-door" type="object" x="485.456" y="1067.26" width="128" height="128">

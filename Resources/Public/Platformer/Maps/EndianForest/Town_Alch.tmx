@@ -114,7 +114,7 @@
   </properties>
   <object id="760" name="toben" type="entity" x="1421.5" y="850.554" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="shopkeeper,hexus-toben"/>
+    <property name="components" value="shopkeeper,hexus-toben"/>
    </properties>
   </object>
  </objectgroup>
@@ -229,7 +229,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="521.133" y="939.96" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="887" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
@@ -245,7 +245,7 @@
   </object>
   <object id="889" name="warp" type="object" x="28" y="812" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>

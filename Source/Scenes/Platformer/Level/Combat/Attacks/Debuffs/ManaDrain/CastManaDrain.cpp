@@ -6,7 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/ManaDrain/ManaDrain.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -68,7 +68,7 @@ void CastManaDrain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(ManaDrain::create(owner, next));
 		});
@@ -91,7 +91,7 @@ bool CastManaDrain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 			continue;
 		}
 
-		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<ManaDrain>([&](ManaDrain* debuff)
 			{
@@ -111,7 +111,7 @@ float CastManaDrain::getUseUtility(PlatformerEntity* caster, PlatformerEntity* t
 	float maxMana = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0));
 	float utility = (isAlive && !isPacifist) ? 1.0f : (mana / (maxMana <= 0.0f ? 1.0f : maxMana));
 
-	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<ManaDrain>([&](ManaDrain* debuff)
 		{

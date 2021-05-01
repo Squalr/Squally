@@ -118,7 +118,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="829.157" y="998.239" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="849" name="warp" type="object" x="1255.31" y="884.62" width="256" height="256">

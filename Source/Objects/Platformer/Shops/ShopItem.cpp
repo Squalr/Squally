@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -159,7 +159,7 @@ void ShopItem::sellItem()
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
 

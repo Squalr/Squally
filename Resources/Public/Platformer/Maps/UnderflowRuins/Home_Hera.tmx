@@ -126,7 +126,7 @@
   </properties>
   <object id="810" name="hera" type="entity" x="1486.91" y="937.333" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="hera-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-hera,cure-town"/>
     <property name="quest-line" value="cure-town"/>
@@ -141,7 +141,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="355.588" y="942.43" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="692.65" y="935.7" width="128" height="128">

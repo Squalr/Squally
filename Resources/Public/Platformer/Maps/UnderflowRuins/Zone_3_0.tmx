@@ -128,7 +128,7 @@
   </properties>
   <object id="1059" name="wood" type="terrain" x="996.18" y="1323" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="6"/>
    </properties>
@@ -152,7 +152,7 @@
   </properties>
   <object id="1060" name="wood" type="terrain" x="996.18" y="1349.99" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="5"/>
    </properties>
@@ -187,7 +187,7 @@
   </properties>
   <object id="1061" name="wood" type="terrain" x="996.847" y="1379.99" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="4"/>
    </properties>
@@ -211,7 +211,7 @@
   </properties>
   <object id="1062" name="wood" type="terrain" x="996.187" y="1405.33" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="3"/>
    </properties>
@@ -246,7 +246,7 @@
   </properties>
   <object id="1063" name="wood" type="terrain" x="997.517" y="1433.66" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="2"/>
    </properties>
@@ -270,7 +270,7 @@
   </properties>
   <object id="1064" name="wood" type="terrain" x="997.52" y="1460.66" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="1"/>
    </properties>
@@ -305,7 +305,7 @@
   </properties>
   <object id="1065" name="wood" type="terrain" x="997.523" y="1485.33" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
+    <property name="components" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="0"/>
    </properties>
@@ -409,7 +409,7 @@
   </properties>
   <object id="1109" name="ajax" type="entity" x="1785.33" y="1433.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ajax-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="ajax-hexus,friendly,pick-pocket,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="raise-bridge"/>
@@ -430,7 +430,7 @@
   </object>
   <object id="1047" name="squally" type="entity" x="454" y="1431.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1070" name="spawn" type="object" x="1243.67" y="1432.6" width="128" height="128">

@@ -1,8 +1,8 @@
 #include "UndyingAutoCast.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Undying/Undying.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -47,7 +47,7 @@ void UndyingAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealin
 
 	if (projectedNewHealth <= 0)
 	{
-		damageOrHealing->target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		damageOrHealing->target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			this->hasAutoCasted = true;
 
@@ -56,7 +56,7 @@ void UndyingAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealin
 			{
 				undying->onBeforeDamageTaken(damageOrHealing);
 
-				damageOrHealing->target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+				damageOrHealing->target->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 				{
 					manaBehavior->setMana(0);
 				});
@@ -79,7 +79,7 @@ void UndyingAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHeali
 
 	if (projectedNewHealth <= 0)
 	{
-		damageOrHealing->target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		damageOrHealing->target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			this->hasAutoCasted = true;
 
@@ -88,7 +88,7 @@ void UndyingAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHeali
 			{
 				undying->onBeforeHealingTaken(damageOrHealing);
 
-				damageOrHealing->target->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+				damageOrHealing->target->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 				{
 					manaBehavior->setMana(0);
 				});

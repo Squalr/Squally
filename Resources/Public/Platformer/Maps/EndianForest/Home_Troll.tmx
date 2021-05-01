@@ -26,7 +26,7 @@
   </properties>
   <object id="744" name="earth-elemental" type="entity" x="966.303" y="923.879" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -53,7 +53,7 @@
   </properties>
   <object id="741" name="earth-golem" type="entity" x="948.121" y="1029.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -207,7 +207,7 @@
   </object>
   <object id="750" name="squally" type="entity" x="1118.79" y="1149.21" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

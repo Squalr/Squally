@@ -47,7 +47,7 @@
   <object id="484" name="Generic/LesserMoonDoor" type="decor" x="403.186" y="562.62" width="310" height="492"/>
   <object id="749" name="sarude" type="entity" x="1621.01" y="932.932" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="talk-to-sarude,return-to-sarude"/>
@@ -92,7 +92,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="838.452" y="935.328" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="755" name="spawn" type="object" x="485.456" y="939.259" width="128" height="128">

@@ -214,7 +214,7 @@
   </object>
   <object id="1047" name="squally" type="entity" x="680.667" y="1436.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1070" name="spawn" type="object" x="1742.67" y="1433.27" width="128" height="128">

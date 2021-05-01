@@ -103,28 +103,28 @@
   </properties>
   <object id="665" name="sarude" type="entity" x="1641.33" y="1541.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="666" name="merlin" type="entity" x="1668" y="1538.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="667" name="chiron" type="entity" x="1638.67" y="1538.67" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="668" name="polyphemus" type="entity" x="1665.33" y="1540" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
@@ -137,7 +137,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1127.14" y="1466.86" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

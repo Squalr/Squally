@@ -60,7 +60,7 @@
   </properties>
   <object id="817" name="cart-lift" type="object" x="1807.64" y="-224.407" width="72" height="1157.42">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="840" name="edge-portal" type="object" x="1528.73" y="3.0303" width="488" height="200">
@@ -230,7 +230,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="356.627" y="1021.68" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="807" name="spawn" type="object" x="264.727" y="1020.73" width="128" height="128">

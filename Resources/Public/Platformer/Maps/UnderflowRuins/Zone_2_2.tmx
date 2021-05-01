@@ -72,7 +72,7 @@
   </properties>
   <object id="902" name="minotaur" type="entity" x="3310.59" y="977.623" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
@@ -81,21 +81,21 @@
   </object>
   <object id="903" name="minotaur" type="entity" x="3232.02" y="648.983" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="940" name="minotaur" type="entity" x="3434" y="650" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="953" name="poseidon" type="entity" x="900" y="976" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="poseidon,poseidon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="poseidon,poseidon-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -208,14 +208,14 @@
   </properties>
   <object id="835" name="ruins-gray-thick" type="terrain" x="-351.63" y="1197.82" width="2306.72" height="652.241">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="891" name="ruins-gray-thick" type="terrain" x="-328.238" y="2248.61" width="7197.93" height="654.787"/>
   <object id="894" name="ruins-gray-thick" type="terrain" x="2685.4" y="1198.06" width="1701.93" height="1048.12"/>
   <object id="926" name="ruins-gray-thick" type="terrain" x="6056" y="1580.35">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="-1050.96,-390.747 215.057,-391.588 216.231,-495.537 389.343,-493.443 387.99,-576.808 848.9,-580.504 850.99,261.911 -1056.8,266.287"/>
   </object>
@@ -226,12 +226,12 @@
   </properties>
   <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1925.21">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="1846.79">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -281,7 +281,7 @@
   </properties>
   <object id="943" name="mermaid" type="entity" x="3456.12" y="1067.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-D"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-D"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -293,7 +293,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="698.467" y="1073.38" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="561.65" y="1071.68" width="128" height="128">

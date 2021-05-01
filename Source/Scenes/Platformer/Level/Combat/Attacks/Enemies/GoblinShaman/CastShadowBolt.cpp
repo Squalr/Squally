@@ -11,7 +11,7 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/ShadowBolt/ShadowBolt.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -118,7 +118,7 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 		shadowBolt->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
 		launchFx->setPosition3D(GameUtils::getWorldCoords3D(shadowBolt) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
 
-		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+		next->getComponent<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
 			shadowBolt->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 		});

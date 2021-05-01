@@ -224,7 +224,7 @@
   </object>
   <object id="768" name="lycan" type="entity" x="4504.31" y="1540.99" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="town-guard"/>
     <property name="quest" value="sneak-past-lycan"/>
@@ -234,7 +234,7 @@
   <object id="773" name="help-totem-pick-pocket" type="object" x="3891.93" y="1413.88" width="248" height="248"/>
   <object id="775" name="portal" type="object" x="4982.43" y="1414.94" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
+    <property name="components" value="locked-portal"/>
     <property name="item-required" value="town-key"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="main"/>
@@ -267,7 +267,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="571.009" y="1266.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="785" name="spawn" type="object" x="2792.68" y="1517.12" width="128" height="128">

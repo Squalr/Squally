@@ -31,7 +31,7 @@
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/States/States.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -336,7 +336,7 @@ void Hexus::buildPlayerDeck()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			EquipmentInventory* equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 			std::vector<CardData*> cardData = std::vector<CardData*>();

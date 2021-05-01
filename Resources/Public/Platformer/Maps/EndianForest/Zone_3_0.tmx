@@ -278,7 +278,7 @@
   </properties>
   <object id="690" name="orc-swordsman" type="entity" x="2483.88" y="2377.55" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value=""/>
@@ -287,7 +287,7 @@
   </object>
   <object id="692" name="goblin-shaman" type="entity" x="6021.82" y="1088.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
@@ -296,14 +296,14 @@
   </object>
   <object id="693" name="orc-warrior" type="entity" x="6019.4" y="671.911" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="716" name="ogre" type="entity" x="6140" y="3840" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-F"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -315,7 +315,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="9469.92" y="3587.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="736" name="spawn" type="object" x="9508.02" y="3579.5" width="128" height="128">

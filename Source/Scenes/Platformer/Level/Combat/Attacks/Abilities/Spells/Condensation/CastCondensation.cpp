@@ -5,8 +5,8 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Condensation/Condensation.h"
 
 #include "Resources/SoundResources.h"
@@ -86,7 +86,7 @@ void CastCondensation::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	{
 		CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(next, this->owner, CastCondensation::ManaGain, this->abilityType));
 
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Condensation::create(owner, next));
 		});

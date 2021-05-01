@@ -185,7 +185,7 @@
   </properties>
   <object id="965" name="medusa" type="entity" x="2365.97" y="1065.85" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy"/>
+    <property name="components" value="enemy"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
@@ -204,7 +204,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="887.497" y="1991.93" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="890" name="edge-portal" type="object" x="-64.8485" y="1752.73" width="200" height="640">
@@ -249,12 +249,12 @@
   </properties>
   <object id="958" name="ruins-gray-thick" type="terrain" x="-268.633" y="1227.64" width="1106.96" height="259.879">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="959" name="ruins-gray-thick" type="terrain" x="3588.58" y="1218.67" width="1106.96" height="287.151">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -265,12 +265,12 @@
   </properties>
   <object id="960" name="ruins-gray-thick" type="terrain" x="-268.633" y="1260.97" width="1106.96" height="259.879">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="961" name="ruins-gray-thick" type="terrain" x="3588.58" y="1264.12" width="1106.96" height="287.151">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -281,12 +281,12 @@
   </properties>
   <object id="962" name="ruins-gray-thick" type="terrain" x="-265.603" y="1309.45" width="1106.96" height="259.879">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="963" name="ruins-gray-thick" type="terrain" x="3588.58" y="1309.58" width="1106.96" height="287.151">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -297,7 +297,7 @@
   </properties>
   <object id="964" name="ruins-gray-thick" type="terrain" x="-579.937" y="1364.55" width="5198.29" height="460.121">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>

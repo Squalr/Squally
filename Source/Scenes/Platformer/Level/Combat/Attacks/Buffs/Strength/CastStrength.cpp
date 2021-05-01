@@ -6,7 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/Strength.h"
 
 #include "Resources/SoundResources.h"
@@ -67,7 +67,7 @@ void CastStrength::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Strength::create(owner, next));
 		});
@@ -82,7 +82,7 @@ bool CastStrength::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 {
 	bool hasBuff = false;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Strength>([&](Strength* buff)
 		{

@@ -7,7 +7,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Save/SaveManager.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
 #include "Resources/EntityResources.h"
@@ -104,7 +104,7 @@ std::string Squally::getSwimAnimation()
 {
 	std::string swimAnimation = super::getSwimAnimation();
 
-	this->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+	this->getComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		if (entityInventoryBehavior->getEquipmentInventory()->getWeapon() != nullptr)
 		{

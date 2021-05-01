@@ -115,7 +115,7 @@
   </properties>
   <object id="692" name="gramps" type="entity" x="1025.14" y="938.218" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,gramps-hexus"/>
+    <property name="components" value="friendly,gramps-hexus"/>
    </properties>
   </object>
  </objectgroup>
@@ -126,7 +126,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="802.8" y="938.223" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="711" name="spawn-wood-door" type="object" x="509.801" y="939.417" width="128" height="128">

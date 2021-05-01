@@ -118,7 +118,7 @@
   <object id="623" name="life-stone" type="object" x="2900.24" y="2517.4" width="146" height="423"/>
   <object id="625" name="dart-launcher" type="object" x="5213.94" y="2179.76" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
@@ -132,7 +132,7 @@
   </object>
   <object id="639" name="training-dummy" type="entity" x="11661.2" y="2864.31" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
+    <property name="components" value="enemy,pacing"/>
     <property name="battle-behavior" value="training-heal-tutorial,no-items,no-defend,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
     <property name="drop-pool" value="ef-weak"/>
@@ -149,19 +149,19 @@
   </object>
   <object id="651" name="iou" type="object" x="8716.38" y="2868.44" width="87" height="87">
    <properties>
-    <property name="attached-behavior" value="first-iou-found"/>
+    <property name="components" value="first-iou-found"/>
    </properties>
   </object>
   <object id="652" name="warp" type="object" x="1106.17" y="2684.01" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>
   </object>
   <object id="654" name="warp" type="object" x="12432.3" y="2727.73" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>
@@ -183,161 +183,161 @@
   </object>
   <object id="725" name="dart-launcher" type="object" x="5383.79" y="2180.32" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="726" name="dart-launcher" type="object" x="5559.04" y="2181.55" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="727" name="dart-launcher" type="object" x="5728.89" y="2182.11" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="728" name="dart-launcher" type="object" x="5894.68" y="2180.05" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="729" name="dart-launcher" type="object" x="6064.53" y="2180.61" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="730" name="dart-launcher" type="object" x="6239.78" y="2181.84" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="731" name="dart-launcher" type="object" x="6409.63" y="2182.4" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="732" name="dart-launcher" type="object" x="6573.56" y="2181.17" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="733" name="dart-launcher" type="object" x="6743.41" y="2181.73" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="734" name="dart-launcher" type="object" x="6918.66" y="2182.96" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="735" name="dart-launcher" type="object" x="7088.51" y="2183.52" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="-90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="736" name="dart-launcher" type="object" x="5222.75" y="2950.92" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="737" name="dart-launcher" type="object" x="5392.6" y="2951.48" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="738" name="dart-launcher" type="object" x="5567.85" y="2952.71" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="739" name="dart-launcher" type="object" x="5737.7" y="2953.27" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="740" name="dart-launcher" type="object" x="5903.49" y="2964.55" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="741" name="dart-launcher" type="object" x="6074.67" y="2979.77" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="742" name="dart-launcher" type="object" x="6249.92" y="3000.64" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="743" name="dart-launcher" type="object" x="6419.77" y="3004.23" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="744" name="dart-launcher" type="object" x="6583.7" y="2980.33" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="745" name="dart-launcher" type="object" x="6752.22" y="2966.23" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="746" name="dart-launcher" type="object" x="6927.47" y="2966.12" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="747" name="dart-launcher" type="object" x="7097.32" y="2966.68" width="86" height="155">
    <properties>
-    <property name="attached-behavior" value="dart-launcher-clippy-nop"/>
+    <property name="components" value="dart-launcher-clippy-nop"/>
     <property name="fixed" type="float" value="90"/>
     <property name="speed" type="float" value="360"/>
    </properties>
@@ -361,7 +361,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="669.315" y="2815.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="748" name="spawn" type="object" x="12966.7" y="2853.06" width="128" height="128">

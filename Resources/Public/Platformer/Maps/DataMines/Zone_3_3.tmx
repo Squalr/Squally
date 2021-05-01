@@ -221,7 +221,7 @@
   </properties>
   <object id="1731" name="krampus" type="entity" x="2438.48" y="1319.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -230,14 +230,14 @@
   </object>
   <object id="1732" name="skeletal-necromancer" type="entity" x="2395.64" y="910.837" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
   <object id="1733" name="skeletal-archer" type="entity" x="2846.06" y="897.877" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -528,7 +528,7 @@
   </properties>
   <object id="864" name="squally" type="entity" x="4784" y="1525.88" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1698" name="spawn" type="object" x="5008.55" y="1520.79" width="128" height="128">

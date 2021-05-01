@@ -43,18 +43,18 @@
   </properties>
   <object id="832" name="frost-fiend" type="entity" x="972.62" y="1301.44" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="843" name="skeletal-baron" type="entity" x="3470.4" y="1273.19" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
   <object id="849" name="earth-elemental" type="entity" x="2190.01" y="1297.41" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -99,18 +99,18 @@
   </properties>
   <object id="826" name="snow-fiend" type="entity" x="568.83" y="1437.81" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
   <object id="844" name="skeletal-priestess" type="entity" x="3067.03" y="1412.05" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="850" name="earth-golem" type="entity" x="1844.11" y="1423.81" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,pacing"/>
+    <property name="components" value="friendly,disarmed,pacing"/>
    </properties>
   </object>
  </objectgroup>

@@ -97,14 +97,14 @@
   </properties>
   <object id="851" name="angel" type="entity" x="2012.33" y="938" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="angel-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="angel-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
   <object id="852" name="zeus" type="entity" x="866" y="932" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-zeus"/>
     <property name="quest-line" value="cure-town"/>
@@ -119,7 +119,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="3593.07" y="938.96" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="816" name="spawn" type="object" x="3896.3" y="940.121" width="128" height="128">
@@ -142,67 +142,67 @@
   </properties>
   <object id="823" name="Generic/Background/Cloud1" type="decor" x="2034.41" y="772.822" width="690" height="500">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="824" name="Generic/Background/Cloud2" type="decor" x="2559.97" y="1022.12" width="570" height="271">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="825" name="Generic/Background/Cloud3" type="decor" x="3047.97" y="1012.62" width="390" height="137">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="826" name="Generic/Background/Cloud4" type="decor" x="3337.97" y="991.621" width="614" height="122">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="827" name="Generic/Background/Cloud6" type="decor" x="1729.97" y="927.121" width="1539" height="251">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="828" name="Generic/Background/Cloud5" type="decor" x="3565.97" y="923.621" width="864" height="177">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="829" name="Generic/Background/Cloud7" type="decor" x="3415.47" y="886.621" width="1159" height="372">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="830" name="Generic/Background/Cloud8" type="decor" x="2459.47" y="880.121" width="761" height="387">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="831" name="Generic/Background/Cloud9" type="decor" x="3074.47" y="848.621" width="637" height="481">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="857" name="Generic/Background/Cloud4" type="decor" x="1093.5" y="958.5" width="614" height="122">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="858" name="Generic/Background/Cloud5" type="decor" x="1321.5" y="890.5" width="864" height="177">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="859" name="Generic/Background/Cloud7" type="decor" x="1171" y="853.5" width="1159" height="372">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="860" name="Generic/Background/Cloud9" type="decor" x="830" y="815.5" width="637" height="481">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>

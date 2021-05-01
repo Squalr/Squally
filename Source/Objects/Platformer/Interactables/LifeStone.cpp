@@ -18,7 +18,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -102,7 +102,7 @@ void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 	
 	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{
-		squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});
@@ -110,7 +110,7 @@ void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 	
 	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* entity)
 	{
-		entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});

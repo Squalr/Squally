@@ -113,47 +113,47 @@
   </properties>
   <object id="673" name="pendulum-blade" type="object" x="3018.64" y="1669.36" width="42.4242" height="277.636">
    <properties>
-    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
+    <property name="components" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
   <object id="674" name="pendulum-blade" type="object" x="2246.98" y="1676.47" width="42.4242" height="219.569">
    <properties>
-    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
+    <property name="components" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
   <object id="675" name="pendulum-blade" type="object" x="2547.83" y="1672.79" width="42.4242" height="304.97">
    <properties>
-    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
+    <property name="components" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
   <object id="676" name="pendulum-blade" type="object" x="3251.16" y="1668.19" width="42.4242" height="364.97">
    <properties>
-    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
+    <property name="components" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
   <object id="677" name="mechanical-flail" type="object" x="3358.07" y="1868.58" width="42.4242" height="198.303">
    <properties>
-    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
+    <property name="components" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
   <object id="678" name="mechanical-flail" type="object" x="3648.31" y="1772.54" width="42.4242" height="264.303">
    <properties>
-    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
+    <property name="components" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
   <object id="679" name="mechanical-flail" type="object" x="3914.93" y="1875.59" width="42.4242" height="166.303">
    <properties>
-    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
+    <property name="components" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
   <object id="687" name="pendulum-blade" type="object" x="2798.41" y="1659.05" width="42.4242" height="420.97">
    <properties>
-    <property name="attached-behavior" value="pendulum-blade-clippy-angle"/>
+    <property name="components" value="pendulum-blade-clippy-angle"/>
    </properties>
   </object>
   <object id="688" name="mechanical-flail" type="object" x="4104.72" y="1708.14" width="42.4242" height="337.056">
    <properties>
-    <property name="attached-behavior" value="mechanical-flail-clippy-angle"/>
+    <property name="components" value="mechanical-flail-clippy-angle"/>
    </properties>
   </object>
   <object id="746" name="camera-stop" type="object" x="671.01" y="2408.04" width="5352" height="2848">
@@ -199,7 +199,7 @@
   </object>
   <object id="774" name="orc-grunt" type="entity" x="8680.79" y="2815.09" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,pacing,agro"/>
+    <property name="components" value="enemy,pacing,agro"/>
     <property name="battle-behavior" value="increment-health-tutorial,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
     <property name="drop-pool" value="ef-weak"/>
@@ -214,7 +214,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="430.383" y="2027.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="779" name="spawn" type="object" x="9666" y="2820.67" width="128" height="128">
@@ -224,14 +224,14 @@
   </object>
   <object id="780" name="warp" type="object" x="1532" y="1916" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>
   </object>
   <object id="781" name="warp" type="object" x="5216" y="1788" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>

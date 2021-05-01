@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
@@ -101,7 +101,7 @@ void SmartParticles::tryCreateParticleInstance()
 {
 	if (this->particles == nullptr)
 	{
-		this->particles = ParticleSystemQuad::create(particleResource);
+		this->particles = ParticleSystem::create(particleResource);
 
 		if (this->hasAnchorOverride)
 		{

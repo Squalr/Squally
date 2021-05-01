@@ -16,7 +16,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChooseTargetMenu.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -281,7 +281,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft, bool withMouseHitTest
 	// This allows for the user to use the keyboard to navigate to an entity under the mouse, and complete the selection with a click.
 	if (canHitTest)
 	{
-		this->selectedEntity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
+		this->selectedEntity->getComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 		{
 			InputEvents::TriggerMouseHitTest(InputEvents::MouseHitTestArgs(
 				Input::GetMouseEvent().mouseCoords,
@@ -314,7 +314,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 
 void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 {
-	entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
+	entity->getComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{
 		TimelineEntry* entry = this->timelineRef->getAssociatedEntry(entity);
 		bool isAlive = entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
@@ -374,7 +374,7 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 
 	for (auto next : timelineRef->getEntries())
 	{
-		EntitySelectionBehavior* selection = next->getEntity()->getAttachedBehavior<EntitySelectionBehavior>();
+		EntitySelectionBehavior* selection = next->getEntity()->getComponent<EntitySelectionBehavior>();
 		
 		if (selection != nullptr)
 		{

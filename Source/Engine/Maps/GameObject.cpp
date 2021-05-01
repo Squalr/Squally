@@ -6,7 +6,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/Components/Component.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
@@ -35,7 +35,7 @@ const std::string GameObject::MapKeyState = "state";
 const std::string GameObject::MapKeyQuest = "quest";
 const std::string GameObject::MapKeyQuestLine = "quest-line";
 const std::string GameObject::MapKeyQuestTag = "quest-tag";
-const std::string GameObject::MapKeyAttachedBehavior = "attached-behavior";
+const std::string GameObject::MapKeyComponent = "components";
 const std::string GameObject::MapKeyArgs = "args";
 const std::string GameObject::MapKeyQueryable = "args";
 const std::string GameObject::MapKeyRotation = "rotation";
@@ -84,7 +84,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
-	this->attachedBehavior = std::vector<AttachedBehavior*>();
+	this->component = std::vector<Component*>();
 
 	std::vector<std::string> parsedTags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
@@ -253,15 +253,15 @@ std::string GameObject::getUniqueIdentifier()
 	return this->uniqueIdentifier;
 }
 
-void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
+void GameObject::attachBehavior(Component* component)
 {
-	if (this->isDespawned() || attachedBehavior == nullptr || attachedBehavior->isInvalidated())
+	if (this->isDespawned() || component == nullptr || component->isInvalidated())
 	{
 		return;
 	}
 
-	this->attachedBehavior.push_back(attachedBehavior);
-	this->addChild(attachedBehavior);
+	this->component.push_back(component);
+	this->addChild(component);
 }
 
 void GameObject::detachAllBehavior()
@@ -271,27 +271,27 @@ void GameObject::detachAllBehavior()
 		return;
 	}
 
-	for (auto next : this->attachedBehavior)
+	for (auto next : this->component)
 	{
 		next->onDisable();
 	}
 
-	this->attachedBehavior.clear();
+	this->component.clear();
 }
 
-void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
+void GameObject::detachBehavior(Component* component)
 {
-	if (this->isDespawned() || attachedBehavior == nullptr)
+	if (this->isDespawned() || component == nullptr)
 	{
 		return;
 	}
 
-	if (std::find(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior) != this->attachedBehavior.end())
+	if (std::find(this->component.begin(), this->component.end(), component) != this->component.end())
 	{
-		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
+		this->component.erase(std::remove(this->component.begin(), this->component.end(), component), this->component.end());
 
 		// Note: Removing children at runtime is unsafe. The best we can do is disable it.
-		attachedBehavior->onDisable();
+		component->onDisable();
 	}
 }
 
@@ -580,7 +580,7 @@ void GameObject::despawn(float despawnDelay)
 
 void GameObject::onDespawn()
 {
-	std::vector<AttachedBehavior*> behaviorClone = this->attachedBehavior;
+	std::vector<Component*> behaviorClone = this->component;
 
 	for (auto behavior : behaviorClone)
 	{
