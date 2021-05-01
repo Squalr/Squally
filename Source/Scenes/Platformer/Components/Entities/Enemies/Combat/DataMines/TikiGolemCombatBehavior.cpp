@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/CastStrength.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/CallOfTheAncients/CastCallOfTheAncients.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
 
 #include "Resources/UIResources.h"
@@ -32,7 +32,7 @@ TikiGolemCombatBehavior::TikiGolemCombatBehavior(GameObject* owner) : super(owne
 		this->invalidate();
 	}
 	
-	this->setTimelineSpeedBase(1.25f);
+	this->setTimelineSpeedBase(1.55f);
 }
 
 TikiGolemCombatBehavior::~TikiGolemCombatBehavior()
@@ -49,7 +49,7 @@ void TikiGolemCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(CastCallOfTheAncients::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
 		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	

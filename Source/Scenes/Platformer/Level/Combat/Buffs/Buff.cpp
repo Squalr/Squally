@@ -224,7 +224,7 @@ void Buff::unregisterHackables()
 		return;
 	}
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->unregisterCode(next);
 	}

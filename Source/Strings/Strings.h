@@ -8769,6 +8769,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentRegister() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Enrage_Enrage : public LocalizedString
 	{
 	public:
@@ -9622,6 +9682,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Strength_Strength();
 		virtual ~Menus_Hacking_Abilities_Buffs_Strength_Strength() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_TODOPush_CallOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_TODOPush_CallOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_TODOPush_CallOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_TODOPush_CallOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_TODOPush_CommentDamageIncrease : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_TODOPush_CommentDamageIncrease* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_TODOPush_CommentDamageIncrease();
+		virtual ~Menus_Hacking_Abilities_Buffs_TODOPush_CommentDamageIncrease() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_TODOPush_CommentDecreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_TODOPush_CommentDecreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_TODOPush_CommentDecreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_TODOPush_CommentDecreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_TODOPush_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_TODOPush_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_TODOPush_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_TODOPush_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_TODOPush_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_TODOPush_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_TODOPush_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Buffs_TODOPush_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx : public LocalizedString

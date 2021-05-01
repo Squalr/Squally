@@ -186,7 +186,7 @@ void StoneSkin::registerHackables()
 	auto stoneSkinFunc = &StoneSkin::applyStoneSkin;
 	this->hackables = HackableCode::create((void*&)stoneSkinFunc, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}

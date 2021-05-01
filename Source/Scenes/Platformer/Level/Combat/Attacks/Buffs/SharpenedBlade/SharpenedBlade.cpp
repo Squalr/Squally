@@ -172,7 +172,7 @@ void SharpenedBlade::registerHackables()
 	auto func = &SharpenedBlade::applySharpenedBlade;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}

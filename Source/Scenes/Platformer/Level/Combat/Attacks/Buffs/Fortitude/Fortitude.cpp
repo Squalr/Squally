@@ -156,7 +156,7 @@ void Fortitude::registerHackables()
 	auto func = &Fortitude::applyFortitude;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
