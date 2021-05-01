@@ -104,7 +104,8 @@
    <properties>
     <property name="color" value="red"/>
     <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_RED_1"/>
     <property name="tag" value="or-puzzle"/>
    </properties>
@@ -113,6 +114,7 @@
    <properties>
     <property name="color" value="green"/>
     <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="true"/>
     <property name="save-key" value="SAVE_KEY_OR_GREEN_1"/>
     <property name="tag" value="or-puzzle"/>
@@ -122,6 +124,7 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="true"/>
     <property name="save-key" value="SAVE_KEY_OR_BLUE_1"/>
     <property name="tag" value="or-puzzle"/>
@@ -188,6 +191,7 @@
    <properties>
     <property name="color" value="purple"/>
     <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_PURPLE_1"/>
     <property name="tag" value="or-puzzle"/>
@@ -209,6 +213,7 @@
     <property name="color" value="red"/>
     <property name="interactable" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_RED_1"/>
    </properties>
   </object>
@@ -216,7 +221,9 @@
    <properties>
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_BLUE_1"/>
    </properties>
   </object>
@@ -307,25 +314,25 @@
   </properties>
   <object id="889" name="minotaur" type="entity" x="1630.1" y="2091.56" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
   <object id="890" name="minotaur" type="entity" x="1452.68" y="1714.5" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
   <object id="904" name="minotaur" type="entity" x="1802.67" y="1717.82" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

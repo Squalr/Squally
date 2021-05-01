@@ -125,16 +125,16 @@ Brazier::TorchColor Brazier::StrToColor(std::string torchColorName)
 	}
 }
 
-void Brazier::onToggle()
+void Brazier::onToggle(bool isInstant)
 {
-	super::onToggle();
+	super::onToggle(isInstant);
 	
 	this->interactSound->play();
 }
 
-void Brazier::onEnable(bool isInit)
+void Brazier::onEnable(bool isInit, bool isInstant)
 {
-	super::onEnable(isInit);
+	super::onEnable(isInit, isInstant);
 
 	// this->burnSound->play(true);
 	
@@ -146,9 +146,9 @@ void Brazier::onEnable(bool isInit)
 	this->startFx();
 }
 
-void Brazier::onDisable(bool isInit)
+void Brazier::onDisable(bool isInit, bool isInstant)
 {
-	super::onDisable(isInit);
+	super::onDisable(isInit, isInstant);
 
 	if (!isInit)
 	{

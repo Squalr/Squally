@@ -13,6 +13,7 @@ const std::string ToggleableObject::PropertyIsOneUse = "is-one-use";
 const std::string ToggleableObject::PropertyIsInteractable = "interactable";
 const std::string ToggleableObject::PropertyIsGlobalSave = "is-global-save";
 const std::string ToggleableObject::PropertySaveKey = "save-key";
+const std::string ToggleableObject::MapEventToggledBySave = "toggled-by-save-";
 
 ToggleableObject::ToggleableObject(
 	ValueMap& properties,
@@ -66,27 +67,14 @@ void ToggleableObject::onEnter()
 {
 	super::onEnter();
 
-	// Overwrite default value if we have one saved
+	this->loadSaveState();
+
 	if (!this->saveKey.empty())
 	{
-		if (this->isGlobalSave)
+		this->listenForMapEvent(ToggleableObject::MapEventToggledBySave + this->saveKey, [=](ValueMap)
 		{
-			this->isToggledOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->isOn())).asBool();
-		}
-		else
-		{
-			this->isToggledOn = this->loadObjectStateOrDefault(this->saveKey, Value(this->isOn())).asBool();
-		}
-	}
-	
-	// Run the events for enable/disable (passing in a flag indicating this is an initialization)
-	if (this->isOn())
-	{
-		this->onEnable(true);
-	}
-	else
-	{
-		this->onDisable(true);
+			this->loadSaveState();
+		});
 	}
 
 	if (this->isOneUse && this->isOn() != this->originalToggleValue)
@@ -109,6 +97,32 @@ void ToggleableObject::update(float dt)
 	this->optimizationHideOffscreenToggleableObject();
 }
 
+void ToggleableObject::loadSaveState()
+{
+	// Overwrite default value if we have one saved
+	if (!this->saveKey.empty())
+	{
+		if (this->isGlobalSave)
+		{
+			this->isToggledOn = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(this->originalToggleValue)).asBool();
+		}
+		else
+		{
+			this->isToggledOn = this->loadObjectStateOrDefault(this->saveKey, Value(this->originalToggleValue)).asBool();
+		}
+	}
+	
+	// Run the events for enable/disable (passing in a flag indicating this is an initialization)
+	if (this->isOn())
+	{
+		this->onEnable(true);
+	}
+	else
+	{
+		this->onDisable(true);
+	}
+}
+
 void ToggleableObject::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
@@ -123,15 +137,15 @@ void ToggleableObject::onInteract(PlatformerEntity* interactingEntity)
 	this->onToggle();
 }
 
-void ToggleableObject::onToggle()
+void ToggleableObject::onToggle(bool isInstant)
 {
 	if (this->isOn())
 	{
-		this->disable();
+		this->disable(isInstant);
 	}
 	else
 	{
-		this->enable();
+		this->enable(isInstant);
 	}
 
 	if (!this->saveKey.empty())
@@ -144,6 +158,8 @@ void ToggleableObject::onToggle()
 		{
 			this->saveObjectState(this->saveKey, Value(this->isOn()));
 		}
+
+		this->broadcastMapEvent(ToggleableObject::MapEventToggledBySave + this->saveKey, ValueMap());
 	}
 
 	if (this->isOneUse && this->isOn() != this->originalToggleValue)
@@ -152,7 +168,7 @@ void ToggleableObject::onToggle()
 	}
 }
 
-void ToggleableObject::onEnable(bool isInit)
+void ToggleableObject::onEnable(bool isInit, bool isInstant)
 {
 	this->backOffNode->setVisible(false);
 	this->offNode->setVisible(false);
@@ -160,7 +176,7 @@ void ToggleableObject::onEnable(bool isInit)
 	this->onNode->setVisible(true);
 }
 
-void ToggleableObject::onDisable(bool isInit)
+void ToggleableObject::onDisable(bool isInit, bool isInstant)
 {
 	this->backOffNode->setVisible(true);
 	this->offNode->setVisible(true);
@@ -173,19 +189,19 @@ bool ToggleableObject::isOn()
 	return this->isToggledOn;
 }
 
-void ToggleableObject::toggle(bool enabled)
+void ToggleableObject::toggle(bool enabled, bool isInstant)
 {
 	if (enabled)
 	{
-		this->enable();
+		this->enable(isInstant);
 	}
 	else
 	{
-		this->disable();
+		this->disable(isInstant);
 	}
 }
 
-void ToggleableObject::enable()
+void ToggleableObject::enable(bool isInstant)
 {
 	if (this->isToggledOn)
 	{
@@ -194,10 +210,10 @@ void ToggleableObject::enable()
 
 	this->isToggledOn = true;
 
-	this->onEnable(true);
+	this->onEnable(false, isInstant);
 }
 
-void ToggleableObject::disable()
+void ToggleableObject::disable(bool isInstant)
 {
 	if (!this->isToggledOn)
 	{
@@ -206,7 +222,7 @@ void ToggleableObject::disable()
 
 	this->isToggledOn = false;
 
-	this->onDisable(true);
+	this->onDisable(false, isInstant);
 }
 
 void ToggleableObject::onOptimizationHide()

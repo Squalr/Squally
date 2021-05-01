@@ -8,9 +8,13 @@ class ToggleableObject : public InteractObject
 {
 public:
 	bool isOn();
-	void toggle(bool enabled);
-	void enable();
-	void disable();
+	void toggle(bool enabled, bool isInstant = true);
+	void enable(bool isInstant = true);
+	void disable(bool isInstant = true);
+
+	std::string getSaveKey() const { return this->saveKey; }
+
+	static const std::string MapEventToggledBySave;
 
 protected:
 	ToggleableObject(cocos2d::ValueMap& properties,
@@ -29,9 +33,9 @@ protected:
 	void onEnter() override;
 	void update(float dt) override;
 	void onInteract(PlatformerEntity* interactingEntity) override;
-	virtual void onToggle();
-	virtual void onEnable(bool isInit);
-	virtual void onDisable(bool isInit);
+	virtual void onToggle(bool isInstant = true);
+	virtual void onEnable(bool isInit, bool isInstant = true);
+	virtual void onDisable(bool isInit, bool isInstant = true);
 	virtual void onOptimizationHide();
 	virtual void onOptimizationShow();
 
@@ -48,6 +52,7 @@ protected:
 private:
 	typedef InteractObject super;
 
+	void loadSaveState();
 	void optimizationHideOffscreenToggleableObject();
 
 	cocos2d::Size cullPadding;

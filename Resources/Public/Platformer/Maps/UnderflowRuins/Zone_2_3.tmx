@@ -123,10 +123,10 @@
   </properties>
   <object id="904" name="mermaid" type="entity" x="642.467" y="1525.32" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
@@ -156,7 +156,9 @@
    <properties>
     <property name="color" value="green"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="true"/>
+    <property name="is-one-use" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_GREEN_1"/>
    </properties>
   </object>

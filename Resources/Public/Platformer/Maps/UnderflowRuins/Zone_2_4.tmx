@@ -93,16 +93,18 @@
    <properties>
     <property name="color" value="purple"/>
     <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
     <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_OR_PURPLE_1"/>
    </properties>
   </object>
   <object id="897" name="mermaid" type="entity" x="1605.7" y="1872.36" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>

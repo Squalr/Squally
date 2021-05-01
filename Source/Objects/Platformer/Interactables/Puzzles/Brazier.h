@@ -34,9 +34,9 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onToggle() override;
-	void onEnable(bool isInit) override;
-	void onDisable(bool isInit) override;
+	void onToggle(bool isInstant = true) override;
+	void onEnable(bool isInit, bool isInstant = true) override;
+	void onDisable(bool isInit, bool isInstant = true) override;
 	void onOptimizationHide() override;
 	void onOptimizationShow() override;
 

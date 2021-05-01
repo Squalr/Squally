@@ -75,9 +75,9 @@ void LogicGate::initializeListeners()
 	super::initializeListeners();
 }
 
-void LogicGate::onToggle()
+void LogicGate::onToggle(bool isInstant)
 {
-	super::onToggle();
+	super::onToggle(isInstant);
 }
 
 Brazier::TorchColor LogicGate::getTorchColor()
@@ -85,21 +85,21 @@ Brazier::TorchColor LogicGate::getTorchColor()
 	return this->torchColor;
 }
 
-void LogicGate::onEnable(bool isInit)
+void LogicGate::onEnable(bool isInit, bool isInstant)
 {
-	super::onEnable(isInit);
+	super::onEnable(isInit, isInstant);
 
 	if (!isInit)
 	{
 		this->openSound->play();
 	}
 
-	this->runGateAnim(isInit);
+	this->runGateAnim(isInstant);
 }
 
-void LogicGate::onDisable(bool isInit)
+void LogicGate::onDisable(bool isInit, bool isInstant)
 {
-	this->runGateAnim(isInit);
+	this->runGateAnim(isInstant);
 }
 
 void LogicGate::runGateAnim(bool isInstant)

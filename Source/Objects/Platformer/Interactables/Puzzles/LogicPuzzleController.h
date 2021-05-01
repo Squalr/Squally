@@ -25,12 +25,6 @@ public:
 
 	static const std::string MapKey;
 	static const std::string PropertyOperation;
-	
-	static const std::string MapEventTorchLogicSwitchSavePrefix;
-	static const std::string MapEventTorchLogicSwitch;
-	static const std::string MapEventSolveTorches;
-	static const std::string MapEventCheckComplete;
-	static const std::string SaveKeyIsSolved;
 
 protected:
 	LogicPuzzleController(cocos2d::ValueMap& properties);
@@ -44,11 +38,6 @@ private:
 	typedef GameObject super;
 
 	void computeIsOpen(bool isInstant);
-	void runGateAnims(bool isInstant);
-	/*
-	bool isSolved();
-	void checkComplete();
-	*/
 
 	std::map<Brazier::TorchColor, std::vector<Brazier*>> braziers;
 	std::map<Brazier::TorchColor, LogicGate*> logicGates;
