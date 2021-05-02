@@ -145,12 +145,12 @@ void Haste::registerHackables()
 						"mov dword ptr [esi], 0.0f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 						, // x64
 						"mov dword ptr [rsi], 0.0f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 					)
 				},
 				true

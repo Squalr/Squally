@@ -161,18 +161,18 @@ StatsTables::StatsTables()
 		DM
 	************/
 
-	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[EarthElemental::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[EarthGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[ForestGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Gorilla::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Shaman::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[EarthElemental::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[EarthGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[ForestGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[Gorilla::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[Shaman::MapKey] = StatsIncrements(Stats(120, 80, 80));
+	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(55, 12, 80));
 
 	StatsTables::StatsTable[Gecky::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Alder::MapKey] = StatsIncrements(Stats(16, 8, 32));

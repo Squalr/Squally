@@ -316,20 +316,20 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="935" name="skeletal-warrior" type="entity" x="4220.06" y="1471.24" width="128" height="128">
+  <object id="935" name="skeletal-necromancer" type="entity" x="4220.06" y="1471.24" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
   <object id="936" name="skeletal-warrior" type="entity" x="4231" y="1126" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

@@ -36,7 +36,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_COTA 1
 
-const std::string CallOfTheAncients::CallOfTheAncientsIdentifier = "strength";
+const std::string CallOfTheAncients::CallOfTheAncientsIdentifier = "call-of-the-ancients";
 
 const float CallOfTheAncients::Duration = 60.0f;
 
@@ -108,8 +108,8 @@ void CallOfTheAncients::registerHackables()
 			HackableCode::HackableCodeInfo(
 				CallOfTheAncients::CallOfTheAncientsIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients::create(),
-				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_Gauntlet,
+				HackableBase::HackBarColor::Green,
+				UIResources::Menus_Icons_RuneGreen,
 				LazyNode<HackablePreview>::create([=](){ return CallOfTheAncientsGenericPreview::create(); }),
 				{
 				},
@@ -121,12 +121,14 @@ void CallOfTheAncients::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) + 
-						"push 500\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create()) +
+						"push 20\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) + 
-						"push 500\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create()) +
+						"push 20\n"
 					),
 				},
 				true
@@ -162,7 +164,7 @@ NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
 
 	ASM(push ZCX);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COTA);
-	ASM(push 500);
+	ASM(push 20);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 

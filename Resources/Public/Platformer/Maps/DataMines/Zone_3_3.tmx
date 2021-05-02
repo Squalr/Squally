@@ -221,25 +221,25 @@
   </properties>
   <object id="1731" name="krampus" type="entity" x="2438.48" y="1319.58" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="1732" name="skeletal-necromancer" type="entity" x="2395.64" y="910.837" width="128" height="128">
+  <object id="1732" name="skeletal-necromancer" type="entity" x="2225.64" y="902.837" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1733" name="skeletal-archer" type="entity" x="2846.06" y="897.877" width="128" height="128">
+  <object id="1733" name="skeletal-archer" type="entity" x="2676.06" y="889.877" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
