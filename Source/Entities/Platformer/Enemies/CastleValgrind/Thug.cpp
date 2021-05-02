@@ -22,8 +22,8 @@ Thug* Thug::deserialize(ValueMap& properties)
 
 Thug::Thug(ValueMap& properties) : super(properties,
 	Thug::MapKey,
-	EntityResources::Enemies_DataMines_Thug_Animations,
-	EntityResources::Enemies_DataMines_Thug_Emblem,
+	EntityResources::Enemies_CastleValgrind_Thug_Animations,
+	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 Thug::getDialogueOffset()
 
 LocalizedString* Thug::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_DataMines_Thug::create();
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Thug::create();
 }

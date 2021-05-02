@@ -21759,10 +21759,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Agnes() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_CastleValgrind_Gorilla : public LocalizedString
+	class Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Gorilla* create();
+		static Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21770,8 +21770,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_CastleValgrind_Gorilla();
-		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Gorilla() = default;
+		Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian();
+		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Jack : public LocalizedString
@@ -21849,10 +21849,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate : public LocalizedString
+	class Platformer_Entities_Names_Enemies_CastleValgrind_Thug : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate* create();
+		static Platformer_Entities_Names_Enemies_CastleValgrind_Thug* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21860,8 +21860,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate();
-		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate() = default;
+		Platformer_Entities_Names_Enemies_CastleValgrind_Thug();
+		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Thug() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_CastleValgrind_VampireLord : public LocalizedString
@@ -22104,21 +22104,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_DataMines_Barbarian : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DataMines_Barbarian* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DataMines_Barbarian();
-		virtual ~Platformer_Entities_Names_Enemies_DataMines_Barbarian() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_DataMines_EarthElemental : public LocalizedString
 	{
 	public:
@@ -22162,6 +22147,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_DataMines_ForestGolem();
 		virtual ~Platformer_Entities_Names_Enemies_DataMines_ForestGolem() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_Gorilla : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_Gorilla* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_Gorilla();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_Gorilla() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_DataMines_Rhinoman : public LocalizedString
@@ -22224,6 +22224,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior : public LocalizedString
 	{
 	public:
@@ -22237,21 +22252,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior();
 		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DataMines_Thug : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DataMines_Thug* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DataMines_Thug();
-		virtual ~Platformer_Entities_Names_Enemies_DataMines_Thug() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_DataMines_TikiGolem : public LocalizedString

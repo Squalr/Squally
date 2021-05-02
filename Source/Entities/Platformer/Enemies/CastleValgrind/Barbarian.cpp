@@ -22,8 +22,8 @@ Barbarian* Barbarian::deserialize(ValueMap& properties)
 
 Barbarian::Barbarian(ValueMap& properties) : super(properties,
 	Barbarian::MapKey,
-	EntityResources::Enemies_DataMines_Barbarian_Animations,
-	EntityResources::Enemies_DataMines_Barbarian_Emblem,
+	EntityResources::Enemies_CastleValgrind_Barbarian_Animations,
+	EntityResources::Enemies_CastleValgrind_Barbarian_Emblem,
 	Size(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 Barbarian::getDialogueOffset()
 
 LocalizedString* Barbarian::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_DataMines_Barbarian::create();
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian::create();
 }

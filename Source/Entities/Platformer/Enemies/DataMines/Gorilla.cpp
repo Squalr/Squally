@@ -22,8 +22,8 @@ Gorilla* Gorilla::deserialize(ValueMap& properties)
 
 Gorilla::Gorilla(ValueMap& properties) : super(properties,
 	Gorilla::MapKey,
-	EntityResources::Enemies_CastleValgrind_Gorilla_Animations,
-	EntityResources::Enemies_CastleValgrind_Gorilla_Emblem,
+	EntityResources::Enemies_DataMines_Gorilla_Animations,
+	EntityResources::Enemies_DataMines_Gorilla_Emblem,
 	Size(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 Gorilla::getDialogueOffset()
 
 LocalizedString* Gorilla::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Gorilla::create();
+	return Strings::Platformer_Entities_Names_Enemies_DataMines_Gorilla::create();
 }

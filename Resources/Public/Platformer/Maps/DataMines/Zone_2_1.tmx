@@ -51,18 +51,18 @@
   </properties>
   <object id="1599" name="thug" type="entity" x="2733.24" y="1985.37" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
   <object id="1600" name="thug" type="entity" x="2740.4" y="1596.63" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

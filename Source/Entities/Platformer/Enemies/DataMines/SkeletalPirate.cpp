@@ -22,8 +22,8 @@ SkeletalPirate* SkeletalPirate::deserialize(ValueMap& properties)
 
 SkeletalPirate::SkeletalPirate(ValueMap& properties) : super(properties,
 	SkeletalPirate::MapKey,
-	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Animations,
-	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Emblem,
+	EntityResources::Enemies_DataMines_SkeletalPirate_Animations,
+	EntityResources::Enemies_DataMines_SkeletalPirate_Emblem,
 	Size(112.0f, 820.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
@@ -41,5 +41,5 @@ Vec2 SkeletalPirate::getDialogueOffset()
 
 LocalizedString* SkeletalPirate::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate::create();
+	return Strings::Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate::create();
 }
