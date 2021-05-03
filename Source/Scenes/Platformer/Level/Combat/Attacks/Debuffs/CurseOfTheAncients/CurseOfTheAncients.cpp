@@ -110,12 +110,18 @@ void CurseOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"push eax\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEbx::create(), Strings::Menus_Hacking_RegisterEax::create() })) + 
+						"push eax\n" +
+						"pop ebx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create())
 						, // x64
-						"push rax\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRbx::create(), Strings::Menus_Hacking_RegisterRax::create() })) + 
+						"push rax\n" +
+						"push rbx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create())
@@ -163,16 +169,18 @@ NO_OPTIMIZE void CurseOfTheAncients::applyCurseOfTheAncients()
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+	ASM(push ZBX);
 
 	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSE_OF_THE_ANCIENTS);
 	ASM(push ZAX);
+	ASM(pop ZBX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZAX);
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, ebx);
+	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 

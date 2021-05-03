@@ -10719,6 +10719,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentQword() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov();
+		virtual ~Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_Stacks_CommentPush : public LocalizedString
 	{
 	public:

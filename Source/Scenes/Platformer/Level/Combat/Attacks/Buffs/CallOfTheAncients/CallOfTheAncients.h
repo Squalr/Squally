@@ -31,10 +31,9 @@ private:
 
 	void applyCallOfTheAncients();
 	
-	static volatile int currentDamageDealt;
-	
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 	
 	static const float Duration;
+	static const int DamageDealt;
 };

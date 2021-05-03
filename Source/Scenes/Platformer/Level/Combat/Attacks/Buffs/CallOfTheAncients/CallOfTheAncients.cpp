@@ -39,9 +39,7 @@ using namespace cocos2d;
 const std::string CallOfTheAncients::CallOfTheAncientsIdentifier = "call-of-the-ancients";
 
 const float CallOfTheAncients::Duration = 60.0f;
-
-// Static to prevent GCC optimization issues
-volatile int CallOfTheAncients::currentDamageDealt = 0;
+const int CallOfTheAncients::DamageDealt = 20;
 
 CallOfTheAncients* CallOfTheAncients::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -53,11 +51,10 @@ CallOfTheAncients* CallOfTheAncients::create(PlatformerEntity* caster, Platforme
 }
 
 CallOfTheAncients::CallOfTheAncients(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Gauntlet, AbilityType::Physical, BuffData(CallOfTheAncients::Duration, CallOfTheAncients::CallOfTheAncientsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_RuneGreen, AbilityType::Physical, BuffData(CallOfTheAncients::Duration, CallOfTheAncients::CallOfTheAncientsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageDealt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -120,15 +117,23 @@ void CallOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
+						"push 20\n" +
+						"pop edx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create()) +
-						"push 20\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create()) +
-						"push 20\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
+						"push 20\n" +
+						"pop rdx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create())
 					),
 				},
 				true
@@ -149,11 +154,12 @@ void CallOfTheAncients::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHeal
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->currentDamageDealt = damageOrHealing->damageOrHealingValue;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyCallOfTheAncients();
 
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
+	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
+		= GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
@@ -162,17 +168,16 @@ NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
 
 	currentDamageDealtLocal = 0;
 
-	ASM(push ZCX);
+	ASM(push ZDX);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COTA);
 	ASM(push 20);
+	ASM(pop ZDX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
+	ASM(pop ZDX);
 
-	ASM(pop ZCX);
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ecx);
-	ASM(pop ZCX);
-
-	this->currentDamageDealt = currentDamageDealtLocal;
+	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
