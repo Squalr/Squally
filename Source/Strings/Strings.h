@@ -8634,6 +8634,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration();
+		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
@@ -10342,6 +10372,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_DispelIllusion();
 		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise();
+		virtual ~Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Cmov_CommentC : public LocalizedString

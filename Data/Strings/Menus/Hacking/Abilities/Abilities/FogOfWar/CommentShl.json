@@ -1,6 +1,6 @@
 {
     "ar": "'shl' تحول بت عدد إلى اليسار.",
-    "bg": "\\\"shl\\\" измества бита на числото наляво.",
+    "bg": "'shl' измества бита на числото наляво.",
     "cs": "'shl' posune bity čísla doleva.",
     "da": "'shl' flytter stumperne af et tal til venstre.",
     "de": "'shl' verschiebt die Bits einer Zahl nach links.",
@@ -16,7 +16,7 @@
     "ko": "'shl'는 숫자의 비트를 왼쪽으로 이동합니다.",
     "nl": "'shl' verschuift de stukjes van een getal naar links.",
     "nb": "'shl' skifter biter av et tall til venstre.",
-    "pl": "\\\"shl\\\" przesuwa bity liczby w lewo.",
+    "pl": "'shl' przesuwa bity liczby w lewo.",
     "pt": "'shl' muda os pedaços de um número para a esquerda.",
     "pt-BR": "'shl' muda os pedaços de um número para a esquerda.",
     "ro": "'shl' mută biții unui număr la stânga.",
@@ -26,6 +26,6 @@
     "tr": "'shl' bir sayının bitlerini sola kaydırır.",
     "uk": "' shl ' зміщує біти числа вліво.",
     "vi": "' shl ' thay đổi các bit của một số bên trái.",
-    "zh-CN": "\\\"shl\\\"将数字的位向左移动。",
-    "zh-TW": "\\\"shl\\\"將數位的位向左移動。"
+    "zh-CN": "'shl'将数字的位向左移动。",
+    "zh-TW": "'shl'將數位的位向左移動。"
 }

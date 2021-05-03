@@ -54,7 +54,7 @@ PlatformerAttack* CastArrowRain::cloneInternal()
 
 LocalizedString* CastArrowRain::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create();
+	return Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain::create();
 }
 
 std::string CastArrowRain::getAttackAnimation()

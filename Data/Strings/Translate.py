@@ -98,7 +98,7 @@ def main():
             translations = json.loads(response)
             translations = translations[0]['translations']
 		
-            resultDict = {};
+            resultDict = {}
 		
             for key in translations:
                 language = key['to']
