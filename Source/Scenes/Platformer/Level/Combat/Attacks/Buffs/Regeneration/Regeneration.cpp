@@ -16,6 +16,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Regeneration/RegenerationGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -34,8 +35,8 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_RESTORE 1
 
 const std::string Regeneration::RegenerationIdentifier = "regeneration";
-const float Regeneration::TimeBetweenTicks = 0.5f;
-const int Regeneration::HealTicks = 5;
+const float Regeneration::TimeBetweenTicks = 1.0f;
+const int Regeneration::HealTicks = 3;
 const float Regeneration::StartDelay = 0.15f;
 
 Regeneration* Regeneration::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -156,26 +157,31 @@ void Regeneration::runRegeneration()
 
 NO_OPTIMIZE void Regeneration::runRestoreTick()
 {
-	static volatile int incrementAmount;
+	static volatile int originalHealth = 0;
+	static volatile int health = 0;
 
-	incrementAmount = 0;
+	this->owner->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+	{
+		originalHealth = healthBehavior->getHealth();
+	});
+
+	health = originalHealth;
 
 	ASM(push ZDI);
-	ASM(mov ZDI, 0)
+
+	ASM_MOV_REG_VAR(edi, health);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(inc ZDI);
+	ASM(or ZDI, 15);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, edi);
+	ASM_MOV_VAR_REG(health, edi);
 
 	ASM(pop ZDI);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -2, 2);
-
 	this->healSound->play();
 
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, incrementAmount, this->abilityType));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, health - originalHealth, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }

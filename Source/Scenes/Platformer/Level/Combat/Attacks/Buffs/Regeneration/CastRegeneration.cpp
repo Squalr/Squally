@@ -30,7 +30,7 @@ CastRegeneration* CastRegeneration::create(float attackDuration, float recoverDu
 }
 
 CastRegeneration::CastRegeneration(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_MoonShine, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Multi)
+	: super(AttackType::Damage, UIResources::Menus_Icons_MoonShine, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Team)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
