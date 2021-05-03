@@ -32,6 +32,8 @@ private:
 	void selectTargetSingle(TimelineEntry* attackingEntry);
 	void selectTargetSelf(TimelineEntry* attackingEntry);
 	void selectTargetsMulti(TimelineEntry* attackingEntry);
+	void selectTargetsTeam(TimelineEntry* attackingEntry);
+	void selectTargetsAll(TimelineEntry* attackingEntry);
 	void selectAttack(TimelineEntry* attackingEntry);
 	void shuffleEntities();
 

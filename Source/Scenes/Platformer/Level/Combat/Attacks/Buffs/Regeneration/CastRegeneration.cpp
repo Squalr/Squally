@@ -8,8 +8,8 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Objects/Platformer/Combat/Abilities/Regeneration/Regeneration.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Regeneration/Regeneration.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -20,20 +20,19 @@
 
 using namespace cocos2d;
 
-CastRegeneration* CastRegeneration::create(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource)
+CastRegeneration* CastRegeneration::create(float attackDuration, float recoverDuration, Priority priority)
 {
-	CastRegeneration* instance = new CastRegeneration(attackDuration, recoverDuration, priority, arrowResource);
+	CastRegeneration* instance = new CastRegeneration(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastRegeneration::CastRegeneration(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource)
+CastRegeneration::CastRegeneration(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_MoonShine, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Multi)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
-	this->arrowResource = arrowResource;
 	
 	this->addChild(this->castSound);
 }
@@ -49,7 +48,7 @@ void CastRegeneration::initializePositions()
 
 PlatformerAttack* CastRegeneration::cloneInternal()
 {
-	return CastRegeneration::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority, this->arrowResource);
+	return CastRegeneration::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* CastRegeneration::getString()
@@ -69,49 +68,14 @@ void CastRegeneration::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
-
-	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
+	
+	for (auto next : targets)
 	{
-		Regeneration* arrowRain = Regeneration::create(owner, nullptr, this->arrowResource);
-
-		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
-			marker,
-			arrowRain,
-			SpawnMethod::Above,
-			PositionMode::SetToOwner,
-			[&]()
-			{
-			},
-			[&]()
-			{
-			}
-		));
-
-		// Place it quasi off-screen
-		arrowRain->setPosition(arrowRain->getPosition() + Vec2(0.0f, 512.0f));
-	},
-	PlatformerAttack::TagArenaTop,
-	[=]()
-	{
-		// TOP CENTER ARENA MARKER NOT FOUND!
-		Regeneration* arrowRain = Regeneration::create(owner, nullptr, this->arrowResource);
-
-		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
-			this,
-			arrowRain,
-			SpawnMethod::Above,
-			PositionMode::SetToOwner,
-			[&]()
-			{
-			},
-			[&]()
-			{
-			}
-		));
-		
-		// Fall back by spawning the arrow rain in a quasi reasonable spot.
-		arrowRain->setPosition(arrowRain->getPosition() + Vec2(-256.0f, 1024.0f));
-	});
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->applyBuff(Regeneration::create(owner, next));
+		});
+	}
 }
 
 void CastRegeneration::onCleanup()

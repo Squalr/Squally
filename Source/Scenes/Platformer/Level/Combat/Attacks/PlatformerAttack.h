@@ -24,7 +24,9 @@ public:
 	{
 		Single,
 		Self,
-		Multi
+		Multi,
+		Team,
+		All
 	};
 
 	enum class Priority

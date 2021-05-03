@@ -202,6 +202,16 @@ void CombatAIHelper::selectTargets(TimelineEntry* attackingEntry)
 			this->selectTargetSelf(attackingEntry);
 			break;
 		}
+		case PlatformerAttack::TargetingType::Team:
+		{
+			this->selectTargetsTeam(attackingEntry);
+			break;
+		}
+		case PlatformerAttack::TargetingType::All:
+		{
+			this->selectTargetsTeam(attackingEntry);
+			break;
+		}
 		default:
 		case PlatformerAttack::TargetingType::Single:
 		{
@@ -299,6 +309,32 @@ void CombatAIHelper::selectTargetsMulti(TimelineEntry* attackingEntry)
 
 			break;
 		}
+	}
+}
+
+void CombatAIHelper::selectTargetsTeam(TimelineEntry* attackingEntry)
+{
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+
+	for (auto next : sameTeam)
+	{
+		this->selectedTargets.push_back(next);
+	}
+}
+
+void CombatAIHelper::selectTargetsAll(TimelineEntry* attackingEntry)
+{
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+
+	for (auto next : sameTeam)
+	{
+		this->selectedTargets.push_back(next);
+	}
+	
+	for (auto next : otherTeam)
+	{
+		this->selectedTargets.push_back(next);
 	}
 }
 

@@ -26,7 +26,7 @@ CastBlind* CastBlind::create(float attackDuration, float recoverDuration, Priori
 }
 
 CastBlind::CastBlind(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_RuneGreen, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_EyeStrain, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

@@ -51,7 +51,7 @@ Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_RuneGreen, AbilityType::Physical, BuffData(Blind::Duration, Blind::BlindIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_EyeStrain, AbilityType::Physical, BuffData(Blind::Duration, Blind::BlindIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -106,7 +106,7 @@ void Blind::registerHackables()
 				Blind::BlindIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Blind_Blind::create(),
 				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_RuneGreen,
+				UIResources::Menus_Icons_EyeStrain,
 				LazyNode<HackablePreview>::create([=](){ return BlindGenericPreview::create(); }),
 				{
 				},

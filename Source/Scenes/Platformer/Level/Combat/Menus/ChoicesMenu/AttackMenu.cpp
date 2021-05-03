@@ -125,6 +125,16 @@ void AttackMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, in
 
 			break;
 		}
+		case PlatformerAttack::TargetingType::Team:
+		{
+			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getFriendlyEntities()));
+			break;
+		}
+		case PlatformerAttack::TargetingType::All:
+		{
+			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetsArgs(this->timelineRef->getEntities()));
+			break;
+		}
 		default:
 		case PlatformerAttack::TargetingType::Single:
 		{
