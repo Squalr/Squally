@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="music" value="two-steps"/>
    <property name="rubber-band" type="int" value="2"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -268,7 +268,7 @@
     <property name="transition" value="inner"/>
    </properties>
   </object>
-  <object id="795" name="clock-door" type="object" x="4323.66" y="467.667" width="257" height="729">
+  <object id="795" name="clock-door" type="object" x="4714.57" y="-805.06" width="257" height="729">
    <properties>
     <property name="door-style" value="old"/>
     <property name="map" value="Castle_Valgrind/Castle_Main_Haunted"/>
@@ -277,7 +277,7 @@
     <property name="transition" value="clock"/>
    </properties>
   </object>
-  <object id="796" name="clock-door" type="object" x="5103.83" y="451.652" width="288" height="743">
+  <object id="796" name="clock-door" type="object" x="4655.35" y="448.622" width="288" height="743">
    <properties>
     <property name="clock-style" value="haunted"/>
     <property name="map" value="Castle_Valgrind/Castle_Main"/>
@@ -297,7 +297,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="garin" type="entity" x="2703.53" y="1068.38" width="128" height="128">
+  <object id="692" name="garin" type="entity" x="7395.53" y="1068.38" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -306,7 +306,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="782" name="gaunt" type="entity" x="2946.67" y="1066" width="128" height="128">
+  <object id="782" name="gaunt" type="entity" x="835.67" y="1066" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -324,7 +324,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="784" name="king-redsong-slime" type="entity" x="3417.33" y="1066.67" width="128" height="128">
+  <object id="784" name="king-redsong-slime" type="entity" x="7509.33" y="1070.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -333,7 +333,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="785" name="leopold" type="entity" x="3672" y="1064" width="128" height="128">
+  <object id="785" name="leopold" type="entity" x="5534" y="1068" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -342,7 +342,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="786" name="leroy" type="entity" x="3944" y="1068" width="128" height="128">
+  <object id="786" name="leroy" type="entity" x="7984" y="1076" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -351,7 +351,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="787" name="mabel" type="entity" x="4213.33" y="1064" width="128" height="128">
+  <object id="787" name="mabel" type="entity" x="7641.33" y="1064" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -360,7 +360,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="788" name="merlin" type="entity" x="4558.67" y="1064" width="128" height="128">
+  <object id="788" name="merlin" type="entity" x="8054.67" y="1060" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -369,7 +369,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="789" name="princess-opal" type="entity" x="4968" y="1068" width="128" height="128">
+  <object id="789" name="princess-opal" type="entity" x="2961.33" y="1065.21" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -378,7 +378,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="790" name="raven" type="entity" x="5404" y="1066.67" width="128" height="128">
+  <object id="790" name="raven" type="entity" x="7864" y="1070.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -387,7 +387,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="791" name="rogas" type="entity" x="5844" y="1066.67" width="128" height="128">
+  <object id="791" name="rogas" type="entity" x="7422.79" y="1063.64" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -396,7 +396,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="792" name="thurstan" type="entity" x="6297.33" y="1066.67" width="128" height="128">
+  <object id="792" name="thurstan" type="entity" x="1082.24" y="1066.7" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -405,7 +405,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="793" name="tyracius" type="entity" x="6676" y="1066.67" width="128" height="128">
+  <object id="793" name="tyracius" type="entity" x="7309.33" y="1069.7" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -414,7 +414,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="794" name="zana" type="entity" x="7020" y="1069.33" width="128" height="128">
+  <object id="794" name="zana" type="entity" x="7768" y="1069.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>

@@ -67,9 +67,9 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 	const float TimeBetweenBlinks = 5.5f;
 	
 	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_Eye_R_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
 	
-	/*
-	this->leftEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
+	this->leftEyeController->setSpriteChangeCallback([=](const std::string& spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimations()->getAnimationPart("eye_left");
 		
@@ -80,21 +80,9 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 				leftEye->replaceSprite(spriteResource);
 			}
 		}
-	};
-	this->leftEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
-	{
-		AnimationPart* leftEye = this->squally->getAnimations()->getAnimationPart("eye_left");
-		
-		if (leftEye != nullptr)
-		{
-			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				leftEye->replaceSprite(spriteResource);
-			}
-		}
-	};
-	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->rightEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
+	});
+
+	this->rightEyeController->setSpriteChangeCallback([=](const std::string& spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimations()->getAnimationPart("eye_right");
 		
@@ -105,18 +93,5 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 				rightEye->replaceSprite(spriteResource);
 			}
 		}
-	};
-	this->rightEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
-	{
-		AnimationPart* rightEye = this->squally->getAnimations()->getAnimationPart("eye_right");
-		
-		if (rightEye != nullptr)
-		{
-			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				rightEye->replaceSprite(spriteResource);
-			}
-		}
-	};
-	*/
+	});
 }

@@ -19599,6 +19599,36 @@ namespace Strings
 		virtual ~Menus_Music_Nosbertus_TrickOrTreat() = default;
 	};
 
+	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
+	{
+	public:
+		static Menus_Music_StrayGhost_StrayGhost* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_StrayGhost();
+		virtual ~Menus_Music_StrayGhost_StrayGhost() = default;
+	};
+
+	class Menus_Music_StrayGhost_TwoStepsTooOftenAside : public LocalizedString
+	{
+	public:
+		static Menus_Music_StrayGhost_TwoStepsTooOftenAside* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_TwoStepsTooOftenAside();
+		virtual ~Menus_Music_StrayGhost_TwoStepsTooOftenAside() = default;
+	};
+
 	class Menus_Music_TheoAndPaul_LastMarch : public LocalizedString
 	{
 	public:

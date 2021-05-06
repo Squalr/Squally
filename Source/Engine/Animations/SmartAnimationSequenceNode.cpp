@@ -246,11 +246,11 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(const std::vector
 {
 	if (repeatCount == 0)
 	{
-		this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, insertBlankFrame, startReversed, animationSpeedOut, onAnimationComplete);
+		this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, insertBlankFrame, startReversed, onAnimationComplete);
 		return;
 	}
 
-	this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, insertBlankFrame, startReversed, animationSpeedOut, [=]()
+	this->playAnimationAndReverse(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, insertBlankFrame, startReversed, [=]()
 	{
 		if (repeatCount == 0)
 		{
@@ -292,12 +292,22 @@ void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 	this->sprite->setFlippedY(this->isFlippedY);
 }
 
+void SmartAnimationSequenceNode::setSpriteChangeCallback(std::function<void(const std::string&)> spriteChangeCallback)
+{
+	this->spriteChangeCallback = spriteChangeCallback;
+}
+
 void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImage)
 {
 	this->sprite->initWithFile(spriteImage);
 	this->sprite->setFlippedX(this->isFlippedX);
 	this->sprite->setFlippedY(this->isFlippedY);
 	this->sprite->setAnchorPoint(this->animationAnchor);
+
+	if (this->spriteChangeCallback != nullptr)
+	{
+		this->spriteChangeCallback(spriteImage);
+	}
 }
 
 int SmartAnimationSequenceNode::GetAnimationLength(const std::string& initialSequenceResourceFile)

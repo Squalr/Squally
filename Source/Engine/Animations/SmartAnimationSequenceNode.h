@@ -31,7 +31,7 @@ public:
 	void setAnimationAnchor(cocos2d::Vec2 anchor);
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
-	void setSpriteChangeCallback(std::function<void(const std::string&)>);
+	void setSpriteChangeCallback(std::function<void(const std::string&)> spriteChangeCallback);
 
 	static void PrimeCache(const std::string& initialSequenceResourceFile);
 	static int GetAnimationLength(const std::string& initialSequenceResourceFile);
@@ -54,6 +54,7 @@ private:
 	std::string defaultSprite;
 	bool hasPlayingAnimation;
 	int repeatIndex;
+	std::function<void(const std::string&)> spriteChangeCallback = nullptr;
 
 	static std::map<std::string, std::vector<std::string>> AnimationFileCache;
 	static std::map<std::string, std::map<int, std::vector<std::string>>> SingleFrameCache;

@@ -6,4 +6,5 @@
 #include "Music/Tracks/Medieval2.h"
 #include "Music/Tracks/Solace.h"
 #include "Music/Tracks/TrickOrTreat.h"
+#include "Music/Tracks/TwoSteps.h"
 #include "Music/Tracks/WeWillGetThereTogether.h"
