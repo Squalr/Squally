@@ -39,10 +39,14 @@ private:
 
 	void computeIsOpen(bool isInstant);
 
+	bool isSolved = false;
+
 	std::map<Brazier::TorchColor, std::vector<Brazier*>> braziers;
 	std::map<Brazier::TorchColor, LogicGate*> logicGates;
 
 	Operation operation;
 	std::string operationName;
 	std::string puzzleTag;
+
+	static const std::string SaveKeyIsSolved;
 };

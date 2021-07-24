@@ -10,6 +10,7 @@ using namespace cocos2d;
 
 const std::string LogicPuzzleController::MapKey = "logic-puzzle-controller";
 const std::string LogicPuzzleController::PropertyOperation = "operation";
+const std::string LogicPuzzleController::SaveKeyIsSolved = "IS_SOLVED";
 
 LogicPuzzleController* LogicPuzzleController::create(ValueMap& properties)
 {
@@ -37,13 +38,21 @@ void LogicPuzzleController::onEnter()
 {
 	super::onEnter();
 
+	this->isSolved = this->loadObjectStateOrDefault(LogicPuzzleController::SaveKeyIsSolved, Value(false)).asBool();
+
 	ObjectEvents::QueryObjects<Brazier>([=](Brazier* brazier)
 	{
-		this->braziers[brazier->getTorchColor()].push_back(brazier);
+		if (!brazier->isInteractable())
+		{
+			this->braziers[brazier->getTorchColor()].push_back(brazier);
+		}
 		
 		this->listenForMapEvent(ToggleableObject::MapEventToggledBySave + brazier->getSaveKey(), [=](ValueMap)
 		{
-			this->computeIsOpen(false);
+			this->defer([=]()
+			{
+				this->computeIsOpen(false);
+			});
 		});
 	});
 	
@@ -85,6 +94,8 @@ LogicPuzzleController::Operation LogicPuzzleController::StrToOperation(std::stri
 
 void LogicPuzzleController::computeIsOpen(bool isInstant)
 {
+	bool isCurrentlySolved = true;
+
 	for (const auto&[torchColor, logicGate] : this->logicGates)
 	{
 		if (!this->braziers.contains(torchColor))
@@ -118,5 +129,13 @@ void LogicPuzzleController::computeIsOpen(bool isInstant)
 		}
 
 		logicGate->toggle(isOpen, isInstant);
+		isCurrentlySolved &= (isOpen == logicGate->getAnswer());
+	}
+
+	if (!this->isSolved && isCurrentlySolved)
+	{
+		this->isSolved = true;
+		this->saveObjectState(LogicPuzzleController::SaveKeyIsSolved, Value(true));
+		this->broadcastMapEvent(this->sendEvent, { });
 	}
 }

@@ -77,6 +77,11 @@ void GlassDisplayItem::initializeListeners()
 			this->saveObjectState(GlassDisplayItem::SaveKeyIsDisabled, Value(true));
 		}
 	});
+
+	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
+	{
+		this->unlock();
+	});
 }
 		
 bool GlassDisplayItem::tryOpen()

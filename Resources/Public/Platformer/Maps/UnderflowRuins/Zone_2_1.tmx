@@ -298,6 +298,7 @@
   <object id="911" name="logic-puzzle-controller" type="object" x="3021.5" y="1496.5" width="101" height="111">
    <properties>
     <property name="operation" value="or"/>
+    <property name="send-event" value="solve-torches"/>
     <property name="tag" value="or-puzzle"/>
    </properties>
   </object>

@@ -296,12 +296,17 @@ void InteractObject::setUnlockable(bool isUnlockable, std::function<bool()> unlo
 	this->onStateRefresh();
 }
 
-bool InteractObject::getIsLocked()
+bool InteractObject::isInteractable() const
+{
+	return this->interactType == InteractType::Input;
+}
+
+bool InteractObject::getIsLocked() const
 {
 	return this->isLocked;
 }
 
-bool InteractObject::getIsDisabled()
+bool InteractObject::getIsDisabled() const
 {
 	return this->disabled;
 }

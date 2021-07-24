@@ -91,7 +91,7 @@ void SquallyEquipmentVisualBehavior::onLoad()
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
 		// Enable to debug weapon/hat visual offsets:
-		this->debugHud->setVisible(true);
+		this->debugHud->setVisible(false);
 
 		this->whenKeyPressed({ InputEvents::KeyCode::KEY_J }, [=](InputEvents::KeyboardEventArgs* args)
 		{

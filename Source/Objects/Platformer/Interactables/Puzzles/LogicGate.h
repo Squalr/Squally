@@ -17,6 +17,7 @@ public:
 	static LogicGate* create(cocos2d::ValueMap& properties);
 
 	Brazier::TorchColor getTorchColor();
+	bool getAnswer() const { return this->answer; }
 
 	static const std::string MapKey;
 
@@ -36,15 +37,15 @@ private:
 
 	void runGateAnim(bool isInstant);
 
-	cocos2d::Sprite* gate;
-	CollisionObject* gateCollision;
-	WorldSound* openSound;
+	cocos2d::Sprite* gate = nullptr;
+	CollisionObject* gateCollision = nullptr;
+	WorldSound* openSound = nullptr;
 	
 	std::string torchColorName;
 	Brazier::TorchColor torchColor;
 	std::string saveKey;
-	bool answer;
-	float delta;
+	bool answer = false;
+	float delta = 0.0f;
 
 	static const std::string PropertyGateColor;
 	static const std::string PropertyDelta;

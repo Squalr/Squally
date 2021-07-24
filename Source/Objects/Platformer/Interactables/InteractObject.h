@@ -42,8 +42,9 @@ public:
 	void setInteractType(InteractType interactType);
 	void setInteractCallback(std::function<bool()> interactCallback);
 	void setUnlockable(bool isUnlockable, std::function<bool()> unlockCallback = nullptr);
-	bool getIsLocked();
-	bool getIsDisabled();
+	bool isInteractable() const;
+	bool getIsLocked() const;
+	bool getIsDisabled() const;
 	virtual void lock(bool animate = true);
 	virtual void unlock(bool animate = true);
 
