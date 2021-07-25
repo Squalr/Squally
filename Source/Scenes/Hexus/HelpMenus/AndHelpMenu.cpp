@@ -58,8 +58,8 @@ AndHelpMenu::AndHelpMenu()
 	this->previewCardA->autoCard->setCardScale(0.6f);
 	this->previewCardB->autoCard->setCardScale(0.6f);
 
-	this->previewCardA->autoCard->setAttack(5);
-	this->previewCardB->autoCard->setAttack(3);
+	this->previewCardA->autoCard->setAttack(13);
+	this->previewCardB->autoCard->setAttack(11);
 
 	this->addChild(this->description);
 	this->addChild(this->andCard);

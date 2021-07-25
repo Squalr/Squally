@@ -268,26 +268,6 @@
    </properties>
   </object>
   <object id="954" name="caged-zebra" type="object" x="4002" y="1085.33" width="196" height="112"/>
-  <object id="955" name="logic-torch" type="object" x="894.5" y="1085.5" width="101" height="111">
-   <properties>
-    <property name="color" value="purple"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="is-one-use" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_OR_PURPLE_1"/>
-   </properties>
-  </object>
-  <object id="956" name="logic-torch" type="object" x="1041.5" y="1085.5" width="101" height="111">
-   <properties>
-    <property name="color" value="green"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="is-one-use" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_OR_GREEN_1"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

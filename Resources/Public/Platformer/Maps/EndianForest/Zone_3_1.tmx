@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="783">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="823">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
    <property name="rubber-band" type="int" value="5"/>
@@ -25,23 +25,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="757" name="caverns" type="terrain" x="8280" y="236">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="-842.39,-1516.1 1246.16,-1519.41 1276.6,1062.19 -854.641,1050.44"/>
-  </object>
   <object id="771" name="caverns" type="terrain" x="-70.365" y="983.495" width="1658.43" height="2609.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="772" name="caverns" type="terrain" x="7429.64" y="-1260.51" width="2116.73" height="2617.01">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="782" name="caverns" type="terrain" x="2926.79" y="167.495" width="1422.43" height="2609.01">
+  <object id="782" name="caverns" type="terrain" x="7458.67" y="98.0405" width="1902.43" height="1953.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -52,13 +41,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="674" name="caverns" type="terrain" x="4895.47" y="3680.45">
-   <polygon points="-5159.98,-738.503 -3878.89,-743.321 -3069.01,-1241.76 -2297.4,-1240.68 -1864.69,-1549.73 -843.118,-1570.62 -838.642,-763.562 2513.35,-762.815 2494.31,-2700.09 4799.3,-2709.26 4812.13,453.605 -5151.84,490.768"/>
+   <polygon points="-5159.98,-738.503 -3878.89,-743.321 -3069.01,-1241.76 -2297.4,-1240.68 -1864.69,-1549.73 -843.118,-1570.62 -222.747,-1569.12 34.8249,-1230.6 401.568,-1115.64 748.88,-1249.69 1007.56,-1572.09 1876.55,-1573.49 2345.34,-1970.06 4783.3,-1981.26 4812.13,453.605 -5151.84,490.768"/>
   </object>
-  <object id="680" name="caverns" type="terrain" x="5520" y="1548">
-   <polygon points="-52,348 -64,968 -660,964 -668,484 -604,-540 862.086,-562.945 1468,-552 1464,628 1464.42,965.568 561.773,972.638 562.156,663.161 1215.19,668.423 1226.34,451.653 1203.06,193.581 1151.99,-84.9764 1046.19,-310.104 617.542,-381.392 235.344,-247.44 -2.1093,-46.8202"/>
-  </object>
-  <object id="713" name="caverns" type="terrain" x="4225.24" y="1609.98">
-   <polygon points="-161.224,-1706.66 3431.02,-1713.92 3426.95,-1029 3230.76,-1028.87 3230.76,-1488.77 252.12,-1497.98 239.774,983.629 -160.52,980.657"/>
+  <object id="680" name="caverns" type="terrain" x="4180" y="452">
+   <polygon points="-379.152,995.273 -430.061,724.485 -413.455,484 174.61,432.635 741.238,411.505 1680.86,435.384 1767.94,99.1256 1612.38,-216.973 -722.434,-209.382 -4261.62,-264.916 -4342.09,-615.276 2553.5,-598.117 2496.64,159.82 2315.46,658.908 2042.84,993.932 1322.7,991.331 1284.81,1190.07 1296.94,1626.86 1080.78,1694.23 892.63,1595.86 907.936,1281.62 884.491,1057.89 798.137,990.82"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -77,18 +63,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="681" name="stone-button" type="object" x="6330.82" y="2129.14" width="258.367" height="85.7283">
-   <properties>
-    <property name="send-event" value="door-open"/>
-   </properties>
-  </object>
-  <object id="717" name="Generic/WoodCaveDoor1" type="decor" x="8595.33" y="591.955" width="388" height="403"/>
-  <object id="718" name="portal" type="object" x="8665.33" y="719.455" width="256" height="256">
-   <properties>
-    <property name="map" value="EndianForest/Zone_3_0"/>
-    <property name="transition" value="exit"/>
-   </properties>
-  </object>
   <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="94" y="2558.5" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="164" y="2686" width="256" height="256">
    <properties>
@@ -96,208 +70,198 @@
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="723" name="camera-control" type="object" x="5338" y="1155.97" width="1516" height="1160.06">
-   <properties>
-    <property name="target" value="target-A"/>
-   </properties>
-  </object>
-  <object id="725" name="wind" type="object" x="4465.8" y="2517.7" width="395.152" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="0.5"/>
-    <property name="speed-y" type="float" value="-0.5"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="726" name="wind" type="object" x="4867.15" y="2524.44" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="1"/>
-    <property name="speed-y" type="float" value="0.1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="730" name="wind" type="object" x="6990.1" y="2521.15" width="390" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="1"/>
-    <property name="speed-y" type="float" value="0.5"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="731" name="wind" type="object" x="5596" y="2136" width="420" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-   </properties>
-  </object>
-  <object id="732" name="wind" type="object" x="4464" y="984" width="392" height="512">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="733" name="wind" type="object" x="4453.85" y="591.28" width="413.333" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-0.5"/>
-    <property name="speed-y" type="float" value="-0.5"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="739" name="wind" type="object" x="4464" y="1500" width="392" height="512">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="740" name="wind" type="object" x="4464" y="2004" width="392" height="512">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="741" name="wind" type="object" x="6986" y="992" width="392" height="512">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="742" name="wind" type="object" x="6990" y="1504" width="392" height="512">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="743" name="wind" type="object" x="6990" y="2008" width="392" height="512">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="744" name="wind" type="object" x="5600" y="1748" width="420" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-   </properties>
-  </object>
-  <object id="748" name="wooden-crate" type="object" x="5265.7" y="2761.94" width="160" height="160"/>
-  <object id="749" name="wooden-crate" type="object" x="6500.85" y="2758.06" width="160" height="160"/>
-  <object id="750" name="wooden-crate" type="object" x="5036.36" y="846.545" width="160" height="160"/>
-  <object id="751" name="wooden-crate" type="object" x="6507.64" y="821.576" width="160" height="160"/>
-  <object id="752" name="wooden-crate" type="object" x="7092.48" y="1336.73" width="160" height="160"/>
-  <object id="753" name="wooden-crate" type="object" x="4592.48" y="2157.94" width="160" height="160"/>
-  <object id="754" name="camera-control" type="object" x="3634" y="2295.97" width="776" height="692.06">
-   <properties>
-    <property name="target" value="target-A"/>
-   </properties>
-  </object>
-  <object id="755" name="camera-target" type="object" x="6108" y="1624" width="128" height="128">
-   <properties>
-    <property name="tag" value="target-A"/>
-    <property name="zoom" type="float" value="2.4"/>
-   </properties>
-  </object>
-  <object id="756" name="wooden-gate" type="object" x="7477.58" y="584" width="160" height="400">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="listen-event" value="door-open"/>
-   </properties>
-  </object>
-  <object id="758" name="wind" type="object" x="5292.24" y="2527.97" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="1"/>
-    <property name="speed-y" type="float" value="0.1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="759" name="wind" type="object" x="5720.21" y="2529.48" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="1"/>
-    <property name="speed-y" type="float" value="0.1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="760" name="wind" type="object" x="6145.3" y="2533" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="1"/>
-    <property name="speed-y" type="float" value="0.1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="761" name="wind" type="object" x="6569.87" y="2526.21" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="1"/>
-    <property name="speed-y" type="float" value="0.1"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="763" name="wind" type="object" x="4843.46" y="611.841" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="764" name="wind" type="object" x="5268.55" y="615.371" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="765" name="wind" type="object" x="5696.52" y="616.881" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="766" name="wind" type="object" x="6121.61" y="620.401" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="767" name="wind" type="object" x="6546.18" y="613.611" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="768" name="wind" type="object" x="6973.61" y="604" width="422" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="-0.5"/>
-    <property name="speed-y" type="float" value="0.5"/>
-    <property name="uniform" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="769" name="wind" type="object" x="5600" y="1358" width="420" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-   </properties>
-  </object>
-  <object id="770" name="wind" type="object" x="6020" y="1254" width="420" height="392">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="-1"/>
-   </properties>
-  </object>
-  <object id="773" name="Generic/WoodCaveDoor1" type="decor" x="3434.06" y="1728.32" width="388" height="403"/>
-  <object id="774" name="portal" type="object" x="3504.06" y="1855.82" width="256" height="256">
+  <object id="773" name="Generic/WoodCaveDoor1" type="decor" x="8734.06" y="1316.32" width="388" height="403"/>
+  <object id="774" name="portal" type="object" x="8804.06" y="1443.82" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="776" name="camera-stop" type="object" x="4028" y="457.97" width="536" height="3132.06">
+  <object id="799" name="logic-torch" type="object" x="4032.52" y="1218.97" width="101" height="111">
    <properties>
-    <property name="no-y" type="bool" value="true"/>
+    <property name="color" value="red"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_AND_RED_1"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="800" name="logic-torch" type="object" x="5229.55" y="1222" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_AND_GREEN_1"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="801" name="logic-torch" type="object" x="4628.87" y="1215.94" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_AND_BLUE_1"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="802" name="logic-torch" type="object" x="4034.07" y="1011.94" width="101" height="111">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="tag" value="or-puzzle"/>
+   </properties>
+  </object>
+  <object id="803" name="logic-torch" type="object" x="5231.1" y="1014.97" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="tag" value="or-puzzle"/>
+   </properties>
+  </object>
+  <object id="804" name="logic-torch" type="object" x="4630.42" y="1008.91" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="tag" value="or-puzzle"/>
+   </properties>
+  </object>
+  <object id="805" name="logic-torch" type="object" x="5819.23" y="1014.97" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="tag" value="or-puzzle"/>
+   </properties>
+  </object>
+  <object id="806" name="logic-gate" type="object" x="3940.34" y="1432.78" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="red"/>
+    <property name="delta" type="float" value="640"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="807" name="glass-display-item" type="object" x="4826.5" y="533.765" width="169" height="331">
+   <properties>
+    <property name="delay" type="float" value="1"/>
+    <property name="item-name" value="special-and"/>
+    <property name="listen-event" value="solve-torches"/>
+    <property name="tutorial" value="and-hint"/>
+   </properties>
+  </object>
+  <object id="808" name="logic-torch" type="object" x="5817.67" y="1222" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_AND_PURPLE_1"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="809" name="logic-torch" type="object" x="2161.72" y="2325.58" width="101" height="111">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_AND_RED_1"/>
+   </properties>
+  </object>
+  <object id="810" name="logic-torch" type="object" x="5599.16" y="770.796" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_AND_PURPLE_1"/>
+   </properties>
+  </object>
+  <object id="811" name="logic-gate" type="object" x="4539.17" y="1429.75" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="blue"/>
+    <property name="delta" type="float" value="640"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="812" name="logic-gate" type="object" x="5135.05" y="1429.75" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="false"/>
+    <property name="color" value="green"/>
+    <property name="delta" type="float" value="640"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="813" name="logic-gate" type="object" x="5742.81" y="1432.78" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="purple"/>
+    <property name="delta" type="float" value="640"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="814" name="logic-puzzle-controller" type="object" x="3701.6" y="1612.55" width="101" height="111">
+   <properties>
+    <property name="operation" value="and"/>
+    <property name="send-event" value="solve-torches"/>
+    <property name="tag" value="and-puzzle"/>
+   </properties>
+  </object>
+  <object id="815" name="camera-target" type="object" x="4964" y="1232" width="128" height="128">
+   <properties>
+    <property name="tag" value="target-A"/>
+    <property name="zoom" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="817" name="camera-control" type="object" x="3338" y="-421.666" width="1404.36" height="3171.45">
+   <properties>
+    <property name="target" value="target-A"/>
+   </properties>
+  </object>
+  <object id="818" name="cart-lift" type="object" x="3442.73" y="908.288" width="72" height="1093"/>
+  <object id="820" name="logic-torch" type="object" x="4344.41" y="773.955" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_AND_BLUE_1"/>
+   </properties>
+  </object>
+  <object id="821" name="logic-torch" type="object" x="5249.74" y="762.076" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_AND_GREEN_1"/>
+   </properties>
+  </object>
+  <object id="822" name="camera-control" type="object" x="4657.82" y="-801.725" width="1488.36" height="1687.45">
+   <properties>
+    <property name="target" value="target-A"/>
    </properties>
   </object>
  </objectgroup>
@@ -311,23 +275,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="710" name="cyclops" type="entity" x="8097.15" y="846.099" width="128" height="128">
-   <properties>
-    <property name="components" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ef-generic"/>
-   </properties>
-  </object>
-  <object id="711" name="troll" type="entity" x="8098.73" y="537.659" width="128" height="128">
-   <properties>
-    <property name="components" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-   </properties>
-  </object>
-  <object id="778" name="ogre" type="entity" x="2154.67" y="2310.67" width="128" height="128">
+  <object id="816" name="ogre" type="entity" x="7749.33" y="1578.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ef-puzzle-G"/>
     <property name="scale" type="float" value="0.75"/>
@@ -349,14 +297,9 @@
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="780" name="spawn" type="object" x="3564.06" y="1987.82" width="128" height="128">
+  <object id="780" name="spawn" type="object" x="8864.06" y="1575.82" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
-   </properties>
-  </object>
-  <object id="781" name="spawn" type="object" x="8725.33" y="851.455" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit-old"/>
    </properties>
   </object>
  </objectgroup>

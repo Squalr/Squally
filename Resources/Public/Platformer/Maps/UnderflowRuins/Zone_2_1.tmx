@@ -168,6 +168,7 @@
     <property name="color" value="red"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="tag" value="or-puzzle"/>
    </properties>
@@ -184,7 +185,7 @@
     <property name="delay" type="float" value="1"/>
     <property name="item-name" value="special-or"/>
     <property name="listen-event" value="solve-torches"/>
-    <property name="tutorial" value="light-hint"/>
+    <property name="tutorial" value="or-hint"/>
    </properties>
   </object>
   <object id="883" name="logic-torch" type="object" x="5117.33" y="1841.7" width="101" height="111">
@@ -203,7 +204,7 @@
     <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
-  <object id="886" name="camera-control" type="object" x="3351.21" y="1313.97" width="2943.88" height="1036.06">
+  <object id="886" name="camera-control" type="object" x="3351.21" y="1374.58" width="2943.88" height="975.454">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
@@ -233,6 +234,7 @@
     <property name="color" value="blue"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="tag" value="or-puzzle"/>
    </properties>
@@ -243,6 +245,7 @@
     <property name="color" value="green"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="tag" value="or-puzzle"/>
    </properties>
@@ -253,6 +256,7 @@
     <property name="color" value="purple"/>
     <property name="delta" type="float" value="456"/>
     <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="false"/>
     <property name="tag" value="or-puzzle"/>
    </properties>

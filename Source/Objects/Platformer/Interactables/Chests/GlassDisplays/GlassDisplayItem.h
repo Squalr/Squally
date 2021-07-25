@@ -39,5 +39,7 @@ private:
 	static const std::string PropertyDisplayGroup;
 	static const std::string MapEventDisableDisplayGroup;
 	static const std::string SaveKeyIsDisabled;
-	static const std::string TutorialLightHint;
+	static const std::string TutorialAndHint;
+	static const std::string TutorialOrHint;
+	static const std::string TutorialXorHint;
 };

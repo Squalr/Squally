@@ -25,7 +25,9 @@ using namespace cocos2d;
 const std::string GlassDisplayItem::MapKey = "glass-display-item";
 const std::string GlassDisplayItem::PropertyItemName = "item-name";
 const std::string GlassDisplayItem::PropertyTutorial = "tutorial";
-const std::string GlassDisplayItem::TutorialLightHint = "light-hint";
+const std::string GlassDisplayItem::TutorialAndHint = "and-hint";
+const std::string GlassDisplayItem::TutorialOrHint = "or-hint";
+const std::string GlassDisplayItem::TutorialXorHint = "xor-hint";
 const std::string GlassDisplayItem::PropertyDisplayGroup = "display-group";
 const std::string GlassDisplayItem::MapEventDisableDisplayGroup = "disable-display-group";
 const std::string GlassDisplayItem::SaveKeyIsDisabled = "SAVE_KEY_GLASS_DISPLAY_DISABLED";
@@ -143,7 +145,9 @@ void GlassDisplayItem::unlockAndGiveItems()
 
 void GlassDisplayItem::tryRunTutorials()
 {
-	if (this->tutorialName == GlassDisplayItem::TutorialLightHint)
+	if (this->tutorialName == GlassDisplayItem::TutorialAndHint
+		|| this->tutorialName == GlassDisplayItem::TutorialOrHint
+		|| this->tutorialName == GlassDisplayItem::TutorialXorHint)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Objects_GlassCase_Clue::create(),
