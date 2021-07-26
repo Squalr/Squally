@@ -7,7 +7,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Condensation/Condensation.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Condensation/Condensation.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"

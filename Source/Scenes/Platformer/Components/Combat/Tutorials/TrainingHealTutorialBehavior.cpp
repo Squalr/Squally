@@ -17,7 +17,7 @@
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/ScrappyClippy.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHeal.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/TrainingHeal/TrainingHeal.h"
 
 #include "Resources/SoundResources.h"
 

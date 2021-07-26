@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/CastTrainingHeal.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/TrainingHeal/CastTrainingHeal.h"
 
 #include "Resources/UIResources.h"
 

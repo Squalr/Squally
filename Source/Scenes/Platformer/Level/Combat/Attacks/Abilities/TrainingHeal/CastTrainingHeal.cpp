@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/TrainingDummy/TrainingHeal/TrainingHeal.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/TrainingHeal/TrainingHeal.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"

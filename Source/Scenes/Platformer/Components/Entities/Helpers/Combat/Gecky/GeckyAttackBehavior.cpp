@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlashAxe.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlashAxe/BasicSlashAxe.h"
 
 #include "Resources/UIResources.h"
 

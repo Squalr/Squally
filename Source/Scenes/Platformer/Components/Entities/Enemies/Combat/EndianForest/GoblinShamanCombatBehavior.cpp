@@ -5,8 +5,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/BaseAttacks/BasicSlash.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Enemies/GoblinShaman/CastShadowBolt.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/ShadowBolt/CastShadowBolt.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CastCurseOfTongues.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 

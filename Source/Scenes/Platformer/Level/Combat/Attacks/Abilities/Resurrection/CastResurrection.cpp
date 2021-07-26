@@ -9,7 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Spells/Resurrection/Resurrection.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Resurrection/Resurrection.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
