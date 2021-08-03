@@ -65,9 +65,9 @@ private:
 	typedef GameObject super;
 	friend class CodeHud;
 	
-	bool hasRelocatedUI;
-	bool allowFx;
-	bool isHackable;
+	bool hasRelocatedUI = false;
+	bool allowFx = true;
+	bool isHackable = true;
 
 	void unregisterAllHackables(bool forceRestoreState = false);
 	void updateTimeRemainingBars();
@@ -76,17 +76,17 @@ private:
 	void createHackCircle();
 	HackButton* buildHackButton();
 
-	cocos2d::Node* hackParticlesNode;
-	SmartParticles* hackParticles1;
-	SmartParticles* hackParticles2;
-	SmartParticles* hackParticles3;
-	SmartParticles* hackParticles4;
-	SmartParticles* hackParticles5;
-	cocos2d::Sprite* hackCircle;
-	cocos2d::Node* uiElementsButton;
-	cocos2d::Node* uiElementsRain;
-	cocos2d::Node* uiElementsProgressBars;
-	LazyNode<HackButton>* hackButton;
+	cocos2d::Node* hackParticlesNode = nullptr;
+	SmartParticles* hackParticles1 = nullptr;
+	SmartParticles* hackParticles2 = nullptr;
+	SmartParticles* hackParticles3 = nullptr;
+	SmartParticles* hackParticles4 = nullptr;
+	SmartParticles* hackParticles5 = nullptr;
+	cocos2d::Sprite* hackCircle = nullptr;
+	cocos2d::Node* uiElementsButton = nullptr;
+	cocos2d::Node* uiElementsRain = nullptr;
+	cocos2d::Node* uiElementsProgressBars = nullptr;
+	LazyNode<HackButton>* hackButton = nullptr;
 	std::vector<cocos2d::Sprite*> timeRemainingIcons;
 	std::vector<ProgressBar*> timeRemainingBars;
 	std::map<std::string, std::function<Clippy*()>> clippyMap;

@@ -27,11 +27,6 @@ SmartNode* SmartNode::create()
 
 SmartNode::SmartNode()
 {
-	this->hackermodeEnabled = false;
-	this->enableHackerModeEvents = false;
-	this->listeners = std::set<EventListenerCustom*>();
-	this->listenersIgnorePause = std::set<EventListenerCustom*>();
-	this->listenersGlobal = std::set<EventListenerCustom*>();
 }
 
 SmartNode::~SmartNode()

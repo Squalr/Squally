@@ -45,16 +45,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->timeRemainingIcons = std::vector<Sprite*>();
 	this->timeRemainingBars = std::vector<ProgressBar*>();
 	this->clippyMap = std::map<std::string, std::function<Clippy*()>>();
-	this->hasRelocatedUI = false;
-	this->isHackable = true;
-	this->allowFx = true;
 	this->hackParticlesNode = Node::create();
-	this->hackParticles1 = nullptr;
-	this->hackParticles2 = nullptr;
-	this->hackParticles3 = nullptr;
-	this->hackParticles4 = nullptr;
-	this->hackParticles5 = nullptr;
-	this->hackCircle = nullptr;
 	this->enableHackerModeEvents = true;
 
 	this->uiElementsButton->addChild(this->hackButton);

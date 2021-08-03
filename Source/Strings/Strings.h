@@ -8769,6 +8769,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb();
+		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx : public LocalizedString
 	{
 	public:
