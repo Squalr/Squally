@@ -66,33 +66,29 @@ void CastShadowBomb::performAttack(PlatformerEntity* owner, std::vector<Platform
 {
 	super::performAttack(owner, targets);
 
-	if (targets.size() <= 0)
-	{
-		return;
-	}
-
-	PlatformerEntity* target = targets[0];
-
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	ShadowBomb* shadowBomb = ShadowBomb::create(owner, nullptr);
+	for (PlatformerEntity* target : targets)
+	{
+		ShadowBomb* shadowBomb = ShadowBomb::create(owner, nullptr);
 
-	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
-		target,
-		shadowBomb,
-		SpawnMethod::Above,
-		PositionMode::Discard,
-		[&]()
-		{
-		},
-		[&]()
-		{
-		}
-	));
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
+			target,
+			shadowBomb,
+			SpawnMethod::Above,
+			PositionMode::Discard,
+			[&]()
+			{
+			},
+			[&]()
+			{
+			}
+		));
 
-	GameUtils::setWorldCoords3D(shadowBomb, GameUtils::getWorldCoords3D(target, false) + Vec3(0.0f, 64.0f, 0.0f));
+		GameUtils::setWorldCoords3D(shadowBomb, GameUtils::getWorldCoords3D(target, false) + Vec3(0.0f, 64.0f, 0.0f));
+	}
 }
 
 void CastShadowBomb::onCleanup()
