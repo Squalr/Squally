@@ -155,7 +155,7 @@ void ShadowBomb::runShadowBomb(TimelineEntry* target)
 			this->animationNode->playAnimation(FXResources::ShadowBomb_ShadowBomb_0000, 0.05f, true);
 			this->impactSound->play();
 			this->dealDamage(target);
-			onImpact(55);
+			onImpact(this->HackStateStorage[CombatObject::HackStorageKeyDamage].asInt());
 		})
 	);
 
@@ -176,33 +176,22 @@ void ShadowBomb::runShadowBomb(TimelineEntry* target)
 
 NO_OPTIMIZE void ShadowBomb::dealDamage(TimelineEntry* target)
 {
-	static volatile int isOnEnemyTeamLocal;
+	static volatile int health = 0;
 
-	isOnEnemyTeamLocal = target->isPlayerEntry() ? 0 : 1;
-
-	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZBX);
 
 	ASM(MOV ZAX, 0);
-	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
+	ASM_MOV_REG_VAR(eax, health);
 
-	ASM(mov ZBX, 1);
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
-	ASM(cmp ZAX, 1);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHADOW_BOMB);
+	ASM(mov ZAX, 22);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	// If the compare is true, set zax to 1, else 0
-	ASM(MOV ZAX, 0);
-	ASM(cmove ZAX, ZBX);
-
-	ASM_MOV_VAR_REG(isOnEnemyTeamLocal, eax);
-
-	ASM(pop ZBX);
+	ASM_MOV_VAR_REG(health, eax);
 	ASM(pop ZAX);
-	ASM_POP_EFLAGS();
+
+	this->HackStateStorage[CombatObject::HackStorageKeyDamage] = Value(health);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -39,7 +39,9 @@ protected:
 	bool onTimeline;
 	bool timelinePaused;
 	bool timelinePausedCinematic;
+	
 	static cocos2d::ValueMap HackStateStorage;
+	static const std::string HackStorageKeyDamage;
 
 private:
 	typedef HackableObject super;

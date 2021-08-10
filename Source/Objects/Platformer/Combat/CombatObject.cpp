@@ -9,6 +9,7 @@
 using namespace cocos2d;
 
 ValueMap CombatObject::HackStateStorage = ValueMap();
+const std::string CombatObject::HackStorageKeyDamage = "damage";
 
 CombatObject::CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bool onTimeline, float duration)
 	: super()
