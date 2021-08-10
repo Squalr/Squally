@@ -31,9 +31,9 @@ private:
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
 
-	Scrappy* scrappy;
-	Squally* squally;
-	WorldSound* droidAlarmedSound;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
+	WorldSound* droidAlarmedSound = nullptr;
 
 	static const std::string TagScrappyStop;
 };

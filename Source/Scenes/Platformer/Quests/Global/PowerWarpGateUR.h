@@ -32,5 +32,5 @@ private:
 	Portal* portal;
 	Trigger* trigger;
 	PlatformerEntity* mage;
-	Squally* squally;
+	Squally* squally = nullptr;
 };

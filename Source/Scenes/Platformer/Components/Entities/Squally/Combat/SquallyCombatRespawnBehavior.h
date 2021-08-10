@@ -23,5 +23,5 @@ private:
 	
 	void respawn(bool softRevive);
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

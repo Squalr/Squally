@@ -38,9 +38,9 @@ private:
 	void attachGuanoSpawnBehaviors();
 
 	GuanoPetrified* guanoPetrified;
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 	Guano* guano;
-	Squally* squally;
+	Squally* squally = nullptr;
 	Inventory* inventory;
 
 	bool doBehaviorAttach;

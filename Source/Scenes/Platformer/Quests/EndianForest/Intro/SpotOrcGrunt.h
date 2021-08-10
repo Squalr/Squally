@@ -26,5 +26,5 @@ private:
 
 	void runCinematicSequence();
 
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 };

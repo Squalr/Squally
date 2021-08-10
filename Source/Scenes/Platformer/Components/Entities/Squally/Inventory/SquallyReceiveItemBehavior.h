@@ -25,5 +25,5 @@ private:
 
 	void obtainItems(const std::vector<Item*>& items, LocalizedString* messageOverride, bool keepOpen);
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

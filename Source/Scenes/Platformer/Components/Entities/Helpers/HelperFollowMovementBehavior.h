@@ -29,7 +29,7 @@ private:
 	void warpToSqually();
 
 	PlatformerEntity* entity;
-	Squally* squally;
+	Squally* squally = nullptr;
 	
 	bool followEnabled;
 

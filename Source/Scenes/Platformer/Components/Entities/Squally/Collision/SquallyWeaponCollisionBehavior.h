@@ -25,5 +25,5 @@ private:
 
 	bool canEngage;
 	
-	Squally* squally;
+	Squally* squally = nullptr;
 };

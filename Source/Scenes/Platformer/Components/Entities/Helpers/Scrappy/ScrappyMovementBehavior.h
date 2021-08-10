@@ -25,8 +25,8 @@ private:
 	
 	void warpToSqually();
 
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	float elapsed;
 

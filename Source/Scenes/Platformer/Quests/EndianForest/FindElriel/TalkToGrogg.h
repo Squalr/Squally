@@ -34,6 +34,6 @@ private:
 
 	Guano* guano;
 	KingGrogg* kingGrogg;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

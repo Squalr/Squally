@@ -33,6 +33,6 @@ private:
 	void setPostText();
 
 	Sarude* sarude;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

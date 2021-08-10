@@ -43,7 +43,7 @@ private:
 	Sarude* sarude;
 	Gorgon* gorgon;
 	Ram* ram;
-	Squally* squally;
+	Squally* squally = nullptr;
 	GameObject* forceField;
 	SmartAnimationSequenceNode* shieldImpact;
 	SmartAnimationSequenceNode* swordImpact;

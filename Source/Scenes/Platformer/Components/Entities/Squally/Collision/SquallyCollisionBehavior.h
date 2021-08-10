@@ -25,7 +25,7 @@ private:
 
 	float noCombatDuration;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	static const float DefaultNoCombatDuration;
 };

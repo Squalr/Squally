@@ -27,5 +27,5 @@ private:
 	float cueCooldown;
 	bool disabled;
 	
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 };

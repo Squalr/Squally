@@ -26,5 +26,5 @@ private:
 	typedef QuestTask super;
 
 	PlatformerEntity* troll;
-	Squally* squally;
+	Squally* squally = nullptr;
 };

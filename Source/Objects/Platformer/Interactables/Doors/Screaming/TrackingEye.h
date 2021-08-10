@@ -43,5 +43,5 @@ private:
 	cocos2d::Sprite* eyeRing;
 	cocos2d::Sprite* eyePupil;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

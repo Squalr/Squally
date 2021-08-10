@@ -90,7 +90,7 @@ private:
 
 	Hud* combatEndBackdrop;
 
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 
 	FocusTakeOver* entityFocusTakeOver;
 	FocusTakeOver* focusTakeOver;

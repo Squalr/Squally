@@ -35,7 +35,7 @@ private:
 
 	Bard* bard;
 	Chiron* chiron;
-	Squally* squally;
+	Squally* squally = nullptr;
 	CollisionObject* chironCollision;
 	Portal* townExitPortal;
 

@@ -23,5 +23,5 @@ private:
 
 	float getLayerZoom();
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

@@ -29,6 +29,6 @@ private:
 	bool tutorialInterrupt;
 
 	PlatformerEntity* entity;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

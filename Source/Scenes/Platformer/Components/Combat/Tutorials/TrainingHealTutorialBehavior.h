@@ -28,8 +28,8 @@ private:
 	int healCount;
 
 	PlatformerEntity* entity;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	static const int HealsBeforeTutorial;
 };

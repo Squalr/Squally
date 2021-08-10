@@ -31,7 +31,7 @@ private:
 	void moveBeak(float duration);
 
 	PlatformerEntity* entity;
-	Squally* squally;
+	Squally* squally = nullptr;
 	WorldSound* startledSound;
 	WorldSound* squawkSound;
 	bool wasStartled;

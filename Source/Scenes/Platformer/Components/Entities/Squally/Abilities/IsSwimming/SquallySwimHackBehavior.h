@@ -29,5 +29,5 @@ private:
 
 	std::vector<HackableCode*> hackables;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

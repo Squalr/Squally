@@ -28,7 +28,7 @@ private:
 	
 	MagePortal* portal;
 	PlatformerEntity* mage;
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;
 	static const std::string WinLossTrackIdentifier;

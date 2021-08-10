@@ -25,6 +25,6 @@ private:
 	typedef GameComponent super;
 
 	PlatformerEntity* entity;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

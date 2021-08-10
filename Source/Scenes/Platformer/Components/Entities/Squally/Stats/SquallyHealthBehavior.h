@@ -23,5 +23,5 @@ private:
 	
 	void saveState();
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

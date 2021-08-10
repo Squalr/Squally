@@ -34,7 +34,7 @@ private:
 	LocalizedLabel* debugOffsetXLabel;
 	LocalizedLabel* debugOffsetYLabel;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	static const bool InvertDebugControls;
 };

@@ -32,5 +32,5 @@ private:
 	void loadSwordAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
 	void loadWandAttacks(EntityAttackBehavior* attackBehavior, int minAttack, int maxAttack);
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

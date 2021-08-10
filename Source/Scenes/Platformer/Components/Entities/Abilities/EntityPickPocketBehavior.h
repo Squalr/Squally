@@ -39,7 +39,7 @@ private:
 	void refreshCursorState();
 
 	PlatformerEntity* entity;
-	Squally* squally;
+	Squally* squally = nullptr;
 	MinMaxPool* pocketPool;
 	PocketPoolDeserializer* pocketPoolDeserializer;
 	cocos2d::Sprite* pickPocketIcon;

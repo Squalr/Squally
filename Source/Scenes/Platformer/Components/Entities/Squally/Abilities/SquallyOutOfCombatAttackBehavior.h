@@ -33,5 +33,5 @@ private:
 
 	Projectile* projectile;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

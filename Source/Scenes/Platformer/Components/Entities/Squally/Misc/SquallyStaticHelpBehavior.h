@@ -21,7 +21,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	static float* PositionXPtr;
 	static float* PositionYPtr;

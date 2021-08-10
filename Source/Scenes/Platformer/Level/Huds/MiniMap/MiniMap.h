@@ -60,7 +60,7 @@ private:
 	void positionMiniMap();
 	void positionEntityIcons();
 
-	Squally* squally;
+	Squally* squally = nullptr;
 	Inventory* squallyInventory;
 	MiniGameMap* squallyMap;
 	cocos2d::Node* contentNode;

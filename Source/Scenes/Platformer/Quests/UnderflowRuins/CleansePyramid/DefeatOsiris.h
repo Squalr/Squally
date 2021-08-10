@@ -32,7 +32,7 @@ private:
 	void runCinematicSequencePt3();
 
 	Osiris* osiris;
-	Squally* squally;
+	Squally* squally = nullptr;
 	Sarcophagus* sarcophagus;
 
 	WorldSound* rumbleSound;

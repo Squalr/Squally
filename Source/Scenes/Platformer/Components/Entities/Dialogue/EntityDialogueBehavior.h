@@ -50,7 +50,7 @@ private:
 	SpeechBubble* buildSpeechBubble();
 
 	PlatformerEntity* entity;
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 	LazyNode<SpeechBubble>* speechBubble;
 	InteractObject* dialogueInteraction;
 

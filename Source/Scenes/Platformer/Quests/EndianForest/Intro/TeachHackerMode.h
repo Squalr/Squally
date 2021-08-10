@@ -29,8 +29,8 @@ private:
 	void runCinematicSequencePt1();
 
 	HelpTotem* helpTotem;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 	
 	static const std::string TagHelpTotemHacking;
 };

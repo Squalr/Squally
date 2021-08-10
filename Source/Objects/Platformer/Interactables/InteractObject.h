@@ -75,8 +75,8 @@ protected:
 	cocos2d::Node* contentNode;
 	InteractType interactType;
 	CollisionObject* interactCollision;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	bool isLocked;
 	bool isUnlockable;

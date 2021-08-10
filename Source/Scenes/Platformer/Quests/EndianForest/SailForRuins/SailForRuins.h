@@ -30,7 +30,7 @@ private:
 	void runYesSequence();
 
 	Blackbeard* blackbeard;
-	Squally* squally;
+	Squally* squally = nullptr;
 	Portal* portal;
 
 	static const std::string QuestTagShipPortal;

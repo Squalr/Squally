@@ -41,7 +41,7 @@ private:
 	typedef GameComponent super;
 
 	PlatformerEntity* entity;
-	Squally* squally;
+	Squally* squally = nullptr;
 	cocos2d::Sprite* exclamation;
 	WorldSound* agroBeep;
 

@@ -27,5 +27,5 @@ private:
 	SmartAnimationSequenceNode* leftEyeController;
 	SmartAnimationSequenceNode* rightEyeController;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

@@ -31,7 +31,7 @@ private:
 	typedef GameComponent super;
 
 	PlatformerEntity* entity;
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 	cocos2d::Sprite* waistRope;
 
 	bool isDetached;

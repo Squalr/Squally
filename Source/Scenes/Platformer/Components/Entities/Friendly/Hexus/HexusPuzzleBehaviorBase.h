@@ -20,5 +20,5 @@ protected:
 private:
 	typedef HexusBehaviorBase super;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

@@ -36,7 +36,7 @@ private:
 
 	MagePortal* portal;
 	Sarude* sarude;
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;
 };

@@ -28,5 +28,5 @@ private:
 	void runCinematicSequence();
 
 	Chiron* chiron;
-	Squally* squally;
+	Squally* squally = nullptr;
 };

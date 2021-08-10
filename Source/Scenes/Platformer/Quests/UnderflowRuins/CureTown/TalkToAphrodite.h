@@ -32,8 +32,8 @@ private:
 
 	Guano* guano;
 	Aphrodite* aphrodite;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string TagExitDoor;
 	static const std::string SaveKeyItemGiven;

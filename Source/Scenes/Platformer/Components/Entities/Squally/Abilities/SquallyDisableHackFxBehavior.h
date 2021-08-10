@@ -23,5 +23,5 @@ private:
 
 	void toggleHackerMode();
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

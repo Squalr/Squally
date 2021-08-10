@@ -44,8 +44,8 @@ private:
 	Sound* impactSound;
 	WorldSound* rollSound;
 
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 	Inventory* inventory;
 
 	bool wasActivated;

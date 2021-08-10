@@ -26,5 +26,5 @@ private:
 
 	bool isRespawning;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

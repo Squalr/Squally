@@ -37,6 +37,6 @@ private:
 	Elriel* elriel;
 	Guano* guano;
 	QueenLiana* queenLiana;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

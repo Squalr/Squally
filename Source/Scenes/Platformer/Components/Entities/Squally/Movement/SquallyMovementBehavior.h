@@ -29,7 +29,7 @@ private:
 	void saveSquallyPosition();
 	void loadSquallyPosition();
 
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	bool leftPressed;
 	bool rightPressed;

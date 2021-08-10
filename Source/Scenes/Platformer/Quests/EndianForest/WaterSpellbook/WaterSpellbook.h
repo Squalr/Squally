@@ -29,5 +29,5 @@ private:
 	void setPostText();
 
 	PlatformerEntity* entity;
-	Squally* squally;
+	Squally* squally = nullptr;
 };

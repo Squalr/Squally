@@ -35,5 +35,5 @@ private:
 	cocos2d::Sprite* glow;
 	Sound* discoverSound;
 
-	Squally* squally;
+	Squally* squally = nullptr;
 };

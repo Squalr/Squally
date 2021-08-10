@@ -36,8 +36,8 @@ private:
 	void petrifyGuano();
 
 	Guano* guano;
-	Scrappy* scrappy;
-	Squally* squally;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 	Medusa* medusa;
 
 	WorldSound* curseSfx;

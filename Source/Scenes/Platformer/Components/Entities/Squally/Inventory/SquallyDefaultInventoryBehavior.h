@@ -23,7 +23,7 @@ private:
 	
 	void giveDefaultItems();
 
-	Squally* squally;
+	Squally* squally = nullptr;
 
 	static bool GiveDeveloperItems;
 };
