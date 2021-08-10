@@ -30,12 +30,12 @@ RowTotals* RowTotals::create()
 
 RowTotals::RowTotals()
 {
-	this->cachedEnemyBinaryTotal = 0;
-	this->cachedEnemyDecimalTotal = 0;
-	this->cachedEnemyHexTotal = 0;
-	this->cachedPlayerBinaryTotal = 0;
-	this->cachedPlayerDecimalTotal = 0;
-	this->cachedPlayerHexTotal = 0;
+	this->cachedEnemyBinaryTotal = RowTotals::CacheCipher;
+	this->cachedEnemyDecimalTotal = RowTotals::CacheCipher;
+	this->cachedEnemyHexTotal = RowTotals::CacheCipher;
+	this->cachedPlayerBinaryTotal = RowTotals::CacheCipher;
+	this->cachedPlayerDecimalTotal = RowTotals::CacheCipher;
+	this->cachedPlayerHexTotal = RowTotals::CacheCipher;
 
 	this->enemyBinaryTotalSocket = Sprite::create(HexusResources::RowTotalSocketBin);
 	this->enemyDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
@@ -228,9 +228,12 @@ void RowTotals::onAfterAnyStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
+		case GameState::StateType::AIDecideCardReplace:
+		case GameState::StateType::EmptyState:
 		case GameState::StateType::LoadInitialState:
 		case GameState::StateType::GameStart:
 		case GameState::StateType::GameEnd:
+		case GameState::StateType::GameExit:
 		case GameState::StateType::RoundStart:
 		case GameState::StateType::RoundEnd:
 		case GameState::StateType::TurnEnd:
