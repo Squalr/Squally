@@ -11,14 +11,14 @@ class WorldSound;
 class ShadowBomb : public CombatObject
 {
 public:
-	static ShadowBomb* create(PlatformerEntity* caster, PlatformerEntity* target);
+	static ShadowBomb* create(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact);
 
 	void runShadowBomb(TimelineEntry* target);
 
 	static const std::string HackIdentifierShadowBomb;
 	
 protected:
-	ShadowBomb(PlatformerEntity* caster, PlatformerEntity* target);
+	ShadowBomb(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact);
 	virtual ~ShadowBomb();
 
 	void onEnter() override;
@@ -31,6 +31,8 @@ private:
 	typedef CombatObject super;
 
 	void dealDamage(TimelineEntry* target);
-
+	
 	SmartAnimationSequenceNode* animationNode = nullptr;
+	WorldSound* impactSound = nullptr;
+	std::function<void(int)> onImpact;
 };

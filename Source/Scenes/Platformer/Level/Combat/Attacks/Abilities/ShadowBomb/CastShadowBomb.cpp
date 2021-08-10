@@ -66,29 +66,38 @@ void CastShadowBomb::performAttack(PlatformerEntity* owner, std::vector<Platform
 {
 	super::performAttack(owner, targets);
 
-	this->castSound->play();
-	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation(this->getAttackAnimation());
+	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
+	{	
+		this->castSound->play();
+		owner->getAnimations()->clearAnimationPriority();
+		owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (PlatformerEntity* target : targets)
-	{
-		ShadowBomb* shadowBomb = ShadowBomb::create(owner, nullptr);
-
-		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
-			target,
-			shadowBomb,
-			SpawnMethod::Above,
-			PositionMode::Discard,
-			[&]()
+		for (PlatformerEntity* target : targets)
+		{
+			ShadowBomb* shadowBomb = ShadowBomb::create(owner, nullptr, [=](int damage)
 			{
-			},
-			[&]()
-			{
-			}
-		));
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, damage, this->abilityType));
+			});
 
-		GameUtils::setWorldCoords3D(shadowBomb, GameUtils::getWorldCoords3D(target, false) + Vec3(0.0f, 64.0f, 0.0f));
-	}
+			TimelineEntry* entry = timeline->getAssociatedEntry(target);
+			
+			ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
+				target,
+				shadowBomb,
+				SpawnMethod::Above,
+				PositionMode::Discard,
+				[&]()
+				{
+				},
+				[&]()
+				{
+				}
+			));
+			
+			GameUtils::setWorldCoords3D(shadowBomb, GameUtils::getWorldCoords3D(target, false) + Vec3(0.0f, this->owner->getEntityTopPointRelative().y + 48.0f, 0.0f));
+			shadowBomb->runShadowBomb(entry);
+		}
+	}));
 }
 
 void CastShadowBomb::onCleanup()

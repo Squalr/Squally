@@ -36,20 +36,23 @@ using namespace cocos2d;
 
 const std::string ShadowBomb::HackIdentifierShadowBomb = "shadow-bomb";
 
-ShadowBomb* ShadowBomb::create(PlatformerEntity* caster, PlatformerEntity* target)
+ShadowBomb* ShadowBomb::create(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact)
 {
-	ShadowBomb* instance = new ShadowBomb(caster, target);
+	ShadowBomb* instance = new ShadowBomb(caster, target, onImpact);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShadowBomb::ShadowBomb(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, true)
+ShadowBomb::ShadowBomb(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact) : super(caster, target, true)
 {
-	this->animationNode = nullptr; // TODO
+	this->animationNode = SmartAnimationSequenceNode::create();
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
+	this->onImpact = onImpact;
 
 	this->addChild(this->animationNode);
+	this->addChild(this->impactSound);
 }
 
 ShadowBomb::~ShadowBomb()
@@ -59,8 +62,6 @@ ShadowBomb::~ShadowBomb()
 void ShadowBomb::onEnter()
 {
 	super::onEnter();
-
-	this->runShadowBomb(nullptr);
 	
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -134,24 +135,41 @@ HackablePreview* ShadowBomb::createDefaultPreview()
 void ShadowBomb::runShadowBomb(TimelineEntry* target)
 {
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
+	
+	Sprite* icon = Sprite::create(target->getEmblemResource());
+	Sprite* impactIcon = Sprite::create(UIResources::Menus_Icons_SpellImpactPurple);
 
-	Sprite* icon = Sprite::create(UIResources::Menus_Icons_SpellImpactPurple);
+	icon->setFlippedX(true);
+	impactIcon->setPosition(icon->getContentSize().width / 2.0f, icon->getContentSize().height / 2.0f);
+	impactIcon->setScale(0.5f);
 
-	icon->setScale(0.5f);
+	icon->addChild(impactIcon);
+
+	this->animationNode->playAnimationAndReverseRepeat({ FXResources::ShadowBomb_ShadowBomb_0000, FXResources::ShadowBomb_ShadowBomb_0001 }, 0.05f, 0.0f, 0.05f);
 
 	timelineEvents.push_back(TimelineEvent::create(
-			this->caster,
+			target->getEntity(),
 			icon,
-			5.0f, [=]()
+			2.5f, [=]()
 		{
+			this->animationNode->playAnimation(FXResources::ShadowBomb_ShadowBomb_0000, 0.05f, true);
+			this->impactSound->play();
 			this->dealDamage(target);
+			onImpact(55);
 		})
 	);
 
 	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, nullptr, this->caster, [=]()
+		TimelineEventGroup::create(timelineEvents, nullptr, target->getEntity(), [=]()
 		{
-			this->despawn();
+			this->runAction(Sequence::create(
+				DelayTime::create(2.0f),
+				CallFunc::create([=]()
+				{
+					this->despawn();
+				}),
+				nullptr
+			));
 		})
 	));
 }

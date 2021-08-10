@@ -38,6 +38,7 @@ public:
 	void setSelected(bool isSelected);
 	void clearBuffTargets();
 	void addBuffTarget(std::string iconResource = "");
+	const std::string getEmblemResource();
 
 	static const float CastPercentage;
 	static const float BaseSpeedMultiplier;

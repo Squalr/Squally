@@ -20,7 +20,7 @@ ShadowBombGenericPreview* ShadowBombGenericPreview::create()
 
 ShadowBombGenericPreview::ShadowBombGenericPreview()
 {
-	this->animationNode = nullptr; // TODO
+	this->animationNode = SmartAnimationSequenceNode::create();
 
 	this->previewNode->addChild(this->animationNode);
 }
@@ -37,6 +37,8 @@ HackablePreview* ShadowBombGenericPreview::clone()
 void ShadowBombGenericPreview::onEnter()
 {
 	super::onEnter();
+
+	this->animationNode->playAnimationRepeat(FXResources::ShadowBomb_ShadowBomb_0000, 0.05f, 0.75f);
 }
 
 void ShadowBombGenericPreview::initializePositions()

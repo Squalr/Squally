@@ -743,6 +743,11 @@ void TimelineEntry::addBuffTarget(std::string iconResource)
 	}
 }
 
+const std::string TimelineEntry::getEmblemResource()
+{
+	return entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource();
+}
+
 bool TimelineEntry::isPacifist()
 {
 	if (this->getEntity() != nullptr)
