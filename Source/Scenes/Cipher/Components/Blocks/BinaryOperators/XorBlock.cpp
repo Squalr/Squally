@@ -39,7 +39,7 @@ void XorBlock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 unsigned char XorBlock::compute()

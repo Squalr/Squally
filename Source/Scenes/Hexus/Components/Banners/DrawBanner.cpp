@@ -40,7 +40,7 @@ void DrawBanner::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->defeatBanner1->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter - HexusConfig::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 	this->defeatBanner2->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);

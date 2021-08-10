@@ -90,7 +90,7 @@ void RadialEntry::interact()
 	this->entry->interact();
 }
 
-void RadialEntry::setContentSize(const Size& size)
+void RadialEntry::setContentSize(const CSize& size)
 {
 	this->entry->setContentSize(size);
 }

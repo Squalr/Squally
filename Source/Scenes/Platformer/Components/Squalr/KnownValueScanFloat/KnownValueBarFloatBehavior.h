@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -13,7 +13,7 @@ class PlatformerEntity;
 class ProgressBar;
 class WorldSound;
 
-class KnownValueBarFloatBehavior : public Component
+class KnownValueBarFloatBehavior : public GameComponent
 {
 public:
 	static KnownValueBarFloatBehavior* create(GameObject* owner);
@@ -29,7 +29,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void addHealth(float newHealth);
 	void setHealth(float newHealth);

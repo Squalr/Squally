@@ -43,7 +43,7 @@ StoneButton::StoneButton(ValueMap& properties) : super(properties)
 {
 	this->button = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonTop);
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
-	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(CSize(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->isSwitch = GameUtils::getKeyOrDefault(this->properties, StoneButton::PropertySwitch, Value(false)).asBool();
 	this->buttonSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
 	this->maxDefaultButtonPosition = 48.0f;

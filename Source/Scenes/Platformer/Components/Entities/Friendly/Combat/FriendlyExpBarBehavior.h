@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class LocalizedLabel;
 class LocalizedString;
@@ -9,7 +9,7 @@ class ProgressBar;
 class SmartParticles;
 class Sound;
 
-class FriendlyExpBarBehavior : public Component
+class FriendlyExpBarBehavior : public GameComponent
 {
 public:
 	static FriendlyExpBarBehavior* create(GameObject* owner);
@@ -26,7 +26,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete = nullptr);
 	void runLevelUpEffect();

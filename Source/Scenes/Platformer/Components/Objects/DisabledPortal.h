@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Portal;
 
-class DisabledPortal : public Component
+class DisabledPortal : public GameComponent
 {
 public:
 	static DisabledPortal* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	Portal* portal;
 };

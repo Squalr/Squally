@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class CurrencyInventory;
 class EquipmentInventory;
 class Inventory;
 class PlatformerEntity;
 
-class EntityInventoryBehavior : public Component
+class EntityInventoryBehavior : public GameComponent
 {
 public:
 	static EntityInventoryBehavior* create(GameObject* owner);
@@ -29,7 +29,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 	
 	Inventory* inventory;
 	EquipmentInventory* equipmentInventory;

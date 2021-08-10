@@ -108,7 +108,7 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 
 			indexLabel->enableOutline(Color4B::BLACK, 4);
 			valueLabel->enableOutline(Color4B::BLACK, 4);
-			gridHitBox->setContentSize(Size(128.0f, 64.0f));
+			gridHitBox->setContentSize(CSize(128.0f, 64.0f));
 			
 			this->addresses.push_back(indexLabel);
 			this->values.push_back(0);

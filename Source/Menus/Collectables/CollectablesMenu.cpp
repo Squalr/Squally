@@ -39,7 +39,7 @@ CollectablesMenu::CollectablesMenu()
 	this->saveKeys = std::vector<std::string>();
 	this->sprites = std::vector<Sprite*>();
 	this->lockedSprites = std::vector<Sprite*>();
-	this->contentPane = ScrollPane::create(Size(1024.0f, 612.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->contentPane = ScrollPane::create(CSize(1024.0f, 612.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->collectablesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Collectables_Collectables::create());
 	this->returnClickCallback = nullptr;
@@ -50,11 +50,11 @@ CollectablesMenu::CollectablesMenu()
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -63,7 +63,7 @@ CollectablesMenu::CollectablesMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->collectablesLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->collectablesLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->collectablesLabel->enableGlow(Color4B::BLACK);
 
 	for (auto data : Collectables::getCollectableAnimalData())
@@ -93,7 +93,7 @@ void CollectablesMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->collectablesWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->contentPane->setPosition(Vec2(visibleSize.width / 2.0f + 24.0f, visibleSize.height / 2.0f - 44.0f));

@@ -62,10 +62,10 @@ const std::string& CrystalAxe::getIdentifier()
 	return CrystalAxe::SaveKey;
 }
 
-Size CrystalAxe::getWeaponCollisionSize()
+CSize CrystalAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 CrystalAxe::getWeaponCollisionOffset()

@@ -19,8 +19,8 @@ public:
 protected:
 	ToggleableObject(cocos2d::ValueMap& properties,
 		InteractType interactType,
-		cocos2d::Size size,
-		cocos2d::Size cullPadding = cocos2d::Size(64.0f, 64.0f),
+		cocos2d::CSize size,
+		cocos2d::CSize cullPadding = cocos2d::CSize(64.0f, 64.0f),
 		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
 		LocalizedString* actionStr = nullptr,
 		cocos2d::InputEvents::KeyCode input = cocos2d::InputEvents::KeyCode::KEY_V,
@@ -55,7 +55,7 @@ private:
 	void loadSaveState();
 	void optimizationHideOffscreenToggleableObject();
 
-	cocos2d::Size cullPadding;
+	cocos2d::CSize cullPadding;
 	bool originalToggleValue;
 	bool isToggledOn;
 	bool isOneUse;

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Deserializers/Properties/ComponentDeserializer.h"
+#include "Engine/Deserializers/Properties/GameComponentDeserializer.h"
 
-class PlatformerComponentDeserializer : public ComponentDeserializer
+class PlatformerComponentDeserializer : public GameComponentDeserializer
 {
 public:
 	static PlatformerComponentDeserializer* create();
@@ -15,5 +15,5 @@ protected:
 	virtual ~PlatformerComponentDeserializer();
 
 private:
-	typedef ComponentDeserializer super;
+	typedef GameComponentDeserializer super;
 };

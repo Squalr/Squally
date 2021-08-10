@@ -27,7 +27,7 @@ MiniMapRelocator* MiniMapRelocator::create(ValueMap& properties)
 
 MiniMapRelocator::MiniMapRelocator(ValueMap& properties) : super(properties)
 {
-	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	CSize triggerSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(CollisionObject::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->position = GameUtils::getKeyOrDefault(this->properties, MiniMapRelocator::PropertyPosition, Value("")).asString();
 

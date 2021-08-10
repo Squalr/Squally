@@ -24,7 +24,7 @@ SkeletalBaron::SkeletalBaron(ValueMap& properties) : super(properties,
 	SkeletalBaron::MapKey,
 	EntityResources::Enemies_CastleValgrind_SkeletalBaron_Animations,
 	EntityResources::Enemies_CastleValgrind_SkeletalBaron_Emblem,
-	Size(112.0f, 368.0f),
+	CSize(112.0f, 368.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

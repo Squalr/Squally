@@ -24,7 +24,7 @@ CritterDemon::CritterDemon(ValueMap& properties) : super(properties,
 	CritterDemon::MapKey,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,
-	Size(188.0f, 160.0f),
+	CSize(188.0f, 160.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))
 {

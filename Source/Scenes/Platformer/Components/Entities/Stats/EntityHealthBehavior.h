@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class EquipmentInventory;
 class PlatformerEntity;
 
-class EntityHealthBehavior : public Component
+class EntityHealthBehavior : public GameComponent
 {
 public:
 	static EntityHealthBehavior* create(GameObject* owner);
@@ -29,7 +29,7 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	int cachedMaxHealth;
 

@@ -24,7 +24,7 @@ Thion::Thion(ValueMap& properties) : super(properties,
 	Thion::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	EntityResources::Npcs_LambdaCrypts_Thion_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

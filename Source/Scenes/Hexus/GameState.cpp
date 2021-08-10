@@ -118,7 +118,7 @@ void GameState::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f + HexusConfig::graveyardOffsetY);
 	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f - HexusConfig::graveyardOffsetY);
@@ -142,7 +142,7 @@ void GameState::onDeveloperModeEnable(int debugLevel)
 	super::onDeveloperModeEnable(debugLevel);
 
 	/*
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyHand->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::handOffsetY);
 	*/
@@ -153,7 +153,7 @@ void GameState::onDeveloperModeDisable()
 	super::onDeveloperModeDisable();
 
 	/*
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyHand->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::handOffsetY + 256.0f);
 	*/

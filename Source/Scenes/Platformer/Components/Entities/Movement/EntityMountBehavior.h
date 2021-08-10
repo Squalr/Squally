@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class MountBase;
 class PlatformerEntity;
 
-class EntityMountBehavior : public Component
+class EntityMountBehavior : public GameComponent
 {
 public:
 	static EntityMountBehavior* create(GameObject* owner);
@@ -23,7 +23,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	MountBase* mountTarget;
 	PlatformerEntity* entity;

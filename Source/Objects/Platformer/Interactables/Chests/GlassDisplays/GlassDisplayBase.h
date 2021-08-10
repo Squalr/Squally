@@ -14,7 +14,7 @@ class GlassDisplayBase : public ChestBase
 {
 public:
 protected:
-	GlassDisplayBase(cocos2d::ValueMap& properties, cocos2d::Size interactSize);
+	GlassDisplayBase(cocos2d::ValueMap& properties, cocos2d::CSize interactSize);
 	virtual ~GlassDisplayBase();
 
 	void onEnter() override;

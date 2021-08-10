@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 class PlatformerEntityDeserializer;
 
-class HelperManagerBehavior : public Component
+class HelperManagerBehavior : public GameComponent
 {
 public:
 	static HelperManagerBehavior* create(GameObject* owner);
@@ -22,7 +22,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void despawnCurrentHelper();
 	void spawnHelperFromState();

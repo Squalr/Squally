@@ -51,17 +51,17 @@ OptionsMenu::OptionsMenu(bool useEnterFade)
 	this->languageTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconChatBubble, Strings::Menus_Options_Language::create());
 	this->memesTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Options_Memes::create());
 
-	this->optionsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->optionsLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->optionsLabel->enableGlow(Color4B::BLACK);
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
-	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabel->enableGlow(Color4B::BLACK);
 
 	cancelLabelHover->setColor(Color3B::YELLOW);
-	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->cancelButton = ClickableTextNode::create(
@@ -73,11 +73,11 @@ OptionsMenu::OptionsMenu(bool useEnterFade)
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 
 	returnLabelHover->setColor(Color3B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -159,7 +159,7 @@ void OptionsMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));

@@ -24,7 +24,7 @@ public:
 	
 	void interact();
 	bool canInteract();
-	void setContentSize(const cocos2d::Size & size) override;
+	void setContentSize(const cocos2d::CSize & size) override;
 	void setMouseClickCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseInCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseIn);
 	void setMouseOverCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseOver);

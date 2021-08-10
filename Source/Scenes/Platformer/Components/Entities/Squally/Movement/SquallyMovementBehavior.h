@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Squally;
 
-class SquallyMovementBehavior : public Component
+class SquallyMovementBehavior : public GameComponent
 {
 public:
 	static SquallyMovementBehavior* create(GameObject* owner);
@@ -23,7 +23,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void onMovementChanged();
 	void saveSquallyPosition();

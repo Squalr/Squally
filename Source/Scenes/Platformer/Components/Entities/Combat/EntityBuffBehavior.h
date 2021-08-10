@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Buff;
 class PlatformerEntity;
 
-class EntityBuffBehavior : public Component
+class EntityBuffBehavior : public GameComponent
 {
 public:
 	static EntityBuffBehavior* create(GameObject* owner);
@@ -52,7 +52,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void repositionBuffIcons();
 

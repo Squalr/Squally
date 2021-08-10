@@ -23,7 +23,7 @@ Horse::Horse(ValueMap& properties) : super(properties,
 	Horse::MapKey,
 	EntityResources::Misc_EndianForest_Horse_Animations,
 	EntityResources::Misc_EndianForest_Horse_Emblem,
-	Size(192.0f, 160.0f),
+	CSize(192.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

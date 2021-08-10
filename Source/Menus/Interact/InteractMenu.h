@@ -34,7 +34,7 @@ private:
 	bool isHidden();
 	bool isShowing();
 
-	cocos2d::Size menuSize;
+	cocos2d::CSize menuSize;
 	bool hasRelocated;
 	bool isFadingIn;
 	bool isFadingOut;

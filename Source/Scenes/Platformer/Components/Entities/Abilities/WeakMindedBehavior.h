@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
 
-class WeakMindedBehavior : public Component
+class WeakMindedBehavior : public GameComponent
 {
 public:
 	static WeakMindedBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void onActivate();
 	void onDeactivate();

@@ -3,9 +3,9 @@
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 
 class GameObject;
-class Component;
+class GameComponent;
 
-class ComponentDeserializer : public PropertyDeserializer
+class GameComponentDeserializer : public PropertyDeserializer
 {
 public:
 	struct ComponentDeserializationRequestArgs
@@ -19,13 +19,13 @@ public:
 		}
 	};
 
-	Component* deserialize(ComponentDeserializer::ComponentDeserializationRequestArgs args);
+	GameComponent* deserialize(GameComponentDeserializer::ComponentDeserializationRequestArgs args);
 
 protected:
-	ComponentDeserializer();
-	virtual ~ComponentDeserializer();
+	GameComponentDeserializer();
+	virtual ~GameComponentDeserializer();
 
-	std::map<std::string, std::function<Component*(GameObject* owner)>> componentDeserializers;
+	std::map<std::string, std::function<GameComponent*(GameObject* owner)>> componentDeserializers;
 
 private:
 	typedef PropertyDeserializer super;

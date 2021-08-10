@@ -34,7 +34,7 @@ LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType c
     const float kDampening = 0.005f;
     const float kSpread = 0.05f;
     
-	this->liquidSize = Size(
+	this->liquidSize = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	);
@@ -43,7 +43,7 @@ LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType c
 
 	float waterCollisionHeight = MathUtils::clamp(this->liquidSize.height - LiquidNode::WaterCollisionOffset, 0.0f, this->liquidSize.height);
 	float effectiveOffset = this->liquidSize.height - waterCollisionHeight;
-	Size collisionSize = Size(this->liquidSize.width, waterCollisionHeight);
+	CSize collisionSize = CSize(this->liquidSize.width, waterCollisionHeight);
 
 	this->liquidCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), collisionType, CollisionObject::Properties(false, false));
 
@@ -58,7 +58,7 @@ LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType c
     this->surfaceDepth = MathUtils::clamp(surfaceDepth, 0.0f, liquidSize.height);
     this->liquidSize.height = MathUtils::clamp(this->liquidSize.height, this->surfaceDepth, liquidSize.height);
     this->liquidBody = LayerColor::create(bodyColor, this->liquidSize.width, this->liquidSize.height - this->surfaceDepth);
-    this->liquidTop = LiquidTop::create(Size(this->liquidSize.width, this->surfaceDepth), surfaceColor, bodyColor, kTension, kDampening, kSpread);
+    this->liquidTop = LiquidTop::create(CSize(this->liquidSize.width, this->surfaceDepth), surfaceColor, bodyColor, kTension, kDampening, kSpread);
     this->edges = DrawNode::create();
 
     if (!GameUtils::getKeyOrDefault(this->properties, LiquidNode::PropertyDisableEdges, Value(false)).asBool())

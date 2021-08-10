@@ -24,7 +24,7 @@ Brine::Brine(ValueMap& properties) : super(properties,
 	Brine::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))
 {

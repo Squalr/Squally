@@ -105,7 +105,7 @@ void TrackingEye::updateEyeTracking(float dt)
 
 	*/
 	
-	static const Size HalfScreenSize = Director::getInstance()->getVisibleSize() / 2.0f;
+	static const CSize HalfScreenSize = Director::getInstance()->getVisibleSize() / 2.0f;
 	static const float EyeSpeed = 8.0f;
 
 	Vec2 thisCoords = GameUtils::getWorldCoords(this, false);

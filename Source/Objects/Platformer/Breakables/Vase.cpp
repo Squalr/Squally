@@ -31,13 +31,13 @@ Vase* Vase::create(ValueMap& properties)
 	return instance;
 }
 
-Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.0f, 160.0f), requiredHits)
+Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, CSize(113.0f, 160.0f), requiredHits)
 {
 	this->explosion = SmartAnimationSequenceNode::create();
 	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_PotBreak_PotSmash1);
 	this->color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("yellow")).asString();
-	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
-	this->vaseBroken = CollisionObject::create(CollisionObject::createBox(Size(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f));
+	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(CSize(113.0f, 160.0f)));
+	this->vaseBroken = CollisionObject::create(CollisionObject::createBox(CSize(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f));
 
 	if (this->color == "blue")
 	{

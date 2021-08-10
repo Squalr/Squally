@@ -40,7 +40,7 @@ Gate* Gate::create(ValueMap& properties)
 	return instance;
 }
 
-Gate::Gate(ValueMap& properties) : super(properties, Size(512.0f, 512.0f), Vec2(0.0f, 48.0f))
+Gate::Gate(ValueMap& properties) : super(properties, CSize(512.0f, 512.0f), Vec2(0.0f, 48.0f))
 {
 	this->gateRight = Sprite::create(ObjectResources::Doors_Gate_GateRight);
 	this->gateLeft = Sprite::create(ObjectResources::Doors_Gate_GateLeft);

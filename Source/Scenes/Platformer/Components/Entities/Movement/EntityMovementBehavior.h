@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 
 class EntityCollisionBehaviorBase;
@@ -9,7 +9,7 @@ class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 class WorldSound;
 
-class EntityMovementBehavior : public Component
+class EntityMovementBehavior : public GameComponent
 {
 public:
 	static EntityMovementBehavior* create(GameObject* owner);
@@ -35,7 +35,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	bool isOnGround();
 	void applyCinematicMovement(cocos2d::Vec2* movement);

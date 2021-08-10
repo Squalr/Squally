@@ -28,7 +28,7 @@ ItemInfoMenu* ItemInfoMenu::create()
 
 ItemInfoMenu::ItemInfoMenu()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->itemWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
 	this->itemPreview = ItemPreview::create(true, true);
 	this->itemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Item::create());
@@ -41,11 +41,11 @@ ItemInfoMenu::ItemInfoMenu()
 	LocalizedLabel*	takeItemLabelHover = takeItemLabel->clone();
 
 	takeItemLabel->enableOutline(Color4B::BLACK, 2);
-	takeItemLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	takeItemLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	takeItemLabel->enableGlow(Color4B::BLACK);
 	takeItemLabelHover->enableOutline(Color4B::BLACK, 2);
 	takeItemLabelHover->setTextColor(Color4B::YELLOW);
-	takeItemLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	takeItemLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	takeItemLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->takeItemButton = ClickableTextNode::create(
@@ -58,11 +58,11 @@ ItemInfoMenu::ItemInfoMenu()
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -71,7 +71,7 @@ ItemInfoMenu::ItemInfoMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->itemLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->itemLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->itemLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->backdrop);
@@ -105,7 +105,7 @@ void ItemInfoMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->itemWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->itemPreview->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 192.0f));

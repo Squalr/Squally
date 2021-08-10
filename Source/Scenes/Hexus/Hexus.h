@@ -93,7 +93,7 @@ private:
 	GameState* gameState;
 	cocos2d::Sprite* gameBackground;
 
-	// Components
+	// GameComponents
 	Avatars* avatars;
 	CardPreviewComponent* cardPreviewComponent;
 	StagingHelperText* stagingHelperText;

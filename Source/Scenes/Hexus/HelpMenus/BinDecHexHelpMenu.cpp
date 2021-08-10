@@ -23,7 +23,7 @@ BinDecHexHelpMenu* BinDecHexHelpMenu::create()
 
 BinDecHexHelpMenu::BinDecHexHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_BinDecHex::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_BinDecHex::create(), CSize(1200.0f, 0.0f));
 	this->binCard = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->decCard = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->hexCard = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);

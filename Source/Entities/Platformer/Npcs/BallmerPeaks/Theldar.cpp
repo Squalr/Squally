@@ -24,7 +24,7 @@ Theldar::Theldar(ValueMap& properties) : super(properties,
 	Theldar::MapKey,
 	EntityResources::Npcs_BallmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BallmerPeaks_Theldar_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
 {

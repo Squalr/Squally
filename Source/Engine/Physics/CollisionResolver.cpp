@@ -40,8 +40,8 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
 	
-	Rect rectA = objectA->boundsRect;
-	Rect rectB = objectB->boundsRect;
+	CRect rectA = objectA->boundsRect;
+	CRect rectB = objectB->boundsRect;
 
 	rectA.origin += coordsA;
 	rectB.origin += coordsB;
@@ -111,8 +111,8 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
 	
-	Rect rectA = objectA->boundsRect;
-	Rect rectB = objectB->boundsRect;
+	CRect rectA = objectA->boundsRect;
+	CRect rectB = objectB->boundsRect;
 
 	rectA.origin += coordsA;
 	rectB.origin += coordsB;
@@ -249,8 +249,8 @@ void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* ob
 	Vec2 coordsA = objectA->cachedWorldCoords;
 	Vec2 coordsB = objectB->cachedWorldCoords;
 	
-	Rect rectA = objectA->boundsRect;
-	Rect rectB = objectB->boundsRect;
+	CRect rectA = objectA->boundsRect;
+	CRect rectB = objectB->boundsRect;
 
 	rectA.origin += coordsA;
 	rectB.origin += coordsB;
@@ -402,8 +402,8 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 		return;
 	}
 
-	Rect rectA = objectA->boundsRect;
-	Rect rectB = objectB->boundsRect;
+	CRect rectA = objectA->boundsRect;
+	CRect rectB = objectB->boundsRect;
 	
 	rectA.origin += coordsA;
 	rectB.origin += coordsB;
@@ -428,7 +428,7 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 			
 			Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(objectASegment, objectBSegment);
 			
-			const auto constrainToIntersection = [](const Vec2& intersectionPoint, const Rect& rect, Vec2& startCoords, Vec2& endCoords)
+			const auto constrainToIntersection = [](const Vec2& intersectionPoint, const CRect& rect, Vec2& startCoords, Vec2& endCoords)
 			{
 				if (intersectionPoint.x > rect.origin.x && intersectionPoint.x < (rect.origin.x + rect.size.width / 2.0f))
 				{

@@ -100,7 +100,7 @@ void PlatformerPauseMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 612.0f, visibleSize.height / 2.0f + 368.0f));
@@ -190,12 +190,12 @@ ClickableTextNode* PlatformerPauseMenu::buildButton(std::string spriteResource, 
 	LocalizedLabel*	labelSelected = label->clone();
 
 	label->enableOutline(Color4B::BLACK, 2);
-	label->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	label->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	label->enableGlow(Color4B::BLACK);
 
 	labelSelected->enableOutline(Color4B::BLACK, 2);
 	labelSelected->setTextColor(Color4B::YELLOW);
-	labelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	labelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	labelSelected->enableGlow(Color4B::BLACK);
 
 	ClickableTextNode* button = ClickableTextNode::create(

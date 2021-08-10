@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/ComponentGroup.h"
+#include "Engine/Components/GameComponentGroup.h"
 
 class Squally;
 
-class SquallyAbilityBehaviorGroup : public ComponentGroup
+class SquallyAbilityBehaviorGroup : public GameComponentGroup
 {
 public:
 	static SquallyAbilityBehaviorGroup* create(GameObject* owner);
@@ -18,5 +18,5 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef ComponentGroup super;
+	typedef GameComponentGroup super;
 };

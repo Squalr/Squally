@@ -80,11 +80,11 @@ PreviewMap::~PreviewMap()
 {
 }
 
-Size PreviewMap::getMapSize()
+CSize PreviewMap::getMapSize()
 {
 	if (this->map == nullptr)
 	{
-		return Size::ZERO;
+		return CSize::ZERO;
 	}
 
 	return this->map->getMapSize();

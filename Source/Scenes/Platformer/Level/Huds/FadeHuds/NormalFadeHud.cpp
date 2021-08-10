@@ -22,7 +22,7 @@ NormalFadeHud::NormalFadeHud()
 {
 	this->fadeScreen = DrawNode::create();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->fadeScreen->drawSolidRect(Vec2::ZERO, Vec2(visibleSize), Color4F::BLACK);
 	this->fadeScreen->setOpacity(0);
 	

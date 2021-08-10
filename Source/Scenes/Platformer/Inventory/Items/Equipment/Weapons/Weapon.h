@@ -9,7 +9,7 @@ public:
 	int getMaxAttack();
 	virtual float getAttackOnset();
 	virtual float getAttackSustain();
-	virtual cocos2d::Size getWeaponCollisionSize();
+	virtual cocos2d::CSize getWeaponCollisionSize();
 	virtual cocos2d::Vec2 getWeaponCollisionOffset();
 	virtual std::string getWeaponAttackSound();
 

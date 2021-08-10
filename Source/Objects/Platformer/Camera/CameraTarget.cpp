@@ -25,7 +25,7 @@ CameraTarget::CameraTarget(ValueMap& properties) : super(properties)
 {
 	this->zoom = GameUtils::getKeyOrDefault(this->properties, CameraTarget::PropertyZoom, Value(1.0f)).asFloat();
 	this->debugDraw = DrawNode::create();
-	Size size = Size(
+	CSize size = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);

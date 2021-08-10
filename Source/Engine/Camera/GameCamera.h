@@ -36,8 +36,8 @@ public:
 	void setCameraPosition(cocos2d::Vec2 position, bool addTrackOffset = false);
 	void setCameraPosition3(cocos2d::Vec3 position, bool addTrackOffset = false);
 	void setCameraPositionToTrackedTarget();
-	cocos2d::Rect getMapBounds();
-	void setMapBounds(cocos2d::Rect mapBounds);
+	cocos2d::CRect getMapBounds();
+	void setMapBounds(cocos2d::CRect mapBounds);
 	void shakeCamera(float magnitude, float shakesPerSecond, float duration);
 	CameraTrackingData* getCurrentTrackingData();
 	void setTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
@@ -68,7 +68,7 @@ private:
 	void updateCameraDebugLabels();
 
 	std::stack<CameraTrackingData> targetStack;
-	cocos2d::Rect mapBounds;
+	cocos2d::CRect mapBounds;
 	float defaultDistance;
 
 	Hud* hud;

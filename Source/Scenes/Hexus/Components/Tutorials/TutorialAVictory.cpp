@@ -30,7 +30,7 @@ TutorialAVictory* TutorialAVictory::create()
 TutorialAVictory::TutorialAVictory() : super(GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_Victory::create(), Size(420.0f, 0.0f));
+	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_Victory::create(), CSize(420.0f, 0.0f));
 	this->helpArrowLossDisplay = HelpArrow::create();
 	this->lossDisplayNextButton = this->createNextButton();
 	
@@ -61,7 +61,7 @@ void TutorialAVictory::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->lossDisplayTutorialLabel->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f + 32.0f);
 	this->lossDisplayNextButton->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 32.0f);

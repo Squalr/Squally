@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/ComponentGroup.h"
+#include "Engine/Components/GameComponentGroup.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class Squally;
 
-class EnemyBattleAllyBehaviorGroup : public ComponentGroup
+class EnemyBattleAllyBehaviorGroup : public GameComponentGroup
 {
 public:
 	static EnemyBattleAllyBehaviorGroup* create(GameObject* owner);
@@ -23,5 +23,5 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef ComponentGroup super;
+	typedef GameComponentGroup super;
 };

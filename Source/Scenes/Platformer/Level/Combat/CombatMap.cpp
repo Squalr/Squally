@@ -140,7 +140,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 		}
 	);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->combatEndBackdrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
@@ -201,7 +201,7 @@ void CombatMap::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));

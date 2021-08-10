@@ -32,7 +32,7 @@ public:
 	static void setSoundVolume(float volume);
 	static void setMusicVolume(float volume);
 
-	static cocos2d::Size getResolutionSize();
+	static cocos2d::CSize getResolutionSize();
 	static ResolutionSetting getResolution();
 	static GraphicsSetting getGraphics();
 	static bool getIsFullScreen();

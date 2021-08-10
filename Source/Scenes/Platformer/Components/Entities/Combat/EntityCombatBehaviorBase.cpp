@@ -20,7 +20,7 @@
 
 using namespace cocos2d;
 
-EntityCombatBehaviorBase::EntityCombatBehaviorBase(GameObject* owner, std::vector<Component*> component) : super(owner, component)
+EntityCombatBehaviorBase::EntityCombatBehaviorBase(GameObject* owner, std::vector<GameComponent*> component) : super(owner, component)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->timelineSpeed = 1.0f;

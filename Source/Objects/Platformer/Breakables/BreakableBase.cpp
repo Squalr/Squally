@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-BreakableBase::BreakableBase(ValueMap& properties, Size collisionSize, int requiredHits) : super(properties)
+BreakableBase::BreakableBase(ValueMap& properties, CSize collisionSize, int requiredHits) : super(properties)
 {
 	this->breakableCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)(PlatformerCollisionType::Breakable), CollisionObject::Properties(false, false));
 	this->objectDeserializer = PlatformerObjectDeserializer::create();

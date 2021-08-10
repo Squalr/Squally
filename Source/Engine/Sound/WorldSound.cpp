@@ -83,7 +83,7 @@ void WorldSound::updateDistanceFade()
 		{
 			Vec3 thisCoords = GameUtils::getWorldCoords3D(this);
 			Vec3 cameraPosition = GameCamera::getInstance()->getCameraPosition3();
-			Size visibleSize = Director::getInstance()->getVisibleSize();
+			CSize visibleSize = Director::getInstance()->getVisibleSize();
 			float distance = this->zDepthEnabled ? thisCoords.distance(cameraPosition) : Vec2(thisCoords.x, thisCoords.y).distance(Vec2(cameraPosition.x, cameraPosition.y));
 			float dropOffDistance = 1080.0f * GameCamera::getInstance()->getCameraZoom();
 			float adjustedDistance = distance - dropOffDistance;

@@ -54,7 +54,7 @@ void TutorialACardStaged::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->binaryCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::binaryRowOffsetY + 212.0f));
 	this->decimalCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::decimalRowOffsetY + 212.0f));

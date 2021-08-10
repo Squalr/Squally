@@ -63,11 +63,11 @@ InventoryMenu::InventoryMenu(LazyNode<PartyMenu>* partyMenu)
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -76,7 +76,7 @@ InventoryMenu::InventoryMenu(LazyNode<PartyMenu>* partyMenu)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->inventoryLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->inventoryLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->inventoryLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->inventoryWindow);
@@ -110,7 +110,7 @@ void InventoryMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));

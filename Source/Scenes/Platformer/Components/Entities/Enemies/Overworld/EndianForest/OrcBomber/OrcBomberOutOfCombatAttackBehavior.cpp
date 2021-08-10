@@ -114,7 +114,7 @@ Projectile* OrcBomberOutOfCombatAttackBehavior::createProjectile()
 		return nullptr;
 	}
 	
-	ThrownObject* projectile = ThrownObject::create(this->orcBomber, this->agroBehavior->getAgroTarget(), false, this->getMainhandResource(), Size(64.0f, 128.0f));
+	ThrownObject* projectile = ThrownObject::create(this->orcBomber, this->agroBehavior->getAgroTarget(), false, this->getMainhandResource(), CSize(64.0f, 128.0f));
 	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 	projectile->addDecor(fire);

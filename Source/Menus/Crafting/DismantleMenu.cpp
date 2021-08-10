@@ -63,7 +63,7 @@ void DismantleMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const Vec2 SmeltingPotOffset = Vec2(-72.0f, 0.0f);
 

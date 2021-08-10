@@ -24,7 +24,7 @@ Lucifer::Lucifer(ValueMap& properties) : super(properties,
 	Lucifer::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))
 {

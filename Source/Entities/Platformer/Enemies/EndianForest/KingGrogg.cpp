@@ -23,7 +23,7 @@ KingGrogg::KingGrogg(ValueMap& properties) : super(properties,
 	KingGrogg::MapKey,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
-	Size(412.0f, 412.0f),
+	CSize(412.0f, 412.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

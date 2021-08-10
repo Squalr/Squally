@@ -43,7 +43,7 @@ PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::Te
 
 	bracketString->setStringReplacementVariables(spaceString);
 
-	Rect speakerRect = Rect(-PlatformerDialogueBox::SpeakerPanelWidth / 2.0f, -DialogueBox::DialogueHeight / 2.0f, PlatformerDialogueBox::SpeakerPanelWidth, DialogueBox::DialogueHeight);
+	CRect speakerRect = CRect(-PlatformerDialogueBox::SpeakerPanelWidth / 2.0f, -DialogueBox::DialogueHeight / 2.0f, PlatformerDialogueBox::SpeakerPanelWidth, DialogueBox::DialogueHeight);
 
 	this->spaceToContinueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, bracketString);
 	this->leftSpeakerNode = Node::create();

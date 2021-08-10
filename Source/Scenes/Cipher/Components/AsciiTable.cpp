@@ -41,7 +41,7 @@ AsciiTable::AsciiTable()
 	this->onCloseCallback = nullptr;
 
 	this->background = Sprite::create(CipherResources::PopupPanelBack);
-	this->scrollPane = ScrollPane::create(Size(1408.0f, 456.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f));
+	this->scrollPane = ScrollPane::create(CSize(1408.0f, 456.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, CSize(0.0f, 32.0f));
 
 	for (int next = 0; next < 256; next++)
 	{
@@ -57,25 +57,25 @@ AsciiTable::AsciiTable()
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();
 
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 
 	returnLabelSelected->setColor(Color3B::YELLOW);
-	returnLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelSelected, CipherResources::Buttons_TestRunButton, CipherResources::Buttons_TestRunButtonSelected);	
 	this->asciiTableTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_AsciiTable::create());	
 	this->chooseANewValueTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_ChooseANewValue::create());
 	
-	this->scrollPane->renderCustomBackground([=](DrawNode* customBackground, Size paneSize, Size paddingSize, Size marginSize)
+	this->scrollPane->renderCustomBackground([=](DrawNode* customBackground, CSize paneSize, CSize paddingSize, CSize marginSize)
 	{
 		std::vector<Vec2> verticies = std::vector<Vec2>();
 
 		const float CornerSizeInner = 72.0f;
 		const float CornerSize = 56.0f;
 
-		Size totalSize = paneSize + paddingSize * 2.0f + marginSize * 2.0f;
+		CSize totalSize = paneSize + paddingSize * 2.0f + marginSize * 2.0f;
 
 		// Bottom left
 		verticies.push_back(Vec2(CornerSizeInner, 0.0f));
@@ -102,8 +102,8 @@ AsciiTable::AsciiTable()
 		customBackground->drawSolidPoly(verticies.data(), verticies.size(), Color4F(Color4B(0, 0, 0, 128)));
 	});
 
-	this->asciiTableTitle->enableShadow(Color4B::BLACK, Size(2, -2), 2);
-	this->chooseANewValueTitle->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->asciiTableTitle->enableShadow(Color4B::BLACK, CSize(2, -2), 2);
+	this->chooseANewValueTitle->enableShadow(Color4B::BLACK, CSize(2, -2), 2);
 
 	this->addChild(this->background);
 
@@ -139,7 +139,7 @@ void AsciiTable::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 52.0f + 24.0f));

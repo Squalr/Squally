@@ -31,6 +31,6 @@ private:
 	cocos2d::Sprite* buildSprite();
 	
 	std::string filePath;
-	cocos2d::Size objectSize;
+	cocos2d::CSize objectSize;
 	LazyNode<cocos2d::Sprite>* sprite;
 };

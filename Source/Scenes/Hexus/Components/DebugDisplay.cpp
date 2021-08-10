@@ -62,7 +62,7 @@ void DebugDisplay::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->stateLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter, visibleSize.height - 32.0f);
 	this->loseButton->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter - 64.0f - 112.0f, visibleSize.height - 372.0f);

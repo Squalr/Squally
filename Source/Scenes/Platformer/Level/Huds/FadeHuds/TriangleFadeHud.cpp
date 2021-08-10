@@ -65,7 +65,7 @@ void TriangleFadeHud::runAnim()
 
 void TriangleFadeHud::resetAnim()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->upperTraingle->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
 	this->leftTriangle->setPosition(Vec2(-visibleSize.width / 2.0f, 0.0f));
@@ -75,7 +75,7 @@ void TriangleFadeHud::resetAnim()
 
 void TriangleFadeHud::buildShapes()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	Vec2 center = Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
 	Vec2 topLeft = Vec2(0.0f, visibleSize.height);

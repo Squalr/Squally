@@ -39,7 +39,7 @@ DivPage::DivPage() : super(DivPage::Identifier, PageType::Left)
 				Strings::Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3::create(),
 			}
 		),
-		Size(super::PageSize.width - 160.0f, super::PageSize.height)
+		CSize(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
 	this->titleLabel->setTextColor(super::TextColor);

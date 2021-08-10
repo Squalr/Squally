@@ -485,11 +485,11 @@ void HackableObject::createHackParticles()
 {
 	if (this->hackParticles1 == nullptr)
 	{
-		this->hackParticles1 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain1, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
-		this->hackParticles2 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain2, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
-		this->hackParticles3 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain3, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
-		this->hackParticles4 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain4, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
-		this->hackParticles5 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain5, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+		this->hackParticles1 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain1, SmartParticles::CullInfo(CSize(128.0f, 128.0f)));
+		this->hackParticles2 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain2, SmartParticles::CullInfo(CSize(128.0f, 128.0f)));
+		this->hackParticles3 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain3, SmartParticles::CullInfo(CSize(128.0f, 128.0f)));
+		this->hackParticles4 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain4, SmartParticles::CullInfo(CSize(128.0f, 128.0f)));
+		this->hackParticles5 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain5, SmartParticles::CullInfo(CSize(128.0f, 128.0f)));
 
 		this->hackParticlesNode->addChild(this->hackParticles1);
 		this->hackParticlesNode->addChild(this->hackParticles2);

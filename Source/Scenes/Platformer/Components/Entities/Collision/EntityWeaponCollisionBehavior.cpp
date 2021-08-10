@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const Size EntityWeaponCollisionBehavior::DefaultWeaponSize = Size(64.0f, 128.0f);
+const CSize EntityWeaponCollisionBehavior::DefaultWeaponSize = CSize(64.0f, 128.0f);
 
 EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
@@ -71,7 +71,7 @@ void EntityWeaponCollisionBehavior::disable()
 	this->weaponCollision->setPhysicsEnabled(false);
 }
 
-void EntityWeaponCollisionBehavior::setWeaponCollisionSize(Size weaponCollisionSize)
+void EntityWeaponCollisionBehavior::setWeaponCollisionSize(CSize weaponCollisionSize)
 {
 	this->weaponCollisionSize = weaponCollisionSize;
 }

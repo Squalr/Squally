@@ -35,7 +35,7 @@ InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, Ve
 	this->uiElements = Node::create();
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
-	this->menuSize = Size(std::max(minWidth, this->displayLabel->getContentSize().width + 32.0f), 48.0f);
+	this->menuSize = CSize(std::max(minWidth, this->displayLabel->getContentSize().width + 32.0f), 48.0f);
 	this->backdrop = LayerColor::create(Color4B(backColor.r, backColor.g, backColor.b, 196), this->menuSize.width, this->menuSize.height);
 	this->hasRelocated = false;
 	this->isFadingIn = false;
@@ -71,7 +71,7 @@ void InteractMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2(-this->menuSize.width / 2.0f, -this->menuSize.height / 2.0f));
 	this->uiElements->setPosition(Vec2(0.0f, 144.0f));

@@ -27,7 +27,7 @@ Scrappy::Scrappy(ValueMap& properties) : super(properties,
 	Scrappy::MapKey,
 	EntityResources::Helpers_EndianForest_Scrappy_Animations,
 	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

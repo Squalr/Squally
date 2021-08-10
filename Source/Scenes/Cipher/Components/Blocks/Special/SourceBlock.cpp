@@ -71,7 +71,7 @@ void SourceBlock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->displayLabel->setPositionY(4.0f);
 }

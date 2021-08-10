@@ -35,7 +35,7 @@ FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 	this->filterSelectionIndex = 0;
 	this->onFilterChange = onFilterChange;
 	this->filterNodeContent = Node::create();
-	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
+	this->filterNode = SmartClippingNode::create(this->filterNodeContent, CRect(Vec2(-160.0f, -304.0f), CSize(320.0f, 608.0f)));
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);

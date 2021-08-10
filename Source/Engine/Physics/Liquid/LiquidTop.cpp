@@ -21,7 +21,7 @@ using namespace cocos2d;
 
 const int LiquidTop::ColumnsPer128px = 8;
 
-LiquidTop* LiquidTop::create(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, float tension, float dampening, float spread)
+LiquidTop* LiquidTop::create(CSize surfaceSize, Color4B surfaceColor, Color4B bodyColor, float tension, float dampening, float spread)
 {
     LiquidTop* instance = new LiquidTop(surfaceSize, surfaceColor, bodyColor, tension, dampening, spread);
 
@@ -30,7 +30,7 @@ LiquidTop* LiquidTop::create(Size surfaceSize, Color4B surfaceColor, Color4B bod
     return instance;
 }
 
-LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, float tension, float dampening, float spread)
+LiquidTop::LiquidTop(CSize surfaceSize, Color4B surfaceColor, Color4B bodyColor, float tension, float dampening, float spread)
 {
     this->surfaceSize = surfaceSize;
     this->vertexArray = std::vector<Vertex>();

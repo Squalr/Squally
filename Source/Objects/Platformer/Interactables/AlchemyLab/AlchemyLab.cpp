@@ -33,7 +33,7 @@ AlchemyLab* AlchemyLab::create(ValueMap& properties)
 	return instance;
 }
 
-AlchemyLab::AlchemyLab(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(192.0f, 440.0f))
+AlchemyLab::AlchemyLab(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(192.0f, 440.0f))
 {
 	this->alchemyLab = Sprite::create(ObjectResources::Interactive_AlchemyLab_AlchemyLab);
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);

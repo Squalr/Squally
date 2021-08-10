@@ -32,7 +32,7 @@ AndHelpMenu* AndHelpMenu::create()
 
 AndHelpMenu::AndHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_LogicalAnd::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_LogicalAnd::create(), CSize(1200.0f, 0.0f));
 	this->andCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd));
 	this->previewCardA = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->previewCardB = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);

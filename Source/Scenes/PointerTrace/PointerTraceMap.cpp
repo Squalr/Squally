@@ -106,7 +106,7 @@ void PointerTraceMap::initializePositions()
 {
 	super::initializePositions();
 	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->victoryMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
@@ -410,7 +410,7 @@ void PointerTraceMap::buildCollisionMaps()
 	}
 
 	std::vector<TileLayer*> collisionLayers = this->map->getCollisionLayers();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	for (auto layer : collisionLayers)
 	{

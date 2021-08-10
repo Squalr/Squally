@@ -24,7 +24,7 @@ Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
 	Gargoyle::MapKey,
 	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
-	Size(256.0f, 256.0f),
+	CSize(256.0f, 256.0f),
 	0.9f,
 	Vec2(-32.0f, 0.0f))
 {

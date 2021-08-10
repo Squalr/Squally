@@ -67,7 +67,7 @@ bool GameWindow::applicationDidFinishLaunching()
 		return false;
 	}
 
-	cocos2d::Size resolutionSize = ConfigManager::getResolutionSize();
+	cocos2d::CSize resolutionSize = ConfigManager::getResolutionSize();
 
 	if (ConfigManager::getIsFullScreen())
 	{
@@ -76,7 +76,7 @@ bool GameWindow::applicationDidFinishLaunching()
 	}
 	else
 	{
-		this->glView = GLViewImpl::createWithRect(this->gameWindowTitle->getString(), cocos2d::Rect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
+		this->glView = GLViewImpl::createWithRect(this->gameWindowTitle->getString(), cocos2d::CRect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
 		this->glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 	

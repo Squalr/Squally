@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class EntityRuneBehavior;
 class Squally;
 
-class SquallyRuneBehavior : public Component
+class SquallyRuneBehavior : public GameComponent
 {
 public:
 	static SquallyRuneBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void saveState();
 

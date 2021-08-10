@@ -24,7 +24,7 @@ Irmik::Irmik(ValueMap& properties) : super(properties,
 	Irmik::MapKey,
 	EntityResources::Npcs_BallmerPeaks_Irmik_Animations,
 	EntityResources::Npcs_BallmerPeaks_Irmik_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

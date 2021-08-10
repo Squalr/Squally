@@ -41,7 +41,7 @@ GlassDisplayItem* GlassDisplayItem::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(properties, Size(169.0f, 331.0f))
+GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(properties, CSize(169.0f, 331.0f))
 {
 	this->itemName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyItemName, Value("")).asString();
 	this->tutorialName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyTutorial, Value("")).asString();

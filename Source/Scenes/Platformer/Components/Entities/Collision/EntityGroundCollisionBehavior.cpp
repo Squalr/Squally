@@ -211,7 +211,7 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 
 	this->groundCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(
-			Size(this->detectorWidth, EntityGroundCollisionBehavior::GroundCollisionHeight)
+			CSize(this->detectorWidth, EntityGroundCollisionBehavior::GroundCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false),
@@ -246,7 +246,7 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 
 	this->rightCornerCollision = CollisionObject::create(
 		CollisionObject::createBox(
-			Size(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
+			CSize(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false),
@@ -255,7 +255,7 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 
 	this->leftCornerCollision = CollisionObject::create(
 		CollisionObject::createBox(
-			Size(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
+			CSize(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false),

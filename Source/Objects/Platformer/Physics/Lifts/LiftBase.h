@@ -14,7 +14,7 @@ class LiftBase : public GameObject
 public:
 
 protected:
-	LiftBase(cocos2d::ValueMap& properties, cocos2d::Size collisionSize, std::string railArt);
+	LiftBase(cocos2d::ValueMap& properties, cocos2d::CSize collisionSize, std::string railArt);
 	virtual ~LiftBase();
 
 	enum class MovementDirection

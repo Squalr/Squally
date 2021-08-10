@@ -52,5 +52,5 @@ private:
 	static const std::string PropertyClockStyle;
 	static const std::string ClockStyleHaunted;
 	static const cocos2d::Color4B BaseColor;
-	static const cocos2d::Size ClipSize;
+	static const cocos2d::CSize ClipSize;
 };

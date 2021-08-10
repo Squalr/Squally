@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class MinMaxPool;
 class PlatformerEntity;
 
-class GuanoPickPocketBehavior : public Component
+class GuanoPickPocketBehavior : public GameComponent
 {
 public:
 	static GuanoPickPocketBehavior* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string pickPocketSaveKey);
 	void endPickPocket();

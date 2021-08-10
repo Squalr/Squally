@@ -96,7 +96,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 
 	for (auto next : targets)
 	{
-		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, Size(64.0f, 64.0f));
+		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, CSize(64.0f, 64.0f));
 		
 		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{

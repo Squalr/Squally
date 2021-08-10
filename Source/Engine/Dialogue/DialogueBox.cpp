@@ -34,8 +34,8 @@ DialogueBox::DialogueBox(float textWidth, float speakerOffset, float speakerWidt
 
 	this->text->setTextColor(DialogueBox::PanelTextColor);
 
-	const Size visibleSize = Director::getInstance()->getVisibleSize();
-	const Size dialogueSize = Size(visibleSize.width - 64.0f, DialogueBox::DialogueHeight);
+	const CSize visibleSize = Director::getInstance()->getVisibleSize();
+	const CSize dialogueSize = CSize(visibleSize.width - 64.0f, DialogueBox::DialogueHeight);
 	const Vec2 halfSize = Vec2(dialogueSize.width / 2.0f, dialogueSize.height / 2.0f);
 
 	this->panel->drawSolidRect(-halfSize, halfSize, DialogueBox::PanelColor);

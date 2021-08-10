@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Scrappy;
 
-class ScrappyHackableCueBehavior : public Component
+class ScrappyHackableCueBehavior : public GameComponent
 {
 public:
 	static ScrappyHackableCueBehavior* create(GameObject* owner);
@@ -22,7 +22,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	float cueCooldown;
 	bool disabled;

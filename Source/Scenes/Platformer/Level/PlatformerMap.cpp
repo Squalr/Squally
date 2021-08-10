@@ -188,7 +188,7 @@ void PlatformerMap::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void PlatformerMap::initializeListeners()

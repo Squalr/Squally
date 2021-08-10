@@ -24,7 +24,7 @@ Johann::Johann(ValueMap& properties) : super(properties,
 	Johann::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

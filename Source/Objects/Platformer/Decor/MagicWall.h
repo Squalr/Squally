@@ -23,5 +23,5 @@ private:
 	typedef HackableObject super;
 
 	SmartParticles* wallParticles;
-	cocos2d::Size wallSize;
+	cocos2d::CSize wallSize;
 };

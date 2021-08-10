@@ -35,9 +35,9 @@ TutorialPuzzleOverflow* TutorialPuzzleOverflow::create()
 TutorialPuzzleOverflow::TutorialPuzzleOverflow() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_A_4Bits::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_B_Overflow::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->helpTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_C_HelpMenu::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_A_4Bits::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_B_Overflow::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->helpTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_C_HelpMenu::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->introNextButton = this->createNextButton();
 	this->decimalCardsNextButton = this->createNextButton();
 	this->helpNextButton = this->createNextButton();
@@ -84,7 +84,7 @@ void TutorialPuzzleOverflow::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->introTutorialLabel->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 32.0f);
 	this->decimalCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 class Scrappy;
 class Squally;
 
-class CypressBehavior : public Component
+class CypressBehavior : public GameComponent
 {
 public:
 	static CypressBehavior* create(GameObject* owner);
@@ -22,7 +22,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	Scrappy* scrappy;

@@ -18,12 +18,12 @@ class Slider;
 class ScrollPane : public SmartNode
 {
 public:
-	static ScrollPane* create(cocos2d::Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize = cocos2d::Size(0.0f, 24.0f), cocos2d::Size marginSize = cocos2d::Size(24.0f, 24.0f), cocos2d::Color4B initBackgroundColor = cocos2d::Color4B(0, 0, 0, 196));
+	static ScrollPane* create(cocos2d::CSize paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::CSize paddingSize = cocos2d::CSize(0.0f, 24.0f), cocos2d::CSize marginSize = cocos2d::CSize(24.0f, 24.0f), cocos2d::Color4B initBackgroundColor = cocos2d::Color4B(0, 0, 0, 196));
 
 	void enableInteraction();
 	void disableInteraction();
 	void setBackgroundColor(cocos2d::Color4B backgroundColor);
-	void renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size paneSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc);
+	void renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::CSize paneSize, cocos2d::CSize paddingSize, cocos2d::CSize marginSize)> drawFunc);
 	void setScrollPercentage(float percentage, bool updateScrollBars = true, float duration = 0.0f);
 	void scrollBy(float delta, bool updateScrollBars = true, float duration = 0.0f);
 	void scrollToCenter(cocos2d::Node* target, bool updateScrollBars = true, float duration = 0.0f);
@@ -34,14 +34,14 @@ public:
 	void suspendUpdate();
 	void resumeUpdate();
 
-	cocos2d::Size getPaneSize();
+	cocos2d::CSize getPaneSize();
 	void addChild(cocos2d::Node* child) override;
 	void removeChild(cocos2d::Node* child, bool cleanup = true) override;
 	void removeAllChildren() override;
 
 private:
 	typedef SmartNode super;
-	ScrollPane(cocos2d::Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, cocos2d::Color4B initBackgroundColor);
+	ScrollPane(cocos2d::CSize paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::CSize paddingSize, cocos2d::CSize marginSize, cocos2d::Color4B initBackgroundColor);
 	~ScrollPane();
 
 	void onEnter() override;
@@ -54,9 +54,9 @@ private:
 	float initialDragDepth;
 	float minScrollDepth;
 	float maxScrollDepth;
-	cocos2d::Size paddingSize;
-	cocos2d::Size marginSize;
-	cocos2d::Size paneSize;
+	cocos2d::CSize paddingSize;
+	cocos2d::CSize marginSize;
+	cocos2d::CSize paneSize;
 	cocos2d::DrawNode* customBackground;
 	cocos2d::LayerColor* background;
 	ClickableNode* dragHitbox;

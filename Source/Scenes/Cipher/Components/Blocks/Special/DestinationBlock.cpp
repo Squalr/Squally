@@ -75,7 +75,7 @@ void DestinationBlock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->receivedDisplayLabel->setPositionY(4.0f + 20.0f);
 	this->displayLabel->setPositionY(4.0f - 20.0f);

@@ -297,7 +297,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 		return Vec3::ZERO;
 	}
 
-	Rect resultRect = node->getBoundingBox();
+	CRect resultRect = node->getBoundingBox();
 	Vec3 resultCoords = Vec3(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f, node->getPositionZ());
 	Node* parent = node->getParent();
 
@@ -353,11 +353,11 @@ Vec2 GameUtils::getScreenCoords(const Vec3& point)
 	return Camera::getDefaultCamera()->projectGL(point);
 }
 
-Rect GameUtils::getScreenBounds(Node* node, const Size& padding, bool checkForUIBound)
+CRect GameUtils::getScreenBounds(Node* node, const CSize& padding, bool checkForUIBound)
 {
 	if (node == nullptr)
 	{
-		return Rect::ZERO;
+		return CRect::ZERO;
 	}
 
 	Vec3 nodeCoords = GameUtils::getWorldCoords3D(node, checkForUIBound);
@@ -368,11 +368,11 @@ Rect GameUtils::getScreenBounds(Node* node, const Size& padding, bool checkForUI
 	return getScreenBounds(nodeCoords, node->getContentSize() * GameUtils::getUniformScale(node) + padding);
 }
 
-Rect GameUtils::getScreenBounds(const Vec3& position, const Size& size)
+CRect GameUtils::getScreenBounds(const Vec3& position, const CSize& size)
 {
 	if (Camera::getDefaultCamera() == nullptr)
 	{
-		return Rect::ZERO;
+		return CRect::ZERO;
 	}
 
 	Vec3 rightEdgeCoords = position + Vec3(size.width, size.height, 0.0f);
@@ -380,7 +380,7 @@ Rect GameUtils::getScreenBounds(const Vec3& position, const Size& size)
 	Vec2 projectedLeftEdge = Camera::getDefaultCamera()->projectGL(position);
 	Vec2 projectedRightEdge = Camera::getDefaultCamera()->projectGL(rightEdgeCoords);
 
-	return Rect(projectedLeftEdge, Size(projectedRightEdge - projectedLeftEdge));
+	return CRect(projectedLeftEdge, CSize(projectedRightEdge - projectedLeftEdge));
 }
 
 bool GameUtils::isVisible(Node* node)
@@ -404,8 +404,8 @@ bool GameUtils::isEclipsed(Node* node, Vec2 mousePos)
 
 	if (parentClip != nullptr)
 	{
-		Rect clippingBounds = GameUtils::getScreenBounds(parentClip);
-		Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+		CRect clippingBounds = GameUtils::getScreenBounds(parentClip);
+		CRect mouseRect = CRect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
 		// Correction has to be made for whatever reason, don't question it
 		clippingBounds.origin += Vec2(clippingBounds.size / 2.0f);
@@ -427,9 +427,9 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos, bool checkForUIBound)
 		return false;
 	}
 
-	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+	CRect mouseRect = CRect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (GameUtils::getScreenBounds(node, Size::ZERO, checkForUIBound).intersectsRect(mouseRect))
+	if (GameUtils::getScreenBounds(node, CSize::ZERO, checkForUIBound).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -446,8 +446,8 @@ bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos, bool checkForUIBo
 		return false;
 	}
 
-	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
-	Rect nodeBounds = GameUtils::getScreenBounds(node, Size::ZERO, checkForUIBound);
+	CRect mouseRect = CRect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+	CRect nodeBounds = GameUtils::getScreenBounds(node, CSize::ZERO, checkForUIBound);
 
 	float dx = std::abs(mousePos.x - nodeBounds.getMidX());
 	float dy = std::abs(mousePos.y - nodeBounds.getMidY());

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Scrappy;
 class Squally;
 class PlatformerEntity;
 
-class FireballTutorialBehavior : public Component
+class FireballTutorialBehavior : public GameComponent
 {
 public:
 	static FireballTutorialBehavior* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void runTutorial();
 

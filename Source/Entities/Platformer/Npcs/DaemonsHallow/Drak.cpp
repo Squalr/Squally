@@ -24,7 +24,7 @@ Drak::Drak(ValueMap& properties) : super(properties,
 	Drak::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Drak_Animations,
 	EntityResources::Npcs_DaemonsHallow_Drak_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))
 {

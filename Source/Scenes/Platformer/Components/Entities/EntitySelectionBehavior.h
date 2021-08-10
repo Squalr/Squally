@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class ClickableNode;
 class PlatformerEntity;
 
-class EntitySelectionBehavior : public Component
+class EntitySelectionBehavior : public GameComponent
 {
 public:
 	static EntitySelectionBehavior* create(GameObject* owner);
@@ -27,7 +27,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 

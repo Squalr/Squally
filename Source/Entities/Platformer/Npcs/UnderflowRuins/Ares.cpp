@@ -24,7 +24,7 @@ Ares::Ares(ValueMap& properties) : super(properties,
 	Ares::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))
 {

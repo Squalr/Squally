@@ -23,7 +23,7 @@ OrcWarrior::OrcWarrior(ValueMap& properties) : super(properties,
 	OrcWarrior::MapKey,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
-	Size(256.0f, 228.0f),
+	CSize(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

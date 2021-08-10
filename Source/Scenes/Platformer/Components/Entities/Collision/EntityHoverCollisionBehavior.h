@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class CollisionObject;
 class EntityCollisionBehaviorBase;
@@ -8,7 +8,7 @@ class EntityGroundCollisionBehavior;
 class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 
-class EntityHoverCollisionBehavior : public Component
+class EntityHoverCollisionBehavior : public GameComponent
 {
 public:
 	static EntityHoverCollisionBehavior* create(GameObject* owner);
@@ -24,12 +24,12 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void crouch(float dt);
 	void uncrouch(float dt);
 	void rebuildHoverCrouchCollision();
-	cocos2d::Size getHoverSize(float progress = 1.0f);
+	cocos2d::CSize getHoverSize(float progress = 1.0f);
 	void positionHoverCollision(float progress = 1.0f);
 
 	float crouchProgress;

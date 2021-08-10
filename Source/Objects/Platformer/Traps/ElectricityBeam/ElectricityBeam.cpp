@@ -49,7 +49,7 @@ ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 	this->disableSave = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisableSave, Value(false)).asBool();
 
 	this->electricityAnimation = SmartAnimationSequenceNode::create();
-	this->electricityCollision = CollisionObject::create(CollisionObject::createBox(Size(this->isVertical ? 64.0f : 468.0f, this->isVertical ? 468.0f : 64.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->electricityCollision = CollisionObject::create(CollisionObject::createBox(CSize(this->isVertical ? 64.0f : 468.0f, this->isVertical ? 468.0f : 64.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->ballLeft = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 	this->ballRight = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 

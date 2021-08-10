@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEnemy;
 class Sound;
 
-class EnemyCombatEngageBehavior : public Component
+class EnemyCombatEngageBehavior : public GameComponent
 {
 public:
 	static EnemyCombatEngageBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void stopAllEntityActions();
 	void engageEnemy(bool firstStrike);

@@ -57,7 +57,7 @@ void StagingHelperText::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cancelButton->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width, visibleSize.height / 2.0f + HexusConfig::statusLabelOffsetY);
 	this->selectionLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter - HexusConfig::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + HexusConfig::statusLabelOffsetY);

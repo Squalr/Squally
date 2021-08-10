@@ -100,7 +100,7 @@ void MatrixStrand::update(float dt)
 		this->nextStrandAction();
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Camera movement effect
 	this->setPositionY(this->getPositionY() - dt * MovementSpeed / 4.0f);
@@ -193,7 +193,7 @@ void MatrixStrand::randomizeInitialState(int strandIndex)
 
 void MatrixStrand::randomizeState(bool spawnInRange)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	Vec3 position;
 	position.x = RandomHelper::random_real(0.0f, visibleSize.width);

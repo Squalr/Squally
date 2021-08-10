@@ -104,7 +104,7 @@ void TitleScreenBackground::onEnter()
 	this->fireflyParticles->accelerate(2.0f);
 	this->windParticles->accelerate(5.0f);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
 
 	const float floatSpeed = 3.0f;
@@ -171,7 +171,7 @@ void TitleScreenBackground::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));

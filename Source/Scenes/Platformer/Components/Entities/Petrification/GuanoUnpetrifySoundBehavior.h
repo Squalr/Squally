@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 class WorldSound;
 
-class GuanoUnpetrifySoundBehavior : public Component
+class GuanoUnpetrifySoundBehavior : public GameComponent
 {
 public:
 	static GuanoUnpetrifySoundBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	WorldSound* statueBreakSound;

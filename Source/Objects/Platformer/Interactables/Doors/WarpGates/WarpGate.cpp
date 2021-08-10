@@ -21,20 +21,20 @@ using namespace cocos2d;
 
 const std::string WarpGate::TagWarpGate = "warp-gate";
 
-WarpGate::WarpGate(ValueMap& properties) : super(properties, Size(128.0f, 256.0f))
+WarpGate::WarpGate(ValueMap& properties) : super(properties, CSize(128.0f, 256.0f))
 {
 	this->mapNodeContainer = Node::create();
 	this->mapNode = Node::create();
 	this->particlesNode = Node::create();
-	this->mapClip = SmartClippingNode::create(this->mapNodeContainer, Size(256.0f, 488.0f));
+	this->mapClip = SmartClippingNode::create(this->mapNodeContainer, CSize(256.0f, 488.0f));
 	this->doorClosed = Sprite::create(ObjectResources::Doors_WarpGate_WarpGateClosed);
 	this->doorFrame = Sprite::create(ObjectResources::Doors_WarpGate_WarpGateFrame);
 	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
-	this->centerParticles = SmartParticles::create(ParticleResources::WarpGates_PortalCenter, SmartParticles::CullInfo(Size(256.0f, 512.0f)));
-	this->edgeParticlesLeft = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeVertical, SmartParticles::CullInfo(Size(64.0f, 512.0f)));
-	this->edgeParticlesRight = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeVertical, SmartParticles::CullInfo(Size(64.0f, 512.0f)));
-	this->edgeParticlesUp = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeHorizontal, SmartParticles::CullInfo(Size(256.0f, 64.0f)));
-	this->edgeParticlesDown = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeHorizontal, SmartParticles::CullInfo(Size(256.0f, 64.0f)));
+	this->centerParticles = SmartParticles::create(ParticleResources::WarpGates_PortalCenter, SmartParticles::CullInfo(CSize(256.0f, 512.0f)));
+	this->edgeParticlesLeft = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeVertical, SmartParticles::CullInfo(CSize(64.0f, 512.0f)));
+	this->edgeParticlesRight = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeVertical, SmartParticles::CullInfo(CSize(64.0f, 512.0f)));
+	this->edgeParticlesUp = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeHorizontal, SmartParticles::CullInfo(CSize(256.0f, 64.0f)));
+	this->edgeParticlesDown = SmartParticles::create(ParticleResources::WarpGates_PortalEdgeHorizontal, SmartParticles::CullInfo(CSize(256.0f, 64.0f)));
 	
 	this->addTag(WarpGate::TagWarpGate);
 

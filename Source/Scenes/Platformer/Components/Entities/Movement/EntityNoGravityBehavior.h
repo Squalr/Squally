@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class CollisionObject;
 class PlatformerEntity;
 
-class EntityNoGravityBehavior : public Component
+class EntityNoGravityBehavior : public GameComponent
 {
 public:
 	static EntityNoGravityBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 };

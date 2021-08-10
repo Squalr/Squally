@@ -55,7 +55,7 @@ TitleScreen::TitleScreen()
 	this->musicOverlay = MusicOverlay::create();
 	this->music = WeWillGetThereTogether::create();
 	
-	const Size ShadowSize = Size(-2.0f, -2.0f);
+	const CSize ShadowSize = CSize(-2.0f, -2.0f);
 	const int ShadowBlur = 2;
 	const int HoverOutlineSize = 2;
 	const Color3B TextColor = Color3B::WHITE;
@@ -203,7 +203,7 @@ void TitleScreen::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->ether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));
 	this->etherParticles->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));

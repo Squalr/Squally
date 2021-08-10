@@ -18,7 +18,7 @@ CartLift* CartLift::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-CartLift::CartLift(cocos2d::ValueMap& properties) : super(properties, Size(209.0f, 70.0f), ObjectResources::Physics_CartLift_Rail)
+CartLift::CartLift(cocos2d::ValueMap& properties) : super(properties, CSize(209.0f, 70.0f), ObjectResources::Physics_CartLift_Rail)
 {
 	this->platform = Sprite::create(ObjectResources::Physics_CartLift_Platform);
 	this->startStop = Sprite::create(ObjectResources::Physics_CartLift_Stop);

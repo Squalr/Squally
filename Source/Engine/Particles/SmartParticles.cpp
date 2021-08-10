@@ -35,7 +35,7 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 	this->hasTotalParticlesOverride = false;
 	this->hasAngleOverride = false;
 	this->hasPositionTypeOverride = false;
-	this->boundsRect = Rect(Vec2::ZERO, this->cullInfo.size);
+	this->boundsRect = CRect(Vec2::ZERO, this->cullInfo.size);
 
 	this->setContentSize(this->cullInfo.size);
 
@@ -316,9 +316,9 @@ void SmartParticles::optimizationHideOffscreenParticles()
 	}
 	
 	// A little extra padding to give particles time to start up if needed
-	static const Size Padding = Size(512.0f, 512.0f);
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
+	static const CSize Padding = CSize(512.0f, 512.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{

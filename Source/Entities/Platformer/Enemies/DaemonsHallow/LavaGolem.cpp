@@ -24,7 +24,7 @@ LavaGolem::LavaGolem(ValueMap& properties) : super(properties,
 	LavaGolem::MapKey,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,
-	Size(980.0f, 1200.0f),
+	CSize(980.0f, 1200.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -24,7 +24,7 @@ Raka::Raka(ValueMap& properties) : super(properties,
 	Raka::MapKey,
 	EntityResources::Npcs_DataMines_Raka_Animations,
 	EntityResources::Npcs_DataMines_Raka_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

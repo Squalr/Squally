@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 
-class EntityEqBehavior : public Component
+class EntityEqBehavior : public GameComponent
 {
 public:
 	static EntityEqBehavior* create(GameObject* owner);
@@ -28,7 +28,7 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void save();
 

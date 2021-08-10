@@ -39,7 +39,7 @@ struct AsmToken
 class CodeWindow : public SmartNode
 {
 public:
-	static CodeWindow* create(cocos2d::Size windowSize);
+	static CodeWindow* create(cocos2d::CSize windowSize);
 
 	void openScript(ScriptEntry* script);
 	bool hasChanges();
@@ -49,7 +49,7 @@ public:
 	void unfocus();
 
 protected:
-	CodeWindow(cocos2d::Size windowSize);
+	CodeWindow(cocos2d::CSize windowSize);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
@@ -88,7 +88,7 @@ private:
 	bool hasScriptChanges;
 	ScriptEntry* script;
 	int currentLineNumber;
-	cocos2d::Size windowSize;
+	cocos2d::CSize windowSize;
 
 	static const std::string Delimiters;
 	static const std::set<std::string> Registers;
@@ -101,6 +101,6 @@ private:
 	static const cocos2d::Color4B DefaultWindowColor;
 	static const cocos2d::Color4B ReadonlyWindowColor;
 	static const cocos2d::Color3B LineNumberColor;
-	static const cocos2d::Size Padding;
+	static const cocos2d::CSize Padding;
 	static const float MarginSize;
 };

@@ -32,7 +32,7 @@ DragonDoor* DragonDoor::create(ValueMap& properties)
 	return instance;
 }
 
-DragonDoor::DragonDoor(ValueMap& properties) : super(properties, Size(420.0f, 528.0f), Vec2(0.0f, 0.0f))
+DragonDoor::DragonDoor(ValueMap& properties) : super(properties, CSize(420.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 	this->base = Sprite::create(ObjectResources::Doors_Dragon_DragonDoorBase);

@@ -24,7 +24,7 @@ DemonSwordsman::DemonSwordsman(ValueMap& properties) : super(properties,
 	DemonSwordsman::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
-	Size(212.0f, 268.0f),
+	CSize(212.0f, 268.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f))
 {

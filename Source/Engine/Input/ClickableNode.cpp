@@ -81,7 +81,7 @@ ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 	this->contentSelected = contentSelected;
 
 	this->debugCachedPos = Vec2::ZERO;
-	this->setContentSize(this->content == nullptr ? Size(256.0f, 128.0f) : this->content->getContentSize());
+	this->setContentSize(this->content == nullptr ? CSize(256.0f, 128.0f) : this->content->getContentSize());
 
 	this->addChild(this->content);
 	this->addChild(this->contentSelected);
@@ -161,7 +161,7 @@ void ClickableNode::interact()
 	}
 }
 
-void ClickableNode::setContentSize(const Size & size)
+void ClickableNode::setContentSize(const CSize & size)
 {
 	super::setContentSize(size);
 

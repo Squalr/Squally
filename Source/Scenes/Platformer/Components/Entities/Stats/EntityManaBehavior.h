@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class EquipmentInventory;
 class PlatformerEntity;
 
-class EntityManaBehavior : public Component
+class EntityManaBehavior : public GameComponent
 {
 public:
 	static EntityManaBehavior* create(GameObject* owner);
@@ -25,7 +25,7 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void onRevive();
 

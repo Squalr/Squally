@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -13,7 +13,7 @@ class PlatformerEntity;
 class SmartParticles;
 class WorldSound;
 
-class EntityPetrificationBehavior : public Component
+class EntityPetrificationBehavior : public GameComponent
 {
 public:
 	static EntityPetrificationBehavior* create(GameObject* owner);
@@ -34,7 +34,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	bool tryCure();
 	void ajaxRun();

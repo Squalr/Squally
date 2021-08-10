@@ -24,7 +24,7 @@ Gramps::Gramps(ValueMap& properties) : super(properties,
 	Gramps::MapKey,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

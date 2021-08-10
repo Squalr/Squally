@@ -46,7 +46,7 @@ OptionWarp* OptionWarp::create(ValueMap& properties)
 
 OptionWarp::OptionWarp(ValueMap& properties) : super(
 	properties,
-	Size(
+	CSize(
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	),

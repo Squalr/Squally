@@ -24,7 +24,7 @@ MagicWall* MagicWall::create(ValueMap& properties)
 
 MagicWall::MagicWall(ValueMap& properties) : super(properties)
 {
-	this->wallSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	this->wallSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->wallParticles = SmartParticles::create(ParticleResources::Objects_MagicWall, SmartParticles::CullInfo(this->wallSize));
 
 	this->addChild(this->wallParticles);

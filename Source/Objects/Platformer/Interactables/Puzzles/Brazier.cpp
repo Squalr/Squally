@@ -31,7 +31,7 @@ Brazier* Brazier::create(ValueMap& properties)
 	return instance;
 }
 
-Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, Size(101.0f, 111.0f))
+Brazier::Brazier(ValueMap& properties) : super(properties, InteractType::None, CSize(101.0f, 111.0f))
 {
 	this->torchColorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
 	this->torch = Sprite::create(ObjectResources::Puzzles_Torch_Torch);

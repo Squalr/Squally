@@ -208,7 +208,7 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 	LocalizedLabel* decLabelRef = nullptr;
 	LocalizedLabel* hexLabelRef = nullptr;
 	Card* cardClone = card == nullptr ? Card::create(Card::CardStyle::Earth, cardData, true, false) : card->clone(false);
-	Size cardSize = cardClone->getContentSize();
+	CSize cardSize = cardClone->getContentSize();
 
 	cardClone->setScale(1.0f);
 	cardClone->reveal();

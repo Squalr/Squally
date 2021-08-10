@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -12,7 +12,7 @@ class PlatformerEntity;
 class PocketPoolDeserializer;
 class Squally;
 
-class EntityPickPocketBehavior : public Component
+class EntityPickPocketBehavior : public GameComponent
 {
 public:
 	static EntityPickPocketBehavior* create(GameObject* owner);
@@ -31,7 +31,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void attemptPickPocket();
 	void onPickPocketed();

@@ -23,7 +23,7 @@ TrainingDummy::TrainingDummy(ValueMap& properties) : super(properties,
 	TrainingDummy::MapKey,
 	EntityResources::Misc_EndianForest_TrainingDummy_Animations,
 	EntityResources::Misc_EndianForest_TrainingDummy_Emblem,
-	Size(256.0f, 218.0f),
+	CSize(256.0f, 218.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -566,7 +566,7 @@ std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 	return points;
 }
 
-std::vector<Vec2> CollisionObject::createBox(Size size)
+std::vector<Vec2> CollisionObject::createBox(CSize size)
 {
 	return std::vector<Vec2>({
 		Vec2(-size.width / 2.0f, -size.height / 2.0f),
@@ -576,7 +576,7 @@ std::vector<Vec2> CollisionObject::createBox(Size size)
 	});
 }
 
-std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float capsuleRadius)
+std::vector<Vec2> CollisionObject::createCapsulePolygon(CSize size, float capsuleRadius)
 {
 	size.height = std::max(0.0f, size.height - capsuleRadius * 2.0f);
 

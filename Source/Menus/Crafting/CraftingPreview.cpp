@@ -100,7 +100,7 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 			int count = std::get<1>(next);
 
 			LocalizedString* counts = Strings::Common_TimesConstant::create();
-			counts->setStringReplacementVariables({ ConstantString::create(std::to_string(count)) });
+			counts->setStringReplacementVariables(ConstantString::create(std::to_string(count)));
 			this->buildPreview(item, counts, index++, true);
 		}
 	}

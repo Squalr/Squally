@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 class Squally;
 
-class LookAtSquallyBehavior : public Component
+class LookAtSquallyBehavior : public GameComponent
 {
 public:
 	static LookAtSquallyBehavior* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	Squally* squally;

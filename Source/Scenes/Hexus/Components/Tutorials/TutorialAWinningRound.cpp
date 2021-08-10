@@ -30,7 +30,7 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 TutorialAWinningRound::TutorialAWinningRound() : super(GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_WinningRound::create(), Size(420.0f, 0.0f));
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_WinningRound::create(), CSize(420.0f, 0.0f));
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->scoreTotalsNextButton = this->createNextButton();
 	
@@ -61,7 +61,7 @@ void TutorialAWinningRound::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->scoreTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 32.0f);
 	this->scoreTotalsNextButton->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 32.0f);

@@ -32,7 +32,7 @@ GameHud* GameHud::create()
 
 GameHud::GameHud()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->flashLayer = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->currencyDisplay = CurrencyDisplay::create();
@@ -68,7 +68,7 @@ void GameHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	static const Vec2 offset = Vec2(24.0f, -96.0f);
 	

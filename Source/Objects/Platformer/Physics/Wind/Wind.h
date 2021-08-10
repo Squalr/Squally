@@ -37,7 +37,7 @@ private:
 	CollisionObject* windForce;
 	HackableData* windDataSpeedY;
 	SmartParticles* windParticles;
-	cocos2d::Size windSize;
+	cocos2d::CSize windSize;
 	cocos2d::Vec2 windSpeedDefault;
 	cocos2d::Vec2 windSpeed;
 

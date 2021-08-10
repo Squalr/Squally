@@ -38,7 +38,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueInteraction = InteractObject::create(
 		InteractObject::InteractType::Input,
-		(this->entity == nullptr ? Size::ZERO : this->entity->getEntitySize()),
+		(this->entity == nullptr ? CSize::ZERO : this->entity->getEntitySize()),
 		Vec2::ZERO,
 		nullptr,
 		InputEvents::KeyCode::KEY_V,

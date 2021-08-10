@@ -24,7 +24,7 @@ BoneFiend::BoneFiend(ValueMap& properties) : super(properties,
 	BoneFiend::MapKey,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
-	Size(224.0f, 278.0f),
+	CSize(224.0f, 278.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

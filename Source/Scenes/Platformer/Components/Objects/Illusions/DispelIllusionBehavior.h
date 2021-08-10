@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class HackableObject;
 class Portal;
 class Sound;
 
-class DispelIllusionBehavior : public Component
+class DispelIllusionBehavior : public GameComponent
 {
 public:
 	static DispelIllusionBehavior* create(GameObject* owner);
@@ -22,7 +22,7 @@ protected:
 	void registerHackables();
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void onDispelActivated();
 

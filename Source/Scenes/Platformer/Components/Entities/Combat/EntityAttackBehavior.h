@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Consumable;
 class EquipmentInventory;
@@ -8,7 +8,7 @@ class Inventory;
 class PlatformerAttack;
 class PlatformerEntity;
 
-class EntityAttackBehavior : public Component
+class EntityAttackBehavior : public GameComponent
 {
 public:
 	static EntityAttackBehavior* create(GameObject* owner);
@@ -34,7 +34,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void buildEquipmentAttacks();
 	void rebuildConsumables();

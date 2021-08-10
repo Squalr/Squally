@@ -62,7 +62,7 @@ Cipher* Cipher::create()
 
 Cipher::Cipher()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
@@ -156,7 +156,7 @@ void Cipher::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2::ZERO);
 }

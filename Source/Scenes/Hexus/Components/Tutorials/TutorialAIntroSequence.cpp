@@ -33,13 +33,13 @@ TutorialAIntroSequence* TutorialAIntroSequence::create()
 TutorialAIntroSequence::TutorialAIntroSequence() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_ScoreTotals::create(), Size(420.0f, 0.0f), TextHAlignment::CENTER);
-	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_LossDisplay::create(), Size(420.0f, 0.0f), TextHAlignment::CENTER);
-	this->rowTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_RowTotals::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->binaryCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_BinCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_DecCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->hexCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_HexCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_HandCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_ScoreTotals::create(), CSize(420.0f, 0.0f), TextHAlignment::CENTER);
+	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_LossDisplay::create(), CSize(420.0f, 0.0f), TextHAlignment::CENTER);
+	this->rowTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_RowTotals::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->binaryCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_BinCards::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_DecCards::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->hexCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_HexCards::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_HandCards::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
 
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->helpArrowLossDisplay = HelpArrow::create();
@@ -127,7 +127,7 @@ void TutorialAIntroSequence::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->scoreTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 32.0f);
 	this->lossDisplayTutorialLabel->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f + 32.0f);

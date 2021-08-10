@@ -28,7 +28,7 @@ OverworldFireball* OverworldFireball::create()
 	return instance;
 }
 
-OverworldFireball::OverworldFireball() : super(nullptr, CollisionObject::createCapsulePolygon(Size(48.0f, 48.0f)), (int)PlatformerCollisionType::EnemyWeapon, false)
+OverworldFireball::OverworldFireball() : super(nullptr, CollisionObject::createCapsulePolygon(CSize(48.0f, 48.0f)), (int)PlatformerCollisionType::EnemyWeapon, false)
 {
 	this->fireball = SmartAnimationSequenceNode::create();
 	this->explosion = SmartAnimationSequenceNode::create();

@@ -29,7 +29,7 @@ Lever* Lever::create(ValueMap& properties)
 	return instance;
 }
 
-Lever::Lever(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(177.0f, 205.0f), Vec2::ZERO)
+Lever::Lever(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(177.0f, 205.0f), Vec2::ZERO)
 {
 	this->lever = SmartAnimationNode::create(ObjectResources::Switches_Lever_Animations);
 	this->leverSound = WorldSound::create(SoundResources::Cipher_GearTurn);

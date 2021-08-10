@@ -67,11 +67,11 @@ SaveSelectMenu::SaveSelectMenu()
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 
 	returnLabelHover->setColor(Color3B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -80,7 +80,7 @@ SaveSelectMenu::SaveSelectMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->titleLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->titleLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->titleLabel->enableGlow(Color4B::BLACK);
 
 	this->addChild(this->platformerEntityDeserializer);
@@ -147,7 +147,7 @@ void SaveSelectMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->saveSelectWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
@@ -175,7 +175,7 @@ void SaveSelectMenu::buildSaveButtons()
 
 ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 {
-	const Size shadowSize = Size(-2.0f, -2.0f);
+	const CSize shadowSize = CSize(-2.0f, -2.0f);
 	const int shadowBlur = 2;
 	const int hoverOutlineSize = 2;
 	const Color3B textColor = Color3B::WHITE;
@@ -359,7 +359,7 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	Node* entityContent = Node::create();
 	Sprite* entityFrame = Sprite::create(UIResources::Menus_SaveSelectMenu_AvatarFrame);
 
-	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, Size(128.0f, 128.0f));
+	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, CSize(128.0f, 128.0f));
 	Sprite* backgroundEnvironment = this->getBackgroundForCurrentSaveProfile();
 
 	entity->setPosition(entity->getDialogueOffset() + Vec2(-16.0f, -80.0f) + offsetAdjustment);

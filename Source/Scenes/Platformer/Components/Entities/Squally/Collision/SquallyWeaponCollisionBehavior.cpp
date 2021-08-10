@@ -87,7 +87,7 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 		}
 		else
 		{
-			const Size NoWeaponSize = Size(64.0f, 64.0f);
+			const CSize NoWeaponSize = CSize(64.0f, 64.0f);
 			const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
 
 			this->setWeaponCollisionSize(NoWeaponSize);

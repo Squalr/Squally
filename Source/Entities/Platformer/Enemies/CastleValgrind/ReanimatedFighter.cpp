@@ -24,7 +24,7 @@ ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : super(properties,
 	ReanimatedFighter::MapKey,
 	EntityResources::Enemies_CastleValgrind_ReanimatedFighter_Animations,
 	EntityResources::Enemies_CastleValgrind_ReanimatedFighter_Emblem,
-	Size(256.0f, 248.0f),
+	CSize(256.0f, 248.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
 {

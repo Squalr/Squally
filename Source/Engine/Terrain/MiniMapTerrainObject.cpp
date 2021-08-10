@@ -63,7 +63,7 @@ void MiniMapTerrainObject::onEnter()
 
 	if (this->polylinePoints.empty())
 	{
-		Size size = Size(
+		CSize size = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);

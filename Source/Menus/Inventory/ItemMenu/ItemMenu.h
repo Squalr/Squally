@@ -65,7 +65,7 @@ private:
 	bool isFocused;
 
 	static const float LabelSpacing;
-	static const cocos2d::Size LabelSize;
-	static const cocos2d::Size ClipSize;
+	static const cocos2d::CSize LabelSize;
+	static const cocos2d::CSize ClipSize;
 	static const float ClipRightBuffer;
 };

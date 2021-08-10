@@ -80,7 +80,7 @@ void CipherState::initializePositions()
 {
 	SmartNode::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameAreaDebug->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter - CipherConfig::GameAreaWidth / 2.0f, visibleSize.height / 2.0f - CipherConfig::GameAreaHeight / 2.0f));
 

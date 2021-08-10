@@ -27,7 +27,7 @@ using namespace cocos2d;
 const Vec2 StonePuzzleDoor::Offset = Vec2(0.0f, -160.0f);
 
 StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
-	Size(256.0f, 512.0f),
+	CSize(256.0f, 512.0f),
 	StonePuzzleDoor::Offset + Vec2(0.0f, 24.0f),
 	StonePuzzleDoor::Offset + Vec2(0.0f, 32.0f),
 	StonePuzzleDoor::Offset + Vec2(0.0f, 464.0f),

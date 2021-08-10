@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 
-class EntityRuneBehavior : public Component
+class EntityRuneBehavior : public GameComponent
 {
 public:
 	static EntityRuneBehavior* create(GameObject* owner);
@@ -30,7 +30,7 @@ protected:
 	std::vector<float> runeCooldowns;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void onRevive();
 };

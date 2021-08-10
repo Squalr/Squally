@@ -32,7 +32,7 @@ Anvil* Anvil::create(ValueMap& properties)
 	return instance;
 }
 
-Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(256.0f, 128.0f))
+Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(256.0f, 128.0f))
 {
 	this->anvil = Sprite::create(ObjectResources::Interactive_Anvil_Anvil);
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);

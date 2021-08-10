@@ -87,7 +87,7 @@ void ConfigManager::setResolution(ResolutionSetting resolution)
 
 	instance->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
 
-	cocos2d::Size resolutionSize = ConfigManager::getResolutionSize();
+	cocos2d::CSize resolutionSize = ConfigManager::getResolutionSize();
 
 	if (ConfigManager::getIsFullScreen())
 	{
@@ -112,7 +112,7 @@ void ConfigManager::setIsFullScreen(bool isFullScreen)
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
-	cocos2d::Size resolutionSize = ConfigManager::getResolutionSize();
+	cocos2d::CSize resolutionSize = ConfigManager::getResolutionSize();
 
 	if (isFullScreen)
 	{
@@ -147,9 +147,9 @@ void ConfigManager::setMusicVolume(float volume)
 	SoundEvents::TriggerMusicVolumeUpdated();
 }
 
-cocos2d::Size ConfigManager::getResolutionSize()
+cocos2d::CSize ConfigManager::getResolutionSize()
 {
-	cocos2d::Size size = cocos2d::Size();
+	cocos2d::CSize size = cocos2d::CSize();
 
 	switch (ConfigManager::getResolution())
 	{

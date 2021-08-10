@@ -1,11 +1,11 @@
 #pragma once
 #include <set>
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class HackableObject;
 
-class IsSwimmingClippyBehavior : public Component
+class IsSwimmingClippyBehavior : public GameComponent
 {
 public:
 	static IsSwimmingClippyBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	HackableObject* object;
 };

@@ -59,7 +59,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, std::vector<Plat
 	
 	for (auto next : targets)
 	{
-		ThrownObject* weapon = ThrownObject::create(owner, next, false, this->getMainhandResource(owner), Size(64.0f, 128.0f));
+		ThrownObject* weapon = ThrownObject::create(owner, next, false, this->getMainhandResource(owner), CSize(64.0f, 128.0f));
 		SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 		weapon->addChild(fire);

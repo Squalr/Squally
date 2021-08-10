@@ -49,7 +49,7 @@ void Airship1::update(float dt)
 
 	const float Speed = 368.0f;
 	const float Multiplier = this->animations->getFlippedX() ? 1.0f : -1.0f;
-	const Rect MapBounds = GameCamera::getInstance()->getMapBounds();
+	const CRect MapBounds = GameCamera::getInstance()->getMapBounds();
 	const float Buffer = 4096.0f;
 	const float LeftWrap = MapBounds.origin.x - Buffer;
 	const float RightWrap = MapBounds.origin.x + MapBounds.size.width + Buffer;

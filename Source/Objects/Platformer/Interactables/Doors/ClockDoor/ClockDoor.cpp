@@ -23,7 +23,7 @@ const std::string ClockDoor::MapKey = "clock-door";
 const std::string ClockDoor::PropertyClockStyle = "clock-style";
 const std::string ClockDoor::ClockStyleHaunted = "haunted";
 const Color4B ClockDoor::BaseColor = Color4B::BLACK;
-const Size ClockDoor::ClipSize = Size(204.0f, 352.0f);
+const CSize ClockDoor::ClipSize = CSize(204.0f, 352.0f);
 
 ClockDoor* ClockDoor::create(ValueMap& properties)
 {
@@ -41,8 +41,8 @@ ClockDoor::ClockDoor(ValueMap& properties) : super(properties, ClockDoor::ClipSi
 	this->clippingNode = SmartClippingNode::create(this->clippingContentNode, ClockDoor::ClipSize);
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
-	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(CSize(96.0f, 96.0f)));
+	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(CSize(96.0f, 96.0f)));
 	this->handNode = Node::create();
 
 	if (this->isHaunted)

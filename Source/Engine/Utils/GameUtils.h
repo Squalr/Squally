@@ -35,8 +35,8 @@ public:
 	static void setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords);
 	static void setWorldCoords3D(cocos2d::Node* node, cocos2d::Vec3 worldCoords);
 	static cocos2d::Vec2 getScreenCoords(const cocos2d::Vec3& point);
-	static cocos2d::Rect getScreenBounds(cocos2d::Node* node, const cocos2d::Size& padding = cocos2d::Size::ZERO, bool checkForUIBound = true);
-	static cocos2d::Rect getScreenBounds(const cocos2d::Vec3& position, const cocos2d::Size& size);
+	static cocos2d::CRect getScreenBounds(cocos2d::Node* node, const cocos2d::CSize& padding = cocos2d::CSize::ZERO, bool checkForUIBound = true);
+	static cocos2d::CRect getScreenBounds(const cocos2d::Vec3& position, const cocos2d::CSize& size);
 	static bool isVisible(cocos2d::Node* node);
 	static bool isEclipsed(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos, bool checkForUIBound = true);

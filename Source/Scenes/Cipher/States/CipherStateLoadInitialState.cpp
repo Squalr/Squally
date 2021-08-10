@@ -242,7 +242,7 @@ void CipherStateLoadInitialState::spawnBlocks(CipherState* cipherState)
 
 void CipherStateLoadInitialState::spawnBlock(BlockBase* block, int index, int total)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 center = Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f);
 
 	float possibleOffsetX = CipherConfig::GameAreaWidth / 2.0f - 128.0f;

@@ -29,7 +29,7 @@ PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(prope
 	const std::string name = this->properties.at(GameObject::MapKeyName).asString();
 	this->filePath = "Private/Platformer/Decor/" + name + ".png";
 	this->sprite = LazyNode<Sprite>::create(CC_CALLBACK_0(PlatformerDecorObject::buildSprite, this));
-	this->objectSize = Size(
+	this->objectSize = CSize(
 		 GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	);
@@ -113,9 +113,9 @@ void PlatformerDecorObject::runBounce()
 
 void PlatformerDecorObject::optimizationHideOffscreenDecor()
 {
-	static const Size Padding = Size(0.0f, 0.0f);
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
+	static const CSize Padding = CSize(0.0f, 0.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{
@@ -158,18 +158,18 @@ Sprite* PlatformerDecorObject::buildSprite()
 			// X is repeating -- set the scale based on the height
 			instance->setScale(scale);
 
-			instance->setTextureRect(Rect(0.0f, 0.0f, this->objectSize.width / scale, instance->getContentSize().height));
+			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width / scale, instance->getContentSize().height));
 		}
 		if (repeatY && !repeatX)
 		{
-			instance->setTextureRect(Rect(0.0f, 0.0f, instance->getContentSize().width, this->objectSize.height));
+			instance->setTextureRect(CRect(0.0f, 0.0f, instance->getContentSize().width, this->objectSize.height));
 
 			// Y is repeating -- set the scale based on the width
 			instance->setScale(this->objectSize.width / instance->getContentSize().width);
 		}
 		else if (repeatX && repeatY)
 		{
-			instance->setTextureRect(Rect(0.0f, 0.0f, this->objectSize.width, this->objectSize.height));
+			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width, this->objectSize.height));
 		}
 
 		Texture2D* texture = instance->getTexture();

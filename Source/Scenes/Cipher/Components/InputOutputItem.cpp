@@ -66,7 +66,7 @@ void InputOutputItem::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->inputLabel->setPosition(Vec2(-64.0f, 0.0f));
 	this->outputLabel->setPosition(Vec2(64.0f, 0.0f));

@@ -49,7 +49,7 @@ HelpMenu::HelpMenu()
     exitLabel->enableOutline(Color4B::BLACK, 2);
     exitLabelSelect->enableOutline(Color4B::BLACK, 2);
     
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
     this->background = Sprite::create(HexusResources::StoreMenu_StoreBoard);
     this->textPanel = LayerColor::create(Color4B(0, 0, 0, 196), 1234, 196);
@@ -111,7 +111,7 @@ void HelpMenu::initializePositions()
 {
     super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
     this->textPanel->setPosition(Vec2(-1234.0f / 2.0f, 236.0f));

@@ -24,7 +24,7 @@ public:
 	std::string getEmblemResource();
 	cocos2d::Node* getFloatNode();
 	SmartAnimationNode* getAnimations();
-	cocos2d::Size getEntitySize();
+	cocos2d::CSize getEntitySize();
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
 	cocos2d::Vec2 getEntityTopPoint();
@@ -57,7 +57,7 @@ protected:
 		std::string entityName,
 		std::string scmlResource,
 		std::string emblemResource,
-		cocos2d::Size size,
+		cocos2d::CSize size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
@@ -84,7 +84,7 @@ private:
 	
 	float entityScale;
 	cocos2d::Vec2 entityCollisionOffset;
-	cocos2d::Size entitySize;
+	cocos2d::CSize entitySize;
 	float hoverHeight;
 	std::string entityName;
 	std::string animationResource;

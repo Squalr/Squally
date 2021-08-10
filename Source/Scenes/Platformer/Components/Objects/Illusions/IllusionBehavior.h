@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Portal;
 
-class IllusionBehavior : public Component
+class IllusionBehavior : public GameComponent
 {
 public:
 	static IllusionBehavior* create(GameObject* owner);
@@ -19,7 +19,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	Portal* portal;
 	GameObject* object;

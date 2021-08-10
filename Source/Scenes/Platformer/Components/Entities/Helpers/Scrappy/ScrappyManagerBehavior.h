@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Scrappy;
 class PlatformerEntity;
 class PlatformerEntityDeserializer;
 
-class ScrappyManagerBehavior : public Component
+class ScrappyManagerBehavior : public GameComponent
 {
 public:
 	static ScrappyManagerBehavior* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void spawnScrappy();
 

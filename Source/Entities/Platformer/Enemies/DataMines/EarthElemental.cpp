@@ -24,7 +24,7 @@ EarthElemental::EarthElemental(ValueMap& properties) : super(properties,
 	EarthElemental::MapKey,
 	EntityResources::Enemies_DataMines_EarthElemental_Animations,
 	EntityResources::Enemies_DataMines_EarthElemental_Emblem,
-	Size(256.0f, 228.0f),
+	CSize(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

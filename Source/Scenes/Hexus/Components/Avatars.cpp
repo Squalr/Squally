@@ -62,7 +62,7 @@ void Avatars::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->framePlayer->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::frameOffsetX, visibleSize.height / 2.0f - HexusConfig::frameOffsetY);
 	this->frameEnemy->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::frameOffsetX, visibleSize.height / 2.0f + HexusConfig::frameOffsetY);

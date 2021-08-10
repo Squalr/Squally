@@ -24,7 +24,7 @@ PrincessOpal::PrincessOpal(ValueMap& properties) : super(properties,
 	PrincessOpal::MapKey,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))
 {

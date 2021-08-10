@@ -61,7 +61,7 @@ void ScoreTotal::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerTotalFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f - HexusConfig::totalAttackOffsetY);
 	this->playerLeaderEmblem->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::totalAttackOffsetX, visibleSize.height / 2.0f - HexusConfig::leaderEmblemOffsetY);

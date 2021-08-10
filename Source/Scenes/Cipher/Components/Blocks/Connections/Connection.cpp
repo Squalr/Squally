@@ -125,7 +125,7 @@ void Connection::stretchToLocation(cocos2d::Vec2 location)
 	float distance = MathUtils::clamp(location.distance(thisPosition), 0.0f, MaxLength);
 	float angleBetween = -std::atan2(thisPosition.y - location.y, thisPosition.x - location.x) - float(M_PI) / 2.0f;
 
-	this->connectionLine->setTextureRect(Rect(0.0f, 0.0f, this->connectionLine->getContentSize().width, distance));
+	this->connectionLine->setTextureRect(CRect(0.0f, 0.0f, this->connectionLine->getContentSize().width, distance));
 	this->connectionLine->setRotation(angleBetween * 180.0f / float(M_PI));
 	this->connectionCap->setRotation(this->connectionLine->getRotation());
 	this->connectionCap->setPosition(location - thisPosition);

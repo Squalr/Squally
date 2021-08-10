@@ -24,7 +24,7 @@ Garin::Garin(ValueMap& properties) : super(properties,
 	Garin::MapKey,
 	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

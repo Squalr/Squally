@@ -24,7 +24,7 @@ Tigress::Tigress(ValueMap& properties) : super(properties,
 	Tigress::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
-	Size(128.0f, 256.0f),
+	CSize(128.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

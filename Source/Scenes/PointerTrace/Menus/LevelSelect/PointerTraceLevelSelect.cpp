@@ -76,7 +76,7 @@ void PointerTraceLevelSelect::onEnter()
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	if (this->map == nullptr)
 	{
@@ -88,7 +88,7 @@ void PointerTraceLevelSelect::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void PointerTraceLevelSelect::initializeListeners()

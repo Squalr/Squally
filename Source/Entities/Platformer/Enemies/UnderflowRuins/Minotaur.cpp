@@ -24,7 +24,7 @@ Minotaur::Minotaur(ValueMap& properties) : super(properties,
 	Minotaur::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
-	Size(278.0f, 288.0f),
+	CSize(278.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

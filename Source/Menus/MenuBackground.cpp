@@ -80,7 +80,7 @@ void MenuBackground::initializePositions()
 {
 	super::initializePositions();
 
-	const Size visibleSize = Director::getInstance()->getVisibleSize();
+	const CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->fireflyParticles->accelerate(2.0f);
 	this->windParticles->accelerate(5.0f);

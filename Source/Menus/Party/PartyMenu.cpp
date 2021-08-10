@@ -60,11 +60,11 @@ PartyMenu::PartyMenu()
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelSelected->enableOutline(Color4B::BLACK, 2);
 	returnLabelSelected->setTextColor(Color4B::YELLOW);
-	returnLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -77,11 +77,11 @@ PartyMenu::PartyMenu()
 	LocalizedLabel*	cancelLabelSelected = cancelLabel->clone();
 
 	cancelLabel->enableOutline(Color4B::BLACK, 2);
-	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabel->enableGlow(Color4B::BLACK);
 	cancelLabelSelected->enableOutline(Color4B::BLACK, 2);
 	cancelLabelSelected->setTextColor(Color4B::YELLOW);
-	cancelLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->cancelButton = ClickableTextNode::create(
@@ -94,11 +94,11 @@ PartyMenu::PartyMenu()
 	LocalizedLabel*	stuckLabelSelected = stuckLabel->clone();
 
 	stuckLabel->enableOutline(Color4B::BLACK, 2);
-	stuckLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	stuckLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	stuckLabel->enableGlow(Color4B::BLACK);
 	stuckLabelSelected->enableOutline(Color4B::BLACK, 2);
 	stuckLabelSelected->setTextColor(Color4B::YELLOW);
-	stuckLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	stuckLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	stuckLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->stuckButton = ClickableTextNode::create(
@@ -107,7 +107,7 @@ PartyMenu::PartyMenu()
 		UIResources::Menus_Buttons_SmallGenericButton,
 		UIResources::Menus_Buttons_SmallGenericButtonSelected);
 
-	this->partyLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->partyLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->partyLabel->enableGlow(Color4B::BLACK);
 	this->chooseTargetLabel->enableOutline(Color4B::BLACK, 2);
 	this->countLabel->enableOutline(Color4B::BLACK, 2);
@@ -137,7 +137,7 @@ void PartyMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->partyWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->statsBarsNode->setPosition(Vec2(visibleSize.width / 2.0f - 460.0f, visibleSize.height / 2.0f + 128.0f));

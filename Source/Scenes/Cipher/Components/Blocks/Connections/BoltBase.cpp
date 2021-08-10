@@ -24,7 +24,7 @@ BoltBase::BoltBase()
 	this->connection = nullptr;
 	this->inputDebug = false;
 
-	this->connectButton->setContentSize(Size(48.0f, 48.0f));
+	this->connectButton->setContentSize(CSize(48.0f, 48.0f));
 
 	this->addChild(this->connectButton);
 }

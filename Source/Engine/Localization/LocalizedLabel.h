@@ -42,7 +42,7 @@ public:
 		FontStyle fontStyle, 
 		FontSize fontSize,
 		LocalizedString* localizedString,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		const cocos2d::CSize& dimensions = cocos2d::CSize::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
 	);
@@ -62,7 +62,7 @@ protected:
 		FontStyle fontStyle,
 		FontSize fontSize,
 		LocalizedString* localizedString,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		const cocos2d::CSize& dimensions = cocos2d::CSize::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	virtual ~LocalizedLabel();

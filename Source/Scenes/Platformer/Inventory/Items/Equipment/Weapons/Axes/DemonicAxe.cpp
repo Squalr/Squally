@@ -62,10 +62,10 @@ const std::string& DemonicAxe::getIdentifier()
 	return DemonicAxe::SaveKey;
 }
 
-Size DemonicAxe::getWeaponCollisionSize()
+CSize DemonicAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 DemonicAxe::getWeaponCollisionOffset()

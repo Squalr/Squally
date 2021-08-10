@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -12,7 +12,7 @@ class Projectile;
 class Squally;
 class WorldSound;
 
-class AgroBehavior : public Component
+class AgroBehavior : public GameComponent
 {
 public:
 	static AgroBehavior* create(GameObject* owner);
@@ -38,7 +38,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	Squally* squally;

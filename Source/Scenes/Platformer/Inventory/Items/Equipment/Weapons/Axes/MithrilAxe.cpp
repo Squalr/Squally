@@ -62,10 +62,10 @@ const std::string& MithrilAxe::getIdentifier()
 	return MithrilAxe::SaveKey;
 }
 
-Size MithrilAxe::getWeaponCollisionSize()
+CSize MithrilAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 MithrilAxe::getWeaponCollisionOffset()

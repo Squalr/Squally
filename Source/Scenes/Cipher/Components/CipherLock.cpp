@@ -62,7 +62,7 @@ CipherLock::CipherLock()
 	params.wrapT = GL_REPEAT;
 
 	this->shaft->getTexture()->setTexParameters(params);
-	this->shaft->setTextureRect(Rect(0.0f, 0.0f, this->shaft->getContentSize().width, this->shaft->getContentSize().height * 8.0f));
+	this->shaft->setTextureRect(CRect(0.0f, 0.0f, this->shaft->getContentSize().width, this->shaft->getContentSize().height * 8.0f));
 
 	this->contentClip->addChild(this->background);
 	this->contentClip->addChild(this->steelGear);
@@ -90,7 +90,7 @@ void CipherLock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f + CipherConfig::TopPanelCenter));
 	this->background->setPosition(Vec2(0.0f, 0.0f));

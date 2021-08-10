@@ -24,7 +24,7 @@ Assassin::Assassin(ValueMap& properties) : super(properties,
 	Assassin::MapKey,
 	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
-	Size(278.0f, 288.0f),
+	CSize(278.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

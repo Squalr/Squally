@@ -24,7 +24,7 @@ Thatcher::Thatcher(ValueMap& properties) : super(properties,
 	Thatcher::MapKey,
 	EntityResources::Npcs_VoidStar_Thatcher_Animations,
 	EntityResources::Npcs_VoidStar_Thatcher_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
 {

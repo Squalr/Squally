@@ -148,9 +148,9 @@ struct SpriterObjectInfo
 {
 	std::string name;
 	std::string type;
-	cocos2d::Size size;
+	cocos2d::CSize size;
 
-	SpriterObjectInfo(std::string name, std::string type, cocos2d::Size size)
+	SpriterObjectInfo(std::string name, std::string type, cocos2d::CSize size)
 		: name(name), type(type), size(size) { }
 };
 
@@ -169,10 +169,10 @@ struct SpriterFile
 {
 	unsigned int id;
 	std::string name;
-	cocos2d::Size size;
+	cocos2d::CSize size;
 	cocos2d::Vec2 anchor;
 
-	SpriterFile(unsigned int id, std::string name, cocos2d::Size size, cocos2d::Vec2 anchor)
+	SpriterFile(unsigned int id, std::string name, cocos2d::CSize size, cocos2d::Vec2 anchor)
 		: id(id), name(name), size(size), anchor(anchor) { }
 };
 

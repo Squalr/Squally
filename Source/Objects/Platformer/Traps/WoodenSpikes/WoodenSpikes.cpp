@@ -41,7 +41,7 @@ WoodenSpikes* WoodenSpikes::create(ValueMap& properties)
 WoodenSpikes::WoodenSpikes(ValueMap& properties) : super(properties)
 {
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;

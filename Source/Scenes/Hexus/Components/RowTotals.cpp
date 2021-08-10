@@ -185,7 +185,7 @@ void RowTotals::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::binaryRowOffsetY);
 	this->enemyDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter + HexusConfig::cardTotalOffsetX, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::decimalRowOffsetY);
@@ -253,7 +253,7 @@ void RowTotals::onAfterAnyStateChange(GameState* gameState)
 
 void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	int newPlayerBinaryTotal = gameState->playerBinaryCards->getRowAttack();
 	int newPlayerDecimalTotal = gameState->playerDecimalCards->getRowAttack();

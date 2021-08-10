@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -17,7 +17,7 @@ class SmartParticles;
 class StateOverride;
 class TutorialBase;
 
-class HexusBehaviorBase : public Component
+class HexusBehaviorBase : public GameComponent
 {
 public:
 	int getWins();
@@ -61,7 +61,7 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	HexusOpponentData* createOpponentData();
 

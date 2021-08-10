@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class EntityCollisionBehaviorBase;
 class PlatformerEntity;
 class Squally;
 class WorldSound;
 
-class BirdBehavior : public Component
+class BirdBehavior : public GameComponent
 {
 public:
 	static BirdBehavior* create(GameObject* owner);
@@ -23,7 +23,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void tryNextAction();
 	void queueNextAction();

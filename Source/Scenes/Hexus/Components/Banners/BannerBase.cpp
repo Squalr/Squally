@@ -22,7 +22,7 @@ BannerBase* BannerBase::create()
 
 BannerBase::BannerBase()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->bannerOverlay = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
 	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Common_Empty::create());
@@ -52,7 +52,7 @@ void BannerBase::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->bannerOverlay->setPosition(0.0f, visibleSize.height / 2.0f - this->bannerOverlay->getContentSize().height / 2 + 320.0f);
 	this->bannerLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);

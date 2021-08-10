@@ -123,7 +123,7 @@ VideoTab::VideoTab()
 	 	VideoTab::GraphicsGroupId
 	);
 
-	Size shadowSize = Size(-2.0f, -2.0f);
+	CSize shadowSize = CSize(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	Color3B textColor = Color3B::WHITE;
 	Color4B shadowColor = Color4B::BLACK;

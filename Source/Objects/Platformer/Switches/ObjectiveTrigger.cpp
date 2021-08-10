@@ -22,7 +22,7 @@ ObjectiveTrigger* ObjectiveTrigger::create(ValueMap& properties)
 
 ObjectiveTrigger::ObjectiveTrigger(ValueMap& properties) : super(properties)
 {
-	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	CSize triggerSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(CollisionObject::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 
 	this->addChild(this->triggerCollision);

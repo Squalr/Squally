@@ -22,7 +22,7 @@ FocusTakeOver * FocusTakeOver::create()
 
 FocusTakeOver::FocusTakeOver()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->hijackedNodes = std::vector<HijackData>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);

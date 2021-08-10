@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class CollisionObject;
 class PlatformerEntity;
 
-class EntityWeaponCollisionBehavior : public Component
+class EntityWeaponCollisionBehavior : public GameComponent
 {
 public:
 	void enable();
@@ -17,19 +17,19 @@ protected:
 
 	void onLoad() override;
 	void onDisable() override;
-	void setWeaponCollisionSize(cocos2d::Size weaponCollisionSize);
+	void setWeaponCollisionSize(cocos2d::CSize weaponCollisionSize);
 	void setWeaponCollisionOffset(cocos2d::Vec2 weaponCollisionOffset);
 	void rebuildWeaponCollision(int collisionType);
 
 	CollisionObject* weaponCollision;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 
-	cocos2d::Size weaponCollisionSize;
+	cocos2d::CSize weaponCollisionSize;
 	cocos2d::Vec2 weaponCollisionOffset;
 
-	static const cocos2d::Size DefaultWeaponSize;
+	static const cocos2d::CSize DefaultWeaponSize;
 };

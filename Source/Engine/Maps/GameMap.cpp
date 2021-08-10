@@ -49,7 +49,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 		deserializedLayerMap[args.layerIndex] = args.mapLayer;
 	};
 
-	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	CSize mapSize = CSize(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 	bool isIsometric = mapRaw->getMapOrientation() == MapOrientation::Isometric;
 
 	if (isIsometric)
@@ -119,10 +119,10 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 
 		const float EdgeThickness = 256.0f;
 
-		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(CSize(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(CSize(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(CSize(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(CSize(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
 
 		edgeCollisionLayer->addChild(topCollision);
 		edgeCollisionLayer->addChild(leftCollision);
@@ -157,7 +157,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 	return instance;
 }
 
-GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds)
+GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, CSize unitSize, CSize tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds)
 {
 	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
@@ -424,20 +424,20 @@ void GameMap::hackerModeLayerUnfade()
 	}
 }
 
-Size GameMap::getMapSize()
+CSize GameMap::getMapSize()
 {
-	Size unitSize = this->getMapUnitSize();
-	Size tileSize = this->getMapTileSize();
+	CSize unitSize = this->getMapUnitSize();
+	CSize tileSize = this->getMapTileSize();
 
-	return Size(unitSize.width * tileSize.width, unitSize.height * tileSize.height);
+	return CSize(unitSize.width * tileSize.width, unitSize.height * tileSize.height);
 }
 
-Size GameMap::getMapUnitSize()
+CSize GameMap::getMapUnitSize()
 {
 	return this->mapUnitSize;
 }
 
-Size GameMap::getMapTileSize()
+CSize GameMap::getMapTileSize()
 {
 	return this->mapTileSize;
 }

@@ -54,26 +54,26 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 	LocalizedLabel*	quitToTitleLabelSelected = quitToTitleLabel->clone();
 
 	resumeLabel->enableOutline(Color4B::BLACK, 2);
-	resumeLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	resumeLabel->enableGlow(Color4B::BLACK);
 	optionsLabel->enableOutline(Color4B::BLACK, 2);
-	optionsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	optionsLabel->enableGlow(Color4B::BLACK);
 	quitToTitleLabel->enableOutline(Color4B::BLACK, 2);
-	quitToTitleLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitToTitleLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	quitToTitleLabel->enableGlow(Color4B::BLACK);
 
 	resumeLabelSelected->enableOutline(Color4B::BLACK, 2);
 	resumeLabelSelected->setTextColor(Color4B::YELLOW);
-	resumeLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	resumeLabelSelected->enableGlow(Color4B::ORANGE);
 	optionsLabelSelected->enableOutline(Color4B::BLACK, 2);
 	optionsLabelSelected->setTextColor(Color4B::YELLOW);
-	optionsLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	optionsLabelSelected->enableGlow(Color4B::ORANGE);
 	quitToTitleLabelSelected->enableOutline(Color4B::BLACK, 2);
 	quitToTitleLabelSelected->setTextColor(Color4B::YELLOW);
-	quitToTitleLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitToTitleLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	quitToTitleLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->resumeButton = ClickableTextNode::create(
@@ -94,7 +94,7 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->pauseLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->pauseLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->pauseLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->pauseWindow);
@@ -114,7 +114,7 @@ void PauseMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
@@ -211,12 +211,12 @@ ClickableTextNode* PauseMenu::addNewButton(LocalizedString* text)
 	LocalizedLabel*	labelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text == nullptr ? nullptr : text->clone());
 
 	labelSelected->enableOutline(Color4B::BLACK, 2);
-	label->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	label->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	label->enableGlow(Color4B::BLACK);
 
 	labelSelected->enableOutline(Color4B::BLACK, 2);
 	labelSelected->setTextColor(Color4B::YELLOW);
-	labelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	labelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	labelSelected->enableGlow(Color4B::ORANGE);
 
 	ClickableTextNode* newButton = ClickableTextNode::create(

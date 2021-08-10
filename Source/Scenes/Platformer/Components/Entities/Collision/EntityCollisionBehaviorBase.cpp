@@ -424,7 +424,7 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 		return;
 	}
 
-	const Size wallDetectorSize = Size(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
+	const CSize wallDetectorSize = CSize(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
 
 	this->leftCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
@@ -448,7 +448,7 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 	});
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Size entitySize = this->entity->getEntitySize();
+	CSize entitySize = this->entity->getEntitySize();
 
 	// Padding
 	entitySize.width += 8.0f;

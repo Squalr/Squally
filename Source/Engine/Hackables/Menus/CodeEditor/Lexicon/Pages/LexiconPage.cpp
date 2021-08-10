@@ -17,9 +17,9 @@
 
 using namespace cocos2d;
 
-const Size LexiconPage::TotalPageSize = Size(580.0f, 832.0f);
-const Size LexiconPage::PageMargin = Size(32.0f, 32.0f);
-const Size LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin * 2.0f;
+const CSize LexiconPage::TotalPageSize = CSize(580.0f, 832.0f);
+const CSize LexiconPage::PageMargin = CSize(32.0f, 32.0f);
+const CSize LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin * 2.0f;
 const Vec2 LexiconPage::PageOffset = Vec2(324.0f, 36.0f);
 const Vec2 LexiconPage::FullPageSecondOffset = Vec2(LexiconPage::PageOffset.x * 2.0f, 0.0f);
 const Vec2 LexiconPage::ChapterMarkerLocation = Vec2(-LexiconPage::PageSize.width / 2.0f + 64.0f, LexiconPage::PageSize.height / 2.0f - 192.0f);

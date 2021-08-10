@@ -62,10 +62,10 @@ const std::string& VoidAxe::getIdentifier()
 	return VoidAxe::SaveKey;
 }
 
-Size VoidAxe::getWeaponCollisionSize()
+CSize VoidAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 VoidAxe::getWeaponCollisionOffset()

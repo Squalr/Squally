@@ -31,9 +31,9 @@ TutorialBIntroSequence* TutorialBIntroSequence::create()
 TutorialBIntroSequence::TutorialBIntroSequence() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_ScoreLead::create(), Size(420.0f, 0.0f));
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_SaveCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_UseLastStand::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_ScoreLead::create(), CSize(420.0f, 0.0f));
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_SaveCards::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_UseLastStand::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->helpArrowHandCards = HelpArrow::create();
 	this->helpArrowLastStand = HelpArrow::create();
@@ -88,7 +88,7 @@ void TutorialBIntroSequence::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->scoreTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 32.0f);
 	this->handCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);

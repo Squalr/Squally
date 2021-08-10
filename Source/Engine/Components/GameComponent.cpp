@@ -1,4 +1,4 @@
-#include "Component.h"
+#include "GameComponent.h"
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-Component::Component(GameObject* owner) : super()
+GameComponent::GameComponent(GameObject* owner) : super()
 {
 	this->owner = owner;
 	this->invalidated = false;
@@ -20,11 +20,11 @@ Component::Component(GameObject* owner) : super()
 	}
 }
 
-Component::~Component()
+GameComponent::~GameComponent()
 {
 }
 
-void Component::onEnterTransitionDidFinish()
+void GameComponent::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
@@ -34,7 +34,7 @@ void Component::onEnterTransitionDidFinish()
 	}
 }
 
-void Component::onDisable()
+void GameComponent::onDisable()
 {
 	this->invalidated = true;
 
@@ -42,27 +42,27 @@ void Component::onDisable()
 	this->removeAllListeners();
 }
 
-void Component::invalidate()
+void GameComponent::invalidate()
 {
 	this->invalidated = true;
 }
 
-bool Component::isInvalidated()
+bool GameComponent::isInvalidated()
 {
 	return this->invalidated;
 }
 
-void Component::toggleQueryable(bool queryable)
+void GameComponent::toggleQueryable(bool queryable)
 {
 	this->queryable = queryable;
 }
 
-bool Component::isQueryable()
+bool GameComponent::isQueryable()
 {
 	return (this->queryable && !this->invalidated);
 }
 
-GameObject* Component::getOwner()
+GameObject* GameComponent::getOwner()
 {
 	return this->owner;
 }

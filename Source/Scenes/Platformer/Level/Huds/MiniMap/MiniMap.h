@@ -73,6 +73,6 @@ private:
 	std::string requiredItemKey;
 
 	static const float MiniMapScale;
-	static const cocos2d::Size MiniMapSize;
+	static const cocos2d::CSize MiniMapSize;
 	static const cocos2d::Vec2 MiniMapMargin;
 };

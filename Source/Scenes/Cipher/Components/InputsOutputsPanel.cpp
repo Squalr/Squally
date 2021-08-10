@@ -38,13 +38,13 @@ InputsOutputsPanel::InputsOutputsPanel()
 	this->currentCipherState = nullptr;
 	this->inputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Inputs::create());
 	this->outputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Outputs::create());
-	this->scrollPane = ScrollPane::create(Size(312.0f + 40.0f, 318.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 24.0f), Size(12.0f, 12.0f));
+	this->scrollPane = ScrollPane::create(CSize(312.0f + 40.0f, 318.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, CSize(0.0f, 24.0f), CSize(12.0f, 12.0f));
 	this->ioItemsNode = Node::create();
 	this->ioSelectionMarker = Sprite::create(CipherResources::IOSelectionMarker);
 	this->ioItems = std::vector<InputOutputItem*>();
 	
-	this->inputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
-	this->outputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->inputsHeaderLabel->enableShadow(Color4B::BLACK, CSize(2, -2), 2);
+	this->outputsHeaderLabel->enableShadow(Color4B::BLACK, CSize(2, -2), 2);
 
 	this->scrollPane->addChild(ioItemsNode);
 	this->scrollPane->addChild(ioSelectionMarker);
@@ -66,7 +66,7 @@ void InputsOutputsPanel::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->inputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter - 80.0f, visibleSize.height / 2.0f - 16.0f));
 	this->outputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter + 80.0f, visibleSize.height / 2.0f - 16.0f));

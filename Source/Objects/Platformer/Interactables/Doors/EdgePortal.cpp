@@ -30,9 +30,9 @@ EdgePortal* EdgePortal::create(ValueMap& properties)
 	return instance;
 }
 
-EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+EdgePortal::EdgePortal(ValueMap& properties) : super(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
-	Size arrowHintSize = Size(properties.at(GameObject::MapKeyWidth).asFloat() + 768.0f, properties.at(GameObject::MapKeyHeight).asFloat() + 256.0f);
+	CSize arrowHintSize = CSize(properties.at(GameObject::MapKeyWidth).asFloat() + 768.0f, properties.at(GameObject::MapKeyHeight).asFloat() + 256.0f);
 	this->edgeArrows = std::vector<Sprite*>();
 	this->setInteractType(InteractType::Collision);
 	this->arrowHintCollision = CollisionObject::create(CollisionObject::createBox(arrowHintSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));

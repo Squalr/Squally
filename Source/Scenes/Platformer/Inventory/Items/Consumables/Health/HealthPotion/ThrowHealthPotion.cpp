@@ -78,7 +78,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 
 	for (auto next : targets)
 	{
-		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), Size(64.0f, 64.0f));
+		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
 		
 		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{

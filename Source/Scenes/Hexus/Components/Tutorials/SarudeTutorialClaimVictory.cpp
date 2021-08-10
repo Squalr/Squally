@@ -31,7 +31,7 @@ SarudeTutorialClaimVictory* SarudeTutorialClaimVictory::create()
 SarudeTutorialClaimVictory::SarudeTutorialClaimVictory() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_Sarude_ClaimWin::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_Sarude_ClaimWin::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
 	this->tutorialNextButton = this->createNextButton();
 	
@@ -62,7 +62,7 @@ void SarudeTutorialClaimVictory::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->claimVictoryLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
 	this->tutorialNextButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 144.0f);

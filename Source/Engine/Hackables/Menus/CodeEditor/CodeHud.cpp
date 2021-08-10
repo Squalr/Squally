@@ -38,8 +38,8 @@ using namespace cocos2d::ui;
 
 const float CodeHud::CompileDelayMaxSeconds = 0.1f;
 const float CodeHud::LineNumberMargin = 32.0f;
-const Size CodeHud::StatusSize = Size(420.0f, 1080.0f);
-const Size CodeHud::FunctionSize = Size(840.0f, 640.0f);
+const CSize CodeHud::StatusSize = CSize(420.0f, 1080.0f);
+const CSize CodeHud::FunctionSize = CSize(840.0f, 640.0f);
 const Color4B CodeHud::SubtextColor = Color4B(66, 166, 166, 255);
 const Color4B CodeHud::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeHud::ErrorColor = Color4B(196, 82, 82, 255);
@@ -79,7 +79,7 @@ CodeHud::CodeHud()
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
-	Size shadowSize = Size(-2.0f, -2.0f);
+	CSize shadowSize = CSize(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	Color3B textColor = Color3B::WHITE;
 	Color4B shadowColor = Color4B::BLACK;
@@ -141,8 +141,8 @@ CodeHud::CodeHud()
 	this->lexiconButton->setTextOffset(Vec2(0.0f, -56.0f));
 	this->stuckButton->setTextOffset(Vec2(0.0f, -56.0f));
 
-	this->statusWindow->setPadding(Size(16.0f, 0.0f));
-	this->registerWindow->setPadding(Size(16.0f, 0.0f));
+	this->statusWindow->setPadding(CSize(16.0f, 0.0f));
+	this->registerWindow->setPadding(CSize(16.0f, 0.0f));
 
 	this->statusBackground->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->rightBarBackground->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -187,7 +187,7 @@ void CodeHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float sidebarWidth = 420.0f;
 

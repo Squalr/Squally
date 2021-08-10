@@ -29,14 +29,14 @@ const std::string Portal::SaveKeyListenEventTriggered = "SAVE_KEY_LISTEN_EVENT_T
 
 Portal* Portal::create(ValueMap& properties)
 {
-	Portal* instance = new Portal(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()));
+	Portal* instance = new Portal(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()));
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Portal::Portal(ValueMap& properties, Size size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, nullptr, InputEvents::KeyCode::KEY_V, color)
+Portal::Portal(ValueMap& properties, CSize size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, nullptr, InputEvents::KeyCode::KEY_V, color)
 {
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalMap, Value("")).asString();
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalTransition, Value("")).asString();

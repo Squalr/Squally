@@ -48,7 +48,7 @@ GameCamera::GameCamera()
 {
 	this->defaultDistance = Director::getInstance()->getZEye();
 	this->targetStack = std::stack<CameraTrackingData>();
-	this->mapBounds = Rect::ZERO;
+	this->mapBounds = CRect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
 	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
@@ -70,7 +70,7 @@ GameCamera::GameCamera()
 	this->debugCameraLabelZoom->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	Hud* debugScrollHud = Hud::create();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->debugScrollHitbox->setContentSize(visibleSize);
 
 	debugScrollHud->addChild(this->debugScrollHitbox);
@@ -112,7 +112,7 @@ void GameCamera::onDeveloperModeDisable()
 
 void GameCamera::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	super::initializePositions();
 
@@ -131,10 +131,10 @@ void GameCamera::initializeListeners()
 		SceneEvents::EventBeforeSceneChange,
 		[=](EventCustom* eventCustom)
 		{
-			Size visibleSize = Director::getInstance()->getVisibleSize();
+			CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 			this->unscheduleUpdate();
-			this->setMapBounds(Rect(Vec2::ZERO, visibleSize));
+			this->setMapBounds(CRect(Vec2::ZERO, visibleSize));
 			this->resetCamera();
 			this->clearTargets();
 		}
@@ -248,7 +248,7 @@ void GameCamera::setCameraZoom(float zoom)
 
 void GameCamera::resetCamera()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->setCameraPosition(Vec2(visibleSize / 2.0f));
 	this->setCameraZoom(1.0f);
@@ -330,12 +330,12 @@ void GameCamera::setCameraPosition3(Vec3 position, bool addTrackOffset)
 	}
 }
 
-Rect GameCamera::getMapBounds()
+CRect GameCamera::getMapBounds()
 {
 	return this->mapBounds;
 }
 
-void GameCamera::setMapBounds(Rect mapBounds)
+void GameCamera::setMapBounds(CRect mapBounds)
 {
 	this->mapBounds = mapBounds;
 }
@@ -464,7 +464,7 @@ Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 {
 	const float CameraZoom = this->getCameraZoomOnTrackedTarget();
-	const Size CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
+	const CSize CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
 
 	const float MinX = this->mapBounds.getMinX() + CameraSize.width / 2.0f;
 	const float MaxX = this->mapBounds.getMaxX() - CameraSize.width / 2.0f;

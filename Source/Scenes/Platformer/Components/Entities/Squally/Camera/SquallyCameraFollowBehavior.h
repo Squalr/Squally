@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Squally;
 
-class SquallyCameraFollowBehavior : public Component
+class SquallyCameraFollowBehavior : public GameComponent
 {
 public:
 	static SquallyCameraFollowBehavior* create(GameObject* owner);
@@ -19,7 +19,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	float getLayerZoom();
 

@@ -24,7 +24,7 @@ ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : super(properties,
 	ToySoldierGoblin::MapKey,
 	EntityResources::Enemies_BallmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BallmerPeaks_ToySoldierGoblin_Emblem,
-	Size(112.0f, 288.0f),
+	CSize(112.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

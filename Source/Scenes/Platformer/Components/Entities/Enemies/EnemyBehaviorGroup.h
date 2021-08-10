@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Components/ComponentGroup.h"
+#include "Engine/Components/GameComponentGroup.h"
 
-class EnemyBehaviorGroup : public ComponentGroup
+class EnemyBehaviorGroup : public GameComponentGroup
 {
 public:
 	static EnemyBehaviorGroup* create(GameObject* owner);
@@ -16,5 +16,5 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef ComponentGroup super;
+	typedef GameComponentGroup super;
 };

@@ -26,7 +26,7 @@
 
 using namespace cocos2d;
 
-MountBase::MountBase(ValueMap& properties, Size size) : super(properties, InteractObject::InteractType::Input, size)
+MountBase::MountBase(ValueMap& properties, CSize size) : super(properties, InteractObject::InteractType::Input, size)
 {
 	this->reparentNode = Node::create();
 	this->frontNode = Node::create();

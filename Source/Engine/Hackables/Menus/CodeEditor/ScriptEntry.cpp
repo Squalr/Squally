@@ -123,14 +123,14 @@ void ScriptEntry::initializePositions()
 		this->backPlate->setPositionX(-40.0f);
 		this->backPlate->getContent()->setPositionX(40.0f);
 		this->backPlate->getContentSelected()->setPositionX(40.0f);
-		this->backPlate->setContentSize(this->backPlate->getContentSize() - Size(96.0f, 0.0f));
+		this->backPlate->setContentSize(this->backPlate->getContentSize() - CSize(96.0f, 0.0f));
 	}
 	else
 	{
 		this->backPlate->setPositionX(-20.0f);
 		this->backPlate->getContent()->setPositionX(20.0f);
 		this->backPlate->getContentSelected()->setPositionX(20.0f);
-		this->backPlate->setContentSize(this->backPlate->getContentSize() - Size(48.0f, 0.0f));
+		this->backPlate->setContentSize(this->backPlate->getContentSize() - CSize(48.0f, 0.0f));
 	}
 }
 

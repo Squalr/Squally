@@ -64,7 +64,7 @@ void CardEffects::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void CardEffects::initializeListeners()

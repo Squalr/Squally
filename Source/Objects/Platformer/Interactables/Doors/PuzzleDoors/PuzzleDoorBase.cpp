@@ -31,7 +31,7 @@ const std::string PuzzleDoorBase::UnlockedSaveKey = "PUZZLE_DOOR_UNLOCKED";
 const std::string PuzzleDoorBase::PropertyUnlockedByDefault = "unlocked";
 
 PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
-		Size doorClipSize,
+		CSize doorClipSize,
 		Vec2 doorClipOffset,
 		Vec2 portalOffset,
 		Vec2 indexPosition,
@@ -83,15 +83,15 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		this->runesFailed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneRed));
 	}
 
-	this->doorClip = SmartClippingNode::create(this->doorNode, Rect(Vec2(-this->doorClipSize.width / 2.0f, -this->doorClipSize.height / 2.0f), this->doorClipSize));
+	this->doorClip = SmartClippingNode::create(this->doorNode, CRect(Vec2(-this->doorClipSize.width / 2.0f, -this->doorClipSize.height / 2.0f), this->doorClipSize));
 
 	this->indexLabel->enableOutline(Color4B::BLACK, 4);
 	this->truthLabel->enableOutline(Color4B::BLACK, 4);
 	this->hackableLabel->enableOutline(Color4B::BLACK, 4);
 
-	this->indexLabel->enableShadow(Color4B(0, 0, 0, 128), Size(2.0f, -2.0f));
-	this->truthLabel->enableShadow(Color4B(0, 0, 0, 128), Size(2.0f, -2.0f));
-	this->hackableLabel->enableShadow(Color4B(0, 0, 0, 128), Size(2.0f, -2.0f));
+	this->indexLabel->enableShadow(Color4B(0, 0, 0, 128), CSize(2.0f, -2.0f));
+	this->truthLabel->enableShadow(Color4B(0, 0, 0, 128), CSize(2.0f, -2.0f));
+	this->hackableLabel->enableShadow(Color4B(0, 0, 0, 128), CSize(2.0f, -2.0f));
 
 	this->indexLabel->setTextColor(PuzzleDoorBase::PassColor);
 	this->truthLabel->setTextColor(PuzzleDoorBase::PassColor);

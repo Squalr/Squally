@@ -24,7 +24,7 @@ BoneKnight::BoneKnight(ValueMap& properties) : super(properties,
 	BoneKnight::MapKey,
 	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
-	Size(540.0f, 340.0f),
+	CSize(540.0f, 340.0f),
 	1.0f,
 	Vec2(-64.0f, 0.0f))
 {

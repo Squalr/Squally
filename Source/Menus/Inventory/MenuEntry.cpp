@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const Size MenuEntry::LabelSize = Size(272.0f, 32.0f);
+const CSize MenuEntry::LabelSize = CSize(272.0f, 32.0f);
 
 MenuEntry* MenuEntry::create(LocalizedString* text, std::string iconResource)
 {

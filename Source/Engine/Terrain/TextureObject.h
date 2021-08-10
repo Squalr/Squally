@@ -39,7 +39,7 @@ protected:
 
 	TextureData terrainData;
 
-	cocos2d::Rect boundsRect;
+	cocos2d::CRect boundsRect;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;

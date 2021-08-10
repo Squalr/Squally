@@ -57,7 +57,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 	
 	for (auto next : targets)
 	{
-		ThrownObject* weapon = ThrownObject::create(owner, next, false, this->getMainhandResource(owner), Size(64.0f, 128.0f));
+		ThrownObject* weapon = ThrownObject::create(owner, next, false, this->getMainhandResource(owner), CSize(64.0f, 128.0f));
 	
 		weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{

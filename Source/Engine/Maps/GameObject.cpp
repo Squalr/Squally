@@ -6,7 +6,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
@@ -84,7 +84,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
-	this->component = std::vector<Component*>();
+	this->component = std::vector<GameComponent*>();
 
 	std::vector<std::string> parsedTags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
@@ -107,7 +107,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	{
 		this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-		Size mapSize = Size(
+		CSize mapSize = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyMetaMapWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyMetaMapHeight, Value(0.0f)).asFloat()
 		);
@@ -117,7 +117,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat()
 		);
 
-		Size objectSize = Size(
+		CSize objectSize = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
@@ -159,7 +159,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	// Map the coordinates of Tiled space to Cocos space for 2d games:
 	else
 	{
-		Size mapSize = Size(
+		CSize mapSize = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
@@ -253,7 +253,7 @@ std::string GameObject::getUniqueIdentifier()
 	return this->uniqueIdentifier;
 }
 
-void GameObject::attachBehavior(Component* component)
+void GameObject::attachBehavior(GameComponent* component)
 {
 	if (this->isDespawned() || component == nullptr || component->isInvalidated())
 	{
@@ -279,7 +279,7 @@ void GameObject::detachAllBehavior()
 	this->component.clear();
 }
 
-void GameObject::detachBehavior(Component* component)
+void GameObject::detachBehavior(GameComponent* component)
 {
 	if (this->isDespawned() || component == nullptr)
 	{
@@ -580,7 +580,7 @@ void GameObject::despawn(float despawnDelay)
 
 void GameObject::onDespawn()
 {
-	std::vector<Component*> behaviorClone = this->component;
+	std::vector<GameComponent*> behaviorClone = this->component;
 
 	for (auto behavior : behaviorClone)
 	{

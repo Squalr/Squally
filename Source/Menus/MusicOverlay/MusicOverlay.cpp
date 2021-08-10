@@ -60,7 +60,7 @@ void MusicOverlay::initializePositions()
 {
 	super::initializePositions();
 
-	const Size visibleSize = Director::getInstance()->getVisibleSize();
+	const CSize visibleSize = Director::getInstance()->getVisibleSize();
 	const Vec2 Offset = Vec2(visibleSize.width - 72.0f, 64.0f);
 
 	this->note->setPosition(Offset + Vec2(32.0f, 16.0f));

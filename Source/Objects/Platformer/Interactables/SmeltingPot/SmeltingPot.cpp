@@ -30,7 +30,7 @@ SmeltingPot* SmeltingPot::create(ValueMap& properties)
 	return instance;
 }
 
-SmeltingPot::SmeltingPot(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(170.0f, 168.0f))
+SmeltingPot::SmeltingPot(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(170.0f, 168.0f))
 {
 	this->smeltingpot = Sprite::create(ObjectResources::Interactive_SmeltingPot_SmeltingPot);
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);

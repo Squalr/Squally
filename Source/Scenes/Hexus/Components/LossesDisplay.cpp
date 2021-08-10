@@ -59,7 +59,7 @@ void LossesDisplay::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerSocketA->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketAOffsetX, visibleSize.height / 2.0f - HexusConfig::socketOffsetY);
 	this->playerSocketB->setPosition(visibleSize.width / 2.0f + HexusConfig::leftColumnCenter + HexusConfig::socketBOffsetX, visibleSize.height / 2.0f - HexusConfig::socketOffsetY);

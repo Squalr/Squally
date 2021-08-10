@@ -24,7 +24,7 @@ Scarecrow::Scarecrow(ValueMap& properties) : super(properties,
 	Scarecrow::MapKey,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
-	Size(196.0f, 512.0f),
+	CSize(196.0f, 512.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

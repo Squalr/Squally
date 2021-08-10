@@ -54,7 +54,7 @@ protected:
 private:
     typedef GameObject super;
 
-    cocos2d::Size liquidSize;
+    cocos2d::CSize liquidSize;
     float surfaceDepth;
 	int splashes;
 	float noSplashDelay;

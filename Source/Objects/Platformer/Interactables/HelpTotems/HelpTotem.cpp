@@ -25,7 +25,7 @@ HelpTotem* HelpTotem::create(ValueMap& properties)
 	return instance;
 }
 
-HelpTotem::HelpTotem(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, Size(248.0f, 248.0f), Vec2::ZERO)
+HelpTotem::HelpTotem(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, CSize(248.0f, 248.0f), Vec2::ZERO)
 {
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
 	this->totemInactive = Sprite::create(ObjectResources::Interactive_Help_HelpTotemDeactivated);

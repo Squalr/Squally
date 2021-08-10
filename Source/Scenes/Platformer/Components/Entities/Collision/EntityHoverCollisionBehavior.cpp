@@ -162,13 +162,13 @@ void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 	static const float MaxCrouch = 1.0f;
 
 	float inverseProgress = MathUtils::clamp(1.0f - this->crouchProgress, 0.0f, 1.0f);
-	Size hoverSize = this->getHoverSize(inverseProgress);
+	CSize hoverSize = this->getHoverSize(inverseProgress);
 
 	this->hoverCollision->setPoints(CollisionObject::createBox(hoverSize));
 	this->positionHoverCollision(inverseProgress);
 }
 
-Size EntityHoverCollisionBehavior::getHoverSize(float progress)
+CSize EntityHoverCollisionBehavior::getHoverSize(float progress)
 {
 	static const float UpwardsPadding = 40.0f;
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
@@ -177,7 +177,7 @@ Size EntityHoverCollisionBehavior::getHoverSize(float progress)
 
 	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
-	return Size(
+	return CSize(
 		std::max(this->entity->getEntitySize().width - 8.0f, 16.0f),
 		crouchHeight + UpwardsPadding
 	);
@@ -202,7 +202,7 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 	static const float OriginalHoverHeight = this->entity->getHoverHeight();
 	static const Vec2 Offset = CollisionOffset + Vec2(0.0f, -OriginalHoverHeight / 2.0f + UpwardsPadding);
 
-	const Size hoverSize = this->getHoverSize(progress);
+	const CSize hoverSize = this->getHoverSize(progress);
 	const float hoverDelta = OriginalHoverHeight - hoverSize.height;
 
 	if (this->hoverCollision != nullptr)
@@ -245,7 +245,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		return;
 	}
 
-	Size hoverSize = this->getHoverSize();
+	CSize hoverSize = this->getHoverSize();
 	CollisionType collisionType = CollisionType(PlatformerCollisionType::Hover);
 
 	this->hoverCollision = CollisionObject::create(
@@ -324,14 +324,14 @@ void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 	float detectorWidth = std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f);
 
 	this->hoverAntiGravityCollisionDetector = CollisionObject::create(
-		CollisionObject::createBox(Size(detectorWidth, AntiGravityDetectorSize)),
+		CollisionObject::createBox(CSize(detectorWidth, AntiGravityDetectorSize)),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false),
 		Color4F::PURPLE
 	);
 
 	this->hoverAntiGravityTopCollisionDetector = CollisionObject::create(
-		CollisionObject::createBox(Size(detectorWidth, AntiGravityDetectorSize)),
+		CollisionObject::createBox(CSize(detectorWidth, AntiGravityDetectorSize)),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false),
 		Color4F::GREEN

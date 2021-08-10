@@ -173,7 +173,7 @@ void StatePass::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Pass
 	const float playerPassCorrectionY = 12.0f;

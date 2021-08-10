@@ -13,7 +13,7 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-LabelStack* LabelStack::create(cocos2d::Size windowSize, float spacing)
+LabelStack* LabelStack::create(cocos2d::CSize windowSize, float spacing)
 {
 	LabelStack* instance = new LabelStack(windowSize, spacing);
 
@@ -22,7 +22,7 @@ LabelStack* LabelStack::create(cocos2d::Size windowSize, float spacing)
 	return instance;
 }
 
-LabelStack::LabelStack(cocos2d::Size windowSize, float spacing)
+LabelStack::LabelStack(cocos2d::CSize windowSize, float spacing)
 {
 	this->windowSize = windowSize;
 	this->spacing = spacing;
@@ -101,7 +101,7 @@ void LabelStack::clear()
 	this->cumulativeHeight = 0.0f;
 }
 
-void LabelStack::setPadding(cocos2d::Size padding)
+void LabelStack::setPadding(cocos2d::CSize padding)
 {
 	this->padding = padding;
 

@@ -54,7 +54,7 @@ MayanDoor* MayanDoor::create(ValueMap& properties)
 	return instance;
 }
 
-MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.0f), Vec2(0.0f, 0.0f))
+MayanDoor::MayanDoor(ValueMap& properties) : super(properties, CSize(478.0f, 478.0f), Vec2(0.0f, 0.0f))
 {
 	this->doorArrow = Sprite::create(ObjectResources::Doors_Mayan_StoneCircleDoorArrow);
 	this->doorFrame = Sprite::create(ObjectResources::Doors_Mayan_StoneCircleDoor);

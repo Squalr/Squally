@@ -10,7 +10,7 @@ class ClickableNode;
 class InputText : public cocos2d::ui::UICCTextField
 {
 public:
-	static InputText* create(cocos2d::Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);
+	static InputText* create(cocos2d::CSize minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);
 
 	void focus();
 	void unfocus();
@@ -22,13 +22,13 @@ public:
 
 private:
 	typedef UICCTextField super;
-	InputText(cocos2d::Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);
+	InputText(cocos2d::CSize minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);
 	virtual ~InputText();
 
 	void onEnter() override;
 	void update(float dt) override;
 	void initializePositions();
-	cocos2d::Size resize();
+	cocos2d::CSize resize();
 
 	// This is a hacky fix to some weird scenario where the position changes when there is input in the textfield
 	bool unfuck;
@@ -39,5 +39,5 @@ private:
 	std::function<void(std::string)> stringChangeCallback;
 
 	cocos2d::Vec2 initCoords;
-	cocos2d::Size minimumInputSize;
+	cocos2d::CSize minimumInputSize;
 };

@@ -30,7 +30,7 @@ FadeHud::FadeHud()
 	this->triangleFadeHud = LazyNode<TriangleFadeHud>::create([](){ return TriangleFadeHud::create(); });
 	this->resetScreen = DrawNode::create();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->resetScreen->drawSolidRect(Vec2::ZERO, Vec2(visibleSize), Color4F::BLACK);
 	this->resetScreen->setOpacity(0);
 

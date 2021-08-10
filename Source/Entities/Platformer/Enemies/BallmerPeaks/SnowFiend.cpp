@@ -24,7 +24,7 @@ SnowFiend::SnowFiend(ValueMap& properties) : super(properties,
 	SnowFiend::MapKey,
 	EntityResources::Enemies_BallmerPeaks_SnowFiend_Animations,
 	EntityResources::Enemies_BallmerPeaks_SnowFiend_Emblem,
-	Size(420.0f, 420.0f),
+	CSize(420.0f, 420.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))
 {

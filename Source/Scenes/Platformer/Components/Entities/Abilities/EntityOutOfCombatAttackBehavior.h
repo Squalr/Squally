@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ class Projectile;
 class PlatformerEntity;
 class WorldSound;
 
-class EntityOutOfCombatAttackBehavior : public Component
+class EntityOutOfCombatAttackBehavior : public GameComponent
 {
 public:
 	void attack();
@@ -48,7 +48,7 @@ protected:
 	void replaceAnimationPartWithProjectile(std::string animationPart, Projectile* projectile);
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void tryPerformShootProjectile();
 

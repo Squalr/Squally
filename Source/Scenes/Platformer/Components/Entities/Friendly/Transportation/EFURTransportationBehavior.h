@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class DialogueSet;
 class PlatformerEntity;
@@ -8,7 +8,7 @@ class Portal;
 class Scrappy;
 class Squally;
 
-class EFURTransportationBehavior : public Component
+class EFURTransportationBehavior : public GameComponent
 {
 public:
 	static EFURTransportationBehavior* create(GameObject* owner);
@@ -22,7 +22,7 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	Scrappy* scrappy;

@@ -24,7 +24,7 @@ Wraith::Wraith(ValueMap& properties) : super(properties,
 	Wraith::MapKey,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
-	Size(142.0f, 400.0f),
+	CSize(142.0f, 400.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f))
 {

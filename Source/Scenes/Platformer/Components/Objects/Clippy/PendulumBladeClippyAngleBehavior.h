@@ -1,11 +1,11 @@
 #pragma once
 #include <set>
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class HackableObject;
 
-class PendulumBladeClippyAngleBehavior : public Component
+class PendulumBladeClippyAngleBehavior : public GameComponent
 {
 public:
 	static PendulumBladeClippyAngleBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	HackableObject* object;
 };

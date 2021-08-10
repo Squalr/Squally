@@ -25,13 +25,13 @@ public:
 	void appendLayer(MapLayer* mapLayer);
 	std::vector<TileLayer*> getCollisionLayers();
 	std::vector<MapLayer*> getMapLayers();
-	cocos2d::Size getMapSize();
-	cocos2d::Size getMapUnitSize();
-	cocos2d::Size getMapTileSize();
+	cocos2d::CSize getMapSize();
+	cocos2d::CSize getMapUnitSize();
+	cocos2d::CSize getMapTileSize();
 	std::string getMapFileName();
 
 protected:
-	MiniGameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::Size unitSize, cocos2d::Size tileSize);
+	MiniGameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::CSize unitSize, cocos2d::CSize tileSize);
 	virtual ~MiniGameMap();
 
 private:
@@ -42,8 +42,8 @@ private:
 	std::vector<MapLayer*> mapLayers;
 
 	std::string levelMapFileName;
-	cocos2d::Size mapUnitSize;
-	cocos2d::Size mapTileSize;
+	cocos2d::CSize mapUnitSize;
+	cocos2d::CSize mapTileSize;
 	bool disableEvents;
 	bool disableBounds;
 };

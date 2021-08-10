@@ -23,7 +23,7 @@ Cyclops::Cyclops(ValueMap& properties) : super(properties,
 	Cyclops::MapKey,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
-	Size(296.0f, 256.0f),
+	CSize(296.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -73,11 +73,11 @@ TutorialSelectMenu::TutorialSelectMenu()
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 
 	returnLabelHover->setColor(Color3B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -86,7 +86,7 @@ TutorialSelectMenu::TutorialSelectMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->title->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->title->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->title->enableGlow(Color4B::BLACK);
 
 	this->leftPanel->addChild(this->homeTabButton);
@@ -124,7 +124,7 @@ void TutorialSelectMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->window->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));

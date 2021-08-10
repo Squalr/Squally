@@ -31,7 +31,7 @@ TutorialDIntroSequence* TutorialDIntroSequence::create()
 TutorialDIntroSequence::TutorialDIntroSequence() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_D_UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_D_UseMov::create(), CSize(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
 	this->handCardsNextButton = this->createNextButton();
 	
@@ -62,7 +62,7 @@ void TutorialDIntroSequence::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->handCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
 	this->handCardsNextButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 144.0f);

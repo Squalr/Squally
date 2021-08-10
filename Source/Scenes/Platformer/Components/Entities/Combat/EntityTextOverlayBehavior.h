@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class LocalizedLabel;
 class PlatformerEntity;
 
-class EntityTextOverlayBehavior : public Component
+class EntityTextOverlayBehavior : public GameComponent
 {
 public:
 	static EntityTextOverlayBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void runHealthDelta(int delta, bool zeroAsGreen);
 	void runManaDelta(int delta, bool zeroAsBlue);

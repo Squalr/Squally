@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ class Item;
 class Squally;
 class Sound;
 
-class SquallyItemDiscoveryBehavior : public Component
+class SquallyItemDiscoveryBehavior : public GameComponent
 {
 public:
 	static SquallyItemDiscoveryBehavior* create(GameObject* owner);
@@ -26,7 +26,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void discoverItem(Item* item, bool cinematicHijack);
 

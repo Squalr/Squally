@@ -72,7 +72,7 @@ void SquallyEquipmentVisualBehavior::initializePositions()
 {
 	super::initializePositions();
 	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->debugOffsetXLabel->setPosition(Vec2(96.0f, 48.0f + 32.0f));
 	this->debugOffsetYLabel->setPosition(Vec2(96.0f, 48.0f));

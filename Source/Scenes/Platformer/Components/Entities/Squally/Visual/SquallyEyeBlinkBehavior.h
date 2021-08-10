@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Squally;
 class SmartAnimationSequenceNode;
 
-class SquallyEyeBlinkBehavior : public Component
+class SquallyEyeBlinkBehavior : public GameComponent
 {
 public:
 	static SquallyEyeBlinkBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 	
 	void runEyeBlinkLoop();
 

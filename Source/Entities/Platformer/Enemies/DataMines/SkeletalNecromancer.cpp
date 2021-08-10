@@ -24,7 +24,7 @@ SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : super(propertie
 	SkeletalNecromancer::MapKey,
 	EntityResources::Enemies_DataMines_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_DataMines_SkeletalNecromancer_Emblem,
-	Size(128.0f, 228.0f),
+	CSize(128.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

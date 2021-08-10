@@ -25,7 +25,7 @@ Seagull::Seagull(ValueMap& properties) : super(properties,
 	Seagull::MapKey,
 	EntityResources::Misc_EndianForest_Seagull_Animations,
 	EntityResources::Misc_EndianForest_Seagull_Emblem,
-	Size(96.0f, 160.0f),
+	CSize(96.0f, 160.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

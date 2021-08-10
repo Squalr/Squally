@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Item;
 class LocalizedString;
 class Squally;
 
-class SquallyReceiveItemBehavior : public Component
+class SquallyReceiveItemBehavior : public GameComponent
 {
 public:
 	static SquallyReceiveItemBehavior* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void obtainItems(const std::vector<Item*>& items, LocalizedString* messageOverride, bool keepOpen);
 

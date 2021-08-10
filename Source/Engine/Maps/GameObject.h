@@ -3,7 +3,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -16,9 +16,9 @@ class GameObject : public SmartNode
 {
 public:
 	std::string getUniqueIdentifier();
-	void attachBehavior(Component* component);
+	void attachBehavior(GameComponent* component);
 	void detachAllBehavior();
-	void detachBehavior(Component* component);
+	void detachBehavior(GameComponent* component);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
@@ -178,5 +178,5 @@ private:
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;
-	std::vector<Component*> component;
+	std::vector<GameComponent*> component;
 };

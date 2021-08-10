@@ -14,7 +14,7 @@ using namespace cocos2d;
 
 const std::string LiftBase::PropertySpeed = "speed";
 
-LiftBase::LiftBase(ValueMap& properties, Size collisionSize, std::string railArt) : super(properties)
+LiftBase::LiftBase(ValueMap& properties, CSize collisionSize, std::string railArt) : super(properties)
 {
     this->railingNode = Node::create();
     this->railing = Sprite::create(railArt);
@@ -49,14 +49,14 @@ LiftBase::LiftBase(ValueMap& properties, Size collisionSize, std::string railArt
 		case MovementDirection::LeftRight:
 		{
 			params.wrapS = GL_REPEAT;
-		    this->railing->setTextureRect(Rect(0.0f, 0.0f, this->width, this->railing->getContentSize().height));
+		    this->railing->setTextureRect(CRect(0.0f, 0.0f, this->width, this->railing->getContentSize().height));
             this->liftCollision->setPosition(Vec2(-this->width / 2.0f, 0.0f));
 			break;
 		}
 		case MovementDirection::UpDown:
 		{
 			params.wrapT = GL_REPEAT;
-		    this->railing->setTextureRect(Rect(0.0f, 0.0f, this->railing->getContentSize().width, this->height));
+		    this->railing->setTextureRect(CRect(0.0f, 0.0f, this->railing->getContentSize().width, this->height));
             this->liftCollision->setPosition(Vec2(-this->height / 2.0f, 0.0f));
 			break;
 		}

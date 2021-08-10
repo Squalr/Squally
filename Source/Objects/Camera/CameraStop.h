@@ -39,5 +39,5 @@ private:
 	bool isDisabled;
 
 	cocos2d::DrawNode* debugDraw;
-	cocos2d::Size stopSize;
+	cocos2d::CSize stopSize;
 };

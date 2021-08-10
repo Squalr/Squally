@@ -45,11 +45,11 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconContainer = Node::create();
 	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->cardSprite = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
-	this->hackParticles1 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
-	this->hackParticles2 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
-	this->hackParticles3 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
-	this->hackParticles4 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange4, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
-	this->hackParticles5 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange5, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
+	this->hackParticles1 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
+	this->hackParticles2 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
+	this->hackParticles3 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
+	this->hackParticles4 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange4, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
+	this->hackParticles5 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange5, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
 
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;

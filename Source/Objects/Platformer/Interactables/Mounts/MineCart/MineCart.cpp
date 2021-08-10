@@ -35,7 +35,7 @@ MineCart* MineCart::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, Size(240.0f, 184.0f))
+MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.0f, 184.0f))
 {
 	this->parseColor();
 	this->parseDirection();
@@ -45,7 +45,7 @@ MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, Size(240.0
 	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
 	this->isMoving = false;
 	this->bottomCollision = CollisionObject::create(
-		CollisionObject::createBox(Size(240.0f, 48.0f)),
+		CollisionObject::createBox(CSize(240.0f, 48.0f)),
 		int(PlatformerCollisionType::PassThrough),
 		CollisionObject::Properties(false, false)
 	);

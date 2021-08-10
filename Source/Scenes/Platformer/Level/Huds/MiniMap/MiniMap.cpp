@@ -33,7 +33,7 @@
 using namespace cocos2d;
 
 const float MiniMap::MiniMapScale = 0.065f;
-const Size MiniMap::MiniMapSize = Size(320.0f, 224.0f);
+const CSize MiniMap::MiniMapSize = CSize(320.0f, 224.0f);
 const Vec2 MiniMap::MiniMapMargin = Vec2(32.0f, 48.0f);
 
 MiniMap* MiniMap::create()
@@ -175,7 +175,7 @@ void MiniMap::hide(bool instant)
 
 void MiniMap::setPositioning(std::string miniMapPositioning)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	const Vec2 DefaultPosition = (Vec2(visibleSize) - Vec2(MiniMapSize)) / 2.0f - MiniMapMargin;
 	Vec2 newPosition = Vec2::ZERO;
 	
@@ -217,7 +217,7 @@ bool MiniMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 	{
 		this->squallyMarker = DrawNode::create();
 
-		static const Size SquallySize = Size(128.0f, 128.0f);
+		static const CSize SquallySize = CSize(128.0f, 128.0f);
 
 		this->squallyMarker->drawSolidRect(-Vec2(SquallySize / 2.0f), Vec2(SquallySize / 2.0f), Color4F::MAGENTA);
 

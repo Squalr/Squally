@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class DropPoolDeserializer;
 class PlatformerEntity;
 class DropPool;
 
-class EntityDropTableBehavior : public Component
+class EntityDropTableBehavior : public GameComponent
 {
 public:
 	static EntityDropTableBehavior* create(GameObject* owner);
@@ -24,7 +24,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	DropPoolDeserializer* dropPoolDeserializer;

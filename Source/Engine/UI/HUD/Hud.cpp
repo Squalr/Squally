@@ -44,7 +44,7 @@ void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parent
 {
 	if (GameUtils::GetFirstParentOfType<Hud>(this) == nullptr)
 	{
-		static Size visibleSize = Director::getInstance()->getVisibleSize();
+		static CSize visibleSize = Director::getInstance()->getVisibleSize();
 		Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 
 		this->setPosition(cameraPosition - visibleSize / 2.0f);

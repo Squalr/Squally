@@ -62,7 +62,7 @@ void StatePeekCards::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->doneButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
@@ -85,7 +85,7 @@ void StatePeekCards::onStateEnter(GameState* gameState)
 	this->doneButton->enableInteraction(0);
 	this->doneButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	GameUtils::changeParent(gameState->enemyHand, this, true);
 	gameState->enemyHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f)));
 	gameState->enemyHand->setCardScale(0.6f, 0.25f);
@@ -106,7 +106,7 @@ void StatePeekCards::onStateExit(GameState* gameState)
 	super::onStateExit(gameState);
 
 	// Restore hand to proper position
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	GameUtils::changeParent(gameState->enemyHand, gameState, true);
 	gameState->enemyHand->setCardScale(Card::cardScale, 0.25f);
 	gameState->enemyHand->setRowWidth(HexusConfig::handWidth, 0.25f);

@@ -47,7 +47,7 @@ TimeBomb* TimeBomb::create(PlatformerEntity* owner, PlatformerEntity* target, st
 }
 
 TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode)
-	: super(owner, target, true, Node::create(), Size(133.0f, 133.0f))
+	: super(owner, target, true, Node::create(), CSize(133.0f, 133.0f))
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_TimeBomb_BOMB);
 	this->timerPlate = Sprite::create(ObjectResources::Traps_TimeBomb_TimerPlate);

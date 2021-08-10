@@ -35,7 +35,7 @@ MineLantern::MineLantern(ValueMap& properties) : super(properties)
 	this->isOn = false;
 	this->isCulled = false;
 
-	this->setContentSize(Size(128.0f, 128.0f));
+	this->setContentSize(CSize(128.0f, 128.0f));
 
 	this->addChild(this->lanternBack);
 	this->addChild(this->glow);
@@ -116,9 +116,9 @@ void MineLantern::updateMineLanternVisibility()
 
 void MineLantern::optimizationHideOffscreenMineLantern()
 {
-	static const Size Padding = Size(128.0f, 128.0f);
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
+	static const CSize Padding = CSize(128.0f, 128.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
 
 	bool isNotOnScreen = !CameraRect.intersectsRect(thisRect);
 

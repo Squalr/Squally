@@ -38,14 +38,14 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTexturesNode = Node::create();
-	this->boundsRect = Rect::ZERO;
+	this->boundsRect = CRect::ZERO;
 
 	this->addChild(this->infillTexturesNode);
 
 	// Build the terrain from the parsed points
 	if (this->polylinePoints.empty())
 	{
-		Size size = Size(
+		CSize size = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
@@ -96,9 +96,9 @@ void TextureObject::buildTextures()
 	params.wrapT = GL_REPEAT;
 
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
-	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
+	CRect drawRect = AlgoUtils::getPolygonRect(this->points);
 
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
 
 	if (GameUtils::getKeyOrDefault(this->properties, TextureObject::PropertyKeyClearAnchor, Value(true)).asBool())
 	{
@@ -118,7 +118,7 @@ void TextureObject::buildTextures()
 	TilingOffset.y = MathUtils::wrappingNormalize(TilingOffset.y + 359.0f, 0.0f, 1024.0f);
 	
 	texture->setPosition(drawRect.origin);
-	texture->setTextureRect(Rect(TilingOffset.x, TilingOffset.y, drawRect.size.width, drawRect.size.height));
+	texture->setTextureRect(CRect(TilingOffset.x, TilingOffset.y, drawRect.size.width, drawRect.size.height));
 
 	if (this->useClipping)
 	{

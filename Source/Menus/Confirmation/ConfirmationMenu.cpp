@@ -29,13 +29,13 @@ ConfirmationMenu* ConfirmationMenu::create()
 
 ConfirmationMenu::ConfirmationMenu()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 
 	this->onConfirmCallback = nullptr;
 	this->onCancelCallback = nullptr;
 
-	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), CSize(560.0f, 0.0f));
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
@@ -43,11 +43,11 @@ ConfirmationMenu::ConfirmationMenu()
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
-	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabel->enableGlow(Color4B::BLACK);
 
 	cancelLabelHover->setColor(Color3B::YELLOW);
-	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->cancelButton = ClickableTextNode::create(
@@ -60,11 +60,11 @@ ConfirmationMenu::ConfirmationMenu()
 	LocalizedLabel*	confirmLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Accept::create());
 	LocalizedLabel*	confirmLabelHover = confirmLabel->clone();
 
-	confirmLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	confirmLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	confirmLabel->enableGlow(Color4B::BLACK);
 
 	confirmLabelHover->setColor(Color3B::YELLOW);
-	confirmLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	confirmLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	confirmLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->confirmButton = ClickableTextNode::create(
@@ -99,7 +99,7 @@ void ConfirmationMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->confirmWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));

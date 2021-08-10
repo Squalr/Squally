@@ -64,7 +64,7 @@ void StateCardReplace::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->doneButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 24.0f);
 }
 
@@ -98,7 +98,7 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 		this->doneButton->enableInteraction(0);
 		this->doneButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
 
-		Size visibleSize = Director::getInstance()->getVisibleSize();
+		CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 		this->focusTakeOver->focus({
 			gameState->playerHand,
@@ -155,7 +155,7 @@ void StateCardReplace::onStateExit(GameState* gameState)
 	super::onStateExit(gameState);
 
 	// Restore hand to proper position
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->focusTakeOver->unfocus();
 	gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
 	gameState->playerHand->setRowWidth(HexusConfig::handWidth, 0.25f);

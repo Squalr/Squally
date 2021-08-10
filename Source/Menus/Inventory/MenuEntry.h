@@ -33,5 +33,5 @@ protected:
 private:
 	typedef SmartNode super;
 
-	static const cocos2d::Size LabelSize;
+	static const cocos2d::CSize LabelSize;
 };

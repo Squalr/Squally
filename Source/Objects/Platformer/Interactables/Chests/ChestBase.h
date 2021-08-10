@@ -9,7 +9,7 @@ class ChestBase : public InteractObject
 public:
 
 protected:
-	ChestBase(cocos2d::ValueMap& properties, cocos2d::Size interactSize);
+	ChestBase(cocos2d::ValueMap& properties, cocos2d::CSize interactSize);
 	virtual ~ChestBase();
 
 	void onEnter() override;

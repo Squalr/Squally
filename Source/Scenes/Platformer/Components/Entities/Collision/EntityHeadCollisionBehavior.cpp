@@ -91,7 +91,7 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 	
 	this->headCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), EntityHeadCollisionBehavior::HeadCollisionSize)
+			CSize(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), EntityHeadCollisionBehavior::HeadCollisionSize)
 		),
 		(int)PlatformerCollisionType::HeadDetector,
 		CollisionObject::Properties(false, false),

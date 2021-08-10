@@ -24,7 +24,7 @@ LightningGolem::LightningGolem(ValueMap& properties) : super(properties,
 	LightningGolem::MapKey,
 	EntityResources::Enemies_VoidStar_LightningGolem_Animations,
 	EntityResources::Enemies_VoidStar_LightningGolem_Emblem,
-	Size(768.0f, 840.0f),
+	CSize(768.0f, 840.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

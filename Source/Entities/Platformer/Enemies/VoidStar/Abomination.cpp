@@ -24,7 +24,7 @@ Abomination::Abomination(ValueMap& properties) : super(properties,
 	Abomination::MapKey,
 	EntityResources::Enemies_VoidStar_Abomination_Animations,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,
-	Size(296.0f, 356.0f),
+	CSize(296.0f, 356.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f))
 {

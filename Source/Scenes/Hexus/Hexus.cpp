@@ -54,7 +54,7 @@ Hexus* Hexus::create()
 
 Hexus::Hexus()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->gameBackground = Sprite::create(HexusResources::Gameboard);
 	this->gameState = GameState::create();
@@ -217,7 +217,7 @@ void Hexus::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
 	this->boardSelection->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY);

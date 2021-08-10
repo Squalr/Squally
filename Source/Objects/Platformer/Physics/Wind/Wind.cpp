@@ -44,7 +44,7 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	float speedX = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedX, Value(0.0f)).asFloat();
 	float speedY = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedY, Value(0.0f)).asFloat();
 
-	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	this->windSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
 	this->windParticles = SmartParticles::create(ParticleResources::Gust, SmartParticles::CullInfo(this->windSize));

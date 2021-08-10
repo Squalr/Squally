@@ -32,7 +32,7 @@ FloatTutorialPortal* FloatTutorialPortal::create(ValueMap& properties)
 	return instance;
 }
 
-FloatTutorialPortal::FloatTutorialPortal(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+FloatTutorialPortal::FloatTutorialPortal(ValueMap& properties) : super(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
 	this->setInteractType(InteractType::Input);
 }

@@ -23,7 +23,7 @@ const float ScrollPane::ScrollTrackWidth = 16.0f;
 const float ScrollPane::ScrollTrackStopOffset = 48.0f;
 const float ScrollPane::ScrollTotalWidth = 32.0f;
 
-ScrollPane* ScrollPane::create(Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, Color4B initBackgroundColor)
+ScrollPane* ScrollPane::create(CSize paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::CSize paddingSize, cocos2d::CSize marginSize, Color4B initBackgroundColor)
 {
 	ScrollPane* instance = new ScrollPane(paneSize, sliderResource, sliderResourceSelected, paddingSize, marginSize, initBackgroundColor);
 
@@ -32,7 +32,7 @@ ScrollPane* ScrollPane::create(Size paneSize, std::string sliderResource, std::s
 	return instance;
 }
 
-ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, Color4B initBackgroundColor)
+ScrollPane::ScrollPane(CSize paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::CSize paddingSize, cocos2d::CSize marginSize, Color4B initBackgroundColor)
 {
 	this->paneSize = paneSize;
 	this->paddingSize = paddingSize;
@@ -48,11 +48,11 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->content = Node::create();
 	this->scrollBounds = DrawNode::create();
 	this->scrollBounds->drawSolidRect(Vec2(-ScrollPane::ScrollTrackWidth / 2.0f, -(this->paneSize.height - ScrollPane::ScrollTrackStopOffset) / 2.0f), Vec2(ScrollPane::ScrollTrackWidth / 2.0f, (this->paneSize.height - ScrollPane::ScrollTrackStopOffset) / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
-	this->scrollBounds->setContentSize(Size(ScrollPane::ScrollTrackWidth, this->paneSize.height - ScrollPane::ScrollTrackStopOffset));
+	this->scrollBounds->setContentSize(CSize(ScrollPane::ScrollTrackWidth, this->paneSize.height - ScrollPane::ScrollTrackStopOffset));
 	this->scrollBar = Slider::create(this->scrollBounds, Node::create(), sliderResource, sliderResourceSelected, 0.0f, false);
 
-	this->dragHitbox->setContentSize(Size(this->paneSize.width - ScrollTotalWidth, this->paneSize.height));
-	this->content->setContentSize(Size(this->paneSize.width - this->paddingSize.width * 2.0f - ScrollPane::ScrollTrackWidth / 2.0f, this->paneSize.height - this->paddingSize.height * 2.0f));
+	this->dragHitbox->setContentSize(CSize(this->paneSize.width - ScrollTotalWidth, this->paneSize.height));
+	this->content->setContentSize(CSize(this->paneSize.width - this->paddingSize.width * 2.0f - ScrollPane::ScrollTrackWidth / 2.0f, this->paneSize.height - this->paddingSize.height * 2.0f));
 
 	this->dragHitbox->setMouseOverSound("");
 
@@ -146,7 +146,7 @@ void ScrollPane::setBackgroundColor(cocos2d::Color4B backgroundColor)
 	this->background->initWithColor(backgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 }
 
-void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size paneSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc)
+void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::CSize paneSize, cocos2d::CSize paddingSize, cocos2d::CSize marginSize)> drawFunc)
 {
 	if (drawFunc != nullptr)
 	{
@@ -226,7 +226,7 @@ float ScrollPane::getScrollDepth()
 	return this->content->getPositionY() - this->minScrollDepth;
 }
 
-Size ScrollPane::getPaneSize()
+CSize ScrollPane::getPaneSize()
 {
 	return this->paneSize;
 }

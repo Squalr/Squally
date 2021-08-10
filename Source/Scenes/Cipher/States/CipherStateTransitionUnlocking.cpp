@@ -56,7 +56,7 @@ void CipherStateTransitionUnlocking::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f + CipherConfig::TopPanelCenter));
 }

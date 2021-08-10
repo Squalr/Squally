@@ -111,8 +111,8 @@ public:
 	unsigned int getUniverseId();
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
-	static std::vector<cocos2d::Vec2> createBox(cocos2d::Size size);
-	static std::vector<cocos2d::Vec2> createCapsulePolygon(cocos2d::Size size, float capsuleRadius = 8.0f);
+	static std::vector<cocos2d::Vec2> createBox(cocos2d::CSize size);
+	static std::vector<cocos2d::Vec2> createCapsulePolygon(cocos2d::CSize size, float capsuleRadius = 8.0f);
 
 	static const std::string MapKeyTypeCollision;
 	static const std::string MapKeyCollisionTypeNone;
@@ -182,7 +182,7 @@ private:
 	std::vector<cocos2d::Vec2> pointsRotated;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segmentsRotated;
-	cocos2d::Rect boundsRect;
+	cocos2d::CRect boundsRect;
 
 	CollisionType collisionType;
 	std::vector<CollisionType> collisionTypes;

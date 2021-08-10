@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/ComponentGroup.h"
+#include "Engine/Components/GameComponentGroup.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
 class PlatformerEntity;
 
-class EntityCombatBehaviorBase : public ComponentGroup
+class EntityCombatBehaviorBase : public GameComponentGroup
 {
 public:
 	void setTimelineSpeedBase(float timelineSpeed);
@@ -14,7 +14,7 @@ public:
 	float getTimelineSpeed();
 
 protected:
-	EntityCombatBehaviorBase(GameObject* owner, std::vector<Component*> component = { });
+	EntityCombatBehaviorBase(GameObject* owner, std::vector<GameComponent*> component = { });
 	virtual ~EntityCombatBehaviorBase();
 	
 	void onLoad() override;
@@ -23,7 +23,7 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef ComponentGroup super;
+	typedef GameComponentGroup super;
 	
 	virtual void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
 	virtual void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);

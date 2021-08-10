@@ -33,7 +33,7 @@ ShrPage::ShrPage() : super(ShrPage::Identifier, PageType::Full)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
 		Strings::Menus_Hacking_Lexicon_Pages_Binary_Shr_Intro::create(),
-		Size(super::PageSize.width - 160.0f, super::PageSize.height)
+		CSize(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
 	this->decorSprite->setRotation(315.0f);

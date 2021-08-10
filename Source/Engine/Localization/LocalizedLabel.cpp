@@ -19,7 +19,7 @@ LocalizedLabel* LocalizedLabel::create(
 	FontStyle fontStyle,
 	FontSize fontSize,
 	LocalizedString* localizedString,
-	const Size& dimensions,
+	const CSize& dimensions,
 	TextHAlignment hAlignment,
 	TextVAlignment vAlignment)
 {
@@ -34,7 +34,7 @@ LocalizedLabel::LocalizedLabel(
 	FontStyle fontStyle,
 	FontSize fontSize,
 	LocalizedString* localizedString,
-	const Size& dimensions,
+	const CSize& dimensions,
 	TextHAlignment hAlignment,
 	TextVAlignment vAlignment)
 {

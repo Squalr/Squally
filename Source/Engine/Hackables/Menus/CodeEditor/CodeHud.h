@@ -79,11 +79,11 @@ private:
 	HackableCode* activeHackableCode;
 	float timeSinceLastCompile;
 
-	static const cocos2d::Size Padding;
+	static const cocos2d::CSize Padding;
 	static const float CompileDelayMaxSeconds;
 	static const float LineNumberMargin;
-	static const cocos2d::Size StatusSize;
-	static const cocos2d::Size FunctionSize;
+	static const cocos2d::CSize StatusSize;
+	static const cocos2d::CSize FunctionSize;
 	static const cocos2d::Color4B SubtextColor;
 	static const cocos2d::Color4B HeaderColor;
 	static const cocos2d::Color4B ErrorColor;

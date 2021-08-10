@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSize, Size padding)
+Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, CSize renderSize, CSize padding)
 {
 	if (renderSize.width <= 0 || renderSize.height <= 0)
 	{

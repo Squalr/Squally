@@ -24,7 +24,7 @@ EdgeLanternGate* EdgeLanternGate::create(ValueMap& properties)
 	return instance;
 }
 
-EdgeLanternGate::EdgeLanternGate(ValueMap& properties) : super(properties, Size(356.0f, 320.0f), Vec2(0.0f, 0.0f))
+EdgeLanternGate::EdgeLanternGate(ValueMap& properties) : super(properties, CSize(356.0f, 320.0f), Vec2(0.0f, 0.0f))
 {
 	this->gateBack = Sprite::create(ObjectResources::Doors_LanternGate_LanternRight);
 	this->gateFront = Sprite::create(ObjectResources::Doors_LanternGate_LanternRight);

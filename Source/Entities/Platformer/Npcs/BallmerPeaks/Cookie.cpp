@@ -24,7 +24,7 @@ Cookie::Cookie(ValueMap& properties) : super(properties,
 	Cookie::MapKey,
 	EntityResources::Npcs_BallmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BallmerPeaks_Cookie_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))
 {

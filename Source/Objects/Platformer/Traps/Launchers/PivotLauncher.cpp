@@ -56,7 +56,7 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->target = nullptr;
 	this->isAutoLaunch = true;
 
-	this->setContentSize(Size(128.0f, 192.0f));
+	this->setContentSize(CSize(128.0f, 192.0f));
 
 	this->launcherAnimations->playAnimation();
 	this->launcherAnimations->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
@@ -170,9 +170,9 @@ void PivotLauncher::setAutoLaunch(bool isAutoLaunch)
 bool PivotLauncher::rangeCheck()
 {
 	// It may be ideal for this to be configurable. Fixed-angle launchers can get away with this being a high value, but player-tracking launchers would want this to be low.
-	static const Size Padding = Size(1024.0f, 512.0f);
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	Rect thisRect = GameUtils::getScreenBounds(this, Padding);
+	static const CSize Padding = CSize(1024.0f, 512.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
 
 	return CameraRect.intersectsRect(thisRect);
 }

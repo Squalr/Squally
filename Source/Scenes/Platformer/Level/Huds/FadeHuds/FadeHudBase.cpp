@@ -36,7 +36,7 @@ void FadeHudBase::fillSeams()
 
 void FadeHudBase::buildBlackout()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->blackout->drawSolidRect(Vec2::ZERO, Vec2(visibleSize), Color4F::BLACK);
 }

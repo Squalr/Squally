@@ -23,7 +23,7 @@ OrcBomber::OrcBomber(ValueMap& properties) : super(properties,
 	OrcBomber::MapKey,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
-	Size(256.0f, 218.0f),
+	CSize(256.0f, 218.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

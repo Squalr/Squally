@@ -24,7 +24,7 @@ FireTiger::FireTiger(ValueMap& properties) : super(properties,
 	FireTiger::MapKey,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
-	Size(256.0f, 320.0f),
+	CSize(256.0f, 320.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

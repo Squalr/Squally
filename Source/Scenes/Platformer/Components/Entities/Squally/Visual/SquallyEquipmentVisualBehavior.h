@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class ConstantString;
 class LocalizedLabel;
 class Squally;
 
-class SquallyEquipmentVisualBehavior : public Component
+class SquallyEquipmentVisualBehavior : public GameComponent
 {
 public:
 	static SquallyEquipmentVisualBehavior* create(GameObject* owner);
@@ -22,7 +22,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 	
 	void updateEquipmentVisual();
 

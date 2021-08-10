@@ -29,14 +29,14 @@ Torch* Torch::create(ValueMap& properties)
 Torch::Torch(ValueMap& properties) : super(
 	properties,
 	InteractObject::InteractType::None,
-	Size(48.0f, 128.0f))
+	CSize(48.0f, 128.0f))
 {
 	this->torch = Sprite::create(ObjectResources::Decor_Torch_Torch);
 	this->glow = Sprite::create(ObjectResources::Decor_Torch_TorchGlow);
 	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 	this->fire->setScale(1.5f);
-	this->setContentSize(Size(128.0f, 128.0f));
+	this->setContentSize(CSize(128.0f, 128.0f));
 
 	this->backOnNode->addChild(this->glow);
 	this->backNode->addChild(this->torch);

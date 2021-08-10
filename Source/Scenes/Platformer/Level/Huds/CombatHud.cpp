@@ -52,7 +52,7 @@ void CombatHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
 	this->playerPartyStatsNode->setPosition(32.0f, visibleSize.height - 96.0f);

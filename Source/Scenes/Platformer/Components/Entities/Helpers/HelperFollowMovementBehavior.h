@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
 class Squally;
 
-class HelperFollowMovementBehavior : public Component
+class HelperFollowMovementBehavior : public GameComponent
 {
 public:
 	static HelperFollowMovementBehavior* create(GameObject* owner);
@@ -24,7 +24,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 	
 	void warpToSqually();
 

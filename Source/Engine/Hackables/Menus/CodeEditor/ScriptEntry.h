@@ -38,7 +38,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Size originalBackPlateSize;
+	cocos2d::CSize originalBackPlateSize;
 
 	ClickableNode* backPlate;
 	cocos2d::Sprite* selectedSprite;

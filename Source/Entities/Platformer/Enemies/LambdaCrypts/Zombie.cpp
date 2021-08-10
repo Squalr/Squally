@@ -24,7 +24,7 @@ Zombie::Zombie(ValueMap& properties) : super(properties,
 	Zombie::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Zombie_Animations,
 	EntityResources::Enemies_LambdaCrypts_Zombie_Emblem,
-	Size(146.0f, 248.0f),
+	CSize(146.0f, 248.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
 {

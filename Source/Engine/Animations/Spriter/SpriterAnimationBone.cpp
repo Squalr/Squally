@@ -22,7 +22,7 @@ const std::vector<Color4F> SpriterAnimationBone::DebugColorHeirarchy = std::vect
 	Color4F(Color4B(255, 255, 255, 255)),
 };
 
-SpriterAnimationBone* SpriterAnimationBone::create(Size boneSize)
+SpriterAnimationBone* SpriterAnimationBone::create(CSize boneSize)
 {
 	SpriterAnimationBone* instance = new SpriterAnimationBone(boneSize);
 
@@ -31,7 +31,7 @@ SpriterAnimationBone* SpriterAnimationBone::create(Size boneSize)
 	return instance;
 }
 
-SpriterAnimationBone::SpriterAnimationBone(Size boneSize)
+SpriterAnimationBone::SpriterAnimationBone(CSize boneSize)
 {
 	this->boneSize = boneSize;
 	this->debugDraw = nullptr;

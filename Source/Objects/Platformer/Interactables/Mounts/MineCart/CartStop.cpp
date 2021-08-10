@@ -31,7 +31,7 @@ CartStop::CartStop(ValueMap& properties) : super(properties)
 {
 	this->cartStop = Sprite::create(ObjectResources::Physics_CartStop_CartStop);
 	this->collision = CollisionObject::create(
-		CollisionObject::createBox(Size(188.0f, 169.0f)),
+		CollisionObject::createBox(CSize(188.0f, 169.0f)),
 		(CollisionType)PlatformerCollisionType::CartStop,
 		CollisionObject::Properties(false, false)
 	);

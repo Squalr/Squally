@@ -55,7 +55,7 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 	this->available = true;
 
 	this->currencySprite->setScale(0.4f);
-	this->itemClickHitbox->setContentSize(Size(224.0f, 224.0f));
+	this->itemClickHitbox->setContentSize(CSize(224.0f, 224.0f));
 	this->itemCostLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->itemCostLabel->enableOutline(Color4B::BLACK, 2);
 

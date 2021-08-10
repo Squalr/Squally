@@ -45,7 +45,7 @@ void Fireflies::update(float dt)
 {
 	super::update(dt);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
 	this->fireflies->setSourcePosition(cameraPosition + visibleSize / 2.0f);

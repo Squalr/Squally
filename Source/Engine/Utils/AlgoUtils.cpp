@@ -461,9 +461,9 @@ std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std
 	return segments;
 }
 
-Rect AlgoUtils::getPolygonRect(const std::vector<Vec2>& points)
+CRect AlgoUtils::getPolygonRect(const std::vector<Vec2>& points)
 {
-	Rect drawRect = Rect::ZERO;
+	CRect drawRect = CRect::ZERO;
 
 	for (auto it = points.begin(); it != points.end(); it++)
 	{

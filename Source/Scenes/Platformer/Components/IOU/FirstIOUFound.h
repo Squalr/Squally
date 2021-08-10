@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class IOUDrop;
 
-class FirstIOUFound : public Component
+class FirstIOUFound : public GameComponent
 {
 public:
 	static FirstIOUFound* create(GameObject* owner);
@@ -19,7 +19,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	IOUDrop* iou;
 };

@@ -37,7 +37,7 @@ Stalactite* Stalactite::create(ValueMap& properties)
 Stalactite::Stalactite(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Traps_Stalactite_Stalactite);
-	this->collision = CollisionObject::create(CollisionObject::createBox(Size(40.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, true));
+	this->collision = CollisionObject::create(CollisionObject::createBox(CSize(40.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, true));
 	this->isFalling = false;
 
 	this->collision->addChild(this->sprite);

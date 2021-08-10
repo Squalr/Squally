@@ -38,7 +38,7 @@ void HackerModeWarningHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	static const Vec2 offset = Vec2(0.0f, -96.0f);
 	

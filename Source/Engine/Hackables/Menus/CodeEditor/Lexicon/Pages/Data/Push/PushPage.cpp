@@ -33,7 +33,7 @@ PushPage::PushPage() : super(PushPage::Identifier, PageType::Left)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
 		Strings::Menus_Hacking_Lexicon_Pages_Data_Push_Intro::create(),
-		Size(super::PageSize.width - 160.0f, super::PageSize.height)
+		CSize(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
 	this->titleLabel->setTextColor(super::TextColor);

@@ -28,7 +28,7 @@ public:
 
 	static InteractObject* create(
 		InteractType interactType,
-		cocos2d::Size size,
+		cocos2d::CSize size,
 		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
 		LocalizedString* actionStr = nullptr,
 		cocos2d::InputEvents::KeyCode input = cocos2d::InputEvents::KeyCode::KEY_V,
@@ -51,7 +51,7 @@ public:
 protected:
 	InteractObject(cocos2d::ValueMap& properties,
 		InteractType interactType,
-		cocos2d::Size size,
+		cocos2d::CSize size,
 		cocos2d::Vec2 offset = cocos2d::Vec2::ZERO,
 		LocalizedString* actionStr = nullptr,
 		cocos2d::InputEvents::KeyCode input = cocos2d::InputEvents::KeyCode::KEY_V,

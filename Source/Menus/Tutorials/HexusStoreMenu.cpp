@@ -205,7 +205,7 @@ void HexusStoreMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float StoreOffsetY = -128.0f;
 

@@ -24,7 +24,7 @@ Warlock::Warlock(ValueMap& properties) : super(properties,
 	Warlock::MapKey,
 	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,
-	Size(284.0f, 256.0f),
+	CSize(284.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -74,8 +74,8 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topCornersNode = Node::create();
 	this->debugLabelsNode = DeveloperModeController::IsDeveloperBuild ? Node::create() : nullptr;
 	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
-	this->drawRect = Rect::ZERO;
-	this->boundsRect = Rect::ZERO;
+	this->drawRect = CRect::ZERO;
+	this->boundsRect = CRect::ZERO;
 
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
@@ -116,7 +116,7 @@ void TerrainObject::onEnter()
 
 	if (this->polylinePoints.empty())
 	{
-		Size size = Size(
+		CSize size = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
@@ -266,7 +266,7 @@ void TerrainObject::setPoints(const std::vector<Vec2>& points)
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 	this->infillTriangles = this->textureTriangles;
 	this->drawRect = AlgoUtils::getPolygonRect(this->points);
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
 
 	// Most terrain is static, so the coords only need be updated once
 	this->updateCachedCoords(true);
@@ -433,7 +433,7 @@ void TerrainObject::buildInfill(InfillData infillData)
 	}
 
 	// Render the infill to a texture (Note: using outer points, not the infill points, due to the earlier padding)
-	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
+	CRect infillRect = AlgoUtils::getPolygonRect(this->points);
 	Sprite* renderedInfill = RenderUtils::renderNodeToSprite(infill, infillRect.origin, infillRect.size);
 
 	if (infillData.blurInfill)
@@ -492,7 +492,7 @@ void TerrainObject::buildSurfaceShadow()
 	}
 
 	// Render the infill to a texture (Note: using outer points for padding)
-	Rect shadowRect = AlgoUtils::getPolygonRect(this->points);
+	CRect shadowRect = AlgoUtils::getPolygonRect(this->points);
 
 	Sprite* renderedShadowLine = RenderUtils::renderNodeToSprite(shadowLine, shadowRect.origin, shadowRect.size);
 
@@ -789,7 +789,7 @@ void TerrainObject::buildSurfaceTextures()
 
 void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod)
 {
-	Size textureSize = sprite->getContentSize();
+	CSize textureSize = sprite->getContentSize();
 
 	static float seamlessSegmentX = 0.0f;
 
@@ -830,14 +830,14 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 	// Start the texture from where the previous texture left off for seamless integration
 	if (tileMethod == TileMethod::Horizontal)
 	{
-		sprite->setTextureRect(Rect(seamlessSegmentX, 0.0f, segmentLength, textureSize.height));
+		sprite->setTextureRect(CRect(seamlessSegmentX, 0.0f, segmentLength, textureSize.height));
 
 		// Advance the seamless segment distance (with wrap around on overflow)
 		seamlessSegmentX = MathUtils::wrappingNormalize(seamlessSegmentX + segmentLength, 0.0f, textureSize.width);
 	}
 	else if (tileMethod == TileMethod::Vertical)
 	{
-		sprite->setTextureRect(Rect(0.0f, seamlessSegmentX, textureSize.width, segmentLength));
+		sprite->setTextureRect(CRect(0.0f, seamlessSegmentX, textureSize.width, segmentLength));
 
 		// Advance the seamless segment distance (with wrap around on overflow)
 		seamlessSegmentX = MathUtils::wrappingNormalize(seamlessSegmentX + segmentLength, 0.0f,  textureSize.height);
@@ -1048,11 +1048,11 @@ void TerrainObject::updateCachedCoords(bool force)
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
-	static const Size Padding = Size(384.0f, 384.0f);
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	static const CSize Padding = CSize(384.0f, 384.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 
 	this->updateCachedCoords();
-	Rect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
+	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{

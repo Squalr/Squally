@@ -10,12 +10,12 @@ namespace cocos2d
 class SpriterAnimationBone : public SpriterAnimationPart
 {
 public:
-	static SpriterAnimationBone* create(cocos2d::Size boneSize);
+	static SpriterAnimationBone* create(cocos2d::CSize boneSize);
 	
 	void setDebugDrawHeirarchyDepth(int heirarchyDepth);
 
 protected:
-	SpriterAnimationBone(cocos2d::Size boneSize);
+	SpriterAnimationBone(cocos2d::CSize boneSize);
 	virtual ~SpriterAnimationBone();
 
 	void onDeveloperModeEnable(int debugLevel) override;
@@ -27,7 +27,7 @@ private:
 	void redrawDebugDraw();
 
 	float boneRotation;
-	cocos2d::Size boneSize;
+	cocos2d::CSize boneSize;
 	cocos2d::DrawNode* debugDraw;
 	int heirarchyDepth;
 	

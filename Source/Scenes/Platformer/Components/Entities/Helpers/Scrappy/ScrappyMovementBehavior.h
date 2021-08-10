@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class Scrappy;
 class Squally;
 
-class ScrappyMovementBehavior : public Component
+class ScrappyMovementBehavior : public GameComponent
 {
 public:
 	static ScrappyMovementBehavior* create(GameObject* owner);
@@ -21,7 +21,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 	
 	void warpToSqually();
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Components/ComponentGroup.h"
+#include "Engine/Components/GameComponentGroup.h"
 
-class SquallyVisualBehaviorGroup : public ComponentGroup
+class SquallyVisualBehaviorGroup : public GameComponentGroup
 {
 public:
 	static SquallyVisualBehaviorGroup* create(GameObject* owner);
@@ -17,5 +17,5 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef ComponentGroup super;
+	typedef GameComponentGroup super;
 };

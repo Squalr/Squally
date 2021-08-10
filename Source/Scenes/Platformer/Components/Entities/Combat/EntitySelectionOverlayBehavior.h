@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class PlatformerEntity;
 
-class EntitySelectionOverlayBehavior : public Component
+class EntitySelectionOverlayBehavior : public GameComponent
 {
 public:
 	static EntitySelectionOverlayBehavior* create(GameObject* owner);
@@ -26,7 +26,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 	cocos2d::Sprite* lightRay;

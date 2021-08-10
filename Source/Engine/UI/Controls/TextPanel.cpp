@@ -57,7 +57,7 @@ void TextPanel::initializeListeners()
 
 void TextPanel::show(float duration)
 {
-	const Size padding = Size(16.0f, 16.0f);
+	const CSize padding = CSize(16.0f, 16.0f);
 
 	if (duration <= 0.0f)
 	{
@@ -72,7 +72,7 @@ void TextPanel::show(float duration)
 
 	this->text->setDimensions(320.0f, 0.0f);
 
-	Size textSize = this->text->getContentSize();
+	CSize textSize = this->text->getContentSize();
 	Vec2 source = Vec2(-textSize.width / 2.0f - padding.width, -padding.height);
 	Vec2 dest = Vec2(textSize.width / 2.0f + padding.width, textSize.height + padding.height);
 

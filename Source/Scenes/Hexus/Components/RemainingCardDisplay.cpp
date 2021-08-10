@@ -77,7 +77,7 @@ void RemainingCardDisplay::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float spriteOffsetY = 144.0f;
 

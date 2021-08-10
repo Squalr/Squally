@@ -64,7 +64,7 @@ void RadialMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -198,7 +198,7 @@ void RadialMenu::buildRadialMenu(HackableObjectOpenArgs* args)
 
 ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requiredHackFlag, Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback)
 {
-	const Size padding = Size(4.0f, 0.0f);
+	const CSize padding = CSize(4.0f, 0.0f);
 
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
 	ClickableNode* clickableNode = ClickableNode::create(Node::create(), Node::create());
@@ -206,7 +206,7 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
 	LayerColor* labelBackground = LayerColor::create(Color4B(0, 0, 0, 196), label->getContentSize().width + padding.width * 2.0f, label->getContentSize().height + padding.height * 2.0f);
 
-	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
+	clickableNode->setContentSize(CSize(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
 	clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) {	clickCallback(); });
 	clickableNode->setMouseOverCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });

@@ -28,7 +28,7 @@ using namespace cocos2d;
 
 InteractObject* InteractObject::create(
 	InteractType interactType,
-	Size size,
+	CSize size,
 	Vec2 offset,
 	LocalizedString* actionStr,
 	InputEvents::KeyCode input,
@@ -48,7 +48,7 @@ InteractObject* InteractObject::create(
 InteractObject::InteractObject(
 	ValueMap& properties,
 	InteractType interactType,
-	Size size,
+	CSize size,
 	Vec2 offset,
 	LocalizedString* actionStr,
 	InputEvents::KeyCode input,

@@ -278,7 +278,7 @@ void DeveloperScene::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	for (int chapterIndex = 0; chapterIndex < int(this->chapterDebugInfoList.size()); chapterIndex++)
 	{
@@ -328,7 +328,7 @@ void DeveloperScene::selectChapter(int index)
 
 ScrollPane* DeveloperScene::buildScrollPane()
 {
-	return ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	return ScrollPane::create(CSize(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 }
 
 ClickableTextNode* DeveloperScene::buildTitleButton(std::string displayName)

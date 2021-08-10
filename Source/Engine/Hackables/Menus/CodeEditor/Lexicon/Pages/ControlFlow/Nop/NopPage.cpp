@@ -33,7 +33,7 @@ NopPage::NopPage() : super(NopPage::Identifier, PageType::Full)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
 		Strings::Menus_Hacking_Lexicon_Pages_ControlFlow_Nop_Intro::create(),
-		Size(super::PageSize.width - 160.0f, super::PageSize.height)
+		CSize(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
 	this->titleLabel->setTextColor(super::TextColor);

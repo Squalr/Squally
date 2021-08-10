@@ -23,7 +23,7 @@ Centaur::Centaur(ValueMap& properties) : super(properties,
 	Centaur::MapKey,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
-	Size(296.0f, 256.0f),
+	CSize(296.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

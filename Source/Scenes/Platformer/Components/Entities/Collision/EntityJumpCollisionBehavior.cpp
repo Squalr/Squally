@@ -88,7 +88,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 	
 	this->jumpCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
+			CSize(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
 		),
 		(int)PlatformerCollisionType::JumpDetector,
 		CollisionObject::Properties(false, false),

@@ -11,7 +11,7 @@ class BreakableBase : public HackableObject
 public:
 
 protected:
-	BreakableBase(cocos2d::ValueMap& properties, cocos2d::Size collisionSize, int requiredHits = 1);
+	BreakableBase(cocos2d::ValueMap& properties, cocos2d::CSize collisionSize, int requiredHits = 1);
 	virtual ~BreakableBase();
 
 	void onEnter() override;

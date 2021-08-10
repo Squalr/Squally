@@ -38,14 +38,14 @@ NotificationHud* NotificationHud::create()
 
 NotificationHud::NotificationHud()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->previousFocus = nullptr;
 	this->contentNode = Node::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 192), visibleSize.width, visibleSize.height);
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), CSize(560.0f, 0.0f));
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
@@ -94,7 +94,7 @@ void NotificationHud::initializePositions()
 {
 	super::initializePositions();
 
-	static const Size visibleSize = Director::getInstance()->getVisibleSize();
+	static const CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
 	this->menuBack->setPosition(Vec2(0.0f, 0.0f));
@@ -162,7 +162,7 @@ void NotificationHud::update(float dt)
 				bool keepOpen = std::get<1>(this->toProcess.front());
 				this->toProcess.pop();
 
-				static const Size visibleSize = Director::getInstance()->getVisibleSize();
+				static const CSize visibleSize = Director::getInstance()->getVisibleSize();
 				static const Vec2 LeftPositionBase = Vec2(256.0f, 128.0f);
 				static const Vec2 RightPositionBase = Vec2(visibleSize.width - 256.0f, 128.0f);
 				int halfCount = int(this->slotCooldowns.size() / 2);
@@ -233,7 +233,7 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	Sprite* itemFrame = Sprite::create(UIResources::Menus_NotificationMenu_NotificationFrame);
 	Sprite* notificationIcon = Sprite::create(iconResource);
 	LocalizedLabel* titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, title);
-	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, Size(192.0f, 0.0f));
+	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, CSize(192.0f, 0.0f));
 
 	this->notificationSound->setSoundResource(soundResource);
 

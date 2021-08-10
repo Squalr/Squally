@@ -16,10 +16,10 @@ public:
 	struct CullInfo
 	{
 		bool cull;
-		cocos2d::Size size;
+		cocos2d::CSize size;
 
-		CullInfo() : cull(false), size(cocos2d::Size::ZERO) { }
-		CullInfo(cocos2d::Size size) : cull(true), size(size) { }
+		CullInfo() : cull(false), size(cocos2d::CSize::ZERO) { }
+		CullInfo(cocos2d::CSize size) : cull(true), size(size) { }
 	};
 
 	static SmartParticles* create(std::string particleResource, CullInfo cullInfo = CullInfo());
@@ -74,7 +74,7 @@ private:
 	bool hasAngleOverride;
 	bool hasPositionTypeOverride;
 
-	cocos2d::Rect boundsRect;
+	cocos2d::CRect boundsRect;
 	cocos2d::DrawNode* debugDrawNode;
 	cocos2d::Node* cullContainer;
 	cocos2d::ParticleSystem* particles;

@@ -24,7 +24,7 @@ VoidArcher::VoidArcher(ValueMap& properties) : super(properties,
 	VoidArcher::MapKey,
 	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
-	Size(196.0f, 348.0f),
+	CSize(196.0f, 348.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f))
 {

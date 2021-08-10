@@ -18,8 +18,8 @@ const std::string ToggleableObject::MapEventToggledBySave = "toggled-by-save-";
 ToggleableObject::ToggleableObject(
 	ValueMap& properties,
 	InteractType interactType,
-	Size size,
-	Size cullPadding,
+	CSize size,
+	CSize cullPadding,
 	Vec2 offset,
 	LocalizedString* actionStr,
 	InputEvents::KeyCode input,
@@ -237,8 +237,8 @@ void ToggleableObject::onOptimizationShow()
 
 void ToggleableObject::optimizationHideOffscreenToggleableObject()
 {
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	Rect thisRect = GameUtils::getScreenBounds(this, this->cullPadding);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, this->cullPadding);
 
 	bool isNotOnScreen = !CameraRect.intersectsRect(thisRect);
 

@@ -24,7 +24,7 @@ DemonGrunt::DemonGrunt(ValueMap& properties) : super(properties,
 	DemonGrunt::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
-	Size(312.0f, 372.0f),
+	CSize(312.0f, 372.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))
 {

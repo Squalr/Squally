@@ -20,7 +20,7 @@ GridEntity::GridEntity(cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		float scale,
 		cocos2d::Vec2 offset,
-		cocos2d::Size size) : super(properties, scmlResource, scale, offset, size)
+		cocos2d::CSize size) : super(properties, scmlResource, scale, offset, size)
 {
 	this->gridIndex = 0;
 	this->initialGridIndex = 0;

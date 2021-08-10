@@ -62,10 +62,10 @@ const std::string& BoneAxe::getIdentifier()
 	return BoneAxe::SaveKey;
 }
 
-Size BoneAxe::getWeaponCollisionSize()
+CSize BoneAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 BoneAxe::getWeaponCollisionOffset()

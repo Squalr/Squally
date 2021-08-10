@@ -39,7 +39,7 @@ MapBase::MapBase(bool allowHackerMode)
 	this->layerDeserializers = std::vector<LayerDeserializer*>();
 	this->canPause = false;
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
@@ -102,7 +102,7 @@ void MapBase::onEnter()
 
 	if (this->map != nullptr)
 	{
-		GameCamera::getInstance()->setMapBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+		GameCamera::getInstance()->setMapBounds(CRect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
 }
 
@@ -228,7 +228,7 @@ bool MapBase::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTil
 	if (this->map != nullptr)
 	{
 		this->mapNode->addChild(this->map);
-		GameCamera::getInstance()->setMapBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+		GameCamera::getInstance()->setMapBounds(CRect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 
 		return true;
 	}

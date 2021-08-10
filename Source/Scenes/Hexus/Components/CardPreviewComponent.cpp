@@ -41,7 +41,7 @@ void CardPreviewComponent::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cardPreview->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter, visibleSize.height / 2.0f + HexusConfig::previewOffsetY);
 }

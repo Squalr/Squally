@@ -24,7 +24,7 @@ Asmodeus::Asmodeus(ValueMap& properties) : super(properties,
 	Asmodeus::MapKey,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
-	Size(480.0f, 480.0f),
+	CSize(480.0f, 480.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

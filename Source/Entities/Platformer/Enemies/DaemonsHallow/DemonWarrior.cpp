@@ -24,7 +24,7 @@ DemonWarrior::DemonWarrior(ValueMap& properties) : super(properties,
 	DemonWarrior::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,
-	Size(320.0f, 372.0f),
+	CSize(320.0f, 372.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))
 {

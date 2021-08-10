@@ -38,7 +38,7 @@ Fireball* Fireball::create(PlatformerEntity* owner, PlatformerEntity* target)
 }
 
 Fireball::Fireball(PlatformerEntity* owner, PlatformerEntity* target)
-	: super(owner, target, true, Node::create(), Size(32.0f, 32.0f))
+	: super(owner, target, true, Node::create(), CSize(32.0f, 32.0f))
 {
 	this->fireballAnim = SmartAnimationSequenceNode::create();
 

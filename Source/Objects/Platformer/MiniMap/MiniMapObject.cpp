@@ -38,7 +38,7 @@ MiniMapObject::MiniMapObject(ValueMap& properties, Color4B defaultColor) : super
 	this->addTag(MiniMapObject::TagMiniMapObject);
 	this->properties[GameObject::MapKeyQueryable] = Value(false);
 	
-	Size size = Size(
+	CSize size = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(16.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(16.0f)).asFloat()
 	);

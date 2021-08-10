@@ -47,10 +47,10 @@ void AsciiLetter::loadLetter(unsigned char letter)
 		return;
 	}
 
-	Size spriteSheetSize = texture->getContentSize();
+	CSize spriteSheetSize = texture->getContentSize();
 
 	float x = float((letter % AsciiLetter::GridWidth) * AsciiLetter::LetterSize);
 	float y = float((letter / AsciiLetter::GridHeight) * AsciiLetter::LetterSize);
 
-	this->setTextureRect(Rect(x, y, AsciiLetter::LetterSize, AsciiLetter::LetterSize));
+	this->setTextureRect(CRect(x, y, AsciiLetter::LetterSize, AsciiLetter::LetterSize));
 }

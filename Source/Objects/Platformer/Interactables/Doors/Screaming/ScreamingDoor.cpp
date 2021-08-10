@@ -20,7 +20,7 @@ ScreamingDoor* ScreamingDoor::create(ValueMap& properties)
 	return instance;
 }
 
-ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, Size(256.0f, 420.0f), Vec2(0.0f, -320.0f))
+ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, CSize(256.0f, 420.0f), Vec2(0.0f, -320.0f))
 {
 	this->screamingDoor = Sprite::create(ObjectResources::Doors_ScreamingDoor_ScreamingDoor);
 	this->leftEye = TrackingEye::create();

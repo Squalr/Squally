@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
-class ZFadeBehavior : public Component
+class ZFadeBehavior : public GameComponent
 {
 public:
 	static ZFadeBehavior* create(GameObject* owner);
@@ -18,7 +18,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	GameObject* object;
 	float multiplier;

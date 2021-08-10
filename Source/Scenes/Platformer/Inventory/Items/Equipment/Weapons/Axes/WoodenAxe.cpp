@@ -62,10 +62,10 @@ const std::string& WoodenAxe::getIdentifier()
 	return WoodenAxe::SaveKey;
 }
 
-Size WoodenAxe::getWeaponCollisionSize()
+CSize WoodenAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(140.0f, 92.0f);
+	return CSize(140.0f, 92.0f);
 }
 
 Vec2 WoodenAxe::getWeaponCollisionOffset()

@@ -36,7 +36,7 @@ PlatformerEntity::PlatformerEntity(
 	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
-	Size size,
+	CSize size,
 	float scale, 
 	Vec2 collisionOffset,
 	float hoverHeight
@@ -167,7 +167,7 @@ SmartAnimationNode* PlatformerEntity::getAnimations()
 	return this->animationNode;
 }
 
-Size PlatformerEntity::getEntitySize()
+CSize PlatformerEntity::getEntitySize()
 {
 	return this->entitySize;
 }
@@ -270,9 +270,9 @@ PlatformerEntity* PlatformerEntity::uiClone()
 void PlatformerEntity::optimizationHideOffscreenEntity()
 {
 	// Slight padding for any rendering beyond the entity hitbox
-	static const Size Padding = Size(384.0f, 384.0f);
-	static const Rect CameraRect = Rect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	Rect thisRect = GameUtils::getScreenBounds(this->animationNode, Padding);
+	static const CSize Padding = CSize(384.0f, 384.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this->animationNode, Padding);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{

@@ -56,7 +56,7 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 	}
 	else
 	{
-		shape = CollisionObject::createBox(Size(width, height));
+		shape = CollisionObject::createBox(CSize(width, height));
 	}
 
 	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType

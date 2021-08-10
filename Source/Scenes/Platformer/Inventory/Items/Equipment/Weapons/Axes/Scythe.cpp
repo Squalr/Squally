@@ -62,10 +62,10 @@ const std::string& Scythe::getIdentifier()
 	return Scythe::SaveKey;
 }
 
-Size Scythe::getWeaponCollisionSize()
+CSize Scythe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 Scythe::getWeaponCollisionOffset()

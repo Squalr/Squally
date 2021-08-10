@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class PlatformerEntity;
 
-class EntityProjectileTargetBehavior : public Component
+class EntityProjectileTargetBehavior : public GameComponent
 {
 public:
 	static EntityProjectileTargetBehavior* create(GameObject* owner);
@@ -29,7 +29,7 @@ protected:
 	void initializePositions() override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	PlatformerEntity* entity;
 

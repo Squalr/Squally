@@ -53,7 +53,7 @@ RepairRam::RepairRam(GameObject* owner, QuestLine* questLine) : super(owner, que
 	this->wheel2 = nullptr;
 	this->wheel3 = nullptr;
 	this->inventory = nullptr;
-	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, Size(512.0f, 288.0f));
+	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(512.0f, 288.0f));
 	this->impactSound = Sound::create(SoundResources::Platformer_Objects_Misc_BowlingStrike1);
 	this->rollSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
 	this->wasActivated = false;

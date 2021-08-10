@@ -116,7 +116,7 @@ void StatsBars::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float BarY = this->showExp ? 40.0f : 20.0f;
 	const float TextOffset = 22.0f;

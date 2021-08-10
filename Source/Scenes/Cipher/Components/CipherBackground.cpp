@@ -45,7 +45,7 @@ void CipherBackground::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cipherBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }

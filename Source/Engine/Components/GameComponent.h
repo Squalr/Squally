@@ -5,7 +5,7 @@
 
 class GameObject;
 
-class Component : public SmartNode
+class GameComponent : public SmartNode
 {
 public:
 	bool isInvalidated();
@@ -15,8 +15,8 @@ public:
 	virtual void onDisable();
 
 protected:
-	Component(GameObject* owner);
-	virtual ~Component();
+	GameComponent(GameObject* owner);
+	virtual ~GameComponent();
 
 	void onEnterTransitionDidFinish() override;
 

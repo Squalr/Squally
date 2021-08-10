@@ -199,7 +199,7 @@ void BlockBase::onAnyStateChange(CipherState* cipherState)
 
 bool BlockBase::isInGameArea()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 center = Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f);
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 

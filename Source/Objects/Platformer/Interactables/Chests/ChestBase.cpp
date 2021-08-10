@@ -25,7 +25,7 @@ using namespace cocos2d;
 const std::string ChestBase::PropertyRewardPool = "reward-pool";
 const std::string ChestBase::SaveKeyIsOpen = "SAVE_KEY_IS_OPEN";
 
-ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties, InteractObject::InteractType::Input, interactSize, Vec2::ZERO)
+ChestBase::ChestBase(ValueMap& properties, CSize interactSize) : super(properties, InteractObject::InteractType::Input, interactSize, Vec2::ZERO)
 {
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();

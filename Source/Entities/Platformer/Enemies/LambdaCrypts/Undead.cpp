@@ -24,7 +24,7 @@ Undead::Undead(ValueMap& properties) : super(properties,
 	Undead::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
-	Size(146.0f, 248.0f),
+	CSize(146.0f, 248.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

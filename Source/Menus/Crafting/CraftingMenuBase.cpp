@@ -39,7 +39,7 @@ const float CraftingMenuBase::CraftDuration = 1.5f;
 
 CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->currencyInventory = nullptr;
 	this->inventory = nullptr;
@@ -65,11 +65,11 @@ CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -78,7 +78,7 @@ CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->craftingLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->craftingLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->craftingLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->backdrop);
@@ -125,7 +125,7 @@ void CraftingMenuBase::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
 

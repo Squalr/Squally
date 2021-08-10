@@ -41,7 +41,7 @@ MiniGameMap* MiniGameMap::deserialize(std::string mapFileName, cocos_experimenta
 		deserializedLayerMap[args.layerIndex] = args.mapLayer;
 	};
 
-	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	CSize mapSize = CSize(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 
 	for (auto next : mapRaw->getObjectGroups())
 	{
@@ -106,7 +106,7 @@ MiniGameMap* MiniGameMap::deserialize(std::string mapFileName, cocos_experimenta
 	return instance;
 }
 
-MiniGameMap::MiniGameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize)
+MiniGameMap::MiniGameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, CSize unitSize, CSize tileSize)
 {
 	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;

@@ -1,21 +1,21 @@
-#include "ComponentDeserializer.h"
+#include "GameComponentDeserializer.h"
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 #include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 
-ComponentDeserializer::ComponentDeserializer()
+GameComponentDeserializer::GameComponentDeserializer()
 {
 }
 
-ComponentDeserializer::~ComponentDeserializer()
+GameComponentDeserializer::~GameComponentDeserializer()
 {
 }
 
-Component* ComponentDeserializer::deserialize(ComponentDeserializer::ComponentDeserializationRequestArgs args)
+GameComponent* GameComponentDeserializer::deserialize(GameComponentDeserializer::ComponentDeserializationRequestArgs args)
 {
 	if (this->componentDeserializers.contains(args.component))
 	{

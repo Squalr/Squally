@@ -23,7 +23,7 @@ GuanoUnpetrifyParticleBehavior* GuanoUnpetrifyParticleBehavior::create(GameObjec
 GuanoUnpetrifyParticleBehavior::GuanoUnpetrifyParticleBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->unpetrifyParticles = SmartParticles::create(ParticleResources::Objects_StatueBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
+	this->unpetrifyParticles = SmartParticles::create(ParticleResources::Objects_StatueBreak, SmartParticles::CullInfo(CSize(113.0f, 160.0f)));
 
 	if (this->entity == nullptr)
 	{

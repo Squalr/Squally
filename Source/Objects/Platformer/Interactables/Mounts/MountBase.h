@@ -13,7 +13,7 @@ public:
 	virtual void dismount();
 
 protected:
-	MountBase(cocos2d::ValueMap& properties, cocos2d::Size size);
+	MountBase(cocos2d::ValueMap& properties, cocos2d::CSize size);
 	virtual ~MountBase();
 
 	void onEnter() override;

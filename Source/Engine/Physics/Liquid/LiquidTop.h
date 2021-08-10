@@ -35,9 +35,9 @@ private:
         ColumnData(float targetHeight, float height, float speed) : targetHeight(targetHeight), height(height), speed(speed) { }
     };
 
-    static LiquidTop* create(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
+    static LiquidTop* create(cocos2d::CSize surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
 
-    LiquidTop(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
+    LiquidTop(cocos2d::CSize surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
     virtual ~LiquidTop();
     
     void onEnter() override;
@@ -55,7 +55,7 @@ private:
     std::vector<cocos2d::Color4B> colorArray;
     cocos2d::CustomCommand* customDrawCommand;
 
-    cocos2d::Size surfaceSize;
+    cocos2d::CSize surfaceSize;
     float tension;
     float dampening;
     float spread;

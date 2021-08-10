@@ -41,8 +41,8 @@ SpikedLog::SpikedLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikedLog_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLog_SpikedLog_00);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
-	this->logCollision = CollisionObject::create(CollisionObject::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->logCollision = CollisionObject::create(CollisionObject::createBox(CSize(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLog_SpikedLog_00);
 	this->currentAnimationIndex = 0;
 

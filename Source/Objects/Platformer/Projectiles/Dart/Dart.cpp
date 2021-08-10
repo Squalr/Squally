@@ -25,7 +25,7 @@ Dart* Dart::create(float dartRotation, float dartSpeed)
 	return instance;
 }
 
-Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, CollisionObject::createBox(Size(64.0f, 16.0f)), (int)PlatformerCollisionType::Damage, false)
+Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, CollisionObject::createBox(CSize(64.0f, 16.0f)), (int)PlatformerCollisionType::Damage, false)
 {
 	this->dartSpeed = dartSpeed;
 	this->sprite = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);

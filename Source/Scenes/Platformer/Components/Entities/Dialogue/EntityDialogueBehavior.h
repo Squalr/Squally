@@ -2,7 +2,7 @@
 
 #include <queue>
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 #include "Events/DialogueEvents.h"
 
 class DialogueSet;
@@ -14,7 +14,7 @@ class PlatformerEntity;
 class Scrappy;
 class SpeechBubble;
 
-class EntityDialogueBehavior : public Component
+class EntityDialogueBehavior : public GameComponent
 {
 public:
 	static EntityDialogueBehavior* create(GameObject* owner);
@@ -39,7 +39,7 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 
 	void onInteract();
 	void progressDialogue();

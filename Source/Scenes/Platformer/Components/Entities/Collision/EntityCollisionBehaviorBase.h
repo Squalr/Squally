@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Component.h"
+#include "Engine/Components/GameComponent.h"
 
 class CollisionObject;
 class EntityGroundCollisionBehavior;
@@ -9,7 +9,7 @@ class EntityMovementBehavior;
 class PlatformerEntity;
 class WorldSound;
 
-class EntityCollisionBehaviorBase : public Component
+class EntityCollisionBehaviorBase : public GameComponent
 {
 public:
 
@@ -39,7 +39,7 @@ protected:
 	PlatformerEntity* entity;
 
 private:
-	typedef Component super;
+	typedef GameComponent super;
 	
 	void warpToPosition(cocos2d::Vec3 position, bool warpCamera);
 	void buildEntityCollision();

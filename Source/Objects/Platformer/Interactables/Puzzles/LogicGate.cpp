@@ -36,10 +36,10 @@ LogicGate* LogicGate::create(ValueMap& properties)
 	return instance;
 }
 
-LogicGate::LogicGate(ValueMap& properties) : super(properties, InteractType::None, Size(285.0f, 676.0f))
+LogicGate::LogicGate(ValueMap& properties) : super(properties, InteractType::None, CSize(285.0f, 676.0f))
 {
 	this->torchColorName = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();
-	this->gateCollision = CollisionObject::create(CollisionObject::createBox(Size(285.0f, 676.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->gateCollision = CollisionObject::create(CollisionObject::createBox(CSize(285.0f, 676.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->delta = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyDelta, Value(512.0f)).asFloat();
 	this->answer = GameUtils::getKeyOrDefault(this->properties, LogicGate::PropertyAnswer, Value(false)).asBool();
 	this->openSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism1);

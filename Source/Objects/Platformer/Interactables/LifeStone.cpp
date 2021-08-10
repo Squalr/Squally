@@ -40,7 +40,7 @@ LifeStone* LifeStone::create(ValueMap& properties)
 	return instance;
 }
 
-LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, Size(192.0f, 440.0f), Vec2::ZERO)
+LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, CSize(192.0f, 440.0f), Vec2::ZERO)
 {
 	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();

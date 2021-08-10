@@ -37,9 +37,9 @@ public:
 	void setCollisionLayersVisible(bool isVisible);
 	std::vector<TileLayer*> getCollisionLayers();
 	std::vector<MapLayer*> getMapLayers();
-	cocos2d::Size getMapSize();
-	cocos2d::Size getMapUnitSize();
-	cocos2d::Size getMapTileSize();
+	cocos2d::CSize getMapSize();
+	cocos2d::CSize getMapUnitSize();
+	cocos2d::CSize getMapTileSize();
 	bool isIsometric();
 	bool isPlatformer();
 	std::string getMapFileName();
@@ -47,8 +47,8 @@ public:
 	static const std::string KeyTypeCollision;
 
 protected:
-	GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::Size unitSize,
-			cocos2d::Size tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds);
+	GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::CSize unitSize,
+			cocos2d::CSize tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds);
 	virtual ~GameMap();
 
 	void onEnter() override;
@@ -74,8 +74,8 @@ private:
 
 	std::string levelMapFileName;
 	MapOrientation orientation;
-	cocos2d::Size mapUnitSize;
-	cocos2d::Size mapTileSize;
+	cocos2d::CSize mapUnitSize;
+	cocos2d::CSize mapTileSize;
 	bool disableEvents;
 	bool disableBounds;
 };

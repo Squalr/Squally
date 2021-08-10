@@ -21,7 +21,7 @@ MineElevatorLift* MineElevatorLift::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MineElevatorLift::MineElevatorLift(cocos2d::ValueMap& properties) : super(properties, Size(546.0f, 64.0f), ObjectResources::Physics_CartLift_Rail)
+MineElevatorLift::MineElevatorLift(cocos2d::ValueMap& properties) : super(properties, CSize(546.0f, 64.0f), ObjectResources::Physics_CartLift_Rail)
 {
 	this->elevator = Sprite::create(ObjectResources::Physics_MineElevator_MineElevatorBase);
 	this->gear = Sprite::create(ObjectResources::Physics_MineElevator_MineElevatorGear);
