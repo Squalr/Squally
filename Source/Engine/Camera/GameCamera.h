@@ -44,6 +44,7 @@ public:
 	void pushTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
 	void popTargetIfMultiple();
 	void popTarget();
+	void removeTarget(std::string tag);
 	void clearTargets();
 
 protected:
@@ -67,7 +68,7 @@ private:
 	cocos2d::Vec2 boundCameraByMapBounds(cocos2d::Vec2 cameraPosition);
 	void updateCameraDebugLabels();
 
-	std::stack<CameraTrackingData> targetStack;
+	std::vector<CameraTrackingData> targetStack;
 	cocos2d::CRect mapBounds;
 	float defaultDistance;
 

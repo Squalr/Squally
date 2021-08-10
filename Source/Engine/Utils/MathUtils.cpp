@@ -27,17 +27,27 @@ int MathUtils::clamp(int n, int lower, int upper)
 
 float MathUtils::bound(float n, float lower, float upper)
 {
+	float lowerTemp = lower;
+
+	lower = std::min(lower, upper);
+	upper = std::max(lowerTemp, upper);
+
 	if (std::isnan(n) || !std::isfinite(n))
 	{
 		return lower;
 	}
 	
-	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
+	return std::max(lower, std::min(n, upper));
 }
 
 int MathUtils::bound(int n, int lower, int upper)
 {
-	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
+	int lowerTemp = lower;
+
+	lower = std::min(lower, upper);
+	upper = std::max(lowerTemp, upper);
+	
+	return std::max(lower, std::min(n, upper));
 }
 
 float MathUtils::wrappingNormalize(float value, float start, float end)

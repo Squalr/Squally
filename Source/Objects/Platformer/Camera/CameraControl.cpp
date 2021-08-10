@@ -71,27 +71,17 @@ void CameraControl::beginTrack()
 		return;
 	}
 
-	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
+	CameraTrackingData trackingData = this->cameraTarget->getTrackingData();
 
-	if (trackingData == nullptr || trackingData->target == this->cameraTarget)
-	{
-		return;
-	}
+	trackingData.id = this->getUniqueIdentifier();
 
-	GameCamera::getInstance()->pushTarget(this->cameraTarget->getTrackingData());
+	GameCamera::getInstance()->pushTarget(trackingData);
 }
 
 void CameraControl::endTrack()
 {
-	if (this->cameraTarget == nullptr)
+	if (this->cameraTarget != nullptr)
 	{
-		return;
-	}
-
-	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
-
-	if (trackingData == nullptr || trackingData->target == this->cameraTarget)
-	{
-		GameCamera::getInstance()->popTarget();
+		GameCamera::getInstance()->removeTarget(this->getUniqueIdentifier());
 	}
 }

@@ -21,6 +21,7 @@ public:
 
 private:
 	typedef GameObject super;
+	
 	CameraTarget(cocos2d::ValueMap& properties);
 	virtual ~CameraTarget();
 

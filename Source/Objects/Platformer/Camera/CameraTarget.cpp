@@ -62,6 +62,8 @@ CameraTrackingData CameraTarget::getTrackingData()
 		Vec2::ZERO,
 		CameraTrackingData::CameraScrollType::Rectangle,
 		cocos2d::Vec2(0.015f, 0.015f),
-		this->zoom
+		this->zoom,
+		nullptr,
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString()
 	);
 }
