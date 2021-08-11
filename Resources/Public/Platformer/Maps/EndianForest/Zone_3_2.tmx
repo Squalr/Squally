@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="752">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="752">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -337,18 +337,18 @@
   </properties>
   <object id="692" name="orc-bomber" type="entity" x="2533.82" y="1892.34" width="128" height="128">
    <properties>
-    <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="693" name="orc-bomber" type="entity" x="2535.4" y="1647.91" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

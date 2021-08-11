@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="955">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -147,6 +147,25 @@
    <properties>
     <property name="map" value="UnderflowRuins/Home_Aphrodite"/>
     <property name="transition" value="home"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="103" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="953" name="seagull" type="entity" x="1465.9" y="1771.24" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="954" name="seagull" type="entity" x="1809.41" y="1774.42" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
  </objectgroup>
@@ -312,12 +331,43 @@
     <property name="transition" value="water"/>
    </properties>
   </object>
+  <object id="952" name="solid-npc" type="collision" x="2074.99" y="962.327" width="126.878" height="1071.38"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="946" name="seagull" type="entity" x="353.563" y="1898.98" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="947" name="seagull" type="entity" x="293.297" y="1896.83" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="948" name="seagull" type="entity" x="1182.23" y="1886.06" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="950" name="seagull" type="entity" x="1653.61" y="1886.06" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="951" name="seagull" type="entity" x="1860.24" y="1896.83" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

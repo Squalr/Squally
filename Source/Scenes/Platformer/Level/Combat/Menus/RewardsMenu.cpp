@@ -194,7 +194,7 @@ void RewardsMenu::giveExp()
 
 void RewardsMenu::loadRewards()
 {
-	ObjectEvents::QueryObject<PlatformerEnemy>([&](PlatformerEnemy* enemy)
+	ObjectEvents::QueryObjects<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
 		enemy->getComponent<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
