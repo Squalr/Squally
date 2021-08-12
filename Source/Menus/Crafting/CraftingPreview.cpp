@@ -86,7 +86,7 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 		{
 			LocalizedString* counts = Strings::Common_XOverY::create();
 			counts->setStringReplacementVariables({ ConstantString::create(std::to_string(existingCount)), ConstantString::create(std::to_string(requiredCount)) });
-			this->buildPreview(item, counts, index++, existingCount < requiredCount);
+			this->buildPreview(item, counts, index++, existingCount >= requiredCount);
 		}
 
 		canCraft &= (existingCount >= requiredCount);
