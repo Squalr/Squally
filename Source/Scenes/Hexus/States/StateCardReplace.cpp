@@ -93,6 +93,13 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 {
 	super::onStateEnter(gameState);
 
+	gameState->enemyBinaryCards->disableRowCardInteraction();
+	gameState->enemyDecimalCards->disableRowCardInteraction();
+	gameState->enemyHexCards->disableRowCardInteraction();
+	gameState->playerBinaryCards->disableRowCardInteraction();
+	gameState->playerDecimalCards->disableRowCardInteraction();
+	gameState->playerHexCards->disableRowCardInteraction();
+
 	if (gameState->cardReplaceCount > 0)
 	{
 		this->doneButton->enableInteraction(0);

@@ -7,6 +7,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
@@ -57,6 +58,13 @@ void StateCoinFlip::onBeforeStateEnter(GameState* gameState)
 void StateCoinFlip::onStateEnter(GameState* gameState)
 {
 	super::onStateEnter(gameState);
+
+	gameState->enemyBinaryCards->enableRowCardInteraction();
+	gameState->enemyDecimalCards->enableRowCardInteraction();
+	gameState->enemyHexCards->enableRowCardInteraction();
+	gameState->playerBinaryCards->enableRowCardInteraction();
+	gameState->playerDecimalCards->enableRowCardInteraction();
+	gameState->playerHexCards->enableRowCardInteraction();
 
 	// No coin flip after the first round
 	if (gameState->roundNumber >= 1)
