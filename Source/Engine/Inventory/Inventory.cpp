@@ -219,7 +219,13 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 void Inventory::forceInsert(Item* item, bool doSave)
 {
-	if (item != nullptr)
+	this->forceInsert(item, nullptr, nullptr, doSave);
+}
+
+void Inventory::forceInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
+{
+	// We still want to do unqiue checks on forced inserts, but ignore capacity checks
+	if (item != nullptr && this->canInsertItemIfUnique(item))
 	{
 		this->itemsNode->addChild(item);
 		this->items.push_back(item);
@@ -230,6 +236,18 @@ void Inventory::forceInsert(Item* item, bool doSave)
 		}
 
 		this->rebuildLookupTable();
+
+		if (onInsert != nullptr)
+		{
+			onInsert(item);
+		}
+	}
+	else
+	{
+		if (onInsertFailed != nullptr)
+		{
+			onInsertFailed(item);
+		}
 	}
 }
 
@@ -289,7 +307,7 @@ void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::
 		[=](Item* removedItem)
 		{
 			// Return the first removed item to where it came from
-			other->forceInsert(otherRemovedItem);
+			other->forceInsert(otherRemovedItem, true);
 
 			LogUtils::logError("Error removing self item during transaction");
 
@@ -341,23 +359,36 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 bool Inventory::canInsertItemIfUnique(Item* item)
 {
 	int uniqueCount = item->getUniqueCount();
+	int foundCount = 0;
+	bool hasUniqueCount = uniqueCount > 0;
 
-	if (uniqueCount >= 1)
+	if (hasUniqueCount && item != nullptr)
 	{
-		// Count how many duplicates exist
-		for (auto next : this->items)
+		// Optimization for the case where the unique count is 1
+		if (uniqueCount == 1)
 		{
-			if (item->getIdentifier() == next->getIdentifier())
+			if (this->itemLookup.contains(item->getIdentifier()))
 			{
-				uniqueCount--;
+				foundCount++;
 			}
 		}
-
-		// Unique cap hit!
-		if (uniqueCount <= 0)
+		else
 		{
-			return false;
+			// Count how many duplicates exist
+			for (Item* next : this->items)
+			{
+				if (next != nullptr && item->getIdentifier() == next->getIdentifier())
+				{
+					foundCount++;
+				}
+			}
 		}
+	}
+
+	// Unique cap hit!
+	if (hasUniqueCount && foundCount >= uniqueCount)
+	{
+		return false;
 	}
 
 	return true;

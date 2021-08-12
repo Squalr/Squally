@@ -155,8 +155,15 @@ void SquallyReceiveItemBehavior::obtainItems(const std::vector<Item*>& items, Lo
 				continue;
 			}
 
-			itemsById[item->getIdentifier()].push_back(item);
-			entityInventoryBehavior->getInventory()->forceInsert(item, false);
+			entityInventoryBehavior->getInventory()->forceInsert(item,
+			[&](Item* item)
+			{
+				itemsById[item->getIdentifier()].push_back(item);
+			},
+			[&](Item*)
+			{
+			},
+			false);
 		}
 
 		entityInventoryBehavior->getInventory()->save();

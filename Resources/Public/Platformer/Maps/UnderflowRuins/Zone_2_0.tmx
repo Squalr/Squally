@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -27,7 +27,7 @@
   </object>
   <object id="870" name="portal" type="object" x="3518" y="1151" width="256" height="256">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="map" value="UnderflowRuins/Zone_2_7"/>
     <property name="quest" value="lower-rope"/>
     <property name="quest-line" value="cure-town"/>
     <property name="tag" value="rope-portal"/>
