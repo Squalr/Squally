@@ -272,7 +272,7 @@ void PlatformerEntity::optimizationHideOffscreenEntity()
 	// Slight padding for any rendering beyond the entity hitbox
 	static const CSize Padding = CSize(384.0f, 384.0f);
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	CRect thisRect = GameUtils::getScreenBounds(this->animationNode, Padding);
+	CRect thisRect = GameUtils::getScreenBounds(this->animationNode, this->getEntitySize() + Padding);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{
