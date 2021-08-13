@@ -76,15 +76,9 @@ GameObject::GameObject() : GameObject(ValueMap())
 GameObject::GameObject(const ValueMap& properties) : super()
 {
 	this->properties = properties;
-	this->zSorted = false;
-	this->despawned = false;
-	this->tags = std::set<std::string>();
-	this->polylinePoints = std::vector<Vec2>();
-	this->stateVariables = ValueMap();
 	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
-	this->component = std::vector<GameComponent*>();
 
 	std::vector<std::string> parsedTags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
@@ -253,42 +247,42 @@ std::string GameObject::getUniqueIdentifier()
 	return this->uniqueIdentifier;
 }
 
-void GameObject::attachBehavior(GameComponent* component)
+void GameObject::attachComponent(GameComponent* component)
 {
 	if (this->isDespawned() || component == nullptr || component->isInvalidated())
 	{
 		return;
 	}
 
-	this->component.push_back(component);
+	this->components.push_back(component);
 	this->addChild(component);
 }
 
-void GameObject::detachAllBehavior()
+void GameObject::detachAllComponents()
 {
 	if (this->isDespawned())
 	{
 		return;
 	}
 
-	for (auto next : this->component)
+	for (GameComponent* next : this->components)
 	{
 		next->onDisable();
 	}
 
-	this->component.clear();
+	this->components.clear();
 }
 
-void GameObject::detachBehavior(GameComponent* component)
+void GameObject::detachComponent(GameComponent* component)
 {
 	if (this->isDespawned() || component == nullptr)
 	{
 		return;
 	}
 
-	if (std::find(this->component.begin(), this->component.end(), component) != this->component.end())
+	if (std::find(this->components.begin(), this->components.end(), component) != this->components.end())
 	{
-		this->component.erase(std::remove(this->component.begin(), this->component.end(), component), this->component.end());
+		this->components.erase(std::remove(this->components.begin(), this->components.end(), component), this->components.end());
 
 		// Note: Removing children at runtime is unsafe. The best we can do is disable it.
 		component->onDisable();
@@ -580,11 +574,11 @@ void GameObject::despawn(float despawnDelay)
 
 void GameObject::onDespawn()
 {
-	std::vector<GameComponent*> behaviorClone = this->component;
+	std::vector<GameComponent*> componentsclone = this->components;
 
-	for (auto behavior : behaviorClone)
+	for (GameComponent* component : componentsclone)
 	{
-		this->detachBehavior(behavior);
+		this->detachComponent(component);
 	}
 	
 	this->removeAllListeners();

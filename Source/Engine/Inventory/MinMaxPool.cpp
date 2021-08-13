@@ -31,7 +31,7 @@ MinMaxPool::~MinMaxPool()
 {
 }
 
-Item* MinMaxPool::getItem(std::vector<Inventory*> inventories)
+Item* MinMaxPool::getItem(const std::vector<Inventory*>& inventories)
 {
 	if (this->sampleMethod != SampleMethod::Unbounded)
 	{
@@ -46,13 +46,13 @@ Item* MinMaxPool::getItem(std::vector<Inventory*> inventories)
 	return this->getItemFromPool(true, inventories);
 }
 
-std::vector<Item*> MinMaxPool::getItems(std::vector<Inventory*> inventories)
+std::vector<Item*> MinMaxPool::getItems(const std::vector<Inventory*>& inventories)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
-	for (auto nestedPool : this->nestedPools)
+	for (MinMaxPool* nestedPool : this->nestedPools)
 	{
-		for (auto item : nestedPool->getItems(inventories))
+		for (Item* item : nestedPool->getItems(inventories))
 		{
 			items.push_back(item);
 		}

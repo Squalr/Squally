@@ -26,7 +26,6 @@ CurrencyInventory* CurrencyInventory::create(std::map<std::string, int> currency
 CurrencyInventory::CurrencyInventory(std::map<std::string, int> currency, std::string saveKey)
 {
 	this->saveKey = saveKey;
-	this->currencyMap = ValueMap();
 	this->load();
 
 	for (auto next : currency)

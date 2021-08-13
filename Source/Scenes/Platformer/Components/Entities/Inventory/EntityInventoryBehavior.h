@@ -12,7 +12,7 @@ class EntityInventoryBehavior : public GameComponent
 public:
 	static EntityInventoryBehavior* create(GameObject* owner);
 
-	std::vector<Inventory*> getAllInventories();
+	const std::vector<Inventory*>& getAllInventories();
 	Inventory* getInventory();
 	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();
@@ -30,6 +30,10 @@ protected:
 
 private:
 	typedef GameComponent super;
+
+	void buildAllInventories();
+
+	std::vector<Inventory*> allInventories;
 	
 	Inventory* inventory;
 	EquipmentInventory* equipmentInventory;

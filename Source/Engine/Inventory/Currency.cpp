@@ -5,7 +5,6 @@ using namespace cocos2d;
 
 Currency::Currency()
 {
-	this->count = 0;
 }
 
 Currency::~Currency()

@@ -159,10 +159,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 
 GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, CSize unitSize, CSize tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds)
 {
-	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
-	this->tileLayers = std::vector<TileLayer*>();
-	this->layersToSort = std::vector<TileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;

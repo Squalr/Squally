@@ -129,7 +129,7 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->resetButton->setClickSound(SoundResources::Menus_ButtonClick5);
 
-	this->shopKeeper->attachBehavior(EntityDialogueBehavior::create(this->shopKeeper));
+	this->shopKeeper->attachComponent(EntityDialogueBehavior::create(this->shopKeeper));
 	this->storeBack->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->storeFront->setAnchorPoint(Vec2(0.0f, 0.5f));
 

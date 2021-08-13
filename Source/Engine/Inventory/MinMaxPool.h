@@ -10,8 +10,8 @@ class Inventory;
 class MinMaxPool : public ItemPool
 {
 public:
-	Item* getItem(std::vector<Inventory*> inventories);
-	std::vector<Item*> getItems(std::vector<Inventory*> inventories);
+	Item* getItem(const std::vector<Inventory*>& inventories);
+	std::vector<Item*> getItems(const std::vector<Inventory*>& inventories);
 
 	enum class SampleMethod
 	{
@@ -38,8 +38,8 @@ private:
 
 	void calculateWeightSum();
 
-	SampleMethod sampleMethod;
+	SampleMethod sampleMethod = SampleMethod::Random;
 	std::vector<MinMaxPool*> nestedPools;
 
-	int itemCount;
+	int itemCount = 0;
 };

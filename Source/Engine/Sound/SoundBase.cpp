@@ -23,14 +23,6 @@ SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(pr
 {
 	this->activeTrackId = SoundBase::INVALID_ID;
 	this->soundResource = soundResource;
-	this->enableCameraDistanceFade = false;
-	this->isFading = false;
-	this->hasVolumeOverride = false;
-	this->fadeMultiplier = 1.0f;
-	this->distanceMultiplier = 1.0f;
-	this->customMultiplier = 1.0f;
-	this->onFadeOutCallback = nullptr;
-	this->destroyOnFadeOut = false;
 }
 
 SoundBase::~SoundBase()

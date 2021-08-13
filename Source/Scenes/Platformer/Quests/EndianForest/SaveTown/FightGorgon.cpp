@@ -128,7 +128,7 @@ void FightGorgon::onLoad(QuestState questState)
 				this->defer([=]()
 				{
 					this->killRammedEnemies();
-					this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
+					this->gorgon->attachComponent(LookAtSquallyBehavior::create(this->gorgon));
 				});
 
 				this->listenForMapEventOnce(FightGorgon::MarkerTagBack, [=](ValueMap)
@@ -301,7 +301,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			igneus->attachBehavior(MageCastBehavior::create(igneus));
+			igneus->attachComponent(MageCastBehavior::create(igneus));
 		});
 	}, Igneus::MapKey);
 
@@ -309,7 +309,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			alder->attachBehavior(MageCastBehavior::create(alder));
+			alder->attachComponent(MageCastBehavior::create(alder));
 		});
 	}, Alder::MapKey);
 
@@ -317,7 +317,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			sarude->attachBehavior(MageCastBehavior::create(sarude));
+			sarude->attachComponent(MageCastBehavior::create(sarude));
 		});
 	}, Sarude::MapKey);
 
@@ -325,7 +325,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			aster->attachBehavior(MageCastBehavior::create(aster));
+			aster->attachComponent(MageCastBehavior::create(aster));
 		});
 	}, Aster::MapKey);
 
@@ -333,7 +333,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			merlin->attachBehavior(MageCastBehavior::create(merlin));
+			merlin->attachComponent(MageCastBehavior::create(merlin));
 		});
 	}, Merlin::MapKey);
 }

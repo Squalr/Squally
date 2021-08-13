@@ -301,7 +301,7 @@ void PlatformerComponentDeserializer::deserializeProperties(GameObject* owner, V
 
 			if (component != nullptr)
 			{
-				owner->attachBehavior(component);
+				owner->attachComponent(component);
 			}
 		}
 	}

@@ -271,7 +271,7 @@ void MiniMap::initializeMapData()
 		this->miniMapTerrainObjects[terrainObject] = GameUtils::getDepthUntil<MiniGameMap>(terrainObject);
 
 		terrainObject->setPositionZ(0.0f);
-		terrainObject->detachAllBehavior();
+		terrainObject->detachAllComponents();
 	});
 
 	GameUtils::getChildrenOfType<MiniMapObject>(this->map, [=](MiniMapObject* miniMapObject)
@@ -280,7 +280,7 @@ void MiniMap::initializeMapData()
 		this->miniMapObjects[miniMapObject] = GameUtils::getDepthUntil<MiniGameMap>(miniMapObject);
 
 		miniMapObject->setPositionZ(0.0f);
-		miniMapObject->detachAllBehavior();
+		miniMapObject->detachAllComponents();
 	});
 
 	if (this->map != nullptr)

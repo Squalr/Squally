@@ -22,5 +22,5 @@ protected:
 private:
 	typedef GameObject super;
 	
-	cocos2d::Sprite* innerSprite;
+	cocos2d::Sprite* innerSprite = nullptr;
 };

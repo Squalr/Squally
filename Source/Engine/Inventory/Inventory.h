@@ -95,7 +95,7 @@ private:
 
 	bool disableLookupTableRebuilding;
 
-	cocos2d::Node* itemsNode;
+	cocos2d::Node* itemsNode = nullptr;
 
 	std::string saveKey;
 

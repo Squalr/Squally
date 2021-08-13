@@ -240,7 +240,7 @@ void SquallyShip::onCrash()
 		[&]()
 		{
 			squally->setPosition(crashCoords);
-			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
+			squally->attachComponent(SquallyBehaviorGroup::create(squally));
 
 			squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{

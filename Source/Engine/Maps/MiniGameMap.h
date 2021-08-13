@@ -44,6 +44,6 @@ private:
 	std::string levelMapFileName;
 	cocos2d::CSize mapUnitSize;
 	cocos2d::CSize mapTileSize;
-	bool disableEvents;
-	bool disableBounds;
+	bool disableEvents = true;
+	bool disableBounds = true;
 };

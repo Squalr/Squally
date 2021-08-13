@@ -37,5 +37,5 @@ private:
 	typedef MapLayer super;
 	cocos2d::cocos_experimental::TMXLayer* tileLayer;
 
-	bool objectified;
+	bool objectified = false;
 };

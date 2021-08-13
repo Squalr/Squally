@@ -8,7 +8,7 @@ GameComponentGroup::GameComponentGroup(GameObject* owner, std::vector<GameCompon
 {
 	for (auto next : component)
 	{
-		owner->attachBehavior(next);
+		owner->attachComponent(next);
 	}
 }
 

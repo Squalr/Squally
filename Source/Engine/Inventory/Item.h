@@ -13,31 +13,29 @@ public:
 	struct RubberBanding
 	{
 		// The "expected value" that the player should have
-		int rubberBand;
+		int rubberBand = -1;
 
 		// Standard deviation to place around
-		float rubberBandFactor;
+		float rubberBandFactor = 0.0f;
 
-		RubberBanding() : rubberBand(-1), rubberBandFactor(0.0f) { }
 		RubberBanding(int rubberBand, float rubberBandFactor) : rubberBand(rubberBand), rubberBandFactor(rubberBandFactor) { }
+		RubberBanding() { }
 	};
 
 	struct ItemMeta
 	{
 		// How many of this item can exist in a stack;
-		int stackSize;
+		int stackSize = 1;
 
 		// How many of this item can exist in inventories.
-		int unique;
+		int unique = -1;
 
 		RubberBanding rubberBanding;
-
-		ItemMeta(int stackSize) : stackSize(stackSize), rubberBanding(RubberBanding()) { }
-		ItemMeta(int stackSize, int unique) : stackSize(stackSize), unique(unique), rubberBanding(RubberBanding()) { }
-		ItemMeta(int stackSize, int unique, RubberBanding rubberBanding) : stackSize(stackSize), unique(unique), rubberBanding(rubberBanding) { }
-		ItemMeta(int stackSize, RubberBanding rubberBanding) : stackSize(stackSize), unique(-1), rubberBanding(rubberBanding) { }
-		ItemMeta(RubberBanding rubberBanding) : stackSize(1), unique(-1), rubberBanding(rubberBanding) { }
-		ItemMeta() : stackSize(1), unique(-1), rubberBanding(RubberBanding()) { }
+		
+		ItemMeta(int stackSize, int unique = -1, RubberBanding rubberBanding = RubberBanding()) : stackSize(stackSize), unique(unique), rubberBanding(rubberBanding) { }
+		ItemMeta(int stackSize, RubberBanding rubberBanding) : stackSize(stackSize), rubberBanding(rubberBanding) { }
+		ItemMeta(RubberBanding rubberBanding) : rubberBanding(rubberBanding) { }
+		ItemMeta() { }
 	};
 
 	virtual Item* clone() = 0;
@@ -62,5 +60,5 @@ private:
 	typedef SmartNode super;
 
 	ItemMeta itemMeta;
-	CurrencyInventory* cost;
+	CurrencyInventory* cost = nullptr;
 };

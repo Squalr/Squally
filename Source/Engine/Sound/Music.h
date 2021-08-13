@@ -34,7 +34,6 @@ private:
 
 	void cancelIfDelayed();
 
-	bool orphaned;
-
-	Track* owner;
+	Track* owner = nullptr;
+	bool orphaned = false;
 };

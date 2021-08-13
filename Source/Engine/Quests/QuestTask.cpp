@@ -18,8 +18,6 @@ QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questT
 	this->questLine = questLine;
 	this->questTask = questTask;
 	this->isSkippable = skippable;
-	this->hasLoaded = false;
-	this->completeCalled = false;
 
 	if (this->questLine != nullptr)
 	{

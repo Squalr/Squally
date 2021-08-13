@@ -51,7 +51,7 @@ private:
 
 	std::string questLine;
 	std::vector<QuestData> quests;
-	QuestLine* prereq;
+	QuestLine* prereq = nullptr;
 	std::string prereqTask = "";
 
 	static const std::string QuestLineSaveKeyComplete;

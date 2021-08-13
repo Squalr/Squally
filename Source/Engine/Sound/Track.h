@@ -26,7 +26,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	Music* music;
-	LocalizedString* trackName;
-	LocalizedString* artistName;
+	Music* music = nullptr;
+	LocalizedString* trackName = nullptr;
+	LocalizedString* artistName = nullptr;
 };

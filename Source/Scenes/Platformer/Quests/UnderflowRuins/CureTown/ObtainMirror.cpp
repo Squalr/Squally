@@ -146,7 +146,7 @@ void ObtainMirror::runCinematicSequencePt2()
 
 	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guano);
 
-	this->guanoPetrified->attachBehavior(unpetrifySfxBehavior);
+	this->guanoPetrified->attachComponent(unpetrifySfxBehavior);
 
 	unpetrifySfxBehavior->unpetrify();
 
@@ -275,7 +275,7 @@ void ObtainMirror::attachGuanoSpawnBehaviors()
 
 	GuanoUnpetrifyParticleBehavior* unpetrifyParticleBehavior = GuanoUnpetrifyParticleBehavior::create(this->guano);
 
-	this->guano->attachBehavior(unpetrifyParticleBehavior);
+	this->guano->attachComponent(unpetrifyParticleBehavior);
 
 	unpetrifyParticleBehavior->unpetrify();
 }

@@ -108,14 +108,10 @@ MiniGameMap* MiniGameMap::deserialize(std::string mapFileName, cocos_experimenta
 
 MiniGameMap::MiniGameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, CSize unitSize, CSize tileSize)
 {
-	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
-	this->tileLayers = std::vector<TileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
-	this->disableEvents = true;
-	this->disableBounds = true;
 
 	for (auto next : this->mapLayers)
 	{

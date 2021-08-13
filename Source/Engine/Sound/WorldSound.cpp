@@ -31,7 +31,6 @@ WorldSound* WorldSound::create(ValueMap& properties, std::string soundResource)
 
 WorldSound::WorldSound(ValueMap& properties, std::string soundResource) : super(properties, soundResource)
 {
-	this->zDepthEnabled = false;
 }
 
 WorldSound::~WorldSound()

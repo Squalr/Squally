@@ -80,7 +80,7 @@ void EntityPickPocketBehavior::onLoad()
 	{
 		if (this->entity->getComponent<EntitySelectionBehavior>() == nullptr)
 		{
-			this->entity->attachBehavior(EntitySelectionBehavior::create(this->entity));
+			this->entity->attachComponent(EntitySelectionBehavior::create(this->entity));
 		}
 
 		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)

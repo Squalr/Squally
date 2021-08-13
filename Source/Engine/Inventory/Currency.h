@@ -22,5 +22,5 @@ protected:
 private:
 	typedef SmartNode super;
 
-	int count;
+	int count = 0;
 };

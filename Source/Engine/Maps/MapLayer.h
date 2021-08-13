@@ -39,5 +39,5 @@ protected:
 private:
 	typedef GameObject super;
 
-	bool autoZSort;
+	bool autoZSort = false;
 };

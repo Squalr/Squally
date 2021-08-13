@@ -37,6 +37,8 @@ EntityInventoryBehavior::EntityInventoryBehavior(GameObject* owner, std::string 
 		this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
 		this->currencyInventory = CurrencyInventory::create(currencySaveKey);
 
+		this->buildAllInventories();
+
 		this->addChild(this->inventory);
 		this->addChild(this->equipmentInventory);
 		this->addChild(this->currencyInventory);
@@ -56,9 +58,9 @@ void EntityInventoryBehavior::onDisable()
 	super::onDisable();
 }
 
-std::vector<Inventory*> EntityInventoryBehavior::getAllInventories()
+const std::vector<Inventory*>& EntityInventoryBehavior::getAllInventories()
 {
-	return { this->inventory, this->equipmentInventory };
+	return allInventories;
 }
 
 Inventory* EntityInventoryBehavior::getInventory()
@@ -80,4 +82,12 @@ void EntityInventoryBehavior::redirectInventoryTo(Inventory* inventory)
 {
 	// This is devil magic to allow helpers in combat to share an inventory. Their inventories are simply redirected to point to the players.
 	this->inventory = inventory;
+	this->buildAllInventories();
+}
+
+void EntityInventoryBehavior::buildAllInventories()
+{
+	this->allInventories.clear();
+	this->allInventories.push_back(this->inventory);
+	this->allInventories.push_back(this->equipmentInventory);
 }

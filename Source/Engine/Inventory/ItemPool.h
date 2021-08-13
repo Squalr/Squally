@@ -21,10 +21,10 @@ protected:
 	void initializeListeners() override;
 
 	int getPoolSize();
-	virtual Item* getItemFromPool(bool removeSampledItem, std::vector<Inventory*> inventories);
-	virtual Item* getItemFromPoolGuaranteed(bool removeSampledItem, std::vector<Inventory*> inventories);
-	virtual std::vector<Item*> getItemsFromPool(int count, std::vector<Inventory*> inventories, bool removeSampledItems);
-	virtual std::vector<Item*> getItemsFromPoolGuaranteed(int count, std::vector<Inventory*> inventories, bool removeSampledItems);
+	virtual Item* getItemFromPool(bool removeSampledItem, const std::vector<Inventory*>& inventories);
+	virtual Item* getItemFromPoolGuaranteed(bool removeSampledItem, const std::vector<Inventory*>& inventories);
+	virtual std::vector<Item*> getItemsFromPool(int count, const std::vector<Inventory*>& inventories, bool removeSampledItems);
+	virtual std::vector<Item*> getItemsFromPoolGuaranteed(int count, const std::vector<Inventory*>& inventories, bool removeSampledItems);
 	void addItemToPool(ItemChance* itemChance);
 	void removeItemFromPool(ItemChance* itemChance);
 	void toggleDisableShuffle(bool disableShuffle);
@@ -45,10 +45,10 @@ private:
 
 	void shuffleItems();
 
-	cocos2d::Node* itemsNode;
+	cocos2d::Node* itemsNode = nullptr;
 
 	std::vector<ProbabilityData> probabilityCache;
-	float probabilitySum;
-	bool disableShuffle;
-	bool cacheDirty;
+	float probabilitySum = 0.0f;
+	bool disableShuffle = false;
+	bool cacheDirty = true;
 };

@@ -16,9 +16,9 @@ class GameObject : public SmartNode
 {
 public:
 	std::string getUniqueIdentifier();
-	void attachBehavior(GameComponent* component);
-	void detachAllBehavior();
-	void detachBehavior(GameComponent* component);
+	void attachComponent(GameComponent* component);
+	void detachAllComponents();
+	void detachComponent(GameComponent* component);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
@@ -49,7 +49,7 @@ public:
 	template <class T>
 	T* getComponent()
 	{
-		for (auto next : component)
+		for (GameComponent* next : components)
 		{
 			if (dynamic_cast<T*>(next) != nullptr && next->isQueryable())
 			{
@@ -172,11 +172,11 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
-	bool despawned;
+	bool despawned = false;
 	std::set<std::string> tags;
-	bool zSorted;
+	bool zSorted = false;
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;
-	std::vector<GameComponent*> component;
+	std::vector<GameComponent*> components;
 };

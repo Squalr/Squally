@@ -29,7 +29,6 @@ Music* Music::createAndAddGlobally(Track* owner, std::string musicResource)
 Music::Music(ValueMap& properties, Track* owner, std::string musicResource) : super(properties, musicResource)
 {
 	this->owner = owner;
-	this->orphaned = false;
 }
 
 Music::~Music()

@@ -50,8 +50,8 @@ private:
 
 	std::string questTask;
 	QuestState questState;
-	bool isSkippable;
-	bool hasLoaded;
-	bool completeCalled;
+	bool isSkippable = false;
+	bool hasLoaded = false;
+	bool completeCalled = false;
 };
 

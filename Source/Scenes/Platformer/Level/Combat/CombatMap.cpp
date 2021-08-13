@@ -484,7 +484,7 @@ void CombatMap::spawnEntities()
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
 					{
-						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
+						entity->attachComponent(FriendlyCombatBehaviorGroup::create(entity));
 						friendlyEntities.push_back(entity);
 					}));
 
@@ -543,7 +543,7 @@ void CombatMap::spawnEntities()
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
 					{
-						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
+						entity->attachComponent(EnemyCombatBehaviorGroup::create(entity));
 
 						entity->getComponent<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 						{

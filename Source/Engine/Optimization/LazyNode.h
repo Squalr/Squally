@@ -70,5 +70,5 @@ private:
 	using super::getContentSize;
 
 	std::function<T*()> createFunc;
-	T* lazyInstance;
+	T* lazyInstance = nullptr;
 };

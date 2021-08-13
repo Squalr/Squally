@@ -140,7 +140,7 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 			this->onHexusLoss();
 		});
 
-		this->sarude->attachBehavior(behavior);
+		this->sarude->attachComponent(behavior);
 	}
 }
 

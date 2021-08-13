@@ -14,6 +14,7 @@ protected:
 
 private:
 	typedef GameObject super;
+	
 	PhysicsInitializer(cocos2d::ValueMap& properties);
 	~PhysicsInitializer();
 

@@ -28,17 +28,16 @@ protected:
 	void clearVolumeOverride();
 	float getVolume();
 
-	int activeTrackId;
-
+	int activeTrackId = 0;
 	std::string soundResource;
-	float fadeMultiplier;
-	float distanceMultiplier;
-	float customMultiplier;
-	bool enableCameraDistanceFade;
-	bool hasVolumeOverride;
-	bool isFading;
-	bool destroyOnFadeOut;
-	std::function<void()> onFadeOutCallback;
+	float fadeMultiplier = 1.0f;
+	float distanceMultiplier = 1.0f;
+	float customMultiplier = 1.0f;
+	bool enableCameraDistanceFade = false;
+	bool hasVolumeOverride = false;
+	bool isFading = false;
+	bool destroyOnFadeOut = false;
+	std::function<void()> onFadeOutCallback = nullptr;
 	
 	static const int INVALID_ID;
 

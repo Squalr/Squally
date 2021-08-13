@@ -56,7 +56,7 @@ void BeatTutorialA::onLoad(QuestState questState)
 			this->complete();
 		});
 		
-    	this->mage->attachBehavior(tutorialBehavior);
+    	this->mage->attachComponent(tutorialBehavior);
 	});
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
