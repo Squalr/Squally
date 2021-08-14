@@ -32,9 +32,6 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-private:
-	typedef SmartNode super;
-
 	cocos2d::Sprite* pauseWindow = nullptr;
 	LocalizedLabel* pauseLabel = nullptr;
 	ClickableNode* closeButton = nullptr;
@@ -48,4 +45,7 @@ private:
 	std::function<void()> resumeClickCallback = nullptr;
 	std::function<void()> optionsClickCallback = nullptr;
 	std::function<void()> quitToTitleClickCallback = nullptr;
+
+private:
+	typedef SmartNode super;
 };
