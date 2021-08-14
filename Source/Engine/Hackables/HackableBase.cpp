@@ -35,7 +35,6 @@ HackableBase::HackableBase(
 	this->cooldown = cooldown;
 	this->elapsedDuration = duration;
 	this->elapsedCooldown = cooldown;
-	this->isHackActive = false;
 
 	if (this->hackablePreview != nullptr)
 	{

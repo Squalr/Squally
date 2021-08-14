@@ -55,12 +55,13 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void onRowSelectClick();
 
-	float rowWidth;
-	float cardScale;
-	bool belongsToPlayer;
-	ClickableNode* rowSelectSprite;
-	std::function<void(CardRow*)> rowSelectCallback;
-	bool clearOperationsOnInsert;
+	float rowWidth = 0.0f;
+	float cardScale = 0.0f;
+	bool belongsToPlayer = false;
+	ClickableNode* rowSelectSprite = nullptr;
+	std::function<void(CardRow*)> rowSelectCallback = nullptr;
+	bool clearOperationsOnInsert = false;
 };

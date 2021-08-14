@@ -41,5 +41,6 @@ public:
 	float zoom = 1.0f;
 	std::function<cocos2d::Vec2()> customPositionFunction;
 	std::string id;
+	
 private:
 };

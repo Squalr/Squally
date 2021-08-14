@@ -31,8 +31,8 @@ protected:
 	virtual cocos2d::Vec2 getProjectileSpawnOffset();
 	virtual float getProjectileLifetime();
 
-	Projectile* cachedProjectile;
-	WorldSound* attackSound;
+	Projectile* cachedProjectile = nullptr;
+	WorldSound* attackSound = nullptr;
 
 protected:
 	virtual std::string getOutOfCombatAttackAnimation();
@@ -52,8 +52,7 @@ private:
 
 	void tryPerformShootProjectile();
 
-	bool isPerformingOutOfCombatAttack;
-
-	PlatformerEntity* entity;
-	cocos2d::Sprite* outOfCombatAttackDebug;
+	bool isPerformingOutOfCombatAttack = false;
+	PlatformerEntity* entity = nullptr;
+	cocos2d::Sprite* outOfCombatAttackDebug = nullptr;
 };

@@ -27,19 +27,8 @@ SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationR
 
 SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 {
-	this->bonesByName = std::map<std::string, std::map<std::string, SpriterAnimationBone*>>();
-	this->bonesByHash = std::map<std::string, std::map<int, SpriterAnimationBone*>>();
-	this->spritesByName = std::map<std::string, std::map<std::string, SpriterAnimationSprite*>>();
-	this->spritesByHash = std::map<std::string, std::map<int, SpriterAnimationSprite*>>();
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
-	this->isRepeating = true;
 	this->currentAnimation = SpriterAnimationNode::DefaultAnimationName;
-	this->previousTimelineTime = 0.0f;
-	this->timelineTime = 0.0f;
-	this->entityBonesByName = nullptr;
-	this->entityBonesByHash = nullptr;
-	this->entitySpritesByName = nullptr;
-	this->entitySpritesByHash = nullptr;
 	
 	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
 

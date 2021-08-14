@@ -26,8 +26,6 @@ UnlockButton* UnlockButton::create()
 
 UnlockButton::UnlockButton()
 {
-	this->activeCipherState = nullptr;
-
 	LocalizedLabel*	unlockLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Unlock::create());
 	LocalizedLabel*	unlockLabelHover = unlockLabel->clone();
 

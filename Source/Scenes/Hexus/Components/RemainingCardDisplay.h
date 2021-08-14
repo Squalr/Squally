@@ -35,18 +35,18 @@ private:
 	void enableCardDisplayInteraction();
 	void disableCardDisplayInteraction();
 
-	SmartParticles* particles;
+	SmartParticles* particles = nullptr;
 
-	ClickableNode* remainingCardSprite;
-	ConstantString* remainingCardStr;
-	LocalizedLabel* remainingCardLabel;
+	ClickableNode* remainingCardSprite = nullptr;
+	ConstantString* remainingCardStr = nullptr;
+	LocalizedLabel* remainingCardLabel = nullptr;
 
-	cocos2d::LayerColor* remainingCardMouseOverPanel;
-	LocalizedLabel* remainingCardMouseOverLabel;
+	cocos2d::LayerColor* remainingCardMouseOverPanel = nullptr;
+	LocalizedLabel* remainingCardMouseOverLabel = nullptr;
 
-	cocos2d::Sprite* enemyRemainingCardSprite;
-	ConstantString* enemyRemainingCardStr;
-	LocalizedLabel* enemyRemainingCardLabel;
+	cocos2d::Sprite* enemyRemainingCardSprite = nullptr;
+	ConstantString* enemyRemainingCardStr = nullptr;
+	LocalizedLabel* enemyRemainingCardLabel = nullptr;
 
-	LocalizedString* infinityString;
+	LocalizedString* infinityString = nullptr;
 };

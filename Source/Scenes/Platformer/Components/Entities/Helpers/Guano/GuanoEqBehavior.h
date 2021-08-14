@@ -21,5 +21,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	Guano* guano;
+	Guano* guano = nullptr;
 };

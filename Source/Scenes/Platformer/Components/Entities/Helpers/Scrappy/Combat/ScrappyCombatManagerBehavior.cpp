@@ -44,7 +44,6 @@ ScrappyCombatManagerBehavior::ScrappyCombatManagerBehavior(GameObject* owner) : 
 	}
 	
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
-	this->helperRef = nullptr;
 
 	this->addChild(this->platformerEntityDeserializer);
 }

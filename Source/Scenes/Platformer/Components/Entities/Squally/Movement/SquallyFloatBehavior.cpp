@@ -27,8 +27,6 @@ SquallyFloatBehavior::SquallyFloatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
-
-	this->elapsed = 0.0f;
 }
 
 SquallyFloatBehavior::~SquallyFloatBehavior()

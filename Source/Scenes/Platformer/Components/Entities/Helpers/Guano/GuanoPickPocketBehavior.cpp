@@ -37,8 +37,6 @@ GuanoPickPocketBehavior* GuanoPickPocketBehavior::create(GameObject* owner)
 GuanoPickPocketBehavior::GuanoPickPocketBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->isPickPocketing = false;
-	this->target = nullptr;
 
 	if (this->entity == nullptr)
 	{

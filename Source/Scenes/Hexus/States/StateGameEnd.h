@@ -24,9 +24,10 @@ protected:
 
 private:
 	typedef StateBase super;
+
 	void onBackClick(GameState* gameState);
 
-	ClickableTextNode* backButton;
-	Sound* defeatSound;
-	Sound* victorySound;
+	ClickableTextNode* backButton = nullptr;
+	Sound* defeatSound = nullptr;
+	Sound* victorySound = nullptr;
 };

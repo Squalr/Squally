@@ -41,8 +41,6 @@ RadialMenu* RadialMenu::create()
 
 RadialMenu::RadialMenu()
 {
-	this->activeHackableObject = nullptr;
-
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
 	this->previewNode = Node::create();

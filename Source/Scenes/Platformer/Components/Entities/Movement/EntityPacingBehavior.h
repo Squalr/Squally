@@ -26,9 +26,9 @@ private:
 	void assignDestination();
 	void cancelPacing();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	cocos2d::Vec2 spawnPosition;
-	float maxTravelDistance;
+	float maxTravelDistance = 0.0f;
 
 	static const float DefaultTravelDistanceMin;
 	static const float DefaultTravelDistanceMax;

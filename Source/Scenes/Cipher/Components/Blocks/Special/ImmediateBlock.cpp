@@ -46,7 +46,6 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	this->spriteDecSelected = Sprite::create(CipherResources::Blocks_BlockDecLong);
 	this->spriteHexSelected = Sprite::create(CipherResources::Blocks_BlockHexLong);
 	this->displayLabel = SmartAsciiLabel::create();
-	this->charValue = (unsigned char)(0);
 
 	this->spriteAscii->setAnchorPoint(Vec2::ZERO);
 	this->spriteBin->setAnchorPoint(Vec2::ZERO);

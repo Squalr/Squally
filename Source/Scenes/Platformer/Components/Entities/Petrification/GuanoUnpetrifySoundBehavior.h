@@ -22,6 +22,6 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
-	WorldSound* statueBreakSound;
+	PlatformerEntity* entity = nullptr;
+	WorldSound* statueBreakSound = nullptr;
 };

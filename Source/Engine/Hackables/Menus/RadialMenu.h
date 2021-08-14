@@ -36,11 +36,11 @@ private:
 	void buildRadialMenu(HackableObjectOpenArgs* args);
 	ClickableNode* createRadialNode(std::string iconResource, int requiredLevel, cocos2d::Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback);
 
-	HackableObject* activeHackableObject;
-	cocos2d::LayerColor* layerColor;
-	cocos2d::Sprite* background;
-	cocos2d::Node* previewNode;
-	cocos2d::Node* radialMenuItems;
+	HackableObject* activeHackableObject = nullptr;
+	cocos2d::LayerColor* layerColor = nullptr;
+	cocos2d::Sprite* background = nullptr;
+	cocos2d::Node* previewNode = nullptr;
+	cocos2d::Node* radialMenuItems = nullptr;
 
 	static const float Radius;
 	static const float IconRadius;

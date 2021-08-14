@@ -23,5 +23,5 @@ private:
 	
 	void saveState();
 
-	Gecky* guano;
+	Gecky* gecky = nullptr;
 };

@@ -33,17 +33,8 @@ EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int 
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->collisionType = collisionType | int(PlatformerCollisionType::Entity);
 	this->collisionTypeMovement = collisionTypeMovement | int(PlatformerCollisionType::EntityMovement);
-	this->entityCollision = nullptr;
-	this->movementCollision = nullptr;
-	this->groundCollision = nullptr;
-	this->headCollision = nullptr;
-	this->movementBehavior = nullptr;
-	this->leftCollision = nullptr;
-	this->rightCollision = nullptr;
-	this->movementCollisionBound = false;
 	this->submergeSound = WorldSound::create(SoundResources::Platformer_Environment_Splash1);
 	this->emergeSound = WorldSound::create(SoundResources::Platformer_Environment_Emerge1);
-	this->noEmergeSubmergeSoundCooldown = 1.0f;
 
 	if (this->entity == nullptr)
 	{

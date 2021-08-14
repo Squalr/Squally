@@ -23,5 +23,5 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	cocos2d::Sprite* cipherBackground;
+	cocos2d::Sprite* cipherBackground = nullptr;
 };

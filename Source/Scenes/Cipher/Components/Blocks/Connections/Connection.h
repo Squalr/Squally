@@ -34,14 +34,14 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* connectionLine;
-	cocos2d::Sprite* connectionCap;
+	cocos2d::Sprite* connectionLine = nullptr;
+	cocos2d::Sprite* connectionCap = nullptr;
 	cocos2d::Vec2 currentStretchPosition;
 
-	cocos2d::Sprite* connectionPulse;
-	Lightning* lightningEffectSource;
-	Lightning* lightningEffectDest;
+	cocos2d::Sprite* connectionPulse = nullptr;
+	Lightning* lightningEffectSource = nullptr;
+	Lightning* lightningEffectDest = nullptr;
 
-	bool trackBolt;
-	InputBolt* inputBolt;
+	bool trackBolt = false;
+	InputBolt* inputBolt = nullptr;
 };

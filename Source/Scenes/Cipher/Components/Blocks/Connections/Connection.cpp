@@ -33,9 +33,6 @@ Connection::Connection()
 	this->connectionPulse = Sprite::create(CipherResources::Connections_ConnectionPulse);
 	this->lightningEffectSource = Lightning::create();
 	this->lightningEffectDest = Lightning::create();
-	this->inputBolt = nullptr;
-	this->trackBolt = false;
-	this->currentStretchPosition = Vec2::ZERO;
 
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;

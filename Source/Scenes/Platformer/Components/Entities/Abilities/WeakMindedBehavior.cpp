@@ -30,7 +30,6 @@ WeakMindedBehavior* WeakMindedBehavior::create(GameObject* owner)
 WeakMindedBehavior::WeakMindedBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->glowAnim = nullptr;
 
 	if (this->entity == nullptr)
 	{

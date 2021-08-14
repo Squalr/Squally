@@ -24,10 +24,11 @@ protected:
 
 private:
 	typedef ComponentBase super;
+
 	void initializeCallbacks(GameState* gameState);
 	void onPreviewCard(Card* card);
 	void onPreviewCardBroadcast(Card* card);
 	void onCardMouseOut(Card* card);
 
-	CardPreview* cardPreview;
+	CardPreview* cardPreview = nullptr;
 };

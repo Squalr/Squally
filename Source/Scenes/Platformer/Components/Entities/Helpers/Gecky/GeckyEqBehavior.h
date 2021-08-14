@@ -21,5 +21,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	Gecky* guano;
+	Gecky* gecky = nullptr;
 };

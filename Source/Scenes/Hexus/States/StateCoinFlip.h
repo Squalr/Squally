@@ -23,5 +23,5 @@ protected:
 private:
 	typedef StateBase super;
 
-	SmartAnimationSequenceNode* coinAnimation;
+	SmartAnimationSequenceNode* coinAnimation = nullptr;
 };

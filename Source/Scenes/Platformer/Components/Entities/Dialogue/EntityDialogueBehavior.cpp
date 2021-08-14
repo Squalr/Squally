@@ -46,7 +46,6 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		Color4F::ORANGE,
 		true
 	);
-	this->scrappy = nullptr;
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
 
@@ -59,10 +58,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	));
 
 	this->speechBubble = LazyNode<SpeechBubble>::create(CC_CALLBACK_0(EntityDialogueBehavior::buildSpeechBubble, this));
-	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
-	this->dialogueSets = std::vector<DialogueSet*>();
 	this->activeDialogueSet = this->mainDialogueSet;
-	this->optionsVisible = false;
 
 	this->addDialogueSet(this->mainDialogueSet);
 

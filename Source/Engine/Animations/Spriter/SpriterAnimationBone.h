@@ -26,10 +26,10 @@ private:
 
 	void redrawDebugDraw();
 
-	float boneRotation;
+	float boneRotation = 0.0f;
 	cocos2d::CSize boneSize;
-	cocos2d::DrawNode* debugDraw;
-	int heirarchyDepth;
+	cocos2d::DrawNode* debugDraw = nullptr;
+	int heirarchyDepth = 0;
 	
 	static const std::vector<cocos2d::Color4F> DebugColorHeirarchy;
 };

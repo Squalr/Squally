@@ -31,11 +31,11 @@ private:
 
 	Squally* squally = nullptr;
 
-	bool leftPressed;
-	bool rightPressed;
-	bool upPressed;
-	bool downPressed;
+	bool isDisposing = false;
+	bool isPositionSavingDisabled = false;
 
-	bool isDisposing;
-	bool isPositionSavingDisabled;
+	static int LeftPressedKeys;
+	static int RightPressedKeys;
+	static int UpPressedKeys;
+	static int DownPressedKeys;
 };

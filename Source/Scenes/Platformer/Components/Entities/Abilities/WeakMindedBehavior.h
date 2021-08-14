@@ -25,6 +25,6 @@ private:
 	void onActivate();
 	void onDeactivate();
 
-	PlatformerEntity* entity;
-	SmartAnimationSequenceNode* glowAnim;
+	PlatformerEntity* entity = nullptr;
+	SmartAnimationSequenceNode* glowAnim = nullptr;
 };

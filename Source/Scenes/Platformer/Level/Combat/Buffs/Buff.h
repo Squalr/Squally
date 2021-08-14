@@ -65,7 +65,7 @@ protected:
 
 	BuffData buffData;
 	PlatformerEntity* caster;
-	PlatformerEntity* owner;
+	PlatformerEntity* owner = nullptr;
 	std::vector<HackableCode*> hackables;
 	AbilityType abilityType;
 

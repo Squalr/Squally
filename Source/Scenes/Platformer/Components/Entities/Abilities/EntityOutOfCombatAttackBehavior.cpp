@@ -33,8 +33,6 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Sword);
 	this->attackSound = WorldSound::create();
-	this->isPerformingOutOfCombatAttack = false;
-	this->cachedProjectile = nullptr;
 
 	if (this->entity == nullptr)
 	{

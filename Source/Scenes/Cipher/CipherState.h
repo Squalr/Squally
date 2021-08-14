@@ -43,12 +43,12 @@ public:
 	void loadPuzzleData(CipherPuzzleData* puzzleData);
 	void loadCipherAtIndex(int index);
 
-	StateType stateType;
-	StateType previousStateType;
-	int gameDurationInSeconds;
-	std::function<void(bool)> updateStateCallback;
+	StateType stateType = StateType::EmptyState;
+	StateType previousStateType = StateType::EmptyState;
+	int gameDurationInSeconds = 0;
+	std::function<void(bool)> updateStateCallback = nullptr;
 
-	CipherPuzzleData* puzzleData;
+	CipherPuzzleData* puzzleData = nullptr;
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap;
 	std::vector<std::string> tokens;
 
@@ -56,24 +56,25 @@ public:
 	std::vector<DestinationBlock*> outputBlocks;
 	std::vector<BlockBase*> userBlocks;
 	std::vector<Connection*> userConnections;
-	cocos2d::Node* inputContent;
-	cocos2d::Node* outputContent;
-	cocos2d::Node* blockContent;
-	cocos2d::Node* connectionContent;
-	CipherEvents::DisplayDataType displayDataType;
+	cocos2d::Node* inputContent = nullptr;
+	cocos2d::Node* outputContent = nullptr;
+	cocos2d::Node* blockContent = nullptr;
+	cocos2d::Node* connectionContent = nullptr;
+	CipherEvents::DisplayDataType displayDataType = CipherEvents::DisplayDataType::Ascii;
 	
-	cocos2d::LayerColor* gameAreaDebug;
+	cocos2d::LayerColor* gameAreaDebug = nullptr;
 
 	std::string currentInput;
 	std::string currentOutput;
 
-	CipherLock* cipherLockPointer;
-	cocos2d::Node* unlockPointer;
-	DisplayModeToggles* displayModeTogglesPointer;
+	CipherLock* cipherLockPointer = nullptr;
+	cocos2d::Node* unlockPointer = nullptr;
+	DisplayModeToggles* displayModeTogglesPointer = nullptr;
 
 protected:
 	CipherState();
 	virtual ~CipherState();
+
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;

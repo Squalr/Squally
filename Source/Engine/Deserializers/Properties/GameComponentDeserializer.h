@@ -10,7 +10,7 @@ class GameComponentDeserializer : public PropertyDeserializer
 public:
 	struct ComponentDeserializationRequestArgs
 	{
-		GameObject* owner;
+		GameObject* owner = nullptr;
 		std::string component;
 
 		ComponentDeserializationRequestArgs(GameObject* owner, std::string component):

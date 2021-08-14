@@ -6,7 +6,6 @@ class DeveloperModeController : public GlobalNode
 {
 public:
 	static void RegisterGlobalNode();
-
 	static bool isDeveloperModeEnabled();
 	static int getDebugLevel();
 	
@@ -24,8 +23,7 @@ protected:
 private:
 	typedef GlobalNode super;
 
-	static int CurrentDebugLevel;
-
 	static DeveloperModeController* instance;
+	static int CurrentDebugLevel;
 	static int MaxDebugLevel;
 };

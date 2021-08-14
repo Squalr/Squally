@@ -33,12 +33,12 @@ private:
 	void loadPuzzleData();
 	void selectInputOutputPairAtIndex(int index);
 	
-	LocalizedLabel* inputsHeaderLabel;
-	LocalizedLabel* outputsHeaderLabel;
-	ScrollPane* scrollPane;
-	cocos2d::Node* ioItemsNode;
-	cocos2d::Sprite* ioSelectionMarker;
+	LocalizedLabel* inputsHeaderLabel = nullptr;
+	LocalizedLabel* outputsHeaderLabel = nullptr;
+	ScrollPane* scrollPane = nullptr;
+	cocos2d::Node* ioItemsNode = nullptr;
+	cocos2d::Sprite* ioSelectionMarker = nullptr;
 
-	CipherState* currentCipherState;
+	CipherState* currentCipherState = nullptr;
 	std::vector<InputOutputItem*> ioItems;
 };

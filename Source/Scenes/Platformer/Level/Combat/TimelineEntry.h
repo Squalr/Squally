@@ -70,7 +70,7 @@ private:
 	void cameraFocusEntry();
 
 	PlatformerAttack* currentCast;
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	EntityCombatBehaviorBase* combatBehavior;
 	std::vector<PlatformerEntity*> targets;
 	std::vector<TimelineEntry*> targetsAsEntries;

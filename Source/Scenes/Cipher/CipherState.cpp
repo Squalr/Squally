@@ -37,17 +37,11 @@ CipherState::CipherState()
 	cipherLockPointer(nullptr),
 	unlockPointer(nullptr)
 {
-	this->inputBlocks = std::vector<SourceBlock*>();
-	this->outputBlocks = std::vector<DestinationBlock*>();
-	this->userBlocks = std::vector<BlockBase*>();
-	this->userConnections = std::vector<Connection*>();
 	this->inputContent = Node::create();
 	this->outputContent = Node::create();
 	this->blockContent = Node::create();
 	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), CipherConfig::GameAreaWidth, CipherConfig::GameAreaHeight);
-	this->puzzleData = nullptr;
-	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 
 	for (int index = 0; index < CipherConfig::MaxInputOutputCount; index++)
 	{

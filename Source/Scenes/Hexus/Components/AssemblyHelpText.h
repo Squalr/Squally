@@ -29,11 +29,11 @@ protected:
 private:
 	typedef ComponentBase super;
 
-	LocalizedLabel* assemblyHelpLabel;
-	ConstantString* operationString;
-	ConstantString* sourceString;
-	ConstantString* destinationString;
-	GameState* gameState;
+	LocalizedLabel* assemblyHelpLabel = nullptr;
+	ConstantString* operationString = nullptr;
+	ConstantString* sourceString = nullptr;
+	ConstantString* destinationString = nullptr;
+	GameState* gameState = nullptr;
 
 	static const std::string SourceOperand;
 	static const std::string DestOperand;

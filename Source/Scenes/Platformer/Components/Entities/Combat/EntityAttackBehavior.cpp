@@ -42,11 +42,8 @@ EntityAttackBehavior::EntityAttackBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 
-	this->registeredAttacks = std::vector<PlatformerAttack*>();
-	this->registeredConsumables = std::vector<Consumable*>();
 	this->attacksNode = Node::create();
 	this->consumablessNode = Node::create();
-	this->consumablesStale = true;
 
 	this->toggleQueryable(false);
 

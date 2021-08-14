@@ -26,8 +26,6 @@ TestButton* TestButton::create()
 
 TestButton::TestButton()
 {
-	this->activeCipherState = nullptr;
-
 	LocalizedLabel*	testLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Test::create());
 	LocalizedLabel*	testLabelHover = testLabel->clone();
 

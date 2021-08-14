@@ -24,21 +24,12 @@ SpriterAnimationTimelineEventMainline* SpriterAnimationTimelineEventMainline::cr
 SpriterAnimationTimelineEventMainline::SpriterAnimationTimelineEventMainline(SpriterAnimationTimeline* timeline, float endTime, const SpriterAnimation& animation, const SpriterMainlineKey& mainlineKey)
 	: super(timeline, float(mainlineKey.time), endTime, mainlineKey.curveType, mainlineKey.c1, mainlineKey.c2, mainlineKey.c3, mainlineKey.c4)
 {
-	this->boneParentTable = std::map<int, int>();
-	this->objectParentTable = std::map<int, int>();
-	this->boneNameMap = std::map<int, std::string>();
-	this->objectNameMap = std::map<int, std::string>();
-	this->boneIdMap = std::map<std::string, int>();
-	this->objectIdMap = std::map<std::string, int>();
-	this->registeredAnimationEventsByPartName = std::map<std::string, SpriterAnimationTimelineEventAnimation*>();
-	this->roots = std::vector<SpriterAnimationTimelineEventAnimation*>();
-
-	for (auto boneRef : mainlineKey.boneRefs)
+	for (const SpriterBoneRef& boneRef : mainlineKey.boneRefs)
 	{
 		this->boneParentTable[boneRef.id] = boneRef.parent;
 
 		// If the profiler doesn't like this, we can switch to parsing an {int => timeline} map when we build the timelines to avoid a linear search here
-		for (const auto& animTimeline : animation.timelines)
+		for (const SpriterTimeline& animTimeline : animation.timelines)
 		{
 			if (animTimeline.id == boneRef.timeline)
 			{

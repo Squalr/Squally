@@ -28,19 +28,20 @@ protected:
 
 private:
 	typedef ComponentBase super;
+	
 	void onDrawCountDisplayMouseOver();
 	void onDrawCountDisplayMouseOut();
 	void enableDrawCountDisplayInteraction();
 	void disableDrawCountDisplayInteraction();
 
-	ClickableNode* drawCountSprite;
-	ConstantString* drawCountStr;
-	LocalizedLabel* drawCountLabel;
+	ClickableNode* drawCountSprite = nullptr;
+	ConstantString* drawCountStr = nullptr;
+	LocalizedLabel* drawCountLabel = nullptr;
 
-	cocos2d::LayerColor* deckDrawCountMouseOverPanel;
-	LocalizedLabel* deckDrawCountCardMouseOverLabel;
+	cocos2d::LayerColor* deckDrawCountMouseOverPanel = nullptr;
+	LocalizedLabel* deckDrawCountCardMouseOverLabel = nullptr;
 
-	cocos2d::Sprite* enemyDrawCountSprite;
-	ConstantString* enemyDrawCountStr;
-	LocalizedLabel* enemyDrawCountLabel;
+	cocos2d::Sprite* enemyDrawCountSprite = nullptr;
+	ConstantString* enemyDrawCountStr = nullptr;
+	LocalizedLabel* enemyDrawCountLabel = nullptr;
 };

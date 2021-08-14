@@ -26,15 +26,16 @@ protected:
 
 private:
 	typedef ComponentBase super;
+
 	void updateTotals(GameState* gameState);
 
-	cocos2d::LayerColor* playerHandCardCountFrame;
-	ConstantString* playerHandCardCountStr;
-	LocalizedLabel* playerHandCardCountLabel;
-	cocos2d::Sprite* playerHandCardIcon;
+	cocos2d::LayerColor* playerHandCardCountFrame = nullptr;
+	ConstantString* playerHandCardCountStr = nullptr;
+	LocalizedLabel* playerHandCardCountLabel = nullptr;
+	cocos2d::Sprite* playerHandCardIcon = nullptr;
 
-	cocos2d::LayerColor* enemyHandCardCountFrame;
-	ConstantString* enemyHandCardCountStr;
-	LocalizedLabel* enemyHandCardCountLabel;
-	cocos2d::Sprite* enemyHandCardIcon;
+	cocos2d::LayerColor* enemyHandCardCountFrame = nullptr;
+	ConstantString* enemyHandCardCountStr = nullptr;
+	LocalizedLabel* enemyHandCardCountLabel = nullptr;
+	cocos2d::Sprite* enemyHandCardIcon = nullptr;
 };

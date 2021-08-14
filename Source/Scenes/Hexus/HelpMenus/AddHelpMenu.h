@@ -31,24 +31,25 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void resetAnimation();
 	void runAnimationLoop();
 	void runCarryLoop(int currentResultValue, int carry);
 
-	LocalizedLabel* description;
-	Card* addCard;
-	ToggleCard* previewCardA;
-	ToggleCard* previewCardB;
-	cocos2d::Sprite* attackFrameA;
-	cocos2d::Sprite* attackFrameB;
-	cocos2d::Sprite* attackFrameC;
-	LocalizedLabel* animatedLabelA;
-	ConstantString* animatedLabelAValue;
-	LocalizedLabel* animatedLabelB;
-	ConstantString* animatedLabelBValue;
-	LocalizedLabel* animatedLabelC;
-	ConstantString* animatedLabelCValue;
-	LocalizedLabel* carryLabel;
-	ConstantString* carryLabelValue;
-	LocalizedLabel* decimalOverflowSubtraction;
+	LocalizedLabel* description = nullptr;
+	Card* addCard = nullptr;
+	ToggleCard* previewCardA = nullptr;
+	ToggleCard* previewCardB = nullptr;
+	cocos2d::Sprite* attackFrameA = nullptr;
+	cocos2d::Sprite* attackFrameB = nullptr;
+	cocos2d::Sprite* attackFrameC = nullptr;
+	LocalizedLabel* animatedLabelA = nullptr;
+	ConstantString* animatedLabelAValue = nullptr;
+	LocalizedLabel* animatedLabelB = nullptr;
+	ConstantString* animatedLabelBValue = nullptr;
+	LocalizedLabel* animatedLabelC = nullptr;
+	ConstantString* animatedLabelCValue = nullptr;
+	LocalizedLabel* carryLabel = nullptr;
+	ConstantString* carryLabelValue = nullptr;
+	LocalizedLabel* decimalOverflowSubtraction = nullptr;
 };

@@ -37,7 +37,6 @@ EnemyCombatEngageBehavior::EnemyCombatEngageBehavior(GameObject* owner) : super(
 {
 	this->enemy = dynamic_cast<PlatformerEnemy*>(owner);
 	this->engageSound = Sound::create(SoundResources::Platformer_Combat_CombatEngage1);
-	this->canEngage = true;
 
 	if (this->enemy == nullptr)
 	{

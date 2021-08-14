@@ -44,8 +44,6 @@ EntityPacingBehavior::EntityPacingBehavior(GameObject* owner) : super(owner)
 	{
 		this->maxTravelDistance = this->entity->getPropertyOrDefault(EntityPacingBehavior::PropertyTravelDistance, Value(EntityPacingBehavior::DefaultTravelDistanceMax)).asFloat();
 	}
-
-	this->spawnPosition = Vec2::ZERO;
 }
 
 EntityPacingBehavior::~EntityPacingBehavior()

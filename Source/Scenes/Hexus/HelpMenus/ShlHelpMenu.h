@@ -31,14 +31,15 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void resetAnimation();
 	void runAnimationLoop();
 
-	LocalizedLabel* description;
-	Card* rolCard;
-	ToggleCard* previewCard;
-	cocos2d::Sprite* attackFrame;
-	LocalizedLabel* newZero;
-	LocalizedLabel* animatedLabel;
-	ConstantString* animatedLabelValue;
+	LocalizedLabel* description = nullptr;
+	Card* rolCard = nullptr;
+	ToggleCard* previewCard = nullptr;
+	cocos2d::Sprite* attackFrame = nullptr;
+	LocalizedLabel* newZero = nullptr;
+	LocalizedLabel* animatedLabel = nullptr;
+	ConstantString* animatedLabelValue = nullptr;
 };

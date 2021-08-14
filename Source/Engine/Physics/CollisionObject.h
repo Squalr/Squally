@@ -32,10 +32,10 @@ enum class CollisionShape
 
 struct CollisionData
 {
-	CollisionObject* other;
-	float dt;
+	CollisionObject* other = nullptr;
+	float dt = 0.0f;
 
-	CollisionData() : other(nullptr), dt(0.0f) { }
+	CollisionData() { }
 	CollisionData(CollisionObject* other, float dt) : other(other), dt(dt) { }
 };
 
@@ -51,14 +51,14 @@ class CollisionObject : public GameObject
 public:
 	struct Properties
 	{
-		bool isDynamic;
-		bool canRotate;
+		bool isDynamic = false;
+		bool canRotate = false;
 
 		// Used in determining pushback on objects colliding. Pushing a massless object will result in no velocity loss.
-		float mass;
+		float mass = 0.0f;
 		
 		// Used in mitigating corrections applied in collisions. Helps smooth out otherwise rough collisions.
-		float softness;
+		float softness = 0.0f;
 
 		Properties() : isDynamic(true), canRotate(false), mass(1.0f), softness(1.0f) { }
 		Properties(bool isDynamic, bool canRotate, float mass = 1.0f, float softness = 1.0f) : isDynamic(isDynamic), canRotate(canRotate), mass(mass), softness(softness) { }
@@ -177,20 +177,20 @@ private:
 	unsigned int universeId = 0;
 	
 	// Shape
-	CollisionShape shape;
+	CollisionShape shape = CollisionShape::Polygon;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> pointsRotated;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segmentsRotated;
 	cocos2d::CRect boundsRect;
 
-	CollisionType collisionType;
+	CollisionType collisionType = 0;
 	std::vector<CollisionType> collisionTypes;
 	std::set<CollisionObject*>* currentCollisions;		// Will alternate between pointing to storage #1 and #2
 	std::set<CollisionObject*>* previousCollisions;		// Will point to the opposite storage as the current collisions
 	std::set<CollisionObject*> collisionsRed;			// Collision storage #1
 	std::set<CollisionObject*> collisionsBlack;			// Collision storage #2
-	GameObject* bindTarget;
+	GameObject* bindTarget = nullptr;
 
 	// Events
 	std::set<CollisionType> collidesWithTypes;
@@ -207,7 +207,7 @@ private:
 
 	// Debug
 	cocos2d::Color4F debugColor;
-	bool debugInfoSpawned;
-	cocos2d::Node* debugDrawNode;
-	cocos2d::DrawNode* debugDrawNodeConnectors;
+	bool debugInfoSpawned = false;
+	cocos2d::Node* debugDrawNode = nullptr;
+	cocos2d::DrawNode* debugDrawNodeConnectors = nullptr;
 };

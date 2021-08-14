@@ -56,9 +56,7 @@ private:
 
 	void repositionBuffIcons();
 
-	cocos2d::Node* buffNode;
-	
-	PlatformerEntity* entity;
-
+	cocos2d::Node* buffNode = nullptr;
+	PlatformerEntity* entity = nullptr;
 	std::vector<Buff*> buffs;
 };

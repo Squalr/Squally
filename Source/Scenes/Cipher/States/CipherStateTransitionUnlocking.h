@@ -30,6 +30,6 @@ protected:
 private:
 	typedef CipherStateBase super;
 
-	cocos2d::ClippingNode* contentClip;
-	cocos2d::Sprite* transitionPanel;
+	cocos2d::ClippingNode* contentClip = nullptr;
+	cocos2d::Sprite* transitionPanel = nullptr;
 };

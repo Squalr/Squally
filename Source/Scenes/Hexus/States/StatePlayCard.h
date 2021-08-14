@@ -30,24 +30,24 @@ private:
 	// This may seem like a violation of responsibilities (ie the card should play the sound), but this falls apart for rows, as
 	// this pattern would mean all cards in the row would play the same sound and it would be terrible
 	// Controlling this behavior in this class is the solution
-	Sound* movementSound;
-	Sound* shlSound;
-	Sound* shrSound;
-	Sound* flip1Sound;
-	Sound* flip2Sound;
-	Sound* flip3Sound;
-	Sound* flip4Sound;
-	Sound* movSound;
-	Sound* andSound;
-	Sound* orSound;
-	Sound* xorSound;
-	Sound* addSound;
-	Sound* subSound;
-	Sound* rolSound;
-	Sound* rorSound;
-	Sound* notSound;
-	Sound* killSound;
-	Sound* returnToHandSound;
-	Sound* stealSound;
-	Sound* sheepSound;
+	Sound* movementSound = nullptr;
+	Sound* shlSound = nullptr;
+	Sound* shrSound = nullptr;
+	Sound* flip1Sound = nullptr;
+	Sound* flip2Sound = nullptr;
+	Sound* flip3Sound = nullptr;
+	Sound* flip4Sound = nullptr;
+	Sound* movSound = nullptr;
+	Sound* andSound = nullptr;
+	Sound* orSound = nullptr;
+	Sound* xorSound = nullptr;
+	Sound* addSound = nullptr;
+	Sound* subSound = nullptr;
+	Sound* rolSound = nullptr;
+	Sound* rorSound = nullptr;
+	Sound* notSound = nullptr;
+	Sound* killSound = nullptr;
+	Sound* returnToHandSound = nullptr;
+	Sound* stealSound = nullptr;
+	Sound* sheepSound = nullptr;
 };

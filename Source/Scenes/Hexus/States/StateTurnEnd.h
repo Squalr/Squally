@@ -23,5 +23,5 @@ private:
 
 	void runIncrementHex0Effect(GameState* gameState);
 
-	Sound* increment0Sound;
+	Sound* increment0Sound = nullptr;
 };

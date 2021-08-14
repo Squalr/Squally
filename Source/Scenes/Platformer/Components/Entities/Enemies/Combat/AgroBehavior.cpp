@@ -37,12 +37,6 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->exclamation = Sprite::create(UIResources::Combat_Exclamation);
-	this->chaseOnAgro = true;
-	this->warnOnAgro = true;
-	this->isAgrod = false;
-	this->isEnabled = true;
-	this->engageCooldown = 0.0f;
-	this->initCooldown = 0.0f;
 	this->agroRangeX = AgroBehavior::AgroRangeX;
 	this->agroRangeY = AgroBehavior::AgroRangeY;
 	this->agroRangeZ = AgroBehavior::AgroRangeZ;
@@ -54,8 +48,6 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 	}
 
 	this->exclamation->setVisible(false);
-
-	this->squally = nullptr;
 
 	this->addChild(this->exclamation);
 	this->addChild(this->agroBeep);

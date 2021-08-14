@@ -38,11 +38,11 @@ private:
 	void updateIconVisibility();
 	void refreshCursorState();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
-	MinMaxPool* pocketPool;
-	PocketPoolDeserializer* pocketPoolDeserializer;
-	cocos2d::Sprite* pickPocketIcon;
+	MinMaxPool* pocketPool = nullptr;
+	PocketPoolDeserializer* pocketPoolDeserializer = nullptr;
+	cocos2d::Sprite* pickPocketIcon = nullptr;
 
 	std::string currentHelperName;
 

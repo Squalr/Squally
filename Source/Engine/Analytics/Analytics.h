@@ -10,14 +10,16 @@ public:
 	static void sendEvent(std::string category, std::string action, std::string label);
 	static void sendEvent(std::string category, std::string action);
 
-private:
-	typedef GlobalNode super;
-	static Analytics * getInstance();
+protected:
 	Analytics();
 	virtual ~Analytics();
 
 	void onEnter() override;
 	void update(float dt) override;
+
+private:
+	typedef GlobalNode super;
+	static Analytics * getInstance();
 
 	static bool areAnalyticsEnabled();
 

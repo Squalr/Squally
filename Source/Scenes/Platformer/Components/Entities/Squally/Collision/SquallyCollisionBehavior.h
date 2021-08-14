@@ -23,8 +23,7 @@ protected:
 private:
 	typedef EntityCollisionBehaviorBase super;
 
-	float noCombatDuration;
-
+	float noCombatDuration = 0.0f;
 	Squally* squally = nullptr;
 
 	static const float DefaultNoCombatDuration;

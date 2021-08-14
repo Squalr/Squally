@@ -31,27 +31,28 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void resetAnimation();
 	void runAnimationLoop();
 	void runTrivialSubtraction(std::function<void()> callback);
 	void runCarryLoop();
 
-	LocalizedLabel* description;
-	Card* subCard;
-	ToggleCard* previewCardA;
-	ToggleCard* previewCardB;
-	cocos2d::Sprite* attackFrameA;
-	cocos2d::Sprite* attackFrameB;
-	cocos2d::Sprite* attackFrameC;
-	LocalizedLabel* animatedLabelA;
-	ConstantString* animatedLabelAValue;
-	LocalizedLabel* animatedLabelB;
-	ConstantString* animatedLabelBValue;
-	LocalizedLabel* animatedLabelC;
-	ConstantString* animatedLabelCValue;
-	LocalizedLabel* carryLabel;
-	ConstantString* carryLabelValue;
-	LocalizedLabel* decimalUnderflowAddition;
+	LocalizedLabel* description = nullptr;
+	Card* subCard = nullptr;
+	ToggleCard* previewCardA = nullptr;
+	ToggleCard* previewCardB = nullptr;
+	cocos2d::Sprite* attackFrameA = nullptr;
+	cocos2d::Sprite* attackFrameB = nullptr;
+	cocos2d::Sprite* attackFrameC = nullptr;
+	LocalizedLabel* animatedLabelA = nullptr;
+	ConstantString* animatedLabelAValue = nullptr;
+	LocalizedLabel* animatedLabelB = nullptr;
+	ConstantString* animatedLabelBValue = nullptr;
+	LocalizedLabel* animatedLabelC = nullptr;
+	ConstantString* animatedLabelCValue = nullptr;
+	LocalizedLabel* carryLabel = nullptr;
+	ConstantString* carryLabelValue = nullptr;
+	LocalizedLabel* decimalUnderflowAddition = nullptr;
 
 	std::string tempTopString;
 	std::string tempCarryString;

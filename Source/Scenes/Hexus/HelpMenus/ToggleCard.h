@@ -36,7 +36,7 @@ public:
 	int getAttack();
 	void setCardScale(float cardScale);
 
-	AutoCard* autoCard;
+	AutoCard* autoCard = nullptr;
 
 protected:
 	ToggleCard(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown);
@@ -51,13 +51,13 @@ private:
 
 	void updateUpDownDisplays();
 
-	ToggleModeLeftRight toggleModeLeftRight;
-	ToggleModeUpDown toggleModeUpDown;
+	ToggleModeLeftRight toggleModeLeftRight = ToggleModeLeftRight::Hidden;
+	ToggleModeUpDown toggleModeUpDown = ToggleModeUpDown::Hidden;
 
-	ClickableNode* upToggle;
-	ClickableNode* downToggle;
-	ClickableNode* leftToggle;
-	ClickableNode* rightToggle;
-	std::function<void()> onToggleAttackChange;
-	std::function<void()> onToggleDisplayTypeChange;
+	ClickableNode* upToggle = nullptr;
+	ClickableNode* downToggle = nullptr;
+	ClickableNode* leftToggle = nullptr;
+	ClickableNode* rightToggle = nullptr;
+	std::function<void()> onToggleAttackChange = nullptr;
+	std::function<void()> onToggleDisplayTypeChange = nullptr;
 };

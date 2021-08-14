@@ -41,11 +41,11 @@ private:
 	void buildGroundCollisionDetector();
 	void buildCornerCollisionDetectors();
 
-	CollisionObject* leftCornerCollision;
-	CollisionObject* rightCornerCollision;
-	CollisionObject* groundCollision;
-	PlatformerEntity* entity;
-	EntityHoverCollisionBehavior* hoverCollisionBehavior;
+	CollisionObject* leftCornerCollision = nullptr;
+	CollisionObject* rightCornerCollision = nullptr;
+	CollisionObject* groundCollision = nullptr;
+	PlatformerEntity* entity = nullptr;
+	EntityHoverCollisionBehavior* hoverCollisionBehavior = nullptr;
 
-	float detectorWidth;
+	float detectorWidth = 0.0f;
 };

@@ -26,7 +26,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
-	DropPoolDeserializer* dropPoolDeserializer;
-	DropPool* dropPool;
+	PlatformerEntity* entity = nullptr;
+	DropPoolDeserializer* dropPoolDeserializer = nullptr;
+	DropPool* dropPool = nullptr;
 };

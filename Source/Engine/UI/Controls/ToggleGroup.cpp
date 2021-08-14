@@ -17,7 +17,6 @@ ToggleGroup* ToggleGroup::create(std::function<void(Checkbox*)> callback)
 
 ToggleGroup::ToggleGroup(std::function<void(Checkbox*)> callback)
 {
-	this->toggles = std::vector<Checkbox*>();
 	this->callback = callback;
 }
 

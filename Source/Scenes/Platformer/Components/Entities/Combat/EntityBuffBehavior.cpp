@@ -25,7 +25,6 @@ EntityBuffBehavior* EntityBuffBehavior::create(GameObject* owner)
 EntityBuffBehavior::EntityBuffBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->buffs = std::vector<Buff*>();
 	this->buffNode = Node::create();
 
 	if (this->entity == nullptr)

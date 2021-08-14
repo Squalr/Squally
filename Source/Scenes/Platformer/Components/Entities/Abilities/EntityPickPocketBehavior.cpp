@@ -45,9 +45,6 @@ EntityPickPocketBehavior::EntityPickPocketBehavior(GameObject* owner) : super(ow
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->pocketPoolDeserializer = PocketPoolDeserializer::create();
-	this->squally = nullptr;
-	this->pocketPool = nullptr;
-	this->currentHelperName = "";
 	this->pickPocketIcon = Sprite::create(UIResources::Menus_Icons_Chest);
 
 	this->pickPocketIcon->setScale(0.75f);

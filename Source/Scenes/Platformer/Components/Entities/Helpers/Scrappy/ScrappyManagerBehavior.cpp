@@ -20,7 +20,6 @@
 
 #include "Resources/EntityResources.h"
 
-
 using namespace cocos2d;
 
 const std::string ScrappyManagerBehavior::MapKey = "scrappy-manager";

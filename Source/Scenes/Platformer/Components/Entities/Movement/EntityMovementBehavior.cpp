@@ -41,14 +41,6 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	this->moveAcceleration = EntityMovementBehavior::DefaultRunAcceleration;
 	this->swimAcceleration = EntityMovementBehavior::DefaultSwimAcceleration;
 	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
-	this->jumpSound = nullptr;
-	this->swimSounds = std::vector<WorldSound*>();
-	this->walkSounds = std::vector<WorldSound*>();
-	this->swimSoundIndex = 0;
-	this->walkSoundIndex = 0;
-	this->entityCollision = nullptr;
-	this->groundCollision = nullptr;
-	this->jumpBehavior = nullptr;
 
 	if (this->entity == nullptr)
 	{

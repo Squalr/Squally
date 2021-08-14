@@ -64,7 +64,6 @@ Cipher::Cipher()
 {
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
 	this->cipherLock = CipherLock::create();
 	this->cipherStateTransitionUnlocking = CipherStateTransitionUnlocking::create();
@@ -88,7 +87,6 @@ Cipher::Cipher()
 	this->asciiTable = AsciiTable::create();
 	this->gameNode = Node::create();
 	this->tutorialNode = Node::create();
-	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
 	this->cipherState->unlockPointer = this->unlockButton;

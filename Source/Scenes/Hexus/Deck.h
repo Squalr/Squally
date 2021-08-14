@@ -39,7 +39,7 @@ public:
 	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 	
 	std::vector<Card*> deckCards;
-	Card::CardStyle style;
+	Card::CardStyle style = Card::CardStyle::Shadow;
 
 protected:
 	Deck(bool isPlayerOwnedDeck);
@@ -52,10 +52,10 @@ private:
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
-	bool clearOperationsOnInsert;
-	bool isPlayerOwnedDeck;
+	bool clearOperationsOnInsert = false;
+	bool isPlayerOwnedDeck = false;
 	
-	ClickableNode* pad;
-	cocos2d::Node* cardsNode;
-	cocos2d::Sprite* deckFocus;
+	ClickableNode* pad = nullptr;
+	cocos2d::Node* cardsNode = nullptr;
+	cocos2d::Sprite* deckFocus = nullptr;
 };

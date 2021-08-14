@@ -22,6 +22,6 @@ protected:
 private:
 	typedef BannerBase super;
 
-	cocos2d::Sprite* playerBanner1;
-	cocos2d::Sprite* playerBanner2;
+	cocos2d::Sprite* playerBanner1 = nullptr;
+	cocos2d::Sprite* playerBanner2 = nullptr;
 };

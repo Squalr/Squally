@@ -49,17 +49,16 @@ private:
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 	SpeechBubble* buildSpeechBubble();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
-	LazyNode<SpeechBubble>* speechBubble;
-	InteractObject* dialogueInteraction;
-
-	bool optionsVisible;
+	LazyNode<SpeechBubble>* speechBubble = nullptr;
+	InteractObject* dialogueInteraction = nullptr;
+	bool optionsVisible = false;
 	
 	std::queue<DialogueEvents::DialogueOpenArgs> pretextQueue;
-	DialogueSet* mainDialogueSet;
-	DialogueSet* activeDialogueSet;
 	std::vector<DialogueSet*> dialogueSets;
-	cocos2d::Node* pretextNode;
-	cocos2d::Node* dialogueSetNode;
+	DialogueSet* mainDialogueSet = nullptr;
+	DialogueSet* activeDialogueSet = nullptr;
+	cocos2d::Node* pretextNode = nullptr;
+	cocos2d::Node* dialogueSetNode = nullptr;
 };

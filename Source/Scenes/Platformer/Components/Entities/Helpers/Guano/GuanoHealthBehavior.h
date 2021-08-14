@@ -23,5 +23,5 @@ private:
 	
 	void saveState();
 
-	Guano* guano;
+	Guano* guano = nullptr;
 };

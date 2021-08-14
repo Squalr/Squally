@@ -51,8 +51,6 @@ HelperManagerBehavior::HelperManagerBehavior(GameObject* owner) : super(owner)
 	}
 	
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
-	this->helperRef = nullptr;
-	this->componentMap = std::map<std::string, std::string>();
 
 	this->addChild(this->platformerEntityDeserializer);
 }

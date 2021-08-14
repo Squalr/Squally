@@ -26,7 +26,7 @@ private:
 	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string pickPocketSaveKey);
 	void endPickPocket();
 
-	PlatformerEntity* entity;
-	PlatformerEntity* target;
-	bool isPickPocketing;
+	PlatformerEntity* entity = nullptr;
+	PlatformerEntity* target = nullptr;
+	bool isPickPocketing = false;
 };

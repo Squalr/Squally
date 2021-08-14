@@ -45,5 +45,5 @@ private:
 
 	static std::map<std::string, SpriterAnimationTimeline*> TimelineCache;
 
-	bool onEnterRunOnce;
+	bool onEnterRunOnce = false;
 };

@@ -25,7 +25,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	MountBase* mountTarget;
-	PlatformerEntity* entity;
-	cocos2d::Node* originalParent;
+	MountBase* mountTarget = nullptr;
+	PlatformerEntity* entity = nullptr;
+	cocos2d::Node* originalParent = nullptr;
 };

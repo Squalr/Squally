@@ -58,32 +58,32 @@ protected:
 	virtual LocalizedString* getCustomLossDialogue();
 	void runPostMatchDialogue(LocalizedString* dialogue);
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 private:
 	typedef GameComponent super;
 
 	HexusOpponentData* createOpponentData();
 
-	cocos2d::Node* dialogueStringNode;
-	LocalizedString* dialogueChoiceOverride;
-	MinMaxPool* rewardPool;
-	DialogueOption* hexusOption;
-	cocos2d::Node* iconNode;
-	cocos2d::Node* iconContainer;
-	cocos2d::Sprite* cardGlow;
-	cocos2d::Sprite* cardSprite;
+	cocos2d::Node* dialogueStringNode = nullptr;
+	LocalizedString* dialogueChoiceOverride = nullptr;
+	MinMaxPool* rewardPool = nullptr;
+	DialogueOption* hexusOption = nullptr;
+	cocos2d::Node* iconNode = nullptr;
+	cocos2d::Node* iconContainer = nullptr;
+	cocos2d::Sprite* cardGlow = nullptr;
+	cocos2d::Sprite* cardSprite = nullptr;
 
-	SmartParticles* hackParticles1;
-	SmartParticles* hackParticles2;
-	SmartParticles* hackParticles3;
-	SmartParticles* hackParticles4;
-	SmartParticles* hackParticles5;
+	SmartParticles* hackParticles1 = nullptr;
+	SmartParticles* hackParticles2 = nullptr;
+	SmartParticles* hackParticles3 = nullptr;
+	SmartParticles* hackParticles4 = nullptr;
+	SmartParticles* hackParticles5 = nullptr;
 
 	std::vector<std::function<void()>> winCallbacks;
 	std::vector<std::function<void()>> lossCallbacks;
 	std::vector<std::function<void()>> drawCallbacks;
 
 	std::string voiceResource;
-	bool showParticles;
+	bool showParticles = false;
 };

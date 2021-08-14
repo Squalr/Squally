@@ -17,18 +17,18 @@ class TerrainObject : public HackableObject
 public:
 	struct InfillData
 	{
-		cocos2d::Color4B infillColor;
-		bool applyInfill;
-		bool blurInfill;
+		cocos2d::Color4B infillColor = cocos2d::Color4B::BLACK;
+		bool applyInfill = false;
+		bool blurInfill = false;
 
-		InfillData() : infillColor(cocos2d::Color4B::BLACK), applyInfill(false), blurInfill(false) { }
+		InfillData() { }
 		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill) : infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill) { }
 	};
 
 	struct TerrainData
 	{
-		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory;
-		float friction;
+		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory = nullptr;
+		float friction = 0.0f;
 		std::string textureMapKeyValue;
 		std::string textureResource;
 		std::string topResource;
@@ -62,7 +62,7 @@ public:
 		cocos2d::Vec2 topConnectorConvexDeepOffset;
 		cocos2d::Vec2 bottomConnectorOffset;
 		InfillData infillData;
-		bool buildCollision;
+		bool buildCollision = false;
 
 		TerrainData(
 			std::function<TextureObject*(cocos2d::ValueMap)> textureFactory,

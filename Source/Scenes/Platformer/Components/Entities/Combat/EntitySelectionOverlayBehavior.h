@@ -28,6 +28,6 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
-	cocos2d::Sprite* lightRay;
+	PlatformerEntity* entity = nullptr;
+	cocos2d::Sprite* lightRay = nullptr;
 };

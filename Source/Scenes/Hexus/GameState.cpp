@@ -28,31 +28,6 @@ GameState* GameState::create()
 }
 
 GameState::GameState()
-	: stateType(StateType::EmptyState),
-	turn(Turn::Player),
-	difficulty(HexusOpponentData::Strategy::Random),
-	playerLosses(0),
-	enemyLosses(0),
-	cardReplaceCount(0),
-	isRepeatingSameTurn(false),
-	playerPassed(false),
-	enemyPassed(false),
-	turnNumber(0),
-	playableCardsThisTurn(0),
-	playerCardsDrawnNextRound(0),
-	enemyCardsDrawnNextRound(0),
-	roundNumber(0),
-	opponentData(nullptr),
-	gameDurationInSeconds(0),
-	showChallengeBanner(false),
-	selectedHandCard(nullptr),
-	selectedRow(nullptr),
-	cardPreviewComponentCallback(nullptr),
-	updateStateCallback(nullptr),
-	endTurnCallback(nullptr),
-	requestAiCallback(nullptr),
-	selectedSourceCard(nullptr),
-	selectedDestinationCard(nullptr)
 {
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create(true);
@@ -67,23 +42,6 @@ GameState::GameState()
 	this->enemyBinaryCards = CardRow::create(false);
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
-
-	this->lossesDisplayPointer = nullptr;
-	this->playerBinaryRowTotalPointer = nullptr;
-	this->playerDecimalRowTotalPointer = nullptr;
-	this->playerHexRowTotalPointer = nullptr;
-	this->enemyBinaryRowTotalPointer = nullptr;
-	this->enemyDecimalRowTotalPointer = nullptr;
-	this->enemyHexRowTotalPointer = nullptr;
-	this->scoreTotalPointer = nullptr;
-	this->deckCardCountDisplayPointer = nullptr;
-	this->handCardCountDisplayPointer = nullptr;
-	this->remainingCardDisplayPointer = nullptr;
-	this->drawCountDisplayPointer = nullptr;
-	this->passButtonPointer = nullptr;
-	this->lastStandButtonPointer = nullptr;
-	this->claimVictoryButtonPointer = nullptr;
-	this->cardPreviewPointer = nullptr;
 
 	this->playerHand->setRowWidth(HexusConfig::handWidth, 0.0f);
 	this->enemyHand->setRowWidth(HexusConfig::enemyHandWidth, 0.0f);

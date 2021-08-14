@@ -16,12 +16,12 @@ protected:
 	void tryUnHijackState(CipherState* gameState, bool updateState = true);
 	virtual void unHijackState(CipherState* gameState) = 0;
 
-	bool tutorialShown;
-	CipherState::StateType cachedPreviousState;
-	CipherState::StateType stateToHijack;
+	bool tutorialShown = false;
+	CipherState::StateType cachedPreviousState = CipherState::StateType::EmptyState;
+	CipherState::StateType stateToHijack = CipherState::StateType::EmptyState;
 
 private:
 	typedef CipherComponentBase super;
 
-	bool isHijacking;
+	bool isHijacking = false;
 };

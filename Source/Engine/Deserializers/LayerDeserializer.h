@@ -11,8 +11,8 @@ class LayerDeserializer : public SmartNode
 public:
 	struct LayerDeserializationArgs
 	{
-		MapLayer* mapLayer;
-		int layerIndex;
+		MapLayer* mapLayer = nullptr;
+		int layerIndex = 0;
 
 		LayerDeserializationArgs(MapLayer* mapLayer, int layerIndex) : mapLayer(mapLayer), layerIndex(layerIndex)
 		{
@@ -23,11 +23,11 @@ public:
 	{
 		const cocos2d::ValueMap& properties;
 		const cocos2d::ValueVector& objects;
-		int layerIndex;
+		int layerIndex = 0;
 		std::string mapIdentifier;
 		cocos2d::CSize mapSize;
-		bool isIsometric;
-		std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback;
+		bool isIsometric = false;
+		std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback = nullptr;
 
 		LayerDeserializationRequestArgs(const cocos2d::ValueMap& properties,
 			const cocos2d::ValueVector& objects,
@@ -53,7 +53,7 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 
 	};
 

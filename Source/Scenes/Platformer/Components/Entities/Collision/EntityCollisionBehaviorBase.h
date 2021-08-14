@@ -22,10 +22,10 @@ public:
 	bool hasLeftWallCollisionWith(CollisionObject* collisonObject);
 	bool hasRightWallCollisionWith(CollisionObject* collisonObject);
 	
-	CollisionObject* entityCollision;
-	CollisionObject* movementCollision;
-	CollisionObject* leftCollision;
-	CollisionObject* rightCollision;
+	CollisionObject* entityCollision = nullptr;
+	CollisionObject* movementCollision = nullptr;
+	CollisionObject* leftCollision = nullptr;
+	CollisionObject* rightCollision = nullptr;
 
 protected:
 	EntityCollisionBehaviorBase(GameObject* owner, int collisionType, int collisionTypeMovement);
@@ -36,7 +36,7 @@ protected:
 	void update(float dt) override;
 	virtual void onEntityCollisionCreated() = 0;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 private:
 	typedef GameComponent super;
@@ -47,15 +47,15 @@ private:
 	void buildWallDetectors();
 	virtual void tryBind();
 
-	EntityGroundCollisionBehavior* groundCollision;
-	EntityHeadCollisionBehavior* headCollision;
-	EntityMovementBehavior* movementBehavior;
-	bool movementCollisionBound;
-	float noEmergeSubmergeSoundCooldown;
-	int collisionType;
-	int collisionTypeMovement;
-	WorldSound* submergeSound;
-	WorldSound* emergeSound;
+	EntityGroundCollisionBehavior* groundCollision = nullptr;
+	EntityHeadCollisionBehavior* headCollision = nullptr;
+	EntityMovementBehavior* movementBehavior = nullptr;
+	bool movementCollisionBound = false;
+	float noEmergeSubmergeSoundCooldown = 1.0f;
+	int collisionType = 0;
+	int collisionTypeMovement = 0;
+	WorldSound* submergeSound = nullptr;
+	WorldSound* emergeSound = nullptr;
 
 	static const float WaterJumpVelocity;
 	static const float SwimVerticalDrag;

@@ -18,5 +18,5 @@ protected:
 private:
 	typedef EntityOutOfCombatAttackBehavior super;
 
-	PlatformerEnemy* enemy;
+	PlatformerEnemy* enemy = nullptr;
 };

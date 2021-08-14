@@ -37,9 +37,6 @@ using namespace cocos2d;
 HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles, LocalizedString* dialogueChoiceOverride) : super(owner)
 {
 	this->showParticles = showParticles;
-	this->winCallbacks = std::vector<std::function<void()>>();
-	this->lossCallbacks = std::vector<std::function<void()>>();
-	this->drawCallbacks = std::vector<std::function<void()>>();
 	this->dialogueStringNode = Node::create();
 	this->iconNode = Node::create();
 	this->iconContainer = Node::create();
@@ -54,7 +51,6 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
-	this->rewardPool = nullptr;
 
 	if (this->entity == nullptr)
 	{

@@ -39,13 +39,14 @@ protected:
 	ClickableTextNode* optionsButton = nullptr;
 	ClickableTextNode* quitToTitleButton = nullptr;
 	cocos2d::Node* newButtonsNode = nullptr;
-	std::vector<ClickableTextNode*> addedButtons;
+
+private:
+	typedef SmartNode super;
+
 	ConfirmationMenu* exitConfirmMenu = nullptr;
+	std::vector<ClickableTextNode*> addedButtons;
 
 	std::function<void()> resumeClickCallback = nullptr;
 	std::function<void()> optionsClickCallback = nullptr;
 	std::function<void()> quitToTitleClickCallback = nullptr;
-
-private:
-	typedef SmartNode super;
 };

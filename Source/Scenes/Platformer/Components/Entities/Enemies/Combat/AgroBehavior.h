@@ -40,20 +40,20 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
-	cocos2d::Sprite* exclamation;
-	WorldSound* agroBeep;
+	cocos2d::Sprite* exclamation = nullptr;
+	WorldSound* agroBeep = nullptr;
 
-	bool isEnabled;
-	bool isAgrod;
-	bool chaseOnAgro;
-	bool warnOnAgro;
-	float agroRangeX;
-	float agroRangeY;
-	float agroRangeZ;
-	float engageCooldown;
-	float initCooldown;
+	bool isEnabled = false;
+	bool isAgrod = false;
+	bool chaseOnAgro = true;
+	bool warnOnAgro = true;
+	float agroRangeX = 0.0f;
+	float agroRangeY = 0.0f;
+	float agroRangeZ = 0.0f;
+	float engageCooldown = 0.0f;
+	float initCooldown = 0.0f;
 
 	static const float AgroRangeX;
 	static const float AgroRangeY;

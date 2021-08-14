@@ -37,9 +37,9 @@ GeckyHealthBehavior* GeckyHealthBehavior::create(GameObject* owner)
 
 GeckyHealthBehavior::GeckyHealthBehavior(GameObject* owner) : super(owner)
 {
-	this->guano = dynamic_cast<Gecky*>(owner);
+	this->gecky = dynamic_cast<Gecky*>(owner);
 
-	if (this->guano == nullptr)
+	if (this->gecky == nullptr)
 	{
 		this->invalidate();
 	}
@@ -56,14 +56,14 @@ void GeckyHealthBehavior::onLoad()
 		this->saveState();
 	}));
 	
-	this->guano->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	this->gecky->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
 	});
 
-	this->guano->listenForStateWrite(StateKeys::Health, [=](Value value)
+	this->gecky->listenForStateWrite(StateKeys::Health, [=](Value value)
 	{
 		this->saveState();
 	});
@@ -76,5 +76,5 @@ void GeckyHealthBehavior::onDisable()
 
 void GeckyHealthBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyHealth, this->guano->getRuntimeStateOrDefault(StateKeys::Health, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyHealth, this->gecky->getRuntimeStateOrDefault(StateKeys::Health, Value(0)));
 }

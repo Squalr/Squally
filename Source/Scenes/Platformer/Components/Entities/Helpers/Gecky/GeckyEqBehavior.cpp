@@ -21,9 +21,9 @@ GeckyEqBehavior* GeckyEqBehavior::create(GameObject* owner)
 
 GeckyEqBehavior::GeckyEqBehavior(GameObject* owner) : super(owner)
 {
-	this->guano = dynamic_cast<Gecky*>(owner);
+	this->gecky = dynamic_cast<Gecky*>(owner);
 
-	if (this->guano == nullptr)
+	if (this->gecky == nullptr)
 	{
 		this->invalidate();
 	}
@@ -35,7 +35,7 @@ GeckyEqBehavior::~GeckyEqBehavior()
 
 void GeckyEqBehavior::onLoad()
 {
-	this->guano->watchForComponent<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
+	this->gecky->watchForComponent<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
 	{
 		entityEqBehavior->load(SaveKeys::SaveKeyGeckyEq, SaveKeys::SaveKeyGeckyEqExperience);
 	});

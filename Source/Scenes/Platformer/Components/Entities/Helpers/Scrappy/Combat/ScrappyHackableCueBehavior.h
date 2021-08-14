@@ -24,8 +24,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	float cueCooldown;
-	bool disabled;
-	
+	float cueCooldown = 0.0f;
+	bool disabled = false;
 	Scrappy* scrappy = nullptr;
 };

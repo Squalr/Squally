@@ -28,13 +28,6 @@ EntityHoverCollisionBehavior* EntityHoverCollisionBehavior::create(GameObject* o
 EntityHoverCollisionBehavior::EntityHoverCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->hoverCollision = nullptr;
-	this->entityCollision = nullptr;
-	this->groundCollision = nullptr;
-	this->jumpCollision = nullptr;
-	this->hoverAntiGravityCollisionDetector = nullptr;
-	this->hoverAntiGravityTopCollisionDetector = nullptr;
-	this->crouchProgress = 0.0f;
 
 	if (this->entity == nullptr)
 	{

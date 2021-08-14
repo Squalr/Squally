@@ -41,10 +41,8 @@ Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, 
 
 Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool relocateUI)
 {
-	this->mouseOverCallback = nullptr;
 	this->isPlayerOwnedCard = isPlayerOwnedCard;
 	this->relocateUI = relocateUI;
-	this->operations = std::vector<Operation>();
 	this->cardData = data;
 	this->cardStyle = cardStyle;
 

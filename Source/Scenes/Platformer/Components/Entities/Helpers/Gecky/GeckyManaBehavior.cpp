@@ -31,9 +31,9 @@ GeckyManaBehavior* GeckyManaBehavior::create(GameObject* owner)
 
 GeckyManaBehavior::GeckyManaBehavior(GameObject* owner) : super(owner)
 {
-	this->guano = dynamic_cast<Gecky*>(owner);
+	this->gecky = dynamic_cast<Gecky*>(owner);
 
-	if (this->guano == nullptr)
+	if (this->gecky == nullptr)
 	{
 		this->invalidate();
 	}
@@ -50,14 +50,14 @@ void GeckyManaBehavior::onLoad()
 		this->saveState();
 	}));
 	
-	this->guano->watchForComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	this->gecky->watchForComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
 	});
 
-	this->guano->listenForStateWrite(StateKeys::Mana, [=](Value value)
+	this->gecky->listenForStateWrite(StateKeys::Mana, [=](Value value)
 	{
 		this->saveState();
 	});
@@ -70,5 +70,5 @@ void GeckyManaBehavior::onDisable()
 
 void GeckyManaBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyMana, this->guano->getRuntimeStateOrDefault(StateKeys::Mana, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyMana, this->gecky->getRuntimeStateOrDefault(StateKeys::Mana, Value(0)));
 }

@@ -25,10 +25,10 @@ private:
 
 	void runTutorial();
 
-	bool hasRunTutorial;
-	bool tutorialInterrupt;
+	bool hasRunTutorial = false;
+	bool tutorialInterrupt = false;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

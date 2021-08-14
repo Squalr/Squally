@@ -25,9 +25,9 @@ private:
 
 	void runTutorial();
 
-	int healCount;
+	int healCount = 0;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 

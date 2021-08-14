@@ -32,15 +32,15 @@ private:
 	void runTutorialLastStand(GameState* gameState);
 	void runTutorialHandCards(GameState* gameState);
 
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* scoreTotalsTutorialLabel;
-	LocalizedLabel* lastStandTutorialLabel;
-	LocalizedLabel* handCardsTutorialLabel;
-	ClickableTextNode* scoreTotalsNextButton;
-	ClickableTextNode* lastStandNextButton;
-	ClickableTextNode* handCardsNextButton;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* scoreTotalsTutorialLabel = nullptr;
+	LocalizedLabel* lastStandTutorialLabel = nullptr;
+	LocalizedLabel* handCardsTutorialLabel = nullptr;
+	ClickableTextNode* scoreTotalsNextButton = nullptr;
+	ClickableTextNode* lastStandNextButton = nullptr;
+	ClickableTextNode* handCardsNextButton = nullptr;
 
-	HelpArrow* helpArrowScoreTotals;
-	HelpArrow* helpArrowLastStand;
-	HelpArrow* helpArrowHandCards;
+	HelpArrow* helpArrowScoreTotals = nullptr;
+	HelpArrow* helpArrowLastStand = nullptr;
+	HelpArrow* helpArrowHandCards = nullptr;
 };

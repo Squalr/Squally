@@ -31,7 +31,7 @@ private:
 
 	void buildJumpCollisionDetector();
 	
-	CollisionObject* jumpCollision;
-	PlatformerEntity* entity;
-	EntityHoverCollisionBehavior* hoverCollisionBehavior;
+	CollisionObject* jumpCollision = nullptr;
+	PlatformerEntity* entity = nullptr;
+	EntityHoverCollisionBehavior* hoverCollisionBehavior = nullptr;
 };

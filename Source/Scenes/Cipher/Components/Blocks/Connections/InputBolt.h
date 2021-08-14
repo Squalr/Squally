@@ -31,8 +31,8 @@ protected:
 private:
 	typedef BoltBase super;
 
-	BlockBase* parentBlock;
-	cocos2d::Sprite* bolt;
-	cocos2d::Sprite* helperArrow;
-	int inputIndex;
+	BlockBase* parentBlock = nullptr;
+	cocos2d::Sprite* bolt = nullptr;
+	cocos2d::Sprite* helperArrow = nullptr;
+	int inputIndex = 0;
 };

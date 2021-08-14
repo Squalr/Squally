@@ -40,8 +40,6 @@ HelperFollowMovementBehavior* HelperFollowMovementBehavior::create(GameObject* o
 HelperFollowMovementBehavior::HelperFollowMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
-	this->followEnabled = true;
 
 	if (this->entity == nullptr)
 	{

@@ -25,8 +25,8 @@ private:
 	void stopAllEntityActions();
 	void engageEnemy(bool firstStrike);
 
-	bool canEngage;
+	bool canEngage = true;
 
-	PlatformerEnemy* enemy;
-	Sound* engageSound;
+	PlatformerEnemy* enemy = nullptr;
+	Sound* engageSound = nullptr;
 };

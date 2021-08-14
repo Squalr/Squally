@@ -37,7 +37,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	AsciiLetter* asciiLetterLabel;
-	ConstantString* displayValue;
-	LocalizedLabel* displayLabel;
+	AsciiLetter* asciiLetterLabel = nullptr;
+	ConstantString* displayValue = nullptr;
+	LocalizedLabel* displayLabel = nullptr;
 };

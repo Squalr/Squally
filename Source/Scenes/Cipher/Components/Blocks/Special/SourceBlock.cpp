@@ -33,7 +33,6 @@ SourceBlock* SourceBlock::create(int cipherIndex)
 SourceBlock::SourceBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 	this->cipherIndex = cipherIndex;
-	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
 	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);

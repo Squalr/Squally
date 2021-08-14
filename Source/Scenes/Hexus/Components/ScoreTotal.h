@@ -26,15 +26,16 @@ protected:
 
 private:
 	typedef ComponentBase super;
+
 	void updateTotals(GameState* gameState);
 
-	cocos2d::Sprite* playerTotalFrame;
-	ConstantString* playerTotalStr;
-	LocalizedLabel* playerTotalLabel;
-	cocos2d::Sprite* playerLeaderEmblem;
+	cocos2d::Sprite* playerTotalFrame = nullptr;
+	ConstantString* playerTotalStr = nullptr;
+	LocalizedLabel* playerTotalLabel = nullptr;
+	cocos2d::Sprite* playerLeaderEmblem = nullptr;
 
-	cocos2d::Sprite* enemyTotalFrame;
-	ConstantString* enemyTotalStr;
-	LocalizedLabel* enemyTotalLabel;
-	cocos2d::Sprite* enemyLeaderEmblem;
+	cocos2d::Sprite* enemyTotalFrame = nullptr;
+	ConstantString* enemyTotalStr = nullptr;
+	LocalizedLabel* enemyTotalLabel = nullptr;
+	cocos2d::Sprite* enemyLeaderEmblem = nullptr;
 };

@@ -23,9 +23,9 @@ private:
 
 	struct ChapterDebugInfo
 	{
-		ClickableTextNode* titleButton;
+		ClickableTextNode* titleButton = nullptr;
 		std::vector<ClickableTextNode*> mapList;
-		ScrollPane* scrollPane;
+		ScrollPane* scrollPane = nullptr;
 
 		ChapterDebugInfo(ClickableTextNode* titleButton, std::vector<ClickableTextNode*> mapList, ScrollPane* scrollPane)
 			: titleButton(titleButton), mapList(mapList), scrollPane(scrollPane) { }

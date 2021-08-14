@@ -21,5 +21,5 @@ protected:
 private:
 	typedef EntityWeaponCollisionBehavior super;
 	
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 };

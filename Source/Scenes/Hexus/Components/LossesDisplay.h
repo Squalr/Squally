@@ -23,14 +23,15 @@ protected:
 
 private:
 	typedef ComponentBase super;
+
 	void updateDisplayedLosses(GameState* gameState);
 
-	cocos2d::Sprite* playerSocketA;
-	cocos2d::Sprite* playerSocketB;
-	cocos2d::Sprite* playerSkullA;
-	cocos2d::Sprite* playerSkullB;
-	cocos2d::Sprite* enemySocketA;
-	cocos2d::Sprite* enemySocketB;
-	cocos2d::Sprite* enemySkullA;
-	cocos2d::Sprite* enemySkullB;
+	cocos2d::Sprite* playerSocketA = nullptr;
+	cocos2d::Sprite* playerSocketB = nullptr;
+	cocos2d::Sprite* playerSkullA = nullptr;
+	cocos2d::Sprite* playerSkullB = nullptr;
+	cocos2d::Sprite* enemySocketA = nullptr;
+	cocos2d::Sprite* enemySocketB = nullptr;
+	cocos2d::Sprite* enemySkullA = nullptr;
+	cocos2d::Sprite* enemySkullB = nullptr;
 };

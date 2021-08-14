@@ -34,7 +34,6 @@ OrcBomberOutOfCombatAttackBehavior::OrcBomberOutOfCombatAttackBehavior(GameObjec
 {
 	this->orcBomber = dynamic_cast<OrcBomber*>(owner);
 	this->fireBreath = SmartAnimationSequenceNode::create();
-	this->agroBehavior = nullptr;
 
 	if (this->orcBomber == nullptr)
 	{

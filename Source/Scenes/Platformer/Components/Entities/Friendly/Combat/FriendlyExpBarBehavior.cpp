@@ -42,8 +42,6 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_FillYellow));
 	this->levelUpFx = SmartParticles::create(ParticleResources::Platformer_Combat_LevelUp);
 	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp2);
-	this->tickCounterA = 0;
-	this->tickCounterB = 0;
 
 	this->deltaLabel->setTextColor(Color4B::YELLOW);
 	this->deltaLabel->enableOutline(Color4B::BLACK, 2);

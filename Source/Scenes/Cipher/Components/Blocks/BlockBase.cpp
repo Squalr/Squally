@@ -27,17 +27,6 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->blockType = blockType;
 	this->inputType = inputType;
 	this->outputType = outputType;
-	this->spawnPosition = Vec2::ZERO;
-	this->originalPosition = Vec2::ZERO;
-	this->clickDelta = Vec2::ZERO;
-	this->inputBoltLeft = nullptr;
-	this->inputBoltRight = nullptr;
-	this->outputBoltLeft = nullptr;
-	this->outputBoltRight = nullptr;
-	this->inputLeft = 0;
-	this->inputRight = 0;
-	this->spawningBlock = nullptr;
-	this->receivedInputs = 0;
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);

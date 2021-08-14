@@ -29,7 +29,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 	cocos2d::Vec3 savedWorldCoords;
 	

@@ -13,7 +13,6 @@ MenuCard* MenuCard::create(Card::CardStyle cardStyle, CardData* cardData)
 
 MenuCard::MenuCard(Card::CardStyle cardStyle, CardData* cardData) : Card(cardStyle, cardData)
 {
-	this->displayItems = std::vector<Node*>();
 }
 
 MenuCard::~MenuCard()

@@ -23,5 +23,5 @@ private:
 
 	void runTutorial();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 };

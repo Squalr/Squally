@@ -31,25 +31,22 @@ Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards, bool
 
 Deck::Deck(bool isPlayerOwnedDeck) : Deck(Card::CardStyle::Earth, std::vector<CardData*>(), isPlayerOwnedDeck)
 {
-	this->deckCards = std::vector<Card*>();
 }
 
 Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck)
 {
 	this->isPlayerOwnedDeck = isPlayerOwnedDeck;
 	this->style = cardStyle;
-	this->deckCards = std::vector<Card*>();
 	this->pad = ClickableNode::create(HexusResources::CardPad, HexusResources::CardPad);
 	this->cardsNode = Node::create();
 	this->deckFocus = Sprite::create(HexusResources::CardSelect);
-	this->clearOperationsOnInsert = false;
 
 	this->pad->setScale(Card::cardScale);
 	this->deckFocus->setScale(Card::cardScale);
 
 	this->addChild(this->pad);
 
-	for (auto next : cardData)
+	for (CardData* next : cardData)
 	{
 		this->insertCardBottom(Card::create(this->style, next, isPlayerOwnedDeck), false, 0.0f);
 	}

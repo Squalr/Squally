@@ -24,8 +24,6 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->weaponCollisionSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
-	this->weaponCollisionOffset = Vec2::ZERO;
-	this->weaponCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{

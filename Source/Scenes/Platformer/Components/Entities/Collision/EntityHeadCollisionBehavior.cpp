@@ -28,7 +28,6 @@ EntityHeadCollisionBehavior* EntityHeadCollisionBehavior::create(GameObject* own
 EntityHeadCollisionBehavior::EntityHeadCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->headCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{

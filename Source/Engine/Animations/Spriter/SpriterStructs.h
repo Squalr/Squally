@@ -8,10 +8,10 @@
 
 struct SpriterBoneRef
 {
-	int id;
-	int parent; // nullable => -1
-	int timeline;
-	int key;
+	int id = -1;
+	int parent = -1; // nullable => -1
+	int timeline = -1;
+	int key = -1;
 
 	SpriterBoneRef(int id, int parent, int timeline, int key)
 		: id(id), parent(parent), timeline(timeline), key(key) { }
@@ -21,8 +21,8 @@ struct SpriterBone
 {
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 scale;
-	float angle;
-	float alpha;
+	float angle = 0.0f;
+	float alpha = 0.0f;
 
 	SpriterBone() : position(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f), alpha(1.0f) { }
 	SpriterBone(cocos2d::Vec2 position, cocos2d::Vec2 scale, float angle, float alpha)
@@ -31,28 +31,28 @@ struct SpriterBone
 
 struct SpriterObjectRef
 {
-	int id;
-	int parent;
-	int timeline;
-	int key;
-	int zIndex;
+	int id = -1;
+	int parent = -1;
+	int timeline = -1;
+	int key = -1;
+	int zIndex = 0;
 
-	SpriterObjectRef() : id(-1), parent(-1), timeline(-1), key(-1), zIndex(0) { }
+	SpriterObjectRef() { }
 	SpriterObjectRef(int id, int parent, int timeline, int key, int zIndex)
 		: id(id), parent(parent), timeline(timeline), key(key), zIndex(zIndex) { }
 };
 
 struct SpriterObject
 {
-	int folderId;
-	int fileId;
+	int folderId = -1;
+	int fileId = -1;
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 anchor;
 	cocos2d::Vec2 scale;
-	float angle;
-	float alpha;
+	float angle = 0.0f;
+	float alpha = 1.0f;
 
-	SpriterObject() : folderId(-1), fileId(-1), position(cocos2d::Vec2::ZERO), anchor(cocos2d::Vec2::ZERO), scale(cocos2d::Vec2::ZERO), angle(0.0f), alpha(1.0f) { }
+	SpriterObject() { }
 	SpriterObject(int folderId, int fileId, cocos2d::Vec2 position, cocos2d::Vec2 anchor, cocos2d::Vec2 scale, float angle, float alpha)
 		: folderId(folderId), fileId(fileId), position(position), anchor(anchor), scale(scale), angle(angle), alpha(alpha) { }
 };
@@ -71,19 +71,19 @@ enum class SpriterCurveType
 
 struct SpriterMainlineKey
 {
-	int id;
-	int time;
-	SpriterCurveType curveType;
-	float c1;
-	float c2;
-	float c3;
-	float c4;
+	int id = -1;
+	int time = 0;
+	SpriterCurveType curveType = SpriterCurveType::Linear;
+	float c1 = 0.0f;
+	float c2 = 0.0f;
+	float c3 = 0.0f;
+	float c4 = 0.0f;
 	std::vector<SpriterObjectRef> objectRefs;
 	std::vector<SpriterBoneRef> boneRefs;
 
 	SpriterMainlineKey(int id, int time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
 		: id(id), time(time), curveType(curveType), c1(c1), c2(c2), c3(c3), c4(c4), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
-	SpriterMainlineKey() : id(-1), time(0), curveType(SpriterCurveType::Linear), c1(0.0f), c2(0.0f), c3(0.0f), c4(0.0f), objectRefs(std::vector<SpriterObjectRef>()), boneRefs(std::vector<SpriterBoneRef>()) { }
+	SpriterMainlineKey() { }
 };
 
 enum class SpriterObjectType
@@ -94,17 +94,17 @@ enum class SpriterObjectType
 
 struct SpriterTimelineKey
 {
-	int id;
-	int spin;
-	int time;
-	SpriterCurveType curveType;
-	float c1;
-	float c2;
-	float c3;
-	float c4;
+	int id = -1;
+	int spin = -1;
+	int time = -1;
+	SpriterCurveType curveType = SpriterCurveType::Linear;
+	float c1 = 0.0f;
+	float c2 = 0.0f;
+	float c3 = 0.0f;
+	float c4 = 0.0f;
 	SpriterObject object;
 	SpriterBone bone;
-	SpriterObjectType objectType;
+	SpriterObjectType objectType = SpriterObjectType::Object;
 
 	SpriterTimelineKey(int id, int spin, int time, SpriterCurveType curveType, float c1, float c2, float c3, float c4)
 		: id(id), spin(spin), time(time), curveType(curveType), c1(c1), c2(c2), c3(c3), c4(c4), object(SpriterObject()), bone(SpriterBone()) { }
@@ -112,8 +112,8 @@ struct SpriterTimelineKey
 
 struct SpriterTimeline
 {
-	int id;
-	int object;
+	int id = -1;
+	int object = -1;
 	std::string name;
 	std::string objectType;
 	std::vector<SpriterTimelineKey> keys;
@@ -131,17 +131,17 @@ struct SpriterMainline
 
 struct SpriterAnimation
 {
-	int id;
+	int id = -1;
 	std::string name;
-	float length;
-	float interval;
-	bool isLooping;
+	float length = 0.0f;
+	float interval = 0.0f;
+	bool isLooping = false;
 	SpriterMainline mainline;
 	std::vector<SpriterTimeline> timelines;
 
 	SpriterAnimation(int id, std::string name, float length, float interval, bool isLooping)
 		: id(id), name(name), length(length), interval(interval), isLooping(isLooping), mainline(SpriterMainline()), timelines(std::vector<SpriterTimeline>()) { }
-	SpriterAnimation() : id(-1), name(""), length(0.0f), interval(0.0f), isLooping(false), mainline(SpriterMainline()), timelines(std::vector<SpriterTimeline>()) { }
+	SpriterAnimation() { }
 };
 
 struct SpriterObjectInfo
@@ -156,7 +156,7 @@ struct SpriterObjectInfo
 
 struct SpriterEntity
 {
-	int id;
+	int id = -1;
 	std::string name;
 	std::vector<SpriterObjectInfo> objectInfo;
 	std::vector<SpriterAnimation> animations;
@@ -167,7 +167,7 @@ struct SpriterEntity
 
 struct SpriterFile
 {
-	unsigned int id;
+	unsigned int id = -1;
 	std::string name;
 	cocos2d::CSize size;
 	cocos2d::Vec2 anchor;
@@ -178,10 +178,10 @@ struct SpriterFile
 
 struct SpriterFolder
 {
-	unsigned int id;
+	unsigned int id = -1;
 	std::vector<SpriterFile> files;
 
-	SpriterFolder(unsigned int id) : id(id), files(std::vector<SpriterFile>()) { }
+	SpriterFolder(unsigned int id) : id(id) { }
 };
 
 struct SpriterData

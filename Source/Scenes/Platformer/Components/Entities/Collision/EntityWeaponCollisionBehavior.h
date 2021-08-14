@@ -21,12 +21,12 @@ protected:
 	void setWeaponCollisionOffset(cocos2d::Vec2 weaponCollisionOffset);
 	void rebuildWeaponCollision(int collisionType);
 
-	CollisionObject* weaponCollision;
+	CollisionObject* weaponCollision = nullptr;
 
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 	cocos2d::CSize weaponCollisionSize;
 	cocos2d::Vec2 weaponCollisionOffset;

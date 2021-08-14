@@ -35,10 +35,7 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	: super(timeline, float(animationKey.time), endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
 {
 	this->partName = keyParent.name;
-	this->next = this;
 	this->spin = animationKey.spin;
-	this->hasNoAnimationChanges = false;
-	this->cascadeChildren = std::vector<SpriterAnimationTimelineEventAnimation*>();
 	
 	std::hash<std::string> hasher = std::hash<std::string>();
 	size_t hash = hasher(this->partName);
@@ -70,12 +67,6 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 			break;
 		}
 	}
-	
-	this->deltaPosition = Vec2::ZERO;
-	this->deltaAnchor = Vec2::ZERO;
-	this->deltaScale = Vec2::ZERO;
-	this->deltaRotation = 0.0f;
-	this->deltaAlpha = 0.0f;
 }
 
 int SpriterAnimationTimelineEventAnimation::getPartHash()

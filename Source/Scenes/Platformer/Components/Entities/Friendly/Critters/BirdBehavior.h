@@ -30,10 +30,10 @@ private:
 	void onHit(EntityCollisionBehaviorBase* collisionBehavior);
 	void moveBeak(float duration);
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
-	WorldSound* startledSound;
-	WorldSound* squawkSound;
-	bool wasStartled;
-	float hitDelay;
+	WorldSound* startledSound = nullptr;
+	WorldSound* squawkSound = nullptr;
+	bool wasStartled = false;
+	float hitDelay = 0.0f;
 };

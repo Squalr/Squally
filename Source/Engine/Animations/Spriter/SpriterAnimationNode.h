@@ -47,7 +47,7 @@ protected:
 private:
 	typedef SpriterAnimationPart super;
 
-	SpriterAnimationTimeline* timeline;
+	SpriterAnimationTimeline* timeline = nullptr;
 
 	// Entity => Name => Bone
 	std::map<std::string, std::map<std::string, SpriterAnimationBone*>> bonesByName;
@@ -58,19 +58,19 @@ private:
 	std::map<std::string, std::map<int, SpriterAnimationSprite*>> spritesByHash;
 	
 	// Optimization. These point to the active map for the current entity.
-	std::map<std::string, SpriterAnimationBone*>* entityBonesByName;
-	std::map<int, SpriterAnimationBone*>* entityBonesByHash;
-	std::map<std::string, SpriterAnimationSprite*>* entitySpritesByName;
-	std::map<int, SpriterAnimationSprite*>* entitySpritesByHash;
+	std::map<std::string, SpriterAnimationBone*>* entityBonesByName = nullptr;
+	std::map<int, SpriterAnimationBone*>* entityBonesByHash = nullptr;
+	std::map<std::string, SpriterAnimationSprite*>* entitySpritesByName = nullptr;
+	std::map<int, SpriterAnimationSprite*>* entitySpritesByHash = nullptr;
 
 	void buildBones(const SpriterData& spriterData);
 	void buildSprites(const SpriterData& spriterData, const std::string& animationResource);
 
 	std::string currentEntityName;
 	std::string currentAnimation;
-	float previousTimelineTime;
-	float timelineTime;
-	bool isRepeating;
+	float previousTimelineTime = 0.0f;
+	float timelineTime = 0.0f;
+	bool isRepeating = true;
 	
 	static const std::string DefaultAnimationEntityName;
 	static const std::string DefaultAnimationName;

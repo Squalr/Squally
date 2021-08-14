@@ -32,20 +32,19 @@ private:
 	std::vector<cocos2d::Sprite*> cipherPinholes;
 	std::vector<cocos2d::Sprite*> cipherPins;
 
-	cocos2d::ClippingNode* contentClip;
-	cocos2d::Sprite* background;
-	cocos2d::Sprite* steelGear;
-	cocos2d::Sprite* woodGearTop;
-	cocos2d::Sprite* woodGearBottom;
-	cocos2d::Sprite* shaft;
-	cocos2d::Sprite* pinboardBack;
-	cocos2d::Node* cipherPinsNode;
-	cocos2d::Sprite* stoppingBlock;
-	cocos2d::Sprite* pinboardFront;
+	cocos2d::ClippingNode* contentClip = nullptr;
+	cocos2d::Sprite* background = nullptr;
+	cocos2d::Sprite* steelGear = nullptr;
+	cocos2d::Sprite* woodGearTop = nullptr;
+	cocos2d::Sprite* woodGearBottom = nullptr;
+	cocos2d::Sprite* shaft = nullptr;
+	cocos2d::Sprite* pinboardBack = nullptr;
+	cocos2d::Node* cipherPinsNode = nullptr;
+	cocos2d::Sprite* stoppingBlock = nullptr;
+	cocos2d::Sprite* pinboardFront = nullptr;
+	Sound* gearTurnSound = nullptr;
 
-	Sound* gearTurnSound;
-
-	bool hasAnyPinFailed;
+	bool hasAnyPinFailed = false;
 
 	static const float PinSpacing;
 	static const float PinUnlockDistance;

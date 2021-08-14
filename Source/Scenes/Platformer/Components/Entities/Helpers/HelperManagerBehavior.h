@@ -30,8 +30,8 @@ private:
 	const std::string& getHelperComponent(const std::string& helperName);
 	void buildComponentMap();
 
-	PlatformerEntity* entity;
-	PlatformerEntity* helperRef;
-	PlatformerEntityDeserializer* platformerEntityDeserializer;
+	PlatformerEntity* entity = nullptr;
+	PlatformerEntity* helperRef = nullptr;
+	PlatformerEntityDeserializer* platformerEntityDeserializer = nullptr;
 	std::map<std::string, std::string> componentMap;
 };

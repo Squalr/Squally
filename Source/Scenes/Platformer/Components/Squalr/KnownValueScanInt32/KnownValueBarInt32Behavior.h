@@ -35,7 +35,7 @@ private:
 	void setHealth(int newHealth);
 	void onDeath();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	cocos2d::Sprite* spellAura;
 	
 	ProgressBar* healthBar;

@@ -40,8 +40,6 @@ BirdBehavior* BirdBehavior::create(GameObject* owner)
 BirdBehavior::BirdBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->wasStartled = false;
-	this->hitDelay = 0.0f;
 	this->startledSound = WorldSound::create();
 	this->squawkSound = WorldSound::create();
 

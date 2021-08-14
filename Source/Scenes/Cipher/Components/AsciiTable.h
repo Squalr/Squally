@@ -40,16 +40,16 @@ private:
 	void select(ImmediateBlock* block);
 	void close();
 
-	cocos2d::Sprite* background;
-	ScrollPane* scrollPane;
-	cocos2d::Sprite* selectionSprite;
-	DisplayModeToggles* displayModeToggles;
-	cocos2d::Sprite* frame;
-	ClickableTextNode* returnButton;
-	LocalizedLabel* asciiTableTitle;
-	LocalizedLabel* chooseANewValueTitle;
+	cocos2d::Sprite* background = nullptr;
+	ScrollPane* scrollPane = nullptr;
+	cocos2d::Sprite* selectionSprite = nullptr;
+	DisplayModeToggles* displayModeToggles = nullptr;
+	cocos2d::Sprite* frame = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	LocalizedLabel* asciiTableTitle = nullptr;
+	LocalizedLabel* chooseANewValueTitle = nullptr;
 
-	ImmediateBlock* selectedBlock;
-	ImmediateBlock* immediateBlock;
-	std::function<void()> onCloseCallback;
+	ImmediateBlock* selectedBlock = nullptr;
+	ImmediateBlock* immediateBlock = nullptr;
+	std::function<void()> onCloseCallback = nullptr;
 };

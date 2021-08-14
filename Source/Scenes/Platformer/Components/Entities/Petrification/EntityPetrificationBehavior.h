@@ -39,15 +39,14 @@ private:
 	bool tryCure();
 	void ajaxRun();
 
-	PlatformerEntity* entity;
-	InteractObject* cureInteraction;
+	PlatformerEntity* entity = nullptr;
+	InteractObject* cureInteraction = nullptr;
 	cocos2d::Vec2 displayOffset;
-	Inventory* inventory;
-	SmartParticles* unpetrifyParticles;
-	WorldSound* statueBreakSound;
-	
-	cocos2d::Node* rotationNode;
-	cocos2d::Sprite* petrifiedSprite;
+	Inventory* inventory = nullptr;
+	SmartParticles* unpetrifyParticles = nullptr;
+	WorldSound* statueBreakSound = nullptr;
+	cocos2d::Node* rotationNode = nullptr;
+	cocos2d::Sprite* petrifiedSprite = nullptr;
 
 	static const std::string SaveKeyCured;
 	static const std::string TagExit;

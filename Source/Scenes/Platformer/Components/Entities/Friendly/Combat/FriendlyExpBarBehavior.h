@@ -31,14 +31,14 @@ private:
 	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete = nullptr);
 	void runLevelUpEffect();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	
-	int tickCounterA;
-	int tickCounterB;
-	ProgressBar* expProgressBar;
-	LocalizedString* deltaString;
-	LocalizedLabel* deltaLabel;
-	LocalizedLabel* levelUpLabel;
-	SmartParticles* levelUpFx;
-	Sound* levelUpSound;
+	int tickCounterA = 0;
+	int tickCounterB = 0;
+	ProgressBar* expProgressBar = nullptr;
+	LocalizedString* deltaString = nullptr;
+	LocalizedLabel* deltaLabel = nullptr;
+	LocalizedLabel* levelUpLabel = nullptr;
+	SmartParticles* levelUpFx = nullptr;
+	Sound* levelUpSound = nullptr;
 };

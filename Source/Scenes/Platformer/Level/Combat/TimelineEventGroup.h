@@ -33,7 +33,7 @@ private:
 	cocos2d::Node* timelineEventsNode;
 
 	Buff* associatedBuff;
-	PlatformerEntity* owner;
+	PlatformerEntity* owner = nullptr;
 	std::vector<TimelineEvent*> timelineEvents;
 	std::vector<TimelineEvent*> timelineEventsToDelete;
 	std::function<void()> onGroupComplete;

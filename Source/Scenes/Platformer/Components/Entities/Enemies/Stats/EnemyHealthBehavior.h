@@ -22,5 +22,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEnemy* entity;
+	PlatformerEnemy* entity = nullptr;
 };

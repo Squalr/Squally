@@ -26,8 +26,6 @@ EntityMountBehavior* EntityMountBehavior::create(GameObject* owner)
 EntityMountBehavior::EntityMountBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->mountTarget = nullptr;
-	this->originalParent = nullptr;
 
 	if (this->entity == nullptr)
 	{

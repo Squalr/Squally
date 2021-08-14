@@ -27,17 +27,16 @@ private:
 	
 	void loadDisplayValue();
 
-	unsigned char charValue;
-	CipherEvents::DisplayDataType displayDataType;
+	unsigned char charValue = 0;
+	CipherEvents::DisplayDataType displayDataType = CipherEvents::DisplayDataType::Ascii;
 
-	cocos2d::Sprite* spriteAscii;
-	cocos2d::Sprite* spriteBin;
-	cocos2d::Sprite* spriteDec;
-	cocos2d::Sprite* spriteHex;
-	cocos2d::Sprite* spriteAsciiSelected;
-	cocos2d::Sprite* spriteBinSelected;
-	cocos2d::Sprite* spriteDecSelected;
-	cocos2d::Sprite* spriteHexSelected;
-
-	SmartAsciiLabel* displayLabel;
+	cocos2d::Sprite* spriteAscii = nullptr;
+	cocos2d::Sprite* spriteBin = nullptr;
+	cocos2d::Sprite* spriteDec = nullptr;
+	cocos2d::Sprite* spriteHex = nullptr;
+	cocos2d::Sprite* spriteAsciiSelected = nullptr;
+	cocos2d::Sprite* spriteBinSelected = nullptr;
+	cocos2d::Sprite* spriteDecSelected = nullptr;
+	cocos2d::Sprite* spriteHexSelected = nullptr;
+	SmartAsciiLabel* displayLabel = nullptr;
 };

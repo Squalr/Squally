@@ -34,10 +34,8 @@ private:
 	void buildAllInventories();
 
 	std::vector<Inventory*> allInventories;
-	
-	Inventory* inventory;
-	EquipmentInventory* equipmentInventory;
-	CurrencyInventory* currencyInventory;
-
-	PlatformerEntity* platformerEntity;
+	Inventory* inventory = nullptr;
+	EquipmentInventory* equipmentInventory = nullptr;
+	CurrencyInventory* currencyInventory = nullptr;
+	PlatformerEntity* platformerEntity = nullptr;
 };

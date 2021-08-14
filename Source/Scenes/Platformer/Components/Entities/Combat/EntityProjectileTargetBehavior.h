@@ -31,7 +31,6 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
-
-	cocos2d::Node* projectileTarget;
+	PlatformerEntity* entity = nullptr;
+	cocos2d::Node* projectileTarget = nullptr;
 };

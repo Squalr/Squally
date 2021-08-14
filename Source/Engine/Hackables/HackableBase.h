@@ -66,16 +66,16 @@ private:
 	typedef SmartNode super;
 	friend class GlobalHackAttributeContainer;
 
-	float duration;
-	float cooldown;
-	float elapsedDuration;
-	float elapsedCooldown;
-	bool isHackActive;
+	float duration = 0.0f;
+	float cooldown = 0.0f;
+	float elapsedDuration = 0.0f;
+	float elapsedCooldown = 0.0f;
+	bool isHackActive = false;
 
 	std::string hackableIdentifier;
-	LocalizedString* name;
+	LocalizedString* name = nullptr;
 	HackBarColor hackBarColor;
 	std::string iconResource;
-	LazyNode<HackablePreview>* hackablePreview;
-	int requiredHackFlag;
+	LazyNode<HackablePreview>* hackablePreview = nullptr;
+	int requiredHackFlag = 0;
 };

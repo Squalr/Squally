@@ -35,11 +35,6 @@ AsciiTable* AsciiTable::create()
 
 AsciiTable::AsciiTable()
 {
-	this->asciiLetters = std::vector<ImmediateBlock*>();
-	this->selectedBlock = nullptr;
-	this->immediateBlock = nullptr;
-	this->onCloseCallback = nullptr;
-
 	this->background = Sprite::create(CipherResources::PopupPanelBack);
 	this->scrollPane = ScrollPane::create(CSize(1408.0f, 456.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, CSize(0.0f, 32.0f));
 

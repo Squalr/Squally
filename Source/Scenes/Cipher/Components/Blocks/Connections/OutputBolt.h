@@ -28,6 +28,6 @@ protected:
 private:
 	typedef BoltBase super;
 
-	cocos2d::Sprite* bolt;
-	cocos2d::Sprite* helperArrow;
+	cocos2d::Sprite* bolt = nullptr;
+	cocos2d::Sprite* helperArrow = nullptr;
 };

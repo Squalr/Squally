@@ -23,11 +23,6 @@ using namespace cocos2d;
 EntityCombatBehaviorBase::EntityCombatBehaviorBase(GameObject* owner, std::vector<GameComponent*> component) : super(owner, component)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->timelineSpeed = 1.0f;
-	this->bonusArmor = 0;
-	this->bonusAttack = 0;
-	this->bonusMagicAttack = 0;
-	this->bonusSpeed = 0.0f;
 
 	if (this->entity == nullptr)
 	{

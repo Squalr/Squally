@@ -80,6 +80,7 @@ public:
 
 private:
 	typedef SmartNode super;
+	
 	Hexus();
 	virtual ~Hexus();
 
@@ -90,76 +91,76 @@ private:
 	void buildEnemyDeck(HexusOpponentData* opponentData);
 	void buildPlayerDeck();
 
-	GameState* gameState;
-	cocos2d::Sprite* gameBackground;
+	GameState* gameState = nullptr;
+	cocos2d::Sprite* gameBackground = nullptr;
 
 	// GameComponents
-	Avatars* avatars;
-	CardPreviewComponent* cardPreviewComponent;
-	StagingHelperText* stagingHelperText;
-	AssemblyHelpText* assemblyHelpText;
+	Avatars* avatars = nullptr;
+	CardPreviewComponent* cardPreviewComponent = nullptr;
+	StagingHelperText* stagingHelperText = nullptr;
+	AssemblyHelpText* assemblyHelpText = nullptr;
 
-	StateAIDecideCard* stateAIDecideCard;
-	StateAIDecideCardReplace* stateAIDecideCardReplace;
-	StateAIDecidePass* stateAIDecidePass;
-	StateAIDecideTarget* stateAIDecideTarget;
-	StateCardReplace* stateCardReplace;
-	StatePeekCards* statePeekCards;
-	StateCoinFlip* stateCoinFlip;
-	StateSourceCardStaged* stateSourceCardStaged;
-	StateDraw* stateDraw;
-	StateDrawInitial* stateDrawInitial;
-	StateGameEnd* stateGameEnd;
-	StateGameExit* stateGameExit;
-	StateLoadInitialState* stateLoadInitialState;
-	StateGameStart* stateGameStart;
-	StateNeutral* stateNeutral;
-	StateOpponentTurnStart* stateOpponentTurnStart;
-	StatePlayCard* statePlayCard;
-	StatePass* statePass;
-	StatePlayerTurnStart* statePlayerTurnStart;
-	StateRoundEnd* stateRoundEnd;
-	StateRoundStart* stateRoundStart;
-	StateHandCardStaged* stateHandCardStaged;
-	StateTurnEnd* stateTurnEnd;
-	StateTutorial* stateTutorial;
+	StateAIDecideCard* stateAIDecideCard = nullptr;
+	StateAIDecideCardReplace* stateAIDecideCardReplace = nullptr;
+	StateAIDecidePass* stateAIDecidePass = nullptr;
+	StateAIDecideTarget* stateAIDecideTarget = nullptr;
+	StateCardReplace* stateCardReplace = nullptr;
+	StatePeekCards* statePeekCards = nullptr;
+	StateCoinFlip* stateCoinFlip = nullptr;
+	StateSourceCardStaged* stateSourceCardStaged = nullptr;
+	StateDraw* stateDraw = nullptr;
+	StateDrawInitial* stateDrawInitial = nullptr;
+	StateGameEnd* stateGameEnd = nullptr;
+	StateGameExit* stateGameExit = nullptr;
+	StateLoadInitialState* stateLoadInitialState = nullptr;
+	StateGameStart* stateGameStart = nullptr;
+	StateNeutral* stateNeutral = nullptr;
+	StateOpponentTurnStart* stateOpponentTurnStart = nullptr;
+	StatePlayCard* statePlayCard = nullptr;
+	StatePass* statePass = nullptr;
+	StatePlayerTurnStart* statePlayerTurnStart = nullptr;
+	StateRoundEnd* stateRoundEnd = nullptr;
+	StateRoundStart* stateRoundStart = nullptr;
+	StateHandCardStaged* stateHandCardStaged = nullptr;
+	StateTurnEnd* stateTurnEnd = nullptr;
+	StateTutorial* stateTutorial = nullptr;
 
-	CardReplaceBanner* cardReplaceBanner;
-	OpponentFirstBanner* opponentFirstBanner;
-	OpponentLastStandBanner* opponentLastStandBanner;
-	OpponentPassBanner* opponentPassBanner;
-	OpponentRoundWinBanner* opponentRoundWinBanner;
-	OpponentTurnBanner* opponentTurnBanner;
-	PlayerFirstBanner* playerFirstBanner;
-	PlayerLastStandBanner* playerLastStandBanner;
-	PlayerPassBanner* playerPassBanner;
-	PlayerRoundWinBanner* playerRoundWinBanner;
-	PlayerTurnBanner* playerTurnBanner;
-	ChallengeBanner* challengeBanner;
-	RoundBanner* roundBanner;
-	RoundTieBanner* roundTieBanner;
-	VictoryBanner* victoryBanner;
-	DefeatBanner* defeatBanner;
-	DrawBanner* drawBanner;
+	CardReplaceBanner* cardReplaceBanner = nullptr;
+	OpponentFirstBanner* opponentFirstBanner = nullptr;
+	OpponentLastStandBanner* opponentLastStandBanner = nullptr;
+	OpponentPassBanner* opponentPassBanner = nullptr;
+	OpponentRoundWinBanner* opponentRoundWinBanner = nullptr;
+	OpponentTurnBanner* opponentTurnBanner = nullptr;
+	PlayerFirstBanner* playerFirstBanner = nullptr;
+	PlayerLastStandBanner* playerLastStandBanner = nullptr;
+	PlayerPassBanner* playerPassBanner = nullptr;
+	PlayerRoundWinBanner* playerRoundWinBanner = nullptr;
+	PlayerTurnBanner* playerTurnBanner = nullptr;
+	ChallengeBanner* challengeBanner = nullptr;
+	RoundBanner* roundBanner = nullptr;
+	RoundTieBanner* roundTieBanner = nullptr;
+	VictoryBanner* victoryBanner = nullptr;
+	DefeatBanner* defeatBanner = nullptr;
+	DrawBanner* drawBanner = nullptr;
 
-	ClickableNode* boardSelection;
-	DeckCardCountDisplay* deckCardCountDisplay;
-	HandCardCountDisplay* handCardCountDisplay;
-	RemainingCardDisplay* remainingCardDisplay;
-	DrawCountDisplay* drawCountDisplay;
-	LossesDisplay* lossesDisplay;
-	RowTotals* rowTotals;
-	ScoreTotal* scoreTotal;
-	DebugDisplay* debugDisplay;
+	ClickableNode* boardSelection = nullptr;
+	DeckCardCountDisplay* deckCardCountDisplay = nullptr;
+	HandCardCountDisplay* handCardCountDisplay = nullptr;
+	RemainingCardDisplay* remainingCardDisplay = nullptr;
+	DrawCountDisplay* drawCountDisplay = nullptr;
+	LossesDisplay* lossesDisplay = nullptr;
+	RowTotals* rowTotals = nullptr;
+	ScoreTotal* scoreTotal = nullptr;
+	DebugDisplay* debugDisplay = nullptr;
 
-	cocos2d::Node* tutorialLayer;
-	cocos2d::Node* relocateLayer;
+	cocos2d::Node* tutorialLayer = nullptr;
+	cocos2d::Node* relocateLayer = nullptr;
 
-	cocos2d::LayerColor* menuBackDrop;
-	HelpMenu* helpMenu;
+	cocos2d::LayerColor* menuBackDrop = nullptr;
+	HelpMenu* helpMenu = nullptr;
 
-	Track* musicA;
-	Track* musicB;
+	Track* musicA = nullptr;
+	Track* musicB = nullptr;
 
 	static Hexus* instance;
 };

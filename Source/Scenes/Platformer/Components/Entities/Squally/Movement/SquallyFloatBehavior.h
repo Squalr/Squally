@@ -23,6 +23,5 @@ private:
 	typedef GameComponent super;
 
 	Squally* squally = nullptr;
-
-	float elapsed;
+	float elapsed = 0.0f;
 };

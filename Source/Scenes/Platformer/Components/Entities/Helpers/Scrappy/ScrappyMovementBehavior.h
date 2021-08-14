@@ -27,8 +27,7 @@ private:
 
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-
-	float elapsed;
+	float elapsed = 0.0f;
 
 	static const float FloatOffsetRadius;
 	static const float FloatOffsetAngle;

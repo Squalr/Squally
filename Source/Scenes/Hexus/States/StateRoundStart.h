@@ -21,5 +21,5 @@ protected:
 private:
 	typedef StateBase super;
 
-	Sound* roundStartSound;
+	Sound* roundStartSound = nullptr;
 };

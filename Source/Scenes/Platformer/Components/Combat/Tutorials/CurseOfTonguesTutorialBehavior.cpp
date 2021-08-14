@@ -45,8 +45,6 @@ CurseOfTonguesTutorialBehavior* CurseOfTonguesTutorialBehavior::create(GameObjec
 CurseOfTonguesTutorialBehavior::CurseOfTonguesTutorialBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 
 	if (this->entity == nullptr)
 	{

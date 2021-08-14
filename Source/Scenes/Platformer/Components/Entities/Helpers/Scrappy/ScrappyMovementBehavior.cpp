@@ -38,7 +38,6 @@ ScrappyMovementBehavior* ScrappyMovementBehavior::create(GameObject* owner)
 ScrappyMovementBehavior::ScrappyMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
-	this->elapsed = 0.0f;
 
 	if (this->scrappy == nullptr)
 	{

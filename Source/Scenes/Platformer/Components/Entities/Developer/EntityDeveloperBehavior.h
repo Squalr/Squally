@@ -25,9 +25,9 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	
-	ClickableNode* resurrectButton;
-	ClickableNode* halfHealthButton;
-	ClickableNode* killButton;
+	ClickableNode* resurrectButton = nullptr;
+	ClickableNode* halfHealthButton = nullptr;
+	ClickableNode* killButton = nullptr;
 };

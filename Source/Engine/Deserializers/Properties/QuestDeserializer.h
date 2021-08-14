@@ -20,7 +20,7 @@ public:
 	
 	struct QuestDeserializationRequestArgs
 	{
-		GameObject* owner;
+		GameObject* owner = nullptr;
 		std::string questLine;
 		std::string questTask;
 

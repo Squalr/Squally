@@ -23,7 +23,6 @@ private:
 
 	void onWeaponChange();
 
-	bool canEngage;
-	
+	bool canEngage = true;
 	Squally* squally = nullptr;
 };

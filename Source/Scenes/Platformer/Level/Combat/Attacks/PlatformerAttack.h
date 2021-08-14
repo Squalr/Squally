@@ -89,7 +89,7 @@ protected:
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 
-	PlatformerEntity* owner;
+	PlatformerEntity* owner = nullptr;
 	float attackDuration;
 	float recoverDuration;
 	Priority priority;

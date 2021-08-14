@@ -30,7 +30,6 @@ private:
 	float getOutOfCombatAttackOnset() override;
 	float getOutOfCombatAttackSustain() override;
 	
-	SmartAnimationSequenceNode* fireBreath;
-
-	KingGrogg* kingGrogg;
+	SmartAnimationSequenceNode* fireBreath = nullptr;
+	KingGrogg* kingGrogg = nullptr;
 };

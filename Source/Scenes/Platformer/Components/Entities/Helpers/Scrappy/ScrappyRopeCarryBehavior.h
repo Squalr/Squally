@@ -29,12 +29,11 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
-	GameObject* target;
-	cocos2d::Sprite* rope;
-	cocos2d::Sprite* ropeWaist;
-
-	float ropeRotation;
+	PlatformerEntity* entity = nullptr;
+	GameObject* target = nullptr;
+	cocos2d::Sprite* rope = nullptr;
+	cocos2d::Sprite* ropeWaist = nullptr;
+	float ropeRotation = 0.0f;
 
 	static const float FixedRopeDistance;
 };

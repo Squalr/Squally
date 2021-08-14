@@ -33,8 +33,7 @@ protected:
 private:
 	typedef EnemyOutOfCombatAttackBehavior super;
 	
-	AgroBehavior* agroBehavior;
-	SmartAnimationSequenceNode* fireBreath;
-
-	OrcBomber* orcBomber;
+	AgroBehavior* agroBehavior = nullptr;
+	SmartAnimationSequenceNode* fireBreath = nullptr;
+	OrcBomber* orcBomber = nullptr;
 };

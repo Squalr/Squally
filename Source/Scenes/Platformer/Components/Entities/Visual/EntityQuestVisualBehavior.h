@@ -31,7 +31,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 	cocos2d::Node* contentNode;
 	cocos2d::Sprite* questToGive;

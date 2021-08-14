@@ -32,7 +32,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	PlatformerEntity* owner;
+	PlatformerEntity* owner = nullptr;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;

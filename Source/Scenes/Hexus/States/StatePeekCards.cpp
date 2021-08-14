@@ -33,7 +33,6 @@ StatePeekCards::StatePeekCards() : super(GameState::StateType::PeekCards)
 	LocalizedLabel* doneButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
 	LocalizedLabel* doneButtonLabelHover = doneButtonLabel->clone();
 	
-	this->removedCards = std::vector<Card*>();
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);
 	doneButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 

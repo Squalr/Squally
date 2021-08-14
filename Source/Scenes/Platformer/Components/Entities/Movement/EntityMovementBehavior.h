@@ -43,20 +43,20 @@ private:
 	void checkCinematicMovementComplete();
 	void checkPatrolMovementComplete();
 
-	float moveAcceleration;
+	float moveAcceleration = 0.0f;
 	cocos2d::Vec2 swimAcceleration;
-	float jumpVelocity;
+	float jumpVelocity = 0.0f;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
-	WorldSound* jumpSound;
+	WorldSound* jumpSound = nullptr;
 	std::vector<WorldSound*> swimSounds;
 	std::vector<WorldSound*> walkSounds;
 	
-	EntityCollisionBehaviorBase* entityCollision;
-	EntityGroundCollisionBehavior* groundCollision;
-	EntityJumpCollisionBehavior* jumpBehavior;
+	EntityCollisionBehaviorBase* entityCollision = nullptr;
+	EntityGroundCollisionBehavior* groundCollision = nullptr;
+	EntityJumpCollisionBehavior* jumpBehavior = nullptr;
 
-	int swimSoundIndex;
-	int walkSoundIndex;
+	int swimSoundIndex = 0;
+	int walkSoundIndex = 0;
 };

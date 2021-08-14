@@ -45,10 +45,6 @@ FireballTutorialBehavior* FireballTutorialBehavior::create(GameObject* owner)
 FireballTutorialBehavior::FireballTutorialBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->hasRunTutorial = false;
-	this->tutorialInterrupt = false;
 
 	if (this->entity == nullptr)
 	{

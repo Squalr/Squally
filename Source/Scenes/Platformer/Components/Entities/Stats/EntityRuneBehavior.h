@@ -25,7 +25,7 @@ protected:
 	void onDisable() override;
 	void update(float) override;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 	std::vector<float> runeCooldowns;
 

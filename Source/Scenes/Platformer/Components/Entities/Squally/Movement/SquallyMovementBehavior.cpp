@@ -22,6 +22,10 @@ using namespace cocos2d;
 
 const std::string SquallyMovementBehavior::MapKey = "squally-movements";
 const float SquallyMovementBehavior::SquallyMovementAcceleration = 9600.0f;
+int SquallyMovementBehavior::LeftPressedKeys = 0;
+int SquallyMovementBehavior::RightPressedKeys = 0;
+int SquallyMovementBehavior::UpPressedKeys = 0;
+int SquallyMovementBehavior::DownPressedKeys = 0;
 
 SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 {
@@ -35,18 +39,11 @@ SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
-	this->leftPressed = false;
-	this->rightPressed = false;
-	this->upPressed = false;
-	this->downPressed = false;
 
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->isDisposing = false;
-	this->isPositionSavingDisabled = false;
 }
 
 SquallyMovementBehavior::~SquallyMovementBehavior()
@@ -57,49 +54,49 @@ void SquallyMovementBehavior::onLoad()
 {
 	this->whenKeyPressedIgnorePause({ InputEvents::KeyCode::KEY_LEFT_ARROW, InputEvents::KeyCode::KEY_A }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->leftPressed = true;
+		SquallyMovementBehavior::LeftPressedKeys |= (int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyPressedIgnorePause({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->rightPressed = true;
+		SquallyMovementBehavior::RightPressedKeys |= (int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyPressedIgnorePause({ InputEvents::KeyCode::KEY_UP_ARROW, InputEvents::KeyCode::KEY_W }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->upPressed = true;
+		SquallyMovementBehavior::UpPressedKeys |= (int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyPressedIgnorePause({ InputEvents::KeyCode::KEY_DOWN_ARROW, InputEvents::KeyCode::KEY_S }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->downPressed = true;
+		SquallyMovementBehavior::DownPressedKeys |= (int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyReleasedIgnorePause({ InputEvents::KeyCode::KEY_LEFT_ARROW, InputEvents::KeyCode::KEY_A }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->leftPressed = false;
+		SquallyMovementBehavior::LeftPressedKeys &= ~(int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyReleasedIgnorePause({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->rightPressed = false;
+		SquallyMovementBehavior::RightPressedKeys &= ~(int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyReleasedIgnorePause({ InputEvents::KeyCode::KEY_UP_ARROW, InputEvents::KeyCode::KEY_W }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->upPressed = false;
+		SquallyMovementBehavior::UpPressedKeys &= ~(int)args->keycode;
 		this->onMovementChanged();
 	});
 
 	this->whenKeyReleasedIgnorePause({ InputEvents::KeyCode::KEY_DOWN_ARROW, InputEvents::KeyCode::KEY_S }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->downPressed = false;
+		SquallyMovementBehavior::DownPressedKeys &= ~(int)args->keycode;
 		this->onMovementChanged();
 	});
 
@@ -137,6 +134,7 @@ void SquallyMovementBehavior::onLoad()
 	}
 	
 	this->scheduleUpdate();
+	this->onMovementChanged();
 }
 
 void SquallyMovementBehavior::onDisable()
@@ -159,11 +157,11 @@ void SquallyMovementBehavior::update(float dt)
 
 void SquallyMovementBehavior::onMovementChanged()
 {
-	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
+	this->squally->setState(StateKeys::MovementX, Value((SquallyMovementBehavior::LeftPressedKeys ? -1.0f : 0.0f) + (SquallyMovementBehavior::RightPressedKeys ? 1.0f : 0.0f)));
 	
 	// We actually want to prioritize jump, instead of canceling out the inputs. This is better UX for performing a crouch jump.
-	// this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
-	this->squally->setState(StateKeys::MovementY, Value((this->upPressed ? 1.0f : (this->downPressed ? -1.0f : 0.0f))));
+	// this->squally->setState(StateKeys::MovementY, Value((SquallyMovementBehavior::DownPressedKeys ? -1.0f : 0.0f) + (SquallyMovementBehavior::UpPressedKeys ? 1.0f : 0.0f)));
+	this->squally->setState(StateKeys::MovementY, Value((SquallyMovementBehavior::UpPressedKeys ? 1.0f : (SquallyMovementBehavior::DownPressedKeys ? -1.0f : 0.0f))));
 }
 
 void SquallyMovementBehavior::disablePositionSaving()

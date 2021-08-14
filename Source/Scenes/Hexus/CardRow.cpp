@@ -33,9 +33,6 @@ CardRow* CardRow::create(bool isPlayerRow)
 CardRow::CardRow(bool isPlayerRow)
 {
 	this->belongsToPlayer = isPlayerRow;
-	this->rowCards = std::vector<Card*>();
-	this->rowSelectCallback = nullptr;
-	this->clearOperationsOnInsert = false;
 	this->rowWidth = HexusConfig::rowWidth;
 
 	this->rowSelectSprite = ClickableNode::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);

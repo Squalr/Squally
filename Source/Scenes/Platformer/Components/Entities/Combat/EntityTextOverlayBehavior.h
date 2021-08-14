@@ -26,6 +26,6 @@ private:
 	void runManaDelta(int delta, bool zeroAsBlue);
 	void runLabelOverEntity(LocalizedLabel* label);
 
-	PlatformerEntity* entity;
-	cocos2d::Node* contentNode;
+	PlatformerEntity* entity = nullptr;
+	cocos2d::Node* contentNode = nullptr;
 };

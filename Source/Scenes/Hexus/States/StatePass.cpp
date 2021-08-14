@@ -31,10 +31,6 @@ StatePass* StatePass::create()
 
 StatePass::StatePass() : super(GameState::StateType::Pass)
 {
-	this->currentVisiblePlayerButton = nullptr;
-	this->playerChoiceLocked = false;
-	this->enemyChoiceLocked = false;
-
 	// Pass
 	this->passSprite = Sprite::create(HexusResources::Flags);
 

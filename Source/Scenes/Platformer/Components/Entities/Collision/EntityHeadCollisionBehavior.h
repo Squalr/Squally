@@ -28,7 +28,7 @@ private:
 
 	void buildHeadCollisionDetector();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 	static const float HeadCollisionPadding;
 	static const float HeadCollisionSize;

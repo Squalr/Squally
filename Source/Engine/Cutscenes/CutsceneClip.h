@@ -16,5 +16,6 @@ protected:
 
 private:
 	typedef SmartScene super;
-	std::function<void()> cutsceneClipCompleteCallback;
+
+	std::function<void()> cutsceneClipCompleteCallback = nullptr;
 };

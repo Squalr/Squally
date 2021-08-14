@@ -22,7 +22,7 @@ protected:
 	void onLoad() override;
 	void onDisable() override;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 private:
 	typedef GameComponent super;

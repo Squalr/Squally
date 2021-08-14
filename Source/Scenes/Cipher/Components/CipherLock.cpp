@@ -33,8 +33,6 @@ CipherLock* CipherLock::create()
 
 CipherLock::CipherLock()
 {
-	this->hasAnyPinFailed = false;
-	
 	DrawNode* stencil = DrawNode::create();
 
 	stencil->drawSolidRect(Vec2(-224.0f, -224.0f), Vec2(224.0f, 224.0f), Color4F::GREEN);
@@ -49,8 +47,6 @@ CipherLock::CipherLock()
 	this->cipherPinsNode = Node::create();
 	this->stoppingBlock = Sprite::create(CipherResources::Lock_StoppingBlock);
 	this->pinboardFront = Sprite::create(CipherResources::Lock_PinboardFront);
-	this->cipherPinholes = std::vector<cocos2d::Sprite*>();
-	this->cipherPins = std::vector<cocos2d::Sprite*>();
 	this->gearTurnSound = Sound::create(SoundResources::Cipher_GearTurn);
 
 	// Enable to debug clipping:

@@ -59,34 +59,34 @@ private:
 	void onMenuExit();
 	void buildTutorialMap();
 
-	std::function<void()> backClickCallback;
+	std::function<void()> backClickCallback = nullptr;
 
-	cocos2d::Node* gameNode;
-	cocos2d::Node* tutorialNode;
-	AsciiButton* asciiButton;
-	CipherBackground* cipherBackground;
-	CipherLock* cipherLock;
-	CipherFrame* cipherFrame;
-	CipherDecor* cipherDecor;
-	DifficultySelectMenu* difficultySelectMenu;
-	DisplayModeToggles* displayModeToggles;
-	TestButton* testButton;
-	UnlockButton* unlockButton;
-	InputsOutputsPanel* inputsOutputsPanel;
-	QuitButton* quitButton;
+	cocos2d::Node* gameNode = nullptr;
+	cocos2d::Node* tutorialNode = nullptr;
+	AsciiButton* asciiButton = nullptr;
+	CipherBackground* cipherBackground = nullptr;
+	CipherLock* cipherLock = nullptr;
+	CipherFrame* cipherFrame = nullptr;
+	CipherDecor* cipherDecor = nullptr;
+	DifficultySelectMenu* difficultySelectMenu = nullptr;
+	DisplayModeToggles* displayModeToggles = nullptr;
+	TestButton* testButton = nullptr;
+	UnlockButton* unlockButton = nullptr;
+	InputsOutputsPanel* inputsOutputsPanel = nullptr;
+	QuitButton* quitButton = nullptr;
 
-	CipherState* cipherState;
-	CipherStateGameEnd* cipherStateGameEnd;
-	CipherStateLoadInitialState* cipherStateLoadInitialState;
-	CipherStateNeutral* cipherStateNeutral;
-	CipherStateStartGame* cipherStateStartGame;
-	CipherStateTesting* cipherStateTesting;
-	CipherStateTransitionUnlocking* cipherStateTransitionUnlocking;
-	CipherStateUnlocking* cipherStateUnlocking;
-	CipherStateVictory* cipherStateVictory;
+	CipherState* cipherState = nullptr;
+	CipherStateGameEnd* cipherStateGameEnd = nullptr;
+	CipherStateLoadInitialState* cipherStateLoadInitialState = nullptr;
+	CipherStateNeutral* cipherStateNeutral = nullptr;
+	CipherStateStartGame* cipherStateStartGame = nullptr;
+	CipherStateTesting* cipherStateTesting = nullptr;
+	CipherStateTransitionUnlocking* cipherStateTransitionUnlocking = nullptr;
+	CipherStateUnlocking* cipherStateUnlocking = nullptr;
+	CipherStateVictory* cipherStateVictory = nullptr;
 
-	cocos2d::LayerColor* backdrop;
-	AsciiTable* asciiTable;
+	cocos2d::LayerColor* backdrop = nullptr;
+	AsciiTable* asciiTable = nullptr;
 
 	std::map<std::string, std::function<CipherTutorialBase*()>> cipherTutorialMap;
 

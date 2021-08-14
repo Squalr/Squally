@@ -3,7 +3,6 @@
 class HexusConfig
 {
 public:
-
 	static const int startingCardAmount;
 	static const int initialCardReplacements;
 	static const int midgameCardReplacements;

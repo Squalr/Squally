@@ -35,30 +35,30 @@ protected:
 	
 	void onFire(SpriterAnimationNode* animation) override;
 
-	SpriterAnimationTimelineEventAnimation* next;
+	SpriterAnimationTimelineEventAnimation* next = nullptr;
 
 private:
 	typedef SpriterAnimationTimelineEventBase super;
 	
 	std::string partName;
-	int partHash;
-	int spin;
-	float speed;
+	int partHash = 0;
+	int spin = 0;
+	float speed = 0.0f;
 	
 	cocos2d::Vec2 position;
 	cocos2d::Vec2 anchor;
 	cocos2d::Vec2 scale;
-	float rotation;
-	float alpha;
+	float rotation = 0.0f;
+	float alpha = 0.0f;
 
 	cocos2d::Vec2 deltaPosition;
 	cocos2d::Vec2 deltaAnchor;
 	cocos2d::Vec2 deltaScale;
-	float deltaRotation;
-	float deltaAlpha;
+	float deltaRotation = 0.0f;
+	float deltaAlpha = 0.0f;
 
 	std::vector<SpriterAnimationTimelineEventAnimation*> cascadeChildren;
 
-	bool isBone;
-	bool hasNoAnimationChanges;
+	bool isBone = false;
+	bool hasNoAnimationChanges = false;
 };

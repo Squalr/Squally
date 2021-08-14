@@ -20,7 +20,7 @@ protected:
 	void onLoad() override;
 	void onDisable() override;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 
 private:
 	typedef GameComponentGroup super;
@@ -28,10 +28,9 @@ private:
 	virtual void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
 	virtual void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing);
 
-	int bonusArmor;
-	int bonusAttack;
-	int bonusMagicAttack;
-	float bonusSpeed;
-
-	float timelineSpeed;
+	int bonusArmor = 0;
+	int bonusAttack = 0;
+	int bonusMagicAttack = 0;
+	float bonusSpeed = 0.0f;
+	float timelineSpeed = 0.0f;
 };

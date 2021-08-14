@@ -2,7 +2,6 @@
 
 CutsceneClip::CutsceneClip()
 {
-	this->cutsceneClipCompleteCallback = nullptr;
 }
 
 CutsceneClip::~CutsceneClip()

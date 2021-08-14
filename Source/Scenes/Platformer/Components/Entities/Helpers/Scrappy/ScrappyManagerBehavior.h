@@ -25,7 +25,7 @@ private:
 
 	void spawnScrappy();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Scrappy* helperRef;
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 };

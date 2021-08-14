@@ -34,8 +34,6 @@ DestinationBlock* DestinationBlock::create(int cipherIndex)
 DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecHuge, CipherResources::Blocks_BlockDecHuge), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 	this->cipherIndex = cipherIndex;
-	this->receivedValue = char(0);
-	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 	this->displayLabel = SmartAsciiLabel::create();
 	this->receivedDisplayLabel = SmartAsciiLabel::create();

@@ -25,11 +25,12 @@ protected:
 
 private:
 	typedef StateBase super;
+	
 	void onEndReplaceCards(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* cardToReplace, GameState* gameState);
 
-	FocusTakeOver* focusTakeOver;
+	FocusTakeOver* focusTakeOver = nullptr;
 	std::vector<Card*> removedCards;
-	ClickableTextNode* doneButton;
+	ClickableTextNode* doneButton = nullptr;
 };

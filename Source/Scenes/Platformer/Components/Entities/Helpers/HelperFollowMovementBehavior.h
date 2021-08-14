@@ -28,10 +28,10 @@ private:
 	
 	void warpToSqually();
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
 	
-	bool followEnabled;
+	bool followEnabled = true;
 
 	static const float StopFollowRangeX;
 	static const float TryJumpRangeY;

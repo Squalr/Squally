@@ -183,39 +183,39 @@ public:
 
 	struct ReadOnlyScript
 	{
-		LocalizedString* title;
+		LocalizedString* title = nullptr;
 		std::string scriptx86;
 		std::string scriptx64;
 
-		ReadOnlyScript() : title(nullptr), scriptx86(""), scriptx64("") { }
+		ReadOnlyScript() { }
 		ReadOnlyScript(LocalizedString* title, std::string scriptx86, std::string scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
 	};
 
 	struct HackableCodeInfo
 	{
 		std::string hackableIdentifier;
-		LocalizedString* functionName;
-		HackBarColor hackBarColor;
+		LocalizedString* functionName = nullptr;
+		HackBarColor hackBarColor = HackBarColor::Purple;
 		std::string iconResource;
-		LazyNode<HackablePreview>* hackablePreview;
+		LazyNode<HackablePreview>* hackablePreview = nullptr;
 		std::map<Register, LocalizedString*> registerHints;
-		int hackFlags;
-		float duration;
-		float cooldown;
+		int hackFlags = 0;
+		float duration = 1.0f;
+		float cooldown = 1.0f;
 		std::vector<ReadOnlyScript> readOnlyScripts;
-		bool excludeDefaultScript;
+		bool excludeDefaultScript = false;
 
-		HackableCodeInfo() : hackableIdentifier(""), functionName(nullptr), hackBarColor(HackBarColor::Purple), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo() { }
 		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, LazyNode<HackablePreview>* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
 				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	};
 
 	struct HackableCodeMarkers
 	{
-		void* start;
-		void* end;
+		void* start = nullptr;
+		void* end = nullptr;
 
-		HackableCodeMarkers() : start(nullptr), end(nullptr) { }
+		HackableCodeMarkers() { }
 		HackableCodeMarkers(void* start, void* end) : start(start), end(end) { }
 	};
 

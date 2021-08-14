@@ -21,14 +21,14 @@ protected:
 	
 	virtual void onFire(SpriterAnimationNode* animation) = 0;
 
-	SpriterAnimationTimeline* timeline;
-	float keytime;
-	float endTime;
+	SpriterAnimationTimeline* timeline = nullptr;
+	float keytime = 0.0f;
+	float endTime = 0.0f;
 	SpriterCurveType curveType;
-	float c1;
-	float c2;
-	float c3;
-	float c4;
+	float c1 = 0.0f;
+	float c2 = 0.0f;
+	float c3 = 0.0f;
+	float c4 = 0.0f;
 
 private:
 	typedef SmartNode super;

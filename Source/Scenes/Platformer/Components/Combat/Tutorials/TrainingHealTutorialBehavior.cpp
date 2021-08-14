@@ -40,9 +40,6 @@ TrainingHealTutorialBehavior* TrainingHealTutorialBehavior::create(GameObject* o
 TrainingHealTutorialBehavior::TrainingHealTutorialBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->healCount = 0;
 
 	if (this->entity == nullptr)
 	{

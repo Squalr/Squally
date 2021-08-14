@@ -39,14 +39,14 @@ private:
 	void buildEquipmentAttacks();
 	void rebuildConsumables();
 
-	EquipmentInventory* equipmentInventory;
-	Inventory* inventory;
+	EquipmentInventory* equipmentInventory = nullptr;
+	Inventory* inventory = nullptr;
 
-	PlatformerEntity* entity;
-	cocos2d::Node* attacksNode;
-	cocos2d::Node* consumablessNode;
+	PlatformerEntity* entity = nullptr;
+	cocos2d::Node* attacksNode = nullptr;
+	cocos2d::Node* consumablessNode = nullptr;
 
-	bool consumablesStale;
+	bool consumablesStale = true;
 
 	std::vector<PlatformerAttack*> registeredAttacks;
 	std::vector<Consumable*> registeredConsumables;

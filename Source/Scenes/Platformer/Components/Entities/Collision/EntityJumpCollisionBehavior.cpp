@@ -30,8 +30,6 @@ EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* own
 EntityJumpCollisionBehavior::EntityJumpCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->jumpCollision = nullptr;
-	this->hoverCollisionBehavior = nullptr;
 	
 	if (this->entity == nullptr)
 	{

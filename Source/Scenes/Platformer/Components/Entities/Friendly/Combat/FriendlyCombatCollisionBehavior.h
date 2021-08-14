@@ -23,5 +23,5 @@ protected:
 private:
 	typedef EntityCollisionBehaviorBase super;
 
-	PlatformerEntity* owner;
+	PlatformerEntity* owner = nullptr;
 };

@@ -50,43 +50,43 @@ private:
 	void onClaimVictoryMouseOver();
 	void onClaimVictoryMouseOut();
 
-	ClickableNode* currentVisiblePlayerButton;
-	bool playerChoiceLocked;
-	bool enemyChoiceLocked;
+	ClickableNode* currentVisiblePlayerButton = nullptr;
+	bool playerChoiceLocked = false;
+	bool enemyChoiceLocked = false;
 
 	// We need Hexus to be able to reach in and grab a pointer to UI elements so that they can be focused by tutorials
 	friend class Hexus;
 
-	cocos2d::Sprite* lastStandSprite;
-	ClickableNode* lastStandButton;
-	cocos2d::LayerColor* lastStandPanel;
-	LocalizedLabel* lastStandLabel;
-	SmartParticles* lastStandParticles;
+	cocos2d::Sprite* lastStandSprite = nullptr;
+	ClickableNode* lastStandButton = nullptr;
+	cocos2d::LayerColor* lastStandPanel = nullptr;
+	LocalizedLabel* lastStandLabel = nullptr;
+	SmartParticles* lastStandParticles = nullptr;
 
-	cocos2d::Sprite* enemyLastStandSprite;
-	SmartParticles* enemyLastStandParticles;
+	cocos2d::Sprite* enemyLastStandSprite = nullptr;
+	SmartParticles* enemyLastStandParticles = nullptr;
 
 	// Surrender
-	cocos2d::Sprite* passSprite;
-	ClickableNode* passButton;
-	cocos2d::LayerColor* passPanel;
-	LocalizedLabel* passLabel;
-	SmartParticles* passParticles;
+	cocos2d::Sprite* passSprite = nullptr;
+	ClickableNode* passButton = nullptr;
+	cocos2d::LayerColor* passPanel = nullptr;
+	LocalizedLabel* passLabel = nullptr;
+	SmartParticles* passParticles = nullptr;
 
-	cocos2d::Sprite* enemyPassSprite;
-	SmartParticles* enemyPassParticles;
+	cocos2d::Sprite* enemyPassSprite = nullptr;
+	SmartParticles* enemyPassParticles = nullptr;
 
 	// Claim victory
-	cocos2d::Sprite* claimVictorySprite;
-	ClickableNode* claimVictoryButton;
-	cocos2d::LayerColor* claimVictoryPanel;
-	LocalizedLabel* claimVictoryLabel;
-	SmartParticles* claimVictoryParticles;
+	cocos2d::Sprite* claimVictorySprite = nullptr;
+	ClickableNode* claimVictoryButton = nullptr;
+	cocos2d::LayerColor* claimVictoryPanel = nullptr;
+	LocalizedLabel* claimVictoryLabel = nullptr;
+	SmartParticles* claimVictoryParticles = nullptr;
 
-	cocos2d::Sprite* enemyClaimVictorySprite;
-	SmartParticles* enemyClaimVictoryParticles;
+	cocos2d::Sprite* enemyClaimVictorySprite = nullptr;
+	SmartParticles* enemyClaimVictoryParticles = nullptr;
 
-	Sound* passSound;
-	Sound* lastStandSound;
-	Sound* claimVictorySound;
+	Sound* passSound = nullptr;
+	Sound* lastStandSound = nullptr;
+	Sound* claimVictorySound = nullptr;
 };

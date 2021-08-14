@@ -31,7 +31,6 @@ private:
 	
 	Weapon* getWeapon();
 
-	Projectile* projectile;
-
+	Projectile* projectile = nullptr;
 	Squally* squally = nullptr;
 };

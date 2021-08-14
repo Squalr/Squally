@@ -27,11 +27,11 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	bool inAsciiMenu;
-	RadioButton* toggleButtonBin;
-	RadioButton* toggleButtonDec;
-	RadioButton* toggleButtonHex;
-	RadioButton* toggleButtonAscii;
+	bool inAsciiMenu = false;
+	RadioButton* toggleButtonBin = nullptr;
+	RadioButton* toggleButtonDec = nullptr;
+	RadioButton* toggleButtonHex = nullptr;
+	RadioButton* toggleButtonAscii = nullptr;
 
 	static const int GroupIdDisplayModeToggles;
 };

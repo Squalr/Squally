@@ -33,9 +33,9 @@ private:
 	void runTutorialPartA(CipherState* cipherState);
 	void runTutorialPartB(CipherState* cipherState);
 
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* introLabel;
-	LocalizedLabel* connectLabel;
-	ClickableTextNode* nextButtonIntro;
-	ClickableTextNode* nextButtonConnect;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* introLabel = nullptr;
+	LocalizedLabel* connectLabel = nullptr;
+	ClickableTextNode* nextButtonIntro = nullptr;
+	ClickableTextNode* nextButtonConnect = nullptr;
 };

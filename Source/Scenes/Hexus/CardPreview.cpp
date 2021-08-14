@@ -34,7 +34,6 @@ CardPreview::CardPreview()
 	this->cardPad = Sprite::create(HexusResources::CardPad);
 	this->previewPanel = Node::create();
 	this->currentPreviewData = PreviewData();
-	this->previewCache = std::map<std::string, PreviewData>();
 
 	LocalizedLabel* helpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Help::create());
 	LocalizedLabel* helpLabelSelected = helpLabel->clone();

@@ -18,6 +18,4 @@ protected:
 
 private:
 	typedef EntityCombatBehaviorBase super;
-
-	PlatformerEntity* entity;
 };

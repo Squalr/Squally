@@ -29,11 +29,6 @@ SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::strin
 
 SpriterAnimationTimeline::SpriterAnimationTimeline(const std::string& animationResource)
 {
-	this->mainlineEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventMainline*>>>();
-	this->animationEvents = std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>>();
-	this->registeredAnimationNodes = std::set<SpriterAnimationNode*>();
-	this->onEnterRunOnce = false;
-	
 	this->buildTimelines(SpriterAnimationParser::Parse(animationResource));
 }
 

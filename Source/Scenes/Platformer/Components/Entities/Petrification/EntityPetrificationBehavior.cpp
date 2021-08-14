@@ -60,10 +60,6 @@ EntityPetrificationBehavior* EntityPetrificationBehavior::create(GameObject* own
 EntityPetrificationBehavior::EntityPetrificationBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->petrifiedSprite = nullptr;
-	this->displayOffset = Vec2::ZERO;
-	this->inventory = nullptr;
-	this->cureInteraction = nullptr;
 	this->unpetrifyParticles = SmartParticles::create(ParticleResources::Objects_StatueBreak, SmartParticles::CullInfo(CSize(113.0f, 160.0f)));
 	this->statueBreakSound = WorldSound::create(SoundResources::Platformer_Objects_Statue_RumbleAndBreak1);
 	this->rotationNode = Node::create();

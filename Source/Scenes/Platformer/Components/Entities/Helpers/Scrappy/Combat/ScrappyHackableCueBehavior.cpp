@@ -33,8 +33,6 @@ ScrappyHackableCueBehavior* ScrappyHackableCueBehavior::create(GameObject* owner
 ScrappyHackableCueBehavior::ScrappyHackableCueBehavior(GameObject* owner) : super(owner)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
-	this->cueCooldown = 0.0f;
-	this->disabled = false;
 
 	if (this->scrappy == nullptr)
 	{

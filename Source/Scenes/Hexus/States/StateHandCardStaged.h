@@ -22,6 +22,7 @@ protected:
 
 private:
 	typedef StateBase super;
+	
 	void initializeSelectablesAndCallbacks(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageSelectedCombineCard(Card* card, GameState* gameState);

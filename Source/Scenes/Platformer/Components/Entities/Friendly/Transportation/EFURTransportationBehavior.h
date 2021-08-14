@@ -24,13 +24,13 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
+	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	DialogueSet* innerChoices;
+	DialogueSet* innerChoices = nullptr;
 
-	Portal* backPortal;
-	Portal* leavePortal;
+	Portal* backPortal = nullptr;
+	Portal* leavePortal = nullptr;
 
 	static const std::string QuestTagBackPortal;
 	static const std::string QuestTagLeavePortal;

@@ -22,6 +22,6 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity;
-	SmartParticles* unpetrifyParticles;
+	PlatformerEntity* entity = nullptr;
+	SmartParticles* unpetrifyParticles = nullptr;
 };

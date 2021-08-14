@@ -29,5 +29,5 @@ private:
 	void initializeCallbacks(GameState* gameState);
 
 	std::vector<Card*> removedCards;
-	ClickableTextNode* doneButton;
+	ClickableTextNode* doneButton = nullptr;
 };
