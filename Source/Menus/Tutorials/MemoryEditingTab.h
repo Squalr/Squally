@@ -28,17 +28,17 @@ private:
 	void loadKnownValueDoubleTutorial();
 	void loadUnknownValueFloatTutorialAdvanced();
 
-	TutorialEntry* knownValueInt;
-	TutorialEntry* knownValueFloat;
-	TutorialEntry* unknownValueInt;
-	TutorialEntry* unknownValueFloat;
-	TutorialEntry* knownValueDouble;
-	TutorialEntry* unknownValueFloatAdvanced;
+	TutorialEntry* knownValueInt = nullptr;
+	TutorialEntry* knownValueFloat = nullptr;
+	TutorialEntry* unknownValueInt = nullptr;
+	TutorialEntry* unknownValueFloat = nullptr;
+	TutorialEntry* knownValueDouble = nullptr;
+	TutorialEntry* unknownValueFloatAdvanced = nullptr;
 	
-	PlatformerEntity* kingZul;
-	PlatformerEntity* agnes;
-	PlatformerEntity* lazarus;
-	PlatformerEntity* asmodeus;
-	PlatformerEntity* cryogen;
-	PlatformerEntity* krampus;
+	PlatformerEntity* kingZul = nullptr;
+	PlatformerEntity* agnes = nullptr;
+	PlatformerEntity* lazarus = nullptr;
+	PlatformerEntity* asmodeus = nullptr;
+	PlatformerEntity* cryogen = nullptr;
+	PlatformerEntity* krampus = nullptr;
 };

@@ -36,13 +36,13 @@ private:
 	void updateSliderPosition();
 	void onDrag(cocos2d::InputEvents::MouseEventArgs* args);
 
-	ClickableNode* slide;
-	ProgressBar* progressBar;
-	ClickableNode* progressBarHitBox;
+	ClickableNode* slide = nullptr;
+	ProgressBar* progressBar = nullptr;
+	ClickableNode* progressBarHitBox = nullptr;
 
-	bool isHorizontal;
-	float progress;
+	bool isHorizontal = false;
+	float progress = 0.0f;
 
-	std::function<void(float progress)> progressUpdateEvent;
+	std::function<void(float progress)> progressUpdateEvent = nullptr;
 };
 

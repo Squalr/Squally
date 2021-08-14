@@ -75,31 +75,30 @@ private:
 	void mouseHitTest(cocos2d::EventCustom* event);
 	bool intersects(cocos2d::Vec2 mousePos);
 
-	Sound* mouseOverSound;
-	Sound* clickSound;
+	Sound* mouseOverSound = nullptr;
+	Sound* clickSound = nullptr;
+	cocos2d::Node* currentSprite = nullptr;
 
-	cocos2d::Node* currentSprite;
-
-	bool allowMouseOutDeselection;
-	bool allowCollisionWhenInvisible;
-	bool interactionEnabled;
-	bool wasAnywhereClicked;
-	bool wasClickedDirectly;
-	bool isMousedOver;
-	bool isNeverHandleEnabled;
-	std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction;
+	bool allowMouseOutDeselection = true;
+	bool allowCollisionWhenInvisible = false;
+	bool interactionEnabled = true;
+	bool wasAnywhereClicked = false;
+	bool wasClickedDirectly = false;
+	bool isMousedOver = false;
+	bool isNeverHandleEnabled = false;
+	std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction = nullptr;
 	cocos2d::InputEvents::KeyCode modifier;
-	cocos2d::DrawNode* debugHitbox;
+	cocos2d::DrawNode* debugHitbox = nullptr;
 	cocos2d::Vec2 debugCachedPos;
 
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseClickEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseInEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseDownEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mousePressEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseReleaseEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseDragEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseOverEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseOutEvent;
-	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseScrollEvent;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseClickEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseInEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseDownEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mousePressEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseReleaseEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseDragEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseOverEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseOutEvent = nullptr;
+	std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseScrollEvent = nullptr;
 };

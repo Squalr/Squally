@@ -13,9 +13,9 @@ public:
 
 	struct RequestPickPocketArgs
 	{
-		PlatformerEntity* target;
-		MinMaxPool* pocketPool;
-		std::function<void()> onPickPocket;
+		PlatformerEntity* target = nullptr;
+		MinMaxPool* pocketPool = nullptr;
+		std::function<void()> onPickPocket = nullptr;
 		std::string saveKeyPickPocketed;
 
 		RequestPickPocketArgs(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string saveKeyPickPocketed)

@@ -41,7 +41,7 @@ protected:
 	SmartAnimationSequenceNode(const std::string& defaultSprite);
 	virtual ~SmartAnimationSequenceNode();
 
-	cocos2d::Sprite* sprite;
+	cocos2d::Sprite* sprite = nullptr;
 
 private:
 	typedef SmartNode super;
@@ -49,11 +49,11 @@ private:
 	void setNewSpriteImage(const std::string& spriteImage);
 
 	cocos2d::Vec2 animationAnchor;
-	bool isFlippedX;
-	bool isFlippedY;
+	bool isFlippedX = false;
+	bool isFlippedY = false;
 	std::string defaultSprite;
-	bool hasPlayingAnimation;
-	int repeatIndex;
+	bool hasPlayingAnimation = false;
+	int repeatIndex = 0;
 	std::function<void(const std::string&)> spriteChangeCallback = nullptr;
 
 	static std::map<std::string, std::vector<std::string>> AnimationFileCache;

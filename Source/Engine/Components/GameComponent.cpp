@@ -11,8 +11,6 @@ using namespace cocos2d;
 GameComponent::GameComponent(GameObject* owner) : super()
 {
 	this->owner = owner;
-	this->invalidated = false;
-	this->queryable = true;
 
 	if (this->owner == nullptr)
 	{

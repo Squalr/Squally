@@ -22,7 +22,7 @@ private:
 
 	std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 
-	bool appendF;
-	float constantFloat;
-	int precision;
+	bool appendF = false;
+	float constantFloat = 0.0f;
+	int precision = 0;
 };

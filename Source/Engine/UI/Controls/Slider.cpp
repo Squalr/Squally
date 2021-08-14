@@ -29,7 +29,6 @@ Slider::Slider(Node* frame, Node* fill, std::string slideResource, std::string s
 {
 	this->progress = progress;
 	this->isHorizontal = isHorizontal;
-	this->progressUpdateEvent = nullptr;
 	this->progressBar = ProgressBar::create(frame, fill);
 	this->progressBarHitBox = ClickableNode::create();
 	this->slide = ClickableNode::create(slideResource, slideResourceSelected);

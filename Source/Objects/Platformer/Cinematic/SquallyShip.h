@@ -38,26 +38,26 @@ private:
 	void runShipSequence();
 	void onCrash();
 
-	bool hasCrashed;
-	float flightTime;
+	bool hasCrashed = false;
+	float flightTime = 0.0f;
 
-	SmartAnimationSequenceNode* lightningStrike;
-	cocos2d::Node* shipContainer;
-	cocos2d::Sprite* ship;
-	CollisionObject* shipCollision;
-	SmartAnimationSequenceNode* smokeAnimation;
-	SmartAnimationSequenceNode* shipFireAnimation;
-	SmartAnimationSequenceNode* fireAnimation;
-	SmartAnimationSequenceNode* thrustAnimation;
-	SmartAnimationSequenceNode* explodeAnimation;
-	SmartAnimationSequenceNode* fireRingAnimation;
-	SmartAnimationSequenceNode* groundFireAnimation;
-	SmartAnimationSequenceNode* groundFireSmallAnimation;
-	KSequence* skipSequence;
+	SmartAnimationSequenceNode* lightningStrike = nullptr;
+	cocos2d::Node* shipContainer = nullptr;
+	cocos2d::Sprite* ship = nullptr;
+	CollisionObject* shipCollision = nullptr;
+	SmartAnimationSequenceNode* smokeAnimation = nullptr;
+	SmartAnimationSequenceNode* shipFireAnimation = nullptr;
+	SmartAnimationSequenceNode* fireAnimation = nullptr;
+	SmartAnimationSequenceNode* thrustAnimation = nullptr;
+	SmartAnimationSequenceNode* explodeAnimation = nullptr;
+	SmartAnimationSequenceNode* fireRingAnimation = nullptr;
+	SmartAnimationSequenceNode* groundFireAnimation = nullptr;
+	SmartAnimationSequenceNode* groundFireSmallAnimation = nullptr;
+	KSequence* skipSequence = nullptr;
 
-	Sound* lightningSound;
-	Sound* thrusterSound;
-	Sound* enterAtmosphereSound;
-	Sound* crashSound;
-	WorldSound* fireSound;
+	Sound* lightningSound = nullptr;
+	Sound* thrusterSound = nullptr;
+	Sound* enterAtmosphereSound = nullptr;
+	Sound* crashSound = nullptr;
+	WorldSound* fireSound = nullptr;
 };

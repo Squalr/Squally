@@ -30,9 +30,9 @@ protected:
 private:
 	typedef CraftingMenuBase super;
 
-	cocos2d::Node* dismantledRecipiesNode;
+	cocos2d::Node* dismantledRecipiesNode = nullptr;
 	std::vector<Item*> dismantleRecipes;
-	cocos2d::Sprite* smeltingPot;
-	cocos2d::Sprite* icon;
-	Sound* craftSound;
+	cocos2d::Sprite* smeltingPot = nullptr;
+	cocos2d::Sprite* icon = nullptr;
+	Sound* craftSound = nullptr;
 };

@@ -46,12 +46,6 @@ MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 
 MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 {
-	this->addresses = std::vector<LocalizedLabel*>();
-	this->values = std::vector<int>();
-	this->initialValues = std::vector<int>();
-	this->valueStrings = std::vector<ConstantString*>();
-	this->valueLabels = std::vector<LocalizedLabel*>();
-	this->gridHitBoxes = std::vector<ClickableNode*>();
 	this->gridLines = DrawNode::create();
 	this->eaxMarker = RegisterMarkerEax::create();
 	this->ebxMarker = RegisterMarkerEbx::create();
@@ -65,16 +59,6 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	this->gridHitBoxesNode = Node::create();
 	this->selector = Sprite::create(IsometricObjectResources::PointerTrace_Selector);
 	this->markers = std::vector<RegisterMarker*>();
-	this->isAddressFocused = false;
-	this->isValueFocused = false;
-	this->initialEax = 0;
-	this->initialEbx = 0;
-	this->initialEcx = 0;
-	this->initialEdx = 0;
-	this->initialEdi = 0;
-	this->initialEsi = 0;
-	this->initialEbp = 0;
-	this->initialEsp = 0;
 
 	this->markers.push_back(this->eaxMarker);
 	this->markers.push_back(this->ebxMarker);

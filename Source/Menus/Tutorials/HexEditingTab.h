@@ -22,7 +22,6 @@ private:
 
 	void loadHexEditingGoldTutorial();
 
-	TutorialEntry* hexEditingGold;
-	
-	cocos2d::Node* shopkeeper;
+	TutorialEntry* hexEditingGold = nullptr;
+	cocos2d::Node* shopkeeper = nullptr;
 };

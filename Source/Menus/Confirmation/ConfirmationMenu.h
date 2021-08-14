@@ -34,17 +34,18 @@ protected:
 
 private:
 	typedef Hud super;
+
 	void confirm();
 	void close();
 
-	cocos2d::Sprite* confirmWindow;
-	LocalizedLabel* confirmationLabel;
-	ClickableNode* closeButton;
-	ClickableTextNode* confirmButton;
-	ClickableTextNode* cancelButton;
-	cocos2d::LayerColor* backdrop;
+	cocos2d::Sprite* confirmWindow = nullptr;
+	LocalizedLabel* confirmationLabel = nullptr;
+	ClickableNode* closeButton = nullptr;
+	ClickableTextNode* confirmButton = nullptr;
+	ClickableTextNode* cancelButton = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
 	
-	std::function<bool()> onConfirmCallback;
-	std::function<bool()> onCancelCallback;
+	std::function<bool()> onConfirmCallback = nullptr;
+	std::function<bool()> onCancelCallback = nullptr;
 };
 

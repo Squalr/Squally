@@ -48,15 +48,15 @@ private:
 	void setActiveMouseSprite(cocos2d::Node* mouseSprite);
 	void setSpriteToCursorPosition();
 
-	Hud* mouseHud;
+	Hud* mouseHud = nullptr;
 
 	cocos2d::Vec2 readMousePosition;
-	cocos2d::Node* activeMouseSprite;
-	cocos2d::Node* mouseSpriteIdle;
-	cocos2d::Node* mouseSpritePoint;
-	cocos2d::Node* mouseSpritePointPressed;
-	cocos2d::Node* mouseSpriteDrag;
-	int activeCursorSet;
+	cocos2d::Node* activeMouseSprite = nullptr;
+	cocos2d::Node* mouseSpriteIdle = nullptr;
+	cocos2d::Node* mouseSpritePoint = nullptr;
+	cocos2d::Node* mouseSpritePointPressed = nullptr;
+	cocos2d::Node* mouseSpriteDrag = nullptr;
+	int activeCursorSet = -1;
 	std::map<int, CursorSet> cursorSets;
 
 	static Mouse* Instance;

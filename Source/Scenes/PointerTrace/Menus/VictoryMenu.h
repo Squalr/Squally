@@ -27,6 +27,6 @@ private:
 	typedef SmartNode super;
 
 	cocos2d::Sprite* segfaultMenu;
-	LocalizedLabel* titleLabel;
+	LocalizedLabel* titleLabel = nullptr;
 	ClickableTextNode* leaveButton;
 };

@@ -22,10 +22,6 @@ GridEntity::GridEntity(cocos2d::ValueMap& properties,
 		cocos2d::Vec2 offset,
 		cocos2d::CSize size) : super(properties, scmlResource, scale, offset, size)
 {
-	this->gridIndex = 0;
-	this->initialGridIndex = 0;
-	this->movementLocked = false;
-	this->movementInterrupted = false;
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
 
 	this->underNode->addChild(this->shadow);

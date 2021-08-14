@@ -23,12 +23,7 @@ UIBoundObject::UIBoundObject(cocos2d::Node* referencedObject)
 {
     this->referencedObject = referencedObject;
     this->originalParent = this->referencedObject == nullptr ? nullptr : dynamic_cast<SmartNode*>(this->referencedObject->getParent());
-    this->originalCoords = Vec3::ZERO;
-    this->originalScale = 1.0f;
-    this->realCoords = Vec3::ZERO;
-    this->realScale = 1.0f;
     this->eventKey = "";
-    this->scheduleTarget = nullptr;
 }
 
 UIBoundObject::~UIBoundObject()

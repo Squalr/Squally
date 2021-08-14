@@ -43,7 +43,7 @@ private:
 	void updateAnimation(float dt);
 	void increaseDamage();
 
-	static volatile int damageDealt;
-
 	std::vector<Fog> fog;
+
+	static volatile int damageDealt;
 };

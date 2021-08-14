@@ -51,10 +51,10 @@ private:
 	void onDeveloperModeDisable() override;
 
 	std::string originalPath;
-	cocos2d::Sprite* ghostSprite;
 	std::vector<cocos2d::Node*> trackedObjects;
-	SpriterEngine::UniversalObjectInterface* spriterAnimationPart;
-	SpriterEngine::EntityInstance* entity;
-	float rotation;
+	cocos2d::Sprite* ghostSprite = nullptr;
+	SpriterEngine::UniversalObjectInterface* spriterAnimationPart = nullptr;
+	SpriterEngine::EntityInstance* entity = nullptr;
+	float rotation = 0.0f;
 	std::string lastKnownAnim;
 };

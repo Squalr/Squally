@@ -11,7 +11,7 @@ public:
 
 	struct TerrainOverlapArgs
 	{
-		TerrainObject* newTerrain;
+		TerrainObject* newTerrain = nullptr;
 
 		TerrainOverlapArgs(TerrainObject* newTerrain) : newTerrain(newTerrain) { }
 	};

@@ -149,7 +149,7 @@ std::vector<std::string> PlatformerEntity::getWalkSounds()
 
 PlatformerEntity::ControlState PlatformerEntity::getControlState()
 {
-	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;;
+	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;
 }
 
 std::string PlatformerEntity::getBattleBehavior()

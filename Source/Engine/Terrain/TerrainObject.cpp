@@ -43,18 +43,10 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 {
 	this->terrainObjectId = TerrainObject::NextTerrainId++;
 	this->terrainData = terrainData;
-	this->points = std::vector<Vec2>();
-	this->intersectionPoints = std::vector<Vec2>();
-	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
-	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::PropertyTopOnly, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
-	this->hasBuiltTerrain = false;
-	this->isDynamic = false;
 
 	this->addTag(TerrainObject::MapKey);
 

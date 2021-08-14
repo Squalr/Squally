@@ -9,7 +9,7 @@ namespace cocos2d
 class VictoryBanner : public BannerBase
 {
 public:
-	static VictoryBanner * create();
+	static VictoryBanner* create();
 
 protected:
 	VictoryBanner();

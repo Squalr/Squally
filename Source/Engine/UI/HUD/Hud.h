@@ -17,6 +17,7 @@ public:
 protected:
 	Hud();
 	virtual ~Hud();
+
 	void onEnter() override;
 	void update(float dt) override;
 	void visit(cocos2d::Renderer* renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
@@ -24,6 +25,6 @@ protected:
 private:
 	typedef SmartNode super;
 
-	bool noHudParent;
-	bool noCameraParent;
+	bool noHudParent = false;
+	bool noCameraParent = false;
 };

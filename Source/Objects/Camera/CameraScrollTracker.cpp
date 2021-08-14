@@ -35,7 +35,6 @@ CameraScrollTracker::CameraScrollTracker(ValueMap& properties) : super(propertie
 {
 	this->zoom = GameUtils::getKeyOrDefault(properties, CameraScrollTracker::MapKeyZoom, Value(1.0f)).asFloat();
 	this->trackTarget = Node::create();
-	this->scrollDistance = 0.0f;
 
 	if (this->polylinePoints.size() >= 2)
 	{

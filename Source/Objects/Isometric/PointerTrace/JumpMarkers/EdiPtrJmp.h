@@ -25,5 +25,5 @@ protected:
 private:
 	typedef JmpMarker super;
 
-	cocos2d::Sprite* marker;
+	cocos2d::Sprite* marker = nullptr;
 };

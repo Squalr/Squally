@@ -43,10 +43,6 @@ PartyMenu::PartyMenu()
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->partyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Party_Party::create());
 	this->statsBarsNode = Node::create();
-	this->returnClickCallback = nullptr;
-	this->partyStatsBars = std::vector<StatsBars*>();
-	this->onSelect = nullptr;
-	this->onExit = nullptr;
 	this->chooseTargetNode = Node::create();
 	this->chooseTargetFrame = Sprite::create(UIResources::Combat_ItemFrame);
 	this->chooseTargetItemFrame = Sprite::create(UIResources::Combat_ItemsCircle);
@@ -54,7 +50,6 @@ PartyMenu::PartyMenu()
 	this->chooseTargetLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_ChooseATarget::create());
 	this->countString = ConstantString::create(std::to_string(0));
 	this->countLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_TimesConstant::create()->setStringReplacementVariables(this->countString));
-	this->selectionIndex = 0;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();

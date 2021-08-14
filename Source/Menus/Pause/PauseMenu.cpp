@@ -39,10 +39,6 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButtonSelected, UIResources::Menus_IngameMenu_CloseButton);
 	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Pause_Pause::create());
 	this->newButtonsNode = Node::create();
-	this->addedButtons = std::vector<ClickableTextNode*>();
-	this->resumeClickCallback = nullptr;
-	this->optionsClickCallback = nullptr;
-	this->quitToTitleClickCallback = nullptr;
 
 	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Pause_Resume::create());
 	LocalizedLabel*	resumeLabelSelected = resumeLabel->clone();

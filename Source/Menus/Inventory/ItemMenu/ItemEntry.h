@@ -27,12 +27,12 @@ protected:
 private:
 	typedef MenuEntry super;
 
-	ConstantString* stackString;
-	ConstantString* craftString;
-	Item* associatedItem;
-	int craftCount;
-	int stackSize;
-	ItemPreview::EquipHintMode equipHintMode;
+	ConstantString* stackString = nullptr;
+	ConstantString* craftString = nullptr;
+	Item* associatedItem = nullptr;
+	int craftCount = 0;
+	int stackSize = 1;
+	ItemPreview::EquipHintMode equipHintMode = ItemPreview::EquipHintMode::None;
 	
-	std::function<void()> onToggle;
+	std::function<void()> onToggle = nullptr;
 };

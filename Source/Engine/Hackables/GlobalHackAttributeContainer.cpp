@@ -46,8 +46,6 @@ GlobalHackAttributeContainer* GlobalHackAttributeContainer::create()
 
 GlobalHackAttributeContainer::GlobalHackAttributeContainer() : super()
 {
-	this->codeMap = std::map<void*, HackableCode*>();
-	this->abilityMap = std::map<std::string, HackActivatedAbility*>();
 	this->hackableCodeContainer = Node::create();
 	this->hackableAbilityContainer = Node::create();
 

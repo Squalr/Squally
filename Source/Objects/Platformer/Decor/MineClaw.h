@@ -22,5 +22,5 @@ protected:
 private:
 	typedef GameObject super;
 
-	SmartAnimationNode* mineClawAnimations;
+	SmartAnimationNode* mineClawAnimations = nullptr;
 };

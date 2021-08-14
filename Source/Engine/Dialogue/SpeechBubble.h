@@ -30,23 +30,25 @@ public:
 
 	static const float InfiniteDuration;
 
+protected:
+	SpeechBubble(bool uiBound);
+	virtual ~SpeechBubble();
+
 private:
 	typedef SmartNode super;
-	SpeechBubble(bool uiBound);
-	~SpeechBubble();
 	
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* speechBubbleNode;
-	cocos2d::DrawNode* stem;
-	cocos2d::DrawNode* bubble;
-	LocalizedLabel* text;
-	WorldSound* voiceSound;
+	cocos2d::Node* speechBubbleNode = nullptr;
+	cocos2d::DrawNode* stem = nullptr;
+	cocos2d::DrawNode* bubble = nullptr;
+	LocalizedLabel* text = nullptr;
+	WorldSound* voiceSound = nullptr;
 
-	bool isDialogueRunning;
-	bool hasBound;
-	bool uiBound;
+	bool isDialogueRunning = false;
+	bool hasBound = false;
+	bool uiBound = false;
 
 	static const cocos2d::Color4F BubbleColor;
 	static const cocos2d::Color4F BubbleEdgeColor;

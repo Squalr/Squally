@@ -18,10 +18,11 @@ protected:
 	void onEnter() override;
 	void update(float) override;
 
-	cocos2d::Node* underNode;
-	SmartAnimationNode* animationNode;
+	cocos2d::Node* underNode = nullptr;
+	SmartAnimationNode* animationNode = nullptr;
 
 	cocos2d::Vec2 movement;
+	
 private:
 	typedef HackableObject super;
 };

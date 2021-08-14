@@ -26,9 +26,7 @@ LabelStack::LabelStack(cocos2d::CSize windowSize, float spacing)
 {
 	this->windowSize = windowSize;
 	this->spacing = spacing;
-	this->cumulativeHeight = 0.0f;
 	this->labelsNode = Node::create();
-	this->labels = std::vector<LocalizedLabel*>();
 
 	this->addChild(this->labelsNode);
 }

@@ -52,17 +52,17 @@ private:
 	cocos2d::Vec2 previewOffset;
 	cocos2d::Vec3 textOffset;
 
-	ItemPreview* itemPreview;
-	cocos2d::Sprite* selectedInventoryRow;
-	cocos2d::Sprite* inventorySelectionArrow;
-	SmartClippingNode* itemListNode;
-	cocos2d::Node* itemListNodeContent;
+	ItemPreview* itemPreview = nullptr;
+	cocos2d::Sprite* selectedInventoryRow = nullptr;
+	cocos2d::Sprite* inventorySelectionArrow = nullptr;
+	SmartClippingNode* itemListNode = nullptr;
+	cocos2d::Node* itemListNodeContent = nullptr;
 
-	std::function<void(Item*)> previewCallback;
+	std::function<void(Item*)> previewCallback = nullptr;
 	std::map<Item*, ItemEntry*> itemEntryMapping;
 	std::vector<ItemEntry*> visibleItems;
-	int selectedItemIndex;
-	bool isFocused;
+	int selectedItemIndex = 0;
+	bool isFocused = false;
 
 	static const float LabelSpacing;
 	static const cocos2d::CSize LabelSize;

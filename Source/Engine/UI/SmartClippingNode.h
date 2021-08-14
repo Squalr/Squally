@@ -24,7 +24,7 @@ public:
 
 protected:
 	SmartClippingNode(cocos2d::Node* contentNode, cocos2d::DrawNode* stencil);
-	~SmartClippingNode();
+	virtual ~SmartClippingNode();
 
 	void onEnter() override;
 	void onDeveloperModeEnable(int debugLevel) override;
@@ -33,9 +33,9 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::ClippingNode* clip;
-	cocos2d::DrawNode* stencil;
-	bool allowDebugDraw;
+	cocos2d::ClippingNode* clip = nullptr;
+	cocos2d::DrawNode* stencil = nullptr;
+	bool allowDebugDraw = false;
 
 	static const cocos2d::Color4F DebugColor;
 };

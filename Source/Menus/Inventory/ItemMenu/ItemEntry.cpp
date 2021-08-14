@@ -24,8 +24,6 @@ ItemEntry* ItemEntry::create(Item* associatedItem, LocalizedString* text, std::s
 ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource) : super(Strings::Common_TriconcatSpaced::create(), spriteResource)
 {
     this->associatedItem = associatedItem;
-    this->onToggle = nullptr;
-    this->stackSize = 1;
     this->stackString = ConstantString::create();
     this->craftString = ConstantString::create();
     this->equipHintMode = ItemPreview::EquipHintMode::None;

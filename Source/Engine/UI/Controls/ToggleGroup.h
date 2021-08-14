@@ -9,7 +9,7 @@ class Checkbox;
 class ToggleGroup : public SmartNode
 {
 public:
-	static ToggleGroup * create(std::function<void(Checkbox*)> callback);
+	static ToggleGroup* create(std::function<void(Checkbox*)> callback);
 
 	void addToggle(Checkbox* toggle);
 

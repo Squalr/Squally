@@ -23,6 +23,6 @@ protected:
 private:
 	typedef Collectable super;
 
-	SmartParticles* manaOrb;
-	WorldSound* collectSound;
+	SmartParticles* manaOrb = nullptr;
+	WorldSound* collectSound = nullptr;
 };

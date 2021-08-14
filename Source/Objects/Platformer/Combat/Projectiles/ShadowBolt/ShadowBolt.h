@@ -28,10 +28,10 @@ protected:
 private:
 	typedef ThrownObject super;
 
-	SmartAnimationSequenceNode* shadowBoltAnim;
-	SmartAnimationSequenceNode* explosionAnim;
-	WorldSound* launchSound;
-	WorldSound* impactSound;
-
 	void setShadowBoltSpeed();
+
+	SmartAnimationSequenceNode* shadowBoltAnim = nullptr;
+	SmartAnimationSequenceNode* explosionAnim = nullptr;
+	WorldSound* launchSound = nullptr;
+	WorldSound* impactSound = nullptr;
 };

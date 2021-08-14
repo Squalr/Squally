@@ -38,14 +38,10 @@ ScriptList::ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void
 	this->onScriptSelect = onScriptSelect;
 	this->scriptsNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_CodeEditor_YourScripts::create());
-	this->scripts = std::vector<ScriptEntry*>();
 	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CreateNewScript::create());
 	this->createNewScriptSprite = Sprite::create(UIResources::Menus_HackerModeMenu_Plus);
 	this->confirmationMenuRef = confirmationMenuRef;
-	this->hackableCode = nullptr;
-	this->activeScript = nullptr;
-	this->readOnlyCount = 0;
 
 	this->createNewScriptLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->createNewScriptSprite->setAnchorPoint(Vec2(0.0f, 0.5f));

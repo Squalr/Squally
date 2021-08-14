@@ -17,7 +17,7 @@ class SmartParticles;
 class RemainingCardDisplay : public ComponentBase
 {
 public:
-	static RemainingCardDisplay * create();
+	static RemainingCardDisplay* create();
 
 protected:
 	RemainingCardDisplay();

@@ -26,5 +26,5 @@ protected:
 private:
 	typedef CagedAnimal super;
 
-	cocos2d::Sprite* animalSprite;
+	cocos2d::Sprite* animalSprite = nullptr;
 };

@@ -32,8 +32,6 @@ MineLantern::MineLantern(ValueMap& properties) : super(properties)
 	this->glow = Sprite::create(ObjectResources::Decor_MineLantern_TorchGlow);
 	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 	this->lantern = Sprite::create(ObjectResources::Decor_MineLantern_LanternFront);
-	this->isOn = false;
-	this->isCulled = false;
 
 	this->setContentSize(CSize(128.0f, 128.0f));
 

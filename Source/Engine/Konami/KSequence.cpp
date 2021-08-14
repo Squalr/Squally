@@ -16,8 +16,6 @@ KSequence::KSequence(std::vector<InputEvents::KeyCode> sequence, std::function<v
 	this->sequence = sequence;
 	this->callback = callback;
 	this->interruptable = interruptable;
-	this->completed = false;
-	this->currentIndex = 0;
 }
 
 KSequence::~KSequence()

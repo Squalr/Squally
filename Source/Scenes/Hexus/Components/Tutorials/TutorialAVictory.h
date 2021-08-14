@@ -10,7 +10,7 @@ class ClickableTextNode;
 class TutorialAVictory : public TutorialBase
 {
 public:
-	static TutorialAVictory * create();
+	static TutorialAVictory* create();
 
 protected:
 	TutorialAVictory();

@@ -33,11 +33,11 @@ private:
 	void updateMineLanternVisibility();
 	void optimizationHideOffscreenMineLantern();
 
-	cocos2d::Sprite* lanternBack;
-	cocos2d::Sprite* glow;
-	SmartAnimationSequenceNode* fire;
-	cocos2d::Sprite* lantern;
+	cocos2d::Sprite* lanternBack = nullptr;
+	cocos2d::Sprite* glow = nullptr;
+	SmartAnimationSequenceNode* fire = nullptr;
+	cocos2d::Sprite* lantern = nullptr;
 
-	bool isOn;
-	bool isCulled;
+	bool isOn = false;
+	bool isCulled = false;
 };

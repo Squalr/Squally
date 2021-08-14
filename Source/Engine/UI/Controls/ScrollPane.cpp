@@ -37,9 +37,7 @@ ScrollPane::ScrollPane(CSize paneSize, std::string sliderResource, std::string s
 	this->paneSize = paneSize;
 	this->paddingSize = paddingSize;
 	this->marginSize = marginSize;
-	this->updateSuspended = false;
-
-	this->initialDragDepth = 0.0f;
+	
 	this->customBackground = DrawNode::create();
 	this->background = LayerColor::create(initBackgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 	this->dragHitbox = ClickableNode::create();

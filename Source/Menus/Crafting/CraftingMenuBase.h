@@ -43,11 +43,11 @@ protected:
 	void startCraft();
 	void craftItem();
 	
-	CraftFilterMenu* filterMenu;
-	cocos2d::Node* backDecorNode;
-	cocos2d::Node* craftIconNode;
-	CraftingPreview* craftingPreview;
-	Item* selectedRecipe;
+	CraftFilterMenu* filterMenu = nullptr;
+	cocos2d::Node* backDecorNode = nullptr;
+	cocos2d::Node* craftIconNode = nullptr;
+	CraftingPreview* craftingPreview = nullptr;
+	Item* selectedRecipe = nullptr;
 
 private:
 	typedef SmartNode super;
@@ -60,28 +60,28 @@ private:
 	void populateItemList();
 	void close();
 
-	cocos2d::LayerColor* backdrop;
-	cocos2d::Sprite* craftingWindow;
-	LocalizedLabel* craftingLabel;
-	ItemMenu* itemMenu;
-	ClickableNode* craftButton;
-	cocos2d::Sprite* craftButtonDisabled;
-	cocos2d::Sprite* cancelIcon;
-	ProgressBar* craftProgress;
-	ClickableTextNode* returnButton;
-	ClickableNode* closeButton;
+	cocos2d::LayerColor* backdrop = nullptr;
+	cocos2d::Sprite* craftingWindow = nullptr;
+	LocalizedLabel* craftingLabel = nullptr;
+	ItemMenu* itemMenu = nullptr;
+	ClickableNode* craftButton = nullptr;
+	cocos2d::Sprite* craftButtonDisabled = nullptr;
+	cocos2d::Sprite* cancelIcon = nullptr;
+	ProgressBar* craftProgress = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableNode* closeButton = nullptr;
 
-	Sound* errorSound;
+	Sound* errorSound = nullptr;
 
 	std::vector<Item*> recipes;
-	CurrencyInventory* currencyInventory;
-	Inventory* inventory;
+	CurrencyInventory* currencyInventory = nullptr;
+	Inventory* inventory = nullptr;
 
-	bool canCraft;
-	bool isCrafting;
-	float craftElapsedTime;
+	bool canCraft = false;
+	bool isCrafting = false;
+	float craftElapsedTime = 0.0f;
 
-	std::function<void()> returnClickCallback;
+	std::function<void()> returnClickCallback = nullptr;
 
 	static const float CraftDuration;
 };

@@ -20,7 +20,6 @@ InfiniteScrollSprite::InfiniteScrollSprite(std::string spriteResourcePath)
 {
 	this->spriteScale = this->getScale();
 	this->spriteAnchor = Vec2(0.5f, 0.5f);
-	this->nodes = std::vector<Node*>();
 	this->resourcePath = spriteResourcePath;
 
 	this->rebuildNodes();
@@ -40,7 +39,7 @@ void InfiniteScrollSprite::setAnchorPoint(const Vec2& anchor)
 {
 	this->spriteAnchor = anchor;
 
-	for (auto next : this->nodes)
+	for (Node* next : this->nodes)
 	{
 		next->setAnchorPoint(this->spriteAnchor);
 	}

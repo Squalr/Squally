@@ -40,19 +40,19 @@ private:
 
 	cocos2d::CSize originalBackPlateSize;
 
-	ClickableNode* backPlate;
-	cocos2d::Sprite* selectedSprite;
-	LocalizedLabel* label;
-	ClickableNode* copyButton;
-	ClickableNode* deleteButton;
-	cocos2d::LayerColor* deletePanel;
-	LocalizedLabel* deleteLabel;
-	cocos2d::LayerColor* copyPanel;
-	LocalizedLabel* copyLabel;
+	ClickableNode* backPlate = nullptr;
+	cocos2d::Sprite* selectedSprite = nullptr;
+	LocalizedLabel* label = nullptr;
+	ClickableNode* copyButton = nullptr;
+	ClickableNode* deleteButton = nullptr;
+	cocos2d::LayerColor* deletePanel = nullptr;
+	LocalizedLabel* deleteLabel = nullptr;
+	cocos2d::LayerColor* copyPanel = nullptr;
+	LocalizedLabel* copyLabel = nullptr;
 
-	LocalizedString* scriptName;
+	LocalizedString* scriptName = nullptr;
 	std::string script;
-	std::function<void(ScriptEntry*)> onScriptEntryClick;
-	std::function<void(ScriptEntry*)> onCopyClick;
-	std::function<void(ScriptEntry*)> onDeleteClick;
+	std::function<void(ScriptEntry*)> onScriptEntryClick = nullptr;
+	std::function<void(ScriptEntry*)> onCopyClick = nullptr;
+	std::function<void(ScriptEntry*)> onDeleteClick = nullptr;
 };

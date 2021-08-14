@@ -39,8 +39,8 @@ protected:
 		cocos2d::Node* contentSelected);
 	virtual ~ClickableTextNode();
 
-	LocalizedLabel* label;
-	LocalizedLabel* labelSelected;
+	LocalizedLabel* label = nullptr;
+	LocalizedLabel* labelSelected = nullptr;
 
 private:
 	typedef ClickableNode super;

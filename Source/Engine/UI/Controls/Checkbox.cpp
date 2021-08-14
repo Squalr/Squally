@@ -24,11 +24,6 @@ Checkbox::Checkbox(ClickableNode* uncheckedButton, ClickableNode* checkedButton,
 	this->offSwitch = uncheckedButton;
 	this->onSwitch = checkedButton;
 
-	this->clickableMenus = new std::vector<ClickableNode*>();
-
-	this->clickableMenus->push_back(this->offSwitch);
-	this->clickableMenus->push_back(this->onSwitch);
-
 	this->offSwitch->setMouseClickCallback(CC_CALLBACK_0(Checkbox::onToggle, this));
 	this->onSwitch->setMouseClickCallback(CC_CALLBACK_0(Checkbox::onUntoggle, this));
 

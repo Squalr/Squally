@@ -46,27 +46,27 @@ private:
 	void onReturnClick();
 	ClickableTextNode* buildTabButton(std::string iconResource, LocalizedString* localizedString);
 
-	cocos2d::Node* background;
-	cocos2d::Sprite* window;
-	LocalizedLabel* title;
-	ClickableNode* closeButton;
-	ClickableTextNode* returnButton;
-	cocos2d::Node* leftPanel;
-	cocos2d::Node* rightPanel;
+	cocos2d::Node* background = nullptr;
+	cocos2d::Sprite* window = nullptr;
+	LocalizedLabel* title = nullptr;
+	ClickableNode* closeButton = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	cocos2d::Node* leftPanel = nullptr;
+	cocos2d::Node* rightPanel = nullptr;
 
-	ClickableTextNode* homeTabButton;
-	ClickableTextNode* memoryEditingTabButton;
-	ClickableTextNode* hexEditingTabButton;
-	ClickableTextNode* pointersTabButton;
-	ClickableTextNode* assemblyEditingTabButton;
+	ClickableTextNode* homeTabButton = nullptr;
+	ClickableTextNode* memoryEditingTabButton = nullptr;
+	ClickableTextNode* hexEditingTabButton = nullptr;
+	ClickableTextNode* pointersTabButton = nullptr;
+	ClickableTextNode* assemblyEditingTabButton = nullptr;
 
-	HomeTab* homeTab;
-	MemoryEditingTab* memoryEditingTab;
-	HexEditingTab* hexEditingTab;
-	PointersTab* pointersTab;
-	AssemblyEditingTab* assemblyEditingTab;
+	HomeTab* homeTab = nullptr;
+	MemoryEditingTab* memoryEditingTab = nullptr;
+	HexEditingTab* hexEditingTab = nullptr;
+	PointersTab* pointersTab = nullptr;
+	AssemblyEditingTab* assemblyEditingTab = nullptr;
 
-	Tab activeTab;
+	Tab activeTab = Tab::Home;
 
 	static TutorialSelectMenu* instance;
 };

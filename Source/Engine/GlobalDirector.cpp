@@ -28,9 +28,6 @@ GlobalDirector* GlobalDirector::getInstance()
 
 GlobalDirector::GlobalDirector()
 {
-	this->globalNodes = std::vector<SmartNode*>();
-	this->globalScenes = std::vector<GlobalScene*>();
-	this->activeScene = nullptr;
 }
 
 GlobalDirector::~GlobalDirector()

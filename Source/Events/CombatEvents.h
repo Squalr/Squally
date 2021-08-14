@@ -72,10 +72,10 @@ public:
 
 	struct SpawnArgs
 	{
-		PlatformerEntity* entity;
-		bool isEnemySpawn;
-		int spawnIndex;
-		std::function<void()> onSpawnSuccess;
+		PlatformerEntity* entity = nullptr;
+		bool isEnemySpawn = false;
+		int spawnIndex = 0;
+		std::function<void()> onSpawnSuccess = nullptr;
 
 		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex, std::function<void()> onSpawnSuccess) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex), onSpawnSuccess(onSpawnSuccess)
 		{
@@ -84,7 +84,7 @@ public:
 
 	struct QueryTimelineArgs
 	{
-		std::function<void(Timeline*)> callback;
+		std::function<void(Timeline*)> callback = nullptr;
 
 		QueryTimelineArgs(std::function<void(Timeline*)> callback) : callback(callback)
 		{
@@ -93,8 +93,8 @@ public:
 
 	struct AssociatedEntryArgs
 	{
-		PlatformerEntity* entity;
-		std::function<void(TimelineEntry*)> onLocated;
+		PlatformerEntity* entity = nullptr;
+		std::function<void(TimelineEntry*)> onLocated = nullptr;
 
 		AssociatedEntryArgs(PlatformerEntity* entity, std::function<void(TimelineEntry*)> onLocated) : entity(entity), onLocated(onLocated)
 		{
@@ -125,15 +125,15 @@ public:
 				Defend,
 			};
 
-			Choice choice;
+			Choice choice = Choice::Attack;
 			std::string iconResource;
 
 			SelectionMeta() : choice(Choice::Attack), iconResource("") { }
 			SelectionMeta(Choice choice, std::string iconResource) : choice(choice), iconResource(iconResource) { }
 		};
 
-		CurrentMenu currentMenu;
-		TimelineEntry* entry;
+		CurrentMenu currentMenu = CurrentMenu::Closed;
+		TimelineEntry* entry = nullptr;
 		SelectionMeta selectionMeta;
 
 		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry) : currentMenu(currentMenu), entry(entry), selectionMeta(SelectionMeta()) { }
@@ -142,7 +142,7 @@ public:
 
 	struct SelectionArgs
 	{
-		PlatformerEntity* target;
+		PlatformerEntity* target = nullptr;
 
 		SelectionArgs(PlatformerEntity* target) : target(target)
 		{
@@ -160,7 +160,7 @@ public:
 
 	struct AIRequestArgs
 	{
-		TimelineEntry* attackingEntry;
+		TimelineEntry* attackingEntry = nullptr;
 
 		AIRequestArgs(TimelineEntry* attackingEntry) : attackingEntry(attackingEntry)
 		{
@@ -169,7 +169,7 @@ public:
 
 	struct CastBlockedArgs
 	{
-		PlatformerEntity* target;
+		PlatformerEntity* target = nullptr;
 
 		CastBlockedArgs(PlatformerEntity* target) : target(target)
 		{
@@ -178,7 +178,7 @@ public:
 
 	struct CastInterruptArgs
 	{
-		PlatformerEntity* target;
+		PlatformerEntity* target = nullptr;
 
 		CastInterruptArgs(PlatformerEntity* target) : target(target)
 		{
@@ -187,8 +187,8 @@ public:
 
 	struct BuffAppliedArgs
 	{
-		PlatformerEntity* target;
-		Buff* buff;
+		PlatformerEntity* target = nullptr;
+		Buff* buff = nullptr;
 
 		BuffAppliedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
 		{
@@ -197,8 +197,8 @@ public:
 
 	struct BuffRemovedArgs
 	{
-		PlatformerEntity* target;
-		Buff* buff;
+		PlatformerEntity* target = nullptr;
+		Buff* buff = nullptr;
 
 		BuffRemovedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
 		{
@@ -207,7 +207,7 @@ public:
 
 	struct BuffTimeElapsedArgs
 	{
-		float dt;
+		float dt = 0.0f;
 
 		BuffTimeElapsedArgs(float dt) : dt(dt)
 		{
@@ -216,9 +216,9 @@ public:
 
 	struct ProjectileSpawnedArgs
 	{
-		PlatformerEntity* owner;
-		PlatformerEntity* target;
-		Projectile* projectile;
+		PlatformerEntity* owner = nullptr;
+		PlatformerEntity* target = nullptr;
+		Projectile* projectile = nullptr;
 
 		ProjectileSpawnedArgs(PlatformerEntity* owner, PlatformerEntity* target, Projectile* projectile) : owner(owner), target(target), projectile(projectile)
 		{
@@ -227,13 +227,13 @@ public:
 
 	struct DamageOrHealingArgs
 	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int damageOrHealing;
-		AbilityType abilityType;
+		PlatformerEntity* caster = nullptr;
+		PlatformerEntity* target = nullptr;
+		int damageOrHealing = 0;
+		AbilityType abilityType = AbilityType::Physical;
 
 		// If true, this flag will prevent buffs from modifying the damage/healing
-		bool disableBuffProcessing;
+		bool disableBuffProcessing = false;
 
 		DamageOrHealingArgs(
 			PlatformerEntity* caster,
@@ -253,10 +253,10 @@ public:
 
 	struct ManaRestoreOrDrainArgs
 	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int manaRestoreOrDrain;
-		AbilityType abilityType;
+		PlatformerEntity* caster = nullptr;
+		PlatformerEntity* target = nullptr;
+		int manaRestoreOrDrain = 0;
+		AbilityType abilityType = AbilityType::Physical;
 
 		// If true, this flag will prevent buffs from modifying the drain/restore
 		bool disableBuffProcessing;
@@ -269,13 +269,13 @@ public:
 
 	struct ModifiableDamageOrHealingArgs
 	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int* damageOrHealing;
-		int damageOrHealingValue;
-		int originalDamageOrHealingBeforeBuffs;
-		int originalDamageOrHealingBeforeBuffsAndStats;
-		AbilityType abilityType;
+		PlatformerEntity* caster = nullptr;
+		PlatformerEntity* target = nullptr;
+		int* damageOrHealing = nullptr;
+		int damageOrHealingValue = 0;
+		int originalDamageOrHealingBeforeBuffs = 0;
+		int originalDamageOrHealingBeforeBuffsAndStats = 0;
+		AbilityType abilityType = AbilityType::Physical;
 
 		ModifiableDamageOrHealingArgs(
 			PlatformerEntity* caster,
@@ -308,13 +308,13 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 	
 	struct ModifiableTimelineSpeedArgs
 	{
-		PlatformerEntity* target;
-		float* speed;
+		PlatformerEntity* target = nullptr;
+		float* speed = nullptr;
 
 		ModifiableTimelineSpeedArgs(PlatformerEntity* target, float* speed)
 			: target(target), speed(speed), handled(false)
@@ -332,12 +332,12 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 
 	struct CombatFinishedArgs
 	{
-		bool playerVictory;
+		bool playerVictory = false;
 
 		CombatFinishedArgs(bool playerVictory) : playerVictory(playerVictory)
 		{
@@ -346,8 +346,8 @@ public:
 
 	struct TimelineResetArgs
 	{
-		PlatformerEntity* target;
-		bool wasInterrupt;
+		PlatformerEntity* target = nullptr;
+		bool wasInterrupt = false;
 
 		TimelineResetArgs(PlatformerEntity* target, bool wasInterrupt) : target(target), wasInterrupt(wasInterrupt), handled(false) { }
 
@@ -362,7 +362,7 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 
 	struct RegisterTimelineEventGroupArgs
@@ -375,7 +375,7 @@ public:
 
 	struct BeforeReturnToMapArgs
 	{
-		bool defeat;
+		bool defeat = false;
 
 		BeforeReturnToMapArgs(bool defeat) : defeat(defeat) { }
 	};

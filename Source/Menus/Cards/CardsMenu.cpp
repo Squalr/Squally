@@ -59,10 +59,6 @@ CardsMenu::CardsMenu()
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->helpMenu = LazyNode<HelpMenu>::create(CC_CALLBACK_0(CardsMenu::buildHelpMenu, this));
-	this->inventory = nullptr;
-	this->equipmentInventory = nullptr;
-	this->returnClickCallback = nullptr;
-	this->equipmentChanged = false;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();

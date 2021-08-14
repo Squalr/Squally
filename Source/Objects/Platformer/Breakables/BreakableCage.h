@@ -32,9 +32,9 @@ protected:
 private:
 	typedef BreakableBase super;
 
-	WorldSound* breakSound;
-	SmartAnimationSequenceNode* explosion;
-	CollisionObject* cageBottom;
-	CollisionObject* cage;
-	CollisionObject* cageTop;
+	WorldSound* breakSound = nullptr;
+	SmartAnimationSequenceNode* explosion = nullptr;
+	CollisionObject* cageBottom = nullptr;
+	CollisionObject* cage = nullptr;
+	CollisionObject* cageTop = nullptr;
 };

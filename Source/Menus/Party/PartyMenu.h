@@ -48,27 +48,27 @@ private:
 	void onCancelClick();
 	void onReturnClick();
 
-	cocos2d::Sprite* partyWindow;
-	LocalizedLabel* partyLabel;
-	cocos2d::Node* statsBarsNode;
-	ClickableNode* closeButton;
-	ClickableTextNode* cancelButton;
-	ClickableTextNode* returnButton;
-	ClickableTextNode* stuckButton;
+	cocos2d::Sprite* partyWindow = nullptr;
+	LocalizedLabel* partyLabel = nullptr;
+	cocos2d::Node* statsBarsNode = nullptr;
+	ClickableNode* closeButton = nullptr;
+	ClickableTextNode* cancelButton = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableTextNode* stuckButton = nullptr;
 	
-	cocos2d::Node* chooseTargetNode;
-	cocos2d::Sprite* chooseTargetFrame;
-	cocos2d::Sprite* chooseTargetItemFrame;
-	cocos2d::Sprite* chooseTargetItemIcon;
-	LocalizedLabel* chooseTargetLabel;
-	ConstantString* countString;
-	LocalizedLabel* countLabel;
+	cocos2d::Node* chooseTargetNode = nullptr;
+	cocos2d::Sprite* chooseTargetFrame = nullptr;
+	cocos2d::Sprite* chooseTargetItemFrame = nullptr;
+	cocos2d::Sprite* chooseTargetItemIcon = nullptr;
+	LocalizedLabel* chooseTargetLabel = nullptr;
+	ConstantString* countString = nullptr;
+	LocalizedLabel* countLabel = nullptr;
 
 	std::vector<StatsBars*> partyStatsBars;
 
-	int selectionIndex;
+	int selectionIndex = 0;
 
-	std::function<void(PlatformerEntity*)> onSelect;
-	std::function<void()> onExit;
-	std::function<void()> returnClickCallback;
+	std::function<void(PlatformerEntity*)> onSelect = nullptr;
+	std::function<void()> onExit = nullptr;
+	std::function<void()> returnClickCallback = nullptr;
 };

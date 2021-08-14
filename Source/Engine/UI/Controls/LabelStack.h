@@ -26,10 +26,10 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Node* labelsNode;
+	cocos2d::Node* labelsNode = nullptr;
 	std::vector<LocalizedLabel*> labels;
 	cocos2d::CSize windowSize;
-	float spacing;
-	float cumulativeHeight;
+	float spacing = 0.0f;
+	float cumulativeHeight = 0.0f;
 	cocos2d::CSize padding;
 };

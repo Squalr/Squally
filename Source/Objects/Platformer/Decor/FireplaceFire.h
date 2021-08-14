@@ -29,9 +29,9 @@ protected:
 private:
 	typedef GameObject super;
 	
-	cocos2d::Sprite* glow;
-	SmartAnimationSequenceNode* fire;
+	cocos2d::Sprite* glow = nullptr;
+	SmartAnimationSequenceNode* fire = nullptr;
 
-	bool isOn;
-	bool isCulled;
+	bool isOn = false;
+	bool isCulled = false;
 };

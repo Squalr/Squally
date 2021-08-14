@@ -24,7 +24,7 @@ protected:
 	HackablePreview* createVelocityPreview() override;
 	HackablePreview* createAccelerationPreview() override;
 	
-	cocos2d::Node* object;
+	cocos2d::Node* object = nullptr;
 
 private:
 	typedef CombatProjectile super;

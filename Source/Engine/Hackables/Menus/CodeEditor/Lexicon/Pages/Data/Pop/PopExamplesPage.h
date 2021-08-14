@@ -22,8 +22,9 @@ protected:
 	
 private:
 	typedef LexiconPage super;
+	
 	PopExamplesPage();
-	~PopExamplesPage();
+	virtual ~PopExamplesPage();
 
 	void resetState();
 

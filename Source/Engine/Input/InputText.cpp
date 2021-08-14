@@ -27,7 +27,6 @@ InputText::InputText(CSize minimumInputSize, LocalizedLabel::FontStyle fontStyle
 	this->hitBox = ClickableNode::create();
 	this->initCoords = Vec2::ZERO;
 	this->stringCache = this->labelText->getString();
-	this->stringChangeCallback = nullptr;
 
 	this->inputLabel->setAnchorPoint(Vec2::ZERO);
 	this->hitBox->setAnchorPoint(Vec2::ZERO);

@@ -28,9 +28,9 @@ protected:
 private:
 	typedef SmartNode super;
 	
-	LocalizedString* description;
-	LocalizedLabel* descriptionLabel;
-	cocos2d::Node* entryNode;
+	LocalizedString* description = nullptr;
+	LocalizedLabel* descriptionLabel = nullptr;
+	cocos2d::Node* entryNode = nullptr;
 
 	std::vector<TutorialEntry*> entries;
 };

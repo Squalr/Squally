@@ -66,28 +66,28 @@ private:
 	void setText(std::string text);
 	void constructTokenizedText(std::string currentText);
 
-	cocos2d::LayerColor* background;
-	cocos2d::LayerColor* titleBar;
-	InputText* windowTitle;
-	ClickableNode* deleteButton;
-	cocos2d::Sprite* copyButtonGlow;
-	ClickableNode* copyButton;
-	ScrollPane* contentPane;
-	cocos2d::ui::RichText* displayedText;
-	InputText* editableText;
-	cocos2d::ui::RichText* lineNumbers;
-	cocos2d::LayerColor* deletePanel;
-	LocalizedLabel* deleteLabel;
-	cocos2d::LayerColor* copyPanel;
-	LocalizedLabel* copyLabel;
+	cocos2d::LayerColor* background = nullptr;
+	cocos2d::LayerColor* titleBar = nullptr;
+	InputText* windowTitle = nullptr;
+	ClickableNode* deleteButton = nullptr;
+	cocos2d::Sprite* copyButtonGlow = nullptr;
+	ClickableNode* copyButton = nullptr;
+	ScrollPane* contentPane = nullptr;
+	cocos2d::ui::RichText* displayedText = nullptr;
+	InputText* editableText = nullptr;
+	cocos2d::ui::RichText* lineNumbers = nullptr;
+	cocos2d::LayerColor* deletePanel = nullptr;
+	LocalizedLabel* deleteLabel = nullptr;
+	cocos2d::LayerColor* copyPanel = nullptr;
+	LocalizedLabel* copyLabel = nullptr;
 
 	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textInfo;
 	std::vector<cocos2d::ui::RichElementText*> textElements;
 	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
 
-	bool hasScriptChanges;
-	ScriptEntry* script;
-	int currentLineNumber;
+	bool hasScriptChanges = false;
+	ScriptEntry* script = nullptr;
+	int currentLineNumber = 1;
 	cocos2d::CSize windowSize;
 
 	static const std::string Delimiters;

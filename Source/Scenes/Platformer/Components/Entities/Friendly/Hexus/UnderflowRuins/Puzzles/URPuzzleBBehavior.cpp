@@ -52,7 +52,7 @@ std::vector<CardData*> URPuzzleBBehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(25, 1.0f,
 	{
-	});;
+	});
 }
 
 StateOverride* URPuzzleBBehavior::getStateOverride()

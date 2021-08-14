@@ -22,9 +22,10 @@ protected:
 
 	void onEnter() override;
 
-	cocos2d::Sprite* sprite;
-	cocos2d::Vec2 movement;
-	cocos2d::Vec2 time;
 private:
 	typedef SmartNode super;
+
+	cocos2d::Sprite* sprite = nullptr;
+	cocos2d::Vec2 movement;
+	cocos2d::Vec2 time;
 };

@@ -34,9 +34,6 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(const std::string& defaul
 {
 	this->defaultSprite = defaultSprite;
 	this->sprite = Sprite::create(this->defaultSprite);
-	this->repeatIndex = 0;
-	this->isFlippedX = false;
-	this->isFlippedY = false;
 	this->animationAnchor = this->sprite->getAnchorPoint();
 
 	SmartAnimationSequenceNode::PrimeCache(this->defaultSprite);

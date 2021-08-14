@@ -53,7 +53,7 @@ private:
     std::vector<float> leftDeltas;
     std::vector<float> rightDeltas;
     std::vector<cocos2d::Color4B> colorArray;
-    cocos2d::CustomCommand* customDrawCommand;
+    cocos2d::CustomCommand* customDrawCommand = nullptr;
 
     cocos2d::CSize surfaceSize;
     float tension;

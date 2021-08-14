@@ -33,12 +33,12 @@ protected:
 	void enableUpdate();
 	void disableUpdate();
 
-	PlatformerEntity* caster;
-	PlatformerEntity* owner;
-	bool canUpdate;
-	bool onTimeline;
-	bool timelinePaused;
-	bool timelinePausedCinematic;
+	PlatformerEntity* caster = nullptr;
+	PlatformerEntity* owner = nullptr;
+	bool canUpdate = true;
+	bool onTimeline = false;
+	bool timelinePaused = false;
+	bool timelinePausedCinematic = false;
 	
 	static cocos2d::ValueMap HackStateStorage;
 	static const std::string HackStorageKeyDamage;
@@ -48,8 +48,8 @@ private:
 
 	void updateDuration(float dt);
 
-	float duration;
-	float elapsedDuration;
+	float duration = 0.0f;
+	float elapsedDuration = 0.0f;
 	
 	void updateObjectCanUpdate();
 };

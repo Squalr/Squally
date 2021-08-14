@@ -22,6 +22,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	SmartParticles* wallParticles;
+	SmartParticles* wallParticles = nullptr;
 	cocos2d::CSize wallSize;
 };

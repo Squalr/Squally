@@ -10,7 +10,6 @@ Clippy::Clippy(std::string uniqueRunKey)
 {
 	this->animationNode = Node::create();
 	this->speechBubble = SpeechBubble::create(false);
-	this->isEnabled = true;
 	this->uniqueRunKey = uniqueRunKey;
 
 	if (!uniqueRunKey.empty() && !Clippy::UniqueRunMap.contains(uniqueRunKey))

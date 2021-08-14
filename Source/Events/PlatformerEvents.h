@@ -66,9 +66,9 @@ public:
 
 	struct WarpObjectToLocationArgs
 	{
-		GameObject* object;
+		GameObject* object = nullptr;
 		cocos2d::Vec3 position;
-		bool warpCamera;
+		bool warpCamera = false;
 
 		WarpObjectToLocationArgs(GameObject* object, cocos2d::Vec3 position, bool warpCamera = true) : object(object), position(position), warpCamera(warpCamera)
 		{
@@ -77,7 +77,7 @@ public:
 
 	struct AfterWarpArgs
 	{
-		GameObject* object;
+		GameObject* object = nullptr;
 
 		AfterWarpArgs(GameObject* object) : object(object)
 		{
@@ -86,9 +86,9 @@ public:
 
 	struct WarpObjectToObjectIdArgs
 	{
-		GameObject* object;
+		GameObject* object = nullptr;
 		std::string objectId;
-		bool warpCamera;
+		bool warpCamera = false;
 
 		WarpObjectToObjectIdArgs(GameObject* object, std::string objectId, bool warpCamera = true) : object(object), objectId(objectId), warpCamera(warpCamera)
 		{
@@ -97,7 +97,7 @@ public:
 
 	struct HudTrackEntityArgs
 	{
-		PlatformerEntity* entity;
+		PlatformerEntity* entity = nullptr;
 
 		HudTrackEntityArgs(PlatformerEntity* entity) : entity(entity)
 		{
@@ -106,7 +106,7 @@ public:
 
 	struct QueryMapArgsArgs
 	{
-		std::vector<std::string>* argRef;
+		std::vector<std::string>* argRef = nullptr;
 
 		QueryMapArgsArgs(std::vector<std::string>* argRef) : argRef(argRef)
 		{
@@ -115,8 +115,8 @@ public:
 
 	struct RuneConsumedArgs
 	{
-		PlatformerEntity* entity;
-		int index;
+		PlatformerEntity* entity = nullptr;
+		int index = 0;
 
 		RuneConsumedArgs(PlatformerEntity* entity, int index) : entity(entity), index(index)
 		{
@@ -125,8 +125,8 @@ public:
 
 	struct EngageEnemyArgs
 	{
-		PlatformerEnemy* enemy;
-		bool firstStrike;
+		PlatformerEnemy* enemy = nullptr;
+		bool firstStrike = false;
 
 		EngageEnemyArgs(PlatformerEnemy* enemy, bool firstStrike) : enemy(enemy), firstStrike(firstStrike) { }
 	};
@@ -139,8 +139,8 @@ public:
 	struct FlashFxArgs
 	{
 		cocos2d::Color3B flashColor;
-		float duration;
-		int repeatCount;
+		float duration = 0.0f;
+		int repeatCount = 0;
 
 		FlashFxArgs(cocos2d::Color3B flashColor, float duration, int repeatCount) : flashColor(flashColor), duration(duration), repeatCount(repeatCount) { }
 	};
@@ -154,18 +154,18 @@ public:
 
 	struct ItemInfoArgs
 	{
-		Item* item;
-		std::function<void()> onExit;
-		std::function<void()> onTakeDisplayItem;
+		Item* item = nullptr;
+		std::function<void()> onExit = nullptr;
+		std::function<void()> onTakeDisplayItem = nullptr;
 
 		ItemInfoArgs(Item* item, std::function<void()> onExit = nullptr, std::function<void()> onTakeDisplayItem = nullptr) : item(item), onExit(onExit), onTakeDisplayItem(onTakeDisplayItem) { }
 	};
 
 	struct GiveItemsFromPoolArgs
 	{
-		MinMaxPool* pool;
-		LocalizedString* messageOverride;
-		bool keepOpen;
+		MinMaxPool* pool = nullptr;
+		LocalizedString* messageOverride = nullptr;
+		bool keepOpen = false;
 
 		GiveItemsFromPoolArgs(MinMaxPool* pool, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
 			: pool(pool), messageOverride(messageOverride), keepOpen(keepOpen) { }
@@ -174,8 +174,8 @@ public:
 	struct GiveItemsArgs
 	{
 		std::vector<Item*> items;
-		LocalizedString* messageOverride;
-		bool keepOpen;
+		LocalizedString* messageOverride = nullptr;
+		bool keepOpen = false;
 
 		GiveItemsArgs(std::vector<Item*> items, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
 			: items(items), messageOverride(messageOverride), keepOpen(keepOpen) { }
@@ -183,8 +183,8 @@ public:
 
 	struct ItemDiscoveryArgs
 	{
-		Item* item;
-		bool cinematicHijack;
+		Item* item = nullptr;
+		bool cinematicHijack = false;
 
 		ItemDiscoveryArgs(Item* item, bool cinematicHijack = true)
 			: item(item), cinematicHijack(cinematicHijack) { }
@@ -192,9 +192,9 @@ public:
 
 	struct GiveCurrenciesFromPoolArgs
 	{
-		CurrencyPool* pool;
-		LocalizedString* messageOverride;
-		bool keepOpen;
+		CurrencyPool* pool = nullptr;
+		LocalizedString* messageOverride = nullptr;
+		bool keepOpen = false;
 
 		GiveCurrenciesFromPoolArgs(CurrencyPool* pool, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
 			: pool(pool), messageOverride(messageOverride), keepOpen(keepOpen) { }
@@ -202,9 +202,9 @@ public:
 
 	struct GiveCurrencyArgs
 	{
-		Currency* currency;
-		LocalizedString* messageOverride;
-		bool keepOpen;
+		Currency* currency = nullptr;
+		LocalizedString* messageOverride = nullptr;
+		bool keepOpen = false;
 
 		GiveCurrencyArgs(Currency* currency, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
 			: currency(currency), messageOverride(messageOverride), keepOpen(keepOpen) { }

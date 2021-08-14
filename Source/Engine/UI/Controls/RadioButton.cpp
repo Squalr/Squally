@@ -22,7 +22,6 @@ RadioButton* RadioButton::create(ClickableNode* checked, ClickableNode* unchecke
 
 RadioButton::RadioButton(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier)
 {
-	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
 	this->checked = checked;

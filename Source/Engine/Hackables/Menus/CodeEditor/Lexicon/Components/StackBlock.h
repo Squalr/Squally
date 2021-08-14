@@ -26,7 +26,7 @@ public:
 
 protected:
 	StackBlock();
-	~StackBlock();
+	virtual ~StackBlock();
 	
 	void onEnter() override;
 	void initializePositions() override;
@@ -34,9 +34,9 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* stackBlock;
-	cocos2d::Sprite* stackSelector;
-	LocalizedLabel* stackTitleLabel;
+	cocos2d::Sprite* stackBlock = nullptr;
+	cocos2d::Sprite* stackSelector = nullptr;
+	LocalizedLabel* stackTitleLabel = nullptr;
 
 	std::vector<unsigned long long> values;
 	std::vector<ConstantString*> labelStrings;

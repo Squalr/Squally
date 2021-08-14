@@ -107,8 +107,8 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::URSearchCistern] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_SearchCistern::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URSolvePuzzle] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URSlayMedusa] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_SlayMedusa::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::URCureTownspeople] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CureTownspeople::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::URReturnToHera] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ReturnToHera::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create());; }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URCureTownspeople] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CureTownspeople::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::URReturnToHera] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_ReturnToHera::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create()); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URCrossBridge] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_CrossBridge::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URFindMineEntrance] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::URLightTorches] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_LightTorches::create(); }, priority++);

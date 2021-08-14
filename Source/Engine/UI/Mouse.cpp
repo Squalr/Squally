@@ -35,8 +35,6 @@ Mouse::Mouse()
 	this->mouseSpritePoint = Node::create();
 	this->mouseSpritePointPressed = Node::create();
 	this->mouseSpriteDrag = Node::create();
-	this->cursorSets = std::map<int, CursorSet>();
-	this->activeCursorSet = -1;
 
 	// Anchor point is the top left for the mouse -- this is where the click happens
 	this->setAnchorPoint(Vec2(0.0f, 1.0f));

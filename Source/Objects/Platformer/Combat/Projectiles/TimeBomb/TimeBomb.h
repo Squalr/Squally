@@ -36,22 +36,22 @@ private:
 	void explode();
 	void tickTimeBomb();
 
-	bool hasExploded;
-	int bombTick;
-	float elapsed;
+	bool hasExploded = false;
+	int bombTick = 0;
+	float elapsed = 0.0f;
 
-	SmartAnimationSequenceNode* explosionAnim;
-	WorldSound* spawnSound;
-	WorldSound* tickSound;
-	WorldSound* tickSoundPositive;
-	WorldSound* explodeSound;
-	std::function<void()> onExplode;
+	SmartAnimationSequenceNode* explosionAnim = nullptr;
+	WorldSound* spawnSound = nullptr;
+	WorldSound* tickSound = nullptr;
+	WorldSound* tickSoundPositive = nullptr;
+	WorldSound* explodeSound = nullptr;
+	std::function<void()> onExplode = nullptr;
 
-	cocos2d::Sprite* bomb;
-	cocos2d::Sprite* timerPlate;
-	LocalizedLabel* timerLabel;
-	ConstantString* minutesString;
-	ConstantString* secondsString;
+	cocos2d::Sprite* bomb = nullptr;
+	cocos2d::Sprite* timerPlate = nullptr;
+	LocalizedLabel* timerLabel = nullptr;
+	ConstantString* minutesString = nullptr;
+	ConstantString* secondsString = nullptr;
 
 	static const float HackDuration;
 	static const int TimerInitial;

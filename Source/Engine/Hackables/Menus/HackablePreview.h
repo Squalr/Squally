@@ -20,8 +20,8 @@ protected:
 	LocalizedLabel* createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, LocalizedString* value);
 	LocalizedString* getRegisterString(HackableCode::Register reg);
 
-	cocos2d::Node* assemblyTextNode;
-	cocos2d::Node* previewNode;
+	cocos2d::Node* assemblyTextNode = nullptr;
+	cocos2d::Node* previewNode = nullptr;
 
 	static const float PreviewRadius;
 	static const cocos2d::Color4B RegisterColor;

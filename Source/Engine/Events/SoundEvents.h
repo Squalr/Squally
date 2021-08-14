@@ -19,7 +19,7 @@ public:
 	struct RequestTrackDeserializationArgs
 	{
 		std::string trackSerializationKey;
-		std::function<void(Track*)> onTrackDeserializedCallback;
+		std::function<void(Track*)> onTrackDeserializedCallback = nullptr;
 
 		RequestTrackDeserializationArgs(std::string trackSerializationKey, std::function<void(Track*)> onTrackDeserializedCallback)
 			: trackSerializationKey(trackSerializationKey), onTrackDeserializedCallback(onTrackDeserializedCallback) { }
@@ -27,21 +27,21 @@ public:
 
 	struct FadeOutMusicArgs
 	{
-		int trackId;
+		int trackId = 0;
 
 		FadeOutMusicArgs(int trackId) : trackId(trackId) { }
 	};
 
 	struct MusicDestroyedArgs
 	{
-		Music* music;
+		Music* music = nullptr;
 
 		MusicDestroyedArgs(Music* music) : music(music) { }
 	};
 
 	struct TrackPlayedArgs
 	{
-		Track* track;
+		Track* track = nullptr;
 
 		TrackPlayedArgs(Track* track) : track(track) { }
 	};

@@ -32,9 +32,6 @@ ScriptEntry::ScriptEntry(LocalizedString* scriptName, std::string script, bool i
 	this->onScriptEntryClick = onScriptEntryClick;
 	this->onCopyClick = onCopyClick;
 	this->onDeleteClick = onDeleteClick;
-	this->deleteButton = nullptr;
-	this->deletePanel = nullptr;
-	this->deleteLabel = nullptr;
 	
 	if (this->isReadOnly)
 	{

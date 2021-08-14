@@ -14,11 +14,11 @@ protected:
 
 private:
 	typedef GameObject super;
-	
-	PhysicsInitializer(cocos2d::ValueMap& properties);
-	~PhysicsInitializer();
 
-	float gravity;
+	PhysicsInitializer(cocos2d::ValueMap& properties);
+	virtual ~PhysicsInitializer();
+
+	float gravity = 0.0f;
 
 	static const std::string MapKeyGravity;
 	static const float DefaultGravity;

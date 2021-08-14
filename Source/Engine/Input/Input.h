@@ -36,7 +36,7 @@ private:
 	void onKeyPressed(cocos2d::InputEvents::KeyCode keyCode);
 	void onKeyReleased(cocos2d::InputEvents::KeyCode keyCode);
 
-	bool refreshRequested;
+	bool refreshRequested = false;
 	
 	static cocos2d::InputEvents::MouseEventArgs MouseState;
 	static std::unordered_map<int, bool> PressedKeysPrevious;

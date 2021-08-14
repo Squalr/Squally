@@ -66,9 +66,6 @@ Lexicon* Lexicon::create()
 
 Lexicon::Lexicon()
 {
-	this->closeCallback = nullptr;
-	this->pages = std::vector<LexiconPage*>();
-
 	this->background = Sprite::create(UIResources::Menus_LexiconMenu_desert_background);
 	this->banner = Sprite::create(UIResources::Menus_LexiconMenu_Banner);
 	this->title = LocalizedSprite::create(UIResources::Menus_LexiconMenu_Title_Lexicon_en);

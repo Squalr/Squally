@@ -29,7 +29,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	bool invalidated;
-	bool queryable;
+	bool invalidated = false;
+	bool queryable = true;
 };
 

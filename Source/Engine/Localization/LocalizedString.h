@@ -28,10 +28,10 @@ protected:
 	void copyAttributesTo(LocalizedString* localizedString);
 	virtual std::string getStringByLanguage(cocos2d::LanguageType languageType) = 0;
 
-	std::function<void()> onStringUpdate;
+	std::function<void()> onStringUpdate = nullptr;
 	std::vector<LocalizedString*> stringReplacementVariables;
-	cocos2d::LanguageType currentLanguage;
-	cocos2d::LanguageType overrideLanguage;
+	cocos2d::LanguageType currentLanguage = cocos2d::LanguageType::NONE;
+	cocos2d::LanguageType overrideLanguage = cocos2d::LanguageType::NONE;
 
 private:
 	typedef SmartNode super;

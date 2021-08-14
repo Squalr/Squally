@@ -20,15 +20,15 @@ protected:
 	void initializePositions() override;
 	void runDialogue(LocalizedString* localizedString, std::string soundResource);
 
-	cocos2d::Node* animationNode;
+	cocos2d::Node* animationNode = nullptr;
 
 private:
 	typedef SmartNode super;
 
 	bool isFirstUniqueRun();
 
-	SpeechBubble* speechBubble;
-	bool isEnabled;
+	SpeechBubble* speechBubble = nullptr;
+	bool isEnabled = true;
 	std::string uniqueRunKey;
 
 	static std::map<std::string, bool> UniqueRunMap;

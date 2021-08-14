@@ -73,9 +73,9 @@ private:
 	std::vector<TileLayer*> layersToSort;
 
 	std::string levelMapFileName;
-	MapOrientation orientation;
+	MapOrientation orientation = MapOrientation::Platformer;
 	cocos2d::CSize mapUnitSize;
 	cocos2d::CSize mapTileSize;
-	bool disableEvents;
-	bool disableBounds;
+	bool disableEvents = false;
+	bool disableBounds = false;
 };

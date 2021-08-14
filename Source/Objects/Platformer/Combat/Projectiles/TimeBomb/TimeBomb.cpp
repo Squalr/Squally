@@ -65,8 +65,6 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->onExplode = onExplode;
 	this->bombTick = TimeBomb::TimerInitial;
-	this->hasExploded = false;
-	this->elapsed = 0.0f;
 
 	this->postFXNode->addChild(this->spawnSound);
 	this->postFXNode->addChild(this->tickSound);

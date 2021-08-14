@@ -16,12 +16,8 @@ CombatObject::CombatObject(PlatformerEntity* caster, PlatformerEntity* owner, bo
 {
 	this->caster = caster;
 	this->owner = owner;
-	this->timelinePaused = false;
-	this->timelinePausedCinematic = false;
-	this->canUpdate = true;
 	this->onTimeline = onTimeline;
 	this->duration = duration;
-	this->elapsedDuration = 0.0f;
 }
 
 CombatObject::~CombatObject()

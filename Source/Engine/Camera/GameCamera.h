@@ -70,17 +70,17 @@ private:
 
 	std::vector<CameraTrackingData> targetStack;
 	cocos2d::CRect mapBounds;
-	float defaultDistance;
+	float defaultDistance = 0.0f;
 
-	Hud* hud;
-	ClickableNode* debugScrollHitbox;
-	LocalizedLabel* debugCameraLabelX;
-	LocalizedLabel* debugCameraLabelY;
-	LocalizedLabel* debugCameraLabelZoom;
-	ConstantString* debugCameraStringX;
-	ConstantString* debugCameraStringY;
-	ConstantString* debugCameraStringZoom;
-	cocos2d::DrawNode* debugCameraRectangle;
+	Hud* hud = nullptr;
+	ClickableNode* debugScrollHitbox = nullptr;
+	LocalizedLabel* debugCameraLabelX = nullptr;
+	LocalizedLabel* debugCameraLabelY = nullptr;
+	LocalizedLabel* debugCameraLabelZoom = nullptr;
+	ConstantString* debugCameraStringX = nullptr;
+	ConstantString* debugCameraStringY = nullptr;
+	ConstantString* debugCameraStringZoom = nullptr;
+	cocos2d::DrawNode* debugCameraRectangle = nullptr;
 
 	static GameCamera* cameraInstance;
 	static const std::string SchedulerKeyCameraShake;

@@ -42,18 +42,18 @@ private:
 	void onScriptEntryDeleteClick(ScriptEntry* scriptEntry);
 	void setActiveScript(ScriptEntry* activeScript);
 	
-	LocalizedLabel* titleLabel;
-	cocos2d::Node* scriptsNode;
-	std::function<void(ScriptEntry*)> onScriptSelect;
+	LocalizedLabel* titleLabel = nullptr;
+	cocos2d::Node* scriptsNode = nullptr;
+	std::function<void(ScriptEntry*)> onScriptSelect = nullptr;
 	std::vector<ScriptEntry*> scripts;
-	ClickableNode* createNewScriptButton;
-	LocalizedLabel* createNewScriptLabel;
-	cocos2d::Sprite* createNewScriptSprite;
-	ScriptEntry* activeScript;
-	HackableCode* hackableCode;
-	ConfirmationMenu* confirmationMenuRef;
+	ClickableNode* createNewScriptButton = nullptr;
+	LocalizedLabel* createNewScriptLabel = nullptr;
+	cocos2d::Sprite* createNewScriptSprite = nullptr;
+	ScriptEntry* activeScript = nullptr;
+	HackableCode* hackableCode = nullptr;
+	ConfirmationMenu* confirmationMenuRef = nullptr;
 
-	int readOnlyCount;
+	int readOnlyCount = 0;
 
 	static const std::string ScriptNameKey;
 	static const std::string ScriptKey;

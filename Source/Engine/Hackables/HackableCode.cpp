@@ -59,7 +59,6 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 	this->codeEndPointer = (unsigned char*)codeEnd;
 	this->hackableCodeInfo = hackableCodeInfo;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
-	this->originalCodeCopy = std::vector<unsigned char>();
 	this->registerHints = hackableCodeInfo.registerHints;
 
 	for (auto next : this->registerHints)

@@ -26,8 +26,6 @@ DialogueBox::DialogueBox(float textWidth, float speakerOffset, float speakerWidt
 	this->panel = DrawNode::create(3.0f);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create());
 	this->contentNode = Node::create();
-	this->onDialogueClose = std::function<void()>();
-	this->dialogueEffectComplete = false;
 	this->textWidth = textWidth;
 	this->speakerOffset = speakerOffset;
 	this->speakerWidth = speakerWidth;

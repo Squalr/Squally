@@ -42,10 +42,10 @@ protected:
 private:
 	typedef IsometricEntity super;
 
-	cocos2d::Sprite* shadow;
+	cocos2d::Sprite* shadow = nullptr;
 	
-	bool movementInterrupted;
-	bool movementLocked;
-	int gridIndex;
-	int initialGridIndex;
+	bool movementInterrupted = false;
+	bool movementLocked = false;
+	int gridIndex = 0;
+	int initialGridIndex = 0;
 };

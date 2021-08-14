@@ -49,24 +49,24 @@ private:
 	void onMenuExit();
 	ClickableTextNode* buildTabButton(std::string iconResource, LocalizedString* localizedString);
 
-	std::function<void()> backClickCallback;
+	std::function<void()> backClickCallback = nullptr;
 
-	cocos2d::Node* background;
-	cocos2d::Sprite* optionsWindow;
-	LocalizedLabel* optionsLabel;
-	ClickableNode* closeButton;
-	ClickableTextNode* cancelButton;
-	ClickableTextNode* returnButton;
-	cocos2d::Node* leftPanel;
-	ClickableTextNode* generalTabButton;
-	ClickableTextNode* videoTabButton;
-	ClickableTextNode* languageTabButton;
-	ClickableTextNode* memesTabButton;
-	cocos2d::Node* rightPanel;
-	GeneralTab* generalTab;
-	VideoTab* videoTab;
-	LanguageTab* languageTab;
-	MemesTab* memesTab;
+	cocos2d::Node* background = nullptr;
+	cocos2d::Sprite* optionsWindow = nullptr;
+	LocalizedLabel* optionsLabel = nullptr;
+	ClickableNode* closeButton = nullptr;
+	ClickableTextNode* cancelButton = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	cocos2d::Node* leftPanel = nullptr;
+	ClickableTextNode* generalTabButton = nullptr;
+	ClickableTextNode* videoTabButton = nullptr;
+	ClickableTextNode* languageTabButton = nullptr;
+	ClickableTextNode* memesTabButton = nullptr;
+	cocos2d::Node* rightPanel = nullptr;
+	GeneralTab* generalTab = nullptr;
+	VideoTab* videoTab = nullptr;
+	LanguageTab* languageTab = nullptr;
+	MemesTab* memesTab = nullptr;
 
 	Tab activeTab;
 

@@ -32,20 +32,20 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Sprite* pauseWindow;
-	LocalizedLabel* pauseLabel;
-	ClickableNode* closeButton;
-	ClickableTextNode* resumeButton;
-	ClickableTextNode* optionsButton;
-	ClickableTextNode* quitToTitleButton;
-	cocos2d::Node* newButtonsNode;
-	std::vector<ClickableTextNode*> addedButtons;
-	ConfirmationMenu* exitConfirmMenu;
-
-	std::function<void()> resumeClickCallback;
-	std::function<void()> optionsClickCallback;
-	std::function<void()> quitToTitleClickCallback;
-
 private:
 	typedef SmartNode super;
+
+	cocos2d::Sprite* pauseWindow = nullptr;
+	LocalizedLabel* pauseLabel = nullptr;
+	ClickableNode* closeButton = nullptr;
+	ClickableTextNode* resumeButton = nullptr;
+	ClickableTextNode* optionsButton = nullptr;
+	ClickableTextNode* quitToTitleButton = nullptr;
+	cocos2d::Node* newButtonsNode = nullptr;
+	std::vector<ClickableTextNode*> addedButtons;
+	ConfirmationMenu* exitConfirmMenu = nullptr;
+
+	std::function<void()> resumeClickCallback = nullptr;
+	std::function<void()> optionsClickCallback = nullptr;
+	std::function<void()> quitToTitleClickCallback = nullptr;
 };

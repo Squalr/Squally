@@ -34,7 +34,6 @@ CameraStop::CameraStop(ValueMap& properties) : super(properties)
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);
-	this->isDisabled = false;
 
 	this->debugDraw->drawRect(-Vec2(this->stopSize / 2.0f), Vec2(this->stopSize / 2.0f), Color4F::GREEN);
 

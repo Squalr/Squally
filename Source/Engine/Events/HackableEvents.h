@@ -6,23 +6,23 @@ class HackableObject;
 
 struct HackableObjectOpenArgs
 {
-	HackableObject* hackableObject;
-	int hackFlags;
+	HackableObject* hackableObject = nullptr;
+	int hackFlags = 0;
 
 	HackableObjectOpenArgs(HackableObject* hackableObject, int hackFlags) : hackableObject(hackableObject), hackFlags(hackFlags) { }
 };
 
 struct HackableObjectEditArgs
 {
-	HackableObject* hackableObject;
-	HackableBase* hackableAttribute;
+	HackableObject* hackableObject = nullptr;
+	HackableBase* hackableAttribute = nullptr;
 
 	HackableObjectEditArgs(HackableObject* hackableObject, HackableBase* hackableAttribute) : hackableObject(hackableObject), hackableAttribute(hackableAttribute) { }
 };
 
 struct HackAppliedArgs
 {
-	HackableBase* activeAttribute;
+	HackableBase* activeAttribute = nullptr;
 
 	HackAppliedArgs(HackableBase* activeAttribute) : activeAttribute(activeAttribute)
 	{
@@ -38,14 +38,14 @@ struct HackToggleArgs
 
 struct HackFlagsChangedArgs
 {
-	int hackFlags;
+	int hackFlags = 0;
 
 	HackFlagsChangedArgs(int hackFlags) : hackFlags(hackFlags) { }
 };
 
 struct HackerModeQueryArgs
 {
-	bool hackerModeAllowed;
+	bool hackerModeAllowed = false;
 
 	HackerModeQueryArgs() : hackerModeAllowed(false)
 	{
@@ -55,7 +55,7 @@ struct HackerModeQueryArgs
 struct HackableBaseQueryArgs
 {
 	std::string hackableIdentifier;
-	int count;
+	int count = 0;
 
 	HackableBaseQueryArgs(std::string hackableIdentifier) : hackableIdentifier(hackableIdentifier), count(0)
 	{

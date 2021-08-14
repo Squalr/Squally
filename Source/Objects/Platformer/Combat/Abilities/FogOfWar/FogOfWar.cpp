@@ -52,8 +52,6 @@ FogOfWar* FogOfWar::create(PlatformerEntity* caster, PlatformerEntity* target)
 
 FogOfWar::FogOfWar(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, false)
 {
-	this->fog = std::vector<Fog>();
-
 	this->fog.push_back(Fog(Sprite::create(DecorResources::Generic_Background_Fog1), -32.0f, this->getRandomSpawnPosition()));
 	this->fog.push_back(Fog(Sprite::create(DecorResources::Generic_Background_Fog2), 256.0f, this->getRandomSpawnPosition()));
 	this->fog.push_back(Fog(Sprite::create(DecorResources::Generic_Background_Fog3), -128.0f, this->getRandomSpawnPosition()));

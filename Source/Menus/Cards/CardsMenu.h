@@ -46,21 +46,21 @@ private:
 	void close();
 	HelpMenu* buildHelpMenu();
 
-	cocos2d::Sprite* cardsWindow;
-	LocalizedLabel* cardsLabel;
-	ItemMenu* equippedCardsMenu;
-	ItemMenu* unequippedCardsMenu;
-	ClickableTextNode* returnButton;
-	ClickableNode* closeButton;
-	cocos2d::LayerColor* backdrop;
-	LazyNode<HelpMenu>* helpMenu;
+	cocos2d::Sprite* cardsWindow = nullptr;
+	LocalizedLabel* cardsLabel = nullptr;
+	ItemMenu* equippedCardsMenu = nullptr;
+	ItemMenu* unequippedCardsMenu = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableNode* closeButton = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
+	LazyNode<HelpMenu>* helpMenu = nullptr;
 
-	EquipmentInventory* equipmentInventory;
-	Inventory* inventory;
-	HexusFilter* hexusFilter;
+	EquipmentInventory* equipmentInventory = nullptr;
+	Inventory* inventory = nullptr;
+	HexusFilter* hexusFilter = nullptr;
 
-	std::function<void()> returnClickCallback;
-	bool equipmentChanged;
+	std::function<void()> returnClickCallback = nullptr;
+	bool equipmentChanged = false;
 
 	static const int MinHexusCards;
 	static const int MaxHexusCards;

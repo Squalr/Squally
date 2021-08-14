@@ -30,7 +30,6 @@ MapTitleBanner::MapTitleBanner(LocalizedString* bannerString) : super()
 	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::S1, this->bannerString);
 	this->bannerBarTop = DrawNode::create();
 	this->bannerBarBottom = DrawNode::create();
-	this->hasRelocated = false;
 
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	

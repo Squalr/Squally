@@ -59,9 +59,9 @@ protected:
 private:
 	typedef SmartNode super;
 
-	ClickableNode* backButton;
-	cocos2d::DrawNode* debugDrawNode;
+	ClickableNode* backButton = nullptr;
+	cocos2d::DrawNode* debugDrawNode = nullptr;
 
 	std::string pageIdentifier;
-	PageType pageType;
+	PageType pageType = PageType::Full;
 };

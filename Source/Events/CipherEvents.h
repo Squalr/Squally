@@ -33,7 +33,7 @@ public:
 
 	struct CipherOpenArgs
 	{
-		CipherPuzzleData* cipherPuzzleData;
+		CipherPuzzleData* cipherPuzzleData = nullptr;
 
 		CipherOpenArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
 		{
@@ -42,7 +42,7 @@ public:
 
 	struct CipherBlockSpawnArgs
 	{
-		BlockBase* block;
+		BlockBase* block = nullptr;
 		cocos2d::Vec2 spawnCoords;
 
 		CipherBlockSpawnArgs(BlockBase* block, cocos2d::Vec2 spawnCoords) : block(block), spawnCoords(spawnCoords)
@@ -52,8 +52,8 @@ public:
 
 	struct CipherConnectionCreateArgs
 	{
-		BoltBase* sourceBolt;
-		Connection* connection;
+		BoltBase* sourceBolt = nullptr;
+		Connection* connection = nullptr;
 		cocos2d::Vec2 destination;
 
 		CipherConnectionCreateArgs(BoltBase* sourceBolt, Connection* connection, cocos2d::Vec2 destination) : sourceBolt(sourceBolt), connection(connection), destination(destination), handled(false)
@@ -71,12 +71,12 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 
 	struct CipherConnectionUpdatedArgs
 	{
-		Connection* connection;
+		Connection* connection = nullptr;
 
 		CipherConnectionUpdatedArgs(Connection* connection) : connection(connection)
 		{
@@ -85,7 +85,7 @@ public:
 
 	struct CipherConnectionDestroyArgs
 	{
-		InputBolt* inputBolt;
+		InputBolt* inputBolt = nullptr;
 
 		CipherConnectionDestroyArgs(InputBolt* inputBolt) : inputBolt(inputBolt)
 		{
@@ -94,10 +94,10 @@ public:
 
 	struct CipherChangeActiveCipherArgs
 	{
-		unsigned char input;
-		unsigned char output;
-		int index;
-		bool autoScroll;
+		unsigned char input = 0;
+		unsigned char output = 0;
+		int index = 0;
+		bool autoScroll = false;
 
 		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output, int index) : input(input), output(output), index(index), autoScroll(false)
 		{
@@ -117,7 +117,7 @@ public:
 
 	struct CipherChangeDisplayDataTypeArgs
 	{
-		DisplayDataType displayDataType;
+		DisplayDataType displayDataType = DisplayDataType::Ascii;
 
 		CipherChangeDisplayDataTypeArgs(DisplayDataType displayDataType) : displayDataType(displayDataType)
 		{
@@ -126,7 +126,7 @@ public:
 
 	struct CipherOpenAsciiTableArgs
 	{
-		ImmediateBlock* immediateBlock;
+		ImmediateBlock* immediateBlock = nullptr;
 
 		CipherOpenAsciiTableArgs(ImmediateBlock* immediateBlock) : immediateBlock(immediateBlock)
 		{
@@ -135,9 +135,9 @@ public:
 
 	struct UnlockArgs
 	{
-		int cipherIndex;
-		bool success;
-		std::function<void()> callback;
+		int cipherIndex = 0;
+		bool success = false;
+		std::function<void()> callback = nullptr;
 
 		UnlockArgs(int cipherIndex, bool success, std::function<void()> callback) : cipherIndex(cipherIndex), success(success), callback(callback)
 		{
@@ -146,7 +146,7 @@ public:
 
 	struct CipherExitArgs
 	{
-		bool victory;
+		bool victory = false;
 
 		CipherExitArgs(bool victory) : victory(victory)
 		{

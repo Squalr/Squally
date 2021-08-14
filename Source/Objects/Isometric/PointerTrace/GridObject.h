@@ -17,6 +17,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	int initialGridIndex;
-	int gridIndex;
+	int initialGridIndex = 0;
+	int gridIndex = 0;
 };

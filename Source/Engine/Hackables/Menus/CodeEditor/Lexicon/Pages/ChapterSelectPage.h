@@ -27,12 +27,12 @@ protected:
 private:
 	typedef LexiconPage super;
 
-	cocos2d::Sprite* decorLine;
-	LocalizedLabel* chapterSelectLabel;
-	ClickableTextNode* dataChapterButton;
-	ClickableTextNode* binaryChapterButton;
-	ClickableTextNode* controlFlowChapterButton;
-	ClickableTextNode* vectorChapterButton;
-	ClickableTextNode* floatingPointChapterButton;
-	LocalizedLabel* introText;
+	cocos2d::Sprite* decorLine = nullptr;
+	LocalizedLabel* chapterSelectLabel = nullptr;
+	ClickableTextNode* dataChapterButton = nullptr;
+	ClickableTextNode* binaryChapterButton = nullptr;
+	ClickableTextNode* controlFlowChapterButton = nullptr;
+	ClickableTextNode* vectorChapterButton = nullptr;
+	ClickableTextNode* floatingPointChapterButton = nullptr;
+	LocalizedLabel* introText = nullptr;
 };

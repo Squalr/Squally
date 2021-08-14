@@ -38,49 +38,49 @@ enum class PositionMode
 
 struct RequestObjectSpawnArgs
 {
-	cocos2d::Node* spawner;
-	cocos2d::Node* objectToSpawn;
-	SpawnMethod spawnMethod;
-	PositionMode positionMode;
-	std::function<void()> onSpawnSuccess;
-	std::function<void()> onSpawnFailed;
+	cocos2d::Node* spawner = nullptr;
+	cocos2d::Node* objectToSpawn = nullptr;
+	SpawnMethod spawnMethod = SpawnMethod::Above;
+	PositionMode positionMode = PositionMode::Discard;
+	std::function<void()> onSpawnSuccess = nullptr;
+	std::function<void()> onSpawnFailed = nullptr;
 	
-	bool handled;
+	bool handled = false;
 
-	RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above), onSpawnSuccess(nullptr), onSpawnFailed(nullptr), handled(false) { }
+	RequestObjectSpawnArgs() { }
 	RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode, std::function<void()> onSpawnSuccess, std::function<void()> onSpawnFailed)
 		: spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode), onSpawnSuccess(onSpawnSuccess), onSpawnFailed(onSpawnFailed), handled(false) { }
 };
 
 struct RequestObjectSpawnDelegatorArgs
 {
-	MapLayer* sourceLayer;
-	RequestObjectSpawnArgs* innerArgs;
+	MapLayer* sourceLayer = nullptr;
+	RequestObjectSpawnArgs* innerArgs = nullptr;
 
-	RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), innerArgs(nullptr) { }
+	RequestObjectSpawnDelegatorArgs() { }
 	RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, RequestObjectSpawnArgs* innerArgs) : sourceLayer(sourceLayer), innerArgs(innerArgs) { }
 };
 
 struct RelocateObjectArgs
 {
-	cocos2d::Node* relocatedObject;
+	cocos2d::Node* relocatedObject = nullptr;
 
-	RelocateObjectArgs() : relocatedObject(nullptr) { }
+	RelocateObjectArgs() { }
 	RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
 };
 
 struct ReparentBindArgs
 {
-	cocos2d::Node* relocatedObject;
-	cocos2d::Node* newParent;
+	cocos2d::Node* relocatedObject = nullptr;
+	cocos2d::Node* newParent = nullptr;
 
-	ReparentBindArgs() : relocatedObject(nullptr), newParent(nullptr) { }
+	ReparentBindArgs() { }
 	ReparentBindArgs(cocos2d::Node* relocatedObject, cocos2d::Node* newParent) : relocatedObject(relocatedObject), newParent(newParent) { }
 };
 
 struct StateWriteArgs
 {
-	GameObject* owner;
+	GameObject* owner = nullptr;
 	std::string key;
 	cocos2d::Value value;
 
@@ -91,9 +91,9 @@ template<class T>
 class QueryObjectsArgs : QueryObjectsArgsBase
 {
 public:
-	std::function<void(T*)> onObjectQueriedCallback;
-	std::function<void(T*, bool*)> onObjectQueriedCallbackWithHandled;
-	bool isHandled;
+	std::function<void(T*)> onObjectQueriedCallback = nullptr;
+	std::function<void(T*, bool*)> onObjectQueriedCallbackWithHandled = nullptr;
+	bool isHandled = false;
 
 	QueryObjectsArgs(std::function<void(T*)> onObjectQueriedCallback) : onObjectQueriedCallback(onObjectQueriedCallback), onObjectQueriedCallbackWithHandled(nullptr), isHandled(false)
 	{

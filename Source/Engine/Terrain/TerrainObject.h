@@ -196,12 +196,12 @@ private:
 	void optimizationHideOffscreenTerrain();
 
 	TerrainData terrainData;
-	bool isTopOnlyCollision;
-	bool isInactive;
-	bool isFlipped;
-	bool hasBuiltTerrain;
-	bool isDynamic;
-	unsigned int terrainObjectId;
+	bool isTopOnlyCollision = false;
+	bool isInactive = false;
+	bool isFlipped = false;
+	bool hasBuiltTerrain = false;
+	bool isDynamic = false;
+	unsigned int terrainObjectId = 0;
 
 	cocos2d::CRect drawRect;
 	cocos2d::CRect boundsRect;
@@ -213,20 +213,20 @@ private:
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
 
-	cocos2d::Node* rootNode;
-	cocos2d::Node* collisionNode;
-	cocos2d::Node* infillTexturesNode;
-	cocos2d::Node* infillNode;
-	cocos2d::Node* shadowsNode;
-	cocos2d::Node* leftWallNode;
-	cocos2d::Node* rightWallNode;
-	cocos2d::Node* bottomsNode;
-	cocos2d::Node* bottomCornersNode;
-	cocos2d::Node* topsNode;
-	cocos2d::Node* connectorsNode;
-	cocos2d::Node* topCornersNode;
-	cocos2d::DrawNode* debugDrawNode;
-	cocos2d::Node* debugLabelsNode;
+	cocos2d::Node* rootNode = nullptr;
+	cocos2d::Node* collisionNode = nullptr;
+	cocos2d::Node* infillTexturesNode = nullptr;
+	cocos2d::Node* infillNode = nullptr;
+	cocos2d::Node* shadowsNode = nullptr;
+	cocos2d::Node* leftWallNode = nullptr;
+	cocos2d::Node* rightWallNode = nullptr;
+	cocos2d::Node* bottomsNode = nullptr;
+	cocos2d::Node* bottomCornersNode = nullptr;
+	cocos2d::Node* topsNode = nullptr;
+	cocos2d::Node* connectorsNode = nullptr;
+	cocos2d::Node* topCornersNode = nullptr;
+	cocos2d::DrawNode* debugDrawNode = nullptr;
+	cocos2d::Node* debugLabelsNode = nullptr;
 
 	static const float ShadowDistance;
 	static const float InfillDistance;

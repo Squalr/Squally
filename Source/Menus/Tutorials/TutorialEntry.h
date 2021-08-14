@@ -33,15 +33,15 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* back;
-	SmartClippingNode* contentClip;
-	cocos2d::Node* contentHost;
-	cocos2d::Node* content;
-	cocos2d::LayerColor* lockedLayer;
-	ClickableNode* frame;
-	cocos2d::Sprite* lockIcon;
-	cocos2d::Sprite* completeIcon;
+	cocos2d::Sprite* back = nullptr;
+	SmartClippingNode* contentClip = nullptr;
+	cocos2d::Node* contentHost = nullptr;
+	cocos2d::Node* content = nullptr;
+	cocos2d::LayerColor* lockedLayer = nullptr;
+	ClickableNode* frame = nullptr;
+	cocos2d::Sprite* lockIcon = nullptr;
+	cocos2d::Sprite* completeIcon = nullptr;
 	
-	TutorialEntry* prereq;
+	TutorialEntry* prereq = nullptr;
 	std::string saveKey;
 };

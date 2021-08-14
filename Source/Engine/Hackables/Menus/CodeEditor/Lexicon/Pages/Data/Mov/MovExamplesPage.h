@@ -21,32 +21,33 @@ protected:
 	
 private:
 	typedef LexiconPage super;
+
 	MovExamplesPage();
-	~MovExamplesPage();
+	virtual ~MovExamplesPage();
 
 	void resetState();
 
-	LocalizedLabel* examplesLabel;
-	RegisterBlock* registerBlock;
-	ClickableTextNode* resetButton;
-	ClickableTextNode* movRegImmButton;
-	ClickableTextNode* movRegRegButton;
-	ClickableTextNode* movPtrImmButton;
-	ClickableTextNode* movPtrRegButton;
-	ClickableTextNode* movPtrOffsetImmButton;
-	ClickableTextNode* movPtrOffsetRegButton;
-	ClickableNode* remainderHelpButton;
-	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelp4Button;
-	ClickableNode* offsetHelp8Button;
-	TextPanel* textPanelRemainderHelp;
-	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp4;
-	TextPanel* textPanelOffsetHelp8;
-	LocalizedLabel* movRegImmLabel;
-	LocalizedLabel* movRegRegLabel;
-	LocalizedLabel* movPtrImmLabel;
-	LocalizedLabel* movPtrRegLabel;
-	LocalizedLabel* movPtrOffsetImmLabel;
-	LocalizedLabel* movPtrOffsetRegLabel;
+	LocalizedLabel* examplesLabel = nullptr;
+	RegisterBlock* registerBlock = nullptr;
+	ClickableTextNode* resetButton = nullptr;
+	ClickableTextNode* movRegImmButton = nullptr;
+	ClickableTextNode* movRegRegButton = nullptr;
+	ClickableTextNode* movPtrImmButton = nullptr;
+	ClickableTextNode* movPtrRegButton = nullptr;
+	ClickableTextNode* movPtrOffsetImmButton = nullptr;
+	ClickableTextNode* movPtrOffsetRegButton = nullptr;
+	ClickableNode* remainderHelpButton = nullptr;
+	ClickableNode* pointerHelpButton = nullptr;
+	ClickableNode* offsetHelp4Button = nullptr;
+	ClickableNode* offsetHelp8Button = nullptr;
+	TextPanel* textPanelRemainderHelp = nullptr;
+	TextPanel* textPanelPointerHelp = nullptr;
+	TextPanel* textPanelOffsetHelp4 = nullptr;
+	TextPanel* textPanelOffsetHelp8 = nullptr;
+	LocalizedLabel* movRegImmLabel = nullptr;
+	LocalizedLabel* movRegRegLabel = nullptr;
+	LocalizedLabel* movPtrImmLabel = nullptr;
+	LocalizedLabel* movPtrRegLabel = nullptr;
+	LocalizedLabel* movPtrOffsetImmLabel = nullptr;
+	LocalizedLabel* movPtrOffsetRegLabel = nullptr;
 };

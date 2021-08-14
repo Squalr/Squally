@@ -31,7 +31,7 @@ protected:
 private:
 	typedef GridObject super;
 
-	cocos2d::Sprite* crystal;
-	cocos2d::Sprite* shadow;
-	SmartAnimationSequenceNode* shineFx;
+	cocos2d::Sprite* crystal = nullptr;
+	cocos2d::Sprite* shadow = nullptr;
+	SmartAnimationSequenceNode* shineFx = nullptr;
 };

@@ -50,18 +50,13 @@ ItemMenu* ItemMenu::create()
 
 ItemMenu::ItemMenu()
 {
-	this->isFocused = false;
-	this->itemEntryMapping = std::map<Item*, ItemEntry*>();
-	this->visibleItems = std::vector<ItemEntry*>();
 	this->itemPreview = ItemPreview::create(false, true);
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
 	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, CRect(-Vec2(ItemMenu::ClipSize / 2.0f), ItemMenu::ClipSize + CSize(ItemMenu::ClipRightBuffer, 0.0f)));
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->previewCallback = nullptr;
 	this->previewOffset = ItemMenu::DefaultPreviewOffset;
 	this->textOffset = ItemMenu::DefaultTextOffset;
-	this->selectedItemIndex = 0;
 	
 	this->addChild(this->selectedInventoryRow);
 	this->addChild(this->itemListNode);

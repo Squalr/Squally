@@ -37,9 +37,6 @@ InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, Ve
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
 	this->menuSize = CSize(std::max(minWidth, this->displayLabel->getContentSize().width + 32.0f), 48.0f);
 	this->backdrop = LayerColor::create(Color4B(backColor.r, backColor.g, backColor.b, 196), this->menuSize.width, this->menuSize.height);
-	this->hasRelocated = false;
-	this->isFadingIn = false;
-	this->isFadingOut = false;
 
 	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));

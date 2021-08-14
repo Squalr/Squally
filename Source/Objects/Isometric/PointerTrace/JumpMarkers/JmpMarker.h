@@ -25,14 +25,14 @@ protected:
 	int getOffset();
 	virtual int getJumpDestination() = 0;
 
-	cocos2d::Node* markerNode;
-	LocalizedString* assemblyString;
+	cocos2d::Node* markerNode = nullptr;
+	LocalizedString* assemblyString = nullptr;
 
 	static const std::string PropertyOffset;
 
 private:
 	typedef GridObject super;
 
-	LocalizedLabel* assemblyLabel;
-	int offset;
+	LocalizedLabel* assemblyLabel = nullptr;
+	int offset = 0;
 };

@@ -54,7 +54,7 @@ std::vector<CardData*> TutorialABehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(25, 1.0f,
 	{
-	});;
+	});
 }
 
 StateOverride* TutorialABehavior::getStateOverride()

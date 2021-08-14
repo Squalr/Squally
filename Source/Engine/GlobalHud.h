@@ -6,9 +6,10 @@ class GlobalHud : public Hud
 public:
 	static GlobalHud* create();
 
+protected:
 	GlobalHud();
 	virtual ~GlobalHud();
-
+	
 	void pause() override;
 
 private:

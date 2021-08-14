@@ -9,7 +9,7 @@ class ClickableNode;
 class Checkbox : public SmartNode
 {
 public:
-	static Checkbox * create(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
+	static Checkbox* create(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
 			std::function<bool(Checkbox*, bool)> callback = nullptr);
 
 	void setCallback(std::function<bool(Checkbox*, bool)> callback);
@@ -27,11 +27,10 @@ private:
 	void onUntoggle();
 	void updateVisuals();
 
-	ClickableNode* onSwitch;
-	ClickableNode* offSwitch;
+	ClickableNode* onSwitch = nullptr;
+	ClickableNode* offSwitch = nullptr;
 
-	bool isToggled;
-	std::function<bool(Checkbox*, bool)> toggleCallback;
-	std::vector<ClickableNode*>* clickableMenus;
+	bool isToggled = false;
+	std::function<bool(Checkbox*, bool)> toggleCallback = nullptr;
 };
 

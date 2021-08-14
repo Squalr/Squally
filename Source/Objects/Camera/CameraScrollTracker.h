@@ -13,8 +13,7 @@ public:
 	static const std::string MapKeyZoom;
 	static const std::string MapKeyScrollSpeed;
 
-private:
-	typedef GameObject super;
+protected:
 	CameraScrollTracker(cocos2d::ValueMap& properties);
 	virtual ~CameraScrollTracker();
 
@@ -23,10 +22,13 @@ private:
 	void initializeListeners() override;
 	void scrollBy(float percentage);
 
-	float zoom;
-	float scrollDistance;
-	Hud* hud;
-	cocos2d::Node* trackTarget;
+private:
+	typedef GameObject super;
+
+	float zoom = 0.0f;
+	float scrollDistance = 0.0f;
+	Hud* hud = nullptr;
+	cocos2d::Node* trackTarget = nullptr;
 	cocos2d::Vec2 source;
 	cocos2d::Vec2 dest;
 

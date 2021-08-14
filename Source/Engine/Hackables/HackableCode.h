@@ -252,11 +252,11 @@ private:
 
 	std::string assemblyString;
 	std::string originalAssemblyString;
-	void* codePointer;
-	void* codeEndPointer;
+	void* codePointer = nullptr;
+	void* codeEndPointer = nullptr;
 	HackableCodeInfo hackableCodeInfo;
 	std::vector<unsigned char> originalCodeCopy;
-	int originalCodeLength;
+	int originalCodeLength = 0;
 	std::vector<ReadOnlyScript> readOnlyScripts;
 
 	static CodeMap HackableCodeCache;

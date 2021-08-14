@@ -18,15 +18,17 @@ public:
 	static const std::string MapKeyScrollSpeedY;
 	static const std::string MapKeyScrollType;
 
-private:
-	typedef GameObject super;
+protected:
 	CameraFocus(cocos2d::ValueMap& properties);
 	virtual ~CameraFocus();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 
-	float zoom;
+private:
+	typedef GameObject super;
+
+	float zoom = 0.0f;
 	cocos2d::Vec2 scrollBounds;
 	cocos2d::Vec2 scrollSpeed;
 	std::string scrollType;

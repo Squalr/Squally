@@ -31,9 +31,9 @@ private:
 	std::vector<cocos2d::Vec2> points;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
 
-	cocos2d::Node* rootNode;
-	cocos2d::Node* infillNode;
+	cocos2d::Node* rootNode = nullptr;
+	cocos2d::Node* infillNode = nullptr;
 
-	bool isInactive;
-	bool isMiniMapHidden;
+	bool isInactive = false;
+	bool isMiniMapHidden = false;
 };

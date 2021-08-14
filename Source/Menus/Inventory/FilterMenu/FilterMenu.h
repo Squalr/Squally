@@ -34,16 +34,16 @@ private:
 	void scrollFilterDown();
 	void positionFilterText();
 
-	SmartClippingNode* filterNode;
-	cocos2d::Node* filterNodeContent;
-	cocos2d::Sprite* selectedFilterRowActive;
-	cocos2d::Sprite* selectedFilterRowInactive;
-	cocos2d::Sprite* filterSelectionArrow;
+	SmartClippingNode* filterNode = nullptr;
+	cocos2d::Node* filterNodeContent = nullptr;
+	cocos2d::Sprite* selectedFilterRowActive = nullptr;
+	cocos2d::Sprite* selectedFilterRowInactive = nullptr;
+	cocos2d::Sprite* filterSelectionArrow = nullptr;
 	std::vector<FilterEntry*> filters;
 
-	bool isFocused;
-	int filterSelectionIndex;
-	std::function<void()> onFilterChange;
+	bool isFocused = true;
+	int filterSelectionIndex = 0;
+	std::function<void()> onFilterChange = nullptr;
 
 	static const float LabelSpacing;
 };

@@ -36,14 +36,10 @@ CollectablesMenu* CollectablesMenu::create()
 CollectablesMenu::CollectablesMenu()
 {
 	this->collectablesWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->saveKeys = std::vector<std::string>();
-	this->sprites = std::vector<Sprite*>();
-	this->lockedSprites = std::vector<Sprite*>();
 	this->contentPane = ScrollPane::create(CSize(1024.0f, 612.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->collectablesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Collectables_Collectables::create());
-	this->returnClickCallback = nullptr;
-
+	
 	this->contentPane->setBackgroundColor(Color4B(0, 0, 0, 0));
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());

@@ -47,16 +47,11 @@ InventoryMenu* InventoryMenu::create(LazyNode<PartyMenu>* partyMenu)
 
 InventoryMenu::InventoryMenu(LazyNode<PartyMenu>* partyMenu)
 {
-	this->currencyInventory = nullptr;
-	this->equipmentInventory = nullptr;
-	this->inventory = nullptr;
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->returnClickCallback = nullptr;
-	this->equipmentChanged = false;
 	this->partyMenu = partyMenu;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());

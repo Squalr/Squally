@@ -63,7 +63,7 @@ private:
 	cocos2d::Sprite* barRight;
 	cocos2d::Sprite* lightLeft;
 	cocos2d::Sprite* lightRight;
-	cocos2d::Sprite* marker;
+	cocos2d::Sprite* marker = nullptr;
 	std::vector<cocos2d::Sprite*> runes;
 	std::vector<cocos2d::Sprite*> runesPassed;
 	std::vector<cocos2d::Sprite*> runesFailed;

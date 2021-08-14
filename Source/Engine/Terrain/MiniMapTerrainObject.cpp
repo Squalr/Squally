@@ -38,8 +38,6 @@ const std::string MiniMapTerrainObject::TagMiniMapTerrain = "mini-map-terrain";
 MiniMapTerrainObject::MiniMapTerrainObject(ValueMap& properties, TerrainObject::TerrainData terrainData) : super(properties)
 {
 	this->terrainData = terrainData;
-	this->points = std::vector<Vec2>();
-	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isMiniMapHidden = GameUtils::getKeyOrDefault(this->properties, MiniMapTerrainObject::PropertyMiniMapHidden, Value(this->isInactive)).asBool();
 

@@ -31,8 +31,6 @@ FilterMenu* FilterMenu::create(std::function<void()> onFilterChange)
 
 FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 {
-	this->isFocused = true;
-	this->filterSelectionIndex = 0;
 	this->onFilterChange = onFilterChange;
 	this->filterNodeContent = Node::create();
 	this->filterNode = SmartClippingNode::create(this->filterNodeContent, CRect(Vec2(-160.0f, -304.0f), CSize(320.0f, 608.0f)));
@@ -46,7 +44,7 @@ FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 	this->filters.push_back(ConsumablesFilter::create());
 	this->filters.push_back(MiscFilter::create());
 
-	for (auto next : this->filters)
+	for (FilterEntry* next : this->filters)
 	{
 		this->filterNodeContent->addChild(next);
 	}

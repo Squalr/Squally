@@ -49,21 +49,21 @@ private:
 	void consumeItem(Consumable* item);
 	void close();
 
-	cocos2d::Sprite* inventoryWindow;
-	LocalizedLabel* inventoryLabel;
-	FilterMenu* filterMenu;
-	ItemMenu* itemMenu;
-	ClickableTextNode* returnButton;
-	ClickableNode* closeButton;
+	cocos2d::Sprite* inventoryWindow = nullptr;
+	LocalizedLabel* inventoryLabel = nullptr;
+	FilterMenu* filterMenu = nullptr;
+	ItemMenu* itemMenu = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableNode* closeButton = nullptr;
 
-	CurrencyInventory* currencyInventory;
-	EquipmentInventory* equipmentInventory;
-	Inventory* inventory;
+	CurrencyInventory* currencyInventory = nullptr;
+	EquipmentInventory* equipmentInventory = nullptr;
+	Inventory* inventory = nullptr;
 
-	std::function<void()> returnClickCallback;
-	bool equipmentChanged;
+	std::function<void()> returnClickCallback = nullptr;
+	bool equipmentChanged = false;
 
-	LazyNode<PartyMenu>* partyMenu;
+	LazyNode<PartyMenu>* partyMenu = nullptr;
 
 	static const int MinHexusCards;
 	static const int MaxHexusCards;

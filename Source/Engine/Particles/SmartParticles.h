@@ -54,28 +54,28 @@ private:
 	void tryCreateParticleInstance();
 	void optimizationHideOffscreenParticles();
 
-	bool canUpdate;
+	bool canUpdate = false;
 	CullInfo cullInfo;
 
 	std::string particleResource;
 
 	// Pass through variables to cocos particles. We store them locally for better lazy initialization
-	int particleTotalParticles;
+	int particleTotalParticles = 0;
 	cocos2d::Vec2 particlePosVar;
 	cocos2d::Vec2 particleSourcePosition;
-	float particleAngle;
+	float particleAngle = 0.0f;
 	cocos2d::Vec2 particleAnchor;
-	int particlePositionType;
+	int particlePositionType = 0;
 
-	bool hasAnchorOverride;
-	bool hasPosVarOverride;
-	bool hasSourcePositionOverride;
-	bool hasTotalParticlesOverride;
-	bool hasAngleOverride;
-	bool hasPositionTypeOverride;
+	bool hasAnchorOverride = false;
+	bool hasPosVarOverride = false;
+	bool hasSourcePositionOverride = false;
+	bool hasTotalParticlesOverride = false;
+	bool hasAngleOverride = false;
+	bool hasPositionTypeOverride = false;
 
 	cocos2d::CRect boundsRect;
-	cocos2d::DrawNode* debugDrawNode;
-	cocos2d::Node* cullContainer;
-	cocos2d::ParticleSystem* particles;
+	cocos2d::DrawNode* debugDrawNode = nullptr;
+	cocos2d::Node* cullContainer = nullptr;
+	cocos2d::ParticleSystem* particles = nullptr;
 };

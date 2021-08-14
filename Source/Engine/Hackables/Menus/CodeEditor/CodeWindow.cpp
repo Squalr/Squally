@@ -84,10 +84,6 @@ CodeWindow* CodeWindow::create(cocos2d::CSize windowSize)
 CodeWindow::CodeWindow(cocos2d::CSize windowSize)
 {
 	this->windowSize = windowSize;
-	this->currentLineNumber = 1;
-	this->lineNumberElements = std::vector<RichElement*>();
-	this->textInfo = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
-	this->hasScriptChanges = false;
 
 	this->lineNumbers = RichText::create();
 	this->editableText = InputText::create(

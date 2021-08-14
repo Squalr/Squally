@@ -40,7 +40,6 @@ ItemPreview* ItemPreview::create(bool showItemName, bool allowCardPreview)
 ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 {
 	this->previewNode = Node::create();
-	this->nextStatline = 0;
 	this->allowCardPreview = allowCardPreview;
 
 	LocalizedString* dashStr = Strings::Common_Dash::create();

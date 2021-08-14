@@ -52,7 +52,7 @@ std::vector<CardData*> EFPuzzleCBehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(25, 1.0f,
 	{
-	});;
+	});
 }
 
 StateOverride* EFPuzzleCBehavior::getStateOverride()

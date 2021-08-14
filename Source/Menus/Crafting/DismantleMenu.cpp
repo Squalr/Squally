@@ -38,7 +38,6 @@ DismantleMenu::DismantleMenu() : super(Strings::Menus_Crafting_Dismantle::create
 	this->smeltingPot = Sprite::create(UIResources::Menus_CraftingMenu_SmeltingPot);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_SmeltingIcon);
 	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Blacksmithing);
-	this->dismantleRecipes = std::vector<Item*>();
 	this->dismantledRecipiesNode = Node::create();
 
 	this->filterMenu->addFilter(AllEquipmentFilter::create());

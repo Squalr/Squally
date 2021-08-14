@@ -14,9 +14,6 @@ using namespace cocos2d;
 
 LocalizedString::LocalizedString()
 {
-	this->overrideLanguage = LanguageType::NONE;
-	this->onStringUpdate = nullptr;
-	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
 }
 

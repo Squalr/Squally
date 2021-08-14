@@ -9,7 +9,7 @@ namespace cocos2d
 class RoundTieBanner : public BannerBase
 {
 public:
-	static RoundTieBanner * create();
+	static RoundTieBanner* create();
 
 protected:
 	RoundTieBanner();

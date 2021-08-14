@@ -23,17 +23,18 @@ protected:
 	
 private:
 	typedef LexiconPage super;
-	BinarySelectPage();
-	~BinarySelectPage();
 
-	cocos2d::Sprite* decorLine;
-	LocalizedLabel* operationSelectLabel;
-	ClickableTextNode* andOperationButton;
-	ClickableTextNode* orOperationButton;
-	ClickableTextNode* xorOperationButton;
-	ClickableTextNode* shlOperationButton;
-	ClickableTextNode* shrOperationButton;
-	ClickableTextNode* notOperationButton;
-	ClickableTextNode* bswapOperationButton;
-	LocalizedLabel* introText;
+	BinarySelectPage();
+	virtual ~BinarySelectPage();
+
+	cocos2d::Sprite* decorLine = nullptr;
+	LocalizedLabel* operationSelectLabel = nullptr;
+	ClickableTextNode* andOperationButton = nullptr;
+	ClickableTextNode* orOperationButton = nullptr;
+	ClickableTextNode* xorOperationButton = nullptr;
+	ClickableTextNode* shlOperationButton = nullptr;
+	ClickableTextNode* shrOperationButton = nullptr;
+	ClickableTextNode* notOperationButton = nullptr;
+	ClickableTextNode* bswapOperationButton = nullptr;
+	LocalizedLabel* introText = nullptr;
 };

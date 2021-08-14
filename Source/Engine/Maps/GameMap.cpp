@@ -76,7 +76,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 			onDeserializeCallback
 		);
 
-		for (auto deserializer : layerDeserializers)
+		for (LayerDeserializer* deserializer : layerDeserializers)
 		{
 			if (deserializer->getLayerType() == layerType)
 			{
@@ -91,7 +91,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 	}
 
 	// Pull out tile layers
-	for (auto next : mapRaw->getChildren())
+	for (Node* next : mapRaw->getChildren())
 	{
 		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(next);
 
@@ -102,7 +102,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 	}
 
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
-	for (auto next : tileLayers)
+	for (cocos_experimental::TMXLayer* next : tileLayers)
 	{
 		deserializedLayerMap[next->layerIndex] = TileLayer::deserialize(next);
 	}
@@ -167,7 +167,7 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->disableEvents = disableEvents;
 	this->disableBounds = disableBounds;
 
-	for (auto next : this->mapLayers)
+	for (MapLayer* next : this->mapLayers)
 	{
 		this->addChild(next);
 	}

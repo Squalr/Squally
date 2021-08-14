@@ -26,7 +26,6 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 	this->animalNode = Node::create();
 	this->shineFx = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
 	this->saveKey = saveKey;
-	this->alreadyCollected = false;
 
 	this->shineFx->setOpacity(0);
 

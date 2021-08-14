@@ -28,12 +28,12 @@ private:
 
 	void showOverlayForTrack(Track* track);
 
-	cocos2d::Node* contentNode;
-	LocalizedLabel* trackLabel;
-	LocalizedLabel* artistLabel;
-	cocos2d::Sprite* note;
-	LocalizedString* trackString;
-	LocalizedString* artistString;
+	cocos2d::Node* contentNode = nullptr;
+	LocalizedLabel* trackLabel = nullptr;
+	LocalizedLabel* artistLabel = nullptr;
+	cocos2d::Sprite* note = nullptr;
+	LocalizedString* trackString = nullptr;
+	LocalizedString* artistString = nullptr;
 
 	static std::string CachedLastPlayedTrack;
 

@@ -35,9 +35,6 @@ PlatformerDialogueBox* PlatformerDialogueBox::create()
 
 PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::TextWidth, PlatformerDialogueBox::SpeakerPanelOffset, PlatformerDialogueBox::SpeakerPanelWidth)
 {
-	this->inputOptions = std::vector<std::function<bool()>>();
-	this->inputCancel = nullptr;
-
 	LocalizedString* bracketString = Strings::Common_Brackets::create();
 	LocalizedString* spaceString = Strings::Input_Spacebar::create();
 
@@ -53,13 +50,9 @@ PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::Te
 	this->leftSpeakerClip = SmartClippingNode::create(this->leftSpeakerBackground, speakerRect);
 	this->rightSpeakerClip = SmartClippingNode::create(this->rightSpeakerBackground, speakerRect);
 
-	this->unhijack = true;
-	this->allowSpace = false;
-
 	this->leftSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->rightSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->spaceToContinueLabel->setTextColor(DialogueBox::PanelTextColor);
-	this->isDialogueFocused = false;
 
 	this->leftSpeakerBackground->addChild(this->leftSpeakerNode);
 	this->rightSpeakerBackground->addChild(this->rightSpeakerNode);

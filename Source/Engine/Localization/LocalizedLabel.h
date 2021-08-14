@@ -97,7 +97,7 @@ private:
 	std::string getMonospacedFont();
 	std::string getCodingFont();
 
-	LocalizedString* localizedString;
-	FontStyle fontStyle;
-	FontSize fontSize;
+	LocalizedString* localizedString = nullptr;
+	FontStyle fontStyle = FontStyle::Main;
+	FontSize fontSize = FontSize::P;
 };

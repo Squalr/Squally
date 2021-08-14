@@ -39,9 +39,9 @@ private:
 	cocos2d::Node* createBucket(BucketType bucketType);
 	void positionBuckets();
 
-	float speed;
-	float elapsed;
-	cocos2d::Sprite* wheel;
+	float speed = 0.0f;
+	float elapsed = 0.0f;
+	cocos2d::Sprite* wheel = nullptr;
 	std::vector<cocos2d::Node*> cranes;
 
 	static const int BucketCount;

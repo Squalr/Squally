@@ -19,8 +19,6 @@ BreakableBase::BreakableBase(ValueMap& properties, CSize collisionSize, int requ
 	this->breakableCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)(PlatformerCollisionType::Breakable), CollisionObject::Properties(false, false));
 	this->objectDeserializer = PlatformerObjectDeserializer::create();
 	this->contentNode = Node::create();
-	this->hasBroke = false;
-	this->spawnPool = nullptr;
 
 	ValueMap spawnPoolProperties = ValueMap();
 	spawnPoolProperties[GameObject::MapKeyName] = GameUtils::getKeyOrDefault(this->properties, SpawnPool::MapKeySpawnPool, Value(""));

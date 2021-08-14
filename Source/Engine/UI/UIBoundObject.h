@@ -28,15 +28,15 @@ private:
 
 	void scheduleUpdateTask();
 
-	static unsigned long long TaskId;
-
-	cocos2d::Node* referencedObject;
-	SmartNode* originalParent;
-	cocos2d::Node* scheduleTarget;
+	cocos2d::Node* referencedObject = nullptr;
+	SmartNode* originalParent = nullptr;
+	cocos2d::Node* scheduleTarget = nullptr;
 
     cocos2d::Vec3 originalCoords;
-    float originalScale;
+    float originalScale = 1.0f;
     cocos2d::Vec3 realCoords;
-    float realScale;
+    float realScale = 1.0f;
 	std::string eventKey;
+
+	static unsigned long long TaskId;
 };

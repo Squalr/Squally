@@ -53,8 +53,6 @@ ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target,
 
 ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
-	this->arrowPool = std::vector<Sprite*>();
-	this->arrowCooldowns = std::vector<float>();
 	this->arrowResource = arrowResource;
 
 	for (int index = 0; index < 8; index++)

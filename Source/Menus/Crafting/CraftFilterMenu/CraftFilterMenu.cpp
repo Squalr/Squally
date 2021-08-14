@@ -28,8 +28,6 @@ CraftFilterMenu* CraftFilterMenu::create(std::function<void()> onFilterChange)
 
 CraftFilterMenu::CraftFilterMenu(std::function<void()> onFilterChange)
 {
-	this->isFocused = true;
-	this->filterSelectionIndex = 0;
 	this->onFilterChange = onFilterChange;
 	this->filterNodeContent = Node::create();
 	this->filterNode = SmartClippingNode::create(this->filterNodeContent, CRect(-Vec2(CraftFilterMenu::ClipSize / 2.0f), CraftFilterMenu::ClipSize));

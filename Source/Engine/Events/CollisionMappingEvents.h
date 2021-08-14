@@ -11,7 +11,7 @@ public:
 	struct CollisionMapRequestArgs
 	{
 		std::string deserializedCollisionName;
-		std::function<void(int collisionType)> callback;
+		std::function<void(int collisionType)> callback = nullptr;
 
 		CollisionMapRequestArgs(std::string deserializedCollisionName, std::function<void(int collisionType)> callback) :
 			deserializedCollisionName(deserializedCollisionName), callback(callback)

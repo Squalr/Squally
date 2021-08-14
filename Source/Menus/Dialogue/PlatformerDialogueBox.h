@@ -12,35 +12,35 @@ public:
 	static PlatformerDialogueBox* create();
 
 protected:
-	void runDialogue(LocalizedString* localizedString, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack);
-	void hideDialogue() override;
-	void onTypeWriterEffectComplete() override;
-
-private:
-	typedef DialogueBox super;
-	
 	PlatformerDialogueBox();
 	virtual ~PlatformerDialogueBox();
 
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onTypeWriterEffectComplete() override;
+
+	void runDialogue(LocalizedString* localizedString, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack);
+	void hideDialogue() override;
+
+private:
+	typedef DialogueBox super;
 
 	bool chooseOption(int option);
 	bool cancelOptionChoice();
 
-	LocalizedLabel* spaceToContinueLabel;
-	SmartClippingNode* leftSpeakerClip;
-	SmartClippingNode* rightSpeakerClip;
-	cocos2d::DrawNode* leftSpeakerBackground;
-	cocos2d::DrawNode* rightSpeakerBackground;
-	cocos2d::Node* leftSpeakerNode;
-	cocos2d::Node* rightSpeakerNode;
+	LocalizedLabel* spaceToContinueLabel = nullptr;
+	SmartClippingNode* leftSpeakerClip = nullptr;
+	SmartClippingNode* rightSpeakerClip = nullptr;
+	cocos2d::DrawNode* leftSpeakerBackground = nullptr;
+	cocos2d::DrawNode* rightSpeakerBackground = nullptr;
+	cocos2d::Node* leftSpeakerNode = nullptr;
+	cocos2d::Node* rightSpeakerNode = nullptr;
 
 	std::vector<std::function<bool()>> inputOptions;
-	std::function<bool()> inputCancel;
-	bool isDialogueFocused;
-	bool allowSpace;
-	bool unhijack;
+	std::function<bool()> inputCancel = nullptr;
+	bool isDialogueFocused = false;
+	bool allowSpace = false;
+	bool unhijack = true;
 
 	static const cocos2d::Color4F SpeakerBackgroundColor;
 	static const float TextWidth;

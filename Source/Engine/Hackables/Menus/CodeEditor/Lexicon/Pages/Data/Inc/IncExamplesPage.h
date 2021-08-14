@@ -21,22 +21,23 @@ protected:
 	
 private:
 	typedef LexiconPage super;
+
 	IncExamplesPage();
-	~IncExamplesPage();
+	virtual ~IncExamplesPage();
 
 	void resetState();
 
-	LocalizedLabel* examplesLabel;
-	RegisterBlock* registerBlock;
-	ClickableTextNode* resetButton;
-	ClickableTextNode* incButton;
-	ClickableTextNode* incPtrButton;
-	ClickableTextNode* incPtrOffsetButton;
-	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelpButton;
-	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp;
-	LocalizedLabel* incLabel;
-	LocalizedLabel* incPtrLabel;
-	LocalizedLabel* incPtrOffsetLabel;
+	LocalizedLabel* examplesLabel = nullptr;
+	RegisterBlock* registerBlock = nullptr;
+	ClickableTextNode* resetButton = nullptr;
+	ClickableTextNode* incButton = nullptr;
+	ClickableTextNode* incPtrButton = nullptr;
+	ClickableTextNode* incPtrOffsetButton = nullptr;
+	ClickableNode* pointerHelpButton = nullptr;
+	ClickableNode* offsetHelpButton = nullptr;
+	TextPanel* textPanelPointerHelp = nullptr;
+	TextPanel* textPanelOffsetHelp = nullptr;
+	LocalizedLabel* incLabel = nullptr;
+	LocalizedLabel* incPtrLabel = nullptr;
+	LocalizedLabel* incPtrOffsetLabel = nullptr;
 };

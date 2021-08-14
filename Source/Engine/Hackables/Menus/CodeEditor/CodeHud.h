@@ -54,30 +54,30 @@ private:
 	Lexicon* buildLexicon();
 
 	// This is an unused label that is simply kept around to steal attributes from (font size, font style, etc)
-	LocalizedLabel* referenceContentLabel;
+	LocalizedLabel* referenceContentLabel = nullptr;
 
-	float marginSize;
+	float marginSize = 0.0f;
 
-	cocos2d::Sprite* statusBackground;
-	cocos2d::Sprite* rightBarBackground;
-	cocos2d::Sprite* radialEye;
-	cocos2d::Node* previewNode;
-	cocos2d::Node* clippyNode;
-	CodeWindow* functionWindow;
-	LabelStack* statusWindow;
-	LabelStack* registerWindow;
-	ScriptList* scriptList;
-	ClickableTextNode* cancelButton;
-	ClickableTextNode* applyChangesButton;
-	cocos2d::Node* applyChangesButtonGrayed;
-	LocalizedLabel* titleLabel;
-	ClickableTextNode* stuckButton;
-	ClickableTextNode* lexiconButton;
-	LazyNode<Lexicon>* lexicon;
-	ConfirmationMenu* confirmationMenu;
+	cocos2d::Sprite* statusBackground = nullptr;
+	cocos2d::Sprite* rightBarBackground = nullptr;
+	cocos2d::Sprite* radialEye = nullptr;
+	cocos2d::Node* previewNode = nullptr;
+	cocos2d::Node* clippyNode = nullptr;
+	CodeWindow* functionWindow = nullptr;
+	LabelStack* statusWindow = nullptr;
+	LabelStack* registerWindow = nullptr;
+	ScriptList* scriptList = nullptr;
+	ClickableTextNode* cancelButton = nullptr;
+	ClickableTextNode* applyChangesButton = nullptr;
+	cocos2d::Node* applyChangesButtonGrayed = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
+	ClickableTextNode* stuckButton = nullptr;
+	ClickableTextNode* lexiconButton = nullptr;
+	LazyNode<Lexicon>* lexicon = nullptr;
+	ConfirmationMenu* confirmationMenu = nullptr;
 
-	HackableCode* activeHackableCode;
-	float timeSinceLastCompile;
+	HackableCode* activeHackableCode = nullptr;
+	float timeSinceLastCompile = 0.0f;
 
 	static const cocos2d::CSize Padding;
 	static const float CompileDelayMaxSeconds;

@@ -23,5 +23,5 @@ protected:
 private:
 	typedef SpriterAnimationPart super;
 
-	cocos2d::Sprite* sprite;
+	cocos2d::Sprite* sprite = nullptr;
 };

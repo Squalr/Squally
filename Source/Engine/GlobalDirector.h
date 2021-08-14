@@ -21,7 +21,7 @@ protected:
 	GlobalDirector();
 	virtual ~GlobalDirector();
 
-	SmartScene* activeScene;
+	SmartScene* activeScene = nullptr;
 	std::vector<SmartNode*> globalNodes;
 	std::vector<GlobalScene*> globalScenes;
 

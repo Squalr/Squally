@@ -10,7 +10,7 @@ class ClickableTextNode;
 class SarudeTutorialIntroSequence : public TutorialBase
 {
 public:
-	static SarudeTutorialIntroSequence * create();
+	static SarudeTutorialIntroSequence* create();
 
 protected:
 	SarudeTutorialIntroSequence();

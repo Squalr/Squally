@@ -21,7 +21,7 @@ MinMaxPool::MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName
 	this->nestedPools = nestedPools;
 	this->sampleMethod = sampleMethod;
 
-	for (auto nestedPool : this->nestedPools)
+	for (MinMaxPool* nestedPool : this->nestedPools)
 	{
 		this->addChild(nestedPool);
 	}

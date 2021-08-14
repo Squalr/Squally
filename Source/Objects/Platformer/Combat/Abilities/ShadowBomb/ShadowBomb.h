@@ -34,5 +34,5 @@ private:
 	
 	SmartAnimationSequenceNode* animationNode = nullptr;
 	WorldSound* impactSound = nullptr;
-	std::function<void(int)> onImpact;
+	std::function<void(int)> onImpact = nullptr;
 };

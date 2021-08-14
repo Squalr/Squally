@@ -30,8 +30,6 @@ MineWheel* MineWheel::create(ValueMap& properties)
 MineWheel::MineWheel(ValueMap& properties) : super(properties)
 {
 	this->wheel = Sprite::create(ObjectResources::Physics_MineWheel_Wheel);
-	this->cranes = std::vector<Node*>();
-	this->elapsed = 0.0f;
 	this->speed = GameUtils::getKeyOrDefault(this->properties, MineWheel::PropertySpeed, Value(1.0f)).asFloat();
 
 	std::vector<MineWheel::BucketType> ordering = this->createOrdering(MineWheel::BucketCount);

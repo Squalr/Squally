@@ -17,15 +17,16 @@ public:
 protected:
 	OptionsScene();
 	virtual ~OptionsScene();
-
-private:
-	typedef GlobalScene super;
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* backgroundNode;
-	OptionsMenu* menu;
+private:
+	typedef GlobalScene super;
+
+	cocos2d::Node* backgroundNode = nullptr;
+	OptionsMenu* menu = nullptr;
 
 	static OptionsScene* instance;
 };

@@ -49,18 +49,18 @@ protected:
 	void runSplashes();
 	void runSplash(int index);
 
-	CollisionObject* liquidCollision;
+	CollisionObject* liquidCollision = nullptr;
 
 private:
     typedef GameObject super;
 
     cocos2d::CSize liquidSize;
-    float surfaceDepth;
-	int splashes;
-	float noSplashDelay;
-	bool wavesDisabled;
+    float surfaceDepth = 0.0f;
+	int splashes = 0;
+	float noSplashDelay = 1.0f;
+	bool wavesDisabled = false;
 
-    cocos2d::LayerColor* liquidBody;
-    LiquidTop* liquidTop;
-    cocos2d::DrawNode* edges;
+    cocos2d::LayerColor* liquidBody = nullptr;
+    LiquidTop* liquidTop = nullptr;
+    cocos2d::DrawNode* edges = nullptr;
 };

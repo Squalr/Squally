@@ -41,13 +41,10 @@ CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
 {
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
-	this->currencyInventory = nullptr;
-	this->inventory = nullptr;
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->craftingPreview = CraftingPreview::create();
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
-	this->recipes = std::vector<Item*>();
 	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
 	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
 	this->craftIconNode = Node::create();
@@ -57,9 +54,6 @@ CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 	this->backDecorNode = Node::create();
-	this->returnClickCallback = nullptr;
-	this->isCrafting = 0.0f;
-	this->selectedRecipe = nullptr;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();

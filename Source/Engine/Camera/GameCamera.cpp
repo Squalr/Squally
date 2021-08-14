@@ -47,7 +47,6 @@ GameCamera* GameCamera::getInstance()
 GameCamera::GameCamera()
 {
 	this->defaultDistance = Director::getInstance()->getZEye();
-	this->targetStack = std::vector<CameraTrackingData>();
 	this->mapBounds = CRect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();

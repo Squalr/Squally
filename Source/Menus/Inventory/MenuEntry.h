@@ -27,8 +27,8 @@ protected:
 
 	void sizeFont();
 
-	cocos2d::Sprite* icon;
-	LocalizedLabel* label;
+	cocos2d::Sprite* icon = nullptr;
+	LocalizedLabel* label = nullptr;
 
 private:
 	typedef SmartNode super;

@@ -11,8 +11,8 @@ public:
 		
 	struct QueryCollisionObjectsArgs
 	{
-		std::function<void(CollisionObject*)> onObjectQueriedCallback;
-		int bitmask;
+		std::function<void(CollisionObject*)> onObjectQueriedCallback = nullptr;
+		int bitmask = 0;
 		
 		QueryCollisionObjectsArgs(std::function<void(CollisionObject*)> onObjectQueriedCallback, int bitmask) : onObjectQueriedCallback(onObjectQueriedCallback), bitmask(bitmask)
 		{

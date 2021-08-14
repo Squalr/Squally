@@ -6,7 +6,7 @@ using namespace cocos2d;
 
 GameComponentGroup::GameComponentGroup(GameObject* owner, std::vector<GameComponent*> component) : super(owner)
 {
-	for (auto next : component)
+	for (GameComponent* next : component)
 	{
 		owner->attachComponent(next);
 	}

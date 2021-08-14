@@ -19,7 +19,7 @@ protected:
 private:
 	typedef GridObject super;
 
-	int value;
+	int value = 0;
 
 	static const std::string IntegerRegex;
 };

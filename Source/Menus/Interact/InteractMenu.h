@@ -22,25 +22,26 @@ public:
 protected:
 	InteractMenu(LocalizedString* displayString, cocos2d::Color3B backColor, cocos2d::Vec2 offset, float minWidth);
 	virtual ~InteractMenu();
-
-private:
-	typedef SmartNode super;
+	
 	void onEnter() override;
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	void tryRelocate();
 	bool isHidden();
 	bool isShowing();
 
 	cocos2d::CSize menuSize;
-	bool hasRelocated;
-	bool isFadingIn;
-	bool isFadingOut;
+	bool hasRelocated = false;
+	bool isFadingIn = false;
+	bool isFadingOut = false;
 
-	cocos2d::Node* uiElements;
-	cocos2d::LayerColor* backdrop;
-	LocalizedString* displayString;
-	LocalizedLabel* displayLabel;
+	cocos2d::Node* uiElements = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
+	LocalizedString* displayString = nullptr;
+	LocalizedLabel* displayLabel = nullptr;
 };

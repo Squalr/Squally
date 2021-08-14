@@ -20,14 +20,14 @@ protected:
 	virtual void onBreak();
 	SpawnPool* getSpawnPool();
 
-	PlatformerObjectDeserializer* objectDeserializer;
-	cocos2d::Node* contentNode;
+	PlatformerObjectDeserializer* objectDeserializer = nullptr;
+	cocos2d::Node* contentNode = nullptr;
 
 private:
 	typedef HackableObject super;
 
 	CollisionObject* breakableCollision;
 
-	SpawnPool* spawnPool;
-	bool hasBroke;
+	SpawnPool* spawnPool = nullptr;
+	bool hasBroke = false;
 };

@@ -36,9 +36,9 @@ protected:
 private:
 	void buildPreview(Item* item, LocalizedString* text, int index, bool isValid);
 
-	cocos2d::Node* previewNode;
-	Inventory* inventory;
-	Recipe* recipe;
+	cocos2d::Node* previewNode = nullptr;
+	Inventory* inventory = nullptr;
+	Recipe* recipe = nullptr;
 	DisplayMode displayMode = DisplayMode::RequiredItems;
 
 	static const int MaxStatlines;

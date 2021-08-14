@@ -34,9 +34,6 @@ std::string TextureObject::PropertyKeyClearAnchor = "apply-anchor";
 TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : super(properties)
 {
 	this->terrainData = terrainData;
-	this->points = std::vector<Vec2>();
-	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTexturesNode = Node::create();
 	this->boundsRect = CRect::ZERO;
 

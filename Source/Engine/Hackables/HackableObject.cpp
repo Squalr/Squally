@@ -34,16 +34,10 @@ HackableObject::HackableObject() : HackableObject(ValueMap())
 
 HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 {
-	this->hackableList = std::vector<HackableBase*>();
-	this->codeList = std::vector<HackableCode*>();
-	this->hackAbilityList = std::vector<HackActivatedAbility*>();
-	this->trackedHackables = std::vector<HackableBase*>();
 	this->uiElementsButton = Node::create();
 	this->uiElementsRain = Node::create();
 	this->uiElementsProgressBars = Node::create();
 	this->hackButton = LazyNode<HackButton>::create(CC_CALLBACK_0(HackableObject::buildHackButton, this));
-	this->timeRemainingIcons = std::vector<Sprite*>();
-	this->timeRemainingBars = std::vector<ProgressBar*>();
 	this->clippyMap = std::map<std::string, std::function<Clippy*()>>();
 	this->hackParticlesNode = Node::create();
 	this->enableHackerModeEvents = true;

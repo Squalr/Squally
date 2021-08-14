@@ -42,7 +42,6 @@ SmartClippingNode* SmartClippingNode::create(Node* contentNode, DrawNode* stenci
 SmartClippingNode::SmartClippingNode(Node* contentNode, DrawNode* stencil)
 {
 	this->stencil = stencil;
-	this->allowDebugDraw = true;
 
 	this->clip = ClippingNode::create(this->stencil);
 

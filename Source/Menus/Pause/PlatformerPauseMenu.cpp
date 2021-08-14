@@ -33,16 +33,7 @@ PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_Empty::create());
 	this->newButtonsNode = Node::create();
-	this->addedButtons = std::vector<ClickableTextNode*>();
-	this->resumeClickCallback = nullptr;
-	this->optionsClickCallback = nullptr;
-	this->quitToTitleClickCallback = nullptr;
-	this->inventoryClickCallback = nullptr;
-	this->partyClickCallback = nullptr;
-	this->cardsClickCallback = nullptr;
-	this->collectablesClickCallback = nullptr;
-
-	this->resumeButton = nullptr;
+	
 	this->inventoryButton = this->buildButton(
 		UIResources::Menus_IngameMenu_InventoryButton,
 		UIResources::Menus_IngameMenu_InventoryButtonSelected,

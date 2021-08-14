@@ -37,7 +37,6 @@ Input* Input::GetInstance()
 
 Input::Input()
 {
-	this->refreshRequested = false;
 }
 
 Input::~Input()

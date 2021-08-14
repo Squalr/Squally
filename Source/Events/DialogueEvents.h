@@ -27,11 +27,11 @@ public:
 
 	struct DialogueVisualArgs
 	{
-		DialogueBox::DialogueDock dialogueDock;
-		DialogueBox::DialogueAlignment dialogueAlignment;
-		std::function<cocos2d::Node*()> leftContentNode;
-		std::function<cocos2d::Node*()> rightContentNode;
-		bool bigFont;
+		DialogueBox::DialogueDock dialogueDock = DialogueBox::DialogueDock::Bottom;
+		DialogueBox::DialogueAlignment dialogueAlignment = DialogueBox::DialogueAlignment::Center;
+		std::function<cocos2d::Node*()> leftContentNode = nullptr;
+		std::function<cocos2d::Node*()> rightContentNode = nullptr;
+		bool bigFont = false;
 
 		DialogueVisualArgs()
 		: dialogueDock(DialogueBox::DialogueDock::Bottom), dialogueAlignment(DialogueBox::DialogueAlignment::Center), leftContentNode(nullptr), rightContentNode(nullptr), bigFont(false)
@@ -45,14 +45,14 @@ public:
 
 	struct DialogueOpenArgs
 	{
-		LocalizedString* dialogue;
+		LocalizedString* dialogue = nullptr;
 		DialogueVisualArgs visualArgs;
-		std::function<void()> onDialogueClose;
+		std::function<void()> onDialogueClose = nullptr;
 		std::string soundResource;
-		bool unhijack;
-		bool allowSpace;
+		bool unhijack = false;
+		bool allowSpace = false;
 		std::vector<std::function<bool()>> inputOptions;
-		std::function<bool()> inputCancel;
+		std::function<bool()> inputCancel = nullptr;
 
 		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, std::string soundResource, bool unhijack = true, bool allowSpace = true, std::vector<std::function<bool()>> inputOptions = { }, std::function<bool()> inputCancel = nullptr)
 			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), soundResource(soundResource), unhijack(unhijack), allowSpace(allowSpace), inputOptions(inputOptions), inputCancel(inputCancel)

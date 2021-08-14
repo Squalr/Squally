@@ -167,14 +167,14 @@ private:
 	cocos2d::Vec2 velocity;
 	cocos2d::Vec2 acceleration;
 	Properties collisionProperties;
-	float horizontalDampening;
-	float verticalDampening;
-	float collisionDepth;
-	bool physicsEnabled;
-	bool collisionEnabled;
-	bool gravityEnabled;
-	bool gravityDisabledOverride;
-	unsigned int universeId;
+	float horizontalDampening = 0.0f;
+	float verticalDampening = 0.0f;
+	float collisionDepth = 0.0f;
+	bool physicsEnabled = true;
+	bool collisionEnabled = true;
+	bool gravityEnabled = true;
+	bool gravityDisabledOverride = false;
+	unsigned int universeId = 0;
 	
 	// Shape
 	CollisionShape shape;
@@ -199,11 +199,11 @@ private:
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
 
 	// Cache
-	float cachedRotation;
+	float cachedRotation = 0.0f;
 	cocos2d::Vec2 cachedWorldCoords;
 	cocos2d::Vec3 cachedWorldCoords3D;
-	unsigned int cachedTick;
-	unsigned int cachedTickDepth;
+	unsigned int cachedTick = 0;
+	unsigned int cachedTickDepth = 0;
 
 	// Debug
 	cocos2d::Color4F debugColor;

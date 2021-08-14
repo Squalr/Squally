@@ -6,8 +6,6 @@ using namespace cocos2d;
 
 SpriterAnimationPart::SpriterAnimationPart()
 {
-    this->parentPart = nullptr;
-	this->childAnimationParts = std::vector<SpriterAnimationPart*>();
 }
 
 SpriterAnimationPart::~SpriterAnimationPart()

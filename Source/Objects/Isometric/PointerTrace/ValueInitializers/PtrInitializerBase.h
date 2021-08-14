@@ -8,7 +8,7 @@ protected:
 	PtrInitializerBase(cocos2d::ValueMap& properties);
 	virtual ~PtrInitializerBase();
 
-	int offset;
+	int offset = 0;
 
 private:
 	typedef GridObject super;

@@ -49,18 +49,18 @@ private:
 	void bindStatlineToNonZeroInt(std::function<LocalizedString*()> prefixFunc, int value);
 	void bindStatlineToNonZeroFloat(std::function<LocalizedString*()> prefixFunc, float value);
 
-	cocos2d::Node* previewNode;
-	CardPreview* cardPreview;
+	cocos2d::Node* previewNode = nullptr;
+	CardPreview* cardPreview = nullptr;
 	std::vector<LocalizedLabel*> statlines;
-	ConstantString* cardString;
-	LocalizedLabel* cardLabel;
-	LocalizedLabel* useHint;
-	LocalizedLabel* equipHint;
-	LocalizedLabel* unequipHint;
-	LocalizedLabel* itemName;
+	ConstantString* cardString = nullptr;
+	LocalizedLabel* cardLabel = nullptr;
+	LocalizedLabel* useHint = nullptr;
+	LocalizedLabel* equipHint = nullptr;
+	LocalizedLabel* unequipHint = nullptr;
+	LocalizedLabel* itemName = nullptr;
 
-	int nextStatline;
-	bool allowCardPreview;
+	int nextStatline = 0;
+	bool allowCardPreview = false;
 
 	static const int MaxStatlines;
 };

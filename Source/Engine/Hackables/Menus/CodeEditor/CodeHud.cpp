@@ -57,7 +57,6 @@ CodeHud* CodeHud::create()
 CodeHud::CodeHud()
 {
 	this->timeSinceLastCompile = CodeHud::CompileDelayMaxSeconds;
-	this->activeHackableCode = nullptr;
 	this->lexicon = LazyNode<Lexicon>::create(CC_CALLBACK_0(CodeHud::buildLexicon, this));
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);

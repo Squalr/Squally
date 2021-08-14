@@ -10,7 +10,7 @@ class ClickableTextNode;
 class TutorialAWinningRound : public TutorialBase
 {
 public:
-	static TutorialAWinningRound * create();
+	static TutorialAWinningRound* create();
 
 protected:
 	TutorialAWinningRound();

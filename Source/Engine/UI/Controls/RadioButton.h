@@ -23,20 +23,22 @@ public:
 
 	static const std::string RadioButtonCheckEvent;
 
-private:
-	typedef SmartNode super;
+protected:
 	RadioButton(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier);
 	virtual ~RadioButton();
+
+private:
+	typedef SmartNode super;
 
 	void initializeListeners() override;
 	void onGroupCheck(cocos2d::EventCustom* event);
 	void onUncheckClick();
 	void onCheckClick();
 
-	ClickableNode* checked;
-	ClickableNode* unchecked;
-	bool isChecked;
+	ClickableNode* checked = nullptr;
+	ClickableNode* unchecked = nullptr;
+	bool isChecked = false;
 
-	int groupId;
-	std::function<void(RadioButton*)> onCheckCallback;
+	int groupId = 0;
+	std::function<void(RadioButton*)> onCheckCallback = nullptr;
 };

@@ -228,7 +228,12 @@ void EntityDialogueBehavior::showOptions()
 	
 	for (auto next : dialogueOptions)
 	{
-		options.push_back(std::get<0>(next)->dialogueOption->clone());
+		LocalizedString* dialogueOption = std::get<0>(next)->getDialogueOption();
+
+		if (dialogueOption != nullptr)
+		{
+			options.push_back(dialogueOption->clone());
+		}
 
 		callbacks.push_back([=]()
 		{

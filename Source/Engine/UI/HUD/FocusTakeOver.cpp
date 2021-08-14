@@ -24,11 +24,9 @@ FocusTakeOver::FocusTakeOver()
 {
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->hijackedNodes = std::vector<HijackData>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->hijackContainer = Node::create();
 	this->takeOverOpacity = 196;
-	this->focusMode = FocusMode::None;
 
 	this->addChild(this->focusBackground);
 	this->addChild(this->hijackContainer);

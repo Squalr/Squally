@@ -26,11 +26,12 @@ protected:
 	void update(float dt) override;
 	void rebuildNodes();
 
-	std::vector<cocos2d::Node*> nodes;
-	float spriteWidth;
-	float spriteScale;
-	cocos2d::Vec2 spriteAnchor;
-	std::string resourcePath;
 private:
 	typedef SmartNode super;
+
+	std::vector<cocos2d::Node*> nodes;
+	float spriteWidth = 0.0f;
+	float spriteScale = 0.0f;
+	cocos2d::Vec2 spriteAnchor;
+	std::string resourcePath;
 };

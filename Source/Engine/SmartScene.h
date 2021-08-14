@@ -55,11 +55,11 @@ protected:
 	virtual void removeNonGlobalListeners();
 	void defer(std::function<void()> task, int ticks = 1);
 
-	bool hackermodeEnabled;
-	Hud* layerColorHud;
-	cocos2d::LayerColor* layerColor;
-	cocos2d::FiniteTimeAction* fadeAction;
-	float fadeSpeed;
+	bool hackermodeEnabled = false;
+	Hud* layerColorHud = nullptr;
+	cocos2d::LayerColor* layerColor = nullptr;
+	cocos2d::FiniteTimeAction* fadeAction = nullptr;
+	float fadeSpeed = 0.0f;
 
 	static const float defaultFadeSpeed;
 

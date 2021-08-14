@@ -24,8 +24,6 @@ CraftingPreview* CraftingPreview::create()
 
 CraftingPreview::CraftingPreview()
 {
-	this->recipe = nullptr;
-	this->inventory = nullptr;
 	this->previewNode = Node::create();
 
 	this->preview(nullptr, nullptr);

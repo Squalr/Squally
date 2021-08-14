@@ -25,16 +25,8 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 {
 	this->particleResource = particleResource;
 	this->cullContainer = Node::create();
-	this->particles = nullptr; // lazy init for culled particles
 	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
 	this->cullInfo = cullInfo;
-	this->canUpdate = false;
-	this->hasAnchorOverride = false;
-	this->hasPosVarOverride = false;
-	this->hasSourcePositionOverride = false;
-	this->hasTotalParticlesOverride = false;
-	this->hasAngleOverride = false;
-	this->hasPositionTypeOverride = false;
 	this->boundsRect = CRect(Vec2::ZERO, this->cullInfo.size);
 
 	this->setContentSize(this->cullInfo.size);

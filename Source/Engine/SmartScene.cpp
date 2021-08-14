@@ -33,8 +33,6 @@ SmartScene* SmartScene::create()
 
 SmartScene::SmartScene()
 {
-	this->hackermodeEnabled = false;
-	this->fadeAction = nullptr;
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
 	this->layerColorHud = Hud::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));

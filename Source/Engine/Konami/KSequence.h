@@ -22,8 +22,8 @@ private:
 	void processInput(cocos2d::InputEvents::KeyCode keycode);
 
 	std::vector<cocos2d::InputEvents::KeyCode> sequence;
-	std::function<void()> callback;
-	bool interruptable;
-	bool completed;
-	int currentIndex;
+	std::function<void()> callback = nullptr;
+	bool interruptable = false;
+	bool completed = false;
+	int currentIndex = 0;
 };

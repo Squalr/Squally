@@ -45,24 +45,7 @@ ClickableNode* ClickableNode::create(Node* content, Node* contentSelected)
 
 ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 {
-	this->mouseClickEvent = nullptr;
-	this->mouseInEvent = nullptr;
-	this->mouseDownEvent = nullptr;
-	this->mouseDragEvent = nullptr;
-	this->mouseOverEvent = nullptr;
-	this->mousePressEvent = nullptr;
-	this->mouseReleaseNoHitTestEvent = nullptr;
-	this->mouseReleaseEvent = nullptr;
-	this->mouseScrollEvent = nullptr;
-	this->allowCollisionWhenInvisible = false;
-	this->interactionEnabled = true;
-	this->wasAnywhereClicked = false;
-	this->wasClickedDirectly = false;
-	this->allowMouseOutDeselection = true;
-	this->isMousedOver = false;
 	this->modifier = InputEvents::KeyCode::KEY_NONE;
-	this->intersectFunction = nullptr;
-	this->isNeverHandleEnabled = false;
 
 	if (DeveloperModeController::IsDeveloperBuild)
 	{

@@ -14,8 +14,6 @@ const std::string SpawnPool::SaveKeySpawnCollected = "SPAWN_POOL_COLLECTED";
 
 SpawnPool::SpawnPool(ValueMap& properties) : super(properties)
 {
-	this->owner = nullptr;
-	this->spawnEvents = std::vector<SpawnObjectEvent>();
 }
 
 SpawnPool::~SpawnPool()

@@ -23,20 +23,21 @@ protected:
 	
 private:
 	typedef LexiconPage super;
-	DataSelectPage();
-	~DataSelectPage();
 
-	cocos2d::Sprite* decorLine;
-	LocalizedLabel* operationSelectLabel;
-	ClickableTextNode* incOperationButton;
-	ClickableTextNode* decOperationButton;
-	ClickableTextNode* addOperationButton;
-	ClickableTextNode* subOperationButton;
-	ClickableTextNode* divOperationButton;
-	ClickableTextNode* mulOperationButton;
-	ClickableTextNode* movOperationButton;
-	ClickableTextNode* pushOperationButton;
-	ClickableTextNode* popOperationButton;
-	ClickableTextNode* negOperationButton;
-	LocalizedLabel* introText;
+	DataSelectPage();
+	virtual ~DataSelectPage();
+
+	cocos2d::Sprite* decorLine = nullptr;
+	LocalizedLabel* operationSelectLabel = nullptr;
+	ClickableTextNode* incOperationButton = nullptr;
+	ClickableTextNode* decOperationButton = nullptr;
+	ClickableTextNode* addOperationButton = nullptr;
+	ClickableTextNode* subOperationButton = nullptr;
+	ClickableTextNode* divOperationButton = nullptr;
+	ClickableTextNode* mulOperationButton = nullptr;
+	ClickableTextNode* movOperationButton = nullptr;
+	ClickableTextNode* pushOperationButton = nullptr;
+	ClickableTextNode* popOperationButton = nullptr;
+	ClickableTextNode* negOperationButton = nullptr;
+	LocalizedLabel* introText = nullptr;
 };

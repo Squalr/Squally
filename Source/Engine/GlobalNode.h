@@ -6,6 +6,7 @@ class GlobalNode : public SmartNode
 public:
 	static GlobalNode* create();
 
+protected:
 	GlobalNode();
 	virtual ~GlobalNode();
 

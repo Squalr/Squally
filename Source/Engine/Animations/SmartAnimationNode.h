@@ -60,15 +60,15 @@ protected:
 	SmartAnimationNode(std::string animationResource, std::string entityName);
 	virtual ~SmartAnimationNode();
 
-	SpriterAnimationNode* spriterAnimation;
-	Spriter2dX::AnimationNode* animationNode;
-	SpriterEngine::EntityInstance* entity;
+	SpriterAnimationNode* spriterAnimation = nullptr;
+	Spriter2dX::AnimationNode* animationNode = nullptr;
+	SpriterEngine::EntityInstance* entity = nullptr;
 
 private:
 	typedef SmartNode super;
 
-	bool initialized;
-	float currentAnimationPriority;
+	bool initialized = false;
+	float currentAnimationPriority = 0.0f;
 	std::map<std::string, AnimationPart*> animationParts;
 	std::string currentAnimation;
 	std::string animationResource;

@@ -28,8 +28,8 @@ private:
 	void onSoundVolumeUpdate(float soundVolume);
 	void onMusicVolumeUpdate(float musicVolume);
 
-	cocos2d::Sprite* musicIcon;
-	cocos2d::Sprite* soundIcon;
-	Slider* musicSlider;
-	Slider* soundSlider;
+	cocos2d::Sprite* musicIcon = nullptr;
+	cocos2d::Sprite* soundIcon = nullptr;
+	Slider* musicSlider = nullptr;
+	Slider* soundSlider = nullptr;
 };

@@ -11,7 +11,7 @@ public:
 
 	struct LoadSceneArgs
 	{
-		std::function<SmartScene*()> sceneCreator;
+		std::function<SmartScene*()> sceneCreator = nullptr;
 
 		LoadSceneArgs(std::function<SmartScene*()> sceneCreator) : sceneCreator(sceneCreator) { }
 	};

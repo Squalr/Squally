@@ -43,6 +43,6 @@ private:
 	typedef HackableBase super;
 	friend class GlobalHackAttributeContainer;
 
-	std::function<void()> onActivate;
-	std::function<void()> onDeactivate;
+	std::function<void()> onActivate = nullptr;
+	std::function<void()> onDeactivate = nullptr;
 };

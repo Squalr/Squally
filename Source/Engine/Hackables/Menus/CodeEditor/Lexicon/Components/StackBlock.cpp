@@ -31,8 +31,6 @@ StackBlock* StackBlock::create()
 
 StackBlock::StackBlock()
 {
-	this->labelStrings = std::vector<ConstantString*>();
-	this->labels = std::vector<LocalizedLabel*>();
     this->stackBlock = Sprite::create(UIResources::Menus_LexiconMenu_StackBlock);
     this->stackSelector = Sprite::create(UIResources::Menus_LexiconMenu_StackSelector);
     this->stackTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Stack::create());

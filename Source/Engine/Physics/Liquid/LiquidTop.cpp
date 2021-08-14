@@ -33,12 +33,6 @@ LiquidTop* LiquidTop::create(CSize surfaceSize, Color4B surfaceColor, Color4B bo
 LiquidTop::LiquidTop(CSize surfaceSize, Color4B surfaceColor, Color4B bodyColor, float tension, float dampening, float spread)
 {
     this->surfaceSize = surfaceSize;
-    this->vertexArray = std::vector<Vertex>();
-    this->leftDeltas = std::vector<float>();
-    this->rightDeltas = std::vector<float>();
-    this->columns = std::vector<ColumnData>();
-    this->columnIndicies = std::vector<int>();
-    this->colorArray = std::vector<cocos2d::Color4B>();
     this->customDrawCommand = new CustomCommand();
     this->tension = tension;
     this->dampening = dampening;

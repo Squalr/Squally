@@ -87,7 +87,7 @@ public:
 
 protected:
 	RegisterBlockSigned();
-	~RegisterBlockSigned();
+	virtual ~RegisterBlockSigned();
 	
 	void onEnter() override;
 	void initializePositions() override;
@@ -114,29 +114,29 @@ private:
 
 	void addToData(long long value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels);
 
-	cocos2d::Sprite* registerBlock;
-	LocalizedLabel* titleLabel;
-	LocalizedLabel* memoryTitleLabel;
-	LocalizedLabel* eaxLabel;
-	LocalizedLabel* ebxLabel;
-	LocalizedLabel* ecxLabel;
-	LocalizedLabel* edxLabel;
-	LocalizedLabel* ediLabel;
-	LocalizedLabel* esiLabel;
-	LocalizedLabel* ebpLabel;
-	LocalizedLabel* espLabel;
-	LocalizedLabel* eipLabel;
-	cocos2d::Node* eaxPtrNode;
-	cocos2d::Node* ebxPtrNode;
-	cocos2d::Node* ecxPtrNode;
-	cocos2d::Node* edxPtrNode;
-	cocos2d::Node* ediPtrNode;
-	cocos2d::Node* esiPtrNode;
-	cocos2d::Node* ebpPtrNode;
-	cocos2d::Node* espPtrNode;
-	cocos2d::Node* eipPtrNode;
-	cocos2d::Sprite* destSelector;
-	cocos2d::Sprite* srcSelector;
+	cocos2d::Sprite* registerBlock = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
+	LocalizedLabel* memoryTitleLabel = nullptr;
+	LocalizedLabel* eaxLabel = nullptr;
+	LocalizedLabel* ebxLabel = nullptr;
+	LocalizedLabel* ecxLabel = nullptr;
+	LocalizedLabel* edxLabel = nullptr;
+	LocalizedLabel* ediLabel = nullptr;
+	LocalizedLabel* esiLabel = nullptr;
+	LocalizedLabel* ebpLabel = nullptr;
+	LocalizedLabel* espLabel = nullptr;
+	LocalizedLabel* eipLabel = nullptr;
+	cocos2d::Node* eaxPtrNode = nullptr;
+	cocos2d::Node* ebxPtrNode = nullptr;
+	cocos2d::Node* ecxPtrNode = nullptr;
+	cocos2d::Node* edxPtrNode = nullptr;
+	cocos2d::Node* ediPtrNode = nullptr;
+	cocos2d::Node* esiPtrNode = nullptr;
+	cocos2d::Node* ebpPtrNode = nullptr;
+	cocos2d::Node* espPtrNode = nullptr;
+	cocos2d::Node* eipPtrNode = nullptr;
+	cocos2d::Sprite* destSelector = nullptr;
+	cocos2d::Sprite* srcSelector = nullptr;
 
 	std::vector<ConstantString*> eaxPtrStrings;
 	std::vector<ConstantString*> ebxPtrStrings;

@@ -38,8 +38,6 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->voiceSound = WorldSound::create("");
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 	this->speechBubbleNode = Node::create();
-	this->hasBound = false;
-	this->isDialogueRunning = false;
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 

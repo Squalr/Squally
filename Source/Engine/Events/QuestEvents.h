@@ -11,7 +11,7 @@ public:
 	struct QuestTaskCompleteArgs
 	{
 		std::string questLine;
-		QuestTask* questTask;
+		QuestTask* questTask = nullptr;
 
 		QuestTaskCompleteArgs(std::string questLine, QuestTask* questTask) : questLine(questLine), questTask(questTask) { }
 	};
