@@ -39,9 +39,7 @@ AlchemyLab::AlchemyLab(ValueMap& properties) : super(properties, InteractObject:
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->potion = Sprite::create(ItemResources::Consumables_Potions_ManaFlaskAdd);
 	this->floatContainer = Node::create();
-	this->recipes = std::vector<Item*>();
 	this->recipePoolName = GameUtils::getKeyOrDefault(this->properties, RecipePoolDeserializer::MapKeyTypeRecipePool, Value("")).asString();
-	this->recipePool = nullptr;
 	this->recipePoolDeserializer = RecipePoolDeserializer::create();
 	
 	this->floatContainer->addChild(this->shine);

@@ -33,10 +33,10 @@ private:
 	void runChatSequencePt4();
 	void runChatSequencePt5();
 
-	Guano* guano;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	MulDoor* mulDoor;
+	MulDoor* mulDoor = nullptr;
 
 	static const std::string EventExplainDoor;
 };

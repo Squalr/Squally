@@ -29,7 +29,6 @@ private:
 
 	void onRevive();
 
-	int cachedMaxMana;
-	
-	EquipmentInventory* equipmentInventory;
+	int cachedMaxMana = 0;
+	EquipmentInventory* equipmentInventory = nullptr;
 };

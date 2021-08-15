@@ -35,12 +35,11 @@ private:
 	void runCinematicSequencePt5();
 	void petrifyGuano();
 
-	Guano* guano;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	Medusa* medusa;
-
-	WorldSound* curseSfx;
+	Medusa* medusa = nullptr;
+	WorldSound* curseSfx = nullptr;
 
 	static const std::string TagCinematicExit;
 };

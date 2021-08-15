@@ -31,7 +31,6 @@ protected:
 private:
 	typedef GameComponent super;
 
-	int cachedMaxHealth;
-
-	EquipmentInventory* equipmentInventory;
+	int cachedMaxHealth = 0;
+	EquipmentInventory* equipmentInventory = nullptr;
 };

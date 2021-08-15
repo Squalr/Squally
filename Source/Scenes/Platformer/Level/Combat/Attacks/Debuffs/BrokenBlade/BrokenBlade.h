@@ -27,7 +27,7 @@ private:
 
 	void applyBrokenBlade();
 	
-	SmartParticles* spellEffect;
+	SmartParticles* spellEffect = nullptr;
 	
 	static const int MaxMultiplier;
 	static const float Duration;

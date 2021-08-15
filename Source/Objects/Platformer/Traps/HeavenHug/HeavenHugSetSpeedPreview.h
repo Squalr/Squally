@@ -26,10 +26,10 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* previewHeavenHug100;
-	cocos2d::Sprite* previewHeavenHug200;
-	cocos2d::Sprite* previewHeavenHug400;
-	LocalizedLabel* eax100Height;
-	LocalizedLabel* eax200Height;
-	LocalizedLabel* eax400Height;
+	cocos2d::Sprite* previewHeavenHug100 = nullptr;
+	cocos2d::Sprite* previewHeavenHug200 = nullptr;
+	cocos2d::Sprite* previewHeavenHug400 = nullptr;
+	LocalizedLabel* eax100Height = nullptr;
+	LocalizedLabel* eax200Height = nullptr;
+	LocalizedLabel* eax400Height = nullptr;
 };

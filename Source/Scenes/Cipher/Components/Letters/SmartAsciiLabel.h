@@ -16,10 +16,10 @@ public:
 
 	struct Contrast
 	{
-		bool doContrast;
-		unsigned char constrastValue;
+		bool doContrast = false;
+		unsigned char constrastValue = 0;
 
-		Contrast() : doContrast(false), constrastValue((unsigned char)(0)) { }
+		Contrast() { }
 		Contrast(unsigned char constrastValue) : doContrast(true), constrastValue(constrastValue) { }
 	};
 

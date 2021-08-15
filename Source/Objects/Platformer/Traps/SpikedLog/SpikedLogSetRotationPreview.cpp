@@ -26,7 +26,6 @@ SpikedLogSetRotationPreview::SpikedLogSetRotationPreview()
 {
 	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLog_SpikedLog_00);
 	this->countString = ConstantString::create("0");
-	this->currentAnimationIndex = -1;
 	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLog_SpikedLog_00);
 
 	this->previewSpikedLog->setScale(0.4f);

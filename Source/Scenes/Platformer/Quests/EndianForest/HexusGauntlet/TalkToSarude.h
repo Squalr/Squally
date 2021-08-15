@@ -28,8 +28,8 @@ private:
 
 	void registerDialogue();
 
-	MagePortal* portal;
-	Sarude* sarude;
+	MagePortal* portal = nullptr;
+	Sarude* sarude = nullptr;
 	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;

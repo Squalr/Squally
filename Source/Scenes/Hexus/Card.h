@@ -48,7 +48,7 @@ public:
 		};
 
 		OperationType operationType;
-		unsigned int immediate;
+		unsigned int immediate = 0;
 
 		Operation(OperationType operationType, unsigned int immediate = 0b0000) : operationType(operationType), immediate(immediate)
 		{
@@ -84,9 +84,9 @@ public:
 	void runUnderflowEffect(bool offsetYPosition = false, bool isGoodEffect = true);
 	CardEffects::CardEffect getCorrespondingCardEffect();
 
-	CardData* cardData;
-	CardEffects* cardEffects;
-	cocos2d::Vec2 position;
+	CardData* cardData = nullptr;
+	CardEffects* cardEffects = nullptr;
+	cocos2d::Vec2 position = cocos2d::Vec2::ZERO;
 
 	static const float cardScale;
 	static const cocos2d::Color4B BinaryColor;

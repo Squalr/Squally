@@ -37,12 +37,12 @@ private:
 
 	void loadRecipePool();
 
-	cocos2d::Sprite* anvil;
-	cocos2d::Node* floatContainer;
-	cocos2d::Sprite* shine;
-	cocos2d::Sprite* hammer;
+	cocos2d::Sprite* anvil = nullptr;
+	cocos2d::Node* floatContainer = nullptr;
+	cocos2d::Sprite* shine = nullptr;
+	cocos2d::Sprite* hammer = nullptr;
 	std::string recipePoolName;
-	MinMaxPool* recipePool;
+	MinMaxPool* recipePool = nullptr;
 	std::vector<Item*> recipes;
-	RecipePoolDeserializer* recipePoolDeserializer;
+	RecipePoolDeserializer* recipePoolDeserializer = nullptr;
 };

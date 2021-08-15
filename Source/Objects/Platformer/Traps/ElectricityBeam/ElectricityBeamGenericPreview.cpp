@@ -24,9 +24,7 @@ ElectricityBeamGenericPreview* ElectricityBeamGenericPreview::create()
 
 ElectricityBeamGenericPreview::ElectricityBeamGenericPreview()
 {
-	this->launchCountDown = 0.0f;
 	this->electricityAnimation = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
-	this->isLaunching = false;
 	this->ballLeft = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 	this->ballRight = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 

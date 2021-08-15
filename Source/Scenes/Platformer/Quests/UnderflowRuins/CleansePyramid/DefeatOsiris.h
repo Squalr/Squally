@@ -31,11 +31,10 @@ private:
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
 
-	Osiris* osiris;
+	Osiris* osiris = nullptr;
 	Squally* squally = nullptr;
-	Sarcophagus* sarcophagus;
-
-	WorldSound* rumbleSound;
+	Sarcophagus* sarcophagus = nullptr;
+	WorldSound* rumbleSound = nullptr;
 
 	static const std::string MapEventAwakenOsiris;
 	static const std::string TagExitPortal;

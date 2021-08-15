@@ -27,6 +27,6 @@ private:
 
 	void runCinematicSequence();
 
-	Lycan* lycan;
+	Lycan* lycan = nullptr;
 	Squally* squally = nullptr;
 };

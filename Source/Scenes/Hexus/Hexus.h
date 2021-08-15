@@ -162,5 +162,5 @@ private:
 	Track* musicA = nullptr;
 	Track* musicB = nullptr;
 
-	static Hexus* instance;
+	static Hexus* Instance;
 };

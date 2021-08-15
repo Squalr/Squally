@@ -29,5 +29,5 @@ private:
 
 	void runAnimation();
 
-	SmartAnimationNode* mineClawAnimations;
+	SmartAnimationNode* mineClawAnimations = nullptr;
 };

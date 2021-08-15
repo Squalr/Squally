@@ -24,7 +24,7 @@ private:
 	std::vector<Item*> craftedItems;
 	std::vector<std::tuple<Item*, int>> craftedItemsByCount;
 
-	cocos2d::Node* craftedItemsNode;
-	cocos2d::Node* reagentsNode;
+	cocos2d::Node* craftedItemsNode = nullptr;
+	cocos2d::Node* reagentsNode = nullptr;
 	std::vector<std::tuple<Item*, int>> reagentsCache;
 };

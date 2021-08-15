@@ -21,8 +21,8 @@ private:
 	typedef SmartNode super;
 
 	std::vector<Projectile*> projectiles;
-	std::function<Projectile*()> projectileFactory;
+	std::function<Projectile*()> projectileFactory = nullptr;
 
-	int dartIndex;
-	int projectilePoolCapacity;
+	int dartIndex = 0;
+	int projectilePoolCapacity = -1;
 };

@@ -33,7 +33,6 @@ Lever::Lever(ValueMap& properties) : super(properties, InteractObject::InteractT
 {
 	this->lever = SmartAnimationNode::create(ObjectResources::Switches_Lever_Animations);
 	this->leverSound = WorldSound::create(SoundResources::Cipher_GearTurn);
-	this->canPull = true;
 
 	this->lever->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 

@@ -36,8 +36,8 @@ private:
 
 	void incrementHeal();
 	
-	int healAmount;
-	SmartAnimationSequenceNode* healEffect;
-	WorldSound* healSound;
-	cocos2d::Sprite* spellAura;
+	int healAmount = 0;
+	SmartAnimationSequenceNode* healEffect = nullptr;
+	WorldSound* healSound = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 };

@@ -36,14 +36,14 @@ private:
 	void onDeath();
 
 	PlatformerEntity* entity = nullptr;
-	cocos2d::Sprite* spellAura;
+	cocos2d::Sprite* spellAura = nullptr;
 	
-	ProgressBar* healthBar;
-	ConstantString* deltaString;
-	LocalizedLabel* deltaLabel;
-	ConstantString* healthString;
-	LocalizedLabel* healthLabel;
-	WorldSound* healSound;
+	ProgressBar* healthBar = nullptr;
+	ConstantString* deltaString = nullptr;
+	LocalizedLabel* deltaLabel = nullptr;
+	ConstantString* healthString = nullptr;
+	LocalizedLabel* healthLabel = nullptr;
+	WorldSound* healSound = nullptr;
 
 	static int Health;
 	static const int MaxHealth;

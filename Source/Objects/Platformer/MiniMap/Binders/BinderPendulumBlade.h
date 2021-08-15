@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	PendulumBlade* pendulumBlade;
+	PendulumBlade* pendulumBlade = nullptr;
 };

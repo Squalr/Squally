@@ -55,15 +55,15 @@ private:
 	void parseColor();
 	void parseDirection();
 
-	float cartSpeed;
-	bool canMoveHack;
-	bool isMoving;
-	CartColor cartColor;
-	CartDirection cartDirection;
-	CollisionObject* bottomCollision;
-	cocos2d::Sprite* body;
-	cocos2d::Sprite* wheelFront;
-	cocos2d::Sprite* wheelBack;
+	float cartSpeed = 0.0f;
+	bool canMoveHack = true;
+	bool isMoving = false;
+	CartColor cartColor = CartColor::Brown;
+	CartDirection cartDirection = CartDirection::Left;
+	CollisionObject* bottomCollision = nullptr;
+	cocos2d::Sprite* body = nullptr;
+	cocos2d::Sprite* wheelFront = nullptr;
+	cocos2d::Sprite* wheelBack = nullptr;
 
 	static const std::string PropertyColor;
 	static const std::string PropertyDirection;

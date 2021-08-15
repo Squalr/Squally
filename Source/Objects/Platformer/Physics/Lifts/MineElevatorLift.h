@@ -26,7 +26,7 @@ protected:
 private:
 	typedef LiftBase super;
 
-	cocos2d::Sprite* gearShaft;
-	cocos2d::Sprite* gear;
-	cocos2d::Sprite* elevator;
+	cocos2d::Sprite* gearShaft = nullptr;
+	cocos2d::Sprite* gear = nullptr;
+	cocos2d::Sprite* elevator = nullptr;
 };

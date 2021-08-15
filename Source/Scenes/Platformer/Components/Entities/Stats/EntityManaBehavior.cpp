@@ -31,8 +31,6 @@ EntityManaBehavior* EntityManaBehavior::create(GameObject* owner)
 EntityManaBehavior::EntityManaBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->equipmentInventory = nullptr;
-	this->cachedMaxMana = 0;
 
 	if (this->entity == nullptr)
 	{

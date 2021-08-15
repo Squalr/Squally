@@ -30,8 +30,8 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void runTutorialLossDisplay(GameState* gameState);
 
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* lossDisplayTutorialLabel;
-	ClickableTextNode* lossDisplayNextButton;
-	HelpArrow* helpArrowLossDisplay;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* lossDisplayTutorialLabel = nullptr;
+	ClickableTextNode* lossDisplayNextButton = nullptr;
+	HelpArrow* helpArrowLossDisplay = nullptr;
 };

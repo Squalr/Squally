@@ -30,11 +30,10 @@ private:
 	void registerTimelineEvent(TimelineEvent* timelineEvent);
 	void unregisterTimelineEvent(TimelineEvent* timelineEvent);
 
-	cocos2d::Node* timelineEventsNode;
-
-	Buff* associatedBuff;
+	cocos2d::Node* timelineEventsNode = nullptr;
+	Buff* associatedBuff = nullptr;
 	PlatformerEntity* owner = nullptr;
 	std::vector<TimelineEvent*> timelineEvents;
 	std::vector<TimelineEvent*> timelineEventsToDelete;
-	std::function<void()> onGroupComplete;
+	std::function<void()> onGroupComplete = nullptr;
 };

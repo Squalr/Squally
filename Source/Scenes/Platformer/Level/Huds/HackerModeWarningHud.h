@@ -23,5 +23,5 @@ protected:
 private:
 	typedef Hud super;
 
-	cocos2d::Sprite* radialEye;
+	cocos2d::Sprite* radialEye = nullptr;
 };

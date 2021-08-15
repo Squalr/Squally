@@ -25,7 +25,7 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* slashSound;
-	WorldSound* hitSound;
-	float weaveDelay;
+	WorldSound* slashSound = nullptr;
+	WorldSound* hitSound = nullptr;
+	float weaveDelay = 0.0f;
 };

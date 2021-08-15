@@ -39,8 +39,8 @@ private:
 	std::vector<int> values;
 	std::vector<ConstantString*> valueStrings;
 
-	cocos2d::Sprite* animatedStone;
-	ConstantString* animatedString;
+	cocos2d::Sprite* animatedStone = nullptr;
+	ConstantString* animatedString = nullptr;
 
 	static const std::string PropertyValues;
 	static const int MaxStackSize;

@@ -14,7 +14,7 @@ public:
 	struct QuestData
 	{
 		std::string questTask;
-		bool isSkippable;
+		bool isSkippable = false;
 		std::function<QuestTask*(GameObject*, QuestLine*)> deserializer;
 
 		QuestData(std::string questTask, bool isSkippable, std::function<QuestTask*(GameObject*, QuestLine*)> deserializer)
@@ -24,9 +24,9 @@ public:
 	struct QuestMeta
 	{
 		std::string questTask;
-		bool isActive;
-		bool isSkippable;
-		bool isComplete;
+		bool isActive = false;
+		bool isSkippable = false;
+		bool isComplete = false;
 
 		QuestMeta(std::string questTask, bool isActive, bool isSkippable, bool isComplete) : questTask(questTask), isActive(isActive), isSkippable(isSkippable), isComplete(isComplete) { }
 	};

@@ -31,14 +31,15 @@ protected:
 
 private:
 	typedef HackableObject super;
+
 	void updateSpikes(float dt);
 
-	SmartAnimationSequenceNode* spikes;
-	CollisionObject* spikeCollision;
-	float currentElapsedTimeForSpikeTrigger;
-	float totalTimeUntilSpikesTrigger;
-	bool isRunningAnimation;
-	bool isFlippedY;
+	SmartAnimationSequenceNode* spikes = nullptr;
+	CollisionObject* spikeCollision = nullptr;
+	float currentElapsedTimeForSpikeTrigger = 0.0f;
+	float totalTimeUntilSpikesTrigger = 4.0f;
+	bool isRunningAnimation = false;
+	bool isFlippedY = false;
 
 	static const cocos2d::Vec2 SpikesUpPosition;
 	static const cocos2d::Vec2 SpikesDownPosition;

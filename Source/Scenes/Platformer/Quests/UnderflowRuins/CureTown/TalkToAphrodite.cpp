@@ -45,10 +45,6 @@ TalkToAphrodite* TalkToAphrodite::create(GameObject* owner, QuestLine* questLine
 
 TalkToAphrodite::TalkToAphrodite(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToAphrodite::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->aphrodite = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 TalkToAphrodite::~TalkToAphrodite()

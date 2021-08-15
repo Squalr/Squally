@@ -40,7 +40,7 @@ private:
 
 	void buildCollisionMap();
 	
-	static PlatformerCollisionMapping* instance;
+	static PlatformerCollisionMapping* Instance;
 
 	static std::map<std::string, int> CollisionMap;
 };

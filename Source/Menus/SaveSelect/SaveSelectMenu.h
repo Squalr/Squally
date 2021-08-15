@@ -51,5 +51,5 @@ private:
 	ConfirmationMenu* confirmationMenu = nullptr;
 	PlatformerEntityDeserializer* platformerEntityDeserializer = nullptr;
 
-	static SaveSelectMenu* instance;
+	static SaveSelectMenu* Instance;
 };

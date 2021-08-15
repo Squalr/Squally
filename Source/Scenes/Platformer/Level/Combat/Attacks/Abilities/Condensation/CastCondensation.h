@@ -25,7 +25,7 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* bubbleSound;
+	WorldSound* bubbleSound = nullptr;
 
 	static const int ManaGain;
 };

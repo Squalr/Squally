@@ -25,11 +25,11 @@ protected:
 	void setToMountPositionX();
 	void setToMountPosition();
 	
-	cocos2d::Node* frontNode;
-	PlatformerEntity* mountedEntity;
+	cocos2d::Node* frontNode = nullptr;
+	PlatformerEntity* mountedEntity = nullptr;
 
 private:
 	typedef InteractObject super;
 
-	cocos2d::Node* reparentNode;
+	cocos2d::Node* reparentNode = nullptr;
 };

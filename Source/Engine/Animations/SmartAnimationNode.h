@@ -31,9 +31,9 @@ public:
 
 	struct AnimParams
 	{
-		float priority;
-		float blendTime;
-		bool cancelAnim;
+		float priority = 0.0f;
+		float blendTime = 0.0f;
+		bool cancelAnim = false;
 		
 		AnimParams(float priority = 0.5f, float blendTime = 0.5f, bool cancelAnim = false) : priority(priority), blendTime(blendTime), cancelAnim(cancelAnim) { }
 	};

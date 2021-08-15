@@ -182,7 +182,7 @@ void CurseOfTongues::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeed
 NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 {
 	static volatile float speedBonus;
-	static volatile float increment;
+	static volatile float increment = 0.0f;
 	static volatile float* speedBonusPtr;
 	static volatile float* incrementPtr;
 

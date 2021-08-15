@@ -24,7 +24,7 @@ private:
 
 	void applyCondensation();
 	
-	SmartParticles* spellEffect;
+	SmartParticles* spellEffect = nullptr;
 	
 	static const float Duration;
 };

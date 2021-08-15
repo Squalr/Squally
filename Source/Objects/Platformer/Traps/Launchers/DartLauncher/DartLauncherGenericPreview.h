@@ -14,14 +14,16 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	DartLauncherGenericPreview();
-	~DartLauncherGenericPreview();
+	virtual ~DartLauncherGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* dartLauncher;
-	cocos2d::Sprite* dart;
+private:
+	typedef HackablePreview super;
+
+	cocos2d::Sprite* dartLauncher = nullptr;
+	cocos2d::Sprite* dart = nullptr;
 };

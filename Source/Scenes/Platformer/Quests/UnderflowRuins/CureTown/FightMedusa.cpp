@@ -40,10 +40,6 @@ FightMedusa* FightMedusa::create(GameObject* owner, QuestLine* questLine)
 
 FightMedusa::FightMedusa(GameObject* owner, QuestLine* questLine) : super(owner, questLine, FightMedusa::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->medusa = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 FightMedusa::~FightMedusa()

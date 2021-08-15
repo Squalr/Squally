@@ -36,7 +36,6 @@ SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine)
 
 SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, true)
 {
-	this->scrappy = nullptr;
 }
 
 SpotOrcGrunt::~SpotOrcGrunt()

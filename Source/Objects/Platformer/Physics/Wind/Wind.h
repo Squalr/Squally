@@ -34,14 +34,14 @@ private:
 
 	cocos2d::Vec2 getButtonOffset() override;
 
-	CollisionObject* windForce;
-	HackableData* windDataSpeedY;
-	SmartParticles* windParticles;
+	CollisionObject* windForce = nullptr;
+	HackableData* windDataSpeedY = nullptr;
+	SmartParticles* windParticles = nullptr;
 	cocos2d::CSize windSize;
 	cocos2d::Vec2 windSpeedDefault;
 	cocos2d::Vec2 windSpeed;
 
-	bool isUniform;
+	bool isUniform = false;
 
 	static const float BaseWindSpeed;
 	static const std::string PropertyUniform;

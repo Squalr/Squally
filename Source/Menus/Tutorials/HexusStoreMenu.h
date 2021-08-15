@@ -62,5 +62,5 @@ private:
 
 	static const std::string SaveKeyGold;
 	static const int DefaultGold;
-	static HexusStoreMenu* instance;
+	static HexusStoreMenu* Instance;
 };

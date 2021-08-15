@@ -21,5 +21,5 @@ protected:
 private:
 	typedef Buff super;
 
-	bool hasAutoCasted;
+	bool hasAutoCasted = false;
 };

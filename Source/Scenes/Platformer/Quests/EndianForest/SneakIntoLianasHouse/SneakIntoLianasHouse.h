@@ -24,5 +24,5 @@ protected:
 private:
 	typedef QuestTask super;
 
-	Portal* portal;
+	Portal* portal = nullptr;
 };

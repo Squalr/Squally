@@ -74,16 +74,16 @@
 #include "Scenes/Hexus/CardData/Special/CardSubtraction.h"
 #include "Scenes/Hexus/CardData/Special/CardSuddenDeath.h"
 
-CardList* CardList::instance = nullptr;
+CardList* CardList::Instance = nullptr;
 
 CardList* CardList::getInstance()
 {
-	if (CardList::instance == nullptr)
+	if (CardList::Instance == nullptr)
 	{
-		CardList::instance = new CardList();
+		CardList::Instance = new CardList();
 	}
 
-	return CardList::instance;
+	return CardList::Instance;
 }
 
 CardList::CardList()

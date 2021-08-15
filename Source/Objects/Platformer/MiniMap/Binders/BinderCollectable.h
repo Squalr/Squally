@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	Collectable* collectable;
+	Collectable* collectable = nullptr;
 };

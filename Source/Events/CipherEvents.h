@@ -54,7 +54,7 @@ public:
 	{
 		BoltBase* sourceBolt = nullptr;
 		Connection* connection = nullptr;
-		cocos2d::Vec2 destination;
+		cocos2d::Vec2 destination = cocos2d::Vec2::ZERO;
 
 		CipherConnectionCreateArgs(BoltBase* sourceBolt, Connection* connection, cocos2d::Vec2 destination) : sourceBolt(sourceBolt), connection(connection), destination(destination), handled(false)
 		{

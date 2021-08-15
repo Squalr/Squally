@@ -14,16 +14,16 @@
 
 using namespace cocos2d;
 
-GlobalDirector* GlobalDirector::instance = nullptr;
+GlobalDirector* GlobalDirector::Instance = nullptr;
 
 GlobalDirector* GlobalDirector::getInstance()
 {
-	if (GlobalDirector::instance == nullptr)
+	if (GlobalDirector::Instance == nullptr)
 	{
-		GlobalDirector::instance = new GlobalDirector();
+		GlobalDirector::Instance = new GlobalDirector();
 	}
 
-	return GlobalDirector::instance;
+	return GlobalDirector::Instance;
 }
 
 GlobalDirector::GlobalDirector()

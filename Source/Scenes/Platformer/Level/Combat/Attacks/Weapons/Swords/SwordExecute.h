@@ -26,8 +26,8 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* slashSound;
-	WorldSound* hitSound;
+	WorldSound* slashSound = nullptr;
+	WorldSound* hitSound = nullptr;
 
 	static const float DamageMultiplier;
 };

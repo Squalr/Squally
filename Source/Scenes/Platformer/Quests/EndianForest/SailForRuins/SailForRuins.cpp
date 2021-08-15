@@ -43,8 +43,6 @@ SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine)
 
 SailForRuins::SailForRuins(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SailForRuins::MapKeyQuest, false)
 {
-	this->blackbeard = nullptr;
-	this->squally = nullptr;
 }
 
 SailForRuins::~SailForRuins()

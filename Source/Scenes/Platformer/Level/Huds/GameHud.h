@@ -30,10 +30,10 @@ protected:
 private:
 	typedef Hud super;
 
-	cocos2d::LayerColor* flashLayer;
-	CurrencyDisplay* currencyDisplay;
-	ObjectiveDisplay* objectiveDisplay;
-	StatsBars* statsBars;
-	CinematicIndicator* cinematicIndicator;
-	PlatformerDialogueBox* dialogueBox;
+	cocos2d::LayerColor* flashLayer = nullptr;
+	CurrencyDisplay* currencyDisplay = nullptr;
+	ObjectiveDisplay* objectiveDisplay = nullptr;
+	StatsBars* statsBars = nullptr;
+	CinematicIndicator* cinematicIndicator = nullptr;
+	PlatformerDialogueBox* dialogueBox = nullptr;
 };

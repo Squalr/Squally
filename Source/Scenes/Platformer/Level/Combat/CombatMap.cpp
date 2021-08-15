@@ -113,7 +113,6 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
-	this->scrappy = nullptr;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 

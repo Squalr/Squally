@@ -35,21 +35,21 @@
 
 using namespace cocos2d;
 
-SaveSelectMenu* SaveSelectMenu::instance;
+SaveSelectMenu* SaveSelectMenu::Instance;
 
 SaveSelectMenu* SaveSelectMenu::getInstance()
 {
-	if (SaveSelectMenu::instance == nullptr)
+	if (SaveSelectMenu::Instance == nullptr)
 	{
-		SaveSelectMenu::instance = new SaveSelectMenu();
+		SaveSelectMenu::Instance = new SaveSelectMenu();
 
-		SaveSelectMenu::instance->autorelease();
-		SaveSelectMenu::instance->initializeListeners();
+		SaveSelectMenu::Instance->autorelease();
+		SaveSelectMenu::Instance->initializeListeners();
 
-		GlobalDirector::RegisterGlobalScene(SaveSelectMenu::instance);
+		GlobalDirector::RegisterGlobalScene(SaveSelectMenu::Instance);
 	}
 
-	return SaveSelectMenu::instance;
+	return SaveSelectMenu::Instance;
 }
 
 SaveSelectMenu::SaveSelectMenu()

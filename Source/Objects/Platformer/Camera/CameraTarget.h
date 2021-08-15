@@ -29,8 +29,8 @@ private:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
-	cocos2d::DrawNode* debugDraw;
-	float zoom;
+	cocos2d::DrawNode* debugDraw = nullptr;
+	float zoom = 0.0f;
 
 	static const std::string PropertyZoom;
 };

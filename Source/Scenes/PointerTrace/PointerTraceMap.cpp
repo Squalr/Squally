@@ -51,9 +51,6 @@ PointerTraceMap* PointerTraceMap::create(std::string mapFile, std::function<void
 PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback) : super(false)
 {
 	this->onLevelClearCallback = onLevelClearCallback;
-	this->collisionMap = std::set<int>();
-	this->segfaultMap = std::set<int>();
-	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
 	this->pointerTraceHud = PointerTraceHud::create();
 	this->victoryMenu = VictoryMenu::create();

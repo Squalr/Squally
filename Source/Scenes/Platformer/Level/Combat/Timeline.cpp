@@ -40,13 +40,6 @@ Timeline* Timeline::create()
 
 Timeline::Timeline()
 {
-	this->isTimelinePaused = true;
-	this->isTimelineCinematicPaused = false;
-	this->isTimelineInterrupted = false;
-	this->isCombatComplete = false;
-	this->hasInit = false;
-	this->timelineEntryAwaitingUserAction = nullptr;
-
 	this->swordFill = ProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
 	this->eventsNode = Node::create();

@@ -30,7 +30,6 @@ MountBase::MountBase(ValueMap& properties, CSize size) : super(properties, Inter
 {
 	this->reparentNode = Node::create();
 	this->frontNode = Node::create();
-	this->mountedEntity = nullptr;
 	
 	this->addChild(this->reparentNode);
 	this->addChild(this->frontNode);

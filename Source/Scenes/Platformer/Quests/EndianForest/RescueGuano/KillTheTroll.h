@@ -25,6 +25,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	PlatformerEntity* troll;
+	PlatformerEntity* troll = nullptr;
 	Squally* squally = nullptr;
 };

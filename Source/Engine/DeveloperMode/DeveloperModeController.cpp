@@ -12,14 +12,14 @@
 
 using namespace cocos2d;
 
-DeveloperModeController* DeveloperModeController::instance = nullptr;
+DeveloperModeController* DeveloperModeController::Instance = nullptr;
 volatile bool DeveloperModeController::IsDeveloperBuild = true;
 int DeveloperModeController::MaxDebugLevel = 2;
 int DeveloperModeController::CurrentDebugLevel = 0;
 
 void DeveloperModeController::RegisterGlobalNode()
 {
-	if (DeveloperModeController::instance == nullptr)
+	if (DeveloperModeController::Instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->RegisterGlobalNode(DeveloperModeController::getInstance());
@@ -28,14 +28,14 @@ void DeveloperModeController::RegisterGlobalNode()
 
 DeveloperModeController* DeveloperModeController::getInstance()
 {
-	if (DeveloperModeController::instance == nullptr)
+	if (DeveloperModeController::Instance == nullptr)
 	{
-		DeveloperModeController::instance = new DeveloperModeController();
+		DeveloperModeController::Instance = new DeveloperModeController();
 
-		DeveloperModeController::instance->autorelease();
+		DeveloperModeController::Instance->autorelease();
 	}
 
-	return DeveloperModeController::instance;
+	return DeveloperModeController::Instance;
 }
 
 DeveloperModeController::DeveloperModeController()

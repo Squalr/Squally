@@ -29,11 +29,6 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
-	this->noOwnerCollideDuration = 1.0f;
-	this->launchVelocity = Vec3::ZERO;
-	this->launchAcceleration = Vec3::ZERO;
-	this->speedMultiplier = Vec3::ONE;
-	this->spinSpeed = 0.0f;
 	this->collisionObject = CollisionObject::create(
 		hitBox,
 		collisionType,
@@ -43,11 +38,6 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 	this->contentNode = Node::create();
 	this->decorNode = Node::create();
 	this->postFXNode = Node::create();
-	this->ownerCollisionRef = nullptr;
-	this->enabled = true;
-	this->canUpdate = true;
-	this->projectileRotation = 0.0f;
-	this->movementMode = MovementMode::Kinematic;
 
 	this->addTag(Projectile::ProjectileTag);
 

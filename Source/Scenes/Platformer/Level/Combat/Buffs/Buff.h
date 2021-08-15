@@ -22,9 +22,9 @@ class Buff : public SmartNode
 public:
 	struct BuffData
 	{
-		float duration;
+		float duration = 0.0f;
 		std::string uniqueId; // If set to non-empty string, the buff will be unique against this key.
-		float priority;
+		float priority = 0.0f;
 
 		BuffData() : duration(-1.0f), uniqueId(""), priority(0.5f) { }
 		BuffData(float duration) : duration(duration), uniqueId(""), priority(0.5f) { }
@@ -64,10 +64,10 @@ protected:
 	virtual void onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset);
 
 	BuffData buffData;
-	PlatformerEntity* caster;
+	PlatformerEntity* caster = nullptr;
 	PlatformerEntity* owner = nullptr;
 	std::vector<HackableCode*> hackables;
-	AbilityType abilityType;
+	AbilityType abilityType = AbilityType::Physical;
 
 	static cocos2d::ValueMap HackStateStorage;
 	
@@ -82,14 +82,14 @@ private:
 	typedef SmartNode super;
 	friend class TimelineEntry;
 
-	std::function<void()> removeBuffCallback;
-	cocos2d::Node* iconContainer;
-	cocos2d::Sprite* buffGlow;
-	cocos2d::Sprite* buffIcon;
+	std::function<void()> removeBuffCallback = nullptr;
+	cocos2d::Node* iconContainer = nullptr;
+	cocos2d::Sprite* buffGlow = nullptr;
+	cocos2d::Sprite* buffIcon = nullptr;
 	
-	bool isBuffIconPresent;
-	bool wasRemoved;
-	float elapsedTime;
-	float asyncElapsedTime;
+	bool isBuffIconPresent = false;
+	bool wasRemoved = false;
+	float elapsedTime = 0.0f;
+	float asyncElapsedTime = 0.0f;
 	void unregisterHackables();
 };

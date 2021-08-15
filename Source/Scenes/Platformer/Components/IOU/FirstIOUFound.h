@@ -21,5 +21,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	IOUDrop* iou;
+	IOUDrop* iou = nullptr;
 };

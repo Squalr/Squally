@@ -27,8 +27,6 @@ ProjectilePool* ProjectilePool::create(std::function<Projectile*()> projectileFa
 ProjectilePool::ProjectilePool(std::function<Projectile*()> projectileFactory, int projectilePoolCapacity) : super()
 {
 	this->projectileFactory = projectileFactory;
-	this->projectiles = std::vector<Projectile*>();
-	this->dartIndex = -1;
 	this->projectilePoolCapacity = projectilePoolCapacity;
 }
 

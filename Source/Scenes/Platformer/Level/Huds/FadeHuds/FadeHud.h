@@ -34,8 +34,7 @@ protected:
 private:
 	typedef Hud super;
 
-	LazyNode<NormalFadeHud>* normalFadeHud;
-	LazyNode<TriangleFadeHud>* triangleFadeHud;
-
-	cocos2d::DrawNode* resetScreen;
+	LazyNode<NormalFadeHud>* normalFadeHud = nullptr;
+	LazyNode<TriangleFadeHud>* triangleFadeHud = nullptr;
+	cocos2d::DrawNode* resetScreen = nullptr;
 };

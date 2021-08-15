@@ -8,7 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-StatsTables* StatsTables::instance = nullptr;
+StatsTables* StatsTables::Instance = nullptr;
 std::map<std::string, StatsTables::StatsIncrements> StatsTables::StatsTable = std::map<std::string, StatsTables::StatsIncrements>();
 
 const int StatsTables::FallbackExp = 666;
@@ -22,12 +22,12 @@ void StatsTables::RegisterGlobalNode()
 
 StatsTables* StatsTables::getInstance()
 {
-	if (StatsTables::instance == nullptr)
+	if (StatsTables::Instance == nullptr)
 	{
-		StatsTables::instance = new StatsTables();
+		StatsTables::Instance = new StatsTables();
 	}
 
-	return StatsTables::instance;
+	return StatsTables::Instance;
 }
 
 StatsTables::StatsTables()

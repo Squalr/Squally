@@ -26,7 +26,7 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* previewAsteroid;
-	LocalizedLabel* xmm0Top;
-	LocalizedLabel* xmm0Bottom;
+	cocos2d::Sprite* previewAsteroid = nullptr;
+	LocalizedLabel* xmm0Top = nullptr;
+	LocalizedLabel* xmm0Bottom = nullptr;
 };

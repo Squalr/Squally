@@ -24,7 +24,8 @@ private:
 	typedef ChestBase super;
 	
 	CipherPuzzleData* buildPuzzleData();
-	CipherPuzzleData* cipherPuzzleData;
+	
+	CipherPuzzleData* cipherPuzzleData = nullptr;
 
 	static const std::string PropertyInputs;
 	static const std::string PropertyRule;

@@ -32,10 +32,10 @@ private:
 	void runCinematicSequencePart3();
 	void runCinematicSequencePart4();
 
-	Elriel* elriel;
+	Elriel* elriel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	Portal* cutscenePortal;
+	Portal* cutscenePortal = nullptr;
 
 	static const std::string TagElrielExit;
 	static const std::string TagCutscenePortal;

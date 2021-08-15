@@ -26,5 +26,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationNode* previewCatapult;
+	SmartAnimationNode* previewCatapult = nullptr;
 };

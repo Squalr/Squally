@@ -22,10 +22,10 @@ private:
 	std::string getEventString();
 	int getSpawnOrder();
 
-	bool isEnemySpawn;
-	int spawnOrder;
-	float spawnObjectHeight;
-	float zoom;
+	bool isEnemySpawn = false;
+	int spawnOrder = 0;
+	float spawnObjectHeight = 0.0f;
+	float zoom = 0.0f;
 
 	static const std::string MapKeySpawnType;
 	static const std::string MapKeySpawnOrder;

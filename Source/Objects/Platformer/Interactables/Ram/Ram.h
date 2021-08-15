@@ -26,8 +26,8 @@ protected:
 private:
 	typedef HackableObject super;
 
-	SmartAnimationNode* ramAnimations;
-	CollisionObject* collision;
+	SmartAnimationNode* ramAnimations = nullptr;
+	CollisionObject* collision = nullptr;
 
 	static const float AnimOffset;
 };

@@ -24,7 +24,7 @@ private:
 	void endPositionMiniMap();
 
 	std::string position;
-	CollisionObject* triggerCollision;
+	CollisionObject* triggerCollision = nullptr;
 
 	static const std::string PropertyPosition;
 };

@@ -42,12 +42,7 @@ ReturnToQueen* ReturnToQueen::create(GameObject* owner, QuestLine* questLine)
 ReturnToQueen::ReturnToQueen(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ReturnToQueen::MapKeyQuest, false)
 {
 	ValueMap props = ValueMap();
-
-	this->elriel = nullptr;
-	this->guano = nullptr;
-	this->queenLiana = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
+	
 	this->rewardPool = RewardPoolLiana::create(props);
 
 	this->addChild(this->rewardPool);

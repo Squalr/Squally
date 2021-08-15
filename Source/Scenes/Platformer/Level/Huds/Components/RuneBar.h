@@ -33,8 +33,8 @@ protected:
 private:
 	typedef SmartNode super;
 
-	EntityRuneBehavior* runeBehavior;
-	PlatformerEntity* target;
+	EntityRuneBehavior* runeBehavior = nullptr;
+	PlatformerEntity* target = nullptr;
 
 	std::vector<cocos2d::Sprite*> emptyRunes;
 	std::vector<cocos2d::ClippingNode*> cooldownClips;

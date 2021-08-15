@@ -57,7 +57,6 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	super(properties)
 {
 	this->collisionType = collisionType;
-	this->collisionTypes = std::vector<CollisionType>();
 	this->points = points;
 	this->pointsRotated = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
@@ -68,14 +67,10 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->previousCollisions = &this->collisionsBlack;
 	this->collisionProperties = collisionProperties;
 	this->gravityEnabled = collisionProperties.isDynamic;
-	this->velocity = Vec2::ZERO;
-	this->acceleration = Vec2::ZERO;
 	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
 	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
 	this->debugColor = debugColor;
-	this->cachedWorldCoords = Vec2::ZERO;
-	this->cachedWorldCoords3D = Vec3::ZERO;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
 	this->universeId = CollisionObject::UniverseId;
 

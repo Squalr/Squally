@@ -38,8 +38,6 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->showExp = showExp;
-	this->target = nullptr;
-	this->targetAsTimelineEntry = nullptr;
 	this->frame = ClickableNode::create(this->showExp ? UIResources::HUD_FrameExtended : UIResources::HUD_Frame, this->showExp ? UIResources::HUD_FrameExtendedSelected : UIResources::HUD_FrameSelected);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->emblemNode = Node::create();
@@ -61,13 +59,6 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->eqDisplay = EqDisplay::create();
 	this->runeBar = RuneBar::create();
 	this->arrowSprite = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->cachedExp = -1;
-	this->cachedMaxExp = -1;
-	this->cachedMana = -1;
-	this->cachedMaxMana = -1;
-	this->cachedHealth = -1;
-	this->cachedMaxHealth = -1;
-	this->selectable = false;
 
 	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
 	this->manaLabel->setStringReplacementVariables({ this->manaNumerator, this->manaDenominator });

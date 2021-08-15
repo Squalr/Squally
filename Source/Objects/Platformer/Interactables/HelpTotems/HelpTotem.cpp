@@ -30,8 +30,6 @@ HelpTotem::HelpTotem(ValueMap& properties) : super(properties, InteractObject::I
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
 	this->totemInactive = Sprite::create(ObjectResources::Interactive_Help_HelpTotemDeactivated);
 	this->speechBubble = SpeechBubble::create(true);
-	this->hint = nullptr;
-	this->isInactive = false;
 
 	this->totemInactive->setOpacity(0);
 

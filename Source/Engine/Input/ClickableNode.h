@@ -59,8 +59,8 @@ protected:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
-	cocos2d::Node* content;
-	cocos2d::Node* contentSelected;
+	cocos2d::Node* content = nullptr;
+	cocos2d::Node* contentSelected = nullptr;
 
 private:
 	typedef SmartNode super;

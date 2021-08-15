@@ -22,7 +22,7 @@ private:
 
 	void selectAttack(TimelineEntry* entry, PlatformerAttack* attack, int index);
 
-	Timeline* timelineRef;
+	Timeline* timelineRef = nullptr;
 
 	static const float Radius;
 };

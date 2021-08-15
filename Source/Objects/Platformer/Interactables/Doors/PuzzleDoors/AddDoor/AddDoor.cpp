@@ -109,7 +109,7 @@ void AddDoor::runOperation(int puzzleIndex)
 
 NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 {
-	static volatile int transform;
+	static volatile int transform = 0;
 
 	transform = puzzleIndex;
 

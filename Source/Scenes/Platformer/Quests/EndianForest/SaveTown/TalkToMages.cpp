@@ -46,9 +46,6 @@ TalkToMages* TalkToMages::create(GameObject* owner, QuestLine* questLine)
 
 TalkToMages::TalkToMages(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToMages::MapKeyQuest, false)
 {
-	this->squally = nullptr;
-	this->scrappy = nullptr;
-	this->sarude = nullptr;
 }
 
 TalkToMages::~TalkToMages()

@@ -45,7 +45,6 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
 	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); }, projectilePoolCapacity);
-	this->launchTimer = 0.0f;
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
 	this->isFixed = GameUtils::keyExists(this->properties, PivotLauncher::PropertyFixed);
@@ -53,8 +52,6 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->fixedAngle = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyFixed, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
 	this->currentAngle = this->fixedAngle;
-	this->target = nullptr;
-	this->isAutoLaunch = true;
 
 	this->setContentSize(CSize(128.0f, 192.0f));
 

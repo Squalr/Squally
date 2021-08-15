@@ -31,8 +31,6 @@ CombatHud::CombatHud()
 	this->playerPartyStatsNode = Node::create();
 	this->enemyPartyStatsNode = Node::create();
 	this->dialogueBox = PlatformerDialogueBox::create();
-	this->playerPartyStatsBars = std::vector<StatsBars*>();
-	this->enemyPartyStatsBars = std::vector<StatsBars*>();
 
 	this->addChild(this->playerPartyStatsNode);
 	this->addChild(this->enemyPartyStatsNode);

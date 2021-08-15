@@ -26,5 +26,5 @@ private:
 
 	std::map<std::string, std::function<Item*()>> deserializers;
 
-	static PlatformerItemDeserializer* instance;
+	static PlatformerItemDeserializer* Instance;
 };

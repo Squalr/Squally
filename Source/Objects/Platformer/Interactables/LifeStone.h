@@ -33,9 +33,8 @@ private:
 
 	void runHealAnimation(bool reRun = false);
 
-	cocos2d::Sprite* lifeStone;
-	SmartAnimationSequenceNode* healAnimation;
-	WorldSound* healSound;
-	
-	bool isAnimating;
+	cocos2d::Sprite* lifeStone = nullptr;
+	SmartAnimationSequenceNode* healAnimation = nullptr;
+	WorldSound* healSound = nullptr;
+	bool isAnimating = false;
 };

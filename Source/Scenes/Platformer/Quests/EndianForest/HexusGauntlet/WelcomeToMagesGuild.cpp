@@ -35,8 +35,6 @@ WelcomeToMagesGuild* WelcomeToMagesGuild::create(GameObject* owner, QuestLine* q
 
 WelcomeToMagesGuild::WelcomeToMagesGuild(GameObject* owner, QuestLine* questLine) : super(owner, questLine, WelcomeToMagesGuild::MapKeyQuest, false)
 {
-	this->squally = nullptr;
-	this->marcel = nullptr;
 }
 
 WelcomeToMagesGuild::~WelcomeToMagesGuild()

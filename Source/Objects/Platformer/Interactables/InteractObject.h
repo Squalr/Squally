@@ -72,17 +72,17 @@ protected:
 	virtual void onEndCollision();
 
 	// This exists to allow for adding objects that render below the interact collision for hitbox debugging
-	cocos2d::Node* contentNode;
-	InteractType interactType;
-	CollisionObject* interactCollision;
+	cocos2d::Node* contentNode = nullptr;
+	InteractType interactType = InteractType::None;
+	CollisionObject* interactCollision = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 
-	bool isLocked;
-	bool isUnlockable;
-	bool disabled;
-	bool canInteract;
-	bool wasTripped;
+	bool isLocked = false;
+	bool isUnlockable = false;
+	bool disabled = false;
+	bool canInteract = false;
+	bool wasTripped = false;
 
 private:
 	typedef HackableObject super;
@@ -91,16 +91,16 @@ private:
 	std::string inputToString(cocos2d::InputEvents::KeyCode input);
 
 	cocos2d::InputEvents::KeyCode input;
-	LocalizedString* interactKeyStr;
-	ConstantString* unlockKeyStr;
+	LocalizedString* interactKeyStr = nullptr;
+	ConstantString* unlockKeyStr = nullptr;
 	
-	LazyNode<InteractMenu>* interactMenu;
-	LazyNode<InteractMenu>* lockedMenu;
-	LazyNode<InteractMenu>* unlockMenu;
+	LazyNode<InteractMenu>* interactMenu = nullptr;
+	LazyNode<InteractMenu>* lockedMenu = nullptr;
+	LazyNode<InteractMenu>* unlockMenu = nullptr;
 
-	ClickableNode* lockButton;
-	ClickableNode* unlockButton;
+	ClickableNode* lockButton = nullptr;
+	ClickableNode* unlockButton = nullptr;
 	
-	std::function<bool()> interactCallback;
-	std::function<bool()> unlockCallback;
+	std::function<bool()> interactCallback = nullptr;
+	std::function<bool()> unlockCallback = nullptr;
 };

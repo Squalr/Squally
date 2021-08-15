@@ -24,7 +24,7 @@ protected:
 private:
 	typedef GameObject super;
 
-	CollisionObject* collision;
-	cocos2d::Sprite* cartStop;
-	WorldSound* colideSound;
+	CollisionObject* collision = nullptr;
+	cocos2d::Sprite* cartStop = nullptr;
+	WorldSound* colideSound = nullptr;
 };

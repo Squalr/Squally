@@ -33,6 +33,6 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 	
-	WorldSound* castSound;
+	WorldSound* castSound = nullptr;
 	std::string arrowResource;
 };

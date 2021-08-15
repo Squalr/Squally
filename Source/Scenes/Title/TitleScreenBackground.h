@@ -32,25 +32,25 @@ private:
 	
 	void runEyeBlinkLoop();
 
-	SmartAnimationNode* squally;
-	SmartAnimationSequenceNode* leftEyeController;
-	SmartAnimationSequenceNode* rightEyeController;
-	AnimationPart* mainhand;
-	SmartAnimationSequenceNode* slime;
-	cocos2d::Sprite* background;
-	FloatingSprite* backgroundVines;
-	FloatingSprite* backgroundTrees;
-	FloatingSprite* midgroundTrees;
-	cocos2d::Sprite* tree;
-	SmartAnimationSequenceNode* eyes1;
-	SmartAnimationSequenceNode* eyes2;
-	FloatingSprite* foregroundVines;
-	InfiniteScrollSprite* fog;
-	InfiniteScrollSprite* foregroundFog;
-	FloatingSprite* foregroundGrassBottom;
-	FloatingSprite* foregroundGrassTop;
-	cocos2d::Sprite* foregroundLight;
+	SmartAnimationNode* squally = nullptr;
+	SmartAnimationSequenceNode* leftEyeController = nullptr;
+	SmartAnimationSequenceNode* rightEyeController = nullptr;
+	AnimationPart* mainhand = nullptr;
+	SmartAnimationSequenceNode* slime = nullptr;
+	cocos2d::Sprite* background = nullptr;
+	FloatingSprite* backgroundVines = nullptr;
+	FloatingSprite* backgroundTrees = nullptr;
+	FloatingSprite* midgroundTrees = nullptr;
+	cocos2d::Sprite* tree = nullptr;
+	SmartAnimationSequenceNode* eyes1 = nullptr;
+	SmartAnimationSequenceNode* eyes2 = nullptr;
+	FloatingSprite* foregroundVines = nullptr;
+	InfiniteScrollSprite* fog = nullptr;
+	InfiniteScrollSprite* foregroundFog = nullptr;
+	FloatingSprite* foregroundGrassBottom = nullptr;
+	FloatingSprite* foregroundGrassTop = nullptr;
+	cocos2d::Sprite* foregroundLight = nullptr;
 
-	SmartParticles* windParticles;
-	SmartParticles* fireflyParticles;
+	SmartParticles* windParticles = nullptr;
+	SmartParticles* fireflyParticles = nullptr;
 };

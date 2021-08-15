@@ -24,5 +24,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* previewAsteroid;
+	cocos2d::Sprite* previewAsteroid = nullptr;
 };

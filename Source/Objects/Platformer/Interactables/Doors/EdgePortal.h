@@ -29,7 +29,7 @@ private:
 
 	std::string direction;
 	std::vector<cocos2d::Sprite*> edgeArrows;
-	CollisionObject* arrowHintCollision;
+	CollisionObject* arrowHintCollision = nullptr;
 
 	static const int ArrowCount;
 	static const std::string PropertyDirection;

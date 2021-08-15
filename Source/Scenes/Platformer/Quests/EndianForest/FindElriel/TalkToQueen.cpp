@@ -39,10 +39,6 @@ TalkToQueen* TalkToQueen::create(GameObject* owner, QuestLine* questLine)
 
 TalkToQueen::TalkToQueen(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToQueen::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->queenLiana = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 TalkToQueen::~TalkToQueen()

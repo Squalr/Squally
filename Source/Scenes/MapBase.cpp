@@ -35,13 +35,9 @@ std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*> MapBase::MapCac
 
 MapBase::MapBase(bool allowHackerMode)
 {
-	this->allowHackerMode = allowHackerMode;
-	this->layerDeserializers = std::vector<LayerDeserializer*>();
-	this->canPause = false;
-
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->map = nullptr;
+	this->allowHackerMode = allowHackerMode;
 	this->mapNode = Node::create();
 	this->musicOverlay = MusicOverlay::create();
 	this->radialMenu = LazyNode<RadialMenu>::create(CC_CALLBACK_0(MapBase::buildRadialMenu, this));

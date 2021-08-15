@@ -21,7 +21,7 @@ protected:
 	cocos2d::Node* underNode = nullptr;
 	SmartAnimationNode* animationNode = nullptr;
 
-	cocos2d::Vec2 movement;
+	cocos2d::Vec2 movement = cocos2d::Vec2::ZERO;
 	
 private:
 	typedef HackableObject super;

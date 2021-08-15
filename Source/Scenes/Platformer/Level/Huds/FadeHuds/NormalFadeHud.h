@@ -24,5 +24,5 @@ private:
 
 	void buildShapes();
 
-	cocos2d::DrawNode* fadeScreen;
+	cocos2d::DrawNode* fadeScreen = nullptr;
 };

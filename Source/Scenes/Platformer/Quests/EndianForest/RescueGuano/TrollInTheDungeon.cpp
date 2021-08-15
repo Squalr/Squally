@@ -42,7 +42,6 @@ TrollInTheDungeon* TrollInTheDungeon::create(GameObject* owner, QuestLine* quest
 TrollInTheDungeon::TrollInTheDungeon(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TrollInTheDungeon::MapKeyQuest, false)
 {
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
 }
 
 TrollInTheDungeon::~TrollInTheDungeon()

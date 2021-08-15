@@ -30,12 +30,12 @@ protected:
 private:
 	typedef SmartNode super;
 
-	CurrencyInventory* inventory;
-	cocos2d::Sprite* emblem;
-	LocalizedLabel* label;
-	ConstantString* value;
+	CurrencyInventory* inventory = nullptr;
+	cocos2d::Sprite* emblem = nullptr;
+	LocalizedLabel* label = nullptr;
+	ConstantString* value = nullptr;
 
-	int cachedCurrency;
+	int cachedCurrency = 0;
 
 	static const int CacheCipher;
 };

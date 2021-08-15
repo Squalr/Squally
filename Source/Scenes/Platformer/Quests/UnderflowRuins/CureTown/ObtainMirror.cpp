@@ -45,12 +45,6 @@ ObtainMirror* ObtainMirror::create(GameObject* owner, QuestLine* questLine)
 
 ObtainMirror::ObtainMirror(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ObtainMirror::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->guanoPetrified = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->inventory = nullptr;
-	this->doBehaviorAttach = false;
 }
 
 ObtainMirror::~ObtainMirror()

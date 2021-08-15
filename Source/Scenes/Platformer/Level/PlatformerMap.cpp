@@ -106,7 +106,6 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->dismantleMenu = LazyNode<DismantleMenu>::create(CC_CALLBACK_0(PlatformerMap::buildDismantleMenu, this));
 	this->inventoryMenu = LazyNode<InventoryMenu>::create(CC_CALLBACK_0(PlatformerMap::buildInventoryMenu, this));
 	this->canPause = true;
-	this->awaitingConfirmationEnd = false;
 	this->miniMap = MiniMap::create();
 
 	this->addLayerDeserializers({

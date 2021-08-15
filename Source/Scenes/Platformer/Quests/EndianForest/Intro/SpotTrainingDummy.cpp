@@ -36,7 +36,6 @@ SpotTrainingDummy* SpotTrainingDummy::create(GameObject* owner, QuestLine* quest
 
 SpotTrainingDummy::SpotTrainingDummy(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SpotTrainingDummy::MapKeyQuest, true)
 {
-	this->scrappy = nullptr;
 }
 
 SpotTrainingDummy::~SpotTrainingDummy()

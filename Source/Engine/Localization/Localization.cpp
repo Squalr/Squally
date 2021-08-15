@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-Localization* Localization::instance = nullptr;
+Localization* Localization::Instance = nullptr;
 
 Localization* Localization::getInstance()
 {
-	if (Localization::instance == nullptr)
+	if (Localization::Instance == nullptr)
 	{
-		Localization::instance = new Localization();
+		Localization::Instance = new Localization();
 	}
 
-	return Localization::instance;
+	return Localization::Instance;
 }
 
 Localization::Localization()

@@ -27,6 +27,6 @@ private:
 
 	void runCinematicSequence();
 
-	Portal* portal;
+	Portal* portal = nullptr;
 	Squally* squally = nullptr;
 };

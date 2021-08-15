@@ -24,7 +24,7 @@ protected:
 private:
 	typedef LiftBase super;
 
-	cocos2d::Sprite* platform;
-	cocos2d::Sprite* endStop;
-	cocos2d::Sprite* startStop;
+	cocos2d::Sprite* platform = nullptr;
+	cocos2d::Sprite* endStop = nullptr;
+	cocos2d::Sprite* startStop = nullptr;
 };

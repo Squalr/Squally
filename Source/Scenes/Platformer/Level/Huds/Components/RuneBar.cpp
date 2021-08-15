@@ -34,16 +34,6 @@ RuneBar* RuneBar::create(bool isFrameOnLeft)
 
 RuneBar::RuneBar(bool isFrameOnLeft)
 {
-	this->target = nullptr;
-	this->runeBehavior = nullptr;
-	this->emptyRunes = std::vector<Sprite*>();
-	this->cooldownClips = std::vector<ClippingNode*>();
-	this->cooldownCircles = std::vector<DrawNode*>();
-	this->cooldownStencils = std::vector<DrawNode*>();
-	this->filledRunes = std::vector<Sprite*>();
-	this->smokeFx = std::vector<SmartAnimationSequenceNode*>();
-	this->smokeSound = std::vector<Sound*>();
-
 	for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
 	{
 		DrawNode* cooldownStencil = DrawNode::create();

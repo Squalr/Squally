@@ -28,7 +28,7 @@ private:
 	void runChatSequence();
 	void runChatSequencePt2();
 
-	PlatformerEntity* mage;
+	PlatformerEntity* mage = nullptr;
 	Squally* squally = nullptr;
 	
 	static const std::string TagDialoguePause;

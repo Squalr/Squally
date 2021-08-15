@@ -24,7 +24,7 @@ private:
 
 	void applyLightningStrike();
 	
-	SmartAnimationSequenceNode* spellEffect;
+	SmartAnimationSequenceNode* spellEffect = nullptr;
 	
 	static const float Duration;
 };

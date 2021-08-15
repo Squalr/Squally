@@ -19,8 +19,8 @@ struct SpriterBoneRef
 
 struct SpriterBone
 {
-	cocos2d::Vec2 position;
-	cocos2d::Vec2 scale;
+	cocos2d::Vec2 position = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 scale = cocos2d::Vec2::ZERO;
 	float angle = 0.0f;
 	float alpha = 0.0f;
 
@@ -46,9 +46,9 @@ struct SpriterObject
 {
 	int folderId = -1;
 	int fileId = -1;
-	cocos2d::Vec2 position;
-	cocos2d::Vec2 anchor;
-	cocos2d::Vec2 scale;
+	cocos2d::Vec2 position = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 anchor = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 scale = cocos2d::Vec2::ZERO;
 	float angle = 0.0f;
 	float alpha = 1.0f;
 
@@ -170,7 +170,7 @@ struct SpriterFile
 	unsigned int id = -1;
 	std::string name;
 	cocos2d::CSize size;
-	cocos2d::Vec2 anchor;
+	cocos2d::Vec2 anchor = cocos2d::Vec2::ZERO;
 
 	SpriterFile(unsigned int id, std::string name, cocos2d::CSize size, cocos2d::Vec2 anchor)
 		: id(id), name(name), size(size), anchor(anchor) { }

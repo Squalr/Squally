@@ -180,10 +180,10 @@ void Haste::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* spe
 
 NO_OPTIMIZE void Haste::applyHaste()
 {
-	static volatile float speedBonus;
-	static volatile float increment;
-	static volatile float* speedBonusPtr;
-	static volatile float* incrementPtr;
+	static volatile float speedBonus = 0.0f;
+	static volatile float increment = 0.0f;
+	static volatile float* speedBonusPtr = nullptr;
+	static volatile float* incrementPtr = nullptr;
 
 	speedBonus = 0.0f;
 	increment = Haste::DefaultSpeed;

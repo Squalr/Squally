@@ -68,9 +68,9 @@ private:
 	LanguageTab* languageTab = nullptr;
 	MemesTab* memesTab = nullptr;
 
-	Tab activeTab;
+	Tab activeTab = Tab::General;
 
-	bool useEnterFade;
+	bool useEnterFade = false;
 
 	static const cocos2d::Color3B TitleColor;
 };

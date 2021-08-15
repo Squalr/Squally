@@ -15,12 +15,12 @@ public:
 	HackablePreview* clone() override;
 
 protected:
+	StonePuzzleDoorGenericPreview();
+	virtual ~StonePuzzleDoorGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
-
-	StonePuzzleDoorGenericPreview();
-	virtual ~StonePuzzleDoorGenericPreview();
 };

@@ -25,7 +25,7 @@ protected:
 	std::vector<SmartNode*> globalNodes;
 	std::vector<GlobalScene*> globalScenes;
 
-	static GlobalDirector* instance;
+	static GlobalDirector* Instance;
 private:
 	typedef GlobalNode super;
 };

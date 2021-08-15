@@ -48,10 +48,6 @@ TalkToZeus* TalkToZeus::create(GameObject* owner, QuestLine* questLine)
 
 TalkToZeus::TalkToZeus(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToZeus::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->zeus = nullptr;
 }
 
 TalkToZeus::~TalkToZeus()

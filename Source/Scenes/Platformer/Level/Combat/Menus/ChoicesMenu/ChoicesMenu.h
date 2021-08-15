@@ -34,22 +34,22 @@ private:
 	void setSelectedEntry(TimelineEntry* selectedEntry);
 	void track(PlatformerEntity* trackTarget);
 
-	CombatEvents::MenuStateArgs::CurrentMenu previousMenu;
-	CombatEvents::MenuStateArgs::CurrentMenu currentMenu;
+	CombatEvents::MenuStateArgs::CurrentMenu previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
+	CombatEvents::MenuStateArgs::CurrentMenu currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 
-	RadialScrollMenu* choicesMenu;
-	AttackMenu* attackMenu;
-	ItemsMenu* itemsMenu;
+	RadialScrollMenu* choicesMenu = nullptr;
+	AttackMenu* attackMenu = nullptr;
+	ItemsMenu* itemsMenu = nullptr;
 
-	RadialEntry* itemsButton;
-	RadialEntry* attackButton;
-	RadialEntry* defendButton;
+	RadialEntry* itemsButton = nullptr;
+	RadialEntry* attackButton = nullptr;
+	RadialEntry* defendButton = nullptr;
 	
-	TimelineEntry* selectedEntry;
-	PlatformerEntity* trackTarget;
+	TimelineEntry* selectedEntry = nullptr;
+	PlatformerEntity* trackTarget = nullptr;
 
-	bool noItems;
-	bool noDefend;
+	bool noItems = false;
+	bool noDefend = false;
 
 	static const float Radius;
 };

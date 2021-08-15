@@ -62,9 +62,6 @@ FightGorgon* FightGorgon::create(GameObject* owner, QuestLine* questLine)
 
 FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner, questLine, FightGorgon::MapKeyQuest, false)
 {
-	this->gorgon = nullptr;
-	this->sarude = nullptr;   
-	this->ram = nullptr;
 	this->shieldImpact = SmartAnimationSequenceNode::create();
 	this->swordImpact = SmartAnimationSequenceNode::create();
 	this->knifeImpact = SmartAnimationSequenceNode::create();

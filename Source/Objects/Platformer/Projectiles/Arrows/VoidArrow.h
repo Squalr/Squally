@@ -21,5 +21,5 @@ protected:
 private:
 	typedef Projectile super;
 
-	cocos2d::Sprite* sprite;
+	cocos2d::Sprite* sprite = nullptr;
 };

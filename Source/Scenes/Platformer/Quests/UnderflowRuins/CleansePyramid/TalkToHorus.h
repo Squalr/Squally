@@ -29,8 +29,8 @@ private:
 
 	void runCinematicSequencePt1();
 
-	Guano* guano;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	Horus* horus;
+	Horus* horus = nullptr;
 };

@@ -39,8 +39,6 @@ TownArrival* TownArrival::create(GameObject* owner, QuestLine* questLine)
 
 TownArrival::TownArrival(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownArrival::MapKeyQuest, true)
 {
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 TownArrival::~TownArrival()

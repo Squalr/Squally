@@ -37,9 +37,7 @@ LockedPortal* LockedPortal::create(GameObject* owner)
 
 LockedPortal::LockedPortal(GameObject* owner) : super(owner)
 {
-	this->playerInventory = nullptr;
 	this->portal = dynamic_cast<Portal*>(owner);
-	this->requiredItemName = "";
 
 	if (this->portal == nullptr)
 	{

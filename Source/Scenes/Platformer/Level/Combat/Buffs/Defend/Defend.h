@@ -29,9 +29,8 @@ private:
 
 	void onDamageTakenOrCycle(bool isDamage);
 
-	cocos2d::Sprite* defendEffect;
-
-	int resetCount;
+	cocos2d::Sprite* defendEffect = nullptr;
+	int resetCount = 0;
 
 	static const float DamageReduction;
 };

@@ -30,12 +30,12 @@ private:
 
 	std::vector<MatrixLetter*> letters;
 
-	bool isAlive;
-	float spawnSpeed;
-	int currentLetterIndex;
-	int letterCount;
-	float elapsedDuration;
-	bool hasBuiltLetters;
+	bool isAlive = true;
+	float spawnSpeed = 0.0f;
+	int currentLetterIndex = 0;
+	int letterCount = 0;
+	float elapsedDuration = 0.0f;
+	bool hasBuiltLetters = false;
 
 	static const int MinLetterCount;
 	static const int MaxLetterCount;

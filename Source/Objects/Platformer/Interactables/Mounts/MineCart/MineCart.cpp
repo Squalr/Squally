@@ -43,13 +43,11 @@ MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.
 	this->body = Sprite::create(this->cartColor == CartColor::Brown ? ObjectResources::Interactive_MineCarts_Body1 : ObjectResources::Interactive_MineCarts_Body2);
 	this->wheelFront = Sprite::create(ObjectResources::Interactive_MineCarts_WheelFront);
 	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
-	this->isMoving = false;
 	this->bottomCollision = CollisionObject::create(
 		CollisionObject::createBox(CSize(240.0f, 48.0f)),
 		int(PlatformerCollisionType::PassThrough),
 		CollisionObject::Properties(false, false)
 	);
-	this->canMoveHack = true;
 
 	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->body);

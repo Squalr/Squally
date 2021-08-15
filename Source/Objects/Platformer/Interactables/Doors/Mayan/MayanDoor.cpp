@@ -67,8 +67,6 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, CSize(478.0f, 478
 	this->doorSound4Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism4Units);
 	this->doorSound5Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism5Units);
 	this->doorSound6Units = WorldSound::create(SoundResources::Platformer_Objects_Machines_WoodMechanism6Units);
-	this->isUnlocking = false;
-	this->registerStones = std::vector<RegisterStone*>();
 
 	this->doorContainer->addChild(this->doorFrame);
 	this->doorContainer->addChild(this->innerContainer);

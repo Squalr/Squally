@@ -45,13 +45,12 @@ LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::I
 	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal4);
-	this->isAnimating = false;
 
-	static bool runOnce = true;
+	static bool RunOnce = true;
 
-	if (runOnce)
+	if (RunOnce)
 	{
-		runOnce = false;
+		RunOnce = false;
 
 		SmartAnimationSequenceNode::PrimeCache(FXResources::Heal_Heal_0000);
 	}

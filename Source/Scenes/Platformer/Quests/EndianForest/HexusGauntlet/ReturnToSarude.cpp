@@ -45,9 +45,6 @@ ReturnToSarude* ReturnToSarude::create(GameObject* owner, QuestLine* questLine)
 
 ReturnToSarude::ReturnToSarude(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ReturnToSarude::MapKeyQuest, false)
 {
-	this->sarude = nullptr;
-	this->squally = nullptr;
-	this->portal = nullptr;
 }
 
 ReturnToSarude::~ReturnToSarude()

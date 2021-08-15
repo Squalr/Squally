@@ -32,7 +32,7 @@ private:
 
 	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
-	cocos2d::Sprite* waistRope;
+	cocos2d::Sprite* waistRope = nullptr;
 
-	bool isDetached;
+	bool isDetached = nullptr;
 };

@@ -44,20 +44,20 @@ private:
 	void discoverStones();
 	void tryUnlock();
 
-	bool isUnlocking;
+	bool isUnlocking = false;
 	std::vector<RegisterStone*> registerStones;
 	
-	cocos2d::Sprite* doorArrow;
-	cocos2d::Sprite* doorFrame;
-	cocos2d::Node* doorContainer;
-	cocos2d::Node* innerContainer;
-	cocos2d::Sprite* door;
-	WorldSound* doorSound2Units;
-	WorldSound* doorSound3Units;
-	WorldSound* doorSound4Units;
-	WorldSound* doorSound5Units;
-	WorldSound* doorSound6Units;
-	WorldSound* doorOpenSound;
+	cocos2d::Sprite* doorArrow = nullptr;
+	cocos2d::Sprite* doorFrame = nullptr;
+	cocos2d::Node* doorContainer = nullptr;
+	cocos2d::Node* innerContainer = nullptr;
+	cocos2d::Sprite* door = nullptr;
+	WorldSound* doorSound2Units = nullptr;
+	WorldSound* doorSound3Units = nullptr;
+	WorldSound* doorSound4Units = nullptr;
+	WorldSound* doorSound5Units = nullptr;
+	WorldSound* doorSound6Units = nullptr;
+	WorldSound* doorOpenSound = nullptr;
 
 	static const float DoorOpenDelta;
 	static const std::string EventMayanDoorUnlock;

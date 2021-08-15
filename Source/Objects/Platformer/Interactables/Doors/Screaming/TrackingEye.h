@@ -33,15 +33,15 @@ private:
 
 	cocos2d::Vec2 eyeVector;
 
-	TrackingEye* pairedEye;
+	TrackingEye* pairedEye = nullptr;
 
 	std::vector<cocos2d::Sprite*> eyeParts;
 	std::vector<float> leeway;
 	
-	cocos2d::Sprite* eyeBase;
-	cocos2d::Sprite* eyeInner;
-	cocos2d::Sprite* eyeRing;
-	cocos2d::Sprite* eyePupil;
+	cocos2d::Sprite* eyeBase = nullptr;
+	cocos2d::Sprite* eyeInner = nullptr;
+	cocos2d::Sprite* eyeRing = nullptr;
+	cocos2d::Sprite* eyePupil = nullptr;
 
 	Squally* squally = nullptr;
 };

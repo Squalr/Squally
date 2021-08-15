@@ -49,10 +49,6 @@ TalkToCleopatra* TalkToCleopatra::create(GameObject* owner, QuestLine* questLine
 
 TalkToCleopatra::TalkToCleopatra(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToCleopatra::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->cleopatra = nullptr;
 }
 
 TalkToCleopatra::~TalkToCleopatra()

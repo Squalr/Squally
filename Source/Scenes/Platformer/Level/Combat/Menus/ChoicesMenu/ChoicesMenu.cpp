@@ -42,15 +42,11 @@ ChoicesMenu* ChoicesMenu::create(Timeline* timelineRef)
 
 ChoicesMenu::ChoicesMenu(Timeline* timelineRef)
 {
-	this->noItems = false;
-	this->noDefend = false;
-	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
 	this->attackMenu = AttackMenu::create(timelineRef);
 	this->itemsMenu = ItemsMenu::create();
-	this->trackTarget = nullptr;
 
 	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), { }, UIResources::Menus_Icons_Dice, UIResources::Combat_ItemsCircle, [=]()
 	{

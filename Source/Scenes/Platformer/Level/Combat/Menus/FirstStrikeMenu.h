@@ -28,7 +28,7 @@ protected:
 private:
 	typedef Hud super;
 
-	cocos2d::Sprite* background;
-	LocalizedLabel* firstStrikeLabel;
-	Sound* sfx;
+	cocos2d::Sprite* background = nullptr;
+	LocalizedLabel* firstStrikeLabel = nullptr;
+	Sound* sfx = nullptr;
 };

@@ -30,9 +30,9 @@ private:
 
 	void onFrameComplete();
 
-	SmartAnimationSequenceNode* previewSpikedLog;
-	LocalizedLabel* ecxAnimationCount;
-	ConstantString* countString;
-	int currentAnimationIndex;
-	int animationLength;
+	SmartAnimationSequenceNode* previewSpikedLog = nullptr;
+	LocalizedLabel* ecxAnimationCount = nullptr;
+	ConstantString* countString = nullptr;
+	int currentAnimationIndex = -1;
+	int animationLength = 0;
 };

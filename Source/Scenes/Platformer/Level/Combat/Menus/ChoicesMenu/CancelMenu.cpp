@@ -32,9 +32,6 @@ CancelMenu* CancelMenu::create()
 CancelMenu::CancelMenu()
 {
 	this->cancelMenu = RadialScrollMenu::create(CancelMenu::Radius);
-	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
-	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
-	this->trackTarget = nullptr;
 
 	this->cancelButton = this->cancelMenu->addEntry(Strings::Menus_Cancel::create(), { }, UIResources::Menus_Icons_Cross, UIResources::Combat_AttackCircle, [=]()
 	{

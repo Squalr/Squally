@@ -23,7 +23,7 @@ protected:
 private:
 	typedef InteractObject super;
 
-	bool canPull;
-	SmartAnimationNode* lever;
-	WorldSound* leverSound;
+	bool canPull = true;
+	SmartAnimationNode* lever = nullptr;
+	WorldSound* leverSound = nullptr;
 };

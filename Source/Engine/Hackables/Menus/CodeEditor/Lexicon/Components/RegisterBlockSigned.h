@@ -101,13 +101,13 @@ private:
 
 	struct Register
 	{
-		bool initialized;
-		long long currentValue;
-		long long initialValue;
+		bool initialized = false;
+		long long currentValue = 0;
+		long long initialValue = 0;
 		std::vector<long long> initialValues;
 		std::vector<long long> currentValues;
 
-		Register() : initialized(false), currentValue(0), initialValue(0), initialValues({}), currentValues({}) { }
+		Register() { }
 		Register(long long currentValue, long long initialValue, std::vector<long long> initialValues, std::vector<long long> currentValues) :
 			initialized(true), currentValue(currentValue), initialValue(initialValue), initialValues(initialValues), currentValues(currentValues) {}
 	};
@@ -158,15 +158,15 @@ private:
 	std::vector<LocalizedLabel*> espPtrLabels;
 	std::vector<LocalizedLabel*> eipPtrLabels;
 
-	ConstantString* eaxString;
-	ConstantString* ebxString;
-	ConstantString* ecxString;
-	ConstantString* edxString;
-	ConstantString* ediString;
-	ConstantString* esiString;
-	ConstantString* ebpString;
-	ConstantString* espString;
-	ConstantString* eipString;
+	ConstantString* eaxString = nullptr;
+	ConstantString* ebxString = nullptr;
+	ConstantString* ecxString = nullptr;
+	ConstantString* edxString = nullptr;
+	ConstantString* ediString = nullptr;
+	ConstantString* esiString = nullptr;
+	ConstantString* ebpString = nullptr;
+	ConstantString* espString = nullptr;
+	ConstantString* eipString = nullptr;
 
 	Register eax;
 	Register ebx;

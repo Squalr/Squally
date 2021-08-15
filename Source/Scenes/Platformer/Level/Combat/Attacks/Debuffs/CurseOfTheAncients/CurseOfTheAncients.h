@@ -27,7 +27,7 @@ private:
 
 	void applyCurseOfTheAncients();
 	
-	SmartParticles* spellEffect;
+	SmartParticles* spellEffect = nullptr;
 	
 	static const int MaxMultiplier;
 	static const int DamageDelt;

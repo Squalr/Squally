@@ -30,8 +30,8 @@ private:
 
 	void applyGravity(float dt);
 
-	bool isFalling;
+	bool isFalling = false;
 
-	cocos2d::Sprite* sprite;
-	CollisionObject* collision;
+	cocos2d::Sprite* sprite = nullptr;
+	CollisionObject* collision = nullptr;
 };

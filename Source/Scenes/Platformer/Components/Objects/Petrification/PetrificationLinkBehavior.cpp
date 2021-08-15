@@ -37,7 +37,6 @@ PetrificationLinkBehavior::PetrificationLinkBehavior(GameObject* owner) : super(
 	this->ownerAsItem = dynamic_cast<ShopItem*>(owner);
 	this->ownerAsAlchemyLab = dynamic_cast<AlchemyLab*>(owner);
 	this->ownerAsAnvil = dynamic_cast<Anvil*>(owner);
-	this->linkedEntity = nullptr;
 	this->linkedTag = GameUtils::getKeyOrDefault(owner->properties, PetrificationLinkBehavior::PropertyLinkedTag, Value(false)).asString();
 }
 

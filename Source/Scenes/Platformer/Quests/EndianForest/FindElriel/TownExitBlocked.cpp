@@ -47,11 +47,7 @@ TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine
 
 TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownExitBlocked::MapKeyQuest, false)
 {
-	this->dialogueCooldown = 0.0f;
-	this->isEngagedInDialogue = false;
 	this->chiron = dynamic_cast<Chiron*>(owner);
-	this->bard = nullptr;
-	this->squally = nullptr;
 }
 
 TownExitBlocked::~TownExitBlocked()

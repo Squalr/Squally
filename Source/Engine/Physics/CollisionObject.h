@@ -163,9 +163,9 @@ private:
 	static std::map<CollisionType, std::vector<CollisionObject*>> CollisionObjects;
 
 	// Physics state
-	cocos2d::Vec2 gravity;
-	cocos2d::Vec2 velocity;
-	cocos2d::Vec2 acceleration;
+	cocos2d::Vec2 gravity = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 velocity = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 acceleration = cocos2d::Vec2::ZERO;
 	Properties collisionProperties;
 	float horizontalDampening = 0.0f;
 	float verticalDampening = 0.0f;

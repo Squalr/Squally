@@ -51,12 +51,8 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->emblem = Sprite::create(entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource());
 	this->overlayCircle = Sprite::create(UIResources::Combat_OverlayCircle);
 	this->skull = Sprite::create(UIResources::Combat_Skull);
-	this->targetIcons = std::vector<cocos2d::Sprite*>();
 	this->orphanedAttackCache = Node::create();
-	this->isCasting = false;
-	this->isBlocking = false;
 	this->spawnIndex = spawnIndex;
-	this->combatBehavior = nullptr;
 	
 	for (int index = 0; index < 5; index++)
 	{
@@ -66,9 +62,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 
 		this->targetIcons.push_back(target);
 	}
-
-	this->interruptBonus = 0.0f;
-	this->progress = 0.0f;
+	
 	this->circleSelected->setVisible(false);
 
 	this->addChild(this->line);

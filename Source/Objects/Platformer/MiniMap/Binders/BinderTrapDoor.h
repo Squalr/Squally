@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	TrapDoor* trapDoor;
+	TrapDoor* trapDoor = nullptr;
 };

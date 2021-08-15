@@ -25,5 +25,5 @@ private:
 
 	void buildBlackout();
 
-	cocos2d::DrawNode* blackout;
+	cocos2d::DrawNode* blackout = nullptr;
 };

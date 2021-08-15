@@ -44,9 +44,6 @@ ArriveInAthens* ArriveInAthens::create(GameObject* owner, QuestLine* questLine)
 
 ArriveInAthens::ArriveInAthens(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ArriveInAthens::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 ArriveInAthens::~ArriveInAthens()

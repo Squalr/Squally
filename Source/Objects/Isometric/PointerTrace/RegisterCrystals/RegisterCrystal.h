@@ -36,7 +36,7 @@ protected:
 
 	cocos2d::Node* crystalContainerNode = nullptr;
 	cocos2d::Node* crystalNode = nullptr;
-	LocalizedString* assemblyString;
+	LocalizedString* assemblyString = nullptr;
 
 private:
 	typedef GridObject super;

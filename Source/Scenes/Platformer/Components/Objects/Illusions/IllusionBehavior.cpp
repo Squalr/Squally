@@ -30,7 +30,6 @@ IllusionBehavior::IllusionBehavior(GameObject* owner) : super(owner)
 {
 	this->portal = dynamic_cast<Portal*>(owner);
 	this->object = owner;
-	this->group = "";
 
 	if (this->object == nullptr)
 	{

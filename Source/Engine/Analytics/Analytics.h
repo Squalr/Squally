@@ -23,6 +23,6 @@ private:
 
 	static bool areAnalyticsEnabled();
 
-	static Analytics* instance;
-	static const std::string trackingCode;
+	static Analytics* Instance;
+	static const std::string TrackingCode;
 };

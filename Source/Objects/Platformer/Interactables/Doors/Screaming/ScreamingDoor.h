@@ -27,8 +27,7 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* screamingDoor;
-
-	TrackingEye* leftEye;
-	TrackingEye* rightEye;
+	cocos2d::Sprite* screamingDoor = nullptr;
+	TrackingEye* leftEye = nullptr;
+	TrackingEye* rightEye = nullptr;
 };

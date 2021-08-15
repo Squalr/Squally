@@ -48,21 +48,12 @@ MiniMap* MiniMap::create()
 MiniMap::MiniMap()
 {
 	this->contentNode = Node::create();
-	this->layerDeserializers = std::vector<LayerDeserializer*>();
 	this->rootNode = Node::create();
 	this->mapNode = Node::create();
 	this->contentNode = Node::create();
 	this->mapClip = SmartClippingNode::create(this->mapNode, MiniMap::MiniMapSize);
-	this->map = nullptr;
-	this->mapResource = "";
-	this->squally = nullptr;
-	this->miniMapTerrainObjects = std::map<MiniMapTerrainObject*, float>();
-	this->miniMapObjects = std::map<MiniMapObject*, float>();
 	this->background = DrawNode::create();
-	this->squallyMarker = nullptr;
-	this->squallyInventory = nullptr;
 	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
-	this->isShown = false;
 
 	this->background->drawSolidRect(-Vec2(MiniMap::MiniMapSize) / 2.0f, Vec2(MiniMap::MiniMapSize) / 2.0f, Color4F(0, 0, 0, 0.5f));
 	

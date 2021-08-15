@@ -24,11 +24,10 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* linkedEntity;
-
-	ShopItem* ownerAsItem;
-	AlchemyLab* ownerAsAlchemyLab;
-	Anvil* ownerAsAnvil;
+	PlatformerEntity* linkedEntity = nullptr;
+	ShopItem* ownerAsItem = nullptr;
+	AlchemyLab* ownerAsAlchemyLab = nullptr;
+	Anvil* ownerAsAnvil = nullptr;
 	std::string linkedTag;
 
 	static const std::string PropertyLinkedTag;

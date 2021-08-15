@@ -32,8 +32,8 @@ private:
 	void runCinematicSequencePart3();
 	void runCinematicSequencePart4();
 
-	Guano* guano;
-	KingGrogg* kingGrogg;
+	Guano* guano = nullptr;
+	KingGrogg* kingGrogg = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

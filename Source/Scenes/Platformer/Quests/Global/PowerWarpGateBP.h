@@ -26,7 +26,7 @@ protected:
 private:
 	typedef QuestTask super;
 
-	Portal* portal;
-	Trigger* trigger;
-	PlatformerEntity* mage;
+	Portal* portal = nullptr;
+	Trigger* trigger = nullptr;
+	PlatformerEntity* mage = nullptr;
 };

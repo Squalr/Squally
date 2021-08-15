@@ -29,18 +29,18 @@ protected:
 
 private:
 	typedef SmartNode super;
+	
 	void giveExp();
 	void loadRewards();
 	void clearEmblems();
 	void addExpEmblem(std::string emblemResource, int gain);
 
-	Timeline* timelineRef;
-
-	cocos2d::Sprite* victoryMenu;
-	cocos2d::Node* expNode;
-	LocalizedLabel* victoryLabel;
-	LocalizedLabel* itemsFoundLabel;
-	ClickableTextNode* returnButton;
-	Sound* victorySound;
-	int emblemCount;
+	Timeline* timelineRef = nullptr;
+	cocos2d::Sprite* victoryMenu = nullptr;
+	cocos2d::Node* expNode = nullptr;
+	LocalizedLabel* victoryLabel = nullptr;
+	LocalizedLabel* itemsFoundLabel = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	Sound* victorySound = nullptr;
+	int emblemCount = 0;
 };

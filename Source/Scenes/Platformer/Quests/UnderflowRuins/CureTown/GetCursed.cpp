@@ -55,10 +55,6 @@ GetCursed* GetCursed::create(GameObject* owner, QuestLine* questLine)
 
 GetCursed::GetCursed(GameObject* owner, QuestLine* questLine) : super(owner, questLine, GetCursed::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->medusa = nullptr;
 	this->curseSfx = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 
 	this->addChild(this->curseSfx);

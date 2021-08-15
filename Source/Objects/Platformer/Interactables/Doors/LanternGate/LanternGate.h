@@ -27,6 +27,6 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* gateRight;
-	cocos2d::Sprite* gateLeft;
+	cocos2d::Sprite* gateRight = nullptr;
+	cocos2d::Sprite* gateLeft = nullptr;
 };

@@ -24,6 +24,6 @@ protected:
 private:
 	typedef GameObject super;
 
-	bool isFlipped;
-	cocos2d::Sprite* trapDoorFrame;
+	bool isFlipped = false;
+	cocos2d::Sprite* trapDoorFrame = nullptr;
 };

@@ -17,16 +17,16 @@ const std::string ConfigManager::SoundVolumeKey = "sound";
 const std::string ConfigManager::MusicVolumeKey = "music";
 const std::string ConfigManager::LanguageKey = "language";
 
-ConfigManager* ConfigManager::instance = nullptr;
+ConfigManager* ConfigManager::Instance = nullptr;
 
 ConfigManager* ConfigManager::getInstance()
 {
-	if (ConfigManager::instance == nullptr)
+	if (ConfigManager::Instance == nullptr)
 	{
-		ConfigManager::instance = new ConfigManager();
+		ConfigManager::Instance = new ConfigManager();
 	}
 
-	return ConfigManager::instance;
+	return ConfigManager::Instance;
 }
 
 ConfigManager::ConfigManager()
@@ -48,11 +48,11 @@ ConfigManager::~ConfigManager()
 
 void ConfigManager::save()
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
 	try
 	{
-		FileUtils::getInstance()->writeValueMapToFile(instance->valueMap,
+		FileUtils::getInstance()->writeValueMapToFile(Instance->valueMap,
 				FileUtils::getInstance()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 	}
 	catch (...)
@@ -82,10 +82,10 @@ void ConfigManager::setLanguage(std::string languageCode)
 
 void ConfigManager::setResolution(ResolutionSetting resolution)
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
 
-	instance->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
+	Instance->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
 
 	cocos2d::CSize resolutionSize = ConfigManager::getResolutionSize();
 
@@ -103,14 +103,14 @@ void ConfigManager::setResolution(ResolutionSetting resolution)
 
 void ConfigManager::setGraphics(GraphicsSetting graphics)
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	instance->valueMap[ConfigManager::GraphicsKey] = Value((int)graphics);
+	Instance->valueMap[ConfigManager::GraphicsKey] = Value((int)graphics);
 }
 
 void ConfigManager::setIsFullScreen(bool isFullScreen)
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
 	cocos2d::CSize resolutionSize = ConfigManager::getResolutionSize();
 
@@ -126,23 +126,23 @@ void ConfigManager::setIsFullScreen(bool isFullScreen)
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 
-	instance->valueMap[ConfigManager::FullScreenKey] = isFullScreen;
+	Instance->valueMap[ConfigManager::FullScreenKey] = isFullScreen;
 }
 
 void ConfigManager::setSoundVolume(float volume)
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	instance->valueMap[ConfigManager::SoundVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
+	Instance->valueMap[ConfigManager::SoundVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
 
 	SoundEvents::TriggerSoundVolumeUpdated();
 }
 
 void ConfigManager::setMusicVolume(float volume)
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	instance->valueMap[ConfigManager::MusicVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
+	Instance->valueMap[ConfigManager::MusicVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
 
 	SoundEvents::TriggerMusicVolumeUpdated();
 }
@@ -230,35 +230,35 @@ cocos2d::CSize ConfigManager::getResolutionSize()
 
 ConfigManager::ResolutionSetting ConfigManager::getResolution()
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	return (ResolutionSetting)GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::ResolutionKey, Value((int)ResolutionSetting::R1080x768)).asInt();
+	return (ResolutionSetting)GameUtils::getKeyOrDefault(Instance->valueMap, ConfigManager::ResolutionKey, Value((int)ResolutionSetting::R1080x768)).asInt();
 }
 
 ConfigManager::GraphicsSetting ConfigManager::getGraphics()
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	return (GraphicsSetting)GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::GraphicsKey, Value((int)GraphicsSetting::SlowHighQuality)).asInt();
+	return (GraphicsSetting)GameUtils::getKeyOrDefault(Instance->valueMap, ConfigManager::GraphicsKey, Value((int)GraphicsSetting::SlowHighQuality)).asInt();
 }
 
 bool ConfigManager::getIsFullScreen()
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	return GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::FullScreenKey, Value(false)).asBool();
+	return GameUtils::getKeyOrDefault(Instance->valueMap, ConfigManager::FullScreenKey, Value(false)).asBool();
 }
 
 float ConfigManager::getSoundVolume()
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	return GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::SoundVolumeKey, Value(0.5f)).asFloat();
+	return GameUtils::getKeyOrDefault(Instance->valueMap, ConfigManager::SoundVolumeKey, Value(0.5f)).asFloat();
 }
 
 float ConfigManager::getMusicVolume()
 {
-	ConfigManager* instance = ConfigManager::getInstance();
+	ConfigManager* Instance = ConfigManager::getInstance();
 
-	return GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::MusicVolumeKey, Value(0.5f)).asFloat();
+	return GameUtils::getKeyOrDefault(Instance->valueMap, ConfigManager::MusicVolumeKey, Value(0.5f)).asFloat();
 }

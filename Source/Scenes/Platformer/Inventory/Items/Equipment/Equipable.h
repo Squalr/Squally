@@ -9,14 +9,14 @@ class Equipable : public Item
 public:
 	struct ItemStats
 	{
-		int healthBonus;
-		int manaBonus;
-		int attackBonus;
-		int magicAttackBonus;
-		int armorBonus;
-		float speedBonus;
+		int healthBonus = 0;
+		int manaBonus = 0;
+		int attackBonus = 0;
+		int magicAttackBonus = 0;
+		int armorBonus = 0;
+		float speedBonus = 0.0f;
 
-		ItemStats() : healthBonus(0), manaBonus(0), attackBonus(0), magicAttackBonus(0), armorBonus(0), speedBonus(0.0f) { }
+		ItemStats() { }
 		ItemStats(int healthBonus, int manaBonus, int attackBonus, int magicAttackBonus, int armorBonus, float speedBonus)
 			: healthBonus(healthBonus), manaBonus(manaBonus), attackBonus(attackBonus), magicAttackBonus(magicAttackBonus), armorBonus(armorBonus), speedBonus(speedBonus) { }
 	};

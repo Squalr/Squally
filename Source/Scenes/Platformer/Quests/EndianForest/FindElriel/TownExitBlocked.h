@@ -33,14 +33,14 @@ private:
 	void attachChironBehavior();
 	void attachBardBehavior();
 
-	Bard* bard;
-	Chiron* chiron;
+	Bard* bard = nullptr;
+	Chiron* chiron = nullptr;
 	Squally* squally = nullptr;
-	CollisionObject* chironCollision;
-	Portal* townExitPortal;
+	CollisionObject* chironCollision = nullptr;
+	Portal* townExitPortal = nullptr;
 
-	bool isEngagedInDialogue;
-	float dialogueCooldown;
+	bool isEngagedInDialogue = false;
+	float dialogueCooldown = 0.0f;
 
 	static const std::string TagBlockedExit;
 };

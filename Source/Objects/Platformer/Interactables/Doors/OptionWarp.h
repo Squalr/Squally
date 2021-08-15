@@ -38,14 +38,14 @@ private:
 	void doRelayer();
 	void applyZoomOverride();
 
-	bool canChooseOption;
+	bool canChooseOption = false;
 	std::string from;
 	std::string strKey;
 	std::vector<std::string> to;
 	std::vector<std::string> toStrKeys;
-	bool warpCamera;
-	bool relayer;
-	float zoomOverride;
+	bool warpCamera = false;
+	bool relayer = false;
+	float zoomOverride = 0.0f;
 
 	static const std::string PropertyStrKey;
 	static const std::string EventWarpToPrefix;

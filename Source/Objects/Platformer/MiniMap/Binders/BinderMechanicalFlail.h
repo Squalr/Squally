@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	MechanicalFlail* mechanicalFlail;
+	MechanicalFlail* mechanicalFlail = nullptr;
 };

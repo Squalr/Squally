@@ -20,6 +20,6 @@ protected:
 private:
 	typedef Equipable super;
 
-	int minAttack;
-	int maxAttack;
+	int minAttack = 0;
+	int maxAttack = 0;
 };

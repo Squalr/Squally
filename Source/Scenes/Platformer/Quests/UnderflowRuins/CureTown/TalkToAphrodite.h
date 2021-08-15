@@ -30,8 +30,8 @@ private:
 	void runCinematicSequence();
 	void runShipmentsComplete();
 
-	Guano* guano;
-	Aphrodite* aphrodite;
+	Guano* guano = nullptr;
+	Aphrodite* aphrodite = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 

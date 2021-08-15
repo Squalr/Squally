@@ -31,8 +31,8 @@ private:
 
 	void incrementHeal();
 
-	int drainAmount;
-	SmartAnimationSequenceNode* healEffect;
-	WorldSound* impactSound;
-	WorldSound* healSound;
+	int drainAmount = 0;
+	SmartAnimationSequenceNode* healEffect = nullptr;
+	WorldSound* impactSound = nullptr;
+	WorldSound* healSound = nullptr;
 };

@@ -21,6 +21,6 @@ protected:
 private:
 	typedef Clippy super;
 
-	SmartAnimationNode* clippyAnimations;
-	LocalizedString* helpText;
+	SmartAnimationNode* clippyAnimations = nullptr;
+	LocalizedString* helpText = nullptr;
 };

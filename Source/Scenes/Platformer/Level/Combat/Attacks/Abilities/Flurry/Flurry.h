@@ -27,7 +27,7 @@ private:
 	PlatformerAttack* cloneInternal() override;
 	void setRandomHits();
 
-	int hits;
+	int hits = 0;
 
 	std::vector<WorldSound*> slashSounds;
 	std::vector<WorldSound*> hitSounds;

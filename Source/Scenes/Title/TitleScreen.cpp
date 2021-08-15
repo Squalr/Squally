@@ -30,21 +30,21 @@
 
 using namespace cocos2d;
 
-TitleScreen* TitleScreen::instance = nullptr;
+TitleScreen* TitleScreen::Instance = nullptr;
 
 TitleScreen* TitleScreen::getInstance()
 {
-	if (TitleScreen::instance == nullptr)
+	if (TitleScreen::Instance == nullptr)
 	{
-		TitleScreen::instance = new TitleScreen();
+		TitleScreen::Instance = new TitleScreen();
 
-		TitleScreen::instance->autorelease();
-		TitleScreen::instance->initializeListeners();
+		TitleScreen::Instance->autorelease();
+		TitleScreen::Instance->initializeListeners();
 
 		GlobalDirector::RegisterGlobalScene(TitleScreen::getInstance());
 	}
 
-	return TitleScreen::instance;
+	return TitleScreen::Instance;
 }
 
 TitleScreen::TitleScreen()

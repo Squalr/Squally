@@ -47,7 +47,6 @@ MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine)
 MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine) : super(owner, questLine, MeetScrappy::MapKeyQuest, true)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
-	this->squally = nullptr;
 	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_Alarmed);
 
 	this->addChild(this->droidAlarmedSound);

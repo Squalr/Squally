@@ -30,8 +30,6 @@ private:
 	typedef GameComponent super;
 
 	PlatformerEntity* entity = nullptr;
-
+	ClickableNode* clickHitbox = nullptr;
 	cocos2d::Vec3 savedWorldCoords;
-	
-	ClickableNode* clickHitbox;
 };

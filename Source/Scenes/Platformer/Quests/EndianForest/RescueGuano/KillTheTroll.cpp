@@ -34,7 +34,6 @@ KillTheTroll* KillTheTroll::create(GameObject* owner, QuestLine* questLine)
 KillTheTroll::KillTheTroll(GameObject* owner, QuestLine* questLine) : super(owner, questLine, KillTheTroll::MapKeyQuest, false)
 {
 	this->troll = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
 }
 
 KillTheTroll::~KillTheTroll()

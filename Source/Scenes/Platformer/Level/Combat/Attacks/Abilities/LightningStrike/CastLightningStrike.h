@@ -25,5 +25,5 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* lightningSound;
+	WorldSound* lightningSound = nullptr;
 };

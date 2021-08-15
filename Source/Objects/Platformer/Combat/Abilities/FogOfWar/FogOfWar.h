@@ -33,9 +33,9 @@ private:
 
 	struct Fog
 	{
-		cocos2d::Sprite* sprite;
-		float speed;
-		cocos2d::Vec3 spawnPosition;
+		cocos2d::Sprite* sprite = nullptr;
+		float speed = 0.0f;
+		cocos2d::Vec3 spawnPosition = cocos2d::Vec3::ZERO;
 
 		Fog(cocos2d::Sprite* sprite, float speed, cocos2d::Vec3 spawnPosition) : sprite(sprite), speed(speed), spawnPosition(spawnPosition) { }
 	};

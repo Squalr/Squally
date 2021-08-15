@@ -40,12 +40,10 @@ PlatformerAttack::PlatformerAttack(
 	this->abilityType = abilityType;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
-	this->damageMultiplier = 1.0f;
 	this->specialCost = specialCost;
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
 	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
-	this->owner = nullptr;
 	this->targetingType = targetingType;
 }
 

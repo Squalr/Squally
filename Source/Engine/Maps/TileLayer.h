@@ -35,7 +35,7 @@ protected:
 
 private:
 	typedef MapLayer super;
-	cocos2d::cocos_experimental::TMXLayer* tileLayer;
 
+	cocos2d::cocos_experimental::TMXLayer* tileLayer = nullptr;
 	bool objectified = false;
 };

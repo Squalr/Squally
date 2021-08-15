@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	DensityObject* densityObject;
+	DensityObject* densityObject = nullptr;
 };

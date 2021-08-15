@@ -29,7 +29,7 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 	
-	WorldSound* castSound;
+	WorldSound* castSound = nullptr;
 
 	static const float HealPercentage;
 };

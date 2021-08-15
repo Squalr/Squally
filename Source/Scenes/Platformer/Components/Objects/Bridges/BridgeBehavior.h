@@ -28,14 +28,14 @@ private:
 		Pre
 	};
 
-	GameObject* object;
+	GameObject* object = nullptr;
 	std::string group;
 	cocos2d::Vec2 originalPosition;
-	int bridgeIndex;
-	float bridgeDelta;
-	float bridgeSpeed;
-	AudioMode audioMode;
-	WorldSound* raiseSound;
+	int bridgeIndex = 0;
+	float bridgeDelta = 0.0f;
+	float bridgeSpeed = 0.0f;
+	AudioMode audioMode = AudioMode::None;
+	WorldSound* raiseSound = nullptr;
 
 	static const float DefaultDelta;
 	static const float DefaultSpeed;

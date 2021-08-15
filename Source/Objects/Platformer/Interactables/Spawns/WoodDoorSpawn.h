@@ -21,5 +21,5 @@ protected:
 private:
 	typedef PortalSpawn super;
 
-	Sound* doorSound;
+	Sound* doorSound = nullptr;
 };

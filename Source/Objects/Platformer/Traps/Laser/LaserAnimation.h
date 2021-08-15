@@ -24,10 +24,10 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* laserHeadTop;
-	cocos2d::Sprite* laserHeadBottom;
-	cocos2d::Sprite* laserWeak;
-	cocos2d::Sprite* laserStrong;
+	cocos2d::Sprite* laserHeadTop = nullptr;
+	cocos2d::Sprite* laserHeadBottom = nullptr;
+	cocos2d::Sprite* laserWeak = nullptr;
+	cocos2d::Sprite* laserStrong = nullptr;
 
-	float height;
+	float height = 0.0f;
 };

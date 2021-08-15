@@ -220,7 +220,7 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 		}
 	}
 
-	static volatile float angle;
+	static volatile float angle = 0.0f;
 
 	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / float(M_PI);
 

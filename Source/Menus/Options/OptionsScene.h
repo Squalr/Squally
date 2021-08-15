@@ -28,6 +28,6 @@ private:
 	cocos2d::Node* backgroundNode = nullptr;
 	OptionsMenu* menu = nullptr;
 
-	static OptionsScene* instance;
+	static OptionsScene* Instance;
 };
 

@@ -40,10 +40,6 @@ TalkToGrogg* TalkToGrogg::create(GameObject* owner, QuestLine* questLine)
 
 TalkToGrogg::TalkToGrogg(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToGrogg::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->kingGrogg = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 TalkToGrogg::~TalkToGrogg()

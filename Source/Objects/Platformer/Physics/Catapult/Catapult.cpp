@@ -51,8 +51,6 @@ Catapult::Catapult(ValueMap& properties) : super(properties)
 	this->catapultCollision = CollisionObject::create(CollisionObject::createBox(CSize(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, false));
 	this->ballAnimationPart = this->catapultAnimations->getAnimationPart("BALL");
 	this->launchPower = Catapult::LaunchPowerDefault;
-	this->interactionEnabled = false;
-	this->currentCooldown = 0.0f;
 
 	float height = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
 	this->catapultAnimations->setPositionY(-height / 2.0f);

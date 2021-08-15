@@ -25,7 +25,7 @@ protected:
 private:
 	typedef Recipe super;
 
-	Item* dismantleItem;
-	Recipe* dismantledItemRecipe;
+	Item* dismantleItem = nullptr;
+	Recipe* dismantledItemRecipe = nullptr;
 	std::string dismantleItemIdentifier;
 };

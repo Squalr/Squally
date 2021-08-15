@@ -39,8 +39,6 @@ BeatTutorialD* BeatTutorialD::create(GameObject* owner, QuestLine* questLine)
 BeatTutorialD::BeatTutorialD(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BeatTutorialD::MapKeyQuest, false)
 {
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
-	this->portal = nullptr;
 }
 
 BeatTutorialD::~BeatTutorialD()

@@ -17,20 +17,22 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	DartLauncherUpdateTimerPreview();
-	~DartLauncherUpdateTimerPreview();
+	virtual ~DartLauncherUpdateTimerPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float dt) override;
 
-	bool isLaunching;
-	float launchCountDown;
+private:
+	typedef HackablePreview super;
 
-	cocos2d::Sprite* dartLauncher;
-	cocos2d::Sprite* dart;
-	ConstantFloat* eaxTimerStr;
-	LocalizedLabel* eaxTimer;
+	bool isLaunching = false;
+	float launchCountDown = 0.0f;
+
+	cocos2d::Sprite* dartLauncher = nullptr;
+	cocos2d::Sprite* dart = nullptr;
+	ConstantFloat* eaxTimerStr = nullptr;
+	LocalizedLabel* eaxTimer = nullptr;
 };

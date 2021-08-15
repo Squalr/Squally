@@ -42,7 +42,7 @@ private:
 	WorldSound* openSound = nullptr;
 	
 	std::string torchColorName;
-	Brazier::TorchColor torchColor;
+	Brazier::TorchColor torchColor = Brazier::TorchColor::Red;
 	std::string saveKey;
 	bool answer = false;
 	float delta = 0.0f;

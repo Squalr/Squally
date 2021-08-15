@@ -33,8 +33,8 @@ private:
 	
 	static volatile int currentDamageDealt;
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const int MinMultiplier;
 	static const int MaxMultiplier;

@@ -24,7 +24,6 @@ private:
 	void respawn(float delay);
 	void doRespawn();
 
-	bool isRespawning;
-
+	bool isRespawning = false;
 	Squally* squally = nullptr;
 };

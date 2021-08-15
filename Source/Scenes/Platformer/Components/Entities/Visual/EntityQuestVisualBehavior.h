@@ -32,9 +32,8 @@ private:
 	typedef GameComponent super;
 
 	PlatformerEntity* entity = nullptr;
-
-	cocos2d::Node* contentNode;
-	cocos2d::Sprite* questToGive;
-	cocos2d::Sprite* questTurnIn;
-	cocos2d::Sprite* questIncomplete;
+	cocos2d::Node* contentNode = nullptr;
+	cocos2d::Sprite* questToGive = nullptr;
+	cocos2d::Sprite* questTurnIn = nullptr;
+	cocos2d::Sprite* questIncomplete = nullptr;
 };

@@ -29,14 +29,15 @@ protected:
 
 private:
 	typedef HackableObject super;
+
 	void updateHeavenHug();
 	float getTravelHeight();
 	std::vector<cocos2d::Vec2> createSpikeCollision();
 
-	volatile float travelDistance;
-	cocos2d::Node* heavenHugContainer;
-	cocos2d::Sprite* heavenHug;
-	CollisionObject* spikeCollision;
+	volatile float travelDistance = 0.0f;
+	cocos2d::Node* heavenHugContainer = nullptr;
+	cocos2d::Sprite* heavenHug = nullptr;
+	CollisionObject* spikeCollision = nullptr;
 
 	static const float SpeedPer480Px;
 };

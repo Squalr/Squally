@@ -45,9 +45,9 @@ private:
 	int spin = 0;
 	float speed = 0.0f;
 	
-	cocos2d::Vec2 position;
-	cocos2d::Vec2 anchor;
-	cocos2d::Vec2 scale;
+	cocos2d::Vec2 position = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 anchor = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 scale = cocos2d::Vec2::ZERO;
 	float rotation = 0.0f;
 	float alpha = 0.0f;
 

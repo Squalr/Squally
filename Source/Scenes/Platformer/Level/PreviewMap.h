@@ -24,8 +24,8 @@ protected:
 private:
 	typedef GameObject super;
 
-	GameMap* map;
+	GameMap* map = nullptr;
 	std::string mapResource;
-	cocos2d::Node* mapNode;
+	cocos2d::Node* mapNode = nullptr;
 	std::vector<LayerDeserializer*> layerDeserializers;
 };

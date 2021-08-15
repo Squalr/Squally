@@ -40,16 +40,16 @@ private:
 	void doSwing();
 	void buildChain();
 
-	volatile float previousAngle;
-	volatile float targetAngle;
-	cocos2d::Sprite* joint;
-	cocos2d::Node* flailChain;
-	float flailHeight;
-	HackableData* hackableDataTargetAngle;
-	SmartParticles* smokeParticles;
-	CollisionObject* flailCollision;
+	volatile float previousAngle = 0.0f;
+	volatile float targetAngle = 0.0f;
+	cocos2d::Sprite* joint = nullptr;
+	cocos2d::Node* flailChain = nullptr;
+	float flailHeight = 0.0f;
+	HackableData* hackableDataTargetAngle = nullptr;
+	SmartParticles* smokeParticles = nullptr;
+	CollisionObject* flailCollision = nullptr;
 	
-	MechanicalFlailClippy* mechanicalFlailClippy;
+	MechanicalFlailClippy* mechanicalFlailClippy = nullptr;
 
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;

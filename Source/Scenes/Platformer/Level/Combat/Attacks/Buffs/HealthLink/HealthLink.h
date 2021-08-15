@@ -26,9 +26,9 @@ private:
 
 	void applyHealthLink();
 	
-	static volatile int healthLinkDamage;
+	SmartParticles* spellEffect = nullptr;
 	
-	SmartParticles* spellEffect;
+	static volatile int healthLinkDamage;
 	
 	static const int MinHealthLink;
 	static const int MaxMultiplier;

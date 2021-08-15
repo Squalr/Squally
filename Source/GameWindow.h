@@ -44,7 +44,8 @@ public:
 
 private:
 	typedef cocos2d::Application super;
-	GlobalNode* gameWindowTitleContainer;
-	LocalizedString* gameWindowTitle;
-	cocos2d::GLViewImpl* glView;
+
+	GlobalNode* gameWindowTitleContainer = nullptr;
+	LocalizedString* gameWindowTitle = nullptr;
+	cocos2d::GLViewImpl* glView = nullptr;
 };

@@ -55,7 +55,6 @@ RewardsMenu::RewardsMenu(Timeline* timelineRef)
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
 	this->expNode = Node::create();
 	this->victorySound = Sound::create(SoundResources::Platformer_Combat_Victory);
-	this->emblemCount = 0;
 	this->timelineRef = timelineRef;
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());

@@ -11,7 +11,6 @@ using namespace cocos2d;
 
 Consumable::Consumable(CurrencyInventory* cost, ItemMeta itemMeta, bool outOfCombatUseAllowed) : super(cost, itemMeta)
 {
-	this->associatedAttack = nullptr;
 	this->outOfCombatUseAllowed = outOfCombatUseAllowed;
 }
 

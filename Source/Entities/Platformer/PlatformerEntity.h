@@ -71,9 +71,9 @@ protected:
 
 	std::string state;
 
-	cocos2d::Node* floatNode;
-	cocos2d::Node* belowAnimationNode;
-	SmartAnimationNode* animationNode;
+	cocos2d::Node* floatNode = nullptr;
+	cocos2d::Node* belowAnimationNode = nullptr;
+	SmartAnimationNode* animationNode = nullptr;
 
 	static const std::string PropertyState;
 
@@ -82,14 +82,14 @@ private:
 
 	void optimizationHideOffscreenEntity();
 	
-	float entityScale;
+	float entityScale = 1.0f;
 	cocos2d::Vec2 entityCollisionOffset;
 	cocos2d::CSize entitySize;
-	float hoverHeight;
+	float hoverHeight = 0.0f;
 	std::string entityName;
 	std::string animationResource;
 	std::string emblemResource;
 	cocos2d::Vec2 hackButtonOffset;
 	std::string battleBehavior;
-	PlatformerEntityDeserializer* platformerEntityDeserializer;
+	PlatformerEntityDeserializer* platformerEntityDeserializer = nullptr;
 };

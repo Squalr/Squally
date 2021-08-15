@@ -34,8 +34,8 @@ private:
 	void parseFill();
 	cocos2d::Node* buildCart(bool withFill);
 
-	CartColor cartColor;
-	Fill cartFill;
+	CartColor cartColor = CartColor::Brown;
+	Fill cartFill = Fill::None;
 
 	static const std::string PropertyFill;
 	static const std::string PropertyColor;

@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	LogicGate* logicGate;
+	LogicGate* logicGate = nullptr;
 };

@@ -34,10 +34,10 @@ private:
 
 	void tryDisplayHint();
 	
-	bool isInactive;
+	bool isInactive = false;
 
-	cocos2d::Sprite* totem;
-	cocos2d::Sprite* totemInactive;
-	SpeechBubble* speechBubble;
-	LocalizedString* hint;
+	cocos2d::Sprite* totem = nullptr;
+	cocos2d::Sprite* totemInactive = nullptr;
+	SpeechBubble* speechBubble = nullptr;
+	LocalizedString* hint = nullptr;
 };

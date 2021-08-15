@@ -68,5 +68,5 @@ private:
 
 	Tab activeTab = Tab::Home;
 
-	static TutorialSelectMenu* instance;
+	static TutorialSelectMenu* Instance;
 };

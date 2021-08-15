@@ -68,25 +68,25 @@ private:
 	DismantleMenu* buildDismantleMenu();
 	PlatformerPauseMenu* buildPlatformerPauseMenu();
 
-	bool awaitingConfirmationEnd;
+	bool awaitingConfirmationEnd = false;
 
-	GameHud* gameHud;
-	ConfirmationHud* confirmationHud;
-	NotificationHud* notificationHud;
-	LazyNode<Cipher>* cipher;
-	LazyNode<Hexus>* hexus;
-	LazyNode<HelpMenu>* cardHelpMenu;
-	LazyNode<CollectablesMenu>* collectablesMenu;
-	LazyNode<ItemInfoMenu>* itemInfoMenu;
-	LazyNode<CardsMenu>* cardsMenu;
-	LazyNode<PartyMenu>* partyMenu;
-	LazyNode<InventoryMenu>* inventoryMenu;
-	LazyNode<AlchemyMenu>* alchemyMenu;
-	LazyNode<BlacksmithingMenu>* blacksmithingMenu;
-	LazyNode<DismantleMenu>* dismantleMenu;
-	FadeHud* fadeHud;
-	LazyNode<PlatformerPauseMenu>* platformerPauseMenu;
-	MiniMap* miniMap;
+	GameHud* gameHud = nullptr;
+	ConfirmationHud* confirmationHud = nullptr;
+	NotificationHud* notificationHud = nullptr;
+	LazyNode<Cipher>* cipher = nullptr;
+	LazyNode<Hexus>* hexus = nullptr;
+	LazyNode<HelpMenu>* cardHelpMenu = nullptr;
+	LazyNode<CollectablesMenu>* collectablesMenu = nullptr;
+	LazyNode<ItemInfoMenu>* itemInfoMenu = nullptr;
+	LazyNode<CardsMenu>* cardsMenu = nullptr;
+	LazyNode<PartyMenu>* partyMenu = nullptr;
+	LazyNode<InventoryMenu>* inventoryMenu = nullptr;
+	LazyNode<AlchemyMenu>* alchemyMenu = nullptr;
+	LazyNode<BlacksmithingMenu>* blacksmithingMenu = nullptr;
+	LazyNode<DismantleMenu>* dismantleMenu = nullptr;
+	FadeHud* fadeHud = nullptr;
+	LazyNode<PlatformerPauseMenu>* platformerPauseMenu = nullptr;
+	MiniMap* miniMap = nullptr;
 
 	std::string transition;
 };

@@ -25,5 +25,5 @@ protected:
 private:
 	typedef GameObject super;
 
-	CollisionObject* triggerCollision;
+	CollisionObject* triggerCollision = nullptr;
 };

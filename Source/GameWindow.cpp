@@ -27,7 +27,6 @@ GameWindow::GameWindow()
 {
 	this->gameWindowTitleContainer = GlobalNode::create();
 	this->gameWindowTitle = Strings::Common_Squally::create();
-	this->glView = nullptr;
 
 	// Listen for locale change events and update the window title
 	this->gameWindowTitle->setOnStringUpdateCallback([=]()

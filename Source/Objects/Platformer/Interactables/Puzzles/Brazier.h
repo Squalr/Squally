@@ -47,15 +47,15 @@ private:
 	void startFx();
 	void stopFx();
 
-	cocos2d::Sprite* torch;
-	cocos2d::Sprite* glow;
-	SmartAnimationSequenceNode* fire;
-	WorldSound* burnSound;
-	WorldSound* onSound;
-	WorldSound* offSound;
-	WorldSound* interactSound;
+	cocos2d::Sprite* torch = nullptr;
+	cocos2d::Sprite* glow = nullptr;
+	SmartAnimationSequenceNode* fire = nullptr;
+	WorldSound* burnSound = nullptr;
+	WorldSound* onSound = nullptr;
+	WorldSound* offSound = nullptr;
+	WorldSound* interactSound = nullptr;
 
-	TorchColor torchColor;
+	TorchColor torchColor = TorchColor::Red;
 	std::string torchColorName;
 	std::string operationName;
 };

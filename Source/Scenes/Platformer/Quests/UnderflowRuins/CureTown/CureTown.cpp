@@ -51,10 +51,6 @@ CureTown* CureTown::create(GameObject* owner, QuestLine* questLine)
 
 CureTown::CureTown(GameObject* owner, QuestLine* questLine) : super(owner, questLine, CureTown::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->hera = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 CureTown::~CureTown()

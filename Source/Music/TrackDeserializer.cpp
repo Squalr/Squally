@@ -11,18 +11,18 @@
 
 using namespace cocos2d;
 
-TrackDeserializer* TrackDeserializer::instance = nullptr;
+TrackDeserializer* TrackDeserializer::Instance = nullptr;
 
 TrackDeserializer* TrackDeserializer::getInstance()
 {
-	if (TrackDeserializer::instance == nullptr)
+	if (TrackDeserializer::Instance == nullptr)
 	{
-		TrackDeserializer::instance = new TrackDeserializer();
+		TrackDeserializer::Instance = new TrackDeserializer();
 
-		instance->autorelease();
+		Instance->autorelease();
 	}
 
-	return TrackDeserializer::instance;
+	return TrackDeserializer::Instance;
 }
 
 void TrackDeserializer::RegisterGlobalNode()

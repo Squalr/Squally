@@ -34,21 +34,21 @@
 
 using namespace cocos2d;
 
-TutorialSelectMenu* TutorialSelectMenu::instance = nullptr;
+TutorialSelectMenu* TutorialSelectMenu::Instance = nullptr;
 
 TutorialSelectMenu* TutorialSelectMenu::getInstance()
 {
-	if (TutorialSelectMenu::instance == nullptr)
+	if (TutorialSelectMenu::Instance == nullptr)
 	{
-		TutorialSelectMenu::instance = new TutorialSelectMenu();
+		TutorialSelectMenu::Instance = new TutorialSelectMenu();
 
-		TutorialSelectMenu::instance->autorelease();
-		TutorialSelectMenu::instance->initializeListeners();
+		TutorialSelectMenu::Instance->autorelease();
+		TutorialSelectMenu::Instance->initializeListeners();
 
 		GlobalDirector::RegisterGlobalScene(TutorialSelectMenu::getInstance());
 	}
 
-	return TutorialSelectMenu::instance;
+	return TutorialSelectMenu::Instance;
 }
 
 TutorialSelectMenu::TutorialSelectMenu()

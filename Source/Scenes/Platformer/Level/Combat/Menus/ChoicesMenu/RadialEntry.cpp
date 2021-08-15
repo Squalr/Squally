@@ -48,8 +48,6 @@ RadialEntry* RadialEntry::create(
 RadialEntry::RadialEntry(ClickableTextNode* entry) : super()
 {
 	this->entry = entry;
-	this->iconResource = "";
-	this->allowInteractionEdits = true;
 
 	this->addChild(this->entry);
 }

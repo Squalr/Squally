@@ -28,19 +28,18 @@ protected:
 	virtual float getPadding();
 	virtual cocos2d::Vec2 getRailsOffset();
 
-	float width;
-	float height;
-	MovementDirection movementDirection;
-	cocos2d::Node* railingNode;
-	cocos2d::Node* liftNode;
-	CollisionObject* liftCollision;
+	float width = 0.0f;
+	float height = 0.0f;
+	MovementDirection movementDirection = MovementDirection::UpDown;
+	cocos2d::Node* railingNode = nullptr;
+	cocos2d::Node* liftNode = nullptr;
+	CollisionObject* liftCollision = nullptr;
 
 private:
 	typedef GameObject super;
 
-	float speedPer256px;
-
-	cocos2d::Sprite* railing;
+	float speedPer256px = 0.0f;
+	cocos2d::Sprite* railing = nullptr;
 
 	static const std::string PropertySpeed;
 };

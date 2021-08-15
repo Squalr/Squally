@@ -20,6 +20,6 @@ protected:
 
 private:
 
-	static CardList* instance;
+	static CardList* Instance;
 };
 

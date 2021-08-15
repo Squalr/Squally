@@ -27,7 +27,6 @@ CurrencyDisplay::CurrencyDisplay()
 	this->emblem = Sprite::create(ItemResources::Collectables_Currency_IOU);
 	this->value = ConstantString::create("0");
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->value);
-	this->inventory = nullptr;
 
 	this->emblem->setScale(0.4f);
 	this->label->setAnchorPoint(Vec2(0.0f, 0.5f));

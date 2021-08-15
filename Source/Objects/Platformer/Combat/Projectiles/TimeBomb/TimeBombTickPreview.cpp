@@ -32,7 +32,6 @@ TimeBombTickPreview::TimeBombTickPreview()
 	this->tickStr = ConstantString::create(std::to_string(this->currentTick));
 	this->tick = this->createRegisterEqualsValueLabel(HackableCode::Register::zcx, false, this->tickStr);
 	this->explosionAnim = SmartAnimationSequenceNode::create();
-	this->elapsed = 0.0f;
 
 	this->previewNode->addChild(this->timeBomb);
 	this->previewNode->addChild(this->explosionAnim);

@@ -42,16 +42,16 @@ private:
 	void goBack();
 
 	std::vector<RadialEntry*> buttons;
-	cocos2d::Sprite* arrow;
-	cocos2d::Node* buttonsNode;
-	Sound* indexChangeSound;
-	Sound* errorSound;
-	float radius;
-	float angleDelta;
+	cocos2d::Sprite* arrow = nullptr;
+	cocos2d::Node* buttonsNode = nullptr;
+	Sound* indexChangeSound = nullptr;
+	Sound* errorSound = nullptr;
+	float radius = 0.0f;
+	float angleDelta = 0.0f;
 
-	int currentIndex;
-	bool focused;
-	bool isTimelineCinematicPaused;
+	int currentIndex = 0;
+	bool focused = true;
+	bool isTimelineCinematicPaused = false;
 	
-	std::function<void()> backCallback;
+	std::function<void()> backCallback = nullptr;
 };

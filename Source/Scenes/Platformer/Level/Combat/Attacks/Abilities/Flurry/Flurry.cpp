@@ -36,8 +36,6 @@ Flurry* Flurry::create(float attackDuration, float recoverDuration, Priority pri
 Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, AbilityType::Physical, 2, 3, 0, attackDuration, recoverDuration)
 {
-	this->slashSounds = std::vector<WorldSound*>();
-	this->hitSounds = std::vector<WorldSound*>();
 	this->hits = Flurry::LowerBoundHits;
 
 	for (int index = 0; index < Flurry::MaxHits; index++)

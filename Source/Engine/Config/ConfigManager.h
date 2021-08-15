@@ -54,7 +54,7 @@ private:
 
 	cocos2d::ValueMap valueMap;
 
-	static ConfigManager* instance;
+	static ConfigManager* Instance;
 
 	static const std::string ConfigFile;
 	static const std::string ResolutionKey;

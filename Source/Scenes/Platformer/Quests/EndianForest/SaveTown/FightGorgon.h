@@ -40,20 +40,20 @@ private:
 	void flickerOutForceField();
 	void runGorgonLoop();
 
-	Sarude* sarude;
-	Gorgon* gorgon;
-	Ram* ram;
+	Sarude* sarude = nullptr;
+	Gorgon* gorgon = nullptr;
+	Ram* ram = nullptr;
 	Squally* squally = nullptr;
-	GameObject* forceField;
-	SmartAnimationSequenceNode* shieldImpact;
-	SmartAnimationSequenceNode* swordImpact;
-	SmartAnimationSequenceNode* knifeImpact;
-	WorldSound* backPeddleSound;
-	WorldSound* runSound;
-	WorldSound* reboundSoundShield;
-	WorldSound* reboundSoundShieldLite;
-	WorldSound* reboundSoundSword;
-	Sound* impactSound;
+	GameObject* forceField = nullptr;
+	SmartAnimationSequenceNode* shieldImpact = nullptr;
+	SmartAnimationSequenceNode* swordImpact = nullptr;
+	SmartAnimationSequenceNode* knifeImpact = nullptr;
+	WorldSound* backPeddleSound = nullptr;
+	WorldSound* runSound = nullptr;
+	WorldSound* reboundSoundShield = nullptr;
+	WorldSound* reboundSoundShieldLite = nullptr;
+	WorldSound* reboundSoundSword = nullptr;
+	Sound* impactSound = nullptr;
 
 	static const std::string ForceFieldTag;
 	static const std::string MarkerTagBack;

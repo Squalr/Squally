@@ -17,11 +17,13 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	MulDoorPreview();
-	~MulDoorPreview();
+	virtual ~MulDoorPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 };

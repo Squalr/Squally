@@ -30,10 +30,9 @@ private:
 
 	void discoverItem(Item* item, bool cinematicHijack);
 
-	cocos2d::Node* container;
-	cocos2d::Node* itemNode;
-	cocos2d::Sprite* glow;
-	Sound* discoverSound;
-
+	cocos2d::Node* container = nullptr;
+	cocos2d::Node* itemNode = nullptr;
+	cocos2d::Sprite* glow = nullptr;
+	Sound* discoverSound = nullptr;
 	Squally* squally = nullptr;
 };

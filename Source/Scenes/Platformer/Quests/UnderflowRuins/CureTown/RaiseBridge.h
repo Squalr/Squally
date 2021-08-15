@@ -31,8 +31,8 @@ private:
 	void runCinematicSequenceCureIncomplete();
 	void runCinematicSequencePreviousQuestIncomplete();
 
-	Ajax* ajax;
-	Guano* guano;
+	Ajax* ajax = nullptr;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 

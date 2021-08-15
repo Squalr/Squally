@@ -32,7 +32,7 @@ private:
 	void randomizeLetter(cocos2d::Sprite* target);
 	cocos2d::Sprite* buildSprite();
 
-	LazyNode<cocos2d::Sprite>* sprite;
+	LazyNode<cocos2d::Sprite>* sprite = nullptr;
 
 	static const cocos2d::Color3B LetterColor;
 	static const cocos2d::Color3B SpawnColor;

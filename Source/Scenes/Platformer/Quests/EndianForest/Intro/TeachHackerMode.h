@@ -28,7 +28,7 @@ private:
 
 	void runCinematicSequencePt1();
 
-	HelpTotem* helpTotem;
+	HelpTotem* helpTotem = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	

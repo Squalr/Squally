@@ -33,7 +33,6 @@ PowerWarpGateUR::PowerWarpGateUR(GameObject* owner, QuestLine* questLine) : supe
 	this->portal = dynamic_cast<Portal*>(owner);
 	this->trigger = dynamic_cast<Trigger*>(owner);
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
 }
 
 PowerWarpGateUR::~PowerWarpGateUR()

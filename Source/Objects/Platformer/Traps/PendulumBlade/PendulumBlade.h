@@ -39,13 +39,13 @@ private:
 	void buildChain();
 	std::vector<cocos2d::Vec2> createBladeCollision();
 
-	volatile float previousAngle;
-	volatile float targetAngle;
-	cocos2d::Sprite* neck;
-	cocos2d::Node* bladeChain;
-	float chainHeight;
-	HackableData* hackableDataTargetAngle;
-	CollisionObject* bladeCollision;
+	volatile float previousAngle = 0.0f;
+	volatile float targetAngle = 0.0f;
+	cocos2d::Sprite* neck = nullptr;
+	cocos2d::Node* bladeChain = nullptr;
+	float chainHeight = 0.0f;
+	HackableData* hackableDataTargetAngle = nullptr;
+	CollisionObject* bladeCollision = nullptr;
 	
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;

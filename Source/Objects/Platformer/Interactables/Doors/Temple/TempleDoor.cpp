@@ -33,8 +33,6 @@ TempleDoor* TempleDoor::create(ValueMap& properties)
 TempleDoor::TempleDoor(ValueMap& properties) : super(properties, CSize(192.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
 	this->topCollision = CollisionObject::create(CollisionObject::createBox(CSize(420.0f, 64.0f)), (CollisionType)PlatformerCollisionType::PassThrough, CollisionObject::Properties(false, false));
-	this->emblem = nullptr;
-	this->emblemOffset = Vec2::ZERO;
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
 	std::string color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("")).asString();

@@ -24,9 +24,9 @@ protected:
 private:
 	typedef Hud super;
 	
-	cocos2d::Node* playerPartyStatsNode;
-	cocos2d::Node* enemyPartyStatsNode;
-	PlatformerDialogueBox* dialogueBox;
+	cocos2d::Node* playerPartyStatsNode = nullptr;
+	cocos2d::Node* enemyPartyStatsNode = nullptr;
+	PlatformerDialogueBox* dialogueBox = nullptr;
 
 	std::vector<StatsBars*> playerPartyStatsBars;
 	std::vector<StatsBars*> enemyPartyStatsBars;

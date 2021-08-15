@@ -50,7 +50,6 @@ Warp::Warp(ValueMap& properties) : super(
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
 	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
 	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
-	this->cooldown = 0.0f;
 
 	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);

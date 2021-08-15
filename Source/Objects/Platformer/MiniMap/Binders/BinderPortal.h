@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MiniMapObjectBinder super;
 
-	Portal* portal;
+	Portal* portal = nullptr;
 };

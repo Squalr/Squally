@@ -43,8 +43,6 @@ DefeatOsiris* DefeatOsiris::create(GameObject* owner, QuestLine* questLine)
 
 DefeatOsiris::DefeatOsiris(GameObject* owner, QuestLine* questLine) : super(owner, questLine, DefeatOsiris::MapKeyQuest, false)
 {
-	this->osiris = nullptr;
-	this->squally = nullptr;
 	this->rumbleSound = WorldSound::create(SoundResources::Platformer_FX_Rumbles_StoneRumbleAndRumble1);
 
 	this->addChild(this->rumbleSound);

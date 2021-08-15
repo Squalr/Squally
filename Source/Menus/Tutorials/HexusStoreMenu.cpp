@@ -42,21 +42,21 @@ const int HexusStoreMenu::DefaultGold = 1000;
 
 using namespace cocos2d;
 
-HexusStoreMenu* HexusStoreMenu::instance;
+HexusStoreMenu* HexusStoreMenu::Instance;
 
 HexusStoreMenu* HexusStoreMenu::getInstance()
 {
-	if (HexusStoreMenu::instance == nullptr)
+	if (HexusStoreMenu::Instance == nullptr)
 	{
-		HexusStoreMenu::instance = new HexusStoreMenu();
+		HexusStoreMenu::Instance = new HexusStoreMenu();
 
-		HexusStoreMenu::instance->autorelease();
-		HexusStoreMenu::instance->initializeListeners();
+		HexusStoreMenu::Instance->autorelease();
+		HexusStoreMenu::Instance->initializeListeners();
 
 		GlobalDirector::RegisterGlobalScene(HexusStoreMenu::getInstance());
 	}
 
-	return HexusStoreMenu::instance;
+	return HexusStoreMenu::Instance;
 }
 
 HexusStoreMenu::HexusStoreMenu()

@@ -25,12 +25,10 @@ DartLauncherUpdateTimerPreview* DartLauncherUpdateTimerPreview::create()
 
 DartLauncherUpdateTimerPreview::DartLauncherUpdateTimerPreview()
 {
-	this->launchCountDown = 0.0f;
 	this->dartLauncher = Sprite::create(ObjectResources::Traps_DartLauncher_CANON);
 	this->dart = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
 	this->eaxTimerStr = ConstantFloat::create(this->launchCountDown);
 	this->eaxTimer = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, this->eaxTimerStr);
-	this->isLaunching = false;
 
 	this->eaxTimer->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->dart->setRotation(90.0f);

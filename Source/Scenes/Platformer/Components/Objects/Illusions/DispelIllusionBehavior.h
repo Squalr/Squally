@@ -26,10 +26,10 @@ private:
 
 	void onDispelActivated();
 
-	Portal* portal;
-	HackableObject* object;
+	Portal* portal = nullptr;
+	HackableObject* object = nullptr;
 	std::string group;
-	Sound* dispelSfx;
+	Sound* dispelSfx = nullptr;
 
 	static const std::string PropertyGroup;
 	static const std::string SaveKeyDispelled;

@@ -35,8 +35,7 @@ EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner) : super(owne
 	}
 
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
-	this->savedWorldCoords = Vec3::ZERO;
-
+	
 	this->clickHitbox->setContentSize(this->entity->getEntitySize());
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();

@@ -30,10 +30,7 @@ Inventory::Inventory(std::string saveKey, int capacity)
 {
 	this->saveKey = saveKey;
 	this->capacity = capacity;
-	this->items = std::vector<Item*>();
-	this->itemLookup = std::set<std::string>();
 	this->itemsNode = Node::create();
-	this->disableLookupTableRebuilding = false;
 
 	this->load();
 

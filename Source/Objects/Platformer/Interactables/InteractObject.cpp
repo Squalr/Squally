@@ -59,6 +59,7 @@ InteractObject::InteractObject(
 {
 	this->input = input;
 	this->interactType = interactType;
+	this->isLocked = !this->listenEvent.empty();
 	this->lockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
 	this->unlockButton = disableLockDebug ? nullptr : ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->contentNode = Node::create();
@@ -84,15 +85,6 @@ InteractObject::InteractObject(
 	this->unlockKeyStr->retain();
 	this->interactKeyStr->retain();
 
-	this->isLocked = !this->listenEvent.empty();
-	this->isUnlockable = false;
-	this->wasTripped = false;
-	this->canInteract = false;
-	this->disabled = false;
-	this->interactCallback = nullptr;
-	this->unlockCallback = nullptr;
-	this->squally = nullptr;
-	this->scrappy = nullptr;
 
 	this->interactCollision->setName("Interact");
 	this->interactCollision->setPosition(offset);

@@ -29,8 +29,8 @@ private:
 
 	void runCinematicSequence();
 
-	Portal* portal;
-	Trigger* trigger;
+	Portal* portal = nullptr;
+	Trigger* trigger = nullptr;
 	Squally* squally = nullptr;
-	PlatformerEntity* mage;
+	PlatformerEntity* mage = nullptr;
 };

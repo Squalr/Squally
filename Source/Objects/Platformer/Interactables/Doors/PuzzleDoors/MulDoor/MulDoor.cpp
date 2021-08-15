@@ -109,7 +109,7 @@ void MulDoor::runOperation(int puzzleIndex)
 
 NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 {
-	static volatile int transform;
+	static volatile int transform = 0;
 
 	transform = puzzleIndex;
 

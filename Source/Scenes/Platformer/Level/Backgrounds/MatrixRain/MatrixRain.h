@@ -13,10 +13,11 @@ public:
 protected:
 	MatrixRain();
 	virtual ~MatrixRain();
+	
+	void pause(void) override;
 
 private:
 	typedef Hud super;
-	void pause(void) override;
 
 	std::vector<MatrixStrand*> strands;
 

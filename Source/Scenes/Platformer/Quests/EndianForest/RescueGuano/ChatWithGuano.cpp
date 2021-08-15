@@ -42,10 +42,6 @@ ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine)
 
 ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ChatWithGuano::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->mulDoor = nullptr;
 }
 
 ChatWithGuano::~ChatWithGuano()

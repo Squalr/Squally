@@ -27,6 +27,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	cocos2d::Sprite* box;
-	CollisionObject* boxCollision;
+	cocos2d::Sprite* box = nullptr;
+	CollisionObject* boxCollision = nullptr;
 };

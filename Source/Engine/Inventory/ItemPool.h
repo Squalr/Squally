@@ -37,8 +37,8 @@ private:
 
 	struct ProbabilityData
 	{
-		ItemChance* itemChance;
-		float probability;
+		ItemChance* itemChance = nullptr;
+		float probability = 0.0f;
 
 		ProbabilityData(ItemChance* itemChance, float probability) : itemChance(itemChance), probability(probability) { }
 	};

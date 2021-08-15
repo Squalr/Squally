@@ -21,5 +21,5 @@ protected:
 private:
 	typedef HackableObject super;
 
-	SmartAnimationNode* animations;
+	SmartAnimationNode* animations = nullptr;
 };

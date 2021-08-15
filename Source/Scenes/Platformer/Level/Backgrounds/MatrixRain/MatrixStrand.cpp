@@ -32,13 +32,6 @@ MatrixStrand* MatrixStrand::create(int strandIndex)
 
 MatrixStrand::MatrixStrand(int strandIndex)
 {
-	this->letters = std::vector<MatrixLetter*>(MatrixStrand::MaxLetterCount);
-	this->letterCount = 0;
-	this->elapsedDuration = 0.0f;
-	this->currentLetterIndex = 0;
-	this->isAlive = true;
-	this->hasBuiltLetters = false;
-
 	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
 	{
 		MatrixLetter* letter = MatrixLetter::create();

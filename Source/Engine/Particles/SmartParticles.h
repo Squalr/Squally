@@ -15,7 +15,7 @@ public:
 
 	struct CullInfo
 	{
-		bool cull;
+		bool cull = false;
 		cocos2d::CSize size;
 
 		CullInfo() : cull(false), size(cocos2d::CSize::ZERO) { }

@@ -26,8 +26,8 @@ protected:
 private:
 	typedef QuestTask super;
 	
-	MagePortal* portal;
-	PlatformerEntity* mage;
+	MagePortal* portal = nullptr;
+	PlatformerEntity* mage = nullptr;
 	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;

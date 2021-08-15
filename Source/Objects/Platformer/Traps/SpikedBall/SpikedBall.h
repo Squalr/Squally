@@ -30,6 +30,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	cocos2d::Sprite* ball;
-	CollisionObject* ballCollision;
+	cocos2d::Sprite* ball = nullptr;
+	CollisionObject* ballCollision = nullptr;
 };

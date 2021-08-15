@@ -29,8 +29,8 @@ private:
 	float scrollDistance = 0.0f;
 	Hud* hud = nullptr;
 	cocos2d::Node* trackTarget = nullptr;
-	cocos2d::Vec2 source;
-	cocos2d::Vec2 dest;
+	cocos2d::Vec2 source = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 dest = cocos2d::Vec2::ZERO;
 
 	static const float ScrollSpeed;
 };

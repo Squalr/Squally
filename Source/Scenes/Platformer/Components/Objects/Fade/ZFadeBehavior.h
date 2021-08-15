@@ -20,8 +20,8 @@ protected:
 private:
 	typedef GameComponent super;
 
-	GameObject* object;
-	float multiplier;
+	GameObject* object = nullptr;
+	float multiplier = 1.0f;
 	
 	static const std::string PropertyFadeMultiplier;
 };

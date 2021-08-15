@@ -32,5 +32,5 @@ private:
 	
 	std::string filePath;
 	cocos2d::CSize objectSize;
-	LazyNode<cocos2d::Sprite>* sprite;
+	LazyNode<cocos2d::Sprite>* sprite = nullptr;
 };

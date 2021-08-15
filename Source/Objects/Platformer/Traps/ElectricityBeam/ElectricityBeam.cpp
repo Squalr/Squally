@@ -42,8 +42,6 @@ ElectricityBeam* ElectricityBeam::create(ValueMap& properties)
 ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 {
 	this->currentElectricityBeamCountDown = RandomHelper::random_real(0.0f, 3.0f);
-	this->maxElectricityBeamCountDown = 1.0f;
-	this->isRunningAnimation = false;
 	this->isVertical = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyVertical, Value(false)).asBool();
 	this->isDisabled = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisabled, Value(false)).asBool();
 	this->disableSave = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisableSave, Value(false)).asBool();

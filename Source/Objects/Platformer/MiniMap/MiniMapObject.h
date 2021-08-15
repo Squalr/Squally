@@ -19,9 +19,9 @@ public:
 	static const std::string PropertyShape;
 	static const std::string TagMiniMapObject;
 	
-	cocos2d::Node* depthVisibilityNode;
-	cocos2d::Node* rotatorNode;
-	cocos2d::DrawNode* drawNode;
+	cocos2d::Node* depthVisibilityNode = nullptr;
+	cocos2d::Node* rotatorNode = nullptr;
+	cocos2d::DrawNode* drawNode = nullptr;
 
 protected:
 	MiniMapObject(cocos2d::ValueMap& properties, cocos2d::Color4B defaultColor);
@@ -36,5 +36,5 @@ private:
 	
 	cocos2d::Color4B drawColor;
 	
-	bool isMiniMapHidden;
+	bool isMiniMapHidden = false;
 };

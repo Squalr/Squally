@@ -26,28 +26,28 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* portalEffectNode;
+	cocos2d::Node* portalEffectNode = nullptr;
 
 private:
 	typedef Portal super;
 	
 	std::tuple<cocos2d::Node*, cocos2d::Node*> createWeight(std::string weightResource);
 
-	SmartClippingNode* clippingNode;
-	cocos2d::DrawNode* background;
-	cocos2d::Sprite* clock;
-	cocos2d::Node* clippingContentNode;
-	cocos2d::Sprite* pendulum;
+	SmartClippingNode* clippingNode = nullptr;
+	cocos2d::DrawNode* background = nullptr;
+	cocos2d::Sprite* clock = nullptr;
+	cocos2d::Node* clippingContentNode = nullptr;
+	cocos2d::Sprite* pendulum = nullptr;
 	std::vector<std::tuple<cocos2d::Node*, cocos2d::Node*>> weights;
-	cocos2d::Node* handNode;
-	cocos2d::Sprite* handCenter;
-	cocos2d::Sprite* handMinutes;
-	cocos2d::Sprite* handHours;
+	cocos2d::Node* handNode = nullptr;
+	cocos2d::Sprite* handCenter = nullptr;
+	cocos2d::Sprite* handMinutes = nullptr;
+	cocos2d::Sprite* handHours = nullptr;
 
-	SmartParticles* portalParticles;
-	SmartParticles* edgeParticles;
+	SmartParticles* portalParticles = nullptr;
+	SmartParticles* edgeParticles = nullptr;
 
-	bool isHaunted;
+	bool isHaunted = false;
 	
 	static const std::string PropertyClockStyle;
 	static const std::string ClockStyleHaunted;

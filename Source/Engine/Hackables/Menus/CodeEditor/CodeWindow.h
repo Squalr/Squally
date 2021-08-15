@@ -27,7 +27,7 @@ class ScrollPane;
 	
 struct AsmToken
 {
-	LocalizedString* tokenStr;
+	LocalizedString* tokenStr = nullptr;
 	cocos2d::Color3B color;
 
 	AsmToken(LocalizedString* tokenStr, cocos2d::Color3B color) :

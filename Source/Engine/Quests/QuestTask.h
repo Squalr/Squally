@@ -40,8 +40,8 @@ protected:
 	void saveQuestSaveState(std::string key, cocos2d::Value value);
 	cocos2d::Value getQuestSaveStateOrDefault(std::string key, cocos2d::Value value);
 	
-	GameObject* owner;
-	QuestLine* questLine;
+	GameObject* owner = nullptr;
+	QuestLine* questLine = nullptr;
 
 private:
 	typedef GameObject super;

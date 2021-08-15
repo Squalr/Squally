@@ -24,7 +24,6 @@ public:
 	static int GetCurrentHackFlags();
 
 private:
-
 	static std::map<std::string, int> EssenceFlagMap;
 };
 

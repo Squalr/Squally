@@ -38,8 +38,6 @@ Laser* Laser::create(ValueMap& properties)
 Laser::Laser(ValueMap& properties) : super(properties)
 {
 	this->currentLaserCountDown = RandomHelper::random_real(0.0f, 3.0f);
-	this->maxLaserCountDown = 4.0f;
-	this->isRunningAnimation = false;
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 

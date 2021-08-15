@@ -46,7 +46,6 @@ GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(proper
 	this->itemName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyItemName, Value("")).asString();
 	this->tutorialName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyTutorial, Value("")).asString();
 	this->displayGroup = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyDisplayGroup, Value("")).asString();
-	this->item = nullptr;
 }
 
 GlassDisplayItem::~GlassDisplayItem()

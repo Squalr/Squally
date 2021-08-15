@@ -12,20 +12,20 @@
 
 using namespace cocos2d;
 
-OptionsScene* OptionsScene::instance;
+OptionsScene* OptionsScene::Instance;
 
 OptionsScene* OptionsScene::getInstance()
 {
-	if (OptionsScene::instance == nullptr)
+	if (OptionsScene::Instance == nullptr)
 	{
-		OptionsScene::instance = new OptionsScene();
+		OptionsScene::Instance = new OptionsScene();
 
-		OptionsScene::instance->autorelease();
-		OptionsScene::instance->initializeListeners();
-		GlobalDirector::RegisterGlobalScene(OptionsScene::instance);
+		OptionsScene::Instance->autorelease();
+		OptionsScene::Instance->initializeListeners();
+		GlobalDirector::RegisterGlobalScene(OptionsScene::Instance);
 	}
 
-	return OptionsScene::instance;
+	return OptionsScene::Instance;
 }
 
 OptionsScene::OptionsScene()

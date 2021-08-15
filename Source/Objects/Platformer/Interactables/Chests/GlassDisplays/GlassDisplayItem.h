@@ -30,7 +30,7 @@ private:
 	bool canTakeGroupedItem();
 
 	std::string itemName;
-	Item* item;
+	Item* item = nullptr;
 	std::string tutorialName;
 	std::string displayGroup;
 

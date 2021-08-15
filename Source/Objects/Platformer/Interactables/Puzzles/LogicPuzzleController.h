@@ -44,7 +44,7 @@ private:
 	std::map<Brazier::TorchColor, std::vector<Brazier*>> braziers;
 	std::map<Brazier::TorchColor, LogicGate*> logicGates;
 
-	Operation operation;
+	Operation operation = Operation::None;
 	std::string operationName;
 	std::string puzzleTag;
 

@@ -25,7 +25,7 @@ public:
 	DisplayType getDisplayType();
 	void setCardScale(float cardScale);
 
-	Card* activeCard;
+	Card* activeCard = nullptr;
 
 protected:
 	AutoCard(int defaultAttack);

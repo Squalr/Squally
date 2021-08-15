@@ -33,7 +33,7 @@ private:
 	void runCinematicSequencePt5();
 	void runCinematicSequencePt6();
 
-	Guano* guano;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 

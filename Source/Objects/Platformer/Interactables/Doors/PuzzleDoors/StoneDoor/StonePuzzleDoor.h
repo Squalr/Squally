@@ -25,9 +25,9 @@ protected:
 private:
 	typedef PuzzleDoorBase super;
 
-	cocos2d::Sprite* background;
-	cocos2d::Sprite* door;
-	cocos2d::Sprite* front;
+	cocos2d::Sprite* background = nullptr;
+	cocos2d::Sprite* door = nullptr;
+	cocos2d::Sprite* front = nullptr;
 
 	static const cocos2d::Vec2 Offset;
 	static const std::string PropertyColor;

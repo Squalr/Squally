@@ -10,7 +10,7 @@ class EnemyCollisionBehavior : public EntityCollisionBehaviorBase
 public:
 	static EnemyCollisionBehavior* create(GameObject* owner);
 
-	CollisionObject* entityCollision;
+	CollisionObject* entityCollision = nullptr;
 
 	static const std::string MapKey;
 

@@ -33,13 +33,8 @@ RadialScrollMenu::RadialScrollMenu(float radius, float angleDelta)
 	this->radius = radius;
 	this->buttonsNode = Node::create();
 	this->arrow = Sprite::create(UIResources::Combat_Arrow);
-	this->buttons = std::vector<RadialEntry*>();
 	this->indexChangeSound = Sound::create(SoundResources::Menus_ButtonRollover1);
 	this->errorSound = Sound::create(SoundResources::Menus_Error1);
-	this->currentIndex = 0;
-	this->focused = true;
-	this->isTimelineCinematicPaused = false;
-	this->backCallback = nullptr;
 	this->angleDelta = angleDelta;
 
 	this->addChild(this->buttonsNode);

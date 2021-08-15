@@ -34,6 +34,6 @@ private:
 
 	std::string transition;
 	std::string bannerName;
-	bool flipX;
-	float zoomOverride;
+	bool flipX = false;
+	float zoomOverride = 0.0f;
 };

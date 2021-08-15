@@ -45,8 +45,6 @@ WindSpellbook* WindSpellbook::create(GameObject* owner, QuestLine* questLine)
 
 WindSpellbook::WindSpellbook(GameObject* owner, QuestLine* questLine) : super(owner, questLine, WindSpellbook::MapKeyQuest, false)
 {
-	this->squally = nullptr;
-	this->marcel = nullptr;
 }
 
 WindSpellbook::~WindSpellbook()

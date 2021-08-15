@@ -43,12 +43,12 @@ protected:
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 
-	cocos2d::Node* rootNode;
-	cocos2d::DrawNode* background;
-	cocos2d::Node* mapNode;
-	MiniGameMap* map;
-	cocos2d::DrawNode* squallyMarker;
-	SmartClippingNode* mapClip;
+	cocos2d::Node* rootNode = nullptr;
+	cocos2d::DrawNode* background = nullptr;
+	cocos2d::Node* mapNode = nullptr;
+	MiniGameMap* map = nullptr;
+	cocos2d::DrawNode* squallyMarker = nullptr;
+	SmartClippingNode* mapClip = nullptr;
 
 	std::string mapResource;
 
@@ -61,15 +61,15 @@ private:
 	void positionEntityIcons();
 
 	Squally* squally = nullptr;
-	Inventory* squallyInventory;
-	MiniGameMap* squallyMap;
-	cocos2d::Node* contentNode;
+	Inventory* squallyInventory = nullptr;
+	MiniGameMap* squallyMap = nullptr;
+	cocos2d::Node* contentNode = nullptr;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
 	std::map<MiniMapTerrainObject*, float> miniMapTerrainObjects;
 	std::map<MiniMapObject*, float> miniMapObjects;
 	
-	bool isShown;
+	bool isShown = false;
 	std::string requiredItemKey;
 
 	static const float MiniMapScale;

@@ -43,37 +43,38 @@ protected:
 	virtual void openPauseMenu(cocos2d::Node* refocusTarget);
 	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
 
-	cocos2d::Node* hudNode;
-	Hud* hud;
-	Hud* hackerModeVisibleHud;
-	Hud* miniGameHud;
-	Hud* backMenuHud;
-	Hud* menuBackDrop;
-	Hud* hackMenuHud;
-	Hud* menuHud;
-	Hud* topMenuHud;
-	Hud* confirmationMenuHud;
-	LazyNode<OptionsMenu>* optionsMenu;
-	cocos2d::Node* mapNode;
-	GameMap* map;
+	cocos2d::Node* hudNode = nullptr;
+	Hud* hud = nullptr;
+	Hud* hackerModeVisibleHud = nullptr;
+	Hud* miniGameHud = nullptr;
+	Hud* backMenuHud = nullptr;
+	Hud* menuBackDrop = nullptr;
+	Hud* hackMenuHud = nullptr;
+	Hud* menuHud = nullptr;
+	Hud* topMenuHud = nullptr;
+	Hud* confirmationMenuHud = nullptr;
+	LazyNode<OptionsMenu>* optionsMenu = nullptr;
+	cocos2d::Node* mapNode = nullptr;
+	GameMap* map = nullptr;
 
-	bool canPause;
-	bool allowHackerMode;
+	bool canPause = false;
+	bool allowHackerMode = false;
 	std::string mapResource;
 	std::vector<std::string> mapArgs;
 
 private:
 	typedef GlobalScene super;
+
 	void toggleHackerMode(void* userData);
 	CodeHud* buildCodeHud();
 	RadialMenu* buildRadialMenu();
 	OptionsMenu* buildOptionsMenu();
 
-	Hud* hackerModeGlow;
-	MatrixRain* hackerModeRain;
-	LazyNode<CodeHud>* codeHud;
-	LazyNode<RadialMenu>* radialMenu;
-	MusicOverlay* musicOverlay;
+	Hud* hackerModeGlow = nullptr;
+	MatrixRain* hackerModeRain = nullptr;
+	LazyNode<CodeHud>* codeHud = nullptr;
+	LazyNode<RadialMenu>* radialMenu = nullptr;
+	MusicOverlay* musicOverlay = nullptr;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
 

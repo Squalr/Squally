@@ -29,20 +29,20 @@ protected:
 private:
 	typedef GlobalScene super;
 
-	TitleScreenBackground* background;
+	TitleScreenBackground* background = nullptr;
 
-	cocos2d::Sprite* ether;
-	SmartParticles* etherParticles;
+	cocos2d::Sprite* ether = nullptr;
+	SmartParticles* etherParticles = nullptr;
 
-	ClickableTextNode* storyModeButton;
-	ClickableTextNode* tutorialsButton;
-	ClickableTextNode* optionsButton;
-	ClickableTextNode* exitButton;
-	ClickableTextNode* debugButton;
-	cocos2d::Sprite* titleBar;
-	cocos2d::Sprite* title;
-	MusicOverlay* musicOverlay;
-	Track* music;
+	ClickableTextNode* storyModeButton = nullptr;
+	ClickableTextNode* tutorialsButton = nullptr;
+	ClickableTextNode* optionsButton = nullptr;
+	ClickableTextNode* exitButton = nullptr;
+	ClickableTextNode* debugButton = nullptr;
+	cocos2d::Sprite* titleBar = nullptr;
+	cocos2d::Sprite* title = nullptr;
+	MusicOverlay* musicOverlay = nullptr;
+	Track* music = nullptr;
 
-	static TitleScreen* instance;
+	static TitleScreen* Instance;
 };

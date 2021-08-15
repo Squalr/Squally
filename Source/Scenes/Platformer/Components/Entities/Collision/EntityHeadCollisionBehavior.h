@@ -12,7 +12,7 @@ public:
 
 	bool hasHeadCollisionWith(CollisionObject* collisonObject);
 	
-	CollisionObject* headCollision;
+	CollisionObject* headCollision = nullptr;
 
 	static const std::string MapKey;
 

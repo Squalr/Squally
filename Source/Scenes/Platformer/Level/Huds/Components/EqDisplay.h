@@ -31,14 +31,14 @@ protected:
 private:
 	typedef SmartNode super;
 
-	EntityEqBehavior* eqBehavior;
-	PlatformerEntity* target;
-	cocos2d::Sprite* eqFrame;
-	LocalizedLabel* eqLabel;
-	ConstantString* eqValue;
+	EntityEqBehavior* eqBehavior = nullptr;
+	PlatformerEntity* target = nullptr;
+	cocos2d::Sprite* eqFrame = nullptr;
+	LocalizedLabel* eqLabel = nullptr;
+	ConstantString* eqValue = nullptr;
 
-	int cachedEq;
-	int cachedIq;
+	int cachedEq = 0;
+	int cachedIq = 0;
 
 	static const int EqCacheCipher;
 };

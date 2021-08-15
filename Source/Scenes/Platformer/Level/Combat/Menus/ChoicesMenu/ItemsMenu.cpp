@@ -37,7 +37,6 @@ ItemsMenu* ItemsMenu::create()
 
 ItemsMenu::ItemsMenu() : super(ItemsMenu::Radius, float(M_PI) / 9.0f)
 {
-	this->hasItemsInList = false;
 }
 
 ItemsMenu::~ItemsMenu()

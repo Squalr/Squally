@@ -24,5 +24,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewAsteroid;
+	cocos2d::Sprite* previewAsteroid = nullptr;
 };

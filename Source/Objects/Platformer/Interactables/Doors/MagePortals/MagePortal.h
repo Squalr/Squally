@@ -30,19 +30,19 @@ protected:
 	void initializeListeners() override;
 	void drawEdge(cocos2d::Color4F edgeColor, cocos2d::DrawNode* drawNode, float radius, int thickness);
 
-	cocos2d::Node* portalEffectNode;
+	cocos2d::Node* portalEffectNode = nullptr;
 
 private:
 	typedef Portal super;
 
-	SmartClippingNode* portalBase;
-	cocos2d::Node* portalContentNode;
-	cocos2d::DrawNode* background;
-	cocos2d::DrawNode* edge;
-	WorldSound* portalOpenSound;
+	SmartClippingNode* portalBase = nullptr;
+	cocos2d::Node* portalContentNode = nullptr;
+	cocos2d::DrawNode* background = nullptr;
+	cocos2d::DrawNode* edge = nullptr;
+	WorldSound* portalOpenSound = nullptr;
 
-	SmartParticles* portalParticles;
-	SmartParticles* edgeParticles;
+	SmartParticles* portalParticles = nullptr;
+	SmartParticles* edgeParticles = nullptr;
 	
 	static const float PortalRadius;
 	static const cocos2d::Color4B BaseColor;

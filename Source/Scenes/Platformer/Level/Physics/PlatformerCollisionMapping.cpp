@@ -27,18 +27,18 @@ const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKill = "kill";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKillAlt = "kill-plane";
 std::map<std::string, int> PlatformerCollisionMapping::CollisionMap = std::map<std::string, int>();
 
-PlatformerCollisionMapping* PlatformerCollisionMapping::instance = nullptr;
+PlatformerCollisionMapping* PlatformerCollisionMapping::Instance = nullptr;
 
 void PlatformerCollisionMapping::RegisterGlobalNode()
 {
-	if (PlatformerCollisionMapping::instance == nullptr)
+	if (PlatformerCollisionMapping::Instance == nullptr)
 	{
-		PlatformerCollisionMapping::instance = new PlatformerCollisionMapping();
+		PlatformerCollisionMapping::Instance = new PlatformerCollisionMapping();
 
-		instance->autorelease();
+		Instance->autorelease();
 
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->RegisterGlobalNode(PlatformerCollisionMapping::instance);
+		GlobalDirector::getInstance()->RegisterGlobalNode(PlatformerCollisionMapping::Instance);
 	}
 }
 

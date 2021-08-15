@@ -29,7 +29,7 @@ protected:
 
 	static MusicPlayer* getInstance();
 
-	static MusicPlayer* instance;
+	static MusicPlayer* Instance;
 
 private:
 	typedef GlobalNode super;

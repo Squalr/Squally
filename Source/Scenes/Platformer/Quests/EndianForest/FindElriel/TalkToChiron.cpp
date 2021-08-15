@@ -34,8 +34,6 @@ TalkToChiron* TalkToChiron::create(GameObject* owner, QuestLine* questLine)
 
 TalkToChiron::TalkToChiron(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToChiron::MapKeyQuest, false)
 {
-	this->chiron = nullptr;
-	this->squally = nullptr;
 }
 
 TalkToChiron::~TalkToChiron()

@@ -31,15 +31,15 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* back;
-	SmartClippingNode* doorClip;
-	cocos2d::Sprite* door;
-	cocos2d::Sprite* emblem;
-	CollisionObject* topCollision;
+	cocos2d::Sprite* back = nullptr;
+	SmartClippingNode* doorClip = nullptr;
+	cocos2d::Sprite* door = nullptr;
+	cocos2d::Sprite* emblem = nullptr;
+	CollisionObject* topCollision = nullptr;
 
-	cocos2d::Vec2 emblemOffset;
+	cocos2d::Vec2 emblemOffset = cocos2d::Vec2::ZERO;
 
-	WorldSound* doorOpenSound;
+	WorldSound* doorOpenSound = nullptr;
 
 	static const std::string PropertyColor;
 	static const float DoorOpenDelta;

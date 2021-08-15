@@ -35,7 +35,6 @@ CatapultBall::CatapultBall(const ValueMap& properties, Vec2 velocity) : super(pr
 	this->ball = Sprite::create(ObjectResources::Traps_Catapult_BALL);
 	this->ballCollision = CollisionObject::create(CollisionObject::createCircle(48.0f), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 	this->velocity = velocity;
-	this->isAccelerating = true;
 
 	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{

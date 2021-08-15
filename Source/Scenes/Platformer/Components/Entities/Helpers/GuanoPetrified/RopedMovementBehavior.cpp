@@ -29,9 +29,7 @@ RopedMovementBehavior* RopedMovementBehavior::create(GameObject* owner)
 RopedMovementBehavior::RopedMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->scrappy = nullptr;
 	this->waistRope = Sprite::create(ObjectResources::Cinematic_ScrappyRope_GuanoRope);
-	this->isDetached = false;
 
 	this->waistRope->setVisible(false);
 

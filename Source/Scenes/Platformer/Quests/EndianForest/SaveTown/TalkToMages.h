@@ -32,7 +32,7 @@ private:
 	void runCinematicSequencePart4();
 	void setPostText();
 
-	Sarude* sarude;
+	Sarude* sarude = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

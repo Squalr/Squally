@@ -32,9 +32,9 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* gateBack;
-	cocos2d::Sprite* gateFront;
+	cocos2d::Sprite* gateBack = nullptr;
+	cocos2d::Sprite* gateFront = nullptr;
 
-	ClickableNode* lockButton;
-	ClickableNode* unlockButton;
+	ClickableNode* lockButton = nullptr;
+	ClickableNode* unlockButton = nullptr;
 };

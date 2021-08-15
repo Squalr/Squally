@@ -26,7 +26,7 @@ private:
 
 	void checkForRequiredItem();
 
-	Portal* portal;
-	Inventory* playerInventory;
+	Portal* portal = nullptr;
+	Inventory* playerInventory = nullptr;
 	std::string requiredItemName;
 };

@@ -22,5 +22,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	HackableObject* object;
+	HackableObject* object = nullptr;
 };

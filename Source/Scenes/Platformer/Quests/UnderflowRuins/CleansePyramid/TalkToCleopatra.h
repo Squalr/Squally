@@ -33,10 +33,10 @@ private:
 	void runCinematicSequencePt4();
 	void runCinematicSequencePt5();
 
-	Guano* guano;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	Cleopatra* cleopatra;
+	Cleopatra* cleopatra = nullptr;
 
 	static const std::string TagExitPortal;
 };

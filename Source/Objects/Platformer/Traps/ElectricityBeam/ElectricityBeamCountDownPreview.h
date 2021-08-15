@@ -29,13 +29,12 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	bool isLaunching;
-	float launchCountDown;
+	bool isLaunching = false;
+	float launchCountDown = 0.0f;
 
-	cocos2d::Sprite* ballLeft;
-	cocos2d::Sprite* ballRight;
-	SmartAnimationSequenceNode* electricityAnimation;
-	
-	ConstantString* zbxTimerStr;
-	LocalizedLabel* zbxTimer;
+	cocos2d::Sprite* ballLeft = nullptr;
+	cocos2d::Sprite* ballRight = nullptr;
+	SmartAnimationSequenceNode* electricityAnimation = nullptr;
+	ConstantString* zbxTimerStr = nullptr;
+	LocalizedLabel* zbxTimer = nullptr;
 };

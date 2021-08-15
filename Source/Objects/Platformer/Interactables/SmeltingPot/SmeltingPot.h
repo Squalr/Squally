@@ -32,8 +32,8 @@ protected:
 private:
 	typedef InteractObject super;
 
-	cocos2d::Sprite* smeltingpot;
-	cocos2d::Node* floatContainer;
-	cocos2d::Sprite* shine;
-	cocos2d::Sprite* hammer;
+	cocos2d::Sprite* smeltingpot = nullptr;
+	cocos2d::Node* floatContainer = nullptr;
+	cocos2d::Sprite* shine = nullptr;
+	cocos2d::Sprite* hammer = nullptr;
 };

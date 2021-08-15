@@ -51,10 +51,6 @@ AfterFight* AfterFight::create(GameObject* owner, QuestLine* questLine)
 
 AfterFight::AfterFight(GameObject* owner, QuestLine* questLine) : super(owner, questLine, AfterFight::MapKeyQuest, false)
 {
-	this->squally = nullptr;
-	this->scrappy = nullptr;
-	this->sarude = nullptr;
-	this->magePortal = nullptr;
 }
 
 AfterFight::~AfterFight()

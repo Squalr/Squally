@@ -10,12 +10,12 @@
 
 using namespace cocos2d;
 
-MusicPlayer* MusicPlayer::instance = nullptr;
+MusicPlayer* MusicPlayer::Instance = nullptr;
 std::vector<Music*> MusicPlayer::SongQueue = std::vector<Music*>();
 
 void MusicPlayer::RegisterGlobalNode()
 {
-	if (MusicPlayer::instance == nullptr)
+	if (MusicPlayer::Instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->RegisterGlobalNode(MusicPlayer::getInstance());
@@ -24,14 +24,14 @@ void MusicPlayer::RegisterGlobalNode()
 
 MusicPlayer* MusicPlayer::getInstance()
 {
-	if (MusicPlayer::instance == nullptr)
+	if (MusicPlayer::Instance == nullptr)
 	{
-		MusicPlayer::instance = new MusicPlayer();
+		MusicPlayer::Instance = new MusicPlayer();
 
-		MusicPlayer::instance->autorelease();
+		MusicPlayer::Instance->autorelease();
 	}
 
-	return MusicPlayer::instance;
+	return MusicPlayer::Instance;
 }
 
 MusicPlayer::MusicPlayer()

@@ -49,9 +49,6 @@ PreviewMap::PreviewMap() : super()
 		// throw std::uncaught_exceptions();
 	}
 	
-	this->layerDeserializers = std::vector<LayerDeserializer*>();
-
-	this->map = nullptr;
 	this->mapNode = Node::create();
 
 	this->addLayerDeserializers({

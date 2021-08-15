@@ -259,7 +259,7 @@ public:
 		AbilityType abilityType = AbilityType::Physical;
 
 		// If true, this flag will prevent buffs from modifying the drain/restore
-		bool disableBuffProcessing;
+		bool disableBuffProcessing = false;
 
 		ManaRestoreOrDrainArgs(PlatformerEntity* caster, PlatformerEntity* target, int manaRestoreOrDrain, AbilityType abilityType, bool disableBuffProcessing = false)
 			: caster(caster), target(target), manaRestoreOrDrain(manaRestoreOrDrain), abilityType(abilityType), disableBuffProcessing(disableBuffProcessing)

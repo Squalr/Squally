@@ -30,7 +30,6 @@ Trigger::Trigger(ValueMap& properties) : super(properties)
 	this->endCollisionEvent = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertyEndEvent, Value("")).asString();
 	this->saveState = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertySaveState, Value(false)).asBool();
 	this->multiTrip = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertyMultiTrip, Value(false)).asBool();
-	this->wasActivated = false;
 
 	this->addChild(this->triggerCollision);
 }

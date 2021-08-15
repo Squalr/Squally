@@ -53,29 +53,27 @@ protected:
 	void enableUpdate();
 	void disableUpdate();
 	
-	bool canUpdate;
+	bool canUpdate = true;
 	
-	PlatformerEntity* caster;
-
-	CollisionObject* collisionObject;
-	cocos2d::Node* contentNode;
-	cocos2d::Node* decorNode;
-	cocos2d::Node* postFXNode;
+	PlatformerEntity* caster = nullptr;
+	CollisionObject* collisionObject = nullptr;
+	cocos2d::Node* contentNode = nullptr;
+	cocos2d::Node* decorNode = nullptr;
+	cocos2d::Node* postFXNode = nullptr;
 
 private:
 	typedef HackableObject super;
 
-	MovementMode movementMode;
+	MovementMode movementMode = MovementMode::Kinematic;
 
-	CollisionObject* ownerCollisionRef;
-	bool enabled;
-	float spinSpeed;
-	float projectileRotation;
-	bool allowHacking;
-	cocos2d::Vec3 launchVelocity;
-	cocos2d::Vec3 launchAcceleration;
-	cocos2d::Vec3 speedMultiplier;
-	float noOwnerCollideDuration;
-
-	cocos2d::Node* rotationNode;
+	CollisionObject* ownerCollisionRef = nullptr;
+	cocos2d::Node* rotationNode = nullptr;
+	float spinSpeed = 0.0f;
+	float projectileRotation = 0.0f;
+	float noOwnerCollideDuration = 1.0f;
+	bool enabled = true;
+	bool allowHacking = false;
+	cocos2d::Vec3 launchVelocity = cocos2d::Vec3::ZERO;
+	cocos2d::Vec3 launchAcceleration = cocos2d::Vec3::ZERO;
+	cocos2d::Vec3 speedMultiplier = cocos2d::Vec3::ONE;
 };

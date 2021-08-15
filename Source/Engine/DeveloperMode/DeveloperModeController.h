@@ -23,7 +23,7 @@ protected:
 private:
 	typedef GlobalNode super;
 
-	static DeveloperModeController* instance;
+	static DeveloperModeController* Instance;
 	static int CurrentDebugLevel;
 	static int MaxDebugLevel;
 };

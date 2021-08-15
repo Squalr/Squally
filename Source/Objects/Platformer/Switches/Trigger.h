@@ -19,14 +19,14 @@ protected:
 	void initializeListeners() override;
 	virtual void onCollide();
 
-	bool wasActivated;
-	bool multiTrip;
-	bool saveState;
+	bool wasActivated = false;
+	bool multiTrip = false;
+	bool saveState = false;
 
 private:
 	typedef GameObject super;
 
-	CollisionObject* triggerCollision;
+	CollisionObject* triggerCollision = nullptr;
 	std::string endCollisionEvent;
 
 	static const std::string PropertyEndEvent;

@@ -21,8 +21,8 @@ protected:
 private:
 	typedef GameComponent super;
 
-	Portal* portal;
-	GameObject* object;
+	Portal* portal = nullptr;
+	GameObject* object = nullptr;
 	std::string group;
 
 	static const std::string PropertyGroup;

@@ -41,11 +41,10 @@ private:
 		Either
 	};
 
-	Timeline* timelineRef;
-	AllowedSelection allowedSelection;
-	bool isActive;
-	PlatformerEntity* selectedEntity;
-	bool areCallbacksSet;
-
-	ChooseTargetMenu* chooseTargetMenu;
+	AllowedSelection allowedSelection = AllowedSelection::None;
+	Timeline* timelineRef = nullptr;
+	PlatformerEntity* selectedEntity = nullptr;
+	ChooseTargetMenu* chooseTargetMenu = nullptr;
+	bool isActive = false;
+	bool areCallbacksSet = false;
 };

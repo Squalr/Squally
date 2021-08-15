@@ -53,20 +53,20 @@ private:
 	void unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 	void onPauseStateChanged();
 
-	ProgressBar* swordFill;
-	cocos2d::Sprite* swordTop;
-	cocos2d::Node* eventsNode;
-	cocos2d::Node* entriesNode;
-	LocalizedLabel* waitLabel;
-	LocalizedLabel* castLabel;
+	ProgressBar* swordFill = nullptr;
+	cocos2d::Sprite* swordTop = nullptr;
+	cocos2d::Node* eventsNode = nullptr;
+	cocos2d::Node* entriesNode = nullptr;
+	LocalizedLabel* waitLabel = nullptr;
+	LocalizedLabel* castLabel = nullptr;
 	std::vector<TimelineEntry*> timelineEntries;
 	std::vector<TimelineEventGroup*> timelineEventGroups;
 
-	float timelineWidth;
-	bool isTimelinePaused;
-	bool isTimelineCinematicPaused;
-	bool isTimelineInterrupted;
-	bool isCombatComplete;
-	bool hasInit;
-	TimelineEntry* timelineEntryAwaitingUserAction;
+	float timelineWidth = 0.0f;
+	bool isTimelinePaused = true;
+	bool isTimelineCinematicPaused = false;
+	bool isTimelineInterrupted = false;
+	bool isCombatComplete = false;
+	bool hasInit = false;
+	TimelineEntry* timelineEntryAwaitingUserAction = nullptr;
 };

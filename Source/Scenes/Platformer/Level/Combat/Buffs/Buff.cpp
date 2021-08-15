@@ -32,10 +32,6 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffI
 	this->iconContainer = Node::create();
 	this->buffGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->buffIcon = Sprite::create(buffIconResource);
-	this->hackables = std::vector<HackableCode*>();
-	this->elapsedTime = 0.0f;
-	this->asyncElapsedTime = 0.0f;
-	this->wasRemoved = false;
 	this->isBuffIconPresent = !buffIconResource.empty();
 
 	this->iconContainer->setVisible(this->isBuffIconPresent);

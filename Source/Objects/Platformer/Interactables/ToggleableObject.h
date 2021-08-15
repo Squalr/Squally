@@ -39,15 +39,14 @@ protected:
 	virtual void onOptimizationHide();
 	virtual void onOptimizationShow();
 
-	cocos2d::Node* cullNode;
-	cocos2d::Node* backOnNode;
-	cocos2d::Node* backOffNode;
-	cocos2d::Node* backNode;
-	cocos2d::Node* onNode;
-	cocos2d::Node* offNode;
-	cocos2d::Node* frontNode;
-
-	bool isCulled;
+	cocos2d::Node* cullNode = nullptr;
+	cocos2d::Node* backOnNode = nullptr;
+	cocos2d::Node* backOffNode = nullptr;
+	cocos2d::Node* backNode = nullptr;
+	cocos2d::Node* onNode = nullptr;
+	cocos2d::Node* offNode = nullptr;
+	cocos2d::Node* frontNode = nullptr;
+	bool isCulled = false;
 
 private:
 	typedef InteractObject super;
@@ -56,11 +55,11 @@ private:
 	void optimizationHideOffscreenToggleableObject();
 
 	cocos2d::CSize cullPadding;
-	bool originalToggleValue;
-	bool isToggledOn;
-	bool isOneUse;
-	bool isGlobalSave;
-	float cooldown;
+	bool originalToggleValue = false;
+	bool isToggledOn = false;
+	bool isOneUse = false;
+	bool isGlobalSave = false;
+	float cooldown = 0.0f;
 	std::string saveKey;
 
 	static const std::string PropertyIsOn;

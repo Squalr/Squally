@@ -32,5 +32,5 @@ private:
 	cocos2d::Node* hackableCodeContainer = nullptr;
 	cocos2d::Node* hackableAbilityContainer = nullptr;
 
-	static GlobalHackAttributeContainer* instance;
+	static GlobalHackAttributeContainer* Instance;
 };

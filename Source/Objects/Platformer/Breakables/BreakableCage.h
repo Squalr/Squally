@@ -27,7 +27,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	void onBreak() override;
 
-	cocos2d::Node* cagedContentNode;
+	cocos2d::Node* cagedContentNode = nullptr;
 
 private:
 	typedef BreakableBase super;

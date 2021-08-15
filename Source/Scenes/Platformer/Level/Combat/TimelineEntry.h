@@ -57,35 +57,28 @@ private:
 
 	bool isPacifist();
 
-	struct DamageArgs
-	{
-		int damageDealta;
-
-		DamageArgs(int damageDealta) : damageDealta(damageDealta) { }
-	};
-
 	void performCast();
 	void tryInterrupt();
 	void resetTimeline();
 	void cameraFocusEntry();
 
-	PlatformerAttack* currentCast;
+	PlatformerAttack* currentCast = nullptr;
 	PlatformerEntity* entity = nullptr;
-	EntityCombatBehaviorBase* combatBehavior;
+	EntityCombatBehaviorBase* combatBehavior = nullptr;
 	std::vector<PlatformerEntity*> targets;
 	std::vector<TimelineEntry*> targetsAsEntries;
-	cocos2d::Sprite* line;
-	cocos2d::Sprite* circle;
-	cocos2d::Sprite* circleSelected;
-	cocos2d::Sprite* emblem;
-	cocos2d::Sprite* overlayCircle;
+	cocos2d::Sprite* line = nullptr;
+	cocos2d::Sprite* circle = nullptr;
+	cocos2d::Sprite* circleSelected = nullptr;
+	cocos2d::Sprite* emblem = nullptr;
+	cocos2d::Sprite* overlayCircle = nullptr;
 	std::vector<cocos2d::Sprite*> targetIcons;
-	cocos2d::Sprite* skull;
-	cocos2d::Node* orphanedAttackCache;
+	cocos2d::Sprite* skull = nullptr;
+	cocos2d::Node* orphanedAttackCache = nullptr;
 
-	int spawnIndex;
-	float interruptBonus;
-	float progress;
-	bool isCasting;
-	bool isBlocking;
+	int spawnIndex = 0;
+	float interruptBonus = 0.0f;
+	float progress = 0.0f;
+	bool isCasting = false;
+	bool isBlocking = false;
 };

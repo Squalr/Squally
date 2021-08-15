@@ -26,8 +26,7 @@ protected:
 private:
 	typedef HackableObject super;
 
-	CollisionObject* breakableCollision;
-
+	CollisionObject* breakableCollision = nullptr;
 	SpawnPool* spawnPool = nullptr;
 	bool hasBroke = false;
 };

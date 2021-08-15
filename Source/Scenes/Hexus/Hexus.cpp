@@ -41,15 +41,15 @@
 
 using namespace cocos2d;
 
-Hexus* Hexus::instance = nullptr;
+Hexus* Hexus::Instance = nullptr;
 
 Hexus* Hexus::create()
 {
-	Hexus* instance = new Hexus();
+	Hexus* Instance = new Hexus();
 	
-	instance->autorelease();
+	Instance->autorelease();
 
-	return instance;
+	return Instance;
 }
 
 Hexus::Hexus()

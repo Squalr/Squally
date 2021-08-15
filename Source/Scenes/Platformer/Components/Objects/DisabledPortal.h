@@ -23,5 +23,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	Portal* portal;
+	Portal* portal = nullptr;
 };

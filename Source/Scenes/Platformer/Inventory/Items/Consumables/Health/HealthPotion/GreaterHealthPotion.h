@@ -30,5 +30,5 @@ protected:
 private:
 	typedef Consumable super;
 
-	Sound* outOfCombatSound;
+	Sound* outOfCombatSound = nullptr;
 };

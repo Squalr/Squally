@@ -43,9 +43,6 @@ TalkToSarude* TalkToSarude::create(GameObject* owner, QuestLine* questLine)
 
 TalkToSarude::TalkToSarude(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToSarude::MapKeyQuest, false)
 {
-	this->sarude = nullptr;
-	this->squally = nullptr;
-	this->portal = nullptr;
 }
 
 TalkToSarude::~TalkToSarude()

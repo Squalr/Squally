@@ -32,11 +32,10 @@ private:
 	void runCinematicSequence();
 	void setPostText();
 
-	RewardPoolLiana* rewardPool;
-
-	Elriel* elriel;
-	Guano* guano;
-	QueenLiana* queenLiana;
+	RewardPoolLiana* rewardPool = nullptr;
+	Elriel* elriel = nullptr;
+	Guano* guano = nullptr;
+	QueenLiana* queenLiana = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

@@ -38,8 +38,6 @@ SneakPastLycan* SneakPastLycan::create(GameObject* owner, QuestLine* questLine)
 
 SneakPastLycan::SneakPastLycan(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SneakPastLycan::MapKeyQuest, false)
 {
-	this->lycan = nullptr;
-	this->squally = nullptr;
 }
 
 SneakPastLycan::~SneakPastLycan()

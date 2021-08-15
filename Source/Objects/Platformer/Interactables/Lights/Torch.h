@@ -36,7 +36,7 @@ private:
 	void startFx();
 	void stopFx();
 
-	cocos2d::Sprite* torch;
-	cocos2d::Sprite* glow;
-	SmartAnimationSequenceNode* fire;
+	cocos2d::Sprite* torch = nullptr;
+	cocos2d::Sprite* glow = nullptr;
+	SmartAnimationSequenceNode* fire = nullptr;
 };

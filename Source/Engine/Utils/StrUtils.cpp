@@ -229,7 +229,7 @@ bool StrUtils::isFloat(std::string str)
 	str = StrUtils::rtrim(str, "f");
 
 	std::istringstream iss(str);
-	float f;
+	float f = 0.0f;
 
 	iss >> std::noskipws >> f;
 

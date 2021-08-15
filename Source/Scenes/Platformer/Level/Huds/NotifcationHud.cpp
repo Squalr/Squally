@@ -39,8 +39,7 @@ NotificationHud* NotificationHud::create()
 NotificationHud::NotificationHud()
 {
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->previousFocus = nullptr;
+	
 	this->contentNode = Node::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 192), visibleSize.width, visibleSize.height);
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
@@ -49,7 +48,6 @@ NotificationHud::NotificationHud()
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
-	this->slotCooldowns = std::vector<float>();
 
 	LocalizedLabel* okLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Okay::create());
 	LocalizedLabel* okLabelSelected = okLabel->clone();

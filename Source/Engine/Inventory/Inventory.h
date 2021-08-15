@@ -83,7 +83,7 @@ protected:
 
 	std::vector<Item*> items;
 	std::set<std::string> itemLookup;
-	int capacity;
+	int capacity = 0;
 
 	static const int InfiniteCapacity;
 
@@ -93,10 +93,8 @@ private:
 	void rebuildLookupTable();
 	bool canInsertItemIfUnique(Item* item);
 
-	bool disableLookupTableRebuilding;
-
+	bool disableLookupTableRebuilding = false;
 	cocos2d::Node* itemsNode = nullptr;
-
 	std::string saveKey;
 
 	static const std::string SaveKeyCapacity;

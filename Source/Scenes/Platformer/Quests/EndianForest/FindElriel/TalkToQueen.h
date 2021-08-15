@@ -30,8 +30,8 @@ private:
 	void runCinematicSequence();
 	void setPostText();
 
-	Guano* guano;
-	QueenLiana* queenLiana;
+	Guano* guano = nullptr;
+	QueenLiana* queenLiana = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

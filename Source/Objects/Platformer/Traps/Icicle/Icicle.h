@@ -32,6 +32,6 @@ private:
 
 	void applyGravity();
 
-	cocos2d::Sprite* sprite;
-	CollisionObject* collision;
+	cocos2d::Sprite* sprite = nullptr;
+	CollisionObject* collision = nullptr;
 };

@@ -41,9 +41,6 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine
 
 TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TeachHackerMode::MapKeyQuest, false)
 {
-	this->helpTotem = nullptr;
-	this->squally = nullptr;
-	this->scrappy = nullptr;
 }
 
 TeachHackerMode::~TeachHackerMode()

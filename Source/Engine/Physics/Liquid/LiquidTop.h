@@ -28,9 +28,9 @@ private:
 
     struct ColumnData
     {
-        float targetHeight;
-        float height;
-        float speed;
+        float targetHeight = 0.0f;
+        float height = 0.0f;
+        float speed = 0.0f;
 
         ColumnData(float targetHeight, float height, float speed) : targetHeight(targetHeight), height(height), speed(speed) { }
     };
@@ -56,11 +56,11 @@ private:
     cocos2d::CustomCommand* customDrawCommand = nullptr;
 
     cocos2d::CSize surfaceSize;
-    float tension;
-    float dampening;
-    float spread;
-    int columnCount;
-    int lastIndex;
+    float tension = 0.0f;
+    float dampening = 0.0f;
+    float spread = 0.0f;
+    int columnCount = 0;
+    int lastIndex = 0;
 
     static const int ColumnsPer128px;
 };

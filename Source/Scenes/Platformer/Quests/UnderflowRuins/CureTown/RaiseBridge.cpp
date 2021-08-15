@@ -45,10 +45,6 @@ RaiseBridge* RaiseBridge::create(GameObject* owner, QuestLine* questLine)
 
 RaiseBridge::RaiseBridge(GameObject* owner, QuestLine* questLine) : super(owner, questLine, RaiseBridge::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->ajax = nullptr;
 }
 
 RaiseBridge::~RaiseBridge()

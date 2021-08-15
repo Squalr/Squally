@@ -25,5 +25,5 @@ private:
 	void saveState();
 
 	Squally* squally = nullptr;
-	EntityRuneBehavior* entityRuneBehavior;
+	EntityRuneBehavior* entityRuneBehavior = nullptr;
 };

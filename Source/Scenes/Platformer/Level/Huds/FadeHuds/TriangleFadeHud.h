@@ -26,8 +26,8 @@ private:
 
 	void buildShapes();
 
-	cocos2d::DrawNode* upperTraingle;
-	cocos2d::DrawNode* leftTriangle;
-	cocos2d::DrawNode* rightTriangle;
-	cocos2d::DrawNode* bottomTriangle;
+	cocos2d::DrawNode* upperTraingle = nullptr;
+	cocos2d::DrawNode* leftTriangle = nullptr;
+	cocos2d::DrawNode* rightTriangle = nullptr;
+	cocos2d::DrawNode* bottomTriangle = nullptr;
 };

@@ -24,8 +24,7 @@ private:
 	
 	void runEyeBlinkLoop();
 
-	SmartAnimationSequenceNode* leftEyeController;
-	SmartAnimationSequenceNode* rightEyeController;
-
+	SmartAnimationSequenceNode* leftEyeController = nullptr;
+	SmartAnimationSequenceNode* rightEyeController = nullptr;
 	Squally* squally = nullptr;
 };

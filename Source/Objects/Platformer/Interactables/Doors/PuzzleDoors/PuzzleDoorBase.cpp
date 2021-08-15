@@ -50,9 +50,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->backNode = Node::create();
 	this->doorNode = Node::create();
 	this->frontNode = Node::create();
-	this->runes = std::vector<Sprite*>();
-	this->runesPassed = std::vector<Sprite*>();
-	this->runesFailed = std::vector<Sprite*>();
 	this->indexString = ConstantString::create(std::to_string(0));
 	this->truthString = ConstantString::create(std::to_string(0));
 	this->hackableString = ConstantString::create(std::to_string(0));
@@ -63,7 +60,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->sliderSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy1);
 	this->sliderResetSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy3);
 	this->electricitySound = WorldSound::create(SoundResources::Cipher_Lightning);
-	this->isUnlocked = false;
 	this->doorClipSize = doorClipSize;
 	this->doorClipOffset = doorClipOffset;
 	this->portalOffset = portalOffset;

@@ -25,7 +25,7 @@ public:
 	void setScript(std::string script);
 	void setName(std::string name);
 
-	bool isReadOnly;
+	bool isReadOnly = false;
 
 protected:
 	ScriptEntry(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onCopyClick, std::function<void(ScriptEntry*)> onDeleteClick);

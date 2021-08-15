@@ -38,10 +38,7 @@ TargetSelectionMenu* TargetSelectionMenu::create(Timeline* timelineRef)
 TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 {
 	this->timelineRef = timelineRef;
-	this->selectedEntity = nullptr;
-	this->allowedSelection = AllowedSelection::None;
 	this->chooseTargetMenu = ChooseTargetMenu::create();
-	this->areCallbacksSet = false;
 
 	this->addChild(this->chooseTargetMenu);
 }

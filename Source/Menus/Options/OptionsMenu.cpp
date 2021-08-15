@@ -33,7 +33,6 @@ OptionsMenu* OptionsMenu::create(bool useEnterFade)
 
 OptionsMenu::OptionsMenu(bool useEnterFade)
 {
-	this->backClickCallback = nullptr;
 	this->useEnterFade = useEnterFade;
 
 	this->background = Node::create();

@@ -24,5 +24,5 @@ private:
 
 	std::map<std::string, std::function<Track*()>> deserializers;
 
-	static TrackDeserializer* instance;
+	static TrackDeserializer* Instance;
 };

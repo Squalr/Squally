@@ -26,6 +26,6 @@ protected:
 private:
 	typedef GameObject super;
 	
-	cocos2d::Sprite* wheel;
-	SmartAnimationSequenceNode* rope;
+	cocos2d::Sprite* wheel = nullptr;
+	SmartAnimationSequenceNode* rope = nullptr;
 };

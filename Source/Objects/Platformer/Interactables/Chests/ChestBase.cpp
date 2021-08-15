@@ -29,7 +29,6 @@ ChestBase::ChestBase(ValueMap& properties, CSize interactSize) : super(propertie
 {
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
-	this->chestPool = nullptr;
 
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyArgs, Value("")).asString();
 

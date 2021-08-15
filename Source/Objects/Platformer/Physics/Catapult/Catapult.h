@@ -38,12 +38,12 @@ private:
 	void launchBall();
 	cocos2d::Vec2 applyLaunchPower(cocos2d::Vec2 baseSpeed);
 
-	SmartAnimationNode* catapultAnimations;
-	CollisionObject* catapultCollision;
-	AnimationPart* ballAnimationPart;
-	bool interactionEnabled;
-	float currentCooldown;
-	float launchPower;
+	SmartAnimationNode* catapultAnimations = nullptr;
+	CollisionObject* catapultCollision = nullptr;
+	AnimationPart* ballAnimationPart = nullptr;
+	bool interactionEnabled = false;
+	float currentCooldown = 0.0f;
+	float launchPower = 0.0f;
 
 	static const float InteractCooldown;
 	static const float LaunchPowerDefault;

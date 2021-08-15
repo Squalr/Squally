@@ -24,7 +24,7 @@ protected:
 	void invalidate();
 	void toggleQueryable(bool queryable);
 	
-	GameObject* owner;
+	GameObject* owner = nullptr;
 
 private:
 	typedef SmartNode super;

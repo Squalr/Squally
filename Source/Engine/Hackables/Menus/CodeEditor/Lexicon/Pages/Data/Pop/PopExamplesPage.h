@@ -17,29 +17,29 @@ public:
 	static const std::string Identifier;
 
 protected:
+	PopExamplesPage();
+	virtual ~PopExamplesPage();
+
 	void initializePositions() override;
 	void initializeListeners() override;
 	
 private:
 	typedef LexiconPage super;
-	
-	PopExamplesPage();
-	virtual ~PopExamplesPage();
 
 	void resetState();
 
-	LocalizedLabel* examplesLabel;
-	RegisterBlock* registerBlock;
-	StackBlock* stackBlock;
-	ClickableTextNode* resetButton;
-	ClickableTextNode* popButton;
-	ClickableTextNode* popPtrButton;
-	ClickableTextNode* popPtrOffsetButton;
-	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelpButton;
-	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp;
-	LocalizedLabel* popLabel;
-	LocalizedLabel* popPtrLabel;
-	LocalizedLabel* popPtrOffsetLabel;
+	LocalizedLabel* examplesLabel = nullptr;
+	RegisterBlock* registerBlock = nullptr;
+	StackBlock* stackBlock = nullptr;
+	ClickableTextNode* resetButton = nullptr;
+	ClickableTextNode* popButton = nullptr;
+	ClickableTextNode* popPtrButton = nullptr;
+	ClickableTextNode* popPtrOffsetButton = nullptr;
+	ClickableNode* pointerHelpButton = nullptr;
+	ClickableNode* offsetHelpButton = nullptr;
+	TextPanel* textPanelPointerHelp = nullptr;
+	TextPanel* textPanelOffsetHelp = nullptr;
+	LocalizedLabel* popLabel = nullptr;
+	LocalizedLabel* popPtrLabel = nullptr;
+	LocalizedLabel* popPtrOffsetLabel = nullptr;
 };

@@ -63,7 +63,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	ClickableTextNode* entry;
+	ClickableTextNode* entry = nullptr;
 	std::string iconResource;
-	bool allowInteractionEdits;
+	bool allowInteractionEdits = true;
 };

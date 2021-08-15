@@ -45,9 +45,6 @@ TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine)
 
 TalkToElriel::TalkToElriel(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToElriel::MapKeyQuest, false)
 {
-	this->elriel = nullptr;
-	this->squally = nullptr;
-	this->cutscenePortal = nullptr;
 }
 
 TalkToElriel::~TalkToElriel()

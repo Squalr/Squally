@@ -48,10 +48,6 @@ TalkToHorus* TalkToHorus::create(GameObject* owner, QuestLine* questLine)
 
 TalkToHorus::TalkToHorus(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToHorus::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->horus = nullptr;
 }
 
 TalkToHorus::~TalkToHorus()

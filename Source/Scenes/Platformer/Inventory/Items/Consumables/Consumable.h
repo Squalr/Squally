@@ -28,6 +28,6 @@ private:
 
 	void bindItemUseCallback(PlatformerAttack* attack, PlatformerEntity* entity);
 
-	PlatformerAttack* associatedAttack;
-	bool outOfCombatUseAllowed;
+	PlatformerAttack* associatedAttack = nullptr;
+	bool outOfCombatUseAllowed = false;
 };

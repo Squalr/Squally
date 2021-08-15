@@ -38,9 +38,7 @@ Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractT
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->hammer = Sprite::create(ObjectResources::Interactive_Anvil_AnvilHammer);
 	this->floatContainer = Node::create();
-	this->recipes = std::vector<Item*>();
 	this->recipePoolName = GameUtils::getKeyOrDefault(this->properties, RecipePoolDeserializer::MapKeyTypeRecipePool, Value("")).asString();
-	this->recipePool = nullptr;
 	this->recipePoolDeserializer = RecipePoolDeserializer::create();
 	
 	this->floatContainer->addChild(this->shine);

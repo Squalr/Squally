@@ -28,5 +28,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	LaserAnimation* previewLaser;
+	LaserAnimation* previewLaser = nullptr;
 };

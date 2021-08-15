@@ -26,7 +26,6 @@ protected:
 	void update(float) override;
 
 	PlatformerEntity* entity = nullptr;
-
 	std::vector<float> runeCooldowns;
 
 private:

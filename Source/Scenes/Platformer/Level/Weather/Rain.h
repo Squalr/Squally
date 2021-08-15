@@ -21,5 +21,5 @@ protected:
 private:
 	typedef MapLayer super;
 
-	SmartParticles* rain;
+	SmartParticles* rain = nullptr;
 };

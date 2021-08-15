@@ -11,18 +11,18 @@
 
 using namespace cocos2d;
 
-PlatformerItemDeserializer* PlatformerItemDeserializer::instance = nullptr;
+PlatformerItemDeserializer* PlatformerItemDeserializer::Instance = nullptr;
 
 PlatformerItemDeserializer* PlatformerItemDeserializer::getInstance()
 {
-	if (PlatformerItemDeserializer::instance == nullptr)
+	if (PlatformerItemDeserializer::Instance == nullptr)
 	{
-		PlatformerItemDeserializer::instance = new PlatformerItemDeserializer();
+		PlatformerItemDeserializer::Instance = new PlatformerItemDeserializer();
 
-		instance->autorelease();
+		Instance->autorelease();
 	}
 
-	return PlatformerItemDeserializer::instance;
+	return PlatformerItemDeserializer::Instance;
 }
 
 void PlatformerItemDeserializer::RegisterGlobalNode()

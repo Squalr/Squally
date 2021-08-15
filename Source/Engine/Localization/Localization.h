@@ -24,5 +24,5 @@ private:
 	static cocos2d::LanguageType languageCodeToLanguageType(std::string languageCode);
 	static std::string languageTypeToLanguageCode(cocos2d::LanguageType languageType);
 
-	static Localization* instance;
+	static Localization* Instance;
 };
