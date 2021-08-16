@@ -16,6 +16,7 @@ public:
 	Buff* getAssociatedBuff();
 	PlatformerEntity* getOwner();
 	bool processEvents(float previousTime, float currentTime);
+	void completeEventGroup();
 
 protected:
 	TimelineEventGroup(std::vector<TimelineEvent*> timelineEvents, Buff* associatedBuff, PlatformerEntity* owner, std::function<void()> onGroupComplete);

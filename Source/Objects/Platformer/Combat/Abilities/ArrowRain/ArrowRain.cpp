@@ -181,11 +181,12 @@ void ArrowRain::runArrowRain()
 
 void ArrowRain::updateAnimation(float dt)
 {
+	static const float VarianceX = 768.0f;
+	static const float FallDistance = -1280.0f;
+	static const float PixelsPerSecond = 768.0f;
+	static const float Duration = std::abs(FallDistance) / PixelsPerSecond;
+
 	float totalDuration = ArrowRain::StartDelay + ArrowRain::TimeBetweenTicks * float(ArrowRain::TickCount);
-	const float VarianceX = 768.0f;
-	const float FallDistance = -1280.0f;
-	const float PixelsPerSecond = 768.0f;
-	const float Duration = std::abs(FallDistance) / PixelsPerSecond;
 
 	for (int index = 0; index < int(this->arrowCooldowns.size()); index++)
 	{

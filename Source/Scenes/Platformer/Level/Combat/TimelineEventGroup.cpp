@@ -95,12 +95,15 @@ bool TimelineEventGroup::processEvents(float previousTime, float currentTime)
 
 	this->timelineEventsToDelete.clear();
 
-	if (this->timelineEvents.empty() && this->onGroupComplete != nullptr)
+	return this->timelineEvents.empty();
+}
+
+void TimelineEventGroup::completeEventGroup()
+{
+	if (this->onGroupComplete != nullptr)
 	{
 		this->onGroupComplete();
 	}
-
-	return this->timelineEvents.empty();
 }
 
 void TimelineEventGroup::removeAllTimelineEvents()

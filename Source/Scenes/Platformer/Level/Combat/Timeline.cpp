@@ -232,7 +232,7 @@ void Timeline::checkCombatComplete()
 	anyEnemyAlive = false;
 	anyPlayerAlive = false;
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		PlatformerEntity* entity = next->getEntity();
 
@@ -280,34 +280,34 @@ void Timeline::updateTimeline(float dt)
 	CombatEvents::TriggerBuffTimeElapsed(CombatEvents::BuffTimeElapsedArgs(dt));
 
 	// Update all timeline entries
-	for (auto entry : this->timelineEntries)
+	for (TimelineEntry* entry : this->timelineEntries)
 	{
-		if (!entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			continue;
-		}
-		
 		float currentTime = entry->getProgress();
-
-		if (!this->isTimelineInterrupted)
+		bool isAlive = entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+		
+		if (isAlive)
 		{
-			entry->addTimeWithoutActions(dt);
-			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
-
-			entry->tryPerformActions();
-		}
-		else
-		{
-			// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
-			entry->addTimeWithoutActions(dt);
-		}
-
-		for (auto eventGroup : this->timelineEventGroups)
-		{
-			if (eventGroup->getOwner() == entry->getEntity())
+			if (!this->isTimelineInterrupted)
 			{
-				if (eventGroup->processEvents(currentTime, entry->getProgress()))
+				entry->addTimeWithoutActions(dt);
+				entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
+
+				entry->tryPerformActions();
+			}
+			else
+			{
+				// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
+				entry->addTimeWithoutActions(dt);
+			}
+		}
+
+		for (TimelineEventGroup* eventGroup : this->timelineEventGroups)
+		{
+			if (eventGroup != nullptr && eventGroup->getOwner() == entry->getEntity())
+			{
+				if (!isAlive || eventGroup->processEvents(currentTime, entry->getProgress()))
 				{
+					eventGroup->completeEventGroup();
 					this->unregisterTimelineEventGroup(eventGroup);
 				}
 			}
@@ -317,12 +317,12 @@ void Timeline::updateTimeline(float dt)
 
 void Timeline::updateTimelineTargetMarkers()
 {
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		next->clearBuffTargets();
 	}
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (!next->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
@@ -338,7 +338,7 @@ void Timeline::updateTimelineTargetMarkers()
 
 		std::vector<PlatformerEntity*> targets = next->getStagedTargets();
 
-		for (auto target : targets)
+		for (PlatformerEntity* target : targets)
 		{
 			TimelineEntry* entry = this->getAssociatedEntry(target);
 
@@ -349,7 +349,7 @@ void Timeline::updateTimelineTargetMarkers()
 
 void Timeline::refreshTimelinePositions()
 {
-	for (auto entry : this->timelineEntries)
+	for (TimelineEntry* entry : this->timelineEntries)
 	{
 		if (entry->getEntity()->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
@@ -370,7 +370,7 @@ std::vector<PlatformerEntity*> Timeline::getEntities()
 {
 	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		entities.push_back(next->getEntity());
 	}
@@ -382,7 +382,7 @@ std::vector<PlatformerEntity*> Timeline::getFriendlyEntities()
 {
 	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (next->isPlayerEntry())
 		{
@@ -397,7 +397,7 @@ std::vector<PlatformerEntity*> Timeline::getEnemyEntities()
 {
 	std::vector<PlatformerEntity*> entities = std::vector<PlatformerEntity*>();
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (!next->isPlayerEntry())
 		{
@@ -410,7 +410,7 @@ std::vector<PlatformerEntity*> Timeline::getEnemyEntities()
 
 std::vector<PlatformerEntity*> Timeline::getSameTeamEntities(PlatformerEntity* entity)
 {
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (next->getEntity() == entity)
 		{
@@ -423,7 +423,7 @@ std::vector<PlatformerEntity*> Timeline::getSameTeamEntities(PlatformerEntity* e
 
 TimelineEntry* Timeline::getAssociatedEntry(PlatformerEntity* entity)
 {
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (next->getEntity() == entity)
 		{
@@ -443,7 +443,7 @@ std::vector<TimelineEntry*> Timeline::getFriendlyEntries()
 {
 	std::vector<TimelineEntry*> entities = std::vector<TimelineEntry*>();
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (next->isPlayerEntry())
 		{
@@ -458,7 +458,7 @@ std::vector<TimelineEntry*> Timeline::getEnemyEntries()
 {
 	std::vector<TimelineEntry*> entities = std::vector<TimelineEntry*>();
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (!next->isPlayerEntry())
 		{
@@ -471,7 +471,7 @@ std::vector<TimelineEntry*> Timeline::getEnemyEntries()
 
 std::vector<TimelineEntry*> Timeline::getSameTeamEntries(PlatformerEntity* entity)
 {
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (next->getEntity() == entity)
 		{
@@ -488,7 +488,7 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vec
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
 	int index = 0;
 
-	for (auto next : friendlyEntities)
+	for (PlatformerEntity* next : friendlyEntities)
 	{
 		TimelineEntry* entry = TimelineEntry::create(next, index++);
 
@@ -531,7 +531,7 @@ void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 	int friendlyIndex = 0;
 	int enemyIndex = 0;
 
-	for (auto playerEntry : this->getFriendlyEntries())
+	for (TimelineEntry* playerEntry : this->getFriendlyEntries())
 	{
 		if (friendlyIndex < int(StartTimesFirstStrike.size()))
 		{
@@ -546,7 +546,7 @@ void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 		friendlyIndex++;
 	}
 	
-	for (auto enemyEntry : this->getEnemyEntries())
+	for (TimelineEntry* enemyEntry : this->getEnemyEntries())
 	{
 		if (enemyIndex < int(StartTimesFirstStrike.size()))
 		{
@@ -569,7 +569,7 @@ void Timeline::registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup
 		return;
 	}
 
-	for (auto next : this->timelineEntries)
+	for (TimelineEntry* next : this->timelineEntries)
 	{
 		if (next->getEntity() == timelineEventGroup->getOwner())
 		{
