@@ -15,6 +15,7 @@ public:
 
 	void enableNormalPhysics();
 	void enableWaterPhysics();
+	cocos2d::Vec2 getGravity();
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 	bool hasLeftWallCollision();

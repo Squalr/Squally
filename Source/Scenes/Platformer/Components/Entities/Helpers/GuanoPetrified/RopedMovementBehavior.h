@@ -34,5 +34,5 @@ private:
 	Scrappy* scrappy = nullptr;
 	cocos2d::Sprite* waistRope = nullptr;
 
-	bool isDetached = nullptr;
+	bool isDetached = false;
 };

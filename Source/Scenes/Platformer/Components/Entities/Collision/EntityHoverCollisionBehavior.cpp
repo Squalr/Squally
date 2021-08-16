@@ -100,7 +100,9 @@ void EntityHoverCollisionBehavior::update(float dt)
 		&& this->entityCollision->movementCollision != nullptr)
 	{
 		// Update anti-gravity to avoid jitter
-		if (this->hoverAntiGravityCollisionDetector->hasCollisions() && !this->hoverAntiGravityTopCollisionDetector->hasCollisions())
+		if (this->hoverAntiGravityCollisionDetector->hasCollisions()
+			&& (this->hoverAntiGravityCollisionDetector->isCollidingWithType((CollisionType)EngineCollisionTypes::Intersection)
+				|| !this->hoverAntiGravityTopCollisionDetector->hasCollisions()))
 		{
 			this->entityCollision->movementCollision->setGravityDisabledOverride(true);
 
@@ -277,6 +279,9 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		// Special case to collide with physics when standing on a single surface.
 		// This prevents a bug where the hover collision pushes the player up too slowly, allowing them
 		// to clip into the ground due to all of the detectors (ground, jump, etc) being below the surface
+		// Edit: This results in pretty trash behavior when hitting square corners at certain angles
+		// In retrospect, it doesn't even feel very necessary.
+		/*
 		if (this->hoverAntiGravityCollisionDetector->isCollidingWithSingleGroup()
 			&& this->hoverAntiGravityTopCollisionDetector->isCollidingWithSingleGroup()
 			&& this->hoverCollision->isCollidingWithSingleGroup()
@@ -287,7 +292,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			&& collisionData.other->getParent() == (*this->hoverAntiGravityTopCollisionDetector->getCurrentCollisions().begin())->getParent())
 		{
 			return CollisionResult::CollideWithPhysics;
-		}
+		}*/
 
 		if (this->entityCollision != nullptr)
 		{
@@ -338,7 +343,7 @@ void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 		return CollisionResult::DoNothing;
 	});
 
-	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
+	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Intersection }, [=](CollisionData collisionData)
 	{
 		// See update(float dt) for anti-gravity logic
 

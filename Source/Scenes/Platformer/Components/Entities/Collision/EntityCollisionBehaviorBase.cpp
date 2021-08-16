@@ -165,6 +165,11 @@ void EntityCollisionBehaviorBase::enableWaterPhysics()
 	this->movementCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
 }
 
+Vec2 EntityCollisionBehaviorBase::getGravity()
+{
+	return this->movementCollision == nullptr ? Vec2::ZERO : this->movementCollision->getGravity();
+}
+
 Vec2 EntityCollisionBehaviorBase::getVelocity()
 {
 	return this->movementCollision == nullptr ? Vec2::ZERO : this->movementCollision->getVelocity();
@@ -192,7 +197,7 @@ bool EntityCollisionBehaviorBase::hasRightWallCollision()
 
 bool EntityCollisionBehaviorBase::hasLeftWallCollisionWith(CollisionObject* collisonObject)
 {
-	for (auto next : this->leftCollision->getCurrentCollisions())
+	for (CollisionObject* next : this->leftCollision->getCurrentCollisions())
 	{
 		if (next == collisonObject)
 		{
@@ -205,7 +210,7 @@ bool EntityCollisionBehaviorBase::hasLeftWallCollisionWith(CollisionObject* coll
 
 bool EntityCollisionBehaviorBase::hasRightWallCollisionWith(CollisionObject* collisonObject)
 {
-	for (auto next : this->rightCollision->getCurrentCollisions())
+	for (CollisionObject* next : this->rightCollision->getCurrentCollisions())
 	{
 		if (next == collisonObject)
 		{
@@ -255,8 +260,8 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 	}
 
 	this->movementCollision = CollisionObject::create(
-		CollisionObject::createBox(this->entity->getEntitySize()),
-		// CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 8.0f),
+		// CollisionObject::createBox(this->entity->getEntitySize()),
+		CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 8.0f),
 		(CollisionType)this->collisionTypeMovement,
 		CollisionObject::Properties(true, false),
 		Color4F::TRANSPARENT_WHITE
@@ -415,15 +420,20 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 		return;
 	}
 
-	const CSize wallDetectorSize = CSize(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
+	const CSize wallDetectorSize = CSize(
+		std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f),
+		std::max(this->entity->getEntitySize().height, 16.0f)
+	);
 
 	this->leftCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
+		CollisionObject::createBox(wallDetectorSize),
+		// CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		CollisionObject::Properties(false, false)
 	);
 	this->rightCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
+		CollisionObject::createBox(wallDetectorSize),
+		// CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		CollisionObject::Properties(false, false)
 	);

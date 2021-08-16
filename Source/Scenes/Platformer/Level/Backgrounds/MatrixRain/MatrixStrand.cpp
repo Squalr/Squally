@@ -38,7 +38,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 
 		letter->setPositionY((float)index * -(MatrixLetter::LetterSize - 12));
 
-		this->letters[index] = letter;
+		this->letters.push_back(letter);
 		this->addChild(letter);
 	}
 	

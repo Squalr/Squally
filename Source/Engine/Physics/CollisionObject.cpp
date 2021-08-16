@@ -447,7 +447,7 @@ bool CollisionObject::wasCollidingWith(CollisionObject* collisionObject)
 
 bool CollisionObject::isCollidingWithType(int collisionType)
 {
-	for (auto next : *this->currentCollisions)
+	for (CollisionObject* next : *this->currentCollisions)
 	{
 		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
@@ -460,7 +460,7 @@ bool CollisionObject::isCollidingWithType(int collisionType)
 
 bool CollisionObject::wasCollidingWithType(int collisionType)
 {
-	for (auto next : *this->previousCollisions)
+	for (CollisionObject* next : *this->previousCollisions)
 	{
 		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
