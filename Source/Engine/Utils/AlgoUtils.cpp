@@ -20,6 +20,11 @@ Vec3 AlgoUtils::computeArcVelocity(Vec3 source, Vec3 destination, Vec3 accelerat
 	return velocity;
 }
 
+Vec2 AlgoUtils::pointOnCircle(Vec2 center, float radius, Vec2 closestPoint)
+{
+	return AlgoUtils::pointOnEllipse(center, radius, radius, closestPoint);
+}
+
 Vec2 AlgoUtils::pointOnEllipse(Vec2 center, float rx, float ry, Vec2 closestPoint)
 {
 	int maxIterations = 10;

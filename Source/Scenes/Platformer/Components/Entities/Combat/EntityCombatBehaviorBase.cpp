@@ -53,7 +53,7 @@ void EntityCombatBehaviorBase::onLoad()
 {
 	this->entity->watchForComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* inventoryBehavior)
 	{
-		for (auto next : inventoryBehavior->getEquipmentInventory()->getEquipment())
+		for (Equipable* next : inventoryBehavior->getEquipmentInventory()->getEquipment())
 		{
 			this->bonusArmor += next->getItemStats().armorBonus;
 			this->bonusAttack += next->getItemStats().attackBonus;

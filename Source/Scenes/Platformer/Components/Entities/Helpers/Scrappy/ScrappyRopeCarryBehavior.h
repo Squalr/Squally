@@ -14,7 +14,8 @@ class ScrappyRopeCarryBehavior : public GameComponent
 public:
 	static ScrappyRopeCarryBehavior* create(GameObject* owner);
 
-	void setCarryTarget(GameObject* target);
+	void setCarriedObject(GameObject* target);
+	void setRopeHorizontalVelocity(float horizontalVelocity);
 
 	static const std::string MapKey;
 
@@ -30,7 +31,7 @@ private:
 	typedef GameComponent super;
 
 	PlatformerEntity* entity = nullptr;
-	GameObject* target = nullptr;
+	GameObject* carriedObject = nullptr;
 	cocos2d::Sprite* rope = nullptr;
 	cocos2d::Sprite* ropeWaist = nullptr;
 	float ropeRotation = 0.0f;

@@ -1040,7 +1040,7 @@ void TerrainObject::updateCachedCoords(bool force)
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
-	static const CSize Padding = CSize(384.0f, 384.0f);
+	static const CSize Padding = CSize(768.0f, 768.0f);
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 
 	this->updateCachedCoords();

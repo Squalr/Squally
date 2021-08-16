@@ -12,6 +12,7 @@ public:
 	
 	void setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver = nullptr, std::function<void()> onMouseOut = nullptr);
 	void setClickModifier(cocos2d::InputEvents::KeyCode modifier);
+	void setClickableCallback(std::function<bool()> canClickCallback);
 	void clearEntityClickCallbacks();
 	ClickableNode* getHitbox();
 	PlatformerEntity* getEntity();
@@ -32,4 +33,5 @@ private:
 	PlatformerEntity* entity = nullptr;
 	ClickableNode* clickHitbox = nullptr;
 	cocos2d::Vec3 savedWorldCoords;
+	std::function<bool()> canClickCallback = nullptr;
 };

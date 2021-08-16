@@ -120,7 +120,7 @@ void EntityBuffBehavior::removeBuffsById(std::string buffId)
 {
 	std::vector<Buff*> buffsCopy = this->buffs;
 
-	for (auto buff : buffsCopy)
+	for (Buff* buff : buffsCopy)
 	{
 		if (buff == nullptr)
 		{
@@ -138,7 +138,7 @@ void EntityBuffBehavior::removeAllBuffs()
 {
 	std::vector<Buff*> buffsCopy = this->buffs;
 
-	for (auto next : buffsCopy)
+	for (Buff* next : buffsCopy)
 	{
 		next->removeBuff();
 	}
@@ -152,7 +152,7 @@ void EntityBuffBehavior::repositionBuffIcons()
 {
 	int maxIndex = -1;
 
-	for (auto next : this->buffs)
+	for (Buff* next : this->buffs)
 	{
 		if (next->hasBuffIcon())
 		{
@@ -162,7 +162,7 @@ void EntityBuffBehavior::repositionBuffIcons()
 
 	int adjustedIndex = 0;
 
-	for (auto next : this->buffs)
+	for (Buff* next : this->buffs)
 	{
 		if (next->hasBuffIcon())
 		{

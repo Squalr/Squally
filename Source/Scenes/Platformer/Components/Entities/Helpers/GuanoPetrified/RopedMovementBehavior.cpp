@@ -53,7 +53,7 @@ void RopedMovementBehavior::onLoad()
 	
 		this->scrappy->watchForComponent<ScrappyRopeCarryBehavior>([=](ScrappyRopeCarryBehavior* ropeCarryBehavior)
 		{
-			ropeCarryBehavior->setCarryTarget(this->entity);
+			ropeCarryBehavior->setCarriedObject(this->entity);
 		});
 	}, Scrappy::MapKey);
 	
@@ -89,7 +89,7 @@ void RopedMovementBehavior::detach()
 	{
 		this->scrappy->watchForComponent<ScrappyRopeCarryBehavior>([=](ScrappyRopeCarryBehavior* ropeCarryBehavior)
 		{
-			ropeCarryBehavior->setCarryTarget(nullptr);
+			ropeCarryBehavior->setCarriedObject(nullptr);
 		});
 	}
 

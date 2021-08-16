@@ -153,7 +153,7 @@ void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 		return;
 	}
 	
-	static const float MinCrouch = 0.75f;
+	static const float MinCrouch = 0.85f;
 	static const float MaxCrouch = 1.0f;
 
 	float inverseProgress = MathUtils::clamp(1.0f - this->crouchProgress, 0.0f, 1.0f);

@@ -8,6 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
@@ -35,7 +36,7 @@ ScrappyRopeCarryBehavior* ScrappyRopeCarryBehavior::create(GameObject* owner)
 ScrappyRopeCarryBehavior::ScrappyRopeCarryBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->target = nullptr;
+	this->carriedObject = nullptr;
 	this->rope = Sprite::create(ObjectResources::Cinematic_ScrappyRope_Rope);
 	this->ropeWaist = Sprite::create(ObjectResources::Cinematic_ScrappyRope_WaistRope);
 	this->ropeRotation = 270.0f;
@@ -67,35 +68,50 @@ void ScrappyRopeCarryBehavior::onDisable()
 	super::onDisable();
 }
 
-void ScrappyRopeCarryBehavior::setCarryTarget(GameObject* target)
+void ScrappyRopeCarryBehavior::setCarriedObject(GameObject* carriedObject)
 {
-	this->target = target;
+	this->carriedObject = carriedObject;
 
-	this->ropeWaist->setVisible(this->target != nullptr);
-	this->rope->setVisible(this->target != nullptr);
+	this->ropeWaist->setVisible(this->carriedObject != nullptr);
+	this->rope->setVisible(this->carriedObject != nullptr);
 }
 
 void ScrappyRopeCarryBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->target == nullptr || this->entity == nullptr)
+	if (this->carriedObject == nullptr || this->entity == nullptr)
 	{
 		return;
 	}
 
-	Vec3 destPosition = Vec3(
-		std::cos(this->ropeRotation * float(M_PI) / 180.0f) * ScrappyRopeCarryBehavior::FixedRopeDistance,
-		std::sin(this->ropeRotation * float(M_PI) / 180.0f) * ScrappyRopeCarryBehavior::FixedRopeDistance,
-		0.0f
-	);
+	static const Vec2 RopeAttachOffset = Vec2(0.0f, 32.0f);
+	static const float SwingGravity = -768.0f;
 
-	this->ropeWaist->setPosition(this->entity->getFloatNode()->getPosition() + Vec2(0.0f, 32.0f));
-	this->rope->setPosition(this->entity->getFloatNode()->getPosition() + Vec2(0.0f, 32.0f));
+	Vec2 floatOffset = this->entity->getFloatNode()->getPosition();
+
+	// Offset rope positions by float positions
+	this->ropeWaist->setPosition(floatOffset + RopeAttachOffset);
+	this->rope->setPosition(floatOffset + RopeAttachOffset);
+
+	Vec3 ropeScrappyAttachPoint3D = GameUtils::getWorldCoords3D(this->entity->getFloatNode()) + Vec3(RopeAttachOffset.x, RopeAttachOffset.y, 0.0f);
+	Vec2 ropeScrappyAttachPoint2D = Vec2(ropeScrappyAttachPoint3D.x, ropeScrappyAttachPoint3D.y);
+	Vec2 carriedObjectCoords2D = GameUtils::getWorldCoords(this->carriedObject);
+	Vec2 ropeCarriedObjectAttachPoint2D = carriedObjectCoords2D + RopeAttachOffset;
+
+	ropeCarriedObjectAttachPoint2D.y += SwingGravity * dt;
+
+	// Rope visual updates
+	this->ropeRotation = -std::atan2(
+		ropeScrappyAttachPoint2D.y - ropeCarriedObjectAttachPoint2D.y,
+		ropeScrappyAttachPoint2D.x - ropeCarriedObjectAttachPoint2D.x) * 180.0f / float(M_PI);
 	this->rope->setRotation(this->ropeRotation - 90.0f);
-
 	this->ropeWaist->setFlippedX(this->entity->isFlippedX());
 	this->rope->setFlippedX(this->entity->isFlippedX());
 
-	GameUtils::setWorldCoords3D(this->target, GameUtils::getWorldCoords3D(this->entity->getAnimations()) + destPosition);
+	// Compute final position
+	Vec2 closestPointOnRope2D = AlgoUtils::pointOnCircle(ropeScrappyAttachPoint2D, ScrappyRopeCarryBehavior::FixedRopeDistance, ropeCarriedObjectAttachPoint2D);
+	Vec3 closestPointOnRope3D = Vec3(closestPointOnRope2D.x, closestPointOnRope2D.y, ropeScrappyAttachPoint3D.z);
+
+	GameUtils::setWorldCoords3D(this->carriedObject, closestPointOnRope3D - Vec3(RopeAttachOffset.x, RopeAttachOffset.y, 0.0f));
 }

@@ -422,18 +422,18 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 
 	const CSize wallDetectorSize = CSize(
 		std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f),
-		std::max(this->entity->getEntitySize().height, 16.0f)
+		std::max(this->entity->getEntitySize().height - 32.0f, 16.0f)
 	);
 
 	this->leftCollision = CollisionObject::create(
-		CollisionObject::createBox(wallDetectorSize),
-		// CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
+		// CollisionObject::createBox(wallDetectorSize),
+		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		CollisionObject::Properties(false, false)
 	);
 	this->rightCollision = CollisionObject::create(
-		CollisionObject::createBox(wallDetectorSize),
-		// CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
+		// CollisionObject::createBox(wallDetectorSize),
+		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		CollisionObject::Properties(false, false)
 	);

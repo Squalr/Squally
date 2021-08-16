@@ -87,12 +87,11 @@ void EntityPickPocketBehavior::onLoad()
 
 		this->entity->watchForComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 		{
-			if (!this->canPickPocket())
-			{
-				return;
-			}
-
 			selectionBehavior->setClickModifier(InputEvents::KeyCode::KEY_SHIFT);
+			selectionBehavior->setClickableCallback([=]()
+			{
+				return this->canPickPocket();
+			});
 			selectionBehavior->setEntityClickCallbacks([=]()
 			{
 				this->attemptPickPocket();

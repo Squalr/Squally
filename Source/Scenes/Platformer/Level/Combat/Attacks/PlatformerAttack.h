@@ -111,7 +111,7 @@ private:
 	std::string iconResource;
 	int baseDamageOrHealingMin = 0;
 	int baseDamageOrHealingMax = 0;
-	float damageMultiplier = 0.0f;
+	float damageMultiplier = 1.0f;
 	int specialCost = 0;
 
 	std::vector<std::function<void()>> attackCompleteCallbacks;

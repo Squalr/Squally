@@ -60,6 +60,18 @@ void EntitySelectionBehavior::update(float dt)
 
 		InputEvents::TriggerMouseRequestRefresh();
 	}
+
+	if (this->canClickCallback != nullptr && this->clickHitbox != nullptr)
+	{
+		if (canClickCallback())
+		{
+			this->clickHitbox->enableInteraction();
+		}
+		else
+		{
+			this->clickHitbox->disableInteraction();
+		}
+	}
 }
 
 void EntitySelectionBehavior::onLoad()
@@ -101,6 +113,11 @@ void EntitySelectionBehavior::setEntityClickCallbacks(std::function<void()> onCl
 void EntitySelectionBehavior::setClickModifier(InputEvents::KeyCode modifier)
 {
 	this->clickHitbox->setClickModifier(modifier);
+}
+
+void EntitySelectionBehavior::setClickableCallback(std::function<bool()> canClickCallback)
+{
+	this->canClickCallback = canClickCallback;
 }
 
 void EntitySelectionBehavior::clearEntityClickCallbacks()

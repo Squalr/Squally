@@ -149,27 +149,20 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 	// Damage all team mates
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		bool healthLinkTargetFound = false;
+		std::vector<PlatformerEntity*> targets = timeline->getSameTeamEntities(damageOrHealing->target);
 
-		for (auto next : timeline->getSameTeamEntities(damageOrHealing->target))
+		for (PlatformerEntity* target : targets)
 		{
-			if (next != damageOrHealing->target && next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 				{
 					entityBuffBehavior->getBuff<HealthLink>([&](HealthLink* healthLink)
 					{
-						healthLinkTargetFound = true;
-						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, next, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
 					});
 				});
 			}
-		}
-
-		if (healthLinkTargetFound)
-		{
-			// Do not use the hackable code for the main target
-			(*damageOrHealing->damageOrHealing) /= 2;
 		}
 	}));
 }

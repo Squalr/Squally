@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyRopeCarryBehavior.h"
 
 #include "Resources/EntityResources.h"
 

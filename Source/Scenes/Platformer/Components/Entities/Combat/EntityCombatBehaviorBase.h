@@ -32,5 +32,5 @@ private:
 	int bonusAttack = 0;
 	int bonusMagicAttack = 0;
 	float bonusSpeed = 0.0f;
-	float timelineSpeed = 0.0f;
+	float timelineSpeed = 1.0f;
 };

@@ -32,6 +32,7 @@ public:
 	};
 
 	static cocos2d::Vec3 computeArcVelocity(cocos2d::Vec3 source, cocos2d::Vec3 destination, cocos2d::Vec3 acceleration, cocos2d::Vec3 time);
+	static cocos2d::Vec2 pointOnCircle(cocos2d::Vec2 center, float radius, cocos2d::Vec2 closestPoint);
 	static cocos2d::Vec2 pointOnEllipse(cocos2d::Vec2 center, float rx, float ry, cocos2d::Vec2 closestPoint);
 	static std::vector<int> subsetSum(const std::vector<int>& numbers, int sum, int requiredLength);
 	

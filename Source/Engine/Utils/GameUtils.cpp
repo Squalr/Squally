@@ -365,7 +365,7 @@ CRect GameUtils::getScreenBounds(Node* node, const CSize& padding, bool checkFor
 	nodeCoords.x -= padding.width;
 	nodeCoords.y -= padding.height;
 	
-	return getScreenBounds(nodeCoords, node->getContentSize() * GameUtils::getUniformScale(node) + padding);
+	return GameUtils::getScreenBounds(nodeCoords, node->getContentSize() * GameUtils::getUniformScale(node) + padding * 2.0f);
 }
 
 CRect GameUtils::getScreenBounds(const Vec3& position, const CSize& size)
