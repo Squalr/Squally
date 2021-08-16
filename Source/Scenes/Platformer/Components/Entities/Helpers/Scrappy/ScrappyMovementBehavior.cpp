@@ -61,17 +61,7 @@ void ScrappyMovementBehavior::onLoad()
 		// Listen for Squally warp
 		this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventAfterWarpPrefix + this->squally->getUniqueIdentifier(), [=](EventCustom* eventCustom)
 		{
-			PlatformerEvents::WarpObjectToLocationArgs* args = static_cast<PlatformerEvents::WarpObjectToLocationArgs*>(eventCustom->getData());
-			
-			if (args != nullptr)
-			{
-				MapLayer* layer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
-
-				if (layer != nullptr)
-				{
-					GameUtils::changeParent(this->scrappy, layer, true);
-				}
-			}
+			this->warpToSqually(true, false);
 		}));
 
 		this->defer([=]()
@@ -79,11 +69,6 @@ void ScrappyMovementBehavior::onLoad()
 			this->warpToSqually();
 		});
 	}, Squally::MapKey);
-
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventSquallySpawned, [=](EventCustom* eventCustom)
-	{
-		this->warpToSqually();
-	}));
 
 	this->scheduleUpdate();
 }
@@ -167,14 +152,22 @@ void ScrappyMovementBehavior::update(float dt)
 	this->scrappy->setPositionZ(squallyPosition.z + parentDelta.z);
 }
 
-void ScrappyMovementBehavior::warpToSqually()
+void ScrappyMovementBehavior::warpToSqually(bool warpLayer, bool warpPosition)
 {
 	MapLayer* layer = GameUtils::GetFirstParentOfType<MapLayer>(this->squally);
 
-	if (layer != nullptr)
+	if (layer != nullptr && warpLayer)
 	{
 		GameUtils::changeParent(this->scrappy, layer, true);
 	}
 
-	GameUtils::setWorldCoords3D(this->scrappy, GameUtils::getWorldCoords3D(this->squally));
+	if (warpPosition)
+	{
+		GameUtils::setWorldCoords3D(this->scrappy, GameUtils::getWorldCoords3D(this->squally));
+	}
+
+	this->scrappy->getComponent<ScrappyRopeCarryBehavior>([=](ScrappyRopeCarryBehavior* ropeCarryBehavior)
+	{
+		ropeCarryBehavior->resetRope();
+	});
 }

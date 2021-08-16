@@ -15,7 +15,7 @@ public:
 	static ScrappyRopeCarryBehavior* create(GameObject* owner);
 
 	void setCarriedObject(GameObject* target);
-	void setRopeHorizontalVelocity(float horizontalVelocity);
+	void resetRope();
 
 	static const std::string MapKey;
 

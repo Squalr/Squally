@@ -23,7 +23,7 @@ protected:
 private:
 	typedef GameComponent super;
 	
-	void warpToSqually();
+	void warpToSqually(bool warpLayer = true, bool warpPosition = true);
 
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;

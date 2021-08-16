@@ -76,6 +76,28 @@ void ScrappyRopeCarryBehavior::setCarriedObject(GameObject* carriedObject)
 	this->rope->setVisible(this->carriedObject != nullptr);
 }
 
+void ScrappyRopeCarryBehavior::resetRope()
+{
+	if (this->carriedObject == nullptr || this->entity == nullptr)
+	{
+		return;
+	}
+
+	static const Vec2 RopeAttachOffset = Vec2(0.0f, 32.0f);
+
+	Vec2 floatOffset = this->entity->getFloatNode()->getPosition();
+	Vec3 ropeScrappyAttachPoint = GameUtils::getWorldCoords3D(this->entity->getFloatNode()) + Vec3(RopeAttachOffset.x, RopeAttachOffset.y, 0.0f);
+	Vec3 carriedObjectCoords = ropeScrappyAttachPoint + Vec3(0.0f, -ScrappyRopeCarryBehavior::FixedRopeDistance, 0.0f);
+
+	// Rope visual updates
+	this->ropeRotation = -std::atan2(
+		ropeScrappyAttachPoint.y - carriedObjectCoords.y,
+		ropeScrappyAttachPoint.x - carriedObjectCoords.x) * 180.0f / float(M_PI);
+	this->rope->setRotation(this->ropeRotation - 90.0f);
+
+	GameUtils::setWorldCoords3D(this->carriedObject, Vec3(carriedObjectCoords.x, carriedObjectCoords.y, ropeScrappyAttachPoint.z));
+}
+
 void ScrappyRopeCarryBehavior::update(float dt)
 {
 	super::update(dt);
