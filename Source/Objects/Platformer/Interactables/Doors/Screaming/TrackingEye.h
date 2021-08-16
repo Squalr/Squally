@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -9,17 +9,17 @@ namespace cocos2d
 
 class Squally;
 
-class TrackingEye : public SmartNode
+class TrackingEye : public GameObject
 {
 public:
-	static TrackingEye* create();
+	static TrackingEye* create(cocos2d::ValueMap& properties);
 
 	void pair(TrackingEye* pairedEye);
 
 	static const std::string MapKey;
 
 protected:
-	TrackingEye();
+	TrackingEye(cocos2d::ValueMap& properties);
 	virtual ~TrackingEye();
 
 	void onEnter() override;
@@ -27,11 +27,12 @@ protected:
 	void update(float dt) override;
 
 private:
-	typedef SmartNode super;
+	typedef GameObject super;
 
 	void updateEyeTracking(float dt);
 
-	cocos2d::Vec2 eyeVector;
+	cocos2d::Vec2 initialCoords = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 eyeVector = cocos2d::Vec2::ZERO;
 
 	TrackingEye* pairedEye = nullptr;
 

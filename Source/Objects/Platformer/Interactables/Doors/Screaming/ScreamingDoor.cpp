@@ -22,9 +22,11 @@ ScreamingDoor* ScreamingDoor::create(ValueMap& properties)
 
 ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, CSize(256.0f, 420.0f), Vec2(0.0f, -320.0f))
 {
+	ValueMap trackingEyeProperties = ValueMap();
+
 	this->screamingDoor = Sprite::create(ObjectResources::Doors_ScreamingDoor_ScreamingDoor);
-	this->leftEye = TrackingEye::create();
-	this->rightEye = TrackingEye::create();
+	this->leftEye = TrackingEye::create(trackingEyeProperties);
+	this->rightEye = TrackingEye::create(trackingEyeProperties);
 
 	this->leftEye->pair(this->rightEye);
 	this->rightEye->pair(this->leftEye);

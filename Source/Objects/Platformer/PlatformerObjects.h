@@ -52,6 +52,7 @@
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoor.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"
 #include "Objects/Platformer/Interactables/Doors/Screaming/ScreamingDoor.h"
+#include "Objects/Platformer/Interactables/Doors/Screaming/TrackingEye.h"
 #include "Objects/Platformer/Interactables/Doors/Temple/TempleDoor.h"
 #include "Objects/Platformer/Interactables/Doors/TrapDoor/TrapDoor.h"
 #include "Objects/Platformer/Interactables/Doors/TrapDoor/TrapDoorFrame.h"

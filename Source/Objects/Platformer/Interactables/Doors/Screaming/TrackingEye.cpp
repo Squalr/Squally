@@ -4,6 +4,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -14,26 +15,21 @@ using namespace cocos2d;
 
 const std::string TrackingEye::MapKey = "tracking-eye";
 
-TrackingEye* TrackingEye::create()
+TrackingEye* TrackingEye::create(ValueMap& properties)
 {
-	TrackingEye* instance = new TrackingEye();
+	TrackingEye* instance = new TrackingEye(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TrackingEye::TrackingEye() : super()
+TrackingEye::TrackingEye(ValueMap& properties) : super(properties)
 {
 	this->eyeBase = Sprite::create(ObjectResources::Doors_ScreamingDoor_EyeBase);
 	this->eyeInner = Sprite::create(ObjectResources::Doors_ScreamingDoor_EyeInner);
 	this->eyeRing = Sprite::create(ObjectResources::Doors_ScreamingDoor_EyeRing);
 	this->eyePupil = Sprite::create(ObjectResources::Doors_ScreamingDoor_EyePupil);
-	this->eyeParts = std::vector<cocos2d::Sprite*>();
-	this->leeway = std::vector<float>();
-	this->pairedEye = nullptr;
-	this->squally = nullptr;
-	this->eyeVector = Vec2::ZERO;
 
 	this->eyeParts.push_back(this->eyeBase);
 	this->eyeParts.push_back(this->eyeInner);
@@ -63,6 +59,8 @@ void TrackingEye::onEnter()
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	this->initialCoords = GameUtils::getWorldCoords(this, false);
 
 	this->scheduleUpdate();
 }
@@ -102,22 +100,35 @@ void TrackingEye::updateEyeTracking(float dt)
 			but a distance-ratio vector allows for the pupil to be between the center and the edge of the eye.
 
 		In both cases, gradual blending is used to prevent "snapping" motions
-
 	*/
 	
 	static const CSize HalfScreenSize = Director::getInstance()->getVisibleSize() / 2.0f;
 	static const float EyeSpeed = 8.0f;
+	static Vec2 SquallyCoords = Vec2::ZERO;
+	static unsigned int TickCache = 0;
 
-	Vec2 thisCoords = GameUtils::getWorldCoords(this, false);
-	Vec2 pairedCoords = this->pairedEye == nullptr ? thisCoords : GameUtils::getWorldCoords(this->pairedEye, false);
-	Vec2 squallyCoords = GameUtils::getWorldCoords(this->squally, false);
-	Vec2 furthestEyeCoords = thisCoords.distance(squallyCoords) >= pairedCoords.distance(squallyCoords) ? thisCoords : pairedCoords;
-	bool isBetweenEyes = (thisCoords.x >= squallyCoords.x && pairedCoords.x <= squallyCoords.x) || (pairedCoords.x >= squallyCoords.x && thisCoords.x <= squallyCoords.x);
-	Vec2 activeEyeCoords = isBetweenEyes ? thisCoords : furthestEyeCoords;
+	// Cached per frame between all eye instances for performance
+	if (TickCache != SmartScene::GlobalTick)
+	{
+		TickCache = SmartScene::GlobalTick;
+		SquallyCoords = GameUtils::getWorldCoords(this->squally, false);
+	}
+	
+	Vec2 activeEyeCoords = this->initialCoords;
+	bool isBetweenEyes = false;
+
+	if (this->pairedEye != nullptr)
+	{
+		Vec2 pairedCoords = this->pairedEye == nullptr ? this->initialCoords : this->pairedEye->initialCoords;
+		Vec2 furthestEyeCoords = this->initialCoords.distance(SquallyCoords) >= pairedCoords.distance(SquallyCoords) ? this->initialCoords : pairedCoords;
+		bool isBetweenEyes = (this->initialCoords.x >= SquallyCoords.x && pairedCoords.x <= SquallyCoords.x) || (pairedCoords.x >= SquallyCoords.x && this->initialCoords.x <= SquallyCoords.x);
+
+		activeEyeCoords = isBetweenEyes ? this->initialCoords : furthestEyeCoords;
+	}
 
 	Vec2 distanceRatio = Vec2(
-		MathUtils::clamp((squallyCoords.x - activeEyeCoords.x) / HalfScreenSize.width, -1.0f, 1.0f),
-		MathUtils::clamp((squallyCoords.y - activeEyeCoords.y) / HalfScreenSize.height, -1.0f, 1.0f)
+		MathUtils::clamp((SquallyCoords.x - activeEyeCoords.x) / HalfScreenSize.width, -1.0f, 1.0f),
+		MathUtils::clamp((SquallyCoords.y - activeEyeCoords.y) / HalfScreenSize.height, -1.0f, 1.0f)
 	);
 	
 	Vec2 unit = distanceRatio;
