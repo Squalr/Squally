@@ -23,13 +23,14 @@ protected:
 	virtual ~TrackingEye();
 
 	void onEnter() override;
-	void initializePositions() override;
 	void update(float dt) override;
 
 private:
 	typedef GameObject super;
+	friend class TrackingEyeController;
 
 	void updateEyeTracking(float dt);
+	void updateSingleEyeTracking(float dt, cocos2d::Vec2 thisCoords, cocos2d::Vec2 squallyCoords);
 
 	cocos2d::Vec2 initialCoords = cocos2d::Vec2::ZERO;
 	cocos2d::Vec2 eyeVector = cocos2d::Vec2::ZERO;
@@ -45,4 +46,6 @@ private:
 	cocos2d::Sprite* eyePupil = nullptr;
 
 	Squally* squally = nullptr;
+
+	static const std::string PropertyEyeGroup;
 };

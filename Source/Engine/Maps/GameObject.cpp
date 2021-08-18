@@ -309,6 +309,21 @@ void GameObject::addTag(std::string tag)
 	this->tags.insert(tag);
 }
 
+const std::string GameObject::getTag() const
+{
+	if (this->tags.size() > 0)
+	{
+		return *this->tags.begin();
+	}
+
+	return "";
+}
+
+const std::set<std::string>& GameObject::getTags() const
+{
+	return this->tags;
+}
+
 Value GameObject::getPropertyOrDefault(std::string key, Value value)
 {
 	return GameUtils::getKeyOrDefault(this->properties, key, value);

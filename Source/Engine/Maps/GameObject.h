@@ -21,6 +21,8 @@ public:
 	void detachComponent(GameComponent* component);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
+	const std::string getTag() const;
+	const std::set<std::string>& getTags() const;
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
 	cocos2d::Value getRuntimeStateOrDefault(std::string key, cocos2d::Value value);
 	int getRuntimeStateOrDefaultInt(std::string key, int value);

@@ -69,7 +69,6 @@ bool Steam::IsSquallySteamBuild()
 		}
 	}
 	
-	return false; // Temp
 	return !isItchBuild;
 }
 
