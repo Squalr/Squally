@@ -112,7 +112,7 @@
     <property name="color" value="red"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="or-puzzle"/>
+    <property name="tag" value="and-puzzle"/>
    </properties>
   </object>
   <object id="803" name="logic-torch" type="object" x="5231.1" y="1014.97" width="101" height="111">
@@ -120,7 +120,7 @@
     <property name="color" value="green"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="or-puzzle"/>
+    <property name="tag" value="and-puzzle"/>
    </properties>
   </object>
   <object id="804" name="logic-torch" type="object" x="4630.42" y="1008.91" width="101" height="111">
@@ -128,7 +128,7 @@
     <property name="color" value="blue"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="or-puzzle"/>
+    <property name="tag" value="and-puzzle"/>
    </properties>
   </object>
   <object id="805" name="logic-torch" type="object" x="5819.23" y="1014.97" width="101" height="111">
@@ -136,7 +136,7 @@
     <property name="color" value="purple"/>
     <property name="interactable" type="bool" value="false"/>
     <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="or-puzzle"/>
+    <property name="tag" value="and-puzzle"/>
    </properties>
   </object>
   <object id="806" name="logic-gate" type="object" x="3940.34" y="1432.78" width="285" height="676">

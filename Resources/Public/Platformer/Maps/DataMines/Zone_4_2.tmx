@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1876">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1888">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="texture" x="-966.54" y="-1623.82" width="8029.1" height="5487.64"/>
+  <object id="837" name="mines" type="texture" x="-922.54" y="-791.82" width="5021.1" height="4199.64"/>
  </objectgroup>
  <objectgroup id="78" name="fireflies -8">
   <properties>
@@ -176,16 +176,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1691" name="dark-grass" type="terrain" x="-352.54" y="418" width="1369.08" height="1884">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1696" name="dark-grass" type="terrain" x="4335.46" y="434" width="1369.08" height="1828">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="80" name="decor bg">
   <properties>
@@ -196,8 +186,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1623" name="mines" type="terrain" x="-291.025" y="-569.394" width="6225.08" height="1116"/>
-  <object id="1708" name="dark-grass" type="terrain" x="-174.45" y="1647.61" width="5925.23" height="948"/>
+  <object id="1884" name="dark-grass" type="terrain" x="-100.615" y="1886" width="3617.23" height="556"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -220,18 +209,21 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1874" name="edge-portal" type="object" x="-1.29233" y="1156" width="199.918" height="488.002">
+  <object id="1874" name="edge-portal" type="object" x="0.04" y="1378" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_4_1"/>
-    <property name="transition" value="left"/>
+    <property name="map" value="DataMines/Zone_4_0"/>
+    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
-  <object id="1875" name="edge-portal" type="object" x="5429.86" y="1161.21" width="199.918" height="488.002">
+  <object id="1887" name="logic-torch" type="object" x="2787.5" y="1774.5" width="101" height="111">
    <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="DataMines/Zone_4_3"/>
-    <property name="transition" value="right"/>
+    <property name="color" value="purple"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_XOR_PURPLE_1"/>
    </properties>
   </object>
  </objectgroup>
@@ -245,20 +237,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1869" name="earth-elemental" type="entity" x="2432.42" y="1520.37" width="128" height="128">
+  <object id="1883" name="rhinoman" type="entity" x="1875.76" y="1753.45" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dm-generic"/>
-   </properties>
-  </object>
-  <object id="1870" name="earth-elemental" type="entity" x="2439.58" y="1131.63" width="128" height="128">
-   <properties>
-    <property name="components" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>
@@ -268,21 +253,21 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="864" name="squally" type="entity" x="458" y="1518.38" width="128" height="128">
+  <object id="864" name="squally" type="entity" x="477" y="1545.88" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="1698" name="spawn" type="object" x="5008.55" y="1520.79" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="1705" name="spawn" type="object" x="398.545" y="1517.79" width="128" height="128">
+  <object id="1698" name="spawn" type="object" x="572.55" y="1544.79" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="103" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="70" name="fireflies">
   <properties>

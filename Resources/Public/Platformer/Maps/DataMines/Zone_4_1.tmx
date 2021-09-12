@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1876">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="105" nextobjectid="1899">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="texture" x="-966.54" y="-1575.82" width="7981.1" height="5439.64"/>
+  <object id="837" name="mines" type="texture" x="-966.54" y="-1143.82" width="5373.1" height="4559.64"/>
  </objectgroup>
  <objectgroup id="78" name="fireflies -8">
   <properties>
@@ -113,6 +113,39 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1881" name="mines" type="terrain" x="1215.32" y="1532.06" width="1493.59" height="948"/>
+  <object id="1896" name="mines" type="terrain" x="2716.84" y="-348.909" width="1493.59" height="3264"/>
+ </objectgroup>
+ <objectgroup id="103" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1887" name="vase" type="object" x="2393.5" y="1368.48" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
+   </properties>
+  </object>
+  <object id="1889" name="chest" type="object" x="2205.09" y="1406.36" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dm-generic"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="104" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1895" name="warp" type="object" x="1534.67" y="1278.67" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="74" name="fireflies -4">
   <properties>
@@ -126,6 +159,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1883" name="mines" type="terrain" x="1380.84" y="1613.79" width="357.23" height="754.061"/>
  </objectgroup>
  <objectgroup id="73" name="fireflies -3">
   <properties>
@@ -139,6 +173,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1890" name="mines" type="terrain" x="1423.38" y="1581.64" width="357.23" height="754.061"/>
  </objectgroup>
  <objectgroup id="72" name="fireflies -2">
   <properties>
@@ -152,6 +187,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1891" name="mines" type="terrain" x="1460.05" y="1552.97" width="357.23" height="754.061"/>
  </objectgroup>
  <objectgroup id="71" name="fireflies -1">
   <properties>
@@ -176,12 +212,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1691" name="dark-grass" type="terrain" x="-352.54" y="418" width="1369.08" height="1884">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1696" name="dark-grass" type="terrain" x="4335.46" y="434" width="1369.08" height="1828">
+  <object id="1691" name="dark-grass" type="terrain" x="-352.54" y="-174" width="1369.08" height="2476">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -196,8 +227,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1623" name="mines" type="terrain" x="-291.025" y="-569.394" width="6225.08" height="1116"/>
-  <object id="1708" name="dark-grass" type="terrain" x="-174.45" y="1647.61" width="5925.23" height="948"/>
+  <object id="1708" name="dark-grass" type="terrain" x="-174.45" y="1647.61" width="2993.23" height="948"/>
+  <object id="1897" name="dark-grass" type="terrain" x="2823.39" y="-338" width="397.23" height="2876"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -220,18 +251,21 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1874" name="edge-portal" type="object" x="1.37433" y="1162.67" width="199.918" height="488.002">
+  <object id="1874" name="edge-portal" type="object" x="-1.29233" y="1156" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="DataMines/Zone_4_0"/>
-    <property name="transition" value="left"/>
+    <property name="transition" value="left-top"/>
    </properties>
   </object>
-  <object id="1875" name="edge-portal" type="object" x="5432.04" y="1158" width="199.918" height="488.002">
+  <object id="1898" name="logic-torch" type="object" x="2223.5" y="1540.5" width="101" height="111">
    <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="DataMines/Zone_4_2"/>
-    <property name="transition" value="right"/>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_XOR_BLUE_1"/>
    </properties>
   </object>
  </objectgroup>
@@ -245,20 +279,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1867" name="earth-golem" type="entity" x="1808.42" y="1518.37" width="128" height="128">
+  <object id="1879" name="goblin-warrior-pig" type="entity" x="2035.22" y="1523.82" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="dm-generic"/>
-   </properties>
-  </object>
-  <object id="1868" name="earth-golem" type="entity" x="1815.58" y="1129.63" width="128" height="128">
-   <properties>
-    <property name="components" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-X"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>
@@ -268,19 +292,30 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="864" name="squally" type="entity" x="436.667" y="1519.21" width="128" height="128">
+  <object id="864" name="squally" type="entity" x="458" y="1518.38" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
-   </properties>
-  </object>
-  <object id="1698" name="spawn" type="object" x="5008.55" y="1520.79" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="1705" name="spawn" type="object" x="398.545" y="1517.79" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1892" name="warp" type="object" x="1441.33" y="1393.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="1893" name="warp" type="object" x="1441.33" y="1393.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
    </properties>
   </object>
  </objectgroup>
