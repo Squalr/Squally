@@ -9,7 +9,8 @@
         "libpng",
         "libvorbis",
         "mpg123", 
-        "tinyxml2"
+        "tinyxml2",
+        "tiff"
     ],
     "darwin": [
         "openssl"
