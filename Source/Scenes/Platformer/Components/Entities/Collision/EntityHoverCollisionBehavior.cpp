@@ -66,6 +66,13 @@ void EntityHoverCollisionBehavior::onLoad()
 		this->buildHoverCollision();
 		this->positionHoverCollision();
 		this->toggleQueryable(true);
+		
+		// Jump collision detector can be incorrectly initialized if the entity is spawned dynamically (ie Squally in the intro cutscene).
+		// Hack fix because I don't wan't to do root cause analysis.
+		this->defer([=]()
+		{
+			this->positionHoverCollision();
+		});
 	});
 
 	this->scheduleUpdate();
