@@ -42,6 +42,7 @@ protected:
 	
 	static cocos2d::ValueMap HackStateStorage;
 	static const std::string HackStorageKeyDamage;
+	static const std::string HackStorageKeyHealth;
 
 private:
 	typedef HackableObject super;

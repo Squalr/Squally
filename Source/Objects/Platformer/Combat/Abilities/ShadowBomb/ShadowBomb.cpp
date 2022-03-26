@@ -15,6 +15,7 @@
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Abilities/ShadowBomb/ShadowBombGenericPreview.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -83,16 +84,16 @@ void ShadowBomb::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_COMPARE_TEAM,
+			LOCAL_FUNC_ID_SHADOW_BOMB,
 			HackableCode::HackableCodeInfo(
 				ShadowBomb::HackIdentifierShadowBomb,
-				Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_SpellImpactPurple,
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax::create()
 					},
 				},
 				int(HackFlags::None),
@@ -102,15 +103,9 @@ void ShadowBomb::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-						"cmp eax, 1\n"
+						"and eax, 15\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"cmp rax, 1\n"
+						"and rax, 15\n"
 					),
 				},
 				true
@@ -155,7 +150,12 @@ void ShadowBomb::runShadowBomb(TimelineEntry* target)
 			this->animationNode->playAnimation(FXResources::ShadowBomb_ShadowBomb_0000, 0.05f, true);
 			this->impactSound->play();
 			this->dealDamage(target);
-			onImpact(this->HackStateStorage[CombatObject::HackStorageKeyDamage].asInt());
+			int currentHealth = 0;
+			target->getEntity()->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+			{
+				currentHealth = healthBehavior->getHealth();
+			});
+			onImpact(currentHealth - this->HackStateStorage[CombatObject::HackStorageKeyHealth].asInt());
 		})
 	);
 
@@ -178,20 +178,24 @@ NO_OPTIMIZE void ShadowBomb::dealDamage(TimelineEntry* target)
 {
 	static volatile int health = 0;
 
+	target->getEntity()->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+	{
+		health = healthBehavior->getHealth();
+	});
+
 	ASM(push ZAX);
 
 	ASM(MOV ZAX, 0);
 	ASM_MOV_REG_VAR(eax, health);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHADOW_BOMB);
-	ASM(mov ZAX, 22);
-	ASM_NOP8();
+	ASM(and ZAX, 15);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(health, eax);
 	ASM(pop ZAX);
 
-	this->HackStateStorage[CombatObject::HackStorageKeyDamage] = Value(health);
+	this->HackStateStorage[CombatObject::HackStorageKeyHealth] = Value(health);
 
 	HACKABLES_STOP_SEARCH();
 }
