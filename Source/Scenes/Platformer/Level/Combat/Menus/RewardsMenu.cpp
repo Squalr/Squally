@@ -138,7 +138,7 @@ void RewardsMenu::giveExp()
 {
 	this->clearEmblems();
 
-	ObjectEvents::QueryObject<PlatformerEntity>([&](PlatformerEntity* entity)
+	ObjectEvents::QueryObjects<PlatformerEntity>([&](PlatformerEntity* entity)
 	{
 		entity->getComponent<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
 		{
