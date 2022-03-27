@@ -13,7 +13,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true
+            "console": "internalConsole"
         },
         {
             "name": "(Mac) Launch",
@@ -24,7 +24,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "console": "internalConsole",
             "MIMode": "lldb"
         },
         {
@@ -36,7 +36,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "console": "internalConsole",
             "MIMode": "lldb"
         },
         {
@@ -48,7 +48,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "console": "internalConsole",
             "MIMode": "gdb",
             "setupCommands": [
                 {
