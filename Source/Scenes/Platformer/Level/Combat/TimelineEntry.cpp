@@ -32,6 +32,10 @@ using namespace cocos2d;
 
 const float TimelineEntry::CastPercentage = 0.75f;
 const float TimelineEntry::BaseSpeedMultiplier = 0.175f;
+const int TimelineEntry::DefaultMinDamage = -255;
+const int TimelineEntry::DefaultMaxDamage = 255;
+const int TimelineEntry::DefaultMinHealing = -255;
+const int TimelineEntry::DefaultMaxHealing = 255;
 
 TimelineEntry* TimelineEntry::create(PlatformerEntity* entity, int spawnIndex)
 {
@@ -237,18 +241,21 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		return;
 	}
 
+	int minDamage = TimelineEntry::DefaultMinDamage;
+	int maxDamage = TimelineEntry::DefaultMaxDamage;
+
 	if (!disableBuffProcessing)
 	{
 		int originalDamageBeforeBuffsAndStats = damage;
 		int originalDamageBeforeBuffs = originalDamageBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerStatsModifyDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
-		CombatEvents::TriggerStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, &minDamage, &maxDamage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, &minDamage, &maxDamage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
 
 		originalDamageBeforeBuffs = damage;
 
-		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType);
+		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, &minDamage, &maxDamage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType);
 
 		/******************
 		Modify outgoing damage
@@ -319,19 +326,24 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerModifyDamageTakenComplete(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
 	}
 
-	if (abilityType != AbilityType::Passive)
+	if (abilityType != AbilityType::Passive && damage > 0)
 	{
 		this->tryInterrupt();
 	}
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
+	// Finally clamp the damage value to the min/max
+	bool isOverflowedMin = damage <= minDamage;
+	bool isOverflowedMax = damage >= maxDamage;
+	int clampedDamage = MathUtils::clamp(damage, minDamage, maxDamage);
+
 	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		healthBehavior->setHealth(health - damage);
+		healthBehavior->setHealth(health - clampedDamage);
 	});
 
-	CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
+	CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs(caster, target, clampedDamage, abilityType, false, isOverflowedMin, isOverflowedMax));
 }
 
 void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType)
@@ -343,16 +355,19 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		return;
 	}
 
+	int minHealing = TimelineEntry::DefaultMinHealing;
+	int maxHealing = TimelineEntry::DefaultMaxHealing;
+
 	if (!disableBuffProcessing)
 	{
 		int originalHealingBeforeBuffsAndStats = healing;
 		int originalHealingBeforeBuffs = originalHealingBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerStatsModifyHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
-		CombatEvents::TriggerStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, &minHealing, &maxHealing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, &minHealing, &maxHealing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
 		
-		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType);
+		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, &minHealing, &maxHealing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType);
 
 		/******************
 		Modify outgoing healing
@@ -421,12 +436,17 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
+	// Finally clamp the healing value to the min/max
+	bool isOverflowedMin = healing <= minHealing;
+	bool isOverflowedMax = healing >= maxHealing;
+	int clampedHealing = MathUtils::clamp(healing, minHealing, maxHealing);
+
 	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		healthBehavior->setHealth(health + healing);
 	});
 
-	CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
+	CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType, false, isOverflowedMin, isOverflowedMax));
 }
 
 void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)

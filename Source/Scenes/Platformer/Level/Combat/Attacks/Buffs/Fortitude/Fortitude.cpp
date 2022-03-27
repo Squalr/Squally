@@ -117,11 +117,7 @@ void Fortitude::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return FortitudeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()->setStringReplacementVariables(
-							{
-								ConstantString::create(std::to_string(0)),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Fortitude::MaxMultiplier)))
-							})
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()
 					}
 				},
 				int(HackFlags::None),
@@ -170,14 +166,9 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 	this->applyFortitude();
 
-	// Bound multiplier in either direction
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(
-		this->HackStateStorage[Buff::StateKeyDamageTaken].asInt(),
-		-std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier),
-		std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier))
-	);
-	
 	(*damageOrHealing->damageOrHealing) = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier);
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()

@@ -96,7 +96,7 @@ void EntityTextOverlayBehavior::onLoad()
 		if (args != nullptr && args->target == this->entity)
 		{
 			// Negate damage (convert into a raw health delta)
-			this->runHealthDelta(-args->damageOrHealing, false);
+			this->runHealthDelta(-args->damageOrHealing, false, args->overflowedMin, args->overflowedMax);
 		}
 	}));
 
@@ -106,7 +106,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runHealthDelta(args->damageOrHealing, true);
+			this->runHealthDelta(args->damageOrHealing, true, args->overflowedMin, args->overflowedMax);
 		}
 	}));
 
@@ -116,7 +116,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			this->runManaDelta(args->manaRestoreOrDrain, true);
+			this->runManaDelta(args->manaRestoreOrDrain, true, args->overflowedMin, args->overflowedMax);
 		}
 	}));
 
@@ -127,7 +127,7 @@ void EntityTextOverlayBehavior::onLoad()
 		if (args != nullptr && args->target == this->entity)
 		{
 			// Negate restore (convert into a raw mana delta)
-			this->runManaDelta(-args->manaRestoreOrDrain, false);
+			this->runManaDelta(-args->manaRestoreOrDrain, false, args->overflowedMin, args->overflowedMax);
 		}
 	}));
 }
@@ -137,27 +137,45 @@ void EntityTextOverlayBehavior::onDisable()
 	super::onDisable();
 }
 
-void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen)
+void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen, bool overflowMin, bool overflowMax)
 {
 	bool isGreen = (delta > 0 || (delta == 0 && zeroAsGreen));
 
 	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
 	LocalizedString* deltaString = isGreen ? Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount) : Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);
-	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
+	if (overflowMin)
+	{
+		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Min::create() });
+	}
+	else if (overflowMax)
+	{
+		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
+	}
+
+	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 	deltaLabel->setTextColor(isGreen ? Color4B::GREEN : Color4B::RED);
 
 	this->runLabelOverEntity(deltaLabel);
 }
 
-void EntityTextOverlayBehavior::runManaDelta(int delta, bool zeroAsBlue)
+void EntityTextOverlayBehavior::runManaDelta(int delta, bool zeroAsBlue, bool overflowMin, bool overflowMax)
 {
 	bool isBlue = (delta > 0 || (delta == 0 && zeroAsBlue));
 
 	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
 	LocalizedString* deltaString = isBlue ? Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount) : Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);
-	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
+	if (overflowMin)
+	{
+		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Min::create() });
+	}
+	else if (overflowMax)
+	{
+		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
+	}
+
+	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 	deltaLabel->setTextColor(isBlue ? Color4B::BLUE : Color4B::PURPLE);
 
 	this->runLabelOverEntity(deltaLabel);

@@ -116,11 +116,7 @@ void Strength::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return StrengthGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()->setStringReplacementVariables(
-							{
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::MinMultiplier))),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::MaxMultiplier))),
-							})
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()
 					}
 				},
 				int(HackFlags::None),
@@ -167,8 +163,8 @@ void Strength::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 
 	this->applyStrength();
 
-	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier), std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier));
-	
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier);
 	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }
 

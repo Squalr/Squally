@@ -200,14 +200,9 @@ void StoneSkin::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 	this->applyStoneSkin();
 
-	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(
-		this->currentDamageTaken,
-		-std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier),
-		std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier)
-	);
-
 	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier);
 }
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()

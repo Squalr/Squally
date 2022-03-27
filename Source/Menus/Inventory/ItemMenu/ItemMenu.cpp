@@ -39,17 +39,18 @@ const CSize ItemMenu::LabelSize = CSize(288.0f, 32.0f);
 const CSize ItemMenu::ClipSize = CSize(320.0f + 128.0f, 608.0f);
 const float ItemMenu::ClipRightBuffer = 24.0f;
 
-ItemMenu* ItemMenu::create()
+ItemMenu* ItemMenu::create(LocalizedLabel* headerLabel)
 {
-	ItemMenu* instance = new ItemMenu();
+	ItemMenu* instance = new ItemMenu(headerLabel);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ItemMenu::ItemMenu()
+ItemMenu::ItemMenu(LocalizedLabel* headerLabel)
 {
+	this->headerLabel = headerLabel;
 	this->itemPreview = ItemPreview::create(false, true);
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
@@ -62,6 +63,11 @@ ItemMenu::ItemMenu()
 	this->addChild(this->itemListNode);
 	this->addChild(this->inventorySelectionArrow);
 	this->addChild(this->itemPreview);
+
+	if (this->headerLabel != nullptr)
+	{
+		this->addChild(this->headerLabel);
+	}
 }
 
 ItemMenu::~ItemMenu()

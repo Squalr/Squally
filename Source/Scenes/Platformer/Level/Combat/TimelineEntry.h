@@ -42,6 +42,10 @@ public:
 
 	static const float CastPercentage;
 	static const float BaseSpeedMultiplier;
+	static const int DefaultMinDamage;
+	static const int DefaultMaxDamage;
+	static const int DefaultMinHealing;
+	static const int DefaultMaxHealing;
 
 protected:
 	TimelineEntry(PlatformerEntity* entity, int spawnIndex);

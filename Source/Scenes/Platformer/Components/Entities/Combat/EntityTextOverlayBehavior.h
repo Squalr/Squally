@@ -22,8 +22,8 @@ protected:
 private:
 	typedef GameComponent super;
 
-	void runHealthDelta(int delta, bool zeroAsGreen);
-	void runManaDelta(int delta, bool zeroAsBlue);
+	void runHealthDelta(int delta, bool zeroAsGreen, bool overflowMin, bool overflowMax);
+	void runManaDelta(int delta, bool zeroAsBlue, bool overflowMin, bool overflowMax);
 	void runLabelOverEntity(LocalizedLabel* label);
 
 	PlatformerEntity* entity = nullptr;

@@ -180,22 +180,27 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 
 	this->applyReflect();
 
-	// Bound multiplier in either direction
-	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(MathUtils::clamp(
-		this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt(),
-		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier),
-		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
-	));
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
-		this->HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
-		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier),
-		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier)
-	));
+	int minDamage = -std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier);
+	int maxDamage = std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier);
+	int minReflectedDamage = -std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier);
+	int maxReflectedDamage = std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier);
+	bool reflectedDamageOverflowMin = this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt() <= minReflectedDamage;
+	bool reflectedDamageOverflowMax = this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt() >= maxReflectedDamage;
 	
 	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	(*damageOrHealing->damageOrHealingMin) = minDamage;
+	(*damageOrHealing->damageOrHealingMax) = maxDamage;
 
 	// Reflect damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->target, damageOrHealing->caster, GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(), damageOrHealing->abilityType, true));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(
+		damageOrHealing->target,
+		damageOrHealing->caster,
+		GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(),
+		damageOrHealing->abilityType,
+		true,
+		reflectedDamageOverflowMin,
+		reflectedDamageOverflowMax
+	));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()

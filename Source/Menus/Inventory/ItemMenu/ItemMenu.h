@@ -18,7 +18,7 @@ class SmartClippingNode;
 class ItemMenu : public SmartNode
 {
 public:
-	static ItemMenu* create();
+	static ItemMenu* create(LocalizedLabel* headerLabel = nullptr);
 
 	void clearPreview();
 	void clearVisibleItems();
@@ -36,7 +36,7 @@ public:
 	static const cocos2d::Vec3 DefaultTextOffset;
 
 protected:
-	ItemMenu();
+	ItemMenu(LocalizedLabel* headerLabel = nullptr);
 	virtual ~ItemMenu();
 
 	void onEnter() override;
@@ -52,6 +52,7 @@ private:
 	cocos2d::Vec2 previewOffset;
 	cocos2d::Vec3 textOffset;
 
+	LocalizedLabel* headerLabel = nullptr;
 	ItemPreview* itemPreview = nullptr;
 	cocos2d::Sprite* selectedInventoryRow = nullptr;
 	cocos2d::Sprite* inventorySelectionArrow = nullptr;

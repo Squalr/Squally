@@ -235,18 +235,25 @@ public:
 		// If true, this flag will prevent buffs from modifying the damage/healing
 		bool disableBuffProcessing = false;
 
+		bool overflowedMin = false;
+		bool overflowedMax = false;
+
 		DamageOrHealingArgs(
 			PlatformerEntity* caster,
 			PlatformerEntity* target,
 			int damageOrHealing,
 			AbilityType abilityType,
-			bool disableBuffProcessing = false
+			bool disableBuffProcessing = false,
+			bool overflowedMin = false,
+			bool overflowedMax = false
 		)
 			:	caster(caster),
 				target(target),
 				damageOrHealing(damageOrHealing),
 				abilityType(abilityType),
-				disableBuffProcessing(disableBuffProcessing)
+				disableBuffProcessing(disableBuffProcessing),
+				overflowedMin(overflowedMin),
+				overflowedMax(overflowedMax)
 		{
 		}
 	};
@@ -260,9 +267,26 @@ public:
 
 		// If true, this flag will prevent buffs from modifying the drain/restore
 		bool disableBuffProcessing = false;
+		
+		bool overflowedMin = false;
+		bool overflowedMax = false;
 
-		ManaRestoreOrDrainArgs(PlatformerEntity* caster, PlatformerEntity* target, int manaRestoreOrDrain, AbilityType abilityType, bool disableBuffProcessing = false)
-			: caster(caster), target(target), manaRestoreOrDrain(manaRestoreOrDrain), abilityType(abilityType), disableBuffProcessing(disableBuffProcessing)
+		ManaRestoreOrDrainArgs(
+			PlatformerEntity* caster,
+			PlatformerEntity* target,
+			int manaRestoreOrDrain,
+			AbilityType abilityType,
+			bool disableBuffProcessing = false,
+			bool overflowedMin = false,
+			bool overflowedMax = false
+		)
+			:	caster(caster),
+				target(target),
+				manaRestoreOrDrain(manaRestoreOrDrain),
+				abilityType(abilityType),
+				disableBuffProcessing(disableBuffProcessing),
+				overflowedMin(overflowedMin),
+				overflowedMax(overflowedMax)
 		{
 		}
 	};
@@ -272,6 +296,8 @@ public:
 		PlatformerEntity* caster = nullptr;
 		PlatformerEntity* target = nullptr;
 		int* damageOrHealing = nullptr;
+		int* damageOrHealingMin = nullptr;
+		int* damageOrHealingMax = nullptr;
 		int damageOrHealingValue = 0;
 		int originalDamageOrHealingBeforeBuffs = 0;
 		int originalDamageOrHealingBeforeBuffsAndStats = 0;
@@ -281,6 +307,8 @@ public:
 			PlatformerEntity* caster,
 			PlatformerEntity* target,
 			int* damageOrHealing,
+			int* damageOrHealingMin,
+			int* damageOrHealingMax,
 			int damageOrHealingValue,
 			int originalDamageOrHealingBeforeBuffs,
 			int originalDamageOrHealingBeforeBuffsAndStats,
@@ -289,6 +317,8 @@ public:
 			:	caster(caster),
 				target(target),
 				damageOrHealing(damageOrHealing),
+				damageOrHealingMin(damageOrHealingMin),
+				damageOrHealingMax(damageOrHealingMax),
 				damageOrHealingValue(damageOrHealingValue),
 				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
 				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),

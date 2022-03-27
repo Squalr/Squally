@@ -21129,6 +21129,36 @@ namespace Strings
 		virtual ~Platformer_Combat_LevelUp() = default;
 	};
 
+	class Platformer_Combat_Max : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Max* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Max();
+		virtual ~Platformer_Combat_Max() = default;
+	};
+
+	class Platformer_Combat_Min : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Min* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Min();
+		virtual ~Platformer_Combat_Min() = default;
+	};
+
 	class Platformer_Combat_Rewards : public LocalizedString
 	{
 	public:
