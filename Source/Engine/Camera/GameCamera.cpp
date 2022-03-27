@@ -300,7 +300,7 @@ void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 		this->updateCameraDebugLabels();
 	}
 
-	if (Camera::getDefaultCamera() != nullptr)
+	if (Camera::getDefaultCamera() != nullptr && Camera::getDefaultCamera()->getPosition() != cameraPosition)
 	{
 		Camera::getDefaultCamera()->setPosition(cameraPosition);
 		InputEvents::TriggerMouseRequestRefresh();

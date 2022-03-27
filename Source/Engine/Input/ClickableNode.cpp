@@ -343,29 +343,32 @@ void ClickableNode::mouseMove(EventCustom* event)
 			this->mouseInEvent(args);
 		}
 
-		this->isMousedOver = true;
-
-		if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
+		if (!this->isMousedOver)
 		{
-			// Play mouse over sound
-			if (!args->isDragging && this->currentSprite != this->contentSelected)
+			this->isMousedOver = true;
+
+			if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
 			{
-				this->mouseOverSound->play();
+				// Play mouse over sound
+				if (!args->isDragging && this->currentSprite != this->contentSelected)
+				{
+					this->mouseOverSound->play();
+				}
+
+				this->showContent(this->contentSelected);
+
+				// Set args as handled. Caller must un-handle in the callback if they choose.
+				if (!this->isNeverHandleEnabled)
+				{
+					args->handle();
+				}
 			}
 
-			this->showContent(this->contentSelected);
-
-			// Set args as handled. Caller must un-handle in the callback if they choose.
-			if (!this->isNeverHandleEnabled)
+			// Mouse over callback
+			if (this->mouseOverEvent != nullptr)
 			{
-				args->handle();
+				this->mouseOverEvent(args);
 			}
-		}
-
-		// Mouse over callback
-		if (this->mouseOverEvent != nullptr)
-		{
-			this->mouseOverEvent(args);
 		}
 	}
 	else
