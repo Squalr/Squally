@@ -402,17 +402,7 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 		return;
 	}
 
-	CRect rectA = objectA->boundsRect;
-	CRect rectB = objectB->boundsRect;
-	
-	rectA.origin += coordsA;
-	rectB.origin += coordsB;
-
-	Vec2 startCoordsA = rectA.origin;
-	Vec2 endCoordsA = startCoordsA + rectA.size;
-	Vec2 startCoordsB = rectB.origin;
-	Vec2 endCoordsB = startCoordsB + rectB.size;
-	
+	// More detailed detection with collisions
 	for (auto objectASegment : objectA->segmentsRotated)
 	{
 		objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
@@ -427,54 +417,53 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 			}
 			
 			Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(objectASegment, objectBSegment);
-			
-			const auto constrainToIntersection = [](const Vec2& intersectionPoint, const CRect& rect, Vec2& startCoords, Vec2& endCoords)
-			{
-				if (intersectionPoint.x > rect.origin.x && intersectionPoint.x < (rect.origin.x + rect.size.width / 2.0f))
-				{
-					startCoords.x = std::max(startCoords.x, intersectionPoint.x);
-				}
-				else if (intersectionPoint.x > rect.origin.x && intersectionPoint.x < (rect.origin.x + rect.size.width))
-				{
-					endCoords.x = std::min(endCoords.x, intersectionPoint.x);
-				}
+			float objectADistanceP1 = std::get<0>(objectASegment).distance(intersectionPoint);
+			float objectADistanceP2 = std::get<1>(objectASegment).distance(intersectionPoint);
+			float objectBDistanceP1 = std::get<0>(objectBSegment).distance(intersectionPoint);
+			float objectBDistanceP2 = std::get<1>(objectBSegment).distance(intersectionPoint);
 
-				if (intersectionPoint.y > rect.origin.y && intersectionPoint.y < (rect.origin.y + rect.size.height / 2.0f))
+			Vec2 correction = Vec2::ZERO;
+			Vec2 normal = Vec2::ZERO;
+
+			// CollisionResolver::spawnDebugPoint(objectA, intersectionPoint);
+
+			if (std::min(objectADistanceP1, objectADistanceP2) < std::min(objectBDistanceP1, objectBDistanceP2))
+			{
+				// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
+				normal = AlgoUtils::getSegmentNormal(objectBSegment);
+
+				// CollisionResolver::spawnDebugVector(objectA, std::get<0>(objectASegment), std::get<1>(objectASegment), Color4F::GREEN);
+
+				if (objectADistanceP1 < objectADistanceP2)
 				{
-					startCoords.y = std::max(startCoords.y, intersectionPoint.y);
+					correction = intersectionPoint - std::get<0>(objectASegment);
 				}
-				else if (intersectionPoint.y > rect.origin.y && intersectionPoint.y < (rect.origin.y + rect.size.height))
+				else
 				{
-					endCoords.y = std::max(endCoords.y, endCoords.y);
+					correction = intersectionPoint - std::get<1>(objectASegment);
 				}
-			};
-			
-			constrainToIntersection(intersectionPoint, rectA, startCoordsA, endCoordsA);
-			constrainToIntersection(intersectionPoint, rectB, startCoordsB, endCoordsB);
+			}
+			else
+			{
+				// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's static,
+				// so instead we need to push this object away by a calculated amount
+				normal = AlgoUtils::getSegmentNormal(objectASegment);
+
+				// CollisionResolver::spawnDebugVector(objectA, std::get<0>(objectBSegment), std::get<1>(objectBSegment), Color4F::BLUE);
+
+				if (objectBDistanceP1 < objectBDistanceP2)
+				{
+					correction = std::get<0>(objectBSegment) - intersectionPoint;
+				}
+				else
+				{
+					correction = std::get<1>(objectBSegment) - intersectionPoint;
+				}
+			}
+
+			coordsA += CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
 		}
 	}
-	
-	Vec2 correction = Vec2(
-		std::min(rectA.size.width - (endCoordsA.x - startCoordsA.x), rectB.size.width - (endCoordsB.x - startCoordsB.x)),
-		std::min(rectA.size.height - (endCoordsA.y - startCoordsA.y), rectB.size.height - (endCoordsB.y - startCoordsB.y))
-	);
-
-	correction.x = std::max(correction.x, 0.0f);
-	correction.y = std::max(correction.y, 0.0f);
-
-	if (correction.x == 0.0f || correction.y == 0.0f)
-	{
-		return;
-	}
-
-	Vec2 normal = Vec2(std::abs(correction.x), std::abs(correction.y));
-
-	normal.x = normal.x > normal.y ? 0.0f : normal.x;
-	normal.y = normal.y > std::abs(correction.x) ? 0.0f : normal.y;
-
-	normal.normalize();
-
-	CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
 }
 
 void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionResult()> onCollision)
