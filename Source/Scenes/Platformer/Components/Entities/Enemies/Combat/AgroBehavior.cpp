@@ -74,6 +74,7 @@ void AgroBehavior::onLoad()
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
+		this->enable();
 	}, Squally::MapKey);
 
 	// Prevent agro for a small amount of time. This gives time for entities to properly load/warp.

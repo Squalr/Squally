@@ -245,6 +245,11 @@ void EntityMovementBehavior::update(float dt)
 		}
 	}
 	
+	if (!this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+	{
+		this->entityCollision->enableDeathPhysics();
+	}
+
 	// Save velocity
 	this->entityCollision->setVelocity(velocity);
 

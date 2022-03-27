@@ -165,6 +165,16 @@ void EntityCollisionBehaviorBase::enableWaterPhysics()
 	this->movementCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
 }
 
+void EntityCollisionBehaviorBase::enableDeathPhysics()
+{
+	// Wait until the corpse falls to the ground before turning off physics to prevent sliding
+	if (this->movementCollision->hasCollisions())
+	{
+		this->movementCollision->setGravityEnabled(false);
+		this->movementCollision->setPhysicsEnabled(false);
+	}
+}
+
 Vec2 EntityCollisionBehaviorBase::getGravity()
 {
 	return this->movementCollision == nullptr ? Vec2::ZERO : this->movementCollision->getGravity();
