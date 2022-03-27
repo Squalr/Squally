@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="883">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="883">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -100,6 +100,7 @@
    <properties>
     <property name="from" value="bridge-back-A"/>
     <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
@@ -116,18 +117,18 @@
   </properties>
   <object id="856" name="ogre" type="entity" x="6207.21" y="1668.21" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="857" name="orc-grunt" type="entity" x="6208.79" y="1399.78" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
@@ -140,6 +141,7 @@
   <object id="878" name="warp" type="object" x="4365.15" y="1647.97" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-B"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-B"/>
@@ -149,6 +151,7 @@
    <properties>
     <property name="from" value="bridge-back-C"/>
     <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-C"/>
@@ -162,18 +165,18 @@
   </properties>
   <object id="847" name="wood" type="terrain" x="1598.5" y="1936.42" width="347" height="356.5">
    <properties>
-    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="859" name="wood" type="terrain" x="8046.83" y="1819.14" width="347" height="356.5">
    <properties>
-    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="866" name="wood" type="terrain" x="4314.5" y="1927.75" width="347" height="356.5">
@@ -189,18 +192,18 @@
   </properties>
   <object id="848" name="wood" type="terrain" x="1598.5" y="1964.42" width="347" height="356.5">
    <properties>
-    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="860" name="wood" type="terrain" x="8048.83" y="1848.14" width="347" height="356.5">
    <properties>
-    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="867" name="wood" type="terrain" x="4315.5" y="1957.75" width="347" height="356.5">
@@ -216,18 +219,18 @@
   </properties>
   <object id="849" name="wood" type="terrain" x="1598.5" y="1993.75" width="347" height="356.5">
    <properties>
-    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="861" name="wood" type="terrain" x="8050.83" y="1878.14" width="347" height="356.5">
    <properties>
-    <property name="components" value="bridge"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="868" name="wood" type="terrain" x="4316.5" y="1988.75" width="347" height="356.5">
@@ -428,6 +431,7 @@
    <properties>
     <property name="from" value="bridge-front-A"/>
     <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-A"/>
@@ -454,18 +458,18 @@
   </object>
   <object id="813" name="orc-warrior" type="entity" x="9157.99" y="1888.22" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="840" name="troll" type="entity" x="9157.09" y="1618.73" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
@@ -500,6 +504,7 @@
   <object id="876" name="warp" type="object" x="4364" y="1790" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-B"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-B"/>
@@ -510,6 +515,7 @@
    <properties>
     <property name="from" value="bridge-front-C"/>
     <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-C"/>

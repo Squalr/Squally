@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="42" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="994">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="42" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="994">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -338,7 +338,7 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="necron" type="entity" x="2880.36" y="974.613" width="128" height="128">
+  <object id="825" name="necron" type="entity" x="2880.36" y="977.28" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>

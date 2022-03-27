@@ -103,4 +103,6 @@ private:
 	
 	std::function<bool()> interactCallback = nullptr;
 	std::function<bool()> unlockCallback = nullptr;
+
+	static const std::string PropertyLockedText;
 };

@@ -26,6 +26,8 @@
 
 using namespace cocos2d;
 
+const std::string InteractObject::PropertyLockedText = "locked-text-key";
+
 InteractObject* InteractObject::create(
 	InteractType interactType,
 	CSize size,
@@ -77,7 +79,18 @@ InteractObject::InteractObject(
 	
 	this->unlockKeyStr = ConstantString::create(this->inputToString(this->input));
 	this->interactMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(this->interactKeyStr, interactColor, offset); });
-	this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor, offset); });
+
+	std::string lockedText = GameUtils::getKeyOrDefault(this->properties, InteractObject::PropertyLockedText, Value("")).asString();
+
+	if (lockedText == "closed")
+	{
+		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Closed::create(), interactColor, offset); });
+	}
+	else
+	{
+		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor, offset); });
+	}
+
 	this->unlockMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Common_Dash::create()->setStringReplacementVariables(
 		{ this->unlockKeyStr, Strings::Platformer_Objects_Doors_Unlock::create() }), interactColor, offset, 256.0f); });
 

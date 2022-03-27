@@ -26049,6 +26049,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle() = default;
 	};
 
+	class Platformer_Objects_Doors_Closed : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Closed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Closed();
+		virtual ~Platformer_Objects_Doors_Closed() = default;
+	};
+
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString
 	{
 	public:
