@@ -43,7 +43,8 @@ ToggleableObject::ToggleableObject(
 	this->isCulled = false;
 	this->cooldown = 0.0f;
 
-	if (GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsInteractable, Value(true)).asBool())
+	// Override interact type if explicitly marked toggleable
+	if (GameUtils::getKeyOrDefault(this->properties, ToggleableObject::PropertyIsInteractable, Value(false)).asBool())
 	{
 		this->setInteractType(InteractType::Input);
 	}

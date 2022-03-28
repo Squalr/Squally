@@ -57,7 +57,7 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_HourGlass, AbilityType::Physical, BuffData(Haste::Duration, Haste::HasteIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_HourGlass, AbilityType::Arcane, BuffData(Haste::Duration, Haste::HasteIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
