@@ -30,7 +30,7 @@ public:
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
-	CraftingMenuBase(LocalizedString* titleString);
+	CraftingMenuBase(LocalizedString* titleString, LocalizedString* craftablesHeader = nullptr);
 	virtual ~CraftingMenuBase();
 
 	void onEnter() override;

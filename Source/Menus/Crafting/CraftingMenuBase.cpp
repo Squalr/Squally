@@ -37,14 +37,22 @@ using namespace cocos2d;
 
 const float CraftingMenuBase::CraftDuration = 1.5f;
 
-CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString)
+CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString, LocalizedString* craftablesHeader)
 {
+	LocalizedLabel* craftableHeaderLabel = nullptr;
+
+	if (craftablesHeader)
+	{
+		craftableHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, craftablesHeader);
+		craftableHeaderLabel->enableOutline(Color4B::BLACK, 2);
+	}
+
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->craftingPreview = CraftingPreview::create();
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
-	this->itemMenu = ItemMenu::create();
+	this->itemMenu = ItemMenu::create(craftableHeaderLabel);
 	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
 	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
 	this->craftIconNode = Node::create();

@@ -37,6 +37,7 @@ const cocos2d::Vec3 ItemMenu::DefaultTextOffset = Vec3(16.0f, 6.0f, 128.0f);
 const float ItemMenu::LabelSpacing = 96.0f;
 const CSize ItemMenu::LabelSize = CSize(288.0f, 32.0f);
 const CSize ItemMenu::ClipSize = CSize(320.0f + 128.0f, 608.0f);
+const float ItemMenu::ClipTopBuffer = -12.0f;
 const float ItemMenu::ClipRightBuffer = 24.0f;
 
 ItemMenu* ItemMenu::create(LocalizedLabel* headerLabel)
@@ -54,7 +55,7 @@ ItemMenu::ItemMenu(LocalizedLabel* headerLabel)
 	this->itemPreview = ItemPreview::create(false, true);
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
-	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, CRect(-Vec2(ItemMenu::ClipSize / 2.0f), ItemMenu::ClipSize + CSize(ItemMenu::ClipRightBuffer, 0.0f)));
+	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, CRect(-Vec2(ItemMenu::ClipSize / 2.0f), ItemMenu::ClipSize + CSize(ItemMenu::ClipRightBuffer, ItemMenu::ClipTopBuffer)));
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->previewOffset = ItemMenu::DefaultPreviewOffset;
 	this->textOffset = ItemMenu::DefaultTextOffset;
@@ -91,10 +92,15 @@ void ItemMenu::initializePositions()
 
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->itemListNode->setPosition(Vec2(-340.0f + 342.0f, 0.0f));
+	this->itemListNode->setPosition(Vec2(2.0f, 0.0f));
 	this->inventorySelectionArrow->setPosition(Vec2(-186.0f, 0.0f));
 	this->selectedInventoryRow->setPosition(Vec2(0.0f, 0.0f));
 	this->itemPreview->setPosition(this->previewOffset);
+
+	if (this->headerLabel != nullptr)
+	{
+		this->headerLabel->setPosition(Vec2(0.0f, 312.0f));
+	}
 }
 
 void ItemMenu::initializeListeners()

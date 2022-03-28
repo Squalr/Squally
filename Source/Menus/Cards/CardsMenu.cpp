@@ -52,9 +52,15 @@ CardsMenu* CardsMenu::create()
 
 CardsMenu::CardsMenu()
 {
+	LocalizedLabel* equippedCardsHeader = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_CardsInDeck::create());
+	LocalizedLabel* unequippedCardsHeader = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_CardsInStorage::create());
+
+	equippedCardsHeader->enableOutline(Color4B::BLACK, 2);
+	unequippedCardsHeader->enableOutline(Color4B::BLACK, 2);
+
 	this->cardsWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
-	this->equippedCardsMenu = ItemMenu::create();
-	this->unequippedCardsMenu = ItemMenu::create();
+	this->equippedCardsMenu = ItemMenu::create(equippedCardsHeader);
+	this->unequippedCardsMenu = ItemMenu::create(unequippedCardsHeader);
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
