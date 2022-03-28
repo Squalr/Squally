@@ -16,3 +16,8 @@ std::string Axe::getWeaponAttackSound()
 {
 	return SoundResources::Platformer_Physical_Swings_SwingWeakHybrid3;
 }
+
+std::string Axe::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_HitSoft1;
+}

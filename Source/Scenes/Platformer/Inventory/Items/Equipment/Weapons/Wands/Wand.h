@@ -5,7 +5,8 @@
 class Wand : public Weapon
 {
 public:
-	std::string getWeaponAttackSound() override;
+	virtual std::string getWeaponAttackSound() override;
+	virtual std::string getWeaponImpactSound() override;
 	
 protected:
 	Wand(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);

@@ -3,6 +3,7 @@
 #include "Scenes/Platformer/Components/Entities/Collision/EntityWeaponCollisionBehavior.h"
 
 class Squally;
+class WorldSound;
 
 class SquallyWeaponCollisionBehavior : public EntityWeaponCollisionBehavior
 {
@@ -25,4 +26,5 @@ private:
 
 	bool canEngage = true;
 	Squally* squally = nullptr;
+	WorldSound* impactSound = nullptr;
 };

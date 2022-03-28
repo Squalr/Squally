@@ -5,7 +5,8 @@
 class Bow : public Weapon
 {
 public:
-	std::string getWeaponAttackSound() override;
+	virtual std::string getWeaponAttackSound() override;
+	virtual std::string getWeaponImpactSound() override;
 
 protected:
 	Bow(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);

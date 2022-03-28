@@ -8,6 +8,7 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -19,6 +20,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -36,11 +38,14 @@ SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObjec
 SquallyWeaponCollisionBehavior::SquallyWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
+	this->impactSound = WorldSound::create();
 
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
 	}
+
+	this->addChild(this->impactSound);
 }
 
 SquallyWeaponCollisionBehavior::~SquallyWeaponCollisionBehavior()
@@ -111,6 +116,22 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 
 			if (enemy != nullptr && enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
+				this->squally->getComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+				{
+					Weapon* weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
+
+					if (weapon != nullptr)
+					{
+						this->impactSound->setSoundResource(weapon->getWeaponImpactSound());
+					}
+					else
+					{
+						this->impactSound->setSoundResource(SoundResources::Platformer_Physical_Impact_HitSoft1);
+					}
+
+					this->impactSound->play();
+				});
+
 				// Encountered enemy w/ first-strike
 				PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
 
