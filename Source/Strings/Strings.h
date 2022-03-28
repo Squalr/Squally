@@ -26709,10 +26709,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs() = default;
 	};
 
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26720,14 +26720,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead() = default;
+		Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice() = default;
 	};
 
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26735,14 +26735,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity() = default;
+		Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships() = default;
 	};
 
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26750,38 +26750,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice() = default;
-	};
-
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships() = default;
-	};
-
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops() = default;
+		Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired : public LocalizedString

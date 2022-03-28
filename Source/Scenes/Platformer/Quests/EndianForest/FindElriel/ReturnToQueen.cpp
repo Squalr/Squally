@@ -208,42 +208,12 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->elriel, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			true
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->elriel, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			true
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice::create(),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -258,7 +228,7 @@ void ReturnToQueen::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships::create(),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -273,7 +243,7 @@ void ReturnToQueen::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops::create()
+			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops::create()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
@@ -303,7 +273,7 @@ void ReturnToQueen::setPostText()
 		this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops::create()
+				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops::create()
 					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create()),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
