@@ -42,6 +42,7 @@ const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
 const std::string PlatformerEvents::EventSaveRespawn = "EVENT_SAVE_RESPAWN";
 const std::string PlatformerEvents::EventBeforeLoadRespawn = "EVENT_BEFORE_LOAD_RESPAWN";
 const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
+const std::string PlatformerEvents::EventFadeOut = "EVENT_FADE_OUT";
 const std::string PlatformerEvents::EventObjectiveChanged = "EVENT_OBJECTIVE_CHANGED";
 const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
 
@@ -316,6 +317,13 @@ void PlatformerEvents::TriggerLoadRespawn()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventLoadRespawn
+	);
+}
+
+void PlatformerEvents::TriggerFadeOut()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventFadeOut
 	);
 }
 

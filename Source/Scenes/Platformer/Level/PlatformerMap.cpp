@@ -226,6 +226,11 @@ void PlatformerMap::initializeListeners()
 		this->fadeHud->resetAnims();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventFadeOut, [=](EventCustom* eventCustom)
+	{
+		this->fadeHud->runAnim(FadeHud::FadeHudType::Normal);
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnstuck, [=](EventCustom* eventCustom)
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()

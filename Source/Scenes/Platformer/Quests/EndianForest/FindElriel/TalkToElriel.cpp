@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Level/Huds/FadeHuds/FadeHud.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -96,9 +97,10 @@ void TalkToElriel::onComplete()
 	if (this->cutscenePortal)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
+		PlatformerEvents::TriggerFadeOut();
 
 		this->runAction(Sequence::create(
-			DelayTime::create(2.0f),
+			DelayTime::create(FadeHud::AnimationTimeBudget),
 			CallFunc::create([=]()
 			{
 				this->cutscenePortal->loadMap();
@@ -195,9 +197,11 @@ void TalkToElriel::runCinematicSequencePart4()
 
 	this->complete();
 
+	/*
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{
 		this->elriel->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->elriel).x));
 		this->elriel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 	}, TalkToElriel::TagElrielExit);
+	*/
 }
