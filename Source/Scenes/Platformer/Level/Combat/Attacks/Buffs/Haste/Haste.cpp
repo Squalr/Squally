@@ -142,11 +142,13 @@ void Haste::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()) +
 						"mov dword ptr [esi], 0.0f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()) +
 						"mov dword ptr [rsi], 0.0f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +

@@ -9069,6 +9069,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed();
+		virtual ~Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Haste_Haste : public LocalizedString
 	{
 	public:
