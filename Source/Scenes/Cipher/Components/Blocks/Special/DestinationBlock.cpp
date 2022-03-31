@@ -31,16 +31,16 @@ DestinationBlock* DestinationBlock::create(int cipherIndex)
 	return instance;
 }
 
-DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecHuge, CipherResources::Blocks_BlockDecHuge), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
+DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 	this->cipherIndex = cipherIndex;
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 	this->displayLabel = SmartAsciiLabel::create();
 	this->receivedDisplayLabel = SmartAsciiLabel::create();
-	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiHuge);
-	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinHuge);
-	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecHuge);
-	this->spriteHex = Sprite::create(CipherResources::Blocks_BlockHexHuge);
+	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
+	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);
+	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecLong);
+	this->spriteHex = Sprite::create(CipherResources::Blocks_BlockHexLong);
 
 	this->spriteAscii->setAnchorPoint(Vec2::ZERO);
 	this->spriteBin->setAnchorPoint(Vec2::ZERO);

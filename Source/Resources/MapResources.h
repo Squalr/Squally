@@ -41,6 +41,7 @@ namespace MapResources
 	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
+	extern const std::string Dev_Cipher;
 	extern const std::string Dev_Collision;
 	extern const std::string Dev_Combat;
 	extern const std::string Dev_Items;
@@ -97,6 +98,7 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_2_7;
 	extern const std::string EndianForest_Zone_2_8;
 	extern const std::string EndianForest_Zone_3_0;
+	extern const std::string EndianForest_Zone_3_0_experimental;
 	extern const std::string EndianForest_Zone_3_1;
 	extern const std::string EndianForest_Zone_3_2;
 	extern const std::string EndianForest_Zone_3_3;
@@ -109,6 +111,9 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Mages_Warp;
 	extern const std::string PerilousSea_Zone_UR_1_0;
 	extern const std::string TileMap;
+	extern const std::string TileMap3Q;
+	extern const std::string TileMapIsometric;
+	extern const std::string TileMapTopDown;
 	extern const std::string Tutorials_KnownValueDouble;
 	extern const std::string Tutorials_KnownValueFloat;
 	extern const std::string Tutorials_KnownValueFloatAdvanced;

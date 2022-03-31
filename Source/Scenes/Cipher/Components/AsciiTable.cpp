@@ -43,7 +43,7 @@ AsciiTable::AsciiTable()
 		// this->asciiLetters.push_back(ImmediateBlock::create((unsigned char)(next), BlockBase::BlockType::Static));
 	}
 
-	this->selectionSprite = Sprite::create(CipherResources::Blocks_BlockHexHuge);
+	this->selectionSprite = Sprite::create(CipherResources::Blocks_BlockHexLong);
 
 	this->frame = Sprite::create(CipherResources::PopupPanelFrame);
 
