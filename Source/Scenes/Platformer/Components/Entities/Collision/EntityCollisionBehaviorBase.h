@@ -15,7 +15,7 @@ public:
 
 	void enableNormalPhysics();
 	void enableWaterPhysics();
-	void enableDeathPhysics();
+	void disableGravity();
 	cocos2d::Vec2 getGravity();
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -23,6 +23,7 @@ public:
 	bool hasRightWallCollision();
 	bool hasLeftWallCollisionWith(CollisionObject* collisonObject);
 	bool hasRightWallCollisionWith(CollisionObject* collisonObject);
+	bool isOnGround();
 	
 	CollisionObject* entityCollision = nullptr;
 	CollisionObject* movementCollision = nullptr;

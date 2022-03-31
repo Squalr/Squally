@@ -165,7 +165,7 @@ void EntityCollisionBehaviorBase::enableWaterPhysics()
 	this->movementCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
 }
 
-void EntityCollisionBehaviorBase::enableDeathPhysics()
+void EntityCollisionBehaviorBase::disableGravity()
 {
 	// Wait until the corpse falls to the ground before turning off physics to prevent sliding
 	if (this->movementCollision->hasCollisions())
@@ -229,6 +229,11 @@ bool EntityCollisionBehaviorBase::hasRightWallCollisionWith(CollisionObject* col
 	}
 
 	return false;
+}
+
+bool EntityCollisionBehaviorBase::isOnGround()
+{
+	return this->groundCollision->isOnGround();
 }
 
 void EntityCollisionBehaviorBase::buildEntityCollision()

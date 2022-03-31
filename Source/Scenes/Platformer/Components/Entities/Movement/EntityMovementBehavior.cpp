@@ -155,6 +155,12 @@ void EntityMovementBehavior::update(float dt)
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
+			if (this->entityCollision->isOnGround())
+			{
+				// Prevents obnoxious drifting down slopes. Ideally this would be solved with friction, but that is not implemented as of writing this.
+				this->entityCollision->disableGravity();
+			}
+
 			// Only apply movement velocity if not running into a wall. Prevents visual jitter.
 			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
 			{
@@ -247,7 +253,7 @@ void EntityMovementBehavior::update(float dt)
 	
 	if (!this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
-		this->entityCollision->enableDeathPhysics();
+		this->entityCollision->disableGravity();
 	}
 
 	// Save velocity
