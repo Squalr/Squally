@@ -8,7 +8,6 @@ namespace SoundResources
 {
 	extern const std::string Cipher_GearTurn;
 	extern const std::string Cipher_Lightning;
-	extern const std::string Hexus_Achievement;
 	extern const std::string Hexus_Attacks_Acid;
 	extern const std::string Hexus_Attacks_AcidHit;
 	extern const std::string Hexus_Attacks_AirBurstSpell;

@@ -7,7 +7,6 @@
 
 const std::string SoundResources::Cipher_GearTurn = "Private/Sounds/Cipher/GearTurn.mp3";
 const std::string SoundResources::Cipher_Lightning = "Private/Sounds/Cipher/Lightning.mp3";
-const std::string SoundResources::Hexus_Achievement = "Private/Sounds/Hexus/Achievement.mp3";
 const std::string SoundResources::Hexus_Attacks_Acid = "Private/Sounds/Hexus/Attacks/Acid.mp3";
 const std::string SoundResources::Hexus_Attacks_AcidHit = "Private/Sounds/Hexus/Attacks/AcidHit.mp3";
 const std::string SoundResources::Hexus_Attacks_AirBurstSpell = "Private/Sounds/Hexus/Attacks/AirBurstSpell.mp3";
