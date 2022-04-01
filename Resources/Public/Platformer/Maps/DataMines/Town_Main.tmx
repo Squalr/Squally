@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1060">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1060">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -443,12 +443,6 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1058" name="olive" type="entity" x="7604" y="3481" width="128" height="128">
-   <properties>
-    <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
-    <property name="pocket-pool" value="dm-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="132" name="player_layer -6">
   <properties>
@@ -690,7 +684,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="95" name="player_layer -3">
+ <objectgroup id="95" name="player_layer -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="is-hackable" type="bool" value="true"/>
