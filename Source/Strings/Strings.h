@@ -7689,6 +7689,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_MedusasMirror() = default;
 	};
 
+	class Items_Misc_Keys_MinesKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_MinesKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_MinesKey();
+		virtual ~Items_Misc_Keys_MinesKey() = default;
+	};
+
 	class Items_Misc_Keys_PurpleGem : public LocalizedString
 	{
 	public:

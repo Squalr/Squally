@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/DefeatRhinoman.h"
+#include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePower.h"
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/TalkToOlive.h"
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/TalkToPrincessDawn.h"
 
@@ -22,6 +23,7 @@ RestorePowerLine::RestorePowerLine() : super(RestorePowerLine::MapKeyQuestLine, 
 	QuestData(TalkToOlive::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToOlive::create(owner, questLine); }),
 	QuestData(TalkToPrincessDawn::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToPrincessDawn::create(owner, questLine); }),
 	QuestData(DefeatRhinoman::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatRhinoman::create(owner, questLine); }),
+	QuestData(RestorePower::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RestorePower::create(owner, questLine); }),
 })
 {
 }

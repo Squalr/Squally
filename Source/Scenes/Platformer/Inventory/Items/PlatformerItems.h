@@ -192,6 +192,7 @@
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MayanGemRedItem.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/RamWheel.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/TownKey.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/MinesKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/FountainRoomKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Maps/EndianForest/TempleMap.h"
