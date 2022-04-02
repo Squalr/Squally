@@ -121,7 +121,7 @@ void CurseOfTheAncients::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRbx::create(), Strings::Menus_Hacking_RegisterRax::create() })) + 
 						"push rax\n" +
-						"push rbx\n\n" +
+						"pop rbx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create())
