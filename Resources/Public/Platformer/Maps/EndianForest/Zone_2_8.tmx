@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1037">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1040">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -108,8 +108,8 @@
    <property name="depth" type="float" value="-7808"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="914" name="Generic/TownHome2" type="decor" x="-3208.17" y="-3408.63" width="1668" height="2632"/>
   <object id="915" name="Generic/TownHomeEmpty2" type="decor" x="-378.06" y="-3416.13" width="1668" height="2632"/>
+  <object id="1037" name="Generic/SkyTower" type="decor" x="-3552.82" y="-3931.86" width="2395" height="3180"/>
  </objectgroup>
  <objectgroup id="75" name="terrain top -56">
   <properties>
@@ -406,6 +406,18 @@
   <object id="972" name="Forest/Background/Forest2" type="decor" x="-2892" y="1432" width="14004" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="102" name="objects -2">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1039" name="airship" type="object" x="966.753" y="1573.7" width="256" height="256">
+   <properties>
+    <property name="speed" type="float" value="0"/>
+    <property name="variant" type="int" value="0"/>
    </properties>
   </object>
  </objectgroup>

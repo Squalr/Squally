@@ -96,6 +96,7 @@ void TalkToElriel::onComplete()
 
 	if (this->cutscenePortal)
 	{
+		/*
 		PlatformerEvents::TriggerCinematicHijack();
 		PlatformerEvents::TriggerFadeOut();
 
@@ -106,7 +107,7 @@ void TalkToElriel::onComplete()
 				this->cutscenePortal->loadMap();
 			}),
 			nullptr
-		));
+		));*/
 	}
 }
 

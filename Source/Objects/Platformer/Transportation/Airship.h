@@ -4,16 +4,16 @@
 
 class SmartAnimationNode;
 
-class Airship2 : public HackableObject
+class Airship : public HackableObject
 {
 public:
-	static Airship2* create(cocos2d::ValueMap& properties);
+	static Airship* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
 
 protected:
-	Airship2(cocos2d::ValueMap& properties);
-	virtual ~Airship2();
+	Airship(cocos2d::ValueMap& properties);
+	virtual ~Airship();
 
 	void onEnter() override;
 	void update(float dt) override;
@@ -22,4 +22,8 @@ private:
 	typedef HackableObject super;
 
 	SmartAnimationNode* animations = nullptr;
+	float speed = 320.0f;
+
+	static const std::string PropertyVariant;
+	static const std::string PropertySpeed;
 };
