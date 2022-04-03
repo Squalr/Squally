@@ -19,7 +19,7 @@ SkyShipToPeaksLine* SkyShipToPeaksLine::create()
 
 SkyShipToPeaksLine::SkyShipToPeaksLine() : super(SkyShipToPeaksLine::MapKeyQuestLine,
 	{
-		QuestData(RescueIrmik::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RescueIrmik::create(owner, questLine); }),
+		QuestData(RescueIrmik::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return RescueIrmik::create(owner, questLine); }),
 		QuestData(IrmikRescued::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return IrmikRescued::create(owner, questLine); }),
 	})
 {

@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 #include "Scenes/Platformer/Quests/EndianForest/SkyShipToTemple/SkyShipUnlocked.h"
 
 using namespace cocos2d;

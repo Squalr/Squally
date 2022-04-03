@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="948">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="951">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -189,6 +189,12 @@
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
+  <object id="949" name="portal" type="object" x="4254.67" y="1289.33" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="transition" value="back"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="76" name="entities -2">
   <properties>
@@ -198,18 +204,18 @@
   </properties>
   <object id="916" name="goblin-warrior-pig" type="entity" x="6757.7" y="1077.92" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="917" name="goblin-warrior-pig" type="entity" x="6763.28" y="669.485" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
@@ -230,6 +236,11 @@
   <object id="944" name="spawn" type="object" x="7812.85" y="1079.34" width="128" height="128">
    <properties>
     <property name="transition" value="exit-A"/>
+   </properties>
+  </object>
+  <object id="950" name="spawn" type="object" x="4318.67" y="1418.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="back"/>
    </properties>
   </object>
  </objectgroup>
@@ -327,11 +338,6 @@
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="910" name="spawn" type="object" x="2432" y="132" width="128" height="128">
-   <properties>
-    <property name="transition" value="fall"/>
    </properties>
   </object>
   <object id="911" name="life-stone" type="object" x="7565.67" y="1769.47" width="146" height="423"/>

@@ -59,11 +59,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="944" name="temple-door" type="object" x="4755.22" y="1648.06" width="432" height="528">
+  <object id="944" name="temple-door" type="object" x="4758.22" y="1648.06" width="432" height="528">
    <properties>
     <property name="color" value="yellow-skull"/>
     <property name="listen-event" value="elriel-rescued"/>
     <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="quest" value="boss-exit-unlocked"/>
+    <property name="quest-line" value="find-elriel"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

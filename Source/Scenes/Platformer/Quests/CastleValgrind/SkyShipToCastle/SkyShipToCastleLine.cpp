@@ -19,7 +19,7 @@ SkyShipToCastleLine* SkyShipToCastleLine::create()
 
 SkyShipToCastleLine::SkyShipToCastleLine() : super(SkyShipToCastleLine::MapKeyQuestLine,
 	{
-		QuestData(RescueFinch::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RescueFinch::create(owner, questLine); }),
+		QuestData(RescueFinch::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return RescueFinch::create(owner, questLine); }),
 		QuestData(FinchRescued::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return FinchRescued::create(owner, questLine); }),
 	})
 {
