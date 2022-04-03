@@ -65,7 +65,7 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	if (questState == QuestState::None)
+	if (questState == QuestState::None && this->isReturnTrip)
 	{
 		ObjectEvents::WatchForObject<Airship>(this, [=](Airship* airship)
 		{
