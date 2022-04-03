@@ -26,7 +26,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runNoSequence();
 	void runYesSequence();
 
 	PlatformerEntity* owner = nullptr;

@@ -26394,6 +26394,21 @@ namespace Strings
 		virtual ~Platformer_Objects_Warps_WhereTo() = default;
 	};
 
+	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle();
+		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle() = default;
+	};
+
 	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks : public LocalizedString
 	{
 	public:
@@ -26407,36 +26422,6 @@ namespace Strings
 	private:
 		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks();
 		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks() = default;
-	};
-
-	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToTown : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToTown* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToTown();
-		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToTown() = default;
-	};
-
-	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Nope : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Nope* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Nope();
-		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Nope() = default;
 	};
 
 	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep : public LocalizedString
@@ -26482,21 +26467,6 @@ namespace Strings
 	private:
 		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown();
 		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown() = default;
-	};
-
-	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Nope : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Nope* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Nope();
-		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Nope() = default;
 	};
 
 	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep : public LocalizedString

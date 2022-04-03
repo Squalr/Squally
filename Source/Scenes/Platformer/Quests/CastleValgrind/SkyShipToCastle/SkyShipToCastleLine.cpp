@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/SkyShipToCastle/FinchRescued.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/SkyShipToCastle/RescueFinch.h"
 
 using namespace cocos2d;
 
@@ -18,8 +19,9 @@ SkyShipToCastleLine* SkyShipToCastleLine::create()
 
 SkyShipToCastleLine::SkyShipToCastleLine() : super(SkyShipToCastleLine::MapKeyQuestLine,
 	{
+		QuestData(RescueFinch::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RescueFinch::create(owner, questLine); }),
 		QuestData(FinchRescued::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return FinchRescued::create(owner, questLine); }),
-	}/*, (QuestLine*)FindElrielLine::create(), TalkToElriel::MapKeyQuest*/)
+	})
 {
 }
 

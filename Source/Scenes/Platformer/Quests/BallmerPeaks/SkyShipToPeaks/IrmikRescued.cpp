@@ -73,50 +73,41 @@ void IrmikRescued::onLoad(QuestState questState)
 			{
 				disabledPortal->enablePortal();
 			});
-
-			this->complete();
 		}
 
 	}, IrmikRescued::QuestTagShipPortal);
 
 	if (this->owner != nullptr)
 	{
-		this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		if (questState == QuestState::None)
 		{
-			LocalizedString* text = nullptr;
-
-			if (this->isReturnTrip)
+			this->owner->despawn();
+		}
+		else
+		{
+			this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
-				text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
-			}
-			else
-			{
-				text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
-			}
+				LocalizedString* text = nullptr;
 
-			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				text,
-				[=]()
+				if (this->isReturnTrip)
 				{
-					switch(questState)
+					text = Strings::Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks::create();
+				}
+				else
+				{
+					text = Strings::Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle::create();
+				}
+
+				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+					text,
+					[=]()
 					{
-						case QuestState::Active:
-						case QuestState::ActiveThroughSkippable:
-						case QuestState::Complete:
-						{
-							this->runYesSequence();
-							break;
-						}
-						case QuestState::None:
-						{
-							this->runNoSequence();
-							break;
-						}
-					}
-				}),
-				0.5f
-			);
-		});
+						this->runYesSequence();
+					}),
+					0.5f
+				);
+			});
+		}
 	}
 }
 
@@ -132,29 +123,10 @@ void IrmikRescued::onSkipped()
 {
 }
 
-void IrmikRescued::runNoSequence()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->owner, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
-		),
-		[=]()
-		{
-			Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
-		},
-		Voices::GetNextVoiceMedium(),
-		true
-	));
-}
-
 void IrmikRescued::runYesSequence()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep::create(),
+		Strings::Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,

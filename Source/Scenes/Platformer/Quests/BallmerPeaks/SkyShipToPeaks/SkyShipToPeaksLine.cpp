@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/BallmerPeaks/SkyShipToPeaks/IrmikRescued.h"
+#include "Scenes/Platformer/Quests/BallmerPeaks/SkyShipToPeaks/RescueIrmik.h"
 
 using namespace cocos2d;
 
@@ -18,8 +19,9 @@ SkyShipToPeaksLine* SkyShipToPeaksLine::create()
 
 SkyShipToPeaksLine::SkyShipToPeaksLine() : super(SkyShipToPeaksLine::MapKeyQuestLine,
 	{
+		QuestData(RescueIrmik::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RescueIrmik::create(owner, questLine); }),
 		QuestData(IrmikRescued::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return IrmikRescued::create(owner, questLine); }),
-	}/*, (QuestLine*)FindElrielLine::create(), TalkToElriel::MapKeyQuest*/)
+	})
 {
 }
 
