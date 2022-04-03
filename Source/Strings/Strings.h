@@ -23529,21 +23529,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik();
-		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles : public LocalizedString
 	{
 	public:
@@ -23662,21 +23647,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel();
 		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_CastleValgrind_Garin : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Garin* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_CastleValgrind_Garin();
-		virtual ~Platformer_Entities_Names_Npcs_CastleValgrind_Garin() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Gaunt : public LocalizedString
@@ -23919,21 +23889,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Drak : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Drak* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Drak();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Drak() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Hades : public LocalizedString
 	{
 	public:
@@ -24144,21 +24099,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_DataMines_Cypress() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_DataMines_Finch : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Finch* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DataMines_Finch();
-		virtual ~Platformer_Entities_Names_Npcs_DataMines_Finch() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_DataMines_Fraya : public LocalizedString
 	{
 	public:
@@ -24307,21 +24247,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_EndianForest_Bard();
 		virtual ~Platformer_Entities_Names_Npcs_EndianForest_Bard() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_EndianForest_Blackbeard : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Blackbeard* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_EndianForest_Blackbeard();
-		virtual ~Platformer_Entities_Names_Npcs_EndianForest_Blackbeard() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_EndianForest_Chiron : public LocalizedString
@@ -24519,21 +24444,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Azmus() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly();
-		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Elric : public LocalizedString
 	{
 	public:
@@ -24697,6 +24607,96 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina();
 		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Blackbeard : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Blackbeard* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Blackbeard();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Blackbeard() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Drak : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Drak* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Drak();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Drak() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Dudly : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Dudly* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Dudly();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Dudly() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Finch : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Finch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Finch();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Finch() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Garin : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Garin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Garin();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Garin() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Irmik : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Irmik* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Irmik();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Irmik() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Ajax : public LocalizedString
@@ -27622,6 +27622,66 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam();
 		virtual ~Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep() = default;
 	};
 
 	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou : public LocalizedString

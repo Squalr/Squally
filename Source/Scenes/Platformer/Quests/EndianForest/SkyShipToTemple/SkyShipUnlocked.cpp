@@ -12,6 +12,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
@@ -30,6 +31,7 @@ using namespace cocos2d;
 
 const std::string SkyShipUnlocked::MapKeyQuest = "sky-ship-unlocked";
 const std::string SkyShipUnlocked::QuestTagShipPortal = "sky-ship-portal";
+const std::string SkyShipUnlocked::PropertyIsReturnTrip = "is-return-trip";
 
 SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine)
 {
@@ -43,6 +45,11 @@ SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine
 SkyShipUnlocked::SkyShipUnlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SkyShipUnlocked::MapKeyQuest, false)
 {
 	this->owner = dynamic_cast<PlatformerEntity*>(owner);
+
+	if (this->owner != nullptr)
+	{
+		this->isReturnTrip = GameUtils::getKeyOrDefault(this->owner->properties, SkyShipUnlocked::PropertyIsReturnTrip, Value(false)).asBool();
+	}
 }
 
 SkyShipUnlocked::~SkyShipUnlocked()
@@ -76,9 +83,19 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 	{
 		this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
+			LocalizedString* text = nullptr;
+
+			if (this->isReturnTrip)
+			{
+				text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
+			}
+			else
+			{
+				text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
+			}
+
 			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				Strings::Menus_StoryMode::create()
-					->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_UnderflowRuins::create()),
+				text,
 				[=]()
 				{
 					switch(questState)
@@ -118,7 +135,7 @@ void SkyShipUnlocked::onSkipped()
 void SkyShipUnlocked::runNoSequence()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_StoryMode::create(),
+		Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -137,7 +154,7 @@ void SkyShipUnlocked::runNoSequence()
 void SkyShipUnlocked::runYesSequence()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_StoryMode::create(),
+		Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,

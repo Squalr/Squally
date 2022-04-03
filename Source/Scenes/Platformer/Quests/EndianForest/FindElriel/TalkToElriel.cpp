@@ -105,7 +105,7 @@ void TalkToElriel::runCinematicSequencePart1()
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->elriel, true)
 		),
@@ -115,7 +115,7 @@ void TalkToElriel::runCinematicSequencePart1()
 				Strings::Platformer_Ellipses::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Right,
+					DialogueBox::DialogueAlignment::Left,
 					DialogueEvents::BuildPreviewNode(&this->squally, false),
 					DialogueEvents::BuildPreviewNode(&this->elriel, true),
 					true
@@ -139,7 +139,7 @@ void TalkToElriel::runCinematicSequencePart2()
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
+			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 			DialogueEvents::BuildPreviewNode(&this->elriel, true)
 		),
@@ -159,7 +159,7 @@ void TalkToElriel::runCinematicSequencePart3()
 			->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->elriel, true)
 		),

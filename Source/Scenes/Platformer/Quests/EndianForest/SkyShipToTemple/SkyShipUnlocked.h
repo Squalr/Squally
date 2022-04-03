@@ -32,6 +32,8 @@ private:
 	PlatformerEntity* owner = nullptr;
 	Squally* squally = nullptr;
 	Portal* portal = nullptr;
-
+	bool isReturnTrip = false;
+	
+	static const std::string PropertyIsReturnTrip;
 	static const std::string QuestTagShipPortal;
 };

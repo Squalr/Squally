@@ -41,5 +41,5 @@ Vec2 Blackbeard::getDialogueOffset()
 
 LocalizedString* Blackbeard::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Blackbeard::create();
+	return Strings::Platformer_Entities_Names_Npcs_Transition_Blackbeard::create();
 }

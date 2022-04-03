@@ -41,5 +41,5 @@ Vec2 Finch::getDialogueOffset()
 
 LocalizedString* Finch::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_DataMines_Finch::create();
+	return Strings::Platformer_Entities_Names_Npcs_Transition_Finch::create();
 }

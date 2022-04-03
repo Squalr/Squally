@@ -496,9 +496,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1041" name="minos" type="entity" x="1309.33" y="1316" width="128" height="128">
+  <object id="1041" name="dudly" type="entity" x="1309.33" y="1316" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
+    <property name="is-return-trip" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="sky-ship-unlocked"/>
     <property name="quest-line" value="sky-ship-to-temple"/>

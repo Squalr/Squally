@@ -41,5 +41,5 @@ Vec2 Drak::getDialogueOffset()
 
 LocalizedString* Drak::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Drak::create();
+	return Strings::Platformer_Entities_Names_Npcs_Transition_Drak::create();
 }

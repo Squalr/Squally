@@ -41,5 +41,5 @@ Vec2 Irmik::getDialogueOffset()
 
 LocalizedString* Irmik::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik::create();
+	return Strings::Platformer_Entities_Names_Npcs_Transition_Irmik::create();
 }

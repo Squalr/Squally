@@ -235,7 +235,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="minos" type="entity" x="2673.67" y="1560.79" width="128" height="128">
+  <object id="692" name="dudly" type="entity" x="2673.67" y="1560.79" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>

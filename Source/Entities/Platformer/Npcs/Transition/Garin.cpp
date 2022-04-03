@@ -41,5 +41,5 @@ Vec2 Garin::getDialogueOffset()
 
 LocalizedString* Garin::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Garin::create();
+	return Strings::Platformer_Entities_Names_Npcs_Transition_Garin::create();
 }
