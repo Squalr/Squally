@@ -33,7 +33,6 @@ void TrackDeserializer::RegisterGlobalNode()
 
 TrackDeserializer::TrackDeserializer()
 {
-	this->deserializers[Forgotten::TrackKey] = [=]() { return (Track*)Forgotten::create(); };
 	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Track*)Heartbeat::create(); };
 	this->deserializers[Medieval::TrackKey] = [=]() { return (Track*)Medieval::create(); };
 	this->deserializers[Medieval2::TrackKey] = [=]() { return (Track*)Medieval2::create(); };

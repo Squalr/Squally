@@ -22,8 +22,8 @@ Blackbeard* Blackbeard::deserialize(ValueMap& properties)
 
 Blackbeard::Blackbeard(ValueMap& properties) : super(properties,
 	Blackbeard::MapKey,
-	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
-	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,
+	EntityResources::Npcs_Transition_Blackbeard_Animations,
+	EntityResources::Npcs_Transition_Blackbeard_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

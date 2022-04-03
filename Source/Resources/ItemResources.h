@@ -236,6 +236,8 @@ namespace ItemResources
 	extern const std::string Equipment_Weapons_Wands_WoodenWand;
 	extern const std::string Error_MissingNo;
 	extern const std::string Keys_BlueGem;
+	extern const std::string Keys_CryptKey;
+	extern const std::string Keys_FrostKey;
 	extern const std::string Keys_KEY_1;
 	extern const std::string Keys_KEY_2;
 	extern const std::string Keys_KEY_3;

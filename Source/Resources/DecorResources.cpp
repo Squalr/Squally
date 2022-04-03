@@ -507,6 +507,7 @@ const std::string DecorResources::Generic_SignBarFlat = "Private/Platformer/Deco
 const std::string DecorResources::Generic_SignSmith = "Private/Platformer/Decor/Generic/SignSmith.png";
 const std::string DecorResources::Generic_SignSmithFlat = "Private/Platformer/Decor/Generic/SignSmithFlat.png";
 const std::string DecorResources::Generic_Skull1 = "Private/Platformer/Decor/Generic/Skull1.png";
+const std::string DecorResources::Generic_SkyTower = "Private/Platformer/Decor/Generic/SkyTower.png";
 const std::string DecorResources::Generic_Spear1 = "Private/Platformer/Decor/Generic/Spear1.png";
 const std::string DecorResources::Generic_Sword1 = "Private/Platformer/Decor/Generic/Sword1.png";
 const std::string DecorResources::Generic_Sword2 = "Private/Platformer/Decor/Generic/Sword2.png";

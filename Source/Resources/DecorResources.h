@@ -508,6 +508,7 @@ namespace DecorResources
 	extern const std::string Generic_SignSmith;
 	extern const std::string Generic_SignSmithFlat;
 	extern const std::string Generic_Skull1;
+	extern const std::string Generic_SkyTower;
 	extern const std::string Generic_Spear1;
 	extern const std::string Generic_Sword1;
 	extern const std::string Generic_Sword2;
