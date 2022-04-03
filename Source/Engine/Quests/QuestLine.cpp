@@ -189,7 +189,8 @@ void QuestLine::waiveQuestPrereq()
 		}
 		else
 		{
-			// TODO: If we care enough, we can waive up to the pre-requisite task. Probably not an issue.
+			// If we want to we can add support for waiving the prerequisite task up to the explicit task,
+			// however in my testing it seemed fine to not handle this case. It should not come up for users anyways.
 		}
 	}
 }

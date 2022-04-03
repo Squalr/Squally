@@ -17,6 +17,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Breakables/BreakableCageTall.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
@@ -35,6 +36,7 @@ const std::string TalkToElriel::MapKeyQuest = "talk-to-elriel";
 const std::string TalkToElriel::MapEventElrielRescued = "elriel-rescued";
 const std::string TalkToElriel::TagElrielExit = "elriel-exit";
 const std::string TalkToElriel::TagCutscenePortal = "cutscene-portal";
+const std::string TalkToElriel::TagElrielCage = "elriel-cage";
 
 TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine)
 {
@@ -64,6 +66,14 @@ void TalkToElriel::onLoad(QuestState questState)
 			this->elriel->despawn();
 		}
 	}, Elriel::MapKey);
+
+	if (questState == QuestState::Complete)
+	{
+		ObjectEvents::WatchForObject<BreakableCageTall>(this, [=](BreakableCageTall* cage)
+		{
+			cage->despawn();
+		}, TalkToElriel::TagElrielCage);
+	}
 
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{

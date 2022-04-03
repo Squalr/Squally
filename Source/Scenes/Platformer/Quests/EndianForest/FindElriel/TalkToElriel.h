@@ -40,4 +40,5 @@ private:
 	static const std::string MapEventElrielRescued;
 	static const std::string TagElrielExit;
 	static const std::string TagCutscenePortal;
+	static const std::string TagElrielCage;
 };

@@ -16,6 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Objects/Platformer/Transportation/Airship.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
@@ -32,6 +33,7 @@ using namespace cocos2d;
 const std::string SkyShipUnlocked::MapKeyQuest = "sky-ship-unlocked";
 const std::string SkyShipUnlocked::QuestTagShipPortal = "sky-ship-portal-temple";
 const std::string SkyShipUnlocked::PropertyIsReturnTrip = "is-return-trip";
+const std::string SkyShipUnlocked::QuestTagTempleAirship = "temple-airship";
 
 SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine)
 {
@@ -63,6 +65,14 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
+	if (questState == QuestState::None)
+	{
+		ObjectEvents::WatchForObject<Airship>(this, [=](Airship* airship)
+		{
+			airship->despawn();
+		}, SkyShipUnlocked::QuestTagTempleAirship);
+	}
+
 	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{
 		this->portal = portal;
@@ -81,42 +91,49 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 
 	if (this->owner != nullptr)
 	{
-		this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		if (questState == QuestState::None && this->isReturnTrip)
 		{
-			LocalizedString* text = nullptr;
-
-			if (this->isReturnTrip)
+			this->owner->despawn();
+		}
+		else
+		{
+			this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
-				text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
-			}
-			else
-			{
-				text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
-			}
+				LocalizedString* text = nullptr;
 
-			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				text,
-				[=]()
+				if (this->isReturnTrip)
 				{
-					switch(questState)
+					text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
+				}
+				else
+				{
+					text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
+				}
+
+				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+					text,
+					[=]()
 					{
-						case QuestState::Active:
-						case QuestState::ActiveThroughSkippable:
-						case QuestState::Complete:
+						switch(questState)
 						{
-							this->runYesSequence();
-							break;
+							case QuestState::Active:
+							case QuestState::ActiveThroughSkippable:
+							case QuestState::Complete:
+							{
+								this->runYesSequence();
+								break;
+							}
+							case QuestState::None:
+							{
+								this->runNoSequence();
+								break;
+							}
 						}
-						case QuestState::None:
-						{
-							this->runNoSequence();
-							break;
-						}
-					}
-				}),
-				0.5f
-			);
-		});
+					}),
+					0.5f
+				);
+			});
+		}
 	}
 }
 
