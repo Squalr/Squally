@@ -30,7 +30,7 @@
 using namespace cocos2d;
 
 const std::string SkyShipUnlocked::MapKeyQuest = "sky-ship-unlocked";
-const std::string SkyShipUnlocked::QuestTagShipPortal = "sky-ship-portal";
+const std::string SkyShipUnlocked::QuestTagShipPortal = "sky-ship-portal-temple";
 const std::string SkyShipUnlocked::PropertyIsReturnTrip = "is-return-trip";
 
 SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine)

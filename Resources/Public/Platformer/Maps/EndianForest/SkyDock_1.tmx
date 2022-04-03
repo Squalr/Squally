@@ -212,7 +212,7 @@
    <properties>
     <property name="components" value="disabled-portal"/>
     <property name="map" value="EndianForest/Zone_2_8"/>
-    <property name="tag" value="sky-ship-portal"/>
+    <property name="tag" value="sky-ship-portal-temple"/>
     <property name="transition" value="sky-ship-temple"/>
    </properties>
   </object>
@@ -304,9 +304,10 @@
   <object id="786" name="finch" type="entity" x="1278" y="1558" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
+    <property name="is-return-trip" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
-    <property name="quest" value="sky-ship-unlocked"/>
-    <property name="quest-line" value="sky-ship-to-temple"/>
+    <property name="quest" value="finch-rescued"/>
+    <property name="quest-line" value="sky-ship-to-castle"/>
    </properties>
   </object>
  </objectgroup>

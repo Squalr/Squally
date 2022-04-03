@@ -466,7 +466,7 @@
    <properties>
     <property name="components" value="disabled-portal"/>
     <property name="map" value="EndianForest/SkyDock_1"/>
-    <property name="tag" value="sky-ship-portal"/>
+    <property name="tag" value="sky-ship-portal-temple"/>
     <property name="transition" value="sky-ship-temple"/>
    </properties>
   </object>
